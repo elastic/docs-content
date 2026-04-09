@@ -75,6 +75,13 @@ To add interactive Options list and Range slider controls, create the controls, 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
+
+      * **Prefix** (default for *IP address* type fields): Show options that *start with* the entered value.
+      * **Contains** (default for *string* type fields): Show options that *contain* the entered value. This setting is only available for *string* type fields.
+      * **Exact**: Show options that are an *exact* match with the entered value.
+
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
     - **Additional settings**:
 
       - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
@@ -90,17 +97,17 @@ To add interactive Options list and Range slider controls, create the controls, 
     - **Selections**:
       Select multiple values to filter with the control, or only one.
 
-    - **Additional settings**:
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
 
-      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
-
-      For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
-
-      * **Prefix**: Show options that *start with* the entered value.
-      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Prefix** (default): Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting is only available for *string* type fields.
       * **Exact**: Show options that are an *exact* match with the entered value.
 
       The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+
+    - **Additional settings**:
+
+      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
     :::
 
     ::::

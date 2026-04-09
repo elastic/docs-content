@@ -9,19 +9,20 @@ description: Learn how cross-project search (CPS) enables you to search across m
 
 # {{cps-cap}} [cross-project-search]
 
-**{{cps-cap}}** ({{cps-init}}) enables you to run a single search request across multiple {{serverless-short}} projects.
-When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all that data from a single place, without having to search each project individually.
+::::{include} /deploy-manage/_snippets/cps-definition.md
+::::
 
 {{cps-cap}} relies on linking projects within your {{ecloud}} organization. After you link projects together, searches from the origin project automatically run across all linked projects.
 
 This overview explains how {{cps}} works, including project linking and security.
-For prerequisites, compatibility requirements, architecture planning, and scope defaults, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md) in **Deploy and manage**.
+For prerequisites, compatibility requirements, architecture planning, and scope defaults, refer to [](/deploy-manage/cross-project-search-config.md).
+
 For details on how search, tags, and project routing work in {{cps-init}}, refer to the following pages:
 
 * [Search in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-search.md): Learn how search expressions, search options, and index resolution work.
 * [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md): Learn about predefined and custom project tags and how to use them in queries.
 * [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): Learn how to route searches to specific projects based on tag values.
-* [Manage {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched as you work in Discover, Dashboards, and other {{kib}} apps.
+* [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched as you work in Discover, Dashboards, and other {{kib}} apps.
 
 ## {{cps-cap}} as the default behavior for linked projects
 
@@ -65,7 +66,7 @@ You can use `_origin` in search expressions to explicitly target the origin proj
 ## Excluding indices and projects
 
 You can exclude specific indices or projects from a {{cps}} by prefixing a pattern with a dash (`-`).
-This enables you start with a broad search scope and narrow it down by removing specific indices or projects from the results.
+This enables you to start with a broad search scope and narrow it down by removing specific indices or projects from the results.
 
 ### How exclusion works
 
@@ -105,22 +106,16 @@ The following examples assume an origin project with two linked projects: `linke
 
 This section gives you a high-level overview of how security works in {{cps}}.
 
-In {{cps-init}}, access to a project's data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-security.md
+:::
 
-::::{note}
-{{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
-::::
+### How access is evaluated
 
-Access control operates in two stages:
-
-* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity's role assignments in each project.
-* Authorization evaluates those roles to determine which actions and resources the request can access within each project.
-
-For example, if you have a viewer role in project 1, an admin role in project 2, and a custom role in project 3, you can access all three projects through {{cps}}. Each project enforces the permissions associated with the role you have in that project.
-
-When a {{cps}} query targets a linked project that you have access to, authorization checks are performed locally in that project to determine whether you have the required privileges to access the requested resources.
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-access-evaluation.md
+:::
 
 **Example**
+
 You have read access to the `logs` index in project 1, but no access to the `logs` index in project 2.
 If you run `GET logs/_search`:
 
@@ -202,7 +197,7 @@ FROM logs-* METADATA _index
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
 
-For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [Configure {{cps}}](/deploy-manage/cross-project-search-config.md).
+For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [](/deploy-manage/cross-project-search-config.md).
 
 ### Observability app limitations
 

@@ -8,7 +8,7 @@ description: Learn about project tags in cross-project search (CPS), including p
 navigation_title: "Tags"
 ---
 
-# Using tags to control search [cps-tags]
+# Using tags to control {{cps}} [cps-tags]
 
 You can assign [tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags) to projects and use them to control {{cps}} behavior.
 

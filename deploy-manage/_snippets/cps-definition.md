@@ -1,0 +1,1 @@
+With {{cps}} ({{cps-init}}), users in your organization can search across multiple {{serverless-full}} projects at once, instead of searching each project individually. When your data is split across projects to organize ownership, use cases, or environments, {{cps}} lets you query all the data from a single place. 
