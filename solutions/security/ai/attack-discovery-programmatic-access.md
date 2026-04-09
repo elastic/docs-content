@@ -127,17 +127,3 @@ subprocess.run(["ssh", host, "systemctl", "restart", "service"])
 ```
 
 The unsafe pattern passes the entire string to `/bin/sh`, which interprets shell metacharacters in the `host` value. The safe pattern passes each argument directly to the `ssh` process without shell interpretation.
-
-### Sanitize markdown content before rendering [ad-markdown-injection]
-
-Attack Discovery responses from the {{kib}} API include LLM-generated markdown in fields such as `detailsMarkdown`, `summaryMarkdown`, and `entitySummaryMarkdown`. If you render this markdown as HTML, unsanitized content could introduce:
-
-- **Misleading links** that direct analysts to attacker-controlled sites
-- **Tracking pixels** embedded as image references (for example, `![](https://attacker.example.com/pixel)`)
-- **Raw HTML** if your markdown renderer doesn't strip it
-
-To mitigate these risks:
-
-- Use a markdown renderer that strips raw HTML tags by default.
-- Validate or restrict link URLs to trusted domains before rendering.
-- If you enabled the `enable_field_rendering` API parameter, implement dedicated parsing for the `{{ field_name value }}` syntax rather than passing it through to the HTML renderer.
