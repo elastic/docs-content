@@ -16,23 +16,21 @@ products:
 
 # {{agent-builder}} built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
+This page lists all built-in tools available in {{agent-builder}}, grouped by namespace: platform (core and streams), observability, and security. Built-in tools are read-only: you can't modify or delete them.
 
-Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [Manage tools](/explore-analyze/ai-features/agent-builder/tools.md#manage-tools).
+Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `observability`, `security`) reflect this scoping.
+
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. You can also assign any available built-in tool to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
 :::
 
-## Availability
+## Platform tools
 
-Built-in platform core tools are available across all deployments, while observability and security tools are available in their respective serverless projects (or solution views). Tools use consistent prefixes (`platform.core`, `observability`, `security`) that reflect this scoping.
+Platform tools are available across all deployments and serverless projects. They use the `platform.core` and `platform.streams` namespaces.
 
-## Agents and tools
-
-[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
-
-## Platform core tools
+### Platform core tools
 
 Platform core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
 
@@ -67,8 +65,8 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
-<!-- `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
-:   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications. -->
+`platform.core.create_visualization` {applies_to}`stack: ga 9.4`
+:   Creates or updates a visualization configuration based on a natural language description.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
@@ -120,7 +118,7 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 :   Updates an existing dashboard with new panels or modifications. 
 -->
 
-## Streams tools
+### Streams tools
 ```{applies_to}
 stack: ga 9.4
 ```
@@ -154,8 +152,11 @@ Streams tools provide capabilities for exploring and managing [Streams](/manage-
 `platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4`
 :   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion.
 
-`platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4`
-:   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams.
+% TODO (9.4): Confirm with Streams team whether platform.streams.sig_events.search_kis
+% is user-assignable or internal only — not showing in the Elasticsearch project UI.
+% Source: https://github.com/elastic/kibana/pull/258399
+<!-- `platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4`
+:   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams. -->
 
 ## Observability tools
 
