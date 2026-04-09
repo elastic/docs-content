@@ -207,7 +207,7 @@ Examples:
 
 ### `processes` [processes]
 
-Show a list of all processes running on the host. This action may take a minute or so to complete.
+Show a list of all processes running on the host. This action might take a minute or so to complete.
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
@@ -216,7 +216,7 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 ::::{tip}
 Use this command to get current PID or entity ID values, which are required for other response actions such as `kill-process` and `suspend-process`.
 
-Entity IDs may be more reliable than PIDs, because entity IDs are unique values on the host, while PID values can be reused by the operating system.
+Entity IDs might be more reliable than PIDs, because entity IDs are unique values on the host, while PID values can be reused by the operating system.
 ::::
 
 
@@ -377,7 +377,7 @@ Example: `suspend-process --pid 123 --comment "Suspend suspicious process"`
 
 Upload a file to the host. The file is saved to the location on the host where {{elastic-endpoint}} is installed. After you run the command, the full path is returned in the console for reference. Use these parameters:
 
-* `--file` : (Required) The file to send to the host. As soon as you type this parameter, a popup appears — select it to navigate to the file, or drag and drop the file onto the popup.
+* `--file` : (Required) The file to send to the host. As soon as you type this parameter, a popup appears — select it to navigate to the file, or drag the file onto the popup.
 * `--overwrite` : (Optional) Overwrite the file on the host if it already exists.
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
