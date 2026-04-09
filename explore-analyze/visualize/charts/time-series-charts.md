@@ -10,9 +10,7 @@ description: Instructions and best practices for building time series charts wit
 
 # Build time series charts with {{kib}}
 
-Time series charts help you track how metrics change over time so you can spot trends, seasonality, and anomalies. In Lens, time series visualizations are typically built with **Line**, **Area**, or **Bar** charts, depending on whether you want to emphasize precise trend lines, cumulative volume, or period-over-period comparison.
-
-You can create time series charts in {{kib}} using [**Lens**](../lens.md).
+Time series charts help you track how metrics change over time so you can spot trends, seasonality, and anomalies. You can create time series charts in {{kib}} using [**Lens**](../lens.md). In Lens, time series visualizations are typically built with **Line**, **Area**, or **Bar** charts, depending on whether you want to emphasize precise trend lines, cumulative volume, or period-over-period comparison.
 
 ![Example Lens line chart](/explore-analyze/images/kibana-line-new.png)
 
@@ -50,7 +48,7 @@ The chart preview updates to show one or more time-based series.
 ::::::
 
 ::::::{step} Customize the chart to follow best practices
-Tweak the appearance of your chart to improve interpretation. Consider the following best practices:
+You can customize the [settings](#time-series-chart-settings) of your time series chart to tweak the appearance and improve interpretation. Consider the following best practices:
 
 **Use an interval that matches the question**
 :   Use shorter intervals for incident analysis and longer intervals for strategic trend reporting.
@@ -64,7 +62,6 @@ Tweak the appearance of your chart to improve interpretation. Consider the follo
 **Keep legends informative but concise**
 :   Use clear series names and only add statistics that support the decision being made.
 
-Refer to [Time series chart settings](#time-series-chart-settings) for all configuration options relevant to time series charts.
 ::::::
 
 ::::::{step} Save the chart
