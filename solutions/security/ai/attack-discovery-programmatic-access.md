@@ -18,8 +18,8 @@ You can query Attack Discovery data directly to build custom dashboards, feed au
 
 Before you query Attack Discovery data programmatically, make sure you have the following:
 
-- **Index privileges**: Your role needs `read` and `view_index_metadata` privileges on the Attack Discovery alert indices. Refer to [Attack Discovery RBAC](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for the full list of required privileges.
-- **Authentication**: Use an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) to authenticate requests. Scope the key to the minimum privileges your integration requires.
+- **Index privileges**:`read` and `view_index_metadata` privileges on the Attack Discovery alert indices. Refer to [Attack Discovery RBAC](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for the full list of required privileges.
+- **Authentication**: An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) to authenticate API requests. Scope the key to the minimum privileges your integration requires.
 - **Use the `fields` parameter**: Don't rely on `_source` when querying alert indices. Use the [`fields` option](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) in the Search API instead, because alert index mappings can change between versions.
 
 ## Attack Discovery index aliases [attack-discovery-index-aliases]
@@ -60,7 +60,7 @@ For additional query patterns (filtering by time range, severity, status, and mo
 
 ## Query with the Attack Discovery API [attack-discovery-kibana-api]
 
-{{kib}} provides purpose-built REST APIs for Attack Discovery data that return enriched discovery objects, including LLM-generated summaries, MITRE ATT&CK mappings, and entity information, that aren't available in the raw alert index documents.
+Elastic provides REST APIs for working with Attack Discovery data:
 
 - `GET /api/attack_discovery/_find`: Search, filter, and paginate through saved discoveries.
 - `POST /api/attack_discovery/_generate`: Trigger a new discovery generation from alerts.
@@ -69,24 +69,21 @@ For additional query patterns (filtering by time range, severity, status, and mo
 For the full list of endpoints and parameters, refer to the [Attack Discovery API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-attack-discovery-api).
 
 :::{note}
-The Find and Generation APIs accept an `enable_field_rendering` parameter. When set to `true`, markdown fields include a `{{ field_name value }}` syntax used by {{kib}} to render interactive pivot links. If you're building a custom renderer, set this to `false` (the default) or implement dedicated handling for this syntax.
+The Find and Generate APIs accept an `enable_field_rendering` parameter. When set to `true`, markdown fields include a `{{ field_name value }}` syntax used by {{kib}} to render interactive pivot links. If you're building a custom renderer, set this to `false` (the default) or implement dedicated handling for this syntax.
 :::
 
-## Security considerations for integrations [attack-discovery-security-considerations]
+## Security considerations [attack-discovery-security-considerations]
 
-Attack Discovery data can contain values derived from adversary-controlled sources: hostnames, usernames, process names, and other fields that originate from raw alert data. LLM-generated fields like `detailsMarkdown` and `summaryMarkdown` can also reflect this untrusted content. When your integration passes this data to other systems, treat every field value as untrusted input.
+Attack Discovery data can contain values derived from adversary-controlled sources: hostnames, usernames, process names, and other fields that originate from raw alert data. LLM-generated fields like `detailsMarkdown` and `summaryMarkdown` can also reflect this untrusted content. When you pass this data to other systems, treat every field value as untrusted input.
 
 The following sections describe common injection risks and how to mitigate them.
 
 ### Avoid KQL injection when building queries from discovery data [ad-kql-injection]
 
-If your integration builds KQL query strings by interpolating values from Attack Discovery fields, an adversary who controls a field value could alter the query logic.
+If you build KQL query strings by interpolating values from Attack Discovery fields, an adversary who controls a field value could alter the query logic.
 
-::::{warning}
-Don't construct KQL queries by concatenating untrusted field values. Use structured {{es}} query filters instead.
-::::
 
-For example, suppose your integration pivots on a `host.name` value from a discovery to find related alerts:
+For example, suppose you use a `host.name` value from a discovery to find related alerts:
 
 ```python
 # UNSAFE: field value is interpolated directly into a KQL string
@@ -111,11 +108,8 @@ query = {
 
 ### Avoid shell injection when running automated actions [ad-shell-injection]
 
-If your integration passes field values from Attack Discovery alerts to shell commands, for example to run remediation scripts against a host, an adversary who controls the field value can inject arbitrary commands.
+If you pass field values from Attack Discovery alerts to shell commands, for example to run remediation scripts against a host, an adversary who controls the field value can inject arbitrary commands.
 
-::::{warning}
-Never interpolate untrusted values into shell command strings. Use parameterized APIs that don't invoke a shell interpreter.
-::::
 
 ```python
 import subprocess
@@ -133,7 +127,7 @@ The unsafe pattern passes the entire string to `/bin/sh`, which interprets shell
 
 ### Sanitize markdown content before rendering [ad-markdown-injection]
 
-Attack Discovery responses from the {{kib}} API include LLM-generated markdown in fields such as `detailsMarkdown`, `summaryMarkdown`, and `entitySummaryMarkdown`. If your integration renders this markdown as HTML, unsanitized content could introduce:
+Attack Discovery responses from the {{kib}} API include LLM-generated markdown in fields such as `detailsMarkdown`, `summaryMarkdown`, and `entitySummaryMarkdown`. If you render this markdown as HTML, unsanitized content could introduce:
 
 - **Misleading links** that direct analysts to attacker-controlled sites
 - **Tracking pixels** embedded as image references (for example, `![](https://attacker.example.com/pixel)`)
