@@ -12,6 +12,10 @@ products:
 With ECK `3.4.0` and later, ECK supports configuring {{es}} to require client certificates for HTTP authentication, enabling mutual TLS (mTLS) between clients and {{es}}. When enabled, clients must present a valid certificate signed by a trusted CA to communicate with {{es}}.
 
 :::{note}
+This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](/deploy-manage/license/manage-your-license-in-eck.md) for more details about managing licenses.
+:::
+
+:::{note}
 Currently, {{es}} and {{kib}} support this feature. Support for additional components that connect to {{es}} ({{beats}}, {{agent}}, {{apm-server}}, {{ls}}, and so on) are planned to follow in future releases.
 :::
 
