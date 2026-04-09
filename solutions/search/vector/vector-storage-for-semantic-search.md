@@ -24,6 +24,15 @@ This guide walks you through choosing a strategy and applying it to a `semantic_
 These `index_options` do not apply to sparse vector models like ELSER, which use a different internal representation.
 ::::
 
+:::{tip}
+To run the `curl` examples on this page, set the following environment variables:
+```bash
+export ELASTICSEARCH_URL="your-elasticsearch-url"
+export API_KEY="your-api-key"
+```
+To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). [Learn more about finding your endpoint and credentials](/solutions/elasticsearch-solution-project/search-connection-details.md).
+:::
+
 ## Choose a quantization strategy
 
 Select a quantization strategy based on your dataset size and performance requirements:
@@ -81,10 +90,10 @@ PUT semantic-embeddings-flat
     "properties": {
       "content": {
         "type": "semantic_text",
-        "inference_id": ".multilingual-e5-small-elasticsearch",
+        "inference_id": ".multilingual-e5-small-elasticsearch", <1>
         "index_options": {
           "dense_vector": {
-            "type": "bbq_flat" <1>
+            "type": "bbq_flat" <2>
           }
         }
       }
@@ -92,8 +101,8 @@ PUT semantic-embeddings-flat
   }
 }
 ```
-
-1. BBQ without HNSW for smaller datasets. Uses brute-force search, so queries are slower but indexing is lighter.
+1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+2. BBQ without HNSW for smaller datasets. Uses brute-force search, so queries are slower but indexing is lighter.
 
 ::::::::
 
@@ -113,10 +122,10 @@ PUT semantic-embeddings-disk
     "properties": {
       "content": {
         "type": "semantic_text",
-        "inference_id": ".multilingual-e5-small-elasticsearch",
+        "inference_id": ".multilingual-e5-small-elasticsearch", <1>
         "index_options": {
           "dense_vector": {
-            "type": "bbq_disk" <1>
+            "type": "bbq_disk" <2>
           }
         }
       }
@@ -124,8 +133,8 @@ PUT semantic-embeddings-disk
   }
 }
 ```
-
-1. DiskBBQ keeps vectors compressed on disk, dramatically reducing RAM requirements at the cost of slower queries.
+1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+2. DiskBBQ keeps vectors compressed on disk, dramatically reducing RAM requirements at the cost of slower queries.
 
 ::::::::
 
@@ -138,10 +147,112 @@ PUT semantic-embeddings-int8
     "properties": {
       "content": {
         "type": "semantic_text",
-        "inference_id": ".multilingual-e5-small-elasticsearch",
+        "inference_id": ".multilingual-e5-small-elasticsearch", <1>
         "index_options": {
           "dense_vector": {
-            "type": "int8_hnsw" <1>
+            "type": "int8_hnsw" <2>
+          }
+        }
+      }
+    }
+  }
+}
+```
+1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+2. 8-bit integer quantization for ~4x memory reduction. For higher compression, use `"type": "int4_hnsw"` (~8x reduction).
+
+::::::::
+
+::::::::{tab-item} Using curl
+
+The following example creates an index with BBQ and HNSW quantization:
+
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-optimized" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "content": {
+             "type": "semantic_text",
+             "inference_id": ".multilingual-e5-small-elasticsearch", <1>
+             "index_options": {
+               "dense_vector": {
+                 "type": "bbq_hnsw"
+               }
+             }
+           }
+         }
+       }
+     }'
+```
+
+1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+2. Uses [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) with HNSW indexing for up to 32x memory reduction. 
+
+To use a different quantization strategy, replace `"type": "bbq_hnsw"` with your chosen strategy (`bbq_flat`, `bbq_disk`, `int8_hnsw`, or `int4_hnsw`) and update the index name accordingly.
+
+::::::::
+
+:::::::::
+
+
+:::{dropdown} Example response
+
+```js
+{
+  "acknowledged": true, <1>
+  "shards_acknowledged": true,
+  "index": "semantic-embeddings-optimized"
+}
+```
+
+1. `true` confirms the index was created successfully with your mapping configuration.
+
+:::
+
+## Verify your configuration
+
+Confirm that the `index_options` are applied to your index:
+
+::::{tab-set}
+
+:::{tab-item} Console
+
+```console
+GET semantic-embeddings-optimized/_mapping
+```
+
+:::
+
+:::{tab-item} curl
+
+```bash
+curl -X GET "${ELASTICSEARCH_URL}/semantic-embeddings-optimized/_mapping" \
+     -H "Authorization: ApiKey ${API_KEY}"
+```
+
+:::
+
+::::
+
+The response includes the `index_options` you configured under the `content` field's mapping. If the `index_options` block is missing, check that you specified it correctly in the `PUT` request.
+
+:::{dropdown} Example response
+
+```js
+{
+  "semantic-embeddings-optimized": {
+    "mappings": {
+      "properties": {
+        "content": {
+          "type": "semantic_text",
+          "inference_id": ".multilingual-e5-small-elasticsearch",
+          "index_options": { <1>
+            "dense_vector": {
+              "type": "bbq_hnsw"
+            }
           }
         }
       }
@@ -150,25 +261,17 @@ PUT semantic-embeddings-int8
 }
 ```
 
-1. 8-bit integer quantization for ~4x memory reduction. For higher compression, use `"type": "int4_hnsw"` (~8x reduction).
+1. The `index_options` block confirms your quantization strategy is applied. After indexing data, the mapping may also include auto-detected `model_settings` such as dimensions and similarity metric.
 
-::::::::
-
-:::::::::
-
-## Verify your configuration
-
-Confirm that the `index_options` are applied to your index:
-
-```console
-GET semantic-embeddings-optimized/_mapping
-```
-
-The response includes the `index_options` you configured under the `content` field's mapping. If the `index_options` block is missing, check that you specified it correctly in the `PUT` request.
+:::
 
 ## (Optional) Tune HNSW parameters
 
 For HNSW-based strategies, you can tune graph parameters like `m` and `ef_construction` in the `index_options`. Refer to the [`dense_vector` field type reference](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) for the full list of tunable parameters.
+
+::::{tab-set}
+
+:::{tab-item} Console
 
 ```console
 PUT semantic-embeddings-custom
@@ -193,6 +296,37 @@ PUT semantic-embeddings-custom
 
 1. Controls graph connectivity. Higher values improve recall at the cost of memory. Default: `16`.
 2. Controls index build quality. Higher values improve quality but slow indexing. Default: `100`.
+
+:::
+
+:::{tab-item} curl
+
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-custom" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "content": {
+             "type": "semantic_text",
+             "inference_id": ".multilingual-e5-small-elasticsearch",
+             "index_options": {
+               "dense_vector": {
+                 "type": "bbq_hnsw",
+                 "m": 32,
+                 "ef_construction": 200
+               }
+             }
+           }
+         }
+       }
+     }'
+```
+
+:::
+
+::::
 
 ## Next steps
 
