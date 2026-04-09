@@ -73,6 +73,12 @@ Select the combination of built-in and custom tools available to the agent, base
 
 ::::
 
+::::{step} Assign skills (optional) {applies_to}`stack: ga 9.4+`
+
+Switch to the **Skills** tab to assign [skills](agent-builder-agents.md#skills) to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+
+::::
+
 ::::{step} Customize appearance (optional)
 
 Optionally customize the agent's appearance and organization:
@@ -113,6 +119,37 @@ From the **Agents** page, you can perform various actions on custom agents:
 :::{note}
 These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
+
+## Visibility settings [visibility-settings]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Control who can view and edit your agent by configuring its visibility. To change visibility, edit the agent and scroll to the **Organization** section.
+
+**Public**
+:   Anyone can view and edit.
+
+**Shared**
+:   Anyone can view. Only the owner or an administrator can edit.
+
+**Private**
+:   Only the owner or an administrator can view and edit.
+
+% TODO: Add a screenshot of the visibility settings in the Organization section.
+
+## Enable Elastic Capabilities [enable-elastic-capabilities]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+The **Enable Elastic Capabilities** toggle is found in the agent's **Settings** tab. When enabled, it activates built-in Elastic capabilities that enhance the agent with additional tools and skills provided by Elastic.
+
+% TODO: Confirm which specific tools and skills this toggle enables and whether a separate reference page lists them. Add a link if available.
+
+% TODO: Add a screenshot of the Enable Elastic Capabilities toggle.
 
 ## Best practices for custom agents
 

@@ -26,7 +26,7 @@ The standalone and sidebar modes have the same functionalities and can be used i
 ## Standalone mode
 
 ```{applies_to}
-stack: preview =9.2, ga 9.3
+stack: preview =9.2, ga 9.3+
 serverless: ga
 ```
 
@@ -38,7 +38,11 @@ Access Agent Builder by selecting **Agents** in the main navigation. In {{produc
 :screenshot:
 :::
 
-The following GIF shows how to access the standalone chat experience in an {{product.security}} project:
+% TODO: Verify whether agents-nav.png needs updating for 9.4.
+
+{applies_to}`stack: ga 9.4+` In standalone mode, the full-page experience includes the left sidebar with the [agent selector](chat.md#select-a-different-agent), [Customize accordion](chat.md#customize-your-agent), [Chats accordion](chat.md#find-conversation-history), and [Manage components](chat.md#manage-components) link.
+
+% TODO: Replace standalone-chat-mode.gif with a 9.4 version showing the new sidebar layout. The current GIF shows the 9.3 UI.
 
 :::{image} images/standalone-chat-mode.gif
 :alt: Standalone agent builder chat mode in main navigation
@@ -67,6 +71,8 @@ Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-feature
    - Windows/Linux: {kbd}`ctrl+;`
 
 You can resize the sidebar by dragging its side edge. The sidebar persists when you change pages in the main navigation.
+
+% TODO: Replace sidebar-chat-mode.gif with a 9.4 version if the sidebar mode UI has changed. Also verify whether ai-agent-sidebar-button.png needs updating.
 
 :::{image} images/sidebar-chat-mode.gif
 :alt: Sidebar chat mode demonstration

@@ -75,6 +75,8 @@ To create a new connector:
 2. Select **Create Connector** and select your model provider.
 3. Configure the connector with your API credentials and preferred model.
 4. Expand **Additional settings** and select `chat_completion` as the task type.
+   % TODO: Verify whether additional-settings-chat-completion-task-type.png needs updating for 9.4.
+
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
    :width: 450px

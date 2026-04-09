@@ -39,13 +39,14 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 - **Chat UI**: [Chat with agents](agent-builder/chat.md) in real time using natural language.
 - **Custom and external tools**: Build targeted [custom tools](agent-builder/tools/custom-tools.md) to deliver precise context, or import external tools through the [Model Context Protocol](agent-builder/tools/mcp-tools.md).
 - **Custom agents**: Create [agents with tailored instructions](agent-builder/custom-agents.md) and toolsets for specific use cases.
+- {applies_to}`stack: ga 9.4+` **Skills**: Equip agents with reusable [skills](agent-builder/agent-builder-agents.md#skills) that provide specialized expertise for particular types of tasks.
 - **MCP and A2A servers**: Expose tools and agents to external clients through the [MCP server](agent-builder/mcp-server.md) and [A2A server](agent-builder/a2a-server.md).
 - **Kibana REST APIs**: Work with Agent Builder functionalities [programmatically](agent-builder/kibana-api.md), including agents, tools, and conversations.
 - **[Elastic Workflows](/explore-analyze/workflows.md) integration**: Automate complex processes within your deployment using the Elastic-native automation engine. Your agents can [trigger workflows](agent-builder/agents-and-workflows.md) and [workflows can invoke agents](agent-builder/agents-and-workflows.md) in their steps.
 
 ## Key concepts
 
-The {{agent-builder}} framework consists of three key components: Agent Chat, Agents, and Tools.
+The {{agent-builder}} framework consists of several key components.
 
 ### Agent Chat
 
@@ -64,6 +65,16 @@ Agents are powered by custom LLM instructions and the ability to use tools to an
 Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
 
 [**Learn more about tools**](agent-builder/tools.md)
+
+### Skills [skills-concept]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Skills are reusable instruction sets that give agents specialized expertise for particular types of tasks. Author a skill once and assign it to any agents that need it. Skills keep agent configurations clean and make expertise shareable across your team.
+
+[**Learn more about skills**](agent-builder/agent-builder-agents.md#skills)
 
 ## Model selection
 

@@ -18,11 +18,9 @@ products:
 
 The chat GUI and programmatic interfaces enable real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
-
 :::{note}
 The chat UI is available in both standalone and flyout modes. For more information, refer to [Chat UI modes](standalone-and-flyout-modes.md).
-::: 
-
+:::
 
 ## Get started
 
@@ -37,15 +35,15 @@ This takes you to the chat GUI:
 
 :::{image} images/agent-builder-chat-UI-get-started.png
 :screenshot:
-:alt: Annotated screenshot of the Agent Chat GUI with numbered callouts highlighting the chat input (1), agent selector (2), model selector (3), conversations panel (4), and more actions menu (5)
+:alt: Annotated screenshot of the Agent Chat GUI with numbered callouts highlighting the chat input (1), agent selector (2), model selector (3), chats panel (4), options menu (5), customize accordion (6), and manage components link (7)
 :::
 
 1. [Chat input area](#start-a-chat-and-select-an-agent)
 2. [Agent selector](#select-a-different-agent)
 3. [Model selector](#select-a-different-model)
-4. [Conversation history](#find-conversation-history)
+4. [Chats (conversation history)](#find-conversation-history)
 5. [Options menu](#access-key-actions)
-6. [Agent customization](#customize-your-agent)
+6. [Customize accordion](#customize-your-agent)
 7. [Manage components link](#manage-components)
 
 ## Agent Chat GUI
@@ -65,6 +63,7 @@ Conversations with agents consume tokens. To understand how usage is calculated,
 :::
 
 #### Select a different agent
+
 ```{applies_to}
 stack: ga 9.3+
 ```
@@ -73,11 +72,12 @@ Use the agent selector to switch agents, to navigate to the agent management sec
 
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
-:alt: Agent selector dropdown and message input field
+:alt: Agent selector dropdown showing available agents with options to create or manage agents
 :width: 650px
 :::
 
 #### Select a different model
+
 ```{applies_to}
 stack: ga 9.3+
 ```
@@ -85,33 +85,53 @@ stack: ga 9.3+
 Use the model selector to switch the underlying [model](models.md) the agent uses to generate responses. Switch models to prioritize faster responses, lower costs, or more complex reasoning, depending on your use case.
 
 :::{image} images/model-selector.png
-:alt: Image description
+:alt: Model selector dropdown showing available models
 :width: 650px
 :screenshot:
 :::
 
-### Access key actions
+### Options menu [access-key-actions]
+
 ```{applies_to}
 stack: ga 9.3+
 ```
 
-TODO very differetn in 9.3 then 9.4
-
-This menu is your hub for key management actions. You can quickly access important pages from here.
+Click the three-dot menu icon in the top-right corner to access additional options.
 
 :::{image} images/more-actions.png
 :screenshot:
-:alt: More actions menu button
+:alt: Three-dot menu icon for additional options
 :width: 150px
 :::
 
-This opens a panel with links to key actions and management pages including agent, tool, and settings management.
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga =9.3 }
+
+This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
+
+::::
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+The options menu provides access to:
+
+- **Agent details**: View information about the currently selected agent.
+- **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings.
 
 :::{image} images/more-actions-menu-options.png
 :screenshot:
-:alt: The expanded more options menu panel
+:alt: Options menu showing Agent details and GenAI Settings
 :width: 250px
 :::
+
+:::{tip}
+To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::
+
+::::
+
+:::::
 
 ### Find conversation history
 
@@ -119,7 +139,7 @@ Use the chat history panel to access previous conversations.
 
 :::{image} images/agent-builder-chat-history.png
 :screenshot:
-:alt: Chat history panel showing conversation list
+:alt: Search chats panel with search field and conversation list
 :width: 450px
 :::
 
@@ -137,6 +157,62 @@ Select **Inspect response** to view detailed information about individual tool c
 
 Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### Human in the loop [human-in-the-loop]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Certain tools that perform sensitive or destructive actions require explicit user approval before the agent can proceed. When an agent calls one of these tools, execution pauses and the chat displays an approval prompt.
+
+You must click **Approve** to allow the tool to run, or **Deny** to block the action and continue the conversation without executing the tool.
+
+% TODO: Add a screenshot of the HITL Approve/Deny prompt once captured from the QA environment.
+
+## Customize your agent [customize-your-agent]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+The **Customize** accordion in the left sidebar provides agent-scoped configuration for the currently selected agent. Expand it to access the following pages:
+
+**Overview**
+:   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings.
+
+**Skills**
+:   Lists the [skills](agent-builder-agents.md#skills) assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**.
+
+**Tools**
+:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
+
+% TODO: Add screenshots of the Customize > Overview, Skills, and Tools pages once captured.
+
+% TODO: Verify whether a Plugins page also appears under Customize. Plugins are pre-packaged bundles of skills. If present, document the page here. If not, confirm with the development team whether Plugins were delayed or require specific configuration.
+
+## Manage components [manage-components]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view and opens the global component management area. This area provides master lists of all agents, skills, and tools available across the deployment.
+
+**Agents**
+:   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
+
+**Skills**
+:   View and manage all skills available in the deployment. Create new skills, edit existing ones, or assign them to agents.
+
+**Tools**
+:   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
+
+% TODO: Add a screenshot of the global Manage components view once captured.
+
+:::{tip}
+You can also reach the global agents list from the **Manage agents** button in the [agent selector](#select-a-different-agent) dropdown.
+:::
+
 ## Agent Chat API
 
 The Agent Chat API provides programmatic access to chat functionality through REST endpoints.
@@ -148,15 +224,3 @@ For a quick overview of the REST API for conversations, refer to [Chat and conve
 ### API reference
 
 For the complete API reference, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
-
-### Customize your agent
-TODO
-
-### Manage components
-TODO
-
-
-
-
-
-
