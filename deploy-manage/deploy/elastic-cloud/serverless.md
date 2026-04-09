@@ -92,8 +92,8 @@ A: Create API keys for service accounts in your {{serverless-short}} projects. O
 **Q: What compliance and privacy standards does {{serverless-full}} adhere to?**  
 A: Alongside the entire Elastic platform, {{serverless-full}} is independently audited and certified to meet industry-leading compliance and privacy standards. Refer to the [Elastic Trust Center](https://www.elastic.co/trust) for more information. Further details about specific standards are available on our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
 
-**Q: Why does {{kib}} open as a blank page in my {{serverless-short}} project?**  
-A: If your organization restricts outbound browser traffic, make sure users can access `kibana.estccdn.com`. If this domain is blocked by a corporate firewall, proxy, or secure web gateway, {{kib}} can load as a blank page.
+**Q: What domains do I need to allow for browser access to {{kib}} in {{serverless-short}} projects?**  
+A: In addition to the standard {{ecloud}} endpoints, ensure users can access `kibana.estccdn.com`, which is required to load {{kib}}. If this domain is blocked, {{kib}} might appear as a blank page. Refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access) for more information.
 
 ### Project lifecycle and support
 **Q: How does {{serverless-full}} ensure compatibility between software versions?**  
