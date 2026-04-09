@@ -20,7 +20,6 @@ Before you query Attack Discovery data programmatically, make sure you have the 
 
 - **Index privileges**: Your role needs `read` and `view_index_metadata` privileges on the Attack Discovery alert indices. Refer to [Attack Discovery RBAC](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for the full list of required privileges.
 - **Authentication**: Use an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) to authenticate requests. Scope the key to the minimum privileges your integration requires.
-- **Use the `fields` parameter**: Don't rely on `_source` when querying alert indices. Use the [`fields` option](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) in the Search API instead, because alert index mappings can change between versions.
 
 ## Attack Discovery index aliases [attack-discovery-index-aliases]
 
@@ -55,6 +54,10 @@ GET /.alerts-security.attack.discovery.alerts-default/_search
   ]
 }
 ```
+
+:::{tip}
+Use the [`fields` option](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) instead of `_source` when querying alert indices. Alert index mappings can change between versions, and `fields` handles this more reliably.
+:::
 
 For additional query patterns (filtering by time range, severity, status, and more), refer to [Query alert indices](/explore-analyze/alerting/alerts/query-alerts.md#_sample_queries) and adapt those examples by replacing the index pattern with the Attack Discovery alias. You can also use [{{esql}}](/solutions/security/detect-and-alert/query-alert-indices.md#example_queries) with the same alias. For a list of common alert fields, refer to [Common alert fields](/solutions/security/detect-and-alert/query-alert-indices.md#common-alert-fields).
 
