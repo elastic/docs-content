@@ -18,7 +18,7 @@ For example, if a document contains the phrase "annual leave policy", a keyword 
 
 With vector search, a query like "vacation rules" can still return the "annual leave policy" document, because it matches based on meaning rather than exact terms.
 
-With hybrid search, the same query can return both keyword and semantic matches, combining exact term matching with meaning-based retrieval to improve overall relevance.
+With hybrid search, the same query can return both keyword and semantic matches, combining exact words with search by meaning so results stay useful.
 :::
 
 ## Prerequisites [semantic-search-quickstart-prerequisites]
@@ -30,7 +30,7 @@ A running {{es}} cluster. For the fastest way to follow this quickstart, [create
 :::::{stepper}
 ::::{step} Create an index mapping
 
-Define the [index mapping](/manage-data/data-store/mapping.md). The mapping specifies the fields in your index and their data types, including both plain text fields and fields used to store vector embeddings for semantic search.
+Define the [index mapping](/manage-data/data-store/mapping.md). The mapping specifies the fields in your index and their data types, including both plain text fields and fields used to store vector embeddings for vector search.
 
 ```console
 PUT semantic-embeddings
@@ -68,7 +68,7 @@ PUT semantic-embeddings
 ::::
 ::::{step} Index documents
 
-Index documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` field populates `semantic_text` and triggers embedding generation.
+Index documents with the [bulk API]({{es-apis}}operation/operation-bulk). You only need to provide the content to the `content` field. The `copy_to` mapping copies the text into `semantic_text` and generates embeddings, so you can run keyword search on `content` and vector search on `semantic_text` for the same document.
 
 ```console
 POST _bulk
@@ -148,7 +148,7 @@ POST _bulk
 
 Run a search using the [Search API]({{es-apis}}operation/operation-search).
 
-The JSON body defines a hybrid query, where an RRF retriever combines two standard retrievers running [match queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) on `content` and `semantic_text` fields.
+The JSON body is a hybrid query: a [reciprocal rank fusion (RRF) retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) runs two [match queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), one on `content` and one on `semantic_text`, and merges the results.
 
 ::::{note}
 An [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) returns top documents based on the RRF formula. This enables hybrid search by combining results from both keyword-based and semantic queries into a single ranked list.
@@ -187,9 +187,17 @@ GET semantic-embeddings/_search
 1. The [match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) is run against the `content` field, which stores plain text for keyword matching.
 2. The [match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) is run against the `semantic_text` field, which stores vector embeddings for meaning-based search.
 
-Documents that score well on either side appear in the final merged list.
+If a document ranks well in either query, it can appear in the combined list.
 
 :::{dropdown} Example response
+
+In the example response below, the two hits show why combining both keyword search and vector search matters. 
+
+The top document contains the phrase _muscle soreness_ and _running_, so it fits both keyword search and semantic search. The second document does not use those words at all; it talks about marathon training and recovery between sessions. A keyword-only search on `content` would likely miss or rank that document much lower, because the query terms are not in the text. 
+
+Semantic search still matches it because marathon training and recovery relate to the same idea as soreness after a run. Hybrid search keeps the document that matches the words and also brings in documents that match the topic without the same vocabulary.
+
+Each `_score` is a relevance score for this search only. A higher score means that document ranked higher than the ones below it in the same response.
 
 ```console-result
 {
@@ -229,10 +237,10 @@ Documents that score well on either side appear in the final merged list.
 }
 ```
 
-1. How many documents matched the query (here, 2).
+1. How many documents matched the query (here, 2). The unrelated cluster-tuning document is not returned.
 2. The highest relevance score among the returned hits (the same as the top-ranked document’s score).
-3. Relevance score for the top-ranked document. Higher values rank earlier.
-4. Relevance score for the second-ranked document. Lower than the first, so it appears next in the list.
+3. Relevance score for the top-ranked document. Its text matches query terms like muscle soreness and post-run recovery (running is close to jogging), so both keyword search and semantic search can rank it highly.
+4. Relevance score for the second-ranked document. It does not contain _muscle soreness_ or _jogging_; it shows up mainly because semantic search matches marathon training and recovery to the query. Keyword-only search on `content` would often miss this kind of match.
 
 :::
 
