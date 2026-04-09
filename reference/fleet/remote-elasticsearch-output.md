@@ -211,11 +211,11 @@ In some cases, {{ccs}} is needed to query data on the remote cluster from the ma
 2. Select **Add a remote cluster**, then follow the steps to add your remote cluster.
 
     ::::{note}
-    When prompted to add the remote cluster's _remote address_, enter your management cluster's proxy address:
+    When prompted to add the remote cluster's _remote address_, enter your remote cluster's proxy address:
 
-    1. In your management cluster, go to **Deployment** → **Manage this deployment** → **Security** (or go to `deployments/<deployment_id>/security`).
+    1. In your remote cluster, go to **Deployment** → **Manage this deployment** → **Security** (or go to `deployments/<deployment_id>/security`).
     2. Scroll to the **Remote cluster parameters** section, then copy the **Proxy Address**.
-    3. In your remote cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
+    3. In your management cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
     ::::
 
     Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on how to add your management cluster as a remote cluster.
