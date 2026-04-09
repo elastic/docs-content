@@ -12,7 +12,7 @@ description: Query Attack Discovery indices with the Search API, ES|QL, and Kiba
 
 # Query Attack Discovery data programmatically [attack-discovery-programmatic-access]
 
-You can query Attack Discovery data directly to build custom dashboards, feed automated triage pipelines, export discoveries to external tools, or integrate Attack Discovery results with third-party SIEM and SOAR platforms. This page explains how to query the correct indices, provides example queries, and covers security considerations consuming Attack Discovery data.
+You can query Attack Discovery data directly to build custom dashboards, feed automated triage pipelines, export discoveries to external tools, or integrate Attack Discovery results with third-party SIEM and SOAR platforms. This page explains how to query the correct indices, provides example queries, and covers security considerations for consuming Attack Discovery data.
 
 ## Prerequisites [attack-discovery-programmatic-prerequisites]
 
