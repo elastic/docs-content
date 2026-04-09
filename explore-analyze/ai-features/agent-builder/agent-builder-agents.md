@@ -44,20 +44,6 @@ Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/de
 
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 
-## Skills [skills]
-
-```{applies_to}
-stack: ga 9.4+
-```
-
-Skills are reusable instruction sets that give an agent specialized expertise for a particular type of task. Instead of writing the same detailed instructions into every agent that needs them, you author a skill once and assign it wherever it is needed. This keeps agent configurations clean and makes expertise shareable across your team.
-
-Use skills when you have domain-specific knowledge or procedures that multiple agents should follow consistently, such as a security triage workflow, a data quality audit checklist, or a customer escalation playbook.
-
-Create and manage skills from the **Customize > Skills** tab in the sidebar, or from the global **Manage components > Skills** page. Each skill can be assigned to one or more agents, and each agent can use multiple skills. When an agent receives a message, it draws on its assigned skills alongside its tools to formulate a response.
-
-% TODO: Confirm whether Skills are `ga` or `preview` in 9.4 and update the applies_to tag accordingly.
-
 ## Custom agents
 
 Create custom agents tailored to your specific needs by defining custom instructions and selecting relevant tools. Custom agents give you full control over:
@@ -88,9 +74,11 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :::
     - **Custom agents**: You can **chat**, **edit**, **clone**, or **delete** custom agents.
 
-::::
-
-:::::
+      :::{image} images/chat-edit-clone-delete.png
+      :screenshot:
+      :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
+      :width: 130px
+      :::
 
 
 ## Agents API
