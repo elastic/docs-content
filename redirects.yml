@@ -845,3 +845,11 @@ redirects:
 
 # No more elasticsearch solution add-ons
   'solutions/elasticsearch-solution-project/es-serverless-add-ons.md': 'solutions/elasticsearch-solution-project.md'
+  
+# Fleet: removed "Hybrid Agent" product wording; remap section anchors on the same pages
+  'reference/fleet/elastic-agent-as-otel-collector.md':
+    anchors:
+      'hybrid-elastic-agent': 'elastic-agent-multiple-collection-methods'
+  'reference/fleet/otel-integrations.md':
+    anchors:
+      'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'

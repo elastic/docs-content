@@ -47,6 +47,14 @@ The following requirements apply to the project where you want to apply an IP fi
 
 There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
+## Limitations
+```{applies_to}
+deployment:
+  ech: ga
+```
+
+In {{ech}} deployments, IP filters do not apply to the [managed OTLP endpoint](opentelemetry://reference/motlp.md). They still apply to this endpoint in {{serverless-full}} projects.
+
 ## Apply an IP filter to a deployment or project
 
 To apply an IP filter to a deployment or project, you must first create an IP filter policy (referred to as "IP filter") at the organization or platform level, and then apply it to your deployment.
