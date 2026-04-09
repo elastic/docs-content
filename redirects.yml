@@ -843,6 +843,9 @@ redirects:
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
 
+# No more elasticsearch solution add-ons
+  'solutions/elasticsearch-solution-project/es-serverless-add-ons.md': 'solutions/elasticsearch-solution-project.md'
+  
 # Fleet: removed "Hybrid Agent" product wording; remap section anchors on the same pages
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:
