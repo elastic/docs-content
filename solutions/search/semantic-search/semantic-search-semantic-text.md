@@ -114,7 +114,7 @@ The response returns `"errors": false` and an `items` array with a `"result": "c
 
 ## Run a semantic search query [semantic-text-semantic-search]
 
-With your data ingested and automatically embedded, you can query it using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
+With your data ingested and automatically embedded, you can query it using semantic search. You can use [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
 
 ::::{tab-set}
 :group: query-type
