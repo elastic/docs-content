@@ -21,6 +21,7 @@ We have collected the most common known problems and listed them here. If your p
 * [{{agent}} enrollment fails on the host with `x509: certificate signed by unknown authority` message](#agent-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message](#es-enrollment-certs)
 * [{{agent}} enrollment fails on the host with `Client.Timeout exceeded` message](#agent-enrollment-timeout)
+* [{{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message](#agent-enrollment-dialing)
 * [{{agent}} fails to enroll with {{fleet-server}} running on localhost](#mac-file-sharing)
 * [{{agent}} hangs while unenrolling](#agent-hangs-while-unenrolling)
 * [{{agent}} is automatically unenrolled after failed check-ins with 401 errors](#agent-auto-unenroll-401) (Deprecated 9.1)
@@ -124,7 +125,6 @@ This error occurs when you use self-signed certificates with {{es}} using IP as 
 
 You will also need to set `ssl.verification_mode: none` in the Output settings in {{fleet}} and {{integrations}} UI.
 
-
 ### {{agent}} enrollment fails on the host with `Client.Timeout exceeded` message [agent-enrollment-timeout]
 
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent cannot connect, you get failures similar to these:
@@ -152,6 +152,30 @@ Here are several steps to help you troubleshoot the problem.
     2. To view the secret, click the eyeball icon. The secret should match the string that you used to enroll {{agent}} on your host.
     3. If the secret doesn’t match, create a new enrollment token and use this token when you run the `elastic-agent enroll` command.
 
+### {{agent}} enrollment fails on the host with `Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified` message [agent-enrollment-dialing]
+
+{{agent}} might fail to install in a Windows environment due to port conflicts and file locks, returning this error:
+
+```txt
+Restart attempt 2 failed: 'rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: open \\\\.\\pipe\\elastic-agent-system: The system cannot find the file specified.
+```
+
+To resolve port conflicts:
+
+1. Check for any processes that are using port 6789 or 6790:
+
+   ```bash
+   netstat -ano | findstr :6789
+   netstat -ano | findstr :6790
+   ```
+   
+   This will return the process ID (PID) of the application that's using the specified port. You can then identify the application using its PID:
+   
+   ```bash
+   tasklist /fi "pid eq <APP-PID>"
+   ```
+
+2. In case of a port conflict, update `agent.grpc.port` in the `elastic-agent.yml` file to bind the agent to a different port (for example, 6790).
 
 ### {{agent}} fails to enroll with {{fleet-server}} running on localhost [mac-file-sharing]
 

@@ -20,6 +20,10 @@ Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in ag
 To use Agent Builder in Elastic Security, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). 
 :::
 
+## Recommended models
+
+While Agent Builder works with any [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), model performance varies. Refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) to select a model that performs well for your intended use cases.
+
 ## Threat Hunting agent
 
 Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) designed to accelerate security investigations by synthesizing data from sources such as Alerts, Attack Discovery, and Entity Risk Scores. 

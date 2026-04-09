@@ -41,13 +41,13 @@ You can opt out by disconnecting all policies from the project.
 
 ## Considerations
 
-Before you begin, review  the following considerations:
+Before you decide to set up private connectivity with AWS PrivateLink, review  the following considerations:
 
 ### Private connections and regions
 
 Private connectivity with AWS PrivateLink is supported only in AWS regions.
 
-AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
+AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the [list of AWS regions](#ec-private-link-service-names-aliases) shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
 Refer to [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
@@ -67,10 +67,6 @@ If Elastic and your VPC overlap in two AZs or less, you can create subnets and V
 ::::
 
 ## Limitations
-```{applies_to}
-deployment:
-  ess: ga
-```
 
 When using AWS PrivateLink, the following limitations apply:
 
@@ -133,7 +129,8 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#associate-private-connection-policy). |
-|  | 5. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
+|  | 5. **Optional**: [Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | 6. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
@@ -144,9 +141,11 @@ Private connection policies are optional for AWS PrivateLink. After the VPC endp
 
 ### Before you begin [ec-aws-vpc-overlapping-azs]
 
-Before you begin, you should ensure your VPC endpoint is in all availability zones supported by {{ecloud}} for the region and resource type. Placing your VPC endpoint in all supported {{ecloud}} availability zones for the region improves throughput and resiliency when connecting over PrivateLink.
+Before you begin, you should ensure your VPC endpoint is in all availability zones (AZ) supported by {{ecloud}} for the region and resource type. Placing your VPC endpoint in all supported {{ecloud}} availability zones for the region improves throughput and resiliency when connecting over PrivateLink.
 
-For {{ech}} deployments, if your VPC is not in all supported availability zones, traffic can become imbalanced, saturating some coordinating nodes while underutilizing others, which might impact performance.
+:::{important}
+For {{ech}} deployments, if your VPC is not in all supported availability zones (AZ), the traffic can become imbalanced between the clients and the nodes of a deployment that are receiving traffic from the clients, including {{es}} coordinating nodes, APM instances, and Integrations Server instances. The unbalanced traffic can saturate some nodes or underutilize others, which might impact performance.
+:::
 
 You can find the zone name to zone ID mapping with AWS CLI:
 
@@ -331,15 +330,15 @@ Create a new private connection policy.
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Private connection**.
-5. Select the resource type that the private connection will be applied to.
-6.  Select the cloud provider and region for the private connection. 
+3. Select **Private connection**.
+4. Select the resource type that the private connection will be applied to.
+5.  Select the cloud provider and region for the private connection. 
    
     :::{tip}
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
-7.  Under **Connectivity**, select **PrivateLink**.
-8.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. 
+6.  Under **Connectivity**, select **PrivateLink**.
+7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
@@ -349,14 +348,14 @@ Create a new private connection policy.
     [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
     :::
 
-9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
+8.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
     
     :::{note}
     Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
     :::
-10. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
-11.  Click **Create**.
-12. (Optional) If you created a private connection policy for {{ech}} deployments, you can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
+9. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
+10.  Click **Create**.
+11. (Optional) If you created a private connection policy for {{ech}} deployments, you can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#associate-private-connection-policy) with your deployment or project.
 
@@ -386,9 +385,14 @@ Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/e
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit.
+4. Under **Apply to resources**, associate the policy with one or more deployments or projects.
+5. Click **Update** to save your changes.
+
+## Optional: Add an IP filter to allow traffic to {{kib}}
+
+:::{include} _snippets/ip-filter-for-pc.md
+:::
 
 ## Access the resource over a PrivateLink [ec-access-the-deployment-over-private-link]
 
@@ -509,8 +513,8 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-2. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Click **Update** to save your changes.
 
 :::{tip}
 You can also edit private connection policies from your deployment or project's **Security** page or your project's **Network security** page.
@@ -543,9 +547,9 @@ If you want to remove a specific policy from a deployment or project, or delete 
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 
 ### Delete a private connection policy [delete-private-connection-policy]
@@ -556,4 +560,4 @@ To delete a policy:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
+3. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.

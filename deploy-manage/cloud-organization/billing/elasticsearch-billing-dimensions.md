@@ -26,11 +26,11 @@ The number of VCUs you need is determined by:
 
 For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search).
 
-## VCU types: search, indexing, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
+## VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
 
 {{es-serverless}} uses the following VCU types:
 
-* **Indexing:** The VCUs used to index incoming documents. Indexing VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption.
+* **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption.
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
 * **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. Elastic Managed LLMs can power all AI Search features (such as Playground and AI Assistant for Search), as well as features in the Security and Observability products, and are enabled by default.

@@ -25,7 +25,7 @@ To invite users to your organization and give them access to your cluster:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, select a cluster.
-3. From the lower navigation menu, select **Organization**. 
+3. From the navigation menu, select **Organization**. 
 4. On the **Members** page, click **Invite members**.
 5. Enter the email address of the user you want to invite.
     

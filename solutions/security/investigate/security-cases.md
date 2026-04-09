@@ -21,6 +21,10 @@ Create cases to collect and share information about security incidents and inves
 
 Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}} lets you view case metrics, attach events from Timeline, add threat intelligence indicators, and link Timelines to preserve investigation context.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
+:::
+
 ## View case metrics [cases-view-metrics]
 
 Select an existing case to access its summary. The case summary, located under the case title, contains metrics that summarize alert information and response times:

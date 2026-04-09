@@ -58,7 +58,7 @@ For more information about index privileges, refer to [{{es}} security privilege
 
 There are some additional requirements for specific features:
 
-* [Detections requirements](/solutions/security/detect-and-alert/detections-requirements.md)
+* [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md)
 * [Control access to cases](/explore-analyze/cases/control-case-access.md)
 * [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md)
 * [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md)
