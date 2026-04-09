@@ -49,7 +49,7 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 ## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
 
-To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). Find **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). To do that, search for **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using the Security and Observability solution views or project types, the **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. With the **Classic** solution view or in previous versions, the Visualize Library is available from the **Visualize** page in the navigation menu.
 
