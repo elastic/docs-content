@@ -26,7 +26,7 @@ To access the script library, find **Script library** in the navigation menu or 
 
     **Required fields:**
 
-    * **File**: Select or drag and drop a script file. You can upload individual script files (such as `.sh`, `.ps1`, or `.py`) or archive files (`.zip` or `.gz`).
+    * **File**: Select or drag and drop a script file. You can upload individual script files (such as `.sh`, `.ps1`, or `.py`) or ZIP archive files that contain the script to run. Scripts are run on Windows machines using `CMD` and on Linux and MacOS machines using `Bash`.
     
       The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxEndpointScriptFileSize` setting. 
 
@@ -36,7 +36,7 @@ To access the script library, find **Script library** in the navigation menu or 
 
     * **File type**: Select the type of uploaded file — **Script file** or **Archive**. If you select **Archive**, you must also provide the **Path to executable file**, which is the relative path to the main script inside the archive (for example, `./scripts/cleanup_logs.sh`).
     * **Name**: Enter a display name for the script.
-    * **Operating systems**: Select the platforms the script supports (Linux, macOS, Windows). You can select more than one platform.
+    * **Operating systems**: Select the platforms the script supports (Linux, macOS, Windows). Select all the platforms that the script is compatible with.
 
     **Optional fields:**
 
@@ -50,7 +50,7 @@ To access the script library, find **Script library** in the navigation menu or 
 
 ## View and manage scripts [manage-scripts]
 
-The **Script Library** page displays all uploaded scripts. You can search by name or SHA256 hash, and filter by **File type**, **Operating systems**, or **Categories**.
+The **Script Library** page displays all uploaded scripts. You can search by script name, description, created by, updated by, file name or file SHA256 hash, and filter by **File type**, **Operating systems**, or **Categories**.
 
 :::{image} /solutions/images/security-script-library.png
 :alt: Script library showing a list of uploaded scripts
@@ -81,5 +81,5 @@ Click the actions menu ({icon}`boxes_vertical`) on the script you want to downlo
 2. On the confirmation dialog, click **Delete**.
 
 ::::{note}
-You cannot delete a script that is currently referenced by a detection rule's `runscript` response action.
+If you delete a script that is currently referenced by a detection rule's `runscript` response action, the `runscript` action will fail when the rule runs.
 ::::
