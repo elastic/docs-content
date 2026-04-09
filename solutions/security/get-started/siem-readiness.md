@@ -25,9 +25,9 @@ To use SIEM Readiness, you need the following privileges:
 
 **{{kib}} feature privileges:**
 
-* `Security` feature access
-* `Security > Rules` read access (Coverage tab)
-* `{{fleet}} > Integrations` read access (Coverage tab)
+* At least `read` for the **Security** feature (to access the page)
+* At least `read` for the **Security > Rules and Exceptions** feature (for the Coverage tab)
+* At least `read` for the **Management > Fleet > Integrations** feature (for the Coverage tab)
 
 **{{es}} index privileges** (on relevant data indices such as `logs-*` and `metrics-*`):
 
@@ -38,10 +38,10 @@ To use SIEM Readiness, you need the following privileges:
 **{{es}} cluster privileges:**
 
 * `monitor` (Continuity tab: ingest pipeline statistics)
-* `read_ilm` (Retention tab: ILM lifecycle policies)
+* {{stack}} users: `read_ilm` (to view ILM lifecycle policies on the Retention tab)
 
 :::{note}
-Without the required {{es}} privileges, most tabs silently return empty or partial results rather than explicit errors. Only the {{fleet}} integrations API returns an explicit access error.
+Without the required {{es}} privileges, most tabs silently return empty or partial results.
 :::
 ::::
 
