@@ -174,4 +174,4 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
 * To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.
-* To learn how to optimize storage and search performance when using dense vector embeddings, read about [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
+* To learn how to optimize storage and search performance when using dense vector embeddings, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
