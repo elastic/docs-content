@@ -27,8 +27,8 @@ Note that [Credit consumption emails](#configure-credit-consumption-emails) are 
 
 Budget alerts are sent when month-to-date usage for the budget's scope reaches the thresholds set for that budget. When you create or edit a budget, you choose one of two scopes:
 
-* **Organization** — usage for your entire {{ecloud}} organization is tracked against the budget target, including resources you create later.
-* **Cloud resource** — usage is tracked only for the one or more cloud resource instances you select. In the selector, resources are grouped by type (for example **Cloud Hosted**, **Cloud Connect**, and **Serverless projects** for {{es}}, {{observability}}, and Security).
+* **Organization**: Usage for your entire {{ecloud}} organization is tracked against the budget target, including resources you create later.
+* **Cloud resource**: Usage is tracked only for the cloud resources you select, such as {{ech}} deployments, {{serverless-short}} projects, or connected clusters. In the selector, resources are grouped by type (for example, **Cloud Hosted**, **{{serverless-short}}**, and **Cloud Connect**).
 
 To create a budget:
 
@@ -38,7 +38,7 @@ To create a budget:
 1. In the **Configuration** step, specify your budget details:
     1. Give your budget a **Name**.
     1. Review the **Time range**: budgets are always **Monthly**, and usage resets on the first day of each calendar month.
-    1. Enter a **Target amount (ECU)** in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md). A cost trend chart shown next to the form summarizes historical usage for your chosen scope over approximately the **last six months** so you can compare it to your target.
+    1. Enter a **Target amount (ECU)** in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md). A cost trend chart shown next to the form summarizes historical usage for your chosen scope over the **last six months** so you can compare it to your target.
 1. In the **Alerts** step, review the preset notification thresholds and recipients. These settings are currently fixed and cannot be edited.
 
    Alert emails are tied to the budget and use automatically defined thresholds:
@@ -55,7 +55,7 @@ New budgets are active by default, so notifications are on after you create them
 After creating a budget, you can return to **Budgets and notifications** to view or edit it, check **Current vs Budgeted (ECU)** for its scope, and expand cloud-resource budgets to review usage per instance in the subtable.
 
 ::::{note}
-If you edit a budget scoped to cloud resources, instances that no longer exist are removed from the selectable list and listed in a callout.
+If you edit a budget scoped to cloud resources, resources that no longer exist are removed from the selectable list and shown in a callout.
 ::::
 
 ## Credit consumption emails [configure-credit-consumption-emails]
