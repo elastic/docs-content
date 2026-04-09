@@ -11,7 +11,7 @@ products:
 
 # Manage budgets and notifications [billing-notifications]
 
-To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
+To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
 When configured, any email notifications are sent to users who are members of the Organization owner or Billing admin [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). To set or change the addresses of these users, follow [Update billing and operational contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).
 
