@@ -2,8 +2,6 @@ name: Issue Triage
 on:
   issue_comment:
     types: [created]
-  issues:
-    types: [opened, labeled]
   workflow_dispatch:
 
 permissions:
