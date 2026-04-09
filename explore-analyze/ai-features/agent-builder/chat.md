@@ -44,7 +44,9 @@ This takes you to the chat GUI:
 2. [Agent selector](#select-a-different-agent)
 3. [Model selector](#select-a-different-model)
 4. [Conversation history](#find-conversation-history)
-5. [Key actions menu](#access-key-actions)
+5. [Options menu](#access-key-actions)
+6. [Agent customization](#customize-your-agent)
+7. [Manage components link](#manage-components)
 
 ## Agent Chat GUI
 
@@ -92,6 +94,8 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 ```{applies_to}
 stack: ga 9.3+
 ```
+
+TODO very differetn in 9.3 then 9.4
 
 This menu is your hub for key management actions. You can quickly access important pages from here.
 
@@ -144,6 +148,12 @@ For a quick overview of the REST API for conversations, refer to [Chat and conve
 ### API reference
 
 For the complete API reference, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
+
+### Customize your agent
+TODO
+
+### Manage components
+TODO
 
 
 
