@@ -16,6 +16,8 @@ This functionality is experimental and not supported. It may change or be remove
 
 **Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimension, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
 
+{applies_to}`stack: ga 9.4` You can now break metrics down by dimensions and select up multiple dimensions simultaneously in the **Breakdown by Dimensions** dropdown.
+
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
 :::{image} /solutions/images/explore-metrics-ui.png
@@ -67,9 +69,15 @@ Use the search function to find and visualize specific metric data:
 :screenshot:
 :::
 
-**Break down metrics by dimension**
+**Break down metrics by dimensions**
 
-Break down your metrics by dimension to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
+Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
+
+:::{note}
+:applies_to: stack: ga
+Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If no dimensions appear, check that your data stream's **Index mode** is set to **Time series** in **Index Management**.
+:::
+
 
 :::{image} /solutions/images/explore-metrics-host-ip.png
 :alt: Screenshot of adding a dimension.
