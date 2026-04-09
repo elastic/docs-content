@@ -12,7 +12,7 @@ products:
 With ECK `3.4.0` and later, ECK supports configuring {{es}} to require client certificates for HTTP authentication, enabling mutual TLS (mTLS) between clients and {{es}}. When enabled, clients must present a valid certificate signed by a trusted CA to communicate with {{es}}.
 
 :::{note}
-Currently, {{es}} and {{kib}} support this feature. Support for additional components that connect to {{es}} ({{beats}}, {{agent}}, {{apm-server}}, {{ls}}, and so on) will follow in future releases.
+Currently, {{es}} and {{kib}} support this feature. Support for additional components that connect to {{es}} ({{beats}}, {{agent}}, {{apm-server}}, {{ls}}, and so on) are planned to follow in future releases.
 :::
 
 ## Enable client certificate authentication [k8s-enable-client-cert-auth]
