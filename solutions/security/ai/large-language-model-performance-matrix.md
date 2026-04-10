@@ -11,9 +11,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Large language model performance matrix
+# Large language model performance matrix for {{elastic-sec}} [llm-performance-matrix]
 
-This page describes the performance of various large language models (LLMs) for different use cases in {{elastic-sec}}, based on our internal testing. To learn more about these use cases, refer to [AI-Powered features](/explore-analyze/ai-features.md#security-features).
+This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. These ratings apply equally whether you're using [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
 
 ::::{important}
 Higher scores indicate better performance. A score of 10 on a task means the model met or exceeded all task-specific benchmarks. 

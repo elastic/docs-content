@@ -17,11 +17,15 @@ Semantic text simplifies the {{infer}} workflow by providing {{infer}} at ingest
 
 The recommended way to use [semantic search](../semantic-search.md) in the {{stack}} is following the `semantic_text` workflow. When you need more control over indexing and query settings, you can still use the complete {{infer}} workflow (refer to [this tutorial](../../../explore-analyze/elastic-inference/inference-api.md) to review the process).
 
-This tutorial uses the [`elasticsearch` service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), but you can use any service and model supported by the [{{infer-cap}} API](/explore-analyze/elastic-inference/inference-api.md).
 
 ## Requirements [semantic-text-requirements]
 
-This tutorial uses the `elasticsearch` service for demonstration, which is created automatically as needed. To use the `semantic_text` field type with an {{infer}} service other than `elasticsearch` service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. 
+::::{note}
+You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+::::
+- To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 ## Create the index mapping [semantic-text-index-mapping]
 
@@ -31,11 +35,7 @@ You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-
 
 :::::::{tab-set}
 
-::::::{tab-item} Using EIS on Serverless
-
-```{applies_to}
-serverless: ga
-```
+::::::{tab-item} Using EIS
 
 ```console
 PUT semantic-embeddings
@@ -51,35 +51,7 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default endpoint `.elser-2-elastic` for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
-
-::::::
-
-::::::{tab-item} Using EIS in Cloud
-
-```{applies_to}
-stack: ga
-deployment:
-  self: unavailable
-```
-
-```console
-PUT semantic-embeddings
-{
-  "mappings": {
-    "properties": {
-      "content": { <1>
-        "type": "semantic_text", <2>
-        "inference_id": ".elser-v2-elastic" <3>
-      }
-    }
-  }
-}
-```
-
-1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field.
-3. The `.elser-v2-elastic` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. This {{infer}} endpoint uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
 
 ::::::
 
@@ -106,8 +78,6 @@ PUT semantic-embeddings
 ::::::
 
 :::::::
-
-To try the ELSER model on the Elastic Inference Service, explicitly set the `inference_id` to `.elser-2-elastic`. For instructions, refer to [Using `semantic_text` with ELSER on EIS](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#using-elser-on-eis).
 
 ### Optimizing vector storage with `index_options` [semantic-text-index-options]
 

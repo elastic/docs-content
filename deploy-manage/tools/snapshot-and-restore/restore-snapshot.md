@@ -32,7 +32,7 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
-- Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the get index template API:
+- Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/templates.md) feature or the get index template API:
 
   ```console
   GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
