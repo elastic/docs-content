@@ -81,7 +81,12 @@ EDOT Python is distributed as a Python package and so must be installed in the s
 
 ## Issues with binary packages on the Kubernetes Operator
 
-Some of EDOT Python dependencies ship binary code that is dependent on both the C library and the Python version used to build them and these should be compatible with the Docker image of the instrumented applications.
+Some EDOT Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
 
-EDOT Python provides a Docker image containing auto-instrumentation code for both glibc based distributions (for example Ubuntu) and musl based distributions (for example Alpine). If our Docker images are not working for you and you are seeing errors regarding loading some modules you can build your own Docker image.
-You can base your custom Dockerfile on the one we are using to build our docker images available in the EDOT Python repository [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]).
+EDOT Python provides a Docker image that includes auto-instrumentation code for both:
+
+- glibc-based distributions (for example, Ubuntu)
+- musl-based distributions (for example, Alpine)
+
+If the provided Docker images don't work in your environment and you encounter errors when loading modules, build a custom Docker image instead.
+You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the EDOT Python repository.
