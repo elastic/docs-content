@@ -13,7 +13,7 @@ products:
 
 To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
-When configured, any email notifications are sent to users who are members of the Organization owner or Billing admin [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). To set or change the addresses of these users, follow [Update billing and operational contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).
+You can associate each budget with specific [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) in your organization. Users with those roles receive email notifications when budget alerts are triggered. You select the roles as part of the budget creation workflow described in the following section.
 
 ::::{note}
 [Credit consumption email notifications](#configure-credit-consumption-emails) are separate from budget notifications and apply to organizations using prepaid credits. They are triggered automatically based on remaining credit balance and cannot be configured.
@@ -32,14 +32,21 @@ To create a budget:
     1. Give your budget a **Name**.
     1. Review the **Time range**: budgets are always **Monthly**, and usage resets on the first day of each calendar month.
     1. Enter a **Target amount (ECU)** in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md). A cost trend chart shown next to the form summarizes historical usage for your chosen scope over the **last six months** so you can compare it to your target.
-1. In the **Alerts** step, review the preset notification thresholds and recipients. These settings are currently fixed and cannot be edited.
+1. In the **Alerts** step, configure when and who to notify:
 
-   Alert emails are tied to the budget and use automatically defined thresholds:
+    **Notification thresholds**
 
-   * A warning email is sent when usage for the selected scope reaches 75% of the specified target.
-   * An overage email is sent when usage reaches 100% of the specified target.
+    Alert emails use fixed thresholds:
 
-   Notifications are sent to organization owners and billing admins.
+    * A warning email is sent when usage for the selected scope reaches **75%** of the specified target.
+    * An overage email is sent when usage reaches **100%** of the specified target.
+
+    **Recipients**
+
+    Select who should receive alert notifications. You must choose at least one option:
+
+    * **Elastic Cloud organization**: Organization owners and/or billing admins.
+    * **Cloud resource permissions** (for cloud-resource budgets only): Users with **Admin**, **Editor**, or **Viewer** roles on the selected resources. If the budget includes multiple resources, users must have the selected roles on all of them to receive notifications.
 
 1. Select **Create budget**.
 
