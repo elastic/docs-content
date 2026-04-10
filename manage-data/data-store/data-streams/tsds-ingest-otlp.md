@@ -102,13 +102,13 @@ The target data stream name is constructed as `metrics-${data_stream.dataset}.ot
 
 ## Configure histogram handling
 ```{applies_to}
-stack: preview 9.3
+stack: preview =9.3, ga 9.4+
 ```
 
 You can configure how OTLP histograms are mapped using the `xpack.otel_data.histogram_field_type` cluster setting. Valid values are:
 
- - `histogram` (default): Map histograms as T-Digests using the `histogram` field type
- - `exponential_histogram`: Map histograms as exponential histograms using the `exponential_histogram` field type
+ - `histogram` (default on {applies_to}`stack: preview =9.3`): Map histograms as T-Digests using the `histogram` field type
+ - `exponential_histogram` (default on {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`): Map histograms as exponential histograms using the `exponential_histogram` field type
 
 The setting is dynamic and can be updated at runtime:
 

@@ -36,7 +36,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization**.
 
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
@@ -99,7 +99,7 @@ To visualize the **bytes** field over time:
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to the workspace.
@@ -163,7 +163,7 @@ The **Top values** function ranks the unique values of a field by another functi
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **clientip** to the **Vertical axis** field in the layer pane.
@@ -213,7 +213,7 @@ Create a proportional visualization that helps you determine if your users trans
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to the **Vertical axis** field in the layer pane.
@@ -266,7 +266,7 @@ The distribution of a number can help you find patterns. For example, you can an
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. From the **Available fields** list, drag **bytes** to **Vertical axis** field in the layer pane.
@@ -298,7 +298,7 @@ Add a panel title:
 
 1. Create a visualization.
    
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the toolbar.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **Visualization** in the application menu.
    * {applies_to}`stack: ga 9.0-9.1` Click **Create visualization** in the dashboard toolbar.
 
 2. Open the **Visualization type** dropdown, then select **Treemap**.
@@ -378,7 +378,7 @@ Decrease the size of the following panels, then move the panels to the first row
 
 Now that you have a complete overview of your web server data, save the dashboard.
 
-1. In the toolbar, click **Save**.
+1. In the application menu, click **Save**.
 2. On the **Save dashboard** window, enter `Logs dashboard` in the **Title** field.
 3. Select **Store time with dashboard**.
 4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
