@@ -82,7 +82,7 @@ Index privileges
     - {applies_to}`stack: ga =9.3` `All` for the `Rules, Alerts, and Exceptions` feature
     - {applies_to}`stack: ga 9.0-9.2` `All` for the `Security` feature
 
-## Manage rules
+## Manage rules [detections-privileges-manage-rules]
 
 Cluster privileges
 :   None
@@ -107,6 +107,22 @@ To manage rules with actions and connectors, you need additional privileges for 
 
 To import rules with actions, you need at least `Read` privileges. To overwrite or add new connectors during import, you need `All` privileges.
 ::::
+
+### Optional sub-features privileges for managing rules [detections-privileges-manage-rules-subfeatures]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off specific actions for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
+
+The following table illustrates this by compareing the default setup with a customized role.
+
+| Situation | What you can do |
+| --- | --- |
+| **`All` for `Rules`**, and every rule sub-feature is still enabled (the out-of-the-box setup) | You can do everything described for **`All`** on **`Rules`** in [View and manage rules and exceptions separately](#rules-exceptions-subfeatures), including enabling and disabling rules. |
+| **`All` for `Rules`**, but the role was customized and some sub-features were turned off | You can only do what remains allowed. For example, you might still create or edit rules while **Enable and disable rules** (or another sub-feature) is turned off for your role. |
 
 ## Manage alerts
 
@@ -159,7 +175,7 @@ Index privileges
 
 {{kib}} privileges
 :   - `Read` for `Rules`: View detection rules (including the {{rules-ui}} table, rule details, and rule monitoring).
-    - `All` for `Rules`: Create, edit, duplicate, delete, enable, and disable detection rules.
+    - `All` for `Rules`: Create, edit, duplicate, delete, enable, and disable detection rules. Optional rule sub-features can narrow this access. Refer to to [](#detections-privileges-manage-rules-subfeatures) to learn more.
     - `Read` for `Exceptions` (deselect **Manage Exceptions**): View exception lists and exception items.
     - `All` for `Exceptions` (**Manage Exceptions** selected): Create and manage exceptions for rules and shared exception lists.
 
