@@ -27,6 +27,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.3.3 [elastic-security-9.3.3-release-notes]
+
+### Fixes [elastic-security-9.3.3-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Ensures {{elastic-defend}} honors `ignored_filesystems` when a filesystem appears in both monitored and ignored configuration lists.
+* Fixes missing `user.name` and `group.name` fields in {{elastic-defend}} events in some LDAP environments.
+* Returns an error when you submit a malware scan job while malware protection is not enabled for {{elastic-defend}}.
+
+
 ## 9.3.2 [elastic-security-9.3.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.2-features-enhancements]
@@ -213,6 +226,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
 
+
+## 9.2.8 [elastic-security-9.2.8-release-notes]
+
+### Fixes [elastic-security-9.2.8-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Fixes an issue in {{elastic-defend}} where `ignored_filesystems` did not take effect when the same filesystem appeared in both the monitored and ignored configuration lists.
 
 ## 9.2.7 [elastic-security-9.2.7-release-notes]
 

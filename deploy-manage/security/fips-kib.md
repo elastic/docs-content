@@ -11,33 +11,43 @@ products:
 To run {{kib}} in FIPS mode, you must have the appropriate [subscription](https://www.elastic.co/subscriptions).
 
 ::::{important}
-The Node bundled with {{kib}} is not configured for FIPS 140-2. You must configure a FIPS 140-2 compliant OpenSSL3 provider. Consult the Node.js documentation to learn how to configure your environment.
+The Node bundled with {{kib}} is not configured by default to be a FIPS environment. You must configure a FIPS 140-2 or FIPS 140-3 compliant OpenSSL3 provider. Consult the Node.js documentation to learn how to configure your environment.
 
 ::::
 
 
-For {{kib}}, adherence to FIPS 140-2 is ensured by:
+For {{kib}}, adherence to FIPS 140-2 and FIPS 140-3 is ensured by:
 
-* Using FIPS approved / NIST recommended cryptographic algorithms.
-* Delegating the implementation of these cryptographic algorithms to a NIST validated cryptographic module (available via Node.js configured with an OpenSSL3 provider).
-* Allowing the configuration of {{kib}} in a FIPS 140-2 compliant manner, as documented below.
+* Using FIPS-approved and NIST-recommended cryptographic algorithms.
+* Delegating the implementation of these cryptographic algorithms to a NIST-certified cryptographic module (available via Node.js configured with the proper OpenSSL3 provider).
+* Allowing the configuration of {{kib}} in a FIPS 140-2 or FIPS 140-3 compliant manner, as documented below.
 
-## Configuring {{kib}} for FIPS 140-2 [_configuring_kib_for_fips_140_2]
+The specific FIPS standard applied (140-2 or 140-3) depends on the OpenSSL3 provider used to configure your Node.js environment.
 
-Apart from setting `xpack.security.fipsMode.enabled` to `true` in your {{kib}} config, a number of security related settings need to be reviewed and configured in order to run {{kib}} successfully in a FIPS 140-2 compliant Node.js environment.
+## Configuring {{kib}} for FIPS [_configuring_kib_for_fips]
+
+The following settings need to be reviewed and configured to run {{kib}} successfully in a FIPS-compliant Node.js environment.
+
+### Enable FIPS mode [_enable_fips_mode]
+
+Set `xpack.security.fipsMode.enabled` to `true` in your {{kib}} configuration:
+
+```yaml
+xpack.security.fipsMode.enabled: true
+```
 
 ### {{kib}} keystore [_kibana_keystore]
 
-FIPS 140-2 (via NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{kib}} keystore that stores the application’s secure settings needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password.
+NIST Special Publication 800-132 (Recommendation for Password-Based Key Derivation: Part 1: Storage Applications) specifies a minimum security strength of 112 bits for password-protected key material, a requirement that applies in both FIPS 140-2 and FIPS 140-3 compliant environments. As such, the {{kib}} keystore password must be at least 14 bytes (112 bits) long. For single-byte ASCII characters, this means a minimum of 14 characters; for 2-byte UTF-8 characters (code points U+0080–U+07FF), a minimum of 7 characters.
 
 For more information on how to set this password, refer to the [keystore documentation](/deploy-manage/security/secure-settings.md#change-password).
 
 
 ### TLS keystore and keys [_tls_keystore_and_keys]
 
-Keystores can be used in a number of General TLS settings in order to conveniently store key and trust material. PKCS#12 keystores cannot be used in a FIPS 140-2 compliant Node.js environment. Avoid using these types of keystores. Your FIPS 140-2 provider may provide a compliant keystore implementation that can be used, or you can use PEM encoded files. To use PEM encoded key material, you can use the relevant `\*.key` and `*.certificate` configuration options, and for trust material you can use `*.certificate_authorities`.
+Keystores can be used in a number of general TLS settings to store key and trust material. PKCS#12 keystores cannot be used in a FIPS 140-2 or FIPS 140-3 compliant Node.js environment. Avoid using these types of keystores. Your FIPS provider may offer a compliant keystore implementation, or you can use PEM-encoded files. To use PEM-encoded key material, use the relevant `*.key` and `*.certificate` configuration options; for trust material, use `*.certificate_authorities`.
 
-As an example, avoid PKCS#12 specific settings such as:
+As an example, avoid PKCS#12-specific settings such as:
 
 * `server.ssl.keystore.path`
 * `server.ssl.truststore.path`
