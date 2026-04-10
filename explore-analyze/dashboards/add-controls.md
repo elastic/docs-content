@@ -75,6 +75,13 @@ To add interactive Options list and Range slider controls, create the controls, 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
+
+      * **Prefix** (default for *IP address* type fields): Show options that *start with* the entered value.
+      * **Contains** (default for *string* type fields): Show options that *contain* the entered value. This setting is only available for *string* type fields.
+      * **Exact**: Show options that are an *exact* match with the entered value.
+
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
     - **Additional settings**:
 
       - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
@@ -90,17 +97,17 @@ To add interactive Options list and Range slider controls, create the controls, 
     - **Selections**:
       Select multiple values to filter with the control, or only one.
 
-    - **Additional settings**:
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
 
-      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
-
-      For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
-
-      * **Prefix**: Show options that *start with* the entered value.
-      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Prefix** (default): Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting is only available for *string* type fields.
       * **Exact**: Show options that are an *exact* match with the entered value.
 
       The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+
+    - **Additional settings**:
+
+      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
     :::
 
     ::::
@@ -162,7 +169,7 @@ If you added it by starting from a query, the control is directly inserted in th
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
 :::{tip}
-You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the application menu.
 :::
 
 :::{include} ../_snippets/variable-control-examples.md
@@ -199,7 +206,7 @@ To chain variable controls, you reference one control's variable in another cont
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 
@@ -260,7 +267,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
@@ -292,7 +299,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 1. Configure the control settings.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:

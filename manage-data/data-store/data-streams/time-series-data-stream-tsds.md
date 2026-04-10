@@ -102,11 +102,10 @@ A time series data stream works like a regular data stream, with some key differ
 
 ## Query time series data
 ```{applies_to}
-serverless: preview
+stack: preview 9.2-9.3, ga 9.4+
 ```
 
-You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.
-
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
 
 ## Next steps [tsds-whats-next]
 
