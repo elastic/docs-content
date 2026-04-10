@@ -41,7 +41,8 @@ The following table compares features available in each feature tier:
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
-| **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ | ❌ |
+| **[Private connectivity](/deploy-manage/security/private-connectivity.md)** | ✅ | ❌ | ❌ |
+| **[IP filtering](/deploy-manage/security/ip-filtering.md)** | ✅ | ❌ | ❌ |
 
 
 ## Add-on options
@@ -67,8 +68,6 @@ Both the **Security Analytics Complete** and **Security Analytics Essentials** f
 | **[Response actions](/solutions/security/endpoint-response-actions.md)** | ✅ | ❌ |
 
 % commenting this out until it gets reintroduced in 9.3 | **Drift protection for containers** | ✅ | ❌ |
-
-The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is automatically included with the **Security Analytics Complete** feature tier at no additional charge.
 
 ## Upgrade to a higher feature tier [sec-subscription-upgrade]
 
