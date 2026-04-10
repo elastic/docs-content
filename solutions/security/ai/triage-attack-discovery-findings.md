@@ -41,6 +41,7 @@ For richer triage context, enable [entity analytics](/solutions/security/advance
 Start by retrieving all open findings and prioritizing them by risk score. This gives you a ranked list of potential attacks to work through, starting with the most critical.
 
 :::::{tab-set}
+:group: triage-method
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
@@ -182,6 +183,7 @@ The following subsections explain how to gather each signal.
 ### Check entity risk context [check-entity-risk]
 
 :::::{tab-set}
+:group: triage-method
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
@@ -213,6 +215,7 @@ If entity analytics isn't enabled, skip this signal and rely more heavily on ale
 ### Review associated alerts and rules [review-alerts-rules]
 
 :::::{tab-set}
+:group: triage-method
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
@@ -272,12 +275,19 @@ After assessing confidence for your open findings, take the appropriate action f
 For findings you've assessed as high confidence, create a case and attach the relevant context:
 
 :::::{tab-set}
+:group: triage-method
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
 1. Click **Take action**, then select **Add to new case** or **Add to existing case**.
 2. Include the discovery's summary and associated alerts in the case description. The LLM-generated narrative provides valuable context for analysts who pick up the case.
 3. Set an appropriate severity on the case based on the finding's risk score and your confidence assessment.
+
+::::
+::::{tab-item} Discover with ES|QL queries
+:sync: esql
+
+If you identified findings using ES|QL queries, you can create cases through the Attack Discovery UI or the Cases API. Use the discovery IDs or alert IDs from your query results to locate the findings in the UI, or pass them directly to the API.
 
 ::::
 ::::{tab-item} Attack Discovery API
@@ -298,12 +308,6 @@ POST /api/cases
 ```
 
 After creating the case, attach the discovery's alerts to it using the alert IDs from the finding.
-
-::::
-::::{tab-item} Discover with ES|QL queries
-:sync: esql
-
-If you identified findings using ES|QL queries, you can create cases through the Attack Discovery UI or the Cases API. Use the discovery IDs or alert IDs from your query results to locate the findings in the UI, or pass them directly to the API.
 
 ::::
 :::::
@@ -328,6 +332,7 @@ After investigating, either create a case (if the finding is confirmed) or ackno
 For findings that don't warrant further action:
 
 :::::{tab-set}
+:group: triage-method
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
