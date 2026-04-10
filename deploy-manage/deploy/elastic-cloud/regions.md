@@ -68,7 +68,6 @@ The following GCP regions are currently available for {{serverless-short}} proje
 | europe-west2 | England (London) |
 | europe-west3 | Germany (Frankfurt) |
 | europe-west4 | Netherlands (Eemshaven) |
-| me-central2 | Saudi Arabia (Dammam) |
 | us-central1 | United States (Iowa) |
 | us-east1 | United States (South Carolina) |
 | us-east4 | United States (Virginia) |
