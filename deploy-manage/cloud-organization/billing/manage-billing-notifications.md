@@ -43,10 +43,10 @@ To create a budget:
 
     **Recipients**
 
-    Select who should receive alert notifications. You must choose at least one option:
+    Select which user roles should receive alert notifications. You must choose at least one option:
 
-    * **Elastic Cloud organization**: Organization owners and/or billing admins.
-    * **Cloud resource permissions** (for cloud-resource budgets only): Users with **Admin**, **Editor**, or **Viewer** roles on the selected resources. If the budget includes multiple resources, users must have the selected roles on all of them to receive notifications.
+    * **Elastic Cloud organization**: **Organization owner** and/or **Billing admin**.
+    * **Cloud resource permissions** (only for cloud-resource budgets): Users with **Admin**, **Editor**, or **Viewer** roles on the selected resources. If the budget includes multiple resources, users must have the selected roles on all of them to receive notifications.
 
 1. Select **Create budget**.
 
