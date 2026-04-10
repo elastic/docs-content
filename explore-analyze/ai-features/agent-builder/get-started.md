@@ -27,36 +27,14 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 ::::{applies-switch}
 
-:::{applies-item} { "serverless": "ga", "elasticsearch" }
+:::{applies-item} serverless: ga
 
-{{agent-builder}} is enabled by default in serverless {{es}} projects. You can access it from multiple entry points in the UI:
+{{agent-builder}} is the default chat experience in all serverless project types. You can access it from multiple entry points in the UI:
 
 - Select the **Agent Builder** card on the {{es}} home page.
 - Click **Agents** in the navigation menu.
 - Click the **AI Agent** button in the top-right header to start a conversation from any page.
 - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-
-You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-:::
-
-:::{applies-item} { "serverless": "ga", "observability" }
-
-{{agent-builder}} is the default chat experience in {{product.observability}} projects. You can access it from multiple entry points in the UI:
-
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
-
-You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-:::
-
-:::{applies-item} { "serverless": "ga", "security" }
-
-{{agent-builder}} is the default chat experience in {{product.security}} projects. You can access it from multiple entry points in the UI:
-
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
