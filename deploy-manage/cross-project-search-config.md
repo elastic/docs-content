@@ -122,6 +122,18 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
+* Additional limitations apply to Elastic {{observability}} and {{elastic-sec}} projects.
+
+**{{elastic-sec}} apps**
+
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
+:::
+
+**Elastic {{observability}} apps**
+
+{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project.
+
+% For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
 ## Using {{cps-init}} 
 
