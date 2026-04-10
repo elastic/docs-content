@@ -40,19 +40,25 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 
 :::
 
-:::{applies-item} { "serverless": "preview", "observability" }
+:::{applies-item} { "serverless": "ga", "observability" }
 
-In {{product.observability}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+{{agent-builder}} is the default chat experience in {{product.observability}} projects. You can access it from multiple entry points in the UI:
 
-Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+
+You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
-:::{applies-item} { "serverless": "preview", "security" }
+:::{applies-item} { "serverless": "ga", "security" }
 
-In {{product.security}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+{{agent-builder}} is the default chat experience in {{product.security}} projects. You can access it from multiple entry points in the UI:
 
-Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+
+You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
@@ -65,7 +71,9 @@ On non-serverless deployments, {{agent-builder}} availability depends on the nav
     - Click **Agents** in the navigation menu.
     - Click the **AI Agent** button in the top-right header to start a conversation from any page.
     - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
+- **{{product.observability}} and {{product.security}} solution views**:
+    - {applies_to}`stack: ga 9.4+` {{agent-builder}} is enabled by default, replacing AI Assistant. Click **Agents** in the navigation menu, or click the **AI Agent** button in the top-right header to start a conversation from any page.
+    - {applies_to}`stack: preview =9.2, ga =9.3` You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
 - **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
