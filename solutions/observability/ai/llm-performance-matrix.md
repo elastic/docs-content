@@ -12,16 +12,18 @@ products:
 
 This page summarizes internal test results comparing large language models (LLMs) across {{observability}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) use cases. These ratings apply equally whether you're using [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md) or [Agent Builder](/solutions/observability/ai/agent-builder-observability.md).
 
-::::{important}
-Rating legend:
+**Rating legend**
 
-**Excellent:** Highly accurate and reliable for the use case.<br>
-**Great:** Strong performance with minor limitations.<br>
-**Good:** Possibly adequate for many use cases but with noticeable tradeoffs.<br>
-**Poor:** Significant issues; not recommended for production for the use case.
+For each category, the evaluation framework produces a score between 0–100 based on the criteria defined. This score is then converted to a rating using the following legend:
+
+| Score | Rating |
+| --- | --- |
+| 84%–100% | **Excellent**: Highly accurate and reliable for the use case. |
+| 75%–83% | **Great**: Strong performance with minor limitations. |
+| 45%–74% | **Good**: Possibly adequate for many use cases but with noticeable tradeoffs. |
+| 0%–44% | **Poor**: Significant issues; not recommended for production for the use case. |
 
 Recommended models are those rated **Excellent** or **Great** for the particular use case.
-::::
 
 ## Proprietary models [_proprietary_models]
 
