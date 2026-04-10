@@ -183,6 +183,9 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 **Skills**
 :   Lists the [skills](agent-builder-agents.md#skills) assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**.
 
+**Plugins**
+:   TODO
+
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
@@ -203,6 +206,12 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills, edit existing ones, or assign them to agents.
+
+**Plugins**
+:   TODO
+
+**Connectors**
+:   TODO
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
