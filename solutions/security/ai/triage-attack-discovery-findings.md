@@ -1,5 +1,4 @@
 ---
-
 navigation_title: Triage Attack Discovery findings
 description: Assess open Attack Discovery findings by evaluating alert diversity, rule frequency, and entity risk. Create cases for confirmed threats and acknowledge low-confidence findings.
 applies_to:
@@ -7,10 +6,8 @@ applies_to:
   serverless:
     security: ga
 products:
-
-- id: security
-- id: cloud-serverless
-
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Triage Attack Discovery findings [triage-attack-discovery-findings]
