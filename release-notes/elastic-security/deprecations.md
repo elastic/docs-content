@@ -23,6 +23,22 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+<!-- :::{include} _snippets/9.3.0/deprecations.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:type: deprecation
+:config: /changelog.yml
+:::
+
+## 9.3.0 [elastic-security-9.3.0-deprecations]
+$$$elastic-security-233289$$$
+::::{dropdown} Removes evaluation of Endpoint exceptions during detection rule execution
+Endpoint exceptions are no longer evaluated during detection rule execution.
+For more information, refer to [#233289]({{kib-pull}}233289).
+::::
+
 ## 9.1.0 [elastic-security-9.1.0-deprecations]
 
 ::::{dropdown} Removes default quick prompts

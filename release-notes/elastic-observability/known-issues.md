@@ -23,6 +23,14 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+<!-- :::{include} _snippets/9.3.0/known-issues.md
+::: -->
+
+:::{changelog} /releases/observability
+:subsections:
+:type: known-issue
+:config: /changelog.yml
+:::
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 

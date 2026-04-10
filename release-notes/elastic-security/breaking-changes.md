@@ -22,6 +22,15 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+<!-- :::{include} _snippets/9.3.0/breaking-changes.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:type: breaking-change
+:config: /changelog.yml
+:::
+
 ## 9.3.2 [elastic-security-932-breaking-changes]
 ::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.

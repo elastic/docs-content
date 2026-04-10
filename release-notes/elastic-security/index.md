@@ -27,6 +27,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+<!-- :::{include} _snippets/9.3.0/index.md
+::: -->
+
+:::{changelog} /releases/security
+:subsections:
+:config: /changelog.yml
+:::
+
 ## 9.3.3 [elastic-security-9.3.3-release-notes]
 
 ### Fixes [elastic-security-9.3.3-fixes]
