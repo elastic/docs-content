@@ -25,9 +25,9 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 :::::::{stepper}
 ::::::{step} Access {{agent-builder}}
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} serverless: ga
+::::{applies-item} serverless: ga
 
 {{agent-builder}} is the default chat experience in all serverless project types. You can access it from multiple entry points in the UI:
 
@@ -38,27 +38,33 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::
+::::
 
-:::{applies-item} stack: preview =9.2, ga 9.4+
+::::{applies-item} stack: ga 9.4+
 
 On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
-- **{{es}} solution view**: {{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
-    - Select the **Agent Builder** card on the {{es}} home page.
-    - Click **Agents** in the navigation menu.
-    - Click the **AI Agent** button in the top-right header to start a conversation from any page.
-    - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-- **{{product.observability}} and {{product.security}} solution views**:
-    - {applies_to}`stack: ga 9.4+` {{agent-builder}} is enabled by default, replacing AI Assistant. Click **Agents** in the navigation menu, or click the **AI Agent** button in the top-right header to start a conversation from any page.
-    - {applies_to}`stack: preview =9.2, ga =9.3` You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
-- **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::{dropdown} {{es}} solution view
+{{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
+- Select the **Agent Builder** card on the {{es}} home page.
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+- Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+:::
+
+:::{dropdown} {{product.observability}} and {{product.security}} solution views
+{{agent-builder}} is enabled by default, replacing AI Assistant. Click **Agents** in the navigation menu, or click the **AI Agent** button in the top-right header to start a conversation from any page.
+:::
+
+:::{dropdown} Classic view
+{{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::
-
 ::::
+
+:::::
 
 :::{note}
 To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
@@ -69,14 +75,21 @@ To learn about required privileges for {{agent-builder}}, refer to [Permissions 
 
 On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
-- **{{es}} solution view**: {{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
-    - Select the **Agent Builder** card on the {{es}} home page.
-    - Click **Agents** in the navigation menu.
-    - Click the **AI Agent** button in the top-right header to start a conversation from any page.
-    - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-- **{{product.observability}} and {{product.security}} solution views**:
-    - You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
-- **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::{dropdown} {{es}} solution view
+{{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
+- Select the **Agent Builder** card on the {{es}} home page.
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+- Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+:::
+
+:::{dropdown} {{product.observability}} and {{product.security}} solution views
+You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
+:::
+
+:::{dropdown} Classic view
+{{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -90,20 +103,20 @@ If you already have data in {{es}}, skip ahead to [start a conversation](#start-
 
 If you need to add data first, choose the path that fits:
 
-**Use sample data**
-
+:::{dropdown} Use sample data
 If you're not ready to add your own data, you can:
 
 - Load [sample data](/manage-data/ingest/sample-data.md) in {{kib}}.
 - Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-). (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 - Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data.
+:::
 
-**Bring your own data**
-
+:::{dropdown} Bring your own data
 If you already have data, you can:
 
 - [Upload a file](/manage-data/ingest/upload-data-files.md) in the {{kib}} UI for quick testing.
 - Learn about your [ingestion options](/manage-data/ingest.md) if you'd like to ingest larger datasets.
+:::
 
 ::::
 
