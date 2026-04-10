@@ -10,12 +10,12 @@ applies_to:
 {{integrations}} documentation lives in the [elastic/integrations](https://github.com/elastic/integrations) repository and follows a specific workflow that differs from other Elastic documentation. Changes to integration docs require updating source files, bumping versions, and waiting for the package to be published to the {{package-registry}} (EPR) before they appear on the docs site.
 
 :::{note}
-Most integrations follow the workflow described on this page. However, some integrations—such as **Elastic Defend**—have separate source repositories and different workflows. Refer to [Special-case integrations](#special-case-integrations) for details.
+Most integrations follow the workflow described on this page. However, some integrations—such as **{{elastic-defend}}**—have separate source repositories and different workflows. Refer to [Special case integrations](#special-case-integrations) for details.
 :::
 
 ## Prerequisites
 
-Before you start, make sure you have:
+Before you start, ensure you have:
 
 - Write access to the [elastic/integrations](https://github.com/elastic/integrations) repository (for Elastic contributors).
 - The [`elastic-package`](https://github.com/elastic/elastic-package) tool installed locally.
@@ -114,9 +114,9 @@ If you need changes to appear sooner, you can manually trigger the [update-docs 
 
 Some integrations have documentation source files in repositories other than `elastic/integrations`. These integrations require different workflows.
 
-### Elastic Defend
+### {{elastic-defend}}
 
-The [{{elastic-defend}} integration](integrations://reference/endpoint.md) (`endpoint`) documentation lives in the [elastic/endpoint-package](https://github.com/elastic/endpoint-package) repository, not `elastic/integrations`.
+The [{{elastic-defend}} integration](integration-docs://reference/endpoint.md) (`endpoint`) documentation lives in the [elastic/endpoint-package](https://github.com/elastic/endpoint-package) repository, not `elastic/integrations`.
 
 #### Where to edit
 
@@ -130,7 +130,11 @@ The [{{elastic-defend}} integration](integrations://reference/endpoint.md) (`end
 The page content in `integration-docs/docs/reference/endpoint.md` (everything after the frontmatter) is generated and will be overwritten during the next sync. Only edit the frontmatter section directly in this file.
 :::
 
-#### Update the Elastic Defend docs
+#### Update {{elastic-defend}} docs
+
+:::{note}
+Before you update these docs, ensure you have installed [Go](https://golang.org/dl/). 
+:::
 
 ::::::{stepper}
 
@@ -161,7 +165,7 @@ This file uses `{{fields "datastream"}}` placeholders that expand into field tab
 
 ::::{step} Build the package
 
-Run `make` from the repository root to generate the output file. This requires [Go](https://go.dev/doc/install) to be installed.
+Save your changes, then run `make` from the repository root to generate the output file.
 
 ```bash
 make
