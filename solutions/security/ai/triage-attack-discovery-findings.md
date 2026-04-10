@@ -19,11 +19,13 @@ Learn how to systematically assess open Attack Discovery findings, determine whi
 
 Each Attack Discovery finding groups related alerts into a single attack narrative. Rather than investigating each alert individually, you assess the attack as a unit—evaluating confidence based on alert diversity, detection rule quality, and entity risk context—then decide whether to create a case, investigate further, or acknowledge and move on.
 
+<!-- Commented out until the agent skill is publicly available — agent, 2026-04-02
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills@security-attack-discovery-triage
 
 This skill automates the triage workflow described on this page, scoring confidence programmatically and presenting a summary for your approval before creating cases or acknowledging alerts. For details, refer to [Automate triage with an agent skill](#automate-triage-agent-skill).
 :::
+-->
 
 ## Before you begin [before-you-begin]
 
@@ -134,7 +136,7 @@ Combine your three signal scores to estimate confidence:
 
 :::{dropdown} Full confidence scoring matrix
 
-The following tables provide a detailed scoring rubric for each signal. If you'd rather automate this process than score each finding manually, you can use the [Attack Discovery Triage agent skill](https://github.com/elastic/agent-skills/tree/main/skills/security/attack-discovery-triage), which applies these heuristics programmatically and presents a triage summary for your approval.
+The following tables provide a detailed scoring rubric for each signal.
 
 #### Signal 1: Alert diversity [signal-alert-diversity]
 
@@ -356,6 +358,7 @@ POST /api/attack_discovery/_bulk
 ::::
 :::::
 
+<!-- Commented out until the agent skill is publicly available — agent, 2026-04-02
 ## Automate triage with an agent skill [automate-triage-agent-skill]
 
 An agent skill is available that automates the triage workflow described on this page using the same confidence scoring methodology.
@@ -378,6 +381,7 @@ An [agent skill](https://github.com/elastic/agent-skills/tree/main/skills/securi
 
 Refer to the [agent-skills README](https://github.com/elastic/agent-skills/blob/main/README.md) for setup instructions.
 :::
+-->
 
 ## Next steps [next-steps]
 
