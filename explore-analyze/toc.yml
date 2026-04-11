@@ -204,6 +204,10 @@ toc:
             - file: ai-features/agent-builder/builtin-agents-reference.md
             - file: ai-features/agent-builder/prompt-engineering.md
             - file: ai-features/agent-builder/agents-and-workflows.md
+          - file: ai-features/agent-builder/skills.md
+            children:
+              - file: ai-features/agent-builder/builtin-skills-reference.md
+              - file: ai-features/agent-builder/skill-creation-guidelines.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md

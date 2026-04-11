@@ -200,6 +200,10 @@ $$$agent-builder-security-attack-discovery-search-tool$$$
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
 
+## Inline tools
+
+Some built-in skills include inline tools that are only available while that skill is active. They are not listed on this page. For the full list, refer to [Built-in skills reference](../builtin-skills-reference.md#inline-tools).
+
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
 :::
