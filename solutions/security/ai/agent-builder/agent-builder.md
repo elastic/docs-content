@@ -46,13 +46,17 @@ You can pass a detection rule into the Agent Builder chat so you can ask questio
 - **Alerts flyout**: Open an alert, expand the rule summary in the flyout, then use **Add to chat**.
 - **Alerts table rule flyout**: From the alerts table, open the rule flyout for an alert and use **Add to chat**.
 
-This flow uses the [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) with a security session context. When it responds, the rule appears in the chat as a rich attachment that shows the rule type, description, query with syntax highlighting, index patterns, tags, severity and risk score, and schedule. It draws on the attached rule to help with detection intent, query logic, MITRE ATT&CK coverage, timing and scheduling, and rule metadata quality. 
+This flow opens Agent Builder with a security session context and the default agent used in {{elastic-sec}} (the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent)).
+
+Security skills such as `threat-hunting` and `alert-analysis` activate as needed based on your prompts. When the assistant responds, the rule appears in the chat as a rich attachment that shows the rule type, description, query with syntax highlighting, index patterns, tags, severity and risk score, and schedule. It draws on the attached rule to help with detection intent, query logic, MITRE ATT&CK coverage, timing and scheduling, and rule metadata quality.
 
 :::{note}
-The Threat Hunting agent only has access to the fields defined in the rule. It does not retrieve [exception lists](/solutions/security/detect-and-alert/add-manage-exceptions.md). Rules reference exceptions by ID only.
+Agent Builder only has access to the fields included in the rule attachment. It does not retrieve [exception lists](/solutions/security/detect-and-alert/add-manage-exceptions.md). Rules reference exceptions by ID only.
 :::
 
-If your role has the [privileges required to manage detection rules](/solutions/security/detect-and-alert/detections-privileges.md), use **Apply to creation** or **Update rule** on that attachment to open the create or edit rule form with the fields filled in. If your role does not have access to managing rules, the actions aren't shown. On the **Create rule** or **Edit rule** page, when the Agent Builder flyout is open at the same time, the rule fields in the form and the rule attachment in the chat update together when you edit either side.
+If your role has the [privileges required to manage detection rules](/solutions/security/detect-and-alert/detections-privileges.md), use **Apply to creation** or **Update rule** on that attachment to open the create or edit rule form with the fields filled in. 
+
+If your role does not have access to managing rules, the actions aren't shown. On the **Create rule** or **Edit rule** page, when the Agent Builder flyout is open at the same time, the rule fields in the form and the rule attachment in the chat update together when you edit either side.
 
 ## Use Agent Builder and Workflows together
 
@@ -79,14 +83,14 @@ This section provides conceptual examples of what you can achieve with Agent Bui
 You can create a workflow that:
 
  - Runs periodically, and initiates Attack Discovery when it runs
- - Sends any discovered attacks to the Threat Hunting agent to analyze and create a report 
+ - Sends any discovered attacks to Agent Builder to analyze and create a report
  - Sends that report to a third-party incident management platform and sends alerts to your team
 
 ### Example 2: Triage an alert with a workflow
 You can create a workflow that:
 
 - Triggers automatically when a rule generates an alert
-- Provides the alert data to the Threat Hunting agent with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
+- Provides the alert data to Agent Builder with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
 - Creates a report based on what it finds and sends it to a Slack channel
 - Suggests next steps
 
@@ -100,7 +104,7 @@ When conducted manually, alert triage in {{elastic-sec}} typically includes mult
 - Manually correlate new alert with its context
 - Make a triage decision
 
-With Agent Builder, you can automate this process to speed it up and require less user input. For example, in response to the prompt `"Analyze alert abc123. What's the entity risk score for the affected host? Are there any related attack discoveries in the last 24 hours?"` Agent Builder (using the Threat Hunting agent and its assigned tools) would take the following actions:
+With Agent Builder, you can automate this process to speed it up and require less user input. For example, in response to the prompt `"Analyze alert abc123. What's the entity risk score for the affected host? Are there any related attack discoveries in the last 24 hours?"` Agent Builder would take the following actions (for example via **alert-analysis** and related security tools):
 
 - Fetch alert details (using `alerts_tool`)
 - Retrieve entity risk scores (using `entity_risk_score_tool`)
