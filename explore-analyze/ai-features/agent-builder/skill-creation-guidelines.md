@@ -65,7 +65,7 @@ A good description explains what the skill does and explicitly states when to us
 
 ✅ **Good**
 
-```plain
+```markdown
 Find security alerts related to an original alert by analyzing common IOCs,
 affected assets, attack patterns, and temporal proximity.  # <1>
 Use when investigating an alert to understand the broader attack context.  # <2>
@@ -75,7 +75,7 @@ Use when investigating an alert to understand the broader attack context.  # <2>
 
 ❌ **Too vague**
 
-```plain
+```markdown
 "How to find alerts"  # <1>
 "Security"            # <2>
 ```
