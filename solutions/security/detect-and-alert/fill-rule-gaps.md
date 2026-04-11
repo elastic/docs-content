@@ -50,16 +50,32 @@ The panel displays:
 
 ::::
 
-Within the Rules table, several columns provide additional gap data:
 
-* **Last Gap (if any)**: Shows how long the most recent gap for a particular rule lasted.
-* **Unfilled gaps duration**: Shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total can change based on the time range you select (data on gaps older than 90 days is not retained). If a rule has no gaps, the column displays a dash (`––`).
-* {applies_to}`stack: ga 9.3+` **Gap fill status**: Shows the status of the rule's gaps (`Unfilled`, `In progress`, or `Filled`).
+#### Gap information [gap-information]
 
-    ::::{tip}
-    :applies_to:{stack: ga 9.3+}
-    Use the **Gap fill status** filter in the Rules table to find rules with a specific gap status.
-    ::::
+Within the **Rule Monitoring** tab **Rules** table, several columns provide gap data:
+
+| Column | Description |
+|--------|-------------|
+| Last Gap (if any) | How long the most recent gap lasted. |
+| Unfilled gaps duration | Total duration of remaining unfilled or partially filled gaps. The total can change based on the time range you select (data on gaps older than 90 days is not retained). If a rule has no gaps, the column displays a dash (`––`). |
+| Gap fill status | {applies_to}`stack: ga 9.3+` Shows whether unfilled gaps remain, a gap-fill run is in progress, every gap is filled, and more. Refer to the [Gap status](#gap-status) table for the available statuses. |
+
+#### Gap status [gap-status]
+
+```yaml {applies_to}
+stack: ga 9.3+
+```
+
+The following table breaks down the available **Gap fill status** values.
+
+| Status | Description |
+|--------|-------------|
+| Unfilled | The rule still has gaps that aren't fully filled. There are also no manual runs or automatic gap fill runs actively filling them. |
+| In progress | At least one gap is being filled by a manual run or an automatic gap fill run. |
+| Filled | Every gap for the rule is fully filled. |
+| Error | {applies_to}`stack: ga 9.4+` Automatic gap fill is on, but a gap still remains unfilled after automatic retries. When automatic gap fill is off, `Unfilled` displays instead of `Error`. <br><br>  When automatic gap fill is on, use the **Gap fill status** filter in the Rules table to find rules with the `Error` status. They may need manual follow-ups after retries are exhausted.|
+
 
 ### Gaps table [gaps-table]
 
@@ -83,6 +99,7 @@ The Gaps table has the following columns:
 | Column | Description |
 |---|---|
 | Status | The current state of the gap: `Filled`, `Partially filled`, or `Unfilled`. |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Reason | Why the gap occurred, when [gap reason detection](#gap-detection-scope-and-gap-reasons) is enabled. Typical values are **Rule was disabled** and **Rule did not run**. You can filter the table by reason. |
 | Detected at | When the gap was first discovered. |
 | Manual fill tasks | The status of the manual run filling the gap. For details, refer to the [Manual runs table](/solutions/security/detect-and-alert/manage-detection-rules.md#manual-runs-table). |
 | Event time covered | How much progress the manual run has made filling the gap. |
@@ -115,7 +132,7 @@ From the Rules table, fill gaps for multiple rules using the **Fill gaps** bulk 
 
     * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then select **Bulk actions** > **Fill gaps**.
     * Only fill rules with unfilled gaps: Filter for rules with unfilled gaps:
-       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status, then select **Bulk actions** > **Fill gaps**.
+       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status{applies_to}`stack: ga 9.4+`{applies_to}`serverless: ga` (or `Error` if automatic gap fill has exhausted retries and you want to try manual fills), then select **Bulk actions** > **Fill gaps**.
        - {applies_to}`stack: ga 9.1-9.2` In the panel above the table, select the **Only rules with unfilled gaps** filter to show only rules with unfilled gaps (excludes rules with gaps currently being filled). Select the appropriate rules, then select **Bulk actions** > **Fill gaps**.
 
 3. Specify when to start and end the manual run that fills the gaps.
@@ -145,6 +162,36 @@ When enabled, the automatic gap fill feature runs a job every two minutes to che
 
 ::::{tip}
 The **Auto gap fill status** field (in the panel above the Rules table) shows whether automatic gap fill is on or off. Select the field value to access the settings.
+::::
+
+### Gap detection scope and gap reasons [gap-detection-scope-and-gap-reasons]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When gap reason detection is enabled for your deployment, gaps can record *why* they occurred, and you can control which of those reasons participate in gap monitoring and automatic gap filling.
+
+:::{note}
+On self-managed {{stack}}, an administrator enables gap reason detection with the `gapReasonDetectionEnabled` value in the `xpack.securitySolution.enableExperimental` setting in `kibana.yml`. In {{serverless-short}}, availability depends on your project's feature configuration. The **Gap detection scope** controls and **Reason** column appear only when this capability is on.
+:::
+
+**Gap reasons** describe the source of a gap, for example:
+
+* **Rule was disabled** — the rule was off during part of the gap interval.
+* **Rule did not run** — the rule did not execute (for example, when {{kib}} was unavailable).
+
+These values appear in the **Reason** column on the **Execution results** tab (and in related filters). They also drive which gaps are included in the **Rules with gaps** overview and in automatic gap fill.
+
+**Gap detection scope** (in **Rule Settings** next to **Auto gap fill settings**) applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was disabled. By default, those gaps are excluded from the overview and from automatic gap fill, because they often reflect planned maintenance rather than an unexpected detection failure.
+
+Changing **Gap detection scope** requires `All` access to **Advanced Settings** in {{kib}} (see [Configure advanced Security Solution settings](/solutions/security/get-started/configure-advanced-settings.md)). Saving **Rule Settings** updates the gap auto-fill scheduler and keeps the read-only `securitySolution:excludedGapReasons` advanced setting in sync.
+
+When gaps from disabled rules are excluded, bulk **Fill gaps** may show a reminder that those gaps will not be scheduled until you include them in scope.
+
+::::{tip}
+The **Gap fill status** value **`Error`** reflects the automatic gap fill scheduler and retry limits. It is not derived from **Gap detection scope**, which only controls which gaps are monitored and filled.
 ::::
 
 ### Monitor automatic gap fill
