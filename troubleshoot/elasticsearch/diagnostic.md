@@ -28,6 +28,10 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 
 ## Access the tool [diagnostic-tool-access]
 
@@ -48,7 +52,7 @@ To capture an {{es}} diagnostic:
     For example, with the parameters `host:localhost`, `port:9200`, and `username:elastic`, you’d use the following curl request:
 
     ```sh
-    curl -X GET -k -u elastic -p https://localhost:9200/_cluster/health
+    curl -X GET -u elastic -p https://localhost:9200/_cluster/health
     ```
 
     If you receive a an HTTP 200 `OK` response, then you can proceed to the next step. If you receive a different response code, then [diagnose the issue](#diagnostic-non-200) before proceeding.

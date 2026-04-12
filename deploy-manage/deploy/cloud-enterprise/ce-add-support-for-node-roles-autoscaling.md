@@ -1415,17 +1415,21 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
 
 Having added support for `node_roles` and autoscaling to your custom template, it is possible to perform the update through the RESTful API, by following these steps:
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 1. Obtain the existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.
 
     ::::{dropdown} Update template API request example
     ```sh
-    curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
+    curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
     {
       "name": "ECE Custom Template",
       "description": "ECE custom template with support for node_roles and autoscaling",

@@ -24,10 +24,14 @@ It’s possible to enable Integrations Server on an existing deployment with ver
 
 ## API request example [ece_api_request_example_2]
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 Run this example API request to create a deployment with Integrations Server:
 
 ```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
   "resources": {
     "elasticsearch": [

@@ -42,14 +42,18 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you’re testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don’t use this flag in production environments.
+::::
+
 To run a {{kib}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}’s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
 
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
     ```sh
-    curl -X GET -k -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
+    curl -X GET -H ‘kbn-xsrf: true’ -u elastic -p https://localhost:5601/api/task_manager/_health
     ```
 
     If you receive an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, you must [diagnose the issue](#kibana-diagnostic-non-200) before proceeding.

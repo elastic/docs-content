@@ -56,10 +56,14 @@ For operations that only read information, but don’t create, update or delete,
 
 To create a bearer token:
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 1. Open a terminal and send your credentials to the login endpoint:
 
     ```sh
-    curl -k -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
+    curl -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
     {
       "username": "USER",
       "password": "PASSWORD"

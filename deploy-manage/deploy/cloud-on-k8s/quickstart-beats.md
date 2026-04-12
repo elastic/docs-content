@@ -98,8 +98,12 @@ products:
 
     * Follow the {{es}} deployment [guide](elasticsearch-deployment-quickstart.md) and run:
 
+        ::::{tip}
+        The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+        ::::
+
         ```sh
-        curl -u "elastic:$PASSWORD" -k "https://localhost:9200/filebeat-*/_search"
+        curl -u "elastic:$PASSWORD" "https://localhost:9200/filebeat-*/_search"
         ```
 
     * Follow the {{kib}} deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.

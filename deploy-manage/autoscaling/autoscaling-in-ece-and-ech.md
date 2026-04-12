@@ -249,12 +249,16 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 ::::{applies-switch}
 
 :::{applies-item} ece:
 
 ```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
  "resources": {

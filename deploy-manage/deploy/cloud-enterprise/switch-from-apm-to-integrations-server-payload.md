@@ -23,6 +23,10 @@ In order to start using the Integrations Server payload, you first need to enabl
 
 ## API request example [ece_api_request_example_3]
 
+::::{tip}
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::
+
 The example shows how to use the API to create a deployment with APM with version 8.0 and update the deployment to switch to Integrations Server.
 
 
@@ -36,7 +40,7 @@ When creating a deployment with version 8.0 using an APM payload, the APM integr
 The following creates a deployment that uses the `default` deployment template in the `ece-region`
 
 ```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
   "resources": {
     "elasticsearch": [
