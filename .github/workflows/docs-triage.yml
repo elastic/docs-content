@@ -1,4 +1,4 @@
-name: Issue Triage
+name: Docs Triage
 on:
   issue_comment:
     types: [created]
