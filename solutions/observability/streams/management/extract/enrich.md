@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Append data from an enrich policy to incoming documents, such as geo coordinates from an IP or account details from a user ID, with the Streams enrich processor.
 ---
 
 # Enrich processor [streams-enrich-processor]

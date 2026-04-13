@@ -311,6 +311,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313).
 * Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
 * Escapes special characters when creating ES|QL query for Lens charts [#241662]({{kib-pull}}241662).
+* Hides non-trace services in **Service Inventory** and **Service Map** [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
 
 
 ## 9.2.0 [elastic-observability-9.2.0-release-notes]
@@ -427,7 +428,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
 * Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
-* Hides non-trace services from APM service inventory [#241080]({{kib-pull}}241080).
+* Hides non-trace services in **Service Inventory** and **Service Map** [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 
