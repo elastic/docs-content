@@ -26,8 +26,6 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 
 ## {{cps-cap}} as the default behavior for linked projects
 
-Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
-
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
@@ -168,7 +166,7 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 * [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
 
-## Identifying remote and origin documents [cps-identify-documents]
+## Identifying the location of a document [cps-identify-documents]
 
 To determine whether a document comes from the origin project or a linked project, examine the `_index` field.
 
@@ -293,7 +291,7 @@ The request will return a response similar to this:
 }
 ```
 
-In this example, both the origin project and a linked project contain an index named` my-index`:
+In this example, both the origin project and a linked project contain an index named `my-index`:
 
 ```console
 POST /_query

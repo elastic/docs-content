@@ -44,11 +44,7 @@ GET logs/_search
 ```
 -->
 
-Refer to [the examples section](/explore-analyze/cross-project-search.md#cps-examples) for more.
-
-<!--
-Also link to the ES|QL CPS tutorial when it's available for more ES|QL examples.
--->
+Refer to [the examples section](/explore-analyze/cross-project-search.md#cps-examples) for more. You can also refer to [Query across Serverless projects with ES|QL](/elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.
 
 ## Using named project routing expressions [named-routing-expressions]
 

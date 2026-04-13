@@ -31,8 +31,6 @@ This section explains how to set up and manage {{cps}} for your organization, in
 
 ### Projects and search scope
 
-Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
-
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
