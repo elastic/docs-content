@@ -12,6 +12,8 @@ description: Learn how cross-project search (CPS) enables you to search across m
 ::::{include} /deploy-manage/_snippets/cps-definition.md
 ::::
 
+From the origin project, you can run queries, build dashboards, and configure alerting rules that include data from all linked projects. Results are filtered by each user's permissions across projects.
+
 {{cps-cap}} relies on linking projects within your {{ecloud}} organization. After you link projects together, searches from the origin project automatically run across all linked projects.
 
 This overview explains how {{cps}} works, including project linking and security.
@@ -36,7 +38,7 @@ In {{serverless-short}}, projects can be linked together.
 ::::{include} /deploy-manage/_snippets/cps-origin-linked-definitions.md
 ::::
 
-After you link projects, searches that you run from the origin project are no longer local to the origin project by default.
+After you link projects, searches that you run from the origin project are no longer scoped to the origin project by default.
 **Any search initiated on the origin project automatically runs across the origin project and all its linked projects ({{cps}}).**
 
 When you search from an origin project, the query runs against its linked projects automatically unless you explicitly change the query scope by using [project routing expressions](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) or [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions).
@@ -118,7 +120,7 @@ You have read access to the `logs` index in project 1, but no access to the `log
 If you run `GET logs/_search`:
 
 * documents from the `logs` index in project 1 are returned
-* the `logs` index in project 2 is not accessible and is excluded from the results
+* the `logs` index in project 2 is not accessible and is excluded from the results. No error is returned. The query succeeds, but results only include data from projects where your role grants access.
 
 ## Supported APIs [cps-supported-apis]
 
@@ -170,7 +172,7 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 To determine whether a document comes from the origin project or a linked project, examine the `_index` field.
 
-Remote documents include the linked project's alias as a prefix, separated by a colon:
+Documents from linked projects include the linked project's alias as a prefix, separated by a colon:
 
 ```
 my-linked-project-abc123:.ds-logs-generic.otel-default-2026.03.02-000001
@@ -197,9 +199,11 @@ FROM logs-* METADATA _index
 
 For a [complete list of limitations](/deploy-manage/cross-project-search-config.md#cps-limitations), including restrictions for Elastic Observability and {{elastic-sec}} projects, as well as administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [](/deploy-manage/cross-project-search-config.md).
 
+To check whether {{cps}} is available in a specific {{kib}} app, refer to the [availability table](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+
 ## {{cps-cap}} examples [cps-examples]
 
-The following examples demonstrate how search requests behave in different {{cps-init}} scenarios.
+The following examples show how {{cps}} resolves index names and routes queries when you use unqualified expressions, qualified expressions, and project routing.
 
 ### Unqualified search expressions
 
