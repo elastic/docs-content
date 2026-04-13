@@ -131,6 +131,16 @@ toc:
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
           - file: observability/get-started/logs-essentials.md
+      - file: observability/ai/observability-ai.md
+        children:
+          - file: observability/ai/observability-ai-assistant.md
+          - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/llm-performance-matrix.md
+          - file: observability/ai/llm-observability.md
+      - file: observability/observe-your-data.md
+        children:
+          - file: observability/otlp-visualize.md
+          - file: observability/data-set-quality-monitoring.md
       - file: observability/applications/index.md
         children:
           - file: observability/apm/index.md
@@ -311,41 +321,6 @@ toc:
                     children:
                       - file: observability/apm/switch-self-installation-to-apm-integration.md
                       - file: observability/apm/switch-an-elastic-cloud-cluster-to-apm-integration.md
-          - file: observability/synthetics/index.md
-            children:
-              - file: observability/synthetics/get-started.md
-                children:
-                  - file: observability/synthetics/create-monitors-with-projects.md
-                  - file: observability/synthetics/create-monitors-ui.md
-              - file: observability/synthetics/scripting-browser-monitors.md
-                children:
-                  - file: observability/synthetics/write-synthetic-test.md
-                  - file: observability/synthetics/configure-individual-browser-monitors.md
-                  - file: observability/synthetics/use-synthetics-recorder.md
-              - file: observability/synthetics/configure-lightweight-monitors.md
-              - file: observability/synthetics/manage-monitors.md
-              - file: observability/synthetics/work-with-params-secrets.md
-              - file: observability/synthetics/analyze-data.md
-              - file: observability/synthetics/monitor-resources-on-private-networks.md
-              - file: observability/synthetics/cli.md
-              - file: observability/synthetics/configure-projects.md
-              - file: observability/synthetics/mfa-for-browser-monitors.md
-              - file: observability/synthetics/configure-settings.md
-              - file: observability/synthetics/grant-access-to-secured-resources.md
-                children:
-                  - file: observability/synthetics/setup-role.md
-                  - file: observability/synthetics/writer-role.md
-                  - file: observability/synthetics/reader-role.md
-              - file: observability/synthetics/manage-data-retention.md
-              - file: observability/synthetics/network-security.md
-              - file: observability/synthetics/migrate-from-elastic-synthetics-integration.md
-              - file: observability/synthetics/scale-architect-synthetics-deployment.md
-              - file: observability/synthetics/support-matrix.md
-              - file: observability/synthetics/encryption-security.md
-          - file: observability/applications/user-experience.md
-            children:
-              - file: observability/applications/otel-rum.md
-          - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
             children:
               - file: observability/uptime/get-started.md
@@ -355,7 +330,6 @@ toc:
                   - file: observability/uptime/analyze-monitors.md
                   - file: observability/uptime/inspect-duration-anomalies.md
               - file: observability/uptime/configure-settings.md
-          - file: observability/otlp-visualize.md
       - file: observability/cicd.md
       - file: observability/cloud.md
         children:
@@ -453,38 +427,6 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-      - file: observability/streams/streams.md
-        children:
-        - file: observability/streams/management/retention.md
-        - file: observability/streams/management/extract.md
-          children:
-            - file: observability/streams/management/extract/append.md
-            - file: observability/streams/management/extract/concat.md
-            - file: observability/streams/management/extract/convert.md
-            - file: observability/streams/management/extract/date.md
-            - file: observability/streams/management/extract/dissect.md
-            - file: observability/streams/management/extract/drop.md
-            - file: observability/streams/management/extract/enrich.md
-            - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/extract/join.md
-            - file: observability/streams/management/extract/lowercase.md
-            - file: observability/streams/management/extract/math.md
-            - file: observability/streams/management/extract/network-direction.md
-            - file: observability/streams/management/extract/redact.md
-            - file: observability/streams/management/extract/remove.md
-            - file: observability/streams/management/extract/rename.md
-            - file: observability/streams/management/extract/replace.md
-            - file: observability/streams/management/extract/set.md
-            - file: observability/streams/management/extract/trim.md
-            - file: observability/streams/management/extract/uppercase.md
-            - file: observability/streams/management/extract/manual-pipeline-configuration.md
-        - file: observability/streams/management/partitioning.md
-        - file: observability/streams/management/schema.md
-        - file: observability/streams/management/data-quality.md
-        - hidden: observability/streams/management/significant-events.md
-        - file: observability/streams/management/advanced.md
-        - file: observability/streams/wired-streams.md
-        - file: observability/streams/management/streamlang.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -521,12 +463,72 @@ toc:
               - file: observability/incident-management/create-an-slo.md
               - file: observability/incident-management/slo-management.md
               - file: observability/incident-management/configure-slo-settings.md
-      - file: observability/data-set-quality-monitoring.md
-      - file: observability/ai/observability-ai.md
+      - file: observability/synthetics/index.md
         children:
-          - file: observability/ai/observability-ai-assistant.md
-          - file: observability/ai/agent-builder-observability.md
-          - file: observability/ai/llm-performance-matrix.md
+          - file: observability/synthetics/get-started.md
+            children:
+              - file: observability/synthetics/create-monitors-with-projects.md
+              - file: observability/synthetics/create-monitors-ui.md
+          - file: observability/synthetics/scripting-browser-monitors.md
+            children:
+              - file: observability/synthetics/write-synthetic-test.md
+              - file: observability/synthetics/configure-individual-browser-monitors.md
+              - file: observability/synthetics/use-synthetics-recorder.md
+          - file: observability/synthetics/configure-lightweight-monitors.md
+          - file: observability/synthetics/manage-monitors.md
+          - file: observability/synthetics/work-with-params-secrets.md
+          - file: observability/synthetics/analyze-data.md
+          - file: observability/synthetics/monitor-resources-on-private-networks.md
+          - file: observability/synthetics/cli.md
+          - file: observability/synthetics/configure-projects.md
+          - file: observability/synthetics/mfa-for-browser-monitors.md
+          - file: observability/synthetics/configure-settings.md
+          - file: observability/synthetics/grant-access-to-secured-resources.md
+            children:
+              - file: observability/synthetics/setup-role.md
+              - file: observability/synthetics/writer-role.md
+              - file: observability/synthetics/reader-role.md
+          - file: observability/synthetics/manage-data-retention.md
+          - file: observability/synthetics/network-security.md
+          - file: observability/synthetics/migrate-from-elastic-synthetics-integration.md
+          - file: observability/synthetics/scale-architect-synthetics-deployment.md
+          - file: observability/synthetics/support-matrix.md
+          - file: observability/synthetics/encryption-security.md
+      - file: observability/applications/user-experience.md
+        children:
+          - file: observability/applications/otel-rum.md
+      - file: observability/streams/streams.md
+        children:
+        - file: observability/streams/management/retention.md
+        - file: observability/streams/management/extract.md
+          children:
+            - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/concat.md
+            - file: observability/streams/management/extract/convert.md
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/drop.md
+            - file: observability/streams/management/extract/enrich.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/join.md
+            - file: observability/streams/management/extract/lowercase.md
+            - file: observability/streams/management/extract/math.md
+            - file: observability/streams/management/extract/network-direction.md
+            - file: observability/streams/management/extract/redact.md
+            - file: observability/streams/management/extract/remove.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/replace.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/trim.md
+            - file: observability/streams/management/extract/uppercase.md
+            - file: observability/streams/management/extract/manual-pipeline-configuration.md
+        - file: observability/streams/management/partitioning.md
+        - file: observability/streams/management/schema.md
+        - file: observability/streams/management/data-quality.md
+        - hidden: observability/streams/management/significant-events.md
+        - file: observability/streams/management/advanced.md
+        - file: observability/streams/wired-streams.md
+        - file: observability/streams/management/streamlang.md
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md

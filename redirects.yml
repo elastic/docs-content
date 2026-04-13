@@ -28,7 +28,8 @@ redirects:
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
 
   # Related to https://github.com/elastic/docs-content/pull/1069
-  'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
+  'solutions/observability/apps/llm-observability.md': 'solutions/observability/ai/llm-observability.md'
+  'solutions/observability/applications/llm-observability.md': 'solutions/observability/ai/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'
   'solutions/observability/apps/application-performance-monitoring-apm.md': 'solutions/observability/apm/index.md'
   'solutions/observability/apps/get-started-with-apm.md': 'solutions/observability/apm/get-started.md'

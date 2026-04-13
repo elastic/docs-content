@@ -109,7 +109,7 @@ Refer to [CI/CD](/solutions/observability/cicd.md) for more information.
 
 Elastic provides a powerful LLM observability framework including key metrics, logs, and traces, along with pre-configured, out-of-the-box dashboards that deliver deep insights into model prompts and responses, performance, usage, and costs.
 
-Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
+Refer to [LLM observability](/solutions/observability/ai/llm-observability.md) for more information.
 :::
 ::::
 :::::
