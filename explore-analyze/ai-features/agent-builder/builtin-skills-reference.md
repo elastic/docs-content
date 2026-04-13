@@ -78,6 +78,14 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4`
 :   Investigates anomalous behavior detected by {{ml-app}} jobs, including abnormal access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
 
+    **Inline tools:**
+
+    $$$agent-builder-security-ml-jobs$$$ `security.ml.jobs`
+    :   Retrieves {{ml-app}} anomaly detection job results filtered to security-relevant job types, returning anomaly records with entity fields, scores, and field values.
+
+    $$$agent-builder-security-ml-jobs-extract-euid$$$ `security.ml.jobs.extract_euid`
+    :   Extracts entity unique IDs from {{ml-app}} anomaly data to enable correlation with the entity store.
+
 $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga 9.4`
 :   Runs hypothesis-driven threat hunts using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
 
@@ -109,17 +117,6 @@ $$$agent-builder-search-semantic-search-skill$$$ `search.semantic-search` {appli
 
 $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {applies_to}`stack: ga 9.4`
 :   Guides agents through using {{es}} as a vector database.
-
-## Inline tools
-
-Inline tools are skill-bound tools that are only available while the skill that defines them is active. They do not appear in the tools catalog and cannot be assigned to agents independently.
-
-
-$$$agent-builder-security-ml-jobs$$$ `security.ml.jobs`
-:   Retrieves {{ml-app}} anomaly detection job results filtered to security-relevant job types, returning anomaly records with entity fields, scores, and field values. Defined by the [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) skill.
-
-$$$agent-builder-security-ml-jobs-extract-euid$$$ `security.ml.jobs.extract_euid`
-:   Extracts entity unique IDs from {{ml-app}} anomaly data to enable correlation with the entity store. Defined by the [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) skill.
 
 ## Related pages
 
