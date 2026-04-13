@@ -22,7 +22,7 @@ Skills differ from the agent's base system prompt: the system prompt is always i
 
 ## How agents use skills
 
-When an agent receives a query, it selects the most relevant skill based on the task. The skill activates and provides:
+When an agent receives a message, it selects a skill if it determines that one of the available skills is relevant to the query based on the skill's name and description. If a skill activates, it provides:
 
 - **Knowledge content**: domain-specific instructions written in Markdown that tell the agent how to approach the task.
 - **Registry tools**: IDs of existing [built-in tools](tools/builtin-tools-reference.md) that the agent can call while the skill is active.
