@@ -58,10 +58,7 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
-
-* A rule simulation may show a condition is violated, but the rule itself may not trigger an alert because it evaluates only origin data.
-* Discover and rules may show different results for the same data view.
+SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means Discover and rules may show different results for the same data view.
 
 {{ml-cap}} rules are not available in {{cps-init}}.
 
