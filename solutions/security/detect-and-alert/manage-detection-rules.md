@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: View, edit, enable, duplicate, and manage detection rules from the Rules page, including deprecated prebuilt rules in 9.4 and later.
+description: View, edit, enable, duplicate, and manage detection rules from the Rules page, including deprecated prebuilt rules.
 ---
 
 # Manage detection rules [security-rules-ui-management]
@@ -51,7 +51,6 @@ The rules list retains your sorting and filtering settings when you navigate awa
 ## Handle deprecated prebuilt rules [deprecated-prebuilt-rules]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
 ```
 
 When a prebuilt rule that you installed is deprecated, it is no longer maintained as part of Elastic’s prebuilt rule library. Deprecated rules do not receive new updates or fixes from Elastic. If you want to keep the same detection logic and maintain it yourself, duplicate the rule as a custom rule before you remove the deprecated prebuilt installation.
