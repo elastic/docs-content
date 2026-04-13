@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Parse date strings and set document timestamps with the Streams date processor in Streamlang. Supports ISO8601, UNIX, UNIX_MS, TAI64N, and Java time patterns.
 ---
 
 # Date processor [streams-date-processor]
