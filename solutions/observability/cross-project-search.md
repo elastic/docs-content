@@ -30,27 +30,19 @@ The following table shows how each {{observability}} app behaves with {{cps-init
 
 ## {{cps-cap}} scope selector in {{observability}} apps [obs-cps-scope-selector]
 
-The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header for platform apps like Discover, Dashboards, and Lens, lets you search **This project** or **All projects**.
+The **{{cps-init}} scope** selector ({icon}`cross_project_search`) in the project header lets you search **This project** or **All projects**. It is available in platform apps like Discover, Dashboards, and Lens, as well as in APM and Infrastructure apps.
 
-In {{observability}}-specific apps, the scope selector is not available. This means:
+For other {{observability}}-specific apps, the scope selector is not available. This means:
 
-* {{observability}} apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatability)).
-* The scope you select in platform apps like Discover does not carry over to {{observability}} apps.
-* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to a origin project) for the same index pattern.
+* Those apps operate in their default scope, which varies by app (refer to [{{observability}} app compatibility](#obs-cps-compatibility)).
+* The scope you select in platform apps like Discover does not carry over to {{observability}} apps that don't support it.
+* Data volumes might change when switching between Discover (which shows cross-project data by default) and an {{observability}} app (which is scoped to the origin project) for the same index pattern.
 
 For apps where the scope selector is available, refer to [Managing {{cps}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md).
 
 ## Navigating between Discover and {{observability}} apps [obs-cps-discover-navigation]
 
 When {{cps-init}} is enabled, Discover shows documents from all linked projects by default, unless the space-level default scope has been changed. {{observability}} apps may not have the same scope, which can lead to differences when navigating between them.
-
-% DOCS NOTE — CONDITIONAL: Include the following subsection only if APM/Infra CPS work (observability-dev#5328, observability-dev#5374) has NOT shipped. Remove it when that work lands.
-
-### Discover to {{product.apm}} and Infrastructure
-
-**Open in {{product.apm}}** and **Open in Infra** links in the Discover document flyout may not resolve correctly for documents from linked projects. Because {{product.apm}} and Infrastructure are scoped to the origin project, following a link for a remote document may fail to load the expected data. If a remote service shares the same name as a origin service, the origin service may open instead.
-
-This will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
 ### Discover to Streams
 
@@ -80,20 +72,6 @@ Tracking: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
 Only origin SLOs are visible, even when connected to a remote project.
 
 Tracking: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
-
-% DOCS NOTE — CONDITIONAL: Include the following "Discover flyout links" subsection only if APM/Infra CPS work (observability-dev#5328, observability-dev#5374) has NOT shipped. Remove it when that work lands.
-
-### Discover flyout links for remote documents [obs-cps-discover-flyout]
-
-The following Discover flyout links do not work correctly for documents from linked projects:
-
-* Trace document flyout transaction name links ([kibana#256211](https://github.com/elastic/kibana/issues/256211))
-* Span links from linked projects ([kibana#256190](https://github.com/elastic/kibana/issues/256190))
-* **Explain this log entry** for linked project logs ([kibana#256168](https://github.com/elastic/kibana/issues/256168))
-* Log flyout stream links ([kibana#256075](https://github.com/elastic/kibana/issues/256075))
-* Trace flyout charts don't respect project selector ([kibana#256072](https://github.com/elastic/kibana/issues/256072))
-
-These issues will be resolved when {{cps-init}} is enabled in APM and Infrastructure.
 
 ### No default data views in origin projects [obs-cps-no-data-views]
 
