@@ -150,6 +150,11 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
+:::{tip}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
+:::
+
 :::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
 :alt: Options list control
 :screenshot:

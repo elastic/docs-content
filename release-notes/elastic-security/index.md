@@ -31,6 +31,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 :subsections:
 :::
 
+## 9.3.3 [elastic-security-9.3.3-release-notes]
+
+### Fixes [elastic-security-9.3.3-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Ensures {{elastic-defend}} honors `ignored_filesystems` when a filesystem appears in both monitored and ignored configuration lists.
+* Fixes missing `user.name` and `group.name` fields in {{elastic-defend}} events in some LDAP environments.
+* Returns an error when you submit a malware scan job while malware protection is not enabled for {{elastic-defend}}.
+
+
 ## 9.3.2 [elastic-security-9.3.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.2-features-enhancements]
@@ -103,6 +116,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the reliability of Cloud Security Posture (CSP) data by automatically upgrading outdated Misconfiguration and Vulnerabilities data views to the correct versions [#238547]({{kib-pull}}238547).
 * Fixes Cloud Security Posture regressions to ensure AWS, GCP, and Azure cloud providers are all supported [#242592]({{kib-pull}}242592).
 * Upgrades the Osquery schema to v5.19.0 and the ECS schema to v9.2.0 [#246005]({{kib-pull}}246005).
+* For Osquery live queries, improves {{agent}} selection by evaluating the Osquery component's health status rather than the overall {{agent}} status. This allows you to run queries on {{agents}} where the Osquery integration is functional even when other {{agent}} components are degraded [#239304]({{kib-pull}}239304).
+* Allows you to submit live Osquery queries to more than 10,000 {{agents}} [#239536]({{kib-pull}}239536).
+* Allows you to load Osquery live query action results for queries that targeted many {{agents}}, which previously failed when the request URL grew too large [#239527]({{kib-pull}}239527).
+* Improves the performance of the Osquery **Status** tab when displaying results for queries with more than 10,000 {{agents}} [#240082]({{kib-pull}}240082).
 * Adds a file download relative URI to response actions that provide file output [#237713]({{kib-pull}}237713).
 * Adds a free-text input option to the `runscript` response action for providing input to the selected script [#239436]({{kib-pull}}239436).
 * Displays `runscript` response action output for Microsoft Defender for Endpoint for files up to 4.5 KB [#242441]({{kib-pull}}242441).
@@ -212,6 +229,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
 
+
+## 9.2.8 [elastic-security-9.2.8-release-notes]
+
+### Fixes [elastic-security-9.2.8-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Fixes an issue in {{elastic-defend}} where `ignored_filesystems` did not take effect when the same filesystem appeared in both the monitored and ignored configuration lists.
 
 ## 9.2.7 [elastic-security-9.2.7-release-notes]
 
