@@ -62,4 +62,4 @@ If you edit a budget scoped to cloud resources, resources that no longer exist a
 
 Credit consumption alerts are sent when your organization has used a certain percentage of [available credits](/deploy-manage/cloud-organization/billing/ecu.md#view-available-credits). These alerts are set automatically and can't be configured.
 
-Alerts are triggered to be sent when your credit consumption reaches one of the set thresholds: 33%, 25%, and 16% of active credits remaining.
+Alerts are triggered to be sent when your credit consumption reaches one of the set thresholds: 33%, 25%, 16%, and 0% of active credits remaining.
