@@ -64,7 +64,7 @@ Complete the fields in the **Create skill** dialog:
 - **Name**: A human-readable name.
 - **Description**: A short description of when the agent should use the skill. This field is always included in the agent's context, so it should be specific and semantically distinct from other skill descriptions.
 - **Instructions**: The skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
-- **Associated tools**: The built-in tools the skill should have access to (up to 100). Available under **Advanced options** in the UI. Corresponds to `tool_ids` in the API.
+- **Associated tools**: The tools the skill should have access to (up to 100). Available under **Advanced options** in the UI. Corresponds to `tool_ids` in the API.
 
 :::{image} images/create-new-skill.png
 :alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
