@@ -58,14 +58,12 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-Custom threshold and SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
+SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
 
 * A rule simulation may show a condition is violated, but the rule itself may not trigger an alert because it evaluates only origin data.
 * Discover and rules may show different results for the same data view.
 
-APM-specific rules (APM anomaly, error count threshold, failed transaction rate threshold, latency threshold) and Infrastructure Inventory rules are not fully tested with {{cps-init}}.
-
-Tracking: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
+{{ml-cap}} rules are not available in {{cps-init}}.
 
 ### SLO visibility [obs-cps-slo-remote]
 
@@ -79,17 +77,10 @@ In a {{cps-init}} origin project, Discover may show no data even when linked pro
 
 Tracking: [kibana#260930](https://github.com/elastic/kibana/issues/260930)
 
-### {{observability}} overview alerts are origin only [obs-cps-overview-alerts]
+### Alerts are origin only [obs-cps-overview-alerts]
 
-The **Alerts** section on the {{observability}} overview page shows alerts from the origin project only, even when rules are configured to act on cross-project data.
+**Alerts** are from the origin project only, even when rules are configured to act on cross-project data.
 
-### Synthetics is not affected by {{cps-init}} [obs-cps-synthetics]
+### Synthetics is not available in {{cps-init}} [obs-cps-synthetics]
 
 Synthetics monitors and TLS certificates are bound to saved objects and remain scoped to the origin project. Monitors from linked projects do not appear in the Synthetics UI of the origin project.
-
-## What's next [obs-cps-whats-next]
-
-Native {{cps-init}} support for additional {{observability}} apps is planned. When {{cps-init}} is enabled in an app, the scope selector will become available in that app, matching the experience in Discover and Dashboards.
-
-* SLO {{cps-init}} readiness: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
-* Rules {{cps-init}} readiness: [kibana#257714](https://github.com/elastic/kibana/issues/257714)
