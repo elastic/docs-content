@@ -78,7 +78,7 @@ This feature requires a [Generative AI connector](kibana://reference/connectors-
 To use AI suggestions to send data to child streams:
 
 1. Select **Suggest partitions with AI**. Streams uses AI to look at your data and give you suggestions for grouping your data.
-1. Either **Accept** or **Reject** the AI suggestions. After selecting **Accept**, you'll see the suggested **Stream name** and **Condition**.
+1. Either **Accept** or **Reject** the AI suggestions. After selecting **Accept**, review the suggested **Stream name** and **Condition**.
 1. Select **Create stream**.
 :::
 :::{applies-item} { stack: preview 9.4+, serverless: preview }
@@ -87,7 +87,7 @@ To use AI suggestions to send data to child streams:
 1. Select **Suggest partitions with AI**. Streams uses AI to look at your data and give you suggestions for grouping your data.
 1. Review the suggested partitions, then either **Accept** or **Reject**.
 1. To refine suggestions, select **Modify suggestions**, provide guidance (for example, Partition by service name and severity level), and submit. Streams applies your guidance to regenerate suggestions.
-1. Refine again as needed, or select **Try again** to regenerate suggestions.
+1. Continue refining as needed, or select **Try again** to regenerate suggestions.
 1. After accepting suggestions, review the generated **Stream name** and **Condition** values.
 1. Select **Create stream**.
 :::
