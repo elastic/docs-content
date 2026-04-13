@@ -43,7 +43,7 @@ Built-in tools serve as building blocks for more complex interactions and provid
 For the complete list, refer to [Built-in tools reference](tools/builtin-tools-reference.md).
 
 :::{note}
-Some built-in skills also include inline tools that are only available while that skill is active and are not listed in the tools reference. For details, refer to [Built-in skills reference](builtin-skills-reference.md#inline-tools).
+Some built-in skills also include inline tools that are only available while that skill is active and are not listed in the tools reference. For details, refer to [Built-in skills reference](builtin-skills-reference.md).
 :::
 
 ## Custom tools

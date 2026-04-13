@@ -202,7 +202,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ## Inline tools
 
-Some built-in skills include inline tools that are only available while that skill is active. They are not listed on this page. For the full list, refer to [Built-in skills reference](../builtin-skills-reference.md#inline-tools).
+Some built-in skills include inline tools that are only available while that skill is active. They are not listed on this page. For the full list, refer to [Built-in skills reference](../builtin-skills-reference.md).
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
