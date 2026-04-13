@@ -61,12 +61,23 @@ If you're using {{serverless-full}}, you can optionally [create custom roles in 
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
-For {{ech}} deployments, the following predefined roles are available:
+For {{ech}} deployments, the following predefined roles are available. Each role defines what users can do both in the {{ecloud}} console (for managing deployments) and within the deployment itself (for accessing {{kib}} and data), and can be scoped either to specific deployments or to all deployments.
 
-* **Admin**: Can manage deployment details, properties and security privileges, and is able to sign on to the deployment with superuser privileges. This role can be scoped to one or more deployments. In order to prevent scope expansion, only Admins on all deployments can create new deployments.
-* **Editor**: Has the same rights as Admin, except from deployment creation and management of security privileges. Editors are able to sign on to the deployment with the “editor” stack role. This role can be scoped to one or more deployments.
-* **Viewer**: Can view deployments, and can sign on to the deployment with the viewer Stack role. This role can be scoped to one or more deployments.
+* **Admin**: Can manage deployment details, properties, and security privileges in the {{ecloud}} console, and can sign in to the deployment with [superuser](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser) privileges, which grant full access to {{kib}}, cluster management, and all data indices.
 
+  ::::{note}
+  In order to prevent scope expansion, only Admins on all deployments can create new deployments.
+  ::::
+
+* **Editor**: Can manage deployment details and properties within their scope in the {{ecloud}} console, but cannot create new deployments or manage security privileges.
+
+  When accessing a deployment, they sign in with the [`editor` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to all features in {{kib}} and read-only access to user data indices.
+
+  ::::{note}
+  Some {{es}} HTTP APIs require broader cluster privileges than this role provides and are therefore not available. For example, `GET _cat/indices`.
+  ::::
+
+* **Viewer**: Can only view deployments within their scope in the {{ecloud}} console. When accessing a deployment, they sign in with the [`viewer` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-viewer), which grants read-only access to all features in {{kib}} and to user data indices.
 
 ### Mapping of {{ecloud}} roles with {{stack}} roles [ec-stack-user-org-member]
 
