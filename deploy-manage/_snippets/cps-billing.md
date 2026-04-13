@@ -6,4 +6,4 @@
 | {{obs-serverless}}<br><br>{{sec-serverless}} | During technical preview, there are no separate {{cps}} charges.<br><br>When {{cps-init}} becomes generally available, origin projects will incur an additional monthly charge for each GB of data retained in each project linked from the origin. Each retained GB in a linked project will be billed to the origin project on a monthly basis. |
 
 
-When {{cps-init}} becomes generally available, all project types will also incur a charge for data moved between projects. Exact rates and billing mechanics will be published closer to GA. 
+When {{cps-init}} becomes generally available, all project types will also incur a charge for data moved between projects. Exact rates and billing mechanics will be provided closer to GA.
