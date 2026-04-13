@@ -168,7 +168,31 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 * [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
 
-## Limitations
+## Identifying remote and origin documents [cps-identify-documents]
+
+To determine whether a document comes from the origin project or a linked project, examine the `_index` field.
+
+Remote documents include the linked project's alias as a prefix, separated by a colon:
+
+```
+my-linked-project-abc123:.ds-logs-generic.otel-default-2026.03.02-000001
+```
+
+Origin documents have no prefix:
+
+```
+.ds-logs-generic.otel-default-2026.03.02-000001
+```
+
+In {{esql}}, the `_index` field is not returned by default. To include it, use the `METADATA` keyword:
+
+```esql
+FROM logs-* METADATA _index
+| WHERE @timestamp > "2026-03-16T15:15:00Z"
+| KEEP @timestamp, _index, message
+```
+
+## Limitations [cps-limitations]
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::

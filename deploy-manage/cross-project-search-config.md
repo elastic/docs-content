@@ -15,7 +15,7 @@ navigation_title: "Cross-project search"
 {{cps-cap}} is the {{serverless-short}} equivalent of [{{ccs}}](/explore-analyze/cross-cluster-search.md), with a few differences and enhancements:
 
 * Setting up {{cps}} doesn't require an understanding of your deployment architecture or complex security configurations.
-* Permissions stay consistent across projects, and you can always adjust scope and access as needed. 
+* Permissions stay consistent across projects, and you can always adjust scope and access as needed.
 * Searches are performed across projects by default, reducing the need to refactor your queries as you link additional projects.
 
 This section explains how to set up and manage {{cps}} for your organization, including linking projects, managing user access, and refining scope. For information on using {{cps}}, including syntax and examples, refer to [](/explore-analyze/cross-project-search.md).
@@ -36,7 +36,7 @@ Projects are intended to act as logical namespaces for data, not hard boundaries
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
-Administrators can also adjust the search scope by [configuring the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). For best results, set this space-level default before you link projects. 
+Administrators can also adjust the search scope by [configuring the {{cps-init}} scope for each space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope). For best results, set this space-level default before you link projects.
 
 For details about project IDs and aliases used in search expressions, refer to [Project IDs and aliases](/explore-analyze/cross-project-search.md#project-ids-and-aliases).
 
@@ -59,7 +59,7 @@ During technical preview, only newly created projects can be origin projects for
 
 To be available for linking, projects must meet the following requirements:
 
-- The origin project and all linked projects must be in the same {{ecloud}} organization. 
+- The origin project and all linked projects must be in the same {{ecloud}} organization.
 - You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
@@ -74,7 +74,7 @@ When configuring {{cps}}, consider how the {{cps-init}} architecture (or linking
 
 For most deployments, we recommend creating a dedicated **overview project** that can act as an origin project. You can also think of this as a hub-and-spoke model.
 
-In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other. 
+In this architecture, you create a new, empty project and link existing projects to it. You run all cross-project searches from the new overview project, while your actual active projects continue to operate independently. The linked ("spoke") projects are not linked to each other.
 
 ![Overview project architecture for cross-project search](images/serverless-cross-project-search-arch.svg)
 
@@ -84,7 +84,7 @@ The overview project becomes a central point for broad searches, dashboards, and
 
 The overview project model is strongly recommended and appropriate for most {{cps-init}} configurations. These additional patterns are valid, but they involve additional risk and require careful configuration:
 
-- **Shared data project (N-to-1):** A single project stores data from a shared service (for example, logs). Multiple origin projects link to this central data project. 
+- **Shared data project (N-to-1):** A single project stores data from a shared service (for example, logs). Multiple origin projects link to this central data project.
 
     The N-to-1 pattern is often used when several teams need to query shared data independently. The main risk is that linking to a shared data project affects searches, dashboards, and alerts in each origin project. If the shared project is a large, active project, the expanded dataset might cause unexpected behavior. If you're using this pattern, make sure to [manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) and consider [CPS scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-search-scope).
 
@@ -133,9 +133,9 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 {{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project.
 
-% For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
+For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
-## Using {{cps-init}} 
+## Using {{cps-init}}
 
 After you configure {{cps}} and link projects, users can start searching across linked projects from the origin project. For search syntax, scope controls, and examples, refer to the following pages:
 
