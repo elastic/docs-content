@@ -61,7 +61,7 @@ For broader guidance on writing custom instructions, tool descriptions, and chat
 
 The description is the primary signal the agent uses to decide whether to load a skill. It is always included in context, whereas the skill's full instructions are only read once the skill is selected. A vague description means the agent may load the wrong skill or none at all.
 
-A good description explains what the skill does and explicitly states when to use it. Keep it concise: there is a character limit, and every word should be useful for routing.
+A good description explains what the skill does and explicitly states when to use it. Keep it concise: the description has a 1024-character limit, and every word should be useful for routing.
 
 ✅ **Good**
 
