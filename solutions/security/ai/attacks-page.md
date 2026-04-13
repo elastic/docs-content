@@ -1,5 +1,5 @@
 ---
-navigation_title: Attacks
+navigation_title: The Attacks page
 description: "Use the Attacks page to view, triage, and manage correlated attack chains alongside individual alerts in a unified interface."
 applies_to:
   stack: preview 9.4
@@ -12,7 +12,7 @@ products:
 
 # Attacks page [attacks-page]
 
-The **Attacks** page provides a dedicated triage and management interface for [Attack Discovery](/solutions/security/ai/attack-discovery.md) findings. You can use it to schedule Attack Discovery runs, view summary information about attacks in your environment, triage individual attacks, and update their statuses and assignees.
+The **Attacks** page provides a dedicated triage and management interface for alerts and [Attack Discovery](/solutions/security/ai/attack-discovery.md) findings. You can use it to schedule Attack Discovery runs, view summary information about attacks and alerts in your environment, triage them, and update their statuses and assignees.
 
 
 ## Prerequisites [attacks-prerequisites]
@@ -26,7 +26,7 @@ To access the Attacks page, you must turn on **Enable alerts and attacks alignme
 
 ## How it works [attacks-how-it-works]
 
-At the top of the **Attacks** page, you can access the following overview visualizations and tables. The **Summary** tab shows the total number of attacks detected and attack volume over time. The **Trends**, **Count**, and **Treemap** tabs all show statistics describing alerts associated with these attacks. 
+At the top of the **Attacks** page, you can find overview visualizations and tables. The **Summary** tab shows the total number of attacks detected and attack volume over time, while the **Trends**, **Count**, and **Treemap** tabs all describe alerts associated with these attacks. 
 
 
 ::::{image} /solutions/images/security-attacks-page-ov.png
@@ -42,12 +42,12 @@ The **Attacks** page lets you schedule Attack Discovery runs and view their find
 
 ## Triage attacks [attacks-triage]
 
-The attacks table appears under the summary section and lists individual attacks. You can expand an attack to view details including which entities were involved and which steps of the attack chain were performed.
+The Attacks table appears under the summary section and lists individual attacks. You can expand an attack to view details including which entities were involved and which steps of the attack chain were performed.
 
 
 ## Filter and search attacks [attacks-filter-search]
 
-Use the controls at the top of the attacks table to narrow results:
+Use the controls at the top of the Attacks table to narrow results:
 
 | Filter method | Description |
 |---------------|-------------|
@@ -61,15 +61,13 @@ Use the controls at the top of the attacks table to narrow results:
 
 Click the **View options** ({icon}`controls`) menu to access the following toggles:
 
-**Show attacks only**
-: This toggle is enabled by default. It hides standalone alerts (alerts that don't belong to any attack) so you can focus on correlated attack groups. Disable it to see all alerts, including those not linked to any attack.
+**Show attacks only**: This toggle is enabled by default. It hides standalone alerts (alerts that don't belong to any attack) so you can focus on correlated attack groups. Disable it to see all alerts, including those not linked to any attack.
 
 :::{note}
-When **Show attacks only** is disabled, standalone alerts appear in a group labeled **-** (dash). This group acts as a bucket for all alerts that aren't linked to an attack.
+When **Show attacks only** is disabled, standalone alerts appear in a group labeled `-` (dash). This group acts as a bucket for all alerts that aren't linked to an attack.
 :::
 
-**Show anonymized values**
-: When enabled, attack titles and summaries are replaced with anonymized placeholder values. If you're searching the page for specific entities like hostnames or IP addresses, make sure this toggle is disabled.
+**Show anonymized values**: When enabled, replaces attack titles and summaries with anonymized placeholder values. If you're searching the page for specific entities like hostnames or IP addresses, make sure to turn this off.
 
 ### How filtering works on the Attacks page [attacks-filtering-behavior]
 
@@ -77,36 +75,28 @@ The **Attacks** page uses a single data view that combines both the attacks inde
 
 :::{dropdown} Filtering behavior details
 
-**Timeframe filtering**
-: An attack group appears if either the attack itself or any of its related alerts fall within the selected time range. If the attack is within the time range but all its alerts are outside of it, the attack renders but shows 0 alerts when expanded. Conversely, if the attack is outside the time range but some of its alerts are inside, the attack still appears.
+**Timeframe filtering**: An attack group appears if either the attack itself or any of its related alerts fall within the selected time range. If the attack is within the time range but all its alerts are outside of it, the attack renders but shows 0 alerts when expanded. Conversely, if the attack is outside the time range but some of its alerts are inside, the attack still appears.
 
-**Alert-specific field filters**
-: Filtering on a field that only exists on alert documents (not attack documents) excludes attack documents from the underlying dataset. Attack groups still render visually, but group statistics and sorting may be affected.
+**Alert-specific field filters**: Filtering on a field that only exists on alert documents (not attack documents) excludes attack documents from the underlying dataset. Attack groups still appear, but group statistics and sorting may be affected.
 
-**Attack-specific field filters**
-: Filtering on a field that only exists on attack documents (for example, the connector that generated an attack) hides all related alerts from the dataset. The attack group appears, but expanding it shows 0 alerts because the alert documents don't contain the attack-specific field.
+**Attack-specific field filters**: Filtering on a field that only exists on attack documents (for example, the connector that generated an attack) hides all related alerts from the dataset. The attack group appears, but expanding it shows 0 alerts because the alert documents don't contain the attack-specific field.
 
-**Status filter**
-: The status filter evaluates both attacks and their related alerts. A closed attack can still appear when you filter by **Open** status if it has underlying open alerts that match the filter.
+**Status filter**: The status filter evaluates both attacks and their related alerts. A closed attack can still appear when you filter by **Open** status if it has underlying open alerts that match the filter.
 
-**Assignees filter**
-: The assignees filter applies across both attacks and alerts. Filtering by a user who is assigned to the attack may hide its alerts if those alerts are assigned to a different user.
+**Assignees filter**: The assignees filter applies across both attacks and alerts. Filtering by assigned user may hide an attack's alerts if those alerts have a different assignee.
 
-**Sorting by timestamp**
-: Sorting evaluates all visible documents in a group. If an attack document is filtered out by an alert-specific query, the group's position in the sort order is based solely on the timestamps of its remaining alerts.
+**Sorting by timestamp**: Sorting evaluates all visible documents in a group. If an alert-specific query filters out an attack document, the group's position in the sort order is based solely on the timestamps of its remaining alerts.
 
-**KQL autocomplete**
-: The KQL autocomplete shows fields from both attacks and alerts. Be cautious when filtering, because using a field exclusive to one entity type filters out the other type from the underlying data.
+**KQL autocomplete**: The KQL autocomplete shows fields from both attacks and alerts. Be cautious when filtering, because using a field exclusive to one entity type filters out the other type from the underlying data.
 
-**Alerts count badge**
-: The **Alerts: N** badge on each attack group counts only detection alerts that match the current filters — it doesn't include the attack document itself. When you expand a group, the badge may show a format like `2/10`, where the first number is the count of alerts matching your current filters and time range, and the second is the total number of alerts historically linked to the attack.
+**Alerts count badge**: The **Alerts: N** badge on each attack group counts only detection alerts that match the current filters — it doesn't include the attack document itself. When you expand a group, the badge may show a format like `2/10`, where the first number is the count of alerts matching your current filters and time range, and the second is the total number of alerts historically linked to the attack.
 
 :::
 
 
 ## Manage attacks [attacks-manage]
 
-Access actions from the **Take actions** menu on an attack row in the attacks table.
+Access actions from the **Take actions** menu on an attack's row in the Attacks table.
 
 | Action | Description |
 |--------|-------------|
@@ -177,9 +167,9 @@ Investigating an attack in Timeline includes all alerts that were originally cor
 
 To add an attack to a [case](/solutions/security/investigate/security-cases.md), click **Take actions**, then select **Add to new case** or **Add to existing case**.
 
-### View in AI Assistant [attacks-view-in-ai-assistant]
+### View in AI Chat [attacks-view-in-ai-assistant]
 
-To continue investigating an attack with the AI Assistant, click **Take actions**, then select **View in AI Assistant**. You can ask follow-up questions about the attack or its associated alerts.
+To continue investigating an attack with an AI agent, click **Take actions**, then select **View in AI Chat**. You can ask follow-up questions about the attack or its associated alerts.
 
 
 ## Next steps [attacks-next-steps]
