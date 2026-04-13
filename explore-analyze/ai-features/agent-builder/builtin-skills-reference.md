@@ -114,8 +114,6 @@ $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {appli
 
 Inline tools are skill-bound tools that are only available while the skill that defines them is active. They do not appear in the tools catalog and cannot be assigned to agents independently.
 
-$$$agent-builder-security-alert-analysis-get-related-alerts$$$ `security.alert-analysis.get-related-alerts`
-:   Finds security alerts related to a seed alert by matching shared entity fields such as host, user, and IP address. Defined by the [`alert-analysis`](#agent-builder-alert-analysis-skill) skill.
 
 $$$agent-builder-security-ml-jobs$$$ `security.ml.jobs`
 :   Retrieves {{ml-app}} anomaly detection job results filtered to security-relevant job types, returning anomaly records with entity fields, scores, and field values. Defined by the [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) skill.
