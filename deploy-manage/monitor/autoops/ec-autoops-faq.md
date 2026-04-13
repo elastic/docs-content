@@ -60,7 +60,7 @@ $$$autoops-deployment-types$$$**Is AutoOps available in all deployment types?**
 ::: 
 
 $$$cant-see-autoops$$$**Why can't I see AutoOps in some deployments and projects?**
-:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you might not see it if your deployment or project is in a region where AutoOps is not available yet. AutoOps is currently not available in Azure.
+:   AutoOps is rolling out in phases across CSPs and [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), so you might not see it if your deployment or project is in a region where AutoOps is not available yet.
 
 $$$autoops-license$$$**How is AutoOps licensed?**
 :   AutoOps is available for free across all subscription levels and license types in {{ech}} deployments, {{serverless-short}} projects, and ECE, ECK, and self-managed clusters. It does not consume ECUs.

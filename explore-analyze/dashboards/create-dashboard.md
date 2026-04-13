@@ -39,7 +39,7 @@ Before creating a dashboard, ensure you have:
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
-5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
+5. Define the main settings of your dashboard from the **Settings** menu in the application menu.
 
     1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{kib}} search bar.
     2. Additional display options allow you unify the look and feel of the dashboard’s panels:
@@ -53,7 +53,6 @@ Before creating a dashboard, ensure you have:
 
     3. Click **Apply**.
        
-       ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
 
 6. Save the dashboard.
