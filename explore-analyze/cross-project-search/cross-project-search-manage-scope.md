@@ -75,7 +75,7 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 ### {{cps-cap}} availability in Elastic {{observability}} apps [cps-availability-observability]
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project. The following table shows how each {{observability}} app behaves with {{cps-init}}:
+{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project. The following table shows how each {{observability}} app behaves with {{cps-init}}:
 
 ::::{include} /solutions/_snippets/cps-obs-compatibility.md
 ::::
