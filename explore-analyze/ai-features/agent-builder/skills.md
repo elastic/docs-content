@@ -25,8 +25,7 @@ Skills differ from the agent's base system prompt: the system prompt is always i
 When an agent receives a message, it selects a skill if it determines that one of the available skills is relevant to the query based on the skill's name and description. If a skill activates, it provides:
 
 - **Knowledge content**: domain-specific instructions written in Markdown that tell the agent how to approach the task.
-- **Registry tools**: IDs of existing [built-in tools](tools/builtin-tools-reference.md) that the agent can call while the skill is active.
-- **Inline tools**: skill-bound tools that are only available while the skill is running and do not appear in the tools catalog.
+- **Tools**: [Built-in tools](tools/builtin-tools-reference.md) or [custom tools](tools/custom-tools.md)  that the agent can call while the skill is active.
 
 ## Use cases
 
