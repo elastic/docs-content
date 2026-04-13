@@ -64,8 +64,8 @@ Not all apps support {{cps}}. The following table shows which apps support the {
 | **Discover** | Editable | ES\|QL |
 | **Lens visualizations** | Editable | ES\|QL visualizations[^cps-badge] |
 | **Maps** | Editable | Layer-level [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) for vector layers and joins |
-| **{{ml-app}} AIOps Labs** | Read-only | ES\|QL |
-| **{{ml-app}} Data Visualizer** | Read-only | ES\|QL |
+| **{{ml-app}} AIOps Labs** | Editable | Not available |
+| **{{ml-app}} {{data-viz}}** | Editable | ES\|QL |
 | **{{rules-ui}} and alerts** | Read-only | ES\|QL rules support `SET project_routing`. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.|
 | **Streams** | Not available | ES\|QL |
 | **Vega** | Editable | Project routing in Vega specs |
