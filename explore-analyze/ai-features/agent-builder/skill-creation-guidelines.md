@@ -16,19 +16,24 @@ products:
 
 [Custom skills](skills.md) give your agents consistent, reusable expertise for specific task domains. The quality of a skill depends almost entirely on how well its instructions are written. This guide covers how to write instructions that help the agent select the right skill, follow the right steps, and handle edge cases gracefully.
 
-The guidance here is a starting point. Test and evaluate your agent after creating or modifying a skill to make sure it behaves as intended.
+## Skill authoring checklist
 
-## Checklist
+Use this checklist when creating or updating a skill:
 
-Work through each section before saving your skill:
-
-- [Choose between a skill and the system prompt](#skills-or-system-prompt)
+- [Decide where to put your instructions](#decide-where-to-put-your-instructions)
 - [Write a clear description](#write-a-clear-description)
+  - [Make descriptions semantically distinct](#make-descriptions-semantically-distinct)
 - [Structure the instructions](#structure-the-instructions)
+  - [Start with trigger conditions](#start-with-trigger-conditions)
+  - [Write detailed core instructions](#write-detailed-core-instructions)
+  - [Add realistic examples](#add-realistic-examples)
+  - [Document edge cases](#document-edge-cases)
 - [Use referenced content](#use-referenced-content)
-- [Keep tools focused](#keep-tools-focused)
+- [Scope each skill to one task](#scope-each-skill-to-one-task)
+- [Assign only relevant tools](#assign-only-relevant-tools)
+- [Test your skill](#test-your-skill)
 
-## Skills or system prompt?
+## Decide where to put your instructions
 
 The agent's system prompt is always in context. Skill instructions are only loaded when the agent decides the skill is relevant. This distinction should guide what you put where.
 
@@ -49,9 +54,7 @@ Keep instructions in the system prompt when they are general and should always a
 - The behavior is core to the agent's identity or should apply to every response.
 - Instructions are short, general, and always relevant.
 
-:::{note}
 For one-off requirements specific to a single interaction, use direct instructions in the conversation instead. There is no need to encode them in a skill or system prompt.
-:::
 
 :::{tip}
 For broader guidance on writing custom instructions, tool descriptions, and chat prompts, refer to [Best practices for prompt engineering](prompt-engineering.md).
@@ -79,8 +82,10 @@ Use when investigating an alert to understand the broader attack context.  # <2>
 "How to find alerts"  # <1>
 "Security"            # <2>
 ```
-1. No specificity about what "related" means and no trigger condition.
+1. No explanation of what the skill does or when to use it.
 2. Gives the agent no actionable guidance on when or how to use the skill.
+
+### Make descriptions semantically distinct
 
 If you have multiple skills that cover related areas, make sure their descriptions are semantically distinct. If two descriptions are similar, the agent will struggle to choose between them. Merge overlapping skills or sharpen the language until the difference is clear.
 
@@ -104,7 +109,9 @@ Use this skill when:
 1. Name the section clearly so the skill is self-documenting.
 2. Phrase trigger conditions as specific user queries or task types, not abstract categories.
 
+:::{tip}
 Avoid vague openings like "This skill helps with alerts." Be specific about the exact situations this skill should handle.
+:::
 
 ### Write detailed core instructions
 
@@ -138,9 +145,11 @@ Step-by-step format works well for procedural tasks:
 2. Use specific, measurable criteria rather than vague descriptions.
 3. Tell the agent what format to present results in, not just what to find.
 
-Each skill should do one thing well. If you find yourself writing instructions for two distinct workflows, split them into two skills. A focused skill is easier for the agent to apply correctly and easier for you to maintain.
+:::{tip}
+If you find yourself writing instructions for two distinct workflows, that is a signal to [split the skill](#scope-each-skill-to-one-task).
+:::
 
-### Add examples
+### Add realistic examples
 
 Concrete examples improve the agent's ability to apply instructions correctly. Show realistic inputs and the expected output or reasoning process, with enough detail to be unambiguous.
 
@@ -164,7 +173,7 @@ Found related alerts:  # <3>
 2. Include a realistic user query to anchor the example in context.
 3. Show the expected output format alongside the steps.
 
-Examples are optional but particularly useful for tasks with nuanced logic or where the expected output format matters.
+Add examples when the task involves nuanced logic or when the expected output format matters.
 
 ### Document edge cases
 
@@ -207,11 +216,21 @@ Keep the depth of referenced content shallow. Nesting blocks more than two level
 
 For an example of creating a skill with `referenced_content`, refer to [Skills APIs](kibana-api.md#skills-apis).
 
-## Keep tools focused
+## Scope each skill to one task
+
+Each skill should do one thing well. A focused skill is easier for the agent to apply correctly and easier for you to maintain. If you find yourself writing instructions that cover two distinct workflows, split them into two skills with separate descriptions.
+
+## Assign only relevant tools
 
 Each skill can specify which tools it has access to. Assign only the tools that are directly relevant to the skill's task. Providing unnecessary tools increases the risk that the agent calls the wrong one.
 
-Follow the same single responsibility principle for tools that applies to skills: prefer a tool that does one thing well over a wrapper that combines multiple operations. Describe how to use the available tools within your instructions so the agent knows when to reach for each one.
+Apply the same principle to tools: prefer a tool that does one thing well over a wrapper that combines multiple operations.
+
+Describe how to use the available tools within your instructions so the agent knows when to reach for each one.
+
+## Test your skill
+
+After saving, assign the skill to an agent and test it with realistic queries. Check that the agent selects the skill when expected, follows the steps correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
 
 ## Related pages
 
