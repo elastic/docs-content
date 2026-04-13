@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Remove a field or all fields matching a prefix from documents with the Streams remove processor in Streamlang.
 ---
 
 # Remove processor [streams-remove-processor]
