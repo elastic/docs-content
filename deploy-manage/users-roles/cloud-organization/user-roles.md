@@ -66,7 +66,7 @@ For {{ech}} deployments, the following predefined roles are available. Each role
 * **Admin**: Can manage deployment details, properties, and security privileges in the {{ecloud}} console, and can sign in to the deployment with [superuser](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser) privileges, which grant full access to {{kib}}, cluster management, and all data indices.
 
   ::::{note}
-  In order to prevent scope expansion, only Admins on all deployments can create new deployments.
+  To prevent scope expansion, only Admins on all deployments can create new deployments.
   ::::
 
 * **Editor**: Can manage deployment details and properties within their scope in the {{ecloud}} console, but cannot create new deployments or manage security privileges.
