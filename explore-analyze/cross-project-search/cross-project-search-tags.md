@@ -103,4 +103,4 @@ For example, the following ES|QL query counts documents per project alias:
 FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
 ```
 
-You can also refer to [Query across Serverless projects with ES|QL](/elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.
+You can also refer to [Query across Serverless projects with ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.
