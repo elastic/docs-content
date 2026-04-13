@@ -12,6 +12,8 @@ products:
   - id: cloud-enterprise
   - id: cloud-serverless
 navigation_title: Through the API
+sub:
+  policy-type: "network security"
 ---
 
 # Manage network security through the API
@@ -45,9 +47,17 @@ Refer to [](network-security.md) to learn more about network security across all
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
 :::
 
-:::{note}
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
+## Requirements
+```{applies_to}
+serverless:
+```
+
+The following requirements apply to the project where you want to apply a network security policy:
+
+:::{include} _snippets/network-sec-tier-reqs.md
 :::
+
+There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 

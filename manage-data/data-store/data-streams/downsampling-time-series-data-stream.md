@@ -19,3 +19,4 @@ This section explains the available downsampling options and helps you understan
 
 * [](downsampling-concepts.md)
 * [](run-downsampling.md)
+* [](query-downsampled-data.md)

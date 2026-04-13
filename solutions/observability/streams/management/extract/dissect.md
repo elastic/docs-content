@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Parse structured log messages into fields using delimiter-based patterns with the Streams dissect processor in Streamlang.
 ---
 # Dissect processor [streams-dissect-processor]
 
