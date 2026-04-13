@@ -846,6 +846,9 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/5245
   'explore-analyze/cross-project-search/cross-project-search-link-projects.md': 'deploy-manage/cross-project-search-config/cps-config-link-and-manage.md'
 
+# No more elasticsearch solution add-ons
+  'solutions/elasticsearch-solution-project/es-serverless-add-ons.md': 'solutions/elasticsearch-solution-project.md'
+  
 # Fleet: removed "Hybrid Agent" product wording; remap section anchors on the same pages
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:

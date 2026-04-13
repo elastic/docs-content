@@ -197,7 +197,7 @@ FROM logs-* METADATA _index
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
 
-For administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [](/deploy-manage/cross-project-search-config.md).
+For a [complete list of limitations](/deploy-manage/cross-project-search-config.md#cps-limitations), including restrictions for Elastic Observability and {{elastic-sec}} projects, as well as administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [](/deploy-manage/cross-project-search-config.md).
 
 ### Observability app limitations
 

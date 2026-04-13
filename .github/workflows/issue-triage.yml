@@ -2,11 +2,10 @@ name: Issue Triage
 on:
   issue_comment:
     types: [created]
-  issues:
-    types: [opened, labeled]
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   issues: write
   pull-requests: write

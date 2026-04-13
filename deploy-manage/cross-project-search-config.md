@@ -65,7 +65,6 @@ To be available for linking, projects must meet the following requirements:
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](#cps-compatibility) on the project.
 
-% TODO cf https://github.com/elastic/docs-content/pull/5190
 
 ## Plan your {{cps-init}} architecture [cps-arch]
 
@@ -108,7 +107,6 @@ Make sure to also review the [feature impacts](#cps-feature-impacts) and [limita
 When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
 
 % TODO billing, subscriptions, licensing
-% TODO compare to alerting impacts doc
 
 - **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
 
@@ -124,6 +122,18 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ::::{include} /deploy-manage/_snippets/cps-limitations-core.md
 ::::
+* Additional limitations apply to Elastic {{observability}} and {{elastic-sec}} projects.
+
+**{{elastic-sec}} apps**
+
+:::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
+:::
+
+**Elastic {{observability}} apps**
+
+{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project.
+
+% For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 
 ## Using {{cps-init}} 
 

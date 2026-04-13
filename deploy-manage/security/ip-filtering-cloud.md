@@ -37,12 +37,15 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 :::
 
 ## Requirements
+```{applies_to}
+serverless:
+```
+The following requirements apply to the project where you want to apply an IP filter policy:
 
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply IP filter policies. During the promotional period, applying an IP filter policy to a project opts that project in to Serverless Plus. 
-
-:::{tip}
-You can opt out by disconnecting all policies from the project.
+:::{include} _snippets/network-sec-tier-reqs.md
 :::
+
+There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
 ## Limitations
 ```{applies_to}
@@ -77,8 +80,6 @@ To create an IP filter:
 ### Step 2: Associate an IP filter with a deployment or project
 
 You can associate an IP filter with your deployment or project from the IP filter's settings, or from your deployment or project's settings. After you associate the IP filter with a deployment or project, it starts filtering traffic.
-
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply IP filters. During the promotional period, applying an IP filter to a project opts that project in to Serverless Plus.
 
 :::{tip}
 You can apply multiple policies to a single deployment or project. For {{ech}} deployments and {{serverless-short}} projects, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
