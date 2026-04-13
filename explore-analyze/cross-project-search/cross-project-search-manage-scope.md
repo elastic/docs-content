@@ -87,8 +87,6 @@ For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions
 :::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
 :::
 
-% ### {{cps-cap}} availability in Elastic {{observability}} apps [cps-availability-observability]
-
 ## Related pages
 
 * [{{cps-cap}} overview](/explore-analyze/cross-project-search.md)

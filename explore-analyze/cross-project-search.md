@@ -199,10 +199,6 @@ FROM logs-* METADATA _index
 
 For a [complete list of limitations](/deploy-manage/cross-project-search-config.md#cps-limitations), including restrictions for Elastic Observability and {{elastic-sec}} projects, as well as administrator-focused details including compatibility, architecture patterns, and feature impacts, refer to [](/deploy-manage/cross-project-search-config.md).
 
-### Observability app limitations
-
-{{observability}}-specific apps have limited {{cps-init}} support. The scope selector is not available and they remain scoped to the local project. This does not apply to shared apps such as Discover and dashboards.
-
 ## {{cps-cap}} examples [cps-examples]
 
 The following examples demonstrate how search requests behave in different {{cps-init}} scenarios.
