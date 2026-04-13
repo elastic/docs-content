@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Concatenate field values and literal strings into a single field with the Streams concat processor in Streamlang.
 ---
 
 # Concat processor [streams-concat-processor]
