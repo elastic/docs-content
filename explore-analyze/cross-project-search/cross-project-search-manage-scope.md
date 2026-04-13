@@ -73,7 +73,7 @@ The header's {{cps-init}} scope selector is not available in other apps, includi
 
 [^cps-badge]: When a visualization panel uses a query-level override, it displays a **Custom CPS scope** badge on dashboards to indicate that it uses a different scope than the {{cps-init}} scope selector.
 
-### {{cps-cap}} availability in {{observability}} apps [cps-availability-observability]
+### {{cps-cap}} availability in Elastic {{observability}} apps [cps-availability-observability]
 
 {{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project. The following table shows how each {{observability}} app behaves with {{cps-init}}:
 
