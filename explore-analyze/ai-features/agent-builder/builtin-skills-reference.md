@@ -71,8 +71,6 @@ serverless:
   security: ga
 ```
 
-$$$agent-builder-alert-analysis-skill$$$ `alert-analysis` {applies_to}`stack: ga 9.4`
-:   Triages and investigates security alerts. Fetches alert details, finds related alerts by shared entities such as hosts, users, and IPs, correlates findings with Elastic Security Labs threat intelligence, and assesses entity risk scores to determine disposition.
 
 $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack: ga 9.4`
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior. Use to discover risky entities or profile a specific entity by ID.
