@@ -54,7 +54,7 @@ serverless:
 
 
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: unavailable`
-:   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, or general questions about services and their performance.
+:   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, alert investigations, or general questions about services and their performance.
 
 :::{warning}
 👆 `observability.investigation` is not yet available. Track progress in [elastic/kibana#262293](https://github.com/elastic/kibana/pull/262293).

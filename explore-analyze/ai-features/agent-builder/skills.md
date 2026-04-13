@@ -32,7 +32,7 @@ When an agent receives a message, it selects a skill if it determines that one o
 Use skills when you have domain-specific knowledge or procedures that multiple agents should follow consistently. Some examples:
 
 - A {{product.security}} user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
-- A {{product.observability}} user asks why a service is slow. The [`observability.rca`](builtin-skills-reference.md#agent-builder-observability-rca-skill) skill activates and runs structured root cause analysis across logs, traces, and metrics.
+- A {{product.observability}} user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
 - An {{product.elasticsearch}} user asks what data is in a given index. The [`data-exploration`](builtin-skills-reference.md#agent-builder-data-exploration-skill) skill activates and guides the agent to inspect the index schema and summarize the data.
 
 ## Built-in skills
