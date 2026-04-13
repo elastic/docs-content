@@ -27,11 +27,7 @@ Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.m
 
 ## How remote cluster filters work
 
-Remote cluster filters operate at the proxy level, allowing incoming connections based on the organization ID or {{es}} cluster ID of the local cluster that initiates the connection to the remote cluster service endpoint (default port `9443`).
-
-::::{note}
-In {{ece}}, the equivalent of the organization ID in {{ech}} is the **environment ID**, which serves the same purpose for remote cluster filtering.
-::::
+Remote cluster filters operate at the proxy level, allowing incoming connections based on the organization ID (ECH), environment ID (ECE), or {{es}} cluster ID of the local cluster that initiates the connection to the remote cluster service endpoint (default port `9443`).
 
 Because of [how network security works](/deploy-manage/security/network-security.md#how-network-security-works), these filters are only relevant when network security is enabled on the remote cluster.
 * If network security is disabled, all traffic is allowed by default and remote clusters work without any filtering policy.
