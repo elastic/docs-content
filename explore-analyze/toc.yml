@@ -387,6 +387,7 @@ toc:
         children:
           - file: alerting/kibana-alerting-v2/before-you-begin.md
             children:
+              - file: alerting/kibana-alerting-v2/before-you-begin/how-v2-alerting-works.md
               - file: alerting/kibana-alerting-v2/before-you-begin/alerting-privileges.md
               - file: alerting/kibana-alerting-v2/before-you-begin/set-up.md
           - file: alerting/kibana-alerting-v2/author-rules.md
