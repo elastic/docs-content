@@ -110,7 +110,7 @@ When an API key expires, it is automatically removed from the **API keys** tab.
 
 Roles grant an API key specific privileges for your {{ecloud}} organization and resources.
 
-You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster roles.
+You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster access roles.
 
 ### Granting {{es}} and {{kib}} API access [project-access]
 ```{applies_to}

@@ -38,14 +38,14 @@ To invite users to your organization:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-4. On the **Members** page, click **Invite members**.
-5. Enter the email addresses of the users you want to invite in the textbox.
+3. On the **Members** page, click **Invite members**.
+4. Enter the email addresses of the users you want to invite in the textbox.
 
     To add multiple members, enter the member email addresses, separated by a space.
 
 5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
 
-   If you're assigning roles for {{serverless-full}} projects, then you can grant access to all projects of the same type with a unique role, or select individual roles for specific projects. For more details about roles, refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    If you're assigning roles, you can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details about roles and permissions, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 6. Click **Send invites**.
 
@@ -56,6 +56,14 @@ To invite users to your organization:
 On the **Members** tab of the **Organization** page, you can view the list of current members, including status and role.
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
+
+:::{note}
+Which role assignments you can view for other members depends on your own roles and what you are allowed to manage. **Organization owners** can view the role assignments of every member in the organization.
+
+Members with the **Admin** cloud resource role can view role assignments for the {{ech}} deployments and {{serverless-full}} projects within their scope. For example, an **Admin** with access to all deployments and projects can view assignments scoped to all resources as well as to specific deployments and projects. An **Admin** scoped only to specific deployments or projects can view assignments for those resources only. {{ecloud}} limits visibility so scoped admins cannot remove role assignments they do not manage, and resources outside their scope are not exposed to them.
+
+For how scopes work across role types, refer to [Role scopes](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec-role-scoping) in [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+:::
 
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 
