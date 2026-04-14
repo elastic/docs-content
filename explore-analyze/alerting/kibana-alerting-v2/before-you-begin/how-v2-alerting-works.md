@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "How Kibana alerting v2 fits together: detection vs notification, rule modes, and the main terms you’ll see in the product."
+description: "How Kibana alerting v2 fits together, detection and notification model, rule modes, and the main terms you’ll see in the product."
 ---
 
 # Kibana alerting v2 concepts [kibana-alerting-v2-concepts]
@@ -37,7 +37,7 @@ These parts work together when a rule runs. Each run looks roughly like this:
 
 In Detect mode, step 3 does not apply because there are no episodes for policies to target.
 
-## Layered model: detection and notification
+## Detection and notification
 
 Kibana alerting v2 follows a two-layer model: detection first, then notification. This model gives you room to change how you evaluate data and reach people without redoing both every time.
 
@@ -62,15 +62,15 @@ In Alert mode the system still writes signals, but it also maintains **alerts**,
 
 ### Series
 
-A **series** is the bucket the rule uses for one “thing you are watching” when you **group** by a field (for example one series per host or per service). Everything the rule records for that value—signals and, in Alert mode, alert state—stays in that bucket and stays separate from other values. If you do not group, the rule behaves as if there is a single series for the whole rule.
+A **series** is the bucket the rule uses for _one thing you are watching_ when you group by a field, for example one series per host or per service. Everything the rule records for that value stays in that bucket and stays separate from other values. If you do not group, the rule behaves as if there is a single series for the whole rule.
 
 *Example:* You group by host name. `web-east` and `web-west` are two series. When the rule finds a problem on `web-east`, that history stays separate from `web-west`.
 
 ### Episodes
 
-An **episode** belongs to exactly one **series**. It is one full incident for that series: from the first time the condition goes bad until it is clearly OK again. The rule runs on its schedule many times in between; the episode is what ties those runs into a single story you (and notification policies) can treat as one unit.
+An **episode** belongs to exactly one **series**. It is one full incident for that series, from the first time the condition goes bad until it's no longer an issue. The rule runs on its schedule many times in between. The episode is what ties those runs into a single story you can treat as one unit.
 
-*Example:* On `web-east`, errors cross your threshold on Monday, stay high through Tuesday, then drop on Wednesday—that entire stretch is one episode. If the same host crosses the threshold again later, that starts a **new** episode on the same series.
+*Example:* On `web-east`, errors cross your threshold on Monday, stay high through Tuesday, then drop on Wednesday—that entire stretch is one episode. If the same host crosses the threshold again later, that starts a new episode on the same series.
 
 ### Notification policies
 

@@ -16,7 +16,7 @@ description: "Elastic alerting overview. Kibana v1 on stack and serverless, v2 a
 
 # Alerting [alerting-overview]
 
-Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified; Elastic runs the checks for you.
+Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
 Elastic offers three alerting systems, summarized below. Each has a **Get started** link to the full guide for that option.
 
@@ -38,7 +38,7 @@ serverless: preview
 stack: unavailable
 ```
 
-Kibana alerting v2 is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how simple or advanced you want that workflow to be.
+Kibana alerting v2 is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be.
 
 Here is what you get with v2:
 
