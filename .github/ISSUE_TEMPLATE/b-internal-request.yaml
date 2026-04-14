@@ -1,11 +1,13 @@
 name: "Internal documentation request (Elastic employees)"
-description: An issue template for Elastic employees to request improvements, additions, or changes to the documentation.
+description: Request a documentation improvement, addition, or change for Elastic docs.
 title: "[Internal]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this request! This form will create an issue that the Documentation team will triage and prioritize. This form does not guarantee that your issue will be prioritized for the selected iteration. _But_, completing this issue as early and as comprehensively as possible will help us understand and plan the work better!
+        Thanks for taking the time to fill out this request. Use this form for documentation work only. If you need to report a product bug or request product behavior changes, please use the appropriate product workflow instead.
+
+        This form will create an issue that the documentation team will triage and prioritize. Filling it out as early and as clearly as possible helps us scope the work and plan it well.
   - type: textarea
     id: description
     attributes:
@@ -42,17 +44,17 @@ body:
         - Elastic Cloud Hosted only
         - Elastic Cloud Serverless only
         - Unknown
-      default: 0
+      default: 5
     validations:
       required: true
   - type: textarea
     id: doc-set-differences
     attributes:
       label: Feature differences
-      description: If you selected multiple deployment methods above, please describe how, if at all, the feature differs in each deployment method.
+      description: If you selected multiple deployment methods above, describe how the feature differs in each one. Otherwise, leave this blank.
       placeholder: The feature is identical in all deployment methods.
     validations:
-      required: true
+      required: false
   - type: dropdown
     id: version
     attributes:
@@ -74,22 +76,22 @@ body:
     id: release-serverless
     attributes:
       label: Serverless release
-      description: When do you expect the feature to be promoted and available in the _**serverless production environment**_?
+      description: If relevant, when do you expect the feature to be promoted and available in the _**serverless production environment**_?
       placeholder: The week of April 1, 2024
     validations:
-      required: true    
+      required: false
   - type: dropdown
     id: collaboration
     attributes:
       label: Collaboration model
-      description: Which team do you expect to create the initial content?
+      description: If new content is needed, who do you expect to create the initial draft?
       options:
-        - "The documentation team"
-        - "The product team"
-        - "The engineering team"
+        - "The documentation team will create the first draft"
+        - "The product or engineering team will create the first draft"
+        - "We expect to collaborate on the first draft"
         - "Unknown"
         - "Other (please describe below)"
-      default: 0
+      default: 3
     validations:
       required: true
   - type: textarea

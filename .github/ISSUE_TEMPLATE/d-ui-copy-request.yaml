@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Hello! Use this form to submit a UI copy related request to Elastic's documentation team. You should also directly contact the specific writer or docs team that's responsibile for the applicable part of the product, especially for time-sensitive requests. 
+        Hello. Use this form to submit a UI copy-related request to Elastic's documentation team. This form is for copy and content requests, not for reporting product bugs. You should also directly contact the specific writer or docs team that is responsible for the applicable part of the product, especially for time-sensitive requests.
         > [!WARNING]  
         > THIS IS A PUBLIC REPO. DO NOT INCLUDE SENSITIVE INFORMATION HERE.
   - type: textarea
@@ -38,7 +38,7 @@ body:
   - type: dropdown
     id: product-area
     attributes:
-      label: Which product area does this mainly concern?
+      label: Which product area does this mainly concern, if known?
       options:
         - Cloud UI
         - Search solution
@@ -47,26 +47,27 @@ body:
         - Kibana Analytics (Discover, Dashboards...)
         - Kibana Management
         - Something else
-      default: 0
+        - Not sure yet
+      default: 7
     validations:
-      required: true
+      required: false
   - type: textarea
     id: collaborators
     attributes:
       label: Collaborators
-      description: Please include contact information for the responsible product manager, designer, and developer.
+      description: If known, include contact information for the responsible product manager, designer, and developer.
       value: |
         PM:
         Designer: 
         Developer:
         Others (if applicable):
     validations:
-      required: true
+      required: false
   - type: textarea
     id: timeline
     attributes:
       label: Timeline / deliverables
-      description: When would it be ideal for for us to complete the request? What deliverables do you need, and when? If applicable, how do the release timelines for this feature differ between serverless / stateful? 
+      description: If you have a target date or specific deliverables in mind, share them here. If applicable, note whether the timing differs between serverless and stateful.
       placeholder: |
         For example:
 
@@ -74,8 +75,8 @@ body:
 
         This is an urgent request, it would be great to have updated copy for A and B ASAP, since the original copy is already in production. No differences between serverless/ESS. 
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting this issue! We'll be in contact shortly. 
+        Thanks for submitting this issue. We'll be in contact shortly.
