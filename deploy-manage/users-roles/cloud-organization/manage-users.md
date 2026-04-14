@@ -39,7 +39,7 @@ To invite users to your organization:
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
 3. On the **Members** page, click **Invite members**.
-4. Enter the email addresses of the users you want to invite in the textbox.
+4. Enter the email addresses of the users you want to invite in the email field.
 
     To add multiple members, enter the member email addresses, separated by a space.
 
