@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.2
-  serverless: preview
+  stack: ga
+  serverless: ga
 description: Make the most of Discover to explore metrics data.
 products:
   - id: observability
@@ -27,34 +27,33 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 ## Requirements
 
-### Data recognition
-By default, all data stored in a `metrics-*` index is recognized as metrics data and triggers the **Discover** experience described on this page.
-
-### Required Kibana privileges
-
-Viewing metrics data in **Discover** requires at least `read` privileges for **Discover**.
-
-For more on assigning Kibana privileges, refer to the [Kibana privileges documentation](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-
-## Load metrics data
-
-:::{note}
-To visualize your metrics data as charts, its data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
-:::
-
-The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
-
 Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 
-```esql
-TS metrics-*
-```
+  ```esql
+  TS metrics-*
+  ```
+
+To visualize your metrics data as charts:
+  - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
+  - The metric must be a time series metric.
+
+The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
 
 You can also query a specific index:
 
 ```esql
 TS metrics-index-1
 ```
+
+:::{note}
+By default, all data stored in a `metrics-*` index is recognized as metrics data and triggers the **Discover** experience described on this page.
+:::
+
+### Required {{kib}} privileges
+
+Viewing metrics data in **Discover** requires at least `read` privileges for **Discover**.
+
+For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges documentation](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ## Metrics-specific Discover options
 
@@ -78,12 +77,21 @@ Break down your metrics by dimensions to find metrics that contain those dimensi
 Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If no dimensions appear, check that your data stream's **Index mode** is set to **Time series** in **Index Management**.
 :::
 
-
 :::{image} /solutions/images/explore-metrics-host-ip.png
 :alt: Screenshot of adding a dimension.
 :screenshot:
 :::
 
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.4+
+After breaking down metrics by one or more dimensions, you can filter the view to focus on specific values in two ways:
+
+- **Click a chart value**: Hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
+- **Edit the query directly**: Manually add a `| WHERE` clause to your ES|QL query. For example: `| WHERE <dimension> = <value>`
+::::
+
+::::{applies-item} stack: ga 9.0-9.3
 **Filter dimensions by a specific value**
 
 Select specific values to focus on within the dimension. You can select up to 10 values to filter your dimension by.
@@ -92,6 +100,10 @@ Select specific values to focus on within the dimension. You can select up to 10
 :alt: Screenshot of adding a filtering a dimension by a value.
 :screenshot:
 :::
+
+::::
+
+:::::
 
 **View metric charts in full screen**
 
