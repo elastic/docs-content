@@ -138,8 +138,8 @@ Roles are assigned to every member of an organization. Depending on the role typ
 
 This list describes the scope of the different roles:
 
-* **Organization owner**: This role is always scoped to administer all deployments.
-* **Billing admin**: This role does not refer to any deployment.
+* **Organization owner**: This role is always scoped to administer all deployments and projects.
+* **Billing admin**: This role does not refer to any deployment or project.
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 * **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
 
