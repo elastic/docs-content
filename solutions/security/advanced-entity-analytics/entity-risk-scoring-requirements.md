@@ -35,6 +35,7 @@ To install or run the risk scoring engine, you need the following:
 | --- | --- | --- | --- |
 | Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security > Alerts** feature |
 
 
 ### Predefined roles [ers_roles]

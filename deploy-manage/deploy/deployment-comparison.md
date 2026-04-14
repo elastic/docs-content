@@ -17,10 +17,10 @@ For more details about feature availability in {{serverless-short}}, refer to []
 
 ## Security
 
-| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+| Feature/capability | Fully self-managed, ECK | ECH, ECE | {{serverless-short}} |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
-| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through {{ecloud}} only |
+| [Authentication](/deploy-manage/users-roles.md) | {{es}} realms | {{es}} realms, {{ecloud}} SSO | {{ecloud}} SSO only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
 | [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
