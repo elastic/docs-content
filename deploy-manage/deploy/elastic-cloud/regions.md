@@ -30,6 +30,8 @@ The following AWS regions are currently available for {{serverless-short}} proje
 | :--- | :--- |
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| ap-southeast-2 | Asia Pacific (Sydney) |
+| ca-central-1 | Canada (Central) |
 | eu-central-1 | Europe (Frankfurt) |
 | eu-west-1 | Europe (Ireland) |
 | eu-west-2 | Europe (London) |
@@ -51,6 +53,7 @@ The following Azure regions are currently available for {{serverless-short}} pro
 | northeurope | North Europe (Ireland) |
 | southeastasia | Southeast Asia (Singapore) |
 | spaincentral | Spain Central (Madrid) |
+| uaenorth | UAE (Dubai) |
 | westus2 | West US 2 (Washington) |
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
@@ -59,16 +62,16 @@ The following GCP regions are currently available for {{serverless-short}} proje
 
 | Region | Name |
 | :--- | :--- |
-| asia-south1 | Mumbai |
-| asia-southeast1 | Singapore |
-| europe-west1 | Belgium |
-| europe-west2 | London |
-| europe-west3 | Frankfurt |
-| europe-west4 | Netherlands |
-| us-central1 | Iowa |
-| us-east1 | South Carolina |
-| us-east4 | Virginia |
-| us-west1 | Oregon |
+| asia-south1 | India (Mumbai) |
+| asia-southeast1 | Singapore (Jurong West) |
+| europe-west1 | Belgium (St. Ghislain) |
+| europe-west2 | England (London) |
+| europe-west3 | Germany (Frankfurt) |
+| europe-west4 | Netherlands (Eemshaven) |
+| us-central1 | United States (Iowa) |
+| us-east1 | United States (South Carolina) |
+| us-east4 | United States (Virginia) |
+| us-west1 | United States (Oregon) |
 
 ## Marketplaces
 
