@@ -97,7 +97,7 @@ The `clientCertificateSecretName` field can only be used with a named `elasticse
 
 ## Disabling client certificate authentication [k8s-disable-client-cert-auth]
 
-To disable client certificate authentication, set the field to `false` or remove it:
+To turn off client certificate authentication, set the field to `false` or remove it:
 
 ```yaml
   http:
