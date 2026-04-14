@@ -45,7 +45,7 @@ To invite users to your organization:
 
 5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
 
-    If you're assigning roles, you can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details about roles and permissions, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    If you're assigning roles, you can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 6. Click **Send invites**.
 
