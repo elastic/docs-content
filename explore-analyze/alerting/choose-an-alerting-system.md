@@ -12,7 +12,7 @@ description: Short guide to select Kibana alerting v1, v2, or Watcher by use cas
 
 # Choose an alerting system [choose-an-alerting-system]
 
-Check out [Alerting overview](../alerting-overview.md) for an introduction to each system, where they run, and get started links. Return here to select a system by goal if you are still deciding. If you already know which system you need, open [Kibana alerting v1](kibana-alerting-v1.md), [Kibana alerting v2](kibana-alerting-v2.md), or [Watcher](watcher.md).
+Check out [Alerting overview](../alerting-overview.md) for an introduction to each system, where they run, and **Get started** links. Return here to select a system by goal if you are still deciding. If you already know which system you need, open [Kibana alerting v1](kibana-alerting-v1.md), [Kibana alerting v2](kibana-alerting-v2.md), or [Watcher](watcher.md).
 
 :::{note}
 You do not need to stand up {{kib}} alerting v1, v2, and {{watcher}} together. Pick the single option that fits your deployment and the goals in the tables below.

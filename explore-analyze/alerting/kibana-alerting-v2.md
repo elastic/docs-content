@@ -20,7 +20,7 @@ Kibana alerting v2 is a rules-based system that checks your data on a schedule, 
 
 ## Why use Kibana alerting v2 [alerting-v2-why]
 
-Detection alone is not always enough. Teams often need a **record they can search later**, **notifications that do not repeat the same setup on every rule**, and a **consistent way to track an issue** from first sighting through resolution. Kibana alerting v2 is aimed at those needs.
+Detection alone is not always enough. Teams often need a **record they can search later**, **notifications that do not repeat the same setup on every rule**, and a **consistent way to track an issue** from first occurrence through resolution. Kibana alerting v2 is aimed at those needs.
 
 It helps with challenges such as:
 
