@@ -104,7 +104,7 @@ Upgrading the operator results in a one-time update to existing managed resource
 
 ^1^ The restart when upgrading to version 3.1 and 3.2 happens only for applications using [stack monitoring](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md).
 
-^2^ ECK 3.4 sets `seccompProfile` to `RuntimeDefault` on managed pods, triggering a rolling restart of nearly all managed workloads (excluding {{beats}} and {{agent}}). This occurs when the operator flag `set-default-security-context` is set to `auto-detect` (the default) or `true`. Additionally, {{kib}} pods will restart due to a new default security context on the init container.
+^2^ ECK 3.4 sets `seccompProfile` to `RuntimeDefault` on managed pods, triggering a rolling restart of nearly all managed workloads (excluding {{beats}} and {{agent}}). This occurs when the operator flag `set-default-security-context` is set to `auto-detect` (the default) or `true`. Additionally, {{kib}} pods will restart due to a new default security context on the init container and an increase of the default memory limit from 1Gi to 2Gi.
 
 ::::{note}
 Stepping over one of these versions, for example, upgrading ECK from 2.6 to 2.9, still triggers a rolling restart.
