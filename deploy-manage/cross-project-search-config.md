@@ -100,11 +100,14 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 
 Make sure to also review the [feature impacts](#cps-feature-impacts) and [limitations](#cps-limitations) of {{cps-init}}.
 
+## Billing [cps-billing]
+
+::::{include} /deploy-manage/_snippets/cps-billing.md
+::::
+
 ## Feature impacts [cps-feature-impacts]
 
 When you link projects for {{cps}}, the expanded dataset can affect existing features in the origin project.
-
-% TODO billing, subscriptions, licensing
 
 - **Alerts:** By default, rules in the origin project run against the **combined dataset** of the origin and all linked projects. Rules tuned for a single project's data might produce false positives when they evaluate a larger dataset. This is one reason we recommend using a dedicated [overview project](/deploy-manage/cross-project-search-config.md#cps-arch-overview), so that existing rules on data projects are not affected. Make sure to also consider the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for each space, or save explicit project routing on individual rules.
 
