@@ -35,8 +35,6 @@ Kibana alerting v2 is a good fit if you use {{serverless-full}} and want query-d
 
 ## Key concepts [alerting-v2-concepts]
 
-* **How it fits together**: Signals, alerts, episodes, notification policies, workflows, and the dispatcher. Refer to [Kibana alerting v2 concepts](kibana-alerting-v2/before-you-begin/how-v2-alerting-works.md).
-
 These topics are explained in depth on dedicated pages:
 
 * **Rules and queries**: How you define what to evaluate, optional detect vs alert behavior, schedules, and authoring from the UI, Discover, or YAML. Refer to [Author rules](kibana-alerting-v2/author-rules.md).
@@ -47,7 +45,7 @@ These topics are explained in depth on dedicated pages:
 
 ## Learn more
 
-* [Before you begin](kibana-alerting-v2/before-you-begin.md) for prerequisites and permissions.
+* [Before you begin](kibana-alerting-v2/before-you-begin.md) for concepts, access, and setup before you author rules.
 * [Author rules](kibana-alerting-v2/author-rules.md) to create and tune rules end to end.
 * [Manage rules](kibana-alerting-v2/manage-rules.md) for day-to-day operations.
 
