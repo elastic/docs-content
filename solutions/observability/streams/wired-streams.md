@@ -31,7 +31,7 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-The `/logs` endpoint is deprecated in {{stack}} 9.4. Update your shipper configuration to use the `logs.otel` or `logs.ecs` endpoints.
+The `/logs` endpoint is deprecated in {{stack}} 9.4 and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 
 For more on wired streams, refer to:
