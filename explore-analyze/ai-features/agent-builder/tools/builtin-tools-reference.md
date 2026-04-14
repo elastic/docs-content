@@ -34,10 +34,6 @@ Platform tools are available across all deployments and serverless projects. The
 
 Platform core tools provide fundamental capabilities for interacting with {{es}} data, executing queries, and working with indices. They are relevant to many use cases.
 
-:::{note}
-All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
-:::
-
 `platform.core.execute_esql` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
 
@@ -162,10 +158,6 @@ Streams tools provide capabilities for exploring and managing [Streams](/manage-
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
 
-:::{note}
-The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) is assigned these tools by default.
-:::
-
 % TODO (9.4): Document time range awareness behavior change in agent-builder-observability.md.
 % As of 9.4, the agent uses the current page's time picker by default when invoking tools,
 % unless the user specifies a different time range.
@@ -257,10 +249,6 @@ Observability attachments provide contextual data to the agent based on the Kiba
 ## Security tools
 
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
-
-:::{note}
-The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is assigned these tools by default.
-:::
 
 `security.alerts` {applies_to}`stack: ga 9.3+`
 :   Searches and analyzes [security alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.
