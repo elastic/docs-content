@@ -51,7 +51,6 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 ### Projects available for linking [cps-compatibility]
 
 ::::{important} - Origin project limitations during technical preview
-:applies_to: serverless: preview
 
 During technical preview, the following additional limitations apply to origin projects:
 
