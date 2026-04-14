@@ -50,12 +50,10 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 
 ### Projects available for linking [cps-compatibility]
 
-::::{important} - Origin project limitations during technical preview
+::::{important} - Origin project limitations
 
-During technical preview, the following additional limitations apply to origin projects:
-
-* Only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
-* You should not use an {{elastic-sec}} project as an origin project for {{cps}} in production. Some {{elastic-sec}} features are not fully functional when {{cps-init}} is enabled on an {{elastic-sec}} origin project. You can still link {{elastic-sec}} projects _to_ an origin project of another type.
+* During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
+* At this time, you should not use an {{elastic-sec}} project as an origin project for {{cps}} in production. Some {{elastic-sec}} features are not fully functional when {{cps-init}} is enabled on an {{elastic-sec}} origin project. You can still link {{elastic-sec}} projects _to_ an origin project of another type.
 ::::
 
 To be available for linking, projects must meet the following requirements:
