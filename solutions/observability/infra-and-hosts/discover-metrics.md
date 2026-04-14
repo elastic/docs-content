@@ -113,7 +113,8 @@ Select full screen ({icon}`full_screen`) to view the metric charts in full-scree
 
 For each metric chart, you can perform the following actions:
 
-* **Explore in Discover** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
+* {applies_to}`stack: ga 9.0-9.3` **Explore in Discover** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
+{applies_to}`stack: ga 9.4` **Explore** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
 * **Inspect** ({icon}`inspect`): Show details about the query request and response.
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
