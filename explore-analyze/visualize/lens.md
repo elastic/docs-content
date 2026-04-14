@@ -138,6 +138,7 @@ To assign colors to terms in your visualization:
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Elastic (line optimized)**: A variant of the Elastic palette that reorders colors for better contrast between adjacent series in line charts. Lens automatically applies this palette when you create or switch to a line chart. Switching to a different chart type reverts to the standard palette. You can override this by manually selecting a different palette.
    * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
    * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
