@@ -11,11 +11,11 @@ products:
 
 # Azure Native ISV Service [ec-azure-marketplace-native]
 
-The {{ecloud}} Azure Native ISV Service lets you create and manage [{{ech}} deployments](cloud-hosted.md) directly in Azure through the Azure integrated marketplace. The service brings the following benefits:
+The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service brings the following benefits:
 
 * **Easy deployment for managed {{stack}} instances**
 
-    {{ech}} deployments managed by Elastic are created directly from the Azure console. This provides the complete {{stack}} experience with all commercial features.
+    {{stack}} instances managed by Elastic are deployed directly from the Azure console. This provides the complete {{stack}} experience with all commercial features.
 
 * **Integrated billing**
 
@@ -135,7 +135,7 @@ $$$azure-integration-get-started$$$How do I get started with {{ecloud}}?
 
     To create a deployment directly from the Azure portal, go to [the list of {{ecloud}} deployments in the Azure portal](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Elastic%2Fmonitors) and select `Create`.
 
-    When you create an {{ecloud}} deployment, an {{stack}} cluster is created for you. The size of this deployment is **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The size of the deployment, both RAM and storage, is changed directly in the Elastic console. Usage charges are based on the deployment size, so size your deployment efficiently. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
+    When you create an {{ecloud}} deployment, an {{stack}} cluster is created for you. The size of this deployment is **16GB of RAM** and **560GB of storage**, across **two availability zones** for redundancy. The size of the deployment, both RAM and storage, is changed directly in the Elastic console. Usage charges are based on the deployment size, so size your instance efficiently. The deployment defaults to the latest available version of the {{stack}}. Check our [Version policy](available-stack-versions.md) to learn more about when new versions are made available and old versions are removed from service.
 
 
 $$$azure-integration-pricing$$$What is the pricing for this offer?
