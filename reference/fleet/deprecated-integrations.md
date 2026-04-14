@@ -10,7 +10,9 @@ products:
 
 # Understanding deprecated integrations [deprecated-integrations]
 
-Developers can mark integration packages or some of their features as deprecated when they want to retire them, replace them with newer alternatives, or stop maintaining them. The deprecation serves as an advance notice that the integration will eventually be removed from the {{package-registry}}, and migration to an alternative integration or feature is recommended.
+Developers can mark integration packages or some of their features as deprecated when they want to retire them, replace them with newer alternatives, or stop maintaining them. 
+
+Deprecation serves as an advance notice that the integration will eventually be removed from the {{package-registry}}. Migration to an alternative integration or feature is recommended for deprecated packages.
 
 A deprecation can apply to:
 
