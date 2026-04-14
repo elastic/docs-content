@@ -11,7 +11,7 @@ products:
 # Monitor Microsoft Azure with the Azure Native ISV Service [monitor-azure-native]
 
 ::::{note}
-The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native ISV Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
+The {{ecloud}} Azure Native ISV Service lets you create and manage [{{ech}} deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) directly in Azure through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native ISV Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
 
 **Using {{agent}} to monitor Azure?** Refer to [Monitor Microsoft Azure with {{agent}}](monitor-microsoft-azure-with-elastic-agent.md).
 
