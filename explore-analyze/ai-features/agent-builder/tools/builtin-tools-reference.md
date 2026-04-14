@@ -221,11 +221,12 @@ Observability tools provide specialized capabilities for monitoring applications
 `observability.get_apm_correlations` {applies_to}`stack: ga 9.3+`
 :   Analyzes APM transaction correlations to identify which dimensions are most associated with slow or failed transactions. Use after identifying a high-latency or high-failure service to find which attributes (host, version, cloud region, and so on) are over-represented in slow or failed transactions. Requires a [Platinum license](https://www.elastic.co/subscriptions).
 
+% TODO (9.4): Publish once https://github.com/elastic/kibana/pull/255717 merges.
 `observability.elasticsearch` {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
 :   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) run immediately, while write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before running. Responses are automatically truncated or summarized to fit the AI context window.
 
     :::{note}
-    To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elasticsearch API reference** from the **Documentation** section. This is not installed automatically with the knowledge base.
+    To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This is not installed automatically with the knowledge base.
     :::
 
 
