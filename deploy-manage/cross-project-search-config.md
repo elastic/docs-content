@@ -31,8 +31,6 @@ This section explains how to set up and manage {{cps}} for your organization, in
 
 ### Projects and search scope
 
-Projects are intended to act as logical namespaces for data, not hard boundaries for querying it. You can split data into projects to organize ownership, use cases, or environments, while still expecting to search and analyze that data from a single place.
-
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
 ::::
 
@@ -134,7 +132,7 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 **Elastic {{observability}} apps**
 
-{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the local project.
+{{observability}} apps have limited {{cps-init}} support. The scope selector is not available in {{observability}} apps, and most apps remain scoped to the origin project.
 
 For specific app details, refer to [{{cps-cap}} in {{observability}}](/solutions/observability/cross-project-search.md).
 

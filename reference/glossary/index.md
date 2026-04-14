@@ -500,7 +500,7 @@ $$$glossary-lens$$$ Lens
 :   Enables you to build visualizations by dragging and dropping data fields. Lens makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
 
 $$$glossary-linked-project$$$ linked project
-:   An {{serverless-full}} project that is linked to an [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+:   An {{serverless-full}} project that is linked to an [origin project](/reference/glossary/index.md#glossary-origin-project). Data in the linked project becomes searchable from the origin project. See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$glossary-local-cluster$$$ local cluster
 :   [Cluster](/reference/glossary/index.md#glossary-cluster) that pulls data from a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) in [{{ccs}}](/reference/glossary/index.md#glossary-ccs) or [{{ccr}}](/reference/glossary/index.md#glossary-ccr). See [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md).

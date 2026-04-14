@@ -48,9 +48,9 @@ When {{cps-init}} is enabled, Discover shows documents from all linked projects 
 
 Streams remains scoped to the origin project only and does not support {{cps-init}}. If you open a stream from Discover and the document is from a linked project, {{observability}} shows a warning that the stream is remote. The Streams UI then shows origin project data only, so counts can differ from Discover.
 
-## Identifying remote and origin documents [obs-cps-identify-documents]
+## Identifying the location of a document [obs-cps-identify-documents]
 
-To determine whether a document comes from the origin project or a linked project, refer to [Identifying remote and origin documents](/explore-analyze/cross-project-search.md#cps-identify-documents).
+To determine whether a document comes from the origin project or a linked project, refer to [Identifying the location of a document](/explore-analyze/cross-project-search.md#cps-identify-documents).
 
 ## Known issues and limitations [obs-cps-known-issues]
 
@@ -58,16 +58,13 @@ The following known issues and limitations apply to {{cps-init}} in {{observabil
 
 ### Rules data scope inconsistency [obs-cps-rules-scope]
 
-SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means:
-
-* A rule simulation may show a condition is violated, but the rule itself may not trigger an alert because it evaluates only origin data.
-* Discover and rules may show different results for the same data view.
+SLO burn rate rules query only origin project data, even when the underlying data view (for example, `logs-*`) returns cross-project data in Discover. This means Discover and rules may show different results for the same data view.
 
 {{ml-cap}} rules are not available in {{cps-init}}.
 
 ### SLO visibility [obs-cps-slo-remote]
 
-Only origin SLOs are visible, even when connected to a remote project.
+Only origin SLOs are visible, even when connected to a linked project.
 
 Tracking: [kibana#252955](https://github.com/elastic/kibana/issues/252955)
 
