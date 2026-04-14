@@ -215,7 +215,7 @@ The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/bu
 :   Analyzes log ingestion rates to identify anomalies and trends.
 
 `observability.get_anomaly_detection_jobs` {applies_to}`stack: ga 9.3+`
-:   Retrieves {{ml-app}} [{{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection.md) and their top anomaly records for investigating outliers and abnormal behavior.
+:   Retrieves {{ml-app}} [{{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection.md) and their top anomaly records for investigating outliers and atypical behavior.
 
 `observability.get_logs` {applies_to}`stack: ga 9.4`
 :   Searches and filters logs, returning a histogram trend, total count, log samples, and message pattern categories in a single query.
@@ -226,22 +226,33 @@ The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/bu
 `observability.get_trace_change_points` {applies_to}`stack: ga 9.4`
 :   Detects statistically significant change points in trace latency, throughput, and failure rate across groups (for example, by service, transaction, or host).
 
-% TODO (9.4): Confirm with Team:AI Infra before publishing:
-% 1. Is kb-product-doc-openapi-9.4.zip auto-installed with the knowledge base, or a separate step?
-% 2. Does this tool apply to stateful, serverless, or both?
-% 3. Update the prerequisites and air-gapped hosting docs once confirmed.
-% Source: https://github.com/elastic/kibana/pull/255717
-`observability.elasticsearch` {applies_to}`stack: ga 9.4`
-:   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) execute immediately, while write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before execution. Responses are automatically truncated or summarized to fit the AI context window.
+`observability.get_apm_correlations` {applies_to}`stack: ga 9.3+`
+:   Analyzes APM transaction correlations to identify which dimensions are most associated with slow or failed transactions. Use after identifying a high-latency or high-failure service to find which attributes (host, version, cloud region, and so on) are over-represented in slow or failed transactions. Requires a [Platinum license](https://www.elastic.co/subscriptions).
 
-% TODO (9.4): Confirm with Obs team before publishing: which pages trigger each attachment,
-% what context is fetched, and do these apply to serverless:observability?
-% Source: https://github.com/elastic/kibana/pull/252390
-`observability.service` {applies_to}`stack: ga 9.4`
-:   Attaches APM service context when viewing service detail pages, including environments, agent info, versions, anomalies, alerts, and deployments.
+`observability.elasticsearch` {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) run immediately, while write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before running. Responses are automatically truncated or summarized to fit the AI context window.
 
-`observability.slo` {applies_to}`stack: ga 9.4`
-:   Attaches SLO context when viewing SLO detail pages.
+    :::{note}
+    To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elasticsearch API reference** from the **Documentation** section. This is not installed automatically with the knowledge base.
+    :::
+
+### Observability attachments
+
+{applies_to}`stack: ga 9.4`
+
+Observability attachments provide contextual data to the agent based on the Kibana page you are viewing. Each attachment type has a unique ID and may invoke a bounded tool to fetch additional details.
+
+| Attachment type ID | Bounded tool and description |
+|---|---|
+| `observability.ai_insight` (internal) | None. Provides a concise summary and context for Observability investigations. |
+| `observability.alert` | `get_alert_details` — Fetches full details for the attached alert, including rule info, status, reason, and related entities. |
+| `observability.log` | `get_log_document` — Fetches the full log document for the attached index and document ID. |
+| `observability.error` | `get_error_details` — Fetches the full error information for the attached APM error ID. |
+| `observability.service` | `get_service_details` — Fetches full service details for the attached service name. |
+| `observability.slo` | `get_slo_details` — Fetches full details for the attached SLO ID. |
+| `observability.host` | `get_host_details` — Fetches full host details for the attached host name. |
+| `observability.transaction` | `get_transaction_details` — Fetches full transaction details for the attached transaction (name, type, and service). |
+| `observability.synthetics_monitor` | `get_monitor_details` — Fetches full details for the attached synthetics monitor (name and type). |
 
 ## Security tools
 
