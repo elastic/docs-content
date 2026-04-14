@@ -245,14 +245,14 @@ Observability attachments provide contextual data to the agent based on the Kiba
 | Attachment type ID | Bounded tool and description |
 |---|---|
 | `observability.ai_insight` (internal) | None. Provides a concise summary and context for Observability investigations. |
-| `observability.alert` | `get_alert_details` — Fetches full details for the attached alert, including rule info, status, reason, and related entities. |
-| `observability.log` | `get_log_document` — Fetches the full log document for the attached index and document ID. |
-| `observability.error` | `get_error_details` — Fetches the full error information for the attached APM error ID. |
-| `observability.service` | `get_service_details` — Fetches full service details for the attached service name. |
-| `observability.slo` | `get_slo_details` — Fetches full details for the attached SLO ID. |
-| `observability.host` | `get_host_details` — Fetches full host details for the attached host name. |
-| `observability.transaction` | `get_transaction_details` — Fetches full transaction details for the attached transaction (name, type, and service). |
-| `observability.synthetics_monitor` | `get_monitor_details` — Fetches full details for the attached synthetics monitor (name and type). |
+| `observability.alert` | `get_alert_details`: Fetches full details for the attached alert, including rule info, status, reason, and related entities. |
+| `observability.log` | `get_log_document`: Fetches the full log document for the attached index and document ID. |
+| `observability.error` | `get_error_details`: Fetches the full error information for the attached APM error ID. |
+| `observability.service` | `get_service_details`: Fetches full service details for the attached service name. |
+| `observability.slo` | `get_slo_details`: Fetches full details for the attached SLO ID. |
+| `observability.host` | `get_host_details`: Fetches full host details for the attached host name. |
+| `observability.transaction` | `get_transaction_details`: Fetches full transaction details for the attached transaction (name, type, and service). |
+| `observability.synthetics_monitor` | `get_monitor_details`: Fetches full details for the attached synthetics monitor (name and type). |
 
 ## Security tools
 
