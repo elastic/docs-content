@@ -191,6 +191,7 @@ toc:
       - hidden: cross-project-search/cross-project-search-project-routing.md
   - file: ai-features.md
     children:
+      - file: ai-features/automatic-import.md
       - file: ai-features/elastic-agent-builder.md
         children:
           - file: ai-features/agent-builder/get-started.md

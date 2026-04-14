@@ -1,4 +1,6 @@
 ---
+navigation_title: Automatic import
+description: Use Automatic Import with an LLM to build a custom Elastic integration from a data sample when no prebuilt integration exists, for Security, Observability, and other solutions.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/automatic-import.html
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
@@ -6,19 +8,22 @@ applies_to:
   stack: ga
   serverless:
     security: ga
+    observability: ga
 products:
-  - id: security
+  - id: kibana
   - id: cloud-serverless
+  - id: security
+  - id: observability
 ---
 
-# Automatic import
+# Automatic import [automatic-import]
 
-Automatic Import helps you quickly parse, ingest, and create [ECS mappings](https://www.elastic.co/elasticsearch/common-schema) for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}. Automatic Import uses a large language model (LLM) with specialized instructions to quickly analyze your source data and create a custom integration.
+Automatic Import helps you quickly parse, ingest, and create [ECS mappings](https://www.elastic.co/elasticsearch/common-schema) for data from sources that don’t yet have prebuilt Elastic integrations. You can use it with {{elastic-sec}}, {{observability}}, and other Elastic solutions that rely on {{agent}} and integrations, so you can cover custom or niche data sources without building a full integration by hand. Automatic Import uses a large language model (LLM) with specialized instructions to analyze your source data and create a custom integration.
 
-While Elastic has 400+ [prebuilt data integrations](https://docs.elastic.co/en/integrations), Automatic Import helps you extend data coverage to other security-relevant technologies and applications. Elastic integrations (including those created by Automatic Import) normalize data to [the Elastic Common Schema (ECS)](ecs://reference/index.md), which creates uniformity across dashboards, search, alerts, machine learning, and more.
+While Elastic has 400+ [prebuilt data integrations](https://docs.elastic.co/en/integrations), Automatic Import helps you extend data coverage when you need logs or events from technologies that don’t have a dedicated integration yet. Elastic integrations (including those created by Automatic Import) normalize data to [the Elastic Common Schema (ECS)](ecs://reference/index.md), which creates uniformity across dashboards, search, alerts, machine learning, and more.
 
 ::::{tip}
-Click [here](https://elastic.navattic.com/automatic-import) to access an interactive demo that shows the feature in action, before setting it up yourself.
+See an [interactive demo of Automatic Import](https://elastic.navattic.com/automatic-import) before you set it up in your environment.
 ::::
 
 
@@ -26,7 +31,8 @@ Click [here](https://elastic.navattic.com/automatic-import) to access an interac
 
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: An [Enterprise](https://www.elastic.co/pricing) subscription.
-* {{serverless-short}} users: a project with the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) feature tier.
+* {{serverless-short}} **{{sec-serverless}}** projects: the [Security Analytics Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#elastic-sec-project-features) feature tier.
+* {{serverless-short}} **{{obs-serverless}}** projects: the [Observability Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md#obs-serverless-project-features) feature tier.
 * A sample of the data you want to import.
 
 ::::
@@ -41,13 +47,13 @@ To use Automatic Import, you must provide a sample of the data you wish to impor
 * When you select `API (CEL input)` as one of the sources, you will be prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
 
 ::::{warning}
-Note that CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
 ::::
 
 ::::{admonition} Recommended models
-You can use Automatic Import with any LLM, however model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery; models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+You can use Automatic Import with any LLM, however model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery; models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md). For {{observability}} workloads, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
 
 ::::
 
@@ -60,7 +66,7 @@ Using Automatic Import allows users to create new third-party data integrations 
 
 ## Create a new custom integration [_create_a_new_custom_integration]
 
-1. In {{elastic-sec}}, click **Add integrations**.
+1. In {{kib}}, open **Integrations**. You can use the main menu, the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or your solution’s entry point (for example, **Add integrations** in {{elastic-sec}}, or **Add data** in {{observability}}).
 2. Under **Can’t find an integration?** click **Create new integration**.
 
    :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
@@ -111,5 +117,5 @@ Using Automatic Import allows users to create new third-party data integrations 
 15. (Optional) Once you’ve added an integration, you can edit the ingest pipeline by going to the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{tip}
-You can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.
+If you use {{elastic-sec}}, you can use the [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md) to check the health of your data ingest pipelines and field mappings.
 ::::
