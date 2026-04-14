@@ -828,7 +828,6 @@ redirects:
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
   'solutions/security/get-started/cloud-connector-deployment.md': 'manage-data/ingest/agentless/cloud-connector-deployment.md'
-  'solutions/security/get-started/automatic-import.md': 'explore-analyze/ai-features/automatic-import.md'
 
 # Moved Explore pages (Hosts, Network, Users) into Entity analytics section
   'solutions/security/explore.md': 'solutions/security/advanced-entity-analytics.md'
