@@ -19,7 +19,7 @@ After the integration is installed, these templates are automatically available 
 Although these templates are managed by Elastic, any alert created from them is owned by the customer and will not be modified by Elastic, even if the templates change.
 
 :::{important}
-Although the alerts can be used as provided, threshold values should always be evaluated in the context of your specific environment. Depending on how you adjust the thresholds, you may either generate too many alerts or fail to generate alerts when expected.
+Although the alerts can be used as provided, threshold values should always be evaluated in the context of your specific environment. Depending on how you adjust the thresholds, you can either generate too many alerts or fail to generate alerts when expected.
 :::
 
 ## Prerequisites
@@ -38,7 +38,7 @@ Alerting rule templates come with recommended, pre-populated values. To use them
 1. On the integration page, select the **Alerting** tab to view all available alerting rule templates for that integration.
 
     :::{note}
-    The **Alerting** tab is available for integration packages starting in version 9.4.0. In earlier versions, alerting rule templates are located in the **Assets** tab.
+    The **Alerting** tab is available for all package types starting in version 9.4.0. In earlier versions, alerting rule templates are located in the **Assets** tab.
     :::
 
     ![The Alerting tab showing available alerting rule templates for an integration](images/alerting-rule-template.png)
@@ -47,7 +47,7 @@ Alerting rule templates come with recommended, pre-populated values. To use them
 
     You can use the template to create your own custom alerting rule by adjusting values, setting up connectors, and defining rule actions.
 
-1. Review and (optionally) customize the prefilled settings, then save and enable the rule.
+1. Review and (optionally) customize the pre-filled settings, then save and enable the rule.
 
    The rule created from the template is listed on the **Rules** page. Go to **{{manage-app}}** → **Alerts and insights** → **Rules**, or access rules from solution-specific pages such as **Observability** → **Alerts** → **Manage Rules**.
 
@@ -75,7 +75,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-Starting in version 9.4.0, all integrations include a dynamically generated **Idle data streams** template. This template generates an alert if no data is written to any of the integration's data stream patterns within a specified time period (the default is 24 hours).
+Starting in version 9.4.0, all integration-type packages include a dynamically generated **Idle data streams** template. This template generates an alert if no data is written to any of the integration's data stream patterns within a specified time period (the default is 24 hours). Note that Idle data streams are not generated for input-type packages. 
 
 Use this template to detect data collection issues early, such as:
 
@@ -88,6 +88,9 @@ The Idle data streams template:
 - Is named `[{Integration name}] Idle data streams`
 - Appears in the **Alerting** tab alongside any bundled templates
 - Is generated automatically and isn't bundled with the integration package files
+
+
+![The Alerting tab showing a created Idle data streams rule](images/idle-data-streams-rule.png)
 
 :::{note}
 The Idle data streams template monitors all data stream patterns defined by the integration. You can customize the query to monitor specific data streams based on your environment.
