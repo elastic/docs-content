@@ -14,7 +14,7 @@ products:
 
 # Best practices for prompt engineering in {{agent-builder}}
 
-[Prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) is the process of structuring or crafting an instruction in order to produce better outputs from a generative artificial intelligence (GenAI) model. 
+[Prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) is the process of structuring or crafting an instruction to produce better outputs from a generative artificial intelligence (GenAI) model. 
 
 Prompt engineering in {{agent-builder}} involves four key areas:
 

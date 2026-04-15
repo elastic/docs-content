@@ -18,7 +18,7 @@ Skills are reusable instruction sets that give [agents](agent-builder-agents.md)
 
 Tools are discrete operations the agent can invoke. Skills are higher-level capability packs that bundle tools, instructions, and context for a specific task domain. To learn more about tools, refer to [Tools](tools.md).
 
-Skills differ from the agent's base system prompt: the system prompt is always in context, while skills are loaded selectively. An agent can have access to many skills without loading all of them into the context window at once.
+Skills differ from the agent's base system prompt: the system prompt is always in context, while skills are loaded selectively. An agent can have access to many skills without loading them all into the context window at once.
 
 ## How agents use skills
 

@@ -62,7 +62,7 @@ For broader guidance on writing custom instructions, tool descriptions, and chat
 
 ## Write a clear description
 
-The description is the primary signal the agent uses to decide whether to load a skill. It is always included in context, whereas the skill's full instructions are only read once the skill is selected. A vague description means the agent may load the wrong skill or none at all.
+The description is the primary signal the agent uses to decide whether to load a skill. It is always included in context, whereas the skill's full instructions are only read once the skill is selected. A vague description means the agent might load the wrong skill, or none.
 
 A good description explains what the skill does and explicitly states when to use it. Keep it concise: the description has a 1024-character limit, and every word should be useful for routing.
 
@@ -143,7 +143,7 @@ Step-by-step format works well for procedural tasks:
 ```
 1. Gather data before querying so the agent has concrete values to search with.
 2. Use specific, measurable criteria rather than vague descriptions.
-3. Tell the agent what format to present results in, not just what to find.
+3. Tell the agent what format to present results in, not only what to find.
 
 :::{tip}
 If you find yourself writing instructions for two distinct workflows, that is a signal to [split the skill](#scope-each-skill-to-one-task).
@@ -177,7 +177,7 @@ Add examples when the task involves nuanced logic or when the expected output fo
 
 ### Document edge cases
 
-Tell the agent what to do when things do not go as expected. Without explicit guidance, the agent will improvise and may produce confusing or unhelpful responses.
+Tell the agent what to do when things go wrong. Without explicit guidance, the agent will improvise and might produce confusing or unhelpful responses.
 
 ```markdown
 ## Edge Cases
@@ -187,7 +187,7 @@ Tell the agent what to do when things do not go as expected. Without explicit gu
 - **Partial data available:** Work with available indicators and note which data points are missing.
 - **Ambiguous relationships:** Present possible connections with confidence levels rather than asserting a definitive link.  # <3>
 ```
-1. Tell the agent what to say, not just what to avoid doing.
+1. Tell the agent what to say, not only what to avoid doing.
 2. Define fallback behavior for overwhelming result sets.
 3. Instruct the agent to signal uncertainty rather than assert conclusions.
 
@@ -198,7 +198,7 @@ The `referenced_content` API field lets you attach named content blocks to a ski
 Good candidates for referenced content include:
 - API specifications that are lengthy or change frequently.
 - Large sets of example queries that would clutter the main instructions.
-- Lookup tables, error codes, or reference data the agent may need to consult.
+- Lookup tables, error codes, or reference data the agent might need to consult.
 - Condition-specific guidance, such as separate blocks for Linux, macOS, and Windows behavior within the same skill.
 
 Reference the content blocks by name inside your main instructions so the agent knows they exist and when to read them:
