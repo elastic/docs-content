@@ -11,13 +11,13 @@ description: Learn how Elastic Agent Builder works with Elastic Security
 
 # Agent Builder for Elastic Security
 
-[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is Elastic's AI platform which includes a natural language chat interface, built-in agents and Elastic tools, and allows creating custom agents and tools for your use case. You can manage and interact with your agents using the {{kib}} UI or work programmatically.
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) is Elastic's AI platform which includes a natural language chat interface, built-in agents and Elastic tools, and allows creating custom agents and tools for your use case. You can manage and interact with your agents using the {{kib}} UI or work programmatically. 
 
-Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in agents and tools designed for security use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more.
+Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in agents and tools designed for security use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
 
 :::{note}
 :applies_to: {stack: preview 9.3+, serverless: preview}
-To use Agent Builder in Elastic Security, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+To use Agent Builder in Elastic Security, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). 
 :::
 
 ## Recommended models
@@ -48,7 +48,7 @@ The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder
 
 ## Threat Hunting agent [threat-hunting-agent-security]
 
-Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) designed to accelerate security investigations by synthesizing data from sources such as Alerts, Attack Discovery, and Entity Risk Scores.
+Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) designed to accelerate security investigations by synthesizing data from sources such as Alerts, Attack Discovery, and Entity Risk Scores. 
 
 By default it includes the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [security tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#security-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [Custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
