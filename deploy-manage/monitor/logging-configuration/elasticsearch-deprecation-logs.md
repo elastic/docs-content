@@ -38,7 +38,7 @@ logger.deprecation.level = OFF
 
 For more information on the available log levels, refer to [Configuring logging levels](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md).
 
-You can identify what is triggering deprecated functionality if `X-Opaque-Id` was used as an HTTP header. The user ID is included in the `X-Opaque-ID` field in deprecation JSON logs.
+You can identify what is triggering deprecated functionality if `X-Opaque-Id` was used as an HTTP header. The user ID is included in the `X-Opaque-Id` field in deprecation JSON logs.
 
 ```json
 {
@@ -60,4 +60,4 @@ Deprecation logs can be indexed into the `.logs-deprecation.elasticsearch-defaul
 
 ### Deprecation logs throttling [_deprecation_logs_throttling]
 
-Deprecation logs are deduplicated based on a deprecated feature key and `x-opaque-id` so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `x-opaque-id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false. Refer to this class [javadoc](https://artifacts.elastic.co/javadoc/org/elasticsearch/elasticsearch/8.17.3/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.html) for more details.
+Deprecation logs are deduplicated based on a deprecated feature key and `X-Opaque-Id` so that if a feature is repeatedly used, it will not overload the deprecation logs. This applies to both indexed deprecation logs and logs emitted to log files. You can disable the use of `X-Opaque-Id` in throttling by changing `cluster.deprecation_indexing.x_opaque_id_used.enabled` to false. Refer to this class [javadoc](https://artifacts.elastic.co/javadoc/org/elasticsearch/elasticsearch/8.17.3/org.elasticsearch.server/org/elasticsearch/common/logging/RateLimitingFilter.html) for more details.
