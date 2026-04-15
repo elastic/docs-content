@@ -14,7 +14,7 @@ products:
 
 The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster. Use it to find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
-Query activity surfaces search tasks from all query languages, including ES|QL, DSL, EQL, SQL, and multi-search requests.
+Query activity surfaces all in-flight search requests in your cluster, including ES|QL, DSL, EQL, and SQL queries, multi-search requests, and background searches.
 It shows only what is currently running. For historical query data, use query logs or [AutoOps](/deploy-manage/monitor/autoops.md).
 <!-- TODO: link "query logs" to the ES query logs page once https://github.com/elastic/docs-content/pull/5039 is merged -->
 
@@ -53,7 +53,7 @@ The table displays the following columns:
 :   The unique identifier for the {{es}} task. Select the task ID to open the [query details flyout](#inspect-query-details).
 
 **Query type**
-:   The query language used: ES|QL, DSL, EQL, SQL, MSearch, Async search, or Other.
+:   The type of search request. ES|QL, DSL, EQL, and SQL indicate the query language used. MSearch indicates a multi-search request, and Async search indicates a background search.
 
 **Source**
 :   The {{kib}} application that originated the query, such as Discover or Dashboard. This value is extracted from the `X-Opaque-Id` header set by {{kib}}.
@@ -75,7 +75,7 @@ You can narrow down the list of running queries using several filters:
 
 - **Search bar**: Enter any text to match against table contents, including task IDs.
 - **Run time**: Set a minimum run time threshold to surface only queries that have been running longer than a specific duration.
-- **Query type**: Filter by one or more query languages. The available options depend on the types of queries currently running.
+- **Query type**: Filter by one or more query types. The available options depend on the types of queries currently running.
 - **Source**: Filter by one or more originating applications. The available options depend on the sources of queries currently running.
 
 ## Inspect query details
