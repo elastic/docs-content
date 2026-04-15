@@ -62,29 +62,13 @@ If you're using {{serverless-full}}, you can optionally [create custom roles in 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
 For {{ech}} deployments, the following predefined roles are available. Each role defines what users can do in the {{ecloud}} console for deployment management and within the deployment for access to {{kib}} and data.
+
 Roles can be scoped to specific deployments or to all deployments.
 
-* **Admin**: Can manage deployment details, properties, and security privileges in the {{ecloud}} console, and can sign in to the deployment with [superuser](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser) privileges, which grant full access to {{kib}}, cluster management, and all data indices.
-
-  ::::{note}
-  To prevent scope expansion, only Admins on all deployments can create new deployments.
-  ::::
-
-* **Editor**: Can manage deployment details and properties within their scope in the {{ecloud}} console, but cannot create new deployments or manage security privileges.
-
-  When accessing a deployment, they are assigned the [`editor` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to all features in {{kib}} and read-only access to user data indices.
-
-  ::::{note}
-  Some {{es}} HTTP APIs require broader cluster privileges than this role provides and are therefore not available. For example, `GET _cat/indices`.
-  ::::
-
-* **Viewer**: Can only view deployments within their scope in the {{ecloud}} console. When accessing a deployment, they are assigned the [`viewer` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-viewer), which grants read-only access to all features in {{kib}} and to user data indices.
-
-
-| Role | {{ecloud}} console permissions | Deployment access / {{es}} role | Notes |
+| Role name | {{ecloud}} access | Deployment access | Notes |
 |---|---|---|---|
-| **Admin** | Manage deployment details, properties, and security privileges within their scope | [`superuser` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser), which grants full access to {{kib}}, cluster management, and all data indices | Only Admins scoped to all deployments can create new deployments |
-| **Editor** | Manage deployment details and properties within their scope, but cannot create new deployments or manage security | [`editor` built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to {{kib}} features and read-only access to user data indices | Some {{es}} HTTP APIs are not available due to limited cluster privileges, such as `GET _cat/indices` |
+| **Admin** | Manage deployment details, properties, and security privileges within their scope | [`superuser` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser), which grants full access to {{kib}}, cluster management, and all data indices | Only Admins scoped to all deployments can create new deployments |
+| **Editor** | Manage deployment details and properties within their scope, but cannot create new deployments or manage security | [`editor` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to {{kib}} features and read-only access to user data indices | Some {{es}} HTTP APIs are not available due to limited cluster privileges, such as `GET _cat/indices` |
 | **Viewer** | Read-only access to deployments within their scope | [`viewer` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-viewer), which grants read-only access to {{kib}} features and user data indices | |
 
 ### Mapping of {{ecloud}} roles with {{stack}} roles [ec-stack-user-org-member]
@@ -114,7 +98,7 @@ In the following table, the privileges outlined in **Project access** require [*
 You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
-| Name | {{ecloud}} access | Project access | Availability |
+| Role name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
 | Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
