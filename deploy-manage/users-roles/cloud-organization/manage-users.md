@@ -69,14 +69,6 @@ On the **Members** tab of the **Organization** page, you can view the list of cu
 
 In the **Actions** column, click the three dots to edit a member’s role, or revoke an invite, or remove a member from your organization.
 
-:::{note}
-Which role assignments you can view for other members depends on your own roles and what you are allowed to manage. **Organization owners** can view the role assignments of every member in the organization.
-
-Members with the **Admin** cloud resource role can view role assignments for the {{ech}} deployments and {{serverless-full}} projects within their scope. For example, an **Admin** with access to all deployments and projects can view assignments scoped to all resources as well as to specific deployments and projects. An **Admin** scoped only to specific deployments or projects can view assignments for those resources only. {{ecloud}} limits visibility so scoped admins cannot remove role assignments they do not manage, and resources outside their scope are not exposed to them.
-
-For how scopes work across role types, refer to [Role scopes](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec-role-scoping) in [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-:::
-
 ## Manage users through the {{ecloud}} API [ec-api-organizations]
 
 You can also manage members of your organization using the [{{ecloud}} API]({{cloud-apis}}).
