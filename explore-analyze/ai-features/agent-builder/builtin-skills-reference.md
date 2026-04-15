@@ -26,19 +26,14 @@ Skills are solution-scoped: the set of available built-in skills depends on your
 
 ## Platform skills
 
-$$$agent-builder-data-exploration-skill$$$ `data-exploration` {applies_to}`stack: ga 9.4`
-:   Guides agents through exploring, querying, and summarizing data stored in {{es}} indices. Use when a user asks what data is in an index, wants to understand a data set, or needs a structured query to retrieve or aggregate records.
-
 $$$agent-builder-visualization-creation-skill$$$ `visualization-creation` {applies_to}`stack: ga 9.4`
 :   Creates standalone or reusable Lens visualizations from index and field context. Use when a user asks for a chart, metric, trend, or breakdown visualization, or wants to update an existing one.
 
 $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga 9.4`
 :   Creates graph attachments by transforming relationship data into nodes and edges rendered inline in the conversation. Use for topology, dependency, or entity-link visualizations.
 
-$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: ga 9.4`
+$$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
-
-% TODO: Confirm whether dashboard-management is marked Experimental in all projects or only in the Security project.
 
 $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}`stack: ga 9.4`
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration.
@@ -78,14 +73,6 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4`
 :   Investigates anomalous behavior detected by {{ml-app}} jobs, including abnormal access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
 
-    **Inline tools:**
-
-    $$$agent-builder-security-ml-jobs$$$ `security.ml.jobs`
-    :   Retrieves {{ml-app}} anomaly detection job results filtered to security-relevant job types, returning anomaly records with entity fields, scores, and field values.
-
-    $$$agent-builder-security-ml-jobs-extract-euid$$$ `security.ml.jobs.extract_euid`
-    :   Extracts entity unique IDs from {{ml-app}} anomaly data to enable correlation with the entity store.
-
 $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga 9.4`
 :   Runs hypothesis-driven threat hunts using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
 
@@ -97,8 +84,6 @@ $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}
 serverless:
   elasticsearch: ga
 ```
-
-% TODO: Descriptions below are from the UI. Registry and inline tools to be confirmed once Kibana source files are located.
 
 $$$agent-builder-search-catalog-ecommerce-skill$$$ `search.catalog-ecommerce` {applies_to}`stack: ga 9.4`
 :   Guides agents through building catalog and e-commerce search solutions on {{es}}.
