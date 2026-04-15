@@ -3,8 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-user-privileges.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
-  deployment:
-    ess: ga
+  stack: ga
   serverless: ga
 products:
   - id: cloud-hosted
@@ -32,6 +31,12 @@ To edit the roles assigned to a user:
 2. From the navigation menu, select **Organization** > **Members**.
 3. Select the user on the **Members** tab of the **Organization** page.
 4. Click **Edit** to change the user's roles.
+
+:::{note}
+The ability to view and manage role assignments depends on your roles and scope. **Organization owners** can manage role assignments for all members, while members with the **Admin** role can only manage assignments for deployments or projects within their scope.
+
+Role assignments and resources outside your scope are not visible.
+:::
 
 ## Types of roles
 
@@ -143,10 +148,6 @@ This list describes the scope of the different roles:
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 * **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
 
-Members are only able to see the role assignments of other members under the organization they belong to, for role assignments they are able to manage. Members with the **Organization owner** role assigned are able to see the role assignments of every member of their organization.
-
-Members with the **Admin** role assigned are able to see role assignments for deployments or projects within their scope. For example, admins of all deployments and projects are able to see role assignments scoped to all and specific deployments and projects in the organization, while admins of specific deployments or projects only see role assignments scoped to those specific deployments or projects. This ensures that members assigned to specific deployments or projects do not try to remove role assignments from other members, and that the existence of other deployments or projects are not revealed to these members.
-
 ## Access options [access]
 ```{applies_to}
 serverless: ga
@@ -172,4 +173,4 @@ For details on the permissions granted for each role, refer to the [predefined r
 
 :::{tip}
 When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. For an example, refer to [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
-::: 
+:::

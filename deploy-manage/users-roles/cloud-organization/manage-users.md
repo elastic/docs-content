@@ -32,6 +32,18 @@ Users can only belong to one organization at a time. If a user that you want to 
 If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 :::
 
+## Required permissions
+
+* Only **Organization owners** can invite new users to the organization.
+
+* To assign or modify roles for existing members, your permissions must cover the resources affected by the role assignment:
+  - **Organization owners** can manage role assignments for all members in the organization.
+  - Members with the **Admin** role can view and manage role assignments only for deployments or projects within their scope:
+    - Admins scoped to all deployments and projects can manage assignments across all resources.
+    - Admins scoped to specific deployments or projects can manage assignments only for those resources.
+
+For more information about role scopes and permissions, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
 ## Invite your team [ec-invite-users]
 
 To invite users to your organization:
