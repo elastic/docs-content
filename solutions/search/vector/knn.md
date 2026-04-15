@@ -468,6 +468,14 @@ Reference the deployed text embedding model or the model deployment in the `quer
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
 
+:::{tip}
+For an overview of query_vector_builder options (text_embedding, embedding, and lookup), refer to Build query vectors for knn search.
+:::
+<!--
+TODO: place link after https://github.com/elastic/elasticsearch/pull/146059 is merged
+-->
+
+
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
 
 ### Use `lookup` to build the query vector [knn-query-vector-lookup]
