@@ -76,7 +76,7 @@ The predefined roles for connected clusters are:
 The exact permissions granted by **Admin** and **Viewer** depend on the {{ecloud}} service used with Cloud Connect. For [AutoOps](/deploy-manage/monitor/autoops.md), refer to [{{ecloud}} roles for AutoOps](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles).
 
 :::{note}
-As [Cloud Connect](/deploy-manage/cloud-connect.md) integrates with more services, refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
+As more services become available for use with [Cloud Connect](/deploy-manage/cloud-connect.md), refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
 :::
 
 ## {{ech}} predefined roles [ech-predefined-roles]
