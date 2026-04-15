@@ -102,7 +102,7 @@ After your PR is merged, changes don't appear immediately on the docs site. The 
 
    > Package {package_name} - {version} containing this change is available at https://epr.elastic.co/package/{package_name}/{version}
 
-2. **Docs sync**: A scheduled job in the [elastic/integration-docs](https://github.com/elastic/integration-docs) repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
+2. **Docs sync**: A scheduled job in the `elastic/integration-docs` repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
 
 3. **Docs build**: Once the automated PR is merged, changes propagate to the docs site.
 
@@ -124,7 +124,7 @@ The [{{elastic-defend}} integration](integration-docs://reference/endpoint.md) (
 |---|---|---|
 | Page content (intro, capabilities, field tables) | [elastic/endpoint-package](https://github.com/elastic/endpoint-package) | `doc_templates/endpoint/docs/README.md` |
 | Field schema definitions | [elastic/endpoint-package](https://github.com/elastic/endpoint-package) | `custom_schemas/` directory |
-| Frontmatter (`navigation_title`, `applies_to`) | [elastic/integration-docs](https://github.com/elastic/integration-docs) | `docs/reference/endpoint.md` |
+| Frontmatter (`navigation_title`, `applies_to`) | `elastic/integration-docs` | `docs/reference/endpoint.md` |
 
 :::{important}
 The page content in `integration-docs/docs/reference/endpoint.md` (everything after the frontmatter) is generated and will be overwritten during the next sync. Only edit the frontmatter section directly in this file.
