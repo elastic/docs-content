@@ -17,6 +17,7 @@ navigation_title: Configure advanced settings
 The advanced settings control the behavior of the {{security-app}}, such as:
 
 * Which indices {{elastic-sec}} uses to retrieve data
+* Which data stream namespaces detection rules search (when limited by namespace)
 * {{ml-cap}} anomaly score display threshold
 * The navigation menu style used throughout the {{security-app}}
 * Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
@@ -222,6 +223,14 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
+## Add custom alert closing reasons [custom-alert-closing-reasons]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
 stack: removed 9.1
@@ -245,6 +254,22 @@ To only exclude cold and frozen data from specific rules, add a [Query DSL filte
 
 ::::{important}
 Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, indicator match, event correlation, and {{esql}} rules may still fail if a frozen or cold shard that matches the rule’s specified index pattern is unavailable during rule executions. If failures occur, we recommend modifying the rule’s index patterns to only match indices containing hot tier data.
+::::
+
+
+## Limit detection rules to specific data stream namespaces [included-data-stream-namespaces-rule-execution]
+
+```yaml {applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When configured, the **Include data stream namespaces in rule execution** setting (`securitySolution:includedDataStreamNamespacesForRuleExecution`) restricts which documents detection rules search. Only events whose `data_stream.namespace` field matches one of the specified namespaces are queried. This applies to all detection rules in the {{kib}} space and acts like a global filter on `data_stream.namespace`.
+
+Specify an array of namespace strings (for example, `namespace1`, `namespace2`). You can configure up to 50 namespaces. Leave the setting empty to search all namespaces (default behavior).
+
+::::{tip}
+If rules are not creating expected alerts or are missing data, check that this advanced setting is not filtering out the namespaces where your data is stored. Refer to [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-namespace-filter) for more information.
 ::::
 
 

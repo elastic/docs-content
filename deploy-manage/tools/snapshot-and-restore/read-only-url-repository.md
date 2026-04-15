@@ -31,8 +31,8 @@ PUT _snapshot/my_read_only_url_repository
 
 ## Repository settings [read-only-url-repository-settings]
 
+
 The `url` repository type supports a number of settings to customize how data is stored, which may be specified when creating the repository.
 
-Repository settings cover the snapshot root URL (including supported protocols), HTTP retries and timeouts for remote URLs, compression, throughput limits, and the maximum number of snapshots. Remote `http`, `https`, and `ftp` URLs must be allowed by the [`repositories.url.allowed_urls`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#repositories-url-allowed) cluster setting.
+Repository settings cover the snapshot root URL (including supported protocols), HTTP retries and timeouts for remote URLs, compression, throughput limits, and the maximum number of snapshots. Remote `http`, `https`, and `ftp` URLs must be allowed by the [`repositories.url.allowed_urls`](elasticsearch://reference/elasticsearch/configuration-reference/url-repository-settings.md#repositories-url-allowed) setting.
 For a complete list of all read-only URL repository settings, refer to [Read-only URL repository settings](elasticsearch://reference/elasticsearch/configuration-reference/url-repository-settings.md#repository-url-repository-settings).
-
