@@ -224,6 +224,11 @@ When attempting to use an unavailable API, you'll receive this error:
 Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless) for a complete list of available APIs.
 ::::
 
+### Version reporting in the root API [elasticsearch-differences-serverless-version-reporting]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
+
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
 In {{serverless-full}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
