@@ -2,9 +2,9 @@
 navigation_title: SIEM Readiness
 description: Use SIEM Readiness to assess your security data posture across four dimensions — coverage, quality, continuity, and retention — and take guided actions to close gaps.
 applies_to:
-  stack: beta 9.4
+  stack: preview 9.4
   serverless:
-    security: beta
+    security: preview
 products:
   - id: security
   - id: cloud-serverless
@@ -28,6 +28,7 @@ To use SIEM Readiness, you need the following privileges:
 * At least `read` for the **Security** feature (to access the page)
 * At least `read` for the **Security > Rules and Exceptions** feature (Coverage tab)
 * At least `read` for the **Management > Fleet > Integrations** feature (Coverage tab)
+* `All` for the **Security > Cases** feature (to [create cases](/explore-analyze/cases/control-case-access.md) from SIEM Readiness)
 
 **{{es}} index privileges** (on relevant data indices such as `logs-*` and `metrics-*`):
 
@@ -117,7 +118,7 @@ It tracks ingest pipeline failure rates across your log categories. Each categor
 Expand a category to see individual pipelines with counts of their total ingested documents and failed documents, as well as their failure rates and status. Click **View failures** to investigate failing pipelines.
 
 :::{note}
-{applies_to}`serverless: beta` Statistics for ingested documents and failure rates aren't currently available. The Continuity pillar displays pipeline information, but without document count or failure rate metrics.
+{applies_to}`serverless: preview` Statistics for ingested documents and failure rates aren't currently available. The Continuity pillar displays pipeline information, but without document count or failure rate metrics.
 :::
 
 :::{image} /solutions/images/security-siem-readiness-5-continuity.png
@@ -137,7 +138,7 @@ It checks whether your indices comply with retention best practices based on Fed
 Expand a category to view individual indices with their current retention periods, the recommended baseline retention, and compliance status. Click **View ILM policies** to open the relevant index lifecycle management policy and update the retention period.
 
 :::{note}
-{applies_to}`serverless: beta` Index lifecycle management (ILM) policies aren't available. Retention is managed through data stream lifecycle (DSL) instead, and the Retention pillar displays DSL-based retention information rather than ILM policies.
+{applies_to}`serverless: preview` Index lifecycle management (ILM) policies aren't available. Retention is managed through data stream lifecycle (DSL) instead, and the Retention pillar displays DSL-based retention information rather than ILM policies.
 :::
 
 :::{image} /solutions/images/security-siem-readiness-6-retention.png
