@@ -74,6 +74,8 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. Unlike
 
 Because the default agent is space-aware, you can customize it independently for each space. You can change its instructions, adjust which tools it has access to, or clone it as a starting point for a new agent.
 
+In {{elastic-sec}}, you enable [Security skills](/solutions/security/ai/agent-builder/skills-model.md) for domain workflows (for example, threat hunting or alert triage) instead of using a separate built-in security agent.
+
 **Default assigned tools:**
 * All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
@@ -104,19 +106,35 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 * All [**{{observability}} tools**](./tools/builtin-tools-reference.md#observability-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
-## Threat Hunting Agent
+## Threat Hunting Agent [threat-hunting-agent]
+
+::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+:::{warning}
+The standalone Threat Hunting Agent is deprecated in {{stack}} 9.4. Use the [Elastic AI Agent](#elastic-ai-agent) with the Threat Hunting skill enabled for the same workflows. Refer to [Elastic AI Agent, skills, and tools in {{elastic-sec}}](/solutions/security/ai/agent-builder/skills-model.md).
+:::
+
+::::
+
+::::{applies-item} { stack: preview =9.2, ga 9.3 }
+
 ```{applies_to}
 stack: preview 9.3
 serverless:
   security: preview
 ```
 
-A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
-
+A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use cases, refer to [Agent Builder for {{elastic-sec}}](/solutions/security/ai/agent-builder/agent-builder.md).
 
 **Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
+
+::::
+
+::::
 
 ## Related pages
 

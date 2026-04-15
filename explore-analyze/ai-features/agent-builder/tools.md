@@ -18,6 +18,10 @@ products:
 
 Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data.
 
+Skills group tools (and instructions) for a specific workflow. The agent still invokes tools one action at a time; skills tell it which capabilities apply for your scenario. For the Skills overview page, see the in-progress Agent Builder skills documentation (docs-content#5868).
+
+% [Skills](skills.md)
+
 ## How agents use tools
 
 Tools enable agents to work with {{es}} data. When an agent receives a natural language query, it does the following:
