@@ -19,7 +19,7 @@ products:
 Prompt engineering in {{agent-builder}} involves four key areas:
 
 * **Custom instructions**: When you [create a custom agent](custom-agents.md), you define instructions that shape the agent's persona, reasoning patterns, and guardrails.
-* **Skill instructions**: When you [create custom skills](skills.md), you write instructions that give agents reusable, task-specific expertise. Refer to [Skill creation guidelines](skill-creation-guidelines.md) for guidance specific to skills.
+* **Skill instructions**: When you [create custom skills](custom-skills.md), you write instructions that give agents reusable, task-specific expertise. Refer to [Skill creation guidelines](skill-creation-guidelines.md) for guidance specific to skills.
 * **Tool descriptions**: When you [define custom tools](tools/custom-tools.md#writing-effective-tool-descriptions), you write descriptions that help the agent understand when and how to use each tool.
 * **Chat prompts**: How you phrase your questions when [chatting with agents](chat.md) affects the quality and accuracy of responses.
 

@@ -14,7 +14,7 @@ products:
 
 # Guidelines for creating skills in {{agent-builder}}
 
-[Custom skills](skills.md) give your agents consistent, reusable expertise for specific task domains. The quality of a skill depends almost entirely on how well its instructions are written. This guide covers how to write instructions that help the agent select the right skill, follow the right steps, and handle edge cases gracefully.
+[Custom skills](custom-skills.md) give your agents consistent, reusable expertise for specific task domains. The quality of a skill depends almost entirely on how well its instructions are written. This guide covers how to write instructions that help the agent select the right skill, follow the right steps, and handle edge cases gracefully.
 
 ## Skill authoring checklist
 
@@ -235,6 +235,7 @@ After saving, assign the skill to an agent and test it with realistic queries. C
 ## Related pages
 
 - [Skills in {{agent-builder}}](skills.md)
+- [Custom skills](custom-skills.md)
 - [Built-in skills reference](builtin-skills-reference.md)
 - [Best practices for prompt engineering](prompt-engineering.md)
 - [Skills APIs](kibana-api.md#skills-apis)

@@ -106,6 +106,7 @@ $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {appli
 ## Related pages
 
 - [Skills in {{agent-builder}}](skills.md)
+- [Custom skills](custom-skills.md)
 - [Skill creation guidelines](skill-creation-guidelines.md)
 - [Tools in {{agent-builder}}](tools.md)
 - [Built-in tools reference](tools/builtin-tools-reference.md)

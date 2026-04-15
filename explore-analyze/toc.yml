@@ -207,6 +207,7 @@ toc:
           - file: ai-features/agent-builder/skills.md
             children:
               - file: ai-features/agent-builder/builtin-skills-reference.md
+              - file: ai-features/agent-builder/custom-skills.md
               - file: ai-features/agent-builder/skill-creation-guidelines.md
           - file: ai-features/agent-builder/tools.md
             children:
