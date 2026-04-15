@@ -2,7 +2,7 @@
 type: how-to
 applies_to:
   stack: preview 9.4
-  serverless: unavailable
+  serverless: preview
 navigation_title: Query activity
 description: Monitor and manage long-running queries in your Elasticsearch cluster using the Query activity page in Kibana.
 products:
