@@ -14,7 +14,7 @@ description: Understand how the Elastic AI Agent, Security skills, and tools wor
 
 Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) that you extend with modular *skills*. Each skill packages domain-specific instructions, a curated set of [tools](/explore-analyze/ai-features/agent-builder/tools.md), and context for a SOC workflow so you don't switch between separate agents for hunting, triage, or response.
 
-For product-wide mechanics (creating custom skills, APIs, and the full built-in skills catalog), see the Skills in {{agent-builder}}, built-in skills reference, and Skill creation guidelines pages when those docs publish (in progress).
+For product-wide mechanics (creating custom skills, APIs, and the full built-in skills catalog), refer to the Skills in {{agent-builder}}, built-in skills reference, and Skill creation guidelines pages when those docs publish (in progress).
 
 % After docs-content#5868 merges, restore links:
 % [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md)
@@ -53,7 +53,7 @@ Use the skill controls in Agent Builder to turn skills on or off for your worksp
 Confirm UI labels and the exact screen with @dhru42 before publishing screenshots of the skill selector.
 :::
 
-For details on assigning skills to agents and using the Skills APIs, see the Skills in {{agent-builder}} page when it publishes (in progress).
+For details on assigning skills to agents and using the Skills APIs, refer to the Skills in {{agent-builder}} page when it publishes (in progress).
 
 % [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md)
 
@@ -65,7 +65,7 @@ In {{stack}} 9.3 and earlier Agent Builder documentation, {{elastic-sec}} docume
 
 ### How is this different from Elastic AI Assistant?
 
-[Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) is the legacy in-product assistant embedded across {{elastic-sec}} workflows. Agent Builder is the platform for configurable agents, tools, and skills. Skills and tools in Agent Builder replace the older split between broad “capabilities” and one-off workflows. For how skills relate to tools and prompts, see the Skills in {{agent-builder}} page when it publishes (in progress).
+[Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) is the legacy in-product assistant embedded across {{elastic-sec}} workflows. Agent Builder is the platform for configurable agents, tools, and skills. Skills and tools in Agent Builder replace the older split between broad “capabilities” and one-off workflows. For how skills relate to tools and prompts, refer to the Skills in {{agent-builder}} page when it publishes (in progress).
 
 % [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md)
 
@@ -75,7 +75,7 @@ You can enable multiple skills for the agent. The agent decides which skill cont
 
 ### Can I create custom Security skills?
 
-Custom skills and enterprise options are evolving. See the Skills in {{agent-builder}} and Skill creation guidelines pages when they publish (in progress) for what is supported in your deployment tier. Confirm tier and roadmap details with @dhru42 or your Elastic contact.
+Custom skills and enterprise options are evolving. Refer to the Skills in {{agent-builder}} and Skill creation guidelines pages when they publish (in progress) for what is supported in your deployment tier. Confirm tier and roadmap details with @dhru42 or your Elastic contact.
 
 % [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md)
 % [Skill creation guidelines](/explore-analyze/ai-features/agent-builder/skill-creation-guidelines.md)

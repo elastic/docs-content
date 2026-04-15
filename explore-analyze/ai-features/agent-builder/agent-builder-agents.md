@@ -34,24 +34,9 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 {{agent-builder}} includes pre-configured built-in agents optimized for common use cases.
 
-::::{applies-switch}
-
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent. In {{elastic-sec}}, enable [Security skills](/solutions/security/ai/agent-builder/skills-model.md) for specialized workflows; the standalone [Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent) is deprecated.
-- **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
-
-::::
-
-::::{applies-item} { stack: preview =9.2, ga 9.3 }
-
 - **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
 - **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
 - **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
-
-::::
-
-::::
 
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 

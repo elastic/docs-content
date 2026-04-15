@@ -182,25 +182,9 @@ serverless:
 
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
 
-::::{applies-switch}
-
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-:::{note}
-In {{stack}} 9.4 and later, the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) receives security tools through the [Security skills](/solutions/security/ai/agent-builder/skills-model.md) you enable (replacing the default assignment that the standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) used in earlier versions).
-:::
-
-::::
-
-::::{applies-item} { stack: preview =9.2, ga 9.3 }
-
 :::{note}
 The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is assigned these tools by default.
 :::
-
-::::
-
-::::
 
 `security.alerts`
 :   Searches and analyzes security alerts using full-text or structured queries for finding, counting, aggregating, or summarizing alerts.

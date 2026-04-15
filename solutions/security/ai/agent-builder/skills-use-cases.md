@@ -12,7 +12,7 @@ description: Example prompts and outcomes for Elastic AI Agent skills in Elastic
 
 # Security skills use cases [security-skills-use-cases]
 
-This page gives example conversations for out-of-the-box Security skills on the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). For definitions of agents, skills, and tools, start with [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md). For skill IDs, tooling, and lifecycle badges, see the built-in skills reference in {{agent-builder}} when that page publishes (in progress).
+This page gives example conversations for out-of-the-box Security skills on the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). For definitions of agents, skills, and tools, start with [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md). For skill IDs, tooling, and lifecycle badges, refer to the built-in skills reference in {{agent-builder}} when that page publishes (in progress).
 
 % [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md)
 

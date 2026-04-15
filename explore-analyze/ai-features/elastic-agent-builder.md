@@ -45,7 +45,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 ## Key concepts
 
-The {{agent-builder}} framework consists of Agent Chat, Agents, Skills, and Tools.
+The {{agent-builder}} framework consists of three key components: Agent Chat, Agents, and Tools.
 
 ### Agent Chat
 
@@ -58,12 +58,6 @@ The {{agent-builder}} framework consists of Agent Chat, Agents, Skills, and Tool
 Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it. Choose from a set of built-in agents, or create your own.
 
 [**Learn more about agents**](agent-builder/agent-builder-agents.md)
-
-### Skills
-
-Skills are modular capability packs you can assign to an agent: instructions, curated tools, and context for a specific domain. They build on the same tools layer and are optional on top of the agent's base configuration. A dedicated Skills page will publish with the Agent Builder skills documentation update (docs-content#5868).
-
-% [**Learn more about skills**](agent-builder/skills.md)
 
 ### Tools [tools-concept]
 

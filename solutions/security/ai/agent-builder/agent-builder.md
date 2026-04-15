@@ -30,7 +30,7 @@ While Agent Builder works with any [configured LLM connector](/explore-analyze/a
 
 ## Elastic AI Agent and Security skills [elastic-ai-agent-security-skills]
 
-In {{stack}} 9.4 and later, {{elastic-sec}} uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with modular [Security skills](skills-model.md). You enable the skills that match your role (for example, threat hunting, alert triage, or incident response), then chat with the same default agent instead of switching between separate built-in agents.
+{{elastic-sec}} uses the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with modular [Security skills](skills-model.md). You enable the skills that match your role (for example, threat hunting, alert triage, or incident response), then chat with the same default agent instead of switching between separate built-in agents.
 
 Read these pages next:
 
@@ -40,7 +40,7 @@ Read these pages next:
 
 % * [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) (full platform reference)
 
-The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is deprecated in 9.4; hunting workflows use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
+The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is deprecated; hunting workflows use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
 
 ::::
 
@@ -74,9 +74,25 @@ Workflows are tightly integrated with Agent Builder functionalities:
 
 This section provides conceptual examples of what you can achieve with Agent Builder workflows. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/security](https://github.com/elastic/workflows/tree/main/workflows/security) GitHub repo.
 
+::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
 :::{note}
-In {{stack}} 9.4 and later, these flows use the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with the relevant [Security skills](skills-model.md) enabled. In {{stack}} 9.3, substitute the standalone [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) where the examples mention the agent.
+These flows use the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with the relevant [Security skills](skills-model.md) enabled.
 :::
+
+::::
+
+::::{applies-item} { stack: preview =9.2, ga 9.3 }
+
+:::{note}
+Substitute the standalone [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) where the examples mention the agent.
+:::
+
+::::
+
+::::
 
 ### Example 1: Run Attack Discovery using a workflow
 
