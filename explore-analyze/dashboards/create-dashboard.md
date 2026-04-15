@@ -71,3 +71,7 @@ Before creating a dashboard, ensure you have:
     :::{include} ../_snippets/dashboard-ownership.md
     :::
 
+## Create a dashboard with {{agent-builder}}
+
+You can also create dashboards through natural language chat with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/chat.md) agents. Describe what you want to visualize and the agent builds a dashboard with ES|QL-powered Lens panels. You can iterate on the dashboard in conversation before saving it. To learn more, refer to [Dashboards and visualizations in chat](/explore-analyze/ai-features/agent-builder/chat.md#dashboards-and-visualizations).
+
