@@ -4,8 +4,6 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
-        children:
-          - file: data-store/perform-index-operations.md
       - file: data-store/near-real-time-search.md
       - file: data-store/data-streams.md
         children:
@@ -72,6 +70,9 @@ toc:
           - file: data-store/templates/ignore-missing-component-templates.md
           - hidden: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
+      - file: data-store/perform-index-operations.md
+        children:
+          - file: data-store/index-operations-reference.md
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
     children:
