@@ -1,4 +1,4 @@
-% Shared intro body for Automatic Import: canonical page and solution stub pages. Cursor agent 2026-04-16.
+% Shared intro body for Automatic Import: canonical page and solution stub pages. 
 
 Automatic Import parses, ingests, and maps data to [ECS](https://www.elastic.co/elasticsearch/common-schema) for sources that don’t yet have prebuilt Elastic integrations. It works with {{elastic-sec}}, {{observability}}, and other solutions that rely on {{agent}} and integrations. This lets you onboard custom or niche data sources without building a full integration manually.
 
