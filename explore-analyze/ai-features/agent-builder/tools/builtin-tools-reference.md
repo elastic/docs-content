@@ -28,7 +28,7 @@ For an overview of how tools work in {{agent-builder}}, refer to the [Tools over
 
 ## Platform tools
 
-Platform tools are available across all deployments and serverless projects. They use the `platform.core` and `platform.streams` namespaces.
+Platform tools are available across all deployments and serverless projects. They use the `platform.*` namespace.
 
 ### Platform core tools
 
@@ -125,7 +125,7 @@ stack: ga 9.4
 % 2. Does platform.streams.sig_events.search_kis belong in this reference or is it internal?
 % 3. Are these available in serverless? If so, which projects?
 
-Streams tools provide capabilities for exploring and managing [Streams](/manage-data/data-store/data-streams.md).
+Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
 
 `platform.streams.list_streams` {applies_to}`stack: ga 9.4`
 :   Lists all streams the current user has access to, returning each stream's name, type (wired, classic, or query), and description.
