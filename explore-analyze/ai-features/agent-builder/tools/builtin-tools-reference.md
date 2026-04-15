@@ -122,8 +122,7 @@ stack: ga 9.4
 % TODO (9.4): Confirm with Streams team (kibana#258330) before publishing:
 % 1. Are all platform.streams.* tools assignable to arbitrary custom agents, or are they
 %    only available within the built-in Streams skill/agent?
-% 2. Does platform.streams.sig_events.search_kis belong in this reference or is it internal?
-% 3. Are these available in serverless? If so, which projects?
+% 2. Are these available in serverless? If so, which projects?
 
 Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
 
@@ -148,8 +147,7 @@ Streams tools provide capabilities for exploring and managing [Streams](/solutio
 `platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4`
 :   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion.
 
-% TODO (9.4): Confirm with Streams team whether platform.streams.sig_events.search_kis
-% is user-assignable or internal only — not showing in the Elasticsearch project UI.
+% sig_events.search_kis is behind a feature flag in 9.4 — uncomment when publicly available.
 % Source: https://github.com/elastic/kibana/pull/258399
 <!-- `platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4`
 :   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams. -->
