@@ -38,7 +38,7 @@ Use the Dashboards API when you need to:
 - Deploy dashboards across environments (staging, production) from a CI/CD pipeline
 - Manage dashboard definitions as code and track changes in version control
 - Automate dashboard creation or updates as part of your own tooling or integrations
-- Create dashboards that include [ES|QL](/explore-analyze/query-your-data-with-esql.md)-powered visualizations inline. This is the only programmatic path for ES|QL charts.
+- Create dashboards that include [ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations inline. This is the only programmatic path for ES|QL charts.
 
 The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Panels that lack a schema, such as Maps and Links, return an error on write.
 
@@ -51,7 +51,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-The Visualizations API lets you create and manage visualizations as standalone saved objects in the Kibana Visualizations library. A saved visualization can then be embedded in one or more dashboards by referencing its ID, rather than repeating the visualization definition in each dashboard.
+The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. A saved visualization can then be embedded in one or more dashboards by referencing its ID, rather than repeating the visualization definition in each dashboard.
 
 Use the Visualizations API when you need to:
 
@@ -70,7 +70,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-{{agent-builder}} agents can create and update dashboards through natural language chat in the {{product.kibana}} UI. Describe what you want to visualize and the agent generates a dashboard with [{{esql}}](/explore-analyze/query-your-data-with-esql.md)-powered visualizations. Dashboards are in-memory by default. They exist only as conversation attachments and are not saved until you save them, so you can iterate freely before committing.
+{{agent-builder}} agents can create and update dashboards through natural language chat in the {{product.kibana}} UI. Describe what you want to visualize and the agent generates a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default. They exist only as conversation attachments and are not saved until you save them, so you can iterate freely before committing.
 
 Use {{agent-builder}} when you want to:
 
