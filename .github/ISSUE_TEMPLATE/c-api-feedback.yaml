@@ -7,6 +7,8 @@ body:
     attributes:
       value: |
         Hi 👋. Thanks for taking the time to fill out this feedback!
+        Use this form for feedback about Elastic API documentation.
+        If you are reporting a product bug or support problem rather than a docs issue, please use the appropriate product or support channel instead.
         This form will create an issue that Elastic's docs team will triage and prioritize.
   - type: dropdown
     id: was-this-helpful
@@ -14,6 +16,7 @@ body:
       label: Was the documentation helpful?
       options:
         - "Yes"
+        - "Partly"
         - "No"
       default: 0
     validations:
@@ -21,7 +24,7 @@ body:
   - type: textarea
     id: link
     attributes:
-      label: What documentation page is affected
+      label: What documentation page or section is affected
       description: Include a link to the page that you have feedback about.
     validations:
       required: true
@@ -31,7 +34,7 @@ body:
       label: Description
       description: (Optional) Describe your experience with Elastic API documentation.
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |

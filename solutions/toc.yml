@@ -527,6 +527,7 @@ toc:
           - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
           - file: observability/ai/llm-performance-matrix.md
+      - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md
@@ -587,6 +588,7 @@ toc:
               - file: security/detect-and-alert/advanced-data-source-configuration.md
                 children:
                   - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
+                  - file: security/detect-and-alert/cross-project-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/prebuilt-rules.md
