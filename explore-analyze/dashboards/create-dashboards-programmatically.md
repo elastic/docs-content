@@ -19,7 +19,7 @@ REST APIs and AI-powered tools give you several ways to create and manage dashbo
 |---|---|---|
 | [Dashboards API](#dashboards-api) | Managing dashboards as code: scripted deployments, CI/CD, version control | Saved dashboard |
 | [Visualizations API](#lens-visualizations-api) | Building a reusable chart library you can embed by reference in multiple dashboards | Saved visualization |
-| [{{agent-builder}}](#agent-builder-dashboard-tools) | Creating dashboards from natural language, in {{product.kibana}} or using the Agent Builder MCP server | In-memory dashboard, save when ready |
+| [{{agent-builder}}](#agent-builder-dashboard-tools) | Creating dashboards from natural language, in {{product.kibana}} or using the Agent Builder MCP server | Dashboard through chat that you can save when ready |
 | [{{product.kibana}} dashboards agent skill](#dashboards-agent-skill) | Building your own AI agent or LLM tool that generates dashboards | Saved dashboard (using the API) |
 
 ## Dashboards API [dashboards-api]
