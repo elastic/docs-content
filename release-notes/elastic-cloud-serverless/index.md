@@ -10,7 +10,7 @@ products:
 Review the changes, fixes, and more to {{serverless-full}}.
 
 
-## April 13, 2026 [serverless-changelog-04132026]
+## April 15, 2026 [serverless-changelog-04152026]
 
 ### Features and enhancements [serverless-changelog-04132026-features-enhancements]
 
@@ -18,11 +18,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
   * Azure: Dubai, UAE (`uaenorth`)
   * AWS: Sydney, Australia (`ap-southeast-2`)
   * AWS: Central Canada (`ca-central-1`)
-* Introduces Dashboard API create and update endpoints as Technical Preview, documented in OpenAPI with initial support for common panel types [#256302]({{kib-pull}}256302)
+* Introduces Dashboard API create and update endpoints as technical preview, documented in OpenAPI with initial support for common panel types [#256302]({{kib-pull}}256302)
 * Adds a **Middle** option for **Primary metric** position on Lens Metric charts (**Top**, **Middle**, **Bottom**) [#260902]({{kib-pull}}260902)
 * Adds a scheduled Fleet permission verifier task that validates cloud connector credentials with an OpenTelemetry-based verifier agent [#257516]({{kib-pull}}257516)
 * Enables OpenTelemetry collector agents in Fleet (technical preview), including an **Add collector** action, Agent list visibility, and monitoring views [#260654]({{kib-pull}}260654)
-* Renames user-facing **Cloud Connector** copy to **Federated Identity** across Fleet and related Security onboarding flows [#261353]({{kib-pull}}261353)
+* Renames the user-facing **Cloud Connector** copy to **Federated Identity** across Fleet and related Security onboarding flows [#261353]({{kib-pull}}261353)
 * Allows **Remote Elasticsearch** outputs, integration sync on remote outputs, and `POST /api/fleet/service_tokens` in {{serverless-full}} [#262101]({{kib-pull}}262101)
 * Raises the Fleet integration package specification maximum to 3.6 [#261362]({{kib-pull}}261362)
 * Makes saved {{esql}} views available in the editor by removing the temporary hide flag [#261907]({{kib-pull}}261907)
@@ -39,7 +39,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds alert count and SLO status badges on the APM service map [#261822]({{kib-pull}}261822)
 * Syncs optional case closing reasons to linked alerts when you close a case with alert sync enabled [#254603]({{kib-pull}}254603)
 * Moves automatic migration authoring to a dedicated **Migrations** page with navigation updates [#260379]({{kib-pull}}260379)
-* Adds granular Elastic Security detection rule subfeatures for investigation guides, highlighted fields, enable/disable, manual runs, and rules management settings [#250131]({{kib-pull}}250131)
+* Adds granular Elastic Security detection rule sub-features for investigation guides, highlighted fields, enable/disable, manual runs, and rules management settings [#250131]({{kib-pull}}250131)
 * Speeds up async Elasticsearch polling when the browser uses HTTP/2 or HTTP/3 [#256564]({{kib-pull}}256564)
 * Preserves search and pagination on the **Users** list after you edit a user [#261152]({{kib-pull}}261152)
 * Adds sparklines for `CATEGORIZE` fields in Discover [#254269]({{kib-pull}}254269)
@@ -64,7 +64,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a `preserve_leaf_arrays` mapping option for flattened fields to keep leaf array order, nulls, and duplicates when set to `exact` [#145376]({{es-pull}}145376)
 * Allows comma-separated and wildcard view names when deleting multiple views in one request [#145816]({{es-pull}}145816)
 * Adds AVX-512 int8 vector kernels with cascade unrolling for dot product, squared Euclidean, and cosine [#145683]({{es-pull}}145683)
-* Collects time-series dimensions once per time series id during downsampling [#145089]({{es-pull}}145089)
+* Collects time-series dimensions once per time series ID during downsampling [#145089]({{es-pull}}145089)
 * Removes implicit per-branch row limits from `FORK` in {{esql}} [#145429]({{es-pull}}145429)
 * Adds the `MV_DIFFERENCE` multivalue function in {{esql}} [#141895]({{es-pull}}141895)
 * Adds a `DataSourceValidator` SPI for validating datasource and dataset settings ahead of CRUD APIs [#145885]({{es-pull}}145885)
@@ -73,15 +73,15 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Refines binary doc value decoding paths for wildcard queries by replacing `IntegratedCount` with `SeparateCount` [#145663]({{es-pull}}145663)
 * Defaults new `semantic_text` fields to `disk_bbq` indexing aligned with `dense_vector` defaults [#145374]({{es-pull}}145374)
 * Documents `aggregate_metric_double` behavior changes for version 9.4, including average-first semantics and related {{esql}} updates [#145742]({{es-pull}}145742)
-* Enables synthetic `_id` for new time series indices by default via `index.mapping.synthetic_id`, reducing stored id overhead [#144184]({{es-pull}}144184)
+* Enables synthetic `_id` for new time series indices by default using `index.mapping.synthetic_id`, reducing stored ID overhead [#144184]({{es-pull}}144184)
 * Improves error messaging when time-series {{esql}} queries target indices that are not time series data streams [#145625]({{es-pull}}145625)
 * Reduces peak memory for filtered dense vector scoring by lazily walking accept docs in `VectorScoringUtils` [#145835]({{es-pull}}145835)
 
 ### Fixes [serverless-changelog-04132026-fixes]
 
 * Accepts `application/x-zip-compressed` for case file attachments on Windows [#262414]({{kib-pull}}262414)
-* Restores space-relative Markdown links and a same-tab vs new-tab control for Dashboard Markdown panels [#260782]({{kib-pull}}260782)
-* Suppresses unsaved-changes warnings when sharing a dashboard in view mode unless edits are pending in edit mode [#261051]({{kib-pull}}261051)
+* Restores space-relative Markdown links and a same-tab versus new-tab control for Dashboard Markdown panels [#260782]({{kib-pull}}260782)
+* Suppresses unsaved changes warnings when sharing a dashboard in view mode unless edits are pending in edit mode [#261051]({{kib-pull}}261051)
 * Restores legacy Dashboard control fallback to stored `dataViewId` values for serverless controls [#255878]({{kib-pull}}255878)
 * Adds `input_output` configuration to the ingest pipeline inference processor UI (mutually exclusive with `target_field` + `field_map`) [#260517]({{kib-pull}}260517)
 * Improves screen reader labels for row selection on **Stack Management** → **Ingest Pipelines** [#261369]({{kib-pull}}261369)
@@ -90,7 +90,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Restores sort-state announcements on the **Ingest Pipelines** list table [#262226]({{kib-pull}}262226)
 * Prevents duplicated announcements for ingest pipeline row action tooltips [#259185]({{kib-pull}}259185)
 * Auto-installs Fleet content packages only when the registry version is newer than the installed version [#262509]({{kib-pull}}262509)
-* Disables Elasticsearch response compression for streamed file chunks so Fleet diagnostic downloads work when `elasticsearch.compression` is enabled [#262394]({{kib-pull}}262394)
+* Turns off Elasticsearch response compression for streamed file chunks so Fleet diagnostic downloads work when `elasticsearch.compression` is enabled [#262394]({{kib-pull}}262394)
 * Polls Index Lifecycle Management explain data until details populate after you attach a policy [#260447]({{kib-pull}}260447)
 * Announces the selected language correctly after changing snippets in Index Management **Add data** code boxes [#261921]({{kib-pull}}261921)
 * Announces Index Lifecycle Policy timing validation errors on both the number input and units control [#260673]({{kib-pull}}260673)
@@ -104,19 +104,19 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes {{esql}} multi-value cell filters after `STATS` by using `MV_CONTAINS` when types allow [#260998]({{kib-pull}}260998)
 * Renames Alerting V2 metadata `labels` fields to `tags` in pre-release APIs and UI [#260329]({{kib-pull}}260329)
 * Shows OpenTelemetry host metrics in the Observability Overview **Hosts** table alongside Elastic Agent data [#261564]({{kib-pull}}261564)
-* Fixes Security timeline bulk deletion [#260206]({{kib-pull}}260206)
+* Fixes Timeline bulk deletion in {{elastic-sec}} [#260206]({{kib-pull}}260206)
 * Expands Osquery result queries to remote clusters when cross-cluster search is configured [#260518]({{kib-pull}}260518)
-* Disables the detection rule **Query bar** until async data view creation finishes to keep filters consistent [#261523]({{kib-pull}}261523)
+* Turns off the detection rule **Query bar** until async data view creation finishes to keep filters consistent [#261523]({{kib-pull}}261523)
 * Removes duplicate dashboard control toolbars on the detection rule monitoring dashboard [#261846]({{kib-pull}}261846)
 * Suppresses false required-field warnings for flattened subfields on detection rules [#261830]({{kib-pull}}261830)
-* Clears stuck **running** status on disabled detection rules after a {{kib}} restart [#262374]({{kib-pull}}262374)
+* Clears the stuck **running** status on turned off detection rules after a {{kib}} restart [#262374]({{kib-pull}}262374)
 * Blocks keyboard activation of inactive component template rows in the index template wizard [#260719]({{kib-pull}}260719)
 * Gives distinct accessible names to Snapshot and Restore policy review actions [#261313]({{kib-pull}}261313)
 * Separates **Add a processor** and **Import processors** announcements on empty ingest pipeline pages [#261603]({{kib-pull}}261603)
 * Prevents duplicated list labels in Snapshot and Restore data stream and index pickers [#261786]({{kib-pull}}261786)
 * Re-enables Log rate analysis smart grouping with lower memory use [#253704]({{kib-pull}}253704)
 * Formats `time_of_day` and `time_of_week` values in Machine Learning anomaly rule notifications and previews [#261034]({{kib-pull}}261034)
-* Skips maintenance window checks on the Alerts page when the license does not include maintenance windows [#261048]({{kib-pull}}261048)
+* Skips maintenance window checks on the **Alerts** page when the license does not include maintenance windows [#261048]({{kib-pull}}261048)
 * Enforces role-based access on Agent Builder agent overview and tools pages [#261895]({{kib-pull}}261895)
 * Syncs Agent Builder dashboard preview time ranges when you brush charts [#262112]({{kib-pull}}262112)
 * Returns `0` for `COUNT` on `aggregate_metric_double` when no rows match [#144462]({{es-pull}}144462)

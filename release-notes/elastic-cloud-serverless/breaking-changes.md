@@ -10,7 +10,7 @@ products:
 
 :::{dropdown} Disables sequence numbers for TSDB indices in release builds
 
-For indices in time series mode, {{es}} trims sequence numbers once they are no longer needed for replication. This reduces storage overhead (for example, a substantial share of space for OpenTelemetry Protocol metrics) and lowers the cost of segment merging.
+For indices in time series mode, {{es}} trims sequence numbers when they are no longer needed for replication. This reduces storage overhead (for example, a substantial share of space for OpenTelemetry Protocol metrics) and lowers the cost of segment merging.
 
 When sequence numbers are disabled for an index, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) no longer applies. Index, update, and delete requests that use `if_seq_no` and `if_primary_term` return an error, and searches that request `seq_no_primary_term` receive sentinel values for those fields. `update_by_query` and `delete_by_query` proceed without conflict detection, so concurrent modifications can overwrite documents without version conflict errors. For typical metrics workloads, concurrent updates are uncommon, and the storage savings are often an acceptable tradeoff.
 
