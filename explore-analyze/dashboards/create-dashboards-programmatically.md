@@ -19,8 +19,8 @@ REST APIs and AI-powered tools give you several ways to create and manage dashbo
 |---|---|---|
 | [Dashboards API](#dashboards-api) | Managing dashboards as code: scripted deployments, CI/CD, version control | Saved dashboard |
 | [Visualizations API](#lens-visualizations-api) | Building a reusable chart library you can embed by reference in multiple dashboards | Saved visualization |
-| [{{agent-builder}}](#agent-builder-dashboard-tools) | Creating dashboards from natural language, in {{product.kibana}} or via the Agent Builder MCP server | In-memory dashboard, save when ready |
-| [Kibana dashboards agent skill](#dashboards-agent-skill) | Building your own AI agent or LLM tool that generates dashboards | Saved dashboard (via API) |
+| [{{agent-builder}}](#agent-builder-dashboard-tools) | Creating dashboards from natural language, in {{product.kibana}} or using the Agent Builder MCP server | In-memory dashboard, save when ready |
+| [{{product.kibana}} dashboards agent skill](#dashboards-agent-skill) | Building your own AI agent or LLM tool that generates dashboards | Saved dashboard (using the API) |
 
 ## Dashboards API [dashboards-api]
 
@@ -84,13 +84,13 @@ Full-screen standalone chat mode gives the most space for previewing and refinin
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/chat.md).
 
-## Kibana dashboards agent skill [dashboards-agent-skill]
+## {{product.kibana}} dashboards agent skill [dashboards-agent-skill]
 
 The [kibana-dashboards agent skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards) is an open-source skill for integrating dashboard generation into your own AI tools. It provides language models with the context and instructions to generate valid dashboard definitions and call the Dashboards API, so you can build custom interfaces, automation scripts, or agentic pipelines that create {{product.kibana}} dashboards without relying on the built-in {{agent-builder}} experience.
 
 Use the agent skill when you are:
 
-- Building a custom AI application or chatbot that creates dashboards as part of a larger workflow
+- Building a custom AI application that creates dashboards as part of a larger workflow
 - Integrating dashboard generation into an agentic pipeline outside the {{product.kibana}} UI
 - Extending how an LLM interacts with the Dashboards API beyond the built-in capabilities of {{agent-builder}}
 
