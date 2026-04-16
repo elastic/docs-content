@@ -165,4 +165,4 @@ To display agentless resources in the agent and agent policy lists:
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable **Show agentless resources**.
 
-You can view and request diagnostics for agentless agents, but you cannot upgrade, unenroll, or reassign them.
+You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for agentless agents, but you cannot upgrade, unenroll, or reassign them.
