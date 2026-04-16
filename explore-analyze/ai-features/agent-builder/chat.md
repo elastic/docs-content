@@ -106,12 +106,6 @@ Click the three-dot menu icon in the top-right corner to access additional optio
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga =9.3 }
-
-This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
-
-::::
-
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
 The options menu provides access to:
@@ -119,14 +113,27 @@ The options menu provides access to:
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings.
 
-:::{image} images/more-actions-menu-options.png
+:::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
 :alt: Options menu showing Agent details and GenAI Settings
 :width: 250px
 :::
 
+
 :::{tip}
 To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
+This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
+
+:::{image} images/more-actions-menu-options.png
+:screenshot:
+:alt: Options menu showing agent management, tool management, agent editing, and duplication
+:width: 250px
 :::
 
 ::::
