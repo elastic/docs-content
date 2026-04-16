@@ -32,8 +32,6 @@ For more information on billing and token costs, refer to [Elastic pricing](http
 
 At the end of each round, the total token usage is displayed after the agent response. Input tokens are represented by {icon}`sort_up`, and output tokens by {icon}`sort_down`:
 
-% TODO: Verify whether token-usage.png needs updating for 9.4.
-
 :::{image} images/token-usage.png
 :screenshot:
 :width: 800px
@@ -41,8 +39,6 @@ At the end of each round, the total token usage is displayed after the agent res
 :::
 
 To view the raw JSON response which includes detailed token information, click the **View JSON** button. This opens a modal with the complete, raw response data:
-
-% TODO: Verify whether token-usage-json-raw-response.png needs updating for 9.4.
 
 :::{image} images/token-usage-json-raw-response.png
 :screenshot:
