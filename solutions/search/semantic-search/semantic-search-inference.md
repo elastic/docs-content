@@ -12,7 +12,7 @@ products:
 # Semantic search with the inference API [semantic-search-inference]
 
 
-The instructions in this tutorial shows you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
+The instructions in this tutorial show you how to use the {{infer}} API workflow with various services to perform semantic search on your data.
 
 ::::{important}
 For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.
@@ -140,8 +140,9 @@ When using this model the recommended similarity measure to use in the `dense_ve
 ```console
 PUT _inference/sparse_embedding/elser_embeddings <1>
 {
-  "service": "elasticsearch",
+  "service": "elastic",
   "service_settings": {
+    "model_id": "elser_model_2",
     "num_allocations": 1,
     "num_threads": 1
   }

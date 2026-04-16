@@ -22,6 +22,7 @@ products:
 * [View the {{agent}} metrics dashboard](#view-agent-metrics)
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
 * [Send {{agent}} monitoring data to a remote {{es}} cluster](#external-elasticsearch-monitoring)
+* [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
 * [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting)
 
 Agent monitoring is turned on by default in the agent policy unless you turn it off. Want to turn off agent monitoring to stop collecting logs and metrics? See [Change {{agent}} monitoring settings](#change-agent-monitoring).
@@ -45,7 +46,7 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 ::::
 
 
-{{agent}}s can have the following statuses:
+{{agent}}s can have these statuses:
 
 |     |     |
 | --- | --- |
@@ -58,7 +59,7 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 | **Unenrolled** | {{agent}}s have been manually unenrolled and their API keys have been removed from the system. You can [unenroll](/reference/fleet/unenroll-elastic-agent.md) an offline {{agent}} using {{agent}} actions if you determine it’s offline and no longer valid.<br>These agents need to re-enroll in {{fleet}} to be operational again. |
 | **Uninstalled** | {{agent}}s have been successfully uninstalled and removed from the host system. |
 
-The following diagram shows the flow of {{agent}} statuses:
+This diagram shows the flow of {{agent}} statuses:
 
 :::{image} images/agent-status-diagram.png
 :alt: Diagram showing the flow of Fleet Agent statuses
@@ -238,14 +239,27 @@ You may want to store all of the health and status data about your {{agents}} in
 
 To do so, follow the steps in [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md). After the new output is configured, follow the steps to update the {{agent}} policy and make sure that the **Output for agent monitoring** setting is enabled. {{agent}} monitoring data will use the remote {{es}} output that you configured.
 
+## {{agent}} out-of-the-box alert rules [agent-out-of-the-box-alert-rules]
+```{applies_to}
+stack: ga 9.2+
+```
 
-## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status [fleet-alerting]
+{{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
+Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
 
-You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerts-cases.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
+## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
+```{applies_to}
+stack: ga 9.0-9.1
+```
+:::{tip}
+For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md). 
+:::
+
+You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
 
 This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 
-The following data streams and fields are available.
+These data streams and fields are available.
 
 Data stream
 :   `metrics-fleet_server.agent_status-default`

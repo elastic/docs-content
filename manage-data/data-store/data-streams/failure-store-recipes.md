@@ -307,7 +307,7 @@ Without tags in place it would not be as clear where in the pipeline the indexin
 
 ## Alerting on failed ingestion [failure-store-examples-alerting]
 
-Since failure stores can be searched like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
+Since failure stores can be searched like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerting/alerts.md) in
 {{kib}}. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
 
 :::::{stepper}

@@ -180,8 +180,8 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 0 to 1 dynamically | 2 | 0 to 16 dynamically |
-| Medium | 0 to 2 dynamically for Search and Observatibility<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observatibility<br> 8 to 256 dynamically for Security |
-| High | 0 to 32 dynamically for Search and Observatibility<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
+| Medium | 0 to 2 dynamically for Search and Observability<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observability<br> 8 to 256 dynamically for Security |
+| High | 0 to 32 dynamically for Search and Observability<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
 
 :::
 

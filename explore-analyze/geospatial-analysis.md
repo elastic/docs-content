@@ -41,11 +41,11 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 [ES|QL](elasticsearch://reference/query-languages/esql.md) has support for [Geospatial Search](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md) functions, enabling efficient index searching for documents that intersect with, are within, are contained by, or are disjoint from a query geometry. In addition, the `ST_DISTANCE` function calculates the distance between two points.
 
-* [`ST_INTERSECTS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_intersects)
-* [`ST_DISJOINT`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_disjoint)
-* [`ST_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_contains)
-* [`ST_WITHIN`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_within)
-* [`ST_DISTANCE`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions.md#esql-st_distance)
+* [`ST_INTERSECTS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_intersects.md)
+* [`ST_DISJOINT`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_disjoint.md)
+* [`ST_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_contains.md)
+* [`ST_WITHIN`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_within.md)
+* [`ST_DISTANCE`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_distance.md)
 
 
 ## Aggregate [geospatial-aggregate]
@@ -89,7 +89,7 @@ Put machine learning to work for you and find the data that should stand out wit
 
 ## Alerting [geospatial-alerting]
 
-Let your location data drive insights and action with [geographic alerts](alerts-cases/alerts/geo-alerting.md). Commonly referred to as geo-fencing, track moving objects as they enter or exit a boundary to receive notifications through common business systems (email, Slack, Teams, PagerDuty, and more).
+Let your location data drive insights and action with [geographic alerts](alerting/alerts/geo-alerting.md). Commonly referred to as geo-fencing, track moving objects as they enter or exit a boundary to receive notifications through common business systems (email, Slack, Teams, PagerDuty, and more).
 
 Interested in learning more? Follow [step-by-step instructions](visualize/maps/asset-tracking-tutorial.md) for setting up tracking containment alerts to monitor moving vehicles.
 

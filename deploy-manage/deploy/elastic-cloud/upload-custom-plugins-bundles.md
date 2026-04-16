@@ -106,18 +106,14 @@ Bundles
 
 You must upload your files before you can apply them to your cluster configuration:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
-3. From the lower navigation menu, select **Extensions**.
-4. Select **Upload extension**.
-5. Complete the extension fields, including the {{es}} version.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Extensions**.
+3. Click **Upload extension**.
+4. Complete the extension fields, including the {{es}} version.
 
     * Plugins must use full version notation down to the patch level, such as `7.10.1`. You cannot use wildcards. This version notation should match the version in your plugin’s plugin descriptor file. For classic plugins, it should also match the target deployment version.
     * Bundles should specify major or minor versions with wildcards, such as `7.*` or `*`. Wildcards are recommended to ensure the bundle is compatible across all versions of these releases.
-
-6. Select the extension **Type**.
-7. Under **Plugin file**, choose the file to upload.
-8. Select **Create extension**.
+5. Click **Create extension**.
 
 After creating your extension, you can [enable them for existing {{es}} deployments](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-update-bundles) or enable them when creating new deployments.
 
@@ -134,7 +130,7 @@ Refer to [Managing plugins and extensions through the API](../../../deploy-manag
 
 After uploading your files, you can select to enable them when creating a new {{es}} deployment. For existing deployments, you must update your deployment configuration to use the new files:
 
-1. Log in to the [{{ech}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.

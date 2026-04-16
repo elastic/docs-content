@@ -158,11 +158,11 @@ stack: ga 9.1.6
 serverless: ga
 ```
 
-If you have [agentless integrations](/solutions/security/get-started/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display agentless agents and policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+If you have [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display agentless agents and policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
 
 To display agentless resources in the agent and agent policy lists:
 
 1. Go to **{{fleet}}** > **Settings**.
 2. In the **Advanced Settings** section, enable **Show agentless resources**.
 
-You can view and request diagnostics for agentless agents, but you cannot upgrade, unenroll, or reassign them.
+You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for agentless agents, but you cannot upgrade, unenroll, or reassign them.

@@ -64,7 +64,7 @@ curl -XPOST \
 2. Required: One of the [available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
 
 
-A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the the deployment template.
+A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the deployment template.
 
 
 ### Create a deployment [ec_create_a_deployment]

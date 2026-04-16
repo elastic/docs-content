@@ -67,7 +67,7 @@ Use the following parameters in the `with` block to configure the request:
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
-| `path` | Yes | The API endpoint path, starting with `/api/` or `/internal/` |
+| `path` | Yes | The API endpoint path, starting with `/api/` |
 | `body` | No | The JSON request body |
 | `query` | No | An object representing URL query string parameters |
 | `headers` | No | Custom HTTP headers to include in the request. `kbn-xsrf` and `Content-Type` are added automatically |

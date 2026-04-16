@@ -99,6 +99,18 @@ xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 For more information, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
 
+### Allow network access to the public {{package-registry}} [air-gapped-network-access-epr]
+
+If you need to configure firewall rules to allow network access to [epr.elastic.co](https://epr.elastic.co/), allowlist the domain rather than specific IP addresses whenever possible, as IP addresses might change without notice.
+
+If allowlisting the domain is not an option, these are the current IP addresses used for the {{package-registry}}:
+
+* **IPv4**: `34.120.127.130`
+* **IPv6**: `2600:1901:0:1d7::`
+
+You can verify the current IP addresses using DNS lookup tools like `nslookup` or `dig`.
+
+
 ## Host your own {{package-registry}} [air-gapped-diy-epr]
 
 ::::{note}

@@ -141,7 +141,7 @@ PUT _slm/policy/nightly-snapshots
 }
 ```
 
-1. When to take snapshots, written in [Cron syntax](/explore-analyze/alerts-cases/watcher/schedule-types.md#schedule-cron).
+1. When to take snapshots, written in [Cron syntax](/explore-analyze/alerting/watcher/schedule-types.md#schedule-cron).
 2. Snapshot name. Supports [date math](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names). To prevent naming conflicts, the policy also appends a UUID to each snapshot name.
 3. [Registered snapshot repository](self-managed.md) used to store the policy’s snapshots.
 4. Data streams and indices to include in the policy’s snapshots.

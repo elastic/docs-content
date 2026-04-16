@@ -104,6 +104,99 @@ Avoid gerunds in prepositional phrases—this will make your instructions easier
 
 ## Punctuation
 
+### Quotation marks
+
+Use double quotation marks to:
+
+* Quote exact text from error messages, user input, or other sources.
+
+:::{dropdown} Examples
+* If the status shows "Disconnected", check your network connection.
+* Enter "yes" to confirm the action.
+* The error message "Index not found" indicates the index was deleted.
+:::
+
+* Introduce a term that might be unfamiliar to readers (on first use only). After introducing the term, use it without quotation marks.
+
+:::{dropdown} Example
+A "shard" is a single instance of a Lucene index. {{es}} distributes shards across nodes in a cluster.
+:::
+
+* Indicate a colloquial or ironic usage (use sparingly).
+
+:::{dropdown} Example
+These "temporary" files can persist for months if not cleaned up manually.
+:::
+
+**When NOT to use quotation marks**
+
+Don't use quotation marks for:
+
+* Code, commands, variables, file names, or paths. Use code formatting instead.
+
+:::{dropdown} Examples
+❌ **Don't**: Set the "timeout" parameter to "30s".
+
+✔️ **Do**: Set the `timeout` parameter to `30s`.
+
+❌ **Don't**: Run the "{{es}}" command.
+
+✔️ **Do**: Run the `elasticsearch` command.
+:::
+
+* Emphasis. Use bold or italics where appropriate.
+
+:::{dropdown} Examples
+❌ **Don't**: You can display hidden indices by selecting "Show advanced settings", then turning on "Allow hidden and system indices".
+
+✔️ **Do**: You can display hidden indices by selecting **Show advanced settings**, then turning on **Allow hidden and system indices**.
+:::
+
+* Product names, feature names, or UI element names (unless quoting exact UI text that includes quotation marks).
+
+:::{dropdown} Examples
+❌ **Don't**: Install "{{agent}}" on your host.
+
+✔️ **Do**: Install {{agent}} on your host.
+:::
+
+**Single vs. double quotation marks**
+
+Use double quotation marks for primary quotations. Use single quotation marks only for quotations within quotations.
+
+:::{dropdown} Example
+The documentation states, "Set the `output` parameter to '{{es}}' for direct indexing."
+:::
+
+**Punctuation with quotation marks**
+
+Place commas and periods **inside** closing quotation marks.
+
+:::{dropdown} Examples
+❌ **Don't**: If the field value is "true", the feature is enabled.
+
+✔️ **Do**: If the field value is "true," the feature is enabled.
+
+❌ **Don't**: The default value is "auto".
+
+✔️ **Do**: The default value is "auto."
+:::
+
+Place colons, semicolons, question marks, and exclamation points **outside** closing quotation marks, unless they are part of the quoted material.
+
+:::{dropdown} Examples
+* What happens when the status changes to "critical"?
+* The message said, "Are you sure you want to continue?"
+:::
+
+**Exception:** When quoting exact values that users must enter or match precisely (such as configuration values, API parameters, or code strings), place punctuation outside to preserve accuracy. Use code formatting for these cases when possible.
+
+:::{dropdown} Examples
+✔️ **Do**: Set the value to `"strict"`. 
+
+✔️ **Do**: Enter "yes" to continue. 
+:::
+
 ### Colons
 
 Use a colon at the end of a sentence or phrase that introduces a list. If a list item is followed by a description, use a colon to introduce the description.

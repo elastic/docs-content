@@ -26,6 +26,10 @@ Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 These grammars have some limitations: they do not support tables, and can’t run queries conditionally.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-vega
+:::
+
 :::{image} /explore-analyze/images/kibana-vega.png
 :alt: Vega UI
 :screenshot:

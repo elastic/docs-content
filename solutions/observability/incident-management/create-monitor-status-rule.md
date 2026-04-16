@@ -15,7 +15,7 @@ products:
 Within the Synthetics UI, create a **Monitor Status** rule to receive notifications based on errors and outages.
 
 1. To access this page, go to **Synthetics** → **Overview**.
-2. At the top of the page, click **Alerts and rules** → **Monitor status rule** → **Create status rule**.
+2. At the top of the page, click **Alerts** → **Monitor status rule** → **Create status rule**.
 
 ## Filters [observability-monitor-status-alert-filters]
 
@@ -33,13 +33,15 @@ Conditions for each rule will be applied to all monitors that match the filters 
 
 ::::{note}
 Retests are included in the number of checks.
-
 ::::
 
+{applies_to}`stack: ga 9.1` **Alert on no data** (optional): Enable this option to receive alerts when a monitor is in a **pending** state—that is, when no ping data has been received from the monitor for the evaluation period. This helps you detect monitors that have stopped reporting (for example, due to a misconfiguration, runner failure, or network issue). When this option is enabled:
+
+   * **Pending state**: A monitor is considered pending when no check results (pings) have been received within the rule's evaluation window. The alert reason follows the format: `Monitor "X" from Location Y is pending.`
+   * **Recovery**: The alert recovers automatically once the monitor reports data again, whether the result is up or down. No separate recovery action is required.
+   * **Action variables**: For pending-state alerts, the same [action variables](#observability-monitor-status-alert-action-variables) are available (such as `context.monitorName`, `context.monitorId`, `context.locationName`, `context.monitorUrl`, and `context.reason`). The `context.reason` and `context.message` fields reflect the pending status and monitor/location details.
 
 The **Rule schedule** defines how often to evaluate the condition. Note that checks are queued, and they run as close to the defined value as capacity allows. For example, if a check is scheduled to run every 2 minutes, but the check takes longer than 2 minutes to run, a check will not run until the previous check has finished.
-
-You can also set **Advanced options** such as the number of consecutive runs that must meet the rule conditions before an alert occurs.
 
 In this example, the conditions will be met any time a `browser` monitor is down `3` of the last `5` times the monitor ran across any locations that match the filter. These conditions will be evaluated every minute, and you will only receive an alert when the conditions are met three times consecutively.
 
@@ -48,6 +50,22 @@ In this example, the conditions will be met any time a `browser` monitor is down
 :screenshot:
 :::
 
+You can also set **Advanced options** such as:
+
+* **Alert delay**: The number of consecutive runs that must meet the rule conditions before an alert occurs.
+
+* {applies_to}`stack: ga 9.1` **Alert flapping detection**: Detect alerts that switch quickly between active and recovered states and reduce unwanted noise for these flapping alerts.
+
+   You can also customize the configuration through the following settings:
+
+   *  **Rule run look back window**: The minimum number of runs in which the threshold must be met.
+
+   *  **Alert status change threshold**: The minimum number of times an alert must switch states in the look-back window. 
+
+:::{image} /solutions/images/serverless-synthetic-monitor-advanced-settings.png
+:alt: Advanced settings when defining a Synthetics monitor status rule
+:screenshot:
+:::
 
 ## Action types [observability-monitor-status-alert-action-types]
 
@@ -108,12 +126,14 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
+{applies_to}`stack: ga 9.1` When **Alert on no data** is enabled and an alert fires for a pending monitor (no data received), the alert document includes monitor and location details (such as monitor name, ID, type, location, tags, URL, and error when applicable). These are available through the same context variables listed below; `context.reason` for a pending alert uses the format: `Monitor "X" from Location Y is pending.`
+
 :::{image} /solutions/images/serverless-synthetic-monitor-action-variables.png
 :alt: synthetic monitor action variables
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.

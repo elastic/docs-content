@@ -54,5 +54,5 @@ Analyze these charts to better understand when the breach started, it’s curren
 After investigating the alert, you may want to:
 
 * Click **Snooze the rule** to snooze notifications for a specific time period or indefinitely.
-* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](/solutions/observability/incident-management/cases.md).
+* Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Add to case** to add the alert to a new or existing case. To learn more, refer to [Cases](/solutions/observability/incident-management/observability-cases.md).
 * Click the ![Actions](/solutions/images/observability-boxesVertical.svg "") icon and select **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.

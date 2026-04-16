@@ -22,6 +22,12 @@ navigation_title: Create and manage rules
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
+
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
 
@@ -96,7 +102,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but the al
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
 
 ## Import and export rules [observability-create-manage-rules-import-and-export-rules]

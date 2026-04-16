@@ -8,27 +8,11 @@ description: Instructions and best practices for building pie and donut charts w
 
 # Build pie charts with {{kib}}
 
-Pie charts display parts of a whole as slices, where each slice represents a value and its size represents its prevalence. Pie charts are ideal for illustrating the relative prevalence of categorical data, and for displaying percentage or proportional data.
+Pie charts display parts of a whole as slices, where each slice represents a value and its size represents its prevalence. Pie charts are ideal for illustrating the relative prevalence of categorical data, and for displaying percentage or proportional data. They work best with a **maximum of 6 slices** and when proportions are around 25%, 50%, or 75%, as these are easiest to perceive accurately. For more than 6 categories, precise comparisons, or negative values, consider using [bar charts](bar-charts.md) instead. For comparing similarly-sized proportions or displaying percentages as discrete units, consider using [waffle charts](waffle-charts.md).
 
 You can create pie charts in {{kib}} using [**Lens**](../lens.md).
 
 ![Example Lens pie chart](../../images/kibana-lens-pie-chart.png)
-
-## When to use pie charts
-
-Pie charts work best when:
-
-* You have a **maximum of 6 slices**. More slices make the chart difficult to read.
-* Values are around **25%, 50%, or 75%**. These proportions are easy to perceive accurately.
-* One category is **significantly larger** than the others.
-* You want to show **part-to-whole relationships** at a glance.
-
-Consider using [bar charts](bar-charts.md) instead when:
-
-* You need to **compare** the exact size of slices.
-* You have **more than 6 categories**.
-* You need to compare **multiple data sets**. Use part-to-whole bar charts with percentages instead.
-* Your data includes **negative values**.
 
 ## Build a pie chart
 
@@ -59,6 +43,8 @@ Using the **Visualization type** dropdown, select **Pie**.
 Optionally:
    - Add additional **Slice by** dimensions to create nested slices (a multi-level or sunburst-style chart).
    - Enable [**Multiple metrics**](#multiple-metrics) in the layer settings to compare different measures within the same chart.
+
+The chart preview updates to show a pie divided into slices. Each slice represents a category value, and its size reflects the metric proportion. If you added multiple **Slice by** dimensions, inner and outer rings appear to show the hierarchy.
 :::::
 
 :::::{step} Customize the chart to follow best practices
@@ -180,7 +166,9 @@ The **Slice by** dimension defines how your pie is divided into segments. You ca
 
     - **Top values**: Create slices for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term slices. When multiple fields are selected, each slice represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.

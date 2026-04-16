@@ -49,6 +49,8 @@ Using the **Visualization type** dropdown, select **Area**.
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to the **Breakdown** settings to segment your data by a categorical field, and create multiple areas within the same chart.
    - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+
+The chart preview updates to show filled areas plotted over time. Each area represents a series, with the filled region emphasizing the volume of data.
 :::::
 
 :::::{step} Customize the chart to follow best practices
@@ -125,7 +127,9 @@ Customize your area chart to match the information you need and how you want it 
     - **Functions**:
       - **Top values**: Create separate areas for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -165,7 +169,9 @@ You can split your data by a categorical field to create multiple stacked or ove
     - **Functions**:
       - **Top values**: Create separate areas for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

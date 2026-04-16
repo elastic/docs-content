@@ -27,17 +27,12 @@ To view the health for a deployment:
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-4. From the navigation menu, select **Monitoring**.
+4. From the navigation menu, select **Health**.
 
-The **Monitoring** page provides the following information:
+This page provides the following information:
 
 * Health issues for {{kib}}, Enterprise Search, APM, and plan changes are reported in the health banner.
 * Health issues for {{es}} clusters are broken down into a table with more details.
-
-:::{image} /deploy-manage/images/cloud-es-monitoring-page.png
-:alt: {{es}} Monitoring page
-:::
-
 * **Severity**: A critical issue impacts operations such as search and ingest and should be addressed as soon as possible. Warnings don’t impact the cluster immediately but might lead to more critical issues over time such as a corrupted repository might lead to no backups being available in the future.
 * **Description**: For most issues, you can click the description to get more details page on the specific issue and on how to fix it.
 * **Affected capabilities**: Each of these areas might impact search, ingest, backups, or deployment management capabilities.

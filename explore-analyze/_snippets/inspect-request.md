@@ -1,7 +1,9 @@
 The request **Inspector** is available in **Discover** and for all **Dashboards** visualization panels that are built from a query. The available information can differ based on the request.
 
 1. Open the **Inspector**:
-   - If you're in **Discover**, select **Inspect** from the application's toolbar.
+   - If you're in **Discover**:
+      - {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+      - {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
    - If you're in **Dashboards**, open the panel menu and select **Inspect**.
 1. Open the **View** dropdown, then select **Requests**.
 1. Several tabs with different information can appear, depending on nature of the request:

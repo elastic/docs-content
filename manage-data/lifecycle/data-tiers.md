@@ -116,7 +116,7 @@ To add a data tier to an existing deployment:
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Edit**.
+3. From the navigation menu, select **Edit**.
 4. Click **+ Add capacity** for any data tiers to add.
 5. Click **Save** at the bottom of the page to save your changes.
 

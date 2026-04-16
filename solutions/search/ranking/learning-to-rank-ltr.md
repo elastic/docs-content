@@ -33,7 +33,7 @@ In addition to the list of documents to sort, the LTR function also requires a s
 
 The LTR model is usually trained on a judgment list, which is a set of queries and documents with a relevance grade. Judgment lists can be human or machine generated: they’re commonly populated from behavioral analytics, often with human moderation. Judgment lists determine the ideal ordering of results for a given search query. The goal of LTR is to fit the model to the judgment list rankings as closely as possible for new queries and documents.
 
-The judgment list is the main input used to train the model. It consists of a dataset that contains pairs of queries and documents, along with their corresponding relevance labels. The relevance judgment is typically either a binary (relevant/irrelevant) or a more granular label, such as a grade between 0 (completely irrelevant) to 4 (highly relevant). The example below uses a graded relevance judgment.
+The judgment list is the main input used to train the model. It consists of a dataset that contains pairs of queries and documents, along with their corresponding relevance labels. The relevance judgment is typically either a binary (relevant/irrelevant) or a more granular label, such as a grade between 0 (completely irrelevant) and 4 (highly relevant). The example below uses a graded relevance judgment.
 
 :::{image} /solutions/images/elasticsearch-reference-learning-to-rank-judgment-list.png
 :alt: Judgment list example
@@ -92,7 +92,7 @@ The LTR space is evolving rapidly and many approaches and model types are being 
 
 Note that {{es}} supports model inference but the training process itself must happen outside of {{es}}, using a GBDT model. Among the most popular LTR models used today, [LambdaMART](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MSR-TR-2010-82.pdf) provides strong ranking performance with low inference latencies. It relies on GBDT models and is therefore a perfect fit for LTR in {{es}}.
 
-[XGBoost](https://xgboost.readthedocs.io/en/stable/) is a well known library that provides an [implementation](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) of LambdaMART, making it a popular choice for LTR. We offer helpers in [eland](https://eland.readthedocs.io/) to facilitate the integration of a trained [XBGRanker](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker) model as your LTR model in {{es}}.
+[XGBoost](https://xgboost.readthedocs.io/en/stable/) is a well known library that provides an [implementation](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) of LambdaMART, making it a popular choice for LTR. We offer helpers in [eland](https://eland.readthedocs.io/) to facilitate the integration of a trained [XGBRanker](https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRanker) model as your LTR model in {{es}}.
 
 ::::{tip}
 Learn more about training in [Train and deploy a LTR model](learning-to-rank-model-training.md), or check out our [interactive LTR notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/08-learning-to-rank.ipynb) available in the `elasticsearch-labs` repo.

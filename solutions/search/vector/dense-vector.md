@@ -52,4 +52,10 @@ For more information about how the profile affects virtual compute unit (VCU) al
 
 Better Binary Quantization (BBQ) is an advanced vector quantization technique for `dense_vector` fields. It compresses embeddings into compact binary form, enabling faster similarity search and reducing memory usage. This improves both search relevance and cost efficiency, especially when used with HNSW (Hierarchical Navigable Small World).
 
+New indices with 384 or more dimensions will default to BBQ HNSW automatically for optimal performance and memory efficiency.
+
 Learn more about how BBQ works, supported algorithms, and configuration examples in the [Better Binary Quantization (BBQ) documentation](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq).
+
+::::{tip}
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `index_options` parameter. Refer to [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
+::::

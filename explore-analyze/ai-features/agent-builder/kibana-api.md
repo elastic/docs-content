@@ -21,6 +21,10 @@ This page provides a quick overview of the main {{kib}} API endpoints for {{agen
 
 These APIs enable you to programmatically work with the {{agent-builder}} abstractions.
 
+:::{tip}
+New to the {{agent-builder}} APIs? Try our hands-on [API tutorial](agent-builder-api-tutorial.md) that walks you through creating custom tools and agents step-by-step.
+:::
+
 ## Using the APIs
 
 The examples in this documentation use Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) syntax.
@@ -807,3 +811,7 @@ curl -X GET "${KIBANA_URL}/api/agent_builder/a2a/{agentId}.json" \
 ## API reference
 
 For the full API documentation, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+
+## Tutorial
+
+Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically. 

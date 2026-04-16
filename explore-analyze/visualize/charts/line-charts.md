@@ -49,13 +49,17 @@ Using the visualization type dropdown, select **Line**.
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
    - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+
+The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
 :::::
 
 :::::{step} Customize the chart to follow best practices
 You can tweak the appearance of your chart by adjusting axes, legends, and series styles from the chart settings. Consider the following best practices:
 
 **Use color wisely**
-:   Assign colors that match your users' expectations and consider your specific context.
+:   Assign colors that match your users' expectations and consider your specific context. 
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Lens automatically applies the **Elastic (line optimized)** palette to line charts, which reorders colors for better contrast between adjacent series. You can override this by manually selecting a different palette.
 
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
@@ -112,7 +116,9 @@ Customize your line chart to display exactly the information you need, formatted
     - **Functions**:
       - **Top values**: Create separate lines for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -151,7 +157,9 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
     - **Functions**:
       - **Top values**: Create separate lines for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

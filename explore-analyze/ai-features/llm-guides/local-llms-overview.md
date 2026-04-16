@@ -13,11 +13,11 @@ You can set up connectors for self-managed LLMs to maintain more control of your
 
 The following guides describe how to set up self-managed LLMs for {{elastic-sec}} and {{observability}}.
 
-**Self-managed LLMs for {{elastic-sec}}:** 
+**Self-managed LLMs for {{elastic-sec}}:**
 
 - For production environments or air-gapped environments, you can [connect to vLLM](/explore-analyze/ai-features/llm-guides/connect-to-vLLM.md).
 - For test environments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-security.md).
 
 **Self-managed LLMs for {{observability}}:**
 
-- For test environments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).
+- {applies_to}`stack: ga 9.2+` For production, test, or air-gapped environments, you can [connect to LM Studio](/explore-analyze/ai-features/llm-guides/connect-to-lmstudio-observability.md).

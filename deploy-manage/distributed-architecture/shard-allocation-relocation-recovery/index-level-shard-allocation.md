@@ -119,7 +119,7 @@ Unallocated shards are recovered in order of priority, whenever possible. Indice
 
 This means that, by default, newer indices will be recovered before older indices.
 
-Use the per-index dynamically updatable `index.priority` setting to customise the index prioritization order. For instance:
+Use the per-index dynamically updatable `index.priority` setting to customize the index prioritization order. For instance:
 
 ```console
 PUT index_1

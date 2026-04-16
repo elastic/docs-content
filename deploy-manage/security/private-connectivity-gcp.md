@@ -37,6 +37,16 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 * Private Service Connect connections are regional. As a result, your Private Service Connect endpoint needs to be created in the same region as your deployment. The endpoint can be accessed from any region after you enable its [Global Access](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
 
+
+## Limitations
+
+% limitations are not applicable to serverless projects
+
+When using GCP Private Service Connect, the following limitations apply:
+
+```{include} _snippets/private-connectivity-limitations-ech.md
+```
+
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:
@@ -76,8 +86,9 @@ The process of setting up the Private link connection to your deployments is spl
 | [1. Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI.](#ec-private-service-connect-enpoint-dns) |  |
 | [2. Create a DNS record pointing to the Private Service Connect endpoint.](#ec-private-service-connect-enpoint-dns) |  |
 |  | [3. Optional: Create a private connection policy with the PSC Connection ID.](#create-private-connection-policy) |
-|  | [4. Optional: Associate the private connection policy with your deployments.](#associate-private-connection-policy) |
-|  | [5. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
+|  | [4. Optional: Associate the private connection policy with your deployments.](#associate-private-connection-policy) | 
+|  | [5. Optional: Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | [6. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
@@ -183,15 +194,15 @@ Create a new private connection policy.
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Private connection**.
-3. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
-10. Select the cloud provider and region for the private connection. 
-   
+3. Select **Private connection**.
+4. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
+5. Select the cloud provider and region for the private connection. 
+    
     :::{tip}
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-11. Under **Connectivity**, select **Privatelink**.
-12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
+6. Under **Connectivity**, select **PrivateLink**.
+7. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
@@ -201,10 +212,10 @@ Create a new private connection policy.
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
-14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
-15.  Click **Create**.
-16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
+8. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
+9. To automatically attach this private connection policy to new deployments, select **Apply by default**.
+10.  Click **Create**.
+11. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#associate-private-connection-policy) with your deployment.
 
@@ -225,9 +236,14 @@ If the policy doesn't contain a VPC filter, then the association can serve as a 
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit.
+4. Under **Apply to resources**, associate the policy with one or more deployments.
+5. Click **Update** to save your changes.
+
+## Optional: Add an IP filter to allow traffic to {{kib}}
+
+:::{include} _snippets/ip-filter-for-pc.md
+:::
 
 ## Access the deployment over the Private Service Connect [ec-psc-access-the-deployment-over-psc]
 
@@ -282,8 +298,8 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-2. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Click **Update** to save your changes.
 
 :::{tip}
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
@@ -292,7 +308,7 @@ You can also edit network security policies from your deployment's **Security** 
 
 ### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
-If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
+If you want to remove a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
 #### From your deployment
 
@@ -306,9 +322,9 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 ### Delete a private connection policy [delete-private-connection-policy]
 
@@ -318,4 +334,4 @@ To delete a policy:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments associated with the policy.
+3. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments associated with the policy.

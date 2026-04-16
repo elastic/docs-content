@@ -19,7 +19,7 @@ This overview focuses more on the high-level concepts and use cases for semantic
 
 Re-rankers improve the relevance of results from earlier-stage retrieval mechanisms. *Semantic* re-rankers use machine learning models to reorder search results based on their semantic similarity to a query.
 
-Semantic re-ranking requires relatively large and complex machine learning models and operates in real-time in response to queries. This technique makes sense on a small *top-k* result set, as one the of the final steps in a pipeline. This is a powerful technique for improving search relevance that works equally well with keyword, semantic, or hybrid retrieval algorithms.
+Semantic re-ranking requires relatively large and complex machine learning models and operates in real-time in response to queries. This technique makes sense on a small *top-k* result set, as one of the final steps in a pipeline. This is a powerful technique for improving search relevance that works equally well with keyword, semantic, or hybrid retrieval algorithms.
 
 The next sections provide more details on the benefits, use cases, and model types used for semantic re-ranking. The final sections include a practical, high-level overview of how to implement [semantic re-ranking in {{es}}](#semantic-reranking-in-es) and links to the full reference documentation.
 
@@ -41,7 +41,7 @@ Semantic re-ranking enables a variety of use cases:
 
 * **General applications**
 
-    * Provides explicit control over document relevance in retrieval-augmented generation (RAG) uses cases or other scenarios involving language model (LLM) inputs.
+    * Provides explicit control over document relevance in retrieval-augmented generation (RAG) use cases or other scenarios involving language model (LLM) inputs.
 
 
 Now that we’ve outlined the value of semantic re-ranking, we’ll explore the specific models that power this process and how they differ.
@@ -131,7 +131,7 @@ POST _search
 
 ### Handling long documents
 
-A limitation of many cross-encoder models is that they do not perform well when used on corpi with long documents.
+A limitation of many cross-encoder models is that they do not perform well when used on corpora with long documents.
 This is because many models truncate input to the length of their token window, which can potentially cut off the most relevant part of the document before it is sent to the reranker. The preconfigured `.rerank-v1-elasticsearch` endpoint truncates in this manner.
 
 The `chunk_rescorer` in the `text_similarity_reranker` retriever allows explicit control over how much content is sent to the reranker. This addresses the long document problem and also allows control of inference costs by sending fewer tokens into the reranker.

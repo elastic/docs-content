@@ -54,6 +54,8 @@ Using the dropdown indicating **Bar**, select **Metric**.
     - Specify a [maximum value](#max-value-options).
     - [Break down](#breakdown-options) the metric into multiple tiles based on another dimension. 
 
+The chart preview updates to show a large numeric value. If you added a secondary metric, it appears below the primary value. If you added a breakdown dimension, separate tiles appear for each category.
+
 Refer to [](#settings) to find all data configuration options for your metric chart.
 ::::
 
@@ -229,7 +231,11 @@ Customize your metric chart to display exactly the information you need, formatt
 **Data**
 :   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
 
-    - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
+    - **Number of values**: The number of tiles to show. The default number of values depends on your environment:
+      - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+      - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+
+      If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
     :::{include} ../../_snippets/lens-rank-by-options.md
     :::
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.

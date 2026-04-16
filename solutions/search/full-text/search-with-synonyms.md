@@ -108,7 +108,7 @@ The UI supports the same synonym rule formats as the file-based approach. Change
 
 ### Method 2: REST API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to 
 create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
@@ -187,6 +187,19 @@ Synonyms sets must exist before they can be added to indices. If an index is cre
 * [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
+
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+
+When building the synonyms map, {{es}} checks available heap memory using a circuit breaker to prevent synonym token filters from causing out-of-memory errors when processing large numbers of synonym rules. The circuit breaker trips when more than 95% of heap memory is in use.
+
+The threshold is configurable using the [`indices.breaker.total.limit` parent circuit breaker setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
+
+When the circuit breaker trips, the behavior is determined by the `lenient` parameter:
+
+* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
+* If `lenient` is `false`, the affected index enters a red state.
+:::
 
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.

@@ -18,7 +18,7 @@ $$$panels-editors$$$
 
 | **Content** | **Panel type** | **Description** |
 | --- | --- | --- |
-| Visualizations | [Lens](visualize/lens.md) | Create powerful [charts](visualize/supported-chart-types.md) in {{kib}}. This is the default editor. |
+| Visualizations | [Lens](visualize/lens.md) | Create powerful charts in {{kib}}. This is the default editor. |
 |  | [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from {{esql}} queries |
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 |  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |
@@ -44,3 +44,4 @@ $$$panels-editors$$$
 :::{note}
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
+

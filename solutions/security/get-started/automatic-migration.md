@@ -16,7 +16,8 @@ products:
 
 Automatic Migration helps you quickly migrate Splunk and QRadar assets to {{elastic-sec}}. The following asset types are supported:
 
-* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Classic Splunk dashboards (v1.1)
+* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Splunk Classic dashboards (v1.1)
+* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Splunk Dashboard Studio dashboards 
 * {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
 * {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` QRadar rules
 
@@ -25,6 +26,20 @@ For rule migrations, if comparable Elastic-authored rules exist, Automatic Migra
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
 ::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+**Requirements**
+
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **SIEM migrations**
+  - At least `Read` for **Rules**
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
@@ -52,8 +67,9 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 ::::
 
 ::::{admonition} Splunk dashboard migration limitations
-* Only supports classic Splunk dashboards (v1.1). Attempting to translate unsupported dashboards results in an `Unsupported Splunk XML` error and a `Not translated` status.
-* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels do not appear in migrated dashboards.
+* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
+::::{admonition} Splunk dashboard migration limitations
+Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
@@ -138,7 +154,7 @@ The table's fields are as follows:
   * `Failed`: Translation failed. Refer to the the error for details.
 * **Risk Score:** For Elastic-authored rules, risk scores are predefined. For custom translated rules, risk scores are defined as follows:
   * If the source rule has a field comparable to Elastic's `risk score`, we use that value.
-  * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
+  * Otherwise, if the source rule has a field comparable to Elastic's `rule severity` field, we base the risk score on that value according to [these guidelines](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-basic-params).
   * If neither of the above apply, we assign a default value.
 * **Rule severity:** For Elastic-authored rules, severity scores are predefined. For custom translated rules, risk scores are based on the source rule's severity field. Splunk severity scores are translated to Elastic rule severity scores as follows:
 
@@ -194,10 +210,15 @@ This section describes the **Translated dashboards** page's interface and the da
 :screenshot:
 ::::
 
-:::{admonition} Important warning for QRadar "BB" rules
-:applies_to: stack: preview =9.3
-In the technical preview of QRadar rule migration, QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
-:::
+:::::{admonition} Important information for QRadar "BB" rules
+
+- {applies_to}`stack: preview =9.3`
+QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
+
+- {applies_to}`serverless: preview`{applies_to}`stack: preview 9.4+`
+Building block rule logic is included automatically in translated rules. No action is required.
+
+:::::
 
 The table's fields are as follows:
 

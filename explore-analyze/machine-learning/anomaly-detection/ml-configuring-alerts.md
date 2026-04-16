@@ -249,14 +249,14 @@ and the **Alerts** panel.
 
 If necessary, you can snooze rules to prevent them from generating actions. For
 more details, refer to
-[Snooze and disable rules](/explore-analyze/alerts-cases/alerts/create-manage-rules.md#controlling-rules).
+[Snooze and disable rules](/explore-analyze/alerting/alerts/create-manage-rules.md#controlling-rules).
 
 ## Action variables [action-variables]
 
 The following variables are specific to the {{ml}} rule types. An asterisk (`*`)
 marks the variables that you can use in actions related to recovered alerts.
 
-You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 ### {{anomaly-detect-cap}} alert action variables [anomaly-alert-action-variables]
 
