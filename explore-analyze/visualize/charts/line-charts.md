@@ -57,7 +57,9 @@ The chart preview updates to show one or more lines plotted over time. Each line
 You can tweak the appearance of your chart by adjusting axes, legends, and series styles from the chart settings. Consider the following best practices:
 
 **Use color wisely**
-:   Assign colors that match your users' expectations and consider your specific context.
+:   Assign colors that match your users' expectations and consider your specific context. 
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Lens automatically applies the **Elastic (line optimized)** palette to line charts, which reorders colors for better contrast between adjacent series. You can override this by manually selecting a different palette.
 
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.

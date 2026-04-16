@@ -110,9 +110,13 @@ From the list of background searches, you can reopen and edit any searches, but 
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 
+:::{note}
+Cluster administrators can also see running background searches on the [Query activity](/deploy-manage/monitor/query-activity.md) page. While you use background search to manage your own long-running searches, Query activity provides administrators with a cluster-wide view of all running queries, with the ability to cancel any of them.
+:::
+
 ## Background search limitations in dashboards [_limitations]
 
-Some visualization features do not fully support background searches. When you restore a dashboard, panels with unsupported features won’t load immediately, but instead send out additional data requests, which can take a while to complete. The **Your background search is still running** warning appears. You can either wait for these additional requests to complete or come back to the dashboard later when all data requests have finished.
+Some visualization features do not fully support background searches. When you restore a dashboard, panels with unsupported features won't load immediately, but instead send out additional data requests, which can take a while to complete. The **Your background search is still running** warning appears. You can either wait for these additional requests to complete or come back to the dashboard later when all data requests have finished.
 
 A panel on a dashboard can behave like this if one of the following features is used:
 
