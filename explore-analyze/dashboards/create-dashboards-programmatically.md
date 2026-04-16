@@ -2,8 +2,8 @@
 navigation_title: Create programmatically
 description: Compare the Dashboards API, Visualizations API, and AI-powered tools to create and manage Kibana dashboards and visualizations programmatically.
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: preview 9.4+
+  serverless: preview
 products:
   - id: kibana
 type: overview
