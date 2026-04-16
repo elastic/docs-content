@@ -202,3 +202,24 @@ If you choose not to synchronize integrations automatically, you need to ensure 
 {{fleet-server}} requires connectivity to the remote cluster to generate API keys for {{agents}}. When you use a remote {{es}} output, {{fleet-server}} tests whether it can reach the remote cluster. The result determines whether the remote output is reported as healthy or unhealthy in the **Status** column for the output on the **{{fleet}}** → **Settings** page.
 
 If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, some of them might not be able to reach a certain remote output. In this case, the remote output will display as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
+
+## Set up {{ccs}} to query remote data [set-up-ccs]
+
+In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster, such as Osquery queries on {{agents}} that use a remote {{es}} output.
+
+:::{note}
+You don't need to set up {{ccs-init}} for {{agents}} to send data to a remote {{es}} output or for [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md). Add {{ccs}} only when the management cluster must search data stored on the remote cluster.
+:::
+
+To configure {{ccs-init}} in the management cluster:
+
+1. Open the {{kib}} menu, and go to **{{manage-app}}** → **{{stack-manage-app}}** → **Remote Clusters**.
+2. Select **Add a remote cluster**, then follow the steps to add your remote cluster.
+
+    When prompted to add the _remote address_, enter your remote cluster's proxy address:
+
+    1. In your remote cluster, go to **Deployment** → **Manage this deployment** → **Security** (or go to `deployments/<deployment_id>/security`).
+    2. Scroll to the **Remote cluster parameters** section, then copy the **Proxy Address**.
+    3. In your management cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
+
+    Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on adding a remote cluster.
