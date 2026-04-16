@@ -1,6 +1,6 @@
 ---
 navigation_title: "Dashboards and visualizations"
-description: "Create, edit, and save Kibana dashboards and Lens visualizations through natural language chat with Agent Builder agents."
+description: "Create, edit, and save Kibana dashboards and visualizations through natural language chat with Agent Builder agents."
 applies_to:
   stack: preview 9.4+
   serverless: preview
@@ -14,7 +14,7 @@ products:
 
 # Dashboards and visualizations in {{agent-builder}} chat
 
-Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [Lens visualizations](/explore-analyze/visualize/lens.md) directly in the conversation. Ask a question like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered Lens panels.
+Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Ask a question like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
 
 This functionality is powered by the built-in [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, along with the [dashboard tools](tools/builtin-tools-reference.md#dashboard-tools) and [visualization platform tools](tools/builtin-tools-reference.md#platform-core-tools).
 
@@ -33,7 +33,7 @@ The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone
 
 ## How dashboards appear in chat
 
-When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. You can:
+When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions. You can:
 
 - Select **Preview** to open the dashboard in a canvas area alongside the conversation.
 - Continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
@@ -65,6 +65,10 @@ To save an agent-created dashboard as a {{kib}} saved object:
 
 After saving, you can open the dashboard in the [Dashboards app](/explore-analyze/dashboards.md) for further editing using the full dashboard editor.
 
+:::{important}
+Saving a new version of the dashboard from the same conversation overwrites the existing saved dashboard.
+:::
+
 ## Round-trip editing
 
 If you save a dashboard and then edit it in the Dashboards app, the conversation detects the changes. A notification appears with the message **"Some attachments are outdated"**, and you can select **Use updated versions** to pull the latest changes back into the conversation. The agent preserves your external edits when making further updates.
@@ -79,7 +83,7 @@ You can also go back to any previously generated version of a dashboard in the c
 
 ## Supported panel types
 
-Agents create [{{esql}}](/explore-analyze/query-your-data-with-esql.md)-powered [Lens](/explore-analyze/visualize/lens.md) visualizations. If a dashboard contains DSL-based Lens panels, the agent asks to replace them with {{esql}} equivalents when making changes.
+Agents create [{{esql}}](/explore-analyze/query-your-data-with-esql.md)-powered visualizations. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes.
 
 Agents can also create markdown panels and collapsible sections.
 

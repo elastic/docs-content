@@ -75,7 +75,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
 `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
-:   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications.
+:   Creates or updates a visualization configuration based on a natural language description.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.

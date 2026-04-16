@@ -135,7 +135,7 @@ Select **View JSON** to view the full raw response data. For more information, r
 
 ## Dashboards and visualizations
 
-Agents can create and manage dashboards and visualizations directly in the conversation. To learn more, refer to [Dashboards and visualizations in chat](dashboards-and-visualizations.md).
+Agents can create and manage dashboards and visualizations directly in the conversation. To learn more, refer to [Dashboards and visualizations in chat](agent-builder-dashboards-and-visualizations.md).
 
 ## Agent Chat API
 
