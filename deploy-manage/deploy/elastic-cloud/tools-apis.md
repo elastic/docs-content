@@ -56,6 +56,11 @@ The following APIs are available for {{es-serverless}} users:
 
   Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/get-started.md).
 - [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
+
+#### Version reporting [serverless-tools-apis-version-reporting]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
 ::::
 
 ::::{applies-item} ess:

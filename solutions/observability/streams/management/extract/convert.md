@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Convert a field value to a different data type such as string, integer, or boolean with the Streams convert processor in Streamlang.
 ---
 
 # Convert processor [streams-convert-processor]
