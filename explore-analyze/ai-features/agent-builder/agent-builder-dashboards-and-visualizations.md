@@ -33,23 +33,56 @@ The full-screen [standalone chat mode](standalone-and-flyout-modes.md#standalone
 
 ## How dashboards appear in chat
 
-When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions. You can:
+When an agent creates a dashboard, it describes the contents in the conversation and attaches the dashboard to the message. Dashboards are both inputs and outputs: the agent can reason about the panels in an attached dashboard when answering follow-up questions.
 
-- Select **Preview** to open the dashboard in a canvas area alongside the conversation.
-- Continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
+The following example walks through creating a dashboard from a natural language request.
+
+:::::{stepper}
+::::{step} Ask the agent to create a dashboard
+
+Describe what you want to visualize. The agent creates the dashboard and responds with a description of the contents and a **Preview** button.
+
+:::{image} images/agent-builder-dashboard-chat-response.png
+:screenshot:
+:alt: Agent chat response showing a created Web Traffic Analysis Dashboard with a Preview button and a breakdown of the included sections and metrics
+:::
+::::
+::::{step} Preview the dashboard
+
+Select **Preview** to open the dashboard in a canvas alongside the conversation.
 
 :::{image} images/agent-builder-dashboard-canvas-preview.png
 :screenshot:
 :alt: Full-screen chat with the conversation on the left and a dashboard canvas preview on the right showing metrics, charts, and trend panels
 :::
+::::
+::::{step} Save or refine
+
+From here, you can use the buttons in the canvas toolbar:
+
+:::{image} images/agent-builder-dashboard-save-or-edit-buttons.png
+:screenshot:
+:alt: Edit in Dashboards and Save buttons in the dashboard canvas toolbar
+:width: 250px
+:::
+
+Select **Save** to [save the dashboard](#save-a-dashboard) as a {{kib}} saved object. Select **Edit in Dashboards** to open the dashboard in the [Dashboards app](/explore-analyze/dashboards.md) for further editing.
+
+You can also continue chatting to refine the dashboard. For example, ask the agent to add panels, change chart types, update metrics, or rearrange the layout.
 
 Individual visualizations display inline in the conversation when you ask for a single chart or metric.
+::::
+:::::
 
-## In-memory dashboards
+## Manage dashboards
+
+Agent-created dashboards start as in-memory attachments in the conversation. You can save them as {{kib}} objects when you are ready, and pull in changes if the saved dashboard is edited outside the conversation.
+
+### In-memory dashboards
 
 Dashboards that agents create are **in-memory** by default. They exist only as conversation attachments and are not saved as {{kib}} objects until you choose to save them. This means you can iterate on a dashboard through conversation without creating unnecessary saved objects.
 
-## Save a dashboard
+### Save a dashboard
 
 To save an agent-created dashboard as a {{kib}} saved object:
 
@@ -69,9 +102,9 @@ After saving, you can open the dashboard in the [Dashboards app](/explore-analyz
 Saving a new version of the dashboard from the same conversation overwrites the existing saved dashboard.
 :::
 
-## Round-trip editing
+### Sync in-memory and saved dashboards
 
-If you save a dashboard and then edit it in the Dashboards app, the conversation detects the changes. A notification appears with the message **"Some attachments are outdated"**, and you can select **Use updated versions** to pull the latest changes back into the conversation. The agent preserves your external edits when making further updates.
+If you save a dashboard and then edit it in the Dashboards app, the conversation detects the changes. A notification appears with the message **"Some attachments are outdated"**, and you can select **Use updated versions** to pull the latest changes back into the conversation.
 
 :::{image} images/agent-builder-dashboard-outdated-notification.png
 :screenshot:
@@ -79,19 +112,18 @@ If you save a dashboard and then edit it in the Dashboards app, the conversation
 :width: 550px
 :::
 
+The agent preserves your external edits when making further updates.
 You can also go back to any previously generated version of a dashboard in the conversation and save that version instead.
 
 ## Supported panel types
 
-Agents create [{{esql}}](/explore-analyze/query-your-data-with-esql.md)-powered visualizations. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes.
+Agents create [{{esql}}](/explore-analyze/visualize/esorql.md)-powered visualizations. If a dashboard contains [data view](/explore-analyze/find-and-organize/data-views.md)-based visualizations, the agent asks to replace them with {{esql}} equivalents when making changes.
 
 Agents can also create markdown panels and collapsible sections.
 
 ## Related pages
 
-- [Chat with {{agent-builder}} agents](chat.md)
-- [Chat UI modes](standalone-and-flyout-modes.md)
 - [Dashboards](/explore-analyze/dashboards.md)
-- [Create a dashboard](/explore-analyze/dashboards/create-dashboard.md)
-- [Built-in skills reference](builtin-skills-reference.md)
-- [Built-in tools reference](tools/builtin-tools-reference.md)
+- [Chat with {{agent-builder}} agents](chat.md)
+% TODO: Add once docs-content#5927 merges:
+% - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
