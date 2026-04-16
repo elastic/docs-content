@@ -110,3 +110,8 @@ A: You are unable to convert projects into different project types, but you can 
 
 **Q: How do I raise a support case for {{serverless-full}}?**  
 A: Raise a case for your subscription as you do today. In the body of the case, mention you are working with a {{serverless-short}} project to ensure appropriate support.
+
+**Q: Why does the `GET /` root API return a version number that differs from the current Elasticsearch release?**
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
