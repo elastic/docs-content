@@ -57,7 +57,7 @@ Use the Visualizations API when you need to:
 - Update a visualization once and have the change reflected everywhere it appears
 - Manage visualization definitions independently from dashboard definitions in your automation or tooling
 
-To embed a saved visualization in a dashboard, create a `vis` panel in the Dashboards API with the saved object ID in `config.ref_id`.
+To embed a saved visualization in a dashboard, add a `vis` panel to your Dashboards API request with `config.ref_id` set to the visualization's ID.
 
 Refer to the [Visualizations API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-lens).
 
