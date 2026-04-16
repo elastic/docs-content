@@ -110,7 +110,7 @@ estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
 
 ```{math}
 \begin{align*}
-estimated\ quantized\ vector\ bytes &= num\_vectors \times \left(\left\lceil\frac{num\_dimensions \times doc\_bits}{8}\right\rceil + 14 + 2\right) \times 2
+estimated\ quantized\ vector\ bytes &= \left(\left\lceil\frac{num\_dimensions \times doc\_bits}{8}\right\rceil + 14 + 2\right) \times 2 \\ \times num\_vectors
 \end{align*}
 ```
 
