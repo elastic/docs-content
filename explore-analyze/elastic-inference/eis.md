@@ -58,6 +58,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 * The applicable terms of use, uptime, and performance for each of the AI models available with EIS are each described in the applicable AI model's Provider Terms and Model Card.
 * Prior to using the AI model with EIS, Customers are responsible for reviewing and agreeing to the chosen AI model's Provider Terms to understand the availability and data practices of the AI model's provider.
 * After the listed end-of-life (EOL) date, the model is no longer available for {{infer}} use and requests will fail. You need to actively transition to another model before the EOL date, there is no automated migration.
+* Elastic makes every effort to use third party providers who do not use inputs to train models, and do not retain any data (zero data retention). Browse the tables on this page to double-check the status of a specific model.
 ::::
 
 ## Region and hosting [eis-regions]
@@ -89,6 +90,8 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 | Jina Embeddings v5 Nano {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Embeddings v5 Small {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v5 (Small) {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v5 (Nano) {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 600             | -                       | 6,000,000               | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Reranker v3 {applies_to}`stack: ga 9.3+`     | 600             | -                       | 6,000,000               | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 

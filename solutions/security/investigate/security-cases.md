@@ -19,11 +19,29 @@ description: Create and manage security cases to track incidents, attach alerts,
 
 Create cases to collect and share information about security incidents and investigations. You can attach alerts, document findings, and collaborate with your SOC team, all in one place. Cases also integrate with external ticketing systems like Jira, ServiceNow, and IBM Resilient, so you can escalate and track incidents across your security workflow. 
 
-Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}} lets you view case metrics, attach events from Timeline, add threat intelligence indicators, and link Timelines to preserve investigation context.
+Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}} lets you:
+
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Set an alert closing reason when closing a case](#cases-set-closing-reason)
+* [View case metrics](#cases-view-metrics)
+* [Attach events from Timeline](#cases-add-events)
+* [Add threat intelligence indicators](#cases-indicators)
+* [Link Timelines to preserve investigation context](#cases-timeline)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
 :::
+
+## Set an alert closing reason when closing a case [cases-set-closing-reason]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+If **Sync alert status** is on, closing the case opens the **Select alert close reason** popup, where you can choose how attached detection alerts are closed. You can close the attached alerts without a reason, or specify an alert closing reason. 
+
+The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any [custom closing reasons](/solutions/security/get-started/configure-advanced-settings.md#custom-alert-closing-reasons) defined in advanced settings.
+
+Alerts that are already closed keep their existing reason; only open and acknowledged attached alerts are updated.
 
 ## View case metrics [cases-view-metrics]
 

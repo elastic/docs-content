@@ -18,12 +18,9 @@ Follow these steps to create a customized copy of a built-in {{ilm-init}} policy
 While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in `logs@lifecycle` policy as an example, the same process can be applied to any built-in policies. Common examples include:
 
 * `logs@lifecycle`
-* `logs-otel@lifecycle`
 * `metrics@lifecycle`
-* `metrics-otel@lifecycle`
 * `synthetics@lifecycle`
 * `traces@lifecycle`
-* `traces-otel@lifecycle`
 
 Customizing an {{ilm-init}} policy is useful when you have specific data retention or rollover requirements. For example, large log or metrics data streams might need different retention periods than the built-in defaults.
 
