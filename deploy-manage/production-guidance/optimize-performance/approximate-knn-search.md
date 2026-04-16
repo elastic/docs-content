@@ -114,12 +114,6 @@ estimated\ quantized\ vector\ bytes &= num\_vectors \times \left(\left(\left\lce
 \end{align*}
 ```
 
-```{math}
-\begin{align*}
-estimated\ query\ working\ bytes &\approx num\_candidates \times \left(\left\lceil\frac{num\_dimensions \times query\_bits}{8}\right\rceil + 2\right)
-\end{align*}
-```
-
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
 
 The data nodes should also leave a buffer for other ways that RAM is needed. For example your index might also include text fields and numerics, which also benefit from using filesystem cache. It’s recommended to run benchmarks with your specific dataset to ensure there’s a sufficient amount of memory to give good search performance. You can find [here](https://elasticsearch-benchmarks.elastic.co/#tracks/so_vector) and [here](https://elasticsearch-benchmarks.elastic.co/#tracks/dense_vector) some examples of datasets and configurations that we use for our nightly benchmarks.
