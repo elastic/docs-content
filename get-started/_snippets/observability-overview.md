@@ -22,7 +22,7 @@ Apply {{observability}} to various scenarios to improve operational awareness an
   * **[Real User Monitoring (RUM)](/solutions/observability/applications/user-experience.md):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
   * **[Synthetic monitoring](/solutions/observability/synthetics/index.md):** Proactively simulate user journeys and API calls to test application availability and functionality.
   * **[Uptime monitoring](/solutions/observability/uptime/index.md):** Continuously check the status of services and applications to ensure they are available.
-* **[LLM Observability](/solutions/observability/applications/llm-observability.md):** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
+* **[LLM Observability](/solutions/observability/ai/llm-observability.md):** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
 * **[Incident response and management](/solutions/observability/incident-management.md):** Investigate operational incidents by correlating data from multiple sources, accelerating root cause analysis and resolution.
 * **[Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md):** Gain visibility into system performance and identify expensive lines of code without application instrumentation, helping to increase CPU efficiency and reduce cloud spend.
 :::
