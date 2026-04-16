@@ -35,11 +35,11 @@ body:
   - type: dropdown
     id: doc-set
     attributes:
-      label: Which documentation set does this change impact?
-      description: Stateful, Serverless, or both?
+      label: Which deployment methods does this change impact?
+      description: Knowing this information helps us to update the right content and tag it appropriately.
       options:
         - Elastic On-Prem and Cloud (all)
-        - Elastic On-Prem only
+        - Elastic On-Prem only (ECE, ECK, or self-managed)
         - Elastic Cloud (Hosted and Serverless) only
         - Elastic Cloud Hosted only
         - Elastic Cloud Serverless only
@@ -58,7 +58,7 @@ body:
   - type: dropdown
     id: version
     attributes:
-      label: What release is this request related to?
+      label: What Elastic Stack release is this request related to?
       description: Some requests may be tied to the Elastic Stack release schedule. Some, like Serverless requests, may not. Please select an option.
       options:
         - 'N/A'
@@ -68,7 +68,10 @@ body:
         - '9.2'
         - '9.3'
         - '9.4'
-        - '9.5'        
+        - '9.5'
+        - '9.6'
+        - '9.7'
+        - '9.8'
       default: 0
     validations:
       required: true

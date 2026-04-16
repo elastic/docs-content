@@ -9,9 +9,9 @@ body:
         Hi 👋. Thanks for taking the time to fill out this issue report!
         Use this form only for issues with Elastic documentation.
         This form is not for product bugs, support requests, or feature requests.
-        If the product is not behaving as expected and the docs are accurate, please use the appropriate product or support channel instead.
+        If the product is not behaving as expected and the docs are accurate, please use the appropriate product or support channel instead — your request will be routed faster that way.
         This form will create an issue that Elastic's docs team will triage and prioritize.
-        You can also open a PR instead.
+        You can also [open a PR](https://elastic.co/docs/contribute-docs/syntax-quick-reference) instead.
   - type: checkboxes
     id: docs-only
     attributes:
