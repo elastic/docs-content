@@ -4,9 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
 description: Configure and customize the Osquery Manager integration, including advanced configuration options, custom Osquery versions, and debugging.
 applies_to:
-  stack: preview all
+  stack: 
   serverless:
-    security: preview all
+    security:
 products:
   - id: kibana
 ---
@@ -99,12 +99,17 @@ For each agent policy where you want to allow `curl` table queries, edit the Osq
 ```
 
 
-## Upgrade Osquery versions [_upgrade_osquery_versions]
+## Upgrade Osquery versions [_upgrade_osquery_versions] 
 
 The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](/reference/fleet/upgrade-elastic-agent.md).
 
 
 ## Use a custom Osquery version [osquery-custom-version]
+```{applies_to}
+stack: ga 9.4 
+serverless:
+   security:
+```
 
 You can provide a custom Osquery binary to override the version bundled with {{agent}}. This allows you to run newer or custom versions of Osquery.
 
