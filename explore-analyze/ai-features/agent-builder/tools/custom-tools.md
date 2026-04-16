@@ -44,7 +44,7 @@ To create a custom tool in the UI:
     Navigate to the **Tools** section from the key actions menu in the Agent Chat UI.
 
    ::::
-   
+
    :::::
 2. Click **+ New tool**.
 
@@ -105,20 +105,20 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 :::::{applies-switch}
 
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the tools to assign.
+
+::::
+
 ::::{applies-item} { stack: ga =9.3 }
 
 1. Navigate to the agent configuration page.
 2. Select the **Tools** tab.
 3. Add the desired tools to the agent.
 4. Save the agent configuration.
-
-::::
-
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-1. Select the agent from the agent selector in the left sidebar.
-2. Expand the **Customize** accordion and select **Tools**.
-3. Click **Add tool** and select the tools to assign.
 
 ::::
 

@@ -189,9 +189,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
-% TODO: Add screenshots of the Customize > Overview, Skills, and Tools pages once captured.
-
-% TODO: Verify whether a Plugins page also appears under Customize. Plugins are pre-packaged bundles of skills. If present, document the page here. If not, confirm with the development team whether Plugins were delayed or require specific configuration.
+% TODO: Add screenshots of the Customize > Overview, Skills, Tools, and Plugins pages once captured.
 
 ## Manage components [manage-components]
 
