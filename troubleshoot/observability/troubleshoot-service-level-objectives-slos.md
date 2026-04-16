@@ -92,6 +92,11 @@ It’s also recommended that you perform the following transform checks:
 
     If a transform has been deleted, the easiest way to recreate it is using the [Reset SLO](#slo-troubleshoot-reset) action, forcing the recreation of the transforms. If a transform was stopped, try to start it, and then check the `health tab` of the transform.
 
+    ::::{note}
+    :applies_to: stack: ga 9.4 
+    SLO transforms are protected from accidental deletion. The Transforms UI displays a warning tooltip to indicate that these transforms are managed by the SLO application and should not be deleted. If you previously deleted transforms manually to reset SLO state, use the [Reset SLO](#slo-troubleshoot-reset) action instead, as manual deletion of protected transforms is no longer supported.
+    ::::
+
 * [Inspect SLO assets](#slo-troubleshoot-inspect) to analyze the SLO definition and all associated resources.
 
     Use the direct links offered by the **Inspect UI** and check that all referenced resources exist, as that’s not verified by the inspect functionality.
