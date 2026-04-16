@@ -11,18 +11,16 @@ type: overview
 
 # Create dashboards and visualizations programmatically [create-dashboards-programmatically]
 
-In addition to the {{product.kibana}} UI, you can create and manage dashboards and visualizations using REST APIs or AI-powered tools. This is useful when you need to automate dashboard deployments, manage them in version control, build tooling around the dashboard lifecycle, or produce dashboards from natural language instructions.
+REST APIs and AI-powered tools give you several ways to create and manage dashboards and visualizations outside the {{product.kibana}} UI — useful for automating deployments, managing dashboards as code, or generating them through natural language.
 
 ## Choose your approach [choose-your-approach]
 
-The right option depends on what you are building and how you prefer to work:
-
-| Approach | Best for | Output |
+| Approach | When to choose this | What you get |
 |---|---|---|
-| [Dashboards API](#dashboards-api) | Scripted deployments, GitOps, CI/CD automation | Saved dashboard object |
-| [Visualizations API](#lens-visualizations-api) | Reusable visualization libraries shared across dashboards | Saved visualization object |
-| [{{agent-builder}} chat](#agent-builder-dashboard-tools) | Conversational dashboard creation without writing API requests | In-memory dashboard (save when ready) |
-| [Kibana dashboards agent skill](#dashboards-agent-skill) | Building AI applications that create dashboards programmatically | Depends on implementation |
+| [Dashboards API](#dashboards-api) | Managing dashboards as code: scripted deployments, CI/CD, version control | Saved dashboard |
+| [Visualizations API](#lens-visualizations-api) | Building a reusable chart library you can embed by reference in multiple dashboards | Saved visualization |
+| [{{agent-builder}}](#agent-builder-dashboard-tools) | Creating dashboards from natural language, in {{product.kibana}} or via the Agent Builder MCP server | In-memory dashboard, save when ready |
+| [Kibana dashboards agent skill](#dashboards-agent-skill) | Building your own AI agent or LLM tool that generates dashboards | Saved dashboard (via API) |
 
 ## Dashboards API [dashboards-api]
 
@@ -31,16 +29,16 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-The Dashboards API provides full CRUD access to dashboards, including their panels, controls, sections, and display options. Panels are defined inline in the request body as JSON, so you can store dashboard definitions in version control and deploy them through automated pipelines.
+The Dashboards API gives you full read and write access to dashboards, including their panels, controls, sections, and display options. You define panels inline as JSON, so you can store dashboard definitions in version control and deploy them through automated pipelines.
 
 Use the Dashboards API when you need to:
 
-- Deploy dashboards across environments (staging, production) from a CI/CD pipeline
-- Manage dashboard definitions as code and track changes in version control
-- Automate dashboard creation or updates as part of your own tooling or integrations
-- Create dashboards that include [ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations inline. This is the only programmatic path for ES|QL charts.
+- Deploy dashboards across environments from a CI/CD pipeline
+- Track dashboard definitions in version control alongside your other infrastructure code
+- Automate dashboard creation or updates as part of your own tooling
+- Create dashboards with [ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. This is the only programmatic path for ES|QL charts.
 
-The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Panels that lack a schema, such as Maps and Links, return an error on write.
+The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Panel types without a schema, such as Maps and Links, are not supported and return an error on write.
 
 Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full request schema, panel types, and authentication requirements.
 
@@ -51,50 +49,49 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. A saved visualization can then be embedded in one or more dashboards by referencing its ID, rather than repeating the visualization definition in each dashboard.
+The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. Embed them in dashboards by reference using their ID, so a single update propagates to every dashboard that uses them.
 
 Use the Visualizations API when you need to:
 
-- Build a library of reusable charts and metrics that appear in multiple dashboards
-- Update a visualization once and have the change propagate to every dashboard that references it
-- Separate visualization management from dashboard management in your automation or tooling
+- Maintain a library of reusable charts and metrics across multiple dashboards
+- Update a visualization once and have the change reflected everywhere it appears
+- Manage visualization definitions independently from dashboard definitions in your automation or tooling
 
 To embed a saved visualization in a dashboard, create a `vis` panel in the Dashboards API with the saved object ID in `config.ref_id`.
 
 Refer to the [Visualizations API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-lens).
 
-## {{agent-builder}} chat [agent-builder-dashboard-tools]
+## {{agent-builder}} [agent-builder-dashboard-tools]
 
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
 ```
 
-{{agent-builder}} agents can create and update dashboards through natural language chat in the {{product.kibana}} UI. Describe what you want to visualize and the agent generates a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default. They exist only as conversation attachments and are not saved until you save them, so you can iterate freely before committing.
+{{agent-builder}} agents can create and update dashboards through natural language chat, from the {{product.kibana}} UI or via the [Agent Builder MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md). Describe what you want to visualize and the agent builds a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default and exist as conversation attachments until you save them, so you can iterate freely before finalizing.
 
 Use {{agent-builder}} when you want to:
 
-- Create a working dashboard quickly without writing API requests or learning the schema
+- Go from a question to a working dashboard without writing API requests or learning the schema
 - Explore an unfamiliar data source by asking the agent to surface and visualize key fields
-- Prototype a dashboard layout through conversation and refine it before building a more permanent version
-- Get started with dashboards without prior experience with the {{product.kibana}} editor
+- Prototype a dashboard through conversation, then save it when you are satisfied
 
-{{agent-builder}} creates ES|QL-powered visualizations, markdown panels, and collapsible sections. If you need DSL-based visualizations or panel types not supported by the agent, use the Dashboards API directly.
+{{agent-builder}} generates ES|QL-powered visualizations, markdown panels, and collapsible sections. For DSL-based visualizations or panel types the agent does not support, use the Dashboards API directly.
 
 :::{tip}
-Full-screen standalone chat mode provides the best experience for working with dashboards. The larger canvas area makes it easier to preview and interact with the generated content.
+Full-screen standalone chat mode gives the most space for previewing and refining dashboard content.
 :::
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/chat.md).
 
 ## Kibana dashboards agent skill [dashboards-agent-skill]
 
-The [kibana-dashboards agent skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards) is an open-source skill for developers building AI agents and LLM-powered applications. It provides language models with the context and instructions required to generate valid dashboard definitions and interact with the Dashboards API on behalf of a user.
+The [kibana-dashboards agent skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards) is an open-source skill for integrating dashboard generation into your own AI tools. It provides language models with the context and instructions to generate valid dashboard definitions and call the Dashboards API, so you can build custom interfaces, automation scripts, or agentic pipelines that create {{product.kibana}} dashboards without relying on the built-in {{agent-builder}} experience.
 
 Use the agent skill when you are:
 
-- Building a custom AI application or chatbot that creates {{product.kibana}} dashboards as part of a larger workflow
-- Integrating dashboard generation into an agentic pipeline outside of the {{product.kibana}} UI
-- Extending or customizing how an LLM interacts with the Dashboards API beyond the built-in capabilities of {{agent-builder}}
+- Building a custom AI application or chatbot that creates dashboards as part of a larger workflow
+- Integrating dashboard generation into an agentic pipeline outside the {{product.kibana}} UI
+- Extending how an LLM interacts with the Dashboards API beyond the built-in capabilities of {{agent-builder}}
 
-The {{agent-builder}} built-in tools use a similar mechanism internally. The agent skill is for developers who need the same capability in their own tooling.
+The {{agent-builder}} built-in tools use a similar mechanism internally. The agent skill is for teams who need the same capability in their own tooling.
