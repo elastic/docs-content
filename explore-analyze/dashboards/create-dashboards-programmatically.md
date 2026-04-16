@@ -11,7 +11,7 @@ type: overview
 
 # Create dashboards and visualizations programmatically [create-dashboards-programmatically]
 
-REST APIs and AI-powered tools give you several ways to create and manage dashboards and visualizations outside the {{product.kibana}} UI — useful for automating deployments, managing dashboards as code, or generating them through natural language.
+REST APIs and AI-powered tools give you several ways to create and manage dashboards and visualizations outside the {{product.kibana}} UI. Use them to automate deployments, manage dashboards as code, or generate them through natural language.
 
 ## Choose your approach [choose-your-approach]
 
