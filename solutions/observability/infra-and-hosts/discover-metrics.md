@@ -67,9 +67,8 @@ Use the search function to find and visualize specific metric data:
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
 
 :::{note}
-Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your [time series data stream (TSDS)](/manage-data/data-store/data-streams
-/time-series-data-stream-tsds.md) configuration.
-
+Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your 
+[time series data stream (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) configuration.
 :::
 
 :::{image} /solutions/images/explore-metrics-host-ip.png
