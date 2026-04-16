@@ -49,7 +49,7 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. Embed them in dashboards by reference using their ID, so a single update propagates to every dashboard that uses them.
+The Visualizations API lets you create and manage visualizations as standalone saved objects in the {{product.kibana}} Visualizations library. Embed them in dashboards by referencing their ID, so a single update propagates to every dashboard that uses them.
 
 Use the Visualizations API when you need to:
 
