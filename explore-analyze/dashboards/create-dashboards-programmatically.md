@@ -75,9 +75,6 @@ Use {{agent-builder}} when you want to:
 
 {{agent-builder}} generates ES|QL-powered visualizations, markdown panels, and collapsible sections. For  panel types that the agent does not support yet such as controls, use the Dashboards API directly.
 
-:::{tip}
-Full-screen standalone chat mode gives the most space for previewing and refining dashboard content.
-:::
 
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/chat.md).
 
