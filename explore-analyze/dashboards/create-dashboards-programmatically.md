@@ -85,6 +85,10 @@ Full-screen standalone chat mode gives the most space for previewing and refinin
 Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/chat.md).
 
 ## {{product.kibana}} dashboards agent skill [dashboards-agent-skill]
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
 
 The [kibana-dashboards agent skill](https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards) is an open-source skill for integrating dashboard generation into your own AI tools. It provides language models with the context and instructions to generate valid dashboard definitions and call the Dashboards API, so you can build custom interfaces, automation scripts, or agentic pipelines that create {{product.kibana}} dashboards without relying on the built-in {{agent-builder}} experience.
 
