@@ -134,6 +134,7 @@ serverless:
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
 
 :::{note}
+:applies_to: stack: preview =9.3, removed 9.4+
 The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) is assigned these tools by default.
 :::
 
@@ -183,6 +184,7 @@ serverless:
 Security tools provide specialized capabilities for security monitoring, threat detection, and incident response.
 
 :::{note}
+:applies_to: stack: preview =9.3, removed 9.4+
 The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is assigned these tools by default.
 :::
 

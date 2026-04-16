@@ -35,16 +35,15 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 {{agent-builder}} includes pre-configured built-in agents optimized for common use cases.
 
 - **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
-- **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
-- **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
+- {applies_to}`preview =9.2, ga =9.3, removed 9.4+` **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
+- {applies_to}`preview =9.2, ga =9.3, removed 9.4+` **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
 
-% TODO: onboarding agent, o11y, security have been removed!
-
+:::{note}
+:applies_to: stack: ga 9.2-9.3
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 
-% TODO:Elastic AI Agent is now mutable
-
 Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
+:::
 
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 

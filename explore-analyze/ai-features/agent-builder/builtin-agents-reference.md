@@ -16,27 +16,27 @@ products:
 
 Built-in agents are pre-configured by Elastic with specific instructions and tools to handle common use cases.
 
-::::{applies-switch}
+:::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-Built-in agents cannot be modified or deleted. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
-
 The **Elastic AI Agent** is not a built-in agent in this version. It is a standard persisted default agent that is space-aware and editable. Refer to [Elastic AI Agent](#elastic-ai-agent) for details.
+
+% TODO: rewrite this section
 
 ::::
 
 ::::{applies-item} { stack: preview =9.2, ga 9.3 }
 
-:::{tip}
-You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
-:::
+Built-in agents cannot be modified or deleted. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
 
 ::::
 
-::::
+:::::
 
 ## Availability
+
+% TODO: rewrite this section
 
 The availability of specific agents depends on your solution view or serverless project type.
 
@@ -92,9 +92,9 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 
 ## Observability Agent
 ```{applies_to}
-stack: preview 9.3
+stack: preview =9.3, removed 9.4+
 serverless:
-  observability: preview
+  observability: removed
 ```
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
@@ -106,9 +106,9 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 
 ## Threat Hunting Agent
 ```{applies_to}
-stack: preview 9.3
+stack: preview =9.3, removed 9.4+
 serverless:
-  security: preview
+  security: removed
 ```
 
 A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
