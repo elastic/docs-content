@@ -3,8 +3,7 @@ navigation_title: Automatic Import
 description: Automatic Import parses and ingests data without a prebuilt integration; refer to the full Automatic Import guide for Elastic Security.
 applies_to:
   stack: ga
-  serverless:
-    security: ga
+  serverless: ga
 products:
   - id: security
   - id: cloud-serverless

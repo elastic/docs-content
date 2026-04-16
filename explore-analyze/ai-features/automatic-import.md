@@ -6,9 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
 applies_to:
   stack: ga
-  serverless:
-    security: ga
-    observability: ga
+  serverless: ga
 products:
   - id: kibana
   - id: cloud-serverless
