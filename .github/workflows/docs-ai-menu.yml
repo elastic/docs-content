@@ -150,8 +150,7 @@ jobs:
         **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
         **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
         **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+    secrets: inherit
 
   run-docs-issue-scope:
     name: Run docs-issue-scope
@@ -164,5 +163,4 @@ jobs:
       issues: write
       pull-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+    secrets: inherit
