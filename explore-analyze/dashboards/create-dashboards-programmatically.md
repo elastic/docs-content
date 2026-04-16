@@ -65,7 +65,7 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-{{agent-builder}} agents can create and update dashboards through natural language chat, from the {{product.kibana}} UI or via the [Agent Builder MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md). Describe what you want to visualize and the agent builds a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default and exist as conversation attachments until you save them, so you can iterate freely before finalizing.
+{{agent-builder}} agents can create and update dashboards through natural language chat, from the {{product.kibana}} UI or using the [Agent Builder MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md). Describe what you want to visualize and the agent builds a dashboard with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. Dashboards are in-memory by default and exist as conversation attachments until you save them, so you can iterate freely before finalizing.
 
 Use {{agent-builder}} when you want to:
 
@@ -96,3 +96,5 @@ Use the agent skill when you are:
 - Extending how an LLM interacts with the Dashboards API beyond the built-in capabilities of {{agent-builder}}
 
 The {{agent-builder}} built-in tools use a similar mechanism internally. The agent skill is for teams who need the same capability in their own tooling.
+
+Pair it with the [elasticsearch-esql skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-esql) to give the agent the ability to discover available indices and fields before generating ES|QL queries for dashboard panels.
