@@ -45,7 +45,7 @@ Some key concepts to understand while working with workflows:
 
 * **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
 * **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
-* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/data.md) to learn more.
+* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) to learn more.
 
 ## Workflow structure [workflow-structure]
 
@@ -116,5 +116,20 @@ steps:
 
 ## Learn more
 
-- To create and run your first workflow, refer to [](/explore-analyze/workflows/get-started.md).
-- Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/author-workflows.md) to learn more.
+Start here:
+
+- [Set up Workflows](/explore-analyze/workflows/get-started/setup.md): Turn on the feature and configure role-based access.
+- [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md): A hands-on tutorial using sample data.
+
+Explore what you can automate:
+
+- [Automate security operations](/explore-analyze/workflows/automate-security-operations.md): Respond to alerts, create cases, and route notifications.
+- [Manage detection rules at scale](/explore-analyze/workflows/manage-detection-rules.md): Audit rule health and surface errors.
+- [Automate observability workflows](/explore-analyze/workflows/automate-observability.md): Respond to anomalies and correlate signals.
+- [Build AI-augmented automation](/explore-analyze/workflows/build-ai-automation.md): Combine workflows with {{agent-builder}} agents.
+
+Reference and authoring:
+
+- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
+- [Reference](/explore-analyze/workflows/reference.md): Triggers, steps, and templating engine reference.
+- [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.
