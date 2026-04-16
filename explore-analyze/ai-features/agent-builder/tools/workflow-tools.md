@@ -33,8 +33,21 @@ Before you begin:
 Follow these steps to configure a workflow tool:
 
 1. Navigate to the Tools page and create a new tool:
-   - {applies_to}`stack: ga =9.3` Go to **Agents > More > View all tools > New tool**.
-   - {applies_to}`stack: ga 9.4+` Click **Manage components** at the bottom of the left sidebar, select **Tools**, then click **+ New tool**.
+
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, select **Tools**, then click **+ New tool**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Go to **Agents > More > View all tools > New tool**.
+
+   ::::
+   
+   :::::
 
   :::{image} ../images/create-new-tool-workflows.png
   :screenshot:

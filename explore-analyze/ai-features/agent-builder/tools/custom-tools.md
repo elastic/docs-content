@@ -32,8 +32,20 @@ You can create custom tools in the Kibana UI.
 To create a custom tool in the UI:
 
 1. Navigate to the Tools page:
-   - {applies_to}`stack: ga =9.3` Navigate to the **Tools** section from the key actions menu in the Agent Chat UI.
-   - {applies_to}`stack: ga 9.4+` Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Navigate to the **Tools** section from the key actions menu in the Agent Chat UI.
+
+   ::::
+   
+   :::::
 2. Click **+ New tool**.
 
   :::{image} ../images/new-tool-button.png

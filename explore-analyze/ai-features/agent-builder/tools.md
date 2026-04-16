@@ -50,8 +50,20 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 You can view, organize, and manage tools from the **Tools** page in {{kib}} or programmatically using the [Tools API](kibana-api.md#tools-apis).
 
-- {applies_to}`stack: ga =9.3` Access the Tools page from the key actions menu in the Agent Chat UI.
-- {applies_to}`stack: ga 9.4+` Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize > Tools > Manage all tools** on an agent's page.
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize > Tools > Manage all tools** on an agent's page.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Access the Tools page from the key actions menu in the Agent Chat UI.
+
+   ::::
+   
+   :::::
 
 The Tools page lists each tool by ID and description. Use the search bar or filter by labels to find specific tools. Built-in tools are marked with a lock icon (🔒).
 
