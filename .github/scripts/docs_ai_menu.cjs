@@ -3,11 +3,11 @@ const MENU_END = '<!-- docs-ai-menu:end -->';
 
 const WORKFLOW_CONFIG = {
   triage: {
-    label: 'Triage (`docs-triage`).',
+    label: 'Triage ([`docs-triage`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-triage.md)).',
     marker: '<!-- docs-ai-menu:triage -->',
   },
   issueScope: {
-    label: 'Scope the docs work (`docs-issue-scope`).',
+    label: 'Scope the docs work ([`docs-issue-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-docs-issue-scope.md)).',
     marker: '<!-- docs-ai-menu:issue-scope -->',
   },
 };
@@ -72,6 +72,8 @@ function buildMenuBody(state) {
     'Check one box to run an AI workflow for this issue.',
     '',
     ...WORKFLOW_ORDER.map((key) => buildWorkflowLine(key, normalizedState[key])),
+    '',
+    'Powered by GitHub Agentic Workflows and [docs-actions](https://github.com/elastic/docs-actions).',
     '',
     'For more information, reach out to the docs team.',
     '',
