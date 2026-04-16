@@ -1,5 +1,5 @@
 ---
-navigation_title: Automatic import
+navigation_title: Automatic Import
 description: Automatic Import parses and ingests data without a prebuilt integration; refer to the full Automatic Import guide for Elastic Observability.
 applies_to:
   stack: ga
@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Automatic import for {{observability}} [observability-automatic-import]
+# Automatic Import for {{observability}} [observability-automatic-import]
 
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::

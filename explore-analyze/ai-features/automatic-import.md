@@ -1,5 +1,5 @@
 ---
-navigation_title: Automatic import
+navigation_title: Automatic Import
 description: Use Automatic Import with an LLM to build a custom Elastic integration from a data sample when no prebuilt integration exists, for Security, Observability, and other solutions.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/automatic-import.html
@@ -16,7 +16,7 @@ products:
   - id: observability
 ---
 
-# Automatic import [automatic-import]
+# Automatic Import [automatic-import]
 
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::
