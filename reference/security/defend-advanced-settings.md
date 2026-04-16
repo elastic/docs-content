@@ -649,7 +649,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.firewall_anti_tamper`
 :   Added in 9.2.0.
 
-    *Enable firewall anti tamper prevention or detection. Tamper protetion must also be enabled. Allowed values are `prevent`, `detect`, and `off`. Default: `prevent`.*
+    *Enable firewall anti tamper prevention or detection. Tamper protection must also be enabled. Allowed values are `prevent`, `detect`, and `off`. Default: `prevent`.*
 
 
 `[linux,mac,windows].advanced.flags`
