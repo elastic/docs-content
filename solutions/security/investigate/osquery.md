@@ -45,7 +45,10 @@ To use **Osquery Manager**, you must be assigned to a role with the following pr
 To inspect hosts, run a query against one or more agents or policies, then view the results.
 
 1. Go to **Osquery** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Live queries** view, click **New live query**.
+2. Depending on your version, do one of the following:
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Run query**.
+    * {applies_to}`stack: ga 9.0-9.3` In the **Live queries** tab, click **New live query**.
+
 3. Choose to run a single query or a query pack.
 4. Select one or more agents or groups to query. Start typing in the search field, and you’ll get suggestions for agents by name, ID, platform, and policy.
 5. Specify the query or pack to run:
@@ -63,7 +66,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
         ::::
 
 
-        :::{image} /solutions/images/kibana-enter-query.png
+        :::{image} /solutions/images/security-osquery-new-query.png
         :alt: Select saved query dropdown name showing query name and description
         :screenshot:
         :::
@@ -71,32 +74,51 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 6. Click **Submit**.
 
     ::::{tip}
+    :applies_to: stack: ga 9.0-9.3
     To save a single query for future use, click **Save for later** and define the ID, description, and other [details](../../../solutions/security/investigate/osquery.md#osquery-manage-query).
     ::::
 
 7. Review the results and do any of the following:
 
-    * Click **View in Discover** (![View in Discover icon](/solutions/images/kibana-discover-button-osquery.png "title =20x20")) to explore the results in **Discover**.
-    * Click **View in Lens** (![View in Lens icon](/solutions/images/kibana-lens-button-osquery.png "title =20x20")) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
-    * Click **Add to Case** (![Add to Case icon](/solutions/images/kibana-case-button-osquery.png "title =20x20")) to add the query results to a new or existing case.
-    * Click the view details icon (![View details icon](/solutions/images/kibana-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
+    * Click **View in Discover** ({icon}`app_discover`) to explore the results in **Discover**.
+    * Click **View in Lens** ({icon}`app_lens`) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
+    * Click **Add to Case** ({icon}`app_cases`) to add the query results to a new or existing case.
+    * Click the view details icon ({icon}`expand`) to examine the query ID and statement.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Add or remove tags to organize and label the queries for future use.
 
 8. To view more information about the request, such as failures, open the **Status** tab.
 
 
-## View or rerun previous live queries [osquery-view-history]
+## View query history [osquery-view-history]
 
-The **Live queries history** section on the **Live queries** tab shows a log of queries run over the last 30 days. From the Live queries table, you can:
+:::::{applies-switch}
 
-* Click the run icon (![Right-pointing triangle](/solutions/images/kibana-play-icon.png "")) to rerun a single query or a query pack.
-* Click the table icon (![Table icon](/solutions/images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
+::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-    :::{image} /solutions/images/kibana-live-query-check-results.png
-    :alt: Results of OSquery
-    :screenshot:
-    :::
+The **History** tab displays a unified log of all Osquery actions, including live queries, rule-triggered response actions, and scheduled pack executions. Adjust the time filter to view history entries generated within a specific timeframe.
+
+You can search history entries by query or pack name, and use the filter dropdowns to filter by **Tags**, **Source**, or **Run by**.
+
+::::
+
+::::{applies-item} { "stack": "ga 9.0-9.3" }
+
+The **Live queries history** section on the **Live queries** tab shows a log of queries run over the last 30 days.
+
+::::
+
+:::::
 
 
+From the history table, you can:
+
+* Click the run icon ({icon}`play`) to rerun a single query or a query pack.
+* Click the details icon ({icon}`table_density_compact`) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
+
+:::{image} /solutions/images/security-osquery-history-tab.png
+:alt: Osquery History tab
+:screenshot:
+:::
 
 ## Schedule queries with packs [osquery-schedule-query]
 
@@ -107,7 +129,7 @@ You can also create a custom pack with one or more queries. For example, when cr
 You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run at the set intervals for all agents in those policies.
 
 1. Click the **Packs** tab.
-2. Click **Add pack** to create a new pack, or click the name of an existing pack, then **Edit** to add queries to an existing pack.
+2. Create a new pack, or click the name of an existing pack, then **Edit** to add queries to an existing pack.
 3. Provide a name for the pack. The short description is optional.
 4. Schedule the pack to be deployed on specified agent policies (**Policy**) or on all agent policies (**Global**).
 
@@ -139,31 +161,38 @@ You can run packs as live queries or schedule packs to run for one or more agent
 6. Click **Save pack**. The queries run when the policy receives the update.
 
 
-## View status of scheduled packs [osquery-schedule-status]
+### View status of scheduled packs [osquery-schedule-status]
 
 1. Open the **Packs** tab.
 2. Click a pack name to view the status.
 
     Details include the last time each query ran, how many results were returned, and the number of agents the query ran against. If there are errors, expand the row to view the details, including an option to view more information in the Logs.
 
-    :::{image} /solutions/images/kibana-scheduled-pack.png
+    :::{image} /solutions/images/security-osquery-scheduled-pack.png
     :alt: Shows queries in the pack and details about each query
     :screenshot:
     :::
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.
 
+### Filter and duplicate packs
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+The **Packs** tab includes search and filter options to help you find specific packs.
+
+You can duplicate an existing pack by clicking the **Actions** menu next to the pack and selecting **Duplicate pack**. You can also duplicate a pack from its details or edit pages.
 
 ## Save queries [osquery-manage-query]
 
-You can save queries in two ways:
+To save a query:
 
-* After running a live query, click the **Save for later** link.
-* From the **Saved queries** tab, click **Add saved query**.
+1. Depending on your version, do one of the following:
 
-Once you save a query, you can only edit it from the **Saved queries** tab:
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Create query** from the **Queries** tab. Once you save a query, you can only edit it from the **Queries** tab.
+    * {applies_to}`stack: ga 9.0-9.3` Click **Add saved query** from the **Saved queries** tab. Once you save a query, you can only edit it from the **Saved queries** tab.
 
-1. Go to **Saved queries**, and then click **Add saved query** or the edit icon.
 2. Provide the following fields:
 
     * The unique identifier (required).
@@ -183,6 +212,18 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
 
 4. Click **Save** or **Update**.
 
+::::{tip}
+After running a live query, you can also save it by clicking **Save query** from the query details page.
+::::
+
+### Filter and duplicate saved queries
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+The **Queries** tab includes search and filter options to help you find specific queries.
+
+You can duplicate an existing query by clicking the **Actions** menu next to the query and selecting **Duplicate query**. You can also duplicate a query from its edit page.
 
 ## Prebuilt Elastic packs and queries [osquery-prebuilt-packs-queries]
 
@@ -207,14 +248,16 @@ Follow these steps to load and turn on new or updated prebuilt packs:
 1. Go to **Packs**, and then click **Load Elastic prebuilt packs**.
 2. For each pack that you want to activate and schedule:
 
-    * Turn on the **Active** toggle to ensure the pack runs continuously.
+    1. To ensure the pack runs continuously, turn on:
+        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Enable** toggle
+        * {applies_to}`stack: ga 9.0-9.3` The **Active** toggle
 
         ::::{note}
         You must manually run inactive packs.
         ::::
 
-    * Click the pack name, then **Edit**.
-    * Update the **Scheduled agent policies** to specify the policies where this pack should run.
+    2. Click the pack name, then **Edit**.
+    3. Update the **Scheduled agent policies** to specify the policies where this pack should run.
 
 3. Click **Update pack**.
 
@@ -223,12 +266,26 @@ Follow these steps to load and turn on new or updated prebuilt packs:
 
 To modify queries in prebuilt packs, you must first make a copy of the pack.
 
+::::::{applies-switch}
+
+:::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+
+From the **Packs** tab, click the **Actions** menu next to the prebuilt pack and select **Duplicate pack**. You can also duplicate a pack from its details or edit pages. The duplicated pack is fully editable.
+
+:::::
+
+:::::{applies-item} { "stack": "ga 9.0-9.3" }
+
 1. Go to **Stack Management** → **Saved Objects**.
 2. Search for the Osquery packs you want to modify by name.
 3. Select the checkboxes of the packs to export.
 4. Click **Export x objects**.
 5. Click **Import**.
 6. Select the import option **Create new objects with random IDs**, then click **Import** to import the pack. This creates a copy of the pack that you can edit.
+
+:::::
+
+::::::
 
 
 ### Prebuilt queries [osquery-prebuilt-queries]
@@ -242,13 +299,24 @@ A set of saved queries are included with the integration and available to run as
 For information about the available prebuilt queries, refer to [Elastic queries and packs](https://github.com/elastic/integrations/blob/main/packages/osquery_manager/artifacts_matrix.md).
 
 
+#### Copy prebuilt Elastic queries
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+To modify prebuilt queries, you must first make a copy of them. From the **Queries** tab, click the **Actions** menu next to the prebuilt query and select **Duplicate query**. You can also duplicate a query from its edit page. The duplicated query is fully editable.
+
+
 ## Map result fields to ECS [osquery-map-fields]
 
 When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](ecs://reference/index.md) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
 
 1. Edit saved queries or queries in a pack to map fields:
 
-    * For saved queries: Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
+    * For saved queries:
+        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Open the **Queries** tab, and then click the edit icon for the query that you want to map.
+        * {applies_to}`stack: ga 9.0-9.3` Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
     * For packs: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
 
 2. In the **ECS mapping** section, select an **ECS field** to map.
