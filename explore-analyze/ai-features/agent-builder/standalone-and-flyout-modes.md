@@ -83,6 +83,8 @@ You can resize the sidebar by dragging its side edge. The sidebar persists when 
 
 {{agent-builder}} is the default chat experience for all solutions. It appears in the navigation automatically.
 
+If you need to revert to the legacy AI Assistant, you can opt out by changing your space's **Chat Experience** to **Classic AI Assistant** in the **GenAI Settings**. Learn more about how to [switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+
 :::
 
 :::{applies-item} { stack: preview =9.2, ga =9.3 }
