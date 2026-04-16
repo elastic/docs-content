@@ -106,7 +106,7 @@ The [Osquery version](https://github.com/osquery/osquery/releases) available on 
 
 ## Use a custom Osquery version [osquery-custom-version]
 
-You can provide a custom Osquery binary to override the version bundled with {{agent}}. This allows you to run newer upstream versions of Osquery or internally customized builds.
+You can provide a custom Osquery binary to override the version bundled with {{agent}}. This allows you to run newer or custom versions of Osquery.
 
 ::::{warning}
 This feature is **use at your own risk**. Elastic does not provide support or maintenance for custom Osquery binaries. Custom versions may introduce compatibility issues, including:
@@ -115,7 +115,7 @@ This feature is **use at your own risk**. Elastic does not provide support or ma
 * Breaking changes in flags or behavior
 * Incompatibility with Elastic-managed configurations
 
-Elastic-specific Osquery extensions may not work properly with custom binaries. You are responsible for validating stability and compatibility within your environment.
+Elastic's Osquery extensions might not work properly with custom binaries. You are responsible for validating stability and compatibility within your environment.
 ::::
 
 To configure a custom Osquery version, add an `install` block to the Advanced **Osquery config** with platform-specific artifact URLs and SHA-256 checksums. The following example configures a custom Osquery binary for Linux:
@@ -149,7 +149,7 @@ Configuration options:
 
 * `artifact_url`: (Required) The URL to the custom Osquery binary package. HTTPS is required by default.
 * `sha256`: (Required) The SHA-256 checksum (64-character hex string) used to verify the downloaded artifact. Both `artifact_url` and `sha256` must be provided together.
-* `allow_insecure_url`: (Optional) Set to `true` to allow HTTP URLs. Not recommended.
+* `allow_insecure_url`: (Optional) Defaults to `false`. Set to `true` to allow HTTP URLs (not recommended).
 * `ssl.verification_mode`: (Optional) TLS verification mode for HTTPS downloads.
 
 If a platform or architecture is not configured, the bundled Osquery version is used. If custom artifact installation or validation fails, the agent fails to start rather than silently falling back to the bundled version.
