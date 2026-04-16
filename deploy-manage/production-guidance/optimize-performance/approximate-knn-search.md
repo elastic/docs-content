@@ -61,11 +61,11 @@ Here are estimates for different element types and quantization levels:
 | `float` | none | `num_vectors * num_dimensions * 4` | 
 | `float` | `int8` | `num_vectors * (num_dimensions + 4)` |
 | `float` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
-| `float` | `bbq` (1-bit docs) |  `num_vectors * (num_dimensions/8 + 14)` |
+| `float` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
 | `bfloat16` | none | `num_vectors * num_dimensions * 2` |
 | `bfloat16` | `int8` | `num_vectors * (num_dimensions + 4)` |
 | `bfloat16` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
-| `bfloat16` | `bbq` (1-bit docs) |  `num_vectors * (num_dimensions/8 + 14)` |
+| `bfloat16` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
 | `byte` | none |  `num_vectors * num_dimensions` |
 | `bit` | none | `num_vectors * (num_dimensions/8)` |
 
