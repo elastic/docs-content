@@ -12,7 +12,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## April 15, 2026 [serverless-changelog-04152026]
 
-### Features and enhancements [serverless-changelog-04132026-features-enhancements]
+### Features and enhancements [serverless-changelog-04152026-features-enhancements]
 
 * Adds three new [regions](/deploy-manage/deploy/elastic-cloud/regions.md) for {{serverless-full}}:
   * Azure: Dubai, UAE (`uaenorth`)
@@ -77,7 +77,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Improves error messaging when time-series {{esql}} queries target indices that are not time series data streams [#145625]({{es-pull}}145625)
 * Reduces peak memory for filtered dense vector scoring by lazily walking accept docs in `VectorScoringUtils` [#145835]({{es-pull}}145835)
 
-### Fixes [serverless-changelog-04132026-fixes]
+### Fixes [serverless-changelog-04152026-fixes]
 
 * Accepts `application/x-zip-compressed` for case file attachments on Windows [#262414]({{kib-pull}}262414)
 * Restores space-relative Markdown links and a same-tab versus new-tab control for Dashboard Markdown panels [#260782]({{kib-pull}}260782)
