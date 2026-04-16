@@ -61,7 +61,7 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   If cells are too small to read, reduce the number of buckets or use a larger time interval on your axes.
 
 **Order categories meaningfully**
-:   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week).
+:   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
 Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
 :::::
@@ -100,7 +100,9 @@ The **Horizontal axis** dimension defines the columns of the heat map.
 
     - **Top values**: Create columns for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term columns. When multiple fields are selected, each column represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -125,7 +127,9 @@ The **Vertical axis** dimension defines the rows of the heat map.
 
     - **Top values**: Create rows for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term rows. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -177,6 +181,12 @@ When creating or editing a visualization, you can customize several appearance o
 **Tick labels**
 :   Toggle whether to show or hide the tick labels on the vertical axis.
 
+**Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+:   Control the sort order of the vertical axis values:
+    - **Unsorted**: Use the default sort order (default).
+    - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+    - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+
 **Horizontal axis**
 
 **Axis title**
@@ -184,6 +194,12 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Tick labels**
 :   Toggle whether to show or hide the tick labels on the horizontal axis.
+
+**Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+:   Control the sort order of the horizontal axis values. Not available for time-based horizontal axes.
+    - **Unsorted**: Use the default sort order (default).
+    - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
+    - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
 
 **Orientation**
 :   Control the orientation of horizontal axis tick labels. Only available when **Tick labels** is enabled.

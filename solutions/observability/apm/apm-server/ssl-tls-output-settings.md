@@ -72,7 +72,7 @@ The following cipher suites are available:
 | ECDHE-RSA-AES-128-GCM-SHA256 | TLS 1.2 only. |
 | ECDHE-RSA-AES-256-CBC-SHA |  |
 | ECDHE-RSA-AES-256-GCM-SHA384 | TLS 1.2 only. |
-| ECDHE-RSA-CHACHA20-POLY1205 | TLS 1.2 only. |
+| ECDHE-RSA-CHACHA20-POLY1305 | TLS 1.2 only. |
 | ECDHE-RSA-RC4-128-SHA | Disabled by default. RC4 not recommended. |
 | RSA-3DES-CBC3-SHA |  |
 | RSA-AES-128-CBC-SHA |  |

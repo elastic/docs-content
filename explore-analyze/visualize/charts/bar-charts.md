@@ -137,7 +137,9 @@ Customize your bar chart to display exactly the information you need, formatted 
 :   The dimension that creates your individual bars. Common functions include:
     - **Top values**: Create bars for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term bars. When multiple fields are selected, each bar represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -176,7 +178,9 @@ Customize your bar chart to display exactly the information you need, formatted 
 :   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
     - **Top values**: Create bar segments for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each segment represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md

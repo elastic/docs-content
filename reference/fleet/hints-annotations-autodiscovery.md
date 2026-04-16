@@ -45,7 +45,7 @@ The package to use for monitoring.
 The host to use for metrics retrieval. If not defined, the host will be set as the default one: `<pod-ip>:<container-port>`.
 
 
-### `co.elastic.hints/data_stream` [_co_elastic_hintsdata_stream]
+### `co.elastic.hints/data_streams` [_co_elastic_hintsdata_streams]
 
 The list of data streams to enable. If not specified, the integration’s default data streams are used. To find the defaults, refer to the [Elastic integrations documentation](integration-docs://reference/index.md).
 
@@ -116,7 +116,7 @@ will look like:
 
 ```yaml
 co.elastic.hints/processors.rename.fields.0.from: "a.g"
-co.elastic.hints/processors.rename.fields.1.to: "e.d"
+co.elastic.hints/processors.rename.fields.0.to: "e.d"
 co.elastic.hints/processors.rename.fail_on_error: 'true'
 ```
 
@@ -159,10 +159,10 @@ When a pod has multiple containers, the settings are shared unless you put the c
 ```yaml
 annotations:
   co.elastic.hints/processors.decode_json_fields.fields: "message"
-	co.elastic.hints/processors.decode_json_fields.add_error_key: true
-	co.elastic.hints/processors.decode_json_fields.overwrite_keys: true
-	co.elastic.hints/processors.decode_json_fields.target: "team"
-	co.elastic.hints.sidecar/stream: "stderr"
+  co.elastic.hints/processors.decode_json_fields.add_error_key: true
+  co.elastic.hints/processors.decode_json_fields.overwrite_keys: true
+  co.elastic.hints/processors.decode_json_fields.target: "team"
+  co.elastic.hints.sidecar/stream: "stderr"
 ```
 
 
@@ -183,22 +183,23 @@ providers:
 
 Then ensure that an init container is specified by uncommenting the respective sections in the {{agent}} manifest. An init container is required to download the hints templates.
 
-```yaml
+```yaml subs=true
 initContainers:
 - name: k8s-templates-downloader
-  image: docker.elastic.co/elastic-agent/elastic-agent:master
+  image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
   command: ['bash']
   args:
     - -c
     - >-
       mkdir -p /usr/share/elastic-agent/state/inputs.d &&
-      curl -sL https://github.com/elastic/elastic-agent/archive/master.tar.gz | tar xz -C /usr/share/elastic-agent/state/inputs.d --strip=5 "elastic-agent-master/deploy/kubernetes/elastic-agent-standalone/templates.d"
+      curl -sL https://github.com/elastic/elastic-agent/archive/main.tar.gz | tar xz -C /usr/share/elastic-agent/state/inputs.d --strip-components=5 "elastic-agent-main/deploy/kubernetes/elastic-agent-standalone/templates.d"
   securityContext:
     runAsUser: 0
   volumeMounts:
-    - name: elastic-agent-state
+    - name: elastic-agent-state <1>
       mountPath: /usr/share/elastic-agent/state
 ```
+1. If you are integrating this init container into {{eck}} managed resources, verify the `volume` name defined at the Pod spec, which is typically `agent-data` rather than `elastic-agent-state`.
 
 ::::{note}
 The {{agent}} can load multiple configuration files from `{path.config}/inputs.d`  and finally produce a unified one (refer to [*Configure standalone {{agent}}s*](/reference/fleet/configure-standalone-elastic-agents.md)). Users have the ability to manually mount their own templates under `/usr/share/elastic-agent/state/inputs.d` **if they want to skip enabling initContainers section**.
@@ -245,7 +246,7 @@ The log collection for Kubernetes autodiscovered pods can be supported by using 
 1. Follow steps described above to enable Hints Autodiscover
 2. Make sure that relevant `container_logs.yml` template will be mounted under /usr/share/elastic-agent/state/inputs.d/ folder of Elastic Agent
 3. Deploy Elastic Agent Manifest
-4. Elastic Agent should be able to discover all containers inside kuernetes cluster and to collect available logs.
+4. Elastic Agent should be able to discover all containers inside a Kubernetes cluster and collect available logs.
 
 The previous default behavior can be disabled with `hints.default_container_logs: false`. So this will disable the automatic logs collection from all discovered pods. Users need specifically to annotate their pod with following annotations:
 
@@ -414,7 +415,7 @@ When things do not work as expected, you may need to troubleshoot your setup. He
 5. View the target input template. For the Redis example:
 
     ```sh
-    cat f /usr/share/elastic-agent/state/inputs.d/redis.yml
+    cat /usr/share/elastic-agent/state/inputs.d/redis.yml
     ```
 
 

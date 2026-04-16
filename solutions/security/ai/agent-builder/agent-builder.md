@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3+
   serverless:
-    security: preview 9.3+
+    security: preview
 products:
   - id: security
   - id: cloud-serverless
@@ -19,6 +19,10 @@ Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in ag
 :applies_to: {stack: preview 9.3+, serverless: preview}
 To use Agent Builder in Elastic Security, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). 
 :::
+
+## Recommended models
+
+While Agent Builder works with any [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), model performance varies. Refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) to select a model that performs well for your intended use cases.
 
 ## Threat Hunting agent
 
