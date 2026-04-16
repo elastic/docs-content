@@ -27,6 +27,20 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{applies-switch}
 
+:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+**Requirements**
+
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **SIEM migrations**
+  - At least `Read` for **Rules**
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
 
@@ -54,6 +68,8 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{admonition} Splunk dashboard migration limitations
 * Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
+::::{admonition} Splunk dashboard migration limitations
+Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
