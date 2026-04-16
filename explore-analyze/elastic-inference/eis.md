@@ -90,6 +90,8 @@ The service enforces rate limits on an ongoing basis. Exceeding a limit results 
 | Jina Embeddings v5 Nano {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Embeddings v5 Small {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Embeddings v3 {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v5 (Small) {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
+| Jina Embeddings v5 (Nano) {applies_to}`stack: ga 9.3+`   | 6,000           | 6,000,000               | 600,000                 | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Reranker v2 {applies_to}`stack: ga 9.3+`     | 600             | -                       | 6,000,000               | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 | Jina Reranker v3 {applies_to}`stack: ga 9.3+`     | 600             | -                       | 6,000,000               | Limits are applied to both requests per minute and tokens per minute, whichever limit is reached first.  |
 
