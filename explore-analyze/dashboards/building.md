@@ -35,8 +35,8 @@ To create or edit dashboards, you need:
 ## Create dashboards programmatically [building-programmatic]
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 
-In addition to building dashboards in the {{product.kibana}} UI, you can create and manage dashboards and visualizations using APIs or AI-powered tools. Refer to [Create dashboards and visualizations programmatically](create-programmatically.md).
+In addition to building dashboards in the {{product.kibana}} UI, you can create and manage dashboards and visualizations using APIs or AI-powered tools. Refer to [Create dashboards and visualizations programmatically](create-dashboards-programmatically.md).

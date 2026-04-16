@@ -9,7 +9,7 @@ products:
 type: overview
 ---
 
-# Create dashboards and visualizations programmatically [create-programmatically]
+# Create dashboards and visualizations programmatically [create-dashboards-programmatically]
 
 In addition to the {{product.kibana}} UI, you can create and manage dashboards and visualizations using REST APIs or AI-powered tools. This is useful when you need to automate dashboard deployments, manage them in version control, build tooling around the dashboard lifecycle, or produce dashboards from natural language instructions.
 
@@ -27,7 +27,7 @@ The right option depends on what you are building and how you prefer to work:
 ## Dashboards API [dashboards-api]
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 
@@ -47,7 +47,7 @@ Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kiba
 ## Visualizations API [lens-visualizations-api]
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 
@@ -66,7 +66,7 @@ Refer to the [Visualizations API reference](https://www.elastic.co/docs/api/doc/
 ## {{agent-builder}} chat [agent-builder-dashboard-tools]
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 
