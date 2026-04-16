@@ -31,7 +31,8 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-The `/logs` endpoint is deprecated in {{stack}} 9.4 and replaced by the `logs.otel` and `logs.ecs` endpoints.
+:applies_to: {"stack": "9.4+", "serverless": "ga"}
+The `/logs` endpoint is deprecated and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 
 For more on wired streams, refer to:
