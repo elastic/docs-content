@@ -10,13 +10,7 @@ products:
 
 # Explore metrics data with Discover in {{kib}}
 
-:::{important}
-This functionality is experimental and not supported. It may change or be removed at anytime.
-:::
-
-**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimension, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
-
-{applies_to}`stack: ga 9.4` You can now break metrics down by dimensions and select up multiple dimensions simultaneously in the **Breakdown by Dimensions** dropdown.
+**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimensions, review the ES|QL query that generates the charts, and add metrics to dashboards with a single click.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
@@ -73,8 +67,9 @@ Use the search function to find and visualize specific metric data:
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
 
 :::{note}
-:applies_to: stack: ga
-Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If no dimensions appear, check that your data stream's **Index mode** is set to **Time series** in **Index Management**.
+Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your [time series data stream (TSDS)](/manage-data/data-store/data-streams
+/time-series-data-stream-tsds.md) configuration.
+
 :::
 
 :::{image} /solutions/images/explore-metrics-host-ip.png
@@ -85,13 +80,13 @@ Only fields mapped as dimensions in a [time series data stream](https://www.elas
 :::::{applies-switch}
 
 ::::{applies-item} stack: ga 9.4+
-After breaking down metrics by one or more dimensions, you can filter the view to focus on specific values in two ways:
+You can filter the view to focus on specific values in two ways:
 
 - **Click a chart value**: Hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
 - **Edit the query directly**: Manually add a `| WHERE` clause to your ES|QL query. For example: `| WHERE <dimension> = <value>`
 ::::
 
-::::{applies-item} stack: ga 9.0-9.3
+::::{applies-item} stack: ga 9.2-9.3
 **Filter dimensions by a specific value**
 
 Select specific values to focus on within the dimension. You can select up to 10 values to filter your dimension by.
@@ -113,8 +108,7 @@ Select full screen ({icon}`full_screen`) to view the metric charts in full-scree
 
 For each metric chart, you can perform the following actions:
 
-* {applies_to}`stack: ga 9.0-9.3` **Explore in Discover** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
-{applies_to}`stack: ga 9.4` **Explore** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
+* **Explore** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
 * **Inspect** ({icon}`inspect`): Show details about the query request and response.
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
