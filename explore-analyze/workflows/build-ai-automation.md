@@ -21,7 +21,7 @@ The integration runs in both directions: a workflow can call an agent as a step,
 
 ## What you can build [workflows-ai-patterns]
 
-- **Call an agent from a workflow.** Use the [`ai.agent` step](/explore-analyze/workflows/steps/ai-steps.md) to invoke any agent built in {{agent-builder}}. The agent sees the workflow's data through template variables, performs its reasoning, and returns a response that subsequent steps can act on. See [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md) for the full `ai.agent` reference and examples.
+- **Call an agent from a workflow.** Use the [`ai.agent` step](/explore-analyze/workflows/steps/ai-steps.md) to invoke any agent built in {{agent-builder}}. The agent sees the workflow's data through template variables, performs its reasoning, and returns a response that subsequent steps can act on. Refer to [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md) for the full `ai.agent` reference and examples.
 - **Trigger a workflow from an agent.** Create a [workflow tool](/explore-analyze/ai-features/agent-builder/tools/workflow-tools.md) in {{agent-builder}} and assign it to an agent. The agent can then invoke the workflow from a conversation, extracting the needed inputs from the user's message and surfacing the workflow's output in chat.
 - **Send structured prompts to an LLM.** Use the [`ai.prompt` step](/explore-analyze/workflows/steps/ai-steps.md) with any [configured AI connector](/deploy-manage/manage-connectors.md) to run classification, extraction, or summarization without going through an agent.
 
@@ -40,6 +40,7 @@ The integration runs in both directions: a workflow can call an agent as a step,
 % Ben Ironside Goldstein, 2026-04-16: Planned child pages per Vision doc Section 4.2:
 % - "Calling an agent from a workflow" (workflow-author how-to, distinct from Agent Builder's existing page)
 % - "Designing a workflow for agent invocation" (how-to for workflow authors building tools)
-% - Pattern A tutorial: workflow calls Threat Hunting Agent for alert triage
+% - Pattern A tutorial: workflow calls an Agent Builder agent for alert triage
+%   (specific agent/skill to be confirmed once the 9.4 skills model in PR #5904 lands)
 % - Pattern B tutorial: agent triggers workflow from chat
-% - Pattern C tutorial (Observability Agent) deferred pending Obs team engagement
+% - Pattern C tutorial (observability-specific) deferred pending Obs team engagement

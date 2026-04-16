@@ -32,7 +32,7 @@ An anomaly response workflow has the shape:
 
 1. **Alert trigger** fires when an anomaly detection rule surfaces an anomaly.
 2. **Elasticsearch step** queries log data in a window around `event.alerts[0].kibana.alert.start`.
-3. **AI step** calls the Observability AI Agent to interpret the pattern.
+3. **AI step** calls an {{agent-builder}} agent to interpret the pattern.
 4. **Kibana step** creates a case with the anomaly details and the agent's interpretation.
 5. **Connector step** posts a summary to the on-call channel.
 
@@ -41,7 +41,7 @@ An anomaly response workflow has the shape:
 - [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md): Use anomaly detection or alerting rules to invoke a workflow.
 - [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md): Run a workflow on a fixed schedule.
 - [{{es}} action steps](/explore-analyze/workflows/steps/elasticsearch.md): Reference for search, index, and request actions.
-- [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): The Observability AI Agent and its tools.
+- [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): How Agent Builder integrates with observability workflows.
 
 % Ben Ironside Goldstein, 2026-04-16: Planned child pages per Vision doc Section 4.4 and observability section of Section 6:
 % - Respond to anomaly detection alerts (tutorial)
