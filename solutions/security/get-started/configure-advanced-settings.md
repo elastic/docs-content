@@ -229,7 +229,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) and [Set alert closing reason when closing a case](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
