@@ -95,6 +95,9 @@ A: No. {{serverless-short}} uses a different authentication model and does not s
 **Q: What compliance and privacy standards does {{serverless-full}} adhere to?**  
 A: Alongside the entire Elastic platform, {{serverless-full}} is independently audited and certified to meet industry-leading compliance and privacy standards. Refer to the [Elastic Trust Center](https://www.elastic.co/trust) for more information. Further details about specific standards are available on our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
 
+**Q: What domains do I need to allow for browser access to {{kib}} in {{serverless-short}} projects?**  
+A: In addition to the standard {{ecloud}} endpoints, ensure users can access `kibana.estccdn.com`, which is required to load {{kib}}. If this domain is blocked, {{kib}} might appear as a blank page. Refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access) for more information.
+
 ### Project lifecycle and support
 **Q: How does {{serverless-full}} ensure compatibility between software versions?**  
 A: Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
@@ -107,3 +110,8 @@ A: You are unable to convert projects into different project types, but you can 
 
 **Q: How do I raise a support case for {{serverless-full}}?**  
 A: Raise a case for your subscription as you do today. In the body of the case, mention you are working with a {{serverless-short}} project to ensure appropriate support.
+
+**Q: Why does the `GET /` root API return a version number that differs from the current Elasticsearch release?**
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
