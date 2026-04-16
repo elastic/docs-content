@@ -55,8 +55,6 @@ Follow these steps to configure a workflow tool:
   :alt: Screenshot of creating a new workflow tool.
   :::
 
-  % TODO: Verify whether create-new-tool-workflows.png needs updating for 9.4.
-
 2. Select **Workflow** as the tool type.
 3. Select a workflow from the drop down list.
 4. Fill in the [configuration fields](#configuration).
@@ -92,6 +90,14 @@ To assign a tool to an agent:
 
 :::::{applies-switch}
 
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the workflow tool to assign.
+
+::::
+
 ::::{applies-item} { stack: ga =9.3 }
 
 1. Navigate to **Agents**.
@@ -99,14 +105,6 @@ To assign a tool to an agent:
 3. Select **More > Edit Agent > Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
-
-::::
-
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-1. Select the agent from the agent selector in the left sidebar.
-2. Expand the **Customize** accordion and select **Tools**.
-3. Click **Add tool** and select the workflow tool to assign.
 
 ::::
 
