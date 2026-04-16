@@ -23,7 +23,6 @@ REST APIs and AI-powered tools give you several ways to create and manage dashbo
 | [{{product.kibana}} dashboards agent skill](#dashboards-agent-skill) | Building your own AI agent or LLM tool that generates dashboards | Saved dashboard (using the API) |
 
 ## Dashboards API [dashboards-api]
-
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
@@ -43,7 +42,6 @@ The API supports all panel types that have a defined schema, including visualiza
 Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) for the full request schema, panel types, and authentication requirements.
 
 ## Visualizations API [lens-visualizations-api]
-
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
@@ -62,7 +60,6 @@ To embed a saved visualization in a dashboard, add a `vis` panel to your Dashboa
 Refer to the [Visualizations API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-lens).
 
 ## {{agent-builder}} [agent-builder-dashboard-tools]
-
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
