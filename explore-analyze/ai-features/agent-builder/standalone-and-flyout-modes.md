@@ -48,7 +48,7 @@ Access Agent Builder by selecting **Agents** in the main navigation. In {{produc
 ## Sidebar mode
 
 ```{applies_to}
-stack: preview =9.3
+stack: preview =9.3, ga 9.4+
 serverless: preview
 ```
 

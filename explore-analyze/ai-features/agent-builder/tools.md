@@ -100,12 +100,6 @@ Tools can also be accessed through the Model Context Protocol (MCP) server, whic
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.2-9.3 }
-
-The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
-
-::::
-
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
 On the Tools page, open the **Manage MCP** dropdown to access:
@@ -119,6 +113,12 @@ On the Tools page, open the **Manage MCP** dropdown to access:
 :alt: Manage MCP dropdown showing Copy MCP Server URL, Bulk import MCP tools, and Documentation options
 :width: 250px
 :::
+
+::::
+
+::::{applies-item} { stack: ga 9.2-9.3 }
+
+The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
 
 ::::
 

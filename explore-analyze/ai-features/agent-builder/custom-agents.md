@@ -30,14 +30,32 @@ Custom agents are space-aware: they are only available in the [{{kib}} space](/d
 
 Follow these steps to create a new custom agent:
 
-:::::{stepper}
-::::{step} Navigate to the Agents page
+::::::{stepper}
+:::::{step} Navigate to the Agents page
 
-Navigate to the **Agents** page to access the agent management interface.
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
+
+:::{tip}
+You can also reach this page from the agent selector: open the selector in the left sidebar and select **Manage agents**.
+:::
+
+:::
+
+:::{applies-item} { stack: ga =9.3 }
+
+Navigate to **Agents** in the main navigation.
+
+:::
 
 ::::
 
-::::{step} Create a new agent
+:::::
+
+:::::{step} Create a new agent
 
 Select the **New agent** button to begin creating a new agent.
 
@@ -48,9 +66,9 @@ Select the **New agent** button to begin creating a new agent.
 :::
 
 
-::::
+:::::
 
-::::{step} Configure essential settings
+:::::{step} Configure essential settings
 
 Configure the essential agent settings in the **Settings** tab:
 
@@ -63,32 +81,32 @@ Configure the essential agent settings in the **Settings** tab:
 3. Set the **Display name** for users.
 4. Add a **Display description** to explain the agent's purpose.
 
-::::
+:::::
 
-::::{step} Assign tools
+:::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
 
-::::
+:::::
 
-::::{step} Assign skills (optional) {applies_to}`stack: ga 9.4+`
+:::::{step} Assign skills (optional) {applies_to}`stack: ga 9.4+`
 
 Switch to the **Skills** tab to assign [skills](agent-builder-agents.md#skills) to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
 
-::::
+:::::
 
-::::{step} Customize appearance (optional)
+:::::{step} Customize appearance (optional)
 
 Optionally customize the agent's appearance and organization:
 
 - Add **Labels** to organize your agents.
 - Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent.
 
-::::
+:::::
 
-::::{step} Save your changes
+:::::{step} Save your changes
 
 Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
@@ -98,8 +116,8 @@ Select **Save** to create your agent, or **Save and chat** to create the agent a
 :width: 270px
 :::
 
-::::
 :::::
+::::::
 
 ## Manage custom agents
 
@@ -137,7 +155,10 @@ Control who can view and edit your agent by configuring its visibility. To chang
 **Private**
 :   Only the owner or an administrator can view and edit.
 
-% TODO: Add a screenshot of the visibility settings in the Organization section.
+:::{image} images/agent-visibility-levels.png
+:alt: Agent visibility dropdown showing Public, Shared, and Private.
+:width: 700px
+:::
 
 ## Enable Elastic Capabilities [enable-elastic-capabilities]
 
@@ -149,7 +170,10 @@ The **Enable Elastic Capabilities** toggle is found in the agent's **Settings** 
 
 % TODO: Confirm which specific tools and skills this toggle enables and whether a separate reference page lists them. Add a link if available.
 
-% TODO: Add a screenshot of the Enable Elastic Capabilities toggle.
+:::{image} images/elastic-capabilities.png
+:alt: Enable Elastic Capabilities toggle ON
+:width: 500px
+:::
 
 ## Best practices for custom agents
 
@@ -195,3 +219,5 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+
+% TODO: Possible restructure the page to include he new agent setting in the creation process.
