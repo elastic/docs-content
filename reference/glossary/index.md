@@ -270,7 +270,7 @@ $$$glossary-elasticsearch$$$ {{es}}
     The term "{{es}}" has several additional meanings depending on the context in which it is used:
   - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) on {{serverless-full}}, tailored for general-purpose search use cases.
   - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own navigation or **solution view**.
-  - **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
+  - **{{es}} platform** (also known as the Elastic platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}} or Search AI Platform, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
 
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
