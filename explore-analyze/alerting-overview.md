@@ -36,7 +36,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-Kibana alerting v2 is a redesigned alerting framework built on ES|QL. You write the query that defines what to detect and what data each alert carries. V2 introduces notification policies for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and the ability to write rules on alerts for correlation and escalation.
+Kibana alerting v2 is a redesigned alerting framework built on ES|QL. You write the query that defines what to detect and what data each alert carries. V2 introduces action policies for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and the ability to write rules on alerts for correlation and escalation.
 
 Kibana alerting v2 runs alongside Kibana alerting v1. There is no forced migration.
 

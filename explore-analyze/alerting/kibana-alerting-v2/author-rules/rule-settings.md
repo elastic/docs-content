@@ -4,7 +4,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Overview of Kibana alerting v2 rule settings: schedule, thresholds, no-data handling, grouping, notification policies, and workflows."
+description: "Overview of Kibana alerting v2 rule settings: schedule, thresholds, no-data handling, grouping, action policies, and workflows."
 ---
 
 # Kibana alerting v2 rule settings [rule-settings-v2]
@@ -27,9 +27,9 @@ The [schedule and lookback](rule-settings/schedule-and-lookback.md) settings con
 
 [Grouping](rule-settings/grouping.md) splits alert event generation by one or more fields. Each unique combination produces its own alert series with independent lifecycle tracking.
 
-## Notification policies
+## Action policies
 
-[Notification policies](rule-settings/notification-policies.md) are standalone entities that control how alerts reach people and systems.
+[Action policies](rule-settings/action-policies.md) are standalone entities that control how alerts reach people and systems.
 
 ## Workflows
 

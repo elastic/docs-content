@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Select the right Kibana alerting v2 feature to reduce noise: thresholds, no-data handling, notification policies, throttling, snooze, rules on alerts, and more."
+description: "Select the right Kibana alerting v2 feature to reduce noise: thresholds, no-data handling, action policies, throttling, snooze, rules on alerts, and more."
 ---
 
 # Reduce {{kib}} alerting v2 noise and false positives [reduce-noise-v2]
 
-{{kib}} alerting v2 offers many ways to reduce noise, each applied at a different stage, from the {{esql}} query and lifecycle thresholds through notification policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you match a situation to a mechanism and explains how mechanisms combine in order so you can use them deliberately.
+{{kib}} alerting v2 offers many ways to reduce noise, each applied at a different stage, from the {{esql}} query and lifecycle thresholds through action policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you match a situation to a mechanism and explains how mechanisms combine in order so you can use them deliberately.
 
 If multiple rows in the table apply, refer to [Using them together](#using-them-together).
 
@@ -23,7 +23,7 @@ If multiple rows in the table apply, refer to [Using them together](#using-them-
 | The query returns no rows and no_data or recovery behavior is misleading | [No-data handling](reduce-noise/no-data-handling.md) | Configures how empty results are interpreted so gaps do not look like false recoveries or false alerts |
 | Notifications repeat for the same group on every evaluation | [Throttling](reduce-noise/throttle.md) | Enforces a minimum interval between notifications per notification group |
 | Recipients get too many separate messages for related episodes | [Notification grouping](reduce-noise/grouping.md) | Batches related alerts into fewer notifications |
-| Notifications should only go out for certain episodes by severity, labels, or payload fields | [Matchers](reduce-noise/matcher.md) | Applies notification policy rule_labels scoping and KQL episode matching so only matching episodes route to workflows |
+| Notifications should only go out for certain episodes by severity, labels, or payload fields | [Matchers](reduce-noise/matcher.md) | Applies action policy rule_labels scoping and KQL episode matching so only matching episodes route to workflows |
 | Planned maintenance: evaluations should continue but on-call should not be paged | [Maintenance windows](reduce-noise/maintenance-windows.md) | Pauses notifications for a scheduled window |
 | A temporary quiet period is needed for a series or episode without changing the rule | [Snooze or silence](reduce-noise/snooze-or-silence.md) | Snoozes or silences notifications. Acknowledge can also quiet an episode while work proceeds |
 | Many low-level alerts should roll up into one higher-level signal | [Rules on alerts](reduce-noise/rules-on-alerts.md) | Runs follow-on rules on `.rule-events` or related data to correlate and notify once |
@@ -31,7 +31,7 @@ If multiple rows in the table apply, refer to [Using them together](#using-them-
 
 ## How each mechanism works
 
-Mechanisms are listed in rough order: from what happens when rules run and how episodes change, through notification policy processing, to operator controls.
+Mechanisms are listed in rough order: from what happens when rules run and how episodes change, through action policy processing, to operator controls.
 
 ### Author and tune the rule
 
@@ -59,7 +59,7 @@ Configure how the rule treats empty results. Refer to [No-data handling](reduce-
 
 ### Notification matchers and grouping
 
-Acts on: which episodes a notification policy considers and how they are batched
+Acts on: which episodes an action policy considers and how they are batched
 
 Problem: Only some episodes should page the team, or messages should batch by service or host.
 
@@ -116,7 +116,7 @@ Problem: One alert episode should drop out of triage while other series keep run
 
 ## Using them together [using-them-together]
 
-These options stack. A common pattern is: tune the query for precision, add activation thresholds to ignore spikes, use matchers and throttling so notification policies only fire for the right episodes at a sustainable rate, and use {{maint-windows-cap}} or snooze during known change windows.
+These options stack. A common pattern is: tune the query for precision, add activation thresholds to ignore spikes, use matchers and throttling so action policies only fire for the right episodes at a sustainable rate, and use {{maint-windows-cap}} or snooze during known change windows.
 
 Example: Noisy CPU rule
 
@@ -124,10 +124,10 @@ Example: Noisy CPU rule
 |---|---|---|
 | The {{esql}} query flags any host over 70% | Tighten the query or add a stricter `WHERE` | Author and tune the rule |
 | Legitimate bursts open alerts for 1-minute spikes | Require 3 consecutive breaches before active | Activation thresholds |
-| The same host pages every run for an hour | Add throttle and grouping on the notification policy | Throttle, grouping |
+| The same host pages every run for an hour | Add throttle and grouping on the action policy | Throttle, grouping |
 | Only production hosts should page on-call | Add rule_labels and KQL on the policy | Matchers |
 | Database change window this evening | Open a {{maint-windows-cap}} or snooze the series | {{maint-windows-cap}}, snooze |
 
 ::::{note}
-Order of application matters. Thresholds and no-data behavior affect lifecycle state before notification policies run. Matchers and throttling apply when notification policies are evaluated for each episode. Snooze and {{maint-windows-cap}} affect whether notifications send, not whether `.rule-events` documents are written. Check Discover if raw history is needed.
+Order of application matters. Thresholds and no-data behavior affect lifecycle state before action policies run. Matchers and throttling apply when action policies are evaluated for each episode. Snooze and {{maint-windows-cap}} affect whether notifications send, not whether `.rule-events` documents are written. Check Discover if raw history is needed.
 ::::

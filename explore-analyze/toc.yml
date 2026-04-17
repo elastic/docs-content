@@ -405,10 +405,10 @@ toc:
                   - file: alerting/kibana-alerting-v2/author-rules/rule-settings/activation-and-recovery-thresholds.md
                   - file: alerting/kibana-alerting-v2/author-rules/rule-settings/no-data-handling.md
                   - file: alerting/kibana-alerting-v2/author-rules/rule-settings/grouping.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies.md
+                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies.md
                     children:
-                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/create-manage-notification-policies.md
-                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/how-notification-policies-are-evaluated.md
+                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/create-manage-action-policies.md
+                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/how-action-policies-are-evaluated.md
                   - file: alerting/kibana-alerting-v2/author-rules/rule-settings/workflows.md
               - file: alerting/kibana-alerting-v2/author-rules/set-rule-data-sources.md
               - file: alerting/kibana-alerting-v2/author-rules/rules-on-alerts.md
