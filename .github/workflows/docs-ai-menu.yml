@@ -1,0 +1,168 @@
+name: Docs AI menu
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [edited]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to post or refresh the AI menu on.
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  post-menu:
+    name: Post or refresh AI menu
+    if: github.event_name == 'issues' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Create or update AI menu comment
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const markerStart = '<!-- docs-ai-menu:start -->';
+            const markerEnd = '<!-- docs-ai-menu:end -->';
+            const workflowDispatchIssueNumber = context.payload.inputs?.issue_number;
+            const issueNumber = context.eventName === 'workflow_dispatch'
+              ? Number(workflowDispatchIssueNumber)
+              : context.payload.issue.number;
+
+            if (!issueNumber) {
+              core.setFailed('Issue number is required for workflow_dispatch runs.');
+              return;
+            }
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+
+            const existingComment = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' &&
+              comment.body?.includes(markerStart) &&
+              comment.body?.includes(markerEnd)
+            );
+
+            const existingState = menu.parseMenuState(existingComment?.body || '');
+            const body = menu.buildMenuBody(existingState);
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }
+
+  evaluate-trigger:
+    name: Evaluate AI menu trigger
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request == null &&
+      github.actor != 'github-actions[bot]' &&
+      github.event.comment.user.login == 'github-actions[bot]' &&
+      contains(github.event.comment.body, '<!-- docs-ai-menu:start -->') &&
+      contains(github.event.comment.body, '<!-- docs-ai-menu:end -->')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      triage_triggered: ${{ steps.evaluate.outputs.triage_triggered }}
+      issue_scope_triggered: ${{ steps.evaluate.outputs.issue_scope_triggered }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Parse AI menu transition
+        id: evaluate
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const body = context.payload.comment.body || '';
+            const previousBody = context.payload.changes?.body?.from || '';
+
+            const previousState = menu.parseMenuState(previousBody);
+            const currentState = menu.parseMenuState(body);
+            const triageTriggered = !previousState.triage.selected && currentState.triage.selected;
+            const issueScopeTriggered = !previousState.issueScope.selected && currentState.issueScope.selected;
+
+            core.setOutput('triage_triggered', String(triageTriggered));
+            core.setOutput('issue_scope_triggered', String(issueScopeTriggered));
+
+  run-docs-triage:
+    name: Run docs-triage
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.triage_triggered == 'true'
+    permissions:
+      actions: read
+      contents: read
+      discussions: write
+      issues: write
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
+    with:
+      additional-instructions: |
+        ## Team Ownership Mapping
+
+        This mapping is derived from the repository's CODEOWNERS file. Use it to determine which team owns each issue. Match based on the issue title, body, any mentioned URLs, and labels.
+
+        | Team Label | Owns | Keywords / URL paths |
+        |---|---|---|
+        | `Team:Admin` | Elasticsearch admin, cluster mgmt, cloud, deployment docs | Cluster management, index management, auth, roles, API keys, network security, cluster security, snapshots, ILM, data lifecycle, CCR, CCS, licensing, subscriptions, upgrade, monitoring, Elastic Cloud, ECE, ECK, serverless. Paths: `deploy-manage/`, `cloud-account/`, `manage-data/` (except `manage-data/ingest/`), `serverless/`, `troubleshoot/deployments/`, `troubleshoot/elasticsearch/` |
+        | `Team:Experience` | Kibana, observability solution, security solution | Kibana, dashboards, visualizations, Discover, observability, security, APM UI, maps, canvas, Lens, alerting, rules, cases, SIEM, endpoint security, detection rules, security analytics. Paths: `explore-analyze/` (default), `solutions/observability/`, `solutions/security/`, `reference/kibana/`, `reference/observability/`, `reference/security/` |
+        | `Team:Developer` | Elasticsearch developer, search solution docs | Elasticsearch APIs, ES|QL, query DSL, search features, relevance, vector search, semantic search, inference APIs, connectors, developer tools, clients, search applications, App Search, Workplace Search. Paths: `solutions/search/`, `reference/elasticsearch/clients/`, `reference/search/`, `reference/machine-learning/`, `explore-analyze/ai-features/`, `explore-analyze/cross-cluster-search/`, `explore-analyze/cross-project-search/`, `explore-analyze/transforms/` |
+        | `Team:Ingest` | Data ingestion, Fleet, APM agents docs | Fleet, Elastic Agent, Beats, Logstash, pipelines, integrations, data streams, APM agents, APM server, OpenTelemetry. Paths: `manage-data/ingest/`, `reference/apm-agents/`, `reference/fleet/`, `reference/ingestion-tools/`, `solutions/observability/apm/apm-agents/`, `solutions/observability/apm/apm-server/`, `solutions/observability/apm/ingest/`, `solutions/observability/apm/opentelemetry/` |
+        | `Team:DocsEng` | Docs infrastructure | Docs build system, CI/CD, website rendering, broken navigation, docs-builder bugs, elastic.co website issues not related to content. Paths: `.github/workflows/`, `.github/scripts/` |
+        | `Team:Projects` | Internal projects, docs initiatives | Internal documentation projects, content strategy, information architecture, get-started guides. Paths: `get-started/` |
+
+        **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
+        **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
+        **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+  run-docs-issue-scope:
+    name: Run docs-issue-scope
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
+    permissions:
+      actions: read
+      contents: read
+      discussions: write
+      issues: write
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}

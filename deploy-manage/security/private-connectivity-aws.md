@@ -32,12 +32,16 @@ To learn how private connection policies impact your deployment or project, refe
 :::
 
 ## Requirements
+```{applies_to}
+serverless:
+```
 
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus. 
+The following requirements apply to the project where you want to apply a private connection policy:
 
-:::{tip}
-You can opt out by disconnecting all policies from the project.
+:::{include} _snippets/network-sec-tier-reqs.md
 :::
+
+There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
 ## Considerations
 
@@ -129,7 +133,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#associate-private-connection-policy). |
-|  | 5. **Optional**: [Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
 |  | 6. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
@@ -349,10 +353,6 @@ Create a new private connection policy.
     :::
 
 8.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
-    
-    :::{note}
-    Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
-    :::
 9. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
 10.  Click **Create**.
 11. (Optional) If you created a private connection policy for {{ech}} deployments, you can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
@@ -362,8 +362,6 @@ The next step is to [associate the policy](#associate-private-connection-policy)
 ### Optional: Associate a private connection policy with a deployment or project[associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment or project from the policy's settings, or from your deployment's or project's settings. 
-
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
 
 #### From a deployment or project
 
@@ -389,7 +387,7 @@ Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/e
 4. Under **Apply to resources**, associate the policy with one or more deployments or projects.
 5. Click **Update** to save your changes.
 
-## Optional: Add an IP filter to allow traffic to {{kib}}
+## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::

@@ -1,18 +1,21 @@
-name: Issue Triage
+name: Docs Triage
 on:
   issue_comment:
     types: [created]
-  issues:
-    types: [opened, labeled]
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
+  discussions: write
   issues: write
   pull-requests: write
 
 jobs:
   run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.event.comment.body, '/docs-triage')
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
     with:
       additional-instructions: |
