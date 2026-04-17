@@ -40,7 +40,7 @@ Follow these steps to create a new custom agent:
 Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
 
 :::{tip}
-You can also reach this page from the agent selector: open the selector in the left sidebar and select **Manage agents**.
+You can also reach this page from the agent selector: open the selector in the left sidebar and select **New Agent**.
 :::
 
 :::
@@ -83,6 +83,28 @@ Configure the essential agent settings in the **Settings** tab:
 
 :::::
 
+:::::{step} Enable Elastic capabilities
+```{applies_to}
+stack: ga 9.4+
+```
+
+Use the **Enable Elastic Capabilities** toggle to activate built-in Elastic tools and skills for your agent. This toggle is disabled by default.
+
+For more information, refer to [Enable Elastic Capabilities](#enable-elastic-capabilities).
+
+:::::
+
+:::::{step} Set visibility
+```{applies_to}
+stack: ga 9.4+
+```
+
+Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
+
+For more information, refer to [Visibility settings](#visibility-settings).
+
+:::::
+
 :::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
@@ -91,9 +113,21 @@ Select the combination of built-in and custom tools available to the agent, base
 
 :::::
 
-:::::{step} Assign skills (optional) {applies_to}`stack: ga 9.4+`
+:::::{step} Assign skills (optional)
+```{applies_to}
+stack: ga 9.4+
+```
 
 Switch to the **Skills** tab to assign [skills](agent-builder-agents.md#skills) to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+
+:::::
+
+:::::{step} Assign plugins (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Switch to the **Plugins** tab to assign plugins to your agent. Plugins extend agents with additional skills and capabilities. Before you can assign a plugin, it must first be installed from the global **Plugins** page in **Manage components**.
 
 :::::
 
@@ -219,5 +253,3 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
-
-% TODO: Possible restructure the page to include he new agent setting in the creation process.
