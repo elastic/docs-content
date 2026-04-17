@@ -62,3 +62,7 @@ The **GenAI Settings** page has the following settings:
 
 ::::
 
+## Choose models for AI features
+
+**Default AI Connector** sets which LLM powers AI-powered features by default. For connectors and tested models, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+
