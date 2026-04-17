@@ -1,20 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+navigation_title: Create from the UI
 description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
-# Create a dashboard [create-dashboard]
+# Create a dashboard from the UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
+Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::{tip} - New ways to create dashboards
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
+New ways to create dashboards are available. You can also [create dashboards programmatically](create-dashboards-programmatically.md) using REST APIs, or [create dashboards using AI](create-dashboards-using-ai.md) through natural language.
 :::
 
 ## Requirements [create-dashboard-requirements]
