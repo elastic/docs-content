@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Create, configure, and manage Kibana alerting v2 notification policies, including matching conditions, grouping, throttling, destinations, and snooze."
+description: "Create, configure, and manage {{alerting-v2}} notification policies, including matching conditions, grouping, throttling, destinations, and snooze."
 ---
 
-# Create and manage Kibana alerting v2 notification policies [create-manage-notification-policies-v2]
+# Create and manage {{alerting-v2}} notification policies [create-manage-notification-policies-v2]
 
 Create notification policies to control which alerts trigger notifications, how alerts are grouped, how frequently notifications are sent, and where they are routed. Policies are **global**: you create and edit them from the **Notification Policies** area, not from the rule form. Rules do not “link” to policies. Scoping is defined on the policy with **`rule_labels`** and matchers. Refer to [Notification policies](../notification-policies.md).
 

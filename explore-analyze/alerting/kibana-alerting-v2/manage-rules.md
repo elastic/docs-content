@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Navigate Kibana alerting v2 rule management: rules list and details, bulk actions, snooze, and disabling rules."
+description: "Navigate {{alerting-v2}} rule management: rules list and details, bulk actions, snooze, and disabling rules."
 ---
 
-# Manage {{kib}} alerting v2 rules [manage-rules-v2]
+# Manage {{alerting-v2}} rules [manage-rules-v2]
 
 Use this section after rules exist in your space: find rules in the **Rules V2** list, open a rule to inspect configuration and execution history, run bulk operations, and change whether rules run or notify. **Managing rules** is separate from **authoring** definitions. Refer to [Author rules](author-rules.md) to create or edit the {{esql}} query, schedule, and mode.
 

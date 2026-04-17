@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Overview of Kibana alerting v2 rule settings: schedule, thresholds, no-data handling, grouping, notification policies, and workflows."
+description: "Overview of {{alerting-v2}} rule settings: schedule, thresholds, no-data handling, grouping, notification policies, and workflows."
 ---
 
-# Kibana alerting v2 rule settings [rule-settings-v2]
+# {{alerting-v2}} rule settings [rule-settings-v2]
 
-Rule settings control how a Kibana alerting v2 rule evaluates data, manages alert lifecycle, and routes notifications. This page provides an overview of all configurable settings. Refer to the linked pages for detailed guidance on each.
+Rule settings control how a {{alerting-v2}} rule evaluates data, manages alert lifecycle, and routes notifications. This page provides an overview of all configurable settings. Refer to the linked pages for detailed guidance on each.
 
 ## Schedule and lookback
 

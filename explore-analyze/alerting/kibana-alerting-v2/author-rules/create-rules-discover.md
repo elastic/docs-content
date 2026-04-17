@@ -4,14 +4,14 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Convert an ES|QL query from Discover into a Kibana alerting v2 rule with the query pre-populated."
+description: "Convert an ES|QL query from Discover into a {{alerting-v2}} rule with the query pre-populated."
 ---
 
-# Create Kibana alerting v2 rules in Discover [create-rules-discover-v2]
+# Create {{alerting-v2}} rules in Discover [create-rules-discover-v2]
 
-Create Kibana alerting v2 rules directly from Discover. When you build an ES|QL query in Discover that surfaces interesting patterns, you can convert it into a rule without rewriting the query.
+Create {{alerting-v2}} rules directly from Discover. When you build an ES|QL query in Discover that surfaces interesting patterns, you can convert it into a rule without rewriting the query.
 
-While you prototype in Discover, each row in the result table is one document in {{es}}. After you save a rule, each evaluation run writes documents to `.rule-events`. The mode you select for the rule (Detect or Alert) determines whether those events are stored as `signal` or `alert` documents and whether `episode.*` fields exist. For how that maps to rows in Discover and how the stream is structured, refer to [Explore {{kib}} alerting v2 alerts and signals in Discover](../manage-alerts/explore-alerts-discover.md) and [Rule event and action field reference](../alert-event-field-reference.md).
+While you prototype in Discover, each row in the result table is one document in {{es}}. After you save a rule, each evaluation run writes documents to `.rule-events`. The mode you select for the rule (Detect or Alert) determines whether those events are stored as `signal` or `alert` documents and whether `episode.*` fields exist. For how that maps to rows in Discover and how the stream is structured, refer to [Explore {{alerting-v2}} alerts and signals in Discover](../manage-alerts/explore-alerts-discover.md) and [Rule event and action field reference](../alert-event-field-reference.md).
 
 ## Create a rule from Discover
 

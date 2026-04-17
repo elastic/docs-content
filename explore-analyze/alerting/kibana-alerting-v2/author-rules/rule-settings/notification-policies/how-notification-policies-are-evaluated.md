@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "How Kibana alerting v2 notification policies match alert episodes, apply throttling and suppression, and produce dispatch outcomes."
+description: "How {{alerting-v2}} notification policies match alert episodes, apply throttling and suppression, and produce dispatch outcomes."
 ---
 
-# How Kibana alerting v2 notification policies are evaluated [how-notification-policies-evaluated-v2]
+# How {{alerting-v2}} notification policies are evaluated [how-notification-policies-evaluated-v2]
 
 Notification policies are separate from rules. After a rule runs and produces or updates alert episodes, the system decides which policies apply, whether notifications should go out, and which workflows receive them. You configure policies once. They can apply to many rules.
 

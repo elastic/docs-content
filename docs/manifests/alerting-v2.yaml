@@ -286,7 +286,7 @@ entries:
       event log, maintenance windows, notifications allowlist, troubleshooting.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — overview
+  # {{alerting-v2}} — overview
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-overview
@@ -305,7 +305,7 @@ entries:
       architectural changes or when new top-level v2 capabilities ship.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — before you begin
+  # {{alerting-v2}} — before you begin
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-before-you-begin
@@ -353,7 +353,7 @@ entries:
         (`Management > Alerts and Insights > Rules V2`) changes.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — author rules
+  # {{alerting-v2}} — author rules
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-author-rules
@@ -465,7 +465,7 @@ entries:
         `rule.labels`, `data.*`. Update Step 6 to reflect the available matcher fields.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — manage alerts
+  # {{alerting-v2}} — manage alerts
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-manage-alerts
@@ -588,7 +588,7 @@ entries:
       • PR #257347 — episode duration surfaces in the episode detail panel from the updated view query.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — manage rules
+  # {{alerting-v2}} — manage rules
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-manage-rules
@@ -614,7 +614,7 @@ entries:
         Add a bulk operations section to view-manage-rules.md.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — reduce noise
+  # {{alerting-v2}} — reduce noise
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-reduce-noise
@@ -656,7 +656,7 @@ entries:
       describes what happens to deactivated episodes in the dispatcher pipeline.
 
   # ---------------------------------------------------------------------------
-  # Kibana alerting v2 — alert event field reference
+  # {{alerting-v2}} — alert event field reference
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-event-field-ref

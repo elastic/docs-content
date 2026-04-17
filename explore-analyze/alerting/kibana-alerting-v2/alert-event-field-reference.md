@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Fields in the {{kib}} alerting v2 `.rule-events` data stream for signals and alerts, episode fields on lifecycle alerts, and action records in `.alert-actions`."
+description: "Fields in the {{alerting-v2}} `.rule-events` data stream for signals and alerts, episode fields on lifecycle alerts, and action records in `.alert-actions`."
 ---
 
-# {{kib}} alerting v2 rule event and action field reference [alert-event-field-reference-v2]
+# {{alerting-v2}} rule event and action field reference [alert-event-field-reference-v2]
 
-This page is the field reference for {{kib}} alerting v2 data written to {{es}}. It covers names, types, required fields, and valid values. Use it when you author {{esql}} in Discover, build dashboards or reports, or integrate automation against alert and signal documents.
+This page is the field reference for {{alerting-v2}} data written to {{es}}. It covers names, types, required fields, and valid values. Use it when you author {{esql}} in Discover, build dashboards or reports, or integrate automation against alert and signal documents.
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle. Do not change mappings or index settings for these streams yourself.
@@ -75,5 +75,5 @@ The table lists fields available in the alert action documents.
 
 ## Related documentation
 
-- [Explore {{kib}} alerting v2 alerts and signals in Discover](manage-alerts/explore-alerts-discover.md): How rule event documents map to rows in Discover, how Detect and Alert mode relate to `type`, and how multiple rules share the `.rule-events` stream.
+- [Explore {{alerting-v2}} alerts and signals in Discover](manage-alerts/explore-alerts-discover.md): How rule event documents map to rows in Discover, how Detect and Alert mode relate to `type`, and how multiple rules share the `.rule-events` stream.
 - [Where query output appears in each document](manage-alerts/explore-alerts-discover.md#where-query-output-appears-in-each-document): Top-level fields versus the `data` field when you query in Discover.

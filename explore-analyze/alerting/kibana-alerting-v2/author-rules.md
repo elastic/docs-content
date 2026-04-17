@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Create Kibana alerting v2 rules using ES|QL queries from the UI, Discover, or YAML in detect or alert mode."
+description: "Create {{alerting-v2}} rules using ES|QL queries from the UI, Discover, or YAML in detect or alert mode."
 ---
 
-# Author Kibana alerting v2 rules [author-rules-v2]
+# Author {{alerting-v2}} rules [author-rules-v2]
 
-A Kibana alerting v2 rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
+A {{alerting-v2}} rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
 
 ## Rule modes
 

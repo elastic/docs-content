@@ -4,16 +4,16 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Notification policies control how and when Kibana alerting v2 alerts reach people and systems, including matching, grouping, throttling, and routing."
+description: "Notification policies control how and when {{alerting-v2}} alerts reach people and systems, including matching, grouping, throttling, and routing."
 ---
 
-# Kibana alerting v2 notification policies [notification-policies-v2]
+# {{alerting-v2}} notification policies [notification-policies-v2]
 
-A notification policy defines how and when alerts reach people and systems. In Kibana alerting v2, notification policies are **global** saved objects: they are not attached to individual rules. Which rules a policy applies to is determined by **`rule_labels`** on the policy and by the episode matcher, not by references from the rule.
+A notification policy defines how and when alerts reach people and systems. In {{alerting-v2}}, notification policies are **global** saved objects: they are not attached to individual rules. Which rules a policy applies to is determined by **`rule_labels`** on the policy and by the episode matcher, not by references from the rule.
 
 ## Compare Kibana alerting v1 and v2 notification policies
 
-| | Kibana alerting v1 | Kibana alerting v2 |
+| | Kibana alerting v1 | {{alerting-v2}} |
 |---|---|---|
 | **Scope** | Per-rule connectors and actions on the rule | **Global** notification policies. Rules do not reference specific policies |
 | **Matching** | Rule execution drives connector runs | **`rule_labels`** scoping on the policy, then KQL episode matching |

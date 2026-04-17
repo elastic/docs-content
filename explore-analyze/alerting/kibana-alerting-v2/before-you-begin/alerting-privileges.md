@@ -4,18 +4,18 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Required privileges for creating and managing Kibana alerting v2 rules, notification policies, and alert actions."
+description: "Required privileges for creating and managing {{alerting-v2}} rules, notification policies, and alert actions."
 ---
 
-# Kibana alerting v2 privileges [alerting-privileges-v2]
+# {{alerting-v2}} privileges [alerting-privileges-v2]
 
-Kibana alerting v2 uses {{es}} index-level security to control access to alert data, combined with {{kib}} feature privileges for rule and policy management.
+{{alerting-v2}} uses {{es}} index-level security to control access to alert data, combined with {{kib}} feature privileges for rule and policy management.
 
 ## Required privileges
 
 ### Rule management
 
-To create, edit, and manage Kibana alerting v2 rules, you need:
+To create, edit, and manage {{alerting-v2}} rules, you need:
 
 - **{{kib}} feature privilege**: `Rules V2` with the appropriate access level (read, create, edit, or all).
 - **{{es}} index privileges**: Read access to the source indices your rules query (for example, `logs-*`, `metrics-*`).
@@ -38,7 +38,7 @@ To view and take actions on alerts (acknowledge, snooze, tag, assign), you need:
 
 ### Discover and dashboard access
 
-Because Kibana alerting v2 alert events are stored in standard {{es}} indices, any user with read access to `.rule-events` can query them in Discover and use them in dashboards. No additional {{kib}} privileges are required beyond the standard Discover feature access.
+Because {{alerting-v2}} alert events are stored in standard {{es}} indices, any user with read access to `.rule-events` can query them in Discover and use them in dashboards. No additional {{kib}} privileges are required beyond the standard Discover feature access.
 
 ## Space boundaries
 

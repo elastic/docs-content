@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Create Kibana alerting v2 rules using the interactive rule creation form with query editor, preview, and YAML toggle."
+description: "Create {{alerting-v2}} rules using the interactive rule creation form with query editor, preview, and YAML toggle."
 ---
 
-# Create Kibana alerting v2 rules in the UI [create-rules-ui-v2]
+# Create {{alerting-v2}} rules in the UI [create-rules-ui-v2]
 
-Create Kibana alerting v2 rules using the interactive rule creation form. The form provides a guided experience for configuring all rule settings, with the option to toggle between interactive and YAML modes.
+Create {{alerting-v2}} rules using the interactive rule creation form. The form provides a guided experience for configuring all rule settings, with the option to toggle between interactive and YAML modes.
 
 ## Open the rule creation form
 

@@ -6,16 +6,16 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "How Kibana alerting v2 fits together, detection and notification model, rule modes, and the main terms you’ll see in the product."
+description: "How {{alerting-v2}} fits together, detection and notification model, rule modes, and the main terms you’ll see in the product."
 ---
 
-# Kibana alerting v2 concepts [kibana-alerting-v2-concepts]
+# {{alerting-v2}} concepts [kibana-alerting-v2-concepts]
 
-Use this page to learn how an Kibana alerting v2 rule runs end to end, why detection and notification are separate layers, and what common terms are used to describe Kibana alerting v2 features. Read from top to bottom for the full picture, or jump to [Key terms](#key-terms) when you need a definition while authoring rules or sorting out unexpected behavior.
+Use this page to learn how a {{alerting-v2}} rule runs end to end, why detection and notification are separate layers, and what common terms are used to describe {{alerting-v2}} features. Read from top to bottom for the full picture, or jump to [Key terms](#key-terms) when you need a definition while authoring rules or sorting out unexpected behavior.
 
-## How Kibana alerting v2 works
+## How {{alerting-v2}} works
 
-A Kibana alerting v2 rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
+A {{alerting-v2}} rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
 
 Each rule is set to **Detect** or **Alert** mode. Detect mode saves what the rule found each run. You can use it to try out a query without opening issues or sending notifications. Alert mode does that too, but also keeps an ongoing problem you can work in **Alerts**, which is what notification policies hook into.
 
@@ -39,7 +39,7 @@ In Detect mode, step 3 does not apply because there are no episodes for policies
 
 ## Detection and notification
 
-Kibana alerting v2 follows a two-layer model: detection first, then notification. This model gives you room to change how you evaluate data and reach people without redoing both every time.
+{{alerting-v2}} follows a two-layer model: detection first, then notification. This model gives you room to change how you evaluate data and reach people without redoing both every time.
 
 * **Detection**: The detection layer is driven by rules. On the schedule you specify, rules evaluate your data and record what matched (signals only in Detect mode, or full alert lifecycle in Alert mode). 
 * **Notification** The notification layer is driven by notification policies and workflows. These might contact people or systems after the detection layer has produced something that can be used. 

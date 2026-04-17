@@ -12,7 +12,7 @@ description: Short guide to select Kibana alerting v1, v2, or Watcher by use cas
 
 # Choose an alerting system [choose-an-alerting-system]
 
-Check out [Alerting overview](../alerting-overview.md) for an introduction to each system, where they run, and **Get started** links. Return here to select a system by goal if you are still deciding. If you already know which system you need, open [Kibana alerting v1](kibana-alerting-v1.md), [Kibana alerting v2](kibana-alerting-v2.md), or [Watcher](watcher.md).
+Check out [Alerting overview](../alerting-overview.md) for an introduction to each system, where they run, and **Get started** links. Return here to select a system by goal if you are still deciding. If you already know which system you need, open [Kibana alerting v1](kibana-alerting-v1.md), [{{alerting-v2}}](kibana-alerting-v2.md), or [Watcher](watcher.md).
 
 :::{note}
 You do not need to stand up {{kib}} alerting v1, v2, and {{watcher}} together. Pick the single option that fits your deployment and the goals in the tables below.
@@ -24,15 +24,15 @@ You do not need to stand up {{kib}} alerting v1, v2, and {{watcher}} together. P
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and minimal setup | [Kibana alerting v1](kibana-alerting-v1.md) | {{stack}} and {{serverless-full}} |
 | Use rules tailored to Security, Observability, APM, or Maps | [Kibana alerting v1](kibana-alerting-v1.md) | {{stack}} and {{serverless-full}} |
-| Define what to watch using ES\|QL and specify exactly what data goes with each alert | [Kibana alerting v2](kibana-alerting-v2.md) | {{serverless-full}} only |
-| Search alert history over time, explore it in Discover, or build dashboards from it | [Kibana alerting v2](kibana-alerting-v2.md) | {{serverless-full}} only |
-| Set who gets notified and how often in one place, then reuse that across many rules | [Kibana alerting v2](kibana-alerting-v2.md) | {{serverless-full}} only |
-| Tie several rules together or limit notifications for one host or service without silencing the entire rule | [Kibana alerting v2](kibana-alerting-v2.md) | {{serverless-full}} only |
+| Define what to watch using ES\|QL and specify exactly what data goes with each alert | [{{alerting-v2}}](kibana-alerting-v2.md) | {{serverless-full}} only |
+| Search alert history over time, explore it in Discover, or build dashboards from it | [{{alerting-v2}}](kibana-alerting-v2.md) | {{serverless-full}} only |
+| Set who gets notified and how often in one place, then reuse that across many rules | [{{alerting-v2}}](kibana-alerting-v2.md) | {{serverless-full}} only |
+| Tie several rules together or limit notifications for one host or service without silencing the entire rule | [{{alerting-v2}}](kibana-alerting-v2.md) | {{serverless-full}} only |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {{stack}} only |
 
 ## Compare at a glance
 
-| | Kibana alerting v1 | Kibana alerting v2 | Watcher |
+| | Kibana alerting v1 | {{alerting-v2}} | Watcher |
 |---|---|---|---|
 | **Best for** | Broad coverage with built-in rule types and forms | Full control over detection, history, and notifications in one ES\|QL-centric model | Maximum flexibility for non-standard or scripted workflows |
 | **How you define rules** | Select a rule type and fill in fields | Write an ES\|QL query | Author a watch (for example JSON) and optional scripts |

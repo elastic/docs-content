@@ -5,22 +5,22 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: Learn what Kibana alerting v2 offers, who it is for, and where to go next in the documentation.
+description: Learn what {{alerting-v2}} offers, who it is for, and where to go next in the documentation.
 ---
 
-# Kibana alerting v2 [alerting-overview-v2]
+# {{alerting-v2}} [alerting-overview-v2]
 
-Kibana alerting v2 is a way to watch your data in Elastic, decide what counts as a finding, and control how people get notified. You describe what to look for using [ES|QL](elasticsearch://reference/query-languages/esql.md), the same query language you can use when exploring data elsewhere in the product.
+{{alerting-v2}} is a way to watch your data in Elastic, decide what counts as a finding, and control how people get notified. You describe what to look for using [ES|QL](elasticsearch://reference/query-languages/esql.md), the same query language you can use when exploring data elsewhere in the product.
 
-It runs next to [Kibana alerting v1](kibana-alerting-v1.md). You can adopt Kibana alerting v2 at your own pace; there is no forced migration.
+It runs next to [Kibana alerting v1](kibana-alerting-v1.md). You can adopt {{alerting-v2}} at your own pace. There is no forced migration.
 
-## What is Kibana alerting v2 [alerting-v2-what]
+## What is {{alerting-v2}} [alerting-v2-what]
 
-Kibana alerting v2 is a rules-based system that checks your data on a schedule, stores a clear record of what happened over time, and can send notifications through shared settings that apply across many rules. You can start with guided setup and grow into more advanced options when you are ready.
+{{alerting-v2}} is a rules-based system that checks your data on a schedule, stores a clear record of what happened over time, and can send notifications through shared settings that apply across many rules. You can start with guided setup and grow into more advanced options when you are ready.
 
-## Why use Kibana alerting v2 [alerting-v2-why]
+## Why use {{alerting-v2}} [alerting-v2-why]
 
-Detection alone is not always enough. Teams often need a **record they can search later**, **notifications that do not repeat the same setup on every rule**, and a **consistent way to track an issue** from first occurrence through resolution. Kibana alerting v2 is aimed at those needs.
+Detection alone is not always enough. Teams often need a **record they can search later**, **notifications that do not repeat the same setup on every rule**, and a **consistent way to track an issue** from first occurrence through resolution. {{alerting-v2}} is aimed at those needs.
 
 It helps with challenges such as:
 
@@ -29,9 +29,9 @@ It helps with challenges such as:
 * **Rigid rule types**: Define what to watch with queries and carry the fields that matter for your responders.
 * **Siloed tools**: Use one query language for exploration and for alerting so skills transfer.
 
-## Who should use Kibana alerting v2 [alerting-v2-who]
+## Who should use {{alerting-v2}} [alerting-v2-who]
 
-Kibana alerting v2 is a good fit if you use {{serverless-full}} and want query-driven alerting, shared notification behavior, and searchable history.
+{{alerting-v2}} is a good fit if you use {{serverless-full}} and want query-driven alerting, shared notification behavior, and searchable history.
 
 ## Key concepts [alerting-v2-concepts]
 

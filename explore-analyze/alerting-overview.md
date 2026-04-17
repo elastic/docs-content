@@ -31,14 +31,14 @@ Kibana alerting v1 gives you ready-made rule types that work with applications s
 
 [Get started with Kibana alerting v1 →](alerting/kibana-alerting-v1.md)
 
-## Kibana alerting v2
+## {{alerting-v2}}
 
 ```{applies_to}
 serverless: preview
 stack: unavailable
 ```
 
-Kibana alerting v2 is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be.
+{{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be.
 
 Here is what you get with v2:
 
@@ -48,10 +48,10 @@ Here is what you get with v2:
 * **Control over notifications.** Reuse shared settings for who gets notified, and how often, across many rules. You set routing, grouping, and frequency in one place so teams hear what matters with less repeated setup and fewer unnecessary messages.
 * **Consistent status from open to closed.** Track alerts from the first time they appear until the problem is gone, with shared stages, a way to mark items as handled, and pauses you can tune per group so everyone agrees on what counts as still active and what counts as finished.
 
-[Get started with Kibana alerting v2 →](alerting/kibana-alerting-v2.md)
+[Get started with {{alerting-v2}} →](alerting/kibana-alerting-v2.md)
 
 :::{note}
-Kibana alerting v2 runs next to Kibana alerting v1 in {{serverless-full}}. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting v1 will remain available.
+{{alerting-v2}} runs next to Kibana alerting v1 in {{serverless-full}}. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting v1 will remain available.
 :::
 
 ## Watcher

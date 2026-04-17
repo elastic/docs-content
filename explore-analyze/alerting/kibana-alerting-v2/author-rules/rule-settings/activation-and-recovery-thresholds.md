@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Control when Kibana alerting v2 alerts transition between lifecycle states using consecutive-breach and duration-based thresholds."
+description: "Control when {{alerting-v2}} alerts transition between lifecycle states using consecutive-breach and duration-based thresholds."
 ---
 
-# Kibana alerting v2 activation and recovery thresholds [activation-recovery-thresholds-v2]
+# {{alerting-v2}} activation and recovery thresholds [activation-recovery-thresholds-v2]
 
 Activation and recovery thresholds control when alerts transition between lifecycle states. They prevent transient spikes from creating actionable alerts and prevent rapid toggling between active and recovered.
 

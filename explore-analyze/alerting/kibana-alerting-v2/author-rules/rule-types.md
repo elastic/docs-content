@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "ES|QL query patterns for Kibana alerting v2 rules: threshold, change detection, ratio, no-data, event rate, percentile, SLO burn rate, and more."
+description: "ES|QL query patterns for {{alerting-v2}} rules: threshold, change detection, ratio, no-data, event rate, percentile, SLO burn rate, and more."
 ---
 
-# Kibana alerting v2 rule types [rule-types-v2]
+# {{alerting-v2}} rule types [rule-types-v2]
 
 Rule types are lightweight abstractions that map UI controls to parameterized ES|QL queries. Each rule type represents a common alerting pattern. When you select a rule type in the UI, it generates the corresponding ES|QL query with your parameters filled in.
 

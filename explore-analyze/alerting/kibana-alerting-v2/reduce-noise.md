@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Select the right Kibana alerting v2 feature to reduce noise: thresholds, no-data handling, notification policies, throttling, snooze, rules on alerts, and more."
+description: "Select the right {{alerting-v2}} feature to reduce noise: thresholds, no-data handling, notification policies, throttling, snooze, rules on alerts, and more."
 ---
 
-# Reduce {{kib}} alerting v2 noise and false positives [reduce-noise-v2]
+# Reduce {{alerting-v2}} noise and false positives [reduce-noise-v2]
 
-{{kib}} alerting v2 offers many ways to reduce noise, each applied at a different stage, from the {{esql}} query and lifecycle thresholds through notification policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you match a situation to a mechanism and explains how mechanisms combine in order so you can use them deliberately.
+{{alerting-v2}} offers many ways to reduce noise, each applied at a different stage, from the {{esql}} query and lifecycle thresholds through notification policies, throttling, and manual controls. Selecting the wrong lever wastes effort and can hide real problems. This page helps you match a situation to a mechanism and explains how mechanisms combine in order so you can use them deliberately.
 
 If multiple rows in the table apply, refer to [Using them together](#using-them-together).
 

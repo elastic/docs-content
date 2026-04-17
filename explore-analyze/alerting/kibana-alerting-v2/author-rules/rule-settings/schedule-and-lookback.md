@@ -4,10 +4,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Configure how often a Kibana alerting v2 rule runs and how far back it looks when evaluating data."
+description: "Configure how often a {{alerting-v2}} rule runs and how far back it looks when evaluating data."
 ---
 
-# Kibana alerting v2 schedule and lookback [schedule-lookback-v2]
+# {{alerting-v2}} schedule and lookback [schedule-lookback-v2]
 
 The schedule and lookback settings control how often a rule runs and how far back it looks when evaluating data.
 

@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Define Kibana alerting v2 rules in YAML for version control and infrastructure-as-code workflows, with full field reference."
+description: "Define {{alerting-v2}} rules in YAML for version control and infrastructure-as-code workflows, with full field reference."
 ---
 
-# Create Kibana alerting v2 rules with YAML [create-rules-yaml-v2]
+# Create {{alerting-v2}} rules with YAML [create-rules-yaml-v2]
 
-Define Kibana alerting v2 rules as YAML documents for version control, infrastructure-as-code workflows, and bulk provisioning.
+Define {{alerting-v2}} rules as YAML documents for version control, infrastructure-as-code workflows, and bulk provisioning.
 
 ## YAML rule structure
 

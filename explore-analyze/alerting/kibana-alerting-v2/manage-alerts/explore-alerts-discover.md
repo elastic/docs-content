@@ -4,12 +4,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Query Kibana alerting v2 alert events in Discover with ES|QL for trend analysis, operational reporting, and on-demand investigation."
+description: "Query {{alerting-v2}} alert events in Discover with ES|QL for trend analysis, operational reporting, and on-demand investigation."
 ---
 
-# Explore {{kib}} alerting v2 alerts and signals in Discover [explore-alerts-discover-v2]
+# Explore {{alerting-v2}} alerts and signals in Discover [explore-alerts-discover-v2]
 
-What this page is for: {{kib}} alerting v2 stores rule output in `.rule-events` and user or system actions in `.alert-actions`. Both are ordinary {{es}} data you query with {{esql}} in Discover. When you land here, use the examples to investigate what rules produced, including recent rows, status mix, and hourly volume, and drill into one rule or one alert series, track breach trends over days, and support operational metrics such as mean time to acknowledge, MTTA, from acknowledgment rows.
+What this page is for: {{alerting-v2}} stores rule output in `.rule-events` and user or system actions in `.alert-actions`. Both are ordinary {{es}} data you query with {{esql}} in Discover. When you land here, use the examples to investigate what rules produced, including recent rows, status mix, and hourly volume, and drill into one rule or one alert series, track breach trends over days, and support operational metrics such as mean time to acknowledge, MTTA, from acknowledgment rows.
 
 How to use it: Open Discover, select {{esql}}, paste a query, then adjust time ranges and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment. Save views, export results, or reuse clauses in dashboards and reports.
 
