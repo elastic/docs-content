@@ -51,6 +51,10 @@ For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges docum
 
 ## Metrics-specific Discover options
 
+:::{important}
+All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
+:::
+
 With your data loaded, use the metrics charts to:
 
 **Search for specific metrics**
