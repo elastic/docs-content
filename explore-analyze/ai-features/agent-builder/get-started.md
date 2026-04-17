@@ -14,9 +14,8 @@ products:
 
 # Get started with {{agent-builder}}
 
-To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
-
-For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
+To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}. 
+If you don't already have an {{es}} deployment, you can start a [free trial](https://cloud.elastic.co/registration) or refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 
 ::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
@@ -40,7 +39,9 @@ On non-serverless deployments, {{agent-builder}} availability depends on the nav
 :::
 
 :::{dropdown} {{product.observability}} and {{product.security}} solution views
-{{agent-builder}} is enabled by default, replacing AI Assistant. Click the **AI Agent** button in the top-right header to start a conversation from any page.
+{{agent-builder}} is enabled by default, replacing AI Assistant. You can access it from two entry points:
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
 :::
 
 :::{dropdown} Classic view
