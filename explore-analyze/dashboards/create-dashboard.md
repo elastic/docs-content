@@ -34,7 +34,6 @@ Before creating a dashboard, ensure you have:
 3. Populate your dashboard with the content that you need. You can:
 
     * [**Add new visualizations**](../visualize.md#panels-editors). Create a chart using [Lens](../visualize/lens.md), the default visualization editor in {{product.kibana}}, or other visualizations such as [Maps](../visualize/maps.md).
-    * {applies_to}`stack: ga 9.4` **Add a new Discover session**. Select **Discover session** under **New panel** to create a [Discover](../discover.md) session directly in your dashboard without saving it to the library first. {{product.kibana}} opens Discover where you configure your exploration, then saves it and returns you to the dashboard with the new panel.
     * [**Add existing content from the library**](../visualize/visualize-library.md). Select existing visualizations or Discover sessions that have already been configured and saved to the **Visualize Library**.
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
