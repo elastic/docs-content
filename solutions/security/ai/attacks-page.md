@@ -35,7 +35,7 @@ At the top of the **Attacks** page, you can find overview visualizations and tab
 ::::
 
 :::{note}
-The **Attacks** page lets you schedule Attack Discovery runs and view their findings. For ad-hoc, manual Attack Discovery runs, use the **Attack Discovery** page.
+The **Attacks** page lets you schedule Attack Discovery runs and view their findings. For manual Attack Discovery runs, use the **Attack Discovery** page.
 :::
 
 
