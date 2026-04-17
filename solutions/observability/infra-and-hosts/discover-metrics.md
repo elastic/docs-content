@@ -81,7 +81,7 @@ Only fields mapped as dimensions in a [time series data stream](https://www.elas
 ::::{applies-item} stack: ga 9.4+
 You can filter the view to focus on specific values in two ways:
 
-- **Click a chart value**: Hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
+- **Click a chart value**: After you break down by one or more dimensions, hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
 - **Edit the query directly**: Manually add a `| WHERE` clause to your ES|QL query. For example: `| WHERE <dimension> = <value>`
 ::::
 
