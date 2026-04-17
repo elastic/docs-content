@@ -120,6 +120,10 @@ The **Endpoint exceptions** tab on the **Artifacts** page displays all {{elastic
 
 You can import and export {{elastic-endpoint}} exceptions as NDJSON files using the actions menu ({icon}`boxes_vertical`) on the **Endpoint exceptions** tab.
 
+:::{image} /solutions/images/security-endpoint-exceptions.png
+:alt: List of Elastic Endpoint exceptions
+:screenshot:
+:::
 
 ### Edit an {{elastic-endpoint}} exception [edit-endpoint-exception]
 
