@@ -1,5 +1,5 @@
 ---
-navigation_title:  Manage data tiers in self-managed clusters
+navigation_title: Manage data tiers in self-managed clusters
 description: "Assign Elasticsearch data tier roles to nodes in self-managed clusters by configuring node.roles in elasticsearch.yml."
 applies_to:
   deployment:
@@ -8,7 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# Configure data tiers in self-managed deployments [configure-data-tiers-on-premise]
+# Configure data tiers in self-managed deployments
+
+## Data tiers and node roles
 
 On self-managed clusters, data tiers are expressed through each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role). You enable the tiers your cluster should offer by setting `node.roles` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node.
 
