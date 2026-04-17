@@ -113,7 +113,7 @@ The target host might be unreachable or the certificate might not be valid. To f
     ```
 
 2. Verify that the certificate is valid and that the hostname and IP match.
-3. Use OpenSSL to test connectivity to the target server and diagnose problems. Refer to the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.md) for more info.
+3. Use OpenSSL to test connectivity to the target server and diagnose problems. Refer to the [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html) for more info.
 
 
 ### x509: cannot validate certificate for <IP address> because it doesn’t contain any IP SANs [apm-cannot-validate-certificate]

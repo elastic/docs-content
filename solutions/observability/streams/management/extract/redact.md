@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Mask sensitive data in string fields by matching grok patterns and replacing them with a placeholder using the Streams redact processor in Streamlang.
 ---
 
 # Redact processor [streams-redact-processor]

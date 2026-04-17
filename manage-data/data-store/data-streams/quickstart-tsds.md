@@ -207,98 +207,22 @@ If you get an error about timestamp values, check the error response for the val
 ::::
 ::::{step} Run a query
 
-Now that your data stream has some documents, you can use the [`_search` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to query the data. This sample aggregation shows average temperature for each location, in hourly buckets. (You don't need to understand the details of aggregations to follow this example.) 
+Now that your data stream has some documents, you can use the ES|QL [`_query` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-query) to query the data. This sample aggregation shows the maximum of average temperature per sensor for each location, in hourly buckets.
 
 ```console
-POST quickstart-weather/_search  
+POST _query
 {
-  "size": 0,
-  "aggs": {
-    "by_location": {
-      "terms": {
-        "field": "location"  # The location dimension defined in the template.
-      },
-      "aggs": {
-        "avg_temp_per_hour": {
-          "date_histogram": {
-            "field": "@timestamp",
-            "fixed_interval": "1h"
-          },
-          "aggs": {
-            "avg_temp": {
-              "avg": {
-                "field": "temperature"  # A metric field defined in the template.
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  query: "TS quickstart-weather | STATS max(avg_over_time(temperature) BY location, TBUCKET(1h)"
 }
 ```
 
 :::{dropdown} Example response
 
 ```console-result
-{
-  "took": 1,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 5,
-      "relation": "eq"
-    },
-    "max_score": null,
-    "hits": []
-  },
-  "aggregations": {
-    "by_location": {
-      "doc_count_error_upper_bound": 0,
-      "sum_other_doc_count": 0,
-      "buckets": [
-        {
-          "key": "base",
-          "doc_count": 3,
-          "avg_temp_per_hour": {
-            "buckets": [
-              {
-                "key_as_string": "2025-09-08T21:00:00.000Z",
-                "key": 1757365200000,
-                "doc_count": 3,
-                "avg_temp": {
-                  "value": 27.333333333333332
-                }
-              }
-            ]
-          }
-        },
-        {
-          "key": "satellite",
-          "doc_count": 2,
-          "avg_temp_per_hour": {
-            "buckets": [
-              {
-                "key_as_string": "2025-09-08T21:00:00.000Z",
-                "key": 1757365200000,
-                "doc_count": 2,
-                "avg_temp": {
-                  "value": 32.359375
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  }
-}
+MAX(AVG_OVER_TIME(temperature))|   location   |      TBUCKET(1h)       
+-------------------------------+--------------+------------------------
+27.333333333333332             |base          |2025-09-08T21:00:00.000Z
+32.359375                      |satellite     |2025-09-08T21:00:00.000Z
 ```
 :::
 

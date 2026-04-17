@@ -15,7 +15,7 @@ products:
 
 Cloud Connect enables you to use {{ecloud}} services in your [ECE](/deploy-manage/deploy/cloud-enterprise.md), [ECK](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 
-AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
+The following services are available for use with Cloud Connect. More services are coming soon.
 
 ## AutoOps
 
