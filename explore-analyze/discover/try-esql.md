@@ -33,6 +33,11 @@ For the complete {{esql}} documentation, including all supported commands, funct
    If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
    :::
 
+   :::{note}
+   :applies_to: { serverless:, stack: ga 9.4+ }
+   Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
+   :::
+
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
 3. Set the time range to **Last 7 days**.
