@@ -123,24 +123,28 @@ This feature is **use at your own risk**. Elastic does not provide support or ma
 Elastic's Osquery extensions might not work properly with custom binaries. You are responsible for validating stability and compatibility within your environment.
 ::::
 
-To configure a custom Osquery version, add an `install` block to the Advanced **Osquery config** with platform-specific artifact URLs and SHA-256 checksums. The following example configures a custom Osquery binary for Linux:
+To configure a custom Osquery version, add an `elastic_options.install` block to the Advanced **Osquery config** with platform-specific artifact URLs and SHA-256 checksums. The following example configures a custom Osquery binary for Linux:
 
 ```json
 {
-   "install": {
-      "linux": {
-         "amd64": {
-            "artifact_url": "https://example.org/osquery-5.22.1.linux_x86_64.tar.gz",
-            "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
-         },
-         "arm64": {
-            "artifact_url": "https://example.org/osquery-5.22.1.linux_aarch64.tar.gz",
-            "sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+   "elastic_options": {
+      "install": {
+         "linux": {
+            "amd64": {
+               "artifact_url": "https://example.org/osquery-5.22.1.linux_x86_64.tar.gz",
+               "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+            },
+            "arm64": {
+               "artifact_url": "https://example.org/osquery-5.22.1.linux_aarch64.tar.gz",
+               "sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+            }
          }
       }
    }
 }
 ```
+
+The custom Osquery binary is installed in the bundled Osquery directory.
 
 The following table lists the supported package formats for each platform:
 
