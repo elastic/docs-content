@@ -26,7 +26,7 @@ No manual index configuration is required. The system creates these data streams
 
 ## {{kib}} advanced settings
 
-Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for notification policies after a policy is updated or deleted:
+Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for action policies after a policy is updated or deleted:
 
 | Setting | Default | Purpose |
 |---|---|---|

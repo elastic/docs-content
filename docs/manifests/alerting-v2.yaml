@@ -33,7 +33,7 @@ implementation_prs:
     summary: >
       Foundational v2 alerting framework — core rule engine, scheduling and execution
       architecture, ES|QL-native rule evaluation, alert lifecycle management, dispatcher,
-      notification policies CRUD and UI, rule authoring UI (standalone and embedded in
+      action policies CRUD and UI, rule authoring UI (standalone and embedded in
       Discover), rule management UI, APM instrumentation, and InversifyJS DI wiring.
       This is an umbrella PR covering ~50 sub-PRs across engine, UI, and infrastructure.
     author: cnasikas
@@ -87,34 +87,34 @@ implementation_prs:
   - url: https://github.com/elastic/kibana/pull/256527
     title: "Store 'unmatched' action for unmatched alert episodes"
     summary: >
-      Fixes a dispatcher bug where alert episodes matching no notification policy were
+      Fixes a dispatcher bug where alert episodes matching no action policy were
       silently dropped and re-fetched every run. Now persists them with
       `action_type: 'unmatched'` and reason `'no matching notification policy'`,
       and adds `unmatched` to the fetch query's INLINE STATS filter.
-      Affects dispatcher pipeline docs, notification policy evaluation docs, and the
+      Affects dispatcher pipeline docs, action policy evaluation docs, and the
       alert actions field reference.
     author: kdelemme
 
-  # --- Notification policies ---
+  # --- Action policies (docs); implementation paths may still use notification_policy ---
 
   - url: https://github.com/elastic/kibana/pull/256940
     title: "Make notification policies global with optional rule-label scoping"
     summary: >
-      Decouples notification policies from rules. Policies are now global — all NPs are
+      Decouples notification policies from rules. Policies are now global — all policies are
       evaluated for every alert episode by default. Rules no longer reference specific policies
       via `notification_policies: [{ ref: policyId }]`. An optional `rule_labels` field on
-      the NP scopes it to rules whose `metadata.labels` match. The dispatcher fetches all
-      NPs every tick via `findAllDecrypted()`. The Step 6 matcher now uses two-phase matching:
+      the policy scopes it to rules whose `metadata.labels` match. The dispatcher fetches all
+      policies every tick via `findAllDecrypted()`. The Step 6 matcher now uses two-phase matching:
       first rule-label scoping (empty `ruleLabels` = catch-all), then KQL episode evaluation.
-      Affects notification policy schema docs, create/manage how-to, and dispatcher pipeline docs.
+      Affects action policy schema docs, create/manage how-to, and dispatcher pipeline docs.
     author: kdelemme
 
   - url: https://github.com/elastic/kibana/pull/258010
     title: "Add dynamic workflow selection to notification policy form"
     summary: >
-      Replaces hardcoded workflow options in the NP form with dynamic search via the
+      Replaces hardcoded workflow options in the policy form with dynamic search via the
       `/api/workflows/search` API. Users can now search and select real workflows when
-      creating or editing a notification policy. Affects create/manage NP how-to docs.
+      creating or editing a policy. Affects create/manage action policy how-to docs.
     author: kdelemme
 
   - url: https://github.com/elastic/kibana/pull/258917
@@ -124,21 +124,21 @@ implementation_prs:
       highlighting, autocomplete, and validation. Defines a typed `MatcherContext` schema
       with field descriptors (`MATCHER_CONTEXT_FIELDS`) so the input auto-suggests valid
       field names: `episode_status`, `rule.name`, `rule.labels`, and `data.*` fields.
-      Affects any doc describing the notification policy matcher field.
+      Affects any doc describing the action policy matcher field.
     author: kdelemme
 
   - url: https://github.com/elastic/kibana/pull/258862
     title: "[Alerting v2] Add bulk actions for notification policies"
     summary: >
-      Adds bulk enable, disable, snooze, and delete actions to the notification policies
+      Adds bulk enable, disable, snooze, and delete actions to the action policies
       list page, including confirmation modals for destructive operations.
-      Affects create/manage NP how-to and any NP management reference.
+      Affects create/manage action policy how-to and any policy management reference.
     author: kdelemme
 
   - url: https://github.com/elastic/kibana/pull/257377
     title: "[Alerting V2] mark np api keys for invalidation"
     summary: >
-      Introduces a saved object type for pending API key invalidations. When a notification
+      Introduces a saved object type for pending API key invalidations. When an action
       policy is updated, the old API key is marked for invalidation and a new one is created.
       When deleted, the API key is marked for invalidation. Related to PR #258094 which
       schedules the actual invalidation task.
@@ -380,11 +380,11 @@ entries:
       • PR #257324 — preview chart added to rule form (Lens histogram showing matching
         row counts over time for evaluation and recovery previews). create-rules-ui.md
         should describe this panel.
-      See separate entries for notification-policies pages, which track additional PRs.
+      See separate entries for action-policies pages, which track additional PRs.
 
-  - id: alerting-v2-notification-policies
+  - id: alerting-v2-action-policies
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -399,21 +399,21 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      Overview page for notification policies. Several significant implementation changes
-      affect the conceptual description of what NPs are and how they work:
-      • PR #256940 — NPs are now global, not rule-scoped. The concept page must drop any
-        description of rules referencing specific NPs by ID. Scoping is now done via
-        `rule_labels` on the NP itself.
-      • PR #256527 — describes what happens when no NP matches an episode (`unmatched`).
+      Overview page for action policies. Several significant implementation changes
+      affect the conceptual description of what policies are and how they work:
+      • PR #256940 — Policies are now global, not rule-scoped. The concept page must drop any
+        description of rules referencing specific policies by ID. Scoping is now done via
+        `rule_labels` on the policy itself.
+      • PR #256527 — describes what happens when no policy matches an episode (`unmatched`).
       • PR #258917 — matcher is now a KQL field with autocomplete; the context schema
         (`episode_status`, `rule.name`, `rule.labels`, `data.*`) is worth documenting here.
-      • PR #258862 — bulk enable/disable/snooze/delete now available in the NP list UI.
+      • PR #258862 — bulk enable/disable/snooze/delete now available in the policy list UI.
       • PR #258010 — workflow selection is dynamic (search-based); update any description
-        of the workflow field in the NP form.
+        of the workflow field in the policy form.
 
-  - id: alerting-v2-create-notification-policies
+  - id: alerting-v2-create-action-policies
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/create-manage-notification-policies.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/create-manage-action-policies.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -428,18 +428,18 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      CRUD how-to for notification policies.
+      CRUD how-to for action policies.
       • PR #256940 — schema change: remove any reference to `notification_policies` on rules.
-        Add documentation for the new `rule_labels` field (scoping NPs to specific rules).
+        Add documentation for the new `rule_labels` field (scoping policies to specific rules).
       • PR #258010 — workflow selector is now a dynamic search field, not a static dropdown.
       • PR #258862 — document bulk actions (enable, disable, snooze, delete) from the list page.
-      • PR #257377 and #258094 — API keys are automatically managed; when a NP is updated or
+      • PR #257377 and #258094 — API keys are automatically managed; when a policy is updated or
         deleted, the old key is marked for invalidation. May be worth a note in an API key
         section or production guidance callout.
 
-  - id: alerting-v2-notification-policies-eval
+  - id: alerting-v2-action-policies-eval
     content_type: conceptual
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/how-notification-policies-are-evaluated.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/how-action-policies-are-evaluated.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -454,12 +454,12 @@ entries:
       serverless: preview
     notes: >
       Documents the 10-step dispatcher pipeline. Three PRs change the pipeline logic:
-      • PR #256940 — Step 4 now fetches ALL notification policies via `findAllDecrypted()`,
+      • PR #256940 — Step 4 now fetches ALL action policies via `findAllDecrypted()`,
         not just those referenced by rules. Step 6 (evaluate matchers) now uses two-phase
         matching: (1) check `rule_labels` scoping (empty = catch-all), then (2) evaluate
         the KQL episode matcher. Update the step descriptions accordingly.
       • PR #256527 — Step 10 outcomes table is missing `unmatched` (episodes with no matching
-        NP). Add: `unmatched` / "Episode did not match any notification policy".
+        policy). Add: `unmatched` / user-facing explanation (stored reason may still be `no matching notification policy`).
       • PR #258917 — matcher is a KQL expression evaluated in-process. The `MatcherContext`
         schema now has named fields with autocomplete: `episode_status`, `rule.name`,
         `rule.labels`, `data.*`. Update Step 6 to reflect the available matcher fields.
@@ -651,7 +651,7 @@ entries:
       serverless: preview
     notes: >
       How to deactivate (and reactivate) alert episodes. PR #256527 changes dispatcher
-      behavior: episodes that are deactivated and also unmatched by any NP now receive
+      behavior: episodes that are deactivated and also unmatched by any policy now receive
       an `unmatched` action record in addition to the deactivation. Review if this page
       describes what happens to deactivated episodes in the dispatcher pipeline.
 

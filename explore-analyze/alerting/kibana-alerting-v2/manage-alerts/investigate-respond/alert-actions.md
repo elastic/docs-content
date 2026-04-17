@@ -29,7 +29,7 @@ The `action.type` field identifies what happened. Common values include:
 | `assign` | Assignment changed |
 | `tag` | Tag applied to the alert (recorded action) |
 | `resolve` | Episode or alert resolved |
-| `unmatched` | No notification policy matched the episode, so no workflow ran for it under those policies |
+| `unmatched` | No action policy matched the episode, so no workflow ran for it under those policies |
 
 The `untag` action type is not used. Tagging is recorded with the `tag` action type.
 

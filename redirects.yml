@@ -876,3 +876,17 @@ redirects:
   'reference/fleet/otel-integrations.md':
     anchors:
       'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
+
+# Kibana alerting v2: notification policies renamed to action policies
+  'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies.md':
+    to: 'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies.md'
+    anchors:
+      'notification-policies-v2': 'action-policies-v2'
+  'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/create-manage-notification-policies.md':
+    to: 'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/create-manage-action-policies.md'
+    anchors:
+      'create-manage-notification-policies-v2': 'create-manage-action-policies-v2'
+  'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/how-notification-policies-are-evaluated.md':
+    to: 'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/how-action-policies-are-evaluated.md'
+    anchors:
+      'how-notification-policies-evaluated-v2': 'how-action-policies-evaluated-v2'

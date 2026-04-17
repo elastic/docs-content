@@ -32,7 +32,7 @@ If you already know which alerting system you are using, go directly to [Kibana 
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need full control over detection and notification routing | Custom alerting logic requiring scripting |
 | **Rule definition** | Select a rule type and fill in parameters | Write an ES\|QL query | Write a JSON watch definition |
 | **Alert data** | Updated in place; limited queryability | Immutable, append-only events queryable with ES\|QL in Discover | Watch history index |
-| **Notifications** | Configured per action on each rule | Centralized notification policies, reusable across rules | Action-level throttling and conditions |
+| **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules | Action-level throttling and conditions |
 | **Noise reduction** | Snooze per rule, maintenance windows | Per-series snooze, per-episode acknowledgment, activation thresholds, matcher-based routing, rules on alerts | Action conditions and throttling |
 | **Availability** | All deployments | {{stack}} 9.4+ | Self-managed and {{ech}} only |
 
@@ -46,7 +46,7 @@ Choose Kibana alerting v1 if you want broad rule type coverage out of the box an
 
 ## Kibana alerting v2
 
-Kibana alerting v2 is built on ES|QL. You write the query that defines what to detect and what data each alert carries. Notification policies control routing, grouping, and throttling independently of rules, and alert events are stored as queryable data in standard {{es}} indices.
+Kibana alerting v2 is built on ES|QL. You write the query that defines what to detect and what data each alert carries. Action policies control routing, grouping, and throttling independently of rules, and alert events are stored as queryable data in standard {{es}} indices.
 
 Choose Kibana alerting v2 if you need flexible detection logic, queryable alert history, centralized notification management, or cross-rule correlation.
 
