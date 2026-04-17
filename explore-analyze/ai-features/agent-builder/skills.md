@@ -58,9 +58,5 @@ To retrieve all available skills programmatically, use the [List skills](https:/
 
 ## Related pages
 
-- [Built-in skills reference](builtin-skills-reference.md)
-- [Custom skills](custom-skills.md)
-- [Skill creation guidelines](skill-creation-guidelines.md)
-- [Tools in {{agent-builder}}](tools.md)
 - [Built-in tools reference](tools/builtin-tools-reference.md)
 - [{{agent-builder}} Kibana APIs](kibana-api.md)
