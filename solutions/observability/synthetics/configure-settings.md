@@ -106,3 +106,22 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :alt: Project API keys tab on the Synthetics Settings page in {{kib}}
 :screenshot:
 :::
+
+## Advanced [synthetics-settings-advanced]
+
+In the **Advanced** tab, you can configure advanced settings for your Synthetics deployment.
+
+### Maintenance windows sync interval [synthetics-settings-advanced-sync-interval]
+
+Private location monitors are periodically synced to apply active maintenance window changes. The **Maintenance windows sync interval** setting controls how frequently this sync occurs.
+
+Use the **Sync interval (minutes)** field to set the interval. The default is 5 minutes, and valid values range from 5 to 1440 minutes. When you apply a new interval, an immediate sync is triggered so the change takes effect right away.
+<!--
+:::{image} /solutions/images/observability-synthetics-settings-advanced.png
+:alt: Advanced tab on the Synthetics Settings page in {{kib}}
+:screenshot:
+:::
+-->
+When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
+
+A separate callout appears when maintenance windows are modified or deleted but changes have not yet propagated to your private location monitors.
