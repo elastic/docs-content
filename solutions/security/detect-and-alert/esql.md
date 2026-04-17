@@ -11,6 +11,8 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 
 # {{esql}} rules [esql-rule-type]
 
+## Overview
+
 {{esql}} rules use [{{es}} Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) to query source events and aggregate or transform data using a pipeline syntax. Query results are returned as a table where each row becomes an alert. {{esql}} rules combine the flexibility of a full query pipeline with the detection capabilities of {{elastic-sec}}.
 
 ### When to use an {{esql}} rule
