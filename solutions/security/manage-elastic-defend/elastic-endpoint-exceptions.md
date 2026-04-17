@@ -83,7 +83,7 @@ The **Add Endpoint Exception** flyout opens.
     4. `Value`: Enter the value associated with the `Field`. To enter multiple values (when using `is one of` or `is not one of`), enter each value, then press **Return**.
 
     ::::{note}
-    Unlike detection rule exceptions, {{elastic-endpoint}} exceptions do not require escaping special characters.
+    Unlike detection rule exceptions, {{elastic-endpoint}} exceptions do not require escaping special characters. Enter file paths and values exactly as they appear on the host (for example, `C:\Windows\explorer.exe`, not `C:\\Windows\\explorer.exe`). Refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) for syntax details and examples.
     ::::
 
     To define multiple conditions, click **AND** or **OR** and configure a new condition. You can also add [nested conditions](#nested-conditions).
