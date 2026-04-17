@@ -20,10 +20,10 @@ $$$panels-editors$$$
 | --- | --- | --- |
 | Visualizations | [Lens](visualize/lens.md) | Create powerful charts in {{kib}}. This is the default editor. |
 |  | [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from {{esql}} queries |
+|  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a [Discover session](../discover.md) session directly in your dashboard without saving it to the library |
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 |  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |
 |  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
-|  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a [Discover session](../discover.md) session directly in your dashboard without saving it to the library |
 |  | | |
 | Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
 |  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
