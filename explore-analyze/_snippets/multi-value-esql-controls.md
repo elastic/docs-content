@@ -11,7 +11,7 @@ You can create controls that let users select multiple values. To do that:
     :::
 
     :::{note}
-    [`MV_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/mv-functions/mv_contains.md) will check if _all_ values are present, use [`MV_INTERSECTS`](elasticsearch://reference/query-languages/esql/functions-operators/mv-functions/mv_intersects.md) if you want _any_ present semantics.
+    [`MV_CONTAINS`](elasticsearch://reference/query-languages/esql/functions-operators/mv-functions/mv_contains.md) checks that _all_ subset values are present. Use [`MV_INTERSECTS`](elasticsearch://reference/query-languages/esql/functions-operators/mv-functions/mv_intersects.md) instead if matching _any_ subset value is enough.
     :::
 
 3. When defining the control, select the **Allow multiple selections** option.
