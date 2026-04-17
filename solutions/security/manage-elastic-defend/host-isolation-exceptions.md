@@ -57,7 +57,7 @@ By default, a host isolation exception is recognized globally across all hosts r
 
 ## View and manage host isolation exceptions [manage-host-isolation-exceptions]
 
-The **Host isolation exceptions** page displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
+The **Host isolation exceptions** UI displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
 
 :::{image} /solutions/images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions

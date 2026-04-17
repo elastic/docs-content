@@ -19,7 +19,7 @@ The blocklist allows you to prevent specified applications from running on hosts
 The blocklist is not intended to broadly block benign applications for non-security reasons; only use it to block potentially harmful applications. To compare the blocklist with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
 
 ::::{admonition} Requirements
-* In addition to configuring specific entries on the **Blocklist** page, you must also ensure that the blocklist is enabled on the {{elastic-defend}} integration policy in the [Malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). This setting is enabled by default.
+* In addition to configuring specific entries in the **Blocklist** UI, you must also ensure that the blocklist is enabled on the {{elastic-defend}} integration policy in the [Malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). This setting is enabled by default.
 * You must have the **Blocklist** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) or the appropriate user role to access this feature.
 ::::
 
@@ -65,7 +65,7 @@ By default, a blocklist entry is recognized globally across all hosts running {{
         You can also select the `Per Policy` option without immediately assigning a policy to the blocklist entry. For example, you could do this to create and review your blocklist configurations before putting them into action with a policy.
         ::::
 
-6. Click **Add blocklist**. The new entry is added to the **Blocklist** page.
+6. Click **Add blocklist**. The new entry is added to the **Blocklist** UI.
 7. When you’re done adding entries to the blocklist, ensure that the blocklist is enabled for the {{elastic-defend}} integration policies that you just assigned:
 
     1. Go to the **Policies** page, then click on an integration policy.
@@ -75,7 +75,7 @@ By default, a blocklist entry is recognized globally across all hosts running {{
 
 ## View and manage the blocklist [manage-blocklist]
 
-The **Blocklist** page displays all the blocklist entries that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
+The **Blocklist** UI displays all the blocklist entries that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-blocklist.png
 :alt: blocklist

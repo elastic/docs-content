@@ -142,7 +142,7 @@ To add a trusted application:
 
 ## View and manage trusted applications [trusted-apps-list]
 
-The **Trusted applications** page displays all the trusted applications that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
+The **Trusted applications** UI displays all the trusted applications that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-trusted-apps-list.png
 :alt: trusted apps list

@@ -39,7 +39,7 @@ Add a trusted device to exempt it from device control:
 
 ## View and manage trusted devices
 
-The **Trusted devices** page displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
+The **Trusted devices** UI displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-trusted-devices-list.png
 :alt: trusted apps list

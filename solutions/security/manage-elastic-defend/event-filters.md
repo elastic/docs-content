@@ -102,7 +102,7 @@ Create event filters from the **Hosts** page or, depending on your version, from
 
 ## View and manage event filters [manage-event-filters]
 
-The **Event filters** page displays all the event filters that have been added to the {{security-app}}. To refine the list, use the search bar to search by filter name, description, comments, or field value.
+The **Event filters** UI displays all the event filters that have been added to the {{security-app}}. To refine the list, use the search bar to search by filter name, description, comments, or field value.
 
 :::{image} /solutions/images/security-event-filters-list.png
 :alt: event filters list
