@@ -201,6 +201,11 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
+```yaml {applies_to}
+stack: removed 9.4
+serverless: removed
+```
+
 Each time a detection rule runs using a remote cross-cluster search (CCS) index pattern, it will return a warning saying that the rule may not have the required `read` privileges to the remote index. Because privileges cannot be checked across remote indices, this warning displays even when the rule actually does have `read` privileges to the remote index.
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
