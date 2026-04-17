@@ -74,6 +74,10 @@ Depending on your team's technical expertise and requirements, you can choose fr
 
 [Learning To Rank](/solutions/search/ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
 
+### Automatic Import [automatic-import-platform]
+
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) uses an LLM to help you build a custom Elastic integration from a data sample when no prebuilt integration exists for your source. It applies across solutions that use {{agent}} and integrations, including {{observability}} and {{elastic-sec}}.
+
 ## AI-powered features in the {{es}} solution/project type
 
 The [{{es}}](/solutions/search.md) solution view (or project type in {{serverless-short}}) includes certain AI-powered features beyond the core {{es}} capabilities available on the Elastic platform.
