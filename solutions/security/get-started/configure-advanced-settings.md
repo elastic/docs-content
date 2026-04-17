@@ -238,7 +238,7 @@ The `securitySolution:alertCloseReasons` field determines which custom options a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: ga, 9.0, removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 
