@@ -188,6 +188,19 @@ Synonyms sets must exist before they can be added to indices. If an index is cre
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+
+When building the synonyms map, {{es}} checks available heap memory using a circuit breaker to prevent synonym token filters from causing out-of-memory errors when processing large numbers of synonym rules. The circuit breaker trips when more than 95% of heap memory is in use.
+
+The threshold is configurable using the [`indices.breaker.total.limit` parent circuit breaker setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
+
+When the circuit breaker trips, the behavior is determined by the `lenient` parameter:
+
+* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
+* If `lenient` is `false`, the affected index enters a red state.
+:::
+
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
 

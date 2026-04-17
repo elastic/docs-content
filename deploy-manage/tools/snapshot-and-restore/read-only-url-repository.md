@@ -61,7 +61,7 @@ PUT _snapshot/my_read_only_url_repository
     * `https`
     * `jar`
 
-    URLs using the `http`, `https`, or `ftp` protocols must be explicitly allowed with the [`repositories.url.allowed_urls`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#repositories-url-allowed) cluster setting. This setting supports wildcards in the place of a host, path, query, or fragment in the URL.
+    URLs using the `http`, `https`, or `ftp` protocols must be explicitly allowed with the `repositories.url.allowed_urls` node setting. This setting supports wildcards in the place of a host, path, query, or fragment in the URL.
 
     URLs using the `file` protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster. This location must be registered in the `path.repo` setting, in the same way as when configuring a [shared filesystem repository](./shared-file-system-repository.md), and it must contain the snapshot data. You don’t need to set `path.repo` when using URLs with the `ftp`, `http`, `https`, or `jar` protocols.
 
