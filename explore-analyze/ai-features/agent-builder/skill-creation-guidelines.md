@@ -2,7 +2,7 @@
 navigation_title: "Skill creation guidelines"
 description: "Guidelines for creating effective custom skills in Elastic Agent Builder."
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 products:
   - id: elasticsearch
