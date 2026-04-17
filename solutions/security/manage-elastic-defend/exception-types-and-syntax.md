@@ -59,7 +59,7 @@ Because escaping rules differ between exception types, values that work in one c
 | Symptom | Likely cause | Resolution |
 | --- | --- | --- |
 | {{elastic-endpoint}} exception or trusted application does not match a Windows path | The value contains double backslashes (for example, `C:\\Windows\\explorer.exe`) copied from a detection rule exception | Remove the extra backslashes and enter the path as it appears on disk: `C:\Windows\explorer.exe` |
-| Detection rule exception with the `matches` operator does not match a Windows path | The value contains unescaped single backslashes (for example, `C:\Windows\explorer.exe`) | Escape each backslash: `C:\\Windows\\explorer.exe` |
+| Detection rule exception with the `matches` operator does not match a Windows path | The value contains single backslashes that are not escaped (for example, `C:\Windows\explorer.exe`) | Escape each backslash: `C:\\Windows\\explorer.exe` |
 | Exception was copied from a working detection rule into an {{elastic-endpoint}} exception and no longer matches | Detection rule escaping syntax is not valid for {{elastic-endpoint}} exceptions | Re-enter the value without escaping, matching the path exactly as it appears on the host |
 
 ## Exception type comparison [exception-type-comparison]
@@ -70,7 +70,7 @@ The following table compares how detection rule exceptions and {{elastic-endpoin
 | --- | --- | --- |
 | **Where it operates** | Detection engine in {{kib}} | {{elastic-endpoint}} (on the host) |
 | **Primary purpose** | Suppress alerts in {{kib}} | Exclude a process from blocking and monitoring on the endpoint |
-| **Affects endpoint blocking?** | No — {{elastic-endpoint}} may still block or detect the activity | Yes — prevents blocking and detection on the host |
+| **Affects endpoint blocking?** | No — {{elastic-endpoint}} can still block or detect the activity | Yes — prevents blocking and detection on the host |
 | **Affects alert generation?** | Yes — prevents alerts | Sometimes — if {{elastic-endpoint}} never generates an event, the detection engine has nothing to alert on |
 | **Used for** | Reduce alert noise | Prevent endpoint interference with known-safe software |
 | **Risk if used incorrectly** | Silent blocking on endpoints ({{elastic-endpoint}} still blocks the process, but generates no alert) | Blind spots — {{elastic-endpoint}} may never detect the activity |
