@@ -26,7 +26,7 @@ While you prototype in Discover, each row in the result table is one document in
    - Schedule (execution interval and lookback window).
    - Grouping fields if applicable.
    - Alert delay, recovery, and no-data settings for alert mode.
-   - Notification policies to link.
+   - Action policies (configured globally under Action Policies).
 7. Optionally preview the rule results.
 8. Click Save.
 
