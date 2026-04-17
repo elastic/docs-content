@@ -27,19 +27,6 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 :::::{applies-switch}
 
-::::{applies-item} serverless: ga
-
-{{agent-builder}} is the default chat experience in all serverless project types. You can access it from multiple entry points in the UI:
-
-- Select the **Agent Builder** card on the {{es}} home page.
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
-- Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-
-You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-::::
-
 ::::{applies-item} stack: ga 9.4+
 
 On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
@@ -53,11 +40,34 @@ On non-serverless deployments, {{agent-builder}} availability depends on the nav
 :::
 
 :::{dropdown} {{product.observability}} and {{product.security}} solution views
-{{agent-builder}} is enabled by default, replacing AI Assistant. Click **Agents** in the navigation menu, or click the **AI Agent** button in the top-right header to start a conversation from any page.
+{{agent-builder}} is enabled by default, replacing AI Assistant. Click the **AI Agent** button in the top-right header to start a conversation from any page.
 :::
 
 :::{dropdown} Classic view
 {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+:::
+
+You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+::::
+
+::::{applies-item} serverless: ga
+
+{{agent-builder}} is the default chat experience in all serverless project types.
+
+:::{dropdown} {{es-serverless}}
+
+You can access {{agent-builder}} from multiple entry points in the UI:
+
+- Select the **Elastic Agent** card on the {{es}} home page.
+- Click **Agents** in the navigation menu.
+- Click the **AI Agent** button in the top-right header to start a conversation from any page.
+- Open the **Build a chat tool with Agent Builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+
+:::
+
+:::{dropdown} {{obs-serverless}} and {{sec-serverless}}
+{{agent-builder}} is enabled by default, replacing AI Assistant. Click the **AI Agent** button in the top-right header to start a conversation from any page.
 :::
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
