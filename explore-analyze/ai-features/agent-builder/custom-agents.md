@@ -118,7 +118,11 @@ Select the combination of built-in and custom tools available to the agent, base
 stack: ga 9.4+
 ```
 
-Switch to the **Skills** tab to assign [skills](agent-builder-agents.md#skills) to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+Switch to the **Skills** tab to assign skills to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+
+% TODO add link back after the skills PR has been merged (https://github.com/elastic/docs-content/pull/5868)
+% with [skills](agent-builder-agents.md#skills)
+
 
 :::::
 
