@@ -20,13 +20,13 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
-* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to [Supported models](#eis-supported-models).
+* Your Elastic deployment or project comes with [Elastic Managed LLMs](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) by default. These can be used in Agent Builder, the AI Assistant, Attack Discovery, Automatic Import and Search Playground. For the list of available models, refer to [Supported models](#supported-models).
 
 * You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview =9.1, ga 9.2+` {applies_to}`serverless: ga`
 
 * You can use the [`jina-embeddings-v3`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v3) multilingual dense vector embedding model to perform semantic search through the Elastic {{infer-cap}} Service. {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
-## Supported models [eis-supported-models]
+## Supported models
 
 The following tables list the models supported by Elastic {{infer-cap}} Service by model type.
 
