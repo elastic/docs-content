@@ -75,6 +75,14 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
+## Agent Builder Executions [security-billing-agent-builder-executions]
+
+{{agent-builder}} enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for {{sec-serverless}} projects on the Security Analytics Complete tier.
+
+Billing is based on the number of agent executions completed in your project over the course of a month. Each execution represents one conversational turn — a user input and the agent's non-error response. Complex turns that exceed 50,000 input tokens count as additional executions to reflect the heavier processing involved. Error responses are not billed. When an agent triggers a workflow as part of its response, the workflow execution is metered separately under Workflow Executions.
+
+A free allocation of 10,000 executions per month is included. Volume tier reductions apply at higher usage levels. Refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for specific rates and tier breakpoints.
+
 ## Elastic Managed LLMs
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
