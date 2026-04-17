@@ -11,7 +11,7 @@ type: overview
 
 # Create dashboards programmatically [create-dashboards-programmatically]
 
-The Dashboards API and Visualizations API let you create and manage dashboards outside the {{product.kibana}} UI. Use them to automate deployments, manage dashboards as code, or integrate dashboard creation into your own tooling.
+The Dashboards API and Visualizations API let you create and manage dashboards and visualizations outside the {{product.kibana}} UI. Use them to automate deployments, manage dashboards and visualizations as code, or integrate dashboard creation into your own tooling.
 
 | API | When to use this | What you get |
 |---|---|---|
