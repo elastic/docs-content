@@ -123,8 +123,7 @@ Start here:
 
 Explore what you can automate:
 
-- [Automate security operations](/explore-analyze/workflows/automate-security-operations.md): Respond to alerts, create cases, and route notifications.
-- [Manage detection rules at scale](/explore-analyze/workflows/manage-detection-rules.md): Audit rule health and surface errors.
+- [Security use cases](/explore-analyze/workflows/security-use-cases.md): Automate security operations, respond to alerts, and manage detection rules at scale.
 - [Automate observability workflows](/explore-analyze/workflows/automate-observability.md): Respond to anomalies and correlate signals.
 - [Build AI-augmented automation](/explore-analyze/workflows/build-ai-automation.md): Combine workflows with {{agent-builder}} agents.
 

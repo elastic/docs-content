@@ -446,8 +446,10 @@ toc:
         children:
           - file: workflows/get-started/setup.md
           - file: workflows/get-started/build-your-first-workflow.md
-      - file: workflows/automate-security-operations.md
-      - file: workflows/manage-detection-rules.md
+      - file: workflows/security-use-cases.md
+        children:
+          - file: workflows/security-use-cases/automate-security-operations.md
+          - file: workflows/security-use-cases/manage-detection-rules.md
       - file: workflows/automate-observability.md
       - file: workflows/build-ai-automation.md
       - file: workflows/authoring-techniques.md
