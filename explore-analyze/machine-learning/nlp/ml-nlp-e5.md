@@ -171,7 +171,7 @@ For a file-based access, follow these steps:
 3. Point your {{es}} deployment to the model directory by adding the following line to the `config/elasticsearch.yml` file:
 
     ```yml
-    xpack.ml.model_repository: file://${path.home}/config/models/`
+    xpack.ml.model_repository: file://${path.home}/config/models/
     ```
 
 4. Repeat step 2 and step 3 on all master-eligible nodes.
