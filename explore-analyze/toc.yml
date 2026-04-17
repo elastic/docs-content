@@ -193,6 +193,7 @@ toc:
         crosslink: elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md
   - file: ai-features.md
     children:
+      - file: ai-features/automatic-import.md
       - file: ai-features/elastic-agent-builder.md
         children:
           - file: ai-features/agent-builder/get-started.md
