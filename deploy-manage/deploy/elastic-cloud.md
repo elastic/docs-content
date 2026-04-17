@@ -58,3 +58,23 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 {{ecloud}} offers APIs to manage your organization and its resources. Check the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs.
 
 More tools are available for you to make the most of your {{ecloud}} organization and {{es}}. Refer to [](/deploy-manage/deploy/elastic-cloud/tools-apis.md).
+
+## Browser access requirements [browser-access]
+
+If your organization restricts outbound browser traffic with a firewall, proxy, or secure web gateway, ensure users can access the following domains.
+
+### Standard {{ecloud}} domains
+
+These domains are used for the {{ecloud}} console, authentication, and deployment or project endpoints:
+
+* `cloud.elastic.co`
+* `*.cloud.es.io`
+* `*.elastic.cloud`
+
+### Additional required domains
+
+These domains are required to load certain assets used by the {{ecloud}} console and {{kib}}:
+
+* `console.estccdn.com`: Serves static assets required by the {{ecloud}} console after sign-in. If unreachable, some pages in `cloud.elastic.co` might appear blank.
+
+* `kibana.estccdn.com`: Serves assets required to load {{kib}} in {{serverless-short}} projects. If unreachable, {{kib}} might appear as a blank page.
