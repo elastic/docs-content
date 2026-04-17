@@ -162,6 +162,9 @@ $$$glossary-ccr$$$ {{ccr}} (CCR)
 $$$glossary-ccs$$$ {{ccs}} (CCS)
 :   Searches [data streams](/reference/glossary/index.md#glossary-data-stream) and [indices](/reference/glossary/index.md#glossary-index) on [remote clusters](/reference/glossary/index.md#glossary-remote-cluster) from a [local cluster](/reference/glossary/index.md#glossary-local-cluster). See [Search across clusters](/explore-analyze/cross-cluster-search.md).
 
+$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: preview`
+:   Searches across multiple {{serverless-full}} [linked projects](/reference/glossary/index.md#glossary-linked-project) from a single [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+
 $$$CRD$$$CRD
 :   [Custom resource definition](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-CustomResourceDefinition). {{eck}} extends the Kubernetes API with CRDs to allow users to deploy and manage Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash resources just as they would do with built-in Kubernetes resources.
 
@@ -494,7 +497,10 @@ $$$glossary-leader-index$$$ leader index
 :   Source [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A leader index exists on a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) and is replicated to [follower indices](/reference/glossary/index.md#glossary-follower-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
 $$$glossary-lens$$$ Lens
-:   Enables you to build visualizations by dragging and dropping data fields. Lens makes makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
+:   Enables you to build visualizations by dragging and dropping data fields. Lens makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
+
+$$$glossary-linked-project$$$ linked project
+:   An {{serverless-full}} project that is linked to an [origin project](/reference/glossary/index.md#glossary-origin-project). Data in the linked project becomes searchable from the origin project. See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$glossary-local-cluster$$$ local cluster
 :   [Cluster](/reference/glossary/index.md#glossary-cluster) that pulls data from a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) in [{{ccs}}](/reference/glossary/index.md#glossary-ccs) or [{{ccr}}](/reference/glossary/index.md#glossary-ccr). See [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md).
@@ -568,6 +574,9 @@ $$$OpenShift$$$OpenShift
 $$$Operator$$$operator
 :   A design pattern in Kubernetes for [managing custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). {{eck}} implements the operator pattern to manage Elasticsearch, Kibana and APM Server resources on Kubernetes.
 
+$$$glossary-origin-project$$$ origin project
+:   In a {{cps}}, the base {{serverless-full}} project where you link projects and run searches. See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
+
 $$$glossary-output-plugin$$$ output plugin
 :   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that writes [event](/reference/glossary/index.md#glossary-event) data to a specific destination. Outputs are the final stage in the event [pipeline](/reference/glossary/index.md#glossary-pipeline). Popular output plugins include elasticsearch, file, graphite, and statsd.
 
@@ -597,6 +606,9 @@ $$$glossary-plugin$$$ plugin
 
 $$$glossary-primary-shard$$$ primary shard
 :   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
+
+$$$glossary-project-tag$$$ project tag
+:   A key-value pair that you use as metadata for an {{serverless-full}} project. You can use project tags to categorize and organize projects, and to filter lists of projects. If [{{cps}}](/reference/glossary/index.md#glossary-cps) is enabled, you can also use project tags to [route searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md). See [Project tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags). _For tags on {{kib}} saved objects, see [tag](/reference/glossary/index.md#glossary-tag)._
 
 $$$glossary-proxy$$$ proxy
 :   A highly available, TLS-enabled proxy layer that routes user requests, mapping cluster IDs that are passed in request URLs for the container to the cluster nodes handling the user requests.
@@ -748,7 +760,7 @@ $$$glossary-system-index$$$ system index
 ## T [t-glos]
 
 $$$glossary-tag$$$ tag
-:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md).
+:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md). _For metadata on {{ecloud}} projects, see [project tag](/reference/glossary/index.md#glossary-project-tag)._
 
 $$$glossary-term-join$$$ term join
 :   A shared key that combines vector features with the results of an {{es}} terms aggregation. Term joins augment vector features with properties for data-driven styling and rich tooltip content in maps.

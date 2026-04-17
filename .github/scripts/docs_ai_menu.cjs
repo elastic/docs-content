@@ -73,9 +73,7 @@ function buildMenuBody(state) {
     '',
     ...WORKFLOW_ORDER.map((key) => buildWorkflowLine(key, normalizedState[key])),
     '',
-    'Powered by GitHub Agentic Workflows and [docs-actions](https://github.com/elastic/docs-actions).',
-    '',
-    'For more information, reach out to the docs team.',
+    'Powered by GitHub Agentic Workflows and [docs-actions](https://github.com/elastic/docs-actions). For more information, reach out to the docs team.',
     '',
     MENU_END,
   ].join('\n');
