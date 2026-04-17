@@ -47,7 +47,7 @@ Depending on the settings you configure, slow logs can record:
 * optional metadata (such as the `_source` request body or `user.*` fields)
 
 ::::{tip}
-If a call was initiated with an `X-Opaque-ID` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
+If a call was initiated with an `X-Opaque-Id` header, then the ID is automatically included in Search slow logs in the **elasticsearch.slowlog.id** field. See [X-Opaque-Id HTTP header](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id) for details and best practices.
 ::::
 
 The following are examples of a search and an indexing operation in the slow log respectively:

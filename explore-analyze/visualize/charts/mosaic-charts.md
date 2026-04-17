@@ -84,7 +84,9 @@ The **Horizontal axis** dimension defines the columns of the mosaic. Column widt
 
     - **Top values**: Create columns for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term columns. When multiple fields are selected, each column represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many categories to display.
+      - **Number of values**: How many categories to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
@@ -115,7 +117,9 @@ The **Vertical axis** dimension defines the rows within each column. Rectangle h
 
     - **Top values**: Create rows for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term rows. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many categories to display.
+      - **Number of values**: How many categories to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
