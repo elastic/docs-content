@@ -119,11 +119,6 @@ Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze
 stack: ga 9.4
 ```
 
-% TODO (9.4): Confirm with Streams team (kibana#258330) before publishing:
-% 1. Are all platform.streams.* tools assignable to arbitrary custom agents, or are they
-%    only available within the built-in Streams skill/agent?
-% 2. Are these available in serverless? If so, which projects?
-
 Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
 
 `platform.streams.list_streams` {applies_to}`stack: ga 9.4`
@@ -142,10 +137,10 @@ Streams tools provide capabilities for exploring and managing [Streams](/solutio
 :   Returns lifecycle and storage statistics for a stream: effective retention policy and its source, total storage size, document count, and ILM tier breakdown.
 
 `platform.streams.query_documents` {applies_to}`stack: ga 9.4`
-:   Queries or aggregates data from a stream using a natural language description.
+:   Queries or aggregates data from a stream using a natural language description. The tool translates the description into an {{es}} query internally. Returns documents in flat dot-notation format or aggregation results.
 
 `platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4`
-:   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion.
+:   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion. Use this tool for root cause analysis when data quality issues are detected.
 
 % sig_events.search_kis is behind a feature flag in 9.4 — uncomment when publicly available.
 % Source: https://github.com/elastic/kibana/pull/258399
