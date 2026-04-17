@@ -15,7 +15,7 @@ products:
 
 # Build AI-augmented automation [workflows-build-ai-automation]
 
-Workflows and {{agent-builder}} are complementary. Workflows give you deterministic, auditable, event-driven automation — the steps always run in the same order and produce the same kind of result. {{agent-builder}} agents give you reasoning — the ability to interpret unstructured context, classify signals, and generate natural-language summaries. Combining the two lets you build automation that's both reliable and intelligent.
+Workflows and {{agent-builder}} are complementary. Workflows give you deterministic, auditable, event-driven automation: the steps always run in the same order and produce the same kind of result. {{agent-builder}} agents give you reasoning: the ability to interpret unstructured context, classify signals, and generate natural-language summaries. Combining the two lets you build automation that's both reliable and intelligent.
 
 The integration runs in both directions: a workflow can call an agent as a step, and an agent can trigger a workflow as a tool.
 
@@ -27,8 +27,8 @@ The integration runs in both directions: a workflow can call an agent as a step,
 
 ## When to use each direction [workflows-ai-when-to-use]
 
-- Use **agent-from-workflow** when the workflow already knows what it's doing and needs AI only to reason over a specific data set — for example, summarizing an alert, classifying severity, or extracting fields from unstructured text.
-- Use **workflow-from-agent** when the user (or another agent) is in a conversation and wants to trigger a deterministic procedure — for example, isolating a host, opening a case, or running a set of enrichment queries.
+- Use **agent-from-workflow** when the workflow already knows what it's doing and needs AI only to reason over a specific data set. For example, summarizing an alert, classifying severity, or extracting fields from unstructured text.
+- Use **workflow-from-agent** when the user (or another agent) is in a conversation and wants to trigger a deterministic procedure. For example, isolating a host, opening a case, or running a set of enrichment queries.
 
 ## Learn more
 

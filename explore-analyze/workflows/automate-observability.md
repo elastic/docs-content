@@ -15,7 +15,7 @@ products:
 
 # Automate observability workflows [workflows-automate-observability]
 
-Observability signals — infrastructure metrics, application logs, traces, and anomaly detection results — generate the same kind of "observe a problem, do something about it" loop that security does. Use workflows to close that loop: correlate signals across sources, route to the right team, and run scheduled maintenance or reporting tasks.
+Observability signals (infrastructure metrics, application logs, traces, and anomaly detection results) generate the same kind of "observe a problem, do something about it" loop that security does. Use workflows to close that loop: correlate signals across sources, route to the right team, and run scheduled maintenance or reporting tasks.
 
 ## What you can automate [workflows-observability-patterns]
 

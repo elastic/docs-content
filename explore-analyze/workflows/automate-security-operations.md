@@ -15,7 +15,7 @@ products:
 
 # Automate security operations [workflows-automate-security]
 
-Use workflows to close the loop between detection and response. When a detection or alerting rule fires, a workflow can enrich the alert with additional context, create or update a case, notify the right channel, and take follow-up actions — all without leaving Elastic.
+Use workflows to close the loop between detection and response. When a detection or alerting rule fires, a workflow can enrich the alert with additional context, create or update a case, notify the right channel, and take follow-up actions, all without leaving Elastic.
 
 This section describes common security automation patterns you can build with workflows today. Each pattern uses capabilities that already exist in the workflow engine: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [{{es}} action steps](/explore-analyze/workflows/steps/elasticsearch.md), [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md), [AI steps](/explore-analyze/workflows/steps/ai-steps.md), and [external system connectors](/explore-analyze/workflows/steps/external-systems-apps.md).
 
@@ -27,7 +27,7 @@ The following patterns map directly to workflow building blocks:
 - **Create and populate cases.** The `kibana.createCaseDefaultSpace` action opens an {{elastic-sec}} case with fields populated from the alert. Refer to [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md) for the full list of named case actions.
 - **Route by severity or entity.** Use [`if` steps](/explore-analyze/workflows/steps/if.md) to branch on alert severity, host, user, or rule name, and send notifications to different Slack channels, PagerDuty services, or Jira projects.
 - **Enrich alerts with external context.** Use [HTTP actions](/explore-analyze/workflows/steps/external-systems-apps.md) to pull data from threat intelligence APIs, CMDBs, or identity providers, then write the enriched record back to {{es}} or into the case body.
-- **Investigate with AI assistance.** An [AI step](/explore-analyze/workflows/steps/ai-steps.md) can call an {{agent-builder}} agent to summarize an alert, classify severity, or draft a triage note that the workflow then attaches to the case.
+- **Investigate with AI assistance.** An [AI step](/explore-analyze/workflows/steps/ai-steps.md) can call an {{agent-builder}} agent to summarize an alert, classify severity, or draft a triage note for the workflow to attach to the case.
 
 ## Example flow [workflows-security-example-flow]
 

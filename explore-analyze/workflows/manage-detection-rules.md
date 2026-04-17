@@ -15,9 +15,9 @@ products:
 
 # Manage detection rules at scale [workflows-manage-detection-rules]
 
-Teams that run large sets of detection rules — prebuilt, custom, or both — have recurring operational work that doesn't fit into alert response. Rules need to be audited for health, errors need to be surfaced quickly, coverage needs to be tracked against a framework, and status often needs to flow back to an external tracker.
+Teams that run large sets of detection rules (prebuilt, custom, or both) have recurring operational work. Rules need to be audited for health, errors need to be surfaced quickly, coverage needs to be tracked against a framework, and status often needs to flow back to an external tracker.
 
-Use workflows to automate these rule-operations tasks. Workflows can query detection engine APIs on a schedule, post summaries to a chat channel, index results for dashboarding, or open a ticket when something is wrong — all using existing workflow building blocks.
+Use workflows to automate these rule-operations tasks. Workflows can query detection engine APIs on a schedule, post summaries to a chat channel, index results for dashboarding, or open a ticket when something is wrong, all using existing workflow building blocks.
 
 ## What you can automate [workflows-rule-ops-patterns]
 
