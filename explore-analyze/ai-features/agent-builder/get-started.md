@@ -32,7 +32,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
 
 :::{dropdown} {{es}} solution view
-{{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
+{{agent-builder}} is enabled by default, replacing AI Assistant. You can access it from multiple entry points:
 - Select the **Agent Builder** card on the {{es}} home page.
 - Click **Agents** in the navigation menu.
 - Click the **AI Agent** button in the top-right header to start a conversation from any page.
