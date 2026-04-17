@@ -66,9 +66,7 @@ To change which model is used by default:
 2. Select your preferred connector from the **Default model** dropdown.
 3. Save your changes.
 
-The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection — for instance, directing workloads with different performance, cost, or reasoning requirements to the most appropriate model for each use case.
-
-% TODO: Review Feature settings (Stack Management > Model management > Feature settings) once the 9.4 release scope is confirmed. Verify which AI feature sections ship in 9.4 and consider expanding this section with per-feature configuration guidance and a screenshot if appropriate.
+The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
 
 :::
 
