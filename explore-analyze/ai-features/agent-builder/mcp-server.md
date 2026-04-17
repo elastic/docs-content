@@ -97,7 +97,7 @@ POST /_security/api_key
       "applications": [
         {
           "application": "kibana-.kibana", <2>
-          "privileges": ["feature_agentBuilder.read"],
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]
@@ -140,7 +140,7 @@ POST /_security/api_key
       "applications": [
         {
           "application": "kibana-.kibana", <4>
-          "privileges": ["feature_agentBuilder.read"],
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]

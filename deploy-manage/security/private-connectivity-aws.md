@@ -32,22 +32,26 @@ To learn how private connection policies impact your deployment or project, refe
 :::
 
 ## Requirements
+```{applies_to}
+serverless:
+```
 
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus. 
+The following requirements apply to the project where you want to apply a private connection policy:
 
-:::{tip}
-You can opt out by disconnecting all policies from the project.
+:::{include} _snippets/network-sec-tier-reqs.md
 :::
+
+There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
 ## Considerations
 
-Before you begin, review  the following considerations:
+Before you decide to set up private connectivity with AWS PrivateLink, review  the following considerations:
 
 ### Private connections and regions
 
 Private connectivity with AWS PrivateLink is supported only in AWS regions.
 
-AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
+AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the [list of AWS regions](#ec-private-link-service-names-aliases) shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
 Refer to [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
@@ -129,7 +133,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#associate-private-connection-policy). |
-|  | 5. **Optional**: [Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
 |  | 6. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
@@ -141,9 +145,11 @@ Private connection policies are optional for AWS PrivateLink. After the VPC endp
 
 ### Before you begin [ec-aws-vpc-overlapping-azs]
 
-Before you begin, you should ensure your VPC endpoint is in all availability zones supported by {{ecloud}} for the region and resource type. Placing your VPC endpoint in all supported {{ecloud}} availability zones for the region improves throughput and resiliency when connecting over PrivateLink.
+Before you begin, you should ensure your VPC endpoint is in all availability zones (AZ) supported by {{ecloud}} for the region and resource type. Placing your VPC endpoint in all supported {{ecloud}} availability zones for the region improves throughput and resiliency when connecting over PrivateLink.
 
-For {{ech}} deployments, if your VPC is not in all supported availability zones, traffic can become imbalanced, saturating some coordinating nodes while underutilizing others, which might impact performance.
+:::{important}
+For {{ech}} deployments, if your VPC is not in all supported availability zones (AZ), the traffic can become imbalanced between the clients and the nodes of a deployment that are receiving traffic from the clients, including {{es}} coordinating nodes, APM instances, and Integrations Server instances. The unbalanced traffic can saturate some nodes or underutilize others, which might impact performance.
+:::
 
 You can find the zone name to zone ID mapping with AWS CLI:
 
@@ -347,10 +353,6 @@ Create a new private connection policy.
     :::
 
 8.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPC filter, then after you associate the filter with a resource, it starts filtering traffic.
-    
-    :::{note}
-    Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
-    :::
 9. To automatically attach this private connection policy to new resources of this type, select **Apply by default**.
 10.  Click **Create**.
 11. (Optional) If you created a private connection policy for {{ech}} deployments, you can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
@@ -360,8 +362,6 @@ The next step is to [associate the policy](#associate-private-connection-policy)
 ### Optional: Associate a private connection policy with a deployment or project[associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment or project from the policy's settings, or from your deployment's or project's settings. 
-
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply private connection policies. During the promotional period, applying a private connection policy to a project opts that project in to Serverless Plus.
 
 #### From a deployment or project
 
@@ -387,7 +387,7 @@ Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/e
 4. Under **Apply to resources**, associate the policy with one or more deployments or projects.
 5. Click **Update** to save your changes.
 
-## Optional: Add an IP filter to allow traffic to {{kib}}
+## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::
