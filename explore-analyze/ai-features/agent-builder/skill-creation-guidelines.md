@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Guidelines for creating skills in {{agent-builder}}
+# Write effective custom skills in {{agent-builder}}
 
 [Custom skills](custom-skills.md) give your agents consistent, reusable expertise for specific task domains. The quality of a skill depends almost entirely on how well its instructions are written. This guide covers how to write instructions that help the agent select the right skill, follow the right steps, and handle edge cases gracefully.
 
@@ -232,10 +232,13 @@ Describe how to use the available tools within your instructions so the agent kn
 
 After saving, assign the skill to an agent and test it with realistic queries. Check that the agent selects the skill when expected, follows the steps correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
 
+## Next steps
+
+- [Create a custom skill](custom-skills.md) and add it to your skill library.
+- Review the [built-in skills](builtin-skills-reference.md) for examples of how Elastic structures skill descriptions and instructions.
+- Explore [prompt engineering best practices](prompt-engineering.md) for broader guidance on writing custom instructions, tool descriptions, and chat prompts.
+
 ## Related pages
 
 - [Skills in {{agent-builder}}](skills.md)
-- [Custom skills](custom-skills.md)
-- [Built-in skills reference](builtin-skills-reference.md)
-- [Best practices for prompt engineering](prompt-engineering.md)
 - [Skills APIs](kibana-api.md#skills-apis)

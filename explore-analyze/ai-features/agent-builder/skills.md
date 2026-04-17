@@ -14,7 +14,7 @@ products:
 
 # Skills in {{agent-builder}}
 
-Skills are reusable instruction sets that give [agents](agent-builder-agents.md) specialized expertise for a particular type of task. Instead of embedding the same detailed instructions in every agent that needs them, you author a skill once and assign it wherever it's needed. This keeps agent configurations clean and makes expertise shareable across your team.
+Skills enable you to write expertise once and share it across any number of agents. A skill is a reusable instruction set that gives [agents](agent-builder-agents.md) specialized expertise for a particular type of task. Instead of embedding the same detailed instructions in every agent that needs them, you author a skill once and assign it wherever it's needed. This keeps agent configurations clean and makes expertise shareable across your team.
 
 Tools are discrete operations the agent can invoke. Skills are higher-level capability packs that bundle tools, instructions, and context for a specific task domain. To learn more about tools, refer to [Tools](tools.md).
 

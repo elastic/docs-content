@@ -16,9 +16,20 @@ products:
 
 Custom skills let you package domain-specific knowledge and tools into reusable instruction sets that can be assigned to any [agent](agent-builder-agents.md). For an overview of how skills work, refer to [Skills in {{agent-builder}}](skills.md).
 
+## When to create a custom skill
+
+Create a custom skill when you have domain-specific knowledge or procedures that are not covered by the [built-in skills](builtin-skills-reference.md). Custom skills are particularly useful when you need to:
+
+- **Standardize a workflow**: Encode a repeatable process (such as a triage runbook or an onboarding checklist) so that every agent follows the same steps.
+- **Share expertise across agents**: Write instructions once and assign them to multiple agents instead of duplicating the same guidance in each agent's system prompt.
+- **Scope tools to a task**: Bundle specific tools with the instructions that explain how and when to use them, so the agent only has access to relevant tools for the task at hand.
+- **Keep agent prompts clean**: Move detailed, task-specific instructions out of the system prompt and into a skill that loads only when needed.
+
 ## Create a custom skill
 
-Custom skills are saved to your skill library and can be assigned to any agent. You can create a skill from **Manage components > Skills**, or inline when adding skills to an agent from **Customize > Skills**.
+Follow these steps to create a custom skill and add it to your skill library. Once saved, you can assign the skill to any agent, including the default AI agent.
+
+You can create a skill from **Manage components > Skills**, or inline when adding skills to an agent from **Customize > Skills**.
 
 :::{tip}
 For guidance on writing effective descriptions and instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
@@ -55,6 +66,14 @@ Select **Save**. The skill is added to your library and becomes available to ass
 
 ::::
 
+::::{step} Test the skill
+
+[Add the skill to an agent](#add-skills-to-an-agent), then send realistic queries that should trigger it. Check that the agent selects the skill when expected, follows your instructions correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
+
+For guidance on writing effective instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
+
+::::
+
 :::::
 
 ### Use the API
@@ -67,6 +86,10 @@ To add skills to the selected agent, go to **Customize > Skills** and select **A
 
 - **Import from skill library**: Add a previously created skill from **Manage components > Skills** to this agent.
 - **Create a skill**: Create a new skill and add it to this agent in one step. The new skill is also saved to **Manage components > Skills**.
+
+:::{tip}
+Use **Import from skill library** when you already have a tested skill you want to reuse. Use **Create a skill** when you want to build something new while configuring an agent and do not need to set it up separately first.
+:::
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
 
