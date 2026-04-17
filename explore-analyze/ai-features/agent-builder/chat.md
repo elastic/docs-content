@@ -164,17 +164,20 @@ Select **Inspect response** to view detailed information about individual tool c
 
 Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
-### Human in the loop [human-in-the-loop]
-
+### Review and confirm agent changes
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Certain tools that perform sensitive or destructive actions require explicit user approval before the agent can proceed. When an agent calls one of these tools, execution pauses and the chat displays an approval prompt.
+When an agent proposes a change that would modify a resource, the chat pauses and presents a preview of the proposed changes before they take effect. The format of the preview and the actions available depend on the skill the agent is using.
 
-You must click **Approve** to allow the tool to run, or **Deny** to block the action and continue the conversation without executing the tool.
+No changes are applied until you explicitly confirm or dismiss the preview.
 
-% TODO: Add a screenshot of the HITL Approve/Deny prompt once captured from the QA environment.
+:::{image} images/agent-builder-preview-changes.png
+:screenshot:
+:alt: Preview panel showing proposed changes from an agent action before they are applied.
+:width: 250px
+:::
 
 ## Customize your agent [customize-your-agent]
 
@@ -190,13 +193,18 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 **Skills**
 :   Lists the [skills](agent-builder-agents.md#skills) assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**.
 
+<!--
 **Plugins**
-:   TODO
+:   TODO Will be added in an other PR
+-->
 
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
 
-% TODO: Add screenshots of the Customize > Overview, Skills, Tools, and Plugins pages once captured.
+:::{image} images/customize-your-agent-accordion.png
+:alt: Customize accordion open
+:width: 200px
+:::
 
 ## Manage components [manage-components]
 
@@ -212,16 +220,22 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills, edit existing ones, or assign them to agents.
 
+<!--
 **Plugins**
-:   TODO
+:   TODO Will be added in an other PR
 
 **Connectors**
-:   TODO
+:   TODO Will be added in an other PR
+
+-->
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
 
-% TODO: Add a screenshot of the global Manage components view once captured.
+:::{image} images/manage-components.png
+:alt: Manage componenet menu
+:width: 350px
+:::
 
 :::{tip}
 You can also reach the global agents list from the **Manage agents** button in the [agent selector](#select-a-different-agent) dropdown.
