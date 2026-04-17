@@ -83,7 +83,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
-**Elastic endpoint exceptions** (optional)
+**Elastic endpoint exceptions** (optional) {applies_to}`stack: ga 9.0-9.3`
 :   Adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
 
     ::::{note}

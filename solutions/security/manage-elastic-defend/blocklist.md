@@ -26,7 +26,10 @@ The blocklist is not intended to broadly block benign applications for non-secur
 
 By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. You can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
 
-1. Find **Blocklist** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Depending on your version, do one of the following:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Blocklist** tab.
+   * {applies_to}`stack: ga 9.0-9.3` Go to the **Blocklist** page using the navigation menu or the global search field.
+ 
 2. Click **Add blocklist entry**. The **Add blocklist** flyout appears.
 3. Fill in these fields in the **Details** section:
 
