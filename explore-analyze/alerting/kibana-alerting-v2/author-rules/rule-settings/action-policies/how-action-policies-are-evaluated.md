@@ -9,6 +9,8 @@ description: "How Kibana alerting v2 action policies match alert episodes, apply
 
 # How Kibana alerting v2 action policies are evaluated [how-action-policies-evaluated-v2]
 
+$$$how-action-policies-evaluated-v2$$$
+
 Action policies are separate from rules. After a rule runs and produces or updates alert episodes, the system decides which policies apply, whether notifications should go out, and which workflows receive them. You configure policies once. They can apply to many rules.
 
 ## How policies are matched to episodes

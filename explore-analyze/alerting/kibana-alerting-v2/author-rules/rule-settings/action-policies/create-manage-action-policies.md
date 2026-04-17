@@ -9,6 +9,8 @@ description: "Create, configure, and manage Kibana alerting v2 action policies, 
 
 # Create and manage Kibana alerting v2 action policies [create-manage-action-policies-v2]
 
+$$$create-manage-action-policies-v2$$$
+
 Create action policies to control which alerts trigger notifications, how alerts are grouped, how frequently notifications are sent, and where they are routed. Policies are **global**: you create and edit them from the **Action Policies** area, not from the rule form. Rules do not “link” to policies. Scoping is defined on the policy with **`rule_labels`** and matchers. Refer to [Action policies](../action-policies.md).
 
 ## Create an action policy

@@ -9,6 +9,8 @@ description: "Action policies control how and when Kibana alerting v2 alerts rea
 
 # Kibana alerting v2 action policies [action-policies-v2]
 
+$$$action-policies-v2$$$
+
 An action policy defines how and when alerts reach people and systems. In Kibana alerting v2, action policies are **global** saved objects: they are not attached to individual rules. Which rules a policy applies to is determined by **`rule_labels`** on the policy and by the episode matcher, not by references from the rule.
 
 ## Compare Kibana alerting v1 and v2 action policies
