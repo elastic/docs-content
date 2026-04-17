@@ -1,9 +1,9 @@
 ---
-navigation_title: Build AI-augmented automation
+navigation_title: AI-augmented workflows
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Combine Elastic Workflows with Agent Builder to build AI-augmented automation that pairs deterministic steps with agent reasoning.
+description: Combine Elastic Workflows with Agent Builder to build AI-augmented workflows that pair deterministic steps with agent reasoning.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Build AI-augmented automation [workflows-build-ai-automation]
+# AI-augmented workflows [workflows-build-ai-automation]
 
 Workflows and {{agent-builder}} are complementary. Workflows give you deterministic, auditable, event-driven automation: the steps always run in the same order and produce the same kind of result. {{agent-builder}} agents give you reasoning: the ability to interpret unstructured context, classify signals, and generate natural-language summaries. Combining the two lets you build automation that's both reliable and intelligent.
 

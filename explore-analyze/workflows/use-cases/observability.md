@@ -1,5 +1,5 @@
 ---
-navigation_title: Automate observability workflows
+navigation_title: Observability
 applies_to:
   stack: preview 9.3
   serverless: preview
@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Automate observability workflows [workflows-automate-observability]
+# Observability workflows [workflows-automate-observability]
 
 Observability signals (infrastructure metrics, application logs, traces, and anomaly detection results) generate the same kind of "observe a problem, do something about it" loop that security does. Use workflows to close that loop: correlate signals across sources, route to the right team, and run scheduled maintenance or reporting tasks.
 
