@@ -16,6 +16,10 @@ description: Add and manage rule exceptions to prevent false positives and reduc
 
 Exceptions prevent a rule from generating alerts when specific conditions are met. You can add exceptions to individual rules, or create [shared exception lists](create-manage-shared-exception-lists.md) that apply to multiple rules.
 
+::::{note}
+Escaping rules differ between detection rule exceptions and {{elastic-endpoint}} exceptions. Before configuring exception conditions, refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) to verify you're using the correct format.
+::::
+
 ## Prerequisites [exceptions-requirements]
 
 To use exceptions, your role must have the appropriate access. To learn how to access other detection features, refer to [](/solutions/security/detect-and-alert/turn-on-detections.md).
@@ -103,7 +107,7 @@ After selecting one of the entry points above, the **Add rule exception** flyout
         * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{note}
-            Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
+            Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. These escaping rules apply **only** to detection rule exceptions. {{elastic-endpoint}} exceptions and trusted applications do **not** require escaping. Refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) for a full syntax comparison.
             ::::
 
             ::::{important}
@@ -192,7 +196,7 @@ The **Add Endpoint Exception** flyout opens.
 1. Modify the conditions as needed. The same [operators](#detection-rule-exceptions) apply, with these differences:
 
     * Fields with conflicts are marked with a warning icon {icon}`warning`. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
-    * Unlike detection rule exceptions, Elastic Endpoint exceptions do not require escaping special characters.
+    * Unlike detection rule exceptions, {{elastic-endpoint}} exceptions do not require escaping special characters. Enter file paths and values exactly as they appear on the host (for example, `C:\Windows\explorer.exe`, not `C:\\Windows\\explorer.exe`). Refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) for syntax details and examples.
 
 2. (Optional) Add a comment to the exception.
 3. Select any applicable alert actions:

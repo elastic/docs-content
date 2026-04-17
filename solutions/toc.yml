@@ -667,6 +667,7 @@ toc:
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
+          - file: security/manage-elastic-defend/exception-types-and-syntax.md
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md
