@@ -86,17 +86,12 @@ You can send a search to the background only after it starts running. Until then
 
 1. Select {icon}`background_task` **Send to background**. The search is sent to the background and added to the queue of background searches.
 
-:::::{applies-switch}
-
-::::{applies-item} {serverless:, stack: ga 9.4+ }
-You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser. When the search completes, a notification appears even if you have navigated to a different application, and selecting it opens the completed search results directly.
-::::
-
-::::{applies-item} stack: ga 9.2-9.3
 You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser. Once the search has completed, a notification informs you and lets you access the search to view its results.
-::::
 
-:::::
+:::{tip}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+The notification appears even if you have navigated to a different application. Selecting it opens the completed search results directly.
+:::
 
 Background searches expire after 7 days. Beyond that period, you must run the search again. You can change this default value by editing the [`data.search.sessions.defaultExpiration`](kibana://reference/configuration-reference/search-sessions-settings.md) setting.
 
