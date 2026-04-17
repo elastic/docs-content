@@ -51,6 +51,8 @@ The panel displays:
 ::::
 
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Rules with gaps** overview above the Rules table is expanded by default so you can review gap metrics without opening the section first.
+
 #### Gap information [gap-information]
 
 Within the **Rule Monitoring** tab **Rules** table, several columns provide gap data:
@@ -99,7 +101,7 @@ The Gaps table has the following columns:
 | Column | Description |
 |---|---|
 | Status | The current state of the gap: `Filled`, `Partially filled`, or `Unfilled`. |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Reason | Why the gap occurred, when [gap reason detection](#gap-detection-scope-and-gap-reasons) is enabled. Typical values are **Rule was disabled** and **Rule did not run**. You can filter the table by reason. |
+| {applies_to}`stack: ga 9.4+` Reason | Why the gap occurred, when [gap reason detection](#gap-detection-scope-and-gap-reasons) is enabled. Typical values are **Rule was disabled** and **Rule did not run**. |
 | Detected at | When the gap was first discovered. |
 | Manual fill tasks | The status of the manual run filling the gap. For details, refer to the [Manual runs table](/solutions/security/detect-and-alert/manage-detection-rules.md#manual-runs-table). |
 | Event time covered | How much progress the manual run has made filling the gap. |
@@ -171,27 +173,30 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-When gap reason detection is enabled for your deployment, gaps can record *why* they occurred, and you can control which of those reasons participate in gap monitoring and automatic gap filling.
+Gap reasons are available only after you select **Include gaps created when a rule was disabled** in **Settings** (above the Rules table). With that option on, gaps can record *why* they occurred, and you can control how those reasons participate in gap monitoring and automatic gap filling.
 
-:::{note}
-On self-managed {{stack}}, an administrator enables gap reason detection with the `gapReasonDetectionEnabled` value in the `xpack.securitySolution.enableExperimental` setting in `kibana.yml`. In {{serverless-short}}, availability depends on your project's feature configuration. The **Gap detection scope** controls and **Reason** column appear only when this capability is on.
+:::{admonition} Required privileges
+
+* **Settings** (above the Rules table) — Your role must include the right detection rule permissions and access to **Advanced Settings** in {{kib}}. If **Settings** is missing or options are read-only, ask an administrator to update your privileges.
+* **Gap detection scope** — Changing this requires `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). Saving your changes updates the gap auto-fill scheduler.
+
+The description at the top of the modal that opens when you select **Settings** reflects your access, which can be access to gap monitoring only, or access to both the gap monitoring and automatic gap fill features.
+
 :::
 
-**Gap reasons** describe the source of a gap, for example:
+Gap reasons describe the source of a gap. It can be either of the following:
 
-* **Rule was disabled** — the rule was off during part of the gap interval.
-* **Rule did not run** — the rule did not execute (for example, when {{kib}} was unavailable).
+* **Rule was disabled** - The rule was off during part of the gap interval.
+* **Rule did not run** - The rule did not execute, for example, when {{kib}} was not available.
 
 These values appear in the **Reason** column on the **Execution results** tab (and in related filters). They also drive which gaps are included in the **Rules with gaps** overview and in automatic gap fill.
 
-**Gap detection scope** (in **Rule Settings** next to **Auto gap fill settings**) applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was disabled. By default, those gaps are excluded from the overview and from automatic gap fill, because they often reflect planned maintenance rather than an unexpected detection failure.
+The gap detection scope applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was turned off. By default, those gaps are excluded from the overview and from automatic gap fill because they often reflect planned maintenance rather than an unexpected detection failure.
 
-Changing **Gap detection scope** requires `All` access to **Advanced Settings** in {{kib}} (see [Configure advanced Security Solution settings](/solutions/security/get-started/configure-advanced-settings.md)). Saving **Rule Settings** updates the gap auto-fill scheduler and keeps the read-only `securitySolution:excludedGapReasons` advanced setting in sync.
+When gaps from disabled rules are excluded, the **Fill gaps** bulk action shows a reminder that rules with that gap type won't be filled.
 
-When gaps from disabled rules are excluded, bulk **Fill gaps** may show a reminder that those gaps will not be scheduled until you include them in scope.
-
-::::{tip}
-The **Gap fill status** value **`Error`** reflects the automatic gap fill scheduler and retry limits. It is not derived from **Gap detection scope**, which only controls which gaps are monitored and filled.
+::::{note}
+The **Gap fill status** value `Error` means automatic gap fill has reached the maximum retry limit for a gap and the gap is still not filled. It's not derived from **Gap detection scope**, which only controls which gaps are monitored and filled.
 ::::
 
 ### Monitor automatic gap fill
