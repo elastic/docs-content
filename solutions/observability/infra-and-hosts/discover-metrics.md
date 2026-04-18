@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga
+  stack: ga 9.4+
   serverless: ga
 description: Make the most of Discover to explore metrics data.
 products:
