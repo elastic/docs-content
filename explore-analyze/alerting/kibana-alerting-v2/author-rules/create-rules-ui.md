@@ -24,10 +24,7 @@ Choose between Detect (signals only) and Alert (lifecycle tracking and notificat
 
 ### ES|QL query
 
-Write the ES|QL query that defines what to detect. The query has two parts:
-
-- Base query (required): the main ES|QL query that selects, aggregates, and transforms data.
-- Alert condition (optional): a `WHERE` clause that filters to breaching rows.
+Write the ES|QL query that defines what to detect. The form separates the **base query** and optional **alert condition**; see [ES|QL query structure](../author-rules.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
 
 Use the YAML mode toggle to switch between the interactive form and a YAML editor for the full rule definition.
 
@@ -46,7 +43,7 @@ When the rule is in alert mode, additional settings are available:
 - Alert delay (activation threshold): require the condition to be met a specified number of consecutive times or for a minimum duration before an alert becomes active.
 - Recovery conditions: define how recovery is detected.
 - No-data handling: configure behavior when the query returns no results.
-- Action policies: policies are global. Scoping uses rule labels and matchers on the policy side, not links from this form. Configure policies under Action Policies. For an overview, refer to [Action policies](rule-settings/action-policies.md).
+- Action policies: policies are global. Scoping uses rule labels and matchers on the policy side, not links from this form. Configure policies under Action Policies. For an overview, refer to [Send notifications](../send-notifications.md#action-policies-v2).
 - Tags: add free-form tags for filtering and organization.
 - Investigation guide: attach a runbook or investigation guide to the rule.
 

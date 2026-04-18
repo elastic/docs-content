@@ -210,7 +210,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes `STATS` generated columns with an inline `WHERE` clause in {{esql}} [#260196]({{kib-pull}}260196)
 * Fixes **Hosts** filter options to match the selected schema [#259825]({{kib-pull}}259825)
 * Adds support for cross-cluster replication (CCR) to the Streams plugin, allowing replicated data streams to be viewed and partially managed in Kibana [#259175]({{kib-pull}}259175)
-* Converts notification policy and alert action endpoints from internal to public (experimental) [#260510]({{kib-pull}}260510)
+* Converts action policy and alert action endpoints from internal to public (experimental) [#260510]({{kib-pull}}260510)
 * Adds visual and accessibility enhancements to the flyout UI [#259428]({{kib-pull}}259428)
 * Applies post-enrichment filtering for Hosts exclusion filters [#260426]({{kib-pull}}260426)
 * Fixes the index threshold rule's `filterKuery` producing incorrect queries for keyword wildcard fields [#260283]({{kib-pull}}260283)

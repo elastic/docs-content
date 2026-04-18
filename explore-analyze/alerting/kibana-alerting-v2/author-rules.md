@@ -9,16 +9,13 @@ description: "Create {{alerting-v2}} rules using ES|QL queries from the UI, Disc
 
 # Author {{alerting-v2}} rules [author-rules-v2]
 
-A {{alerting-v2}} rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
+$$$author-rules-v2$$$
+
+A {{alerting-v2}} rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using a {{esql}} query and produces alert event documents when conditions are met. There are no separate **rule types**: you write {{esql}} directly. Schedules, thresholds, no-data behavior, grouping, and maintenance windows are documented on **[Rule settings](author-rules/rule-settings.md)**. **Action policies** and **workflows** for notifications are documented on **[Send notifications](send-notifications.md)**.
 
 ## Rule modes
 
-Every rule operates in one of two modes:
-
-- **Detect mode** (`kind: signal`): produces signal events for exploration and analysis. No lifecycle tracking, no notifications. Use detect mode for broad monitoring without noise.
-- **Alert mode** (`kind: alert`): produces alert events with full lifecycle management. Alerts transition through episode states (`inactive` → `pending` → `active` → `recovering` → `inactive`), trigger action policies, and support triage actions. Use alert mode when conditions require human response.
-
-You can switch between modes at any time from the rule list or rule details page.
+Every rule is in **Detect** (`kind: signal`) or **Alert** (`kind: alert`) mode. Detect mode records query results as signals only. Alert mode adds lifecycle, episodes, and action policies. You can switch modes from the rule list or rule details page. For how that fits the full pipeline, read [Core {{alerting-v2}} concepts](core-v2-alerting-concepts.md).
 
 ## Ways to create a rule
 
@@ -41,10 +38,10 @@ A rule definition includes:
 | **State transition** | Activation and recovery thresholds (alert mode only) |
 | **Recovery policy** | How recovery is detected (alert mode only) |
 | **No-data handling** | Behavior when the query returns no results |
-| **Action policies** | Policies that control how alerts are routed (global; not stored on the rule) |
-| **Workflows** | Direct workflow links for rule-triggered actions |
+| **Action policies** | Policies that control how alerts are routed (global; not stored on the rule). See [Send notifications](send-notifications.md#action-policies-v2). |
+| **Workflows** | Direct workflow links for rule-triggered actions. See [Send notifications](send-notifications.md#workflows-v2). |
 
-## ES|QL query structure
+## ES|QL query structure [esql-query-structure]
 
 The ES|QL query is the core of every rule. It has two parts:
 

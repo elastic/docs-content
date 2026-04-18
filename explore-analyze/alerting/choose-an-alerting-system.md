@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
   - id: elasticsearch
   - id: cloud-hosted
-description: Short guide to select Kibana alerting v1, {{alerting-v2}}, or Watcher by use case, deployment, and how much control you need, with links to detailed docs.
+description: Short guide to select Kibana alerting v1, v2, or Watcher by use case, deployment, and how much control you need, with links to detailed docs.
 ---
 
 # Choose an alerting system [choose-an-alerting-system]

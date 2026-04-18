@@ -1,13 +1,17 @@
 ---
-navigation_title: Alerting setup
+navigation_title: Get started
 applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Enable {{alerting-v2}}, data streams created for alert events and actions, optional API key cleanup settings, and verification steps."
+  - id: cloud-serverless
+description: "Enable {{alerting-v2}}, data streams for alert events and actions, optional API key cleanup settings, and verification steps."
 ---
 
-# Set up {{alerting-v2}} [alerting-set-up-v2]
+# Get started with {{alerting-v2}} [alerting-set-up-v2]
+
+$$$alerting-set-up-v2$$$
+$$$alerting-before-you-begin-v2$$$
 
 {{alerting-v2}} is available in {{stack}} 9.4 and later. This page explains how to enable it and configure initial settings.
 
@@ -33,14 +37,16 @@ To use {{alerting-v2}}, you need:
 
 No manual index configuration is required. The system creates these data streams with the appropriate mappings when the first rule executes.
 
-## {{kib}} advanced settings
+## {{kib}} advanced settings [kibana-advanced-settings-v2]
+
+$$$kibana-advanced-settings-v2$$$
 
 Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for action policies after a policy is updated or deleted:
 
 | Setting | Default | Purpose |
 |---|---|---|
-| `xpack.alerting.invalidateApiKeysTask.interval` | `5m` | How often {{kib}} processes keys that are marked for invalidation |
-| `xpack.alerting.invalidateApiKeysTask.removalDelay` | `1h` | How long to wait after invalidation before old key material can be removed |
+| `xpack.alerting_v2.invalidateApiKeysTask.interval` | `5m` | How often {{kib}} processes keys that are marked for invalidation |
+| `xpack.alerting_v2.invalidateApiKeysTask.removalDelay` | `1h` | How long to wait after invalidation before old key material can be removed |
 
 Change these only when your operations team or Elastic Support recommends it. Aggressive values can affect how reliably workflows run after policy changes.
 
@@ -52,3 +58,8 @@ To verify that {{alerting-v2}} is working:
 2. Confirm that the rules list page loads.
 3. Click Create rule to confirm the rule form opens.
 4. Optionally, create a test rule with a simple ES|QL query and verify that alert events appear in Discover by querying the `.rule-events` data stream.
+
+## Related
+
+- [Core {{alerting-v2}} concepts](core-v2-alerting-concepts.md)
+- [{{alerting-v2}} privileges](alerting-privileges.md)
