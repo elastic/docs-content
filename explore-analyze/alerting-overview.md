@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
   - id: cloud-hosted
 navigation_title: Alerting
-description: "Elastic alerting overview. Kibana v1 on stack and serverless, v2 as a serverless tech preview, Watcher on stack only. Rules, connectors, v2 history, and shared notification controls."
+description: "Elastic alerting overview: Kibana v1, v2 (ES|QL, action policies, alert history), and Watcher; where each runs and how to get started."
 ---
 
 # Alerting [alerting-overview]
