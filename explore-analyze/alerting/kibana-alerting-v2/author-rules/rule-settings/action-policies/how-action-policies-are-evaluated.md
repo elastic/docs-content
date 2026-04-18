@@ -1,15 +1,17 @@
 ---
-navigation_title: How notification policies are evaluated
+navigation_title: How action policies are evaluated
 applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "How {{alerting-v2}} notification policies match alert episodes, apply throttling and suppression, and produce dispatch outcomes."
+description: "How {{alerting-v2}} action policies match alert episodes, apply throttling and suppression, and produce dispatch outcomes."
 ---
 
-# How {{alerting-v2}} notification policies are evaluated [how-notification-policies-evaluated-v2]
+# How {{alerting-v2}} action policies are evaluated [how-action-policies-evaluated-v2]
 
-Notification policies are separate from rules. After a rule runs and produces or updates alert episodes, the system decides which policies apply, whether notifications should go out, and which workflows receive them. You configure policies once. They can apply to many rules.
+$$$how-action-policies-evaluated-v2$$$
+
+Action policies are separate from rules. After a rule runs and produces or updates alert episodes, the system decides which policies apply, whether notifications should go out, and which workflows receive them. You configure policies once. They can apply to many rules.
 
 ## How policies are matched to episodes
 
@@ -24,7 +26,7 @@ An episode can match zero, one, or many policies. If it matches none, notificati
 
 For episodes that match a policy, the system applies suppression if configured, grouping for how messages are batched, and throttling for the minimum time between notifications for the same group. Then it sends notifications to the workflow destinations you configured on the policy.
 
-Order matters: Lifecycle thresholds and no-data behavior on the rule run before notification policies. Policies only affect routing and delivery, not whether rows are written to `.rule-events`.
+Order matters: Lifecycle thresholds and no-data behavior on the rule run before action policies. Policies only affect routing and delivery, not whether rows are written to `.rule-events`.
 
 ## Possible outcomes
 
@@ -33,7 +35,7 @@ Order matters: Lifecycle thresholds and no-data behavior on the rule run before 
 | dispatched | Notifications were sent according to the policy |
 | throttled | Delivery was suppressed because throttling rules said to wait |
 | suppressed | The episode was suppressed before a notification went out, for example by an active suppression |
-| unmatched | No notification policy matched this episode, so no workflow ran for it under these policies |
+| unmatched | No action policy matched this episode, so no workflow ran for it under these policies |
 | error | Processing failed. Check {{kib}} logs and any health indicators your team uses |
 
 Notifications can arrive shortly after an episode becomes eligible. Heavy load or many policies can add noticeable delay. If something seems stuck, verify matchers, throttling, maintenance windows, and that the episode matches at least one policy.

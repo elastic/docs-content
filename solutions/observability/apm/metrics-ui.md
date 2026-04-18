@@ -23,6 +23,10 @@ If you’re experiencing a problem with your service, you can use this page to a
 :screenshot:
 :::
 
+:::{note}
+Dashboard resolution is version-aware: the Metrics tab uses the service’s runtime version — alongside data format, SDK name, and language — to load the correct dashboard. For example, .NET 9 and later services use a built-in runtime metrics dashboard, while .NET 8 and earlier services use a legacy contrib metrics dashboard. This ensures you always see the metrics that match your service’s runtime version.
+:::
+
 If you’re using the Java APM agent, you can view metrics for each JVM.
 
 :::{image} /solutions/images/observability-jvm-metrics-overview.png

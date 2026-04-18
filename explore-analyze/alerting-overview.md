@@ -38,7 +38,7 @@ serverless: preview
 stack: unavailable
 ```
 
-{{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be.
+{{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be. V2 adds **action policies** for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and **rules on alerts** for correlation and escalation.
 
 Here is what you get with v2:
 

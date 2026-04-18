@@ -43,6 +43,10 @@ You can also switch chat experiences at any time:
 2. Toggle between the two experiences under **Chat Experience**.
 3. Click the **Save changes** button.
 
+:::{tip}
+For connectors and tested models, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+:::
+
 To learn more about the chat UI modes, refer to [](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md)
 
 ## Feature differences between Agent Builder and AI Assistant

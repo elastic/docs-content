@@ -16,7 +16,7 @@ A {{alerting-v2}} rule defines what to look for in your data. It evaluates sourc
 Every rule operates in one of two modes:
 
 - **Detect mode** (`kind: signal`): produces signal events for exploration and analysis. No lifecycle tracking, no notifications. Use detect mode for broad monitoring without noise.
-- **Alert mode** (`kind: alert`): produces alert events with full lifecycle management. Alerts transition through episode states (`inactive` → `pending` → `active` → `recovering` → `inactive`), trigger notification policies, and support triage actions. Use alert mode when conditions require human response.
+- **Alert mode** (`kind: alert`): produces alert events with full lifecycle management. Alerts transition through episode states (`inactive` → `pending` → `active` → `recovering` → `inactive`), trigger action policies, and support triage actions. Use alert mode when conditions require human response.
 
 You can switch between modes at any time from the rule list or rule details page.
 
@@ -41,7 +41,7 @@ A rule definition includes:
 | **State transition** | Activation and recovery thresholds (alert mode only) |
 | **Recovery policy** | How recovery is detected (alert mode only) |
 | **No-data handling** | Behavior when the query returns no results |
-| **Notification policies** | References to policies that control how alerts are routed |
+| **Action policies** | Policies that control how alerts are routed (global; not stored on the rule) |
 | **Workflows** | Direct workflow links for rule-triggered actions |
 
 ## ES|QL query structure

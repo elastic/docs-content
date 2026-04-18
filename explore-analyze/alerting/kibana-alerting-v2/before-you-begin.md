@@ -2,7 +2,6 @@
 navigation_title: Before you begin
 applies_to:
   serverless: preview
-  stack: unavailable
 products:
   - id: kibana
   - id: cloud-serverless
@@ -16,10 +15,38 @@ These pages cover what to understand and configure before you create {{alerting-
 For a first-time path, work through them in the order listed. If you already handled setup or access, open the page that matches what you need.
 
 **[{{alerting-v2}} concepts](before-you-begin/how-v2-alerting-works.md)**
-:   How v2 runs end to end: Detect and Alert modes, what happens on each rule run, why detection and notification are separate layers, and definitions for terms you will see in the product (for example signals, alerts, series, episodes, notification policies, workflows, and the dispatcher).
+:   How v2 runs end to end: Detect and Alert modes, what happens on each rule run, why detection and notification are separate layers, and definitions for terms you will see in the product (for example signals, alerts, series, episodes, action policies, workflows, and the dispatcher).
 
 **[{{alerting-v2}} privileges](before-you-begin/alerting-privileges.md)**
-:   {{es}} index-level access and {{kib}} feature privileges for managing rules, notification policies, and alert-related data.
+:   {{es}} index-level access and {{kib}} feature privileges for managing rules, action policies, and alert-related data.
 
 **[Set up {{alerting-v2}}](before-you-begin/set-up.md)**
 :   Prerequisites, turning the feature on, related data streams, and checks that alerting v2 is ready to use.
+
+## Prerequisites
+
+To use {{alerting-v2}}, you need:
+
+- {{stack}} 9.4 or later.
+- ES|QL knowledge. {{alerting-v2}} rules are defined using ES|QL queries. Familiarity with ES|QL syntax, aggregations, and the `STATS`, `WHERE`, `EVAL`, and `KEEP` commands is essential. Refer to the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) for details.
+- Data indexed in {{es}}. Your source data must be indexed and accessible from the cluster where you create rules, such as logs, metrics, traces, or alert events from other rules.
+- Appropriate privileges. You need Kibana privileges to create and manage rules, action policies, and workflows. Refer to [Alerting privileges](before-you-begin/alerting-privileges.md) for details.
+
+## Key differences from Kibana alerting v1
+
+If you are coming from Kibana alerting v1, note these differences:
+
+- You write the query. Instead of selecting a rule type and filling in parameters, you write an ES|QL query that defines exactly what to look for and what data to include in each alert event.
+- Alerts are immutable. Each time a rule runs, it appends new event documents rather than updating existing ones. This gives you a full history of every run.
+- Notifications are separate from rules. Instead of configuring actions on each rule, you create action policies that match alerts and route them to workflow destinations. One policy can serve many rules.
+- Snooze is per series, not per rule. You can snooze notifications for a specific host or service without silencing the entire rule.
+- Alert data is queryable. Alert events are stored in standard {{es}} indices and can be queried with ES|QL in Discover, used in dashboards, or fed to other rules.
+
+## Coexistence with Kibana alerting v1
+
+{{alerting-v2}} runs alongside Kibana alerting v1. Both systems are fully operational:
+
+- You manage v2 rules under Management > Alerts and Insights > Rules V2. v1 rules stay in the existing Rules or equivalent experience for your deployment. Navigation labels can vary by version.
+- Each system writes to its own indices. {{alerting-v2}} alert events go to `.rule-events`. Kibana alerting v1 alerts go to `.alerts-*`.
+- There is no automatic migration. You can copy rules from Kibana alerting v1 to {{alerting-v2}} manually when you are ready.
+- You can create rules on alerts that correlate across both systems by querying both alert indices.

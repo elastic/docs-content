@@ -4,7 +4,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Required privileges for creating and managing {{alerting-v2}} rules, notification policies, and alert actions."
+description: "Required privileges for creating and managing {{alerting-v2}} rules, action policies, and alert actions."
 ---
 
 # {{alerting-v2}} privileges [alerting-privileges-v2]
@@ -22,9 +22,9 @@ To create, edit, and manage {{alerting-v2}} rules, you need:
 
 Rule execution uses the API key of the user who created or last updated the rule. This means the rule runs with the privileges of that user. If the user's privileges change, rule execution reflects those changes.
 
-### Notification policy management
+### Action policy management
 
-To create and manage notification policies, you need:
+To create and manage action policies, you need:
 
 - **{{kib}} feature privilege**: `Rules V2` with create or edit access.
 - **Workflow permissions**: To add a workflow as a destination on a policy, you need permissions for that workflow. This prevents privilege escalation through policy configuration.
@@ -42,11 +42,11 @@ Because {{alerting-v2}} alert events are stored in standard {{es}} indices, any 
 
 ## Space boundaries
 
-Rule and notification policy management respects {{kib}} space boundaries. Rules created in one space are not visible in another. Alert events are indexed globally, but UI access is filtered by space.
+Rule and action policy management respects {{kib}} space boundaries. Rules created in one space are not visible in another. Alert events are indexed globally, but UI access is filtered by space.
 
 ## API key management
 
-Rules and notification policies use API keys for execution:
+Rules and action policies use API keys for execution:
 
 - An API key is created when a rule or policy is saved.
 - The API key inherits the privileges of the user who created it.

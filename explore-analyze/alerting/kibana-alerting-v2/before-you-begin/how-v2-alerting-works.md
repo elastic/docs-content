@@ -2,7 +2,6 @@
 navigation_title: Alerting concepts
 applies_to:
   serverless: preview
-  stack: unavailable
 products:
   - id: kibana
   - id: cloud-serverless
@@ -17,7 +16,7 @@ Use this page to learn how a {{alerting-v2}} rule runs end to end, why detection
 
 A {{alerting-v2}} rule defines what to look for in your data. It evaluates source data such as logs, metrics, traces, or alert events from other rules on a configurable schedule using an ES|QL query and produces alert event documents when conditions are met.
 
-Each rule is set to **Detect** or **Alert** mode. Detect mode saves what the rule found each run. You can use it to try out a query without opening issues or sending notifications. Alert mode does that too, but also keeps an ongoing problem you can work in **Alerts**, which is what notification policies hook into.
+Each rule is set to **Detect** or **Alert** mode. Detect mode saves what the rule found each run. You can use it to try out a query without opening issues or sending notifications. Alert mode does that too, but also keeps an ongoing problem you can work in **Alerts**, which is what action policies hook into.
 
 Besides mode, a typical rule includes the following:
 
@@ -26,13 +25,13 @@ Besides mode, a typical rule includes the following:
 | **Query** | An ES\|QL query that defines what to look at and what counts as a match. |
 | **Schedule** | How often the rule runs and how far back each run looks. |
 | **Grouping** (optional) | Fields that split results so each value (for example, each host) is tracked on its own. |
-| **Notification policies and workflows** | In Alert mode, policies decide when an episode should notify someone; workflows are the concrete steps, such as sending email. |
+| **Action policies and workflows** | In Alert mode, policies decide when an episode should notify someone; workflows are the concrete steps, such as sending email. |
 
 These parts work together when a rule runs. Each run looks roughly like this:
 
 1. The rule runs its query over the lookback window.
 2. The system writes signals, one saved result per match. In Alert mode it also updates alert and episode information for each series (each grouped track you care about).
-3. In Alert mode, the dispatcher decides whether a notification policy applies, whether throttling allows a send, and whether to run a workflow.
+3. In Alert mode, the dispatcher decides whether an action policy applies, whether throttling allows a send, and whether to run a workflow.
 4. You work from the Alerts UI, Discover, or dashboards. You can add more rules later that build on the same data.
 
 In Detect mode, step 3 does not apply because there are no episodes for policies to target.
@@ -42,7 +41,7 @@ In Detect mode, step 3 does not apply because there are no episodes for policies
 {{alerting-v2}} follows a two-layer model: detection first, then notification. This model gives you room to change how you evaluate data and reach people without redoing both every time.
 
 * **Detection**: The detection layer is driven by rules. On the schedule you specify, rules evaluate your data and record what matched (signals only in Detect mode, or full alert lifecycle in Alert mode). 
-* **Notification** The notification layer is driven by notification policies and workflows. These might contact people or systems after the detection layer has produced something that can be used. 
+* **Notification** The notification layer is driven by action policies and workflows. These might contact people or systems after the detection layer has produced something that can be used. 
 
 ## Key terms
 
@@ -72,9 +71,9 @@ An **episode** belongs to exactly one **series**. It is one full incident for th
 
 *Example:* On `web-east`, errors cross your threshold on Monday, stay high through Tuesday, then drop on Wednesday—that entire stretch is one episode. If the same host crosses the threshold again later, that starts a new episode on the same series.
 
-### Notification policies
+### Action policies
 
-A **notification policy** is separate from the rule. It describes when an episode should trigger notification, how often that may happen, and which workflow to use. One policy can apply to many rules.
+An **action policy** is separate from the rule. It describes when an episode should trigger notification, how often that may happen, and which workflow to use. One policy can apply to many rules.
 
 *Example:* When an episode is active, notify at most once per hour.
 

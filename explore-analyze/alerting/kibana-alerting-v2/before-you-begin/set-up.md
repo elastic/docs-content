@@ -18,7 +18,7 @@ To use {{alerting-v2}}, you need:
 - {{stack}} 9.4 or later.
 - ES|QL knowledge. {{alerting-v2}} rules are defined using ES|QL queries. Familiarity with ES|QL syntax, aggregations, and the `STATS`, `WHERE`, `EVAL`, and `KEEP` commands is essential. Refer to the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) for details.
 - Data indexed in {{es}}. Your source data must be indexed and accessible from the cluster where you create rules, such as logs, metrics, traces, or alert events from other rules.
-- Appropriate privileges. You need Kibana privileges to create and manage rules, notification policies, and workflows. Refer to [Alerting privileges](alerting-privileges.md) for details.
+- Appropriate privileges. You need Kibana privileges to create and manage rules, action policies, and workflows. Refer to [Alerting privileges](alerting-privileges.md) for details.
 
 ## Enable {{alerting-v2}}
 
@@ -35,7 +35,7 @@ No manual index configuration is required. The system creates these data streams
 
 ## {{kib}} advanced settings
 
-Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for notification policies after a policy is updated or deleted:
+Optional `kibana.yml` settings control how often {{kib}} cleans up API keys for action policies after a policy is updated or deleted:
 
 | Setting | Default | Purpose |
 |---|---|---|

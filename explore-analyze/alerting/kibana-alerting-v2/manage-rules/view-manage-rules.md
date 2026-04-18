@@ -23,7 +23,7 @@ Typical columns include:
 - Type: Rule type, such as detect versus alert mode where applicable.
 - Schedule: How often the rule runs.
 - Last run: Last execution time and status.
-- Tags: Labels for filtering and notification policy scoping.
+- Tags: Labels for filtering and action policy scoping.
 - Enabled: Whether the rule is active.
 
 Exact columns can vary by release. Use column controls if your build exposes them.

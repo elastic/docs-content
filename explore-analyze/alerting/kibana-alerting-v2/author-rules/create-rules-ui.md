@@ -46,7 +46,7 @@ When the rule is in alert mode, additional settings are available:
 - Alert delay (activation threshold): require the condition to be met a specified number of consecutive times or for a minimum duration before an alert becomes active.
 - Recovery conditions: define how recovery is detected.
 - No-data handling: configure behavior when the query returns no results.
-- Notification policies: policies are global. Scoping uses rule labels and matchers on the policy side, not links from this form. Configure policies under Notification Policies. For an overview, refer to [Notification policies](rule-settings/notification-policies.md).
+- Action policies: policies are global. Scoping uses rule labels and matchers on the policy side, not links from this form. Configure policies under Action Policies. For an overview, refer to [Action policies](rule-settings/action-policies.md).
 - Tags: add free-form tags for filtering and organization.
 - Investigation guide: attach a runbook or investigation guide to the rule.
 
