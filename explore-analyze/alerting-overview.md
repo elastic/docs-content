@@ -35,7 +35,7 @@ Kibana alerting v1 gives you ready-made rule types that work with applications s
 
 ```{applies_to}
 serverless: preview
-stack: unavailable
+stack: ga
 ```
 
 {{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be. V2 adds **action policies** for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and **rules on alerts** for correlation and escalation.
@@ -51,7 +51,7 @@ Here is what you get with v2:
 [Get started with {{alerting-v2}} →](alerting/kibana-alerting-v2.md)
 
 :::{note}
-{{alerting-v2}} runs next to Kibana alerting v1 in {{serverless-full}}. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting v1 will remain available.
+{{alerting-v2}} runs next to Kibana alerting v1 on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting v1 will remain available.
 :::
 
 ## Watcher
