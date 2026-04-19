@@ -14,7 +14,7 @@ products:
 
 # Skills in {{agent-builder}}
 
-Skills enable you to write expertise once and share it across any number of agents. A skill is a reusable instruction set that gives [agents](agent-builder-agents.md) specialized expertise for a particular type of task. Instead of embedding the same detailed instructions in every agent that needs them, you author a skill once and assign it wherever it's needed. This keeps agent configurations clean and makes expertise shareable across your team.
+A skill is a reusable instruction set that gives [agents](agent-builder-agents.md) specialized expertise for a particular type of task. Write your expertise once, then share it across any number of agents. Instead of embedding the same detailed instructions in every agent that needs them, you author a skill once and assign it wherever it's needed. This keeps agent configurations clean and makes expertise shareable across your team.
 
 Tools are discrete operations the agent can invoke. Skills are higher-level capability packs that bundle tools, instructions, and context for a specific task domain. To learn more about tools, refer to [Tools](tools.md).
 
@@ -31,8 +31,8 @@ When an agent receives a message, it selects a skill if it determines that one o
 
 Use skills when you have domain-specific knowledge or procedures that multiple agents should follow consistently. Some examples:
 
-- A {{product.security}} user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
-- A {{product.observability}} user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
+- An {{product.security}} user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
+- An {{product.observability}} user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
 - An {{product.elasticsearch}} user asks how to combine keyword and vector search for a product catalog. The [`search.hybrid-search`](builtin-skills-reference.md#agent-builder-search-hybrid-search-skill) skill activates and guides the agent through building a hybrid search solution.
 
 ## Built-in skills
