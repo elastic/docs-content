@@ -30,6 +30,7 @@ The following table compares features available in Observability Complete and Ob
 | **[Custom dashboards](/explore-analyze/dashboards.md)** | ✅ | ✅ |
 | **[Alerting and notifications](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ |
 | **[Integrations](https://www.elastic.co/integrations/data-integrations?solution=observability)** | ✅ | ✅ |
+| **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ |
 | **[Machine learning](/explore-analyze/machine-learning.md)** | ✅ | ❌ |
 | **[Rate and pattern analysis](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)** | ✅ | ❌ |
 | **[Service level objectives (SLO)](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ❌ |

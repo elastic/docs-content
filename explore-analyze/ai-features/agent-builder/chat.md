@@ -244,6 +244,10 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 You can also reach the global agents list from the **Manage agents** button in the [agent selector](#select-a-different-agent) dropdown.
 :::
 
+## Dashboards and visualizations
+
+Agents can create and manage dashboards and visualizations directly in the conversation. To learn more, refer to [Dashboards and visualizations in chat](agent-builder-dashboards-and-visualizations.md).
+
 ## Agent Chat API
 
 The Agent Chat API provides programmatic access to chat functionality through REST endpoints.
