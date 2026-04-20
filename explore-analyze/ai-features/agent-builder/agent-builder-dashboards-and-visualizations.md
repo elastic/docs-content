@@ -14,7 +14,7 @@ products:
 
 # Dashboards and visualizations in {{agent-builder}} chat
 
-Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Ask a question like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
+Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [visualizations](/explore-analyze/visualize.md) directly in the conversation. Send a message like "create a dashboard to monitor host CPU and memory usage" and the agent builds a dashboard with {{esql}}-powered visualization panels.
 
 This functionality is powered by the built-in [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, along with the [dashboard tools](tools/builtin-tools-reference.md#dashboard-tools) and [visualization platform tools](tools/builtin-tools-reference.md#platform-core-tools).
 
