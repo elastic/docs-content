@@ -69,5 +69,5 @@ serverless: ga
 If the Discover session contains multiple tabs, you can choose which tab the panel displays.
 
 1. Open the panel menu and select **Edit**.
-2. In the inline editor, select the tab you want to display.
+2. From the tab selector, select the tab you want to display.
 3. Select **Apply**.
