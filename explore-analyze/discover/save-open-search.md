@@ -60,12 +60,13 @@ If the saved Discover session is associated with a different {{data-source}} tha
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then click **X** to close the list.
 
-If the Discover session contains multiple tabs, you can choose which tab the panel displays:
-
+### Choose which tab to display [discover-session-choose-tab]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
 ```
+
+If the Discover session contains multiple tabs, you can choose which tab the panel displays.
 
 1. Open the panel menu and select **Edit**.
 2. In the inline editor, select the tab you want to display.
