@@ -108,6 +108,10 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :::
 
 ## Advanced [synthetics-settings-advanced]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
 
 In the **Advanced** tab, you can configure advanced settings for your Synthetics deployment.
 
