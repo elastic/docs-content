@@ -40,6 +40,12 @@ For guidance on writing effective descriptions and instructions, refer to [Skill
 
 Go to **Manage components > Skills**, then select **Create a skill**.
 
+:::{image} images/create-new-skill.png
+:alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
+:width: 550px
+:screenshot:
+:::
+
 ::::
 
 ::::{step} Fill in the skill fields
@@ -52,12 +58,6 @@ Complete the fields in the **Create skill** dialog:
 - **Instructions**: The skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
 - **Associated tools**: The tools the skill should have access to (up to 100). Available under **Advanced options** in the UI. Corresponds to `tool_ids` in the API.
 
-:::{image} images/create-new-skill.png
-:alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
-:width: 550px
-:screenshot:
-:::
-
 ::::
 
 ::::{step} Save the skill
@@ -66,21 +66,7 @@ Select **Save**. The skill is added to your library and becomes available to ass
 
 ::::
 
-::::{step} Test the skill
-
-[Add the skill to an agent](#add-skills-to-an-agent), then send realistic queries that should trigger it. Check that the agent selects the skill when expected, follows your instructions correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
-
-For guidance on writing effective instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
-
-::::
-
-:::::
-
-### Use the API
-
-You can also create and manage skills programmatically using the [Skills API](#skills-api). The API supports all the same fields as the UI, plus `referenced_content`: additional named content blocks the agent can read selectively.
-
-## Add skills to an agent
+::::{step} Add the skill to an agent
 
 Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize > Skills** on the agent you want to configure and select **Add skills**. From here you can:
 
@@ -89,9 +75,21 @@ Custom skills in your library are not available to your agents until you explici
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
 
+::::
+
+::::{step} Test the skill
+
+Send the agent realistic queries that should trigger the skill. Check that the agent selects the skill when expected, follows your instructions correctly, and handles the edge cases you documented. Revise the description or instructions based on what you observe.
+
+For guidance on writing effective instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
+
+::::
+
+:::::
+
 ## Skills API
 
-Use the {{kib}} REST API to manage skills programmatically. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
+You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, plus `referenced_content`: additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
 - [List skills](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
 - [Create a skill](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
