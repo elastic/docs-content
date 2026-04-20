@@ -64,7 +64,7 @@ After you've deployed {{elastic-sec}}, the next step is to get data into the pro
 Elastic also provides different [ingestion methods](/manage-data/ingest.md) to meet your infrastructure needs. 
 
 :::{{tip}}
-If you have data from a source that doesn't yet have an integration, you can use [Automatic Import](/solutions/security/get-started/automatic-import.md) to create one using AI.   
+If you have data from a source that doesn't yet have an integration, you can use [Automatic Import](/explore-analyze/ai-features/automatic-import.md) to create one using AI.   
 :::
 ::::
 
