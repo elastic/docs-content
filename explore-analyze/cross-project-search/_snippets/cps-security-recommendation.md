@@ -1,0 +1,1 @@
+At this time, you should not use an {{elastic-sec}} project as an origin project for {{cps}} in production. Some {{elastic-sec}} features are not fully functional when {{cps-init}} is enabled on an {{elastic-sec}} origin project. You can still link {{elastic-sec}} projects _to_ an origin project of another type.

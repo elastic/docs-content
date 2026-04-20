@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Concatenate values from multiple fields into a single field using a delimiter with the Streams join processor in Streamlang.
 ---
 
 # Join processor [streams-join-processor]
