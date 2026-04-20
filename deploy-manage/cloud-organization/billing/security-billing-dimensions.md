@@ -9,6 +9,14 @@ products:
   - id: cloud-serverless
 sub:
   offering: Security Analytics
+  abb-anchor: security-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier.
+
+    Billing is based on the number of agent executions completed in your project over the course of a month.
+  abb-free-executions: 10,000
+  abb-pricing-label: Elastic Cloud pricing table
+  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
 ---
 
 # {{elastic-sec}} Serverless billing dimensions [security-billing]
@@ -75,13 +83,8 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
-## Agent Builder Executions [security-billing-agent-builder-executions]
-
-{{agent-builder}} enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for {{sec-serverless}} projects on the Security Analytics Complete tier.
-
-Billing is based on the number of agent executions completed in your project over the course of a month. Each execution represents one conversational turn — a user input and the agent's non-error response. Complex turns that exceed 50,000 input tokens count as additional executions to reflect the heavier processing involved. Error responses are not billed. When an agent triggers a workflow as part of its response, the workflow execution is metered separately under Workflow Executions.
-
-A free allocation of 10,000 executions per month is included. Volume tier reductions apply at higher usage levels. Refer to the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for specific rates and tier breakpoints.
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
 
 ## Elastic Managed LLMs
 

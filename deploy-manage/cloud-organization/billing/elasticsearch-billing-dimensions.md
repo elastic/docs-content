@@ -8,6 +8,13 @@ applies_to:
 products:
   - id: cloud-serverless
 description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
+sub:
+  abb-anchor: elasticsearch-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. In addition to the VCU-based billing dimensions above, agent usage is billed based on the number of executions completed in your project over the course of a month.
+  abb-free-executions: 1,000
+  abb-pricing-label: Elasticsearch Serverless pricing page
+  abb-pricing-url: https://www.elastic.co/pricing/serverless-search
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -39,11 +46,8 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-## Agent Builder Executions [elasticsearch-billing-agent-builder-executions]
-
-{{agent-builder}} enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your {{es-serverless}} project. In addition to the VCU-based billing dimensions above, agent usage is billed based on the number of executions completed in your project over the course of a month. Each execution represents one conversational turn — a user input and the agent's non-error response. Complex turns that exceed 50,000 input tokens count as additional executions to reflect the heavier processing involved. Error responses are not billed. When an agent triggers a workflow as part of its response, the workflow execution is metered separately under Workflow Executions.
-
-A free allocation of 1,000 executions per month is included. Volume tier reductions apply at higher usage levels. Refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search) for specific rates and tier breakpoints.
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
