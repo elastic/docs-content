@@ -99,10 +99,6 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses
    :::
 
-   :::{warning}
-   Only integrations created in {{stack}} 9.4 or later can be managed from the **Manage my integrations** menu used in the following steps. Integrations created in earlier versions use a different workflow.
-   :::
-
 10. When all data streams reach a **Success** status, the integration is ready to approve.
 
     :::{image} /solutions/images/security-auto-import-manage-integrations-row.png
