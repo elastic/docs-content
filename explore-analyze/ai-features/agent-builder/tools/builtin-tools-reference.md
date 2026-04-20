@@ -70,7 +70,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
 :   Retrieves the execution status of a workflow.
 
-`platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4`
+`platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
 :   Resumes a workflow execution that is paused and waiting for human input.
 
 <!--
@@ -115,35 +115,35 @@ Dashboard tools enable agents to create and manage [dashboards](/explore-analyze
 
 ### Streams tools
 ```{applies_to}
-stack: ga 9.4
+stack: ga 9.4+
 ```
 
 Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
 
-`platform.streams.list_streams` {applies_to}`stack: ga 9.4`
+`platform.streams.list_streams` {applies_to}`stack: ga 9.4+`
 :   Lists all streams the current user has access to, returning each stream's name, type, and description.
 
-`platform.streams.get_stream` {applies_to}`stack: ga 9.4`
+`platform.streams.get_stream` {applies_to}`stack: ga 9.4+`
 :   Returns the full definition of a single stream: type, description, retention policy, processing rules, field mappings, routing/partitions, and parent-child hierarchy.
 
-`platform.streams.get_schema` {applies_to}`stack: ga 9.4`
+`platform.streams.get_schema` {applies_to}`stack: ga 9.4+`
 :   Returns the schema of a stream: mapped fields (own and inherited) with their types, and unmapped fields detected from recent documents.
 
-`platform.streams.get_data_quality` {applies_to}`stack: ga 9.4`
+`platform.streams.get_data_quality` {applies_to}`stack: ga 9.4+`
 :   Returns data quality metrics for a stream: degraded document percentage, failed document percentage, an overall quality indicator (good, degraded, or poor), and failure store status.
 
-`platform.streams.get_lifecycle_stats` {applies_to}`stack: ga 9.4`
+`platform.streams.get_lifecycle_stats` {applies_to}`stack: ga 9.4+`
 :   Returns lifecycle and storage statistics for a stream: effective retention policy and its source, total storage size, document count, and ILM tier breakdown.
 
-`platform.streams.query_documents` {applies_to}`stack: ga 9.4`
+`platform.streams.query_documents` {applies_to}`stack: ga 9.4+`
 :   Queries or aggregates data from a stream using a natural language description. The tool translates the description into an {{es}} query internally. Returns documents in flat dot-notation format or aggregation results.
 
-`platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4`
+`platform.streams.get_failed_documents` {applies_to}`stack: ga 9.4+`
 :   Retrieves documents from a stream's failure store with error details (error type, message, stack trace) and the original document that failed ingestion. Use this tool for root cause analysis when data quality issues are detected.
 
 % sig_events.search_kis is behind a feature flag in 9.4 — uncomment when publicly available.
 % Source: https://github.com/elastic/kibana/pull/258399
-<!-- `platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4`
+<!-- `platform.streams.sig_events.search_kis` {applies_to}`stack: ga 9.4+`
 :   Searches Knowledge Indicators derived from streams data to enrich context for a target stream, service, or group of streams. -->
 
 ## Observability tools
@@ -169,18 +169,18 @@ Observability tools provide specialized capabilities for monitoring applications
 
 `observability.get_trace_metrics` {applies_to}`stack: ga 9.3+`
 :   Retrieves metrics and statistics for distributed traces.<br>
-    Supports sorting by `latency`, `failureRate`, or `throughput`, and returning average, p95, or p99 latency. {applies_to}`stack: ga 9.4`
+    Supports sorting by `latency`, `failureRate`, or `throughput`, and returning average, p95, or p99 latency. {applies_to}`stack: ga 9.4+`
 
 `observability.get_downstream_dependencies` {applies_to}`stack: removed 9.4`
 :   Identifies downstream dependencies (other services, databases, external APIs) for a specific service to understand service topology and blast radius.
 
-`observability.get_service_topology` {applies_to}`stack: ga 9.4`
+`observability.get_service_topology` {applies_to}`stack: ga 9.4+`
 :   Retrieves the service topology (dependency graph) for a service, including RED metrics (latency, throughput, and error rate) per connection.
 
 `observability.get_log_categories` {applies_to}`stack: removed 9.4`
 :   Retrieves categorized log patterns to identify common log message types.
 
-`observability.get_log_groups` {applies_to}`stack: ga 9.4`
+`observability.get_log_groups` {applies_to}`stack: ga 9.4+`
 :   Returns categorized log messages and exceptions from logs and spans, grouped by type (`spanException` for APM errors, `logException` for log exceptions).
 
 `observability.get_log_change_points` {applies_to}`stack: ga 9.3+`
@@ -192,7 +192,7 @@ Observability tools provide specialized capabilities for monitoring applications
 `observability.get_correlated_logs` {applies_to}`stack: removed 9.4`
 :   Finds logs that are correlated with a specific event or time period.
 
-`observability.get_traces` {applies_to}`stack: ga 9.4`
+`observability.get_traces` {applies_to}`stack: ga 9.4+`
 :   Retrieves Observability documents (logs, transactions, spans, and errors) for one or more traces, grouped by trace ID.
 
 `observability.run_log_rate_analysis` {applies_to}`stack: ga 9.3+`
@@ -201,20 +201,20 @@ Observability tools provide specialized capabilities for monitoring applications
 `observability.get_anomaly_detection_jobs` {applies_to}`stack: ga 9.3+`
 :   Retrieves {{ml-app}} [{{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection.md) and their top anomaly records for investigating outliers and atypical behavior.
 
-`observability.get_logs` {applies_to}`stack: ga 9.4`
+`observability.get_logs` {applies_to}`stack: ga 9.4+`
 :   Searches and filters logs, returning a histogram trend, total count, log samples, and message pattern categories in a single query.
 
-`observability.get_runtime_metrics` {applies_to}`stack: ga 9.4`
+`observability.get_runtime_metrics` {applies_to}`stack: ga 9.4+`
 :   Retrieves runtime metrics for services, including CPU usage, memory consumption, thread counts, and GC duration. Currently supports JVM (Java) metrics.
 
-`observability.get_trace_change_points` {applies_to}`stack: ga 9.4`
+`observability.get_trace_change_points` {applies_to}`stack: ga 9.4+`
 :   Detects statistically significant change points in trace latency, throughput, and failure rate across groups (for example, by service, transaction, or host).
 
 `observability.get_apm_correlations` {applies_to}`stack: ga 9.3+`
 :   Analyzes APM transaction correlations to identify which dimensions are most associated with slow or failed transactions. Use after identifying a high-latency or high-failure service to find which attributes (host, version, cloud region, and so on) are over-represented in slow or failed transactions. Requires a [Platinum license](https://www.elastic.co/subscriptions).
 
 % TODO (9.4): Publish once https://github.com/elastic/kibana/pull/255717 merges.
-<!-- `observability.elasticsearch` {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+<!-- `observability.elasticsearch` {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
 :   Calls Elasticsearch APIs from natural language. Read operations (`GET`, `HEAD`) run immediately, while write and delete operations (`POST`, `PUT`, `DELETE`) require explicit user confirmation before running. Responses are automatically truncated or summarized to fit the AI context window.
 
     :::{note}
@@ -240,16 +240,16 @@ $$$agent-builder-security-attack-discovery-search-tool$$$
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
 
-`security.create_detection_rule` {applies_to}`stack: ga 9.4`
+`security.create_detection_rule` {applies_to}`stack: ga 9.4+`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
 % TODO (9.4): Uncomment once @ymao1 confirms entityAnalyticsEntityStoreV2 feature flag is enabled for 9.4.
 % These tools also require the Entity Store index to exist in the space.
 % Source: https://github.com/elastic/docs-content/pull/5840#discussion (KDKHD comment on L251)
-<!-- `security.get_entity` {applies_to}`stack: ga 9.4`
+<!-- `security.get_entity` {applies_to}`stack: ga 9.4+`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
-`security.search_entities` {applies_to}`stack: ga 9.4`
+`security.search_entities` {applies_to}`stack: ga 9.4+`
 :   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is. -->
 
 % TODO (9.4): Confirm tool ID with Security team before publishing.
