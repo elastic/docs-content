@@ -132,10 +132,6 @@ serverless:
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
 
-:::{note}
-:applies_to: stack: preview =9.3, removed 9.4+
-The [built-in Observability agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) is assigned these tools by default.
-:::
 
 `observability.get_alerts`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
