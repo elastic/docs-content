@@ -169,9 +169,9 @@ Select **View JSON** to view the full raw response data. For more information, r
 stack: ga 9.4+
 ```
 
-When an agent proposes a change that would modify a resource, the chat pauses and presents a preview of the proposed changes before they take effect. The format of the preview and the actions available depend on the skill the agent is using.
+You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the chat pauses and presents a preview before anything takes effect. The preview format and available actions depend on the skill the agent is using.
 
-No changes are applied until you explicitly confirm or dismiss the preview.
+No changes are applied until you explicitly confirm or dismiss.
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
