@@ -18,9 +18,9 @@ Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI
 
 | Layer | What it is | In {{elastic-sec}} |
 |-------|------------|-------------------|
-| Agent | The conversational AI you chat with—reasoning, instructions, and tool use in one loop | The [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) is the default agent in {{agent-builder}} for security workflows. |
-| Skill | A modular capability pack: specialized instructions plus the tools and context for one domain | Security skills (for example, threat hunting or alert triage) that you can enable or disable for your team. |
-| Tool | A discrete action the agent can run (query data, open a case, run a workflow) | Shared [built-in tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md); the same tool can appear in more than one skill. |
+| Agent | The AI you chat with. It reasons, follows instructions, and uses tools. | The default is the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). |
+| Skill | Specialized instructions, tools, and context for one domain. | Security skills you can enable or disable, such as threat hunting or alert triage. |
+| Tool | A specific action the agent can run, such as querying data, opening a case, or running a workflow. | [Built-in tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md) shared across skills — the same tool can appear in more than one skill. |
 
 ```mermaid
 flowchart TB
