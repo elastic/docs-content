@@ -14,8 +14,6 @@ description: Understand how the Elastic AI Agent, Security skills, and tools wor
 
 Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) that you extend with modular *skills*. Each skill packages domain-specific instructions, a curated set of [tools](/explore-analyze/ai-features/agent-builder/tools.md), and context for a SOC workflow so you don't switch between separate agents for hunting, triage, or response.
 
-For product-wide mechanics — creating custom skills, APIs, and the full built-in skills catalog — refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md), the [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md), and the [Skill creation guidelines](/explore-analyze/ai-features/agent-builder/skill-creation-guidelines.md).
-
 ## How the pieces fit together
 
 | Layer | What it is | In {{elastic-sec}} |
@@ -69,5 +67,8 @@ Yes. For supported deployment tiers and how to author your own skill, refer to [
 
 - [Agent Builder for {{elastic-sec}}](agent-builder.md)
 - [Security skills use cases](skills-use-cases.md)
+- [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md)
+- [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md)
+- [Skill creation guidelines](/explore-analyze/ai-features/agent-builder/skill-creation-guidelines.md)
 - [Built-in agents reference](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md)
 - [Tools in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools.md)
