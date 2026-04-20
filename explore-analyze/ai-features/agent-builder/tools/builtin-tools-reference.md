@@ -243,20 +243,11 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.create_detection_rule` {applies_to}`stack: ga 9.4+`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
-% TODO (9.4): Uncomment once @ymao1 confirms entityAnalyticsEntityStoreV2 feature flag is enabled for 9.4.
-% These tools also require the Entity Store index to exist in the space.
-% Source: https://github.com/elastic/docs-content/pull/5840#discussion (KDKHD comment on L251)
-<!-- `security.get_entity` {applies_to}`stack: ga 9.4+`
+`security.get_entity` {applies_to}`stack: ga 9.4+`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
 `security.search_entities` {applies_to}`stack: ga 9.4+`
-:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is. -->
-
-% TODO (9.4): Confirm tool ID with Security team before publishing.
-% The ML jobs skill matches user questions to started ML anomaly jobs by comparing
-% against anomaly titles and descriptions, then generates ES|QL queries against
-% the relevant ML anomaly indices. Requires relevant ML security jobs to be started.
-% Source: https://github.com/elastic/kibana/pull/254908
+:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
 ## Inline tools
 
