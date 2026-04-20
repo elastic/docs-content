@@ -526,6 +526,7 @@ toc:
         children:
           - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md
@@ -667,6 +668,7 @@ toc:
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
+          - file: security/manage-elastic-defend/exception-types-and-syntax.md
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md

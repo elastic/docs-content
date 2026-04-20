@@ -1,15 +1,15 @@
 ---
 navigation_title: Automatic Import
-description: Automatic Import parses and ingests data without a prebuilt integration; refer to the full Automatic Import guide for Elastic Security.
+description: Automatic Import parses and ingests data without a prebuilt integration; refer to the full Automatic Import guide for Elastic Observability.
 applies_to:
   stack: ga
   serverless: ga
 products:
-  - id: security
+  - id: observability
   - id: cloud-serverless
 ---
 
-# Automatic Import for {{elastic-sec}} [security-automatic-import]
+# Automatic Import for {{observability}} [observability-automatic-import]
 
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::
