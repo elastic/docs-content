@@ -1,0 +1,58 @@
+---
+navigation_title: AI onboarding
+applies_to:
+  stack: ga 9.4+
+  serverless: ga
+products:
+  - id: cloud-serverless
+  - id: elasticsearch
+  - id: kibana
+---
+
+# AI onboarding
+
+**AI onboarding** is an AI-powered assistant that guides you from an initial idea for your use case to a working search experience through a conversational, use-case-driven flow.
+
+The assistant asks what you’re building, understands your data, recommends the right approach, and generates a working implementation, rather than requiring you to read documentation or create templates.
+Along the way, it explains key {{es}} concepts such as indices, mappings, and queries, so you learn while building.
+
+AI onboarding helps you:
+
+- **Get to value faster**: go from idea to a working search experience in minutes, not days
+- **Build the right solution**: receive recommendations tailored to your use case and data
+- **Learn by doing**: understand {{es}} concepts as part of the workflow
+- **Avoid common pitfalls**: the assistant explains decisions and validates key steps
+
+AI onboarding uses a guided, conversational flow that adapts to your use case.
+It starts by understanding your intent, then analyzes your data and requirements.
+Based on this, it recommends an appropriate search approach and guides you through implementation, including mappings, indexing, and queries.
+
+## Get started with AI onboarding
+
+When you start a new {{es}} project, the **Getting started** page opens. To access it later, use the **Getting started** menu. Then locate the **Build with AI** section.
+
+[TO DO: screenshot]
+
+You can choose between two onboarding paths:
+
+### Use your IDE or CLI
+
+Install Elastic onboarding skills in your preferred coding assistant (for example, Cursor or Claude Code):
+
+1. Click **Install Elastic skills**.
+2. Copy the generated prompt.
+[TO DO: screenshot]
+3. Paste the prompt into your coding agent to install the onboarding skills.
+
+Once installed, your coding agent can guide you through the onboarding flow.
+
+### Use Elastic Agent
+
+Start onboarding directly in Elastic:
+
+1. Click **Use Elastic Agent**.
+2. A chat interface opens.
+[TO DO: screenshot]
+3. Describe what you want to build.
+
+The assistant asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
