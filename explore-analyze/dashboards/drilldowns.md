@@ -45,7 +45,7 @@ For example, if you have a dashboard that shows the logs and metrics for multipl
 The following panel types support dashboard drilldowns:
 
 * **Visualizations created with Lens**
-* {applies_to}`stack: 9.4` {applies_to}`serverless:` **{{esql}} visualizations**
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **{{esql}} visualizations**
 * **Maps**
 * **TSVB**
 * **Vega**
@@ -105,7 +105,7 @@ Some panels support multiple interactions, also known as triggers. The [variable
 
 For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
 
-{applies_to}`stack: 9.4` {applies_to}`serverless:` {{esql}} visualization panels also support URL drilldowns.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless:` {{esql}} visualization panels also support URL drilldowns.
 
 ### Create a URL drilldown [_create_a_url_drilldown]
 
