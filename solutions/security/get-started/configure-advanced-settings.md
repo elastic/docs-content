@@ -202,7 +202,7 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
 ```yaml {applies_to}
-stack: removed 9.4
+stack: ga 9.0-9.3, removed 9.4
 serverless: removed
 ```
 
@@ -238,7 +238,7 @@ The `securitySolution:alertCloseReasons` field determines which custom options a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 
