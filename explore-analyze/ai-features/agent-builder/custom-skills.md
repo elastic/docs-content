@@ -27,7 +27,7 @@ Create a custom skill when you have domain-specific knowledge or procedures that
 
 ## Create a custom skill
 
-Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to [add the skill to an agent](#add-skills-to-an-agent) before the agent can use it.
+Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to add the skill to an agent before the agent can use it.
 
 You can create a skill from **Manage components > Skills**, or inline when adding skills to an agent from **Customize > Skills**.
 
