@@ -134,8 +134,7 @@ To access the **Engine Status** tab, find **Entity Store** in the navigation men
 ## Supported integrations [entity-store-integrations]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless:
-  security: ga
+serverless: ga
 ```
 
 The entity store supports the following integrations as data sources for entity creation:
@@ -146,7 +145,7 @@ The entity store supports the following integrations as data sources for entity 
 * [Microsoft Entra ID Entity Analytics](integration-docs://reference/entityanalytics_entra_id.md)
 * [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md)
 * [Google Workspace](integration-docs://reference/google_workspace.md)
-* [Microsoft 365](integration-docs://reference/o365)
+* [Microsoft 365](integration-docs://reference/o365.md)
 * [AWS CloudTrail](integration-docs://reference/aws/cloudtrail.md)
 
 **Endpoint and host sources:**
@@ -159,8 +158,7 @@ The entity store supports the following integrations as data sources for entity 
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless:
-  security: ga
+serverless: ga
 ```
 
 The entity store runs scheduled log extraction to keep entity data up to date.
