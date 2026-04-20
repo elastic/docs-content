@@ -9,6 +9,14 @@ products:
   - id: cloud-serverless
 sub:
   offering: Observability
+  abb-anchor: observability-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with operational tasks, including incident diagnosis, root cause analysis, and service health troubleshooting. Agent Builder Executions is a billing dimension for Elastic Observability Serverless projects on the Observability Complete tier.
+
+    Billing is based on the number of agent executions completed in your project over the course of a month.
+  abb-free-executions: 10,000
+  abb-pricing-label: Elastic Cloud pricing table
+  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability
 ---
 
 # {{obs-serverless}} billing dimensions [observability-billing]
@@ -31,6 +39,9 @@ Refer to [Serverless billing dimensions](serverless-project-billing-dimensions.m
 ## Synthetics [synthetics-billing]
 
 [Synthetic monitoring](/solutions/observability/synthetics/index.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications as a part of the "Observability Complete" feature tier. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
+
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
 
 ## Elastic Managed LLMs
 
