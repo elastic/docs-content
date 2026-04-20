@@ -85,7 +85,7 @@ To add a trusted application:
         * `matches`: Can include wildcards in `Value`, such as `C:\path\*\app.exe`. This option is only available for the `Path` field type. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
           ::::{note}
-          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters. Enter paths exactly as they appear on the host (for example, `C:\Windows\explorer.exe`). Refer to [Exception types and value syntax](exception-types-and-syntax.md) for a full comparison.
           ::::
 
     4. `Value`: Enter the hash value, file path, or signer name. To add an additional value, click **AND**.
@@ -113,7 +113,7 @@ To add a trusted application:
        * `matches` | `does not match`:  Allows you to use wildcards in `Value`, such as `C:\path\*\app.exe`.  Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
           ::::{note}
-          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters. Enter paths exactly as they appear on the host (for example, `C:\Windows\explorer.exe`). Refer to [Exception types and value syntax](exception-types-and-syntax.md) for a full comparison.
           ::::
 
           ::::{important}
