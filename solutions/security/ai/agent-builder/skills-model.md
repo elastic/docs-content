@@ -22,21 +22,6 @@ Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI
 | Skill | Specialized instructions, tools, and context for one domain. | Security skills you can enable or disable, such as threat hunting or alert triage. |
 | Tool | A specific action the agent can run, such as querying data, opening a case, or running a workflow. | [Built-in tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md) shared across skills — the same tool can appear in more than one skill. |
 
-```mermaid
-flowchart TB
-  subgraph agentLayer [Elastic_AI_Agent]
-    subgraph skillsLayer [Enabled_skills]
-      s1[Threat_Hunting_skill]
-      s2[Other_security_skills]
-    end
-    subgraph toolsLayer [Tools]
-      t1[security_tools]
-      t2[platform_tools]
-    end
-  end
-  skillsLayer --> toolsLayer
-```
-
 You talk to the agent in natural language. The agent picks tools based on your request, the skills you turned on, and its instructions. You don't invoke tools directly.
 
 ## Enable and manage skills
