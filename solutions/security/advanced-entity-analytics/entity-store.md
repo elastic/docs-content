@@ -28,23 +28,49 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices  without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
 
-When the entity store is enabled, the following resources are generated for each entity type (hosts, users, and services):
+When the entity store is enabled, the following resources are created for the active space:
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+* A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.security_<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
+* An updates data stream, `.entities.v2.updates.security_<space-id>` (alias: `entities-updates-<space-id>`), which records incremental entity updates as they are extracted from source data.
+* History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
+
+:::{note}
+Entity Store v2 uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} ENRICH policies. When v2 is installed, v1 transforms, enrich policies, and ingest pipelines are removed. Your v1 index data is retained.
+:::
+
+:::{warning}
+Entity store v2 replaces per-type v1 indices with a single shared latest alias. Update any direct queries or automations that reference `.entities.v1.latest.security_user_*`, `.entities.v1.latest.security_host_*`, or `.entities.v1.latest.security_service_*` to use `entities-latest-<space-id>` instead. The v1 API routes are deprecated in 9.4.
+:::
+::::
+
+::::{applies-item} { stack: ga 9.0-9.3 }
+For each entity type (hosts, users, and services):
 
 * {{es}} resources, such as transforms, ingest pipelines, and enrich policies.
 * Data and fields for each entity.
 * The `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_services_<space-id>` indices, which contain field mappings for hosts, users, and services respectively. You can query these indices to see a list of fields that are mapped in the entity store.
-* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Snapshot indices (`.entities.v1.history.<ISO_date>.*`) that store daily snapshots of entity data, enabling [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of attributes over time.
-* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Reset indices (`.entities.v1.reset.*`) that ensure entity timestamps are updated correctly in the latest index, supporting accurate time-based queries and future data resets.
+* {applies_to}`stack: ga 9.2+` Snapshot indices (`.entities.v1.history.<ISO_date>.*`) that store daily snapshots of entity data, enabling [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of attributes over time.
+* {applies_to}`stack: ga 9.2+` Reset indices (`.entities.v1.reset.*`) that ensure entity timestamps are updated correctly in the latest index, supporting accurate time-based queries and future data resets.
+::::
+
+:::::
 
 ## Enable entity store [enable-entity-store]
 
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-The entity store is automatically enabled when you turn on the risk scoring engine. To enable both:
+The entity store is automatically enabled when you turn on the risk scoring engine. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn the toggle on.
+
+:::{note}
+If you've upgraded from a previous version, and entity store v1 was installed in any space, it's automatically migrated to v2 after the upgrade. Your v1 index data is retained.
+:::
 :::
 
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -104,3 +130,74 @@ To access the **Engine Status** tab, find **Entity Store** in the navigation men
 :::
 
 ::::
+
+## Supported integrations [entity-store-integrations]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless:
+  security: ga
+```
+
+The entity store supports the following integrations as data sources for entity creation:
+
+**Identity and account sources:**
+
+* [Active Directory Entity Analytics](integration-docs://reference/entityanalytics_ad.md)
+* [Microsoft Entra ID Entity Analytics](integration-docs://reference/entityanalytics_entra_id.md)
+* [Okta Entity Analytics](integration-docs://reference/entityanalytics_okta.md)
+* [Google Workspace](integration-docs://reference/google_workspace.md)
+* [Microsoft 365](integration-docs://reference/o365)
+* [AWS CloudTrail](integration-docs://reference/aws/cloudtrail.md)
+
+**Endpoint and host sources:**
+
+* [{{elastic-defend}}](integration-docs://reference/endpoint/index.md)
+* [CrowdStrike](integration-docs://reference/crowdstrike.md)
+* [SentinelOne](integration-docs://reference/sentinel_one.md)
+* [Microsoft Defender for Endpoint](integration-docs://reference/microsoft_defender_endpoint.md)
+
+## Troubleshoot entity store performance [entity-store-troubleshoot]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless:
+  security: ga
+```
+
+The entity store runs scheduled log extraction to keep entity data up to date.
+
+To determine whether log extraction is slow or unhealthy, check the **Engine Status** tab or query the Entity store status API.
+
+A process might be **slow** if:
+
+* New entities are not appearing as expected.
+* The last successful execution does not appear to advance (`lastExecutionTimestamp`).
+
+A process might be **unhealthy** if:
+
+* The engine enters an `error` state.
+* Component health indicators are degraded.
+* Extraction appears stalled and no forward progress is visible.
+
+If log extraction appears slow, you can modify the following log extraction configuration settings to balance freshness, coverage, and query cost.
+
+#### `frequency`
+
+Use `frequency` to control how often extraction runs.
+
+* Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
+
+#### `docsLimit`
+
+Use `docsLimit` to control how many entities can be processed in one extraction page.
+
+* Lower it if queries are too heavy or time-consuming.
+* Default: `10000` entities.
+
+#### `maxLogsPerPage`
+
+Use `maxLogsPerPage` to cap the raw-log slice size before aggregation.
+
+* Lower it if queries are too heavy or time-consuming.
+* Default: `40000` documents.
+
+Start with `maxLogsPerPage` rather than `docsLimit` when extraction is slow or unstable, because it reduces the amount of raw source data processed in each extraction operation. Adjust `docsLimit` if tuning `maxLogsPerPage` is insufficient and you still see performance issues.

@@ -50,11 +50,13 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 ::::
 
 
-If you’re installing the risk scoring engine for the first time:
-
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+In the default {{kib}} space, both the risk scoring engine and entity store are enabled automatically.
+
+For non-default spaces, if you're enabling risk scoring for the first time:
+
 1. Find the **Entity Analytics** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn the toggle on.
 

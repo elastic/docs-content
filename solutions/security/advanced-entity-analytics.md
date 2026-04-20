@@ -37,6 +37,9 @@ Entity analytics operates continuously across several stages:
 2. **Score risk:** The engine calculates risk scores (0–100) for hosts, users, and services based on alert severity, frequency, and asset criticality. Scores are recalculated on a recurring interval.
 3. **Detect anomalies:** Prebuilt {{ml}} jobs identify unusual patterns in user and host behavior that may indicate compromise or insider threats.
 4. **Enrich entities:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) reconciles data from ingested logs, identity providers, and risk scores into a unified view of each entity.
+
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The entity store resolves entities using shared identity matching across sources, so a single real-world entity observed across multiple identity providers appears as one deduplicated record.
+
 5. **Investigate and respond:** The [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) surfaces the highest-risk entities, anomalies, and KPIs so you can triage and investigate efficiently.
 
 ## Key capabilities
