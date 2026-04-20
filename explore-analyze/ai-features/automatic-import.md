@@ -87,25 +87,29 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :::
 
 7. Select a [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how the integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
-8. If you selected **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec) through the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), upload the API's OAS file. The LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. Select which API endpoints to consume and your authentication method before uploading sample data.
-9. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
-10. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
 
-    :::{image} /solutions/images/security-auto-import-data-streams-status.png
-    :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses
-    :::
+   :::{note}
+   If you select **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec) through the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), upload the API's OAS file. The LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. Select which API endpoints to consume and your authentication method before uploading sample data.
+   :::
 
-    :::{warning}
-    Only integrations created in {{stack}} 9.4 or later can be managed from the **Manage my integrations** menu used in the following steps. Integrations created in earlier versions use a different workflow.
-    :::
+8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
+9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
 
-11. When all data streams reach a **Success** status, the integration is ready to approve.
+   :::{image} /solutions/images/security-auto-import-data-streams-status.png
+   :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses
+   :::
+
+   :::{warning}
+   Only integrations created in {{stack}} 9.4 or later can be managed from the **Manage my integrations** menu used in the following steps. Integrations created in earlier versions use a different workflow.
+   :::
+
+10. When all data streams reach a **Success** status, the integration is ready to approve.
 
     :::{image} /solutions/images/security-auto-import-manage-integrations-row.png
     :alt: The Manage my integrations view showing a custom integration with a Ready to approve status
     :::
 
-12. From the integration's **Actions** menu, click **Review & approve**. Select a category so users can find the integration on the Integrations page, then review the field mappings and the ingest pipeline.
+11. From the integration's **Actions** menu, click **Review & approve**. Select a category so users can find the integration on the Integrations page, then review the field mappings and the ingest pipeline.
 
     :::{image} /solutions/images/security-auto-import-review-approve.png
     :alt: The Review and approve data streams modal with a category selector and an Approve button
@@ -121,20 +125,20 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The ingest pipeline flyout showing field mappings for a data stream
     :::
 
-13. Approval makes the integration available to install but does not install it. From the **Actions** menu, click **Install** to install the integration.
-14. Locate the newly installed integration under the category you selected.
+12. Approval makes the integration available to install but does not install it. From the **Actions** menu, click **Install** to install the integration.
+13. Locate the newly installed integration under the category you selected.
 
     :::{image} /solutions/images/security-auto-import-find-integration.png
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
     :::
 
-15. Click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
+14. Click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
 
     :::{image} /solutions/images/security-auto-import-add-integration.png
     :alt: The integration details page with an Add button to deploy the integration to an agent policy
     :::
 
-16. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+15. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 
