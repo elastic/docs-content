@@ -191,7 +191,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 :   Displays a summary of the selected agent, including the total count of assigned skills and tools. Use the quick links to edit the agent's instructions or settings.
 
 **Skills**
-:   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**.
+:   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them.
 
 % TODO add link back after the skills PR has been merged (https://github.com/elastic/docs-content/pull/5868)
 % with [skills](#skills)
@@ -221,7 +221,7 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
 
 **Skills**
-:   View and manage all skills available in the deployment. Create new skills, edit existing ones, or assign them to agents.
+:   View and manage all skills available in the deployment. Create new skills or edit existing ones.
 
 <!--
 **Plugins**
