@@ -82,7 +82,7 @@ You can also create and manage skills programmatically using the [Skills API](#s
 
 ## Add skills to an agent
 
-Skills in your library are not available to any agent until you explicitly add them. To add a skill, go to **Customize > Skills** on the agent you want to configure and select **Add skills**. From here you can:
+Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize > Skills** on the agent you want to configure and select **Add skills**. From here you can:
 
 - **Import from skill library**: Select an existing skill from **Manage components > Skills**. After importing, make sure the skill is toggled on in the agent's skill list.
 - **Create a skill**: Build a new skill and add it to this agent in one step. The skill is enabled for the agent automatically and also saved to your library.
