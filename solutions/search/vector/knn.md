@@ -469,7 +469,7 @@ Reference the deployed text embedding model or the model deployment in the `quer
 3. The query string from which the model generates the dense vector representation.
 
 :::{tip}
-For an overview of query_vector_builder options (text_embedding, embedding, and lookup), refer to Build query vectors for knn search.
+For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to Build query vectors for knn search.
 :::
 <!--
 TODO: place link after https://github.com/elastic/elasticsearch/pull/146059 is merged
