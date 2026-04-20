@@ -52,27 +52,27 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 | Region | Name |
 | --- | --- |
+| us-east4 | US East (N. Virginia) |
+| us-east1 | US East (S. Carolina) |
+| us-central1 | US Central (Iowa) |
+| us-west1 | US West (Oregon) |
+| northamerica-northeast1 | North America (Montreal) |
+| europe-west1 | Europe (Belgium) |
+| europe-west2 | Europe (London) |
+| europe-west9 | Europe (Paris) |
+| europe-north1 | Europe (Finland) |
+| europe-west3 | Europe (Frankfurt) |
+| europe-west4 | Europe (Netherlands) |
+| me-central2 | Middle East (Saudi Arabia) |
+| me-west1 | Middle East (Tel Aviv) |
 | asia-east1 | Asia Pacific (Taiwan) |
 | asia-northeast1 | Asia Pacific (Tokyo) |
 | asia-northeast3 | Asia Pacific (Seoul) |
-| asia-south1 | Asia Pacific (Mumbai) |
 | asia-southeast1 | Asia Pacific (Singapore) |
 | asia-southeast2 | Asia Pacific (Jakarta) |
 | australia-southeast1 | Asia Pacific (Sydney) |
-| europe-north1 | Europe (Finland) |
-| europe-west1 | Europe (Belgium) |
-| europe-west2 | Europe (London) |
-| europe-west3 | Europe (Frankfurt) |
-| europe-west4 | Europe (Netherlands) |
-| europe-west9 | Europe (Paris) |
-| me-central2 | Middle East (Saudi Arabia) |
-| me-west1 | Middle East (Tel Aviv) |
-| northamerica-northeast1 | North America (Montreal) |
+| asia-south1 | Asia Pacific (Mumbai) |
 | southamerica-east1 | South America (São Paulo) |
-| us-central1 | US Central (Iowa) |
-| us-east1 | US East (S. Carolina) |
-| us-east4 | US East (N. Virginia) |
-| us-west1 | US West (Oregon) |
 
 ## AutoOps for {{serverless-full}} regions
 
@@ -95,12 +95,13 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 | Region | Name |
 | --- | --- |
-| us-west1 | US West (Oregon) |
-| us-central1 | US Central (Iowa) |
-| us-east1 | US East (S. Carolina) |
 | us-east4 | US East (N. Virginia) |
+| us-east1 | US East (S. Carolina) |
+| us-central1 | US Central (Iowa) |
+| us-west1 | US West (Oregon) |
 | europe-west1 | Europe (Belgium) |
 | europe-west2 | Europe (London) |
 | europe-west3 | Europe (Frankfurt) |
 | europe-west4 | Europe (Netherlands) |
+| asia-northeast1 | Asia Pacific (Tokyo) |
 | asia-southeast1 | Asia Pacific (Singapore) |
