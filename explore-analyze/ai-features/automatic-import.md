@@ -113,9 +113,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
     Integration versions automatically increase when more data streams are added after the integration is approved.
 
-    :::{tip}
-    To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done. If your new integration collects data from an API, you can also update the [CEL input](beats://reference/filebeat/filebeat-input-cel.md) configuration from the integration's policy after installation.
-    :::
+    (Optional) To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done. If your new integration collects data from an API, you can also update the [CEL input](beats://reference/filebeat/filebeat-input-cel.md) configuration from the integration's policy after installation.
 
     :::{image} /solutions/images/security-auto-import-edit-pipeline-new.png
     :alt: The ingest pipeline flyout showing field mappings for a data stream
