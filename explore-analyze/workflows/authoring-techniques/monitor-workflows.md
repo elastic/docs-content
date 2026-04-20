@@ -1,8 +1,9 @@
 ---
+navigation_title: Monitor workflow execution
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to monitor Elastic workflows executions and troubleshoot errors.
+description: Track workflow runs in real time, review execution history, and troubleshoot workflow failures in Kibana.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -12,12 +13,12 @@ products:
   - id: elastic-stack
 ---
 
-# Monitor and troubleshoot workflows [workflows-monitor-troubleshoot]
+# Monitor workflow execution [workflows-monitor-troubleshoot]
 
 After you run a workflow, you can track its progress in real time, review past executions, and diagnose any failures. This page explains how to use the execution panel and logs on the **Executions tab** to understand what happened during a workflow run.
 
 ::::{admonition} Requirements
-To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](setup.md) for more information.
+To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.
 
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::

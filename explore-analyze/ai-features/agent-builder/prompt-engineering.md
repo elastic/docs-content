@@ -14,11 +14,12 @@ products:
 
 # Best practices for prompt engineering in {{agent-builder}}
 
-[Prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) is the process of structuring or crafting an instruction in order to produce better outputs from a generative artificial intelligence (GenAI) model. 
+[Prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) is the process of structuring or crafting an instruction to produce better outputs from a generative artificial intelligence (GenAI) model. 
 
-Prompt engineering in {{agent-builder}} involves three key areas:
+Prompt engineering in {{agent-builder}} involves four key areas:
 
 * **Custom instructions**: When you [create a custom agent](custom-agents.md), you define instructions that shape the agent's persona, reasoning patterns, and guardrails.
+* **Skill instructions**: When you [create custom skills](custom-skills.md), you write instructions that give agents reusable, task-specific expertise. Refer to [Skill creation guidelines](skill-creation-guidelines.md) for guidance specific to skills.
 * **Tool descriptions**: When you [define custom tools](tools/custom-tools.md#writing-effective-tool-descriptions), you write descriptions that help the agent understand when and how to use each tool.
 * **Chat prompts**: How you phrase your questions when [chatting with agents](chat.md) affects the quality and accuracy of responses.
 
@@ -62,6 +63,7 @@ When building agents, you must decide where specific logic belongs: in the agent
 | **Multi-step sequences** | Custom instructions | "First search for the user, then look up their recent orders." The agent needs to know the order of operations before selecting tools. |
 | **Trigger criteria** | Tool description | "Use this tool ONLY for European market data." The LLM evaluates this when deciding which tool to call. |
 | **API constraints** | Tool description | "The search parameter must be at least 3 characters." This prevents invalid API calls. |
+| **Task-specific logic** | [Skills](skills.md) | Logic that only applies to certain task types. Use a skill to keep custom instructions focused. Refer to [Skill creation guidelines](skill-creation-guidelines.md). |
 | **Dynamic intent** | User input | "Find me the sales for Q3." The LLM extracts values from the user's message and passes them as tool parameters at runtime. |
 
 :::{tip}
@@ -141,6 +143,8 @@ Teach the agent to be resilient. If a tool returns an error or an empty response
 ## Related pages
 
 * [Custom agents](custom-agents.md)
+* [Skills in {{agent-builder}}](skills.md)
+* [Skill creation guidelines](skill-creation-guidelines.md)
 * [Custom tools](tools/custom-tools.md)
 * [Best practices for tool definitions](tools/custom-tools.md#best-practices)
 * [Agent Chat](chat.md)
