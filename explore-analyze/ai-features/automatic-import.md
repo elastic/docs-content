@@ -105,7 +105,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The Manage my integrations view showing a custom integration with a Ready to approve status
     :::
 
-11. From the integration's **Actions** menu, click **Review & approve**. Select a category so users can find the integration on the Integrations page, then review the field mappings and the ingest pipeline.
+11. From the integration's **Actions** menu, click **Review & approve**. Select a category to help identify the integration on the Integrations page, then review the field mappings and the ingest pipeline.
 
     :::{image} /solutions/images/security-auto-import-review-approve.png
     :alt: The Review and approve data streams modal with a category selector and an Approve button
