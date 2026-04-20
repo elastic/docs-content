@@ -70,4 +70,10 @@ If the Discover session contains multiple tabs, you can choose which tab the pan
 
 1. Open the panel menu and select **Edit**.
 2. From the tab selector, select the tab you want to display.
+
+   :::{image} /explore-analyze/images/discover-session-tab-selector.png
+   :alt: Tab selector showing the list of available tabs for a Discover session panel
+   :screenshot:
+   :::
+
 3. Select **Apply**.
