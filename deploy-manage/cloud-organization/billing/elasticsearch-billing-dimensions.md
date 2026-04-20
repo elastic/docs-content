@@ -11,7 +11,7 @@ description: Learn about how costs for Elasticsearch Serverless projects are cal
 sub:
   abb-anchor: elasticsearch-billing-agent-builder-executions
   abb-preamble: |
-    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. In addition to the VCU-based billing dimensions above, agent usage is billed based on the number of executions completed in your project over the course of a month.
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. Agent usage is billed in addition to VCU-based dimensions, based on the number of executions completed in your project over the course of a month.
   abb-free-executions: 1,000
   abb-pricing-label: Elasticsearch Serverless pricing page
   abb-pricing-url: https://www.elastic.co/pricing/serverless-search
