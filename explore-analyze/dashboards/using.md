@@ -55,13 +55,10 @@ Use filter pills to focus in on the specific data you want.
 :::
 
 
-#### Collapse and expand filter pills [collapse-filter-pills]
-```{applies_to}
-stack: ga 9.4
-serverless: ga
-```
-
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 When at least one filter pill is present, you can collapse the filter pills section to reclaim screen space. Select **Collapse filters** to hide the pills, or **Expand filters** to show them again. Your preference is saved across sessions.
+:::
 
 #### Add pills by interacting with visualizations [_add_pills_by_interacting_with_visualizations]
 
