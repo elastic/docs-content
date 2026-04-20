@@ -58,6 +58,9 @@ serverless:
   security: ga
 ```
 
+$$$agent-builder-alert-analysis-skill$$$ `alert-analysis` {applies_to}`stack: ga 9.4+`
+:   Triages and investigates {{elastic-sec}} alerts. Fetches alert context, finds related alerts that share entities (`host.name`, `user.name`, `source.ip`, `destination.ip`), correlates with {{elastic-sec}} Labs threat intelligence, assesses severity, and recommends a disposition. Use when investigating a specific alert, triaging alert queues, or understanding alert context.
+
 $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack: ga 9.4+`
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior. Use to discover risky entities or profile a specific entity by ID.
 
@@ -68,7 +71,10 @@ $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga
 :   Runs hypothesis-driven threat hunts using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, query, or index patterns.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, query, or index patterns.
+
+$$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
+:   Diagnoses [Elastic Defend](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps. Registered only when the `automaticTroubleshootingSkill` experimental feature flag is enabled.
 
 ## Elasticsearch skills
 ```{applies_to}
