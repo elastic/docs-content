@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-user-privileges.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
-  stack: ga
+  deployment:
+    ess: ga
   serverless: ga
 products:
   - id: cloud-hosted
@@ -142,12 +143,12 @@ You can optionally [create custom roles in a project](/deploy-manage/users-roles
 
 ## Role scopes [ec-role-scoping]
 
-Roles are assigned to every member of an organization. Depending on the role type, assignments can be scoped to specific {{ech}} deployments or {{serverless-full}} projects, or to all resources of a given type. When a role is scoped to all resources, it grants permissions on all existing and future resources of that type.
+Roles are assigned to every member of an organization. Depending on the role type, assignments can be scoped to specific {{ech}} deployments or {{serverless-short}} projects, connected clusters, or to all resources of a given type. When a role is scoped to all resources, it grants permissions on all existing and future resources of that type.
 
 This list describes the scope of the different roles:
 
-* **Organization owner**: This role is always scoped to administer all deployments and projects.
-* **Billing admin**: This role does not refer to any deployment or project.
+* **Organization owner**: This role is always scoped to administer all deployments, projects and connected clusters.
+* **Billing admin**: This role does not refer to any deployment, project, or connected cluster.
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
 * **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
 
