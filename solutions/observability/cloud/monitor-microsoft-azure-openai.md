@@ -290,7 +290,7 @@ For this tutorial, we’ll be using an [example Python application](https://gith
 
 ### Set your environment variables [azure-openai-apm-env-var]
 
-To start collecting APM data for your Azure OpenAI applications, gather the OpenTelemetry OTLP exporter endpoint and authentication header from your {{ecloud}} instance:
+To start collecting {{product.apm}} data for your Azure OpenAI applications, gather the OpenTelemetry OTLP exporter endpoint and authentication header from the {{product.apm}} integration in {{kib}}:
 
 1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **APM** integration.

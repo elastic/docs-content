@@ -526,6 +526,7 @@ toc:
         children:
           - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md

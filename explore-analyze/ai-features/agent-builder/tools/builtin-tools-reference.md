@@ -61,7 +61,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
-`platform.core.create_visualization` {applies_to}`stack: ga 9.4`
+`platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
 :   Creates or updates a visualization configuration based on a natural language description.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
@@ -99,20 +99,19 @@ The following tools manage file attachments in conversations:
 :   Shows the differences between versions of a file attachment.
 -->
 
-<!-- 
 ## Dashboard tools
 ```{applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
+serverless: preview
 ```
 
-Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze/dashboards.md).
+Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
 
 `dashboard.create_dashboard`
 :   Creates a dashboard with specified title, description, panels, and markdown summary.
 
 `dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications. 
--->
+:   Updates an existing dashboard with new panels or modifications.
 
 ### Streams tools
 ```{applies_to}
@@ -258,6 +257,10 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 % against anomaly titles and descriptions, then generates ES|QL queries against
 % the relevant ML anomaly indices. Requires relevant ML security jobs to be started.
 % Source: https://github.com/elastic/kibana/pull/254908
+
+## Inline tools
+
+Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
