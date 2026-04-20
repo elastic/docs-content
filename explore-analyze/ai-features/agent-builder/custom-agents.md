@@ -120,11 +120,7 @@ stack: ga 9.4+
 
 Switch to the **Skills** tab to assign skills to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
 
-You can assign skills that already exist in your deployment's skill library—you create and manage those from [**Manage components**](chat.md#manage-components) > **Skills**—or you can create new skills inline from this tab.
-
-% TODO add link back after the skills PR has been merged (https://github.com/elastic/docs-content/pull/5868)
-% with [skills](agent-builder-agents.md#skills)
-
+You can assign skills that already exist in your deployment's skill library—you create and manage those from [**Manage components**](chat.md#manage-components) > **Skills**—or you can create new skills inline from this tab. For an overview of skills, built-in versus custom skills, and APIs, refer to [Skills in {{agent-builder}}](skills.md).
 
 :::::
 

@@ -14,10 +14,7 @@ products:
 
 # {{agent-builder}} agents overview
 
-Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). {applies_to}`stack: ga 9.4+` Agents can also be equipped with skills, which are reusable instruction sets that provide specialized expertise. Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
-
-% TODO add link back after the skills PR has been merged (https://github.com/elastic/docs-content/pull/5868)
-% with [skills](#skills)
+Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). {applies_to}`stack: ga 9.4+` Agents can also be equipped with [skills](skills.md), which are reusable instruction sets that provide specialized expertise. Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
 An agent parses user requests to define a goal and then runs tools in a loop to achieve that goal. The agent provides responses based on its configured tools, instructions, and behavior settings.
 
@@ -105,3 +102,4 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+- [Skills in {{agent-builder}}](skills.md)
