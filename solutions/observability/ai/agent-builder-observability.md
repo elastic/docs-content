@@ -28,21 +28,21 @@ While Agent Builder works with any [configured LLM connector](/explore-analyze/a
 
 ::::{applies-switch}
 
-::::{applies-item} stack: preview 9.4+
+:::{applies-item} stack: preview 9.4+
 
 The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#observability-skills) designed to assist with infrastructure monitoring, application performance troubleshooting, and root cause analysis.
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) and [`observability.rca`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-rca-skill) skills. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
 
-::::
+:::
 
-::::{applies-item} stack: preview 9.3
+:::{applies-item} stack: preview 9.3
 
 Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
 
 By default it includes the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [{{observability}} tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#observability-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
-::::
+:::
 
 ::::
 
