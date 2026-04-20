@@ -12,7 +12,9 @@ type: overview
 
 # Building dashboards [create-dashboards]
 
-{{product.kibana}} gives you several ways to create dashboards. Use the following table to find the right approach, then follow the link to get started.
+{{product.kibana}} offers many ways to build powerful dashboards that help you visualize and keep track of the most important information in your {{product.elasticsearch}} data. Combine multiple visualizations, metrics, and interactive elements into a cohesive view that tells your data story and enables rapid decision-making.
+
+Use the following table to find the right approach for building your dashboards, then follow the link to get started.
 
 | Approach | When to use this | What you get |
 |---|---|---|
