@@ -42,7 +42,7 @@ Role assignments and resources outside your scope are not visible.
 
 There are three categories of roles you can assign to users:
 
-* **Organization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
+* **Organization-level roles:** These roles apply to the entire organization and are not specific to any resource.
 * **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
 * **Connected cluster access roles:** Grant access to {{ecloud}} services for clusters you connect through [Cloud Connect](/deploy-manage/cloud-connect.md).
 
