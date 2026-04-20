@@ -18,10 +18,8 @@ sub:
   abb-pricing-label: Elastic Cloud pricing table
   abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability
   wfe-anchor: observability-billing-workflow-executions
-  wfe-preamble: |
-    Workflows enable you to automate multi-step operational processes, including incident response, runbook automation, and service health remediation. Workflow Executions is a billing dimension for Observability Serverless projects on the Observability Complete tier.
-
-    Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-preamble: Workflows enable you to automate multi-step operational processes, including incident response, runbook automation, and service health remediation. Workflow Executions is a billing dimension for Observability Serverless projects on the Observability Complete tier.
+  wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
   wfe-pricing-label: Elastic Cloud pricing table
   wfe-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability

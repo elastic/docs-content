@@ -16,8 +16,8 @@ sub:
   abb-pricing-label: Elasticsearch Serverless pricing page
   abb-pricing-url: https://www.elastic.co/pricing/serverless-search
   wfe-anchor: elasticsearch-billing-workflow-executions
-  wfe-preamble: |
-    Workflows enable you to automate multi-step processes within your Elasticsearch project. In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
+  wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
   wfe-free-executions: 10,000
   wfe-pricing-label: Elasticsearch Serverless pricing page
   wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
