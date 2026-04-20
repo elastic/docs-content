@@ -1,8 +1,8 @@
 ---
 description: Learn about the differences between the AI Assistant and Agent Builder chat experiences and how to switch between the two.
 applies_to:
-  stack: preview 9.3+
-  serverless: preview
+  stack: ga 9.4+, preview 9.3
+  serverless: ga
 products:
   - id: kibana
   - id: observability
@@ -53,6 +53,62 @@ To learn more about the chat UI modes, refer to [](/explore-analyze/ai-features/
 
 Agent Builder doesn't yet support all AI Assistant features. The specific differences vary by solution:
 
+::::::{applies-switch}
+
+:::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+::::{tab-set}
+:group: example-group
+
+:::{tab-item} {{elastic-sec}}
+:sync: tab1
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Time awareness** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Citations** | ❌ | ✅ |
+| **Audit logging** | ❌ | ✅ |
+| **Quick prompts** | Partial | ✅ |
+| **In-chat previews of attached data** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific skills** | ✅ | ❌ |
+| **Modular skills** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+| **Integration with Elastic workflows** | ✅ | ❌ |
+
+Agent Builder partially addresses AI Assistant's quick prompts through [skills](/explore-analyze/ai-features/agent-builder/skills.md) and slash commands that let you invoke a skill directly (for example, `/threat-hunting`).
+
+:::
+
+:::{tab-item} Elastic {{observability}} and Search
+:sync: tab2
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Chat duplication** | ❌ | ✅ |
+| **Chat archiving** | ❌ | ✅ |
+| **Alerting rule connector action** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific skills** | ✅ | ❌ |
+| **Modular skills** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+
+:::
+
+::::
+
+:::::
+
+:::::{applies-item} { stack: preview 9.3 }
+
 ::::{tab-set}
 :group: example-group
 
@@ -96,6 +152,10 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 :::
 
 ::::
+
+:::::
+
+::::::
 
 ## API differences between Agent Builder and AI Assistant
 
