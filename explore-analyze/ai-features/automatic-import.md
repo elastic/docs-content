@@ -119,7 +119,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The ingest pipeline flyout showing field mappings for a data stream
     :::
 
-12. Approval makes the integration available to install but does not install it. From the **Actions** menu, click **Install** to install the integration.
+12. Approval makes the integration available to install but does not install it. To install it, click **Install** on the **Actions** menu.
 13. Locate the newly installed integration under the category you selected.
 
     :::{image} /solutions/images/security-auto-import-find-integration.png
