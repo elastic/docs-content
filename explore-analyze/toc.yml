@@ -201,12 +201,18 @@ toc:
           - file: ai-features/agent-builder/chat.md
             children:
               - file: ai-features/agent-builder/standalone-and-flyout-modes.md
+              - file: ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
           - file: ai-features/agent-builder/agent-builder-agents.md
             children:
             - file: ai-features/agent-builder/custom-agents.md
             - file: ai-features/agent-builder/builtin-agents-reference.md
             - file: ai-features/agent-builder/prompt-engineering.md
             - file: ai-features/agent-builder/agents-and-workflows.md
+          - file: ai-features/agent-builder/skills.md
+            children:
+              - file: ai-features/agent-builder/builtin-skills-reference.md
+              - file: ai-features/agent-builder/custom-skills.md
+              - file: ai-features/agent-builder/skill-creation-guidelines.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md

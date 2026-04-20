@@ -16,6 +16,8 @@ products:
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
+For model performance for {{observability}} and {{elastic-sec}}, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). The [Recommended models](#recommended-models) section focuses on {{agent-builder}}.
+
 For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
 
 ## Default model configuration
@@ -144,6 +146,9 @@ Smaller or "mini" model variants are not recommended for {{agent-builder}} as th
 
 ## Related pages
 
-- [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
-- [Get started](get-started.md): Initial setup and configuration
-- [Connectors](/deploy-manage/manage-connectors.md): Detailed connector configuration guide
+- [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
+- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
+- [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
+- [Limitations and known issues](limitations-known-issues.md)
+- [Get started](get-started.md)
+- [Connectors](/deploy-manage/manage-connectors.md)
