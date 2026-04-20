@@ -12,7 +12,7 @@ description: Example prompts for common Elastic Security workflows in Agent Buil
 
 # Security use cases for {{agent-builder}} [security-skills-use-cases]
 
-This page shows example conversations for common {{elastic-sec}} workflows on the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). Each section names the built-in Security skill (or skills) to enable for that workflow and gives example prompts. For what each skill does, refer to the [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md). For how agents, skills, and tools fit together, start with [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md).
+This page shows example conversations with the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) for common {{elastic-sec}} workflows. Each section names the built-in Security skill (or skills) to enable for that workflow and gives example prompts. For what each skill does, refer to the [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md). For how agents, skills, and tools fit together, start with [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md).
 
 Skills can be activated three ways: the agent selects one automatically from your prompt, you invoke one explicitly with a slash command (for example, `/threat-hunting`), or you attach context (such as an alert from the alert flyout) that activates the matching skill. These examples assume the agent is selecting automatically unless otherwise noted.
 
