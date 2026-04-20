@@ -59,7 +59,7 @@ EASE also offers a [Value report](/solutions/security/ai/ease/ease-value-report.
 
 In addition to the interactive tools described on this page, {{elastic-sec}} provides several AI-powered tools that automate specific workflows:
 
-- [Automatic Import](/solutions/security/get-started/automatic-import.md): Uses AI to ingest data from sources that don't have prebuilt Elastic integrations, by creating custom integrations with ECS mappings.
+- [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Uses AI to ingest data from sources that don't have prebuilt Elastic integrations, by creating custom integrations with ECS mappings.
 - [Automatic Migration](/solutions/security/get-started/automatic-migration.md): Uses AI to translate rules and dashboards from third-party SIEMs into {{elastic-sec}}'s native format, accelerating SIEM migration.
 - [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/automatic-troubleshooting.md): Uses AI to identify issues that could prevent {{elastic-defend}} from working as intended, including policy response failures and third-party antivirus conflicts.
 

@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3+
   serverless:
-    security: preview 9.3+
+    security: preview
 products:
   - id: security
   - id: cloud-serverless
@@ -131,6 +131,6 @@ With Agent Builder, you can automate this process to speed it up and require les
 
 ## Related resources
 
-- [AI chat experiences](/explore-analyze/ai-features/ai-chat-experiences.md)
-- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md)
-- [Elastic Workflows](/explore-analyze/workflows.md)
+- [](/explore-analyze/ai-features/ai-chat-experiences.md)
+- [](/explore-analyze/ai-features/elastic-agent-builder.md)
+- [](/explore-analyze/workflows.md)
