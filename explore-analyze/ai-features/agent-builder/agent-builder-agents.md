@@ -32,7 +32,7 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 ## Built-in agents
 
-{{agent-builder}} includes pre-configured built-in agents optimized for common use cases.
+{{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
 
 - **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
 - {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
