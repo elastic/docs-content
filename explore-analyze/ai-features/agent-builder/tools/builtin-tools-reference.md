@@ -232,11 +232,11 @@ Security tools provide specialized capabilities for security monitoring, threat 
 
 $$$agent-builder-security-entity-risk-score-tool$$$
 `security.entity_risk_score`
-:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. {applies_to}`stack: ga 9.4+`
+:   Retrieves [risk scores for entities](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) (users, hosts, and services) to identify high-risk entities in the environment. This tool is only available when the risk score index exists in the current space. {applies_to}`stack: ga 9.4+`
 
 $$$agent-builder-security-attack-discovery-search-tool$$$
 `security.attack_discovery_search`
-:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. {applies_to}`stack: ga 9.4+`
+:   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs. Requires attack discovery to have been run at least once. {applies_to}`stack: ga 9.4+`
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
@@ -244,11 +244,14 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.create_detection_rule` {applies_to}`stack: ga 9.4`
 :   Creates a security detection [rule](/solutions/security/detect-and-alert/rule-types.md) from a natural language description, including ES|QL query generation, metadata, tags, and scheduling. Currently supports [ES|QL rules](/solutions/security/detect-and-alert/esql.md) only. Form changes suggested in chat must be applied manually.
 
-`security.get_entity` {applies_to}`stack: ga 9.4`
+% TODO (9.4): Uncomment once @ymao1 confirms entityAnalyticsEntityStoreV2 feature flag is enabled for 9.4.
+% These tools also require the Entity Store index to exist in the space.
+% Source: https://github.com/elastic/docs-content/pull/5840#discussion (KDKHD comment on L251)
+<!-- `security.get_entity` {applies_to}`stack: ga 9.4`
 :   Retrieves an entity profile (user, host, service, or generic) from the Entity store by entity ID (EUID), including any alerts that contributed to its risk score. Requires the entity risk engine and entity store to be enabled.
 
 `security.search_entities` {applies_to}`stack: ga 9.4`
-:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
+:   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is. -->
 
 % TODO (9.4): Confirm tool ID with Security team before publishing.
 % The ML jobs skill matches user questions to started ML anomaly jobs by comparing
