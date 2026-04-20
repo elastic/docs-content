@@ -16,7 +16,7 @@ description: Learn how Elastic Agent Builder works with Elastic Observability
 Agent Builder integrates tightly with {{observability}}, shipping with built-in agents and tools designed for observability use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more.
 
 :::{note}
-:applies_to: {stack: preview 9.3+, serverless: preview}
+:applies_to: {stack: preview =9.3}
 To use Agent Builder in {{observability}}, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
@@ -28,7 +28,7 @@ While Agent Builder works with any [configured LLM connector](/explore-analyze/a
 
 ::::{applies-switch}
 
-:::{applies-item} stack: preview 9.4+
+:::{applies-item} { stack: preview 9.4+, serverless: preview }
 
 The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#observability-skills) designed to assist with infrastructure monitoring, application performance troubleshooting, and root cause analysis.
 
@@ -36,7 +36,7 @@ By default it includes the [`observability.investigation`](/explore-analyze/ai-f
 
 :::
 
-:::{applies-item} stack: preview 9.3
+:::{applies-item} stack: preview =9.3, removed =9.4
 
 Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
 
