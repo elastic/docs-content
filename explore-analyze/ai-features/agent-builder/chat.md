@@ -212,7 +212,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 stack: ga 9.4+
 ```
 
-The **Manage components** link at the bottom of the left sidebar exits the single-agent view and opens the global component management area. This area provides master lists of all agents, skills, and tools available across the deployment.
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, and tools available across the deployment.
 
 **Agents**
 :   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
