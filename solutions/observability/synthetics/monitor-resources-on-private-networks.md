@@ -148,7 +148,9 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 1. Go to the **{{private-location}}s** tab.
 1. Click **Create location**.
 1. Give your new location a unique _Location name_.
-1. Select the _Agent policy_ you created above. Only agent policies that exist in the **current space** are available for selection.
+1. Select the _Agent policy_ you created above. 
+    
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Only agent policies that exist in the **current space** are available for selection.
 1. (Optional) In _Tags_ select [tags](/explore-analyze/find-and-organize/tags.md) to assign to this location.
 1. (Optional) In _Spaces_ specify the [spaces](/deploy-manage/manage-spaces.md) where this location will be available.
 1. Click **Save**.
