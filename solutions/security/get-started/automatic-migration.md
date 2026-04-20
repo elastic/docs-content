@@ -27,6 +27,20 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{applies-switch}
 
+:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+**Requirements**
+
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **SIEM migrations**
+  - At least `Read` for **Rules**
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
+
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
 
@@ -54,6 +68,8 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
 ::::{admonition} Splunk dashboard migration limitations
 * Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
+::::{admonition} Splunk dashboard migration limitations
+Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
@@ -102,7 +118,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification appears when the migration is complete.
 
 
-10. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+10. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/explore-analyze/ai-features/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
