@@ -14,7 +14,7 @@ description: Example prompts for common Elastic Security workflows in Agent Buil
 
 This page shows example conversations for common {{elastic-sec}} workflows on the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). Each section names the built-in Security skill (or skills) to enable for that workflow and gives example prompts. For what each skill does, refer to the [Built-in skills reference](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md). For how agents, skills, and tools fit together, start with [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md).
 
-Skills can be activated three ways: the agent selects one automatically from your prompt, you invoke one explicitly with a slash command (for example, `/threat-hunting`), or you attach context (such as an alert from the alert flyout) that activates the matching skill. The examples below assume the agent is selecting automatically unless otherwise noted.
+Skills can be activated three ways: the agent selects one automatically from your prompt, you invoke one explicitly with a slash command (for example, `/threat-hunting`), or you attach context (such as an alert from the alert flyout) that activates the matching skill. These examples assume the agent is selecting automatically unless otherwise noted.
 
 ## Alert triage and investigation
 
@@ -48,7 +48,7 @@ Use this workflow to find risky entities or profile specific hosts, users, servi
 
 **Enable:** `threat-hunting` (optionally combine with `entity-analytics` and `find-security-ml-jobs`)
 
-Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}} queries, establishes baselines, searches for IOCs, and flags anomalies. Ships with query templates for lateral movement, C2 beaconing, brute force, and rare process execution.
+Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}} queries, establishes baselines, searches for IOCs, and flags anomalies. It ships with query templates for lateral movement, C2 beaconing, brute force, and rare process starts.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -56,7 +56,7 @@ Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}}
 | Sweep for file hash `abc123...` across recent events | Search relevant indices for IOCs, summarize matches, and suggest next pivots. |
 | Look for C2 beaconing from hosts in the DMZ | Apply the C2 beaconing template — periodic connection analysis, rare DNS queries — over a 7-day window. |
 
-## Anomaly investigation with machine learning
+## Anomaly investigation with {{ml-app}}
 
 **Enable:** `find-security-ml-jobs`
 
@@ -64,9 +64,9 @@ Use this workflow to investigate anomalies surfaced by Security {{ml-app}} jobs:
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| Any unusual logins or access patterns in the last 24 hours? | Find relevant active ML jobs, query for anomalies above the configured score threshold, and summarize with entity context. |
+| Any unusual logins or access patterns in the last 24 hours? | Find relevant active {{ml-app}} jobs, query for anomalies that exceed the configured score threshold, and summarize with entity context. |
 | Show users who downloaded unusually large amounts of data | Use data exfiltration-related jobs (for example, `high_sent_bytes_destination_ip`, `high_bytes_written_to_external_device`), query anomaly records, and present results in a table. |
-| Which ML jobs should I enable for lateral movement detection? | Recommend relevant jobs from the allJobs list when the related active jobs aren't running. |
+| Which {{ml-app}} jobs should I turn on for lateral movement detection? | Recommend relevant jobs that aren't currently running for the requested investigation. |
 
 ## Detection engineering
 

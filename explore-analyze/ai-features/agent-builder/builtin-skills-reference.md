@@ -68,7 +68,7 @@ $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies
 :   Investigates anomalous behavior detected by {{ml-app}} jobs, including abnormal access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
 
 $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga 9.4+`
-:   Runs hypothesis-driven threat hunts using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
+:   Runs hypothesis-driven threat hunts using iterative {{esql}} exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
 :   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, query, or index patterns.

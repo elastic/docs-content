@@ -1,12 +1,12 @@
 ---
 applies_to:
-  stack: preview 9.3+
+  stack: ga 9.4+, preview 9.3
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
-description: Learn how Elastic Agent Builder works with Elastic Security
+description: Learn how Elastic Agent Builder works with Elastic Security.
 ---
 
 # Agent Builder for Elastic Security
@@ -16,8 +16,7 @@ description: Learn how Elastic Agent Builder works with Elastic Security
 Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in agents and tools designed for security use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
 
 :::{note}
-:applies_to: {stack: preview 9.3+, serverless: preview}
-To use Agent Builder in Elastic Security, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). 
+To use {{agent-builder}} in {{elastic-sec}}, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
 ## Recommended models
@@ -36,9 +35,7 @@ Read these pages next:
 
 * [Elastic AI Agent, skills, and tools in {{elastic-sec}}](skills-model.md)
 * [Security skills use cases](skills-use-cases.md)
-* Skills in {{agent-builder}} (full platform reference — link when docs-content#5868 merges)
-
-% * [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) (full platform reference)
+* [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) for the full platform reference
 
 The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is deprecated; hunting workflows use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
 

@@ -130,7 +130,7 @@ A specialized agent for security alert analysis tasks, including alert investiga
 
 :::{applies-item} { stack: deprecated 9.4, serverless: {security: deprecated} }
 
-**Migration path:** Enable the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill on the [Elastic AI Agent](#elastic-ai-agent) in place of this standalone agent. The skill ships with the same tool set and query templates previously bundled into the agent, plus platform core tools for ES|QL generation and execution. For use cases and example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
+**Migration path:** Enable the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill on the [Elastic AI Agent](#elastic-ai-agent) in place of this standalone agent. The skill ships with the same tool set and query templates previously bundled into the agent, plus platform core tools for generating and running {{esql}} queries. For use cases and example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
 
 :::
 
