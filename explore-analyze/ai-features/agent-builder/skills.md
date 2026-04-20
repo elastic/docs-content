@@ -43,7 +43,9 @@ For the complete list, refer to [Built-in skills reference](builtin-skills-refer
 
 ## Custom skills
 
-You can extend the built-in catalog with your own custom skills. Custom skills are saved to your skill library and can be assigned to any agent. To learn how to create and manage custom skills, refer to [Custom skills](custom-skills.md).
+You can extend the built-in catalog with your own custom skills. Custom skills are saved to your skill library, which you can manage from **Manage components > Skills**. Creating a skill adds it to the library, but it is not available to any agent until you add it from **Customize > Skills** on that agent. This separation means you can maintain a shared library of skills and choose which ones each agent has access to.
+
+To learn how to create and manage custom skills, refer to [Custom skills](custom-skills.md).
 
 ## List skills using the API
 
