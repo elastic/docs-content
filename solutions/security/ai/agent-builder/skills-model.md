@@ -43,7 +43,7 @@ You talk to the agent in natural language. The agent picks tools based on your r
 
 Use the skill controls in {{agent-builder}} to turn skills on or off for your workspace.
 
-For details on assigning skills to agents and using the Skills APIs, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
+For details on assigning skills to agent using the Skills APIs, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
 
 ## Relationship to the standalone Threat Hunting Agent
 
