@@ -156,6 +156,7 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 1. Click **Save**.
 
 ::::{note}
+:applies_to: stack: ga 9.4+
 If you upgraded from a version that allowed cross-space agent policy selection, any private location that references an agent policy from a different space will show **Policy not found in the current space** in the UI. To resolve this, reassign the private location to an agent policy in the same space, or create a new agent policy in the current space and re-enroll the {{agent}}.
 ::::
 
