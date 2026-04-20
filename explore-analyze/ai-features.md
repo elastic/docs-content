@@ -23,6 +23,15 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
 - Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
+## Model selection and tested performance [model-selection-tested-performance]
+
+Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
+
+- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) summarize model performance for those solutions' AI-powered features.
+- [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
+
+Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
+
 ## AI-powered features on the Elastic platform
 
 The following AI-powered features are available across the Elastic platform. These are core {{es}} capabilities that you can use regardless of your chosen solution or project type.

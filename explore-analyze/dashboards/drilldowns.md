@@ -42,9 +42,10 @@ For example, if you have a dashboard that shows the logs and metrics for multipl
 
 ![Drilldown on data table that navigates to another dashboard](/explore-analyze/images/kibana-dashboard_drilldownOnDataTable_8.3.gif "")
 
-The panels you create using the following editors support dashboard drilldowns:
+The following panel types support dashboard drilldowns:
 
-* **Lens**
+* **Visualizations created with Lens**
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **{{esql}} visualizations**
 * **Maps**
 * **TSVB**
 * **Vega**
@@ -104,6 +105,8 @@ Some panels support multiple interactions, also known as triggers. The [variable
 
 For example, **Single click** has `{{event.value}}` and **Range selection** has `{{event.from}}` and `{{event.to}}`.
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless:` {{esql}} visualization panels also support URL drilldowns.
+
 ### Create a URL drilldown [_create_a_url_drilldown]
 
 For example, if you have a dashboard that shows data from a Github repository, you can create a URL drilldown that opens Github from the dashboard panel.
@@ -155,7 +158,7 @@ For example, when you create a Discover drilldown for a pie chart, you can click
 ![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif "")
 
 ::::{note}
-Discover drilldowns are supported only by **Lens** panels. To open all of the **Lens** dashboard panel data in **Discover**, check [Open panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents).
+Discover drilldowns are supported only by **Lens** panels that use data views. {{esql}} visualization panels do not support Discover drilldowns. To open all of the **Lens** dashboard panel data in **Discover**, check [Open panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents).
 ::::
 
 
