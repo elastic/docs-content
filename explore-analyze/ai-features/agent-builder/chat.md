@@ -233,7 +233,7 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
 
 :::{image} images/manage-components.png
-:alt: Manage componenet menu
+:alt: Manage component menu
 :width: 350px
 :::
 
