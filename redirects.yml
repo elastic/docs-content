@@ -1258,3 +1258,20 @@ redirects:
     to: 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference.md'
     anchors:
       'alert-event-field-reference-v2': 'rule-reference-v2'
+
+  # Agent Builder: skills concept renamed to custom agents and tools
+  'explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md': 'explore-analyze/ai-features/agent-builder/chat.md'
+  'explore-analyze/ai-features/agent-builder/builtin-skills-reference.md': 'explore-analyze/ai-features/agent-builder/builtin-agents-reference.md'
+  'explore-analyze/ai-features/agent-builder/custom-skills.md': 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+  'explore-analyze/ai-features/agent-builder/skill-creation-guidelines.md': 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+  'explore-analyze/ai-features/agent-builder/skills.md': 'explore-analyze/ai-features/agent-builder/tools.md'
+
+  # Elastic Workflows: IA restructure (paths removed)
+  'explore-analyze/workflows/authoring-techniques.md': 'explore-analyze/workflows/author-workflows.md'
+  'explore-analyze/workflows/get-started/build-your-first-workflow.md': 'explore-analyze/workflows/get-started.md'
+  'explore-analyze/workflows/reference.md': 'explore-analyze/workflows/core-components.md'
+  'explore-analyze/workflows/use-cases/ai-augmented-workflows.md': 'explore-analyze/workflows/use-cases.md'
+  'explore-analyze/workflows/use-cases/observability.md': 'explore-analyze/workflows/use-cases.md'
+  'explore-analyze/workflows/use-cases/security.md': 'explore-analyze/workflows/use-cases.md'
+  'explore-analyze/workflows/use-cases/security/automate-security-operations.md': 'explore-analyze/workflows/use-cases.md'
+  'explore-analyze/workflows/use-cases/security/manage-detection-rules.md': 'explore-analyze/workflows/use-cases.md'
