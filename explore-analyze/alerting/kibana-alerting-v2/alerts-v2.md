@@ -1,13 +1,14 @@
 ---
 navigation_title: Alerts
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana
 description: "Alert episodes in {{alerting-v2}}: lifecycle states, series and episodes, signals versus alerts, and where to find them."
 ---
 
-# Alerts
+# {{alerting-v2}} alerts
 
 When a rule runs in Alert mode, it maintains _alert episodes_, which are ongoing records of an issue from first breach through recovery. This is what you triage on the **Alerts** page.
 

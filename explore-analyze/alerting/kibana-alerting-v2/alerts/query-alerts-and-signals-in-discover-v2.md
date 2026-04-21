@@ -1,6 +1,7 @@
 ---
 navigation_title: Query alerts in Discover
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

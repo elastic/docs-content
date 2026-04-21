@@ -1,6 +1,7 @@
 ---
 navigation_title: Quick start
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

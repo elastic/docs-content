@@ -1,13 +1,14 @@
 ---
 navigation_title: Configure a rule
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana
 description: "Configure {{alerting-v2}} rules: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
 ---
 
-# Configure a rule [rule-settings-v2]
+# Configure a {{alerting-v2}} rule [rule-settings-v2]
 
 $$$rule-settings-v2$$$
 

@@ -1,6 +1,7 @@
 ---
 navigation_title: Using Discover
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

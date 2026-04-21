@@ -1,13 +1,14 @@
 ---
 navigation_title: Rules
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana
 description: "What {{alerting-v2}} rules are, how evaluation works, and how rules connect to alerts and notifications."
 ---
 
-# Rules
+# {{alerting-v2}} rules
 
 A rule is where {{alerting-v2}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
 

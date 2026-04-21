@@ -1,6 +1,7 @@
 ---
 navigation_title: View and manage rules
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

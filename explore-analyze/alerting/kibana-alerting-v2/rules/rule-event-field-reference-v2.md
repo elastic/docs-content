@@ -1,6 +1,7 @@
 ---
 navigation_title: Rule and event fields
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

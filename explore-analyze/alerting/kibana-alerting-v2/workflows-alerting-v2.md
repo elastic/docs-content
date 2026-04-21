@@ -1,7 +1,8 @@
 ---
 navigation_title: Workflows
 applies_to:
-  serverless: preview
+  stack: ga 9.4, preview 9.3
+  serverless: ga
 products:
   - id: kibana
 description: "How workflows connect to {{alerting-v2}} action policies and rule automation, and where to configure them."

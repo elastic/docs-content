@@ -1,6 +1,7 @@
 ---
 navigation_title: Using the rule builder
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

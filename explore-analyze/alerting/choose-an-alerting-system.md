@@ -35,31 +35,3 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 | **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules | Action-level throttling and conditions |
 | **Noise reduction** | Snooze per rule, maintenance windows | Per-series snooze, per-episode acknowledgment, activation thresholds, matcher-based routing, rules on alerts | Action conditions and throttling |
 | **Availability** | All deployments | {{stack}} 9.4+ | Self-managed and {{ech}} only |
-
-## Kibana alerting v1
-
-Kibana alerting v1 provides prepackaged rule types integrated with Elastic solutions. Rules are configured through forms — no query language required. Actions are triggered through built-in connectors such as email, Slack, PagerDuty, and webhooks.
-
-Choose Kibana alerting v1 if you want broad rule type coverage out of the box and are working within Observability, Security, APM, Uptime, or Maps.
-
-[Get started with Kibana alerting v1 →](kibana-alerting-v1.md)
-
-## {{alerting-v2}}
-
-{{alerting-v2}} is built on {{esql}}. You write the query that defines what to detect and what data each alert carries. Action policies control routing, grouping, and throttling independently of rules, and alert events are stored as queryable data in standard {{es}} indices.
-
-Choose {{alerting-v2}} if you need flexible detection logic, queryable alert history, centralized notification management, or cross-rule correlation.
-
-[Get started with {{alerting-v2}} →](kibana-alerting-v2.md)
-
-## Watcher
-
-Watcher supports custom alerting logic with Painless scripting, chained inputs, and direct {{es}} API integration. It is the most flexible system for non-standard use cases but does not integrate with the {{kib}} alerting management UI and is not available in {{serverless-full}}.
-
-[Get started with Watcher →](watcher.md)
-
-## Using multiple systems
-
-The systems are independent and can run side by side. Kibana alerting v1 and {{alerting-v2}} share a single **Rules** navigation entry with separate tabs. Watcher operates through its own API and management UI.
-
-There is no forced migration. You can adopt a new system incrementally while your existing rules continue running. {{alerting-v2}} rules can also query alert data produced by any system, which enables cross-system correlation if you run more than one.

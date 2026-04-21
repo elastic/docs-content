@@ -1,6 +1,7 @@
 ---
 navigation_title: Alert states and fields
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

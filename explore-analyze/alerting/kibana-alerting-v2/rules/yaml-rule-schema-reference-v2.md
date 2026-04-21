@@ -1,6 +1,7 @@
 ---
 navigation_title: YAML rule schema reference
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana

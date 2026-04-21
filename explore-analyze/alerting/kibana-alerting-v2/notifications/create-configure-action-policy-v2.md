@@ -1,6 +1,7 @@
 ---
 navigation_title: Create an action policy
 applies_to:
+  stack: unavailable
   serverless: preview
 products:
   - id: kibana
