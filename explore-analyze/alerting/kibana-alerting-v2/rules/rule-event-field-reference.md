@@ -1,5 +1,5 @@
 ---
-navigation_title: Rule & event field reference
+navigation_title: Rule and event fields
 applies_to:
   serverless: preview
 products:

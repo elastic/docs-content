@@ -84,9 +84,3 @@ Condensed tables for matchers, grouping, throttling, and dispatch outcomes. For 
 |---|---|
 | type | Destination type; `workflow` in the current UI. |
 | id | Workflow identifier (exact property names follow the API and UI version). |
-
-## Related
-
-- [Create and configure an action policy](create-configure-action-policy.md)
-- [Notifications (Action Policies)](../notifications.md)
-- [Manage action policies](manage-action-policies.md)

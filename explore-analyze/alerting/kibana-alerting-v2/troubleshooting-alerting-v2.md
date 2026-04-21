@@ -77,7 +77,7 @@ Alert episodes appear active in the UI or in `.rule-events`, but no email, chat,
 
 **If you suspect action policy misconfiguration**
 
-1. Open **Action Policies** in the same **{{kib}} space** as the rule.
+1. Open **Action policies** in the same **{{kib}} space** as the rule.
 2. For each policy that should apply, confirm **Status** is enabled and not snoozed.
 3. Open the policy **matcher** and validate KQL against a sample episode payload (`data.*`, `rule.*`, episode status fields). An empty matcher matches all episodes subject to other controls.
 4. Read [How action policies work](notifications.md#how-action-policies-evaluated-v2) and map your episode to suppression, matcher, grouping, and throttle steps.

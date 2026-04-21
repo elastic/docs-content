@@ -11,7 +11,9 @@ description: "What {{alerting-v2}} rules are, how evaluation works, and how rule
 
 A rule is where {{alerting-v2}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
 
-## What rules do
+## What rules do [detection-and-notification-v2]
+
+$$$detection-and-notification-v2$$$
 
 On each run, a rule executes an {{esql}} query against your data. If the query finds a match. If the rule is in Detect mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
 

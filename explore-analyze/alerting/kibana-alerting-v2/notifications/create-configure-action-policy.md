@@ -1,5 +1,5 @@
 ---
-navigation_title: Create and configure an action policy
+navigation_title: Create an action policy
 applies_to:
   serverless: preview
 products:
@@ -11,13 +11,13 @@ description: "Create {{alerting-v2}} action policies, configure matchers, Dispat
 
 $$$create-manage-action-policies-v2$$$
 
-An action policy controls which alert episodes trigger notifications, how episodes are grouped, how often notifications are sent, and where they are routed. Policies are global within a space — you create and manage them from the **Action Policies** area, not from the rule form.
+An action policy controls which alert episodes trigger notifications, how episodes are grouped, how often notifications are sent, and where they are routed. Policies are global within a space. You create and manage them from the **Action policies** page, not from the rule form.
 
 For API values, Dispatch per and Frequency mappings, throttle strategies, dispatch outcomes, and matcher field examples, refer to [Action policy reference](action-policy-reference.md#action-policy-reference-v2).
 
 ## Create an action policy
 
-1. Open **{{manage-app}}** > **V2 Alerting Preview** > **Action Policies**.
+1. Open **{{manage-app}}** > **V2 Alerting Preview** > **Action policies**.
 2. Click **Create policy**.
 3. Fill in the policy fields described in [Policy fields](#policy-fields) below.
 4. Click **Save**. The matcher expression is validated on save, so invalid KQL is rejected before dispatch runs.

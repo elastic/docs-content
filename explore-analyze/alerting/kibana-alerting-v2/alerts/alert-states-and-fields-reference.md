@@ -1,5 +1,5 @@
 ---
-navigation_title: Alert states & fields reference
+navigation_title: Alert states and fields
 applies_to:
   serverless: preview
 products:

@@ -1182,7 +1182,6 @@ redirects:
     to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder.md'
     anchors:
       'create-rules-ui-v2': 'create-rules-ui-v2'
-      'create-rules-rule-builder-v2': 'create-rules-rule-builder-v2'
   'explore-analyze/alerting/kibana-alerting-v2/rules/create-rules-discover.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-discover.md'
     anchors:
