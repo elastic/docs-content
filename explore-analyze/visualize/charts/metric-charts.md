@@ -261,7 +261,7 @@ When creating or editing a visualization, you can customize several appearance o
 
     - **Position**: Choose the vertical placement of the primary metric value within the tile:
       - **Top**: Places the value at the top of the tile.
-      - **Bottom**: Places the value at the bottom of the tile.
+      - **Bottom**: Places the value at the bottom of the tile. This is the default.
       - {applies_to}`stack: ga 9.4` **Middle**: Centers the value vertically within the tile.
 
 **Title and subtitle**
