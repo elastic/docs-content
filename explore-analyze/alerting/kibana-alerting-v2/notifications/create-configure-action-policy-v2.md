@@ -17,7 +17,7 @@ For API values, Dispatch per and Frequency mappings, throttle strategies, dispat
 
 ## Create an action policy
 
-1. Open **{{manage-app}}** > **V2 Alerting Preview** > **Action policies**.
+1. Open **{{manage-app}} > V2 Alerting Preview > Action Policies**.
 2. Click **Create policy**.
 3. Fill in the policy fields described in [Policy fields](#policy-fields) below.
 4. Click **Save**. The matcher expression is validated on save, so invalid KQL is rejected before dispatch runs.

@@ -24,11 +24,11 @@ A rule runs on schedule but you see no new documents in `.rule-events`, no episo
 - The **lookback** window is too short relative to the rule schedule, so evaluations miss data between runs.
 - The rule is in **Detect** mode and you are looking only at **alert** rows in Discover.
 - Index privileges or API key privileges for the rule author cannot read the source indices.
-- {{alerting-v2}} is not enabled in the deployment or the Rules V2 UI entry is hidden by configuration.
+- {{alerting-v2}} is not enabled in the deployment or the {{rules-ui-v2}} UI entry is hidden by configuration.
 
 ### Diagnostic Steps
 
-1. Open **{{manage-app}}** > **Rules V2** and confirm the rule shows **Enabled**.
+1. Open **{{manage-app}} > V2 Alerting Preview** and confirm the rule shows **Enabled**.
 2. Open the rule **details** and read the **Rule conditions** section for the base query, alert condition, schedule, and lookback.
 3. Run **Preview** from the rule editor (if available) or paste the {{esql}} into Discover and confirm rows return for the same time range.
 4. In Discover on `.rule-events`, filter by `rule.id` for your rule and widen the time range.

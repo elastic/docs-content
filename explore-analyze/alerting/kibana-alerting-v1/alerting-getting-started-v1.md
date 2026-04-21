@@ -19,7 +19,7 @@ products:
 Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting-v1.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](rule-types-v1.md#stack-rules) for you to use.
 
 :::{image} /explore-analyze/images/kibana-alerting-overview.png
-:alt: {{rules-ui}} UI
+:alt: Rules UI
 :::
 
 ::::{important}

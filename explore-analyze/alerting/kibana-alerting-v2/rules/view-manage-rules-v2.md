@@ -13,7 +13,7 @@ $$$manage-rules-v2$$$
 
 $$$open-the-list$$$
 
-Open the rules list from **{{manage-app}}** > **Alerts and Insights** > **Rules V2**. From here you can search, filter, sort, and act on rules individually or in bulk.
+Open the rules list from **{{manage-app}} > V2 Alerting Preview > Rules**. From here you can search, filter, sort, and act on rules individually or in bulk.
 
 ## Rule details page
 

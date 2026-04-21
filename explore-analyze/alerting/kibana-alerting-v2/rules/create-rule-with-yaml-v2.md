@@ -17,6 +17,8 @@ Define {{alerting-v2}} rules as YAML documents for version control, infrastructu
 For the interactive form, refer to [Create rules using the rule builder](create-rule-from-rule-builder.md).
 :::
 
+For a complete list of every valid YAML field, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+
 ## YAML rule structure
 
 A complete alert-mode rule in YAML:

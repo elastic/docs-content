@@ -35,5 +35,5 @@ This separation means you can build and test a rule without anyone getting paged
 
 ## Where to go next
 
-- [Author rules](rules/author-rules.md): Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
-- [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the rules list.
+- [Author rules](rules/author-rules-v2.md): Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
+- [View and manage rules](rules/view-manage-rules-v2.md): Enable, disable, clone, delete, and bulk-manage rules from the rules list.

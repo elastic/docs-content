@@ -11,7 +11,7 @@ description: "Open the {{alerting-v2}} alert episodes table, triage actions, and
 
 $$$manage-alerts-v2$$$
 
-The **Alert episodes** table is the main place to view {{alerting-v2}} episodes, filter and sort them, and start triage. Open it from **{{manage-app}}** > **Alerts and Insights** > **Rules V2** > **Alert episodes**.
+The **Alerts** page is the main place to view {{alerting-v2}} episodes, filter and sort them, and start triage. Open it from **{{manage-app}} > V2 Alerting Preview** > **Alerts**.
 
 ## Filter and search
 
@@ -37,7 +37,7 @@ The same actions are available from the episode detail page.
 
 Select **Discover** on a row to investigate source data. Discover opens with the rule {{esql}} query and a short time window around the episode so you can inspect matching documents in context.
 
-For ad hoc analysis over `.rule-events` and `.alert-actions` with copy-paste {{esql}} examples, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover.md).
+For ad hoc analysis over `.rule-events` and `.alert-actions` with copy-paste {{esql}} examples, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover-v2.md).
 
 ## Episode detail page [alert-episode-details-v2]
 
@@ -80,4 +80,4 @@ The `action_type` field identifies the operation in `.alert-actions` documents:
 | fire | Notification or workflow dispatch recorded. |
 | unmatched | No action policy matched, so no workflow ran. |
 
-For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference-v2).
+For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
