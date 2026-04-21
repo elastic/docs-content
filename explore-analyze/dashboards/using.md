@@ -262,7 +262,7 @@ Sometimes, the scope behaves differently:
 
 You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{kib}} interface.
 
-To enter full screen mode, make sure the dashboard is in view mode, then open the {icon}`boxesVertical` additional options menu in the application toolbar and select **Full screen**. Press **Escape** to exit.
+To enter full screen mode, make sure the dashboard is in view mode, then open the {icon}`boxes_vertical` additional options menu in the application toolbar and select **Full screen**. Press **Escape** to exit.
 
 If you need to focus on a particular panel, you can maximize it by opening the panel menu and selecting **Maximize**. You can minimize it again the same way.
 
