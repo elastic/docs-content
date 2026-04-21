@@ -8,12 +8,11 @@ products:
 description: "Create your first {{alerting-v2}} rule: enable the feature, write an {{esql}} query in the YAML editor, and confirm the rule is running by querying the rule events data stream."
 ---
 
-# Quick start [alerting-quick-start-v2]
+# Quick start: Your first rule [alerting-quick-start-v2]
 
 $$$alerting-quick-start-v2$$$
 
-This guide walks you through the steps of creating, configuring, and a running rule in {{alerting-v2}}. You'll enable the feature, create a rule using the YAML editor, and confirm it's evaluating correctly by querying the `.rule-events` data stream.
-
+This tutorial walks you through the core {{alerting-v2}} model in action. You'll load sample error logs, create a rule that groups results by service, watch episodes open as the rule finds breaches, and then trigger recovery by deleting the data. By the end, you'll have learned about rules, grouping, episodes, and the alert lifecycle play out from start to finish.
 
 ## Step 1: Create a sample data stream
 
