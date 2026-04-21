@@ -63,6 +63,24 @@ When editing an {{esql}} visualization, you can customize the appearance of the 
 
 3. Return to the previous menu, then **Apply and close** the configuration to save your changes.
 
+### Break down a chart by multiple fields [esql-viz-multi-field-breakdown]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When your {{esql}} query aggregates a metric by more than one field, bar, line, and area charts can use all of those fields together as the **Breakdown** dimension. Each series represents a unique combination of values, so the chart reflects the full grouping defined by the query rather than only the first field.
+
+For example, the following query groups a document count by both host and file extension:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS count = COUNT(*) BY host.keyword, extension.keyword
+| SORT count DESC
+```
+
+In the resulting bar chart, the **Breakdown** dimension contains both `host.keyword` and `extension.keyword`. Each combination is shown as its own series in the legend, with the field values joined by a `>` symbol (for example, `artifacts.elastic.co > gz`). To change the order of the fields in the combined label, drag them to reorder them in the **Breakdown** dimension.
+
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
 stack: ga 9.1
