@@ -71,16 +71,15 @@ serverless: ga
 
 When your {{esql}} query aggregates a metric by more than one field, bar, line, and area charts can use all of those fields together as the **Breakdown** dimension. Each series represents a unique combination of values, so the chart reflects the full grouping defined by the query rather than only the first field.
 
-For example, the following query groups a document count by both host and file extension:
+For example, the following query groups a flight count by both carrier and delay type:
 
 ```esql
-FROM kibana_sample_data_logs
-| WHERE extension.keyword != ""
-| STATS count = COUNT(*) BY host.keyword, extension.keyword
-| SORT count DESC
+FROM kibana_sample_data_flights
+| STATS flights = COUNT(*) BY Carrier, FlightDelayType
+| SORT flights DESC
 ```
 
-In the resulting bar chart, the **Breakdown** dimension contains both `host.keyword` and `extension.keyword`. Each combination is shown as its own series in the legend, with the field values joined by a `>` symbol (for example, `artifacts.elastic.co > gz`). To change the order of the fields in the combined label, drag them to reorder them in the **Breakdown** dimension.
+In the resulting bar chart, the **Breakdown** dimension contains both `Carrier` and `FlightDelayType`. Each combination is shown as its own series in the legend, with the field values joined by a `>` symbol (for example, `Kibana Airlines > No Delay`). To change the order of the fields in the combined label, drag them to reorder them in the **Breakdown** dimension.
 
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
