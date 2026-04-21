@@ -1,8 +1,9 @@
 ---
+navigation_title: Pass data and handle errors
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how data flows through workflows, use dynamic templating, and handle errors gracefully.
+description: Pass data between workflow steps with templating, reference inputs and constants, and handle step failures with retries and fallbacks.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -12,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Data and error handling [workflows-data]
+# Pass data and handle errors [workflows-data]
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
@@ -64,7 +65,7 @@ steps:
 In this example:
 
 1. The `find_user_by_id` step searches an index for a document.
-2. The `create_case_for_user` step uses the output of the first step to enrich a new [{{elastic-sec}} case](../../solutions/security/investigate/security-cases.md).
+2. The `create_case_for_user` step uses the output of the first step to enrich a new [{{elastic-sec}} case](/solutions/security/investigate/security-cases.md).
 3. The `description` field accesses `steps.find_user_by_id.output.hits.hits[0]._source.user.fullName` to dynamically include the user's full name in the case description.
 
 ## Error handling [workflows-error-handling]
@@ -194,10 +195,10 @@ Template variables are the data sources you can reference inside template expres
 
 | Variable type | Syntax | Description |
 |---------------|--------|-------------|
-| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](./data/templating.md#workflows-ref-step-outputs) for more details. |
-| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](./data/templating.md#workflows-ref-constants) for more details. |
-| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](./data/templating.md#workflows-ref-inputs) for more details. |
-| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](./data/templating.md#workflows-context-variables) for more details. |
+| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](/explore-analyze/workflows/templating.md#workflows-ref-step-outputs) for more details. |
+| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](/explore-analyze/workflows/templating.md#workflows-ref-constants) for more details. |
+| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](/explore-analyze/workflows/templating.md#workflows-ref-inputs) for more details. |
+| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](/explore-analyze/workflows/templating.md#workflows-context-variables) for more details. |
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 
@@ -215,7 +216,7 @@ Use template expressions to insert template variables into your workflow. The te
 | `{{ }}` | Insert values as strings | `"Hello, {{user.name}}"` |
 | `${{ }}` | Preserve data types (arrays, objects, numbers) | `${{steps.search.output.hits}}` |
 
-For syntax details and examples, refer to [Templating engine](./data/templating.md).
+For syntax details and examples, refer to [Templating engine](/explore-analyze/workflows/templating.md).
 
 ## Quick reference [workflows-data-quick-reference]
 
