@@ -128,3 +128,11 @@ To change the numbers of results you want to display on each page, use the **Row
 :alt: Menu with options for setting the number of results in the document table
 :screenshot:
 :::
+
+### Save the table to a dashboard [document-explorer-save-to-dashboard]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+To save the current view of the documents table as a panel on a new or existing dashboard, select {icon}`app_dashboard` **Save table to dashboard** in the table toolbar. For the full workflow and requirements, refer to [Save the table directly from Discover](save-open-search.md#save-table-to-dashboard).

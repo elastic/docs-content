@@ -55,11 +55,31 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 ## Add search results to a dashboard [_add_search_results_to_a_dashboard]
 
-1. Go to **Dashboards**.
-2. Open or create the dashboard, then click **Edit**.
-3. Click **Add from library**.
-4. From the **Types** dropdown, select **Discover session**.
-5. Select the Discover session that you want to add, then click **X** to close the list.
+Add the current Discover session to a dashboard as a new panel. You can save the table directly from the Discover toolbar, or add a previously saved Discover session from the dashboard library.
+
+### Save the table directly from Discover [save-table-to-dashboard]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Save the current view of the documents table to a new or existing dashboard without first saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel.
+
+To use this option, you need permission to view and create dashboards. The button isn't available when you're editing Discover inline from another app, such as the dashboard embeddable editor.
+
+1. In the documents table toolbar, select {icon}`app_dashboard` **Save table to dashboard**.
+2. Enter a title for the panel, and optionally a description.
+3. Under **Add to dashboard**, select **New** to create a dashboard, or **Existing** to pick one from the list.
+4. Select **Save and go to Dashboard**.
+
+### Add a saved Discover session from the library [add-discover-session-from-library]
+
+1. Save the Discover session following the steps in [Save a Discover session](#_save_a_discover_session).
+2. Go to **Dashboards**.
+3. Open or create the dashboard, then select **Edit**.
+4. Select **Add from library**.
+5. From the **Types** dropdown, select **Discover session**.
+6. Select the Discover session that you want to add, then select **X** to close the list.
 
 ### Choose which tab to display [discover-session-choose-tab]
 ```{applies_to}
