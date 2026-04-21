@@ -181,6 +181,8 @@ Quickstarts are compact hands-on guides that help you experiment with {{observab
 
 Many [{{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
 
+If your data source doesn’t have a prebuilt integration, you can use [Automatic Import](/explore-analyze/ai-features/automatic-import.md) to create a custom integration from a sample of your data.
+
 ### Other resources
 
 * [What's Elastic {{observability}}](/solutions/observability.md)
