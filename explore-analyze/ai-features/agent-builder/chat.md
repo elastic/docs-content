@@ -133,6 +133,10 @@ Select **Inspect response** to view detailed information about individual tool c
 
 Select **View JSON** to view the full raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+## Dashboards and visualizations
+
+Agents can create and manage dashboards and visualizations directly in the conversation. To learn more, refer to [Dashboards and visualizations in chat](agent-builder-dashboards-and-visualizations.md).
+
 ## Agent Chat API
 
 The Agent Chat API provides programmatic access to chat functionality through REST endpoints.
