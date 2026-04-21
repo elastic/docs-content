@@ -61,9 +61,7 @@ Use filter pills to focus in on the specific data you want.
 
 You can interact with some panel visualizations to explore specific data more in depth. Upon clicking, filter pills are added and applied to the entire dashboard, so that surrounding panels and visualizations also reflect your browsing.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt83219d7540514a69/69e74978735697c284b920a5/filter-by-interacting.gif
-:alt: Browsing a chart creates a filter dynamically
-:::
+![Browsing a chart creates a filter dynamically](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt83219d7540514a69/69e74978735697c284b920a5/filter-by-interacting.gif)
 
 You can create filter pills by:
 
@@ -190,10 +188,7 @@ Filter the data within a specified range of time.
 4. To animate the data changes over time, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_timeSliderControl_animate_8.5.0.png "").
 5. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5a4c08f013babda6/69e74c84e0862680360136cf/time-slider-control.gif
-:alt: Time slider control
-:screenshot:
-:::
+![Time slider control](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5a4c08f013babda6/69e74c84e0862680360136cf/time-slider-control.gif)
 
 
 ### View the panel data and requests [download-csv]
