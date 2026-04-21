@@ -90,7 +90,7 @@ You can create a workflow that:
 You can create a workflow that:
 
 - Triggers automatically when a rule generates an alert
-- Provides the alert data to Agent Builder with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
+- Provides the alert data to an AI agent with a pre-defined prompt such as `analyze this alert, check whether it's connected to existing attacks, and identify all implicated entities`
 - Creates a report based on what it finds and sends it to a Slack channel
 - Suggests next steps
 
