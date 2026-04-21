@@ -47,10 +47,14 @@ After the maintenance period ends, the integration reaches end-of-life:
 
 {{fleet}} marks deprecated integrations in multiple locations in the UI to ensure visibility:
 
-- **Integrations** list: Deprecated integrations are marked with a **(Deprecated)** label in their title. They remain visible in search results by default.
-- **Installed integrations** list: A warning icon appears next to the integration title, and a tooltip shows a deprecation message. The integration title includes **(Deprecated)**.
-- An integration's **Overview** and **Settings** pages: A warning callout displays the deprecation description, a list of the deprecated features (if any), the recommended alternatives to use, and the version in which the integration or its features were deprecated. 
-- **Integration policies**: Policies with enabled deprecated features display a warning icon next to the feature, with a tooltip showing a deprecation message.
+* **Integrations** list: Deprecated integrations are marked with a **(Deprecated)** label in their title. They remain visible in search results by default.
+* **Installed integrations** list: A warning icon appears next to the integration title, and a tooltip shows a deprecation message. The integration title includes **(Deprecated)**.
+* An integration's **Overview** and **Settings** pages: A warning callout displays the deprecation description, a list of the deprecated features (if any), the recommended alternatives to use, and the version in which the integration or its features were deprecated. 
+* **Integration policies**: Policies with enabled deprecated features display a warning icon next to the feature, with a tooltip showing a deprecation message.
+
+:::{note}
+If your installed integration version is lower than the version in which the deprecation begins (as specified in the `since` field), {{fleet}} displays an upcoming deprecation warning instead. The warning shows when the deprecation will take effect, giving you time to plan migration before upgrading to that version.
+:::
 
 ## How deprecations affect integration upgrades [upgrades-deprecated]
 

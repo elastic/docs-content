@@ -52,7 +52,7 @@ After you've started using integrations to ingest data, you can customize how th
 ## Deprecated integrations [deprecated-integrations-overview]
 
 ```{applies_to}
-stack: ga 9.4
+stack: ga 9.4+
 serverless: ga
 ```
 
