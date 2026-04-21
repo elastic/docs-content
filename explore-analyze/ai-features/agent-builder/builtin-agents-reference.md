@@ -72,6 +72,8 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 
 ::::
 
+:::{dropdown} Previous versions
+
 ## Observability Agent
 ```{applies_to}
 stack: preview =9.3, removed 9.4+
@@ -99,6 +101,9 @@ A specialized agent for security alert analysis tasks, including alert investiga
 **Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
+
+:::
+
 
 ## Related pages
 

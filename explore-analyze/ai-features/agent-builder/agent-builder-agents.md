@@ -35,8 +35,11 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 {{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
 
 - **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
+
+:::{dropdown} Previous versions
 - {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
 - {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
+:::
 
 :::{note}
 :applies_to: stack: ga 9.2-9.3
