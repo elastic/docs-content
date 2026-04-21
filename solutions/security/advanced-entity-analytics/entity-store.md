@@ -137,7 +137,9 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The entity store supports the following integrations as data sources for entity creation:
+The entity store creates user and host entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
+
+Examples of supported integrations include:
 
 **Identity and account sources:**
 
@@ -168,7 +170,7 @@ To determine whether log extraction is slow or unhealthy, check the **Engine Sta
 A process might be **slow** if:
 
 * New entities are not appearing as expected.
-* The last successful execution does not appear to advance (`lastExecutionTimestamp`).
+* The last successful execution does not appear to advance (`lastExecutionTimestamp`). You can verify this only through the API.
 
 A process might be **unhealthy** if:
 
@@ -188,7 +190,7 @@ Use `frequency` to control how often extraction runs.
 
 Use `docsLimit` to control how many entities can be processed in one extraction page.
 
-* Lower it if queries are too heavy or time-consuming.
+* Lower it if {{kib}} is consuming too much memory.
 * Default: `10000` entities.
 
 #### `maxLogsPerPage`
