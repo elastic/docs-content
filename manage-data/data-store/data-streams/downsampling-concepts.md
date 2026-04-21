@@ -90,7 +90,7 @@ The target downsampled index uses the same field mappings as the source index, w
 
 An `aggregate_metric_double` can be used in `max`, `min`, `sum`, `value_count`, and `avg` aggregations without losing accuracy.
 
-In ES|QL, a downsampled gauge stored as `aggregate_metric_double` can still be used as a `double` in other operations, but with reduced accuracy. In this case, the average value for the bucket is used as the single representative value {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In ES|QL, a downsampled gauge stored as `aggregate_metric_double` can still be used as a `double` in other operations, but with reduced accuracy. In this case, the average value for the bucket is used as the single representative value.
 
 
 
