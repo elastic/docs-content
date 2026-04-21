@@ -33,7 +33,7 @@ This separation means you can build and test a rule without anyone getting paged
 
 % You can query this history in Discover, build dashboards from it, or write follow-on rules that read `.rule-events` as a data source.
 
-## Where to go next
+## What's next
 
-- [Author rules](rules/author-rules-v2.md): Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
-- [View and manage rules](rules/view-manage-rules-v2.md): Enable, disable, clone, delete, and bulk-manage rules from the rules list.
+- **[Author rules](rules/author-rules-v2.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
+- **[View and manage rules](rules/view-manage-rules-v2.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.

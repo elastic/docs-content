@@ -35,18 +35,10 @@ Kibana alerting v1 gives you ready-made rule types that work with applications s
 
 ```{applies_to}
 serverless: preview
-stack: ga
+stack: unavailable
 ```
 
-{{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be. V2 adds **action policies** for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and **rules on alerts** for correlation and escalation.
-
-Here is what you get with v2:
-
-* **Flexible paths.** Keep a guided experience when you want it, and adopt deeper options (including setups you can manage like code) without switching to a different alerting style.
-* **Visibility over time.** Each time a rule finds a matching condition, the outcome is stored in a searchable history of what happened and when. That supports investigations, reviews, and spotting trends instead of only seeing what is open right now.
-* **Connected analysis.** Use the same ES|QL skills in Discover and in rules, refine queries where you already explore data, and add follow-up rules when related conditions should be grouped together.
-* **Control over notifications.** Reuse shared settings for who gets notified, and how often, across many rules. You set routing, grouping, and frequency in one place so teams hear what matters with less repeated setup and fewer unnecessary messages.
-* **Consistent status from open to closed.** Track alerts from the first time they appear until the problem is gone, with shared stages, a way to mark items as handled, and pauses you can tune per group so everyone agrees on what counts as still active and what counts as finished.
+{{alerting-v2}} is built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked and grouped, and control notifications through action policies (shared objects that handle routing, frequency, and grouping across many rules at once). It adds alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. {{alerting-v2}} a strong fit when you want full control over what data travels with each alert and how your team is notified.
 
 [Get started with {{alerting-v2}} →](alerting/kibana-alerting-v2.md)
 

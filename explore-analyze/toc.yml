@@ -394,7 +394,8 @@ toc:
           - file: alerting/kibana-alerting-v1/maintenance-windows-v1.md
       - file: alerting/kibana-alerting-v2.md
         children:
-          - file: alerting/kibana-alerting-v2/get-started-v2.md
+          - file: alerting/kibana-alerting-v2/quick-start-alerting-v2.md
+          - file: alerting/kibana-alerting-v2/setup-alerting-v2.md
           - file: alerting/kibana-alerting-v2/alerting-v2-privileges.md
           - file: alerting/kibana-alerting-v2/rules-v2.md
             children:
