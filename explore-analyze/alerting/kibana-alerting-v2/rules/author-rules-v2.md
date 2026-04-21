@@ -64,9 +64,9 @@ The [{{esql}} reference](elasticsearch://reference/query-languages/esql.md) cove
 
 The alert condition in {{esql}} defines what counts as a breach in each evaluation.
 
-The activation and recovery thresholds on the rule are separate from the query. They control how many consecutive breaches must occur, or how long the condition must persist, before an episode becomes active or moves back to inactive. Those settings are in [Configure a rule](configure-a-rule.md#activation-recovery-thresholds-v2).
+The activation and recovery thresholds on the rule are separate from the query. They control how many consecutive breaches must occur, or how long the condition must persist, before an episode becomes active or moves back to inactive. Those settings are in [Configure a rule](configure-a-rule-v2.md#activation-recovery-thresholds-v2).
 
-For how alert states connect to episodes, refer to [Alert lifecycle](../alerts.md#alert-lifecycle-v2).
+For how alert states connect to episodes, refer to [Alert lifecycle](../alerts-v2.md#alert-lifecycle-v2).
 
 ## Severity levels [severity-levels]
 

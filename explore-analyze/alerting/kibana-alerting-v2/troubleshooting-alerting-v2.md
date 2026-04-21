@@ -165,7 +165,7 @@ Action policy evaluation appears to succeed (for example `fire` or downstream lo
 
 ### Still not working?
 
-Use **[LINK: Core Workflows Troubleshooting]** as the primary resolution path. Workflow configuration and retries are owned outside this alerting docset. If policies show `error` instead, refer to [Possible outcomes](notifications.md#possible-outcomes) and {{kib}} logs.
+Use **[LINK: Core Workflows Troubleshooting]** as the primary resolution path. Workflow configuration and retries are owned outside this alerting docset. If policies show `error` instead, refer to [Possible outcomes](notifications-v2.md#possible-outcomes) and {{kib}} logs.
 
 ## Alert not closing after resolution [alert-not-closing-after-resolution]
 

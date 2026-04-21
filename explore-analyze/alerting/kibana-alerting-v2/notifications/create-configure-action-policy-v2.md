@@ -13,7 +13,7 @@ $$$create-manage-action-policies-v2$$$
 
 An action policy controls which alert episodes trigger notifications, how episodes are grouped, how often notifications are sent, and where they are routed. Policies are global within a space. You create and manage them from the **Action policies** page, not from the rule form.
 
-For API values, Dispatch per and Frequency mappings, throttle strategies, dispatch outcomes, and matcher field examples, refer to [Action policy reference](action-policy-reference.md#action-policy-reference-v2).
+For API values, Dispatch per and Frequency mappings, throttle strategies, dispatch outcomes, and matcher field examples, refer to [Action policy reference](action-policy-reference-v2.md#action-policy-reference-v2).
 
 ## Create an action policy
 
@@ -30,7 +30,7 @@ $$$matcher-v2$$$
 
 An optional KQL expression that filters which episodes this policy applies to. An empty matcher matches every episode in the space.
 
-Use matchers to route different episodes to different policies — for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. Typical matcher fields and examples are listed in [Action policy reference](action-policy-reference.md#matcher-fields-typical-kql).
+Use matchers to route different episodes to different policies — for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. Typical matcher fields and examples are listed in [Action policy reference](action-policy-reference-v2.md#matcher-fields-typical-kql).
 
 ### Grouping and frequency [reduce-noise-grouping-v2]
 
@@ -46,7 +46,7 @@ $$$reduce-noise-grouping-v2$$$
 
 Episode works for most rules. Use Group when a rule produces many series-level episodes and you want to batch by a shared field. Use Digest for periodic summaries on longer schedules.
 
-For Frequency to API strategy mappings, refer to [Action policy reference](action-policy-reference.md#frequency-ui-when-episode-per_episode).
+For Frequency to API strategy mappings, refer to [Action policy reference](action-policy-reference-v2.md#frequency-ui-when-episode-per_episode).
 
 ### Throttling [throttle-v2]
 
@@ -54,7 +54,7 @@ $$$throttle-v2$$$
 
 Throttling limits how often the policy can fire for a given group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
 
-For throttle strategy API values, refer to [Action policy reference](action-policy-reference.md#throttle-strategies-api).
+For throttle strategy API values, refer to [Action policy reference](action-policy-reference-v2.md#throttle-strategies-api).
 
 ### Destinations
 

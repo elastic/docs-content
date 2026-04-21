@@ -13,7 +13,7 @@ $$$rule-settings-v2$$$
 
 Use this page to configure how a {{alerting-v2}} rule evaluates data and manages its alert lifecycle. These settings live on the rule itself.
 
-For writing the {{esql}} query, refer to [Author rules](author-rules.md). For notification routing (matchers, grouping, throttling, maintenance windows), refer to [Notifications](../notifications.md) and [Manage action policies](../notifications/manage-action-policies.md).
+For writing the {{esql}} query, refer to [Author rules](author-rules-v2.md). For notification routing (matchers, grouping, throttling, maintenance windows), refer to [Notifications](../notifications-v2.md) and [Manage action policies](../notifications/manage-action-policies-v2.md).
 
 :::{note}
 Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule form does not link to policies.
@@ -32,7 +32,7 @@ Several settings on this page apply only when the rule is in Alert mode (`kind: 
 
 ## {{esql}} query [esql-query-rule-v2]
 
-The rule's {{esql}} query defines what to evaluate. It has a base query and an optional alert condition. Together they drive which rows become alert events and how no-data behavior applies. See [{{esql}} query structure](author-rules.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
+The rule's {{esql}} query defines what to evaluate. It has a base query and an optional alert condition. Together they drive which rows become alert events and how no-data behavior applies. See [{{esql}} query structure](author-rules-v2.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
 
 ## Rule grouping [rule-grouping-v2]
 
@@ -40,7 +40,7 @@ $$$rule-grouping-v2$$$
 
 Rule grouping splits alert event generation by one or more group key fields so that each unique combination of field values produces its own alert series. Each series has independent lifecycle tracking, recovery detection, and per-series snooze.
 
-Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules.md) for query patterns.
+Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules-v2.md) for query patterns.
 
 Note that rule grouping is separate from notification grouping on an action policy, which controls how episodes batch into messages.
 
