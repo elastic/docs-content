@@ -148,6 +148,6 @@ By completing this tutorial, you saw the core alerting v2 model in action end to
 
 ## What's next
 
-- **Add notifications:** Create a workflow and action policy to route alerts when an episode opens or recovers. Refer to [Notifications](kibana-alerting-v2/notifications.md).
+- **Add notifications:** Create a workflow and action policy to route alerts when an episode opens or recovers. Refer to [Notifications](notifications-v2.md).
 - **Use your own data:** Swap `logs-tutorial` for a real data source and update the breach condition to match your use case. Refer to [Author rules](rules/author-rules-v2.md) to learn more.
 - **Explore rule history in Discover:** Query `.rule-events` to track trends, compare episode durations, and identify which services breach most frequently. Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md) to learn more.
