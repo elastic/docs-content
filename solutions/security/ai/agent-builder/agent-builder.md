@@ -104,7 +104,7 @@ When conducted manually, alert triage in {{elastic-sec}} typically includes mult
 - Manually correlate new alert with its context
 - Make a triage decision
 
-With Agent Builder, you can automate this process to speed it up and require less user input. For example, in response to the prompt `"Analyze alert abc123. What's the entity risk score for the affected host? Are there any related attack discoveries in the last 24 hours?"` Agent Builder would take the following actions (for example via **alert-analysis** and related security tools):
+With Agent Builder, you can automate this process to speed it up and require less user input. For example, in response to the prompt `"Analyze alert abc123. What's the entity risk score for the affected host? Are there any related attack discoveries in the last 24 hours?"` an AI agent would take the following actions:
 
 - Fetch alert details (using `alerts_tool`)
 - Retrieve entity risk scores (using `entity_risk_score_tool`)
