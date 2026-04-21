@@ -905,36 +905,36 @@ redirects:
     anchors:
       'snooze-disable-rules-v2': 'manage-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/set-up.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
   'explore-analyze/alerting/kibana-alerting-v2/get-started/before-you-begin.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
-      'alerting-before-you-begin-v2': 'alerting-get-started-v2'
+      'alerting-before-you-begin-v2': 'alerting-setup-v2'
       'alerting-privileges-v2': 'alerting-privileges-v2'
   'explore-analyze/alerting/kibana-alerting-v2/get-started/quickstart.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
 
   'explore-analyze/alerting/kibana-alerting-v2/quickstart.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
 
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
-      'alerting-before-you-begin-v2': 'alerting-get-started-v2'
+      'alerting-before-you-begin-v2': 'alerting-setup-v2'
       'alerting-privileges-v2': 'alerting-privileges-v2'
       'alerting-set-up-v2': 'alerting-set-up-v2'
 
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/core-v2-alerting-concepts.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/alerting-privileges.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/view-alerts.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
@@ -1117,11 +1117,11 @@ redirects:
       'runtime-execution-order': 'runtime-execution-order'
       'configuration-order': 'configuration-order'
   'explore-analyze/alerting/kibana-alerting-v2/get-starting.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerting-privileges.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
     anchors:
       'alerting-privileges-v2': 'alerting-privileges-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules.md':
@@ -1286,7 +1286,10 @@ redirects:
   'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
   # alerting-v2 file renames: appended -v2 suffix to all page filenames
   'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md'
-  'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md':
+    to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
+    anchors:
+      'alerting-get-started-v2': 'alerting-setup-v2'
   'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md'

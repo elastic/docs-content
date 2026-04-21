@@ -41,8 +41,8 @@ A rule runs on schedule but you see no new documents in `.rule-events`, no episo
 - Tighten or broaden the {{esql}}, fix `FROM`, or adjust the **alert condition** so it reflects the signal you want. Cross-reference [Author rules](rules/author-rules-v2.md).
 - Set **lookback** to at least the **schedule** interval unless you intentionally accept gaps; see [Configure a rule](rules/configure-a-rule-v2.md#schedule-lookback-v2).
 - Switch to **Alert** mode when you need episodes and policy matching; see [Rules](rules-v2.md#detection-and-notification-v2).
-- Restore **index privileges** or **rotate the rule API key** after privilege changes; see [Get started](get-started-v2.md#alerting-privileges-v2).
-- Ask an administrator to confirm {{alerting-v2}} is enabled and navigation labels for your version; see [Set up and verify](get-started-v2.md#alerting-set-up-v2).
+- Restore **index privileges** or **rotate the rule API key** after privilege changes; see [Set up alerting](setup-alerting-v2.md#alerting-privileges-v2).
+- Ask an administrator to confirm {{alerting-v2}} is enabled and navigation labels for your version; see [Set up and verify](setup-alerting-v2.md#alerting-set-up-v2).
 
 ### Still not working?
 

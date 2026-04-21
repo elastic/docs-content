@@ -106,9 +106,9 @@ Because every evaluation produces its own document, you can reconstruct the full
 
 Retention is managed automatically through ILM. Older backing indices move through storage tiers and are deleted when the retention window expires. You do not need to manually remove documents. {{kib}} manages versioning, retention, and lifecycle for both streams. Do not change their mappings or index settings.
 
-## Where to go next
+## What's next
 
-- [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
-- [Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md): Look up lifecycle states, field names, and episode document structure.
-- [Notifications](notifications-v2.md): Set up action policies to route alert episodes to the right people and channels.
+- **[View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- **[Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md):** Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
+- **[Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md):** Look up lifecycle states, field names, and episode document structure.
+- **[Notifications](notifications-v2.md):** Set up action policies to route alert episodes to the right people and channels.

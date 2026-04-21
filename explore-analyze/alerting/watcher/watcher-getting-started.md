@@ -167,7 +167,7 @@ To enable users to create and manipulate watches, assign them the `watcher_admin
 
 To allow users to view watches and the watch history, assign them the `watcher_user` security role. Watcher users cannot create or manipulate watches; they are only allowed to execute read-only watch operations.
 
-## Where to go next [next-steps]
+## What's next [next-steps]
 
 * See [*How {{watcher}} works*](how-watcher-works.md) for more information about the anatomy of a watch and the watch lifecycle.
 * See [*Example watches*](example-watches.md) for more examples of setting up a watch.
