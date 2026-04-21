@@ -83,7 +83,7 @@ This section provides conceptual examples of what you can achieve with Agent Bui
 You can create a workflow that:
 
  - Runs periodically, and initiates Attack Discovery when it runs
- - Sends any discovered attacks to Agent Builder to analyze and create a report
+ - Sends any discovered attacks to an AI agent to analyze and create a report
  - Sends that report to a third-party incident management platform and sends alerts to your team
 
 ### Example 2: Triage an alert with a workflow
