@@ -1356,25 +1356,37 @@ The `url` object supports the following parameters:
 | `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
 | `"params"` | An array of named parameter objects to substitute into the query. |
 
-To integrate the query with the dashboard filters and time range, set `"%context%"` to `true`, specify the `"%timefield%"`, and reference `?_tstart` and `?_tend` in the query:
+The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
+
+The following complete **Vega-Lite** example charts document counts over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](../index.md#gs-get-data-into-kibana), open a new custom visualization on a dashboard, and paste the spec:
 
 ```json
 {
-  "data": [
-    {
-      "name": "filtered_count",
-      "url": {
-        "%type%": "esql",
-        "%context%": true,
-        "%timefield%": "@timestamp",
-        "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS total=COUNT()"
-      }
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Event counts over time",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "%context%": true,
+      "%timefield%": "@timestamp",
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
     }
-  ]
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "key",
+      "type": "temporal",
+      "axis": {"title": false}
+    },
+    "y": {
+      "field": "doc_count",
+      "type": "quantitative",
+      "axis": {"title": "Document count"}
+    }
+  }
 }
 ```
-
-The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
 
 #### Access Elastic Map Service files [vega-esmfiles]
