@@ -16,7 +16,7 @@ products:
 
 [Agents](agent-builder-agents.md) use tools to search, retrieve, and take actions on your behalf.
 
-Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data.
+Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data. Skills are higher-level capabilities that coordinate tools into domain-specific workflows. To learn more, refer to [Skills](skills.md).
 
 ## How agents use tools
 
@@ -41,6 +41,10 @@ Tool execution and result processing consume tokens. To understand how usage is 
 Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
 
 For the complete list, refer to [Built-in tools reference](tools/builtin-tools-reference.md).
+
+:::{note}
+Some built-in skills also include inline tools that are only available while that skill is active and are not listed in the tools reference. For details, refer to [Built-in skills reference](builtin-skills-reference.md).
+:::
 
 ## Custom tools
 

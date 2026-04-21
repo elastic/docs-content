@@ -173,6 +173,5 @@ For guidance on designing multi-tier architectures and selecting appropriate dat
 ## Resources and references
 
 - [Vector search in {{es}}](/solutions/search/vector.md)  
-- [Run {{es}} in production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)  
 - [Run {{es}} in production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)
 - [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)
