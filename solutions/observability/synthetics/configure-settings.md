@@ -20,7 +20,7 @@ Alerting enables you to detect complex conditions using **rules** across Observa
 
 When you create a new synthetic monitor, new default synthetics rules will be applied. To edit the default rules:
 
-1. Click **Alerts and rules** in the top bar.
+1. Click **Alerts** in the top bar.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
 
     * **Monitor status rule** for receiving notifications for errors and outages.
@@ -30,7 +30,7 @@ However, the automatically created Synthetics internal alert is intentionally pr
 
 If you need specific alerting behavior, set up a different rule. To view all existing rules or create a new rule:
 
-1. Click **Alerts and rules** in the top bar.
+1. Click **Alerts** in the top bar.
 2. Click **Manage rules** to go to the *Rules* page.
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
