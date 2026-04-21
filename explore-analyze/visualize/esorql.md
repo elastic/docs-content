@@ -69,7 +69,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `›` separator in the legend.
+On bar, line, and area charts built from an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `›` separator in the legend.
 
 When the query groups a metric by more than two fields, {{kib}} places the first field on the **Horizontal axis** and combines the remaining fields in the **Breakdown** dimension. For example, the following query counts web log events over time, broken down by host and file extension:
 
