@@ -1,8 +1,9 @@
 ---
+navigation_title: Set up Workflows
 applies_to:
   stack: preview 9.3
   serverless: preview
-description: Learn how to enable workflows and configure role-based access.
+description: Turn on the Workflows feature in Kibana and configure role-based access for your users.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -12,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Set up workflows [workflows-setup]
+# Set up Workflows [workflows-setup]
 
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
@@ -39,5 +40,5 @@ Access to workflows is controlled by [{{kib}} privileges](/deploy-manage/users-r
 
 ## What's next [workflows-what-next]
 
-- Create and run your first workflow. Refer to [](get-started.md) to learn more
-- Understand how to use the YAML editor in {{kib}} to define and run workflows. Refer to [](author-workflows.md) to learn more.
+- Create and run your first workflow. Refer to [](/explore-analyze/workflows/get-started/build-your-first-workflow.md) to learn more.
+- Understand how to use the YAML editor in {{kib}} to define and run workflows. Refer to [](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) to learn more.
