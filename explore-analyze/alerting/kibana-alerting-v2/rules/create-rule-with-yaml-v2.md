@@ -14,10 +14,10 @@ $$$create-rules-yaml-v2$$$
 Define {{alerting-v2}} rules as YAML documents for version control, infrastructure-as-code workflows, and bulk provisioning.
 
 :::{note}
-For the interactive form, refer to [Create rules using the rule builder](create-rule-from-rule-builder.md).
+For the interactive form, refer to [Create rules using the rule builder](create-rule-from-rule-builder-v2.md).
 :::
 
-For a complete list of every valid YAML field, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+For a complete list of every valid YAML field, refer to [YAML rule schema reference](yaml-rule-schema-reference-v2.md).
 
 ## YAML rule structure
 
