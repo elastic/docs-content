@@ -297,3 +297,4 @@ subs:
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+  alerting-v2: "Kibana alerting v2"

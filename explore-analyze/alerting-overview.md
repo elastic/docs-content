@@ -8,15 +8,17 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
+  - id: elasticsearch
+  - id: cloud-hosted
 navigation_title: Alerting
-description: Set up alerting in Elastic to monitor your data and get notified when conditions are met — from threshold-based rules to geofencing and anomaly detection.
+description: "Elastic alerting overview: Kibana v1, v2 (ES|QL, action policies, alert history), and Watcher; where each runs and how to get started."
 ---
 
 # Alerting [alerting-overview]
 
-Elastic alerting lets you monitor your data and take action when something needs attention — whether that's a metric crossing a threshold, an asset leaving a geographic boundary, or an anomaly in your time series data. You define the conditions, choose how you want to be notified, and Elastic handles the rest.
+Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
-Elastic provides three alerting systems: [Kibana alerting v1](alerting/kibana-alerting-v1.md), [Kibana alerting v2](alerting/kibana-alerting-v2.md), and [Watcher](alerting/watcher.md).
+Elastic offers three alerting systems, summarized below. Each has a **Get started** link to the full guide for that option.
 
 ## Kibana alerting v1
 
@@ -25,33 +27,44 @@ stack: ga
 serverless: ga
 ```
 
-Kibana alerting v1 provides a set of built-in rule types integrated with applications like APM, Metrics, Security, and Uptime. Rules evaluate conditions on a defined schedule and trigger actions through connectors — email, Slack, webhooks, PagerDuty, and more. Prepackaged rule types simplify setup for common use cases.
+Kibana alerting v1 gives you ready-made rule types that work with applications such as APM, metrics, security, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
 
-Refer to [Kibana alerting v1](alerting/kibana-alerting-v1.md) to get started.
+[Get started with Kibana alerting v1 →](alerting/kibana-alerting-v1.md)
 
-## Kibana alerting v2
+## {{alerting-v2}}
 
 ```{applies_to}
-stack: preview 9.4
 serverless: preview
+stack: ga
 ```
 
-Kibana alerting v2 is a redesigned alerting framework built on ES|QL. You write the query that defines what to detect and what data each alert carries. V2 introduces action policies for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and the ability to write rules on alerts for correlation and escalation.
+{{alerting-v2}} is built on ES|QL. You define what to watch for and what information should travel with each alert, then decide how basic or advanced you want that workflow to be. V2 adds **action policies** for centralized notification control, per-series snooze, alert lifecycle tracking with episodes, and **rules on alerts** for correlation and escalation.
 
-Kibana alerting v2 runs alongside Kibana alerting v1. There is no forced migration.
+Here is what you get with v2:
 
-Refer to [Kibana alerting v2](alerting/kibana-alerting-v2.md) to get started.
+* **Flexible paths.** Keep a guided experience when you want it, and adopt deeper options (including setups you can manage like code) without switching to a different alerting style.
+* **Visibility over time.** Each time a rule finds a matching condition, the outcome is stored in a searchable history of what happened and when. That supports investigations, reviews, and spotting trends instead of only seeing what is open right now.
+* **Connected analysis.** Use the same ES|QL skills in Discover and in rules, refine queries where you already explore data, and add follow-up rules when related conditions should be grouped together.
+* **Control over notifications.** Reuse shared settings for who gets notified, and how often, across many rules. You set routing, grouping, and frequency in one place so teams hear what matters with less repeated setup and fewer unnecessary messages.
+* **Consistent status from open to closed.** Track alerts from the first time they appear until the problem is gone, with shared stages, a way to mark items as handled, and pauses you can tune per group so everyone agrees on what counts as still active and what counts as finished.
+
+[Get started with {{alerting-v2}} →](alerting/kibana-alerting-v2.md)
+
+:::{note}
+{{alerting-v2}} runs next to Kibana alerting v1 on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting v1 will remain available.
+:::
 
 ## Watcher
 
 ```{applies_to}
+stack: ga
 serverless: unavailable
 ```
 
-Watcher provides alerting for custom use cases and complex alerting logic. It supports advanced scripting with Painless to define complex conditions and transformations.
+Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{kib}} alerting. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most use cases, Kibana alerting v1 or Kibana alerting v2 is recommended over Watcher. They offer richer integrations, prepackaged rule types, and a consistent management interface. Watcher is not available in {{serverless-full}}.
+For most teams, Kibana alerting v1 or v2 is easier to adopt: they include more ready-made building blocks and a single place in {{kib}} to work with rules.
 :::
 
-Refer to [Watcher](alerting/watcher.md) to get started.
+[Get started with Watcher →](alerting/watcher.md)

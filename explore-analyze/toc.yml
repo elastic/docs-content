@@ -388,56 +388,29 @@ toc:
           - file: alerting/kibana-alerting-v1/maintenance-windows-v1.md
       - file: alerting/kibana-alerting-v2.md
         children:
-          - file: alerting/kibana-alerting-v2/before-you-begin.md
+          - file: alerting/kibana-alerting-v2/get-started.md
+          - file: alerting/kibana-alerting-v2/alerting-v2-privileges.md
+          - file: alerting/kibana-alerting-v2/rules.md
             children:
-              - file: alerting/kibana-alerting-v2/before-you-begin/alerting-privileges.md
-              - file: alerting/kibana-alerting-v2/before-you-begin/set-up.md
-          - file: alerting/kibana-alerting-v2/author-rules.md
+              - file: alerting/kibana-alerting-v2/rules/author-rules.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-from-discover.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-with-yaml.md
+              - file: alerting/kibana-alerting-v2/rules/configure-a-rule.md
+              - file: alerting/kibana-alerting-v2/rules/view-manage-rules.md
+              - file: alerting/kibana-alerting-v2/rules/rule-event-field-reference.md
+          - file: alerting/kibana-alerting-v2/alerts.md
             children:
-              - file: alerting/kibana-alerting-v2/author-rules/rule-types.md
-              - file: alerting/kibana-alerting-v2/author-rules/rule-templates.md
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-ui.md
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-discover.md
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-yaml.md
-              - file: alerting/kibana-alerting-v2/author-rules/rule-settings.md
-                children:
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/schedule-and-lookback.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/activation-and-recovery-thresholds.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/no-data-handling.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/grouping.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies.md
-                    children:
-                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/create-manage-action-policies.md
-                      - file: alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/how-action-policies-are-evaluated.md
-                  - file: alerting/kibana-alerting-v2/author-rules/rule-settings/workflows.md
-              - file: alerting/kibana-alerting-v2/author-rules/set-rule-data-sources.md
-              - file: alerting/kibana-alerting-v2/author-rules/rules-on-alerts.md
-              - file: alerting/kibana-alerting-v2/author-rules/production-considerations.md
-          - file: alerting/kibana-alerting-v2/manage-rules.md
+              - file: alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
+              - file: alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference.md
+              - file: alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover.md
+          - file: alerting/kibana-alerting-v2/workflows-alerting-v2.md
+          - file: alerting/kibana-alerting-v2/notifications.md
             children:
-              - file: alerting/kibana-alerting-v2/manage-rules/view-manage-rules.md
-              - file: alerting/kibana-alerting-v2/manage-rules/snooze-disable-rules.md
-          - file: alerting/kibana-alerting-v2/manage-alerts.md
-            children:
-              - file: alerting/kibana-alerting-v2/manage-alerts/view-alerts.md
-              - file: alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
-                children:
-                  - file: alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-episode-details.md
-                  - file: alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-actions.md
-              - file: alerting/kibana-alerting-v2/manage-alerts/explore-alerts-discover.md
-          - file: alerting/kibana-alerting-v2/reduce-noise.md
-            children:
-              - file: alerting/kibana-alerting-v2/reduce-noise/activation-thresholds.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/recovery-thresholds.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/no-data-handling.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/throttle.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/grouping.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/matcher.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/snooze-or-silence.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/maintenance-windows.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/rules-on-alerts.md
-              - file: alerting/kibana-alerting-v2/reduce-noise/deactivate-alerts.md
-          - file: alerting/kibana-alerting-v2/alert-event-field-reference.md
+              - file: alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md
+              - file: alerting/kibana-alerting-v2/notifications/action-policy-reference.md
+              - file: alerting/kibana-alerting-v2/notifications/manage-action-policies.md
+          - file: alerting/kibana-alerting-v2/troubleshooting-alerting-v2.md
       - file: alerting/watcher.md
         children:
           - file: alerting/watcher/watcher-getting-started.md

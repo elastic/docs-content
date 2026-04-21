@@ -3,78 +3,92 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Overview of Kibana alerting v2: an ES|QL-based alerting framework with immutable alert events, action policies, and alert lifecycle tracking."
+  - id: cloud-serverless
+description: "How {{alerting-v2}} watches your data, turns conditions into signals and alerts, routes episodes through action policies and workflows, and where to go next in the docs."
 ---
 
-# Kibana alerting v2 [alerting-overview-v2]
+# {{alerting-v2}} [alerting-overview-v2]
 
-Kibana alerting v2 is a redesigned alerting framework built on [ES|QL](elasticsearch://reference/query-languages/esql.md). Rules evaluate source data on a configurable schedule using ES|QL queries and produce immutable alert event documents. You control exactly what data each alert carries by writing the query that computes it.
+{{alerting-v2}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
 
-Kibana alerting v2 runs alongside [Kibana alerting v1](/explore-analyze/alerting/kibana-alerting-v1.md). There is no forced migration. You can adopt Kibana alerting v2 at your own pace and run both systems in parallel.
+## The core idea [kibana-alerting-v2-overview]
 
-## Core concepts
+{{alerting-v2}} separates *detecting* a problem from *notifying* people about it. A rule watches your data and records what it finds. Separate action policies decide who hears about it and when. This lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
 
-Kibana alerting v2 introduces a layered model that separates detection from notification:
+## The four building blocks
 
-Signals
-:   Immutable documents produced each time a rule evaluates and its query returns results. Signals are the raw output of every rule, written to an append-only data stream. Use signals for exploration, dashboards, and retroactive analysis.
+{{alerting-v2}} is built around four objects (rules, alerts, action policies, and workflows), each with a distinct role in the detection and notification pipeline.
 
-Alerts
-:   Signals with lifecycle tracking. When a rule runs in alert mode, the system tracks state transitions for each alert series: `inactive` → `pending` → `active` → `recovering` → `inactive`. Alerts are the primary operational unit for triage and response.
+### Rules
+A rule says *what to watch* and *how often*. It holds an {{esql}} query, a schedule and lookback window, and in Alert mode, thresholds that control when an issue becomes active or recovers. Rules run in either Detect mode (records signals only, no episodes or notifications) or Alert mode (tracks episodes and enables policy matching). Refer to [Rules](kibana-alerting-v2/rules.md) to learn more.
 
-Episodes
-:   A full lifecycle arc of an alert, from first breach to final recovery. Each episode groups the state transitions for a single alert series and is identified by an `episode_id`.
+### Alerts
+When a rule runs in Alert mode, it maintains an alert episode for each tracked series: a record that something is wrong, with lifecycle states (pending, active, recovering) and the history of what happened. These live in Discover and the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts.md) to learn more.
 
-Series
-:   A grouped time series of signals for a given rule and grouping key. Identified by a `group_hash` computed from the rule ID and grouping field values. Series are the unit for per-group snooze and recovery detection.
+### Action policies
+An action policy decides whether an episode should produce outreach and how often. It's a global object within the space (not attached to any one rule) that uses optional KQL matchers to pick up episodes from any rule. Multiple policies can match the same episode and each runs independently. Refer to [Notifications](kibana-alerting-v2/notifications.md) to learn more.
 
-Action policies
-:   Standalone, reusable entities that control how and when alerts reach people and systems. Policies define matching conditions, grouping, throttling, and routing to workflow destinations. One policy can apply across multiple rules.
+### Workflows
+A workflow is what actually sends the message or runs the automation. Action policies point at workflows as destinations. If no workflow is attached and reachable, nothing is delivered. Refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md) to learn more.
 
-Workflows
-:   User-defined automated sequences of tasks for delivering notifications and integrating with external systems. Action policies reference workflows as destinations.
+## A quick example
 
-## How Kibana alerting v2 differs from Kibana alerting v1
+An SRE team creates a rule that checks checkout service latency every five minutes. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode. An action policy with a `rule.labels: "checkout"` matcher picks it up, skips low-severity episodes, and sends a Slack message through an on-call workflow.
 
-| Aspect | Kibana alerting v1 | Kibana alerting v2 |
-|---|---|---|
-| Query language | Rule type defines what data is evaluated | You write the ES\|QL query directly |
-| Alert persistence | Mutable documents updated in place | Immutable, append-only event documents |
-| Alert queryability | Limited; alerts live in system indices | Full ES\|QL access in Discover and dashboards |
-| Notification control | Per-action frequency and throttle on each rule | Action policies: centralized matching, grouping, throttling, suppression |
-| Noise reduction | Snooze per rule; limited grouping | Per-series snooze, acknowledgment per episode, activation thresholds, matcher-based routing, rules on alerts |
-| Rule definition | Plugin-registered rule types with fixed schemas | ES\|QL queries with `KEEP` to control what data is stored |
-| Recovery detection | Rule-type specific | Group hash comparison between consecutive evaluations |
+The engineer gets one message, investigates, fixes a slow query, and latency drops. The episode recovers automatically. No dashboard watching required.
 
-## How detection and alert modes work
+## How the pieces fit together [how-pieces-fit-together]
 
-Every rule operates in one of two modes:
+$$$detection-and-notification-v2$$$
+$$$runtime-execution-order$$$
 
-Detect mode (`kind: signal`)
-:   The rule produces signal events for every query result. Signals are written to the alert events data stream and are available for exploration in Discover, but no lifecycle tracking or notifications occur. Use detect mode for broad monitoring with zero noise.
+At runtime the chain runs left to right:
 
-Alert mode (`kind: alert`)
-:   The rule produces alert events with full lifecycle management. Alerts transition through episode states, trigger action policies, and support triage actions like acknowledge and snooze. Use alert mode when you need actionable alerts.
+```
+Rule → Alert → Action Policy → Workflow → Notification
+```
 
-You can switch a rule between modes at any time. Switching from alert to detect stops lifecycle tracking and notifications but continues producing signal events.
+1. A rule evaluates {{esql}} on a schedule and writes signal or alert events.
+2. In Alert mode, alert episodes track the ongoing issue from first breach through recovery.
+3. Action policies match eligible episodes and decide whether outreach should run.
+4. Matched policies invoke configured workflows, which deliver messages or run automation steps.
+5. Notifications are the outcome (email, chat, webhook, and so on) when all prior steps pass.
 
-## What happens when a rule runs
+$$$configuration-order$$$
 
-From your perspective, a rule does the following on each run:
+## {{alerting-v2}} terms [key-concepts-glossary]
 
-- It evaluates your ES|QL query over the lookback window you configured.
-- It appends new rows to the `.rule-events` data stream: signal rows in detect mode, or signal and alert rows with episode fields in alert mode.
-- In alert mode, it updates episode lifecycle (for example pending, active, recovering) according to your activation, recovery, and no-data settings.
-- When an episode is ready for notifications, action policies decide whether and how it is routed to workflows. Policies apply after lifecycle and thresholds; a short delay between “episode ready” and “notification sent” is normal when many policies or episodes are in play.
+These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
-You can inspect raw history in Discover on `.rule-events` at any time, independent of whether notifications were sent.
+**Action policy**
+:   A global saved object in a space that decides whether and how often outreach runs for matching episodes. Holds the matcher, grouping, throttle, and workflow destinations. To learn more, refer to [Notifications](kibana-alerting-v2/notifications.md).
 
-## What you can do with Kibana alerting v2
+**Alert**
+:   A document written to `.rule-events` when a rule in Alert mode matches. Alert documents have `type: alert` and include `episode.*` fields that tie them to the ongoing episode for that series.
 
-- Write rules using any ES|QL query pattern: thresholds, change detection, ratios, no-data, SLO burn rate, and more.
-- Create rules from the UI, from Discover, or with YAML for infrastructure-as-code workflows.
-- Preview rule results against existing data before saving.
-- Use action policies to control routing, grouping, and throttling independently of rules.
-- Investigate alerts in a dedicated inbox with filtering by status, severity, and custom fields.
-- Explore alert history in Discover using ES|QL for trend analysis and operational reporting.
-- Write rules on alerts: use the alert events index as a data source for correlation and escalation patterns.
+**Breach**
+:   A single evaluation where the rule's {{esql}} query (and optional alert condition) returned a match. One breach writes one document to `.rule-events`. Multiple consecutive breaches might be required before an episode becomes active, depending on the rule's activation thresholds.
+
+**Episode**
+:   In Alert mode, a lifecycle-tracked record that spans one full breach-to-recovery arc for a rule series. An episode moves through states (pending, active, recovering, inactive) and is what action policies match against and operators triage in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts.md).
+
+**{{esql}}**
+:   The query language every rule uses. Data sources are declared in the query itself (for example `FROM`). To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
+
+**Notification**
+:   A delivery produced when an episode passes through a matching action policy and its workflow destinations. To learn more, refer to [How action policies are evaluated](kibana-alerting-v2/notifications.md#how-action-policies-evaluated-v2).
+
+**Rule**
+:   An {{esql}} query plus a schedule and related settings. The entry point for detection. To learn more, refer to [Rules](kibana-alerting-v2/rules.md).
+
+**Severity**
+:   Carried by convention under `data.*` and available as a policy KQL field. To learn more, refer to [Author rules](kibana-alerting-v2/rules/author-rules.md#severity-levels).
+
+**Signal**
+:   A point-in-time record written to `.rule-events` when a rule in Detect mode matches. Signals have `type: signal` and no `episode.*` fields. They are queryable in Discover but do not open episodes or trigger notifications.
+
+**Threshold**
+:   Breach logic expressed in {{esql}}, combined with activation and recovery settings on the rule. To learn more, refer to [Conditions and thresholds](kibana-alerting-v2/rules/author-rules.md#conditions-and-thresholds).
+
+**Workflow**
+:   The automation object action policies invoke to deliver messages or run steps such as email, Slack, or webhooks. To learn more, refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md).
