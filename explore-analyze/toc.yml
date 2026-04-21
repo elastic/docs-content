@@ -388,23 +388,29 @@ toc:
           - file: alerting/kibana-alerting-v1/maintenance-windows-v1.md
       - file: alerting/kibana-alerting-v2.md
         children:
-          - file: alerting/kibana-alerting-v2/core-v2-alerting-concepts.md
-          - file: alerting/kibana-alerting-v2/get-starting.md
-          - file: alerting/kibana-alerting-v2/alerting-privileges.md
-          - file: alerting/kibana-alerting-v2/author-rules.md
+          - file: alerting/kibana-alerting-v2/get-started.md
+          - file: alerting/kibana-alerting-v2/alerting-v2-privileges.md
+          - file: alerting/kibana-alerting-v2/rules.md
             children:
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-ui.md
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-discover.md
-              - file: alerting/kibana-alerting-v2/author-rules/create-rules-yaml.md
-              - file: alerting/kibana-alerting-v2/author-rules/rule-settings.md
-          - file: alerting/kibana-alerting-v2/manage-rules.md
-          - file: alerting/kibana-alerting-v2/manage-alerts.md
+              - file: alerting/kibana-alerting-v2/rules/author-rules.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-from-discover.md
+              - file: alerting/kibana-alerting-v2/rules/create-rule-with-yaml.md
+              - file: alerting/kibana-alerting-v2/rules/configure-a-rule.md
+              - file: alerting/kibana-alerting-v2/rules/view-manage-rules.md
+              - file: alerting/kibana-alerting-v2/rules/rule-event-field-reference.md
+          - file: alerting/kibana-alerting-v2/alerts.md
             children:
-              - file: alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
-              - file: alerting/kibana-alerting-v2/manage-alerts/explore-alerts-discover.md
-          - file: alerting/kibana-alerting-v2/send-notifications.md
-          - file: alerting/kibana-alerting-v2/reduce-noise.md
-          - file: alerting/kibana-alerting-v2/alert-event-field-reference.md
+              - file: alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
+              - file: alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference.md
+              - file: alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover.md
+          - file: alerting/kibana-alerting-v2/workflows-alerting-v2.md
+          - file: alerting/kibana-alerting-v2/notifications.md
+            children:
+              - file: alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md
+              - file: alerting/kibana-alerting-v2/notifications/action-policy-reference.md
+              - file: alerting/kibana-alerting-v2/notifications/manage-action-policies.md
+          - file: alerting/kibana-alerting-v2/troubleshooting-alerting-v2.md
       - file: alerting/watcher.md
         children:
           - file: alerting/watcher/watcher-getting-started.md

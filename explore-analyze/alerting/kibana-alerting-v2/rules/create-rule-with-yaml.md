@@ -1,15 +1,21 @@
 ---
-navigation_title: Using YAML
+navigation_title: Using the YAML editor
 applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Define {{alerting-v2}} rules in YAML for version control and infrastructure-as-code workflows, with full field reference."
+description: "Define {{alerting-v2}} rules as YAML for version control, infrastructure-as-code, and bulk provisioning."
 ---
 
-# Create {{alerting-v2}} rules with YAML [create-rules-yaml-v2]
+# Create rules using the YAML editor [create-rules-yaml-v2]
+
+$$$create-rules-yaml-v2$$$
 
 Define {{alerting-v2}} rules as YAML documents for version control, infrastructure-as-code workflows, and bulk provisioning.
+
+:::{note}
+For the interactive form, refer to [Create rules using the rule builder](create-rule-from-rule-builder.md).
+:::
 
 ## YAML rule structure
 
@@ -87,7 +93,3 @@ evaluation:
       | STATS error_count = COUNT(*) BY service.name
       | KEEP service.name, error_count
 ```
-
-## Toggle between GUI and YAML
-
-In the rule creation UI, you can toggle between the interactive form and YAML mode at any time. Changes made in one mode are reflected in the other.

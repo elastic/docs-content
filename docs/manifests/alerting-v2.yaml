@@ -303,14 +303,14 @@ implementation_prs:
       Adds the No-data handling control block to the v2 rule form. Controls are visible
       for `kind=alert` only; hidden for `kind=signal`. Adds `noData.behavior` and related
       fields to the rule schema. Affects author-rules/rule-settings.md (no-data section) and
-      author-rules/create-rules-ui.md.
+      author-rules/create-rule-from-rule-builder.md.
     author: yiannisnikolopoulos
 
   - url: https://github.com/elastic/kibana/pull/257324
     title: "[Alerting v2] rule form - preview chart"
     summary: >
       Adds a Lens-powered bar chart histogram to the rule preview panels (evaluation and
-      recovery), showing the count of matching rows over time. Affects create-rules-ui.md
+        recovery), showing the count of matching rows over time. Affects create-rule-from-rule-builder.md
       and any doc describing the rule form preview experience.
     author: dominiqueclarke
 
@@ -387,7 +387,7 @@ implementation_prs:
     title: "Move v2 ES|QL rule creation into Discover Alerts menu"
     summary: >
       Moves "Create ES|QL rule" into the Discover Alerts popover (with a New badge) instead of
-      a separate top-level Rules menu item; closes rna-program#292. Affects create-rules-ui.md
+      a separate top-level Rules menu item; closes rna-program#292. Affects create-rule-from-rule-builder.md
       and Discover integration docs.
     author: dominiqueclarke
 
@@ -496,7 +496,7 @@ entries:
       event log, maintenance windows, notifications allowlist, troubleshooting.
 
   # ---------------------------------------------------------------------------
-  # {{alerting-v2}} — overview
+  # {{alerting-v2}} — hub (conceptual landing + glossary)
   # ---------------------------------------------------------------------------
 
   - id: alerting-v2-overview
@@ -513,7 +513,7 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      V2 alerting section landing page and conceptual overview. Review on major v2
+      V2 alerting section hub: conceptual overview, glossary, and setup order. Review on major v2
       architectural changes or when new top-level v2 capabilities ship.
       PRs #260355 / #260798 — solution and Management entry points for the v2 apps;
       keep high-level "where to open Rules V2" language consistent with get-starting.md (setup).
@@ -524,7 +524,7 @@ entries:
 
   - id: alerting-v2-send-notifications
     content_type: conceptual
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/send-notifications.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/notifications.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -541,9 +541,9 @@ entries:
   # {{alerting-v2}} — get started (setup, privileges, concepts siblings)
   # ---------------------------------------------------------------------------
 
-  - id: alerting-v2-before-you-begin
+  - id: alerting-v2-get-started
     content_type: conceptual
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/get-starting.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/get-started.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -553,14 +553,13 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      Bucket entry: setup lives on get-starting.md; see also core-v2-alerting-concepts.md
-      and alerting-privileges.md as sibling pages.
-      See alerting-v2-set-up for the setup-focused manifest entry, which tracks additional PRs
-      for the index renames and new API key invalidation task config.
+      Get started hub: enable/verify UI, data streams, stack requirements, privileges,
+      spaces/API keys, optional `kibana.yml` invalidation settings, next-step links.
+      alerting-v2-set-up is the procedural manifest entry for the same file.
 
   - id: alerting-v2-set-up
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/get-starting.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/get-started.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -576,7 +575,8 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      Documents index configuration, plugin dependencies, and verification steps.
+      Setup and verify (enablement, `.rule-events` / `.alert-actions`, UI checks) and
+      `kibana.yml` invalidation task settings; lives on get-started.md with setup and verify.
       High-priority for updates on three counts:
       • Index rename chain — final names are `.rule-events` and `.alert-actions`
         (see chain note at top of file). The current draft uses `.alerts-events-*` and
@@ -596,7 +596,7 @@ entries:
 
   - id: alerting-v2-author-rules
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/author-rules/
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -611,23 +611,24 @@ entries:
     doc_set:
       serverless: preview
     notes: >
-      How-to content for creating and configuring v2 rules. Covers: create via UI,
-      Discover flyout, YAML; rule templates; rules on alerts; set data sources;
+      Rule authoring concepts (ES|QL, modes, conditions). Create flows live on
+      create-rule-from-rule-builder.md, create-rule-from-discover.md, and create-rule-with-yaml.md.
+      Also covers: rule templates; rules on alerts; set data sources;
       production considerations; rule-settings.md (schedule, thresholds, no-data, grouping,
-      maintenance); send-notifications.md (action policies, matchers, throttling, workflows).
+      maintenance). Action policies and workflow integration: notifications.md and workflows-alerting-v2.md.
       • PR #255734 — no-data handling UI now live in the rule form (kind=alert only);
         rule-settings.md no-data section needs to reflect the form controls and the `noData.behavior` field.
       • PR #257324 — preview chart added to rule form (Lens histogram showing matching
-        row counts over time for evaluation and recovery previews). create-rules-ui.md
+        row counts over time for evaluation and recovery previews). create-rule-from-rule-builder.md
         should describe this panel.
       • PR #260844 — Discover: create ES|QL rule moved into the Alerts menu popover (with
-        a New badge) instead of a separate top-level Rules entry; update create-rules-ui.md
+        a New badge) instead of a separate top-level Rules entry; update create-rule-from-rule-builder.md
         steps that reference Discover navigation.
       See separate entries for action-policies pages, which track additional PRs.
 
   - id: alerting-v2-action-policies
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/send-notifications.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/notifications.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -668,7 +669,7 @@ entries:
 
   - id: alerting-v2-create-action-policies
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/send-notifications.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -701,9 +702,31 @@ entries:
       • PR #259390 — “Update API key” row and bulk action.
       • PR #257377 / #258094 — key rotation and scheduled invalidation (`xpack.alerting_v2.invalidateApiKeysTask.*`).
 
+  - id: alerting-v2-action-policy-reference
+    content_type: reference
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/notifications/action-policy-reference.md
+    docs_pr: https://github.com/elastic/docs-content/pull/5528
+    implementation_prs:
+      - https://github.com/elastic/kibana/pull/247464
+      - https://github.com/elastic/kibana/pull/253134
+      - https://github.com/elastic/kibana/pull/256759
+      - https://github.com/elastic/kibana/pull/256940
+      - https://github.com/elastic/kibana/pull/257279
+      - https://github.com/elastic/kibana/pull/258237
+      - https://github.com/elastic/kibana/pull/258917
+      - https://github.com/elastic/kibana/pull/259114
+    watch_paths:
+      - x-pack/platform/plugins/shared/alerting/server/notification_policy/
+      - x-pack/platform/plugins/shared/alerting/public/pages/notification_policies/
+    doc_set:
+      serverless: preview
+    notes: >
+      Consolidated API and UI mapping tables for matchers, grouping, throttling, dispatch outcomes,
+      and workflow destinations. Split from create-configure-action-policy.md.
+
   - id: alerting-v2-action-policies-eval
     content_type: conceptual
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/send-notifications.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/notifications.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -742,7 +765,7 @@ entries:
 
   - id: alerting-v2-manage-alerts
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -753,12 +776,12 @@ entries:
       serverless: preview
     notes: >
       How-to content for managing and triaging alerts. See per-file entries below
-      for manage-alerts (episodes table), explore-alerts-discover, and investigate-respond
-      (episode detail + alert actions consolidated).
+      for manage-alerts (episodes table), alert-states-and-fields-reference, explore-alerts-discover,
+      and investigate-respond (episode detail + alert actions consolidated).
 
   - id: alerting-v2-view-alerts
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -794,7 +817,7 @@ entries:
 
   - id: alerting-v2-explore-alerts-discover
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/explore-alerts-discover.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -812,7 +835,7 @@ entries:
 
   - id: alerting-v2-investigate-respond
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -834,7 +857,7 @@ entries:
 
   - id: alerting-v2-alert-actions
     content_type: reference
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -867,7 +890,7 @@ entries:
 
   - id: alerting-v2-episode-details
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -897,7 +920,7 @@ entries:
 
   - id: alerting-v2-manage-rules
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-rules/
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -939,7 +962,7 @@ entries:
 
   - id: alerting-v2-reduce-noise
     content_type: conceptual
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/reduce-noise.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/troubleshooting-alerting-v2.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -956,7 +979,7 @@ entries:
 
   - id: alerting-v2-deactivate-alerts
     content_type: procedural
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
@@ -977,7 +1000,7 @@ entries:
 
   - id: alerting-v2-event-field-ref
     content_type: reference
-    docs_file: explore-analyze/alerting/kibana-alerting-v2/alert-event-field-reference.md
+    docs_file: explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference.md
     docs_pr: https://github.com/elastic/docs-content/pull/5528
     implementation_prs:
       - https://github.com/elastic/kibana/pull/247464
