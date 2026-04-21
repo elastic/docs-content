@@ -15,6 +15,12 @@ sub:
   abb-free-executions: 1,000
   abb-pricing-label: Elasticsearch Serverless pricing page
   abb-pricing-url: https://www.elastic.co/pricing/serverless-search
+  wfe-anchor: elasticsearch-billing-workflow-executions
+  wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
+  wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-free-executions: 10,000
+  wfe-pricing-label: Elasticsearch Serverless pricing page
+  wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -47,6 +53,9 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
 :::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+:::{include} _snippets/workflow-executions-billing.md
 :::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
