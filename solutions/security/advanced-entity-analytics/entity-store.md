@@ -38,7 +38,7 @@ When the entity store is enabled, the following resources are created for the ac
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
 :::{note}
-Entity Store v2 uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} ENRICH policies. When v2 is installed, v1 transforms, enrich policies, and ingest pipelines are removed. Your v1 index data is retained.
+Entity Store v2 uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} transforms. When v2 is installed, v1 transforms, enrich policies, and ingest pipelines are removed. Your v1 index data is retained.
 :::
 
 :::{warning}
