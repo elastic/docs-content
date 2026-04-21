@@ -69,9 +69,9 @@ stack: ga 9.4
 serverless: ga
 ```
 
-On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can contain several fields at the same time. Each unique combination of values is rendered as its own series, with the field values joined by a `>` symbol in the legend (for example, `Kibana Airlines > No Delay`).
+On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `>` symbol in the legend (for example, `Kibana Airlines > No Delay`).
 
-For example, start from the following query, which counts flights by carrier and delay type:
+For example, the following query counts flights by carrier and delay type:
 
 ```esql
 FROM kibana_sample_data_flights
@@ -79,7 +79,9 @@ FROM kibana_sample_data_flights
 | SORT flights DESC
 ```
 
-By default, `Carrier` is placed on the horizontal axis and `FlightDelayType` in the **Breakdown** dimension. To combine both fields in the breakdown, drag `Carrier` from the horizontal axis into the **Breakdown** dimension. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
+By default, `Carrier` is placed on the **Horizontal axis** and `FlightDelayType` on the **Breakdown** dimension. To combine both fields in the breakdown, select **Add a field** under **Breakdown** and choose `Carrier`.
+
+You can drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
 
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
