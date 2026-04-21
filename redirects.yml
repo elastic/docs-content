@@ -1266,16 +1266,8 @@ redirects:
   'explore-analyze/ai-features/agent-builder/skill-creation-guidelines.md': 'explore-analyze/ai-features/agent-builder/custom-agents.md'
   'explore-analyze/ai-features/agent-builder/skills.md': 'explore-analyze/ai-features/agent-builder/tools.md'
 
-  # Elastic Workflows: IA restructure (paths removed or moved)
-  'explore-analyze/workflows/authoring-techniques.md': 'explore-analyze/workflows/author-workflows.md'
-  'explore-analyze/workflows/authoring-techniques/manage-workflows.md': 'explore-analyze/workflows/manage-workflows.md'
-  'explore-analyze/workflows/authoring-techniques/monitor-workflows.md': 'explore-analyze/workflows/monitor-troubleshoot.md'
-  'explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md': 'explore-analyze/workflows/data.md'
-  'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md': 'explore-analyze/workflows/author-workflows.md'
+  # Elastic Workflows: pages removed (use-cases subfolder deleted)
   'explore-analyze/workflows/get-started/build-your-first-workflow.md': 'explore-analyze/workflows/get-started.md'
-  'explore-analyze/workflows/get-started/setup.md': 'explore-analyze/workflows/setup.md'
-  'explore-analyze/workflows/reference.md': 'explore-analyze/workflows/core-components.md'
-  'explore-analyze/workflows/templating.md': 'explore-analyze/workflows/data/templating.md'
   'explore-analyze/workflows/use-cases/ai-augmented-workflows.md': 'explore-analyze/workflows/use-cases.md'
   'explore-analyze/workflows/use-cases/observability.md': 'explore-analyze/workflows/use-cases.md'
   'explore-analyze/workflows/use-cases/security.md': 'explore-analyze/workflows/use-cases.md'
