@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
-description: Share Kibana dashboards with your team using links, embeds, or by exporting them as NDJSON files for import into other environments.
+description: Share Kibana dashboards with your team using links, embeds, JSON exports for the dashboards API, or NDJSON files for migration.
 applies_to:
   stack: ga
   serverless: ga
@@ -56,3 +56,25 @@ Export dashboards as NDJSON files to migrate them to other {{product.kibana}} in
 ![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
 To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+
+## Export a dashboard as JSON [export-dashboard-json]
+
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Export the JSON source of a single dashboard in a format that the Kibana dashboards API can consume. Use this option when you want to inspect the stored state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+
+This export is different from the [NDJSON export](#export-dashboards): it returns only the dashboard object, without any related saved objects, and the JSON matches the request body expected by the dashboards API.
+
+To export a dashboard as JSON:
+
+1. Open the dashboard you want to export.
+2. From the toolbar, select {icon}`download` **Export** > **Export JSON**.
+3. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
+4. Choose how to use the JSON source:
+
+   * Select **Copy to clipboard** to copy the JSON.
+   * Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
+   * Select **Download JSON** to save the JSON source to a file.

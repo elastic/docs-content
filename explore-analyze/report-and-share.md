@@ -64,6 +64,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
+* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export a dashboard as JSON](dashboards/sharing.md#export-dashboard-json).
 
 $$$reporting-layout-sizing$$$
 The layout and size of the report depends on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
