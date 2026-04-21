@@ -12,7 +12,7 @@ products:
 
 # Configure data tiers for self-managed and {{eck}} deployments
 
-Whether you operate {{es}} on your own infrastructure or on {{k8s}} with {{eck}}, data tiers are expressed through each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role). You choose which tiers the cluster offers by assigning the corresponding `data_*` roles to nodes or to {{eck}} node sets.
+Whether you operate {{es}} on your own infrastructure or on {{k8s}} with {{eck}}, data tiers are expressed through each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role). You choose which tiers the cluster offers by assigning the corresponding `data_*` roles to nodes or to ECK node sets.
 
 ## Before you begin
 
@@ -45,7 +45,7 @@ deployment:
   eck: ga
 ```
 
-{{es}} settings that you would normally put in `elasticsearch.yml` are set per **node set** under `spec.nodeSets[?].config` in the {{es}} resource manifest. Assign `node.roles` there to define each group of pods’ tiers—for example:
+{{es}} settings that you would normally put in `elasticsearch.yml` are set per node set under `spec.nodeSets[?].config` in the {{es}} resource manifest. Assign `node.roles` there to define each group of pods’ tiers. For example, you can assign the following tiers:
 
 ```yaml
 spec:
