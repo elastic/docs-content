@@ -16,11 +16,11 @@ This page shows example conversations with the [Elastic AI Agent](/explore-analy
 
 Skills can be activated three ways: the agent selects one automatically from your prompt, you invoke one explicitly with a slash command (for example, `/threat-hunting`), or you attach context (such as an alert from the alert flyout) that activates the matching skill. These examples assume the agent is selecting automatically unless otherwise noted.
 
-## Alert triage and investigation
+## Alert triage and investigation [alert-triage-and-investigation]
 
-**Enable:** `alert-analysis` (optionally combine with `entity-analytics` for deeper entity context)
+**Enable:** `alert-analysis` (optionally combine with [`entity-analytics`](#entity-risk-investigation) for deeper entity context)
 
-Use this workflow to triage a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, correlates with {{elastic-sec}} Labs threat intelligence, and recommends a disposition (true positive, benign true positive, false positive, or needs more data).
+Use this workflow to triage a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, correlates with {{elastic-sec}} Labs threat intelligence, and recommends a disposition (true positive, benign true positive, false positive, or needs more data). For a multi-skill flow that chains this into a tracking dashboard, refer to [Combining skills across workflows](#combining-skills-across-workflows).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -32,7 +32,7 @@ Use this workflow to triage a specific alert or work through an alert queue. The
 You can also trigger this skill by attaching an alert from the alert flyout — the agent activates `alert-analysis` automatically based on the attachment.
 :::
 
-## Entity risk investigation
+## Entity risk investigation [entity-risk-investigation]
 
 **Enable:** `entity-analytics`
 
@@ -44,11 +44,11 @@ Use this workflow to find risky entities or profile specific hosts, users, servi
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
 
-## Threat hunting
+## Threat hunting [threat-hunting]
 
-**Enable:** `threat-hunting` (optionally combine with `entity-analytics` and `find-security-ml-jobs`)
+**Enable:** `threat-hunting` (optionally combine with [`entity-analytics`](#entity-risk-investigation) and [`find-security-ml-jobs`](#anomaly-investigation-with-ml))
 
-Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}} queries, establishes baselines, searches for IOCs, and flags anomalies. It ships with query templates for lateral movement, C2 beaconing, brute force, and rare process starts.
+Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}} queries, establishes baselines, searches for IOCs, and flags anomalies. It ships with query templates for lateral movement, C2 beaconing, brute force, and rare process starts. For multi-skill flows that pivot from a hunt finding into an entity profile or into rule validation, refer to [Combining skills across workflows](#combining-skills-across-workflows).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -56,7 +56,7 @@ Use this workflow for hypothesis-driven hunts. The agent runs iterative {{esql}}
 | Sweep for file hash `abc123...` across recent events | Search relevant indices for IOCs, summarize matches, and suggest next pivots. |
 | Look for C2 beaconing from hosts in the DMZ | Apply the C2 beaconing template — periodic connection analysis, rare DNS queries — over a 7-day window. |
 
-## Anomaly investigation with {{ml-app}}
+## Anomaly investigation with {{ml-app}} [anomaly-investigation-with-ml]
 
 **Enable:** `find-security-ml-jobs`
 
@@ -68,7 +68,7 @@ Use this workflow to investigate anomalies surfaced by Security {{ml-app}} jobs:
 | Show users who downloaded unusually large amounts of data | Use data exfiltration-related jobs (for example, `high_sent_bytes_destination_ip`, `high_bytes_written_to_external_device`), query anomaly records, and present results in a table. |
 | Which {{ml-app}} jobs should I turn on for lateral movement detection? | Recommend relevant jobs that aren't currently running for the requested investigation. |
 
-## Detection engineering
+## Detection engineering [detection-engineering]
 
 **Enable:** `detection-rule-edit`
 
@@ -79,6 +79,10 @@ Use this workflow to create or edit detection rules. The skill supports **{{esql
 | Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK mappings, then render it as an attachment. |
 | Raise the severity on this rule to critical and add the T1059 tag | Update the attached rule's `severity`, `risk_score`, and `tags` fields and re-render the attachment. |
 | Add the Execution tactic (TA0002) and technique T1059.001 to this rule | Append entries to the rule's `threat` array with correct tactic, technique, and subtechnique IDs. |
+
+:::{tip}
+`detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation, and edits are applied directly to the attachment rather than described in chat. You can start a rule attachment from the rule creation or rule details UI.
+:::
 
 ## Elastic Defend troubleshooting
 
@@ -97,6 +101,31 @@ Use this workflow to diagnose [Elastic Defend](/solutions/security/configure-ela
 | Why isn't this endpoint showing up in my endpoint list? | Query agent and endpoint indices for enrollment and check-in evidence; flag the root cause and remediation. |
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
 | Is there any incompatible antivirus on my managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
+
+## Combining skills across workflows [combining-skills-across-workflows]
+
+The Elastic AI Agent can use a variety of skills in one conversation. As your questions shift across domains, the agent activates the matching skill — you don't need to start over or switch agents. The following examples show common multi-skill flows and the skills each turn activates.
+
+### Alert to dashboard
+
+Start from a critical alert and end with a tracking dashboard. The [`alert-analysis`](#alert-triage-and-investigation) skill enriches the alert with related alerts, entity risk, and threat intelligence; the [`dashboard-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-dashboard-management-skill) platform skill then creates a {{kib}} dashboard to track similar activity going forward.
+
+1. **You:** What's the context on this critical alert? → `alert-analysis` activates, pulls related alerts sharing entities, checks entity risk scores, and correlates with {{elastic-sec}} Labs.
+2. **You:** Create a dashboard to track alerts like this going forward. → `dashboard-management` activates and composes a dashboard with filters matching the alert's rule, entities, and severity.
+
+### Hunt to entity profile
+
+Pivot from a hunt finding to a deeper profile of the implicated entities. The [`threat-hunting`](#threat-hunting) skill surfaces suspicious activity; the [`entity-analytics`](#entity-risk-investigation) skill then profiles the users and hosts involved.
+
+1. **You:** Hunt for lateral movement from `srv-01` in the last 7 days. → `threat-hunting` activates, runs iterative {{esql}} queries, and flags suspicious authentication and process activity tied to a specific user.
+2. **You:** Which other users and hosts are connected to that account, and what are their risk scores? → `entity-analytics` activates, returns normalized risk scores and asset criticality, and surfaces related entities from the entity store.
+
+### Detection to validation
+
+Draft a new detection rule, then validate it against historical data before enabling it. The [`detection-rule-edit`](#detection-engineering) skill creates the rule; the [`threat-hunting`](#threat-hunting) skill re-runs its query to preview how noisy the rule would have been.
+
+1. **You:** Create an {{esql}} rule that detects PowerShell downloading from external URLs. → `detection-rule-edit` activates and drafts the rule as a rule attachment with severity, risk score, and MITRE ATT&CK mappings.
+2. **You:** How many historical alerts would this rule have generated in the last 30 days? → `threat-hunting` activates, adapts the rule's query for a retrospective search, and summarizes matches so you can tune thresholds before saving the rule.
 
 ## Related pages
 
