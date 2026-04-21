@@ -113,7 +113,7 @@ Dashboard tools enable agents to create and manage [dashboards](/explore-analyze
 `dashboard.update_dashboard`
 :   Updates an existing dashboard with new panels or modifications.
 
-### Streams tools
+## Streams tools
 ```{applies_to}
 stack: ga 9.4+
 ```
