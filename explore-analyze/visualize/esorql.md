@@ -75,7 +75,7 @@ For example, the following query groups a document count by both host and file e
 
 ```esql
 FROM kibana_sample_data_logs
-| WHERE extension.keyword IS NOT NULL
+| WHERE extension.keyword != ""
 | STATS count = COUNT(*) BY host.keyword, extension.keyword
 | SORT count DESC
 ```
