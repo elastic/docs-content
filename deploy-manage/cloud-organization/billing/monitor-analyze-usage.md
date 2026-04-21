@@ -20,8 +20,7 @@ Information about your current {{ecloud}} subscription usage is available direct
 * Check the usage breakdown for a selected time range
 * View usage totals by product
 
-
-You can check the detailed usage for a selected time range grouped either by product or by instance.
+You can check the detailed usage for a selected time range grouped either by product or by resource, such as an {{ech}} deployment or a {{serverless-full}} project.
 
 To access your account usage:
 
