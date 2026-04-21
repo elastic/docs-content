@@ -48,7 +48,7 @@ When working with large datasets, complex KQL queries might cause dashboards to 
 
 Use filter pills to focus in on the specific data you want.
 
-:::{image} /explore-analyze/images/kibana-dashboard_filter_pills_8.15.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-pills.png
 :alt: Filter pills
 :screenshot:
 :width: 500px
@@ -157,7 +157,7 @@ Filter the data with one or more options that you select.
 For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
 :::
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
+:::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
 :alt: Options list control
 :screenshot:
 :::
@@ -174,7 +174,7 @@ Filter the data within a specified range of values.
 
 3. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
 :alt: Range slider control
 :screenshot:
 :::
