@@ -69,19 +69,21 @@ stack: ga 9.4
 serverless: ga
 ```
 
-On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `>` symbol in the legend (for example, `Kibana Airlines > No Delay`).
+On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `>` symbol in the legend.
 
-For example, the following query counts flights by carrier and delay type:
+When the query groups a metric by more than two fields, {{kib}} places the first field on the **Horizontal axis** and combines the remaining fields in the **Breakdown** dimension. For example, the following query counts web log visits by host, HTTP response code, and client operating system:
 
 ```esql
-FROM kibana_sample_data_flights
-| STATS flights = COUNT(*) BY Carrier, FlightDelayType
-| SORT flights DESC
+FROM kibana_sample_data_logs
+| STATS visits = COUNT(*) BY host.keyword, response.keyword, machine.os.keyword
+| SORT visits DESC
 ```
 
-By default, `Carrier` is placed on the **Horizontal axis** and `FlightDelayType` on the **Breakdown** dimension. To combine both fields in the breakdown, select **Add a field** under **Breakdown** and choose `Carrier`.
+In the resulting chart, `host.keyword` is placed on the **Horizontal axis**, while `response.keyword` and `machine.os.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `200 > osx` or `404 > win 8`.
 
-You can drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
+![Bar chart of visits per host, broken down by response code and operating system](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
+
+To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
 
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
