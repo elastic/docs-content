@@ -42,17 +42,34 @@ The engineer gets one message, investigates, fixes a slow query, and latency dro
 $$$detection-and-notification-v2$$$
 $$$runtime-execution-order$$$
 
-At runtime the chain runs left to right:
+What happens after a rule finds something depends entirely on the rule's mode.
+
+### Alert mode
+
+Use Alert mode when you want to track issues and be notified. The rule opens an episode when the condition is met and keeps it open until the condition clears.
 
 ```
-Rule → Alert → Action Policy → Workflow → Notification
+Rule runs → finds something → writes an alert event
+  → episode opens (pending → active)  → you get notified
+  → condition clears (recovering → inactive) → you get notified again
+  → action policy → workflow → notification
 ```
 
-1. A rule evaluates {{esql}} on a schedule and writes signal or alert events.
-2. In Alert mode, alert episodes track the ongoing issue from first breach through recovery.
+1. The rule evaluates {{esql}} on a schedule and writes an alert event to `.rule-events`.
+2. The alert event joins an episode, which is tracked until the condition resolves.
 3. Action policies match eligible episodes and decide whether outreach should run.
 4. Matched policies invoke configured workflows, which deliver messages or run automation steps.
 5. Notifications are the outcome (email, chat, webhook, and so on) when all prior steps pass.
+
+### Detect mode
+
+Use Detect mode when you want to record matches for querying and analysis without alerting anyone. The rule writes a signal and stops. An episode is not opened, and notifications are not sent.
+
+```
+Rule runs → finds something → writes a signal event
+  → queryable in Discover
+  → no episode, no action policy, no notification
+```
 
 $$$configuration-order$$$
 
@@ -61,34 +78,37 @@ $$$configuration-order$$$
 These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   A global saved object in a space that decides whether and how often outreach runs for matching episodes. Holds the matcher, grouping, throttle, and workflow destinations. To learn more, refer to [Notifications](kibana-alerting-v2/notifications.md).
+:   A set of rules that controls who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how alerts should be grouped, and which workflow should send the message. One action policy can apply to alerts from multiple rules. To learn more, refer to [Notifications](kibana-alerting-v2/notifications.md).
 
 **Alert**
-:   A document written to `.rule-events` when a rule in Alert mode matches. Alert documents have `type: alert` and include `episode.*` fields that tie them to the ongoing episode for that series.
+:   A rule event produced when a rule runs in Alert mode. Unlike a signal, an alert is tied to an ongoing episode and is part of the full story of that problem from when it started to when it resolved.
 
 **Breach**
-:   A single evaluation where the rule's {{esql}} query (and optional alert condition) returned a match. One breach writes one document to `.rule-events`. Multiple consecutive breaches might be required before an episode becomes active, depending on the rule's activation thresholds.
+:   A single moment when a rule's query finds a match. One breach doesn't necessarily trigger a notification. You can configure a rule to require several consecutive breaches before it confirms the problem is real.
 
 **Episode**
-:   In Alert mode, a lifecycle-tracked record that spans one full breach-to-recovery arc for a rule series. An episode moves through states (pending, active, recovering, inactive) and is what action policies match against and operators triage in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts.md).
+:   The complete record of one problem, from when it was first detected to when it recovered. An episode moves through states (pending, active, recovering, inactive) as the situation changes. This is what you see and act on in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts.md).
 
 **{{esql}}**
-:   The query language every rule uses. Data sources are declared in the query itself (for example `FROM`). To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
+:   The query language every rule uses to search your data. To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
 **Notification**
-:   A delivery produced when an episode passes through a matching action policy and its workflow destinations. To learn more, refer to [How action policies are evaluated](kibana-alerting-v2/notifications.md#how-action-policies-evaluated-v2).
+:   The message or action delivered when an alert matches an action policy and a workflow sends it. Examples include a Slack message, an email, or a webhook call. To learn more, refer to [How action policies are evaluated](kibana-alerting-v2/notifications.md#how-action-policies-evaluated-v2).
 
 **Rule**
-:   An {{esql}} query plus a schedule and related settings. The entry point for detection. To learn more, refer to [Rules](kibana-alerting-v2/rules.md).
+:   The definition of what to watch for in your data, how often to check, and what counts as a problem. Rules run on a schedule. In Detect mode they produce signals. In Alert mode they track ongoing episodes. To learn more, refer to [Rules](kibana-alerting-v2/rules.md).
+
+**Rule event**
+:   A record written to `.rule-events` every time a rule runs and its query finds a match. Every rule produces rule events. Whether the record is a signal or an alert depends on the mode the rule is running in.
 
 **Severity**
-:   Carried by convention under `data.*` and available as a policy KQL field. To learn more, refer to [Author rules](kibana-alerting-v2/rules/author-rules.md#severity-levels).
+:   A label you can attach to alerts to indicate how serious they are. Severity is available as a filter in action policies, so you can route critical alerts differently from low-priority ones. To learn more, refer to [Author rules](kibana-alerting-v2/rules/author-rules.md#severity-levels).
 
 **Signal**
-:   A point-in-time record written to `.rule-events` when a rule in Detect mode matches. Signals have `type: signal` and no `episode.*` fields. They are queryable in Discover but do not open episodes or trigger notifications.
+:   A rule event produced when a rule runs in Detect mode. Signals are stored and queryable, but they don't open episodes or trigger notifications.
 
 **Threshold**
-:   Breach logic expressed in {{esql}}, combined with activation and recovery settings on the rule. To learn more, refer to [Conditions and thresholds](kibana-alerting-v2/rules/author-rules.md#conditions-and-thresholds).
+:   The condition a rule uses to decide when something is worth alerting on. This includes both the query that detects the problem and settings that control how many times the condition must be met before an alert opens or closes. To learn more, refer to [Conditions and thresholds](kibana-alerting-v2/rules/author-rules.md#conditions-and-thresholds).
 
 **Workflow**
-:   The automation object action policies invoke to deliver messages or run steps such as email, Slack, or webhooks. To learn more, refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md).
+:   The automation that sends a message or runs an action when an action policy decides a notification should go out. Examples include posting to Slack, sending an email, or calling a webhook. To learn more, refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md).

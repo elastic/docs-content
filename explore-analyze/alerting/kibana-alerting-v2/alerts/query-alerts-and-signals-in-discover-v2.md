@@ -91,6 +91,21 @@ FROM .rule-events
 | SORT @timestamp ASC
 ```
 
+### Example: Lifecycle timeline for one episode
+
+Replace `YOUR_EPISODE_ID` with the `episode.id` value from an alert event or the alert details UI. This query returns one row per rule evaluation, ordered chronologically, so you can trace exactly how the episode moved through its lifecycle from start to finish.
+
+```esql
+// ═══════════════════════════════════════════════════════════════
+// ONE EPISODE - Full lifecycle timeline by episode.id, replace YOUR_EPISODE_ID
+// Why: Replay how an episode progressed through pending → active → recovering → inactive
+// ═══════════════════════════════════════════════════════════════
+FROM .rule-events
+| WHERE episode.id == "YOUR_EPISODE_ID"
+| KEEP @timestamp, episode.status, episode.status_count, status
+| SORT @timestamp ASC
+```
+
 ### Example: Daily breach trend
 
 ```esql

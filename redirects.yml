@@ -802,10 +802,10 @@ redirects:
   'explore-analyze/alerting/alerts/maintenance-windows.md': 'explore-analyze/alerting/kibana-alerting-v1/maintenance-windows-v1.md'
 
   # Mistaken path under alerting/ (author rules live under kibana-alerting-v2/)
-  'explore-analyze/alerting/author-rules.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+  'explore-analyze/alerting/author-rules.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
 
   # {{alerting-v2}}: authoring rules renamed to author-rules
-  'explore-analyze/alerting/kibana-alerting-v2/rules/authoring-rules.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/authoring-rules.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
 
   # {{alerting-v2}}: concepts page renamed (was how-v2-alerting-works.md)
   'explore-analyze/alerting/kibana-alerting-v2/how-v2-alerting-works.md':
@@ -815,7 +815,7 @@ redirects:
 
   # {{alerting-v2}}: authoring rules moved under rules/
   'explore-analyze/alerting/kibana-alerting-v2/authoring-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
 
   # Watcher redirects
   'explore-analyze/alerts-cases/watcher/watcher-getting-started.md': 'explore-analyze/alerting/watcher/watcher-getting-started.md'
@@ -894,38 +894,38 @@ redirects:
       'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
 
   # Kibana alerting v2: view-manage-rules merged into manage-rules.md
-  'explore-analyze/alerting/kibana-alerting-v2/manage-rules/view-manage-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules.md'
+  'explore-analyze/alerting/kibana-alerting-v2/manage-rules/view-manage-rules-v2.md':
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules-v2.md'
     anchors:
       'view-manage-rules-v2': 'manage-rules-v2'
 
   # Kibana alerting v2: child pages merged into parent hubs
   'explore-analyze/alerting/kibana-alerting-v2/manage-rules/snooze-disable-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules-v2.md'
     anchors:
       'snooze-disable-rules-v2': 'manage-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/set-up.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
   'explore-analyze/alerting/kibana-alerting-v2/get-started/before-you-begin.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
       'alerting-before-you-begin-v2': 'alerting-get-started-v2'
       'alerting-privileges-v2': 'alerting-privileges-v2'
   'explore-analyze/alerting/kibana-alerting-v2/get-started/quickstart.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
 
   'explore-analyze/alerting/kibana-alerting-v2/quickstart.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
 
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-before-you-begin-v2': 'alerting-get-started-v2'
       'alerting-privileges-v2': 'alerting-privileges-v2'
@@ -934,71 +934,71 @@ redirects:
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/core-v2-alerting-concepts.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/alerting-privileges.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/view-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'view-alerts-v2': 'manage-alerts-v2'
 
   # Kibana alerting v2: rule settings consolidated; notification policies renamed to action policies
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-types.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'rule-types-v2': 'author-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'notification-policies-v2': 'action-policies-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/create-manage-notification-policies.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'create-manage-notification-policies-v2': 'create-manage-action-policies-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/notification-policies/how-notification-policies-are-evaluated.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'how-notification-policies-evaluated-v2': 'how-action-policies-evaluated-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'action-policies-v2': 'action-policies-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/create-manage-action-policies.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'create-manage-action-policies-v2': 'create-manage-action-policies-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/how-action-policies-are-evaluated.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'how-action-policies-evaluated-v2': 'how-action-policies-evaluated-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/matcher.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'matcher-v2': 'matcher-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/grouping.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'reduce-noise-grouping-v2': 'reduce-noise-grouping-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/action-policies/throttle.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'throttle-v2': 'throttle-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/schedule-and-lookback.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'schedule-lookback-v2': 'schedule-lookback-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/activation-and-recovery-thresholds.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'activation-recovery-thresholds-v2': 'activation-recovery-thresholds-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/no-data-handling.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'no-data-handling-v2': 'no-data-handling-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/grouping.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'rule-grouping-v2': 'rule-grouping-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/maintenance-windows.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md'
     anchors:
       'maintenance-windows-v2': 'maintenance-windows-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-settings/workflows.md':
@@ -1008,77 +1008,77 @@ redirects:
 
   # Kibana alerting v2: reduce-noise pages merged into rule settings, action policies, manage-alerts
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/matcher.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'matcher-v2': 'matcher-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/grouping.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'reduce-noise-grouping-v2': 'reduce-noise-grouping-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/throttle.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
     anchors:
       'throttle-v2': 'throttle-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/activation-thresholds.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'activation-thresholds-v2': 'activation-recovery-thresholds-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/recovery-thresholds.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'recovery-thresholds-v2': 'activation-recovery-thresholds-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/no-data-handling.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
     anchors:
       'reduce-noise-no-data-v2': 'no-data-handling-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/maintenance-windows.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md'
     anchors:
       'maintenance-windows-v2': 'maintenance-windows-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/snooze-or-silence.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'snooze-or-silence-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/snooze-or-silence.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'snooze-or-silence-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/deactivate-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'deactivate-alerts-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/deactivate-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'deactivate-alerts-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-actions.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'alert-actions-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-episode-details.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'alert-episode-details-v2': 'alert-episode-details-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/rules-on-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'reduce-noise-rules-on-alerts-v2': 'author-rules-v2'
 
   # Kibana alerting v2: author-rules pages folded into author-rules.md / rule-settings.md
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/set-rule-data-sources.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'set-rule-data-sources-v2': 'author-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rules-on-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'rules-on-alerts-v2': 'author-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/production-considerations.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'production-considerations-v2': 'author-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules/rule-templates.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'rule-templates-v2': 'rule-templates-v2'
 
@@ -1117,38 +1117,38 @@ redirects:
       'runtime-execution-order': 'runtime-execution-order'
       'configuration-order': 'configuration-order'
   'explore-analyze/alerting/kibana-alerting-v2/get-starting.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-set-up-v2': 'alerting-set-up-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerting-privileges.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
     anchors:
       'alerting-privileges-v2': 'alerting-privileges-v2'
   'explore-analyze/alerting/kibana-alerting-v2/author-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'author-rules-v2': 'author-rules-v2'
       'esql-query-structure': 'esql-query-structure'
   'explore-analyze/alerting/kibana-alerting-v2/manage-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules-v2.md'
     anchors:
       'manage-rules-v2': 'manage-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'manage-alerts-v2': 'manage-alerts-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'investigate-respond-v2': 'investigate-respond-v2'
       'alert-actions-v2': 'alert-actions-v2'
       'alert-episode-details-v2': 'alert-episode-details-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/explore-alerts-discover.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md'
     anchors:
       'explore-alerts-discover-v2': 'explore-alerts-discover-v2'
   'explore-analyze/alerting/kibana-alerting-v2/send-notifications.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'send-notifications-v2': 'how-action-policies-evaluated-v2'
       'action-policies-v2': 'action-policies-v2'
@@ -1158,60 +1158,60 @@ redirects:
       'throttle-v2': 'throttle-v2'
       'create-manage-action-policies-v2': 'create-manage-action-policies-v2'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/how-action-policies-work.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/about-action-policies.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/configure-action-policy.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/create-action-policy.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/rules/about-rules.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/rules/how-rules-work.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/rules/write-a-rule.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
     anchors:
       'author-rules-v2': 'author-rules-v2'
       'esql-query-structure': 'esql-query-structure'
   'explore-analyze/alerting/kibana-alerting-v2/rules/create-rules-ui.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md'
     anchors:
       'create-rules-ui-v2': 'create-rules-ui-v2'
   'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-ui.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md'
     anchors:
       'create-rules-ui-v2': 'create-rules-ui-v2'
   'explore-analyze/alerting/kibana-alerting-v2/rules/create-rules-discover.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-discover.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-discover-v2.md'
     anchors:
       'create-rules-discover-v2': 'create-rules-discover-v2'
   'explore-analyze/alerting/kibana-alerting-v2/rules/create-rules-yaml.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-with-yaml.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-with-yaml-v2.md'
     anchors:
       'create-rules-yaml-v2': 'create-rules-yaml-v2'
   'explore-analyze/alerting/kibana-alerting-v2/rules/rule-reference.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference-v2.md'
     anchors:
       'rule-reference-v2': 'rule-reference-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/about-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-lifecycle.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md'
     anchors:
       'alert-lifecycle-v2': 'alert-lifecycle-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'manage-alerts-v2': 'manage-alerts-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/investigate-respond.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
     anchors:
       'investigate-respond-v2': 'investigate-respond-v2'
       'alert-actions-v2': 'alert-actions-v2'
       'alert-episode-details-v2': 'alert-episode-details-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-reference.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md'
     anchors:
       'alert-states-reference-v2': 'alert-states-reference-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise.md':
@@ -1251,11 +1251,11 @@ redirects:
       'reduce-noise-v2': 'reduce-noise-v2'
       'using-them-together': 'using-them-together'
   'explore-analyze/alerting/kibana-alerting-v2/troubleshooting/error-messages-reference.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
     anchors:
       'error-messages-reference': 'possible-outcomes'
   'explore-analyze/alerting/kibana-alerting-v2/alert-event-field-reference.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference-v2.md'
     anchors:
       'alert-event-field-reference-v2': 'rule-reference-v2'
 
@@ -1284,3 +1284,21 @@ redirects:
   'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
   'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
   'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
+  # alerting-v2 file renames: appended -v2 suffix to all page filenames
+  'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/author-rules-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/configure-a-rule-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-discover-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-discover-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-with-yaml-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/create-rule-with-yaml-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/rule-event-field-reference-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules/view-manage-rules-v2.md'
