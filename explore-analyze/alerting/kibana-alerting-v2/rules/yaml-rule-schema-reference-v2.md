@@ -11,7 +11,7 @@ description: "Complete field reference for {{alerting-v2}} YAML rule definitions
 
 $$$yaml-rule-schema-reference-v2$$$
 
-This page lists every valid field for a {{alerting-v2}} YAML rule definition. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
+This page lists every valid field for a {{alerting-v2}} YAML rule definition. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml-v2.md).
 
 ## Required fields
 

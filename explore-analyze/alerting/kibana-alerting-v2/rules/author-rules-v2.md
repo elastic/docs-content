@@ -13,7 +13,7 @@ $$$author-rules-v2$$$
 
 Every {{alerting-v2}} rule is an {{esql}} query. Instead of choosing from a catalog of fixed rule types, you write {{esql}} directly. Describe what to look for, what counts as a breach, and which fields to store on each event.
 
-This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder.md), [YAML editor](create-rule-with-yaml.md), or [a Discover session](create-rule-from-discover.md).
+This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule-v2.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder-v2.md), [YAML editor](create-rule-with-yaml-v2.md), or [a Discover session](create-rule-from-discover-v2.md).
 
 ## Choose a rule mode
 

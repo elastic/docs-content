@@ -41,4 +41,4 @@ The policy evaluates matchers and throttling before any workflow step runs, even
    Only manual triggers are supported. 
    :::
 
-2. Create an action policy under [Notifications](notifications.md) that references the workflow as a destination. Refer to [Create and configure an action policy](notifications/create-configure-action-policy.md).
+2. Create an action policy under [Notifications](notifications-v2.md) that references the workflow as a destination. Refer to [Create and configure an action policy](notifications/create-configure-action-policy-v2.md).

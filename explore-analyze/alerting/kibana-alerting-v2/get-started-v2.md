@@ -56,6 +56,6 @@ For {{kib}} feature access and {{es}} index privilege requirements, refer to [{{
 
 When you are ready to go further, your next steps depend on what you want to set up first. These can be done in any order:
 
-- [Author rules](rules/author-rules.md): Write the {{esql}} query that defines what to detect, choose Detect or Alert mode, and set up grouping and thresholds in [Configure a rule](rules/configure-a-rule.md).
+- [Author rules](rules/author-rules-v2.md): Write the {{esql}} query that defines what to detect, choose Detect or Alert mode, and set up grouping and thresholds in [Configure a rule](rules/configure-a-rule-v2.md).
 - [Set up workflows](workflows-alerting-v2.md): Configure the automation objects that deliver messages (email, Slack, webhook). You'll need at least one workflow before action policies can send anything.
-- [Create action policies](notifications/create-configure-action-policy.md): Define who gets notified, how often, and under what conditions. Policies use KQL matchers to pick up the right episodes and route them to your workflows.
+- [Create action policies](notifications/create-configure-action-policy-v2.md): Define who gets notified, how often, and under what conditions. Policies use KQL matchers to pick up the right episodes and route them to your workflows.

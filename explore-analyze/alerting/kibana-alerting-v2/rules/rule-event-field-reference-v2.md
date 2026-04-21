@@ -11,7 +11,7 @@ description: "Reference for {{alerting-v2}} rule configuration fields and docume
 
 $$$rule-reference-v2$$$
 
-This page lists technical fields for rule configuration and rule event documents written to `.rule-events`. For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference-v2). For action policy dispatch outcomes, see [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference-v2).
+This page lists technical fields for rule configuration and rule event documents written to `.rule-events`. For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference-v2.md#alert-states-reference-v2). For action policy dispatch outcomes, see [Action policy reference](../notifications/action-policy-reference-v2.md#action-policy-reference-v2).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through ILM. Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
@@ -74,7 +74,7 @@ Each time a rule evaluates, {{kib}} writes one document per matched series to `.
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
 
 :::{note}
-`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To see the full history of an episode, query all documents that share the same `episode.id`. See [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover-v2) for example queries.
+`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To see the full history of an episode, query all documents that share the same `episode.id`. See [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2) for example queries.
 :::
 
 ### Signal and alert fields
@@ -94,7 +94,7 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 | type | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
 :::{admonition} Fields not stored as a dedicated column
-There is no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover-v2), the alert UI, or your own queries over timestamps and episode identifiers.
+There is no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2), the alert UI, or your own queries over timestamps and episode identifiers.
 :::
 
 ### Episode fields

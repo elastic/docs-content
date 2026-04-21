@@ -11,7 +11,7 @@ description: "API values, Dispatch per and Frequency UI mappings, dispatch outco
 
 $$$action-policy-reference-v2$$$
 
-Condensed tables for matchers, grouping, throttling, and dispatch outcomes. For step-by-step policy creation and narrative guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
+Condensed tables for matchers, grouping, throttling, and dispatch outcomes. For step-by-step policy creation and narrative guidance, refer to [Create and configure an action policy](create-configure-action-policy-v2.md).
 
 ## Matcher fields (typical KQL) [matcher-fields-typical-kql]
 

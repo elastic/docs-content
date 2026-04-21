@@ -11,7 +11,7 @@ description: "How {{alerting-v2}} action policies route alert episodes to notifi
 
 After a rule produces alert episodes, action policies decide what to do about them: who gets notified, how often, and through which channel.
 
-This page explains how action policies work. For creating and configuring them step by step, refer to [Create and configure an action policy](notifications/create-configure-action-policy.md).
+This page explains how action policies work. For creating and configuring them step by step, refer to [Create and configure an action policy](notifications/create-configure-action-policy-v2.md).
 
 ## What is an action policy [action-policies-v2]
 
@@ -69,7 +69,7 @@ This design means:
 - You can update routing without touching any rule.
 - Rules can be created without any notification policy, which is useful for testing.
 
-When you're ready to route notifications, go to [Create and configure an action policy](notifications/create-configure-action-policy.md).
+When you're ready to route notifications, go to [Create and configure an action policy](notifications/create-configure-action-policy-v2.md).
 
 $$$matcher-v2$$$
 $$$reduce-noise-grouping-v2$$$

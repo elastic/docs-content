@@ -28,7 +28,7 @@ inactive → pending → active → recovering → inactive
 | Active | Problem confirmed and ongoing. This is when you get notified. |
 | Recovering | Errors have stopped, but the system is waiting to confirm it's truly resolved. |
 
-Activation and recovery thresholds control how many consecutive evaluations must agree, or how long the condition must persist, before transitioning. Refer to [Configure a rule](rules/configure-a-rule.md#activation-recovery-thresholds-v2) to learn more about these settings.
+Activation and recovery thresholds control how many consecutive evaluations must agree, or how long the condition must persist, before transitioning. Refer to [Configure a rule](rules/configure-a-rule-v2.md#activation-recovery-thresholds-v2) to learn more about these settings.
 
 ### Alert episode example
 
@@ -102,13 +102,13 @@ The **Alerts** page (**{{manage-app}} > V2 Alerting Preview > Alerts**) shows th
 
 Both `.rule-events` and `.alert-actions` are data streams, append-only, time-series stores optimized for writes. On every rule evaluation, {{kib}} writes a **new document** to `.rule-events` rather than updating the previous one. Each document is a point-in-time snapshot. The `episode.status` field records the lifecycle state the episode was in at that exact evaluation. Nothing is overwritten.
 
-Because every evaluation produces its own document, you can reconstruct the full history of an episode by querying all documents that share the same `episode.id`. Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover-v2) for example queries.
+Because every evaluation produces its own document, you can reconstruct the full history of an episode by querying all documents that share the same `episode.id`. Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2) for example queries.
 
 Retention is managed automatically through ILM. Older backing indices move through storage tiers and are deleted when the retention window expires. You do not need to manually remove documents. {{kib}} manages versioning, retention, and lifecycle for both streams. Do not change their mappings or index settings.
 
 ## Where to go next
 
-- [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
-- [Alert states and fields reference](alerts/alert-states-and-fields-reference.md): Look up lifecycle states, field names, and episode document structure.
-- [Notifications](notifications.md): Set up action policies to route alert episodes to the right people and channels.
+- [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
+- [Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md): Look up lifecycle states, field names, and episode document structure.
+- [Notifications](notifications-v2.md): Set up action policies to route alert episodes to the right people and channels.

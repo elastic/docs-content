@@ -297,5 +297,6 @@ subs:
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
   alerting-v2: "Kibana alerting v2"
+  rules-ui:   "Rules"
   rules-ui-v2:   "Rules"
   alerts-ui:  "Alert episodes"

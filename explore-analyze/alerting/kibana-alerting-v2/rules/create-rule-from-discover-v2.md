@@ -11,7 +11,7 @@ description: "Turn an {{esql}} query in Discover into a {{alerting-v2}} rule wit
 
 $$$create-rules-discover-v2$$$
 
-Create {{alerting-v2}} rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including preview, alert mode settings, and YAML toggle, see [Create rules using the rule builder](create-rule-from-rule-builder.md).
+Create {{alerting-v2}} rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including preview, alert mode settings, and YAML toggle, see [Create rules using the rule builder](create-rule-from-rule-builder-v2.md).
 
 :::{admonition} What gets pre-populated
 When you create a rule from Discover:
@@ -29,5 +29,5 @@ You can modify any of these values in the rule form before saving.
 2. Write and run an {{esql}} query that returns the data you want to monitor.
 3. Open the **Rules** menu on the Discover toolbar and choose **Create v2 ES|QL rule**.
 4. The rule creation form opens with the {{esql}} query pre-populated in the evaluation field.
-5. Configure the remaining rule settings. For details on each setting, see [Configure a rule](configure-a-rule.md).
+5. Configure the remaining rule settings. For details on each setting, see [Configure a rule](configure-a-rule-v2.md).
 6. Click **Save**.

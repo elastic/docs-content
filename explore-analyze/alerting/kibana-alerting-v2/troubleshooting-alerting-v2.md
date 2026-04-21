@@ -38,11 +38,11 @@ A rule runs on schedule but you see no new documents in `.rule-events`, no episo
 ### Resolution
 
 - **Enable** the rule if it was disabled.
-- Tighten or broaden the {{esql}}, fix `FROM`, or adjust the **alert condition** so it reflects the signal you want. Cross-reference [Author rules](rules/author-rules.md).
-- Set **lookback** to at least the **schedule** interval unless you intentionally accept gaps; see [Configure a rule](rules/configure-a-rule.md#schedule-lookback-v2).
-- Switch to **Alert** mode when you need episodes and policy matching; see [Rules](rules.md#detection-and-notification-v2).
-- Restore **index privileges** or **rotate the rule API key** after privilege changes; see [Get started](get-started.md#alerting-privileges-v2).
-- Ask an administrator to confirm {{alerting-v2}} is enabled and navigation labels for your version; see [Set up and verify](get-started.md#alerting-set-up-v2).
+- Tighten or broaden the {{esql}}, fix `FROM`, or adjust the **alert condition** so it reflects the signal you want. Cross-reference [Author rules](rules/author-rules-v2.md).
+- Set **lookback** to at least the **schedule** interval unless you intentionally accept gaps; see [Configure a rule](rules/configure-a-rule-v2.md#schedule-lookback-v2).
+- Switch to **Alert** mode when you need episodes and policy matching; see [Rules](rules-v2.md#detection-and-notification-v2).
+- Restore **index privileges** or **rotate the rule API key** after privilege changes; see [Get started](get-started-v2.md#alerting-privileges-v2).
+- Ask an administrator to confirm {{alerting-v2}} is enabled and navigation labels for your version; see [Set up and verify](get-started-v2.md#alerting-set-up-v2).
 
 ### Still not working?
 
@@ -80,21 +80,21 @@ Alert episodes appear active in the UI or in `.rule-events`, but no email, chat,
 1. Open **Action policies** in the same **{{kib}} space** as the rule.
 2. For each policy that should apply, confirm **Status** is enabled and not snoozed.
 3. Open the policy **matcher** and validate KQL against a sample episode payload (`data.*`, `rule.*`, episode status fields). An empty matcher matches all episodes subject to other controls.
-4. Read [How action policies work](notifications.md#how-action-policies-evaluated-v2) and map your episode to suppression, matcher, grouping, and throttle steps.
-5. Query `.alert-actions` for `action.type` of `unmatched`, `throttled`, or `suppressed` for the episode id; see [Alert states and fields reference](alerts/alert-states-and-fields-reference.md#alert-states-reference-v2).
+4. Read [How action policies work](notifications-v2.md#how-action-policies-evaluated-v2) and map your episode to suppression, matcher, grouping, and throttle steps.
+5. Query `.alert-actions` for `action.type` of `unmatched`, `throttled`, or `suppressed` for the episode id; see [Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
 
 **If you suspect workflow attachment or workflow health**
 
 1. Open the policy and confirm **at least one** `workflow` destination is selected.
 2. Open **[LINK: Core Workflows Documentation]** for each workflow id and verify the workflow is published, credentials are valid, and channel steps succeed in test runs.
 3. Confirm your account can read the workflow objects referenced by the policy (privilege escalation guard); see [Action policy management](alerting-v2-privileges.md).
-4. After policy edits, allow a short delay for **API key invalidation** cycles described in [Manage action policies](notifications/manage-action-policies.md).
+4. After policy edits, allow a short delay for **API key invalidation** cycles described in [Manage action policies](notifications/manage-action-policies-v2.md).
 
 ### Resolution
 
 - Broaden or fix the **matcher**; align field names with the matcher editor suggestions.
 - **Enable** the policy or clear **snooze** when you intend dispatch to resume.
-- Adjust **Frequency** and **Dispatch per** so reminders can send when you expect; see [Create and configure an action policy](notifications/create-configure-action-policy.md#throttle-v2).
+- Adjust **Frequency** and **Dispatch per** so reminders can send when you expect; see [Create and configure an action policy](notifications/create-configure-action-policy-v2.md#throttle-v2).
 - Respect **maintenance windows** and episode **snooze** semantics; adjust windows or triage state if dispatch should resume.
 - Add or repair **workflow destinations** on the policy, then re-test from [Workflows for {{alerting-v2}}](workflows-alerting-v2.md).
 - Fix workflow configuration using **[LINK: Core Workflows Troubleshooting]**.
@@ -102,7 +102,7 @@ Alert episodes appear active in the UI or in `.rule-events`, but no email, chat,
 
 ### Still not working?
 
-If `.alert-actions` shows `error`, use [Possible outcomes](notifications.md#possible-outcomes) for dispatcher outcome values and check {{kib}} server logs around evaluation timestamps. If outcomes are `unmatched` after matcher fixes, continue with [Action policy not triggering](#action-policy-not-triggering).
+If `.alert-actions` shows `error`, use [Possible outcomes](notifications-v2.md#possible-outcomes) for dispatcher outcome values and check {{kib}} server logs around evaluation timestamps. If outcomes are `unmatched` after matcher fixes, continue with [Action policy not triggering](#action-policy-not-triggering).
 
 ## Action policy not triggering [action-policy-not-triggering]
 
@@ -123,7 +123,7 @@ Episodes exist but policies appear to ignore them: repeated `unmatched` outcomes
 1. Confirm the rule and policy are listed under the **same space**.
 2. Inspect the policy **matcher** text and compare to fields visible on a recent `.rule-events` document for the episode (`data.*`, `rule.*`, status fields).
 3. Confirm the policy is **enabled** and not **snoozed**.
-4. Review triage actions on the episode for **snooze** or **suppress** patterns; see [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts.md#alert-actions-v2).
+4. Review triage actions on the episode for **snooze** or **suppress** patterns; see [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2).
 5. Query `.alert-actions` for the episode id and read `action.type` values chronologically.
 
 ### Resolution
@@ -182,8 +182,8 @@ The underlying metric or log pattern looks healthy, but the episode remains **ac
 
 ### Diagnostic Steps
 
-1. Open the rule **configuration** and read **activation and recovery** settings; see [Configure a rule](rules/configure-a-rule.md#activation-recovery-thresholds-v2).
-2. Read **no-data** behavior for the rule; see [Configure a rule](rules/configure-a-rule.md#no-data-handling-v2).
+1. Open the rule **configuration** and read **activation and recovery** settings; see [Configure a rule](rules/configure-a-rule-v2.md#activation-recovery-thresholds-v2).
+2. Read **no-data** behavior for the rule; see [Configure a rule](rules/configure-a-rule-v2.md#no-data-handling-v2).
 3. In Discover, query `.rule-events` for the episode’s `group_hash` and sort ascending by `@timestamp` to replay status transitions.
 4. Compare **UI status** with raw `episode.status` fields for the latest rows.
 
@@ -213,7 +213,7 @@ Episodes open or close at surprising times, notifications repeat, multiple polic
 ### Diagnostic Steps
 
 1. Use the decision framing from [Validation checklist](#reduce-noise-v2) to decide whether to tune the rule, thresholds, matchers, throttles, or triage actions.
-2. Re-read [How action policies work](notifications.md#how-action-policies-evaluated-v2) for independent policy evaluation and `unmatched` behavior.
+2. Re-read [How action policies work](notifications-v2.md#how-action-policies-evaluated-v2) for independent policy evaluation and `unmatched` behavior.
 3. Compare **rule evaluation timestamps** in `.rule-events` with **dispatcher-driven** outcomes in `.alert-actions`.
 
 ### Resolution
@@ -228,10 +228,10 @@ Escalate with exported Discover queries for `.rule-events` and `.alert-actions`,
 
 {{alerting-v2}} offers many ways to reduce noise. Controls live in three places:
 
-- **[Configure a rule](rules/configure-a-rule.md)**: Thresholds, no-data handling, rule-level grouping, and related evaluation settings.
-- **[Manage action policies](notifications/manage-action-policies.md)**: Enablement, snooze, **{{maint-windows-cap}}**, and bulk policy actions that affect dispatch.
-- **[Notifications (Action Policies)](notifications.md)**: Action policies: matchers, Dispatch per, Frequency, destinations, and dispatcher behavior.
-- **[View, manage, and reference alerts](alerts/view-manage-and-reference-alerts.md)**: Snooze, acknowledge, deactivate, tags, and anything persisted in **`.alert-actions`**.
+- **[Configure a rule](rules/configure-a-rule-v2.md)**: Thresholds, no-data handling, rule-level grouping, and related evaluation settings.
+- **[Manage action policies](notifications/manage-action-policies-v2.md)**: Enablement, snooze, **{{maint-windows-cap}}**, and bulk policy actions that affect dispatch.
+- **[Notifications (Action Policies)](notifications-v2.md)**: Action policies: matchers, Dispatch per, Frequency, destinations, and dispatcher behavior.
+- **[View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md)**: Snooze, acknowledge, deactivate, tags, and anything persisted in **`.alert-actions`**.
 
 This section is a decision table so you can match a situation to the right mechanism. Deep content lives on the pages above.
 
@@ -241,17 +241,17 @@ If multiple rows in the table apply, refer to [Using them together](#using-them-
 
 | Your situation | Use this | What it does |
 |---|---|---|
-| The {{esql}} query matches too much normal traffic with too many breaching rows | [Author rules](rules/author-rules.md) | Narrows the query, `WHERE` clause, schedule, or lookback so evaluations only surface what matters |
-| Short spikes or flapping metrics open alerts before they should | [Activation and recovery thresholds](rules/configure-a-rule.md#activation-recovery-thresholds-v2) | Requires consecutive breaches or a minimum duration before an episode becomes active |
-| The alert recovers and reopens too often, flapping | [Activation and recovery thresholds](rules/configure-a-rule.md#activation-recovery-thresholds-v2) | Requires sustained clear conditions before an episode leaves recovering |
-| The query returns no rows and no_data or recovery behavior is misleading | [No-data handling](rules/configure-a-rule.md#no-data-handling-v2) | Configures how empty results are interpreted so gaps do not look like false recoveries or false alerts |
-| Notifications repeat for the same group on every evaluation | [Throttling on action policies](notifications/create-configure-action-policy.md#throttle-v2) | Enforces a minimum interval between notifications per notification group |
-| Recipients get too many separate messages for related episodes | [Notification grouping on action policies](notifications/create-configure-action-policy.md#reduce-noise-grouping-v2) | Batches related alerts into fewer notifications |
-| Notifications should only go out for certain episodes by severity, labels, or payload fields | [Matchers](notifications/create-configure-action-policy.md#matcher-v2) | Uses KQL on the action policy over episode and rule context (for example `rule.labels` and payload fields) so only matching episodes route to workflows |
-| Planned maintenance: evaluations should continue but on-call should not be paged | [{{maint-windows-cap}}](notifications/manage-action-policies.md#maintenance-windows-v2) | Pauses policy dispatch for a scheduled window; rule evaluation continues |
-| A temporary quiet period is needed for a series or episode without changing the rule | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts.md#alert-actions-v2) (snooze, silence, acknowledge) | Snoozes or silences notifications. Acknowledge can also quiet an episode while work proceeds |
-| Many low-level alerts should roll up into one higher-level signal | [Author rules](rules/author-rules.md) ({{esql}} over `.rule-events`) | Runs follow-on rules on `.rule-events` or related data to correlate and notify once |
-| One alert episode should stop notifying and leave the triage queue while the rule keeps running | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts.md#alert-actions-v2) (deactivate / resolve) | Deactivates that episode. The rule still evaluates and can detect new episodes for other series |
+| The {{esql}} query matches too much normal traffic with too many breaching rows | [Author rules](rules/author-rules-v2.md) | Narrows the query, `WHERE` clause, schedule, or lookback so evaluations only surface what matters |
+| Short spikes or flapping metrics open alerts before they should | [Activation and recovery thresholds](rules/configure-a-rule-v2.md#activation-recovery-thresholds-v2) | Requires consecutive breaches or a minimum duration before an episode becomes active |
+| The alert recovers and reopens too often, flapping | [Activation and recovery thresholds](rules/configure-a-rule-v2.md#activation-recovery-thresholds-v2) | Requires sustained clear conditions before an episode leaves recovering |
+| The query returns no rows and no_data or recovery behavior is misleading | [No-data handling](rules/configure-a-rule-v2.md#no-data-handling-v2) | Configures how empty results are interpreted so gaps do not look like false recoveries or false alerts |
+| Notifications repeat for the same group on every evaluation | [Throttling on action policies](notifications/create-configure-action-policy-v2.md#throttle-v2) | Enforces a minimum interval between notifications per notification group |
+| Recipients get too many separate messages for related episodes | [Notification grouping on action policies](notifications/create-configure-action-policy-v2.md#reduce-noise-grouping-v2) | Batches related alerts into fewer notifications |
+| Notifications should only go out for certain episodes by severity, labels, or payload fields | [Matchers](notifications/create-configure-action-policy-v2.md#matcher-v2) | Uses KQL on the action policy over episode and rule context (for example `rule.labels` and payload fields) so only matching episodes route to workflows |
+| Planned maintenance: evaluations should continue but on-call should not be paged | [{{maint-windows-cap}}](notifications/manage-action-policies-v2.md#maintenance-windows-v2) | Pauses policy dispatch for a scheduled window; rule evaluation continues |
+| A temporary quiet period is needed for a series or episode without changing the rule | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2) (snooze, silence, acknowledge) | Snoozes or silences notifications. Acknowledge can also quiet an episode while work proceeds |
+| Many low-level alerts should roll up into one higher-level signal | [Author rules](rules/author-rules-v2.md) ({{esql}} over `.rule-events`) | Runs follow-on rules on `.rule-events` or related data to correlate and notify once |
+| One alert episode should stop notifying and leave the triage queue while the rule keeps running | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2) (deactivate / resolve) | Deactivates that episode. The rule still evaluates and can detect new episodes for other series |
 
 Use the links in the table for procedures and reference detail on each control.
 
