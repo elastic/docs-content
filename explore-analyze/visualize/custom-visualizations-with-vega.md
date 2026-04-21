@@ -1323,6 +1323,52 @@ When using `"%context%": true` or defining a value for `"%timefield%"` the body 
 The `"%timefilter%"` can also be used to specify a single min or max value. The date_histogram’s `extended_bounds` can be set with two values - min and max. Instead of hardcoding a value, you may use `"min": {"%timefilter%": "min"}`, which will be replaced with the beginning of the current time range. The `shift` and `unit` values are also supported. The `"interval"` can also be set dynamically, depending on the currently picked range: `"interval": {"%autointerval%": 10}` will try to get about 10-15 data points (buckets).
 
 
+##### Writing {{esql}} queries in Vega [vega-esql-queries]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+To use an [{{esql}}](../query-filter/languages/esql-kibana.md) query as a data source, set `%type%` to `esql` in the `url` object and provide your query in the `query` parameter. {{esql}} queries work in both **Vega** and **Vega-Lite** visualizations.
+
+```yaml
+data: [{
+  name: my_data
+  url: {
+    %type%: esql
+    query: "FROM kibana_sample_data_logs | STATS count=COUNT()"
+  }
+}]
+```
+
+The `url` object supports the following parameters:
+
+| Parameter | Description |
+|-----------|-------------|
+| `%type%` | Set to `esql` to use the {{esql}} parser. |
+| `query` | The {{esql}} query to run. Required. |
+| `%context%` | When set to `true`, applies the dashboard filters to the query. |
+| `%timefield%` | When set, enables the `?_tstart` and `?_tend` named parameters in the query. These parameters are replaced with the start and end of the dashboard time range. |
+| `dropNullColumns` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
+| `params` | An array of named parameter objects to substitute into the query. |
+
+To integrate the query with the dashboard filters and time range, set `%context%` to `true`, specify the `%timefield%`, and reference `?_tstart` and `?_tend` in the query:
+
+```yaml
+data: [{
+  name: filtered_count
+  url: {
+    %type%: esql
+    %context%: true
+    %timefield%: "@timestamp"
+    query: "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS total=COUNT()"
+  }
+}]
+```
+
+The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
+
+
 #### Access Elastic Map Service files [vega-esmfiles]
 ```{applies_to}
 stack: preview
