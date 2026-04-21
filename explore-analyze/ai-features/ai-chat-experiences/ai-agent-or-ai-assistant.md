@@ -67,15 +67,16 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 | :--- | :---: | :---: |
 | **Knowledge Base** | ❌ | ✅ |
 | **Data anonymization** | ❌ | ✅ |
-| **Time awareness** | ❌ | ✅ |
+| **Time awareness** | ✅ | ✅ |
 | **Chat sharing** | ❌ | ✅ |
-| **Citations** | ❌ | ✅ |
-| **Audit logging** | ❌ | ✅ |
+| **Citations** | Partial | ✅ |
+| **Audit logging** | Partial | ✅ |
 | **Quick prompts** | Partial | ✅ |
 | **In-chat previews of attached data** | ❌ | ✅ |
 | **AI insights** | ✅ | ✅ |
 | **Use-case specific skills** | ✅ | ❌ |
 | **Modular skills** | ✅ | ❌ |
+| **Custom skill creation** | ✅ | ❌ |
 | **Custom agent creation** | ✅ | ❌ |
 | **Custom tool selection** | ✅ | ❌ |
 | **Integration with Elastic workflows** | ✅ | ❌ |
