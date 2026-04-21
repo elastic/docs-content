@@ -69,7 +69,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `>` symbol in the legend.
+On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `›` separator in the legend.
 
 When the query groups a metric by more than two fields, {{kib}} places the first field on the **Horizontal axis** and combines the remaining fields in the **Breakdown** dimension. For example, the following query counts web log visits by host, HTTP response code, and client operating system:
 
@@ -79,7 +79,7 @@ FROM kibana_sample_data_logs
 | SORT visits DESC
 ```
 
-In the resulting chart, `host.keyword` is placed on the **Horizontal axis**, while `response.keyword` and `machine.os.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `200 > osx` or `404 > win 8`.
+In the resulting chart, `host.keyword` is placed on the **Horizontal axis**, while `response.keyword` and `machine.os.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `200 › osx` or `404 › win 8`.
 
 ![Bar chart of visits per host, broken down by response code and operating system](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
 
