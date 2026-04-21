@@ -40,7 +40,7 @@ serverless:
 
 You can pass a detection rule into the Agent Builder chat so you can ask questions about it, get suggestions for improving rule fields, or request an appropriate investigation guide, without copying and pasting rule content between the UI and the chat. Open Agent Builder with a rule in context from any of these places:
 
-- **AI rule creation**: On the [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md) page, choose **Create a rule** → **AI rule creation**. The flyout opens with an empty rule attachment and a prefilled prompt for an {{esql}} detection rule with the main rule fields. You can edit the prompt before sending the message.
+- **AI rule creation**: On the [Detection rules (SIEM)](/solutions/security/detect-and-alert/manage-detection-rules.md) page, choose **Create a rule > AI rule creation**. The flyout opens with an empty rule attachment and a prefilled prompt for an {{esql}} detection rule with the main rule fields. You can edit the prompt before sending the message.
 - **Rule details**: Open a rule from the list, then use **Add to chat** on the rule details page.
 - **Rule form (create or edit)**: While [creating](/solutions/security/detect-and-alert/using-the-rule-ui.md) or [editing](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-single-rule) a rule, use **Add to chat** to send the current rule draft.
 - **Alerts flyout**: Open an alert, expand the rule summary in the flyout, then use **Add to chat**.
