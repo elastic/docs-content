@@ -1358,7 +1358,7 @@ The `url` object supports the following parameters:
 
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
-The following complete **Vega-Lite** example charts document counts over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](../index.md#gs-get-data-into-kibana), open a new custom visualization on a dashboard, and paste the spec:
+The following example creates a metric that counts documents over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
 
 ```json
 {
