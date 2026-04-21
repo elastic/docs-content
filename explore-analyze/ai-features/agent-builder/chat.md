@@ -193,10 +193,8 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 **Skills**
 :   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them. For how skills work and how to manage them, refer to [Skills in {{agent-builder}}](skills.md).
 
-<!--
 **Plugins**
-:   TODO Will be added in an other PR
--->
+:   Lists the plugins assigned to the current agent. 
 
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
@@ -212,7 +210,7 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 stack: ga 9.4+
 ```
 
-The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, and tools available across the deployment.
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
 :   View all agents in the deployment. The list displays each agent's name, visibility badge (**Public**, **Shared**, or **Read-only**), and any custom labels. From this page, you can create new agents, edit existing ones, or start a chat.
@@ -220,14 +218,11 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
 
-<!--
 **Plugins**
-:   TODO Will be added in an other PR
+:   View and install plugins for the deployment so you can assign their bundled skills and capabilities to agents.
 
 **Connectors**
-:   TODO Will be added in an other PR
-
--->
+:   View and manage {{kib}} connectors for GenAI and related features, including LLM providers and other integrations agents and tools use.
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.
