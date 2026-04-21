@@ -96,7 +96,7 @@ A rule in Detect mode only writes signals. It never opens episodes, so action po
 
 Alert events are stored in `.rule-events`. Triage actions (acknowledge, snooze, resolve) are stored in `.alert-actions`. Both are queryable in Discover.
 
-The **{{alerts-ui}}** page (**{{manage-app}} > V2 Alerting Preview > Alerts**) shows the current state of every episode in your space, filterable by rule, status, and tags.
+The **Alerts** page (**{{manage-app}} > V2 Alerting Preview > Alerts**) shows the current state of every episode in your space, filterable by rule, status, and tags.
 
 ### Data stream storage and retention
 

@@ -17,26 +17,24 @@ description: "How {{alerting-v2}} watches your data, turns conditions into signa
 
 ## The four building blocks
 
-## The four building blocks
-
-{{alerting-v2}} is built around four objects — rules, alerts, action policies, and workflows — each with a distinct role.
+{{alerting-v2}} is built around four objects, rules, alerts, action policies, and workflows, each with a distinct role.
 
 ### Rules
 A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes:
 
-- **Detect mode** — the rule records what it finds, but doesn't track whether the problem is ongoing or send any notifications. Use this for observation and investigation.
-- **Alert mode** — the rule tracks problems over time and can trigger notifications when something needs attention.
+- **Detect mode** - The rule records what it finds, but doesn't track whether the problem is ongoing or send any notifications. Use this for observation and investigation.
+- **Alert mode** - The rule tracks problems over time and can trigger notifications when something needs attention.
 
 Refer to [Rules](kibana-alerting-v2/rules-v2.md) to learn more.
 
 ### Alerts
-When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot — it's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts in the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts-v2.md) to learn more.
+When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot. It's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts in the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts-v2.md) to learn more.
 
 ### Action policies
-An action policy controls whether an alert should trigger a notification, and how often. You can set conditions to filter which alerts it applies to — for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space. Refer to [Notifications](kibana-alerting-v2/notifications-v2.md) to learn more.
+An action policy controls whether an alert should trigger a notification, and how often. You can set conditions to filter which alerts it applies to, for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space. Refer to [Notifications](kibana-alerting-v2/notifications-v2.md) to learn more.
 
 ### Workflows
-A workflow is what actually sends the message or runs the automation — for example, posting to Slack or sending an email. Action policies hand off to workflows for delivery. Without a workflow attached, no notification is sent. Refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md) to learn more.
+A workflow is what actually sends the message or runs the automation, for example, posting to Slack or sending an email. Action policies hand off to workflows for delivery. Without a workflow attached, no notification is sent. Refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md) to learn more.
 
 ## A quick example
 
