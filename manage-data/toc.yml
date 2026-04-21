@@ -136,7 +136,7 @@ toc:
       - file: lifecycle/data-tiers.md
         children:
           - file: lifecycle/data-tiers/manage-data-tiers-ech-ece.md
-          - file: lifecycle/data-tiers/manage-data-tiers-self-managed.md
+          - file: lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md
       - file: lifecycle/index-lifecycle-management.md
         children:
           - file: lifecycle/index-lifecycle-management/index-lifecycle.md

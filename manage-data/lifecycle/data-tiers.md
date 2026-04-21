@@ -92,8 +92,8 @@ We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/c
 
 How you configure data tiers depends on your cluster's deployment type. Use the guide that matches your deployment:
 
-* {applies_to}`ess: ga` {applies_to}`ece: ga` The default {{ecloud}} deployment includes a shared tier for hot and content data, which is required and can’t be removed. To add or remove **warm**, **cold**, or **frozen** capacity in the Elastic Cloud UI, including safe removal with data migration, follow [Add or remove data tiers in {{ech}} or {{ece}}](/manage-data/lifecycle/data-tiers/manage-data-tiers-ech-ece.md).
-* {applies_to}`self: ga` Assign [data roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) (`data_*`) per node in `elasticsearch.yml` so your cluster exposes the tiers you need. Follow [Configure data tiers on self-managed deployments](/manage-data/lifecycle/data-tiers/manage-data-tiers-self-managed.md).
+* For **ECH or ECE**, the default {{ecloud}} deployment includes a shared tier for hot and content data, which is required and can’t be removed. To add or remove warm, cold, or frozen capacity in the Elastic Cloud UI, including safe removal with data migration, refer to [Add or remove data tiers in {{ech}} or {{ece}}](/manage-data/lifecycle/data-tiers/manage-data-tiers-ech-ece.md).
+* For **Self-managed or ECK**, assign [data roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) (`data_*`) so your cluster exposes the tiers you need in `elasticsearch.yml` on each host, or under each node set’s `config` in an {{eck}} {{es}} resource. Refer to [Configure data tiers for self-managed and {{eck}} deployments](/manage-data/lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md).
 
 ## Data tier index allocation [data-tier-allocation]
 
@@ -159,5 +159,6 @@ For example:
 
 Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.
 
-#### Important Note:
+:::{important}
 Do not disable automatic {{ilm-init}} migration without manually defining {{ilm-init}} allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, even though the data has successfully moved through the {{ilm-init}} policy with a status of `complete`.
+:::
