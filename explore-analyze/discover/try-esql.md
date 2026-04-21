@@ -29,9 +29,8 @@ For the complete {{esql}} documentation, including all supported commands, funct
 1. Go to **Discover**.
 2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
-   :::{tip}
-   If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-   :::
+   - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
 
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
