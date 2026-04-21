@@ -84,6 +84,7 @@ Configure the essential agent settings in the **Settings** tab:
 :::::
 
 :::::{step} Enable Elastic capabilities
+:anchor: create-custom-agent-enable-elastic-capabilities
 ```{applies_to}
 stack: ga 9.4+
 ```
