@@ -71,17 +71,16 @@ serverless: ga
 
 On bar, line, and area charts backed by an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `›` separator in the legend.
 
-When the query groups a metric by more than two fields, {{kib}} places the first field on the **Horizontal axis** and combines the remaining fields in the **Breakdown** dimension. For example, the following query counts web log visits by host, HTTP response code, and client operating system:
+When the query groups a metric by more than two fields, {{kib}} places the first field on the **Horizontal axis** and combines the remaining fields in the **Breakdown** dimension. For example, the following query counts web log events over time, broken down by host and file extension:
 
 ```esql
 FROM kibana_sample_data_logs
-| STATS visits = COUNT(*) BY host.keyword, response.keyword, machine.os.keyword
-| SORT visits DESC
+| STATS count(*) BY BUCKET(@timestamp, 100, ?_tstart, ?_tend), host.keyword, extension.keyword
 ```
 
-In the resulting chart, `host.keyword` is placed on the **Horizontal axis**, while `response.keyword` and `machine.os.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `200 › osx` or `404 › win 8`.
+In the resulting chart, the time buckets are placed on the **Horizontal axis**, while `host.keyword` and `extension.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `artifacts.elastic.co › deb` or `www.elastic.co › (blank)`.
 
-![Bar chart of visits per host, broken down by response code and operating system](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
+![Stacked bar chart of web log events over time, broken down by host and file extension](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
 
 To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
 
