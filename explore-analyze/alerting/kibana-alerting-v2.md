@@ -17,19 +17,26 @@ description: "How {{alerting-v2}} watches your data, turns conditions into signa
 
 ## The four building blocks
 
-{{alerting-v2}} is built around four objects (rules, alerts, action policies, and workflows), each with a distinct role in the detection and notification pipeline.
+## The four building blocks
+
+{{alerting-v2}} is built around four objects — rules, alerts, action policies, and workflows — each with a distinct role.
 
 ### Rules
-A rule says *what to watch* and *how often*. It holds an {{esql}} query, a schedule and lookback window, and in Alert mode, thresholds that control when an issue becomes active or recovers. Rules run in either Detect mode (records signals only, no episodes or notifications) or Alert mode (tracks episodes and enables policy matching). Refer to [Rules](kibana-alerting-v2/rules.md) to learn more.
+A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes:
+
+- **Detect mode** — the rule records what it finds, but doesn't track whether the problem is ongoing or send any notifications. Use this for observation and investigation.
+- **Alert mode** — the rule tracks problems over time and can trigger notifications when something needs attention.
+
+Refer to [Rules](kibana-alerting-v2/rules-v2.md) to learn more.
 
 ### Alerts
-When a rule runs in Alert mode, it maintains an alert episode for each tracked series: a record that something is wrong, with lifecycle states (pending, active, recovering) and the history of what happened. These live in Discover and the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts.md) to learn more.
+When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot — it's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts in the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts-v2.md) to learn more.
 
 ### Action policies
-An action policy decides whether an episode should produce outreach and how often. It's a global object within the space (not attached to any one rule) that uses optional KQL matchers to pick up episodes from any rule. Multiple policies can match the same episode and each runs independently. Refer to [Notifications](kibana-alerting-v2/notifications.md) to learn more.
+An action policy controls whether an alert should trigger a notification, and how often. You can set conditions to filter which alerts it applies to — for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space. Refer to [Notifications](kibana-alerting-v2/notifications-v2.md) to learn more.
 
 ### Workflows
-A workflow is what actually sends the message or runs the automation. Action policies point at workflows as destinations. If no workflow is attached and reachable, nothing is delivered. Refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md) to learn more.
+A workflow is what actually sends the message or runs the automation — for example, posting to Slack or sending an email. Action policies hand off to workflows for delivery. Without a workflow attached, no notification is sent. Refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md) to learn more.
 
 ## A quick example
 
@@ -78,7 +85,7 @@ $$$configuration-order$$$
 These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   A set of rules that controls who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how alerts should be grouped, and which workflow should send the message. One action policy can apply to alerts from multiple rules. To learn more, refer to [Notifications](kibana-alerting-v2/notifications.md).
+:   A set of rules that controls who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how alerts should be grouped, and which workflow should send the message. One action policy can apply to alerts from multiple rules. To learn more, refer to [Notifications](kibana-alerting-v2/notifications-v2.md).
 
 **Alert**
 :   A rule event produced when a rule runs in Alert mode. Unlike a signal, an alert is tied to an ongoing episode and is part of the full story of that problem from when it started to when it resolved.
@@ -87,28 +94,28 @@ These terms appear throughout the {{alerting-v2}} docs. If a term is unclear whi
 :   A single moment when a rule's query finds a match. One breach doesn't necessarily trigger a notification. You can configure a rule to require several consecutive breaches before it confirms the problem is real.
 
 **Episode**
-:   The complete record of one problem, from when it was first detected to when it recovered. An episode moves through states (pending, active, recovering, inactive) as the situation changes. This is what you see and act on in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts.md).
+:   The complete record of one problem, from when it was first detected to when it recovered. An episode moves through states (pending, active, recovering, inactive) as the situation changes. This is what you see and act on in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts-v2.md).
 
 **{{esql}}**
 :   The query language every rule uses to search your data. To learn more, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql.md).
 
 **Notification**
-:   The message or action delivered when an alert matches an action policy and a workflow sends it. Examples include a Slack message, an email, or a webhook call. To learn more, refer to [How action policies are evaluated](kibana-alerting-v2/notifications.md#how-action-policies-evaluated-v2).
+:   The message or action delivered when an alert matches an action policy and a workflow sends it. Examples include a Slack message, an email, or a webhook call. To learn more, refer to [How action policies are evaluated](kibana-alerting-v2/notifications-v2.md#how-action-policies-evaluated-v2).
 
 **Rule**
-:   The definition of what to watch for in your data, how often to check, and what counts as a problem. Rules run on a schedule. In Detect mode they produce signals. In Alert mode they track ongoing episodes. To learn more, refer to [Rules](kibana-alerting-v2/rules.md).
+:   The definition of what to watch for in your data, how often to check, and what counts as a problem. Rules run on a schedule. In Detect mode they produce signals. In Alert mode they track ongoing episodes. To learn more, refer to [Rules](kibana-alerting-v2/rules-v2.md).
 
 **Rule event**
 :   A record written to `.rule-events` every time a rule runs and its query finds a match. Every rule produces rule events. Whether the record is a signal or an alert depends on the mode the rule is running in.
 
 **Severity**
-:   A label you can attach to alerts to indicate how serious they are. Severity is available as a filter in action policies, so you can route critical alerts differently from low-priority ones. To learn more, refer to [Author rules](kibana-alerting-v2/rules/author-rules.md#severity-levels).
+:   A label you can attach to alerts to indicate how serious they are. Severity is available as a filter in action policies, so you can route critical alerts differently from low-priority ones. To learn more, refer to [Author rules](kibana-alerting-v2/rules/author-rules-v2.md#severity-levels).
 
 **Signal**
 :   A rule event produced when a rule runs in Detect mode. Signals are stored and queryable, but they don't open episodes or trigger notifications.
 
 **Threshold**
-:   The condition a rule uses to decide when something is worth alerting on. This includes both the query that detects the problem and settings that control how many times the condition must be met before an alert opens or closes. To learn more, refer to [Conditions and thresholds](kibana-alerting-v2/rules/author-rules.md#conditions-and-thresholds).
+:   The condition a rule uses to decide when something is worth alerting on. This includes both the query that detects the problem and settings that control how many times the condition must be met before an alert opens or closes. To learn more, refer to [Conditions and thresholds](kibana-alerting-v2/rules/author-rules-v2.md#conditions-and-thresholds).
 
 **Workflow**
 :   The automation that sends a message or runs an action when an action policy decides a notification should go out. Examples include posting to Slack, sending an email, or calling a webhook. To learn more, refer to [Workflows for {{alerting-v2}}](kibana-alerting-v2/workflows-alerting-v2.md).

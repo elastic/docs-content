@@ -109,7 +109,6 @@ subs:
   dev-tools-app:   "Dev Tools"
   stack-manage-app:   "Stack Management"
   stack-monitor-app:   "Stack Monitoring"
-  rules-ui:   "Rules"
   connectors-ui:   "Connectors"
   connectors-feature:   "Actions and Connectors"
   stack-rules-feature:   "Stack Rules"
@@ -298,3 +297,5 @@ subs:
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
   alerting-v2: "Kibana alerting v2"
+  rules-ui-v2:   "Rules"
+  alerts-ui-v2:  "Alert episodes"

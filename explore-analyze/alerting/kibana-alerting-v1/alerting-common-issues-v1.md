@@ -248,7 +248,7 @@ This error happens when the `xpack.encryptedSavedObjects.encryptionKey` value us
 | --- | --- |
 | If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-keyrotation-decryptiononlykeys). |
 | If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-keyrotation-decryptiononlykeys) for previously used encryption keys. |
-| If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui}}**, select **Update API key** from the action menu. |
+| If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui-v2}}**, select **Update API key** from the action menu. |
 
 ## Rules stop running after upgrade [known-issue-upgrade-rule]
 
@@ -262,4 +262,4 @@ Alerting rules that were created or edited in 8.2 stop running after you upgrade
 
 **Solution**:
 
-Upgrade to 8.3.2 or later releases to avoid the problem. To fix failing rules, go to **{{stack-manage-app}} > {{rules-ui}}** and multi-select the rules. Choose **Manage rules > Update API Keys** to generate new API keys. For more details about API key authorization, refer to [API keys](alerting-setup-v1.md#alerting-authorization).
+Upgrade to 8.3.2 or later releases to avoid the problem. To fix failing rules, go to **{{stack-manage-app}} > {{rules-ui-v2}}** and multi-select the rules. Choose **Manage rules > Update API Keys** to generate new API keys. For more details about API key authorization, refer to [API keys](alerting-setup-v1.md#alerting-authorization).

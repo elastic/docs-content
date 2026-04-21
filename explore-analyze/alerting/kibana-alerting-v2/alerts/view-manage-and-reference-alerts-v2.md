@@ -11,7 +11,7 @@ description: "Open the {{alerting-v2}} alert episodes table, triage actions, and
 
 $$$manage-alerts-v2$$$
 
-The **Alert episodes** table is the main place to view {{alerting-v2}} episodes, filter and sort them, and start triage. Open it from **{{manage-app}}** > **Alerts and Insights** > **Rules V2** > **Alert episodes**.
+The **{{alerts-ui}}** table is the main place to view {{alerting-v2}} episodes, filter and sort them, and start triage. Open it from **{{manage-app}} > V2 Alerting Preview** > **{{alerts-ui}}**.
 
 ## Filter and search
 

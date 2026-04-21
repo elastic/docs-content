@@ -27,7 +27,7 @@ $$$alerting-set-up-v2$$$
 
 ### Enable {{alerting-v2}}
 
-{{alerting-v2}} is available in {{stack}} 9.4 and later. When it is enabled for your deployment, use **{{manage-app}}** > **Alerts and Insights** > **Rules V2** to open the v2 rules list and author rules. If **Rules V2** does not appear in the navigation, ask your administrator whether alerting v2 is enabled in your environment.
+{{alerting-v2}} is available in {{stack}} 9.4 and later. When it is enabled for your deployment, use **{{manage-app}} > V2 Alerting Preview** to open the v2 rules list and author rules. If **V2 Alerting Preview** does not appear in the navigation, ask your administrator whether alerting v2 is enabled in your environment.
 
 ### Where alert data is stored
 
