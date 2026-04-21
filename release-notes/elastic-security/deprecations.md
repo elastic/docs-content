@@ -23,6 +23,21 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.4.0 [elastic-security-9.4.0-deprecations]
+
+::::{dropdown} Removes the Threat Hunting Agent from Agent Builder
+Removes the built-in Threat Hunting Agent from Agent Builder. Security AI workflows now use the Elastic AI Agent with Security skills, which is the default experience in 9.4.0.
+For more information, refer to [#263996]({{kib-pull}}263996).
+
+**Impact**<br> Conversations stored with the Threat Hunting Agent will no longer appear in the conversation list and cannot be continued from the UI. No automatic migration is planned.
+
+**Action**<br> Use the Elastic AI Agent with Security skills for threat hunting workflows. If needed, a targeted Elasticsearch `update_by_query` can reassign affected conversations to the default agent.
+::::
+
+::::{dropdown} Deprecates Enable CCS Warning Privileges in Kibana advanced settings
+Deprecates the `Enable CCS Warning Privileges` setting in {{kib}} **Advanced settings**. For more information, refer to [#252183]({{kib-pull}}252183).
+::::
+
 ## 9.1.0 [elastic-security-9.1.0-deprecations]
 
 ::::{dropdown} Removes default quick prompts
