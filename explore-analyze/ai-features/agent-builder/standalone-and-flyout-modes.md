@@ -23,6 +23,10 @@ The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two mode
 The standalone and sidebar modes have the same functionalities and can be used interchangeably. Conversation history is preserved across both modes.
 :::
 
+:::{tip}
+When working with dashboards and visualizations, we recommend using **standalone mode**. This full-page chat experience gives you more room to comfortably analyze complex charts and read detailed agent replies. 
+:::
+
 ## Standalone mode
 
 ```{applies_to}
