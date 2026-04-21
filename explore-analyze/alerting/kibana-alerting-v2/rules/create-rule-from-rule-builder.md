@@ -9,6 +9,7 @@ description: "Create a {{alerting-v2}} rule with the interactive rule builder: o
 
 # Create rules using the rule builder [create-rules-rule-builder-v2]
 
+$$$create-rules-rule-builder-v2$$$
 $$$create-rules-ui-v2$$$
 
 Create {{alerting-v2}} rules using the interactive rule creation form. The form provides a guided experience for all rule settings, with the option to toggle between interactive and YAML modes.
