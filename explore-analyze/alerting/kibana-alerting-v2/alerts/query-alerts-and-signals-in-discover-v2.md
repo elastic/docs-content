@@ -13,7 +13,7 @@ $$$explore-alerts-discover-v2$$$
 
 {{alerting-v2}} stores rule output in `.rule-events` and user or system actions in `.alert-actions`. Both are queryable with {{esql}} in Discover. Open Discover, select {{esql}}, paste a query, then adjust the time range and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment.
 
-For field names, types, and episode fields, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference-v2) and [Rule event and field reference](../rules/rule-event-field-reference.md#rule-reference-v2). For triage in the product UI, refer to [View, manage, and reference alerts](view-manage-and-reference-alerts.md).
+For field names, types, and episode fields, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2) and [Rule event and field reference](../rules/rule-event-field-reference-v2.md#rule-reference-v2). For triage in the product UI, refer to [View, manage, and reference alerts](view-manage-and-reference-alerts-v2.md).
 
 ## Rule events
 
