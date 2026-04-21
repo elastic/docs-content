@@ -74,8 +74,8 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
 
-<!-- `platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
-:   Creates a [Lens](/explore-analyze/visualize/lens.md) visualization based on specifications. -->
+`platform.core.create_visualization` {applies_to}`stack: ga 9.4+`
+:   Creates or updates a visualization configuration based on a natural language description.
 
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
@@ -109,20 +109,19 @@ The following tools manage file attachments in conversations:
 :   Shows the differences between versions of a file attachment.
 -->
 
-<!-- 
 ## Dashboard tools
 ```{applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
+serverless: preview
 ```
 
-Dashboard tools enable agents to create and manage [Dashboards](/explore-analyze/dashboards.md).
+Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
 
 `dashboard.create_dashboard`
 :   Creates a dashboard with specified title, description, panels, and markdown summary.
 
 `dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications. 
--->
+:   Updates an existing dashboard with new panels or modifications.
 
 ## Observability tools
 ```{applies_to}
@@ -199,6 +198,10 @@ $$$agent-builder-security-attack-discovery-search-tool$$$
 
 $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 :   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+
+## Inline tools
+
+Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).

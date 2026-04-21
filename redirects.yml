@@ -1281,3 +1281,14 @@ redirects:
   'explore-analyze/workflows/use-cases/security.md': 'explore-analyze/workflows/use-cases.md'
   'explore-analyze/workflows/use-cases/security/automate-security-operations.md': 'explore-analyze/workflows/use-cases.md'
   'explore-analyze/workflows/use-cases/security/manage-detection-rules.md': 'explore-analyze/workflows/use-cases.md'
+
+# Workflows docset IA restructure (April 2026) — see explore-analyze/workflows/
+# Note: no redirect for workflows/get-started.md because that URL is now occupied by a new parent
+# index page. External links to the old tutorial land on the new parent, which links to the tutorial.
+  'explore-analyze/workflows/setup.md': 'explore-analyze/workflows/get-started/setup.md'
+  'explore-analyze/workflows/core-components.md': 'explore-analyze/workflows.md'
+  'explore-analyze/workflows/data.md': 'explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md'
+  'explore-analyze/workflows/data/templating.md': 'explore-analyze/workflows/templating.md'
+  'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
+  'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
+  'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
