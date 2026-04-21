@@ -80,6 +80,7 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-editor.png
 :alt: Filter editor with 2 conditions
+:screenshot:
 :::
 
 #### Filter pill actions
@@ -94,6 +95,7 @@ The query bar lets you build filters using [{{kib}} Query Language (KQL)](../que
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
+:screenshot:
 :width: 400px
 :::
 
@@ -109,6 +111,7 @@ The global time range menu is located right next to the query bar, in the dashbo
 
 :::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
 :alt: Time range menu with multiple time range suggestions
+:screenshot:
 :width: 500px
 :::
 
@@ -155,7 +158,11 @@ Filter the data with one or more options that you select.
 For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
 :::
 
-![Options list control](/explore-analyze/images/kibana-dashboard-controls-options-list.png "=50%")
+:::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
+:alt: Options list control
+:screenshot:
+:width: 50%
+:::
 
 
 #### Filter the data with Range slider controls [filter-the-data-with-range-slider-controls]
@@ -169,7 +176,11 @@ Filter the data within a specified range of values.
 
 3. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-![Range slider control](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "=50%")
+:::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
+:alt: Range slider control
+:screenshot:
+:width: 50%
+:::
 
 
 #### Filter the data with time slider controls [filter-the-data-with-time-slider-controls]
