@@ -34,7 +34,6 @@ When the entity store is enabled, the following resources are created for the ac
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 * A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.security_<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
-* An updates data stream, `.entities.v2.updates.security_<space-id>` (alias: `entities-updates-<space-id>`), which records incremental entity updates as they are extracted from source data.
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
 :::{note}
