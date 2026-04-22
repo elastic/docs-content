@@ -20,7 +20,7 @@ The {{agent-builder}} connectors library lets you configure action-based connect
 {{agent-builder}} connectors leverage the underlying {{kib}} [Stack connectors](/deploy-manage/manage-connectors.md) framework to securely store credentials and manage integrations. However, they are distinct from [AI connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which are used exclusively to configure external LLM providers.
 :::
 
-Connectors are managed at the deployment level from **Manage components** > **Connectors**. They are not assigned per agent. Individual connector types in the catalogue may be marked **Technical Preview**.
+Connectors are managed at the deployment level from **Manage components** > **Connectors**. They are not assigned per agent. Individual connector types in the catalog may be marked **Technical Preview**.
 
 ## How agents use connectors
 
@@ -33,8 +33,8 @@ When an agent needs to interact with an external system, it automatically reads 
 To register a new connector:
 
 1. In the left sidebar, select **Manage components** > **Connectors**.
-2. Select the button to add a connector.
-3. Choose a connector type from the catalogue. Individual connector types may be marked as **Technical Preview**.
+2. Select the mosaic to add a connector.
+3. Choose a connector type from the catalog.
 4. Provide the required configuration.
 5. Save the connector.
 
