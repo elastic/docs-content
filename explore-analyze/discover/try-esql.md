@@ -29,9 +29,8 @@ For the complete {{esql}} documentation, including all supported commands, funct
 1. Go to **Discover**.
 2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
-   :::{tip}
-   If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-   :::
+   - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
 
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
@@ -50,7 +49,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
    {{esql}} keywords are not case sensitive.
    ::::
 
-5. Click **▶Run**.
+5. Select **Search** (or **▶Run** in earlier versions).
    ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
 
 Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
@@ -63,7 +62,7 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
     | LIMIT 10
     ```
 
-2. Click **▶Run** again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
+2. Select **Search** (or **▶Run** in earlier versions) again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
    ::::{note}
    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
@@ -82,7 +81,7 @@ We will now take it a step further to sort the data by machine RAM and filter ou
     | LIMIT 10
     ```
 
-2. Click **▶Run** again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
+2. Select **Search** (or **▶Run** in earlier versions) again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
 
     ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
 
