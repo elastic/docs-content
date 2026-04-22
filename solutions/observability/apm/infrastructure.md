@@ -51,8 +51,9 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 :applies_to: stack: ga 9.4+
 The **Infrastructure** tab assumes the service and its underlying infrastructure (hosts, pods, containers) are observed using the same schema. The schema is inferred from the APM agent name:
 
-- **Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
-- **OTel SDK** or **EDOT SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or EDOT Collector (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
+**Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
+
+**OTel SDK** or **EDOT SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or EDOT Collector (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
 Cross-schema setups will show **N/A**:
 
 - A service instrumented with Elastic APM or Elastic Agent, but running on infrastructure observed only by the OTel Collector.
