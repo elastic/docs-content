@@ -53,7 +53,7 @@ To run a {{kib}} diagnostic:
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
     ```sh
-    curl -X GET -H ‘kbn-xsrf: true’ -u elastic -p https://localhost:5601/api/task_manager/_health
+    curl -X GET -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
     ```
 
     If you receive an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, you must [diagnose the issue](#kibana-diagnostic-non-200) before proceeding.
