@@ -51,6 +51,8 @@ For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges docum
 
 ## Metrics-specific Discover options
 
+When the metrics profile is active, the documents table is collapsed by default so the chart grid takes the full view. You can expand the table at any time to view individual documents.
+
 :::{important}
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
