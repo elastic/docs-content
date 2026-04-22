@@ -26,7 +26,7 @@ $$$panels-editors$$$
 |  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
 |  | | |
 | Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
-|  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
+|  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text**.<br><br>{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Save Markdown panels to the Visualize Library to reuse them across dashboards. |
 |  | [Image](visualize/image-panels.md) | Personalize your dashboard with custom images |
 |  | [Links](visualize/link-panels.md) | Add links to other dashboards or to external websites |
 |  | | |
