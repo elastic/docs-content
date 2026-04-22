@@ -38,7 +38,9 @@ By default, an S3 repository will attempt to obtain its credentials automaticall
 
 ## Client settings [repository-s3-client]
 
-The S3 client that you use to connect to S3 has a number of settings available. The settings have the form `s3.client.CLIENT_NAME.SETTING_NAME`. By default, `s3` repositories use a client named `default`, but this can be modified using the [repository setting](#repository-s3-repository) `client`.
+You can configure multiple S3 clients, each with its own settings. Client settings use the form `s3.client.CLIENT_NAME.SETTING_NAME`.
+
+By default, {{es}} configures a client named `default` when it detects a compatible environment. `s3` repositories use this client unless another client is specified with the [repository setting](#repository-s3-repository) `client`.
 
 S3 client settings cover authentication, region and endpoint selection, proxy/network configuration, and connection or retry tuning.
 For a complete list of all S3 client settings, refer to [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
