@@ -107,7 +107,9 @@ To make changes to the panel, use the panel menu options.
         :::
 
     * **Convert to Lens** — Opens **TSVB** and aggregation-based visualizations in **Lens**.
-    * **Settings** — Opens the **Settings** window to change the **title**, **description**, and **time range**.
+    * **Settings** — Opens the **Settings** flyout to change the **title**, **description**, and **time range**.
+
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` A **Show panel border** toggle is also available to control the visibility of the panel border.
     * **Remove** — Removes the panel from the dashboard.
 
         If you want to use the panel later, make sure that you save the panel to the **Visualize Library**.

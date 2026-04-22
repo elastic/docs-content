@@ -66,8 +66,19 @@ The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operati
 If the node did not restart then you should look at the reason for its departure more closely. Each reason has different troubleshooting steps, described below. There are three possible reasons:
 
 * `disconnected`: The connection from the master node to the removed node was closed.
-* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted timeout. By default, this timeout is 2 minutes. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
+* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted time. By default, `cluster.follower_lag.timeout` is `90s` (in addition to `cluster.publish.timeout` which defaults to `30s`). Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) and [Publishing the cluster state](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview.md#cluster-state-publishing) for how these timeouts interact.
 * `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
+
+## Ruling out network delays with TCP timeouts on Linux [troubleshooting-unstable-cluster-tcp-retries-node-left]
+
+`Lagging` and `follower check retry count exceeded` removals can be caused by severe network delays or by slow or overloaded nodes (CPU, heap, disk). The `node-left` reason alone does not tell you which it is.
+
+To rule out network delay, on Linux configure `net.ipv4.tcp_retries2` so TCP does not spend many minutes retransmitting lost data before the kernel fails the connection. The default on many distributions is high, often set to `15`, which corresponds to retransmissions over a long period, during which traffic can stall while {{es}} may still report `lagging` or failed follower checks. 
+To expose TCP-level problems faster, you can configure `net.ipv4.tcp_retries2` to a lower value, for example `5`. Refer to [Decrease the TCP retransmission timeout](/deploy-manage/deploy/self-managed/system-config-tcpretries.md) for more information. This exposes TCP-level problems on the order of tens of seconds instead of many minutes: bad paths are more likely to show up as connection timeouts or a `disconnected` `node-left` task when the transport drops, which points clearly at the network stack.
+
+If unstable behavior aligns with faster, clearer TCP or transport failures after lowering `net.ipv4.tcp_retries2`, treat network delay or packet loss as a strong suspect and keep investigating connectivity, firewalls, and path quality. If you still see `lagging` or `follower check retry count exceeded` with no improvement after this change, network delay is less likely to be the main explanation. You can focus on the affected node’s performance and the guidance in the sections below.
+
+Lowering `net.ipv4.tcp_retries2` does not fix a faulty network or an overloaded node; it only changes how soon Linux reports a broken TCP path, which helps you decide whether delays are network-related. You can use this on Linux hosts that you operate yourself (not as a substitute for correcting switches, firewalls, or JVM issues). Whether the master logs `disconnected`, `lagging`, or `follower check retry count exceeded` is decided by {{es}} [cluster fault detection](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md); the sysctl does not set or rename that reason.
 
 
 ## Diagnosing `disconnected` nodes [troubleshooting-unstable-cluster-disconnected]
@@ -84,7 +95,7 @@ To determine whether the node which left the cluster with the `disconnected` rea
 
 {{es}} needs every node to process cluster state updates reasonably quickly. If a node takes too long to process a cluster state update, it can be harmful to the cluster. The master will remove these nodes with the `lagging` reason. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. To rule out network delays, ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md). Log messages that contain `warn threshold` may provide more information about the root cause.
+Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability. Log messages that contain `warn threshold` may provide more information about the root cause.
 
 If you’re an advanced user, you can get more detailed information about what the node was doing when it was removed by configuring the following logger:
 
@@ -115,7 +126,7 @@ Nodes sometimes leave the cluster with reason `follower check retry count exceed
 
 {{es}} needs every node to respond to network messages successfully and reasonably quickly. If a node rejects requests or does not respond at all then it can be harmful to the cluster. If enough consecutive checks fail then the master will remove the node with reason `follower check retry count exceeded` and will indicate in the `node-left` message how many of the consecutive unsuccessful checks failed and how many of them timed out. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-Timeouts and failures may be due to network delays or performance problems on the affected nodes. Ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md) to eliminate network delays as a possible cause for this kind of instability. Log messages containing `warn threshold` may give further clues about the cause of the instability.
+Timeouts and failures may be due to network delays or performance problems on the affected nodes. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability. Log messages containing `warn threshold` may give further clues about the cause of the instability.
 
 If the last check failed with an exception then the exception is reported, and typically indicates the problem that needs to be addressed. If any of the checks timed out then narrow down the problem as follows.
 
