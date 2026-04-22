@@ -94,6 +94,9 @@ $$$agent-builder-search-rag-chatbot-skill$$$ `search.rag-chatbot` {applies_to}`s
 $$$agent-builder-search-semantic-search-skill$$$ `search.semantic-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building semantic and vector search solutions on {{es}}.
 
+$$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {applies_to}`stack: ga 9.4+`
+:   Presents a library of {{es}} use cases when users want to explore what they can build, need help identifying which category their project falls into, or are looking for inspiration. Covers product search, knowledge base search, AI assistants, recommendations, customer support, location-based search, log and event search, and vector database use cases.
+
 $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {applies_to}`stack: ga 9.4+`
 :   Guides agents through using {{es}} as a vector database.
 
