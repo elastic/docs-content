@@ -1,6 +1,6 @@
 ---
 navigation_title: "Plugins"
-description: "Learn how Agent Builder plugins bundle skills and capabilities that you can install and assign to agents."
+description: "Learn about Agent Builder plugins, installable packages compatible with the Claude agent plugin specification that bundle agent capabilities such as skills."
 applies_to:
   stack: preview 9.4+
   serverless: preview
@@ -14,33 +14,41 @@ products:
 
 # Plugins in {{agent-builder}}
 
-A plugin is an installable package that bundles a set of related [skills](skills.md) so you can add them to an agent in a single install. For individual capabilities, use skills; for callable functions and integrations, use [tools](tools.md).
+Plugins are installable packages that bundle agent capabilities such as skills, and are compatible with the [Claude agent plugin specification](https://docs.claude.com/en/docs/claude-code/plugins). Use a plugin to add a set of related capabilities to an agent in a single install.
 
 ## Install a plugin
 
 To install a plugin:
 
 1. In the left sidebar, select **Manage components** > **Plugins**.
-2. Select **Add plugins**, then choose an install method:
+2. Select **Install plugin**, then choose an install method:
     - **Install from URL**: Provide the URL of a plugin package hosted remotely.
     - **Upload ZIP**: Upload a plugin packaged as a `.zip` file from your local machine.
 3. Confirm the install.
 
-Installed plugins appear in the library and are available to assign to any agent in the current space.
+Installed plugins appear in the library and can be assigned to agents in the current space. You can remove a plugin from the library at any time.
 
 ## Assign a plugin to an agent
 
-Plugins are assigned per agent. After installing a plugin, open the agent you want to extend and add the plugin from the **Plugins** tab:
+Plugins are assigned per agent. After installing a plugin, open the agent and add the plugin from its **Plugins** tab:
 
 1. Open the agent in edit mode, or create a new agent. Refer to [Create and manage custom agents](custom-agents.md#create-a-custom-agent).
 2. Select the **Plugins** tab.
 3. Select **Add plugins**, choose one or more installed plugins, and save the agent.
 
-Once assigned, the plugin's bundled skills appear in the agent's **Skills** tab and are available when the agent chats.
+The assigned plugin's detail panel lists its source, the skills it includes, and its plugin ID.
+
+:::{note}
+Skills bundled in a plugin are scoped to the plugin. They do not appear as independent entries in the agent's **Skills** tab or in the Skills library.
+:::
 
 :::{tip}
-You can also manage assignments from the **Customize** accordion in the chat UI. Refer to [Customize your agent](chat.md#customize-your-agent).
+You can also manage plugin assignments from the **Customize** accordion in the chat UI. Refer to [Customize your agent](chat.md#customize-your-agent).
 :::
+
+## Tools referenced by plugin skills
+
+A skill inside a plugin can reference tools that the agent calls at runtime. A tool definition packaged in a plugin gives the agent the tool's interface — its name and parameters — but does not provide the execution backend. For the agent to actually execute the tool, a matching implementation must exist in the agent's tool registry.
 
 ## Related pages
 
