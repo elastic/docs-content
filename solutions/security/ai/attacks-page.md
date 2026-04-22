@@ -1,6 +1,6 @@
 ---
-navigation_title: The Attacks page
-description: "Use the Attacks page to view, triage, and manage correlated attack chains alongside individual alerts in a unified interface."
+navigation_title: Triage and manage attacks
+description: "Triage and manage correlated attack chains alongside individual alerts on the Attacks page, a unified interface for investigating and responding to threats."
 applies_to:
   stack: preview 9.4
   serverless:
@@ -10,9 +10,14 @@ products:
   - id: cloud-serverless
 ---
 
-# Attacks page [attacks-page]
+# Triage and manage attacks [attacks-page]
 
-The **Attacks** page provides a dedicated triage and management interface for alerts and [Attack Discovery](/solutions/security/ai/attack-discovery.md) findings. You can use it to schedule Attack Discovery runs, view summary information about attacks and alerts in your environment, triage them, and update their statuses and assignees.
+The **Attacks** page is the triage hub where you view, filter, assign, tag, and act on all attacks in your environment, alongside their correlated alerts. It pairs with the [**Attack Discovery**](/solutions/security/ai/attack-discovery.md) page, which is where you manually generate new discoveries using large language models (LLMs):
+
+- Go to **Attack Discovery** to run LLM analysis on demand and create new attack discoveries.
+- Go to **Attacks** for day-to-day triage of all attacks (manual and scheduled), and to manage their investigation lifecycle.
+
+You can also schedule recurring Attack Discovery runs from either page; schedules created on one page appear on the other.
 
 
 ## Prerequisites [attacks-prerequisites]
@@ -20,7 +25,7 @@ The **Attacks** page provides a dedicated triage and management interface for al
 The **Attacks** page requires the same privileges as Attack Discovery. Refer to [Role-based access control (RBAC) for Attack Discovery](/solutions/security/ai/attack-discovery.md#attack-discovery-rbac) for details.
 
 :::{important}
-To access the Attacks page, you must turn on **Enable alerts and attacks alignment** in the **Security Solution** section of **Advanced Settings**.
+To access the Attacks page, you must turn on the [**Enable alerts and attacks alignment**](/solutions/security/get-started/configure-advanced-settings.md#enable-alerts-and-attacks-alignment) setting under **Security Solution** in **Advanced Settings**.
 :::
 
 
@@ -34,10 +39,10 @@ At the top of the **Attacks** page, you can find overview visualizations and tab
 :screenshot:
 ::::
 
-:::{note}
-The **Attacks** page lets you schedule Attack Discovery runs and view their findings. For manual Attack Discovery runs, use the **Attack Discovery** page.
-:::
 
+## Schedule attack discoveries [attacks-schedule-discoveries]
+
+You can schedule Attack Discovery runs directly from the Attacks page. The scheduling flow is the same as on the Attack Discovery page, and schedules you create on either page appear on both. For step-by-step instructions, refer to [Schedule discoveries](/solutions/security/ai/attack-discovery.md#schedule-discoveries).
 
 
 ## Triage attacks [attacks-triage]
@@ -71,7 +76,7 @@ When **Show attacks only** is disabled, standalone alerts appear in a group labe
 
 ### How filtering works on the Attacks page [attacks-filtering-behavior]
 
-The **Attacks** page uses a single data view that combines both the attacks index and the alerts index. This enables powerful cross-entity filtering, but it also means that filters apply to both entity types simultaneously. 
+The **Attacks** page uses a single data view that combines both the attacks index and the alerts index. This enables powerful cross-document filtering, but it also means that filters apply to both document types simultaneously. 
 
 :::{dropdown} Filtering behavior details
 
@@ -87,16 +92,20 @@ The **Attacks** page uses a single data view that combines both the attacks inde
 
 **Sorting by timestamp**: Sorting evaluates all visible documents in a group. If an alert-specific query filters out an attack document, the group's position in the sort order is based solely on the timestamps of its remaining alerts.
 
-**KQL autocomplete**: The KQL autocomplete shows fields from both attacks and alerts. Be cautious when filtering, because using a field exclusive to one entity type filters out the other type from the underlying data.
+**KQL autocomplete**: The KQL autocomplete shows fields from both attacks and alerts. Be cautious when filtering, because using a field exclusive to one document type filters out the other type from the underlying data.
 
 **Alerts count badge**: The **Alerts: N** badge on each attack group counts only detection alerts that match the current filters — it doesn't include the attack document itself. When you expand a group, the badge may show a format like `2/10`, where the first number is the count of alerts matching your current filters and time range, and the second is the total number of alerts historically linked to the attack.
 
 :::
 
 
-## Manage attacks [attacks-manage]
+## Take actions on an attack [attacks-manage]
 
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
+
+:::{note}
+When you change an attack's status, assign or unassign it, or apply attack tags, a modal appears that lets you apply the action to the attack only, or to both the attack and its linked alerts.
+:::
 
 | Action | Description |
 |--------|-------------|
@@ -106,7 +115,7 @@ Access actions from the **Take actions** menu on an attack's row in the Attacks 
 | [Apply attack tags](#apply-attack-tags) | Categorize attacks for filtering |
 | [Investigate in timeline](#attacks-investigate-timeline) | Open the attack in Timeline for analysis |
 | [Add to case](#attacks-add-to-case) | Attach the attack to a new or existing case |
-| [View in AI Assistant](#attacks-view-in-ai-assistant) | Continue investigating with the AI Assistant |
+| [View in AI Chat](#attacks-view-in-ai-chat) | Continue investigating with an AI agent |
 
 ### Change attack status [change-attack-status]
 
@@ -119,8 +128,6 @@ Attack statuses track investigation progress:
 | Closed | Resolved |
 
 To change an attack's status, click **Take actions** on the attack row, then select **Mark as acknowledged** or **Mark as closed**.
-
-To take bulk actions on multiple attacks, select the checkboxes next to each attack, then click **Selected *x* attacks** and choose the status you want to apply.
 
 ### Run a workflow from an attack [run-workflow-from-attack]
 
@@ -138,9 +145,8 @@ Assign analysts to attacks they should investigate.
 
 | Task | How to do it |
 |------|--------------|
-| Assign to a single attack | **Take actions** > **Assign attack** > select users |
-| Assign to multiple attacks | Select attacks > **Selected *x* attacks** > **Assign attack** |
-| Unassign from a single attack | **Take actions** > **Unassign attack** |
+| Assign an attack | **Take actions** > **Assign attack** > select users |
+| Unassign an attack | **Take actions** > **Unassign attack** |
 
 :::{important}
 Users are not notified when assigned or unassigned.
@@ -150,10 +156,7 @@ Users are not notified when assigned or unassigned.
 
 Tags help organize attacks into filterable categories.
 
-| Task | How to do it |
-|------|--------------|
-| Tag a single attack | **Take actions** > **Apply attack tags** |
-| Tag multiple attacks | Select attacks > **Selected *x* attacks** > **Apply attack tags** |
+To tag an attack, click **Take actions**, then select **Apply attack tags**.
 
 ### Investigate in timeline [attacks-investigate-timeline]
 
@@ -167,9 +170,9 @@ Investigating an attack in Timeline includes all alerts that were originally cor
 
 To add an attack to a [case](/solutions/security/investigate/security-cases.md), click **Take actions**, then select **Add to new case** or **Add to existing case**.
 
-### View in AI Chat [attacks-view-in-ai-assistant]
+### View in AI Chat [attacks-view-in-ai-chat]
 
-To continue investigating an attack with an AI agent, click **Take actions**, then select **View in AI Chat**. You can ask follow-up questions about the attack or its associated alerts.
+To continue investigating an attack with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md), click **Take actions**, then select **View in AI Chat**. You can ask follow-up questions about the attack or its associated alerts.
 
 
 ## Next steps [attacks-next-steps]

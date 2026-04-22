@@ -114,7 +114,25 @@ Expand this section to access the following pages:
 * [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
 
+### Detections [_detections]
+
+```yaml {applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Expand this section to access the following pages:
+
+* [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
+* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+
+Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
+
 ### Alerts [_alerts]
+
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
 
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
