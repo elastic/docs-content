@@ -95,7 +95,7 @@ To determine whether the node which left the cluster with the `disconnected` rea
 
 {{es}} needs every node to process cluster state updates reasonably quickly. If a node takes too long to process a cluster state update, it can be harmful to the cluster. The master will remove these nodes with the `lagging` reason. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability.. Log messages that contain `warn threshold` may provide more information about the root cause.
+Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability. Log messages that contain `warn threshold` may provide more information about the root cause.
 
 If you’re an advanced user, you can get more detailed information about what the node was doing when it was removed by configuring the following logger:
 
