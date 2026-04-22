@@ -2,12 +2,19 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-metrics.html
 applies_to:
-  stack: ga
+  serverless: unavailable
+  stack: deprecated 9.4+
 products:
   - id: observability
 ---
 
-# Explore infrastructure metrics over time [explore-metrics]
+# Explore infrastructure metrics over time (deprecated) [explore-metrics]
+
+::::{admonition} Deprecated in 9.4+
+:class: warning
+
+Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app.
+::::
 
 The **Metrics Explorer** page enables you to create time-series visualizations based on aggregation of your metrics, chart them against related metrics, and break them down per the field of your choice. You can group and create visualizations of metrics for one or more resources that you are monitoring.
 
