@@ -90,7 +90,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | Mac                | Windows/Linux       | Description                 |
 |--------------------|---------------------|-----------------------------|
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
-| {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment a line |
+| {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
 
@@ -253,6 +253,29 @@ In the query bar, select **Show recent queries**.
 From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
+
+
+## Search across projects with `SET project_routing` [esql-kibana-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+
+```esql
+SET project_routing = "_alias:my_other_project";
+FROM logs-*
+| WHERE log.level == "error"
+| STATS count = COUNT(*) BY service.name
+```
+
+The editor autocompletes two built-in values when you type `SET project_routing`:
+
+- `_alias:_origin` — Search only the current (origin) project.
+- `_alias:*` — Search all linked projects.
+
+You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
 
 
 ## Related pages

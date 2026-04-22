@@ -18,21 +18,17 @@ Built-in agents are pre-configured by Elastic with specific instructions and too
 
 ::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-Built-in agents cannot be modified or deleted. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
+The **Elastic AI Agent** is now a standard persisted default agent that is space-aware and modifiable. Refer to [Elastic AI Agent](#elastic-ai-agent) for details.
 
-The **Elastic AI Agent** is not a built-in agent in this version. It is a standard persisted default agent that is space-aware and editable. Refer to [Elastic AI Agent](#elastic-ai-agent) for details.
-
-::::
-
-::::{applies-item} { stack: preview =9.2, ga 9.3 }
-
-:::{tip}
-You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
 :::
 
-::::
+:::{applies-item} { stack: preview =9.2, ga 9.3 }
+
+You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
+
+:::
 
 ::::
 
@@ -57,6 +53,7 @@ Built-in agents are space-agnostic: they are available across all [{{kib}} space
 ::::
 
 :::{note}
+:applies_to: { "stack": "preview =9.2, ga =9.3" }
 {{product.observability}} and {{product.security}} users must opt-in to use {{agent-builder}}. To learn more, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 :::
 
