@@ -24,14 +24,7 @@ This makes skills different from [tools](tools.md), which are discrete operation
 
 Skills also differ from the agent's system prompt. The system prompt is always in context, while skills load selectively. An agent can have access to many skills without loading them all into the context window at once. You author a skill once and assign it to any agent that needs it, keeping agent configurations clean and making expertise easy to share across your team.
 
-## How agents use skills
-
-When a skill activates, it provides:
-
-- **Knowledge content**: domain-specific instructions written in Markdown that tell the agent how to approach the task.
-- **Tools**: [Built-in tools](tools/builtin-tools-reference.md) or [custom tools](tools/custom-tools.md) that the agent can call while the skill is active.
-
-### How skills are invoked
+## How skills are invoked
 
 Skills can be invoked in three ways:
 
