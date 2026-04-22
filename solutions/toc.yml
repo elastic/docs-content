@@ -526,7 +526,9 @@ toc:
         children:
           - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
+      - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md
@@ -552,6 +554,7 @@ toc:
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
           - file: security/get-started/configure-advanced-settings.md
+          - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
@@ -587,6 +590,7 @@ toc:
               - file: security/detect-and-alert/advanced-data-source-configuration.md
                 children:
                   - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
+                  - file: security/detect-and-alert/cross-project-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/prebuilt-rules.md
@@ -665,6 +669,7 @@ toc:
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
+          - file: security/manage-elastic-defend/exception-types-and-syntax.md
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md

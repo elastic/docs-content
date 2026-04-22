@@ -61,12 +61,15 @@ If you're using {{serverless-full}}, you can optionally [create custom roles in 
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 
-For {{ech}} deployments, the following predefined roles are available:
+For {{ech}} deployments, the following predefined roles are available. Each role defines what users can do in the {{ecloud}} console for deployment management and within the deployment for access to {{kib}} and data.
 
-* **Admin**: Can manage deployment details, properties and security privileges, and is able to sign on to the deployment with superuser privileges. This role can be scoped to one or more deployments. In order to prevent scope expansion, only Admins on all deployments can create new deployments.
-* **Editor**: Has the same rights as Admin, except from deployment creation and management of security privileges. Editors are able to sign on to the deployment with the “editor” stack role. This role can be scoped to one or more deployments.
-* **Viewer**: Can view deployments, and can sign on to the deployment with the viewer Stack role. This role can be scoped to one or more deployments.
+Roles can be scoped to specific deployments or to all deployments.
 
+| Role name | {{ecloud}} access | Deployment access | Notes |
+|---|---|---|---|
+| **Admin** | Manage deployment details, properties, and security privileges within their scope | [`superuser` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser), which grants full access to {{kib}}, cluster management, and all data indices | Only Admins scoped to all deployments can create new deployments |
+| **Editor** | Manage deployment details and properties within their scope, but cannot create new deployments or manage security | [`editor` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to {{kib}} features and read-only access to user data indices | Some {{es}} HTTP APIs are not available due to limited cluster privileges, such as `GET _cat/indices` |
+| **Viewer** | Read-only access to deployments within their scope | [`viewer` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-viewer), which grants read-only access to {{kib}} features and user data indices | |
 
 ### Mapping of {{ecloud}} roles with {{stack}} roles [ec-stack-user-org-member]
 
@@ -95,7 +98,7 @@ In the following table, the privileges outlined in **Project access** require [*
 You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
-| Name | {{ecloud}} access | Project access | Availability |
+| Role name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
 | Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
@@ -146,6 +149,8 @@ When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that ar
 * If you select the **Admin** role, the user is able configure project settings and network security in {{ecloud}}, but can't log in to the relevant projects as superuser.
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
 * [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, users have only **Viewer** access in the {{ecloud}} Console, and can't log in to the project.
+
+{applies_to}`serverless: preview` If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
 
 For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
 
