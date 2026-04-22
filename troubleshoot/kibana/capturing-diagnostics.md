@@ -48,7 +48,7 @@ The following examples assume your endpoint has a valid certificate. If you’re
 
 To run a {{kib}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}’s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
 
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
