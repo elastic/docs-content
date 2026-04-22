@@ -77,3 +77,18 @@ If the Discover session contains multiple tabs, you can choose which tab the pan
    :::
 
 3. Select **Apply**.
+
+### Save edits as a new Discover session [discover-session-save-as-from-dashboard]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When editing a Discover session panel from a dashboard, you can save your changes as a new standalone Discover session instead of updating the panel. This works whether the panel was added from the library or created directly on the dashboard.
+
+1. From the dashboard, open the panel menu and select **Edit**.
+2. Make your changes in **Discover**.
+3. In the application menu, open the menu next to **Save and return** and select **Save as**.
+4. Enter a name for the new Discover session, then select **Save**.
+
+After saving, **Discover** opens the new session in its standalone view. The original dashboard panel is unchanged.
