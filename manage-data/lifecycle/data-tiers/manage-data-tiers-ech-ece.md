@@ -44,7 +44,7 @@ Review [{{es}} data tiers](/manage-data/lifecycle/data-tiers.md) so you choose t
 
 ## Remove a data tier [remove-data-tier-ech-ece]
 
-Follow this section when you need to remove a data tier from an {{ech}} or {{ece}} deployment. The steps differ depending on whether the tier holds [regular indices](#non-searchable-snapshot-data-tier) or [{{search-snap}}](#searchable-snapshot-data-tier) indices (typical for cold or frozen when using {{ilm-init}}).
+Follow this section when you need to remove a data tier from an {{ech}} or {{ece}} deployment. The steps differ depending on whether the tier holds [regular indices](#non-searchable-snapshot-data-tier) or [{{search-snap}}](#searchable-snapshot-data-tier) indices (typical for cold or frozen when using {{ilm}} ({{ilm-init}})).
 
 ### Before you remove a data tier [before-you-remove-a-data-tier]
 
