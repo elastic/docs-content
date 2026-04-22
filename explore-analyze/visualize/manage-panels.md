@@ -101,6 +101,11 @@ To make changes to the panel, use the panel menu options.
 
         To make changes without changing the original version, open the panel menu and click **Unlink from library**.
 
+        :::{note}
+        :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+        For Discover session panels added from the library, **Edit** opens a tab selector where you can choose which tab the panel displays. Select **Apply** to save your changes or **Discard** to revert them. For step-by-step instructions, refer to [Add search results to a dashboard](../discover/save-open-search.md#_add_search_results_to_a_dashboard).
+        :::
+
     * **Convert to Lens** — Opens **TSVB** and aggregation-based visualizations in **Lens**.
     * **Settings** — Opens the **Settings** window to change the **title**, **description**, and **time range**.
     * **Remove** — Removes the panel from the dashboard.
