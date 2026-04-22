@@ -56,6 +56,9 @@ If you already know the visualization type you want to use, and how you want to 
 ::::{step} Choose the visualization type
 
 New visualizations default to **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using a data view, dragging a date or time field (such as `@timestamp`) as the first field on an empty workspace automatically selects **Line** as the chart type instead of **Bar**.
+
 As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
 ::::

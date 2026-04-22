@@ -40,6 +40,8 @@ To build a bar chart:
 
 ::::{step} Set the visualization to Bar
 New visualizations default to creating **Bar** charts, so you don't need to change the chart type selection.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using a data view, if you start by dragging a date or time field (such as `@timestamp`) onto an empty workspace, Lens automatically selects **Line** instead. Use the visualization type dropdown to switch back to **Bar** in that case.
 ::::
 
 ::::{step} Define the data to show
