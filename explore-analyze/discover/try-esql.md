@@ -26,6 +26,11 @@ For the complete {{esql}} documentation, including all supported commands, funct
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
+:::{tip}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+This tutorial uses sample data so you don't need to know specific index or field names. When you query your own data, you can use the [data source and fields browsers](../query-filter/languages/esql-kibana.md#esql-kibana-resource-browsers) in the editor to discover and insert them without leaving the query bar.
+:::
+
 1. Go to **Discover**.
 2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 

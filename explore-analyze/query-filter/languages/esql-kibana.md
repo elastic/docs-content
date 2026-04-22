@@ -65,6 +65,26 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the autocomplete menu also includes **Browse indices** and **Browse fields** entries that open interactive panels for selecting data sources and field names. Refer to [](#esql-kibana-resource-browsers) for details.
+
+#### Browse data sources and fields [esql-kibana-resource-browsers]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+In **Discover**, the {{esql}} editor includes two interactive browsers that help you find data sources and field names without leaving the editor:
+
+- **Data source browser**: lists indices, data streams, and aliases you can query. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Fields browser**: lists fields for the indices currently in your query and lets you insert one field at a time at the cursor position.
+
+You can open either browser from:
+
+- **The autocomplete menu**: select **Browse indices** when editing a `FROM` or `TS` command, or **Browse fields** when editing a position that accepts a field name (for example, after `KEEP`, `WHERE`, or `SORT`).
+- **The data source badge**: the first `FROM` or `TS` keyword in the query is rendered as a clickable badge. Select it to open the data source browser.
+
+Both browsers operate on the main query only and don't apply to subqueries.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
