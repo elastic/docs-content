@@ -49,7 +49,7 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 
 ::::{important}
 :applies_to: stack: ga 9.4+
-The **Infrastructure** tab assumes the service and its underlying infrastructure (hosts, pods, containers) are observed using the same schema. The schema is inferred from the APM agent name:
+The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. It infers the schema is inferred from the APM agent name:
 
 **Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
 
