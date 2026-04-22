@@ -136,7 +136,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The entity store creates user and host entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
+The entity store creates user, host, and service entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
 
 Examples of supported integrations include:
 
