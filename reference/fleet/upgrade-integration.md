@@ -12,19 +12,15 @@ products:
 
 # Upgrade an {{agent}} integration [upgrade-integration]
 
-
 ::::{important}
 By default, {{kib}} requires an internet connection to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If network restrictions prevent {{kib}} from reaching the public {{package-registry}}, you can use a proxy server or host your own {{package-registry}}. To learn more, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 ::::
-
 
 Elastic releases {{agent}} integration updates periodically. To use new features and capabilities, upgrade the installed integration to the latest version and optionally upgrade integration policies to use the new version.
 
 ::::{tip}
 In larger deployments, you should test integration upgrades on a sample {{agent}} before rolling out a larger upgrade initiative.
 ::::
-
-
 
 ## Upgrade an integration to the latest version [upgrade-integration-to-latest-version]
 
@@ -56,7 +52,6 @@ You must upgrade standalone agents separately. If you used {{kib}} to create and
 If you encounter issues after upgrading an integration and your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **integration rollback**, you can [roll back the integration to the previously installed version](/reference/fleet/roll-back-integration.md).
 ::::
 
-
 ## Keep integration policies up to date automatically [upgrade-integration-policies-automatically]
 
 Some integration packages, like System, are installed by default during {{fleet}} setup. These integrations are upgraded automatically when {{fleet}} detects that a new version is available.
@@ -69,18 +64,22 @@ The following integrations are installed automatically when you select certain o
 
 The [Elastic Defend](integration-docs://reference/endpoint/index.md) integration also has an option to upgrade installation policies automatically.
 
-For the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be disabled.
+For the following integrations, when the integration is updated automatically the integration policy is upgraded automatically as well. This behavior cannot be deactivated.
 
-* [Elastic APM](integration-docs://reference/apm/index.md)
-* [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture/index.md#cloud-security-posture-management-cspm)
-* [Elastic Synthetics](/solutions/observability/synthetics/index.md)
+* [Cloud Asset Inventory](integration-docs://reference/cloud_asset_inventory.md)
+* [Cloud Security Posture Management](integration-docs://reference/cloud_security_posture.md#cloud-security-posture-management-cspm)
+* [Elastic APM](integration-docs://reference/apm.md)
 
-For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {{fleet}} automatically upgrades your policies when a new version of the integration is available. If there are conflicts during the upgrade, your integration policies will not be upgraded, and you’ll need to [upgrade integration policies manually](#upgrade-integration-policies-manually).
+For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {{fleet}} automatically upgrades your policies when a new version of the integration is available. If there are conflicts during the upgrade, your integration policies require manual upgrade. Refer to [upgrade integration policies manually](#upgrade-integration-policies-manually) for instructions.
 
-To keep integration policies up to data automatically:
+:::{note}
+If the next integration version includes deprecations, {{fleet}} pauses the automatic upgrade and requires you to review and accept the changes before proceeding. For more information, refer to [Review and accept automatic upgrades](/reference/fleet/deprecated-integrations.md#auto-upgrade-deprecated).
+:::
+
+To keep integration policies up to date automatically:
 
 1. In {{kib}}, go to the **Integrations** page and open the **Installed integrations** tab. Search for and select the integration you want to configure.
-2. Click **Settings** and make sure **Keep integration policies up to data automatically** is selected.
+2. Click **Settings** and make sure **Keep integration policies up to date automatically** is selected.
 
     :::{image} images/upgrade-integration-policies-automatically.png
     :alt: Settings tab under Integrations shows how to keep integration policies up to date automatically
@@ -88,8 +87,6 @@ To keep integration policies up to data automatically:
     :::
 
     If this option isn’t available on the **Settings** tab, this feature is not available for the integration you’re viewing.
-
-
 
 ## Upgrade integration policies manually [upgrade-integration-policies-manually]
 
@@ -116,10 +113,9 @@ If you can’t upgrade integration policies when you upgrade the integration, up
 
 Too many conflicts to resolve? Refer to the [troubleshooting docs](/troubleshoot/ingest/fleet/common-problems.md#upgrading-integration-too-many-conflicts) for manual steps.
 
-
 ## Resolve conflicts [resolve-conflicts]
 
-When attempting to upgrade an integration policy, it’s possible that breaking changes or conflicts exist between versions of an integration. For example, if a new version of an integration has a required field and doesn’t specify a default value, {{fleet}} cannot perform the upgrade without user input. Conflicts are also likely if an experimental package greatly restructures its fields and configuration settings between releases.
+When attempting to upgrade an integration policy, there might be breaking changes or conflicts between versions of an integration. For example, if a new version of an integration has a required field and doesn’t specify a default value, {{fleet}} requires user input to complete the upgrade. Conflicts are also likely if an experimental package greatly restructures its fields and configuration settings between releases.
 
 If {{fleet}} detects a conflict while automatically upgrading an integration policy, it will not attempt to upgrade it. You’ll need to:
 
@@ -139,3 +135,20 @@ If {{fleet}} detects a conflict while automatically upgrading an integration pol
         :::
 
     2. In the policy editor, fix any errors and click **Upgrade integration**.
+
+## Upgrading to a deprecated version [upgrading-to-a-deprecated-version]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+When you upgrade an integration, the new version might be marked as deprecated. This happens when integration developers are retiring the package and want to notify users to begin planning migrations.
+
+If you upgrade to a deprecated version:
+
+* You'll see deprecation warnings throughout the {{fleet}} and Integrations UI.
+* The integration remains fully functional during the maintenance period.
+* If you have automatic policy upgrades enabled, {{fleet}} pauses the upgrade and requires you to review the deprecations before proceeding.
+* Review the deprecation notice for recommended alternatives.
+
+For more information, refer to [How deprecations affect integration upgrades](/reference/fleet/deprecated-integrations.md#upgrades-deprecated).
