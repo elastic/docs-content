@@ -469,11 +469,8 @@ Reference the deployed text embedding model or the model deployment in the `quer
 3. The query string from which the model generates the dense vector representation.
 
 :::{tip}
-For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to Build query vectors for knn search.
+For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to [Build query vectors for knn search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#build-query-vectors-for-knn-search).
 :::
-<!--
-TODO: place link after https://github.com/elastic/elasticsearch/pull/146059 is merged
--->
 
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
