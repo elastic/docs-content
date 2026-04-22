@@ -43,14 +43,14 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
 ::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+The following examples assume your endpoint has a valid certificate. If you’re testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don’t use this flag in production environments.
 ::::
 
 To run a {{kib}} diagnostic:
 
 1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
 
-    For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you'd use the following curl request. Adapt these parameters to your context.
+    For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
     ```sh
     curl -X GET -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
@@ -98,10 +98,10 @@ HTTP 401 `UNAUTHENTICATED`
 :   Additional information in the error will usually indicate that your `username:password` pair is invalid, or that your {{es}} `.security` index is unavailable and you need to setup a temporary {{es}} [file-based realm](../../deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md) user with `role:superuser` to authenticate.
 
 HTTP 403 `UNAUTHORIZED`
-:   Your `username` is recognized but has insufficient permissions to run the diagnostic. Either use a different username or increase the user's privileges.
+:   Your `username` is recognized but has insufficient permissions to run the diagnostic. Either use a different username or increase the user’s privileges.
 
 HTTP 429 `TOO_MANY_REQUESTS` (for example, `circuit_breaking_exception`)
-:   The authentication and authorization were successful, but the {{es}} cluster isn't responding to requests. This issue is usually intermittent and can happen when the cluster is overwhelmed. In this case, resolve {{es}}'s health first before returning to {{kib}}.
+:   The authentication and authorization were successful, but the {{es}} cluster isn’t responding to requests. This issue is usually intermittent and can happen when the cluster is overwhelmed. In this case, resolve {{es}}'s health first before returning to {{kib}}.
 
 HTTP 504 `BAD_GATEWAY`
 :   Your network has trouble reaching {{kib}}. You might be using a proxy or firewall. Consider running the diagnostic tool from a different location, confirming your port, or using an IP instead of a URL domain.
