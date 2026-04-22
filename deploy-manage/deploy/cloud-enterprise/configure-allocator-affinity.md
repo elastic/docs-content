@@ -17,10 +17,10 @@ One of the benefits of the ECE platform is its robust deployment instance distri
 
 Configuring allocator affinity is an optional post-installation task that changes the behavior of {{ece}}. If you do not explicitly set an affinity strategy, all instances use the [`fill-anti-affinity`](#fill-anti-affinity) strategy by default.
 
-To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
-::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::{important}
+These examples use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your curl commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing only, you can use `-k` to skip certificate verification. Don't use this flag in production environments.
 ::::
 
 

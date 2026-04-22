@@ -23,8 +23,8 @@ In order to start using the Integrations Server payload, you first need to enabl
 
 ## API request example [ece_api_request_example_3]
 
-::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::{important}
+These examples use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your curl commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing only, you can use `-k` to skip certificate verification. Don't use this flag in production environments.
 ::::
 
 The example shows how to use the API to create a deployment with APM with version 8.0 and update the deployment to switch to Integrations Server.

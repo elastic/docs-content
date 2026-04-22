@@ -100,8 +100,8 @@ If your organization’s deployments already trust each other by default, you ca
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::{important}
+These examples use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your curl commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing only, you can use `-k` to skip certificate verification. Don't use this flag in production environments.
 ::::
 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:

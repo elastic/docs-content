@@ -15,8 +15,8 @@ Custom deployment templates should be updated in order to support Integrations S
 
 To manually update your custom deployment templates to support Integrations Server:
 
-::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+::::{important}
+These examples use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your curl commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing only, you can use `-k` to skip certificate verification. Don't use this flag in production environments.
 ::::
 
 1. Obtain a list of all existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
