@@ -97,7 +97,11 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 ## Organize the query results [esql-kibana-results-table]
 
-By default, the results table shows a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When a query without transformational commands (such as `KEEP` or `STATS`) returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+
+To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
