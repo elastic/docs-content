@@ -33,10 +33,10 @@ When a skill activates, it provides:
 
 ### How skills are invoked
 
-Skills can be activated in three ways:
+Skills can be invoked in three ways:
 
 **Automatic discovery (default)**
-:   The agent receives a list of available skills with their names and descriptions. Based on the user's natural language input, it automatically selects and activates the most relevant skill. No special syntax is needed.
+:   The agent receives a list of available skills with their names and descriptions. Based on the user's natural language input, it automatically selects and invokes the most relevant skill. No special syntax is needed.
 
 **Slash commands**
 :   Users can explicitly invoke a skill by typing `/` followed by the skill name and a prompt. This is useful when you know exactly which skill you need.
@@ -48,7 +48,7 @@ Skills can be activated in three ways:
 :::
 
 **Attachment-driven**
-:   When a user attaches contextual data to a message (for example, an alert from the alert flyout), the agent can automatically activate the relevant skill based on the attachment type.
+:   When a user attaches contextual data to a message (for example, an alert from the alert flyout), the agent can automatically invoke the relevant skill based on the attachment type.
 
 ## Use cases
 
