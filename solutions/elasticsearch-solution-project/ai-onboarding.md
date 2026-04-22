@@ -29,9 +29,12 @@ Based on this, it recommends an appropriate search approach and guides you throu
 
 ## Get started with AI onboarding
 
-When you start a new {{es}} project, the **Getting started** page opens. To access it later, use the **Getting started** menu. Then locate the **Build with AI** section.
+When you start a new {{es}} project, the **Getting started** page opens. To access it later, use the **Getting started** menu.
 
-[TO DO: screenshot]
+:::{image} /solutions/images/ai-onboarding-paths.png
+:alt: AI onboarding paths
+:screenshot:
+:::
 
 You can choose between two onboarding paths:
 
@@ -39,9 +42,13 @@ You can choose between two onboarding paths:
 
 Install Elastic onboarding skills in your preferred coding assistant (for example, Cursor or Claude Code):
 
-1. Click **Install Elastic skills**.
+1. Click **Copy prompt**.
 2. Copy the generated prompt.
-[TO DO: screenshot]
+
+  :::{image} /solutions/images/ai-onboarding-copy-prompt.png
+  :alt: AI onboarding prompt
+  :screenshot:
+  :::
 3. Paste the prompt into your coding agent to install the onboarding skills.
 
 Once installed, your coding agent can guide you through the onboarding flow.
@@ -50,9 +57,13 @@ Once installed, your coding agent can guide you through the onboarding flow.
 
 Start onboarding directly in Elastic:
 
-1. Click **Use Elastic Agent**.
+1. Click **Open Elastic Agent**.
 2. A chat interface opens.
-[TO DO: screenshot]
+
+  :::{image} /solutions/images/ai-onboarding-chat.png
+  :alt: AI onboarding chat
+  :screenshot:
+  :::
 3. Describe what you want to build.
 
 The assistant asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
