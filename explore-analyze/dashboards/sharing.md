@@ -47,6 +47,8 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 
 ## Export dashboards [export-dashboards]
 
+{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` To export a single dashboard as API-compatible JSON instead, without its related saved objects, refer to [Export a dashboard as JSON](#export-dashboard-json).
+
 Export dashboards as NDJSON files to migrate them to other {{product.kibana}} instances, back them up, or share them with other teams. You can export dashboards from **Stack Management** > **Saved Objects**. To configure and start the export:
 
 1. Select the dashboard that you want, then click **Export**.
@@ -56,8 +58,6 @@ Export dashboards as NDJSON files to migrate them to other {{product.kibana}} in
 ![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
 To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
-
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` To export a single dashboard as API-compatible JSON instead, without its related saved objects, refer to [Export a dashboard as JSON](#export-dashboard-json).
 
 ## Export a dashboard as JSON [export-dashboard-json]
 ```{applies_to}
