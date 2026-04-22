@@ -1,6 +1,6 @@
 ---
 navigation_title: "Kibana APIs"
-description: "Use the Agent Builder Kibana REST APIs to programmatically manage agents, tools, and conversation history."
+description: "Use the Agent Builder Kibana REST APIs to programmatically manage agents, tools, skills, and conversation history."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -19,7 +19,7 @@ products:
 
 This page provides a quick overview of the main {{kib}} API endpoints for {{agent-builder}}. For complete details including all available parameters, request/response schemas, and error handling, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
-These APIs enable you to programmatically work with the {{agent-builder}} abstractions.
+These APIs enable you to programmatically work with {{agent-builder}} abstractions such as agents, tools, and skills.
 
 :::{tip}
 New to the {{agent-builder}} APIs? Try our hands-on [API tutorial](agent-builder-api-tutorial.md) that walks you through creating custom tools and agents step-by-step.
@@ -400,6 +400,237 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
          "query": "can you find john doe's email from the employee index?"}
        }
      }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+### Skills APIs
+
+**Example:** List all skills
+
+This example uses the [list skills API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+GET kbn://api/agent_builder/skills
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X GET "${KIBANA_URL}/api/agent_builder/skills" \
+     -H "Authorization: ApiKey ${API_KEY}"
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Create a skill
+
+This example uses the [create a skill API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-skills).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/skills
+{
+  "id": "my-log-triage-skill",
+  "name": "Log Triage",
+  "description": "Guides triage of application log errors: classify by severity, identify the affected service and host, and suggest remediation steps. Use when a user asks to investigate or summarize log errors.",
+  "content": "## When to Use This Skill\n\nUse this skill when:\n- A user asks to investigate or summarize log errors\n- A user wants to understand the cause of application failures\n\n## Log Triage Process\n\n### 1. Identify the affected service\n- Query recent error logs using `platform.core.execute_esql`\n- Extract `service.name`, `host.name`, and `log.level` fields\n\n### 2. Classify by severity\n- Group errors by type and frequency\n- Note any spike in error rate\n\n### 3. Suggest remediation\n- Summarize the most common errors\n- Suggest next steps based on error patterns",
+  "tool_ids": [
+    "platform.core.execute_esql",
+    "platform.core.generate_esql",
+    "platform.core.list_indices"
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/skills" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "id": "my-log-triage-skill",
+       "name": "Log Triage",
+       "description": "Guides triage of application log errors: classify by severity, identify the affected service and host, and suggest remediation steps. Use when a user asks to investigate or summarize log errors.",
+       "content": "## When to Use This Skill\n\n...",
+       "tool_ids": [
+         "platform.core.execute_esql",
+         "platform.core.generate_esql",
+         "platform.core.list_indices"
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Create a skill with referenced content
+
+This example uses the [create a skill API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-skills) with `referenced_content` to attach supporting files the agent can read selectively.
+
+::::{tab-set}
+:group: api-examples-skill-refs
+
+:::{tab-item} Console
+:sync: console-skill-refs
+```console
+POST kbn://api/agent_builder/skills
+{
+  "id": "my-log-triage-skill",
+  "name": "Log Triage",
+  "description": "Guides triage of application log errors. Use when a user asks to investigate or summarize log errors.",
+  "content": "## Log Triage Process\n\nFor example ES|QL queries, see `./queries`.",
+  "tool_ids": ["platform.core.execute_esql"],
+  "referenced_content": [
+    {
+      "name": "queries",
+      "relativePath": "./queries",
+      "content": "# Example Queries\n\n## Recent errors by service\n```esql\nFROM logs-* | WHERE log.level == \"error\" | STATS count = COUNT(*) BY service.name | SORT count DESC | LIMIT 10\n```"
+    }
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl-skill-refs
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/skills" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "id": "my-log-triage-skill",
+       "name": "Log Triage",
+       "description": "Guides triage of application log errors. Use when a user asks to investigate or summarize log errors.",
+       "content": "## Log Triage Process\n\nFor example ES|QL queries, see `./queries`.",
+       "tool_ids": ["platform.core.execute_esql"],
+       "referenced_content": [
+         {
+           "name": "queries",
+           "relativePath": "./queries",
+           "content": "# Example Queries\n\n## Recent errors by service\n```esql\nFROM logs-* | WHERE log.level == \"error\" | STATS count = COUNT(*) BY service.name | SORT count DESC | LIMIT 10\n```"
+         }
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Get a skill by ID
+
+This example uses the [get a skill by ID API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills-skillid).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+GET kbn://api/agent_builder/skills/{skillId}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X GET "${KIBANA_URL}/api/agent_builder/skills/{skillId}" \
+     -H "Authorization: ApiKey ${API_KEY}"
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Update a skill
+
+This example uses the [update a skill API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-agent-builder-skills-skillid).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+PUT kbn://api/agent_builder/skills/{skillId}
+{
+  "description": "Updated description with more specific trigger conditions.",
+  "content": "## When to Use This Skill\n\n(updated instructions)",
+  "tool_ids": [
+    "platform.core.execute_esql",
+    "platform.core.generate_esql"
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X PUT "${KIBANA_URL}/api/agent_builder/skills/{skillId}" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "description": "Updated description with more specific trigger conditions.",
+       "content": "## When to Use This Skill\n\n(updated instructions)",
+       "tool_ids": [
+         "platform.core.execute_esql",
+         "platform.core.generate_esql"
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Delete a skill
+
+This example uses the [delete a skill API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-skills-skillid).
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+DELETE kbn://api/agent_builder/skills/{skillId}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X DELETE "${KIBANA_URL}/api/agent_builder/skills/{skillId}" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true"
 ```
 :::{include} _snippets/spaces-api-note.md
 :::
