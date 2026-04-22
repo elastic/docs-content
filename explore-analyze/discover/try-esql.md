@@ -334,6 +334,56 @@ When you save your edits, the control is updated for your query.
 :::
 
 
+## View grouped results from a STATS query [esql-cascade-layout]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The hit counter above the table reports the number of groups instead of the number of documents.
+
+Queries that group by more than one field (for example, `BY clientip, extension`) keep the standard flat results table.
+
+### Switch the grouping field or opt out
+
+Open the {icon}`flask` **Group by** selector in the toolbar to:
+
+- Select a different field from your `STATS BY` clause to regroup the results.
+- Select **none** to fall back to the standard flat results table.
+
+Only one grouping field is active at a time.
+
+### Pattern and sparkline rendering
+
+When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance.
+
+When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, the resulting array is rendered as an inline sparkline next to the row aggregates. For example, the following query categorizes log messages and renders a per-pattern sparkline:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+| SAMPLE 0.001
+| STATS Count = COUNT(*) / 0.001,
+        Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
+    BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
+::::{tip}
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. See [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+::::
+
+### Row actions
+
+Select the {icon}`boxesVertical` actions button on any group row to:
+
+- **Copy to clipboard**: copy the group's value.
+- **Filter in**: append a `WHERE` clause to your query that keeps only documents matching this group.
+- **Filter out**: append a `WHERE` clause that excludes documents matching this group.
+- **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
+
+**Filter in** and **Filter out** are disabled when the grouping field is not filterable.
+
 ## Refine an {{esql}} query by interacting with the results table
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
