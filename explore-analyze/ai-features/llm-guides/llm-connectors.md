@@ -23,13 +23,14 @@ Elastic's [AI features](/explore-analyze/ai-features.md) work with the out-of-th
 
 ## Tested models and performance ratings [tested-models]
 
-While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following performance matrices to find performance information for models tested by Elastic:
+While connectors let you connect to a wide range of LLMs, model performance varies by solution and use case. Refer to the following pages for performance information for models Elastic has tested:
 
 * [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
 * [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
+* [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models)
 
 :::{note}
-Models that do not appear in these matrices may still work, but Elastic hasn't tested them. We recommend selecting a model with strong ratings for your intended use case.
+Models that do not appear in these resources may still work, but Elastic hasn't tested them for those scenarios. We recommend selecting a model with strong ratings for your intended use case.
 :::
 
 ## Connect to a third-party or self-managed LLM

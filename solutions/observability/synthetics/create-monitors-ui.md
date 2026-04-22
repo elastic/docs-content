@@ -70,6 +70,11 @@ To use the UI to add a lightweight monitor:
     :screenshot:
     :::
 
+    ::::{note}
+    :applies_to: stack: ga 9.4+
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
+    ::::
+
 ## Add a browser monitor [synthetics-get-started-ui-add-a-browser-monitor]
 
 You can also create a browser monitor in the UI using an **Inline script**.
@@ -111,6 +116,11 @@ To use the UI to add a browser monitor:
 
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
+
+    ::::{note}
+    :applies_to: stack: ga 9.4+
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
+    ::::
 
 ## View in your Observability project [synthetics-get-started-ui-view-in-your-observability-project]
 
