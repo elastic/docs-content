@@ -68,7 +68,7 @@ curl <ELASTICSEARCH_HOST_URL>:9200/
 If you're using TLS, use your CA certificate to test the connection:
 
 ::::{tip}
-The following example assumes your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+The following example assumes your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
 ::::
 
 ```bash

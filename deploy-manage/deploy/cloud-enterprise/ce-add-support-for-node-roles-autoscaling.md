@@ -1416,7 +1416,9 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
 Having added support for `node_roles` and autoscaling to your custom template, it is possible to perform the update through the RESTful API, by following these steps:
 
 ::::{important}
-These examples use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your curl commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing only, you can use `-k` to skip certificate verification. Don't use this flag in production environments.
+The `curl` examples on this page use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your `curl` commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. Don't use `--insecure` or `-k` in production environments.
 ::::
 
 1. Obtain the existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.

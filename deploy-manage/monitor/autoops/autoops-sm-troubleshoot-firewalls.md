@@ -88,7 +88,7 @@ The command returns a response similar to the following:
 If you do not receive a similar response, your system returns an error indicating one or more reasons for the failure as outlined in the following table. Use the corresponding proposed solution to fix the issue.
 
 ::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `--insecure` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
 ::::
 
 | Reason for failure | Proposed solution |

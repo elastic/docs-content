@@ -29,7 +29,7 @@ Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthroug
 * Java Runtime Environment or Java Development Kit v1.8 or higher
 
 ::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add `-k` to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
 ::::
 
 
