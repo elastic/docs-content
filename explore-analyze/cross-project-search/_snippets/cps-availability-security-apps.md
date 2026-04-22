@@ -1,4 +1,4 @@
-{{elastic-sec}} apps have limited {{cps-init}} support:
+{{elastic-sec}} apps have limited {{cps-init}} support during technical preview:
 
 - **Timeline:** Only the **{{esql}}** tab supports `SET project_routing`. All other Timeline tabs search the origin project only.
 - **Other Security features:** The **Explore** page, threat-hunting workflows, the alert details flyout, and entity store remain scoped to the origin project.
