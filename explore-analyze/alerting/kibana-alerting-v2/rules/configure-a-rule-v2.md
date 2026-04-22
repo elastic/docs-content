@@ -17,7 +17,7 @@ Use this page to configure how a {{alerting-v2}} rule evaluates data and manages
 For writing the {{esql}} query, refer to [Author rules](author-rules-v2.md). For notification routing (matchers, grouping, throttling, maintenance windows), refer to [Notifications](../notifications-v2.md) and [Manage action policies](../notifications/manage-action-policies-v2.md).
 
 :::{note}
-Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule form does not link to policies.
+Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule builder form does not link to policies.
 :::
 
 ## Rule mode [rule-mode-v2]

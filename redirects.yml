@@ -1,4 +1,5 @@
 redirects:
+  'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'

@@ -12,16 +12,16 @@ description: "Create {{alerting-v2}} action policies, configure matchers, Dispat
 
 $$$create-manage-action-policies-v2$$$
 
-An action policy controls which alert episodes trigger notifications, how episodes are grouped, how often notifications are sent, and where they are routed. Policies are global within a space. You create and manage them from the **Action policies** page, not from the rule form.
+An action policy controls which alert episodes trigger notifications, how the policy groups episodes, how often it sends notifications, and where it routes them. Policies are global within a space. You create and manage them from the **Action policies** page, not from the rule form.
 
-For API values, Dispatch per and Frequency mappings, throttle strategies, dispatch outcomes, and matcher field examples, refer to [Action policy reference](action-policy-reference-v2.md#action-policy-reference-v2).
+For matcher fields, grouping modes, throttle strategies, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference-v2.md).
 
 ## Create an action policy
 
 1. Open **{{manage-app}} > V2 Alerting Preview > Action Policies**.
-2. Click **Create policy**.
-3. Fill in the policy fields described in [Policy fields](#policy-fields) below.
-4. Click **Save**. The matcher expression is validated on save, so invalid KQL is rejected before dispatch runs.
+2. Select **Create policy**.
+3. Fill in the policy fields described in [Policy fields](#policy-fields).
+4. Select **Save**. Kibana validates the matcher expression on save and rejects any KQL that isn't valid.
 
 ## Policy fields [policy-fields]
 
@@ -31,7 +31,7 @@ $$$matcher-v2$$$
 
 An optional KQL expression that filters which episodes this policy applies to. An empty matcher matches every episode in the space.
 
-Use matchers to route different episodes to different policies — for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. Typical matcher fields and examples are listed in [Action policy reference](action-policy-reference-v2.md#matcher-fields-typical-kql).
+Use matchers to route different episodes to different policies, for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Matcher fields](action-policy-reference-v2.md#matcher-fields).
 
 ### Grouping and frequency [reduce-noise-grouping-v2]
 
@@ -39,28 +39,29 @@ $$$reduce-noise-grouping-v2$$$
 
 **Dispatch per** controls how episodes batch into notifications. **Frequency** controls how often the policy can notify for each batch.
 
+:::{table}
+:widths: 4-4-4
+
 | Dispatch per | What it does | Available Frequency options |
 |---|---|---|
-| **Episode** | One notification per episode. | On status change; On status change + repeat at interval; Every evaluation |
-| **Group** | Bundle episodes that share a field value. Specify **Group by** (for example `data.service.name` or `data.host.name`). | At most once every…; Every evaluation |
+| **Episode** | One notification per episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
+| **Group** | Bundle episodes that share a field value. Specify **Group by** (for example `data.service.name` or `data.host.name`). | - At most once every… <br> - Every evaluation |
 | **Digest** | One notification for all matching episodes combined. | Every evaluation |
 
-Episode works for most rules. Use Group when a rule produces many series-level episodes and you want to batch by a shared field. Use Digest for periodic summaries on longer schedules.
+:::
 
-For Frequency to API strategy mappings, refer to [Action policy reference](action-policy-reference-v2.md#frequency-ui-when-episode-per_episode).
+For detailed descriptions, frequency options, and examples for each mode, refer to [Dispatch per options](action-policy-reference-v2.md#notification-grouping).
 
 ### Throttling [throttle-v2]
 
 $$$throttle-v2$$$
 
-Throttling limits how often the policy can fire for a given group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
-
-For throttle strategy API values, refer to [Action policy reference](action-policy-reference-v2.md#throttle-strategies-api).
+Throttling limits how often the policy can fire for a given group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available throttle strategies, refer to [Throttle strategies](action-policy-reference-v2.md#throttle-strategies).
 
 ### Destinations
 
-One or more workflows to invoke when the policy matches. Use the **workflow search** field in the policy editor to find and attach workflows. Only workflow-type destinations are supported in the current UI.
+One or more workflows to invoke when the policy matches. Use the search field to find and attach workflows.
 
 ### Snooze
 
-An optional time window during which the policy does not dispatch. Useful for planned maintenance or quiet periods without disabling the policy entirely.
+An optional time window during which the policy doesn't dispatch. Useful for planned maintenance or quiet periods without disabling the policy entirely.

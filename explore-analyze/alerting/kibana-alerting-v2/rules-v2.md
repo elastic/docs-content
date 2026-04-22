@@ -16,7 +16,7 @@ A rule is where {{alerting-v2}} starts. It points {{kib}} at the data you care a
 
 $$$detection-and-notification-v2$$$
 
-On each run, a rule executes an {{esql}} query against your data. If the query finds a match. If the rule is in Detect mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
+On each run, a rule executes an {{esql}} query against your data. If the query finds a match and the rule is in Detect mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
 
 When creating a rule, choose Detect mode to record and query results without alerting anyone, or Alert mode when you want to track issues and route notifications.
 
@@ -34,7 +34,7 @@ This separation means you can build and test a rule without anyone getting paged
 
 % You can query this history in Discover, build dashboards from it, or write follow-on rules that read `.rule-events` as a data source.
 
-## What's next
+## Next steps
 
 - **[Author rules](rules/author-rules-v2.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
 - **[View and manage rules](rules/view-manage-rules-v2.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.

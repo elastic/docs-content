@@ -57,7 +57,7 @@ $$$alerting-privileges-v2$$$
 
 Saving a rule or action policy automatically creates an API key that is used to run it. The key inherits the privileges of the user who saved the object. If those privileges change over time, update the key from the rule or policy management UI.
 
-## What's next
+## Next steps
 
 When you're ready to go further, these can be done in any order:
 

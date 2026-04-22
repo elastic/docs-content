@@ -12,7 +12,7 @@ description: "Reference for {{alerting-v2}} episode status, `.rule-events` row s
 
 $$$alert-states-reference-v2$$$
 
-Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-manage-and-reference-alerts-v2.md#alert-actions-v2). For rule evaluation fields on `.rule-events`, refer to [Rule event and field reference](../rules/rule-event-field-reference-v2.md#rule-reference-v2).
+Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts-v2.md#alert-actions-v2). For rule evaluation fields on `.rule-events`, refer to [Rule event and field reference](../rules/rule-event-field-reference-v2.md#rule-reference-v2).
 
 ## Episode status
 
@@ -44,5 +44,5 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 | @timestamp | date | When the action was recorded. |
 | episode.id | keyword | Target episode. |
 | rule.id | keyword | Rule that owns the episode. |
-| action.type | keyword | The action type, for example: <br>- `acknowledge`: User acknowledged the alert.<br>- `snooze`: Notifications snoozed for a period.<br>- `tag`: Tag applied to the alert.<br>- `fire`: Notification or escalation fired for the episode.<br>- `unmatched`: No action policy matched the episode, so no workflow ran for it under these policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](view-manage-and-reference-alerts-v2.md#alert-actions-v2). |
+| action.type | keyword | The action type, for example: <br>- `acknowledge`: User acknowledged the alert.<br>- `snooze`: Notifications snoozed for a period.<br>- `tag`: Tag applied to the alert.<br>- `fire`: Notification or escalation fired for the episode.<br>- `unmatched`: No action policy matched the episode, so no workflow ran for it under these policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](view-and-manage-alerts-v2.md#alert-actions-v2). |
 | episode.status_count | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`.<br>For example, if the episode stays `pending` for three rule evaluations in a row, the value is `3`. |

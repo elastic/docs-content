@@ -29,7 +29,7 @@ Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, 
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. This is different from snoozing, which suppresses notifications or quiets a series or policy without stopping rule evaluation.
 
-- To snooze alert episodes or series, refer to [View, manage, and reference alerts](../alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2).
+- To snooze alert episodes or series, refer to [View, manage, and reference alerts](../alerts/view-and-manage-alerts-v2.md#alert-actions-v2).
 - To snooze or stop an action policy, refer to [Manage action policies](../notifications/manage-action-policies-v2.md).
 
-If you are unsure which to use, refer to [Validation checklist and noise controls](../troubleshooting-alerting-v2.md#reduce-noise-v2).
+% If you are unsure which to use, refer to [Validation checklist and noise controls](../troubleshooting-alerting-v2.md#reduce-noise-v2).

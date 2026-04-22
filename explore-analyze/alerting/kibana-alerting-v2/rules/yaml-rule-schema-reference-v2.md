@@ -29,7 +29,7 @@ This page lists every valid field for a {{alerting-v2}} YAML rule definition. Fo
 |---|---|---|---|
 | `metadata.description` | string | Max 1,024 characters | Optional description of what the rule monitors. |
 | `metadata.owner` | string | Max 256 characters | Team or person responsible for the rule. |
-| `metadata.tags` | array of strings | Max 100 tags | Labels for filtering and organisation. |
+| `metadata.tags` | array of strings | Max 100 tags | Labels for filtering and organization. |
 
 ## Schedule fields
 

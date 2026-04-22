@@ -12,17 +12,15 @@ description: "Turn an {{esql}} query in Discover into a {{alerting-v2}} rule wit
 
 $$$create-rules-discover-v2$$$
 
-Create {{alerting-v2}} rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including preview, alert mode settings, and YAML toggle, see [Create rules using the rule builder](create-rule-from-rule-builder-v2.md).
+Create {{alerting-v2}} rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including preview, alert mode settings, and YAML toggle, refer to [Create rules using the rule builder](create-rule-from-rule-builder-v2.md).
 
-:::{admonition} What gets pre-populated
-When you create a rule from Discover:
+When you create a rule from Discover, the following is populated:
 
 - The full {{esql}} query from your current Discover session is placed into the rule's base query field.
 - The index pattern is inferred from the `FROM` command in your query.
 - The time range is converted into the rule's lookback window.
 
-You can modify any of these values in the rule form before saving.
-:::
+You can modify any of these values before saving.
 
 ## Create a rule from Discover
 

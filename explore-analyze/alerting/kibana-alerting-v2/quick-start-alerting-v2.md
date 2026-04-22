@@ -147,7 +147,7 @@ By completing this tutorial, you saw the core alerting v2 model in action end to
 - **Episodes follow a lifecycle.** When the error logs existed, both episodes moved to `active`. When you deleted the logs, both recovered and moved to `inactive` automatically, no manual intervention required.
 - **Rule events are the underlying record.** Every evaluation wrote documents to `.rule-events`, giving you a full queryable history of what the rule found and when.
 
-## What's next
+## Next steps
 
 - **Add notifications:** Create a workflow and action policy to route alerts when an episode opens or recovers. Refer to [Notifications](notifications-v2.md).
 - **Use your own data:** Swap `logs-tutorial` for a real data source and update the breach condition to match your use case. Refer to [Author rules](rules/author-rules-v2.md) to learn more.

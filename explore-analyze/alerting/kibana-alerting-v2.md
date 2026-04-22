@@ -29,7 +29,7 @@ A rule defines what to watch for in your data and how often to check. Every rule
 Refer to [Rules](kibana-alerting-v2/rules-v2.md) to learn more.
 
 ### Alerts
-When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot. It's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts in the Alerts UI. Refer to [Alerts](kibana-alerting-v2/alerts-v2.md) to learn more.
+When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot. It's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts on the **Alerts** page. Refer to [Alerts](kibana-alerting-v2/alerts-v2.md) to learn more.
 
 ### Action policies
 An action policy controls whether an alert should trigger a notification, and how often. You can set conditions to filter which alerts it applies to, for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space. Refer to [Notifications](kibana-alerting-v2/notifications-v2.md) to learn more.

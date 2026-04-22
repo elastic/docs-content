@@ -124,7 +124,7 @@ Episodes exist but policies appear to ignore them: repeated `unmatched` outcomes
 1. Confirm the rule and policy are listed under the **same space**.
 2. Inspect the policy **matcher** text and compare to fields visible on a recent `.rule-events` document for the episode (`data.*`, `rule.*`, status fields).
 3. Confirm the policy is **enabled** and not **snoozed**.
-4. Review triage actions on the episode for **snooze** or **suppress** patterns; see [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2).
+4. Review triage actions on the episode for **snooze** or **suppress** patterns; see [View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md#alert-actions-v2).
 5. Query `.alert-actions` for the episode id and read `action.type` values chronologically.
 
 ### Resolution
@@ -232,7 +232,7 @@ Escalate with exported Discover queries for `.rule-events` and `.alert-actions`,
 - **[Configure a rule](rules/configure-a-rule-v2.md)**: Thresholds, no-data handling, rule-level grouping, and related evaluation settings.
 - **[Manage action policies](notifications/manage-action-policies-v2.md)**: Enablement, snooze, **{{maint-windows-cap}}**, and bulk policy actions that affect dispatch.
 - **[Notifications (Action Policies)](notifications-v2.md)**: Action policies: matchers, Dispatch per, Frequency, destinations, and dispatcher behavior.
-- **[View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md)**: Snooze, acknowledge, deactivate, tags, and anything persisted in **`.alert-actions`**.
+- **[View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md)**: Snooze, acknowledge, deactivate, tags, and anything persisted in **`.alert-actions`**.
 
 This section is a decision table so you can match a situation to the right mechanism. Deep content lives on the pages above.
 
@@ -250,9 +250,9 @@ If multiple rows in the table apply, refer to [Using them together](#using-them-
 | Recipients get too many separate messages for related episodes | [Notification grouping on action policies](notifications/create-configure-action-policy-v2.md#reduce-noise-grouping-v2) | Batches related alerts into fewer notifications |
 | Notifications should only go out for certain episodes by severity, labels, or payload fields | [Matchers](notifications/create-configure-action-policy-v2.md#matcher-v2) | Uses KQL on the action policy over episode and rule context (for example `rule.labels` and payload fields) so only matching episodes route to workflows |
 | Planned maintenance: evaluations should continue but on-call should not be paged | [{{maint-windows-cap}}](notifications/manage-action-policies-v2.md#maintenance-windows-v2) | Pauses policy dispatch for a scheduled window; rule evaluation continues |
-| A temporary quiet period is needed for a series or episode without changing the rule | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2) (snooze, silence, acknowledge) | Snoozes or silences notifications. Acknowledge can also quiet an episode while work proceeds |
+| A temporary quiet period is needed for a series or episode without changing the rule | [View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md#alert-actions-v2) (snooze, silence, acknowledge) | Snoozes or silences notifications. Acknowledge can also quiet an episode while work proceeds |
 | Many low-level alerts should roll up into one higher-level signal | [Author rules](rules/author-rules-v2.md) ({{esql}} over `.rule-events`) | Runs follow-on rules on `.rule-events` or related data to correlate and notify once |
-| One alert episode should stop notifying and leave the triage queue while the rule keeps running | [View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md#alert-actions-v2) (deactivate / resolve) | Deactivates that episode. The rule still evaluates and can detect new episodes for other series |
+| One alert episode should stop notifying and leave the triage queue while the rule keeps running | [View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md#alert-actions-v2) (deactivate / resolve) | Deactivates that episode. The rule still evaluates and can detect new episodes for other series |
 
 Use the links in the table for procedures and reference detail on each control.
 

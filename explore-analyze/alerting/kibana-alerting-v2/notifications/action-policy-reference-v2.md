@@ -5,83 +5,83 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "API values, Dispatch per and Frequency UI mappings, dispatch outcomes, and workflow destination shape for {{alerting-v2}} action policies."
+description: "Grouping modes, throttle strategies, dispatch outcomes, and matcher field reference for {{alerting-v2}} action policies."
 ---
 
 # Action policy reference [action-policy-reference-v2]
 
 $$$action-policy-reference-v2$$$
 
-Condensed tables for matchers, grouping, throttling, and dispatch outcomes. For step-by-step policy creation and narrative guidance, refer to [Create and configure an action policy](create-configure-action-policy-v2.md).
+Quick-reference tables for building and debugging action policies. Use the following tables to look up valid matcher fields, map grouping modes to frequency options, or check what a dispatch outcome means. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy-v2.md).
 
-## Matcher fields (typical KQL) [matcher-fields-typical-kql]
+## Matcher fields [matcher-fields]
 
-| Field | Example use |
-|---|---|
-| episode_status | `"active"`, `"inactive"`, `"pending"`, `"recovering"` |
-| data.* | Payload from the rule, for example `data.severity`, `data.env`, `data.host.name` |
-| rule_id or rule.id | Rule identifier, for example `"rule-001"` |
-| rule.name, rule.labels | Rule metadata for scoping |
+Use these fields in the **Matcher** expression to filter which episodes a policy applies to. Combine them with standard KQL operators, for example `data.severity: "critical" AND episode_status: "active"`.
 
-## Notification grouping (API) [notification-grouping-api]
+| Field | Description | Example |
+|---|---|---|
+| `episode_status` | Current lifecycle status of the episode. Accepted values: `active`, `inactive`, `pending`, `recovering`. | `episode_status: "active"` |
+| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. | `data.severity: "critical"` or `data.host.name: "web-01"` |
+| `rule.id` | Unique identifier for the rule that generated the episode. | `rule.id: "rule-001"` |
+| `rule.name` | Display name of the rule. | `rule.name: "High CPU"` |
+| `rule.labels` | Key-value labels attached to the rule. Use dot notation to target a specific label key. | `rule.labels.env: "production"` |
 
-| Mode | When to use |
-|---|---|
-| per_episode (default) | Each episode is notified independently. |
-| all | Batch **all** matching episodes into **one** notification for that policy evaluation. |
-| per_field | Group by values of a `data.*` field so episodes sharing a key collapse into one notification per key. |
+## Dispatch per options [notification-grouping]
 
-## Dispatch per (UI) mapping
+Controls how the policy batches matching episodes before sending a notification.
 
-| UI option | Maps to |
-|---|---|
-| **Episode** | per_episode |
-| **Group** | per_field |
-| **Digest** | all |
+| Option | Description | When to use |
+|---|---|---|
+| Episode | Each episode triggers its own notification independently. Default selection. | You need per-issue visibility and want to handle each problem separately. |
+| Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value. | A rule produces many related episodes (for example, one per service or host) and you want to reduce noise by grouping them. |
+| Digest | The policy combines all matching episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alerts. |
 
-## Throttle strategies (API) [throttle-strategies-api]
+## Throttle strategies [throttle-strategies]
 
-| Strategy | Behavior |
-|---|---|
-| on_status_change | Notify when **episode status changes** (for example active → inactive). |
-| per_status_interval | At most **once per interval** for each **episode status** value. |
-| time_interval | At most **once per interval**, regardless of status changes. |
-| every_time | Eligible to fire on **every dispatcher evaluation** for matching episodes (subject to other policy limits). |
+Throttle strategies control how often the policy fires for a given episode or group. The available strategies depend on the **Dispatch per** setting. Not all strategies are valid for all modes.
 
-## Frequency (UI) when Episode (per_episode) [frequency-ui-when-episode-per_episode]
+| Option | Description | When to use |
+|---|---|---|
+| On status change | Notifies when the episode status changes (for example, active → recovering). One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
+| On status change + repeat at interval | Notifies on status change, then resends at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic reminders that a problem is still unresolved. |
+| At most once every… | Caps notifications to at most one per specified interval per episode or group, regardless of how often the rule runs. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
+| Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
-| UI option | Typical API mapping |
-|---|---|
-| **On status change** | on_status_change |
-| **On status change + repeat at interval** | per_status_interval (with **`interval`**) |
-| **Every evaluation (no throttle)** | every_time |
+### Frequency options for Episode [frequency-when-episode-per_episode]
 
-## Frequency (UI) when Group (per_field)
+Available frequency options when you set **Dispatch per** to **Episode**.
 
-| UI option | Typical API mapping |
-|---|---|
-| **At most once every…** | time_interval (with **`interval`**) |
-| **Every evaluation (no throttle)** | every_time |
+| Option | Description | Example |
+|---|---|---|
+| On status change | Notifies once when the episode opens and once when it recovers. No reminders while it remains active. | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
+| On status change + repeat at interval | Same as On status change, but also sends a reminder at a set interval while the episode is still active. | A host goes down at 9:00am → notification. With a 1h repeat: reminder at 10:00am, 11:00am. Recovers at 11:30am → notification. |
+| Every evaluation | Fires on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active episode produces up to 288 notifications per day. |
 
-## Frequency (UI) when Digest (all)
+### Frequency options for Group
 
-| UI option | Typical API mapping |
-|---|---|
-| **Every evaluation (no throttle)** | every_time |
+Available frequency options when you set **Dispatch per** to **Group**.
+
+| Option | Description | Example |
+|---|---|---|
+| At most once every… | Caps how often each group can notify, regardless of how many episodes match or how often the rule runs. | 10 episodes share `data.host.name: "web-01"`. With a 1h cap, you get at most one notification per hour for that group. |
+| Every evaluation | Fires on every rule evaluation for each unique group value. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications per host per hour. |
+
+### Frequency options for Digest
+
+Available frequency options when you set **Dispatch per** to **Digest**.
+
+| Option | Description | Example |
+|---|---|---|
+| Every evaluation | The only option for Digest. Fires on every rule run, bundling all matching episodes into one message. Pair with a longer rule schedule to avoid frequent summary messages. | A rule running every 30 minutes with 20 matching episodes produces one summary notification every 30 minutes containing all 20. |
 
 ## Dispatch outcomes
 
-| Outcome | Meaning |
-|---|---|
-| dispatched | Notifications were sent according to the policy. |
-| throttled | Delivery was suppressed because throttling rules said to wait. |
-| suppressed | The episode was suppressed before a notification went out, for example by an active suppression. |
-| unmatched | No action policy matched this episode, so no workflow ran for it under these policies. |
-| error | Processing failed. Check {{kib}} logs. |
+The system records each notification attempt with one of the following outcomes. To investigate delivery issues, query the `.alert-actions` data stream in Discover and filter by the `outcome` field.
 
-## Workflow destination object (example)
-
-| Property | Description |
+| Outcome | What happened |
 |---|---|
-| type | Destination type; `workflow` in the current UI. |
-| id | Workflow identifier (exact property names follow the API and UI version). |
+| `dispatched` | The system sent the notification successfully. |
+| `throttled` | The system skipped delivery because the throttle interval hadn't elapsed. This is expected behavior, not an error. |
+| `suppressed` | Dispatch was blocked before the notification went out—the rule was acknowledged, snoozed, or deactivated. |
+| `unmatched` | No action policy matched this episode, so no workflow ran. |
+| `error` | An error occurred during processing. Check {{kib}} logs to identify the cause. |

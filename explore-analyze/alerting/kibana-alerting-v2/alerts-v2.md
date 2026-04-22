@@ -66,7 +66,7 @@ The series is the container. Episodes are the individual problems that happened 
 This means you can track "the checkout service was broken from 02:14 to 03:21" and "the payment service was broken at the same time" as separate episodes, even when both come from the same rule.
 
 :::{tip}
-Snooze operates at the series level, not the episode level. If you snooze `checkout-service`, you're saying "stop notifying me about anything from this service for the next X hours", regardless of how many new episodes start during that time. You're silencing a specific ongoing situation, not just one alert.
+Snooze operates at the series level, not the episode level. If you snooze `checkout-service`, you're saying "stop notifying me about anything from this service for the next X hours", regardless of how many new episodes start during that time. You're silencing a specific ongoing situation, not only one alert.
 :::
 
 ### A practical way to think about it
@@ -82,9 +82,9 @@ The camera runs continuously (rule), always watching door 3 (series). One night 
 
 ## Signals versus alerts
 
-Every time a rule finds a match, it writes a document to `.rule-events`. Whether that document is a signal or an alert depends on the rule's mode — and that choice determines whether the system just records what happened or actively tracks it through to resolution.
+Every time a rule finds a match, it writes a document to `.rule-events`. Whether that document is a signal or an alert depends on the rule's mode, and that choice determines whether the system only records what happened or actively tracks it through to resolution.
 
-A **signal** is a one-time observation. The system writes it and moves on — no lifecycle, no notifications, no follow-up. A **alert** participates in an episode. The system links it to every other document from the same problem, tracks the lifecycle states, and routes notifications through action policies.
+A **signal** is a one-time observation. The system writes it and moves on, no lifecycle, no notifications, no follow-up. An **alert** participates in an episode. The system links it to every other document from the same problem, tracks the lifecycle states, and routes notifications through action policies.
 
 | Type | What it is | When it's created |
 | --- | --- | --- |
@@ -107,9 +107,9 @@ Because every evaluation produces its own document, you can reconstruct the full
 
 Retention is managed automatically through ILM. Older backing indices move through storage tiers and are deleted when the retention window expires. You do not need to manually remove documents. {{kib}} manages versioning, retention, and lifecycle for both streams. Do not change their mappings or index settings.
 
-## What's next
+## Related pages
 
-- **[View, manage, and reference alerts](alerts/view-manage-and-reference-alerts-v2.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- **[View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
 - **[Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md):** Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
 - **[Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md):** Look up lifecycle states, field names, and episode document structure.
 - **[Notifications](notifications-v2.md):** Set up action policies to route alert episodes to the right people and channels.

@@ -31,7 +31,7 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 |---|---|---|---|
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need full control over detection and notification routing | Custom alerting logic requiring scripting |
 | **Rule definition** | Select a rule type and fill in parameters | Write an {{esql}} query | Write a JSON watch definition |
-| **Alert data** | Updated in place; limited queryability | Append-only events queryable with {{esql}} in Discover | Watch history index |
+| **Alert data** | Updated in place; limited query support | Append-only events queryable with {{esql}} in Discover | Watch history index |
 | **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules | Action-level throttling and conditions |
 | **Noise reduction** | Snooze per rule, maintenance windows | Per-series snooze, per-episode acknowledgment, activation thresholds, matcher-based routing, rules on alerts | Action conditions and throttling |
-| **Availability** | All deployments | {{stack}} 9.4+ | Self-managed and {{ech}} only |
+| **Availability** | All deployments | {{serverless-full}} | Self-managed and {{ech}} only |
