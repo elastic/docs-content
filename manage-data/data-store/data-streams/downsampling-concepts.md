@@ -68,7 +68,7 @@ You can downsample a downsampled index. The subsequent downsampling interval mus
 Downsampling supports two methods for reducing multiple values in the same bucket to a single representative result:
 
 * `last_value`: {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga`
-  Stores only the most recent value for each metric in the bucket. This method reduces storage use the most, but it also reduces data accuracy. It applies to all metric types.
+  Stores only the most recent value for each metric in the bucket. This method reduces the storage footprint the most, but it also reduces data accuracy. It applies to all metric types.
 
 * `aggregate`
   Stores statistical summaries for the values in each bucket. This method preserves more information than `last_value`, but it requires more storage. It applies to each metric type as follows:
@@ -90,7 +90,7 @@ The target downsampled index uses the same field mappings as the source index, w
 
 An `aggregate_metric_double` can be used in `max`, `min`, `sum`, `value_count`, and `avg` aggregations without losing accuracy.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In ES|QL, a downsampled gauge stored as `aggregate_metric_double` can still be used as a `double` in other operations, but with reduced accuracy. In this case, the average value for the bucket is used as the single representative value.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In ES|QL, a downsampled gauge stored as `aggregate_metric_double` can still be used as a `double` in other operations, but with reduced accuracy. In this case, the average value for each downsample interval is used as the single representative value.
 
 
 
