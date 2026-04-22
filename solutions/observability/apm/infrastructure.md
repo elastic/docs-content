@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-infrastructure.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: beta
+  serverless: beta
 products:
   - id: observability
   - id: apm
