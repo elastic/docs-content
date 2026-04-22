@@ -28,6 +28,7 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
 | Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
+| {applies_to}`stack: ga 9.4+` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
 
 ## How entity analytics works
 
@@ -40,7 +41,7 @@ Entity analytics operates continuously across several stages:
 
     {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The entity store resolves entities using shared identity matching across sources, so a single real-world entity observed across multiple identity providers appears as one deduplicated record.
 
-5. **Investigate and respond:** The [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) surfaces the highest-risk entities, anomalies, and KPIs so you can triage and investigate efficiently.
+5. **Investigate and respond:** Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md) to review risk scores, surface anomalies, and prioritize investigations.
 
 ## Key capabilities
 

@@ -3,12 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-entity-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-entity-dashboard.html
 applies_to:
-  stack: all
-  serverless:
-    security: all
+  stack: 9.0-9.3
 products:
   - id: security
-  - id: cloud-serverless
 ---
 
 # Entity Analytics dashboard
