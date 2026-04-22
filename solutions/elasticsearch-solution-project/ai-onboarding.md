@@ -9,11 +9,11 @@ products:
   - id: kibana
 ---
 
-# AI onboarding
+# AI onboarding in {{es}} projects
 
-**AI onboarding** is an AI-powered assistant that guides you from an initial idea for your use case to a working search experience through a conversational, use-case-driven flow.
+**AI onboarding** is a skill you can invoke in your IDE, CLI, or directly within your Elastic deployment using [](/explore-analyze/ai-features/elastic-agent-builder.md). This skill enables an AI agent to guide you from an initial idea for your use case to a working search experience, using natural language.
 
-The assistant asks what you’re building, understands your data, recommends the right approach, and generates a working implementation, rather than requiring you to read documentation or create templates.
+The agent asks what you’re building, understands your data, recommends the right approach, and generates a working implementation. This helps you get started immediately without reading documentation or creating templates.
 Along the way, it explains key {{es}} concepts such as indices, mappings, and queries, so you learn while building.
 
 AI onboarding helps you:
@@ -55,7 +55,7 @@ Once installed, your coding agent can guide you through the onboarding flow.
 
 ### Use Elastic Agent
 
-Start onboarding directly in Elastic:
+Start onboarding directly in Elastic using the Agent Builder chat:
 
 1. Click **Open Elastic Agent**.
 2. A chat interface opens.
@@ -66,4 +66,4 @@ Start onboarding directly in Elastic:
   :::
 3. Describe what you want to build.
 
-The assistant asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
+The agent asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
