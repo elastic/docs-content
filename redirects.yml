@@ -1,5 +1,4 @@
 redirects:
-  'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'
@@ -937,7 +936,7 @@ redirects:
   'explore-analyze/alerting/kibana-alerting-v2/before-you-begin/alerting-privileges.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/view-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'view-alerts-v2': 'manage-alerts-v2'
 
@@ -1037,27 +1036,27 @@ redirects:
     anchors:
       'maintenance-windows-v2': 'maintenance-windows-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/snooze-or-silence.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'snooze-or-silence-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/snooze-or-silence.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'snooze-or-silence-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/deactivate-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'deactivate-alerts-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/deactivate-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'deactivate-alerts-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-actions.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'alert-actions-v2': 'alert-actions-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond/alert-episode-details.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'alert-episode-details-v2': 'alert-episode-details-v2'
   'explore-analyze/alerting/kibana-alerting-v2/reduce-noise/rules-on-alerts.md':
@@ -1135,11 +1134,11 @@ redirects:
     anchors:
       'manage-rules-v2': 'manage-rules-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'manage-alerts-v2': 'manage-alerts-v2'
   'explore-analyze/alerting/kibana-alerting-v2/manage-alerts/investigate-respond.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'investigate-respond-v2': 'investigate-respond-v2'
       'alert-actions-v2': 'alert-actions-v2'
@@ -1202,11 +1201,11 @@ redirects:
     anchors:
       'alert-lifecycle-v2': 'alert-lifecycle-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-alerts.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'manage-alerts-v2': 'manage-alerts-v2'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/investigate-respond.md':
-    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+    to: 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
     anchors:
       'investigate-respond-v2': 'investigate-respond-v2'
       'alert-actions-v2': 'alert-actions-v2'
@@ -1295,7 +1294,7 @@ redirects:
   'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/rules-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md'
-  'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md'
+  'explore-analyze/alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md'
   'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md': 'explore-analyze/alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md'
