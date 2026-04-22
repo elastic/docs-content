@@ -59,3 +59,21 @@ If the saved Discover session is associated with a different {{data-source}} tha
 3. Click **Add from library**.
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then click **X** to close the list.
+
+### Choose which tab to display [discover-session-choose-tab]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+If the Discover session contains multiple tabs, you can choose which tab the panel displays.
+
+1. Open the panel menu and select **Edit**.
+2. From the tab selector, select the tab you want to display.
+
+   :::{image} /explore-analyze/images/discover-session-tab-selector.png
+   :alt: Tab selector showing the list of available tabs for a Discover session panel
+   :screenshot:
+   :::
+
+3. Select **Apply**.
