@@ -104,7 +104,7 @@ If your ECE installation is still using the default, auto-generated certificates
 
 - Recommended: [Add your organization’s own certificate](../../../deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to {{ece}}. The upgrade process ensures that the certificates you add do not change, which avoids the trust errors.
 - Add the default CA certificate to the trust store of your system or of your browser. Only the server certificate changes during upgrade, but the CA certificate remains the same. Adding the CA certificate to your trust store alone is sufficient to avoid the trust errors.
-- Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field:
+- Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field.
 
     ::::{important}
     The `curl` examples on this page use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your `curl` commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).

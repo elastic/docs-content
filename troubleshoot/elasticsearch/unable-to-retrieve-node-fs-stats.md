@@ -65,11 +65,11 @@ Use `curl` to test the connection to each host in `elasticsearch.hosts`:
 curl <ELASTICSEARCH_HOST_URL>:9200/
 ```
 
-If you're using TLS, use your CA certificate to test the connection:
-
 ::::{tip}
 The following example assumes your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
 ::::
+
+If you're using TLS, use your CA certificate to test the connection:
 
 ```bash
 curl -u elastic --cacert ~/certs/ca/ca.crt https://es01:9200/

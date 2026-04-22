@@ -54,13 +54,13 @@ For token-based API authentication, you can use the same username and password t
 
 For operations that only read information, but don’t create, update or delete, you can authenticate with a user that has restricted permissions, such as the `readonly` user.
 
-To create a bearer token:
-
 ::::{important}
 The `curl` examples on this page use HTTPS. If your ECE installation uses the default self-signed certificate, add `--cacert /path/to/ca.pem` to your `curl` commands, specifying [the associated CA certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
 For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. Don't use `--insecure` or `-k` in production environments.
 ::::
+
+To create a bearer token:
 
 1. Open a terminal and send your credentials to the login endpoint:
 
