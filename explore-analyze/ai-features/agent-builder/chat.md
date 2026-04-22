@@ -176,7 +176,7 @@ No changes are applied until you explicitly confirm or dismiss.
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
 :alt: Preview panel showing proposed changes from an agent action before they are applied.
-:width: 250px
+:width: 700px
 :::
 
 ## Customize your agent [customize-your-agent]
