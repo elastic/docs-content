@@ -15,7 +15,7 @@ products:
 
 # Streams action steps [workflows-streams-steps]
 
-Streams action steps operate on Observability [Streams](/solutions/observability/logs/streams/streams.md) from a workflow. Use them to list available streams, fetch a specific stream's configuration, or pull significant events from a stream's time window.
+Streams action steps operate on Observability [Streams](/solutions/observability/streams/streams.md) from a workflow. Use them to list available streams, fetch a specific stream's configuration, or pull significant events from a stream's time window.
 
 :::{warning}
 Streams action steps, along with the Streams feature itself, are in technical preview in 9.4. Schemas and semantics may change in future releases. Use these steps for prototypes and investigation workflows; hold off on critical automation until Streams reaches GA.
@@ -80,5 +80,5 @@ Fetch significant events from a stream in a specified time range, optionally fil
 
 ## Related
 
-- [Streams overview](/solutions/observability/logs/streams/streams.md): The Observability Streams feature.
+- [Streams overview](/solutions/observability/streams/streams.md): The Observability Streams feature.
 - [Kibana action steps](/explore-analyze/workflows/steps/kibana.md): The generic `kibana.request` for Kibana APIs that don't have a named step.
