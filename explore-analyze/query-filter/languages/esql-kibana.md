@@ -65,6 +65,8 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
+{applies_to}`stack: preview 9.4.0` In `FROM` commands, the editor also suggests {{esql}} views as sources, alongside indices, data streams, and aliases. Views are not available in {{serverless-short}}.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
