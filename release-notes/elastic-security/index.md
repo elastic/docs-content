@@ -93,13 +93,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the ability to duplicate Osquery saved queries and packs, and adds a row action menu with **Edit**, **Duplicate**, and **Delete** actions to the saved queries and packs list tables [#252517]({{kib-pull}}252517).
 * Moves Endpoint exceptions from the **Shared exception lists** and **Rules** pages to the **Endpoint Artifacts** page, separating them from rule exceptions. Adds an opt-in for per-policy Endpoint exception assignment and adds export/import functionality to all Endpoint artifacts [#260983]({{kib-pull}}260983).
 * Adds the `linux.advanced.ransomware.diagnostic` advanced {{elastic-defend}} policy flag in preparation for Linux ransomware protection support [#260538]({{kib-pull}}260538).
+* Adds a script library for creating and managing scripts for use with the `runscript` response action on {{elastic-defend}}-protected hosts [#258400]({{kib-pull}}258400).
+* Adds `runscript` response action support to {{elastic-defend}}.
 * Improves {{elastic-defend}} by automatically enabling the required Windows security audit policies, ensuring the endpoint can collect the telemetry those policies control. Disabled by default; enable using an advanced policy flag.
 * Adds a `memory-dump` response action to {{elastic-defend}} on Linux.
 * Adds process event tracking for `ptrace`, shared memory, `memfd`, and module-load operations to {{elastic-defend}} on Linux.
 * Adds the YARA rule name to the `message` field for {{elastic-defend}} file alerts.
 * Improves {{elastic-defend}} support for x64 symbol resolution on Windows on ARM64.
 * Extends {{elastic-defend}} device control to Windows Portable Devices.
-* Adds `runscript` response action support to {{elastic-defend}}.
 * Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
 * Improves {{elastic-defend}} behavioral protection performance by unloading rules that are fully covered by simple exception or trust entries, preventing CPU usage from evaluating events against those rules.
 * Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
