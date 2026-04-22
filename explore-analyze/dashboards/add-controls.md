@@ -32,12 +32,12 @@ There are three types of controls:
 * [**Options list**](#create-and-add-options-list-and-range-slider-controls) — Adds a dropdown that allows to filter data by selecting one or more values.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
 
-  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard_controlsOptionsList.png "title =50%")
+  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
 
 * [**Range slider**](#create-and-add-options-list-and-range-slider-controls) — Adds a slider that allows to filter the data within a specified range of values. This type of control only works with numeric fields.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
 
-  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
+  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
 
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can select the previous and next buttons to advance the time range backward or forward, and select the play button to watch how the data changes over the last 7 days.
@@ -169,7 +169,7 @@ If you added it by starting from a query, the control is directly inserted in th
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
 :::{tip}
-You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the application menu.
 :::
 
 :::{include} ../_snippets/variable-control-examples.md
@@ -206,7 +206,7 @@ To chain variable controls, you reference one control's variable in another cont
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 
@@ -267,7 +267,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
@@ -299,7 +299,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 1. Configure the control settings.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:

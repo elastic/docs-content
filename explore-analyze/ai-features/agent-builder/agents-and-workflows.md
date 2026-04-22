@@ -34,7 +34,7 @@ Before you begin:
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
-* For details, refer to [Set up workflows](/explore-analyze/workflows/setup.md).
+* For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
 * Create at least one workflow.
 
 ## Use the `ai.agent` step

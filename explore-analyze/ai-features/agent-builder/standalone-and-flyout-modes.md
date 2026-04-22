@@ -30,7 +30,9 @@ stack: preview =9.2, ga 9.3
 serverless: ga
 ```
 
-Access Agent Builder by selecting **Agents** in the main navigation. In {{product.observability}} and {{product.security}}, the standalone experience is available when you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+Access Agent Builder by selecting **Agents** in the main navigation.
+
+{applies_to}`stack: preview =9.2, ga =9.3` In {{product.observability}} and {{product.security}} solution views, you must first [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to access the standalone experience.
 
 :::{image} images/agents-nav.png
 :alt: Agents logo in main navigation
@@ -75,13 +77,29 @@ You can resize the sidebar by dragging its side edge. The sidebar persists when 
 
 ## Default chat experiences
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+{{agent-builder}} is the default chat experience for all solutions. It appears in the navigation automatically.
+
+If you need to revert to the legacy AI Assistant, you can opt out by changing your space's **Chat Experience** to **Classic AI Assistant** in the **GenAI Settings**. Learn more about how to [switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+
+:::
+
+:::{applies-item} { stack: preview =9.2, ga =9.3 }
+
 The default chat experience varies by solution:
 
 - **{{product.observability}} and {{product.security}}:** Each solution's classic AI Assistant is the default chat experience. You must [switch between chat experiences](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable Agent Builder.
   - Once enabled:
-    - The sidebar experience replaces the AI Assistant chat experience
+    - The sidebar experience replaces the AI Assistant chat experience.
     - The standalone experience is available through the **Agents** button in the main navigation.
 - **{{es}}:** Agent Builder appears in the navigation automatically.
+
+:::
+
+::::
 
 ## Related pages
 
