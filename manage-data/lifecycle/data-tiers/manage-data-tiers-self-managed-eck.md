@@ -19,7 +19,7 @@ Whether you operate {{es}} on your own infrastructure or on {{k8s}} with {{eck}}
 - Review [{{es}} data tiers](/manage-data/lifecycle/data-tiers.md) so you match tiers to your workload.
 - Understand how [node roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md) map to hardware and allocation for each tier.
 
-## Assign data tier roles on self-managed hosts
+## Assign data tier roles on self-managed hosts [configure-data-tier-self-managed]
 ```{applies_to}
 deployment:
   self: ga
