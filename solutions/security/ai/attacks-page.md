@@ -131,7 +131,7 @@ To change an attack's status, click **Take actions** on the attack row, then sel
 
 ### Run a workflow from an attack [run-workflow-from-attack]
 
-You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an attack to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started.md#workflows-prerequisites).
+You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an attack to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started.md).
 
 To run a workflow, click **Take actions** on the attack row, then click **Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
 
