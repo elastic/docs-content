@@ -69,7 +69,7 @@ If the node did not restart then you should look at the reason for its departure
 * `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted time. By default, `cluster.follower_lag.timeout` is `90s` (in addition to `cluster.publish.timeout` which defaults to `30s`). Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) and [Publishing the cluster state](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview.md#cluster-state-publishing) for how these timeouts interact.
 * `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-## Ruling out network delays with `net.ipv4.tcp_retries2` on Linux [troubleshooting-unstable-cluster-tcp-retries-node-left]
+## Ruling out network delays with TCP timeouts on Linux [troubleshooting-unstable-cluster-tcp-retries-node-left]
 
 `Lagging` and `follower check retry count exceeded` removals can be caused by severe network delays or by slow or overloaded nodes (CPU, heap, disk). The `node-left` reason alone does not tell you which it is.
 
