@@ -1,8 +1,8 @@
 ---
 navigation_title: Manage detection rules at scale
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: ga 9.4
+  serverless: ga
 description: Use workflows to audit rule health, surface rule errors, and automate rule operations across large detection rule sets in Elastic Security.
 products:
   - id: kibana

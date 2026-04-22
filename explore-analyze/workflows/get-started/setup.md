@@ -1,8 +1,8 @@
 ---
 navigation_title: Set up Workflows
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: ga 9.4
+  serverless: ga
 description: Turn on the Workflows feature in Kibana and configure role-based access for your users.
 products:
   - id: kibana

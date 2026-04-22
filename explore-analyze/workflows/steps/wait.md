@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: ga 9.4
+  serverless: ga
 description: Learn about the wait step for adding delays in workflows.
 products:
   - id: kibana
