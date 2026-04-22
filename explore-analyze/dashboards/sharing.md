@@ -49,12 +49,10 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 
 You can export a dashboard from {{kib}} in two formats. Use the table to choose the one that fits your goal.
 
-| Format | Use it to |
-|---|---|
-| NDJSON | Move dashboards, together with their data views and visualizations, between spaces or clusters, back them up, or share them in bulk. |
-| {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` JSON | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its stored state. |
-
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` For complete migrations across spaces or clusters, use NDJSON. The JSON export is in technical preview, applies to one dashboard at a time, and drops any panel type or property that the dashboards API does not yet support.
+| Format | Use it to | What it includes |
+|---|---|---|
+| NDJSON | Move dashboards between spaces or clusters, back them up, or share them in bulk. | The selected dashboards along with their related data views and visualizations. Supports exporting multiple dashboards at once. |
+| {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` JSON | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its stored state. | One dashboard, with the panel types and properties that the dashboards API supports. Any unsupported panel types and properties are listed in the flyout and removed from the export. |
 
 ### Export as NDJSON saved objects [export-ndjson]
 
