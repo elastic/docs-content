@@ -410,7 +410,7 @@ toc:
               - file: alerting/kibana-alerting-v2/rules/rule-event-field-reference-v2.md
           - file: alerting/kibana-alerting-v2/alerts-v2.md
             children:
-              - file: alerting/kibana-alerting-v2/alerts/view-manage-and-reference-alerts-v2.md
+              - file: alerting/kibana-alerting-v2/alerts/view-and-manage-alerts-v2.md
               - file: alerting/kibana-alerting-v2/alerts/alert-states-and-fields-reference-v2.md
               - file: alerting/kibana-alerting-v2/alerts/query-alerts-and-signals-in-discover-v2.md
           - file: alerting/kibana-alerting-v2/workflows-alerting-v2.md
