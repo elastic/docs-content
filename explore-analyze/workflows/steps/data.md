@@ -148,17 +148,19 @@ Return the first element of an array that matches a KQL predicate. Output is `{ 
 
 ### `data.aggregate` [data-aggregate]
 
-Group and aggregate a collection. Configure grouping and metrics inside `with`.
+Group a collection by one or more keys and compute metrics per group. Supported operations: `count`, `sum`, `avg`, `min`, `max`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `items` | top level | array | Yes | Source array. |
 | `group_by` | `with` | `string[]` | Yes | Fields to group by. |
-| `metrics` | `with` | array | Yes | Array of `{ name, operation, field? }` metrics. |
-| `buckets` | `with` | object | No | Bucket configuration. |
+| `metrics` | `with` | array | Yes | Array of `{ name, operation, field? }` metrics. `count` doesn't need a `field`; the others do. |
+| `order` | `with` | string | Yes | `asc` or `desc`. |
+| `buckets` | `with` | object | No | Bucket configuration with `field` and `ranges`. Each range has `from`, `to`, and `label`; `from` or `to` can be omitted to create open-ended ranges. |
 | `order_by` | `with` | string | No | Metric name to order by. |
-| `order` | `with` | string | No | `asc` or `desc`. |
-| `limit` | `with` | number | No | Max number of buckets. |
+| `limit` | `with` | number | No | Max number of buckets to return. |
+
+Basic grouping:
 
 ```yaml
 - name: count_by_host
@@ -169,9 +171,33 @@ Group and aggregate a collection. Configure grouping and metrics inside `with`.
     metrics:
       - name: "count"
         operation: "count"
-    order_by: "count"
     order: "desc"
+    order_by: "count"
     limit: 10
+```
+
+With bucketed aggregation:
+
+```yaml
+- name: age_distribution
+  type: data.aggregate
+  items: "${{ steps.fetch_users.output }}"
+  with:
+    group_by: ["department"]
+    metrics:
+      - name: "count"
+        operation: "count"
+    order: "desc"
+    buckets:
+      field: "age"
+      ranges:
+        - to: 30
+          label: "junior"
+        - from: 30
+          to: 50
+          label: "mid"
+        - from: 50
+          label: "senior"
 ```
 
 ---
@@ -259,6 +285,14 @@ Serialize an object to a JSON string.
 ---
 
 ## Regex
+
+:::{important}
+The regex steps use the standard JavaScript engine, which is vulnerable to regular expression denial-of-service (ReDoS) with catastrophic backtracking patterns. To protect against this:
+
+- Input strings are limited to **100 KB**.
+- Patterns with unbounded quantifiers (for example, `.*` or `.+`) applied to overlapping character classes can hang the workflow. Prefer anchored patterns and specific character classes.
+- Test your patterns with representative input before running at scale.
+:::
 
 ### `data.regexExtract` [data-regexextract]
 

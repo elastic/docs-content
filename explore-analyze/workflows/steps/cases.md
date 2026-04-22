@@ -111,11 +111,13 @@ Create a case with a title, description, severity, tags, and optional assignees.
 |---|---|---|---|---|
 | `connector-id` | top level | string | No | ID of a configured external connector to attach to the case. |
 | `title` | `with` | string | Yes | Case title. |
-| `description` | `with` | string | No | Case description. Markdown supported. |
+| `description` | `with` | string | Yes | Case description. Markdown supported. |
+| `owner` | `with` | string | Yes | Case owner: `securitySolution`, `observability`, or `cases`. |
 | `severity` | `with` | string | No | `low`, `medium`, `high`, or `critical`. |
 | `tags` | `with` | `string[]` | No | Tags to apply to the case. |
 | `assignees` | `with` | array | No | Array of `{ uid }` objects. |
-| `owner` | `with` | string | No | Case owner: `securitySolution`, `observability`, or `cases`. |
+| `category` | `with` | string | No | Case category. |
+| `customFields` | `with` | array | No | Custom field values. |
 | `settings` | `with` | object | No | Case settings, for example `syncAlerts`. |
 
 ```yaml
@@ -149,26 +151,30 @@ Create a case from a configured case template. Useful when a team has pre-define
 
 ### `cases.getCase` [cases-getcase]
 
-Fetch one case by ID.
+Retrieve a complete case object by ID. Optionally include comments and attachments in the response.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
+| `include_comments` | `with` | boolean | Yes | Whether to include comments and attachments in the response. |
 
 ```yaml
 - name: fetch_case
   type: cases.getCase
   with:
     case_id: "{{ inputs.case_id }}"
+    include_comments: true
 ```
 
 ### `cases.getCases` [cases-getcases]
 
-Fetch multiple cases by ID.
+Retrieve up to 1000 cases in a single request. IDs that can't be fetched are reported in the `errors` array on the output. Use this to avoid N sequential `cases.getCase` calls in fan-out workflows.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `case_ids` | `with` | `string[]` | Yes | Array of case IDs. |
+| `case_ids` | `with` | `string[]` | Yes | Array of case IDs. Maximum 1000. |
+
+Output: `{ cases: array, errors: array }`. The `errors` array contains entries for any IDs that couldn't be fetched.
 
 ```yaml
 - name: fetch_cases
@@ -218,17 +224,23 @@ The output includes a `cases` array plus per-status counts (`count_open_cases`, 
 
 ### `cases.findSimilarCases` [cases-findsimilarcases]
 
-Find cases similar to a given case, matched by observables, tags, or title. Useful for deduplication before creating a new case.
+Find cases similar to a given case, matched by shared observables. Useful for deduplication before creating a new case.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Source case ID to find similar cases for. |
+| `page` | `with` | integer | Yes | Page number (1-based). |
+| `perPage` | `with` | integer | Yes | Results per page. |
+
+Output: `{ cases: array, page: integer, per_page: integer, total: integer }`.
 
 ```yaml
 - name: find_similar
   type: cases.findSimilarCases
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
+    page: 1
+    perPage: 20
 ```
 
 ### `cases.getCasesByAlertId` [cases-getcasesbyalertid]
@@ -485,20 +497,24 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
     observables:
-      - typeKey: "ipv4"
+      - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
         description: "Source of malicious activity"
-      - typeKey: "hash.sha256"
+      - typeKey: "observable-type-hash-sha256"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
 ```
 
+The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`).
+
 ### `cases.getAllAttachments` [cases-getallattachments]
 
-List every attachment on a case.
+Fetch every attachment associated with a case without pagination. Use this when you need the complete set of attachments for decision-making, for example when checking evidence before closing or escalating.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
+
+Output: `{ attachments: array }`.
 
 ```yaml
 - name: list_attachments

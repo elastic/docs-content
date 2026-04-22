@@ -27,21 +27,49 @@ Fires when any workflow execution reaches the `failed` terminal state. Use this 
 
 ### Schema
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `type` | string | Yes | Must be `workflows.failed`. |
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | Must be `workflows.failed`. |
+| `filters` | `with` | array | No | Optional list of KQL conditions. The trigger fires only when every filter matches. |
 
 ```yaml
 triggers:
   - type: workflows.failed
 ```
 
+### Filter the events that fire the trigger
+
+Use `with.filters` to narrow which failed executions trigger the handler. Each filter is a KQL condition evaluated against the `event` payload, and every filter must match for the handler to run.
+
+Fire only on failures from a specific workflow:
+
+```yaml
+triggers:
+  - type: workflows.failed
+    with:
+      filters:
+        - condition: "event.workflow.id : 'critical-ingest-pipeline'"
+```
+
+Ignore failures that came from another error handler, and only handle errors in a specific {{kib}} space:
+
+```yaml
+triggers:
+  - type: workflows.failed
+    with:
+      filters:
+        - condition: "event.workflow.isErrorHandler : false"
+        - condition: "event.workflow.spaceId : 'production'"
+```
+
 ### Event payload
 
-When a failed workflow triggers your handler, the handler runs with an `event` context that describes the failure. The payload has three groups: `workflow`, `execution`, and `error`.
+When a failed workflow triggers your handler, the handler runs with an `event` context that describes the failure. The payload has four groups: `workflow`, `execution`, `error`, and the top-level `timestamp` and `spaceId`.
 
 | Field | Contains |
 |---|---|
+| `event.spaceId` | The {{kib}} space where the failure occurred. |
+| `event.timestamp` | ISO timestamp of when the event fired. |
 | `event.workflow.id` | The failed workflow's ID. |
 | `event.workflow.name` | The failed workflow's name. |
 | `event.workflow.spaceId` | The {{kib}} space where the failed workflow ran. |
@@ -130,7 +158,3 @@ Expect the `workflows.failed` trigger's schema to stabilize and additional event
 - [Triggers overview](/explore-analyze/workflows/triggers.md): Every 9.4 trigger type.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
-
-% Ben Ironside Goldstein, 2026-04-16: `on.condition` KQL filtering for this trigger was
-% referenced in PM's internal docs but is not visible in the common trigger schema as of 9.4 GA.
-% If engineering confirms it ships, add a Filter section here between Schema and Event payload.
