@@ -79,6 +79,9 @@ serverless:
 $$$agent-builder-search-catalog-ecommerce-skill$$$ `search.catalog-ecommerce` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building catalog and e-commerce search solutions on {{es}}.
 
+$$$agent-builder-search-elasticsearch-onboarding-skill$$$ `search.elasticsearch-onboarding` {applies_to}`stack: ga 9.4+`
+:   Guides developers through building a complete search experience on {{es}}, from understanding requirements and designing an index mapping to generating and testing API snippets in Dev Tools.
+
 $$$agent-builder-search-hybrid-search-skill$$$ `search.hybrid-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building hybrid search solutions that combine keyword and semantic search.
 
