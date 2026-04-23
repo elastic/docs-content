@@ -231,7 +231,7 @@ This metric tracks the configured [storage limit](#sampling-tail-storage_limit-r
 ### `apm-server.sampling.tail.storage.disk_used` [sampling-tail-monitoring-storage-disk-used-ref]
 
 ```yaml {applies_to}
-stack: ga 9.2
+stack: ga 9.2+
 ```
 
 Available in 9.2.7+, 9.3.2+, and 9.4.0+.
@@ -241,7 +241,7 @@ This metric tracks the used disk space in bytes on the filesystem partition that
 ### `apm-server.sampling.tail.storage.disk_total` [sampling-tail-monitoring-storage-disk-total-ref]
 
 ```yaml {applies_to}
-stack: ga 9.2
+stack: ga 9.2+
 ```
 
 Available in 9.2.7+, 9.3.2+, and 9.4.0+.
@@ -251,7 +251,7 @@ This metric tracks the total disk capacity in bytes of the filesystem partition 
 ### `apm-server.sampling.tail.storage.disk_usage_threshold_pct` [sampling-tail-monitoring-storage-disk-usage-threshold-pct-ref]
 
 ```yaml {applies_to}
-stack: ga 9.2
+stack: ga 9.2+
 ```
 
 Available in 9.2.7+, 9.3.2+, and 9.4.0+.
