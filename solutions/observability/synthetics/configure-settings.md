@@ -18,7 +18,7 @@ There are several Synthetics settings you can adjust in Observability.
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
 
-{applies_to}`stack: ga 9.4+` When you create or edit a synthetic monitor, default alert rules are automatically applied. To edit the default rules:
+When you create a new synthetic monitor, new default synthetics rules will be applied. To edit the default rules:
 
 1. Click **Alerts** in the top bar.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
@@ -50,7 +50,7 @@ You can enable and disable default alerts for individual monitors in a few ways:
 ::::
 
 In the **Alerting** tab on the **Monitor** Settings page, you can:
-- {applies_to}`stack: ga` Enable or disable default rules.
+- {applies_to}`stack: ga 9.4+` Enable or disable default rules.
 - Add and configure connectors. Check all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
 - Set up email alerts, if you are running in Elastic Cloud. An SMTP connector will automatically be configured. 
 
@@ -110,9 +110,8 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :screenshot:
 :::
 
-{applies_to}`stack: ga` 
-- The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
-- The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
+- {applies_to}`stack: ga 9.4+`  The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both eElastic-managed and private locations. If disabled, the key is restricted to private locations only.
+- {applies_to}`stack: ga 9.4+`  The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}
@@ -127,11 +126,6 @@ In the **Advanced** tab, you can configure advanced settings for your Synthetics
 Private location monitors are periodically synced to apply active maintenance window changes. The **Maintenance windows sync interval** setting controls how frequently this sync occurs.
 
 Use the **Sync interval (minutes)** field to set the interval. The default is 5 minutes, and valid values range from 5 to 1440 minutes. When you apply a new interval, an immediate sync is triggered so the change takes effect right away.
-
-:::{image} /solutions/images/observability-synthetics-settings-advanced.png
-:alt: Advanced tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
 
 When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
 
