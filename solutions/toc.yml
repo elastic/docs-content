@@ -29,7 +29,7 @@ toc:
                   - file: search/full-text/create-update-synonyms-api-example.md
           - file: search/vector.md
             children:
-              - file: search/vector/how-vector-search-works.md
+              - file: search/vector/vector-search-use-cases.md
               - file: search/semantic-search.md
                 children:
                   - file: search/semantic-search/semantic-search-semantic-text.md
