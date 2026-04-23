@@ -286,3 +286,4 @@ You can use any valid [project routing expression](/explore-analyze/cross-projec
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.
+- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Custom Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries): Use {{esql}} queries as a data source in Vega and Vega-Lite visualizations.
