@@ -197,7 +197,7 @@ To create an index template in Kibana, complete these steps:
 
 The newly created index template will be used for all new indices with names that match the specified pattern, and for each of these, the specified ILM policy will be applied.
 
-For more information about configuring templates in Kibana, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
+For more information about configuring templates in Kibana, refer to [Manage index templates](/manage-data/data-store/templates.md).
 :::
 
 :::{tab-item} API

@@ -18,9 +18,9 @@ There are several Synthetics settings you can adjust in Observability.
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
 
-When you create a new synthetic monitor, new default synthetics rules will be applied. To edit the default rules:
+{applies_to}`stack: ga 9.4+` When you create or edit a synthetic monitor, default alert rules are automatically applied. To edit the default rules:
 
-1. Click **Alerts and rules** in the top bar.
+1. Click **Alerts** in the top bar.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
 
     * **Monitor status rule** for receiving notifications for errors and outages.

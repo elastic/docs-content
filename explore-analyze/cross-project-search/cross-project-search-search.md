@@ -57,7 +57,7 @@ You can use qualified search expressions and project routing expressions togethe
 ### `ignore_unavailable` and `allow_no_indices`
 
 The distinction between qualified and unqualified search expressions affects how the `ignore_unavailable` and `allow_no_indices` search options are applied in {{cps}}.
-When you use an **unqualified** expression, index resolution is performed against the merged project view. In this case, search options are evaluated based on whether the target resources exist in any of the searched projects, not only in the origin project.
+When you use an **unqualified** expression, index resolution is performed against all searchable resources across the searched projects. Search options are evaluated based on whether the target resources exist in any of those projects, not only in the origin project.
 
 Project routing expressions do not affect the behavior of the `ignore_unavailable` or `allow_no_indices` settings.
 
@@ -70,17 +70,22 @@ The way that missing resources are interpreted differs between unqualified and q
 The following describes the standard {{es}} behavior:
 
 `ignore_unavailable` defaults to `false`.
-When set to `false`, the request returns an error if it targets a missing resource (such as an index or data stream).
-When set to `true`, missing resources are ignored and the request returns an empty result instead of an error.
+When set to `false`, the request returns an error if it targets a concrete (non-wildcard) index, alias, or data stream that is missing, closed, or otherwise unavailable.
+When set to `true`, unavailable concrete targets are silently ignored.
 For example, if the `logs` index does not exist, the following request returns an error because the default value is `false`:
 
 ```console
 GET logs/_search
 ```
 
-`allow_no_indices` defaults to `true`.
-When set to `true`, the request succeeds and returns an empty result if it targets a missing resource.
-When set to `false`, the request returns an error if any wildcard expression, index alias, or `_all` value does not resolve to an existing resource.
+`allow_no_indices` controls how a request behaves when index expressions do not resolve to any indices. This setting is `true` by default.
+
+When set to `false`, the request returns an error in either of the following cases:
+
+* **Per-expression check**: Any wildcard expression (including `_all` or `*`) resolves to zero matching indices.
+* **Aggregate check**: The final set of resolved indices, aliases, or data streams is empty after all expressions are evaluated.
+
+When set to `true`, index expressions that resolve to no indices are allowed, and the request returns an empty result.
 
 For example, if no indices match `logs*`, the following request returns an empty result because the default value is `true`:
 

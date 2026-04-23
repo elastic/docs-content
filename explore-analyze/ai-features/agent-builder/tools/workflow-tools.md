@@ -25,7 +25,7 @@ This page explains how to trigger a workflow in an agent conversation. If you wa
 Before you begin:
 
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
-* [Set up workflows](/explore-analyze/workflows/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
+* [Set up workflows](/explore-analyze/workflows/get-started/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
 * Create at least one workflow.
 
 ## Add a Workflow tool

@@ -52,7 +52,7 @@ To enable shard allocation awareness:
 
     :::{tip}
     :applies_to: eck:
-    For {{eck}} deployments, set custom node attributes in the `config` section of your {{es}} resource manifest instead of `elasticsearch.yml`. Starting with ECK 3.4.0, you can use the [`zoneAwareness` field](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness) on NodeSets to automatically configure zone-based shard allocation awareness. For manual configuration or earlier versions, refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md#k8s-zone-awareness-manual).
+    For {{eck}} deployments, set custom node attributes in the `config` section of your {{es}} resource manifest instead of `elasticsearch.yml`. Refer to [Advanced {{es}} node scheduling](/deploy-manage/deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md) for examples.
     :::
 
 2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file.

@@ -12,7 +12,7 @@ description: Send long-running queries to run in the background with background 
 
 # Run Discover and Dashboards queries in the background [background-search]
 
-Send long-running searches to run asynchronously while you continue working in {{product.kibana}}. Access your completed searches later from **Discover** or **Dashboards**, and manage all background searches from the toolbar.
+Send long-running searches to run asynchronously while you continue working in {{product.kibana}}. Access your completed searches later from **Discover** or **Dashboards**, and manage all background searches from the application menu.
 
 ::::{important} - Background search replaces Search sessions
 
@@ -86,7 +86,12 @@ You can send a search to the background only after it starts running. Until then
 
 1. Select {icon}`background_task` **Send to background**. The search is sent to the background and added to the queue of background searches.
 
-You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser. Once the search has completed, a notification informs you and lets you access the search to view its results.
+You can resume your other tasks, for example start a new search, navigate to a different application, or close the browser.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+When the search completes, a notification informs you, even if you have navigated to a different application. Selecting it opens the completed search results directly.
+:::
 
 Background searches expire after 7 days. Beyond that period, you must run the search again. You can change this default value by editing the [`data.search.sessions.defaultExpiration`](kibana://reference/configuration-reference/search-sessions-settings.md) setting.
 
@@ -95,8 +100,8 @@ Background searches expire after 7 days. Beyond that period, you must run the se
 From the list of background searches, you can reopen and edit any searches, but also extend their validity period or delete them to keep only searches that you care about.
 
 1. Open your list of background searches using one of the following methods:
-   - Once a background search is sent to the background, a notification appears to inform you, with a link to open the list of background searches.
-   - If you miss the notification or need to access this list at any time, go to **Discover** or **Dashboards** and select the {icon}`background_task` **Background searches** button in the toolbar. This option is only available from version 9.2.
+   - Once a background search is sent to the background, a notification appears to tell you, with a link to open the list of background searches.
+   - If you miss the notification or need to access this list at any time, go to **Discover** or **Dashboards** and select the {icon}`background_task` **Background searches** button in the application menu. This option is only available from version 9.2.
 
      :::{tip}
      From **Discover**, you can only view Discover background searches. And from **Dashboards**, you can only see Dashboards background searches.
@@ -110,9 +115,13 @@ From the list of background searches, you can reopen and edit any searches, but 
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 
+:::{note}
+Cluster administrators can also see running background searches on the [Query activity](/deploy-manage/monitor/query-activity.md) page. While you use background search to manage your own long-running searches, Query activity provides administrators with a cluster-wide view of all running queries, with the ability to cancel any of them.
+:::
+
 ## Background search limitations in dashboards [_limitations]
 
-Some visualization features do not fully support background searches. When you restore a dashboard, panels with unsupported features won’t load immediately, but instead send out additional data requests, which can take a while to complete. The **Your background search is still running** warning appears. You can either wait for these additional requests to complete or come back to the dashboard later when all data requests have finished.
+Some visualization features do not fully support background searches. When you restore a dashboard, panels with unsupported features won't load immediately, but instead send out additional data requests, which can take a while to complete. The **Your background search is still running** warning appears. You can either wait for these additional requests to complete or come back to the dashboard later when all data requests have finished.
 
 A panel on a dashboard can behave like this if one of the following features is used:
 
