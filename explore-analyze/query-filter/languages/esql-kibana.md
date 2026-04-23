@@ -256,7 +256,7 @@ From the **Recent** tab, you can star any queries you want.
 In the **Starred** tab, find all the queries you have previously starred.
 
 
-## Use query settings with `SET` [esql-kibana-set]
+## Define query settings with `SET` [esql-kibana-set]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
