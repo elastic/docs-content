@@ -17,7 +17,7 @@ Agent Builder integrates tightly with {{observability}}, shipping with built-in 
 
 :::{note}
 :applies_to: {stack: preview =9.3}
-To use Agent Builder in {{observability}}, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+In {{stack}} version 9.3, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to use Agent Builder in {{observability}}.
 :::
 
 ## Recommended models
