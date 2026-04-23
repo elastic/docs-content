@@ -28,10 +28,6 @@ You can directly download the `diagnostics-X.X.X-dist.zip` file for the latest S
 
 ## Capture diagnostic information [diagnostic-capture]
 
-::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
-::::
-
 To capture a {{ls}} diagnostic:
 
 1. In a terminal, verify that your network access is sufficient to connect to your {{ls}} node by polling its root endpoint.
