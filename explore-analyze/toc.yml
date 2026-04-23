@@ -236,6 +236,8 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - hidden: ai-features/agent-builder/connectors.md
+          - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
         children:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
