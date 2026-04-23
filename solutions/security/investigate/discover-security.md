@@ -11,7 +11,7 @@ products:
 
 # Explore Security data in Discover
 
-**Discover** provides a Security-specific experience for exploring alert and event data. When the Security experience is active, Discover adds color-coded row indicators, security-focused default columns, and a contextual overview tab in the document flyout that surfaces key alert and event context.
+**Discover** provides a Security-specific experience for exploring alert and event data. When the Security experience is active, Discover adds color-coded row indicators, security-focused default columns, and contextual alert and event details when you expand a document.
 
 For general **Discover** concepts and features, refer to [](/explore-analyze/discover.md).
 
@@ -43,9 +43,36 @@ Color-coded indicators appear on the left side of each row in the data table, he
 
 When you use a {{data-source}} that includes security alerts data, such as the default {{elastic-sec}} {{data-source}}, **Discover** displays pre-configured columns optimized for alert triage.
 
-### Alert and Event Overview tab
+### Alert and event details flyout
 
-When you expand a document in **Discover**, the document flyout includes an **Alert Overview** or **Event Overview** tab depending on the document type. This tab surfaces key information to help you quickly understand the document and decide on next steps.
+When you expand an alert or event row in **Discover**, a details flyout opens. The flyout experience varies by version.
+
+::::{applies-switch}
+:::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
+
+The document flyout includes an overview tab, plus **Table** and **JSON** tabs. The **Take action** button at the bottom lets you interact with the document.
+
+For alerts, the header also displays the status, risk score, assignees, and attached notes.
+
+The overview tab includes the following sections:
+
+**About**
+:   A description of the document. For alerts, shows the rule description and the reason the alert was generated. For events, shows the ECS event category description.
+
+**Investigation**
+:   Highlighted fields relevant to the document. For alerts, also includes a link to the investigation guide if one is defined for the rule.
+
+**Visualizations**
+:   Session view and analyzer previews showing process activity. Click either preview to open a dedicated panel with a full view.
+
+**Insights**
+:   Correlated alerts and host and user prevalence data. For alerts, also includes threat intelligence matches. Click any subsection to open a dedicated panel with a full view.
+
+:::
+
+:::{applies-item} stack: ga 9.1-9.3
+
+The document flyout includes an **Alert Overview** or **Event Overview** tab depending on the document type. This tab surfaces key information to help you quickly understand the document and decide on next steps.
 
 The overview tab includes the following sections:
 
@@ -60,3 +87,6 @@ The overview tab includes the following sections:
 
 **Explore in Alerts** or **Explore in Timeline**
 :   For alerts, links directly to the alert in the {{security-app}} [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) page. For events, opens the event in [Timeline](/solutions/security/investigate/timeline.md) for further investigation.
+
+:::
+::::
