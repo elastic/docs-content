@@ -27,10 +27,10 @@ In addition to the internal logging, you can configure a single external logging
 
 External logging outputs are mutually exclusive, meaning that only one can be active at a time. If multiple outputs are turned on, {{agent}} silently selects the highest-priority one, according to the following priority order: 
 
-1) `to_stderr` 
-2) `to_syslog` 
-3) `to_eventlog` 
-4) `to_files`. 
+1. `to_stderr`
+2. `to_syslog`
+3. `to_eventlog`
+4. `to_files`.
 
 ::::{note}
 Because `to_stderr` is on by default, you must explicitly set `to_stderr: false` to use any other output.
