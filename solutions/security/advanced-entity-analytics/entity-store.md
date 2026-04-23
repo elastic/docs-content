@@ -12,7 +12,7 @@ products:
 # Entity store [entity-store]
 
 ::::{admonition} Requirements
-To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](entity-risk-scoring-requirements.md).
+To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md).
 
 ::::
 
@@ -26,7 +26,9 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 * Asset criticality data
 * Entity risk score data
 
-The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices  without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
+The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
 When the entity store is enabled, the following resources are created for the active space:
 

@@ -28,6 +28,7 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
 | Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | {applies_to}`stack: ga 9.4+` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
+| {applies_to}`stack: ga 9.4+` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: ga 9.4+` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
 | {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
@@ -63,6 +64,14 @@ serverless: ga
 ```
 
 Define custom groups of entities — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. A built-in **Privileged Users** watchlist automatically pulls in administrative users from Active Directory and Okta integrations.
+
+### Entity resolution
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Link multiple entity records that represent the same real-world identity into a resolution group. The target entity aggregates risk scores from all linked records, giving you a consolidated view across identity providers such as Okta, Active Directory, and Entra ID.
 
 ### Privileged user monitoring
 ```yaml {applies_to}

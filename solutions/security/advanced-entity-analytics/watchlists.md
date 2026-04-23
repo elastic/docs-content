@@ -16,7 +16,7 @@ This feature requires the appropriate [subscription](https://www.elastic.co/pric
 
 Watchlists let you define and manage groups of entities that are important to your organization — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. This keeps your most critical entities visible  and easy to find during threat investigations.
 
-Watchlists replace the [Privileged user monitoring](privileged-user-monitoring.md) feature. No data is migrated from existing privileged user monitoring configurations; you set up watchlists from scratch.
+Watchlists replace the [Privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. No data is migrated from existing privileged user monitoring configurations; you set up watchlists from scratch.
 
 ## Default watchlist [watchlists-default]
 
@@ -28,7 +28,7 @@ Each watchlist has a configurable risk weighting that influences the risk scores
 
 For example, assigning a higher risk weighting to a watchlist of executives means that suspicious activity involving those users scores higher and surfaces sooner during investigations.
 
-To learn how watchlist weighting fits into the overall risk score calculation, refer to [Entity risk scoring](entity-risk-scoring.md).
+To learn how watchlist weighting fits into the overall risk score calculation, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 ## Create a watchlist [watchlists-create]
 

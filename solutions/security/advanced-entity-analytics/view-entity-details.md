@@ -28,6 +28,7 @@ The entity details flyout includes the following sections:
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
 * [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
 
@@ -106,6 +107,16 @@ The **Asset Criticality** section displays the selected entity's [asset critical
 :::
 
 Click **Assign** to assign a criticality level to the selected entity, or **Change** to change the currently assigned criticality level.
+
+### Resolution [resolution]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the target and any aliases — with their entity name, ID, source, and risk score.
+
+To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the Add icon ({icon}`plus_in_circle`) next to the entity you want to link. To remove an entity from the group, click **X** ({icon}`cross`) in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 
 ### Insights
 
