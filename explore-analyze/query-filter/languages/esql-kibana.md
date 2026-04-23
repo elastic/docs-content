@@ -274,7 +274,7 @@ The {{esql}} editor autocompletes supported settings and validates their values.
 - [`approximation`](#esql-kibana-approximation): Trade exact results for speed on large `STATS` queries using random sampling.
 - [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
 
-To change the timezone used by {{esql}} queries in {{kib}}, update the [`dateFormat:tz`](#esql-kibana-timezone) advanced setting rather than using `SET time_zone`.
+The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
 
 For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
 
