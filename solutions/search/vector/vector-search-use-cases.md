@@ -25,7 +25,7 @@ This page introduces common vector search use cases and provides guidance on how
 
 ## RAG and question answering on your own data
 
-:::{image} /solutions/images/elasticsearch-reference-rag-schema%20(1).svg
+:::{image} /solutions/images/elasticsearch-reference-rag-schema.svg
 :alt: Components of a simple RAG system using {{es}}
 :::
 

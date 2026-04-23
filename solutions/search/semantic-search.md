@@ -55,7 +55,7 @@ You can also deploy NLP in {{es}} manually, without using an {{infer}} endpoint.
 For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](vector/dense-versus-sparse-ingest-pipelines.md).
 
 ::::{tip}
-Refer to [vector search workflows](vector.md#which-workflow-should-i-use) for a quick reference overview.
+Refer to [vector search workflows](vector.md#vector-search-workflows) for a quick reference overview.
 ::::
 
 ## Learn more [semantic-search-read-more]
