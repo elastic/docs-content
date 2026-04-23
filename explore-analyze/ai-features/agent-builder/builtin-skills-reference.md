@@ -79,6 +79,9 @@ serverless:
 $$$agent-builder-search-catalog-ecommerce-skill$$$ `search.catalog-ecommerce` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building catalog and e-commerce search solutions on {{es}}.
 
+$$$agent-builder-search-elasticsearch-onboarding-skill$$$ `search.elasticsearch-onboarding` {applies_to}`stack: ga 9.4+`
+:   Guides developers through building a complete search experience on {{es}}, from understanding requirements and designing an index mapping to generating and testing API snippets in Dev Tools.
+
 $$$agent-builder-search-hybrid-search-skill$$$ `search.hybrid-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building hybrid search solutions that combine keyword and semantic search.
 
@@ -90,6 +93,9 @@ $$$agent-builder-search-rag-chatbot-skill$$$ `search.rag-chatbot` {applies_to}`s
 
 $$$agent-builder-search-semantic-search-skill$$$ `search.semantic-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building semantic and vector search solutions on {{es}}.
+
+$$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {applies_to}`stack: ga 9.4+`
+:   Presents a library of {{es}} use cases when users want to explore what they can build, need help identifying which category their project falls into, or are looking for inspiration. Covers product search, knowledge base search, AI assistants, recommendations, customer support, location-based search, log and event search, and vector database use cases.
 
 $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {applies_to}`stack: ga 9.4+`
 :   Guides agents through using {{es}} as a vector database.
