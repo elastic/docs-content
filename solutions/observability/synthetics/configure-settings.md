@@ -50,7 +50,7 @@ You can enable and disable default alerts for individual monitors in a few ways:
 ::::
 
 In the **Alerting** tab on the **Monitor** Settings page, you can:
-- {applies_to}`stack: ga 9.4+` Enable or disable default rules.
+- Enable or disable default rules.
 - Add and configure connectors. Check all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
 - Set up email alerts, if you are running in Elastic Cloud. An SMTP connector will automatically be configured. 
 
@@ -110,8 +110,8 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :screenshot:
 :::
 
-- {applies_to}`stack: ga 9.4+`  The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both eElastic-managed and private locations. If disabled, the key is restricted to private locations only.
-- {applies_to}`stack: ga 9.4+`  The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
+- The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both eElastic-managed and private locations. If disabled, the key is restricted to private locations only.
+- The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}
