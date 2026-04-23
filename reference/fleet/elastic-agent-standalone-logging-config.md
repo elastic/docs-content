@@ -30,7 +30,7 @@ External logging outputs are mutually exclusive, meaning that only one can be ac
 1. `to_stderr`
 2. `to_syslog`
 3. `to_eventlog`
-4. `to_files`.
+4. `to_files`
 
 ::::{note}
 Because `to_stderr` is on by default, you must explicitly set `to_stderr: false` to use any other output.
