@@ -10,7 +10,8 @@ products:
 
 # Explore infrastructure metrics over time (deprecated) [explore-metrics]
 
-::::{admonition} Deprecated in 9.4+
+::::{admonition} Metrics Explorer is deprecated
+:applies_to: stack: deprecated 9.4+
 :class: warning
 
 Use [Metrics exploration in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md) instead of the Metrics Explorer app.
