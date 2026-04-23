@@ -98,6 +98,8 @@ Project API keys are used to push {{project-monitors}} remotely from a CLI or CD
 
 In the **Project API keys** tab, you can generate project API keys to use with your projects. Learn more about using API keys in [Use {{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
+{applies_to}`stack: ga` The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
+
 ::::{important}
 **In an Elastic Stack deployment**, to create a Project API key you must be logged into {{kib}} as a user with the privileges described in [Writer role](/solutions/observability/synthetics/writer-role.md).
 
