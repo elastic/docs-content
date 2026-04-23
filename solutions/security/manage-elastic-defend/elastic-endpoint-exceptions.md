@@ -16,7 +16,7 @@ description: Create and manage Elastic Endpoint exceptions to prevent Elastic En
 In {{stack}} 9.0–9.3, {{elastic-endpoint}} exceptions are managed through detection rules. For more information, refer to [Add {{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions).
 ::::
 
-{{elastic-endpoint}} exceptions prevent {{elastic-endpoint}} from generating alerts for specific conditions on your hosts. Unlike detection rule exceptions, {{elastic-endpoint}} exceptions are enforced directly on the endpoint — {{elastic-endpoint}} checks for exceptions before most other processing, which means matching processes are not monitored further. This can also improve performance.
+{{elastic-endpoint}} exceptions prevent {{elastic-endpoint}} from generating alerts for specific conditions on your hosts. Unlike [detection rule exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md), {{elastic-endpoint}} exceptions are enforced directly on the endpoint — {{elastic-endpoint}} checks for exceptions before most other processing, which means matching processes are not monitored further. This can also improve performance.
 
 ::::{tip}
 To ensure you're using the right feature for your use case, review [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md) to understand the differences between {{elastic-endpoint}} exceptions and other endpoint artifacts.
