@@ -22,7 +22,7 @@ To use Agent Builder in {{observability}}, you need to [opt in](/explore-analyze
 
 ## Recommended models
 
-While Agent Builder works with any [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), model performance varies. Refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) to select a model that performs well for your intended use cases.
+While Agent Builder works with any [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), model performance varies. Refer to [recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models) to select a model that performs well for your intended use cases.
 
 ## Observability agent
 

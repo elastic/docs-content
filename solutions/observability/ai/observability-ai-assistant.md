@@ -3,13 +3,19 @@ navigation_title: AI Assistant
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: ga 9.0-9.3, deprecated 9.4
+  serverless:
+    observability: deprecated
 products:
   - id: observability
 ---
 
 # {{obs-ai-assistant}} [obs-ai-assistant]
+
+:::{warning}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience in {{observability}}. To switch back to the AI Assistant, go to **GenAI settings**.
+:::
 
 The AI Assistant is an integration with a large language model (LLM) that helps you understand, analyze, and interact with your Elastic data.
 
