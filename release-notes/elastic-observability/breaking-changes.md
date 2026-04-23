@@ -24,6 +24,11 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+:::{changelog} /releases/observability/
+:subsections:
+:type: breaking-change
+:::
+
 ## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
 
 There are no breaking changes in Elastic {{observability}} 9.0.1.

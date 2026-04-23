@@ -23,6 +23,11 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{changelog} /releases/security
+:subsections:
+:type: known-issue
+:::
+
 :::{dropdown} Details about gap fills aren't properly updated
 
 Applies to: 9.3
@@ -92,8 +97,6 @@ Migrate data from the old reindexed index to the new data stream, then delete th
 :::{important}
 * **Backup**: Consider backing up your data before performing these operations in production environments.
 * **Event log retention**: Event log data has a default retention of 90 days. If you don't need historical data, you can skip the reindex step and simply delete the old index and its aliases.
-:::
-
 :::
 
 :::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
