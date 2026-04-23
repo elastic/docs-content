@@ -158,3 +158,5 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+- [Skills in {{agent-builder}}](skills.md)
+- [Skill creation guidelines](skill-creation-guidelines.md)
