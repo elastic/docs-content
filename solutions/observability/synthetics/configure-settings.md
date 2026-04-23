@@ -49,7 +49,10 @@ You can enable and disable default alerts for individual monitors in a few ways:
 
 ::::
 
-In the **Alerting** tab on the Synthetics Settings page, you can add and configure connectors. If you are running in Elastic Cloud, then an SMTP connector will automatically be configured, allowing you to easily set up email alerts. Read more about all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
+In the **Alerting** tab on the **Monitor** Settings page, you can:
+- {applies_to}`stack: ga` Enable or disable default rules.
+- Add and configure connectors. Check all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
+- Set up email alerts, if you are running in Elastic Cloud. An SMTP connector will automatically be configured. 
 
 :::{image} /solutions/images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {{kib}}
