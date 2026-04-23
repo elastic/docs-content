@@ -375,7 +375,7 @@ Pattern detection on text fields is also available outside {{esql}} from the **P
 
 ### Row actions
 
-Select the {icon}`boxesVertical` actions button on any group row to:
+Select the {icon}`boxes_vertical` actions button on any group row to:
 
 - **Copy to clipboard**: copy the group's value.
 - **Filter in**: append a `WHERE` clause to your query that keeps only documents matching this group.
