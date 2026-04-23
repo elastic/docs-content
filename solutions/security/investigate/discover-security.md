@@ -72,7 +72,7 @@ The overview tab includes the following sections:
 
 :::{applies-item} stack: ga 9.1-9.3
 
-The document flyout includes an **Alert Overview** or **Event Overview** tab depending on the document type. This tab surfaces key information to help you quickly understand the document and decide on next steps.
+The document flyout includes an overview tab, plus **Table** and **JSON** tabs. The overview tab surfaces key information to help you quickly understand the document and decide on next steps.
 
 The overview tab includes the following sections:
 
