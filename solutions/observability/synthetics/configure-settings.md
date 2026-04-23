@@ -98,8 +98,6 @@ Project API keys are used to push {{project-monitors}} remotely from a CLI or CD
 
 In the **Project API keys** tab, you can generate project API keys to use with your projects. Learn more about using API keys in [Use {{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
-{applies_to}`stack: ga` The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
-
 ::::{important}
 **In an Elastic Stack deployment**, to create a Project API key you must be logged into {{kib}} as a user with the privileges described in [Writer role](/solutions/observability/synthetics/writer-role.md).
 
@@ -111,6 +109,10 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :alt: Project API keys tab on the Synthetics Settings page in {{kib}}
 :screenshot:
 :::
+
+{applies_to}`stack: ga` 
+- The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
+- The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
 
 ## Advanced [synthetics-settings-advanced]
 ```{applies_to}
@@ -125,12 +127,12 @@ In the **Advanced** tab, you can configure advanced settings for your Synthetics
 Private location monitors are periodically synced to apply active maintenance window changes. The **Maintenance windows sync interval** setting controls how frequently this sync occurs.
 
 Use the **Sync interval (minutes)** field to set the interval. The default is 5 minutes, and valid values range from 5 to 1440 minutes. When you apply a new interval, an immediate sync is triggered so the change takes effect right away.
-<!--
+
 :::{image} /solutions/images/observability-synthetics-settings-advanced.png
 :alt: Advanced tab on the Synthetics Settings page in {{kib}}
 :screenshot:
 :::
--->
+
 When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
 
 A separate callout appears when maintenance windows are modified or deleted but changes have not yet propagated to your private location monitors.
