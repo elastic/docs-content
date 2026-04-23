@@ -104,6 +104,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the reliability of {{elastic-defend}}'s malware-on-write detection.
 * Improves {{elastic-defend}} behavioral protection performance by unloading rules that are fully covered by simple exception or trust entries, preventing CPU usage from evaluating events against those rules.
 * Further reduces {{elastic-defend}} behavioral protection CPU usage for trusted applications.
+* Adds ransomware protection to {{elastic-defend}} on macOS. Turned off by default; turn on using the `mac.ransomware.mode` advanced policy setting.
+
 
 
 ### Fixes [elastic-security-9.4.0-fixes]
