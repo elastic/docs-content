@@ -46,9 +46,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds an **Exceptions** RBAC subfeature to the Rules privilege, allowing you to grant exception list management independently of rules read/write access [#245722]({{kib-pull}}245722).
 * Adds a dedicated **Alerts** {{kib}} feature privilege, separating alert view and edit access from rules management. Alert read/edit can now be granted independently of rules privileges [#244637]({{kib-pull}}244637).
 * Adds a project selector to Security Solution pages including rule creation, rule details, rule management, rule editing, **MITRE ATT&CK® coverage**, prebuilt rule installation, and **Shared exception lists** [#258916]({{kib-pull}}258916).
-* Adds an AI Agent skill for querying Security {{ml}} jobs to support {{anomaly-detect}} questions in AI Agent chat [#254908]({{kib-pull}}254908).
+* Adds an Agent Builder skill for querying Security {{ml}} jobs for {{anomaly-detect}} questions [#254908]({{kib-pull}}254908).
 * Automatically injects `METADATA _id` into {{esql}} detection rule queries during execution, removing the requirement for you to include it manually. A non-blocking warning is shown when automatic injection is not possible [#254703]({{kib-pull}}254703).
-* Adds AI-assisted detection rule creation to AI Agent, generating {{esql}} rules including name, description, query, tags, severity, risk score, schedule, and MITRE ATT&CK mappings from a natural language description [#247674]({{kib-pull}}247674).
+* Adds an Agent Builder skill for creating detection rules [#247674]({{kib-pull}}247674).
 * Adds validation for Indicator Match rules' `threat_index` parameter, so rules enter a partial failure state with a warning when no matching threat indices are found, matching the behavior of the `index` parameter [#256353]({{kib-pull}}256353).
 * Adds a new initialization API endpoint for the exception list index creation flow [#258891]({{kib-pull}}258891).
 * Enables search in the **JSON** tab of the Security Solution alert flyout, matching the behavior of the Discover document flyout [#263875]({{kib-pull}}263875).
@@ -76,7 +76,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Introduces Entity Threat Hunting on the **Entity Analytics** page, surfacing prioritized investigation leads based on behavioral observations, risk scoring, and temporal state analysis with Agent Builder integration for guided investigation. Adds the **Entity Threat Hunting** leads cards, a **See All** flyout, and a lead provenance flyout [#257610]({{kib-pull}}257610).
 * Introduces the Entity Threat Hunting backend infrastructure, including the feature flag, shared types and index templates, observation module interface, Risk and Temporal State modules, behavioral observation modules, entity retrieval and enrichment, API routes, `LeadDataClient`, async lead generation, and an automated email-based entity resolution maintainer [#255272]({{kib-pull}}255272), [#256156]({{kib-pull}}256156), [#256270]({{kib-pull}}256270), [#256628]({{kib-pull}}256628), [#257046]({{kib-pull}}257046), [#257479]({{kib-pull}}257479).
 * Allows user and host details flyouts to open while observed data is loading [#252657]({{kib-pull}}252657).
-* Adds an Entity Analytics AI Agent skill for answering risk score and entity risk questions in AI Agent chat [#252400]({{kib-pull}}252400).
+* Adds an Entity Analytics Agent Builder skill for answering risk score and entity risk questions [#252400]({{kib-pull}}252400).
 * Adds a `communicates_with` entity relationship maintainer for Entity Store v2, populating user entity relationship data based on cloud API and MDM activity from {{aws}} CloudTrail, Azure Sign-in Logs, Okta System Logs, and Jamf Pro [#258656]({{kib-pull}}258656).
 * Adds a namespace ID filter to **Advanced settings** for filtering Entity Store entities by namespace [#247733]({{kib-pull}}247733).
 * Enables showing entity relationships from the entity node context menu in the graph visualization [#252803]({{kib-pull}}252803).
