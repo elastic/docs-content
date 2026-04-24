@@ -27,15 +27,11 @@ The following patterns use existing workflow capabilities:
 - **Analyze signals with AI.** Use [AI steps](/explore-analyze/workflows/steps/ai-steps.md) to summarize a multi-signal investigation with `ai.summarize`, classify anomaly shapes with `ai.classify`, or invoke an {{agent-builder}} agent with `ai.agent` before the workflow takes action.
 - **Operate on Observability Streams.** Use [Streams action steps](/explore-analyze/workflows/steps/streams.md) to list available streams and pull significant events into a workflow for further processing.
 
-## Example flow [workflows-observability-example-flow]
+## How-to guides [workflows-observability-how-tos]
 
-An anomaly response workflow has the shape:
+Step-by-step guides for observability workflows:
 
-1. **Alert trigger** fires when an anomaly detection rule surfaces an anomaly.
-2. **Elasticsearch step** queries log data in a window around `event.alerts[0].kibana.alert.start`.
-3. **AI step** calls an {{agent-builder}} agent to interpret the pattern.
-4. **Kibana step** creates a case with the anomaly details and the agent's interpretation.
-5. **Connector step** posts a summary to the on-call channel.
+- [Automate root cause analysis for an observability alert](/explore-analyze/workflows/use-cases/observability/root-cause-analysis.md): Run an {{agent-builder}} agent on an alert, then open a case populated with the agent-generated analysis and reasoning trace.
 
 ## Learn more
 
@@ -46,9 +42,3 @@ An anomaly response workflow has the shape:
 - [Streams action steps](/explore-analyze/workflows/steps/streams.md): Observability Streams operations (technical preview).
 - [Data action steps](/explore-analyze/workflows/steps/data.md): Filter, aggregate, and transform signal data inside a workflow.
 - [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): How Agent Builder integrates with observability workflows.
-
-% Ben Ironside Goldstein, 2026-04-16: Planned child pages per Vision doc Section 4.4 and observability section of Section 6:
-% - Respond to anomaly detection alerts (tutorial)
-% - Correlate signals across data sources (how-to)
-% - Automate scheduled data operations (how-to)
-% Pending Observability team engagement confirmation (Vision §9 open question).

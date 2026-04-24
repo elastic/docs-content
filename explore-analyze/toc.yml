@@ -458,13 +458,24 @@ toc:
           - file: workflows/use-cases/security.md
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
+                children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
+                  - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
+                  - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
               - file: workflows/use-cases/security/manage-detection-rules.md
+                children:
+                  - file: workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md
           - file: workflows/use-cases/observability.md
+            children:
+              - file: workflows/use-cases/observability/root-cause-analysis.md
           - file: workflows/use-cases/ai-augmented-workflows.md
+            children:
+              - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/authoring-techniques.md
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/compose-workflows.md
           - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
