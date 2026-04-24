@@ -107,6 +107,11 @@ You can open either browser from:
 
 Both browsers operate on the main query only and don't apply to subqueries.
 
+:::{note}
+:applies_to: serverless: preview
+The data source and fields browsers don't fully support [{{cps}}](../cross-project-search.md). The data source browser lists only resources from the local project. The fields browser fetches fields only for the source patterns written in your query and ignores any `SET project_routing` pre-statement. To work around these limitations, type cross-project patterns directly in `FROM` or `TS` (for example, `FROM _alias:my-index`).
+:::
+
 
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
