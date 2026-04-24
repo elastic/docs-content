@@ -37,9 +37,9 @@ To build a line chart:
 :::::
 
 :::::{step} Set the visualization to Line
-New visualizations default to **Bar**. Using the visualization type dropdown, select **Line**.
+Make sure that the visualization type is set to **Line**.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can skip this step when using a data view if you start by dragging a date or time field (such as `@timestamp`) onto an empty workspace: Lens automatically selects **Line** in that case. The manual switch is still required for [ES|QL](../esorql.md) queries or when the first field you drag is not a date or time field.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you start by dragging a date or time field (such as `@timestamp`) onto an empty workspace, **Line** is automatically selected.
 :::::
 
 :::::{step} Define the data to show
