@@ -51,7 +51,6 @@ For the complete {{esql}} documentation, including all supported commands, funct
    ::::
 
 5. Select **Search** (or **▶Run** in earlier versions).
-   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
 
 Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
@@ -67,7 +66,6 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
    ::::{note}
    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
-   ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
 
 We will now take it a step further to sort the data by machine RAM and filter out the `GB` destination.
@@ -83,8 +81,6 @@ We will now take it a step further to sort the data by machine RAM and filter ou
     ```
 
 2. Select **Search** (or **▶Run** in earlier versions) again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
-
-    ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
 
 3. Click **Save** to save the query and visualization to a dashboard.
 
@@ -155,20 +151,12 @@ FROM kibana_sample_data_ecommerce
 | KEEP customer_first_name, email, products._id.keyword
 ```
 
-:::{image} /explore-analyze/images/kibana-esql-no-time-series.png
-:alt: ESQL query without time series capabilities enabled
-:::
-
 While still querying the same data set, by adding the `?_tstart` and `?_tend` parameters based on the `order_date` field, **Discover** enables times series capabilities.
 
 ```esql
 FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
-
-:::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
-:alt: ESQL query with a custom time field enabled
-:::
 
 ## Create and edit lookup indices from queries [discover-esql-lookup-join]
 ```{applies_to}
@@ -366,8 +354,6 @@ You can go back to the classic data view and KQL mode in Discover at any time. W
 1. Open the Discover tab that you want to switch to classic mode.
 
 2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
-
-![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
 
 :::{tip}
 The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
