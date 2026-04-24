@@ -39,7 +39,7 @@ Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud
 
 Before upgrading your environment, we recommend increasing the size of your {{kib}} instances to at least 2 GB of RAM per availability zone. Learn how to edit settings for existing deployments in [Configure](/deploy-manage/deploy/elastic-cloud/configure.md).
 
-Increasing the memory of your instances ensures optimal performance of new and existing Platinum and Enterprise features. With less than 2 GB of RAM, you may face service interruptions when using features such as Security Detection Rules, Reporting, Workflows, and Agent Builder.
+Increasing the memory of your instances ensures optimal performance of new and existing Platinum and Enterprise features. With less than 2 GB of RAM, you can face service interruptions when using features such as Security detection rules, reporting, workflows, and Agent Builder.
 
 {applies_to}`stack: ga 9.4+` {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default. 
 
