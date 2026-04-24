@@ -340,13 +340,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use `SET unmapped_fields` at the start of your query to change this behavior:
-
-- `FAIL` (default): The query fails if it references unmapped fields. Omitting the `SET unmapped_fields` directive has the same effect.
-- `NULLIFY`: Treats unmapped fields as `null` values.
-- {applies_to}`stack: planned` {applies_to}`serverless: preview` `LOAD`: Loads unmapped fields from the stored [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) and treats them as `keyword` values.
-
-For example, to treat any unmapped field as `null` rather than fail the query:
+By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/commands/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
 
 ```esql
 SET unmapped_fields="NULLIFY";
@@ -359,8 +353,6 @@ FROM partial_mapping_sample_data
 The {{esql}} editor autocompletes the setting name and its accepted values. Once `NULLIFY` or `LOAD` is set, unmapped fields referenced in the query are added to autocomplete and treated like other columns. They stop being suggested if you drop or rename them.
 
 The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
-
-For the full list of accepted values, behavior across query types, and limitations of the `LOAD` strategy, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
 
 
 ## Related pages
