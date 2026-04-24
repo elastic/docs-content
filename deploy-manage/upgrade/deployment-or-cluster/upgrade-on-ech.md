@@ -41,10 +41,10 @@ Before upgrading your environment, we recommend increasing the size of your {{ki
 
 Increasing the memory of your instances ensures optimal performance of new and existing Platinum and Enterprise features. With less than 2 GB of RAM, you may face service interruptions when using features such as Security Detection Rules, Reporting, Workflows, and Agent Builder.
 
-{applies_to}`ess: ga 9.4+` {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default. 
+{applies_to}`stack: ga 9.4+` {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default. 
 
 :::{note}
-Increasing size above 1 GB affects billing.
+Increasing size above 1 GB [affects billing](/deploy-manage/cloud-organization/billing/billing-faq.md#faq-included).
 :::
 
 ## Perform the upgrade [perform-cloud-upgrade]
