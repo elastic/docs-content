@@ -23,10 +23,14 @@ The {{agent-builder}} [chat UI](chat.md#agent-chat-gui) is available in two mode
 The standalone and sidebar modes have the same functionalities and can be used interchangeably. Conversation history is preserved across both modes.
 :::
 
+:::{tip}
+When working with dashboards and visualizations, we recommend using **standalone mode**. This full-page chat experience gives you more room to comfortably analyze complex charts and read detailed agent replies. 
+:::
+
 ## Standalone mode
 
 ```{applies_to}
-stack: preview =9.2, ga 9.3
+stack: preview =9.2, ga 9.3+
 serverless: ga
 ```
 
@@ -40,7 +44,7 @@ Access Agent Builder by selecting **Agents** in the main navigation.
 :screenshot:
 :::
 
-The following GIF shows how to access the standalone chat experience in an {{product.security}} project:
+{applies_to}`stack: ga 9.4+` In standalone mode, the full-page experience includes the left sidebar with the [agent selector](chat.md#select-a-different-agent), [Customize accordion](chat.md#customize-your-agent), [Chats accordion](chat.md#find-conversation-history), and [Manage components](chat.md#manage-components) link.
 
 :::{image} images/standalone-chat-mode.gif
 :alt: Standalone agent builder chat mode in main navigation
@@ -50,7 +54,7 @@ The following GIF shows how to access the standalone chat experience in an {{pro
 ## Sidebar mode
 
 ```{applies_to}
-stack: preview =9.3
+stack: preview =9.3, ga 9.4+
 serverless: preview
 ```
 
