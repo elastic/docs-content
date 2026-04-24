@@ -103,4 +103,4 @@ When editing a Discover session panel from a dashboard, you can save your change
 
 6. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
 
-The embedded editor closes. You land on the new session in **Discover** when you selected **None**, or on the chosen dashboard when you selected **Existing** or **New**.
+Upon saving, you navigate to the new session in **Discover** when you selected **None**, or to the corresponding dashboard when you selected **Existing** or **New**.
