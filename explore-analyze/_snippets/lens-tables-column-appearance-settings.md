@@ -2,11 +2,11 @@
 
 - **Text alignment**: Align the values in the column to the **Left**, **Center**, or **Right**.
 
-- **Color by value**: Apply colors to cell backgrounds, badges, or text based on values. Choose between:
+- **Color by value**: Color cell backgrounds, badges, or text based on values. Choose between:
   - **None**: No coloring (default).
-  - **Cell**: Apply colors to the cell's background based on its value.
-  - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Badge**: Display the cell's value as a colored badge based on its value. Empty, null, and not-a-number (`NaN`) values are not displayed as badges and instead render as plain text.
-  - **Text**: Apply colors to the cell's text based on its value. Define color ranges and rules to highlight important data patterns.
+  - **Cell**: Color cell backgrounds based on their values.
+  - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Badge**: Display cell values as colored badges based on their values. Empty, null, and not-a-number (`NaN`) values are not displayed as badges and instead render as plain text.
+  - **Text**: Color cell text based on their values.
 
 - **Color mapping**: Define the colors to apply to each cell of the column based on its value. Refer to [](/explore-analyze/visualize/lens.md#assign-colors-to-terms) for more details.
 
