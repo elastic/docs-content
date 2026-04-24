@@ -3,7 +3,7 @@ description: Log every search operation on an Elasticsearch cluster including Qu
 applies_to:
   deployment:
     self: ga 9.4
-    ech: ga 9.4
+    ech: ga
     eck: ga
     ece: ga
   serverless: unavailable
