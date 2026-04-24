@@ -5,7 +5,7 @@
 - **Color by value**: Apply colors to cell backgrounds, badges, or text based on values. Choose between:
   - **None**: No coloring (default).
   - **Cell**: Apply colors to the cell's background based on its value.
-  - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Badge**: Display cell values as colored badges based on their value. Empty, null, and not-a-number (`NaN`) values are not displayed as badges and instead render as plain text.
+  - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Badge**: Display the cell's value as a colored badge based on its value. Empty, null, and not-a-number (`NaN`) values are not displayed as badges and instead render as plain text.
   - **Text**: Apply colors to the cell's text based on its value. Define color ranges and rules to highlight important data patterns.
 
 - **Color mapping**: Define the colors to apply to each cell of the column based on its value. Refer to [](/explore-analyze/visualize/lens.md#assign-colors-to-terms) for more details.
