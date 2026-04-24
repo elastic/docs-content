@@ -53,11 +53,11 @@ Install Elastic onboarding skills in your preferred coding assistant (for exampl
 
 Once installed, your coding agent can guide you through the onboarding flow.
 
-### Use Elastic Agent
+### Use Elastic AI Agent
 
-Start onboarding directly in Elastic using the Agent Builder chat:
+You can start onboarding directly in Elastic using the [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) chat. From the {{es}} getting started page in the UI:
 
-1. Click **Open Elastic Agent**.
+1. Click **Open Elastic AI Agent**.
 2. A chat interface opens.
 
   :::{image} /solutions/images/ai-onboarding-chat.png
