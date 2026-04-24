@@ -344,9 +344,7 @@ By default, an {{esql}} query fails if it references a field that is not present
 
 - `FAIL` (default): The query fails if it references unmapped fields. Omitting the `SET unmapped_fields` directive has the same effect.
 - `NULLIFY`: Treats unmapped fields as `null` values.
-- `LOAD`: Loads unmapped fields from the stored [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) and treats them as `keyword` values.
-
-{applies_to}`stack: planned` The `LOAD` value is not yet available on the {{stack}}.
+- {applies_to}`stack: planned` {applies_to}`serverless: preview` `LOAD`: Loads unmapped fields from the stored [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) and treats them as `keyword` values.
 
 For example, to treat any unmapped field as `null` rather than fail the query:
 
