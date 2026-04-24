@@ -37,19 +37,16 @@ Depending on the type of data that you need to move, various migration options a
 Not all migration methods are compatible with all deployment types. For your ingested user data, refer to the [User data migration guides](#data-migration-guides) for more information before selecting a method.
 :::
 
- - **Reindex from source**: For your own data, reindexing into your new, destination deployment from the data's original source is typically the most straightforward approach, because you don't need to consider differing {{es}} versions or deployment types.
- 
-    If you still have access to the original data source, outside of your former {{es}} cluster, you can load the data from there. You have the option to use any ingestion method that you want—{{ls}}, {{agent}}, {{beats}}, the {{es}} clients, or whatever works best for you.
 
-    If the original source isn’t available or has other issues that make it non-viable, you can choose from one of the other migration options described here.
- - **Dual ingest**: For data with a limited lifecycle (logs and metrics, for example), another approach is to ingest into both the original and new environment at the same time, for a set duration. You can ingest into both environments for long enough for the data retention period to elapse. Then, after confirming that everything is working well in the new environment, the original environment can be shut down.
- - **Snapshot and restore**: Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.
- 
-     Refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) for an overview and to [](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) for step-by-step instructions to migrate your data.
- - [**Reindex API**](/manage-data/migrate/migrate-data-using-reindex-api.md): Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. 
- - [**{{ls}}**](/manage-data/migrate/migrate-with-logstash.md): With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data between any deployment types.
- - [**Saved objects API**](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects): Use this API to migrate objects that you've saved in {{kib}}.
- - [**{{kib}} saved object management**](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export): You can also use the {{kib}} UI to migrate your saved objects.
+| Migration method | Description |
+| ------ | ------ |
+| Reindex from source | For your own data, reindexing into your new, destination deployment from the data's original source is typically the most straightforward approach, because you don't need to consider differing {{es}} versions or deployment types.<br><br>If you still have access to the original data source, outside of your former {{es}} cluster, you can load the data from there. You have the option to use any ingestion method that you want—{{ls}}, {{agent}}, {{beats}}, the {{es}} clients, or whatever works best for you.<br><br>If the original source isn’t available or has other issues that make it non-viable, you can choose from one of the other migration options described here |
+| Dual ingest | For data with a limited lifecycle (logs and metrics, for example), another approach is to ingest into both the original and new environment at the same time, for a set duration. You can ingest into both environments for long enough for the data retention period to elapse. Then, after confirming that everything is working well in the new environment, the original environment can be shut down. |
+| Snapshot and restore | Use a snapshot to create a backup of your running {{es}} cluster, and then migrate by restoring your data into a new cluster.<br><br>Refer to [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) for an overview and to [](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) for step-by-step instructions to migrate your data. |
+| [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md) | Copy documents from a source index to a destination index. You can reindex across clusters and deployment types and transform the data en route. |
+| [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) | With {{ls}} you can collect, process, and forward data from a variety of sources to a variety of destinations. It serves as a highly configurable option available for migrating data between any deployment types. |
+| [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) | Use this API to migrate objects that you've saved in {{kib}}. |
+| [{{kib}} saved object management](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) | You can also use the {{kib}} UI to migrate your saved objects. |
 
 The following table describes the migration options available for each data type and where to find guidance.
 
@@ -73,7 +70,8 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | ECK | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | {{serverless-short}} | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
-* See also [Reindex from a Self-managed cluster using a private CA](https://docs-v3-preview.elastic.dev/elastic/docs-content/pull/4914/manage-data/migrate/migrate-from-a-Self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex)
+
+\* See also [Reindex from a Self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-Self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md)
 
 ### Migrate data to {{ece}}**: [data-migration-guides-ece]
 
