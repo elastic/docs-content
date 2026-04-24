@@ -23,7 +23,13 @@ The `ai.prompt` step sends a prompt to an AI connector and returns the response.
 * Make context-aware decisions based on data in your workflow
 * Generate structured output based on a defined schema
 
-To use a specific AI connector, configure it through {{kib}}'s [{{connectors-ui}} framework](/deploy-manage/manage-connectors.md). If you don't configure a connector, this step uses the connector selected as the **Default AI Connector** in [GenAI Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#the-genai-settings-page). [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) are available out of the box and require no setup.
+To use a specific AI connector, configure it through {{kib}}'s [{{connectors-ui}} framework](/deploy-manage/manage-connectors.md).
+If you don't configure a connector, this step uses
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` the default model specified in [Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#feature-settings).
+- {applies_to}`stack: ga 9.0-9.3` the default AI connector specified in [GenAI Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#genai-settings).
+
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) are available out of the box and require no setup.
 
 :::{note}
 :applies_to: { self: }
@@ -37,7 +43,7 @@ Use the following parameters in the `with` block to configure the step:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `prompt` | string | Yes | The prompt text to send to the AI connector. Can include template variables to reference data from previous steps, inputs, or constants. |
-| `connectorId` | string | No | The ID or name of the AI connector to use. If omitted, uses the [default AI connector](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#the-genai-settings-page). |
+| `connectorId` | string | No | The ID or name of the AI connector to use. If omitted, uses the [default AI connector or model](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). |
 | `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the AI connector returns structured data matching the schema. |
 | `temperature` | number | No | Controls randomness in the AI response. Accepts values from `0` to `1` (for example, `0.3`). Lower values produce more deterministic responses; higher values produce more random responses. |
 

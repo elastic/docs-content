@@ -111,7 +111,7 @@ Click the three-dot menu icon in the top-right corner to access additional optio
 The options menu provides access to:
 
 - **Agent details**: View information about the currently selected agent.
-- **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings.
+- **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 :::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
