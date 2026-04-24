@@ -82,7 +82,7 @@ To change which model is used by default:
 
 ::::
 
-For more information, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 ## Use additional models
 

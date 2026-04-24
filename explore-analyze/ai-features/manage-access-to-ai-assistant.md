@@ -41,7 +41,19 @@ The **GenAI Settings** page has the following settings:
 - **Token usage tracking**: Turn on tracking of token usage by AI features.
 - **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
 ::::
+::::{applies-item} stack: ga 9.4+
 
+:::{image} /explore-analyze/images/genai-settings-stack.png
+:alt: GenAI Settings for Stack in 9.4
+:screenshot:
+:::
+
+The **GenAI Settings** page has the following settings:
+
+- **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
+- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
+::::
 ::::{applies-item} stack: ga 9.2-9.3
 
 :::{image} /explore-analyze/images/ai-assistant-settings-page.png
@@ -62,19 +74,6 @@ The **GenAI Settings** page has the following settings:
   - **Security AI Assistant in other apps**: The Security AI Assistant appears throughout {{kib}} regardless of solution. The {{obs-ai-assistant}} does not appear anywhere.
   - **Hide all assistants**: Turns off AI Assistant throughout {{kib}}.
 
-::::
-::::{applies-item} stack: ga 9.4+
-
-:::{image} /explore-analyze/images/genai-settings-stack.png
-:alt: GenAI Settings for Stack in 9.4
-:screenshot:
-:::
-
-The **GenAI Settings** page has the following settings:
-
-- **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat experience**: Select whether to use AI Assistant or AI Agent. To learn about the differences, go to [Compare AI Agent and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
-- **Documentation**: Install Elastic documentation or content from Security labs to improve Agent Builder responses.
 ::::
 :::::
 
