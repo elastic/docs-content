@@ -46,7 +46,7 @@ Because self-managed {{fleet-server}} is not supported on {{serverless-full}}, t
 * [logs](#elastic-agent-logs-command)
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
-* [windows](#elastic-agent-windows-command)
+* [windows](#elastic-agent-windows-command) {applies_to}`stack: ga 9.4+`
 
 
 
