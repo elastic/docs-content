@@ -208,6 +208,10 @@ In addition to the standard LiquidJS filter set, the workflow engine provides tw
     parsed: "{{ steps.http_call.output.body | json_parse }}"
 ```
 
+:::{note}
+The inverse of `json_parse` is the standard LiquidJS `json` filter, which serializes a value to a JSON string.
+:::
+
 **Iterate an object's keys:**
 
 ```yaml
@@ -219,10 +223,6 @@ In addition to the standard LiquidJS filter set, the workflow engine provides tw
         {{ kv[0] }}: {{ kv[1] }}
       {% endfor %}
 ```
-
-:::{note}
-The inverse of `json_parse` is the standard LiquidJS `json` filter, which serializes a value to a JSON string.
-:::
 
 ### Choose Liquid or a data step [workflows-liquid-vs-data-steps]
 
