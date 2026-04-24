@@ -98,10 +98,14 @@ When editing a Discover session panel from a dashboard, you can save your change
 4. In the **Save Discover session** window, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 5. Under **Add to dashboard**, choose where to display the new session:
 
-   - **Existing**: Add the new session as a panel on an existing dashboard you select.
-   - **New**: Add the new session as a panel on a new dashboard.
-   - **None**: Save the session to the library only, without adding it to a dashboard.
+   - **Existing**: Add the new session to a dashboard you select.
+
+     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the panel was previously linked to a saved Discover session in the library, that original session is unchanged.
+     - If you select a different dashboard, the original panel is unchanged, and the new session is added as a separate panel on the dashboard you selected.
+
+   - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
+   - **None**: Save the session to the library only, without adding it to a dashboard. The original panel is unchanged.
 
 6. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
 
-The original dashboard panel is unchanged, and **Discover** exits the embedded editor mode.
+The embedded editor closes. You land on the new session in **Discover** when you selected **None**, or on the chosen dashboard when you selected **Existing** or **New**.
