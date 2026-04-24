@@ -33,6 +33,20 @@ If your indices are not highly available (configured with at least one replica),
 
 Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for more information about High Availability (HA) on ECH.
 
+## Increase your {{kib}} instance size 
+
+{{kib}} needs more memory to support growing built-in functionality. 
+
+Before upgrading your environment, we recommend increasing the size of your {{kib}} instances to at least 2 GB of RAM per availability zone. Learn how to edit settings for existing deployments in [Configure](/deploy-manage/deploy/elastic-cloud/configure.md).
+
+Increasing the memory of your instances ensures optimal performance of new and existing Platinum and Enterprise features. With less than 2 GB of RAM, you may face service interruptions when using features such as Security Detection Rules, Reporting, Workflows, and Agent Builder.
+
+{applies_to}`ess: ga 9.4+` {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default. 
+
+:::{note}
+Increasing size above 1 GB affects billing.
+:::
+
 ## Perform the upgrade [perform-cloud-upgrade]
 
 Log in to your {{ecloud}} environment:

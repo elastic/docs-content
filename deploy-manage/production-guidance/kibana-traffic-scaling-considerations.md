@@ -51,6 +51,11 @@ In user interfaces like Dashboards or Discover, you can view the full query that
 
 Follow this strategy if you know the maximum number of expected concurrent users.
 
+:::{note}
+:applies_to: ess: ga 9.4+
+Starting in 9.4, {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default.
+:::
+
 Start {{kib}} on **1 vCPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards.
 
 If you are experiencing performance issues, you can scale {{kib}} vertically by adding the following resources for every 10 additional concurrent users:
