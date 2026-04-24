@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html
 applies_to:
-  stack: all
+  stack: ga
 ---
 
 # Slow query and index logging
