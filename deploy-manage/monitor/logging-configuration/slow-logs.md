@@ -36,6 +36,22 @@ Events that meet the specified threshold are emitted into [{{es}} logging](/depl
 Refer to [this video](https://www.youtube.com/watch?v=ulUPJshB5bU) for a walkthrough of setting and reviewing slow logs.
 
 
+## Configuring slow log output [configuring-slow-log-output]
+
+```{applies_to}
+deployment:
+  self: ga
+```
+
+Slow log file destinations, rotation policies, and logger-level filtering are configured in the [`log4j2.properties` configuration file](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md), not through index settings. By default, {{es}} writes slow logs to rolling JSON files in the logs directory with a 1GB rotation size and up to 4 backups.
+
+The Log4j logger level for slow logs is set to `trace` by default, which allows all slow log events to reach the log file. If you change the logger level to a less verbose level like `warn`, only slow log entries emitted at that severity or above will be written to the file, even if lower-severity thresholds are configured in the index settings. For more information about configuring logging levels, refer to [Update {{es}} logging levels](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md).
+
+::::{note}
+The `log4j2.properties` file controls where and how slow log entries are written. It does not control which operations are considered slow. To configure the time-based thresholds that determine what gets logged, use [index settings](elasticsearch://reference/elasticsearch/index-settings/slow-log.md).
+::::
+
+
 ## What's included in slow logs [slow-log-format]
 
 Depending on the settings you configure, slow logs can record:
@@ -128,7 +144,8 @@ You enable slow logs by configuring thresholds. Thresholds can be aggressive, su
 You can enable slow logging at the following levels:
 
 * At the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
-* For all indices (cluster-wide) under the [{{es}} `log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md). This method requires a node restart.
+* For all existing indices, by targeting a wildcard pattern like `*` with the update indices settings API.
+* For all future indices, by configuring thresholds in an [index template](/manage-data/data-store/templates.md).
 
 To view the current slow log settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API:
 
@@ -196,42 +213,43 @@ For more information about slow log settings, refer to [slow log settings](elast
 
 
 
-To adjust slow log settings across all indices (cluster-wide), use the following settings in your [`log4j2.properties` configuration file](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
+To adjust slow log settings across all existing indices, use a wildcard pattern with the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API:
 
 ::::{tab-set}
 :group: slow-logs
 :::{tab-item} Search operations
 :sync: search
 
-```yaml
-index.search.slowlog.threshold.query.warn: 10s
-index.search.slowlog.threshold.query.info: 5s
-index.search.slowlog.threshold.query.debug: 2s
-index.search.slowlog.threshold.query.trace: 500ms
-
-index.search.slowlog.threshold.fetch.warn: 1s
-index.search.slowlog.threshold.fetch.info: 800ms
-index.search.slowlog.threshold.fetch.debug: 500ms
-index.search.slowlog.threshold.fetch.trace: 200ms
-
-index.search.slowlog.include.user: true
+```console
+PUT /*/_settings
+{
+  "index.search.slowlog.threshold.query.warn": "10s",
+  "index.search.slowlog.threshold.query.info": "5s",
+  "index.search.slowlog.threshold.query.debug": "2s",
+  "index.search.slowlog.threshold.query.trace": "500ms",
+  "index.search.slowlog.threshold.fetch.warn": "1s",
+  "index.search.slowlog.threshold.fetch.info": "800ms",
+  "index.search.slowlog.threshold.fetch.debug": "500ms",
+  "index.search.slowlog.threshold.fetch.trace": "200ms",
+  "index.search.slowlog.include.user": true
+}
 ```
 
-:::
 :::
 :::{tab-item} Indexing operations
 :sync: index
 
-```yaml
-index.indexing.slowlog.threshold.index.warn: 10s
-index.indexing.slowlog.threshold.index.info: 5s
-index.indexing.slowlog.threshold.index.debug: 2s
-index.indexing.slowlog.threshold.index.trace: 500ms
-
-index.indexing.slowlog.source: 1000
-index.indexing.slowlog.reformat: true
-
-index.indexing.slowlog.include.user: true
+```console
+PUT /*/_settings
+{
+  "index.indexing.slowlog.threshold.index.warn": "10s",
+  "index.indexing.slowlog.threshold.index.info": "5s",
+  "index.indexing.slowlog.threshold.index.debug": "2s",
+  "index.indexing.slowlog.threshold.index.trace": "500ms",
+  "index.indexing.slowlog.source": "1000",
+  "index.indexing.slowlog.reformat": true,
+  "index.indexing.slowlog.include.user": true
+}
 ```
 
 :::
