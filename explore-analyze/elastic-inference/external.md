@@ -29,12 +29,11 @@ Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference)
 
 ## Add new {{infer}} endpoint [add-inference-endpoints]
 
-To add a new {{infer}} endpoint using the UI:
-
+1. Go to the **External {{infer}}** model management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select the **Add endpoint** button.
 1. Select a service from the drop down menu.
 1. Provide the required configuration details.
-   
+
    For service-specific information, refer to the relevant API documentation.
    For example, [create a JinaAI inference endpoint]({{es-apis}}operation/operation-inference-put-jinaai).
 1. Select **Save** to create the endpoint.
