@@ -77,6 +77,32 @@ PUT semantic-embeddings-optimized
 1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 2. Uses [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) with HNSW indexing for up to 32x memory reduction.
 
+:::{dropdown} Equivalent `curl` command
+:open:
+
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-optimized" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "content": {
+             "type": "semantic_text",
+             "inference_id": ".multilingual-e5-small-elasticsearch",
+             "index_options": {
+               "dense_vector": {
+                 "type": "bbq_hnsw"
+               }
+             }
+           }
+         }
+       }
+     }'
+```
+
+:::
+
 ::::::::
 
 ::::::::{tab-item} BBQ flat
@@ -103,6 +129,34 @@ PUT semantic-embeddings-flat
 ```
 1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 2. BBQ without HNSW for smaller datasets. Uses brute-force search, so queries are slower but indexing is lighter.
+
+:::{dropdown} Equivalent `curl` command
+:open:
+
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-flat" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "content": {
+             "type": "semantic_text",
+             "inference_id": ".multilingual-e5-small-elasticsearch",
+             "index_options": {
+               "dense_vector": {
+                 "type": "bbq_flat"
+               }
+             }
+           }
+         }
+       }
+     }'
+```
+
+:::
+
+
 
 ::::::::
 
@@ -136,6 +190,32 @@ PUT semantic-embeddings-disk
 1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 2. DiskBBQ keeps vectors compressed on disk, dramatically reducing RAM requirements at the cost of slower queries.
 
+:::{dropdown} Equivalent `curl` command
+:open:
+
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-disk" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "content": {
+             "type": "semantic_text",
+             "inference_id": ".multilingual-e5-small-elasticsearch",
+             "index_options": {
+               "dense_vector": {
+                 "type": "bbq_disk"
+               }
+             }
+           }
+         }
+       }
+     }'
+```
+
+:::
+
 ::::::::
 
 ::::::::{tab-item} Integer quantization
@@ -161,14 +241,11 @@ PUT semantic-embeddings-int8
 1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 2. 8-bit integer quantization for ~4x memory reduction. For higher compression, use `"type": "int4_hnsw"` (~8x reduction).
 
-::::::::
-
-::::::::{tab-item} Using curl
-
-The following example creates an index with BBQ and HNSW quantization:
+:::{dropdown} Equivalent `curl` command
+:open:
 
 ```bash
-curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-optimized" \
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-int8" \
      -H "Content-Type: application/json" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -d '{
@@ -176,10 +253,10 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-optimized" \
          "properties": {
            "content": {
              "type": "semantic_text",
-             "inference_id": ".multilingual-e5-small-elasticsearch", <1>
+             "inference_id": ".multilingual-e5-small-elasticsearch",
              "index_options": {
                "dense_vector": {
-                 "type": "bbq_hnsw"
+                 "type": "int8_hnsw"
                }
              }
            }
@@ -188,10 +265,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings-optimized" \
      }'
 ```
 
-1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint, which is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
-2. Uses [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) with HNSW indexing for up to 32x memory reduction. 
-
-To use a different quantization strategy, replace `"type": "bbq_hnsw"` with your chosen strategy (`bbq_flat`, `bbq_disk`, `int8_hnsw`, or `int4_hnsw`) and update the index name accordingly.
+:::
 
 ::::::::
 
