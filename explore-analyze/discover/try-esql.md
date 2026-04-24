@@ -26,11 +26,6 @@ For the complete {{esql}} documentation, including all supported commands, funct
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
-:::{tip}
-:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-This tutorial uses sample data so you don't need to know specific index or field names. When you query your own data, you can use the [data source and fields browsers](../query-filter/languages/esql-kibana.md#esql-kibana-resource-browsers) in the editor to discover and insert them without leaving the query bar.
-:::
-
 1. Go to **Discover**.
 2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
@@ -92,6 +87,25 @@ We will now take it a step further to sort the data by machine RAM and filter ou
     ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
 
 3. Click **Save** to save the query and visualization to a dashboard.
+
+
+## Browse indices and fields from the editor [discover-esql-resource-browsers]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When you write a query against your own data, the {{esql}} editor includes two interactive browsers that help you find data sources and field names without leaving the editor:
+
+- **Data source browser**: lists indices, data streams, and aliases you can query. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Fields browser**: lists fields for the indices currently in your query and lets you insert one field at a time at the cursor position.
+
+You can open either browser from:
+
+- **The autocomplete menu**: select **Browse indices** when editing a `FROM` or `TS` command, or **Browse fields** when editing a position that accepts a field name (for example, after `KEEP`, `WHERE`, or `SORT`).
+- **The data source badge**: the first `FROM` or `TS` keyword in the query is rendered as a clickable badge. Select it to open the data source browser.
+
+Both browsers operate on the main query only and don't apply to subqueries.
 
 
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
