@@ -1301,6 +1301,10 @@ elastic-agent version
 
 ## elastic-agent windows [elastic-agent-windows-command]
 
+```{applies_to}
+stack: ga 9.4+
+```
+
 Windows-specific subcommands for managing {{agent}} registry entries. These commands require Administrator privileges.
 
 
