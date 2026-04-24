@@ -30,6 +30,7 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | {applies_to}`stack: ga 9.4+` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
 | {applies_to}`stack: ga 9.4+` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: ga 9.4+` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
+| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
 | {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
@@ -72,6 +73,14 @@ serverless: ga
 ```
 
 Link multiple entity records that represent the same real-world identity into a resolution group. The target entity aggregates risk scores from all linked records, giving you a consolidated view across identity providers such as Okta, Active Directory, and Entra ID.
+
+### Graph visualization
+```yaml {applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+Investigate entity connections and relationships directly from the entity details flyout. The overview panel shows a graph preview of the entity's connections over the last 30 days, and the **Graph View** tab in the expanded panel provides a full interactive investigation experience. Graph Visualization requires [entity store v2](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated in the active space.
 
 ### Privileged user monitoring
 ```yaml {applies_to}

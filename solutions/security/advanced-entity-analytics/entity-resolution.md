@@ -26,6 +26,8 @@ A resolution group consists of:
 * **Target entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the target.
 * **Alias entities**: Records that point to the target via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), alias entities appear nested under their target when the table is grouped by **Resolution** (the default view).
 
+Resolution group relationships are also visible as **Resolved to** connections in [Graph Visualization](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) from the entity details flyout.
+
 ## Automated resolution [entity-resolution-automated]
 
 Entity resolution runs an automated process that matches entities across identity providers based on shared email addresses. For example, if an Okta user and an Active Directory user share the same email address, they are automatically linked into a resolution group.
