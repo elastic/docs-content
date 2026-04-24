@@ -23,24 +23,24 @@ Entity resolution links multiple entity records that represent the same real-wor
 
 A resolution group consists of:
 
-* **Target entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the target.
-* **Alias entities**: Records that point to the target via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), alias entities appear nested under their target when the table is grouped by **Resolution** (the default view).
+* **Primary entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the primary entity.
+* **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
 
 Resolution group relationships are also visible as **Resolved to** connections in [Graph Visualization](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) from the entity details flyout.
 
 ## Automated resolution [entity-resolution-automated]
 
-Entity resolution runs an automated process that matches entities across identity providers based on shared email addresses. For example, if an Okta user and an Active Directory user share the same email address, they are automatically linked into a resolution group.
+Entity resolution runs an automated process that matches user entities across identity providers based on shared email addresses. For example, if an Okta user and an Active Directory user share the same email address, they are automatically linked into a resolution group. Automated resolution does not override manual resolution.
 
 ::::{note}
-Automated resolution currently matches on email addresses only. Other matching criteria, such as employee ID, are not yet supported. Automated resolution may produce false-positive links when non-IDP entities happen to share an email address with an IDP entity.
+Automated resolution currently matches on email addresses only. Automated resolution may produce false-positive links when non-IDP entities happen to share an email address with an IDP entity.
 ::::
 
 ## Bulk link entities using CSV [entity-resolution-csv]
 
-You can bulk-link entity records to resolution targets by importing a CSV file from the **Entity Analytics** management page.
+You can bulk-link entity records to primary entities by importing a CSV file from the **Entity Analytics** management page.
 
-Each row in the CSV uses identity fields to find matching entities and links them to a target entity specified by its entity ID.
+Each row in the CSV uses identity fields to find matching entities and links them to a primary entity specified by its entity ID.
 
 ### CSV format [entity-resolution-csv-format]
 
@@ -48,8 +48,8 @@ The CSV must include a header row with `type` and `resolved_to` columns. Additio
 
 | Column | Description |
 | --- | --- |
-| `type` | Entity type: `user`, `host`, `service`, or `generic` |
-| `resolved_to` | The `entity.id` of the target entity |
+| `type` | Entity type: `user`, `host`, or `service` |
+| `resolved_to` | The `entity.id` of the primary entity |
 | Additional columns | Identity fields used to match alias entities (for example, `user.email`, `user.name`, `host.name`) |
 
 **Supported file formats:** CSV, TXT, TSV (maximum 1 MB)

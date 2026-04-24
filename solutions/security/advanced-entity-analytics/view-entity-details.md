@@ -119,7 +119,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the target and any aliases — with their entity name, ID, source, and risk score.
+The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the priamry entity and any aliases — with their entity name, ID, source, and risk score.
 
 To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the Add icon ({icon}`plus_in_circle`) next to the entity you want to link. To remove an entity from the group, click **X** ({icon}`cross`) in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 

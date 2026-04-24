@@ -72,7 +72,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Link multiple entity records that represent the same real-world identity into a resolution group. The target entity aggregates risk scores from all linked records, giving you a consolidated view across identity providers such as Okta, Active Directory, and Entra ID.
+Link multiple entity records that represent the same real-world identity into a resolution group. The primary entity aggregates risk scores from all linked records, giving you a consolidated view across identity providers such as Okta, Active Directory, and Entra ID.
 
 ### Graph visualization
 ```yaml {applies_to}

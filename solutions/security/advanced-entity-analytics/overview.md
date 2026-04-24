@@ -91,7 +91,7 @@ This section provides a centralized view of all hosts, users, and services in yo
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 Interact with the table to filter, group, and explore entity data:
 
-* Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their target, while unresolved entities appear on their own.
+* Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their primary entity, while unresolved entities appear on their own.
 * Filter the table by watchlist membership to focus on specific entity groups.
 * Sort and filter by any entity store field.
 * Click an entity row to expand it and view more details, or open the entity details flyout.
