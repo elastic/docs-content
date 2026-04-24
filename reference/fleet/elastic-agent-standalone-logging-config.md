@@ -54,7 +54,7 @@ agent.logging.files:
 
 You can specify the following settings in the Logging section of the `elastic-agent.yml` config file.
 
-Some outputs will log raw events on errors like indexing errors in the {{es}} output, to prevent logging raw events (that may contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It will use the same level, selectors and all other configurations from the default logger, but it will have its own file configuration.
+Some outputs log raw events on errors like indexing errors in the {{es}} output, to prevent logging raw events (that might contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It uses the same level, selectors and all other configurations from the default logger, but has its own file configuration.
 
 Having a different log file for raw events also prevents event data from drowning out the regular log files. Use `agent.logging.event_data` to configure the events logger.
 
@@ -69,7 +69,7 @@ The events log file is not collected by the {{agent}} monitoring. If the events 
 | `agent.logging.to_eventlog`<br> | Set to `true` to write all logging output to the Windows `eventlog` output.<br><br>Default: `false`<br> |
 | `agent.logging.metrics.enabled`<br> | Set to `true` for {{agent}} to periodically log its internal metrics that have changed in the last period. For each metric that changed, the delta from the value at the beginning of the period is logged. Also, the total values for all non-zero internal metrics get logged on shutdown. If set to `false`, no metrics for the agent or any of the {{beats}} running under it are logged.<br><br>Default: `true`<br> |
 | `agent.logging.metrics.period`<br> | Specify the period after which to log the internal metrics. This setting is not passed to any {{beats}} running under the {{agent}}.<br><br>Default: `30s`<br> |
-| `agent.logging.to_files`<br> | Set to `true` to log to rotating files. Set to `false` to disable logging to files. For this output to take effect, you must also set `to_stderr: false`.<br><br>Default: `false`<br> |
+| `agent.logging.to_files`<br> | Set to `true` to log to rotating files. Set to `false` to turn off logging to files. For this output to take effect, you must also set `to_stderr: false`.<br><br>Default: `false`<br> |
 | `agent.logging.files.path`<br> | The directory that log files are written to when `to_files: true` is configured. Log file names end with a date and optional number: log-date.ndjson, log-date-1.ndjson, and so on as new files are created during rotation. This setting does not affect the internal logging output.<br> |
 | `agent.logging.files.name`<br> | The name of the file that logs are written to.<br><br>Default: `elastic-agent`<br> |
 | `agent.logging.files.rotateeverybytes`<br> | The maximum size limit of a log file. If the limit is reached, a new log file is generated.<br><br>Default: `10485760` (10MB)<br> |
