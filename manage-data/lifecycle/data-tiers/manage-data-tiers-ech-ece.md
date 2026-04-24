@@ -291,7 +291,7 @@ When an [{{ilm-init}} policy’s `searchable_snapshot` action](elasticsearch://r
         GET <searchable-snapshot-index-prefix>/_settings?filter_path=**.index.store.snapshot.snapshot_name&expand_wildcards=all
         ```
 
-    2. List snapshot repository names and resolve which repository to use in the restore API. {{ech}} often defaults to a repository named `found-snapshots`, but clusters can register additional repositories (for example with the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)), so do not assume a single name.
+    2. List snapshot repository names to determine which repositories to use when you call the restore API. {{ech}} uses a repository named `found-snapshots` by default, but you can also register additional repositories for clusters (for example by using the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)). Be careful not to assume that there is only one repository name.
 
         ```sh
         GET _snapshot
@@ -334,7 +334,7 @@ When an [{{ilm-init}} policy’s `searchable_snapshot` action](elasticsearch://r
 5. Restore indices from the {{search-snaps}}.
 
     1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers/manage-data-tiers-ech-ece.md#update-data-tier-allocation-rules) for the tier you are keeping.
-    2. Use the repository and snapshot names you captured earlier in step 2. In the restore request, set `index.lifecycle.name` to `null` and set [`index.lifecycle.indexing_complete`](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md#_index_level_settings_2) to `true` for indices that are not going to keep ingesting as a rollover write index. Do not set a new `index.lifecycle.name` in the restore body. After the index is `green`, assign a different policy, if you need one, in a separate `PUT` request, following the steps described in [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) which remove the old policy, then add the new one. Only set `index.lifecycle.rollover_alias` if you will keep using the index as a rollover target; otherwise leave it unset.
+    2. Use the repository and snapshot names you captured earlier in step 2. In the restore request, set `index.lifecycle.name` to `null` and set [`index.lifecycle.indexing_complete`](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md#_index_level_settings_2) to `true` for indices that are not going to keep ingesting as a rollover write index. Do not set a new `index.lifecycle.name` in the restore body. After the index is `green`, assign a different policy, if you need one, in a separate `PUT` request. Follow the steps described in [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) to remove the old policy and then add a new one. Only set `index.lifecycle.rollover_alias` if you will keep using the index as a rollover target; otherwise leave it unset.
 
         ```sh
         POST _snapshot/<snapshot-repository-name>/<searchable_snapshot_name>/_restore
@@ -349,7 +349,7 @@ When an [{{ilm-init}} policy’s `searchable_snapshot` action](elasticsearch://r
         }
         ```
 
-        The `<searchable_snapshot_name>` are obtained from step 2. Adjust `index.number_of_replicas` to match your resiliency needs.
+        For `<searchable_snapshot_name>` use the names that you obtained in step 2. Adjust `index.number_of_replicas` to match your resiliency needs.
 
         The example request restores `frozen-index-1` and places it in the warm tier; the snapshot can be found in `found-snapshots`, which is the default snapshot repository.
 
