@@ -32,7 +32,22 @@ Before you begin:
 
 Follow these steps to configure a workflow tool:
 
-1. Navigate to **Agents > More > View all tools > New tool**.
+1. Navigate to the Tools page and create a new tool:
+
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, select **Tools**, then click **+ New tool**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Go to **Agents > More > View all tools > New tool**.
+
+   ::::
+   
+   :::::
 
   :::{image} ../images/create-new-tool-workflows.png
   :screenshot:
@@ -72,11 +87,28 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 ### Assign tool to agent
 
 To assign a tool to an agent:
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the workflow tool to assign.
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**
+3. Select **More > Edit Agent > Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
+
+::::
+
+:::::
 
 ### Trigger a workflow
 
