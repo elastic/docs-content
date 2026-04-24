@@ -30,6 +30,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
 
    - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to {{esql}} `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
 
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
@@ -119,6 +120,8 @@ Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Us
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
 - **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
 - **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
+
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` When you switch from classic mode to {{esql}} mode, active filters from the filter bar are converted to `WHERE` clauses where possible, so they aren't lost. Filters that can't be converted are dropped.
 
 
 ## Sort query results [_sorting]
