@@ -98,7 +98,7 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 ## Organize the query results [esql-kibana-results-table]
 
-By default, the results table shows a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -111,6 +111,11 @@ To display all fields as separate columns, use `KEEP *`:
 FROM kibana_sample_data_logs
 | KEEP *
 ```
+
+:::{note}
+:applies_to: { stack: ga 9.4, serverless: ga }
+When a query without transformational commands (such as `KEEP` or `STATS`) returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+:::
 
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
