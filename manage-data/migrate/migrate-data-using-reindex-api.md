@@ -47,7 +47,7 @@ For more advanced use cases, including data modification using scripts or ingest
 
 
 :::{important} 
-Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually. Refer to [Migration options](/manage-data/migrate-data.md#migration-options) for details about migrating different types of {{es}} data.
+Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually. Refer to [Migration options](/manage-data/migrate.md#migration-options) for details about migrating different types of {{es}} data.
 
 Index templates, data stream definitions, and data lifecycle settings must be in place _before_ you start reindexing data. However, if you have any [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) configured, it's typically best to add these _after_ data migration so as to avoid re-transforming data that had already been transformed at the time that it was ingested into your source deployment. If the data is idempotent, re-transforming is not a concern.
 

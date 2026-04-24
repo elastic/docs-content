@@ -20,7 +20,7 @@ Migrating with incremental snapshots is useful when you want to:
 * Ensure data ingestion, such as {{ls}} or {{beats}}, and data consumption, such as applications using {{es}} as a backend, seamlessly migrate to the new cluster.
 * Maintain data consistency and minimize disruption.  
 
-Snapshot and restore is a reliable approach to migrating any type of {{es}} data. For more detail about the feature, check [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md). To learn about other available migration methods and the data types that they support, refer to [](/manage-data/migrate-data.md).
+Snapshot and restore is a reliable approach to migrating any type of {{es}} data. For more detail about the feature, check [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md). To learn about other available migration methods and the data types that they support, refer to [](/manage-data/migrate.md).
 
 ## How incremental snapshots work [how-incremental-snapshots-work]
 Incremental snapshots save only the data that has changed since the last snapshot. The first snapshot is a full copy of the data. Each subsequent snapshot contains only the differences, which makes creating and restoring snapshots faster and more efficient over time. 
