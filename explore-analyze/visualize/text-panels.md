@@ -114,7 +114,7 @@ Save a Markdown panel to the **Visualize Library** so you can add it to multiple
 
 To save an existing Markdown panel from a dashboard to the **Visualize Library**:
 
-1. On your dashboard, open the panel menu of the Markdown panel.
+1. On your dashboard, open the {icon}`boxes_vertical` panel menu of the Markdown panel.
 2. Select **Save to library**.
 3. Enter a **Title** for the panel, then select **Save**.
 
@@ -132,7 +132,7 @@ To add a previously saved Markdown panel to a dashboard:
 
 To make changes to a saved Markdown panel on a single dashboard without affecting other dashboards, unlink it from the library:
 
-1. On your dashboard, open the panel menu of the Markdown panel.
+1. On your dashboard, open the {icon}`boxes_vertical` panel menu of the Markdown panel.
 2. Select **Unlink from library**.
 
 The panel is now part of the dashboard only. Edits you make to it no longer update the library entry or other dashboards.
