@@ -19,8 +19,5 @@ Reference material for the components that make up a workflow definition. Use th
 
 - [Triggers](/explore-analyze/workflows/triggers.md): Manual, scheduled, alert, and event-driven triggers.
 - [Steps](/explore-analyze/workflows/steps.md): Action, flow control, AI, data, and composition steps.
-- [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax, variables, and filters.
-
-% Ben Ironside Goldstein, 2026-04-16: Follow-up PRs per Vision doc Section 6 will add:
-% - Alert and event fields reference (as a child of Reference > Triggers > Alert triggers)
-% - YAML schema reference
+- [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax and custom filters.
+- [Concepts](/explore-analyze/workflows/concepts.md): Quick-reference pages for the workflow YAML surface. Cheat sheet, A-Z step type index, context variables, and the Liquid filter catalog.

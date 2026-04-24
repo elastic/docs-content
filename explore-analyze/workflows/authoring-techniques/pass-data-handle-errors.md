@@ -208,12 +208,12 @@ For production-critical workflows, the final layer is a separate handler workflo
 
 | Problem | Use |
 |---|---|
-| "This API is flaky; it should retry automatically." | Per-step `on-failure: retry`. |
-| "Every step in this workflow should get 2 retries by default." | Workflow-level `settings.on-failure: retry`. |
-| "This step is nice-to-have; don't fail the workflow if it dies." | Per-step `on-failure: continue`. |
-| "Try the primary API; if it fails, use the backup API." | Per-step `on-failure: fallback`. |
-| "When a production workflow fails, page on-call and open a case." | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
-| "This workflow is critical and I want monitoring on its failure rate." | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
+| This API is flaky and should retry automatically. | Per-step `on-failure: retry`. |
+| Every step in this workflow should get 2 retries by default. | Workflow-level `settings.on-failure: retry`. |
+| This step is nice-to-have and shouldn't fail the workflow. | Per-step `on-failure: continue`. |
+| Try the primary API; if it fails, use the backup API. | Per-step `on-failure: fallback`. |
+| When a production workflow fails, page on-call and open a case. | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
+| A workflow is critical and you want monitoring on its failure rate. | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
 
 ## Dynamic values with templating [workflows-dynamic-values]
 
@@ -224,14 +224,17 @@ Workflows support dynamic values through template variables and template express
 
 ### Template variables [workflows-template-variables]
 
-Template variables are the data sources you can reference inside template expressions. The following template variables are available:
+Template variables are the data sources you can reference inside template expressions. The most common ones:
 
-| Variable type | Syntax | Description |
-|---------------|--------|-------------|
-| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](/explore-analyze/workflows/templating.md#workflows-ref-step-outputs) for more details. |
-| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](/explore-analyze/workflows/templating.md#workflows-ref-constants) for more details. |
-| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](/explore-analyze/workflows/templating.md#workflows-ref-inputs) for more details. |
-| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](/explore-analyze/workflows/templating.md#workflows-context-variables) for more details. |
+- `inputs.<name>` — values provided when the workflow was invoked.
+- `consts.<name>` — constants declared at the top of the workflow.
+- `steps.<name>.output` — output of a previous step.
+- `steps.<name>.error` — error from a failed step (when paired with `on-failure: continue`).
+- `event.*` — the trigger payload.
+- `execution.*` — metadata about the current execution.
+- `foreach.item`, `foreach.index`, `foreach.total` — loop context inside a `foreach` step.
+
+For the full canonical reference with every variable and an example per entry, refer to [Context variables](/explore-analyze/workflows/concepts/context-variables.md).
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 

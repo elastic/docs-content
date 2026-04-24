@@ -479,6 +479,7 @@ toc:
           - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/troubleshooting.md
           - file: workflows/authoring-techniques/migrate-from-9.3.md
       - file: workflows/reference.md
         children:
@@ -511,6 +512,12 @@ toc:
               - file: workflows/steps/data.md
               - file: workflows/steps/composition.md
           - file: workflows/templating.md
+          - file: workflows/concepts.md
+            children:
+              - file: workflows/concepts/cheat-sheet.md
+              - file: workflows/concepts/step-types.md
+              - file: workflows/concepts/context-variables.md
+              - file: workflows/concepts/liquid-filters.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md
