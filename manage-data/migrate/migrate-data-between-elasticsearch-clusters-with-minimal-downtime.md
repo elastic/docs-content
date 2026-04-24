@@ -10,9 +10,13 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Migrate {{es}} data with minimal downtime using snapshots [migrate-elasticsearch-data-with-minimal-downtime]
+# Migrate {{es}} data using snapshots [migrate-elasticsearch-data-using-snapshots]
 
-When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, or new on-premises hardware, you can migrate with minimal downtime using incremental snapshots. 
+This page explains how to migrate data between {{es}} clusters using incremental snapshots, including an overview, prerequisites, and a recommended timeline for the procedure. When you're ready to begin, refer to [Migrate your data using snapshot and restore](#migrate-data-snapshot-restore) for step-by-step instructions.
+
+## Migrate with minimal downtime
+
+When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, or new on-premises hardware, the snapshot and restore feature allows you to minimize cluster downtime. By taking and restoring snapshots in sequence, you can keep the new cluster close to the old one until you're ready for the final cutover.
 
 Migrating with incremental snapshots is useful when you want to:
 
