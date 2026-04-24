@@ -67,7 +67,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the autocomplete menu also includes **Browse indices** and **Browse fields** entries that open interactive panels for selecting data sources and field names. Refer to [](#esql-kibana-resource-browsers) for details.
 
-#### Browse data sources and fields [esql-kibana-resource-browsers]
+#### Data source and fields browsers [esql-kibana-resource-browsers]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
