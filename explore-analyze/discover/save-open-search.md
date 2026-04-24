@@ -36,14 +36,10 @@ By default, a Discover session stores the query text, filters, and current view 
 1. Once you’ve created a view worth saving, select **Save** in the application menu.
 2. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 3. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-4. Under **Add to dashboard**, choose where to display the new session:
+4. Select **Save**.
+5. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
-   - **Existing**: Add the session as a panel on an existing dashboard you select.
-   - **New**: Add the session as a panel on a new dashboard.
-   - **None**: Save the session to the library only, without adding it to a dashboard.
-
-5. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
-6. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` The **Save Discover session** window also includes an **Add to dashboard** section where you can add the new session as a panel directly. Select **Existing** to add it to a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only. The confirm button label updates to **Save and add to library** when **None** is selected, or **Save and go to Dashboard** when **Existing** or **New** is selected.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
