@@ -31,7 +31,6 @@ For more information, refer to [#263996]({{kib-pull}}263996).
 
 **Impact**<br> Conversations stored with the Threat Hunting Agent will no longer appear in the conversation list and cannot be continued from the UI. No automatic migration is planned.
 
-**Action**<br> Use the Elastic AI Agent with Security skills for threat hunting workflows. If needed, a targeted Elasticsearch `update_by_query` can reassign affected conversations to the default agent.
 ::::
 
 ::::{dropdown} Deprecates Enable CCS Warning Privileges in Kibana advanced settings
