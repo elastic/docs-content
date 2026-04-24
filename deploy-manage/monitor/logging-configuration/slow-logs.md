@@ -141,11 +141,8 @@ The following are examples of a search and an indexing operation in the slow log
 
 You enable slow logs by configuring thresholds. Thresholds can be aggressive, such as `0ms` to log everything, or conservative, such as `5s`.
 
-You can enable slow logging at the following levels:
+You can enable slow logging at the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
 
-* At the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
-* For all existing indices, by targeting a wildcard pattern like `*` with the update indices settings API.
-* For all future indices, by configuring thresholds in an [index template](/manage-data/data-store/templates.md).
 
 To view the current slow log settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API:
 
@@ -210,52 +207,6 @@ For more information about slow log settings, refer to [slow log settings](elast
 :::
 ::::
 
-
-
-
-To adjust slow log settings across all existing indices, use a wildcard pattern with the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API:
-
-::::{tab-set}
-:group: slow-logs
-:::{tab-item} Search operations
-:sync: search
-
-```console
-PUT /*/_settings
-{
-  "index.search.slowlog.threshold.query.warn": "10s",
-  "index.search.slowlog.threshold.query.info": "5s",
-  "index.search.slowlog.threshold.query.debug": "2s",
-  "index.search.slowlog.threshold.query.trace": "500ms",
-  "index.search.slowlog.threshold.fetch.warn": "1s",
-  "index.search.slowlog.threshold.fetch.info": "800ms",
-  "index.search.slowlog.threshold.fetch.debug": "500ms",
-  "index.search.slowlog.threshold.fetch.trace": "200ms",
-  "index.search.slowlog.include.user": true
-}
-```
-
-:::
-:::{tab-item} Indexing operations
-:sync: index
-
-```console
-PUT /*/_settings
-{
-  "index.indexing.slowlog.threshold.index.warn": "10s",
-  "index.indexing.slowlog.threshold.index.info": "5s",
-  "index.indexing.slowlog.threshold.index.debug": "2s",
-  "index.indexing.slowlog.threshold.index.trace": "500ms",
-  "index.indexing.slowlog.source": "1000",
-  "index.indexing.slowlog.reformat": true,
-  "index.indexing.slowlog.include.user": true
-}
-```
-
-:::
-::::
-
-
 ## When and how to use slow logs [troubleshoot-slow-log]
 
 Logging slow requests can be resource intensive to your {{es}} cluster depending on the qualifying traffic’s volume. For example, emitted logs might increase the index disk usage of your [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) cluster. 
@@ -274,7 +225,7 @@ If you aren’t sure how to start investigating traffic issues, consider enablin
 :sync: search
 
 ```console
-PUT /*/_settings
+PUT /my-index-000001/_settings
 {
   "index.search.slowlog.include.user": true,
   "index.search.slowlog.threshold.fetch.warn": "30s",
@@ -287,7 +238,7 @@ PUT /*/_settings
 :sync: index
 
 ```console
-PUT /*/_settings
+PUT /my-index-000001/_settings
 {
   "index.indexing.slowlog.include.user": true,
   "index.indexing.slowlog.threshold.index.warn": "30s"
