@@ -273,6 +273,7 @@ The {{esql}} editor autocompletes supported settings and validates their values.
 
 - [`approximation`](#esql-kibana-approximation): Trade exact results for speed on large `STATS` queries using random sampling.
 - [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
+- [`unmapped_fields`](#esql-kibana-unmapped-fields): Choose how to handle fields that are not present in the index mapping.
 
 The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
 
@@ -331,6 +332,37 @@ The editor autocompletes two built-in values when you type `SET project_routing`
 - `_alias:*`: Search all linked projects.
 
 You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
+
+
+### Handle unmapped fields with `SET unmapped_fields` [esql-kibana-unmapped-fields]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use `SET unmapped_fields` at the start of your query to change this behavior:
+
+- `FAIL` (default): The query fails if it references unmapped fields. Omitting the `SET unmapped_fields` directive has the same effect.
+- `NULLIFY`: Treats unmapped fields as `null` values.
+- `LOAD`: Loads unmapped fields from the stored [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) and treats them as `keyword` values.
+
+{applies_to}`stack: planned` The `LOAD` value is not yet available on the {{stack}}.
+
+For example, to treat any unmapped field as `null` rather than fail the query:
+
+```esql
+SET unmapped_fields="NULLIFY";
+FROM partial_mapping_sample_data
+| KEEP event_duration, unmapped_message
+| SORT event_duration
+| LIMIT 1
+```
+
+The {{esql}} editor autocompletes the setting name and its accepted values. Once `NULLIFY` or `LOAD` is set, unmapped fields referenced in the query are added to autocomplete and treated like other columns. They stop being suggested if you drop or rename them.
+
+The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
+
+For the full list of accepted values, behavior across query types, and limitations of the `LOAD` strategy, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
 
 
 ## Related pages
