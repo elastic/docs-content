@@ -48,7 +48,7 @@ Not all migration methods are compatible with all deployment types. For your ing
 | [Saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) | Use this API to migrate objects that you've saved in {{kib}}. |
 | [{{kib}} saved object management](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) | You can also use the {{kib}} UI to migrate your saved objects. |
 
-The following table describes the migration options available for each data type and where to find guidance.
+The following table describes the migration options available for each data type, and where to find guidance.
 
 | Data type | Migration options |
 | ------ | ------ |
