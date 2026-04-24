@@ -252,11 +252,17 @@ Customize your metric chart to display exactly the information you need, formatt
 ### General layout settings [appearance-options]
 ```{applies_to}
 stack: ga 9.2
+serverless: ga
 ```
 When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
 
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
+
+    - **Position**: Choose the vertical placement of the primary metric value within the tile:
+      - **Top**: Places the value at the top of the tile.
+      - **Bottom**: Places the value at the bottom of the tile. This is the default.
+      - {applies_to}`stack: ga 9.4` **Middle**: Centers the value vertically within the tile.
 
 **Title and subtitle**
 :   Enter a subtitle and define the relevant **Alignment** and **Font weight**.

@@ -14,25 +14,41 @@ products:
 
 # Skills in {{agent-builder}}
 
-A skill is a reusable instruction set that gives [agents](agent-builder-agents.md) specialized expertise for a particular type of task. Instead of embedding the same detailed instructions in every agent that needs them, you author a skill once and assign it wherever it's needed. This keeps agent configurations clean and makes expertise easy to maintain and share across your team.
+A skill is a reusable capability pack that gives an [agent](agent-builder-agents.md) specialized expertise for a particular type of task. Each skill bundles three things:
 
-Tools are discrete operations the agent can invoke. Skills are higher-level capability packs that bundle tools, instructions, and context for a specific task domain. To learn more about tools, refer to [Tools](tools.md).
+- **Instructions**: domain-specific guidance written in Markdown that shapes how the agent approaches the task.
+- **Tools**: [built-in](tools/builtin-tools-reference.md) or [custom](tools/custom-tools.md) tools the agent can call while the skill is active.
+- **Context**: additional knowledge the skill can draw on, such as reference documents or runbooks.
 
-Skills differ from the agent's base system prompt: the system prompt is always in context, while skills are loaded selectively. An agent can have access to many skills without loading them all into the context window at once.
+This makes skills different from [tools](tools.md), which are discrete operations like running a query or retrieving a document. Skills sit one level higher, combining tools with the instructions and context needed to complete a workflow end to end.
 
-## How agents use skills
+Skills also differ from the agent's system prompt. The system prompt is always in context, while skills load selectively. An agent can have access to many skills without loading them all into the context window at once. You author a skill once and assign it to any agent that needs it, keeping agent configurations clean and making expertise easy to share across your team.
 
-When an agent receives a message, it selects a skill if it determines that one of the available skills is relevant to the query based on the skill's name and description. If a skill activates, it provides:
+## How skills are invoked
 
-- **Knowledge content**: domain-specific instructions written in Markdown that tell the agent how to approach the task.
-- **Tools**: [Built-in tools](tools/builtin-tools-reference.md) or [custom tools](tools/custom-tools.md)  that the agent can call while the skill is active.
+Skills can be invoked in three ways:
+
+**Automatic discovery (default)**
+:   The agent receives a list of available skills with their names and descriptions. Based on the user's natural language input, it automatically selects and invokes the most relevant skill. No special syntax is needed.
+
+**Slash commands**
+:   Users can explicitly invoke a skill by typing `/` followed by the skill name and a prompt. This is useful when you know exactly which skill you need.
+
+:::{image} images/skill-slash-command.png
+:alt: Chat input showing a slash command that invokes the visualization-creation skill
+:width: 550px
+:screenshot:
+:::
+
+**Attachment-driven**
+:   When a user attaches contextual data to a message (for example, an alert from the alert flyout), the agent can automatically invoke the relevant skill based on the attachment type.
 
 ## Use cases
 
 Use skills when you have domain-specific knowledge or procedures that multiple agents should follow consistently. Some examples:
 
-- An {{product.security}} user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
-- An {{product.observability}} user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
+- An [{{product.security}}](/solutions/security/ai/agent-builder/agent-builder.md) user asks about a suspicious host. The [`entity-analytics`](builtin-skills-reference.md#agent-builder-entity-analytics-skill) skill activates and guides the agent through finding the entity, analyzing its risk score, asset criticality, and behavioral history.
+- An [{{product.observability}}](/solutions/observability/ai/agent-builder-observability.md) user asks why a service is slow or why an alert fired. The [`observability.investigation`](builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill activates and diagnoses the issue across APM services and infrastructure.
 - An {{product.elasticsearch}} user asks how to combine keyword and vector search for a product catalog. The [`search.hybrid-search`](builtin-skills-reference.md#agent-builder-search-hybrid-search-skill) skill activates and guides the agent through building a hybrid search solution.
 
 ## Built-in skills

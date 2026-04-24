@@ -53,6 +53,7 @@ Built-in agents are space-agnostic: they are available across all [{{kib}} space
 ::::
 
 :::{note}
+:applies_to: { "stack": "preview =9.2, ga =9.3" }
 {{product.observability}} and {{product.security}} users must opt-in to use {{agent-builder}}. To learn more, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 :::
 
