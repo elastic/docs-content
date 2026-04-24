@@ -95,7 +95,7 @@ When editing a Discover session panel from a dashboard, you can save your change
 
    - **Existing**: Add the new session to a dashboard you select.
 
-     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the panel was previously linked to a saved Discover session in the library, that original session is unchanged.
+     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the panel was previously linked to a saved Discover session in the library, that library session is unchanged. If the panel held its state directly on the dashboard (not linked to the library), that inline state is replaced by the link to the new session.
      - If you select a different dashboard, the original panel is unchanged, and the new session is added as a separate panel on the dashboard you selected.
 
    - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
