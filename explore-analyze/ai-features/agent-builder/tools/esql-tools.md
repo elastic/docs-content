@@ -41,20 +41,20 @@ While agents can generate {{esql}} queries dynamically using [index search tools
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.2-9.3 }
-{{esql}} tools support the following parameter types:
-
-* **String types**: `text`, `keyword`
-* **Numeric types**: `long`, `integer`, `double`, `float`
-* **Other types**: `boolean`, `date`, `object`, `nested`
-:::
-
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 {{esql}} tools support the following parameter types:
 
 * **Textual types**: `string`
 * **Numeric types**: `integer`, `float`
 * **Other types**: `boolean`, `date`, `array`
+:::
+
+:::{applies-item} { stack: ga 9.2-9.3 }
+{{esql}} tools support the following parameter types:
+
+* **String types**: `text`, `keyword`
+* **Numeric types**: `long`, `integer`, `double`, `float`
+* **Other types**: `boolean`, `date`, `object`, `nested`
 :::
 
 ::::
