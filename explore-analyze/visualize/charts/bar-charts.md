@@ -260,9 +260,7 @@ Configure elements of your bar chart's legend. Configurable options include:
 :   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
 
 **Label truncation**
-:   Choose whether to truncate long series labels and set the truncation limit:
-    - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When the **List** layout is active, set a maximum label width in pixels. Range: 50 to 1000 px. Default: 250 px.
-    - For the **Grid** layout and for legends positioned on the side or inside the chart, set the maximum number of lines for each label.
+:   For legends positioned inside the chart, on the side, or outside the chart with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
 
 ## Bar chart examples
 

@@ -24,8 +24,5 @@ With the **Visibility**, **Position**, and **Width** options, you can adjust the
 
 
 **Label truncation**
-:   Keep your legend minimal in case of long labels. Choose whether to truncate long series labels and set the truncation limit:
-
-    - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When the **List** layout is active, set a maximum label width in pixels. Range: 50 to 1000 px. Default: 250 px.
-    - For the **Grid** layout and for legends positioned on the side or inside the chart, set the maximum number of lines for each label.
+:   For legends positioned inside the chart, on the side, or outside the chart with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
 :::
