@@ -32,10 +32,66 @@ Queries that query only system indices are not logged by default. To enable logg
 
 ## Finding the logs [finding-query-logs]
 
-Query logs are always emitted on the node that executed the request. These logs can be viewed in the following locations:
+Query log entries are written on the **coordinating** node for the request: the node that received the client request, not on every data node that participates in the search. If you are unsure what that means in your topology, start with [Node roles and the data path](https://www.elastic.co/docs/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles).
 
-- If [{{es}} monitoring](/deploy-manage/monitor/stack-monitoring.md) is enabled, from [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md). The query logs have the `log.logger` field set to `elasticsearch.querylog`.
-- From the local {{es}} service logs directory. Query log files have a suffix of `_querylog.json`. For example: `mycluster_querylog.json`.
+The log is a file in the {{es}} [log directory](https://www.elastic.co/docs/deploy-manage/monitor/logging-configuration) on that node. Filenames use the `*_querylog.json` pattern (for example, `mycluster_querylog.json`). Each line in that log file is a JSON object for one query. [Enable query logging](#enable-query-logging) to start writing the file, and [Configure query logging](#configure-query-logging) to set the duration threshold, user information, system index coverage, and other `elasticsearch.querylog` options.
+
+From 9.4 onward, the subsections that follow also describe a managed `logs-elasticsearch.querylog` data stream, shippers, and what to open in {{kib}}. Earlier releases do not include that managed index template and data stream. Collect `*_querylog.json` on disk and ship and map those events with your own pipeline if you need a similar experience on an older version.
+
+### Managed data stream and index template (9.4+)
+
+9.4 ships a managed index template, `logs-elasticsearch.querylog@template`, for the `logs-elasticsearch.querylog-*` data stream. The template provides mappings and data stream options so that shipped events land in a single, ECS-aligned destination you can use with {{kib}} and the Elastic Agent / {{beats}} assets that ship together with the product.
+
+* **Index mode:** the data stream uses LogsDB indexing.
+* **Query volume:** when logging is on, the default for `elasticsearch.querylog.threshold` is 0 (in [time units](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units)), so every request can be eligible, depending on other options. A busy cluster can produce a very large number of lines; [raise the threshold in Configure query logging](#configure-query-logging) if you need to cap volume.
+* **Retention and failure handling:** a default [data stream lifecycle](https://www.elastic.co/docs/manage-data/lifecycle/data-stream) is attached with a 2 day retention window so the data stream does not grow without bound. The [failure store](https://www.elastic.co/docs/manage-data/data-store/data-streams/failure-store) is on, with a 7 day retention for failed ingest.
+* **Management UI:** you can also work with the data stream (lifecycle, routing, and related controls) in the **Streams** app.
+
+### {{ech}} [ech-query-logs]
+
+On 9.4+ Elastic Cloud (hosted) deployments, [turn on Logs and metrics](https://www.elastic.co/docs/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring#enable-logging-and-monitoring-steps) for the deployment first so it can ship logs to your monitoring or log destination cluster. Then [enable query logging for the {{es}} cluster](#enable-query-logging) so the coordinated query log file can be collected and shipped. The receiving cluster should run a 9.4+ stack for a fully supported end-to-end path.
+
+### Self-managed
+
+On a 9.4+ cluster, [enable query logging](#enable-query-logging) and [configure](#configure-query-logging) the `elasticsearch.querylog` settings first. The subsections that follow cover [Filebeat](#self-managed-filebeat), the [Elastic Agent](#self-managed-elastic-agent) integration, [bundled Kibana assets](#self-managed-bundled-assets) from the integration, and the [destination cluster version](#self-managed-destination-cluster) to target.
+
+* **Default / single-cluster:** Use either [Filebeat](#self-managed-filebeat) or [Elastic Agent](#self-managed-elastic-agent) to collect and index your query logs.
+* **[{{eck}} (ECK)](https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s):** default recipes wire the shipper to the `*_querylog.json` path; see [Filebeat](#self-managed-filebeat) for the `querylog` fileset behavior, subject to the ECK and {{es}} [version you run](https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s).
+* **ECE (Elastic Cloud Enterprise):** in-product, fully guided collection for the managed data stream in the ECE UI is planned in an upcoming minor release. When that ships, the experience will match [{{ech}}](#ech-query-logs). Until then, use the same [Filebeat](#self-managed-filebeat) or [Elastic Agent](#self-managed-elastic-agent) path as a default self-managed install.
+
+#### Filebeat [self-managed-filebeat]
+
+[Filebeat](https://www.elastic.co/docs/reference/beats/filebeat) 9.4 extends the [{{es}}](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-module-elasticsearch) module with a `querylog` [fileset](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-module-elasticsearch#_querylog_log_fileset_settings) that reads the `*_querylog.json` files and sends events to the `logs-elasticsearch.querylog-default` data stream. Configure Filebeat on the nodes that emit query logs and enable the `querylog` fileset.
+
+#### Elastic Agent [self-managed-elastic-agent]
+
+The [`elasticsearch` Elastic Agent integration](https://www.elastic.co/docs/reference/integrations/elasticsearch) (1.21.0+) can also collect and ship the same file to the data stream. Follow the [query log settings](https://www.elastic.co/docs/reference/integrations/elasticsearch#querylog) in the integration to enable collection.
+
+#### Bundled assets (integration 1.21.0+) [self-managed-bundled-assets]
+
+The integration bundles the following Kibana assets that you can install even if you do not use the Agent to ship the query logs, including:
+
+* A data view, “Elasticsearch query logs,” for `logs-elasticsearch.querylog-*`
+* A dashboard, “Elasticsearch query analytics,” for analyzing your historical queries
+
+Install the assets from Fleet (or the integration’s Assets tab) when you are ready to explore the indexed stream.
+
+#### Destination (monitoring) cluster version [self-managed-destination-cluster]
+
+The cluster that ingests the query log stream (often your monitoring or logging cluster) should run 9.4+ to match the managed template, data stream, and field model. We do not support sending this stream to older {{es}} versions: ingest can fail, or the cluster can only apply part of the index mappings and settings.
+
+:::{important}
+**Index privileges for the user that Filebeat or Agent uses**
+
+The `logs-elasticsearch.querylog-default` data stream is a separate destination from `filebeat-*` indices that often store [{{stack}} monitoring](https://www.elastic.co/docs/deploy-manage/monitor/stack-monitoring) metrics and logs. Grant the output user in {{es}} the index and ingest privileges the managed data stream needs for `logs-elasticsearch.querylog-*`, in addition to anything you allow for `filebeat-*` or other indices. The exact role name is your choice; the critical part is the extra privilege on the querylog data stream. That applies to the shippers described in [Filebeat](#self-managed-filebeat) and [Elastic Agent](#self-managed-elastic-agent) above.
+:::
+
+### View query logs in {{kib}} (on the destination cluster)
+
+After the shipper is ingesting into `logs-elasticsearch.querylog-*` on the cluster you use for log analysis:
+
+* Open the “Elasticsearch query analytics” dashboard if you installed the integration’s saved objects.
+* Or [create a data view](https://www.elastic.co/docs/explore-analyze/find-and-organize/data-views) on `logs-elasticsearch.querylog-*` and in **Discover** filter to `event.dataset: elasticsearch.querylog` to work with the raw field set.
 
 ## Configure query logging  [configure-query-logging]
 
