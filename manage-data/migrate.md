@@ -71,7 +71,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | {{serverless-short}} | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md)*, [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
-\* See also [Reindex from a Self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-Self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md)
+\* See also [](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
 
 ### Migrate data to {{ece}}**: [data-migration-guides-ece]
 
