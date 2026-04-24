@@ -43,8 +43,8 @@ Throttle strategies control how often the policy fires for a given episode or gr
 | Option | Description | When to use |
 |---|---|---|
 | On status change | Notifies when the episode status changes (for example, active → recovering). One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
-| On status change + repeat at interval | Notifies on status change, then resends at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic reminders that a problem is still unresolved. |
-| At most once every… | Caps notifications to at most one per specified interval per episode or group, regardless of how often the rule runs. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
+| On status change + repeat at interval | Notifies on status change, then resends at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or deprioritized. |
+| At most once every… | Caps notifications at one per episode or group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
 ### Frequency options for Episode [frequency-when-episode-per_episode]
@@ -53,7 +53,7 @@ Available frequency options when you set **Dispatch per** to **Episode**.
 
 | Option | Description | Example |
 |---|---|---|
-| On status change | Notifies once when the episode opens and once when it recovers. No reminders while it remains active. | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
+| On status change | Notifies once when the episode opens and once when it recovers. No repeat notifications while it remains active. Best for when you trust your ticketing or incident workflow to track ongoing issues | A host goes down at 9:00am → one notification. Recovers at 11:00am → one notification. No notifications between them. |
 | On status change + repeat at interval | Same as On status change, but also sends a reminder at a set interval while the episode is still active. | A host goes down at 9:00am → notification. With a 1h repeat: reminder at 10:00am, 11:00am. Recovers at 11:30am → notification. |
 | Every evaluation | Fires on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active episode produces up to 288 notifications per day. |
 
@@ -63,7 +63,7 @@ Available frequency options when you set **Dispatch per** to **Group**.
 
 | Option | Description | Example |
 |---|---|---|
-| At most once every… | Caps how often each group can notify, regardless of how many episodes match or how often the rule runs. | 10 episodes share `data.host.name: "web-01"`. With a 1h cap, you get at most one notification per hour for that group. |
+| At most once every… | Limits how often each group can notify, regardless of how many episodes match or how often the rule runs. | 10 episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification per hour for that group. |
 | Every evaluation | Fires on every rule evaluation for each unique group value. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications per host per hour. |
 
 ### Frequency options for Digest
