@@ -8,6 +8,19 @@ applies_to:
 products:
   - id: cloud-serverless
 description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
+sub:
+  abb-anchor: elasticsearch-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. Agent usage is billed in addition to VCU-based dimensions, based on the number of executions completed in your project over the course of a month.
+  abb-free-executions: 1,000
+  abb-pricing-label: Elasticsearch Serverless pricing page
+  abb-pricing-url: https://www.elastic.co/pricing/serverless-search
+  wfe-anchor: elasticsearch-billing-workflow-executions
+  wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
+  wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-free-executions: 10,000
+  wfe-pricing-label: Elasticsearch Serverless pricing page
+  wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -39,11 +52,11 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-## Serverless Plus add-on [elasticsearch-billing-serverless-plus-add-on]
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
 
-The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is an optional add-on for {{es-serverless}} projects. It includes enterprise features such as IP filtering, private connectivity, and {{cps}} (coming soon).
-
-Serverless Plus is free for a limited promotional period. Enabling or using features included in the add-on opts your project in. When the promotional period ends, a charge for the add-on is applied as a percentage of the project's ECUs. To learn more about the add-on and the promotional period, refer to [Project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus).
+:::{include} _snippets/workflow-executions-billing.md
+:::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 

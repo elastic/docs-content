@@ -33,11 +33,11 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
 
-1. Once you’ve created a view worth saving, click **Save** in the toolbar.
+1. Once you’ve created a view worth saving, click **Save** in the application menu.
 2. Enter a name for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
 4. Click **Save**.
-5. To reload your search results in **Discover**, click **Open** in the toolbar, and select the saved Discover session.
+5. To reload your search results in **Discover**, click **Open** in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
@@ -46,7 +46,7 @@ If the saved Discover session is associated with a different {{data-source}} tha
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 
 1. In **Discover**, open the Discover session that you want to duplicate.
-2. In the toolbar, click **Save**.
+2. In the application menu, click **Save**.
 3. Give the session a new name.
 4. Turn on **Save as new Discover session**.
 5. Click **Save**.
@@ -59,3 +59,21 @@ If the saved Discover session is associated with a different {{data-source}} tha
 3. Click **Add from library**.
 4. From the **Types** dropdown, select **Discover session**.
 5. Select the Discover session that you want to add, then click **X** to close the list.
+
+### Choose which tab to display [discover-session-choose-tab]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+If the Discover session contains multiple tabs, you can choose which tab the panel displays.
+
+1. Open the panel menu and select **Edit**.
+2. From the tab selector, select the tab you want to display.
+
+   :::{image} /explore-analyze/images/discover-session-tab-selector.png
+   :alt: Tab selector showing the list of available tabs for a Discover session panel
+   :screenshot:
+   :::
+
+3. Select **Apply**.

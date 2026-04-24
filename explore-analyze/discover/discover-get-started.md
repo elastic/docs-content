@@ -39,7 +39,9 @@ In this case **Discover** provides the default experience until it detects that 
 
 You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
 
-1. Select **Inspect** from Discover's toolbar.
+1. Open the Inspector:
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+   * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. Open the **View** dropdown, then select **Profiles**.
 
 The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
@@ -292,6 +294,8 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
@@ -352,11 +356,12 @@ To manage and organize your tabs, you can:
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
 
   :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
+  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once.
 
-To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
 ### Inspect your Discover queries
 
