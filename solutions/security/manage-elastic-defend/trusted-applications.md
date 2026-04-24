@@ -75,13 +75,17 @@ To add a trusted application:
             To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
+            ::::{note}
+            If you use only a hash to identify a trusted application, the entry may stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
+            ::::
+
     3. `Operator`: Select an operator to define the condition:
 
         * `is`: Must be *exactly* equal to `Value`; wildcards are not supported. This operator is required for the `Hash` and `Signature` field types.
         * `matches`: Can include wildcards in `Value`, such as `C:\path\*\app.exe`. This option is only available for the `Path` field type. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
           ::::{note}
-          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters. Enter paths exactly as they appear on the host (for example, `C:\Windows\explorer.exe`). Refer to [Exception types and value syntax](exception-types-and-syntax.md) for a full comparison.
           ::::
 
     4. `Value`: Enter the hash value, file path, or signer name. To add an additional value, click **AND**.
@@ -109,7 +113,7 @@ To add a trusted application:
        * `matches` | `does not match`:  Allows you to use wildcards in `Value`, such as `C:\path\*\app.exe`.  Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
           ::::{note}
-          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters. Enter paths exactly as they appear on the host (for example, `C:\Windows\explorer.exe`). Refer to [Exception types and value syntax](exception-types-and-syntax.md) for a full comparison.
           ::::
 
           ::::{important}

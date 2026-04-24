@@ -25,3 +25,17 @@ For information about supported operating systems, refer to the [Elastic Support
 | **CPU** | Under 2% |
 | **Disk space** | 1 GB |
 | **Resident set size (RSS) memory** | 500 MB |
+
+## SSL/TLS certificate requirements [ssl-tls-cert-requirements]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.1+, serverless: ga }
+{{elastic-endpoint}} supports Elliptic Curve (EC) keys and all standard TLS [common configuration options](/solutions/observability/apm/apm-server/ssl-tls-output-settings.md#apm-ssl-common-config).
+:::
+
+:::{applies-item} { stack: ga =9.0 }
+{{elastic-endpoint}} does not support Elliptic Curve (EC) keys for SSL certificates. If an EC key is configured, the policy response displays the error: `Unsupported or invalid PEM format`.
+:::
+
+::::

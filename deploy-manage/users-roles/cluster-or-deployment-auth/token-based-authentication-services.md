@@ -41,7 +41,7 @@ $$$token-authentication-access-token$$$
 $$$token-authentication-api-key$$$
 
 *api-key-service*
-:   The API key service uses the [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to generate API keys. By default, the API keys do not expire. When you make a request to create API keys, you can specify an expiration and permissions for the API key. The permissions are limited by the authenticated user’s permissions. You can use the API key by sending a request with an `Authorization` header with a value that has the prefix "ApiKey " followed by the credentials. The credentials are the base64 encoding of the API key ID and the API key joined by a colon. For example:
+:   The API key service uses the [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to generate [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md). By default, the API keys do not expire. When you make a request to create API keys, you can specify an expiration and permissions for the API key. The permissions are limited by the authenticated user’s permissions. You can use the API key by sending a request with an `Authorization` header with a value that has the prefix "ApiKey " followed by the credentials. The credentials are the base64 encoding of the API key ID and the API key joined by a colon. For example:
 
     ```shell
     curl -H "Authorization: ApiKey VnVhQ2ZHY0JDZGJrU...W0tZTVhT3g6dWkybHAyYXhUTm1zeWFrd0dk5udw==" http://localhost:9200/_cluster/health

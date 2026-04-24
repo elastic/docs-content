@@ -14,7 +14,7 @@ products:
 
 # {{agent-builder}} agents overview
 
-Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
+Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). {applies_to}`stack: ga 9.4+` Agents can also be equipped with [skills](skills.md), which are reusable instruction sets that provide specialized expertise. Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
 An agent parses user requests to define a goal and then runs tools in a loop to achieve that goal. The agent provides responses based on its configured tools, instructions, and behavior settings.
 
@@ -26,19 +26,27 @@ When you ask a question to an agent, it analyzes your request to define a specif
 The process of tool selection, execution, and analysis consumes tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
-{{agent-builder}} includes a default agent (named `Elastic AI Agent`) with access to all built-in tools. You can [create custom agents](custom-agents.md) with custom instructions and selected tools to address specific use cases or workflows.
+{{agent-builder}} includes a default agent named `Elastic AI Agent`. You can [create custom agents](custom-agents.md) with custom instructions and selected tools to address specific use cases or workflows.
 
 You can also use pre-configured [built-in agents](builtin-agents-reference.md) that are specialized for common use cases.
 
 ## Built-in agents
 
-{{agent-builder}} includes pre-configured built-in agents optimized for common use cases:
+{{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
 
-- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent with access to all platform core tools
-- **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
-- **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
+- **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
 
+:::{dropdown} Previous versions
+- {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
+- {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
+:::
+
+:::{note}
+:applies_to: stack: ga 9.2-9.3
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
+
+Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
+:::
 
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 
@@ -48,7 +56,10 @@ Create custom agents tailored to your specific needs by defining custom instruct
 
 - Agent behavior and personality through custom instructions
 - Available tools and capabilities
+- {applies_to}`stack: ga 9.4+` Assigned skills for specialized expertise
 - Visual appearance and organization
+
+Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created.
 
 To learn how to create and manage custom agents, refer to [Custom agents](custom-agents.md).
 
@@ -68,11 +79,13 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 120px
       :::
     - **Custom agents**: You can **chat**, **edit**, **clone**, or **delete** custom agents.
+
       :::{image} images/chat-edit-clone-delete.png
       :screenshot:
       :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
       :width: 130px
       :::
+
 
 ## Agents API
 
@@ -92,3 +105,4 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+- [Skills in {{agent-builder}}](skills.md)

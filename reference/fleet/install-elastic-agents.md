@@ -13,7 +13,7 @@ products:
 
 Note the following restrictions when installing {{agent}} on your system:
 
-* You can install only a single {{agent}} per host. Due to the fact that the {{agent}} may read data sources that are only accessible by a superuser, {{agent}} will therefore also need to be executed with superuser permissions.
+* You can install only a single {{agent}} per host. This restriction does not apply to containerized Elastic Agent, provided each container uses distinct volume mounts for its persisted state. Due to the fact that the {{agent}} may read data sources that are only accessible by a superuser, {{agent}} will therefore also need to be executed with superuser permissions.
 * You might need to log in as a root user (or Administrator on Windows) to run the commands described here. After the {{agent}} service is installed and running, make sure you run these commands without prepending them with `./` to avoid invoking the wrong binary.
 * Running {{agent}} commands using the Windows PowerShell ISE is not supported.
 * See also the [resource requirements](#elastic-agent-installation-resource-requirements) described on this page.
@@ -88,7 +88,9 @@ When you set up {{agent}}, you might not yet have all input configuration detail
 
 The basic {{agent}} flavor is installed by default using the `elastic-agent install` command with an agent package: `.zip`, .`tar.gz`, `.deb`, `.rpm`, or `.msi`. This flavor includes only the following components:
 
-* `agentbeat` - used to implement all [{{beats}}](beats://reference/index.md)-based integrations.
+* Component for implementing all [{{beats}}](beats://reference/index.md)-based integrations:
+  * {applies_to}`stack: ga 9.3+` `elastic-otel-collector`
+  * {applies_to}`stack: ga 9.0-9.2` `agentbeat`
 * `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
 * `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
