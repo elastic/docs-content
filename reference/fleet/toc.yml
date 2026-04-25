@@ -2,6 +2,7 @@ toc:
   - file: index.md
   - file: fleet-agent-serverless-restrictions.md
   - file: beats-agent-comparison.md
+  - file: elastic-agent-as-otel-collector.md
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
@@ -142,6 +143,7 @@ toc:
       - file: managed-integrations-content.md
       - file: integrations-assets-best-practices.md
       - file: otel-integrations.md
+      - file: deprecated-integrations.md
       - file: data-streams.md
         children:
           - file: data-streams-ilm-tutorial.md

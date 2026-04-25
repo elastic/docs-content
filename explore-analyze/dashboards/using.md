@@ -48,7 +48,7 @@ When working with large datasets, complex KQL queries might cause dashboards to 
 
 Use filter pills to focus in on the specific data you want.
 
-:::{image} /explore-analyze/images/kibana-dashboard_filter_pills_8.15.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-filter-pills.png
 :alt: Filter pills
 :screenshot:
 :width: 500px
@@ -59,9 +59,7 @@ Use filter pills to focus in on the specific data you want.
 
 You can interact with some panel visualizations to explore specific data more in depth. Upon clicking, filter pills are added and applied to the entire dashboard, so that surrounding panels and visualizations also reflect your browsing.
 
-:::{image} /explore-analyze/images/add-filter-pills-8.17.gif
-:alt: Browsing a chart creates a filter dynamically
-:::
+![Browsing a chart creates a filter dynamically](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt83219d7540514a69/69e74978735697c284b920a5/filter-by-interacting.gif)
 
 You can create filter pills by:
 
@@ -80,6 +78,7 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-editor.png
 :alt: Filter editor with 2 conditions
+:screenshot:
 :::
 
 #### Filter pill actions
@@ -94,6 +93,7 @@ The query bar lets you build filters using [{{kib}} Query Language (KQL)](../que
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
+:screenshot:
 :width: 400px
 :::
 
@@ -109,6 +109,7 @@ The global time range menu is located right next to the query bar, in the dashbo
 
 :::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
 :alt: Time range menu with multiple time range suggestions
+:screenshot:
 :width: 500px
 :::
 
@@ -150,9 +151,15 @@ Filter the data with one or more options that you select.
 4. To clear the selections, click ![The icon to clear all selected options in the Options list](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 5. To display only the options you selected in the dropdown, click ![The icon to display only the options you have selected in the Options list](/explore-analyze/images/kibana-dashboard_showOnlySelectedOptions_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsOptionsList.png
+:::{tip}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+For *IP address* type fields, you can use CIDR notation (for example, `192.168.1.0/24`) to filter by IP ranges.
+:::
+
+:::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
 :alt: Options list control
 :screenshot:
+:width: 50%
 :::
 
 
@@ -167,9 +174,10 @@ Filter the data within a specified range of values.
 
 3. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} /explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png
+:::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
 :alt: Range slider control
 :screenshot:
+:width: 50%
 :::
 
 
@@ -183,10 +191,7 @@ Filter the data within a specified range of time.
 4. To animate the data changes over time, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_timeSliderControl_animate_8.5.0.png "").
 5. To clear the specified values, click ![The icon to clear all specified values in the Range slider](/explore-analyze/images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} /explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif
-:alt: Time slider control
-:screenshot:
-:::
+![Time slider control](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt5a4c08f013babda6/69e74c84e0862680360136cf/time-slider-control.gif)
 
 
 ### View the panel data and requests [download-csv]
@@ -237,22 +242,28 @@ When viewing a dashboard with read-only permissions, certain visualization panel
 3. Select **Cancel** to exit the **Configuration** flyout.
 
 
+### View data from multiple projects [dashboard-cps-scope]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+A dashboard can display data from multiple {{serverless-short}} projects when [{{cps}}](/explore-analyze/cross-project-search.md) is enabled. To check and control which projects are queried, use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header. You can change this scope at any time during your session, and all panels update accordingly.
+
+Sometimes, the scope behaves differently:
+
+* **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
+* **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
+
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
 
 You can display dashboards in full screen mode to gain visual space and view or show visualizations without the rest of the {{kib}} interface.
 
-:::{image} /explore-analyze/images/kibana-dashboard-full-screen.png
-:alt: A dashboard in full screen mode
-:::
+To enter full screen mode, make sure the dashboard is in view mode, then open the {icon}`boxes_vertical` additional options menu in the application toolbar and select **Full screen**. Press **Escape** to exit.
 
 If you need to focus on a particular panel, you can maximize it by opening the panel menu and selecting **Maximize**. You can minimize it again the same way.
 
 ::::{tip}
 When sharing a dashboard with a link while a panel is in maximized view, the generated link will also open the dashboard on the same maximized panel view.
 ::::
-
-
-:::{image} /explore-analyze/images/kibana-dashboard-panel-maximized.png
-:alt: A maximized panel in a dashboard
-:::
