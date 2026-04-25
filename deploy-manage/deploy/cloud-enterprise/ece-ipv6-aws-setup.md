@@ -518,7 +518,7 @@ After completing these changes, refer to [Step 6: Verify IPv6 egress from contai
 
 The recommended and lowest-risk way to enable Proxy Protocol v2 in ECE proxies is to reinstall proxy hosts one by one, using the Proxy Protocol flags described in [Step 3: Prepare the Host and Install ECE](#step-install-ece), and following the host replacement workflow in [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md#ece-perform-host-maintenance-delete-runner).
 
-You can also reconfigure the proxy containers through the Container Sets API. This is an advanced procedure.
+Alternatively, you can reconfigure the proxy containers through the Container Sets API. This is an advanced procedure.
 If you plan to follow this path, contact [Elastic Support](/troubleshoot/index.md#contact-us) for guidance.
 
 #### Verify ECE proxies configuration
