@@ -50,7 +50,7 @@ The ECE proxy must be able to determine the real client IP address for [IP filte
 * **Proxy Protocol v2** (TCP/L4 mode): The load balancer prepends client connection metadata that the ECE proxy reads directly. Enable Proxy Protocol v2 on both the load balancer and the ECE proxy configuration. For a configuration example on AWS, refer to [](./ece-ipv6-aws-setup.md).
 * **Direct source IP preservation**: If the load balancer forwards connections transparently without modifying the source IP, no additional configuration is needed.
 
-If you use TCP mode for ports 9200/9243, make sure one of these mechanisms is in place. Without real client IP information, IP filtering cannot function correctly and proxy logs will only show the load balancer's IP address.
+If you use TCP mode for ports 9200/9243, make sure one of these mechanisms is in place. Without real client IP information, IP filtering cannot function correctly and proxy logs only show the load balancer IP address.
 
 ## Proxy health check for ECE 2.0 and earlier [ece_proxy_health_check_for_ece_2_0_and_earlier]
 

@@ -9,7 +9,7 @@ products:
 
 # Set up IPv6 for ECE on {{aws}}
 
-This guide provides an end-to-end example for setting up {{ece}} (ECE) on {{aws}} with IPv6 support, including networking, load balancers, and ECE-specific configuration settings. The examples demonstrate one way to achieve IPv6 connectivity; your specific {{aws}} configuration may vary based on your environment and requirements.
+This guide provides an end-to-end example for setting up {{ece}} (ECE) on {{aws}} with IPv6 support, including networking, load balancers, and ECE-specific configuration settings. The examples demonstrate one way to achieve IPv6 connectivity; your specific {{aws}} configuration might vary based on your environment and requirements.
 
 :::::{note}
 This tutorial focuses on new environment setups. If you are working with an existing ECE installation, refer to [Appendix: Integrate IPv6 in existing ECE installations](#existing-installations-summary) to understand the required actions and additional infrastructure changes.
@@ -125,9 +125,9 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
    | 9243 | TCP | ECE proxy (direct access) |
    | 12443 | TCP | Admin Console (direct access) |
 
-## Step 2: Launch EC2 instances [step-vm-launch]
+## Step 2: Set up EC2 instances [step-vm-launch]
 
-Launch one or more RHEL instances to host ECE. Skip this step if ECE is already installed.
+Create one or more RHEL instances to host ECE. Skip this step if ECE is already installed.
 
 ::::{note}
 This tutorial uses a single-host deployment for simplicity and testing purposes. For production environments, you should deploy multiple hosts across availability zones to ensure high availability and resilience. Refer to [Identify the deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) for guidance on recommended architectures.
@@ -159,7 +159,7 @@ This tutorial uses a single-host deployment for simplicity and testing purposes.
 
 7. **Storage**: Add at least 200GB for `/mnt/data` (ECE data directory)
 
-8. Click **Launch instance**
+8. In the UI, select **Launch instance**
 
 ### Verify IPv6 outbound connectivity
 
@@ -322,9 +322,9 @@ ALBs require subnets in at least two availability zones. If you only have one su
 1. Go to **VPC → Subnets → Create subnet**
 2. Configuration:
    - **VPC**: Select your VPC
-   - **Subnet name**: e.g., `ece-subnet-2`
+   - **Subnet name**: for example, `ece-subnet-2`
    - **Availability Zone**: Select a **different** AZ from your first subnet
-   - **IPv4 CIDR**: An unused range (e.g., `10.0.32.0/24`)
+   - **IPv4 CIDR**: An unused range (for example, `10.0.32.0/24`)
 3. Click **Create subnet**
 4. **Add IPv6 to the new subnet:**
    - Select the new subnet → **Actions → Edit IPv6 CIDRs**
@@ -428,7 +428,7 @@ sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}" https:
 A response of `200` confirms IPv6 egress is working. You can also test from {{kib}} containers using the same approach.
 
 ::::{dropdown} Optional: test IPv6 egress using {{es}} {{watcher}}
-Run this from any existing deployment to execute a connectivity test using [{{watcher}}](/explore-analyze/alerting/watcher.md):
+Run this from any existing deployment to perform a connectivity test using [{{watcher}}](/explore-analyze/alerting/watcher.md):
 
 ```json
 POST _watcher/watch/_execute
@@ -507,7 +507,6 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
 
 1. Reconfigure host network interfaces so each ECE host has working dual-stack connectivity.
 2. Reconfigure Podman or Docker bridge/network settings to enable IPv6 for container traffic.
-3. Apply these changes to all ECE hosts, not just selected roles.
 
 Because these are host-level networking changes, the recommended approach is to reinstall or rebuild ECE hosts one by one, following the official host maintenance procedure: [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
 

@@ -98,7 +98,7 @@ Expected signals:
 | Connection hangs before reaching ECE | {{aws}}: Security group, NLB config, or routing | {{aws}} Console: NLB target health, security groups, route tables |
 | Connection reaches ECE but returns error | ECE: Proxy configuration or deployment issue | ECE proxy logs (`proxy.requests.error.log`) |
 | Client IP shows as internal IP (for example `10.89.0.1`) | {{aws}}: Proxy Protocol not enabled on target group | {{aws}} Console: Target group attributes |
-| IPv6 works, IPv4 does not (or vice versa) | {{aws}}: NLB not dualstack, or missing security group rules | {{aws}} Console: NLB IP address type, security group rules |
+| IPv6 works but IPv4 does not, or IPv4 works but IPv6 does not | {{aws}}: NLB not dual-stack, or missing security group rules | {{aws}} Console: NLB IP address type, security group rules |
 | Container cannot reach IPv6 endpoints | ECE: Container not on dual-stack network | Check container network with `podman inspect` |
 
 ## Proxy NLB issues
@@ -125,9 +125,9 @@ Expected signals:
 
 | Issue | Solution |
 |-------|----------|
-| Network unreachable from container | Container not on dual-stack network. Verify `ece-network` exists with IPv6 and is set as default. Containers may need recreation. |
+| Network unreachable from container | Container not on dual-stack network. Verify `ece-network` exists with IPv6 and is set as default. Containers might need recreation. |
 | IPv6 works on host but not in container | Check container network: `sudo podman inspect <container> --format '{{.NetworkSettings.Networks}}'`. Should show `ece-network`. |
-| DNS resolution fails | Ensure container can resolve AAAA records. If using Netavark backend, ensure `aardvark-dns` is installed. |
+| DNS resolution fails | Ensure container can resolve AAAA records. If using the [Netavark](https://docs.podman.io/en/latest/markdown/podman-network.1.html) backend, ensure `aardvark-dns` is installed. |
 
 ## Diagnostics collection
 
