@@ -67,6 +67,8 @@ When you take an action, {{kib}} writes a document to the `.alert-actions` data 
 | Resolve / Unresolve | Group |
 | Edit tags | Episode |
 
+[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` throughout the system. Update all instances of `group_hash` on this page (including the scope table above, the suppression table, and the suppression mechanics section) to use `series.key`. Also update the snooze descriptions to reference `series.key` and, where appropriate, note that `series.tracked_by` provides a human-readable view of what the series represents.]
+
 ### Action types in storage
 
 The `action_type` field identifies the operation in `.alert-actions` documents:
@@ -82,3 +84,32 @@ The `action_type` field identifies the operation in `.alert-actions` documents:
 | unmatched | No action policy matched, so no workflow ran. |
 
 For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
+
+## How suppression works [suppression-mechanics-v2]
+
+$$$suppression-mechanics-v2$$$
+
+Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or throttle checks.
+
+There are three suppression patterns, each with a different scope:
+
+| Pattern | Scope | How it works |
+|---|---|---|
+| **Acknowledge** | Per episode | If the last action in an `ack`/`unack` pair is `ack`, the episode is suppressed. Unacknowledging clears suppression for that episode. |
+| **Deactivate** | Per episode | Same pair logic using `deactivate`/`activate` actions. Useful for manually pausing a specific alert while keeping the rule active. |
+| **Snooze** | Per series (all episodes) | Suppresses all episodes sharing the same `group_hash` for a time-bounded window. The snooze expires automatically; you don't need to clear it manually. |
+
+### Ack and deactivate versus snooze
+
+The key distinction is **scope**:
+
+- **Ack** and **deactivate** target a specific *episode* (one instance of an alert for one series). Other episodes in the same series are unaffected.
+- **Snooze** targets the entire *series* (all current and future episodes that share the same `rule_id` and `group_hash` combination), until the snooze expires.
+
+Use ack or deactivate when you are actively working on a specific breach and want to silence notifications for it. Use snooze when you want to quiet an entire alert series for a defined period, such as during a known noisy window for a host.
+
+### Suppression query strategy
+
+Mechanically, each suppression pattern is stored as a separate document type in `.alert-actions`. When the dispatcher evaluates whether to send a notification, it runs a targeted suppression query scoped to only the relevant `(rule_id, group_hash)` pairs from the current evaluation, rather than re-reading the entire `.rule-events` index. This two-query approach keeps dispatch evaluation efficient even at high episode volumes.
+
+[CONTENT NEEDED for M2: M2 makes severity a first-class episode property and leaves open the question of whether a severity *decrease* (de-escalation) should trigger a notification. If de-escalation notifications are added, they will require a new suppression decision point: a snoozed or acknowledged episode that de-escalates may need different suppression behavior than one that escalates. Monitor the M2 severity design and update this section if new suppression rules are added around severity changes.]

@@ -26,6 +26,15 @@ Use these fields in the **Matcher** expression to filter which episodes a policy
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` |
 | `rule.labels` | Key-value labels attached to the rule. Use dot notation to target a specific label key. | `rule.labels.env: "production"` |
 
+[CONTENT NEEDED for M2: M2 adds two first-class episode-level severity fields that will be directly matchable in KQL:
+
+- `episode.severity` — the current severity of the episode (most recent evaluation). Enables matching like `episode.severity: "CRITICAL"`.
+- `episode.severity_max` — the highest severity seen over the episode's lifetime. Enables matching like `episode.severity_max: "CRITICAL"` to catch episodes that were once critical even if they have since de-escalated.
+
+Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach — otherwise users will get conflicting guidance about which field to use for severity matching.
+
+There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the throttle strategies section below, since it interacts with throttling.]
+
 ## Dispatch per options [notification-grouping]
 
 Controls how the policy batches matching episodes before sending a notification.
@@ -46,6 +55,8 @@ Throttle strategies control how often the policy fires for a given episode or gr
 | On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or deprioritized. |
 | At most once every… | Caps notifications at one per episode or group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
+
+[CONTENT NEEDED for M2: An open M2 question is whether a severity change mid-episode (escalation or de-escalation of `episode.severity`) triggers policy re-evaluation independently of episode status changes. If it does, this table needs a new strategy option or a note explaining the interaction between severity changes and the "On status change" option. Confirm the M2 decision before updating.]
 
 ### Frequency options for Episode [frequency-when-episode-per_episode]
 

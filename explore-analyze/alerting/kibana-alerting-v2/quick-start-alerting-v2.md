@@ -83,6 +83,8 @@ grouping:
     - service_name
 ```
 
+[CONTENT NEEDED for M2: The `grouping` key will be renamed to `track_by` in M2. Update this example to use `track_by: { fields: [service_name] }` once that change ships.]
+
 Save the rule. It will be enabled automatically.
 
 

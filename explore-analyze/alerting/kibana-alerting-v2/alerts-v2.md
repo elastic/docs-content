@@ -49,6 +49,8 @@ Your rule monitors services. Each service it tracks has its own series, one for 
 
 Think of it like a patient's medical file. The file exists as long as the patient is in the system. Individual health incidents come and go, but the file persists.
 
+[CONTENT NEEDED for M2: M2's Track By feature formalizes series identity with a dedicated `series.*` block. Currently, series identity is derived implicitly from `group_hash` (a hash of the `BY` clause values). Once Track By ships, series will have explicit, stable identifiers defined by the `track_by` rule configuration. Update this section to explain what `track_by` is, how `series.*` fields appear on alert events, and how this replaces or extends the current `group_hash` mechanism. Cross-reference the rule grouping section in Configure a rule.]
+
 ### How series and episodes relate
 
 An episode lives inside a series. A series can contain many episodes over its lifetime, one for each time that service had a problem.

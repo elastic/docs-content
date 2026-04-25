@@ -45,6 +45,8 @@ Group key fields must align with the `BY` clause in your {{esql}} query's `STATS
 
 Note that rule grouping is separate from notification grouping on an action policy, which controls how episodes batch into messages.
 
+[CONTENT NEEDED for M2: M2 replaces the current `grouping.fields` approach with a `track_by` concept and introduces a `series.*` block that gives each series a stable, explicit identity. Update this section to document the `track_by` configuration, explain how the `series.*` block differs from the current `group_hash` approach, and revise any references to `grouping.fields` or the `BY` clause alignment requirement once the M2 schema is finalized.]
+
 ## Schedule and lookback [schedule-lookback-v2]
 
 $$$schedule-lookback-v2$$$
@@ -104,6 +106,8 @@ No-data handling controls what happens when a rule executes and the base query r
 | no_data (default) | Record a no-data event |
 | last_status | Carry forward the previous status |
 | recover | Treat absence as recovery |
+
+These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent — that requires a different query approach. See [No-data detection](esql-query-patterns-v2.md#no-data-esql-query-v2) in the authoring guide for an ES|QL pattern that surfaces silent sources as alert rows.
 
 ## Tags and investigation guide [tags-investigation-v2]
 

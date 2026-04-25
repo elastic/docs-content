@@ -39,3 +39,9 @@ Rule → Alert → Action Policy → Workflow → Notification
 
 The policy evaluates matchers and throttling before any workflow step runs, even though you created the workflow before the policy. That's why configuration order (workflow first, then policy, then rule) is the reverse of runtime order.
 
+[CONTENT NEEDED for M2: Two M2 changes affect what the dispatcher sends in the workflow payload:
+
+1. **`group_hash` → `series.key` + `series.tracked_by`**: The current dispatch payload includes `group_hash` as the series identifier — an opaque hash that means nothing to a workflow author. M2 replaces it with `series.key` (the same hash, renamed) and adds `series.tracked_by` (for example, `{"service.name": "checkout", "environment": "production"}`). Update this page and any workflow payload documentation to show `series.tracked_by` as the human-readable context for which series triggered the workflow.
+
+2. **`episode.severity` + `episode.severity_max`**: Once severity is first-class, the dispatch payload will include these fields. Workflow authors will be able to reference them in message templates, routing logic, or conditional steps. Document the fields and show example usage once M2 ships.]
+

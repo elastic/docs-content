@@ -76,6 +76,8 @@ FROM .rule-events
 | SORT @timestamp DESC
 ```
 
+[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` (internal hash) and `series.tracked_by` (human-readable field names and values). Update the `KEEP` clause above to `KEEP @timestamp, series.key, series.tracked_by, status, type, data` once M2 ships. Also update the comment in the next example below.]
+
 ### Example: Timeline for one alert series
 
 Replace `YOUR_GROUP_HASH` with the value from an event or the rule details.
@@ -91,6 +93,8 @@ FROM .rule-events
 | KEEP @timestamp, status, episode.id, episode.status
 | SORT @timestamp ASC
 ```
+
+[CONTENT NEEDED for M2: Replace `group_hash` with `series.key` in the `WHERE` clause and update the placeholder variable name to `YOUR_SERIES_KEY`. Update the comment and the explanatory text above the example to reflect the M2 field names.]
 
 ### Example: Lifecycle timeline for one episode
 

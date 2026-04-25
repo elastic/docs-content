@@ -402,6 +402,7 @@ toc:
           - file: alerting/kibana-alerting-v2/rules-v2.md
             children:
               - file: alerting/kibana-alerting-v2/rules/author-rules-v2.md
+              - file: alerting/kibana-alerting-v2/rules/esql-query-patterns-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-from-discover-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-with-yaml-v2.md

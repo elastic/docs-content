@@ -188,6 +188,8 @@ The underlying metric or log pattern looks healthy, but the episode remains **ac
 3. In Discover, query `.rule-events` for the episode’s `group_hash` and sort ascending by `@timestamp` to replay status transitions.
 4. Compare **UI status** with raw `episode.status` fields for the latest rows.
 
+[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key`. Update step 3 and the likely cause bullet about `group_hash` in this section to reference `series.key`. Also consider noting `series.tracked_by` as a way to confirm which series you are looking at when the series key alone is not recognizable.]
+
 ### Resolution
 
 - Tighten or loosen **recovery** counts and timeframes to match how stable the signal must be before closing.

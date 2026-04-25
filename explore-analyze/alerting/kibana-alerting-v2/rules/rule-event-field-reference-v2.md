@@ -65,6 +65,8 @@ Grouping is configured in YAML. The fields listed here control how the rule part
 |---|---|
 | grouping.fields | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
 
+[CONTENT NEEDED for M2: `grouping.fields` is being renamed to `track_by.fields`. Update this section heading, table key, and description once the rename ships. Also add the `series.*` output fields that M2 introduces: `series.key` (replaces `group_hash` as the internal series identity hash) and `series.tracked_by` (a structured object of the tracked field names and values, for example `{"host.name": "web-01"}`). The `series.tracked_by` fields are directly filterable in {{esql}} queries without decoding.]
+
 ## Rule event documents
 
 Each time a rule evaluates, {{kib}} writes one document per matched series to `.rule-events`. The `type` field determines the document kind:
@@ -89,6 +91,8 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 | rule.id | keyword | Yes | Rule identifier. |
 | rule.version | long | Yes | Rule version at the time this event was emitted. |
 | group_hash | keyword | Yes | Series identity key for grouped evaluations. |
+
+[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` (the internal hash) and `series.tracked_by` (a structured object of field names and values). Update this table to replace the `group_hash` row with the two new `series.*` fields once M2 ships. Any {{esql}} examples that filter or display `group_hash` will also need to be updated to use `series.key` for lookups and `series.tracked_by.*` for human-readable series identification.]
 | data | flattened | Yes | Payload from the {{esql}} query output. Shape depends on your rule. |
 | status | keyword | Yes | One of: `breached`, `recovered`, `no_data`. |
 | source | keyword | Yes | Origin of this event. Product-specific identifier. |
@@ -107,3 +111,10 @@ These fields only appear on documents with `type: alert`, written by rules runni
 | episode.id | keyword | Episode identifier for this series. |
 | episode.status | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
 | episode.status_count | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
+
+[CONTENT NEEDED for M2: M2 promotes severity to two new first-class episode fields. Add the following rows to this table once M2 ships:
+
+- `episode.severity` (keyword) — the severity value from the most recent rule event (current state). Replaces the M1 convention of storing severity in `data.severity`.
+- `episode.severity_max` (keyword) — the highest severity seen across the episode's lifetime (high-water mark). Enables "peaked at CRITICAL" display in the episode UI and policy matching like `episode.severity_max: "CRITICAL"`.
+
+Several details are still open in M2 planning: the accepted value set (whether it is enforced or convention-based), whether severity de-escalation triggers policy re-evaluation, and whether manual override of `episode.severity` is supported. Do not document specifics until these are resolved. When documenting, also cross-reference the matcher fields in [Action policy reference](../notifications/action-policy-reference-v2.md#matcher-fields).]

@@ -68,6 +68,8 @@ notification_policies:
   - ref: "policies/pagerduty-sev1-v1"
 ```
 
+[CONTENT NEEDED for M2: The `grouping` key will be renamed to `track_by` in M2. Update this example to use `track_by: { fields: [host.name] }` once that change ships. Also verify whether the `recovery_policy` example needs a `manual` option added to demonstrate the new recovery type.]
+
 ## Detect mode example
 
 A minimal detect-mode rule:
