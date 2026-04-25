@@ -12,9 +12,9 @@ description: "Configure {{alerting-v2}} rules: mode, ES|QL, grouping, schedule, 
 
 $$$rule-settings-v2$$$
 
-Use this page to configure how a {{alerting-v2}} rule evaluates data and manages its alert lifecycle. These settings live on the rule itself.
+The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
 
-For writing the {{esql}} query, refer to [Author rules](author-rules-v2.md). For notification routing (matchers, grouping, throttling, maintenance windows), refer to [Notifications](../notifications-v2.md) and [Manage action policies](../notifications/manage-action-policies-v2.md).
+For query authoring, refer to [Author rules](author-rules-v2.md). For notification routing, refer to [Notifications](../notifications-v2.md).
 
 :::{note}
 Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule builder form does not link to policies.
@@ -118,11 +118,4 @@ Alert-mode rules support two optional metadata fields:
 
 ## Evaluate rule output [evaluate-rule-output-v2]
 
-Before relying on a rule in production, evaluate it against recent data. A full evaluation surfaces:
-
-- How many rows the query returns.
-- How many alert events would be generated.
-- Sample alert event documents.
-- A histogram of matching row counts over time (for evaluation and, when recovery logic applies, for recovery-oriented previews).
-
-In the rule builder, click **Preview** before saving to run this evaluation against your current query and settings.
+Before relying on a rule in production, evaluate it against recent data by running a preview. A full evaluation surfaces how many rows the query returns, how many alert events would be generated, sample alert event documents, and a histogram of matching row counts over time.

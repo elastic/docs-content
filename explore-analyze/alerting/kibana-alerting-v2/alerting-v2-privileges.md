@@ -13,40 +13,20 @@ description: "Privilege requirements for {{alerting-v2}}: what {{kib}} feature a
 
 $$$alerting-privileges-v2$$$
 
-This page describes the access requirements for {{alerting-v2}}, including {{kib}} feature privileges, {{es}} index privileges, and how rules and policies inherit those privileges through API keys.
-
-:::{important}
-Rules and action policies run in the background using the API key of the user who last saved them. That key inherits the saving user's privileges at save time. If those privileges are later reduced, rule or policy execution reflects the new limits. Ensure that only users with appropriate access save rules and policies.
-:::
+[CONTENT NEEDED: UI. The full privilege structure (names, granularity, and which actions each level permits) has not yet been finalized. Fill in the confirmed privilege requirements before publishing.]
 
 ## Manage rules [alerting-manage-rules-privileges]
 
-{{kib}} privileges
-:   `{{rules-ui}} V2`: `All` to create, edit, enable, disable, and delete rules. `Read` to view rules and their details.
-
-{{es}} index privileges
-:   `read` on every index the rule's {{esql}} query reads (for example `logs-*`, `metrics-*`). The rule's API key must have the same read access.
+[CONTENT NEEDED]
 
 ## Manage action policies [action-policy-management]
 
-{{kib}} privileges
-:   `{{rules-ui}} V2`: `All` to create and edit action policies. `Read` to view policies.
-
-Workflow attachment
-:   To attach a workflow as a policy destination, you need permission to access that workflow in the space. This prevents users from routing notifications through high-privilege workflows they don't otherwise have access to.
+[CONTENT NEEDED]
 
 ## Manage alerts [alerting-manage-alerts-privileges]
 
-{{kib}} privileges
-:   `{{rules-ui}} V2`: `Read` or higher to view alert episodes and their details. `All` to use triage actions (acknowledge, snooze, resolve, tag).
-
-{{es}} index privileges
-:   `read` on `.rule-events` to view alert event data. `write` on `.alert-actions` to persist triage actions such as acknowledge, snooze, and tag.
+[CONTENT NEEDED]
 
 ## Query alert data in Discover [alerting-discover-privileges]
 
-{{kib}} privileges
-:   Standard Discover access. No additional {{alerting-v2}}-specific privilege is required.
-
-{{es}} index privileges
-:   `read` on `.rule-events` and `.alert-actions`. Anyone with this access can query alert history and triage records in Discover or build dashboards from them.
+[CONTENT NEEDED]

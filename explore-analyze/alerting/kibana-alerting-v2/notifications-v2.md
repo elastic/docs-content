@@ -14,7 +14,7 @@ After a rule produces alert episodes, action policies decide what to do about th
 
 This page explains how action policies work. For creating and configuring them step by step, refer to [Create and configure an action policy](notifications/create-configure-action-policy-v2.md).
 
-## What's an action policy [action-policies-v2]
+## What is an action policy [action-policies-v2]
 
 $$$action-policies-v2$$$
 

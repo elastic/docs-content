@@ -12,83 +12,10 @@ description: "Define {{alerting-v2}} rules as YAML for version control, infrastr
 
 $$$create-rules-yaml-v2$$$
 
-Define {{alerting-v2}} rules as YAML documents for version control, infrastructure-as-code workflows, and bulk provisioning. For a list of valid YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference-v2.md).
+The YAML editor lets you define rules as text documents rather than filling in a form. Use it when you want to version-control rule definitions alongside your other configuration, manage rules through infrastructure-as-code tooling, copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once.
 
-## YAML rule structure
+If you're creating a rule from scratch and want guidance through each setting, the [rule builder](create-rule-from-rule-builder-v2.md) is the better starting point. If you have a query already working in Discover, you can [create a rule directly from there](create-rule-from-discover-v2.md).
 
-A complete alert-mode rule in YAML:
+For the full list of supported YAML fields and their accepted values, refer to [YAML rule schema reference](yaml-rule-schema-reference-v2.md).
 
-```yaml
-kind: alert
-
-metadata:
-  name: checkout-error-rate-by-route
-  owner: platform
-  labels: ["production", "checkout"]
-
-time_field: "@timestamp"
-
-schedule:
-  every: 1m
-  lookback: 20m
-
-evaluation:
-  query:
-    base: |
-      FROM metrics-*
-      | STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
-      | WHERE env == "production"
-    condition: "WHERE avg_cpu > 0.9"
-
-recovery_policy:
-  type: query
-  query:
-    base: |
-      FROM metrics-*
-      | STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
-    condition: "WHERE avg_cpu < 0.67"
-
-state_transition:
-  pending_operator: OR
-  pending_count: 3
-  pending_timeframe: 5m
-  recovering_operator: AND
-  recovering_count: 2
-  recovering_timeframe: 10m
-
-grouping:
-  fields: [host.name]
-
-no_data:
-  behavior: no_data
-  timeframe: 15m
-
-notification_policies:
-  - ref: "policies/service-alerts-v1"
-  - ref: "policies/pagerduty-sev1-v1"
-```
-
-[CONTENT NEEDED for M2: The `grouping` key will be renamed to `track_by` in M2. Update this example to use `track_by: { fields: [host.name] }` once that change ships. Also verify whether the `recovery_policy` example needs a `manual` option added to demonstrate the new recovery type.]
-
-## Detect mode example
-
-A minimal detect-mode rule:
-
-```yaml
-kind: signal
-
-metadata:
-  name: http-500-errors
-
-schedule:
-  every: 5m
-  lookback: 5m
-
-evaluation:
-  query:
-    base: |
-      FROM logs-*
-      | WHERE http.response.status_code >= 500
-      | STATS error_count = COUNT(*) BY service.name
-      | KEEP service.name, error_count
-```
+[CONTENT NEEDED: UI. This page needs a procedure once the YAML editor UI is finalized: how to open it, how to paste or edit a definition, and how to save. Hold until the editor workflow is confirmed.]

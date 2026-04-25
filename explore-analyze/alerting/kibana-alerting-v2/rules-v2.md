@@ -38,11 +38,3 @@ This separation means you can build and test a rule without anyone getting paged
 
 - **[Author rules](rules/author-rules-v2.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
 - **[View and manage rules](rules/view-manage-rules-v2.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.
-
-[CONTENT NEEDED for M2: M2 introduces Security Solution integration as a net-new rule behavior category. This is not a change to existing rule types — it is a new set of capabilities designed for security-style match-based detection, including:
-
-- **Match-based deduplication**: tracks source documents by `_id` so the same document doesn't generate duplicate episodes across overlapping query windows.
-- **Manual recovery mode**: episodes never auto-recover and must be explicitly closed by a human or API call. Designed for security findings that should not disappear just because log events age out of the lookback window. (See also the `recovery_policy.type: manual` note in [YAML rule schema reference](rules/yaml-rule-schema-reference-v2.md).)
-- **Solution-specific metadata fields**: fields like `risk_score` that live on security rule events but have no home in the current schema.
-
-This requires documentation from scratch — do not attempt to document it from existing M1 content. Create a new page or section once the M2 design is finalized (tracked as Discussion #216 in the internal planning docs). Add a link here and in the authoring section once that page exists.]

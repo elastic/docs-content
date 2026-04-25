@@ -10,9 +10,9 @@ description: "Alert episodes in {{alerting-v2}}: lifecycle states, series and ep
 
 # {{alerting-v2}} alerts
 
-When a rule runs in Alert mode, it maintains _alert episodes_, which are ongoing records of an issue from first breach through recovery. This is what you triage on the **Alerts** page.
+When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
 
-An episode isn't a single event. It's the full story of one issue on one series. It covers when the condition first triggered, what state it's in right now, and when it recovered. Each rule evaluation appends to that history. Nothing is overwritten.
+[CONTENT NEEDED for M2: UI. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 
 ## Alert lifecycle [alert-lifecycle-v2]
 
@@ -49,7 +49,7 @@ Your rule monitors services. Each service it tracks has its own series, one for 
 
 Think of it like a patient's medical file. The file exists as long as the patient is in the system. Individual health incidents come and go, but the file persists.
 
-[CONTENT NEEDED for M2: M2's Track By feature formalizes series identity with a dedicated `series.*` block. Currently, series identity is derived implicitly from `group_hash` (a hash of the `BY` clause values). Once Track By ships, series will have explicit, stable identifiers defined by the `track_by` rule configuration. Update this section to explain what `track_by` is, how `series.*` fields appear on alert events, and how this replaces or extends the current `group_hash` mechanism. Cross-reference the rule grouping section in Configure a rule.]
+For the fields that identify a series in alert event documents, refer to [Rule event and field reference](rules/rule-event-field-reference-v2.md#rule-reference-v2).
 
 ### How series and episodes relate
 

@@ -14,7 +14,7 @@ $$$manage-rules-v2$$$
 
 $$$open-the-list$$$
 
-Open the rules list from **{{manage-app}} > V2 Alerting Preview > Rules**. From here you can search, filter, sort, and act on rules individually or in bulk.
+After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
 
 ## Rule details page
 
@@ -31,5 +31,3 @@ Use **Disable** when you want the rule to stop running entirely until you re-ena
 
 - To snooze alert episodes or series, refer to [View, manage, and reference alerts](../alerts/view-and-manage-alerts-v2.md#alert-actions-v2).
 - To snooze or stop an action policy, refer to [Manage action policies](../notifications/manage-action-policies-v2.md).
-
-% If you are unsure which to use, refer to [Validation checklist and noise controls](../troubleshooting-alerting-v2.md#reduce-noise-v2).

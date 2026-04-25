@@ -61,6 +61,8 @@ You should see two rows: one for `checkout` (3 errors) and one for `payments` (2
 
 Go to **Management > V2 Alerting Preview** and create a new rule using the YAML editor with the following configuration:
 
+[CONTENT NEEDED: UI. "V2 Alerting Preview" is a development-phase navigation label that will change. Update all instances of this navigation path in this tutorial before publishing.]
+
 ```yaml
 kind: alert
 metadata:
