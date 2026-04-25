@@ -10,4 +10,4 @@ products:
 
 This section provides scenario-based tutorials for {{ece}} (ECE). These tutorials combine infrastructure and ECE configuration tasks to help you implement specific deployment patterns end to end.
 
-- [Set up IPv6 at the edge for ECE on AWS](./ece-ipv6-aws-setup.md)
+- [Set up IPv6 for ECE on {{aws}}](./ece-ipv6-aws-setup.md)
