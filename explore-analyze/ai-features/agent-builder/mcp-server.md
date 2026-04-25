@@ -34,7 +34,7 @@ When using a custom {{kib}} Space, include the space name in the URL:
 ```
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#copy-your-mcp-server-url).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
 :::
 
 ## Configuring MCP clients
