@@ -31,7 +31,7 @@ Use these fields in the **Matcher** expression to filter which episodes a policy
 - `episode.severity` — the current severity of the episode (most recent evaluation). Enables matching like `episode.severity: "CRITICAL"`.
 - `episode.severity_max` — the highest severity seen over the episode's lifetime. Enables matching like `episode.severity_max: "CRITICAL"` to catch episodes that were once critical even if they have since de-escalated.
 
-Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach — otherwise users will get conflicting guidance about which field to use for severity matching.
+Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach, otherwise users will get conflicting guidance about which field to use for severity matching.
 
 There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the throttle strategies section below, since it interacts with throttling.]
 

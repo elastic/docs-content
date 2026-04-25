@@ -20,10 +20,7 @@ For matcher fields, grouping modes, throttle strategies, frequency options, and 
 
 ## Create an action policy
 
-1. Open **{{manage-app}} > V2 Alerting Preview > Action Policies**.
-2. Select **Create policy**.
-3. Fill in the policy fields described in [Policy fields](#policy-fields).
-4. Select **Save**. Kibana validates the matcher expression on save and rejects any KQL that isn't valid.
+[CONTENT NEEDED for M2: UI. Once the navigation and action policy settings have been confirmed, add instructions for creating an action policy.]
 
 ## Policy fields [policy-fields]
 

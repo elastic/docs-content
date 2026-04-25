@@ -21,14 +21,14 @@ The `episode.status` field appears on documents with `type: alert` in `.rule-eve
 | Value | Description |
 |---|---|
 | `inactive` | Episode not in an active breach state in the lifecycle model. |
-| `pending`` | Condition met but activation thresholds not yet satisfied. |
+| `pending` | Condition met but activation thresholds not yet satisfied. |
 | `active` | Episode is actively breaching per rule logic. |
 | `recovering` | Condition clearing but recovery thresholds not yet satisfied. |
 
 [CONTENT NEEDED for M2: M2 adds two first-class severity fields to the episode document:
 
-- `episode.severity` — the severity from the most recent rule event (current state). Updated each evaluation.
-- `episode.severity_max` — the highest severity seen over the episode's lifetime. Never decreases; enables "peaked at CRITICAL" display in the episode detail UI.
+- `episode.severity` - The severity from the most recent rule event (current state). Updated each evaluation.
+- `episode.severity_max` - The highest severity seen over the episode's lifetime. Never decreases; enables "peaked at CRITICAL" display in the episode detail UI.
 
 Add a new table or rows for these fields once M2 ships. The episode detail UI is also expected to change to surface these fields directly. Several M2 details are still open: the enforced value set (or lack thereof), whether de-escalation triggers policy re-evaluation, and whether manual override is supported. Do not document specifics until resolved.]
 
