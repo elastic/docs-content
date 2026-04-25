@@ -462,9 +462,7 @@ For troubleshooting and verification commands specific to IPv6 integration on {{
 
 ## Appendix: Integrate IPv6 in existing ECE installations [existing-installations-summary]
 
-This section focuses on existing ECE environments that are currently IPv4-only.
-
-It explains how IPv6 can be introduced in an existing installation, both for inbound (ingress) and outbound (egress) traffic. Each traffic flow has different requirements, and the relevant actions are outlined for each use case.
+This section focuses on existing ECE environments that are currently IPv4-only and explains how to introduce IPv6 for both inbound (ingress) and outbound (egress) traffic, including the specific requirements and actions for each flow.
 
 - **IPv6 ingress**: Enable IPv6 client access to deployments and optionally to the admin console.
 - **IPv6 egress**: Enable outbound IPv6 connectivity from ECE containers.
