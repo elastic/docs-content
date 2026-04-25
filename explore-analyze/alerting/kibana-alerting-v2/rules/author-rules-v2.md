@@ -5,14 +5,14 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Write ES|QL queries for {{alerting-v2}} rules: modes, query structure, base query, alert condition, thresholds, and severity."
+description: "Learn how to write ES|QL queries for rules. Choose a rule mode, structure a base query and alert condition, set thresholds, and assign severity levels."
 ---
 
 # Author {{alerting-v2}} rules [author-rules-v2]
 
 $$$author-rules-v2$$$
 
-Every {{alerting-v2}} rule is an {{esql}} query. Instead of choosing from a catalog of fixed rule types, you write {{esql}} directly. Describe what to look for, what counts as a breach, and which fields to store on each event.
+Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
 
 This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule-v2.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder-v2.md), [YAML editor](create-rule-with-yaml-v2.md), or [a Discover session](create-rule-from-discover-v2.md).
 
@@ -75,6 +75,12 @@ Severity is carried by convention as a field under `data.*`, for example `data.s
 
 There is no required severity field name or fixed value set. Use whatever convention your team aligns on, and reference those same field names in your action policies.
 
-## Rule templates [rule-templates-v2]
+[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched via KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
 
-[CONTENT NEEDED: List supported rule template types, what each template pre-fills in ES|QL or YAML, and how templates relate to user-authored queries once the product catalog is finalized.]
+## Next steps
+
+Once you understand the query structure, explore [{{esql}} query patterns](esql-query-patterns-v2.md) for advanced use cases including SLO burn rate queries, no-data detection, persistent breach detection, and unsupported operations.
+
+## Rule forms [rule-forms-v2]
+
+[CONTENT NEEDED for M2: UI. This page needs a procedure once rule forms are finalized: what forms are available, what each one pre-fills in the ES|QL query or YAML, and how to start from a form versus authoring a rule from scratch. Verify the name "rule forms" and the available form types against the shipped product before publishing.]

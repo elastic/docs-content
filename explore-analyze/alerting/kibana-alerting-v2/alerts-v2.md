@@ -10,9 +10,9 @@ description: "Alert episodes in {{alerting-v2}}: lifecycle states, series and ep
 
 # {{alerting-v2}} alerts
 
-When a rule runs in Alert mode, it maintains _alert episodes_, which are ongoing records of an issue from first breach through recovery. This is what you triage on the **Alerts** page.
+When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
 
-An episode isn't a single event. It's the full story of one issue on one series. It covers when the condition first triggered, what state it's in right now, and when it recovered. Each rule evaluation appends to that history. Nothing is overwritten.
+[CONTENT NEEDED for M2: UI. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 
 ## Alert lifecycle [alert-lifecycle-v2]
 
@@ -48,6 +48,8 @@ A series is the ongoing relationship between a rule and one specific thing it mo
 Your rule monitors services. Each service it tracks has its own series, one for `checkout-service`, one for `payment-service`, and so on. A series exists for as long as that rule keeps monitoring that service.
 
 Think of it like a patient's medical file. The file exists as long as the patient is in the system. Individual health incidents come and go, but the file persists.
+
+For the fields that identify a series in alert event documents, refer to [Rule event and field reference](rules/rule-event-field-reference-v2.md#rule-reference-v2).
 
 ### How series and episodes relate
 
@@ -97,7 +99,7 @@ A rule in Detect mode only writes signals. It never opens episodes, so action po
 
 Alert events are stored in `.rule-events`. Triage actions (acknowledge, snooze, resolve) are stored in `.alert-actions`. Both are queryable in Discover.
 
-The **Alerts** page (**{{manage-app}} > V2 Alerting Preview > Alerts**) shows the current state of every episode in your space, filterable by rule, status, and tags.
+[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 
 ### Data stream storage and retention
 

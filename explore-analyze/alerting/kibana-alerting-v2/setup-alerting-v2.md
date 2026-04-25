@@ -13,19 +13,17 @@ description: "Get {{alerting-v2}} running in your space: enable the UI, confirm 
 
 $$$alerting-setup-v2$$$
 
-This page covers what you need to do before authoring rules. You must first enabling {{alerting-v2}} and Workflows, understand where rule events (signals and alerts) are stored, and understand how spaces and API keys scope the objects you create.
+Before you can create your first rule, {{alerting-v2}} needs to be enabled in your space and a few background systems need to be in place. Rules rely on two data streams to store their output, API keys to run with the right privileges, and space scoping to keep objects organized. Getting these right upfront means your rules will run cleanly and their output will be queryable from the start.
 
 If you want to jump straight to creating a rule, go to [Quick start](quick-start-alerting-v2.md). For privilege requirements, refer to [{{alerting-v2}} privileges](alerting-v2-privileges.md).
 
-## Enable {{alerting-v2}} and Workflows [alerting-set-up-v2]
+## Enable {{alerting-v2}} [alerting-set-up-v2]
 
 $$$alerting-set-up-v2$$$
 
-- {{alerting-v2}} is available in {{serverless-short}} only. Enable it in **{{manage-app}} > Advanced Settings** by setting `alertingv2` to `true`. Once enabled, go to **{{manage-app}} > V2 Alerting Preview** to open the **Rules** page.
+{{alerting-v2}} is available in {{serverless-short}} only. 
 
-% Update these docs about enabling the advanced setting for v2 alerting. ^
-
-- To use workflows to deliver notifications, also enable the Workflows UI in **{{manage-app}} > Advanced Settings** by setting `workflows:ui:enabled` to `true`.
+[CONTENT NEEDED: UI. Enabling via Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
 
 ## Where rule events are stored
 
@@ -44,6 +42,8 @@ FROM $`.rule-events`
 | SORT @timestamp DESC
 | LIMIT 10
 ```
+
+[CONTENT NEEDED: The direct index names `.rule-events` and `.alert-actions` may not be the intended query surface for end users. There is discussion about exposing this data through other methods instead. Confirm the intended access pattern before publishing this section and the [Query alerts in Discover](alerts/query-alerts-and-signals-in-discover-v2.md) page, and update all examples that reference these index names directly.]
 
 After your first rule runs, use the query above in Discover to confirm documents are appearing. If nothing appears after a few seconds, check that the rule is enabled and that your ES|QL query returns results when run independently.
 

@@ -402,6 +402,7 @@ toc:
           - file: alerting/kibana-alerting-v2/rules-v2.md
             children:
               - file: alerting/kibana-alerting-v2/rules/author-rules-v2.md
+              - file: alerting/kibana-alerting-v2/rules/esql-query-patterns-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-from-rule-builder-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-from-discover-v2.md
               - file: alerting/kibana-alerting-v2/rules/create-rule-with-yaml-v2.md
@@ -421,7 +422,6 @@ toc:
               - file: alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md
               - file: alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md
               - file: alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md
-          - file: alerting/kibana-alerting-v2/troubleshooting-alerting-v2.md
       - file: alerting/watcher.md
         children:
           - file: alerting/watcher/watcher-getting-started.md

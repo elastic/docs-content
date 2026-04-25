@@ -12,7 +12,9 @@ description: "Open the {{alerting-v2}} alert episodes table, triage actions, and
 
 $$$manage-alerts-v2$$$
 
-The **Alerts** page is the main place to view {{alerting-v2}} episodes, filter and sort them, and start triage. Open it from **{{manage-app}} > V2 Alerting Preview** > **Alerts**.
+When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. From here you can examine alert episodes, use filters to find what needs attention, triage alerts, and more. This is the operational surface for working through alerts day to day.
+
+[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 
 ## Filter and search
 
@@ -56,29 +58,31 @@ Open an episode's detail page by selecting its name or ID from the table row. Th
 
 $$$alert-actions-v2$$$
 
-When you take an action, {{kib}} writes a document to the `.alert-actions` data stream. You can query these documents in Discover for auditing and metrics such as mean time to acknowledge (MTTA).
+When you take an action, {{kib}} writes a document to the `.alert-actions` data stream. You can query these documents in Discover for auditing and metrics such as mean time to acknowledge (MTTA). For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
 
 ### Episode scope versus group scope
+
+Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group — meaning all episodes that share the same rule and series. This matters when a rule tracks multiple services or hosts: snoozing one episode silences the whole group, not just that service.
 
 | Action | Scope |
 |---|---|
 | Acknowledge / Unacknowledge | Episode |
-| Snooze / Unsnooze | Group (`group_hash`) |
+| Snooze / Unsnooze | Group |
 | Resolve / Unresolve | Group |
 | Edit tags | Episode |
 
-### Action types in storage
+## How suppression works [suppression-mechanics-v2]
 
-The `action_type` field identifies the operation in `.alert-actions` documents:
+$$$suppression-mechanics-v2$$$
 
-| action_type | Meaning |
-|---|---|
-| ack / unack | Episode acknowledged or unacknowledged. |
-| snooze / unsnooze | Notifications snoozed or cleared for the group. |
-| deactivate / activate | Group resolved or reopened (UI labels: Resolve / Unresolve). |
-| tag | Tags applied to an episode. |
-| suppress | Suppression recorded for the episode or dispatch pipeline. |
-| fire | Notification or workflow dispatch recorded. |
-| unmatched | No action policy matched, so no workflow ran. |
+Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or throttle checks. Mechanically, each suppression option is stored as a separate document type in `.alert-actions`, and the dispatcher runs a targeted query scoped to only the relevant `(rule_id, group_hash)` pairs from the current evaluation — rather than re-reading the entire `.rule-events` index — to keep dispatch evaluation efficient at high episode volumes.
 
-For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
+There are three suppression options, each with a different scope:
+
+| Option | Scope | When to use |
+|---|---|---|
+| Acknowledge | Per episode | You're actively working on a specific breach and want to silence notifications for it. Unacknowledging clears suppression. |
+| Deactivate | Per episode | Marks the episode as inactive and stops notifications for it. Unlike acknowledge, this closes the episode rather than silencing it while leaving it active. Use when you want to manually close a specific episode, For example, when you've addressed the issue but the rule hasn't recovered automatically. |
+| Snooze | Per series (all episodes) | You want to quiet an entire alert series for a defined period. For example, during a known noisy window for a host. Expires automatically.
+
+[CONTENT NEEDED for M2: M2 makes severity a first-class episode property and leaves open the question of whether a severity *decrease* (de-escalation) should trigger a notification. If de-escalation notifications are added, they will require a new suppression decision point: a snoozed or acknowledged episode that de-escalates may need different suppression behavior than one that escalates. Monitor the M2 severity design and update this section if new suppression rules are added around severity changes.]

@@ -61,6 +61,8 @@ You should see two rows: one for `checkout` (3 errors) and one for `payments` (2
 
 Go to **Management > V2 Alerting Preview** and create a new rule using the YAML editor with the following configuration:
 
+[CONTENT NEEDED: UI. "V2 Alerting Preview" is a development-phase navigation label that will change. Update all instances of this navigation path in this tutorial before publishing.]
+
 ```yaml
 kind: alert
 metadata:
@@ -82,6 +84,8 @@ grouping:
   fields:
     - service_name
 ```
+
+[CONTENT NEEDED for M2: The `grouping` key will be renamed to `track_by` in M2. Update this example to use `track_by: { fields: [service_name] }` once that change ships.]
 
 Save the rule. It will be enabled automatically.
 

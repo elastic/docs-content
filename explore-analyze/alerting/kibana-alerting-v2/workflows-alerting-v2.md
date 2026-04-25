@@ -12,16 +12,13 @@ description: "How workflows connect to {{alerting-v2}} action policies and rule 
 
 $$$workflows-v2$$$
 
-In {{alerting-v2}}, [Workflows](../../workflows.md) are how notifications get delivered. Action policies invoke workflows to send messages, trigger automation, or run other steps when an alert episode matches.
+Without a workflow, an action policy has nowhere to send notifications. [Workflows](../../workflows.md) are the delivery layer. They define the actual steps that run when a policy matches an episode: sending a message, calling a webhook, triggering automation, or any combination. Setting up a workflow is what connects {{alerting-v2}} to the tools your team already uses for incident response.
 
-
-Before creating an action policy, make sure the workflows you want to use already exist in your space. Policies store references to workflow IDs, so a destination workflow must exist before you can select it. For workflow authoring and permissions, refer to [Workflows](../../workflows.md).
+Before creating an action policy, make sure the workflows you want to use already exist in your space. Policies store references to workflow IDs, so a destination workflow must exist before you can select it. 
 
 ::::{note}
 Only manual triggers are supported for workflows used with action policies.
 ::::
-
-You can also attach workflows directly to a rule for automation that runs regardless of policy matching. To set up an action policy that references a workflow as a destination, refer to [Create and configure an action policy](notifications/create-configure-action-policy-v2.md).
 
 ## Runtime execution order [runtime-execution-order]
 

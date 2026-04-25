@@ -12,9 +12,9 @@ description: "Configure {{alerting-v2}} rules: mode, ES|QL, grouping, schedule, 
 
 $$$rule-settings-v2$$$
 
-Use this page to configure how a {{alerting-v2}} rule evaluates data and manages its alert lifecycle. These settings live on the rule itself.
+The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
 
-For writing the {{esql}} query, refer to [Author rules](author-rules-v2.md). For notification routing (matchers, grouping, throttling, maintenance windows), refer to [Notifications](../notifications-v2.md) and [Manage action policies](../notifications/manage-action-policies-v2.md).
+For query authoring, refer to [Author rules](author-rules-v2.md). For notification routing, refer to [Notifications](../notifications-v2.md).
 
 :::{note}
 Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule builder form does not link to policies.
@@ -44,6 +44,8 @@ Rule grouping splits alert event generation by one or more group key fields so t
 Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules-v2.md) for query patterns.
 
 Note that rule grouping is separate from notification grouping on an action policy, which controls how episodes batch into messages.
+
+[CONTENT NEEDED for M2: M2 replaces the current `grouping.fields` approach with a `track_by` concept and introduces a `series.*` block that gives each series a stable, explicit identity. Update this section to document the `track_by` configuration, explain how the `series.*` block differs from the current `group_hash` approach, and revise any references to `grouping.fields` or the `BY` clause alignment requirement once the M2 schema is finalized.]
 
 ## Schedule and lookback [schedule-lookback-v2]
 
@@ -105,6 +107,8 @@ No-data handling controls what happens when a rule executes and the base query r
 | last_status | Carry forward the previous status |
 | recover | Treat absence as recovery |
 
+These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent — that requires a different query approach. See [No-data detection](esql-query-patterns-v2.md#no-data-esql-query-v2) in the authoring guide for an ES|QL pattern that surfaces silent sources as alert rows.
+
 ## Tags and investigation guide [tags-investigation-v2]
 
 Alert-mode rules support two optional metadata fields:
@@ -114,11 +118,4 @@ Alert-mode rules support two optional metadata fields:
 
 ## Evaluate rule output [evaluate-rule-output-v2]
 
-Before relying on a rule in production, evaluate it against recent data. A full evaluation surfaces:
-
-- How many rows the query returns.
-- How many alert events would be generated.
-- Sample alert event documents.
-- A histogram of matching row counts over time (for evaluation and, when recovery logic applies, for recovery-oriented previews).
-
-In the rule builder, click **Preview** before saving to run this evaluation against your current query and settings.
+Before relying on a rule in production, evaluate it against recent data by running a preview. A full evaluation surfaces how many rows the query returns, how many alert events would be generated, sample alert event documents, and a histogram of matching row counts over time.

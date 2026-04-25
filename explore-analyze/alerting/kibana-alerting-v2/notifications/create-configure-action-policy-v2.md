@@ -12,16 +12,15 @@ description: "Create {{alerting-v2}} action policies, configure matchers, Dispat
 
 $$$create-manage-action-policies-v2$$$
 
-An action policy controls which alert episodes trigger notifications, how the policy groups episodes, how often it sends notifications, and where it routes them. Policies are global within a space. You create and manage them from the **Action policies** page, not from the rule form.
+Rules define what counts as a problem. Action policies define what happens when a problem is detected. They determine which episodes generate notifications, how they're grouped and throttled, and where they're routed. 
+
+Because policies are separate from rules and global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
 
 For matcher fields, grouping modes, throttle strategies, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference-v2.md).
 
 ## Create an action policy
 
-1. Open **{{manage-app}} > V2 Alerting Preview > Action Policies**.
-2. Select **Create policy**.
-3. Fill in the policy fields described in [Policy fields](#policy-fields).
-4. Select **Save**. Kibana validates the matcher expression on save and rejects any KQL that isn't valid.
+[CONTENT NEEDED for M2: UI. Once the navigation and action policy settings have been confirmed, add instructions for creating an action policy.]
 
 ## Policy fields [policy-fields]
 
@@ -32,6 +31,8 @@ $$$matcher-v2$$$
 An optional KQL expression that filters which episodes this policy applies to. An empty matcher matches every episode in the space.
 
 Use matchers to route different episodes to different policies, for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Matcher fields](action-policy-reference-v2.md#matcher-fields).
+
+[CONTENT NEEDED for M2: The `data.severity: "critical"` example above will become the legacy approach once M2 ships. M2 promotes severity to `episode.severity` and `episode.severity_max` as first-class episode fields. Update this example to use `episode.severity: "CRITICAL"` and update the cross-reference to include the new fields. Also decide whether to retain `data.severity` as an alternative for rules that haven't migrated, or to remove it from guidance entirely.]
 
 ### Grouping and frequency [reduce-noise-grouping-v2]
 
