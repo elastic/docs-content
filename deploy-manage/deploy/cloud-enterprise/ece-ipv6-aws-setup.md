@@ -458,7 +458,7 @@ POST _watcher/watch/_execute
 
 ## Troubleshooting
 
-For troubleshooting and verification commands specific to IPv6 integration on {{aws}}, refer to [Troubleshoot IPv6 integration for ECE on {{aws}}](/troubleshoot/deployments/cloud-enterprise/ipv6-aws-integration.md).
+For troubleshooting and verification commands specific to IPv6 integration on {{aws}}, refer to [Troubleshoot IPv6 integration for ECE on {{aws}}](/troubleshoot/deployments/cloud-enterprise/troubleshoot-ipv6-aws-integration.md).
 
 ## Appendix: Integrate IPv6 in existing ECE installations [existing-installations-summary]
 
