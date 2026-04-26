@@ -75,12 +75,15 @@ Severity is carried by convention as a field under `data.*`, for example `data.s
 
 There is no required severity field name or fixed value set. Use whatever convention your team aligns on, and reference those same field names in your action policies.
 
-[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched using KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
+<!--[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched using KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
+-->
 
 ## Next steps
 
 Once you understand the query structure, explore [{{esql}} query patterns](esql-query-patterns-v2.md) for advanced use cases including SLO burn rate queries, no-data detection, persistent breach detection, and unsupported operations.
 
+<!--
 ## Rule forms [rule-forms-v2]
 
 [CONTENT NEEDED for M2: UI. This page needs a procedure once rule forms are finalized: what forms are available, what each one pre-fills in the ES|QL query or YAML, and how to start from a form versus authoring a rule from scratch. Verify the name "rule forms" and the available form types against the shipped product before publishing.]
+-->

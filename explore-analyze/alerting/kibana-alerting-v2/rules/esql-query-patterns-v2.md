@@ -84,9 +84,11 @@ The burn rate multipliers (14.4×, 6×) reflect standard SLO error budget consum
 
 Because the query computes several window pairs in one pass, the lookback window on the rule must cover the longest window in the query (3 days in the example above).
 
-[CONTENT NEEDED for M2: An open design question from M1 is whether SLO burn rates should be pre-computed and indexed separately (for example, via a transform writing to a dedicated metrics index) rather than calculated inside the rule query. If this pattern is adopted as the recommended approach, the query structure above will need to be revised or replaced. Confirm the recommended pattern before finalizing this section.]
+<!--[CONTENT NEEDED for M2: An open design question from M1 is whether SLO burn rates should be pre-computed and indexed separately (for example, via a transform writing to a dedicated metrics index) rather than calculated inside the rule query. If this pattern is adopted as the recommended approach, the query structure above will need to be revised or replaced. Confirm the recommended pattern before finalizing this section.]
+-->
 
-[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property. The current query outputs severity as a plain string in a `data.*` field (for example, `"CRITICAL"`, `"HIGH"`). Verify whether M2 requires this output to map explicitly to the new episode severity property, and update the query and surrounding explanation accordingly.]
+<!--[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property. The current query outputs severity as a plain string in a `data.*` field (for example, `"CRITICAL"`, `"HIGH"`). Verify whether M2 requires this output to map explicitly to the new episode severity property, and update the query and surrounding explanation accordingly.]
+-->
 
 ## No-data detection [no-data-esql-query-v2]
 
@@ -119,7 +121,8 @@ The lookback must be wide enough that known hosts appear in the result set. If t
 
 For no-data behavior when the entire base query returns zero rows (as opposed to detecting specific silent sources), refer to [No-data handling](configure-a-rule-v2.md#no-data-handling-v2).
 
-[CONTENT NEEDED for M2: M2 introduces Track By and a `series.*` block that gives the system a stable, explicit identity for each monitored series. Once series identity is formalized, the system may support native detection of when a known series stops producing events, which is the same problem this query solves manually today. Verify whether M2 adds a built-in no-data detection option at the series level, and if so, document it here as the preferred approach and move this manual `MAX(@timestamp)` pattern to a "how it works" explanation or a workaround note for cases the native approach does not cover.]
+<!--[CONTENT NEEDED for M2: M2 introduces Track By and a `series.*` block that gives the system a stable, explicit identity for each monitored series. Once series identity is formalized, the system may support native detection of when a known series stops producing events, which is the same problem this query solves manually today. Verify whether M2 adds a built-in no-data detection option at the series level, and if so, document it here as the preferred approach and move this manual `MAX(@timestamp)` pattern to a "how it works" explanation or a workaround note for cases the native approach does not cover.]
+-->
 
 ## Limitations and workarounds [esql-limitations-v2]
 
@@ -147,7 +150,8 @@ FROM metrics-*
 
 The rule's lookback window must cover all the buckets you want to check (50 minutes for 10 five-minute buckets in this example). If any bucket is missing from the data because the host stopped reporting briefly mid-window, `total_buckets` drops below 10 and the condition does not fire. Design the query so that gaps in reporting produce the behavior you want: either treating partial coverage as a non-breach or adjusting the `WHERE` filter to allow it.
 
-[CONTENT NEEDED for M2: M2's Track By feature gives the system a native concept of series identity and may provide a way to track how many consecutive evaluations a series has been breaching. If this lands, persistent breach detection could become a rule configuration option rather than something expressed entirely in the {{esql}} query. Verify whether M2 adds consecutive-breach tracking at the series level, and if so, document the configuration approach here alongside or instead of this workaround.]
+<!--[CONTENT NEEDED for M2: M2's Track By feature gives the system a native concept of series identity and may provide a way to track how many consecutive evaluations a series has been breaching. If this lands, persistent breach detection could become a rule configuration option rather than something expressed entirely in the {{esql}} query. Verify whether M2 adds consecutive-breach tracking at the series level, and if so, document the configuration approach here alongside or instead of this workaround.]
+-->
 
 ### Derivative aggregation [derivative-aggregation-v2]
 

@@ -18,9 +18,11 @@ Because policies are separate from rules and global within a space, you can upda
 
 For matcher fields, grouping modes, throttle strategies, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference-v2.md).
 
+<!--
 ## Create an action policy
 
 [CONTENT NEEDED for M2: UI. Once the navigation and action policy settings have been confirmed, add instructions for creating an action policy.]
+-->
 
 ## Policy fields [policy-fields]
 
@@ -32,7 +34,8 @@ An optional KQL expression that filters which episodes this policy applies to. A
 
 Use matchers to route different episodes to different policies, for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Matcher fields](action-policy-reference-v2.md#matcher-fields).
 
-[CONTENT NEEDED for M2: The `data.severity: "critical"` example above will become the legacy approach once M2 ships. M2 promotes severity to `episode.severity` and `episode.severity_max` as first-class episode fields. Update this example to use `episode.severity: "CRITICAL"` and update the cross-reference to include the new fields. Also decide whether to retain `data.severity` as an alternative for rules that haven't migrated, or to remove it from guidance entirely.]
+<!--[CONTENT NEEDED for M2: The `data.severity: "critical"` example above will become the legacy approach once M2 ships. M2 promotes severity to `episode.severity` and `episode.severity_max` as first-class episode fields. Update this example to use `episode.severity: "CRITICAL"` and update the cross-reference to include the new fields. Also decide whether to retain `data.severity` as an alternative for rules that haven't migrated, or to remove it from guidance entirely.]
+-->
 
 ### Grouping and frequency [reduce-noise-grouping-v2]
 
