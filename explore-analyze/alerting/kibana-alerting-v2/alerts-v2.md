@@ -68,7 +68,7 @@ The series is the container. Episodes are the individual problems that happened 
 This means you can track "the checkout service was broken from 02:14 to 03:21" and "the payment service was broken at the same time" as separate episodes, even when both come from the same rule.
 
 :::{tip}
-Snooze operates at the series level, not the episode level. If you snooze `checkout-service`, you're saying "stop notifying me about anything from this service for the next X hours", regardless of how many new episodes start during that time. You're silencing a specific ongoing situation, not only one alert.
+Snooze operates at the series level, not the episode level. If you snooze `checkout-service`, you're silencing all notifications from that series for the next X hours, regardless of how many new episodes start during that time. You're quieting a specific ongoing situation, not a single alert.
 :::
 
 ### A practical way to think about it

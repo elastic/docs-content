@@ -50,7 +50,7 @@ The `KEEP` command controls which fields appear on each stored alert event. Only
 
 ## Data sources
 
-Use `FROM` to point the rule at the indices or data streams to read. The query itself defines the scope; there is no separate data source step.
+Use `FROM` to point the rule at the indices or data streams to read. The query itself defines the scope. There is no separate data source step.
 
 ```esql
 FROM logs-checkout-service-*
@@ -75,7 +75,7 @@ Severity is carried by convention as a field under `data.*`, for example `data.s
 
 There is no required severity field name or fixed value set. Use whatever convention your team aligns on, and reference those same field names in your action policies.
 
-[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched via KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
+[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched using KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
 
 ## Next steps
 

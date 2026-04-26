@@ -23,7 +23,7 @@ $$$alerting-set-up-v2$$$
 
 {{alerting-v2}} is available in {{serverless-short}} only. 
 
-[CONTENT NEEDED: UI. Enabling via Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
+[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
 
 ## Where rule events are stored
 

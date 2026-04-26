@@ -20,7 +20,7 @@ You can disable a policy so it is not evaluated for new episodes. You can snooze
 
 $$$maintenance-windows-v2$$$
 
-Maintenance windows are scheduled periods during which a policy does not dispatch notifications. They are configured on the action policy alongside snooze and other policy controls, not on the rule. Rule evaluation continues and alert episodes can still be recorded in `.rule-events`; only dispatch through that policy pauses. Use maintenance windows for planned deployments, infrastructure changes, or recurring quiet periods.
+Maintenance windows are scheduled periods during which a policy does not dispatch notifications. They are configured on the action policy alongside snooze and other policy controls, not on the rule. Rule evaluation continues and alert episodes can still be recorded in `.rule-events`. Only dispatch through that policy pauses. Use maintenance windows for planned deployments, infrastructure changes, or recurring quiet periods.
 
 ## Update API keys
 

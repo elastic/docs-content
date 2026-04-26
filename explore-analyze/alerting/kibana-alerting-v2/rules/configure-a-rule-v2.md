@@ -93,7 +93,7 @@ Each timeframe value must be between 5 seconds and 365 days.
 | recovering_timeframe | Minimum duration for recovery |
 | recovering_operator | How to combine count and timeframe (`AND` or `OR`) |
 
-Timeframe fields use the same 5 seconds to 365 days bounds as activation timeframes.
+Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
 
 ## No-data handling [no-data-handling-v2]
 

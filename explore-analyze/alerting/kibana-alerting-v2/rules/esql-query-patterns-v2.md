@@ -12,7 +12,7 @@ description: "Advanced {{esql}} query patterns for {{alerting-v2}} rules: SLO bu
 
 $$$esql-query-patterns-v2$$$
 
-Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once, whether a specific host has gone silent rather than just whether the query returned nothing, or whether a condition has persisted continuously across consecutive time buckets rather than just appearing once. These are structurally different problems that require different query shapes.
+Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
 
 Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how {{alerting-v2}} rules work, start with [Author rules](author-rules-v2.md) first.
 

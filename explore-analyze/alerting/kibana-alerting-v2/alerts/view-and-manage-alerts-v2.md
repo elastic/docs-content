@@ -62,7 +62,7 @@ When you take an action, {{kib}} writes a document to the `.alert-actions` data 
 
 ### Episode scope versus group scope
 
-Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group — meaning all episodes that share the same rule and series. This matters when a rule tracks multiple services or hosts: snoozing one episode silences the whole group, not just that service.
+Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group, meaning all episodes that share the same rule and series. This matters when a rule tracks multiple services or hosts. Snoozing one episode silences the whole group, not only that service.
 
 | Action | Scope |
 |---|---|
@@ -81,7 +81,7 @@ There are three suppression options, each with a different scope:
 
 | Option | Scope | When to use |
 |---|---|---|
-| Acknowledge | Per episode | You're actively working on a specific breach and want to silence notifications for it. Unacknowledging clears suppression. |
+| Acknowledge | Per episode | You're actively working on a specific breach and want to silence notifications for it. To clear suppression, remove the acknowledgement. |
 | Deactivate | Per episode | Marks the episode as inactive and stops notifications for it. Unlike acknowledge, this closes the episode rather than silencing it while leaving it active. Use when you want to manually close a specific episode, For example, when you've addressed the issue but the rule hasn't recovered automatically. |
 | Snooze | Per series (all episodes) | You want to quiet an entire alert series for a defined period. For example, during a known noisy window for a host. Expires automatically.
 

@@ -28,8 +28,8 @@ Use these fields in the **Matcher** expression to filter which episodes a policy
 
 [CONTENT NEEDED for M2: M2 adds two first-class episode-level severity fields that will be directly matchable in KQL:
 
-- `episode.severity` — the current severity of the episode (most recent evaluation). Enables matching like `episode.severity: "CRITICAL"`.
-- `episode.severity_max` — the highest severity seen over the episode's lifetime. Enables matching like `episode.severity_max: "CRITICAL"` to catch episodes that were once critical even if they have since de-escalated.
+- `episode.severity` - The current severity of the episode (most recent evaluation). Enables matching like `episode.severity: "CRITICAL"`.
+- `episode.severity_max` - The highest severity seen over the episode's lifetime. Enables matching like `episode.severity_max: "CRITICAL"` to catch episodes that were once critical even if they have since de-escalated.
 
 Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach, otherwise users will get conflicting guidance about which field to use for severity matching.
 
@@ -52,7 +52,7 @@ Throttle strategies control how often the policy fires for a given episode or gr
 | Option | Description | When to use |
 |---|---|---|
 | On status change | Notifies when the episode status changes (for example, active → recovering). One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
-| On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or deprioritized. |
+| On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or pushed aside. |
 | At most once every… | Caps notifications at one per episode or group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
