@@ -80,9 +80,9 @@ Configure activation using count, timeframe, or both:
 
 | Field | Description |
 | --- | --- |
-| pending_count | Consecutive breaches required |
-| pending_timeframe | Minimum duration the condition must persist |
-| pending_operator | How to combine count and timeframe (`AND` or `OR`) |
+| `pending_count` | Consecutive breaches required |
+| `pending_timeframe` | Minimum duration the condition must persist |
+| `pending_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
 Each timeframe value must be between 5 seconds and 365 days.
 
@@ -90,9 +90,9 @@ Each timeframe value must be between 5 seconds and 365 days.
 
 | Field | Description |
 | --- | --- |
-| recovering_count | Consecutive recoveries required |
-| recovering_timeframe | Minimum duration for recovery |
-| recovering_operator | How to combine count and timeframe (`AND` or `OR`) |
+| `recovering_count` | Consecutive recoveries required |
+| `recovering_timeframe` | Minimum duration for recovery |
+| `recovering_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
 Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
 
@@ -102,13 +102,15 @@ No-data handling controls what happens when a rule executes and the base query r
 
 ### Behaviors
 
+Set `no_data.behavior` to one of the following values:
+
 | Behavior | Effect |
 | --- | --- |
-| no_data (default) | Record a no-data event |
-| last_status | Carry forward the previous status |
-| recover | Treat absence as recovery |
+| `no_data` | Record a no-data event (default) |
+| `last_status` | Carry forward the previous status |
+| `recover` | Treat absence as recovery |
 
-These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent — that requires a different query approach. See [No-data detection](esql-query-patterns-v2.md#no-data-esql-query-v2) in the authoring guide for an ES|QL pattern that surfaces silent sources as alert rows.
+These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns-v2.md#no-data-esql-query-v2) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
 
 ## Tags and investigation guide [tags-investigation-v2]
 

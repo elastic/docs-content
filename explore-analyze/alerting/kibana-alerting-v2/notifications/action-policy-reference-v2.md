@@ -12,7 +12,7 @@ description: "Grouping modes, throttle strategies, dispatch outcomes, and matche
 
 $$$action-policy-reference-v2$$$
 
-Quick-reference tables for building and debugging action policies. Use the following tables to look up valid matcher fields, map grouping modes to frequency options, or check what a dispatch outcome means. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy-v2.md).
+Use this page when building action policies. Below, you will find details about valid matcher fields, grouping modes and frequency options, dispatch outcome, and more. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy-v2.md).
 
 ## Matcher fields [matcher-fields]
 

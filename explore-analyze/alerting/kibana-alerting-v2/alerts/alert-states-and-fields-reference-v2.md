@@ -42,7 +42,7 @@ The `status` field appears on all documents in `.rule-events`, for both `type: s
 | `breached` | Condition met for this evaluation row. |
 | `recovered` | Recovery path satisfied for this evaluation row. |
 | `no_data` | No-data handling produced a no-data style outcome for this evaluation. |
-`
+
 ## Alert action document fields
 
 When a user or the system records an action on an alert episode, {{kib}} writes a document to `.alert-actions`. Use this stream for triage history, operational metrics such as mean time to acknowledge (MTTA), and auditing. It does not store what your rule query returned on each run — that output is in `.rule-events`.

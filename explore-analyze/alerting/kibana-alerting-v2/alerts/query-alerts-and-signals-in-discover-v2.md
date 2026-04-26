@@ -18,7 +18,7 @@ The Alerts UI shows current episode state. Discover lets you go further: ask arb
 
 To use this page, open Discover, select {{esql}}, paste a query from the examples below, then adjust the time range and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment.
 
-[CONTENT NEEDED: The queries on this page use `.rule-events` and `.alert-actions` directly. Confirm whether these will remain the intended query surface, or whether users should query an ES|QL view or a stable user-facing data stream instead. Update all examples accordingly before publishing.]
+<!--[CONTENT NEEDED: The queries on this page use `.rule-events` and `.alert-actions` directly. Confirm whether these will remain the intended query surface, or whether users should query an ES|QL view or a stable user-facing data stream instead. Update all examples accordingly before publishing.]
 
 <!--[CONTENT NEEDED for M2: Review and expand the query examples below once M2 field renames (`group_hash` → `series.key`, new `series.tracked_by`, `episode.severity`, `episode.severity_max`) are finalized. Add examples that take advantage of the new first-class severity and series fields.]
 -->

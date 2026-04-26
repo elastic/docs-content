@@ -48,9 +48,9 @@ $$$reduce-noise-grouping-v2$$$
 
 | Dispatch per | What it does | Available Frequency options |
 |---|---|---|
-| **Episode** | One notification per episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
-| **Group** | Bundle episodes that share a field value. Specify **Group by** (for example `data.service.name` or `data.host.name`). | - At most once every… <br> - Every evaluation |
-| **Digest** | One notification for all matching episodes combined. | Every evaluation |
+| Episode | One notification per episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
+| Group | Bundle episodes that share a field value. Specify **Group by** (for example `data.service.name` or `data.host.name`). | - At most once every… <br> - Every evaluation |
+| Digest | One notification for all matching episodes combined. | Every evaluation |
 
 :::
 

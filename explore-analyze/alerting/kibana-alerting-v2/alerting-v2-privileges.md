@@ -13,7 +13,7 @@ description: "Privilege requirements for {{alerting-v2}}: what {{kib}} feature a
 
 $$$alerting-privileges-v2$$$
 
-[CONTENT NEEDED: UI. The full privilege structure (names, granularity, and which actions each level permits) has not yet been finalized. Fill in the confirmed privilege requirements before publishing.]
+<!--[CONTENT NEEDED: UI. The full privilege structure (names, granularity, and which actions each level permits) has not yet been finalized. Fill in the confirmed privilege requirements before publishing.]-->
 
 ## Manage rules [alerting-manage-rules-privileges]
 

@@ -18,4 +18,5 @@ If you're creating a rule from scratch and want guidance through each setting, t
 
 For the full list of supported YAML fields and their accepted values, refer to [YAML rule schema reference](yaml-rule-schema-reference-v2.md).
 
-[CONTENT NEEDED: UI. This page needs a procedure once the YAML editor UI is finalized: how to open it, how to paste or edit a definition, and how to save. Hold until the editor workflow is confirmed.]
+<!--[CONTENT NEEDED: UI. This page needs a procedure once the YAML editor UI is finalized: how to open it, how to paste or edit a definition, and how to save. Hold until the editor workflow is confirmed.]
+-->

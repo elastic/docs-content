@@ -23,7 +23,8 @@ $$$alerting-set-up-v2$$$
 
 {{alerting-v2}} is available in {{serverless-short}} only. 
 
-[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
+<!--[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
+-->
 
 ## Where rule events are stored
 
@@ -43,7 +44,8 @@ FROM $`.rule-events`
 | LIMIT 10
 ```
 
-[CONTENT NEEDED: The direct index names `.rule-events` and `.alert-actions` may not be the intended query surface for end users. There is discussion about exposing this data through other methods instead. Confirm the intended access pattern before publishing this section and the [Query alerts in Discover](alerts/query-alerts-and-signals-in-discover-v2.md) page, and update all examples that reference these index names directly.]
+<!--[CONTENT NEEDED: The direct index names `.rule-events` and `.alert-actions` may not be the intended query surface for end users. There is discussion about exposing this data through other methods instead. Confirm the intended access pattern before publishing this section and the [Query alerts in Discover](alerts/query-alerts-and-signals-in-discover-v2.md) page, and update all examples that reference these index names directly.]
+-->
 
 After your first rule runs, use the query above in Discover to confirm documents are appearing. If nothing appears after a few seconds, check that the rule is enabled and that your ES|QL query returns results when run independently.
 

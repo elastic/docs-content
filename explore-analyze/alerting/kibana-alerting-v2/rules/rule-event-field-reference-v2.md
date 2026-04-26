@@ -12,7 +12,7 @@ description: "Reference for {{alerting-v2}} rule configuration fields and docume
 
 $$$rule-reference-v2$$$
 
-This page lists technical fields for rule configuration and rule event documents written to `.rule-events`. For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference-v2.md#alert-states-reference-v2). For action policy dispatch outcomes, see [Action policy reference](../notifications/action-policy-reference-v2.md#action-policy-reference-v2).
+This page lists technical fields for rule configuration and rule event documents written to `.rule-events`. For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference-v2.md#alert-states-reference-v2). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference-v2.md#action-policy-reference-v2).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through ILM. Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
@@ -24,8 +24,8 @@ These fields control when a rule runs and how far back its {{esql}} query looks 
 
 | Field | Description |
 |---|---|
-| schedule.every | Execution interval; minimum 5 seconds, maximum 365 days. |
-| schedule.lookback | Time range the {{esql}} query covers; must not exceed 365 days; should be at least `schedule.every` to avoid gaps. |
+| `schedule.every` | Execution interval; minimum 5 seconds, maximum 365 days. |
+| `schedule.lookback` | Time range the {{esql}} query covers; must not exceed 365 days; should be at least `schedule.every` to avoid gaps. |
 
 ## Activation thresholds
 
@@ -33,9 +33,9 @@ These fields are only available in Alert mode. They control how many consecutive
 
 | Field | Description |
 |---|---|
-| pending_count | Consecutive breaches required. |
-| pending_timeframe | Minimum duration the condition must persist. |
-| pending_operator | How to combine count and timeframe (`AND` or `OR`). |
+| `pending_count` | Consecutive breaches required. |
+| `pending_timeframe` | Minimum duration the condition must persist. |
+| `pending_operator` | How to combine count and timeframe (`AND` or `OR`). |
 
 ## Recovery thresholds
 
@@ -43,9 +43,9 @@ These fields are only available in Alert mode. They control how many consecutive
 
 | Field | Description |
 |---|---|
-| recovering_count | Consecutive recoveries required. |
-| recovering_timeframe | Minimum duration for recovery. |
-| recovering_operator | How to combine count and timeframe (`AND` or `OR`). |
+| `recovering_count` | Consecutive recoveries required. |
+| `recovering_timeframe` | Minimum duration for recovery. |
+| `recovering_operator` | How to combine count and timeframe (`AND` or `OR`). |
 
 ## No-data handling
 
@@ -53,9 +53,9 @@ These settings determine what the rule records when the {{esql}} query returns n
 
 | Behavior | Effect |
 |---|---|
-| no_data (default) | Record a no-data event. |
-| last_status | Carry forward the previous status. |
-| recover | Treat absence as recovery. |
+| `no_data` (default) | Record a no-data event. |
+| `last_status` | Carry forward the previous status. |
+| `recover` | Treat absence as recovery. |
 
 ## Rule grouping
 
@@ -63,7 +63,7 @@ Grouping is configured in YAML. The fields listed here control how the rule part
 
 | Key | Description |
 |---|---|
-| grouping.fields | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
+| `grouping.fields` | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
 
 <!--[CONTENT NEEDED for M2: `grouping.fields` is being renamed to `track_by.fields`. Update this section heading, table key, and description once the rename ships. Also add the `series.*` output fields that M2 introduces: `series.key` (replaces `group_hash` as the internal series identity hash) and `series.tracked_by` (a structured object of the tracked field names and values, for example `{"host.name": "web-01"}`). The `series.tracked_by` fields are directly filterable in {{esql}} queries without decoding.]
 -->
@@ -78,7 +78,7 @@ Each time a rule evaluates, {{kib}} writes one document per matched series to `.
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
 
 :::{note}
-`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To see the full history of an episode, query all documents that share the same `episode.id`. See [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2) for example queries.
+`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`. Refer to [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2) for example queries.
 :::
 
 ### Signal and alert fields
@@ -87,18 +87,18 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| @timestamp | date | Yes | When this document was written to `.rule-events`. |
-| scheduled_timestamp | date | No | Scheduled execution time for this rule run. |
-| rule.id | keyword | Yes | Rule identifier. |
-| rule.version | long | Yes | Rule version at the time this event was emitted. |
-| group_hash | keyword | Yes | Series identity key for grouped evaluations. |
+| `@timestamp` | date | Yes | When this document was written to `.rule-events`. |
+| `scheduled_timestamp` | date | No | Scheduled execution time for this rule run. |
+| `rule.id` | keyword | Yes | Rule identifier. |
+| `rule.version` | long | Yes | Rule version at the time this event was emitted. |
+| `group_hash` | keyword | Yes | Series identity key for grouped evaluations. |
+| `data` | flattened | Yes | Payload from the {{esql}} query output. Shape depends on your rule. |
+| `status` | keyword | Yes | One of: `breached`, `recovered`, `no_data`. |
+| `source` | keyword | Yes | Origin of this event. Product-specific identifier. |
+| `type` | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
 <!--[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` (the internal hash) and `series.tracked_by` (a structured object of field names and values). Update this table to replace the `group_hash` row with the two new `series.*` fields once M2 ships. Any {{esql}} examples that filter or display `group_hash` will also need to be updated to use `series.key` for lookups and `series.tracked_by.*` for human-readable series identification.]
 -->
-| data | flattened | Yes | Payload from the {{esql}} query output. Shape depends on your rule. |
-| status | keyword | Yes | One of: `breached`, `recovered`, `no_data`. |
-| source | keyword | Yes | Origin of this event. Product-specific identifier. |
-| type | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
 :::{admonition} Fields not stored as a dedicated column
 There is no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover-v2.md#explore-alerts-discover-v2), the alert UI, or your own queries over timestamps and episode identifiers.
@@ -110,9 +110,9 @@ These fields only appear on documents with `type: alert`, written by rules runni
 
 | Field | Type | Description |
 |---|---|---|
-| episode.id | keyword | Episode identifier for this series. |
-| episode.status | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
-| episode.status_count | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
+| `episode.id` | keyword | Episode identifier for this series. |
+| `episode.status` | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
+| `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
 
 <!--[CONTENT NEEDED for M2: M2 promotes severity to two new first-class episode fields. Add the following rows to this table once M2 ships:
 

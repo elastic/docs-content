@@ -12,7 +12,7 @@ description: "Complete field reference for {{alerting-v2}} YAML rule definitions
 
 $$$yaml-rule-schema-reference-v2$$$
 
-This page lists every valid field for a {{alerting-v2}} YAML rule definition. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml-v2.md).
+This page lists valid fieldS for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml-v2.md).
 
 ## Required fields
 
@@ -36,6 +36,7 @@ This page lists every valid field for a {{alerting-v2}} YAML rule definition. Fo
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `schedule.lookback` | duration | For example, `5m`, `24h` | How far back in time the query searches on each run. |
+| `time_field` | string | Any valid field name, max 128 characters | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. |
 
 ## Recovery policy fields
 
@@ -44,7 +45,8 @@ This page lists every valid field for a {{alerting-v2}} YAML rule definition. Fo
 | `recovery_policy.type` | string | `no_breach` or `query` | How recovery is detected. `no_breach` recovers when the query returns no results. `query` uses a separate recovery query. |
 | `recovery_policy.query.base` | string | Valid {{esql}} query | Required when `recovery_policy.type` is `query`. The query that checks whether the condition has cleared. |
 
-[CONTENT NEEDED for M2: M2 adds a third `recovery_policy.type` value: `manual`. When set to `manual`, an episode never auto-recovers — it must be explicitly closed by a human or API call. This is designed for security-style rules where a finding should not disappear just because the log event aged out of the lookback window. Add `manual` to the accepted values list and document its behavior and when to use it.]
+<!--[CONTENT NEEDED for M2: M2 adds a third `recovery_policy.type` value: `manual`. When set to `manual`, an episode never auto-recovers — it must be explicitly closed by a human or API call. This is designed for security-style rules where a finding should not disappear just because the log event aged out of the lookback window. Add `manual` to the accepted values list and document its behavior and when to use it.]
+-->
 
 ## State transition fields
 
@@ -65,7 +67,7 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 |---|---|---|---|
 | `grouping.fields` | array of strings | Max 16 fields, each max 256 characters | Fields to group results by. Each unique combination becomes its own series. |
 
-[CONTENT NEEDED for M2: The `grouping` key is being renamed to `track_by` in M2 (for example, `track_by: { fields: [host.name] }`). The rename is not cosmetic: the old name implied a direct relationship to the ES|QL `STATS ... BY` clause, which caused confusion. `track_by` captures the actual intent — which fields identify the thing you're monitoring.
+<!--[CONTENT NEEDED for M2: The `grouping` key is being renamed to `track_by` in M2 (for example, `track_by: { fields: [host.name] }`). The rename is not cosmetic: the old name implied a direct relationship to the ES|QL `STATS ... BY` clause, which caused confusion. `track_by` captures the actual intent — which fields identify the thing you're monitoring.
 
 Two additional behaviors change with this rename:
 
@@ -73,6 +75,7 @@ Two additional behaviors change with this rename:
 - **New `series.*` document fields**: M2 adds `series.key` (the internal hash, replacing `group_hash`) and `series.tracked_by` (a structured object of the field names and values, for example `{"host.name": "web-01"}`).
 
 Update this section to replace `grouping.fields` with `track_by.fields`, document the new default behavior, and add the `series.*` output fields. Until M2 ships, `grouping.fields` remains the correct field name.]
+-->
 
 ## No-data fields
 
@@ -88,11 +91,10 @@ Update this section to replace `grouping.fields` with `track_by.fields`, documen
 | `artifacts[].type` | string | For example, `runbook` | The type of artifact being attached. |
 | `artifacts[].value` | string | Markdown content | The content of the artifact. Runbooks are rendered as markdown in the rule detail view. |
 
-## Other fields
+## Notification policy fields
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `time_field` | string | Any valid field name, max 128 characters | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. |
 | `notification_policies[].ref` | string | Format: `policies/<id>` | Links a notification policy to the rule. |
 
 ## Duration format
