@@ -53,6 +53,7 @@ Built-in agents are space-agnostic: they are available across all [{{kib}} space
 ::::
 
 :::{note}
+:applies_to: { "stack": "preview =9.2, ga =9.3" }
 {{product.observability}} and {{product.security}} users must opt-in to use {{agent-builder}}. To learn more, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 :::
 
@@ -86,11 +87,13 @@ The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is 
 
 ::::
 
+:::{dropdown} Previous versions
+
 ## Observability Agent
 ```{applies_to}
-stack: preview 9.3
+stack: preview =9.3, removed 9.4+
 serverless:
-  observability: preview
+  observability: removed
 ```
 
 A specialized agent for logs, metrics, and traces. It is designed to assist with infrastructure monitoring and application performance troubleshooting.
@@ -102,9 +105,9 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 
 ## Threat Hunting Agent
 ```{applies_to}
-stack: preview 9.3
+stack: preview =9.3, removed 9.4+
 serverless:
-  security: preview
+  security: removed
 ```
 
 A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
@@ -113,6 +116,9 @@ A specialized agent for security alert analysis tasks, including alert investiga
 **Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
+
+:::
+
 
 ## Related pages
 
