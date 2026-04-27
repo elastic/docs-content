@@ -488,11 +488,11 @@ To access the deployment or project:
 
 AWS supports cross-region PrivateLink as described on the [AWS blog](https://aws.amazon.com/blogs/networking-and-content-delivery/introducing-cross-region-connectivity-for-aws-privatelink/).
 
-This means your deployment or project on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment or project endpoints.
+This means your deployment or project on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment or project endpoints. 
 
 ### Supported source regions
 
-Cross-region PrivateLink connections can originate from any of the [regions listed above](#ec-private-link-service-names-aliases) where {{ecloud}} has a presence, as well as the following additional AWS regions:
+Cross-region PrivateLink connections can originate from any [AWS region where {{ecloud}} is available](#ec-private-link-service-names-aliases), as well as some additional AWS opt-in regions:
 
 | Region | Location |
 | --- | --- |
@@ -505,9 +505,7 @@ Cross-region PrivateLink connections can originate from any of the [regions list
 | il-central-1 | Israel (Tel Aviv) |
 | me-central-1 | Middle East (UAE) |
 
-:::{note}
-These regions are AWS opt-in regions. Cross-region connections from these regions use the [VPC service name](#ec-private-link-service-names-aliases) of the region where your deployment or project is hosted.
-:::
+### Set up a cross-region PrivateLink connection
 
 In this example, `region 1` contains your VPC endpoint and `region 2` is the region where your deployment or project is hosted.
 
