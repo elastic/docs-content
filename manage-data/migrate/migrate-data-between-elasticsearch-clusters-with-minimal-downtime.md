@@ -81,7 +81,7 @@ Follow these steps to migrate your {{es}} data.
 In this step, you’ll configure a read-only snapshot repository in the new cluster that points to the storage location used by the old cluster. This allows the new cluster to access and restore snapshots created in the original environment.
 
 ::::{tip}
-If your new deployment cannot connect to the same repository used by your old cluster, fself-managed cluster, for example if it's a self-managed cluster using a private Network File System (NFS) share, consider one of the following alternatives:
+If your new deployment cannot connect to the same repository used by your old cluster, for example if it's a self-managed cluster using a private Network File System (NFS) share, consider one of the following alternatives:
 
 * [Back up your repository](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) to a supported storage system such as AWS S3, Google Cloud Storage, or Azure Blob Storage, and then configure your new cluster to use that location for the data migration.
 * Expose the repository contents over `ftp`, `http`, or `https`, and use a [read-only URL repository](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) type in your new deployment to access the snapshots.
