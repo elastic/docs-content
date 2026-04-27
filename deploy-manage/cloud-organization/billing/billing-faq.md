@@ -152,7 +152,7 @@ $$$faq-usage$$$Where can I follow the remaining balance and usage?
 :   The current usage and remaining balance can be found in the [Usage](monitor-analyze-usage.md) page. You will also receive monthly usage statements that are published in the [Billing history](view-billing-history.md) page.
 
 $$$faq-notification$$$How will I know that I am running out of credits?
-:   Your account billing contacts and the members of your organization will receive email notifications when your credit balance falls below 33%, 25%, and 16% of credits remaining.
+:   Your account billing contacts and the members of your organization will receive email notifications when your credit balance reaches one of these remaining-credit thresholds: 33%, 25%, 16%, or 0%.
 
 $$$faq-on-demand$$$How can I pay for on-demand usage?
 :   We only support PO (invoicing) for on-demand usage, for prepaid consumption customers. The issued invoices include tax.

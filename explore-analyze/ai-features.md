@@ -23,6 +23,15 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
 - Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
 
+## Model selection and tested performance [model-selection-tested-performance]
+
+Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
+
+- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) summarize model performance for those solutions' AI-powered features.
+- [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
+
+Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
+
 ## AI-powered features on the Elastic platform
 
 The following AI-powered features are available across the Elastic platform. These are core {{es}} capabilities that you can use regardless of your chosen solution or project type.
@@ -64,6 +73,10 @@ Depending on your team's technical expertise and requirements, you can choose fr
 ### Learning to Rank (LTR)
 
 [Learning To Rank](/solutions/search/ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
+
+### Automatic Import [automatic-import-platform]
+
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) uses an LLM to help you build a custom Elastic integration from a data sample when no prebuilt integration exists for your source. It applies across solutions that use {{agent}} and integrations, including {{observability}} and {{elastic-sec}}.
 
 ## AI-powered features in the {{es}} solution/project type
 
@@ -117,6 +130,10 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 * [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
 * [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
 
+### Automatic Import [automatic-import-observability]
+
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) helps you ingest logs and events from sources that don’t have prebuilt Elastic integrations by generating a new integration from a sample of your data.
+
 ## AI-powered features in {{elastic-sec}} [security-features]
 
 {{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
@@ -139,9 +156,9 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 * Splunk dashboards
 
 
-### Automatic Import
+### Automatic Import [automatic-import-security]
 
-[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
 
 
 ### Automatic Troubleshooting
