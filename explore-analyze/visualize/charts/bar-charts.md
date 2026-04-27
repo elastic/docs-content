@@ -249,11 +249,18 @@ Configure elements of your bar chart's legend. Configurable options include:
 **Width**
 :   Set the width of the legend.
 
+**Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
+    - **List**: A compact layout that flows series labels to fit the available space. List is the default for new charts when the legend is at the top or bottom.
+    - **Grid**: A table-style layout that aligns series labels and statistics into rows and columns.
+
+    Visualizations created before this setting was introduced keep their previous layout until you change it.
+
 **Statistics**
-:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.  
+:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
 
 **Label truncation**
-:   Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
+:   For legends positioned inside the chart, outside on the side, or outside at the top or bottom with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
 
 ## Bar chart examples
 
