@@ -72,10 +72,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
 
-:::{image} /explore-analyze/images/esql-line-breakdown.gif
-:alt: Automatic line breaks and indentation for ES|QL queries
-:width: 75%
-:::
+![Automatic line breaks and indentation for ES|QL queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltb7c28c7b10f58b68/69ebb4e4a7cffb580c9a34c5/prettify-esql.gif "=75%")
 
 #### Warnings [_warnings]
 
@@ -120,7 +117,7 @@ You can use the **Quick search** functionality of the {{esql}} editor to transla
 
 5. Refine your query with any other {{esql}} command or function that you need.
 
-![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6997303fcf7e250008e681d8/esql-quick-search.gif "=60%")
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
 
 ### Commands with additional editor support
@@ -232,7 +229,7 @@ serverless: preview
 
 The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
-![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2d3183eafde13ca0/699889744357070008f66a99/query_history_starred.gif "=60%")
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2446c9af9847b87e/69ebb870086ade348a1acc35/esql-recent-starred.gif "=60%")
 
 ### Query history [esql-kibana-query-history]
 
