@@ -14,7 +14,7 @@ products:
 # Troubleshoot {{kib}} reporting [reporting-troubleshooting]
 
 
-Kibana excels as a data visualization tool. The {{report-features}} exist to export data as simple reports, however Kibana is not a data export tool. To export data at a large scale, there are better ways and better architectures for exporting data at scale from Elasticsearch.
+Kibana excels as a data visualization tool. The {{report-features}} exist to export data as simple reports, however Kibana is not a data export tool. To export data at a large scale, there are better ways and better architectures for exporting data at scale from Elasticsearch. This comprehensive guide helps you leverage native Elastic capabilities to quickly troubleshoot reporting.
 
 If you have trouble creating simple reports, there are some general solutions to common problems you might encounter while using {{report-features}}. For tips related to specific types of reports, refer to [CSV](../../explore-analyze/report-and-share/reporting-troubleshooting-csv.md) and [PDF/PNG](../../explore-analyze/report-and-share/reporting-troubleshooting-pdf.md).
 
