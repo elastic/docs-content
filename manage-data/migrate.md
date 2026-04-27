@@ -73,7 +73,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 
 \* See also [](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
 
-### Migrate data to {{ece}}**: [data-migration-guides-ece]
+### Migrate data to {{ece}} [data-migration-guides-ece]
 
 | From | To | Supported Methods |
 | --- | --- | --- |
