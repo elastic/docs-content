@@ -25,7 +25,7 @@ This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/el
 ::::{note}
 You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 ::::
-- To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an inference endpoint using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+- To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an inference endpoint using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
 
 ## Create the index mapping [semantic-text-index-mapping]
 
@@ -73,7 +73,7 @@ PUT semantic-embeddings
 
 1. The name of the field to contain the generated embeddings.
 2. The field to contain the embeddings is a `semantic_text` field.
-3. The `.elser-2-elasticsearch` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
+3. The `.elser-2-elasticsearch` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
 
 ::::::
 
@@ -116,7 +116,7 @@ PUT semantic-embeddings-optimized
 }
 ```
 
-1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint that is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
+1. Reference to a text embedding {{infer}} endpoint. This example uses the built-in E5 endpoint that is automatically available. For custom models, you must create the endpoint first using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
 2. Use Better Binary Quantization with HNSW indexing for optimal memory efficiency. This setting applies to the underlying `dense_vector` field that stores the embeddings.
 
 #### Use BBQ without HNSW
@@ -228,7 +228,7 @@ PUT semantic-embeddings-custom
 2. Number of candidates considered during graph construction. Higher values improve index quality but slow down indexing. Default is 100.
 
 ::::{note}
-If you're using web crawlers or connectors to generate indices, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you'll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
+If you're using web crawlers or connectors to generate indices, you have to [update the index mappings]({{es-apis}}operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you'll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling semantic search on the updated data.
 ::::
 
 ## Load data [semantic-text-load-data]

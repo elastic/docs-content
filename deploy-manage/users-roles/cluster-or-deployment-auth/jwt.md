@@ -295,7 +295,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 * By delegating authorization [to another realm](#jwt-authorization-delegation).
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
@@ -306,7 +306,7 @@ You can't map roles in the JWT realm using the `role_mapping.yml` file.
 
 ### Authorizing with the role mapping API [jwt-authorization-role-mapping]
 
-You can use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
+You can use the [create or update role mappings API]({{es-apis}}operation/operation-security-put-role-mapping) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
 
 ```console
 PUT /_security/role_mapping/jwt1_users?refresh=true <1>
@@ -353,7 +353,7 @@ The following example shows how you define delegation authorization in the [`ela
 xpack.security.authc.realms.jwt.jwt2.authorization_realms: file1,native1,ldap1,ad1
 ```
 
-You can then use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
+You can then use the [create or update role mappings API]({{es-apis}}operation/operation-security-put-role-mapping) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
 
 ```console
 PUT /_security/role_mapping/native1_users?refresh=true
@@ -401,7 +401,7 @@ POST /_security/role_mapping/jwt_user1?refresh=true
 }
 ```
 
-After mapping the roles, you can make an [authenticated call](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
+After mapping the roles, you can make an [authenticated call]({{es-apis}}operation/operation-security-authenticate) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
 
 $$$jwt-auth-shared-secret-scheme-example$$$
 

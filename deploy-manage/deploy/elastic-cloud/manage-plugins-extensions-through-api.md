@@ -167,7 +167,7 @@ The following are examples of a GCP plan. Your specific deployment plan will be 
 }
 ```
 
-You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
+You can use the [cat plugins API]({{es-apis}}operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
 
 The previous examples are for plugins. For bundles, use the `user_bundles` construct instead.
 
@@ -471,7 +471,7 @@ Unlike bundles, plugins *must* match the {{es}} version down to the patch level 
     }
     ```
 
-    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
+    You can use the [cat plugins API]({{es-apis}}operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
 
 
 
