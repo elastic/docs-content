@@ -83,7 +83,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-You can configure the lists of models that are available for each feature or specify single model for all features.
+You can configure the lists of models that are available for each feature or specify a single model for all features.
 Find **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/feature-settings.png
