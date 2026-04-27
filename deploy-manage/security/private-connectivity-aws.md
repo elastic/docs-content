@@ -45,11 +45,11 @@ There are no specific requirements for {{es-serverless}} projects or {{ech}} dep
 
 ## Considerations
 
-Before you decide to set up private connectivity with AWS PrivateLink, review  the following considerations:
+Before you decide to set up private connectivity with AWS PrivateLink, review the following considerations:
 
 ### Private connections and regions
 
-Private connectivity with AWS PrivateLink is supported only in AWS regions.
+Private connectivity with AWS PrivateLink is supported only in AWS regions. You can set up private connections in [AWS regions where {{ecloud}} is available](#ec-private-link-service-names-aliases). You can also set up [cross-region PrivateLink connections](#ec-aws-inter-region-private-link) to reach your deployment or project from additional AWS regions.
 
 AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the [list of AWS regions](#ec-private-link-service-names-aliases) shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
