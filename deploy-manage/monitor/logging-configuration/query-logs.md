@@ -85,13 +85,19 @@ The following configuration options are available. Set them in `elasticsearch.ym
 To set up query logging on {{ech}} deployments:
 
 1. [Turn on Logs and metrics](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#enable-logging-and-monitoring-steps) for the deployment so it can ship logs to your monitoring or log destination cluster.
-2. Set `elasticsearch.querylog.enabled` to `true` to start generating query log entries.
+2. Enable query logging using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings):
+
+:::{include} /deploy-manage/monitor/logging-configuration/_snippets/enable-query-logging.md
+:::
 
 :::::
 
 :::::{applies-item} eck:
 
-ECK clusters automatically collect from the `*_querylog.json` path using the default configuration. Set `elasticsearch.querylog.enabled` to `true` to start generating query log entries.
+ECK clusters automatically collect from the `*_querylog.json` path using the default configuration. Set `elasticsearch.querylog.enabled` to `true` in `elasticsearch.yml` or using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings):
+
+:::{include} /deploy-manage/monitor/logging-configuration/_snippets/enable-query-logging.md
+:::
 
 :::::
 
@@ -99,7 +105,11 @@ ECK clusters automatically collect from the `*_querylog.json` path using the def
 
 To set up query logging on self-managed or ECE clusters:
 
-1. Set `elasticsearch.querylog.enabled` to `true` to start generating query log entries.
+1. Set `elasticsearch.querylog.enabled` to `true` in `elasticsearch.yml` or using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings):
+
+    :::{include} /deploy-manage/monitor/logging-configuration/_snippets/enable-query-logging.md
+    :::
+
 2. Set up a shipper to collect and index the log files:
 
 - **Filebeat**: The [Filebeat](https://www.elastic.co/docs/reference/beats/filebeat) [{{es}} module](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-module-elasticsearch) includes a `querylog` [fileset](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-module-elasticsearch#_querylog_log_fileset_settings) that reads the `*_querylog.json` files and sends events to the `logs-elasticsearch.querylog-default` data stream. Configure Filebeat on the nodes that emit query logs and enable the `querylog` fileset.
