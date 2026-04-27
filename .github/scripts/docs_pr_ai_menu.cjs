@@ -19,7 +19,7 @@ function getLinePattern(key) {
   const { label, marker } = WORKFLOW_CONFIG[key];
 
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: Status: [^.]+\\.)? ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: Status: .*?)? ${escapeRegExp(marker)}$`,
     'm'
   );
 }
@@ -49,20 +49,24 @@ function parseMenuState(body) {
 }
 
 function getStatusText(workflowState, workflowStatus) {
+  const progressLink = workflowStatus?.detailsUrl
+    ? ` [View progress](${workflowStatus.detailsUrl}).`
+    : '';
+
   if (workflowStatus?.status === 'in_progress' || workflowStatus?.status === 'queued') {
-    return 'Status: running.';
+    return `Status: running.${progressLink}`;
   }
 
   if (workflowStatus?.status === 'completed') {
     if (workflowStatus.conclusion === 'success') {
-      return 'Status: completed.';
+      return `Status: completed.${progressLink}`;
     }
 
     if (workflowStatus.conclusion === 'cancelled') {
-      return 'Status: cancelled.';
+      return `Status: cancelled.${progressLink}`;
     }
 
-    return 'Status: needs attention.';
+    return `Status: needs attention.${progressLink}`;
   }
 
   if (workflowState?.selected) {
@@ -89,6 +93,7 @@ function getWorkflowStatusFromCheckRuns(key, checkRuns) {
 
   return {
     conclusion: matchingCheckRuns[0].conclusion,
+    detailsUrl: matchingCheckRuns[0].details_url,
     status: matchingCheckRuns[0].status,
   };
 }

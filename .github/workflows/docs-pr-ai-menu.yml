@@ -123,6 +123,7 @@ jobs:
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
             const pullRequestNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 
             await menu.upsertMenuComment({
               core,
@@ -132,6 +133,7 @@ jobs:
               pullRequestNumber,
               statusOverrides: {
                 docsReview: {
+                  detailsUrl: progressUrl,
                   status: 'in_progress',
                 },
               },
@@ -183,6 +185,7 @@ jobs:
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
             const pullRequestNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const docsReviewResult = '${{ needs.run-docs-review.result }}';
             const docsReviewStatus = {
               conclusion: docsReviewResult === 'success'
@@ -190,6 +193,7 @@ jobs:
                 : docsReviewResult === 'cancelled'
                   ? 'cancelled'
                   : 'failure',
+              detailsUrl: progressUrl,
               status: 'completed',
             };
 
