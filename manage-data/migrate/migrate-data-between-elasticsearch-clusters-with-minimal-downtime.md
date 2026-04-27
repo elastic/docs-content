@@ -12,7 +12,11 @@ products:
 
 # Migrate {{es}} data using snapshots [migrate-elasticsearch-data-using-snapshots]
 
-This page explains how to migrate data between {{es}} clusters using incremental snapshots, including an overview, prerequisites, and a recommended timeline for the procedure. When you're ready to begin, refer to [Migrate your data using snapshot and restore](#migrate-data-snapshot-restore) for step-by-step instructions.
+This page explains how to migrate data between {{es}} clusters using snapshots. To reduce cluster downtime, Elastic recommends that you use incremental snapshots. This page details the incremental snapshot process, including an overview, prerequisites, and a recommended timeline for the procedure.
+
+:::{tip}
+If you don't need to restore incrementally, you can skip to [Migrate your data using snapshot and restore](#migrate-data-snapshot-restore) for basic snapshot and restore instructions.
+:::
 
 ## Migrate with minimal downtime
 
