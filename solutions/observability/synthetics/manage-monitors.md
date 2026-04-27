@@ -88,7 +88,7 @@ Alternatively, you can temporarily disable a monitor by updating the monitor’s
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
 
-Synthetics automatically detects when a monitor has a broken Fleet integration — for example, if an agent policy or Fleet package policy is deleted after the monitor was configured — and surfaces health status directly in the UI.
+Synthetics automatically detects when a monitor has a broken {{fleet}] integration — for example, if an agent policy or {{fleet}} package policy is deleted after the monitor was configured — and surfaces health status directly in the UI.
 
 ### Monitor list [manage-monitors-health-list]
 
