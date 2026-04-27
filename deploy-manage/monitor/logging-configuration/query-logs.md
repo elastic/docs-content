@@ -80,6 +80,8 @@ The following configuration options are available. Set them in `elasticsearch.ym
 
 ::::::{applies-switch}
 
+% TODO: Update ECH and ECE tabs when Cloud UI supports configuring query logging settings directly.
+
 :::::{applies-item} ess:
 
 To set up query logging on {{ech}} deployments:
