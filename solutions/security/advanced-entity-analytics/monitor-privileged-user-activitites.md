@@ -10,6 +10,11 @@ products:
 
 # Monitor privileged user activities
 
+::::{note}
+:applies_to: {stack: deprecated 9.4+, serverless: deprecated}
+Privileged user monitoring is deprecated. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
+
 After you [set up privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-setup.md), you can start monitoring your privileged users' activity using the different panels on the Privileged user monitoring dashboard.
 
 To get started, find **Privileged user monitoring** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).

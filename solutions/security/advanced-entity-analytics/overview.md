@@ -30,6 +30,10 @@ stack: ga 9.4+
 serverless: ga
 ```
 
+:::{admonition} Requirements
+To display threat hunting leads, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+:::
+
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:
 
 * Recent increases in entity risk score

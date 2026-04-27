@@ -91,7 +91,7 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * Non-alert risk inputs and their contribution scores, including: 
   * Asset criticality level
   * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: deprecated =9.4, ga 9.3, preview 9.1-9.2` Privileged user status
+  * {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
@@ -119,7 +119,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the priamry entity and any aliases — with their entity name, ID, source, and risk score.
+The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
 
 To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the Add icon ({icon}`plus_in_circle`) next to the entity you want to link. To remove an entity from the group, click **X** ({icon}`cross`) in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 

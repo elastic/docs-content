@@ -26,7 +26,7 @@ A resolution group consists of:
 * **Primary entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the primary entity.
 * **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
 
-Resolution group relationships are also visible as **Resolved to** connections in [Graph Visualization](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) from the entity details flyout.
+Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab.
 
 ## Automated resolution [entity-resolution-automated]
 
@@ -71,12 +71,11 @@ user,,bob.smith,user:bob@acme.com@active_directory
 4. Review the file validation results and fix any errors if needed.
 5. Confirm to apply the links.
 
+::::{note}
+Bulk unlinking is not available in the UI; use the API instead.
+::::
+
 ## Manage resolution groups from the entity flyout [entity-resolution-flyout]
 
 You can view, add to, and remove entities from a resolution group directly from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution). The flyout's **Resolution group** tab shows all linked records and lets you search for entities to add, or remove individual aliases.
 
-## Known limitations [entity-resolution-limitations]
-
-* Automated resolution matches on email addresses only.
-* Automated resolution may produce false-positive links when non-IDP entities share an email address with an IDP entity.
-* Bulk unlinking is not available in the UI; use the API instead.
