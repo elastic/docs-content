@@ -861,7 +861,11 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 ::::
 
-### Token consumption {applies_to}`stack: preview 9.4`
+### Token consumption 
+
+```{applies_to}
+stack: preview =9.4
+```
 
 Use this API to retrieve per-conversation token usage data for a given agent. This endpoint requires the `manageAgents` privilege and provides cross-user visibility into token consumption across all conversations for the specified agent.
 
