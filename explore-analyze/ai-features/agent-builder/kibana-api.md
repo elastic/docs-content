@@ -74,7 +74,7 @@ The following sections provide quick examples for each API endpoint grouped by r
 
 ### Tools APIs
 
-Use these APIs to create, list, update, delete, and execute tools.
+Use these APIs to create, list, update, delete, and run tools.
 
 **Example:** List all tools
 
