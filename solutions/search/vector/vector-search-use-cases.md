@@ -106,3 +106,5 @@ To implement semantic search, you can choose between the following approaches de
 
 ## Enterprise and legal search across large corpora
 
+## Long-term memory for LLMs
+

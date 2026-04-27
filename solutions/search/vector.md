@@ -21,6 +21,30 @@ For common vector search use cases and how to apply them, refer to [Vector searc
 
 Vector search finds results based on _meaning_ rather than exact keyword matches. {{es}} functions as a [vector database](#vector-database): it stores embeddings at scale and retrieves by similarity while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}. 
 
+## Implementation guides and tutorials [vector-search-workflows]
+
+Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
+
+### Semantic search (managed workflows)
+
+The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
+
+- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
+- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
+- [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
+- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
+- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
+
+### Advanced tutorials
+
+These tutorials provide more direct or customizable approaches to working with vector search:
+
+- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
+- [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
+- [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
+- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
+- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
+
 ## Core concepts [vectors-and-embeddings]
 
 $$$vector-database$$$ Vector database
@@ -85,31 +109,6 @@ A {{ml}} model that converts your source data into vector embeddings. The model 
 Chunking splits large documents into smaller pieces before generating embeddings. This helps improve retrieval quality by matching queries to the most relevant parts of a document.
 
 To learn how to configure chunking for the `semantic_text` field type, refer to the [{{infer}} API chunking configuration](/explore-analyze/elastic-inference/inference-api.md#infer-chunking-config). If you use your own embeddings, you are responsible for chunking your data before indexing. Refer to [Bring your own dense vectors](vector/bring-own-vectors.md) for guidance.
-
-## Implementation guides and tutorials [vector-search-workflows]
-
-Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
-
-### Semantic search (managed workflows)
-
-The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
-
-- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
-- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
-- [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
-- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
-- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
-
-### Advanced tutorials
-
-These tutorials provide more direct or customizable approaches to working with vector search:
-
-- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
-- [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
-- [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
-- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
-- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
-
 
 
 
