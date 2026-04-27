@@ -675,6 +675,11 @@ For this to work, the {{kib}} server must connect to `https://epr.elastic.co` on
 
 ## OpenTelemetry Collectors in Fleet
 
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
 ### OTel Collector doesn't appear in the {{fleet}} UI [otel-collector-not-in-fleet-ui]
 
 **Symptoms**

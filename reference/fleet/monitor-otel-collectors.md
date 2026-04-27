@@ -12,7 +12,7 @@ products:
 
 # Monitor OpenTelemetry Collectors in Fleet
 
-Use {{fleet}} to centrally monitor {{edot}} (EDOT) Collectors and third-party OpenTelemetry (OTel) Collectors running in your infrastructure. 
+Use {{fleet}} to centrally monitor {{edot}} (EDOT) Collectors and third-party OpenTelemetry (OTel) Collectors running in your infrastructure.
 
 {{fleet}} provides visibility into the health, configuration, and telemetry of any OTel Collector with the OpAMP extension, enabling you to troubleshoot issues, plan capacity, and monitor operations from a single interface.
 
@@ -26,7 +26,7 @@ You'll need:
 * A {{kib}} user with the **Admin** role. For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) (required when setting up internal telemetry)
 * An OTel Collector with OpAMP extension support:
-  * Upstream and contrib OTel Collectors: version 0.103.0 or later
+  * OpenTelemetry Collector (upstream and community-contributed distributions): version 0.103.0 or later
   * EDOT Collector: version 9.2 or later
 * A running [{{fleet-server}}](/reference/fleet/fleet-server.md)
 
@@ -98,7 +98,7 @@ To view detailed information about a specific OTel Collector, click its host nam
 
 :::{tip}
 To display only OTel Collectors in the list of agents:
-* From the **Tags** filter, select one or more tags to filter the list. EDOT Collectors are automatically assigned the `elastic-otel-collector` tag. Upstream/contrib OTel Collectors are automatically assigned the `otel-contrib` tag.
+* From the **Tags** filter, select one or more tags to filter the list. EDOT Collectors are automatically assigned the `elastic-otel-collector` tag. Upstream and community-contributed OTel Collectors are automatically assigned the `otel-contrib` tag.
 * From the **Agent policies** filter, select the **OpAMP** option to display all OTel Collectors.
 :::
 
@@ -123,7 +123,7 @@ The Overview section provides key information about the OTel Collector's current
 | **Host name** | The name of the host machine running the OTel Collector. |
 | **Host ID** | Shows a dash (`-`) for OTel Collectors. |
 | **Platform** | The operating system platform (for example, darwin, linux, windows). |
-| **Tags** | Automatically assigned tags based on collector type (`elastic-otel-collector` for EDOT Collector, `otel-contrib` for upstream/contrib collector). |
+| **Tags** | Automatically assigned tags based on collector type (`elastic-otel-collector` for EDOT Collector, `otel-contrib` for upstream and community-contributed OTel Collectors). |
 | **Collector capabilities** | The OpAMP capabilities reported by the collector: ReportsAvailableComponents, ReportsEffectiveConfig, ReportsHealth, and ReportsStatus. |
 
 ### Component health
@@ -316,8 +316,10 @@ To use this configuration:
     ::::
 
 2. Update the endpoints in the configuration:
+
    * Replace `https://elasticsearch:9200` with your {{es}} endpoint.
    * Replace `https://fleet-server:8220` with your {{fleet-server}} host URL.
+
 3. Export the environment variables:
 
    ```bash
@@ -379,11 +381,8 @@ service:
 Using `insecure_skip_verify: true` disables TLS certificate verification and makes your connection vulnerable to man-in-the-middle attacks. Only use this for testing in isolated environments, never in production.
 :::
 
-## Troubleshooting
-
-For troubleshooting information related to adding OTel Collectors in {{fleet}}, refer to [OpenTelemetry Collectors in Fleet](/troubleshoot/ingest/fleet/common-problems.md#opentelemetry-collectors-in-fleet) in the [Common problems with Fleet and Elastic Agent](/troubleshoot/ingest/fleet/common-problems.md) guide.
-
 ## Related pages
 
+- [OpenTelemetry Collectors in Fleet troubleshooting](/troubleshoot/ingest/fleet/common-problems.md#opentelemetry-collectors-in-fleet)
 - [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/index.md)
 - [Troubleshoot the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md)
