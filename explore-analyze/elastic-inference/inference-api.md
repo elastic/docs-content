@@ -3,8 +3,7 @@ navigation_title: Inference integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga 9.0-9.3
 products:
   - id: kibana
 ---
@@ -17,6 +16,12 @@ You can use the default {{infer}} endpoints your deployment contains or create a
 
 - using the [Create an inference endpoint API]({{es-apis}}operation/operation-inference-put)
 - through the [Inference endpoints UI](#add-inference-endpoints).
+
+:::{important}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+The **{{infer-cap}} endpoints** app has been replaced by [Elastic Inference](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) apps.
+:::
 
 ## Default {{infer}} endpoints [default-enpoints]
 

@@ -468,48 +468,12 @@ Reference the deployed text embedding model or the model deployment in the `quer
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
 
+:::{tip}
+For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to [Build query vectors for knn search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#build-query-vectors-for-knn-search).
+:::
+
+
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
-
-### Use `lookup` to build the query vector [knn-query-vector-lookup]
-```{applies_to}
-stack: ga 9.4
-```
-
-If your query vector already exists in Elasticsearch, use the `lookup` query vector builder to fetch that vector directly from a document at search time.
-
-Use `lookup` when you want to:
-
-- Find similar items for recommendations
-- Retrieve related content from a seed document
-- Avoid an extra client round-trip to fetch a vector before searching
-
-The lookup source must reference a `dense_vector` field that contains a single vector value. As with any kNN search, the looked-up vector must be compatible with the target kNN field (same dimensions and same embedding model semantics).
-
-```js
-(...)
-{
-  "knn": {
-    "field": "product-vector",
-    "k": 10,
-    "num_candidates": 100,
-    "query_vector_builder": {
-      "lookup": { <1>
-        "id": "product-123", <2>
-        "index": "seed-products", <3>
-        "path": "product-vector", <4>
-        "routing": "tenant-a" <5>
-      }
-    }
-  }
-}
-(...)
-```
-
-1. Use the `lookup` query vector builder to retrieve the vector from an existing document.
-2. The ID of the source document that contains the vector to use for search.
-3. The name of the index that stores the source document.
-4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
-5. Optional routing value used to retrieve the source document.
 
 ### Search multiple kNN fields [_search_multiple_knn_fields]
 
