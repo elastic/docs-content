@@ -120,6 +120,85 @@ function buildMenuBody(state, statuses) {
   ].join('\n');
 }
 
+async function getCheckRunsForPullRequest(github, context, pullRequestNumber) {
+  const { data: pullRequest } = await github.rest.pulls.get({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: pullRequestNumber,
+  });
+
+  const { data: checks } = await github.rest.checks.listForRef({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    ref: pullRequest.head.sha,
+    per_page: 100,
+  });
+
+  return checks.check_runs || [];
+}
+
+async function findMenuComment(github, context, pullRequestNumber) {
+  const { data: comments } = await github.rest.issues.listComments({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: pullRequestNumber,
+    per_page: 100,
+  });
+
+  return comments.find((comment) =>
+    comment.user?.login === 'github-actions[bot]' &&
+    comment.body?.includes(MENU_START) &&
+    comment.body?.includes(MENU_END)
+  );
+}
+
+function buildWorkflowStatuses(checkRuns, statusOverrides) {
+  return Object.fromEntries(
+    WORKFLOW_ORDER.map((key) => [
+      key,
+      statusOverrides?.[key] || getWorkflowStatusFromCheckRuns(key, checkRuns),
+    ])
+  );
+}
+
+async function upsertMenuComment({
+  core,
+  createIfMissing = true,
+  github,
+  context,
+  pullRequestNumber,
+  statusOverrides,
+}) {
+  const checkRuns = await getCheckRunsForPullRequest(github, context, pullRequestNumber);
+  const existingComment = await findMenuComment(github, context, pullRequestNumber);
+
+  if (!existingComment && !createIfMissing) {
+    core?.warning('AI PR menu comment was not found.');
+    return;
+  }
+
+  const existingState = parseMenuState(existingComment?.body || '');
+  const statuses = buildWorkflowStatuses(checkRuns, statusOverrides);
+  const body = buildMenuBody(existingState, statuses);
+
+  if (existingComment) {
+    await github.rest.issues.updateComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      comment_id: existingComment.id,
+      body,
+    });
+    return;
+  }
+
+  await github.rest.issues.createComment({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: pullRequestNumber,
+    body,
+  });
+}
+
 module.exports = {
   MENU_START,
   MENU_END,
@@ -127,4 +206,5 @@ module.exports = {
   parseMenuState,
   getWorkflowStatusFromCheckRuns,
   buildMenuBody,
+  upsertMenuComment,
 };

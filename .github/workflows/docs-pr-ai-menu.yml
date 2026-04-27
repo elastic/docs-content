@@ -46,8 +46,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
-            const markerStart = '<!-- docs-pr-ai-menu:start -->';
-            const markerEnd = '<!-- docs-pr-ai-menu:end -->';
             const workflowDispatchPrNumber = context.payload.inputs?.pull_request_number;
             const pullRequestNumber = context.eventName === 'workflow_dispatch'
               ? Number(workflowDispatchPrNumber)
@@ -58,56 +56,7 @@ jobs:
               return;
             }
 
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pullRequestNumber,
-            });
-
-            const { data: checks } = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: pullRequest.head.sha,
-              per_page: 100,
-            });
-
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pullRequestNumber,
-              per_page: 100,
-            });
-
-            const existingComment = comments.find((comment) =>
-              comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(markerStart) &&
-              comment.body?.includes(markerEnd)
-            );
-
-            const existingState = menu.parseMenuState(existingComment?.body || '');
-            const statuses = Object.fromEntries(
-              menu.WORKFLOW_ORDER.map((key) => [
-                key,
-                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
-              ])
-            );
-            const body = menu.buildMenuBody(existingState, statuses);
-
-            if (existingComment) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existingComment.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pullRequestNumber,
-                body,
-              });
-            }
+            await menu.upsertMenuComment({ core, github, context, pullRequestNumber });
 
   evaluate-trigger:
     name: Evaluate AI PR menu trigger
@@ -173,55 +122,14 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
-            const markerStart = '<!-- docs-pr-ai-menu:start -->';
-            const markerEnd = '<!-- docs-pr-ai-menu:end -->';
             const pullRequestNumber = context.payload.issue.number;
 
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pullRequestNumber,
-            });
-
-            const { data: checks } = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: pullRequest.head.sha,
-              per_page: 100,
-            });
-
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pullRequestNumber,
-              per_page: 100,
-            });
-
-            const existingComment = comments.find((comment) =>
-              comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(markerStart) &&
-              comment.body?.includes(markerEnd)
-            );
-
-            if (!existingComment) {
-              core.warning('AI PR menu comment was not found.');
-              return;
-            }
-
-            const existingState = menu.parseMenuState(existingComment.body || '');
-            const statuses = Object.fromEntries(
-              menu.WORKFLOW_ORDER.map((key) => [
-                key,
-                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
-              ])
-            );
-            const body = menu.buildMenuBody(existingState, statuses);
-
-            await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: existingComment.id,
-              body,
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              pullRequestNumber,
             });
 
   run-docs-review:
@@ -269,41 +177,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
-            const markerStart = '<!-- docs-pr-ai-menu:start -->';
-            const markerEnd = '<!-- docs-pr-ai-menu:end -->';
             const pullRequestNumber = context.payload.issue.number;
-
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pullRequestNumber,
-            });
-
-            const { data: checks } = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: pullRequest.head.sha,
-              per_page: 100,
-            });
-
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pullRequestNumber,
-              per_page: 100,
-            });
-
-            const existingComment = comments.find((comment) =>
-              comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(markerStart) &&
-              comment.body?.includes(markerEnd)
-            );
-
-            if (!existingComment) {
-              core.warning('AI PR menu comment was not found.');
-              return;
-            }
-
             const docsReviewResult = '${{ needs.run-docs-review.result }}';
             const docsReviewStatus = {
               conclusion: docsReviewResult === 'success'
@@ -313,19 +187,14 @@ jobs:
                   : 'failure',
               status: 'completed',
             };
-            const existingState = menu.parseMenuState(existingComment.body || '');
-            const statuses = Object.fromEntries(
-              menu.WORKFLOW_ORDER.map((key) => [
-                key,
-                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
-              ])
-            );
-            statuses.docsReview = docsReviewStatus;
-            const body = menu.buildMenuBody(existingState, statuses);
 
-            await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: existingComment.id,
-              body,
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              pullRequestNumber,
+              statusOverrides: {
+                docsReview: docsReviewStatus,
+              },
             });
