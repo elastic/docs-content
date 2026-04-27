@@ -85,6 +85,25 @@ We will now take it a step further to sort the data by machine RAM and filter ou
 3. Click **Save** to save the query and visualization to a dashboard.
 
 
+## Browse indices and fields from the editor [discover-esql-resource-browsers]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names:
+
+- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
+
+You can open either browser from:
+
+- **The autocomplete menu**: select **Browse indices** when editing a `FROM` or `TS` command, or **Browse fields** when editing a position that accepts a field name (for example, after `KEEP`, `WHERE`, or `SORT`).
+- **The data source badge**: the first `FROM` or `TS` keyword in the query is rendered as a clickable badge. Select it to open the data source browser.
+
+Both browsers operate on the main query only and don't apply to subqueries.
+
+
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
 You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you’re not sure which route to go, check one of the suggestions available in the visualization editor.

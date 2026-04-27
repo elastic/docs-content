@@ -65,6 +65,8 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the editor also includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/try-esql.md#discover-esql-resource-browsers) for details.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
