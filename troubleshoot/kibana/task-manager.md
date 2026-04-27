@@ -15,7 +15,7 @@ products:
 The Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](/deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, [Reporting](/explore-analyze/report-and-share.md), and Telemetry. Unexpected behavior in these services can be related to issues in the Task Manager, which you can check from the [{{kib}} server status](/troubleshoot/kibana/access.md).
 
 
-This page describes how to troubleshoot the Task Manager health and resolve common problems you might encounter. If your problem isn’t described on this page, check open issues in the [elastic/{{kib}}](https://github.com/elastic/kibana/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature%3ATask+Manager%22) GitHub repository or share a [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) when you [contact Elastic support](/troubleshoot/index.md#contact-us) for assistance.
+This page describes how to troubleshoot the Task Manager health and resolve common problems you might encounter. This comprehensive guide helps you leverage native Elastic capabilities to quickly diagnose issues. If your problem isn’t described on this page, check open issues in the [elastic/{{kib}}](https://github.com/elastic/kibana/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature%3ATask+Manager%22) GitHub repository or share a [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) when you [contact Elastic support](/troubleshoot/index.md#contact-us) for assistance.
 
 ## Check Task Manager health [task-manager-health-check]
 
