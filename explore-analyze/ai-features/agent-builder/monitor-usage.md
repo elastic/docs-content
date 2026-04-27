@@ -27,6 +27,16 @@ Each conversation round includes all previous rounds as context. This means toke
 
 For more information on billing and token costs, refer to [Elastic pricing](https://www.elastic.co/pricing).
 
+## Retrieve token consumption with the API
+
+```{applies_to}
+stack: preview =9.4
+```
+
+To retrieve per-conversation token usage data for a specific agent across users, use the [Token consumption API](kibana-api.md#token-consumption).
+
+This API complements the UI by returning token totals, round counts, LLM call counts, and warning indicators without exposing message content or tool results.
+
 
 ## View token usage in the UI
 
