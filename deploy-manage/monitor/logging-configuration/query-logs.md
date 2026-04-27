@@ -32,6 +32,7 @@ Query logging helps you answer questions like:
 - **Which queries are slow or expensive?** Use the duration and shard fields to find queries that take the longest or touch the most shards.
 - **What does the query workload look like?** Analyze query types, frequency, and timing to understand traffic patterns across the cluster.
 - **Why did a query fail or return unexpected results?** Inspect the full query text, error details, and targeted indices to debug issues.
+- **Where is a query coming from?** Use the `X-Opaque-Id` header and trace ID fields to identify the originating application or request.
 - **Who is running queries?** When user logging is enabled, trace queries back to specific users or API keys.
 
 Query logging is designed to minimize performance impact, but it does consume resources to create and store log entries. Enable it when you need it, and disable it when the investigation is complete. Use the [threshold setting](#configure-query-logging) to filter out fast queries that are not relevant to your analysis.
@@ -53,6 +54,7 @@ The log format remains JSON, but some field names differ. To compare field names
 
 Query logging differs from slow logs and ES|QL query logging in the following ways:
 
+- Query logs capture the end-to-end request duration as measured by {{es}}, while slow logs only capture shard-level execution time.
 - Only query operations are supported, not indexing operations.
 - Per-index logging is not available.
 - Only one threshold level is supported, not multiple threshold levels.
