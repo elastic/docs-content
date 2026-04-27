@@ -67,6 +67,17 @@ We have collected the most common known problems and listed them here. If your p
 
 ---
 
+**OpenTelemetry Collectors in Fleet**
+
+* [OTel Collector doesn't appear in the {{fleet}} UI](#otel-collector-not-in-fleet-ui)
+* [Internal telemetry metrics don't appear in {{kib}}](#otel-internal-telemetry-missing)
+* [TLS handshake errors when exporting telemetry](#otel-tls-handshake-errors)
+* [Authentication errors when exporting to {{es}}](#otel-auth-errors-elasticsearch)
+* [EDOT Collector fails to start with permission denied error](#edot-collector-permission-denied)
+* [TLS certificate verification errors when connecting to Fleet Server](#otel-tls-cert-errors-fleet-server)
+
+---
+
 **Elastic Cloud and Kibana issues**
 
 * [{{fleet}} in {{kib}} crashes](#fleet-app-crashes)
@@ -660,6 +671,320 @@ For details about the error and how to resolve it, refer to the section `Runtime
 To install {{integrations}}, the {{fleet}} app requires a connection to an external service called the {{package-registry}}.
 
 For this to work, the {{kib}} server must connect to `https://epr.elastic.co` on port `443`.
+
+
+## OpenTelemetry Collectors in Fleet
+
+### OTel Collector doesn't appear in the {{fleet}} UI [otel-collector-not-in-fleet-ui]
+
+**Symptoms**
+
+Your OTel Collector is running but doesn't appear in the {{fleet}} **Agents** list, or you see OpAMP-related errors in the collector logs.
+
+**Resolution**
+
+1. Verify the OpAMP configuration in your OTel Collector configuration file:
+
+   ```yaml
+   extensions:
+     opamp:
+       server:
+         http:
+           endpoint: https://fleet-server:8220/v1/opamp
+           headers:
+             Authorization: ApiKey <fleet-enrollment-api-key>
+       instance_uid: <instance-uid>
+   
+   service:
+     extensions: [opamp]
+   ```
+
+   Ensure:
+   - The endpoint URL includes the `/v1/opamp` path
+   - The `instance_uid` is a valid UUID v7
+   - The enrollment API key is correct
+
+2. Check the collector logs for OpAMP errors:
+
+   ```
+   error opampextension ... OpAMP server returned an error response
+   ```
+
+   If you see enrollment errors, make sure you're using the {{fleet}} enrollment token provided in the UI when you start adding an OTel Collector.
+
+3. Test network connectivity to {{fleet-server}}:
+
+   ```bash
+   curl -v https://fleet-server:8220/v1/opamp
+   ```
+
+   You should receive a response from the server. If the connection fails, verify firewall rules and network access.
+
+4. Restart the collector after making configuration changes to apply the new settings.
+
+### Internal telemetry metrics don't appear in {{kib}} [otel-internal-telemetry-missing]
+
+**Symptoms**
+
+Your OTel Collector appears in {{fleet}}, but CPU and memory usage aren't displayed, or the OTel Collector internal telemetry dashboards show no data.
+
+**Resolution**
+
+The collector's internal telemetry must be configured to export to {{es}}. Add the following configuration to enable the self-loop pattern:
+
+1. Configure telemetry export in your `service.telemetry` section:
+
+   ```yaml
+   service:
+     telemetry:
+       resource:
+         service.instance.id: "<your-instance-uid>"
+       metrics:
+         level: detailed
+         readers:
+           - periodic:
+               interval: 3000
+               exporter:
+                 otlp:
+                   protocol: grpc
+                   endpoint: http://localhost:4317
+       logs:
+         processors:
+           - batch:
+               exporter:
+                 otlp:
+                   protocol: grpc
+                   endpoint: http://localhost:4317
+   ```
+
+   :::{important}
+   Use `http://localhost:4317` (with the `http://` prefix) to ensure plaintext gRPC communication with your receiver.
+   :::
+
+2. Verify the OTLP receiver is configured:
+
+   ```yaml
+   receivers:
+     otlp:
+       protocols:
+         grpc:
+           endpoint: 0.0.0.0:4317
+   ```
+
+3. Add an exporter to send telemetry to {{es}}:
+
+   ```yaml
+   exporters:
+     elasticsearch/otel:
+       endpoints: [https://elasticsearch:9200]
+       api_key: "<your-api-key>"
+       mapping:
+         mode: otel
+   
+   service:
+     pipelines:
+       metrics:
+         receivers: [otlp]
+         exporters: [elasticsearch/otel]
+       logs:
+         receivers: [otlp]
+         exporters: [elasticsearch/otel]
+   ```
+
+4. Restart the collector and verify that internal telemetry appears in {{kib}} by searching for `service.instance.id: "<your-instance-uid>"` in **Discover**.
+
+### TLS handshake errors when exporting telemetry [otel-tls-handshake-errors]
+
+**Symptoms**
+
+You see errors like:
+
+```
+tls: first record does not look like a TLS handshake
+connection refused
+```
+
+**Resolution**
+
+This occurs when the gRPC client expects TLS but the receiver uses plaintext. To fix the issue:
+
+1. For internal metrics/logs sent to the collector's own receiver (self-loop telemetry), use the `http://` prefix:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   endpoint: http://localhost:4317  # http:// = plaintext
+   ```
+
+2. Alternatively, if not using the `http://` prefix, explicitly disable TLS:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   endpoint: localhost:4317
+                   tls:
+                     insecure: true  # Disable TLS
+   ```
+
+
+:::{important}
+For external endpoints (for example, sending to {{ech}}), always use `https://`. Never use `tls.insecure: true` for external endpoints as this disables certificate verification and exposes your connection to security attacks.
+:::
+
+### Authentication errors when exporting to {{es}} [otel-auth-errors-elasticsearch]
+
+**Symptoms**
+
+You see errors like:
+
+```
+flush failed (401): unauthorized
+flush failed (403): security_exception
+```
+
+**Resolution**
+
+The {{es}} exporter requires proper authentication and permissions:
+
+1. Create an API key:
+
+   1. In {{kib}}, enter **API keys** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   2. Click **Create API key**.
+   3. Use an API key with default privileges or, optionally, configure specific privileges for the key:
+
+      ```json
+      {
+        "otel_writer": {
+          "cluster": ["monitor", "manage_ilm"],
+          "indices": [
+            {
+              "names": ["metrics-*", "logs-*", "traces-*"],
+              "privileges": ["create_index", "write", "auto_configure"]
+            }
+          ]
+        }
+      }
+      ```
+
+   4. Copy the encoded API key value.
+
+2. Update your exporter configuration:
+
+   ```yaml
+   exporters:
+     elasticsearch/otel:
+       endpoints: [https://elasticsearch:9200]
+       api_key: "<your-base64-encoded-api-key>"
+   ```
+
+3. Restart the collector and verify that data flows without authentication errors.
+
+### EDOT Collector fails to start with permission denied error [edot-collector-permission-denied]
+
+**Symptoms**
+
+When running the EDOT Collector standalone, you see:
+
+```
+error creating listener: listen unix /tmp/elastic-agent/...: bind: permission denied
+```
+
+**Resolution**
+
+The `elastic_diagnostics` extension requires a writable directory. To fix this issue:
+
+1. Create the required directory:
+
+   ```bash
+   sudo mkdir -p /tmp/elastic-agent
+   sudo chmod 755 /tmp/elastic-agent
+   ```
+
+2. Configure the extension in your Collector configuration:
+
+   ```yaml
+   extensions:
+     elastic_diagnostics:
+       endpoint: localhost:8888
+     opamp:
+       # ... your OpAMP config
+   ```
+
+3. Restart the collector. The `elastic_diagnostics` extension should now start successfully.
+
+### TLS certificate verification errors when connecting to Fleet Server [otel-tls-cert-errors-fleet-server]
+
+**Symptoms**
+
+Your OTel Collector can't connect to {{fleet-server}} and you see TLS certificate verification errors in the logs:
+
+```
+x509: certificate signed by unknown authority
+tls: failed to verify certificate
+```
+
+**Resolution**
+
+When {{fleet-server}} uses a self-signed certificate or a certificate from a non-public Certificate Authority (CA), you need to configure the OpAMP extension to trust it.
+
+**Option 1: Provide the CA certificate (recommended)**
+
+1. Obtain the CA certificate that signed your {{fleet-server}} certificate, and save it to a file (for example, `ca.crt`).
+2. Configure the OpAMP extension to use the CA certificate:
+
+   ```yaml
+   extensions:
+     opamp:
+       server:
+         http:
+           endpoint: https://fleet-server:8220/v1/opamp
+           tls:
+             ca_file: /path/to/ca.crt
+           headers:
+             Authorization: ApiKey <fleet-enrollment-api-key>
+       instance_uid: <instance-uid>
+   
+   service:
+     extensions: [opamp]
+   ```
+
+3. Restart the collector to apply the changes.
+
+**Option 2: Disable certificate verification (testing only)**
+
+For rapid prototyping or testing purposes only, you can disable certificate validation. **Do not use this in production environments**.
+
+```yaml
+extensions:
+  opamp:
+    server:
+      http:
+        endpoint: https://fleet-server:8220/v1/opamp
+        tls:
+          insecure_skip_verify: true  # WARNING: Disables certificate validation
+        headers:
+          Authorization: ApiKey <fleet-enrollment-api-key>
+    instance_uid: <instance-uid>
+
+service:
+  extensions: [opamp]
+```
+
+:::{warning}
+Using `insecure_skip_verify: true` disables TLS certificate verification and makes your connection vulnerable to man-in-the-middle attacks. Only use this for testing in isolated environments.
+:::
+
+For more details on TLS configuration, refer to [Configure TLS for Fleet Server connection](/reference/fleet/monitor-otel-collectors.md#configure-tls-for-fleet-server-connection).
 
 
 ## Elastic Cloud and Kibana
