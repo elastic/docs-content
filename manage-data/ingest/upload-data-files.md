@@ -14,11 +14,13 @@ products:
 
 You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the Data Visualizer.
 
-1. Open the **Integrations** page using the global search field, then search for **Upload a file** using the integrations search field.
+1. Choose one of the following options to open the {{data-viz}}:
 
-2. Click **Upload a file** to open the Data Visualizer UI.
+   * {applies_to}`stack: ga 9.4+` On the **Getting started** page, select **Upload a file** from the **Add data** menu.
+   * {applies_to}`serverless: ga` On the **Getting started** page, in the **Start with some sample data** section, click **Upload files**.
+   * Open the **Integrations** page using the global search field, search for and click **Upload a file**.
 
-3. Depending on your version and deployment:
+2. Depending on your version and deployment:
 
     ::::{applies-switch}
 
@@ -26,7 +28,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     1. Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.
 
-        You can upload different file formats for analysis with the Data Visualizer.
+        You can upload different file formats for analysis with the {{data-viz}}.
 
         The supported file formats are:
           * CSV, TSV, NDJSON, log files (up to 500 MB)

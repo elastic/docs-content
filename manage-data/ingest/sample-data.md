@@ -26,6 +26,32 @@ You can also access and install them from the **Integrations** page. Go to **Int
 :screenshot:
 :::
 
+In 9.4.0+ and in {{serverless-short}}, you can also add sample data from the **Getting started** page:
+
+:::::{applies-switch}
+
+::::{applies-item} stack: ga 9.4+
+1. From the **Add data** menu, click **Browse sample datasets**. 
+2. On the following **Add data** page, click **Install data** on the type of data you want.
+:::{image} /manage-data/images/sample-data-sets-9.4.png
+:alt: Sample data sets in 9.4+
+:screenshot
+:::
+::::
+
+::::{applies-item} serverless: ga
+1. In the **Start with some sample data** section, click **View sample data**. 
+:::{image} /manage-data/images/sample-data-sets-serverless.png
+:alt: Sample data sets in 9.4+
+:screenshot
+:::
+2. On the following **Add data** page, click **Install data** on the type of data you want.   
+::::
+
+:::::
+
+
+
 ## Run the makelogs script
 
 Alternatively, run the provided `makelogs` script to generate sample data.
