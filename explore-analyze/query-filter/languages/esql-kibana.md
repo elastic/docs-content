@@ -67,6 +67,8 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the editor includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/try-esql.md#discover-esql-resource-browsers) for details.
 
+{applies_to}`stack: preview 9.4.0` Autocomplete suggests {{esql}} views as sources in `FROM` commands, alongside indices, data streams, and aliases. Views are not available in {{serverless-short}}.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
