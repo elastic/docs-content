@@ -133,7 +133,7 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@1.12.3
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
     with:
       review-scope: repo-wide-markdown
       additional-instructions: |
