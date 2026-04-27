@@ -61,7 +61,7 @@ The following table describes the migration options available for each data type
 
 To migrate your {{es}} ingested user data, choose one of the available migration options depending on your source and target deployment types. The guides each use a specific source and target deployment type as an example, but they can all be adapted to your specific migration use case.
 
-### Migrate data to {{ech}}**: [data-migration-guides-ech]
+### Migrate data to {{ech}} [data-migration-guides-ech]
 
 | From | To | Supported Methods |
 | --- | --- | --- |
