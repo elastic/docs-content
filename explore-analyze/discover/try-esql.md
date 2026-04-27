@@ -102,7 +102,7 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 
 :::{note}
 :applies_to: {stack: preview 9.4.0, serverless: unavailable}
-[{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser. The autocomplete menu suggests them as `FROM` sources.
+[{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
 :::
 
 You can open either browser from:
