@@ -69,7 +69,7 @@ You can manage {{es}} secure settings in the **Security > {{es}} keystore** sect
 If a feature requires both standard `elasticsearch.yml` settings and secure settings, configure the secure settings first. Updating standard settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
 
 :::{note}
-{{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
+{{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API]({{ece-apis}}). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
 :::
 
 There are three input formats you can use for secure setting values:

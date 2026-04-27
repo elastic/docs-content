@@ -33,7 +33,7 @@ You'll also learn the following:
 
 You can use an API to manage roles:
 * In an {{stack}} deployment, use the [security]({{es-apis}}operation/operation-security-put-role) API.
-* In {{serverless-full}}, use the [security](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-put-role) API.
+* In {{serverless-full}}, use the [security]({{es-serverless-apis}}operation/operation-security-put-role) API.
 
 The examples on this page include API requests and equivalent {{kib}} steps where applicable.
 

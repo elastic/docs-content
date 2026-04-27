@@ -221,7 +221,7 @@ When attempting to use an unavailable API, you'll receive this error:
 ```
 
 ::::{tip}
-Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless) for a complete list of available APIs.
+Refer to the [{{es-serverless}} API reference]({{es-serverless-apis}}) for a complete list of available APIs.
 ::::
 
 ### Version reporting in the root API [elasticsearch-differences-serverless-version-reporting]
@@ -272,7 +272,7 @@ When attempting to use an unavailable index setting, you'll receive this error:
 ## Learn more
 
 - [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
-- [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in {{serverless-full}}
+- [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects

@@ -169,7 +169,7 @@ print_r($response['hits']['hits']); # list of books
 
 For more information about the `search` API's query parameters and the response type,
 refer to the
-https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search[Search API]
+{{es-serverless-apis}}group/endpoint-search[Search API]
 docs.
 
 [discrete]

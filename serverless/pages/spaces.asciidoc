@@ -38,7 +38,7 @@ You can have up to 100 spaces in a project.
 . Customize the avatar of the space to your liking.
 . Save the space.
 
-{kib} also has an https://www.elastic.co/docs/api/doc/serverless/group/endpoint-spaces[API]
+{kib} also has an {{kib-serverless-apis}}group/endpoint-spaces[API]
 if you prefer to create spaces programmatically.
 
 ifdef::serverlessCustomRoles[]

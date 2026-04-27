@@ -14,4 +14,4 @@ products:
 Some Applications UI features are provided via the Kibana API. Read more in:
 
 * [Kibana APIs]({{kib-apis}})
-* [Kibana Serverless APIs](https://www.elastic.co/docs/api/doc/serverless/)
+* [Kibana Serverless APIs]({{kib-serverless-apis}})

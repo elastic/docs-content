@@ -11,7 +11,7 @@ products:
 
 # Kibana Fleet APIs [fleet-api-docs]
 
-You can find details for all available {{fleet}} API endpoints in the [Kibana API docs](https://www.elastic.co/docs/api/doc/kibana). For {{serverless-full}} projects, check the [Kibana Serverless API docs](https://www.elastic.co/docs/api/doc/serverless).
+You can find details for all available {{fleet}} API endpoints in the [Kibana API docs]({{kib-apis}}). For {{serverless-full}} projects, check the [Kibana Serverless API docs]({{kib-serverless-apis}}).
 
 In this section, we provide examples of some commonly used {{fleet}} APIs.
 

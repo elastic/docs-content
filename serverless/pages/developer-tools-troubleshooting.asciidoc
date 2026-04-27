@@ -16,7 +16,7 @@ searches.
 or alias you try to query does not exist. This can happen when you misspell the
 name or when the data has been indexed to a different data stream or index.
 
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists[**Exists API**] to check whether
+Use the {{es-serverless-apis}}operation/operation-indices-exists[**Exists API**] to check whether
 a data stream, index, or alias exists:
 
 [source,js]
@@ -24,7 +24,7 @@ a data stream, index, or alias exists:
 HEAD my-index
 ----
 
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get[**Get index API**]
+Use the {{es-serverless-apis}}operation/operation-indices-get[**Get index API**]
 to list all indices and their aliases:
 
 [source,js]
@@ -51,7 +51,7 @@ This can happen when there is a data ingestion issue.
 For example, the data may have been indexed to a data stream or index with
 another name.
 
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-count-1[**Count API**]
+Use the {{es-serverless-apis}}operation/operation-count-1[**Count API**]
 to retrieve the number of documents in a data
 stream or index.
 Check that `count` in the response is not 0.
@@ -73,7 +73,7 @@ configured with the correct time field.
 == Check that the field exists and its capabilities
 
 Querying a field that does not exist will not return any results.
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-field-caps[**Field capabilities API**]
+Use the {{es-serverless-apis}}operation/operation-field-caps[**Field capabilities API**]
 to check whether a field exists:
 
 [source,js]
@@ -117,7 +117,7 @@ searchable and aggregatable.
 == Check the field's mappings
 
 A field's capabilities are determined by its {ref}/mapping.html[mapping].
-To retrieve the mapping, use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-mapping[**Get mapping API**]:
+To retrieve the mapping, use the {{es-serverless-apis}}operation/operation-indices-get-mapping[**Get mapping API**]:
 
 [source,js]
 ----
@@ -126,7 +126,7 @@ GET /my-index-000001/_mappings
 
 If you query a `text` field, pay attention to the analyzer that may have been
 configured.
-You can use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-analyze[**Analyze API**]
+You can use the {{es-serverless-apis}}operation/operation-indices-analyze[**Analyze API**]
 to check how a field's analyzer processes values and query terms:
 
 [source,js]
@@ -138,7 +138,7 @@ GET /my-index-000001/_analyze
 }
 ----
 
-To change the mapping of an existing field use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-mapping-1[**Update mapping API**].
+To change the mapping of an existing field use the {{es-serverless-apis}}operation/operation-indices-put-mapping-1[**Update mapping API**].
 
 [discrete]
 [[devtools-dev-tools-troubleshooting-check-the-fields-values]]
@@ -222,7 +222,7 @@ GET /my-index-000001/_search?sort=@timestamp:desc&size=1
 When a query returns unexpected results, {es} offers several tools to
 investigate why.
 
-The https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query[**Validate API**]
+The {{es-serverless-apis}}operation/operation-indices-validate-query[**Validate API**]
 enables you to validate a query.
 Use the `rewrite` parameter to return the Lucene query an {es} query is
 rewritten into:
@@ -275,7 +275,7 @@ Index settings
 can influence search results.
 For example, the `index.query.default_field` setting, which determines the field
 that is queried when a query specifies no explicit field.
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-settings[**Get index settings API**]
+Use the {{es-serverless-apis}}operation/operation-indices-get-settings[**Get index settings API**]
 to retrieve the settings for an index:
 
 [source,bash]
@@ -284,7 +284,7 @@ GET /my-index-000001/_settings
 ----
 
 You can update dynamic index settings with the
-https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-settings[**Update index settings API**].
+{{es-serverless-apis}}operation/operation-indices-put-settings[**Update index settings API**].
 Changing dynamic index settings for a data stream
 // <DocLink id="enElasticsearchReferenceModifyDataStreams" section="change-a-dynamic-index-setting-for-a-data-stream">Changing dynamic index settings for a data stream</DocLink>
 requires changing the index template used by the data stream.

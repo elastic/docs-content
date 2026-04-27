@@ -16,7 +16,7 @@ They are documented in the {es} and {kib} core documentation.
 == Data analysis
 
 {ref}/search-aggregations.html[Aggregations]::
-Use aggregations in your https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search#operation-search-body-application-json-aggregations[`_search` API] requests to summarize your data as metrics, statistics, or other analytics.
+Use aggregations in your {{es-serverless-apis}}operation/operation-search#operation-search-body-application-json-aggregations[`_search` API] requests to summarize your data as metrics, statistics, or other analytics.
 
 [[elasticsearch-explore-your-data-discover-your-data]]
 {kibana-ref}/discover.html[Discover]::

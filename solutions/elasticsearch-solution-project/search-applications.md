@@ -37,7 +37,7 @@ This feature is available to all **{{ech}}** deployments.
 
 This feature is also available to **self-managed** deployments when Elastic subscription requirements are satisfied. View the requirements for this feature under the **Elastic Search** section of the [Elastic Stack subscriptions](https://www.elastic.co/subscriptions) page.
 
-For Serverless users, this is an API-only feature. You can create and manage search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search_application).
+For Serverless users, this is an API-only feature. You can create and manage search applications using the [Search Application APIs]({{es-serverless-apis}}group/endpoint-search_application).
 
 Your deployment must include the {{es}} and {{kib}} services.
 

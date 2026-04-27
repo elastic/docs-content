@@ -102,7 +102,7 @@ Replace the path parameter `{agent_id}` with the ID of the agent.
 
 For detailed API documentation, including request and response examples, refer to:
 
-- [Change agent privilege level (Kibana Serverless API)](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-fleet-agents-agentid-privilege-level-change)
+- [Change agent privilege level (Kibana Serverless API)]({{kib-serverless-apis}}operation/operation-post-fleet-agents-agentid-privilege-level-change)
 - [Change agent privilege level (Kibana API)]({{kib-apis}}operation/operation-post-fleet-agents-agentid-privilege-level-change)
 
 ### Multiple agents [remove-elevated-privileges-api-bulk]
@@ -123,7 +123,7 @@ Include the agent IDs in the request body. For example:
 
 For detailed API documentation, including request and response examples, refer to:
 
-- [Bulk change agent privilege level (Kibana Serverless API)](https://www.elastic.co/docs/api/doc/serverless/operation/operation-post-fleet-agents-bulk-privilege-level-change)
+- [Bulk change agent privilege level (Kibana Serverless API)]({{kib-serverless-apis}}operation/operation-post-fleet-agents-bulk-privilege-level-change)
 - [Bulk change agent privilege level (Kibana API)]({{kib-apis}}operation/operation-post-fleet-agents-bulk-privilege-level-change)
 
 ## Verify the privilege level change [remove-elevated-privileges-verify]

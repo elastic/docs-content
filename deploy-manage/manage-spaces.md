@@ -85,7 +85,7 @@ You can edit all of the space settings you just defined at any time, except for 
 
 Elastic also allows you to manage spaces using APIs:
 
-* {applies_to}`serverless:` [Serverless Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
+* {applies_to}`serverless:` [Serverless Spaces API]({{kib-serverless-apis}}operation/operation-get-spaces-space)
 * {applies_to}`stack:` [Spaces API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects)
 
 

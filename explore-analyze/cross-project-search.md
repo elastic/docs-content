@@ -164,13 +164,13 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 **Project routing**: `_project_routing`
 
-* [Create or update project routing expressions](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-create-many-routing)
-* [Get a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-get-routing)
-* [Delete a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-delete-routing)
+* [Create or update project routing expressions]({{es-serverless-apis}}operation/operation-project-create-many-routing)
+* [Get a project routing expression]({{es-serverless-apis}}operation/operation-project-get-routing)
+* [Delete a project routing expression]({{es-serverless-apis}}operation/operation-project-delete-routing)
 
 **Project tags**: `_project/tags`
 
-* [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
+* [Get tags]({{es-serverless-apis}}operation/operation-project-tags)
 
 ## Identifying the location of a document [cps-identify-documents]
 
