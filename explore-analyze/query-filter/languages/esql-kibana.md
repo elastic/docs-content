@@ -36,8 +36,7 @@ Find the complete list of supported commands, functions, and operators in the [{
 
 Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
 
-- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) retrieves data from data streams, indices, or aliases.
-  - {applies_to}`stack: preview 9.4.0` {applies_to}`serverless: unavailable` `FROM` also accepts [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) as sources.
+- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) allows you to define the data sources to query by specifying data streams, [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md), indices, or aliases.
 - [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
 - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) queries time series data through the {{esql}} editor using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/) syntax.
 
