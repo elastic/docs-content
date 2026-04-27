@@ -19,6 +19,8 @@ products:
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
+Please click here to begin the setup, e.g. from the first MCP client configuration example below.
+
 ## MCP server endpoint
 
 The MCP server is available at:
