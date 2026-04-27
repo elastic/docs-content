@@ -178,7 +178,7 @@ Each monitor is evaluated per location. The following failure types can occur, l
 |--------|-------|----------|
 | `missing_location` | The monitor references a private location that no longer exists. | Manual |
 | `missing_agent_policy` | The agent policy associated with the private location was deleted. | Manual |
-| `missing_package_policy` | The Fleet package policy for this monitor/location pair is missing. | Automatic (Reset) |
+| `missing_package_policy` | The {{fleet}} package policy for this monitor/location pair is missing. | Automatic (Reset) |
 
 ### Health status in the UI [synthetics-private-location-health-ui]
 
