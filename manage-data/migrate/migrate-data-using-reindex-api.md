@@ -26,25 +26,6 @@ For more advanced use cases, including data modification using scripts or ingest
 
   Basic authentication can be used in place of an API key, but an API key is recommended as a more secure option.
 
-- The target deployment must be able to access your original source cluster to perform the reindex operation. Access is controlled by the {{es}} `reindex.remote.whitelist` user setting.
-
-    Domains matching the patterns `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
-
-    Otherwise, if your remote endpoint is not covered by the default patterns, adjust the setting to add the remote {{es}} cluster as an allowed host:
-
-    1. From your deployment menu, go to the **Edit** page.
-    2. In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you might have to expand the **Edit elasticsearch.yml** caret for each node type instead.
-    3. Add the following `reindex.remote.whitelist: [REMOTE_HOST:PORT]` user setting, where `REMOTE_HOST` is a pattern matching the URL for the remote {{es}} host that you are reindexing from, and `PORT` is the host port number. Do not include the `https://` prefix.
-
-        If you override the parameter, it replaces the defaults: `["*.io:*", "*.com:*"]`. If you still want these patterns to be allowed, you need to specify them explicitly in the value.
-
-        For example:
-
-        `reindex.remote.whitelist: ["*.us-east-1.aws.found.io:9243", "*.com:*"]`
-
-    4. Save your changes.
-
-
 
 :::{important} 
 Kibana assets must be migrated separately using the {{kib}} [export/import APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects) or recreated manually. Refer to [Migration options](/manage-data/migrate.md#migration-options) for details about migrating different types of {{es}} data.
