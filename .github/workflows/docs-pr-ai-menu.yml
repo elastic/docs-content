@@ -14,6 +14,7 @@ on:
 
 permissions:
   actions: read
+  checks: read
   contents: read
   discussions: write
   issues: write
@@ -25,9 +26,13 @@ jobs:
     if: github.event_name == 'pull_request_target' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
+      checks: read
       contents: read
       issues: write
       pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.pull_request.number || github.event.inputs.pull_request_number }}
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
@@ -53,6 +58,19 @@ jobs:
               return;
             }
 
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pullRequestNumber,
+            });
+
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pullRequest.head.sha,
+              per_page: 100,
+            });
+
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -67,7 +85,13 @@ jobs:
             );
 
             const existingState = menu.parseMenuState(existingComment?.body || '');
-            const body = menu.buildMenuBody(existingState);
+            const statuses = Object.fromEntries(
+              menu.WORKFLOW_ORDER.map((key) => [
+                key,
+                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
+              ])
+            );
+            const body = menu.buildMenuBody(existingState, statuses);
 
             if (existingComment) {
               await github.rest.issues.updateComment({
@@ -123,8 +147,85 @@ jobs:
 
             core.setOutput('docs_review_triggered', String(docsReviewTriggered));
 
+  refresh-menu-after-trigger:
+    name: Refresh AI PR menu after trigger
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+      contents: read
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI PR menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const markerStart = '<!-- docs-pr-ai-menu:start -->';
+            const markerEnd = '<!-- docs-pr-ai-menu:end -->';
+            const pullRequestNumber = context.payload.issue.number;
+
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pullRequestNumber,
+            });
+
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pullRequest.head.sha,
+              per_page: 100,
+            });
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pullRequestNumber,
+              per_page: 100,
+            });
+
+            const existingComment = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' &&
+              comment.body?.includes(markerStart) &&
+              comment.body?.includes(markerEnd)
+            );
+
+            if (!existingComment) {
+              core.warning('AI PR menu comment was not found.');
+              return;
+            }
+
+            const existingState = menu.parseMenuState(existingComment.body || '');
+            const statuses = Object.fromEntries(
+              menu.WORKFLOW_ORDER.map((key) => [
+                key,
+                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
+              ])
+            );
+            const body = menu.buildMenuBody(existingState, statuses);
+
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: existingComment.id,
+              body,
+            });
+
   run-docs-review:
-    name: Run docs-review
+    name: Docs AI / docs review
     needs: [evaluate-trigger]
     if: needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
     permissions:
@@ -141,3 +242,90 @@ jobs:
         Prefer concise, high-signal review comments with exact replacement text when possible.
     secrets:
       COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+  refresh-menu-after-docs-review:
+    name: Refresh AI PR menu after docs review
+    needs: [evaluate-trigger, run-docs-review]
+    if: always() && needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+      contents: read
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI PR menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const markerStart = '<!-- docs-pr-ai-menu:start -->';
+            const markerEnd = '<!-- docs-pr-ai-menu:end -->';
+            const pullRequestNumber = context.payload.issue.number;
+
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pullRequestNumber,
+            });
+
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pullRequest.head.sha,
+              per_page: 100,
+            });
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pullRequestNumber,
+              per_page: 100,
+            });
+
+            const existingComment = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' &&
+              comment.body?.includes(markerStart) &&
+              comment.body?.includes(markerEnd)
+            );
+
+            if (!existingComment) {
+              core.warning('AI PR menu comment was not found.');
+              return;
+            }
+
+            const docsReviewResult = '${{ needs.run-docs-review.result }}';
+            const docsReviewStatus = {
+              conclusion: docsReviewResult === 'success'
+                ? 'success'
+                : docsReviewResult === 'cancelled'
+                  ? 'cancelled'
+                  : 'failure',
+              status: 'completed',
+            };
+            const existingState = menu.parseMenuState(existingComment.body || '');
+            const statuses = Object.fromEntries(
+              menu.WORKFLOW_ORDER.map((key) => [
+                key,
+                menu.getWorkflowStatusFromCheckRuns(key, checks.check_runs),
+              ])
+            );
+            statuses.docsReview = docsReviewStatus;
+            const body = menu.buildMenuBody(existingState, statuses);
+
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: existingComment.id,
+              body,
+            });

@@ -3,6 +3,7 @@ const MENU_END = '<!-- docs-pr-ai-menu:end -->';
 
 const WORKFLOW_CONFIG = {
   docsReview: {
+    checkNamePrefix: 'Docs AI / docs review',
     label: 'Review docs changes ([`docs-review`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-docs-review.md)).',
     marker: '<!-- docs-pr-ai-menu:docs-review -->',
   },
@@ -18,7 +19,7 @@ function getLinePattern(key) {
   const { label, marker } = WORKFLOW_CONFIG[key];
 
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)} ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: Status: [^.]+\\.)? ${escapeRegExp(marker)}$`,
     'm'
   );
 }
@@ -47,15 +48,61 @@ function parseMenuState(body) {
   return state;
 }
 
-function buildWorkflowLine(key, workflowState) {
-  const { label, marker } = WORKFLOW_CONFIG[key];
-  const selected = workflowState?.selected ? 'x' : ' ';
+function getStatusText(workflowState, workflowStatus) {
+  if (workflowStatus?.status === 'in_progress' || workflowStatus?.status === 'queued') {
+    return 'Status: running.';
+  }
 
-  return `- [${selected}] ${label} ${marker}`;
+  if (workflowStatus?.status === 'completed') {
+    if (workflowStatus.conclusion === 'success') {
+      return 'Status: completed.';
+    }
+
+    if (workflowStatus.conclusion === 'cancelled') {
+      return 'Status: cancelled.';
+    }
+
+    return 'Status: needs attention.';
+  }
+
+  if (workflowState?.selected) {
+    return 'Status: queued.';
+  }
+
+  return 'Status: not started.';
 }
 
-function buildMenuBody(state) {
+function getWorkflowStatusFromCheckRuns(key, checkRuns) {
+  const { checkNamePrefix } = WORKFLOW_CONFIG[key];
+  const matchingCheckRuns = (checkRuns || []).filter((checkRun) =>
+    checkRun.name?.startsWith(checkNamePrefix)
+  );
+
+  if (matchingCheckRuns.length === 0) {
+    return null;
+  }
+
+  matchingCheckRuns.sort((left, right) =>
+    new Date(right.started_at || right.created_at || 0) - new Date(left.started_at || left.created_at || 0)
+  );
+
+  return {
+    conclusion: matchingCheckRuns[0].conclusion,
+    status: matchingCheckRuns[0].status,
+  };
+}
+
+function buildWorkflowLine(key, workflowState, workflowStatus) {
+  const { label, marker } = WORKFLOW_CONFIG[key];
+  const selected = workflowState?.selected ? 'x' : ' ';
+  const statusText = getStatusText(workflowState, workflowStatus);
+
+  return `- [${selected}] ${label} ${statusText} ${marker}`;
+}
+
+function buildMenuBody(state, statuses) {
   const normalizedState = state || {};
+  const normalizedStatuses = statuses || {};
 
   return [
     MENU_START,
@@ -63,7 +110,9 @@ function buildMenuBody(state) {
     '',
     'Check the box to run an AI review for this pull request.',
     '',
-    ...WORKFLOW_ORDER.map((key) => buildWorkflowLine(key, normalizedState[key])),
+    ...WORKFLOW_ORDER.map((key) =>
+      buildWorkflowLine(key, normalizedState[key], normalizedStatuses[key])
+    ),
     '',
     'Powered by GitHub Agentic Workflows and [docs-actions](https://github.com/elastic/docs-actions). For more information, reach out to the docs team.',
     '',
@@ -76,5 +125,6 @@ module.exports = {
   MENU_END,
   WORKFLOW_ORDER,
   parseMenuState,
+  getWorkflowStatusFromCheckRuns,
   buildMenuBody,
 };
