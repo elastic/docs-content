@@ -101,7 +101,7 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   Burst of check-ins allowed before falling back to the rate defined by `interval`.
 
 `checkin_limit.max_body_byte_size`
-:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). {applies_to}`stack: ga 9.4+` Deployments running a large number of Synthetics monitors may need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the Fleet UI despite monitors executing successfully. For example:
+:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). {applies_to}`stack: ga 9.4+` Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the Fleet UI despite monitors executing successfully. For example:
 
     ```yaml
     server:
