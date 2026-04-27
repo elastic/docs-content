@@ -15,13 +15,10 @@ The **GenAI Settings** and **Feature Settings** pages let you control the list o
 
 ## Requirements
 
-- To access **GenAI Settings**, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- To modify the settings, you need the `Advanced Settings: all` {{kib}} privilege.
+- To access **GenAI Settings**, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md). 
+- To access **Feature Settings**, you need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 
-<!--
-- To access **Feature Settings**, you need the `Actions and connectors: all` or `Actions and connectors: read` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- To modify the settings, you need the `Advanced Settings: all` {{kib}} privilege.
--->
+To modify the settings, you also need the `Advanced Settings: all` {{kib}} privilege.
 
 ## GenAI settings
 
@@ -83,12 +80,21 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-You can configure the lists of models that are available for each feature or specify a single model for all features.
-Find **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) models, as well as your custom [Generative AI connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+
+To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/feature-settings.png
 :alt: Feature Settings app
 :screenshot:
 :::
 
-To change the order of precedence for assigned models for each feature, select and drag items in the list.
+Available actions include:
+
+- Choose a default model.
+- Add a model to a feature's list of assigned models.
+- Copy the list of assigned models across multiple features.
+- Reset all settings to their defaults.
+- Turn off feature-specific assigned models, which means all features can use only the default model.
+
+To change the order of precedence of models for each feature, select and drag items in the list.
