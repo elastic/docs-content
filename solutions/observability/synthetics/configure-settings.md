@@ -70,7 +70,7 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 :screenshot:
 :::
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` When a private location has monitors with broken Fleet integrations, a badge showing the count of unhealthy monitors appears in the location row. Click the badge to open a popover listing the affected monitors. From the popover, use **Reset monitors** to bulk-reset all monitors at that location that have a `missing_package_policy` status. Monitors with other failure types are excluded and must be resolved manually. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for details on failure types and remediation steps.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` When a private location has monitors with broken {{fleet}} integrations, a badge showing the count of unhealthy monitors appears in the location's row. Click the badge to open a popover listing the affected monitors. From the popover, use **Reset monitors** to bulk-reset all monitors at that location that have a `missing_package_policy` status. Monitors with other failure types are excluded and must be resolved manually. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for details on failure types and remediation steps.
 
 ## Global parameters [synthetics-settings-global-parameters]
 
