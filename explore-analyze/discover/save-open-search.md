@@ -21,7 +21,7 @@ To save searches, you need **Create** and **Edit** permissions for the {{saved-o
 
 ### Read-only access [discover-read-only-access]
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
+If you don't have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in the {{product.kibana}} header
@@ -33,10 +33,10 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
 
-1. Once you’ve created a view worth saving, select **Save** in the application menu. A modal with several options opens:
+1. Once you've created a view worth saving, select **Save** in the application menu. A modal with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only.
+    3. {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only. {applies_to}`stack: ga 9.5` These options are only shown when saving a new session or using **Save as**; a direct save of an already-persisted session hides them.
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
@@ -50,7 +50,8 @@ If the saved Discover session is associated with a different {{data-source}} tha
 2. In the application menu, click **Save**.
 3. Give the session a new name.
 4. Turn on **Save as new Discover session**.
-5. Click **Save**.
+5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, under **Add to dashboard**, select **Existing** to add the session to a dashboard you choose, or **New** to create a new dashboard with the session as a panel.
+6. Click **Save**.
 
 
 ## Add search results to a dashboard [_add_search_results_to_a_dashboard]

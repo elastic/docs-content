@@ -384,7 +384,8 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 1. In the application menu, click **Save**.
 2. Give your session a title and a description.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. Click **Save**.
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, under **Add to dashboard**, select **Existing** to add the session to a dashboard you choose, or **New** to create a new dashboard with the session as a panel.
+5. Click **Save**.
 
 
 ### Share your Discover session [share-your-findings]
