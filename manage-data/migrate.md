@@ -93,9 +93,9 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 | {{serverless-short}} | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | Self-managed | ECK | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 
-### Migrate data to {{serverless-full}}**: [data-migration-guides-serverless]
+### Migrate data to {{serverless-full}} [data-migration-guides-serverless]
 
-| From | To | Supported Methods |
+| From | To | Supported methods |
 | --- | --- | --- |
 | ECH | {{serverless-short}} | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md) {applies_to}`stack: preview 9.3+` <br> [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | {{serverless-short}} | [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
