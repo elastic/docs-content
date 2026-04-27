@@ -63,7 +63,7 @@ To migrate your {{es}} ingested user data, choose one of the available migration
 
 ### Migrate data to {{ech}} [data-migration-guides-ech]
 
-| From | To | Supported Methods |
+| From | To | Supported methods |
 | --- | --- | --- |
 | ECH | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
 | ECE | ECH | [Reindex API](/manage-data/migrate/migrate-data-using-reindex-api.md), [Snapshot and restore](/manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md), [{{ls}}](/manage-data/migrate/migrate-with-logstash.md) |
