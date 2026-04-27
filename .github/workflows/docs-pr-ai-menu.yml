@@ -130,6 +130,11 @@ jobs:
               github,
               context,
               pullRequestNumber,
+              statusOverrides: {
+                docsReview: {
+                  status: 'in_progress',
+                },
+              },
             });
 
   run-docs-review:

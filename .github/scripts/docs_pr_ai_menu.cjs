@@ -75,7 +75,8 @@ function getStatusText(workflowState, workflowStatus) {
 function getWorkflowStatusFromCheckRuns(key, checkRuns) {
   const { checkNamePrefix } = WORKFLOW_CONFIG[key];
   const matchingCheckRuns = (checkRuns || []).filter((checkRun) =>
-    checkRun.name?.startsWith(checkNamePrefix)
+    checkRun.name?.startsWith(checkNamePrefix) &&
+    checkRun.conclusion !== 'skipped'
   );
 
   if (matchingCheckRuns.length === 0) {
