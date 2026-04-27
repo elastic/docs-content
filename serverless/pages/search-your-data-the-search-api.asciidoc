@@ -12,7 +12,7 @@ A search may also contain additional information used to better process its
 queries. For example, a search may be limited to a specific index or only return
 a specific number of results.
 
-You can use the {{es-serverless-apis}}group/endpoint-search[search API] to search and
+You can use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search[search API] to search and
 aggregate data stored in {es} data streams or indices.
 
 For more information, refer to {ref}/search-your-data.html[the search API overview] in the core {es} docs.

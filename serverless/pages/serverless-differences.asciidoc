@@ -60,7 +60,7 @@ Because {es-serverless} manages infrastructure automatically, certain APIs are n
 
 [TIP]
 ====
-Refer to the {{es-serverless-apis}}[{es-serverless} API reference] for a complete list of available APIs.
+Refer to the https://www.elastic.co/docs/api/doc/elasticsearch-serverless[{es-serverless} API reference] for a complete list of available APIs.
 ====
 
 The following categories of operations are unavailable:
