@@ -24,7 +24,7 @@ You'll need:
 
 * An {{stack}} deployment version 9.4 or later or an {{serverless-full}} {{observability}} project
 * A {{kib}} user with the **Admin** role. For more information, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
-* An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys) (required when setting up internal telemetry)
+* An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) (required when setting up internal telemetry)
 * An OTel Collector with OpAMP extension support:
   * Upstream and contrib OTel Collectors: version 0.103.0 or later
   * EDOT Collector: version 9.2 or later
@@ -181,7 +181,7 @@ To enable internal telemetry, extend the OTel Collector configuration provided b
           mode: otel
     ```
     1. Replace with your {{es}} endpoint.
-    2. Replace with an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys).
+    2. Replace with an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 3. Set up the service pipelines:
 
