@@ -41,11 +41,12 @@ When the entity store is enabled, the following resources are created for the ac
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
 :::{note}
-Entity store v2 uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} transforms. When v2 is installed, v1 transforms, enrich policies, and ingest pipelines are removed. Your v1 index data is retained.
+Starting in 9.4, the entity store uses {{esql}}-based LOOKUP JOIN queries instead of {{es}} transforms and moves from transform-based indices (`.entities.v1.*`) to ES|QL-based indices (`.entities.v2.*`). When you upgrade from a previous version, existing transforms, enrich policies, and ingest pipelines are removed. Your existing index data is retained.
 :::
 
 :::{warning}
-Entity store v2 replaces per-type v1 indices with a single shared latest alias. Update any direct queries or automations that reference `.entities.v1.latest.security_user_*`, `.entities.v1.latest.security_host_*`, or `.entities.v1.latest.security_service_*` to use `entities-latest-<space-id>` instead. The v1 API routes are deprecated in 9.4.
+:applies_to: {stack: removed 9.4, serverless: removed}
+Starting in 9.4, the entity store replaces previous per-type indices with a single shared `latest` alias. Update any direct queries or automations that reference `.entities.v1.latest.security_user_*`, `.entities.v1.latest.security_host_*`, or `.entities.v1.latest.security_service_*` to use `entities-latest-<space-id>` instead. The previous API routes are removed.
 :::
 ::::
 
@@ -55,8 +56,8 @@ For each entity type (hosts, users, and services):
 * {{es}} resources, such as transforms, ingest pipelines, and enrich policies.
 * Data and fields for each entity.
 * The `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_services_<space-id>` indices, which contain field mappings for hosts, users, and services respectively. You can query these indices to see a list of fields that are mapped in the entity store.
-* {applies_to}`stack: ga 9.2+` Snapshot indices (`.entities.v1.history.<ISO_date>.*`) that store daily snapshots of entity data, enabling [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of attributes over time.
-* {applies_to}`stack: ga 9.2+` Reset indices (`.entities.v1.reset.*`) that ensure entity timestamps are updated correctly in the latest index, supporting accurate time-based queries and future data resets.
+* {applies_to}`stack: ga 9.2-9.3` Snapshot indices (`.entities.v1.history.<ISO_date>.*`) that store daily snapshots of entity data, enabling [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of attributes over time.
+* {applies_to}`stack: ga 9.2-9.3` Reset indices (`.entities.v1.reset.*`) that ensure entity timestamps are updated correctly in the latest index, supporting accurate time-based queries and future data resets.
 ::::
 
 :::::
@@ -72,7 +73,7 @@ The entity store is automatically enabled when you turn on the risk scoring engi
 2. Turn the toggle on.
 
 :::{note}
-If you've upgraded from a previous version, and entity store v1 was installed in any space, it's automatically migrated to v2 after the upgrade. Your v1 index data is retained.
+If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
 :::
 :::
 

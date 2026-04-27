@@ -27,9 +27,9 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | Monitor risk scores for hosts, users, and services | [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) → [](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md) |
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
 | Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
-| {applies_to}`stack: ga 9.4+` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
-| {applies_to}`stack: ga 9.4+` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
-| {applies_to}`stack: ga 9.4+` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: preview` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: preview` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
 | {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 

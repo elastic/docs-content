@@ -86,10 +86,11 @@ This section provides a centralized view of all hosts, users, and services in yo
 * Have been added to {{elastic-sec}} through an integration, such as Active Directory or Okta
 * {applies_to}`stack: ga 9.1-9.3` Have an asset criticality assignment
 
+
+Interact with the table to filter and explore entity data:
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
-Interact with the table to filter, group, and explore entity data:
 
 * Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their primary entity, while unresolved entities appear on their own.
 * Filter the table by watchlist membership to focus on specific entity groups.
@@ -98,6 +99,11 @@ Interact with the table to filter, group, and explore entity data:
 ::::
 
 ::::{applies-item} stack: ga 9.1-9.3
+
+* Select the **Risk level** dropdown to filter the table by the selected user, host, or service risk level.
+* Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
+* Select the **Source** dropdown to filter the table by the data source.
+* Click the **View details** icon ({icon}`expand` ) to open the entity details flyout.
 
 :::{note}
 The **Entities** table only shows a subset of the data available for each entity. You can query the `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_service_<space-id>` indices to see all the fields for each entity in the entity store.
@@ -115,12 +121,6 @@ Entity data from different sources appears in the **Entities** section based on 
 * Entity Analytics data, such as entity risk scores and asset criticality (including bulk asset criticality upload), is also processed in near real-time.
 * The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_ad), [Microsoft Entra ID Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_entra_id), and [Okta Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_okta) for more details.
 
-Interact with the table to filter data and view more details:
-
-* Select the **Risk level** dropdown to filter the table by the selected user, host, or service risk level.
-* Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
-* Select the **Source** dropdown to filter the table by the data source.
-* Click the **View details** icon ({icon}`expand` ) to open the entity details flyout.
 ::::
 
 :::::
