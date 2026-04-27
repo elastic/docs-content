@@ -100,6 +100,11 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 - **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
+:::{note}
+:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+[{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser. The autocomplete menu suggests them as `FROM` sources.
+:::
+
 You can open either browser from:
 
 - **The autocomplete menu**: select **Browse indices** when editing a `FROM` or `TS` command, or **Browse fields** when editing a position that accepts a field name (for example, after `KEEP`, `WHERE`, or `SORT`).
