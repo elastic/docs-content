@@ -33,7 +33,7 @@ For more detail about using the {{kib}} Console refer to [Run API requests](/exp
 
 ## Authentication [authentication]
 
-Authentication is required to send {{fleet}} API requests. For more information, refer to [Authentication](https://www.elastic.co/docs/api/doc/kibana/authentication).
+Authentication is required to send {{fleet}} API requests. For more information, refer to [Authentication]({{kib-apis}}authentication).
 
 
 ## Create agent policy [create-agent-policy-api]
@@ -414,7 +414,7 @@ Example response (formatted for readability):
 
 ## List all {{agents}} [list-agents-api]
 
-Use the [Get agents API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-fleet-agents) to retrieve a list of currently enrolled {{agents}}:
+Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of currently enrolled {{agents}}:
 
 ```shell
 curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents

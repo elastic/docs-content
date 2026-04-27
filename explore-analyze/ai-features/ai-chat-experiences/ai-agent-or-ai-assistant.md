@@ -106,6 +106,6 @@ Agent Builder doesn't yet support all AI Assistant features. The specific differ
 
 Each AI chat experience has different APIs. To learn which actions each option supports, refer to:
 
-- [Agent Builder](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
-- [AI Assistant for Security](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-ai-assistant-api)
-- [AI Assistant for Observability](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-observability_ai_assistant)
+- [Agent Builder]({{kib-apis}}group/endpoint-agent-builder)
+- [AI Assistant for Security]({{kib-apis}}group/endpoint-security-ai-assistant-api)
+- [AI Assistant for Observability]({{kib-apis}}group/endpoint-observability_ai_assistant)

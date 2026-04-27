@@ -40,7 +40,7 @@ To manage API keys in {{kib}}, go to the **API keys** management page in the nav
 * To create or update a **cross-cluster API key**, you must have the `manage_security` privilege and an Enterprise license.
 * To have a read-only view on the API keys, you must have access to the page and the `read_security` cluster privilege.
 
-To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
+To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), or use the [role APIs]({{kib-apis}}group/endpoint-roles).
 
 
 ## Create an API key [create-api-key]

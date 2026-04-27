@@ -922,7 +922,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 The agent uses your custom `example-books-esql-tool` to efficiently answer the query in a single step. Compare the `token_usage` in this response with Step 1. Custom tools optimized for specific use cases typically consume fewer tokens than general-purpose agents. To learn more about token consumption, refer to [Monitor token usage](monitor-usage.md).
 
 :::{tip}
-For real-time chat responses, use the [streaming converse API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse-async) instead.
+For real-time chat responses, use the [streaming converse API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) instead.
 :::
 
 ## Step 12: Manage conversations
@@ -1086,7 +1086,7 @@ Custom tools optimized for specific use cases can significantly reduce token con
 
 ## Next steps
 
-- Explore [streaming responses](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-converse-async) for real-time chat experiences
+- Explore [streaming responses]({{kib-apis}}operation/operation-post-agent-builder-converse-async) for real-time chat experiences
 - Learn about [other tool types](tools.md) beyond {{esql}}, including [index search tools](tools/index-search-tools.md), [MCP tools](tools/mcp-tools.md), and [workflow tools](tools/workflow-tools.md)
 - Try the [MCP server](mcp-server.md) to connect external AI clients like Claude Desktop to your agents
 - Review [best practices for prompt engineering](prompt-engineering.md) to optimize your agents
@@ -1094,6 +1094,6 @@ Custom tools optimized for specific use cases can significantly reduce token con
 ## Related pages
 
 - [{{agent-builder}} Kibana APIs overview](kibana-api.md)
-- [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
+- [{{kib}} API reference]({{kib-apis}}group/endpoint-agent-builder)
 - [Custom agents](custom-agents.md)
 - [Tools reference](tools.md)
