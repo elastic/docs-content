@@ -52,7 +52,7 @@ When you expand an alert or event row in **Discover**, a details flyout opens. T
 
 The document flyout includes an overview tab, plus **Table** and **JSON** tabs. The **Take action** button at the bottom lets you interact with the document.
 
-For alerts, the header also displays the status, risk score, assignees, and attached notes.
+For alerts, the header also displays the status, risk score, assignees, and attached notes. Click **Add note** to open the [**Notes**](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-notes-view) panel, where you can view and add notes using a markdown editor.
 
 The overview tab includes the following sections:
 
@@ -60,13 +60,20 @@ The overview tab includes the following sections:
 :   A description of the document. For alerts, shows the rule description and the reason the alert was generated. For events, shows the ECS event category description.
 
 **Investigation**
-:   Highlighted fields relevant to the document. For alerts, also includes a link to the investigation guide if one is defined for the rule.
+:   Highlighted fields relevant to the document. For alerts, also includes a link to the [investigation guide](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) if one is defined for the rule.
 
 **Visualizations**
-:   Session view and analyzer previews showing process activity. Click either preview to open a dedicated panel with a full view.
+:   Previews showing process activity. Click either preview to open a dedicated panel with a full view:
+
+    - [**Session View**](/solutions/security/investigate/session-view.md): Shows process activity during the Linux session, including commands executed before and after the alert.
+    - [**Analyzer**](/solutions/security/investigate/visual-event-analyzer.md): Shows a process tree of the events that led to the alert, including parent and child processes.
 
 **Insights**
-:   Correlated alerts and host and user prevalence data. For alerts, also includes threat intelligence matches. Click any subsection to open a dedicated panel with a full view.
+:   Overviews of threat intelligence matches, correlated alerts, and prevalence data. Click any subsection to open a dedicated panel with a full view:
+
+    - [**Threat intelligence**](/solutions/security/detect-and-alert/view-detection-alert-details.md#threat-intelligence-overview): Matched indicators from indicator match rules, and fields enriched with threat intelligence. Appears for alerts only.
+    - [**Correlations**](/solutions/security/detect-and-alert/view-detection-alert-details.md#correlations-overview): Related cases and correlated alerts, grouped by source event, session, and process ancestry.
+    - [**Prevalence**](/solutions/security/detect-and-alert/view-detection-alert-details.md#prevalence-overview): How common alert field values are across your environment, with alert counts, document counts, and host and user prevalence percentages.
 
 :::
 
