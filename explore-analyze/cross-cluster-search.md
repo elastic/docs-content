@@ -12,6 +12,9 @@ products:
 
 **{{ccs-cap}}** lets you run a single search request against one or more remote clusters. For example, you can use a {{ccs}} to filter and analyze log data stored on clusters in different data centers.
 
+:::{admonition} Search across {{serverless-short}} projects
+To run searches across multiple {{serverless-full}} projects, use [{{cps}}](/explore-analyze/cross-project-search.md).
+:::
 
 ## Supported APIs [ccs-supported-apis]
 
