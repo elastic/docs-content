@@ -11,7 +11,9 @@ products:
 
 # Troubleshoot {{kib}} alerts [alerting-troubleshooting]
 
-Alerting provides many options for diagnosing problems with rules and connectors.
+Alerting provides many options for diagnosing problems with rules and connectors. This comprehensive page helps you leverage native Elastic capabilities to quickly troubleshoot alerting issues.
+
+Before you start, make sure you have admin access and understand the entire Elastic Stack. You should also review the [advanced alerting troubleshooting guide](../alerting/advanced-troubleshooting.md).
 
 
 ## Check the {{kib}} log [alerting-kibana-log]
