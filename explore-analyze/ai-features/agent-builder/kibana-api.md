@@ -1189,4 +1189,4 @@ For the full API documentation, refer to the [{{kib}} API reference](https://www
 
 ## Tutorial
 
-Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically. 
+Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically.
