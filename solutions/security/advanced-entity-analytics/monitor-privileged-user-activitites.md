@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: deprecated =9.4, ga =9.3, preview 9.1-9.2
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
     security: ga
 products:
@@ -11,8 +11,8 @@ products:
 # Monitor privileged user activities
 
 ::::{note}
-:applies_to: {stack: deprecated 9.4+, serverless: deprecated}
-Privileged user monitoring is deprecated. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
 ::::
 
 After you [set up privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-setup.md), you can start monitoring your privileged users' activity using the different panels on the Privileged user monitoring dashboard.
