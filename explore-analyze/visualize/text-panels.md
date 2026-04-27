@@ -124,7 +124,7 @@ The panel is now linked to the library. Any subsequent edit you apply to it from
 
 To add a previously saved Markdown panel to a dashboard:
 
-1. From your dashboard, select **Add** > **From library** in the toolbar.
+1. From your dashboard, select **Add panel** > **From library** in the toolbar.
 2. From the **Types** dropdown, select **Markdown**.
 3. Select the panel you want to add.
 
