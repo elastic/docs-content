@@ -168,7 +168,7 @@ It is not currently possible to use custom CAs for synthetics browser tests in p
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
 
-Synthetics automatically detects when private location monitors have broken Fleet integrations and surfaces health status in the UI with actionable recovery options. This can happen if an agent policy or Fleet package policy is deleted after a monitor is configured, or if the referenced private location no longer exists.
+Synthetics automatically detects when private location monitors have broken {{fleet}} integrations and surfaces health status in the UI with actionable recovery options. This can happen if an agent policy or {{fleet}} package policy is deleted after a monitor is configured, or if the referenced private location no longer exists.
 
 ### Failure types [synthetics-private-location-health-failure-types]
 
