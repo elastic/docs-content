@@ -37,7 +37,6 @@ When restoring, {{es}} copies only the missing data segments from the snapshot r
 
 By taking and restoring incremental snapshots in sequence, you can keep a new cluster closely synchronized with the old cluster, allowing you to migrate most of your data ahead of time and minimize downtime during the final cutover. 
 
-For more information about migrating your data with snapshot and restore, check [Migrate your data using snapshot and restore](#migrate-data-snapshot-restore).
 
 ## Before you begin [incremental-snapshots-before-you-begin]
 Before you migrate, review the prerequisites and requirements.
