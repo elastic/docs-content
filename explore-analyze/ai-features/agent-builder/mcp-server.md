@@ -115,6 +115,14 @@ Without the `feature_agentBuilder.read` application privilege, you'll receive a 
 
 ## Best practices
 
+### Quick setup checklist
+
+Please click here to begin a simple setup for your MCP client. You can use e.g. a short-lived key, and below you can pick the easiest path for your team.
+
+- Click here to copy the endpoint URL
+- Use a simple API key first
+- Review the permissions later
+
 ### Set API key expiration dates
 
 Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
