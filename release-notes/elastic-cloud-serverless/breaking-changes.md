@@ -6,6 +6,23 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
+
+:::{dropdown} Disables sequence numbers for TSDB indices in release builds
+
+For indices in time series mode, {{es}} trims sequence numbers when they are no longer needed for replication. This reduces storage overhead (for example, a substantial share of space for OpenTelemetry Protocol metrics) and lowers the cost of segment merging.
+
+When sequence numbers are disabled for an index, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) no longer applies. Index, update, and delete requests that use `if_seq_no` and `if_primary_term` return an error, and searches that request `seq_no_primary_term` receive sentinel values for those fields. `update_by_query` and `delete_by_query` proceed without conflict detection, so concurrent modifications can overwrite documents without version conflict errors. For typical metrics workloads, concurrent updates are uncommon, and the storage savings are often an acceptable tradeoff.
+
+To retain full sequence numbers and optimistic concurrency control, set `index.disable_sequence_numbers` to `false` in your time series index templates.
+
+**Impact:**
+
+Workflows that depend on optimistic concurrency control, sequence numbers in search responses, or conflict detection for `update_by_query` and `delete_by_query` on time series indices might need changes, or you can opt out by setting `index.disable_sequence_numbers` to `false`.
+
+For more information, view [#145737]({{es-pull}}145737).
+:::
+
 ## March 18, 2026 [elastic-cloud-serverless-03182026-breaking]
 
 :::{dropdown} The `_source` field mode is now saved to the template index settings

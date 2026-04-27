@@ -133,7 +133,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#associate-private-connection-policy). |
-|  | 5. **Optional**: [Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
 |  | 6. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
@@ -387,7 +387,7 @@ You can associate a private connection policy with your deployment or project fr
 4. Under **Apply to resources**, associate the policy with one or more deployments or projects.
 5. Click **Update** to save your changes.
 
-## Optional: Add an IP filter to allow traffic to {{kib}}
+## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::
