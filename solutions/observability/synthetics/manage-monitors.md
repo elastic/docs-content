@@ -98,7 +98,7 @@ In the **Management** view, an orange warning icon appears next to monitors with
 
 When you open or edit an unhealthy monitor, a warning callout appears at the top of the page listing the affected locations and the reason each monitor is unhealthy.
 
-If any affected locations have a `missing_package_policy` status, you can use the **Reset monitor** button to recreate the missing Fleet package policy and restore the monitor to a healthy state.
+If any affected locations have a `missing_package_policy` status, you can use the **Reset monitor** button to recreate the missing {{fleet}} package policy and restore the monitor to a healthy state.
 
 For failure types that require manual intervention (`missing_agent_policy` or `missing_location`), the callout describes the issue but no automatic recovery is available. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for remediation steps.
 
