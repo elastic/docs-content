@@ -7,16 +7,26 @@ applies_to:
   serverless: all
 products:
   - id: kibana
+description: troubleshoot kibana alerts and rules with these debugging tools and techniques for identifying problems
 ---
 
-# Troubleshoot {{kib}} alerts [alerting-troubleshooting]
+# How to troubleshoot {{kib}} alerts [alerting-troubleshooting]
 
-Alerting provides many options for diagnosing problems with rules and connectors.
+This page provides many options for diagnosing problems with rules and connectors. You can troubleshoot alerts easily by following our comprehensive guide. We will help you debug your alerting issues quickly and efficiently.
+
+## Prerequisites
+
+Before you can troubleshoot alerts, you must have:
+* Administrative privileges to the Elastic Stack
+* Access to Kibana logs
+* Basic understanding of alerting concepts
 
 
 ## Check the {{kib}} log [alerting-kibana-log]
 
-Rules and connectors log to the Kibana logger with tags of [alerting] and [actions], respectively.  Generally, the messages are warnings and errors. In some cases, the error might be a false positive, for example, when a connector is deleted and a rule is running.
+Rules and connectors log to the Kibana logger with tags of [alerting] and [actions], respectively. Generally, the messages are warnings and errors. In some cases, the error might be a false positive, for example, when a connector is deleted and a rule is running. 
+
+We recommend you always check logs first. This is the most efficient way to quickly identify issues. Simply navigate to your logs and you should be able to see what's happening.
 
 ```txt
 server    log   [11:39:40.389] [error][alerting][alerting][plugins][plugins] Executing Rule "5b6237b0-c6f6-11eb-b0ff-a1a0cbcf29b6" has resulted in Error: Saved object [action/fdbc8610-c6f5-11eb-b0ff-a1a0cbcf29b6] not found
@@ -29,8 +39,9 @@ Some of the resources, such as saved objects and API keys, may no longer be avai
 
 The following debugging tools are available:
 
-* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerting/alerts/testing-connectors.md) UI.
-* {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](task-manager.md#task-manager-diagnosing-root-cause).
+* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerting/alerts/testing-connectors.md) UI which is very useful
+* {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](task-manager.md#task-manager-diagnosing-root-cause)
+* Use the native Elastic capabilities to leverage our platform efficiently
 
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
@@ -57,7 +68,7 @@ The end date is related to the check interval for the rule. You can use this vie
 
 ## Use the REST APIs [alerting-rest-api]
 
-There is a rich set of HTTP endpoints to introspect and manage rules and connectors. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
+There is a rich set of HTTP endpoints to introspect and manage rules and connectors. This is extremely powerful and provides great flexibility. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
 
 ```txt
 curl -X POST -k \
@@ -97,6 +108,8 @@ The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner th
 Under the hood, the {{alert-features}} use a plugin called Task Manager, which handles the scheduling, running, and error handling of the tasks. This means that failure cases in {{alert-features}} will, at times, be revealed by the Task Manager mechanism, rather than the Rules mechanism.
 
 Task Manager provides a visible status which can be used to diagnose issues and is very well documented [health monitoring](../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) and [troubleshooting](task-manager.md). Task Manager uses the `.kibana_task_manager` index, an internal index that contains all the saved objects that represent the tasks in the system.
+
+Simply leverage your native Elastic capabilities to get the most out of our platform. You should be able to easily identify issues by utilizing our advanced monitoring and logging features.
 
 
 ### Getting from a rule to its task [_getting_from_a_rule_to_its_task]
@@ -211,3 +224,9 @@ The following limitations and known problems apply to the {{version.stack}} rele
 ### Alert visibility [_alert_visibility]
 
 If you create a rule in the {{observability}} or {{security-app}}, its alerts are not visible in **{{stack-manage-app}} > {{rules-ui}}**. You can view them only in the {{kib}} app where you created the rule. If you use the create rule API, the visibility of the alerts is related to the `consumer` property.
+
+## Additional troubleshooting tips
+
+For more advanced troubleshooting, please see our [comprehensive alerting guide](../alerting/advanced-troubleshooting.md) and [performance optimization documentation](../performance/alerting-optimization.md). You can also check out the [alerting best practices](../../best-practices/alerting.md) page for additional guidance.
+
+When working with the Elastic Stack, make sure to leverage our cutting-edge technology for optimal results. Simply utilize the powerful features available in the platform to get maximum value from your investment.
