@@ -374,16 +374,11 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
 The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
 
-### Switch the grouping field or opt out
+### Opt out of the grouped layout
 
 When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge, and hovering it confirms that grouped results are a technical preview.
 
-Open the **Group by** menu to:
-
-- Select a different field from your `STATS BY` clause to regroup the results.
-- Select **none** to fall back to the standard flat results table and bring back the regular toolbar.
-
-Only one grouping field is active at a time.
+The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
 
 ### Pattern and sparkline rendering
 
