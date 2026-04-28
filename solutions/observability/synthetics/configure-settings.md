@@ -132,3 +132,5 @@ Use the **Sync interval (minutes)** field to set the interval. The default is 5 
 When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
 
 A separate callout appears when maintenance windows are modified or deleted but changes have not yet propagated to your private location monitors.
+
+<!-- Test change for the Docs AI PR menu workflow. -->
