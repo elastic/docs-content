@@ -32,7 +32,7 @@ Connectors are managed at the deployment level from **Manage components** > **Co
 
 Unlike standalone tools, {{agent-builder}} connectors do not require manual assignment to agents. {{kib}} makes connector capabilities natively available during conversations through a dynamic schema-attachment model.
 
-When an agent needs to interact with an external system, it automatically reads the schemas of your configured connectors. It then uses a built-in system tool (`platform.core.execute_connector_sub_action`) to independently format API payloads and execute specific sub-actions (for example, looking up a Slack channel ID or searching AlienVault OTX for threat intelligence) without any manual tool mapping.
+When an agent needs to interact with an external system, it automatically reads the schemas of your configured connectors. It then uses a built-in system tool (`platform.core.execute_connector_sub_action`) to independently format API payloads and run specific sub-actions (for example, looking up a Slack channel ID or searching AlienVault OTX for threat intelligence) without any manual tool mapping.
 
 ## Add a connector
 

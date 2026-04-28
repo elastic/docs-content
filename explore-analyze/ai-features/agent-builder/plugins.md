@@ -54,7 +54,7 @@ You can also manage plugin assignments from the **Customize** accordion in the c
 
 ## Tools referenced by plugin skills
 
-A skill inside a plugin can reference tools that the agent calls at runtime. A tool definition packaged in a plugin gives the agent the tool's interface — its name and parameters — but does not provide the execution backend. For the agent to actually execute the tool, a matching implementation must exist in the agent's tool registry.
+A skill inside a plugin can reference tools that the agent calls at runtime. A tool definition packaged in a plugin gives the agent the tool's interface — its name and parameters — but does not provide the execution backend. For the agent to actually run the tool, a matching implementation must exist in the agent's tool registry.
 
 ## Related pages
 
