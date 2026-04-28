@@ -99,25 +99,15 @@ Workflows are tightly integrated with Agent Builder functionalities:
 
 This section provides conceptual examples of what you can achieve with Agent Builder workflows. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/security](https://github.com/elastic/workflows/tree/main/workflows/security) GitHub repo.
 
-::::{applies-switch}
-
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
-
 :::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
 These flows use the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent) with the relevant [Security skills](skills-model.md) enabled.
 :::
 
-::::
-
-::::{applies-item} { stack: preview =9.2, ga 9.3 }
-
 :::{note}
+:applies_to: { stack: preview =9.2, ga 9.3 }
 Substitute the standalone [Threat Hunting agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) where the examples mention the agent.
 :::
-
-::::
-
-::::
 
 ### Example 1: Run Attack Discovery using a workflow
 
