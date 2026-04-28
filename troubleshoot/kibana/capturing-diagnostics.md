@@ -43,7 +43,9 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
 ::::{tip}
-The following examples assume your endpoint has a valid certificate. If you’re testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don’t use this flag in production environments.
+The following examples assume your endpoint uses a trusted certificate. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
 ::::
 
 To run a {{kib}} diagnostic:

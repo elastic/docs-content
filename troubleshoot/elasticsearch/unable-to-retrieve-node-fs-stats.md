@@ -66,7 +66,9 @@ curl <ELASTICSEARCH_HOST_URL>:9200/
 ```
 
 ::::{tip}
-The following example assumes your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
 ::::
 
 If you're using TLS, use your CA certificate to test the connection:

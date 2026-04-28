@@ -88,7 +88,9 @@ The command returns a response similar to the following:
 If you do not receive a similar response, your system returns an error indicating one or more reasons for the failure as outlined in the following table. Use the corresponding proposed solution to fix the issue.
 
 ::::{tip}
-The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
 ::::
 
 | Reason for failure | Proposed solution |

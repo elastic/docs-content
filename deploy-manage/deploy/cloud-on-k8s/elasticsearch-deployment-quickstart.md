@@ -123,7 +123,9 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
 2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for information about configuring TLS.
 
     ::::{tip}
-    The following examples assume your endpoint has a valid certificate. If you're testing with self-signed certificates, add [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to the curl command to skip SSL/TLS verification. Don't use this flag in production environments.
+    If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
     ::::
 
     * From inside the Kubernetes cluster:
