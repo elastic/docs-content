@@ -38,6 +38,8 @@ You can also trigger this skill by attaching an alert from the alert flyout — 
 
 Use this skill to find risky entities or profile specific hosts, users, services, or generic entities. The agent returns normalized risk scores (0-100), risk levels, asset criticality, watchlists, and behavioral history, and can analyze changes over time. The skill draws on Security {{ml-app}} anomaly detection jobs as part of its entity analysis. For deeper anomaly investigation, combine it with the [`find-security-ml-jobs`](#anomaly-investigation-with-ml) skill.
 
+![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | Which users have the highest risk scores? | Return top N users sorted by normalized risk score, with risk level and asset criticality. |
