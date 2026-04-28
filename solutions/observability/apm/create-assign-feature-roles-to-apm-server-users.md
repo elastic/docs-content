@@ -227,7 +227,7 @@ To grant an APM Server user with the required privileges for reading RUM source 
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 ::::
 
-The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}]({{kib-apis}}group/endpoint-apm-sourcemaps) or [{{serverless-short}}]({{kib-serverless-apis}}group/endpoint-apm-sourcemaps) API documentation.
+The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}]({{kib-apis}}group/endpoint-apm-sourcemaps) API documentation.
 
 ## Create a *tail-based sampling* role [apm-privileges-tail-based-sampling]
 
