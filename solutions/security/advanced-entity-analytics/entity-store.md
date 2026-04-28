@@ -67,7 +67,7 @@ For each entity type (hosts, users, and services):
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-The entity store is automatically enabled when you turn on the risk scoring engine. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
+The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn the toggle on.

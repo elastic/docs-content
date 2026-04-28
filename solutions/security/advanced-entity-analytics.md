@@ -91,7 +91,7 @@ Track the activity of users with elevated permissions, such as system administra
 
 ## Next steps
 
-- [Turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) to begin calculating entity risk scores.
+- [Turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) to begin calculating entity risk scores.
 - [Enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md) for centralized entity management.
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.

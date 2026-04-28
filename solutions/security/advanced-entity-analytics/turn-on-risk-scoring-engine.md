@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Turn on the risk scoring engine
+# Turn on risk scoring
 
 
 ::::{important}
@@ -41,7 +41,7 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 ::::
 
 
-## Turn on the latest risk engine [_turn_on_the_latest_risk_engine]
+## Turn on risk scoring [_turn_on_the_latest_risk_engine]
 
 ::::{note}
 * To view risk score data, you must have alerts generated in your environment.

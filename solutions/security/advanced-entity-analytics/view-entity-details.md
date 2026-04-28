@@ -95,6 +95,8 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), each risk input row includes an **Entity ID** column identifying which group member contributed that input.
+
 {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
 
 :::{image} /solutions/images/security-host-risk-inputs.png
