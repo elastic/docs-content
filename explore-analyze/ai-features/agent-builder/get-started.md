@@ -145,11 +145,24 @@ On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured m
 
 ::::
 
-::::{step} Begin building agents and tools
+::::{step} Enable Elastic capabilities (optional)
+```{applies_to}
+stack: ga 9.4+
+```
 
-Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them. You can also clone the default `Elastic AI Agent` as a starting point for a custom agent.
+When you [create a custom agent](custom-agents.md#create-a-new-agent), use the **Enable Elastic Capabilities** toggle on the **Settings** tab to opt in to Elastic-built tools, skills, and plugins. The toggle is off by default, so the agent only uses capabilities you assign unless you turn it on.
 
-To build agents and tools programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
+For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elastic-capabilities).
+
+::::
+
+::::{step} Build custom skills and tools
+
+The default [Elastic AI Agent](builtin-agents-reference.md) comes with [built-in skills](builtin-skills-reference.md) and [built-in tools](tools.md) ready to use. To add your own domain expertise, [create custom skills](custom-skills.md) that package knowledge and tools into reusable instruction sets. For tips on writing effective skill instructions, refer to the [skill creation guidelines](skill-creation-guidelines.md). To learn how skills are invoked during a conversation, refer to [how skills are invoked](skills.md#how-skills-are-invoked).
+
+You can also [create custom tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to give your skills and agents access to additional data sources. If you need a fully separate agent with its own system prompt, you can [create a custom agent](custom-agents.md#create-a-new-agent).
+
+To work programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
 ::::
 

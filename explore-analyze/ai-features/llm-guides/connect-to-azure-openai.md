@@ -53,13 +53,12 @@ Now, set up the Azure OpenAI model:
 
 1. From within your Azure OpenAI deployment, select **Model deployments**, then click **Manage deployments**.
 2. On the **Deployments** page, select **Create new deployment**.
-3. Under **Select a model**, choose `gpt-4o` or `gpt-4 turbo`.
+3. Under **Select a model**, choose a model.
 4. Set the model version to "Auto-update to default".
 
    :::{important}
-   The models available to you depend on [region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability). For best results, use `GPT-4o 2024-05-13` with the maximum Tokens-Per-Minute (TPM) capacity. For more information on how different models perform for different tasks, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+   The models available to you depend on [region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability). For more information on how different models perform for different tasks, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
    :::
-
 5. Under **Deployment type**, select **Standard**.
 6. Name your deployment.
 7. Slide the **Tokens per Minute Rate Limit** to the maximum. The following example supports 80,000 TPM, but other regions might support higher limits.
