@@ -64,7 +64,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-Define custom groups of entities — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. A built-in **Privileged Users** watchlist automatically pulls in administrative users from Active Directory and Okta integrations.
+Define custom groups of entities — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. A built-in **Privileged Users** watchlist automatically pulls in administrative users from [Active Directory](integration-docs://reference/entityanalytics_ad.md) and [Okta](integration-docs://reference/entityanalytics_okta.md)integrations.
 
 ### Entity resolution
 ```yaml {applies_to}
@@ -95,4 +95,5 @@ Track the activity of users with elevated permissions, such as system administra
 - [Enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md) for centralized entity management.
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
 - [Explore host, user, and network data](/solutions/security/advanced-entity-analytics/explore.md) across your environment.
