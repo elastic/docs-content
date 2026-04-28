@@ -35,6 +35,12 @@ To use Automatic Import, you must provide a sample of the data you want to impor
 {applies_to}`stack: removed 9.4` For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
 
 * You can upload a sample of any size. The LLM detects its format and selects up to 1000 documents for detailed analysis.
+
+  :::{note}
+  :applies_to: stack: ga 9.0-9.3
+  The LLM selects up to 100 documents for detailed analysis, not 1000.
+  :::
+
 * The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
 * When you upload a CSV, a header with column names is automatically recognized. If the header is not present, the LLM attempts to create descriptive field names based on field formats and values.
 * For JSON and NDJSON samples, each object in your sample should represent an event. Avoid deeply nested object structures.
@@ -72,7 +78,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :::
 
 3. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) in the top right.
-4. Under **Integration Details**, provide a **Title**, **Description**, and (optional) **Logo**.
+4. Under **Integration Details**, provide a **Title** (required), **Description** (required), and **Logo** (optional).
 
    :::{image} /solutions/images/security-auto-import-new-integration-form.png
    :alt: The New Integration page showing Integration Details fields and an Add Data Stream button
@@ -85,7 +91,20 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :alt: The Data Stream panel with fields for title, description, data collection method, and sample logs
    :::
 
-7. Select a [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how the integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
+7. Select a [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md) to determine how the integration ingests the data. Supported methods: 
+
+   - File Stream
+   - AWS S3
+   - AWS Cloudwatch
+   - Azure Blog Storage
+   - Azure Event Hub
+   - GCP Pub/Sub
+   - Google Cloud Storage
+   - HTTP Endpoint
+   - Kafka
+   - TCP 
+   - UDP
+
 8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
 9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later. Only integrations created after using versions 9.4+ appear here.
 
