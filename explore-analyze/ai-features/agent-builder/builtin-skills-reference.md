@@ -44,11 +44,11 @@ serverless:
   observability: ga
 ```
 
-$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: unavailable`
+$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4`
 :   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, alert investigations, or general questions about services and their performance.
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
+% $$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
+% :   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
 
 % TODO: Confirm GA status for observability.rca — marked experimental in Kibana source.
 
@@ -93,6 +93,9 @@ $$$agent-builder-search-rag-chatbot-skill$$$ `search.rag-chatbot` {applies_to}`s
 
 $$$agent-builder-search-semantic-search-skill$$$ `search.semantic-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building semantic and vector search solutions on {{es}}.
+
+$$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {applies_to}`stack: ga 9.4+`
+:   Presents a library of {{es}} use cases when users want to explore what they can build, need help identifying which category their project falls into, or are looking for inspiration. Covers product search, knowledge base search, AI assistants, recommendations, customer support, location-based search, log and event search, and vector database use cases.
 
 $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {applies_to}`stack: ga 9.4+`
 :   Guides agents through using {{es}} as a vector database.

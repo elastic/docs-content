@@ -45,7 +45,9 @@ toc:
         children:
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
-      - file: elastic-inference/inference-api.md
+      - file: elastic-inference/external.md
+        children:
+          - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
@@ -236,6 +238,8 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - hidden: ai-features/agent-builder/connectors.md
+          - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
         children:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
