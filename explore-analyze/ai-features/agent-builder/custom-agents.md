@@ -127,7 +127,8 @@ You can assign skills that already exist in your deployment's skill library—yo
 
 :::::{step} Assign plugins (optional)
 ```{applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
+serverless: preview
 ```
 
 Switch to the **Plugins** tab to assign plugins to your agent. Plugins extend agents with additional skills and capabilities. Before you can assign a plugin, it must first be installed from the global **Plugins** page in **Manage components**.
