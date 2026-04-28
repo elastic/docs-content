@@ -16,7 +16,7 @@ This page shows example conversations with the [Elastic AI Agent](/explore-analy
 
 Skills can be activated three ways: the agent selects one automatically from your prompt, you invoke one explicitly with a slash command (for example, `/threat-hunting`), or you attach context (such as an alert from the alert flyout) that activates the matching skill. These examples assume the agent is selecting automatically unless otherwise noted.
 
-## Alert triage and investigation [alert-triage-and-investigation]
+## Alert triage and investigation
 
 **Enable:** `alert-analysis` (optionally combine with [`entity-analytics`](#entity-risk-investigation) for deeper entity context)
 
@@ -32,13 +32,11 @@ Use this skill to triage a specific alert or work through an alert queue. The ag
 You can also trigger this skill by attaching an alert from the alert flyout — the agent activates `alert-analysis` automatically based on the attachment.
 :::
 
-## Entity risk investigation [entity-risk-investigation]
+## Entity risk investigation
 
 **Enable:** `entity-analytics`
 
 Use this skill to find risky entities or profile specific hosts, users, services, or generic entities. The agent returns normalized risk scores (0-100), risk levels, asset criticality, watchlists, and behavioral history, and can analyze changes over time. The skill draws on Security {{ml-app}} anomaly detection jobs as part of its entity analysis. For deeper anomaly investigation, combine it with the [`find-security-ml-jobs`](#anomaly-investigation-with-ml) skill.
-
-![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
@@ -46,7 +44,9 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
 
-## Threat hunting [threat-hunting]
+![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
+
+## Threat hunting
 
 **Enable:** `threat-hunting` (optionally combine with [`entity-analytics`](#entity-risk-investigation) and [`find-security-ml-jobs`](#anomaly-investigation-with-ml))
 
@@ -70,7 +70,7 @@ Use this skill to investigate anomalies surfaced by Security {{ml-app}} jobs: at
 | Show users who downloaded unusually large amounts of data | Use data exfiltration-related jobs (for example, `high_sent_bytes_destination_ip`, `high_bytes_written_to_external_device`), query anomaly records, and present results in a table. |
 | Which {{ml-app}} jobs should I turn on for lateral movement detection? | Recommend relevant jobs that aren't currently running for the requested investigation. |
 
-## Detection engineering [detection-engineering]
+## Detection engineering
 
 **Enable:** `detection-rule-edit`
 
