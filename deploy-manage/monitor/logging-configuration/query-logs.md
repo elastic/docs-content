@@ -135,7 +135,7 @@ The `logs-elasticsearch.querylog-*` data stream is initialized with the followin
 
 * **Index mode:** The data stream uses [LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md) indexing.
 * **Query volume:** When logging is enabled, the default `elasticsearch.querylog.threshold` is `0` in [time units](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), so every request can be eligible depending on other options. A busy cluster can produce a very large number of lines. [Raise the threshold](#configure-query-logging) if you need to cap volume.
-* **Retention and failure handling:** a default [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is attached with a 2 day retention window so the data stream does not grow without bound. The [failure store](/manage-data/data-store/data-streams/failure-store.md) is on, with a 7 day retention for failed ingest.
+* **Retention and failure handling:** A default [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is attached with a 2 day retention window so the data stream does not grow without bound. The [failure store](/manage-data/data-store/data-streams/failure-store.md) is on, with a 7 day retention for failed ingest.
 * **Management UI:** you can also manage the data stream lifecycle, routing, and related controls in the [Streams](/solutions/observability/streams/streams.md) app.
 
 ## View query logs in {{kib}}
