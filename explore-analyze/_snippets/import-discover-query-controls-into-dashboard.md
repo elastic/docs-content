@@ -4,7 +4,9 @@ To add the results of your Discover explorations to a dashboard in a way that pr
 
 This method allows you to add the result table of your Discover {{esql}} query to any dashboard.
 
-1. Save the {{esql}} query containing the variable control into a Discover session. If your Discover session contains several tabs, only the first tab will be imported to the dashboard.
+1. Save the {{esql}} query containing the variable control into a Discover session. If your Discover session contains several tabs:
+   - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can choose which tab the panel displays after adding the session to a dashboard.
+   - {applies_to}`stack: ga 9.0-9.3` Only the first tab is imported to the dashboard.
 
 1. Go to **Dashboards** and open or create one.
 
