@@ -27,14 +27,6 @@ Go to the **External {{infer}}** page by using the navigation menu or the [globa
 :::{tip}
 To access **External {{infer}}**, you need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 :::
-
-Available actions include:
-
-- Add new endpoint
-- View endpoint details
-- Copy the inference endpoint ID
-- Delete endpoints
-
 ::::
 ::::{applies-item} stack: ga 9.0-9.3
 Go to the **{{infer-cap}} endpoints** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -43,15 +35,15 @@ Go to the **{{infer-cap}} endpoints** page by using the navigation menu or the [
 :alt: Inference endpoints UI
 :screenshot:
 :::
+::::
+:::::
 
-Available actions:
+Available actions include:
 
-- Add new endpoint
+- Add endpoints
 - View endpoint details
 - Copy the inference endpoint ID
 - Delete endpoints
-::::
-:::::
 
 Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference).
 
@@ -65,4 +57,3 @@ Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference)
    For example, [create a JinaAI inference endpoint]({{es-apis}}operation/operation-inference-put-jinaai).
 1. Select **Save** to create the endpoint.
 
-If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](/explore-analyze/elastic-inference/inference-api.md#adaptive-allocations) to dynamically adjust resource usage based on the current demand.

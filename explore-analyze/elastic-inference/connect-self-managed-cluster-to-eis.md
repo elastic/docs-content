@@ -69,7 +69,8 @@ On the **Cloud connected services** page, click **Connect** for Elastic {{infer-
 
 :::::::
 
-After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases, along with corresponding {{kib}} AI connectors. Supported {{kib}} features now use these connectors automatically.
+After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases.
+Supported {{kib}} features now use these endpoints automatically.
 
 ## Test EIS through Cloud Connect with semantic search
 
@@ -160,7 +161,10 @@ The response should include the indexed document:
 
 Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to all available models listed under [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md), including LLMs, embedding models, and rerankers.
 
-To use these models, you need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually, depending on the model.
+To use these models:
+
+- {applies_to}`stack: ga 9.3` You need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually, depending on the model.
+- {applies_to}`stack: ga 9.4+` Use the preconfigured {{infer}} endpoints or create custom endpoints as described in [](/explore-analyze/elastic-inference/eis.md).
 
 ### LLMs 
 
@@ -179,4 +183,3 @@ For these models, you only need to create new {{infer}} endpoints if you want to
 For information about EIS regions and request routing, refer to [Region and hosting](eis.md#eis-regions).
 
 EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](eis.md#pricing) and [Monitor your token usage](eis.md#monitor-your-token-usage).
-

@@ -42,14 +42,6 @@ Go to the **Elastic inference** page by using the navigation menu or the [global
 :::{tip}
 To access **Elastic {{infer}}**, you need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
 :::
-
-Available actions include:
-
-- Add new endpoint
-- View endpoint details
-- Copy the inference endpoint ID
-- Delete endpoints
-
 ::::
 ::::{applies-item} stack: ga 9.0-9.3
 Go to the **{{infer-cap}} endpoints** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -58,28 +50,42 @@ Go to the **{{infer-cap}} endpoints** page by using the navigation menu or the [
 :alt: Inference endpoints UI
 :screenshot:
 :::
-
-Available actions:
-
-- Add new endpoint
-- View endpoint details
-- Copy the inference endpoint ID
-
 ::::
 :::::
 
-## Add a new endpoint [add-endpoint]
+Available actions include:
 
-To add a new {{infer}} endpoint using the UI:
+- Add endpoints
+- View endpoint details
+- Copy the inference endpoint ID
+- Delete endpoints
 
-1. Select the **Add endpoint** button.
-1. Select a service from the drop down menu.
-1. Provide the required configuration details.
-1. Select **Save** to create the endpoint.
+## Add endpoints [add-endpoint]
+
+Your deployment includes default {{infer}} endpoints which are preconfigured and ready to use.
+In most cases, you should use these default endpoints.
+However, you can choose to create custom EIS endpoints if you need to instantiate a specific model version or configuration that is not covered by the defaults.
+
+:::::{applies-switch}
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Go to the **Elastic inference** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select the model you want the new endpoint to use.
+1. Click **Add endpoint**.
+1. Enter a unique **Model ID**. For a complete list of valid Model IDs and their corresponding task types, refer to the [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+1. Select **Save**.
+::::
+::::{applies-item} stack: ga 9.0-9.3
+1. Go to the **{{infer-cap}} endpoints** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. In the **Service** dropdown, select **Elastic Inference Service**.
+1. In the **Settings** section, enter the specific **Model ID**. For a complete list of valid Model IDs and their corresponding task types, refer to the [Elastic {{infer-cap}} Service supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
+1. (Optional) Under **More options**, set the **Maximum Input Tokens**. This limits the number of tokens processed per request. If left blank, the model's default limit is used.
+1. Expand **Additional settings** and select the **Task type** that corresponds to your model.
+1. Select **Save**.
+::::
+:::::
 
 Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference), as described in the following section.
-
-If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](/explore-analyze/elastic-inference/inference-api.md#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
 
 ## Use cases
 

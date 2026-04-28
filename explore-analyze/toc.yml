@@ -47,8 +47,7 @@ toc:
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
-        children:
-          - file: elastic-inference/inference-api.md
+      - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
