@@ -39,7 +39,7 @@ To build a line chart:
 :::::{step} Set the visualization to Line
 Make sure that the visualization type is set to **Line**.
 
-{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you start by dragging a date or time field (such as `@timestamp`) onto an empty workspace, **Line** is automatically selected.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you drag a date or time field (such as `@timestamp`) onto an empty workspace, **Line** is automatically selected.
 :::::
 
 :::::{step} Define the data to show
