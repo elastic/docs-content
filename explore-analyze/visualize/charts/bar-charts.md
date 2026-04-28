@@ -39,7 +39,8 @@ To build a bar chart:
 ::::
 
 ::::{step} Set the visualization to Bar
-New visualizations default to creating **Bar** charts, so you don't need to change the chart type selection.
+Make sure that the visualization type is set to **Bar**.
+
 ::::
 
 ::::{step} Define the data to show
