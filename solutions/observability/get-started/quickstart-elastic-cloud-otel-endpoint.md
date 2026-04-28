@@ -46,7 +46,7 @@ The Add data wizard retrieves the endpoint and generates an API key with the req
 2. Go to **Add data**, select **Applications**, and then select **OpenTelemetry**.
 3. Copy the endpoint and authentication headers values.
 
-**Creating an API key manually via {{kib}}**
+**Creating an API key manually using {{kib}}**
 
 1. Retrieve the endpoint from the **Manage project** page.
 2. Open the **API keys** management page from the navigation menu.
@@ -69,7 +69,7 @@ The Add data wizard retrieves the endpoint and generates an API key with the req
 
 5. Click **Create API key** and copy the encoded value.
 
-**Creating an API key via the {{es}} API**
+**Creating an API key using the {{es}} API**
 
 Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) API:
 
@@ -104,7 +104,7 @@ The API key both authenticates the OTLP shipper to the {{motlp}} endpoint and au
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 
-**Create an API key via {{kib}}**
+**Create an API key using {{kib}}**
 
 1. Open the **API keys** management page from the navigation menu.
 2. Click **Create API key**, enter a name, and select **Restrict privileges**.
@@ -126,7 +126,7 @@ The API key both authenticates the OTLP shipper to the {{motlp}} endpoint and au
 
 4. Click **Create API key** and copy the encoded value.
 
-**Create an API key via the {{es}} API**
+**Create an API key using the {{es}} API**
 
 Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API:
 
