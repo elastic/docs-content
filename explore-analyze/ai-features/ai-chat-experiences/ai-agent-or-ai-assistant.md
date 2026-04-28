@@ -18,9 +18,14 @@ products:
 - {{obs-serverless}} and {{es-serverless}} users: the **Complete** feature tier. 
 ::::
 
-[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs. Eventually, it will power the default chat experience for all solutions and replace AI Assistant.
+[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs.
 
-Agent Builder powers the AI Agent chat experience. Currently, AI Agent is available by default for {{es}} solution users, and as an opt-in feature for Security solution and {{observability}} solution users. When you opt in, it replaces the AI Assistant chat experience. You can opt in to Agent Builder and switch back to AI Assistant at any time.
+Agent Builder powers the AI Agent chat experience.
+
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Agent Builder is the default chat experience for all solutions, replacing AI Assistant.
+- {applies_to}`stack: preview =9.2, ga =9.3` Agent Builder is the default for {{es}} solution users. {{product.observability}} and {{product.security}} solution users can [switch from AI Assistant to Agent Builder](#switch-between-chat-experiences) to opt in.
+
+You can switch between the two experiences at any time.
 
 While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. If you rely on AI Assistant capabilities today, consider the differences between each experience before opting in.
 
