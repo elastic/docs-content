@@ -132,7 +132,7 @@ The following APIs support {{cps}}:
 
 * [Async search]({{es-apis}}operation/operation-async-search-submit)
 * [Count]({{es-apis}}v9/operation/operation-count) and [CAT count]({{es-apis}}v9/operation/operation-cat-count)
-* [ES|QL query]({{es-apis}}v9/operation/operation-esql-queryv) and [ES|QL async query]({{es-apis}}v9/operation/operation-esql-async-query)
+* [ES|QL query]({{es-apis}}v9/operation/operation-esql-query) and [ES|QL async query]({{es-apis}}v9/operation/operation-esql-async-query)
 * [EQL search]({{es-apis}}operation/operation-eql-search)
 * [Field capabilities]({{es-apis}}operation/operation-field-caps)
 * [Multi search]({{es-apis}}operation/operation-msearch)
