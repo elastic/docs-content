@@ -19,7 +19,7 @@ function getLinePattern(key) {
   const { label, marker } = WORKFLOW_CONFIG[key];
 
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: Status: .*?)? ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
     'm'
   );
 }
@@ -35,6 +35,7 @@ function parseWorkflowState(body, key) {
 
   return {
     selected: match[1] === 'x',
+    statusText: match[2] || null,
   };
 }
 
@@ -49,6 +50,10 @@ function parseMenuState(body) {
 }
 
 function getStatusText(workflowState, workflowStatus) {
+  if (workflowStatus?.statusText) {
+    return workflowStatus.statusText;
+  }
+
   const progressLink = workflowStatus?.detailsUrl
     ? ` [View progress](${workflowStatus.detailsUrl}).`
     : '';
@@ -158,11 +163,23 @@ async function findMenuComment(github, context, pullRequestNumber) {
   );
 }
 
-function buildWorkflowStatuses(checkRuns, statusOverrides) {
+function getActiveWorkflowStatusFromState(workflowState) {
+  if (workflowState?.statusText?.startsWith('Status: running.')) {
+    return {
+      statusText: workflowState.statusText,
+    };
+  }
+
+  return null;
+}
+
+function buildWorkflowStatuses(checkRuns, statusOverrides, existingState) {
   return Object.fromEntries(
     WORKFLOW_ORDER.map((key) => [
       key,
-      statusOverrides?.[key] || getWorkflowStatusFromCheckRuns(key, checkRuns),
+      statusOverrides?.[key] ||
+        getWorkflowStatusFromCheckRuns(key, checkRuns) ||
+        getActiveWorkflowStatusFromState(existingState?.[key]),
     ])
   );
 }
@@ -184,7 +201,7 @@ async function upsertMenuComment({
   }
 
   const existingState = parseMenuState(existingComment?.body || '');
-  const statuses = buildWorkflowStatuses(checkRuns, statusOverrides);
+  const statuses = buildWorkflowStatuses(checkRuns, statusOverrides, existingState);
   const body = buildMenuBody(existingState, statuses);
 
   if (existingComment) {
