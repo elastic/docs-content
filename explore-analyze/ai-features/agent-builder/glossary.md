@@ -1,6 +1,6 @@
 ---
 navigation_title: "Glossary"
-description: "Definitions of the key terms used throughout the Elastic Agent Builder documentation."
+description: "Defines the key terms used throughout the Elastic Agent Builder documentation."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -28,7 +28,7 @@ A2A protocol
 :   The [Agent2Agent (A2A) Protocol](https://a2a-protocol.org/latest/specification/) specification for communication between AI agents. {{agent-builder}} implements A2A so that external clients and other agent frameworks can interact with agents in a standardized way.
 
 A2A server
-:   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Used to integrate {{agent-builder}} agents with third-party agent frameworks. See [A2A server](a2a-server.md).
+:   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Use it to integrate {{agent-builder}} agents with third-party agent frameworks. See [A2A server](a2a-server.md).
 
 Agent
 :   An AI assistant powered by a large language model (LLM), a system prompt, and a set of tools and skills. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [Agents](agent-builder-agents.md).
