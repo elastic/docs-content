@@ -1,5 +1,5 @@
 ---
-navigation_title: Inference integrations
+navigation_title: Default endpoints, adaptive allocations, and chunking
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
 applies_to:
@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: kibana
 ---
-# {{infer-cap}} integrations
+# Default {{infer}} endpoints, adaptive allocations, and chunking
 
 {{es}} provides a machine learning [{{infer}} API]({{es-apis}}group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
