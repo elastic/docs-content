@@ -84,6 +84,24 @@ If you [set up the monitor using the Synthetics UI](/solutions/observability/syn
 :::::::
 Alternatively, you can temporarily disable a monitor by updating the monitor’s configuration in your journey’s code or in the Synthetics UI using the *Enabled* toggle.
 
+## Recover unhealthy monitors [manage-monitors-health]
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+
+Synthetics automatically detects when a monitor has a broken {{fleet}] integration — for example, if an agent policy or {{fleet}} package policy is deleted after the monitor was configured — and surfaces health status directly in the UI.
+
+### Monitor list [manage-monitors-health-list]
+
+In the **Management** view, an orange warning icon appears next to monitors with broken Fleet integrations. Hover over the icon to see a tooltip with per-location details explaining why the monitor is affected.
+
+### Monitor details page [manage-monitors-health-details]
+
+When you open or edit an unhealthy monitor, a warning callout appears at the top of the page listing the affected locations and the reason each monitor is unhealthy.
+
+If any affected locations have a `missing_package_policy` status, you can use the **Reset monitor** button to recreate the missing {{fleet}} package policy and restore the monitor to a healthy state.
+
+For failure types that require manual intervention (`missing_agent_policy` or `missing_location`), the callout describes the issue but no automatic recovery is available. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for remediation steps.
+
 ## Implement best practices for Synthetics projects [synthetics-projects-best-practices]
 
 ::::{important}

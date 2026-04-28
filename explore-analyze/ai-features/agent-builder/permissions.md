@@ -151,7 +151,7 @@ Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 When configuring roles or API keys, specify the space in the application privileges resources (for example, `"resources": ["space:production"]`). Users and API keys cannot access resources in other spaces.
 
-Learn how to [Copy your MCP server URL](tools.md#copy-your-mcp-server-url).
+Learn how to [Copy your MCP server URL](tools.md#mcp-server-access).
 
 :::{important}
 When accessing {{agent-builder}} APIs or the MCP server from a custom space, include the space name in the URL path: `https://<deployment>/s/<space-name>/api/agent_builder/...`
