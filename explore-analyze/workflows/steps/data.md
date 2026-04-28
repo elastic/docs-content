@@ -48,7 +48,7 @@ See [Pass data and handle errors](/explore-analyze/workflows/authoring-technique
 [`data.find`](#data-find) ·
 [`data.aggregate`](#data-aggregate)
 
-**Combine and deduplicate**
+**Combine and de-duplicate**
 [`data.concat`](#data-concat) ·
 [`data.dedupe`](#data-dedupe)
 
@@ -88,7 +88,7 @@ Transform each element of an array into a new shape. `items` is a top-level step
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
-| `items` | top level | array (via Liquid) | Yes | Source array. |
+| `items` | top level | array (passed through Liquid) | Yes | Source array. |
 | `fields` | `with` | object | Yes | Per-element field mapping. Values can reference `item`. |
 
 ```yaml
@@ -202,7 +202,7 @@ With bucketed aggregation:
 
 ---
 
-## Combine and deduplicate
+## Combine and de-duplicate
 
 ### `data.concat` [data-concat]
 

@@ -27,7 +27,7 @@ The integration runs in both directions: a workflow can call an agent as a step,
 - **Summarize evidence before action.** Use [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) to turn gathered evidence into a concise summary for a case description, notification body, or reviewer prompt.
 - **Gate AI decisions on human review.** Pair AI classification with [human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) to show the model's output to an analyst before the workflow takes action.
 - **Send structured prompts to an LLM.** Use the [`ai.prompt` step](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) with any [configured AI connector](/deploy-manage/manage-connectors.md) to run classification, extraction, or summarization without going through an agent.
-- **Compose reusable AI building blocks.** Extract repeated AI step sequences into a [child workflow](/explore-analyze/workflows/steps/composition.md) that parent workflows invoke via `workflow.execute`.
+- **Compose reusable AI building blocks.** Extract repeated AI step sequences into a [child workflow](/explore-analyze/workflows/steps/composition.md) that parent workflows invoke with `workflow.execute`.
 
 ## When to use each direction [workflows-ai-when-to-use]
 

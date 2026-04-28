@@ -3,7 +3,7 @@ navigation_title: Cases
 applies_to:
   stack: ga 9.4
   serverless: ga
-description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of Elastic Security cases.
+description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in any Cases-enabled app.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,7 @@ products:
 
 # Cases action steps [workflows-cases-steps]
 
-Cases action steps let workflows create, query, update, and manage cases in {{elastic-sec}} and other Cases-enabled apps. The `cases.*` namespace provides full coverage of the Cases API so you can automate case workflows without leaving the Elastic platform.
+Cases action steps let workflows create, query, update, and manage cases in any Cases-enabled app, including {{elastic-sec}}, Observability, and Stack Cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
 
 Use Cases steps for patterns like:
 
@@ -30,7 +30,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
 
 **Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. (Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.)
 
-**Optional `push-case` config.** All 27 steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds.
+**Optional `push-case` config.** Many `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds. Refer to each step's parameters for whether `push-case` is supported.
 
 ```yaml
 - name: create_and_push
@@ -40,6 +40,11 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     title: "Triage required"
     severity: high
 ```
+
+% Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all 27 steps
+% support push-case. A complete list of which steps support it would strengthen this section once
+% available. For now the page documents the optional flag generally and leaves per-step support
+% for SME confirmation.
 
 **Getting the case ID.** The response from `cases.createCase` includes the new case ID at `steps.<step_name>.output.case.id`. Reference it in subsequent steps:
 
@@ -361,16 +366,18 @@ Set a case's category.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `category` | `with` | string | Yes | Category name. |
+| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
 
 ### `cases.setCustomField` [cases-setcustomfield]
 
-Set a single custom-field value on a case.
+Set a single custom-field value on a case. The `field_name` parameter is the system-set custom-field identifier (a UUID-style string), not the human-readable label you see in the UI.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `field_name` | `with` | string | Yes | Custom field identifier. |
+| `field_name` | `with` | string | Yes | Custom-field identifier. System-set, typically a UUID. |
 | `value` | `with` | `string \| number \| boolean` | Yes | Field value. |
+| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
 
 ```yaml
@@ -378,7 +385,7 @@ Set a single custom-field value on a case.
   type: cases.setCustomField
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
-    field_name: "investigation_owner"
+    field_name: "4b8c9d2e-1a5f-4f7a-9c3b-2d6e8f1a3b5c"
     value: "soc-team"
 ```
 
@@ -561,7 +568,7 @@ Remove assignees from a case.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `assignees` | `with` | array | Yes | Array of `{ uid }` objects to remove. |
+| `assignees` | `with` | array | Yes | Array of `{ uid }` objects to remove. Pass an empty array (`[]`) to remove all assignees from the case. |
 
 ---
 

@@ -18,7 +18,7 @@ products:
 Composition steps let one workflow invoke another. Use them to build reusable workflow building blocks, break long workflows into testable pieces, and fan out to background jobs.
 
 :::{warning}
-Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview in 9.4. The parameter shapes may change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
+Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview in 9.4. The parameter shapes can change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
 :::
 
 ## When to use composition
@@ -130,7 +130,7 @@ steps:
 
 ## `workflow.fail` [workflow-fail]
 
-Terminate the workflow as `failed`. Useful for short-circuiting when input validation fails or a required condition is not met.
+Stop the workflow with a `failed` terminal state. Useful for short-circuiting when input validation fails or a required condition is not met.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|

@@ -18,7 +18,7 @@ products:
 Event-driven triggers let workflows react to events elsewhere in {{kib}}. In 9.4, the only event-driven trigger is `workflows.failed`, which fires when another workflow's execution fails. More event-driven triggers are planned for subsequent releases.
 
 :::{warning}
-The event-driven trigger system, including the `workflows.failed` trigger, is in technical preview. The schema and semantics may change in future releases.
+The event-driven trigger system, including the `workflows.failed` trigger, is in technical preview. The schema and semantics can change in future releases.
 :::
 
 ## `workflows.failed`
@@ -30,7 +30,7 @@ Fires when any workflow execution reaches the `failed` terminal state. Use this 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `type` | top level | string | Yes | Must be `workflows.failed`. |
-| `filters` | `with` | array | No | Optional list of KQL conditions. The trigger fires only when every filter matches. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. The trigger fires only when the condition matches. |
 
 ```yaml
 triggers:
@@ -39,27 +39,33 @@ triggers:
 
 ### Filter the events that fire the trigger
 
-Use `with.filters` to narrow which failed executions trigger the handler. Each filter is a KQL condition evaluated against the `event` payload, and every filter must match for the handler to run.
+Use `on.condition` to narrow which failed executions trigger the handler. The value is a KQL predicate evaluated against the `event` payload.
 
 Fire only on failures from a specific workflow:
 
 ```yaml
 triggers:
   - type: workflows.failed
-    with:
-      filters:
-        - condition: "event.workflow.id : 'critical-ingest-pipeline'"
+    on:
+      condition: "event.workflow.name : 'ops--rollback-deployment'"
 ```
 
-Ignore failures that came from another error handler, and only handle errors in a specific {{kib}} space:
+Ignore failures that came from another error handler:
 
 ```yaml
 triggers:
   - type: workflows.failed
-    with:
-      filters:
-        - condition: "event.workflow.isErrorHandler : false"
-        - condition: "event.workflow.spaceId : 'production'"
+    on:
+      condition: "event.workflow.isErrorHandler : false"
+```
+
+Combine conditions with KQL's `and` to filter on multiple fields:
+
+```yaml
+triggers:
+  - type: workflows.failed
+    on:
+      condition: "event.workflow.isErrorHandler : false and event.workflow.spaceId : 'production'"
 ```
 
 ### Event payload
@@ -142,7 +148,7 @@ steps:
 
 ## Prevent cascading handler loops
 
-If a handler workflow itself fails, it can retrigger itself. Two safeguards help you avoid infinite loops:
+If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
 
 - Every event includes `event.workflow.isErrorHandler`, which is `true` when the failing workflow is itself a handler. Filter on this in your handler's logic to skip handling your own failures.
 - The execution engine enforces a chain-depth cap on cascading event-driven triggers as a safety net.
@@ -151,7 +157,7 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 
 ## When this reaches GA
 
-Expect the `workflows.failed` trigger's schema to stabilize and additional event-driven triggers to be added in subsequent releases (for example, {{kib}} lifecycle events, Security detection events, Observability SLO events). Workflows written today against `workflows.failed` will continue to work, but the schema may evolve.
+Expect the `workflows.failed` trigger's schema to stabilize and additional event-driven triggers to be added in subsequent releases (for example, {{kib}} lifecycle events, Security detection events, Observability SLO events). Workflows written today against `workflows.failed` will continue to work, but the schema can evolve.
 
 ## Related
 
