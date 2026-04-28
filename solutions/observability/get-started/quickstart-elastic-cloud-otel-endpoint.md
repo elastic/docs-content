@@ -72,7 +72,7 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
         "cluster": [],
         "indices": [
           {
-            "names": ["traces-generic.otel-*", "metrics-generic.otel-*", "logs-generic.otel-*"],
+            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
             "privileges": ["auto_configure", "create_doc"]
           }
         ]
@@ -95,7 +95,7 @@ POST /_security/api_key
       "cluster": [],
       "indices": [
         {
-          "names": ["traces-generic.otel-*", "metrics-generic.otel-*", "logs-generic.otel-*"],
+          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
           "privileges": ["auto_configure", "create_doc"]
         }
       ]
@@ -104,7 +104,7 @@ POST /_security/api_key
 }
 ```
 :::{note}
-The API key authenticates the OTLP shipper to the {{motlp}} endpoint and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. If you route data to [custom datasets](opentelemetry://reference/motlp.md), add the corresponding index patterns to the `names` list.
+The API key authenticates the OTLP shipper to the {{motlp}} endpoint and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. The patterns above cover all dataset names for the three OTLP signal types. If you use data streams outside the `*.otel-*` pattern, add the corresponding index patterns to the `names` list.
 :::
 :::
 ::::
@@ -121,7 +121,7 @@ The API key authenticates the OTLP shipper to the {{motlp}} endpoint and authori
         "cluster": [],
         "indices": [
           {
-            "names": ["traces-generic.otel-*", "metrics-generic.otel-*", "logs-generic.otel-*"],
+            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
             "privileges": ["auto_configure", "create_doc"]
           }
         ]
@@ -144,7 +144,7 @@ POST /_security/api_key
       "cluster": [],
       "indices": [
         {
-          "names": ["traces-generic.otel-*", "metrics-generic.otel-*", "logs-generic.otel-*"],
+          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
           "privileges": ["auto_configure", "create_doc"]
         }
       ]
