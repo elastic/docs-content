@@ -191,7 +191,7 @@ Gap reasons describe the source of a gap. It can be either of the following:
 
 These values appear in the **Reason** column on the **Execution results** tab (and in related filters). They also drive which gaps are included in the **Rules with gaps** overview and in automatic gap fill.
 
-The gap detection scope applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was turned off. By default, those gaps are excluded from the overview and from automatic gap fill because they often reflect planned maintenance rather than an unexpected detection failure.
+The **Gap detection scope** applies to the whole {{kib}} space. Use it to include or exclude gaps that occurred while a rule was turned off. By default, those gaps are excluded from the overview and from automatic gap fill because they often reflect planned maintenance rather than an unexpected detection failure.
 
 When gaps from disabled rules are excluded, the **Fill gaps** bulk action shows a reminder that rules with that gap type won't be filled.
 
