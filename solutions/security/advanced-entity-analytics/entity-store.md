@@ -95,7 +95,16 @@ Once you enable the entity store, the **Entities** section appears on the follow
 
 Once the entity store is enabled, you may want to clear the stored data and start fresh. For example, if you normalized the `user.name`, `host.name`, or `service.name` fields, clearing the entity store data would allow you to repopulate the entity store with the updated, normalized values. This action removes all previously extracted entity information, enabling new data extraction and analysis.
 
+The impact of clearing entity store data on risk scores and asset criticality depends on your version:
+
+:::::{applies-switch}
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+Clearing entity store data does not delete your source data. However, asset criticality assignments will need to be reapplied, and risk scoring will run again for the new entities repopulated into the store.
+:::
+:::{applies-item} { stack: ga 9.0-9.3 }
 Clearing entity store data does not delete your source data, assigned entity risk scores, or asset criticality assignments.
+:::
+:::::
 
 ::::{warning}
 Clearing entity store data permanently deletes persisted user, host, and service records, and data is no longer available for analysis. Proceed with caution, as this cannot be undone.
