@@ -33,11 +33,12 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
 
-1. Once you’ve created a view worth saving, click **Save** in the application menu.
-2. Enter a name for the session.
-3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. Click **Save**.
-5. To reload your search results in **Discover**, click **Open** in the application menu, and select the saved Discover session.
+1. Once you’ve created a view worth saving, select **Save** in the application menu. A modal with several options opens:
+    1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+    2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
+    3. {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only.
+2. Select **Save**.
+3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
@@ -77,3 +78,29 @@ If the Discover session contains multiple tabs, you can choose which tab the pan
    :::
 
 3. Select **Apply**.
+
+### Save edits as a new Discover session [discover-session-save-as-from-dashboard]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session instead of updating the panel. This works whether the panel was added from the library or created directly on the dashboard.
+
+1. From the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**.
+2. Make your changes in **Discover**.
+3. In the application menu, open the menu next to **Save and return** and select **Save as**.
+4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+5. In **Add to dashboard**, choose where to display the new session:
+
+   - **Existing**: Add the new session to a dashboard you select.
+
+     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the replaced panel was linked to the library, you can still find it unchanged in the library. If the panel wasn't linked to the library, it is lost and replaced by the newly saved session.
+     - If you select a different dashboard, the original panel is unchanged, and the new session is added as a separate panel on the dashboard you selected.
+
+   - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
+   - **None**: Save the session to the library only, without adding it to a dashboard. The original panel is unchanged.
+
+6. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
+
+Upon saving, you navigate to the new session in **Discover** when you selected **None**, or to the corresponding dashboard when you selected **Existing** or **New**.
