@@ -365,7 +365,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The hit counter above the table reports the number of groups instead of the number of documents.
+When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The results count above the table reports the number of groups instead of the number of documents.
 
 % TODO screenshot: overview of the grouped results layout in Discover (toolbar with Group by selector, "N groups" hit counter, one expanded row revealing documents).
 % :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
@@ -377,10 +377,12 @@ The grouped layout activates when the `BY` clause contains a single field refere
 
 ### Switch the grouping field or opt out
 
-Open the {icon}`flask` **Group by** selector in the toolbar to:
+When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge, and hovering it confirms that grouped results are a technical preview.
+
+Open the **Group by** menu to:
 
 - Select a different field from your `STATS BY` clause to regroup the results.
-- Select **none** to fall back to the standard flat results table.
+- Select **none** to fall back to the standard flat results table and bring back the regular toolbar.
 
 Only one grouping field is active at a time.
 
@@ -410,7 +412,7 @@ FROM kibana_sample_data_logs
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. See [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
-### Row actions
+### Grouped row actions
 
 Select the {icon}`boxes_vertical` actions button on any group row to:
 
