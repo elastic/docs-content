@@ -395,12 +395,13 @@ When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-lan
 ```esql
 FROM kibana_sample_data_logs
 | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
-| SAMPLE 0.001
-| STATS Count = COUNT(*) / 0.001,
+| STATS Count = COUNT(*),
         Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
     BY Pattern = CATEGORIZE(message)
 | SORT Count DESC
 ```
+
+On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
 
 % TODO screenshot: a CATEGORIZE row with token highlighting and the inline SPARKLINE rendering next to the Count column.
 % :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
