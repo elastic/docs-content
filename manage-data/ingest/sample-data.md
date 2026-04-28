@@ -19,14 +19,7 @@ The simplest way is to add one or more of our sample data sets. These data sets 
 
 If you have no data, you will be prompted to install these packages when running {{kib}} for the first time.
 
-You can also access and install them from the **Integrations** page. Go to **Integrations** and search for **Sample data**. On the **Sample data** page, expand the **Other sample data sets** section and add the type of data you want.
-
-:::{image} /manage-data/images/sample-data-sets.png
-:alt: Sample data sets
-:screenshot:
-:::
-
-In 9.4.0+ and in {{serverless-short}}, you can also add sample data from the **Getting started** page:
+You can also add sample data from the **Getting started** page:
 
 :::::{applies-switch}
 
@@ -35,22 +28,29 @@ In 9.4.0+ and in {{serverless-short}}, you can also add sample data from the **G
 2. On the following **Add data** page, click **Install data** on the type of data you want.
 :::{image} /manage-data/images/sample-data-sets-9.4.png
 :alt: Sample data sets in 9.4+
-:screenshot
+:screenshot:
 :::
 ::::
 
 ::::{applies-item} serverless: ga
 1. In the **Start with some sample data** section, click **View sample data**. 
 :::{image} /manage-data/images/sample-data-sets-serverless.png
-:alt: Sample data sets in 9.4+
-:screenshot
+:alt: Sample data sets on the Getting started page (serverless)
+:screenshot:
 :::
 2. On the following **Add data** page, click **Install data** on the type of data you want.   
 ::::
 
 :::::
 
+To access and install sample data sets from the **Integrations** page:
+1. Go to **Integrations** and search for **Sample data**. 
+2. On the **Sample data** page, expand the **Other sample data sets** section and add the type of data you want.
 
+:::{image} /manage-data/images/sample-data-sets.png
+:alt: Sample data sets
+:screenshot:
+:::
 
 ## Run the makelogs script
 
