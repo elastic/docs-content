@@ -374,12 +374,6 @@ When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-lan
 
 The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
 
-### Opt out of the grouped layout
-
-When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge, and hovering it confirms that grouped results are a technical preview.
-
-The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
-
 ### Pattern and sparkline rendering
 
 When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance.
@@ -416,6 +410,12 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
 
 **Filter in** and **Filter out** are disabled when the grouping field is not filterable.
+
+### Opt out of the grouped layout
+
+When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge, and hovering it confirms that grouped results are a technical preview.
+
+The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
 
 ## Refine an {{esql}} query by interacting with the results table
 
