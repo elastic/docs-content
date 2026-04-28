@@ -31,7 +31,7 @@ A2A server
 :   The {{agent-builder}} endpoint that exposes agents to external A2A clients. Used to integrate {{agent-builder}} agents with third-party agent frameworks. See [A2A server](a2a-server.md).
 
 Agent
-:   An AI assistant powered by an LLM, a system prompt, and a set of tools and skills. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [Agents](agent-builder-agents.md).
+:   An AI assistant powered by a large language model (LLM), a system prompt, and a set of tools and skills. Each agent translates a user's natural language request into a sequence of tool calls and reasoning steps to answer questions, take actions, or support workflows. {{agent-builder}} ships with built-in agents and lets you create custom agents. See [Agents](agent-builder-agents.md).
 
 {{agent-builder}}
 :   Elastic's AI conversational platform for creating and using AI agents that answer questions and take actions over your {{es}} data using natural language. {{agent-builder}} combines LLM reasoning with built-in and custom tools that query {{es}}, so responses are grounded in your data. See [{{agent-builder}}](../elastic-agent-builder.md).
