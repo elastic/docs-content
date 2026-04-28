@@ -67,7 +67,7 @@ The upload feature is not intended for use as part of a repeated production proc
 
 ## Required privileges
 
-The {{stack-security-features}} provide roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:
+{{es}} provides roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:
 
 * `manage_pipeline` or `manage_ingest_pipelines` cluster privilege
 * `create`, `create_index`, `manage`, and `read` index privileges for the index
