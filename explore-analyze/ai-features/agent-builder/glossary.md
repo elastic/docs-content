@@ -43,7 +43,7 @@ Agent selector
 :   The dropdown in Agent Chat used to switch between agents, open the agent management view, or create a new agent.
 
 `agentBuilder` feature
-:   The {{kib}} feature privilege that controls access to {{agent-builder}}. Assign `Read` or `All` to roles, optionally combined with sub-feature privileges {applies_to}`stack: ga 9.4+` such as `Manage agents` and `Manage tools` for finer-grained control. See [Permissions and access control](permissions.md).
+:   The {{kib}} feature privilege that controls access to {{agent-builder}}. Assign `Read` or `All` to roles. For finer-grained control, pair `Read` with sub-feature privileges such as `Manage agents` and `Manage tools`. See [Permissions and access control](permissions.md).
 
 `ai.agent` step {applies_to}`stack: preview 9.3+`
 :   A workflow step type that invokes an {{agent-builder}} agent as a reasoning engine within a workflow. Use it to summarize data, classify events, or make decisions in the middle of an automation. See [Agents and workflows](agents-and-workflows.md).
@@ -158,7 +158,7 @@ Input tokens
 :   A generic workflow step that calls any {{kib}} API, including {{agent-builder}}'s. Use it for advanced workflow scenarios that the `ai.agent` step doesn't cover. See [Agents and workflows](agents-and-workflows.md).
 
 {{kib}} API
-:   The REST API surface for working with {{agent-builder}} programmatically, including endpoints for agents, tools, skills, conversations, and {applies_to}`stack: ga 9.4+` token consumption. See [{{kib}} API](kibana-api.md).
+:   The REST API surface for working with {{agent-builder}} programmatically, including endpoints for agents, tools, skills, conversations, and token consumption. See [{{kib}} API](kibana-api.md).
 
 ## M
 
@@ -231,7 +231,7 @@ Solution view
 :   A {{kib}} navigation mode oriented around a single solution ({{es}}, {{product.observability}}, or {{product.security}}). The solution view determines which {{agent-builder}} entry points and built-in capabilities are surfaced.
 
 Space
-:   A {{kib}} space. Custom agents and custom tools are _space-aware_ — they exist only in the space where they were created. {applies_to}`stack: ga 9.4+` The Elastic AI Agent is also space-aware. Built-in tools, and built-in agents other than the Elastic AI Agent, are space-agnostic. See [Permissions and access control](permissions.md).
+:   A {{kib}} space. Custom agents and custom tools are _space-aware_ — they exist only in the space where they were created. The Elastic AI Agent is also space-aware. Built-in tools, and built-in agents other than the Elastic AI Agent, are space-agnostic. See [Permissions and access control](permissions.md).
 
 Standalone mode
 :   The full-page Agent Chat experience, opened from **Agents** in the main navigation. Standalone mode is recommended when you're working with dashboards, visualizations, or long agent replies. See [Chat UI modes](standalone-and-flyout-modes.md).
