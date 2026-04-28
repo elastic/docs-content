@@ -46,7 +46,7 @@ Query logging supersedes [slow logs](/deploy-manage/monitor/logging-configuratio
 To migrate:
 
 1. [Enable query logging](#set-up-query-logging).
-2. Set the [threshold](#configure-query-logging) to match your previous slow log levels.
+2. Set the [threshold](#configure-query-logging) to match your previous slow log or {{esql}} query log levels.
 3. Disable the old logging.
 4. Switch to the new query log output.
 
