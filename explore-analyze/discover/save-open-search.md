@@ -33,12 +33,12 @@ If you don’t have sufficient privileges to save Discover sessions, the followi
 
 By default, a Discover session stores the query text, filters, and current view of **Discover**, including the columns and sort order in the document table, and the {{data-source}}.
 
-1. Once you’ve created a view worth saving, select **Save** in the application menu.
-2. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-3. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-4. {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only.
-5. Select **Save**.
-6. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
+1. Once you’ve created a view worth saving, select **Save** in the application menu. A modal with several options opens:
+    1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+    2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
+    3. {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library only.
+2. Select **Save**.
+3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 
