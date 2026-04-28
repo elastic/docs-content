@@ -48,6 +48,8 @@ Start by setting up {{fleet-server}} and {{agent}}:
 ::::{important}
 A {{private-location}} should be set up against an agent policy that runs on a single {{agent}}. The {{agent}} must be **enrolled in Fleet** ({{private-location}}s cannot be set up using **standalone** {{agents}}). Do *not* run the same agent policy on multiple agents being used for {{private-location}}s, as you may end up with duplicate or missing tests. {{private-location}}s do not currently load balance tests across multiple {{agents}}. See [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling) for information on increasing the capacity within a {{private-location}}.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The agent policy must be in the **same {{kib}} space** as the private location. Cross-space agent policies are not supported. If you need monitors to run in multiple spaces, create a separate agent policy in each space.
+
 By default {{private-location}}s are configured to allow two simultaneous browser tests and an unlimited number of lightweight checks. As a result, if more than two browser tests are assigned to a particular {{private-location}}, there may be a delay to run them.
 
 ::::
@@ -146,14 +148,56 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 1. Go to the **{{private-location}}s** tab.
 1. Click **Create location**.
 1. Give your new location a unique _Location name_.
-1. Select the _Agent policy_ you created above.
+1. Select the _Agent policy_ you created above. 
+    
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Only agent policies that exist in the **current space** are available for selection.
 1. (Optional) In _Tags_ select [tags](/explore-analyze/find-and-organize/tags.md) to assign to this location.
 1. (Optional) In _Spaces_ specify the [spaces](/deploy-manage/manage-spaces.md) where this location will be available.
 1. Click **Save**.
 
+::::{note}
+:applies_to: stack: ga 9.4+
+If you upgraded from a version that allowed cross-space agent policy selection, any private location that references an agent policy from a different space will show **Policy not found in the current space** in the UI. To resolve this, reassign the private location to an agent policy in the same space, or create a new agent policy in the current space and re-enroll the {{agent}}.
+::::
+
 ::::{important}
 It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 ::::
+
+## Monitor integration health [synthetics-private-location-health]
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+
+Synthetics automatically detects when private location monitors have broken {{fleet}} integrations and surfaces health status in the UI with actionable recovery options. This can happen if an agent policy or {{fleet}} package policy is deleted after a monitor is configured, or if the referenced private location no longer exists.
+
+### Failure types [synthetics-private-location-health-failure-types]
+
+Each monitor is evaluated per location. The following failure types can occur, listed in priority order — only the first matching issue per location is reported, since it is the root cause:
+
+| Status | Cause | Recovery |
+|--------|-------|----------|
+| `missing_location` | The monitor references a private location that no longer exists. | Manual |
+| `missing_agent_policy` | The agent policy associated with the private location was deleted. | Manual |
+| `missing_package_policy` | The {{fleet}} package policy for this monitor/location pair is missing. | Automatic (Reset) |
+
+### Health status in the UI [synthetics-private-location-health-ui]
+
+Health status surfaces in three places:
+
+- **Monitor list**: An orange warning icon appears next to unhealthy monitors. Hover over the icon to see per-location details on why the monitor is affected.
+- **Monitor details page**: A warning callout lists the affected locations. A **Reset monitor** button is shown when the failure type is `missing_package_policy`, which recreates the missing Fleet resources.
+- **Private Locations settings**: Each location shows a badge with the count of unhealthy monitors. Clicking the badge opens a popover listing the affected monitors and a **Reset monitors** button that bulk-resets all recoverable monitors at that location.
+
+### Reset behavior [synthetics-private-location-health-reset]
+
+Only monitors with a `missing_package_policy` status can be auto-reset. The **Reset** action recreates the missing Fleet package policy, restoring the monitor to a healthy state.
+
+Monitors with `missing_agent_policy` or `missing_location` statuses are excluded from auto-reset because the underlying infrastructure must be restored before Fleet resources can be recreated. When you initiate a reset, the confirmation dialog lists which monitors will be reset and which will be skipped and why.
+
+To resolve failures that require manual intervention:
+
+- **`missing_agent_policy`**: Recreate the agent policy and re-enroll an {{agent}}, then update the affected private location under **Settings > {{private-location}}s** to reference the new agent policy.
+- **`missing_location`**: [Re-create the private location](#synthetics-private-location-add) or edit the affected monitors to remove or replace the deleted location.
 
 ## Scaling {{private-location}}s [synthetics-private-location-scaling]
 
