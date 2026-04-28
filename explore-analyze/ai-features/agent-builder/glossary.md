@@ -14,7 +14,7 @@ products:
 
 # {{agent-builder}} glossary
 
-This glossary defines the terms used throughout the {{agent-builder}} documentation. Definitions describe how each term is used in {{agent-builder}}; some terms also exist outside this feature with broader meanings.
+This glossary defines the terms used throughout the {{agent-builder}} documentation. Definitions describe how each term is used in {{agent-builder}}. Some terms also exist outside this feature with broader meanings.
 
 Entries are listed alphabetically. Where a term applies to a specific deployment, project type, or product version, an `applies_to` badge is placed next to it. Terms without a badge follow the page-level applicability.
 
@@ -77,7 +77,7 @@ Connector
 :   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. {{agent-builder}} uses GenAI connectors to call LLM providers and uses an MCP connector {applies_to}`stack: preview 9.3+` to call remote MCP servers. See [Connectors](connectors.md).
 
 Context window
-:   The maximum amount of text, measured in tokens, that an LLM can process in a single interaction. When a conversation, tool response, or system prompt grows too large, the agent can hit a context length exceeded error.
+:   The maximum amount of text, measured in tokens, that an LLM can process in a single interaction. When a conversation, tool response, or system prompt grows too large, the agent can encounter a context length exceeded error.
 
 Context length exceeded
 :   An error returned when a conversation has consumed more tokens than the LLM's context window allows, typically because tool responses or chat history have grown very large. See [Context length exceeded](troubleshooting/context-length-exceeded.md).
@@ -222,7 +222,7 @@ Skill {applies_to}`stack: ga 9.4+`
 :   A reusable capability pack that gives an agent specialized expertise for a particular type of task. A skill bundles instructions, tools, and reference content, and loads selectively based on the user's request. Skills sit one level above tools: a tool performs an operation, a skill teaches the agent _how_ and _when_ to use it. See [Skills](skills.md).
 
 Skill library {applies_to}`stack: ga 9.4+`
-:   The deployment-wide collection of custom skills. Any custom agent can pull skills from the library; built-in skills appear alongside them as read-only entries.
+:   The deployment-wide collection of custom skills. Any custom agent can pull skills from the library. Built-in skills appear alongside them as read-only entries.
 
 Slash command {applies_to}`stack: ga 9.4+`
 :   The chat shortcut for explicitly invoking a skill. Type `/` followed by the skill name to bypass automatic skill selection.
@@ -237,7 +237,7 @@ Standalone mode
 :   The full-page Agent Chat experience, opened from **Agents** in the main navigation. Standalone mode is recommended when you're working with dashboards, visualizations, or long agent replies. See [Chat UI modes](standalone-and-flyout-modes.md).
 
 System prompt
-:   The instructions that are always present in the context window. The system prompt defines an agent's core behavior; custom instructions are layered on top of it.
+:   The instructions that are always present in the context window. The system prompt defines an agent's core behavior. Custom instructions are layered on top of it.
 
 ## T
 
