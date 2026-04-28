@@ -161,7 +161,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 8. Select your [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how your new integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
 
    :::{note}
-   If you select **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec){:target="_blank"} via the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), you have the additional option to upload the API's OAS file here. After you do, the LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. You then select which API endpoints to consume and your authentication method before uploading your sample data.
+   If you select **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec) via the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), you have the additional option to upload the API's OAS file here. After you do, the LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. You then select which API endpoints to consume and your authentication method before uploading your sample data.
    :::
 
 9. Upload a sample of your data. Make sure to include all the types of events that you want the new integration to handle.
