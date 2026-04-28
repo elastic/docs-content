@@ -24,11 +24,9 @@ Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI
 
 You talk to the agent in natural language. The agent picks tools based on your request, the skills you turned on, and its instructions. You don't invoke tools directly.
 
-## Enable and manage skills
+## Where to manage skills
 
-Use the skill controls in {{agent-builder}} to enable skills for your workspace.
-
-For details on assigning skills to an agent using the Skills APIs, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
+Refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md) and [Agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md) for how to assign skills to an agent in the {{kib}} UI or via the Skills APIs.
 
 ## Relationship to the standalone Threat Hunting Agent
 
