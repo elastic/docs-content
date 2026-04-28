@@ -367,7 +367,13 @@ serverless: preview
 
 When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The hit counter above the table reports the number of groups instead of the number of documents.
 
-Queries that group by more than one field (for example, `BY clientip, extension`) keep the standard flat results table.
+% TODO screenshot: overview of the grouped results layout in Discover (toolbar with Group by selector, "N groups" hit counter, one expanded row revealing documents).
+% :::{image} /explore-analyze/images/discover-esql-cascade-overview.png
+% :alt: Grouped results layout in Discover, with one row expanded to show underlying documents
+% :screenshot:
+% :::
+
+The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
 
 ### Switch the grouping field or opt out
 
@@ -394,6 +400,12 @@ FROM kibana_sample_data_logs
 | SORT Count DESC
 ```
 
+% TODO screenshot: a CATEGORIZE row with token highlighting and the inline SPARKLINE rendering next to the Count column.
+% :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
+% :alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
+% :screenshot:
+% :::
+
 ::::{tip}
 Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. See [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
@@ -406,6 +418,12 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Filter in**: append a `WHERE` clause to your query that keeps only documents matching this group.
 - **Filter out**: append a `WHERE` clause that excludes documents matching this group.
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
+
+% TODO screenshot: the row actions popover open over a grouped row showing the four actions.
+% :::{image} /explore-analyze/images/discover-esql-cascade-row-actions.png
+% :alt: Row actions menu open on a grouped row, showing Copy to clipboard, Filter in, Filter out, and Open in new tab
+% :screenshot:
+% :::
 
 **Filter in** and **Filter out** are disabled when the grouping field is not filterable.
 
