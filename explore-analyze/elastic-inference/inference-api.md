@@ -44,7 +44,7 @@ The following section lists the default {{infer}} endpoints, identified by their
 
 Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
 
-## {{infer-cap}} endpoints UI [inference-endpoints]
+<!-- ## {{infer-cap}} endpoints UI [inference-endpoints]
 
 The **{{infer-cap}} endpoints** page provides an interface for managing {{infer}} endpoints.
 
@@ -58,7 +58,7 @@ Available actions:
 - Add new endpoint
 - View endpoint details
 - Copy the inference endpoint ID
-- Delete endpoints
+- Delete endpoints -->
 
 ## Add new {{infer}} endpoint [add-inference-endpoints]
 
@@ -80,7 +80,7 @@ However, you may choose to manually create a **custom Elastic Inference Service 
 To create a custom EIS endpoint:
 
 1. In the **Service** dropdown, select **Elastic Inference Service**.
-2. In the **Settings** section, enter the specific **Model ID**. For a complete list of valid Model IDs and their corresponding task types, refer to the [Elastic {{infer-cap}} Service supported models](eis.md#supported-models).
+2. In the **Settings** section, enter the specific **Model ID**. For a complete list of valid Model IDs and their corresponding task types, refer to the [Elastic {{infer-cap}} Service supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
 3. (Optional) Under **More options**, set the **Maximum Input Tokens**. This limits the number of tokens processed per request. If left blank, the model's default limit is used.
 4. Expand **Additional settings** and select the **Task type** that corresponds to your model.
 5. Select **Save**.
