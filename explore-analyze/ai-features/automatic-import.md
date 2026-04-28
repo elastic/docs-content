@@ -19,8 +19,6 @@ products:
 :::{include} /explore-analyze/_snippets/automatic-import-intro.md
 :::
 
-% benironside 2026-04-17: Interactive demo link removed per docs-content-internal#1028 (Charles Davison). Restore when a new lab link is available.
-
 ## Requirements [automatic-import-requirements]
 
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
@@ -34,15 +32,16 @@ products:
 
 To use Automatic Import, you must provide a sample of the data you want to import. An LLM processes that sample and creates an integration suitable for the data represented by the sample. **Automatic Import supports the following sample formats: JSON, NDJSON, CSV, and syslog (structured and unstructured).**
 
-For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
+{applies_to}`stack: removed 9.4` For API-based collection, Automatic Import can generate a program in **Common Expression Language (CEL)**. For background, refer to the [CEL specification](https://github.com/google/cel-spec){:target="_blank"} and the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md).
 
-* You can upload a sample of any size. The LLM detects its format and selects up to 100 documents for detailed analysis.
+* You can upload a sample of any size. The LLM detects its format and selects up to 1000 documents for detailed analysis.
 * The more variety in your sample, the more accurate the pipeline is. For best results, include a wide range of unique log entries in your sample instead of repeating similar logs.
 * When you upload a CSV, a header with column names is automatically recognized. If the header is not present, the LLM attempts to create descriptive field names based on field formats and values.
 * For JSON and NDJSON samples, each object in your sample should represent an event. Avoid deeply nested object structures.
-* When you select **`API (CEL input)`** as one of the sources, you’re prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
+* {applies_to}`stack: removed 9.4` When you select **`API (CEL input)`** as one of the sources, you’re prompted to provide the associated OpenAPI specification (OAS) file to generate a CEL program that consumes this API.
 
 ::::{warning}
+:applies_to: stack: removed 9.4
 CEL generation in Automatic Import is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 
@@ -87,13 +86,8 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
    :::
 
 7. Select a [**Data collection method**](beats://reference/filebeat/configuration-filebeat-options.md). This determines how the integration ingests the data (for example, from an S3 bucket, an HTTP endpoint, or a file stream).
-
-   :::{note}
-   If you select **API (CEL input)** ([Common Expression Language](https://github.com/google/cel-spec) through the [CEL input in {{filebeat}}](beats://reference/filebeat/filebeat-input-cel.md)), upload the API's OAS file. The LLM uses it to determine which API endpoints (GET only), query parameters, and data structures to use in the new custom integration. Select which API endpoints to consume and your authentication method before uploading sample data.
-   :::
-
 8. Under **Logs**, either upload a sample of your data or select an existing index. Only indexes that include the `event.original` field are supported. Make sure your sample includes all the types of events that you want the integration to handle.
-9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
+9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later. Only integrations created after using versions 9.4+ appear here.
 
    :::{image} /solutions/images/security-auto-import-data-streams-status.png
    :alt: The New Integration page showing multiple data streams with Analyzing and Success statuses
@@ -113,14 +107,14 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
     Integration versions automatically increase when more data streams are added after the integration is approved.
 
-    (Optional) To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done. If your new integration collects data from an API, you can also update the [CEL input](beats://reference/filebeat/filebeat-input-cel.md) configuration from the integration's policy after installation.
+    (Optional) To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done.
 
     :::{image} /solutions/images/security-auto-import-edit-pipeline-new.png
     :alt: The ingest pipeline flyout showing field mappings for a data stream
     :::
 
-12. Approval makes the integration available to install but does not install it. To install it, click **Install** on the **Actions** menu.
-13. Locate the newly installed integration under the category you selected.
+12. When you approve an integration, by default it's also installed, which makes it available for assignment to a policy. To approve an integration without installing it, turn off the automatic installation option on its approval confirmation popup. Then, to install it later, click **Install** on the **Actions** menu. 
+13. Once you've installed an integration, you can find it using its category.
 
     :::{image} /solutions/images/security-auto-import-find-integration.png
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
