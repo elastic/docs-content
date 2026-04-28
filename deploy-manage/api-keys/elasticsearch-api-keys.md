@@ -10,7 +10,9 @@ products:
 
 # {{es}} API keys [api-keys]
 
-Several types of {{es}} API keys exist:
+{{es}} API keys are one of several [token-based authentication mechanisms](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md) designed to authenticate applications and services accessing {{es}}.
+
+The following types of {{es}} API keys are available:
 
 * **Personal/User** API key: allows external services to access the {{stack}}, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.

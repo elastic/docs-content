@@ -64,7 +64,7 @@ Refer to the [Circuit Breaker Error video](https://www.youtube.com/watch?v=k3wYl
 
 ## Analyze indexing pressure [check-indexing-pressure]
 
-{{es}} reserves part of its JVM for indexing. An error can occur if heap usage exceeds the [`indexing_pressure.memory.limit` setting](elasticsearch://reference/elasticsearch/index-settings/pressure.md#memory-limits). To check the number of [indexing pressure](elasticsearch://reference/elasticsearch/index-settings/pressure.md) rejections, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
+{{es}} reserves part of its JVM for indexing. An error can occur if heap usage exceeds the [`indexing_pressure.memory.limit` setting](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md#memory-limits). To check the number of [indexing pressure](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md) rejections, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats?human&filter_path=nodes.*.indexing_pressure
