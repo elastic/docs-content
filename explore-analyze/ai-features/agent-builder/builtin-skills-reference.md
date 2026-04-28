@@ -44,11 +44,11 @@ serverless:
   observability: ga
 ```
 
-$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: unavailable`
+$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4`
 :   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, alert investigations, or general questions about services and their performance.
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
+% $$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
+% :   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
 
 % TODO: Confirm GA status for observability.rca — marked experimental in Kibana source.
 

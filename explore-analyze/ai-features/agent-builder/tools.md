@@ -52,15 +52,32 @@ You can extend the built-in tool catalog with your own custom tool definitions. 
 
 ## Manage tools
 
-You can view, organize, and manage tools from the **Tools** page in Kibana or programmatically using the [Tools API](kibana-api.md#tools-apis).
+You can view, organize, and manage tools from the **Tools** page in {{kib}} or programmatically using the [Tools API](kibana-api.md#tools-apis).
+
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize > Tools > Manage all tools** on an agent's page.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Access the Tools page from the key actions menu in the Agent Chat UI.
+
+   ::::
+   
+   :::::
 
 The Tools page lists each tool by ID and description. Use the search bar or filter by labels to find specific tools. Built-in tools are marked with a lock icon (🔒).
 
 :::{image} images/tools-overview.png
 :screenshot:
 :alt: Tools landing page showing the list of available tools with their descriptions and actions
-:width:600px
+:width: 600px
 :::
+
+{applies_to}`stack: ga 9.4+` The Tools page also includes a **Manage MCP** dropdown (for MCP server configuration and bulk imports) and a **Manage agents** link for quick navigation to the global agents list.
 
 ### Update and delete tools
 
@@ -81,17 +98,35 @@ For a quick overview of how to work programmatically with tools, refer to [Tools
 
 For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
 
-## Copy your MCP server URL
+## MCP server access
 
 Tools can also be accessed through the Model Context Protocol (MCP) server, which provides a standardized interface for external clients to use Agent Builder tools.
 
-The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+On the Tools page, open the **Manage MCP** dropdown to access:
+
+- **Copy MCP Server URL**: Copy the MCP server URL for configuring external clients.
+- **Bulk import MCP tools**: Import multiple tools from an MCP server at once.
+- **Documentation**: Open the MCP documentation.
 
 :::{image} images/copy-mcp-server-url-button.png
 :screenshot:
-:alt: Copy MCP server URL button for easy configuration of external clients
+:alt: Manage MCP dropdown showing Copy MCP Server URL, Bulk import MCP tools, and Documentation options
 :width: 250px
 :::
+
+::::
+
+::::{applies-item} { stack: ga 9.2-9.3 }
+
+The **Tools** UI provides a **Copy your MCP server URL** button for easy access.
+
+::::
+
+:::::
 
 :::{important}
 There is a [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name) with the copy button in 9.2.

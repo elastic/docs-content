@@ -294,6 +294,8 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
