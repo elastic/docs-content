@@ -27,6 +27,30 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+
+## 9.3.4 [elastic-security-9.3.4-release-notes]
+
+### Features and enhancements [elastic-security-9.3.4-features-enhancements]
+
+* Enables search in the **JSON** tab of the alert details flyout, matching the search experience available in the Discover document flyout [#263875]({{kib-pull}}263875).
+
+### Fixes [elastic-security-9.3.4-fixes]
+
+* Fixes an issue with Indicator Filters in the read-only rule details UI, where incorrect backing indices caused misleading warnings to display on hover [#263657]({{kib-pull}}263657).
+* Fixes a Firefox-specific issue where the **Table** tab in the document details flyout jumped to the bottom when hovering over field rows with cell actions [#262682]({{kib-pull}}262682).
+* Fixes CrowdStrike `runscript` response actions to correctly display script output (`stdout`/`stderr`) in the **Response Console** and **Action History** views [#262470]({{kib-pull}}262470).
+* Extends the Osquery live query execution timeout maximum from 15 minutes to 24 hours [#262008]({{kib-pull}}262008).
+* Fixes an issue where the required fields component displayed false-positive warnings for subfields of `flattened` type {{es}} fields, even when the rule's required fields were correctly configured [#261830]({{kib-pull}}261830).
+* Fixes prebuilt Osquery packs displaying numeric user IDs instead of `elastic` in the **Created By** column [#261115]({{kib-pull}}261115).
+* Fixes EQL rule creation so the query field re-validates after changing the index pattern, clearing stale errors when the query is valid for the newly selected data view [#261027]({{kib-pull}}261027).
+* Fixes a layout issue where alert KPI panels overflowed their containers, causing excess whitespace on the **Alerts** and **Attacks** pages [#260803]({{kib-pull}}260803).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes a memory leak related to path normalization in {{elastic-defend}} that was introduced in 9.3.0.
+* Fixes an {{elastic-defend}} Kafka output issue by falling back to broker-selected partitioning when transient or invalid metadata responses are received.
+* Fixes a bug in {{elastic-defend}} that could delay uninstall by 30 seconds in some configurations.
+* Ensures {{elastic-defend}} detects when the Linux service fails to start during installation and reports the error to {{agent}}.
+
+
 ## 9.3.3 [elastic-security-9.3.3-release-notes]
 
 ### Fixes [elastic-security-9.3.3-fixes]
