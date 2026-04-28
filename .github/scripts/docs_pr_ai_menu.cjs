@@ -19,7 +19,7 @@ function getLinePattern(key) {
   const { label, marker } = WORKFLOW_CONFIG[key];
 
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: Status: [^.]+\\.)? ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
     'm'
   );
 }
@@ -35,6 +35,7 @@ function parseWorkflowState(body, key) {
 
   return {
     selected: match[1] === 'x',
+    statusText: match[2] || null,
   };
 }
 
@@ -49,20 +50,28 @@ function parseMenuState(body) {
 }
 
 function getStatusText(workflowState, workflowStatus) {
+  if (workflowStatus?.statusText) {
+    return workflowStatus.statusText;
+  }
+
+  const progressLink = workflowStatus?.detailsUrl
+    ? ` [View progress](${workflowStatus.detailsUrl}).`
+    : '';
+
   if (workflowStatus?.status === 'in_progress' || workflowStatus?.status === 'queued') {
-    return 'Status: running.';
+    return `Status: running.${progressLink}`;
   }
 
   if (workflowStatus?.status === 'completed') {
     if (workflowStatus.conclusion === 'success') {
-      return 'Status: completed.';
+      return `Status: completed.${progressLink}`;
     }
 
     if (workflowStatus.conclusion === 'cancelled') {
-      return 'Status: cancelled.';
+      return `Status: cancelled.${progressLink}`;
     }
 
-    return 'Status: needs attention.';
+    return `Status: needs attention.${progressLink}`;
   }
 
   if (workflowState?.selected) {
@@ -75,7 +84,8 @@ function getStatusText(workflowState, workflowStatus) {
 function getWorkflowStatusFromCheckRuns(key, checkRuns) {
   const { checkNamePrefix } = WORKFLOW_CONFIG[key];
   const matchingCheckRuns = (checkRuns || []).filter((checkRun) =>
-    checkRun.name?.startsWith(checkNamePrefix)
+    checkRun.name?.startsWith(checkNamePrefix) &&
+    checkRun.conclusion !== 'skipped'
   );
 
   if (matchingCheckRuns.length === 0) {
@@ -88,6 +98,7 @@ function getWorkflowStatusFromCheckRuns(key, checkRuns) {
 
   return {
     conclusion: matchingCheckRuns[0].conclusion,
+    detailsUrl: matchingCheckRuns[0].details_url,
     status: matchingCheckRuns[0].status,
   };
 }
@@ -152,11 +163,23 @@ async function findMenuComment(github, context, pullRequestNumber) {
   );
 }
 
-function buildWorkflowStatuses(checkRuns, statusOverrides) {
+function getActiveWorkflowStatusFromState(workflowState) {
+  if (workflowState?.statusText?.startsWith('Status: running.')) {
+    return {
+      statusText: workflowState.statusText,
+    };
+  }
+
+  return null;
+}
+
+function buildWorkflowStatuses(checkRuns, statusOverrides, existingState) {
   return Object.fromEntries(
     WORKFLOW_ORDER.map((key) => [
       key,
-      statusOverrides?.[key] || getWorkflowStatusFromCheckRuns(key, checkRuns),
+      statusOverrides?.[key] ||
+        getWorkflowStatusFromCheckRuns(key, checkRuns) ||
+        getActiveWorkflowStatusFromState(existingState?.[key]),
     ])
   );
 }
@@ -178,7 +201,7 @@ async function upsertMenuComment({
   }
 
   const existingState = parseMenuState(existingComment?.body || '');
-  const statuses = buildWorkflowStatuses(checkRuns, statusOverrides);
+  const statuses = buildWorkflowStatuses(checkRuns, statusOverrides, existingState);
   const body = buildMenuBody(existingState, statuses);
 
   if (existingComment) {
