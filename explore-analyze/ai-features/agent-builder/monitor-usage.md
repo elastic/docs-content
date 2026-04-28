@@ -33,7 +33,7 @@ For more information on billing and token costs, refer to [Elastic pricing](http
 stack: preview =9.4
 ```
 
-To retrieve per-conversation token usage data for a specific agent across users, use the [Token consumption API](kibana-api.md#token-consumption).
+To retrieve per-conversation token usage data for a specific agent across users, use the [token consumption API]({{kib-apis}}operation/operation-post-agent-builder-agents-agent-id-consumption). For quick examples, refer to [Token consumption](kibana-api.md#token-consumption).
 
 This API complements the UI by returning token totals, round counts, LLM call counts, and warning indicators without exposing message content or tool results.
 
