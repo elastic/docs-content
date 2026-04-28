@@ -17,7 +17,7 @@ This feature requires the appropriate [subscription](https://www.elastic.co/pric
 
 In enterprise environments, a single person or host often appears as multiple entity records across different identity providers — such as Okta or Active Directory — as well as local log sources. Without resolution, risk scores and alerts are fragmented across these duplicate records, making it difficult to assess the true risk of a real-world identity.
 
-Entity resolution links multiple entity records that represent the same real-world identity into a *resolution group*, consolidates their risk scores into a single view, and reduces noise in the entities table by surfacing only the authoritative record.
+Entity resolution links multiple entity records that represent the same real-world identity into a *resolution group*, consolidates their risk scores into a single view, and reduces noise in the entities table by surfacing only the authoritative record. Resolution groups also receive a combined [resolution group risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#resolution-scoring) that aggregates risk inputs from all members of the group.
 
 Entity resolution can happen automatically or manually. Automated resolution matches user entities based on shared email addresses without any configuration. Manual resolution lets you explicitly link entity records using a CSV file or directly from the entity details flyout.
 

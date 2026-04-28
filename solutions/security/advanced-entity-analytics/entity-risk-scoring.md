@@ -24,21 +24,27 @@ It also generates risk scores on a recurring interval, and allows for easy onboa
 
 Entity risk scores are determined by the following risk inputs:
 
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 | Risk input | Storage location |
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
-| [Watchlist membership](watchlists.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `.entity_analytics.watchlists.<space-id>` |
+| [Watchlist membership](watchlists.md) | `.entity_analytics.watchlists.<space-id>` |
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
+| Risk input | Storage location |
+| --- | --- |
+| [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
+| [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
 | [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
+:::
+
+:::::
 
 The resulting entity risk scores are stored in the `risk-score.risk-score-<space-id>` data stream alias, and the latest score for each entity is stored in `risk-score.risk-score-latest-<space-id>`.
-
-::::{note}
-Entities without any alerts, or with only `Closed` alerts, are not assigned a risk score.
-
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Starting in 9.4, only entities that exist in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) receive a risk score. Alerts referencing entities not in the entity store do not contribute to any risk score.
-::::
-
 
 
 ## How are risk scores calculated? [how-is-risk-score-calculated]
@@ -49,7 +55,11 @@ Entities without any alerts, or with only `Closed` alerts, are not assigned a ri
 1. Risk scoring runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). Up to 10,000 alerts are processed per entity.
 
     ::::{note}
-    When [turning on risk scoring](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts in risk scoring calculations.
+    * Starting in 9.4, only entities that exist in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) receive a risk score. Alerts referencing entities not in the entity store do not contribute to any risk score.
+
+    * By default, only `Open` and `Acknowledged` alerts are included. When [turning on risk scoring](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts and apply additional KQL filters. Entities with no alerts that match the configured filters are not assigned a risk score.
+
+    * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
 2. Alert risk scores (`kibana.alert.risk_score`) are aggregated for each entity, with entities identified by their Entity Unique Identifier (EUID) — a stable ID derived from ECS identity fields. Alerts with higher risk scores contribute more than those with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
@@ -95,7 +105,9 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
 1. The risk scoring engine runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). For each entity, the engine processes up to 10,000 alerts.
 
     ::::{note}
-    When [turning on risk scoring](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts in risk scoring calculations.
+    * By default, only `Open` and `Acknowledged` alerts are included. When [turning on risk scoring](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts and apply additional KQL filters. Entities with no alerts that match the configured filters are not assigned a risk score.
+
+    * By default, risk scoring uses the last 30 days of alerts. When turning on risk scoring, you can configure a different date and time range.
     ::::
 
 2. The engine groups alerts by `host.name`, `user.name`, or `service.name`, and aggregates the individual alert risk scores (`kibana.alert.risk_score`) such that alerts with higher risk scores contribute more than alerts with lower risk scores. The resulting aggregated risk score is assigned to the **Alerts** category in the entity's [risk summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-risk-summary).
