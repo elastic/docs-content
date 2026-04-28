@@ -111,7 +111,7 @@ serverless:
   security: deprecated
 ```
 
-:::::{applies-switch}
+::::{applies-switch}
 
 ::::{applies-item} { stack: deprecated 9.4, serverless: {security: deprecated} }
 
@@ -133,7 +133,7 @@ A specialized agent for security alert analysis tasks, including alert investiga
 
 ::::
 
-:::::
+::::
 
 ## Related pages
 
