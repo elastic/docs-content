@@ -28,7 +28,7 @@ Entity risk scores are determined by the following risk inputs:
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
-| [Watchlist membership](watchlists.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | TBD |
+| [Watchlist membership](watchlists.md) {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `.entity_analytics.watchlists.<space-id>` |
 | [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
 
 The resulting entity risk scores are stored in the `risk-score.risk-score-<space-id>` data stream alias, and the latest score for each entity is stored in `risk-score.risk-score-latest-<space-id>`.
