@@ -24,6 +24,66 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
+::::{dropdown} Entity Analytics: Risk scores reset after upgrading to 9.4
+Risk scoring is moving from name-based to ID-based scoring tied to the entity store. Historical name-based risk scores are not migrated to the new model.
+
+**Impact**<br> After upgrading to 9.4, all existing risk scores are cleared. The entity store initializes with a 3-hour lookback, so scored entity counts will be lower immediately after upgrade and will rebuild over time. Additionally, Identity Provider (IdP) user entities may not receive risk scores initially, as alerts do not yet map directly to IdP EUIDs. Local user and host entities are unaffected.
+
+**Action**<br> No action required to trigger the rebuild — it happens automatically. Plan for a warm-up period after upgrading before risk score dashboards return to their pre-upgrade state.
+::::
+
+::::{dropdown} Entity Analytics: Risk engine management APIs removed
+The standalone risk engine is replaced by an entity maintainer integrated into the entity store. The following risk engine management API endpoint is removed:
+
+* `DELETE /api/risk_score/engine/dangerously_delete_data`
+
+**Impact**<br> Any scripts or automations using this endpoint will fail.
+
+**Action**<br> Remove references to this endpoint. Risk scoring is now managed through the entity store lifecycle. Refer to the Entity Store API documentation for the new endpoints.
+% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+::::
+
+::::{dropdown} Entity Analytics: Asset criticality values reset and CSV format changed after upgrading to 9.4
+Asset criticality storage is moving to the entity store. Historical values from the legacy index are not migrated to the new model. Additionally, the CSV upload format has changed: headers are now required, and uploading a CSV no longer creates new entities — entities must already exist in the entity store.
+
+**Impact**<br> Existing asset criticality assignments are not carried over after upgrading to 9.4. CSV files using the old headerless format will no longer work.
+
+**Action**<br> Re-assign asset criticality in 9.4 using the updated CSV format or the entity flyout. Update any CSV files to include the required header row before uploading.
+::::
+
+::::{dropdown} Entity Analytics: Privileged user monitoring replaced by watchlists
+Privileged user monitoring is replaced by watchlists in 9.4. Historical privileged user assignments are not migrated to the new model.
+
+**Impact**<br> The privileged user monitoring UI and engine are removed. Existing privileged user configurations, including manual user lists and CSV uploads, are not carried over.
+
+**Action**<br> Recreate your privileged user tracking using watchlists. The default **Privileged Users** watchlist automatically pulls in administrative users from Active Directory and Okta integrations.
+% TODO: Add link to Watchlist documentation when available: [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md). See https://github.com/elastic/docs-content/pull/5994
+::::
+
+::::{dropdown} Entity Analytics: Privileged user monitoring APIs removed
+All privileged user monitoring APIs are removed in 9.4.
+
+Removed with no equivalent:
+* `POST /api/entity_analytics/monitoring/users`
+* `GET /api/entity_analytics/monitoring/users/list`
+* `PUT /api/entity_analytics/monitoring/users/{id}`
+* `DELETE /api/entity_analytics/monitoring/users/{id}`
+* `POST /api/entity_analytics/monitoring/users/_csv`
+* `POST /api/entity_analytics/monitoring/engine/init`
+* `POST /api/entity_analytics/monitoring/engine/disable`
+* `DELETE /api/entity_analytics/monitoring/engine/delete`
+* `POST /api/entity_analytics/privileged_user_monitoring/pad/install`
+* `GET /api/entity_analytics/privileged_user_monitoring/pad/status`
+
+Replaced by watchlists equivalents:
+* `POST .../monitoring/engine/schedule_now` → `POST /api/entity_analytics/watchlists/{watchlist_id}/sync`
+* `.../monitoring/entity_source/...` → `/api/entity_analytics/watchlists/{watchlist_id}/entity_source/...`
+
+**Impact**<br> Any scripts or automations using these endpoints will fail.
+
+**Action**<br> Remove references to removed endpoints. For entity source management, update paths to use the watchlists-scoped equivalents. Refer to the [Entity Analytics API documentation]({{kib-apis}}/group/endpoint-security-entity-analytics-api).
+::::
+
 ::::{dropdown} Entity store management and CRUD APIs removed
 The entity store management and CRUD APIs are removed and replaced by an updated API surface available from 9.4.
 For more information, check [#264679]({{kib-pull}}264679).
@@ -64,7 +124,7 @@ The old per-type index pattern (`.entities.v1.latest.security_{type}_<space-id>`
 **Action**<br> Update direct index references to use the new shared alias.
 ::::
 
-::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
+::::{dropdown} Removes serializer and deserializer parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
 For more information, check [#250111]({{kib-pull}}250111).
 
@@ -74,7 +134,7 @@ For more information, check [#250111]({{kib-pull}}250111).
 ::::
 
 ## 9.3.2 [elastic-security-932-breaking-changes]
-::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
+::::{dropdown} Removes serializer and deserializer parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
 For more information, check [#250111]({{kib-pull}}250111).
 
@@ -84,7 +144,7 @@ For more information, check [#250111]({{kib-pull}}250111).
 ::::
 
 ## 9.2.7 [elastic-security-927-breaking-changes]
-::::{dropdown} Removes `serializer` and `deserializer` parameters from the Lists API
+::::{dropdown} Removes serializer and deserializer parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
 For more information, check [#250111]({{kib-pull}}250111).
 

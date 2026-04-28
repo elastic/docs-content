@@ -25,6 +25,21 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 
 ## 9.4.0 [elastic-security-9.4.0-deprecations]
 
+::::{dropdown} Entity Analytics: Asset Criticality APIs deprecated
+The dedicated Asset Criticality APIs are deprecated in 9.4 and replaced by the Entity Store CRUD APIs.
+
+Deprecated endpoints:
+* `DELETE /api/asset_criticality`
+* `POST /api/asset_criticality`
+* `GET /api/asset_criticality`
+* `GET /api/asset_criticality/list`
+
+**Impact**<br> These endpoints will continue to work in 9.4 but will be removed in a future release.
+
+**Action**<br> Migrate to the equivalent Entity Store APIs.
+% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+::::
+
 ::::{dropdown} Removes the Threat Hunting Agent from Agent Builder
 Removes the built-in Threat Hunting Agent from Agent Builder. Security AI workflows now use the Elastic AI Agent with Security skills, which is the default experience in 9.4.0.
 For more information, refer to [#263996]({{kib-pull}}263996).
