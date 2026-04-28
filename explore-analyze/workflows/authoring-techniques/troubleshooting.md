@@ -40,20 +40,19 @@ Quick answers to the issues first-time workflow authors hit most often. Each sec
 
 **Resolution.** Verify the workflow is enabled, check the interval in the YAML editor, and review execution history for `skipped` entries. For concurrency details, refer to [Settings concurrency control](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md).
 
-### A `workflows.failed` trigger rejects `condition` [workflows-ts-workflows-failed-condition]
+### A `workflows.failed` trigger rejects `condition` at the top level [workflows-ts-workflows-failed-condition]
 
-**Symptom.** The workflow editor rejects a `workflows.failed` trigger that includes a `condition` field.
+**Symptom.** The workflow editor rejects a `workflows.failed` trigger when `condition` is placed directly under the trigger.
 
-**Cause.** Filters live under `with.filters`, not at the trigger top level and not under an `on:` key.
+**Cause.** The condition belongs under an `on:` block, not at the trigger top level.
 
-**Resolution.** Move the condition into the `filters` array inside `with`:
+**Resolution.** Nest the condition under `on:`:
 
 ```yaml
 triggers:
   - type: workflows.failed
-    with:
-      filters:
-        - condition: "event.workflow.id : 'critical-ingest-pipeline'"
+    on:
+      condition: "event.workflow.name : 'ops--rollback-deployment'"
 ```
 
 Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
@@ -374,11 +373,13 @@ settings:
 - Review the [Step type index](/explore-analyze/workflows/concepts/step-types.md) for the full catalog.
 - File an issue on the [{{kib}} GitHub repo](https://github.com/elastic/kibana/issues/new/choose) with a minimal reproduction.
 
-% Ben Ironside Goldstein, 2026-04-16: The following PM troubleshooting claims were not migrated
-% because they contradict PR A's Kibana-source verification; flagged in PR summary:
-%   - PM: "workflows.failed condition lives under on:" — PR A: filters under with.filters.
-%   - PM: "while default max-iterations: 2000" — PR A: no default, unbounded.
-%   - PM: Resume API wraps body in { "input": {...} } and path /api/workflows/executions — PR A:
-%     flat body, path /api/workflowExecutions/{id}/resume.
-%   - PM: cases.setCustomField / cases.createCaseFromTemplate "not registered" — PR A: both are
-%     registered in 9.4 GA.
+% Ben Ironside Goldstein, 2026-04-27: The following PM claims were reconciled with PR A's
+% verified facts:
+%   - PM: "workflows.failed condition lives under on:" — confirmed by Tinsae in PR review;
+%     PR A and this troubleshooting page now both use on.condition syntax.
+%   - PM: "while default max-iterations: 2000" — PR A: no default, unbounded. Pending SME
+%     reconfirmation.
+%   - PM: Resume API wraps body in { "input": {...} } and path /api/workflows/executions —
+%     PR A: flat body, path /api/workflowExecutions/{id}/resume. Pending SME reconfirmation.
+%   - PM: cases.setCustomField / cases.createCaseFromTemplate "not registered" — PR A: both
+%     are registered in 9.4 GA.

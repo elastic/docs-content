@@ -47,9 +47,8 @@ triggers:
   - type: alert                        # requires rule Action attachment
 
   - type: workflows.failed             # tech preview
-    with:
-      filters:
-        - condition: "event.workflow.id : 'critical-ingest-pipeline'"
+    on:
+      condition: "event.workflow.name : 'critical-ingest-pipeline'"
 ```
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
