@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.1
+  stack: ga 9.1+
   serverless:
     security: ga
 products:
