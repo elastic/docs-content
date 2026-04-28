@@ -145,6 +145,17 @@ On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured m
 
 ::::
 
+::::{step} Enable Elastic capabilities (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+When you [create a custom agent](custom-agents.md#create-a-new-agent), use the **Enable Elastic Capabilities** toggle on the **Settings** tab to opt in to Elastic-built tools, skills, and plugins. The toggle is off by default, so the agent only uses capabilities you assign unless you turn it on.
+
+For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elastic-capabilities).
+
+::::
+
 ::::{step} Build custom skills and tools
 
 The default [Elastic AI Agent](builtin-agents-reference.md) comes with [built-in skills](builtin-skills-reference.md) and [built-in tools](tools.md) ready to use. To add your own domain expertise, [create custom skills](custom-skills.md) that package knowledge and tools into reusable instruction sets. For tips on writing effective skill instructions, refer to the [skill creation guidelines](skill-creation-guidelines.md). To learn how skills are invoked during a conversation, refer to [how skills are invoked](skills.md#how-skills-are-invoked).
