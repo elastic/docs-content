@@ -87,7 +87,7 @@ serverless: ga
 
 When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session instead of updating the panel. This works whether the panel was added from the library or created directly on the dashboard.
 
-1. From the dashboard, open the panel menu and select **Edit**.
+1. From the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**.
 2. Make your changes in **Discover**.
 3. In the application menu, open the menu next to **Save and return** and select **Save as**.
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
