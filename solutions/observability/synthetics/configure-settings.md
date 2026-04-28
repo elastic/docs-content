@@ -18,7 +18,7 @@ There are several Synthetics settings you can adjust in Observability.
 
 Alerting enables you to detect complex conditions using **rules** across Observability and send a notification using **connectors**.
 
-{applies_to}`stack: ga 9.4+` When you create or edit a synthetic monitor, default alert rules are automatically applied. To edit the default rules:
+When you create a new synthetic monitor, new default synthetics rules will be applied. To edit the default rules:
 
 1. Click **Alerts** in the top bar.
 2. Select a rule to open a panel where you can edit the rule’s configuration:
@@ -30,7 +30,7 @@ However, the automatically created Synthetics internal alert is intentionally pr
 
 If you need specific alerting behavior, set up a different rule. To view all existing rules or create a new rule:
 
-1. Click **Alerts and rules** in the top bar.
+1. Click **Alerts** in the top bar.
 2. Click **Manage rules** to go to the *Rules* page.
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
@@ -49,7 +49,10 @@ You can enable and disable default alerts for individual monitors in a few ways:
 
 ::::
 
-In the **Alerting** tab on the Synthetics Settings page, you can add and configure connectors. If you are running in Elastic Cloud, then an SMTP connector will automatically be configured, allowing you to easily set up email alerts. Read more about all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
+In the **Alerting** tab on the **Monitor** Settings page, you can:
+- Enable or disable default rules.
+- Add and configure connectors. Check all available connectors in [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
+- Set up email alerts, if you are running in Elastic Cloud. An SMTP connector will automatically be configured. 
 
 :::{image} /solutions/images/observability-synthetics-settings-alerting.png
 :alt: Alerting tab on the Synthetics Settings page in {{kib}}
@@ -66,6 +69,8 @@ In the **{{private-location}}s** tab, you can add and manage {{private-location}
 :alt: {{private-location}}s tab on the Synthetics Settings page in {{kib}}
 :screenshot:
 :::
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` When a private location has monitors with broken {{fleet}} integrations, a badge showing the count of unhealthy monitors appears in the location's row. Click the badge to open a popover listing the affected monitors. From the popover, use **Reset monitors** to bulk-reset all monitors at that location that have a `missing_package_policy` status. Monitors with other failure types are excluded and must be resolved manually. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for details on failure types and remediation steps.
 
 ## Global parameters [synthetics-settings-global-parameters]
 
@@ -106,3 +111,24 @@ In a serverless project, to create a Project API key you must be logged in as a 
 :alt: Project API keys tab on the Synthetics Settings page in {{kib}}
 :screenshot:
 :::
+
+- The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
+- The **Spaces** drop-down allows you to select the Kibana Space where your API keys will be available. 
+
+## Advanced [synthetics-settings-advanced]
+```{applies_to}
+serverless: ga
+stack: ga 9.4+
+```
+
+In the **Advanced** tab, you can configure advanced settings for your Synthetics deployment.
+
+### Maintenance windows sync interval [synthetics-settings-advanced-sync-interval]
+
+Private location monitors are periodically synced to apply active maintenance window changes. The **Maintenance windows sync interval** setting controls how frequently this sync occurs.
+
+Use the **Sync interval (minutes)** field to set the interval. The default is 5 minutes, and valid values range from 5 to 1440 minutes. When you apply a new interval, an immediate sync is triggered so the change takes effect right away.
+
+When a maintenance window becomes active, a callout in the Synthetics UI displays the estimated delay for applying changes to private location monitors: *"It may take up to X minutes for maintenance window changes to be applied to private location monitors,"* where X equals the configured sync interval. Click **Sync now** in the callout to trigger an immediate sync without waiting for the interval.
+
+A separate callout appears when maintenance windows are modified or deleted but changes have not yet propagated to your private location monitors.
