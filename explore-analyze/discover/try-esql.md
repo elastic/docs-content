@@ -29,7 +29,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 1. Go to **Discover**.
 2. Switch to {{esql}} mode. You can do this from:
 
-   - {icon}`code` **{{esql}}** or **Try {{esql}}** in the application menu.
+   - **Try {{esql}}** or {icon}`code` **{{esql}}** in the application menu.
    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
    Things to know:
