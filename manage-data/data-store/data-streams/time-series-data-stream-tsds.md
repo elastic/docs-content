@@ -77,7 +77,7 @@ To mark a field as a metric, use the `time_series_metric` mapping parameter. Thi
 `gauge`
 :   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).
 
-`histogram` {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+`histogram` {applies_to}`stack: preview 9.3, ga 9.4`
 :   A metric that tracks the distribution of numerical values, like latency or size distributions. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
 
 #### `_tsid` metadata field [tsid]
@@ -98,7 +98,10 @@ A time series data stream works like a regular data stream, with some key differ
 * **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 * **Source field:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) applied to the `_source` field.
-* {applies_to}`stack: ga 9.3` **Doc value Skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow {{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
+* {applies_to}`stack: ga 9.3` **Doc values skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow \{\{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
+* {applies_to}`stack: ga 9.4` **Sequence numbers are disabled:** A TSDS [disables sequence numbers](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-disable-sequence-numbers) by default to substantially improve storage efficiency (up to 2x) and indexing throughput (10%). 
+
+  When sequence numbers are disabled, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) gets disabled, causing [update-by-query]({{es-apis}}/operation/operation-update-by-query) and [delete-by-query]({{es-apis}}/operation/operation-delete-by-query) operations to execute with weaker consistency. These capabilities are normally not relevant for time series workloads, but if you need them for your application, you can restore sequence numbers by setting `index.disable_sequence_numbers: false` in the index template of the relevant TSDS.
 
 ## Query time series data
 ```{applies_to}
