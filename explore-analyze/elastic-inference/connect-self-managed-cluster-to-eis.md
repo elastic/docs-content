@@ -174,12 +174,12 @@ To use other LLMs listed under [Supported models](/explore-analyze/elastic-infer
 
 ### Embedding and rerank models
 
-Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis.md#rerankers).
+Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis-supported-models.md#rerankers).
 
 For these models, you only need to create new {{infer}} endpoints if you want to use custom settings.
 
 ## Regions and billing
 
-For information about EIS regions and request routing, refer to [Region and hosting](eis.md#eis-regions).
+For information about EIS regions and request routing, refer to [Region and hosting](/explore-analyze/elastic-inference/eis-supported-models.md#eis-regions).
 
-EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](eis.md#pricing) and [Monitor your token usage](eis.md#monitor-your-token-usage).
+EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](/explore-analyze/elastic-inference/eis-supported-models.md#pricing) and [Monitor your token usage](/explore-analyze/elastic-inference/eis-supported-models.md#monitor-your-token-usage).
