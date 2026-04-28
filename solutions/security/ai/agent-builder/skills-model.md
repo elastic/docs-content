@@ -19,16 +19,16 @@ Starting in version 9.4, {{elastic-sec}} centers on a single default [Elastic AI
 | Layer | What it is | In {{elastic-sec}} |
 |-------|------------|-------------------|
 | Agent | The AI you chat with. It reasons, follows instructions, and uses tools. | The default is the [Elastic AI Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#elastic-ai-agent). |
-| Skill | Specialized instructions, tools, and context for one domain. | Security skills you can enable or disable, such as threat hunting or alert triage. |
+| Skill | Specialized instructions, tools, and context for one domain. | Security skills you can enable, such as threat hunting or alert triage. |
 | Tool | A specific action the agent can run, such as querying data, opening a case, or running a workflow. | [Built-in tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md) shared across skills — the same tool can appear in more than one skill. |
 
 You talk to the agent in natural language. The agent picks tools based on your request, the skills you turned on, and its instructions. You don't invoke tools directly.
 
 ## Enable and manage skills
 
-Use the skill controls in {{agent-builder}} to turn skills on or off for your workspace.
+Use the skill controls in {{agent-builder}} to enable skills for your workspace.
 
-For details on assigning skills to agent using the Skills APIs, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
+For details on assigning skills to an agent using the Skills APIs, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
 
 ## Relationship to the standalone Threat Hunting Agent
 
