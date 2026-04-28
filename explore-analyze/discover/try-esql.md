@@ -422,12 +422,6 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Filter out**: append a `WHERE` clause that excludes documents matching this group.
 - **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
 
-% TODO screenshot: the row actions popover open over a grouped row showing the four actions.
-% :::{image} /explore-analyze/images/discover-esql-cascade-row-actions.png
-% :alt: Row actions menu open on a grouped row, showing Copy to clipboard, Filter in, Filter out, and Open in new tab
-% :screenshot:
-% :::
-
 **Filter in** and **Filter out** are disabled when the grouping field is not filterable.
 
 ## Refine an {{esql}} query by interacting with the results table
