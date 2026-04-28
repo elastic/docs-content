@@ -37,9 +37,9 @@ To build a line chart:
 :::::
 
 :::::{step} Set the visualization to Line
-New visualizations default to **Bar**.
+Make sure that the visualization type is set to **Line**.
 
-Using the visualization type dropdown, select **Line**.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you drag a date or time field (such as `@timestamp`) onto an empty workspace, **Line** is automatically selected.
 :::::
 
 :::::{step} Define the data to show
