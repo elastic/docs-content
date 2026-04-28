@@ -1,0 +1,209 @@
+name: Docs PR AI menu
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+  issue_comment:
+    types: [edited]
+  workflow_dispatch:
+    inputs:
+      pull_request_number:
+        description: Pull request number to post or refresh the AI PR menu on.
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  post-menu:
+    name: Post or refresh AI PR menu
+    if: github.event_name == 'pull_request_target' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+      contents: read
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.pull_request.number || github.event.inputs.pull_request_number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Create or update AI PR menu comment
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const workflowDispatchPrNumber = context.payload.inputs?.pull_request_number;
+            const pullRequestNumber = context.eventName === 'workflow_dispatch'
+              ? Number(workflowDispatchPrNumber)
+              : context.payload.pull_request.number;
+
+            if (!pullRequestNumber) {
+              core.setFailed('Pull request number is required for workflow_dispatch runs.');
+              return;
+            }
+
+            await menu.upsertMenuComment({ core, github, context, pullRequestNumber });
+
+  evaluate-trigger:
+    name: Evaluate AI PR menu trigger
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request != null &&
+      github.actor != 'github-actions[bot]' &&
+      github.event.comment.user.login == 'github-actions[bot]' &&
+      contains(github.event.comment.body, '<!-- docs-pr-ai-menu:start -->') &&
+      contains(github.event.comment.body, '<!-- docs-pr-ai-menu:end -->')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      docs_review_triggered: ${{ steps.evaluate.outputs.docs_review_triggered }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Parse AI PR menu transition
+        id: evaluate
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const body = context.payload.comment.body || '';
+            const previousBody = context.payload.changes?.body?.from || '';
+
+            const previousState = menu.parseMenuState(previousBody);
+            const currentState = menu.parseMenuState(body);
+            const docsReviewTriggered =
+              !previousState.docsReview.selected && currentState.docsReview.selected;
+
+            core.setOutput('docs_review_triggered', String(docsReviewTriggered));
+
+  refresh-menu-after-trigger:
+    name: Refresh AI PR menu after trigger
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+      contents: read
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI PR menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const pullRequestNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              pullRequestNumber,
+              statusOverrides: {
+                docsReview: {
+                  detailsUrl: progressUrl,
+                  status: 'in_progress',
+                },
+              },
+            });
+
+  run-docs-review:
+    name: Docs AI / docs review
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
+    permissions:
+      actions: read
+      contents: read
+      discussions: write
+      issues: write
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
+    with:
+      review-scope: repo-wide-markdown
+      additional-instructions: |
+        This repository stores documentation as markdown across the repository, not only under `docs/`.
+        Prefer concise, high-signal review comments with exact replacement text when possible.
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+  refresh-menu-after-docs-review:
+    name: Refresh AI PR menu after docs review
+    needs: [evaluate-trigger, run-docs-review]
+    if: always() && needs.evaluate-trigger.outputs.docs_review_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+      contents: read
+      issues: write
+      pull-requests: write
+    concurrency:
+      group: docs-pr-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI PR menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_pr_ai_menu.cjs`);
+            const pullRequestNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const docsReviewResult = '${{ needs.run-docs-review.result }}';
+            const docsReviewStatus = {
+              conclusion: docsReviewResult === 'success'
+                ? 'success'
+                : docsReviewResult === 'cancelled'
+                  ? 'cancelled'
+                  : 'failure',
+              detailsUrl: progressUrl,
+              status: 'completed',
+            };
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              pullRequestNumber,
+              statusOverrides: {
+                docsReview: docsReviewStatus,
+              },
+            });
