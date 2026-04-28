@@ -36,12 +36,13 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 
 :::::{applies-switch}
 ::::{applies-item} serverless:
-1. In {{ecloud}}, create an {{observability}} project or open an existing one.
-2. Go to **Add data**, select **Applications**, and then select **OpenTelemetry**.
-3. Copy the endpoint value.
+1. Log in to the {{ecloud}} Console.
+2. Find your project and select **Manage**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+4. Copy the endpoint value.
 
 :::{tip}
-The Add data wizard also generates a pre-configured API key. Copy the authentication headers value from the same screen to skip the next step.
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key. Copy the authentication headers value from the same screen to skip the next step.
 :::
 ::::
 
