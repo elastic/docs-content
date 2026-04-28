@@ -91,7 +91,7 @@ When editing a Discover session panel from a dashboard, you can save your change
 2. Make your changes in **Discover**.
 3. In the application menu, open the menu next to **Save and return** and select **Save as**.
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-5. Under **Add to dashboard**, choose where to display the new session:
+5. In **Add to dashboard**, choose where to display the new session:
 
    - **Existing**: Add the new session to a dashboard you select.
 
