@@ -56,7 +56,7 @@ To dive more deeply into the building blocks of {{es}} clusters, including nodes
 
 ## {{es}} as a vector database [es-as-vector-database]
 
-{{es}} can act as a vector database by storing vector embeddings and retrieving the most similar results to a query vector. Vector embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to perform semantic similarity search and return results based on meaning rather than exact keyword matches.
+{{es}} functions as a vector database by storing vector embeddings and retrieving the most similar results to a query vector. Vector embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to perform semantic similarity search and return results based on meaning rather than exact keyword matches.
 
 This capability is the foundation for vector search and related use cases in {{es}}. It enables you to work with semantic retrieval on the same data and infrastructure that you already use for full-text search, structured filters, and aggregations. {{es}} supports this by storing embeddings in vector field types such as `dense_vector` and `sparse_vector`, alongside your other indexed data.
 
