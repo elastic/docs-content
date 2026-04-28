@@ -15,7 +15,7 @@ products:
 
 # Cases action steps [workflows-cases-steps]
 
-Cases action steps let workflows create, query, update, and manage cases in any Cases-enabled app, including {{elastic-sec}}, Observability, and Stack Cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
+Cases action steps let workflows create, query, update, and manage cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
 
 Use Cases steps for patterns like:
 
@@ -40,11 +40,6 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     title: "Triage required"
     severity: high
 ```
-
-% Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all 27 steps
-% support push-case. A complete list of which steps support it would strengthen this section once
-% available. For now the page documents the optional flag generally and leaves per-step support
-% for SME confirmation.
 
 **Getting the case ID.** The response from `cases.createCase` includes the new case ID at `steps.<step_name>.output.case.id`. Reference it in subsequent steps:
 
@@ -366,7 +361,7 @@ Set a case's category.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `category` | `with` | string | Yes | Category name. |
-| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
+| `owner` | `with` | string | No | Case owner. Optional, helps with auto-completion. |
 
 ### `cases.setCustomField` [cases-setcustomfield]
 
@@ -377,7 +372,7 @@ Set a single custom-field value on a case. The `field_name` parameter is the sys
 | `case_id` | `with` | string | Yes | Case ID. |
 | `field_name` | `with` | string | Yes | Custom-field identifier. System-set, typically a UUID. |
 | `value` | `with` | `string \| number \| boolean` | Yes | Field value. |
-| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
+| `owner` | `with` | string | No | Case owner. Optional, helps with auto-completion. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
 
 ```yaml
