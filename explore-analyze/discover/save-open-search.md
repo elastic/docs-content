@@ -5,6 +5,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
 description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
@@ -52,7 +53,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 1. In **Discover**, open the Discover session that you want to duplicate.
-2. In the application menu, open the menu next to **Save** and select **Save as**. The **Save Discover session** modal opens.
+2. In the application menu, from the menu next to **Save**, select **Save as**. The **Save Discover session** modal opens.
 3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, in **Add to dashboard**, add the new session to a dashboard at the same time as you save it. For details, refer to [Save a Discover session](#_save_a_discover_session).
 5. Select **Save**.
@@ -61,7 +62,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 :::{applies-item} { stack: ga 9.0-9.3 }
 1. In **Discover**, open the Discover session that you want to duplicate.
 2. In the application menu, select **Save**.
-3. Give the session a new name.
+3. Enter a new name for the session.
 4. Turn on **Save as new Discover session**.
 5. Select **Save**.
 :::
@@ -182,13 +183,13 @@ When editing a Discover session panel from a dashboard, you can save your change
 
 1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**. Discover opens in embedded editor mode.
 2. Make your changes in **Discover**.
-3. In the application menu, open the menu next to **Save and return** and select **Save as**.
+3. In the application menu, from the menu next to **Save and return**, select **Save as**.
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 5. In **Add to dashboard**, choose where to display the new session:
 
    - **Existing**: Add the new session to a dashboard you select.
 
-     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the replaced panel was linked to the library, you can still find it unchanged in the library. If the panel wasn't linked to the library, it is lost and replaced by the newly saved session.
+     - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the replaced panel was linked to the library, you can still find it unchanged in the library. If the panel wasn't linked to the library, the panel is removed and replaced by the newly saved session.
      - If you select a different dashboard, the original panel is unchanged, and the new session is added as a separate panel on the dashboard you selected.
 
    - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
@@ -216,3 +217,9 @@ A Discover session panel displays one tab at a time. When the underlying session
    :::
 
 3. Select **Apply**.
+
+## Related pages [save-open-search-related]
+
+- [Explore fields and data with Discover](discover-get-started.md)
+- [Create a dashboard](../dashboards/create-dashboard.md)
+- [Using ES|QL](try-esql.md)
