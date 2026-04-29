@@ -67,3 +67,10 @@ Start onboarding directly in Elastic:
 3. Describe what you want to build.
 
 The assistant asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
+
+You can also [invoke the onboarding skill directly](/explore-analyze/ai-features/agent-builder/skills#how-skills-are-invoked):
+
+:::{image} /solutions/images/ai-onboarding-skill.png
+:alt: Invoke the AI onboarding skill directly
+:screenshot:
+:::
