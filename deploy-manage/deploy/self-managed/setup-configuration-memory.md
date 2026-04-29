@@ -40,7 +40,7 @@ Another option available on Linux systems is to ensure that the sysctl value `vm
 
 ## Enable `bootstrap.memory_lock` [bootstrap-memory_lock]
 
-Another option is to use [mlockall](http://opengroup.org/onlinepubs/007908799/xsh/mlockall.md) on Linux/Unix systems, or [VirtualLock](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366895%28v=vs.85%29.aspx) on Windows, to try to lock the process address space into RAM, preventing any {{es}} heap memory from being swapped out.
+Another option is to use [mlockall](http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html) on Linux/Unix systems, or [VirtualLock](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366895%28v=vs.85%29.aspx) on Windows, to try to lock the process address space into RAM, preventing any {{es}} heap memory from being swapped out.
 
 ::::{note}
 Some platforms still swap off-heap memory when using a memory lock. To prevent off-heap memory swaps, [disable all swap files](#disable-swap-files) instead.
@@ -66,7 +66,10 @@ GET _nodes?filter_path=**.mlockall
 
 If you see that `mlockall` is `false`, then it means that the `mlockall` request has failed. You will also see a line with more information in the logs with the words `Unable to lock JVM Memory`.
 
-The most probable reason, on Linux/Unix systems, is that the user running {{es}} doesn’t have permission to lock memory. This can be granted as follows:
+The most probable reason, on Linux/Unix systems, is that the user running {{es}} doesn’t have permission to lock memory. To change defaults on package-based installations, you can adjust limits by using `ulimit`, editing `/etc/security/limits.conf`, or through `systemd` service overrides, depending on whether limits are applied per session, per user, or for the service.
+
+You can grant permission to lock memory as follows:
+
 
 `.zip` and `.tar.gz`
 :   Set [`ulimit -l unlimited`](setting-system-settings.md#ulimit) as root before starting {{es}}. Alternatively, set `memlock` to `unlimited` in `/etc/security/limits.conf`:

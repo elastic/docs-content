@@ -1,5 +1,9 @@
 ---
 navigation_title: Organize and annotate docs
+description: "Learn how to group Elastic APIs with tags and annotate them with lifecycle status, permissions, and version information."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Organize and annotate your API docs
@@ -14,14 +18,14 @@ This page explains how to organize your API documentation and add technical meta
 
 For guidance on writing effective API content like summaries, descriptions, and examples, see [Core guidelines](./guidelines.md).
 
-## Add Open API document info
+## Add OpenAPI document info
 
 The published OpenAPI documents must have the following metadata in the [`info` object](https://spec.openapis.org/oas/latest#info-object):
 
 | **Field**      | **Description** |
 | -------------- | --------------- |
-| `description`   | A descriptive overview of the API's purpose and functionality. This should be a concise summary that helps users understand what the API does. |
-| `license`        | [License information](https://spec.openapis.org/oas/latest#license-object "https://spec.openapis.org/oas/latest#license-object") for the API (which is distinct from the documentation license).<br>Until we have a custom extension, add the documentation license ([Deed - Attribution-NonCommercial-NoDerivatives 4.0 International - Creative Commons](https://creativecommons.org/licenses/by-nc-nd/4.0/)) to `info.description` |
+| `description`   | A descriptive overview of the API's purpose and functionality. This should be a concise summary that helps users understand what the API does. It is also where we provide the documentation license ([Deed - Attribution-NonCommercial-NoDerivatives 4.0 International - Creative Commons](https://creativecommons.org/licenses/by-nc-nd/4.0/)).|
+| `license`        | [License information](https://spec.openapis.org/oas/latest#license-object "https://spec.openapis.org/oas/latest#license-object") for the API (which is distinct from the documentation license). |
 | `title`          | The title of the API |
 | `version`        | The version of the document (which is distinct from the OpenAPI specification version and the API implementation version) |
 | `x-feedbackLink` | This specialization extension enables us to collect feedback about the document. The URL should take readers to a GitHub issue template so they can create an issue. Refer to [Get feedback from users](https://docs.bump.sh/help/publish-documentation/feedback/) |
@@ -29,9 +33,9 @@ The published OpenAPI documents must have the following metadata in the [`info` 
 
 ## Add OpenAPI specification version
 
-You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-open-api-document-info).
+You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-openapi-document-info).
 
-[Bump.sh](https://bump.sh/openapi "https://bump.sh/openapi") supports all versions from Swagger 2.0 to OpenAPI 3.1.
+Elastic OpenAPI documents span versions from Swagger 2.0 to OpenAPI 3.1.
 
 Learn more about the [OpenAPI object](https://spec.openapis.org/oas/latest#openapi-object).
 
@@ -42,8 +46,9 @@ The `operationId` uniquely identifies the operation.
 It is case sensitive and must be unique in the OpenAPI document.
 
 When adding operation identifiers:
+
 - Ensure each operation has a unique `operationId`
-- Make `operationId`s valid for use in URLs (no special characters)
+- Make `operationId` values that are acceptable for use in URLs (no special characters)
 - Use consistent naming patterns across related operations
 
 ## Group APIs with tags
@@ -152,7 +157,8 @@ Per [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3#specific
 
 _"While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points."_
 
-The extensions properties are implemented as patterned fields that are always prefixed by `x-`. The following extensions are supported by Bump.sh:
+The extensions properties are implemented as patterned fields that are always prefixed by `x-`.
+The following extensions are currently used in Elastic OpenAPI documents:
 
 | **Field**       | **Description** |
 |-----------------|-----------------|
@@ -160,24 +166,21 @@ The extensions properties are implemented as patterned fields that are always pr
 | `x-codeSamples` | Defines code examples and their programming language. [Docs](https://docs.bump.sh/help/specification-support/doc-code-samples/) |
 | `x-displayName` | Overrides tag names at the document level to align with documentation standards. |
 | `x-feedbackLink` | Adds a link for users to send feedback. [Docs](https://docs.bump.sh/help/publish-documentation/feedback/) |
-| `x-model` | Used to abbreviate deeply nested/recursive API sections (e.g., Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied via overlays. |
-| `x-state` | Indicates lifecycle state (e.g., “Technical preview; added in 9.1.0”). Appears next to the operation/property. |
+| `x-model` | Used to abbreviate deeply nested/recursive API sections (for example, Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied through overlays. |
+| `x-state` | Indicates lifecycle state (for example, “Technical preview; added in 9.1.0”). Appears next to the operation or property. |
 | `x-topics` | Adds extra pages shown below the introduction. [Docs](https://docs.bump.sh/help/enhance-documentation-content/topics/) |
-
-:::{note}
-For more information, refer to the [Bump.sh page about Extensions](https://docs.bump.sh/help/specification-support/extensions/)
-:::
 
 ## Specify API lifecycle status
 
-In OpenAPI, lifecycle status is communicated through extension properties like `x-state` and the standard `deprecated` field. These annotations indicate deployment compatibility, stability level, and version information.
+In Elastic OpenAPI documents, lifecycle status is communicated through the standard `deprecated` field and the `x-state` extension.
+These annotations indicate deployment compatibility, stability level, and version information.
 
 ### Examples
 
-::::{tab-set}
+:::::{tab-set}
 :group: implementations
 
-:::{tab-item} OpenAPI
+::::{tab-item} OpenAPI
 :sync: openapi
 
 **Availability and stability** is specified using the `x-state` extension property:
@@ -211,103 +214,42 @@ components:
             Deprecated in 8.0.0. Use 'index.blocks.read_only' instead.
             Controls read/write blocks on the index.
 ```
-:::
+::::
 
-:::{tab-item} Elasticsearch
+::::{tab-item} Elasticsearch
 :sync: elasticsearch
 
 **API availability** is specified using the `@availability` annotation:
 
 ```ts
 /**
- * @availability stack
- * @availability serverless
+ * @availability stack since=7.7.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  */
 class FooRequest {
   bar: string
   /**
-   * @availability stack
-   * @availability serverless
+   * @availability stack since=9.3.0 stability=experimental
    */
   baz: string
   faz: string
 }
 ```
 
-**When to use parameter/property-level availability**
-
 Parameter and property-level `@availability` annotations are necessary in specific scenarios:
 
-1. **Mixed deployment availability**: When an API supports both serverless and stateful deployments, but some parameters/properties are only available in one deployment type
+1. **Mixed deployment availability**: When an API supports both serverless and stateful deployments, but some parameters or properties are only available in one deployment type
 2. **Later additions**: When a parameter or property is added after the initial API release, making its availability later than the API-level availability
 
-**API stability** is indicated using the `stability` parameter:
+API stability is indicated using the `stability` parameter, which maps to the following `x-state` labels:
 
-```ts
-/**
- * @availability stack since=8.0.0 stability=beta
- * @availability serverless stability=experimental
- */
-class BetaRequest {
-  // ...
-}
-```
-
-The stability values map to the following `x-state` labels:
 - **`stability=stable`** (default) → "Generally available" 
 - **`stability=beta`** → "Beta"
 - **`stability=experimental`** → "Technical preview"
 
-**Deployment-specific APIs** can be restricted to certain deployment types:
-
-```ts
-export class Example {
-  /**
-   * Available in both (default when no annotations)
-   */
-  fieldBoth1: integer
-
-  /**
-   * @availability serverless
-   */
-  fieldServerlessOnly: integer
-
-  /**
-   * @availability stack
-   */
-  fieldStackOnly: integer
-}
-```
-
-This example shows a mixed deployment scenario where the API itself is available to both deployment types, but individual parameters have different availability constraints.
-
-**Version information** uses the `since=` parameter:
-
-```ts
-/**
- * @availability stack since=7.10.0
- * @availability serverless
- */
-class FooRequest {
-  /**
-   * Added with the original API
-   */
-  originalField: string
-  
-  /**
-   * @availability stack since=7.11.0
-   * @availability serverless
-   */
-  laterAddition: string
-}
-```
-
-This example shows the "later addition" scenario where `laterAddition` was added after the initial API release, requiring a parameter-level availability annotation with a later version than the API-level availability.
-
-:::::{important}
-The `since` field is only available for `stack`. If the API is introduced in multiple major versions (eg: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
-:::::
-
+:::{important}
+The `since` field indicates is only available for `stack` and indicates when the API, parameter, or property was introduced. If the API is introduced in multiple major versions (for example: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
+:::
 
 **Deprecation notices** use the `@deprecated` annotation:
 
@@ -330,17 +272,17 @@ class Foo {
   faz: string
 }
 ```
-:::
-
 ::::
+:::::
 
 :::{important}
-Since we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, etc.), always include the full version information in your `x-state` labels. For example: `Technical preview; added in 9.1.0".
+Because we now only publish API docs for major versions (v8, v9) and not for minor versions (8.1, 8.2, and so on), always include the full version information in your `x-state` labels. For example: "Technical preview; added in 9.1.0".
 :::
 
 ## Document required permissions
 
-Required permissions aren't part of the standard OpenAPI specification, but they can be documented in operation descriptions or through custom extensions. In Elasticsearch, we use annotations that generate structured permission documentation.
+Required permissions aren't part of the standard OpenAPI specification, but they can be documented in operation descriptions.
+In Elasticsearch, we use annotations that generate structured permission documentation.
 
 ### Examples
 

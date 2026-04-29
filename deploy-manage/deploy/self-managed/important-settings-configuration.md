@@ -63,7 +63,7 @@ path:
 ::::::
 :::::::
 
-{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/index-settings/path.md#multiple-data-paths).
+{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/configuration-reference/path.md#multiple-data-paths).
 
 ::::{warning}
 * Don’t modify anything within the data directory or run processes that might interfere with its contents.

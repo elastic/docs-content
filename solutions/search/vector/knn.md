@@ -138,7 +138,7 @@ For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW g
 {applies_to}`stack: ga 9.2` In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
 ::::{tip}
-When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples.
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. Refer to [Optimizing vector storage with `index_options`](vector-storage-for-semantic-search.md) for examples.
 ::::
 
 ```console
@@ -464,9 +464,14 @@ Reference the deployed text embedding model or the model deployment in the `quer
 (...)
 ```
 
-1. The {{nlp}} task to perform. It must be `text_embedding`.
+1. The task to perform. In this case, it is `text_embedding`.
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
+
+:::{tip}
+For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to [Build query vectors for knn search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#build-query-vectors-for-knn-search).
+:::
+
 
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
 

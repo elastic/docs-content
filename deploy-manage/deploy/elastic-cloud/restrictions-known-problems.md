@@ -18,7 +18,7 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
-* [Private connectivity and SSO to {{kib}} URLs](#ec-restrictions-network-security-kibana-sso)
+* [Private connectivity](#ec-restrictions-network-security-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
@@ -80,7 +80,7 @@ $$$ec-restrictions-apis-kibana$$$
 * {{es}} plugins, are not enabled by default for security purposes. Reach out to support if you would like to enable {{es}} plugins support on your account.
 * Some {{es}} plugins do not apply to {{ecloud}}. For example, you won’t ever need to change discovery, as {{ecloud}} handles how nodes discover one another.
 % * In {{es}} 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins {{ecloud}} might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not {{es}} itself.
-% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/data-store/index-basics.md#manage-indices) if you want more detailed information or perform index management actions.
+% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/data-store/perform-index-operations.md#manage-indices) if you want more detailed information or perform index management actions.
 
 
 ## Watcher [ec-restrictions-watcher]
@@ -94,10 +94,12 @@ Watcher comes preconfigured with a directly usable email account provided by Ela
 Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerting/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-network-security-kibana-sso]
+## Private connectivity
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connections. However, you can still SSO into private {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+$$$ec-restrictions-network-security-kibana-sso$$$
 
+```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
+```
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 

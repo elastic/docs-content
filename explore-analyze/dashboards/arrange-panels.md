@@ -39,13 +39,19 @@ To add a collapsible section:
 
 Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.
 
+:::{note} 
+:applies_to: stack: ga 9.4
+
+**Filter controls and sections**: Controls placed inside a collapsible section apply their filters only to panels within that section. Controls placed outside sections, or [pinned to the dashboard header](add-controls.md), have global scope and filter all relevant panels on the dashboard. Refer to [Add filter controls](add-controls.md) for more on pinned and unpinned controls.
+:::
+
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)
 
 ## Move and resize panels [resizing-containers]
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear immediately on the dashboard, and more.
 
-In the toolbar, click **Edit**, then use the following options:
+In the application menu, click **Edit**, then use the following options:
 
 * To move, hover over the panel, click and hold ![The move control icon](/explore-analyze/images/kibana-move-control.png "The move control icon =4%x4%") and drag to the new location. Your screen scrolls automatically when you drag above or below the visible parts of the dashboard.
 * To resize, click and hold the bottom right corner of the panel and drag to the new dimensions.
@@ -88,7 +94,7 @@ To duplicate a panel and its configured functionality, use the clone and copy pa
 
 Duplicated panels appear next to the original panel, and move the other panels to provide a space on the dashboard.
 
-1. In the toolbar, click **Edit**.
+1. In the application menu, click **Edit**.
 2. Open the panel menu and select **Duplicate**.
 
 

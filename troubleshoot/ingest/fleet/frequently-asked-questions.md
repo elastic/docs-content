@@ -11,9 +11,7 @@ products:
 
 # Frequently asked questions [fleet-faq]
 
-We have collected the most frequently asked questions here. If your question isn’t answered here, contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is very valuable to us.
-
-Also read [Troubleshoot common problems](common-problems.md).
+We have collected the most frequently asked questions here. If your question isn’t answered here, [escalate as needed](/troubleshoot/ingest/fleet/fleet-elastic-agent.md#troubleshooting-intro-escalate).
 
 * [Why doesn’t my enrolled agent show up in the {{fleet}} app?](#enrolled-agent-not-showing-up)
 * [Where does {{agent}} store logs after startup?](#where-are-the-agent-logs)

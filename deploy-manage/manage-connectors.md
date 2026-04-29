@@ -12,14 +12,15 @@ products:
 
 # Connectors [connector-management]
 
+This page is about {{kib}} connectors that integrate with services like generative AI model providers or trigger actions in third-party systems. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
+
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-::::{note}
-This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for content connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/search-connectors/index.md).
-
-::::
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors
+:::
 
 ## Required permissions [_required_permissions_2]
 

@@ -19,8 +19,10 @@ You might want to prevent {{ilm-init}} from immediately executing its policy on 
 
 To prevent {{ilm-init}} from executing a restored index’s policy:
 
-1. Temporarily [stop {{ilm-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop). This pauses execution of *all* {{ilm-init}} policies.
-2. Restore the snapshot.
-3. [Remove the policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) from the index or perform whatever actions you need to before {{ilm-init}} resumes policy execution.
-4. [Restart {{ilm-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) to resume policy execution.
+1. In {{kib}}, go to **Data management** and select **Snapshot and Restore**.
+1. From the **Snapshots** page, select the snapshot you wish to restore and then select the **Restore** action.
+1. On the **Index settings** restore page, enable **Reset index settings** and add the `index.lifecycle.name` and `index.lifecycle.rollover_alias` index settings.
+1. Select **Next** and then select **Restore snapshot**.
+
+Alternatively, you can use the [Restore a snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) API with the `ignore_index_settings` option. If you need to re-add the {{ilm-init}} policy, refer to [](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) for details.
 

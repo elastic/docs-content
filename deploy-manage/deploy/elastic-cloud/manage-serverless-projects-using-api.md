@@ -31,6 +31,10 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 
 ## Create an {{serverless-full}} project [general-manage-project-with-api-create-a-serverless-elasticsearch-project]
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/create-project
+:::
+
 ```bash
 curl -H "Authorization: ApiKey $API_KEY" \
      -H "Content-Type: application/json" \
@@ -69,6 +73,10 @@ export PROJECT_ID=cace8e65457043698ed3d99da2f053f6
 ```
 
 ## API examples
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
+:::
 
 The following examples show how to interact with the APIs, covering common operations such as:
 

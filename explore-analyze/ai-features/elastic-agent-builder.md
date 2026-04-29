@@ -13,7 +13,7 @@ products:
 
 # {{agent-builder}}
 
-{{agent-builder}} combines large language models with Elastic-native features for prompt engineering, context engineering, and automation. Key use cases enabled by Agent Builder include:
+{{agent-builder}} is an AI conversational platform that lets you create AI agents that answer questions and take actions over your {{es}} data using natural language. Agents combine LLM reasoning and context engineering with built-in and custom tools that query your indices, so responses are grounded in your data. Key use cases include:
 
 - **Chat with your {{es}} data immediately** using the chat interface, preconfigured agents, and built-in tools available out of the box.
 - **Build custom agents and tools** tailored to your specific use cases using the UI or APIs.
@@ -38,6 +38,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 - **Built-in agents and tools**: Get started immediately with pre-configured [agents](agent-builder/builtin-agents-reference.md) and [tools](agent-builder/tools/builtin-tools-reference.md) available out of the box.
 - **Chat UI**: [Chat with agents](agent-builder/chat.md) in real time using natural language.
 - **Custom and external tools**: Build targeted [custom tools](agent-builder/tools/custom-tools.md) to deliver precise context, or import external tools through the [Model Context Protocol](agent-builder/tools/mcp-tools.md).
+- **Skills**: Extend agents with domain-specific expertise using [built-in skills](agent-builder/builtin-skills-reference.md) or [custom skills](agent-builder/custom-skills.md) that bundle knowledge and tools for specific task domains.
 - **Custom agents**: Create [agents with tailored instructions](agent-builder/custom-agents.md) and toolsets for specific use cases.
 - **MCP and A2A servers**: Expose tools and agents to external clients through the [MCP server](agent-builder/mcp-server.md) and [A2A server](agent-builder/a2a-server.md).
 - **Kibana REST APIs**: Work with Agent Builder functionalities [programmatically](agent-builder/kibana-api.md), including agents, tools, and conversations.
@@ -45,7 +46,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 ## Key concepts
 
-The {{agent-builder}} framework consists of three key components: Agent Chat, Agents, and Tools.
+The {{agent-builder}} framework consists of four key components: Agent Chat, Agents, Skills, and Tools.
 
 ### Agent Chat
 
@@ -59,6 +60,12 @@ Agents are powered by custom LLM instructions and the ability to use tools to an
 
 [**Learn more about agents**](agent-builder/agent-builder-agents.md)
 
+### Skills
+
+Skills are reusable instruction sets that give agents specialized expertise for particular task domains. A skill bundles knowledge content and tools so the agent knows how to approach a specific type of task. Skills load selectively based on the user's query, keeping agent configurations clean while enabling deep domain expertise. Choose from a set of built-in skills, or create your own.
+
+[**Learn more about skills**](agent-builder/skills.md)
+
 ### Tools [tools-concept]
 
 Tools are modular, reusable functions that agents use to search, retrieve, and manipulate {{es}} data. Tools are the primary mechanism for connecting agent capabilities to your data. Choose from a set of built-in tools, or create your own and assign them to your custom agents.
@@ -68,6 +75,8 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 ## Model selection
 
 On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+
+For solution-specific ratings of models tested on {{elastic-sec}} AI chat and AI-powered features, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
 [**Learn more about model selection**](agent-builder/models.md)
 
