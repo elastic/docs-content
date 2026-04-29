@@ -75,7 +75,7 @@ You can add different pieces of a Discover session to a dashboard:
 
 - [The visualization](#add-discover-visualization-to-dashboard)
 - [The data table](#save-table-to-dashboard), that contains the results of a particular query
-- [The entire Discover session](#add-full-discover-session-to-dashboard), that allows you to select between the result tables of all tabs saved with the session when you set up the panel on the dashboard
+- [The entire Discover session](#add-full-discover-session-to-dashboard), that lets you choose which tab to display when you set up the panel on the dashboard
 
 ### Add the Discover visualization to a dashboard [add-discover-visualization-to-dashboard]
 
@@ -118,7 +118,7 @@ serverless: ga
 
 Save the current view of the documents table to a new or existing dashboard without first saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel.
 
-To use this option, you need permission to view and create dashboards. The button isn't available when you edit a Discover session from another application than Discover itself.
+To use this option, you need permission to view and create dashboards. The button isn't available when Discover is opened from another application, such as when editing a session panel from a dashboard.
 
 1. In the documents table toolbar, select {icon}`app_dashboard` **Save table to dashboard**.
 2. Enter a title for the panel, and optionally a description.
@@ -127,7 +127,7 @@ To use this option, you need permission to view and create dashboards. The butto
 
 ### Add an entire Discover session to a dashboard [add-full-discover-session-to-dashboard]
 
-When saving a full Discover session and adding it to a dashboard, it includes its tabs, columns, sort order, and other settings. The resulting dashboard panel can display a single tab as a data table. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab).
+A full Discover session panel retains the session's tabs, columns, sort order, and other settings, and can display a single tab as a data table. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab).
 
 There are several ways to add a full session as a panel:
 
