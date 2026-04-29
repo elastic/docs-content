@@ -14,7 +14,7 @@ products:
 
 You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the {{data-viz}}.
 
-1. Go to the **Integrations** page and search for **Upload a file**.
+1. Open the **Integrations** page using the global search field, then search for **Upload a file** using the integrations search field.
 
 2. Click **Upload a file** to open the {{data-viz}}.
 

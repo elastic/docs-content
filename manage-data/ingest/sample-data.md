@@ -21,17 +21,24 @@ If you have no data, you will be prompted to install these packages when running
 
 To install sample data sets:
 
-1. Go to the **Integrations** page and search for **Sample data**.
-2. Select the sample data set you want to install and click **Install data**.
-
-:::{note}
-{applies_to}`stack: ga 9.0-9.3` In versions 9.0 to 9.3, you must first expand the **Other sample data sets** section to see the available sample data sets.
-:::
-
-:::{image} /manage-data/images/sample-data-sets.png
+1. Open the **Integrations** page using the global search field, then search for **Sample Data** using the integrations search field. 
+2. Click **Sample Data** to open the **Add data** page. 
+3. Select the sample data set you want to install and click **Install data**.
+:::{image} /manage-data/images/sample-data-sets-9.4.png
 :alt: Sample data sets
 :screenshot:
 :::
+
+::::{note}
+:applies_to: stack: ga 9.0-9.3
+
+In versions 9.0 to 9.3, you must first expand the **Other sample data sets** section to see the available sample data sets.
+
+:::{image} /manage-data/images/sample-data-sets.png
+:alt: Sample data sets in versions 9.0 to 9.3
+:screenshot:
+:::
+::::
 
 ## Run the makelogs script
 
