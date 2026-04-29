@@ -36,7 +36,7 @@ PUT _snapshot/my_s3_repository
 
 ## Client settings [repository-s3-client]
 
-{{es}} communicates with S3 through an S3 client. Clients are configured through a combination of [secure settings](/security/secure-settings.md) in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) in `elasticsearch.yml`. Settings use the prefix `s3.client.CLIENT_NAME` plus a suffix such as `access_key`. The full set of client settings is listed under [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
+{{es}} communicates with S3 through an S3 client. Clients are configured through a combination of [secure settings](/deploy-manage/security/secure-settings.md) in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) in `elasticsearch.yml`. Settings use the prefix `s3.client.CLIENT_NAME` plus a suffix such as `access_key`. The full set of client settings is listed under [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
 
 You can define several clients, each with its own settings, using the form `s3.client.CLIENT_NAME.SETTING_NAME`. When the environment is compatible, {{es}} also creates a client named `default`, and `s3` repositories use that client unless the repository [setting `client`](#repository-s3-repository) selects another name.
 
@@ -46,7 +46,7 @@ You can define several clients, each with its own settings, using the form `s3.c
 * In an Amazon ECS task, {{es}} can use temporary [task IAM role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials.
 * On Kubernetes, you can use [service account-based authentication](#iam-kubernetes-service-accounts) with the right setup in the node or pod.
 
-If you do not want to rely on automatic credentials discovery, add explicit keys for a client in the [{{es}} keystore](/security/secure-settings.md). A typical choice for the built-in `default` client is:
+If you do not want to rely on automatic credentials discovery, add explicit keys for a client in the [{{es}} keystore](/deploy-manage/security/secure-settings.md). A typical choice for the built-in `default` client is:
 
 * `s3.client.default.access_key`
 * `s3.client.default.secret_key`
