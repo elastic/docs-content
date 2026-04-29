@@ -37,6 +37,10 @@ To retrieve per-conversation token usage data for a specific agent across users,
 
 This API complements the UI by returning token totals, round counts, LLM call counts, and warning indicators without exposing message content or tool results.
 
+:::{note}
+This API provides visibility into token usage but does not support setting token limits or quotas for users or agents.
+:::
+
 
 ## View token usage in the UI
 

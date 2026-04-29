@@ -871,6 +871,10 @@ Use this API to retrieve per-conversation token usage data for a given agent. Th
 
 The response includes input and output token counts, round counts, LLM call counts, and warnings for conversations with high token usage. No message content or tool results are exposed.
 
+:::{note}
+This API provides visibility into token usage but does not support setting token limits or quotas.
+:::
+
 To understand how token usage is calculated and how to view per-response totals in the UI, refer to [Monitor token usage](monitor-usage.md).
 
 **Example:** Get token consumption for an agent
