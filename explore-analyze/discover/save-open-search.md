@@ -55,7 +55,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 1. In **Discover**, open the Discover session that you want to duplicate.
 2. In the application menu, from the menu next to **Save**, select **Save as**. The **Save Discover session** modal opens.
 3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, in **Add to dashboard**, add the new session to a dashboard at the same time as you save it. For details, refer to [Save a Discover session](#_save_a_discover_session).
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to choose where to save the session. For details, refer to [Save a Discover session](#_save_a_discover_session).
 5. Select **Save**.
 :::
 
@@ -169,7 +169,7 @@ stack: ga 9.5
 serverless: ga
 ```
 
-You can add a Discover session directly to a dashboard when saving it for the first time, as described in [](#_save_a_discover_session).
+You can save a Discover session directly to a new or existing dashboard, as described in [](#_save_a_discover_session).
 
 ### Manage Discover session panels on a dashboard [manage-discover-session-panels]
 
@@ -192,7 +192,7 @@ When editing a Discover session panel from a dashboard, you can save your change
      - If you select the dashboard the panel came from, the original panel is updated in place to reference the new session, in the same position. If the replaced panel was linked to the library, you can still find it unchanged in the library. If the panel wasn't linked to the library, the panel is removed and replaced by the newly saved session.
      - If you select a different dashboard, the original panel is unchanged, and the new session is added as a separate panel on the dashboard you selected.
 
-   - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
+   - **New**: Save the session as a panel on a new dashboard. The original panel is unchanged.
    - **None**: Save the session to the library only, without adding it to a dashboard. The original panel is unchanged.
 
 6. Select **Save and add to library** (when **None** is selected) or **Save and go to dashboard** (when **Existing** or **New** is selected).
