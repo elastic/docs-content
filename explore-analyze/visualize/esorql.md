@@ -63,6 +63,28 @@ When editing an {{esql}} visualization, you can customize the appearance of the 
 
 3. Return to the previous menu, then **Apply and close** the configuration to save your changes.
 
+### Break down a chart by multiple fields [esql-viz-multi-field-breakdown]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+On bar, line, and area charts built from an {{esql}} query, the **Breakdown** dimension can hold more than one field at the same time. Each unique combination of values is rendered as its own series, with the values joined by a `›` separator in the legend.
+
+When the query groups a metric by more than one field, {{kib}} places the first field on the **Horizontal axis** and the remaining fields in the **Breakdown** dimension. For example, the following query counts web log events over time, broken down by host and file extension:
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE extension.keyword != ""
+| STATS count(*) BY BUCKET(@timestamp, 100, ?_tstart, ?_tend), host.keyword, extension.keyword
+```
+
+In the resulting chart, the time buckets are placed on the **Horizontal axis**, while `host.keyword` and `extension.keyword` are combined in the **Breakdown** dimension. Each legend entry represents a unique combination, such as `artifacts.elastic.co › deb` or `artifacts.elastic.co › gz`.
+
+![Stacked bar chart of web log events over time, broken down by host and file extension](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
+
+To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
+
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
 stack: ga 9.1
@@ -75,6 +97,28 @@ The chart configuration resets or follows automatic suggestions when:
 - {applies_to}`stack: ga 9.2+` You manually select a different chart type incompatible with the one previously selected.
 - {applies_to}`stack: ga 9.2+` You create a new chart and haven't edited the visualization's options yet.
 - The query changes significantly and no longer returns compatible columns.
+
+### Query data from multiple projects [esql-viz-cps]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), your {{esql}} visualization queries data based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
+
+To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
+
+## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+{{esql}} visualizations support [dashboard and URL drilldowns](../dashboards/drilldowns.md). Select a data point in an {{esql}} visualization to navigate to another dashboard or an external URL.
+
+::::{note}
+Discover drilldowns are not available for {{esql}} visualizations.
+::::
 
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}

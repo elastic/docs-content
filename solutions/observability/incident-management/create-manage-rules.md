@@ -133,3 +133,13 @@ You can modify the criteria for changing an alert's status to [flapping state](v
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
 {applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
+## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
+:::

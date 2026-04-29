@@ -201,6 +201,11 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
+```yaml {applies_to}
+stack: ga 9.0-9.3, removed 9.4
+serverless: removed
+```
+
 Each time a detection rule runs using a remote cross-cluster search (CCS) index pattern, it will return a warning saying that the rule may not have the required `read` privileges to the remote index. Because privileges cannot be checked across remote indices, this warning displays even when the rule actually does have `read` privileges to the remote index.
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
@@ -229,11 +234,11 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status).
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) and [Set alert closing reason when closing a case](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 
