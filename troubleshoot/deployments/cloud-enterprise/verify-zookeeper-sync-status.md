@@ -61,6 +61,7 @@ The inline shell script command can return the following types of output:
     ZK mntr Response from port 2193:
     zk_server_state follower
     zk_znode_count  777
+    zk_quorum_size 3
     ...
     ```
 
