@@ -27,7 +27,12 @@ For the complete {{esql}} documentation, including all supported commands, funct
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
+2. Switch to {{esql}} mode. You can do this from:
+
+   - **Try {{esql}}** or {icon}`code` **{{esql}}** in the application menu.
+   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+
+   Things to know:
 
    - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to {{esql}} `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
@@ -95,6 +100,11 @@ When you write a query, the {{esql}} editor includes two interactive browsers th
 
 - **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
+
+:::{note}
+:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+[{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
+:::
 
 You can open either browser from:
 
