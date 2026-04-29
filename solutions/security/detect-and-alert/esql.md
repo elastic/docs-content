@@ -174,7 +174,7 @@ This rule detects process-start events with suspicious encoded arguments. The qu
 
 | Field | Value | Purpose |
 |---|---|---|
-| `query` | `FROM ... \| WHERE ... \| LIMIT 100` | A non-aggregating query. Each matching row becomes an alert. <br><br> {applies_to}`stack: ga 9.4+` For deduplication across executions, `METADATA _id` is automatically added if missing, but you must ensure that `_id` appears in the execution results.  <br><br> {applies_to}`stack: ga 9.0-9.3` In earlier versions, include `METADATA _id` (and optionally other metadata fields) after `FROM`. |
+| `query` | `FROM ... \| WHERE ... \| LIMIT 100` | A non-aggregating query. Each matching row becomes an alert. <br><br> {applies_to}`stack: ga 9.4+` For deduplication across executions, `METADATA _id` is automatically added if missing, but you must ensure that `_id` appears in the execution results. Commands that restrict or remove fields (such as `DROP _id` or `KEEP agent.*` which retains only `agent.*` fields) will exclude `_id` from results and prevent deduplication.  <br><br> {applies_to}`stack: ga 9.0-9.3` In earlier versions, include `METADATA _id` (and optionally other metadata fields) after `FROM`. |
 | `LIMIT` | `100` | Caps the number of results per execution. Interacts with the **Max alerts per run** setting, and the rule uses the lower of the two values. |
 
 ## {{esql}} rule field reference [esql-fields]
