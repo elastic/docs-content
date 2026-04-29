@@ -1,7 +1,7 @@
 ---
 navigation_title: Loop break
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the loop.break step, which exits the innermost enclosing foreach or while loop.
 products:
@@ -19,14 +19,14 @@ The `loop.break` step exits the innermost enclosing [`foreach`](/explore-analyze
 
 ## Parameters
 
-`loop.break` takes no parameters.
+The `loop.break` step takes no step-specific parameters; only the standard `name` and `type` fields required on every step.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `loop.break`. |
 
-## Example: stop on first critical match
+## Example: Stop on first critical match
 
 ```yaml
 - name: find_critical

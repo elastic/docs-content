@@ -1,7 +1,7 @@
 ---
 navigation_title: Monitor workflow execution
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Track workflow runs in real time, review execution history, and troubleshoot workflow failures in Kibana.
 products:

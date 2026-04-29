@@ -1,7 +1,7 @@
 ---
 navigation_title: Pass data and handle errors
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Pass data between workflow steps with templating, reference inputs and constants, and handle step failures with retries and fallbacks.
 products:

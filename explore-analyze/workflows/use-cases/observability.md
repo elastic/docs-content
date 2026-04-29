@@ -1,7 +1,7 @@
 ---
 navigation_title: Observability
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Use workflows to respond to anomaly detection alerts, correlate signals across data sources, and automate scheduled data operations in Elastic Observability.
 products:

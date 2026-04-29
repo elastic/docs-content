@@ -1,7 +1,7 @@
 ---
 navigation_title: Use cases
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Explore what you can automate with Elastic Workflows across security, observability, and AI-augmented use cases.
 products:

@@ -1,7 +1,7 @@
 ---
 navigation_title: AI-augmented workflows
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Combine Elastic Workflows with Agent Builder to build AI-augmented workflows that pair deterministic steps with agent reasoning.
 products:

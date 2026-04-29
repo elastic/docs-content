@@ -1,7 +1,7 @@
 ---
 navigation_title: Event-driven triggers
 applies_to:
-  stack: preview 9.4
+  stack: preview 9.4+
   serverless: preview
 description: Run a workflow in response to a platform event. In 9.4, the workflows.failed trigger fires when another workflow execution fails.
 products:
@@ -99,7 +99,7 @@ Reference these fields with Liquid templating inside the handler:
       at step {{ event.error.stepName }}: {{ event.error.message }}
 ```
 
-## Example: page on-call when a critical workflow fails
+## Example: Page on-call when a critical workflow fails
 
 ```yaml
 name: handle-critical-workflow-failures
@@ -151,13 +151,9 @@ steps:
 If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
 
 - Every event includes `event.workflow.isErrorHandler`, which is `true` when the failing workflow is itself a handler. Filter on this in your handler's logic to skip handling your own failures.
-- The execution engine enforces a chain-depth cap on cascading event-driven triggers as a safety net.
+- The execution engine enforces a chain-depth limit on cascading event-driven triggers as a safety net.
 
 In practice, keep handler workflows simpler than the workflows they monitor. A handler that only logs, opens a case, and notifies is less likely to fail than the automation it's handling.
-
-## When this reaches GA
-
-Expect the `workflows.failed` trigger's schema to stabilize and additional event-driven triggers to be added in subsequent releases (for example, {{kib}} lifecycle events, Security detection events, Observability SLO events). Workflows written today against `workflows.failed` will continue to work, but the schema can evolve.
 
 ## Related
 

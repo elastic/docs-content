@@ -1,7 +1,7 @@
 ---
 navigation_title: Automate security operations
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Use workflows to automate security alert response, case creation, enrichment, and notification routing in Elastic Security.
 products:

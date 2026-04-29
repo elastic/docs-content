@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Learn about the if step for conditional logic in workflows.
 products:

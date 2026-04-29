@@ -1,7 +1,7 @@
 ---
 navigation_title: Kibana
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Reference for Kibana action steps, including detection alert management, the generic request escape hatch, and deprecated Case aliases.
 products:
@@ -105,7 +105,7 @@ Generic escape hatch for any {{kib}} API that doesn't have a named step. Authent
 You do not need to pass an `Authorization` header. The workflow engine automatically attaches the correct authentication headers based on the execution context. Don't paste API keys or secrets into the `headers` block; they belong on a configured connector.
 :::
 
-### Example: unisolate a host
+### Example: Unisolate a host
 
 This example calls the Security endpoint management API to unisolate a host.
 

@@ -1,7 +1,7 @@
 ---
 navigation_title: Switch
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the switch step, which routes to different step blocks based on an evaluated expression.
 products:
@@ -15,7 +15,7 @@ products:
 
 # Switch [workflows-switch-step]
 
-The `switch` step evaluates an expression once and dispatches to the first matching case. Use it for multi-way branching where an `if` chain would be awkward (for example, routing by alert category, severity tier, or environment name).
+The `switch` step evaluates an expression once and compares its value against each case's `match` field in order, then dispatches to the first matching case and executes its `steps`. Use it for multi-way branching where an `if` chain would be awkward (for example, routing by alert category, severity tier, or environment name).
 
 ## Parameters
 
@@ -31,7 +31,7 @@ The `switch` step evaluates an expression once and dispatches to the first match
 `cases` is an **array of objects**, not a map of names to step lists. Each entry has a `match` value and a `steps` array. Order matters: the first matching `match` wins.
 :::
 
-## Example: dispatch by alert category
+## Example: Dispatch by alert category
 
 ```yaml
 - name: classify

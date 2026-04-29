@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Learn about workflow triggers and how to create and configure them.
 products:
@@ -96,7 +96,7 @@ Refer to [](/explore-analyze/workflows/triggers/alert-triggers.md) for more info
 ### Event-driven triggers
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 

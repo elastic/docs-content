@@ -1,7 +1,7 @@
 ---
 navigation_title: Data
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the 11 data step types that filter, map, aggregate, parse, and transform data inside a workflow.
 products:

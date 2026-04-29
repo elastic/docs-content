@@ -1,7 +1,7 @@
 ---
 navigation_title: External systems and apps
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Learn about action steps for interacting with external systems such as Slack or Jira.
 products:

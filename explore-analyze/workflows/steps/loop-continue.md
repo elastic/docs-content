@@ -1,7 +1,7 @@
 ---
 navigation_title: Loop continue
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the loop.continue step, which skips to the next iteration of the innermost enclosing foreach or while loop.
 products:
@@ -26,7 +26,7 @@ The `loop.continue` step skips the rest of the current iteration in the innermos
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `loop.continue`. |
 
-## Example: skip benign alerts
+## Example: Skip benign alerts
 
 ```yaml
 - name: process_alerts

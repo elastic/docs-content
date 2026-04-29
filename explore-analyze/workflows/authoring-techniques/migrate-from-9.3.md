@@ -1,7 +1,7 @@
 ---
 navigation_title: Migrate workflows from 9.3 to 9.4
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Port workflows from the 9.3 technical preview to 9.4 GA. Covers the Cases namespace migration, HTTP timeout relocation, and schedule minimum interval.
 products:
@@ -29,9 +29,9 @@ This guide is the side-by-side for the three migrations every 9.3 workflow autho
 
 ## 1. Cases: `kibana.*` aliases to `cases.*` [workflows-migrate-cases]
 
-The biggest migration. Case management moved out of the `kibana.*` namespace into its own `cases.*` namespace, and the new namespace uses `snake_case` parameters instead of the old `camelCase`.
+Case management moved out of the `kibana.*` namespace into its own `cases.*` namespace, and the new namespace uses `snake_case` parameters instead of the old `camelCase`.
 
-9.4 also adds many new case steps that have no 9.3 equivalent. See [Cases action steps](/explore-analyze/workflows/steps/cases.md) for the complete catalog.
+9.4 also adds many new case steps that have no 9.3 equivalent. Check [Cases action steps](/explore-analyze/workflows/steps/cases.md) for the complete catalog.
 
 ### Create a case
 
@@ -76,7 +76,7 @@ Note the parameter rename: `caseId` (camelCase) becomes `case_id` (snake_case). 
 
 ### Update a case
 
-The biggest shape change. The new `cases.updateCase` wraps the field changes in a required `updates` object:
+The new `cases.updateCase` wraps the field changes in a required `updates` object:
 
 ```yaml
 # Old
@@ -97,7 +97,7 @@ The biggest shape change. The new `cases.updateCase` wraps the field changes in 
       severity: "low"
 ```
 
-For single-field changes, prefer the dedicated setters:
+For single-field changes, use the dedicated setters:
 
 ```yaml
 - type: cases.setStatus
@@ -176,14 +176,14 @@ If `every: "30s"` was a proxy for reacting quickly to something, consider switch
 
 Beyond the breaking changes, 9.4 adds many capabilities that don't require you to change existing workflows but are available for new ones:
 
-- **Workflows is enabled by default.** The `workflows:ui:enabled` advanced setting now defaults to `true` on all supported deployments.
-- **27 `cases.*` steps.** Full Cases API coverage. See [Cases action steps](/explore-analyze/workflows/steps/cases.md).
-- **Composition (technical preview).** Call child workflows with typed inputs and outputs. See [Composition steps](/explore-analyze/workflows/steps/composition.md).
-- **Human-in-the-loop.** Pause a workflow and resume on operator input. See [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
-- **Event-driven triggers (technical preview).** React to other workflow failures. See [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
-- **`while` and `switch` flow control.** The flow-control toolbox is complete. See [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md).
-- **Expanded AI steps.** `ai.classify` and `ai.summarize` join `ai.prompt` and `ai.agent`. See [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
-- **Data transformation steps.** 11 `data.*` steps for inline data work: filter, map, aggregate, parse JSON, regex extract, and more. See [Data action steps](/explore-analyze/workflows/steps/data.md).
+- **Workflows is enabled by default.** The `workflows:ui:enabled` advanced setting now defaults to `true` on deployments with the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+- **27 `cases.*` steps.** Full Cases API coverage. To learn more, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
+- **Composition (technical preview).** Call child workflows with typed inputs and outputs. To learn more, refer to [Composition steps](/explore-analyze/workflows/steps/composition.md).
+- **Human-in-the-loop.** Pause a workflow and resume after a human provides input. To learn more, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
+- **Event-driven triggers (technical preview).** React to other workflow failures. To learn more, refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
+- **`while` and `switch` flow control.** Even more control over workflow logic. To learn more, refer to [Flow control steps](/explore-analyze/workflows/steps/flow-control-steps.md).
+- **Expanded AI steps.** `ai.classify` and `ai.summarize` join `ai.prompt` and `ai.agent`. To learn more, refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
+- **Data transformation steps.** 11 `data.*` steps for inline data work: filter, map, aggregate, parse JSON, regex extract, and more. To learn more, refer to [Data action steps](/explore-analyze/workflows/steps/data.md).
 
 ## Related
 

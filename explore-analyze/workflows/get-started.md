@@ -1,7 +1,7 @@
 ---
 navigation_title: Get started
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Start using Elastic Workflows by turning on the feature, configuring access, and building your first workflow.
 products:

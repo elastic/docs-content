@@ -1,7 +1,7 @@
 ---
 navigation_title: Flow control
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: The 8 flow-control step types for branching, iterating, looping, pausing, and waiting for human input in workflows.
 products:

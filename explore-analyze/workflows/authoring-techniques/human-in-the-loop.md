@@ -1,7 +1,7 @@
 ---
 navigation_title: Human-in-the-loop
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Pause a workflow to wait for human input, then resume with the reviewer's decision using the waitForInput step.
 products:
@@ -27,6 +27,15 @@ Not every decision should be fully automated. *Human-in-the-loop* (HITL) is the 
 ## The mechanism: `waitForInput`
 
 HITL is built on one step type: [`waitForInput`](/explore-analyze/workflows/steps/flow-control-steps.md#waitforinput). When the workflow reaches it, execution pauses. The reviewer sees the message (optionally with a form generated from a JSON Schema). When they respond, the workflow resumes with their input available as `steps.<step_name>.output`.
+
+## Design a good HITL form
+
+A HITL message is read by a human mid-incident. Design for speed:
+
+- **Lead with the decision.** The first line should say what the reviewer needs to decide.
+- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the reviewer doesn't have to dig.
+- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough.
+- **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
 
 ## Write a HITL workflow
 
@@ -109,7 +118,7 @@ Execution pauses at `review`. Until a reviewer responds, the execution state is 
 
 ## Resume a paused workflow
 
-Two ways to resume a `waitForInput` step.
+Resume a paused workflow using the following methods.
 
 ### From the Kibana UI
 
@@ -131,19 +140,10 @@ Content-Type: application/json
 
 The input body is available to subsequent steps as `steps.<step_name>.output`. Reference individual fields like `{{ steps.review.output.approved }}` and `{{ steps.review.output.notes }}`.
 
-## Design a good HITL form
-
-A HITL message is read by a human mid-incident. Design for speed:
-
-- **Lead with the decision.** The first line should say what the reviewer needs to decide.
-- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the reviewer doesn't have to dig.
-- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough.
-- **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
-
 ## What happens while the workflow is paused
 
 - The execution is in the `WAITING_FOR_INPUT` state. It appears in the execution history with a resume action.
-- There's no default timeout on `waitForInput`. The workflow waits indefinitely. To cap the wait, set a workflow-level `settings.timeout`.
+- There's no default timeout on `waitForInput`. The workflow waits indefinitely. To limit the wait, set a workflow-level `settings.timeout`.
 - If the workflow-level `settings.timeout` elapses before the reviewer responds, the execution is cancelled.
 
 ## Related

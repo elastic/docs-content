@@ -1,7 +1,7 @@
 ---
 navigation_title: Composition
 applies_to:
-  stack: preview 9.4
+  stack: preview 9.4+
   serverless: preview
 description: Invoke child workflows with typed inputs and outputs. Use composition to build reusable workflow building blocks and fan out to background jobs.
 products:
@@ -107,7 +107,7 @@ Emit the final outputs of a workflow. Outputs are validated against the workflow
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `status` | top level | string | No | `completed` (default), `cancelled`, or `failed`. |
-| (output values) | `with` | object | Yes | Output values that match the declared output schema. |
+| output values | `with` | object | Yes | Output values that match the declared output schema. |
 
 ```yaml
 outputs:
@@ -126,7 +126,7 @@ steps:
       enrichment_stats: "${{ steps.stats.output }}"
 ```
 
-`workflow.output` is terminal: once it runs, the workflow reports its outputs to the caller and exits.
+`workflow.output` is terminal. Once it runs, the workflow reports its outputs to the caller and exits.
 
 ## `workflow.fail` [workflow-fail]
 

@@ -1,9 +1,9 @@
 ---
 navigation_title: Cases
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
-description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in any Cases-enabled app.
+description: Reference for the Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in Kibana, Observability, and Security.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -28,9 +28,11 @@ Use Cases steps for patterns like:
 
 Every `cases.*` step shares the same conventions, so once you learn one step the others are predictable.
 
-**Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. (Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.)
+**Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.
 
-**Optional `push-case` config.** Many `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds. Refer to each step's parameters for whether `push-case` is supported.
+**Optional `push-case` config.** Most `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds.
+
+`push-case` applies only to steps that change a case. It is not supported on the read-only and internal steps: `cases.deleteCase`, `cases.findCases`, `cases.findSimilarCases`, `cases.getAllAttachments`, `cases.getCase`, `cases.getCases`, `cases.getCasesByAlertId`, and `cases.updateObservable`.
 
 ```yaml
 - name: create_and_push
@@ -185,7 +187,7 @@ Output: `{ cases: array, errors: array }`. The `errors` array contains entries f
 
 ### `cases.findCases` [cases-findcases]
 
-Search for cases matching filter criteria. Supports paging, sorting, and filtering by many fields.
+Search for cases matching filter criteria. Supports paging, sorting, and filtering by many fields. The output includes a `cases` array plus per-status counts (`count_open_cases`, `count_in_progress_cases`, `count_closed_cases`), `page`, `per_page`, and `total`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -220,8 +222,6 @@ Search for cases matching filter criteria. Supports paging, sorting, and filteri
     perPage: 20
 ```
 
-The output includes a `cases` array plus per-status counts (`count_open_cases`, `count_in_progress_cases`, `count_closed_cases`), `page`, `per_page`, and `total`.
-
 ### `cases.findSimilarCases` [cases-findsimilarcases]
 
 Find cases similar to a given case, matched by shared observables. Useful for deduplication before creating a new case.
@@ -232,7 +232,7 @@ Find cases similar to a given case, matched by shared observables. Useful for de
 | `page` | `with` | integer | Yes | Page number (1-based). |
 | `perPage` | `with` | integer | Yes | Results per page. |
 
-Output: `{ cases: array, page: integer, per_page: integer, total: integer }`.
+The output includes a `cases` array, `page`, and `per_page`.
 
 ```yaml
 - name: find_similar
@@ -506,7 +506,7 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
         value: "{{ event.alerts[0].file.hash.sha256 }}"
 ```
 
-The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`).
+The `typeKey` must match one of the built-in observable type keys. Examples of accepted values include: `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`
 
 ### `cases.getAllAttachments` [cases-getallattachments]
 
@@ -516,7 +516,7 @@ Fetch every attachment associated with a case without pagination. Use this when 
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 
-Output: `{ attachments: array }`.
+The output is a list of attachments associated with the case you specified.
 
 ```yaml
 - name: list_attachments
@@ -609,7 +609,7 @@ Delete one or more cases permanently, including their attachments and comments.
 ```
 
 :::{warning}
-Deleted cases can't be recovered. Prefer [`cases.closeCase`](#cases-closecase) unless you really need the case removed.
+Deleted cases can't be recovered. If you don't want to permanently delete a case, use [`cases.closeCase`](#cases-closecase) instead.
 :::
 
 ## Migrating from `kibana.*` case aliases [workflows-cases-migration]
@@ -623,7 +623,7 @@ In 9.3, case management lived under the `kibana.*` namespace. Those step types r
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](#cases-addcomment) |
 
-See [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
+Refer to [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
 
 ## Related
 
