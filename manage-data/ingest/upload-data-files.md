@@ -12,15 +12,13 @@ products:
 
 # Upload data files [upload-data-kibana]
 
-You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the Data Visualizer.
+You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the {{data-viz}}.
 
-1. Choose one of the following options to open the {{data-viz}}:
+1. Go to the **Integrations** page and search for **Upload a file**.
 
-   * {applies_to}`stack: ga 9.4+` On the **Getting started** page, select **Upload a file** from the **Add data** menu.
-   * {applies_to}`serverless: ga` On the **Getting started** page, in the **Start with some sample data** section, click **Upload files**.
-   * Open the **Integrations** page using the global search field, search for and click **Upload a file**.
+2. Click **Upload a file** to open the {{data-viz}}.
 
-2. Depending on your version and deployment:
+3. Depending on your version and deployment:
 
     ::::{applies-switch}
 

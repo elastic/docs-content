@@ -19,33 +19,14 @@ The simplest way is to add one or more of our sample data sets. These data sets 
 
 If you have no data, you will be prompted to install these packages when running {{kib}} for the first time.
 
-You can also add sample data from the **Getting started** page:
+To install sample data sets:
 
-:::::{applies-switch}
+1. Go to the **Integrations** page and search for **Sample data**.
+2. Select the sample data set you want to install and click **Install data**.
 
-::::{applies-item} stack: ga 9.4+
-1. From the **Add data** menu, click **Browse sample datasets**. 
-2. On the following **Add data** page, click **Install data** on the type of data you want.
-:::{image} /manage-data/images/sample-data-sets-9.4.png
-:alt: Sample data sets in 9.4+
-:screenshot:
+:::{note}
+{applies_to}`stack: ga 9.0-9.3` In versions 9.0 to 9.3, you must first expand the **Other sample data sets** section to see the available sample data sets.
 :::
-::::
-
-::::{applies-item} serverless: ga
-1. In the **Start with some sample data** section, click **View sample data**. 
-:::{image} /manage-data/images/sample-data-sets-serverless.png
-:alt: Sample data sets on the Getting started page (serverless)
-:screenshot:
-:::
-2. On the following **Add data** page, click **Install data** on the type of data you want.   
-::::
-
-:::::
-
-To access and install sample data sets from the **Integrations** page:
-1. Go to **Integrations** and search for **Sample data**. 
-2. On the **Sample data** page, expand the **Other sample data sets** section and add the type of data you want.
 
 :::{image} /manage-data/images/sample-data-sets.png
 :alt: Sample data sets
