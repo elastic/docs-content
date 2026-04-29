@@ -162,7 +162,7 @@ To use this option, you need permission to access Discover, and the dashboard mu
 3. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
 4. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
-#### Add the session to a dashboard when saving it from Discover [save-discover-session-with-add-to-dashboard]
+#### Add a session to a dashboard when saving it from Discover [save-discover-session-with-add-to-dashboard]
 ```{applies_to}
 stack: ga 9.5
 serverless: ga
