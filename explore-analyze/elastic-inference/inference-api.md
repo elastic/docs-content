@@ -12,8 +12,8 @@ products:
 
 {{es}} provides a machine learning [{{infer}} API]({{es-apis}}group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint using the [create an inference endpoint API]({{es-apis}}operation/operation-inference-put).
-Alternatively, you can use [EIS](/explore-analyze/elastic-inference/eis.md) or [External inference](/explore-analyze/elastic-inference/external.md) apps in {{kib}}.
+You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint using the [create an {{infer}} endpoint API]({{es-apis}}operation/operation-inference-put).
+Alternatively, you can use [EIS](/explore-analyze/elastic-inference/eis.md) or [External {{infer}}](/explore-analyze/elastic-inference/external.md) apps in {{kib}}.
 
 ## Default {{infer}} endpoints [default-enpoints]
 
@@ -28,6 +28,8 @@ The following section lists the default {{infer}} endpoints, identified by their
 ### Default endpoints for Elastic {{infer-cap}} Service (EIS)
 
 - `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`self: unavailable` {applies_to}`serverless: preview`
+
+For more information, refer to [](/explore-analyze/elastic-inference/eis-supported-models.md).
 
 ### Default endpoints used on ML-nodes
 
