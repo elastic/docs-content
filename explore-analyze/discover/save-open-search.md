@@ -133,7 +133,7 @@ There are several ways to add a full session as a panel:
 
 - [Add a saved session from the dashboard library](#add-discover-session-from-library)
 - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Create a **Discover session** panel from the dashboard's **Add** menu](#add-ad-hoc-discover-session-panel)
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save the session from Discover with a relevant **Add to dashboard** option selected](#save-discover-session-with-add-to-dashboard)
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save a session from Discover with a relevant **Add to dashboard** option selected](#save-discover-session-with-add-to-dashboard)
 - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Save Discover panel edits initiated from a dashboard as a new session](#discover-session-save-as-from-dashboard)
 
 #### Add a saved session from the dashboard library [add-discover-session-from-library]
