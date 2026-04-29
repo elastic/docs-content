@@ -3,8 +3,7 @@ navigation_title: Inference integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga 9.0-9.3
 products:
   - id: kibana
 ---
@@ -17,6 +16,12 @@ You can use the default {{infer}} endpoints your deployment contains or create a
 
 - using the [Create an inference endpoint API]({{es-apis}}operation/operation-inference-put)
 - through the [Inference endpoints UI](#add-inference-endpoints).
+
+:::{important}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+The **{{infer-cap}} endpoints** app has been replaced by [Elastic Inference](/explore-analyze/elastic-inference/eis.md) and [External Inference](/explore-analyze/elastic-inference/external.md) apps.
+:::
 
 ## Default {{infer}} endpoints [default-enpoints]
 
@@ -38,6 +43,8 @@ The following section lists the default {{infer}} endpoints, identified by their
 - `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
 
 Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
+
+For an end-to-end tutorial on using {{infer}} endpoints with `semantic_text` fields, refer to [Semantic search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 
 ## {{infer-cap}} endpoints UI [inference-endpoints]
 

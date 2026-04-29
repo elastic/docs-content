@@ -78,8 +78,11 @@ Downsampling supports two methods for reducing multiple values in the same bucke
     * Stores the first value, and stores up to two data points if a counter reset is detected {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`. The field type is preserved.
     * In previous versions, only the last value is stored.
   * `histogram` fields {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
-    * Merges individual histograms into a single histogram, preserving the field type. Both the [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) and the
-    [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md)) are supported; the `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm for merging.
+    * Merges individual histograms into a single histogram, preserving the field type. 
+    
+      All three histogram field types are supported: [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md), [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md), and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
+      
+      The `histogram` and the `tdigest` field type use the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm for merging.
 
 :::{tip}
 When downsampling a downsampled index, use the same downsampling method as the source index.
