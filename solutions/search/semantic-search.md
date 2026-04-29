@@ -57,7 +57,7 @@ You can also deploy NLP in {{es}} manually, without using an {{infer}} endpoint.
 For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](vector/dense-versus-sparse-ingest-pipelines.md).
 
 ::::{tip}
-Refer to [vector queries and field types](vector.md#vector-queries-and-field-types) for a quick reference overview.
+Refer to [vector queries and field types](vector.md#vector-queries-and-field-types) for a quick reference overview. To reduce the memory footprint of dense vector embeddings, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 ::::
 
 ## Learn more [semantic-search-read-more]

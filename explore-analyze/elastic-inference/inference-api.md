@@ -44,6 +44,8 @@ The following section lists the default {{infer}} endpoints, identified by their
 
 Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
 
+For an end-to-end tutorial on using {{infer}} endpoints with `semantic_text` fields, refer to [Semantic search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md).
+
 ## {{infer-cap}} endpoints UI [inference-endpoints]
 
 The **{{infer-cap}} endpoints** page provides an interface for managing {{infer}} endpoints.

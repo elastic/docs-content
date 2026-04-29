@@ -179,6 +179,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Fixes [elastic-security-9.3.0-fixes]
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678).
 * Fixes the **Get started** page visibility for users with read-only privileges for rules [#247355]({{kib-pull}}247355).
 * Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
@@ -450,6 +451,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.2.0-fixes]
 
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes an issue where the names of the `Security solution default` and `Security solution alerts` data views were displayed incorrectly [#238354]({{kib-pull}}238354).
 * Fixes an issue where the navigation manu overlapped expandable flyouts [#236655]({{kib-pull}}236655).
 * Ensures the data view picker icon is always vertically centered [#236379]({{kib-pull}}236379).
@@ -571,6 +573,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
 
 ### Fixes [elastic-security-9.1.5-fixes]
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
 * Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).
