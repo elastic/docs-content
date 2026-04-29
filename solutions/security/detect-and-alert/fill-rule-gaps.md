@@ -59,9 +59,9 @@ Within the **Rule Monitoring** tab **Rules** table, several columns provide gap 
 
 | Column | Description |
 |--------|-------------|
+| Gap fill status | {applies_to}`stack: ga 9.3+` Shows whether unfilled gaps remain, a gap-fill run is in progress, every gap is filled, and more. Refer to the [Gap status](#gap-status) table for the available statuses. |
 | Last Gap (if any) | How long the most recent gap lasted. |
 | Unfilled gaps duration | Total duration of remaining unfilled or partially filled gaps. The total can change based on the time range you select (data on gaps older than 90 days is not retained). If a rule has no gaps, the column displays a dash (`––`). |
-| Gap fill status | {applies_to}`stack: ga 9.3+` Shows whether unfilled gaps remain, a gap-fill run is in progress, every gap is filled, and more. Refer to the [Gap status](#gap-status) table for the available statuses. |
 
 #### Gap status [gap-status]
 
