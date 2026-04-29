@@ -33,7 +33,7 @@ This allows you to run a workflow manually by:
 Manual triggers can accept input parameters, which you can reference in any step. When you define inputs at the workflow level, users are prompted to provide values when they run the workflow. 
 
 :::{tip}
-Refer to [](/explore-analyze/workflows/data.md#workflows-constants-or-inputs) to learn when to use inputs or constants in workflows.
+Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md#workflows-constants-or-inputs) to learn when to use inputs or constants in workflows.
 :::
 
 
