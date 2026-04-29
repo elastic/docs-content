@@ -8,7 +8,9 @@ applies_to:
 # Slow query and index logging
 
 :::{note}
-For search operations, {applies_to}`stack: preview 9.4` {applies_to}`serverless: unavailable` [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) provides a unified alternative to slow logs. Query logging captures the end-to-end request duration as measured by {{es}}, while slow logs only capture shard-level execution time. Query logging also covers all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration. We recommend migrating search-related slow log usage to query logging. Slow logs remain the only option for indexing operations.
+:applies_to: {"stack": "preview 9.4", "serverless": "unavailable"}
+
+For search operations, [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) provides a unified alternative to slow logs. Query logging captures the end-to-end request duration as measured by {{es}}, while slow logs only capture shard-level execution time. Query logging also covers all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration. We recommend migrating search-related slow log usage to query logging. Slow logs remain the only option for indexing operations.
 :::
 
 The slow log records search and indexing operations that exceed time thresholds you define.
