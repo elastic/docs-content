@@ -73,6 +73,7 @@ To retrieve all available skills programmatically, use the [List skills](https:/
 - Learn how to create your own in [Custom skills](custom-skills.md).
 - Write effective custom skill instructions with the [Skill creation guidelines](skill-creation-guidelines.md).
 - Explore [Tools in {{agent-builder}}](tools.md) to understand how tools and skills relate.
+- Bundle skills for distribution using [Plugins in {{agent-builder}}](plugins.md).
 
 ## Related pages
 
