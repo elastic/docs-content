@@ -209,6 +209,7 @@ A Discover session panel displays one tab at a time. When the underlying session
 
    :::{image} /explore-analyze/images/discover-session-tab-selector.png
    :alt: Tab selector showing the list of available tabs for a Discover session panel
+   :width: 50%
    :screenshot:
    :::
 
