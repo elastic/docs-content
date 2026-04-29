@@ -52,7 +52,7 @@ You can export a dashboard from {{kib}} in two formats. Use the table to choose 
 | Format | Use it to | What it includes |
 |---|---|---|
 | [NDJSON](#export-ndjson) | Move dashboards between spaces or clusters, back them up, or share them in bulk. | The selected dashboards along with their related objects, such as data views and visualizations. Supports exporting multiple dashboards at once. |
-| [JSON](#export-dashboard-json) {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its stored state. | One dashboard, with the panel types and properties that the dashboards API supports. Any panel types and properties not supported by the API are listed in the export flyout and removed from the export. |
+| [JSON](#export-dashboard-json) {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its state. | One dashboard, with the panel types and properties that the dashboards API supports. Any panel types and properties not supported by the API are listed in the export flyout and removed from the export. |
 
 ### Export as NDJSON saved objects [export-ndjson]
 
@@ -72,7 +72,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the stored state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
 
 To export a dashboard as JSON:
 
