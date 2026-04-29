@@ -18,11 +18,9 @@ If you are looking for a hosted solution of {{es}} on AWS, visit [https://www.el
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
 
-{{es}} communicates with S3 through a dedicated S3 client module. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`. If you don't provide explicit S3 client configuration, {{es}} will try to obtain credentials from the environment it's running in.
-
 ## Getting started [repository-s3-usage]
 
-To register an S3 repository, specify the type as `s3` when creating the repository. The only mandatory setting is the bucket name:
+To register an S3 repository, specify the type as `s3` when creating the repository. The only mandatory [repository setting](#repository-s3-repository) is the bucket name:
 
 ```console
 PUT _snapshot/my_s3_repository
@@ -34,17 +32,29 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-By default, an S3 repository will attempt to obtain its credentials automatically from the environment. For instance, if {{es}} is running on an AWS EC2 instance then it will attempt to use the [EC2 Instance Metadata Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) to obtain temporary credentials for the [instance IAM role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html). Likewise, if {{es}} is running in AWS EC2, then it will automatically obtain temporary [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication. To disable this behavior, specify an access key, a secret key, and optionally a session token, in the {{es}} keystore.
+[Client settings](#repository-s3-client) cover authentication and how a repository picks a client name. The `PUT` request above only registers the `s3` type and `bucket`. Place your S3 client configuration in that section, unless automatic credential discovery already applies in your environment.
 
 ## Client settings [repository-s3-client]
 
-You can configure multiple S3 clients, each with its own settings. Client settings use the form `s3.client.CLIENT_NAME.SETTING_NAME`.
+{{es}} communicates with S3 through an S3 client. Clients are configured through a combination of [secure settings](/security/secure-settings.md) in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) in `elasticsearch.yml`. Settings use the prefix `s3.client.CLIENT_NAME` plus a suffix such as `access_key`. The full set of client settings is listed under [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
 
-By default, {{es}} configures a client named `default` when it detects a compatible environment. `s3` repositories use this client unless another client is specified with the [repository setting](#repository-s3-repository) `client`.
+You can define several clients, each with its own settings, using the form `s3.client.CLIENT_NAME.SETTING_NAME`. When the environment is compatible, {{es}} also creates a client named `default`, and `s3` repositories use that client unless the repository [setting `client`](#repository-s3-repository) selects another name.
+
+`default` can use automatic credential discovery when available:
+
+* On an EC2 instance, the [EC2 Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) can provide temporary credentials for the [instance IAM role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html).
+* In an Amazon ECS task, {{es}} can use temporary [task IAM role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials.
+* On Kubernetes, you can use [service account-based authentication](#iam-kubernetes-service-accounts) with the right setup in the node or pod.
+
+If you do not want to rely on automatic credentials discovery, add explicit keys for a client in the [{{es}} keystore](/security/secure-settings.md). A typical choice for the built-in `default` client is:
+
+* `s3.client.default.access_key`
+* `s3.client.default.secret_key`
+* `s3.client.default.session_token` (optional)
+
 
 S3 client settings cover authentication, region and endpoint selection, proxy/network configuration, and connection or retry tuning.
 For a complete list of all S3 client settings, refer to [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
-
 
 ## Repository settings [repository-s3-repository]
 
@@ -56,10 +66,12 @@ PUT _snapshot/my_s3_repository
   "type": "s3",
   "settings": {
     "bucket": "my-bucket",
-    "another_setting": "setting-value"
+    "client": "default" <1>
   }
 }
 ```
+
+1. `client` must refer to a configured S3 client. If omitted, the `default` client is used.
 
 Available repository settings define storage placement, snapshot data handling, storage and encryption behavior, throughput limits, and multipart upload tuning.
 For a complete list of all S3 repository settings, refer to [S3 repository settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-repository-settings).
