@@ -63,7 +63,7 @@ Within the **Rule Monitoring** tab **Rules** table, several columns provide gap 
 | Last Gap (if any) | How long the most recent gap lasted. |
 | Unfilled gaps duration | Total duration of remaining unfilled or partially filled gaps. The total can change based on the time range you select (data on gaps older than 90 days is not retained). If a rule has no gaps, the column displays a dash (`––`). |
 
-#### Gap status [gap-status]
+#### Gap fill status [gap-fill-status]
 
 ```yaml {applies_to}
 stack: ga 9.3+
