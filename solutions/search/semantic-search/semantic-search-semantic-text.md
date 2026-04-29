@@ -127,6 +127,10 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 :::
 
 :::{note}
+Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations).
+:::
+
+:::{note}
 For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md). For advanced configuration, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
 :::
 
