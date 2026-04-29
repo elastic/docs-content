@@ -496,7 +496,7 @@ When creating or editing a visualization, you can customize several appearance o
 :   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
 
 **Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
-:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced.
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 #### Pie charts
 
