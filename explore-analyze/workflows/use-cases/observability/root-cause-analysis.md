@@ -1,7 +1,7 @@
 ---
 navigation_title: Root cause analysis
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build an observability workflow that runs an Agent Builder agent on an alert, then opens a case populated with the agent's root-cause analysis and supporting investigation steps.
 products:

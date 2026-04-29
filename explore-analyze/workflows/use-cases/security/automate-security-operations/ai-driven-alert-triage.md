@@ -1,7 +1,7 @@
 ---
 navigation_title: AI-driven alert triage
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that uses an Agent Builder agent to analyze Attack Discovery alerts, create a case with the analysis attached, isolate the affected host, and notify the SOC.
 products:

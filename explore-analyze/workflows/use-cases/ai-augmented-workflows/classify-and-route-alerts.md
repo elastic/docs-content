@@ -1,7 +1,7 @@
 ---
 navigation_title: Classify and route alerts
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that classifies incoming items with ai.classify, routes each item down a different branch, and summarizes the result with ai.summarize.
 products:

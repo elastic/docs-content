@@ -1,7 +1,7 @@
 ---
 navigation_title: Run rules on demand
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that manually re-runs a set of detection rules over a configurable time range, useful for gap-filling, post-incident review, or scheduled rule-health checks.
 products:

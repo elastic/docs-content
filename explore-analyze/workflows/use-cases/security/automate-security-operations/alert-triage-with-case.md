@@ -1,7 +1,7 @@
 ---
 navigation_title: Triage alerts into cases
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that triages a detection alert by enriching it, opening a case with the alert and observables attached, isolating the host, and notifying the on-call analyst.
 products:

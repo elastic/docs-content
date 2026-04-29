@@ -1,7 +1,7 @@
 ---
 navigation_title: Enrich with threat intel
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a small enrichment workflow that calls a threat intelligence API from an alert or on demand, and displays the reputation result for analysts or follow-up steps.
 products:

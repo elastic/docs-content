@@ -1,7 +1,7 @@
 ---
 navigation_title: Compose workflows
 applies_to:
-  stack: preview 9.4
+  stack: preview 9.4+
   serverless: preview
 description: Decompose long workflows into reusable child workflows. Design the input and output contract, test children in isolation, and fan out with asynchronous composition.
 products:
