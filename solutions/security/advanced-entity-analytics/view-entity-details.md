@@ -28,8 +28,8 @@ The entity details flyout includes the following sections:
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
 * [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
-* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
+* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
 
@@ -128,7 +128,7 @@ To add an entity to the group, search by entity name or ID in the **Add entities
 ### Visualizations [visualizations]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless: planned
 ```
 
 ::::{admonition} Requirements
