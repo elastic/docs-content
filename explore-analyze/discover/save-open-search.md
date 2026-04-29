@@ -134,7 +134,7 @@ There are several ways to add a full session as a panel:
 - [Add a saved session from the dashboard library](#add-discover-session-from-library)
 - {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Create a **Discover session** panel from the dashboard's **Add** menu](#add-ad-hoc-discover-session-panel)
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save the session from Discover with a relevant **Add to dashboard** option selected](#save-discover-session-with-add-to-dashboard)
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save Discover panel edits initiated from a dashboard as a new session](#discover-session-save-as-from-dashboard)
+- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Save Discover panel edits initiated from a dashboard as a new session](#discover-session-save-as-from-dashboard)
 
 #### Add a saved session from the dashboard library [add-discover-session-from-library]
 
@@ -172,16 +172,20 @@ You can add a Discover session directly to a dashboard when saving it for the fi
 
 #### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
 ```{applies_to}
-stack: ga 9.5
+stack: ga 9.4
 serverless: ga
 ```
 
-When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session and place it on a dashboard, instead of updating the panel in place. This works whether the panel was added from the library or created directly on the dashboard.
+When editing a Discover session panel from a dashboard, you can save your changes as a new Discover session, instead of updating the panel in place. This works whether the panel was added from the library or created directly on the dashboard.
 
 1. On the dashboard, hover over the panel and select {icon}`pencil` **Edit Discover session configuration**. Discover opens in embedded editor mode.
 2. Make your changes in **Discover**.
 3. In the application menu, open the menu next to **Save and return** and select **Save as**.
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.5, serverless: ga }
 5. In **Add to dashboard**, choose where to display the new session:
 
    - **Existing**: Add the new session to a dashboard you select.
@@ -192,9 +196,16 @@ When editing a Discover session panel from a dashboard, you can save your change
    - **New**: Save the session and add it as a panel on a new dashboard. The original panel is unchanged.
    - **None**: Save the session to the library only, without adding it to a dashboard. The original panel is unchanged.
 
-6. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
+6. Select **Save and add to library** (when **None** is selected) or **Save and go to dashboard** (when **Existing** or **New** is selected).
 
 After saving, you go to the new session in **Discover** when you selected **None**, or to the corresponding dashboard when you selected **Existing** or **New**.
+::::
+
+::::{applies-item} { stack: ga 9.4 }
+5. Select **Save**. The new session is saved to the library. Discover opens the new session.
+::::
+
+:::::
 
 #### Choose which tab a session panel displays [discover-session-choose-tab]
 ```{applies_to}
