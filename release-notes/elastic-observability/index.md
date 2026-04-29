@@ -53,7 +53,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Features and enhancements [elastic-observability-9.3.1-features-enhancements]
-* Adds a concat processor to Streams [#247940]({{kib-pull}}247940).
 * Adds error handling to {{observability}} landing page redirect logic [#254171]({{kib-pull}}254171).
 * Adds support for ECS formatted errors in service details [#254138]({{kib-pull}}254138).
 
