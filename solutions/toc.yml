@@ -569,6 +569,9 @@ toc:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/agent-builder/agent-builder.md
+            children:
+              - file: security/ai/agent-builder/skills-model.md
+              - file: security/ai/agent-builder/skills-use-cases.md
           - file: security/ai/attack-discovery.md
             children:
               - file: security/ai/triage-attack-discovery-findings.md
