@@ -163,7 +163,7 @@ Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to al
 
 To use these models:
 
-- {applies_to}`stack: ga 9.3` You need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually, depending on the model.
+- {applies_to}`stack: ga 9.3` You need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually.
 - {applies_to}`stack: ga 9.4+` Use the preconfigured {{infer}} endpoints or create custom endpoints as described in [](/explore-analyze/elastic-inference/eis.md).
 
 ### LLMs 
