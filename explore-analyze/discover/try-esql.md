@@ -27,7 +27,12 @@ For the complete {{esql}} documentation, including all supported commands, funct
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
+2. Switch to {{esql}} mode. You can do this from:
+
+   - **Try {{esql}}** or {icon}`code` **{{esql}}** in the application menu.
+   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+
+   Things to know:
 
    - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to {{esql}} `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
