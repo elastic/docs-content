@@ -94,7 +94,7 @@ You need permission to view and create dashboards.
 
 :::{note}
 :applies_to: stack: ga 9.0-9.2
-In these versions, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, use the [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) workflow instead.
+In these versions, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
 :::
 
 #### In classic mode [add-discover-visualization-classic]
