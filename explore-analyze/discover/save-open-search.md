@@ -53,9 +53,9 @@ If the saved Discover session is associated with a different {{data-source}} tha
 5. Click **Save**.
 
 
-## Add search results to a dashboard [_add_search_results_to_a_dashboard]
+## Use Discover sessions in dashboards [_add_search_results_to_a_dashboard]
 
-Add the current Discover session to a dashboard as a new panel. You can save the table directly from the Discover toolbar, or add a previously saved Discover session from the dashboard library.
+Add a Discover session to a dashboard as a new panel, and configure how the panel behaves once it's there. You can add the current session directly from the Discover toolbar, or pick a previously saved session from the dashboard library. After a panel is on the dashboard, you can choose which tab it displays or save your edits as a new session.
 
 ### Save the table directly from Discover [save-table-to-dashboard]
 ```{applies_to}
