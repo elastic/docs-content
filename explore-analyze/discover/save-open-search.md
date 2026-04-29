@@ -36,7 +36,7 @@ By default, a Discover session stores the query text, filters, and current view 
 1. Once you’ve created a view worth saving, select **Save** in the application menu. A modal with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, under **Add to dashboard**, add the session to a dashboard at the same time as you save it. For details, refer to [Save the session from Discover, with Add to dashboard](#save-discover-session-with-add-to-dashboard).
+    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
@@ -55,27 +55,30 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 ## Use Discover sessions in dashboards [_add_search_results_to_a_dashboard]
 
-You can surface three kinds of Discover content as panels on a dashboard:
+You can add different pieces of a Discover session to a dashboard:
 
-- [The visualization of a session tab](#add-discover-visualization-to-dashboard): the chart that sits above the documents table when you run an {{esql}} query.
-- [The documents table of a session tab](#save-table-to-dashboard): the data grid below the chart.
-- [A full Discover session](#add-full-discover-session-to-dashboard): a panel backed by the session itself, with several routes for adding it.
+- [The visualization](#add-discover-visualization-to-dashboard)
+- [The data table](#save-table-to-dashboard), that contains the results of a particular query
+- [The entire Discover session](#add-full-discover-session-to-dashboard), that allows you to select between the result tables of all tabs saved with the session when you set up the panel on the dashboard
 
-### Add the visualization of a session tab to a dashboard [add-discover-visualization-to-dashboard]
+### Add the Discover visualization to a dashboard [add-discover-visualization-to-dashboard]
 
-When an {{esql}} query in Discover produces a chart, you can save that chart as a Lens panel on a new or existing dashboard, without saving the Discover session itself.
+When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself.
 
 To use this option, you need permission to view and create dashboards. The button only appears for {{esql}} queries.
 
 1. In Discover, run an {{esql}} query that produces a chart.
-2. Above the chart, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in stack versions earlier than 9.4).
+2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** or {icon}`save` **Save visualization** depending on the version you're using.
 3. Enter a title for the panel, and optionally a description.
-4. Under **Add to dashboard**, select **New** to create a dashboard, or **Existing** to pick one from the list.
-5. Select **Save and go to Dashboard**.
+4. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
+5. Select **Save and go to dashboard**.
 
-If your query also defines [variable controls](try-esql.md#add-variable-control), use the dedicated [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) workflow instead, so the controls are added to the dashboard alongside the visualization.
+:::{note}
+:applies_to: stack: 9.0-9.2
+In the specified versions of {{kib}}, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. Check [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) for more information.
+:::
 
-### Add the documents table of a session tab to a dashboard [save-table-to-dashboard]
+### Add the Discover table to a dashboard [save-table-to-dashboard]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
@@ -83,73 +86,61 @@ serverless: ga
 
 Save the current view of the documents table to a new or existing dashboard without first saving the Discover session to the library. The resulting panel stores its configuration with the dashboard, so later changes to the Discover session don't affect the panel.
 
-To use this option, you need permission to view and create dashboards. The button isn't available when you're editing Discover inline from another app, such as the dashboard embeddable editor.
+To use this option, you need permission to view and create dashboards. The button isn't available when you edit a Discover session from another application than Discover itself.
 
 1. In the documents table toolbar, select {icon}`app_dashboard` **Save table to dashboard**.
 2. Enter a title for the panel, and optionally a description.
-3. Under **Add to dashboard**, select **New** to create a dashboard, or **Existing** to pick one from the list.
-4. Select **Save and go to Dashboard**.
+3. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
+4. Select **Save and go to dashboard**.
 
-### Add a full Discover session to a dashboard [add-full-discover-session-to-dashboard]
+### Add an entire Discover session to a dashboard [add-full-discover-session-to-dashboard]
 
-A full session panel is backed by a Discover session, including its tabs, columns, sort order, and other settings. The panel always displays a single tab as a documents table; if the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab).
+When saving a full Discover session and adding it to a dashboard, it includes its tabs, columns, sort order, and other settings. The resulting dashboard panel can display a single tab as a data table. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab).
 
 There are several ways to add a full session as a panel:
 
-- [Pick a saved session from the dashboard library](#add-discover-session-from-library)
-- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Create an ad hoc session from the dashboard Add panel menu](#add-ad-hoc-discover-session-panel)
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save the session from Discover, with Add to dashboard](#save-discover-session-with-add-to-dashboard)
-- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Save panel edits as a new session](#discover-session-save-as-from-dashboard)
+- [Add a saved session from the dashboard library](#add-discover-session-from-library)
+- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Create a **Discover session** panel from the dashboard's **Add** menu](#add-ad-hoc-discover-session-panel)
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save the session from Discover with a relevant **Add to dashboard** option selected](#save-discover-session-with-add-to-dashboard)
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Save Discover panel edits initiated from a dashboard as a new session](#discover-session-save-as-from-dashboard)
 
-#### Pick a saved session from the dashboard library [add-discover-session-from-library]
+#### Add a saved session from the dashboard library [add-discover-session-from-library]
 
 Use this method to add a session that's already saved to the library.
 
 1. Save the Discover session following the steps in [Save a Discover session](#_save_a_discover_session).
 2. Go to **Dashboards**.
-3. Open or create the dashboard, then select **Edit**.
-4. Select **Add from library**.
+3. Open or create the dashboard, then switch to **Edit** mode if necessary.
+4. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
 5. From the **Types** dropdown, select **Discover session**.
 6. Select the Discover session that you want to add, then select **X** to close the list.
 
-#### Create an ad hoc session from the dashboard Add panel menu [add-ad-hoc-discover-session-panel]
+#### Create a Discover session from the dashboard [add-ad-hoc-discover-session-panel]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
 ```
 
-Create a single-tab Discover session directly on a dashboard, without first saving it to the library. The session is stored with the dashboard as a by-value panel.
+Create a single-tab Discover session directly on a dashboard, without first saving it to the library. The session is stored with the dashboard and isn't saved to the library.
 
-To use this option, you need permission to access Discover, and the dashboard must be in edit mode.
+To use this option, you need permission to access Discover, and the dashboard must be in **Edit** mode.
 
 1. On the dashboard, select **Add panel** > **New panel**.
-2. In the **Visualizations** group, select {icon}`app_discover` **Discover session**. Discover opens in embedded editor mode with a new tab labeled **New Discover session**.
-3. Configure the session: enter an {{esql}} query, adjust columns, sort, and other view settings as needed.
+2. In the **Visualizations** group, select {icon}`app_discover` **Discover session**. Discover opens in embedded editor mode.
+3. Configure the session: enter a query, adjust columns, sort, and other view settings as needed.
 4. Select **Save and return** in the application menu to add the configured panel to the dashboard.
 
-#### Save the session from Discover, with Add to dashboard [save-discover-session-with-add-to-dashboard]
+#### Add the session to a dashboard when saving it from Discover [save-discover-session-with-add-to-dashboard]
 ```{applies_to}
 stack: ga 9.5
 serverless: ga
 ```
 
-When you save a new Discover session (or duplicate an existing one with **Save as**), you can add the saved session to a dashboard in the same step, without leaving Discover.
-
-The **Add to dashboard** options appear in the **Save Discover session** modal when you're saving a new session, or when you've turned on **Save as new Discover session** to duplicate an existing one. They aren't shown when you save updates to an already-persisted session as-is, or when you're editing the session from a dashboard panel.
-
-1. In the application menu, select **Save** (for a new session) or **Save** > **Save as** (to duplicate an existing one). The **Save Discover session** modal opens.
-2. Enter a **Title**, and optionally a **Description**, [**Tags**](../find-and-organize/tags.md), and time settings.
-3. Under **Add to dashboard**, choose where the session goes:
-
-   - **Existing**: Add the session as a panel on a dashboard you select.
-   - **New**: Add the session as a panel on a brand-new dashboard.
-   - **None**: Save the session to the library only, without adding it to a dashboard.
-
-4. Select **Save and add to library** (when **None** is selected) or **Save and go to Dashboard** (when **Existing** or **New** is selected).
+You can add a Discover session directly to a dashboard when saving it for the first time, as described in [](#_save_a_discover_session).
 
 #### Save panel edits as a new Discover session [discover-session-save-as-from-dashboard]
 ```{applies_to}
-stack: ga 9.4
+stack: ga 9.5
 serverless: ga
 ```
 
@@ -159,7 +150,7 @@ When editing a Discover session panel from a dashboard, you can save your change
 2. Make your changes in **Discover**.
 3. In the application menu, open the menu next to **Save and return** and select **Save as**.
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-5. Under **Add to dashboard**, choose where to display the new session:
+5. In **Add to dashboard**, choose where to display the new session:
 
    - **Existing**: Add the new session to a dashboard you select.
 
@@ -179,7 +170,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-A Discover session panel displays one tab at a time. When the underlying session has multiple tabs, you can change which tab the panel shows. This applies to panels added from the library; ad hoc and by-value session panels only have a single tab.
+A Discover session panel displays one tab at a time. When the underlying session has multiple tabs, you can change which tab the panel shows.
 
 1. On the dashboard, open the panel menu and select **Edit**.
 2. From the tab selector, select the tab you want to display.
