@@ -215,6 +215,7 @@ toc:
               - file: ai-features/agent-builder/builtin-skills-reference.md
               - file: ai-features/agent-builder/custom-skills.md
               - file: ai-features/agent-builder/skill-creation-guidelines.md
+          - file: ai-features/agent-builder/plugins.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md
@@ -224,6 +225,7 @@ toc:
                   - file: ai-features/agent-builder/tools/index-search-tools.md
                   - file: ai-features/agent-builder/tools/mcp-tools.md
                   - file: ai-features/agent-builder/tools/workflow-tools.md
+          - file: ai-features/agent-builder/connectors.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
