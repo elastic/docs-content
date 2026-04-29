@@ -261,3 +261,5 @@ Each `_score` is a relevance score for this search only. A higher score means th
 - [Ranking and reranking](../ranking.md) - Structure multi-stage pipelines: initial BM25, vector, or hybrid retrieval, then reranking with stronger models on smaller candidate sets.
 - [Build your search queries](../querying-for-search.md) - Choose Query DSL, {{esql}}, or retrievers on the Search API depending on whether you need classic queries, analytics-style pipes, or composable retrieval pipelines.
 
+To learn about more options, such as vector and keyword search, go to [](/solutions/search/search-approaches.md).
+For a summary of vector search use cases, go to [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md).

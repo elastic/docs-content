@@ -14,44 +14,106 @@ products:
 # Vector search in {{es}}
 
 :::{tip}
-Looking for a minimal configuration approach? The `semantic_text` field type provides an abstraction over vector search implementations with sensible defaults and automatic model management. It's the recommended way to start with {{es}} vector search. [Learn more about semantic_text](semantic-search/semantic-search-semantic-text.md).
+New to vector search? Start with this [vector search quick start](get-started/semantic-search.md).
+
+For common vector search use cases and how to apply them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 :::
 
-Vector search in {{es}} uses vector embeddings to power modern, AI-driven search experiences. With vectorized content, Elasticsearch retrieves results based on meaning and similarity, not just keywords or exact term matches.
+Vector search finds results based on _meaning_ rather than exact keyword matches. {{es}} functions as a [vector database](#vector-database): it stores embeddings at scale and retrieves by similarity while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}. 
 
-Vector search is a core component of most [semantic search](semantic-search.md) workflows, but it can also be used independently for similarity matching use cases. Learn more about the broader benefits in the [AI-powered search overview](ai-search/ai-search.md).
+## Implementation guides and tutorials [vector-search-workflows]
 
-This guide focuses on the more manual technical implementations of vector search, outside of the higher-level `semantic_text` workflow.  
-The right approach depends on your requirements, data type, and use case.
+Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
 
-## Vector queries and field types in {{es}} [vector-queries-and-field-types]
+### Semantic search (managed workflows)
 
-Here’s a quick reference for the main **vector field types** and **query types** you can use:
+The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
 
-| Vector type     | Field type      | Query type      | Primary use case                                            |
-| --------------- | --------------- | --------------- | ----------------------------------------------------------- |
-| Dense vectors   | `dense_vector`  | `knn`           | Semantic similarity with your own embeddings model          |
-| Sparse vectors  | `sparse_vector` | `sparse_vector` | Semantic term expansion using the ELSER model               |
-| Sparse or dense | `semantic_text` | `semantic`      | Managed semantic search, agnostic to implementation details |
+- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
+- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
+- [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
+- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
+- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
 
-## Dense vector search in {{es}}
+### Advanced tutorials
 
-Dense vector search uses neural embeddings to capture semantic meaning. It translates content into fixed-length numeric vectors, where similar items cluster close together in vector space. This makes dense vectors ideal for:
+These tutorials provide more direct or customizable approaches to working with vector search:
 
-- Finding semantically similar documents  
-- Matching user questions with answers  
-- Image and multimedia similarity search  
-- Content-based recommendations  
+- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
+- [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
+- [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
+- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
+- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
 
-[Learn more about dense vector search in {{es}}](vector/dense-vector.md).
+## Core concepts [vectors-and-embeddings]
 
-## Sparse vector search with ELSER
+$$$vector-database$$$ Vector database
+:   A system designed to store vector embeddings at scale and retrieve the most similar vectors to a query embedding, typically using approximate or exact k-nearest neighbor (kNN) search. {{es}} functions as a vector database when you store embeddings in [`dense_vector`](vector/dense-vector.md) or [`sparse_vector`](vector/sparse-vector.md) fields and query them for similarity. {{es}} can combine vector search with full-text search, structured filters, aggregations, and hybrid retrieval in one engine, so you can keep lexical, semantic, and operational queries on the same data and infrastructure.
 
-Sparse vector search relies on the **ELSER model** to expand content with semantically related terms. This approach combines semantic understanding with explainability, making it a strong fit for:
+$$$vector-embedding$$$ Vector embedding
+:   An ordered list of numbers that represents data in a multi-dimensional space. Each number is a coordinate along one dimension. In the context of search, vector embeddings are typically generated by a {{ml}} model to capture semantic meaning. Content with similar meaning is mapped to nearby points in this space, so proximity between vectors indicates similarity. For example, the phrases "budget hotels" and "affordable places to stay" would have embeddings near each other even though they share no words.
 
-- Enhanced keyword search  
-- Use cases requiring explainable results  
-- Domain-specific search  
-- Large-scale deployments
+    In {{es}}, embeddings are stored in [`dense_vector`](vector/dense-vector.md) or [`sparse_vector`](vector/sparse-vector.md) fields. Example of a dense vector (8 dimensions):
 
-[Learn more about sparse vector search with ELSER](vector/sparse-vector.md).
+    ```
+    [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+    ```
+
+$$$dimensions$$$ Dimensions
+:   The number of elements in a vector. Each dimension corresponds to one coordinate in the vector space. Dense embedding models typically produce vectors with hundreds or thousands of dimensions (for example, 384, 768, or 1536). Higher dimensions can capture more nuance but use more memory and compute. The dimension count is fixed by the model and must match between stored vectors and query vectors.
+
+$$$dense-vectors$$$ Dense vectors
+:   Fixed-length arrays where every element has a value. They are produced by neural embedding models that learn to map content into a continuous space. Dense vectors capture overall semantic meaning and work well for natural language understanding, multilingual content, and rich semantic matching. They typically have hundreds or thousands of dimensions.
+
+    In {{es}}, dense vectors use the [`dense_vector`](vector/dense-vector.md) field type and are queried with the [`knn`](vector/knn.md) query. You can deploy external or hosted embedding models, or [bring your own pre-computed vectors](vector/bring-own-vectors.md).
+
+$$$sparse-vectors$$$ Sparse vectors
+:   Arrays where most elements are zero. Only a small number of dimensions carry meaningful values, each corresponding to a specific term or concept. Sparse vectors are often used for lexical-style matching with semantic expansion: content is expanded into weighted terms that capture related concepts. Results tend to be more explainable because you can see which terms contributed to the match.
+
+    In {{es}}, sparse vectors are generated by the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) (Elastic Learned Sparse Encoder) model and use the [`sparse_vector`](vector/sparse-vector.md) field type. ELSER is built-in and requires no external model deployment.
+
+## Field types and queries [vector-queries-and-field-types]
+
+Here’s a quick reference for the main [vector field types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and [vector query types](elasticsearch://reference/query-languages/query-dsl/vector-queries.md) you can use:
+
+| Field type      | Vector type     | Query type                              | Primary use case                                            |
+|-----------------|-----------------|------------------------------------------|-------------------------------------------------------------|
+| [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md)  | Dense vectors   | [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md)                                    | Semantic similarity with your own embeddings                 |
+| [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) | Sparse vectors  | [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md)                          | Semantic term expansion using the ELSER model                |
+| [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Sparse or dense | [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text), [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md#example-query-on-a-semantic_text-field), [`semantic`](elasticsearch://reference/query-languages/query-dsl/query-dsl-semantic-query.md) | Managed semantic search, agnostic to implementation details. |
+
+You can combine different search strategies by using [Retrievers](retrievers-overview.md). Compose multi-stage retrieval pipelines that combine different search strategies in a single request.
+
+## Vector storage optimization
+
+Embedding models usually output floating-point vectors (for example, 32 bits per dimension). At scale, these vectors consume substantial memory and can slow search. Quantization is a form of lossy compression that reduces the precision of vector values. It trades a small amount of accuracy for lower memory use and faster similarity computations. For production workloads with millions or billions of vectors, quantization is often essential to keep latency and cost manageable.
+
+{{es}} offers several quantization options for `dense_vector` fields: [BBQ (Better Binary Quantization)](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-bbq), [int8](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-int8), and [int4](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-int4). For the full list, configuration details, and trade-offs, refer to [Automatically quantize vectors for kNN search](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization).
+
+## Vector embedding models
+
+A {{ml}} model that converts your source data into vector embeddings. The model you choose determines the dimensionality and quality of the resulting vectors. It also constrains what types of content the system understands well. The vectors in your index and your query vectors must be generated by the same model for similarity comparisons to be meaningful.
+
+{{es}} provides built-in embedding models and managed hosting:
+
+- **[ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)** (Elastic Learned Sparse Encoder): sparse vector model for explainable, term-based semantic search
+
+- **[E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)**: multilingual dense embedding model deployable in {{es}}
+
+- **[Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md)**: dense embedding models (for example, `jina-embeddings-v3`, `jina-embeddings-v5-text-small`) available through [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) (EIS)
+
+- The [{{infer}} API](/explore-analyze/elastic-inference/inference-api.md) integrates with third-party embedding services. Examples include [Cohere](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere), [OpenAI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-openai), [Hugging Face](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face), [Amazon Bedrock](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-amazonbedrock), [Azure OpenAI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-azureopenai), and [Google Vertex AI](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai).
+
+## Chunking
+
+Chunking splits large documents into smaller pieces before generating embeddings. This helps improve retrieval quality by matching queries to the most relevant parts of a document.
+
+To learn how to configure chunking for the `semantic_text` field type, refer to the [{{infer}} API chunking configuration](/explore-analyze/elastic-inference/inference-api.md#infer-chunking-config). If you use your own embeddings, you are responsible for chunking your data before indexing. Refer to [Bring your own dense vectors](vector/bring-own-vectors.md) for guidance.
+
+
+
+
+
+
+
+
