@@ -75,10 +75,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 `server.timeouts`
 :   `checkin_timestamp`
-:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting may improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
+:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
 
 `checkin_long_poll`
-:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting may improve performance.
+:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance.
 
 `server.limits`
 :   `policy_throttle`
@@ -89,7 +89,7 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   How quickly {{fleet-server}} dispatches pending actions to the agents.
 
 `action_limit.burst`
-:   Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
+:   Burst of actions that might be dispatched before falling back to the rate limit defined by `interval`.
 
 `checkin_limit.max`
 :   Maximum number of agents that can call the checkin API concurrently.
