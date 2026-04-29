@@ -112,13 +112,15 @@ serverless:
 
 A specialized agent for security alert analysis tasks, including alert investigation and {{elastic-sec}} documentation. It helps analysts triage alerts and understand complex security events. For more information and example use-cases, refer to [](/solutions/security/ai/agent-builder/agent-builder.md).
 
-
 **Assigned tools:**
 * All [**Security tools**](./tools/builtin-tools-reference.md#security-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
-:::
+The standalone **Threat Hunting Agent** is removed in 9.4. Threat hunting workflows now use the [Elastic AI Agent](#elastic-ai-agent) with the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill enabled, which provides the same capabilities without switching between separate built-in agents. For Security-specific context, refer to [](/solutions/security/ai/agent-builder/skills-model.md).
 
+**Migration path:** Enable the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill on the Elastic AI Agent in place of that standalone agent. The skill ships with the same tool set and query templates previously bundled into the agent, plus platform core tools for generating and running {{esql}} queries. For use cases and example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
+
+:::
 
 ## Related pages
 
