@@ -25,7 +25,7 @@ While Agent Builder works with any [configured LLM connector](/explore-analyze/a
 
 ::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 
 ## Elastic AI Agent and Security skills [elastic-ai-agent-security-skills]
 
@@ -39,9 +39,9 @@ Read these pages next:
 
 The standalone [Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#threat-hunting-agent) is deprecated. Hunting use cases now use the Elastic AI Agent with the Threat Hunting skill. For details, refer to the built-in agents reference.
 
-::::
+:::
 
-::::{applies-item} { stack: preview =9.2, ga 9.3 }
+:::{applies-item} { stack: preview =9.2, ga 9.3 }
 
 ## Threat Hunting agent [threat-hunting-agent-security]
 
@@ -49,7 +49,7 @@ Agent Builder features a built-in [Threat Hunting agent](/explore-analyze/ai-fea
 
 By default it includes the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [security tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#security-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [Custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
 
-::::
+:::
 
 ::::
 
