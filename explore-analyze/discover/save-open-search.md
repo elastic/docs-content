@@ -36,7 +36,7 @@ By default, a Discover session stores the query text, filters, and current view 
 1. Once you’ve created a view worth saving, select **Save** in the application menu. A modal with several options opens:
     1. Enter a **Title** for the session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
-    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Under **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
+    3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
 2. Select **Save**.
 3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
 
