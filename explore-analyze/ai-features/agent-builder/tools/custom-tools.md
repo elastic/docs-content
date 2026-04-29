@@ -31,8 +31,22 @@ You can create custom tools in the Kibana UI.
 
 To create a custom tool in the UI:
 
-1. Navigate to the **Tools** section on the **Agents** page in Kibana.
-2. Click **New tool**.
+1. Navigate to the Tools page:
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Navigate to the **Tools** section from the key actions menu in the Agent Chat UI.
+
+   ::::
+
+   :::::
+2. Click **+ New tool**.
 
   :::{image} ../images/new-tool-button.png
   :screenshot:
@@ -87,11 +101,28 @@ If you didn't select **Save and test** immediately:
 
 ## Assign tools to agents
 
-To start using a custom tool, you must assign it to a [custom agent](../custom-agents.md#create-a-new-agent).
+To start using a custom tool, you must assign it to a [custom agent](../custom-agents.md).
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the tools to assign.
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
 1. Navigate to the agent configuration page.
 2. Select the **Tools** tab.
 3. Add the desired tools to the agent.
 4. Save the agent configuration.
+
+::::
+
+:::::
 
 ## Best practices
 

@@ -30,14 +30,32 @@ Custom agents are space-aware: they are only available in the [{{kib}} space](/d
 
 Follow these steps to create a new custom agent:
 
-:::::{stepper}
-::::{step} Navigate to the Agents page
+::::::{stepper}
+:::::{step} Navigate to the Agents page
 
-Navigate to the **Agents** page to access the agent management interface.
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
+
+:::{tip}
+You can also reach this page from the agent selector: open the selector in the left sidebar and select **New Agent**.
+:::
+
+:::
+
+:::{applies-item} { stack: ga =9.3 }
+
+Navigate to **Agents** in the main navigation.
+
+:::
 
 ::::
 
-::::{step} Create a new agent
+:::::
+
+:::::{step} Create a new agent
 
 Select the **New agent** button to begin creating a new agent.
 
@@ -48,9 +66,9 @@ Select the **New agent** button to begin creating a new agent.
 :::
 
 
-::::
+:::::
 
-::::{step} Configure essential settings
+:::::{step} Configure essential settings
 
 Configure the essential agent settings in the **Settings** tab:
 
@@ -63,26 +81,69 @@ Configure the essential agent settings in the **Settings** tab:
 3. Set the **Display name** for users.
 4. Add a **Display description** to explain the agent's purpose.
 
-::::
+:::::
 
-::::{step} Assign tools
+:::::{step} Enable Elastic capabilities
+:anchor: create-custom-agent-enable-elastic-capabilities
+```{applies_to}
+stack: ga 9.4+
+```
+
+Use the **Enable Elastic Capabilities** toggle to activate built-in Elastic tools and skills for your agent. This toggle is disabled by default.
+
+For more information, refer to [Enable Elastic Capabilities](#enable-elastic-capabilities).
+
+:::::
+
+:::::{step} Set visibility
+```{applies_to}
+stack: ga 9.4+
+```
+
+Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
+
+For more information, refer to [Visibility settings](#visibility-settings).
+
+:::::
+
+:::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
 
-::::
+:::::
 
-::::{step} Customize appearance (optional)
+:::::{step} Assign skills (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Switch to the **Skills** tab to assign skills to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+
+You can assign skills that already exist in your deployment's skill library—you create and manage those from [**Manage components**](chat.md#manage-components) > **Skills**—or you can create new skills inline from this tab. For an overview of skills, built-in versus custom skills, and APIs, refer to [Skills in {{agent-builder}}](skills.md).
+
+:::::
+
+:::::{step} Assign plugins (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Switch to the **Plugins** tab to assign plugins to your agent. Plugins extend agents with additional skills and capabilities. Before you can assign a plugin, it must first be installed from the global **Plugins** page in **Manage components**.
+
+:::::
+
+:::::{step} Customize appearance (optional)
 
 Optionally customize the agent's appearance and organization:
 
 - Add **Labels** to organize your agents.
 - Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent.
 
-::::
+:::::
 
-::::{step} Save your changes
+:::::{step} Save your changes
 
 Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
@@ -92,8 +153,8 @@ Select **Save** to create your agent, or **Save and chat** to create the agent a
 :width: 270px
 :::
 
-::::
 :::::
+::::::
 
 ## Manage custom agents
 
@@ -112,6 +173,45 @@ From the **Agents** page, you can perform various actions on custom agents:
 
 :::{note}
 These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
+:::
+
+## Visibility settings [visibility-settings]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Control who can view and edit your agent by configuring its visibility. To change visibility, edit the agent and scroll to the **Organization** section.
+
+**Public**
+:   Anyone can view and edit.
+
+**Shared**
+:   Anyone can view. Only the owner or an administrator can edit.
+
+**Private**
+:   Only the owner or an administrator can view and edit.
+
+:::{image} images/agent-visibility-levels.png
+:alt: Agent visibility dropdown showing Public, Shared, and Private.
+:width: 700px
+:::
+
+## Enable Elastic Capabilities [enable-elastic-capabilities]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+When the **Enable Elastic Capabilities** toggle is enabled, it automatically assigns all current and future Elastic-built skills, plugins, and tools to the agent. The set of assigned capabilities is dynamic and grows as Elastic adds new built-in content.
+
+To review which skills and tools are active, open the agent's **Skills** or **Tools** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
+
+Disable this toggle to manage skill, plugin, and tool assignments manually.
+
+:::{image} images/elastic-capabilities.png
+:alt: Enable Elastic Capabilities toggle ON
+:width: 500px
 :::
 
 ## Best practices for custom agents
