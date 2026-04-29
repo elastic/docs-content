@@ -55,7 +55,7 @@ With delayed allocation enabled, the above scenario changes to look like this:
 This setting will not affect the promotion of replicas to primaries, nor will it affect the assignment of replicas that have not been assigned previously. In particular, delayed allocation does not come into effect after a full cluster restart. Also, in case of a master failover situation, elapsed delay time is forgotten (i.e. reset to the full initial delay).
 ::::
 
-If the node is being [restarted gracefully]({{es-apis}}/v8/operation/operation-shutdown-put-node), the `allocation_delay` parameter passed in `PUT /_nodes/{node_id}/shutdown` might override this setting if set to a longer value.
+During a [graceful node shutdown]({{es-apis}}/v8/operation/operation-shutdown-put-node), the value of the `allocation_delay` parameter might keep unassigned replica allocation back longer than the value of `index.unassigned.node_left.delayed_timeout` would on its own, if the allocation delay is longer than the timeout.
 
 ## Cancellation of shard relocation [_cancellation_of_shard_relocation]
 
