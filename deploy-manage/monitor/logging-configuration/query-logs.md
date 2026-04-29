@@ -1,11 +1,7 @@
 ---
 description: Log every search operation on an Elasticsearch cluster including Query DSL, ES|QL, EQL, and SQL query types, with configurable duration thresholds and per-field output control.
 applies_to:
-  deployment:
-    self: preview 9.4
-    ech: preview
-    eck: preview
-    ece: preview
+  stack: preview 9.4
   serverless: unavailable
 products:
   - id: "elasticsearch"
