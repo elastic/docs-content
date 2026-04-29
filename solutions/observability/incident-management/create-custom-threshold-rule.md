@@ -64,10 +64,6 @@ To gather the total number of log documents with a log level of `warn`:
 
 #### Example: Ratio-based alert
 
-```{applies_to}
-stack: ga 9.4+
-```
- 
  Trigger an alert when the percentage of error responses exceeds a threshold by filtering separate aggregations with KQL:
 
 1. Set the following aggregations:
