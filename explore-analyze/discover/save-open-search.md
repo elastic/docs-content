@@ -46,11 +46,27 @@ If the saved Discover session is associated with a different {{data-source}} tha
 
 ## Duplicate a Discover session [_duplicate_a_discover_session]
 
+To duplicate an existing Discover session as a new one, the workflow depends on the version you're using.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 1. In **Discover**, open the Discover session that you want to duplicate.
-2. In the application menu, click **Save**.
+2. In the application menu, open the menu next to **Save** and select **Save as**. The **Save Discover session** modal opens.
+3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, in **Add to dashboard**, add the new session to a dashboard at the same time as you save it. For details, refer to [Add the session to a dashboard when saving it from Discover](#save-discover-session-with-add-to-dashboard).
+5. Select **Save**.
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
+1. In **Discover**, open the Discover session that you want to duplicate.
+2. In the application menu, select **Save**.
 3. Give the session a new name.
 4. Turn on **Save as new Discover session**.
-5. Click **Save**.
+5. Select **Save**.
+:::
+
+::::
 
 
 ## Use Discover sessions in dashboards [_add_search_results_to_a_dashboard]
@@ -63,9 +79,11 @@ You can add different pieces of a Discover session to a dashboard:
 
 ### Add the Discover visualization to a dashboard [add-discover-visualization-to-dashboard]
 
-When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself.
+When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the query mode you're using in Discover.
 
-To use this option, you need permission to view and create dashboards. The button only appears for {{esql}} queries.
+To use either workflow, you need permission to view and create dashboards.
+
+#### In {{esql}} mode [add-discover-visualization-esql]
 
 1. In Discover, run an {{esql}} query that produces a chart.
 2. Next to the chart, select {icon}`app_dashboard` **Save visualization to dashboard** or {icon}`save` **Save visualization** depending on the version you're using.
@@ -74,9 +92,23 @@ To use this option, you need permission to view and create dashboards. The butto
 5. Select **Save and go to dashboard**.
 
 :::{note}
-:applies_to: stack: 9.0-9.2
-In the specified versions of {{kib}}, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. Check [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) for more information.
+:applies_to: stack: ga 9.0-9.2
+In these versions, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, use the [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) workflow instead.
 :::
+
+#### In classic mode [add-discover-visualization-classic]
+
+In classic mode there's no direct save button next to the chart. Instead, you open the chart in **Lens**, edit it as needed, and save from there.
+
+The {icon}`app_lens` **Edit visualization** button only appears when the {{data-source}} you're querying is time-based and its time field can be visualized. If those conditions aren't met, the chart isn't shown and the button isn't available.
+
+1. In Discover, run a query that produces a chart.
+2. Next to the chart, select {icon}`app_lens` **Edit visualization**. The chart opens in **Lens**, prefilled with your current query and time range.
+3. In Lens, adjust the visualization as needed.
+4. Select **Save** in the Lens application menu.
+5. Enter a **Title** for the panel, and optionally a **Description**.
+6. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
+7. Select **Save and go to dashboard**.
 
 ### Add the Discover table to a dashboard [save-table-to-dashboard]
 ```{applies_to}
