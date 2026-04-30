@@ -1,6 +1,6 @@
 ---
 navigation_title: "Get started"
-description: "Learn how to access Elastic Agent Builder, ingest data, and start chatting with AI agents."
+description: "Learn how to enable Elastic Agent Builder, ingest data, and start chatting with AI agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,99 +14,75 @@ products:
 
 # Get started with {{agent-builder}}
 
-To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}. 
-If you don't already have an Elastic deployment, you can start a [free trial](https://cloud.elastic.co/registration) or refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
+To start using {{agent-builder}} you need an {{es}} deployment. If you don't already have an {{es}} deployment, refer to [](/solutions/search/get-started.md).
+
+For {{ech}} deployments, make sure you are using the solution navigation instead of classic navigation. You can set up a new [space](/deploy-manage/manage-spaces.md) to use the solution nav.
 
 ::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
-:::::::{stepper}
-::::::{step} Enable {{agent-builder}}
+:::{note}
+For model choice, refer to [Model configuration](models.md) and [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+:::
 
-:::::{applies-switch}
+::::::{stepper}
+:::::{step} Enable {{agent-builder}}
 
-::::{applies-item} stack: ga 9.4+
+::::{applies-switch}
 
-On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
+:::{applies-item} { "serverless": "ga", "elasticsearch" }
 
-:::{dropdown} {{es}} solution view
-{{agent-builder}} is enabled by default, replacing AI Assistant. You can access it from multiple entry points:
+{{agent-builder}} is enabled by default in serverless {{es}} projects. You can access it from multiple entry points in the UI:
+
 - Select the **Agent Builder** card on the {{es}} home page.
 - Click **Agents** in the navigation menu.
 - Click the **AI Agent** button in the top-right header to start a conversation from any page.
 - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-:::
-
-:::{dropdown} {{product.observability}} and {{product.security}} solution views
-{{agent-builder}} is enabled by default, replacing AI Assistant. You can access it from two entry points:
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
-:::
-
-:::{dropdown} Classic view
-{{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
-:::
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-::::
+:::
 
-::::{applies-item} serverless: ga
+:::{applies-item} { "serverless": "preview", "observability" }
 
-{{agent-builder}} is the default chat experience in all serverless project types.
+In {{product.observability}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
 
-:::{dropdown} {{es-serverless}}
-
-You can access {{agent-builder}} from multiple entry points in the UI:
-
-- Select the **Elastic Agent** card on the {{es}} home page.
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
-- Open the **Build a chat tool with Agent Builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::
 
-:::{dropdown} {{obs-serverless}} and {{sec-serverless}}
-{{agent-builder}} is enabled by default, replacing AI Assistant. Click the **AI Agent** button in the top-right header to start a conversation from any page.
+:::{applies-item} { "serverless": "preview", "security" }
+
+In {{product.security}} projects, you must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature.
+
+Once enabled, find **Agents** in the navigation menu to begin using the feature, or search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
 :::
+
+:::{applies-item} stack: preview =9.2, ga 9.3+
+
+On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
+
+- **{{es}} solution view**: {{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
+    - Select the **Agent Builder** card on the {{es}} home page.
+    - Click **Agents** in the navigation menu.
+    - Click the **AI Agent** button in the top-right header to start a conversation from any page.
+    - Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
+- **{{product.observability}} and {{product.security}} solution views**: You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
+- **Classic view**: {{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 
 You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-::::
+:::
 
-:::::
+::::
 
 :::{note}
 To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
 :::
 
-:::::{dropdown} Previous versions
-:applies_to: stack: preview =9.2, ga 9.3
-
-On non-serverless deployments, {{agent-builder}} availability depends on the navigation mode of your {{kib}} space:
-
-:::{dropdown} {{es}} solution view
-{{agent-builder}} is enabled by default, replacing Search Assistant. You can access it from multiple entry points:
-- Select the **Agent Builder** card on the {{es}} home page.
-- Click **Agents** in the navigation menu.
-- Click the **AI Agent** button in the top-right header to start a conversation from any page.
-- Open the **Agent builder** API tutorial from the {{kib}} **Getting started** page, under **Explore the API**.
-:::
-
-:::{dropdown} {{product.observability}} and {{product.security}} solution views
-You must [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to enable the feature. Once enabled, find **Agents** in the navigation menu.
-:::
-
-:::{dropdown} Classic view
-{{agent-builder}} appears in the side navigation under {{es}}. You can choose Agent Builder as your assistant through the initial selector or the [chat experience switch](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
-:::
-
-You can also search for **Agents** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
 :::::
-
-::::::
 
 ::::{step} Ingest data into Elasticsearch
 
@@ -114,20 +90,20 @@ If you already have data in {{es}}, skip ahead to [start a conversation](#start-
 
 If you need to add data first, choose the path that fits:
 
-:::{dropdown} Use sample data
+**Use sample data**
+
 If you're not ready to add your own data, you can:
 
 - Load [sample data](/manage-data/ingest/sample-data.md) in {{kib}}.
 - Generate synthetic financial data using [this Python tool](https://github.com/jeffvestal/synthetic-financial-data?tab=readme-ov-file#synthetic-financial-data-generator-). (This requires your [{{es}} URL and an API key](/solutions/elasticsearch-solution-project/search-connection-details.md)).
 - Follow the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md), which includes sample book data.
-:::
 
-:::{dropdown} Bring your own data
+**Bring your own data**
+
 If you already have data, you can:
 
 - [Upload a file](/manage-data/ingest/upload-data-files.md) in the {{kib}} UI for quick testing.
 - Learn about your [ingestion options](/manage-data/ingest.md) if you'd like to ingest larger datasets.
-:::
 
 ::::
 
@@ -156,14 +132,12 @@ For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elas
 
 ::::
 
-::::{step} Build custom skills and tools
+::::{step} Begin building agents and tools
 
-The default [Elastic AI Agent](builtin-agents-reference.md) comes with [built-in skills](builtin-skills-reference.md) and [built-in tools](tools.md) ready to use. To add your own domain expertise, [create custom skills](custom-skills.md) that package knowledge and tools into reusable instruction sets. For tips on writing effective skill instructions, refer to the [skill creation guidelines](skill-creation-guidelines.md). To learn how skills are invoked during a conversation, refer to [how skills are invoked](skills.md#how-skills-are-invoked).
+Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them. You can also clone the default `Elastic AI Agent` as a starting point for a custom agent.
 
-You can also [create custom tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to give your skills and agents access to additional data sources. If you need a fully separate agent with its own system prompt, you can [create a custom agent](custom-agents.md#create-a-new-agent).
-
-To work programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
+To build agents and tools programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
 ::::
 
-:::::::
+::::::
