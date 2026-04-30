@@ -29,7 +29,7 @@ You should plan your deployment size based on the amount of data you ingest. Mem
 
 During installation, the allocator capacity defaults to 85% of the host physical memory, as the rest is reserved for ECE system services.
 
-To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
+To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API]({{ece-apis}}operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
 
 ```sh
 curl -X PUT \

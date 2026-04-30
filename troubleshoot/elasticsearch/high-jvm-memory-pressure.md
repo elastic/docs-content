@@ -17,7 +17,7 @@ High JVM memory usage can degrade cluster performance and trigger [circuit break
 
 {{es}}'s JVM [uses a G1GC garbage collector](/deploy-manage/deploy/self-managed/bootstrap-checks.md). Over time this causes the JVM heap usage metric to reflect a sawtooth pattern as shown in [Understanding JVM heap memory](https://www.elastic.co/blog/jvm-essentials-for-elasticsearch). This causes the reported heap percent to fluctuate as it is an instantaneous measurement. You should focus monitoring on the JVM memory pressure, which is a rolling average of old garbage collection, and better represents the node's ongoing JVM responsiveness.
 
-Use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
+Use the [nodes stats API]({{es-apis}}operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.name,nodes.*.jvm.mem.pools.old
@@ -41,7 +41,7 @@ As memory usage increases, garbage collection becomes more frequent and takes lo
 [timestamp_short_interval_from_last][INFO ][o.e.m.j.JvmGcMonitorService] [node_id] [gc][number] overhead, spent [21s] collecting in the last [40s]
 ```
 
-Garbage collection activity can also appear in the output of the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), under the `OTHER_CPU` category, as described in [troubleshooting high CPU usage](/troubleshoot/elasticsearch/high-cpu-usage.md#check-hot-threads).
+Garbage collection activity can also appear in the output of the [nodes hot threads API]({{es-apis}}operation/operation-nodes-hot-threads), under the `OTHER_CPU` category, as described in [troubleshooting high CPU usage](/troubleshoot/elasticsearch/high-cpu-usage.md#check-hot-threads).
 
 For optimal JVM performance, garbage collection (GC) should meet these criteria:
 
@@ -101,7 +101,7 @@ deployment:
 
 {{es}}'s JVM handles its own executables and can suffer severe performance degredation due to operating system swapping. We recommend [disabling swap](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock).
 
-{{es}} recommends completely disabling swap on the operating system. This is because anything set {{es}}-level is best effort but swap can have severe impact on {{es}} performance. To check if any nodes are currently swapping, poll the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats):
+{{es}} recommends completely disabling swap on the operating system. This is because anything set {{es}}-level is best effort but swap can have severe impact on {{es}} performance. To check if any nodes are currently swapping, poll the [nodes stats API]({{es-apis}}operation/operation-nodes-stats):
 
 ```console
 GET _nodes/stats?filter_path=**.swap,nodes.*.name
@@ -123,7 +123,7 @@ deployment:
   eck: ga
 ```
 
-JVM performance strongly depends on having [Compressed OOPs](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/performance-enhancements-7.html#compressedOop) enabled. The exact max heap size cutoff depends on operating system, but is typically around 30GB. To check if it is enabled, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+JVM performance strongly depends on having [Compressed OOPs](https://docs.oracle.com/javase/7/docs/technotes/guides/vm/performance-enhancements-7.html#compressedOop) enabled. The exact max heap size cutoff depends on operating system, but is typically around 30GB. To check if it is enabled, poll the [node information API]({{es-apis}}operation/operation-cat-nodes):
 
 ```console
 GET _nodes?filter_path=nodes.*.name,nodes.*.jvm.using_compressed_ordinary_object_pointers
@@ -146,7 +146,7 @@ deployment:
 
 By default, {{es}} manages the JVM heap size. If manually overridden, `Xms` and `Xmx` should be equal and not more than half of total operating system RAM. Refer to [Set the JVM heap size](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) for detailed guidance and best practices.
 
-To check these heap settings, poll the [node information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+To check these heap settings, poll the [node information API]({{es-apis}}operation/operation-cat-nodes):
 
 ```console
 GET _nodes?filter_path=nodes.*.name,nodes.*.jvm.mem
@@ -201,7 +201,7 @@ You can also configure the {{kib}} [advanced setting](kibana://reference/advance
 
 #### Spread out bulk requests [reduce-jvm-memory-pressure-setup-bulks]
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or [multi-search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) requests can still create high JVM memory pressure. If possible, submit smaller requests and allow more time between them.
+While more efficient than individual requests, large [bulk indexing]({{es-apis}}operation/operation-bulk) or [multi-search]({{es-apis}}operation/operation-msearch) requests can still create high JVM memory pressure. If possible, submit smaller requests and allow more time between them.
 
 #### Scale node memory [reduce-jvm-memory-pressure-setup-scale]
 
@@ -213,19 +213,19 @@ Computing the [field data](elasticsearch://reference/elasticsearch/mapping-refer
 
 Field data is loaded into the JVM heap cache and retained based on usage frequency. Field data can consume JVM heap memory up to the lower value between the [field data cache setting](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md) and the [field data circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md). [Circuit breaker errors](/troubleshoot/elasticsearch/circuit-breaker-errors.md) appear as [rejected requests](/troubleshoot/elasticsearch/rejected-requests.md#check-circuit-breakers). Setting `indices.fielddata.cache.size` too low causes thrashing and frequent evictions. 
 
-To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) API:
+To check `fielddata` evictions and determine whether field data contributes significantly to JVM memory usage, use the [cat nodes]({{es-apis}}operation/operation-cat-nodes) API:
 
 ```console
 GET _cat/nodes?v=true&h=name,heap.*,fielddata.*
 ```
 
-If the output shows that field data is a significant contributor to JVM memory usage, use the [cat fielddata](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-fielddata) API to determine which fields are using field data and how much per node.
+If the output shows that field data is a significant contributor to JVM memory usage, use the [cat fielddata]({{es-apis}}operation/operation-cat-fielddata) API to determine which fields are using field data and how much per node.
 
 ```console
 GET _cat/fielddata?v=true&s=size:desc
 ```
 
-You can use the [clear cache](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) API to clear the field data cache and temporarily reduce memory usage. For example:
+You can use the [clear cache]({{es-apis}}operation/operation-indices-clear-cache) API to clear the field data cache and temporarily reduce memory usage. For example:
 
 * To clear the fielddata cache only for fields `fieldname1` and `fieldname2` on the `my-index-000001` index:
 
