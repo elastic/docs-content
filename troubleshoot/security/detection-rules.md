@@ -132,7 +132,7 @@ A field can have type conflicts *and* be unmapped in specified indices.
 
 ### Fields with conflicting types [fields-with-conflicting-types]
 
-Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
+Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data]({{es-apis}}operation/operation-reindex). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
 
 In the following example, the selected field has been defined as different types across five indices.
 
@@ -154,6 +154,17 @@ In the following example, the selected field is unmapped across two indices.
 :::
 
 :::::
+
+
+## {{esql}} rules [esql-rules-ts]
+
+::::{dropdown} Non-aggregating {{esql}} rule: validation warning about `_id` or duplicate alerts
+:name: esql-missing-id-ts
+
+For **non-aggregating** {{esql}} detection rules, the engine uses document `_id` to avoid generating duplicate alerts for the same source event. 
+
+{applies_to}`stack: ga 9.4+` The detection engine automatically adds `METADATA _id` to the `FROM` command when your query omits it, and makes a best-effort attempt to keep `_id` available in the pipeline (for example by appending `_id` to restrictive `KEEP` commands). Refer to [](../../solutions/security/detect-and-alert/esql.md#esql-alert-deduplication) to learn more.
+::::
 
 
 ## Rule executions
