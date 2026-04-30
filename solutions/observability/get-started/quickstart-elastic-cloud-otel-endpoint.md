@@ -42,13 +42,13 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 4. Copy the endpoint value.
 
 :::{tip}
-Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key. Copy the authentication headers value from the same screen to skip the next step.
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}. Copy the authentication headers value from the same screen to skip the next step.
 :::
 ::::
 
 ::::{applies-item} ech:
 1. Log in to the {{ecloud}} Console.
-2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**. Or, on the **Hosted deployments** page, select your deployment.
+2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 ::::
@@ -63,7 +63,7 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 
 :::{dropdown} Using {{kib}}
 1. Go to **Admin and Settings** → **API keys**.
-2. Click **Create API key**, enter a name, and expand **Control security privileges**.
+2. Click **Create API key**, enter a name, and enable **Control security privileges**.
 3. In the role descriptors box, enter the following privileges:
 
     ```json
@@ -104,7 +104,7 @@ POST /_security/api_key
 }
 ```
 :::{note}
-The API key authenticates the OTLP shipper to the {{motlp}} endpoint and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. The patterns above cover all dataset names for the three OTLP signal types. If you use data streams outside the `*.otel-*` pattern, add the corresponding index patterns to the `names` list.
+The API key authenticates the OTLP shipper to the {{motlp}} and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. The patterns above cover all dataset names for the three OTLP signal types. If you use data streams outside the `*.otel-*` pattern, add the corresponding index patterns to the `names` list.
 :::
 :::
 ::::
