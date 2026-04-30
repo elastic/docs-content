@@ -42,13 +42,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
+The [GenAI and Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) pages allow you to:
 
-- Manage which AI connectors are available in your environment.
+- Manage which AI connectors or models are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
 - {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
-
-
 
 ## Your data and AI Assistant [data-information]
 

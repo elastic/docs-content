@@ -17,16 +17,16 @@ All the trained models endpoints have the following base:
 /_ml/trained_models/
 ```
 
-* [Create trained model aliases](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias)
-* [Create trained model definition part](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-definition-part)
-* [Create trained models](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model)
-* [Delete trained models](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-trained-model)
-* [Get trained models](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models)
-* [Get trained models statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models-stats)
-* [Infer trained model](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model)
-* [Start trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment)
-* [Stop trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-stop-trained-model-deployment)
-* [Update trained model aliases](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias)
+* [Create trained model aliases]({{es-apis}}operation/operation-ml-put-trained-model-alias)
+* [Create trained model definition part]({{es-apis}}operation/operation-ml-put-trained-model-definition-part)
+* [Create trained models]({{es-apis}}operation/operation-ml-put-trained-model)
+* [Delete trained models]({{es-apis}}operation/operation-ml-delete-trained-model)
+* [Get trained models]({{es-apis}}operation/operation-ml-get-trained-models)
+* [Get trained models statistics]({{es-apis}}operation/operation-ml-get-trained-models-stats)
+* [Infer trained model]({{es-apis}}operation/operation-ml-infer-trained-model)
+* [Start trained model deployment]({{es-apis}}operation/operation-ml-start-trained-model-deployment)
+* [Stop trained model deployment]({{es-apis}}operation/operation-ml-stop-trained-model-deployment)
+* [Update trained model aliases]({{es-apis}}operation/operation-ml-put-trained-model-alias)
 
 You can also integrate NLP models from different providers such as Cohere, HuggingFace, or OpenAI and use them as a service through the {{infer}} API.
 
@@ -36,7 +36,7 @@ The {{infer}} APIs have the following base:
 /_inference/
 ```
 
-* [Create inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put)
-* [Delete inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-delete)
-* [Get inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get)
-* [Perform inference](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference)
+* [Create inference endpoint]({{es-apis}}operation/operation-inference-put)
+* [Delete inference endpoint]({{es-apis}}operation/operation-inference-delete)
+* [Get inference endpoint]({{es-apis}}operation/operation-inference-get)
+* [Perform inference]({{es-apis}}operation/operation-inference-inference)

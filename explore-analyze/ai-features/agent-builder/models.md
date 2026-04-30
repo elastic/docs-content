@@ -65,7 +65,7 @@ To learn more, refer to [select a different model](/explore-analyze/ai-features/
 To change which model is used by default:
 
 1. Search for **Model management / Feature settings** in the global search field.
-2. Select your preferred connector from the **Default model** dropdown.
+2. Select your preferred model from the **Default model** dropdown.
 3. Save your changes.
 
 The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
@@ -81,6 +81,8 @@ To change which model is used by default:
 :::
 
 ::::
+
+For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 ## Use additional models
 
