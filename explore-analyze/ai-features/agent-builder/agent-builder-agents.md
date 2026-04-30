@@ -97,7 +97,7 @@ For an overview, refer to [Agents API](kibana-api.md#agents-apis).
 
 ### API reference
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 

@@ -17,7 +17,7 @@ A *search* consists of one or more queries that are combined and sent to {{es}}.
 
 A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results.
 
-You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
+You can use the [search API]({{es-apis}}operation/operation-search) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
 
 
 ## Run a search [run-an-es-search]
@@ -174,7 +174,7 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 By default, search requests do not time out. The request waits for complete results from every shard before returning a response.
 
-You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout for other parts of the [read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
+You can set a [`timeout` value]({{es-apis}}operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout for other parts of the [read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
 
 
 ```json
@@ -197,7 +197,7 @@ You can set a [`timeout` value](https://www.elastic.co/docs/api/doc/elasticsearc
 }
 ```
 
-If a particular search request should error out instead of returning partial results, consider setting the [`default_allow_partial_results` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to `false`.
+If a particular search request should error out instead of returning partial results, consider setting the [`default_allow_partial_results` setting]({{es-apis}}operation/operation-search) to `false`.
 
 You can set a fallback cluster-wide default timeout for all search requests by configuring the `search.default_search_timeout` cluster setting. In this case, the request will be cancelled using the [task cancellation API]({{es-apis}}/operation/operation-tasks-cancel).
 
@@ -207,7 +207,7 @@ The `search.default_search_timeout` setting's resolution sensitivity is determin
 
 ## Search cancellation [global-search-cancellation]
 
-You can cancel a search request using the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
+You can cancel a search request using the [task management API]({{es-apis}}group/endpoint-tasks). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
 
 
 ## Track total hits [track-total-hits]
