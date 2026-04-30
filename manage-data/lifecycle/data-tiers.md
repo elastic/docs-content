@@ -22,7 +22,7 @@ By abstracting cluster management tasks, {{serverless-full}} adjusts data storag
 
 ## Available data tiers [available-tier]
 
-The data tiers that you use, and the way that you use them, depends on the data’s [category](/manage-data/lifecycle.md). The following data tiers are can be used with each data category:
+The data tiers that you use, and the way that you use them, depends on the data’s [category](/manage-data/lifecycle.md). The following data tiers can be used with each data category:
 
 **Content data**:
 
@@ -64,6 +64,8 @@ The content tier is required and is often deployed within the same node grouping
 ### Hot tier [hot-tier]
 
 The hot tier is the {{es}} entry point for time series data and holds your most-recent, most-frequently-searched time series data. Nodes in the hot tier need to be fast for both reads and writes, which requires more hardware resources and faster storage (SSDs). For resiliency, indices in the hot tier should be configured to use one or more replicas.
+
+An {{ilm-init}} policy can also use the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action in the `hot` phase, in which case the hot tier holds a [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snap}} index instead of a regular index.
 
 The hot tier is required. New indices that are part of a [data stream](/manage-data/data-store/data-streams.md) are automatically allocated to the hot tier.
 
