@@ -78,9 +78,9 @@ The examples in this tutorial use the following host addresses:
 
 | Component | Example host name | Example IP address |
 | --- | --- | --- |
-| {{es}} node 1 | `instance-1` | `203.0.113.21` |
-| {{es}} node 2 | `instance-2` | `203.0.113.22` |
-| {{es}} node 3 | `instance-3` | `203.0.113.23` |
+| {{es}} node 1 | `es-node1` | `203.0.113.21` |
+| {{es}} node 2 | `es-node2` | `203.0.113.22` |
+| {{es}} node 3 | `es-node3` | `203.0.113.23` |
 | {{kib}} | `kibana-host` | `203.0.113.31` |
 | {{fleet-server}} | `fleet-server-host` | `203.0.113.41` |
 
@@ -102,7 +102,7 @@ If you plan to use certificates signed by your organization's certificate author
 
 ## Step 1: Set up the first {{es}} node [install-stack-self-elasticsearch-first]
 
-To begin, use RPM to install {{es}} on the first host. This initial {{es}} instance bootstraps a new cluster. You can find details about all of the following steps in the document [Install {{es}} with RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md).
+To begin, use RPM to install {{es}} on the first host. This initial {{es}} node bootstraps a new cluster. You can find details about all of the following steps in the document [Install {{es}} with RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md).
 
 ::::{note}
 For installation steps for other supported methods, refer to [Install {{es}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#installation-methods).
@@ -180,7 +180,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    sudo vim /etc/elasticsearch/elasticsearch.yml
    ```
 
-1. In a multi-node {{es}} cluster, all of the {{es}} instances must have the same cluster name.
+1. In a multi-node {{es}} cluster, all of the {{es}} nodes must have the same cluster name.
 
    In the configuration file, uncomment the line `#cluster.name: my-application` and give the {{es}} cluster any name that you'd like:
 
@@ -188,19 +188,19 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    cluster.name: elasticsearch-demo
    ```
 
-1. (Optional) Set a node name for this instance. If you don't set one, {{es}} uses its host name by default.
+1. (Optional) Set a node name for this node. If you don't set one, {{es}} uses its host name by default.
 
-   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} instance any name that you'd like:
+   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} node any name that you'd like:
 
    ```yaml
-   node.name: instance-1
+   node.name: es-node1
    ```
 
 1. Configure networking settings.
 
    1. Uncomment the line `#transport.host: 0.0.0.0` to accept connections on all available network interfaces.
 
-      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address:
+      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} nodes from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address:
 
       ```yaml
       transport.host: 0.0.0.0 <1>
@@ -254,7 +254,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
    ```json subs=true
    {
-     "name" : "instance-1",
+    "name" : "es-node1",
      "cluster_name" : "elasticsearch-demo",
      "cluster_uuid" : "<cluster-uuid>",
      "version" : {
@@ -279,7 +279,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
 To set up a second {{es}} node, you start by installing the {{es}} RPM package, but then follow a different configuration flow so that the node joins the existing cluster instead of creating a new one. You can find additional details in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
 
-1. Log in to the host where you'd like to set up your second {{es}} instance.
+1. Log in to the host where you'd like to set up your second {{es}} node.
 
 1. Create a working directory for the installation package:
 
@@ -364,7 +364,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
 
 1. Obtain your host IP address (for example, by running `ifconfig`). You need this value later.
 
-1. Open the new {{es}} instance configuration file in a text editor:
+1. Open the new {{es}} node configuration file in a text editor:
 
    ```shell
    sudo vim /etc/elasticsearch/elasticsearch.yml
@@ -381,12 +381,12 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    cluster.name: elasticsearch-demo
    ```
 
-1. (Optional) Set a node name for this instance. If you don't set one, {{es}} uses its host name by default.
+1. (Optional) Set a node name for this node. If you don't set one, {{es}} uses its host name by default.
 
-   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} instance any name that you'd like:
+   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} node any name that you'd like:
 
    ```yaml
-   node.name: instance-2
+   node.name: es-node2
    ```
 
 1. (Optional) Review networking settings.
@@ -424,25 +424,25 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
     In the log output, you should see entries similar to the following as the node initializes, starts transport, and waits to join the cluster:
 
     ```text
-    [<instance-2>] Security is enabled
-    [<instance-2>] Profiling is enabled
-    [<instance-2>] using discovery type [multi-node] and seed hosts providers [settings]
-    [<instance-2>] initialized
-    [<instance-2>] starting ...
-    [<instance-2>] publish_address {<node-ip>:9300}, bound_addresses {[::]:9300}
-    [<instance-2>] master not discovered or elected yet ...
+    [<es-node2>] Security is enabled
+    [<es-node2>] Profiling is enabled
+    [<es-node2>] using discovery type [multi-node] and seed hosts providers [settings]
+    [<es-node2>] initialized
+    [<es-node2>] starting ...
+    [<es-node2>] publish_address {<node-ip>:9300}, bound_addresses {[::]:9300}
+    [<es-node2>] master not discovered or elected yet ...
     ```
 
     After a minute or so, the log should include a message similar to:
 
     ```text
-    [<instance-2>] master node changed {previous [], current [<instance-1>...]}
+    [<es-node2>] master node changed {previous [], current [<es-node1>...]}
     ```
 
-    Here, `instance-2` is the {{es}} node you are starting, and `instance-1` represents the node that becomes the elected master. Shortly after that, you should also see:
+    Here, `es-node2` is the {{es}} node you are starting, and `es-node1` represents the node that becomes the elected master. Shortly after that, you should also see:
 
     ```text
-    [<instance-2>] started {<instance-2>}...
+    [<es-node2>] started {<es-node2>}...
     ```
 
     These messages indicate that the second {{es}} node initialized successfully, detected the elected master, and joined the cluster.
@@ -460,7 +460,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
 
         ```json subs=true
         {
-            "name" : "instance-2",
+            "name" : "es-node2",
             "cluster_name" : "elasticsearch-demo",
             "cluster_uuid" : "<cluster-uuid>",
             "version" : {
@@ -483,8 +483,8 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
         The output should include the new node together with the existing node or nodes in the cluster, for example:
 
         ```shell
-        203.0.113.22 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
-        203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * instance-1
+        203.0.113.22 46 97 18 0.21 0.23 0.10 cdfhilmrstw - es-node2
+        203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * es-node1
         ```
 
 ## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
