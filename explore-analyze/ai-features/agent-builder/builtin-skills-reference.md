@@ -39,7 +39,7 @@ $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration.
 
 $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
-:   Creates, modifies, and validates [Elastic Workflows](/explore-analyze/workflows.md) YAML definitions from natural language. Covers step types, triggers, Liquid templating, connector integrations, and validation. Use when a user wants to draft a new workflow from a description, find and load an existing workflow for editing, add, replace, or delete steps, change a workflow's trigger, or update top-level properties such as name, description, or tags. The agent validates the generated or modified YAML before proposing the change so the user can accept or decline it.
+:   Creates, modifies, and validates [Elastic Workflows](/explore-analyze/workflows.md) YAML definitions from natural language user input. Covers step types, triggers, Liquid templating, connector integrations, and validation. Use this skill when a user wants to draft a new workflow from a description, edit an existing workflow, change a workflow's trigger, or update top-level properties such as name, description, or tags. The agent validates the generated or modified YAML before proposing the change so the user can accept or decline it.
 
     **Assigned tools:**
 
