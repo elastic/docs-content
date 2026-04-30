@@ -21,7 +21,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 * Fixes query crashes and dimension selection state errors when switching between metric streams in Metrics Experience [#265464]({{kib-pull}}265464)
 * Fixes the Entity Analytics left panel not clearing when selecting a new entity [#265512]({{kib-pull}}265512)
-* Adds the EARS authentication type on Microsoft Teams and SharePoint Online connectors (behind a feature flag) [#265727]({{kib-pull}}265727)
+* Reduces the default OAuth 2.0 scope for the SharePoint Online connector from `Sites.Read.All` to `Sites.Selected` for more granular site access control [#265727]({{kib-pull}}265727)
 * Fixes inference error status codes not propagating correctly through the Agent Builder converse API [#266147]({{kib-pull}}266147)
 
 ## April 28, 2026 [serverless-changelog-04282026]
