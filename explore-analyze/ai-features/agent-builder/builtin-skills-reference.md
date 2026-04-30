@@ -47,8 +47,6 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
 
     Edit: `platform.workflows.workflow_set_yaml`, `platform.workflows.workflow_insert_step`, `platform.workflows.workflow_modify_step`, `platform.workflows.workflow_modify_step_property`, `platform.workflows.workflow_modify_property`, `platform.workflows.workflow_delete_step`
 
-    To discover existing workflows, the skill uses the platform's Semantic Metadata Layer (SML) tools (`platform.core.sml_search` to find workflows by name, description, or tags, and `platform.core.sml_attach` to load a workflow into the conversation as a `workflow.yaml` attachment for editing).
-
     **Prerequisites:** [Elastic Workflows](/explore-analyze/workflows.md) enabled in the deployment, with the privileges required to create and run workflows. The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on for the skill to appear.
 
     :::{note}

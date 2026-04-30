@@ -74,12 +74,6 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a `waitForInput` step, providing the reviewer's input to the workflow so it can continue.
 % TODO: Restore the link on `waitForInput` to /explore-analyze/workflows/authoring-techniques/human-in-the-loop.md once https://github.com/elastic/docs-content/pull/6048 merges (the page is added in that PR).
 
-`platform.core.sml_search` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
-:   Searches the platform's Semantic Metadata Layer (SML) by name, description, or tags. Used by the [`workflow-authoring`](../builtin-skills-reference.md#agent-builder-workflow-authoring-skill) skill to find existing workflows. Returns `chunk_id` values that can be passed to `platform.core.sml_attach`.
-
-`platform.core.sml_attach` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
-:   Attaches an item from the SML to the conversation by `chunk_id`. Used by the [`workflow-authoring`](../builtin-skills-reference.md#agent-builder-workflow-authoring-skill) skill to load a workflow's full YAML into the conversation as a `workflow.yaml` attachment, where it can then be edited with the skill's edit tools.
-
 <!--
 ### Attachment tools
 ```{applies_to}
