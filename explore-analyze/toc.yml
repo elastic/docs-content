@@ -45,7 +45,9 @@ toc:
         children:
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
-      - file: elastic-inference/inference-api.md
+      - file: elastic-inference/external.md
+        children:
+          - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
@@ -213,6 +215,7 @@ toc:
               - file: ai-features/agent-builder/builtin-skills-reference.md
               - file: ai-features/agent-builder/custom-skills.md
               - file: ai-features/agent-builder/skill-creation-guidelines.md
+          - file: ai-features/agent-builder/plugins.md
           - file: ai-features/agent-builder/tools.md
             children:
               - file: ai-features/agent-builder/tools/builtin-tools-reference.md
@@ -222,6 +225,7 @@ toc:
                   - file: ai-features/agent-builder/tools/index-search-tools.md
                   - file: ai-features/agent-builder/tools/mcp-tools.md
                   - file: ai-features/agent-builder/tools/workflow-tools.md
+          - file: ai-features/agent-builder/connectors.md
           - file: ai-features/agent-builder/programmatic-access.md
             children:
                - file: ai-features/agent-builder/kibana-api.md
@@ -236,6 +240,8 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - hidden: ai-features/agent-builder/connectors.md
+          - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
         children:
           - file: ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md
@@ -465,8 +471,10 @@ toc:
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/migrate-from-9.3.md
       - file: workflows/reference.md
         children:
           - file: workflows/triggers.md
@@ -474,19 +482,29 @@ toc:
               - file: workflows/triggers/manual-triggers.md
               - file: workflows/triggers/scheduled-triggers.md
               - file: workflows/triggers/alert-triggers.md
+              - file: workflows/triggers/event-driven-triggers.md
           - file: workflows/steps.md
             children:
               - file: workflows/steps/action-steps.md
                 children:
                   - file: workflows/steps/elasticsearch.md
                   - file: workflows/steps/kibana.md
+                  - file: workflows/steps/cases.md
+                  - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
                 children:
                   - file: workflows/steps/if.md
                   - file: workflows/steps/foreach.md
+                  - file: workflows/steps/while.md
+                  - file: workflows/steps/switch.md
                   - file: workflows/steps/wait.md
+                  - file: workflows/steps/wait-for-input.md
+                  - file: workflows/steps/loop-break.md
+                  - file: workflows/steps/loop-continue.md
               - file: workflows/steps/ai-steps.md
+              - file: workflows/steps/data.md
+              - file: workflows/steps/composition.md
           - file: workflows/templating.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
