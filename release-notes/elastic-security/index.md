@@ -45,7 +45,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds new RBAC subfeatures for rules management, allowing granular control over investigation guide editing, custom highlighted fields, enabling/disabling rules, manual rule runs, and rules management settings independently of read-only rules access [#250131]({{kib-pull}}250131).
 * Adds an **Exceptions** RBAC subfeature to the Rules privilege, allowing you to grant exception list management independently of rules read/write access [#245722]({{kib-pull}}245722).
 * Adds a dedicated **Alerts** {{kib}} feature privilege, separating alert view and edit access from rules management. Alert read/edit can now be granted independently of rules privileges [#244637]({{kib-pull}}244637).
-* Adds a project selector to Security Solution pages including rule creation, rule details, rule management, rule editing, **MITRE ATT&CK® coverage**, prebuilt rule installation, and **Shared exception lists** [#258916]({{kib-pull}}258916).
 * Adds an Agent Builder skill for querying Security {{ml}} jobs for {{anomaly-detect}} questions [#254908]({{kib-pull}}254908).
 * Automatically injects `METADATA _id` into {{esql}} detection rule queries during execution, removing the requirement for you to include it manually. A non-blocking warning is shown when automatic injection is not possible [#254703]({{kib-pull}}254703).
 * Adds an Agent Builder skill for creating detection rules [#247674]({{kib-pull}}247674).
