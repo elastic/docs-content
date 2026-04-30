@@ -1,0 +1,211 @@
+---
+navigation_title: "OTLP/HTTP endpoint"
+applies_to:
+  deployment:
+    self:
+    ece:
+    eck:
+products:
+  - id: elasticsearch
+---
+
+# OTLP/HTTP endpoint
+
+In addition to ingesting data through the bulk API, {{es}} accepts data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
+Three OTLP/HTTP endpoints are available:
+
+| Signal | Path | Availability |
+| --- | --- | --- |
+| Metrics | `/_otlp/v1/metrics` | {applies_to}`stack: ga 9.2+` |
+| Logs | `/_otlp/v1/logs` | {applies_to}`stack: preview 9.5` |
+| Traces | `/_otlp/v1/traces` | {applies_to}`stack: preview 9.5` |
+
+:::{note}
+{{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp), not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
+:::
+
+## When to use the OTLP endpoint
+
+For most users, the OTLP endpoint is **not** the recommended ingestion path.
+Use it when one of the following applies:
+
+* You have an application that exports OTLP natively and you want it to send data straight to {{es}} without running an OpenTelemetry Collector.
+  For example, a lightweight development setup (SDK to {{es}}).
+* You operate a self-managed gateway Collector and prefer the `OTLP/HTTP` exporter over the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md).
+
+For other deployments, prefer the higher-level paths:
+
+| Deployment | Recommended ingestion path |
+| --- | --- |
+| ECH and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/motlp.md) |
+| ECE, ECK, and self-managed | OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), using the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md) |
+
+If {{motlp}} is available in your deployment, use it, even when an application can target an OTLP endpoint directly.
+{{motlp}} may use these endpoints internally in the future.
+
+For an overview of the recommended OpenTelemetry-based ingestion architecture, see the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
+
+Don't send telemetry from many individual applications directly to the {{es}} OTLP endpoint.
+Send to an OpenTelemetry Collector first so it can absorb connection churn and batch records to improve ingestion performance.
+
+## Why OTLP
+
+Compared to the bulk API, ingesting via OTLP offers:
+
+* Improved ingestion performance, especially for payloads with many resource attributes.
+* Simplified mapping: data streams, index templates, dimensions, and metrics are derived dynamically from OTLP metadata.
+  There's no need to set them up manually.
+
+## Create an API key
+
+Authenticate to the OTLP endpoint with an API key.
+Refer to the API key documentation for your deployment type for instructions on how to create one:
+
+* [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) (self-managed, ECE, ECK)
+* [{{ech}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md)
+* [{{ece}} API keys](/deploy-manage/api-keys/elastic-cloud-enterprise-api-keys.md)
+* [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md)
+
+The API key needs `create_doc` and `auto_configure` privileges on the data stream patterns it writes to.
+`create_doc` allows writing documents without overwriting existing ones.
+`auto_configure` allows the endpoint to create the target data streams on first write.
+
+The minimum index patterns depend on which signals you ingest:
+
+| Signals ingested | Required `names` patterns |
+| --- | --- |
+| Metrics | `metrics-*` |
+| Logs | `logs-*` |
+| Traces | `traces-*`, `logs-*` |
+| All three | `metrics-*`, `logs-*`, `traces-*` |
+
+Traces ingestion also writes span events to `logs-*` data streams, so it requires both patterns.
+
+For example, an API key role descriptor that allows ingesting all three signals:
+
+```json
+{
+  "indices": [
+    {
+      "names": ["logs-*", "metrics-*", "traces-*"],
+      "privileges": ["create_doc", "auto_configure"]
+    }
+  ]
+}
+```
+
+## How to send data to the OTLP endpoint
+
+To send data from an OpenTelemetry Collector to an {{es}} OTLP endpoint, configure the [`OTLP/HTTP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter):
+
+```yaml
+exporters:
+  otlphttp/elasticsearch:
+    endpoint: <es_endpoint>/_otlp
+    headers:
+      Authorization: "ApiKey <api_key>"
+    sending_queue:
+      enabled: true
+      sizer: bytes
+      queue_size: 50_000_000 # 50MB uncompressed
+      block_on_overflow: true
+      batch:
+        flush_timeout: 1s
+        min_size: 1_000_000 # 1MB uncompressed
+        max_size: 4_000_000 # 4MB uncompressed
+service:
+  pipelines:
+    logs:
+      exporters: [otlphttp/elasticsearch]
+      receivers: ...
+    traces:
+      exporters: [otlphttp/elasticsearch]
+      receivers: ...
+    metrics:
+      exporters: [otlphttp/elasticsearch]
+      receivers: ...
+```
+
+The exporter appends the signal-specific path (`/v1/logs`, `/v1/traces`, `/v1/metrics`) to the configured `endpoint`.
+
+Supported `compression` values are `gzip` (the `OTLP/HTTP` exporter default) and `none`.
+
+% TODO we might also support snappy and zstd, test and update accordingly.
+
+To send data from a custom application, use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) of your choice and point its OTLP/HTTP exporter at the corresponding endpoint path.
+
+:::{note}
+Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.
+:::
+
+## Routing to data streams
+
+By default, records are written to the following data streams:
+
+| Signal | Default data stream |
+| --- | --- |
+| Logs | `logs-generic.otel-default` |
+| Traces | `traces-generic.otel-default` |
+| Metrics | `metrics-generic.otel-default` |
+
+The target data stream name follows the pattern `<type>-<dataset>.otel-<namespace>`.
+You can influence `dataset` and `namespace` by setting attributes on your data:
+
+* Set `data_stream.dataset` and/or `data_stream.namespace` as attributes.
+  Precedence: data point or log record attribute, then scope attribute, then resource attribute.
+* Otherwise, if the scope name contains `/receiver/<somereceiver>`, `data_stream.dataset` is set to the receiver name.
+* Otherwise, `data_stream.dataset` falls back to `generic` and `data_stream.namespace` falls back to `default`.
+
+## Body map mode for logs
+```{applies_to}
+stack: preview 9.5
+```
+
+By default, OTLP log records are mapped into {{es}}'s standard OTel document structure, preserving resource, scope, and record metadata.
+
+If an upstream component has already shaped the log body to match the desired document structure, you can opt into the body map mode.
+In this mode, the log record's body map is used as the complete document, without copying the surrounding OTLP metadata.
+
+Enable body map mode in either of two ways:
+
+* Per request, by setting the `X-Elastic-Mapping-Mode` HTTP header to `bodymap`.
+* Per instrumentation scope, by setting the `elastic.mapping.mode` scope attribute to `bodymap`.
+  The scope attribute takes precedence over the header.
+
+## Configure histogram handling for metrics
+```{applies_to}
+stack: preview =9.3, ga 9.4+
+```
+
+You can configure how OTLP histogram metrics are mapped using the `xpack.otel_data.histogram_field_type` cluster setting.
+Valid values are:
+
+ - `histogram` (default on {applies_to}`stack: preview =9.3`): Map histograms as T-Digests using the `histogram` field type
+ - `exponential_histogram` (default on {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`): Map histograms as exponential histograms using the `exponential_histogram` field type
+
+The setting is dynamic and can be updated at runtime:
+
+```console
+PUT /_cluster/settings
+{
+  "persistent" : {
+    "xpack.otel_data.histogram_field_type" : "exponential_histogram"
+  }
+}
+```
+
+Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
+
+This setting only applies to metrics ingested through the OTLP endpoint.
+Documents ingested with the `_bulk` API (for example via the {{es}} exporter for the OpenTelemetry Collector) are not affected.
+
+## Limitations
+
+* **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
+  If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
+  Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
+* **Profiles:** Profiles are not supported.
+  To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
+* **Histogram temporality:** Histograms are only supported in delta temporality.
+  Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) so cumulative histograms aren't dropped.
+* **Exemplars:** Exemplars are not supported.
