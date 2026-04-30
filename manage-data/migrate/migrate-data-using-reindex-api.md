@@ -10,7 +10,7 @@ products:
 
 # Migrate {{es}} data using the reindex API [migrate-reindex-from-remote]
 
-The [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) offers a convenient way for you to copy your {{es}} documents from a source index, data stream, or alias in one deployment to another.
+The [reindex API]({{es-apis}}operation/operation-reindex) offers a convenient way for you to copy your {{es}} documents from a source index, data stream, or alias in one deployment to another.
 
 :::{important}
 This guide gives the example of reindexing a full index from an {{ech}} deployment to an {{serverless-full}} project using the remote host parameters as shown in the [reindex from remote](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#reindex-from-remote) example. These steps can be adapted to other deployment types as well. When you copy your data to deployment types other than {{serverless-short}}, there are [additional considerations](#migrate-reindex-from-remote-others) to make note of.
