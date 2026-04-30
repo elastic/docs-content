@@ -62,9 +62,9 @@ To capture a {{ls}} diagnostic:
   
     You can run the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
   
-    * `local` (default, recommended): Polls the [{{ls}} API](https://www.elastic.co/docs/api/doc/logstash/), gathers operating system info, and captures node logs.
+    * `local` (default, recommended): Polls the [{{ls}} API]({{ls-apis}}), gathers operating system info, and captures node logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{ls}} API](https://www.elastic.co/docs/api/doc/logstash/). All other data must be collected manually.
+    * `api`: Polls the [{{ls}} API]({{ls-apis}}). All other data must be collected manually.
   
     ::::
 
