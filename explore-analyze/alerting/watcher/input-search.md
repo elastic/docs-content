@@ -15,7 +15,7 @@ Use the `search` input to load the results of an Elasticsearch search request in
 In the search input’s `request` object, you specify:
 
 * The indices you want to search
-* The [search type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* The [search type]({{es-apis}}operation/operation-search)
 * The search request body
 
 The search request body supports the full Elasticsearch Query DSL—it’s the same as the body of an Elasticsearch `_search` request.
@@ -138,9 +138,9 @@ The total number of hits in the search response is returned as an object in the 
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
-| `request.search_type` | no | `query_then_fetch` | The [type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) of search request to perform.                                                                                    Valid values are: `dfs_query_then_fetch` and `query_then_fetch`.                                                                                    The Elasticsearch default is `query_then_fetch`. |
+| `request.search_type` | no | `query_then_fetch` | The [type]({{es-apis}}operation/operation-search) of search request to perform.                                                                                    Valid values are: `dfs_query_then_fetch` and `query_then_fetch`.                                                                                    The Elasticsearch default is `query_then_fetch`. |
 | `request.indices` | no | - | The indices to search. If omitted, all indices are searched, which is the                                                                                    default behavior in Elasticsearch. |
-| `request.body` | no | - | The body of the request. The [request body](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)                                                                                    follows the same structure you normally send in the body of a REST `_search`                                                                                    request. The body can be static text or include `mustache` [templates](how-watcher-works.md#templates). |
+| `request.body` | no | - | The body of the request. The [request body]({{es-apis}}operation/operation-search)                                                                                    follows the same structure you normally send in the body of a REST `_search`                                                                                    request. The body can be static text or include `mustache` [templates](how-watcher-works.md#templates). |
 | `request.template` | no | - | The body of the search template. See [configure templates](how-watcher-works.md#templates)                                                                                    for more information. |
 | `request.indices_options.expand_wildcards` | no | `open` | How to expand wildcards. Valid values are: `all`, `open`, `closed`, and `none`                                                                                    See [`expand_wildcards`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) for more information. |
 | `request.indices_options.ignore_unavailable` | no | `true` | Whether to ignore unavailable concrete (non-wildcard) indices, aliases, or data streams. Refer to [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) for more information. |

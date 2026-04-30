@@ -471,8 +471,10 @@ toc:
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/migrate-from-9.3.md
       - file: workflows/reference.md
         children:
           - file: workflows/triggers.md
@@ -480,19 +482,29 @@ toc:
               - file: workflows/triggers/manual-triggers.md
               - file: workflows/triggers/scheduled-triggers.md
               - file: workflows/triggers/alert-triggers.md
+              - file: workflows/triggers/event-driven-triggers.md
           - file: workflows/steps.md
             children:
               - file: workflows/steps/action-steps.md
                 children:
                   - file: workflows/steps/elasticsearch.md
                   - file: workflows/steps/kibana.md
+                  - file: workflows/steps/cases.md
+                  - file: workflows/steps/streams.md
                   - file: workflows/steps/external-systems-apps.md
               - file: workflows/steps/flow-control-steps.md
                 children:
                   - file: workflows/steps/if.md
                   - file: workflows/steps/foreach.md
+                  - file: workflows/steps/while.md
+                  - file: workflows/steps/switch.md
                   - file: workflows/steps/wait.md
+                  - file: workflows/steps/wait-for-input.md
+                  - file: workflows/steps/loop-break.md
+                  - file: workflows/steps/loop-continue.md
               - file: workflows/steps/ai-steps.md
+              - file: workflows/steps/data.md
+              - file: workflows/steps/composition.md
           - file: workflows/templating.md
       - file: workflows/templates.md
   - file: numeral-formatting.md

@@ -39,7 +39,7 @@ When a node wins the master election, it logs a message containing `elected-as-m
 
 If there is no elected master node and no node can win an election, all nodes repeatedly log messages about the problem using a logger called `org.elasticsearch.cluster.coordination.ClusterFormationFailureHelper`. By default, this happens every 10 seconds.
 
-Master elections only involve master-eligible nodes, so focus your attention on the master-eligible nodes in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on these nodes also provides useful information about the situation.
+Master elections only involve master-eligible nodes, so focus your attention on the master-eligible nodes in this situation. These nodes' logs indicate the requirements for a master election, such as the discovery of a certain set of nodes. The [Health]({{es-apis}}operation/operation-health-report) API on these nodes also provides useful information about the situation.
 
 If the logs or the health report indicate that {{es}} can't discover enough nodes to form a quorum, you must address the reasons preventing {{es}} from discovering the missing nodes. The missing nodes are needed to reconstruct the cluster metadata. Without the cluster metadata, the data in your cluster is meaningless. The cluster metadata is stored on a subset of the master-eligible nodes in the cluster. If a quorum can't be discovered, the missing nodes were the ones holding the cluster metadata.
 
@@ -59,7 +59,7 @@ If the logs suggest that the master is unstable due to timeouts or network-relat
 
 ## Node cannot discover or join stable master [discovery-cannot-join-master]
 
-If there is a stable elected master but a node can't discover or join its cluster, it repeatedly logs messages about the problem using the `ClusterFormationFailureHelper` logger. The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on the affected node also provides useful information about the situation. Other log messages on the affected node and the elected master might provide additional information about the problem.
+If there is a stable elected master but a node can't discover or join its cluster, it repeatedly logs messages about the problem using the `ClusterFormationFailureHelper` logger. The [Health]({{es-apis}}operation/operation-health-report) API on the affected node also provides useful information about the situation. Other log messages on the affected node and the elected master might provide additional information about the problem.
 
 If the logs suggest that the node cannot discover or join the cluster due to timeouts or network-related issues, refer to [Investigate timeout and network issues](#investigate-timeout-and-network-issues).
 
@@ -81,6 +81,6 @@ If logs suggest that discovery, master elections, or cluster joining are failing
 
 * **Long thread waits**: Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.
 
-    The [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you're trying to diagnose. `jstack` is much more reliable since it doesn't require any JVM threads.
+    The [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you're trying to diagnose. `jstack` is much more reliable since it doesn't require any JVM threads.
 
     The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. Refer to [Networking threading model](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.
