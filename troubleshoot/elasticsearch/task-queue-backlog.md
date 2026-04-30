@@ -28,7 +28,7 @@ To identify the cause of the backlog, try these diagnostic actions.
 
 ### Check thread pool status [diagnose-task-queue-thread-pool] 
 
-Use the [cat thread pool API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) to monitor active threads, queued tasks, rejections, and completed tasks:
+Use the [cat thread pool API]({{es-apis}}operation/operation-cat-thread-pool) to monitor active threads, queued tasks, rejections, and completed tasks:
 
 ```console
 GET /_cat/thread_pool?v&s=t,n&h=type,name,node_name,pool_size,active,queue_size,queue,rejected,completed
@@ -52,13 +52,13 @@ There are a number of things that you can check as potential causes for the queu
 
 If a particular thread pool queue is backed up, periodically poll the CPU-related API's to gauge task progression vs resource constraints:
 
-* the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads)
+* the [nodes hot threads API]({{es-apis}}operation/operation-nodes-hot-threads)
 
   ```console
   GET /_nodes/hot_threads
   ```
 
-* the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes)
+* the [cat nodes API]({{es-apis}}operation/operation-cat-nodes)
 
   ```console
   GET _cat/nodes?v=true&s=cpu:desc
@@ -66,20 +66,20 @@ If a particular thread pool queue is backed up, periodically poll the CPU-relate
 
 If `cpu` is consistently elevated or a hot thread's stack trace does not rotate over an extended period, investigate [high CPU usage](high-cpu-usage.md#check-hot-threads). 
 
-Although the hot threads API response does not list the specific tasks running on a thread, it provides a summary of the thread’s activities. You can correlate a hot threads response with a [task management API response](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) to identify any overlap with specific tasks. For example, if hot threads suggest the node is spending time in `search`, filter the [Task Management API for search tasks](#diagnose-task-queue-long-running-node-tasks).
+Although the hot threads API response does not list the specific tasks running on a thread, it provides a summary of the thread’s activities. You can correlate a hot threads response with a [task management API response]({{es-apis}}group/endpoint-tasks) to identify any overlap with specific tasks. For example, if hot threads suggest the node is spending time in `search`, filter the [Task Management API for search tasks](#diagnose-task-queue-long-running-node-tasks).
 
 
 ### Identify long-running node tasks [diagnose-task-queue-long-running-node-tasks] 
 
-Long-running tasks can also cause a backlog. Use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) to check for excessive `running_time_in_nanos` values:
+Long-running tasks can also cause a backlog. Use the [task management API]({{es-apis}}group/endpoint-tasks) to check for excessive `running_time_in_nanos` values:
 
 ```console
 GET /_tasks?pretty=true&human=true&detailed=true
 ```
 
-You can filter on a specific `action`, such as [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or search-related tasks. If investigating particular nodes, this API can be filtered to specific `nodes`.
+You can filter on a specific `action`, such as [bulk indexing]({{es-apis}}operation/operation-bulk) or search-related tasks. If investigating particular nodes, this API can be filtered to specific `nodes`.
 
-* Filter on [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) actions:
+* Filter on [bulk index]({{es-apis}}operation/operation-bulk) actions:
 
     ```console
     GET /_tasks?human&detailed&actions=indices:*write*
@@ -98,25 +98,25 @@ You can filter on a specific `action`, such as [bulk indexing](https://www.elast
 
 Long-running tasks might need to be [canceled](#resolve-task-queue-backlog-stuck-tasks).
 
-Refer to [this video](https://www.youtube.com/watch?v=lzw6Wla92NY) for a walkthrough of how to troubleshoot the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) output. 
+Refer to [this video](https://www.youtube.com/watch?v=lzw6Wla92NY) for a walkthrough of how to troubleshoot the [task management API]({{es-apis}}group/endpoint-tasks) output.
 
 You can also check the [Tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md) and [Tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md) pages for more information.
 
 ### Look for long-running cluster tasks [diagnose-task-queue-long-running-cluster-tasks] 
 
-Use the [cat pending tasks API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks) to identify delays in cluster state synchronization:
+Use the [cat pending tasks API]({{es-apis}}operation/operation-cat-pending-tasks) to identify delays in cluster state synchronization:
 
 ```console
 GET /_cat/pending_tasks?v=true
 ```
 
-Cluster state synchronization can be expected to fall behind when a [cluster is unstable](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md), but otherwise this state usually indicates an unworkable [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) override or traffic pattern.
+Cluster state synchronization can be expected to fall behind when a [cluster is unstable](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md), but otherwise this state usually indicates an unworkable [cluster setting]({{es-apis}}operation/operation-cluster-get-settings) override or traffic pattern.
 
 There are a few common `source` issues to check for:
 
 * `ilm-`: [{{ilm}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md) polls every `10m` by default, as determined by the [`indices.lifecycle.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md) setting. This starts asynchronous tasks executed by the node tasks. If {{ilm-init}} continually reports as a cluster pending task, this setting likely is being overridden. Otherwise, the cluster likely has misconfigured [indices count relative to master heap size](/deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-count-recommendation).
-* `put-mapping`: {{es}} enables [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) by default. This, or the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping), triggers a mapping update. In this case, the corresponding cluster log will contain an `update_mapping` entry with the name of the affected index.
-* `shard-started`: Indicates [active shard recoveries](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery). Overriding [`cluster.routing.allocation.*` settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-settings) can cause pending tasks and recoveries to back up.
+* `put-mapping`: {{es}} enables [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) by default. This, or the [update mapping API]({{es-apis}}operation/operation-indices-put-mapping), triggers a mapping update. In this case, the corresponding cluster log will contain an `update_mapping` entry with the name of the affected index.
+* `shard-started`: Indicates [active shard recoveries]({{es-apis}}operation/operation-cat-recovery). Overriding [`cluster.routing.allocation.*` settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-settings) can cause pending tasks and recoveries to back up.
 
 ### Monitor slow logs [diagnose-task-slow-logs]
 
@@ -144,14 +144,14 @@ This problem can surface due to a number of possible causes:
 * Creating new  tasks or modifying scheduled tasks which either run frequently or are broad in their effect, such as [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) policies or [rules](/explore-analyze/alerting.md)
 * Performing traffic load testing
 * Doing extended look-backs, especially across [data tiers](/manage-data/lifecycle/data-tiers.md)
-* [Searching](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) or performing [bulk updates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to a high number of indices in a single request
+* [Searching]({{es-apis}}group/endpoint-search) or performing [bulk updates]({{es-apis}}operation/operation-bulk) to a high number of indices in a single request
 
 
 ### Cancel stuck tasks [resolve-task-queue-backlog-stuck-tasks] 
 
-If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation) if it's flagged as `cancellable`.
+If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task]({{es-apis}}group/endpoint-tasks#task-cancellation) if it's flagged as `cancellable`.
 
-For example, you can use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
+For example, you can use the [task management API]({{es-apis}}operation/operation-tasks-list) to identify and cancel searches that consume excessive CPU time.
 
 ```console
 GET _tasks?actions=*search&detailed

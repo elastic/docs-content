@@ -1,8 +1,8 @@
 ---
 navigation_title: Manage detection rules at scale
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Use workflows to audit rule health, surface rule errors, and automate rule operations across large detection rule sets in Elastic Security.
 products:
   - id: kibana
@@ -21,7 +21,7 @@ Use workflows to automate these rule-operations tasks. Workflows can query detec
 
 ## What you can automate [workflows-rule-ops-patterns]
 
-The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#generic-request-actions) to drive rule-operations work:
+The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#kibana-request) to drive rule-operations work:
 
 - **Audit rule health on a schedule.** A scheduled workflow queries the detection engine API for rule status, filters for rules in an error or disabled state, and publishes a daily summary.
 - **Surface rule errors.** Use [`if` steps](/explore-analyze/workflows/steps/if.md) to branch on rule status and send a targeted notification when the failing rule is business-critical.

@@ -85,8 +85,8 @@ You can edit all of the space settings you just defined at any time, except for 
 
 Elastic also allows you to manage spaces using APIs:
 
-* {applies_to}`serverless:` [Serverless Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
-* {applies_to}`stack:` [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
+* {applies_to}`serverless:` [Serverless Spaces API]({{kib-serverless-apis}}operation/operation-get-spaces-space)
+* {applies_to}`stack:` [Spaces API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects)
 
 
 ## Define access to a space [spaces-control-user-access]
@@ -140,7 +140,7 @@ For best results, set the default {{cps-init}} scope for each space **before** y
 
 ## Make API calls to a space [spaces-api-requests]
 
-When you access resources in {{kib}} using the [{{kib}} APIs](https://www.elastic.co/docs/api/doc/kibana/), unless you specify otherwise the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
+When you access resources in {{kib}} using the [{{kib}} APIs]({{kib-apis}}), unless you specify otherwise the API request is directed at the default space. To direct a request at a specific space, indicate that space by adding a `/<space>` element to the request path, directly after the {{kib}} URL.
 
 For example, the following request retrieves a list of saved objects of type `dashboard` in the default {{kib}} space:
 

@@ -84,7 +84,7 @@ If you see requests coming through the {{apm-server}} but they are not accepted 
 
 Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
-{{apm-server}} currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for {{product.apm}} indices.
+{{apm-server}} currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation]({{es-apis}}operation/operation-create) for {{product.apm}} indices.
 ::::::
 
 :::::::
