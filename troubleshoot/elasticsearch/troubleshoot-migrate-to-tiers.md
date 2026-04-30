@@ -26,7 +26,7 @@ To learn how to assign tiers to your data nodes, refer to [](/manage-data/lifecy
 
 To get the shards assigned, call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API, which resolves the conflicting routing configurations to using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This also future-proofs the system by migrating the index templates and ILM policies if needed.
 
-1. [Stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
+1. [Stop]({{es-apis}}operation/operation-ilm-stop) {{ilm}}
 
     ```console
     POST /_ilm/stop
@@ -79,7 +79,7 @@ To get the shards assigned, call the [migrate to data tiers routing](../../manag
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.
 
-4. [Restart](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
+4. [Restart]({{es-apis}}operation/operation-ilm-start) {{ilm}}:
 
     ```console
     POST /_ilm/start
