@@ -34,7 +34,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
    You can also consider [gateway settings](elasticsearch://reference/elasticsearch/configuration-reference/local-gateway.md) when restarting large clusters to reduce initial strain while nodes are processing [through discovery](../../distributed-architecture/discovery-cluster-formation.md).
 
 2. **Stop indexing and perform a flush.**
-   Performing a [flush](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush) speeds up shard recovery.
+   Performing a [flush]({{es-apis}}operation/operation-indices-flush) speeds up shard recovery.
 
    ```console
    POST /_flush
@@ -46,7 +46,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 
     You have two options to handle {{ml}} jobs and {{dfeeds}} when you shut down a cluster:
 
-    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode):
+    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API]({{es-apis}}operation/operation-ml-set-upgrade-mode):
 
         ```console
         POST _ml/set_upgrade_mode?enabled=true
@@ -79,7 +79,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 5. **Perform any needed changes.**
 6. **Restart nodes.**
    If you have dedicated master nodes, start them first and wait for them to form a cluster and elect a master before proceeding with your data nodes. You can check progress by looking at the logs.
-   As soon as enough master-eligible nodes have discovered each other, they form a cluster and elect a master. At that point, you can use the [cat health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-health) and [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) APIs to monitor nodes joining the cluster:
+   As soon as enough master-eligible nodes have discovered each other, they form a cluster and elect a master. At that point, you can use the [cat health]({{es-apis}}operation/operation-cat-health) and [cat nodes]({{es-apis}}operation/operation-cat-nodes) APIs to monitor nodes joining the cluster:
 
     ```console
     GET _cat/health
@@ -90,7 +90,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
    The `status` column returned by `_cat/health` shows the health of each node in the cluster: `red`, `yellow`, or `green`.
 
 7. **Wait for all nodes to join the cluster and report a status of yellow.**
-   When a node joins the cluster, it begins to recover any primary shards that are stored locally. The [`_cat/health`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-health) API initially reports a `status` of `red`, indicating that not all primary shards have been allocated.
+   When a node joins the cluster, it begins to recover any primary shards that are stored locally. The [`_cat/health`]({{es-apis}}operation/operation-cat-health) API initially reports a `status` of `red`, indicating that not all primary shards have been allocated.
    Once a node recovers its local shards, the cluster `status` switches to `yellow`, indicating that all primary shards have been recovered, but not all replica shards are allocated. This is to be expected because you have not yet re-enabled allocation. Delaying the allocation of replicas until all nodes are `yellow` allows the master to allocate replicas to nodes that already have local shard copies.
 
 8. **Re-enable replica shard allocation.**
@@ -106,7 +106,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
     ```
 
    Once replica allocation is re-enabled, the cluster starts allocating replica shards to the data nodes. At this point it is safe to resume indexing and searching, but your cluster will recover more quickly if you can wait until all primary and replica shards have been successfully allocated and the status of all nodes is `green`.
-   You can monitor progress with the [`_cat/health`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-health) and [`_cat/recovery`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) APIs:
+   You can monitor progress with the [`_cat/health`]({{es-apis}}operation/operation-cat-health) and [`_cat/recovery`]({{es-apis}}operation/operation-cat-recovery) APIs:
 
     ```console
     GET _cat/health
@@ -115,13 +115,13 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
     ```
 
 9. **Restart machine learning jobs.** (Optional)
-   If you temporarily halted the tasks associated with your {{ml}} jobs, use the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode) to return them to active states:
+   If you temporarily halted the tasks associated with your {{ml}} jobs, use the [set upgrade mode API]({{es-apis}}operation/operation-ml-set-upgrade-mode) to return them to active states:
 
     ```console
     POST _ml/set_upgrade_mode?enabled=false
     ```
 
-   If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.
+   If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs]({{es-apis}}operation/operation-ml-open-job) and [start datafeed]({{es-apis}}operation/operation-ml-start-datafeed) APIs.
 
 ## Rolling restart [restart-cluster-rolling]
 
@@ -140,7 +140,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
    You can also consider [gateway settings](elasticsearch://reference/elasticsearch/configuration-reference/local-gateway.md) when restarting large clusters to reduce initial strain while nodes are processing [through discovery](../../distributed-architecture/discovery-cluster-formation.md).
 
 2. **Stop non-essential indexing and perform a flush.** (Optional)
-   While you can continue indexing during the rolling restart, shard recovery can be faster if you temporarily stop non-essential indexing and perform a [flush](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush).
+   While you can continue indexing during the rolling restart, shard recovery can be faster if you temporarily stop non-essential indexing and perform a [flush]({{es-apis}}operation/operation-indices-flush).
 
     ```console
     POST /_flush
@@ -149,7 +149,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 3. **Temporarily stop the tasks associated with active {{ml}} jobs and {{dfeeds}}.** (Optional)
    {{ml-cap}} features require specific [subscriptions](https://www.elastic.co/subscriptions).
    You have two options to handle {{ml}} jobs and {{dfeeds}} when you shut down a cluster:
-      * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode):
+      * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API]({{es-apis}}operation/operation-ml-set-upgrade-mode):
 
         ```console
         POST _ml/set_upgrade_mode?enabled=true
@@ -205,10 +205,10 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
    When the node has recovered and the cluster is stable, repeat these steps for each node that needs to be changed.
 
 9. **Restart machine learning jobs.** (Optional)
-   If you temporarily halted the tasks associated with your {{ml}} jobs, use the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode) to return them to active states:
+   If you temporarily halted the tasks associated with your {{ml}} jobs, use the [set upgrade mode API]({{es-apis}}operation/operation-ml-set-upgrade-mode) to return them to active states:
 
     ```console
     POST _ml/set_upgrade_mode?enabled=false
     ```
 
-   If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.
+   If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs]({{es-apis}}operation/operation-ml-open-job) and [start datafeed]({{es-apis}}operation/operation-ml-start-datafeed) APIs.

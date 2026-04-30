@@ -208,7 +208,7 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 It is critical to allocate enough memory and CPU capacity to handle configured limits. Resource requirements will vary depending on simultaneous workload and monitor complexity:
 
 **For browser monitors**: Start by allocating at least 2 GiB of memory and two cores _per browser instance_ to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed.
-**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run a large number of lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
+**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run many lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
 
 Example: For a private location expected to run 2 concurrent browser monitors and 100 HTTP checks, the recommended allocation is 2 * (2 GiB + 2 vCPU) + (512 MiB + 2 vCPU) => 4,5 GiB + 6 vCPU.
 
@@ -216,7 +216,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 - A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
 
-- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached. In these edge cases, increasing the `server.limits.checkin_limit.max_body_byte_size` setting on Fleet Server to 8 MB or 16 MB (or setting it to -1 to turn off the limit entirely) might help prevent communication errors.
+- Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
 
 If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
 

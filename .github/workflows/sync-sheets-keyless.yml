@@ -92,7 +92,7 @@ jobs:
           base: main
           branch: automated/sheets-sync
           delete-branch: true
-          title: "Update CSV from Google Sheets"
+          title: "[Automation] Update EIS model list"
           commit-message: |
             Update CSV from Google Sheets
 
