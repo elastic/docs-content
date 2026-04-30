@@ -46,7 +46,7 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
+To download and deploy Elastic Rerank, use the [create inference API]({{es-apis}}operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
 
 ::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
@@ -83,7 +83,7 @@ You might see a 502 bad gateway error in the response when using the {{kib}} Con
 
 ::::
 
-After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) retriever.
+After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) retriever.
 
 ## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 
@@ -282,7 +282,7 @@ For detailed benchmark information, including complete dataset results and metho
 **Documentation**:
 
 * [Semantic re-ranking in {{es}} overview](../../../solutions/search/ranking/semantic-reranking.md#semantic-reranking-in-es)
-* [Inference API example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch)
+* [Inference API example]({{es-apis}}operation/operation-inference-put-elasticsearch)
 
 **Blogs**:
 

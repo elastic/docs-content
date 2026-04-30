@@ -45,7 +45,7 @@ Configuring dm-crypt or similar technologies is outside the scope of the {{ece}}
 
 {{ece}} provides full encryption of all network traffic by default.
 
-TLS is supported when interacting with the [RESTful API of {{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise/) and for the proxy layer that routes user requests to clusters of all versions. Internally, our administrative services also ensure transport-level encryption.
+TLS is supported when interacting with the [RESTful API of {{ece}}]({{ece-apis}}) and for the proxy layer that routes user requests to clusters of all versions. Internally, our administrative services also ensure transport-level encryption.
 
 
 ### Attack vectors versus separation of roles [ece-securing-vectors] 

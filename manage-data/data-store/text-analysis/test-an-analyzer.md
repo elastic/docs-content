@@ -10,7 +10,7 @@ products:
 
 # Test an analyzer [test-analyzer]
 
-The [`analyze` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) is an invaluable tool for viewing the terms produced by an analyzer. A built-in analyzer can be specified inline in the request:
+The [`analyze` API]({{es-apis}}operation/operation-indices-analyze) is an invaluable tool for viewing the terms produced by an analyzer. A built-in analyzer can be specified inline in the request:
 
 ```console
 POST _analyze

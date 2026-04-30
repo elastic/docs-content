@@ -52,7 +52,7 @@ To upgrade a cluster:
 
 2. **Stop non-essential indexing and perform a flush.** (Optional)
 
-    While you can continue indexing during the upgrade, shard recovery is much faster if you temporarily stop non-essential indexing and perform a [flush](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush).
+    While you can continue indexing during the upgrade, shard recovery is much faster if you temporarily stop non-essential indexing and perform a [flush]({{es-apis}}operation/operation-indices-flush).
 
     ```console
     POST /_flush
@@ -66,7 +66,7 @@ To upgrade a cluster:
     Any {{ml}} indices created before 8.x must be reindexed before upgrading, which you can initiate from the **Upgrade Assistant** in 8.19. For more information, refer to [Anomaly detection results migration]
     ::::
 
-    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode):
+    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API]({{es-apis}}operation/operation-ml-set-upgrade-mode):
 
         ```console
         POST _ml/set_upgrade_mode?enabled=true
@@ -200,7 +200,7 @@ To upgrade a cluster:
     POST _ml/set_upgrade_mode?enabled=false
     ```
 
-    If you closed all {{ml}} jobs before the upgrade, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.
+    If you closed all {{ml}} jobs before the upgrade, open the jobs and start the datafeeds from {{kib}} or with the [open jobs]({{es-apis}}operation/operation-ml-open-job) and [start datafeed]({{es-apis}}operation/operation-ml-start-datafeed) APIs.
 
 
 
