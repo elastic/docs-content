@@ -25,28 +25,28 @@ The following operations are available from the **Manage index** menu. Some oper
 :   View the [index mappings](/manage-data/data-store/mapping.md). From this page you can set up new mappings for the field types in your index.
 
 **Show index stats** {applies_to}`stack: ga`
-:   View statistics for your index. Statistics are compiled by `primaries`, representing values only for primary shards, and by `total`, representing accumulated values for both primary and replica shards. Refer to the [get index statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) API for details.
+:   View statistics for your index. Statistics are compiled by `primaries`, representing values only for primary shards, and by `total`, representing accumulated values for both primary and replica shards. Refer to the [get index statistics]({{es-apis}}operation/operation-indices-stats) API for details.
 
 **Close index** {applies_to}`stack: ga`
-:   Close the index so that read or write operations cannot be performed. Refer to the [close index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close) API for details.
+:   Close the index so that read or write operations cannot be performed. Refer to the [close index]({{es-apis}}operation/operation-indices-close) API for details.
 
 **Open index** {applies_to}`stack: ga`
-:   Reopen an index that is currently closed to read and write operations. This option is available only for indices that are currently closed. Refer to the [open index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) API for details.
+:   Reopen an index that is currently closed to read and write operations. This option is available only for indices that are currently closed. Refer to the [open index]({{es-apis}}operation/operation-indices-open) API for details.
 
 **Force merge index** {applies_to}`stack: ga`
-:   Reduce the number of segments in each shard by merging some of them together and free up the space used by deleted documents. Refer to the [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) API for details.
+:   Reduce the number of segments in each shard by merging some of them together and free up the space used by deleted documents. Refer to the [force merge]({{es-apis}}operation/operation-indices-forcemerge) API for details.
 
 **Refresh index** {applies_to}`stack: ga`
-:   Refresh the index to make recent operations available for search. Refer to the [refresh index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) API for details.
+:   Refresh the index to make recent operations available for search. Refer to the [refresh index]({{es-apis}}operation/operation-indices-refresh) API for details.
 
 **Clear index cache** {applies_to}`stack: ga`
-:   Clear all caches for the index. Refer to the [clear cache](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) API for details.
+:   Clear all caches for the index. Refer to the [clear cache]({{es-apis}}operation/operation-indices-clear-cache) API for details.
 
 **Flush index** {applies_to}`stack: ga`
-:   Flush the index to permanently write all data currently in the transaction log to the Lucene index. Refer to the [flush index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush) API for details.
+:   Flush the index to permanently write all data currently in the transaction log to the Lucene index. Refer to the [flush index]({{es-apis}}operation/operation-indices-flush) API for details.
 
 **Delete index** {applies_to}`stack: ga` {applies_to}`serverless: ga`
-:   Delete an index including all of its documents, shards, and metadata. Refer to the [delete index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) API for details.
+:   Delete an index including all of its documents, shards, and metadata. Refer to the [delete index]({{es-apis}}operation/operation-indices-delete) API for details.
 
 **Add lifecycle policy** {applies_to}`stack: ga`
 :   Add a lifecycle policy to manage how the index transitions over time. The policy governs how the index moves through phases (`hot`, `warm`, `cold`, `frozen`, and `delete`) and what actions are performed during each phase (for example, shrinking and downsampling). Refer to [{{ilm-cap}}](/manage-data/lifecycle/index-lifecycle-management.md) for details.

@@ -250,4 +250,4 @@ For a quick overview of the REST API for conversations, refer to [Chat and conve
 
 ### API reference
 
-For the complete API reference, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-conversations).
+For the complete API reference, refer to the [{{kib}} API reference]({{kib-apis}}operation/operation-get-agent-builder-conversations).
