@@ -1319,7 +1319,7 @@ elastic-agent windows [command]
 :   Creates or updates the {{agent}} entry in the Windows Add/Remove Programs list and configures the registry key access control list (ACL) so unprivileged upgrades can update it automatically. Also removes any stale MSI-generated entries. Run this command once after upgrading from a version earlier than 9.4.0 in unprivileged mode.
 
 `registry remove`
-:   Removes the {{agent}} entry from the Windows Add/Remove Programs list. Run this command when you need to manually clean up the registry entry, such as during troubleshooting or before a manual uninstallation.
+:   Removes the {{agent}} entry from the Windows Add/Remove Programs list. Run this command when you need to manually clean up the registry entry, such as during troubleshooting or before a manual uninstall.
 
 ### Examples [_example_43]
 
