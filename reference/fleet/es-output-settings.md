@@ -85,6 +85,12 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
     **Default:** `true`
 
+    ::::{note}
+    :applies_to: stack: ga 9.3.0+
+
+    This setting is not applicable when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}. Beat receivers always allow connections to older {{es}} versions.
+    ::::
+
 `backoff.init` $$$output-elasticsearch-fleet-settings-backoff.init-setting$$$
 :   (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.
 

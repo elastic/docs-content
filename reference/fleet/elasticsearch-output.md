@@ -42,6 +42,19 @@ Token-based authentication is required in an [{{serverless-full}}](/deploy-manag
 ::::
 
 
+## Beat receivers compatibility [elasticsearch-output-beat-receivers]
+
+```{applies_to}
+stack: ga 9.3+
+```
+
+Starting with version 9.3, {{agent}} uses [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) to run Beat inputs within an embedded OpenTelemetry Collector. Some {{es}} output parameters are not supported when using Beat receivers:
+
+* `escape_html`: Not supported.
+* `allow_older_versions`: Not applicable. Beat receivers always allow connections to older {{es}} versions.
+
+For more details on Beat receivers, refer to [{{agent}} as an OTel Collector](/reference/fleet/elastic-agent-as-otel-collector.md).
+
 ## {{es}} output configuration settings [_es_output_configuration_settings]
 
 The `elasticsearch` output type supports the following settings, grouped by category. Many of these settings have sensible defaults that allow you to run {{agent}} with minimal configuration.
@@ -237,6 +250,12 @@ The service principal name for the {{es}} instance is constructed from these opt
 
     **Default:** `true`
 
+    ::::{note}
+    :applies_to: stack: ga 9.3.0+
+
+    This setting is not applicable when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}. Beat receivers always allow connections to older {{es}} versions.
+    ::::
+
 `status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
 :   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
 
@@ -251,87 +270,11 @@ Settings used to parse, filter, and transform data.
 
     **Default:** `false`
 
-`pipeline` $$$output-elasticsearch-pipeline-setting$$$
-:   (string) A format string value that specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to write events to.
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipeline: my_pipeline_id
-    ```
-
-    You can set the ingest pipeline dynamically by using a format string to access any event field. For example, this configuration uses a custom field, `fields.log_type`, to set the pipeline for each event:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipeline: "%{[fields.log_type]}_pipeline"
-    ```
-
-    With this configuration, all events with `log_type: normal` are sent to a pipeline named `normal_pipeline`, and all events with `log_type: critical` are sent to a pipeline named `critical_pipeline`.
-
-    ::::{tip}
-    To learn how to add custom fields to events, see the `fields` option.
+    ::::{note}
+    :applies_to: stack: ga 9.3.0+
+    
+    This setting is not supported when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}.
     ::::
-
-    See the `pipelines` setting for other ways to set the ingest pipeline dynamically.
-
-`pipelines` $$$output-elasticsearch-pipelines-setting$$$
-:   An array of pipeline selector rules. Each rule specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to use for events that match the rule. During publishing, {{agent}} uses the first matching rule in the array. Rules can contain conditionals, format string-based fields, and name mappings. If the `pipelines` setting is missing or no rule matches, the `pipeline` setting is used.
-
-    Rule settings:
-
-    **`pipeline`**
-    :   The pipeline format string to use. If this string contains field references, such as `%{[fields.name]}`, the fields must exist, or the rule fails.
-
-    **`mappings`**
-    :   A dictionary that takes the value returned by `pipeline` and maps it to a new name.
-
-    **`default`**
-    :   The default string value to use if `mappings` does not find a match.
-
-    **`when`**
-    :   A condition that must succeed in order to execute the current rule.
-
-    All the conditions supported by processors are also supported here.
-
-    The following example sends events to a specific pipeline based on whether the `message` field contains the specified string:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch  hosts: ["http://localhost:9200"]
-        pipelines:
-          - pipeline: "warning_pipeline"
-            when.contains:
-              message: "WARN"
-          - pipeline: "error_pipeline"
-            when.contains:
-              message: "ERR"
-    ```
-
-    The following example sets the pipeline by taking the name returned by the `pipeline` format string and mapping it to a new name that’s used for the pipeline:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipelines:
-          - pipeline: "%{[fields.log_type]}"
-            mappings:
-              critical: "sev1_pipeline"
-              normal: "sev2_pipeline"
-            default: "sev3_pipeline"
-    ```
-
-    With this configuration, all events with `log_type: critical` are sent to `sev1_pipeline`, all events with `log_type: normal` are sent to a `sev2_pipeline`, and all other events are sent to `sev3_pipeline`.
-
-
 
 ## HTTP settings [output-elasticsearch-http-settings]
 
