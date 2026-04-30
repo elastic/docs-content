@@ -65,7 +65,7 @@ To learn how to create and manage custom skills, refer to [Custom skills](custom
 
 ## List skills using the API
 
-To retrieve all available skills programmatically, use the [List skills](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills) API endpoint: `GET /api/agent_builder/skills`. For the full set of skills CRUD operations, refer to [Custom skills](custom-skills.md#skills-api).
+To retrieve all available skills programmatically, use the [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) API endpoint: `GET /api/agent_builder/skills`. For the full set of skills CRUD operations, refer to [Custom skills](custom-skills.md#skills-api).
 
 ## Next steps
 
@@ -73,6 +73,7 @@ To retrieve all available skills programmatically, use the [List skills](https:/
 - Learn how to create your own in [Custom skills](custom-skills.md).
 - Write effective custom skill instructions with the [Skill creation guidelines](skill-creation-guidelines.md).
 - Explore [Tools in {{agent-builder}}](tools.md) to understand how tools and skills relate.
+- Bundle skills for distribution using [Plugins in {{agent-builder}}](plugins.md).
 
 ## Related pages
 

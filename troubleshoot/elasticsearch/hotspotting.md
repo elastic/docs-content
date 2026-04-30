@@ -27,7 +27,7 @@ To check for hot spotting you can investigate both active utilization levels and
 
 ### Active [detect-active]
 
-Hot spotting most commonly surfaces as significantly elevated resource utilization (of `disk.percent`, `heap.percent`, or `cpu`) among a subset of nodes as reported via [cat nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes). Individual spikes aren’t necessarily problematic, but if utilization repeatedly spikes or consistently remains high over time (for example longer than 30 seconds), the resource may be experiencing problematic hot spotting.
+Hot spotting most commonly surfaces as significantly elevated resource utilization (of `disk.percent`, `heap.percent`, or `cpu`) among a subset of nodes as reported via [cat nodes]({{es-apis}}operation/operation-cat-nodes). Individual spikes aren’t necessarily problematic, but if utilization repeatedly spikes or consistently remains high over time (for example longer than 30 seconds), the resource may be experiencing problematic hot spotting.
 
 For example, let’s show case two separate plausible issues using cat nodes:
 
@@ -48,7 +48,7 @@ Here we see two significantly unique utilizations: where the master node is at `
 
 ### Historical [detect-historical]
 
-A secondary method to notice hot spotting build up is to poll the [node statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) for index-related performance metrics.
+A secondary method to notice hot spotting build up is to poll the [node statistics API]({{es-apis}}operation/operation-nodes-stats) for index-related performance metrics.
 
 ```console
 GET _nodes/stats?pretty=true&filter_path=nodes.*.name,nodes.*.roles,nodes.*.indices
@@ -65,7 +65,7 @@ These metrics accumulate during the uptime for each individual node. To help vie
 cat nodes_stats.json | jq -rc '.nodes[]|.name as $n|.roles as $r|.indices|to_entries[]|.key as $m|.value|select(.total and .total_time_in_millis)|select(.total>0)|{node:$n, roles:$r, metric:$m, total:.total, avg_millis:(.total_time_in_millis?/.total|round)}'
 ```
 
-The results indicate that multiple major operations are non-performant across nodes, suggesting that the cluster is likely under-provisioned. If a particular operation type or node stands out, it likely indicates [shard distribution issues](#causes-shards) which you might compare against [indices stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats).
+The results indicate that multiple major operations are non-performant across nodes, suggesting that the cluster is likely under-provisioned. If a particular operation type or node stands out, it likely indicates [shard distribution issues](#causes-shards) which you might compare against [indices stats]({{es-apis}}operation/operation-indices-stats).
 
 ```console
 GET /_stats?level=shards&human&expand_wildcards=all&ignore_unavailable=true
@@ -88,7 +88,7 @@ Historically, clusters experience hot spotting mainly as an effect of hardware, 
 
 Here are some common improper hardware setups which might contribute to hot spotting:
 
-* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+* Resources are allocated non-uniformly. For example, if one hot node is given half the CPU of its peers. {{es}} expects all nodes on a [data tier](../../manage-data/lifecycle/data-tiers.md) to share the same hardware profiles or specifications. To check this, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes):
   ```console
   GET _cat/nodes?v=true&s=name&h=name,role,disk.total,heap.max,allocated_processors
   ```
@@ -105,7 +105,7 @@ Here are some common improper hardware setups which might contribute to hot spot
 
 #### Node level [causes-shards-nodes]
 
-You can check for shard balancing via [cat allocation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation), though as of version 8.6, [desired balancing](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) may no longer fully expect to balance shards. Kindly note, both methods may temporarily show problematic imbalance during [cluster stability issues](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md).
+You can check for shard balancing via [cat allocation]({{es-apis}}operation/operation-cat-allocation), though as of version 8.6, [desired balancing](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) may no longer fully expect to balance shards. Kindly note, both methods may temporarily show problematic imbalance during [cluster stability issues](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md).
 
 For example, let’s showcase two separate plausible issues using cat allocation:
 
@@ -122,13 +122,13 @@ node_2     31           52       44.6gb   372.7gb
 node_3    445           43      271.5gb   289.4gb
 ```
 
-Here we see two significantly unique situations. `node_2` has recently restarted, so it has a much lower number of shards than all other nodes. This also relates to `disk.indices` being much smaller than `disk.used` while shards are recovering as seen via [cat recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery). While `node_2`'s shard count is low, it may become a write hot spot due to ongoing [ILM rollovers](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md). This is a common root cause of write hot spots covered in the next section.
+Here we see two significantly unique situations. `node_2` has recently restarted, so it has a much lower number of shards than all other nodes. This also relates to `disk.indices` being much smaller than `disk.used` while shards are recovering as seen via [cat recovery]({{es-apis}}operation/operation-cat-recovery). While `node_2`'s shard count is low, it may become a write hot spot due to ongoing [ILM rollovers](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md). This is a common root cause of write hot spots covered in the next section.
 
 The second situation is that `node_3` has a higher `disk.percent` than `node_1`, even though they hold roughly the same number of shards. This occurs when either shards are not evenly sized (refer to [Aim for shards of up to 200M documents, or with sizes between 10GB and 50GB](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-size-recommendation)) or when there are a lot of empty indices.
 
 Cluster rebalancing based on desired balance does much of the heavy lifting of keeping nodes from hot spotting. It can be limited by either nodes hitting [watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) (refer to [fixing disk watermark errors](fix-watermark-errors.md)) or by a write-heavy index’s total shards being much lower than the written-to nodes.
 
-You can confirm hot spotted nodes via [the nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats), potentially polling twice over time to only checking for the stats differences between them rather than polling once giving you stats for the node’s full [node uptime](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-usage). For example, to check all nodes indexing stats:
+You can confirm hot spotted nodes via [the nodes stats API]({{es-apis}}operation/operation-nodes-stats), potentially polling twice over time to only checking for the stats differences between them rather than polling once giving you stats for the node’s full [node uptime]({{es-apis}}operation/operation-nodes-usage). For example, to check all nodes indexing stats:
 
 ```console
 GET _nodes/stats?human&filter_path=nodes.*.name,nodes.*.indices.indexing
@@ -137,7 +137,7 @@ GET _nodes/stats?human&filter_path=nodes.*.name,nodes.*.indices.indexing
 
 #### Index level [causes-shards-index]
 
-Hot spotted nodes frequently surface via [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool)'s `write` and `search` queue backups. For example:
+Hot spotted nodes frequently surface via [cat thread pool]({{es-apis}}operation/operation-cat-thread-pool)'s `write` and `search` queue backups. For example:
 
 ```console
 GET _cat/thread_pool/write,search?v=true&s=n,nn&h=n,nn,q,a,r,c
@@ -159,9 +159,9 @@ Here you can see two significantly unique situations. Firstly, `node_1` has a se
 
 It’s important to monitor and be aware of any changes in your data ingestion flow, as sudden increases or shifts can lead to high CPU usage and ingestion delays. Depending on your cluster architecture, optimizing the number of primary shards can significantly improve ingestion performance. For more details, see [Clusters, nodes, and shards](https://www.elastic.co/docs/deploy-manage/distributed-architecture/clusters-nodes-shards).
 
-We normally recommend heavy-write indices have sufficient primary `number_of_shards` and replica `number_of_replicas` to evenly spread across indexing nodes. Alternatively, you can [reroute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) shards to more quiet nodes to alleviate the nodes with write hot spotting.
+We normally recommend heavy-write indices have sufficient primary `number_of_shards` and replica `number_of_replicas` to evenly spread across indexing nodes. Alternatively, you can [reroute]({{es-apis}}operation/operation-cluster-reroute) shards to more quiet nodes to alleviate the nodes with write hot spotting.
 
-If it’s non-obvious what indices are problematic, you can introspect further via [the index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats) by running:
+If it’s non-obvious what indices are problematic, you can introspect further via [the index stats API]({{es-apis}}operation/operation-indices-stats) by running:
 
 ```console
 GET _stats?level=shards&human&expand_wildcards=all&filter_path=indices.*.total.indexing.index_total
@@ -185,4 +185,4 @@ cat shard_stats.json | jq -rc 'sort_by(-.avg_indexing)[]' | head
 
 ### Task loads [causes-tasks]
 
-Shard distribution problems will most-likely surface as task load, as seen above in the [cat thread pool](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) example. It is also possible for tasks to hot spot a node due either to individual qualitative expensiveness or to overall quantitative traffic loads, which will surface in [backlogged tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
+Shard distribution problems will most-likely surface as task load, as seen above in the [cat thread pool]({{es-apis}}operation/operation-cat-thread-pool) example. It is also possible for tasks to hot spot a node due either to individual qualitative expensiveness or to overall quantitative traffic loads, which will surface in [backlogged tasks](/troubleshoot/elasticsearch/task-queue-backlog.md).
