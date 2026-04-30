@@ -1,10 +1,11 @@
 ---
 navigation_title: "OTLP/HTTP endpoint"
+description: "Send metrics, logs, and traces directly to Elasticsearch through its native OTLP/HTTP endpoints, without running an OpenTelemetry Collector."
 applies_to:
   deployment:
-    self:
-    ece:
-    eck:
+    self: ga 9.2
+    ece: ga 9.2
+    eck: ga 9.2
 products:
   - id: elasticsearch
 ---
@@ -37,20 +38,20 @@ For other deployments, prefer the higher-level paths:
 
 | Deployment | Recommended ingestion path |
 | --- | --- |
-| ECH and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/motlp.md) |
-| ECE, ECK, and self-managed | OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), using the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md) |
+| {{ech}} and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/motlp.md) |
+| {{ece}}, {{eck}}, and self-managed | OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), using the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md) |
 
 If {{motlp}} is available in your deployment, use it, even when an application can target an OTLP endpoint directly.
-{{motlp}} may use these endpoints internally in the future.
+{{motlp}} might use these endpoints internally in the future.
 
-For an overview of the recommended OpenTelemetry-based ingestion architecture, see the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
+For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
 
 Don't send telemetry from many individual applications directly to the {{es}} OTLP endpoint.
 Send to an OpenTelemetry Collector first so it can absorb connection churn and batch records to improve ingestion performance.
 
 ## Why OTLP
 
-Compared to the bulk API, ingesting via OTLP offers:
+Compared to the bulk API, ingesting through OTLP offers:
 
 * Improved ingestion performance, especially for payloads with many resource attributes.
 * Simplified mapping: data streams, index templates, dimensions, and metrics are derived dynamically from OTLP metadata.
@@ -61,7 +62,7 @@ Compared to the bulk API, ingesting via OTLP offers:
 Authenticate to the OTLP endpoint with an API key.
 Refer to the API key documentation for your deployment type for instructions on how to create one:
 
-* [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) (self-managed, ECE, ECK)
+* [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) (self-managed, {{ece}}, {{eck}})
 * [{{ech}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md)
 * [{{ece}} API keys](/deploy-manage/api-keys/elastic-cloud-enterprise-api-keys.md)
 * [{{serverless-short}} project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md)
@@ -130,8 +131,6 @@ The exporter appends the signal-specific path (`/v1/logs`, `/v1/traces`, `/v1/me
 
 Supported `compression` values are `gzip` (the `OTLP/HTTP` exporter default) and `none`.
 
-% TODO we might also support snappy and zstd, test and update accordingly.
-
 To send data from a custom application, use the [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) of your choice and point its OTLP/HTTP exporter at the corresponding endpoint path.
 
 :::{note}
@@ -181,7 +180,7 @@ You can configure how OTLP histogram metrics are mapped using the `xpack.otel_da
 Valid values are:
 
  - `histogram` (default on {applies_to}`stack: preview =9.3`): Map histograms as T-Digests using the `histogram` field type
- - `exponential_histogram` (default on {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`): Map histograms as exponential histograms using the `exponential_histogram` field type
+ - `exponential_histogram` (default on {applies_to}`stack: ga 9.4+`): Map histograms as exponential histograms using the `exponential_histogram` field type
 
 The setting is dynamic and can be updated at runtime:
 
@@ -197,7 +196,7 @@ PUT /_cluster/settings
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
 
 This setting only applies to metrics ingested through the OTLP endpoint.
-Documents ingested with the `_bulk` API (for example via the {{es}} exporter for the OpenTelemetry Collector) are not affected.
+Documents ingested with the `_bulk` API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
 ## Limitations
 
