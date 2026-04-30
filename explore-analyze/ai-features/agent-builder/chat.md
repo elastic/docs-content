@@ -193,8 +193,8 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 **Skills**
 :   Lists the skills assigned to the current agent. Click a skill to open a read-only detail panel on the right side. To assign new skills, click **Add skill**. To view and manage all skills across the deployment, click **Manage all skills**. Skills you import into the library must be turned on with their toggle in this list before the agent can use them. For how skills work and how to manage them, refer to [Skills in {{agent-builder}}](skills.md).
 
-**Plugins**
-:   Lists the plugins assigned to the current agent. 
+**Plugins** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+:   Lists the plugins assigned to the current agent. Each plugin bundles a set of related skills that install together. To assign a plugin, click **Add plugins**. To view and manage all plugins, click **Manage all plugins**.
 
 **Tools**
 :   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
@@ -218,11 +218,11 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
 
-**Plugins**
-:   View and install plugins for the deployment so you can assign their bundled skills and capabilities to agents.
+**Plugins** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+:   View and install plugins across the deployment. Install a plugin from a URL or by uploading a ZIP file. Each plugin bundles related skills that you can assign to agents.
 
-**Connectors**
-:   View and manage {{kib}} connectors for GenAI and related features, including LLM providers and other integrations agents and tools use.
+**Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+:   View and manage the agent builder connectors library, which gives agents access to external data sources and systems.
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.

@@ -238,5 +238,8 @@ POST /_query?format=txt
 :::
 ::::
 
+## Related pages
 
+- To set up semantic search before combining it with hybrid search, follow the [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md) tutorial.
+- To reduce memory usage for dense vector embeddings at scale, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 

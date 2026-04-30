@@ -9,6 +9,68 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## April 28, 2026 [serverless-changelog-04282026]
+
+### Features and enhancements [serverless-changelog-04282026-features-enhancements]
+
+* Changes default annotation colors in Lens to theme-appropriate values that avoid conflicts with data visualization colors [#262507]({{kib-pull}}262507)
+* Adds AI-powered data analysis in Discover when using {{esql}} mode, enabling automatic context sync, deep aggregation queries, inline visualizations, and drill-down query suggestions [#261970]({{kib-pull}}261970)
+* Suggests using the `LOAD` option in {{esql}} editor when unknown columns are detected on wired streams [#264713]({{kib-pull}}264713)
+* Adds a **Service map** option to dashboard embeddables [#261195]({{kib-pull}}261195)
+* Improves simulation feedback for pipeline suggestions with per-processor attribution, temporary field detection, and enhanced error messaging [#262789]({{kib-pull}}262789)
+* Adds name validation for query stream creation that enforces naming rules and prevents duplicates [#264695]({{kib-pull}}264695)
+* Improves user-guided partitioning refinement flow with simplified history tracking and better empty-prompt retry behavior [#262594]({{kib-pull}}262594)
+* Adds a rich visual renderer for Entity Analytics attachments in Agent Builder with support for single-entity cards and multi-entity tables [#264985]({{kib-pull}}264985)
+* Removes the confirmation modal when switching to AI Agent mode [#264839]({{kib-pull}}264839)
+* Redesigns the AI Agent announcement modal with three variants based on user history and space-level settings [#264995]({{kib-pull}}264995)
+* Adds OpenAPI examples and descriptions to all Security AI Assistant routes [#263322]({{kib-pull}}263322)
+* Improves **Add inference endpoint** and **Edit inference endpoint** flyouts with better layout, task type descriptions, and inline validation [#262143]({{kib-pull}}262143)
+* Adds a Snowflake connector for SQL execution, data discovery, and semantic search via Cortex Search [#264827]({{kib-pull}}264827)
+* Adds a nightly maintenance task that automatically closes idle anomaly detection jobs with stopped datafeeds after a configurable timeout [#144904]({{es-pull}}144904)
+* Makes `EMBEDDING` function available in {{esql}} [#146801]({{es-pull}}146801)
+* Adds highlighting support to `TOP_SNIPPETS` function with configurable tags [#144742]({{es-pull}}144742)
+* Notifies topology listeners on every topology change
+
+### Fixes [serverless-changelog-04282026-fixes]
+
+* Adds missing `windows` parameter to SLO burn rate rule OpenAPI schema and restores `sourceFields` to {{esql}} query rule schema [#263634]({{kib-pull}}263634)
+* Fixes related panel unblurring when editing a pinned control in Dashboards [#263737]({{kib-pull}}263737)
+* Fixes YAML download truncation at `#` characters in {{fleet}} standalone manifests [#264083]({{kib-pull}}264083)
+* Allows users with cluster monitor privilege to view component templates in Index Management [#263883]({{kib-pull}}263883)
+* Allows users with cluster monitor privilege to view index templates in Index Management [#263650]({{kib-pull}}263650)
+* Fixes Streams failure store access to allow per-stream privileges instead of requiring global permissions across all streams [#264087]({{kib-pull}}264087)
+* Removes the **Try the new AI Agent** opt-in popover [#264263]({{kib-pull}}264263)
+* Fixes embeddable filter actions popover not closing after opening edit flyout [#264620]({{kib-pull}}264620)
+* Fixes APM table horizontal scroll and overflow [#264992]({{kib-pull}}264992)
+* Fixes service map filter layout, controls UI, and fit-view icon in APM [#265275]({{kib-pull}}265275)
+* Fixes Hosts UI showing N/A on KPI tiles and out-of-sync data when using relative time ranges after the page has been idle [#265515]({{kib-pull}}265515)
+* Removes beta labels from AI Agent chat experience [#264200]({{kib-pull}}264200)
+* Fixes Indicator Filter definitions on the **Rule Details** page to reference correct backing indices [#263657]({{kib-pull}}263657)
+* Fixes wrong `LineClamp` usage in alert flyout [#264876]({{kib-pull}}264876)
+* Adds OpenAPI examples and descriptions to all timeline and pinned events routes [#264388]({{kib-pull}}264388)
+* Fixes navigation menu disappearing when navigating to unified rules from Stack Management or Observability rules [#262903]({{kib-pull}}262903)
+* Fixes default AI connector changes requiring page refresh [#262679]({{kib-pull}}262679)
+* Fixes empty task types allowed in feature registration [#264682]({{kib-pull}}264682)
+* Fixes Search Applications document explorer rendering markup from fields [#265319]({{kib-pull}}265319)
+* Enables Document Level Security toggle for content connectors in {{serverless-short}} [#265595]({{kib-pull}}265595)
+* Adjusts API Key flyout width [#263858]({{kib-pull}}263858)
+* Fixes date conversion issue in file sharing service [#265131]({{kib-pull}}265131)
+* Adds `maxSize` constraint to all array schemas [#256457]({{kib-pull}}256457)
+* Fixes display of chart markers in Single Metric Viewer for sparse data points [#263632]({{kib-pull}}263632)
+* Fixes connector step icons falling back to plugs in workflow list [#263880]({{kib-pull}}263880)
+* Renders inline attachment loading skeleton during streaming [#264408]({{kib-pull}}264408)
+* Fixes migrated dashboard visualizations not rendering on initial load [#264102]({{kib-pull}}264102)
+* Allows removing auto-included tools when Elastic capabilities flag is false [#264632]({{kib-pull}}264632)
+* Adds customizable canvas width for Agent Builder attachments with resizable and responsive behavior [#265200]({{kib-pull}}265200)
+* Grants file read entitlement for Snappy musl detection in {{esql}} [#146718]({{es-pull}}146718)
+* Collapses pathological regex quantifier stacking to prevent NFA construction [#145452]({{es-pull}}145452)
+* Fixes source loader filter when vectors are excluded in {{esql}} [#146223]({{es-pull}}146223)
+* Fixes `COUNT` with query pushdown losing aggregations in {{esql}} [#146555]({{es-pull}}146555)
+* Defers `BinaryDocValues` allocation in positional query scoring [#146635]({{es-pull}}146635)
+* Fixes shard fetching serialization to support negative long values
+* Fixes {{cps}} to return 400 error code instead of 404 when querying unresolved indices
+* Uses atomic reference for topology context thread safety
+
 ## April 20, 2026 [serverless-changelog-04202026]
 
 ### Features and enhancements [serverless-changelog-04202026-features-enhancements]
