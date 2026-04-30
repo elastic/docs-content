@@ -95,7 +95,7 @@ In {{ecloud}}, the {{kib}} instances that most configurations provide by default
 
 If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance to 2GB.
 
-{applies_to}`stack: ga 9.4+` {{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default.
+{{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default.
 
 ## Unable to connect to Elastic Maps Service [reporting-troubleshooting-maps-ems]
 

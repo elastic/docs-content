@@ -104,7 +104,10 @@ $$$billing-cc-additional-payment$$$Does Cloud Connect require additional payment
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following:
 
-    * Free 1 GB RAM {{kib}} instance. {applies_to}`stack: ga 9.4+` New deployments include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
+    * Free 1 GB RAM {{kib}} instance. 
+      :::{note}
+      New deployments include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
+      :::
     * Free 1 GB RAM Machine Learning node
     * Free 1 GB RAM APM / Integrations Server instance
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
