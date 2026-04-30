@@ -19,7 +19,9 @@ The simplest way is to add one or more of our sample data sets. These data sets 
 
 If you have no data, you will be prompted to install these packages when running {{kib}} for the first time.
 
-To install sample data sets:
+:::{note}
+To install sample data sets, you need `all` {{kib}} privileges for **Integrations**. Manage your roles, privileges, and spaces in **{{stack-manage-app}}**.
+:::
 
 1. Open the **Integrations** page using the global search field, then search for **Sample Data** using the integrations search field. 
 2. Click **Sample Data** to open the **Add data** page. 
