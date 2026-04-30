@@ -22,7 +22,7 @@ xpack.monitoring.collection.enabled: false
 
 When this setting is `false`, {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored.
 
-You can update this setting by using the [Cluster Update Settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+You can update this setting by using the [Cluster Update Settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
 If you want to collect data from sources such as {{kib}}, Beats, and Logstash but not collect data about your {{es}} cluster, you can disable data collection just for {{es}}:
 

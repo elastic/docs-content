@@ -117,7 +117,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 9. Check whether the appropriate indices exist on the monitoring cluster.
 
-    For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
+    For example, use the [cat indices]({{es-apis}}operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
 
     ::::{tip}
     If you want to use the **Monitoring** UI in {{kib}}, there must also be `.monitoring-*` indices. Those indices are generated when you collect metrics about {{stack}} products. For example, see [Collecting monitoring data with {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md).

@@ -7,6 +7,12 @@ applies_to:
 
 # Slow query and index logging
 
+:::{note}
+:applies_to: {"stack": "preview 9.4", "serverless": "unavailable"}
+
+For search operations, [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) provides a unified alternative to slow logs. Query logging captures the end-to-end request duration as measured by {{es}}, while slow logs only capture shard-level execution time. Query logging also covers all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration. We recommend migrating search-related slow log usage to query logging. Slow logs remain the only option for indexing operations.
+:::
+
 The slow log records search and indexing operations that exceed time thresholds you define.
 You can use slow logs to investigate, analyze or audit heavy operations, or troubleshoot your cluster’s historical search and indexing performance.
 
@@ -141,16 +147,16 @@ The following are examples of a search and an indexing operation in the slow log
 
 You enable slow logs by configuring thresholds. Thresholds can be aggressive, such as `0ms` to log everything, or conservative, such as `5s`.
 
-You can enable slow logging at the index level, using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
+You can enable slow logging at the index level, using the [update indices settings]({{es-apis}}operation/operation-indices-put-settings) API.
 
 
-To view the current slow log settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API:
+To view the current slow log settings, use the [get index settings]({{es-apis}}operation/operation-indices-get-settings) API:
 
 ```console
 GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog
 ```
 
-To enable slow logging for a single index, use the [update indices settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
+To enable slow logging for a single index, use the [update indices settings API]({{es-apis}}operation/operation-indices-put-settings):
 
 ::::{tab-set}
 :group: slow-logs
@@ -217,7 +223,7 @@ To reduce the impact of slow logs, consider the following:
 * Enable slow logs against specific indices rather than across all indices.
 * Set high thresholds to reduce the number of logged events.
 
-If you aren’t sure how to start investigating traffic issues, consider enabling the `warn` threshold with a high `30s` threshold at the index level using the [update indices settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API:
+If you aren’t sure how to start investigating traffic issues, consider enabling the `warn` threshold with a high `30s` threshold at the index level using the [update indices settings]({{es-apis}}operation/operation-indices-put-settings) API:
 
 ::::{tab-set}
 :group: slow-logs
