@@ -112,7 +112,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-You can also access Streams features using the Streams API. Refer to the [Streams API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams) for more information.
+You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Manage individual streams [streams-management-tab]
 
