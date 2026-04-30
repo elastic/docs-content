@@ -59,7 +59,7 @@ Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/
 
 :::{tab-item} API
 :sync: api
-Use the [Explain the lifecycle state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to view the current lifecycle status for an index:
+Use the [Explain the lifecycle state API]({{es-apis}}operation/operation-ilm-explain-lifecycle) to view the current lifecycle status for an index:
 
 ```console
 GET .ds-metrics-system.process-default-2025.06.04-000001/_ilm/explain

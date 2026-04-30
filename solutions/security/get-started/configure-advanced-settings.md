@@ -27,6 +27,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * Whether cross-cluster search (CCS) privilege warnings are displayed
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
+* The maximum number of cases the Cases connector can open each time a detection rule runs 
 
 ::::{admonition} Requirements
 Your role must have the appropriate privileges to change advanced settings:
@@ -202,7 +203,7 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
 ```yaml {applies_to}
-stack: removed 9.4
+stack: ga 9.0-9.3, removed 9.4
 serverless: removed
 ```
 
@@ -228,6 +229,20 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
+## Maximum cases created per rule run [max-cases-cases-connector]
+
+```yaml {applies_to}
+stack: ga 9.4
+```
+
+The `cases:maxOpenCasesPerRuleRun` advanced setting sets the upper limit for how many new cases the [Cases connector](/deploy-manage/manage-connectors.md) can open during a single detection rule run. It applies when you add a Cases action to the rule. The default value is 20. The minimum accepted value is 1, the maximum is 1000.
+
+For example, if one rule run creates many alerts and you want a case opened for each alert, you can increase the limit for the `cases:maxOpenCasesPerRuleRun` setting to avoid meeting the per-run limit. Pick a number that works for your team and cluster, but be aware that opening a large batch of cases in a single run might increase load on {{kib}} and {{es}}. 
+
+::::{note}
+The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery.md). Attack Discovery continues to use its own case-creation limit (20).
+::::
+
 ## Add custom alert closing reasons [custom-alert-closing-reasons]
 ```yaml {applies_to}
 stack: ga 9.4+
@@ -238,7 +253,7 @@ The `securitySolution:alertCloseReasons` field determines which custom options a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 

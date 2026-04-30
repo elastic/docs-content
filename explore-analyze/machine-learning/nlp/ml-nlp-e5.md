@@ -15,7 +15,7 @@ EmbEddings from bidirEctional Encoder rEpresentations - or E5 -  is a {{nlp}} mo
 
 [Semantic search](../../../solutions/search/semantic-search.md) provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
-E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
+E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
 
 Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/elastic/multilingual-e5-small) and the [multilingual-e5-small-optimized](https://huggingface.co/elastic/multilingual-e5-small-optimized) models on HuggingFace for further information including licensing.
 
@@ -27,7 +27,7 @@ Enabling trained model autoscaling for your E5 deployment is recommended. Refer 
 
 ## Download and deploy E5 [download-deploy-e5]
 
-The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
+The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API]({{es-apis}}group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the `elasticsearch` service by running the following API request:
@@ -46,7 +46,7 @@ PUT _inference/text_embedding/my-e5-model
 
 The API request automatically initiates the model download and then deploy the model.
 
-Refer to the `elasticsearch` [{{infer}} service documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) to learn more about the available settings.
+Refer to the `elasticsearch` [{{infer}} service documentation]({{es-apis}}operation/operation-inference-put-elasticsearch) to learn more about the available settings.
 
 After you created the E5 {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
 
@@ -129,7 +129,7 @@ PUT _ml/trained_models/.multilingual-e5-small
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.multilingual-e5-small/deployment/_start?deployment_id=for_search

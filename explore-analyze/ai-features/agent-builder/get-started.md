@@ -22,6 +22,10 @@ For {{ech}} deployments, make sure you are using the solution navigation instead
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
+:::{note}
+For model choice, refer to [Model configuration](models.md) and [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+:::
+
 ::::::{stepper}
 :::::{step} Enable {{agent-builder}}
 
@@ -114,6 +118,17 @@ Learn more in [Agent Chat](chat.md).
 ::::{step} Configure model (optional)
 
 On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. To switch models or add your own, refer to [model selection and configuration](models.md).
+
+::::
+
+::::{step} Enable Elastic capabilities (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+When you [create a custom agent](custom-agents.md#create-a-new-agent), use the **Enable Elastic Capabilities** toggle on the **Settings** tab to opt in to Elastic-built tools, skills, and plugins. The toggle is off by default, so the agent only uses capabilities you assign unless you turn it on.
+
+For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elastic-capabilities).
 
 ::::
 
