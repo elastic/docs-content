@@ -1310,19 +1310,14 @@ Windows-specific subcommands for managing {{agent}} registry entries. These comm
 
 ### elastic-agent windows registry update [elastic-agent-windows-registry-update-command]
 
-Creates or updates the {{agent}} entry in the Windows Add/Remove Programs list and configures the registry key ACL so unprivileged upgrades can update it automatically. Also removes any stale MSI-generated entries.
+Create or update the {{agent}} entry in the Windows Add/Remove Programs list and configure the registry key access control list (ACL) so unprivileged upgrades can update it automatically, and remove any stale MSI-generated entries.
 
-This is typically needed once after upgrading from a version before 9.4.0 in unprivileged mode.
-
-
-#### Synopsis [_synopsis_14]
-
-```shell
-elastic-agent windows registry update
-```
+::::{note}
+Run this command once after upgrading from a version earlier than 9.4.0 in unprivileged mode.
+::::
 
 
-#### Example [_example_43]
+#### Examples [_examples_43]
 
 ```shell
 elastic-agent windows registry update
@@ -1331,17 +1326,10 @@ elastic-agent windows registry update
 
 ### elastic-agent windows registry remove [elastic-agent-windows-registry-remove-command]
 
-Removes the {{agent}} entry from the Windows Add/Remove Programs list.
+Remove the {{agent}} entry from the Windows Add/Remove Programs list. Run this command when you need to manually clean up the registry entry, such as during troubleshooting or before a manual uninstallation.
 
 
-#### Synopsis [_synopsis_15]
-
-```shell
-elastic-agent windows registry remove
-```
-
-
-#### Example [_example_44]
+#### Examples [_examples_44]
 
 ```shell
 elastic-agent windows registry remove

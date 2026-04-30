@@ -62,9 +62,14 @@ This command upgrades the binary. Your agent policy should continue to work, but
 
 For more command-line options, check the help for the [`upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command.
 
-::::{note}
-**Windows upgrades from versions before 9.4.0:** When upgrading from a version before 9.4.0 in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md), the new agent may not have permission to create the Windows Add/Remove Programs registry entry because the required ACL was never configured by the older version. Additionally, if the agent was originally installed via MSI, a stale MSI entry may remain in the Add/Remove Programs list. Run [`elastic-agent windows registry update`](/reference/fleet/agent-command-reference.md#elastic-agent-windows-registry-update-command) once after the upgrade to create the entry, set the correct permissions and remove any stale MSI entries.
-::::
+
+### Windows upgrades from versions earlier than 9.4.0 [upgrade-standalone-windows-registry]
+
+When upgrading an agent from a version earlier than 9.4.0 in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md), you might encounter registry permission issues. 
+
+The upgraded agent might not have permission to create the Windows Add/Remove Programs registry entry because agent versions earlier than 9.4.0 didn't configure the required access control list (ACL). Additionally, if you originally installed the agent using MSI, a stale MSI entry might remain in the Add/Remove Programs list. 
+
+Run [`elastic-agent windows registry update`](/reference/fleet/agent-command-reference.md#elastic-agent-windows-registry-update-command) once after the upgrade to create the entry, set the correct permissions, and remove any stale MSI entries.
 
 
 ## Upgrade DEB and RPM installations [upgrade-standalone-deb-rpm]
