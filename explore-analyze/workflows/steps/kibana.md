@@ -83,7 +83,7 @@ Both `tags_to_add` and `tags_to_remove` are required, even when one is empty. Se
 
 ## `kibana.request` [kibana-request]
 
-Generic escape hatch for any {{kib}} API that doesn't have a named step. Authenticates as the workflow's execution identity. Use a named step when one exists; named steps validate parameters at save time.
+Generic escape hatch for any {{kib}} API that doesn't have a named step. Authenticates as the workflow's execution identity. Use a named step when one exists. Named steps validate parameters at save time.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -102,7 +102,7 @@ Generic escape hatch for any {{kib}} API that doesn't have a named step. Authent
 ```
 
 :::{note}
-You do not need to pass an `Authorization` header. The workflow engine automatically attaches the correct authentication headers based on the execution context. Don't paste API keys or secrets into the `headers` block; they belong on a configured connector.
+You do not need to pass an `Authorization` header. The workflow engine automatically attaches the correct authentication headers based on the execution context. Don't paste API keys or secrets into the `headers` block. They belong on a configured connector.
 :::
 
 ### Example: Unisolate a host

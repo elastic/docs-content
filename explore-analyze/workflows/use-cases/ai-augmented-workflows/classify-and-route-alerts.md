@@ -37,8 +37,6 @@ The workflow runs manually during development and can be switched to an alert tr
 4. **Route with `if` (or `switch`).** Each branch runs the right follow-up: severity classification for observability, malicious-or-not classification for security.
 5. **Summarize with `ai.summarize`.** The summary is attached to the routed item.
 
-All referenced step types are in the 9.4 GA surface: [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt), [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify), [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize), [`foreach`](/explore-analyze/workflows/steps/foreach.md), [`if`](/explore-analyze/workflows/steps/if.md), and [`data.set`](/explore-analyze/workflows/steps/data.md).
-
 ## Build the workflow [workflows-classify-route-build]
 
 :::::{stepper}

@@ -134,7 +134,7 @@ The workflow fails when all retries are exhausted, unless paired with `fallback`
 
 ### Fallback [workflows-on-failure-fallback]
 
-Executes alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow executes two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
 
 ```yaml
 on-failure:
@@ -171,7 +171,7 @@ You can combine multiple failure-handling options. They are processed in this or
 
 In the following example:
 1. The step retries up to 2 times with a 1-second delay.
-2. If all retries fail, the fallback steps execute.
+2. If all retries fail, the fallback steps run.
 3. The workflow continues regardless of the outcome.
 
 ```yaml
@@ -197,7 +197,7 @@ In the following example:
 ### Restrictions [workflows-on-failure-restrictions]
 
 - Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
-- Fallback steps execute only after all retries have been exhausted.
+- Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
 
 ### Handle failures across workflows [workflows-cross-workflow-handler]

@@ -66,7 +66,7 @@ Refer to [Pass data and handle errors](/explore-analyze/workflows/authoring-tech
 
 ### `data.set` [data-set]
 
-Set named variables in the workflow context. Subsequent steps reference them as `{{ variables.<name> }}`. Unlike the other data steps, `data.set` has no top-level source field; values go directly inside `with`.
+Set named variables in the workflow context. Subsequent steps reference them as `{{ variables.<name> }}`. Unlike the other data steps, `data.set` has no top-level source field. Values go directly inside `with`.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -84,7 +84,7 @@ Later steps can read `{{ variables.service_name }}` and `{{ variables.threshold 
 
 ### `data.map` [data-map]
 
-Transform each element of an array into a new shape. `items` is a top-level step field; the per-element mapping goes under `with.fields`. Inside the mapping, `item` refers to the current array element.
+Transform each element of an array into a new shape. `items` is a top-level step field. The per-element mapping goes under `with.fields`. Inside the mapping, `item` refers to the current array element.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -212,7 +212,7 @@ Concatenate arrays. `arrays` is the top-level source field.
 |---|---|---|---|---|
 | `arrays` | top level | `array[]` | Yes | Array of arrays to concatenate (maximum 50). |
 | `dedupe` | `with` | boolean | No | Remove duplicates after concatenation. |
-| `flatten` | `with` | `boolean` or number 1–10 | No | Flatten nested arrays. `true` flattens one level; a number flattens to that depth. |
+| `flatten` | `with` | `boolean` or number 1–10 | No | Flatten nested arrays. `true` flattens one level. A number flattens to that depth. |
 
 ```yaml
 - name: combine_lists

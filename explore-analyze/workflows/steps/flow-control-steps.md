@@ -71,7 +71,7 @@ For the full parameter reference, refer to [Foreach step](/explore-analyze/workf
 
 ## `while` [while]
 
-Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations; without it, the loop continues as long as the condition holds.
+Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations. Without it, the loop continues as long as the condition holds.
 
 ```yaml
 - name: poll_until_ready
@@ -96,7 +96,7 @@ For the full parameter reference and gotchas, refer to [While step](/explore-ana
 
 ## `switch` [switch]
 
-Multi-way branching. The engine evaluates an expression once and routes to the matching case. Each case has a `match` value and a `steps` array; an optional `default` runs when no case matches.
+Multi-way branching. The engine evaluates an expression once and routes to the matching case. Each case has a `match` value and a `steps` array. An optional `default` runs when no case matches.
 
 ```yaml
 - name: dispatch_by_category

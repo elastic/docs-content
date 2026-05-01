@@ -35,8 +35,6 @@ The workflow runs on demand with a list of rule IDs:
 2. **`foreach` step** iterates the rule IDs.
 3. For each rule, a **`kibana.request` step** calls the detection engine's `POST /api/detection_engine/rules/_bulk_action` endpoint with the `run` action and a configurable time range.
 
-All referenced step types are in the 9.4 GA surface: [manual triggers](/explore-analyze/workflows/triggers/manual-triggers.md), [`foreach`](/explore-analyze/workflows/steps/foreach.md), and [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request).
-
 ## Build the workflow [workflows-run-rules-build]
 
 :::::{stepper}

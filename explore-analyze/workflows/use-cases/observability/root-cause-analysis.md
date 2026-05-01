@@ -17,7 +17,7 @@ products:
 
 This guide walks through building an observability workflow that responds to an alert by running an {{agent-builder}} agent for root-cause analysis, generating a case title and description from the agent's output, opening the case, and attaching both the alert and the agent's reasoning trace as comments.
 
-The workflow is adapted from [`root-cause-analysis-rca-workflow.yaml`](https://github.com/elastic/workflows/blob/main/workflows/examples/root-cause-analysis-rca-workflow.yaml) in the `elastic/workflows` library, modernized to use the 9.4 `ai.agent` and `cases.*` step types.
+The workflow is adapted from [`root-cause-analysis-rca-workflow.yaml`](https://github.com/elastic/workflows/blob/main/workflows/examples/root-cause-analysis-rca-workflow.yaml) in the `elastic/workflows` library.
 
 If you're new to workflows, complete [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md) first.
 
@@ -39,8 +39,6 @@ The workflow runs in a single pass when an alert fires:
 5. **`cases.addAlerts`** attaches the triggering alert.
 6. A **`kibana.request` step** fetches the agent's conversation transcript.
 7. **`cases.addComment` steps** append the agent's reasoning trace and the raw analysis as comments for auditability.
-
-All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent), [cases steps](/explore-analyze/workflows/steps/cases.md), and [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request).
 
 ## Build the workflow [workflows-rca-build]
 
