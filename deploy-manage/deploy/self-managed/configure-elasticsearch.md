@@ -10,7 +10,7 @@ products:
 
 # Configure {{es}} [settings]
 
-{{es}} ships with good defaults and requires very little configuration. Most settings can be changed on a running cluster using the [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API.
+{{es}} ships with good defaults and requires very little configuration. Most settings can be changed on a running cluster using the [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API.
 
 The configuration files should contain settings which are node-specific (such as `node.name` and paths), or settings which a node requires in order to be able to join a cluster, such as `cluster.name` and `network.host`.
 

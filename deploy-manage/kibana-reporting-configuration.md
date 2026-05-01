@@ -137,10 +137,10 @@ To view reports, go to the **Reporting** management page in the navigation menu 
 
 ::::{tab-item} Using role API
 
-With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
+With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs]({{kib-apis}}group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 :::{note}
-This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/docs/api/doc/kibana/).
+This API request needs to be run against the [{{kib}} API endpoint]({{kib-apis}}).
 :::
 
 ```console
@@ -198,7 +198,7 @@ Example using {{kib}} UI:
 :screenshot:
 :::
 
-Example using [role API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to CSV {{report-features}}:
+Example using [role API]({{kib-apis}}group/endpoint-roles) to grant access to CSV {{report-features}}:
 
 ```console
 PUT localhost:5601/api/security/role/custom_reporting_user

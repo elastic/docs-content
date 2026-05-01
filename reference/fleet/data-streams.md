@@ -133,7 +133,7 @@ You can edit a `@custom` component template to customize your {{es}} indices:
         ```
 
 
-Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. You can do this with the {{es}} [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover).
+Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. You can do this with the {{es}} [Rollover API]({{es-apis}}operation/operation-indices-rollover).
 
 
 ## Index lifecycle management ({{ilm-init}}) [data-streams-ilm]
@@ -165,7 +165,7 @@ If you create a custom index pipeline, Elastic is not responsible for ensuring t
 `global@custom`
 :   Apply processing to all events
 
-    For example, the following [pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request adds a new field `my-global-field` for all events:
+    For example, the following [pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) request adds a new field `my-global-field` for all events:
 
     ```console
     PUT _ingest/pipeline/global@custom
