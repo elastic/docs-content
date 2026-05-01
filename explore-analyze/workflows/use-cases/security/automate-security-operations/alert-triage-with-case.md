@@ -37,7 +37,7 @@ The workflow runs in a single pass when an alert arrives:
 2. A **VirusTotal lookup** enriches the alert with a reputation score.
 3. An **if step** branches on the reputation score. If the file is confirmed malicious, the workflow opens a case, attaches the alert and observables, isolates the host, and notifies Slack. Otherwise, it closes the alert as a false positive.
 
-All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [cases steps](/explore-analyze/workflows/steps/cases.md), [`if` steps](/explore-analyze/workflows/steps/if.md), [{{kib}} steps](/explore-analyze/workflows/steps/kibana.md), and [HTTP steps](/explore-analyze/workflows/steps/external-systems-apps.md#http).
+All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [cases steps](/explore-analyze/workflows/steps/cases.md), [`if` steps](/explore-analyze/workflows/steps/if.md), [{{kib}} steps](/explore-analyze/workflows/steps/kibana.md), and [HTTP steps](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions).
 
 ## Build the workflow [workflows-alert-triage-with-case-build]
 

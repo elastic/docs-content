@@ -36,7 +36,7 @@ The workflow runs on demand, takes the indicator you want to enrich as an `input
 3. Optional **HTTP step** adds geolocation or secondary scoring.
 4. **Console step** formats a human-readable summary with a risk assessment.
 
-All referenced step types are in the 9.4 GA surface: [manual triggers](/explore-analyze/workflows/triggers/manual-triggers.md), [HTTP](/explore-analyze/workflows/steps/external-systems-apps.md#http), and [console](/explore-analyze/workflows/steps/external-systems-apps.md).
+All referenced step types are in the 9.4 GA surface: [manual triggers](/explore-analyze/workflows/triggers/manual-triggers.md), [HTTP](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions), and [console](/explore-analyze/workflows/steps/external-systems-apps.md).
 
 ## Build the workflow [workflows-enrich-alert-build]
 
@@ -195,6 +195,6 @@ steps:
 ## Related pages [workflows-enrich-alert-related]
 
 - [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md): Pair enrichment with case creation for full triage.
-- [HTTP step](/explore-analyze/workflows/steps/external-systems-apps.md#http): Full `http` step reference.
+- [HTTP step](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions): Full `http` step reference.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Retry, fallback, and continue strategies in more depth.
 - [`elastic/workflows` enrichment folder](https://github.com/elastic/workflows/tree/main/workflows/security/enrichment): More enrichment examples.
