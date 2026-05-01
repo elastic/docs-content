@@ -41,7 +41,7 @@ Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud
 [Learn how to edit settings for existing deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
 
 :::{note}
-{{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default. 
+{{kib}} instances in {{ech}} deployments created in May 2026 or later have 2 GB of RAM by default. 
 Increasing the instance size above 1 GB [affects billing](/deploy-manage/cloud-organization/billing/billing-faq.md#faq-included).
 :::
 

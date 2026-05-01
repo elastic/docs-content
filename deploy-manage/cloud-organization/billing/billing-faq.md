@@ -106,7 +106,7 @@ $$$faq-included$$$What is included in my paid {{ech}} deployment?
 
     * Free 1 GB RAM {{kib}} instance. 
       :::{note}
-      New deployments include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
+      Deployments created in May 2026 or later include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
       :::
     * Free 1 GB RAM Machine Learning node
     * Free 1 GB RAM APM / Integrations Server instance
