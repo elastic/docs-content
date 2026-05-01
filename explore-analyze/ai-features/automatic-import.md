@@ -120,7 +120,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
 11. From the integration's **Actions** menu, click **Review & approve**. Select a category to help identify the integration on the Integrations page, then review the field mappings and the ingest pipeline.
 
-    :::{image} /solutions/images/security-auto-import-review-approve.png
+    :::{image} /solutions/images/auto-import-approve-stream-modal.png
     :alt: The Review and approve data streams modal with a category selector and an Approve button
     :::
 
@@ -128,15 +128,8 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
     (Optional) To fine-tune the ingest pipeline, open it from the **Review & approve** panel and make your changes. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) for field-mapping guidance. Click **Save** when you're done.
 
-    :::{image} /solutions/images/security-auto-import-edit-pipeline-new.png
-    :alt: The ingest pipeline flyout showing field mappings for a data stream
-    :::
-
 12. When you approve an integration, by default it's also installed, which makes it available for assignment to a policy. To approve an integration without installing it, turn off the automatic installation option on its approval confirmation popup. Then, to install it later, click **Install** on the **Actions** menu. 
 
-    :::{image} /solutions/images/auto-import-approve-stream-modal.png
-    :alt: The review and approve data streams modal
-    :::
 
 13. Once you've installed an integration, you can find it using its category.
 
