@@ -6,7 +6,7 @@
 The following features remain scoped to the origin project:
 
 - **Alerts:** The Alerts page does not display remote alerts from linked projects.
-- **Dashboards:** The Detection & Response and Data Quality dashboards do not display remote alerts from linked projects.
+- **Dashboards:** The Detection & Response and Data Quality dashboards do not display alerts from linked projects.
 - **Explore page:** Host, network, and user exploration searches are scoped to the origin project only.
 - **Entity store:** Entity risk scoring and entity profiles do not include data from linked projects.
 - **Attack Discovery**: AI-generated attack discoveries are based on alerts from the origin project only.
