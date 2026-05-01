@@ -44,7 +44,7 @@ Enabling trained model autoscaling for your ELSER deployment is recommended. Ref
 
 Compared to the initial version of the model, ELSER v2 offers improved retrieval accuracy and more efficient indexing. This enhancement is attributed to the extension of the training data set, which includes high-quality question and answer pairs and the improved FLOPS regularizer which reduces the cost of computing the similarity between a query and a document.
 
-ELSER v2 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of ELSER v2 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use ELSER is through the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don't need to select from different versions.
+ELSER v2 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of ELSER v2 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use ELSER is through the [{{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don't need to select from different versions.
 
 If you want to learn more about the ELSER V2 improvements, refer to [this blog post](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-1).
 
@@ -56,7 +56,7 @@ Additionally, the `elasticearch-labs` GitHub repository contains an interactive 
 
 ## Download and deploy ELSER [download-deploy-elser]
 
-The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
+The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API]({{es-apis}}group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
@@ -79,7 +79,7 @@ PUT _inference/sparse_embedding/my-elser-endpoint
 
 The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
 
-Refer to the [ELSER {{infer}} integration documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elser) to learn more about the available settings.
+Refer to the [ELSER {{infer}} integration documentation]({{es-apis}}operation/operation-inference-put-elser) to learn more about the available settings.
 
 After you created the ELSER {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
 
@@ -162,7 +162,7 @@ PUT _ml/trained_models/.elser_model_2
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search

@@ -18,12 +18,12 @@ products:
 
 ## Symptoms and diagnosis
 
-You can check for this issue before errors are detected by looking for duplicate `uuid` values in the [list snapshot repositories API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get-repository) output. After errors are detected, [snapshot APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot) return the following error:
+You can check for this issue before errors are detected by looking for duplicate `uuid` values in the [list snapshot repositories API]({{es-apis}}operation/operation-snapshot-get-repository) output. After errors are detected, [snapshot APIs]({{es-apis}}group/endpoint-snapshot) return the following error:
 ```text
 Could not read repository data because the contents of the repository do not match its expected state. This is likely the result of either concurrently modifying the contents of the repository by a process other than this cluster or an issue with the repository's underlying storage. The repository has been disabled to prevent corrupting its contents. To re-enable it and continue using it please remove the repository from the cluster and add it again to make the cluster recover the known state of the repository from its physical contents.
 ```
 
-This repository error might also surface in the [{{ilm}} explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle), [Allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) and {{kib}} **Stack Management** UI. 
+This repository error might also surface in the [{{ilm}} explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle), [Allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) and {{kib}} **Stack Management** UI.
 
 {{es}} log stack traces can surface more information. One of the following errors might appear in stack traces:
 
@@ -78,7 +78,7 @@ On the primary (current) clusteer:
 ::::::{tab-item} Using the {{es}} API
 First, work on the secondary clusters:
 
-1. Get the configuration of the repository using the [Get snapshot repository information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get-repository):
+1. Get the configuration of the repository using the [Get snapshot repository information API]({{es-apis}}operation/operation-snapshot-get-repository):
 
     ```console
     GET _snapshot/my-repo
@@ -101,7 +101,7 @@ First, work on the secondary clusters:
 
     1. Represents the current configuration for the repository.
 
-2. Using the settings retrieved above, add the `readonly: true` option to mark it as read-only using the [Update snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository):
+2. Using the settings retrieved above, add the `readonly: true` option to mark it as read-only using the [Update snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository):
 
     ```console
     PUT _snapshot/my-repo
@@ -118,7 +118,7 @@ First, work on the secondary clusters:
 
     1. Marks the repository as read-only.
 
-3. Alternatively, disconnect the repository is an option using [Delete snapshot repositories API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete-repository):
+3. Alternatively, disconnect the repository is an option using [Delete snapshot repositories API]({{es-apis}}operation/operation-snapshot-delete-repository):
 
     ```console
     DELETE _snapshot/my-repo
@@ -165,7 +165,7 @@ On the primary (current) cluster:
     }
     ```
 
-3. To verify results, use the [Verify a snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-verify-repository):
+3. To verify results, use the [Verify a snapshot repository API]({{es-apis}}operation/operation-snapshot-verify-repository):
 
     ```console
     POST _snapshot/my-repo/_verify
