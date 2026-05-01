@@ -59,10 +59,6 @@ If you’re using self-managed infrastructure - either on-prem or public cloud -
 :::{include} /deploy-manage/_snippets/serverless-upgrade.md
 :::
 
-:::{note}
-For Platinum and Enterprise users, we recommend that before upgrading your environment to {{stack}} version 9 or higher, you make sure your {{kib}} instances have at least 2 GB of RAM per availability zone. This will ensure optimal performance and cluster stability. 
-:::
-
 ## Next steps
 
 Once you've successfully upgraded your deployment, you can [upgrade your ingest components](./ingest-components.md), such as {{ls}}, {{agent}}, or {{beats}}.
