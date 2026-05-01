@@ -133,6 +133,11 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :::
 
 12. When you approve an integration, by default it's also installed, which makes it available for assignment to a policy. To approve an integration without installing it, turn off the automatic installation option on its approval confirmation popup. Then, to install it later, click **Install** on the **Actions** menu. 
+
+    :::{image} /solutions/images/auto-import-approve-stream-modal.png
+    :alt: The review and approve data streams modal
+    :::
+
 13. Once you've installed an integration, you can find it using its category.
 
     :::{image} /solutions/images/security-auto-import-find-integration.png
