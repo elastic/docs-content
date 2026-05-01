@@ -89,13 +89,13 @@ The Puppeteer logs are very verbose and could possibly contain sensitive informa
 
 ## System requirements [reporting-troubleshooting-system-requirements]
 
-<!-- Pending ECE and ECK decision, change to: In {{ecloud}}, {{kib}} instances on versions earlier than 9.4 have 1 GB of RAM by default. -->
+In {{ecloud}}, the {{kib}} instances that most configurations provide by default have 2 GB of RAM. That is enough for {{kib}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
 
-In {{ecloud}}, the {{kib}} instances that most configurations provide by default have 1 GB of RAM. That is enough for {{kib}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
+If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance.
 
-If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance to 2GB.
-
-{{kib}} instances in new {{ech}} deployments have 2 GB of RAM by default.
+:::{note}
+{{kib}} instances created before May 2026 have 1 GB of RAM by default.
+:::
 
 ## Unable to connect to Elastic Maps Service [reporting-troubleshooting-maps-ems]
 
