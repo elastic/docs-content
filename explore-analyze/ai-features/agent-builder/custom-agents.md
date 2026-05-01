@@ -252,7 +252,7 @@ The Agents API enables programmatic management of custom agents.
 
 For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents-apis).
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 

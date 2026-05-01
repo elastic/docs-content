@@ -63,8 +63,8 @@ There are no specific requirements for {{es-serverless}} projects, {{ech}} deplo
 
 To learn more about these endpoints, refer to the reference for your deployment type:
 
-* [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deploymentstrafficfilter)
-* [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-deploymentstrafficfilter)
+* [{{ecloud}} API]({{cloud-apis}}group/endpoint-deploymentstrafficfilter)
+* [{{ece}} API]({{ece-apis}}group/endpoint-deploymentstrafficfilter)
 
 
 ## Terminology in the {{ecloud}} console and APIs

@@ -96,7 +96,7 @@ For a quick overview of how to work programmatically with tools, refer to [Tools
 
 ### API reference
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-tools).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-tools).
 
 ## MCP server access
 

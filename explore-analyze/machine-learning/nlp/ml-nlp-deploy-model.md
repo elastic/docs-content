@@ -10,7 +10,7 @@ products:
 
 # Deploy the model in your cluster [ml-nlp-deploy-model]
 
-After you import the model and vocabulary, you can use {{kib}} to view and manage their deployment across your cluster under **{{ml-app}}** > **Model Management**. Alternatively, you can use the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
+After you import the model and vocabulary, you can use {{kib}} to view and manage their deployment across your cluster under **{{ml-app}}** > **Model Management**. Alternatively, you can use the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment).
 
 You can deploy a model multiple times by assigning a unique deployment ID when starting the deployment.
 
@@ -37,6 +37,6 @@ For the resource levels when adaptive resources are enabled, refer to [Trained m
 
 ## Request queues and search priority [infer-request-queues]
 
-Each allocation of a model deployment has a dedicated queue to buffer {{infer}} requests. The size of this queue is determined by the `queue_capacity` parameter in the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment). When the queue reaches its maximum capacity, new requests are declined until some of the queued requests are processed, creating available capacity once again. When multiple ingest pipelines reference the same deployment, the queue can fill up, resulting in rejected requests. Consider using dedicated deployments to prevent this situation.
+Each allocation of a model deployment has a dedicated queue to buffer {{infer}} requests. The size of this queue is determined by the `queue_capacity` parameter in the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment). When the queue reaches its maximum capacity, new requests are declined until some of the queued requests are processed, creating available capacity once again. When multiple ingest pipelines reference the same deployment, the queue can fill up, resulting in rejected requests. Consider using dedicated deployments to prevent this situation.
 
 {{infer-cap}} requests originating from search, such as the [`text_expansion` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-text-expansion-query.md), have a higher priority compared to non-search requests. The {{infer}} ingest processor generates normal priority requests. If both a search query and an ingest processor use the same deployment, the search requests with higher priority skip ahead in the queue for processing before the lower priority ingest requests. This prioritization accelerates search responses while potentially slowing down ingest where response time is less critical.
