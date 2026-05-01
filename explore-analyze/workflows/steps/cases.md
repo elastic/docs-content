@@ -614,7 +614,7 @@ Delete one or more cases permanently, including their attachments and comments.
 ```
 
 :::{warning}
-Deleted cases can't be recovered. Prefer [`cases.closeCase`](#cases-closecase) unless you really need the case removed.
+Deleted cases can't be recovered. If you don't want to permanently delete a case, use [`cases.closeCase`](#cases-closecase) instead.
 :::
 
 ## Migrating from `kibana.*` case aliases [workflows-cases-migration]

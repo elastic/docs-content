@@ -2,9 +2,8 @@
 navigation_title: Troubleshooting
 description: Resolve common issues with Elastic Workflows. Trigger attachment, flow control, case and alert steps, Liquid filters, AI connector IDs, composition, human-in-the-loop, and concurrency.
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
-type: troubleshooting
 products:
   - id: kibana
   - id: cloud-serverless
@@ -63,7 +62,7 @@ Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-drive
 
 **Symptom.** A `while` loop never exits, consuming workflow execution time.
 
-**Cause.** The `while` step has no default `max-iterations` cap in 9.4. Without an explicit `max-iterations`, the loop runs until the `condition` evaluates to false. If the condition never becomes false, the loop runs indefinitely.
+**Cause.** The `while` step has no default `max-iterations` limit in 9.4. Without an explicit `max-iterations`, the loop runs until the `condition` evaluates to false. If the condition never becomes false, the loop runs indefinitely.
 
 **Resolution.** Always set `max-iterations` on a `while` loop:
 
@@ -309,7 +308,7 @@ Refer to [Composition steps](/explore-analyze/workflows/steps/composition.md).
 
 **Cause.** `waitForInput` doesn't time out by default. The workflow waits indefinitely until someone submits the resume form or calls the resume API.
 
-**Resolution.** To cap the wait, set a workflow-level `settings.timeout`. The workflow cancels when the timeout elapses.
+**Resolution.** To limit the wait, set a workflow-level `settings.timeout`. The workflow cancels when the timeout elapses.
 
 ```yaml
 settings:

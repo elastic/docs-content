@@ -1,7 +1,7 @@
 ---
 navigation_title: Concepts
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Quick references for the workflow YAML surface, including a cheat sheet, the A-Z step type index, context variables, and the Liquid filter catalog.
 products:

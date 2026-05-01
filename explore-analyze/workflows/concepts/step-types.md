@@ -1,7 +1,7 @@
 ---
 navigation_title: Step type index
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Every step type that ships in Elastic Workflows 9.4, alphabetical, with a one-line description and a link to its full reference.
 products:

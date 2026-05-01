@@ -1,7 +1,7 @@
 ---
 navigation_title: Liquid filters
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Every Liquid filter available in workflow expressions, categorized, with worked examples for the two custom filters and the commonly-confused ones.
 products:
@@ -182,7 +182,7 @@ Filters compose. The output of one feeds the next:
 top_3_hosts: "{{ event.alerts | map: 'host.name' | uniq | slice: 0, 3 | join: ', ' }}"
 ```
 
-Reads left to right: map each alert to its host name, deduplicate, take the first three, join with commas.
+Reads left to right: map each alert to its host name, remove duplicates, take the first three, join with commas.
 
 ## Related [workflows-filters-related]
 

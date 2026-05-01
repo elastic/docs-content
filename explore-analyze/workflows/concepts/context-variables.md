@@ -1,7 +1,7 @@
 ---
 navigation_title: Context variables
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Every context variable you can reference in a Liquid expression inside a workflow, with an example for each.
 products:
@@ -15,7 +15,7 @@ products:
 
 # Context variables [workflows-context-variables-reference]
 
-Context variables are the data you can reference inside [Liquid expressions](/explore-analyze/workflows/templating.md) in a workflow. Every execution gets the same core set; some variables are only populated in certain contexts (for example, `foreach.item` exists only inside a `foreach` loop).
+Context variables are the data you can reference inside [Liquid expressions](/explore-analyze/workflows/templating.md) in a workflow. Every execution gets the same core set. Some variables are only populated in certain contexts (for example, `foreach.item` exists only inside a `foreach` loop).
 
 This page is the canonical reference. For the mental model and the `{{ }}` vs. `${{ }}` distinction, refer to [Templating engine](/explore-analyze/workflows/templating.md).
 
@@ -127,7 +127,7 @@ Metadata about the current workflow execution.
 | `execution.executedBy` | UID of the user or system that invoked the workflow. |
 | `execution.triggeredBy` | Which trigger initiated this execution (`manual`, `scheduled`, `alert`, `workflows.failed`). |
 | `execution.url` | Deep link to the execution view in {{kib}}. |
-| `execution.compositionDepth` | 0 for a top-level invocation; increments by 1 for each [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) level. |
+| `execution.compositionDepth` | 0 for a top-level invocation. Increments by 1 for each [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) level. |
 | `execution.parentWorkflowId` | ID of the parent workflow, if this is a composed child execution. |
 
 ```yaml

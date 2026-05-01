@@ -1,7 +1,7 @@
 ---
 navigation_title: Cheat sheet
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: One-page bookmark reference for Elastic Workflows. Workflow anatomy, triggers, step skeleton, the step menu, Liquid, error handling, and the top gotchas.
 products:
