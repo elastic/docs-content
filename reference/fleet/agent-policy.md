@@ -202,7 +202,7 @@ To edit a custom field:
 2. Click the **Settings** tab and scroll to **Custom fields**. Any custom fields that have been configured are shown.
 3. Click the edit icon to update a field or click the delete icon to remove it.
 
-Adding custom tags is not supported for a small set of inputs:
+Adding custom fields is not supported for a small set of inputs:
 
 * `apm`
 * `cloudbeat` and all `cloudbeat/*` inputs
@@ -210,6 +210,7 @@ Adding custom tags is not supported for a small set of inputs:
 * `fleet-server`
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
+* `elastic_agent` inputs
 
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]

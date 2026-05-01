@@ -6,7 +6,7 @@ You can stop {{ilm-init}} to suspend management operations for all indices. For 
 When you stop {{ilm-init}}, [{{slm-init}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) operations are also suspended. {{slm-init}} will not take snapshots as scheduled until you restart {{ilm-init}}. In-progress snapshots are not affected.
 ::::
 
-To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [{{ilm-init}} stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
+To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [{{ilm-init}} stop API]({{es-apis}}operation/operation-ilm-stop):
 
 ```console
 POST _ilm/stop
