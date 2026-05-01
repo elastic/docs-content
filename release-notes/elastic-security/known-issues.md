@@ -27,7 +27,7 @@ Known issues are significant defects or limitations that may impact your impleme
 **Applies to: {{agent}} 9.3.4**
 
 **Impact**<br>
-If you use the SentinelOne integration with {{elastic-defend}}, response actions such as host isolation fail with a `500 Internal Server Error` (`search_phase_execution_exception`). This is caused by a bug in {{agent}} 9.3.4 where a performance optimization incorrectly serializes certain timestamp fields from Beats-based inputs and integrations to an empty `{}` JSON object instead of a valid timestamp value.
+If you use the SentinelOne integration, response actions such as host isolation fail with a `500 Internal Server Error` (`search_phase_execution_exception`). This is caused by a bug in {{agent}} 9.3.4 where a performance optimization incorrectly serializes certain timestamp fields from Beats-based inputs and integrations to an empty `{}` JSON object instead of a valid timestamp value.
 
 The affected field is `event.created`. When this field is empty, {{kib}} cannot execute the underlying search that response actions depend on. For example, SentinelOne alert documents are written with `event.created` set to `{}` instead of a timestamp:
 
