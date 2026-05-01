@@ -1,1 +1,0 @@
-Using an {{elastic-sec}} project as an origin project is supported during technical preview. Some {{elastic-sec}} workflows have limited support when {{cps-init}} is enabled. You can also link {{elastic-sec}} projects _to_ an origin project of another type.
