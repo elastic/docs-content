@@ -253,6 +253,9 @@ When creating or editing a table visualization, you can customize several appear
     
     When disabled, all rows appear in a scrollable view (up to the maximum returned by the query).
 
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
+
 ## Table examples
 
 The following examples show various configuration options you can use for building effective tables.

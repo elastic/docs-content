@@ -12,11 +12,11 @@ products:
 
 # Upload data files [upload-data-kibana]
 
-You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the Data Visualizer.
+You can upload files, analyze their fields and metrics, and import their data into an {{es}} index using the {{data-viz}}.
 
 1. Open the **Integrations** page using the global search field, then search for **Upload a file** using the integrations search field.
 
-2. Click **Upload a file** to open the Data Visualizer UI.
+2. Click **Upload a file** to open the {{data-viz}}.
 
 3. Depending on your version and deployment:
 
@@ -26,7 +26,7 @@ You can upload files, analyze their fields and metrics, and import their data in
 
     1. Drag a file into the upload area or click **Select or drag and drop a file** to choose a file from your computer.
 
-        You can upload different file formats for analysis with the Data Visualizer.
+        You can upload different file formats for analysis with the {{data-viz}}.
 
         The supported file formats are:
           * CSV, TSV, NDJSON, log files (up to 500 MB)
@@ -65,10 +65,10 @@ The upload feature is not intended for use as part of a repeated production proc
 
 ## Required privileges
 
-The {{stack-security-features}} provide roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:
+{{es}} provides roles and privileges that control which users can upload files. To upload a file in {{kib}} and import it into an {{es}} index, you’ll need:
 
+* `all` {{kib}} privileges for **Integrations**, **Discover** and **Data Views Management** 
 * `manage_pipeline` or `manage_ingest_pipelines` cluster privilege
 * `create`, `create_index`, `manage`, and `read` index privileges for the index
-* `all` {{kib}} privileges for **Discover** and **Data Views Management**
 
 You can manage your roles, privileges, and spaces in **{{stack-manage-app}}**.
