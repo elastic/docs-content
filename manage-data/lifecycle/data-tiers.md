@@ -22,7 +22,7 @@ By abstracting cluster management tasks, {{serverless-full}} adjusts data storag
 
 ## Available data tiers [available-tier]
 
-The data tiers that you use, and the way that you use them, depends on the data’s [category](/manage-data/lifecycle.md). The following data tiers are can be used with each data category:
+The data tiers that you use, and the way that you use them, depends on the data’s [category](/manage-data/lifecycle.md). The following data tiers can be used with each data category:
 
 **Content data**:
 
@@ -65,6 +65,8 @@ The content tier is required and is often deployed within the same node grouping
 
 The hot tier is the {{es}} entry point for time series data and holds your most-recent, most-frequently-searched time series data. Nodes in the hot tier need to be fast for both reads and writes, which requires more hardware resources and faster storage (SSDs). For resiliency, indices in the hot tier should be configured to use one or more replicas.
 
+An {{ilm-init}} policy can also use the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action in the `hot` phase, in which case the hot tier holds a [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snap}} index instead of a regular index.
+
 The hot tier is required. New indices that are part of a [data stream](/manage-data/data-store/data-streams.md) are automatically allocated to the hot tier.
 
 
@@ -106,9 +108,9 @@ When {{es}} creates an index as part of a [data stream](/manage-data/data-store/
 At the time of index creation, you can override the default setting by explicitly setting the preferred value in one of two ways:
 
 * Using an [index template](/manage-data/data-store/templates.md). Refer to [](/manage-data/lifecycle/index-lifecycle-management.md) for details.
-* Within the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request body.
+* Within the [create index]({{es-apis}}operation/operation-indices-create) request body.
 
-You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.
+You can override this setting after index creation by [updating the index setting]({{es-apis}}operation/operation-indices-put-settings) to the preferred value.
 
 This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if there are no nodes in the cluster for the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
 
@@ -116,7 +118,7 @@ To remove the data tier preference setting, set the `_tier_preference` value to 
 
 ### Determine the current data tier preference [data-tier-allocation-value]
 
-You can check an existing index’s data tier preference by [polling its settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for `index.routing.allocation.include._tier_preference`:
+You can check an existing index’s data tier preference by [polling its settings]({{es-apis}}operation/operation-indices-get-settings) for `index.routing.allocation.include._tier_preference`:
 
 ```console
 GET /my-index-000001/_settings?filter_path=*.settings.index.routing.allocation.include._tier_preference
@@ -126,7 +128,7 @@ GET /my-index-000001/_settings?filter_path=*.settings.index.routing.allocation.i
 
 The `_tier_preference` setting might conflict with other allocation settings. This conflict might prevent the shard from allocating. A conflict might occur when a cluster has not yet been completely [migrated to data tiers](/troubleshoot/elasticsearch/troubleshoot-migrate-to-tiers.md).
 
-This setting will not unallocate a currently allocated shard, but might prevent it from migrating from its current location to its designated data tier. To troubleshoot, call the [cluster allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) and specify the suspected problematic shard.
+This setting will not unallocate a currently allocated shard, but might prevent it from migrating from its current location to its designated data tier. To troubleshoot, call the [cluster allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) and specify the suspected problematic shard.
 
 
 ### Automatic data tier migration [data-tier-migration]

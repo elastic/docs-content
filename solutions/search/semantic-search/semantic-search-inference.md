@@ -31,7 +31,7 @@ The following examples use the:
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
 You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API.
-For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face).
+For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation]({{es-apis}}operation/operation-inference-put-hugging-face).
 
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 
@@ -106,7 +106,7 @@ An [OpenAI account](https://openai.com/) is required to use the {{infer}} API wi
 
 ## Create an inference endpoint [infer-text-embedding-task]
 
-Create an {{infer}} endpoint by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put):
+Create an {{infer}} endpoint by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put):
 
 :::::::{tab-set}
 :group: service
@@ -126,7 +126,7 @@ PUT _inference/text_embedding/cohere_embeddings <1>
 ```
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `cohere_embeddings`.
-2. The API key of your Cohere account. You can find your API keys in your Cohere dashboard under the [API keys section](https://dashboard.cohere.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
+2. The API key of your Cohere account. You can find your API keys in your Cohere dashboard under the [API keys section](https://dashboard.cohere.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API]({{es-apis}}operation/operation-inference-get) does not return your API key.
 3. The name of the embedding model to use. You can find the list of Cohere embedding models [here](https://docs.cohere.com/reference/embed).
 
 
@@ -194,7 +194,7 @@ PUT _inference/text_embedding/openai_embeddings <1>
 ```
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `openai_embeddings`.
-2. The API key of your OpenAI account. You can find your OpenAI API keys in your OpenAI account under the [API keys section](https://platform.openai.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
+2. The API key of your OpenAI account. You can find your OpenAI API keys in your OpenAI account under the [API keys section](https://platform.openai.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API]({{es-apis}}operation/operation-inference-get) does not return your API key.
 3. The name of the embedding model to use. You can find the list of OpenAI embedding models [here](https://platform.openai.com/docs/guides/embeddings/embedding-models).
 
 
@@ -219,7 +219,7 @@ PUT _inference/text_embedding/azure_openai_embeddings <1>
 ```
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `azure_openai_embeddings`.
-2. The API key for accessing your Azure OpenAI services. Alternately, you can provide an `entra_id` instead of an `api_key` here. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return this information.
+2. The API key for accessing your Azure OpenAI services. Alternately, you can provide an `entra_id` instead of an `api_key` here. The [Get {{infer}} API]({{es-apis}}operation/operation-inference-get) does not return this information.
 3. The name our your Azure resource.
 4. The id of your deployed model.
 
@@ -336,7 +336,7 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 ```
 
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `alibabacloud_ai_search_embeddings`.
-2. The API key for accessing the AlibabaCloud AI Search API. You can find your API keys in your AlibabaCloud account under the [API keys section](https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key). You need to provide your API key only once. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not return your API key.
+2. The API key for accessing the AlibabaCloud AI Search API. You can find your API keys in your AlibabaCloud account under the [API keys section](https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key). You need to provide your API key only once. The [Get {{infer}} API]({{es-apis}}operation/operation-inference-get) does not return your API key.
 3. The AlibabaCloud AI Search embeddings model name, for example `ops-text-embedding-zh-001`.
 4. The name our your AlibabaCloud AI Search host address.
 5. The name our your AlibabaCloud AI Search workspace.
@@ -658,7 +658,7 @@ PUT _ingest/pipeline/cohere_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -681,7 +681,7 @@ PUT _ingest/pipeline/elser_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -704,7 +704,7 @@ PUT _ingest/pipeline/hugging_face_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -727,7 +727,7 @@ PUT _ingest/pipeline/openai_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -750,7 +750,7 @@ PUT _ingest/pipeline/azure_openai_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -773,7 +773,7 @@ PUT _ingest/pipeline/azure_ai_studio_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -796,7 +796,7 @@ PUT _ingest/pipeline/google_vertex_ai_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -819,7 +819,7 @@ PUT _ingest/pipeline/mistral_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -842,7 +842,7 @@ PUT _ingest/pipeline/amazon_bedrock_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -865,7 +865,7 @@ PUT _ingest/pipeline/alibabacloud_ai_search_embeddings_pipeline
 }
 ```
 
-1. The name of the inference endpoint you created by using the [Create {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put), it’s referred to as `inference_id` in that step.
+1. The name of the inference endpoint you created by using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put), it’s referred to as `inference_id` in that step.
 2. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 ::::::
 
@@ -882,7 +882,7 @@ Download the file and upload it to your cluster using the [Data Visualizer](../.
 
 ## Ingest the data through the {{infer}} ingest pipeline [reindexing-data-infer]
 
-Create embeddings from the text by reindexing the data through the {{infer}} pipeline that uses your chosen model. This step uses the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to simulate data ingestion through a pipeline.
+Create embeddings from the text by reindexing the data through the {{infer}} pipeline that uses your chosen model. This step uses the [reindex API]({{es-apis}}operation/operation-reindex) to simulate data ingestion through a pipeline.
 
 :::::::{tab-set}
 :group: service

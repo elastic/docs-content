@@ -50,11 +50,29 @@ Set the conditions for the rule to detect using aggregations, an equation, and a
 
 Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](/solutions/observability/incident-management/aggregation-options.md).
 
-For example, to gather the total number of log documents with a log level of `warn`:
+{applies_to}`stack: ga 9.4` Each aggregation type supports a **KQL Filter** field to limit which documents are included in the aggregation. For example, use `http.response.status_code: 500` to aggregate only over error responses. The available inputs depend on the aggregation type:
+
+* **Count**: Enter a KQL query in the **KQL Filter** field to count only documents that match. **Field name** doesn't need to be specified since `Count` doesn't aggregate a specific field value.
+* **Average, Max, Min, Cardinality, Sum, Percentile, Rate**: Set the **Field name** to specify which field to aggregate. (Optional) To restrict which documents are included, also enter a KQL filter.
+
+#### Example: Count filtered documents
+
+To gather the total number of log documents with a log level of `warn`:
 
 1. Set the **Aggregation** to **Count**, and set the **KQL Filter** to `log.level: "warn"`.
 2. Set the threshold to `IS ABOVE 100` to trigger an alert when the number of log documents with a log level of `warn` reaches 100.
 
+#### Example: Ratio-based alert
+
+ Trigger an alert when the percentage of error responses exceeds a threshold by filtering separate aggregations with KQL:
+
+1. Set the following aggregations:
+
+    * **Aggregation A:** Count with **KQL Filter** `http.response.status_code: 500`
+    * **Aggregation B:** Count (no filter, to count all requests)
+
+2. Set the equation to `A / B * 100`.
+3. Set the threshold to `IS ABOVE 5` to alert when more than 5% of requests return a `500` status code.
 
 ### Set the equation and threshold [custom-threshold-equation]
 

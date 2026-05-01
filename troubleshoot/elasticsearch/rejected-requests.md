@@ -18,7 +18,7 @@ Rejected requests are frequently caused by depleted resources. The most common o
 
 ### Review thread pools [check-threadpools]
 
-To check the number of rejected tasks for each thread pool, use the [cat thread pool API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool):
+To check the number of rejected tasks for each thread pool, use the [cat thread pool API]({{es-apis}}operation/operation-cat-thread-pool):
 
 ```console
 GET /_cat/thread_pool?v=true&h=id,name,queue,active,rejected,completed
@@ -52,7 +52,7 @@ To troubleshoot ongoing thread pool rejection errors, check [task queue backlog 
 
 ## Inspect circuit breakers [check-circuit-breakers]
 
-To check the number of tripped [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md), use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
+To check the number of tripped [circuit breakers](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md), use the [node stats API]({{es-apis}}operation/operation-nodes-stats).
 
 ```console
 GET /_nodes/stats/breaker
@@ -64,7 +64,7 @@ Refer to the [Circuit Breaker Error video](https://www.youtube.com/watch?v=k3wYl
 
 ## Analyze indexing pressure [check-indexing-pressure]
 
-{{es}} reserves part of its JVM for indexing. An error can occur if heap usage exceeds the [`indexing_pressure.memory.limit` setting](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md#memory-limits). To check the number of [indexing pressure](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md) rejections, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
+{{es}} reserves part of its JVM for indexing. An error can occur if heap usage exceeds the [`indexing_pressure.memory.limit` setting](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md#memory-limits). To check the number of [indexing pressure](elasticsearch://reference/elasticsearch/configuration-reference/indexing-pressure-settings.md) rejections, use the [node stats API]({{es-apis}}operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats?human&filter_path=nodes.*.indexing_pressure
@@ -103,7 +103,7 @@ As part of the [Reading and writing documents](/deploy-manage/distributed-archit
 These errors are often related to:
 
 * The quantity of [backlogged tasks](task-queue-backlog.md).
-* The value of [Bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) is set to too large of a size.
+* The value of [Bulk index]({{es-apis}}operation/operation-bulk) is set to too large of a size.
 * Large search response sizes.
 * Use of the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out of Memory (OOM) error. {applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`
 

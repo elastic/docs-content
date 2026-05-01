@@ -19,7 +19,7 @@ This page describes how to troubleshoot the Task Manager health and resolve comm
 
 ## Check Task Manager health [task-manager-health-check]
 
-The following steps demonstrate a typical investigation flow. It assumes the [Task Manager Health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) is saved locally as `task_manager_health.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor. It does not require that the `taskManager` plugin is flagged as unhealthy under the [{{kib}} server status](/troubleshoot/kibana/access.md).
+The following steps demonstrate a typical investigation flow. It assumes the [Task Manager Health]({{kib-apis}}operation/operation-task-manager-health) is saved locally as `task_manager_health.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor. It does not require that the `taskManager` plugin is flagged as unhealthy under the [{{kib}} server status](/troubleshoot/kibana/access.md).
 
 1. Check the overall status.
 

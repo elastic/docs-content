@@ -46,7 +46,7 @@ When you create a maintenance window, you must provide a name and a schedule. Yo
 :screenshot:
 :::
 
-By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
+By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API]({{kib-apis}}group/endpoint-alerting).
 
 ::::{note}
 
