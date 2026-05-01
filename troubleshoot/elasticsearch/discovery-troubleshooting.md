@@ -66,7 +66,7 @@ If the logs suggest that the node cannot discover or join the cluster due to tim
 
 ## Node joins cluster and leaves again [discovery-node-leaves]
 
-If a node joins the cluster but {{es}} determines it to be faulty, it is removed from the cluster again. Refer to [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for more information.
+If a node joins the cluster but {{es}} determines it to be faulty, it is removed from the cluster again. Refer to [Troubleshooting an unstable cluster](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md) for more information.
 
 
 ## Investigate timeout and network issues [investigate-timeout-and-network-issues]
