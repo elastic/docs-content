@@ -47,14 +47,14 @@ When you create a new deployment through the API, you have two options:
 
 This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
 "https://api.elastic-cloud.com/api/v1/deployments?template_id=gcp-general-purpose" \
 -d '
 {
-  "version": "8.17.1",<1>
+  "version": "{{version.stack}}",<1>
   "region": "gcp-europe-west1"<2>
 }
 '
@@ -71,11 +71,11 @@ A `resource` field can be included in this request (check the following, manual 
 
 This example creates a new deployment named "my-first-api-deployment" with the following characteristics:
 
-* Version 8.17.1 of the {{stack}}
+* Version {{version.stack}} of the {{stack}}
 * {{es}} cluster in two zones with 4 GB of memory for each node
-* 1 GB single zone {{kib}} instance and 1 GB Integrations Server instance
+* 2 GB single zone {{kib}} instance and 1 GB Integrations Server instance
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -205,7 +205,7 @@ curl -XPOST \
             }
           ],
           "elasticsearch": {
-            "version": "8.17.1",
+            "version": "{{version.stack}}",
             "enabled_built_in_plugins": []
           },
           "deployment_template": {
@@ -225,12 +225,12 @@ curl -XPOST \
               "zone_count": 1, <6>
               "size": {
                 "resource": "memory",
-                "value": 1024 <7>
+                "value": 2048 <7>
               }
             }
           ],
           "kibana": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           }
         },
         "ref_id": "main-kibana"
@@ -252,7 +252,7 @@ curl -XPOST \
             }
           ],
           "integrations_server": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           }
         },
         "ref_id": "main-integrations_server"
@@ -290,7 +290,7 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 Modify the {{es}} resource by increasing the amount of memory to 8 GB.
 
-```sh
+```sh subs=true
 curl -XPUT \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -330,7 +330,7 @@ curl -XPUT \
             }
           ],
           "elasticsearch": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           },
           "deployment_template": {
             "id": "gcp-general-purpose-v3"
