@@ -154,7 +154,7 @@ curl -XPOST \
                   "data": "frozen"
                 }
               },
-              "instance_configuration_id": "gcp.es.datafrozen.n2.68x10x95",
+              "instance_configuration_id": "gcp.es.datafrozen.n2.68x10x90",
               "node_roles": [
                 "data_frozen"
               ],
@@ -209,7 +209,7 @@ curl -XPOST \
             "enabled_built_in_plugins": []
           },
           "deployment_template": {
-            "id": "gcp-general-purpose-v3" <5>
+            "id": "gcp-us-central1" <5>
           }
         }
       }
@@ -333,7 +333,7 @@ curl -XPUT \
             "version": "{{version.stack}}"
           },
           "deployment_template": {
-            "id": "gcp-general-purpose-v3"
+            "id": "gcp-us-central1"
           }
         }
       }
