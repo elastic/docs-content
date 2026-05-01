@@ -127,10 +127,6 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
-::::{note}
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-security-recommendation.md
-:::
-::::
 
 :::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
 :::
