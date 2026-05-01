@@ -55,7 +55,7 @@ To duplicate an existing Discover session as a new one, the workflow depends on 
 1. In **Discover**, open the Discover session that you want to duplicate.
 2. In the application menu, from the menu next to **Save**, select **Save as**. The **Save Discover session** modal opens.
 3. Enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to choose where to save the session. For details, refer to [Save a Discover session](#_save_a_discover_session).
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, select **Existing** to add the session as a panel on a dashboard you choose, **New** to add it to a brand-new dashboard, or **None** to save the session to the library.
 5. Select **Save**.
 :::
 
@@ -187,9 +187,9 @@ When editing a Discover session panel from a dashboard, you can save your change
 4. In the **Save Discover session** modal, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose where to save the new session:
 
-   - **Existing**: Save the session as a panel on a dashboard you select.
+   - **Existing**: Save the session as an additional panel on a dashboard that already exists.
    - **New**: Save the session as a panel on a new dashboard.
-   - **None**: Save the session to the library only.
+   - **None**: Save the session to the library.
 
 6. Select **Save**.
 
