@@ -12,3 +12,4 @@ The following features remain scoped to the origin project:
 - **Entity store:** Entity risk scoring and entity profiles do not include data from linked projects.
 - **Attack Discovery**: AI-generated attack discoveries are based on alerts from the origin project only.
 - **Overview**: The Security Overview page reflects data from the origin project only.
+- **Defend and Osquery**: Elastic Defend and Osquery are scoped to the origin project only. Defend and Osquery are managed through Fleet, meaning their configuration is tied to a single project. Endpoint artifacts, policies, response actions, and Osquery saved queries and packs are managed per project and are not shared across linked projects.
