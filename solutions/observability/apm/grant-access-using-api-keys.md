@@ -135,7 +135,7 @@ monitoring.elasticsearch:
 
 ## Create an API key with {{es}} APIs [apm-beats-api-key-es]
 
-You can also use {{es}}'s [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to create a new API key. For example:
+You can also use {{es}}'s [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to create a new API key. For example:
 
 ```console
 POST /_security/api_key
@@ -183,12 +183,12 @@ POST /_security/api_key
 1. Name of the API key
 2. Granted privileges, see [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md)
 
-See the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) reference for more information.
+See the [Create API key]({{es-apis}}operation/operation-security-create-api-key) reference for more information.
 
 ## Learn more about API keys [apm-learn-more-api-keys]
 
 See the {{es}} API key documentation for more information:
 
-* [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key)
-* [Get API key information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-api-key)
-* [Invalidate API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key)
+* [Create API key]({{es-apis}}operation/operation-security-create-api-key)
+* [Get API key information]({{es-apis}}operation/operation-security-get-api-key)
+* [Invalidate API key]({{es-apis}}operation/operation-security-invalidate-api-key)

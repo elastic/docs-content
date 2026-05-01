@@ -13,7 +13,7 @@ products:
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-{{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report).
+{{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section]({{es-apis}}operation/operation-health-report).
 
 
 ## Cluster is close to reaching the configured maximum number of shards for data nodes[_cluster_is_close_to_reaching_the_configured_maximum_number_of_shards_for_data_nodes]
@@ -22,7 +22,7 @@ The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/conf
 
 This symptom indicates that action should be taken, otherwise, either the creation of new indices or upgrading the cluster could be blocked.
 
-If you're confident your changes won't destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+If you're confident your changes won't destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
 You can perform the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
@@ -64,7 +64,7 @@ You can perform the following steps using either [API console](/explore-analyze/
     1. Current value of the setting `cluster.max_shards_per_node`
     2. Current number of open shards across the cluster
 
-2. Update the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) setting with a proper value using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
+2. Update the [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) setting with a proper value using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
     ```console
     PUT _cluster/settings
@@ -122,7 +122,7 @@ The [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsear
 
 This symptom indicates that action should be taken, otherwise, either the creation of new indices or upgrading the cluster could be blocked.
 
-If you're confident your changes won't destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+If you're confident your changes won't destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
 You can perform the following steps using either [API console](/explore-analyze/query-filter/tools/console.md), or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
@@ -163,7 +163,7 @@ You can perform the following steps using either [API console](/explore-analyze/
     1. Current value of the setting `cluster.max_shards_per_node.frozen`
     2. Current number of open shards used by frozen nodes across the cluster
 
-2. Update the [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) setting using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
+2. Update the [`cluster.max_shards_per_node.frozen`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node-frozen) setting using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings):
 
     ```console
     PUT _cluster/settings

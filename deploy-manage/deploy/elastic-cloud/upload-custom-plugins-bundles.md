@@ -252,4 +252,4 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-Refer to [Extensions API reference](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-extensions) for the complete set of HTTP methods and payloads.
+Refer to [Extensions API reference]({{cloud-apis}}group/endpoint-extensions) for the complete set of HTTP methods and payloads.
