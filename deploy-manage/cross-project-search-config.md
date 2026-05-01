@@ -60,6 +60,7 @@ To be available for linking, projects must meet the following requirements:
 
 - The origin project and all linked projects must be in the same {{ecloud}} organization.
 - You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- Projects can be linked across cloud providers and regions. For example, a project in GCP `us-east4` can be linked to a project in AWS `eu-central-1` without any additional configuration.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](#cps-compatibility) on the project.
