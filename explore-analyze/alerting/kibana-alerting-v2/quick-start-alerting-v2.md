@@ -97,14 +97,14 @@ Save the rule. It will be enabled automatically.
 Wait 5 seconds, then run the following in Discover using the ES|QL mode. Replace `<your-rule-id>` with the `tutorial-error-rate` rule ID.
 
 ```esql
-FROM $`.rule-events`
+FROM .rule-events
 | WHERE rule.id == "<your-rule-id>"
 | SORT @timestamp DESC
 | LIMIT 10
 ```
 
 :::{tip}
-After saving the rule, open it in **Management > V2 Alerting Preview**. The rule ID is the string at the browser URL.
+After saving the rule, open its details page. The rule ID is the string at the end of the browser URL.
 :::
 
 Check the following in the query results:
@@ -122,7 +122,7 @@ Check the following in the query results:
 In Discover, run: 
 
 ```esql
-FROM $`.rule-events`
+FROM .rule-events
 | WHERE rule.id == "<your-rule-id>"
 | STATS latest = MAX(@timestamp) BY episode.id, episode.status, data.service_name
 | SORT latest DESC

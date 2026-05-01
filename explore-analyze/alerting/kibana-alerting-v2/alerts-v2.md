@@ -32,15 +32,37 @@ inactive → pending → active → recovering → inactive
 
 Activation and recovery thresholds control how many consecutive evaluations must agree, or how long the condition must persist, before transitioning. Refer to [Configure a rule](rules/configure-a-rule-v2.md#activation-recovery-thresholds-v2) to learn more about these settings.
 
-### Alert episode example
+### Example: First breach opens, first clear closes
 
-Suppose a service starts throwing errors at 10:00am and stops at 10:45am. Your rule runs in Alert mode every 5 seconds. Here's how one episode covers the entire incident, from detection to resolution:
+A checkout-latency rule runs in Alert mode every 5 minutes. Latency breaches at 14:05 and clears at 14:50:
 
-1. **10:00am** - The rule detects errors. A new episode is created. With no activation threshold configured, it moves immediately from `pending` to `active`.
-2. **10:00am–10:45am** - The rule continues detecting errors on every run. The **same episode** stays `active`. No new episodes are created.
-3. **10:45am** - Errors stop. The episode moves to `recovering`. Without a recovery threshold, it transitions immediately to `inactive`.
+1. **14:00** — Routine check. p95 is within budget. The episode is `inactive`.
+2. **14:05** — p95 jumps to 3.1s. The first breach is detected. With no activation threshold, the episode opens immediately as `active`.
+3. **14:10–14:45** — Every evaluation finds high latency. The same episode stays `active`. No new episodes are created.
+4. **14:50** — p95 drops back under 2s. With no recovery threshold, the episode resolves immediately to `inactive`.
 
-One problem is tracked in one episode, even though the rule ran hundreds of times while the condition was ongoing.
+One problem is tracked in one episode, even though the rule evaluated many times while the condition was ongoing.
+
+:::{image} ../../images/alert-episode-example-without-threshold.png
+:alt: Timeline of a checkout-latency alert episode without thresholds. At 14:05, p95 jumps to 3.1s and the episode opens immediately as active. It stays active through 14:45. At 14:50, p95 drops back under 2s and the episode resolves immediately as inactive.
+:::
+
+### Example: Waiting for confirmation before opening and closing
+
+The same checkout-latency rule, now with an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears:
+
+1. **14:00** — Routine check. p95 is within budget. The episode is `inactive`.
+2. **14:05** — p95 jumps to 3.1s. The first breach is detected. The episode is created in `pending` and the system starts counting consecutive breaches.
+3. **14:10** — p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`, and the engineer is paged.
+4. **14:10–14:45** — Latency stays elevated. The episode remains `active`.
+5. **14:50** — p95 drops back under 2s. The first clean check moves the episode to `recovering`. The system starts counting consecutive clears.
+6. **14:55** — A second consecutive clear meets the recovery threshold. The episode moves from `recovering` to `inactive`.
+
+Thresholds prevent brief spikes from opening episodes and transient dips from closing them prematurely. The episode waits in `pending` until the problem is confirmed, and waits in `recovering` until the resolution is confirmed.
+
+:::{image} ../../images/alert-episode-example-with-activation-threshold.png
+:alt: Timeline of a checkout-latency alert episode with activation threshold of 2 and recovery threshold of 2. At 14:05, the first breach puts the episode in pending. At 14:10, the second consecutive breach moves it to active. At 14:50, the first clean check moves it to recovering. At 14:55, the second consecutive clear resolves it to inactive.
+:::
 
 ## Series
 
