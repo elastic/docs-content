@@ -109,7 +109,7 @@ Concatenate the two sample arrays and loop over the combined stream. Use `${{ ..
 
 ::::{step} Classify each item
 
-Call `ai.classify` with the categories you want to route on. Set `includeRationale: true` during development so you can see why the model picked a category; turn it off in production for lower token cost:
+Call `ai.classify` with the categories you want to route on. Set `includeRationale: true` during development so you can see why the model picked a category. Turn it off in production for lower token cost:
 
 ```yaml
       - name: identify_type

@@ -26,7 +26,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 - **Permissions.** `All` privileges for **Analytics > Workflows**, plus `All` on **Security > Cases** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Detection rule.** An enabled [detection rule](/solutions/security/detect-and-alert/create-detection-rule.md) that generates the kind of alert you want to triage. For this workflow, the rule should produce alerts with `file.hash.sha256`, `host.name`, and `elastic.agent.id` populated.
 - **Attach the workflow to the rule.** After you save the workflow, attach it to the detection rule so the rule invokes the workflow when it fires. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
-- **Connectors.** A configured VirusTotal connector for the hash lookup, and a Slack [connector](/deploy-manage/manage-connectors.md) for the notification. Note the connector IDs; you'll paste them into the workflow.
+- **Connectors.** A configured VirusTotal connector for the hash lookup, and a Slack [connector](/deploy-manage/manage-connectors.md) for the notification. Note the connector IDs. You'll paste them into the workflow.
 - **Host isolation capability.** The affected host must run {{elastic-defend}} for the isolation step to succeed.
 
 ## How it works [workflows-alert-triage-with-case-how-it-works]

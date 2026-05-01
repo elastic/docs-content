@@ -73,7 +73,7 @@ By default, if any step fails the entire workflow execution stops immediately (t
 
 | Layer | What it controls | Use for |
 |---|---|---|
-| **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures; continue past non-critical steps; provide a fallback. |
+| **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
 | **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
 | **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
@@ -208,10 +208,10 @@ For production-critical workflows, the final layer is a separate handler workflo
 
 | Problem | Use |
 |---|---|
-| "This API is flaky; it should retry automatically." | Per-step `on-failure: retry`. |
+| "This API is flaky and should retry automatically." | Per-step `on-failure: retry`. |
 | "Every step in this workflow should get 2 retries by default." | Workflow-level `settings.on-failure: retry`. |
-| "This step is nice-to-have; don't fail the workflow if it dies." | Per-step `on-failure: continue`. |
-| "Try the primary API; if it fails, use the backup API." | Per-step `on-failure: fallback`. |
+| "This step is nice-to-have, so don't fail the workflow if it dies." | Per-step `on-failure: continue`. |
+| "Try the primary API, and if it fails, use the backup API." | Per-step `on-failure: fallback`. |
 | "When a production workflow fails, page on-call and open a case." | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
 | "This workflow is critical and I want monitoring on its failure rate." | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
 

@@ -162,5 +162,5 @@ steps:
 - [Manage detection rules at scale](/explore-analyze/workflows/use-cases/security/manage-detection-rules.md): The outcome this workflow supports.
 - [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md): Reference for `kibana.request` and named Kibana actions.
 - [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md): Turn this into a recurring job.
-- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules execute.
+- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules run.
 - [`elastic/workflows` detection folder](https://github.com/elastic/workflows/tree/main/workflows/security/detection): More rule-operations examples.

@@ -83,7 +83,7 @@ A common convention: platform teams name shared workflows with a `shared--<verb>
 
 ## Test children in isolation [workflows-compose-test]
 
-Give every child a `manual` trigger so you can test it on its own. This is the single biggest operational win of composition: you can exercise a single piece of your automation without running the parent.
+Give every child a `manual` trigger so you can test it on its own. This is one of the main operational wins of composition: you can exercise a single piece of your automation without running the parent.
 
 1. Open the child workflow in the [YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md).
 2. Use the **Run** action and provide the inputs that a parent would normally pass.
@@ -118,13 +118,13 @@ The canonical fan-out pattern is a `foreach` over a list of work items, each one
           correlation_id: "{{ execution.id }}"
 ```
 
-The parent finishes quickly; the N child executions continue in the background. Pass `execution.id` (or a similar correlation token) as an input so you can link parent and child executions in your observability tooling.
+The parent finishes quickly. The N child executions continue in the background. Pass `execution.id` (or a similar correlation token) as an input so you can link parent and child executions in your observability tooling.
 
 ## Guard against recursion [workflows-compose-recursion]
 
 The execution engine enforces a maximum composition depth to prevent infinite recursion. A workflow cannot call itself directly, and a deep chain of parent-child-grandchild calls stops at the depth limit with a clear error.
 
-If you need to guard against your own recursion (for example, a handler that could retrigger itself), read `execution.compositionDepth` inside the child and short-circuit when it exceeds what your design expects:
+If you need to guard against your own recursion (for example, a handler that could trigger itself again), read `execution.compositionDepth` inside the child and short-circuit when it exceeds what your design expects:
 
 ```yaml
 - name: stop_if_nested
