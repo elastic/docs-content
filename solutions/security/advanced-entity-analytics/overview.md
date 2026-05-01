@@ -27,7 +27,7 @@ To access the page:
 ## Threat hunting leads [entity-threat-hunting-leads]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless: planned
 ```
 
 :::{admonition} Requirements
@@ -51,7 +51,7 @@ Interact with this section in the following ways:
 ## Entity risk levels [entity-risk-levels]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless: planned
 ```
 
 :::{admonition} Requirements
@@ -64,7 +64,7 @@ This panel shows the distribution of entity risk across your environment, groupe
 ## Recent anomalies [entity-recent-anomalies]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless: planned
 ```
 
 :::{admonition} Requirements
@@ -94,7 +94,7 @@ This section provides a centralized view of all hosts, users, and services in yo
 Interact with the table to filter and explore entity data:
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} { stack: ga 9.4+, serverless: planned }
 
 * Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their primary entity, while unresolved entities appear on their own.
 * Filter the table by watchlist membership to focus on specific entity groups.
