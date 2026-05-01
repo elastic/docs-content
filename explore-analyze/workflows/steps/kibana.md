@@ -131,7 +131,7 @@ The following `kibana.*` step types are deprecated in 9.4. They still resolve in
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
 
-See [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
+Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
 
 ## Related
 

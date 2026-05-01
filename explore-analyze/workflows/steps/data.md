@@ -35,7 +35,7 @@ Source arrays usually need the raw-value form `${{ ... }}` so they pass as an ar
 items: "${{ steps.search.output.hits.hits }}"
 ```
 
-See [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) for the `{{ }}` vs. `${{ }}` distinction.
+Refer to [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) for the `{{ }}` vs. `${{ }}` distinction.
 
 ## Step catalog
 
@@ -290,7 +290,7 @@ Serialize an object to a JSON string.
 The regex steps use the standard JavaScript engine, which is vulnerable to regular expression denial-of-service (ReDoS) with catastrophic backtracking patterns. To protect against this:
 
 - Input strings are limited to **100 KB**.
-- Patterns with unbounded quantifiers (for example, `.*` or `.+`) applied to overlapping character classes can hang the workflow. Prefer anchored patterns and specific character classes.
+- Patterns with unbounded quantifiers (for example, `.*` or `.+`) applied to overlapping character classes can hang the workflow. Use anchored patterns and specific character classes.
 - Test your patterns with representative input before running at scale.
 :::
 
