@@ -24,6 +24,9 @@ jobs:
     permissions:
       contents: read
       issues: write
+    concurrency:
+      group: docs-ai-menu-${{ github.event.issue.number || github.event.inputs.issue_number }}
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
@@ -37,8 +40,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
-            const markerStart = '<!-- docs-ai-menu:start -->';
-            const markerEnd = '<!-- docs-ai-menu:end -->';
             const workflowDispatchIssueNumber = context.payload.inputs?.issue_number;
             const issueNumber = context.eventName === 'workflow_dispatch'
               ? Number(workflowDispatchIssueNumber)
@@ -49,37 +50,7 @@ jobs:
               return;
             }
 
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              per_page: 100,
-            });
-
-            const existingComment = comments.find((comment) =>
-              comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(markerStart) &&
-              comment.body?.includes(markerEnd)
-            );
-
-            const existingState = menu.parseMenuState(existingComment?.body || '');
-            const body = menu.buildMenuBody(existingState);
-
-            if (existingComment) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existingComment.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body,
-              });
-            }
+            await menu.upsertMenuComment({ core, github, context, issueNumber });
 
   evaluate-trigger:
     name: Evaluate AI menu trigger
@@ -121,8 +92,61 @@ jobs:
             core.setOutput('triage_triggered', String(triageTriggered));
             core.setOutput('issue_scope_triggered', String(issueScopeTriggered));
 
+  refresh-menu-after-trigger:
+    name: Refresh AI menu after trigger
+    needs: [evaluate-trigger]
+    if: >-
+      needs.evaluate-trigger.outputs.triage_triggered == 'true' ||
+      needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: docs-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const issueNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const statusOverrides = {};
+
+            if ('${{ needs.evaluate-trigger.outputs.triage_triggered }}' === 'true') {
+              statusOverrides.triage = {
+                detailsUrl: progressUrl,
+                status: 'in_progress',
+              };
+            }
+
+            if ('${{ needs.evaluate-trigger.outputs.issue_scope_triggered }}' === 'true') {
+              statusOverrides.issueScope = {
+                detailsUrl: progressUrl,
+                status: 'in_progress',
+              };
+            }
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              issueNumber,
+              statusOverrides,
+            });
+
   run-docs-triage:
-    name: Run docs-triage
+    name: Docs AI / triage
     needs: [evaluate-trigger]
     if: needs.evaluate-trigger.outputs.triage_triggered == 'true'
     permissions:
@@ -154,7 +178,7 @@ jobs:
       COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
   run-docs-issue-scope:
-    name: Run docs-issue-scope
+    name: Docs AI / issue scope
     needs: [evaluate-trigger]
     if: needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
     permissions:
@@ -166,3 +190,97 @@ jobs:
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
     secrets:
       COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+  refresh-menu-after-docs-triage:
+    name: Refresh AI menu after docs triage
+    needs: [evaluate-trigger, refresh-menu-after-trigger, run-docs-triage]
+    if: always() && needs.evaluate-trigger.outputs.triage_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: docs-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const issueNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const triageResult = '${{ needs.run-docs-triage.result }}';
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              issueNumber,
+              statusOverrides: {
+                triage: {
+                  conclusion: triageResult === 'success'
+                    ? 'success'
+                    : triageResult === 'cancelled'
+                      ? 'cancelled'
+                      : 'failure',
+                  detailsUrl: progressUrl,
+                  status: 'completed',
+                },
+              },
+            });
+
+  refresh-menu-after-docs-issue-scope:
+    name: Refresh AI menu after docs issue scope
+    needs: [evaluate-trigger, refresh-menu-after-trigger, run-docs-issue-scope]
+    if: always() && needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: docs-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const issueNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const issueScopeResult = '${{ needs.run-docs-issue-scope.result }}';
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              issueNumber,
+              statusOverrides: {
+                issueScope: {
+                  conclusion: issueScopeResult === 'success'
+                    ? 'success'
+                    : issueScopeResult === 'cancelled'
+                      ? 'cancelled'
+                      : 'failure',
+                  detailsUrl: progressUrl,
+                  status: 'completed',
+                },
+              },
+            });

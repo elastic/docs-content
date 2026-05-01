@@ -1,7 +1,7 @@
 ---
 navigation_title: Wait for input
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the waitForInput step, which pauses a workflow until a human submits input through the resume API or Kibana UI.
 products:
@@ -17,7 +17,7 @@ products:
 
 The `waitForInput` step pauses workflow execution until a human submits input. It's the primary human-in-the-loop primitive: the building block for approval gates, escalation checkpoints, and review steps.
 
-For the end-to-end pattern including resume API details and design guidance, see [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
+For the end-to-end pattern including resume API details and design guidance, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 
 ## Parameters
 
@@ -37,10 +37,10 @@ After the reviewer submits input, the step's output is the submitted payload. Do
 ## Execution state
 
 - While waiting, the execution state is `WAITING_FOR_INPUT`.
-- There is no default timeout. To cap how long the workflow will wait, set a workflow-level [`settings.timeout`](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md).
+- There is no default timeout. To limit how long the workflow will wait, set a workflow-level [`settings.timeout`](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md).
 - If `settings.timeout` elapses before resume, the execution is cancelled.
 
-## Example: approval gate before a destructive action
+## Example: Approval gate before a destructive action
 
 ```yaml
 - name: review

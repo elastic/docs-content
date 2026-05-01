@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Learn about action steps that perform tasks in your workflows.
 products:
@@ -52,7 +52,7 @@ Refer to [](/explore-analyze/workflows/steps/cases.md) for the complete 27-step 
 ## Streams
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 

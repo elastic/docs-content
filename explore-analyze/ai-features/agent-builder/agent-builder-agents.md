@@ -14,7 +14,7 @@ products:
 
 # {{agent-builder}} agents overview
 
-Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
+Agents are AI models (LLMs) defined with custom instructions and a set of assigned [tools](tools.md). {applies_to}`stack: ga 9.4+` Agents can also be equipped with [skills](skills.md), which are reusable instruction sets that provide specialized expertise. Users [chat](chat.md) with agents using natural language, in the Agent Builder UI or programmatically.
 
 An agent parses user requests to define a goal and then runs tools in a loop to achieve that goal. The agent provides responses based on its configured tools, instructions, and behavior settings.
 
@@ -32,15 +32,21 @@ You can also use pre-configured [built-in agents](builtin-agents-reference.md) t
 
 ## Built-in agents
 
-{{agent-builder}} includes pre-configured built-in agents optimized for common use cases.
+{{agent-builder}} includes a pre-configured built-in agent optimized for common use cases, which you can also customize using custom instructions, tools, and skills.
 
 - **[Elastic AI Agent](builtin-agents-reference.md#elastic-ai-agent)**: The default general-purpose agent
-- **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
-- **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
 
+:::{dropdown} Previous versions
+- {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Observability Agent](builtin-agents-reference.md#observability-agent)**: Specialized for logs, metrics, and traces
+- {applies_to}`stack: preview =9.2, ga =9.3, removed 9.4+` **[Threat Hunting Agent](builtin-agents-reference.md#threat-hunting-agent)**: Specialized for security alert analysis
+:::
+
+:::{note}
+:applies_to: stack: ga 9.2-9.3
 Built-in agents cannot be modified or deleted. To customize one, you can clone it and create a custom agent.
 
 Built-in agents are space-agnostic and are available in all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
+:::
 
 For the complete list of built-in agents and their assigned tools, refer to [Built-in agents reference](builtin-agents-reference.md).
 
@@ -50,6 +56,7 @@ Create custom agents tailored to your specific needs by defining custom instruct
 
 - Agent behavior and personality through custom instructions
 - Available tools and capabilities
+- {applies_to}`stack: ga 9.4+` Assigned skills for specialized expertise
 - Visual appearance and organization
 
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created.
@@ -72,11 +79,13 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 120px
       :::
     - **Custom agents**: You can **chat**, **edit**, **clone**, or **delete** custom agents.
+
       :::{image} images/chat-edit-clone-delete.png
       :screenshot:
       :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
       :width: 130px
       :::
+
 
 ## Agents API
 
@@ -88,7 +97,7 @@ For an overview, refer to [Agents API](kibana-api.md#agents-apis).
 
 ### API reference
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 
@@ -96,3 +105,4 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+- [Skills in {{agent-builder}}](skills.md)

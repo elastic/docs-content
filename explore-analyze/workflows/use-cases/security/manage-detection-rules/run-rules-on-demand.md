@@ -1,7 +1,7 @@
 ---
 navigation_title: Run rules on demand
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that manually re-runs a set of detection rules over a configurable time range, useful for gap-filling, post-incident review, or scheduled rule-health checks.
 products:
@@ -34,8 +34,6 @@ The workflow runs on demand with a list of rule IDs:
 1. **Manual trigger** with a `rule_ids` array input.
 2. **`foreach` step** iterates the rule IDs.
 3. For each rule, a **`kibana.request` step** calls the detection engine's `POST /api/detection_engine/rules/_bulk_action` endpoint with the `run` action and a configurable time range.
-
-All referenced step types are in the 9.4 GA surface: [manual triggers](/explore-analyze/workflows/triggers/manual-triggers.md), [`foreach`](/explore-analyze/workflows/steps/foreach.md), and [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request).
 
 ## Build the workflow [workflows-run-rules-build]
 
@@ -162,5 +160,5 @@ steps:
 - [Manage detection rules at scale](/explore-analyze/workflows/use-cases/security/manage-detection-rules.md): The outcome this workflow supports.
 - [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md): Reference for `kibana.request` and named Kibana actions.
 - [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md): Turn this into a recurring job.
-- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules execute.
+- [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules run.
 - [`elastic/workflows` detection folder](https://github.com/elastic/workflows/tree/main/workflows/security/detection): More rule-operations examples.

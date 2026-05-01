@@ -1,7 +1,7 @@
 ---
 navigation_title: Human-in-the-loop
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Pause a workflow to wait for human input, then resume with the reviewer's decision using the waitForInput step.
 products:
@@ -109,7 +109,7 @@ Execution pauses at `review`. Until a reviewer responds, the execution state is 
 
 ## Resume a paused workflow
 
-Two ways to resume a `waitForInput` step.
+Resume a paused workflow using the following methods.
 
 ### From the Kibana UI
 
@@ -143,7 +143,7 @@ A HITL message is read by a human mid-incident. Design for speed:
 ## What happens while the workflow is paused
 
 - The execution is in the `WAITING_FOR_INPUT` state. It appears in the execution history with a resume action.
-- There's no default timeout on `waitForInput`. The workflow waits indefinitely. To cap the wait, set a workflow-level `settings.timeout`.
+- There's no default timeout on `waitForInput`. The workflow waits indefinitely. To limit the wait, set a workflow-level `settings.timeout`.
 - If the workflow-level `settings.timeout` elapses before the reviewer responds, the execution is cancelled.
 
 ## Related

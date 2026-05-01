@@ -1,7 +1,7 @@
 ---
 navigation_title: Enrich with threat intel
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a small enrichment workflow that calls a threat intelligence API from an alert or on demand, and displays the reputation result for analysts or follow-up steps.
 products:
@@ -15,7 +15,7 @@ products:
 
 # Enrich an alert with threat intelligence [workflows-enrich-alert-with-threat-intel]
 
-This guide walks through building a focused enrichment workflow. The workflow calls a threat intelligence API (VirusTotal) with a hash or indicator, optionally runs additional enrichment providers, and formats the result. It's the smallest end-to-end pattern in this section: two or three steps, useful on its own, and a building block you can drop into larger automations like [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md).
+This guide walks through building a focused enrichment workflow. The workflow calls a threat intelligence API (VirusTotal) with a hash or indicator, optionally runs additional enrichment providers, and formats the result. It's a small, useful pattern on its own, and a building block you can drop into larger automations like [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md).
 
 The workflow is adapted from [`send-hash-to-virustotal.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/enrichment/send-hash-to-virustotal.yaml) and [`ip-reputation-check.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/enrichment/ip-reputation-check.yaml) in the `elastic/workflows` library.
 
@@ -32,11 +32,9 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 The workflow runs on demand, takes the indicator you want to enrich as an `input`, calls one or more threat intel APIs, and logs the combined result:
 
 1. **Manual trigger** with a `hash` or `ip_address` input.
-2. **HTTP step** calls the primary threat intel API (VirusTotal for hashes, AbuseIPDB for IPs). Retry transient errors and continue on failure so a single outage doesn't kill the workflow.
-3. Optional **HTTP step** adds geolocation or secondary scoring.
-4. **Console step** formats a human-readable summary with a risk assessment.
-
-All referenced step types are in the 9.4 GA surface: [manual triggers](/explore-analyze/workflows/triggers/manual-triggers.md), [HTTP](/explore-analyze/workflows/steps/external-systems-apps.md#http), and [console](/explore-analyze/workflows/steps/external-systems-apps.md).
+2. **`http` step** calls the primary threat intel API (VirusTotal for hashes, AbuseIPDB for IPs). Retry transient errors and continue on failure so a single outage doesn't kill the workflow.
+3. Optional **`http` step** adds geolocation or secondary scoring.
+4. **`console` step** formats a human-readable summary with a risk assessment.
 
 ## Build the workflow [workflows-enrich-alert-build]
 
@@ -195,6 +193,6 @@ steps:
 ## Related pages [workflows-enrich-alert-related]
 
 - [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md): Pair enrichment with case creation for full triage.
-- [HTTP step](/explore-analyze/workflows/steps/external-systems-apps.md#http): Full `http` step reference.
+- [HTTP step](/explore-analyze/workflows/steps/external-systems-apps.md#http-actions): Full `http` step reference.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Retry, fallback, and continue strategies in more depth.
 - [`elastic/workflows` enrichment folder](https://github.com/elastic/workflows/tree/main/workflows/security/enrichment): More enrichment examples.

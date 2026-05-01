@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Learn about workflow steps, the building blocks that define how workflows operate and produce outcomes.
 products:
@@ -77,7 +77,7 @@ Refer to [](/explore-analyze/workflows/steps/data.md) for the complete data-step
 Composition steps let one workflow call another. A parent workflow can invoke a child synchronously (and use its output) or asynchronously (fire and forget). Use composition for reusable building blocks and fan-out patterns.
 
 ```{applies_to}
-stack: preview 9.4
+stack: preview 9.4+
 serverless: preview
 ```
 

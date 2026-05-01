@@ -1,7 +1,7 @@
 ---
 navigation_title: Manage and organize workflows
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Find, edit, duplicate, enable, disable, and run workflows from the Workflows page in Kibana.
 products:

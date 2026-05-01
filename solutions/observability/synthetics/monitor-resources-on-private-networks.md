@@ -164,6 +164,41 @@ If you upgraded from a version that allowed cross-space agent policy selection, 
 It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 ::::
 
+## Monitor integration health [synthetics-private-location-health]
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+
+Synthetics automatically detects when private location monitors have broken {{fleet}} integrations and surfaces health status in the UI with actionable recovery options. This can happen if an agent policy or {{fleet}} package policy is deleted after a monitor is configured, or if the referenced private location no longer exists.
+
+### Failure types [synthetics-private-location-health-failure-types]
+
+Each monitor is evaluated per location. The following failure types can occur, listed in priority order — only the first matching issue per location is reported, since it is the root cause:
+
+| Status | Cause | Recovery |
+|--------|-------|----------|
+| `missing_location` | The monitor references a private location that no longer exists. | Manual |
+| `missing_agent_policy` | The agent policy associated with the private location was deleted. | Manual |
+| `missing_package_policy` | The {{fleet}} package policy for this monitor/location pair is missing. | Automatic (Reset) |
+
+### Health status in the UI [synthetics-private-location-health-ui]
+
+Health status surfaces in three places:
+
+- **Monitor list**: An orange warning icon appears next to unhealthy monitors. Hover over the icon to see per-location details on why the monitor is affected.
+- **Monitor details page**: A warning callout lists the affected locations. A **Reset monitor** button is shown when the failure type is `missing_package_policy`, which recreates the missing Fleet resources.
+- **Private Locations settings**: Each location shows a badge with the count of unhealthy monitors. Clicking the badge opens a popover listing the affected monitors and a **Reset monitors** button that bulk-resets all recoverable monitors at that location.
+
+### Reset behavior [synthetics-private-location-health-reset]
+
+Only monitors with a `missing_package_policy` status can be auto-reset. The **Reset** action recreates the missing Fleet package policy, restoring the monitor to a healthy state.
+
+Monitors with `missing_agent_policy` or `missing_location` statuses are excluded from auto-reset because the underlying infrastructure must be restored before Fleet resources can be recreated. When you initiate a reset, the confirmation dialog lists which monitors will be reset and which will be skipped and why.
+
+To resolve failures that require manual intervention:
+
+- **`missing_agent_policy`**: Recreate the agent policy and re-enroll an {{agent}}, then update the affected private location under **Settings > {{private-location}}s** to reference the new agent policy.
+- **`missing_location`**: [Re-create the private location](#synthetics-private-location-add) or edit the affected monitors to remove or replace the deleted location.
+
 ## Scaling {{private-location}}s [synthetics-private-location-scaling]
 
 By default {{private-location}}s are configured to allow two simultaneous browser tests, and an unlimited number of lightweight checks. These limits can be set via the environment variables `SYNTHETICS_LIMIT_{{TYPE}}`, where `{{TYPE}}` is one of `BROWSER`, `HTTP`, `TCP`, and `ICMP` for the container running the {{agent}} docker image.
@@ -173,7 +208,7 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 It is critical to allocate enough memory and CPU capacity to handle configured limits. Resource requirements will vary depending on simultaneous workload and monitor complexity:
 
 **For browser monitors**: Start by allocating at least 2 GiB of memory and two cores _per browser instance_ to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed.
-**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run a large number of lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
+**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run many lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
 
 Example: For a private location expected to run 2 concurrent browser monitors and 100 HTTP checks, the recommended allocation is 2 * (2 GiB + 2 vCPU) + (512 MiB + 2 vCPU) => 4,5 GiB + 6 vCPU.
 
@@ -181,7 +216,7 @@ Example: For a private location expected to run 2 concurrent browser monitors an
 
 - A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
 
-- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached. In these edge cases, increasing the `server.limits.checkin_limit.max_body_byte_size` setting on Fleet Server to 8 MB or 16 MB (or setting it to -1 to turn off the limit entirely) might help prevent communication errors.
+- Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
 
 If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
 

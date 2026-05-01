@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Understand alert triggers and how to create and configure them.
 products:
@@ -17,25 +17,6 @@ products:
 Alert triggers run workflows automatically when detection or alerting rules generate an alert. Use alert triggers for alert enrichment, automated incident response, case creation, or notification routing.
 
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
-
-:::{warning}
-Declaring `type: alert` on a workflow isn't enough to run the workflow when alerts fire. You also have to attach the workflow to the rule's **Actions** using a **Run Workflow** action. Without the attachment, the rule fires alerts but the workflow is never invoked. This is the single most common setup mistake.
-:::
-
-## Schema [workflows-alert-trigger-schema]
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `type` | string | Yes | Must be `alert`. |
-
-That's the entire trigger schema. There's no `with` block on an alert trigger: rule targeting happens in the alerting rule's **Actions** configuration, not in the workflow.
-
-```yaml
-triggers:
-  - type: alert
-```
-
-## Setup [workflows-alert-trigger-setup]
 
 To set up an alert trigger, follow these steps:
 
@@ -100,45 +81,4 @@ After creating your workflow, configure your alert rule to trigger it.
 :::::
 
 When the configured rule generates an alert, your workflow automatically executes with the alert context.
-
-## Alert event payload [workflows-alert-trigger-event]
-
-When an attached rule fires, the workflow runs with the alert payload on the `event` context variable:
-
-| `event.*` field | Contains |
-|---|---|
-| `event.alerts` | Array of alert documents produced by the rule. |
-| `event.rule` | Metadata about the rule that fired, including `id`, `name`, `tags`, and `type`. |
-| `event.spaceId` | The {{kib}} space the rule belongs to. |
-| `event.params.*` | Any params configured on the rule's **Run Workflow** action. |
-
-Reference these fields with Liquid templating in workflow steps:
-
-```yaml
-- name: log
-  type: console
-  with:
-    message: |
-      Got {{ event.alerts | size }} alerts from rule "{{ event.rule.name }}".
-      First host: {{ event.alerts[0].host.name }}
-```
-
-The shape of an individual alert document inside `event.alerts` depends on the rule type (detection rule, alerting rule, or ES|QL rule) and the source data the rule runs against. Common fields include `_id`, `_index`, `host.name`, `user.name`, `kibana.alert.severity`, `kibana.alert.risk_score`, and `kibana.alert.start`.
-
-% Ben Ironside Goldstein, 2026-04-16: Alert event payload fields depend on rule type (detection vs
-% alerting vs ES|QL) and source data. The generic examples here are conservative, but an SME pass
-% on which fields are guaranteed present in 9.4 GA across rule types would strengthen this page.
-% Flagged in PR summary.
-
-## Alert states [workflows-alert-trigger-states]
-
-When you attach a workflow to an alerting rule, you can choose which alert states trigger it:
-
-| State | Meaning | Default |
-|---|---|---|
-| `new` | First time this alert has fired. | On |
-| `ongoing` | Alert is continuing from a previous check. | Off |
-| `recovered` | Alert has cleared and returned to normal. | Off |
-
-Security detection rules produce only `new` alerts, so the state checkboxes are hidden for them. Observability rules that track ongoing conditions benefit from separate workflows per state. For example, a first-response workflow on `new` and a recovery-notification workflow on `recovered`.
 

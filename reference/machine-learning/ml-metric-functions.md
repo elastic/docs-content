@@ -37,7 +37,7 @@ This function supports the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {
@@ -63,7 +63,7 @@ This function supports the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {
@@ -106,7 +106,7 @@ These functions support the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {
@@ -134,7 +134,7 @@ These functions support the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {
@@ -180,7 +180,7 @@ This function supports the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {
@@ -208,7 +208,7 @@ These functions support the following properties:
 * `over_field_name` (optional)
 * `partition_field_name` (optional)
 
-For more information about those properties, see the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+For more information about those properties, see the [create {{anomaly-jobs}} API]({{es-apis}}operation/operation-ml-put-job).
 
 ```js
 {

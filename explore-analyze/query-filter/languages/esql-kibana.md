@@ -36,7 +36,7 @@ Find the complete list of supported commands, functions, and operators in the [{
 
 Every {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands) that retrieves data:
 
-- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) retrieves data from data streams, indices, or aliases.
+- [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) allows you to define the data sources to query by specifying data streams, [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md), indices, or aliases.
 - [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) is optimized for querying time series data streams.
 - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) queries time series data through the {{esql}} editor using [Prometheus Query Language (PromQL)](https://prometheus.io/docs/prometheus/latest/querying/basics/) syntax.
 
@@ -65,14 +65,13 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 ![The ES|QL syntax reference and the autocomplete menu](/explore-analyze/images/kibana-esql-in-app-help.png "")
 
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the editor includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/try-esql.md#discover-esql-resource-browsers) for details.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
 
-:::{image} /explore-analyze/images/esql-line-breakdown.gif
-:alt: Automatic line breaks and indentation for ES|QL queries
-:width: 75%
-:::
+![Automatic line breaks and indentation for ES|QL queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltb7c28c7b10f58b68/69ebb4e4a7cffb580c9a34c5/prettify-esql.gif "=75%")
 
 #### Warnings [_warnings]
 
@@ -117,7 +116,7 @@ You can use the **Quick search** functionality of the {{esql}} editor to transla
 
 5. Refine your query with any other {{esql}} command or function that you need.
 
-![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc8165d27051bdac3/6997303fcf7e250008e681d8/esql-quick-search.gif "=60%")
+![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
 
 ### Commands with additional editor support
@@ -229,7 +228,7 @@ serverless: preview
 
 The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
-![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2d3183eafde13ca0/699889744357070008f66a99/query_history_starred.gif "=60%")
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2446c9af9847b87e/69ebb870086ade348a1acc35/esql-recent-starred.gif "=60%")
 
 ### Query history [esql-kibana-query-history]
 
@@ -256,7 +255,62 @@ From the **Recent** tab, you can star any queries you want.
 In the **Starred** tab, find all the queries you have previously starred.
 
 
-## Search across projects with `SET project_routing` [esql-kibana-cps]
+## Define query settings with `SET` [esql-kibana-set]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure how {{es}} runs your {{esql}} query. Place one or more `SET` statements at the start of your query, separated by semicolons:
+
+```esql
+SET setting_name = setting_value[, ..., settingN = valueN];
+<query>
+```
+
+The {{esql}} editor autocompletes supported settings and validates their values. Settings particularly useful from {{kib}} include:
+
+- [`approximation`](#esql-kibana-approximation): Trade exact results for speed on large `STATS` queries using random sampling.
+- [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
+- [`unmapped_fields`](#esql-kibana-unmapped-fields): Choose how to handle fields that are not present in the index mapping.
+
+The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
+
+For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
+
+
+### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When exact results are not strictly necessary, you can enable [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. {{es}} rewrites the query to use random sampling and returns estimates together with confidence intervals. The performance benefit grows with the size of the source data.
+
+To approximate a `STATS` query with default settings, prepend `SET approximation=true;` to your query:
+
+```esql
+SET approximation=true;
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= NOW()-30d
+| STATS total_hits = COUNT(),
+        avg_bytes = AVG(bytes)
+  BY geo.dest
+| SORT total_hits DESC
+| LIMIT 5
+```
+
+To tune the sample size or disable confidence intervals, pass a map. For example:
+
+- `SET approximation={"rows":5000000};` increases the sample size from the default.
+- `SET approximation={"confidence_level":null};` skips confidence interval computation for additional speedup.
+
+The editor autocompletes these map parameters as you type.
+
+For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
+
+### Search across projects with `SET project_routing` [esql-kibana-cps]
 ```{applies_to}
 serverless: preview
 stack: unavailable
@@ -273,10 +327,31 @@ FROM logs-*
 
 The editor autocompletes two built-in values when you type `SET project_routing`:
 
-- `_alias:_origin` — Search only the current (origin) project.
-- `_alias:*` — Search all linked projects.
+- `_alias:_origin`: Search only the current (origin) project.
+- `_alias:*`: Search all linked projects.
 
 You can use any valid [project routing expression](/explore-analyze/cross-project-search/cross-project-search-project-routing.md), including tag-based and named expressions. For more details on query-level overrides, refer to [Managing {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-query-overrides).
+
+
+### Handle unmapped fields with `SET unmapped_fields` [esql-kibana-unmapped-fields]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/commands/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
+
+```esql
+SET unmapped_fields="NULLIFY";
+FROM partial_mapping_sample_data
+| KEEP event_duration, unmapped_message
+| SORT event_duration
+| LIMIT 1
+```
+
+The {{esql}} editor autocompletes the setting name and its accepted values. Once `NULLIFY` or `LOAD` is set, unmapped fields referenced in the query are added to autocomplete and treated like other columns. They stop being suggested if you drop or rename them.
+
+The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
 
 
 ## Related pages
@@ -286,3 +361,4 @@ You can use any valid [project routing expression](/explore-analyze/cross-projec
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Dashboard controls](/explore-analyze/dashboards/add-controls.md): Add {{esql}}-powered controls to dashboards.
+- {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` [Custom Vega visualizations](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries): Use {{esql}} queries as a data source in Vega and Vega-Lite visualizations.

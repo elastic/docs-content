@@ -1,7 +1,7 @@
 ---
 navigation_title: While
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the while step, which loops while a KQL condition evaluates to true.
 products:
@@ -27,21 +27,21 @@ Use `while` for polling patterns: checking a status until it reaches `ready`, re
 | `type` | top level | string | Yes | Must be `while`. |
 | `condition` | top level | string | Yes | KQL expression evaluated each iteration. The loop continues while it is true. |
 | `steps` | top level | array | Yes | Loop body. |
-| `max-iterations` | top level | number or object | No | Cap on iterations. Bare number is treated as `{ limit: N, on-limit: continue }`. Use the object form to opt into `on-limit: fail`. |
+| `max-iterations` | top level | number or object | No | Limit for number of iterations. Bare number is treated as `{ limit: N, on-limit: continue }`. Use the object form to opt into `on-limit: fail`. |
 | `iteration-timeout` | top level | duration | No | Per-iteration timeout. |
 | `iteration-on-failure` | top level | object | No | Per-iteration error-handling policy. Same shape as `on-failure`. |
 
 :::{warning}
-`while` has no default `max-iterations`. Without an explicit cap, a `while` loop runs as long as its condition holds. Always set `max-iterations` on loops that depend on external state to avoid runaway executions.
+`while` has no default `max-iterations`. Without an explicit limit, a `while` loop runs as long as its condition holds. Always set `max-iterations` on loops that depend on external state to avoid runaway executions.
 :::
 
 ### `max-iterations` shape
 
 ```yaml
-# Bare number: default `on-limit` is `continue` (the step succeeds when the cap is hit)
+# Bare number: default `on-limit` is `continue` (the step succeeds when the limit is reached)
 max-iterations: 60
 
-# Object form: opt into `on-limit: fail` to fail the workflow when the cap is reached
+# Object form: opt into `on-limit: fail` to fail the workflow when the limit is reached
 max-iterations:
   limit: 60
   on-limit: fail
@@ -55,7 +55,7 @@ Inside the `steps` block of a `while`, the following variables are available:
 |---|---|
 | `while.iteration` | Zero-based iteration counter. |
 
-## Example: poll until a job finishes
+## Example: Poll until a job finishes
 
 ```yaml
 - name: poll_job

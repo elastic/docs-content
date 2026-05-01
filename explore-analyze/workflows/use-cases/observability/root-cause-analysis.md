@@ -1,7 +1,7 @@
 ---
 navigation_title: Root cause analysis
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build an observability workflow that runs an Agent Builder agent on an alert, then opens a case populated with the agent's root-cause analysis and supporting investigation steps.
 products:
@@ -17,7 +17,7 @@ products:
 
 This guide walks through building an observability workflow that responds to an alert by running an {{agent-builder}} agent for root-cause analysis, generating a case title and description from the agent's output, opening the case, and attaching both the alert and the agent's reasoning trace as comments.
 
-The workflow is adapted from [`root-cause-analysis-rca-workflow.yaml`](https://github.com/elastic/workflows/blob/main/workflows/examples/root-cause-analysis-rca-workflow.yaml) in the `elastic/workflows` library, modernized to use the 9.4 `ai.agent` and `cases.*` step types.
+The workflow is adapted from [`root-cause-analysis-rca-workflow.yaml`](https://github.com/elastic/workflows/blob/main/workflows/examples/root-cause-analysis-rca-workflow.yaml) in the `elastic/workflows` library.
 
 If you're new to workflows, complete [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md) first.
 
@@ -25,7 +25,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 - **Permissions.** `All` on **Analytics > Workflows**, **Observability > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Alerting rule.** A configured [observability alerting rule](/solutions/observability/incident-management/alerting.md) that fires on the conditions you want to auto-investigate (metric thresholds, SLO burn rate, anomaly detection, or custom query).
-- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The source workflow uses an agent named `sre-agent`; substitute your agent ID.
+- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The source workflow uses an agent named `sre-agent`. Substitute your agent ID.
 - **Attach the workflow to the rule.** After saving the workflow, attach it as an action on the alerting rule. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 ## How it works [workflows-rca-how-it-works]
@@ -39,8 +39,6 @@ The workflow runs in a single pass when an alert fires:
 5. **`cases.addAlerts`** attaches the triggering alert.
 6. A **`kibana.request` step** fetches the agent's conversation transcript.
 7. **`cases.addComment` steps** append the agent's reasoning trace and the raw analysis as comments for auditability.
-
-All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent), [cases steps](/explore-analyze/workflows/steps/cases.md), and [`kibana.request`](/explore-analyze/workflows/steps/kibana.md#kibana-request).
 
 ## Build the workflow [workflows-rca-build]
 

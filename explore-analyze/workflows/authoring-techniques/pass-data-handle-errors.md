@@ -1,7 +1,7 @@
 ---
 navigation_title: Pass data and handle errors
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Pass data between workflow steps with templating, reference inputs and constants, and handle step failures with retries, fallbacks, continue, and a cross-workflow error handler.
 products:
@@ -73,7 +73,7 @@ By default, if any step fails the entire workflow execution stops immediately (t
 
 | Layer | What it controls | Use for |
 |---|---|---|
-| **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures; continue past non-critical steps; provide a fallback. |
+| **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
 | **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
 | **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
@@ -134,7 +134,7 @@ The workflow fails when all retries are exhausted, unless paired with `fallback`
 
 ### Fallback [workflows-on-failure-fallback]
 
-Executes alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow executes two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
 
 ```yaml
 on-failure:
@@ -171,7 +171,7 @@ You can combine multiple failure-handling options. They are processed in this or
 
 In the following example:
 1. The step retries up to 2 times with a 1-second delay.
-2. If all retries fail, the fallback steps execute.
+2. If all retries fail, the fallback steps run.
 3. The workflow continues regardless of the outcome.
 
 ```yaml
@@ -197,7 +197,7 @@ In the following example:
 ### Restrictions [workflows-on-failure-restrictions]
 
 - Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
-- Fallback steps execute only after all retries have been exhausted.
+- Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
 
 ### Handle failures across workflows [workflows-cross-workflow-handler]
@@ -208,12 +208,12 @@ For production-critical workflows, the final layer is a separate handler workflo
 
 | Problem | Use |
 |---|---|
-| This API is flaky and should retry automatically. | Per-step `on-failure: retry`. |
-| Every step in this workflow should get 2 retries by default. | Workflow-level `settings.on-failure: retry`. |
-| This step is nice-to-have and shouldn't fail the workflow. | Per-step `on-failure: continue`. |
-| Try the primary API; if it fails, use the backup API. | Per-step `on-failure: fallback`. |
-| When a production workflow fails, page on-call and open a case. | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
-| A workflow is critical and you want monitoring on its failure rate. | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
+| "This API is flaky and should retry automatically." | Per-step `on-failure: retry`. |
+| "Every step in this workflow should get 2 retries by default." | Workflow-level `settings.on-failure: retry`. |
+| "This step is nice-to-have, so don't fail the workflow if it dies." | Per-step `on-failure: continue`. |
+| "Try the primary API, and if it fails, use the backup API." | Per-step `on-failure: fallback`. |
+| "When a production workflow fails, page on-call and open a case." | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
+| "This workflow is critical and I want monitoring on its failure rate." | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
 
 ## Dynamic values with templating [workflows-dynamic-values]
 

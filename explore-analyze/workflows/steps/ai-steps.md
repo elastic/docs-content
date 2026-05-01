@@ -1,7 +1,7 @@
 ---
 navigation_title: AI
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Reference for the four AI step types (prompt, classify, summarize, and agent) that bring LLM calls into workflows.
 products:
@@ -19,16 +19,20 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 
 ## Step types
 
-- [`ai.prompt`](#ai-prompt): Send a prompt to a model and receive a response. Supports structured output with a JSON Schema.
-- [`ai.classify`](#ai-classify): Classify input into a fixed set of categories.
-- [`ai.summarize`](#ai-summarize): Generate a summary of the provided content.
-- [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step.
+- [`ai.prompt`](#ai-prompt): Send a prompt to a model and receive a response. Supports structured output with a JSON Schema. {applies_to}`stack: preview 9.3, ga 9.4+`
+- [`ai.classify`](#ai-classify): Classify input into a fixed set of categories. {applies_to}`stack: ga 9.4+`
+- [`ai.summarize`](#ai-summarize): Generate a summary of the provided content. {applies_to}`stack: ga 9.4+`
+- [`ai.agent`](#ai-agent): Invoke an {{agent-builder}} agent as a workflow step. {applies_to}`stack: preview 9.3, ga 9.4+`
 
 :::{important}
 `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`), written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). Authentication-style references stay at the top level in kebab-case; content parameters stay inside `with` in camelCase.
 :::
 
 ## `ai.prompt` [ai-prompt]
+
+```{applies_to}
+stack: preview 9.3, ga 9.4+
+```
 
 Call an LLM with a prompt. Supports optional structured output through a JSON Schema.
 
@@ -55,7 +59,7 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
       {{ event.alerts[0] | json }}
 ```
 
-### Example: structured output
+### Example: Structured output
 
 ```yaml
 - name: extract_details
@@ -80,6 +84,10 @@ Call an LLM with a prompt. Supports optional structured output through a JSON Sc
 The structured result is available at `steps.extract_details.output.content.severity`, and so on.
 
 ## `ai.classify` [ai-classify]
+
+```{applies_to}
+stack: ga 9.4+
+```
 
 Classify input into one of a fixed set of categories. Optionally includes a rationale and supports multi-label classification.
 
@@ -120,6 +128,10 @@ Always set `fallbackCategory` in production. Without a fallback, a confused mode
 
 ## `ai.summarize` [ai-summarize]
 
+```{applies_to}
+stack: ga 9.4+
+```
+
 Summarize content with an LLM. Input can be a string, an array, or an object.
 
 | Parameter | Location | Type | Required | Description |
@@ -143,6 +155,10 @@ Summarize content with an LLM. Input can be a string, an array, or an object.
 ```
 
 ## `ai.agent` [ai-agent]
+
+```{applies_to}
+stack: preview 9.3, ga 9.4+
+```
 
 Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a multi-turn agent loop embedded inside a workflow. The agent handles tool selection, reasoning, and response synthesis. The workflow handles pre- and post-processing.
 
@@ -169,7 +185,7 @@ Invoke an {{agent-builder}} agent as a workflow step. Useful when you want a mul
 Use `connector-id` **or** `inference-id`, not both. The schema rejects a step that sets both.
 :::
 
-### Example: call an agent
+### Example: Call an agent
 
 ```yaml
 - name: investigate
@@ -191,7 +207,7 @@ Use `connector-id` **or** `inference-id`, not both. The schema rejects a step th
           type: "string"
 ```
 
-### Example: continue a conversation
+### Example: Continue a conversation
 
 ```yaml
 - name: followup

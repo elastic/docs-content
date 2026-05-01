@@ -1,7 +1,7 @@
 ---
 navigation_title: Streams
 applies_to:
-  stack: preview 9.4
+  stack: preview 9.4+
   serverless: preview
 description: Reference for the three Streams action steps that operate on Observability Streams from a workflow.
 products:
@@ -31,11 +31,7 @@ Streams action steps, along with the Streams feature itself, are in technical pr
 
 ## `kibana.streams.list` [kibana-streams-list]
 
-List every available stream in the current {{kib}} space.
-
-| Parameter | Location | Type | Required | Description |
-|---|---|---|---|---|
-| (none) | — | — | — | This step takes no parameters. |
+List every available stream in the current {{kib}} space. This step takes no parameters.
 
 ```yaml
 - name: list_streams

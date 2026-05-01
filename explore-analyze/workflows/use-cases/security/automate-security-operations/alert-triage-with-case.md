@@ -1,7 +1,7 @@
 ---
 navigation_title: Triage alerts into cases
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that triages a detection alert by enriching it, opening a case with the alert and observables attached, isolating the host, and notifying the on-call analyst.
 products:
@@ -17,16 +17,16 @@ products:
 
 This guide walks through building a workflow that turns a raw security alert into a triaged case. The workflow fires when a detection rule matches, enriches the alert with threat intel, opens a case with the alert and its indicators attached, isolates the affected host, and notifies the on-call analyst in Slack.
 
-The workflow is adapted from [`traditional-triage.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/response/traditional-triage.yaml) in the `elastic/workflows` library, modernized to the 9.4 `cases.*` step namespace.
+The workflow is adapted from [`traditional-triage.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/response/traditional-triage.yaml) in the `elastic/workflows` library.
 
 If you're new to workflows, complete [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md) first for a walkthrough of the YAML editor and how to run a workflow.
 
 ## Before you begin [workflows-alert-triage-with-case-prereqs]
 
 - **Permissions.** `All` privileges for **Analytics > Workflows**, plus `All` on **Security > Cases** in the target space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- **Detection rule.** An enabled [detection rule](/solutions/security/detect-and-alert/create-detection-rule.md) that generates the kind of alert you want to triage. For this workflow, the rule should produce alerts with `file.hash.sha256`, `host.name`, and `elastic.agent.id` populated.
+- **Detection rule.** An enabled [detection rule](/solutions/security/detect-and-alert/using-the-rule-ui.md) that generates the kind of alert you want to triage. For this workflow, the rule should produce alerts with `file.hash.sha256`, `host.name`, and `elastic.agent.id` populated.
 - **Attach the workflow to the rule.** After you save the workflow, attach it to the detection rule so the rule invokes the workflow when it fires. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
-- **Connectors.** A configured VirusTotal connector for the hash lookup, and a Slack [connector](/deploy-manage/manage-connectors.md) for the notification. Note the connector IDs; you'll paste them into the workflow.
+- **Connectors.** A configured VirusTotal connector for the hash lookup, and a Slack [connector](/deploy-manage/manage-connectors.md) for the notification. Note the connector IDs. You'll paste them into the workflow.
 - **Host isolation capability.** The affected host must run {{elastic-defend}} for the isolation step to succeed.
 
 ## How it works [workflows-alert-triage-with-case-how-it-works]
@@ -35,9 +35,7 @@ The workflow runs in a single pass when an alert arrives:
 
 1. An **alert trigger** fires when the detection rule matches.
 2. A **VirusTotal lookup** enriches the alert with a reputation score.
-3. An **if step** branches on the reputation score. If the file is confirmed malicious, the workflow opens a case, attaches the alert and observables, isolates the host, and notifies Slack. Otherwise, it closes the alert as a false positive.
-
-All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [cases steps](/explore-analyze/workflows/steps/cases.md), [`if` steps](/explore-analyze/workflows/steps/if.md), [{{kib}} steps](/explore-analyze/workflows/steps/kibana.md), and [HTTP steps](/explore-analyze/workflows/steps/external-systems-apps.md#http).
+3. An **`if` step** branches on the reputation score. If the file is confirmed malicious, the workflow opens a case, attaches the alert and observables, isolates the host, and notifies Slack. Otherwise, it closes the alert as a false positive.
 
 ## Build the workflow [workflows-alert-triage-with-case-build]
 
@@ -57,7 +55,7 @@ After you save the workflow, open the detection rule's **Actions** tab and attac
 
 ::::{step} Enrich the alert with threat intel
 
-Call the VirusTotal connector to score the file hash. Wrap the call in retry + continue so a transient VirusTotal outage doesn't fail the whole workflow.
+Call the VirusTotal connector to score the file hash. Wrap the call in `retry + continue` so a transient VirusTotal outage doesn't fail the whole workflow.
 
 ```yaml
 - name: lookup_reputation
@@ -79,7 +77,7 @@ The output lives at `steps.lookup_reputation.output`. Use `steps.lookup_reputati
 
 ::::{step} Branch on the reputation result
 
-Most of the workflow only runs when the file is confirmed malicious. Wrap the case, isolation, and notification steps in an `if` step:
+Most of the workflow only runs when the file is confirmed malicious. Wrap the `case`, `isolation`, and `notification` steps in an `if` step:
 
 ```yaml
 - name: handle_malicious_file

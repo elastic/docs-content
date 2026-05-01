@@ -59,7 +59,7 @@ For APM and Enterprise Search, refer to the product's documentation:
 The way that you configure your {{stack}} settings is determined by your deployment type.
 
 :::{warning}
-* [Dynamic {{es}} cluster settings](#dynamic-cluster-setting) can also be updated using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} and {{ece}} don’t reject unsafe setting changes made using this API, and should be used with caution in these contexts.
+* [Dynamic {{es}} cluster settings](#dynamic-cluster-setting) can also be updated using {{es}}'s [update cluster settings API]({{es-apis}}operation/operation-cluster-put-settings). However, {{ech}} and {{ece}} don’t reject unsafe setting changes made using this API, and should be used with caution in these contexts.
 * If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart in self managed clusters and ECH and ECE deployments. If the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
@@ -107,7 +107,7 @@ The method and location where you can update your {{stack}} settings depends on 
 
 #### Elasticsearch (`elasticsearch.yml`)
 
-Most settings can be changed on a running cluster using the [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API.
+Most settings can be changed on a running cluster using the [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API.
 
 You can also set {{es}} settings in `elasticsearch.yml`.  Some settings require a cluster restart. To learn more, refer to [Dynamic and static {{es}} settings](#static-dynamic).
 

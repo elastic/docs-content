@@ -1,7 +1,7 @@
 ---
 navigation_title: AI-driven alert triage
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that uses an Agent Builder agent to analyze Attack Discovery alerts, create a case with the analysis attached, isolate the affected host, and notify the SOC.
 products:
@@ -15,9 +15,9 @@ products:
 
 # Triage alerts with an AI agent [workflows-ai-driven-alert-triage]
 
-This guide walks through building a workflow that triages [Attack Discovery](/solutions/security/ai/attack-discovery.md) alerts with an [{{agent-builder}}](/explore-analyze/ai-features/agent-builder.md) agent. The workflow creates a case for each discovery, has an agent produce a remediation analysis, posts a concise summary to Slack, and isolates the host pending review.
+This guide walks through building a workflow that triages [Attack Discovery](/solutions/security/ai/attack-discovery.md) alerts with an [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) agent. The workflow creates a case for each discovery, has an agent produce a remediation analysis, posts a concise summary to Slack, and isolates the host pending review.
 
-The workflow is adapted from [`ad-automated-triaging.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/response/ad-automated-triaging.yaml) in the `elastic/workflows` library, modernized to use the 9.4 `ai.agent` and `cases.*` step types instead of raw HTTP calls.
+The workflow is adapted from [`ad-automated-triaging.yaml`](https://github.com/elastic/workflows/blob/main/workflows/security/response/ad-automated-triaging.yaml) in the `elastic/workflows` library.
 
 If you're new to workflows, complete [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md) first.
 
@@ -39,8 +39,6 @@ The workflow runs whenever the attached rule fires. Because Attack Discovery ale
 4. **Call an agent again** to produce a short Slack-ready summary.
 5. **Isolate the host** pending review.
 6. **Notify Slack** with the summary, risk score, and links back to the case, host, and workflow execution.
-
-All referenced step types are in the 9.4 GA surface: [alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md), [`foreach`](/explore-analyze/workflows/steps/foreach.md), [cases steps](/explore-analyze/workflows/steps/cases.md), [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent), [{{kib}} request](/explore-analyze/workflows/steps/kibana.md#kibana-request), and [HTTP](/explore-analyze/workflows/steps/external-systems-apps.md#http).
 
 ## Build the workflow [workflows-ai-driven-alert-triage-build]
 

@@ -1,7 +1,7 @@
 ---
 navigation_title: Classify and route alerts
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Build a workflow that classifies incoming items with ai.classify, routes each item down a different branch, and summarizes the result with ai.summarize.
 products:
@@ -36,8 +36,6 @@ The workflow runs manually during development and can be switched to an alert tr
 3. **Classify with `ai.classify`.** The step returns the category (for example, `observability alert` or `security alert`) and an optional rationale.
 4. **Route with `if` (or `switch`).** Each branch runs the right follow-up: severity classification for observability, malicious-or-not classification for security.
 5. **Summarize with `ai.summarize`.** The summary is attached to the routed item.
-
-All referenced step types are in the 9.4 GA surface: [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt), [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify), [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize), [`foreach`](/explore-analyze/workflows/steps/foreach.md), [`if`](/explore-analyze/workflows/steps/if.md), and [`data.set`](/explore-analyze/workflows/steps/data.md).
 
 ## Build the workflow [workflows-classify-route-build]
 
@@ -109,7 +107,7 @@ Concatenate the two sample arrays and loop over the combined stream. Use `${{ ..
 
 ::::{step} Classify each item
 
-Call `ai.classify` with the categories you want to route on. Set `includeRationale: true` during development so you can see why the model picked a category; turn it off in production for lower token cost:
+Call `ai.classify` with the categories you want to route on. Set `includeRationale: true` during development so you can see why the model picked a category. Turn it off in production for lower token cost:
 
 ```yaml
       - name: identify_type

@@ -1,7 +1,7 @@
 ---
 navigation_title: Observability
 applies_to:
-  stack: ga 9.4
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Use workflows to respond to anomaly detection alerts, correlate signals across data sources, and automate scheduled data operations in Elastic Observability.
 products:
@@ -22,7 +22,7 @@ Observability signals (infrastructure metrics, application logs, traces, and ano
 The following patterns use existing workflow capabilities:
 
 - **Respond to anomaly detection alerts.** Configure an [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) on an anomaly detection rule. The workflow runs with the alert's context, and can query log data in a window around the anomaly, enrich with host or service metadata, and open a case or post a notification.
-- **Correlate signals across data sources.** Use [{{es}} search actions](/explore-analyze/workflows/steps/elasticsearch.md) to query metrics, logs, and traces in the same workflow, then combine results with [`if` steps](/explore-analyze/workflows/steps/if.md) to decide on next actions. Use [data action steps](/explore-analyze/workflows/steps/data.md) to filter, group, and deduplicate results before acting on them.
+- **Correlate signals across data sources.** Use [{{es}} search actions](/explore-analyze/workflows/steps/elasticsearch.md) to query metrics, logs, and traces in the same workflow, then combine results with [`if` steps](/explore-analyze/workflows/steps/if.md) to decide on next actions. Use [data action steps](/explore-analyze/workflows/steps/data.md) to filter, group, and remove duplicate results before acting on them.
 - **Automate scheduled data operations.** Use a [scheduled trigger](/explore-analyze/workflows/triggers/scheduled-triggers.md) to run periodic health checks, index rollover tasks, or data quality audits.
 - **Analyze signals with AI.** Use [AI steps](/explore-analyze/workflows/steps/ai-steps.md) to summarize a multi-signal investigation with `ai.summarize`, classify anomaly shapes with `ai.classify`, or invoke an {{agent-builder}} agent with `ai.agent` before the workflow takes action.
 - **Operate on Observability Streams.** Use [Streams action steps](/explore-analyze/workflows/steps/streams.md) to list available streams and pull significant events into a workflow for further processing.

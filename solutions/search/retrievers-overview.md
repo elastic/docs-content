@@ -24,7 +24,7 @@ This document provides a general overview of the retriever abstraction. For a fu
 
 Retrievers come in various types, each tailored for different search operations. The following retrievers are currently available:
 
-* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#search-api-knn), in the context of a retriever framework.
+* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search]({{es-apis}}operation/operation-search#search-api-knn), in the context of a retriever framework.
 * [**Linear retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores.
 * [**Pinned retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever). Always places specified documents at the top of the results, with the remaining hits provided by a secondary retriever.
 * [**Rescorer retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever). Re-scores the results produced by its child retriever.

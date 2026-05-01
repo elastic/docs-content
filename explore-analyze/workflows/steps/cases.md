@@ -1,7 +1,7 @@
 ---
 navigation_title: Cases
 applies_to:
-  stack: ga 9.4
+  stack: ga 9.4+
   serverless: ga
 description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in any Cases-enabled app.
 products:
@@ -446,7 +446,7 @@ Add a Markdown-formatted comment to a case.
 
 ### `cases.addAlerts` [cases-addalerts]
 
-Attach detection alerts to a case. Each entry is an **object** with `alertId` and `index`; the optional `rule` describes the rule that generated the alert.
+Attach detection alerts to a case. Each entry is an **object** with `alertId` and `index`. The optional `rule` describes the rule that generated the alert.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -628,7 +628,7 @@ In 9.3, case management lived under the `kibana.*` namespace. Those step types r
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](#cases-addcomment) |
 
-See [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
+Refer to [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
 
 ## Related
 
