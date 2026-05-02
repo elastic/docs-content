@@ -59,7 +59,7 @@ For example, Elastic Support frequently requests pulling the ECE diagnostic alon
 ```
 
 ::::{note} 
-ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get stack diagnostics from {{ece}} > Deployment > Operations > Prepare Bundle.
+ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get stack diagnostics from {{ece}} > Deployment > Operations > Generate Bundle.
 ::::
 
 
