@@ -179,7 +179,7 @@ Advanced users may force an upgrade by manually deleting Pods themselves. The de
 
 Operations that reduce the number of nodes in the cluster cannot make progress without user intervention, if the {{es}} index replica settings are incompatible with the intended downscale. Specifically, if the {{es}} index settings demand a higher number of shard copies than data nodes in the cluster after the downscale operation, ECK cannot migrate the data away from the node about to be removed. You can address this in the following ways:
 
-* Adjust the {{es}} [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to a number of replicas that allow the desired node removal.
+* Adjust the {{es}} [index settings]({{es-apis}}operation/operation-indices-put-settings) to a number of replicas that allow the desired node removal.
 * Use [`auto_expand_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to automatically adjust the replicas to the number of data nodes in the cluster.
 
 ## Advanced control during rolling upgrades [k8s-advanced-upgrade-control]

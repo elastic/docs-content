@@ -14,7 +14,7 @@ products:
 
 The following example creates a `geo_match` enrich policy that adds postal codes to incoming documents based on a set of coordinates. It then adds the `geo_match` enrich policy to a processor in an ingest pipeline.
 
-Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create a source index containing at least one `geo_shape` field.
+Use the [create index API]({{es-apis}}operation/operation-indices-create) to create a source index containing at least one `geo_shape` field.
 
 ```console
 PUT /postal_codes
@@ -32,7 +32,7 @@ PUT /postal_codes
 }
 ```
 
-Use the [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) to index enrich data to this source index.
+Use the [index API]({{es-apis}}operation/operation-create) to index enrich data to this source index.
 
 ```console
 PUT /postal_codes/_doc/1?refresh=wait_for
@@ -45,7 +45,7 @@ PUT /postal_codes/_doc/1?refresh=wait_for
 }
 ```
 
-Use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) to create an enrich policy with the `geo_match` policy type. This policy must include:
+Use the [create enrich policy API]({{es-apis}}operation/operation-enrich-put-policy) to create an enrich policy with the `geo_match` policy type. This policy must include:
 
 * One or more source indices
 * A `match_field`, the `geo_shape` field from the source indices used to match incoming documents
@@ -62,13 +62,13 @@ PUT /_enrich/policy/postal_policy
 }
 ```
 
-Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
+Use the [execute enrich policy API]({{es-apis}}operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/postal_policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
+Use the [create or update pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match the geoshape of documents from the enrich index.
@@ -103,7 +103,7 @@ PUT /users/_doc/0?pipeline=postal_lookup
 }
 ```
 
-To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
+To verify the enrich processor matched and appended the appropriate field data, use the [get API]({{es-apis}}operation/operation-get) to view the indexed document.
 
 ```console
 GET /users/_doc/0

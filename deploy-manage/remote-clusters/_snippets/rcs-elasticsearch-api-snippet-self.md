@@ -7,7 +7,7 @@ This snippet is in use in the following locations:
 - self-remote-cluster-eck.md
 - eck-remote-clusters-to-other-eck.md
 -->
-To add a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
+To add a remote cluster, use the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Configure the following fields:
 
 * **Remote cluster alias**: When using API key authentication, the cluster alias must match the one you configured when [adding the API key](#configure-local-cluster).
 * **mode**: `proxy`

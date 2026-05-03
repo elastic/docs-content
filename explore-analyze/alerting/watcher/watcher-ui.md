@@ -34,7 +34,7 @@ To use Watcher in {{kib}}, you must have the built-in `kibana_admin` role and ei
 * `watcher_admin`. You can perform all Watcher actions, including create and edit watches.
 * `watcher_user`. You can view watches, but not create or edit them.
 
-To manage roles, go to the **Roles** management page, or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles). Watches are shared between all users with the same role.
+To manage roles, go to the **Roles** management page, or use the [role APIs]({{kib-apis}}group/endpoint-roles). Watches are shared between all users with the same role.
 
 ::::{note}
 If you are creating a threshold watch, you must also have the `view_index_metadata` index privilege. See [Index management](/manage-data/data-store/perform-index-operations.md#required-permissions) for detailed information.
@@ -144,11 +144,11 @@ The **Simulate** tab allows you to override parts of the watch, and then run a s
 * Trigger overrides use [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math).
 * Input overrides accepts a JSON blob.
 * Condition overrides indicates if you want to force the condition to always be `true`.
-* Action overrides support [multiple options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).
+* Action overrides support [multiple options]({{es-apis}}operation/operation-watcher-execute-watch).
 
 Some watches, such as those using basic auth credentials, contain passwords. For security reasons, these passwords will be stripped from any watches that are loaded by the Watcher UI. You will need to manually re-enter these passwords to simulate the watch.
 
-After starting the simulation, you’ll see a results screen. For more information on the fields in the response, see the [Execute watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).
+After starting the simulation, you’ll see a results screen. For more information on the fields in the response, see the [Execute watch API]({{es-apis}}operation/operation-watcher-execute-watch).
 
 ![Create advanced watch](/explore-analyze/images/kibana-advanced-watch-simulate.png "")
 

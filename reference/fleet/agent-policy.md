@@ -210,6 +210,7 @@ Adding custom fields is not supported for a small set of inputs:
 * `fleet-server`
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
+* `elastic_agent` inputs
 
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]

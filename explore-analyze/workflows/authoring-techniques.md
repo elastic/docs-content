@@ -19,6 +19,7 @@ Techniques that apply across workflow types, regardless of which outcome you're 
 
 - [Use the YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md): Author and run workflows in the YAML editor in {{kib}}.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Move data between steps, use dynamic templating, and make workflows resilient with `on-failure`.
+- [Compose workflows from reusable parts](/explore-analyze/workflows/authoring-techniques/compose-workflows.md): Decompose long workflows into reusable child workflows, design the input and output contract, and fan out with asynchronous composition.
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pause a workflow for reviewer input and resume on their decision.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): Track runs, review execution history, and troubleshoot failures.
 - [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md): Find, edit, duplicate, enable, and disable workflows from the **Workflows** page.
