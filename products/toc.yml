@@ -1,0 +1,5 @@
+project: 'Product hubs'
+toc:
+  - toc: kibana
+  - toc: elasticsearch
+
