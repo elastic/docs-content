@@ -146,7 +146,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-If you host your own artifact registry in an air-gapped environment, you can require authenticated requests so that only authorized agents can download binaries. {{fleet}} supports HTTP Basic authentication with a username and password, or authentication with an API key.
+If your self-hosted artifact registry requires authentication, configure {{agents}} to send the appropriate credentials when downloading binaries. {{fleet}} supports HTTP Basic authentication with a username and password, or authentication with an API key.
 
 To configure authentication:
 
@@ -163,12 +163,12 @@ To configure authentication:
     The **Password** and **API key** values are stored as [secrets](/reference/fleet/agent-policy.md#agent-policy-secret-values) managed by {{fleet-server}}.
     :::
 
-5. You can optionally add custom HTTP headers that {{agent}} includes on every request to your artifact registry:
+5. Optionally, you can add custom HTTP headers that {{agent}} includes on every request to your artifact registry:
     
     1. Under **Headers**, enter a **Key** and **Value** pair for the custom header.
     2. (Optional) Select **Add header** to add another key-value pair.
 
-6. Select **Save and apply settings**.
+6. Click **Save and apply settings**.
 
 
 ## Proxies [proxy-settings]

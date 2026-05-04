@@ -306,7 +306,7 @@ To make binaries available in an air-gapped environment, you can host your own c
     2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
 
         :::{note}
-        :applies_to: { stack: ga 9.4+, serverless: ga }
+        :applies_to: stack: ga 9.4+
 
         To authenticate requests to your artifact registry, expand the **Authentication** section, and provide either a username and password, or an API key. Optionally, you can also add custom HTTP headers. For more details, refer to [Configure authentication for binary downloads](/reference/fleet/fleet-settings.md#agent-binary-auth).
         :::
