@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate from contrib OTel Collector
+navigation_title: Move from contrib OTel Collector
 applies_to:
   stack: ga
   serverless:
@@ -9,7 +9,7 @@ products:
   - id: edot-collector
 ---
 
-# Migrate from the contrib OpenTelemetry Collector to the {{edot}} Collector
+# Move from the contrib OpenTelemetry Collector to the {{edot}} Collector
 
 The {{edot}} Collector is a curated distribution of the OpenTelemetry Collector, optimized for use with {{product.observability}}. If you're already running the contrib Collector, migrating to the {{edot}} Collector gives you:
 

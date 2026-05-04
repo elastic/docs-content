@@ -10,7 +10,7 @@ products:
   - id: elastic-agent
 ---
 
-# Migrate from Beats to Elastic Agent [migrate-beats-to-agent]
+# Move from Beats to Elastic Agent [migrate-beats-to-agent]
 
 Learn how to replace your existing {{filebeat}} and {{metricbeat}} deployments with {{agent}}, our single agent for logs, metrics, security, and threat prevention.
 

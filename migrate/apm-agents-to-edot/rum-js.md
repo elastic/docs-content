@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate to EDOT Browser
+navigation_title: Move to EDOT Browser
 applies_to:
   stack: ga
   serverless:
@@ -10,7 +10,7 @@ products:
   - id: observability
 ---
 
-# Migrate from the Elastic {{product.apm}} RUM JavaScript agent to EDOT Browser
+# Move from the Elastic {{product.apm}} RUM JavaScript agent to EDOT Browser
 
 EDOT Browser is Elastic's distribution of the OpenTelemetry Browser SDK. It collects traces, metrics, and logs from real user interactions in web applications and exports that data using OTLP.
 

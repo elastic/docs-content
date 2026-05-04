@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate APM agents using the Collector
+navigation_title: Move APM agents using the Collector
 applies_to:
   stack: ga 9.2+
   serverless:
@@ -9,7 +9,7 @@ products:
   - id: edot-collector
 ---
 
-# Migrate classic {{product.apm}} agents using the {{edot}} Collector
+# Move classic {{product.apm}} agents using the {{edot}} Collector
 
 If you're using classic Elastic {{product.apm}} agents and want to move to an OpenTelemetry-based pipeline, the {{edot}} Collector provides a migration bridge through the [Elastic {{product.apm}} intake receiver](elastic-agent://reference/edot-collector/components/elasticapmintakereceiver.md). This lets your existing {{product.apm}} agents continue sending data unchanged while you gradually re-instrument your applications with OpenTelemetry SDKs.
 
