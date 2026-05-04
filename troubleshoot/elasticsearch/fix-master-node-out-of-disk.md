@@ -17,7 +17,7 @@ products:
 
 # Fix master nodes out of disk [fix-master-node-out-of-disk]
 
-{{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
+{{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API]({{es-apis}}operation/operation-health-report) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
 
 :::::::{applies-switch}
 

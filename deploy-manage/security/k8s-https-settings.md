@@ -12,7 +12,7 @@ products:
 
 # Manage HTTP certificates on ECK
 
-ECK offers several options for securing the HTTP endpoints of {{es}} and {{kib}}. By default, the operator generates a dedicated CA per deployment, and issues individual certificates for each instance. Alternatively, you can supply your own certificates or integrate with external solutions like `cert-manager`.
+ECK offers several options for securing the HTTP endpoints of {{es}} and {{kib}}. By default, the operator generates a dedicated HTTP CA per resource and uses it to issue the required certificates. Alternatively, you can supply your own certificates or integrate with external solutions like `cert-manager`.
 
 :::{note}
 This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between {{es}} nodes are managed by ECK and cannot be changed. You can however [set your own certificate authority for the transport layer](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-ca).
@@ -20,29 +20,39 @@ This section only covers TLS certificates for the HTTP layer. TLS certificates f
 
 ## {{es}} certificates [k8s-tls-certificates]
 
-By default, the operator manages a self-signed certificate with a custom CA for each resource. The CA, the certificate and the private key are each stored in a separate `Secret`.
+By default, the operator generates a dedicated HTTP CA for each {{es}} cluster and uses it to issue a certificate for HTTP access. The CA, the certificate, and the private keys are each stored in separate Kubernetes secrets.
 
 ```sh
 > kubectl get secret | grep es-http
-hulk-es-http-ca-internal         Opaque                                2      28m
-hulk-es-http-certs-internal      Opaque                                2      28m
-hulk-es-http-certs-public        Opaque                                1      28m
+quickstart-es-http-ca-internal         Opaque  2   28m <1>
+quickstart-es-http-certs-internal      Opaque  2   28m <2>
+quickstart-es-http-certs-public        Opaque  1   28m <3>
 ```
+1. Contains the CA certificate and private key (for internal use only)
+2. Contains the HTTP certificate and private key (for internal use only)
+3. Contains the CA and HTTP certificates (no private keys)
 
-The public certificate is stored in a secret named `<name>-[es|kb|apm|ent|agent]-http-certs-public`.
+The CA and the HTTP certificate used by the instances are stored in a secret named `<name>-[es|kb|apm|ent|agent]-http-certs-public`.
 
-```sh
-> kubectl get secret hulk-es-http-certs-public -o go-template='{{index .data "tls.crt" | base64decode }}'
------BEGIN CERTIFICATE-----
-MIIDQDCCAiigAwIBAgIQHC4O/RWX15a3/P3upsm3djANBgkqhkiG9w0BAQsFADA6
-...
-QLYL4zLEby3vRxq65+xofVBJAaM=
------END CERTIFICATE-----
-```
+* You can obtain the CA from the `ca.crt` key of that secret with the following command:
+
+  ```sh
+  kubectl get secret quickstart-es-http-certs-public -o go-template='{{index .data "ca.crt" | base64decode }}'
+  ```
+
+  ::::{note}
+  The HTTP CA certificate is required to establish trusted connections from clients, for example using `curl` with `--cacerts` option.
+  ::::
+
+* To retrieve the HTTP certificate used by the instances, grab the `tls.crt` key of the same secret.
+
+  ```sh
+  kubectl get secret quickstart-es-http-certs-public -o go-template='{{index .data "tls.crt" | base64decode }}'
+  ```
 
 ### Custom HTTP certificate [k8s-custom-http-certificate]
 
-You can provide your own CA and certificates instead of the self-signed certificate to connect to {{stack}} applications through HTTPS using a Kubernetes secret.
+You can provide your own CA and certificates instead of using the default generated certificates to connect to {{stack}} applications through HTTPS using a Kubernetes secret.
 
 Check [Setup your own certificate](./set-up-basic-security-plus-https.md#encrypt-http-communication) to learn how to do that with `elasticsearch-certutil` tool.
 
@@ -73,7 +83,7 @@ kind: Certificate
 metadata:
   name: quickstart-es-cert
 spec:
-  isCA: true
+  isCA: false
   dnsNames:
     - quickstart-es-http
     - quickstart-es-http.default.svc
@@ -87,7 +97,9 @@ spec:
       - quickstart
 ```
 
-Here is how to issue multiple {{es}} certificates from a single self-signed CA. This is useful for example for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md) which need to trust each other’s CA, in order to avoid mounting N CAs when a cluster is connected to N other clusters.
+#### Custom private CA and certificate using cert-manager [k8s_custom_http_ca_using_cert_manager]
+
+To set up a private CA and issue {{es}} certificates, you can use `cert-manager`. Additional certificates can be issued from the same CA, allowing multiple clusters or services to share a common trust root. This is useful, for example, for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md), which need to trust each other’s CAs. Using a shared CA avoids having to configure and mount N different CAs when a cluster is connected to N other clusters.
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -145,7 +157,7 @@ spec:
 
 ### Reserve static IP and custom domain [k8s-static-ip-custom-domain]
 
-To use a custom domain with a self-signed certificate:
+To use a custom domain with the default certificates generated by ECK:
 
 ```yaml
 spec:
@@ -157,10 +169,10 @@ spec:
       selfSignedCertificate:
         subjectAltNames:
         - ip: 160.46.176.15
-        - dns: hulk.example.com
+        - dns: quickstart.example.com
 ```
 
-### Provide your own certificate [k8s-setting-up-your-own-certificate]
+### Provide your own certificate or CA [k8s-setting-up-your-own-certificate]
 
 You can bring your own certificate to configure TLS to ensure that communication between HTTP clients and the {{stack}} application is encrypted.
 
@@ -237,7 +249,7 @@ If you want to use your own certificate, the required configuration is identical
 
 ## Disable TLS [k8s-disable-tls]
 
-You can explicitly disable the generation of the self-signed certificate and hence disable TLS for {{kib}}, APM Server, and the HTTP layer of {{es}}.
+You can explicitly disable the generation of the default certificates and hence disable TLS for {{kib}}, APM Server, and the HTTP layer of {{es}}.
 
 ::::{important}
 Disabling TLS is not recommended outside of test or development environments.

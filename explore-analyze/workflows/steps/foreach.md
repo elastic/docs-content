@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Learn about the foreach step for iterating over data in workflows.
 products:
   - id: kibana

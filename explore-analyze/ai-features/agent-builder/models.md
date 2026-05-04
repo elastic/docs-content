@@ -16,6 +16,8 @@ products:
 
 {{agent-builder}} uses large language models (LLMs) to power agent reasoning and decision-making.
 
+For model performance for {{observability}} and {{elastic-sec}}, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). The [Recommended models](#recommended-models) section focuses on {{agent-builder}}.
+
 For {{serverless-full}} projects and {{ech}} deployments, {{agent-builder}} uses Elastic Managed LLMs running on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This managed service requires zero setup.
 
 ## Default model configuration
@@ -57,11 +59,30 @@ To learn more, refer to [select a different model](/explore-analyze/ai-features/
 
 ## Change the default model
 
+::::{applies-switch}
+
+:::{applies-item} { ess: ga 9.4+, serverless: ga }
+To change which model is used by default:
+
+1. Search for **Model management / Feature settings** in the global search field.
+2. Select your preferred model from the **Default model** dropdown.
+3. Save your changes.
+
+The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
+
+:::
+
+:::{applies-item} { ess: ga =9.3 }
 To change which model is used by default:
 
 1. Search for **GenAI Settings** in the global search field.
 2. Select your preferred connector from the **Default AI Connector** dropdown.
 3. Save your changes.
+:::
+
+::::
+
+For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 ## Use additional models
 
@@ -75,6 +96,7 @@ To create a new connector:
 2. Select **Create Connector** and select your model provider.
 3. Configure the connector with your API credentials and preferred model.
 4. Expand **Additional settings** and select `chat_completion` as the task type.
+
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
    :width: 450px
@@ -144,6 +166,9 @@ Smaller or "mini" model variants are not recommended for {{agent-builder}} as th
 
 ## Related pages
 
-- [Limitations and known issues](limitations-known-issues.md): Current limitations around model selection
-- [Get started](get-started.md): Initial setup and configuration
-- [Connectors](/deploy-manage/manage-connectors.md): Detailed connector configuration guide
+- [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
+- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
+- [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
+- [Limitations and known issues](limitations-known-issues.md)
+- [Get started](get-started.md)
+- [Connectors](/deploy-manage/manage-connectors.md)

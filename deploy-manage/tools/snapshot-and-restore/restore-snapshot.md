@@ -50,7 +50,7 @@ When restoring data from a snapshot, keep the following in mind:
 - You can’t restore an existing open index. This includes backing indices for a data stream.
 - The restore operation automatically opens restored indices, including backing indices.
 - You can restore only a specific backing index from a data stream. However, the restore operation doesn’t add the restored backing index to any existing data stream. 
-- If you need to add the restored index to a data stream, you can use the [modify data streams](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) API with the `add_backing_index` action. Proceed with caution, as adding backing indices manually can result in unexpected data stream behavior.
+- If you need to add the restored index to a data stream, you can use the [modify data streams]({{es-apis}}operation/operation-indices-modify-data-stream) API with the `add_backing_index` action. Proceed with caution, as adding backing indices manually can result in unexpected data stream behavior.
 
 ## Get a list of available snapshots
 
@@ -126,7 +126,7 @@ If the rename options produce two or more indices or data streams with the same 
 
 If you rename a data stream, its backing indices are also renamed. For example, if you rename the `logs-my_app-default` data stream to `restored-logs-my_app-default`, the backing index `.ds-logs-my_app-default-2099.03.09-000005` is renamed to `.ds-restored-logs-my_app-default-2099.03.09-000005`.
 
-When the restore operation is complete, you can compare the original and restored data. If you no longer need an original index or data stream, you can delete it and use a [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to rename the restored one.
+When the restore operation is complete, you can compare the original and restored data. If you no longer need an original index or data stream, you can delete it and use a [reindex]({{es-apis}}operation/operation-reindex) to rename the restored one.
 
 ```console
 # Delete the original index
@@ -166,7 +166,7 @@ You can restore a [feature state](../../../deploy-manage/tools/snapshot-and-rest
 
 If you restore a snapshot’s cluster state, the operation restores all feature states in the snapshot by default. Similarly, if you don’t restore a snapshot’s cluster state, the operation doesn’t restore any feature states by default. You can also choose to restore only specific feature states from a snapshot, regardless of the cluster state.
 
-Feature backing indices are version dependent. To see which indices are included within a snapshot's feature state, [list an applicable snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get). For example, on {{ech}} you might poll its latest snapshot on its built-in  `cloud-snapshot-policy` SLM policy:
+Feature backing indices are version dependent. To see which indices are included within a snapshot's feature state, [list an applicable snapshot]({{es-apis}}operation/operation-snapshot-get). For example, on {{ech}} you might poll its latest snapshot on its built-in  `cloud-snapshot-policy` SLM policy:
 
 ```console
 GET /_snapshot/_all/_all?filter_path=snapshots.feature_states&index_names=false&sort=start_time&size=1&order=desc&slm_policy_filter=cloud-snapshot-policy
@@ -226,7 +226,7 @@ The response’s `feature_states` property contains a list of features in the sn
 }
 ```
 
-To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the [restore snapshot API’s](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) `feature_states` parameter.
+To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the [restore snapshot API’s]({{es-apis}}operation/operation-snapshot-restore) `feature_states` parameter.
 
 Note that feature state names may match {{kib}} UI sections, but restoring a single feature state may not fully reset that UI. For example, the {{fleet}} UI depends on the `fleet` feature state as well as `kibana` and `security`. When restoring, it's important to include all required feature states in the `feature_states` parameter to achieve the desired reset behavior.
 
@@ -234,7 +234,7 @@ Note that feature state names may match {{kib}} UI sections, but restoring a sin
 Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ech}} or {{ece}}, ensure you have access to the [{{es}} API console](cloud://reference/cloud-hosted/ec-api-console.md) before restoring the `security` feature state. If you run {{es}} on your own hardware or in {{eck}}, [create a temporary user with elevated permissions to edit restricted indices in the file realm](/troubleshoot/elasticsearch/file-based-recovery.md) to ensure you’ll still be able to access your cluster.
 ::::
 
-When you restore a feature state, {{es}} closes and overwrites the feature’s existing indices and data streams. For example, to [snapshot restore](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) the `geoip` feature state, you might use:
+When you restore a feature state, {{es}} closes and overwrites the feature’s existing indices and data streams. For example, to [snapshot restore]({{es-apis}}operation/operation-snapshot-restore) the `geoip` feature state, you might use:
 
 ```console
 POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
@@ -335,7 +335,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
 3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, follow [File-based access recovery](/troubleshoot/elasticsearch/file-based-recovery.md) to temporarily create a user with temporary elevated permissions to edit restricted indices. Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings
@@ -371,7 +371,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 8. When the restore operation is complete, resume indexing and restart any features you stopped:
 
     ::::{note}
-    When the snapshot is restored, the license that was in use at the time the snapshot was taken will be restored as well. If your license has expired since the snapshot was taken, you will need to use the [Update License API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post) to install a current license.
+    When the snapshot is restored, the license that was in use at the time the snapshot was taken will be restored as well. If your license has expired since the snapshot was taken, you will need to use the [Update License API]({{es-apis}}operation/operation-license-post) to install a current license.
     ::::
 
 
@@ -445,25 +445,25 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
 ## Monitor a restore [monitor-restore]
 
-The restore operation uses the [shard recovery process](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery) to restore an index’s primary shards from a snapshot. While the restore operation recovers primary shards, the cluster will have a `yellow` [health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+The restore operation uses the [shard recovery process]({{es-apis}}operation/operation-indices-recovery) to restore an index’s primary shards from a snapshot. While the restore operation recovers primary shards, the cluster will have a `yellow` [health status]({{es-apis}}operation/operation-cluster-health).
 
 After all primary shards are recovered, the replication process creates and distributes replicas across eligible data nodes. When replication is complete, the cluster health status typically becomes `green`.
 
 Once you start a restore in {{kib}}, you’re navigated to the **Restore Status** page. You can use this page to track the current state for each shard in the snapshot.
 
-You can also monitor snapshot recover using {{es}} APIs. To monitor the cluster health status, use the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+You can also monitor snapshot recover using {{es}} APIs. To monitor the cluster health status, use the [cluster health API]({{es-apis}}operation/operation-cluster-health).
 
 ```console
 GET _cluster/health
 ```
 
-To get detailed information about ongoing shard recoveries, use the [index recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery).
+To get detailed information about ongoing shard recoveries, use the [index recovery API]({{es-apis}}operation/operation-indices-recovery).
 
 ```console
 GET my-index/_recovery
 ```
 
-To view any unassigned shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
+To view any unassigned shards, use the [cat shards API]({{es-apis}}operation/operation-cat-shards).
 
 ```console
 GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
@@ -471,7 +471,7 @@ GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
 
 Unassigned shards have a `state` of `UNASSIGNED`. The `prirep` value is `p` for primary shards and `r` for replicas. The `unassigned.reason` describes why the shard remains unassigned.
 
-To get a more in-depth explanation of an unassigned shard’s allocation status, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
+To get a more in-depth explanation of an unassigned shard’s allocation status, use the [cluster allocation explanation API]({{es-apis}}operation/operation-cluster-allocation-explain).
 
 ```console
 GET _cluster/allocation/explain
@@ -529,7 +529,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 If indices or backing indices in the original cluster were assigned to particular nodes using [shard allocation filtering](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md), the same rules will be enforced in the new cluster. If the new cluster does not contain nodes with appropriate attributes that a restored index can be allocated on, the index will not be successfully restored unless these index allocation settings are changed during the restore operation.
 
-The restore operation also checks that restored persistent settings are compatible with the current cluster to avoid accidentally restoring incompatible settings. If you need to restore a snapshot with incompatible persistent settings, try restoring it without the [global cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore).
+The restore operation also checks that restored persistent settings are compatible with the current cluster to avoid accidentally restoring incompatible settings. If you need to restore a snapshot with incompatible persistent settings, try restoring it without the [global cluster state]({{es-apis}}operation/operation-snapshot-restore).
 
 
 ## Troubleshoot restore errors [troubleshoot-restore]
