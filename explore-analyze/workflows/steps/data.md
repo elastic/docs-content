@@ -259,7 +259,12 @@ Parse a JSON string into an object.
 - name: parse_payload
   type: data.parseJson
   source: "${{ steps.http_call.output.body }}"
+  with: {}
 ```
+
+:::{note}
+The editor currently requires a `with` block on every step, even when the step has no `with`-level parameters. Pass `with: {}` to satisfy validation.
+:::
 
 :::{tip}
 For inline parsing inside a Liquid expression (for example, inside another step's `body`), use the [`json_parse` Liquid filter](/explore-analyze/workflows/templating.md). Reach for `data.parseJson` when you want the parsed result as a separate named step output that downstream steps can reference.
