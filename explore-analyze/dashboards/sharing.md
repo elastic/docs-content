@@ -12,7 +12,7 @@ products:
 # Sharing dashboards [share-the-dashboard]
 
 Share your dashboards with team members and stakeholders using shareable links, embeds, or file exports. You can also manage permissions to control who can view or edit a dashboard. Kibana provides multiple sharing options to fit different collaboration needs, from quick URL sharing to exporting complete dashboard configurations for migration between environments.
-To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar.
+To share a dashboard with a larger audience, click {icon}`share` **Share** in the application menu.
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
@@ -55,4 +55,4 @@ Export dashboards as NDJSON files to migrate them to other {{product.kibana}} in
 
 ![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
-To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API]({{kib-apis}}group/endpoint-saved-objects). It is important to export dashboards with all necessary references.

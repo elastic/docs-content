@@ -15,7 +15,7 @@
       * {applies_to}`stack: ga 9.1` Start the name with `??` if you want the options to be fields or functions.
     * The values users can select for this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
     * The label of the control. This is the label displayed in **Discover** or in the dashboard.
-    * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Whether the control should allow selecting a single value or multiple values. This [requires using the `MV_CONTAINS` function in your query](#esql-multi-values-controls). 
+    * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Whether the control should allow selecting a single value or multiple values. This requires using the functions [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) in your query. 
 
 3. Save the control.
 

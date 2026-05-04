@@ -39,7 +39,7 @@ If an index has been [rolled over](elasticsearch://reference/elasticsearch/index
 ::::
 
 
-If an index has unallocated shards and the [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is yellow, the index can still transition to the next phase according to its {{ilm}} policy. However, because {{es}} can only perform certain clean up tasks on a green cluster, there might be unexpected side effects.
+If an index has unallocated shards and the [cluster health status]({{es-apis}}operation/operation-cluster-health) is yellow, the index can still transition to the next phase according to its {{ilm}} policy. However, because {{es}} can only perform certain clean up tasks on a green cluster, there might be unexpected side effects.
 
 To avoid increased disk usage and reliability issues, address any cluster health problems in a timely fashion.
 
@@ -64,7 +64,7 @@ The following actions are available in the `hot` lifecycle phase. Actions are pe
 | Action | Description |
 | --- | --- |
 | [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
-| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
+| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}]({{es-apis}}group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
 | [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | Rolls over a target to a new index when the existing index satisfies the specified rollover conditions. |
 | [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (min, max, sum, value_count and avg) for each metric field grouped by a configured time interval. |
@@ -79,7 +79,7 @@ The following actions are available in the `warm` lifecycle phase. Actions are p
 | Action | Description |
 | --- | --- |
 | [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
-| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
+| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}]({{es-apis}}group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
 | [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (`min`, `max`, `sum`, `value_count`, and `avg`) for each metric field grouped by a configured time interval. |
 | [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas. |
@@ -94,7 +94,7 @@ The following actions are available in the `cold` lifecycle phase. Actions are p
 | Action | Description |
 | --- | --- |
 | [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
-| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
+| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}]({{es-apis}}group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
 | [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (min, max, sum, value_count and avg) for each metric field grouped by a configured time interval. |
 | [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
@@ -107,7 +107,7 @@ The following actions are available in the `frozen` lifecycle phase. Actions are
 
 | Action | Description |
 | --- | --- |
-| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
+| [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}]({{es-apis}}group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
 | [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
 
 ### Delete phase

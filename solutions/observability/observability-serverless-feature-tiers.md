@@ -30,6 +30,7 @@ The following table compares features available in Observability Complete and Ob
 | **[Custom dashboards](/explore-analyze/dashboards.md)** | ✅ | ✅ |
 | **[Alerting and notifications](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ |
 | **[Integrations](https://www.elastic.co/integrations/data-integrations?solution=observability)** | ✅ | ✅ |
+| **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ |
 | **[Machine learning](/explore-analyze/machine-learning.md)** | ✅ | ❌ |
 | **[Rate and pattern analysis](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)** | ✅ | ❌ |
 | **[Service level objectives (SLO)](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ❌ |
@@ -39,7 +40,8 @@ The following table compares features available in Observability Complete and Ob
 | {applies_to}`serverless: preview` **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
 | **[Custom knowledge bases](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
-| **[Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus)** | ✅ | ❌ |
+| **[Private connectivity](/deploy-manage/security/private-connectivity.md)** | ✅ | ❌ |
+| **[IP filtering](/deploy-manage/security/ip-filtering.md)** | ✅ | ❌ |
 
 ## Add data to a serverless project [obs-subscription-ingest]
 

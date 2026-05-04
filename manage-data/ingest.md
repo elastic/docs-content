@@ -31,7 +31,7 @@ You can ingest:
 
 Elastic offer tools designed to ingest specific types of general content. The content type determines the best ingest option.
 
-* To index **documents** directly into {{es}}, use the {{es}} [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document).
+* To index **documents** directly into {{es}}, use the {{es}} [document APIs]({{es-apis}}group/endpoint-document).
 * To send **application data** directly to {{es}}, use an [{{es}} language client](/reference/elasticsearch-clients/index.md).
 * To index **web page content**, use the Elastic [web crawler](https://www.elastic.co/web-crawler).
 * To sync **data from third-party sources**, use [connectors](elasticsearch://reference/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
@@ -52,6 +52,6 @@ Usually, the *simplest option* for ingesting time series data is using {{agent}}
 
 Integrations are available for many popular platforms and services, and are a good place to start for ingesting data into Elastic solutions—Observability, Security, and Search—or your own search application.
 
-Check out the [Integration quick reference](https://docs.elastic.co/en/integrations/all_integrations) to search for available integrations. If you don’t find an integration for your data source or if you need additional processing to extend the integration, we still have you covered. Refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
+Check out the [Integration quick reference](https://docs.elastic.co/en/integrations/all_integrations) to search for available integrations. If you don’t find an integration for your data source, you can use [Automatic Import](/explore-analyze/ai-features/automatic-import.md) to generate a custom integration from a sample of your data using an LLM. If you need additional processing to extend an existing integration, refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
 
 ::::

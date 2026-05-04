@@ -27,6 +27,43 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+
+## 9.3.4 [elastic-security-9.3.4-release-notes]
+
+### Features and enhancements [elastic-security-9.3.4-features-enhancements]
+
+* Enables search in the **JSON** tab of the alert details flyout, matching the search experience available in the Discover document flyout [#263875]({{kib-pull}}263875).
+
+### Fixes [elastic-security-9.3.4-fixes]
+
+* Fixes an issue with Indicator Filters in the read-only rule details UI, where incorrect backing indices caused misleading warnings to display on hover [#263657]({{kib-pull}}263657).
+* Fixes a Firefox-specific issue where the **Table** tab in the document details flyout jumped to the bottom when hovering over field rows with cell actions [#262682]({{kib-pull}}262682).
+* Fixes CrowdStrike `runscript` response actions to correctly display script output (`stdout`/`stderr`) in the **Response Console** and **Action History** views [#262470]({{kib-pull}}262470).
+* Extends the Osquery live query execution timeout maximum from 15 minutes to 24 hours [#262008]({{kib-pull}}262008).
+* Fixes an issue where the required fields component displayed false-positive warnings for subfields of `flattened` type {{es}} fields, even when the rule's required fields were correctly configured [#261830]({{kib-pull}}261830).
+* Fixes prebuilt Osquery packs displaying numeric user IDs instead of `elastic` in the **Created By** column [#261115]({{kib-pull}}261115).
+* Fixes EQL rule creation so the query field re-validates after changing the index pattern, clearing stale errors when the query is valid for the newly selected data view [#261027]({{kib-pull}}261027).
+* Fixes a layout issue where alert KPI panels overflowed their containers, causing excess whitespace on the **Alerts** and **Attacks** pages [#260803]({{kib-pull}}260803).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes a memory leak related to path normalization in {{elastic-defend}} that was introduced in 9.3.0.
+* Fixes an {{elastic-defend}} Kafka output issue by falling back to broker-selected partitioning when transient or invalid metadata responses are received.
+* Fixes a bug in {{elastic-defend}} that could delay uninstall by 30 seconds in some configurations.
+* Ensures {{elastic-defend}} detects when the Linux service fails to start during installation and reports the error to {{agent}}.
+
+
+## 9.3.3 [elastic-security-9.3.3-release-notes]
+
+### Fixes [elastic-security-9.3.3-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Ensures {{elastic-defend}} honors `ignored_filesystems` when a filesystem appears in both monitored and ignored configuration lists.
+* Fixes missing `user.name` and `group.name` fields in {{elastic-defend}} events in some LDAP environments.
+* Returns an error when you submit a malware scan job while malware protection is not enabled for {{elastic-defend}}.
+
+
 ## 9.3.2 [elastic-security-9.3.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.2-features-enhancements]
@@ -142,6 +179,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Fixes [elastic-security-9.3.0-fixes]
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes an issue where the rule settings pop-up remained open after clicking **Save** when enabling or disabling auto gap fill [#247678]({{kib-pull}}247678).
 * Fixes the **Get started** page visibility for users with read-only privileges for rules [#247355]({{kib-pull}}247355).
 * Fixes a display issue with filters on the **MITRE ATT&CK® coverage** page [#246794]({{kib-pull}}246794).
@@ -213,6 +251,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} on Linux to better handle fanotify events from different mount namespaces.
 * Fixes a bug in {{elastic-defend}} Linux event collection where some long-running processes were not enriched.
 
+
+## 9.2.8 [elastic-security-9.2.8-release-notes]
+
+### Fixes [elastic-security-9.2.8-fixes]
+
+* Fixes an issue where the search bar on the **Alerts** tab of the rule details page overlapped the alerts table in full screen mode [#260315]({{kib-pull}}260315).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where notes not associated with a saved Timeline could appear on the **Notes** tab while investigating in Timeline, including for draft Timelines [#259658]({{kib-pull}}259658).
+* Fixes incorrect alert counting for indicator match detection rules when a page of source documents matches no indicators, so max-alerts warnings display correctly [#259199]({{kib-pull}}259199).
+* Fixes an issue in {{elastic-defend}} where `ignored_filesystems` did not take effect when the same filesystem appeared in both the monitored and ignored configuration lists.
 
 ## 9.2.7 [elastic-security-9.2.7-release-notes]
 
@@ -403,6 +451,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.2.0-fixes]
 
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes an issue where the names of the `Security solution default` and `Security solution alerts` data views were displayed incorrectly [#238354]({{kib-pull}}238354).
 * Fixes an issue where the navigation manu overlapped expandable flyouts [#236655]({{kib-pull}}236655).
 * Ensures the data view picker icon is always vertically centered [#236379]({{kib-pull}}236379).
@@ -524,6 +573,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves reliability and accuracy of reporting of the {{elastic-defend}}'s {{es}} connection.
 
 ### Fixes [elastic-security-9.1.5-fixes]
+* Fixes a bug where a lack of legacy signals data would cause the Signals Migration Status API to return an error [#237552]({{kib-pull}}237552).
 * Fixes browser fields caching to use the `dataView` ID instead of the index pattern [#234381]({{kib-pull}}234381).
 * Removes `null` in confirmation dialog when bulk editing index patterns for rules [#236572]({{kib-pull}}236572).
 * Fixes the URL passed to detection rule actions using the `{{context.results_link}}` placeholder [#236067]({{kib-pull}}236067).

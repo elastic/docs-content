@@ -30,26 +30,36 @@ To edit the roles assigned to a user:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-4. Select the user on the **Members** tab of the **Organization** page.
-5. Click **Edit** to change the user's roles.
+3. Select the user on the **Members** tab of the **Organization** page.
+4. Click **Edit** to change the user's roles.
+
+:::{note}
+The ability to view and manage role assignments depends on your roles and scope. **Organization owners** can manage role assignments for all members, while members with the **Admin** role can only manage assignments for deployments or projects within their scope.
+
+Role assignments and resources outside your scope are not visible.
+:::
 
 ## Types of roles
 
-There are two types of roles you can assign to users:
+There are three categories of roles you can assign to users:
 
-* **Organization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
+* **Organization-level roles:** These roles apply to the entire organization and are not specific to any resource.
 * **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
+* **Connected cluster access roles:** Grant access to {{ecloud}} services for clusters you connect through [Cloud Connect](/deploy-manage/cloud-connect.md).
 
 ### Organization-level roles [ec_organization_level_roles]
 
-* **Organization owner**: The role assigned by default to the user who created the organization. Organization owners have all privileges to {{ecloud}} resources including {{ech}} deployments and {{serverless-full}} projects, as well as users, organization-level details and properties, billing details and subscription levels. They are also able to sign on to deployments with superuser privileges.
+* **Organization owner**: This role is assigned by default to the user who created the organization.
+
+    Organization owners have full access to {{ecloud}} for the organization. They can manage {{ech}} deployments, {{serverless-full}} projects, and clusters linked through [Cloud Connect](/deploy-manage/cloud-connect.md). They can also manage members, organization settings, billing, and subscription details.
+
 * **Billing admin**: Can manage an organization’s billing details such as credit card information, subscription and invoice history. Cannot manage other organization or deployment details and properties.
 
 ### Cloud resource access roles [ec_instance_access_roles]
 
 You can set cloud resource access roles at two levels:
 
-* **Globally**, for all {{ech}} deployments, or for all {{serverless-full}} projects of the same type ({{es-serverless}}, {{observability}}, or {{elastic-sec}}). In this case, the role will also apply to new deployments, or projects of the specified type type, created later.
+* **Globally**, for all {{ech}} deployments, or for all {{serverless-full}} projects of the same type ({{es-serverless}}, {{observability}}, or {{elastic-sec}}). In this case, the role will also apply to new deployments, or projects of the specified type, created later.
 * **Individually**, for specific deployments or projects only. To do that, you have to leave the **Role for all hosted deployments** field, or the **Role for all** for the project type, blank.
 
 {{ech}} deployments and {{serverless-full}} projects each have a set of predefined cloud resource access roles available:
@@ -59,14 +69,33 @@ You can set cloud resource access roles at two levels:
 
 If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` cloud resource access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges. To assign a custom role to users, go to **Cloud resource access** and select it from the list under the specific project it was created in.
 
+### Connected cluster access roles [ec_connected_cluster_access_roles]
+
+These roles apply when your organization uses [Cloud Connect](/deploy-manage/cloud-connect.md) to link self-managed, {{ece}}, or {{eck}} clusters to {{ecloud}} services. Role assignments can be scoped to all connected clusters in the organization or to specific clusters.
+
+The predefined roles for connected clusters are:
+
+* **Admin**: Members assigned this role for all connected clusters can connect new clusters to the organization or disconnect existing ones.
+
+* **Viewer**: Provides read-only access to {{ecloud}} services that interact with connected clusters.
+
+The exact permissions granted by **Admin** and **Viewer** depend on the {{ecloud}} service used with Cloud Connect. For [AutoOps](/deploy-manage/monitor/autoops.md), refer to [{{ecloud}} roles for AutoOps](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles).
+
+:::{note}
+As more services become available for use with [Cloud Connect](/deploy-manage/cloud-connect.md), refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
+:::
+
 ## {{ech}} predefined roles [ech-predefined-roles]
 
-For {{ech}} deployments, the following predefined roles are available:
+For {{ech}} deployments, the following predefined roles are available. Each role defines what users can do in the {{ecloud}} console for deployment management and within the deployment for access to {{kib}} and data.
 
-* **Admin**: Can manage deployment details, properties and security privileges, and is able to sign on to the deployment with superuser privileges. This role can be scoped to one or more deployments. In order to prevent scope expansion, only Admins on all deployments can create new deployments.
-* **Editor**: Has the same rights as Admin, except from deployment creation and management of security privileges. Editors are able to sign on to the deployment with the “editor” stack role. This role can be scoped to one or more deployments.
-* **Viewer**: Can view deployments, and can sign on to the deployment with the viewer Stack role. This role can be scoped to one or more deployments.
+Roles can be scoped to specific deployments or to all deployments.
 
+| Role name | {{ecloud}} access | Deployment access | Notes |
+|---|---|---|---|
+| **Admin** | Manage deployment details, properties, and security privileges within their scope | [`superuser` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-superuser), which grants full access to {{kib}}, cluster management, and all data indices | Only Admins scoped to all deployments can create new deployments |
+| **Editor** | Manage deployment details and properties within their scope, but cannot create new deployments or manage security | [`editor` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor), which grants full access to {{kib}} features and read-only access to user data indices | Some {{es}} HTTP APIs are not available due to limited cluster privileges, such as `GET _cat/indices` |
+| **Viewer** | Read-only access to deployments within their scope | [`viewer` built-in {{es}} role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-viewer), which grants read-only access to {{kib}} features and user data indices | |
 
 ### Mapping of {{ecloud}} roles with {{stack}} roles [ec-stack-user-org-member]
 
@@ -95,7 +124,7 @@ In the following table, the privileges outlined in **Project access** require [*
 You can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md) and apply them to your organization users.
 :::
 
-| Name | {{ecloud}} access | Project access | Availability |
+| Role name | {{ecloud}} access | Project access | Availability |
 | --- | --- | --- | --- |
 | Admin | Has full access to project management, properties, and security privileges. | Superuser role privileges | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md)[![{{observability}}](/deploy-manage/images/serverless-obs-badge.svg "")](../../../solutions/observability.md)[![Security](/deploy-manage/images/serverless-sec-badge.svg "")](../../../solutions/security.md) |
 | Developer | Manage project settings. | Creates API keys, indices, data streams, adds connectors, and builds visualizations. | [![{{es}}](/deploy-manage/images/serverless-es-badge.svg "")](../../../solutions/search.md) |
@@ -114,17 +143,14 @@ You can optionally [create custom roles in a project](/deploy-manage/users-roles
 
 ## Role scopes [ec-role-scoping]
 
-Roles are assigned to every member of an organization and can refer (or be scoped) to one or more specific deployments, or all deployments. When a role is scoped to all deployments it grants permissions on all existing and future deployments.
+Roles are assigned to every member of an organization. Depending on the role type, assignments can be scoped to specific {{ech}} deployments or {{serverless-short}} projects, connected clusters, or to all resources of a given type. When a role is scoped to all resources, it grants permissions on all existing and future resources of that type.
 
 This list describes the scope of the different roles:
 
-* **Organization owner**: This role is always scoped to administer all deployments.
-* **Billing admin**: This role does not refer to any deployment.
+* **Organization owner**: This role is always scoped to administer all deployments, projects and connected clusters.
+* **Billing admin**: This role does not refer to any deployment, project, or connected cluster.
 * **Cloud resource access roles**, including **Admin**: These roles can be scoped to either all deployments or projects, or specific deployments, project types, or projects.
-
-Members are only able to see the role assignments of other members under the organization they belong to, for role assignments they are able to manage. Members with the **Organization owner** role assigned are able to see the role assignments of every member of their organization.
-
-Members with the **Admin** role assigned are able to see role assignments for deployments or projects within their scope. For example, admins of all deployments and projects are able to see role assignments scoped to all and specific deployments and projects in the organization, while admins of specific deployments or projects only see role assignments scoped to those specific deployments or projects. This ensures that members assigned to specific deployments or projects do not try to remove role assignments from other members, and that the existence of other deployments or projects are not revealed to these members.
+* **Connected cluster access roles**: These roles can be scoped to either all connected clusters or selected clusters.
 
 ## Access options [access]
 ```{applies_to}
@@ -147,8 +173,10 @@ When **Cloud Console, {{es}}, and {{kib}}** access is not granted, roles that ar
 * Several predefined roles that are intended for project users, such as the Security **Tier 1 analyst** role, can view the relevant projects on the {{ecloud}} Console home page, but can't open the project to view their dashboards and visualizations.
 * [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) always require **Cloud Console, {{es}}, and {{kib}}** access. Without it, users have only **Viewer** access in the {{ecloud}} Console, and can't log in to the project.
 
+{applies_to}`serverless: preview` If your organization uses [{{cps}}](/deploy-manage/cross-project-search-config.md), the roles assigned to a user determine what data they can access across linked projects. Users can only see data from a linked project if their role on that project grants the necessary privileges. Refer to [Manage user access](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access).
+
 For details on the permissions granted for each role, refer to the [predefined roles table](#general-assign-user-roles-table).
 
 :::{tip}
 When inviting a user to your organization with the {{ecloud}} API, you can set their access surfaces in the invitation request. To grant {{ecloud}} Console-only access, pass an empty `application_id` array in the role assignment. For an example, refer to [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
-::: 
+:::

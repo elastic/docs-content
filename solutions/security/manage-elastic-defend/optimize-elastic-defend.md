@@ -17,7 +17,7 @@ If you encounter problems like incompatibilities with other antivirus software, 
 
 Endpoint artifacts — such as trusted applications and event filters — and Endpoint exceptions let you modify the behavior and performance of *{{elastic-endpoint}}*, the component installed on each host that performs {{elastic-defend}}'s threat monitoring, prevention, and response actions.
 
-The following table explains the differences between several Endpoint artifacts and exceptions, and how to use them:
+The following table explains the differences between several Endpoint artifacts and exceptions, and how to use them. For value syntax differences (such as escaping rules for file paths), refer to [Exception types and value syntax](exception-types-and-syntax.md).
 
 |     |     |
 | --- | --- |

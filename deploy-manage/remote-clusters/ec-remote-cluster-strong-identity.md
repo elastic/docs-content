@@ -23,7 +23,7 @@ Both the local and remote clusters must run {{stack}} 9.3 or later to use strong
 
 ## Configure strong identity verification
 
-To use strong identity verification, both the local and remote clusters must be configured to sign and verify cross-cluster request headers. All settings described in this guide are dynamic and can be configured using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) or as static [`elasticsearch.yml` configuration](/deploy-manage/stack-settings.md#configure-stack-settings) settings.
+To use strong identity verification, both the local and remote clusters must be configured to sign and verify cross-cluster request headers. All settings described in this guide are dynamic and can be configured using the [cluster settings API]({{es-apis}}operation/operation-cluster-put-settings) or as static [`elasticsearch.yml` configuration](/deploy-manage/stack-settings.md#configure-stack-settings) settings.
 
 For a full list of available strong identity verification settings for remote clusters, refer to the [remote cluster settings reference](elasticsearch://reference/elasticsearch/configuration-reference/remote-clusters.md#remote-cluster-signing-settings).
 

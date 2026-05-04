@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Configure advanced ingest pipeline processors as a JSON-encoded array in classic Streams when UI-based processors don't cover your use case.
 ---
 # Manual pipeline configuration [streams-manual-pipeline-configuration]
 

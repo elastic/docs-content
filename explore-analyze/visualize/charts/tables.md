@@ -163,7 +163,9 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -201,7 +203,9 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each column group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -248,6 +252,9 @@ When creating or editing a table visualization, you can customize several appear
     - This is helpful for tables with many rows to improve performance and readability.
     
     When disabled, all rows appear in a scrollable view (up to the maximum returned by the query).
+
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 ## Table examples
 
