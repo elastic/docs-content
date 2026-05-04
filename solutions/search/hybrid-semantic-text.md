@@ -7,20 +7,48 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
+type: tutorial
+description: Learn how to combine lexical and semantic search using a `text` field with `copy_to` into `semantic_text`, from mapping through bulk ingest to hybrid queries.
 ---
 
 # Hybrid search with `semantic_text` [semantic-text-hybrid-search]
 
+This tutorial walks you through hybrid search using the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type together with a `text` field for lexical search. By the end, you will be able to:
 
-This tutorial demonstrates how to perform hybrid search, combining semantic search with traditional full-text search.
+- Create an index mapping with `semantic_text` and a `text` field linked by `copy_to`
+- Ingest documents so the same text is embedded for semantic search and available for full-text search
+- Run hybrid queries using [retrievers](retrievers-overview.md)
 
-In hybrid search, semantic search retrieves results based on the meaning of the text, while full-text search focuses on exact word matches. By combining both methods, hybrid search delivers more relevant results, particularly in cases where relying on a single approach may not be sufficient.
+In hybrid search, semantic retrieval scores by meaning while lexical search scores by term overlap. Combining them often results in more robust rankings than either alone.
 
-The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service]({{es-apis}}operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+The recommended way to use hybrid search in the {{stack}} follows the `semantic_text` workflow: you avoid hand-building {{infer}} ingest pipelines for embeddings while still keeping a dedicated `text` field for keyword-style matching. 
 
-## Create an index mapping [hybrid-search-create-index-mapping]
+## Requirements [semantic-text-requirements]
+
+- This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md), which is automatically enabled on {{ech}} deployments and {{serverless-short}} projects.
+::::{note}
+You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+::::
+- To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an {{infer}} endpoint using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
+
+:::{tip}
+To run the `curl` examples in this tutorial, set the following environment variables:
+```bash
+export ELASTICSEARCH_URL="your-elasticsearch-url"
+export API_KEY="your-api-key"
+```
+To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). [Learn more about finding your endpoint and credentials](/solutions/elasticsearch-solution-project/search-connection-details.md).
+:::
+
+## Create the index mapping [hybrid-search-create-index-mapping]
 
 The destination index will contain both the embeddings for semantic search and the original text field for full-text search. This structure enables the combination of semantic search and full-text search.
+
+You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. The following examples show you both scenarios.
+
+:::::::{tab-set}
+
+::::::{tab-item} Using EIS
 
 ```console
 PUT semantic-embeddings
@@ -28,11 +56,11 @@ PUT semantic-embeddings
   "mappings": {
     "properties": {
       "semantic_text": { <1>
-        "type": "semantic_text"
+        "type": "semantic_text" <2>
       },
-      "content": { <2>
+      "content": { <3>
         "type": "text",
-        "copy_to": "semantic_text" <3>
+        "copy_to": "semantic_text" <4>
       }
     }
   }
@@ -40,78 +68,212 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings for semantic search.
-2. The name of the field to contain the original text for lexical search.
-3. The textual data stored in the `content` field will be copied to `semantic_text` and processed by the {{infer}} endpoint.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+3. The name of the field to contain the original text for lexical search.
+4. The textual data stored in the `content` field will be copied to `semantic_text` and processed by the {{infer}} endpoint.
 
+::::::
 
-::::{note}
-If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings]({{es-apis}}operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
-
-::::
-
-
-
-## Load data [semantic-text-hybrid-load-data]
-
-In this step, you load the data that you later use to create embeddings from.
-
-Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
-
-Download the file and upload it to your cluster using the [Data Visualizer](../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
-
-
-## Reindex the data for hybrid search [hybrid-search-reindex-data]
-
-Reindex the data from the `test-data` index into the `semantic-embeddings` index. The data in the `content` field of the source index is copied into the `content` field of the destination index. The `copy_to` parameter set in the index mapping creation ensures that the content is copied into the `semantic_text` field. The data is processed by the {{infer}} endpoint at ingest time to generate embeddings.
-
-::::{note}
-This step uses the reindex API to simulate data ingestion. If you are working with data that has already been indexed, rather than using the `test-data` set, reindexing is still required to ensure that the data is processed by the {{infer}} endpoint and the necessary embeddings are generated.
-
-::::
-
+::::::{tab-item} Using ML-nodes
 
 ```console
-POST _reindex?wait_for_completion=false
+PUT semantic-embeddings
 {
-  "source": {
-    "index": "test-data",
-    "size": 10 <1>
-  },
-  "dest": {
-    "index": "semantic-embeddings"
+  "mappings": {
+    "properties": {
+      "semantic_text": { <1>
+        "type": "semantic_text", <2>
+        "inference_id": ".elser-2-elasticsearch" <3>
+      },
+      "content": { <4>
+        "type": "text",
+        "copy_to": "semantic_text" <5>
+      }
+    }
   }
 }
 ```
 
-1. The default batch size for reindexing is 1000. Reducing size to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
+1. The name of the field to contain the generated embeddings for semantic search.
+2. The field to contain the embeddings is a `semantic_text` field.
+3. The `.elser-2-elasticsearch` preconfigured {{infer}} endpoint for the `elasticsearch` service is used. To use a different {{infer}} service, you must create an {{infer}} endpoint first using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put) and then specify it in the `semantic_text` field mapping using the `inference_id` parameter.
+4. The name of the field to contain the original text for lexical search.
+5. The textual data stored in the `content` field will be copied to `semantic_text` and processed by the {{infer}} endpoint.
 
+::::::
 
-The call returns a task ID to monitor the progress:
+::::::{tab-item} Using curl (EIS)
 
-```console
-GET _tasks/<task_id>
+```bash
+curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "mappings": {
+         "properties": {
+           "semantic_text": { <1>
+             "type": "semantic_text" <2>
+           },
+           "content": { <3>
+             "type": "text",
+             "copy_to": "semantic_text" <4>
+           }
+         }
+       }
+     }'
 ```
 
-Reindexing large datasets can take a long time. You can test this workflow using only a subset of the dataset.
+1. The name of the field to contain the generated embeddings for semantic search.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+3. The name of the field to contain the original text for lexical search.
+4. The textual data stored in the `content` field will be copied to `semantic_text` and processed by the {{infer}} endpoint.
 
-To cancel the reindexing process and generate embeddings for the subset that was reindexed:
+::::::
 
+:::::::
+
+:::{dropdown} Example response
 ```console
-POST _tasks/<task_id>/_cancel
+{
+  "acknowledged": true,
+  "shards_acknowledged": true,
+  "index": "semantic-embeddings"
+}
 ```
+:::
+
+:::{note}
+Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments we recommend explicitly specifying the `inference_id`. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations).
+:::
+
+:::{note}
+For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md). For advanced configuration, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
+:::
+
+::::{note}
+If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings]({{es-apis}}operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
+::::
 
 
-## Perform hybrid search [hybrid-search-perform-search]
+## Ingest data [hybrid-semantic-text-ingest-data]
 
-After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search to combine semantic and lexical search results. Choose between [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
+With your index mapping in place, you can add some data. You only need to populate the `content` field: {{es}} stores it as `text` for lexical search and, because of `copy_to`, copies the same string into `semantic_text`, which sends the text to the configured {{infer}} endpoint and stores embeddings on the document.
 
-For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, see [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
+Use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to ingest the same sample documents as in [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md):
 
 ::::{tab-set}
+
+:::{tab-item} Console
+
+```console
+POST _bulk
+{ "index": { "_index": "semantic-embeddings", "_id": "1" } }
+{ "content": "After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness." }
+{ "index": { "_index": "semantic-embeddings", "_id": "2" } }
+{ "content": "Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions." }
+{ "index": { "_index": "semantic-embeddings", "_id": "3" } }
+{ "content": "Tune cluster performance by monitoring thread pools and refresh interval." }
+```
+
+:::
+
+:::{tab-item} curl
+
+```bash
+curl -X POST "${ELASTICSEARCH_URL}/_bulk" \
+     -H "Content-Type: application/x-ndjson" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     --data-binary @- << 'EOF'
+{ "index": { "_index": "semantic-embeddings", "_id": "1" } }
+{ "content": "After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness." }
+{ "index": { "_index": "semantic-embeddings", "_id": "2" } }
+{ "content": "Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions." }
+{ "index": { "_index": "semantic-embeddings", "_id": "3" } }
+{ "content": "Tune cluster performance by monitoring thread pools and refresh interval." }
+EOF
+```
+
+:::
+
+::::
+
+:::{dropdown} Example response
+
+```console
+{
+  "errors": false,
+  "took": 400,
+  "items": [
+    {
+      "index": {
+        "_index": "semantic-embeddings",
+        "_id": "1",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
+        },
+        "_seq_no": 0,
+        "_primary_term": 1,
+        "status": 201
+      }
+    },
+    {
+      "index": {
+        "_index": "semantic-embeddings",
+        "_id": "2",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
+        },
+        "_seq_no": 1,
+        "_primary_term": 1,
+        "status": 201
+      }
+    },
+    {
+      "index": {
+        "_index": "semantic-embeddings",
+        "_id": "3",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
+        },
+        "_seq_no": 2,
+        "_primary_term": 1,
+        "status": 201
+      }
+    }
+  ]
+}
+```
+
+1. `false` indicates all indexing operations completed without errors.
+2. Each document was created with `content` indexed for search; the same text was copied to `semantic_text` and embedded via the configured {{infer}} endpoint.
+
+:::
+
+If you encounter errors, check that your index mapping and {{infer}} endpoint are configured correctly.
+
+## Run a hybrid search query [hybrid-search-perform-search]
+
+With data ingested into `semantic-embeddings`, you can run hybrid search that combines lexical matches on `content` with semantic retrieval on `semantic_text`. Choose between [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
+
+For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, refer to [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
+
+::::::{tab-set}
 :group: query-type
 
-:::{tab-item} Query DSL
-:sync: retrievers
+:::::{tab-item} Query DSL
+:sync: dsl
 
 This example uses [retrievers syntax](retrievers-overview.md) with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
 
@@ -151,71 +313,9 @@ GET semantic-embeddings/_search
 3. The second `standard` retriever refers to the semantic search.
 4. The `semantic_text` field is used to perform the semantic search.
 
+:::::
 
-After performing the hybrid search, the query will return the combined top 10 documents for both semantic and lexical search criteria. The results include detailed information about each document.
-
-```console-result
-{
-  "took": 107,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 473,
-      "relation": "eq"
-    },
-    "max_score": null,
-    "hits": [
-      {
-        "_index": "semantic-embeddings",
-        "_id": "wv65epIBEMBRnhfTsOFM",
-        "_score": 0.032786883,
-        "_rank": 1,
-        "_source": {
-          "semantic_text": {
-            "inference": {
-              "inference_id": "my-elser-endpoint",
-              "model_settings": {
-                "task_type": "sparse_embedding"
-              },
-              "chunks": [
-                {
-                  "text": "What so many out there do not realize is the importance of what you do after you work out. You may have done the majority of the work, but how you treat your body in the minutes and hours after you exercise has a direct effect on muscle soreness, muscle strength and growth, and staying hydrated. Cool Down. After your last exercise, your workout is not over. The first thing you need to do is cool down. Even if running was all that you did, you still should do light cardio for a few minutes. This brings your heart rate down at a slow and steady pace, which helps you avoid feeling sick after a workout.",
-                  "embeddings": {
-                    "exercise": 1.571044,
-                    "after": 1.3603843,
-                    "sick": 1.3281639,
-                    "cool": 1.3227621,
-                    "muscle": 1.2645415,
-                    "sore": 1.2561599,
-                    "cooling": 1.2335974,
-                    "running": 1.1750668,
-                    "hours": 1.1104802,
-                    "out": 1.0991782,
-                    "##io": 1.0794281,
-                    "last": 1.0474665,
-                   (...)
-                  }
-                }
-              ]
-            }
-          },
-          "id": 8408852,
-          "content": "What so many out there do not realize is the importance of (...)"
-        }
-      }
-    ]
-  }
-}
-```
-:::
-
-:::{tab-item} ES|QL
+:::::{tab-item} ES|QL
 :sync: esql
 
 The ES|QL approach uses a combination of the match operator `:` and the match function `match()` to perform hybrid search.
@@ -231,15 +331,142 @@ POST /_query?format=txt
   """
 }
 ```
-1. The `METADATA _score` clause is used to return the score of each document
-2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
-3. Semantic search using the `match()` function on the `semantic_text` field with a boost of `0.75`
-4. Sorts by descending score and limits to 1000 results
-:::
+
+1. The `METADATA _score` clause returns the relevance score of each document.
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) performs keyword matching on the `content` field.
+3. The `match()` function runs semantic search on the `semantic_text` field with a boost of `0.75`.
+4. Sorts by descending score and limits to 1000 results.
+
+:::::
+
+:::::{tab-item} Query DSL (curl)
+
+```bash
+curl -X GET "${ELASTICSEARCH_URL}/semantic-embeddings/_search" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "retriever": {
+         "rrf": {
+           "retrievers": [
+             {
+               "standard": {
+                 "query": {
+                   "match": {
+                     "content": "How to avoid muscle soreness while running?"
+                   }
+                 }
+               }
+             },
+             {
+               "standard": {
+                 "query": {
+                   "semantic": {
+                     "field": "semantic_text",
+                     "query": "How to avoid muscle soreness while running?"
+                   }
+                 }
+               }
+             }
+           ]
+         }
+       }
+     }'
+```
+
+:::::
+
+:::::{tab-item} ES|QL (curl)
+
+```bash
+curl -X POST "${ELASTICSEARCH_URL}/_query?format=txt" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "query": "FROM semantic-embeddings METADATA _score | WHERE content: \"muscle soreness running?\" OR match(semantic_text, \"How to avoid muscle soreness while running?\", { \"boost\": 0.75 }) | SORT _score DESC | LIMIT 1000"
+     }'
+```
+
+:::::
+
+::::::
+
+Both the retriever and ES|QL approaches return hits ranked by a fused relevance score: lexical matches on `content` and semantic matches on `semantic_text` both contribute, so passages that align with the query in either sense tend to appear higher.
+
+::::{dropdown} Example Query DSL response
+
+```console
+{
+  "took": 14,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 3,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "semantic-embeddings",
+        "_id": "1",
+        "_score": 0.032786883,
+        "_rank": 1,
+        "_source": {
+          "content": "After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness."
+        }
+      },
+      {
+        "_index": "semantic-embeddings",
+        "_id": "2",
+        "_score": 0.027912449,
+        "_rank": 2,
+        "_source": {
+          "content": "Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions."
+        }
+      },
+      {
+        "_index": "semantic-embeddings",
+        "_id": "3",
+        "_score": 0.016393441,
+        "_rank": 3,
+        "_source": {
+          "content": "Tune cluster performance by monitoring thread pools and refresh interval."
+        }
+      }
+    ]
+  }
+}
+```
+
+1. Hits are merged and ranked after RRF; `_rank` reflects the fused ordering. Scores and ranks are illustrative.
+2. `_source` shows the indexed `content`. Embeddings are stored on `semantic_text` and are typically omitted from search hits by default.
+
+::::
+
+::::{dropdown} Example ES|QL response
+
+```txt
+                                                     content                                                     |      _score
+-----------------------------------------------------------------------------------------------------------------+------------------
+After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness.|      26.408897
+Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions.|      11.229613
+Tune cluster performance by monitoring thread pools and refresh interval.                                        |       0.304480
+```
+
+1. Rows are sorted by `_score` descending after combining the `content` keyword match and boosted `semantic_text` match. Values are illustrative.
+
 ::::
 
 ## Related pages
 
-- To set up semantic search before combining it with hybrid search, follow the [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md) tutorial.
-- To reduce memory usage for dense vector embeddings at scale, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
+* For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, refer to [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
+* For a notebook-style walkthrough of `semantic_text` in hybrid search, see [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb).
+* To set up semantic-only search on the same sample data model, follow the [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md) tutorial.
+* To learn how to optimize storage and search performance when using dense vector embeddings, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 
