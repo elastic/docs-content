@@ -9,8 +9,8 @@ Each product hub is the canonical entry point for that product's documentation: 
 
 ## Elastic Stack products
 
-- [Elasticsearch](elasticsearch/v9.md)
-- [Kibana](kibana/v9.md)
+- [Elasticsearch](/products/elasticsearch/v9.md)
+- [Kibana](/products/kibana/v9.md)
 - Logstash *(coming soon)*
 - Beats *(coming soon)*
 
