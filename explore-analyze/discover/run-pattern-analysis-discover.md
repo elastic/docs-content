@@ -15,7 +15,7 @@ Pattern analysis in **Discover** helps you find patterns in unstructured log mes
 
 :::{tip}
 :applies_to: { stack: preview 9.4, serverless: preview }
-You can also detect patterns from {{esql}} using the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function. Discover renders the results as expandable groups with row actions. See [](/explore-analyze/discover/try-esql.md#esql-cascade-layout).
+You can also detect patterns from {{esql}} using the [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) grouping function. Discover renders the results as expandable groups with row actions. Refer to [](/explore-analyze/discover/try-esql.md#esql-cascade-layout).
 :::
 
 Pattern analysis works on any text field. This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own log data.

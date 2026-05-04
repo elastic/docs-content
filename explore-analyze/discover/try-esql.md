@@ -411,7 +411,7 @@ FROM kibana_sample_data_logs
 % RESTORE FOR 9.5 - end
 
 ::::{tip}
-Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. See [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
 ### Grouped row actions
@@ -427,7 +427,7 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 
 ### Opt out of the grouped layout
 
-When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge, and hovering it confirms that grouped results are a technical preview.
+When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
 
 The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
 
