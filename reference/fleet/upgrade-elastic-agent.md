@@ -288,6 +288,14 @@ You can view the status of the automatic upgrade in the following ways:
 
 - On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
 
+## Automatic reassignment to version-specific policies after an upgrade [upgrade-version-specific-policy-assignment]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you upgrade an {{agent}} that is enrolled in a policy containing an integration with a minimum agent version requirement, {{fleet}} reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This usually completes within a minute after the upgraded agent checks in with {{fleet}}.
 
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
 
@@ -310,7 +318,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 
 ### Upgrade an RPM {{agent}} installation: [_upgrade_an_rpm_agent_installation]
@@ -327,12 +335,12 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 ## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
-```yaml {applies_to}
+
+```{applies_to}
 stack: ga 9.3.0+
-serverless: ga
 ```
 
 :::{admonition} Elastic subscription
