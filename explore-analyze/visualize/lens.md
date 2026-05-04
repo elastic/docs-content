@@ -55,7 +55,8 @@ If you already know the visualization type you want to use, and how you want to 
 
 ::::{step} Choose the visualization type
 
-New visualizations default to **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+New visualizations generally default to **Bar** or **Line** charts. You can change that manually to the visualization type that you want.
+
 As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
 ::::
@@ -493,6 +494,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Paginate table**
 :   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
+
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 #### Pie charts
 

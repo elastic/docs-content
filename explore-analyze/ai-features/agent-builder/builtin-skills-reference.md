@@ -44,11 +44,11 @@ serverless:
   observability: ga
 ```
 
-$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: unavailable`
+$$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4`
 :   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, alert investigations, or general questions about services and their performance.
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
+% $$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
+% :   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
 
 % TODO: Confirm GA status for observability.rca — marked experimental in Kibana source.
 
@@ -58,17 +58,51 @@ serverless:
   security: ga
 ```
 
+$$$agent-builder-alert-analysis-skill$$$ `alert-analysis` {applies_to}`stack: ga 9.4+`
+:   Investigates {{elastic-sec}} alerts and recommends a disposition. Fetches alert context, finds related alerts that share entities (`host.name`, `user.name`, `source.ip`, `destination.ip`), correlates with {{elastic-sec}} Labs threat intelligence, and assesses severity. Use when investigating a specific alert, triaging alert queues, or understanding alert context.
+
+    **Assigned tools:** `security.alerts`, `security.security_labs_search`, `security.entity_risk_score`
+
+    **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled so risk scores are available for involved hosts and users. To use threat intelligence correlation, install **Security Labs** documentation from [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+
+    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates automatically when you attach an alert from the alert flyout in {{elastic-sec}}, which provides the alert context the skill needs.
+
 $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack: ga 9.4+`
-:   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior. Use to discover risky entities or profile a specific entity by ID.
+:   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior, including signals from Security {{ml-app}} anomaly detection jobs. Use to discover risky entities or profile a specific entity by ID.
+
+    **Assigned tools:** `security.get_entity`, `security.search_entities`
+
+    **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
+
+    **Related skills:** [`find-security-ml-jobs`](#agent-builder-find-security-ml-jobs-skill) for deeper investigation of anomalies surfaced during entity analysis.
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
-:   Investigates anomalous behavior detected by {{ml-app}} jobs, including abnormal access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
+:   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual access patterns, lateral movement, unexpected logins, suspicious domain activity, and large data transfers.
+
+    **Assigned tools:** `platform.core.execute_esql`, `platform.core.generate_esql`, `security.get_entity`
+
+    **Prerequisites:** Relevant Security {{ml-app}} jobs installed and running. For guidance, refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md).
 
 $$$agent-builder-threat-hunting-skill$$$ `threat-hunting` {applies_to}`stack: ga 9.4+`
-:   Runs hypothesis-driven threat hunts using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
+:   Runs hypothesis-driven threat hunts using iterative {{esql}} exploration. Covers IOC search, anomaly identification, baseline behavioral comparison, and lateral movement tracking.
+
+    **Assigned tools:** `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.get_index_mapping`, `platform.core.cases`
 
 $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}`stack: ga 9.4+`
-:   Creates and edits {{elastic-sec}} detection rules. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, query, or index patterns.
+:   Creates and edits {{elastic-sec}} detection rules. Supports {{esql}} rule type only. Use when a user asks to build a rule from natural language or edit rule fields such as severity, tags, MITRE ATT&CK mappings, schedule, or query.
+
+    **Assigned tools:** `security.create_detection_rule`, `security.security_labs_search`, `platform.core.generate_esql`, `platform.core.product_documentation`
+
+    **Prerequisites:** To ground rule drafting in threat research, install **Security Labs** documentation from [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+
+    **How to activate:** This skill is attachment-driven and activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" in chat — the skill creates the attachment and renders an **Apply to creation** or **Update rule** button so you can save the change to the rule form.
+
+$$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
+:   Diagnoses [Elastic Defend](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps. Registered only when the `automaticTroubleshootingSkill` experimental feature flag is enabled.
+
+    **Assigned tools:** `platform.core.search`, `platform.core.get_document_by_id`, `platform.core.integration_knowledge`
+
+    **Prerequisites:** [Elastic Defend](/solutions/security/configure-elastic-defend.md) deployed and reporting. The `automaticTroubleshootingSkill` experimental feature flag must be enabled for the skill to appear.
 
 ## Elasticsearch skills
 ```{applies_to}
@@ -78,6 +112,9 @@ serverless:
 
 $$$agent-builder-search-catalog-ecommerce-skill$$$ `search.catalog-ecommerce` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building catalog and e-commerce search solutions on {{es}}.
+
+$$$agent-builder-search-elasticsearch-onboarding-skill$$$ `search.elasticsearch-onboarding` {applies_to}`stack: ga 9.4+`
+:   Guides developers through building a complete search experience on {{es}}, from understanding requirements and designing an index mapping to generating and testing API snippets in Dev Tools.
 
 $$$agent-builder-search-hybrid-search-skill$$$ `search.hybrid-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building hybrid search solutions that combine keyword and semantic search.
@@ -90,6 +127,9 @@ $$$agent-builder-search-rag-chatbot-skill$$$ `search.rag-chatbot` {applies_to}`s
 
 $$$agent-builder-search-semantic-search-skill$$$ `search.semantic-search` {applies_to}`stack: ga 9.4+`
 :   Guides agents through building semantic and vector search solutions on {{es}}.
+
+$$$agent-builder-search-use-case-library-skill$$$ `search.use-case-library` {applies_to}`stack: ga 9.4+`
+:   Presents a library of {{es}} use cases when users want to explore what they can build, need help identifying which category their project falls into, or are looking for inspiration. Covers product search, knowledge base search, AI assistants, recommendations, customer support, location-based search, log and event search, and vector database use cases.
 
 $$$agent-builder-search-vector-database-skill$$$ `search.vector-database` {applies_to}`stack: ga 9.4+`
 :   Guides agents through using {{es}} as a vector database.

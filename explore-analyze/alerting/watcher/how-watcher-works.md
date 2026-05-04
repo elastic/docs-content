@@ -36,7 +36,7 @@ A watch consists of a *trigger*, *input*, *condition*, and *actions*. The action
 :   Specify what happens when the watch condition is met.
 
 $$$watch-definition-example$$$
-For example, the following snippet shows a [create or update watch](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch) request that defines a watch that looks for log error events:
+For example, the following snippet shows a [create or update watch]({{es-apis}}operation/operation-watcher-put-watch) request that defines a watch that looks for log error events:
 
 ```console
 PUT _watcher/watch/log_errors
@@ -168,10 +168,10 @@ By default, when you add a watch it is immediately set to the *active* state, re
 
 You can also set a watch to the *inactive* state. Inactive watches are not registered with a trigger engine and can never be triggered.
 
-To set a watch to the inactive state when you create it, set the [`active`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch) parameter to *inactive*. To deactivate an existing watch, use the [deactivate watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-deactivate-watch). To reactivate an inactive watch, use the [activate watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch).
+To set a watch to the inactive state when you create it, set the [`active`]({{es-apis}}operation/operation-watcher-put-watch) parameter to *inactive*. To deactivate an existing watch, use the [deactivate watch API]({{es-apis}}operation/operation-watcher-deactivate-watch). To reactivate an inactive watch, use the [activate watch API]({{es-apis}}operation/operation-watcher-activate-watch).
 
 ::::{note}
-You can use the [execute watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch) to force the execution of a watch even when it is inactive.
+You can use the [execute watch API]({{es-apis}}operation/operation-watcher-execute-watch) to force the execution of a watch even when it is inactive.
 ::::
 
 
