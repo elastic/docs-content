@@ -22,11 +22,10 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 To create synthetic monitor status rules, you need the following:
 
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
-- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ### Indices used by this rule
 
-This rule queries the Synthetics indices. The default is `synthetics-*`. You cannot override these indices on a per-rule basis.
+This rule queries the index patterns specified in the Uptime settings. The default is `heartbeat-*` (might include `synthetics-*`). You cannot override these indices on a per-rule basis.
 
 ## Filters [observability-monitor-status-alert-filters]
 
