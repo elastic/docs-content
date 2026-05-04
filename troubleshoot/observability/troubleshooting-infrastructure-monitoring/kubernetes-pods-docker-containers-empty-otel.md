@@ -40,12 +40,12 @@ Use one of these methods:
   1. In {{kib}}, go to **Management → Integrations**, or click **Add Data** on the Observability home page.
   2. Search for and select the **Kubernetes** integration.
   3. Choose the **OpenTelemetry: Full Observability** guide.
-  4. The wizard automatically installs the [Kubernetes OpenTelemetry Assets](/reference/integrations/kubernetes_otel) package and provides the correct configuration steps for the EDOT Collector.
+  4. The wizard automatically installs the [Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) package and provides the correct configuration steps for the EDOT Collector.
 
 - **Manual installation**
 
   1. In {{kib}}, go to **Management → Integrations**.
-  2. Search for and install the [Kubernetes OpenTelemetry Assets](/reference/integrations/kubernetes_otel) integration.
+  2. Search for and install the [Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) integration.
   3. Repeat for the **System OpenTelemetry Assets** integration, which is required for host-level metrics on the nodes.
 
 **Step 2: Access the dashboards**
