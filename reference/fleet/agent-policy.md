@@ -146,7 +146,7 @@ The {{agent}} status indicator and {{agent}} logs indicate that the policy is be
 :::{note}
 :applies_to: { stack: ga 9.4+, serverless: ga }
 
-When you assign an agent to a policy that contains an integration with a minimum {{agent}} version requirement, {{fleet}} automatically reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This typically happens within about a minute.
+When you assign an agent to a policy that contains an integration with a minimum {{agent}} version requirement, {{fleet}} automatically reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This typically happens within a minute.
 :::
 
 ## Edit or delete an integration policy [policy-edit-or-delete]
