@@ -11,6 +11,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
 
+## April 28, 2026 [elastic-cloud-serverless-04282026-deprecations]
+* Removes the pre-built Threat Hunting Agent from Agent Builder. Security AI workflows now use the Elastic AI Agent with skills. For more information, refer to [#263996]({{kib-pull}}263996).
+
 ## March 9, 2026 [elastic-cloud-serverless-03092026-deprecations]
 * Deprecated `Enable CCS Warning Privileges` in {{kib}} advanced settings. For more information, refer to [#252183]({{kib-pull}}252183).
 

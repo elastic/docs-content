@@ -11,6 +11,8 @@ description: Create detection rules using Event Query Language (EQL) to detect e
 
 # Event correlation (EQL) rules [eql-rule-type]
 
+## Overview
+
 Event correlation rules use [Event Query Language (EQL)](elasticsearch://reference/query-languages/eql/eql-syntax.md) to detect ordered sequences of events, single events with complex conditions, or the absence of expected events. EQL is purpose-built for event-based data and excels at expressing time-ordered relationships that other query languages cannot.
 
 ### When to use an EQL rule

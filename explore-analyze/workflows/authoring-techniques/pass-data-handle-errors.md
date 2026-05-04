@@ -1,9 +1,9 @@
 ---
 navigation_title: Pass data and handle errors
 applies_to:
-  stack: preview 9.3
-  serverless: preview
-description: Pass data between workflow steps with templating, reference inputs and constants, and handle step failures with retries and fallbacks.
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
+description: Pass data between workflow steps with templating, reference inputs and constants, and handle step failures with retries, fallbacks, continue, and a cross-workflow error handler.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -51,15 +51,12 @@ steps:
           user.id: "u-123"
 
   - name: create_case_for_user
-    type: kibana.createCaseDefaultSpace
+    type: cases.createCase
     with:
       title: "Investigate user u-123"
-      description: "A case has been opened for user {{steps.find_user_by_id.output.hits.hits[0]._source.user.fullName}}."
+      description: "A case has been opened for user {{ steps.find_user_by_id.output.hits.hits[0]._source.user.fullName }}."
+      owner: "securitySolution"
       tags: ["user-investigation"]
-      connector:
-        id: "none"
-        name: "none"
-        type: ".none"
 ```
 
 In this example:
@@ -70,7 +67,15 @@ In this example:
 
 ## Error handling [workflows-error-handling]
 
-By default, if any step in a workflow fails, the entire workflow execution stops immediately. You can override this behavior using the `on-failure` block, which supports retry logic, fallback steps, and continuation options.
+By default, if any step fails the entire workflow execution stops immediately (the `abort` behavior). Override this with the `on-failure` block, which supports retry logic, fallback steps, and continuation. For failures that cross workflow boundaries, the [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) lets a separate handler workflow react after another workflow has failed.
+
+### Three layers of error handling [workflows-error-layers]
+
+| Layer | What it controls | Use for |
+|---|---|---|
+| **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
+| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
+| **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
 ### Configuration levels [workflows-on-failure-levels]
 
@@ -88,7 +93,7 @@ steps:
         delay: "5s"
 ```
 
-**Workflow-level** (configured under `settings`) - applies to all steps as the default error handling behavior:
+**Workflow-level** (configured under `settings`) — applies to all steps as the default error handling behavior:
 
 ```yaml
 settings:
@@ -101,26 +106,35 @@ steps:
     type: http
 ```
 
+Precedence: per-step `on-failure` > workflow-level `settings.on-failure` > engine default (`abort`).
+
 :::{note}
 Step-level `on-failure` configuration always overrides workflow-level settings.
 :::
 
 ### Retry [workflows-on-failure-retry]
 
-Retries the failed step a configurable number of times, with an optional delay between attempts.
+Retries the failed step a configurable number of times. The full shape accepts backoff strategy, maximum delay, jitter, and a KQL condition so you only retry on specific errors.
 
 ```yaml
 on-failure:
   retry:
-    max-attempts: 3  # Required, minimum 1 (for example, "1", "2", "5")
-    delay: "5s"      # Optional, duration format (for example, "5s", "1m", "2h")
+    max-attempts: 5           # Total attempts, including the first. Required, minimum 1.
+    delay: "1s"               # Base delay between attempts. Duration format, for example "5s", "1m".
+    strategy: exponential     # "fixed" (default) or "exponential".
+    multiplier: 2             # Only used with strategy: exponential.
+    max-delay: "30s"          # Ceiling on the delay between retries.
+    jitter: true              # Add randomness to avoid thundering-herd retry storms.
+    condition: "steps.self.error.status : 429"   # Optional KQL predicate over steps.self.error.
 ```
 
-The workflow fails when all retries are exhausted.
+`condition` is a KQL expression evaluated against `steps.self.error`. Use it to retry only on specific failure modes: for example, retry on HTTP 429s and 5xxs but not on 4xx client errors.
+
+The workflow fails when all retries are exhausted, unless paired with `fallback` or `continue`.
 
 ### Fallback [workflows-on-failure-fallback]
 
-Executes alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow executes two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
 
 ```yaml
 on-failure:
@@ -140,12 +154,16 @@ Within fallback steps, access error information from the failed primary step usi
 
 ### Continue [workflows-on-failure-continue]
 
-Continues workflow execution even if a step fails. The failure is recorded, but does not interrupt the workflow.
+Continues workflow execution even if a step fails. The failure is recorded at `steps.<name>.error`, but the workflow moves on to the next step. Use this for non-critical steps whose failure shouldn't take down the whole workflow.
 
 ```yaml
 on-failure:
   continue: true
 ```
+
+### Abort [workflows-on-failure-abort]
+
+Stops the workflow. This is the default when no `on-failure` is configured, so you rarely need to write it explicitly. Use `abort` when a downstream step depends on this step's output and continuing makes no sense.
 
 ### Combining options [workflows-on-failure-combining]
 
@@ -153,7 +171,7 @@ You can combine multiple failure-handling options. They are processed in this or
 
 In the following example:
 1. The step retries up to 2 times with a 1-second delay.
-2. If all retries fail, the fallback steps execute.
+2. If all retries fail, the fallback steps run.
 3. The workflow continues regardless of the outcome.
 
 ```yaml
@@ -179,8 +197,23 @@ In the following example:
 ### Restrictions [workflows-on-failure-restrictions]
 
 - Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
-- Fallback steps execute only after all retries have been exhausted.
+- Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
+
+### Handle failures across workflows [workflows-cross-workflow-handler]
+
+For production-critical workflows, the final layer is a separate handler workflow that fires when another workflow fails. The [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) fires after a workflow execution reaches the `failed` terminal state, so you can build handlers that page on-call, open a case, or post to a dedicated index for workflow-failure observability. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the trigger reference and examples.
+
+### Choose the right error-handling layer [workflows-error-layer-decision]
+
+| Problem | Use |
+|---|---|
+| "This API is flaky and should retry automatically." | Per-step `on-failure: retry`. |
+| "Every step in this workflow should get 2 retries by default." | Workflow-level `settings.on-failure: retry`. |
+| "This step is nice-to-have, so don't fail the workflow if it dies." | Per-step `on-failure: continue`. |
+| "Try the primary API, and if it fails, use the backup API." | Per-step `on-failure: fallback`. |
+| "When a production workflow fails, page on-call and open a case." | A separate [`workflows.failed` handler workflow](/explore-analyze/workflows/triggers/event-driven-triggers.md). |
+| "This workflow is critical and I want monitoring on its failure rate." | `workflows.failed` handler that writes to an index, plus your existing observability stack. |
 
 ## Dynamic values with templating [workflows-dynamic-values]
 

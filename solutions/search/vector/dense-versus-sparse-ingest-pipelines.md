@@ -14,7 +14,7 @@ products:
 ::::{important}
 
 * For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
-* This tutorial predates the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
+* This tutorial predates the [{{infer}} endpoint]({{es-apis}}group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
 ::::
 
 This guide shows how to implement semantic search in {{es}} with deployed NLP models: from selecting a model, to configuring ingest pipelines, to running queries.
@@ -231,7 +231,7 @@ Combining semantic and lexical search into one hybrid search request using [reci
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
+Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
 
 ```console
 GET my-index/_search
