@@ -33,7 +33,7 @@ To create SLO burn rate rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the SLO Observability SLI and summary indices. The default are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
+This rule queries the SLO Observability SLI and summary indices. The defaults are `.slo-observability.sli*` and `.slo-observability.summary*`. You cannot override these indices on a per-rule basis.
 
 ## Create SLO burn rate rules
 
@@ -54,7 +54,7 @@ To create an SLO burn rate rule:
     * **Burn rate threshold**: Enter a burn rate for this window.
     * **Action Group**: Select a severity for this window.
 
-7. Define the interval to check the rule e.g. check every 1 minute.
+7. Define the interval to check the rule for example check every 1 minute.
 8. (Optional) Set up **Actions**.
 9. **Save** your rule.
 
