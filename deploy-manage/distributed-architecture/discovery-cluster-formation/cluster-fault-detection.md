@@ -21,33 +21,4 @@ Additionally, each node periodically verifies that its data path is healthy by w
 $$$cluster-fault-detection-cluster-state-publishing$$$
 The elected master node will also remove nodes from the cluster if nodes are unable to apply an updated cluster state within a reasonable time. The timeout defaults to 2 minutes starting from the beginning of the cluster state update. Refer to [Publishing the cluster state](cluster-state-overview.md#cluster-state-publishing) for a more detailed description.
 
-## Troubleshooting an unstable cluster [cluster-fault-detection-troubleshooting]
-
-See [*Troubleshooting an unstable cluster*](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md).
-
-
-#### Diagnosing `disconnected` nodes [_diagnosing_disconnected_nodes]
-
-See [Diagnosing `disconnected` nodes](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md#troubleshooting-unstable-cluster-disconnected).
-
-
-#### Diagnosing `lagging` nodes [_diagnosing_lagging_nodes]
-
-See [Diagnosing `lagging` nodes](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md#troubleshooting-unstable-cluster-lagging).
-
-
-#### Diagnosing `follower check retry count exceeded` nodes [_diagnosing_follower_check_retry_count_exceeded_nodes]
-
-See [Diagnosing `follower check retry count exceeded` nodes](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md#troubleshooting-unstable-cluster-follower-check).
-
-
-#### Diagnosing `ShardLockObtainFailedException` failures [_diagnosing_shardlockobtainfailedexception_failures]
-
-See [Diagnosing `ShardLockObtainFailedException` failures](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md#troubleshooting-unstable-cluster-shardlockobtainfailedexception).
-
-
-#### Diagnosing other network disconnections [_diagnosing_other_network_disconnections]
-
-See [Diagnosing other network disconnections](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md#troubleshooting-unstable-cluster-network).
-
-
+For more information, refer to [Troubleshooting an unstable cluster](../../../troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md).
