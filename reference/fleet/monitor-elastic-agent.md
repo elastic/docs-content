@@ -128,8 +128,7 @@ serverless: ga
 
 Because the configuration sent to an {{agent}} on a [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md) can differ from the primary policy template, {{fleet}} provides an action to view the rendered YAML delivered to a specific agent.
 
-1. On the **Agents** tab, select the **Actions** menu for a specific {{agent}}, or select **Actions** from the agent's details page.
-2. Select **Maintenance and diagnostics → View agent policy**.
+On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics → View agent policy**.
 
 The flyout shows the rendered YAML configuration and the revision of the primary policy the agent uses.
 

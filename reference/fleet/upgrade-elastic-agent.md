@@ -341,6 +341,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 
 ```{applies_to}
 stack: ga 9.3.0+
+serverless: ga
 ```
 
 :::{admonition} Elastic subscription
@@ -351,7 +352,7 @@ The manual rollback feature for {{agent}} gives you the ability to roll back to 
 
 To roll back one or more {{agent}} upgrades:
 1. Go to the **Actions** menu.
-2. Choose **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
+2. Select **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
 
 For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
 For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 
