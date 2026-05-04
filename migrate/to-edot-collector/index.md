@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate to the EDOT Collector
+navigation_title: Move to the EDOT Collector
 applies_to:
   stack: ga 9.2+
   serverless:
@@ -9,7 +9,7 @@ products:
   - id: edot-collector
 ---
 
-# Migrate to the {{edot}} Collector
+# Move to the {{edot}} Collector
 
 The {{edot}} Collector is a distribution of the OpenTelemetry Collector that is optimized for use with Elastic. It can replace both the {{apm-server}} and an contrib OpenTelemetry Collector in your telemetry pipeline.
 

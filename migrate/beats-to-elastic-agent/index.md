@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate to Elastic Agent
+navigation_title: Move to Elastic Agent
 applies_to:
   stack: ga
   serverless: ga
@@ -9,7 +9,7 @@ products:
   - id: elastic-agent
 ---
 
-# Migrate to {{agent}}
+# Move to {{agent}}
 
 {{agent}} is a unified agent for logs, metrics, security data, and threat prevention. It replaces standalone {{beats}} deployments and simplifies management through {{fleet}}.
 

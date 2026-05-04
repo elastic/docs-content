@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate APM agents to EDOT
+navigation_title: Move APM agents to EDOT
 applies_to:
   stack: ga
   serverless:
@@ -8,7 +8,7 @@ products:
   - id: observability
 ---
 
-# Migrate {{apm-agent}}s to {{edot}}
+# Move {{apm-agent}}s to {{edot}}
 
 The Elastic {{product.apm}} language agents are being superseded by Elastic Distributions of OpenTelemetry (EDOT) — Elastic's OpenTelemetry-native instrumentation libraries. Migrating to EDOT aligns your application instrumentation with the OpenTelemetry standard and gives you access to the full EDOT ecosystem.
 
