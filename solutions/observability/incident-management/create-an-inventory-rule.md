@@ -34,7 +34,7 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
-# Requirements
+## Requirements
 
 To create inventory rules, you need the following:
 
