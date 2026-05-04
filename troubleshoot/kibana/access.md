@@ -52,11 +52,11 @@ To view {{kib}}'s status, use the `status` endpoint. For example, `localhost:560
 :screenshot:
 :::
 
-For JSON-formatted server status details, use the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status). For example, `localhost:5601/api/status`.
+For JSON-formatted server status details, use the [{{kib}} current status API]({{kib-apis}}v9/operation/operation-get-status). For example, `localhost:5601/api/status`.
 
 ## Triage {{kib}} health using the status API [access-triage]
 
-The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API](https://www.elastic.co/docs/api/doc/kibana/v9/operation/operation-get-status) is saved locally as `kibana_status.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
+The following steps demonstrate a typical investigative flow. It assumes the [{{kib}} current status API]({{kib-apis}}v9/operation/operation-get-status) is saved locally as `kibana_status.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor.
 
 1. Check the overall status.
 

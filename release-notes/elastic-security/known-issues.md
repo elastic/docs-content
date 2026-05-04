@@ -23,6 +23,30 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4
+**Applies to: {{agent}} 9.3.4**
+
+**Impact**<br>
+If you use the SentinelOne integration, response actions such as host isolation fail with a `500 Internal Server Error` (`search_phase_execution_exception`). This is caused by a bug in {{agent}} 9.3.4 where a performance optimization incorrectly serializes certain timestamp fields from Beats-based inputs and integrations to an empty `{}` JSON object instead of a valid timestamp value.
+
+The affected field is `event.created`. When this field is empty, {{kib}} cannot execute the underlying search that response actions depend on. For example, SentinelOne alert documents are written with `event.created` set to `{}` instead of a timestamp:
+
+```json
+  "event": {
+    "dataset": "sentinel_one.agent",
+    "created": {}
+  }
+```
+
+This does not affect the primary `@timestamp` field.
+
+**Workaround**<br>
+Downgrade to {{agent}} 9.3.3, which is not affected by this issue.
+
+**Fix**<br>
+The performance optimization has been reverted. A fix will be available in the next release. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+:::
+
 :::{dropdown} Details about gap fills aren't properly updated
 
 Applies to: 9.3
