@@ -13,44 +13,31 @@ products:
 
 **Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
 
-## Supported chart types [chart-types]
+Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+
+## Create visualizations [create-the-visualization-panel]
 
 With Lens, you can create the following visualization types:
 
-**Charts to show change over time**
-
-| Visualization | Best for |
+| Visualization type | Description |
 |---|---|
+| **Standard charts to show change over time** | |
 | [Bar](/explore-analyze/visualize/charts/bar-charts.md) | Compare values across discrete categories or show distributions with histogram buckets. |
 | [Line](/explore-analyze/visualize/charts/line-charts.md) | Show how a metric changes over time or another continuous dimension. |
 | [Area](/explore-analyze/visualize/charts/area-charts.md) | Show change over time while emphasizing volume or stacked proportions. |
-
-**Charts to show part-to-whole relationships**
-
-| Visualization | Best for |
-|---|---|
+| **Charts to show part-to-whole relationships** | |
 | [Pie](/explore-analyze/visualize/charts/pie-charts.md) | Show how parts make up a whole with a small number of slices. |
 | [Treemap](/explore-analyze/visualize/charts/treemap-charts.md) | Show hierarchical proportions across nested categories. |
 | [Waffle](/explore-analyze/visualize/charts/waffle-charts.md) | Show part-to-whole as a grid of equal cells where filled cells represent proportion. |
 | [Mosaic](/explore-analyze/visualize/charts/mosaic-charts.md) | Compare part-to-whole across two categorical dimensions in a tiled layout. |
-
-**Charts to show a single value or progress**
-
-| Visualization | Best for |
-|---|---|
+| **Charts to show a single value or progress** | |
 | [Metric](/explore-analyze/visualize/charts/metric-charts.md) | Highlight a single KPI or a small set of critical numbers. |
 | [Gauge](/explore-analyze/visualize/charts/gauge-charts.md) | Show progress toward a target or status against thresholds for a single metric. |
-
-**Additional visualizations for tabular data, spatial patterns, and text analysis.**
-
-| Visualization | Best for |
-|---|---|
+| [More charts](/explore-analyze/visualize/charts/tables.md) | **Additional visualizations for tabular data, spatial patterns, and text analysis.** |
 | [Table](/explore-analyze/visualize/charts/tables.md) | Present precise values, rankings, or multi-metric details in a compact layout. |
 | [Heat map](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal density or patterns across two dimensions using color intensity. |
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
-
-## Create visualizations [create-the-visualization-panel]
 
 If you're unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
 
@@ -87,6 +74,9 @@ In the Lens editor, you can customize the appearance of your visualization by cl
 
 :::::
 
+You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_in_square` , then choose the layer type and select the {{data-source}}. 
+To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
+
 ## Create visualizations with the API [create-visualizations-with-the-api]
 
 ```{applies_to}
@@ -118,31 +108,23 @@ The following chart-type pages include **Create this chart using the API** dropd
 
 ## Add annotations [add-annotations]
 
-Annotations highlight specific points or ranges on a chart. For example, you can call attention to a deployment, an outage, or any event that may have affected your data.
+Annotations add contextual information to a chart, such as marking when a deployment or event occurred. You can mark specific timestamps or time ranges and add notes or icons.
 
-Annotations appear as a layer in the Lens editor. They can be:
-
-- **Point annotations**: mark a specific timestamp.
-- **Range annotations**: mark a time interval.
-
-Annotations can use a static timestamp you define, or reference events from an {{product.elasticsearch}} index.
+Annotations are based on event data from an {{product.elasticsearch}} index or from a time range you define manually. They appear as a distinct **Annotations** layer in the Lens editor.
 
 For step-by-step instructions, refer to [Add annotations to visualizations](/explore-analyze/visualize/annotations.md).
 
 ## Add reference lines [add-reference-lines]
 
-Reference lines mark a threshold, target, or baseline directly on a chart to give viewers immediate context without needing to scan a separate legend or tooltip.
+Reference lines help you identify thresholds and targets in your data. For example, you can add a reference line to show the average value or a performance target.
 
-A reference line can use:
-
-- A **static value** you set manually.
-- A **dynamic value** computed from the data in the chart, such as the average, maximum, or 95th percentile.
+Reference lines can use a static value or dynamic values, such as the average or 95th percentile of a metric in your data.
 
 For step-by-step instructions, refer to [Add reference lines to visualizations](/explore-analyze/visualize/reference-lines.md).
 
 ## Formulas and functions [formulas]
 
-Use the formula editor to combine multiple metrics, apply math operations, and compute derived values directly inside a Lens visualization.
+Use the **Formula** function to perform math on aggregated data by writing an expression. For example, to show the percentage of failures, add a **Formula** dimension that divides the count of failures by the total count, and multiplies by 100.
 
 For step-by-step instructions and examples, refer to [Formulas](/explore-analyze/visualize/lens-formulas.md).
 
