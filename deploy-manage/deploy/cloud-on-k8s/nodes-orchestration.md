@@ -18,7 +18,7 @@ This section covers the following topics:
 * [StatefulSets orchestration](#k8s-statefulsets)
 * [Limitations](#k8s-orchestration-limitations)
 * [Advanced control during rolling upgrades](#k8s-advanced-upgrade-control)
-* [Cluster Rolling Restart](#cluster-rolling-restart)
+* [Cluster rolling restarts](#cluster-rolling-restart)
 * [Restart allocation delay](#restart-allocation-delay)
 
 ## NodeSets overview [k8s-nodesets]
@@ -204,21 +204,32 @@ For a complete list of available predicates, their meaning, and example usage, r
 eck: ga 3.4.0
 ```
 
-You can trigger a graceful rolling restart of an {{es}} cluster without changing the cluster spec (version, image, or pod template). The operator reuses the same rolling upgrade path: it uses the {{es}} node shutdown API, respects the same [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md), and restarts one node at a time.
+You can trigger a graceful rolling restart of an {{es}} cluster without changing the cluster spec. The operator reuses the same rolling upgrade path: it uses the {{es}} node shutdown API, respects the same [ECK upgrade predicates](cloud-on-k8s://reference/upgrade-predicates.md), and restarts one node at a time.
 
-### Annotations
+### Trigger a rolling restart
 
-Set these annotations on the `Elasticsearch` resource metadata:
+To schedule a rolling restart, set a `eck.k8s.elastic.co/restart-trigger` annotation on the `Elasticsearch` resource metadata.
 
-| Annotation | Description |
-|------------|-------------|
-| `eck.k8s.elastic.co/restart-trigger` | **Required to trigger.** Set or change this value (for example to a timestamp) to start a rolling restart. The value is propagated to pod annotations and is visible in the {{es}} node shutdown API response as the shutdown reason. |
+Set or change this value to start a rolling restart. The value is propagated to pod annotations and is visible in the {{es}} node shutdown API response as the shutdown reason.
 
 You can also set the [`eck.k8s.elastic.co/restart-allocation-delay`](#restart-allocation-delay) annotation to control the shard allocation delay during the restart.
 
-To trigger another rolling restart later, update the `restart-trigger` value (for example to a new timestamp). Removing the annotation does **not** trigger a new restart; the operator retains the last trigger value on the pod template. Removing the annotation also does **not** cancel an in-progress rolling restart—pods not yet restarted will still be restarted with the previous trigger value. The operator may emit an admission webhook warning (non-blocking) when you remove the annotation. Re-applying the same `restart-trigger` value (for example after removing it and setting it again) may not trigger a new rolling restart if all pods already have that value; the operator may emit an admission webhook warning when the value is unchanged.
+To trigger another rolling restart later, update the `restart-trigger` value.
+
+Rolling restart progress is visible in the {{es}} resource status under **In Progress Operations** → **Upgrade**, with node-level messages such as "Deleting pod for rolling restart".
+
+### Behavior
+
+Keep the following behaviors in mind when working with the `restart-trigger` annotation:
+
+* Removing the annotation does not trigger a new restart. The operator retains the last trigger value on the pod template.
+* Removing the annotation does not cancel an in-progress restart. Pods not yet restarted will still restart with the previous trigger value.
+* Re-applying the same value might not trigger a new restart if all pods already have that value.
+* The operator may emit a non-blocking admission webhook warning when the annotation is removed or set to an unchanged value.
 
 ### Example
+
+In the following example, a timestamp trigger is used as the restart-trigger value. This value is visible in the {{es}} node shutdown API response as the shutdown reason.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -237,21 +248,17 @@ spec:
         node.store.allow_mmap: false
 ```
 
-Progress is visible in the {{es}} resource status under **In Progress Operations** → **Upgrade**, with node-level messages such as "Deleting pod for rolling restart".
-
 ## Restart allocation delay [restart-allocation-delay]
 
 ```{applies_to}
 eck: ga 3.4.0
 ```
 
-The `eck.k8s.elastic.co/restart-allocation-delay` annotation controls the `allocation_delay` parameter passed to the {{es}} node shutdown API when nodes are taken offline. Any value set on this annotation is used during both **upgrades** and **custom triggered [rolling restarts](#cluster-rolling-restart)**.
+The `eck.k8s.elastic.co/restart-allocation-delay` annotation controls the `allocation_delay` parameter passed to the {{es}} node shutdown API when nodes are taken offline. Any value set on this annotation is used during both upgrades and custom triggered [rolling restarts](#cluster-rolling-restart).
 
 Set this annotation on the `Elasticsearch` resource metadata:
 
-| Annotation | Description |
-|------------|-------------|
-| `eck.k8s.elastic.co/restart-allocation-delay` | Optional. A duration string (for example `"5m"`, `"20m"`) that tells {{es}} how long to wait before reallocating shards from a node that is shutting down. If unset, the {{es}} default is used. Invalid or negative values are logged and ignored. |
+`eck.k8s.elastic.co/restart-allocation-delay` accepts a duration string such as `"5m"`, `"20m"`, that tells {{es}} how long to wait before reallocating shards from a node that is shutting down. If unset, the {{es}} default is used. Invalid or negative values are logged and ignored. 
 
 By default, when a node begins shutting down, {{es}} waits a short period before it starts moving shards to other nodes. Setting a longer `allocation_delay` avoids unnecessary shard movements during planned restarts where the node is expected to return quickly. Setting a shorter value causes {{es}} to start rebalancing sooner, which can be useful if the restart is expected to take a long time.
 
@@ -273,5 +280,3 @@ spec:
         node.roles: ["master", "data", "ingest", "ml"]
         node.store.allow_mmap: false
 ```
-
-In this example the 20-minute delay applies whenever ECK restarts a node, whether the restart is part of a version upgrade, a spec change, or a manually triggered rolling restart initiated by `eck.k8s.elastic.co/restart-trigger`.
