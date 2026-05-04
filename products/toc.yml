@@ -1,6 +1,6 @@
 project: 'Product hubs'
 toc:
   - file: index.md
-  - toc: kibana
-  - toc: elasticsearch
+  - file: elasticsearch/v9.md
+  - file: kibana/v9.md
 
