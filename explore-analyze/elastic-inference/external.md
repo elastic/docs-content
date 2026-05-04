@@ -17,12 +17,10 @@ You can use your own API keys to integrate with third-party model providers like
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 Go to the **External {{infer}}** page by using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-<!--
-:::{image} /explore-analyze/images/kibana-external-endpoints-ui.png
+:::{image} /explore-analyze/images/kibana-inference-external-ui.png
 :alt: External inference UI
 :screenshot:
 :::
--->
 
 :::{tip}
 To access **External {{infer}}**, you need the `Inference Endpoints: all` and `Advanced Settings: read` {{kib}} privileges.
