@@ -105,7 +105,7 @@ In {{ech}} the following additional limitations apply:
 
 In {{ece}}, the following additional limitations apply:
 
-* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
+* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API]({{ece-apis}}operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 

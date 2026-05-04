@@ -98,7 +98,7 @@ serverless: ga
 
 When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names:
 
-- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear pre-selected. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
@@ -196,7 +196,7 @@ serverless: preview
 In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
 
 :::{note}
-This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) and [Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create).
+This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
 :::
 
 ### Create a lookup index from the editor [create-lookup-esql]
