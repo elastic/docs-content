@@ -1,5 +1,6 @@
 project: 'Product hubs'
 toc:
+  - file: index.md
   - toc: kibana
   - toc: elasticsearch
 
