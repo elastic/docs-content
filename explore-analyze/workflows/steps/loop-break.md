@@ -19,12 +19,13 @@ The `loop.break` step exits the innermost enclosing [`foreach`](/explore-analyze
 
 ## Parameters
 
-The `loop.break` step takes no step-specific parameters; only the standard `name` and `type` fields required on every step.
+The `loop.break` step takes no step-specific parameters; only the standard `name`, `type`, and `with` fields required on every step.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `loop.break`. |
+| `with` | top level | object | Yes | Pass `{}` (empty object). Every workflow step requires a `with` block, even when the step has no `with`-level parameters. |
 
 ## Example: Stop on first critical match
 
@@ -44,6 +45,7 @@ The `loop.break` step takes no step-specific parameters; only the standard `name
             comment: "First critical alert found at position {{ foreach.index }}"
         - name: exit
           type: loop.break
+          with: {}
 ```
 
 The loop terminates as soon as the first critical alert is processed.

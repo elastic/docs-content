@@ -87,6 +87,7 @@ You can configure `on-failure` at two levels:
 steps:
   - name: api-call
     type: http
+    with: {}
     on-failure:
       retry:
         max-attempts: 3
@@ -104,6 +105,7 @@ settings:
 steps:
   - name: api-call
     type: http
+    with: {}
 ```
 
 Precedence: per-step `on-failure` > workflow-level `settings.on-failure` > engine default (`abort`).

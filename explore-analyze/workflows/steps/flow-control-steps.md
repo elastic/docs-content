@@ -136,7 +136,7 @@ For the full parameter reference, refer to [Wait step](/explore-analyze/workflow
 
 ## `loop.break` [loop-break]
 
-Exit the innermost enclosing loop (`foreach` or `while`) immediately. Takes no parameters.
+Exit the innermost enclosing loop (`foreach` or `while`) immediately. Takes no step-specific parameters, but every workflow step requires a `with` block, so pass an empty `with: {}`.
 
 ```yaml
 - name: stop_on_match
@@ -145,13 +145,14 @@ Exit the innermost enclosing loop (`foreach` or `while`) immediately. Takes no p
   steps:
     - name: exit
       type: loop.break
+      with: {}
 ```
 
 For the full reference, refer to [Loop break step](/explore-analyze/workflows/steps/loop-break.md).
 
 ## `loop.continue` [loop-continue]
 
-Skip to the next iteration of the innermost enclosing loop. Takes no parameters.
+Skip to the next iteration of the innermost enclosing loop. Takes no step-specific parameters, but every workflow step requires a `with` block, so pass an empty `with: {}`.
 
 ```yaml
 - name: skip_empty
@@ -160,6 +161,7 @@ Skip to the next iteration of the innermost enclosing loop. Takes no parameters.
   steps:
     - name: next
       type: loop.continue
+      with: {}
 ```
 
 For the full reference, refer to [Loop continue step](/explore-analyze/workflows/steps/loop-continue.md).

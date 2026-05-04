@@ -54,9 +54,11 @@ steps:
     steps:
       - name: process-enabled
         type: http
+        with: {}
     else:
       - name: log-disabled
         type: console
+        with: {}
 ```
 
 If the expression evaluates to `undefined`, it defaults to `false`.
@@ -73,6 +75,7 @@ steps:
     steps:
       - name: process-data
         type: http
+        with: {}
 ```
 
 ### Supported KQL features
@@ -192,4 +195,5 @@ steps:
     steps:
       - name: process-authorized
         type: http
+        with: {}
 ```
