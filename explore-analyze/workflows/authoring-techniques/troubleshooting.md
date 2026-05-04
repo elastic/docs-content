@@ -198,7 +198,7 @@ payload: "{{ event.alerts[0] | json }}"
 parsed: "{{ steps.http.output.body | json_parse }}"
 ```
 
-Refer to [Liquid filters](/explore-analyze/workflows/concepts/liquid-filters.md).
+Refer to [Liquid filters](/explore-analyze/workflows/reference/liquid-filters.md).
 
 ### An array is passed as a string [workflows-ts-array-string]
 
@@ -368,8 +368,8 @@ settings:
 ## Still stuck [workflows-ts-still-stuck]
 
 - Search this documentation for error messages or parameter names.
-- Review the [Cheat sheet](/explore-analyze/workflows/concepts/cheat-sheet.md) for quick syntax references.
-- Review the [Step type index](/explore-analyze/workflows/concepts/step-types.md) for the full catalog.
+- Review the [Cheat sheet](/explore-analyze/workflows/reference/cheat-sheet.md) for quick syntax references.
+- Review the [Step type index](/explore-analyze/workflows/reference/step-types.md) for the full catalog.
 - File an issue on the [{{kib}} GitHub repo](https://github.com/elastic/kibana/issues/new/choose) with a minimal reproduction.
 
 % Ben Ironside Goldstein, 2026-04-27: The following PM claims were reconciled with PR A's

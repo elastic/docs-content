@@ -187,6 +187,6 @@ Reads left to right: map each alert to its host name, remove duplicates, take th
 ## Related [workflows-filters-related]
 
 - [Templating engine](/explore-analyze/workflows/templating.md): The mental model and the `{{ }}` vs. `${{ }}` distinction.
-- [Context variables](/explore-analyze/workflows/concepts/context-variables.md): The data you can filter.
+- [Context variables](/explore-analyze/workflows/reference/context-variables.md): The data you can filter.
 - [Data steps](/explore-analyze/workflows/steps/data.md): For transformations too big for filters (filter, group, parse, extract).
 - [LiquidJS documentation](https://liquidjs.com/filters/overview.html): Upstream filter semantics and corner cases.

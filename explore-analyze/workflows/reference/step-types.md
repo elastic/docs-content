@@ -116,5 +116,5 @@ These still work in existing workflows but can't be used in new ones. Refer to t
 ## Related [workflows-step-types-related]
 
 - [Steps overview](/explore-analyze/workflows/steps.md): Common fields every step accepts.
-- [Cheat sheet](/explore-analyze/workflows/concepts/cheat-sheet.md): Step menu organized by intent rather than alphabetically.
+- [Cheat sheet](/explore-analyze/workflows/reference/cheat-sheet.md): Step menu organized by intent rather than alphabetically.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): 57 example workflows that exercise these step types.

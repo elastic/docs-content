@@ -255,8 +255,8 @@ Base URL of the {{kib}} instance. Useful for building deep links in notification
 ## Related [workflows-ctx-related]
 
 - [Templating engine](/explore-analyze/workflows/templating.md): How Liquid expressions evaluate these variables.
-- [Liquid filters](/explore-analyze/workflows/concepts/liquid-filters.md): Transformations you can apply to any variable.
-- [Cheat sheet](/explore-analyze/workflows/concepts/cheat-sheet.md): The condensed version of this table.
+- [Liquid filters](/explore-analyze/workflows/reference/liquid-filters.md): Transformations you can apply to any variable.
+- [Cheat sheet](/explore-analyze/workflows/reference/cheat-sheet.md): The condensed version of this table.
 - [Steps overview](/explore-analyze/workflows/steps.md): Each step's reference documents what its `output` contains.
 
 % Ben Ironside Goldstein, 2026-04-16: PM source claimed `event.step.*` for workflows.failed payload.

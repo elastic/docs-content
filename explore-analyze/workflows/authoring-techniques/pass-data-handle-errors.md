@@ -234,7 +234,7 @@ Template variables are the data sources you can reference inside template expres
 - `execution.*` — metadata about the current execution.
 - `foreach.item`, `foreach.index`, `foreach.total` — loop context inside a `foreach` step.
 
-For the full canonical reference with every variable and an example per entry, refer to [Context variables](/explore-analyze/workflows/concepts/context-variables.md).
+For the full canonical reference with every variable and an example per entry, refer to [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 

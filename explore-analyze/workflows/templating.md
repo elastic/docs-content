@@ -322,7 +322,7 @@ The workflow engine provides context variables that you can access from any Liqu
 - `variables.<name>` — set by `data.set` steps.
 - `now`, `kibanaUrl` — standard helpers.
 
-For the full canonical reference with every variable, the trigger-specific shape of `event.*`, and an example per entry, refer to [Context variables](/explore-analyze/workflows/concepts/context-variables.md).
+For the full canonical reference with every variable, the trigger-specific shape of `event.*`, and an example per entry, refer to [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 ## Template rendering behavior [workflows-template-rendering]
 

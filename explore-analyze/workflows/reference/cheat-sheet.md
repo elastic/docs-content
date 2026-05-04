@@ -92,7 +92,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Call another workflow | `workflow.execute` (synchronous), `workflow.executeAsync` (asynchronous, tech preview) |
 | Log | `console` |
 
-Full list: [Step type index](/explore-analyze/workflows/concepts/step-types.md).
+Full list: [Step type index](/explore-analyze/workflows/reference/step-types.md).
 
 ## Liquid quick reference [workflows-cheat-liquid]
 
@@ -116,7 +116,7 @@ Top-10 patterns:
 "${{ event.alerts | where: 'severity', 'critical' }}"         # filter inline
 ```
 
-Full reference: [Liquid filters](/explore-analyze/workflows/concepts/liquid-filters.md).
+Full reference: [Liquid filters](/explore-analyze/workflows/reference/liquid-filters.md).
 
 ## Context variables at a glance [workflows-cheat-context]
 
@@ -134,7 +134,7 @@ Full reference: [Liquid filters](/explore-analyze/workflows/concepts/liquid-filt
 | `variables.*` | Variables set by `data.set`. |
 | `now`, `kibanaUrl` | Standard helpers. |
 
-Full reference: [Context variables](/explore-analyze/workflows/concepts/context-variables.md).
+Full reference: [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 ## Error-handling strategies [workflows-cheat-errors]
 
@@ -173,7 +173,7 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
 ## Related [workflows-cheat-related]
 
 - [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md): Hands-on tutorial if you're new.
-- [Step type index](/explore-analyze/workflows/concepts/step-types.md): The A-Z lookup.
+- [Step type index](/explore-analyze/workflows/reference/step-types.md): The A-Z lookup.
 - [Troubleshooting](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): When something isn't working.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): 57 example workflows you can adapt.
 
