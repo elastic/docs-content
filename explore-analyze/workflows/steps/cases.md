@@ -628,7 +628,7 @@ In 9.3, case management lived under the `kibana.*` namespace. Those step types r
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](#cases-addcomment) |
 
-Refer to [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
+Refer to [Migrate from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for side-by-side replacement patterns.
 
 ## Related
 
