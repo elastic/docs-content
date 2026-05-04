@@ -473,7 +473,9 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment**.
