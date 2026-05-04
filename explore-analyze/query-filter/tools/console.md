@@ -216,7 +216,7 @@ You can export requests:
 
 * by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
 
-    When running copied requests from an external environment, you’ll need to add [authentication information](https://www.elastic.co/docs/api/doc/kibana/authentication) to the request.
+    When running copied requests from an external environment, you’ll need to add [authentication information]({{kib-apis}}authentication) to the request.
 
 
 

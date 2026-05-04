@@ -15,8 +15,7 @@ products:
 The **Query activity** page in {{kib}} gives you a real-time view of all search work running in your {{es}} cluster. Use it to find long-running or resource-intensive queries, trace them back to their source, and cancel them when needed.
 
 Query activity surfaces all in-flight search requests in your cluster, including ES|QL, DSL, EQL, and SQL queries, multi-search requests, and background searches.
-It shows only what is currently running. For historical query data, use query logs or [AutoOps](/deploy-manage/monitor/autoops.md).
-<!-- TODO: link "query logs" to the ES query logs page once https://github.com/elastic/docs-content/pull/5039 is merged -->
+It shows only what is currently running. For historical query data, use {applies_to}`stack: preview 9.4` {applies_to}`serverless: unavailable` [query logs](/deploy-manage/monitor/logging-configuration/query-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
 
 :::{image} /deploy-manage/images/query-activity.png
 :alt: The Query activity page showing a list of running queries with their task ID, query type, source, start time, and run time
@@ -126,3 +125,9 @@ To change this threshold:
 2. Search for `query_activity:minRunningTime`.
 3. Enter a new value in milliseconds.
 4. Select **Save changes**.
+
+## Related pages
+
+- {applies_to}`stack: preview 9.4` {applies_to}`serverless: unavailable` [Query logging](/deploy-manage/monitor/logging-configuration/query-logs.md)
+- [Slow query and index logging](/deploy-manage/monitor/logging-configuration/slow-logs.md)
+- [Tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md)

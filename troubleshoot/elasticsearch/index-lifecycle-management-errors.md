@@ -51,7 +51,7 @@ PUT /my-index-000001
 
 After five days, {{ilm-init}} attempts to shrink `my-index-000001` from two shards to four shards. Because the shrink action cannot *increase* the number of shards, this operation fails and {{ilm-init}} moves `my-index-000001` to the `ERROR` step.
 
-You can use the [{{ilm-init}} Explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to get information about what went wrong:
+You can use the [{{ilm-init}} Explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) to get information about what went wrong:
 
 ```console
 GET /my-index-000001/_ilm/explain
@@ -138,7 +138,7 @@ Once you fix the problem that put an index in the `ERROR` step, you might need t
 POST /my-index-000001/_ilm/retry
 ```
 
-{{ilm-init}} subsequently attempts to re-run the step that failed. You can use the [{{ilm-init}} Explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to monitor the progress.
+{{ilm-init}} subsequently attempts to re-run the step that failed. You can use the [{{ilm-init}} Explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) to monitor the progress.
 
 
 ## Common {{ilm-init}} setting issues [_common_ilm_init_setting_issues]
@@ -148,7 +148,7 @@ POST /my-index-000001/_ilm/retry
 
 When setting up an [{{ilm-init}} policy](../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) or [automating rollover with {{ilm-init}}](../../manage-data/lifecycle/index-lifecycle-management/rollover.md), be aware that `min_age` can be relative to either the rollover time or the index creation time.
 
-If you use [{{ilm-init}} rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md), `min_age` is calculated relative to the time the index was rolled over. This is because the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) generates a new index and updates the `age` of the previous index to reflect the rollover time. If the index hasn’t been rolled over, then the `age` is the same as the `creation_date` for the index.
+If you use [{{ilm-init}} rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md), `min_age` is calculated relative to the time the index was rolled over. This is because the [rollover API]({{es-apis}}operation/operation-indices-rollover) generates a new index and updates the `age` of the previous index to reflect the rollover time. If the index hasn’t been rolled over, then the `age` is the same as the `creation_date` for the index.
 
 You can override how `min_age` is calculated using the `index.lifecycle.origination_date` and `index.lifecycle.parse_origination_date` [{{ilm-init}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md).
 
@@ -165,7 +165,7 @@ Problems with rollover aliases are a common cause of errors. Consider using [dat
 
 ### Rollover alias [x] can point to multiple indices, found duplicated alias [x] in index template [z] [_rollover_alias_x_can_point_to_multiple_indices_found_duplicated_alias_x_in_index_template_z]
 
-The target rollover alias is specified in an index template’s `index.lifecycle.rollover_alias` setting. You need to explicitly configure this alias *one time* when you [bootstrap the initial index](/manage-data/lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md#ilm-gs-alias-bootstrap). The rollover action then manages setting and updating the alias to [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover#rollover-index-api-desc) to each subsequent index.
+The target rollover alias is specified in an index template’s `index.lifecycle.rollover_alias` setting. You need to explicitly configure this alias *one time* when you [bootstrap the initial index](/manage-data/lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md#ilm-gs-alias-bootstrap). The rollover action then manages setting and updating the alias to [roll over]({{es-apis}}operation/operation-indices-rollover#rollover-index-api-desc) to each subsequent index.
 
 Do not explicitly configure this same alias in the aliases section of an index template.
 
@@ -176,7 +176,7 @@ See this [resolving `duplicate alias` video](https://www.youtube.com/watch?v=Ww5
 
 Either the index is using the wrong alias or the alias does not exist.
 
-Check the `index.lifecycle.rollover_alias` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings). To see what aliases are configured, use [_cat/aliases](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases).
+Check the `index.lifecycle.rollover_alias` [index setting]({{es-apis}}operation/operation-indices-get-settings). To see what aliases are configured, use [_cat/aliases]({{es-apis}}operation/operation-cat-aliases).
 
 See this [resolving `not point to index` video](https://www.youtube.com/watch?v=NKSe67x7aw8) for an example troubleshooting walkthrough.
 
@@ -194,7 +194,7 @@ See this [resolving `empty or not defined` video](https://www.youtube.com/watch?
 
 Only one index can be designated as the write index for a particular alias.
 
-Use the [aliases](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases) API to set `is_write_index:false` for all but one index.
+Use the [aliases]({{es-apis}}operation/operation-indices-update-aliases) API to set `is_write_index:false` for all but one index.
 
 See this [resolving `more than one write index` video](https://www.youtube.com/watch?v=jCUvZCT5Hm4) for an example troubleshooting walkthrough.
 
@@ -227,11 +227,10 @@ This indicates the ILM action cannot be executed because the user that ILM uses 
 
 ### Policy [<policy-name>] does not exist
 
-The error occurs because the index is assigned to an ILM policy that does not exist in the cluster. To fix this, you can either [create the missing policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) with the required settings or [link the index to an existing ILM policy](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/index-lifecycle-management-settings#index-lifecycle-name).
+The error occurs because the index is assigned to an ILM policy that does not exist in the cluster. To fix this, you can either [create the missing policy]({{es-apis}}operation/operation-ilm-put-lifecycle) with the required settings or [link the index to an existing ILM policy](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/index-lifecycle-management-settings#index-lifecycle-name).
 
 
 ### Index has a preference for tiers [xxx] and node does not meet the required [xxx] tier
 
-If the [allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) returns this error, it indicates that shards cannot be assigned according to the current attribute-based or data tier allocation rules. For detailed guidance on resolving this issue, refer to [Unable to assign shards based on the allocation rule](https://www.elastic.co/docs/troubleshoot/monitoring/unavailable-shards#ec-cannot-assign-shards-on-allocation-rule).  
-
+If the [allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) returns this error, it indicates that shards cannot be assigned according to the current attribute-based or data tier allocation rules. For detailed guidance on resolving this issue, refer to [Unable to assign shards based on the allocation rule](https://www.elastic.co/docs/troubleshoot/monitoring/unavailable-shards#ec-cannot-assign-shards-on-allocation-rule).
 

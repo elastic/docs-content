@@ -127,7 +127,7 @@ The above PUT request uploads the file from the local path specified. This reque
 
 ## Add an extension to a deployment plan [ec-extension-guide-add-plan]
 
-Once the extension is created and uploaded, you can add the extension using its `EXTENSION_ID` in an [update deployment API call](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment).
+Once the extension is created and uploaded, you can add the extension using its `EXTENSION_ID` in an [update deployment API call]({{cloud-apis}}operation/operation-update-deployment).
 
 The following are examples of a GCP plan. Your specific deployment plan will be different. The important parts related to extensions are in the `user_plugins` object.
 
@@ -167,7 +167,7 @@ The following are examples of a GCP plan. Your specific deployment plan will be 
 }
 ```
 
-You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
+You can use the [cat plugins API]({{es-apis}}operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to {{es}}.
 
 The previous examples are for plugins. For bundles, use the `user_bundles` construct instead.
 
@@ -367,7 +367,7 @@ When you upgrade {{es}} in a deployment, you must ensure that:
 
 2. **Update the bundle reference as part of an upgrade plan.**
 
-    Submit a plan change that performs the following operations in a *single* [update deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment) call:
+    Submit a plan change that performs the following operations in a *single* [update deployment API]({{cloud-apis}}operation/operation-update-deployment) call:
 
     * Upgrade the version of {{es}} to the upgrade version (for example, `8.4.3`).
     * Update reference to the existing bundle to be compatible with {{es}} upgrade version (for example, `8.*`).
@@ -424,7 +424,7 @@ Unlike bundles, plugins *must* match the {{es}} version down to the patch level 
 
 2. **Remove the old plugin and add the new plugin to the upgrade plan.**
 
-    Submit a plan change that performs the following operations in a *single* [update deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-update-deployment) call:
+    Submit a plan change that performs the following operations in a *single* [update deployment API]({{cloud-apis}}operation/operation-update-deployment) call:
 
     * Upgrade the version of {{es}} to the upgrade version (for example, `8.4.3`).
     * Remove reference to the plugin on the older version (for example, `8.3.0`) from the plan.
@@ -471,7 +471,7 @@ Unlike bundles, plugins *must* match the {{es}} version down to the patch level 
     }
     ```
 
-    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
+    You can use the [cat plugins API]({{es-apis}}operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to {{es}}.
 
 
 
