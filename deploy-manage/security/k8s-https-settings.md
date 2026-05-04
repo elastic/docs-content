@@ -99,7 +99,7 @@ spec:
 
 #### Custom private CA and certificate using cert-manager [k8s_custom_http_ca_using_cert_manager]
 
-Here is how to set up a private CA and use it to issue {{es}} certificates. Additional certificates can be issued from the same CA, allowing multiple clusters or services to share a common trust root. This is useful, for example, for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md), which need to trust each other’s CA. Using a shared CA avoids having to configure and mount N different CAs when a cluster is connected to N other clusters.
+To set up a private CA and issue {{es}} certificates, you can use `cert-manager`. Additional certificates can be issued from the same CA, allowing multiple clusters or services to share a common trust root. This is useful, for example, for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md), which need to trust each other’s CAs. Using a shared CA avoids having to configure and mount N different CAs when a cluster is connected to N other clusters.
 
 ```yaml
 apiVersion: cert-manager.io/v1
