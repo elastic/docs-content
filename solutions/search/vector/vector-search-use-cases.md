@@ -25,86 +25,219 @@ This page introduces common vector search use cases and provides guidance on how
 
 ## RAG and question answering on your own data
 
-:::{image} /solutions/images/elasticsearch-reference-rag-schema.svg
-:alt: Components of a simple RAG system using {{es}}
-:::
+Use vector search to retrieve relevant pieces of your data and provide them to a language model. This helps generate answers that are grounded in your own content instead of relying on general knowledge.
 
-Use vector search to retrieve relevant pieces of your data and provide them to a language model. This helps generate answers that are grounded in your own content instead of relying on general knowledge. Use this when you want to build:
+Use this approach when building applications such as question answering over your own documents (PDFs, wikis, or tickets), internal or customer-facing knowledge assistants, chatbots powered by your own data, or customer support systems based on FAQs and ticket history. It is also commonly used for internal knowledge search across tools like Confluence, SharePoint, or Notion.
 
-- Question answering over your own documents (PDFs, wikis, tickets)
-- Internal or customer-facing knowledge assistants
-- Chatbots that use your data instead of general knowledge
-- Customer support over FAQs or ticket history  
-- Internal knowledge search (Confluence, SharePoint, Notion)  
+In practice, these systems are often applied to enterprise search across internal knowledge bases, customer support centers and help desks, and legal or patent search where LLMs help explore and summarize large document sets. Other common use cases include intelligence and investigation systems (for example, homeland security), academic research assistants, and tools for exploring libraries and archives.
 
 ::::::{stepper}
-:::::{step} Learn about RAG in {{es}}
+:::::{step} Learn about RAG in Elasticsearch
 
-To understand how retrieval-augmented generation works, refer to [RAG](../rag.md).
+Read how retrieval-augmented generation fits into {{es}} and how it relates to search and orchestration.
+
+- [RAG](../rag.md)
 
 :::::
 
 :::::{step} Choose a search strategy
 
-To build a RAG application, you first need a search system that can retrieve relevant content from your data.
+Implement retrieval that matches your content and latency needs: lexical search, semantic vector retrieval, or a hybrid of both. Hybrid setups often use [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to merge rankings.
 
-To set up retrieval, you can use full-text, semantic, or hybrid search. Refer to [Search approaches](../search-approaches.md) to choose the option that best fits your use case.
-
-
+- [Search approaches](../search-approaches.md)
+- [Hybrid search](../hybrid-search.md)
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
+- [Reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
 
 :::::
 
 :::::{step} Generate answers with an LLM
 
-Take the top retrieved results and pass them as context to a language model. This allows the model to generate answers grounded in your data.
+Pass the top hits (and their source fields) to your chosen model or orchestration layer so generation is grounded in retrieved passages rather than the model’s general knowledge alone.
 
-You can implement this step using your preferred LLM provider or orchestration framework (for example, LangChain or LlamaIndex). Refer to [Core search options](../rag.md#core-search-options) to learn about the available approaches for integrating retrieval and generation, including {{esql}} `COMPLETION`, Agent Builder, and custom implementations.
+- [Core search options](../rag.md#core-search-options) ({{esql}} `COMPLETION`, Agent Builder, custom apps)
 
 :::::
 ::::::
 
-## Search semantically over documents and knowledge bases
+## Discovery and recommendations
 
-Use vector search to retrieve documents based on meaning rather than exact keyword matches. This helps users find relevant information even when queries are phrased differently from the original content.
+Use vector similarity to find related items or rank results based on relevance beyond keyword matching.
 
-Use this when you want to build:
+This approach is commonly used to build recommendation and discovery experiences, such as suggesting similar products, ranking content, or helping users explore large datasets.
 
-- Search over documents such as PDFs, wikis, or knowledge bases  
-- FAQ or help center search  
-- Internal knowledge search (Confluence, SharePoint, Notion)  
-- Search experiences where users use natural language queries  
-- Multilingual or synonym-heavy content search  
+In practice, this includes e-commerce recommendations like “similar products” or “you may also like”, matching systems in dating platforms, and finding compatible teammates or opponents in gaming. It is also widely used in content platforms to recommend articles, videos, or music based on user behavior and preferences.
 
 ::::::{stepper}
-:::::{step} Learn about semantic search
+:::::{step} Represent catalog items as vectors
 
-To understand how semantic search works in {{es}}, refer to [Semantic search](../semantic-search.md).
+Index each item (or the text and metadata you want to match on) so it produces a comparable embedding across the catalog. Consistent embeddings make “similar item” retrieval meaningful.
+
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
+- [Elastic Inference](../../../explore-analyze/elastic-inference.md)
+- [Bring your own dense vectors](bring-own-vectors.md)
+- [Dense vector search](dense-vector.md)
+- [`dense_vector` field](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md)
 
 :::::
 
-:::::{step} Choose an implementation approach
+:::::{step} Retrieve neighbors with kNN
 
-To implement semantic search, you can choose between the following approaches depending on your level of control and complexity:
+Run approximate kNN (or exact kNN when your candidate set is small) using the embedding of the anchor item or user profile vector. This is the core similarity search behind “more like this” and related-item panels.
 
-- **[Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)**  
-  Use this for the simplest setup. {{es}} handles chunking, embedding generation, and indexing automatically. Suitable for most standard text search use cases.
+- [kNN search](knn.md)
+- [kNN retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/knn-retriever.md)
 
-- **[Hybrid search with `semantic_text`](../hybrid-semantic-text.md)**  
-  Use this when you want to combine semantic understanding with keyword matching. This is recommended for most production use cases where both exact matches and meaning matter.
+:::::
 
-- **[Semantic search with the {{infer}} API](../semantic-search/semantic-search-inference.md)**  
-  Use this when you need more control over how embeddings are generated, such as choosing models or customizing your pipeline.
+:::::{step} Apply business constraints
+
+Narrow candidates with structured filters (availability, region, permissions, category) in the same search request so similarity runs over the right subset of documents.
+
+- [Querying for search](../querying-for-search.md)
+
+:::::
+
+:::::{step} Refine ranking
+
+When raw top-k similarity is not enough, combine vector retrieval with lexical signals or add a second-stage ranker. Use hybrid retrieval when you need both semantic and keyword signals, or LTR when you have labeled training data.
+
+- [Ranking and reranking](../ranking.md)
+- [Semantic reranking](../ranking/semantic-reranking.md)
+- [Hybrid search](../hybrid-search.md)
+- [Hybrid search with `semantic_text`](../hybrid-semantic-text.md)
+- [Learning To Rank (LTR)](../ranking/learning-to-rank-ltr.md)
 
 :::::
 ::::::
 
-## Discovery and recommendations (similar items)
+## Multimodal search
 
-## Multimodal search (image, audio, video)
+Use embeddings from different data types to enable search across non-text content such as images, audio, or video.
+
+This approach is useful when users need to search using one modality to find another, or when working with rich media content.
+
+In practice, this includes image search (for example, visual product search), audio and video search, and cross-modal scenarios such as using text queries to find images or other media.
+
+::::::{stepper}
+:::::{step} Select a multimodal embedding workflow
+
+Use the inference APIs with a model and service that supports the modalities you need (for example, text and image inputs to a shared embedding space). Configure endpoints so documents and queries use the same task type and model; otherwise similarity scores are not comparable.
+
+- [Elastic Inference](../../../explore-analyze/elastic-inference.md)
+- [Semantic search with the inference API](../semantic-search/semantic-search-inference.md)
+
+:::::
+
+:::::{step} Index vectors for each media object
+
+Store embeddings in `dense_vector` fields when vectors are produced outside a managed `semantic_text` path, and keep textual or structured fields you still filter on.
+
+- [Bring your own dense vectors](bring-own-vectors.md)
+- [Dense vector search](dense-vector.md)
+- [`dense_vector` field](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md)
+
+:::::
+
+:::::{step} Encode queries in the same space
+
+At search time, turn the user’s text or media into an embedding using the same inference endpoint and settings as at ingest (task type, model, dimensions). Your application typically sends the query payload to `POST _inference/{task_type}/{inference_id}` and uses the returned vector in the next `_search` request. If you prefer {{esql}}, the `EMBEDDING` function can produce the dense vector instead. Pass that vector into retrieval via the Search API, for example the `knn` option or a `knn` query.
+
+- [Semantic search with the inference API](../semantic-search/semantic-search-inference.md)
+- [The search API](../the-search-api.md)
+- [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn)
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md)
+- [{{esql}} `EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md)
+
+:::::
+
+:::::{step} Run kNN retrieval (and optional hybrid passes)
+
+Execute kNN against the indexed vectors, and add lexical or metadata filters when you need constraints beyond raw similarity, for example surfacing visually similar products only within a category.
+
+- [kNN search](knn.md)
+- [Hybrid search](../hybrid-search.md)
+
+:::::
+::::::
 
 ## Duplicate detection, fraud, and anomaly detection
 
-## Enterprise and legal search across large corpora
+Use vector similarity to identify patterns, duplicates, or unusual behavior in your data.
+
+This approach is useful when you need to compare items at scale and detect similarities or deviations that are not easily captured by exact matching.
+
+In practice, this includes detecting duplicate content, identifying fraudulent activity, and spotting anomalies in large datasets across domains such as finance, security, and operations.
+
+::::::{stepper}
+:::::{step} Normalize records before embedding
+
+Clean and canonicalize the text or features you fingerprint (for example, normalized URLs, stripped boilerplate, hashed identifiers) so trivial differences do not fragment clusters in embedding space.
+
+- [Ingest for search](../ingest-for-search.md)
+
+:::::
+
+:::::{step} Index vectors for each entity or event
+
+Use `semantic_text` when you want {{es}} to manage inference, or `dense_vector` when you generate vectors upstream. You need one comparable vector per document or chunk you want to compare.
+
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
+- [Bring your own dense vectors](bring-own-vectors.md)
+
+:::::
+
+:::::{step} Query for nearest neighbors and cutoffs
+
+Use kNN to fetch the closest documents to a candidate and interpret similarity scores or ranks in your application, for example flagging pairs above a cosine-similarity threshold as likely duplicates, or surfacing accounts whose behavior vectors sit unusually close to known fraud exemplars.
+
+- [kNN search](knn.md)
+- [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md)
+
+:::::
+
+::::::
 
 ## Long-term memory for LLMs
 
+Use vector search as a memory layer for applications that need to store and retrieve past interactions or knowledge.
+
+This approach enables systems to maintain context over time and provide more personalized or consistent responses. In practice, this includes persistent memory for AI assistants, personalized user experiences, and applications that retain and reuse knowledge across sessions.
+
+::::::{stepper}
+:::::{step} Design the memory index
+
+Model memory documents with stable identifiers (user, session, agent), timestamps, optional TTL fields, and the text you will embed. Decide whether each memory is a short fact, a conversation turn, or a summarized chunk so retrieval returns the right granularity.
+
+- [Index basics](../get-started/index-basics.md)
+
+:::::
+
+:::::{step} Ingest and embed new memories
+
+Index new entries through a `semantic_text` mapping or an ingest pipeline that calls the inference processor so vectors stay aligned with your production embedding model.
+
+- [Ingest data with `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-ingestions.md)
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
+- [Inference processor](elasticsearch://reference/enrich-processor/inference-processor.md)
+
+:::::
+
+:::::{step} Retrieve context for each prompt
+
+At query time, run semantic retrieval (and lexical or hybrid retrieval when users supply keywords) to pull the top-k memories, then supply those hits to your orchestration layer alongside the current user message.
+
+- [Semantic search](../semantic-search.md)
+- [Hybrid search](../hybrid-search.md)
+- [kNN search](knn.md)
+
+:::::
+
+:::::{step} Govern retention and updates
+
+Expire or consolidate stale memories using your application logic or index lifecycle policies so the vector index does not grow without bound or contradict newer facts.
+
+- [Index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md)
+
+:::::
+::::::
