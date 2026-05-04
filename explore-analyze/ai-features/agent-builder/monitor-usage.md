@@ -45,7 +45,6 @@ This API complements the UI by returning token totals, round counts, LLM call co
 This API provides visibility into token usage but does not support setting token limits or quotas for users or agents.
 :::
 
-
 ### View token usage in the UI
 
 At the end of each round, the total token usage is displayed after the agent response. Input tokens are represented by {icon}`sort_up`, and output tokens by {icon}`sort_down`:
@@ -70,7 +69,17 @@ How {{agent-builder}} usage is billed depends on your deployment type.
 
 ### {{serverless-full}}
 
-On {{serverless-full}}, {{agent-builder}} usage is billed per execution. Every {{serverless-short}} project includes a free monthly allocation of agent executions, and volume tier discounts apply at higher usage levels. If your usage stays within the free allocation, there is no impact to your bill.
+On {{serverless-full}}, {{agent-builder}} usage is billed based on **executions**. An execution is measured by each completed interaction with an AI agent (a chat input and output). More complex interactions, measured by the number of input tokens used, are metered for additional executions. Each unit of 50,000 input tokens counts as one additional execution. If the agent encounters an error and does not return a response, no executions are metered.
+
+Every {{serverless-short}} project includes a free monthly allocation of agent executions, and volume tier discounts apply at higher usage levels. If your usage stays within the free allocation, there is no impact to your bill.
+
+**Example:** In the following conversation round, the agent used 91,613 input tokens. This results in 2 {{agent-builder}} executions (1 base execution + 1 additional execution for the second block of 50,000 input tokens).
+
+:::{image} images/execution-billing-example.png
+:screenshot:
+:width: 800px
+:alt: Agent Builder conversation round showing 91,613 input tokens and 4,096 output tokens beneath the agent response, which maps to 2 billed executions
+:::
 
 When an agent triggers a [workflow](/explore-analyze/workflows.md) as part of its response, the workflow execution is metered separately. Each {{serverless-short}} project also includes a free monthly allocation of workflow executions.
 
@@ -84,8 +93,8 @@ For general pricing information, refer to [Elastic pricing](https://www.elastic.
 
 ### {{ech}}
 
-{{agent-builder}} is currently available on {{ech}} at no additional charge. Execution-based billing is not yet active for {{ech}} deployments.
+{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on {{ech}} are currently under promotional pricing and available at no additional charge.
 
 ### Self-managed
 
-{{agent-builder}} is included with the Enterprise license tier. Execution-based billing is not yet active for self-managed deployments.
+{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
