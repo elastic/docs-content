@@ -18,6 +18,8 @@ Integrations can specify two kinds of agent version requirements:
 * **Package-level requirement**: The integration requires a minimum {{agent}} version. Agents below that version receive a version-specific policy that doesn't include a configuration for this integration.
 * **Input template-level requirement**: Individual configuration blocks are conditionally included based on the agent's version. Agents that meet the requirement receive the newer configuration. Agents on earlier versions receive a fallback configuration.
 
+For specific examples of how integration authors declare version requirements, refer to [Agent version conditions](integrations://extend/agent-version-conditions.md).
+
 When a policy contains an integration that declares an agent version requirement, {{fleet}} automatically generates version-specific policies to ensure all agents receive compatible configurations. This prevents configuration errors and allows you to use newer integration features while supporting agents on earlier versions.
 
 {{fleet}} groups these policies under the primary policy in the UI so you continue to manage one logical policy: edit the primary policy to change the configuration that its version-specific policies inherit. You can't create, edit, delete, or reassign version-specific policies directly.
@@ -25,7 +27,7 @@ When a policy contains an integration that declares an agent version requirement
 ## How version-specific policies work [how-version-specific-policies-work]
 
 1. When you add or update the integration, {{fleet}} compiles a set of version-specific policies for common {{agent}} minor versions (for example, `9.4`, `9.3`, and `8.19`) and stores them alongside the primary agent policy. Each version-specific policy is identified internally as `<primary_policy_id>#<minor_version>`.
-2. About once a minute, a scheduled {{fleet}} task identifies agents that need a version-specific policy. This includes newly enrolled agents, recently upgraded agents, and agents whose current version-specific policy is out of date. {{fleet}} then reassigns each agent to the matching version-specific policy.
+2. About once a minute, a scheduled {{fleet}} task identifies agents that need a version-specific policy. This includes newly enrolled agents, recently upgraded agents, and agents whose current version-specific policy is out of date. {{fleet}} then reassigns each agent to the matching version-specific policy. You can configure the interval in the {{kib}} configuration using the `xpack.fleet.versionSpecificPolicyAssignment.taskInterval` setting (the default is `1m`).
 3. Each agent receives a rendered configuration valid for its version. {{fleet}} omits any inputs that the agent's version doesn't support. The rest of the policy still applies.
 
 ## Version-specific policies in the {{fleet}} UI [version-specific-policies-fleet-ui]
