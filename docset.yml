@@ -70,6 +70,7 @@ cross_links:
 
 toc:
   - file: index.md
+  - toc: products
   - toc: get-started
   - toc: solutions
   - toc: manage-data
