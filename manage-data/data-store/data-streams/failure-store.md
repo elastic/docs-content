@@ -41,7 +41,7 @@ Each data stream has its own failure store that can be enabled to accept failed 
 You can specify in a data stream's [index template](../templates.md) if it should enable the failure store when it is first created.
 
 :::{note}
-Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put [data stream options API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options).
+Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put [data stream options API]({{es-apis}}operation/operation-indices-put-data-stream-options).
 :::
 
 To enable the failure store on a new data stream, enable it in the `data_stream_options` of the template:
@@ -70,7 +70,7 @@ After a matching data stream is created, its failure store will be enabled.
 ### Set up for existing data streams [set-up-failure-store-existing]
 
 Enabling the failure store using [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template are not affected by changes to the template's `data_stream_options` field.
-To modify an existing data stream's options, use the [put data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options) API:
+To modify an existing data stream's options, use the [put data stream options]({{es-apis}}operation/operation-indices-put-data-stream-options) API:
 
 ```console
 PUT _data_stream/my-datastream-existing/_options
@@ -105,7 +105,7 @@ You can also enable the data stream failure store in {{kib}}. Locate the data st
 
 ### Enable failure store using cluster setting [set-up-failure-store-cluster-setting]
 
-If you have a large number of existing data streams you may want to enable their failure stores in one place. Instead of updating each of their options individually, set `data_streams.failure_store.enabled` to a list of index patterns in the [cluster settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Any data streams that match one of these patterns will operate with their failure store enabled.
+If you have a large number of existing data streams you may want to enable their failure stores in one place. Instead of updating each of their options individually, set `data_streams.failure_store.enabled` to a list of index patterns in the [cluster settings]({{es-apis}}operation/operation-cluster-put-settings). Any data streams that match one of these patterns will operate with their failure store enabled.
 
 ```console
 PUT _cluster/settings
@@ -117,7 +117,7 @@ PUT _cluster/settings
 ```
 1. Indices that match `my-datastream-*` or `logs-*` will redirect failures to the failure store unless explicitly disabled.
 
-Matching data streams will ignore this configuration if the failure store is explicitly enabled or disabled in their [data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options).
+Matching data streams will ignore this configuration if the failure store is explicitly enabled or disabled in their [data stream options]({{es-apis}}operation/operation-indices-put-data-stream-options).
 
 ```console
 PUT _cluster/settings
@@ -151,7 +151,7 @@ Once a failure store is enabled for a data stream it will begin redirecting docu
 
 Each data stream's failure store is made up of a list of indices that are dedicated to storing failed documents. These failure indices function much like a data stream's normal backing indices: There is a write index that accepts failed documents, the indices can be rolled over, and they're automatically cleaned up over time subject to a lifecycle policy. Failure indices are lazily created the first time they are needed to store a failed document.
 
-When a document bound for a data stream encounters a problem during its ingestion, the response is annotated with the `failure_store` field which describes how {{es}} responded to that problem. The `failure_store` field is present on both the [bulk](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) and [index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) API responses when applicable. Clients can use this information to augment their behavior based on the response from {{es}}.
+When a document bound for a data stream encounters a problem during its ingestion, the response is annotated with the `failure_store` field which describes how {{es}} responded to that problem. The `failure_store` field is present on both the [bulk]({{es-apis}}operation/operation-bulk) and [index]({{es-apis}}operation/operation-create) API responses when applicable. Clients can use this information to augment their behavior based on the response from {{es}}.
 
 Here we have a bulk operation that sends two documents. Both are writing to the `id` field which is mapped as a `long` field type. The first document will be accepted, but the second document would cause a failure because the value `invalid_text` cannot be parsed as a `long`. This second document will be redirected to the failure store: 
 
@@ -729,7 +729,7 @@ Failure data can accumulate in a data stream over time. To help manage this accu
 
 ### Failure store rollover [manage-failure-store-rollover]
 
-A data stream treats its failure store much like a secondary set of [backing indices](../data-streams.md#backing-indices). Multiple dedicated hidden indices serve search requests for the failure store, while one index acts as the current write index. You can use the [rollover](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) API to rollover the failure store. Much like the regular indices in a data stream, a new write index will be created in the failure store to accept new failure documents.
+A data stream treats its failure store much like a secondary set of [backing indices](../data-streams.md#backing-indices). Multiple dedicated hidden indices serve search requests for the failure store, while one index acts as the current write index. You can use the [rollover]({{es-apis}}operation/operation-indices-rollover) API to rollover the failure store. Much like the regular indices in a data stream, a new write index will be created in the failure store to accept new failure documents.
 
 ```console
 POST my-datastream::failures/_rollover
@@ -750,7 +750,7 @@ POST my-datastream::failures/_rollover
 
 ### Failure store lifecycle [manage-failure-store-lifecycle]
 
-Failure stores have their retention managed using an internal [data stream lifecycle](../../lifecycle/data-stream.md). A thirty day (30d) retention is applied to failure store data. You can view the active lifecycle for a failure store index by calling the [get data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream):
+Failure stores have their retention managed using an internal [data stream lifecycle](../../lifecycle/data-stream.md). A thirty day (30d) retention is applied to failure store data. You can view the active lifecycle for a failure store index by calling the [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream):
 
 ```console
 GET _data_stream/my-datastream
@@ -827,7 +827,7 @@ PUT _cluster/settings
 }
 ```
 
-You can also specify the failure store retention period for a data stream on its data stream options. These can be specified using the index template for new data streams, or using the [put data stream options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options) API for existing data streams.
+You can also specify the failure store retention period for a data stream on its data stream options. These can be specified using the index template for new data streams, or using the [put data stream options]({{es-apis}}operation/operation-indices-put-data-stream-options) API for existing data streams.
 
 ```console
 PUT _data_stream/my-datastream/_options
@@ -845,7 +845,7 @@ PUT _data_stream/my-datastream/_options
 
 ### Add and remove from failure store [manage-failure-store-indices]
 
-Failure stores support adding and removing indices from them using the [modify data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) API.
+Failure stores support adding and removing indices from them using the [modify data stream]({{es-apis}}operation/operation-indices-modify-data-stream) API.
 
 ```console
 POST _data_stream/_modify

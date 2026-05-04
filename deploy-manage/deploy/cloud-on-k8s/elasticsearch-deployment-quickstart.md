@@ -61,7 +61,7 @@ Get an overview of the current {{es}} clusters in the Kubernetes cluster with [`
 kubectl get elasticsearch
 ```
 
-When you first create the Kubernetes cluster, there is no `HEALTH` status and the `PHASE` is empty. After the pod and service start-up, the `PHASE` turns into `Ready`, and `HEALTH` becomes `green`. The `HEALTH` status comes from {{es}}'s [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+When you first create the Kubernetes cluster, there is no `HEALTH` status and the `PHASE` is empty. After the pod and service start-up, the `PHASE` turns into `Ready`, and `HEALTH` becomes `green`. The `HEALTH` status comes from {{es}}'s [cluster health API]({{es-apis}}operation/operation-cluster-health).
 
 ```sh subs=true
 NAME          HEALTH    NODES     VERSION   PHASE         AGE
@@ -120,7 +120,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
     PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
     ```
 
-2. Request the [{{es}} root API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for more information.
+2. Request the [{{es}} root API]({{es-apis}}group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for more information.
 
     * From inside the Kubernetes cluster:
 

@@ -78,13 +78,13 @@ To track disk usage over time, enable monitoring using one of the following opti
 
 To verify that shards are moving off the affected node until it falls below high watermark, use the following {{es}} APIs:
 
-* [Cluster health status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) to check `relocating_shards`.
+* [Cluster health status API]({{es-apis}}operation/operation-cluster-health) to check `relocating_shards`.
 
     ```console
     GET _cluster/health
     ```
     
-* [CAT recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) to check the count of recovering shards and their migrated `bp` bytes percent of `tb` total bytes.
+* [CAT recovery API]({{es-apis}}operation/operation-cat-recovery) to check the count of recovering shards and their migrated `bp` bytes percent of `tb` total bytes.
 
     ```console
     GET _cat/recovery?v=true&expand_wildcards=all&active_only=true&h=time,tb,bp,top,ty,st,snode,tnode,idx,sh&s=time:desc
@@ -92,13 +92,13 @@ To verify that shards are moving off the affected node until it falls below high
 
 If shards remain on the node keeping it above high watermark, use the following {{es}} APIs:
 
-* [CAT shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) to determine which shards are hosted on the node.
+* [CAT shards API]({{es-apis}}operation/operation-cat-shards) to determine which shards are hosted on the node.
 
     ```console
     GET _cat/shards?v=true
     ```
 
-* [Cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) to get an explanation for the chosen shard's allocation status.
+* [Cluster allocation explanation API]({{es-apis}}operation/operation-cluster-allocation-explain) to get an explanation for the chosen shard's allocation status.
 
     ```console
     GET _cluster/allocation/explain
@@ -111,7 +111,7 @@ If shards remain on the node keeping it above high watermark, use the following 
 
     Refer to [Using the cluster allocation API for troubleshooting](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md) for guidance on interpreting this output.
 
-You should normally wait for {{es}} to balance itself. If advanced users determine shards which should migrate off node faster, whether due to forecasted ingestion rate or existing disk usage, they might consider using the [Reroute the cluster API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) to push their chosen shard to immediately rebalance to their determined target node.
+You should normally wait for {{es}} to balance itself. If advanced users determine shards which should migrate off node faster, whether due to forecasted ingestion rate or existing disk usage, they might consider using the [Reroute the cluster API]({{es-apis}}operation/operation-cluster-reroute) to push their chosen shard to immediately rebalance to their determined target node.
 
 ## Temporary relief [fix-watermark-errors-temporary]
 
@@ -166,10 +166,10 @@ To resolve watermark errors permanently, perform one of the following actions:
 
 * Horizontally scale nodes of the affected [data tiers](/manage-data/lifecycle/data-tiers.md).
 * Vertically scale existing nodes to increase disk space. Ensure nodes within a [data tier](/manage-data/lifecycle/data-tiers.md) are scaled to matching hardware profiles to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
-* Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore from snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+* Delete indices using the [delete index API]({{es-apis}}operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore from snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 
 ::::{tip}
-On {{ech}} and {{ece}}, you might need to temporarily delete indices using the [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md). This can resolve a `status: red` [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) status, which blocks [deployment changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). After resolving the issue, you can [restore](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) the indices from a snapshot. If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot/index.md#troubleshoot-work-with-support) for assistance.
+On {{ech}} and {{ece}}, you might need to temporarily delete indices using the [{{es}} API Console](cloud://reference/cloud-hosted/ec-api-console.md). This can resolve a `status: red` [cluster health]({{es-apis}}operation/operation-cluster-health) status, which blocks [deployment changes](/deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). After resolving the issue, you can [restore](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) the indices from a snapshot. If you experience issues with this resolution flow, reach out to [Elastic Support](/troubleshoot/index.md#troubleshoot-work-with-support) for assistance.
 ::::
 
 ## Preventing watermark errors  
