@@ -174,7 +174,7 @@ cat shardlock.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 
 {{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these transport connections to remain open [forever](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a transport connection is closed then {{es}} tries to reopen the connection, failing any in-flight operations that were using the connection at the time. Occasional closures of transport connections might be acceptable because they have a small impact on the cluster, but repeatedly-dropped transport connections severely affect its operations.
 
-{{es}} nodes only actively close an outbound transport connection to another node if the other node leaves the cluster. Refer to [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for further information about identifying and troubleshooting this situation. If an outbound transport connection closes for some other reason, {{es}} logs messages such as the following:
+{{es}} nodes only actively close an outbound transport connection to another node if the other node leaves the cluster. If an outbound transport connection closes for some other reason, {{es}} logs messages such as the following:
 
 ```text
 [INFO ][o.e.t.ClusterConnectionManager] [node-1] transport connection to [{node-2}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] closed by remote

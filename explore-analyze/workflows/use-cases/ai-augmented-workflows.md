@@ -34,6 +34,12 @@ The integration runs in both directions: a workflow can call an agent as a step,
 - Use **agent-from-workflow** when the workflow already knows what it's doing and needs AI only to reason over a specific data set. For example, summarizing an alert, classifying severity, or extracting fields from unstructured text.
 - Use **workflow-from-agent** when the user (or another agent) is in a conversation and wants to trigger a deterministic procedure. For example, isolating a host, opening a case, or running a set of enrichment queries.
 
+## How-to guides [workflows-ai-how-tos]
+
+Step-by-step guides for AI-augmented workflows:
+
+- [Classify and route mixed items with AI](/explore-analyze/workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md): Use `ai.classify` with `foreach` and `if` to send each item down a different branch based on a model's categorization, and summarize with `ai.summarize`.
+
 ## Learn more
 
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): `ai.prompt`, `ai.classify`, `ai.summarize`, and `ai.agent` parameters and output structure.
@@ -42,11 +48,3 @@ The integration runs in both directions: a workflow can call an agent as a step,
 - [Call {{agent-builder}} agents from Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md): End-to-end guide for invoking agents from workflow steps.
 - [Workflow tools in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/workflow-tools.md): Configure an agent to trigger a workflow.
 - [{{agent-builder}} overview](/explore-analyze/ai-features/elastic-agent-builder.md): Concepts, tools, and agent types.
-
-% Ben Ironside Goldstein, 2026-04-16: Planned child pages per Vision doc Section 4.2:
-% - "Calling an agent from a workflow" (workflow-author how-to, distinct from Agent Builder's existing page)
-% - "Designing a workflow for agent invocation" (how-to for workflow authors building tools)
-% - Pattern A tutorial: workflow calls an Agent Builder agent for alert triage
-%   (specific agent/skill to be confirmed once the 9.4 skills model in PR #5904 lands)
-% - Pattern B tutorial: agent triggers workflow from chat
-% - Pattern C tutorial (observability-specific) deferred pending Obs team engagement
