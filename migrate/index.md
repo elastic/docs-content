@@ -1,30 +1,21 @@
 ---
-navigation_title: Migrate your data
+navigation_title: Move between ingest tools
 applies_to:
   stack: ga
   serverless: ga
 ---
 
-# Migrate your data
+# Move between ingest tools
 
-Whether you're migrating from standalone {{beats}}, classic {{apm-agent}}s, or an external SIEM, or moving between Elastic tools such as {{agent}} and {{edot}}, this section guides you through each migration path.
+Whether you're replacing standalone {{beats}} with {{agent}}, moving your application instrumentation from Elastic {{product.apm}} language agents to EDOT, or migrating from an upstream OpenTelemetry Collector to the EDOT Collector, these guides walk you through each transition.
 
-## Available migration paths
+## Available guides
 
-[Migrate {{es}} data](/migrate/elasticsearch-data/index.md)
-:   Move data between clusters, deployment types, or cloud environments.
-
-[Migrate {{apm-agent}}s to {{edot}}](/migrate/apm-agents-to-edot/index.md)
-:   Move your application instrumentation from Elastic {{product.apm}} language agents to Elastic Distributions of OpenTelemetry (EDOT).
-
-[Migrate to the {{edot}} Collector](/migrate/to-edot-collector/index.md)
-:   Move from {{apm-server}} ingestion or a contrib OpenTelemetry Collector to the EDOT Collector.
-
-[Migrate to {{agent}}](/migrate/beats-to-elastic-agent/index.md)
+[Move from {{beats}} to {{agent}}](/migrate/beats-to-elastic-agent/index.md)
 :   Replace {{filebeat}}, {{metricbeat}}, or {{auditbeat}} with {{agent}}, a unified agent for logs, metrics, and security data.
 
-[Migrate data management patterns](/migrate/data-management/index.md)
-:   Migrate from legacy lifecycle patterns — index curation, {{rollup}}, custom shard allocation — to current {{es}} features.
+[Move from {{apm-agent}}s to {{edot}}](/migrate/apm-agents-to-edot/index.md)
+:   Move your application instrumentation from Elastic {{product.apm}} language agents to Elastic Distributions of OpenTelemetry (EDOT).
 
-[Migrate to {{elastic-sec}}](/migrate/to-elastic-security/index.md)
-:   Move from an external SIEM such as Splunk or QRadar to {{elastic-sec}}.
+[Move to the {{edot}} Collector](/migrate/to-edot-collector/index.md)
+:   Move from {{apm-server}} ingestion or a contrib OpenTelemetry Collector to the EDOT Collector.

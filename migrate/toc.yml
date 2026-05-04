@@ -1,12 +1,10 @@
 project: 'Migrate'
 toc:
   - file: index.md
-  - file: elasticsearch-data/index.md
+  - file: beats-to-elastic-agent/index.md
     children:
-      - file: elasticsearch-data/cluster-to-cluster.md
-      - file: elasticsearch-data/with-logstash.md
-      - file: elasticsearch-data/remote-reindex.md
-      - file: elasticsearch-data/system-indices.md
+      - file: beats-to-elastic-agent/migrate-from-beats.md
+      - file: beats-to-elastic-agent/migrate-from-auditbeat.md
   - file: apm-agents-to-edot/index.md
     children:
       - title: Java
@@ -23,20 +21,6 @@ toc:
   - file: to-edot-collector/index.md
     children:
       - file: to-edot-collector/from-apm-agents.md
-      - title: Migrate deprecated components
+      - title: Move deprecated components
         crosslink: elastic-agent://reference/edot-collector/components/migrate-components.md
       - file: to-edot-collector/from-upstream-collector.md
-  - file: beats-to-elastic-agent/index.md
-    children:
-      - file: beats-to-elastic-agent/migrate-from-beats.md
-      - file: beats-to-elastic-agent/migrate-from-auditbeat.md
-  - file: data-management/index.md
-    children:
-      - file: data-management/to-ilm.md
-      - file: data-management/to-data-tiers.md
-      - file: data-management/ilm-to-data-stream-lifecycle.md
-      - file: data-management/rollup-to-downsampling.md
-      - file: data-management/ecs-field-mapping.md
-  - file: to-elastic-security/index.md
-    children:
-      - file: to-elastic-security/automatic-migration.md

@@ -1,5 +1,4 @@
 ---
-navigation_title: Migrate Elasticsearch data
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
