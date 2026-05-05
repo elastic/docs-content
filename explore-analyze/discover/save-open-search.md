@@ -164,14 +164,15 @@ Saving from Discover saves the session to the library only. To put it on a dashb
 
 #### Add a Discover session from the library [add-discover-session-from-library]
 
-Use this option to add a Discover session that's already saved to the library. The same session can be added to multiple dashboards, and each panel stays linked to the library, so updates to the session are reflected on all dashboards. You can break that link by unlinking a panel from the library after adding it.
+From a dashboard, add a Discover session that's already saved to the library. The same session can be added to multiple dashboards, and each panel stays linked to the library, so updates to the session are reflected on all dashboards. You can break that link by unlinking a panel from the library after adding it.
 
-1. Save the Discover session following the steps in [Save a Discover session](#_save_a_discover_session).
-2. Go to **Dashboards**.
-3. Open or create the dashboard, then switch to **Edit** mode if necessary.
-4. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
-5. From the **Types** dropdown, select **Discover session**.
-6. Select the Discover session that you want to add, then select **X** to close the list.
+This option requires that the session has already been [saved to the library](#_save_a_discover_session).
+
+1. Go to **Dashboards**.
+2. Open or create the dashboard, then switch to **Edit** mode if necessary.
+3. Depending on the version you're using, select **Add from library**, or **Add** > **From library**.
+4. From the **Types** dropdown, select **Discover session**.
+5. Select the Discover session that you want to add, then select **X** to close the list.
 
 If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 
