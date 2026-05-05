@@ -27,7 +27,7 @@ For model choice, refer to [Model configuration](models.md) and [Configure acces
 :::
 
 :::::::{stepper}
-::::::{step} Enable {{agent-builder}}
+::::::{step} Access {{agent-builder}}
 
 :::::{applies-switch}
 
