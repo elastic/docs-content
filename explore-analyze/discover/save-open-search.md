@@ -148,7 +148,7 @@ From Discover, save the entire Discover session, including all its tabs, columns
 ::::{applies-switch}
 
 :::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
-When you save the session, the **Add to dashboard** option determines what happens to it:
+When you save the session, the **Add to dashboard** option of the dialog determines what happens to it:
 
 - **New** or **Existing**: The session is saved as a panel on a dashboard. The panel's configuration is stored with the dashboard, and the session isn't saved to the library. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 - **None**: The session is saved to the library, without being added to a dashboard. From there, you can later [add it as a panel on any dashboard](#add-discover-session-from-library).
