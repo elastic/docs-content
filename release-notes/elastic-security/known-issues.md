@@ -28,13 +28,18 @@ Known issues are significant defects or limitations that may impact your impleme
 
 **Impact**<br>
 
-Detection Engine rules use their author’s permissions to enrich alerts with entity data. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
 
-When Detection Engine rules are created, the user that created that rule's permissions are stored as a "snapshot" in an API key.
+After you upgrade to v9.4, any rules created by users without access to the `.entities.v2.latest.security_*` index (i.e., the entity store) do not enrich their alerts with entity analytics data. This means that alerts which contain user or host entities and were created by users without access to the index show as failures. The alert document still generates, but without entity analytics data.
 
 When a rule fires successfully and generates an alert, Asset criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is turned "on" by default in the default space.
 
-After upgrading to v9.4, any rules created by users without access to the `.entities.v2.latest.security_*` index (i.e., the entity store) do not enrich their alerts with entity analytics data. This means that alerts which contain user or host entities and were created by users without access to the index show as failures. The alert document generates successfully, but without entity analytics data.
+Detection Engine rules use their author’s permissions to enrich alerts with entity data. When Detection Engine rules are created, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
+
+
+
+
+
+
 
 **Workaround**<br>
 
