@@ -175,11 +175,11 @@ The API returns the following response. Note that when you search one or more re
 ```
 
 1. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can be in one of the following statuses:<br>
-   **running**<br>
-   **successful** (searches on all shards were successful)<br>
-   **partial** (searches on at least one shard of the cluster were successful and at least one failed)<br>
-   **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`)<br>
-   **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`)
+   - **running**<br>
+   - **successful** (searches on all shards were successful)<br>
+   - **partial** (searches on at least one shard of the cluster were successful and at least one failed)<br>
+   - **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`)<br>
+   - **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`)
 2. The `_clusters/details` section shows metadata about the search on each cluster.
 3. The index expression supplied by the user. If you provide a wildcard such as `logs-*`, this section will show the value with the wildcard, not the concrete indices being searched.
 4. How long (in milliseconds) the sub-search took on that cluster.
