@@ -83,7 +83,7 @@ Both `tags_to_add` and `tags_to_remove` are required, even when one is empty. Se
 
 ## `kibana.request` [kibana-request]
 
-Generic escape hatch for any {{kib}} API that doesn't have a named step. Authenticates as the workflow's execution identity. Use a named step when one exists; named steps validate parameters at save time.
+Generic escape hatch for any {{kib}} API that doesn't have a named step. Authenticates as the workflow's execution identity. Use a named step when one exists. Named steps validate parameters at save time.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -102,7 +102,7 @@ Generic escape hatch for any {{kib}} API that doesn't have a named step. Authent
 ```
 
 :::{note}
-You do not need to pass an `Authorization` header. The workflow engine automatically attaches the correct authentication headers based on the execution context. Don't paste API keys or secrets into the `headers` block; they belong on a configured connector.
+You do not need to pass an `Authorization` header. The workflow engine automatically attaches the correct authentication headers based on the execution context. Don't paste API keys or secrets into the `headers` block. They belong on a configured connector.
 :::
 
 ### Example: Unisolate a host
@@ -131,7 +131,7 @@ The following `kibana.*` step types are deprecated in 9.4. They still resolve in
 | `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
 | `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
 
-See [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for side-by-side replacement patterns.
+Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for side-by-side replacement patterns.
 
 ## Related
 

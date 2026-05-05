@@ -37,7 +37,7 @@ Cross-project search is available for {{serverless-full}} projects only. For oth
 
 ## Project linking
 
-In {{serverless-short}}, projects can be linked together.
+In {{serverless-short}}, projects can be linked together. Projects can be linked across cloud providers and regions.
 
 ::::{include} /deploy-manage/_snippets/cps-origin-linked-definitions.md
 ::::
