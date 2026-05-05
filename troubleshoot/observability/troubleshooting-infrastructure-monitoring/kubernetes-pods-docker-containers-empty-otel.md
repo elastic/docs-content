@@ -25,7 +25,7 @@ The **Hosts** view (also under **Inventory**) works correctly and displays data.
 
 This is expected behavior, not a configuration error in the EDOT Collector.
 
-In version 9.2.0, the `inframetrics` processor was removed from the EDOT Collector Helm charts for Kubernetes and on-premise deployments. Without this processor, data shipped by EDOT is no longer compatible with the Kubernetes Pods and Docker Containers views of the Infrastructure UI, which only support Elastic Agent data formats.
+In version 9.2.0, the `inframetrics` processor was removed from the EDOT Collector Helm charts for Kubernetes and on-premises deployments. Without this processor, data shipped by EDOT is no longer compatible with the Kubernetes Pods and Docker Containers views of the Infrastructure UI, which only support Elastic Agent data formats.
 
 ## Resolution [resolution-kubernetes-pods-docker-containers-empty]
 
@@ -35,7 +35,7 @@ Use the out-of-the-box dashboards provided by the Kubernetes and System OpenTele
 
 Use one of these methods:
 
-- **Recommended: Use the {{kib}} "Add Data" wizard**
+- **Recommended: Use the {{kib}} Add Data wizard**
 
   1. In {{kib}}, go to **Management → Integrations**, or click **Add Data** on the Observability home page.
   2. Search for and select the **Kubernetes** integration.
@@ -58,4 +58,4 @@ For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Obse
 
 ## Workaround [workaround-kubernetes-pods-docker-containers-empty]
 
-You can re-add the `inframetrics` processor as it was configured in versions 9.1.x YAML and Helm charts for the EDOT K8s use case. This is not recommended — the future-proof solution is to use the OpenTelemetry Assets dashboards.
+You can re-add the `inframetrics` processor as it was configured in versions 9.1.x YAML and Helm charts for the EDOT Kubernetes use case. This is not recommended — the future-proof solution is to use the OpenTelemetry Assets dashboards.
