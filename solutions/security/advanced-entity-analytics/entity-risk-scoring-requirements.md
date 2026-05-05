@@ -62,7 +62,7 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ### Known limitations [_known_limitations]
 
-* The risk scoring engine uses an internal user role to score all hosts, users, and services, and doesn’t respect privileges applied to custom users or roles. After you turn on the risk scoring engine for a {{kib}} space, all alerts in the space will contribute to host, user, and service risk scores.
+* The risk scoring engine uses an internal user role to score all hosts, users, and services, and doesn’t respect privileges applied to custom users or roles. After you turn on risk scoring for a {{kib}} space, all alerts in the space will contribute to host, user, and service risk scores.
 * You cannot customize alert data views or risk weights associated with alerts and asset criticality levels.
 
 
@@ -98,9 +98,31 @@ serverless: all
 To turn on the entity store, you need the following:
 
 * In {{stack}}, you need the appropriate [privileges](#_privileges_3).
-* In serverless, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
+* In {{serverless-short}}, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
 
 ### Privileges [_privileges_3]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+#### Cluster
+
+- `manage_index_templates`
+
+#### Index
+
+- `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`
+- `read` and `manage` for `risk-score.risk-score-*`
+- `read` and `manage` for `entities-latest-*`
+- `read` and `view_index_metadata` for all {{elastic-sec}} indices
+
+#### {{kib}}
+
+**All** for the **Security** and **Saved Objects Management** features
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
 
 #### Cluster
 
@@ -119,3 +141,6 @@ To turn on the entity store, you need the following:
 #### {{kib}}
 
 **All** for the **Security** and **Saved Objects Management** features
+:::
+
+::::

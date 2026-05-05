@@ -59,11 +59,30 @@ To learn more, refer to [select a different model](/explore-analyze/ai-features/
 
 ## Change the default model
 
+::::{applies-switch}
+
+:::{applies-item} { ess: ga 9.4+, serverless: ga }
+To change which model is used by default:
+
+1. Search for **Model management / Feature settings** in the global search field.
+2. Select your preferred model from the **Default model** dropdown.
+3. Save your changes.
+
+The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
+
+:::
+
+:::{applies-item} { ess: ga =9.3 }
 To change which model is used by default:
 
 1. Search for **GenAI Settings** in the global search field.
 2. Select your preferred connector from the **Default AI Connector** dropdown.
 3. Save your changes.
+:::
+
+::::
+
+For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
 ## Use additional models
 
@@ -77,6 +96,7 @@ To create a new connector:
 2. Select **Create Connector** and select your model provider.
 3. Configure the connector with your API credentials and preferred model.
 4. Expand **Additional settings** and select `chat_completion` as the task type.
+
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
    :width: 450px
@@ -118,12 +138,12 @@ The following models are known to work well with {{agent-builder}}. These catego
 
 | Category | Model examples | Use cases | Trade-offs |
 |---|---|---|---|
-| Extended reasoning | - Gemini 3 Pro <br>- Claude 4.5 Opus | Open-ended exploration, multi-step planning, and complex analysis | Higher latency and cost; best for latency-insensitive, batch, or async workflows |
-| Balanced performance | - GPT-5.2 <br>- Claude 4.5 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost; suitable for real-time and interactive use |
-| High throughput | GPT-OSS-120B | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth; smaller context window; ideal for air-gapped deployments |
+| Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, and complex analysis | Higher latency and cost. Best for latency-insensitive, batch, or async workflows. |
+| Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. |
+| High throughput | Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
 
 :::{tip}
-For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.5 Sonnet and Gemini 3 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
+For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.6 Sonnet and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
 :::
 
 ### Incompatible models

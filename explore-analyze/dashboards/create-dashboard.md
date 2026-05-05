@@ -1,20 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+navigation_title: Create from the UI
 description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
-# Create a dashboard [create-dashboard]
+# Create a dashboard from the UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
+Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::{tip} - New ways to create dashboards
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
+New ways to create dashboards are available. You can also [create dashboards programmatically](create-dashboards-programmatically.md) using REST APIs, or [create dashboards using AI](create-dashboards-using-ai.md) through natural language.
 :::
 
 ## Requirements [create-dashboard-requirements]
@@ -47,6 +50,7 @@ Before creating a dashboard, ensure you have:
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
         * **Show panel titles** — Displays the titles in the panel headers.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can override this setting from their own settings.
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.

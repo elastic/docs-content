@@ -101,7 +101,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
     ```
 
 7. Start the node where you updated the keystore.
-8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
@@ -202,13 +202,13 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 9. Start the node where you updated the keystore.
 
-    Use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to confirm that the node joined the cluster:
+    Use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes) to confirm that the node joined the cluster:
 
     ```console
     GET _cat/nodes
     ```
 
-10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
