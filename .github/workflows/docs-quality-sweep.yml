@@ -1,9 +1,19 @@
 name: Docs quality sweep
+# Master dispatcher. Fans out to seven independent sub-workflows via
+# `gh workflow run`. We can't use `workflow_call` here because gh-aw
+# v0.71.x compiles a single artifact prefix per orchestrator run
+# (github.workflow + github.run_id), which collides across reusable
+# workflow_call invocations and silently feeds every agent the same
+# prompt. Tracked upstream as github/gh-aw#30338. By dispatching each
+# sweep separately, every sub-run gets its own github.run_id and
+# github.workflow, so artifact names are unique and prompts don't
+# cross-contaminate.
+
 on:
   workflow_dispatch:
     inputs:
       sweeps:
-        description: "Sweeps to run (comma-separated): frontmatter,applies-to,openings,style,typos,staleness,coherence — or 'all'"
+        description: "Sweeps to dispatch (comma-separated): frontmatter,applies-to,openings,style,typos,staleness,coherence — or 'all'"
         required: false
         default: "all"
       source-repo:
@@ -31,92 +41,85 @@ on:
         required: false
         default: "24"
       coherence-batch-size:
-        description: "Override target-batch-size for the coherence sweep (smaller because comparisons are expensive)"
+        description: "Override target-batch-size for the coherence sweep"
         required: false
         default: "50"
 
 permissions:
-  actions: read
+  actions: write   # required to dispatch sibling workflows via `gh workflow run`
   contents: read
-  discussions: write
-  issues: write
-  pull-requests: read
 
 jobs:
-  frontmatter:
-    if: contains(inputs.sweeps, 'frontmatter') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-frontmatter-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.target-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+  fan-out:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch selected sweeps
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SWEEPS: ${{ inputs.sweeps }}
+          SRC: ${{ inputs.source-repo }}
+          ROOT: ${{ inputs.docs-root }}
+          BATCH: ${{ inputs.target-batch-size }}
+          MAX: ${{ inputs.max-per-fix-issue }}
+          TYPOS_ARGS: ${{ inputs.typos-codespell-args }}
+          STALE_MONTHS: ${{ inputs.staleness-content-months }}
+          COHER_BATCH: ${{ inputs.coherence-batch-size }}
+        run: |
+          set -e
+          want() { [[ "$SWEEPS" == "all" || "$SWEEPS" == *"$1"* ]]; }
 
-  applies-to:
-    if: contains(inputs.sweeps, 'applies-to') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-applies-to-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.target-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          fire_with_default_inputs() {
+            local name="$1"
+            want "$name" || { echo "  skip $name (not in sweeps='$SWEEPS')"; return; }
+            echo "→ dispatching docs-${name}-sweep.yml"
+            gh workflow run "docs-${name}-sweep.yml" \
+              -f source-repo="$SRC" \
+              -f docs-root="$ROOT" \
+              -f target-batch-size="$BATCH" \
+              -f max-per-fix-issue="$MAX"
+          }
 
-  openings:
-    if: contains(inputs.sweeps, 'openings') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-openings-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.target-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          # frontmatter, applies-to, openings, style — same input shape
+          for n in frontmatter applies-to openings style; do
+            fire_with_default_inputs "$n"
+          done
 
-  style:
-    if: contains(inputs.sweeps, 'style') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-style-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.target-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          # typos has its own input shape (no rotation, plus codespell-args)
+          if want typos; then
+            echo "→ dispatching docs-typos-sweep.yml"
+            gh workflow run docs-typos-sweep.yml \
+              -f source-repo="$SRC" \
+              -f docs-root="$ROOT" \
+              -f max-per-fix-issue="$MAX" \
+              -f codespell-args="$TYPOS_ARGS"
+          else
+            echo "  skip typos (not in sweeps='$SWEEPS')"
+          fi
 
-  typos:
-    if: contains(inputs.sweeps, 'typos') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-typos-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-      codespell-args: ${{ inputs.typos-codespell-args }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          # staleness has its own thresholds
+          if want staleness; then
+            echo "→ dispatching docs-staleness-sweep.yml"
+            gh workflow run docs-staleness-sweep.yml \
+              -f source-repo="$SRC" \
+              -f docs-root="$ROOT" \
+              -f target-batch-size="$BATCH" \
+              -f max-per-fix-issue="$MAX" \
+              -f stale-content-months="$STALE_MONTHS"
+          else
+            echo "  skip staleness (not in sweeps='$SWEEPS')"
+          fi
 
-  staleness:
-    if: contains(inputs.sweeps, 'staleness') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-staleness-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.target-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-      stale-content-months: ${{ inputs.staleness-content-months }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          # coherence overrides target-batch-size
+          if want coherence; then
+            echo "→ dispatching docs-coherence-sweep.yml"
+            gh workflow run docs-coherence-sweep.yml \
+              -f source-repo="$SRC" \
+              -f docs-root="$ROOT" \
+              -f target-batch-size="$COHER_BATCH" \
+              -f max-per-fix-issue="$MAX"
+          else
+            echo "  skip coherence (not in sweeps='$SWEEPS')"
+          fi
 
-  coherence:
-    if: contains(inputs.sweeps, 'coherence') || inputs.sweeps == 'all'
-    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-coherence-sweep.lock.yml@v1
-    with:
-      source-repo: ${{ inputs.source-repo }}
-      docs-root: ${{ inputs.docs-root }}
-      target-batch-size: ${{ inputs.coherence-batch-size }}
-      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          echo ""
+          echo "Each dispatched sweep runs as its own workflow run — see the Actions tab."
