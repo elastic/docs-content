@@ -37,7 +37,7 @@ Detection Rules use their author’s permissions to enrich alerts with entity da
 
 **Workaround**<br>
 
-Give appropriate index-level permissions for the entity store index `.entities.v2.latest.security_*` to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
+Give appropriate index-level permissions for the entity store index and alias in the appropriate space (`.entities.v2.latest.security_${spaceId}*` and `entities-latest-${spaceId}*`)  to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
 
 :::
 
