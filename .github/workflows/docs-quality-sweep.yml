@@ -72,7 +72,7 @@ jobs:
             local name="$1"
             want "$name" || { echo "  skip $name (not in sweeps='$SWEEPS')"; return; }
             echo "→ dispatching docs-${name}-sweep.yml"
-            gh workflow run "docs-${name}-sweep.yml" \
+            gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
               -f target-batch-size="$BATCH" \
@@ -87,7 +87,7 @@ jobs:
           # typos has its own input shape (no rotation, plus codespell-args)
           if want typos; then
             echo "→ dispatching docs-typos-sweep.yml"
-            gh workflow run docs-typos-sweep.yml \
+            gh workflow run docs-typos-sweep.yml --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
               -f max-per-fix-issue="$MAX" \
@@ -99,7 +99,7 @@ jobs:
           # staleness has its own thresholds
           if want staleness; then
             echo "→ dispatching docs-staleness-sweep.yml"
-            gh workflow run docs-staleness-sweep.yml \
+            gh workflow run docs-staleness-sweep.yml --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
               -f target-batch-size="$BATCH" \
@@ -112,7 +112,7 @@ jobs:
           # coherence overrides target-batch-size
           if want coherence; then
             echo "→ dispatching docs-coherence-sweep.yml"
-            gh workflow run docs-coherence-sweep.yml \
+            gh workflow run docs-coherence-sweep.yml --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
               -f target-batch-size="$COHER_BATCH" \
