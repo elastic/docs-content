@@ -8,7 +8,7 @@ products:
 
 # Store and retrieve scripts [script-stored-scripts]
 
-You can store and retrieve scripts from the cluster state using the [stored script APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-script). Stored scripts allow you to reference shared scripts for operations like scoring, aggregating, filtering, and reindexing. Instead of embedding scripts inline in each query, you can reference these shared operations.
+You can store and retrieve scripts from the cluster state using the [stored script APIs]({{es-apis}}group/endpoint-script). Stored scripts allow you to reference shared scripts for operations like scoring, aggregating, filtering, and reindexing. Instead of embedding scripts inline in each query, you can reference these shared operations.
 
 Stored scripts can also reduce request payload size. Depending on script size and request frequency, this can help lower latency and data transfer costs.
 
@@ -17,7 +17,7 @@ Unlike regular scripts, stored scripts require that you specify a script languag
 ::::
 
 
-To create a script, use the [create stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script). For example, the following request creates a stored script named `calculate-score`.
+To create a script, use the [create stored script API]({{es-apis}}operation/operation-put-script). For example, the following request creates a stored script named `calculate-score`.
 
 ```console
 POST _scripts/calculate-score
@@ -29,7 +29,7 @@ POST _scripts/calculate-score
 }
 ```
 
-You can retrieve that script by using the [get stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script).
+You can retrieve that script by using the [get stored script API]({{es-apis}}operation/operation-get-script).
 
 ```console
 GET _scripts/calculate-score
@@ -61,7 +61,7 @@ GET my-index-000001/_search
 1. `id` of the stored script
 
 
-To delete a stored script, submit a [delete stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script) request.
+To delete a stored script, submit a [delete stored script API]({{es-apis}}operation/operation-delete-script) request.
 
 ```console
 DELETE _scripts/calculate-score

@@ -16,7 +16,7 @@ This tutorial demonstrates how to perform hybrid search, combining semantic sear
 
 In hybrid search, semantic search retrieves results based on the meaning of the text, while full-text search focuses on exact word matches. By combining both methods, hybrid search delivers more relevant results, particularly in cases where relying on a single approach may not be sufficient.
 
-The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service]({{es-apis}}operation/operation-inference-put-elasticsearch) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 ## Create an index mapping [hybrid-search-create-index-mapping]
 
@@ -45,7 +45,7 @@ PUT semantic-embeddings
 
 
 ::::{note}
-If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
+If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings]({{es-apis}}operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
 
 ::::
 
@@ -238,5 +238,8 @@ POST /_query?format=txt
 :::
 ::::
 
+## Related pages
 
+- To set up semantic search before combining it with hybrid search, follow the [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md) tutorial.
+- To reduce memory usage for dense vector embeddings at scale, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 

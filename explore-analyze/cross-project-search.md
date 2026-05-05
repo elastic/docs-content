@@ -26,6 +26,10 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 * [Project routing in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-project-routing.md): Learn how to route searches to specific projects based on tag values.
 * [Manage {{cps-init}} scope in your project apps](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md): Control which projects are searched as you work in Discover, Dashboards, and other {{kib}} apps.
 
+:::{note}
+Cross-project search is available for {{serverless-full}} projects only. For other deployment types, refer to [](/explore-analyze/cross-cluster-search.md).
+:::
+
 ## {{cps-cap}} as the default behavior for linked projects
 
 ::::{include} /explore-analyze/cross-project-search/_snippets/cps-default-search-behavior.md
@@ -33,7 +37,7 @@ For details on how search, tags, and project routing work in {{cps-init}}, refer
 
 ## Project linking
 
-In {{serverless-short}}, projects can be linked together.
+In {{serverless-short}}, projects can be linked together. Projects can be linked across cloud providers and regions.
 
 ::::{include} /deploy-manage/_snippets/cps-origin-linked-definitions.md
 ::::
@@ -126,20 +130,20 @@ If you run `GET logs/_search`:
 
 The following APIs support {{cps}}:
 
-* [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
-* [Count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-count) and [CAT count](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-cat-count)
-* [ES|QL query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-queryv) and [ES|QL async query](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-esql-async-query)
-* [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
-* [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
-* [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
-* [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
-* PIT (point in time) [close](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-close-point-in-time), [open](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-open-point-in-time)
-* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-reindex)
-* [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
-* [SQL](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-sql)
-* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
-* [Search a vector tile](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-search-mvt)
-* Search scroll [clear](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-clear-scroll), [run](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-scroll)
+* [Async search]({{es-apis}}operation/operation-async-search-submit)
+* [Count]({{es-apis}}v9/operation/operation-count) and [CAT count]({{es-apis}}v9/operation/operation-cat-count)
+* [ES|QL query]({{es-apis}}v9/operation/operation-esql-query) and [ES|QL async query]({{es-apis}}v9/operation/operation-esql-async-query)
+* [EQL search]({{es-apis}}operation/operation-eql-search)
+* [Field capabilities]({{es-apis}}operation/operation-field-caps)
+* [Multi search]({{es-apis}}operation/operation-msearch)
+* [Multi search template]({{es-apis}}operation/operation-msearch-template)
+* PIT (point in time) [close]({{es-apis}}v9/operation/operation-close-point-in-time), [open]({{es-apis}}v9/operation/operation-open-point-in-time)
+* [Reindex]({{es-apis}}v9/operation/operation-reindex)
+* [Resolve Index API]({{es-apis}}operation/operation-indices-resolve-index)
+* [SQL]({{es-apis}}v9/group/endpoint-sql)
+* [Search]({{es-apis}}operation/operation-search)
+* [Search a vector tile]({{es-apis}}v9/operation/operation-search-mvt)
+* Search scroll [clear]({{es-apis}}v9/operation/operation-clear-scroll), [run]({{es-apis}}v9/operation/operation-scroll)
 * [Search template](/solutions/search/search-templates.md)
 
 ### {{product.painless}} scripting [cps-painless-scripting]
@@ -160,13 +164,13 @@ For additional information, refer to the [{{product.painless}} execute API refer
 
 **Project routing**: `_project_routing`
 
-* [Create or update project routing expressions](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-create-many-routing)
-* [Get a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-get-routing)
-* [Delete a project routing expression](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-delete-routing)
+* [Create or update project routing expressions]({{es-serverless-apis}}operation/operation-project-create-many-routing)
+* [Get a project routing expression]({{es-serverless-apis}}operation/operation-project-get-routing)
+* [Delete a project routing expression]({{es-serverless-apis}}operation/operation-project-delete-routing)
 
 **Project tags**: `_project/tags`
 
-* [Get tags](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags)
+* [Get tags]({{es-serverless-apis}}operation/operation-project-tags)
 
 ## Identifying the location of a document [cps-identify-documents]
 

@@ -147,7 +147,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
     ```
 
 5. Start the node where you updated the keystore.
-6. $$$verify-keystore-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+6. $$$verify-keystore-newca$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
@@ -271,13 +271,13 @@ This process is different for each client, so refer to your client’s documenta
 
 9. Start the node where you updated the keystore.
 
-    Use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to confirm that the node joined the cluster:
+    Use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes) to confirm that the node joined the cluster:
 
     ```console
     GET _cat/nodes
     ```
 
-10. $$$verify-keystore-http-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+10. $$$verify-keystore-http-newca$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
