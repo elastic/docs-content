@@ -413,7 +413,7 @@ To inject the environment variables and service details, use custom credential t
 
 :::{image} /solutions/images/observability-ansible-automation-apm-service-details.png
 :alt: Custom fields in Ansible Tower
-:title: Custom fileds in Ansible AWX/Tower
+:title: Custom fields in Ansible AWX/Tower
 :screenshot:
 :::
 

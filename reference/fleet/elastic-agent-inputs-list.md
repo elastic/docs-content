@@ -96,7 +96,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `entity-analytics` | Collects identity assets, such as users, from external identity providers. | [Entity Analytics input](beats://reference/filebeat/filebeat-input-entity-analytics.md) ({{filebeat}} docs) |
 | `event/file` | Alias for `log`. | n/a |
 | `event/tcp` | Alias for `tcp`. | n/a |
-| `filestream` | Reads lines from active log files. Replaces and imporoves on the `log` input. | [filestream input](beats://reference/filebeat/filebeat-input-filestream.md) ({{filebeat}} docs) |
+| `filestream` | Reads lines from active log files. Replaces and improves on the `log` input. | [filestream input](beats://reference/filebeat/filebeat-input-filestream.md) ({{filebeat}} docs) |
 | `gcp-pubsub` | Reads messages from a Google Cloud Pub/Sub topic subscription. | [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) ({{filebeat}} docs) |
 | `gcs` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reads content from files stored in buckets which reside on your Google Cloud. | [Google Cloud Storage input](beats://reference/filebeat/filebeat-input-gcs.md) ({{filebeat}} docs) |
 | `http_endpoint` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Initializes a listening HTTP server that collects incoming HTTP POST requests containing a JSON body. | [HTTP Endpoint input](beats://reference/filebeat/filebeat-input-http_endpoint.md) ({{filebeat}} docs) |

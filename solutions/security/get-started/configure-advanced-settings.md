@@ -217,7 +217,7 @@ If you’ve ensured that your detection rules have the required privileges acros
 stack: ga 9.2
 ```
 
-To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
+To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 
