@@ -12,9 +12,8 @@ products:
 
 # Ingest metrics into a TSDS using the OTLP/HTTP endpoint
 
-{{es}} can ingest metrics through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp) and store them as [time series data streams (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md).
+{{es}} supports metrics ingestion through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
-The {{es}} OTLP/HTTP endpoint writes metrics to `metrics-*` data streams.
-It automatically sets up the time series data streams, index templates, dimensions, and metric mappings from the incoming OTLP metadata.
+The {{es}} OTLP/HTTP endpoint stores incoming OTLP metrics in [TSDS](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md), deriving dimensions and metric mappings automatically from OTLP metadata.
 
 For more details, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
