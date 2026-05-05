@@ -238,7 +238,7 @@ Slash command {applies_to}`stack: ga 9.4+`
 :   The chat shortcut for explicitly invoking a skill. Type `/` followed by the skill name to bypass automatic skill selection. See [Skills](skills.md).
 
 Solution view
-:   A {{kib}} navigation mode oriented around a single solution ({{es}}, {{product.observability}}, or {{product.security}}). The solution view determines which {{agent-builder}} entry points and built-in capabilities are surfaced. See [Get started with {{agent-builder}}](get-started.md).
+:   A {{kib}} space navigation mode oriented around a single solution ({{es}}, {{product.observability}}, or {{product.security}}). In Elastic Stack deployments on version 8.16 and later, each space has its own navigation, called solution view. The solution view determines which {{agent-builder}} entry points and built-in capabilities are surfaced. See [Get started with {{agent-builder}}](get-started.md#access-agent-builder).
 
 Space
 :   A {{kib}} [space](/deploy-manage/manage-spaces.md). Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [Permissions and access control](permissions.md).
