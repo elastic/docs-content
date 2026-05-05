@@ -80,7 +80,7 @@ Chat history
 :   See **Conversation history**.
 
 Connector
-:   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. {{agent-builder}} uses GenAI connectors to call LLM providers and uses an MCP connector {applies_to}`stack: preview 9.3+` to call remote MCP servers. See [Connectors](connectors.md).
+:   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. See [Connectors](connectors.md).
 
 Context window
 :   The maximum amount of text, measured in tokens, that an LLM can process in a single interaction. When a conversation, tool response, or system prompt grows too large, the agent can encounter a context length exceeded error. See [Token usage in {{agent-builder}}](monitor-usage.md).
