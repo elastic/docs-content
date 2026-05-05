@@ -161,6 +161,8 @@ By default, records are written to the following data streams:
 | Traces | `traces-generic.otel-default` |
 | Metrics | `metrics-generic.otel-default` |
 
+For more about how OTLP metrics are stored as time series data streams, refer to [Ingest metrics into a TSDS using the OTLP/HTTP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md).
+
 The target data stream name follows the pattern `<type>-<dataset>.otel-<namespace>`.
 You can influence `dataset` and `namespace` by setting attributes on your data:
 
