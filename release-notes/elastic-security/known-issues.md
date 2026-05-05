@@ -35,12 +35,6 @@ When a rule fires successfully and generates an alert, Asset Criticality and Ent
 
 Detection Rules use their author’s permissions to enrich alerts with entity data. When rules are created or modified, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
 
-
-
-
-
-
-
 **Workaround**<br>
 
 Give appropriate index-level permissions for the entity store index `.entities.v2.latest.security_*` to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
