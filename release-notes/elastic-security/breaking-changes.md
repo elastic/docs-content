@@ -124,6 +124,12 @@ The old per-type index pattern (`.entities.v1.latest.security_{type}_<space-id>`
 **Action**<br> Update direct index references to use the new shared alias.
 ::::
 
+::::{dropdown} Entity Analytics: Entity identification in Explore/Entity flyout/Entity store
+In 9.4, a fine-grained logical identifier has been introduced for user and host entities. In previous versions, user entities were identified by the `user.name` field and host entities were identified by the `host.name` field. This has been replaced by a priority ranking for hosts (`host.id` -> `host.name` -> `host.hostname`) and a user tiering identification which separates medium-confidence local users (i.e., a `user.name` associated with a particular `host.id`), from high-confidence IDP users found in integrations.
+
+**Impact**<br> User and Host entities which do not provide enough information to properly identify them will not be available in the entity store. These entities will only be visible through "observed" aggregation views within the entity flyout and Explore details pages, with no Entity Analytics processing done against them, such as entity risk scoring, resolution, or watchlists. Additionally, entities which _are_ properly identified and are in the entity store will no longer have a link available to the Explore details page for that entity.
+::::
+
 ::::{dropdown} Removes serializer and deserializer parameters from the Lists API
 Removes the unused `serializer` and `deserializer` parameters from the Lists API endpoints.
 For more information, check [#250111]({{kib-pull}}250111).
