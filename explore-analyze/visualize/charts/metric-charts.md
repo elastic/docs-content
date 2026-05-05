@@ -265,7 +265,9 @@ When creating or editing a visualization, you can customize several appearance o
       - {applies_to}`stack: ga 9.4` **Middle**: Centers the value vertically within the tile.
 
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment** of the secondary metric.
