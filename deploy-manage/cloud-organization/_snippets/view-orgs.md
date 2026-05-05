@@ -8,7 +8,7 @@ To view the organizations:
 2. From the top navigation menu, click on the user menu and select **Profile**.
 3. Click the **My organizations** tab.
 
-The organizations you have access to appear in the **My organizations** list. In the list, you can view the organization's name, its status, your roles in the organization, and when you were added to the organization.
+The organizations you have access to appear in the **My organizations** list. In the list, you can view the organization's name, its status, your [roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) in the organization, and when you were added to the organization.
 
 % confirm list name, confirm that "added" is when you were added to the organization
 
