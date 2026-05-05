@@ -14,15 +14,20 @@ products:
 
 # Get started with {{agent-builder}}
 
-To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}. 
+To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}.
+
 If you don't already have an Elastic deployment, you can start a [free trial](https://cloud.elastic.co/registration) or refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 
 ::::{admonition}
 This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
+:::{note}
+For model choice, refer to [Model configuration](models.md) and [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+:::
+
 :::::::{stepper}
-::::::{step} Enable {{agent-builder}}
+::::::{step} Access {{agent-builder}}
 
 :::::{applies-switch}
 
@@ -77,10 +82,6 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 
 :::::
 
-:::{note}
-To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
-:::
-
 :::::{dropdown} Previous versions
 :applies_to: stack: preview =9.2, ga 9.3
 
@@ -107,6 +108,10 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 :::::
 
 ::::::
+
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
 
 ::::{step} Ingest data into Elasticsearch
 
@@ -156,13 +161,11 @@ For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elas
 
 ::::
 
-::::{step} Build custom skills and tools
+::::{step} Begin building agents and tools
 
-The default [Elastic AI Agent](builtin-agents-reference.md) comes with [built-in skills](builtin-skills-reference.md) and [built-in tools](tools.md) ready to use. To add your own domain expertise, [create custom skills](custom-skills.md) that package knowledge and tools into reusable instruction sets. For tips on writing effective skill instructions, refer to the [skill creation guidelines](skill-creation-guidelines.md). To learn how skills are invoked during a conversation, refer to [how skills are invoked](skills.md#how-skills-are-invoked).
+Once you've tested [built-in agents](builtin-agents-reference.md) with [built-in Elastic tools](tools.md), you can begin [building your own agents](custom-agents.md#create-a-new-agent) with custom instructions and [creating your own tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to assign them. You can also clone the default `Elastic AI Agent` as a starting point for a custom agent.
 
-You can also [create custom tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to give your skills and agents access to additional data sources. If you need a fully separate agent with its own system prompt, you can [create a custom agent](custom-agents.md#create-a-new-agent).
-
-To work programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
+To build agents and tools programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
 ::::
 

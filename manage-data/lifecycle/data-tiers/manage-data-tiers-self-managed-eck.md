@@ -58,6 +58,11 @@ spec:
 
 Some settings are [managed by {{eck}}](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md); avoid overriding those. For the full mapping between manifest structure and {{es}} configuration, see [Node configuration](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md).
 
+
+:::{note}
+ On {{eck}}, node set and scaling changes try to relocate shards from nodes that are removed, subject to allocation rules, capacity, and [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) on the destination nodes. For more information, refer to the [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) documentation.
+:::
+
 ## Related pages
 
 * [Configure data tiers](/manage-data/lifecycle/data-tiers.md#configure-data-tiers)

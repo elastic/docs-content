@@ -127,10 +127,12 @@ You can assign skills that already exist in your deployment's skill library—yo
 
 :::::{step} Assign plugins (optional)
 ```{applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
+serverless: preview
 ```
 
-Switch to the **Plugins** tab to assign plugins to your agent. Plugins extend agents with additional skills and capabilities. Before you can assign a plugin, it must first be installed from the global **Plugins** page in **Manage components**.
+Switch to the **Plugins** tab to assign plugins to your agent. Each plugin bundles a set of related skills into a single install. Before you can assign a plugin, install it from the global **Plugins** page in **Manage components**.
+For more information, refer to [Plugins in {{agent-builder}}](plugins.md).
 
 :::::
 
@@ -250,7 +252,7 @@ The Agents API enables programmatic management of custom agents.
 
 For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents-apis).
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 
@@ -260,3 +262,5 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [Tools](tools.md)
 - [Skills in {{agent-builder}}](skills.md)
 - [Skill creation guidelines](skill-creation-guidelines.md)
+- [Plugins in {{agent-builder}}](plugins.md)
+- [Connectors in {{agent-builder}}](connectors.md)

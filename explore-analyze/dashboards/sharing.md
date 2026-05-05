@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
-description: Share Kibana dashboards with your team using links, embeds, or by exporting them as NDJSON files for import into other environments.
+description: Share Kibana dashboards with your team using links, embeds, JSON exports for the dashboards API, or NDJSON files for migration.
 applies_to:
   stack: ga
   serverless: ga
@@ -47,6 +47,15 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 
 ## Export dashboards [export-dashboards]
 
+You can export a dashboard from {{kib}} in two formats. Use the table to choose the one that fits your goal.
+
+| Format | Use it to | What it includes |
+|---|---|---|
+| [NDJSON](#export-ndjson) | Move dashboards between spaces or clusters, back them up, or share them in bulk. | The selected dashboards along with their related objects, such as data views and visualizations. Supports exporting multiple dashboards at once. |
+| [JSON](#export-dashboard-json) {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its state. | One dashboard, with the panel types and properties that the dashboards API supports. Any panel types and properties not supported by the API are listed in the export flyout and removed from the export. |
+
+### Export as NDJSON saved objects [export-ndjson]
+
 Export dashboards as NDJSON files to migrate them to other {{product.kibana}} instances, back them up, or share them with other teams. You can export dashboards from **Stack Management** > **Saved Objects**. To configure and start the export:
 
 1. Select the dashboard that you want, then click **Export**.
@@ -55,4 +64,23 @@ Export dashboards as NDJSON files to migrate them to other {{product.kibana}} in
 
 ![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
-To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API]({{kib-apis}}group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+
+### Export as dashboards API-compatible JSON [export-dashboard-json]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+
+To export a dashboard as JSON:
+
+1. Open the dashboard you want to export.
+2. From the toolbar, select {icon}`download` **Export** > **Export JSON**.
+3. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
+4. Choose how to use the JSON source:
+
+   * Select **Copy to clipboard** to copy the JSON.
+   * Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
+   * Select **Download JSON** to save the JSON source to a file.

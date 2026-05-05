@@ -53,6 +53,7 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | Stack pack download link | Minimum required ECE version |
 | --- | --- |
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.0](https://download.elastic.co/cloud-enterprise/versions/9.4.0.zip) | ECE 4.0.0 | Kibana requires 2GB instance
+| [{{es}}, {{kib}}, and APM stack pack: 9.3.4](https://download.elastic.co/cloud-enterprise/versions/9.3.4.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.3](https://download.elastic.co/cloud-enterprise/versions/9.3.3.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.2](https://download.elastic.co/cloud-enterprise/versions/9.3.2.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.1](https://download.elastic.co/cloud-enterprise/versions/9.3.1.zip) | ECE 4.0.0 |
@@ -85,6 +86,7 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.2](https://download.elastic.co/cloud-enterprise/versions/9.0.2.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.1](https://download.elastic.co/cloud-enterprise/versions/9.0.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.15](https://download.elastic.co/cloud-enterprise/versions/8.19.15.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.14](https://download.elastic.co/cloud-enterprise/versions/8.19.14.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.13](https://download.elastic.co/cloud-enterprise/versions/8.19.13.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.12](https://download.elastic.co/cloud-enterprise/versions/8.19.12.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
