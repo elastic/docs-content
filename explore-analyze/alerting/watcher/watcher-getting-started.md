@@ -155,7 +155,7 @@ PUT _watcher/watch/log_error_watch
 
 Since the `log_error_watch` is configured to run every 10 seconds, make sure you delete it when you’re done experimenting. Otherwise, the noise from this sample watch will make it hard to see what else is going on in your watch history and log file.
 
-To remove the watch, use the [delete watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-delete-watch):
+To remove the watch, use the [delete watch API]({{es-apis}}operation/operation-watcher-delete-watch):
 
 ```console
 DELETE _watcher/watch/log_error_watch

@@ -15,7 +15,7 @@ Depending on where a script is used, it will have access to certain special vari
 
 ## Update scripts [_update_scripts]
 
-A script used in the [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update), [update-by-query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query), or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) API will have access to the `ctx` variable which exposes:
+A script used in the [update]({{es-apis}}operation/operation-update), [update-by-query]({{es-apis}}operation/operation-update-by-query), or [reindex]({{es-apis}}operation/operation-reindex) API will have access to the `ctx` variable which exposes:
 
 `ctx._source`
 :   Access to the document [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md).

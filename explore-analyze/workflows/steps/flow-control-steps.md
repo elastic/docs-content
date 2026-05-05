@@ -28,9 +28,9 @@ Flow control steps shape a workflow's logic. They decide what runs, what gets sk
 | Pause for a fixed duration | [`wait`](#wait) |
 | Exit a loop early | [`loop.break`](#loop-break) |
 | Skip to the next loop iteration | [`loop.continue`](#loop-continue) |
-| Pause for operator input (human-in-the-loop) | [`waitForInput`](#waitforinput) |
+| Pause for human input (human-in-the-loop) | [`waitForInput`](#waitforinput) |
 
-For fan-out across independent workflow executions, see [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) in the composition reference.
+For fan-out across independent workflow executions, refer to [`workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md#workflow-executeasync) in the composition reference.
 
 ## `if` [if]
 
@@ -50,7 +50,7 @@ Conditional branching. Evaluates a {{kib}} Query Language (KQL) or boolean expre
       with: { message: "Standard alert" }
 ```
 
-For expression syntax and additional examples, see [If step](/explore-analyze/workflows/steps/if.md).
+For expression syntax and additional examples, refer to [If step](/explore-analyze/workflows/steps/if.md).
 
 ## `foreach` [foreach]
 
@@ -67,11 +67,11 @@ Iterate over an array, running nested steps once per item. Inside the loop, the 
         message: "[{{ foreach.index }}/{{ foreach.total }}] {{ foreach.item._id }}"
 ```
 
-For the full parameter reference, see [Foreach step](/explore-analyze/workflows/steps/foreach.md).
+For the full parameter reference, refer to [Foreach step](/explore-analyze/workflows/steps/foreach.md).
 
 ## `while` [while]
 
-Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations; without it, the loop continues as long as the condition holds.
+Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations. Without it, the loop continues as long as the condition holds.
 
 ```yaml
 - name: poll_until_ready
@@ -92,11 +92,11 @@ Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the
         duration: "5s"
 ```
 
-For the full parameter reference and gotchas, see [While step](/explore-analyze/workflows/steps/while.md).
+For the full parameter reference and gotchas, refer to [While step](/explore-analyze/workflows/steps/while.md).
 
 ## `switch` [switch]
 
-Multi-way branching. The engine evaluates an expression once and routes to the matching case. Each case has a `match` value and a `steps` array; an optional `default` runs when no case matches.
+Multi-way branching. The engine evaluates an expression once and routes to the matching case. Each case has a `match` value and a `steps` array. An optional `default` runs when no case matches.
 
 ```yaml
 - name: dispatch_by_category
@@ -119,7 +119,7 @@ Multi-way branching. The engine evaluates an expression once and routes to the m
       with: { message: "other" }
 ```
 
-For the full parameter reference, see [Switch step](/explore-analyze/workflows/steps/switch.md).
+For the full parameter reference, refer to [Switch step](/explore-analyze/workflows/steps/switch.md).
 
 ## `wait` [wait]
 
@@ -132,7 +132,7 @@ Pause execution for a specified duration, then continue to the next step.
     duration: "30s"
 ```
 
-For the full parameter reference, see [Wait step](/explore-analyze/workflows/steps/wait.md).
+For the full parameter reference, refer to [Wait step](/explore-analyze/workflows/steps/wait.md).
 
 ## `loop.break` [loop-break]
 
@@ -147,7 +147,7 @@ Exit the innermost enclosing loop (`foreach` or `while`) immediately. Takes no p
       type: loop.break
 ```
 
-For the full reference, see [Loop break step](/explore-analyze/workflows/steps/loop-break.md).
+For the full reference, refer to [Loop break step](/explore-analyze/workflows/steps/loop-break.md).
 
 ## `loop.continue` [loop-continue]
 
@@ -162,11 +162,11 @@ Skip to the next iteration of the innermost enclosing loop. Takes no parameters.
       type: loop.continue
 ```
 
-For the full reference, see [Loop continue step](/explore-analyze/workflows/steps/loop-continue.md).
+For the full reference, refer to [Loop continue step](/explore-analyze/workflows/steps/loop-continue.md).
 
 ## `waitForInput` [waitforinput]
 
-Pause the workflow until an operator submits input through the resume API or the Kibana UI. The primary human-in-the-loop primitive.
+Pause the workflow until a human submits input through the resume API or the Kibana UI. The primary human-in-the-loop primitive.
 
 ```yaml
 - name: review
@@ -185,7 +185,7 @@ Pause the workflow until an operator submits input through the resume API or the
       required: ["approved"]
 ```
 
-For the complete HITL pattern, see [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For the step parameter reference, see [waitForInput step](/explore-analyze/workflows/steps/wait-for-input.md).
+For the complete HITL pattern, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). For the step parameter reference, refer to [waitForInput step](/explore-analyze/workflows/steps/wait-for-input.md).
 
 ## Related
 

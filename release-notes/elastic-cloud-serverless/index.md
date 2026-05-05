@@ -9,6 +9,21 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## April 30, 2026 [serverless-changelog-04302026]
+
+### Features and enhancements [serverless-changelog-04302026-features-enhancements]
+
+* Enables OpenTelemetry-based credential verification for {{fleet}} cloud connectors by default [#265619]({{kib-pull}}265619)
+* Adds force merge settings for searchable snapshots in the ILM policy editor, with `force_merge_index` and `force_merge_on_clone` options for hot, cold, and frozen phases [#264698]({{kib-pull}}264698)
+* Adds a `search.rerank` workflow step that reorders documents by relevance using a rerank inference endpoint [#263706]({{kib-pull}}263706).
+
+### Fixes [serverless-changelog-04302026-fixes]
+
+* Fixes query crashes and dimension selection state errors when switching between metric streams in Metrics Experience [#265464]({{kib-pull}}265464)
+* Fixes the Entity Analytics left panel not clearing when selecting a new entity [#265512]({{kib-pull}}265512)
+* Reduces the default OAuth 2.0 scope for the SharePoint Online connector from `Sites.Read.All` to `Sites.Selected` for more granular site access control [#265727]({{kib-pull}}265727)
+* Fixes inference error status codes not propagating correctly through the Agent Builder converse API [#266147]({{kib-pull}}266147)
+
 ## April 28, 2026 [serverless-changelog-04282026]
 
 ### Features and enhancements [serverless-changelog-04282026-features-enhancements]
