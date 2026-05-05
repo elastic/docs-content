@@ -23,6 +23,25 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
+**Applies to: 9.4.0**
+
+**Impact**<br>
+
+Detection Engine rules use the rule author’s permissions to enrich alerts with entity data. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment will fail, and the rule will report a failure status (though alerts still generate).
+
+When Detection Engine rules are created, the user that created that rule's permissions are stored as a "snapshot" in an API key
+
+When a rule fires successfully, and an alert is generated as a result of that rule, Asset criticality and Entity Risk score values are enriched onto the alert document. In 9.4, these values are enriched from the entity store index .entities.v2.latest.security_* , which is a feature that is turned "on" by default in version 9.4 in the default space
+
+After upgrading to this version, any rules who were created by users who do not have access to the `.entities.v2.latest.security_*` index (i.e., the entity store) will not be able to enrich the alert documents with entity analytics data. The major effect of this is that all alerts which contain user or host entities will begin to show failures for that rule. The alert document will be generated successfully, although the entity analytics data will not be enriched upon it, and it will show as a failure.
+
+**Workaround**<br>
+
+The workaround for this failure is to give appropriate index-level permissions for the entity store (`.entities.v2.latest.security_*`) to a rule author user, and have that user perform a no-op bulk update to all rules in the space. This will allow the rule to succeed in subsequent runs.
+
+:::
+
 :::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4
 **Applies to: {{agent}} 9.3.4**
 
