@@ -23,7 +23,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 ## Limitations
 
 :::{tip}
-{{agent-builder}} is automatically enabled on all deployment types as of 9.4. Refer to [Get started](get-started.md#access-agent-builder) if you need instructions about enabling {{agent-builder}} for earlier versions.
+{{agent-builder}} is automatically enabled on all deployment types as of 9.4. For instructions about enabling {{agent-builder}} in earlier versions, refer to [Get started](get-started.md#access-agent-builder).
 :::
 
 ### Cross-cluster search limitations
