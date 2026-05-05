@@ -120,7 +120,7 @@ Default model {applies_to}`stack: ga 9.4+`
 ## E
 
 Elastic AI Agent
-:   The general-purpose default agent shipped with {{agent-builder}}. The Elastic AI Agent is a read-only built-in agent {applies_to}`stack: preview =9.2, ga =9.3` and a space-aware, persisted agent that you can customize directly {applies_to}`stack: ga 9.4+`. See [Built-in agents reference](builtin-agents-reference.md).
+:   The general-purpose default agent shipped with {{agent-builder}}. See [](builtin-agents-reference.md#elastic-ai-agent).
 
 Elastic Inference Service (EIS) {applies_to}`stack: ga 9.4+`
 :   Elastic's managed service for running LLMs on Elastic infrastructure, used by Elastic Managed LLMs. See [Models](models.md).
