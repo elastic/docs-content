@@ -1,8 +1,8 @@
 ---
 navigation_title: Security
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Use workflows to automate security operations, respond to alerts, and manage detection rules at scale in Elastic Security.
 products:
   - id: kibana

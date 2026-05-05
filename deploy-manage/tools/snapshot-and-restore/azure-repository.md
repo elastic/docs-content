@@ -24,7 +24,7 @@ The only mandatory setting for an Azure repository client is `account`, which is
 bin/elasticsearch-keystore add azure.client.default.account
 ```
 
-If you adjust this setting after a node has started, call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to reload the new value.
+If you adjust this setting after a node has started, call the [Nodes reload secure settings API]({{es-apis}}operation/operation-nodes-reload-secure-settings) to reload the new value.
 
 You may define more than one client by setting their `account` values. For example, to set the `default` client and another client called `secondary`, run the following commands on each node:
 

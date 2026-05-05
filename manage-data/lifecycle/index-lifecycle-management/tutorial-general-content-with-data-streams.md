@@ -27,13 +27,13 @@ To roll over your general content from indices to a data stream, you:
 
 1. [Update your ingest endpoint](/manage-data/lifecycle/index-lifecycle-management/tutorial-general-content-with-data-streams.md#manage-general-content-with-data-streams-endpoint) to target the created data stream.
 
-1. *Optional:* You can use the [ILM explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to get status information for your managed indices.
+1. *Optional:* You can use the [ILM explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) to get status information for your managed indices.
 For more information, refer to [Check lifecycle progress](/manage-data/lifecycle/index-lifecycle-management/tutorial-time-series-with-data-streams.md#ilm-gs-check-progress).
 
 
 ## Create an ingest pipeline to transform your general content [manage-general-content-with-data-streams-ingest]
 
-You can create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field. Follow these steps in Kibana or using the [create or update a pipeline](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) API.
+You can create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field. Follow these steps in Kibana or using the [create or update a pipeline]({{es-apis}}operation/operation-ingest-put-pipeline) API.
 
 ::::{tab-set}
 :group: kibana-api
@@ -79,7 +79,7 @@ A lifecycle policy specifies the phases in the index lifecycle and the actions t
 
 For example, you might define a policy named `indextods` that is configured to roll over when the shard size reaches 10 GB.
 
-You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API.
+You can create the policy in {{kib}} or with the [create or update policy]({{es-apis}}operation/operation-ilm-put-lifecycle) API.
 
 ::::{tab-set}
 :group: kibana-api
@@ -140,7 +140,7 @@ When creating the index template, specify the following details:
 * that the template is data stream enabled by including the `data_stream` definition
 * the index pattern, which ensures that this template will be applied to matching indices and in our example is `movetods`
 
-You can create the template in {{kib}} or with the [create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API.
+You can create the template in {{kib}} or with the [create or update index template]({{es-apis}}operation/operation-indices-put-index-template) API.
 
 ::::{tab-set}
 :group: kibana-api
@@ -203,7 +203,7 @@ For more information about configuring templates in Kibana, refer to [Manage ind
 :::{tab-item} API
 :sync: api
 
-Use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create an index template that specifies the created ingest pipeline and lifecycle policy:
+Use the [create index template API]({{es-apis}}operation/operation-indices-put-index-template) to create an index template that specifies the created ingest pipeline and lifecycle policy:
 
 ```console
 PUT _index_template/index_to_dot
@@ -251,7 +251,7 @@ PUT _index_template/index_to_dot
 
 ## Create a data stream [manage-general-content-with-data-streams-create-stream]
 
-Create a data stream using the [_data_stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream):
+Create a data stream using the [_data_stream API]({{es-apis}}operation/operation-indices-create-data-stream):
 
 ```console
 PUT /_data_stream/movetods
@@ -261,7 +261,7 @@ You can [check the lifecycle status of your data stream](/manage-data/lifecycle/
 
 ### Optional: Reindex your data with a data stream [manage-general-content-with-data-streams-reindex]
 
-If you want to copy your documents from an existing index to the data stream you created, reindex with a data stream using the [_reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex):
+If you want to copy your documents from an existing index to the data stream you created, reindex with a data stream using the [_reindex API]({{es-apis}}operation/operation-reindex):
 
 ```console
 POST /_reindex

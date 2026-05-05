@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
-description: Learn how to use variables, constants, and the Liquid templating engine to create dynamic workflows.
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
+description: Learn how to use variables, constants, Liquid templating, and custom filters to move data through Elastic Workflows.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -187,8 +187,51 @@ message: |
 ```
 
 :::{note}
-Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html).
+Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html), plus two custom filters (`json_parse` and `entries`) documented in the next section.
 :::
+
+### Custom filters [workflows-custom-filters]
+
+In addition to the standard LiquidJS filter set, the workflow engine provides two custom filters for shapes that come up often in automation:
+
+| Filter | What it does | Example |
+|---|---|---|
+| `json_parse` | Parses a JSON string into an object so you can access fields. | `"{{ steps.http.output.body \| json_parse }}"` |
+| `entries` | Converts an object into an array of `{key, value}` pairs, which is iterable with `{% for %}`. | `"{% for kv in steps.config.output \| entries %}{{ kv[0] }}: {{ kv[1] }}{% endfor %}"` |
+
+**Parse a JSON string returned as a string body:**
+
+```yaml
+- name: parse_response
+  type: data.set
+  with:
+    parsed: "{{ steps.http_call.output.body | json_parse }}"
+```
+
+:::{note}
+The inverse of `json_parse` is the standard LiquidJS `json` filter, which serializes a value to a JSON string.
+:::
+
+**Iterate an object's keys:**
+
+```yaml
+- name: summarize_config
+  type: console
+  with:
+    message: |
+      {% for kv in steps.config.output | entries %}
+        {{ kv[0] }}: {{ kv[1] }}
+      {% endfor %}
+```
+
+### Choose Liquid or a data step [workflows-liquid-vs-data-steps]
+
+Liquid is excellent for small inline transformations: field access, defaults, formatting, string concatenation. When a transformation grows (filtering a large array, grouping by a key, parsing a JSON payload into named outputs, extracting fields with regex), reach for a [`data.*` step](/explore-analyze/workflows/steps/data.md) instead. Data steps give you explicit, testable transformation with their own named output and their own execution log entry.
+
+| Size of transformation | Use |
+|---|---|
+| A field access, a default, a format (fits in one expression) | Liquid |
+| Filter, group, parse, regex-extract, or multi-field map | A [`data.*` step](/explore-analyze/workflows/steps/data.md) |
 
 ### Preserve array and object types [workflows-preserve-types]
 

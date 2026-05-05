@@ -119,13 +119,13 @@ Visit the [Available regions, deployment templates and instance configurations](
 
 ### API access
 
-Use the [Get deployment templates API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-get-deployment-templates-v2) with query parameters like `hide_deprecated` to retrieve valid ICs and DTs. This API request returns a list of DTs along with the respective ICs referenced within each DT.
+Use the [Get deployment templates API]({{cloud-apis}}operation/operation-get-deployment-templates-v2) with query parameters like `hide_deprecated` to retrieve valid ICs and DTs. This API request returns a list of DTs along with the respective ICs referenced within each DT.
 
 For example, 
 * To return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. 
 * To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
 
-If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-migrate-deployment-template).
+If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API]({{cloud-apis}}operation/operation-migrate-deployment-template).
 
 ::::{note}
 Deployments using {{stack}} versions prior to 7.10 do not support changing the hardware profile through the {{ecloud}} console or API. To change the hardware profile, first upgrade to version 7.10 or later.

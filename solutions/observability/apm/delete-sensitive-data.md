@@ -20,7 +20,7 @@ If you accidentally ingest sensitive data, follow these steps to remove or redac
 
 ## Redact specific fields [apm-redact-field-data]
 
-To redact sensitive data in a specific field, use the [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query).
+To redact sensitive data in a specific field, use the [update by query API]({{es-apis}}operation/operation-update-by-query).
 
 For example, the following query removes the `client.ip` address from APM documents in the `logs-apm.error-default` data stream:
 
@@ -62,15 +62,15 @@ POST /logs-apm.error-default/_update_by_query
 }
 ```
 
-See [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) for more information and examples.
+See [update by query API]({{es-apis}}operation/operation-update-by-query) for more information and examples.
 
 ## Delete {{es}} documents [apm-delete-doc-data]
 
 ::::{warning}
-This will permanently delete your data. You should test your queries with the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) prior to deleting data.
+This will permanently delete your data. You should test your queries with the [search API]({{es-apis}}operation/operation-search) prior to deleting data.
 ::::
 
-To delete an {{es}} document, you can use the [delete by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query).
+To delete an {{es}} document, you can use the [delete by query API]({{es-apis}}operation/operation-delete-by-query).
 
 For example, to delete all documents in the `apm-traces-*` data stream with a `user.email` value, run the following query:
 
@@ -85,5 +85,5 @@ POST /apm-traces-*/_delete_by_query
 }
 ```
 
-See [delete by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query) for more information and examples.
+See [delete by query API]({{es-apis}}operation/operation-delete-by-query) for more information and examples.
 

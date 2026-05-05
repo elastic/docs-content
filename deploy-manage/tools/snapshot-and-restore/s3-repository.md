@@ -52,7 +52,6 @@ If you do not want to rely on automatic credentials discovery, add explicit keys
 * `s3.client.default.secret_key`
 * `s3.client.default.session_token` (optional)
 
-
 S3 client settings cover authentication, region and endpoint selection, proxy/network configuration, and connection or retry tuning.
 For a complete list of all S3 client settings, refer to [S3 repository client settings](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-client-settings).
 
@@ -213,7 +212,7 @@ By default {{es}} communicates with your storage system using HTTPS, and validat
 
 There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3's behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency, performance, and reliability at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
-You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility, so you must also ensure that your storage supplier offers a full compatibility guarantee. When upgrading, always verify that your storage passes repository analysis in the upgraded version before upgrading any production clusters.
+You can perform some basic checks of the suitability of your storage system using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility, so you must also ensure that your storage supplier offers a full compatibility guarantee. When upgrading, always verify that your storage passes repository analysis in the upgraded version before upgrading any production clusters.
 
 $$$using-minio-with-elasticsearch$$$
 ::::{admonition} Using MinIO with {{es}}
@@ -272,7 +271,7 @@ Collect the {{es}} logs covering the time period of the failed analysis from all
 
 ::::::
 
-When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and deactivate insecure network trace logging again. Refer to [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and deactivate insecure network trace logging again. Refer to [Logger](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]
