@@ -52,6 +52,11 @@ After you start to upgrade your {{es}} cluster, you cannot downgrade any of its 
 :::
 ::::
 
+::::{step} Check your {{kib}} instance size
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/kib-instance-size.md
+:::
+::::
+
 ::::{step} Test in a non-production environment
 Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions. Refer to [](./plan-upgrade.md#test-in-a-non-production-environment) for more details and recommendations.
 

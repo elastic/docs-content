@@ -253,7 +253,7 @@ Run this example API request to create a deployment with autoscaling:
 
 :::{applies-item} ece:
 
-```sh
+```sh subs=true
 curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
@@ -391,7 +391,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "elasticsearch": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          },
          "deployment_template": {
            "id": "default"
@@ -413,14 +413,14 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            {
              "instance_configuration_id": "kibana",
              "size": {
-               "value": 1024,
+               "value": 2048,
                "resource": "memory"
              },
              "zone_count": 1
            }
          ],
          "kibana": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -442,7 +442,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "apm": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -457,7 +457,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 
 :::{applies-item} ess:
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -648,7 +648,7 @@ curl -XPOST \
            }
          ],
          "apm": {
-           "version": "7.11.0"
+           "version": "{{version.stack}}"
          }
        },
        "ref_id": "main-apm"
