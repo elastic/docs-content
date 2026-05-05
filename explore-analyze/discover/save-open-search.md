@@ -1,5 +1,5 @@
 ---
-navigation_title: Save a search for reuse
+navigation_title: Save a Discover session for reuse
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-open-search.html
 applies_to:
@@ -11,7 +11,7 @@ products:
 description: Save Discover sessions to reuse searches, queries, and configured views. Add saved searches to dashboards or use them as a foundation for building visualizations.
 ---
 
-# Save a search for reuse [save-open-search]
+# Save a Discover session for reuse [save-open-search]
 
 Saved **Discover** sessions preserve your queries, filters, column selections, and view configurations for reuse. Save sessions to return to specific data explorations, share search results with team members, add searches to dashboards, or use them as a foundation for building visualizations. This guide shows how to save, reopen, duplicate, and manage Discover sessions.
 
@@ -79,9 +79,9 @@ You can add different pieces of a Discover session to a dashboard, and manage ho
 - [The entire Discover session](#add-full-discover-session-to-dashboard): the table of each tab in your session, with filters, columns, and sort order preserved. You can display one tab at a time in the resulting dashboard panel.
 - [Manage session panels](#manage-discover-session-panels): edit a session panel from a dashboard, save your edits as a new session, or choose which tab to display.
 
-### Add the Discover visualization to a dashboard [add-discover-visualization-to-dashboard]
+### Add Discover visualizations to dashboards [add-discover-visualization-to-dashboard]
 
-When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the query mode you're using in Discover.
+When a query in Discover produces a chart, you can save that chart as a visualization panel on a new or existing dashboard, without saving the Discover session itself. The exact flow depends on the [query mode](discover-get-started.md#search-in-discover) you're using in Discover.
 
 You need permission to view and create dashboards.
 
@@ -94,8 +94,8 @@ You need permission to view and create dashboards.
 5. Select **Save and go to dashboard**.
 
 :::{note}
-:applies_to: stack: ga 9.0-9.2
-In these versions, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
+:applies_to: stack: ga =9.2
+In that version, if your {{esql}} query defines [variable controls](try-esql.md#add-variable-control), they aren't added to the dashboard when using this method. To preserve them, follow [Import a Discover query along with its controls into a dashboard](try-esql.md#import-discover-query-with-controls) instead.
 :::
 
 #### In classic mode [add-discover-visualization-classic]
@@ -112,7 +112,7 @@ The {icon}`app_lens` **Edit visualization** button only appears when the {{data-
 6. In **Add to dashboard**, select **New** to create a dashboard, or **Existing** to choose one from the list.
 7. Select **Save and go to dashboard**.
 
-### Add the Discover table to a dashboard [save-table-to-dashboard]
+### Add Discover tables to dashboards [save-table-to-dashboard]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
