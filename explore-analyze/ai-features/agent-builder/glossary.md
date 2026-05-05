@@ -191,7 +191,7 @@ Model
 :   The LLM that an agent uses to reason and produce responses. Models are accessed through Elastic Managed LLMs or through GenAI connectors. See [Models](models.md).
 
 Model selector
-:   The dropdown in Agent Chat used to switch the LLM that the current agent calls. See [Models](models.md).
+:   The dropdown in Agent Chat used to switch the LLM that the current agent calls. See [](models.md#switch-models-in-the-ui).
 
 `monitor_inference`
 :   The {{es}} cluster privilege required when an agent uses an AI connector that calls the {{es}} Inference API. Built-in tools such as `search` and `generate_esql`, and all index search tools, depend on this privilege. See [Permissions and access control](permissions.md).
