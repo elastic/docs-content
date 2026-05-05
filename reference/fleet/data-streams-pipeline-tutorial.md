@@ -141,7 +141,7 @@ In the **Edit integration** workflow, do the following:
 
 Allow time for new data to be ingested before testing your mappings. In a new window, open {{kib}} and navigate to **{{kib}} Dev tools**.
 
-Use the [Get field mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping) to ensure that the custom mapping has been applied.
+Use the [Get field mapping API]({{es-apis}}operation/operation-indices-get-mapping) to ensure that the custom mapping has been applied.
 
 ```console
 GET metrics-system.cpu-default/_mapping/field/test <1>
@@ -182,7 +182,7 @@ You can create an ingest pipeline to process data at various levels of customiza
 Let’s create a new custom ingest pipeline `logs@custom` that processes all log events.
 
 1. Open {{kib}} and navigate to **{{kib}} Dev tools**.
-2. Run a [pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request to add a new field `my-logs-field`:
+2. Run a [pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) request to add a new field `my-logs-field`:
 
     ```console
     PUT _ingest/pipeline/logs@custom

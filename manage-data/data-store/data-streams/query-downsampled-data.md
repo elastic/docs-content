@@ -9,7 +9,7 @@ products:
 
 # Querying downsampled data [querying-downsampled-indices]
 
-To query a downsampled index, use the [`_query`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-query) endpoint. The [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints are also supported but not optimized for time series processing.
+To query a downsampled index, use the [`_query`]({{es-apis}}operation/operation-esql-query) endpoint. The [`_search`]({{es-apis}}operation/operation-search) and [`_async_search`]({{es-apis}}operation/operation-async-search-submit) endpoints are also supported but not optimized for time series processing.
 
 ## {{esql}} `TS` command
 ```{applies_to}

@@ -20,7 +20,7 @@ Security models work independently of [connection modes](./connection-modes.md).
 
 ## API key authentication [api-key]
 
-API key authentication enables a local cluster to authenticate itself with a remote cluster using a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key, and grants access based on the API key’s privileges.
+API key authentication enables a local cluster to authenticate itself with a remote cluster using a [cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key, and grants access based on the API key’s privileges.
 
 ### Authorization
 

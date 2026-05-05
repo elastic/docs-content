@@ -91,11 +91,11 @@ For guidance on writing effective instructions, refer to [Skill creation guideli
 
 You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, plus `referenced_content`: additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
-- [List skills](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
-- [Create a skill](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
-- [Get a skill by ID](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-skills-skillid) `GET /api/agent_builder/skills/{skillId}`
-- [Update a skill](https://www.elastic.co/docs/api/doc/kibana/operation/operation-put-agent-builder-skills-skillid) `PUT /api/agent_builder/skills/{skillId}`
-- [Delete a skill](https://www.elastic.co/docs/api/doc/kibana/operation/operation-delete-agent-builder-skills-skillid) `DELETE /api/agent_builder/skills/{skillId}`
+- [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
+- [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
+- [Get a skill by ID]({{kib-apis}}operation/operation-get-agent-builder-skills-skillid) `GET /api/agent_builder/skills/{skillId}`
+- [Update a skill]({{kib-apis}}operation/operation-put-agent-builder-skills-skillid) `PUT /api/agent_builder/skills/{skillId}`
+- [Delete a skill]({{kib-apis}}operation/operation-delete-agent-builder-skills-skillid) `DELETE /api/agent_builder/skills/{skillId}`
 
 ## Related pages
 

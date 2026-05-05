@@ -41,7 +41,7 @@ To apply a lifecycle policy to an existing index:
 
 :::{tab-item} API
 :sync: api
-Use the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to apply a lifecycle policy to an index.
+Use the [update settings API]({{es-apis}}operation/operation-indices-put-settings) to apply a lifecycle policy to an index.
 
 ```console
 PUT my-index/_settings

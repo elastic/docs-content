@@ -36,10 +36,6 @@ To link projects, use the {{cps}} linking wizard in the {{ecloud}} UI:
 
 1. On the home screen, find the project you want to use as the origin project and click **Manage**.
 
-    ::::{warning}
-    :::{include} /explore-analyze/cross-project-search/_snippets/cps-security-recommendation.md
-    :::
-    ::::
 
 1. Use the sidebar to navigate to the **{{cps-cap}}** page.
 
