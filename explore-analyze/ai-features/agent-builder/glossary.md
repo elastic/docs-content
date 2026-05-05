@@ -40,7 +40,7 @@ Agent
 :   The REST API surface for working with {{agent-builder}} programmatically: endpoints for agents, tools, skills, conversations, and token consumption. {{agent-builder}} APIs are a group within the {{kib}} HTTP API, served under `/api/agent_builder/`. See [{{agent-builder}} Kibana APIs overview](kibana-api.md) and the [API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 Agent Builder execution {applies_to}`stack: ga 9.4+`
-:   The metering unit used to bill {{agent-builder}} usage. Each completed agent interaction is metered as one or more executions based on input token consumption; interactions that fail to return a response aren't metered. See [Token usage in {{agent-builder}}](monitor-usage.md).
+:   The metering unit used to bill {{agent-builder}} usage. Each completed agent interaction is metered as one or more executions based on input token consumption; interactions that fail to return a response aren't metered. See [](monitor-usage.md).
 
 Agent Chat
 :   The synchronous chat interface for interacting with agents using natural language. Agent Chat is available in standalone mode and sidebar mode, and can also be driven programmatically through the {{agent-builder}} APIs. See [Agent Chat](chat.md).
