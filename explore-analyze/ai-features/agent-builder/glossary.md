@@ -260,7 +260,7 @@ Tool
 ## V
 
 Visibility
-:   A custom agent's sharing setting that controls who can see and edit it. Options are **Public** (anyone in the space), **Shared** (anyone can view; only owners and admins can edit), and **Private** (only owners and admins). See [Custom agents](custom-agents.md).
+:   A custom agent's sharing setting that controls who can see and edit it. Options are **Public** (anyone in the space), **Shared** (anyone can view; only owners and admins can edit), and **Private** (only owners and admins). See [](custom-agents.md#set-visibility).
 
 ## W
 
