@@ -101,7 +101,7 @@ When you disable a rule, it retains the associated API key which is reused when 
 
 You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
-If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication](https://www.elastic.co/docs/api/doc/kibana/authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
+If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 
 ::::{important}
 If a rule requires certain privileges, such as index privileges, to run and a user without those privileges updates the rule, the rule will no longer function. Conversely, if a user with greater or administrator privileges modifies the rule, it will begin running with increased privileges. The same behavior occurs when you change the API key in the header of your API calls.
@@ -118,4 +118,27 @@ Rules and connectors are isolated to the {{kib}} space in which they were create
 
 ## {{ccs-cap}} [alerting-ccs-setup]
 
+```{applies_to}
+serverless: unavailable
+stack: ga
+```
+
 If you want to use alerting rules with {{ccs}}, you must configure privileges for {{ccs-init}} and {{kib}}. Refer to [Remote clusters](../../../deploy-manage/remote-clusters.md).
+
+
+## {{cps-cap}} [kibana-alerting-cps]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
+
+When you open a rule to create or edit it, the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header shows the current {{cps}} scope but is read-only. To change which projects rules query, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+
+For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
+
+:::{note}
+{{ml-cap}} rules don't support {{cps}}. {{ml-cap}} rules search data in the origin project only.
+:::

@@ -132,7 +132,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 :alt: The LM Studio model selection interface
 :::
 
-In this example we used [`mistralai/Mistral-Nemo-Instruct-2407`](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407). It has 12B total parameters, a 128,000 token context window, and uses GGUF [quanitization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
+In this example we used [`mistralai/Mistral-Nemo-Instruct-2407`](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407). It has 12B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
 | Model Name | Parameter Size | Tokens/Context Window | Quantization Format |
 | --- | --- | --- | --- |

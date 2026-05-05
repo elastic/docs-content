@@ -37,7 +37,7 @@ The following table compares features available in each feature tier:
 | **[Threat intelligence integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md)** | ✅ | ✅ | ❌ |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
 | **[Attack Discovery](/solutions/security/ai/attack-discovery.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
-| **[Automatic Import](/solutions/security/get-started/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
+| **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
 | **Extended security content** | ✅ | ❌ | ❌ |
 | **Threat intelligence management** | ✅ | ❌ | ❌ |
