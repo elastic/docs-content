@@ -36,11 +36,14 @@ Agent
 {{agent-builder}}
 :   Elastic's platform for creating and optimizing context for AI agents that analyze and act over your enterprise data. {{agent-builder}} combines LLM reasoning with skills, tools, and best practices for context engineering and retrieval, so responses are accurately and efficiently grounded in your data. See [{{agent-builder}}](../elastic-agent-builder.md).
 
+{{agent-builder}} APIs
+:   The REST API surface for working with {{agent-builder}} programmatically: endpoints for agents, tools, skills, conversations, and token consumption. {{agent-builder}} APIs are a group within the {{kib}} HTTP API, served under `/api/agent_builder/`. See [{{agent-builder}} Kibana APIs overview](kibana-api.md) and the [API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+
 Agent Builder execution {applies_to}`stack: ga 9.4+`
 :   The metering unit used to bill {{agent-builder}} usage. Each completed agent interaction is metered as one or more executions based on input token consumption; interactions that fail to return a response aren't metered. See [Token usage in {{agent-builder}}](monitor-usage.md).
 
 Agent Chat
-:   The synchronous chat interface for interacting with agents using natural language. Agent Chat is available in standalone mode and sidebar mode, and can also be driven programmatically through the {{kib}} API. See [Agent Chat](chat.md).
+:   The synchronous chat interface for interacting with agents using natural language. Agent Chat is available in standalone mode and sidebar mode, and can also be driven programmatically through the {{agent-builder}} APIs. See [Agent Chat](chat.md).
 
 Agent selector
 :   The dropdown in Agent Chat used to switch between agents, open the agent management view, or create a new agent. See [Agent Chat](chat.md).
@@ -63,7 +66,7 @@ Attachment
 ## B
 
 Built-in agent
-:   An agent pre-configured by Elastic with default instructions and tools for common use cases. The set of built-in agents available depends on your solution view or serverless project type. See [Built-in agents reference](builtin-agents-reference.md).
+:   An agent pre-configured by Elastic with default instructions and tools for common use cases. See [Built-in agents reference](builtin-agents-reference.md).
 
 Built-in skill {applies_to}`stack: ga 9.4+`
 :   A read-only skill shipped with {{agent-builder}}. Built-in skills span platform, {{product.observability}}, {{product.security}}, and {{es}} domains. See [Built-in skills reference](builtin-skills-reference.md).
@@ -74,7 +77,7 @@ Built-in tool
 ## C
 
 Chat history
-:   The persisted record of previous conversations between a user and the agents they've used. Chat history is shared across standalone mode and sidebar mode. See [Agent Chat](chat.md).
+:   See **Conversation history**.
 
 Connector
 :   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. {{agent-builder}} uses GenAI connectors to call LLM providers and uses an MCP connector {applies_to}`stack: preview 9.3+` to call remote MCP servers. See [Connectors](connectors.md).
@@ -87,6 +90,9 @@ Context length exceeded
 
 Conversation
 :   A single exchange or thread between a user and an agent in Agent Chat. Conversations preserve message history, agent identity, and any attachments used. See [Agent Chat](chat.md).
+
+Conversation history
+:   The persisted record of previous conversations between a user and the agents they've used. Shown in the chat history panel and shared across standalone mode and sidebar mode. See [Agent Chat](chat.md).
 
 Custom agent
 :   An agent you create with your own system prompt, tools, skills, and visibility settings. Custom agents are space-aware and exist only in the {{kib}} space where they were created. See [Custom agents](custom-agents.md).
@@ -126,10 +132,10 @@ Enable Elastic Capabilities {applies_to}`stack: ga 9.4+`
 :   The toggle on a custom agent's **Settings** tab that opts the agent in to all current and future Elastic-built skills, plugins, and tools. The toggle is off by default. See [Custom agents](custom-agents.md).
 
 Entity store
-:   The {{product.security}} store of security entities (hosts, users, services). {{agent-builder}} security tools and the [`entity-analytics`](builtin-skills-reference.md) skill {applies_to}`stack: ga 9.4+` query the entity store to support investigations. See [Built-in skills reference](builtin-skills-reference.md).
+:   The {{product.security}} store of security entities (hosts, users, services). {{agent-builder}} security tools and skills can query the entity store to support investigations. See [Built-in skills reference](builtin-skills-reference.md).
 
 {{esql}} tool
-:   A custom tool that runs a parameterized {{esql}} query directly against {{es}}. Use {{esql}} tools when you want precise, repeatable retrieval logic that an agent should be able to invoke by name. See [{{esql}} tools](tools/esql-tools.md).
+:   A type of custom tool that runs a parameterized {{esql}} query directly against {{es}}. Use {{esql}} tools when you want precise, repeatable retrieval logic that an agent can invoke by name. See [{{esql}} tools](tools/esql-tools.md).
 
 ## F
 
@@ -151,10 +157,10 @@ GenAI Settings {applies_to}`stack: ga 9.4+`
 ## I
 
 Index search tool
-:   A custom tool that performs natural-language search over a configured set of indices, aliases, or data streams. The tool selects an appropriate query strategy (keyword, semantic, or hybrid) automatically. See [Index search tools](tools/index-search-tools.md).
+:   A type of custom tool that performs natural-language search over a configured set of indices, aliases, or data streams. The tool selects an appropriate query strategy (keyword, semantic, or hybrid) automatically. See [Index search tools](tools/index-search-tools.md).
 
 Inline tool
-:   A tool packaged inside a built-in skill that's only available while that skill is active. Inline tools don't appear in the global tools list. See [Built-in tools reference](tools/builtin-tools-reference.md).
+:   A tool that's available only in a specific context. For example, while a particular built-in skill is active or while an attachment is present in the conversation. Inline tools don't appear in the global tools list. See [Built-in tools reference](tools/builtin-tools-reference.md).
 
 Input tokens
 :   The tokens sent to the LLM in a request, including the user's message, the system prompt, accumulated conversation history, and tool responses. See [Monitor token usage](monitor-usage.md).
@@ -162,10 +168,7 @@ Input tokens
 ## K
 
 `kibana.request` step {applies_to}`stack: preview 9.3+`
-:   A generic workflow step that calls any {{kib}} API, including {{agent-builder}}'s. Use it for advanced workflow scenarios that the `ai.agent` step doesn't cover. See [Agents and workflows](agents-and-workflows.md).
-
-{{kib}} API
-:   The REST API surface for working with {{agent-builder}} programmatically, including endpoints for agents, tools, skills, conversations, and token consumption. See [{{kib}} API](kibana-api.md).
+:   A generic Workflows step. When `ai.agent` doesn't cover a scenario, you can use `kibana.request` to call {{agent-builder}} APIs from a workflow. See [Kibana action steps](/explore-analyze/workflows/steps/kibana.md).
 
 ## M
 
@@ -179,10 +182,10 @@ MCP connector {applies_to}`stack: preview 9.3+`
 :   A {{kib}} connector that points {{agent-builder}} at a remote MCP server so its tools can be imported as MCP tools. See [Connectors](connectors.md).
 
 MCP server
-:   The {{agent-builder}} endpoint that makes Elastic tools and agents available to external MCP clients such as Claude Desktop, Cursor, VS Code, or LangChain apps. See [MCP server](mcp-server.md).
+:   An endpoint that implements the Model Context Protocol. {{agent-builder}} both _exposes_ its own MCP server, making Elastic tools and agents available to external MCP clients such as Claude Desktop, Cursor, VS Code, or LangChain apps, and _consumes_ remote MCP servers through MCP connectors. See [MCP server](mcp-server.md).
 
 MCP tool {applies_to}`stack: preview 9.3+`
-:   A custom tool that proxies a tool exposed by a remote MCP server. Use MCP tools to give your agents access to capabilities provided by external services. See [MCP tools](tools/mcp-tools.md).
+:   A type of custom tool that proxies a tool exposed by a remote MCP server. Use MCP tools to give your agents access to capabilities provided by external services. See [MCP tools](tools/mcp-tools.md).
 
 Model
 :   The LLM that an agent uses to reason and produce responses. Models are accessed through Elastic Managed LLMs or through GenAI connectors. See [Models](models.md).
@@ -215,7 +218,7 @@ Reasoning panel
 :   The expandable section of the chat reply that shows the underlying reasoning steps, tool calls, and tool responses behind an agent's answer. See [Agent Chat](chat.md).
 
 REST API
-:   See {{kib}} API.
+:   See {{agent-builder}} APIs.
 
 Retrieval-Augmented Generation (RAG)
 :   An AI pattern that grounds LLM responses in retrieved data instead of relying solely on model weights. {{agent-builder}} agents use {{es}} as the retrieval layer, which makes the platform a natural fit for RAG applications. See [{{agent-builder}}](../elastic-agent-builder.md).
@@ -262,7 +265,7 @@ Visibility
 ## W
 
 Workflow tool {applies_to}`stack: preview 9.3+`
-:   A custom tool that lets an agent trigger a [workflow](/explore-analyze/workflows.md) workflow from a conversation and use its output. See [Workflow tools](tools/workflow-tools.md).
+:   A type of custom tool that lets an agent trigger a [workflow](/explore-analyze/workflows.md) from a conversation and use its output. See [Workflow tools](tools/workflow-tools.md).
 
 Workflows
 :   Elastic's native automation engine for declarative, event-driven automation defined in YAML. {{agent-builder}} integrates with workflows in two directions: agents can trigger workflows through workflow tools, and workflows can call agents through the `ai.agent` and `kibana.request` steps. See [Agents and workflows](agents-and-workflows.md).
