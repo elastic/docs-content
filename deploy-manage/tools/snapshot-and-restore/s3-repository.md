@@ -32,7 +32,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-[Client settings](#repository-s3-client) cover authentication and how a repository picks a client name. The `PUT` request above only registers the `s3` type and `bucket`. Place your S3 client configuration in that section, unless automatic credential discovery already applies in your environment.
+[Client settings](#repository-s3-client) describe how repositories select an S3 client and how authentication is configured. The `PUT` request above only specifies the `s3` type and `bucket`, so it implicitly uses the `default` client, which, by default, also attempts to resolve credentials automatically from the environment if no explicit settings are provided. Client configuration is covered in the following section.
 
 ## Client settings [repository-s3-client]
 
