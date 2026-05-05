@@ -14,6 +14,7 @@ products:
 
 {{es}} supports metrics ingestion through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 
-The {{es}} OTLP/HTTP endpoint stores incoming OTLP metrics in [TSDS](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md), deriving dimensions and metric mappings automatically from OTLP metadata.
+For OpenTelemetry metrics, prefer the {{es}} OTLP/HTTP endpoint over the Bulk API because it's optimized for OTLP ingest performance.
+It also simplifies setup by automatically creating [TSDS](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) through built-in index templates, and deriving dimensions and metric mappings from OTLP metadata.
 
 For more details, refer to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) reference.
