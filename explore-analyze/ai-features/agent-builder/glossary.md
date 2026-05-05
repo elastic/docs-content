@@ -83,7 +83,7 @@ Connector
 :   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. See [Connectors](connectors.md).
 
 Context window
-:   The maximum amount of text, measured in tokens, that an LLM can process in a single interaction. When a conversation, tool response, or system prompt grows too large, the agent can encounter a context length exceeded error. See [Token usage in {{agent-builder}}](monitor-usage.md).
+:   The maximum amount of text, measured in tokens, that an LLM can process in a single interaction. When a conversation, tool response, or system prompt grows too large, the agent can encounter a context length exceeded error. See [](monitor-usage.md).
 
 Context length exceeded
 :   An error returned when a conversation has consumed more tokens than the LLM's context window allows, typically because tool responses or chat history have grown very large. See [Context length exceeded](troubleshooting/context-length-exceeded.md).
