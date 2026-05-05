@@ -4,15 +4,15 @@ description: "Send metrics, logs, and traces directly to Elasticsearch through i
 applies_to:
   deployment:
     self: ga 9.2
-    ece: ga 9.2
-    eck: ga 9.2
+    ece: ga
+    eck: ga
 products:
   - id: elasticsearch
 ---
 
 # OTLP/HTTP endpoint
 
-In addition to ingesting data through the bulk API, {{es}} accepts data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
+In addition to ingesting data through the Bulk API, {{es}} accepts data through the [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp).
 Three OTLP/HTTP endpoints are available:
 
 | Signal | Path | Availability |
@@ -21,7 +21,7 @@ Three OTLP/HTTP endpoints are available:
 | Logs | `/_otlp/v1/logs` | {applies_to}`stack: preview 9.5` |
 | Traces | `/_otlp/v1/traces` | {applies_to}`stack: preview 9.5` |
 
-:::{note}
+:::{important}
 {{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp), not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
 :::
 
@@ -30,7 +30,7 @@ Three OTLP/HTTP endpoints are available:
 For most users, the OTLP endpoint is **not** the recommended ingestion path.
 Use it when one of the following applies:
 
-* You have an application that exports OTLP natively and you want it to send data straight to {{es}} without running an OpenTelemetry Collector.
+* You have an application that exports OTLP natively and you want it to send data to {{es}} without running an OpenTelemetry Collector.
   For example, a lightweight development setup (SDK to {{es}}).
 * You operate a self-managed gateway Collector and prefer the `OTLP/HTTP` exporter over the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md).
 
@@ -41,17 +41,18 @@ For other deployments, prefer the higher-level paths:
 | {{ech}} and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/motlp.md) |
 | {{ece}}, {{eck}}, and self-managed | OpenTelemetry Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), using the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md) |
 
-If {{motlp}} is available in your deployment, use it, even when an application can target an OTLP endpoint directly.
-{{motlp}} might use these endpoints internally in the future.
+Use {{motlp}} if it's available in your deployment, even when an application can target an OTLP endpoint directly.
 
 For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [EDOT reference architecture](opentelemetry://reference/architecture/index.md).
 
-Don't send telemetry from many individual applications directly to the {{es}} OTLP endpoint.
+:::{warning}
+Don't send telemetry from many individual applications directly to the {{es}} OTLP endpoint at the same time.
 Send to an OpenTelemetry Collector first so it can absorb connection churn and batch records to improve ingestion performance.
+:::
 
-## Why OTLP
+## Advantages of OTLP ingest over Bulk API
 
-Compared to the bulk API, ingesting through OTLP offers:
+Compared to the Bulk API, ingesting through OTLP offers:
 
 * Improved ingestion performance, especially for payloads with many resource attributes.
 * Simplified mapping: data streams, index templates, dimensions, and metrics are derived dynamically from OTLP metadata.
@@ -196,7 +197,7 @@ PUT /_cluster/settings
 Because both `histogram` and `exponential_histogram` support [coerce](elasticsearch://reference/elasticsearch/mapping-reference/coerce.md), changing this setting dynamically does not risk mapping conflicts or ingestion failures.
 
 This setting only applies to metrics ingested through the OTLP endpoint.
-Documents ingested with the `_bulk` API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
+Documents ingested using the Bulk API (for example through the {{es}} exporter for the OpenTelemetry Collector) are not affected.
 
 ## Limitations
 
@@ -207,4 +208,4 @@ Documents ingested with the `_bulk` API (for example through the {{es}} exporter
   To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
 * **Histogram temporality:** Histograms are only supported in delta temporality.
   Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) so cumulative histograms aren't dropped.
-* **Exemplars:** Exemplars are not supported.
+* **Exemplars:** Exemplars are not supported yet.
