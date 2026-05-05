@@ -142,17 +142,25 @@ The button isn't available when Discover is opened from another application, suc
 4. Select **Save and go to dashboard**.
 
 #### Save a Discover session to a dashboard or to the library [save-discover-session-with-add-to-dashboard]
-```{applies_to}
-stack: ga 9.5
-serverless: ga
-```
 
-Use this option to save the entire Discover session, including all its tabs, columns, sort order, and other settings. The **Add to dashboard** option in the save modal determines what happens to the session:
+Use this option to save the entire Discover session, including all its tabs, columns, sort order, and other settings.
 
-- **New** or **Existing**: The session is saved as a panel on a dashboard. The panel's configuration is stored with the dashboard, and the session itself isn't saved to the library. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
+::::{applies-switch}
+
+:::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
+The **Add to dashboard** option in the save modal determines what happens to the session:
+
+- **New** or **Existing**: The session is saved as a panel on a dashboard. The panel's configuration is stored with the dashboard, and the session isn't saved to the library. If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 - **None**: The session is saved to the library, without being added to a dashboard. From there, you can later [add it as a panel on any dashboard](#add-discover-session-from-library).
 
 Follow the steps under [Save a Discover session](#_save_a_discover_session), and select the **Add to dashboard** option that matches what you want.
+:::
+
+:::{applies-item} {"stack": "ga 9.0-9.4"}
+Saving from Discover saves the session to the library only. To put it on a dashboard, follow the steps under [Save a Discover session](#_save_a_discover_session), then [add the session from the dashboard library](#add-discover-session-from-library).
+:::
+
+::::
 
 #### Add a Discover session from the library [add-discover-session-from-library]
 
