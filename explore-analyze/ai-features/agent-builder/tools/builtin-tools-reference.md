@@ -68,10 +68,11 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
-:   Retrieves the execution status of a workflow.
+:   Retrieves the status and, if available, the final output of an [Elastic Workflows](/explore-analyze/workflows.md) execution from its execution ID.
 
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
-:   Resumes a workflow execution that is paused and waiting for human input.
+:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a `waitForInput` step, providing the reviewer's input to the workflow so it can continue.
+% TODO: Restore the link on `waitForInput` to /explore-analyze/workflows/authoring-techniques/human-in-the-loop.md once https://github.com/elastic/docs-content/pull/6048 merges (the page is added in that PR).
 
 <!--
 ### Attachment tools

@@ -371,7 +371,7 @@ PUT cohere-embeddings
 }
 ```
 
-1. The name of the field to contain the generated tokens. It must be refrenced in the {{infer}} pipeline configuration in the next step.
+1. The name of the field to contain the generated tokens. It must be referenced in the {{infer}} pipeline configuration in the next step.
 2. The field to contain the tokens is a `dense_vector` field.
 3. The output dimensions of the model. Find this value in the [Cohere documentation](https://docs.cohere.com/reference/embed) of the model you use.
 4. The name of the field from which to create the dense vector representation. In this example, the name of the field is `content`. It must be referenced in the {{infer}} pipeline configuration in the next step.
@@ -396,7 +396,7 @@ PUT elser-embeddings
 }
 ```
 
-1. The name of the field to contain the generated tokens. It must be refrenced in the {{infer}} pipeline configuration in the next step.
+1. The name of the field to contain the generated tokens. It must be referenced in the {{infer}} pipeline configuration in the next step.
 2. The field to contain the tokens is a `sparse_vector` field for ELSER.
 3. The name of the field from which to create the dense vector representation. In this example, the name of the field is `content`. It must be referenced in the {{infer}} pipeline configuration in the next step.
 4. The field type which is text in this example.
@@ -1165,7 +1165,7 @@ As a result, you receive the top 10 documents that are closest in meaning to the
         "_score": 0.7176013,
         "_source": {
           "id": 1692482,
-          "content": "The thoracic cavity is separated from the abdominal cavity by the  diaphragm. This is a broad flat muscle.    (muscular) diaphragm The diaphragm is a muscle that separat…e the thoracic from the abdominal cavity. The pelvis is the lowest part of the abdominal cavity and it has no physical separation from it    Diaphragm."
+          "content": "The thoracic cavity is separated from the abdominal cavity by the  diaphragm. This is a broad flat muscle.    (muscular) diaphragm The diaphragm is a muscle that separate…e the thoracic from the abdominal cavity. The pelvis is the lowest part of the abdominal cavity and it has no physical separation from it    Diaphragm."
         }
       },
       {

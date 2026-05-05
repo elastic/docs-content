@@ -414,7 +414,7 @@ Resolved in {{elastic-defend}} 9.0.1
 :::
 
 
-:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernal driver causes slow down on Windows systems
+:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernel driver causes slow down on Windows systems
 
 Applies to: {{elastic-defend}} 9.0.0
 

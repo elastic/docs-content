@@ -140,6 +140,7 @@ To assign colors to terms in your visualization:
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Elastic (line optimized)**: A variant of the Elastic palette that reorders colors for better contrast between adjacent series in line charts. Lens automatically applies this palette when you create or switch to a line chart. Switching to a different chart type reverts to the standard palette. You can override this by manually selecting a different palette.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Severity**: A theme-aware categorical palette designed for severity-based data, with colors that adapt to both light and dark themes.
    * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
    * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
@@ -288,7 +289,7 @@ Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and
 
 To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
 
-From the annotation panel, you can choose the type of placement and adjsut the its appearance.
+From the annotation panel, you can choose the type of placement and adjust the its appearance.
 
 **Placement**
 :   
@@ -473,7 +474,9 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment**.

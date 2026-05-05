@@ -127,7 +127,7 @@ You can use any HTTP service to deploy the model. This example uses the official
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/rerank-v1.metadata.json
     ```
 
-    If Nginx runs properly, you see the content of the metdata file of the model.
+    If Nginx runs properly, you see the content of the metadata file of the model.
 
 5. Point your {{es}} deployment to the model artifacts on the HTTP server by adding the following line to the `config/elasticsearch.yml` file:
 
@@ -135,7 +135,7 @@ You can use any HTTP service to deploy the model. This example uses the official
     xpack.ml.model_repository: http://{IP_ADDRESS_OR_HOSTNAME}:8080
     ```
 
-    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specificy the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
+    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specify the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
 
 6. Repeat step 5 on all master-eligible nodes.
 7. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
