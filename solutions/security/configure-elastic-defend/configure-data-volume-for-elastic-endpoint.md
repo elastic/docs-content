@@ -52,7 +52,7 @@ This functionality was added in {{agent}} 8.18.0.
 :   Enter `true` to include all `host.*` event data. Default: `false`
 
 ::::{note}
-Users should take note of how a lack of some `host.*` information may affect their [event filters](../manage-elastic-defend/event-filters.md) or [Endpoint alert exceptions](../detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions).
+Users should take note of how a lack of some `host.*` information may affect their [event filters](../manage-elastic-defend/event-filters.md) or [Endpoint alert exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
 ::::
 
 
@@ -83,7 +83,7 @@ Merged events can affect the results of [event filters](../manage-elastic-defend
 This functionality was added in {{agent}} 8.18.0.
 :::
 
-{{elastic-endpoint}} does not report MD5 and SHA-1 hashes in event data by default. These will still be reported if any [trusted applications](../manage-elastic-defend/trusted-applications.md), [blocklist entries](../manage-elastic-defend/blocklist.md), [event filters](../manage-elastic-defend/event-filters.md), or [Endpoint exceptions](../detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) require them. To include these hashes in all event data, use these advanced settings:
+{{elastic-endpoint}} does not report MD5 and SHA-1 hashes in event data by default. These will still be reported if any [trusted applications](../manage-elastic-defend/trusted-applications.md), [blocklist entries](../manage-elastic-defend/blocklist.md), [event filters](../manage-elastic-defend/event-filters.md), or [Endpoint exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) require them. To include these hashes in all event data, use these advanced settings:
 
 `[linux|mac|windows].advanced.events.hash.md5`
 :   Enter `true` to compute and include MD5 hashes for processes and libraries in events. Default: `false`

@@ -25,7 +25,10 @@ By default, a trusted device is recognized globally across all hosts running {{e
 
 Add a trusted device to exempt it from device control:
 
-1. Go to the **Trusted Devices** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Depending on your version, do one of the following:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted devices** tab.
+   * {applies_to}`stack: ga 9.2-9.3` Go to the **Trusted Devices** page using the navigation menu or the global search field.
+
 2. Click **+ Add trusted device**. The Add trusted device flyout opens.
 3. Name your trusted device and give it a description. 
 4. In the **Conditions** section, specify the operating system(s) and the `Device ID`. 
@@ -36,7 +39,7 @@ Add a trusted device to exempt it from device control:
 
 ## View and manage trusted devices
 
-The **Trusted devices** page displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
+The **Trusted devices** UI displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-trusted-devices-list.png
 :alt: trusted apps list
