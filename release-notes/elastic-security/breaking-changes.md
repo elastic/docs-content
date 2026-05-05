@@ -30,6 +30,8 @@ Risk scoring is moving from name-based to ID-based scoring tied to the entity st
 **Impact**<br> After upgrading to 9.4, all existing risk scores are cleared. The entity store initializes with a 3-hour lookback, so scored entity counts will be lower immediately after upgrade and will rebuild over time. Additionally, Identity Provider (IdP) user entities may not receive risk scores initially, as alerts do not yet map directly to IdP EUIDs. Local user and host entities are unaffected.
 
 **Action**<br> No action required to trigger the rebuild — it happens automatically. Plan for a warm-up period after upgrading before risk score dashboards return to their pre-upgrade state.
+
+For more information, check [#258197]({{kib-pull}}258197).
 ::::
 
 ::::{dropdown} Entity Analytics: Risk engine management APIs removed

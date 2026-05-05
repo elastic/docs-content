@@ -37,6 +37,8 @@ Deprecated endpoints:
 **Impact**<br> These endpoints will continue to work in 9.4 but will be removed in a future release.
 
 **Action**<br> Migrate to the equivalent Entity Store APIs.
+
+For more information, check [#258440]({{kib-pull}}258440).
 % TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
 ::::
 
