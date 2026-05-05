@@ -221,7 +221,7 @@ REST API
 :   See {{agent-builder}} APIs.
 
 Retrieval-Augmented Generation (RAG)
-:   An AI pattern that grounds LLM responses in retrieved data instead of relying solely on model weights. {{agent-builder}} agents use {{es}} as the retrieval layer, which makes the platform a natural fit for RAG applications. See [{{agent-builder}}](../elastic-agent-builder.md).
+:   [RAG](/solutions/search/rag.md) is a technique for improving language model responses by grounding the model with additional, verifiable sources of information. It works by first retrieving relevant context from a datastore, which is then added to the model’s context window. {{agent-builder}} agents use {{es}} as the retrieval layer, which makes the platform a natural fit for RAG applications. 
 
 ## S
 
