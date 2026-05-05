@@ -55,6 +55,13 @@ If a feature requires both standard `elasticsearch.yml` settings and [secure set
 
 For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")).
 
+### Manage settings with the Cloud API
+
+If you manage deployments through automation, use the dedicated deployment resource user settings endpoints for these single-purpose settings changes:
+
+- [Get the user settings of a Deployment resource]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)
+- [Update user settings for a deployment resource]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
+
 ### Kibana settings
 
 {{ech}} supports most of the standard {{kib}} settings.

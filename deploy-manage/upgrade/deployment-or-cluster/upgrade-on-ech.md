@@ -53,6 +53,9 @@ To upgrade a deployment:
     If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Hosted deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
     ::::
 
+API automation
+:   If you automate upgrades, use the dedicated Cloud API endpoint: [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment).
+
 
 Snapshots
 :   To keep your data safe during the upgrade process, a snapshot is taken automatically before any changes are made to your cluster. After a major version upgrade is complete and a snapshot of the upgraded cluster is available, all snapshots taken with the previous major version of {{es}} are stored in the snapshot repository.
