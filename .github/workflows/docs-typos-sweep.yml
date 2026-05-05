@@ -1,0 +1,38 @@
+name: Docs typos sweep
+on:
+  workflow_dispatch:
+    inputs:
+      source-repo:
+        description: "Repository to scan (owner/repo). Leave empty to scan this repo."
+        required: false
+        default: ""
+      docs-root:
+        description: "Root directory to scan"
+        required: false
+        default: "."
+      max-per-fix-issue:
+        description: "Cap on findings per fix-issue (ignored — typos sweep emits all findings up to issue body limit)"
+        required: false
+        default: "20"
+      codespell-args:
+        description: "Extra codespell flags (e.g., --ignore-words=allowlist.txt --skip='*.svg')"
+        required: false
+        default: ""
+
+permissions:
+  actions: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: read
+
+jobs:
+  run:
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-typos-sweep.lock.yml@v1
+    with:
+      source-repo: ${{ inputs.source-repo }}
+      docs-root: ${{ inputs.docs-root }}
+      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
+      codespell-args: ${{ inputs.codespell-args }}
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}

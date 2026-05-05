@@ -117,7 +117,7 @@ serverless: ga
 
 Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off specific actions for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
 
-The following table illustrates this by compareing the default setup with a customized role.
+The following table illustrates this by comparing the default setup with a customized role.
 
 | Situation | What you can do |
 | --- | --- |

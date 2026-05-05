@@ -667,7 +667,7 @@ toc:
         children:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
-          - hidden: security/manage-elastic-defend/elastic-endpoint-exceptions.md
+          - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
           - file: security/manage-elastic-defend/trusted-applications.md
           - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
@@ -792,6 +792,8 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+          - file: security/advanced-entity-analytics/watchlists.md
+          - file: security/advanced-entity-analytics/entity-resolution.md
           - file: security/advanced-entity-analytics/privileged-user-monitoring.md
             children:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md

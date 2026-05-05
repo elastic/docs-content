@@ -153,7 +153,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes related dashboards for ES Query and other stack rules supported in observability [#247564]({{kib-pull}}247564).
 * Fixes default alerts flow when default rules are not defined [#245736]({{kib-pull}}245736).
 * Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
-* Fixes empty **Related dashboards** meu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
+* Fixes empty **Related dashboards** menu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
 * Prevents default alerts from being created when connectors are not defined [#237504]({{kib-pull}}237504).
 * Copies alert states to payload [#240411]({{kib-pull}}240411).
 * Replaces metric names inside filter values [#238849]({{kib-pull}}238849).
