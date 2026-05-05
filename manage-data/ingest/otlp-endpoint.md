@@ -97,7 +97,7 @@ For example, an API key role descriptor that allows ingesting all three signals:
 }
 ```
 
-### Configure a client
+### Configure an OpenTelemetry Collector
 
 To send data from an OpenTelemetry Collector to an {{es}} OTLP endpoint, configure the [`OTLP/HTTP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter):
 
@@ -109,13 +109,13 @@ exporters:
       Authorization: "ApiKey <api_key>"
     sending_queue:
       enabled: true
-      sizer: bytes
-      queue_size: 50_000_000 # 50MB uncompressed
+      sizer: bytes <1>
+      queue_size: 50_000_000 <2>
       block_on_overflow: true
-      batch:
+      batch: <3>
         flush_timeout: 1s
-        min_size: 1_000_000 # 1MB uncompressed
-        max_size: 4_000_000 # 4MB uncompressed
+        min_size: 1_000_000
+        max_size: 4_000_000
 service:
   pipelines:
     logs:
@@ -129,17 +129,19 @@ service:
       receivers: ...
 ```
 
+1. Sizes the queue and batches by uncompressed bytes.
+2. Limits the queue to 50 MB of uncompressed data.
+   Increasing this value can absorb longer {{es}} outages or traffic bursts, but also increases Collector memory usage.
+3. Controls the uncompressed batch size sent to {{es}}.
+   In this example, batches are sent at 1 MB and capped at 4 MB.
+   Larger batches reduce request overhead, but increase peak memory usage and the amount of data retried after a failed request.
+
 The exporter appends the signal-specific path (`/v1/logs`, `/v1/traces`, `/v1/metrics`) to the configured `endpoint`.
 
-The `sending_queue` and `batch` values in this example are starting points for a gateway Collector.
-Tune them for your workload and Collector resources:
-
-* With `sizer: bytes`, `queue_size` limits the number of uncompressed bytes waiting in the exporter queue.
-  Increasing it can absorb longer {{es}} outages or traffic bursts, but also increases Collector memory usage.
-* `min_size` and `max_size` control the uncompressed batch size sent to {{es}}.
-  Larger batches reduce request overhead, but increase peak memory usage and the amount of data retried after a failed request.
-* These settings are local to each Collector instance and don't increase {{es}} ingest capacity.
-* If many applications need to send telemetry, scale out the gateway Collector instead of sending directly from each application.
+These values are starting points for a gateway Collector.
+Tune them for your workload and Collector resources.
+They are local to each Collector instance and don't increase {{es}} ingest capacity.
+If many applications need to send telemetry, scale out the gateway Collector instead of sending directly from each application.
 
 Supported `compression` values are `gzip` (the `OTLP/HTTP` exporter default) and `none`.
 
