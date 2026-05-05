@@ -84,18 +84,18 @@ Update your implementations to use the new endpoints:
 
 * **For bulk creation of rules:**
 
-    * Use `POST /api/detection_engine/rules/_import` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-importrules)) to create multiple rules along with their associated entities (for example, exceptions and action connectors).
-    * Alternatively, create rules individually using `POST /api/detection_engine/rules` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-createrule)).
+    * Use `POST /api/detection_engine/rules/_import` ([API documentation]({{kib-apis}}operation/operation-importrules)) to create multiple rules along with their associated entities (for example, exceptions and action connectors).
+    * Alternatively, create rules individually using `POST /api/detection_engine/rules` ([API documentation]({{kib-apis}}operation/operation-createrule)).
 
 * **For bulk updates of rules:**
 
-    * Use `POST /api/detection_engine/rules/_bulk_action` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-performrulesbulkaction)) to update fields in multiple rules simultaneously.
-    * Alternatively, update rules individually using `PUT /api/detection_engine/rules` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-updaterule)).
+    * Use `POST /api/detection_engine/rules/_bulk_action` ([API documentation]({{kib-apis}}operation/operation-performrulesbulkaction)) to update fields in multiple rules simultaneously.
+    * Alternatively, update rules individually using `PUT /api/detection_engine/rules` ([API documentation]({{kib-apis}}operation/operation-updaterule)).
 
 * **For bulk deletion of rules:**
 
-    * Use `POST /api/detection_engine/rules/_bulk_action` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-performrulesbulkaction)) to delete multiple rules by IDs or query.
-    * Alternatively, delete rules individually using `DELETE /api/detection_engine/rules` ([API documentation](https://www.elastic.co/docs/api/doc/kibana/operation/operation-deleterule)).
+    * Use `POST /api/detection_engine/rules/_bulk_action` ([API documentation]({{kib-apis}}operation/operation-performrulesbulkaction)) to delete multiple rules by IDs or query.
+    * Alternatively, delete rules individually using `DELETE /api/detection_engine/rules` ([API documentation]({{kib-apis}}operation/operation-deleterule)).
 ::::
 
 ::::{dropdown} Removes deprecated endpoint management endpoints
