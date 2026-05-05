@@ -126,7 +126,7 @@ Elastic Inference Service (EIS) {applies_to}`stack: ga 9.4+`
 :   Elastic's managed service for running LLMs on Elastic infrastructure, used by Elastic Managed LLMs. See [Models](models.md).
 
 Elastic Managed LLM {applies_to}`stack: ga 9.4+`
-:   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional connector setup. See [Models](models.md).
+:   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional connector setup. See [](models.md#default-model-configuration).
 
 Enable Elastic Capabilities {applies_to}`stack: ga 9.4+`
 :   The toggle on a custom agent's **Settings** tab that opts the agent in to all current and future Elastic-built skills, plugins, and tools. The toggle is off by default. See [Custom agents](custom-agents.md).
