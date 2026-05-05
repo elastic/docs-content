@@ -33,7 +33,7 @@ After you upgrade to v9.4, any rules created by users without access to the `.en
 
 When a rule fires successfully and generates an alert, Asset criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is turned "on" by default in the default space.
 
-Detection rules use their author’s permissions to enrich alerts with entity data. When they are created, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
+Detection rules use their author’s permissions to enrich alerts with entity data. When rules are created, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
 
 
 
