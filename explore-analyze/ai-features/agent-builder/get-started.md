@@ -82,10 +82,6 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 
 :::::
 
-:::{note}
-To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
-:::
-
 :::::{dropdown} Previous versions
 :applies_to: stack: preview =9.2, ga 9.3
 
@@ -112,6 +108,10 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 :::::
 
 ::::::
+
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
 
 ::::{step} Ingest data into Elasticsearch
 
