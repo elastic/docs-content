@@ -160,7 +160,7 @@ Index search tool
 :   A type of custom tool that performs natural-language search over a configured set of indices, aliases, or data streams. The tool selects an appropriate query strategy (keyword, semantic, or hybrid) automatically. See [Index search tools](tools/index-search-tools.md).
 
 Inline tool
-:   A tool that's available only in a specific context. For example, while a particular built-in skill is active or while an attachment is present in the conversation. Inline tools don't appear in the global tools list. See [Built-in tools reference](tools/builtin-tools-reference.md).
+:   A [tool](tools.md) that's available only in a specific context. For example, while a particular built-in skill is active or while an attachment is present in the conversation. Inline tools don't appear in the global tools list.
 
 Input tokens
 :   The tokens sent to the LLM in a request, including the user's message, the system prompt, accumulated conversation history, and tool responses. See [Monitor token usage](monitor-usage.md).
