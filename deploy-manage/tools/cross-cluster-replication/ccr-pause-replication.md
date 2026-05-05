@@ -20,7 +20,7 @@ Select the follower index you want to pause and choose **Manage > Pause Replicat
 To resume replication, select the follower index and choose **Resume replication**.
 
 ::::{dropdown} API example
-You can pause replication with the [pause follower API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-follow) and then later resume replication with the [resume follower API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-follow). Using these APIs in tandem enables you to adjust the read and write parameters on the follower shard task if your initial configuration is not suitable for your use case.
+You can pause replication with the [pause follower API]({{es-apis}}operation/operation-ccr-pause-follow) and then later resume replication with the [resume follower API]({{es-apis}}operation/operation-ccr-resume-follow). Using these APIs in tandem enables you to adjust the read and write parameters on the follower shard task if your initial configuration is not suitable for your use case.
 
 ::::
 

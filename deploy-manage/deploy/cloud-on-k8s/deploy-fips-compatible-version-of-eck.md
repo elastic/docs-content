@@ -51,3 +51,23 @@ If the Operator has already been installed using the manifests, the installation
 kubectl patch sts elastic-operator -n elastic-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"manager", "image":"docker.elastic.co/eck/eck-operator-fips:${ECK_VERSION}"}]}}}}'
 ```
 
+## Operator-managed {{es}} FIPS keystore password [k8s-fips-keystore-password]
+
+```{applies_to}
+eck: ga 3.4
+```
+
+When FIPS mode is enabled in {{es}} (`xpack.security.fips_mode.enabled: true`), {{es}} requires a password-protected keystore. Starting with ECK 3.4.0 and {{es}} 9.4.0+, the operator automatically manages this for you by generating, storing, and configuring the {{es}} keystore password, eliminating the need for manual `podTemplate` overrides.
+
+The operator creates a Secret named `<cluster-name>-es-keystore-password` containing the generated password and mounts it into the {{es}} pods. The keystore init container uses this password to create a password-protected keystore.
+
+This feature activates automatically when all of the following conditions are met:
+
+* `xpack.security.fips_mode.enabled: true` is set in any NodeSet config or via a StackConfigPolicy
+* {{es}} version is 9.4.0 or later
+* No user-provided keystore password is detected
+
+If you have already configured a keystore password through environment variables (`KEYSTORE_PASSWORD`, `KEYSTORE_PASSWORD_FILE`, or `ES_KEYSTORE_PASSPHRASE_FILE`) in the `podTemplate`, the operator respects your configuration and does not generate its own.
+
+When FIPS mode is disabled or the {{es}} version is downgraded below 9.4.0, the operator automatically cleans up the managed keystore password Secret.
+

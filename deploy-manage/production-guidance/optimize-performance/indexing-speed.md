@@ -41,7 +41,7 @@ Similarly to sizing bulk requests, only testing can tell what the optimal number
 
 ## Unset or increase the refresh interval [_unset_or_increase_the_refresh_interval]
 
-The operation that consists of making changes visible to search - called a [refresh](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
+The operation that consists of making changes visible to search - called a [refresh]({{es-apis}}operation/operation-indices-refresh) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
 
@@ -82,7 +82,7 @@ PUT /my-index-000001/_settings
 
 1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
 
-When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
+When bulk indexing is complete, consider running a [force merge]({{es-apis}}operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
 
 ```console
 POST /my-index-000001/_forcemerge?max_num_segments=5

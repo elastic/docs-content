@@ -1,8 +1,8 @@
 ---
 navigation_title: Use the YAML editor
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Author, test, and run workflows in the Kibana YAML editor, and understand the difference between test runs and production runs.
 products:
   - id: kibana

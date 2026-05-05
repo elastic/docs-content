@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Turn on the risk scoring engine
+# Turn on risk scoring
 
 
 ::::{important}
@@ -41,20 +41,27 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 ::::
 
 
-## Turn on the latest risk engine [_turn_on_the_latest_risk_engine]
+## Turn on risk scoring [_turn_on_the_latest_risk_engine]
 
 ::::{note}
 * To view risk score data, you must have alerts generated in your environment.
 * In {{stack}}, if you previously installed the original user and host risk score modules, and you’re upgrading to {{stack}} version 9.0 or later, refer to [Upgrade to the latest risk engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#upgrade-risk-engine).
-
 ::::
 
 
-If you’re installing the risk scoring engine for the first time:
 
 :::::{applies-switch}
 
 ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+:::{important}
+Turning on risk scoring and entity store on deployments with less than 4 GB of memory is not recommended, as the cluster might become heavily loaded by the processes required to run Entity Analytics. For optimal performance, we recommend at least 8 GB of memory.
+:::
+
+In the default {{kib}} space, both the risk scoring engine and entity store are enabled automatically.
+
+For non-default spaces, if you're enabling risk scoring for the first time:
+
 1. Find the **Entity Analytics** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Turn the toggle on.
 

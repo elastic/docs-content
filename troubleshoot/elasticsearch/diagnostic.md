@@ -43,7 +43,7 @@ You can also directly download the `diagnostics-X.X.X-dist.zip` file for the lat
 
 To capture an {{es}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health]({{es-apis}}operation/operation-cluster-health).
 
     For example, with the parameters `host:localhost`, `port:9200`, and `username:elastic`, you’d use the following curl request:
 
@@ -115,7 +115,7 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.
 
 * A `security_exception` that includes `is unauthorized for user`:
 

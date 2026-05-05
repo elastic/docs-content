@@ -20,7 +20,7 @@ These steps are for data stream lifecycle only. For the steps to configure {{ilm
 
 ## Set a data stream’s lifecycle [set-lifecycle]
 
-To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
 
 :::::{tab-set}
@@ -74,7 +74,7 @@ To change the data retention settings for a data stream:
 
 The changes in the lifecycle are applied on all backing indices of the data stream.
 
-You can see the effect of the change in {{kib}} or using the {{es}} [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
+You can see the effect of the change in {{kib}} or using the {{es}} [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
 
 :::::{tab-set}
 :group: kibana-api
@@ -149,7 +149,7 @@ The response will look like:
 
 ## Remove the lifecycle for a data stream [delete-lifecycle]
 
-To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle).
+To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
 
 
 :::::{tab-set}
@@ -187,7 +187,7 @@ DELETE _data_stream/my-data-stream/_lifecycle
 
 After running the API request, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all of its backing indices.
 
-You can then use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) again to see that the indices are no longer managed.
+You can then use the [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) again to see that the indices are no longer managed.
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain

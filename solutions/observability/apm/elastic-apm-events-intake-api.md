@@ -943,7 +943,7 @@ APM Server uses JSON Schema to validate requests. The specification for transact
           ],
           "properties": {
             "body": {
-              "description": "Body only contais the request bod, not the query string information. It can either be a dictionary (for standard HTTP requests) or a raw request body.",
+              "description": "Body only contains the request bod, not the query string information. It can either be a dictionary (for standard HTTP requests) or a raw request body.",
               "type": [
                 "null",
                 "string",
@@ -3003,7 +3003,7 @@ APM Server uses JSON Schema to validate requests. The specification for errors i
           ],
           "properties": {
             "body": {
-              "description": "Body only contais the request bod, not the query string information. It can either be a dictionary (for standard HTTP requests) or a raw request body.",
+              "description": "Body only contains the request bod, not the query string information. It can either be a dictionary (for standard HTTP requests) or a raw request body.",
               "type": [
                 "null",
                 "string",
@@ -3787,7 +3787,7 @@ APM Server uses JSON Schema to validate requests. The specification for errors i
           "type": "string"
         },
         "param_message": {
-          "description": "ParamMessage should contain the same information as Message, but with placeholders where parameters were logged, e.g. 'error connecting to %s'. The string is not interpreted, allowing differnt placeholders per client languange. The information might be used to group errors together.",
+          "description": "ParamMessage should contain the same information as Message, but with placeholders where parameters were logged, e.g. 'error connecting to %s'. The string is not interpreted, allowing different placeholders per client language. The information might be used to group errors together.",
           "type": [
             "null",
             "string"
