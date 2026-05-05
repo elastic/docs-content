@@ -26,7 +26,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 Refer to [Get started](get-started.md#access-agent-builder) if you need instructions about enabling {{agent-builder}} for your deployment type.
 :::
 
-### Cross-cluster search limitations [cross-cluster-search-limitations]
+### Cross-cluster search limitations
 
 [Index search tools](tools/index-search-tools.md) do not automatically discover or search indices on remote clusters. However, agents can query remote clusters using [{{esql}}](elasticsearch://reference/query-languages/esql.md) if you explicitly instruct the agent to do so.
 
