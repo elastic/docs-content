@@ -241,7 +241,7 @@ Solution view
 :   A {{kib}} navigation mode oriented around a single solution ({{es}}, {{product.observability}}, or {{product.security}}). The solution view determines which {{agent-builder}} entry points and built-in capabilities are surfaced. See [Get started with {{agent-builder}}](get-started.md).
 
 Space
-:   A {{kib}} space. Custom agents and custom tools are _space-aware_ — they exist only in the space where they were created. The Elastic AI Agent is also space-aware. Built-in tools, and built-in agents other than the Elastic AI Agent, are space-agnostic. See [Permissions and access control](permissions.md).
+:   A {{kib}} [space](/deploy-manage/manage-spaces.md). Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [Permissions and access control](permissions.md).
 
 Standalone mode
 :   The full-page Agent Chat experience, opened from **Agents** in the main navigation. Standalone mode is recommended when you're working with dashboards, visualizations, or long agent replies. See [Chat UI modes](standalone-and-flyout-modes.md).
