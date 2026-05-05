@@ -867,3 +867,20 @@ redirects:
   'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
   'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
   'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
+  'explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md': 'explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md'
+# Split off links for the EIS supported models page
+  'explore-analyze/elastic-inference/eis.md':
+    to: 'explore-analyze/elastic-inference/eis.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+        anchors:
+          'supported-models': 
+# Split off links to inference UI pages
+  'explore-analyze/elastic-inference/inference-api.md':
+    to: 'explore-analyze/elastic-inference/inference-api.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'add-inference-endpoints': 'add-endpoint'
+          'inference-endpoints': 'manage-models'
+          'create-custom-eis': 'add-endpoint'

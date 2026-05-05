@@ -11,6 +11,8 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 
 # {{esql}} rules [esql-rule-type]
 
+## Overview
+
 {{esql}} rules use [{{es}} Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) to query source events and aggregate or transform data using a pipeline syntax. Query results are returned as a table where each row becomes an alert. {{esql}} rules combine the flexibility of a full query pipeline with the detection capabilities of {{elastic-sec}}.
 
 ### When to use an {{esql}} rule
@@ -30,6 +32,26 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 ### Data requirements
 
 {{esql}} rules query {{es}} indices directly using the `FROM` command. The indices must be accessible to the user who creates or last edits the rule.
+
+### Alert deduplication and `_id` metadata [esql-alert-deduplication]
+
+For **non-aggregating** queries (queries that do not use `STATS...BY`), the detection engine relies on the document `_id` metadata field to avoid creating duplicate alerts for the same source event across rule executions.
+
+::::{tab-set}
+:::{tab-item} {{stack}} 9.4+
+You don't need to add `METADATA _id` in the rule query for deduplication. The query in the editor is saved exactly as you enter it. You can paste from Discover or from AI-assisted tools without adding metadata clauses.
+
+If `_id` will be missing from the query results (for example, because of `DROP _id`, `RENAME _id AS …`, or `EVAL _id = …`), the query editor shows a non-blocking warning that you might get duplicate alerts. You can still save the rule after confirming the **Save with errors** dialog, but might get duplicate alerts until you adjust the query.
+
+:::
+:::{tab-item} {{stack}} 9.0-9.3
+
+You must add `METADATA _id` to the `FROM` command yourself for non-aggregating queries if you want deduplication across executions. Without it, the same source event can generate duplicate alerts.
+
+:::
+::::
+
+You can still include `METADATA` explicitly—for example `METADATA _id, _index, _version`—when you need additional [metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) in the query or for clarity.
 
 <!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective {{esql}} queries [craft-esql]
@@ -134,7 +156,7 @@ This rule counts failed login attempts per user and alerts when any user exceeds
 
 ### Non-aggregating query with deduplication [esql-example-non-aggregating]
 
-This rule detects process-start events with suspicious encoded arguments and uses `METADATA` to enable alert deduplication across rule executions.
+This rule detects process-start events with suspicious encoded arguments. The query omits `METADATA _id` in the `FROM` clause; in {{stack}} 9.4 and later, the detection engine injects `METADATA _id` at execution time for alert deduplication. On {{stack}} 9.3 and earlier, add `METADATA _id` (and optionally `_index`, `_version`) to the `FROM` command yourself.
 
 ```json
 {
@@ -142,7 +164,7 @@ This rule detects process-start events with suspicious encoded arguments and use
   "language": "esql",
   "name": "Process execution with encoded arguments",
   "description": "Detects process start events where the command line contains encoded content.",
-  "query": "FROM logs-endpoint.events.* METADATA _id, _index, _version | WHERE event.category == \"process\" AND event.type == \"start\" AND process.command_line LIKE \"*-encoded*\" | LIMIT 100",
+  "query": "FROM logs-endpoint.events.* | WHERE event.category == \"process\" AND event.type == \"start\" AND process.command_line LIKE \"*-encoded*\" | LIMIT 100",
   "severity": "medium",
   "risk_score": 47,
   "interval": "5m",
@@ -152,15 +174,15 @@ This rule detects process-start events with suspicious encoded arguments and use
 
 | Field | Value | Purpose |
 |---|---|---|
-| `query` | `FROM ... METADATA _id, _index, _version \| WHERE ... \| LIMIT 100` | A non-aggregating query. `METADATA _id, _index, _version` after `FROM` enables alert deduplication so the same source event does not generate duplicate alerts across rule executions. Without it, repeated matches produce repeated alerts. |
-| `LIMIT` | `100` | Caps the number of results per execution. Interacts with the **Max alerts per run** setting, and the rule uses the lower of the two values. |
+| `query` | `FROM ... \| WHERE ... \| LIMIT 100` | A non-aggregating query. Each matching row becomes an alert. <br><br> {applies_to}`stack: ga 9.4+` For deduplication across executions, `METADATA _id` is automatically added if missing, but you must ensure that `_id` appears in the execution results. Commands that restrict or remove fields (such as `DROP _id` or `KEEP agent.*` which retains only `agent.*` fields) will exclude `_id` from results and prevent deduplication.  <br><br> {applies_to}`stack: ga 9.0-9.3` In earlier versions, include `METADATA _id` (and optionally other metadata fields) after `FROM`. |
+| `LIMIT` | `100` | Limits the number of results per execution. Interacts with the **Max alerts per run** setting, and the rule uses the lower of the two values. |
 
 ## {{esql}} rule field reference [esql-fields]
 
 The following settings appear in the **Define rule** section when creating an {{esql}} rule. For settings shared across all rule types, refer to [Rule settings reference](/solutions/security/detect-and-alert/common-rule-settings.md).
 
 **{{esql}} query**
-:   The [{{esql}} query](elasticsearch://reference/query-languages/esql.md) that defines the detection logic. Can be aggregating (with `STATS...BY`) or non-aggregating. Each row in the query result becomes an alert.
+:   The [{{esql}} query](elasticsearch://reference/query-languages/esql.md) that defines the detection logic. Can be aggregating (with `STATS...BY`) or non-aggregating. Each row in the query result becomes an alert. For non-aggregating queries, validation may show a non-blocking warning if `_id` is absent from the results (for example after `DROP _id`); you can still save the rule after confirming **Save with errors**.
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).

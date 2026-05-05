@@ -55,7 +55,8 @@ If you already know the visualization type you want to use, and how you want to 
 
 ::::{step} Choose the visualization type
 
-New visualizations default to **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+New visualizations generally default to **Bar** or **Line** charts. You can change that manually to the visualization type that you want.
+
 As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
 ::::
@@ -139,6 +140,7 @@ To assign colors to terms in your visualization:
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Elastic (line optimized)**: A variant of the Elastic palette that reorders colors for better contrast between adjacent series in line charts. Lens automatically applies this palette when you create or switch to a line chart. Switching to a different chart type reverts to the standard palette. You can override this by manually selecting a different palette.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Severity**: A theme-aware categorical palette designed for severity-based data, with colors that adapt to both light and dark themes.
    * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
    * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
@@ -472,7 +474,9 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment**.
@@ -493,6 +497,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Paginate table**
 :   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
+
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 #### Pie charts
 
