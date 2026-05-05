@@ -38,11 +38,7 @@ Use {{agent-builder}} when you want to:
 
 {{agent-builder}} generates ES|QL-powered visualizations, markdown panels, and collapsible sections. For panel types the agent does not support yet, such as controls, use the [Dashboards API](create-dashboards-programmatically.md) directly.
 
-:::{tip}
-Full-screen standalone chat mode gives the most space for previewing and refining dashboard content.
-:::
-
-Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/chat.md).
+Refer to [Chat with {{agent-builder}} agents](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
 ## {{product.kibana}} dashboards agent skill [dashboards-agent-skill]
 ```{applies_to}

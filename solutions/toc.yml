@@ -685,6 +685,7 @@ toc:
           - file: security/endpoint-response-actions/automated-response-actions.md
           - file: security/endpoint-response-actions/isolate-host.md
           - file: security/endpoint-response-actions/response-actions-history.md
+          - file: security/endpoint-response-actions/script-library.md
           - file: security/endpoint-response-actions/third-party-response-actions.md
           - file: security/endpoint-response-actions/configure-third-party-response-actions.md
       - file: security/cloud.md
