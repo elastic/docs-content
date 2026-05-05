@@ -152,7 +152,7 @@ Results in this badge:
 The build system automatically orders multiple [keys](reference.md#key) in a consistent pattern. This reduces authoring overhead and makes content easier for users to scan.
 
 :::{important}
-Key ordering only occurs if all keys are declared in the same directive. Keys declared seperately, for example: ``` {applies_to}`stack: ga` {applies_to}`serverless: preview` ```, will not be reordered by docs-builder.
+Key ordering only occurs if all keys are declared in the same directive. Keys declared separately, for example: ``` {applies_to}`stack: ga` {applies_to}`serverless: preview` ```, will not be reordered by docs-builder.
 :::
 
 Keys are ordered as follows:

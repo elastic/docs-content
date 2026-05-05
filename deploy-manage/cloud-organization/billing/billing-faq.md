@@ -102,14 +102,17 @@ $$$billing-cc-additional-payment$$$Does Cloud Connect require additional payment
 :   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
 
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
-:   All subscription tiers for {{ech}} include the following free allowance:
+:   All subscription tiers for {{ech}} include the following:
 
-    * Free 1GB RAM {{kib}} instance
-    * Free 1GB RAM Machine Learning node
-    * Free 1GB RAM APM / Integrations Server instance
+    * Free 1 GB RAM {{kib}} instance. 
+      :::{note}
+      Deployments created in May 2026 or later include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
+      :::
+    * Free 1 GB RAM Machine Learning node
+    * Free 1 GB RAM APM / Integrations Server instance
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 
-    Note that if you go above the free tier of Kibana/ML/APM (for example, a 2GB {{kib}} instance), you will be charged in full for the size of that instance.
+    Note that if you go above the free allowance of Kibana/ML/APM (for example, a 2 GB {{kib}} instance), you will be charged in full for the size of that instance.
 
 
 $$$faq-dts$$$What are the data transfer and storage charges and how can I control them?
