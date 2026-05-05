@@ -115,7 +115,7 @@ Default agent {applies_to}`stack: ga 9.4+`
 :   The Elastic AI Agent, which is automatically created in each {{kib}} space and acts as the starting agent for new conversations. See [Built-in agents reference](builtin-agents-reference.md).
 
 Default model {applies_to}`stack: ga 9.4+`
-:   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. Configure it from **GenAI Settings**. See [Models](models.md).
+:   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. Configure it from **GenAI Settings**. See [Models](models.md#default-model-configuration).
 
 ## E
 
