@@ -115,7 +115,7 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.
 
 * A `security_exception` that includes `is unauthorized for user`:
 

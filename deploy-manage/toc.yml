@@ -496,6 +496,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+                  - file: security/k8s-es-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:

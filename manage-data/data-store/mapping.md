@@ -15,7 +15,7 @@ products:
 
 % GitHub issue: docs-projects#370
 
-% Scope notes: Use the content in the linked source and add links to the relevent reference content.
+% Scope notes: Use the content in the linked source and add links to the relevant reference content.
 
 % Use migrated content from existing pages that map to this page:
 

@@ -65,7 +65,7 @@ Use the [Explain the lifecycle state API]({{es-apis}}operation/operation-ilm-exp
 GET .ds-metrics-system.process-default-2025.06.04-000001/_ilm/explain
 ```
 
-Tthe API response shows the current ILM phase and other details:
+The API response shows the current ILM phase and other details:
 
 ```json
 {

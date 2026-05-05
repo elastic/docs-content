@@ -34,7 +34,7 @@ Create a **setup role**, called something like `synthetics_setup`:
         | --- | --- | --- |
         | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `monitor` | Allows the user to retrieve cluster details. |
         | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_ilm` | Allows the user access to all index lifecycle management operations related to managing policies. |
-        | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `read_pipeline` | Gives the user read-only access to the ingest pipline. |
+        | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `read_pipeline` | Gives the user read-only access to the ingest pipeline. |
         | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `view_index_metadata` | Gives the user read-only access to index and data stream metadata. |
         | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `create_doc` | Allows the user to index documents. |
         | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `auto_configure` | Permits auto-creation of indices and data streams. |

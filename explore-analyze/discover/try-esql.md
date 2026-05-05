@@ -98,7 +98,7 @@ serverless: ga
 
 When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names:
 
-- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear pre-selected. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear preselected. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
 - **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
 
 :::{note}
@@ -358,6 +358,78 @@ When you save your edits, the control is updated for your query.
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
 
+
+## View grouped results from a STATS query [esql-cascade-layout]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The results count above the table reports the number of groups instead of the number of documents.
+
+:::{image} /explore-analyze/images/discover-esql-cascade-overview.png
+:alt: Grouped results layout in Discover, with one row expanded to show underlying documents
+:screenshot:
+:::
+
+The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
+
+### Pattern rendering
+
+When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance. For example:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS Count = COUNT(*) BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
+% RESTORE FOR 9.5 - start
+% The block below documents the inline SPARKLINE rendering. SPARKLINE has been
+% deferred from 9.4 to 9.5. When SPARKLINE ships in a release build, restore
+% this block, rename the subsection back to "Pattern and sparkline rendering",
+% uncomment the screenshot directive, and update the screenshot if needed.
+% Tracked in: https://github.com/elastic/docs-content/issues/6215
+%
+% When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, the resulting array is rendered as an inline sparkline next to the row aggregates. For example, the following query categorizes log messages and renders a per-pattern sparkline:
+%
+% ```esql
+% FROM kibana_sample_data_logs
+% | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+% | STATS Count = COUNT(*),
+%         Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
+%     BY Pattern = CATEGORIZE(message)
+% | SORT Count DESC
+% ```
+%
+% On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
+%
+% :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
+% :alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
+% :screenshot:
+% :::
+% RESTORE FOR 9.5 - end
+
+::::{tip}
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+::::
+
+### Grouped row actions
+
+Select the {icon}`boxes_vertical` actions button on any group row to:
+
+- **Copy to clipboard**: copy the group's value.
+- **Filter in**: append a `WHERE` clause to your query that keeps only documents matching this group.
+- **Filter out**: append a `WHERE` clause that excludes documents matching this group.
+- **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
+
+**Filter in** and **Filter out** are disabled when the grouping field is not filterable.
+
+### Opt out of the grouped layout
+
+When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
+
+The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
 
 ## Refine an {{esql}} query by interacting with the results table
 
