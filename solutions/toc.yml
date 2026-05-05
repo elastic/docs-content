@@ -792,6 +792,8 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+          - file: security/advanced-entity-analytics/watchlists.md
+          - file: security/advanced-entity-analytics/entity-resolution.md
           - file: security/advanced-entity-analytics/privileged-user-monitoring.md
             children:
               - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
