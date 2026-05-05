@@ -20,6 +20,8 @@ Here is a detailed breakdown of the documentation structure:
 * [**Release notes**](/release-notes/index.md): Contains release notes and changelogs for each new release.
 * [**Reference**](/reference/index.md): Reference material for core tasks and manuals for other Elastic products.
 
+  * Whitelist! Example!
+
 ## Applicability badges
 
 Because you can deploy Elastic products in different ways and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
