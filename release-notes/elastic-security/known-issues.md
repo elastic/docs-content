@@ -31,7 +31,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 After you upgrade to v9.4, any Detection Rules created by users without access to the `.entities.v2.latest.security_*` index (i.e., the entity store) do not enrich their alerts with entity analytics data. This means that alerts which contain user or host entities and were created from rules authored by users without access to the index show as failures. The alert document still generates, but without entity analytics data.
 
-When a rule fires successfully and generates an alert, Asset Criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is turned "on" by default in the default space.
+When a rule fires successfully and generates an alert, Asset Criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is a feature on by default in the default space.
 
 Detection Rules use their author’s permissions to enrich alerts with entity data. When rules are created or modified, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate).
 
