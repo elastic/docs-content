@@ -21,6 +21,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.3.4 [elastic-observability-9.3.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.4-features-enhancements]
+* Defaults new APM alert rules to group by `transaction.name`, providing more granular out-of-the-box alerting for latency threshold, failed transaction rate, and error count rules. Existing rules are unaffected [#261929]({{kib-pull}}261929).
+
+### Fixes [elastic-observability-9.3.4-fixes]
+* Fixes the Serverless APM navigation so **Service inventory** stays active on service map, service groups, and related paths, matching stateful behavior [#263119]({{kib-pull}}263119).
+* Fixes the **Hosts** table on the Observability Overview page to display OTel (semconv) host metrics alongside ECS metrics, so hosts ingesting through OpenTelemetry are no longer missing from the table [#261564]({{kib-pull}}261564).
+* Fixes an issue where malformed URL query parameters could crash APM and other plugins; affected pages now automatically recover by applying parameter defaults and redirecting to the corrected URL [#257245]({{kib-pull}}257245).
+
 ## 9.3.3 [elastic-observability-9.3.3-release-notes]
 
 ### Fixes [elastic-observability-9.3.3-fixes]
@@ -143,7 +153,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes related dashboards for ES Query and other stack rules supported in observability [#247564]({{kib-pull}}247564).
 * Fixes default alerts flow when default rules are not defined [#245736]({{kib-pull}}245736).
 * Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
-* Fixes empty **Related dashboards** meu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
+* Fixes empty **Related dashboards** menu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
 * Prevents default alerts from being created when connectors are not defined [#237504]({{kib-pull}}237504).
 * Copies alert states to payload [#240411]({{kib-pull}}240411).
 * Replaces metric names inside filter values [#238849]({{kib-pull}}238849).

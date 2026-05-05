@@ -213,7 +213,7 @@ Content for Serverless
 
 **DOs**<br>
 ✅ **Do:** Use when content varies significantly by deployment type or version<br>
-✅ **Do:** Combine multiple `applies_to` definitions using YAML object notation: `{ ece: ga 4.0+, ess: ga }`
+✅ **Do:** Combine multiple `applies_to` definitions using YAML object notation: `{ ece: ga 4.0+, ech: ga }`
 
 For more details, refer to [Applies switch](https://elastic.github.io/docs-builder/syntax/applies-switch).
 <br>

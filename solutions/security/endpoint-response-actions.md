@@ -350,10 +350,12 @@ stack: ga 9.3+
 serverless: ga
 ```
 
-Trigger a virtual process or kernel system memory dump on a Windows endpoint. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+Trigger a virtual process or kernel system memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
 
 ::::{note}
-This response action is supported only for Windows endpoints.
+This response action is supported for:
+  - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Windows and Linux endpoints
+  - {applies_to}`stack: ga =9.3` Windows endpoints only
 ::::
 
 The memory dump is stored on the endpoint's local disk. After running `memory-dump`, you must use the [`get-file`](#get-file) response action to download the dump from the endpoint.
@@ -361,6 +363,10 @@ The memory dump is stored on the endpoint's local disk. After running `memory-du
 Use one of the following parameters to specify the type of memory dump:
 
 * `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+  ::::{note}
+  Kernel memory dumps are only supported on Windows endpoints.
+  ::::
+
 * `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
     * `--pid`: The process ID (PID) of the process to dump.
     * `--entityId`: The entity ID of the process to dump.

@@ -27,7 +27,7 @@ Even though we throttle concurrent recoveries both at the [node level](elasticse
 * Node 5 returns after a few minutes.
 * The master rebalances the cluster by allocating shards to Node 5.
 
-If the master had just waited for a few minutes, then the missing shards could have been re-allocated to Node 5 with the minimum of network traffic. This process would be even quicker for idle shards (shards not receiving indexing requests) which have been automatically [flushed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush).
+If the master had just waited for a few minutes, then the missing shards could have been re-allocated to Node 5 with the minimum of network traffic. This process would be even quicker for idle shards (shards not receiving indexing requests) which have been automatically [flushed]({{es-apis}}operation/operation-indices-flush).
 
 The allocation of replica shards which become unassigned because a node has left can be delayed with the `index.unassigned.node_left.delayed_timeout` dynamic setting, which defaults to `1m`.
 
@@ -55,6 +55,8 @@ With delayed allocation enabled, the above scenario changes to look like this:
 This setting will not affect the promotion of replicas to primaries, nor will it affect the assignment of replicas that have not been assigned previously. In particular, delayed allocation does not come into effect after a full cluster restart. Also, in case of a master failover situation, elapsed delay time is forgotten (i.e. reset to the full initial delay).
 ::::
 
+During a [graceful node shutdown]({{es-apis}}/v8/operation/operation-shutdown-put-node), the value of the `allocation_delay` parameter might keep unassigned replica allocation back longer than the value of `index.unassigned.node_left.delayed_timeout` would on its own, if the allocation delay is longer than the timeout.
+
 ## Cancellation of shard relocation [_cancellation_of_shard_relocation]
 
 If delayed allocation times out, the master assigns the missing shards to another node which will start recovery. If the missing node rejoins the cluster, and its shards still have the same sync-id as the primary, shard relocation will be cancelled and the synced shard will be used for recovery instead.
@@ -63,7 +65,7 @@ For this reason, the default `timeout` is set to just one minute: even if shard 
 
 ## Monitoring delayed unassigned shards [_monitoring_delayed_unassigned_shards]
 
-The number of shards whose allocation has been delayed by this timeout setting can be viewed with the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
+The number of shards whose allocation has been delayed by this timeout setting can be viewed with the [cluster health API]({{es-apis}}operation/operation-cluster-health):
 
 ```console
 GET _cluster/health <1>

@@ -1,8 +1,8 @@
 ---
 navigation_title: Manage detection rules at scale
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Use workflows to audit rule health, surface rule errors, and automate rule operations across large detection rule sets in Elastic Security.
 products:
   - id: kibana
@@ -21,22 +21,18 @@ Use workflows to automate these rule-operations tasks. Workflows can query detec
 
 ## What you can automate [workflows-rule-ops-patterns]
 
-The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#generic-request-actions) to drive rule-operations work:
+The following patterns combine [scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md) with [{{kib}} request actions](/explore-analyze/workflows/steps/kibana.md#kibana-request) to drive rule-operations work:
 
 - **Audit rule health on a schedule.** A scheduled workflow queries the detection engine API for rule status, filters for rules in an error or disabled state, and publishes a daily summary.
 - **Surface rule errors.** Use [`if` steps](/explore-analyze/workflows/steps/if.md) to branch on rule status and send a targeted notification when the failing rule is business-critical.
 - **Report on coverage.** Use [`foreach` steps](/explore-analyze/workflows/steps/foreach.md) to iterate over rules, group by tag or framework mapping, and index the result to an {{es}} index for dashboard visualization.
 - **Sync rule status to external systems.** Use [HTTP actions](/explore-analyze/workflows/steps/external-systems-apps.md) to mirror rule status into an external tracker, or post to Slack or PagerDuty when a rule crosses a threshold.
 
-## Example flow [workflows-rule-ops-example-flow]
+## How-to guides [workflows-rule-ops-how-tos]
 
-A daily rule-health report workflow has the shape:
+Step-by-step guides for rule-operations workflows:
 
-1. **Scheduled trigger** fires every morning.
-2. **Kibana request step** calls the detection engine API to list rules and their status.
-3. **Foreach step** iterates over the returned rules.
-4. **If step** identifies rules in an error state.
-5. **Elasticsearch step** indexes the summary to a rules-health index, or a **connector step** posts the summary to Slack.
+- [Run detection rules on demand](/explore-analyze/workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md): Manually re-run one or more detection rules over a configurable time range. Useful for gap-filling, post-incident review, and scheduled rule-health checks.
 
 ## Learn more
 
@@ -44,10 +40,3 @@ A daily rule-health report workflow has the shape:
 - [{{kib}} action steps](/explore-analyze/workflows/steps/kibana.md): Reference for generic {{kib}} API requests.
 - [Foreach step](/explore-analyze/workflows/steps/foreach.md): Iterate over arrays returned by API calls.
 - [Detection rule concepts](/solutions/security/detect-and-alert/detection-rule-concepts.md): Background on how detection rules work.
-
-% Ben Ironside Goldstein, 2026-04-16: Planned child pages per Vision doc Section 4.3:
-% - Audit rule health on a schedule (tutorial)
-% - Surface and alert on rule errors (how-to)
-% - Report on rule coverage (how-to)
-% - Sync rule status to external systems (how-to)
-% SME validation of detection engine API patterns needed before shipping tutorials.
