@@ -46,7 +46,7 @@ Removes all legacy risk engine code and features.
 For more information, refer to [#201810]({{kib-pull}}201810).
 ::::
 
-::::{dropdown} Removes {{elastic-defend}} API endoints
+::::{dropdown} Removes {{elastic-defend}} API endpoints
 Removes deprecated API endpoints for {{elastic-defend}}.
 For more information, refer to [#199598]({{kib-pull}}199598).
 ::::

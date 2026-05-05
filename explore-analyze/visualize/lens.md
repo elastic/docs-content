@@ -289,7 +289,7 @@ Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and
 
 To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
 
-From the annotation panel, you can choose the type of placement and adjsut the its appearance.
+From the annotation panel, you can choose the type of placement and adjust the its appearance.
 
 **Placement**
 :   

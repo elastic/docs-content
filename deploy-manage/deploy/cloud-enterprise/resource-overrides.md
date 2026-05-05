@@ -26,7 +26,7 @@ Overriding the disk storage capacity does not restart the {{es}} node.
 
 ## Override RAM, CPU and disk
 
-Alternatively, you can override all resource allocations by selecting **Override instance size** from the instance’s drop-down menu. This overrides the alloted RAM, maintaining a proportional CPU and disk size. This can be helpful if the {{es}} cluster is overwhelmed by requests. You should [resize the deployment](resize-deployment.md) when the volume of requests stabilizes.
+Alternatively, you can override all resource allocations by selecting **Override instance size** from the instance’s drop-down menu. This overrides the allotted RAM, maintaining a proportional CPU and disk size. This can be helpful if the {{es}} cluster is overwhelmed by requests. You should [resize the deployment](resize-deployment.md) when the volume of requests stabilizes.
 
 ::::{note}
 Overriding the instance size restarts the {{es}} node.
