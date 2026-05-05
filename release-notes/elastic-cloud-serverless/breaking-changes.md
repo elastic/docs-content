@@ -112,7 +112,7 @@ Note, because we dont support enabling norms from a disabled state, users will n
 
 **Impact:**
 
-Text fields will no longer be normalized by default in LogsDB and TSDB indicies.
+Text fields will no longer be normalized by default in LogsDB and TSDB indices.
   
 For more information, view [#131317](https://github.com/elastic/elasticsearch/pull/131317).
 :::

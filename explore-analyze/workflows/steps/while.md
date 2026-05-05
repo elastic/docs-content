@@ -32,13 +32,13 @@ Use `while` for polling patterns: checking a status until it reaches `ready`, re
 | `iteration-on-failure` | top level | object | No | Per-iteration error-handling policy. Same shape as `on-failure`. |
 
 :::{warning}
-`while` has no default `max-iterations`. Without an explicit cap, a `while` loop runs as long as its condition holds. Always set `max-iterations` on loops that depend on external state to avoid runaway executions.
+`while` has no default `max-iterations`. Without an explicit limit, a `while` loop runs as long as its condition holds. Always set `max-iterations` on loops that depend on external state to avoid runaway executions.
 :::
 
 ### `max-iterations` shape
 
 ```yaml
-# Bare number: default `on-limit` is `continue` (the step succeeds when the cap is hit)
+# Bare number: default `on-limit` is `continue` (the step succeeds when the limit is reached)
 max-iterations: 60
 
 # Object form: opt into `on-limit: fail` to fail the workflow when the limit is reached

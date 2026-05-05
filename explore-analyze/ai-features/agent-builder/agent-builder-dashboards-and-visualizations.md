@@ -125,5 +125,4 @@ Agents can also create markdown panels and collapsible sections.
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
-% TODO: Add once docs-content#5927 merges:
-% - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
+- [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
