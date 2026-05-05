@@ -160,15 +160,16 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
 ## Top gotchas [workflows-cheat-gotchas]
 
 1. **Alert trigger needs rule Action attachment.** `type: alert` alone isn't enough. [Attach the workflow](/explore-analyze/workflows/triggers/alert-triggers.md) to the rule's Actions.
-2. **`switch.cases` is an array**, not a map. Each case is a `{ case: <value>, steps: [...] }` object. Refer to [`switch`](/explore-analyze/workflows/steps/switch.md).
-3. **`cases.*` parameters use `snake_case`:** `case_id`, not `caseId`.
-4. **`kibana.SetAlertsStatus` / `kibana.SetAlertTags` are PascalCase.** Not `kibana.set_alerts_status`.
-5. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`.
-6. **Composition's `workflow-id` is kebab-case but lives *inside* `with`.** It's the one exception to the top-level-kebab-case pattern.
-7. **`data.*` steps (except `data.set`) put source data at the top level:** `items:`, `arrays:`, or `source:`. The transformation configuration goes in `with`.
-8. **Use `${{ ... }}` for arrays and objects**, `{{ ... }}` for strings.
-9. **`to_json` doesn't exist.** Use `json` to serialize or `json_parse` to parse.
-10. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item.severity : 'critical'`, not `item.severity == 'critical'`.
+2. **`while` defaults to `max-iterations: 2000` with `on-limit: continue`.** When the loop hits the cap, the step succeeds quietly. Set `on-limit: fail` if you want the workflow to fail at the cap.
+3. **`switch.cases` is an array**, not a map. Each case is a `{ case: <value>, steps: [...] }` object. Refer to [`switch`](/explore-analyze/workflows/steps/switch.md).
+4. **`cases.*` parameters use `snake_case`:** `case_id`, not `caseId`.
+5. **`kibana.SetAlertsStatus` / `kibana.SetAlertTags` are PascalCase.** Not `kibana.set_alerts_status`.
+6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`.
+7. **Composition's `workflow-id` is kebab-case but lives *inside* `with`.** It's the one exception to the top-level-kebab-case pattern.
+8. **`data.*` steps (except `data.set`) put source data at the top level:** `items:`, `arrays:`, or `source:`. The transformation configuration goes in `with`.
+9. **Use `${{ ... }}` for arrays and objects**, `{{ ... }}` for strings.
+10. **`to_json` doesn't exist.** Use `json` to serialize or `json_parse` to parse.
+11. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item.severity : 'critical'`, not `item.severity == 'critical'`.
 
 ## Related [workflows-cheat-related]
 
@@ -177,6 +178,7 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
 - [Troubleshooting](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): When something isn't working.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): 57 example workflows you can adapt.
 
-% Ben Ironside Goldstein, 2026-04-16: Removed PM cheat sheet's gotchas 2 (while default max-iterations)
-% and 9 (resume API input wrapping) pending SME review — PR A's Kibana-source verification contradicts
-% both claims. Flagged in PR summary.
+% Ben Ironside Goldstein, 2026-05-04: Restored the PM cheat sheet's `while` 2000-default gotcha
+% after confirming it against Kibana's DEFAULT_LOOP_MAX_ITERATIONS = 2000 in
+% kbn-workflows/spec/schema.ts. The PM source was right; PR A's earlier "no default" claim
+% was incorrect. The resume-API input-wrapping gotcha is still pending SME review.

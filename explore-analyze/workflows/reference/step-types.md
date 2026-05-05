@@ -104,7 +104,7 @@ Because the available connector steps depend on which connectors your deployment
 
 ## Deprecated step types [workflows-deprecated-steps]
 
-These still work in existing workflows but can't be used in new ones. Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md) for full replacement details.
+These still work in existing workflows but can't be used in new ones. Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md) for full replacement details.
 
 | Deprecated | Replacement |
 |---|---|

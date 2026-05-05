@@ -58,19 +58,21 @@ Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-drive
 
 ## Flow control [workflows-ts-flow-control]
 
-### A `while` loop runs forever [workflows-ts-while-unbounded]
+### A `while` loop stopped silently after 2000 iterations [workflows-ts-while-cap]
 
-**Symptom.** A `while` loop never exits, consuming workflow execution time.
+**Symptom.** A `while` loop exits without an error after exactly 2000 iterations, even though the work isn't done.
 
-**Cause.** The `while` step has no default `max-iterations` limit in 9.4. Without an explicit `max-iterations`, the loop runs until the `condition` evaluates to false. If the condition never becomes false, the loop runs indefinitely.
+**Cause.** `max-iterations` defaults to 2000, and the default `on-limit` is `continue` — so the step **succeeds quietly** when the cap is reached, instead of failing the workflow.
 
-**Resolution.** Always set `max-iterations` on a `while` loop:
+**Resolution.** Set `max-iterations` explicitly with `on-limit: fail` to make the workflow fail when the cap is hit:
 
 ```yaml
 - name: poll
   type: while
   condition: "steps.check.output.status : 'pending'"
-  max-iterations: 30
+  max-iterations:
+    limit: 10000
+    on-limit: fail
   steps:
     - ...
 ```
@@ -372,13 +374,14 @@ settings:
 - Review the [Step type index](/explore-analyze/workflows/reference/step-types.md) for the full catalog.
 - File an issue on the [{{kib}} GitHub repo](https://github.com/elastic/kibana/issues/new/choose) with a minimal reproduction.
 
-% Ben Ironside Goldstein, 2026-04-27: The following PM claims were reconciled with PR A's
-% verified facts:
-%   - PM: "workflows.failed condition lives under on:" — confirmed by Tinsae in PR review;
-%     PR A and this troubleshooting page now both use on.condition syntax.
-%   - PM: "while default max-iterations: 2000" — PR A: no default, unbounded. Pending SME
-%     reconfirmation.
+% Ben Ironside Goldstein, 2026-05-04: The following PM claims were reconciled with the
+% Kibana schema source:
+%   - PM: "workflows.failed condition lives under on:" — confirmed by Tinsae in PR review.
+%   - PM: "while default max-iterations: 2000 with on-limit: continue" — confirmed against
+%     DEFAULT_LOOP_MAX_ITERATIONS in kbn-workflows/spec/schema.ts. PR A's earlier "no default"
+%     claim was incorrect and has been reverted in this PR.
 %   - PM: Resume API wraps body in { "input": {...} } and path /api/workflows/executions —
-%     PR A: flat body, path /api/workflowExecutions/{id}/resume. Pending SME reconfirmation.
+%     PR A: flat body, path /api/workflowExecutions/{id}/resume. Still pending SME
+%     reconfirmation.
 %   - PM: cases.setCustomField / cases.createCaseFromTemplate "not registered" — PR A: both
 %     are registered in 9.4 GA.
