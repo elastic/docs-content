@@ -43,11 +43,11 @@ toc:
     children:
       - file: elastic-inference/eis.md
         children:
+          - file: elastic-inference/eis-supported-models.md
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
-        children:
-          - file: elastic-inference/inference-api.md
+      - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
@@ -464,17 +464,28 @@ toc:
           - file: workflows/use-cases/security.md
             children:
               - file: workflows/use-cases/security/automate-security-operations.md
+                children:
+                  - file: workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md
+                  - file: workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md
+                  - file: workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md
               - file: workflows/use-cases/security/manage-detection-rules.md
+                children:
+                  - file: workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md
           - file: workflows/use-cases/observability.md
+            children:
+              - file: workflows/use-cases/observability/root-cause-analysis.md
           - file: workflows/use-cases/ai-augmented-workflows.md
+            children:
+              - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
       - file: workflows/authoring-techniques.md
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
           - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/compose-workflows.md
           - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
-          - file: workflows/authoring-techniques/migrate-from-9.3.md
+          - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/reference.md
         children:
           - file: workflows/triggers.md

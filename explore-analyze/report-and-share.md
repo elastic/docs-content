@@ -64,18 +64,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-
-$$$reporting-layout-sizing$$$
-The layout and size of the report depends on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
-
-To change the output size, change the size of the browser, which resizes the shareable container before the report generates. It might take some trial and error before you’re satisfied.
-
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
+* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
@@ -109,6 +98,22 @@ Go to the **Reporting** page to access all of your reports. To find the page, na
 ::::{note}
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 ::::
+
+### Resize PDF and PNG reports [reporting-layout-sizing]
+```{applies_to}
+serverless: unavailable
+```
+
+The layout and size of PDF and PNG reports depend on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
+
+To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
+
+In the following dashboard, the shareable container is highlighted:
+
+:::{image} /explore-analyze/images/kibana-shareable-container.png
+:alt: Shareable Container
+:screenshot:
+:::
 
 ### CSV report limitations [csv-limitations]
 

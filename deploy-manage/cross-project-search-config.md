@@ -52,14 +52,14 @@ Before you configure {{cps}}, review these prerequisites and best practices:
 
 ::::{important} - Origin project limitations
 
-* During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
-* At this time, you should not use an {{elastic-sec}} project as an origin project for {{cps}} in production. Some {{elastic-sec}} features are not fully functional when {{cps-init}} is enabled on an {{elastic-sec}} origin project. You can still link {{elastic-sec}} projects _to_ an origin project of another type.
+During technical preview, only newly created projects can be origin projects for {{cps}}. Existing projects can be linked from an origin project, but they can't serve as origin projects themselves. To get started, create a new {{serverless-short}} project and link it to your existing projects.
 ::::
 
 To be available for linking, projects must meet the following requirements:
 
 - The origin project and all linked projects must be in the same {{ecloud}} organization.
 - You can link any combination of {{product.elasticsearch}}, {{product.observability}}, and {{product.security}} projects in the same organization.
+- Projects can be linked across cloud providers and regions. For example, a project in GCP `us-east4` can be linked to a project in AWS `eu-central-1` without any additional configuration.
 - {{sec-serverless}} and {{obs-serverless}} projects require the **Complete** feature tier. Projects on the **Essentials** tier are not compatible with {{cps}}.
 
 Only compatible projects appear in the [{{cps}} linking wizard](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md#cps-link-projects). If a project you expected to link to is missing from the list, it might not meet the requirements, or you might not have the necessary [permissions](#cps-compatibility) on the project.
@@ -128,10 +128,6 @@ When you link projects for {{cps}}, the expanded dataset can affect existing fea
 
 ### {{elastic-sec}} apps
 
-::::{warning}
-:::{include} /explore-analyze/cross-project-search/_snippets/cps-security-recommendation.md
-:::
-::::
 
 :::{include} /explore-analyze/cross-project-search/_snippets/cps-availability-security-apps.md
 :::

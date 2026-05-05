@@ -167,7 +167,7 @@ Data nodes hold the shards that contain the documents you have indexed. Data nod
 
 The main benefit of having dedicated data nodes is the separation of the master and data roles.
 
-In a multi-tier deployment architecture, you use specialized data roles to assign data nodes to specific tiers: `data_content`,`data_hot`, `data_warm`, `data_cold`, or `data_frozen`. A node can belong to multiple tiers.
+In a multi-tier deployment architecture, you use specialized data roles to assign data nodes to specific [data tiers](/manage-data/lifecycle/data-tiers.md): `data_content`,`data_hot`, `data_warm`, `data_cold`, or `data_frozen`. A node can belong to multiple tiers.
 
 If you want to include a node in all tiers, or if your cluster does not use multiple tiers, then you can use the generic `data` role.
 
