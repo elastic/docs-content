@@ -1,6 +1,6 @@
 ---
-navigation_title: "Monitor token usage"
-description: "Learn how Agent Builder calculates token usage for input and output. Monitor conversation costs, view raw JSON usage data, and optimize agent calls."
+navigation_title: "Monitor usage and costs"
+description: "Understand how Agent Builder calculates token usage, monitor conversation costs, and learn how execution-based billing works on Elastic Cloud Serverless."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -12,7 +12,11 @@ products:
   - id: cloud-serverless
 ---
 
-# Token usage in {{agent-builder}}
+# Monitor usage and costs for {{agent-builder}}
+
+This page covers how to monitor token usage in {{agent-builder}} and understand how usage translates to costs across different deployment types.
+
+## Token usage
 
 When working with {{agent-builder}}, total token usage typically exceeds the visible conversation text. Because {{agent-builder}} uses an agentic framework, a single user request often triggers multiple model calls to process reasoning steps, run tools, and interpret results.
 
@@ -27,8 +31,21 @@ Each conversation round includes all previous rounds as context. This means toke
 
 For more information on billing and token costs, refer to [Elastic pricing](https://www.elastic.co/pricing).
 
+### Retrieve token consumption with the API
 
-## View token usage in the UI
+```{applies_to}
+stack: preview =9.4
+```
+
+To retrieve per-conversation token usage data for a specific agent across users, use the [token consumption API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-agents-agent-id-consumption). For quick examples, refer to [Token consumption](kibana-api.md#token-consumption).
+
+This API complements the UI by returning token totals, round counts, LLM call counts, and warning indicators without exposing message content or tool results.
+
+:::{note}
+This API provides visibility into token usage but does not support setting token limits or quotas for users or agents.
+:::
+
+### View token usage in the UI
 
 At the end of each round, the total token usage is displayed after the agent response. Input tokens are represented by {icon}`sort_up`, and output tokens by {icon}`sort_down`:
 
@@ -45,3 +62,39 @@ To view the raw JSON response which includes detailed token information, click t
 :width: 900px
 :alt: Screenshot of the JSON raw response modal
 :::
+
+## Execution-based billing
+
+How {{agent-builder}} usage is billed depends on your deployment type.
+
+### {{serverless-full}}
+
+On {{serverless-full}}, {{agent-builder}} usage is billed based on **executions**. An execution is measured by each completed interaction with an AI agent (a chat input and output). More complex interactions, measured by the number of input tokens used, are metered for additional executions. Each unit of 50,000 input tokens counts as one additional execution. If the agent encounters an error and does not return a response, no executions are metered.
+
+Every {{serverless-short}} project includes a free monthly allocation of agent executions, and volume tier discounts apply at higher usage levels. If your usage stays within the free allocation, there is no impact to your bill.
+
+**Example:** In the following conversation round, the agent used 91,613 input tokens. This results in 2 {{agent-builder}} executions (1 base execution + 1 additional execution for the second block of 50,000 input tokens).
+
+:::{image} images/execution-billing-example.png
+:screenshot:
+:width: 800px
+:alt: Agent Builder conversation round showing 91,613 input tokens and 4,096 output tokens beneath the agent response, which maps to 2 billed executions
+:::
+
+When an agent triggers a [workflow](/explore-analyze/workflows.md) as part of its response, the workflow execution is metered separately. Each {{serverless-short}} project also includes a free monthly allocation of workflow executions.
+
+For detailed rates, free allocations, and tier breakpoints, refer to the billing dimensions page for your solution:
+
+* [{{es-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
+* [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
+* [{{elastic-sec}} {{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
+
+For general pricing information, refer to [Elastic pricing](https://www.elastic.co/pricing).
+
+### {{ech}}
+
+{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on {{ech}} are currently under promotional pricing and available at no additional charge.
+
+### Self-managed
+
+{{agent-builder}} and [Workflows](/explore-analyze/workflows.md) on self-managed deployments are currently under promotional pricing and available at no additional charge. {{agent-builder}} is included with the Enterprise license tier.
