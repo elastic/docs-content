@@ -14,6 +14,10 @@ To provide context to your dashboard panels, add **Text** panels that display im
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can also save a Markdown panel to the **Visualize Library** to reuse it across multiple dashboards. For details, refer to [Save and reuse Markdown panels across dashboards](#markdown-library-reuse).
 
+:::{tip}
+**Text** panels work best for context, descriptions, instructions, links to related resources, or images. For section headers and dividers, prefer [collapsible sections](/explore-analyze/dashboards/arrange-panels.md#collapsible-sections) and descriptive chart titles, which give readers structure without taking up grid space the data could use.
+:::
+
 ## Create a Markdown panel [create-markdown-panel]
 
 :::::{applies-switch}

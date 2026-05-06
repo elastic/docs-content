@@ -41,8 +41,16 @@ Before creating a dashboard, ensure you have:
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
-4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
-5. Define the main settings of your dashboard from the **Settings** menu in the application menu.
+4. Plan your dashboard's information hierarchy. A scannable dashboard answers a question at a glance, then lets the reader drill in. As a starting point:
+
+    * Place primary KPIs and key metrics at the top, where viewers see them first.
+    * Put time series and breakdowns in the middle to show trends and distributions.
+    * Place detailed tables and supporting panels at the bottom for users who want to dig deeper.
+
+    Aim to keep the most important content visible without scrolling, and group related panels together so each row tells a coherent story.
+
+5. Organize your dashboard by [organizing the various panels](arrange-panels.md).
+6. Define the main settings of your dashboard from the **Settings** menu in the application menu.
 
     1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{kib}} search bar.
     2. Additional display options allow you unify the look and feel of the dashboard’s panels:
@@ -60,7 +68,7 @@ Before creating a dashboard, ensure you have:
        
 
 
-6. Save the dashboard. When saving, you can configure the following options:
+7. Save the dashboard. When saving, you can configure the following options:
 
     - **Title** and **Description**: Give the dashboard a meaningful name and description so you and others can find it later.
     - **Tags**: Add [tags](../find-and-organize/tags.md) to organize and categorize the dashboard.

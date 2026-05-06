@@ -45,6 +45,13 @@ With Lens, you can create the following visualization types:
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
 
+### Tips for clear visualizations [lens-clarity-tips]
+
+A few small choices make Lens charts much easier to read on a dashboard:
+
+* **Write panel titles that describe the insight, not the field.** Prefer **Requests by response code** or **Slowest hosts (last 24h)** over **count of records** or **host.keyword**. The title should answer the question the chart is meant to answer.
+* **Hide axis titles when the panel title is self-explanatory.** A descriptive panel title makes axis titles redundant and reclaims vertical space for the data. To hide an axis title, open the corresponding **Left axis**, **Bottom axis**, or **Right axis** menu in the editor toolbar and set **Axis title** to **None**.
+
 ## Create visualizations [create-the-visualization-panel]
 
 If you’re unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
