@@ -24,7 +24,7 @@ Create an error count threshold rule to alert you when the number of errors in a
 
 To create error count threshold rules, you need the following:
 
-- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/apm/secure-access-to-applications-ui.md).
+- {applies_to}`stack: ga` The permission for the [APM application](/solutions/observability/apm/secure-access-to-applications-ui.md).
 - {applies_to}`serverless: ga` The **Editor** role or higher is required to create error count threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ### Indices used by this rule
