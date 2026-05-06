@@ -21,9 +21,7 @@ Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive
 
 ## Requirements
 
-To create uptime duration anomaly rules, you need the following:
-
-- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+To create uptime duration anomaly rules, you the permission for the {{uptime-app}}.
 
 ### Indices used by this rule
 
