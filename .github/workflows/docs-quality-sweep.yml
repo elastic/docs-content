@@ -6,12 +6,11 @@ name: Docs quality sweep
 # workflow_call invocations and silently feeds every agent the same
 # prompt. Tracked upstream as github/gh-aw#30338.
 #
-# Kept thin on purpose: only the three knobs anyone actually touches
-# from "run all" are exposed here. To tune per-sweep settings
-# (target-batch-size, max-per-fix-issue, codespell-args,
-# stale-content thresholds, coherence batch size), dispatch the
-# relevant sub-workflow directly — they're each their own GH
-# workflow now.
+# Kept thin on purpose: only the common "run all" knobs are exposed
+# here. To tune per-sweep settings (target-batch-size,
+# max-per-fix-issue, codespell-args, stale-content thresholds,
+# coherence batch size), dispatch the relevant sub-workflow directly;
+# they're each their own GH workflow now.
 
 on:
   workflow_dispatch:
@@ -28,6 +27,14 @@ on:
         description: "Root directory in the source repo (set to '.' for repos where docs live at the root)"
         required: false
         default: "."
+      target-path:
+        description: "Optional docs-root-relative directory to sweep recursively (accepts a leading slash)"
+        required: false
+        default: ""
+      scope-mode:
+        description: "How to scope the matched markdown files: auto, full, or shard"
+        required: false
+        default: "auto"
 
 permissions:
   actions: write   # required to dispatch sibling workflows via `gh workflow run`
@@ -43,6 +50,8 @@ jobs:
           SWEEPS: ${{ inputs.sweeps }}
           SRC: ${{ inputs.source-repo }}
           ROOT: ${{ inputs.docs-root }}
+          TARGET_PATH: ${{ inputs.target-path }}
+          SCOPE_MODE: ${{ inputs.scope-mode }}
         run: |
           set -e
           want() { [[ "$SWEEPS" == "all" || "$SWEEPS" == *"$1"* ]]; }
@@ -53,7 +62,9 @@ jobs:
             echo "→ dispatching docs-${name}-sweep.yml"
             gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
-              -f docs-root="$ROOT"
+              -f docs-root="$ROOT" \
+              -f target-path="$TARGET_PATH" \
+              -f scope-mode="$SCOPE_MODE"
           }
 
           for n in frontmatter applies-to openings style typos staleness coherence; do
