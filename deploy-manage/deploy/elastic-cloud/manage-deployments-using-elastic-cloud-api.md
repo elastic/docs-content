@@ -21,13 +21,13 @@ If you haven’t created an API Key yet, you can follow the [Authentication docu
 
 For common single-purpose changes, use the dedicated deployment operation for the task you want to automate.
 
-- Upgrade a deployment version: [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment)
+- Upgrade a deployment to a newer {{stack}} version: [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment)
 - Get or update component user settings: [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings), [Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
 - Get or update {{es}} tiers: [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers), [Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier)
 - Attach, list, or detach snapshot repository links: [Create deployment snapshot repository link]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository), [List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository), [Remove attached snapshot repository link]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository)
 - Related deployment metadata operations: [Get the tags for a Deployment]({{cloud-apis}}operation/operation-get-deployment-tags), [Set the tags for a Deployment]({{cloud-apis}}operation/operation-set-deployment-tags)
 
-Use [Update Deployment]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
+Use the generic [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
 
 
 ## Listing your deployments [ec_listing_your_deployments]

@@ -57,9 +57,9 @@ For a list of supported settings, refer to the [{{es}} configuration reference](
 
 ### Manage settings with the Cloud API
 
-If you manage deployments through automation, use the dedicated deployment resource user settings endpoints for these single-purpose settings changes:
+If you manage deployments programmatically and only need to change your user settings, then you can use dedicated deployment resource user settings endpoints:
 
-- [Get the user settings of a Deployment resource]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)
+- [Get the user settings of a deployment resource]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)
 - [Update user settings for a deployment resource]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
 
 ### Kibana settings

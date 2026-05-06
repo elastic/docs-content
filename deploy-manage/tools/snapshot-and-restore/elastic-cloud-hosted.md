@@ -66,7 +66,7 @@ To manage repositories in {{kib}}:
 
 You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
-To attach or detach deployment-level snapshot repository links through the Cloud API, use:
+To attach or detach deployment-level snapshot repository links through the Cloud API, use the following endpoints:
 
 - [Create a snapshot repository for an {{es}} resource]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)
 - [List the attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)
