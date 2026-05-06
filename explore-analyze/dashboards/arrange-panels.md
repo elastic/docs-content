@@ -17,6 +17,20 @@ Customize your dashboard layout by arranging panels into logical groups and adju
 
 To organize dashboard panels, you need the **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 
+## Dashboard grid layout [dashboard-grid-layout]
+
+Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
+
+Use these reference widths to keep panels aligned across a row:
+
+| Panel width | Columns |
+| ----------- | ------- |
+| Full        | 48      |
+| Half        | 24      |
+| Third       | 16      |
+| Quarter     | 12      |
+| Sixth       | 8       |
+
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
 stack: ga 9.1
@@ -60,20 +74,6 @@ In the application menu, click **Edit**, then use the following options:
   ::::{tip}
   If you [share](sharing.md) a dashboard while viewing a full screen panel, the generated link will directly open the same panel in full screen mode.
   ::::
-
-### Dashboard grid layout [dashboard-grid-layout]
-
-Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
-
-Use these reference widths to keep panels aligned across a row:
-
-| Panel width | Columns |
-| ----------- | ------- |
-| Full        | 48      |
-| Half        | 24      |
-| Third       | 16      |
-| Quarter     | 12      |
-| Sixth       | 8       |
 
 ### Move and resize panels using a keyboard
 ```{applies_to}
