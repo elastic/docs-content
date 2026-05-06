@@ -43,7 +43,7 @@ To create inventory rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` ,`metricbeat-*` for metrics; `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` and `metricbeat-*` for metrics; `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
 
 ## Inventory conditions [inventory-conditions]
 
