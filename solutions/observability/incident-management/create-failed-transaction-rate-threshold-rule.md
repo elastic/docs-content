@@ -24,7 +24,7 @@ You can create a failed transaction rate threshold rule to alert you when the ra
 
 To create failed transaction rate threshold rules, you need the following:
 
-- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions) and permissions to run machine learning jobs.
+- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ### Indices used by this rule
