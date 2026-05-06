@@ -31,6 +31,17 @@ Use these reference widths to keep panels aligned across a row:
 | Quarter     | 12      |
 | Sixth       | 8       |
 
+### Best practices [arrange-panels-best-practices]
+
+A few habits keep dashboards scannable and consistent as you add panels:
+
+* **Match panel height to content type.** Single-value metrics and KPIs read well in short, compact panels. Time series, breakdowns, and tables benefit from more vertical space so trends and rows are not cramped.
+* **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
+* **Use width to signal importance.** Give primary charts more horizontal room, and group dense KPI metrics into narrower panels along a single row. Use the column reference widths above to keep panels aligned.
+* **Separate primary from secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
+
+For best practices on overall dashboard layout and information hierarchy, refer to [Best practices for dashboard design](create-dashboard.md#create-dashboard-best-practices).
+
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
 stack: ga 9.1
