@@ -1,4 +1,4 @@
-﻿## 2026-05-04 [elastic-release-notes-2026-05-04]
+﻿## May 4, 2026 [elastic-release-notes-2026-05-04]
 ### Features and enhancements [elastic-2026-05-04-features-enhancements]
 * Add index-based range accessors to FileList. [#147892](https://github.com/elastic/elasticsearch/pull/147892)
 * Make Parquet codec factory thread-safe. [#147796](https://github.com/elastic/elasticsearch/pull/147796)
