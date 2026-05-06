@@ -28,7 +28,7 @@ This rule queries the ML anomaly indices and the transaction indices defined in 
 
 ## Create an anomaly rule
 
-You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is abnormal. Anomaly rules can be set at different levels: environment, service, and/or transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
+You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is unusual. Anomaly rules can be set at different levels: environment, service, and transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
 
 :::{image} /solutions/images/serverless-alerts-create-apm-anomaly.png
 :alt: Create rule for APM anomaly alert

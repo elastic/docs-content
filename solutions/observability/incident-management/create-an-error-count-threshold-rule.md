@@ -13,7 +13,7 @@ products:
 
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]
 
-Create an error count threshold rule to alert you when the number of errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name.
+Create an error count threshold rule to alert you when the number of errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and transaction name.
 
 :::{image} /solutions/images/serverless-alerts-create-rule-error-count.png
 :alt: Create rule for error count threshold alert
