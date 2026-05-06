@@ -43,6 +43,15 @@ In some cases, you may get a warning saying "User settings are different across 
 You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API]({{es-apis}}operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.
 ::::
 
+### Manage settings with the Cloud API
+
+If you manage deployments programmatically and only need to change your user settings, you can use dedicated deployment resource user settings endpoints:
+
+- [Get the user settings of a deployment resource]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)
+- [Update user settings for a deployment resource]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
+
+Refer to [Manage deployments using the {{ecloud}} API](manage-deployments-using-elastic-cloud-api.md) for more details and examples.
+
 ## Available settings
 
 ### Elasticsearch settings
@@ -54,13 +63,6 @@ If a feature requires both standard `elasticsearch.yml` settings and [secure set
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
 For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")).
-
-### Manage settings with the Cloud API
-
-If you manage deployments programmatically and only need to change your user settings, then you can use dedicated deployment resource user settings endpoints:
-
-- [Get the user settings of a deployment resource]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)
-- [Update user settings for a deployment resource]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
 
 ### Kibana settings
 

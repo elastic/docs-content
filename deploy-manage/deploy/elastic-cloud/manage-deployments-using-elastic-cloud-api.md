@@ -12,20 +12,22 @@ products:
 
 This page shows examples of managing deployments through the [Deployments API]({{cloud-apis}}group/endpoint-deployments), including listing deployments, getting deployment details, and creating or updating deployments.
 
-For update workflows, the Deployments API also provides dedicated operations for certain use cases, such as upgrades or {{es}} tier sizing changes.
+For update workflows, the deployments API also provides dedicated operations for certain use cases, such as upgrades or {{es}} tier sizing changes.
 
 If you haven’t created an API Key yet, you can follow the [Authentication documentation](../../api-keys/elastic-cloud-api-keys.md).
 
 
 ## Common operations with dedicated endpoints [ec_common_operations_with_dedicated_endpoints]
 
-For common single-purpose changes, use the dedicated deployment operation for the task you want to automate.
+For common update tasks, use the dedicated deployment operation that matches the change you need.
 
-- Upgrade a deployment to a newer {{stack}} version: [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment)
-- Get or update component user settings: [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings), [Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings)
-- Get or update {{es}} tiers: [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers), [Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier)
-- Attach, list, or detach snapshot repository links: [Create deployment snapshot repository link]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository), [List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository), [Remove attached snapshot repository link]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository)
-- Related deployment metadata operations: [Get the tags for a Deployment]({{cloud-apis}}operation/operation-get-deployment-tags), [Set the tags for a Deployment]({{cloud-apis}}operation/operation-set-deployment-tags)
+| Task | Endpoints |
+| --- | --- |
+| Upgrade a deployment to a newer {{stack}} version | [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment) |
+| Get or update resource user settings | [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)<br><br>[Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings) |
+| Get or update {{es}} tiers | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
+| Attach, list, or detach snapshot repository links | [Create deployment snapshot repository link]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Remove attached snapshot repository link]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
+| Related deployment metadata operations | [Get the tags for a deployment]({{cloud-apis}}operation/operation-get-deployment-tags)<br><br>[Set the tags for a deployment]({{cloud-apis}}operation/operation-set-deployment-tags) |
 
 Use the generic [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
 
@@ -305,7 +307,9 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 ## Update a deployment [ec_update_a_deployment]
 
-Use the [Update Deployment]({{cloud-apis}}operation/operation-update-deployment) operation to modify deployment plan settings. This example modifies the {{es}} resource by increasing the amount of memory to 8 GB.
+Use [Update deployment API]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources or settings in one request. For supported specific update tasks, use the dedicated deployment operations listed in [Common operations with dedicated endpoints](#ec_common_operations_with_dedicated_endpoints).
+
+This example modifies the {{es}} resource by increasing the amount of memory to 8 GB.
 
 ```sh
 curl -XPUT \
@@ -368,6 +372,3 @@ A 200 status code means that the configuration change was accepted.
 ::::{tip}
 You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
 ::::
-
-
-For supported single-purpose updates, use the dedicated deployment operations listed in [Common operations with dedicated endpoints](#ec_common_operations_with_dedicated_endpoints).
