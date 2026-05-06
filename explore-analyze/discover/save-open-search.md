@@ -148,11 +148,11 @@ From Discover, save the entire Discover session, including all its tabs, columns
 ::::{applies-switch}
 
 :::{applies-item} {"stack": "ga 9.5", "serverless": "ga"}
-The session is saved to the library. In **Add to dashboard**, choose whether to also add it as a panel on a dashboard:
+When you save a Discover session, it is saved to the library. The **Add to dashboard** option of the dialog lets you choose whether to also add it as a panel on a dashboard:
 
-- **None**: The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
-- **New**: The session is also added as a panel on a new dashboard.
 - **Existing**: The session is also added as a panel on a dashboard you choose.
+- **New**: The session is also added as a panel on a new dashboard.
+- **None**: The session is saved to the library only. To add it as a panel later, [add it from the dashboard library](#add-discover-session-from-library).
 
 If the session has multiple tabs, you can [choose which tab the panel displays](#discover-session-choose-tab) on the dashboard.
 
@@ -210,9 +210,9 @@ When editing a Discover session panel from a dashboard, you can save your change
 4. In the **Save Discover session** dialog, enter a **Title** for the new session, and optionally a **Description** and [**Tags**](../find-and-organize/tags.md).
 5. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the new session as a panel on a dashboard. The session is saved to the library in all cases.
 
-   - **None**: The session is saved to the library only.
-   - **New**: The session is also added as a panel on a new dashboard.
    - **Existing**: The session is also added as a panel on a dashboard you choose.
+   - **New**: The session is also added as a panel on a new dashboard.
+   - **None**: The session is saved to the library only.
 
 6. Select **Save**.
 
