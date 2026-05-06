@@ -37,7 +37,7 @@ Before you start adding panels, plan your dashboard's information hierarchy. A s
 
 Aim to keep the most important content visible without scrolling, and group related panels together so each row tells a coherent story.
 
-For best practices on sizing and arranging individual panels, refer to [Best practices for arranging panels](arrange-panels.md#arrange-panels-best-practices).
+For best practices on sizing and arranging individual panels, refer to [Dashboard grid layout and best practices](arrange-panels.md#dashboard-grid-layout).
 
 ## Create a new dashboard [create-dashboard-steps]
 
