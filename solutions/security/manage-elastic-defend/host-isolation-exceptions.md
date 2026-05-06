@@ -32,7 +32,10 @@ Host isolation exceptions support IPv4 addresses, with optional classless inter-
 
 By default, a host isolation exception is recognized globally across all hosts running {{elastic-defend}}. You can also assign a host isolation exception to a specific {{elastic-defend}} integration policy, affecting only the hosts assigned to that policy.
 
-1. Find **Host isolation exceptions** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Depending on your version, do one of the following:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Host isolation exceptions** tab.
+   * {applies_to}`stack: ga 9.0-9.3` Go to the **Host isolation exceptions** page using the navigation menu or the global search field.
+
 2. Click **Add Host isolation exception**.
 3. Fill in these fields in the **Add Host isolation exception** flyout:
 
@@ -54,7 +57,7 @@ By default, a host isolation exception is recognized globally across all hosts r
 
 ## View and manage host isolation exceptions [manage-host-isolation-exceptions]
 
-The **Host isolation exceptions** page displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
+The **Host isolation exceptions** UI displays all the host isolation exceptions that have been configured for {{elastic-sec}}. To refine the list, use the search bar to search by name, description, or IP address.
 
 :::{image} /solutions/images/security-host-isolation-exceptions-ui.png
 :alt: List of host isolation exceptions

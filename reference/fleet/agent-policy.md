@@ -198,7 +198,7 @@ To add a custom field:
 4. Specify a field name and value.
 
     :::{image} images/agent-policy-custom-field.png
-    :alt: Sceen capture showing the UI to add a custom field and value
+    :alt: Screen capture showing the UI to add a custom field and value
     :screenshot:
     :::
 

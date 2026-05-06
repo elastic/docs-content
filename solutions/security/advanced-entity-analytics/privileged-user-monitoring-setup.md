@@ -1,7 +1,7 @@
 ---
 navigation_title: Set up privileged user monitoring
 applies_to:
-  stack: ga 9.3, preview 9.1
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
     security: ga
 products:
@@ -10,6 +10,11 @@ products:
 ---
 
 # Set up and manage privileged user monitoring
+
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
 
 :::{admonition} Requirements
 To use privileged user monitoring, you must:

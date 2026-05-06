@@ -140,7 +140,7 @@ FROM kibana_sample_data_logs
 
 The aggregation query produced a chart showing event counts by response code. You can save this chart directly to a dashboard:
 
-1. Select {icon}`save` **Save visualization** above the chart. You can also select {icon}`pencil` **Edit visualization** to open the Lens editor inline and customize the chart before saving it.
+1. Select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart. You can also select {icon}`pencil` **Edit visualization** to open the Lens editor inline and customize the chart before saving it.
 2. Enter a title, for example `Events by response code`.
 3. Under **Add to dashboard**, select **New**.
 4. Select **Save and go to dashboard**.
@@ -395,7 +395,7 @@ For more details on sharing options, access control, and managing dashboard owne
 One of {{kib}}'s strengths is how you can move between exploring raw data and visualizing it. Here are the key navigation paths:
 
 **From Discover to a dashboard**
-:   When a classic search or an {{esql}} aggregation produces a chart in Discover, select {icon}`save` **Save visualization** above the chart, then choose **Add to dashboard** to send it to an existing or new dashboard. You can also save the entire Discover session (query, filters, and selected fields) and add it to a dashboard as a table panel.
+:   When a classic search or an {{esql}} aggregation produces a chart in Discover, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart, then choose **Add to dashboard** to send it to an existing or new dashboard. You can also save the entire Discover session (query, filters, and selected fields) directly to a dashboard from the Discover table toolbar, or save it to the library and add it from there.
 
 **From a dashboard panel back to Discover**
 :   Open the context menu on any Lens panel and select **Explore in Discover**. {{kib}} opens Discover with the panel's query and filters already applied, so you can drill into the underlying data.
