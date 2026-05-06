@@ -677,17 +677,17 @@ curl -X POST "${KIBANA_URL}/api/dashboards" \
 
 How each panel maps back to the tutorial:
 
-1. **Median response size** — Lens metric panel from the **Add a metric panel for median response size** sub-step, including the bytes `format`, the trend `background_chart` for the sparkline, and the dynamic `color` thresholds.
-2. **Unique visitors** — `unique_count` of `clientip`, from the **Optional: add more metrics to build a row** suggestion.
-3. **Total requests** — `count` with a secondary metric configured for week-over-week comparison via `time_shift: "1w"` and `compare`. Same source as the unique-visitors suggestion.
-4. **Unique URLs** — `unique_count` of `request.keyword`, also from the optional metrics row.
-5. **Response size over time, per host** — line chart of median `bytes` split by host, from the **Optional: add more time series** suggestion in the line-chart sub-step.
-6. **Log volume over time, per host** — the line chart from the **Add a line chart of log volume over time** sub-step. The reference line at value `80` is a separate `reference_lines` layer in the same panel.
-7. **Events by response code** — the {{esql}} bar chart saved to the dashboard from Discover in [Step 2](#explore-data-in-discover). ES|QL chart layers reference query result columns directly in `x` and `y` (for example, `"x": { "column": "response" }`), instead of the `operation`-based form used by data view layers.
-8. **Requests by file extension** — bar chart from the **Add a bar chart of requests by file extension** sub-step. The `includes` filter with `as_regex: true` and value `.+` mirrors the regex applied during the inline-edit step.
-9. **Traffic distribution by operating system** — pie chart from the **Expand your dashboard** sub-step. Pie panels use `config.type: "pie"` with a `metrics` array and a `group_by` array.
-10. **Requests by geography** — treemap from the same sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
-11. **Last 100 events** — {{esql}} data table from the **Add a table of recent events with {{esql}}** sub-step. Categorical columns go in `rows`, numeric columns go in `metrics`.
+1. **Median response size**: Lens metric panel from the **Add a metric panel for median response size** sub-step, including the bytes `format`, the trend `background_chart` for the sparkline, and the dynamic `color` thresholds.
+2. **Unique visitors**: `unique_count` of `clientip`, from the **Optional: add more metrics to build a row** suggestion.
+3. **Total requests**: `count` with a secondary metric configured for week-over-week comparison via `time_shift: "1w"` and `compare`. Same source as the unique-visitors suggestion.
+4. **Unique URLs**: `unique_count` of `request.keyword`, also from the optional metrics row.
+5. **Response size over time, per host**: line chart of median `bytes` split by host, from the **Optional: add more time series** suggestion in the line-chart sub-step.
+6. **Log volume over time, per host**: the line chart from the **Add a line chart of log volume over time** sub-step. The reference line at value `80` is a separate `reference_lines` layer in the same panel.
+7. **Events by response code**: the {{esql}} bar chart saved to the dashboard from Discover in [Step 2](#explore-data-in-discover). ES|QL chart layers reference query result columns directly in `x` and `y` (for example, `"x": { "column": "response" }`), instead of the `operation`-based form used by data view layers.
+8. **Requests by file extension**: bar chart from the **Add a bar chart of requests by file extension** sub-step. The `includes` filter with `as_regex: true` and value `.+` mirrors the regex applied during the inline-edit step.
+9. **Traffic distribution by operating system**: pie chart from the **Expand your dashboard** sub-step. Pie panels use `config.type: "pie"` with a `metrics` array and a `group_by` array.
+10. **Requests by geography**: treemap from the same sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
+11. **Last 100 events**: {{esql}} data table from the **Add a table of recent events with {{esql}}** sub-step. Categorical columns go in `rows`, numeric columns go in `metrics`.
 
 For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
 ::::
