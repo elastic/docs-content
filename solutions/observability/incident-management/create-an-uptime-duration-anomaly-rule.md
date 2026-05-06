@@ -21,7 +21,7 @@ Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive
 
 ## Requirements
 
-To create uptime duration anomaly rules, you the permission for the {{uptime-app}}.
+To create uptime duration anomaly rules, you need the permission for the {{uptime-app}}.
 
 ### Indices used by this rule
 
