@@ -45,7 +45,7 @@ With Lens, you can create the following visualization types:
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
 
-### Tips for clear visualizations [lens-clarity-tips]
+## Best practices [lens-best-practices]
 
 A few small choices make Lens charts much easier to read on a dashboard:
 
