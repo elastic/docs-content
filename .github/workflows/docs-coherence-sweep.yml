@@ -1,0 +1,48 @@
+name: Docs coherence sweep
+on:
+  workflow_dispatch:
+    inputs:
+      source-repo:
+        description: "Repository to scan (owner/repo). Leave empty to scan this repo."
+        required: false
+        default: ""
+      docs-root:
+        description: "Root directory to sweep"
+        required: false
+        default: "."
+      target-path:
+        description: "Optional docs-root-relative directory to sweep recursively (accepts a leading slash)"
+        required: false
+        default: ""
+      scope-mode:
+        description: "How to scope the matched markdown files: auto, full, or shard"
+        required: false
+        default: "auto"
+      target-batch-size:
+        description: "Pages per rotating slice (smaller — coherence is expensive)"
+        required: false
+        default: "50"
+      max-per-fix-issue:
+        description: "Cap on findings per fix-issue"
+        required: false
+        default: "20"
+
+permissions:
+  actions: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: read
+
+jobs:
+  run:
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-coherence-sweep.lock.yml@v1
+    with:
+      source-repo: ${{ inputs.source-repo }}
+      docs-root: ${{ inputs.docs-root }}
+      target-path: ${{ inputs.target-path }}
+      scope-mode: ${{ inputs.scope-mode }}
+      target-batch-size: ${{ inputs.target-batch-size }}
+      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}

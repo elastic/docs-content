@@ -20,6 +20,7 @@ Select your deployment type below to see what's available and how implementation
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
 | | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) |
 | | Kubernetes network policies | N/A |  |
+| | Published static IPs (ingress and egress) | Managed | [Elastic Cloud Static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) |
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
@@ -36,6 +37,7 @@ Select your deployment type below to see what's available and how implementation
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
 | | Private connectivity and VPC filtering | Configurable | [](/deploy-manage/security/private-connectivity.md) (AWS PrivateLink only) |
 | | Kubernetes network policies | N/A |  |
+| | Published static IPs (ingress and egress) | N/A | Not offered as Elastic-published ranges for {{serverless-short}}. Use [private connectivity](/deploy-manage/security/private-connectivity.md) where supported. |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
@@ -52,6 +54,7 @@ Select your deployment type below to see what's available and how implementation
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
 | | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | N/A |  |
+| | Published static IPs (ingress and egress) | N/A | For allowlists and firewall rules, use IP addresses from load balancers, reverse proxies, VPN gateways, or other edge networking you run in front of ECE. |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
@@ -68,6 +71,7 @@ Select your deployment type below to see what's available and how implementation
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
 | | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | Configurable | [Apply network policies to your Pods](/deploy-manage/security/k8s-network-policies.md) |
+| | Published static IPs (ingress and egress) | N/A | Use your own stable IPs where you need them for allowlists or firewalls, and [Manage HTTP certificates on ECK](/deploy-manage/security/k8s-https-settings.md) so HTTP TLS matches the hostnames and addresses you expose. |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/k8s-secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
@@ -85,6 +89,7 @@ Select your deployment type below to see what's available and how implementation
 | **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
 | | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | N/A |  |
+| | Published static IPs (ingress and egress) | N/A | Use static IPs and firewall rules on hosts and load balancers you operate. |
 | **Data** | Encryption at rest | N/A |  |
 | | Keystore security | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
