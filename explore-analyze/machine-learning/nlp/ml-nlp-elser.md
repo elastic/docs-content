@@ -162,7 +162,7 @@ PUT _ml/trained_models/.elser_model_2
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a deployment ID:
 
 ```console
 POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search
@@ -181,7 +181,7 @@ If you want to deploy ELSER in a restricted or closed network, you have two opti
 
 ### Model artifact files [elser-model-artifacts]
 
-For the cross-platform verison, you need the following files in your system:
+For the cross-platform version, you need the following files in your system:
 
 ```text
 https://ml-models.elastic.co/elser_model_2.metadata.json
@@ -222,7 +222,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/elser_model_2.metadata.json
     ```
 
-    If Nginx runs properly, you see the content of the metdata file of the model.
+    If Nginx runs properly, you see the content of the metadata file of the model.
 
 5. Point your Elasticsearch deployment to the model artifacts on the HTTP server by adding the following line to the `config/elasticsearch.yml` file:
 
@@ -230,7 +230,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
     xpack.ml.model_repository: http://{IP_ADDRESS_OR_HOSTNAME}:8080
     ```
 
-    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specificy the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
+    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specify the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
 
 6. Repeat step 5 on all master-eligible nodes.
 7. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
@@ -343,7 +343,7 @@ While the goal is to create a model that is as performant as possible, retrieval
 
 #### ELSER V2 [_elser_v2]
 
-Overall the optimized V2 model ingested at a max rate of 26 docs/s, compared with the ELSER V1 max rate of 14 docs/s from the ELSER V1 benchamrk, resulting in a 90% increase in throughput.
+Overall the optimized V2 model ingested at a max rate of 26 docs/s, compared with the ELSER V1 max rate of 14 docs/s from the ELSER V1 benchmark, resulting in a 90% increase in throughput.
 
 The performance of virtual cores (that is, when the number of allocations is greater than half of the vCPUs) has increased. Previously, the increase in performance between 8 and 16 allocations was around 7%. It has increased to 17% (ELSER V1 on 8.11) and 20% (for ELSER V2 optimized). These tests were performed on a 16vCPU machine, with all documents containing exactly 256 tokens.
 

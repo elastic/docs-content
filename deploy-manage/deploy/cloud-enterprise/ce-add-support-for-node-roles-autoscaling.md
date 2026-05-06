@@ -253,7 +253,7 @@ The following example is based on the `default` system owned deployment template
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -450,7 +450,7 @@ The existing template contains three {{es}} topology elements and two resources 
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -694,7 +694,7 @@ After adding support for `node_roles`, the resulting deployment template should 
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1018,7 +1018,7 @@ Similar to the `node_roles` example, the following one is also based on the `def
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1348,7 +1348,7 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1673,7 +1673,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
                   {
                     "instance_configuration_id": "kibana",
                     "size": {
-                      "value": 1024,
+                      "value": 2048,
                       "resource": "memory"
                     }
                   }

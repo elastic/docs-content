@@ -255,7 +255,7 @@ The API user must have the `Platform admin` role in order to configure system te
                   {
                     "instance_configuration_id" : "kibana",
                     "size" : {
-                      "value" : 1024,
+                      "value" : 2048,
                       "resource" : "memory"
                     }
                   }

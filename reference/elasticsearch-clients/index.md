@@ -14,7 +14,7 @@ products:
 
 ## Language client overview
 
-|  Language            | Quick install (lastest version)                      | Docs                                            | Source                                                |
+|  Language            | Quick install (latest version)                      | Docs                                            | Source                                                |
 |----------------------|------------------------------------------------------|-------------------------------------------------|-------------------------------------------------------|
 | Python               | `pip install elasticsearch`                          | [docs](elasticsearch-py://reference/index.md)   | [repo](https://github.com/elastic/elasticsearch-py)   |
 | Java                 | ([project configuration](elasticsearch-java://reference/setup/installation.md)) | [docs](elasticsearch-java://reference/index.md) | [repo](https://github.com/elastic/elasticsearch-java) |
