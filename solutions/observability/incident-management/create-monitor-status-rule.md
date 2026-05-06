@@ -25,7 +25,7 @@ To create synthetic monitor status rules, you need the following:
 
 ### Indices used by this rule
 
-This rule queries the index patterns specified in the Uptime settings. The default is `heartbeat-*` (might include `synthetics-*`). You cannot override these indices on a per-rule basis.
+This rule only queries against `synthetics-*` and that is hardcoded.
 
 ## Filters [observability-monitor-status-alert-filters]
 

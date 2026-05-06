@@ -34,7 +34,7 @@ To create Synthetics TLS certificate rules, you need the following:
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
 #### Indices used by this rule
 
-This rule queries the index patterns specified in the Uptime settings. The default is `heartbeat-*` (might include `synthetics-*`). You cannot override these indices on a per-rule basis.
+This rule only queries against `synthetics-*` and that is hardcoded.
 
 
 ### Filters [tls-rule-synthetics-filters]
