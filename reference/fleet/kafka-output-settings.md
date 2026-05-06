@@ -263,11 +263,22 @@ Configure timeout and buffer size values for the Kafka brokers.
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     **Default:** `0`
+    ::::{note}
+    :applies_to: stack: ga 9.4.0+
+
+    This option is deprecated and is no longer necessary.
+    ::::
 
 `channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     **Default:** `256`
+
+    ::::{note}
+    :applies_to: stack: ga 9.4.0+
+
+    This option is deprecated and is no longer necessary.
+    ::::
 
 `client_id` $$$output-kafka-fleet-settings-client_id-setting$$$
 :   (string) The configurable ClientID used for logging, debugging, and auditing purposes.
@@ -317,6 +328,13 @@ Configure timeout and buffer size values for the Kafka brokers.
 
     **`refresh_frequency`**
     :   Metadata refresh interval. Defaults to 10 minutes.
+
+
+     ::::{note}
+     :applies_to: stack: ga 9.4.0+
+
+     The following settings do not apply because the Kafka client has been switched to franz-go.
+     ::::
 
     **`full`**
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.

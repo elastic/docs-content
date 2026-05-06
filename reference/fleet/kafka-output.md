@@ -13,7 +13,7 @@ products:
 # Kafka output [kafka-output]
 
 
-The Kafka output sends events to Apache Kafka.
+The Kafka output sends events to Apache Kafka. Starting in 9.4.0, the Kafka client switches from Sarama to franz-go, so some options are no longer configurable.
 
 **Compatibility:** This output can connect to Kafka version 0.8.2.0 and later. Older versions might work as well, but are not supported.
 
@@ -284,6 +284,12 @@ You can specify these various other options in the `kafka-output` section of the
 
     **Default:** `0`
 
+    ::::{note}
+    :applies_to: stack: ga 9.4.0+
+
+    This option is deprecated and is no longer necessary.
+    ::::
+
 `bulk_max_size` $$$kafka-bulk_max_size-setting$$$
 :   (int) The maximum number of events to bulk in a single Kafka request.
 
@@ -293,6 +299,12 @@ You can specify these various other options in the `kafka-output` section of the
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     **Default:** `256`
+
+    ::::{note}
+    :applies_to: stack: ga 9.4.0+
+
+    This option is deprecated and is no longer necessary.
+    ::::
 
 `codec` $$$kafka-codec-setting$$$
 :   Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.
@@ -339,6 +351,12 @@ You can specify these various other options in the `kafka-output` section of the
 :   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
     `refresh_frequency`
     :   Metadata refresh interval. Defaults to 10 minutes.
+
+     ::::{note}
+     :applies_to: stack: ga 9.4.0+
+
+     The following settings do not apply because the Kafka client has switched to franz-go.
+     ::::
 
     `full`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
