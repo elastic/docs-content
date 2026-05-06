@@ -68,12 +68,26 @@ Compare the data in your panels side-by-side, organize panels by priority, resiz
 In the application menu, click **Edit**, then use the following options:
 
 * To move, hover over the panel, click and hold ![The move control icon](/explore-analyze/images/kibana-move-control.png "The move control icon =4%x4%") and drag to the new location. Your screen scrolls automatically when you drag above or below the visible parts of the dashboard.
-* To resize, click and hold the bottom right corner of the panel and drag to the new dimensions.
+* To resize, click and hold the bottom right corner of the panel and drag to the new dimensions. Panels snap to a [48-column grid](#dashboard-grid-layout).
 * To maximize to full screen, open the panel menu and click **Maximize**.
 
   ::::{tip}
   If you [share](sharing.md) a dashboard while viewing a full screen panel, the generated link will directly open the same panel in full screen mode.
   ::::
+
+### Dashboard grid layout [dashboard-grid-layout]
+
+Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
+
+Use these reference widths to keep panels aligned across a row:
+
+| Panel width | Columns |
+| ----------- | ------- |
+| Full        | 48      |
+| Half        | 24      |
+| Third       | 16      |
+| Quarter     | 12      |
+| Sixth       | 8       |
 
 ### Move and resize panels using a keyboard
 ```{applies_to}
