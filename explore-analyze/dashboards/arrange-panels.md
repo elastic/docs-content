@@ -34,7 +34,7 @@ Use these reference widths to keep panels aligned across a row:
 
 Consider the following best practices to keep dashboards scannable as you add panels:
 
-* **Match panel height to content type.** Single-value metrics and KPIs read well in short, compact panels. Time series, breakdowns, and tables benefit from more vertical space so trends and rows are not cramped.
+* **Match panel shape to the chart.** Single-value metrics and KPIs work in compact panels of any shape. Time series, bar charts with many categories, and tables need horizontal room so axes and columns are not cramped. Pie and donut charts read best in roughly square panels.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
 * **Use width to signal importance.** Give primary charts more horizontal room, and group dense KPI metrics into narrower panels along a single row. Use the column reference widths above to keep panels aligned.
 * **Separate primary from secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
