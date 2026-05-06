@@ -259,6 +259,7 @@ Parse a JSON string into an object.
 - name: parse_payload
   type: data.parseJson
   source: "${{ steps.http_call.output.body }}"
+  with: {}
 ```
 
 :::{tip}
