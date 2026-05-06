@@ -24,9 +24,36 @@ Optional flags::
     --keep        Do not delete the test dashboard after verification.
     --markdown F  Point at a different markdown file (default: the tutorial).
 
-Exit codes
-----------
-``0`` on success. Non-zero on any failure, with the reason printed to stderr.
+Failure modes
+-------------
+The script exits ``0`` on success and non-zero on any failure, with the
+reason printed to stderr. Each failure path is annotated inline below;
+this is the index:
+
+1. **Environment not set** — ``KIBANA_URL`` or ``API_KEY`` missing. Setup
+   problem, not an API problem. Source your ``.env`` and re-run.
+2. **Curl block not found in markdown** — the regex couldn't locate the
+   ``curl`` POST example. The dropdown was removed, restructured, or the
+   code fence was reformatted. Open the markdown and confirm the example
+   is still present in the expected shape.
+3. **Extracted JSON is invalid** — a docs edit broke the JSON inside the
+   curl block (stray comma, unbalanced brace, smart quote). The error
+   includes the line/column reported by the JSON parser.
+4. **Panel count drift in the source** — the payload no longer declares
+   ``EXPECTED_PANEL_COUNT`` panels. Either the example was edited
+   intentionally (update the constant) or panels were lost.
+5. **API rejected the request (HTTP 4xx/5xx)** — the most informative
+   failure mode for schema drift. Kibana's response body is printed
+   verbatim and includes the field path and reason
+   (for example, ``panels.5.config.layers.0.breakdown_by: field 'fields' is required``).
+6. **Non-201 success status** — the request didn't error but didn't
+   return 201 either. Rare; usually a redirect or proxy quirk.
+7. **Panel count mismatch on the server** — POST returned 201 but the
+   stored dashboard has fewer (or more) panels than we sent. Means the
+   API silently dropped a panel rather than rejecting the whole request.
+   The script identifies the missing panels by their ``grid`` position
+   and prints ``type``/``config.type`` for each so you know which
+   visualization to look at.
 """
 
 from __future__ import annotations
@@ -60,6 +87,10 @@ def extract_payload(markdown_path: Path) -> dict:
         re.DOTALL,
     )
     if not match:
+        # Failure mode 2: the regex couldn't find a curl block matching our
+        # expected shape. The page has been restructured, the dropdown was
+        # removed, or the fence/indent changed. Inspect the markdown to
+        # confirm the example still exists.
         raise SystemExit(
             f"Could not find a curl POST example in {markdown_path}. "
             "Has the page structure changed?"
@@ -69,6 +100,9 @@ def extract_payload(markdown_path: Path) -> dict:
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError as exc:
+        # Failure mode 3: a docs edit produced syntactically invalid JSON
+        # inside the curl block. The parser reports the line/column to look
+        # at; also worth checking for smart quotes or trailing commas.
         raise SystemExit(f"Extracted JSON is not valid: {exc}") from exc
 
 
@@ -90,12 +124,18 @@ def post_dashboard(kibana_url: str, api_key: str, payload: dict) -> dict:
             status = resp.status
             response_body = resp.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
+        # Failure mode 5: the API rejected the payload. `detail` is Kibana's
+        # full response body, which for schema rejections includes the field
+        # path and reason. This is the failure that tells you exactly what
+        # the API now expects vs. what the example sends.
         detail = exc.read().decode("utf-8", errors="replace")
         raise SystemExit(
             f"POST /api/dashboards failed with HTTP {exc.code}: {detail}"
         ) from exc
 
     if status != 201:
+        # Failure mode 6: 2xx but not 201. Rare. Usually a proxy or redirect
+        # in front of Kibana; double-check `KIBANA_URL`.
         raise SystemExit(f"Unexpected status code {status}: {response_body}")
     return json.loads(response_body)
 
@@ -136,6 +176,8 @@ def main() -> int:
     kibana_url = os.environ.get("KIBANA_URL")
     api_key = os.environ.get("API_KEY")
     if not kibana_url or not api_key:
+        # Failure mode 1: missing credentials. Source the .env file or
+        # export both variables before re-running.
         raise SystemExit(
             "KIBANA_URL and API_KEY must be set in the environment."
         )
@@ -145,6 +187,9 @@ def main() -> int:
 
     declared_panels = len(payload.get("panels", []))
     if declared_panels != EXPECTED_PANEL_COUNT:
+        # Failure mode 4: the example no longer matches what this script
+        # was designed to verify. If the change is intentional (a panel was
+        # added or removed in the docs), update EXPECTED_PANEL_COUNT above.
         raise SystemExit(
             f"Payload declares {declared_panels} panels but the verifier "
             f"expects {EXPECTED_PANEL_COUNT}. Update EXPECTED_PANEL_COUNT "
@@ -164,11 +209,37 @@ def main() -> int:
     print(f"Created dashboard {dashboard_id} with {created_panels} panels.")
 
     if created_panels != declared_panels:
+        # Failure mode 7: the API accepted the request (201) but stored a
+        # different number of panels than we sent. Identify the missing
+        # panels by their grid position, which is stable across the
+        # request/response roundtrip, so the editor knows which panel
+        # config the API silently dropped.
+        returned_grids = {
+            (p.get("grid", {}).get("x"), p.get("grid", {}).get("y"))
+            for p in response.get("data", {}).get("panels", [])
+        }
+        missing = [
+            p
+            for p in payload.get("panels", [])
+            if (p.get("grid", {}).get("x"), p.get("grid", {}).get("y"))
+            not in returned_grids
+        ]
+        if missing:
+            missing_lines = "\n".join(
+                f"  - grid x={p['grid']['x']}, y={p['grid']['y']} "
+                f"(type={p.get('type')}, "
+                f"config.type={p.get('config', {}).get('type')})"
+                for p in missing
+            )
+            detail = f"\nMissing panels:\n{missing_lines}"
+        else:
+            detail = ""
         if not args.keep:
             delete_dashboard(kibana_url, api_key, dashboard_id)
         raise SystemExit(
             f"Server-created panel count ({created_panels}) does not match "
             f"the request ({declared_panels}). The schema may have changed."
+            f"{detail}"
         )
 
     if args.keep:
