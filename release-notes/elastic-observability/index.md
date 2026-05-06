@@ -94,6 +94,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Migrates the traces panel in Discover to the unified flyout system [#247451]({{kib-pull}}247451).
 * Adds critical path highlighting to the traces view in Discover [#246952]({{kib-pull}}246952).
 * Synchronizes span link and error count badges in the unified Trace Waterfall [#246510]({{kib-pull}}246510).
+* Metrics exploration in Discover is now generally available [#261325]({{kib-pull}}261325).
 * Improves `METRICS_INFO` failure handling in the UI to prevent error states [#260940]({{kib-pull}}260940).
 * Adds tooltip descriptions to metrics in the **View details** flyout [#257053]({{kib-pull}}257053).
 * Supports multi-dimension breakdowns in Lens series layers [#251731]({{kib-pull}}251731).
