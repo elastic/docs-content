@@ -75,7 +75,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-This will update every time the event is modifed when passing through pipeline. If you need to troubleshoot the original event creation only and the field `event.created` is not already being set upstream in your data pipeline you might consider adding this processor example at the beginning of the first Ingest Pipeline:
+This will update every time the event is modified when passing through pipeline. If you need to troubleshoot the original event creation only and the field `event.created` is not already being set upstream in your data pipeline you might consider adding this processor example at the beginning of the first Ingest Pipeline:
 
 ```console
 PUT _ingest/pipeline/my-pipeline
