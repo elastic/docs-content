@@ -48,16 +48,55 @@ Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{eclo
 :::
 
 ## Requirements
-```{applies_to}
-serverless:
-```
 
-The following requirements apply to the project where you want to apply a network security policy:
+The following roles are required to manage network security policies through the API.
+
+::::{applies-switch}
+:::{applies-item} ess:
+
+| Action | Required role |
+| --- | --- |
+| List or get a policy | Any organization member |
+| Create or update a policy | Organization owner<br><br>Admin or Editor on at least one Hosted deployment |
+| Delete a policy | Admin or Editor on at least one Hosted deployment |
+| Associate or disassociate a policy with a specific deployment | Admin or Editor on that deployment |
+
+The {{ech}} traffic filter API uses a different code path than the {{serverless-full}} traffic filter API and is more permissive for delete operations than the {{ecloud}} Console.
+
+For more information about roles and scoping, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
+:::
+:::{applies-item} serverless:
+
+| Action | Required role |
+| --- | --- |
+| List or get a policy | Any organization member |
+| Create or update a policy | Organization owner<br><br>Admin or Editor on at least one project |
+| Delete a policy | Organization owner |
+| Associate or disassociate a policy with a specific project | Admin or Editor on that project |
+
+To delete a policy in {{serverless-full}}, you must be Organization owner, even if the policy is not associated with any project. This is more restrictive than the equivalent {{ech}} API.
+
+For more information about roles and scoping, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
+:::
+:::{applies-item} ece:
+
+| Action | Required role |
+| --- | --- |
+| List or get a ruleset | Any user |
+| Create, update, or delete a ruleset | Platform admin<br><br>Deployment manager |
+| Associate or disassociate a ruleset with a deployment | Platform admin<br><br>Deployment manager |
+
+For more information about {{ece}} roles, refer to [Manage {{ece}} users and roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
+
+:::
+::::
+
+The following requirements also apply to {{serverless-short}} Observability and Security projects where you want to apply a network security policy:
 
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
-
-There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 
