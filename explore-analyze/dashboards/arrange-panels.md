@@ -17,7 +17,7 @@ Customize your dashboard layout by arranging panels into logical groups and adju
 
 To organize dashboard panels, you need the **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 
-## Dashboard grid layout [dashboard-grid-layout]
+## Dashboard grid layout and best practices [dashboard-grid-layout]
 
 Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
 
@@ -31,9 +31,8 @@ Use these reference widths to keep panels aligned across a row:
 | Quarter     | 12      |
 | Sixth       | 8       |
 
-### Best practices [arrange-panels-best-practices]
 
-A few habits keep dashboards scannable and consistent as you add panels:
+Consider the following best practices to keep dashboards scannable as you add panels:
 
 * **Match panel height to content type.** Single-value metrics and KPIs read well in short, compact panels. Time series, breakdowns, and tables benefit from more vertical space so trends and rows are not cramped.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
