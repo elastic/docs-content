@@ -28,7 +28,7 @@ Make sure to use a combination of [Linux operating systems](../../../deploy-mana
 
 While troubleshooting the stability of an {{ece}} host, you may encounter `unhealthy` Docker containers as reported by [`ps`](https://docs.docker.com/reference/cli/docker/container/ls).
 
-System containers reporting unhealthy is infrequent and usually only occurs after an unexpected occurance or issues while performing operating system maintenance. If operating system maintenance does need performed, kindly pivot to our [perform host maintenance guide](../../../deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
+System containers reporting unhealthy is infrequent and usually only occurs after an unexpected occurrence or issues while performing operating system maintenance. If operating system maintenance does need performed, kindly pivot to our [perform host maintenance guide](../../../deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
 
 
 ### Restart deployment instances [ece-troubleshooting-containers-unhealthy-instances]

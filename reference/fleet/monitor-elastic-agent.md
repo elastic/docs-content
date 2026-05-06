@@ -16,6 +16,7 @@ products:
 * [View agent status overview](#view-agent-status)
 * [View details for an agent](#view-agent-details)
 * [View agent activity](#view-agent-activity)
+* [View the configuration delivered to an agent](#view-agent-configuration)
 * [View agent logs](#view-agent-logs)
 * [Change the logging level](#change-logging-level)
 * [Collect {{agent}} diagnostics](#collect-agent-diagnostics)
@@ -115,6 +116,24 @@ On the **Agents** tab, click **Agent activity**. All agent operations are shown,
 :::{image} images/agent-activity.png
 :alt: Agent activity panel
 :screenshot:
+:::
+
+
+## View the configuration delivered to an agent [view-agent-configuration]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Because the configuration sent to an {{agent}} on a [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md) can differ from the primary policy template, {{fleet}} provides an action to view the rendered YAML delivered to a specific agent.
+
+On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics → View agent policy**.
+
+The flyout shows the rendered YAML configuration and the revision of the primary policy the agent uses.
+
+:::{note}
+This action is different from the **Actions → View policy** action on the agent policy itself, which shows the primary policy template before {{fleet}} renders it for each agent.
 :::
 
 

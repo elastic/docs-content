@@ -23,12 +23,18 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 ## Limitations
 
 :::{tip}
-Refer to [Get started](get-started.md#enable-agent-builder) if you need instructions about enabling {{agent-builder}} for your deployment type.
+{{agent-builder}} is automatically enabled on all deployment types as of 9.4. For instructions about enabling {{agent-builder}} in earlier versions, refer to [Get started](get-started.md#access-agent-builder).
 :::
 
-### Cross-cluster search not supported in index search tools
+### Cross-cluster search limitations
 
-Index search tool types do not yet support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
+[Index search tools](tools/index-search-tools.md) do not automatically discover or search indices on remote clusters. However, agents can query remote clusters using [{{esql}}](elasticsearch://reference/query-languages/esql.md) if you explicitly instruct the agent to do so.
+
+To enable cross-cluster queries, add instructions to your [custom agent](custom-agents.md) or include them in your chat prompt. For example, you could instruct the agent to query `remote_cluster:index_name` when searching for data that resides on a remote cluster. To learn more, refer to [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md).
+
+### Cross-project search not supported
+
+{{agent-builder}} does not support [cross-project search](/explore-analyze/cross-project-search.md). Agents can only search data within the current project.
 
 ### A2A streaming not supported
 

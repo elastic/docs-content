@@ -160,7 +160,7 @@ $$$extracted-info$$$ **What information does {{agent}} gather from my cluster?**
     | [_cluster/health]({{es-apis}}operation/operation-cluster-health) | Provides information about the overall health of the cluster | Status (green/yellow/red), number of nodes, number of shards |
     | [_cat/template]({{es-apis}}operation/operation-cat-templates) | Lists all index templates in the cluster | Template names, patterns, and basic settings |
     | [_index_template](/manage-data/data-store/templates.md) | Retrieves composable index templates | Index settings, mappings, and aliases |
-    | [_component_template]({{es-apis}}operation/operation-cluster-get-component-template) | Fetches component templates used for building index templates | Metadata for re-usable mappings and settings |
+    | [_component_template]({{es-apis}}operation/operation-cluster-get-component-template) | Fetches component templates used for building index templates | Metadata for reusable mappings and settings |
     | [_tasks]({{es-apis}}group/endpoint-tasks) | Displays information about currently running tasks on the cluster | Task descriptions, start times, running nodes, and execution details |
     | [_template]({{es-apis}}operation/operation-indices-get-template) | Retrieves legacy index templates | Similar to composable index templates but in older format |
     | [_resolve/index/*]({{es-apis}}operation/operation-indices-resolve-index) | Resolves index, data stream, and alias names to their current definitions | Mappings between names and underlying data objects |
