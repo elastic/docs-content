@@ -305,94 +305,9 @@ With data ingested into `semantic-embeddings`, you can run hybrid search that co
 
 For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, refer to [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 
-The hybrid search request body is the same once documents are indexed. The sections below mirror the mapping examples (**Using EIS** vs **Using ML-nodes**); under each heading, **Query DSL** is the Console-style JSON body and **curl** is the equivalent REST call.
+### Retrievers
 
-### Using EIS
-
-::::{tab-set}
-
-:::{tab-item} Query DSL
-
-This example uses [retrievers syntax](retrievers-overview.md) with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
-
-```console
-GET semantic-embeddings/_search
-{
-  "retriever": {
-    "rrf": {
-      "retrievers": [
-        {
-          "standard": { <1>
-            "query": {
-              "match": {
-                "content": "How to avoid muscle soreness while running?" <2>
-              }
-            }
-          }
-        },
-        {
-          "standard": { <3>
-            "query": {
-              "semantic": {
-                "field": "semantic_text", <4>
-                "query": "How to avoid muscle soreness while running?"
-              }
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-1. The first `standard` retriever represents the traditional lexical search.
-2. Lexical search is performed on the `content` field using the specified phrase.
-3. The second `standard` retriever refers to the semantic search.
-4. The `semantic_text` field is used to perform the semantic search.
-
-:::
-
-:::{tab-item} curl
-
-```bash
-curl -X GET "${ELASTICSEARCH_URL}/semantic-embeddings/_search" \
-     -H "Content-Type: application/json" \
-     -H "Authorization: ApiKey ${API_KEY}" \
-     -d '{
-       "retriever": {
-         "rrf": {
-           "retrievers": [
-             {
-               "standard": {
-                 "query": {
-                   "match": {
-                     "content": "How to avoid muscle soreness while running?"
-                   }
-                 }
-               }
-             },
-             {
-               "standard": {
-                 "query": {
-                   "semantic": {
-                     "field": "semantic_text",
-                     "query": "How to avoid muscle soreness while running?"
-                   }
-                 }
-               }
-             }
-           ]
-         }
-       }
-     }'
-```
-
-:::
-
-::::
-
-### Using ML-nodes
+#### Using EIS
 
 ::::{tab-set}
 
@@ -477,9 +392,92 @@ curl -X GET "${ELASTICSEARCH_URL}/semantic-embeddings/_search" \
 
 ::::
 
-### Hybrid search with {{esql}}
+#### Using ML-nodes
 
-You can express the same hybrid intent in [{{esql}}](elasticsearch://reference/query-languages/esql.md) using the match operator `:` together with the `match()` function.
+::::{tab-set}
+
+:::{tab-item} Query DSL
+
+This example uses [retrievers syntax](retrievers-overview.md) with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md). RRF is a technique that merges the rankings from both semantic and lexical queries, giving more weight to results that rank high in either search. This ensures that the final results are balanced and relevant.
+
+```console
+GET semantic-embeddings/_search
+{
+  "retriever": {
+    "rrf": {
+      "retrievers": [
+        {
+          "standard": { <1>
+            "query": {
+              "match": {
+                "content": "How to avoid muscle soreness while running?" <2>
+              }
+            }
+          }
+        },
+        {
+          "standard": { <3>
+            "query": {
+              "semantic": {
+                "field": "semantic_text", <4>
+                "query": "How to avoid muscle soreness while running?"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+1. The first `standard` retriever represents the traditional lexical search.
+2. Lexical search is performed on the `content` field using the specified phrase.
+3. The second `standard` retriever refers to the semantic search.
+4. The `semantic_text` field is used to perform the semantic search.
+
+:::
+
+:::{tab-item} curl
+
+```bash
+curl -X GET "${ELASTICSEARCH_URL}/semantic-embeddings/_search" \
+     -H "Content-Type: application/json" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -d '{
+       "retriever": {
+         "rrf": {
+           "retrievers": [
+             {
+               "standard": {
+                 "query": {
+                   "match": {
+                     "content": "How to avoid muscle soreness while running?"
+                   }
+                 }
+               }
+             },
+             {
+               "standard": {
+                 "query": {
+                   "semantic": {
+                     "field": "semantic_text",
+                     "query": "How to avoid muscle soreness while running?"
+                   }
+                 }
+               }
+             }
+           ]
+         }
+       }
+     }'
+```
+
+:::
+
+::::
+
+### {{esql}}
 
 ::::{tab-set}
 
