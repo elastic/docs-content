@@ -83,7 +83,7 @@ When running {{agent}} in `unprivileged` mode on Linux systems, consider the fol
 
 ## Agent and dashboard behaviors in unprivileged mode [unprivileged-command-behaviors]
 
-In addition to the [integrations that are not available](#unprivileged-integrations) when {{agent}} is run in unpriviledged mode, certain data streams are also not available. The following tables show, for different operating systems, the impact when the agent does not have full administrative privileges. In most cases the limitations can be mediated by granting permissions for a user or group to the files indicated.
+In addition to the [integrations that are not available](#unprivileged-integrations) when {{agent}} is run in unprivileged mode, certain data streams are also not available. The following tables show, for different operating systems, the impact when the agent does not have full administrative privileges. In most cases the limitations can be mediated by granting permissions for a user or group to the files indicated.
 
 | Action | Behavior in unprivileged mode | Resolution |
 | --- | --- | --- |

@@ -136,14 +136,14 @@ The following describes the structure of an application privileges entry:
 2. The list of the names of the application privileges to grant to this role.
 3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {{security-features}}.
 
-For details about the validation rules for these fields, see the [add application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges).
+For details about the validation rules for these fields, see the [add application privileges API]({{es-apis}}operation/operation-security-put-privileges).
 
-A role may refer to application privileges that do not exist - that is, they have not yet been defined through the add application privileges API (or they were defined, but have since been deleted). In this case, the privilege has no effect, and will not grant any actions in the [has privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges).
+A role may refer to application privileges that do not exist - that is, they have not yet been defined through the add application privileges API (or they were defined, but have since been deleted). In this case, the privilege has no effect, and will not grant any actions in the [has privileges API]({{es-apis}}operation/operation-security-has-privileges).
 
 
 ## Remote indices privileges [roles-remote-indices-priv]
 
-For [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key)'s indices privileges.
+For [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key)'s indices privileges.
 
 ::::{note}
 Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
@@ -190,7 +190,7 @@ The following describes the structure of a remote cluster permissions entry:
 ```
 
 1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md). This field is required.
-2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
+2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The [builtin privileges API]({{es-apis}}operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 
 ## Example [_example_9]

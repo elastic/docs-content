@@ -1,0 +1,43 @@
+name: Docs staleness sweep
+on:
+  workflow_dispatch:
+    inputs:
+      source-repo:
+        description: "Repository to scan (owner/repo). Leave empty to scan this repo."
+        required: false
+        default: ""
+      docs-root:
+        description: "Root directory to sweep"
+        required: false
+        default: "."
+      target-batch-size:
+        description: "Approximate pages per rotating slice"
+        required: false
+        default: "100"
+      max-per-fix-issue:
+        description: "Cap on findings per fix-issue"
+        required: false
+        default: "30"
+      stale-content-months:
+        description: "Flag pages whose latest commit is older than this many months"
+        required: false
+        default: "24"
+
+permissions:
+  actions: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: read
+
+jobs:
+  run:
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-staleness-sweep.lock.yml@v1
+    with:
+      source-repo: ${{ inputs.source-repo }}
+      docs-root: ${{ inputs.docs-root }}
+      target-batch-size: ${{ inputs.target-batch-size }}
+      max-per-fix-issue: ${{ inputs.max-per-fix-issue }}
+      stale-content-months: ${{ inputs.stale-content-months }}
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}

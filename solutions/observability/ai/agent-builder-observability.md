@@ -16,8 +16,8 @@ description: Learn how Elastic Agent Builder works with Elastic Observability
 Agent Builder integrates tightly with {{observability}}, shipping with built-in agents and tools designed for observability use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more.
 
 :::{note}
-:applies_to: {stack: preview =9.3}
-In {{stack}} version 9.3, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to use Agent Builder in {{observability}}.
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{agent-builder}} is the default chat experience in {{observability}}.
+- {applies_to}`stack: preview =9.3` In {{stack}} version 9.3, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to use Agent Builder in {{observability}}.
 :::
 
 ## Recommended models
