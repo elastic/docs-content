@@ -85,9 +85,9 @@ Outbound traffic (IPv6 egress) originates directly from ECE hosts and is routed 
 
 To create a new environment using this tutorial, you need:
 
-- An {{aws}} account with permissions to create VPCs, subnets, EC2 instances, NLBs, ALBs, and ACM certificates
-- A RHEL 8 or RHEL 9 AMI (official Red Hat AMI, not marketplace variants)
-- An instance type that meets the [ECE requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md), with at least 32 GB of RAM for single-node testing
+- An {{aws}} account with permissions to create VPCs, subnets, EC2 instances, NLBs, ALBs, and ACM certificates.
+- A RHEL 8 or RHEL 9 AMI (official Red Hat AMI, not marketplace variants).
+- An instance type that meets the [ECE requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md), with at least 32 GB of RAM for single-node testing.
 
 ::::{note}
 If you are enabling IPv6 in an existing ECE environment, refer to [Appendix: Integrate IPv6 in existing ECE installations](#existing-installations-summary) for the corresponding requirements.
@@ -106,7 +106,7 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
 
 2. **Subnets** → Select each subnet → **Actions** → **Edit IPv6 CIDRs**
    - Click **Add IPv6 CIDR**
-   - Enter a unique subnet suffix (e.g., `00`, `01`, `02`)
+   - Enter a unique subnet suffix (for example, `00`, `01`, `02`)
    - This creates a `/64` IPv6 subnet from your VPC's `/56` block
 
 3. **Subnets** → Select each subnet → **Actions** → **Edit subnet settings**
@@ -127,7 +127,7 @@ Follow these steps in the {{aws}} console to create a new VPC or configure an ex
 
 ## Step 2: Set up EC2 instances [step-vm-launch]
 
-Create one or more RHEL instances to host ECE. Skip this step if ECE is already installed.
+Create one or more RHEL instances to host ECE:
 
 ::::{note}
 This tutorial uses a single-host deployment for simplicity and testing purposes. For production environments, you should deploy multiple hosts across availability zones to ensure high availability and resilience. Refer to [Identify the deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) for guidance on recommended architectures.
@@ -141,7 +141,7 @@ This tutorial uses a single-host deployment for simplicity and testing purposes.
    - Avoid marketplace variants, SQL Server editions, or third-party repackaged images
 
 3. **Instance type**:
-   - Select an instance with at least 32GB RAM (e.g., `r5.xlarge`, `m5.2xlarge`)
+   - Select an instance with at least 32GB RAM (for example, `r5.xlarge`, `m5.2xlarge`)
    - `t3` instances are insufficient for ECE
 
 4. **Key pair**: Select or create a key pair for SSH access
@@ -177,42 +177,45 @@ ping6 -c 3 ipv6.google.com
 
 Prepare the host according to the official ECE documentation: [Prepare your environment](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md).
 
+% Pending to add the prepare OS docs include IPv6 support for CRIs.
 ::::{note}
 During host preparations, ensure to configure Podman or Docker with IPv6 networking enabled if you require IPv6 egress.
 ::::
 
 ### Install ECE
 
-Install ECE with Proxy Protocol v2 support enabled. This is required for the NLB to propagate the client IP addresses.
+% TBD refine a bit, first host vs multiple-nodes, link to official instructions, this is an example with proxy support.
 
-```bash
-sudo su - elastic
+1. Install ECE with Proxy Protocol v2 support enabled. This is required for the NLB to propagate the client IP addresses.
 
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install \
-  --podman \ <1>
-  --availability-zone MY_ZONE-1 \
-  --proxy-protocol-version 2 \
-  --proxy-protocol-lenient \
-  --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"},"zookeeper":{"xms":"4G","xmx":"4G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"4G","xmx":"4G"}}'
-```
-1. For Docker installations, omit the `--podman` flag. Refer to [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md) for Docker-specific instructions.
+    ```bash
+    sudo su - elastic
 
-| Flag | Description |
-|------|-------------|
-| `--proxy-protocol-version 2` | Configures the ECE proxy to parse Proxy Protocol v2 headers. Required for client IP propagation. |
-| `--proxy-protocol-lenient` | Allows connections with or without Proxy Protocol headers. Required because NLB health checks do not send Proxy Protocol headers. |
+    bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install \
+      --podman \ <1>
+      --availability-zone MY_ZONE-1 \
+      --proxy-protocol-version 2 \
+      --proxy-protocol-lenient \
+      --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"},"zookeeper":{"xms":"4G","xmx":"4G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"4G","xmx":"4G"}}'
+    ```
+    1. For Docker installations, omit the `--podman` flag. Refer to [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md) for Docker-specific instructions.
 
-::::{important}
-Use these flags on **all nodes** with the `proxy` role.
-::::
+    | Flag | Description |
+    |------|-------------|
+    | `--proxy-protocol-version 2` | Configures the ECE proxy to parse Proxy Protocol v2 headers. Required for client IP propagation. |
+    | `--proxy-protocol-lenient` | Allows connections with or without Proxy Protocol headers. Required because NLB health checks do not send Proxy Protocol headers. |
 
-::::{note}
-The `--memory-settings` shown in the example are for **example/testing purposes only**. For production deployments, refer to [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for recommended memory settings based on your deployment size (small/medium/large).
+    ::::{important}
+    Use these flags on **all nodes** with the `proxy` role.
+    ::::
 
-For complete installation options, refer to [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md).
-::::
+    ::::{note}
+    The `--memory-settings` shown in the example are for **example/testing purposes only**. For production deployments, refer to [ECE installation procedures](/deploy-manage/deploy/cloud-enterprise/install-ece-procedures.md) for recommended memory settings based on your deployment size (small/medium/large).
 
-After installation completes on the first node, note the Admin Console URL and credentials displayed.
+    For complete installation options, refer to [Install ECE](/deploy-manage/deploy/cloud-enterprise/install.md).
+    ::::
+
+1. After installation completes on the first node, note the Admin Console URL and credentials displayed.
 
 ## Step 4: Create the proxy NLB for deployment traffic [step-nlb]
 
@@ -237,12 +240,14 @@ This configuration follows the requirements described in the [ECE load balancers
     - **VPC**: Select your dual-stack VPC
 
 3. **Health checks**:
-    - **Health check protocol**: TCP
+    - **Health check protocol**: HTTPS
+    - **Health check path**: `/_health`
     - **Health check port**: Traffic port
     - **Healthy threshold**: 3
     - **Unhealthy threshold**: 3
     - **Interval**: 30 seconds
     - **Timeout**: 10 seconds
+    - **Success codes**: `200`
 
 4. Click **Next**
 
@@ -287,17 +292,19 @@ This configuration follows the requirements described in the [ECE load balancers
 
 ### Verify Proxy NLB
 
+% TBD: refine a bit to make this prettier
+
 ```bash
 NLB_DNS="your-nlb-dns-name.elb.region.amazonaws.com"
 
 # Test IPv4
-curl -4 -k -s -o /dev/null -w "IPv4: %{http_code}\n" "https://${NLB_DNS}/"
+curl -4 -k -s -o /dev/null -w "IPv4: %{http_code}\n" "https://${NLB_DNS}/_health"
 
 # Test IPv6
-curl -6 -k -s -o /dev/null -w "IPv6: %{http_code}\n" "https://${NLB_DNS}/"
+curl -6 -k -s -o /dev/null -w "IPv6: %{http_code}\n" "https://${NLB_DNS}/_health"
 ```
 
-Both should return `200` or `401` (authentication required).
+Both should return `200`.
 
 ## Step 5: Create the control plane ALB - Optional [step-alb]
 
@@ -328,7 +335,7 @@ ALBs require subnets in at least two availability zones. If you only have one su
 3. Click **Create subnet**
 4. **Add IPv6 to the new subnet:**
    - Select the new subnet → **Actions → Edit IPv6 CIDRs**
-   - Add an IPv6 CIDR with a unique suffix (e.g., `2a05:d018:xxx:xx20::/64`)
+   - Add an IPv6 CIDR with a unique suffix (for example, `2a05:d018:xxx:xx20::/64`)
 5. **Associate with route table:**
    - Go to **VPC → Route Tables** → select your route table
    - **Subnet associations → Edit** → Add the new subnet
@@ -490,34 +497,135 @@ The following requirements apply when integrating IPv6 into an existing ECE inst
 | **Security Groups** | Inbound rules allowing traffic on ports `443`, `9243`, and `12443` for both `0.0.0.0/0` and `::/0` |
 | **EC2 instances** | ECE hosts running in dual-stack subnets (required only for IPv6 egress) |
 
+:::{note}
+If you need to adjust VPC, subnets, route tables, or security group settings before enabling IPv6 ingress or egress in an existing environment, you can use [Step 1: Set up {{aws}} infrastructure](#step-vpc) as reference.
+:::
+
 ### IPv6 ingress in existing IPv4 environments
 
 To enable IPv6 ingress in an existing IPv4 ECE environment, complete the following actions:
 
-1. Configure IPv6 at the infrastructure level (VPC, subnets, routes, and security groups) so you can create dual-stack load balancers on {{aws}}. Refer to [Step 1: Set up {{aws}} infrastructure](#step-vpc).
-2. Configure ECE proxies to parse Proxy Protocol v2 headers. This is required for client IP propagation. Refer to [Add Proxy Protocol v2 support to an existing installation](#reconfigure-proxies).
-3. Configure a dual-stack NLB for deployment traffic ({{es}}/{{kib}}). Refer to [Step 4: Create the proxy NLB for deployment traffic](#step-nlb).
-4. Optionally, configure a dual-stack ALB for admin console UI traffic. Refer to [Step 5: Create the control plane ALB - Optional](#step-alb).
+1. Configure ECE proxies to parse Proxy Protocol v2 headers. This is required for client IP propagation. Refer to [Add Proxy Protocol v2 support to an existing installation](#reconfigure-proxies).
+1. Configure a dual-stack NLB for deployment traffic ({{es}}/{{kib}}). Refer to [Step 4: Create the proxy NLB for deployment traffic](#step-nlb).
+1. Optionally, configure a dual-stack ALB for admin console UI traffic. Refer to [Step 5: Create the control plane ALB - Optional](#step-alb).
 
 ### IPv6 egress in existing IPv4 environments
 
 To support IPv6 egress in an existing IPv4 ECE environment, you must update both host networking and container networking on every ECE host:
 
-1. Reconfigure host network interfaces so each ECE host has working dual-stack connectivity.
-2. Reconfigure Podman or Docker bridge/network settings to enable IPv6 for container traffic.
+1. Assign IPv6 addresses to each ECE EC2 instance in {{aws}}.
+2. Reconfigure host network interfaces so each ECE host has working dual-stack connectivity.
+3. Reconfigure Podman or Docker bridge/network settings to enable IPv6 for container traffic.
 
+:::{important}
 Because these are host-level networking changes, the recommended approach is to reinstall or rebuild ECE hosts one by one, following the official host maintenance procedure: [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md).
 
 This rolling approach reduces platform risk and helps preserve service availability while introducing IPv6 egress support.
+:::
 
 After completing these changes, refer to [Step 6: Verify IPv6 egress from containers](#step-ipv6-egress) to validate outbound IPv6 connectivity from ECE workloads.
+
+#### Assign IPv6 addresses to existing EC2 instances
+
+Existing EC2 instances do not automatically receive IPv6 addresses when you [enable IPv6 on their subnet](#step-vpc). You must assign them manually.
+
+For each ECE host:
+
+1. Go to **EC2** → **Instances** and select your instance.
+2. Go to **Actions** → **Networking** → **Manage IP addresses**.
+3. Expand the network interface section.
+4. Under **IPv6 addresses**, select **Assign new IP address**.
+5. Select **Assign** to auto-assign an IPv6 address from your subnet range.
+6. Select **Save**.
+
+To enable auto-assignment for new instances:
+
+1. Go to **VPC** → **Subnets** and select the subnet.
+2. Go to **Actions** → **Edit subnet settings**.
+3. Enable **Auto-assign IPv6 address**.
+
+#### Configure NetworkManager for IPv6 on RHEL 8/9
+
+After assigning IPv6 addresses in {{aws}}, RHEL might not automatically configure IPv6 on the active interface. Configure NetworkManager explicitly:
+
+```bash
+# List connections and identify the active one
+nmcli con show
+
+# Example for a connection named "System eth0"
+sudo nmcli con mod "System eth0" ipv6.method auto
+
+# Restart the connection
+sudo nmcli con down "System eth0" && sudo nmcli con up "System eth0"
+
+# Verify host IPv6 connectivity
+ip -6 addr show scope global
+ping6 -c 3 ipv6.google.com
+```
+
+If `ping6` returns `Network unreachable`, verify:
+
+- Route tables include `::/0` to the Internet Gateway.
+- NetworkManager uses `ipv6.method auto` on the active connection.
+
+#### Configure Podman dual-stack network for IPv6 egress
+
+Use the following example to configure a dual-stack Podman network and attach running containers:
+
+```bash
+# Create a dual-stack network
+sudo podman network create \
+  --subnet 10.89.0.0/24 \
+  --subnet fd00:10:89::/64 \
+  --ipv6 \
+  ece-network
+
+# Set as default for future containers
+sudo tee -a /etc/containers/containers.conf > /dev/null <<'EOF'
+[network]
+default_network = "ece-network"
+EOF
+
+# Connect existing running containers
+for container in $(sudo podman ps -q); do
+  sudo podman network connect ece-network "$container" 2>/dev/null || true
+done
+```
+
+:::::{note}
+`podman network connect` enables IPv6 egress for existing containers. For ingress traffic on exposed ports, iptables or runtime network state can still require container recreation for changes to fully apply.
+
+If you keep ingress on the existing IPv4 backend path (dual-stack NLB/ALB forwarding to IPv4 targets), this ingress caveat is typically not impactful.
+:::::
+
+Verify egress from one container:
+
+```bash
+sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+```
+
+#### Configure Docker for IPv6 egress
+
+If your ECE hosts use Docker, configure IPv6 in `/etc/docker/daemon.json`:
+
+```json
+{
+  "ip6tables": true,
+  "experimental": true,
+  "ipv6": true,
+  "fixed-cidr-v6": "fd3f:25ad:fef0::/64"
+}
+```
+
+After applying the configuration, restart Docker and verify container IPv6 connectivity using the same `curl -6` check.
 
 ### Add Proxy Protocol v2 support to an existing installation [reconfigure-proxies]
 
 The recommended and lowest-risk way to enable Proxy Protocol v2 in ECE proxies is to reinstall proxy hosts one by one, using the Proxy Protocol flags described in [Step 3: Prepare the Host and Install ECE](#step-install-ece), and following the host replacement workflow in [Perform ECE hosts maintenance](/deploy-manage/maintenance/ece/perform-ece-hosts-maintenance.md#ece-perform-host-maintenance-delete-runner).
 
+% TBD: Link to KB article when it's done
 Alternatively, you can reconfigure the proxy containers through the Container Sets API. This is an advanced procedure.
-If you plan to follow this path, contact [Elastic Support](/troubleshoot/index.md#contact-us) for guidance.
+If you plan to follow this path, contact [Elastic Support](/troubleshoot/index.md#contact-us) for guidance. (update: link to KB article pending)
 
 #### Verify ECE proxies configuration
 
@@ -534,6 +642,46 @@ Expected output includes both variables:
 CLOUD_HTTP_PROXY_PROTO_VERSION=2
 CLOUD_HTTP_PROXY_PROTO_LENIENT=true
 ```
+
+## Final verification
+
+After completing your ingress and optional egress configuration, validate end-to-end behavior:
+
+1. In the {{aws}} console, check **EC2** → **Target Groups** → **Targets** and confirm all registered targets are healthy.
+2. Test NLB health endpoint over IPv4 and IPv6:
+
+    ```bash
+    NLB_DNS="your-nlb-dns-name.elb.region.amazonaws.com"
+
+    # Test IPv4
+    curl -4 -k -s -o /dev/null -w "IPv4: %{http_code}\n" "https://${NLB_DNS}/_health"
+
+    # Test IPv6
+    curl -6 -k -s -o /dev/null -w "IPv6: %{http_code}\n" "https://${NLB_DNS}/_health"
+    ```
+
+Both checks should return `200`.
+
+3. Verify client IP propagation from proxy logs after a test request:
+
+    ```bash
+    PROXY_CONTAINER=$(sudo podman ps --format '{{.Names}}' | grep frc-proxies-proxyv2 | awk 'NR==1')
+    sudo podman exec "$PROXY_CONTAINER" tail -10 /app/logs/proxy.requests.log | grep client_ip
+    ```
+
+    The `client_ip` field should show the real client address (IPv4 or IPv6), not an internal bridge address such as `10.89.0.1`.
+
+4. If you enabled IPv6 egress, verify outbound IPv6 connectivity from both the host and a container:
+
+    ```bash
+    # Host egress check
+    ping6 -c 3 ipv6.google.com
+
+    # Container egress check (replace <container_id>)
+    sudo podman exec <container_id> curl -6 -s -o /dev/null -w "%{http_code}\n" https://ipv6.google.com
+    ```
+
+    The host test should resolve and receive replies. The container test should return `200`.
 
 ## Related Documentation
 
