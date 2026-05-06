@@ -22,7 +22,7 @@ function getLinePattern(key) {
   const { label, marker } = WORKFLOW_CONFIG[key];
 
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)} ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
     'm'
   );
 }
@@ -42,6 +42,7 @@ function parseWorkflowState(body, key) {
 
   return {
     selected: match[1] === 'x',
+    statusText: match[2] || null,
   };
 }
 
@@ -55,15 +56,53 @@ function parseMenuState(body) {
   return state;
 }
 
-function buildWorkflowLine(key, workflowState) {
-  const { label, marker } = WORKFLOW_CONFIG[key];
-  const selected = workflowState?.selected ? 'x' : ' ';
+function getStatusText(workflowState, workflowStatus) {
+  if (workflowStatus?.statusText) {
+    return workflowStatus.statusText;
+  }
 
-  return `- [${selected}] ${label} ${marker}`;
+  const progressLink = workflowStatus?.detailsUrl
+    ? ` [View progress](${workflowStatus.detailsUrl}).`
+    : '';
+
+  if (workflowStatus?.status === 'in_progress' || workflowStatus?.status === 'queued') {
+    return `Status: running.${progressLink}`;
+  }
+
+  if (workflowStatus?.status === 'completed') {
+    if (workflowStatus.conclusion === 'success') {
+      return `Status: completed.${progressLink}`;
+    }
+
+    if (workflowStatus.conclusion === 'cancelled') {
+      return `Status: cancelled.${progressLink}`;
+    }
+
+    return `Status: needs attention.${progressLink}`;
+  }
+
+  if (workflowState?.statusText) {
+    return workflowState.statusText;
+  }
+
+  if (workflowState?.selected) {
+    return 'Status: queued.';
+  }
+
+  return 'Status: not started.';
 }
 
-function buildMenuBody(state) {
+function buildWorkflowLine(key, workflowState, workflowStatus) {
+  const { label, marker } = WORKFLOW_CONFIG[key];
+  const selected = workflowState?.selected ? 'x' : ' ';
+  const statusText = getStatusText(workflowState, workflowStatus);
+
+  return `- [${selected}] ${label} ${statusText} ${marker}`;
+}
+
+function buildMenuBody(state, statuses) {
   const normalizedState = state || {};
+  const normalizedStatuses = statuses || {};
 
   return [
     MENU_START,
@@ -71,12 +110,76 @@ function buildMenuBody(state) {
     '',
     'Check one box to run an AI workflow for this issue.',
     '',
-    ...WORKFLOW_ORDER.map((key) => buildWorkflowLine(key, normalizedState[key])),
+    ...WORKFLOW_ORDER.map((key) =>
+      buildWorkflowLine(key, normalizedState[key], normalizedStatuses[key])
+    ),
     '',
     'Powered by GitHub Agentic Workflows and [docs-actions](https://github.com/elastic/docs-actions). For more information, reach out to the docs team.',
     '',
     MENU_END,
   ].join('\n');
+}
+
+async function findMenuComment(github, context, issueNumber) {
+  const { data: comments } = await github.rest.issues.listComments({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: issueNumber,
+    per_page: 100,
+  });
+
+  return comments.find((comment) =>
+    comment.user?.login === 'github-actions[bot]' &&
+    isMenuComment(comment.body)
+  );
+}
+
+function buildWorkflowStatuses(existingState, statusOverrides) {
+  return Object.fromEntries(
+    WORKFLOW_ORDER.map((key) => [
+      key,
+      statusOverrides?.[key] || {
+        statusText: existingState?.[key]?.statusText,
+      },
+    ])
+  );
+}
+
+async function upsertMenuComment({
+  core,
+  createIfMissing = true,
+  github,
+  context,
+  issueNumber,
+  statusOverrides,
+}) {
+  const existingComment = await findMenuComment(github, context, issueNumber);
+
+  if (!existingComment && !createIfMissing) {
+    core?.warning('AI menu comment was not found.');
+    return;
+  }
+
+  const existingState = parseMenuState(existingComment?.body || '');
+  const statuses = buildWorkflowStatuses(existingState, statusOverrides);
+  const body = buildMenuBody(existingState, statuses);
+
+  if (existingComment) {
+    await github.rest.issues.updateComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      comment_id: existingComment.id,
+      body,
+    });
+    return;
+  }
+
+  await github.rest.issues.createComment({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: issueNumber,
+    body,
+  });
 }
 
 module.exports = {
@@ -86,4 +189,5 @@ module.exports = {
   isMenuComment,
   parseMenuState,
   buildMenuBody,
+  upsertMenuComment,
 };
