@@ -384,7 +384,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 1. In the application menu, select **Save**.
 2. Enter a title and a description for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to choose where to save the session. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
 5. Select **Save**.
 
 

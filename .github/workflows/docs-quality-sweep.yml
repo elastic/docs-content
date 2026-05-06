@@ -4,10 +4,13 @@ name: Docs quality sweep
 # v0.71.x compiles a single artifact prefix per orchestrator run
 # (github.workflow + github.run_id), which collides across reusable
 # workflow_call invocations and silently feeds every agent the same
-# prompt. Tracked upstream as github/gh-aw#30338. By dispatching each
-# sweep separately, every sub-run gets its own github.run_id and
-# github.workflow, so artifact names are unique and prompts don't
-# cross-contaminate.
+# prompt. Tracked upstream as github/gh-aw#30338.
+#
+# Kept thin on purpose: only the common "run all" knobs are exposed
+# here. To tune per-sweep settings (target-batch-size,
+# max-per-fix-issue, codespell-args, stale-content thresholds,
+# coherence batch size), dispatch the relevant sub-workflow directly;
+# they're each their own GH workflow now.
 
 on:
   workflow_dispatch:
@@ -24,26 +27,14 @@ on:
         description: "Root directory in the source repo (set to '.' for repos where docs live at the root)"
         required: false
         default: "."
-      target-batch-size:
-        description: "Approximate pages per rotating slice (Tier 2 sweeps)"
-        required: false
-        default: "100"
-      max-per-fix-issue:
-        description: "Cap on findings per fix-issue"
-        required: false
-        default: "20"
-      typos-codespell-args:
-        description: "Extra codespell flags for the typos sweep"
+      target-path:
+        description: "Optional docs-root-relative directory to sweep recursively (accepts a leading slash)"
         required: false
         default: ""
-      staleness-content-months:
-        description: "Stale-content threshold (months) for the staleness sweep"
+      scope-mode:
+        description: "How to scope the matched markdown files: auto, full, or shard"
         required: false
-        default: "24"
-      coherence-batch-size:
-        description: "Override target-batch-size for the coherence sweep"
-        required: false
-        default: "50"
+        default: "auto"
 
 permissions:
   actions: write   # required to dispatch sibling workflows via `gh workflow run`
@@ -59,67 +50,27 @@ jobs:
           SWEEPS: ${{ inputs.sweeps }}
           SRC: ${{ inputs.source-repo }}
           ROOT: ${{ inputs.docs-root }}
-          BATCH: ${{ inputs.target-batch-size }}
-          MAX: ${{ inputs.max-per-fix-issue }}
-          TYPOS_ARGS: ${{ inputs.typos-codespell-args }}
-          STALE_MONTHS: ${{ inputs.staleness-content-months }}
-          COHER_BATCH: ${{ inputs.coherence-batch-size }}
+          TARGET_PATH: ${{ inputs.target-path }}
+          SCOPE_MODE: ${{ inputs.scope-mode }}
         run: |
           set -e
           want() { [[ "$SWEEPS" == "all" || "$SWEEPS" == *"$1"* ]]; }
 
-          fire_with_default_inputs() {
+          fire() {
             local name="$1"
             want "$name" || { echo "  skip $name (not in sweeps='$SWEEPS')"; return; }
             echo "→ dispatching docs-${name}-sweep.yml"
             gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
-              -f target-batch-size="$BATCH" \
-              -f max-per-fix-issue="$MAX"
+              -f target-path="$TARGET_PATH" \
+              -f scope-mode="$SCOPE_MODE"
           }
 
-          # frontmatter, applies-to, openings, style — same input shape
-          for n in frontmatter applies-to openings style; do
-            fire_with_default_inputs "$n"
+          for n in frontmatter applies-to openings style typos staleness coherence; do
+            fire "$n"
           done
-
-          # typos has its own input shape (no rotation, plus codespell-args)
-          if want typos; then
-            echo "→ dispatching docs-typos-sweep.yml"
-            gh workflow run docs-typos-sweep.yml --repo "${{ github.repository }}" \
-              -f source-repo="$SRC" \
-              -f docs-root="$ROOT" \
-              -f max-per-fix-issue="$MAX" \
-              -f codespell-args="$TYPOS_ARGS"
-          else
-            echo "  skip typos (not in sweeps='$SWEEPS')"
-          fi
-
-          # staleness has its own thresholds
-          if want staleness; then
-            echo "→ dispatching docs-staleness-sweep.yml"
-            gh workflow run docs-staleness-sweep.yml --repo "${{ github.repository }}" \
-              -f source-repo="$SRC" \
-              -f docs-root="$ROOT" \
-              -f target-batch-size="$BATCH" \
-              -f max-per-fix-issue="$MAX" \
-              -f stale-content-months="$STALE_MONTHS"
-          else
-            echo "  skip staleness (not in sweeps='$SWEEPS')"
-          fi
-
-          # coherence overrides target-batch-size
-          if want coherence; then
-            echo "→ dispatching docs-coherence-sweep.yml"
-            gh workflow run docs-coherence-sweep.yml --repo "${{ github.repository }}" \
-              -f source-repo="$SRC" \
-              -f docs-root="$ROOT" \
-              -f target-batch-size="$COHER_BATCH" \
-              -f max-per-fix-issue="$MAX"
-          else
-            echo "  skip coherence (not in sweeps='$SWEEPS')"
-          fi
 
           echo ""
           echo "Each dispatched sweep runs as its own workflow run — see the Actions tab."
+          echo "To tune per-sweep settings (batch size, caps, thresholds), dispatch the sub-workflow directly."
