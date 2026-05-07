@@ -66,8 +66,6 @@ Use these reference widths to keep panels aligned across a row:
 | Quarter     | 12      |
 | Sixth       | 8       |
 
-### Pack the grid cleanly [pack-grid]
-
 Dashboards read better when there are no empty pockets between panels:
 
 * **Remove dead vertical space.** Make each panel's top edge meet the bottom edge of the panel that sits directly over it. Gaps push supporting content further down the dashboard.
