@@ -30,6 +30,8 @@ Once you have a dashboard, you can also:
 * [Duplicate a dashboard](duplicate-dashboards.md) as a starting point for a new one
 * [Import a dashboard](import-dashboards.md) exported from another {{product.kibana}} instance
 
+For opinionated guidance on layout, panel sizing, information hierarchy, and titling, refer to [Best practices for creating dashboards](dashboards-best-practices.md).
+
 ## Requirements [dashboard-minimum-requirements]
 
 To create or edit dashboards, you need:

@@ -61,6 +61,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Labels are automatically hidden on rectangles that are too small to fit them. If too many labels are missing, reduce the number of categories or increase the panel size.
 
 Refer to [Treemap chart settings](#treemap-chart-settings) to find all configuration options for your treemap chart.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 :::::
 
 :::::{step} Save the chart

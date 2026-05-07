@@ -39,6 +39,7 @@ Once you understand the basics, explore these common tasks:
 - [Add filter controls](dashboards/add-controls.md): Enable interactive filtering with options lists, range sliders, and time sliders.
 - [Add drilldowns](dashboards/drilldowns.md): Create interactive navigation between dashboards or to external URLs.
 - [Organize dashboard panels](dashboards/arrange-panels.md): Arrange panels using collapsible sections, resizing, and positioning.
+- [Best practices for creating dashboards](dashboards/dashboards-best-practices.md): Plan layout, size panels, build a clear information hierarchy, and tune dashboard performance.
 
 **Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.

@@ -64,6 +64,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
 Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 :::::
 
 :::::{step} Save the chart
