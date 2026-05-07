@@ -159,6 +159,8 @@ The Tool ID is a critical identifier. Use a namespace prefix to group tools logi
 - `support.get_ticket_details`
 - `ecommerce.cancel_order`
 
+Some prefixes are reserved by Elastic for built-in tools and cannot be used for custom tool IDs. Refer to [Protected namespaces](#protected-namespaces).
+
 ### Writing effective tool descriptions
 
 A strong description explains what the tool does, when to use it, and what limitations exist. Include these components:
