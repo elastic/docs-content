@@ -45,7 +45,7 @@ $$$agent-builder-apis$$$
 :   The REST API surface for working with {{agent-builder}} programmatically: endpoints for agents, tools, skills, conversations, and token consumption. {{agent-builder}} APIs are a group within the {{kib}} HTTP API, served under `/api/agent_builder/`. See [](kibana-api.md#available-apis) and the [API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
 
 $$$agent-builder-execution$$$
-Agent Builder execution {applies_to}`stack: ga 9.4+`
+Agent Builder execution
 :   The metering unit used to bill {{agent-builder}} usage. Each completed agent interaction is metered as one or more executions based on input token consumption; interactions that fail to return a response aren't metered. See [](monitor-usage.md#execution-based-billing).
 
 $$$agent-chat$$$
@@ -61,11 +61,11 @@ $$$agentbuilder-feature$$$
 :   The {{kib}} feature privilege that controls access to {{agent-builder}}. Assign `Read` or `All` to roles. For finer-grained control, pair `Read` with sub-feature privileges such as `Manage agents` and `Manage tools`. See [](permissions.md#kib-privileges).
 
 $$$ai-agent-step$$$
-`ai.agent` step {applies_to}`stack: preview 9.3+`
+`ai.agent` step {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 :   A workflow step type that invokes an {{agent-builder}} agent as a reasoning engine within a workflow. Use it to summarize data, classify events, or make decisions in the middle of an automation. See [](agents-and-workflows.md#use-the-aiagent-step).
 
 $$$ai-agent-button$$$
-AI Agent button {applies_to}`stack: preview =9.3, ga 9.4+`
+AI Agent button
 :   The button in the {{kib}} top header that opens sidebar mode so you can chat with an agent from any page. See [](standalone-and-flyout-modes.md#sidebar-mode).
 
 $$$api-key$$$
@@ -97,7 +97,7 @@ Chat history
 :   See **Conversation history**.
 
 $$$connector$$$
-Connector
+Connector {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   A {{kib}} integration that enables {{agent-builder}} to communicate with an external service. See [](connectors.md#how-agents-use-connectors).
 
 $$$context-window$$$
@@ -143,7 +143,7 @@ Default agent {applies_to}`stack: ga 9.4+`
 :   The Elastic AI Agent, which is automatically created in each {{kib}} space and acts as the starting agent for new conversations. See [](builtin-agents-reference.md#elastic-ai-agent).
 
 $$$default-model$$$
-Default model {applies_to}`stack: ga 9.4+`
+Default model
 :   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. Configure it from **GenAI Settings**. See [](models.md#default-model-configuration).
 
 ## E
@@ -153,11 +153,11 @@ Elastic AI Agent
 :   The general-purpose default agent shipped with {{agent-builder}}. See [](builtin-agents-reference.md#elastic-ai-agent).
 
 $$$elastic-inference-service-eis$$$
-Elastic Inference Service (EIS) {applies_to}`stack: ga 9.4+`
+Elastic Inference Service (EIS)
 :   Elastic's managed service for running LLMs on Elastic infrastructure, used by Elastic Managed LLMs. See [](models.md#default-model-configuration).
 
 $$$elastic-managed-llm$$$
-Elastic Managed LLM {applies_to}`stack: ga 9.4+`
+Elastic Managed LLM
 :   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional connector setup. See [](models.md#default-model-configuration).
 
 $$$enable-elastic-capabilities$$$
@@ -192,7 +192,7 @@ Index search tool
 
 $$$inline-tool$$$
 Inline tool
-:   A [](tools.md#how-agents-use-tools) that's available only in a specific context. For example, while a particular built-in skill is active or while an attachment is present in the conversation. Inline tools don't appear in the global tools list.
+:   A tool that's available only in a specific context. For example, while a particular built-in skill is active or while an attachment is present in the conversation. Inline tools don't appear in the global tools list. See [](tools.md#how-agents-use-tools).
 
 $$$input-tokens$$$
 Input tokens
@@ -201,7 +201,7 @@ Input tokens
 ## K
 
 $$$kibana-request-step$$$
-`kibana.request` step {applies_to}`stack: preview 9.3+`
+`kibana.request` step {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 :   A generic Workflows step. When `ai.agent` doesn't cover a scenario, you can use `kibana.request` to call {{agent-builder}} APIs from a workflow. See [](/explore-analyze/workflows/steps/kibana.md#kibana-request).
 
 ## M
@@ -215,7 +215,7 @@ MCP
 :   The [Model Context Protocol](https://modelcontextprotocol.io/), an open standard for connecting AI assistants to external tools and data sources. {{agent-builder}} both _exposes_ tools through an MCP server and _consumes_ tools from remote MCP servers as MCP tools. See [](mcp-server.md#mcp-server-endpoint).
 
 $$$mcp-connector$$$
-MCP connector {applies_to}`stack: preview 9.3+`
+MCP connector {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   A {{kib}} connector that points {{agent-builder}} at a remote MCP server so its tools can be imported as MCP tools. See [](connectors.md#add-a-connector).
 
 $$$mcp-server$$$
@@ -223,7 +223,7 @@ MCP server
 :   An endpoint that implements the Model Context Protocol. {{agent-builder}} both _exposes_ its own MCP server, making Elastic tools and agents available to external MCP clients such as Claude Desktop, Cursor, VS Code, or LangChain apps, and _consumes_ remote MCP servers through MCP connectors. See [](mcp-server.md#mcp-server-endpoint).
 
 $$$mcp-tool$$$
-MCP tool {applies_to}`stack: preview 9.3+`
+MCP tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 :   A type of custom tool that proxies a tool exposed by a remote MCP server. Use MCP tools to give your agents access to capabilities provided by external services. See [](tools/mcp-tools.md#adding-mcp-tools).
 
 $$$model$$$
@@ -247,7 +247,7 @@ Output tokens
 ## P
 
 $$$plugin$$$
-Plugin {applies_to}`stack: ga 9.4+`
+Plugin {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 :   A reusable bundle of skills and supporting capabilities that can be assigned to an agent as a single unit. Plugins make it easier to share groups of related skills across agents. See [](plugins.md#install-a-plugin).
 
 $$$prompt-engineering$$$
@@ -270,12 +270,12 @@ REST API
 
 $$$retrieval-augmented-generation-rag$$$
 Retrieval-Augmented Generation (RAG)
-:   [](/solutions/search/rag.md) is a technique for improving language model responses by grounding the model with additional, verifiable sources of information. It works by first retrieving relevant context from a datastore, which is then added to the model’s context window. {{agent-builder}} agents use {{es}} as the retrieval layer, which makes the platform a natural fit for RAG applications. 
+:   Retrieval-augmented generation is a technique for improving language model responses by grounding the model with additional, verifiable sources of information. It works by first retrieving relevant context from a datastore, which is then added to the model's context window. {{agent-builder}} agents use {{es}} as the retrieval layer, which makes the platform a natural fit for RAG applications. See [](/solutions/search/rag.md).
 
 ## S
 
 $$$sidebar-mode$$$
-Sidebar mode {applies_to}`stack: preview =9.3, ga 9.4+`
+Sidebar mode {applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga`
 :   The chat experience that opens as a persistent panel beside the page you're on, so you can chat with an agent without leaving your current {{kib}} workflow. Open it from the AI Agent button or with `cmd+;` / `ctrl+;`. See [](standalone-and-flyout-modes.md#sidebar-mode).
 
 $$$skill$$$
@@ -296,7 +296,7 @@ Solution view
 
 $$$space$$$
 Space
-:   A {{kib}} [](/deploy-manage/manage-spaces.md). Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](permissions.md#working-with-spaces).
+:   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#working-with-spaces).
 
 $$$standalone-mode$$$
 Standalone mode
@@ -325,8 +325,8 @@ Visibility
 ## W
 
 $$$workflow-tool$$$
-Workflow tool {applies_to}`stack: preview 9.3+`
-:   A type of custom tool that lets an agent trigger a [](/explore-analyze/workflows.md) from a conversation and use its output. See [](tools/workflow-tools.md#add-a-workflow-tool).
+Workflow tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
+:   A type of custom tool that lets an agent trigger a workflow from a conversation and use its output. See [](/explore-analyze/workflows.md) and [](tools/workflow-tools.md#add-a-workflow-tool).
 
 $$$workflows$$$
 Workflows
