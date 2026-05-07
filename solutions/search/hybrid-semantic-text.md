@@ -466,8 +466,7 @@ POST /_query?format=txt
 
 1. The `METADATA _score` clause returns the relevance score of each document.
 2. The `match()` function runs semantic search on the `semantic_text` field with a boost of `0.75`.
-3. 
-4. Sorts by descending score and limits to 1000 results.
+3. Sorts by descending score and limits to 1000 results.
 
 :::
 
@@ -478,7 +477,7 @@ curl -X POST "${ELASTICSEARCH_URL}/_query?format=txt" \
      -H "Content-Type: application/json" \
      -H "Authorization: ApiKey ${API_KEY}" \
      -d '{
-       "query": "FROM semantic-embeddings METADATA _score | WHERE content: \"muscle soreness running?\" OR match(semantic_text, \"How to avoid muscle soreness while running?\", { \"boost\": 0.75 }) | KEEP content, semantic_text | SORT _score DESC | LIMIT 1000"
+       "query": "FROM semantic-embeddings METADATA _score | WHERE content: \"muscle soreness running?\" OR match(semantic_text, \"How to avoid muscle soreness while running?\", { \"boost\": 0.75 }) | SORT _score DESC | KEEP content, semantic_text, _score | LIMIT 1000"
      }'
 ```
 
