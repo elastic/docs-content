@@ -313,7 +313,7 @@ For recommended ways to query and retrieve `semantic_text` data, refer to [Searc
 
 ::::{tab-set}
 
-:::{tab-item} Query DSL
+:::{tab-item} Console
 
 ```console
 GET semantic-embeddings/_search
