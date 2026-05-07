@@ -71,8 +71,7 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Retrieves the status and, if available, the final output of an [Elastic Workflows](/explore-analyze/workflows.md) execution from its execution ID.
 
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
-:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a `waitForInput` step, providing the reviewer's input to the workflow so it can continue.
-% TODO: Restore the link on `waitForInput` to /explore-analyze/workflows/authoring-techniques/human-in-the-loop.md once https://github.com/elastic/docs-content/pull/6048 merges (the page is added in that PR).
+:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
 
 <!--
 ### Attachment tools
@@ -150,11 +149,6 @@ Streams tools provide capabilities for exploring and managing [Streams](/solutio
 ## Observability tools
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
-
-% TODO (9.4): Document time range awareness behavior change in agent-builder-observability.md.
-% As of 9.4, the agent uses the current page's time picker by default when invoking tools,
-% unless the user specifies a different time range.
-% Source: https://github.com/elastic/kibana/pull/256343
 
 `observability.get_alerts` {applies_to}`stack: ga 9.3+`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
