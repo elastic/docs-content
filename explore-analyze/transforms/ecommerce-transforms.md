@@ -97,7 +97,7 @@ products:
    2. Decide whether you want the transform to run once or continuously. Since this sample data index is unchanging, let's use the default behavior and run the transform once. If you want to try it out, however, go ahead and click on **Continuous mode**. You must choose a field that the transform can use to check which entities have changed. In general, it's a good idea to use the ingest timestamp field. In this example, however, you can use the `order_date` field.
    3. Optionally, you can configure a retention policy that applies to your transform. Select a date field that is used to identify old documents in the destination index and provide a maximum age. Documents that are older than the configured value are removed from the destination index.
    :::{image} /explore-analyze/images/elasticsearch-reference-ecommerce-pivot3.png
-   :alt: Adding transfrom ID and retention policy to a transform in {{kib}}
+   :alt: Adding transform ID and retention policy to a transform in {{kib}}
    :screenshot:
    :::
 

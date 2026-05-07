@@ -71,7 +71,7 @@ PUT _index_template/dsl-data-stream-template
 }
 ```
 
-We’ll now index a document targetting `dsl-data-stream` to create the data stream and we’ll also manually rollover the data stream to have another generation index created:
+We’ll now index a document targeting `dsl-data-stream` to create the data stream and we’ll also manually rollover the data stream to have another generation index created:
 
 ```console
 POST dsl-data-stream/_doc?
