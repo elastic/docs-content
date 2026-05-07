@@ -79,17 +79,11 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
-`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
+`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.4+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
     This setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
     **Default:** `true`
-
-    ::::{note}
-    :applies_to: stack: ga 9.3.0+
-
-    This setting is not applicable when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}. Beat receivers always allow connections to older {{es}} versions.
-    ::::
 
 `backoff.init` $$$output-elasticsearch-fleet-settings-backoff.init-setting$$$
 :   (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.

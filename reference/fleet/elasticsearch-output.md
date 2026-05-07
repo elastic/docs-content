@@ -42,19 +42,6 @@ Token-based authentication is required in an [{{serverless-full}}](/deploy-manag
 ::::
 
 
-## Beat receivers compatibility [elasticsearch-output-beat-receivers]
-
-```{applies_to}
-stack: ga 9.3+
-```
-
-Starting with version 9.3, {{agent}} uses [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) to run Beat inputs within an embedded OpenTelemetry Collector. Some {{es}} output parameters are not supported when using Beat receivers:
-
-* `escape_html`: Not supported.
-* `allow_older_versions`: Not applicable. Beat receivers always allow connections to older {{es}} versions.
-
-For more details on Beat receivers, refer to [{{agent}} as an OTel Collector](/reference/fleet/elastic-agent-as-otel-collector.md).
-
 ## {{es}} output configuration settings [_es_output_configuration_settings]
 
 The `elasticsearch` output type supports the following settings, grouped by category. Many of these settings have sensible defaults that allow you to run {{agent}} with minimal configuration.
@@ -243,18 +230,12 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 ### Compatibility setting [output-elasticsearch-compatibility-setting]
 
-`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$
+`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.4+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
 
     Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
     **Default:** `true`
-
-    ::::{note}
-    :applies_to: stack: ga 9.3.0+
-
-    This setting is not applicable when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}. Beat receivers always allow connections to older {{es}} versions.
-    ::::
 
 `status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
 :   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
@@ -265,16 +246,10 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 Settings used to parse, filter, and transform data.
 
-`escape_html` $$$output-elasticsearch-escape_html-setting$$$
+`escape_html` $$$output-elasticsearch-escape_html-setting$$$ {applies_to}`stack: deprecated 9.4+`
 :   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
 
     **Default:** `false`
-
-    ::::{note}
-    :applies_to: stack: ga 9.3.0+
-    
-    This setting is not supported when using [Beat receivers](/reference/fleet/elastic-agent-as-otel-collector.md#beat-receivers) with {{agent}}.
-    ::::
 
 ## HTTP settings [output-elasticsearch-http-settings]
 
