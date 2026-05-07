@@ -301,7 +301,7 @@ If you encounter errors, check that your index mapping and {{infer}} endpoint ar
 
 Now that you have data in your index, you can run hybrid search to combine lexical matches on `content` with vector search over `content_embeddings`. You can choose between [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
 
-Both the retriever and {{esql}} approaches return hits ranked by a fused relevance score: lexical matches on `content` and semantic matches on `semantic_text` both contribute, so passages that align with the query in either sense tend to appear higher.
+Both the retriever and {{esql}} approaches return hits ranked by a score that fuses lexical matches on `content` with semantic matches on `semantic_text`. Passages that match on both signals rank highest, followed by those that match on only one.
 
 :::{note}
 For recommended ways to query and retrieve `semantic_text` data, refer to [Search and retrieve `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-search-retrieval.md).
