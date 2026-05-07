@@ -230,7 +230,7 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 ### Compatibility setting [output-elasticsearch-compatibility-setting]
 
-`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.4+`
+`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
 
     Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
@@ -246,7 +246,7 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 Settings used to parse, filter, and transform data.
 
-`escape_html` $$$output-elasticsearch-escape_html-setting$$$ {applies_to}`stack: deprecated 9.4+`
+`escape_html` $$$output-elasticsearch-escape_html-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
 
     **Default:** `false`
