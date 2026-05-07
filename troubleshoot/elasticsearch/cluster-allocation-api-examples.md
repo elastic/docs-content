@@ -9,7 +9,7 @@ products:
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-Troubleshooting shard allocation issues in an {{es}} cluster can be complex, especially when dealing with unassigned shards or rebalancing issues. The [cluster allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) helps diagnose these problems by providing detailed, node-by-node explanations of allocation decisions.
+Troubleshooting shard allocation issues in an {{es}} cluster can be complex, especially when dealing with unassigned shards or rebalancing issues. The [cluster allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) helps diagnose these problems by providing detailed, node-by-node explanations of allocation decisions.
 
 This page walks you through common scenarios to show how the API can guide you in resolving allocation issues efficiently.
 
@@ -91,7 +91,7 @@ node.
 3. Whether to allocate the shard.
 4. Whether to allocate the shard to the particular node.
 5. The decider which led to the `no` decision for the node.
-6. An explanation as to why the decider returned a `no` decision, with a helpful hint pointing to the setting that led to the decision. In this example, a newly created index has [an index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) that requires that it only be allocated to a node named `nonexistent_node`, which does not exist, so the index is unable to allocate.
+6. An explanation as to why the decider returned a `no` decision, with a helpful hint pointing to the setting that led to the decision. In this example, a newly created index has [an index setting]({{es-apis}}operation/operation-indices-get-settings) that requires that it only be allocated to a node named `nonexistent_node`, which does not exist, so the index is unable to allocate.
 
 Refer to [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthrough of troubleshooting a node and index setting mismatch.
 
@@ -143,7 +143,7 @@ primary shard that has reached the maximum number of allocation retry attempts.
 When {{es}} is unable to allocate a shard, it will attempt to retry allocation up to
 the maximum number of retries allowed. After this, {{es}} will stop attempting to
 allocate the shard in order to prevent infinite retries which may impact cluster
-performance. Run the [cluster reroute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) API to retry allocation, which
+performance. Run the [cluster reroute]({{es-apis}}operation/operation-cluster-reroute) API to retry allocation, which
 will allocate the shard if the issue preventing allocation has been resolved.
 
 ### No valid shard copy

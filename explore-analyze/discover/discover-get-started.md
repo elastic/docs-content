@@ -294,6 +294,8 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
@@ -356,7 +358,8 @@ To manage and organize your tabs, you can:
   :::{tip}
   If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
+  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once.
 
 To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
@@ -378,10 +381,11 @@ You can send your long-running KQL or {{esql}} queries to the background from **
 
 Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
-1. In the application menu, click **Save**.
-2. Give your session a title and a description.
+1. In the application menu, select **Save**.
+2. Enter a title and a description for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. Click **Save**.
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
+5. Select **Save**.
 
 
 ### Share your Discover session [share-your-findings]

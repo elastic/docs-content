@@ -63,7 +63,7 @@ path:
 ::::::
 :::::::
 
-{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/index-settings/path.md#multiple-data-paths).
+{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/configuration-reference/path.md#multiple-data-paths).
 
 ::::{warning}
 * Don’t modify anything within the data directory or run processes that might interfere with its contents.
@@ -202,7 +202,7 @@ To see further options not contained in the original JEP, see [Enable Logging wi
 Change the default GC log output location to `/opt/my-app/gc.log` by creating `$ES_HOME/config/jvm.options.d/gc.options` with some sample options:
 
 ```sh
-# Turn off all previous logging configuratons
+# Turn off all previous logging configurations
 -Xlog:disable
 
 # Default settings from JEP 158, but with `utctime` instead of `uptime` to match the next line
