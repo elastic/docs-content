@@ -114,7 +114,8 @@ To turn on the entity store, you need the following:
 
 - `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`
 - `read` and `manage` for `risk-score.risk-score-*`
-- `read` and `manage` for `entities-latest-*`
+- `read` and `write` for `.entities.v2.latest.security_*`
+- Additionally, `manage` for `.entities.v2.latest.security_*` is required to add or remove entities from a resolution group in the [Resolution](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) section of the entity details flyout
 - `read` and `view_index_metadata` for all {{elastic-sec}} indices
 
 #### {{kib}}
