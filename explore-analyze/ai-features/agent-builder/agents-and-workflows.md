@@ -37,7 +37,7 @@ Before you begin:
 * For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
 * Create at least one workflow.
 
-## Use the `ai.agent` step
+## Use the `ai.agent` step [use-ai-agent-workflow-step]
 
 Follow these steps to invoke an `ai.agent` as a step within a workflow.
 
@@ -98,7 +98,8 @@ Use the following parameters in the `with` block to configure the step:
 | `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 
 
-## Use `kibana.request` step
+## Use `kibana.request` step [use-kibana-request-workflow-step]
+
 Use the generic `kibana.request` step to interact with {{agent-builder}} APIs programmatically.
 
 1. Add a new step with the type `kibana.request`.
