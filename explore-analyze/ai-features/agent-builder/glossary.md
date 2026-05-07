@@ -62,7 +62,7 @@ $$$agentbuilder-feature$$$
 
 $$$ai-agent-step$$$
 `ai.agent` step {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
-:   A workflow step type that invokes an {{agent-builder}} agent as a reasoning engine within a workflow. Use it to summarize data, classify events, or make decisions in the middle of an automation. See [](agents-and-workflows.md#use-the-aiagent-step).
+:   A workflow step type that invokes an {{agent-builder}} agent as a reasoning engine within a workflow. Use it to summarize data, classify events, or make decisions in the middle of an automation. See [](agents-and-workflows.md#use-ai-agent-workflow-step).
 
 $$$ai-agent-button$$$
 AI Agent button
