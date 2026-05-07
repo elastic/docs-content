@@ -1128,4 +1128,4 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.ransomware.mode`
 :   Added in 9.4.0.
 
-    *Enable ransomware protection for macOS. Accepted values are 'off', 'detect', and 'prevent'. Default: off.*
+    *Enable ransomware protection for macOS. Accepted values are `off`, `detect`, and `prevent`. Default: `off`.*
