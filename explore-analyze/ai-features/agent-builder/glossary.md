@@ -174,20 +174,11 @@ $$$esql-tool$$$
 
 ## F
 
-% TODO: Link to the `filestore.read` tool reference once it's added to tools/builtin-tools-reference.md.
-$$$file-store$$$
-File store {applies_to}`stack: ga 9.4+`
-:   An in-memory store for skills and intermediate retrieval results. The file store lets agents offload content from the LLM context window and load information dynamically as needed. Agents access the file store using the `filestore.read` tool.
-
 $$$flyout-mode$$$
 Flyout mode
 :   Earlier name for sidebar mode. The two terms refer to the same chat panel; **sidebar mode** is the current name used in the documentation. See [](standalone-and-flyout-modes.md#sidebar-mode).
 
 ## G
-
-$$$genai-connector$$$
-GenAI connector
-:   A {{kib}} connector for an LLM provider (for example, OpenAI, Anthropic, Google Gemini, Azure OpenAI, Bedrock, or a self-hosted model). {{agent-builder}} uses GenAI connectors to call models that aren't part of the Elastic Inference Service. See [](models.md#use-additional-models).
 
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
