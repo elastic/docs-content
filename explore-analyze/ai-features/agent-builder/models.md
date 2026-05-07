@@ -36,10 +36,10 @@ Learn more about [Elastic Managed LLMs](kibana://reference/connectors-kibana/ela
 
 :::{applies-item} {ece:, eck, self: preview =9.2, ga 9.3+}
 
-These deployments do not include a preconfigured connector. To use {{agent-builder}}, you have two options:
+These deployments do not include a preconfigured model. To use {{agent-builder}}, you have two options:
 
-- [Configure a connector](#change-the-default-model)
-- [Connect to Elastic Inference Service (EIS) using Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md)
+- [Connect to the Elastic {{infer-cap}} Service (EIS) using Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md) (recommended) {applies_to}`stack: ga 9.3+`
+- [Configure your own model](#use-additional-models) using an {{infer}} endpoint or a Generative AI connector
 
 :::
 
@@ -47,7 +47,7 @@ These deployments do not include a preconfigured connector. To use {{agent-build
 
 ## Switch models in the UI
 
-Use the model selector in the chat interface to switch between available models. The selector displays all configured models, including preconfigured models (on {{ech}} and {{serverless-full}}) and any custom connectors you set up.
+Use the model selector in the chat interface to switch between available models. The selector displays all configured models, including preconfigured models (on {{ech}} and {{serverless-full}}) and any custom {{infer}} endpoints or connectors you set up.
 
 To learn more, refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model).
 
@@ -86,11 +86,27 @@ For more information about these settings, refer to [](/explore-analyze/ai-featu
 
 ## Use additional models
 
+You can configure additional models for {{agent-builder}} in two ways:
+
+### Add an {{infer}} endpoint
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Configure an {{infer}} endpoint for your model provider. The endpoint must support the `chat_completion` task type.
+
+Choose based on how the model is hosted:
+
+- **Elastic-managed models**: Add an endpoint in [**Elastic {{infer}}**](/explore-analyze/elastic-inference/eis.md).
+- **Third-party providers** (such as OpenAI, Anthropic, or Amazon Bedrock): Add an endpoint in [**External {{infer}}**](/explore-analyze/elastic-inference/external.md).
+
+If you prefer not to use the UI, you can also create endpoints with the {{infer}} APIs. See [Create models programmatically](#create-models-programmatically).
+
+### Configure a connector
+
 To use additional models that aren't preconfigured, create a connector for your model provider.
-
-### Create a connector in the UI
-
-To create a new connector:
 
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create Connector** and select your model provider.
@@ -109,9 +125,12 @@ For detailed instructions on creating connectors, refer to [Connectors](/deploy-
 To learn about preconfigured connectors, refer to [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md).
 :::
 
-### Create connectors with the API
+### Create models programmatically
 
-To create connectors programmatically, refer to the [Connectors API documentation]({{kib-apis}}/operation/operation-post-actions-connector-id).
+You can create either an {{infer}} endpoint or a connector through the API:
+
+- Create an {{infer}} endpoint with the [{{infer}} APIs]({{es-apis}}group/endpoint-inference).
+- Create a connector with the [Connectors API]({{kib-apis}}/operation/operation-post-actions-connector-id). Works on all deployments.
 
 ### Connect a local LLM
 
@@ -130,7 +149,7 @@ Agent Builder relies on advanced LLM capabilities including:
 - **Multi-step reasoning**: Agents need to plan, execute, and adapt based on tool results across multiple iterations.
 - **Structured output**: Models must produce properly formatted responses that the agent framework can parse.
 
-While Elastic offers LLM [connectors](kibana://reference/connectors-kibana.md) for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}.
+While {{agent-builder}} can be configured to use LLMs from many different vendors, not all LLMs are robust enough for reliable agent workflows.
 
 ### Recommended models
 
@@ -162,7 +181,7 @@ Error: Invalid function call syntax
 Error executing agent: No tool calls found in the response.
 ```
 
-While any chat-completion-compatible connector can technically be configured, we strongly recommend using state-of-the-art models for reliable agent performance.
+Although any chat-completion-compatible model can technically be configured, use state-of-the-art models for reliable agent performance.
 
 :::{note}
 Smaller or "mini" model variants are not recommended for {{agent-builder}} as they lack the necessary capabilities for reliable agent workflows.
@@ -170,6 +189,9 @@ Smaller or "mini" model variants are not recommended for {{agent-builder}} as th
 
 ## Related pages
 
+- [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md)
+- [External {{infer}}](/explore-analyze/elastic-inference/external.md)
+- [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md)
 - [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 - [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md)
 - [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md)
