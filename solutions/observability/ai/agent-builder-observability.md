@@ -34,6 +34,15 @@ The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analy
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
 
+### Time range awareness
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you chat with the agent from an {{observability}} UI, it uses the current page's time picker as the default time range when invoking tools, unless you specify a different range in your prompt. Outside of a UI context, tools fall back to their built-in defaults.
+
 :::
 
 :::{applies-item} stack: preview =9.3, removed =9.4

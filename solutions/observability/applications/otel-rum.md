@@ -702,7 +702,7 @@ You can explore OpenTelemetry RUM data in these {{kib}} experiences:
   RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion.
 
 :::{note}
-The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. Curated RUM dashboards for OpenTelemetry are not available yet.
+The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. For browser performance dashboards compatible with OpenTelemetry RUM data, install the [OTel RUM Dashboards](https://github.com/elastic/integrations/tree/main/packages/otel_rum_dashboards) integration from the {{kib}} Integrations catalog.
 :::
 
 ### Confirm that ingestion is working
