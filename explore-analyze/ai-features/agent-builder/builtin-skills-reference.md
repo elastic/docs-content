@@ -38,6 +38,21 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}`stack: ga 9.4+`
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration.
 
+$$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
+:   Creates, modifies, and validates [Elastic Workflows](/explore-analyze/workflows.md) YAML definitions from natural language user input. Covers step types, triggers, Liquid templating, connector integrations, and validation. Use this skill when a user wants to draft a new workflow from a description, edit an existing workflow, change a workflow's trigger, or update top-level properties such as name, description, or tags. The agent validates the generated or modified YAML before proposing the change so the user can accept or decline it.
+
+    **Assigned tools:**
+
+    Lookup: `platform.workflows.get_step_definitions`, `platform.workflows.get_trigger_definitions`, `platform.workflows.get_examples`, `platform.workflows.get_connectors`, `platform.workflows.validate_workflow`
+
+    Edit: `platform.workflows.workflow_set_yaml`, `platform.workflows.workflow_insert_step`, `platform.workflows.workflow_modify_step`, `platform.workflows.workflow_modify_step_property`, `platform.workflows.workflow_modify_property`, `platform.workflows.workflow_delete_step`
+
+    **Prerequisites:** [Elastic Workflows](/explore-analyze/workflows.md) enabled in the deployment, with the privileges required to create and run workflows. The `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on for the skill to appear.
+
+    :::{note}
+    Without this skill, the agent can still check the status of a workflow execution and resume a paused workflow that is waiting for human input, using the [`platform.core.get_workflow_execution_status`](tools/builtin-tools-reference.md) and [`platform.core.resume_workflow_execution`](tools/builtin-tools-reference.md) tools. To trigger a specific workflow from a conversation, configure a [workflow tool](tools/workflow-tools.md) and assign it to the agent.
+    :::
+
 ## Observability skills
 ```{applies_to}
 serverless:
@@ -47,10 +62,8 @@ serverless:
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4`
 :   Answers observability questions and diagnoses issues across APM services and infrastructure. Use when a user asks about service health, error rates, latency, failed transactions, service topology, trace analysis, log patterns, SLO breaches, alert investigations, or general questions about services and their performance.
 
-% $$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4`
-% :   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing; when an alert has fired; or when they need to trace a cascading failure across services.
-
-% TODO: Confirm GA status for observability.rca — marked experimental in Kibana source.
+$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
+:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, slow, or failing, when an alert has fired, or when they need to trace a cascading failure across services.
 
 ## Security skills
 ```{applies_to}

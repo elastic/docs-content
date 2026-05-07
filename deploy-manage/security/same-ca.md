@@ -215,6 +215,6 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
     ```
 
 11. One node at a time, complete [step 5](#start-rolling-restart-http) through [step 10](#verify-keystore-http) until you’ve updated all keystores in your cluster.
-12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.
+12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Re-enable shard allocation**.
 
 

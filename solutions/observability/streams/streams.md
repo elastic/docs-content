@@ -124,4 +124,5 @@ Interact with and configure your streams in the following ways:
 - [**Schema**](./management/schema.md): Manage field mappings.
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Knowledge Indicators**](./management/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
 
