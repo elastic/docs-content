@@ -18,6 +18,10 @@ Agents can create and manage [dashboards](/explore-analyze/dashboards.md) and [v
 
 This functionality is powered by the built-in [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) and [`visualization-creation`](builtin-skills-reference.md#agent-builder-visualization-creation-skill) skills, along with the [dashboard tools](tools/builtin-tools-reference.md#dashboard-tools) and [visualization platform tools](tools/builtin-tools-reference.md#platform-core-tools).
 
+:::{tip}
+For best results with {{esql}}-heavy dashboard generation, use a higher-tier model such as Claude 4.6 Opus. Current testing shows that Claude 4.6 Sonnet may require more corrections for generated dashboard queries.
+:::
+
 ## When to use agent-generated dashboards
 
 Building dashboards manually requires knowing which indices to query, how to write the right visualizations, and how to arrange panels. Agent-generated dashboards let you skip that process and go from a question to a working dashboard in seconds. This is particularly useful when you need to:
@@ -125,5 +129,4 @@ Agents can also create markdown panels and collapsible sections.
 
 - [Dashboards](/explore-analyze/dashboards.md)
 - [Chat with {{agent-builder}} agents](chat.md)
-% TODO: Add once docs-content#5927 merges:
-% - [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)
+- [Create dashboards programmatically](/explore-analyze/dashboards/create-dashboards-programmatically.md)

@@ -276,6 +276,8 @@ toc:
       - file: dashboards/building.md
         children:
           - file: dashboards/create-dashboard.md
+          - file: dashboards/create-dashboards-programmatically.md
+          - file: dashboards/create-dashboards-using-ai.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
@@ -485,7 +487,7 @@ toc:
           - file: workflows/authoring-techniques/human-in-the-loop.md
           - file: workflows/authoring-techniques/monitor-workflows.md
           - file: workflows/authoring-techniques/manage-workflows.md
-          - file: workflows/authoring-techniques/migrate-from-9.3.md
+          - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/reference.md
         children:
           - file: workflows/triggers.md

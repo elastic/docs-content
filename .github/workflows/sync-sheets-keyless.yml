@@ -94,14 +94,14 @@ jobs:
           delete-branch: true
           title: "[Automation] Update EIS model list"
           commit-message: |
-            Update CSV from Google Sheets
+            Update the EIS model list based on CSV generated from Google Sheets
 
             Generated: ${{ github.run_id }}
             Workflow run: ${{ github.run_number }}
           body: |
             ## Summary
 
-            This PR updates CSV files with the latest data from Google Sheets.
+            This PR updates the EIS model list based on CSV generated from Google Sheets.
 
             ### Changes
 

@@ -131,10 +131,6 @@ One way to update the roles that are stored within the {{dfeed}} without changin
 
 ::::
 
-:::{admonition} Deprecated in 7.11.0
-If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API]({{es-apis}}operation/operation-ml-post-data).
-:::
-
 ## Open the job [ml-ad-open-job]
 
 An {{anomaly-job}} must be opened in order for it to be ready to receive and analyze data. It can be opened and closed multiple times throughout its lifecycle.
