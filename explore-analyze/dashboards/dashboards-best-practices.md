@@ -6,6 +6,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: overview
 ---
 
 # Best practices for creating dashboards [dashboards-best-practices]
@@ -69,7 +70,7 @@ Use these reference widths to keep panels aligned across a row:
 
 Dashboards read better when there are no empty pockets between panels:
 
-* **Eliminate dead vertical space.** Make each panel's top edge meet the bottom edge of the panel that sits directly over it. Gaps push supporting content further down the dashboard.
+* **Remove dead vertical space.** Make each panel's top edge meet the bottom edge of the panel that sits directly over it. Gaps push supporting content further down the dashboard.
 * **Align heights within a row.** When several panels sit side by side, give them the same height. Mismatched heights leave awkward gaps and make the row harder to scan. If panel heights must differ, fill the empty space with another panel before starting a new full-width row.
 
 The {{product.kibana}} dashboard editor packs the grid for you when you drag and resize panels in the UI. When you author dashboards through the [Dashboards API](create-dashboards-programmatically.md), you set `x`, `y`, `w`, and `h` numerically, so apply the same packing rules in your JSON definitions.
@@ -154,7 +155,7 @@ Best for: data analysis, comparisons, deep dives.
 └───────────────────────────────────────────┘
 ```
 
-A large primary chart anchors the analysis on the left, with focused summaries and a top-N list on the right. The comparison chart and per-dimension breakdowns let analysts pivot without leaving the dashboard.
+A large primary chart anchors the analysis, with focused summaries and a top-N list grouped alongside. The comparison chart and per-dimension breakdowns let analysts pivot without leaving the dashboard.
 
 ### Executive dashboard [executive-dashboard]
 
