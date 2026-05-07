@@ -94,7 +94,7 @@ Built-in tool
 
 $$$chat-history$$$
 Chat history
-:   See **Conversation history**.
+:   See [](#conversation-history).
 
 $$$connector$$$
 Connector {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
