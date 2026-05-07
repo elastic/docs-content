@@ -34,8 +34,10 @@ Place the most important information at the top of the dashboard, where viewers 
 * **Primary KPIs and key metrics** at the top.
 * **Primary charts and trends** in the middle.
 * **Detail tables and supporting panels** at the bottom for users who want to dig deeper.
+* **Make the primary insight visually dominant.** A large, central panel anchors the dashboard and tells viewers where to look first. Wide rectangles like full-width timelines work especially well as focal points.
+* **Place related panels next to each other.** When two related charts sit far apart, readers pay a cognitive tax to connect them. Group panels that share a data source or that explain the same trend.
 
-Group related panels so each row tells a coherent story. The following sketch shows a standard hierarchy:
+The following sketch shows a standard hierarchy:
 
 ```text
 ┌─────────────────────────────────────────────────────┐
@@ -103,7 +105,29 @@ A descriptive panel title is the most important label in the visualization. It e
 
 * **Write titles that explain the insight, not the field.** "Requests by response code" reads better than "count by status".
 * **Hide redundant axis titles.** Once the panel title makes the X and Y axes obvious, the axis titles repeat what the reader already knows. In the [Lens](../visualize/lens.md) editor, set **Axis title** to **None** for both axes when the panel title is self-explanatory.
+* **Don't repeat the same word in every title.** When most panels start with the same prefix (such as "Usage" across eight panels), drop it from each title and put it in the dashboard title or a section header instead.
+* **Trim numbers to what readers need.** A KPI tile reads better as `$3.4M` than `$3,364,726`. Round to the magnitude that conveys the change you're tracking, and reserve full precision for tables.
 * **Don't use [text panels](../visualize/text-panels.md) as section headers.** They take vertical space without showing data. For section breaks, use [collapsible sections](arrange-panels.md#collapsible-sections) and descriptive panel titles.
+
+## Use color deliberately [use-color]
+
+Color is a strong signal. Use it to encode meaning, not for decoration.
+
+* **Stick to {{product.kibana}}'s built-in palettes.** They're tuned for accessibility, including color-blind safety, and produce a consistent look across dashboards.
+* **Reuse the same color for the same dimension across panels.** When a value (a service, a region, a status) appears in multiple panels, give it the same color in each so readers track it without re-orienting. Turn on the dashboard **Sync color palettes across panels** setting to enforce this automatically.
+* **Match the palette to the data.** For sequential data (low to high, like usage or counts), use a single-hue gradient that gets darker as values grow. For divergent data (around a meaningful midpoint, like deviation from a target), use a two-color palette with the darkest tones at the extremes.
+* **Don't use too many colors in a single panel.** Many distinct colors create noise and make patterns harder to spot. Group categories or use shape and weight to differentiate where you can.
+* **For brand-customized dashboards, keep the palette small.** A few brand colors mixed with neutral grays read better, and more accessibly, than a full custom rainbow.
+
+## Apply consistent dashboard settings [dashboard-settings]
+
+A handful of dashboard-wide settings control how the whole dashboard reads. Set them deliberately when you create the dashboard so panels look like they belong together. Find them in the **Settings** menu in the application menu.
+
+* **Use margins between panels.** Margins create visual breathing room and signal which panels belong to the same group. Keep them on for most dashboards.
+* **Sync color palettes across panels.** Applies the same color to the same value across every panel. Refer to [](#use-color) for why this matters.
+* **Sync cursor across panels** and **Sync tooltips across panels.** When a viewer hovers a time series chart or heatmap, the same point highlights and the same tooltip appears on every related chart. Useful when panels share the same time axis.
+
+For the full list of dashboard settings and where to find them, refer to [Create a dashboard](create-dashboard.md).
 
 ## Choose the right panel for the job [choose-panel-type]
 
