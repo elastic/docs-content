@@ -194,7 +194,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 
 With your index mapping in place, you can add some data. You only need to populate the `content` field: {{es}} stores it as `text` for lexical search and, because of `copy_to`, copies the same string into `semantic_text`, which sends the text to the configured {{infer}} endpoint and stores embeddings on the document.
 
-Use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to ingest the same sample documents as in [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md):
+Use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to ingest the same sample documents:
 
 ::::{tab-set}
 
