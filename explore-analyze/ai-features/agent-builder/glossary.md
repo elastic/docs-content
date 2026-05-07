@@ -144,7 +144,7 @@ Default agent {applies_to}`stack: ga 9.4+`
 
 $$$default-model$$$
 Default model
-:   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. Configure it from **GenAI Settings**. See [](models.md#default-model-configuration).
+:   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. See [](models.md#change-the-default-model).
 
 ## E
 
@@ -158,7 +158,7 @@ Elastic Inference Service (EIS)
 
 $$$elastic-managed-llm$$$
 Elastic Managed LLM
-:   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional connector setup. See [](models.md#default-model-configuration).
+:   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional setup. See [](models.md#default-model-configuration).
 
 $$$enable-elastic-capabilities$$$
 Enable Elastic Capabilities {applies_to}`stack: ga 9.4+`
@@ -180,6 +180,10 @@ Flyout mode
 
 ## G
 
+$$$generative-ai-connector$$$
+Generative AI connector
+:   A {{kib}} connector that wires {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. See [](models.md#configure-a-connector).
+
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
 :   The {{kib}} settings page where you configure the default model and other generative-AI options that affect {{agent-builder}}. See [](models.md#change-the-default-model).
@@ -189,6 +193,10 @@ GenAI Settings {applies_to}`stack: ga 9.4+`
 $$$index-search-tool$$$
 Index search tool
 :   A type of custom tool that performs natural-language search over a configured set of indices, aliases, or data streams. The tool selects an appropriate query strategy (keyword, semantic, or hybrid) automatically. See [](tools/index-search-tools.md#when-to-use-index-search-tools).
+
+$$$inference-endpoint$$$
+Inference endpoint
+:   An {{es}} resource that wires the cluster to a model: Elastic-managed (through EIS) or third-party (OpenAI, Anthropic, Amazon Bedrock, Cohere, Google AI, and others). {{agent-builder}} can use any inference endpoint that supports the `chat_completion` task type as a model source. Inference endpoints are managed from **Elastic inference**, **External inference**, or the [{{infer}} APIs]({{es-apis}}group/endpoint-inference). See [](models.md#add-an-inference-endpoint).
 
 $$$inline-tool$$$
 Inline tool
@@ -228,7 +236,7 @@ MCP tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 $$$model$$$
 Model
-:   The LLM that an agent uses to reason and produce responses. Models are accessed through Elastic Managed LLMs or through GenAI connectors. See [](models.md#default-model-configuration).
+:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs, third-party models reached through an [](#inference-endpoint), or models reached through a [](#generative-ai-connector). See [](models.md#use-additional-models).
 
 $$$model-selector$$$
 Model selector
