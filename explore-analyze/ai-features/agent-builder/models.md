@@ -88,7 +88,7 @@ For more information about these settings, refer to [](/explore-analyze/ai-featu
 
 You can configure additional models for {{agent-builder}} in two ways:
 
-### Add an {{infer}} endpoint
+### Add an {{infer}} endpoint [add-an-inference-endpoint]
 
 ```{applies_to}
 stack: ga 9.4+
