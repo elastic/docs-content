@@ -1,6 +1,6 @@
 ---
 navigation_title: Best practices
-description: Opinionated guidance for building scannable, performant Kibana dashboards, covering grid layout, panel sizing, information hierarchy, titling, and layout patterns.
+description: Design scannable, performant Kibana dashboards with opinionated guidance on layout, panel sizing, information hierarchy, color, titling, and reusable patterns.
 applies_to:
   stack: ga
   serverless: ga
