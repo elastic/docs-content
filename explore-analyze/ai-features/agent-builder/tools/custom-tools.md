@@ -141,7 +141,7 @@ The set of protected prefixes has expanded across Elastic stack versions. The ve
 - `security.*` {applies_to}`stack: ga 9.3+`
 
 :::{important}
-Custom tools created in a namespace before it became protected remain in your environment but cannot be modified or deleted. Create a replacement under a non-protected namespace.
+The protected namespace list has grown across releases and may expand further. Before upgrading to a new version, check the list against your custom tool IDs and recreate any that might collide under a different namespace. Tools whose namespace becomes protected at upgrade time can no longer be modified or deleted.
 :::
 
 ## Best practices
