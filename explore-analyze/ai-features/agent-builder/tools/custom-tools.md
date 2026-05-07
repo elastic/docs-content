@@ -124,6 +124,26 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 :::::
 
+## Protected namespaces
+
+Some tool ID prefixes are reserved by Elastic for built-in tools and cannot be used for custom tools. Saving a custom tool whose ID begins with a protected prefix fails with the error `Tool ID "<id>" uses a protected namespace.`
+
+The set of protected prefixes has expanded across Elastic stack versions:
+
+- `attachments.*` {applies_to}`stack: ga 9.4+`
+- `filestore.*` {applies_to}`stack: ga 9.4+`
+- `observability.*` {applies_to}`stack: ga 9.3+`
+- `platform.core.*` {applies_to}`stack: ga =9.2`
+- `platform.dashboard.*` {applies_to}`stack: ga 9.3+`
+- `platform.streams.*` {applies_to}`stack: ga 9.4+`
+- `platform.workflows.*` {applies_to}`stack: ga 9.4+`
+- `search.*` {applies_to}`stack: ga 9.4+`
+- `security.*` {applies_to}`stack: ga 9.3+`
+
+:::{important}
+Custom tools created in a namespace before it became protected remain in your environment but cannot be modified or deleted. Create a replacement under a non-protected namespace.
+:::
+
 ## Best practices
 
 Follow these guidelines to create tools that agents can use effectively.
