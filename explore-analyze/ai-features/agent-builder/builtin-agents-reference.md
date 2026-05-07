@@ -20,7 +20,7 @@ Built-in agents are pre-configured by Elastic with instructions and tools to han
 
 The **Elastic AI Agent** is the default general-purpose agent. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
-The Elastic AI Agent is a standard persisted agent that is space-aware. A separate instance is created automatically in each [{{kib}} space](/deploy-manage/manage-spaces.md) when first accessed, and each instance can be customized independently: change its instructions, adjust which tools it has access to, or clone it as a starting point for a new agent.
+The Elastic AI Agent is a standard persisted agent that is space-aware. A separate instance is created automatically in each [{{kib}} space](/deploy-manage/manage-spaces.md) when first accessed, and each instance can be customized independently: change its instructions, assign [skills](builtin-skills-reference.md) and [tools](./tools/builtin-tools-reference.md), or clone it as a starting point for a new agent.
 
 :::{note}
 In 9.2  and 9.3, the Elastic AI Agent cannot be modified or deleted. To customize it, clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
