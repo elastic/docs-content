@@ -37,7 +37,7 @@ The Synthetics UI only shows monitors that are explicitly created and managed th
 For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
 
 * **{{heartbeat}} with autodiscovery**: Run {{heartbeat}} directly on your infrastructure and use its [autodiscovery](https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-autodiscover.html) capabilities to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
-* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. Note that the Uptime app is deprecated as of 8.15. 
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The Uptime app is deprecated as of 8.15.
 
 ## Manage large numbers of Synthetic monitors with tags [synthetics-tagging]
 
