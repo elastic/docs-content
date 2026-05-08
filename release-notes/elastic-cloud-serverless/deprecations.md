@@ -15,6 +15,9 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 :type: deprecation
 ::: -->
 
+:::{include} _snippets/2026-05-06/deprecations.md
+:::
+
 :::{include} _snippets/2026-05-04/deprecations.md
 :::
 

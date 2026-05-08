@@ -20,6 +20,9 @@ Known issues are significant defects or limitations that may impact your impleme
 :type: known-issue
 ::: -->
 
+:::{include} _snippets/2026-05-06/known-issues.md
+:::
+
 :::{include} _snippets/2026-05-04/known-issues.md
 :::
 
