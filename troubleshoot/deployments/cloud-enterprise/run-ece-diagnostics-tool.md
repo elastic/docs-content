@@ -11,20 +11,18 @@ products:
 
 # Run ECE diagnostics tool [ece-run-ece-diagnostics]
 
-ECE diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to Elastic support for troubleshooting and investigation purposes.
+ECE diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to [Elastic support](/troubleshoot/index.md#troubleshoot-work-with-support) for troubleshooting and investigation purposes.
 
-::::{note} 
-This archive file is privacy-redacted as much as possible, but may still contain host identifying metadata (such as IP/domain info). We therefore recommend against uploading this output to public forums. Any uploads to the [Elastic Support Portal](https://support.elastic.co) are treated according to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
 ::::
-
-
 
 ## Prepare [ece_prepare] 
 
 ::::{warning} 
 Don’t use the diagnostics tool that comes bundled in ECE images. Always download the latest binary to avoid any known vulnerabilities in the diagnostics acquisition and shipping flow.
 ::::
-
 
 Download the bundled diagnostic binary.
 
@@ -59,10 +57,12 @@ For example, Elastic Support frequently requests pulling the ECE diagnostic alon
 ```
 
 ::::{note} 
-ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get stack diagnostics from {{ece}} > Deployment > Operations > Prepare Bundle.
+<<<<<<< anniegale9538-patch-1
+ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get stack diagnostics from {{ece}} > Deployment > Operations > Generate Bundle.
+=======
+ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get the [{{es}} diagnostic](/troubleshoot/elasticsearch/diagnostic.md) and [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) from {{ece}} > Deployment > Operations > Prepare Bundle.
+>>>>>>> main
 ::::
-
-
 
 ## Example output [ece_example_output] 
 

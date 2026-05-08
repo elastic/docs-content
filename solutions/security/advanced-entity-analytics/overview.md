@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.1
+  stack: ga 9.1+
   serverless:
     security: ga
 products:
@@ -10,9 +10,12 @@ products:
 
 # Entity analytics overview
 
-The **Entity analytics** page provides a centralized view of emerging insider threats—including host risk, user risk, service risk, and anomalies from within your network. Use it to triage, investigate, and respond to these emerging threats.
+The **Entity analytics** page provides a centralized workspace for investigating entity risk across your environment. Use it to explore entity risk scores, surface behavioral anomalies, and prioritize threat investigations.
 
-To access the page, find **Entity analytics** → **Overview** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To access the page:
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Find **Entity analytics** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- {applies_to}`stack: ga 9.1-9.3` Find **Entity analytics** → **Overview** in the navigation menu. 
+
 
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
@@ -21,27 +24,128 @@ To access the page, find **Entity analytics** → **Overview** in the navigation
 :::
 
 
-The  **Entity analytics** page includes the following sections:
+## Threat hunting leads [entity-threat-hunting-leads]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: planned
+```
 
-* [Entity KPIs (key performance indicators)](#entity-kpis)
-* [User Risk Scores](#entity-user-risk-scores)
-* [Host Risk Scores](#entity-host-risk-scores)
-* [Service Risk Scores](#service-risk-scores)
-* [Entities](#entity-entities)
-* [Anomalies](#entity-anomalies)
+:::{admonition} Requirements
+To display threat hunting leads, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+:::
+
+AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:
+
+* Recent increases in entity risk score
+* Newly added privileged users
+* High numbers of alerts on a given entity
+
+Interact with this section in the following ways:
+
+* Turn **Auto-refresh** on to automatically regenerate leads every 24 hours.
+* Click **Generate** to manually trigger a new set of leads without waiting for the next automatic refresh.
+* Click a lead or click **Hunt in Chat** to open an AI-assisted investigation session in Agent Builder.
+* Click **See all** to access and search the full list of current leads.
+
+
+## Entity risk levels [entity-risk-levels]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: planned
+```
+
+:::{admonition} Requirements
+To display entity risk levels, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+:::
+
+This panel shows the distribution of entity risk across your environment, grouped by risk level. For each level, it displays the associated risk score range and the number of entities at that level.
+
+
+## Recent anomalies [entity-recent-anomalies]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: planned
+```
+
+:::{admonition} Requirements
+To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/machine-learning/ootb-ml-jobs-siem.md).
+:::
+
+This panel displays recent entity-related anomalies detected by prebuilt {{ml}} jobs. Interact with this section in the following ways:
+
+* Use the **View by** dropdown to group anomalies by **Entity** or **Job ID**.
+* Use the **Anomaly score** filters to focus on anomalies by severity range.
+* Click **View all in Anomaly Explorer** to access and search all {{ml}} jobs in the **Anomaly Explorer**.
+
+
+## Entities [entity-entities]
+
+:::{admonition} Requirements
+To display the **Entities** section, you must [enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md#enable-entity-store).
+:::
+
+This section provides a centralized view of all hosts, users, and services in your environment. It displays entities from the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md), which meet any of the following criteria:
+
+* Have been observed by {{elastic-sec}}
+* Have been added to {{elastic-sec}} through an integration, such as Active Directory or Okta
+* {applies_to}`stack: ga 9.1-9.3` Have an asset criticality assignment
+
+
+Interact with the table to filter and explore entity data:
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: planned }
+
+* Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their primary entity, while unresolved entities appear on their own.
+* Filter the table by watchlist membership to focus on specific entity groups.
+* Sort and filter by any entity store field.
+* Click an entity row to expand it and view more details, or open the entity details flyout.
+::::
+
+::::{applies-item} stack: ga 9.1-9.3
+
+* Select the **Risk level** dropdown to filter the table by the selected user, host, or service risk level.
+* Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
+* Select the **Source** dropdown to filter the table by the data source.
+* Click the **View details** icon ({icon}`expand` ) to open the entity details flyout.
+
+:::{note}
+The **Entities** table only shows a subset of the data available for each entity. You can query the `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_service_<space-id>` indices to see all the fields for each entity in the entity store.
+:::
+
+:::{image} /solutions/images/security-entities-section.png
+:alt: Entities section
+:screenshot:
+:::
+
+Entity data from different sources appears in the **Entities** section based on the following timelines:
+
+* When you first enable the entity store, only data stored in the last 24 hours is processed. After that, data is processed continuously.
+* Observed events from the {{elastic-sec}} default data view are processed in near real-time.
+* Entity Analytics data, such as entity risk scores and asset criticality (including bulk asset criticality upload), is also processed in near real-time.
+* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_ad), [Microsoft Entra ID Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_entra_id), and [Okta Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_okta) for more details.
+
+::::
+
+:::::
 
 
 ## Entity KPIs (key performance indicators) [entity-kpis]
+```yaml {applies_to}
+stack: ga 9.1-9.3
+```
 
 This section displays the total number of critical hosts, critical users, and anomalies. Select a link to jump to the **Hosts** page, **Users** page, or **Anomalies** table.
 
 
 ## User Risk Scores [entity-user-risk-scores]
+```yaml {applies_to}
+stack: ga 9.1-9.3
+```
 
 :::{admonition} Requirements
-To display user risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display user risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 :::
-
 
 This section displays user risk score data for your environment, including the total number of users, and the five most recently recorded user risk scores, with their associated user names, risk data, and number of detection alerts. User risk scores are [calculated](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
 
@@ -62,11 +166,13 @@ For more information about user risk scores, refer to [](/solutions/security/adv
 
 
 ## Host Risk Scores [entity-host-risk-scores]
+```yaml {applies_to}
+stack: ga 9.1-9.3
+```
 
 :::{admonition} Requirements
-To display host risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display host risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 :::
-
 
 This section displays host risk score data for your environment, including the total number of hosts, and the five most recently recorded host risk scores, with their associated host names, risk data, and number of detection alerts. Host risk scores are [calculated](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
 
@@ -86,10 +192,13 @@ Interact with the table to filter data, view more details, and take action:
 For more information about host risk scores, refer to [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 
-## Service Risk Scores
+## Service Risk Scores [service-risk-scores]
+```yaml {applies_to}
+stack: ga 9.1-9.3
+```
 
 :::{admonition} Requirements
-To display service risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+To display service risk scores, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 :::
 
 This section displays service risk score data for your environment, including the total number of services, and the five most recently recorded service risk scores, with their associated service names, risk data, and number of detection alerts. Service risk scores are [calculated](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
@@ -98,7 +207,6 @@ This section displays service risk score data for your environment, including th
 :alt: Service risk scores table
 :screenshot:
 :::
-
 
 Interact with the table to filter data, view more details, and take action:
 
@@ -110,54 +218,17 @@ Interact with the table to filter data, view more details, and take action:
 For more information about service risk scores, refer to [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 
-## Entities [entity-entities]
-
-
-:::{admonition} Requirements
-To display the **Entities** section, you must [enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md#enable-entity-store).
-:::
-
-
-This section provides a centralized view of all hosts, users, and services in your environment. It displays entities from the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md), which meet any of the following criteria:
-
-* Have been observed by {{elastic-sec}}
-* Have an asset criticality assignment
-* Have been added to {{elastic-sec}} through an integration, such Active Directory or Okta
-
-:::{note}
-The **Entities** table only shows a subset of the data available for each entity. You can query the `.entities.v1.latest.security_user_<space-id>`, `.entities.v1.latest.security_host_<space-id>`, and `.entities.v1.latest.security_service_<space-id>` indices to see all the fields for each entity in the entity store.
-:::
-
-
-:::{image} /solutions/images/security-entities-section.png
-:alt: Entities section
-:screenshot:
-:::
-
-Entity data from different sources appears in the **Entities** section based on the following timelines:
-
-* When you first enable the entity store, only data stored in the last 24 hours is processed. After that, data is processed continuously.
-* Observed events from the {{elastic-sec}} default data view are processed in near real-time.
-* Entity Analytics data, such as entity risk scores and asset criticality (including bulk asset criticality upload), is also processed in near real-time.
-* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_ad), [Microsoft Entra ID Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_entra_id), and [Okta Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_okta) for more details.
-
-Interact with the table to filter data and view more details:
-
-* Select the **Risk level** dropdown to filter the table by the selected user, host, or service risk level.
-* Select the **Criticality** dropdown to filter the table by the selected asset criticality level.
-* Select the **Source** dropdown to filter the table by the data source.
-* Click the **View details** icon ({icon}`expand` ) to open the entity details flyout.
-
-
-
 ## Anomalies [entity-anomalies]
+```yaml {applies_to}
+stack: ga 9.1-9.3
+
+```
 
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The **Anomalies** table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).
 
 :::{admonition} Requirements
 To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](/reference/machine-learning/ootb-ml-jobs-siem.md). You cannot add custom anomaly detection jobs to the **Entity analytics** page.
 :::
-
 
 :::{image} /solutions/images/security-anomalies-table.png
 :alt: Anomalies table

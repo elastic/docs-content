@@ -71,7 +71,7 @@ For the full parameter reference, refer to [Foreach step](/explore-analyze/workf
 
 ## `while` [while]
 
-Loop while a KQL condition evaluates to true. Optional `max-iterations` caps the number of iterations. Without it, the loop continues as long as the condition holds.
+Loop while a KQL condition evaluates to true. The `max-iterations` field caps the number of iterations and defaults to **2000**. The default `on-limit` behavior is `continue`, which means the step succeeds quietly when the cap is reached. To fail the workflow on the cap instead, use the object form with `on-limit: fail`.
 
 ```yaml
 - name: poll_until_ready

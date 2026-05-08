@@ -51,7 +51,7 @@ To generate API keys, search for `API keys` in the [global search bar](/explore-
 [Learn more](/solutions/elasticsearch-solution-project/search-connection-details.md).
 :::
 
-### Working with Spaces
+### Working with spaces
 
 To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
 
@@ -68,9 +68,11 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 
 ## Available APIs
 
-% TODO: we may remove this list once the API reference is live, but probably helpful in the short term
+The following sections provide quick examples for each API endpoint grouped by resource type.
 
 ### Tools APIs
+
+Use these APIs to create, list, update, delete, and run tools.
 
 **Example:** List all tools
 
@@ -409,6 +411,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
 
 ### Skills APIs
 
+Use these APIs to create, list, update, and delete skills.
+
 **Example:** List all skills
 
 This example uses the [list skills API]({{kib-apis}}operation/operation-get-agent-builder-skills).
@@ -640,6 +644,8 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/skills/{skillId}" \
 
 ### Agents APIs
 
+Use these APIs to create, list, update, and delete agents, and to track token consumption.
+
 **Example:** List all agents
 
 This example uses the [list agents API]({{kib-apis}}operation/operation-get-agent-builder-agents).
@@ -853,7 +859,145 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/agents/{id}" \
 
 ::::
 
+### Token consumption
+
+```{applies_to}
+stack: preview =9.4
+```
+
+Use this API to retrieve per-conversation token usage data for a given agent. This endpoint requires the `manageAgents` privilege and provides cross-user visibility into token consumption across all conversations for the specified agent.
+
+The response includes input and output token counts, round counts, LLM call counts, and warnings for conversations with high token usage. No message content or tool results are exposed.
+
+:::{note}
+This API provides visibility into token usage but does not support setting token limits or quotas.
+:::
+
+To understand how token usage is calculated and how to view per-response totals in the UI, refer to [Monitor token usage](monitor-usage.md).
+
+**Example:** Get token consumption for an agent
+
+This example uses the [get agent consumption data API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-agent-builder-agents-agent-id-consumption) with default pagination.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/agents/elastic-ai-agent/consumption
+{
+  "size": 25,
+  "sort_field": "updated_at",
+  "sort_order": "desc"
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumption" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "size": 25,
+       "sort_field": "updated_at",
+       "sort_order": "desc"
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Filter consumption data by username and warnings
+
+This example filters results to specific users and conversations that have high-token warnings, sorted by total token count.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/agents/elastic-ai-agent/consumption
+{
+  "size": 10,
+  "sort_field": "total_tokens",
+  "sort_order": "desc",
+  "usernames": ["elastic", "admin"],
+  "has_warnings": true
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumption" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "size": 10,
+       "sort_field": "total_tokens",
+       "sort_order": "desc",
+       "usernames": ["elastic", "admin"],
+       "has_warnings": true
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+**Example:** Paginate through consumption results
+
+To paginate, pass the `search_after` value from the previous response.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/agents/elastic-ai-agent/consumption
+{
+  "size": 10,
+  "sort_field": "updated_at",
+  "sort_order": "desc",
+  "search_after": [1709391000000, "2025-03-02T14:30:00Z"]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumption" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "size": 10,
+       "sort_field": "updated_at",
+       "sort_order": "desc",
+       "search_after": [1709391000000, "2025-03-02T14:30:00Z"]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
 ### Chat and conversations
+
+Use these APIs to send messages to agents and manage conversation history.
 
 **Example:** Chat with an agent
 
@@ -1009,9 +1153,11 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}"
 
 ### Get A2A agent card configuration
 
+Use this API to retrieve the A2A agent card configuration for a specific agent.
+
 :::{important}
 You shouldn't use the REST APIs to interact with the A2A endpoint, apart from getting the A2A agent card configuration.
-Refer to [](a2a-server.md) for more information about using the A2A protocol. 
+To learn more about using the A2A protocol, refer to [](a2a-server.md).
 :::
 
 **Example:** Get A2A agent card configuration
@@ -1045,4 +1191,4 @@ For the full API documentation, refer to the [{{kib}} API reference]({{kib-apis}
 
 ## Tutorial
 
-Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically. 
+Try the hands-on [API tutorial](agent-builder-api-tutorial.md) to get a feel for the flow of working with Agent Builder programmatically.

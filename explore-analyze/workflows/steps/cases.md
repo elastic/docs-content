@@ -3,7 +3,7 @@ navigation_title: Cases
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference for the Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in Kibana, Observability, and Security.
+description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in any Cases-enabled app.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,7 @@ products:
 
 # Cases action steps [workflows-cases-steps]
 
-Cases action steps let workflows create, query, update, and manage cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
+Cases action steps let workflows create, query, update, and manage cases in any Cases-enabled app, including {{elastic-sec}}, Observability, and Stack Cases. The `cases.*` namespace provides full coverage of the Cases API through a single, consistent set of step types so you can automate case workflows without leaving the Elastic platform.
 
 Use Cases steps for patterns like:
 
@@ -28,11 +28,9 @@ Use Cases steps for patterns like:
 
 Every `cases.*` step shares the same conventions, so once you learn one step the others are predictable.
 
-**Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.
+**Parameter casing.** Case-level parameters use `snake_case`: `case_id`, not `caseId`. The editor rejects camelCase for these fields. (Individual payloads, such as the alert object attached by `cases.addAlerts`, use the casing of the originating API (for example, `alertId`, `index`) because they match external API shapes.)
 
-**Optional `push-case` config.** Most `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds.
-
-`push-case` applies only to steps that change a case. It is not supported on the read-only and internal steps: `cases.deleteCase`, `cases.findCases`, `cases.findSimilarCases`, `cases.getAllAttachments`, `cases.getCase`, `cases.getCases`, `cases.getCasesByAlertId`, and `cases.updateObservable`.
+**Optional `push-case` config.** Many `cases.*` steps accept an optional top-level `push-case` boolean (defaults to `false`). When `true`, the step pushes the updated case to a connected external system (for example, {{jira}} or ServiceNow) after the workflow operation succeeds. Refer to each step's parameters for whether `push-case` is supported.
 
 ```yaml
 - name: create_and_push
@@ -42,6 +40,11 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     title: "Triage required"
     severity: high
 ```
+
+% Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all 27 steps
+% support push-case. A complete list of which steps support it would strengthen this section once
+% available. For now the page documents the optional flag generally and leaves per-step support
+% for SME confirmation.
 
 **Getting the case ID.** The response from `cases.createCase` includes the new case ID at `steps.<step_name>.output.case.id`. Reference it in subsequent steps:
 
@@ -187,7 +190,7 @@ Output: `{ cases: array, errors: array }`. The `errors` array contains entries f
 
 ### `cases.findCases` [cases-findcases]
 
-Search for cases matching filter criteria. Supports paging, sorting, and filtering by many fields. The output includes a `cases` array plus per-status counts (`count_open_cases`, `count_in_progress_cases`, `count_closed_cases`), `page`, `per_page`, and `total`.
+Search for cases matching filter criteria. Supports paging, sorting, and filtering by many fields.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -222,6 +225,8 @@ Search for cases matching filter criteria. Supports paging, sorting, and filteri
     perPage: 20
 ```
 
+The output includes a `cases` array plus per-status counts (`count_open_cases`, `count_in_progress_cases`, `count_closed_cases`), `page`, `per_page`, and `total`.
+
 ### `cases.findSimilarCases` [cases-findsimilarcases]
 
 Find cases similar to a given case, matched by shared observables. Useful for deduplication before creating a new case.
@@ -232,7 +237,7 @@ Find cases similar to a given case, matched by shared observables. Useful for de
 | `page` | `with` | integer | Yes | Page number (1-based). |
 | `perPage` | `with` | integer | Yes | Results per page. |
 
-The output includes a `cases` array, `page`, and `per_page`.
+Output: `{ cases: array, page: integer, per_page: integer, total: integer }`.
 
 ```yaml
 - name: find_similar
@@ -361,7 +366,7 @@ Set a case's category.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `category` | `with` | string | Yes | Category name. |
-| `owner` | `with` | string | No | Case owner. Optional, helps with auto-completion. |
+| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
 
 ### `cases.setCustomField` [cases-setcustomfield]
 
@@ -372,7 +377,7 @@ Set a single custom-field value on a case. The `field_name` parameter is the sys
 | `case_id` | `with` | string | Yes | Case ID. |
 | `field_name` | `with` | string | Yes | Custom-field identifier. System-set, typically a UUID. |
 | `value` | `with` | `string \| number \| boolean` | Yes | Field value. |
-| `owner` | `with` | string | No | Case owner. Optional, helps with auto-completion. |
+| `owner` | `with` | string | No | Case owner. Optional, but providing it helps with editor auto-completion. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
 
 ```yaml
@@ -441,7 +446,7 @@ Add a Markdown-formatted comment to a case.
 
 ### `cases.addAlerts` [cases-addalerts]
 
-Attach detection alerts to a case. Each entry is an **object** with `alertId` and `index`; the optional `rule` describes the rule that generated the alert.
+Attach detection alerts to a case. Each entry is an **object** with `alertId` and `index`. The optional `rule` describes the rule that generated the alert.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
@@ -506,7 +511,7 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
         value: "{{ event.alerts[0].file.hash.sha256 }}"
 ```
 
-The `typeKey` must match one of the built-in observable type keys. Examples of accepted values include: `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`
+The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`).
 
 ### `cases.getAllAttachments` [cases-getallattachments]
 
@@ -516,7 +521,7 @@ Fetch every attachment associated with a case without pagination. Use this when 
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 
-The output is a list of attachments associated with the case you specified.
+Output: `{ attachments: array }`.
 
 ```yaml
 - name: list_attachments

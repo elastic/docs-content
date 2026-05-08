@@ -148,7 +148,7 @@ For {{agent}}s installed using DEB or RPM packages, you must use your system's p
 
 The basic upgrade scenario should work for most use cases. However, in an air-gapped environment {{agent}} is not able to access the {{artifact-registry}} at `artifacts.elastic.co` directly.
 
-As an alterative, you can do one of the following:
+As an alternative, you can do one of the following:
 
 * [Configure a proxy server](/reference/fleet/fleet-agent-proxy-support.md) for standalone {{agent}} to access the {{artifact-registry}}.
 * [Host your own artifact registry](/reference/fleet/air-gapped.md#host-artifact-registry) for standalone {{agent}} to access binary downloads.

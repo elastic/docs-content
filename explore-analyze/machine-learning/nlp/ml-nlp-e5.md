@@ -129,7 +129,7 @@ PUT _ml/trained_models/.multilingual-e5-small
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment) with a deployment ID:
 
 ```console
 POST _ml/trained_models/.multilingual-e5-small/deployment/_start?deployment_id=for_search
