@@ -10,7 +10,6 @@ products:
 
 # Capture {{es}} diagnostics [diagnostic]
 
-
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
 
 This information can be used to troubleshoot problems with your cluster. For examples of issues that you can troubleshoot using Support Diagnostic tool output, refer to [the Elastic blog](https://www.elastic.co/blog/why-does-elastic-support-keep-asking-for-diagnostic-files).
@@ -19,10 +18,13 @@ You can generate diagnostic information using this tool before you contact [Elas
 
 Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
+
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
-
-
 
 ## Requirements [diagnostic-tool-requirements]
 

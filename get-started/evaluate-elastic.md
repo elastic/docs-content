@@ -7,7 +7,7 @@ products:
 applies_to:
   serverless:
   deployment:
-    ess: ga
+    ech: ga
 description: Build a successful proof of concept during your Elastic trial. Learn how to define success criteria, choose the right deployment and use case, measure results, and prepare for production.
 ---
 
@@ -149,7 +149,7 @@ With your trial goal defined, follow this framework to build a PoC that demonstr
 
 ### Ingest real data
 
-To build a meaningful PoC, you need real-world data and not just sample datasets.
+To build a meaningful PoC, you need real-world data and not sample datasets.
 
 #### Why real data matters
 
@@ -211,7 +211,7 @@ Once data is flowing, use the trial to validate the features that will determine
 
 ### Build your PoC deliverables
 
-A strong PoC is essential for a good trial. Keep it simple but meaningful.
+A strong PoC is essential for a good trial. Keep it basic but meaningful.
 
 Your PoC should:
 
