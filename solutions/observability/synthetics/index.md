@@ -20,7 +20,7 @@ The Synthetics UI is for viewing result data from monitors created and managed d
 ::::{important}
 **Not for infrastructure or {{k8s}} monitoring**
 
-The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is **not** intended for host or pod availability monitoring via autodiscovery (for example, automatically checking every pod in a {{k8s}} cluster as it starts and stops).
+The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys, not for infrastructure or {{k8s}} pod uptime monitoring.
 
 For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
 
