@@ -134,5 +134,5 @@ If you have an [Elastic subscription](https://www.elastic.co/pricing), then you 
 * By email: support@elastic.co
 
 :::{tip}
-If you contact us by email, use the email address that you registered with so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you want to add.
+If you contact us by email, use the email address that you registered with so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us by [managing support contacts](https://support.elastic.co/contacts).
 :::
