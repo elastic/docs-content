@@ -7,7 +7,7 @@ applies_to:
   stack:
 products:
   - id: elastic-stack
-description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
+description: "Reference for how Elastic products are versioned, how feature availability badges work, and how to find documentation for your deployment type and version."
 ---
 
 # Versioning and availability

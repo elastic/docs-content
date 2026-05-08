@@ -2,12 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 navigation_title: Solutions
+description: "Overview of Elastic's three search-powered solutions—Elasticsearch, Elastic Observability, and Elastic Security—with guidance on choosing the right one."
 products:
   - id: elasticsearch
 applies_to:
   stack:
   serverless:
-navigation_title: Solutions
 ---
 
 # Solutions overview [introduction]
