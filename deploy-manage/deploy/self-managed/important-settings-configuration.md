@@ -35,7 +35,7 @@ When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self
 
 By default, {{es}} assumes that you are working in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file but the node still starts.
 
-When you configure settings such as [`network.host`](#network.host) so that {{es}} enters production mode, failed bootstrap checks become startup errors and prevent the node from starting. That reduces the risk of data loss from a misconfigured cluster or host.
+When you configure settings such as [`network.host`](#network.host) so that {{es}} enters production mode, failed bootstrap checks become startup exceptions and prevent the node from starting. That reduces the risk of data loss from a misconfigured cluster or host.
 
 For the precise definition of development vs. production mode, refer to [Development vs. production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode).
 
@@ -123,7 +123,7 @@ network.host: 192.168.1.10
 ```
 
 ::::{important}
-When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades bootstrap checks from warnings to startup failures. Refer to [bootstrap checks](#bootstrap-checks) for more information.
+When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades a number of system startup checks from warnings to exceptions. Refer to [bootstrap checks](#bootstrap-checks) for more information.
 ::::
 
 
