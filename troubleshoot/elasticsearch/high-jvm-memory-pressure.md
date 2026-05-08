@@ -58,7 +58,7 @@ To determine the exact reason for the high JVM memory pressure, capture and revi
 If you have an [Elastic subscription](https://www.elastic.co/pricing), you can [request Elastic's assistance](/troubleshoot/index.md#contact-us) reviewing this output. When reaching out, follow these guidelines:
 
 * Grant written permission for Elastic to review your uploaded heap dumps within the support case.
-* Share this file only after receiving any necessary business approvals as it might contain private information. Files are handled according to [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
+* Share this file only after receiving any necessary business approvals, as it might contain private information. Files are handled in accordance with [Elastic's privacy statement](https://www.elastic.co/legal/privacy-statement).
 * Share heap dumps through our secure [Support Portal](https://support.elastic.co/). If your files are too large to upload, you can request a secure URL in the support case.
 * Share the [garbage collector logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging) covering the same time period.
 
@@ -99,7 +99,7 @@ deployment:
   self: ga
 ```
 
-{{es}}'s JVM handles its own executables and can suffer severe performance degredation due to operating system swapping. We recommend [disabling swap](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock).
+{{es}}'s JVM handles its own executables and can suffer severe performance degradation due to operating system swapping. We recommend [disabling swap](/deploy-manage/deploy/self-managed/setup-configuration-memory.md#bootstrap-memory_lock).
 
 {{es}} recommends completely disabling swap on the operating system. This is because anything set {{es}}-level is best effort but swap can have severe impact on {{es}} performance. To check if any nodes are currently swapping, poll the [nodes stats API]({{es-apis}}operation/operation-nodes-stats):
 

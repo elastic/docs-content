@@ -14,7 +14,12 @@ This information can be used to troubleshoot problems with your data pipeline. F
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to minimize turnaround time.
 
-See this [this video](https://www.youtube.com/watch?v=0a1I5yPmoOk) for a walkthrough of capturing a {{ls}} diagnostic.
+See [this video](https://www.youtube.com/watch?v=0a1I5yPmoOk) for a walkthrough of capturing a {{ls}} diagnostic.
+
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
 
 ## Requirements [diagnostic-tool-requirements]
 
@@ -94,4 +99,4 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{ls}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the node. Poll the root endpoint again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the node. Poll the root endpoint again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.

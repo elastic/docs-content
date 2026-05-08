@@ -134,6 +134,10 @@ serverless: preview
 Switch to the **Plugins** tab to assign plugins to your agent. Each plugin bundles a set of related skills into a single install. Before you can assign a plugin, install it from the global **Plugins** page in **Manage components**.
 For more information, refer to [Plugins in {{agent-builder}}](plugins.md).
 
+:::{note}
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+:::
+
 :::::
 
 :::::{step} Customize appearance (optional)

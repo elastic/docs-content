@@ -131,7 +131,7 @@ If a deprecated IC/DT is already in use, it can continue to be used. However, cr
 Deployments using {{stack}} versions prior to 7.10 do not support changing the hardware profile through the {{ecloud}} console or API. To change the hardware profile, first upgrade to version 7.10 or later.
 ::::
 
-In addtion, you can refer to below information about how these terminologies are referenced. 
+In addition, you can refer to below information about how these terminologies are referenced. 
 * _Deprecated_ is also referenced as _legacy_. 
 * Using the `metadata=legacy:true` query parameter will return only legacy/deprecated DTs.
 * Using the `hide_deprecated=true` query parameter will return only valid DTs.

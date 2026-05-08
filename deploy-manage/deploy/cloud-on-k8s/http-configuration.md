@@ -10,11 +10,6 @@ products:
 
 # Elastic Maps HTTP configuration [k8s-maps-http-configuration]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 ## Load balancer settings and TLS SANs [k8s-maps-http-publish]
 
 By default a `ClusterIP` [service](https://kubernetes.io/docs/concepts/services-networking/service/) is created and associated with the Elastic Maps Server deployment. If you want to expose maps externally with a [load balancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), it is recommended to include a custom DNS name or IP in the self-generated certificate.
