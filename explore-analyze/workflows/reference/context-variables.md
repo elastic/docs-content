@@ -1,7 +1,7 @@
 ---
 navigation_title: Context variables
 applies_to:
-  stack: ga 9.4+
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Every context variable you can reference in a Liquid expression inside a workflow, with an example for each.
 products:

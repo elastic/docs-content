@@ -1,9 +1,9 @@
 ---
 navigation_title: Step type index
 applies_to:
-  stack: ga 9.4+
+  stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Every step type that ships in Elastic Workflows 9.4, alphabetical, with a one-line description and a link to its full reference.
+description: Every step type available for Elastic Workflows, ordered alphabetically, with a one-line description and a link to its full reference.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,7 +15,7 @@ products:
 
 # Step type index [workflows-step-types]
 
-Every step type that ships in 9.4, alphabetical. Use this lookup when you know the step ID and want the reference fast.
+Every step type available for Elastic Workflows, ordered alphabetically. Use this lookup when you know the step ID and want the reference fast.
 
 | Step type | Category | What it does |
 |---|---|---|

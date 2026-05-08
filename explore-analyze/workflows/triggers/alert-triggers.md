@@ -60,7 +60,7 @@ After creating your workflow, configure your alert rule to trigger it.
 
 ::::{tab-set}
 
-:::{tab-item} Alerting rules
+:::{tab-item} Alerting rules (Stack and Observability)
 1. Go to **{{rules-ui}}** in **{{stack-manage-app}}** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Find or create the alerting rule you want to trigger the workflow.
 3. In the rule settings, under **Actions**, select **Add action**.
@@ -103,7 +103,7 @@ When the configured rule generates an alert, your workflow automatically execute
 
 ## Alert event payload [workflows-alert-trigger-event]
 
-When an attached rule fires, the workflow runs with the alert payload on the `event` context variable:
+When an attached rule fires, the workflow runs and receives the alert payload through the `event` context variable:
 
 | `event.*` field | Contains |
 |---|---|

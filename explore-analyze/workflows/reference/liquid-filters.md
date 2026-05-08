@@ -1,7 +1,7 @@
 ---
 navigation_title: Liquid filters
 applies_to:
-  stack: ga 9.4+
+  stack: preview 9.3, ga 9.4+
   serverless: ga
 description: Every Liquid filter available in workflow expressions, categorized, with worked examples for the two custom filters and the commonly-confused ones.
 products:
