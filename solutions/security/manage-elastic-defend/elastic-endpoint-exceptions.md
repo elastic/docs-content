@@ -105,6 +105,10 @@ The **Add Endpoint Exception** flyout opens.
 It might take longer for exceptions to be applied to hosts within larger deployments.
 ::::
 
+::::{tip}
+To add multiple exceptions at once, you can import an NDJSON file instead. Refer to [Import and export {{elastic-endpoint}} exceptions](#import-export-endpoint-exceptions).
+::::
+
 
 ## Nested conditions [nested-conditions]
 
@@ -118,13 +122,29 @@ The **Endpoint exceptions** tab on the **Artifacts** page displays all {{elastic
 * Select one or more policies to show only exceptions assigned to those policies.
 * Under **Additional filters**, select **Global entries** to show exceptions assigned globally, or **Unassigned entries** to show exceptions not assigned to any policy.
 
-You can import and export {{elastic-endpoint}} exceptions as NDJSON files using the actions menu ({icon}`boxes_vertical`) on the **Endpoint exceptions** tab.
+### Import and export {{elastic-endpoint}} exceptions [import-export-endpoint-exceptions]
+
+::::{admonition} Requirements
+* To export {{elastic-endpoint}} exceptions, you need the **Endpoint Exceptions: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Endpoint Exceptions: All** privilege.
+* To import global items, you need the **Endpoint Exceptions: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export {{elastic-endpoint}} exceptions as NDJSON files:
+
+- **When the list is empty**: click **Import {{elastic-endpoint}}**.
+- **When the list has entries**: click the actions menu ({icon}`boxes_vertical`), then select **Import {{elastic-endpoint}}** or **Export {{elastic-endpoint}}**.
 
 When you import an NDJSON file, the imported exceptions are appended to your existing exceptions — existing entries are not removed or overwritten.
 
 ::::{important}
 In versions prior to 9.4, importing offered the option to remove all existing exceptions and replace them with the imported ones. Starting in 9.4, import always appends — existing exceptions are never removed. If you're upgrading from an earlier version, this applies whether or not you have opted in to per-policy exceptions.
 ::::
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 :::{image} /solutions/images/security-endpoint-exceptions.png
 :alt: List of Elastic Endpoint exceptions
