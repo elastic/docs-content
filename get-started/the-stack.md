@@ -14,7 +14,7 @@ description: The {{stack}} is a group of products that work together to securely
 ---
 # The {{stack}}
 
-The {{stack}} is a suite of open-source products — {{es}}, {{kib}}, {{agent}}, {{ls}}, and more — that work together to ingest, store, search, and visualize data at scale. This page describes each component and explains how they fit together across Elastic deployments.
+The {{stack}} is a suite of open-source products, like {{es}}, {{kib}}, {{agent}}, {{ls}}, and more, that work together to ingest, store, search, and visualize data at scale. This page describes each component and explains how they fit together across Elastic deployments.
 
 All Elastic [deployments and projects](deployment-options.md) share the same open source foundation:
 
