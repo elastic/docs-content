@@ -59,7 +59,7 @@ To add a host isolation exception:
 5. Click **Add Host isolation exception**. The new exception is added to the **Host isolation exceptions** list.
 
 ::::{tip}
-:applies_to: stack: ga 9.4+; serverless: ga
+:applies_to: { stack: ga 9.4+, serverless: ga }
 
 To add multiple host isolation exceptions at once, you can import an NDJSON file instead. Refer to [Import and export host isolation exceptions](#import-export-host-isolation-exceptions).
 ::::

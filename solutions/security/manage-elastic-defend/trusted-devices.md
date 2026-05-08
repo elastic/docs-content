@@ -38,7 +38,7 @@ Add a trusted device to exempt it from device control:
 6. Click **Add trusted device**.
 
 ::::{tip}
-:applies_to: stack: ga 9.4+; serverless: ga
+:applies_to: { stack: ga 9.4+, serverless: ga }
 
 To add multiple trusted devices at once, you can import an NDJSON file instead. Refer to [Import and export trusted devices](#import-export-trusted-devices).
 ::::

@@ -142,7 +142,7 @@ To add a trusted application:
 5. Click **Add trusted application**. The application is added to the **Trusted applications** list.
 
 ::::{tip}
-:applies_to: stack: ga 9.4+; serverless: ga
+:applies_to: { stack: ga 9.4+, serverless: ga }
 
 To add multiple trusted applications at once, you can import an NDJSON file instead. Refer to [Import and export trusted applications](#import-export-trusted-apps).
 ::::

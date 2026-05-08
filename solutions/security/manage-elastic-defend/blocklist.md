@@ -26,7 +26,7 @@ The blocklist is not intended to broadly block benign applications for non-secur
 
 By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. You can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
 
-## Add a blocklist [add-blocklist-entry]
+## Add a blocklist entry [add-blocklist-entry]
 
 To add a blocklist entry:
 
@@ -76,7 +76,7 @@ To add a blocklist entry:
     2. On the **Policy settings** tab, ensure that the **Malware protections** and **Blocklist** toggles are switched on. Both settings are enabled by default.
 
 ::::{tip}
-:applies_to: stack: ga 9.4+; serverless: ga
+:applies_to: { stack: ga 9.4+, serverless: ga }
 
 To add multiple blocklist entries at once, you can import an NDJSON file instead. Refer to [Import and export blocklist entries](#import-export-blocklist).
 ::::

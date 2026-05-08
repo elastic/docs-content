@@ -102,7 +102,7 @@ Create event filters from the **Hosts** page or, depending on your version, from
 7. Click **Add event filter**. The new filter is added to the **Event filters** list.
 
 ::::{tip}
-:applies_to: stack: ga 9.4+; serverless: ga
+:applies_to: { stack: ga 9.4+, serverless: ga }
 
 To add multiple event filters at once, you can import an NDJSON file instead. Refer to [Import and export event filters](#import-export-event-filters).
 ::::
