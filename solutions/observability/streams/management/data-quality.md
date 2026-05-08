@@ -33,12 +33,6 @@ Use the following components to monitor the health of your data and identify and
 
 ## Data quality calculation [streams-data-quality-calculation]
 
-Streams uses the following ES|QL queries to calculate the quality score for a stream:
-
-- All documents (including failed documents): `FROM <stream-name>, <stream-name>::failures | STATS doc_count = COUNT(*)`
-- Failed documents only: `FROM <stream-name>::failures | STATS failed_doc_count = COUNT(*)`
-- Degraded documents: `FROM <stream-name> METADATA _ignored | WHERE _ignored IS NOT NULL | STATS degraded_doc_count = COUNT(*)`
-
 Streams calculates data quality as follows:
 
 * **Good:** Both the **Degraded documents** percentage and the **Failed documents** percentage are 0.
@@ -59,13 +53,3 @@ For example, for a stream called `my-stream`, Streams fetches all documents from
 In Streams, you need to turn on failure stores to get failed documents. To do this, select **Enable failure store** in the **Failed documents** component. From here you can set your failure store retention period.
 
 For more information on data quality, refer to the [data set quality](../../data-set-quality-monitoring.md) documentation.
-
-## Create a data quality alert [streams-data-quality-alert]
-
-To get notified when the percentage of degraded documents in a stream exceeds a threshold, create an alert rule from the **Data quality** tab.
-
-1. Open the **Data quality** tab for the stream you want to monitor.
-2. Select **Create rule** ({icon}`bell`).
-3. Define the conditions for your rule.
-
-For more information, refer to [Create a degraded docs rule](../../incident-management/create-a-degraded-docs-rule.md).
