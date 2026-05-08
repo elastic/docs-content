@@ -49,11 +49,6 @@ Create event filters from the **Hosts** page or, depending on your version, from
     * {applies_to}`stack: ga 9.0-9.3` To create an event filter from the **Event filters** page, click **Add event filter**.
 
 
-    :::{image} /solutions/images/security-event-filter.png
-    :alt: Add event filter flyout
-    :screenshot:
-    :::
-
 2. Fill in these fields in the **Details** section:
 
     1. `Name`: Enter a name for the event filter.

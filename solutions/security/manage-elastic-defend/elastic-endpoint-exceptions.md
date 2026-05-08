@@ -122,6 +122,11 @@ The **Endpoint exceptions** tab on the **Artifacts** page displays all {{elastic
 * Select one or more policies to show only exceptions assigned to those policies.
 * Under **Additional filters**, select **Global entries** to show exceptions assigned globally, or **Unassigned entries** to show exceptions not assigned to any policy.
 
+:::{image} /solutions/images/security-endpoint-exceptions.png
+:alt: List of Elastic Endpoint exceptions
+:screenshot:
+:::
+
 ### Import and export {{elastic-endpoint}} exceptions [import-export-endpoint-exceptions]
 
 ::::{admonition} Requirements
@@ -145,11 +150,6 @@ In versions prior to 9.4, importing offered the option to remove all existing ex
 Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
 
 If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
-
-:::{image} /solutions/images/security-endpoint-exceptions.png
-:alt: List of Elastic Endpoint exceptions
-:screenshot:
-:::
 
 ### Edit an {{elastic-endpoint}} exception [edit-endpoint-exception]
 
