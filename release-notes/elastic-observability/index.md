@@ -23,7 +23,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.4.1 [elastic-observability-9.4.1-release-notes]
 
-There are no user-facing changes in {{observability}} for the 9.4.1 release.
+### Fixes [elastic-observability-9.4.1-fixes] 
+
+* Fixes empty rule type fields, such as `kibana.alert.reason`, on active alert documents when a delayed alert graduates to active during a flapping hold without an executor report [#266012]({{kib-pull}}266012).
 
 ## 9.4.0 [elastic-observability-9.4.0-release-notes]
 
