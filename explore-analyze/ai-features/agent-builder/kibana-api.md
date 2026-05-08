@@ -68,8 +68,6 @@ Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automaticall
 
 ## Available APIs
 
-% TODO: we may remove this list once the API reference is live, but probably helpful in the short term
-
 The following sections provide quick examples for each API endpoint grouped by resource type.
 
 ### Tools APIs

@@ -353,7 +353,7 @@ You can edit all of the options described in [](#add-variable-control).
 
 When you save your edits, the control is updated for your query.
 
-### Import a Discover query along with its controls into a dashboard
+### Import a Discover query along with its controls into a dashboard [import-discover-query-with-controls]
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::

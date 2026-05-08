@@ -853,6 +853,7 @@ redirects:
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:
       'hybrid-elastic-agent': 'elastic-agent-multiple-collection-methods'
+      'beat-receivers': 'beat-receivers'
   'reference/fleet/otel-integrations.md':
     anchors:
       'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
