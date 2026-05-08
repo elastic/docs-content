@@ -36,6 +36,7 @@ To install or run the risk scoring engine, you need the following:
 | Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security > Alerts** feature |
+| {applies_to}`stack: ga 9.4+` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 
 
 ### Predefined roles [ers_roles]
@@ -114,7 +115,8 @@ To turn on the entity store, you need the following:
 
 - `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`
 - `read` and `manage` for `risk-score.risk-score-*`
-- `read` and `manage` for `entities-latest-*`
+- `read` and `write` for `.entities.v2.latest.security_*`
+- Additionally, `manage` for `.entities.v2.latest.security_*` is required to add or remove entities from a resolution group in the [Resolution](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) section of the entity details flyout
 - `read` and `view_index_metadata` for all {{elastic-sec}} indices
 
 #### {{kib}}
