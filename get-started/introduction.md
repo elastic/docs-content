@@ -26,7 +26,7 @@ The core [{{es}} search capabilities](/solutions/search.md) are available across
 :::
 
 :::{tip}
-Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations use our products for their specific business needs.
 :::
 
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.
