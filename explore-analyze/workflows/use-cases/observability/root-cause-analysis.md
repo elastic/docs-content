@@ -25,7 +25,7 @@ If you're new to workflows, complete [Build your first workflow](/explore-analyz
 
 - **Permissions.** `All` on **Analytics > Workflows**, **Observability > Cases**, and whatever Agent Builder privilege is required to invoke agents in your space. Refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 - **Alerting rule.** A configured [observability alerting rule](/solutions/observability/incident-management/alerting.md) that fires on the conditions you want to auto-investigate (metric thresholds, SLO burn rate, anomaly detection, or custom query).
-- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The examples use `elastic-ai-agent` as a generic default; substitute the ID of the agent you've configured.
+- **SRE agent.** An {{agent-builder}} agent configured to investigate observability signals. The examples use `elastic-ai-agent` as a default. Substitute your agent ID.
 - **Attach the workflow to the rule.** After saving the workflow, attach it as an action on the alerting rule. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 ## How it works [workflows-rca-how-it-works]
