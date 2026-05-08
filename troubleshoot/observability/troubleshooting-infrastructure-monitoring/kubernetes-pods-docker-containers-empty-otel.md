@@ -3,6 +3,7 @@ navigation_title: Kubernetes Pods and Docker Containers views empty with EDOT
 description: Learn why the Kubernetes Pods and Docker Containers views in the Infrastructure Inventory are empty when using EDOT, and how to resolve it.
 applies_to:
   stack: ga 9.2+
+  serverless: ga
 products:
   - id: observability
 ---
