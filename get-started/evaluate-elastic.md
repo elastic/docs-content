@@ -7,7 +7,7 @@ products:
 applies_to:
   serverless:
   deployment:
-    ess: ga
+    ech: ga
 description: Build a successful proof of concept during your Elastic trial. Learn how to define success criteria, choose the right deployment and use case, measure results, and prepare for production.
 ---
 
