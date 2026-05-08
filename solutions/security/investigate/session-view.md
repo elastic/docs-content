@@ -13,7 +13,7 @@ products:
 
 # Session View [security-session-view]
 
-Session View is an investigation tool that allows you to examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by parentage and time of execution. It displays events in a highly readable format that is inspired by the terminal. This makes it a powerful tool for monitoring and investigating session activity on your Linux infrastructure and understanding user and service behavior.
+Session View is an investigation tool that allows you to examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by percentage and time of execution. It displays events in a highly readable format that is inspired by the terminal. This makes it a powerful tool for monitoring and investigating session activity on your Linux infrastructure and understanding user and service behavior.
 
 ::::{admonition} Requirements
 Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
