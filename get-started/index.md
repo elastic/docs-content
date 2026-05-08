@@ -19,7 +19,7 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Elastic fundamentals
 
-Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
+Elastic fundamentals is your starting point for understanding the Elastic platform. This section covers the core concepts of the Elastic Stack, explains the available deployment options, and links to training and glossary resources so you can get productive quickly.
 
 :::{tip}
 If you are using a [free 14-day {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and need guidance on building a proof of concept, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).

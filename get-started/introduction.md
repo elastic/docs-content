@@ -1,13 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
-navigation_title: Solutions
+navigation_title: Solutions overview
 products:
   - id: elasticsearch
 applies_to:
   stack:
   serverless:
-navigation_title: Solutions
 ---
 
 # Solutions overview [introduction]
