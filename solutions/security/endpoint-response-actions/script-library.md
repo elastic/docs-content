@@ -1,7 +1,8 @@
 ---
 applies_to:
   stack: ga 9.4+
-  serverless: unavailable
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
