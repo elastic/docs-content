@@ -25,7 +25,7 @@ The recommended way to use hybrid search in the {{stack}} follows the `semantic_
 
 ## Requirements [semantic-text-requirements]
 
-- In this tutorial, we show code examples for using both [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) and ML-nodes. EIS is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
+- In this tutorial, we show code examples for using both [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) and [{{ml}} nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#ml-node-role). EIS is automatically enabled on {{ech}} deployments and {{serverless-short}} projects. You can also use [EIS for self-managed clusters](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 
 - To use the `semantic_text` field type with an {{infer}} service other than Elastic {{infer-cap}} Service, you must create an {{infer}} endpoint using the [Create {{infer}} API]({{es-apis}}operation/operation-inference-put).
 
@@ -40,19 +40,17 @@ To generate API keys, search for `API keys` in the [global search bar](/explore-
 
 ## Create the index mapping [hybrid-search-create-index-mapping]
 
-::::{note}
-If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings]({{es-apis}}operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
-::::
-
 The destination index will contain both the embeddings for semantic search and the original text field for full-text search. This structure enables the combination of semantic search and full-text search.
 
+You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own [{{ml}} nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#ml-node-role). 
+
 :::{tip}
-For large-scale deployments using dense vector embeddings, you can significantly reduce memory usage by configuring quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md). For advanced configuration, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
+For large-scale dense vector deployments, quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) can reduce memory usage. For details, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 :::
 
-You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md) or on your own ML-nodes. 
-
 ### Using EIS
+
+In this example, you create an index for hybrid search using Elastic {{infer-cap}} Service. Embeddings are generated with the [default {{infer}} model](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) for the the `semantic_text` field type.
 
 ::::{tab-set}
 
@@ -63,7 +61,7 @@ PUT semantic-embeddings
 {
   "mappings": {
     "properties": {
-      "semantic_text": { <1>
+      "content_embedding": { <1>
         "type": "semantic_text" <2>
       },
       "content": { <3>
@@ -91,7 +89,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
      -d '{
        "mappings": {
          "properties": {
-           "semantic_text": { <1>
+           "content_embedding": { <1>
              "type": "semantic_text" <2>
            },
            "content": { <3>
@@ -112,11 +110,13 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 
 ::::
 
-:::{note}
-Relying on the default {{infer}} endpoint is convenient for getting started, but for production environments we recommend [explicitly specifying the `inference_id`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) for `semantic_text` fields. The default endpoint can change across versions and deployment types, which can lead to indices with mixed embedding models and cause ranking issues in multi-index searches. For details, refer to [Potential issues when mixing embedding models across indices](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations).
+:::{important}
+For production environments, we recommend [explicitly specifying the `inference_id`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) for `semantic_text` fields. Default endpoints can change across versions and deployment types, which may lead to to [potential issues](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations) like mixed embedding models and inconsistent ranking results.
 :::
 
 ### Using ML-nodes
+
+Below is an example of creating an index mapping using your own ML node with the `.elser-2-elasticsearch` {{infer}} endpoint.
 
 ::::{tab-set}
 
@@ -127,7 +127,7 @@ PUT semantic-embeddings
 {
   "mappings": {
     "properties": {
-      "semantic_text": { <1>
+      "content_embedding": { <1>
         "type": "semantic_text", <2>
         "inference_id": ".elser-2-elasticsearch" <3>
       },
@@ -157,7 +157,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
      -d '{
        "mappings": {
          "properties": {
-           "semantic_text": { <1>
+           "content_embedding": { <1>
              "type": "semantic_text", <2>
              "inference_id": ".elser-2-elasticsearch" <3>
            },
@@ -291,7 +291,7 @@ EOF
 }
 ```
 
-Each document was created with `content` indexed for search; the same text was copied to `semantic_text` and embedded via the configured {{infer}} endpoint.
+Each document is created with `content` indexed for search. The same text was copied to `semantic_text` and embedded through the configured {{infer}} endpoint.
 
 :::
 
