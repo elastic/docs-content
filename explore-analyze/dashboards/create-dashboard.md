@@ -13,7 +13,7 @@ type: how-to
 
 # Create a dashboard from the UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
+Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visulizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
 
 :::{tip} - New ways to create dashboards
 :applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
