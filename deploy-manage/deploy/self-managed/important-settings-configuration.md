@@ -31,7 +31,7 @@ products:
 
 When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) against {{es}} settings, JVM configuration, and the host operating system to confirm they meet minimum safety requirements. If a check fails, you can resolve it by updating the cluster or JVM settings described on this page (for example networking or discovery settings), by adjusting the server as described in [Important system configuration](/deploy-manage/deploy/self-managed/important-system-configuration.md) (for example file descriptors or `vm.max_map_count`), or both.
 
-### Development mode vs. production mode [dev-vs-prod]
+### Development mode vs. production mode
 
 By default, {{es}} assumes that you are working in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file but the node still starts.
 
