@@ -33,7 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Fixes an issue where detection rules failed with errors when the executing user lacked read access to entity store indices. Entity store enrichment is now silently skipped for users without entity store index access [#267787]({{kib-pull}}267787).
 * Fixes an issue where the Security alert flyout failed to render its header, content, and footer when Discover was embedded in a dashboard [#267321]({{kib-pull}}267321).
-* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included security alert documents in event counts, and ensures Cross-Project Search ({{cps-init}}) compatibility so events from remote-cluster projects are correctly included [#265561]({{kib-pull}}265561).
+* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included alert documents in event counts, and ensures compatibility with cross-cluster search so events from remote clusters are correctly included [#265561]({{kib-pull}}265561).
 * Fixes an issue where {{elastic-defend}} failed to send data to {{ls}} output when the kernel TCP send buffer was full, causing connections to drop prematurely.
 * Updates eBPF probes for {{elastic-defend}} on Linux to support 7.0 kernels.
 * Fixes {{elastic-defend}} on Linux to report more accurate path names for file-less execution events.
