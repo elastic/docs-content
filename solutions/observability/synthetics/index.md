@@ -17,6 +17,18 @@ The Synthetics UI is for viewing result data from monitors created and managed d
 
 ::::
 
+::::{important}
+**Not for infrastructure or {{k8s}} monitoring**
+
+The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is **not** intended for host or pod availability monitoring via autodiscovery (for example, automatically checking every pod in a {{k8s}} cluster as it starts and stops).
+
+For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
+
+* **{{heartbeat}} with autodiscovery**: Run {{heartbeat}} directly on your infrastructure and use its [autodiscovery](https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-autodiscover.html) capabilities to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. Note that the Uptime app is deprecated as of 8.15.
+
+::::
+
 Synthetics periodically checks the status of your services and applications. Monitor the availability of network endpoints and services using the following types of monitors:
 
 * [Lightweight HTTP/S, TCP, and ICMP monitors](/solutions/observability/synthetics/index.md#monitoring-uptime)
