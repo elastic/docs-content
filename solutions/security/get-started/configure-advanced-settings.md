@@ -134,6 +134,14 @@ serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
+## Enable alerts and attacks alignment
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
+
 ## Enable asset inventory
 ```{applies_to}
 stack: preview 9.2
