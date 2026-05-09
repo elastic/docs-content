@@ -106,6 +106,9 @@ These terms appear throughout the {{alerting-v2}} docs. If a term is unclear whi
 **Breach**
 :   A single moment when a rule's query finds a match. One breach doesn't necessarily trigger a notification. You can configure a rule to require several consecutive breaches before it confirms the problem is real.
 
+**Dispatcher**
+:   The background process in {{kib}} that runs the notification pipeline. On a short interval (around 10 seconds), it evaluates each enabled action policy against active episodes and sends notifications. The dispatcher runs on its own cadence, separate from the rule schedule. To learn more, refer to [Notification gating](kibana-alerting-v2/notifications/notification-gating-v2.md).
+
 **Episode**
 :   The complete record of one problem, from when it was first detected to when it recovered. An episode moves through states (pending, active, recovering, inactive) as the situation changes. This is what you see and act on in the Alerts UI. To learn more, refer to [Alerts](kibana-alerting-v2/alerts-v2.md).
 

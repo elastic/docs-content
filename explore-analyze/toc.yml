@@ -426,6 +426,7 @@ toc:
               - file: alerting/kibana-alerting-v2/notifications/create-configure-action-policy-v2.md
               - file: alerting/kibana-alerting-v2/notifications/action-policy-reference-v2.md
               - file: alerting/kibana-alerting-v2/notifications/manage-action-policies-v2.md
+              - file: alerting/kibana-alerting-v2/notifications/notification-gating-v2.md
       - file: alerting/watcher.md
         children:
           - file: alerting/watcher/watcher-getting-started.md

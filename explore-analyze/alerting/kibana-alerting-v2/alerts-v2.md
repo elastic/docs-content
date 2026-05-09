@@ -122,6 +122,8 @@ A rule in Detect mode only writes signals. It never opens episodes, so action po
 
 Alert events are stored in `.rule-events`. Triage actions (acknowledge, snooze, resolve) are stored in `.alert-actions`. Both are queryable in Discover.
 
+Every time you take an action on an episode — acknowledging it, snoozing it, resolving it, editing its tags — {{kib}} writes a new document to `.alert-actions`. These documents are append-only and can be queried in Discover for auditing and metrics such as mean time to acknowledge (MTTA). For field definitions, refer to [Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
+
 <!--[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
 
@@ -135,7 +137,8 @@ Retention is managed automatically through ILM. Older backing indices move throu
 
 ## Related pages
 
-- **[View, manage, and reference alerts](alerts/view-and-manage-alerts-v2.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- **[View and manage alerts](alerts/view-and-manage-alerts-v2.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
 - **[Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover-v2.md):** Use {{esql}} to query `.rule-events` and `.alert-actions` for ad hoc analysis and dashboards.
 - **[Alert states and fields reference](alerts/alert-states-and-fields-reference-v2.md):** Look up lifecycle states, field names, and episode document structure.
 - **[Notifications](notifications-v2.md):** Set up action policies to route alert episodes to the right people and channels.
+- **[Notification gating](notifications/notification-gating-v2.md):** Understand how acknowledge, snooze, and deactivate control whether an episode triggers a notification.

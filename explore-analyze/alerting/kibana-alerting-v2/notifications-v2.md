@@ -39,17 +39,17 @@ Multiple policies can match the same episode, and each runs independently. There
 
 $$$how-action-policies-evaluated-v2$$$
 
-When an episode is eligible for dispatch, the system processes each enabled policy that is not snoozed, in order:
+{{kib}} runs a background process called the dispatcher that checks for eligible episodes on a short interval (around 10 seconds) and evaluates action policies against them. The dispatcher is separate from the rule schedule. Rules write events on their own cadence, and the dispatcher picks them up asynchronously.
 
-1. **Suppression:** Is the episode acknowledged, snoozed, or deactivated? If so, skip dispatch.
+For each enabled policy that is not snoozed, the dispatcher works through the following steps:
+
+1. **Gating:** Is the episode acknowledged, snoozed, or deactivated? If so, skip dispatch. Refer to [Notification gating](notifications/notification-gating-v2.md) to learn more.
 2. **Matcher:** Does the episode match the policy's KQL? If not, skip this policy.
 3. **Grouping:** How should matching episodes batch into notification groups?
 4. **Throttle:** Has a notification already gone out for this group recently? If so, wait.
 5. **Destinations:** Send to the policy's workflow destinations.
 
-The dispatcher runs on a short interval (around 10 seconds). Notifications don't arrive on the exact rule schedule. They follow the dispatcher's own cycle.
-
-### Possible outcomes [possible-outcomes]
+### Notification dispatch outcomes [possible-outcomes]
 
 Each notification attempt results in one of the following outcomes.
 
@@ -57,7 +57,7 @@ Each notification attempt results in one of the following outcomes.
 | --- | --- |
 | `dispatched` | A notification was sent. |
 | `throttled` | Dispatch was suppressed due to throttle timing. |
-| `suppressed` | The episode was suppressed before dispatch (acknowledged, snoozed, or deactivated). |
+| `suppressed` | The episode was gated before dispatch (acknowledged, snoozed, or deactivated). |
 | `unmatched` | No policy matched this episode; no workflow ran. |
 | `error` | Processing failed. Check {{kib}} logs. |
 

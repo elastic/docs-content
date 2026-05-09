@@ -28,26 +28,51 @@ Narrow the time range when filters return too many rows or when tag options need
 
 ## Episode actions
 
-From any row in the table you can:
+From any row in the table you can take the following row-level actions:
 
 - **Acknowledge / Unacknowledge:** Applies to the individual episode.
-- **Snooze / Unsnooze:** Applies to the group (`group_hash`), so all rows sharing that group are affected.
+- **Snooze / Unsnooze:** Applies to the group (`group_hash`), so all rows sharing that group are silenced for the snooze duration.
 - **Resolve / Unresolve:** Applies to the group. The episode shows as inactive in the UI when resolved, even if the underlying lifecycle data has not yet caught up.
+- **Activate:** Manually moves the episode to `active` state. Use when the episode is in `pending` and you want to confirm the problem and start the notification flow without waiting for the activation threshold to be met.
 - **Edit tags:** Opens a flyout where you can add new tags to the episode or remove existing ones. Tag changes apply to the individual episode and are persisted as `tag` actions in `.alert-actions`. Tags added this way appear in the **Tags** filter on the alerts table and can be queried in Discover for reporting and triage workflows.
 
-The same actions are available from the episode detail page.
+The same actions are available from the episode detail page. To assign an episode to a specific user, open the episode detail page.
+
+### Bulk actions [bulk-actions-v2]
+
+$$$bulk-actions-v2$$$
+
+Select one or more rows using the checkboxes in the table to apply an action to multiple episodes at once. The same actions available at the row level (acknowledge, unacknowledge, snooze, unsnooze, resolve, activate, and edit tags) can be applied in bulk.
+
+Bulk actions follow the same scope rules as row-level actions: acknowledge and activate apply per episode, while snooze and resolve apply per group. When you snooze a selection of episodes that belong to different groups, each group is snoozed independently for the duration you set.
 
 ### Snooze an episode [snooze-episode-v2]
 
 $$$snooze-episode-v2$$$
 
-Snoozing suppresses notifications for an alert series for a defined period. When you select **Snooze** on a row, a popover opens where you set a duration. During the snooze window, the rule continues to evaluate, and the episode stays visible in the alerts table, but notifications are not sent.
+Snoozing suppresses notifications for an alert series for a defined period. The rule continues to evaluate during the snooze window and the episode stays visible in the alerts table, but no notifications are sent until the snooze expires.
 
-Snooze applies at the group level. All episodes sharing the same `group_hash` are silenced for the duration, not just the row you acted on. Use snooze when a known condition is expected to persist for a fixed time and you want to stop the noise without disabling the rule entirely. The snooze expires automatically when the duration ends.
+To snooze a single episode, select **Snooze** on any row. A quick-snooze popover opens with preset duration options so you can silence the episode in one click. Snooze applies at the group level. All episodes sharing the same `group_hash` are silenced for the duration, not just the row you acted on. The snooze expires automatically when the duration ends.
 
-## Open in Discover
+Use snooze when a known condition is expected to persist for a fixed time and you want to stop the noise without disabling the rule entirely. For example, during a scheduled maintenance window or a known noisy period for a specific host.
 
-Select **Discover** on a row to investigate source data. Discover opens with the rule {{esql}} query and a short time window around the episode so you can inspect matching documents in context.
+### Unsnooze an episode [unsnooze-episode-v2]
+
+$$$unsnooze-episode-v2$$$
+
+To end a snooze early for a single episode, select **Unsnooze** on the row. Because snooze applies at the group level, unsnoozing one row clears the snooze for all episodes in the same group. Every episode sharing the same `group_hash` starts receiving notifications again immediately.
+
+To unsnooze multiple episodes at once, select rows using the checkboxes and choose **Unsnooze** from the bulk actions menu. Bulk unsnooze follows the same group-level scope, where each selected episode's entire group is cleared.
+
+## Open in Discover [open-episode-in-discover-v2]
+
+$$$open-episode-in-discover-v2$$$
+
+Select **Discover** on a row to open the rule's base query in Discover. The base query is the {{esql}} statement the rule runs on each evaluation. It reflects the data the alert is monitoring, not just the specific rows that breached the condition. Discover opens scoped to a time window around the episode so you can see the underlying data in context.
+
+Use this when you want to understand why an episode opened, verify that the rule is querying the data you expect, or investigate whether a condition is genuinely a problem or an artifact of the data shape.
+
+<!--[CONTENT NEEDED for M2: This feature may change in M2 to surface both the base query and the alert condition query, giving a more complete view of what triggered the episode. Verify whether the behavior changes in M2 and update this section accordingly.]-->
 
 For ad hoc analysis over `.rule-events` and `.alert-actions` with copy-paste {{esql}} examples, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover-v2.md).
 
@@ -60,6 +85,7 @@ Open an episode's detail page by selecting its name or ID from the table row. Th
 
 - **Lifecycle:** A state-over-time visualization (pending, active, recovering, inactive) driven by events in `.rule-events`.
 - **Actions and metadata:** Tags and action-driven status (acknowledge, snooze, resolve) consistent with the episodes table.
+- **Assignee:** The user currently responsible for the episode. Only one user can be assigned at a time.
 - **Related episodes:** Other episodes on the same rule or series, split into two subsections for easier triage.
 - **Actors:** Users who have taken actions on the episode, visible so teams can track activity and accountability.
 - **Metadata:** A dedicated tab surfacing additional fields from the source event that triggered the alert.
@@ -88,38 +114,27 @@ $$$actors-v2$$$
 
 The **Actors** section lists the users who have taken actions on the episode (who acknowledged it, who snoozed it, and who resolved it) and when each action was taken. This gives teams visibility into the response history for an episode, which is useful for accountability and coordination.
 
-## Alert actions [alert-actions-v2]
+### Assign an episode [assign-episode-v2]
+
+$$$assign-episode-v2$$$
+
+From the episode detail page, you can assign the episode to a specific user to indicate who is responsible for investigating or resolving it. Only one user can be assigned at a time — assigning replaces any existing assignee. To remove an assignment without replacing it, clear the assigned user.
+
+Use assignment when your team needs clear ownership during triage. When multiple people are working through the alerts table at the same time, assigning an episode signals that someone has taken responsibility for it, which prevents duplicate work and makes it easier to track who is handling which issues.
+
+## Action scope reference [alert-actions-v2]
 
 $$$alert-actions-v2$$$
 
-When you take an action, {{kib}} writes a document to the `.alert-actions` data stream. You can query these documents in Discover for auditing and metrics such as mean time to acknowledge (MTTA). For a full field list and state definitions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2).
-
-### Episode scope versus group scope
-
-Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group, meaning all episodes that share the same rule and series. This matters when a rule tracks multiple services or hosts. Snoozing one episode silences the whole group, not only that service.
+Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group. All episodes sharing the same rule and series. This matters when a rule tracks multiple services or hosts: snoozing one episode silences the whole group, not only that service.
 
 | Action | Scope |
 |---|---|
 | Acknowledge / Unacknowledge | Episode |
+| Activate | Episode |
 | Snooze / Unsnooze | Group |
 | Resolve / Unresolve | Group |
 | Edit tags | Episode |
+| Assign | Episode |
 
-## How suppression works [suppression-mechanics-v2]
-
-$$$suppression-mechanics-v2$$$
-
-Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or throttle checks.
-
-Each suppression option is stored as a separate document type in `.alert-actions`. To keep dispatch evaluation efficient at high episode volumes, the dispatcher queries only the relevant `(rule_id, group_hash)` pairs from the current evaluation rather than re-reading the entire `.rule-events` index.
-
-There are three suppression options, each with a different scope:
-
-| Option | Scope | When to use |
-|---|---|---|
-| Acknowledge | Per episode | You're actively working on a specific breach and want to silence notifications for it. To clear suppression, remove the acknowledgement. |
-| Deactivate | Per episode | Marks the episode as inactive and stops notifications for it. Unlike acknowledge, this closes the episode rather than silencing it while leaving it active. Use when you want to manually close a specific episode, for example, when you've addressed the issue but the rule hasn't recovered automatically. |
-| Snooze | Per series (all episodes) | You want to quiet an entire alert series for a defined period. For example, during a known noisy window for a host. Expires automatically. |
-
-<!--[CONTENT NEEDED for M2: M2 makes severity a first-class episode property and leaves open the question of whether a severity *decrease* (de-escalation) should trigger a notification. If de-escalation notifications are added, they will require a new suppression decision point: a snoozed or acknowledged episode that de-escalates may need different suppression behavior than one that escalates. Monitor the M2 severity design and update this section if new suppression rules are added around severity changes.]
--->
+For field definitions and state descriptions, refer to [Alert states and fields reference](alert-states-and-fields-reference-v2.md#alert-states-reference-v2). For how {{kib}} records actions in `.alert-actions` and how notification gating works, refer to [Notification gating](../notifications/notification-gating-v2.md#notification-gating-v2).
