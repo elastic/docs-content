@@ -1282,6 +1282,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Makes the auto-expand indices functionality use the desired cluster topology when one is available
 * Runs replica topology boundary enforcement when receiving the desired topology
 * Adds tests for {{esql}} index exclusion
+* Increases the retention period for AutoOps metrics and history from 4 days to 10 days, allowing you to analyze performance trends and notification history over a longer period.
 
 ### Fixes [serverless-changelog-01192026-fixes]
 
@@ -4400,6 +4401,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
 * Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
 * Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
+* You can now select specific "From/To" dates and times (up to 10 days) in AutoOps to inspect resource consumption and performance at a finer granularity.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)
