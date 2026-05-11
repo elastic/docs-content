@@ -13,6 +13,7 @@ products:
 
 {{es}} requires very little configuration to get started, but there are a number of items which **must** be considered before using your cluster in production:
 
+* [Bootstrap checks](#bootstrap-checks)
 * [Path settings](#path-settings)
 * [Cluster name setting](#_cluster_name_setting)
 * [Node name setting](#node-name)
@@ -25,6 +26,18 @@ products:
 * [JVM fatal error log setting](#_jvm_fatal_error_log_setting)
 * [Cluster backups](#important-settings-backups)
 * [DNS cache settings](#networkaddress-cache-ttl)
+
+## Bootstrap checks [bootstrap-checks]
+
+When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) against {{es}} settings, JVM configuration, and the host operating system to confirm they meet minimum safety requirements. If a check fails, you can resolve it by updating the cluster or JVM settings described on this page (for example networking or discovery settings), by adjusting the server as described in [Important system configuration](/deploy-manage/deploy/self-managed/important-system-configuration.md) (for example file descriptors or `vm.max_map_count`), or both.
+
+### Development mode vs. production mode
+
+When `network.host` or `transport.host` [network settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) are set to a localhost address, {{es}} considers the node to be in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file, but the node still starts.
+
+When `network.host` or `transport.host` are configured to a non-loopback address, {{es}} considers the node to be in production mode, and failed bootstrap checks become startup exceptions and prevent the node from starting. This reduces the risk of data loss from a misconfigured cluster or host.
+
+For the precise definition of development vs. production mode, refer to [Development vs. production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode).
 
 ## Path settings [path-settings]
 
@@ -110,7 +123,7 @@ network.host: 192.168.1.10
 ```
 
 ::::{important}
-When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades a number of system startup checks from warnings to exceptions. See the differences between [development and production modes](important-system-configuration.md#dev-vs-prod).
+When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades a number of system startup checks from warnings to exceptions. Refer to [bootstrap checks](#bootstrap-checks) for more information.
 ::::
 
 
