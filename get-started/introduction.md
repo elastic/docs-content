@@ -1,13 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
-navigation_title: Solutions
+navigation_title: Solutions overview
+description: "Overview of Elastic's three search-powered solutions—Elasticsearch, Elastic Observability, and Elastic Security—with guidance on choosing the right one."
 products:
   - id: elasticsearch
 applies_to:
   stack:
   serverless:
-navigation_title: Solutions
 ---
 
 # Solutions overview [introduction]
@@ -26,7 +26,7 @@ The core [{{es}} search capabilities](/solutions/search.md) are available across
 :::
 
 :::{tip}
-Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations use our products for their specific business needs.
 :::
 
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.

@@ -112,7 +112,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-You can also access Streams features using the Streams API. Refer to the [Streams API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams) for more information.
+You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Manage individual streams [streams-management-tab]
 
@@ -124,4 +124,5 @@ Interact with and configure your streams in the following ways:
 - [**Schema**](./management/schema.md): Manage field mappings.
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Knowledge Indicators**](./management/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
 

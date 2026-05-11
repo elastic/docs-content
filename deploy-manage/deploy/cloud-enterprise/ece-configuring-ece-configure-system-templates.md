@@ -38,7 +38,7 @@ For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-
     ```
 
 2. Edit the JSON of the system deployment template you wish to modify.
-3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more detail.
+3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API]({{ece-apis}}operation/operation-set-deployment-template-v2) for more detail.
 
     The following example modifies the Default system deployment template (that, is the system template with `id` value of `default`), setting the default value of `autoscaling_enabled` to `true` and the default autoscaling maximum size of the hot tier to 4,194,304MB (64GB * 64 nodes).
 
@@ -261,7 +261,7 @@ For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-
                   {
                     "instance_configuration_id" : "kibana",
                     "size" : {
-                      "value" : 1024,
+                      "value" : 2048,
                       "resource" : "memory"
                     }
                   }

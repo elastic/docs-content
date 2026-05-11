@@ -12,8 +12,15 @@ products:
 
 # Synthetic monitoring [monitor-uptime-synthetics]
 
-::::{note}
-The Synthetics UI is for viewing result data from monitors created and managed directly in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or managed externally using a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). This can include both lightweight and browser-based monitors, and can include monitors running from either Elastic’s global managed testing infrastructure or from [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
+Use the Synthetics UI to view results from monitors you create and manage directly in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or externally through a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). You can run lightweight or browser-based monitors from Elastic's global managed testing infrastructure or from your own [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
+
+::::{important}
+**Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring**
+
+For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
+
+* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The Uptime app is deprecated as of 8.15 and is not available in Serverless.
 
 ::::
 

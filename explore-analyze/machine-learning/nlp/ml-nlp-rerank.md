@@ -46,7 +46,7 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
+To download and deploy Elastic Rerank, use the [create inference API]({{es-apis}}operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
 
 ::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
@@ -83,7 +83,7 @@ You might see a 502 bad gateway error in the response when using the {{kib}} Con
 
 ::::
 
-After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) retriever.
+After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) retriever.
 
 ## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 
@@ -127,7 +127,7 @@ You can use any HTTP service to deploy the model. This example uses the official
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/rerank-v1.metadata.json
     ```
 
-    If Nginx runs properly, you see the content of the metdata file of the model.
+    If Nginx runs properly, you see the content of the metadata file of the model.
 
 5. Point your {{es}} deployment to the model artifacts on the HTTP server by adding the following line to the `config/elasticsearch.yml` file:
 
@@ -135,7 +135,7 @@ You can use any HTTP service to deploy the model. This example uses the official
     xpack.ml.model_repository: http://{IP_ADDRESS_OR_HOSTNAME}:8080
     ```
 
-    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specificy the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
+    If you use your own HTTP or HTTPS server, change the address accordingly. It is important to specify the protocol ("http://" or "https://"). Ensure that all master-eligible nodes can reach the server you specify.
 
 6. Repeat step 5 on all master-eligible nodes.
 7. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
@@ -282,7 +282,7 @@ For detailed benchmark information, including complete dataset results and metho
 **Documentation**:
 
 * [Semantic re-ranking in {{es}} overview](../../../solutions/search/ranking/semantic-reranking.md#semantic-reranking-in-es)
-* [Inference API example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch)
+* [Inference API example]({{es-apis}}operation/operation-inference-put-elasticsearch)
 
 **Blogs**:
 

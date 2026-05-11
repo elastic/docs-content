@@ -16,14 +16,14 @@ Forgetting to re-allow all data allocations can lead to unassigned shards.
 
 To get the shards assigned we need to change the value of the [configuration](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) that restricts the assignment of the shards to allow all shards to be allocated.
 
-We achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and changing the configured value to `all`.
+We achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting]({{es-apis}}operation/operation-cluster-get-settings) and changing the configured value to `all`.
 
 To allow all data to be allocated, follow these steps.
 
 You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 
-1. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
+1. Inspect the `cluster.routing.allocation.enable` [cluster setting]({{es-apis}}operation/operation-cluster-get-settings):
 
     ```console
     GET /_cluster/settings?flat_settings
@@ -42,7 +42,7 @@ You can run the following steps using either [API console](/explore-analyze/quer
 
     1. Represents the current configured value that controls if data is partially or fully allowed to be allocated in the system.
 
-2. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) the [configuration](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
+2. [Change]({{es-apis}}operation/operation-cluster-put-settings) the [configuration](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
 
     ```console
     PUT _cluster/settings

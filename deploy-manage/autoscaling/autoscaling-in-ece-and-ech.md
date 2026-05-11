@@ -463,7 +463,7 @@ curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:1
 
 ::::{applies-item} ess:
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \

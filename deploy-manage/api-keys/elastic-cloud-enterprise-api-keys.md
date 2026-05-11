@@ -12,7 +12,7 @@ products:
 
 The {{ece}} RESTful APIs support both key-based and token-based authentication. Key-based is generally the preferred method.
 
-{{ece}} API keys allow you to manage your {{ece}} platform and deployments using the [{{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise/) API.
+{{ece}} API keys allow you to manage your {{ece}} platform and deployments using the [{{ece}}]({{ece-apis}}) API.
 
 
 ## Authenticate using an API key [ece-api-keys]

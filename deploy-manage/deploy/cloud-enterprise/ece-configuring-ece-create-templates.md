@@ -104,7 +104,7 @@ For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-
 
 2. Post the JSON for your new deployment template.
 
-    The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 1 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
+    The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 2 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
 
     ```sh
     curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
@@ -354,7 +354,7 @@ For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-
                     {
                       "instance_configuration_id": "kibana",
                       "size": {
-                        "value": 1024,
+                        "value": 2048,
                         "resource": "memory"
                       }
                     }
