@@ -224,14 +224,17 @@ Workflows support dynamic values through template variables and template express
 
 ### Template variables [workflows-template-variables]
 
-Template variables are the data sources you can reference inside template expressions. The following template variables are available:
+Template variables are the data sources you can reference inside template expressions. The most common ones:
 
-| Variable type | Syntax | Description |
-|---------------|--------|-------------|
-| Step outputs | `steps.<step_name>.output` | Data produced by each step during execution. Access results from previous steps to chain operations together. Refer to [Reference outputs](/explore-analyze/workflows/templating.md#workflows-ref-step-outputs) for more details. |
-| Constants | `consts.<constant_name>` | Reusable values defined once at the workflow level using the `consts` block. Refer to [Reference constants](/explore-analyze/workflows/templating.md#workflows-ref-constants) for more details. |
-| Inputs | `inputs.<input_name>` | Parameters defined in the `inputs` block that can be provided when the workflow is triggered. Refer to [Reference inputs](/explore-analyze/workflows/templating.md#workflows-ref-inputs) for more details. |
-| Context variables | `execution.id`, `event`, `foreach.item` | Data automatically provided by the workflow engine at runtime, including execution metadata, trigger data, and loop state. Refer to [Context variables reference](/explore-analyze/workflows/templating.md#workflows-context-variables) for more details. |
+- `inputs.<name>` — values provided when the workflow was invoked.
+- `consts.<name>` — constants declared at the top of the workflow.
+- `steps.<name>.output` — output of a previous step.
+- `steps.<name>.error` — error from a failed step (when paired with `on-failure: continue`).
+- `event.*` — the trigger payload.
+- `execution.*` — metadata about the current execution.
+- `foreach.item`, `foreach.index`, `foreach.total` — loop context inside a `foreach` step.
+
+For the full canonical reference with every variable and an example per entry, refer to [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 #### Choose between constants and inputs [workflows-constants-or-inputs]
 
