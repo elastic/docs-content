@@ -72,6 +72,6 @@ Be aware that some settings that could break your cluster if set incorrectly and
 
 For a list of supported settings, check [{{kib}} settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
-### {{apm}} settings
+### {{product.apm}} settings
 
-Refer to [{{apm}} configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure the {{fleet}}-managed {{apm}} integration.
+Refer to [{{product.apm}} configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure the {{fleet}}-managed {{product.apm}} integration.
