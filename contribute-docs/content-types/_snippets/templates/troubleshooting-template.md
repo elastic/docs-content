@@ -116,23 +116,6 @@ Avoid linking to GitHub issues, pull requests, or internal discussions. Resource
 - [Related documentation link]
 - [Contrib/upstream reference]
 
-## Contact support
-
-<!-- OPTIONAL
-
-Use this section only if there is no dedicated "Contact support" page available in the troubleshooting folder.
--->
-
-## Contact us
-
-If you have an [Elastic subscription](https://www.elastic.co/pricing), then you can contact Elastic support for assistance. You can reach us in the following ways:
-
-* Through the [Elastic Support Portal](https://support.elastic.co/home). The Elastic Support Portal is the central place where you can access all of your cases, subscriptions, and licenses. Within a few hours after subscribing, you receive an email with instructions on how to log in to the Support Portal, where you can track both current and archived cases.
-
-  You can access the portal [directly](https://support.elastic.co/home), or by clicking on the life preserver icon on any page in {{ecloud}}.
-
-* By email: support@elastic.co
-
 :::{tip}
-If you contact us by email, use the email address that you registered with so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you want to add.
+If you have an [Elastic subscription](https://www.elastic.co/pricing), then you can [contact Elastic support](/troubleshoot/index.md#contact-us) for assistance.
 :::
