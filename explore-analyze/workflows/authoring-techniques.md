@@ -23,6 +23,7 @@ Techniques that apply across workflow types, regardless of which outcome you're 
 - [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md): Pause a workflow for reviewer input and resume on their decision.
 - [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md): Track runs, review execution history, and troubleshoot failures.
 - [Manage and organize workflows](/explore-analyze/workflows/authoring-techniques/manage-workflows.md): Find, edit, duplicate, enable, and disable workflows from the **Workflows** page.
+- [Troubleshoot workflows](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): Resolve common issues with triggers, flow control, cases, alerts, Liquid, AI steps, composition, human-in-the-loop, and concurrency.
 - [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md): Side-by-side replacements for the deprecated Case aliases, HTTP step `timeout` relocation, and scheduled-trigger minimum interval.
 
 % Ben Ironside Goldstein, 2026-04-16: Follow-up PRs per Vision doc Section 7 will split pass-data-handle-errors.md
