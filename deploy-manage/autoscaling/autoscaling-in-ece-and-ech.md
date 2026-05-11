@@ -105,7 +105,7 @@ In {{ech}} the following additional limitations apply:
 
 In {{ece}}, the following additional limitations apply:
 
-* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
+* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API]({{ece-apis}}operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 
@@ -259,7 +259,7 @@ The `curl` examples on this page use HTTPS. If the remote endpoint uses a certif
 For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
 :::
 
-```sh
+```sh subs=true
 curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
@@ -397,7 +397,7 @@ curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:1
            }
          ],
          "elasticsearch": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          },
          "deployment_template": {
            "id": "default"
@@ -419,14 +419,14 @@ curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:1
            {
              "instance_configuration_id": "kibana",
              "size": {
-               "value": 1024,
+               "value": 2048,
                "resource": "memory"
              },
              "zone_count": 1
            }
          ],
          "kibana": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -448,7 +448,7 @@ curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:1
            }
          ],
          "apm": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -654,7 +654,7 @@ curl -XPOST \
            }
          ],
          "apm": {
-           "version": "7.11.0"
+           "version": "{{version.stack}}"
          }
        },
        "ref_id": "main-apm"
