@@ -33,9 +33,9 @@ When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self
 
 ### Development mode vs. production mode
 
-By default, {{es}} assumes that you are working in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file but the node still starts.
+When `network.host` or `transport.host` [network settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) are set to a localhost address, {{es}} considers the node to be in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file, but the node still starts.
 
-When you configure settings such as [`network.host`](#network.host) so that {{es}} enters production mode, failed bootstrap checks become startup exceptions and prevent the node from starting. That reduces the risk of data loss from a misconfigured cluster or host.
+When `network.host` or `transport.host` are configured to a non-loopback address, {{es}} considers the node to be in production mode, and failed bootstrap checks become startup exceptions and prevent the node from starting. This reduces the risk of data loss from a misconfigured cluster or host.
 
 For the precise definition of development vs. production mode, refer to [Development vs. production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode).
 

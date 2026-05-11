@@ -25,8 +25,6 @@ The following settings **must** be considered before going to production:
 
 ::::{admonition} How these limits are enforced
 This page lists operating system limits you must set before {{es}} serves production traffic. {{es}} verifies many of these expectations through [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) at node startup. In production mode, a failed check stops the node from starting rather than only logging a warning.
-
-For what bootstrap checks are and how development mode differs from production mode, refer to [Important settings configuration](/deploy-manage/deploy/self-managed/important-settings-configuration.md#bootstrap-checks).
 ::::
 
 :::{tip}
