@@ -125,8 +125,8 @@ Explore what you can automate:
 
 - [Use cases](/explore-analyze/workflows/use-cases.md): Browse security, observability, and AI-augmented patterns you can build with workflows today.
 
-Reference and authoring:
+Concepts, reference, and authoring:
 
+- [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
 - [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
-- [Reference](/explore-analyze/workflows/reference.md): Triggers, steps, and templating engine reference.
 - [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.
