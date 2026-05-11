@@ -883,6 +883,4 @@ This API gives you fine-grained control over the indices in your failure store, 
 stack: ga 9.4
 ```
 
-:::{important}
-Accessing the failure store across clusters using `::failures` is not yet supported.
-:::
+Accessing the failure store across clusters using `::failures` is only supported starting with {{es}} 9.4.
