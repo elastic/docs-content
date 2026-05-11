@@ -21,30 +21,6 @@ For common vector search use cases and how to apply them, refer to [Vector searc
 
 Vector search finds results based on _meaning_ rather than exact keyword matches. {{es}} functions as a [vector database](#vector-database): it stores embeddings at scale and retrieves by similarity while combining that with full-text search, filters, and aggregations in one engine. This page explains the core concepts and terminology you need before working with vector search in {{es}}. 
 
-## Implementation guides and tutorials [vector-search-workflows]
-
-Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
-
-### Semantic search (managed workflows)
-
-The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
-
-- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
-- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
-- [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
-- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
-- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
-
-### Advanced tutorials
-
-These tutorials provide more direct or customizable approaches to working with vector search:
-
-- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
-- [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
-- [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
-- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
-- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
-
 ## Core concepts [vectors-and-embeddings]
 
 $$$vector-database$$$ Vector database
@@ -74,31 +50,50 @@ $$$sparse-vectors$$$ Sparse vectors
 
 ## Field types and queries [vector-queries-and-field-types]
 
-Here’s a quick reference for the main [vector field types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and [vector-related Query DSL queries](elasticsearch://reference/query-languages/query-dsl/vector-queries.md) used with the `_search` API.
+The table below matches the main vector field types to the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) queries and [{{esql}}](elasticsearch://reference/query-languages/esql.md) tools you use with each.
 
-[{{esql}}](elasticsearch://reference/query-languages/esql.md) is a separate piped query language: it uses commands and functions (not Query DSL JSON), though many concepts overlap with search API queries. The **Query DSL** column below maps to `_search` requests; the **{{esql}}** column points to the closest functional equivalents. For a feature-oriented overview of search in {{esql}}, refer to [{{esql}} for search](esql-for-search.md).
+Query DSL is the JSON request body for the `_search` API and related search endpoints. You describe match clauses, filters, scoring, and vector queries in nested objects.
 
-| Field type      | Vector type     | Query DSL query                                                                              | {{esql}} (related methods / functions) |
-|-----------------|-----------------|----------------------------------------------------------------------------------------------|----------------------------------------|
-| [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Dense vectors | [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | [`KNN`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md), [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md), [`TO_DENSE_VECTOR`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions/to_dense_vector.md); overview: [dense vector functions](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md) |
-| [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) | Sparse vectors | [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) | Indexed `sparse_vector` fields are not modeled as first-class {{esql}} columns |
-| [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Sparse or dense | [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text), [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md#example-query-on-a-semantic_text-field), [`semantic`](elasticsearch://reference/query-languages/query-dsl/query-dsl-semantic-query.md) | [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md), [`KNN`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md), [`TOP_SNIPPETS`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/top-snippets.md); overview: [{{esql}} for search](esql-for-search.md) |
+{{esql}} is a piped query language in {{es}}. You write a linear pipeline of commands and functions to read, filter, and score data instead of building the same logic as nested Query DSL JSON. Learn how to use [{{esql}} for search](/solutions/search/esql-for-search.md).
 
-Supported types and release stages for {{esql}} change by version—refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/limitations.md) before relying on vector-related {{esql}} functions in production.
+| Field type      | Vector type     | Query DSL query                                                                              | {{esql}} (search-related functions) |
+|-----------------|-----------------|----------------------------------------------------------------------------------------------|---------------------------------------|
+| [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Dense vectors | [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | - Find similar documents using [`KNN`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md)<br>- Compare two vectors you already have in the query using [`V_COSINE`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_cosine.md), [`V_DOT_PRODUCT`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_dot_product.md), [`V_HAMMING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_hamming.md), [`V_L1_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l1_norm.md), and [`V_L2_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l2_norm.md) |
+| [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) | Sparse vectors | [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) | No {{esql}} search function targets the field. |
+| [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Sparse or dense | [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [`knn`](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text), [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md#example-query-on-a-semantic_text-field), [`semantic`](elasticsearch://reference/query-languages/query-dsl/query-dsl-semantic-query.md) | - Find similar documents using [`KNN`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md), [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) and the [match operator (:)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) <br>- When both sides are `dense_vector` values in the query, compare them using [`V_COSINE`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_cosine.md), [`V_DOT_PRODUCT`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_dot_product.md), [`V_HAMMING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_hamming.md), [`V_L1_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l1_norm.md), and [`V_L2_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l2_norm.md) |
 
-You can combine lexical retrieval, dense-vector similarity, sparse-vector expansion, and reranking in one solution. Two common integration paths are **retriever trees** on `_search` (Query DSL ecosystem) and **`FORK` / `FUSE`** inside {{esql}}.
+Supported types for {{esql}} change by version. Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/limitations.md) before relying on vector-related {{esql}} functions in production.
+
+You are not limited to a single retrieval style. Search applications can combine [traditional keyword search](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), [nearest neighbor vector search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md), [sparse learned retrieval](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md), and [reranking](ranking/semantic-reranking.md) within the same workflow.
+
+These approaches are implemented in one of two ways:
+
+- One option is a single [`_search`](the-search-api.md) request built with [retrievers](retrievers-overview.md), where each retrieval stage is defined in the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) JSON structure. 
+- The other option is a piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results.
 
 ### Combining search strategies using retrievers [vector-search-combine-retrievers]
 
-[Retrievers](retrievers-overview.md) define multi-stage retrieval in a single `_search` request so you can pair strategies—for example, keyword [`standard`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#standard-retriever) retrieval with [`knn`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever) or [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) inside nested retrievers—without stitching separate client-side merges.
+Use [retrievers](retrievers-overview.md) to combine multiple retrieval strategies in a single `_search` request. 
 
-For **hybrid** rankings (semantic plus lexical), compound retrievers merge candidate lists from independent sub-retrievers: use the [`rrf`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever) retriever for [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md), or the [`linear`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever) retriever when you want an explicit weighted blend of sub-retriever scores. Full syntax and leaf types live in the [retrievers reference](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md). See also [Hybrid search](hybrid-search.md) for how hybrid fits into broader relevance design.
+For example, you can:
+
+- Use retrievers to combine keyword search with [`knn`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever) or [`sparse_vector`](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md) retrieval
+- Use the [`rrf`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever) retriever to merge rankings with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
+- Use the [`linear`](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever) retriever to combine scores with custom weights
+
+For supported retriever types and request syntax, refer to the [retrievers reference](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md). Refer to [Hybrid search](hybrid-search.md) for an end-to-end guide to combining lexical and semantic search.
 
 ### Combining search strategies using {{esql}} [vector-search-combine-esql]
 
-In {{esql}}, hybrid patterns usually mean scoring **different retrieval branches** and merging them—conceptually similar to hybrid search with Query DSL, but expressed with pipes: [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) runs parallel branches over the same input (for example lexical `MATCH` versus semantic `MATCH` on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md)), and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) combines and scores those branches. That mirrors “run two searches, fuse rankings” without leaving {{esql}}—refer to [`FORK` and `FUSE`](esql-for-search.md#fork-and-fuse) in [{{esql}} for search](esql-for-search.md).
+Use {{esql}} commands to combine multiple search strategies in a single query.
 
-Dense-vector workflows often pair [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) (or precomputed vectors) with [`KNN`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/knn.md); you can still branch with `FORK`/`FUSE` when mixing those with [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) or related [search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md). For a second stage on fused hits, consider semantic reranking with [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) (conceptually related to the [text similarity re-ranker retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever) on `_search`). Walkthroughs: [Hybrid search](hybrid-search.md), [Hybrid search with `semantic_text`](hybrid-semantic-text.md), [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
+For example, you can:
+
+* Use [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run lexical and semantic searches in parallel
+* Use [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to merge and score results from multiple search branches
+* Use [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) to apply semantic reranking to the top search results after combining them
+
+Refer to [{{esql}} for search](/solutions/search/esql-for-search.md#fork-and-fuse) for examples using `FORK` and `FUSE`. For end-to-end hybrid search tutorials, refer to [Hybrid search with `semantic_text`](hybrid-semantic-text.md), and [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
 ## Vector storage optimization
 
@@ -125,6 +120,30 @@ A {{ml}} model that converts your source data into vector embeddings. The model 
 Chunking splits large documents into smaller pieces before generating embeddings. This helps improve retrieval quality by matching queries to the most relevant parts of a document.
 
 To learn how to configure chunking for the `semantic_text` field type, refer to the [{{infer}} API chunking configuration](/explore-analyze/elastic-inference/inference-api.md#infer-chunking-config). If you use your own embeddings, you are responsible for chunking your data before indexing. Refer to [Bring your own dense vectors](vector/bring-own-vectors.md) for guidance.
+
+## Implementation guides and tutorials [vector-search-workflows]
+
+Elasticsearch provides multiple ways to implement vector and semantic search, depending on how much control you need over embedding generation and retrieval.
+
+### Semantic search (managed workflows)
+
+The [Semantic search](semantic-search.md) section provides managed workflows that use vector search under the hood. These approaches handle embedding generation, chunking, and model management for you, making them the simplest way to get started.
+
+- [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md): Generate embeddings using the `semantic_text` field type with built-in defaults for chunking and model management.
+- [Hybrid search with `semantic_text`](hybrid-semantic-text.md): Combine semantic understanding with keyword search for better relevance in real applications.
+- [Semantic search with the Inference API](semantic-search/semantic-search-inference.md): Use custom or external embedding models and control how embeddings are generated.
+- [Semantic search with ELSER](semantic-search/semantic-search-elser-ingest-pipelines.md): Use built-in semantic search with explainable results, without external models.
+- [Using Cohere with Elasticsearch](semantic-search/cohere-es.md): Generate embeddings using Cohere models via the Inference API and combine vector, hybrid search, reranking, and RAG in a single workflow.
+
+### Advanced tutorials
+
+These tutorials provide more direct or customizable approaches to working with vector search:
+
+- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
+- [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
+- [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
+- [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.
+- [OpenAI-compatible models](semantic-search/semantic-search-inference.md#infer-text-embedding-task): Connect external or local LLMs using the Inference API to generate responses or build RAG workflows.
 
 
 
