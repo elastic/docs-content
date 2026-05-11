@@ -10,7 +10,7 @@ products:
 
 # Manage deployments using the {{ecloud}} API [ec-api-deployment-crud]
 
-This page shows examples of managing deployments through the [Deployments API]({{cloud-apis}}group/endpoint-deployments), including listing deployments, getting deployment details, and creating or updating deployments.
+This page shows examples of managing deployments through the [deployments API]({{cloud-apis}}group/endpoint-deployments), including listing deployments, getting deployment details, and creating or updating deployments.
 
 For update workflows, the deployments API also provides dedicated operations for certain use cases, such as upgrades or {{es}} tier sizing changes.
 
@@ -21,13 +21,15 @@ If you haven’t created an API Key yet, you can follow the [Authentication docu
 
 For common update tasks, use the dedicated deployment operation that matches the change you need.
 
+Previously, many update scenarios required using a generic deployment update workflow: retrieve the current deployment details, adapt it to the update request format, apply the desired change, and submit the updated payload. Dedicated operations simplify common tasks and help reduce the risk of unintended changes to unrelated deployment settings.
+
 | Task | Endpoints |
 | --- | --- |
 | Upgrade a deployment to a newer {{stack}} version | [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment) |
-| Get or update resource user settings | [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)<br><br>[Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings) |
-| Get or update {{es}} tiers | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
-| Attach, list, or detach snapshot repository links | [Create deployment snapshot repository link]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Remove attached snapshot repository link]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
-| Related deployment metadata operations | [Get the tags for a deployment]({{cloud-apis}}operation/operation-get-deployment-tags)<br><br>[Set the tags for a deployment]({{cloud-apis}}operation/operation-set-deployment-tags) |
+| Manage [user settings](edit-stack-settings.md) of the deployment| [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)<br><br>[Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings) |
+| Scale {{es}} tiers by updating memory size and zone count | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
+| Attach another deployment’s built-in snapshot repository (`found-snapshots`) for cross-deployment snapshot access and restore workflows | [Attach snapshots from a source deployment]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Detach an attached snapshot repository]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
+| Manage deployment tags | [Get the tags for a deployment]({{cloud-apis}}operation/operation-get-deployment-tags)<br><br>[Set the tags for a deployment]({{cloud-apis}}operation/operation-set-deployment-tags) |
 
 Use the generic [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
 

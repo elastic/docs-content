@@ -53,7 +53,7 @@ The `found-snapshots` repository is specific to each deployment. However, you ca
 
 ## Register a snapshot repository in {{ech}} [register-snapshot-repos-ech]
 
-In **{{ech}}**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed.
+In **{{ech}}**, snapshot repositories are automatically registered for you, but you can create additional repositories if needed, using any of the following methods:
 
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs]({{es-apis}}group/endpoint-snapshot)
@@ -64,13 +64,10 @@ To manage repositories in {{kib}}:
 2. Select the **Repositories** tab. 
 3. To register a snapshot repository, click **Register repository**.
 
-You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
+You can also register a repository using the [{{es}} create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
-To attach or detach deployment-level snapshot repository links through the Cloud API, use the following endpoints:
-
-- [Create a snapshot repository for an {{es}} resource]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)
-- [List the attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)
-- [Remove the attached snapshot repository]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository)
+::::{include} _snippets/ech-snapshot-repository-linking-note.md
+::::
 
 ## Verify a repository [snapshots-repository-verification]
 
