@@ -20,11 +20,26 @@ Although you can access multiple organizations from the same {{ecloud}} account,
 
 You can perform the following tasks to manage multiple organizations:
 
+**Admin actions:**
+
 * [Create a new organization](#create-a-new-organization)
-* [View the organizations you have access to](#view-organizations)
-* [Switch to a different organization](#switch-to-a-different-organization)
 * [Invite users to join additional organizations](#invite-users-to-join-additional-organizations)
 * [View your users' organization memberships](#view-your-users-organization-memberships)
+
+**User actions:**
+
+* [Accept an invitation](#accept-an-invitation)
+* [Log in with multiple organizations](#log-in-with-multiple-organizations)
+* [View the organizations you have access to](#view-organizations)
+* [Switch to a different organization](#switch-to-a-different-organization)
+* [Leave an organization](#leave-an-organization)
+
+## Technical preview limitations
+
+The following limitations apply during the multi-organization tech preview:
+
+* **Marketplace organizations:** Users who belong to an organization with a [marketplace subscription](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md) can't join other organizations, and users from other organizations can't join marketplace organizations.
+* **Email notification links:** Organization-specific links in notification emails, such as billing or deployment health alerts, don't yet carry organization context. If you belong to multiple organizations, an email link might take you to the wrong organization. Switch to the appropriate organization before taking action.
 
 ## Create a new organization
 
@@ -43,16 +58,6 @@ After you create the organization, you can switch to it by clicking the organiza
 :::{tip}
 You can also create a new organization by clicking on your current organization name and selecting {icon}`plus_in_circle`  **Create**.
 :::
-
-:::{include} _snippets/view-orgs.md
-:::
-
-
-:::{include} _snippets/switch-orgs.md
-:::
-
-
-% tech preview content below - this would probably be split off onto other pages at GA time
 
 ## Invite users to join additional organizations
 
@@ -75,3 +80,54 @@ To view the organizations:
 3. From the lower navigation menu, select **Organization**.
 4. Click the **Members** tab.
 5. Click the name of the user you want to view the organizations for.
+
+## Accept an invitation
+
+When you're invited to join an organization, you receive an email with a link to accept the invitation. Invitations expire after 72 hours.
+
+To accept an invitation:
+
+1. Open the invitation email and click **Accept invitation**.
+2. Log in if prompted. If you already have an active session in your browser, you don't need to log in again.
+3. After accepting, you're switched to the new organization automatically. The new organization also appears in your [list of organizations](#view-organizations).
+
+:::{note}
+If the organization enforces a specific login method (such as SAML SSO), you're redirected to that login flow when accepting the invitation.
+:::
+
+To decline an invitation, you can ignore the email. The invitation expires automatically after 72 hours.
+
+## Log in with multiple organizations
+
+When you belong to multiple organizations, the login experience depends on whether your browser has information about the organization you most recently used:
+
+* **Returning user (same browser):** You're automatically logged in to the organization you last used. You don't need to select an organization.
+* **New browser or cleared data:** After logging in, you're presented with a list of your organizations to choose from. Select the organization you want to access.
+
+If your last used organization enforces a specific login method (such as SAML SSO), you're directed to that login flow automatically.
+
+If you log out, your browser remembers which organization you last used. The next time you log in, you're directed to the appropriate login page for that organization.
+
+:::{include} _snippets/view-orgs.md
+:::
+
+:::{include} _snippets/switch-orgs.md
+:::
+
+## Leave an organization
+
+You can leave an organization at any time, as long as you are a member of at least one other organization. If you are the only owner of an organization, you must transfer ownership before leaving.
+
+You can leave only the organization you're currently signed in to. To leave a different organization, [switch to it](#switch-to-a-different-organization) first.
+
+:::{warning}
+Leaving an organization revokes your access to all of its resources, including deployments, projects, and settings. This action cannot be undone. To rejoin the organization, ask an organization owner to invite you again.
+:::
+
+To leave your current organization:
+
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the top navigation menu, click on the user menu and select **Profile**.
+3. Click the **My organizations** tab.
+4. Click **Leave current organization**.
+5. In the confirmation dialog, click **Leave current organization** to confirm.
