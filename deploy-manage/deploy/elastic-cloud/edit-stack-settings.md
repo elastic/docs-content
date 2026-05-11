@@ -36,7 +36,7 @@ To add or edit user settings:
 4. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
 ::::{note}
-In some cases, you may get a warning saying "User settings are different across {{es}} instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the Master, Machine Learning, and Coordinating nodes).
+In some cases, you may get a warning saying "User settings are different across {{es}} instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the Master, {{ml-app}}, and Coordinating nodes).
 ::::
 
 ::::{warning}
@@ -54,7 +54,7 @@ Refer to [Manage deployments using the {{ecloud}} API](manage-deployments-using-
 
 ## Available settings
 
-### Elasticsearch settings
+### {{es}} settings
 
 :::{important}
 If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
@@ -64,7 +64,7 @@ If a feature requires both standard `elasticsearch.yml` settings and [secure set
 
 For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")).
 
-### Kibana settings
+### {{kib}} settings
 
 {{ech}} supports most of the standard {{kib}} settings.
 
@@ -72,6 +72,6 @@ Be aware that some settings that could break your cluster if set incorrectly and
 
 For a list of supported settings, check [{{kib}} settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
 
-### APM settings
+### {{apm}} settings
 
-Refer to [APM configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure the {{fleet}}-managed APM integration.
+Refer to [{{apm}} configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure the {{fleet}}-managed {{apm}} integration.
