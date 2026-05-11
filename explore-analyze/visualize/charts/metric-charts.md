@@ -231,7 +231,11 @@ Customize your metric chart to display exactly the information you need, formatt
 **Data**
 :   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
 
-    - **Number of values**: The number of tiles to show. If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
+    - **Number of values**: The number of tiles to show. The default number of values depends on your environment:
+      - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+      - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+
+      If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
     :::{include} ../../_snippets/lens-rank-by-options.md
     :::
     - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
@@ -248,14 +252,22 @@ Customize your metric chart to display exactly the information you need, formatt
 ### General layout settings [appearance-options]
 ```{applies_to}
 stack: ga 9.2
+serverless: ga
 ```
 When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
 
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
+    - **Position**: Choose the vertical placement of the primary metric value within the tile:
+      - **Top**: Places the value at the top of the tile.
+      - **Bottom**: Places the value at the bottom of the tile. This is the default.
+      - {applies_to}`stack: ga 9.4` **Middle**: Centers the value vertically within the tile.
+
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment** of the secondary metric.

@@ -112,6 +112,7 @@ toc:
         children:
           - file: ingest/agentless/cloud-connector-deployment.md
           - file: ingest/agentless/agentless-integrations-faq.md
+      - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
@@ -134,6 +135,9 @@ toc:
   - file: lifecycle.md
     children:
       - file: lifecycle/data-tiers.md
+        children:
+          - file: lifecycle/data-tiers/manage-data-tiers-ech-ece.md
+          - file: lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md
       - file: lifecycle/index-lifecycle-management.md
         children:
           - file: lifecycle/index-lifecycle-management/index-lifecycle.md

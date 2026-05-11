@@ -76,7 +76,7 @@ Instead of using a superuser account to create API keys, you can create a role w
 
 The user creating an {{apm-agent}} API key must have at least the `manage_own_api_key` cluster privilege and the APM application-level privileges that it wishes to grant. In addition, when creating an API key from the Applications UI, you’ll need the appropriate {{kib}} Space and Feature privileges.
 
-The example below uses the {{kib}} [role management API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to create a role named `apm_agent_key_role`.
+The example below uses the {{kib}} [role management API]({{kib-apis}}group/endpoint-roles) to create a role named `apm_agent_key_role`.
 
 ```js
 POST /_security/role/apm_agent_key_role
@@ -143,7 +143,7 @@ stack: ga
 serverless: unavailable
 ```
 
-It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+It is also possible to create API keys using the {{es}} [create API key API]({{es-apis}}operation/operation-security-create-api-key).
 
 This example creates an API key named `java-002`:
 
@@ -187,7 +187,7 @@ The `credential` string, which is what agents use to communicate with APM Server
 echo -n GnrUT3QB7yZbSNxKET6d:RhHKisTmQ1aPCHC_TPwOvw | base64
 ```
 
-You can verify your API key has been base64-encoded correctly with the [Authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate):
+You can verify your API key has been base64-encoded correctly with the [Authenticate API]({{es-apis}}operation/operation-security-authenticate):
 
 ```sh
 curl -H "Authorization: ApiKey R0gzRWIzUUI3eVpiU054S3pYSy06bXQyQWl4TlZUeEcyUjd4cUZDS0NlUQ==" localhost:9200/_security/_authenticate

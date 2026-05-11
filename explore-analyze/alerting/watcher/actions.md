@@ -147,9 +147,9 @@ If you do not define a throttle period at the action or watch level, the global 
 xpack.watcher.execution.default_throttle_period: 15m
 ```
 
-{{watcher}} also supports acknowledgement-based throttling. You can acknowledge a watch using the [ack watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch) to prevent the watch actions from being executed again while the watch condition remains `true`. This essentially tells {{watcher}} "I received the notification and I’m handling it, do not notify me about this error again". An acknowledged watch action remains in the `acked` state until the watch’s condition evaluates to `false`. When that happens, the action’s state changes to `awaits_successful_execution`.
+{{watcher}} also supports acknowledgement-based throttling. You can acknowledge a watch using the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch) to prevent the watch actions from being executed again while the watch condition remains `true`. This essentially tells {{watcher}} "I received the notification and I’m handling it, do not notify me about this error again". An acknowledged watch action remains in the `acked` state until the watch’s condition evaluates to `false`. When that happens, the action’s state changes to `awaits_successful_execution`.
 
-To acknowledge an action, you use the [ack watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch):
+To acknowledge an action, you use the [ack watch API]({{es-apis}}operation/operation-watcher-ack-watch):
 
 ```console
 POST _watcher/watch/<id>/_ack/<action_ids>
@@ -199,7 +199,7 @@ PUT _watcher/watch/my_watch
 ```
 % TESTSETUP
 
-The current status of a watch and the state of its actions is returned with the watch definition when you call the [Get Watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch):
+The current status of a watch and the state of its actions is returned with the watch definition when you call the [Get Watch API]({{es-apis}}operation/operation-watcher-get-watch):
 
 ```console
 GET _watcher/watch/my_watch

@@ -69,9 +69,9 @@ This table compares core identity, access, and platform capabilities between {{e
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering, private connectivity (VPCs, PrivateLink) | Private connectivity for Serverless projects is currently supported in AWS regions only. Requires the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus). |
+| **Network security** | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>✅ [Published static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>❌ Published static IPs | Private connectivity for Serverless projects is currently supported in AWS regions only.<br><br>For Observability projects, requires [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md).<br><br>For Security projects, requires [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md).<br><br>{{serverless-short}} does not offer public static IP lists. Use private connectivity where supported. |
 | **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
-| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | {{serverless-short}} does not support {{es}} authentication realms. User authentication is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Role-based access control** | ✅ | ✅ | In Serverless, RBAC is managed at organization level with optional project custom roles. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
@@ -88,10 +88,10 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
-| [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Clone index API**]({{es-apis}}operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
 | [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
-| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Tech preview** | As [cross-project search](/deploy-manage/cross-project-search-config.md) |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
@@ -221,8 +221,13 @@ When attempting to use an unavailable API, you'll receive this error:
 ```
 
 ::::{tip}
-Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless) for a complete list of available APIs.
+Refer to the [{{es-serverless}} API reference]({{es-serverless-apis}}) for a complete list of available APIs.
 ::::
+
+### Version reporting in the root API [elasticsearch-differences-serverless-version-reporting]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
@@ -267,7 +272,7 @@ When attempting to use an unavailable index setting, you'll receive this error:
 ## Learn more
 
 - [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
-- [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in {{serverless-full}}
+- [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects

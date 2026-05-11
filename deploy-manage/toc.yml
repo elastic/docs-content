@@ -499,6 +499,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+                  - file: security/k8s-es-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
@@ -678,6 +679,10 @@ toc:
           - file: remote-clusters/eck-remote-clusters.md
           - file: remote-clusters/eck-remote-clusters-to-other-eck.md
           - file: remote-clusters/eck-remote-clusters-to-external.md
+  - file: cross-project-search-config.md
+    children:
+      - file: cross-project-search-config/cps-config-link-and-manage.md
+      - file: cross-project-search-config/cps-config-access-and-scope.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
@@ -690,7 +695,7 @@ toc:
               - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
               - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
-            children: 
+            children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
@@ -758,6 +763,7 @@ toc:
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
+      - file: monitor/query-activity.md
       - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
@@ -775,6 +781,7 @@ toc:
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
+          - file: monitor/logging-configuration/query-logs.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
