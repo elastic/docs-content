@@ -28,7 +28,7 @@ You may, however, use Dashboards and the Discover feature with CCS to view `synt
 
 The Synthetics UI does *not* work with CCS/CCR because it would limit the rich user experience that the Synthetics UI provides. Unlike the majority of {{kib}} apps, the Synthetics UI relies heavily on state stored in {{kib}} shared objects in order to provide a rich user experience. Because {{kib}} saved objects cannot be shared via CCS/CCR, the Synthetics UI will not show any user data even if CCS/CCR is configured.
 
-## Do not use the Synthetics UI for infrastructure or {{k8s}} monitoring [synthetics-no-k8s-infra]
+## Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
 
 The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is not intended for infrastructure or {{k8s}} pod monitoring through autodiscovery.
 
