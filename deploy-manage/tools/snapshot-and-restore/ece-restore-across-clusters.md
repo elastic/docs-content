@@ -16,7 +16,7 @@ products:
 Snapshots can be restored to either the same {{es}} cluster or to another cluster. If you are restoring all indices to a new deployment, you can also [clone](/deploy-manage/tools/snapshot-and-restore/ece-restore-snapshots-into-new-deployment.md) a cluster.
 
 :::::{note}
-[Native users](/deploy-manage/users-roles/cluster-or-deployment-auth/native) created directly in {{es}} are not included when you restore across clusters. Only data from {{es}} indices is restored. If you want to create a cloned cluster with the same users as your old cluster, you need to recreate those users manually on the new cluster.
+[Native users](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) created directly in {{es}} are not included when you restore across clusters. Only data from {{es}} indices is restored. If you want to create a cloned cluster with the same users as your old cluster, you need to recreate those users manually on the new cluster.
 :::::
 
 ## When to restore across clusters
