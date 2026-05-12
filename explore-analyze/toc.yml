@@ -240,6 +240,7 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
           - file: ai-features/agent-builder/limitations-known-issues.md
+          - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
           - hidden: ai-features/agent-builder/plugins.md
       - file: ai-features/ai-chat-experiences.md
@@ -479,16 +480,7 @@ toc:
           - file: workflows/use-cases/ai-augmented-workflows.md
             children:
               - file: workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md
-      - file: workflows/authoring-techniques.md
-        children:
-          - file: workflows/authoring-techniques/use-yaml-editor.md
-          - file: workflows/authoring-techniques/pass-data-handle-errors.md
-          - file: workflows/authoring-techniques/compose-workflows.md
-          - file: workflows/authoring-techniques/human-in-the-loop.md
-          - file: workflows/authoring-techniques/monitor-workflows.md
-          - file: workflows/authoring-techniques/manage-workflows.md
-          - file: workflows/authoring-techniques/migrate-from-9-3.md
-      - file: workflows/reference.md
+      - file: workflows/concepts.md
         children:
           - file: workflows/triggers.md
             children:
@@ -519,6 +511,22 @@ toc:
               - file: workflows/steps/data.md
               - file: workflows/steps/composition.md
           - file: workflows/templating.md
+          - file: workflows/reference.md
+            children:
+              - file: workflows/reference/cheat-sheet.md
+              - file: workflows/reference/step-types.md
+              - file: workflows/reference/context-variables.md
+              - file: workflows/reference/liquid-filters.md
+      - file: workflows/authoring-techniques.md
+        children:
+          - file: workflows/authoring-techniques/use-yaml-editor.md
+          - file: workflows/authoring-techniques/pass-data-handle-errors.md
+          - file: workflows/authoring-techniques/compose-workflows.md
+          - file: workflows/authoring-techniques/human-in-the-loop.md
+          - file: workflows/authoring-techniques/monitor-workflows.md
+          - file: workflows/authoring-techniques/manage-workflows.md
+          - file: workflows/authoring-techniques/troubleshooting.md
+          - file: workflows/authoring-techniques/migrate-from-9-3.md
       - file: workflows/templates.md
   - file: numeral-formatting.md
   - hidden: explore-and-visualize.md

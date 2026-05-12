@@ -16,7 +16,7 @@ products:
 
 # {{agent-builder}} built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}}, grouped by namespace. Built-in tools are read-only: you can't modify or delete them.
+This page lists all built-in tools available in {{agent-builder}}, grouped by [namespace](custom-tools.md#protected-namespaces). Built-in tools are read-only: you can't modify or delete them.
 
 Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `observability`, `security`) reflect this scoping.
 

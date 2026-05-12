@@ -23,6 +23,24 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+::::{dropdown} Observability alerts remain active instead of transitioning to recovered
+
+Applies to: {{stack}} 9.2.7, 9.2.8, 9.3.2, 9.3.3
+
+**Details**
+
+Some Observability alerts send recovery notifications (for example, Slack, email, or webhook) but remain `active` in {{kib}} instead of transitioning to `recovered`.
+
+**Action**
+
+Manually untrack stale alerts or upgrade to {{stack}} 9.3.4 or 9.4.0.
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.4 and 9.4.0.
+
+::::
+
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 
