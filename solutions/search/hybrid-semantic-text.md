@@ -443,7 +443,7 @@ The returned hits show fused `_score` rankings after RRF over lexical `content` 
 :::
 
 
-### {{esql}}
+### Use {{esql}}
 
 [{{esql}}](/solutions/search/esql-for-search.md) is a piped query language which supports both lexical and semantic search. This enables combining keyword matching, vector search, scoring, and result processing in a single query.
 
