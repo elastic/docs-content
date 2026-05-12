@@ -132,7 +132,19 @@ stringData:
 
 Similar to {{es}} secure settings, you can use Kubernetes secrets to manage keystore settings for {{kib}}.
 
-For example, you can define a custom encryption key for {{kib}} as follows:
+:::{note}
+ECK automatically generates the following settings if they are not set:
+
+* `xpack.security.encryptionKey`
+* `xpack.reporting.encryptionKey`
+* `xpack.encryptedSavedObjects.encryptionKey`
+
+If you provide values for these settings, ECK uses your values.
+
+For more details, check [Scale out a {{kib}} deployment](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-scaling).
+:::
+
+For example, you can provide your own encryption key for {{kib}} as follows:
 
 1. Create a secret containing the desired setting:
 
@@ -156,6 +168,8 @@ For example, you can define a custom encryption key for {{kib}} as follows:
       secureSettings:
       - secretName: kibana-secret-settings
     ```
+
+ECK does not rotate these keys automatically. If you want to rotate saved object encryption keys, manage the rotation in {{kib}} using `xpack.encryptedSavedObjects.keyRotation.decryptionOnlyKeys`. For more details, check [Secure {{kib}} saved objects](/deploy-manage/security/secure-saved-objects.md#encryption-key-rotation).
 
 ## More examples [k8s_more_examples]
 

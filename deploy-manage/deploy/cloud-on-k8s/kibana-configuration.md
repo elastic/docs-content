@@ -12,6 +12,10 @@ products:
 
 The following sections describe how to customize a {{kib}} deployment to suit your requirements.
 
+:::{note}
+For production deployments, make sure encryption keys are configured according to your operational requirements. ECK automatically generates required keys if they are not set, and you can provide your own keys through [Secure settings](/deploy-manage/security/k8s-secure-settings.md#k8s-kibana-secure-settings). For details, check [Scaling out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling).
+:::
+
 * [Connect to an {{es}} cluster](k8s-kibana-es.md)
 
     * [Connect to an {{es}} cluster managed by ECK](k8s-kibana-es.md#k8s-kibana-eck-managed-es)

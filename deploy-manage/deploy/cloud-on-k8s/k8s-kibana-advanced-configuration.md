@@ -86,6 +86,8 @@ kubectl get secret my-kibana-kb-config -o jsonpath='{ .data.kibana\.yml }' | bas
 
 You can provide your own encryption keys using a secure setting, as described in [Secure settings](../../security/k8s-secure-settings.md).
 
+For examples and operational details about managing these settings in ECK, check [{{kib}} secure settings](/deploy-manage/security/k8s-secure-settings.md#k8s-kibana-secure-settings).
+
 ::::{note}
 While most reconfigurations of your {{kib}} instances are carried out in rolling upgrade fashion, all version upgrades will cause {{kib}} downtime. This happens because you can only run a single version of {{kib}} at any given time. For more information, check [Upgrade {{kib}}](/deploy-manage/upgrade/deployment-or-cluster.md).
 ::::
