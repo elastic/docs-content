@@ -192,7 +192,6 @@ Before you merge or publish, check titles for:
 
 - **Stripped development labels**: Remove prefixes such as `feat:`, `fix:`, `Fix:`, `auto-implement:`, and trailing tracker fragments like `Bugfix -`.
 - **No bracket-only team tags**: Replace `[Security Solution]`, `[Query Rules]`, and similar with plain, user-facing wording.
-- **Consistent UI wording**: Prefer **UI** over *UX* when you mean the interface (for example, *Redesign **Add to Dashboard** UI*).
 - **Strong verbs**: Prefer *Improve validation for...* over *Better validation for...* when both fit in 80 characters.
 - **No buried lede**: If the title is vague, fold in concrete detail from the description (or rewrite both) so release notes stand alone.
 
@@ -267,11 +266,9 @@ Avoid these common mistakes:
 - **Being too vague**: "Bug fixes and performance improvements" doesn't help users understand what changed.
 - **Including unnecessary technical details**: Skip internal architecture changes unless they affect users.
 - **Shipping PR-style titles unchanged**: Omit `feat:`/`fix:` prefixes, auto-implement labels, and bracketed team tags—rewrite for users (see [Title cleanup checklist](#title-cleanup-checklist)).
-- **Exceeding 80 characters without a description**: Shorten the title or move detail to the description field.
 
 ## Examples
 
 Here are some examples of release notes that are generated from changelog files:
 
-- [{{es}} release notes](elasticsearch://release-notes/index.md), generated from [changelog files in the Elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/docs/changelog)
-- [{{agent}} release notes](elastic-agent://release-notes/index.md), generated from [changelog files in the Elastic Agent repo](https://github.com/elastic/elastic-agent/tree/main/changelog)
+- [Elastic Distribution of OpenTelemetry Java release notes](elastic-otel-java://release-notes/index.md), generated from [changelog bundles in the elastic-otel-java repo](https://github.com/elastic/elastic-otel-java/tree/main/docs/releases)
