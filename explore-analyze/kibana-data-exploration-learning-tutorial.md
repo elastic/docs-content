@@ -686,7 +686,7 @@ How each panel maps back to the tutorial:
 7. **Events by response code**: the {{esql}} bar chart saved to the dashboard from Discover in [Step 2](#explore-data-in-discover). ES|QL chart layers reference query result columns directly in `x` and `y` (for example, `"x": { "column": "response" }`), instead of the `operation`-based form used by data view layers.
 8. **Requests by file extension**: bar chart from the [Add a bar chart of requests by file extension](#add-a-bar-chart-of-requests-by-file-extension) sub-step. The `includes` filter with `as_regex: true` and value `.+` mirrors the regex applied during the inline-edit step.
 9. **Traffic distribution by operating system**: pie chart from the [Expand your dashboard](#expand-your-dashboard) sub-step. Pie panels use `config.type: "pie"` with a `metrics` array and a `group_by` array.
-10. **Requests by geography**: treemap from the same sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
+10. **Requests by geography**: treemap from the [Expand your dashboard](#expand-your-dashboard) sub-step. Treemaps use the same `metrics` + `group_by` shape as pies.
 11. **Last 100 events**: {{esql}} data table from the [Add a table of recent events with {{esql}}](#add-a-table-of-recent-events-with-esql) sub-step. Categorical columns go in `rows`, numeric columns go in `metrics`.
 
 For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
