@@ -38,7 +38,6 @@ You can perform the following tasks to manage multiple organizations:
 
 The following limitations apply during the multi-organization tech preview:
 
-* **Marketplace organizations:** Users who belong to an organization with a [marketplace subscription](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md) can't join other organizations, and users from other organizations can't join marketplace organizations.
 * **Email notification links:** Organization-specific links in notification emails, such as billing or deployment health alerts, don't yet carry organization context. If you belong to multiple organizations, an email link might take you to the wrong organization. Switch to the appropriate organization before taking action.
 
 ## Create a new organization
