@@ -307,7 +307,7 @@ Both the retriever and {{esql}} approaches return hits ranked by a score that fu
 For recommended ways to query and retrieve `semantic_text` data, refer to [Search and retrieve `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-search-retrieval.md).
 :::
 
-### Retrievers
+### Use retrievers
 
 [Retrievers](retrievers-overview.md) provide a structured way to define and combine different search strategies, such as lexical and semantic search, within a single `_search` request.  This example uses the [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever), which merges two [standard retrievers](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#standard-retriever): one runs a lexical `match` on `content`, the other a `match` on `content_embedding` for semantic retrieval.
 
