@@ -49,6 +49,12 @@ For production environments, you must define the memory settings for each role, 
 
 Make sure you have completed all prerequisites and environment preparations described in the [Installation overview](./install.md), and that the hosts are configured according to [](./configure-operating-system.md).
 
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
+
 ## Installation steps [ece_installation_steps_2]
 
 1. Install {{ece}} on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
@@ -62,7 +68,7 @@ Make sure you have completed all prerequisites and environment preparations desc
 2. Generate a new roles token that persists for one hour on the first host, so that other hosts can join your installation with the right role permissions in the next step (referred to as `MY_TOKEN`). The new token needs to enable the director, coordinator and proxy roles.
 
     ```sh
-    curl -k -H 'Content-Type: application/json' -u admin:PASSWORD https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": false, "roles": ["director", "coordinator", "proxy"] }'
+    curl -H 'Content-Type: application/json' -u admin:PASSWORD https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens -d '{ "persistent": false, "roles": ["director", "coordinator", "proxy"] }'
     ```
 
 3. Install {{ece}} on a second and third host, placing them into a second and a third availability zone, and assign them the `director`, `coordinator`, and `proxy` roles. Do not assign the `allocator` role, as these hosts should not handle any user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
