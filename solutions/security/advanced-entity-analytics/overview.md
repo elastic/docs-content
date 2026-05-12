@@ -26,7 +26,7 @@ To access the page:
 
 ## Threat hunting leads [entity-threat-hunting-leads]
 ```yaml {applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
 serverless: planned
 ```
 

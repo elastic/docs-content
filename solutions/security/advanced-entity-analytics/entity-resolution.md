@@ -78,7 +78,7 @@ user,,bob.smith,user:bob@acme.com@active_directory
 5. Confirm to apply the links.
 
 ::::{note}
-Bulk unlinking is not available in the UI; use the API instead.
+Bulk unlinking is not available in the UI; use the [Entity store API]({{kib-apis}}operation/operation-post-security-entity-store-resolution-unlink) instead.
 ::::
 
 ### Manage resolution groups from the entity flyout [entity-resolution-flyout]
