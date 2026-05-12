@@ -178,7 +178,7 @@ serverless: planned
 
 The entity store runs scheduled log extraction to keep entity data up to date.
 
-To determine whether log extraction is slow or unhealthy, check the **Engine Status** tab or query the Entity store status API.
+To determine whether log extraction is slow or unhealthy, check the **Engine Status** tab or query the [Entity store status API]({{kib-apis}}operation/operation-get-security-entity-store-status).
 
 A process might be **slow** if:
 
