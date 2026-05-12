@@ -27,12 +27,12 @@ Use `while` for polling patterns: checking a status until it reaches `ready`, re
 | `type` | top level | string | Yes | Must be `while`. |
 | `condition` | top level | string | Yes | KQL expression evaluated each iteration. The loop continues while it is true. |
 | `steps` | top level | array | Yes | Loop body. |
-| `max-iterations` | top level | number or object | No | Limit for number of iterations. Bare number is treated as `{ limit: N, on-limit: continue }`. Use the object form to opt into `on-limit: fail`. |
+| `max-iterations` | top level | number or object | No | Limit for number of iterations. Default is **2000**. Bare number is treated as `{ limit: N, on-limit: continue }`. Use the object form to opt into `on-limit: fail`. |
 | `iteration-timeout` | top level | duration | No | Per-iteration timeout. |
 | `iteration-on-failure` | top level | object | No | Per-iteration error-handling policy. Same shape as `on-failure`. |
 
 :::{warning}
-`while` has no default `max-iterations`. Without an explicit limit, a `while` loop runs as long as its condition holds. Always set `max-iterations` on loops that depend on external state to avoid runaway executions.
+`while` defaults to `max-iterations: 2000` with `on-limit: continue`, which means the step **succeeds quietly when the cap is reached**. If your loop needs to fail the workflow on hitting the cap, set `on-limit: fail` explicitly. Always think about the cap on loops that depend on external state to avoid runaway executions or silently truncated work.
 :::
 
 ### `max-iterations` shape
