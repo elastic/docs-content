@@ -114,7 +114,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 For production environments, we recommend [explicitly specifying the `inference_id`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) for `semantic_text` fields. Default endpoints can change across versions and deployment types, which may lead to to [potential issues](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoint-considerations) like mixed embedding models and inconsistent ranking results.
 :::
 
-### Using ML-nodes
+### Use machine learning nodes
 
 Below is an example of creating an index mapping using your own ML node with the `.elser-2-elasticsearch` {{infer}} endpoint.
 
