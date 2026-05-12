@@ -140,7 +140,7 @@ For full reference documentation, refer to the [`text_similarity_reranker` retri
 
 #### Use the {{esql}} `RERANK` command
 
-Use the {{esql}} [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to add re-ranking as a step in a piped query. This is a good fit when you want to combine re-ranking with other [{{esql}}](elasticsearch://reference/query-languages/esql/overview.md) capabilities like transformations, aggregations, or text generation with `COMPLETION`.
+Use the {{esql}} [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to add re-ranking as a step in a piped query. This is a good fit when you want to combine re-ranking with other [{{esql}}](elasticsearch://reference/query-languages/esql.md) capabilities like transformations, aggregations, or text generation with `COMPLETION`.
 
 ::::{dropdown} Example: ES|QL-based semantic reranking
 ```esql
