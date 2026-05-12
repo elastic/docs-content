@@ -709,13 +709,17 @@ Your OTel Collector is running but doesn't appear in the {{fleet}} **Agents** li
    - The `instance_uid` is a valid UUID v7
    - The enrollment API key is correct
 
+   :::{note}
+   On {{ech}} and {{serverless-short}} {{observability}} projects, the {{fleet-server}} URL is provided by the platform. Find it in the **Add collector** flyout in {{fleet}}, or in the **Fleet Server hosts** section on the **Fleet** > **Settings** page. For example, `https://<fleet-server-host-url>/v1/opamp`.
+   :::
+
 2. Check the collector logs for OpAMP errors:
 
    ```
    error opampextension ... OpAMP server returned an error response
    ```
 
-   If you see enrollment errors, make sure you're using the {{fleet}} enrollment token provided in the UI when you start adding an OTel Collector.
+   If you see enrollment errors, make sure you're using the {{fleet}} enrollment API key provided in the UI when you start adding an OTel Collector.
 
 3. Test network connectivity to {{fleet-server}}:
 
@@ -723,7 +727,7 @@ Your OTel Collector is running but doesn't appear in the {{fleet}} **Agents** li
    curl -v https://fleet-server:8220/v1/opamp
    ```
 
-   You should receive a response from the server. If the connection fails, verify firewall rules and network access.
+   You receive a response from the server. If the connection fails, verify firewall rules and network access.
 
 4. Restart the collector after making configuration changes to apply the new settings.
 
@@ -735,7 +739,7 @@ Your OTel Collector appears in {{fleet}}, but CPU and memory usage aren't displa
 
 **Resolution**
 
-The collector's internal telemetry must be configured to export to {{es}}. Add the following configuration to enable the self-loop pattern:
+Internal telemetry uses a self-loop pattern: the collector emits its own metrics, logs, and traces to an OTLP receiver on the collector itself, and a pipeline forwards that data to a backend. To make internal telemetry appear in {{kib}}, extend your existing collector configuration with the following components:
 
 1. Configure telemetry export in your `service.telemetry` section:
 
@@ -776,7 +780,7 @@ The collector's internal telemetry must be configured to export to {{es}}. Add t
            endpoint: 0.0.0.0:4317
    ```
 
-3. Add an exporter to send telemetry to {{es}}:
+3. Add an exporter that sends telemetry to your {{es}} backend. If your collector already exports telemetry, you can reuse the existing exporter — just add the OTLP receiver to its pipelines. Otherwise, configure the `elasticsearch/otel` exporter:
 
    ```yaml
    exporters:
@@ -795,6 +799,9 @@ The collector's internal telemetry must be configured to export to {{es}}. Add t
          receivers: [otlp]
          exporters: [elasticsearch/otel]
    ```
+
+   ::::{include} /reference/fleet/_snippets/otel-motlp-exporter-alternative.md
+   ::::
 
 4. Restart the collector and verify that internal telemetry appears in {{kib}} by searching for `service.instance.id: "<your-instance-uid>"` in **Discover**.
 
@@ -826,7 +833,7 @@ This occurs when the gRPC client expects TLS but the receiver uses plaintext. To
                    endpoint: http://localhost:4317  # http:// = plaintext
    ```
 
-2. Alternatively, if not using the `http://` prefix, explicitly disable TLS:
+2. Alternatively, if not using the `http://` prefix, explicitly turn off TLS:
 
    ```yaml
    service:
@@ -838,12 +845,12 @@ This occurs when the gRPC client expects TLS but the receiver uses plaintext. To
                  otlp:
                    endpoint: localhost:4317
                    tls:
-                     insecure: true  # Disable TLS
+                     insecure: true  # Turns off TLS
    ```
 
 
 :::{important}
-For external endpoints (for example, sending to {{ech}}), always use `https://`. Never use `tls.insecure: true` for external endpoints as this disables certificate verification and exposes your connection to security attacks.
+For external endpoints (for example, sending to {{ech}}), always use `https://`. Never use `tls.insecure: true` for external endpoints. Using this setting turns off TLS entirely, transmitting data unencrypted and exposing your connection to interception. To skip only certificate verification (still discouraged for production), use `tls.insecure_skip_verify: true` instead.
 :::
 
 ### Authentication errors when exporting to {{es}} [otel-auth-errors-elasticsearch]
@@ -881,6 +888,10 @@ The {{es}} exporter requires proper authentication and permissions:
       }
       ```
 
+      :::{tip}
+      The privileges shown allow writing to all `metrics-*`, `logs-*`, and `traces-*` data streams. To scope access more narrowly, replace the `names` patterns with the specific data streams you ingest — for example, `metrics-otel-<your-namespace>-*`, `logs-otel-<your-namespace>-*`, and `traces-otel-<your-namespace>-*`.
+      :::
+
    4. Copy the encoded API key value.
 
 2. Update your exporter configuration:
@@ -915,7 +926,7 @@ The `elastic_diagnostics` extension requires a writable directory. To fix this i
    sudo chmod 755 /tmp/elastic-agent
    ```
 
-2. Configure the extension in your Collector configuration:
+2. Configure the extension in your collector configuration:
 
    ```yaml
    extensions:
@@ -965,9 +976,9 @@ When {{fleet-server}} uses a self-signed certificate or a certificate from a non
 
 3. Restart the collector to apply the changes.
 
-**Option 2: Disable certificate verification (testing only)**
+**Option 2: Skip certificate verification (testing only)**
 
-For rapid prototyping or testing purposes only, you can disable certificate validation. **Do not use this in production environments**.
+For rapid prototyping or testing purposes only, you can skip certificate verification. **Do not use this in production environments**.
 
 ```yaml
 extensions:
@@ -976,7 +987,7 @@ extensions:
       http:
         endpoint: https://fleet-server:8220/v1/opamp
         tls:
-          insecure_skip_verify: true  # WARNING: Disables certificate validation
+          insecure_skip_verify: true  # WARNING: Skips certificate verification
         headers:
           Authorization: ApiKey <fleet-enrollment-api-key>
     instance_uid: <instance-uid>
@@ -986,7 +997,7 @@ service:
 ```
 
 :::{warning}
-Using `insecure_skip_verify: true` disables TLS certificate verification and makes your connection vulnerable to man-in-the-middle attacks. Only use this for testing in isolated environments.
+Using `insecure_skip_verify: true` skips TLS certificate verification and makes your connection vulnerable to man-in-the-middle attacks. Only use this for testing in isolated environments.
 :::
 
 For more details on TLS configuration, refer to [Configure TLS for Fleet Server connection](/reference/fleet/monitor-otel-collectors.md#configure-tls-for-fleet-server-connection).
