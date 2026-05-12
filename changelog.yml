@@ -70,7 +70,7 @@ pivot:
     # Complex object form with subtypes (ONLY allowed for breaking-change)
     # Subtypes help categorize breaking changes by their nature
     # Both labels and subtype values accept string or list form
-    # breaking-change:
+    breaking-change:
       # labels: ">breaking, >bc"
       # Equivalent list form:
       # labels:
@@ -86,12 +86,11 @@ pivot:
       #   security: ">security-breaking"
       #   other:
     # Simple string form: labels as comma-separated string
-    # bug-fix: "bug"
+    bug-fix:
     # deprecation:
-    # feature:
+    feature:
     # enhancement: "enhancement"
-    docs:
-      - "release_note:docs"
+    docs: "release_note:docs"
     # known-issue: "known-issue"
     # other:
     # regression:
