@@ -80,10 +80,13 @@ The following is a non-exhaustive list of considerations when choosing between c
 ::::
 
 
-
 ## Semantic re-ranking in {{es}} [semantic-reranking-in-es]
 
-{{es}} provides two ways to add semantic re-ranking to your search pipeline: the **`text_similarity_reranker` retriever** (via the `_search` API) and the **`RERANK` command** (via {{esql}}). Both use the same underlying inference endpoints and re-ranking models.
+{{es}} provides two ways to add semantic re-ranking to your search pipeline:
+-  Using the [`text_similarity_reranker` retriever](#use-the-text_similarity_reranker-retriever
+-  Using the {{esql}} [`RERANK` command](#use-the-esql-rerank-command)
+
+Both use the same underlying inference endpoints and re-ranking models.
 
 ### Step 1: Configure a re-ranking model
 
@@ -99,7 +102,9 @@ Both approaches require an inference endpoint configured for the `rerank` task. 
 
 ### Step 2: Choose an implementation approach
 
-#### Option A: Retrievers (`text_similarity_reranker`)
+You can use either retrievers or {{esql}} to implement semantic re-ranking in your search pipelines.
+
+#### Use the `text_similarity_reranker` retriever
 
 Use the [retriever syntax](../retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like RRF, linear combination, or pinning.
 
@@ -133,9 +138,9 @@ POST _search
 
 For full reference documentation, refer to the [`text_similarity_reranker` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/text-similarity-reranker-retriever.md).
 
-#### Option B: ES|QL (`RERANK` command)
+#### Use the {{esql}} `RERANK` command
 
-Use the {{esql}} [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to add re-ranking as a step in a piped query. This is a good fit when you want to combine re-ranking with other {{esql}} capabilities like transformations, aggregations, or text generation with `COMPLETION`.
+Use the {{esql}} [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to add re-ranking as a step in a piped query. This is a good fit when you want to combine re-ranking with other [{{esql}}](elasticsearch://reference/query-languages/esql/overview.md) capabilities like transformations, aggregations, or text generation with `COMPLETION`.
 
 ::::{dropdown} Example: ES|QL-based semantic reranking
 ```esql
