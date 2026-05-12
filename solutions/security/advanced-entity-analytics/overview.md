@@ -24,7 +24,7 @@ To access the page:
 :::
 
 :::{image} /solutions/images/security-entity-analytics-overview.png
-:alt: Enity analytics overview page
+:alt: Entity analytics overview page
 :screenshot:
 :::
 
