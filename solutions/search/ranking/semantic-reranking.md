@@ -101,7 +101,7 @@ Both approaches require an inference endpoint configured for the `rerank` task. 
 
 #### Option A: Retrievers (`text_similarity_reranker`)
 
-Use the [retriever syntax](retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like RRF, linear combination, or pinning.
+Use the [retriever syntax](../retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like RRF, linear combination, or pinning.
 
 Create a `rerank` endpoint using the [{{es}} Inference API]({{es-apis}}operation/operation-inference-put), then define a `text_similarity_reranker` retriever in your search request.
 
@@ -202,7 +202,7 @@ POST _search
 
 * Read the [`text_similarity_reranker` retriever reference](elasticsearch://reference/elasticsearch/rest-apis/retrievers/text-similarity-reranker-retriever.md) for syntax and implementation details
 * Read the [ES|QL `RERANK` command reference](elasticsearch://reference/query-languages/esql/commands/rerank.md) for the piped query approach
-* Learn more about the [retrievers](retrievers-overview.md) abstraction
+* Learn more about the [retrievers](../retrievers-overview.md) abstraction
 * Learn more about choosing a [query interface](../querying-for-search.md) for your search use case
 * Learn more about the Elastic [Inference APIs]({{es-apis}}group/endpoint-inference)
 * Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {{es}}
