@@ -14,82 +14,26 @@ products:
 
 # {{agent-builder}} built-in agents reference
 
-Built-in agents are pre-configured by Elastic with specific instructions and tools to handle common use cases.
-
-::::{applies-switch}
-
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-The **Elastic AI Agent** is now a standard persisted default agent that is space-aware and modifiable. Refer to [Elastic AI Agent](#elastic-ai-agent) for details.
-
-:::
-
-:::{applies-item} { stack: preview =9.2, ga 9.3 }
-
-You cannot modify or delete built-in agents. To customize one, you can clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
-
-:::
-
-::::
-
-## Availability
-
-The availability of specific agents depends on your solution view or serverless project type.
-
-::::{applies-switch}
-
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
-
-Built-in agents are space-agnostic: they are available across all [{{kib}} spaces](/deploy-manage/manage-spaces.md). The default [Elastic AI Agent](#elastic-ai-agent) is an exception: it is created automatically per space and is only available in the space where it was created.
-
-:::
-
-:::{applies-item} { stack: preview =9.2, ga 9.3 }
-
-Built-in agents are space-agnostic: they are available across all [{{kib}} spaces](/deploy-manage/manage-spaces.md).
-
-:::
-
-::::
-
-:::{note}
-:applies_to: { "stack": "preview =9.2, ga =9.3" }
-{{product.observability}} and {{product.security}} users must opt-in to use {{agent-builder}}. To learn more, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
-:::
+Built-in agents are pre-configured by Elastic with instructions and tools to handle common use cases.
 
 ## Elastic AI Agent
-```{applies_to}
-stack: preview =9.2, ga 9.3+
-serverless: ga
-```
 
-::::{applies-switch}
+The **Elastic AI Agent** is the default general-purpose agent. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+The Elastic AI Agent is a standard persisted agent that is space-aware. A separate instance is created automatically in each [{{kib}} space](/deploy-manage/manage-spaces.md) when first accessed, and each instance can be customized independently: change its instructions, assign [skills](builtin-skills-reference.md) and [tools](./tools/builtin-tools-reference.md), or clone it as a starting point for a new agent.
 
-The **Elastic AI Agent** is the default general-purpose agent for {{es}}. Unlike the other built-in agents, it is a standard persisted agent that is automatically created in each [{{kib}} space](/deploy-manage/manage-spaces.md) when first accessed.
-
-Because the default agent is space-aware, you can customize it independently for each space. You can change its instructions, adjust which tools it has access to, or clone it as a starting point for a new agent.
-
-**Default assigned tools:**
-* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
-
+:::{note}
+In 9.2  and 9.3, the Elastic AI Agent cannot be modified or deleted. To customize it, clone it and [create a custom agent](custom-agents.md#create-a-new-agent).
 :::
 
-:::{applies-item} { stack: preview =9.2, ga 9.3 }
 
-The **Elastic AI Agent** is the default general-purpose agent for {{es}}. It is designed to help with a wide range of tasks, from writing {{esql}} queries to exploring your data indices.
+## Built-in agents in previous versions
 
-**Assigned tools:**
-* All [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
-
+:::{important}
+In {{stack}} 9.3, {{agent-builder}} included two specialized built-in agents for observability and security use cases. Both were removed in 9.4 in favor of equivalent capabilities exposed as skills on the [Elastic AI Agent](#elastic-ai-agent).
 :::
 
-::::
-
-:::{dropdown} Previous versions
-
-## Observability Agent
+### Observability Agent
 ```{applies_to}
 stack: preview =9.3, removed 9.4+
 serverless:
@@ -103,7 +47,7 @@ A specialized agent for logs, metrics, and traces. It is designed to assist with
 * All [**{{observability}} tools**](./tools/builtin-tools-reference.md#observability-tools)
 * A subset of [**Platform core tools**](./tools/builtin-tools-reference.md#platform-core-tools)
 
-## Threat Hunting Agent
+### Threat Hunting Agent
 ```{applies_to}
 stack: preview =9.3, removed 9.4+
 serverless:
@@ -119,8 +63,6 @@ A specialized agent for security alert analysis tasks, including alert investiga
 The standalone **Threat Hunting Agent** is removed in 9.4. Threat hunting workflows now use the [Elastic AI Agent](#elastic-ai-agent) with the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill enabled, which provides the same capabilities without switching between separate built-in agents. For Security-specific context, refer to [](/solutions/security/ai/agent-builder/skills-model.md).
 
 **Migration path:** Enable the [`threat-hunting`](builtin-skills-reference.md#agent-builder-threat-hunting-skill) skill on the Elastic AI Agent in place of that standalone agent. The skill ships with the same tool set and query templates previously bundled into the agent, plus platform core tools for generating and running {{esql}} queries. For use cases and example prompts, refer to [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md#threat-hunting).
-
-:::
 
 ## Related pages
 
