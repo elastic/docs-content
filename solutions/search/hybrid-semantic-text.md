@@ -48,7 +48,7 @@ You can run {{infer}} either using the [Elastic {{infer-cap}} Service](/explore-
 For large-scale dense vector deployments, quantization strategies like [BBQ](elasticsearch://reference/elasticsearch/mapping-reference/bbq.md) can reduce memory usage. For details, refer to [Optimizing vector storage](vector/vector-storage-for-semantic-search.md).
 :::
 
-### Using EIS
+### Use Elastic {{infer-cap}} Service
 
 In this example, you create an index for hybrid search using Elastic {{infer-cap}} Service. Embeddings are generated with the [default {{infer}} model](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) for the the `semantic_text` field type.
 
