@@ -87,6 +87,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 The {{es}} solution provides additional UI tools on top of the core {{es}} capabilities, to help you build search-powered applications:
 
+- [**AI onboarding**](/solutions/elasticsearch-solution-project/ai-onboarding.md): Build a working search experience through a guided, AI-powered workflow.
 - [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md): Create AI agents that interact with your {{es}} data
 - [**Query Rules UI**](/solutions/elasticsearch-solution-project/query-rules-ui.md): Create rules to modify search behavior
 - [**Search with synonyms**](/solutions/search/full-text/search-with-synonyms.md): Manage synonym sets through the UI

@@ -40,6 +40,7 @@ To add automated response actions to a new or existing rule:
 
     * **Kill process**: Terminate a process on the host.
     * **Suspend process**: Temporarily suspend a process on the host.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Run script**: Run a script on the host.
 
 
 3. For process actions, specify how to identify the process you want to terminate or suspend:

@@ -1,6 +1,6 @@
 ---
 navigation_title: "Get started"
-description: "Learn how to access Elastic Agent Builder, ingest data, and start chatting with AI agents."
+description: "Learn how to access Elastic Agent Builder, ingest data, and build skills for AI agents."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless: ga
@@ -14,7 +14,8 @@ products:
 
 # Get started with {{agent-builder}}
 
-To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}. 
+To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}.
+
 If you don't already have an Elastic deployment, you can start a [free trial](https://cloud.elastic.co/registration) or refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 
 ::::{admonition}
@@ -22,7 +23,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 ::::
 
 :::::::{stepper}
-::::::{step} Enable {{agent-builder}}
+::::::{step} Access {{agent-builder}}
 
 :::::{applies-switch}
 
@@ -77,10 +78,6 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 
 :::::
 
-:::{note}
-To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
-:::
-
 :::::{dropdown} Previous versions
 :applies_to: stack: preview =9.2, ga 9.3
 
@@ -107,6 +104,10 @@ You can also search for **Agents** in the [global search field](/explore-analyze
 :::::
 
 ::::::
+
+:::{note}
+To learn about required privileges for {{agent-builder}}, refer to [Permissions and access control](permissions.md).
+:::
 
 ::::{step} Ingest data into Elasticsearch
 
@@ -135,35 +136,30 @@ If you already have data, you can:
 
 The **Agent Chat** UI provides a conversational interface where you can interact with agents and explore your data using natural language. The default `Elastic AI Agent` is ready to use immediately.
 
+Use chat to ask questions, request data analysis, try [built-in skills](builtin-skills-reference.md), or [create dashboards and visualizations](agent-builder-dashboards-and-visualizations.md). You can also invoke a specific skill with a slash command, inspect the agent's reasoning and tool calls, and confirm any proposed write actions before changes are applied.
+
 Learn more in [Agent Chat](chat.md).
 
 ::::
 
 ::::{step} Configure model (optional)
 
-On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. To switch models or add your own, refer to [model selection and configuration](models.md).
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. To review recommended models, switch models, or add your own, refer to [model selection and configuration](models.md).
 
 ::::
 
-::::{step} Enable Elastic capabilities (optional)
-```{applies_to}
-stack: ga 9.4+
-```
+::::{step} Build skills, tools, and agents
 
-When you [create a custom agent](custom-agents.md#create-a-new-agent), use the **Enable Elastic Capabilities** toggle on the **Settings** tab to opt in to Elastic-built tools, skills, and plugins. The toggle is off by default, so the agent only uses capabilities you assign unless you turn it on.
+After you test the default `Elastic AI Agent`, create a [custom skill](custom-skills.md) for a specific workflow. Skills package task-specific instructions, context, and the tools needed to complete the workflow.
 
-For details, refer to [Enable Elastic Capabilities](custom-agents.md#enable-elastic-capabilities).
+Add [tools](tools.md) when the skill needs to retrieve data, run queries, call APIs, or take action. Create a [custom agent](custom-agents.md#create-a-new-agent) when you need a distinct persona, system prompt, model configuration, or set of enabled skills. You don't need a separate agent for every workflow: a single agent can use skill descriptions to choose the right skills and tools for the user's request.
 
-::::
-
-::::{step} Build custom skills and tools
-
-The default [Elastic AI Agent](builtin-agents-reference.md) comes with [built-in skills](builtin-skills-reference.md) and [built-in tools](tools.md) ready to use. To add your own domain expertise, [create custom skills](custom-skills.md) that package knowledge and tools into reusable instruction sets. For tips on writing effective skill instructions, refer to the [skill creation guidelines](skill-creation-guidelines.md). To learn how skills are invoked during a conversation, refer to [how skills are invoked](skills.md#how-skills-are-invoked).
-
-You can also [create custom tools](tools/custom-tools.md#create-custom-tools-in-the-ui) to give your skills and agents access to additional data sources. If you need a fully separate agent with its own system prompt, you can [create a custom agent](custom-agents.md#create-a-new-agent).
-
-To work programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
+To build programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
 ::::
 
 :::::::
+
+:::{tip}
+For solution-specific guidance, refer to [Agent Builder for {{observability}}](/solutions/observability/ai/agent-builder-observability.md) and [Agent Builder for {{elastic-sec}}](/solutions/security/ai/agent-builder/agent-builder.md).
+:::

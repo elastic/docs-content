@@ -34,7 +34,7 @@ Trusted applications are blindspots for {{elastic-defend}}, because they are not
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.0-9.1}
-Trusted applications can still generate alerts if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
+Trusted applications can still generate alerts if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
 :::
 
 :::{applies-item} { stack: ga 9.2.5+, serverless: ga }
@@ -48,9 +48,14 @@ Additionally, trusted applications still generate process events for visualizati
 
 By default, a trusted application is recognized globally across all hosts running {{elastic-defend}}. You can also assign a trusted application to a specific {{elastic-defend}} integration policy, enabling the application to be trusted by only the hosts assigned to that policy.
 
+## Add a trusted application [add-trusted-app]
+
 To add a trusted application:
 
-1. Find **Trusted applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Depending on your version, do one of the following:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted applications** tab.
+   * {applies_to}`stack: ga 9.0-9.3` Go to the **Trusted applications** page using the navigation menu or the global search field.
+
 2. Click **Add trusted application**.
 3. Fill in these fields in the **Details** section:
 
@@ -136,15 +141,47 @@ To add a trusted application:
 
 5. Click **Add trusted application**. The application is added to the **Trusted applications** list.
 
+::::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To add multiple trusted applications at once, you can import an NDJSON file instead. Refer to [Import and export trusted applications](#import-export-trusted-apps).
+::::
+
 
 ## View and manage trusted applications [trusted-apps-list]
 
-The **Trusted applications** page displays all the trusted applications that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
+The **Trusted applications** UI displays all the trusted applications that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
 
 :::{image} /solutions/images/security-trusted-apps-list.png
 :alt: trusted apps list
 :screenshot:
 :::
+
+
+### Import and export trusted applications [import-export-trusted-apps]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To export trusted applications, you need the **Trusted Applications: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Trusted Applications: All** privilege.
+* To import global items, you need the **Trusted Applications: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export trusted applications as NDJSON files:
+
+- **When the list is empty**: click **Import trusted applications**.
+- **When the list has entries**: click the actions menu ({icon}`boxes_vertical`), then select **Import trusted applications** or **Export trusted applications**.
+
+When you import an NDJSON file, the imported trusted applications are appended to your existing entries — existing entries are not removed or overwritten.
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 
 ### Edit a trusted application [edit-trusted-app]
