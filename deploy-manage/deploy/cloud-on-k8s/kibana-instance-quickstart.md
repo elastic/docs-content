@@ -80,7 +80,6 @@ This completes the quickstart of deploying an {{kib}} instance on top of [the EC
 
 We recommend continuing to:
 * [Updating your deployment](update-deployments.md).
-* For production deployments, review {{kib}} encryption keys and secure settings behavior on ECK in [Secure settings](/deploy-manage/security/k8s-secure-settings.md#k8s-kibana-secure-settings) and [Scale out a {{kib}} deployment](k8s-kibana-advanced-configuration.md#k8s-kibana-scaling).
 * For more {{kib}} configuration options, refer to [{{kib}} configuration on ECK](kibana-configuration.md) and [](./configure-deployments.md).
 
 

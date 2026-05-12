@@ -132,18 +132,6 @@ stringData:
 
 Similar to {{es}} secure settings, you can use Kubernetes secrets to manage keystore settings for {{kib}}.
 
-:::{note}
-ECK automatically generates the following settings if they are not set:
-
-* `xpack.security.encryptionKey`
-* `xpack.reporting.encryptionKey`
-* `xpack.encryptedSavedObjects.encryptionKey`
-
-If you provide values for these settings, ECK uses your values.
-
-For more details, check [Scale out a {{kib}} deployment](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-scaling).
-:::
-
 For example, you can provide your own encryption key for {{kib}} as follows:
 
 1. Create a secret containing the desired setting:
@@ -152,6 +140,10 @@ For example, you can provide your own encryption key for {{kib}} as follows:
     kubectl create secret generic kibana-secret-settings \
      --from-literal=xpack.security.encryptionKey=94d2263b1ead716ae228277049f19975aff864fb4fcfe419c95123c1e90938cd
     ```
+
+    :::{warning}
+    Always ensure the setting is listed in the [configuration reference](kibana://reference/kibana/configuration-reference.md) and that the value you provide matches the expected format before adding it to the keystore. Invalid, unsupported, or incorrect settings cause {{kib}} to fail to start.
+    :::
 
 2. Add a reference to the secret in the `secureSettings` section:
 
@@ -169,7 +161,17 @@ For example, you can provide your own encryption key for {{kib}} as follows:
       - secretName: kibana-secret-settings
     ```
 
-ECK does not rotate these keys automatically. If you want to rotate saved object encryption keys, manage the rotation in {{kib}} using `xpack.encryptedSavedObjects.keyRotation.decryptionOnlyKeys`. For more details, check [Secure {{kib}} saved objects](/deploy-manage/security/secure-saved-objects.md#encryption-key-rotation).
+:::{admonition} {{kib}} encryption settings
+ECK automatically generates values for the following settings:
+
+* [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey)
+* [`xpack.reporting.encryptionKey`](kibana://reference/configuration-reference/reporting-settings.md#encryption-keys)
+* [`xpack.encryptedSavedObjects.encryptionKey`](/deploy-manage/security/secure-saved-objects.md)
+
+You can override these generated values by providing your own encryption keys through secure settings.
+
+For more details about multi-instance requirements, retrieving generated keys, and key rotation, refer to [{{kib}} encryption keys on ECK](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-encryption-keys).
+:::
 
 ## More examples [k8s_more_examples]
 
