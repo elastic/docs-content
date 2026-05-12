@@ -39,6 +39,9 @@ Detection Rules use their author’s permissions to enrich alerts with entity da
 
 Give appropriate `read` index-level permissions for the entity store index and alias in the appropriate space (`.entities.v2.latest.security_${spaceId}*` and `entities-latest-${spaceId}*`)  to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
 
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.1
 :::
 
 :::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4

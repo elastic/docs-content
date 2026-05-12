@@ -278,7 +278,13 @@ For *offline* or *air-gapped* installations, additional steps are required to ad
 
 ## Before you begin [ece_before_you_begin_10]
 
-The examples shown all use HTTPS over port 12443, which requires that you have [a TLS certificate configured](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). Alternatively, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400.
+The examples shown all use HTTPS over port 12443, which requires that you have [a TLS certificate configured](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
 
 
 ## Get {{stack}} information [ece_get_elastic_stack_information]
