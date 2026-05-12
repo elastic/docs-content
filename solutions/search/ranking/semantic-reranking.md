@@ -83,7 +83,7 @@ The following is a non-exhaustive list of considerations when choosing between c
 ## Semantic re-ranking in {{es}} [semantic-reranking-in-es]
 
 {{es}} provides two ways to add semantic re-ranking to your search pipeline:
--  Using the [`text_similarity_reranker` retriever](#use-the-text_similarity_reranker-retriever
+-  Using the [`text_similarity_reranker` retriever](#use-the-text_similarity_reranker-retriever)
 -  Using the {{esql}} [`RERANK` command](#use-the-esql-rerank-command)
 
 Both use the same underlying inference endpoints and re-ranking models.
