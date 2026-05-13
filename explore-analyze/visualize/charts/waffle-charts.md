@@ -266,15 +266,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "filters", <1>
-      "color": { <2>
-        "mode": "categorical",
-        "palette": "default",
-        "mapping": [
-          { "values": ["Success (2xx/3xx)"], "color": { "type": "color_code", "value": "#209280" } },
-          { "values": ["Client errors (4xx)"], "color": { "type": "color_code", "value": "#D6BF57" } },
-          { "values": ["Server errors (5xx)"], "color": { "type": "color_code", "value": "#CC5642" } }
-        ]
-      },
       "filters": [
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
@@ -288,7 +279,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "expression": "response.keyword >= \"500\"" },
           "label": "Server errors (5xx)"
         }
-      ]
+      ],
+      "color": { <2>
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "color_code", "value": "#209280" } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "color_code", "value": "#CC5642" } }
+        ]
+      }
     }
   ],
   "data_source": {
