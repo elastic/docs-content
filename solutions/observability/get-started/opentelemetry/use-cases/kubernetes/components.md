@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Components description
+# EDOT Kubernetes observability components [k8s-edot-components]
 
 Getting started with OpenTelemetry for Kubernetes observability requires an understanding of the following components, their functions, and interactions: 
 
