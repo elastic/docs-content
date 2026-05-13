@@ -16,6 +16,17 @@ To access the page:
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Find **Entity analytics** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - {applies_to}`stack: ga 9.1-9.3` Find **Entity analytics** → **Overview** in the navigation menu. 
 
+To access the page you need the following privileges:
+
+### Privileges [_privileges]
+
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
+
+
+| Action | Index Privileges | Kibana Privileges |
+| --- | --- | --- |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` | **Read** for the **Management > Saved Objects Management** feature |
+
 
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
@@ -32,6 +43,16 @@ serverless: planned
 
 :::{admonition} Requirements
 To display threat hunting leads, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+
+To view or generate threat hunting leads, you need the following privileges:
+
+### Privileges [_privileges_leads]
+
+
+| Action | Index Privileges | Kibana Privileges |
+| --- | --- | --- |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View leads | `read` for `.entity_analytics.entity-leads-*` | N/A |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Generate leads | `read`, `create_index` and `write` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` | **Read** for the **Management > Actions and Connectors** feature |
 :::
 
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:

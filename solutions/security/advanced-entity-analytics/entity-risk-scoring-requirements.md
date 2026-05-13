@@ -35,6 +35,7 @@ To install or run the risk scoring engine, you need the following:
 | --- | --- | --- | --- |
 | Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Preview the risk score results | N/A | `Read` for `.alerts-security.alerts-*` | **Read** for the **Security** feature |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security > Alerts** feature |
 | {applies_to}`stack: ga 9.4+` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 
@@ -71,6 +72,9 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 To use asset criticality, you need the following:
 
+* In {{stack}}, you need the appropriate [privileges](#_privileges_2).
+* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2).
+
 * In {{stack}}, you need the appropriate [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
 * In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
 
@@ -79,9 +83,11 @@ To use asset criticality, you need the following:
 
 | Action | Index privilege |
 | --- | --- |
-| View asset criticality | `read` |
-| View, assign, or change asset criticality | `read` and `write` |
-| Unassign asset criticality | `delete` |
+| {applies_to}`stack: 9.0-9.3` View asset criticality | `read` for `.asset-criticality.asset-criticality-<space-id>` |
+| {applies_to}`stack: 9.0-9.3` View, assign, or change asset criticality | `read` and `write` for `.asset-criticality.asset-criticality-<space-id>` |
+| {applies_to}`stack: 9.0-9.3` Unassign asset criticality | `delete` for `.asset-criticality.asset-criticality-<space-id>` |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
 
 ### Predefined roles [ac_roles]
 ```yaml {applies_to}
