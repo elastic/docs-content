@@ -227,7 +227,7 @@ The Firehose delivery stream reports:
 ## Step 5: Visualize your logs in {{kib}} [firehose-cloudwatch-step-five]
 
 :::{image} /solutions/images/observability-firehose-cloudwatch-data-stream.png
-:alt: Vizualize logs in Kibana
+:alt: Visualize logs in Kibana
 :::
 
 With the logs streaming to the Elastic stack, you can now visualize them in {{kib}}.

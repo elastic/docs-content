@@ -10,9 +10,11 @@ products:
 applies_to:
   serverless:
   stack:
-description: The {{stack}} is a group of products that work together to securely store, search, analyze, and visualize your data.
+description: "The Elastic Stack is a group of open source products that work together to securely store, search, analyze, and visualize your data."
 ---
 # The {{stack}}
+
+The {{stack}} is a suite of open-source products, like {{es}}, {{kib}}, {{agent}}, {{ls}}, and more, that work together to ingest, store, search, and visualize data at scale. This page describes each component and explains how they fit together across Elastic deployments.
 
 All Elastic [deployments and projects](deployment-options.md) share the same open source foundation:
 
@@ -116,7 +118,7 @@ To monitor the state of all your {{agents}}, manage agent policies, and upgrade 
 
 {{product.apm}} is an application performance monitoring system.
 It allows you to monitor software services and applications in real-time by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more.
-This makes it easy to pinpoint and fix performance problems quickly.
+This makes it efficient to pinpoint and fix performance problems quickly.
 
 [Learn more about {{product.apm}}](/solutions/observability/apm/index.md).
 

@@ -6,6 +6,18 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
+<!-- :::{changelog} /releases
+:type: breaking-change
+::: -->
+
+<!--
+:::{include} _snippets/2026-05-06/breaking-changes.md
+:::
+
+:::{include} _snippets/2026-05-04/breaking-changes.md
+:::
+-->
+
 ## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
 
 :::{dropdown} Disables sequence numbers for TSDB indices in release builds
@@ -112,7 +124,7 @@ Note, because we dont support enabling norms from a disabled state, users will n
 
 **Impact:**
 
-Text fields will no longer be normalized by default in LogsDB and TSDB indicies.
+Text fields will no longer be normalized by default in LogsDB and TSDB indices.
   
 For more information, view [#131317](https://github.com/elastic/elasticsearch/pull/131317).
 :::

@@ -134,6 +134,14 @@ serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
 
+## Enable alerts and attacks alignment
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
+
 ## Enable asset inventory
 ```{applies_to}
 stack: preview 9.2
@@ -217,7 +225,7 @@ If you’ve ensured that your detection rules have the required privileges acros
 stack: ga 9.2
 ```
 
-To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
+To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
 ## Show/hide related integrations in Rules page tables [show-related-integrations]
 

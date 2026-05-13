@@ -90,18 +90,24 @@ Before you start creating your own deployment templates, you should have: [tagge
 
 ## Create deployment templates through the RESTful API [ece_create_deployment_templates_through_the_restful_api]
 
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
+
 1. Obtain the existing deployment templates to get some examples of what the required JSON looks like. You can take the JSON for one of the existing templates and modify it to create a new template, similar to what gets shown in the next step.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Post the JSON for your new deployment template.
 
-    The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 1 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
+    The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 2 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
 
     ```sh
-    curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
+    curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
         "name" : "Default",
         "description" : "Default deployment template for clusters",
         "deployment_template": {
@@ -348,7 +354,7 @@ Before you start creating your own deployment templates, you should have: [tagge
                     {
                       "instance_configuration_id": "kibana",
                       "size": {
-                        "value": 1024,
+                        "value": 2048,
                         "resource": "memory"
                       }
                     }

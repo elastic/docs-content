@@ -35,7 +35,7 @@ If you are affected by a breaking change, you have to take action before upgradi
 :::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-pre.md
 :::
 
-Additionaly, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.
+Additionally, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.
 
 Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archived-settings.md) for details on how to detect and remove archived settings at cluster and index levels.
 ::::
@@ -49,6 +49,11 @@ Take a [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md)
 
 :::{important}
 After you start to upgrade your {{es}} cluster, you cannot downgrade any of its nodes. If you can't complete the upgrade process, you must [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) which was taken before starting the upgrade.
+:::
+::::
+
+::::{step} Check your {{kib}} instance size
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/kib-instance-size.md
 :::
 ::::
 

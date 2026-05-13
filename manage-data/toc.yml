@@ -112,6 +112,7 @@ toc:
         children:
           - file: ingest/agentless/cloud-connector-deployment.md
           - file: ingest/agentless/agentless-integrations-faq.md
+      - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md

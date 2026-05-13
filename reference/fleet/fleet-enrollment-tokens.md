@@ -96,6 +96,6 @@ When an enrollment token is revoked it is not immediately deleted. Deletion occu
 
 Until the enrollment token has been deleted:
 
-* The token name may not be re-used when you [create an enrollment token](#create-fleet-enrollment-tokens).
+* The token name may not be reused when you [create an enrollment token](#create-fleet-enrollment-tokens).
 * The token continues to be visible in the {{fleet}} UI.
 * The token continues to be returned by a `GET /api/fleet/enrollment_api_keys` API request. Revoked enrollment tokens are identified as `"active": false`.
