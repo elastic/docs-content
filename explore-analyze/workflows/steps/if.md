@@ -58,7 +58,8 @@ steps:
     else:
       - name: log-disabled
         type: console
-        with: {}
+        with:
+          message: "Example"
 ```
 
 If the expression evaluates to `undefined`, it defaults to `false`.
