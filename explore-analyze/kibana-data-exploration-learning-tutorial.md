@@ -377,6 +377,12 @@ When you are happy with the layout, select **Save** in the toolbar.
 
 Your dashboard now combines multiple panel types built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
+## Recreate the dashboard with the API [recreate-dashboard-api]
+
+{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+
+Everything you built in the steps above can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard — panel types, data sources, layout, and display options — making it straightforward to version-control dashboards or provision consistent environments programmatically.
+
 <!--
   The curl example below is verified end-to-end by
   .github/scripts/verify-dashboards-api-example.py. The Dashboards API is in
@@ -386,9 +392,8 @@ Your dashboard now combines multiple panel types built with Lens, and you've see
   updated. Last verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
 -->
 ::::{dropdown} Recreate this dashboard with one API call
-:applies_to: {stack: preview 9.4+, serverless: preview}
 
-Now that you've seen what the finished dashboard looks like, you can recreate it programmatically with the [Dashboards API](dashboards/create-dashboards-programmatically.md). The following request creates the same dashboard, including the optional panels suggested earlier in the step, in a single call.
+The following `curl` request creates the same dashboard as the one you just built, including the optional panels suggested earlier in the step:
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/dashboards" \
