@@ -57,7 +57,7 @@ For example, Elastic Support frequently requests pulling the ECE diagnostic alon
 ```
 
 ::::{note} 
-ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get the [{{es}} diagnostic](/troubleshoot/elasticsearch/diagnostic.md) and [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) from {{ece}} > Deployment > Operations > Prepare Bundle.
+ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support might also request. You can get the [{{es}} diagnostic](/troubleshoot/elasticsearch/diagnostic.md) and [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) from {{ece}} -> Deployment -> Operations -> Prepare Bundle.
 ::::
 
 ## Example output [ece_example_output] 

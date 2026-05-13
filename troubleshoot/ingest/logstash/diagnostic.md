@@ -40,7 +40,7 @@ To capture a {{ls}} diagnostic:
     For example, with [the parameters](https://www.elastic.co/docs/reference/logstash/logstash-settings-file) `api.http.host: 127.0.0.1` and `api.http.port: 9600` without authentication (default), you’d use the following curl request:
 
     ```sh
-    curl -X GET -k http://127.0.0.1:9600?pretty
+    curl -X GET http://127.0.0.1:9600?pretty
     ```
 
     If you receive a an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, [diagnose the issue](#diagnostic-non-200) before proceeding.

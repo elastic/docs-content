@@ -230,7 +230,7 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 ### Compatibility setting [output-elasticsearch-compatibility-setting]
 
-`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$
+`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
 
     Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
@@ -246,92 +246,10 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 Settings used to parse, filter, and transform data.
 
-`escape_html` $$$output-elasticsearch-escape_html-setting$$$
+`escape_html` $$$output-elasticsearch-escape_html-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
 
     **Default:** `false`
-
-`pipeline` $$$output-elasticsearch-pipeline-setting$$$
-:   (string) A format string value that specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to write events to.
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipeline: my_pipeline_id
-    ```
-
-    You can set the ingest pipeline dynamically by using a format string to access any event field. For example, this configuration uses a custom field, `fields.log_type`, to set the pipeline for each event:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipeline: "%{[fields.log_type]}_pipeline"
-    ```
-
-    With this configuration, all events with `log_type: normal` are sent to a pipeline named `normal_pipeline`, and all events with `log_type: critical` are sent to a pipeline named `critical_pipeline`.
-
-    ::::{tip}
-    To learn how to add custom fields to events, see the `fields` option.
-    ::::
-
-    See the `pipelines` setting for other ways to set the ingest pipeline dynamically.
-
-`pipelines` $$$output-elasticsearch-pipelines-setting$$$
-:   An array of pipeline selector rules. Each rule specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to use for events that match the rule. During publishing, {{agent}} uses the first matching rule in the array. Rules can contain conditionals, format string-based fields, and name mappings. If the `pipelines` setting is missing or no rule matches, the `pipeline` setting is used.
-
-    Rule settings:
-
-    **`pipeline`**
-    :   The pipeline format string to use. If this string contains field references, such as `%{[fields.name]}`, the fields must exist, or the rule fails.
-
-    **`mappings`**
-    :   A dictionary that takes the value returned by `pipeline` and maps it to a new name.
-
-    **`default`**
-    :   The default string value to use if `mappings` does not find a match.
-
-    **`when`**
-    :   A condition that must succeed in order to execute the current rule.
-
-    All the conditions supported by processors are also supported here.
-
-    The following example sends events to a specific pipeline based on whether the `message` field contains the specified string:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch  hosts: ["http://localhost:9200"]
-        pipelines:
-          - pipeline: "warning_pipeline"
-            when.contains:
-              message: "WARN"
-          - pipeline: "error_pipeline"
-            when.contains:
-              message: "ERR"
-    ```
-
-    The following example sets the pipeline by taking the name returned by the `pipeline` format string and mapping it to a new name that’s used for the pipeline:
-
-    ```yaml
-    outputs:
-      default:
-        type: elasticsearch
-        hosts: ["http://localhost:9200"]
-        pipelines:
-          - pipeline: "%{[fields.log_type]}"
-            mappings:
-              critical: "sev1_pipeline"
-              normal: "sev2_pipeline"
-            default: "sev3_pipeline"
-    ```
-
-    With this configuration, all events with `log_type: critical` are sent to `sev1_pipeline`, all events with `log_type: normal` are sent to a `sev2_pipeline`, and all other events are sent to `sev3_pipeline`.
-
-
 
 ## HTTP settings [output-elasticsearch-http-settings]
 

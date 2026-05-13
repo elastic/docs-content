@@ -3,7 +3,7 @@ navigation_title: Set up Workflows
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Turn on the Workflows feature in Kibana and configure role-based access for your users.
+description: Configure role-based access to Elastic Workflows.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,18 +15,32 @@ products:
 
 # Set up Workflows [workflows-setup]
 
+:::::{applies-switch}
+
+::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+
+To use workflows, ensure your role has the appropriate privileges. You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+
+::::
+
+::::{applies-item} stack: preview 9.3
+
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 
-## Enable workflows [workflows-enable]
+### Enable workflows [workflows-enable]
 
 The workflows feature is turned off by default. To turn it on:
 
 1. Go to the **Advanced Settings** management page in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `workflows:ui:enabled`.
 3. Toggle the setting on.
-4. Click **Save changes** to turn on workflows in your space, then reload the page. 
+4. Click **Save changes** to turn on workflows in your space, then reload the page.
 
 The **Workflows** page displays in the main navigation menu and you can search for it using the global search field.
+
+::::
+
+:::::
 
 ## Manage access to workflows [workflows-role-access]
 
