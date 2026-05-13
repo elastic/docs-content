@@ -86,8 +86,8 @@ To use asset criticality, you need the following:
 | {applies_to}`stack: 9.0-9.3` View asset criticality | `read` for `.asset-criticality.asset-criticality-<space-id>` |
 | {applies_to}`stack: 9.0-9.3` View, assign, or change asset criticality | `read` and `write` for `.asset-criticality.asset-criticality-<space-id>` |
 | {applies_to}`stack: 9.0-9.3` Unassign asset criticality | `delete` for `.asset-criticality.asset-criticality-<space-id>` |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
 
 ### Predefined roles [ac_roles]
 ```yaml {applies_to}
