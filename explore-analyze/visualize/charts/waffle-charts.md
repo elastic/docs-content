@@ -112,17 +112,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "legend": { "size": "auto" },
   "metrics": [
     {
-      "operation": "sum",
+      "operation": "sum", <2>
       "field": "taxful_total_price",
-      "label": "Revenue earned", <2>
+      "label": "Revenue earned",
       "format": {
         "type": "number"
       },
       "filter": { "expression": "" }
     },
     {
-      "operation": "formula",
-      "formula": "500000 - sum(taxful_total_price)", <3>
+      "operation": "formula", <3>
+      "formula": "500000 - sum(taxful_total_price)",
       "label": "Remaining to goal",
       "format": {
         "type": "number"

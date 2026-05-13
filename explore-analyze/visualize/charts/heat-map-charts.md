@@ -360,8 +360,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "limit": 5
   },
   "metric": {
-    "operation": "sum",
-    "field": "taxful_total_price", <3>
+    "operation": "sum", <3>
+    "field": "taxful_total_price",
     "label": "Revenue",
     "format": { "type": "number" },
     "filter": { "expression": "" }
