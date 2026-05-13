@@ -182,7 +182,7 @@ Flyout mode
 
 $$$generative-ai-connector$$$
 Generative AI connector
-:   A {{kib}} connector that wires {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. See [](models.md#configure-a-connector).
+:   A {{kib}} connector that connects {{agent-builder}} to an LLM provider such as OpenAI, Anthropic, Amazon Bedrock, Google Gemini, or Azure OpenAI. Distinct from a [](#connector), which connects {{agent-builder}} to non-LLM external services. See [](models.md#configure-a-connector).
 
 $$$genai-settings$$$
 GenAI Settings {applies_to}`stack: ga 9.4+`
