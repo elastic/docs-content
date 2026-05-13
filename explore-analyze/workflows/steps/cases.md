@@ -630,14 +630,6 @@ Push multiple cases in a single step:
       - "ghi-789-jkl-012"
 ```
 
-% Ben Ironside Goldstein, 2026-05-12: Two items for SME confirmation before merge.
-% 1. The optional top-level `push-case: true` config is technically inherited via the shared
-%    cases step config schema. Its behavior on this step is unconfirmed (likely a no-op since
-%    the step is the push). If confirmed no-op, consider noting it inline.
-% 2. The handler pushes cases in parallel and returns `{ error }` on the first failure (fail-fast)
-%    rather than the `{ errors: [...] }` partial-success pattern used by `cases.getCases`.
-%    Confirm this is intentional behavior to document.
-
 ---
 
 ## Delete
