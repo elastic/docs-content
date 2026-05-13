@@ -20,8 +20,6 @@ To access the page you need the following privileges:
 
 ### Privileges [_privileges]
 
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
-
 
 | Action | Index Privileges | Kibana Privileges |
 | --- | --- | --- |
@@ -43,6 +41,7 @@ serverless: planned
 
 :::{admonition} Requirements
 To display threat hunting leads, you must [turn on risk scoring](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
+:::
 
 To view or generate threat hunting leads, you need the following privileges:
 
@@ -52,8 +51,8 @@ To view or generate threat hunting leads, you need the following privileges:
 | Action | Index Privileges | Kibana Privileges |
 | --- | --- | --- |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` View leads | `read` for `.entity_analytics.entity-leads-*` | N/A |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Generate leads | `read`, `create_index` and `write` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` | **Read** for the **Management > Actions and Connectors** feature |
-:::
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Generate leads | `read`, `create_index` and `write` for `.entity_analytics.entity-leads-*` | **Read** for the **Management > Actions and Connectors** feature |
+
 
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:
 
