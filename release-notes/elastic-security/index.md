@@ -27,6 +27,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.4.1 [elastic-security-9.4.1-release-notes]
+
+### Fixes [elastic-security-9.4.1-fixes]
+
+* Fixes an issue where detection rules failed with errors when their executing users lacked read access to entity store indices. Entity store enrichment is now silently skipped for users without entity store index access [#267787]({{kib-pull}}267787).
+* Fixes an issue where the Security alert flyout failed to render its header, content, and footer when Discover was embedded in a dashboard [#267321]({{kib-pull}}267321).
+* Fixes the events histogram and host/network event count panels on the **Overview** dashboard, which incorrectly included alert documents in event counts, and ensures compatibility with cross-cluster search so events from remote clusters are correctly included [#265561]({{kib-pull}}265561).
+* Fixes an incorrect ordering of the **Launchpad** item in the classic global side navigation. The item now appears above **Manage**, consistent with {{elastic-sec}} own classic navigation [#268216]({{kib-pull}}268216).
+* Fixes an issue where the entity store log extraction window could grow unboundedly in lagging environments, causing {{esql}} probe cost to spiral. Adds a `maxTimeWindowSize` parameter (default: `15m`) to the install and update APIs to cap each probe's window size. Also adds an `excludedIndexPatterns` parameter that lets you exclude specific index patterns from log extraction. By default, the entity store extracts entities from all data sources defined in the Default Security data view; use `excludedIndexPatterns` to skip patterns you don't want to include [#268170]({{kib-pull}}268170).
+* Fixes an issue where {{elastic-defend}} failed to send data to {{ls}} output when the kernel TCP send buffer was full, causing connections to drop prematurely.
+* Updates eBPF probes for {{elastic-defend}} on Linux to support 7.0 kernels.
+* Fixes {{elastic-defend}} on Linux to report more accurate path names for file-less execution events.
+
 ## 9.4.0 [elastic-security-9.4.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.0-features-enhancements]
