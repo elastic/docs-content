@@ -326,10 +326,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "operation": "terms", <1>
       "fields": ["host.keyword"],
       "limit": 3,
+      "other_bucket": { "include_documents_without_field": false },
       "color": {
         "mode": "gradient",
         "palette": "default",
-        "gradient": [{ "type": "color_code", "value": "#ffc7db" }]
+        "gradient": [{ "type": "color_code", "value": "#ffc7db" }],
+        "sort": "desc"
       }
     },
     {
@@ -355,11 +357,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "absolute" } }
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
-1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. The `color` gradient applies a pink hue (`#ffc7db`) across the host values.
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. `other_bucket` adds an "Other" segment for hosts outside the top 3. The `color` gradient applies a pink hue (`#ffc7db`) across the host values, reversed with `sort: "desc"` to match the UI example.
 2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
