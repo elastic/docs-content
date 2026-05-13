@@ -21,6 +21,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.1 [elastic-observability-9.4.1-release-notes]
+
+There are no user-facing changes in {{observability}} for the 9.4.1 release.
+
 ## 9.4.0 [elastic-observability-9.4.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.0-features-enhancements]
@@ -116,6 +120,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.4.0-fixes]
 
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
 * Fixes the layout of the Elastic Inference Service (EIS) pricing callout [#262780]({{kib-pull}}262780).
 * Adds the EIS cost callout to all relevant AI Assistant settings locations [#255588]({{kib-pull}}255588).
 * Fixes AI/Inference connector creation to correctly use the `location` field for provider configuration [#250838]({{kib-pull}}250838).
@@ -227,6 +232,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Defaults new APM alert rules to group by `transaction.name`, providing more granular out-of-the-box alerting for latency threshold, failed transaction rate, and error count rules. Existing rules are unaffected [#261929]({{kib-pull}}261929).
 
 ### Fixes [elastic-observability-9.3.4-fixes]
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
 * Fixes the Serverless APM navigation so **Service inventory** stays active on service map, service groups, and related paths, matching stateful behavior [#263119]({{kib-pull}}263119).
 * Fixes the **Hosts** table on the Observability Overview page to display OTel (semconv) host metrics alongside ECS metrics, so hosts ingesting through OpenTelemetry are no longer missing from the table [#261564]({{kib-pull}}261564).
 * Fixes an issue where malformed URL query parameters could crash APM and other plugins; affected pages now automatically recover by applying parameter defaults and redirecting to the corrected URL [#257245]({{kib-pull}}257245).
