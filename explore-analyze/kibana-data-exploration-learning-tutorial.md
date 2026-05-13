@@ -410,7 +410,7 @@ Everything you built in this tutorial can also be reproduced in a single API cal
 -->
 ::::{dropdown} Recreate this dashboard with one API call
 
-The following `curl` request creates the same dashboard as the one you just built, including the optional panels suggested earlier in the step:
+The following `curl` request creates the same dashboard as the one you built in this tutorial, including the optional panels suggestions.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/dashboards" \
