@@ -196,7 +196,7 @@ Index search tool
 
 $$$inference-endpoint$$$
 Inference endpoint
-:   An {{es}} resource that wires the cluster to a model: Elastic-managed (through EIS) or third-party (OpenAI, Anthropic, Amazon Bedrock, Cohere, Google AI, and others). {{agent-builder}} can use any inference endpoint that supports the `chat_completion` task type as a model source. Inference endpoints are managed from **Elastic inference**, **External inference**, or the [{{infer}} APIs]({{es-apis}}group/endpoint-inference). See [](models.md#add-an-inference-endpoint).
+:   An {{es}} resource that connects the cluster to a third-party or Elastic-managed model on EIS. {{agent-builder}} can use any inference endpoint that supports the `chat_completion` task type as a model source. Inference endpoints are managed from **Elastic inference**, **External inference**, or the [{{infer}} APIs]({{es-apis}}group/endpoint-inference). See [](models.md#add-an-inference-endpoint).
 
 $$$inline-tool$$$
 Inline tool
