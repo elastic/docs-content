@@ -258,13 +258,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "group_by": [
     {
-      "operation": "terms",
-      "fields": ["Carrier"], <1>
+      "operation": "terms", <1>
+      "fields": ["Carrier"],
       "limit": 5
     },
     {
-      "operation": "terms",
-      "fields": ["DestCountry"], <2>
+      "operation": "terms", <2>
+      "fields": ["DestCountry"],
       "limit": 5
     }
   ],
@@ -323,8 +323,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "group_by": [
     {
-      "operation": "terms",
-      "fields": ["host.keyword"], <1>
+      "operation": "terms", <1>
+      "fields": ["host.keyword"],
       "limit": 3,
       "color": {
         "mode": "gradient",
