@@ -268,7 +268,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `mosaic` renders a grid where both column width and row height encode proportions, making it easy to compare distributions across two dimensions.
 2. `group_by` defines the horizontal axis (columns). Each OS gets a column whose width reflects its share of total traffic.
-3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries.
+3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries. Color mapping for the breakdown dimension is not configurable via the API — Kibana applies the default palette automatically.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

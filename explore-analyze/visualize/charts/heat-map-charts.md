@@ -306,7 +306,23 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "fields": ["hour_of_day"], <1>
     "limit": 24 <2>
   },
-  "metric": { "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } },
+  "metric": {
+    "operation": "count",
+    "format": { "type": "number" },
+    "filter": { "expression": "" },
+    "color": {
+      "type": "legacy_dynamic",
+      "palette": "cool",
+      "range": "percentage",
+      "shift": false,
+      "steps": [
+        { "color": "#caf0f8", "gte": null, "lt": 25 },
+        { "color": "#48cae4", "gte": 25, "lt": 50 },
+        { "color": "#0096c7", "gte": 50, "lt": 75 },
+        { "color": "#023e8a", "gte": 75, "lte": null }
+      ]
+    }
+  },
   "data_source": {
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_logs",
@@ -364,7 +380,19 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "field": "taxful_total_price",
     "label": "Revenue",
     "format": { "type": "number" },
-    "filter": { "expression": "" }
+    "filter": { "expression": "" },
+    "color": {
+      "type": "legacy_dynamic",
+      "palette": "positive",
+      "range": "percentage",
+      "shift": false,
+      "steps": [
+        { "color": "#e9f7ef", "gte": null, "lt": 25 },
+        { "color": "#82e0aa", "gte": 25, "lt": 50 },
+        { "color": "#28b463", "gte": 50, "lt": 75 },
+        { "color": "#1a5276", "gte": 75, "lte": null }
+      ]
+    }
   },
   "data_source": {
     "type": "data_view_spec",

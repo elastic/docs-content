@@ -594,7 +594,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
           "label": "Success"
         }
-      ]
+      ],
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Client Error"], "color": { "type": "color_code", "value": "#CC5642" } },
+          { "values": ["Server Error"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Success"],      "color": { "type": "color_code", "value": "#209280" } }
+        ]
+      }
     }
   ],
   "data_source": {
@@ -606,7 +615,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx).
+1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx). The `color` mapping assigns explicit hex colors to each category — red for client errors, yellow for server errors, green for success.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

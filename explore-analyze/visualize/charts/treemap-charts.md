@@ -325,7 +325,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["host.keyword"], <1>
-      "limit": 3
+      "limit": 3,
+      "color": {
+        "mode": "gradient",
+        "palette": "default",
+        "gradient": [{ "type": "color_code", "value": "#ffc7db" }]
+      }
     },
     {
       "operation": "filters", <2>
@@ -354,7 +359,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count.
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. The `color` gradient applies a pink hue (`#ffc7db`) across the host values.
 2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).

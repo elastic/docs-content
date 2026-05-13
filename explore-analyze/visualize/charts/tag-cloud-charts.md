@@ -228,18 +228,20 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "tag_by": {
     "operation": "terms",
     "fields": ["DestCityName"], <2>
-    "limit": 30
+    "limit": 30,
+    "color": { "mode": "gradient", "palette": "default" }
   },
   "data_source": {
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_flights",
     "time_field": "timestamp"
-  }
+  },
+  "styling": { "orientation": "angled" }
 }'
 ```
 
 1. `count` sizes each tag by the number of flights to that destination. You could use `sum` or `average` on a numeric field for a different perspective (for example, total revenue per city).
-2. `DestCityName` provides human-readable city names as tag labels, making the cloud immediately meaningful.
+2. `DestCityName` provides human-readable city names as tag labels. The `color` gradient applies a spectrum of hues across city names, and `orientation: angled` allows words to appear at multiple angles.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

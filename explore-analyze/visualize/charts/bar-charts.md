@@ -508,7 +508,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "format": {
             "type": "percent"
           },
-          "label": "Maximum acceptable error rate"
+          "label": "Maximum acceptable error rate",
+          "color": { "type": "static", "color": "#BD271E" },
+          "stroke_dash": "dashed"
         }
       ],
       "data_source": {
@@ -528,7 +530,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
 2. `formula` computes the error rate as the ratio of responses above 300 to total requests, formatted as a percentage.
-3. A `referenceLines` layer draws a threshold line at 10% so hosts exceeding it are immediately visible.
+3. A `reference_lines` layer draws a threshold at 10% so hosts exceeding it are immediately visible. The `color` and `stroke_dash` mark it red and dashed.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
