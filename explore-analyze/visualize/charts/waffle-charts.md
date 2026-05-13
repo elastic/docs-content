@@ -292,7 +292,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `filters` creates one waffle section per KQL query, letting you define arbitrary status categories rather than grouping by raw field values.
-2. Each filter entry defines a KQL query and a display label. The number of squares each section occupies is proportional to its document count.
+2. The `filters` array defines one waffle section per entry, each with a KQL query and a display label. Squares are allocated proportionally to document count.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -339,7 +339,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `machine.os.keyword` splits the waffle by operating system, with the top 5 OSes each getting a proportionally sized colored section.
+1. `group_by` splits the waffle into sections by `machine.os.keyword`, with the top 5 OSes each getting a proportionally sized colored section.
 2. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
