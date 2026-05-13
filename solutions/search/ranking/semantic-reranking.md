@@ -92,17 +92,18 @@ Both use the same underlying inference endpoints and re-ranking models.
 
 Both approaches require an inference endpoint configured for the `rerank` task. You have the following options:
 
-1. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [{{infer}} API’s {{es}} service]({{es-apis}}operation/operation-inference-put-elasticsearch).
-2. Use the [Jina AI Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-jinaai) to create a `rerank` endpoint.
-3. Use the [Cohere Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-cohere) to create a `rerank` endpoint.
-4. Use the [Google Vertex AI inference endpoint]({{es-apis}}operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
-5. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint]({{es-apis}}operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
+1. Use a reranking model through the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). The recommended model is [Jina Reranker v3](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-reranker-v3).
+2. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [{{infer}} API’s {{es}} service]({{es-apis}}operation/operation-inference-put-elasticsearch).
+3. Use the [Jina AI Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-jinaai) to create a `rerank` endpoint.
+4. Use the [Cohere Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-cohere) to create a `rerank` endpoint.
+5. Use the [Google Vertex AI inference endpoint]({{es-apis}}operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
+6. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint]({{es-apis}}operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
 
     Refer to [the Elastic NLP model reference](../../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-similarity) for a list of third party text similarity models supported by {{es}} for semantic re-ranking.
 
 ### Step 2: Choose an implementation approach
 
-You can use either retrievers or {{esql}} to implement semantic re-ranking in your search pipelines.
+You can perform semantic re-ranking using either retrievers or {{esql}}.
 
 #### Use the `text_similarity_reranker` retriever
 
@@ -160,7 +161,8 @@ For full reference documentation, refer to the [`RERANK` command](elasticsearch:
 |---|---|---|
 | **Syntax** | Declarative JSON (retriever tree) | Piped query language |
 | **Composability** | Nest with other retrievers (RRF, linear, pinned, diversify) | Pipe with other commands (FORK, FUSE, COMPLETION, STATS) |
-| **Best for** | Multi-stage retrieval pipelines in the `_search` API | End-to-end search workflows that include transformations or generation |
+| **Multi-field reranking** | Single field only | Multiple fields supported |
+| **Best for** | Multi-stage retrieval pipelines in the `_search` API | End-to-end search queries that include transformations or generation |
 | **Client support** | All {{es}} clients | All {{es}} clients |
 
 ### Handling long documents
