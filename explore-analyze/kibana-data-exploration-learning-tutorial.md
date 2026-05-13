@@ -377,6 +377,20 @@ When you are happy with the layout, select **Save** in the toolbar.
 
 Your dashboard now combines multiple panel types built with Lens, and you've seen how inline editing and interactive filtering make the dashboard both customizable and interactive. To learn more, refer to [Dashboards](dashboards.md), [Lens](visualize/lens.md), and [Panels and visualizations](visualize.md).
 
+
+## Step 4: Share the dashboard [share-the-dashboard]
+
+Once your dashboard is ready, share it with your team:
+
+1. In the toolbar, select {icon}`share` **Share**.
+2. [Copy the link](report-and-share.md#share-a-direct-link) and share it with your team.
+
+Users who receive the link need to authenticate and have the appropriate privileges to access the underlying data. 
+
+{applies_to}`serverless:` {applies_to}`stack: ga 9.3+` From the same **Share** menu, you can also set whether other users in the space can edit or only view the dashboard. Users with view-only access can still duplicate it to create their own version.
+
+For more details on sharing options, access control, and managing dashboard ownership, refer to [Sharing dashboards](dashboards/sharing.md).
+
 ## (Optional) Recreate the dashboard with the API [recreate-dashboard-api]
 
 ```{applies_to}
@@ -700,18 +714,6 @@ How each panel maps back to the tutorial:
 For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
 ::::
 
-## Step 4: Share the dashboard [share-the-dashboard]
-
-Once your dashboard is ready, share it with your team:
-
-1. In the toolbar, select {icon}`share` **Share**.
-2. [Copy the link](report-and-share.md#share-a-direct-link) and share it with your team.
-
-Users who receive the link need to authenticate and have the appropriate privileges to access the underlying data. 
-
-{applies_to}`serverless:` {applies_to}`stack: ga 9.3+` From the same **Share** menu, you can also set whether other users in the space can edit or only view the dashboard. Users with view-only access can still duplicate it to create their own version.
-
-For more details on sharing options, access control, and managing dashboard ownership, refer to [Sharing dashboards](dashboards/sharing.md).
 
 ## Navigate between Discover and dashboards [navigate-between-apps]
 
