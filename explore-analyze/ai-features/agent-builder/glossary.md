@@ -236,7 +236,7 @@ MCP tool {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`
 
 $$$model$$$
 Model
-:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs, third-party models reached through an [](#inference-endpoint), or models reached through a [](#generative-ai-connector). See [](models.md#use-additional-models).
+:   The LLM that an agent uses to reason and produce responses. {{agent-builder}} can use Elastic Managed LLMs, third-party models accessed through an [](#inference-endpoint), or models accessed through a [](#generative-ai-connector). See [](models.md#use-additional-models).
 
 $$$model-selector$$$
 Model selector
