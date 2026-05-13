@@ -1,0 +1,33 @@
+name: Docs PR AI menu (collect)
+
+# Canonical home: elastic/oblt-aw/.github/remote-workflow-template/docs/.github/workflows/docs-pr-ai-menu-collect.yml
+# Distributed automatically to repos listed in elastic/oblt-aw/config/docs/active-repositories.json.
+# Part of the split-workflow pattern: saves the PR number as an artifact so that
+# docs-pr-ai-menu.yml can post the AI PR menu comment from a trusted workflow_run context,
+# avoiding the need for pull_request_target.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    name: Save PR number
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: echo "$PR_NUMBER" > pr_number.txt
+
+      - name: Upload PR number
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-number
+          path: pr_number.txt
+          retention-days: 1

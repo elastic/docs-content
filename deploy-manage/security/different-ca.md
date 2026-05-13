@@ -284,7 +284,7 @@ This process is different for each client, so refer to your client’s documenta
     ```
 
 11. One node at a time, complete [step 5](#start-rolling-restart-http-newca) through [step 10](#verify-keystore-http-newca) until you’ve updated all keystores in your cluster.
-12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.
+12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Re-enable shard allocation**.
 
 
 ### What’s next? [http-kibana-newca-whatsnext]

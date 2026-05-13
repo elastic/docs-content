@@ -16,7 +16,8 @@ description: Learn how Elastic Agent Builder works with Elastic Security.
 Agent Builder integrates tightly with {{elastic-sec}}, shipping with built-in agents and tools designed for security use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more. 
 
 :::{note}
-To use {{agent-builder}} in {{elastic-sec}}, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{agent-builder}} is the default chat experience in {{elastic-sec}}.
+- {applies_to}`stack: preview =9.3` In 9.3, you must [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences) to use {{agent-builder}} in {{elastic-sec}}.
 :::
 
 ## Recommended models

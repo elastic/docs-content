@@ -99,7 +99,7 @@ When you add an indicator to Timeline, a new Timeline opens with an auto-generat
 
 ### Example indicator Timeline investigation [example-indicator-timeline]
 
-The following image shows a file hash indictor being investigated in Timeline. The indicator field-value pair is:
+The following image shows a file hash indicator being investigated in Timeline. The indicator field-value pair is:
 
 `threat.indicator.file.hash.sha256 : 116dd9071887611c19c24aedde270285a4cf97157b846e6343407cf3bcec115a`
 

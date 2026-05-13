@@ -243,7 +243,7 @@ overview of its configuration information.
 
 When an alert occurs for an {{anomaly-detect}} alert rule, it is always the same
 name as the job ID of the associated {{anomaly-job}} that triggered it. You can
-review how the alerts that are occured correlate with the {{anomaly-detect}}
+review how the alerts that are occurred correlate with the {{anomaly-detect}}
 results in the **Anomaly explorer** by using the **Anomaly timeline** swimlane
 and the **Alerts** panel.
 

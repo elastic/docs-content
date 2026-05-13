@@ -54,8 +54,14 @@ The end date is related to the check interval for the rule. You can use this vie
 
 There is a rich set of HTTP endpoints to introspect and manage rules and connectors. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
 
+::::{tip}
+If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
+
 ```txt
-curl -X POST -k \
+curl -X POST \
  -H 'kbn-xsrf: foo' \
  -H 'content-type: application/json' \
  api/actions/connector/a692dc89-15b9-4a3c-9e47-9fb6872e49ce/_execute \
