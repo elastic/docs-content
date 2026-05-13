@@ -17,7 +17,7 @@ Nodes and shards are what make {{es}} distributed and scalable. These concepts a
 * **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
 ::::
 
-You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all of the available nodes.
+You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all available nodes.
 {{es}} does that in part by subdividing each index into one or more *shards*.
 
 ::::{include} _snippets/shard-lucene-and-distribution.md
