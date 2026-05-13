@@ -231,16 +231,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     },
     "filter": { "expression": "" }
   },
-  "group_by": [
+  "group_by": [ <2>
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"], <2>
+      "fields": ["machine.os.keyword"],
       "limit": 5
     }
   ],
-  "group_breakdown_by": [
+  "group_breakdown_by": [ <3>
     {
-      "operation": "filters", <3>
+      "operation": "filters",
       "filters": [
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },

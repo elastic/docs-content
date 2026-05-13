@@ -266,10 +266,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "filters", <1>
-      "filters": [
+      "filters": [ <2>
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
-          "label": "Success (2xx/3xx)" <2>
+          "label": "Success (2xx/3xx)"
         },
         {
           "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
@@ -323,10 +323,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "expression": "" },
   "legend": { "size": "auto" },
   "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
-  "group_by": [
+  "group_by": [ <1>
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"], <1>
+      "fields": ["machine.os.keyword"],
       "limit": 5
     }
   ],

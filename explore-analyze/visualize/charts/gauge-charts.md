@@ -107,8 +107,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "metric": {
-    "operation": "sum",
-    "field": "taxful_total_price", <2>
+    "operation": "sum", <2>
+    "field": "taxful_total_price",
     "label": "Revenue",
     "format": {
       "type": "number"
