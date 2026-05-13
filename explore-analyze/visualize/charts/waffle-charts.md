@@ -266,7 +266,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "filters", <1>
-      "filters": [ <2>
+      "color": { <2>
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "color_code", "value": "#209280" } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "color_code", "value": "#CC5642" } }
+        ]
+      },
+      "filters": [
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
           "label": "Success (2xx/3xx)"
@@ -292,7 +301,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `filters` creates one waffle section per KQL query, letting you define arbitrary status categories rather than grouping by raw field values.
-2. The `filters` array defines one waffle section per entry, each with a KQL query and a display label. Squares are allocated proportionally to document count.
+2. `color` assigns explicit hex colors to each category by label — green for success, yellow for client errors, red for server errors.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
