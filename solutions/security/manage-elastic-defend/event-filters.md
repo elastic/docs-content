@@ -130,7 +130,7 @@ serverless: ga
 You can import and export event filters as NDJSON files:
 
 - **When the list is empty**: Click **Import event filters**.
-- **When the list has entries**: Click the actions menu ({icon}`boxes_vertical`), then select **Import event filters** or **Export event filters**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import event filters** or **Export event filters**.
 
 ::::{note}
 The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.

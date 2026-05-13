@@ -139,7 +139,7 @@ The **Endpoint exceptions** tab on the **Artifacts** page displays all {{elastic
 You can import and export {{elastic-endpoint}} exceptions as NDJSON files:
 
 - **When the list is empty**: Click **Import Endpoint exceptions**.
-- **When the list has entries**: Click the actions menu ({icon}`boxes_vertical`), then select **Import Endpoint exceptions** or **Export Endpoint exceptions**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import Endpoint exceptions** or **Export Endpoint exceptions**.
 
 ::::{note}
 The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.

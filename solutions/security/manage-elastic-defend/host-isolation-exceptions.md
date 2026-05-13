@@ -92,7 +92,7 @@ serverless: ga
 You can import and export host isolation exceptions as NDJSON files:
 
 - **When the list is empty**: Click **Import host isolation exceptions**.
-- **When the list has entries**: Click the actions menu ({icon}`boxes_vertical`), then select **Import host isolation exceptions** or **Export host isolation exceptions**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import host isolation exceptions** or **Export host isolation exceptions**.
 
 ::::{note}
 The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.

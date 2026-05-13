@@ -70,7 +70,7 @@ serverless: ga
 You can import and export trusted devices as NDJSON files:
 
 - **When the list is empty**: Click **Import trusted devices**.
-- **When the list has entries**: Click the actions menu ({icon}`boxes_vertical`), then select **Import trusted devices** or **Export trusted devices**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import trusted devices** or **Export trusted devices**.
 
 ::::{note}
 The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.

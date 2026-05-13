@@ -109,7 +109,7 @@ serverless: ga
 You can import and export blocklist entries as NDJSON files:
 
 - **When the list is empty**: Click **Import blocklist entries**.
-- **When the list has entries**: Click the actions menu ({icon}`boxes_vertical`), then select **Import blocklist entries** or **Export blocklist entries**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import blocklist entries** or **Export blocklist entries**.
 
 ::::{note}
 The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
