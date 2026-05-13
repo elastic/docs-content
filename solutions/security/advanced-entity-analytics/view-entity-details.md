@@ -32,7 +32,7 @@ The entity details flyout includes the following sections:
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
-* {applies_to}`stack: ga 9.0-9.3` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
+* {applies_to}`stack: removed =9.4, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
 :::{image} /solutions/images/security-host-details-flyout.png
 :alt: Host details flyout
@@ -133,7 +133,8 @@ This section displays details such as the entity ID, when the entity was first a
 
 ### Asset Criticality
 ```yaml {applies_to}
-stack: ga 9.0-9.3
+stack: removed =9.4, ga 9.0-9.3
+serverless: removed
 ```
 
 The **Asset Criticality** section displays the selected entity's [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md). Asset criticality contributes to the overall [entity risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). The criticality level defines how impactful the entity is when calculating the risk score.

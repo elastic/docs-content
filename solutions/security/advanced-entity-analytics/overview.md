@@ -12,22 +12,20 @@ products:
 
 The **Entity analytics** page provides a centralized workspace for investigating entity risk across your environment. Use it to explore entity risk scores, surface behavioral anomalies, and prioritize threat investigations.
 
+:::{image} /solutions/images/security-entity-analytics-overview.png
+:alt: Entity analytics overview page
+:screenshot:
+:::
+
 To access the page:
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Find **Entity analytics** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - {applies_to}`stack: ga 9.1-9.3` Find **Entity analytics** → **Overview** in the navigation menu. 
-
 
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
 * {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 :::
-
-:::{image} /solutions/images/security-entity-analytics-overview.png
-:alt: Entity analytics overview page
-:screenshot:
-:::
-
 
 ## Threat hunting leads [entity-threat-hunting-leads]
 ```yaml {applies_to}
