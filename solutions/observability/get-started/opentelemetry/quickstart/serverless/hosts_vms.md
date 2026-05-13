@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
+description: Step-by-step guide for setting up the EDOT Collector and SDKs on Elastic Cloud Serverless to collect host metrics, logs, and application traces via OTLP.
 applies_to:
   stack:
   serverless:
