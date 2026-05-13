@@ -114,31 +114,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "data_table",                                                                                <1>
+  "type": "data_table",                                                         <1>
   "title": "Pivot table - visits by date split by hour",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
-  "rows": [
-    {
-      "operation": "date_histogram",
-      "field": "timestamp"
-    }
-  ],
+  "query": { "expression": "" },
+  "rows": [{ "operation": "date_histogram", "field": "timestamp" }],
   "metrics": [
     {
       "operation": "count",
       "label": "Visits",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
     }
   ],
-  "split_metrics_by": [{                                                                               <2>
-    "operation": "terms",
-    "fields": ["hour_of_day"],
-    "limit": 3
-  }]
+  "split_metrics_by": [{ "operation": "terms", "fields": ["hour_of_day"], "limit": 3 }], <2>
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 
@@ -181,10 +178,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "data_table",
   "title": "Table with formula column",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
+  "query": { "expression": "" },
   "rows": [
     {
       "operation": "date_histogram",
@@ -193,19 +188,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "metrics": [
     {
-      "operation": "count",                                                                            <1>
+      "operation": "count",                                                     <1>
       "label": "Orders this week",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
-      "operation": "formula",                                                                          <2>
-      "formula": "count() / count(shift='1w') - 1",                                                   <3>
+      "operation": "formula",                                                   <2>
+      "formula": "count() / count(shift='1w') - 1",                             <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 
@@ -377,26 +378,30 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "data_table",
   "title": "Top pages by unique visitors",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
+  "query": { "expression": "" },
   "rows": [
     {
-      "operation": "terms",                                                                            <1>
+      "operation": "terms",                                                     <1>
       "fields": ["request.keyword"],
       "limit": 5
     }
   ],
   "metrics": [
     {
-      "operation": "unique_count",                                                                     <2>
+      "operation": "unique_count",                                              <2>
       "field": "clientip",
       "label": "Unique visitors",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 
@@ -430,31 +435,37 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "data_table",
   "title": "Sales by date and continent",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
+  "query": { "expression": "" },
   "rows": [
     {
-      "operation": "date_histogram",                                                                   <1>
+      "operation": "date_histogram",                                            <1>
       "field": "order_date",
       "label": "Sales per day"
     }
   ],
   "metrics": [
     {
-      "operation": "unique_count",                                                                     <2>
+      "operation": "unique_count",                                              <2>
       "field": "customer_id",
       "label": "Unique customers",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
-  "split_metrics_by": [{                                                                               <3>
-    "operation": "terms",
-    "fields": ["geoip.continent_name"],
-    "limit": 3
-  }]
+  "split_metrics_by": [                                                         <3>
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"],
+      "limit": 3
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 
@@ -493,30 +504,31 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "data_table",
   "title": "Document comparison with custom ranges",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
+  "query": { "expression": "" },
   "rows": [
     {
-      "operation": "range",                                                                            <1>
+      "operation": "range",                                                     <1>
       "field": "bytes",
-      "ranges": [
-        { "lte": 10240 },                                                                             <2>
-        { "gt": 10240 }
-      ],
+      "ranges": [{ "lte": 10240 }, { "gt": 10240 }],                         <2>
       "label": "File size"
     }
   ],
   "metrics": [
     {
-      "operation": "sum",                                                                              <3>
+      "operation": "sum",                                                       <3>
       "field": "bytes",
       "label": "Total bytes transferred",
       "format": { "type": "bytes" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 
@@ -555,13 +567,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "data_table",
   "title": "Weekly sales with percentage change",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
-  "density": { "mode": "default" },
+  "query": { "expression": "" },
   "rows": [
     {
-      "operation": "date_histogram",                                                                   <1>
+      "operation": "date_histogram",                                            <1>
       "field": "order_date",
       "label": "Week"
     }
@@ -571,16 +581,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "operation": "count",
       "label": "Orders this week",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
-      "operation": "formula",                                                                          <2>
-      "formula": "count() / count(shift='1w') - 1",                                                   <3>
+      "operation": "formula",                                                   <2>
+      "formula": "count() / count(shift='1w') - 1",                             <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
 }'
 ```
 

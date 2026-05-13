@@ -124,33 +124,35 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Stacked bar chart",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "bar_stacked",                                                      <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "type": "bar_stacked",                                                    <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "count",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
+          "format": {
+            "type": "number"
+          },
+          "filter": { "expression": "" }
         }
       ],
-      "breakdown_by": {                                                            <2>
-        "operation": "terms",
-        "fields": ["geo.dest"],
-        "limit": 5
+      "breakdown_by": { "operation": "terms", "fields": ["geo.dest"], "limit": 5 }, <2>
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
       }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 
@@ -192,33 +194,35 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Unstacked bar chart",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "bar",                                                               <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "type": "bar",                                                            <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "count",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
+          "format": {
+            "type": "number"
+          },
+          "filter": { "expression": "" }
         }
       ],
-      "breakdown_by": {                                                            <2>
-        "operation": "terms",
-        "fields": ["geo.dest"],
-        "limit": 5
+      "breakdown_by": { "operation": "terms", "fields": ["geo.dest"], "limit": 5 }, <2>
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
       }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 
@@ -398,39 +402,39 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Weekly website traffic per region",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
       "type": "bar_stacked",
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "count",
-          "label": "Page Views",                                                   <1>
+          "label": "Page Views",                                                <1>
           "format": { "type": "number" },
-          "filter": { "query": "" }
+          "filter": { "expression": "" }
         }
       ],
       "breakdown_by": {
         "operation": "terms",
         "fields": ["geo.dest"],
-        "limit": 9                                                                  <2>
+        "limit": 9                                                              <2>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
       }
     }
-  ]
+  ],
+  "styling": { "fitting": { "type": "none" } }
 }'
 ```
 
 1. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count".
-2. `size: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+2. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -467,15 +471,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Request error rate per host",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "bar_horizontal",                                                    <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "type": "bar_horizontal",                                                 <1>
       "x": {
         "operation": "terms",
         "fields": ["host.keyword"],
@@ -483,27 +484,45 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       },
       "y": [
         {
-          "operation": "formula",                                                  <2>
+          "operation": "formula",                                               <2>
           "formula": "count(kql='response > \"300\"') / count()",
           "label": "Error Rate %",
-          "format": { "type": "percent" },
-          "filter": { "query": "" }
+          "format": {
+            "type": "percent"
+          },
+          "filter": { "expression": "" }
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     },
     {
-      "type": "referenceLines",                                                    <3>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "type": "reference_lines",                                             <3>
       "thresholds": [
         {
           "operation": "static_value",
-          "value": 0.10,
-          "format": { "type": "percent" },
+          "value": 0.1,
+          "format": {
+            "type": "percent"
+          },
           "label": "Maximum acceptable error rate"
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 

@@ -142,27 +142,33 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "region_map",                                                            <1>
+  "type": "region_map",                                                         <1>
   "title": "Website traffic by destination country",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metric": {
     "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
   },
   "region": {
     "operation": "terms",
-    "fields": ["geo.dest"],                                                        <2>
-    "limit": 50                                                                     <3>
+    "fields": ["geo.dest"],                                                     <2>
+    "limit": 50                                                                 <3>
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
   }
 }'
 ```
 
 1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
 2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
-3. `size: 50` includes up to 50 countries, providing broad geographic coverage.
+3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -190,20 +196,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "region_map",
   "title": "Customer distribution by country",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metric": {
-    "operation": "unique_count",                                                   <1>
+    "operation": "unique_count",                                                <1>
     "field": "customer_id",
     "label": "Unique customers",
     "format": { "type": "number" },
-    "filter": { "query": "" }
+    "filter": { "expression": "" }
   },
   "region": {
     "operation": "terms",
-    "fields": ["geoip.country_iso_code"],                                          <2>
+    "fields": ["geoip.country_iso_code"],                                       <2>
     "limit": 50
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
   }
 }'
 ```
@@ -237,20 +247,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "region_map",
   "title": "Average ticket price by destination country",
-  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metric": {
-    "operation": "average",                                                        <1>
+    "operation": "average",                                                     <1>
     "field": "AvgTicketPrice",
     "label": "Average ticket price",
     "format": { "type": "number" },
-    "filter": { "query": "" }
+    "filter": { "expression": "" }
   },
   "region": {
     "operation": "terms",
-    "fields": ["DestCountry"],                                                     <2>
+    "fields": ["DestCountry"],                                                  <2>
     "limit": 50
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
   }
 }'
 ```

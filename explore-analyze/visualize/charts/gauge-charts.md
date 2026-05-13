@@ -102,25 +102,35 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "gauge",                                                                 <1>
+  "type": "gauge",                                                              <1>
   "title": "Yearly sales goal",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
-  "shape": { "type": "semi_circle" },                                              <2>
+  "query": { "expression": "" },
   "metric": {
     "operation": "sum",
-    "field": "taxful_total_price",                                                 <3>
+    "field": "taxful_total_price",                                           <2>
     "label": "Revenue",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": {
+    "shape": {                                                               <3>
+      "type": "semi_circle"
+    }
   }
 }'
 ```
 
 1. `gauge` renders a single-value chart with a colored arc or bar showing position within a range.
-2. `semi_circle` draws the gauge as a half-circle arc. Other options include `circle` and `linear`.
-3. `sum` of `taxful_total_price` tracks cumulative revenue as the gauge metric.
+2. `sum` of `taxful_total_price` tracks cumulative revenue as the gauge metric.
+3. `semi_circle` draws the gauge as a half-circle arc. Other options include `circle` and `linear`.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -160,26 +170,41 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "gauge",
   "title": "Server response time",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "shape": { "type": "semi_circle" },
+  "query": { "expression": "" },
   "metric": {
     "operation": "average",
     "field": "bytes",
     "label": "Avg response bytes",
     "format": { "type": "number" },
-    "filter": { "query": "" },
-    "color": {                                                                     <1>
+    "filter": { "expression": "" },
+    "color": {                                                                  <1>
       "type": "dynamic",
       "range": "absolute",
-      "steps": [
-        { "color": "#209280", "gte": 0, "lt": 6000 },                             <2>
-        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
-        { "color": "#cc5642", "gte": 8000 }
+      "steps": [                                                             <2>
+        {
+          "color": "#209280",
+          "gte": 0,
+          "lt": 6000
+        },
+        {
+          "color": "#d6bf57",
+          "gte": 6000,
+          "lt": 8000
+        },
+        {
+          "color": "#cc5642",
+          "gte": 8000
+        }
       ]
     }
-  }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "shape": { "type": "semi_circle" } }
 }'
 ```
 
@@ -212,17 +237,21 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "gauge",
   "title": "Bytes vs quota",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "shape": { "type": "semi_circle" },
+  "query": { "expression": "" },
   "metric": {
     "operation": "sum",
     "field": "bytes",
     "label": "Total bytes",
-    "format": { "type": "bytes" },                                                <1>
-    "filter": { "query": "" }
-  }
+    "format": { "type": "bytes" },                                              <1>
+    "filter": { "expression": "" }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "shape": { "type": "semi_circle" } }
 }'
 ```
 
@@ -349,26 +378,30 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "gauge",
   "title": "CPU usage",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "shape": { "type": "semi_circle" },
+  "query": { "expression": "" },
   "metric": {
-    "operation": "average",                                                        <1>
+    "operation": "average",                                                     <1>
     "field": "bytes",
     "label": "Avg CPU %",
     "format": { "type": "number" },
-    "filter": { "query": "" },
+    "filter": { "expression": "" },
     "color": {
       "type": "dynamic",
       "range": "absolute",
-      "steps": [                                                                   <2>
+      "steps": [                                                                <2>
         { "color": "#209280", "gte": 0, "lt": 6000 },
         { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
         { "color": "#cc5642", "gte": 8000 }
       ]
     }
-  }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "shape": { "type": "semi_circle" } }
 }'
 ```
 
@@ -402,31 +435,37 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "gauge",
   "title": "Disk space utilization",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "shape": { "type": "semi_circle" },                                              <1>
+  "query": { "expression": "" },
   "metric": {
     "operation": "average",
     "field": "bytes",
     "label": "Disk usage %",
     "format": { "type": "number" },
-    "filter": { "query": "" },
+    "filter": { "expression": "" },
     "color": {
       "type": "dynamic",
       "range": "absolute",
       "steps": [
         { "color": "#209280", "gte": 0, "lt": 6000 },
         { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
-        { "color": "#cc5642", "gte": 8000 }                                       <2>
+        { "color": "#cc5642", "gte": 8000 }                                  <1>
       ]
     }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "shape": { "type": "semi_circle" }                                       <2>
   }
 }'
 ```
 
-1. `semi_circle` works well for utilization gauges because the 180-degree arc mimics a traditional dial meter.
-2. The highest band has no upper limit (`lt` omitted), so any value at or above 8000 shows in red.
+1. The highest band has no upper limit (`lt` omitted), so any value at or above 8000 shows in red.
+2. `semi_circle` works well for utilization gauges because the 180-degree arc mimics a traditional dial meter.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

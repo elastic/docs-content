@@ -110,48 +110,57 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Current vs previous period - bytes",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "line",                                                                                  <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "type": "line",                                                           <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Current period",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
+          "format": {
+            "type": "number"
+          },
+          "filter": { "expression": "" }
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     },
     {
-      "type": "line",                                                                                  <2>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "type": "line",                                                           <2>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Previous week",
-          "time_shift": "1w",                                                                          <3>
-          "format": { "type": "number" },
-          "filter": { "query": "" }
+          "time_shift": "1w",                                                   <3>
+          "format": {
+            "type": "number"
+          },
+          "filter": { "expression": "" }
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 
@@ -185,42 +194,54 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Bytes with SLO reference line",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "line",                                                                                  <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
-      "x": {
-        "operation": "date_histogram",
-        "field": "timestamp"
-      },
+      "type": "line",                                                           <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Average bytes",
-          "format": { "type": "number" },
-          "filter": { "query": "" }
+          "format": {
+            "type": "number"
+          },
+          "filter": { "expression": "" }
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     },
     {
-      "type": "referenceLines",                                                                        <2>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "type": "reference_lines",                                             <2>
       "thresholds": [
         {
           "operation": "static_value",
-          "value": 6000,                                                                               <3>
-          "format": { "type": "number" },
+          "value": 6000,                                                        <3>
+          "format": {
+            "type": "number"
+          },
           "label": "SLO target"
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 
@@ -348,36 +369,55 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Average RAM per host",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "line",                                                                                  <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "type": "line",                                                           <1>
       "x": {
         "operation": "date_histogram",
         "field": "timestamp"
       },
       "y": [
         {
-          "operation": "moving_average",                                                               <2>
-          "of": { "operation": "average", "field": "machine.ram", "format": { "type": "bytes" }, "filter": { "query": "" } },
+          "operation": "moving_average",                                        <2>
+          "of": {
+            "operation": "average",
+            "field": "machine.ram",
+            "format": {
+              "type": "bytes"
+            },
+            "filter": { "expression": "" }
+          },
           "label": "Moving average of RAM",
-          "format": { "type": "bytes" },
-          "filter": { "query": "" },
-          "color": { "type": "static", "color": "#6092c0" }
+          "format": {
+            "type": "bytes"
+          },
+          "filter": { "expression": "" },
+          "color": {
+            "type": "static",
+            "color": "#6092c0"
+          }
         }
       ],
-      "breakdown_by": {                                                                                <3>
+      "breakdown_by": {                                                         <3>
         "operation": "terms",
         "fields": ["host.keyword"],
         "limit": 4
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
       }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 
@@ -416,30 +456,40 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "type": "xy",
   "title": "Unique IPs over time",
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "visibility": "auto" },
-  "fitting": { "type": "none" },
   "axis": {},
-  "decorations": {},
   "layers": [
     {
-      "type": "line",                                                                                  <1>
-      "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+      "type": "line",                                                           <1>
       "x": {
         "operation": "date_histogram",
         "field": "timestamp"
       },
       "y": [
         {
-          "operation": "unique_count",                                                                 <2>
+          "operation": "unique_count",                                          <2>
           "field": "host.keyword",
           "label": "Unique hosts",
-          "format": { "type": "number", "decimals": 0 },
-          "filter": { "query": "" }
+          "format": {
+            "type": "number",
+            "decimals": 0
+          },
+          "filter": { "expression": "" }
         }
-      ]
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
     }
-  ]
+  ],
+  "styling": {
+    "fitting": {
+      "type": "none"
+    }
+  }
 }'
 ```
 

@@ -105,29 +105,37 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "waffle",                                                                <1>
+  "type": "waffle",                                                             <1>
   "title": "Revenue progress toward sales target",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "sum",
       "field": "taxful_total_price",
-      "label": "Revenue earned",                                                   <2>
-      "format": { "type": "number" },
-      "filter": { "query": "" }
+      "label": "Revenue earned",                                                <2>
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
-      "formula": "500000 - sum(taxful_total_price)",                               <3>
+      "formula": "500000 - sum(taxful_total_price)",                            <3>
       "label": "Remaining to goal",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -245,28 +253,41 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "waffle",
   "title": "Response status breakdown",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "count",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
-      "operation": "filters",                                                      <1>
+      "operation": "filters",                                                   <1>
       "filters": [
-        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
-        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
-        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }                                <2>
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"                                       <2>
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
       ]
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -298,30 +319,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "waffle",
   "title": "OS distribution",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },                                       <1>
-  "metrics": [
-    {
-      "operation": "count",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
-    }
-  ],
+  "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"],                                            <2>
+      "fields": ["machine.os.keyword"],                                      <1>
       "limit": 5
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }                          <2>
 }'
 ```
 
-1. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
-2. `machine.os.keyword` splits the waffle by operating system, with the top 5 OSes each getting a proportionally sized colored section.
+1. `machine.os.keyword` splits the waffle by operating system, with the top 5 OSes each getting a proportionally sized colored section.
+2. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::

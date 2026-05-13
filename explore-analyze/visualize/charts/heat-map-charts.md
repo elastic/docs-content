@@ -98,27 +98,32 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "heatmap",                                                               <1>
+  "type": "heatmap",                                                            <1>
   "title": "Error rates per day",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "axis": { "x": {}, "y": {} },
-  "cells": {},
+  "axis": { "x": { "scale": "temporal" }, "y": {} },
   "x": {
-    "operation": "date_histogram",                                                 <2>
+    "operation": "date_histogram",                                              <2>
     "field": "timestamp"
   },
   "y": {
     "operation": "terms",
-    "fields": ["response.keyword"],                                                <3>
+    "fields": ["response.keyword"],                                             <3>
     "limit": 10
   },
   "metric": {
     "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
   }
 }'
 ```
@@ -291,31 +296,27 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "heatmap",
   "title": "Request volume by day and hour",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "axis": { "x": {}, "y": {} },
-  "cells": {},
-  "x": {
-    "operation": "date_histogram",
-    "field": "timestamp"
-  },
+  "axis": { "x": { "scale": "temporal" }, "y": {} },
+  "x": { "operation": "date_histogram", "field": "timestamp" },
   "y": {
     "operation": "terms",
-    "fields": ["hour_of_day"],                                                     <1>
-    "limit": 24                                                                     <2>
+    "fields": ["hour_of_day"],                                                  <1>
+    "limit": 24                                                                 <2>
   },
-  "metric": {
-    "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+  "metric": { "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
   }
 }'
 ```
 
 1. `hour_of_day` is a runtime field that extracts the hour (0--23) from `@timestamp`, creating one row per hour.
-2. `size: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
+2. `limit: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -344,28 +345,31 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "heatmap",
   "title": "Sales performance by product and region",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "axis": { "x": {}, "y": {} },
-  "cells": {},
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
   "x": {
     "operation": "terms",
-    "fields": ["geoip.city_name"],                                                 <1>
+    "fields": ["geoip.city_name"],                                              <1>
     "limit": 10
   },
   "y": {
     "operation": "terms",
-    "fields": ["category.keyword"],                                                <2>
+    "fields": ["category.keyword"],                                             <2>
     "limit": 5
   },
   "metric": {
     "operation": "sum",
-    "field": "taxful_total_price",                                                 <3>
+    "field": "taxful_total_price",                                              <3>
     "label": "Revenue",
     "format": { "type": "number" },
-    "filter": { "query": "" }
+    "filter": { "expression": "" }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
   }
 }'
 ```

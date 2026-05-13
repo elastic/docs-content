@@ -163,27 +163,33 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "tag_cloud",                                                             <1>
+  "type": "tag_cloud",                                                          <1>
   "title": "Popular request URLs",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metric": {
     "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["request.keyword"],                                                 <2>
-    "limit": 30                                                                     <3>
+    "fields": ["request.keyword"],                                              <2>
+    "limit": 30                                                                 <3>
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
   }
 }'
 ```
 
 1. `tag_cloud` renders text labels with font size proportional to the metric value.
 2. `request.keyword` provides the text for each tag, showing the full URL path.
-3. `size: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+3. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -212,18 +218,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "tag_cloud",
   "title": "Most popular flight destinations",
-  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metric": {
-    "operation": "count",                                                          <1>
+    "operation": "count",                                                       <1>
     "format": { "type": "number" },
-    "filter": { "query": "" }
+    "filter": { "expression": "" }
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["DestCityName"],                                                    <2>
+    "fields": ["DestCityName"],                                                 <2>
     "limit": 30
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
   }
 }'
 ```

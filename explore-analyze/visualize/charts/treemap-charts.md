@@ -183,35 +183,41 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "treemap",                                                               <1>
+  "type": "treemap",                                                            <1>
   "title": "Bytes per file extension",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "absolute" },                                         <2>
   "metrics": [
     {
       "operation": "sum",
       "field": "bytes",
       "label": "Total bytes",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["extension.keyword"],
-      "limit": 6                                                                    <3>
+      "limit": 6                                                             <2>
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "absolute" } }                            <3>
 }'
 ```
 
 1. `treemap` renders nested rectangles whose area is proportional to the metric value.
-2. `absolute` displays the raw byte count on each rectangle instead of a percentage.
-3. `size: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
+2. `limit: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
+3. `absolute` displays the raw byte count on each rectangle instead of a percentage.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -239,31 +245,35 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "treemap",
   "title": "Flights by carrier and destination country",
-  "dataset": { "type": "index", "index": "kibana_sample_data_flights", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "absolute" },
   "metrics": [
     {
       "operation": "count",
       "label": "Flights",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["Carrier"],                                                       <1>
+      "fields": ["Carrier"],                                                    <1>
       "limit": 5
     },
     {
       "operation": "terms",
-      "fields": ["DestCountry"],                                                   <2>
+      "fields": ["DestCountry"],                                                <2>
       "limit": 5
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "absolute" } }
 }'
 ```
 
@@ -300,34 +310,47 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "treemap",
   "title": "Response status per host",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "absolute" },
   "metrics": [
     {
       "operation": "count",
       "label": "Count",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["host.keyword"],                                                  <1>
+      "fields": ["host.keyword"],                                               <1>
       "limit": 3
     },
     {
-      "operation": "filters",                                                      <2>
+      "operation": "filters",                                                   <2>
       "filters": [
-        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
-        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
-        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
       ]
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "absolute" } }
 }'
 ```
 

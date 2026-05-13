@@ -144,18 +144,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "metric",
   "title": "Weekly page views",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metrics": [
     {
       "type": "primary",
       "operation": "count",
       "label": "Page views",
       "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "query": "" },
-      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
-      "icon": { "name": "empty" }
+      "filter": { "expression": "" }
     },
     {
       "type": "secondary",
@@ -163,11 +160,19 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(shift='''1w''')",
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "query": "" },
-      "value": { "alignment": "right" },
+      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
+    "secondary": { "value": { "alignment": "right" } }
+  }
 }'
 ```
 
@@ -215,23 +220,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "metric",
   "title": "Storage used",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
-  "metrics": [{
-    "type": "primary",
-    "operation": "sum",
-    "field": "bytes",
-    "format": { "type": "bytes" },
-    "filter": { "query": "" },
-    "labels": { "alignment": "left" }, "value": { "alignment": "right" },
-    "icon": { "name": "empty" }
-  }],
-  "breakdown_by": {
-    "operation": "terms",
-    "fields": ["machine.os.keyword"],
-    "limit": 5
-  }
+  "query": { "expression": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "sum",
+      "field": "bytes",
+      "format": { "type": "bytes" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "breakdown_by": { "operation": "terms", "fields": ["machine.os.keyword"], "limit": 5 },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } } }
 }'
 ```
 
@@ -382,32 +388,37 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "metric",
   "title": "Successful requests (2xx)",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metrics": [
     {
       "type": "primary",
       "operation": "formula",
-      "formula": "count(kql='''response >= 200 and response < 300''') / count()",  <1>
+      "formula": "count(kql='''response >= 200 and response < 300''') / count()", <1>
       "label": "Successful requests (2xx)",
-      "format": { "type": "percent", "decimals": 1 },                             <2>
-      "filter": { "query": "" },
-      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
-      "icon": { "name": "empty" },
+      "format": { "type": "percent", "decimals": 1 },                           <2>
+      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#209280" }
     },
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "0.95",                                                           <3>
+      "formula": "0.95",                                                        <3>
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
-      "filter": { "query": "" },
-      "value": { "alignment": "right" },
+      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
+    "secondary": { "value": { "alignment": "right" } }
+  }
 }'
 ```
 
@@ -448,9 +459,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "metric",
   "title": "Successful requests (2xx)",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metrics": [
     {
       "type": "primary",
@@ -458,9 +468,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(kql='''response >= 200 and response < 300''') / count()",
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1 },
-      "filter": { "query": "" },
-      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
-      "icon": { "name": "empty" },
+      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#209280" }
     },
     {
@@ -469,15 +477,23 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "0.95",
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
-      "filter": { "query": "" },
-      "value": { "alignment": "right" },
+      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],
-  "breakdown_by": {                                                         <1>
+  "breakdown_by": {                                                             <1>
     "operation": "terms",
     "fields": ["geo.dest"],
-    "limit": 10                                                              <2>
+    "limit": 10                                                                 <2>
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
+    "secondary": { "value": { "alignment": "right" } }
   }
 }'
 ```
@@ -515,30 +531,46 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "metric",
   "title": "Weekly page views",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "metrics": [
     {
       "type": "primary",
       "operation": "count",
       "label": "Page views",
-      "format": { "type": "number", "decimals": 0, "compact": true },      <1>
-      "filter": { "query": "" },
-      "labels": { "alignment": "left" }, "value": { "alignment": "right" },
-      "icon": { "name": "empty" }
+      "format": {                                                               <1>
+        "type": "number",
+        "decimals": 0,
+        "compact": true
+      },
+      "filter": { "expression": "" }
     },
     {
-      "type": "secondary",                                                  <2>
+      "type": "secondary",                                                      <2>
       "operation": "formula",
-      "formula": "count(shift='''1w''')",                                   <3>
+      "formula": "count(shift='''1w''')",                                       <3>
       "label": "Compared to previous week",
-      "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "query": "" },
-      "value": { "alignment": "right" },
-      "color": { "type": "static", "color": "#6092c0" }
+      "format": {
+        "type": "number",
+        "decimals": 0,
+        "compact": true
+      },
+      "filter": { "expression": "" },
+      "color": {
+        "type": "static",
+        "color": "#6092c0"
+      }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
+    "secondary": { "value": { "alignment": "right" } }
+  }
 }'
 ```
 

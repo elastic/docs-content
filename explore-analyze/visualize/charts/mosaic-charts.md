@@ -219,35 +219,50 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "mosaic",                                                                <1>
+  "type": "mosaic",                                                             <1>
   "title": "Response status by operating system",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metric": {
     "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
+    "format": {
+      "type": "number"
+    },
+    "filter": { "expression": "" }
   },
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"],                                            <2>
+      "fields": ["machine.os.keyword"],                                         <2>
       "limit": 5
     }
   ],
   "group_breakdown_by": [
     {
-      "operation": "filters",                                                      <3>
+      "operation": "filters",                                                   <3>
       "filters": [
-        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success (2xx/3xx)" },
-        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client errors (4xx)" },
-        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server errors (5xx)" }
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
       ]
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -281,30 +296,30 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "mosaic",
   "title": "Product categories by continent",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
-  "metric": {
-    "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "query": "" }
-  },
+  "metric": { "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } },
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["geoip.continent_name"],                                          <1>
+      "fields": ["geoip.continent_name"],                                       <1>
       "limit": 5
     }
   ],
   "group_breakdown_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],                                              <2>
+      "fields": ["category.keyword"],                                           <2>
       "limit": 5
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 

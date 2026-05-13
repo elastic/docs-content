@@ -99,33 +99,39 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "pie",                                                                   <1>
+  "type": "pie",                                                                <1>
   "title": "Donut chart by destination",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },                                       <2>
   "metrics": [
     {
       "operation": "count",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["geo.dest"],
-      "limit": 5                                                                    <3>
+      "limit": 5                                                             <2>
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }                          <3>
 }'
 ```
 
 1. `pie` creates a pie or donut chart. The donut hole size is an appearance setting you can adjust in the Lens editor.
-2. `percentage` displays each slice's share of the total rather than its raw count.
-3. `size: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
+2. `limit: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
+3. `percentage` displays each slice's share of the total rather than its raw count.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -182,33 +188,37 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "pie",
   "title": "Server resource consumption",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
-  "metrics": [                                                                     <1>
+  "metrics": [                                                                  <1>
     {
       "operation": "sum",
       "field": "bytes",
-      "label": "Bandwidth",                                                        <2>
+      "label": "Bandwidth",                                                     <2>
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
       "operation": "sum",
       "field": "machine.ram",
       "label": "Memory usage",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
       "operation": "count",
       "label": "Request count",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -257,30 +267,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "pie",
   "title": "Top hosts with Other",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
-  "metrics": [
-    {
-      "operation": "count",
-      "format": { "type": "number" },
-      "filter": { "query": "" }
-    }
-  ],
+  "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["host.keyword"],
-      "limit": 3,                                                                   <1>
-      "other_bucket": { "include_documents_without_field": true }                  <2>
+      "limit": 3,                                                               <1>
+      "other_bucket": { "include_documents_without_field": true }               <2>
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
-1. `size: 3` limits the chart to the top 3 hosts by count.
+1. `limit: 3` limits the chart to the top 3 hosts by count.
 2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
@@ -430,41 +438,45 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "pie",
   "title": "Website traffic by source",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metrics": [
     {
-      "operation": "formula",                                                      <1>
-      "formula": "count(kql='referer : *elastic*')",                               <2>
+      "operation": "formula",                                                   <1>
+      "formula": "count(kql='referer : *elastic*')",                            <2>
       "label": "Elastic website",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *twitter*')",
       "label": "Twitter/X",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *facebook*')",
       "label": "Facebook",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *nytimes*')",
       "label": "NY Times",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -497,27 +509,31 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "pie",
   "title": "Revenue distribution by product category",
-  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metrics": [
     {
-      "operation": "sum",                                                          <1>
+      "operation": "sum",                                                       <1>
       "field": "taxful_total_price",
       "label": "Revenue",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],                                              <2>
+      "fields": ["category.keyword"],                                           <2>
       "limit": 6
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
@@ -554,29 +570,39 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -d '{
   "type": "pie",
   "title": "Error distribution by type",
-  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
   "filters": [],
-  "query": { "query": "" },
+  "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "value_display": { "mode": "percentage" },
   "metrics": [
     {
       "operation": "count",
       "label": "Count of records",
       "format": { "type": "number" },
-      "filter": { "query": "" }
+      "filter": { "expression": "" }
     }
   ],
   "group_by": [
     {
-      "operation": "filters",                                                      <1>
+      "operation": "filters",                                                   <1>
       "filters": [
-        { "filter": { "query": "response.keyword >= \"400\" AND response.keyword < \"500\"" }, "label": "Client Error" },
-        { "filter": { "query": "response.keyword >= \"500\"" }, "label": "Server Error" },
-        { "filter": { "query": "response.keyword >= \"200\" AND response.keyword < \"400\"" }, "label": "Success" }
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client Error"
+        },
+        { "filter": { "expression": "response.keyword >= \"500\"" }, "label": "Server Error" },
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success"
+        }
       ]
     }
-  ]
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
