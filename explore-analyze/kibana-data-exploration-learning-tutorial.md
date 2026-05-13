@@ -384,7 +384,7 @@ stack: preview 9.4+
 serverless: preview
 ```
 
-Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard — panel types, data sources, layout, and display options — making it straightforward to version-control dashboards or provision consistent environments programmatically.
+Everything you built in this tutorial can also be reproduced in a single API call. The [Dashboards API](dashboards/create-dashboards-programmatically.md) accepts a JSON payload that encodes the complete dashboard, including panel types, data sources, layout, and display options, making it straightforward to version-control dashboards or provision consistent environments programmatically.
 
 <!--
   The curl example below is verified end-to-end by
