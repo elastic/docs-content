@@ -391,8 +391,7 @@ Users who receive the link need to authenticate and have the appropriate privile
 
 For more details on sharing options, access control, and managing dashboard ownership, refer to [Sharing dashboards](dashboards/sharing.md).
 
-## (Optional) Recreate the dashboard with the API [recreate-dashboard-api]
-
+## Recreate the dashboard with the API [recreate-dashboard-api]
 ```{applies_to}
 stack: preview 9.4+
 serverless: preview
