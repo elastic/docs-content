@@ -287,13 +287,14 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :   See which hosts handle the most traffic and how their response status breaks down:
 
     * Example based on: {{kib}} Sample Data Logs
-    * **Group by** (Level 1): `host.keyword` (Top 3 values)
+    * **Group by** (Level 1): `host.keyword` (Top 3 values, with Other)
     * **Group by** (Level 2): Filters
       - "Success (2xx/3xx)": `response.keyword >= "200" AND response.keyword < "400"`
       - "Client errors (4xx)": `response.keyword >= "400" AND response.keyword < "500"`
       - "Server errors (5xx)": `response.keyword >= "500"`
     * **Metric**: Count
-    * **Color**: Gradient (`#ffc7db`)
+    * **Value display**: Percentage
+    * **Color**: Gradient (`#ffc7db`), reversed
 
 ![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
 
