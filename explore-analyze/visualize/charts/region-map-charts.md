@@ -142,7 +142,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "region_map",                                                         <1>
+  "type": "region_map", <1>
   "title": "Website traffic by destination country",
   "filters": [],
   "query": { "expression": "" },
@@ -155,8 +155,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "region": {
     "operation": "terms",
-    "fields": ["geo.dest"],                                                     <2>
-    "limit": 50                                                                 <3>
+    "fields": ["geo.dest"], <2>
+    "limit": 50 <3>
   },
   "data_source": {
     "type": "data_view_spec",
@@ -199,7 +199,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "metric": {
-    "operation": "unique_count",                                                <1>
+    "operation": "unique_count", <1>
     "field": "customer_id",
     "label": "Unique customers",
     "format": { "type": "number" },
@@ -207,7 +207,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "region": {
     "operation": "terms",
-    "fields": ["geoip.country_iso_code"],                                       <2>
+    "fields": ["geoip.country_iso_code"], <2>
     "limit": 50
   },
   "data_source": {
@@ -250,7 +250,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "metric": {
-    "operation": "average",                                                     <1>
+    "operation": "average", <1>
     "field": "AvgTicketPrice",
     "label": "Average ticket price",
     "format": { "type": "number" },
@@ -258,7 +258,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "region": {
     "operation": "terms",
-    "fields": ["DestCountry"],                                                  <2>
+    "fields": ["DestCountry"], <2>
     "limit": 50
   },
   "data_source": {

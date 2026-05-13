@@ -114,7 +114,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "data_table",                                                         <1>
+  "type": "data_table", <1>
   "title": "Pivot table - visits by date split by hour",
   "filters": [],
   "query": { "expression": "" },
@@ -188,14 +188,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "metrics": [
     {
-      "operation": "count",                                                     <1>
+      "operation": "count", <1>
       "label": "Orders this week",
       "format": { "type": "number" },
       "filter": { "expression": "" }
     },
     {
-      "operation": "formula",                                                   <2>
-      "formula": "count() / count(shift='1w') - 1",                             <3>
+      "operation": "formula", <2>
+      "formula": "count() / count(shift='1w') - 1", <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
       "filter": { "expression": "" }
@@ -382,14 +382,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "expression": "" },
   "rows": [
     {
-      "operation": "terms",                                                     <1>
+      "operation": "terms", <1>
       "fields": ["request.keyword"],
       "limit": 5
     }
   ],
   "metrics": [
     {
-      "operation": "unique_count",                                              <2>
+      "operation": "unique_count", <2>
       "field": "clientip",
       "label": "Unique visitors",
       "format": { "type": "number" },
@@ -439,21 +439,21 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "expression": "" },
   "rows": [
     {
-      "operation": "date_histogram",                                            <1>
+      "operation": "date_histogram", <1>
       "field": "order_date",
       "label": "Sales per day"
     }
   ],
   "metrics": [
     {
-      "operation": "unique_count",                                              <2>
+      "operation": "unique_count", <2>
       "field": "customer_id",
       "label": "Unique customers",
       "format": { "type": "number" },
       "filter": { "expression": "" }
     }
   ],
-  "split_metrics_by": [                                                         <3>
+  "split_metrics_by": [ <3>
     {
       "operation": "terms",
       "fields": ["geoip.continent_name"],
@@ -508,15 +508,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "expression": "" },
   "rows": [
     {
-      "operation": "range",                                                     <1>
+      "operation": "range", <1>
       "field": "bytes",
-      "ranges": [{ "lte": 10240 }, { "gt": 10240 }],                         <2>
+      "ranges": [{ "lte": 10240 }, { "gt": 10240 }], <2>
       "label": "File size"
     }
   ],
   "metrics": [
     {
-      "operation": "sum",                                                       <3>
+      "operation": "sum", <3>
       "field": "bytes",
       "label": "Total bytes transferred",
       "format": { "type": "bytes" },
@@ -571,7 +571,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "query": { "expression": "" },
   "rows": [
     {
-      "operation": "date_histogram",                                            <1>
+      "operation": "date_histogram", <1>
       "field": "order_date",
       "label": "Week"
     }
@@ -584,8 +584,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "filter": { "expression": "" }
     },
     {
-      "operation": "formula",                                                   <2>
-      "formula": "count() / count(shift='1w') - 1",                             <3>
+      "operation": "formula", <2>
+      "formula": "count() / count(shift='1w') - 1", <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
       "filter": { "expression": "" }

@@ -396,14 +396,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "operation": "formula",
       "formula": "count(kql='''response >= 200 and response < 300''') / count()", <1>
       "label": "Successful requests (2xx)",
-      "format": { "type": "percent", "decimals": 1 },                           <2>
+      "format": { "type": "percent", "decimals": 1 }, <2>
       "filter": { "expression": "" },
       "color": { "type": "static", "color": "#209280" }
     },
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "0.95",                                                        <3>
+      "formula": "0.95", <3>
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
       "filter": { "expression": "" },
@@ -481,10 +481,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],
-  "breakdown_by": {                                                             <1>
+  "breakdown_by": { <1>
     "operation": "terms",
     "fields": ["geo.dest"],
-    "limit": 10                                                                 <2>
+    "limit": 10 <2>
   },
   "data_source": {
     "type": "data_view_spec",
@@ -538,7 +538,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "type": "primary",
       "operation": "count",
       "label": "Page views",
-      "format": {                                                               <1>
+      "format": { <1>
         "type": "number",
         "decimals": 0,
         "compact": true
@@ -546,9 +546,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "filter": { "expression": "" }
     },
     {
-      "type": "secondary",                                                      <2>
+      "type": "secondary", <2>
       "operation": "formula",
-      "formula": "count(shift='''1w''')",                                       <3>
+      "formula": "count(shift='''1w''')", <3>
       "label": "Compared to previous week",
       "format": {
         "type": "number",

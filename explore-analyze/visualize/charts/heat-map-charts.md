@@ -98,19 +98,19 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "heatmap",                                                            <1>
+  "type": "heatmap", <1>
   "title": "Error rates per day",
   "filters": [],
   "query": { "expression": "" },
   "legend": { "size": "auto" },
   "axis": { "x": { "scale": "temporal" }, "y": {} },
   "x": {
-    "operation": "date_histogram",                                              <2>
+    "operation": "date_histogram", <2>
     "field": "timestamp"
   },
   "y": {
     "operation": "terms",
-    "fields": ["response.keyword"],                                             <3>
+    "fields": ["response.keyword"], <3>
     "limit": 10
   },
   "metric": {
@@ -303,8 +303,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "x": { "operation": "date_histogram", "field": "timestamp" },
   "y": {
     "operation": "terms",
-    "fields": ["hour_of_day"],                                                  <1>
-    "limit": 24                                                                 <2>
+    "fields": ["hour_of_day"], <1>
+    "limit": 24 <2>
   },
   "metric": { "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } },
   "data_source": {
@@ -351,17 +351,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": { "x": { "scale": "ordinal" }, "y": {} },
   "x": {
     "operation": "terms",
-    "fields": ["geoip.city_name"],                                              <1>
+    "fields": ["geoip.city_name"], <1>
     "limit": 10
   },
   "y": {
     "operation": "terms",
-    "fields": ["category.keyword"],                                             <2>
+    "fields": ["category.keyword"], <2>
     "limit": 5
   },
   "metric": {
     "operation": "sum",
-    "field": "taxful_total_price",                                              <3>
+    "field": "taxful_total_price", <3>
     "label": "Revenue",
     "format": { "type": "number" },
     "filter": { "expression": "" }

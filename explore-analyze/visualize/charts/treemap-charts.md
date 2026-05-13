@@ -183,7 +183,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "treemap",                                                            <1>
+  "type": "treemap", <1>
   "title": "Bytes per file extension",
   "filters": [],
   "query": { "expression": "" },
@@ -203,7 +203,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["extension.keyword"],
-      "limit": 6                                                             <2>
+      "limit": 6 <2>
     }
   ],
   "data_source": {
@@ -211,7 +211,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "absolute" } }                            <3>
+  "styling": { "values": { "mode": "absolute" } } <3>
 }'
 ```
 
@@ -259,12 +259,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["Carrier"],                                                    <1>
+      "fields": ["Carrier"], <1>
       "limit": 5
     },
     {
       "operation": "terms",
-      "fields": ["DestCountry"],                                                <2>
+      "fields": ["DestCountry"], <2>
       "limit": 5
     }
   ],
@@ -324,11 +324,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["host.keyword"],                                               <1>
+      "fields": ["host.keyword"], <1>
       "limit": 3
     },
     {
-      "operation": "filters",                                                   <2>
+      "operation": "filters", <2>
       "filters": [
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },

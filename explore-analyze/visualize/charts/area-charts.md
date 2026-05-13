@@ -116,7 +116,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "area_stacked",                                                   <1>
+      "type": "area_stacked", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -187,7 +187,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "area",                                                           <1>
+      "type": "area", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -207,14 +207,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       }
     },
     {
-      "type": "area",                                                           <2>
+      "type": "area", <2>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Previous week",
-          "time_shift": "1w",                                                   <3>
+          "time_shift": "1w", <3>
           "format": {
             "type": "number"
           },
@@ -357,7 +357,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "area_stacked",                                                   <1>
+      "type": "area_stacked", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -425,7 +425,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "area_percentage",                                                <1>
+      "type": "area_percentage", <1>
       "x": {
         "operation": "date_histogram",
         "field": "timestamp"
@@ -441,7 +441,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
         }
       ],
       "breakdown_by": {
-        "operation": "filters",                                                 <2>
+        "operation": "filters", <2>
         "filters": [
           {
             "filter": { "expression": "response.keyword >= 200 and response.keyword < 400" },

@@ -115,7 +115,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "line",                                                           <1>
+      "type": "line", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -135,14 +135,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       }
     },
     {
-      "type": "line",                                                           <2>
+      "type": "line", <2>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
           "operation": "average",
           "field": "bytes",
           "label": "Previous week",
-          "time_shift": "1w",                                                   <3>
+          "time_shift": "1w", <3>
           "format": {
             "type": "number"
           },
@@ -199,7 +199,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "line",                                                           <1>
+      "type": "line", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -219,11 +219,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       }
     },
     {
-      "type": "reference_lines",                                             <2>
+      "type": "reference_lines", <2>
       "thresholds": [
         {
           "operation": "static_value",
-          "value": 6000,                                                        <3>
+          "value": 6000, <3>
           "format": {
             "type": "number"
           },
@@ -374,14 +374,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "line",                                                           <1>
+      "type": "line", <1>
       "x": {
         "operation": "date_histogram",
         "field": "timestamp"
       },
       "y": [
         {
-          "operation": "moving_average",                                        <2>
+          "operation": "moving_average", <2>
           "of": {
             "operation": "average",
             "field": "machine.ram",
@@ -401,7 +401,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           }
         }
       ],
-      "breakdown_by": {                                                         <3>
+      "breakdown_by": { <3>
         "operation": "terms",
         "fields": ["host.keyword"],
         "limit": 4
@@ -461,14 +461,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "line",                                                           <1>
+      "type": "line", <1>
       "x": {
         "operation": "date_histogram",
         "field": "timestamp"
       },
       "y": [
         {
-          "operation": "unique_count",                                          <2>
+          "operation": "unique_count", <2>
           "field": "host.keyword",
           "label": "Unique hosts",
           "format": {

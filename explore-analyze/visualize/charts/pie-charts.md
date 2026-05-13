@@ -99,7 +99,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "pie",                                                                <1>
+  "type": "pie", <1>
   "title": "Donut chart by destination",
   "filters": [],
   "query": { "expression": "" },
@@ -117,7 +117,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["geo.dest"],
-      "limit": 5                                                             <2>
+      "limit": 5 <2>
     }
   ],
   "data_source": {
@@ -125,7 +125,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }                          <3>
+  "styling": { "values": { "mode": "percentage" } } <3>
 }'
 ```
 
@@ -191,11 +191,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "legend": { "size": "auto" },
-  "metrics": [                                                                  <1>
+  "metrics": [ <1>
     {
       "operation": "sum",
       "field": "bytes",
-      "label": "Bandwidth",                                                     <2>
+      "label": "Bandwidth", <2>
       "format": { "type": "number" },
       "filter": { "expression": "" }
     },
@@ -275,8 +275,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["host.keyword"],
-      "limit": 3,                                                               <1>
-      "other_bucket": { "include_documents_without_field": true }               <2>
+      "limit": 3, <1>
+      "other_bucket": { "include_documents_without_field": true } <2>
     }
   ],
   "data_source": {
@@ -443,8 +443,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "legend": { "size": "auto" },
   "metrics": [
     {
-      "operation": "formula",                                                   <1>
-      "formula": "count(kql='referer : *elastic*')",                            <2>
+      "operation": "formula", <1>
+      "formula": "count(kql='referer : *elastic*')", <2>
       "label": "Elastic website",
       "format": { "type": "number" },
       "filter": { "expression": "" }
@@ -514,7 +514,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "legend": { "size": "auto" },
   "metrics": [
     {
-      "operation": "sum",                                                       <1>
+      "operation": "sum", <1>
       "field": "taxful_total_price",
       "label": "Revenue",
       "format": { "type": "number" },
@@ -524,7 +524,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],                                           <2>
+      "fields": ["category.keyword"], <2>
       "limit": 6
     }
   ],
@@ -583,7 +583,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "group_by": [
     {
-      "operation": "filters",                                                   <1>
+      "operation": "filters", <1>
       "filters": [
         {
           "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },

@@ -163,7 +163,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "tag_cloud",                                                          <1>
+  "type": "tag_cloud", <1>
   "title": "Popular request URLs",
   "filters": [],
   "query": { "expression": "" },
@@ -176,8 +176,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["request.keyword"],                                              <2>
-    "limit": 30                                                                 <3>
+    "fields": ["request.keyword"], <2>
+    "limit": 30 <3>
   },
   "data_source": {
     "type": "data_view_spec",
@@ -221,13 +221,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "metric": {
-    "operation": "count",                                                       <1>
+    "operation": "count", <1>
     "format": { "type": "number" },
     "filter": { "expression": "" }
   },
   "tag_by": {
     "operation": "terms",
-    "fields": ["DestCityName"],                                                 <2>
+    "fields": ["DestCityName"], <2>
     "limit": 30
   },
   "data_source": {

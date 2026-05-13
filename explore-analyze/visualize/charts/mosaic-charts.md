@@ -219,7 +219,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "mosaic",                                                             <1>
+  "type": "mosaic", <1>
   "title": "Response status by operating system",
   "filters": [],
   "query": { "expression": "" },
@@ -234,13 +234,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["machine.os.keyword"],                                         <2>
+      "fields": ["machine.os.keyword"], <2>
       "limit": 5
     }
   ],
   "group_breakdown_by": [
     {
-      "operation": "filters",                                                   <3>
+      "operation": "filters", <3>
       "filters": [
         {
           "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
@@ -303,14 +303,14 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["geoip.continent_name"],                                       <1>
+      "fields": ["geoip.continent_name"], <1>
       "limit": 5
     }
   ],
   "group_breakdown_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"],                                           <2>
+      "fields": ["category.keyword"], <2>
       "limit": 5
     }
   ],

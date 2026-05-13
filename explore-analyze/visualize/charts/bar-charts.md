@@ -129,7 +129,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "bar_stacked",                                                    <1>
+      "type": "bar_stacked", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -199,7 +199,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "bar",                                                            <1>
+      "type": "bar", <1>
       "x": { "operation": "date_histogram", "field": "timestamp" },
       "y": [
         {
@@ -412,7 +412,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "y": [
         {
           "operation": "count",
-          "label": "Page Views",                                                <1>
+          "label": "Page Views", <1>
           "format": { "type": "number" },
           "filter": { "expression": "" }
         }
@@ -420,7 +420,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "breakdown_by": {
         "operation": "terms",
         "fields": ["geo.dest"],
-        "limit": 9                                                              <2>
+        "limit": 9 <2>
       },
       "data_source": {
         "type": "data_view_spec",
@@ -476,7 +476,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "bar_horizontal",                                                 <1>
+      "type": "bar_horizontal", <1>
       "x": {
         "operation": "terms",
         "fields": ["host.keyword"],
@@ -484,7 +484,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       },
       "y": [
         {
-          "operation": "formula",                                               <2>
+          "operation": "formula", <2>
           "formula": "count(kql='response > \"300\"') / count()",
           "label": "Error Rate %",
           "format": {
@@ -500,7 +500,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       }
     },
     {
-      "type": "reference_lines",                                             <3>
+      "type": "reference_lines", <3>
       "thresholds": [
         {
           "operation": "static_value",

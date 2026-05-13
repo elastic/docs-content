@@ -102,13 +102,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "gauge",                                                              <1>
+  "type": "gauge", <1>
   "title": "Yearly sales goal",
   "filters": [],
   "query": { "expression": "" },
   "metric": {
     "operation": "sum",
-    "field": "taxful_total_price",                                           <2>
+    "field": "taxful_total_price", <2>
     "label": "Revenue",
     "format": {
       "type": "number"
@@ -121,7 +121,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "time_field": "order_date"
   },
   "styling": {
-    "shape": {                                                               <3>
+    "shape": { <3>
       "type": "semi_circle"
     }
   }
@@ -178,10 +178,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "label": "Avg response bytes",
     "format": { "type": "number" },
     "filter": { "expression": "" },
-    "color": {                                                                  <1>
+    "color": { <1>
       "type": "dynamic",
       "range": "absolute",
-      "steps": [                                                             <2>
+      "steps": [ <2>
         {
           "color": "#209280",
           "gte": 0,
@@ -243,7 +243,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "operation": "sum",
     "field": "bytes",
     "label": "Total bytes",
-    "format": { "type": "bytes" },                                              <1>
+    "format": { "type": "bytes" }, <1>
     "filter": { "expression": "" }
   },
   "data_source": {
@@ -381,7 +381,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "filters": [],
   "query": { "expression": "" },
   "metric": {
-    "operation": "average",                                                     <1>
+    "operation": "average", <1>
     "field": "bytes",
     "label": "Avg CPU %",
     "format": { "type": "number" },
@@ -389,7 +389,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "color": {
       "type": "dynamic",
       "range": "absolute",
-      "steps": [                                                                <2>
+      "steps": [ <2>
         { "color": "#209280", "gte": 0, "lt": 6000 },
         { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
         { "color": "#cc5642", "gte": 8000 }
@@ -449,7 +449,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "steps": [
         { "color": "#209280", "gte": 0, "lt": 6000 },
         { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
-        { "color": "#cc5642", "gte": 8000 }                                  <1>
+        { "color": "#cc5642", "gte": 8000 } <1>
       ]
     }
   },
@@ -459,7 +459,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "time_field": "timestamp"
   },
   "styling": {
-    "shape": { "type": "semi_circle" }                                       <2>
+    "shape": { "type": "semi_circle" } <2>
   }
 }'
 ```
