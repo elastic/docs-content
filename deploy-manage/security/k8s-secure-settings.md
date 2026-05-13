@@ -142,7 +142,7 @@ For example, you can provide your own encryption key for {{kib}} as follows:
     ```
 
     :::{warning}
-    Always ensure the setting is listed in the [configuration reference](kibana://reference/configuration-reference.md) and that the value you provide matches the expected format before adding it to the keystore. Invalid, unsupported, or incorrect settings cause {{kib}} to fail to start.
+    Always ensure the setting is listed in the [configuration reference](kibana://reference/configuration-reference.md) and that the value you provide matches the expected format before adding it to the keystore. Specifying invalid, unsupported, or incorrect settings will prevent {{kib}} from starting successfully.
     :::
 
 2. Add a reference to the secret in the `secureSettings` section:
