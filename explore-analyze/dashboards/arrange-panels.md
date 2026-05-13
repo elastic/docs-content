@@ -25,7 +25,7 @@ serverless: ga
 
 Each dashboard enforces the following limits:
 
-- Up to 100 top-level items (panels and sections combined)
+- Up to 100 top-level items (panels, unpinned controls, and sections combined)
 - Up to 100 panels inside each section
 - Up to 100 [pinned controls](add-controls.md)
 
