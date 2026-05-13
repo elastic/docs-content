@@ -49,6 +49,11 @@ triggers:
   - type: workflows.failed             # tech preview
     on:
       condition: "event.workflow.name : 'critical-ingest-pipeline'"
+
+  - type: cases.caseCreated            # tech preview (9.5+); cases.* family also includes
+                                       # caseUpdated, caseStatusUpdated, attachmentsAdded, commentsAdded
+    on:
+      condition: 'event.owner: "securitySolution"'
 ```
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
