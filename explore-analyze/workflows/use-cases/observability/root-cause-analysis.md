@@ -124,7 +124,7 @@ Create the case with the agent-generated title and description:
   - name: attach_alert
     type: cases.addAlerts
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       alerts:
         - alertId: "{{ event.alerts[0]._id }}"
           index: "{{ event.alerts[0]._index }}"
@@ -142,7 +142,7 @@ Append the raw analysis as one comment and the reasoning trace as another. Fetch
   - name: add_analysis
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: "{{ steps.rca_analysis.output.message }}"
 
   - name: get_conversation
@@ -154,7 +154,7 @@ Append the raw analysis as one comment and the reasoning trace as another. Fetch
   - name: add_reasoning
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: |
         ## AI investigation summary
 
@@ -229,7 +229,7 @@ steps:
   - name: attach_alert
     type: cases.addAlerts
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       alerts:
         - alertId: "{{ event.alerts[0]._id }}"
           index: "{{ event.alerts[0]._index }}"
@@ -240,7 +240,7 @@ steps:
   - name: add_analysis
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: "{{ steps.rca_analysis.output.message }}"
 
   - name: get_conversation
@@ -252,7 +252,7 @@ steps:
   - name: add_reasoning
     type: cases.addComment
     with:
-      case_id: "{{ steps.create_case.output.id }}"
+      case_id: "{{ steps.create_case.output.case.id }}"
       comment: |
         ## AI investigation summary
 
