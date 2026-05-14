@@ -84,7 +84,7 @@ To use asset criticality, you need the following:
 | Action | Index privilege |
 | --- | --- |
 | View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` |
-| View, assign, unassign or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write` and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
+| View, assign, unassign, or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write`, and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
 :::
 
 :::{applies-item} { stack: ga 9.0-9.3 }
