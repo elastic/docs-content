@@ -259,15 +259,27 @@ Configure timeout and buffer size values for the Kafka brokers.
 
     **Default:** `2048`
 
-`bulk_flush_frequency` $$$output-kafka-fleet-settings-flush_frequency-setting$$$
+`bulk_flush_frequency` $$$output-kafka-fleet-settings-flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     **Default:** `0`
 
-`channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$
-:   (int) Per Kafka broker number of messages buffered in output pipeline.
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
+    :::
 
+    
+
+`channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
+:   (int) Per Kafka broker number of messages buffered in output pipeline.     
+    
     **Default:** `256`
+
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
+    :::
 
 `client_id` $$$output-kafka-fleet-settings-client_id-setting$$$
 :   (string) The configurable ClientID used for logging, debugging, and auditing purposes.
@@ -318,13 +330,18 @@ Configure timeout and buffer size values for the Kafka brokers.
     **`refresh_frequency`**
     :   Metadata refresh interval. Defaults to 10 minutes.
 
-    **`full`**
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so the `full`, `retry.max`, and `retry.backoff` metadata options no longer apply.
+    :::
+
+    **`full`** {applies_to}`stack: removed 9.4+`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
 
-    **`retry.max`**
+    **`retry.max`** {applies_to}`stack: removed 9.4+`
     :   Total number of metadata update retries. The default is 3.
 
-    **`retry.backoff`**
+    **`retry.backoff`** {applies_to}`stack: removed 9.4+`
     :   Waiting time between retries. The default is 250ms.
 
 `queue.mem.events` $$$output-kafka-fleet-settings-queue.mem.events-setting$$$
