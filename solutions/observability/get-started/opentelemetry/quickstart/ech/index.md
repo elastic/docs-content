@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Hosted
-description: Quickstart guide for setting up EDOT on Elastic Cloud Hosted.
+description: Quickstart setup guides for the Elastic Distribution of OpenTelemetry (EDOT) on Elastic Cloud Hosted.
 applies_to:
   stack:
   serverless:
