@@ -98,7 +98,7 @@ $$$configuration-order$$$
 These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   How you control who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how alerts should be grouped, and which workflow should send the message. One action policy can apply to alerts from multiple rules. To learn more, refer to [Notifications](kibana-alerting-v2/notifications-v2.md).
+:   How you control who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how episodes batch into notifications (Dispatch per), and which workflow should send the message. One action policy can apply to alerts from multiple rules. To learn more, refer to [Notifications](kibana-alerting-v2/notifications-v2.md).
 
 **Alert**
 :   A rule event produced when a rule runs in Alert mode. Unlike a signal, an alert is tied to an ongoing episode and is part of the full story of that problem from when it started to when it resolved.

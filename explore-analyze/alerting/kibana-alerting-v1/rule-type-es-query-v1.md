@@ -56,7 +56,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
 2. Specify details for grouping alerts based on your query language.
 
-    * If you use query DSL, KQL, or Lucene, set the group and theshold.
+    * If you use query DSL, KQL, or Lucene, set the group and threshold.
 
         When
         :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
@@ -70,7 +70,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     * {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
 
         Time field
-        :   Choose the time field to use when filtering query results by the time window that you later specify for the rule. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
+        :   Choose the time field to use when filtering query results by the time window that you later specify for the rule. You can choose any time field that's available on the index you're querying, for example, the `@timestamp` field.
 
         Alert group
         :   Select **Create an alert if matches are found** to create a single alert for multiple events matching the {{esql}} query. Select **Create an alert for each row** to create a separate alert for each event that matches the {{esql}} query. Whenever possible, each alert is given a unique ID. 

@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenTelemetry quickstarts
-description: Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. The guides cover installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
+description: Step-by-step guides for setting up Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts using the EDOT Collector and auto-instrumentation.
 applies_to:
    stack:
    serverless:

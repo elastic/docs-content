@@ -993,7 +993,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 ```
 1. Copy the original index name from the failure document over into the document's metadata. If you use custom document routing, copy that over too.
 2. Capture the source of the original document.
-3. Discard the `error` field since it wont be needed for the remediation.
+3. Discard the `error` field since it won't be needed for the remediation.
 4. Also discard the `document` field.
 5. We extract all the fields from the original document's source back to the root of the document. The `@timestamp` field is not overwritten and will be present in the final document.
 

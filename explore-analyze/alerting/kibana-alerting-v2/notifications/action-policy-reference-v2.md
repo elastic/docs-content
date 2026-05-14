@@ -5,7 +5,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Grouping modes, throttle strategies, dispatch outcomes, and matcher field reference for {{alerting-v2}} action policies."
+description: "Grouping modes, frequency options, dispatch outcomes, and matcher field reference for {{alerting-v2}} action policies."
 ---
 
 # Action policy reference [action-policy-reference-v2]
@@ -33,7 +33,7 @@ Use these fields in the **Matcher** expression to filter which episodes a policy
 
 Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach, otherwise users will get conflicting guidance about which field to use for severity matching.
 
-There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the throttle strategies section below, since it interacts with throttling.]
+There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the frequency options section below, since it interacts with frequency limits.]
 -->
 
 ## Dispatch per options [notification-grouping]
@@ -43,18 +43,18 @@ Controls how the policy batches matching episodes before sending a notification.
 | Option | Description | When to use |
 |---|---|---|
 | Episode | Each episode triggers its own notification independently. Default selection. | You need per-issue visibility and want to handle each problem separately. |
-| Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value. | A rule produces many related episodes (for example, one per service or host) and you want to reduce noise by grouping them. |
+| Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value (a **notification group**). | A rule produces many related episodes (for example, one per service or host) and you want to reduce noise by batching them into shared notifications. |
 | Digest | The policy combines all matching episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alerts. |
 
-## Throttle strategies [throttle-strategies]
+## Frequency [throttle-strategies]
 
-Throttle strategies control how often the policy fires for a given episode or group. The available strategies depend on the **Dispatch per** setting. Not all strategies are valid for all modes.
+**Frequency** controls how often the policy fires for a given episode or notification group. The available options depend on the **Dispatch per** setting. Not all options are valid for all modes.
 
 | Option | Description | When to use |
 |---|---|---|
 | On status change | Notifies when the episode status changes (for example, active → recovering). One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
 | On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or pushed aside. |
-| At most once every… | Caps notifications at one per episode or group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
+| At most once every… | Caps notifications at one per episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
 <!--[CONTENT NEEDED for M2: An open M2 question is whether a severity change mid-episode (escalation or de-escalation of `episode.severity`) triggers policy re-evaluation independently of episode status changes. If it does, this table needs a new strategy option or a note explaining the interaction between severity changes and the "On status change" option. Confirm the M2 decision before updating.]
@@ -76,8 +76,8 @@ Available frequency options when you set **Dispatch per** to **Group**.
 
 | Option | Description | Example |
 |---|---|---|
-| At most once every… | Limits how often each group can notify, regardless of how many episodes match or how often the rule runs. | 10 episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification per hour for that group. |
-| Every evaluation | Fires on every rule evaluation for each unique group value. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications per host per hour. |
+| At most once every… | Limits how often each notification group can notify, regardless of how many episodes match or how often the rule runs. | 10 episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification per hour for that notification group. |
+| Every evaluation | Fires on every rule evaluation for each unique value in the group-by field. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications per host per hour. |
 
 ### Frequency options for Digest
 
@@ -94,7 +94,7 @@ The system records each notification attempt with one of the following outcomes.
 | Outcome | What happened |
 |---|---|
 | `dispatched` | The system sent the notification successfully. |
-| `throttled` | The system skipped delivery because the throttle interval hadn't elapsed. This is expected behavior, not an error. |
+| `throttled` | The system skipped delivery because the **frequency** interval had not elapsed. This is expected behavior, not an error. |
 | `suppressed` | Dispatch was blocked before the notification went out—the rule was acknowledged, snoozed, or deactivated. |
 | `unmatched` | No action policy matched this episode, so no workflow ran. |
 | `error` | An error occurred during processing. Check {{kib}} logs to identify the cause. |

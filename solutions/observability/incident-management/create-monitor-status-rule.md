@@ -17,6 +17,16 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 1. To access this page, go to **Synthetics** → **Overview**.
 2. At the top of the page, click **Alerts** → **Monitor status rule** → **Create status rule**.
 
+## Requirements
+
+To create synthetic monitor status rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Synthetics application](/solutions/observability/synthetics/grant-access-to-secured-resources.md).
+
+### Indices used by this rule
+
+This rule only queries against `synthetics-*` and that is hardcoded.
+
 ## Filters [observability-monitor-status-alert-filters]
 
 The **Filter by** section controls the scope of the rule. The rule will only check monitors that match the filters defined in this section. In this example, the rule will only alert on `browser` monitors located in `Asia/Pacific - Japan`.

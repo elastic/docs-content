@@ -38,7 +38,7 @@ serverless: preview
 stack: unavailable
 ```
 
-{{alerting-v2}} is built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked and grouped, and control notifications through action policies (shared objects that handle routing, frequency, and grouping across many rules at once). It adds alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. {{alerting-v2}} a strong fit when you want full control over what data travels with each alert and how your team is notified.
+{{alerting-v2}} is built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). It adds alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. {{alerting-v2}} a strong fit when you want full control over what data travels with each alert and how your team is notified.
 
 [Get started with {{alerting-v2}} →](alerting/kibana-alerting-v2.md)
 

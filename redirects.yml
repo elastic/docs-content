@@ -860,6 +860,8 @@ redirects:
   'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
   'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
   'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
+  'solutions/observability/incident-management/create-manage-cases.md': 'explore-analyze/cases/create-cases.md'
+
 # Related to https://github.com/elastic/docs-content/pull/5251
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
@@ -889,6 +891,7 @@ redirects:
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:
       'hybrid-elastic-agent': 'elastic-agent-multiple-collection-methods'
+      'beat-receivers': 'beat-receivers'
   'reference/fleet/otel-integrations.md':
     anchors:
       'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
@@ -1256,6 +1259,8 @@ redirects:
   'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
   'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
   'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
+  'explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md': 'explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md'
+
   # alerting-v2: pre-suffix rename redirects
   'explore-analyze/alerting/kibana-alerting-v2/get-started-v2.md':
     to: 'explore-analyze/alerting/kibana-alerting-v2/setup-alerting-v2.md'

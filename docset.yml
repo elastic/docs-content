@@ -7,6 +7,8 @@ features:
 exclude:
   - 'README.md'
   - 'raw-migrated-files/**'
+  - 'changelog/**'
+  - 'releases/**'
 
 cross_links:
   - apm-agent-android

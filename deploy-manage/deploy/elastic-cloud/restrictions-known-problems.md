@@ -47,6 +47,7 @@ To learn more about the features that are supported by {{ecloud}}, check [{{eclo
 * File and LDAP realms cannot be used. The Native realm is enabled, but the realm configuration itself is fixed in {{ecloud}}. Alternatively, authentication protocols such as SAML, OpenID Connect, or Kerberos can be used.
 * Client certificates, such as PKI certificates, are not supported.
 * IPv6 is not supported.
+* Additional limitations apply when using SAML SSO at the organization level. Refer to [Configure {{ecloud}} SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md#ec_risks_and_considerations) for more information.
 
 
 ## APIs [ec-restrictions-apis]

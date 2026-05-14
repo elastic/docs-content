@@ -1,6 +1,6 @@
 ---
 navigation_title: Components description
-description: Description of components involved in Kubernetes observability with OpenTelemetry, including Operator, Collectors, Helm Chart, and auto-instrumentation.
+description: Reference for components in Kubernetes observability with OpenTelemetry, including the Operator, Collectors, Helm chart, and auto-instrumentation.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Components description
+# EDOT Kubernetes observability components [k8s-edot-components]
 
 Getting started with OpenTelemetry for Kubernetes observability requires an understanding of the following components, their functions, and interactions: 
 

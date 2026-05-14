@@ -9,7 +9,11 @@ products:
 
 # Configure {{kib}} memory
 
-{{kib}} has a default memory limit that scales based on total memory available. In some scenarios, such as large reporting jobs, detection rules, managing alerting workflows, or working with SLOs, it may make sense to tweak memory limits to meet more specific performance requirements.
+{{kib}} has a default memory limit that scales based on total memory available.
+
+The default limit is sufficient for core {{kib}} functionality. In some scenarios, such as large reporting jobs, detection rules, managing alerting workflows, or working with SLOs, we recommend increasing memory limits to at least 2 GB to meet more specific performance requirements.
+
+For Platinum and Enterprise users, we recommend at least 2 GB of memory for each {{kib}} instance to avoid service interruptions when using advanced features.
 
 ## Limit memory usage [memory]
 

@@ -16,8 +16,8 @@ description: Learn how Elastic Agent Builder works with Elastic Observability
 Agent Builder integrates tightly with {{observability}}, shipping with built-in agents and tools designed for observability use cases, and you can create your own custom agents and tools to fit your specific needs. Combine your agents with [Elastic Workflows](/explore-analyze/workflows.md) to automatically isolate hosts, create cases, send notification messages to external platforms, and more.
 
 :::{note}
-:applies_to: {stack: preview =9.3}
-In {{stack}} version 9.3, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to use Agent Builder in {{observability}}.
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{agent-builder}} is the default chat experience in {{observability}}.
+- {applies_to}`stack: preview =9.3` In {{stack}} version 9.3, you need to [opt in](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) to use Agent Builder in {{observability}}.
 :::
 
 ## Recommended models
@@ -33,6 +33,15 @@ While Agent Builder works with any [configured LLM connector](/explore-analyze/a
 The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#observability-skills) designed to assist with infrastructure monitoring, application performance troubleshooting, and root cause analysis.
 
 By default it includes the [`observability.investigation`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-observability-investigation-skill) skill. You can [create a custom skill](/explore-analyze/ai-features/agent-builder/custom-skills.md) to extend the agent's capabilities for your specific use case. To learn more about the available skills, refer to [](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md).
+
+### Time range awareness
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you chat with the agent from an {{observability}} UI, it uses the current page's time picker as the default time range when invoking tools, unless you specify a different range in your prompt. Outside of a UI context, tools fall back to their built-in defaults.
 
 :::
 

@@ -31,8 +31,8 @@ Narrow the time range when filters return too many rows or when tag options need
 From any row in the table you can take the following row-level actions:
 
 - **Acknowledge / Unacknowledge:** Applies to the individual episode.
-- **Snooze / Unsnooze:** Applies to the group (`group_hash`), so all rows sharing that group are silenced for the snooze duration.
-- **Resolve / Unresolve:** Applies to the group. The episode shows as inactive in the UI when resolved, even if the underlying lifecycle data has not yet caught up.
+- **Snooze / Unsnooze:** Applies to the series (`group_hash`), so all rows in that series are affected.
+- **Resolve / Unresolve:** Applies to the series. The episode shows as inactive in the UI when resolved, even if the underlying lifecycle data has not yet caught up.
 - **Activate:** Manually moves the episode to `active` state. Use when the episode is in `pending` and you want to confirm the problem and start the notification flow without waiting for the activation threshold to be met.
 - **Edit tags:** Opens a flyout where you can add new tags to the episode or remove existing ones. Tag changes apply to the individual episode and are persisted as `tag` actions in `.alert-actions`. Tags added this way appear in the **Tags** filter on the alerts table and can be queried in Discover for reporting and triage workflows.
 
@@ -69,6 +69,7 @@ To unsnooze multiple episodes at once, select rows using the checkboxes and choo
 $$$open-episode-in-discover-v2$$$
 
 Select **Discover** on a row to open the rule's base query in Discover. The base query is the {{esql}} statement the rule runs on each evaluation. It reflects the data the alert is monitoring, not just the specific rows that breached the condition. Discover opens scoped to a time window around the episode so you can see the underlying data in context.
+Snooze applies at the series level. All episodes sharing the same `group_hash` are silenced for the duration, not just the row you acted on. Use snooze when a known condition is expected to persist for a fixed time and you want to stop the noise without disabling the rule entirely. The snooze expires automatically when the duration ends.
 
 Use this when you want to understand why an episode opened, verify that the rule is querying the data you expect, or investigate whether a condition is genuinely a problem or an artifact of the data shape.
 
@@ -97,8 +98,8 @@ $$$related-episodes-v2$$$
 
 The **Related episodes** section is split into two subsections that help you distinguish between a condition that keeps recurring on one entity and a rule that is triggering across many different entities:
 
-- **Same alert group:** Other episodes sharing the same `rule_id` and `group_hash` as the current episode. These represent recurrences of the exact same alert condition — the same rule firing on the same grouped entity (for example, the same host or service). If this list is long, the condition is repeating and the underlying issue may not be fully resolved each time.
-- **Other groups for this rule:** Episodes from the same rule but with a different `group_hash`, or all other rule episodes if there is no group. These show broader rule activity — other entities or conditions the same rule is also triggering on. Use this list to understand the rule's overall blast radius and whether a problem is isolated to one entity or affecting many.
+- **Same alert series:** Other episodes sharing the same `rule_id` and `group_hash` as the current episode. These represent recurrences of the exact same alert condition — the same rule firing on the same series (for example, the same host or service). If this list is long, the condition is repeating and the underlying issue may not be fully resolved each time.
+- **Other series for this rule:** Episodes from the same rule but with a different `group_hash`, or all other rule episodes when the rule does not use grouping. These show broader rule activity — other entities or conditions the same rule is also triggering on. Use this list to understand the rule's overall blast radius and whether a problem is isolated to one entity or affecting many.
 
 ### Metadata tab [metadata-tab-v2]
 
@@ -126,7 +127,9 @@ Use assignment when your team needs clear ownership during triage. When multiple
 
 $$$alert-actions-v2$$$
 
-Some actions apply only to the specific episode you acted on. Others apply to every episode in the same group. All episodes sharing the same rule and series. This matters when a rule tracks multiple services or hosts: snoozing one episode silences the whole group, not only that service.
+### Episode scope versus series scope
+
+Some actions apply only to the specific episode you acted on. Others apply to every episode in the same series, meaning all episodes that share the same rule and `group_hash`. This matters when a rule tracks multiple services or hosts. Snoozing one episode silences the whole series, not only that service.
 
 | Action | Scope |
 |---|---|

@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Migrate workflows from 9.3 to 9.4 [workflows-migrate-from-9.3]
+# Migrate workflows from 9.3 to 9.4 [workflows-migrate-from-9-3]
 
 9.4 brings a handful of breaking changes to the workflow schema. Existing 9.3 workflows continue to run (the deprecated step aliases still resolve), but the editor blocks you from creating new workflows that use the old shapes, and several new capabilities are only available through the new shapes.
 

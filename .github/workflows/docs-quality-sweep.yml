@@ -1,0 +1,76 @@
+name: Docs quality sweep
+# Master dispatcher. Fans out to seven independent sub-workflows via
+# `gh workflow run`. We can't use `workflow_call` here because gh-aw
+# v0.71.x compiles a single artifact prefix per orchestrator run
+# (github.workflow + github.run_id), which collides across reusable
+# workflow_call invocations and silently feeds every agent the same
+# prompt. Tracked upstream as github/gh-aw#30338.
+#
+# Kept thin on purpose: only the common "run all" knobs are exposed
+# here. To tune per-sweep settings (target-batch-size,
+# max-per-fix-issue, codespell-args, stale-content thresholds,
+# coherence batch size), dispatch the relevant sub-workflow directly;
+# they're each their own GH workflow now.
+
+on:
+  workflow_dispatch:
+    inputs:
+      sweeps:
+        description: "Sweeps to dispatch (comma-separated): frontmatter,applies-to,openings,style,typos,staleness,coherence — or 'all'"
+        required: false
+        default: "all"
+      source-repo:
+        description: "Repository to scan (owner/repo). Leave empty to scan this repo."
+        required: false
+        default: ""
+      docs-root:
+        description: "Root directory in the source repo (set to '.' for repos where docs live at the root)"
+        required: false
+        default: "."
+      target-path:
+        description: "Optional docs-root-relative directory to sweep recursively (accepts a leading slash)"
+        required: false
+        default: ""
+      scope-mode:
+        description: "How to scope the matched markdown files: auto, full, or shard"
+        required: false
+        default: "auto"
+
+permissions:
+  actions: write   # required to dispatch sibling workflows via `gh workflow run`
+  contents: read
+
+jobs:
+  fan-out:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch selected sweeps
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SWEEPS: ${{ inputs.sweeps }}
+          SRC: ${{ inputs.source-repo }}
+          ROOT: ${{ inputs.docs-root }}
+          TARGET_PATH: ${{ inputs.target-path }}
+          SCOPE_MODE: ${{ inputs.scope-mode }}
+        run: |
+          set -e
+          want() { [[ "$SWEEPS" == "all" || "$SWEEPS" == *"$1"* ]]; }
+
+          fire() {
+            local name="$1"
+            want "$name" || { echo "  skip $name (not in sweeps='$SWEEPS')"; return; }
+            echo "→ dispatching docs-${name}-sweep.yml"
+            gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
+              -f source-repo="$SRC" \
+              -f docs-root="$ROOT" \
+              -f target-path="$TARGET_PATH" \
+              -f scope-mode="$SCOPE_MODE"
+          }
+
+          for n in frontmatter applies-to openings style typos staleness coherence; do
+            fire "$n"
+          done
+
+          echo ""
+          echo "Each dispatched sweep runs as its own workflow run — see the Actions tab."
+          echo "To tune per-sweep settings (batch size, caps, thresholds), dispatch the sub-workflow directly."

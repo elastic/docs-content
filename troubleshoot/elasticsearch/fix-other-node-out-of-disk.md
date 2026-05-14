@@ -31,7 +31,7 @@ In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/c
     :screenshot:
     :::
 
-4. Choose a larger than the pre-selected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.
+4. Choose a larger than the preselected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.
 ::::::
 
 ::::::{applies-item} { eck:, self: }

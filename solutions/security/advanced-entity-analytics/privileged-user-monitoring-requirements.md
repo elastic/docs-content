@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga 9.3, preview 9.1
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
     security: ga
 products:
@@ -9,6 +9,11 @@ products:
 ---
 
 # Privileged user monitoring requirements
+
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
 
 This page covers the requirements for using the privileged user monitoring feature, as well as its known limitations.
 
