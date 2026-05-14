@@ -102,8 +102,8 @@ serverless: preview
 
 Event-driven triggers run workflows when a platform event occurs:
 
-* **`workflows.failed`** fires when another workflow's execution fails (added in 9.4).
-* **Cases triggers** fire when cases change (added in 9.5). The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
+* **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
+* **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
 
 Use event-driven triggers for:
 

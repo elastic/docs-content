@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: preview 9.4+
   serverless: preview
-description: Run a workflow in response to a platform event. Includes workflows.failed (added in 9.4) and the cases trigger family (added in 9.5).
+description: Run a workflow in response to a platform event. Includes workflows.failed and the cases trigger family.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -17,13 +17,11 @@ products:
 
 Event-driven triggers let workflows react to events elsewhere in {{kib}}. Two trigger families are available:
 
-- **`workflows.failed`** — fires when another workflow's execution fails. Added in 9.4.
-- **Cases triggers** — fire when cases change (created, updated, status changed, attachments added, comments added). Added in 9.5.
-
-More event-driven triggers are planned for subsequent releases.
+- **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
+- **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 
 :::{warning}
-The event-driven trigger system, including all triggers documented on this page, is in technical preview. The schema and semantics can change in future releases.
+The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
 :::
 
 ## `workflows.failed`
@@ -162,8 +160,10 @@ Cases triggers fire when cases change. Use them to react to case lifecycle event
 
 **Shared payload.** Every cases trigger event includes:
 
-- `event.caseId` — the case ID.
-- `event.owner` — the case owner. One of `securitySolution`, `observability`, or `cases` (Stack Cases).
+- `event.caseId` — The case ID, the alphanumeric identifier that is unique to each case.
+- `event.owner` — The solution that owns the case. It can be `securitySolution` for {{elastic-sec}} cases, `observability` for Observability cases, or `cases` for Stack cases.
+
+**Schema convention.** In each trigger's schema table below, the `Location` column indicates where each parameter sits in the trigger YAML. `top level` means the parameter sits alongside `type`; `` `on` `` means it sits inside the `on:` block, parallel to how `workflows.failed` uses `on:` for its condition.
 
 Use `event.owner` in `on.condition` to filter by solution. For example, a workflow that only fires for {{elastic-sec}} cases:
 
@@ -209,6 +209,8 @@ triggers:
 
 Fires when a case is updated. The `event.updatedFields` array lists which fields changed.
 
+This trigger also fires when a case's status changes; the dedicated [`cases.caseStatusUpdated`](#cases-casestatusupdated-trigger) trigger fires alongside it and carries the previous status for easier filtering. For bulk updates, `cases.caseUpdated` fires once per case.
+
 #### Schema
 
 | Parameter | Location | Type | Required | Description |
@@ -221,7 +223,7 @@ Fires when a case is updated. The `event.updatedFields` array lists which fields
 | Field | Contains |
 |---|---|
 | `event.caseId` | The updated case's ID. |
-| `event.owner` | The case owner. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
 | `event.updatedFields` | Array of field names that changed in this update. |
 
 #### Example
@@ -234,11 +236,6 @@ triggers:
     on:
       condition: 'event.owner: "securitySolution" and event.updatedFields: "title"'
 ```
-
-% Ben Ironside Goldstein, 2026-05-13: SME flag — confirm with engineering whether
-% `cases.caseUpdated` also fires when status changes (given the dedicated
-% `cases.caseStatusUpdated` trigger), and how it behaves on bulk updates (one event
-% per case, or one per batch).
 
 ### `cases.caseStatusUpdated` [cases-casestatusupdated-trigger]
 
@@ -256,7 +253,7 @@ Fires when a case's status changes.
 | Field | Contains |
 |---|---|
 | `event.caseId` | The case ID. |
-| `event.owner` | The case owner. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
 | `event.previousStatus` | The previous status (`open`, `in-progress`, or `closed`). |
 | `event.status` | The current status (`open`, `in-progress`, or `closed`). |
 
@@ -275,6 +272,8 @@ triggers:
 
 Fires when attachments are added to a case. If attachments of multiple types are added in one operation (for example, three alerts and two comments), the trigger fires once per type, with one event for each type.
 
+Adding a comment fires both this trigger (with `event.attachmentType: "comment"`) and the dedicated [`cases.commentsAdded`](#cases-commentsadded-trigger) trigger. Both exist because users don't always think of comments as attachments.
+
 #### Schema
 
 | Parameter | Location | Type | Required | Description |
@@ -287,7 +286,7 @@ Fires when attachments are added to a case. If attachments of multiple types are
 | Field | Contains |
 |---|---|
 | `event.caseId` | The case ID. |
-| `event.owner` | The case owner. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
 | `event.attachmentIds` | Array of attachment IDs added in this operation, all of `event.attachmentType`. |
 | `event.attachmentType` | The type of attachments added, for example `"comment"` or `"alert"`. |
 
@@ -311,11 +310,6 @@ triggers:
       condition: 'event.attachmentType: "comment"'
 ```
 
-% Ben Ironside Goldstein, 2026-05-13: SME flag — confirm relationship between
-% `cases.attachmentsAdded` (which can carry `attachmentType: "comment"`) and the
-% dedicated `cases.commentsAdded` trigger. Do both fire when a comment is added,
-% or is one a superset?
-
 ### `cases.commentsAdded` [cases-commentsadded-trigger]
 
 Fires when comments are added to a case.
@@ -332,7 +326,7 @@ Fires when comments are added to a case.
 | Field | Contains |
 |---|---|
 | `event.caseId` | The case ID. |
-| `event.owner` | The case owner. |
+| `event.owner` | The case owner (`securitySolution`, `observability`, or `cases`). |
 | `event.commentIds` | Array of comment IDs added in this operation. |
 
 #### Example
@@ -357,6 +351,6 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 
 ## Related
 
-- [Triggers overview](/explore-analyze/workflows/triggers.md): Every 9.4 trigger type.
+- [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
