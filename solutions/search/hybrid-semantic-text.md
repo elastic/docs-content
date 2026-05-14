@@ -38,7 +38,7 @@ export API_KEY="your-api-key"
 To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). [Learn more about finding your endpoint and credentials](/solutions/elasticsearch-solution-project/search-connection-details.md).
 :::
 
-## Create the index mapping [hybrid-search-create-index-mapping]
+## Step 1: Create the index mapping [hybrid-search-create-index-mapping]
 
 The destination index will contain both the embeddings for semantic search and the original text field for full-text search. This structure enables the combination of semantic search and full-text search.
 
