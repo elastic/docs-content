@@ -186,7 +186,7 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 
 ### `jina-embeddings-v5-omni-nano` [jina-embeddings-v5-omni-nano]
 
-{applies_to}`stack: ga 9.4` 
+{applies_to}`stack: ga 9.5` 
 
 The [`jina-embeddings-v5-omni-nano`](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index) model is the smaller multimodal counterpart to [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small), available through Elastic {{infer-cap}} Service (EIS).
 It extends [`jina-embeddings-v5-text-nano`](#jina-embeddings-v5-text-nano) with the same multimodal capabilities (text, images, video, and audio in one vector space).
