@@ -97,7 +97,7 @@ This tutorial results in a secure-by-default environment, but not every connecti
 * {{agent}} enrolls using that Quick Start flow, which requires the install command to include the `--insecure` flag.
 
 ::::{note}
-If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial through Step 7 (install {{kib}}), and then continue with the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
+If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial through Step 7 (install {{kib}}), and then continue with the tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
 ::::
 
 ## Step 1: Set up the first {{es}} node [install-stack-self-elasticsearch-first]
