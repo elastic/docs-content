@@ -50,6 +50,11 @@ An entity can belong to more than one watchlist.
 
 The **Watchlists** tab displays all watchlists in the current {{kib}} space. You can edit and delete individual watchlists using the icons in the relevant watchlist row.
 
+:::{image} /solutions/images/security-watchlists.png
+:alt: The Watchlists tab on the Entity analytics management page
+:screenshot:
+:::
+
 ## Filter entities by watchlist [watchlists-filter]
 
 On the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
