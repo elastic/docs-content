@@ -282,12 +282,12 @@ You can specify these various other options in the `kafka-output` section of the
 `bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
+    **Default:** `0`
+    
     :::{note}
     :applies_to: stack: ga 9.4.0+
     Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
     :::
-
-    **Default:** `0`
 
 `bulk_max_size` $$$kafka-bulk_max_size-setting$$$
 :   (int) The maximum number of events to bulk in a single Kafka request.
@@ -297,12 +297,14 @@ You can specify these various other options in the `kafka-output` section of the
 `channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
+    **Default:** `256`
+
     :::{note}
     :applies_to: stack: ga 9.4.0+
     Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
     :::
 
-    **Default:** `256`
+    
 
 `codec` $$$kafka-codec-setting$$$
 :   Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.
