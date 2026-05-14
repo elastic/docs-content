@@ -21,7 +21,7 @@ With this tutorial, you can replace or extend that default setup by generating a
 - Replace the default self-signed certificates generated for {{fleet-server}} and {{agent}} with your own PKI.
 
 :::{note}
-This tutorial does not cover mutual TLS authentication (mTLS). If you require client certificate authentication in {{es}}, refer to the following documentation:
+This tutorial does not cover mutual TLS authentication (mTLS) for HTTP client connections to {{es}}. If you require client certificate authentication, refer to the following documentation:
 
 - [Mutual TLS authentication between {{kib}} and {{es}}](/deploy-manage/security/kibana-es-mutual-tls.md)
 - [{{fleet}} and {{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md)
@@ -32,22 +32,22 @@ This tutorial does not cover mutual TLS authentication (mTLS). If you require cl
 
 This tutorial is organized into the following phases:
 
-- **{{es}} transport layer**
+- **Configure TLS certificates for the {{es}} transport layer**
   - Generate a new certificate authority (CA) for transport
   - Generate transport certificates for all nodes
   - Apply configuration changes and restart the nodes
 
-- **{{es}} HTTP layer**
+- **Configure TLS certificates for the {{es}} HTTP layer**
   - Generate a shared HTTP CA for the {{stack}}
   - Generate HTTP certificates for {{es}} nodes
   - Apply configuration changes and restart the cluster
   - Configure {{kib}} client to trust {{es}} HTTP CA
 
-- **{{kib}} HTTPS**
+- **Configure HTTPS for {{kib}}**
   - Generate server-side TLS certificates for {{kib}}
   - Apply configuration changes and restart {{kib}}
 
-- **{{fleet}} setup with custom certificates**
+- **Configure {{fleet-server}} and {{agent}} with custom certificates**
   - Install {{fleet-server}} with custom TLS certificates
   - Install {{agent}}
   - View your system data
@@ -105,17 +105,19 @@ If your setup uses different certificate files or paths, or does not have TLS co
 
 ## Preparations [preparations]
 
-In this tutorial, `/usr/share/elasticsearch/pki` is used as a working directory on a central host for generating and storing certificate files before distributing them to the corresponding nodes. This directory is referred to as the **PKI directory**, and that central host is referred to as the **PKI host**.
+In this tutorial, `/usr/share/elasticsearch/pki` is used as a central working directory for generating and storing certificates before distributing them to the corresponding nodes.
+
+This directory is referred to as the **PKI directory**, and the host where these steps are performed is referred to as the **PKI host**.
 
 ::::{note}
 All CA and certificate generation steps in this tutorial use [`elasticsearch-certutil`](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md).
 
-For simplicity, this tutorial suggests to create all certificates on the first {{es}} node. In production environments, use a separate, secure PKI host, keep CA private keys there, and distribute only the required certificate artifacts to each {{es}} node. Avoid leaving CA private keys on {{es}} nodes.
+For simplicity, the examples use the first {{es}} node as the PKI host. In production environments, use a separate and secured host for PKI operations, keep CA private keys there, and distribute only the required certificate artifacts to each node.
 
-The `elasticsearch-certutil` tool can be run on any Linux host with access to the {{es}} distribution, for example by downloading and extracting the [`.tar.gz` archive](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#install-linux).
+You can run `elasticsearch-certutil` on any Linux host with access to the {{es}} distribution, for example from the extracted [`.tar.gz` archive](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md#install-linux).
 ::::
 
-On the host that you plan to use to generate all certificates, for example, the first {{es}} node, run the following commands:
+On the PKI host, run the following commands:
 
 1. Create the PKI directory to store all generated certificates:
 
@@ -129,11 +131,11 @@ On the host that you plan to use to generate all certificates, for example, the 
     yum install -y unzip
     ```
 
-## {{es}} transport layer
+## Configure TLS certificates for the {{es}} transport layer
 
 In this section, you create a self-signed certificate authority (CA) used to issue transport certificates for all {{es}} nodes in the cluster. These certificates can replace the existing ones or be used to enable transport TLS on clusters where it is not yet configured.
 
-::::{note}
+::::{important}
 We strongly recommend using a dedicated CA per cluster for {{es}} transport security, not a CA used to sign certificates for other systems or purposes. Never use a public CA for the {{es}} transport layer. Refer to [Using an external certificate authority to secure node-to-node connections](/deploy-manage/security/external-ca-transport.md) for transport TLS certificate requirements. 
 ::::
 
@@ -179,10 +181,10 @@ From the host where you generate the certificates (the [PKI host](#preparations)
 In this section, you generate transport certificates for all cluster nodes using the CA created in the previous step.
 
 ::::{note}
-Do not use publicly trusted certificates for the {{es}} transport layer. If you want to use a private or corporate CA, refer to [Using an external certificate authority to secure node-to-node connections](/deploy-manage/security/external-ca-transport.md).
+Do not use publicly trusted certificates for the {{es}} transport layer. If you want to use a private or corporate CA, refer to [Using an external certificate authority to secure node-to-node connections](/deploy-manage/security/external-ca-transport.md) for transport certificate requirements and best practices.
 ::::
 
-1. From the host where you generate the certificates (the [PKI host](#preparations)), and using the newly-created CA certificate and private key, create certificates for all your {{es}} nodes:
+1. From the host where you generate the certificates (the [PKI host](#preparations)), and using the newly-created CA certificate and key, create certificates for all your {{es}} nodes:
 
     ```shell
     sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert \
@@ -195,8 +197,8 @@ Do not use publicly trusted certificates for the {{es}} transport layer. If you 
     When prompted:
     * Set an instance name for each node.
     * Optionally set the `IP address` and `FQDN names` for each node, for additional security.
-    * Set the same password to protect all certificates (this facilitates keystores configuration in the next step)
-    * Choose an output file name (you can use the default `certificate-bundle.zip`) and a password for the certificate.
+    * Choose an output file name (you can use the default `certificate-bundle.zip`) and a password for each certificate.
+    * Optionally, use the **same password** for all certificates to simplify keystore configuration in the next step.
 
     The following is an example of the command interactions:
 
@@ -313,7 +315,7 @@ For more information about restart procedures, refer to [Full cluster and rollin
 
 In this tutorial, to reduce downtime, the changes to `elasticsearch.yml` and secure settings are applied while the node is still running, as they do not take effect until restart.
 
-In the official procedures, these correspond to the step **Perform any needed changes**, but are applied before stopping the node(s).
+In the official procedures, these correspond to the step **Perform any needed changes**, but are applied here before stopping the node(s).
 :::
 
 #### Preparations for a rolling restart update [apply-rolling-preparations]
@@ -321,7 +323,7 @@ In the official procedures, these correspond to the step **Perform any needed ch
 When replacing the transport CA, nodes using certificates signed by a new CA are not trusted by default, so a full cluster restart is typically required unless additional steps are taken.
 
 :::{note}
-These steps are only needed if you want to apply the changes one node at a time, without service disruption. If you can afford a full cluster restart, skip directly to [Nodes configuration](#configure-es-tls).
+These steps are only needed if you want to apply the changes one node at a time, without service disruption. If you can afford a full cluster restart, skip directly to [Nodes configuration](#configure-es-tls-nodes).
 :::
 
 To prepare the cluster to trust both existing and new certificates, perform the following steps on **all {{es}} nodes**:
@@ -363,7 +365,7 @@ To prepare the cluster to trust both existing and new certificates, perform the 
     1. `transport_cert_new.p12` is the name of the new transport TLS certificate.
     2. `transport_ca.pem` is the current transport CA being used, in PEM format.
 
-#### Nodes configuration [configure-es-tls]
+#### Nodes configuration [configure-es-tls-nodes]
 
 On the first {{es}} node, do the following to configure it to use the new certificate. The final step in this section indicates how and when to repeat the same procedure on the remaining nodes, based on the restart approach you selected.
 
@@ -436,7 +438,7 @@ On the first {{es}} node, do the following to configure it to use the new certif
 
       Refer to [Rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) for more details.
 
-    - **Full cluster restart**: Repeat these steps on all nodes, and once all nodes are configured, stop and start the entire cluster:
+    - **Full cluster restart**: Repeat the previous steps on all nodes, and once all nodes are configured, stop and start the entire cluster:
 
       To stop the cluster, run this on all nodes:
 
@@ -452,7 +454,7 @@ On the first {{es}} node, do the following to configure it to use the new certif
 
       Refer to [Full cluster restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-full) for more details.
    
-## {{es}} HTTP layer [ssl-http]
+## Configure TLS certificates for the {{es}} HTTP layer [ssl-http]
 
 This section covers TLS configuration for {{es}} HTTP connections. It includes creating a shared HTTP CA that can be reused across the {{stack}}.
 
@@ -537,13 +539,14 @@ If you already obtained HTTP certificates from your security team or certificate
     Respond to the command prompts as follows:
 
     * When asked if you want to generate a CSR, enter `n`.
-    * When asked if you want to use an existing CA, enter `y` and provide the CA certificate and key generated in [Step 1: Generate a shared HTTP CA for the {{stack}}](#install-stack-demo-secure-ca):
-      * `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`
-      * `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.key`
 
       ::::{note}
       If you want to generate CSRs to be signed by an external CA, answer `y` to the CSR prompt instead.
       ::::
+
+    * When asked if you want to use an existing CA, enter `y` and provide the CA certificate and key generated in [Step 1: Generate a shared HTTP CA for the {{stack}}](#install-stack-demo-secure-ca):
+      * `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`
+      * `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.key`
 
     * Enter an expiration value for your certificate. You can enter the validity period in years, months, or days. For example, enter `1y` for one year.
 
@@ -739,7 +742,7 @@ When the {{es}} HTTP CA changes, {{kib}} must trust the new CA certificate to co
    sudo systemctl restart kibana.service
    ```
 
-## {{kib}} HTTP layer
+## Configure HTTPS for {{kib}}
 
 This section covers server-side HTTPS configuration for {{kib}}, so browser-to-{{kib}} traffic is encrypted.
 
@@ -797,10 +800,10 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
    ```
 
    :::{note}
-   The CA certificate associated with this new certificate is `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`.
+   The CA certificate associated with this new certificate is the shared HTTP CA created earlier (`/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`).
    :::
 
-### Step 2: Distribute SSL certificates to {{kib}}
+### Step 2: Distribute certificate files to {{kib}}
 
 1. From the host where you generate the certificates (the [PKI host](#preparations)), copy the {{kib}} certificate and key to your {{kib}} host:
 
@@ -812,11 +815,15 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
 
    Replace `<kibana-host>` with the hostname or IP address of your {{kib}} server.
 
-1. From the same host, copy the shared HTTP CA certificate to your {{kib}} host:
+1. From the same host, copy the CA certificate associated with the {{kib}} server certificate to your {{kib}} host. In this tutorial, that CA is the shared HTTP CA generated earlier:
 
    ```shell
    sudo scp /usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt <user>@<kibana-host>:/home/user/elastic-stack-http-ca.crt
    ```
+
+   :::{note}
+   If you used a different CA to generate the {{kib}} server certificate, copy that CA certificate instead.
+   :::
 
 1. On the {{kib}} host, move the certificate files into `/etc/kibana`:
 
@@ -865,15 +872,15 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
 
     In the log file you should find a `{{kib}} is now available` message.
 
-1. Access {{kib}} from your browser using HTTPS: `https://<KIBANA-IP>:5601`. Log in using the `elastic` user and password that you configured in Step 1 of [Tutorial 1: Installing a self-managed {{stack}}](tutorial-self-managed-install.md#install-stack-self-elasticsearch-first).
+1. Access {{kib}} from your browser using HTTPS: `https://<KIBANA-IP>:5601`. Log in using the `elastic` user and the password generated when you installed the first {{es}} node.
 
     :::{note}
     To avoid browser security warnings and ensure secure TLS validation, client browsers must trust the CA that signed the {{kib}} server certificate (`elastic-stack-http-ca.crt`), or a certificate chain that includes it.
     :::
 
-## {{fleet}} setup
+## Configure {{fleet-server}} and {{agent}} with custom certificates
 
-### Step 1: Install {{fleet}} with SSL certificates configured [install-stack-demo-secure-fleet]
+### Step 1: Install {{fleet}} with custom TLS certificates [install-stack-demo-secure-fleet]
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we'll set up in a later step.
 
