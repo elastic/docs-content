@@ -264,7 +264,7 @@ Configure timeout and buffer size values for the Kafka brokers.
 
     :::{note}
     :applies_to: stack: ga 9.4.0+
-    Starting in 9.4.0, the Kafka client uses franz-go, so the `channel_buffer_size` longer apply.
+    Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
     :::
 
     **Default:** `0`
