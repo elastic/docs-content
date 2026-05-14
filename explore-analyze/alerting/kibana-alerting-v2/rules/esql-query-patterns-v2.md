@@ -32,7 +32,7 @@ FROM logs-*
 | KEEP service.name, error_rate, error_count, total_count
 ```
 
-One window, one aggregate, one threshold check. The result is either a breach or no breach for each group.
+One window, one aggregate, one threshold check. The result is either a breach or no breach for each series.
 
 ## SLO burn rate query [slo-burn-rate-query-v2]
 

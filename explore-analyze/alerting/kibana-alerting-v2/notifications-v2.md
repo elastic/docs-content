@@ -25,8 +25,8 @@ Each policy has four controls:
 | Control | What it does |
 | --- | --- |
 | Matcher (optional KQL) | Filters which episodes this policy applies to. An empty matcher matches all episodes in the space. |
-| Dispatch per (grouping) | Controls how episodes batch into notifications: one per episode, one per defined group, or one digest for all. |
-| Frequency (throttling) | Controls how often the policy can notify for the same group. |
+| Dispatch per (grouping) | Controls how episodes batch into notifications: one per episode, one per notification group (Dispatch per **Group**), or one digest for all. |
+| Frequency (throttling) | Controls how often the policy can notify for the same notification group. |
 | Destinations | One or more workflows to invoke when all conditions are met. |
 
 ## How policies apply to rules
@@ -44,7 +44,7 @@ When an episode is eligible for dispatch, the system processes each enabled poli
 1. **Suppression:** Is the episode acknowledged, snoozed, or deactivated? If so, skip dispatch.
 2. **Matcher:** Does the episode match the policy's KQL? If not, skip this policy.
 3. **Grouping:** How should matching episodes batch into notification groups?
-4. **Throttle:** Has a notification already gone out for this group recently? If so, wait.
+4. **Throttle:** Has a notification already gone out for this notification group recently? If so, wait.
 5. **Destinations:** Send to the policy's workflow destinations.
 
 The dispatcher runs on a short interval (around 5 seconds). Notifications don't arrive on the exact rule schedule. They follow the dispatcher's own cycle.

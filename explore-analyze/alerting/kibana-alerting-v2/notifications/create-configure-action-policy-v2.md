@@ -60,7 +60,7 @@ For detailed descriptions, frequency options, and examples for each mode, refer 
 
 $$$throttle-v2$$$
 
-Throttling limits how often the policy can fire for a given group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available throttle strategies, refer to [Throttle strategies](action-policy-reference-v2.md#throttle-strategies).
+Throttling limits how often the policy can fire for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available throttle strategies, refer to [Throttle strategies](action-policy-reference-v2.md#throttle-strategies).
 
 ### Destinations
 

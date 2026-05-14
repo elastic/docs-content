@@ -21,7 +21,7 @@ If you want to jump straight to creating a rule, go to [Quick start](quick-start
 
 $$$alerting-set-up-v2$$$
 
-{{alerting-v2}} is available in {{serverless-short}} only. 
+{{alerting-v2}} is in experimental in {{stack}} 9.5 and in {{serverless-short}}. 
 
 <!--[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
 -->

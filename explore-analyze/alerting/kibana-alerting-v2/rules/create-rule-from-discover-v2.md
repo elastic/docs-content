@@ -18,7 +18,7 @@ Create {{alerting-v2}} rules directly from Discover. When you build an {{esql}} 
 
 Starting a rule from Discover means your query is already tested and returns the shape you expect before the rule is ever saved. Instead of drafting a query in the rule builder and hoping it works, you iterate in Discover (where you can see real results immediately) and then create the rule when the query is ready.
 
-When you trigger rule creation from Discover, your {{esql}} query pre-fills the rule form. The rule creation form also shows a preview panel that reflects how your query would group alert episodes. If your query uses a `BY` clause, the preview shows the groups that would be evaluated on each run. This lets you verify grouping logic against live data before committing to a schedule.
+When you trigger rule creation from Discover, your {{esql}} query pre-fills the rule form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run. This lets you verify grouping logic against live data before committing to a schedule.
 
 ## Preview query results before creating the rule [preview-query-discover-v2]
 
@@ -26,7 +26,7 @@ $$$preview-query-discover-v2$$$
 
 The query preview in the rule creation flow runs your {{esql}} query against current data and displays the resulting rows. Use this to:
 
-- **Confirm grouping**: Check that your `BY` clause produces the groups you intend — for example, one series per host or per service, not a single undifferentiated result.
+- **Confirm grouping**: Check that your `BY` clause produces the series you intend — for example, one distinct series per host or per service, not a single undifferentiated result.
 - **Catch unexpected output**: Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name will not behave as expected once the rule runs on a schedule.
 - **Refine before committing**: Edit the query in the preview panel and re-run it without leaving the rule creation form. Once the preview looks correct, proceed to fill in the remaining settings.
 
