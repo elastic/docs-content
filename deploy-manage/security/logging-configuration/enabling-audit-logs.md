@@ -48,7 +48,7 @@ To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled`
 ::::{note}
 :applies_to: stack: ga 9.5+
 
-In {{es}} deployments running {{stack}} 9.5 or later, `xpack.security.audit.enabled` is a [dynamic setting](/deploy-manage/stack-settings.md#dynamic-cluster-setting) and can be changed at runtime using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) without restarting nodes. The {{kib}} setting still follows the static configuration flow described below.
+In {{es}} deployments running {{stack}} 9.5 or later, `xpack.security.audit.enabled` is a [dynamic setting](/deploy-manage/stack-settings.md#dynamic-cluster-setting) and can be changed at runtime using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) without restarting nodes. The {{kib}} setting still follows the static configuration flow in the following section.
 ::::
 
 ::::{note}
