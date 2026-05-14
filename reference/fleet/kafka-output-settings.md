@@ -263,10 +263,10 @@ Configure timeout and buffer size values for the Kafka brokers.
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     **Default:** `0`
-    
+
     :::{note}
     :applies_to: stack: ga 9.4.0+
-    Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
+    Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
     :::
 
     
