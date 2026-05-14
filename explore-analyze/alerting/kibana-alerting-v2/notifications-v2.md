@@ -47,7 +47,7 @@ When an episode is eligible for dispatch, the system processes each enabled poli
 4. **Throttle:** Has a notification already gone out for this group recently? If so, wait.
 5. **Destinations:** Send to the policy's workflow destinations.
 
-The dispatcher runs on a short interval (around 10 seconds). Notifications don't arrive on the exact rule schedule. They follow the dispatcher's own cycle.
+The dispatcher runs on a short interval (around 5 seconds). Notifications don't arrive on the exact rule schedule. They follow the dispatcher's own cycle.
 
 ### Possible outcomes [possible-outcomes]
 
