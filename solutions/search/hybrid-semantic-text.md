@@ -190,7 +190,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 ```
 :::
 
-## Ingest data [hybrid-semantic-text-ingest-data]
+## Step 2: Ingest data [hybrid-semantic-text-ingest-data]
 
 With your index mapping in place, you can add some data. You only need to populate the `content` field. {{es}} stores its value as `text` for lexical search, and `copy_to` duplicates that same value into the `content_embedding` field. Because `content_embedding` is of type `semantic_text`, {{es}} then sends the value to the {{infer}} endpoint and stores the resulting embeddings.
 
