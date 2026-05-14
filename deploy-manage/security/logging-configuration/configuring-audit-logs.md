@@ -32,7 +32,13 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
     ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
+    In {{es}}, all auditing settings are dynamic. This means you can configure them using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
+
+    :::{note}
+    :applies_to: stack: ga 9.0-9.4
+
+    In {{stack}} versions 9.4 and earlier, `xpack.security.audit.enabled` is a static setting and must be configured in `elasticsearch.yml` on each node, requiring a node restart to take effect.
+    :::
     ::::
 
 For a complete description of event details and format, refer to the following resources:
