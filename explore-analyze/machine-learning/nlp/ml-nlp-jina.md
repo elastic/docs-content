@@ -81,7 +81,7 @@ Pass one or more plain text strings in the `input` array.
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 {
   "input": [
-    "This is a test"
+    "A small blue square"
   ]
 }
 ```
@@ -96,8 +96,15 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
   "input": [
     {
       "content": [
-        { "type": "text", "value": "A small blue square" },
-        { "type": "image", "format": "base64", "value": "<BASE64_IMAGE_DATA>" }
+        {
+          "type": "text",
+          "value": "A small blue square"
+        },
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
       ]
     }
   ]
@@ -114,7 +121,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
   "input": [
     {
       "content": [
-        { "type": "image", "format": "base64", "value": "<BASE64_IMAGE_DATA>" }
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
       ]
     }
   ]
@@ -131,7 +142,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
   "input": [
     {
       "content": [
-        { "type": "video", "format": "base64", "value": "<BASE64_VIDEO_DATA>" }
+        {
+          "type": "video",
+          "format": "base64",
+          "value": "data:video/mp4;base64,<BASE64_VIDEO_DATA>"
+        }
       ]
     }
   ]
@@ -148,7 +163,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
   "input": [
     {
       "content": [
-        { "type": "audio", "format": "base64", "value": "<BASE64_AUDIO_DATA>" }
+        {
+          "type": "audio",
+          "format": "base64",
+          "value": "data:audio/wav;base64,<BASE64_AUDIO_DATA>"
+        }
       ]
     }
   ]
@@ -165,7 +184,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
   "input": [
     {
       "content": [
-        { "type": "document", "format": "base64", "value": "<BASE64_PDF_DATA>" }
+        {
+          "type": "pdf",
+          "format": "base64",
+          "value": "data:application/pdf;base64,<BASE64_PDF_DATA>"
+        }
       ]
     }
   ]
@@ -250,8 +273,15 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
   "input": [
     {
       "content": [
-        { "type": "text", "value": "A small blue square" },
-        { "type": "image", "format": "base64", "value": "<BASE64_IMAGE_DATA>" }
+        {
+          "type": "text",
+          "value": "A small blue square"
+        },
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
       ]
     }
   ]
@@ -268,7 +298,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
   "input": [
     {
       "content": [
-        { "type": "image", "format": "base64", "value": "<BASE64_IMAGE_DATA>" }
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
       ]
     }
   ]
@@ -285,7 +319,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
   "input": [
     {
       "content": [
-        { "type": "video", "format": "base64", "value": "<BASE64_VIDEO_DATA>" }
+        {
+          "type": "video",
+          "format": "base64",
+          "value": "data:video/mp4;base64,<BASE64_VIDEO_DATA>"
+        }
       ]
     }
   ]
@@ -302,7 +340,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
   "input": [
     {
       "content": [
-        { "type": "audio", "format": "base64", "value": "<BASE64_AUDIO_DATA>" }
+        {
+          "type": "audio",
+          "format": "base64",
+          "value": "data:audio/wav;base64,<BASE64_AUDIO_DATA>"
+        }
       ]
     }
   ]
@@ -319,7 +361,11 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
   "input": [
     {
       "content": [
-        { "type": "document", "format": "base64", "value": "<BASE64_PDF_DATA>" }
+        {
+          "type": "pdf",
+          "format": "base64",
+          "value": "data:application/pdf;base64,<BASE64_PDF_DATA>"
+        }
       ]
     }
   ]
