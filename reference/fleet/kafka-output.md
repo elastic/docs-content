@@ -348,13 +348,13 @@ You can specify these various other options in the `kafka-output` section of the
 `metadata` $$$kafka-metadata-setting$$$
 :   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
 
+    `refresh_frequency`
+    :   Metadata refresh interval. Defaults to 10 minutes.
+
     :::{note}
     :applies_to: stack: ga 9.4.0+
     Starting in 9.4.0, the Kafka client uses franz-go, so the `full`, `retry.max`, and `retry.backoff` metadata options no longer apply.
     :::
-
-    `refresh_frequency`
-    :   Metadata refresh interval. Defaults to 10 minutes.
 
     `full` {applies_to}`stack: removed 9.4+`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
