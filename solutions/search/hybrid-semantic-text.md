@@ -297,7 +297,7 @@ Each document is indexed with `content` for search. The same text is copied to `
 
 If you encounter errors, check that your index mapping and {{infer}} endpoint are configured correctly.
 
-## Run a hybrid search query [hybrid-search-perform-search]
+## Step 3: Run a hybrid search query [hybrid-search-perform-search]
 
 Now that you have data in your index, you can run hybrid search to combine lexical matches on `content` with vector search over `content_embedding`. You can choose between [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax.
 
