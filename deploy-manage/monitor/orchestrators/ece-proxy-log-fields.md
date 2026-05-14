@@ -49,5 +49,5 @@ These fields are subject to change. However, most of these fields are generic fo
 | `instance_count` | The number of instances in the target cluster |
 | `cluster_type` | The type of cluster the request was routed to (e.g. {{es}}, {{kib}}, APM) |
 | `request_method` | The HTTP method for the request |
-| `backend_connection_id` | A unique ID for the upstream request to the product, the proxy maintains connection pools so this should be re-used |
+| `backend_connection_id` | A unique ID for the upstream request to the product, the proxy maintains connection pools so this should be reused |
 

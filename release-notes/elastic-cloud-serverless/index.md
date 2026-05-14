@@ -9,6 +9,15 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+<!-- :::{changelog} /releases
+::: -->
+
+:::{include} _snippets/2026-05-06/index.md
+:::
+
+:::{include} _snippets/2026-05-04/index.md
+:::
+
 ## April 30, 2026 [serverless-changelog-04302026]
 
 ### Features and enhancements [serverless-changelog-04302026-features-enhancements]
@@ -1282,6 +1291,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Makes the auto-expand indices functionality use the desired cluster topology when one is available
 * Runs replica topology boundary enforcement when receiving the desired topology
 * Adds tests for {{esql}} index exclusion
+* Increases the retention period for AutoOps metrics and history from 4 days to 10 days, allowing you to analyze performance trends and notification history over a longer period.
 
 ### Fixes [serverless-changelog-01192026-fixes]
 
@@ -1687,7 +1697,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Allows file paths containing spaces to be used in Observables [#244350]({{kib-pull}}244350)
 * Fixes the serialization of `meta.error` in JSON layouts [#244364]({{kib-pull}}244364)
 * Fixes an issue that could cause an infinite loading state after submitting the case creation form [#244543]({{kib-pull}}244543)
-* Adds supprot for pruning columns when using `FORK` branches in {{esql}} [#137907]({{es-pull}}137907)
+* Adds support for pruning columns when using `FORK` branches in {{esql}} [#137907]({{es-pull}}137907)
 * Fixes an Inference API issue to support correct type identification during deserialization [#138484]({{es-pull}}138484)
 * Fixes `chunkedInfer()` to correctly handle empty inputs [#138632]({{es-pull}}138632)
 * Ensures the circuit breaker limit is honored when building global ordinals by accounting their memory usage and breaking when the limit is exceeded [#108875]({{es-pull}}108875)
@@ -1811,7 +1821,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Fixes the docker image reference in the **Add agent** flyout's Kubernetes manifest [#242691]({{kib-pull}}242691)
 * Fixes text truncation in tables [#241440]({{kib-pull}}241440)
 * Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673)
-* Reverts show transform errors accross all SLO pages [#243013]({{kib-pull}}243013)
+* Reverts show transform errors across all SLO pages [#243013]({{kib-pull}}243013)
 * Adds encoding of `cloudFormation` URL parameters [#242365]({{kib-pull}}242365)
 * Changes `must_not` risk scoring filter to `must` [#242171]({{kib-pull}}242171)
 * Fixes the rule link in a timeline’s alert flyout [#242313]({{kib-pull}}242313)
@@ -2098,7 +2108,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Adds a 10 second request timeout to {{esql}} query execution [#238200]({{kib-pull}}238200)
 * Uses `runWithCache` for bulk {{fleet}} operations [#238326]({{kib-pull}}238326)
 * Fixes error when Observability AI Assistant was disabled [#238811]({{kib-pull}}238811)
-* Removes unecessary `_source` field from queries [#239205]({{kib-pull}}239205)
+* Removes unnecessary `_source` field from queries [#239205]({{kib-pull}}239205)
 * Makes the rule condition chart parser replace metric names inside filter values (for example, A in "Accounts") [#238849]({{kib-pull}}238849)
 * Fixes recover alert while monitor is down [#237479]({{kib-pull}}237479)
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418)
@@ -3261,7 +3271,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Adds a rare scripts job to the preconfigured Security:Windows anomaly detection jobs [#223041]({{kib-pull}}223041)
 * Adds `converse` and `converseStream` subActions to Bedrock connectors for Machine Learning [#223033]({{kib-pull}}223033)
 * Improves error handling in the AI Connector creation UI for Machine Learning [#221859]({{kib-pull}}221859)
-* Disables trace visualizations in **Discover** for Logs Essentials serverless mode in Elastic Observability Serverles [#222991]({{kib-pull}}222991)
+* Disables trace visualizations in **Discover** for Logs Essentials serverless mode in Elastic Observability Serverless [#222991]({{kib-pull}}222991)
 * Adds the **Attributes** tab to the Elastic Observability Serverless document viewer [#222391]({{kib-pull}}222391)
 
 ### Fixes [serverless-changelog-06162025-fixes]
@@ -3707,7 +3717,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 
 * Speeds up `TO_IP` [#126338](https://github.com/elastic/elasticsearch/pull/126338)
 * Adds list and get query APIs [#124832](https://github.com/elastic/elasticsearch/pull/124832)
-* Implments the grammar and logical plan in the `COMPLETION` command in {{esql}} [#126319](https://github.com/elastic/elasticsearch/pull/126319)
+* Implements the grammar and logical plan in the `COMPLETION` command in {{esql}} [#126319](https://github.com/elastic/elasticsearch/pull/126319)
 * Adds heuristics to pick efficient partitioning [#125739](https://github.com/elastic/elasticsearch/pull/125739)
 
 ### Fixes [serverless-changelog-04142025-fixes]
@@ -3764,7 +3774,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Replaces Sourcerer in the global header in Elastic Security Serverless [#216685]({{kib-pull}}216685)
 * Handles grouping in multivalue fields in Elastic Security Serverless [#215913]({{kib-pull}}215913)
 * Adds validation and autocomplete support for the `CHANGE_POINT` command in {{esql}} [#216043]({{kib-pull}}216043)
-* Adds support for aggregrate filtering in the {{esql}} editor [#216379]({{kib-pull}}216379)
+* Adds support for aggregate filtering in the {{esql}} editor [#216379]({{kib-pull}}216379)
 * Changes the agent details last activity value to show the formatted datetime in Fleet [#215531]({{kib-pull}}215531)
 * Allows SSL configuration to be disabled for the Fleet agent Logstash output [#216216]({{kib-pull}}216216)
 * Enhances the display for anomaly time function values for Machine Learning [#216142]({{kib-pull}}216142)
@@ -3835,7 +3845,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Checks if the anomaly results index has been rolled over (#125404) [#125786](https://github.com/elastic/elasticsearch/pull/125786)
 * Adds common rerank options to the perform inference API [#125239](https://github.com/elastic/elasticsearch/pull/125239)
 * Adds panama implementations of byte-bit and float-bit script operations [#124722](https://github.com/elastic/elasticsearch/pull/124722)
-* Allows zero for `rescore_vector.oversample` to indicate by-passing oversample and rescoring [#125599](https://github.com/elastic/elasticsearch/pull/125599)
+* Allows zero for `rescore_vector.oversample` to indicate bypassing oversample and rescoring [#125599](https://github.com/elastic/elasticsearch/pull/125599)
 * Stores arrays offsets for scaled float fields natively with synthetic source [#125793](https://github.com/elastic/elasticsearch/pull/125793)
 * Stores arrays offsets for boolean fields natively with synthetic source [#125529](https://github.com/elastic/elasticsearch/pull/125529)
 * Stores arrays offsets for unsigned long fields natively with synthetic source [#125709](https://github.com/elastic/elasticsearch/pull/125709)
@@ -3929,7 +3939,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Fixes issue with alert grouping re-render [#215086]({{kib-pull}}215086)
 * Limits the `transformID` length to 36 characters [#213405]({{kib-pull}}213405)
 * Fixes Data view refresh not supporting the `indexPattern` parameter [#215151]({{kib-pull}}215151)
-* Uses Risk Engine `SavedObject` intead of `localStorage` on the Risk Score web page [#215304]({{kib-pull}}215304)
+* Uses Risk Engine `SavedObject` instead of `localStorage` on the Risk Score web page [#215304]({{kib-pull}}215304)
 * Fixes autocomplete for comments when there is a space [#214696]({{kib-pull}}214696)
 * Makes sure that the variables in the editor are always up to date [#214833]({{kib-pull}}214833)
 * Calculates the query for retrieving the values correctly [#214905]({{kib-pull}}214905)
@@ -4400,6 +4410,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Improves messages for recovered alerts in Machine Learning Transforms [#205721]({{kib-pull}}205721)
 * Introduces new deployment performance metrics charts. AutoOps provides aggregate metrics at the cluster level for key performance indicators. The data is tier-based, offering users a comprehensive understanding of each tier and the entire cluster.
 * Deprecates Cloud Defend billing alerts. Following the deprecation of Cloud Defend in {{serverless-short}}, removes the billing logic associated with the feature.
+* You can now select specific "From/To" dates and times (up to 10 days) in AutoOps to inspect resource consumption and performance at a finer granularity.
 
 ### Fixes [elastic-cloud-serverless-01132025-fixes]
 * Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover [#205833]({{kib-pull}}205833)

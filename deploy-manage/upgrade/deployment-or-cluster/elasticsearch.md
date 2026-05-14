@@ -159,7 +159,7 @@ To upgrade using a zip or compressed tarball:
 3. Set `path.data` in `config/elasticsearch.yml` to point to your external data directory. If you are not using an external `data` directory, copy your old data directory over to the new installation.<br>
 
     :::{important}
-    If you use {{monitor-features}}, re-use the data directory when you upgrade {{es}}. Monitoring identifies unique {{es}} nodes by using the persistent UUID, which is stored in the data directory.
+    If you use {{monitor-features}}, reuse the data directory when you upgrade {{es}}. Monitoring identifies unique {{es}} nodes by using the persistent UUID, which is stored in the data directory.
     :::
 
 4. Set `path.logs` in `config/elasticsearch.yml` to point to the location where you want to store your logs. If you do not specify this setting, logs are stored in the directory you extracted the archive to.

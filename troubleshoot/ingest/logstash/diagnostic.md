@@ -14,7 +14,12 @@ This information can be used to troubleshoot problems with your data pipeline. F
 
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to minimize turnaround time.
 
-See this [this video](https://www.youtube.com/watch?v=0a1I5yPmoOk) for a walkthrough of capturing a {{ls}} diagnostic.
+See [this video](https://www.youtube.com/watch?v=0a1I5yPmoOk) for a walkthrough of capturing a {{ls}} diagnostic.
+
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
 
 ## Requirements [diagnostic-tool-requirements]
 
@@ -35,7 +40,7 @@ To capture a {{ls}} diagnostic:
     For example, with [the parameters](https://www.elastic.co/docs/reference/logstash/logstash-settings-file) `api.http.host: 127.0.0.1` and `api.http.port: 9600` without authentication (default), you’d use the following curl request:
 
     ```sh
-    curl -X GET -k http://127.0.0.1:9600?pretty
+    curl -X GET http://127.0.0.1:9600?pretty
     ```
 
     If you receive a an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, [diagnose the issue](#diagnostic-non-200) before proceeding.
@@ -94,4 +99,4 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{ls}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the node. Poll the root endpoint again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the node. Poll the root endpoint again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.
