@@ -88,7 +88,7 @@ If you’re interested in consolidated billing, subscribe from the AWS Marketpla
 
 [NOTE]
 ====
-Serverless projects are only available for AWS Marketplace. Support for GCP Marketplace and Microsoft Marketplace will be added in the near future.
+Serverless projects are only available for AWS Marketplace. Support for GCP Marketplace and Azure Marketplace will be added in the near future.
 ====
 
 [[general-user-profile]]
