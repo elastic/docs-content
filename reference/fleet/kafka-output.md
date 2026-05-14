@@ -279,7 +279,7 @@ You can specify these various other options in the `kafka-output` section of the
 
     **Default:** `10` (seconds)
 
-`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
+`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     :::{note}
@@ -294,7 +294,7 @@ You can specify these various other options in the `kafka-output` section of the
 
     **Default:** `2048`
 
-`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
+`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     :::{note}

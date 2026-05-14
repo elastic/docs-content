@@ -259,17 +259,17 @@ Configure timeout and buffer size values for the Kafka brokers.
 
     **Default:** `2048`
 
-`bulk_flush_frequency` $$$output-kafka-fleet-settings-flush_frequency-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
+`bulk_flush_frequency` $$$output-kafka-fleet-settings-flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     :::{note}
     :applies_to: stack: ga 9.4.0+
     Starting in 9.4.0, the Kafka client uses franz-go, so the `channel_buffer_size` longer apply.
     :::
-    
+
     **Default:** `0`
 
-`channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
+`channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     :::{note}
@@ -325,13 +325,13 @@ Configure timeout and buffer size values for the Kafka brokers.
 `metadata` $$$output-kafka-fleet-settings-metadata-setting$$$
 :   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
 
+    **`refresh_frequency`**
+    :   Metadata refresh interval. Defaults to 10 minutes.
+
     :::{note}
     :applies_to: stack: ga 9.4.0+
     Starting in 9.4.0, the Kafka client uses franz-go, so the `full`, `retry.max`, and `retry.backoff` metadata options no longer apply.
     :::
-
-    **`refresh_frequency`**
-    :   Metadata refresh interval. Defaults to 10 minutes.
 
     **`full`** {applies_to}`stack: removed 9.4+`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
