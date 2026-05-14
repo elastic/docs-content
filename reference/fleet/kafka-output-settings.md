@@ -262,10 +262,20 @@ Configure timeout and buffer size values for the Kafka brokers.
 `bulk_flush_frequency` $$$output-kafka-fleet-settings-flush_frequency-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so the `channel_buffer_size` longer apply.
+    :::
+    
     **Default:** `0`
 
 `channel_buffer_size` $$$output-kafka-fleet-settings-channel_buffer_size-setting$$$ {applies_to}`stack: deprecated 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
+
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so the `channel_buffer_size` longer apply.
+    :::
 
     **Default:** `256`
 
