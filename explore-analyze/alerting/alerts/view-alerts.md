@@ -105,6 +105,23 @@ To permanently suppress an alert's actions, open the actions menu for the approp
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 ::::
 
+## Acknowledge alerts [acknowledge-alerts]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Acknowledge an alert to explicitly indicate that someone is investigating it. Acknowledged alerts have their `kibana.alert.workflow_status` set to `acknowledged`, which displays a badge in the alert lifecycle status cell.
+
+Acknowledging an alert does not suppress future notifications or affect rule recovery. The alert continues to update its status normally.
+
+To acknowledge an alert, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Acknowledge**. To revert the acknowledgment, from the action menu, select **Unacknowledge**.
+
+::::{tip}
+To filter for acknowledged alerts in the Alerts table, enter `kibana.alert.workflow_status : "acknowledged"` in the KQL bar.
+::::
+
 ## Apply and filter alert tags [tag-alerts]
 
 ```{applies_to}

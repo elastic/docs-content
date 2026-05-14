@@ -6,6 +6,9 @@ applies_to:
   serverless: ga
   deployment:
     ech:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted

@@ -188,7 +188,7 @@ serverless: ga
 
 :::{tip}
 Likewise, when the difference is specific to just one paragraph or list item, the same rules apply.
-Just the syntax slightly differs so that it stays inline: `` {applies_to}`ess: ga` {applies_to}`serverless: ga` ``.
+Just the syntax slightly differs so that it stays inline: `` {applies_to}`ech: ga` {applies_to}`serverless: ga` ``.
 :::
 
 ### Choosing a primary dimension for your page [primary-dimension]
@@ -222,7 +222,7 @@ Feature description.
 
 ```{applies_to}
 deployment:
-  ess: ga
+  ech: ga
   ece: ga 4.0+
 ```
 
@@ -628,7 +628,7 @@ Applies switch tabs are minimally disruptive in many situations.
 ```
 ::::{applies-switch}
 
-:::{applies-item} ess: ga
+:::{applies-item} ech: ga
 [...]
 :::
 

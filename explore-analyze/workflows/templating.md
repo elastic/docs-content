@@ -2,7 +2,7 @@
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Learn how to use variables, constants, and the Liquid templating engine to create dynamic workflows.
+description: Learn how to use variables, constants, Liquid templating, and custom filters to move data through Elastic Workflows.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -187,8 +187,51 @@ message: |
 ```
 
 :::{note}
-Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html).
+Workflows supports all available LiquidJS [filters](https://liquidjs.com/filters/overview.html), plus two custom filters (`json_parse` and `entries`) documented in the next section.
 :::
+
+### Custom filters [workflows-custom-filters]
+
+In addition to the standard LiquidJS filter set, the workflow engine provides two custom filters for shapes that come up often in automation:
+
+| Filter | What it does | Example |
+|---|---|---|
+| `json_parse` | Parses a JSON string into an object so you can access fields. | `"{{ steps.http.output.body \| json_parse }}"` |
+| `entries` | Converts an object into an array of `{key, value}` pairs, which is iterable with `{% for %}`. | `"{% for kv in steps.config.output \| entries %}{{ kv[0] }}: {{ kv[1] }}{% endfor %}"` |
+
+**Parse a JSON string returned as a string body:**
+
+```yaml
+- name: parse_response
+  type: data.set
+  with:
+    parsed: "{{ steps.http_call.output.body | json_parse }}"
+```
+
+:::{note}
+The inverse of `json_parse` is the standard LiquidJS `json` filter, which serializes a value to a JSON string.
+:::
+
+**Iterate an object's keys:**
+
+```yaml
+- name: summarize_config
+  type: console
+  with:
+    message: |
+      {% for kv in steps.config.output | entries %}
+        {{ kv[0] }}: {{ kv[1] }}
+      {% endfor %}
+```
+
+### Choose Liquid or a data step [workflows-liquid-vs-data-steps]
+
+Liquid is excellent for small inline transformations: field access, defaults, formatting, string concatenation. When a transformation grows (filtering a large array, grouping by a key, parsing a JSON payload into named outputs, extracting fields with regex), reach for a [`data.*` step](/explore-analyze/workflows/steps/data.md) instead. Data steps give you explicit, testable transformation with their own named output and their own execution log entry.
+
+| Size of transformation | Use |
+|---|---|
+| A field access, a default, a format (fits in one expression) | Liquid |
+| Filter, group, parse, regex-extract, or multi-field map | A [`data.*` step](/explore-analyze/workflows/steps/data.md) |
 
 ### Preserve array and object types [workflows-preserve-types]
 
@@ -264,31 +307,22 @@ steps:
         {% endfor %}
 ```
 
-## Context variables reference [workflows-context-variables]
+## Context variables [workflows-context-variables]
 
-The workflow engine provides context variables that you can access using template syntax. These variables give you access to workflow metadata, execution details, trigger data, and step outputs.
+The workflow engine provides context variables that you can access from any Liquid expression. The most common ones:
 
-### Available context variables
+- `inputs.<name>` — values provided when the workflow was invoked.
+- `consts.<name>` — constants declared at the top of the workflow.
+- `steps.<name>.output` — output of a previous step.
+- `steps.<name>.error` — error from a failed step (with `on-failure: continue`).
+- `event.*` — trigger payload (shape depends on the trigger type).
+- `execution.*` — metadata about the current execution.
+- `workflow.*` — workflow metadata.
+- `foreach.*`, `while.iteration` — loop-local context.
+- `variables.<name>` — set by `data.set` steps.
+- `now`, `kibanaUrl` — standard helpers.
 
-| Variable | Description | Example value |
-|----------|-------------|---------------|
-| `workflow.name` | Name of the current workflow | `"My Workflow"` |
-| `workflow.id` | Unique identifier of the workflow definition | `"abc-123"` |
-| `execution.id` | Unique identifier for this specific run | `"exec-456"` |
-| `execution.startedAt` | ISO timestamp when execution began | `"2024-01-15T10:30:00Z"` |
-| `event` | Data from the trigger that started the workflow | `{ "user": { "id": "u-123" }, "params": { "target": "host-1" } }` |
-| `inputs.<name>` | Input parameters passed at trigger time | `inputs.severity` resolves to `"high"` |
-| `consts.<name>` | Constants defined at the workflow level | `consts.api_url` resolves to `"https://api.example.com"` |
-| `steps.<step_name>.output` | Output data from a completed step | `steps.search.output.hits.total` resolves to `42` |
-| `steps.<step_name>.error` | Error details if a step failed | `{ "message": "Connection timeout", "code": "ETIMEDOUT" }` |
-
-### Foreach loop variables
-
-Inside `foreach` steps, you have access to additional context variables such as `foreach.item`, `foreach.index`, and more. Refer to [Foreach context variables](/explore-analyze/workflows/steps/foreach.md#context-variables) for details.
-
-### Trigger event data
-
-The `event` variable contains data from the trigger. Its structure depends on the trigger type. Refer to [Trigger context](/explore-analyze/workflows/triggers.md#trigger-context) to learn what data each trigger type provides.
+For the full canonical reference with every variable, the trigger-specific shape of `event.*`, and an example per entry, refer to [Context variables](/explore-analyze/workflows/reference/context-variables.md).
 
 ## Template rendering behavior [workflows-template-rendering]
 

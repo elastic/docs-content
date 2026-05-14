@@ -20,6 +20,7 @@ This feature is available only for certain subscription levels. For more informa
 ## Requirements
 
 * To use this feature, you need a configured [remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md) and a set up [{{ccr}}](/deploy-manage/tools/cross-cluster-replication.md).
+* Both the management cluster and the remote cluster must be {{stack}} deployments. Automatic integrations synchronization is not available when either side is a {{serverless-short}} project.
 * Remote clusters must be running the same {{es}} version as the management cluster, or a newer version that supports {{ccr}}.
 * To install integrations, remote clusters require access to the [{{package-registry}}](/reference/fleet/index.md#package-registry-intro).
 
