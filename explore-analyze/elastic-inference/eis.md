@@ -91,6 +91,60 @@ Alternatively, you can use [{{infer}} APIs]({{es-apis}}group/endpoint-inference)
 
 The following sections describe how to get started with specific models available through Elastic {{infer-cap}} Service, including creating {{infer}} endpoints and using them for search and ingest.
 
+### `jina-embeddings-v5-omni-small` on EIS [jina-embeddings-v5-omni-small-on-eis]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can use the `jina-embeddings-v5-omni-small` model through Elastic {{infer-cap}} Service. It is a multimodal embedding model: you can embed text, images, video, audio, and documents such as PDF into one vector space for retrieval and semantic search, without managing infrastructure or model resources yourself. For model details and multimodal request examples, refer to [`jina-embeddings-v5-omni-small`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-small).
+
+#### Get started with `jina-embeddings-v5-omni-small` on EIS
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
+
+```console
+PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v5-omni-small"
+  }
+}
+```
+
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
+
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with jina-embeddings-v5-omni-small through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-small-getting-started).
+
+### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can use the `jina-embeddings-v5-omni-nano` model through Elastic {{infer-cap}} Service. It matches the multimodal workflow of [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) on this page—text, images, video, audio, and documents such as PDF in one vector space—but uses a smaller model: fewer parameters, a shorter maximum text context window, and lower-dimensional default embeddings, which reduces resource use and cost while you still avoid hosting the model yourself. For model details and multimodal request examples, refer to [`jina-embeddings-v5-omni-nano`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-nano).
+
+#### Get started with `jina-embeddings-v5-omni-nano` on EIS
+
+Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-nano` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
+
+```console
+PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v5-omni-nano"
+  }
+}
+```
+
+The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
+
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with jina-embeddings-v5-omni-nano through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-nano-getting-started).
+
 ### `jina-embeddings-v5-text-small` on EIS [jina-embeddings-v5-on-eis]
 
 ```{applies_to}
@@ -115,56 +169,6 @@ PUT _inference/text_embedding/eis-jina-embeddings-v5-text-small
 ```
 
 The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `text_embedding` {{infer}} tasks, or search queries.
-
-### `jina-embeddings-v5-omni-small` on EIS [jina-embeddings-v5-omni-small-on-eis]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-You can use the `jina-embeddings-v5-omni-small` model through Elastic {{infer-cap}} Service. It is a multimodal embedding model: you can embed text, images, video, and audio into one vector space for retrieval and semantic search, without managing infrastructure or model resources yourself. For model details, refer to [`jina-embeddings-v5-omni-small`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-small).
-
-#### Get started with `jina-embeddings-v5-omni-small` on EIS
-
-Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
-
-```console
-PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v5-omni-small"
-  }
-}
-```
-
-The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
-
-### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
-
-You can use the `jina-embeddings-v5-omni-nano` model through Elastic {{infer-cap}} Service. It is a multimodal embedding model: you can embed text, images, video, and audio into one vector space for retrieval and semantic search, without managing infrastructure or model resources yourself. For model details and usage notes, refer to [`jina-embeddings-v5-omni-nano`](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-embeddings-v5-omni-nano).
-
-#### Get started with `jina-embeddings-v5-omni-nano` on EIS
-
-Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-nano` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
-
-```console
-PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v5-omni-nano"
-  }
-}
-```
-
-The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
 
 ### `jina-embeddings-v3` on EIS [jina-embeddings-on-eis]
 
