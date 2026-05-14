@@ -89,7 +89,7 @@ toc:
   - hidden: _search.md
 
 subs:
-  subscriptions:   "[Elastic self-managed subscriptions](https://www.elastic.co/subscriptions)"
+  subscriptions:   "https://www.elastic.co/subscriptions"
   ecloud:   "Elastic Cloud"
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
