@@ -284,7 +284,7 @@ You can specify these various other options in the `kafka-output` section of the
 
     :::{note}
     :applies_to: stack: ga 9.4.0+
-    Starting in 9.4.0, the Kafka client uses franz-go, so the `bulk_flush_frequency` longer apply.
+    Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
     :::
 
     **Default:** `0`
