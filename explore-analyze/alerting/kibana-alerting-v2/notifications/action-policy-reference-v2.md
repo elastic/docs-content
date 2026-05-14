@@ -5,7 +5,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Grouping modes, throttle strategies, dispatch outcomes, and matcher field reference for {{alerting-v2}} action policies."
+description: "Grouping modes, frequency options, dispatch outcomes, and matcher field reference for {{alerting-v2}} action policies."
 ---
 
 # Action policy reference [action-policy-reference-v2]
@@ -33,7 +33,7 @@ Use these fields in the **Matcher** expression to filter which episodes a policy
 
 Add both fields to this table with examples. Update the introductory sentence to include them. Also remove or deprecate the `data.severity` example once `episode.severity` is the preferred approach, otherwise users will get conflicting guidance about which field to use for severity matching.
 
-There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the throttle strategies section below, since it interacts with throttling.]
+There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the frequency options section below, since it interacts with frequency limits.]
 -->
 
 ## Dispatch per options [notification-grouping]
@@ -46,9 +46,9 @@ Controls how the policy batches matching episodes before sending a notification.
 | Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value (a **notification group**). | A rule produces many related episodes (for example, one per service or host) and you want to reduce noise by batching them into shared notifications. |
 | Digest | The policy combines all matching episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alerts. |
 
-## Throttle strategies [throttle-strategies]
+## Frequency [throttle-strategies]
 
-Throttle strategies control how often the policy fires for a given episode or notification group. The available strategies depend on the **Dispatch per** setting. Not all strategies are valid for all modes.
+**Frequency** controls how often the policy fires for a given episode or notification group. The available options depend on the **Dispatch per** setting. Not all options are valid for all modes.
 
 | Option | Description | When to use |
 |---|---|---|
@@ -94,7 +94,7 @@ The system records each notification attempt with one of the following outcomes.
 | Outcome | What happened |
 |---|---|
 | `dispatched` | The system sent the notification successfully. |
-| `throttled` | The system skipped delivery because the throttle interval hadn't elapsed. This is expected behavior, not an error. |
+| `throttled` | The system skipped delivery because the **frequency** interval had not elapsed. This is expected behavior, not an error. |
 | `suppressed` | Dispatch was blocked before the notification went out—the rule was acknowledged, snoozed, or deactivated. |
 | `unmatched` | No action policy matched this episode, so no workflow ran. |
 | `error` | An error occurred during processing. Check {{kib}} logs to identify the cause. |

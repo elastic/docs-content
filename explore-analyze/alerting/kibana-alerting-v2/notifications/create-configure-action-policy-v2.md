@@ -12,11 +12,11 @@ description: "Create {{alerting-v2}} action policies, configure matchers, Dispat
 
 $$$create-manage-action-policies-v2$$$
 
-Rules define what counts as a problem. Action policies define what happens when a problem is detected. They determine which episodes generate notifications, how they're grouped and throttled, and where they're routed. 
+Rules define what counts as a problem. Action policies define what happens when a problem is detected. They determine which episodes generate notifications, how episodes batch for dispatch, **frequency** limits on notifications, and where they're routed. 
 
 Because policies are separate from rules and global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
 
-For matcher fields, grouping modes, throttle strategies, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference-v2.md).
+For matcher fields, grouping modes, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference-v2.md).
 
 <!--
 ## Create an action policy
@@ -56,11 +56,11 @@ $$$reduce-noise-grouping-v2$$$
 
 For detailed descriptions, frequency options, and examples for each mode, refer to [Dispatch per options](action-policy-reference-v2.md#notification-grouping).
 
-### Throttling [throttle-v2]
+### Frequency [throttle-v2]
 
 $$$throttle-v2$$$
 
-Throttling limits how often the policy can fire for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available throttle strategies, refer to [Throttle strategies](action-policy-reference-v2.md#throttle-strategies).
+**Frequency** limits how often the policy can fire for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available options by **Dispatch per** mode, refer to [Frequency](action-policy-reference-v2.md#throttle-strategies).
 
 ### Destinations
 

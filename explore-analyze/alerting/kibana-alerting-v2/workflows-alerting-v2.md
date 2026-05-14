@@ -30,9 +30,9 @@ Rule → Alert → Action Policy → Workflow → Notification
 
 1. The rule runs its {{esql}} evaluation and writes to `.rule-events`.
 2. In Alert mode, alert documents and episodes represent the ongoing issue.
-3. Action policies in the same space are evaluated against episodes (matcher, suppression, grouping, throttling).
+3. Action policies in the same space are evaluated against episodes (matcher, suppression, grouping, frequency).
 4. For each dispatch, the policy invokes its configured workflows.
 5. Notifications are the outcome: Email, chat, webhook, and so on.
 
-The policy evaluates matchers and throttling before any workflow step runs, even though you created the workflow before the policy. That's why configuration order (workflow first, then policy, then rule) is the reverse of runtime order.
+The policy evaluates matchers and **frequency** limits before any workflow step runs, even though you created the workflow before the policy. That's why configuration order (workflow first, then policy, then rule) is the reverse of runtime order.
 

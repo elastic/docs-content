@@ -109,7 +109,7 @@ Some actions apply only to the specific episode you acted on. Others apply to ev
 
 $$$suppression-mechanics-v2$$$
 
-Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or throttle checks.
+Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or frequency checks.
 
 
 There are three suppression options, each with a different scope:
