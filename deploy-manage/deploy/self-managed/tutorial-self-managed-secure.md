@@ -870,9 +870,9 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
     tail -f /var/log/kibana/kibana.log
     ```
 
-    In the log file you should find a `{{kib}} is now available` message.
+    Verify that the log file contains a **{{kib}} is now available** message.
 
-1. Access {{kib}} from your browser using HTTPS: `https://<KIBANA-IP>:5601`. Log in using the `elastic` user and the password generated when you installed the first {{es}} node.
+1. Access {{kib}} from your browser using HTTPS (`https://<KIBANA-IP>:5601`). Log in using the `elastic` user and the password generated when you installed the first {{es}} node.
 
     :::{note}
     To avoid browser security warnings and ensure secure TLS validation, client browsers must trust the CA that signed the {{kib}} server certificate (`elastic-stack-http-ca.crt`), or a certificate chain that includes it.
@@ -880,7 +880,7 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
 
 ## Configure {{fleet-server}} and {{agent}} with custom certificates
 
-### Step 1: Install {{fleet}} with custom TLS certificates [install-stack-demo-secure-fleet]
+### Step 1: Install {{fleet-server}} with custom TLS certificates [install-stack-demo-secure-fleet]
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we'll set up in a later step.
 
@@ -910,6 +910,10 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 1. Copy the {{es}} CA certificate (`/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`) into the `/etc/fleet/` directory on the {{fleet-server}} host and rename it to `es-ca.crt`:
    - `/etc/fleet/es-ca.crt`
 
+    :::{note}
+    In this tutorial, the CA used for {{es}} HTTP is also used to generate the {{fleet-server}} certificate. In other environments, these can be different CAs.
+    :::
+
 1. Update the permissions on the certificate files to ensure that they’re readable. From inside the `/etc/fleet` directory, run:
 
    ```shell
@@ -929,7 +933,7 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
    cd fleet-install-files
    ```
 
-1. In the terminal, run the `ifconfig` command and copy the value shown for the host IP address. You'll need this value later.
+1. Obtain the host IP address for your {{fleet-server}} host (for example, by running `ifconfig`). You need this value later.
 
 1. In your web browser, open {{kib}} **Management -> {{fleet}}**, click **Add {{fleet-server}}**, and select the **Advanced** tab.
 
@@ -939,14 +943,14 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 
 1. On the **Add your {{fleet-server}} host** step:
     1. Specify a name for your {{fleet-server}} host.
-    1. Specify the host URL where {{agent}}s will reach {{fleet-server}} (e.g. `https://203.0.113.41:8220`). Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) for reference.
+    1. Specify the host URL where {{agent}}s will reach {{fleet-server}} (for example, `https://203.0.113.41:8220`). You can use the host IP address from the previous step, or a resolvable FQDN. Refer to [Default port assignments](/reference/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) for reference.
     1. Click **Add host**.
 
 1. On the **Generate a service token** step, generate the token and save the output. The token will also be propagated automatically to the command to install {{fleet-server}}.
 
 1. On the **Install {{fleet-server}} to a centralized host** step, select the **Linux Tar** tab (or the tab for your host OS). TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{fleet-server}} using {{fleet}}.
 
-1. Run the first three commands. The command will, respectively:
+1. Run the first three commands. The commands do the following, respectively:
 
     1. Download the {{fleet-server}} package from the {{artifact-registry}}.
     1. Unpack the package archive.
@@ -954,21 +958,27 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 
 1. Before running the `elastic-agent install` command: 
     1. Update the paths to the correct file locations:
-       - The {{es}} CA file (`es-ca.crt`)
-       - The {{fleet-server}} certificate (`fleet-server.crt`)
-       - The {{fleet-server}} key (`fleet-server.key`); get the CA fingerprint by running on an {{es}} host:
+        - The {{es}} CA file (`es-ca.crt`)
+        - The {{fleet-server}} certificate (`fleet-server.crt`)
+        - The {{fleet-server}} key (`fleet-server.key`)
 
-    1. The `fleet-server-es-ca-trusted-fingerprint` also needs to be updated. Run the following command to get the correct fingerprint from the HTTP CA certificate in PEM format:
+    1. The `fleet-server-es-ca-trusted-fingerprint` also needs to be updated. Run the following command to get the correct fingerprint from `es-ca.crt`:
 
-       ```shell
-       grep -v ^- /usr/share/elasticsearch/pki/http/kibana/elasticsearch-ca.pem | base64 -d | sha256sum
-       ```
-       
-       Save the fingerprint value. You’ll need it in a later step.
+        ```shell
+        grep -v ^- /etc/fleet/es-ca.crt | base64 -d | sha256sum
+        ```
 
-       Replace the `fleet-server-es-ca-trusted-fingerprint setting` with the returned value. Your updated command should be similar to the following:
+        Alternatively, you can use:
 
-       ```shell
+        ```shell
+        openssl x509 -outform der -in /etc/fleet/es-ca.crt | sha256sum
+        ```
+        
+        Save the fingerprint value. You’ll need it in a later step.
+
+        Replace the `fleet-server-es-ca-trusted-fingerprint setting` with the returned value. Your updated command should be similar to the following:
+
+        ```shell
         sudo ./elastic-agent install -url=https://203.0.113.41:8220 \
           --fleet-server-es=https://203.0.113.21:9200 \
           --fleet-server-service-token=<token> \
@@ -978,9 +988,9 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
           --fleet-server-cert=/etc/fleet/fleet-server.crt \
           --fleet-server-cert-key=/etc/fleet/fleet-server.key \
           --fleet-server-port=8220
-       ```
+        ```
 
-       Refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) for all options.
+        Refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) for all options.
 
 1. Run the `elastic-agent install` command to install {{fleet-server}}.
 
@@ -1007,7 +1017,7 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 
     1. Open `/etc/kibana/kibana.yml` for editing.
     1. Find the `xpack.fleet.outputs` setting.
-    1. Update `ca_trusted_fingerprint` to the value you captured earlier, when you ran the `grep` command on the {{es}} `ca.crt` file.
+    1. Update `ca_trusted_fingerprint` to the value you captured earlier, when you ran the `grep` command on the {{es}} `es-ca.crt` file.
 
        The updated entry in `kibana.yml` should be like the following:
        ```shell
@@ -1026,14 +1036,20 @@ Next, we'll install {{agent}} on another host and use the System integration to 
 
 1. Log in to the host where you'd like to set up {{agent}}.
 
-1. Create a directory for the {{es}} certificate file:
+1. Create a directory for the {{fleet-server}} CA certificate file:
 
    ```shell
    sudo mkdir /etc/agent
    ```
 
-1. From the host where you generate the certificates (the [PKI host](#preparations)), copy `/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt` into `/etc/agent/` on the agent host and rename it to `es-ca.crt`:
-   - /etc/agent/es-ca.crt
+1. From the host where you generate the certificates (the [PKI host](#preparations)), copy the CA certificate used to generate the {{fleet-server}} certificate into `/etc/agent/` on the agent host and rename it to `fleet-server-ca.crt`:
+   - `/etc/agent/fleet-server-ca.crt`
+
+    :::{note}
+    {{agent}} needs to trust the CA that issued the {{fleet-server}} certificate. In this tutorial, that CA is the same as the {{es}} HTTP CA (`/usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt`), but these can be different in other environments.
+
+    {{agent}} also needs to trust {{es}}, but that trust is delivered after enrollment through {{fleet}} policies and the configured {{es}} outputs, including the CA fingerprint configured earlier.
+    :::
 
 1. Create a working directory for the installation package:
    ```shell
@@ -1055,7 +1071,7 @@ Next, we'll install {{agent}} on another host and use the System integration to 
 
     As with {{fleet-server}}, note that TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{agent}} using {{fleet}}.
 
-   Run the first three commands in the terminal on your {{agent}} host. These commands will, respectively:
+   Run the first three commands in the terminal on your {{agent}} host. These commands do the following, respectively:
 
      1. Download the {{agent}} package from the {{artifact-registry}}.
      1. Unpack the package archive.
@@ -1064,7 +1080,7 @@ Next, we'll install {{agent}} on another host and use the System integration to 
 1. Before running the provided `elastic-agent install` command, you'll need to make a few changes:
 
     1. For the `--url` parameter, confirm that the port number is `8220` (this is the default port for on-premises {{fleet-server}}).
-    1. Add a `--certificate-authorities` parameter with the full path of your CA certificate file. For example, `--certificate-authorities=/etc/agent/es-ca.crt`.
+    1. Add a `--certificate-authorities` parameter with the full path of your CA certificate file. For example, `--certificate-authorities=/etc/agent/fleet-server-ca.crt`.
 
     The result should be like the following:
 
@@ -1072,7 +1088,7 @@ Next, we'll install {{agent}} on another host and use the System integration to 
     sudo ./elastic-agent install \
     --url=https://203.0.113.41:8220 \
     --enrollment-token=<token> \
-    --certificate-authorities=/etc/agent/es-ca.crt
+    --certificate-authorities=/etc/agent/fleet-server-ca.crt
     ```
 
 1. Run the `elastic-agent install` command. Enter `Y` when prompted. Wait for the **Add agent** flyout to show the agent as connected and for **Confirm incoming data** to complete, then close the flyout.
