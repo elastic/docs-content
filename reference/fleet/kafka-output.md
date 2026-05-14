@@ -13,7 +13,7 @@ products:
 # Kafka output [kafka-output]
 
 
-The Kafka output sends events to Apache Kafka. Starting in 9.4.0, the Kafka client uses franz-go instead of Sarama, and [some options](#kafka-metadata-setting) are no longer configurable.
+The Kafka output sends events to Apache Kafka. Starting in 9.4.0, the Kafka client uses franz-go instead of Sarama, and some options are no longer configurable.
 
 **Compatibility:** This output can connect to Kafka version 0.8.2.0 and later. Older versions might work as well, but are not supported.
 
