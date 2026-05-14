@@ -137,7 +137,7 @@ Although the model supports an 8192 token context window, consider chunking very
 
 ### `jina-embeddings-v5-omni-small` [jina-embeddings-v5-omni-small]
 
-{applies_to}`stack: ga 9.4`
+{applies_to}`stack: ga 9.5`
 
 The [`jina-embeddings-v5-omni-small`](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index) model is a multimodal dense vector embedding model available through Elastic {{infer-cap}} Service (EIS).
 It extends [`jina-embeddings-v5-text-small`](#jina-embeddings-v5-text-small): text inputs produce the same embeddings as the text-only model, and you can also embed images, video, and audio for retrieval, clustering, and semantic similarity across languages and media.
