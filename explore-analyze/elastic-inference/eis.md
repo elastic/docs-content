@@ -144,7 +144,7 @@ The created {{infer}} endpoint uses the model for {{infer}} operations on the El
 ### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
 
 ```{applies_to}
-stack: ga 9.4+
+stack: ga 9.5+
 serverless: ga
 ```
 
