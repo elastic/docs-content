@@ -111,7 +111,6 @@ $$$suppression-mechanics-v2$$$
 
 Suppression controls whether a matched alert episode actually sends a notification. The dispatcher evaluates suppression before any action policy matcher runs, so a suppressed episode never reaches routing, grouping, or throttle checks.
 
-Each suppression option is stored as a separate document type in `.alert-actions`. To keep dispatch evaluation efficient at high episode volumes, the dispatcher queries only the relevant `(rule_id, group_hash)` pairs from the current evaluation rather than re-reading the entire `.rule-events` index.
 
 There are three suppression options, each with a different scope:
 
