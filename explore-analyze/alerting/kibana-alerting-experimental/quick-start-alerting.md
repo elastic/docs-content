@@ -6,13 +6,13 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Create your first rule in the experimental alerting features: enable the feature, write an {{esql}} query in the YAML editor, and confirm the rule is running by querying the rule events data stream."
+description: "Create your first rule in the {{alerting-v2}}: enable the feature, write an {{esql}} query in the YAML editor, and confirm the rule is running by querying the rule events data stream."
 ---
 
 # Quick start: Your first rule [alerting-quick-start]
 
 
-This quick start is part of the experimental alerting features in Kibana. It walks you through the core model in action. You'll load sample error logs, create a rule that groups results by service, watch episodes open as the rule finds breaches, and then trigger recovery by deleting the data. By the end, you'll have learned about rules, grouping, episodes, and the alert lifecycle play out from start to finish.
+This quick start is part of the {{alerting-v2}} in Kibana. It walks you through the core model in action. You'll load sample error logs, create a rule that groups results by service, watch episodes open as the rule finds breaches, and then trigger recovery by deleting the data. By the end, you'll have learned about rules, grouping, episodes, and the alert lifecycle play out from start to finish.
 
 ## Step 1: Create a sample data stream
 

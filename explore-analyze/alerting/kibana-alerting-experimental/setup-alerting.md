@@ -6,27 +6,27 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Get the experimental alerting features running in your space: enable the UI, confirm data streams, then understand spaces, API keys, and privileges."
+description: "Get the {{alerting-v2}} running in your space: enable the UI, confirm data streams, then understand spaces, API keys, and privileges."
 ---
 
-# Set up the experimental alerting features [alerting-setup]
+# Set up the {{alerting-v2}} [alerting-setup]
 
 
-Set up is part of the experimental alerting features in Kibana. Before you can create your first rule, the experimental alerting features need to be enabled in your space and a few background systems need to be in place. Rules rely on two data streams to store their output, API keys to run with the right privileges, and space scoping to keep objects organized. Getting these right upfront means your rules will run cleanly and their output will be queryable from the start.
+Set up is part of the {{alerting-v2}} in Kibana. Before you can create your first rule, the {{alerting-v2}} need to be enabled in your space and a few background systems need to be in place. Rules rely on two data streams to store their output, API keys to run with the right privileges, and space scoping to keep objects organized. Getting these right upfront means your rules will run cleanly and their output will be queryable from the start.
 
-If you want to jump straight to creating a rule, go to [Quick start](quick-start-alerting.md). For privilege requirements, refer to [Experimental alerting features privileges](alerting-privileges.md).
+If you want to jump straight to creating a rule, go to [Quick start](quick-start-alerting.md). For privilege requirements, refer to [{{alerting-v2-cap}} privileges](alerting-privileges.md).
 
-## Enable the experimental alerting features [alerting-set-up]
+## Enable the {{alerting-v2}} [alerting-set-up]
 
 
-The experimental alerting features are available in technical preview in {{stack}} 9.5 and in {{serverless-short}}. 
+The {{alerting-v2}} are available in technical preview in {{stack}} 9.5 and in {{serverless-short}}. 
 
 <!--[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
 -->
 
 ## Where rule events are stored
 
-The experimental alerting features automatically create and manage two data streams when the first rule runs. You don't need to create them manually.
+The {{alerting-v2}} automatically create and manage two data streams when the first rule runs. You don't need to create them manually.
 
 | Data stream | What it stores |
 |---|---|
