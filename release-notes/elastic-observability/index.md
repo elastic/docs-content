@@ -21,6 +21,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.1 [elastic-observability-9.4.1-release-notes]
+
+There are no user-facing changes in {{observability}} for the 9.4.1 release.
+
 ## 9.4.0 [elastic-observability-9.4.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.0-features-enhancements]
