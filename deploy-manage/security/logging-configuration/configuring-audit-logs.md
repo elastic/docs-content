@@ -38,7 +38,6 @@ When auditing security events, a single client request might generate multiple a
 
 
 
-    In {{stack}} versions 9.4 and earlier, `xpack.security.audit.enabled` is a static setting and must be configured in `elasticsearch.yml` on each node, requiring a node restart to take effect.
     :::
     ::::
 
