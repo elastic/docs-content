@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
   - id: cloud-hosted
 navigation_title: Alerting
-description: "Elastic alerting overview: Kibana alerting, the experimental alerting features (ES|QL, action policies, alert history), and Watcher; where each runs and how to get started."
+description: "Elastic alerting overview: Kibana alerting, the {{alerting-v2}} (ES|QL, action policies, alert history), and Watcher; where each runs and how to get started."
 ---
 
 # Alerting [alerting-overview]
@@ -31,19 +31,19 @@ Kibana alerting gives you ready-made rule types that work with applications such
 
 [Get started with Kibana alerting →](alerting/alerts.md)
 
-## experimental alerting features
+## {{alerting-v2-cap}}
 
 ```{applies_to}
 serverless: preview
 stack: unavailable
 ```
 
-The experimental alerting features are built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). They add alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. The experimental alerting features are a strong fit when you want full control over what data travels with each alert and how your team is notified.
+The {{alerting-v2}} are built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). They add alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. The {{alerting-v2}} are a strong fit when you want full control over what data travels with each alert and how your team is notified.
 
-[Get started with experimental alerting features →](alerting/kibana-alerting-experimental.md)
+[Get started with {{alerting-v2}} →](alerting/kibana-alerting-experimental.md)
 
 :::{note}
-experimental alerting features runs next to Kibana alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting will remain available.
+{{alerting-v2-cap}} runs next to Kibana alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting will remain available.
 :::
 
 ## Watcher
@@ -56,7 +56,7 @@ serverless: unavailable
 Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{kib}} alerting. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most teams, Kibana alerting or the experimental alerting features are easier to adopt: they include more ready-made building blocks and a single place in {{kib}} to work with rules.
+For most teams, Kibana alerting or the {{alerting-v2}} are easier to adopt: they include more ready-made building blocks and a single place in {{kib}} to work with rules.
 :::
 
 [Get started with Watcher →](alerting/watcher.md)

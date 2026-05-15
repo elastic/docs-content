@@ -5,22 +5,22 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "How the experimental alerting features watch your data, turn conditions into signals and alerts, route episodes through action policies and workflows, and where to go next in the docs."
+description: "How the {{alerting-v2}} watch your data, turn conditions into signals and alerts, route episodes through action policies and workflows, and where to go next in the docs."
 ---
 
-# Experimental alerting features [alerting-overview]
+# {{alerting-v2-cap}} [alerting-overview]
 
-The experimental alerting features in Kibana are marked **Experimental** in the UI and are subject to change before general availability. They include alerts, alert episodes, rules, notification policies, workflows, and connectors. For the existing Kibana alerting system, see [Kibana alerting](alerts.md).
+The {{alerting-v2}} in Kibana are marked **Experimental** in the UI and are subject to change before general availability. They include alerts, alert episodes, rules, notification policies, workflows, and connectors. For the existing Kibana alerting system, see [Kibana alerting](alerts.md).
 
-The experimental alerting features watch your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
+The {{alerting-v2}} watch your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
 
 ## The core idea [kibana-alerting-v2-overview]
 
-The experimental alerting features separate *detecting* a problem from *notifying* people about it. A rule watches your data and records what it finds. Separate action policies decide who hears about it and when. This lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
+The {{alerting-v2}} separate *detecting* a problem from *notifying* people about it. A rule watches your data and records what it finds. Separate action policies decide who hears about it and when. This lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
 
 ## The four building blocks
 
-The experimental alerting features are built around four objects, rules, alerts, action policies, and workflows, each with a distinct role.
+The {{alerting-v2}} are built around four objects, rules, alerts, action policies, and workflows, each with a distinct role.
 
 ### Rules
 A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes:
@@ -47,7 +47,7 @@ Refer to [Notifications](kibana-alerting-experimental/notifications.md) to learn
 ### Workflows
 A workflow is what actually sends the message or runs the automation, for example, posting to Slack or sending an email. Action policies hand off to workflows for delivery. Without a workflow attached, no notification is sent.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-Refer to [Workflows for the experimental alerting features](kibana-alerting-experimental/workflows-alerting.md) to learn more.
+Refer to [Workflows for the {{alerting-v2}}](kibana-alerting-experimental/workflows-alerting.md) to learn more.
 -->
 
 ## How the pieces fit together [how-pieces-fit-together]
@@ -103,9 +103,9 @@ The rule writes a signal each time it finds a match. No episodes are opened and 
 :::
 
 
-## Experimental alerting features terms [key-concepts-glossary]
+## {{alerting-v2-cap}} terms [key-concepts-glossary]
 
-These terms appear throughout the experimental alerting features docs. If a term is unclear while reading, check its definition here before going further.
+These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
 :   How you control who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how episodes batch into notifications (Dispatch per), and which workflow should send the message. One action policy can apply to alerts from multiple rules.
@@ -167,9 +167,9 @@ These terms appear throughout the experimental alerting features docs. If a term
 **Workflow**
 :   The automation that sends a message or runs an action when an action policy decides a notification should go out. Examples include posting to Slack, sending an email, or calling a webhook.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-    To learn more, refer to [Workflows for the experimental alerting features](kibana-alerting-experimental/workflows-alerting.md).
+    To learn more, refer to [Workflows for the {{alerting-v2}}](kibana-alerting-experimental/workflows-alerting.md).
 -->
 
 ::::{note}
-The experimental alerting features are sometimes referred to as "alerting v2" or "the new alerting system" in internal documentation and community discussions. This documentation uses "experimental alerting features" as the primary term.
+The {{alerting-v2}} are sometimes referred to as "alerting v2" or "the new alerting system" in internal documentation and community discussions. This documentation uses "{{alerting-v2}}" as the primary term.
 ::::
