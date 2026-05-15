@@ -51,8 +51,8 @@ When using the following advanced re-ranking pipelines, first-stage retrieval me
 
 {{es}} supports semantic re-ranking through two interfaces:
 
-* The [`text_similarity_reranker` retriever](ranking/semantic-reranking.md) for composable retrieval pipelines via the `_search` API
-* The [ES|QL `RERANK` command](ranking/semantic-reranking.md) for piped search queries via the `_query` API
+* The [`text_similarity_reranker` retriever](ranking/semantic-reranking.md) for composable retrieval pipelines through the `_search` API
+* The [ES|QL `RERANK` command](ranking/semantic-reranking.md) for piped search queries through the `_query` API
 
 
 #### Learning to Rank (LTR) [re-ranking-overview-ltr]

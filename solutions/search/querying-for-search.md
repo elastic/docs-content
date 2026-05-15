@@ -37,9 +37,9 @@ Use the following guidance to decide which interface best fits your use case.
 
 Choose [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) when you need:
 
-- **Fine-grained control** over individual query clauses, scoring, and boosting
-- **The widest ecosystem support** — all {{es}} clients, tools, and integrations work with Query DSL
-- **A single-stage query** like a `match`, `bool`, or `term` query without multi-stage retrieval
+- Fine-grained control over individual query clauses, scoring, and boosting
+- The widest ecosystem support: all {{es}} clients, tools, and integrations work with Query DSL
+- A single-stage query like a `match`, `bool`, or `term` query without multi-stage retrieval
 
 Query DSL is the foundational query language and remains the right choice for straightforward search queries, especially when you're using a single retrieval strategy.
 
@@ -47,23 +47,23 @@ Query DSL is the foundational query language and remains the right choice for st
 
 Choose [retrievers](retrievers-overview.md) when you need to:
 
-- **Compose multi-stage retrieval pipelines** in a single `_search` call (for example, retrieve → rerank → diversify)
-- **Combine multiple retrieval strategies** using RRF or linear combination
-- **Apply semantic reranking** with the `text_similarity_reranker` retriever
-- **Use the multi-field query format** for simple hybrid search across lexical and semantic fields with automatic score normalization
+- Compose multi-stage retrieval pipelines in a single `_search` call (for example, retrieve, rerank, diversify)
+- Combine multiple retrieval strategies using RRF or linear combination
+- Apply semantic reranking with the `text_similarity_reranker` retriever
+- Use the multi-field query format for simple hybrid search across lexical and semantic fields with automatic score normalization
 
-Retrievers wrap Query DSL and add composability. If your search involves multiple retrieval stages — such as combining BM25 with vector search, or adding a reranking step — retrievers let you express the entire pipeline declaratively.
+Retrievers wrap Query DSL and add composability. If your search involves multiple retrieval stages, such as combining BM25 with vector search or adding a reranking step, retrievers let you express the entire pipeline declaratively.
 
 ### ES|QL
 
 Choose [ES|QL](esql-for-search.md) when you need to:
 
-- **Transform or aggregate results** alongside your search (for example, filter → search → rerank → generate)
-- **Build end-to-end search workflows** using piped syntax, including hybrid search with `FORK`/`FUSE`, reranking with `RERANK`, and text generation with `COMPLETION`
-- **Explore data interactively** using a familiar SQL-like syntax in Kibana or the API
-- **Combine search with analytics** such as aggregations, stats, or data transformations in a single query
+- Transform or aggregate results alongside your search (for example, filter, search, rerank, generate)
+- Build end-to-end search queries using piped syntax, including hybrid search with `FORK`/`FUSE`, reranking with `RERANK`, and text generation with `COMPLETION`
+- Explore data interactively using a familiar SQL-like syntax in Kibana or the API
+- Combine search with analytics such as aggregations, stats, or data transformations in a single query
 
-ES|QL is a good fit when your workflow extends beyond retrieval — for example, when you want to search, rerank, and summarize results in a single piped query.
+ES|QL is a good fit when your workflow extends beyond retrieval. For example, you can search, rerank, and summarize results in a single piped query.
 
 ### Feature comparison
 
@@ -73,13 +73,13 @@ The following table summarizes which capabilities are available in each interfac
 |------------|:---------:|:----------:|:------:|
 | Full-text search (BM25) | Yes | Yes | Yes |
 | Semantic / vector search | Yes | Yes | Yes |
-| Hybrid search (score combination) | — | Yes (RRF, linear) | Yes (FORK/FUSE) |
-| Semantic reranking | — | Yes (`text_similarity_reranker`) | Yes (`RERANK`) |
-| Result diversification (MMR) | — | Yes (`diversify`) | Yes (`MMR`) |
-| Multi-field query format | — | Yes | — |
+| Hybrid search (score combination) | - | Yes (RRF, linear) | Yes (FORK/FUSE) |
+| Semantic reranking | - | Yes (`text_similarity_reranker`) | Yes (`RERANK`) |
+| Result diversification (MMR) | - | Yes (`diversify`) | Yes (`MMR`) |
+| Multi-field query format | - | Yes | - |
 | Aggregations | Yes | Yes | Yes |
-| Text generation (LLM) | — | — | Yes (`COMPLETION`) |
-| Piped transformations | — | — | Yes |
+| Text generation (LLM) | - | - | Yes (`COMPLETION`) |
+| Piped transformations | - | - | Yes |
 
 ::::{note}
 You can use the [{{es}} REST APIs]({{es-apis}}) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.

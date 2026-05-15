@@ -107,7 +107,7 @@ You can perform semantic re-ranking using either retrievers or {{esql}}.
 
 #### Use the `text_similarity_reranker` retriever
 
-Use the [retriever syntax](../retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like RRF, linear combination, or pinning.
+Use the [retriever syntax](../retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like [RRF](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever), [linear](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever), or [pinned](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever).
 
 Create a `rerank` endpoint using the [{{es}} Inference API]({{es-apis}}operation/operation-inference-put), then define a `text_similarity_reranker` retriever in your search request.
 

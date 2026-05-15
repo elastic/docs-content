@@ -135,11 +135,11 @@ Use `EMBEDDING` when you need to generate query vectors from non-text inputs, su
 
 {{esql}} provides functions for computing similarity and distance between dense vectors:
 
-- [`V_COSINE`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_cosine.md) — cosine similarity
-- [`V_DOT_PRODUCT`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_dot_product.md) — dot product
-- [`V_L1_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l1_norm.md) — Manhattan distance
-- [`V_L2_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l2_norm.md) — Euclidean distance
-- [`V_HAMMING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_hamming.md) — Hamming distance
+- [`V_COSINE`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_cosine.md): cosine similarity
+- [`V_DOT_PRODUCT`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_dot_product.md): dot product
+- [`V_L1_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l1_norm.md): Manhattan distance
+- [`V_L2_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l2_norm.md): Euclidean distance
+- [`V_HAMMING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_hamming.md): Hamming distance
 
 These functions are useful for custom scoring logic, comparing query vectors against stored embeddings, or building custom reranking pipelines using `EVAL`.
 
