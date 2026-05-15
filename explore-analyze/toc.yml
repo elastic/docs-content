@@ -380,6 +380,11 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/kibana-alerting-experimental/alerts.md
+        children:
+          - file: alerting/kibana-alerting-experimental/alerts/view-and-manage-alerts.md
+          - file: alerting/kibana-alerting-experimental/alerts/alert-states-and-fields-reference.md
+          - file: alerting/kibana-alerting-experimental/alerts/query-alerts-and-signals-in-discover.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
