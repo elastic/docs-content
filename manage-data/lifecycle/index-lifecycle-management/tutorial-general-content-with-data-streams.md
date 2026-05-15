@@ -104,7 +104,7 @@ Disable **Use recommended defaults** to adjust these values and roll over when t
 
 :::{tab-item} API
 :sync: api
-Use the API to create a lifecyle policy:
+Use the API to create a lifecycle policy:
 ```console
 PUT _ilm/policy/indextods
 {

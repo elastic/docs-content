@@ -14,6 +14,11 @@ Elastic's diagnostic tools capture point-in-time snapshots of {{fleet}} and {{ag
 
 Their information can be used to troubleshoot problems with your setup. You can generate diagnostic information using this tool before [escalating to us](/troubleshoot/ingest/fleet/fleet-elastic-agent.md#troubleshooting-intro-escalate) to minimize turnaround time.
 
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
+
 ## Which information do I need? [agent-diagnostic-type]
 
 For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md) and [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md), the related settings and states can be surfaced by:

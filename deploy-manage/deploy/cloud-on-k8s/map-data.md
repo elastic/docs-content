@@ -10,11 +10,6 @@ products:
 
 # Map data [k8s-maps-data]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 The Elastic Maps Server Docker image contains only a few zoom levels of data. To get the map data up to the highest zoom level, Elastic Maps Server needs a basemap file mounted into its container.
 
 ## Basemap download [k8s-maps-basemap-download]

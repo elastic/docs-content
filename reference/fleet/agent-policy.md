@@ -104,6 +104,9 @@ To add a new integration to one or more {{agent}} policies:
     1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
     2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
+    ::::{include} _snippets/version-specific-policy-integration-warning.md
+    ::::
+
 7. Click **Save and continue** to confirm your settings.
 
 This action installs the integration and adds it to the {{agent}} policies that you specified. {{fleet}} distributes the new integration policy to all {{agent}}s that are enrolled in the agent policies.
@@ -138,12 +141,17 @@ You can apply policies to one or more {{agent}}s. To apply a policy:
 
 3. Select the {{agent}} policy from the dropdown list, and click **Assign policy**.
 
-The {{agent}} status indicator and {{agent}} logs indicate that the policy is being applied. It may take a few minutes for the policy change to complete before the {{agent}} status updates to "Healthy".
+The {{agent}} status indicator and {{agent}} logs indicate that the policy is being applied. It might take a few minutes for the policy change to complete before the {{agent}} status updates to **Healthy**.
 
+:::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+When you assign an agent to a policy that contains an integration with a minimum {{agent}} version requirement, {{fleet}} automatically reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This typically happens within a minute.
+:::
 
 ## Edit or delete an integration policy [policy-edit-or-delete]
 
-Integrations can easily be reconfigured or deleted. To edit or delete an integration policy:
+Integrations can be reconfigured or deleted. To edit or delete an integration policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to edit or delete.
 2. Search or scroll to a specific integration. Open the **Actions** menu and select **Edit integration** or **Delete integration**.
@@ -190,7 +198,7 @@ To add a custom field:
 4. Specify a field name and value.
 
     :::{image} images/agent-policy-custom-field.png
-    :alt: Sceen capture showing the UI to add a custom field and value
+    :alt: Screen capture showing the UI to add a custom field and value
     :screenshot:
     :::
 
