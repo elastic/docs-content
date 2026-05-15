@@ -68,7 +68,7 @@ Audit logs are disabled by default and must be explicitly enabled.
 :::{tip}
 :applies_to: stack: ga 9.5+
 
-Starting with {{stack}} 9.5, `xpack.security.audit.enabled` is dynamic. You can enable or disable audit logging at runtime by sending a [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) request, without restarting nodes:
+Starting with {{stack}} 9.5, `xpack.security.audit.enabled` is [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting). You can enable or disable audit logging at runtime by sending a [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API request, without restarting nodes:
 
 ```console
 PUT _cluster/settings
