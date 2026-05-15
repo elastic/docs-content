@@ -5,7 +5,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "How experimental alerting features gates notifications: which mechanisms suppress dispatch before action policies run, their scope, and when to use each."
+description: "How {{alerting-v2}} gates notifications: which mechanisms suppress dispatch before action policies run, their scope, and when to use each."
 ---
 
 # Notification gating [notification-gating]
@@ -51,6 +51,6 @@ For instructions on snoozing and unsnoozing single or multiple episodes, refer t
 
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 - **[View and manage alerts](../alerts/view-and-manage-alerts.md):** Apply gating actions (acknowledge, snooze, deactivate) from the alerts table or episode detail page.
-- **[experimental alerting features alerts](../alerts.md):** Understand alert episode lifecycle, series, and where alert data is stored.
+- **[{{alerting-v2}} alerts](../alerts.md):** Understand alert episode lifecycle, series, and where alert data is stored.
 -->
 - **[Notifications](../notifications.md):** Set up action policies that control routing, grouping, and throttle after gating.

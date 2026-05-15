@@ -5,12 +5,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Enable, disable, snooze, maintenance windows, bulk actions, and API key rotation for action policies in the experimental alerting features."
+description: "Enable, disable, snooze, maintenance windows, bulk actions, and API key rotation for action policies in the {{alerting-v2}}."
 ---
 
 # Manage action policies
 
-Managing action policies is part of the experimental alerting features in Kibana. After you create an action policy, you can control when it runs, pause it temporarily, and keep its credentials current. This page covers those management tasks.
+Managing action policies is part of the {{alerting-v2}} in Kibana. After you create an action policy, you can control when it runs, pause it temporarily, and keep its credentials current. This page covers those management tasks.
 
 ## Enable, snooze, and maintenance
 

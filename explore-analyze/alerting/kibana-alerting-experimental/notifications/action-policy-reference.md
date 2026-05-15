@@ -5,13 +5,13 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Grouping modes, frequency options, dispatch outcomes, and matcher field reference for action policies in the experimental alerting features."
+description: "Grouping modes, frequency options, dispatch outcomes, and matcher field reference for action policies in the {{alerting-v2}}."
 ---
 
 # Action policy reference [action-policy-reference]
 
 
-Action policies are part of the experimental alerting features in Kibana. Use this page when building action policies. Below, you will find details about valid matcher fields, grouping modes and frequency options, dispatch outcome, and more. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
+Action policies are part of the {{alerting-v2}} in Kibana. Use this page when building action policies. Below, you will find details about valid matcher fields, grouping modes and frequency options, dispatch outcome, and more. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 
 ## Matcher fields [matcher-fields]
 

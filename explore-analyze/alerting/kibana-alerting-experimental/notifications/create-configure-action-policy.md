@@ -5,13 +5,13 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Create action policies in the experimental alerting features, configure matchers, Dispatch per, Frequency, and workflow destinations."
+description: "Create action policies in the {{alerting-v2}}, configure matchers, Dispatch per, Frequency, and workflow destinations."
 ---
 
 # Create and configure an action policy [create-manage-action-policies]
 
 
-Action policies are part of the experimental alerting features in Kibana. Rules define what counts as a problem. Action policies define what happens when a problem is detected. They determine which episodes generate notifications, how episodes batch for dispatch, **frequency** limits on notifications, and where they're routed. 
+Action policies are part of the {{alerting-v2}} in Kibana. Rules define what counts as a problem. Action policies define what happens when a problem is detected. They determine which episodes generate notifications, how episodes batch for dispatch, **frequency** limits on notifications, and where they're routed. 
 
 Because policies are separate from rules and global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
 

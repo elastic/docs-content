@@ -5,10 +5,10 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "How experimental alerting features action policies route alert episodes to notifications: matchers, grouping, frequency, and workflow destinations."
+description: "How {{alerting-v2}} action policies route alert episodes to notifications: matchers, grouping, frequency, and workflow destinations."
 ---
 
-# experimental alerting features notifications
+# {{alerting-v2-cap}} notifications
 
 After a rule produces alert episodes, action policies decide what to do about them: who gets notified, how often, and through which channel.
 
