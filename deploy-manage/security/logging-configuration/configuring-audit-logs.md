@@ -38,7 +38,6 @@ When auditing security events, a single client request might generate multiple a
 
 
 
-    :::
 
 For a complete description of event details and format, refer to the following resources:
   * [{{es}} audit events details and schema](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md)
