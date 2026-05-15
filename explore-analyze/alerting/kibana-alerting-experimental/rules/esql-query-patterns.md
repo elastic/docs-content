@@ -5,15 +5,15 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Advanced {{esql}} query patterns for rules in the experimental alerting features: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
+description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
 ---
 
-# {{esql}} query patterns for rules in the experimental alerting features [esql-query-patterns]
+# {{esql}} query patterns for rules in the {{alerting-v2}} [esql-query-patterns]
 
 
-ES|QL query patterns for rules are part of the experimental alerting features in Kibana. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
+ES|QL query patterns for rules are part of the {{alerting-v2}} in Kibana. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
 
-Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the experimental alerting features work, start with [Author rules](author-rules.md) first.
+Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2}} work, start with [Author rules](author-rules.md) first.
 
 ## Basic threshold query [threshold-query]
 

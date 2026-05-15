@@ -5,13 +5,13 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Configure rules in the experimental alerting features: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
+description: "Configure rules in the {{alerting-v2}}: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
 ---
 
-# Configure a rule in the experimental alerting features [rule-settings]
+# Configure a rule in the {{alerting-v2}} [rule-settings]
 
 
-Configuring rules is part of the experimental alerting features in Kibana. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
+Configuring rules is part of the {{alerting-v2}} in Kibana. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
 
 For query authoring, refer to [Author rules](author-rules.md).
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:

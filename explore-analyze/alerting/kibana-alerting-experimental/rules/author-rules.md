@@ -8,10 +8,10 @@ products:
 description: "Learn how to write ES|QL queries for rules. Choose a rule mode, structure a base query and alert condition, set thresholds, and assign severity levels."
 ---
 
-# Author rules for the experimental alerting features [author-rules]
+# Author rules for the {{alerting-v2}} [author-rules]
 
 
-Authoring rules is part of the experimental alerting features in Kibana. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
+Authoring rules is part of the {{alerting-v2}} in Kibana. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
 
 This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder.md), [YAML editor](create-rule-with-yaml.md), or [a Discover session](create-rule-from-discover.md).
 

@@ -11,7 +11,7 @@ description: "Create a rule with the interactive rule builder"
 # Create rules using the rule builder [create-rules-rule-builder]
 
 
-The rule builder is part of the experimental alerting features in Kibana. It is the right starting point when you're creating a rule from scratch and want inline guidance through each setting. For a full description of what each setting does, refer to [Configure a rule](configure-a-rule.md). 
+The rule builder is part of the {{alerting-v2}} in Kibana. It is the right starting point when you're creating a rule from scratch and want inline guidance through each setting. For a full description of what each setting does, refer to [Configure a rule](configure-a-rule.md). 
 
 If you already have a working query in Discover, you can [create a rule directly from there](create-rule-from-discover.md) without re-entering it. If you're managing rules as code or need to version-control rule definitions, use the [YAML editor](create-rule-with-yaml.md) instead.
 

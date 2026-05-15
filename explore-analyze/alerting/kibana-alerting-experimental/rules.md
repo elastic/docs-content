@@ -5,14 +5,14 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "What rules are in the experimental alerting features, how evaluation works, and how rules connect to alerts and notifications."
+description: "What rules are in the {{alerting-v2}}, how evaluation works, and how rules connect to alerts and notifications."
 ---
 
-# Rules in the experimental alerting features
+# Rules in the {{alerting-v2}}
 
-Rules are part of the experimental alerting features in Kibana. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
+Rules are part of the {{alerting-v2}} in Kibana. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
 
-A rule is where the experimental alerting features start. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
+A rule is where the {{alerting-v2}} start. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
 
 ## What rules do [detection-and-notification]
 

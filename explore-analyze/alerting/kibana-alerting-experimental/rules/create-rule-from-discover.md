@@ -5,13 +5,13 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Turn an {{esql}} query in Discover into a rule in the experimental alerting features with pre-filled evaluation and lookback."
+description: "Turn an {{esql}} query in Discover into a rule in the {{alerting-v2}} with pre-filled evaluation and lookback."
 ---
 
 # Create rules from Discover [create-rules-discover]
 
 
-Creating rules from Discover is part of the experimental alerting features in Kibana. Create experimental alerting rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including alert mode settings and YAML toggle, refer to [Create rules using the rule builder](create-rule-from-rule-builder.md).
+Creating rules from Discover is part of the {{alerting-v2}} in Kibana. Create experimental alerting rules directly from Discover. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including alert mode settings and YAML toggle, refer to [Create rules using the rule builder](create-rule-from-rule-builder.md).
 
 ## How it works [discover-rule-flow]
 
