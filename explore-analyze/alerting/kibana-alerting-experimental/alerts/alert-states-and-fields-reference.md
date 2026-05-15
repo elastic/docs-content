@@ -5,13 +5,13 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Reference for episode status, `.rule-events` row status, and `.alert-actions` document fields in the experimental alerting features."
+description: "Reference for episode status, `.rule-events` row status, and `.alert-actions` document fields in the {{alerting-v2}}."
 ---
 
 # Alert states and fields reference [alert-states-reference]
 
 
-Alert states and fields are part of the experimental alerting features in Kibana. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
+Alert states and fields are part of the {{alerting-v2}} in Kibana. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
 For rule evaluation fields on `.rule-events`, refer to [Rule event and field reference](../rules/rule-event-field-reference.md#rule-reference).
 -->

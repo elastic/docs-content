@@ -5,7 +5,7 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Open the experimental alerting features alert episodes table, triage actions, and episode details. Field and state tables live on a separate reference page."
+description: "Open the {{alerting-v2}} alert episodes table, triage actions, and episode details. Field and state tables live on a separate reference page."
 ---
 
 # View and manage alerts [manage-alerts]
