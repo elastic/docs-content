@@ -128,7 +128,9 @@ Some actions apply only to the specific episode you acted on. Others apply to ev
 | Edit tags | Episode |
 | Assign | Episode |
 
+<!-- TODO: Fix later
 For field definitions and state descriptions, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference).
+-->
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged and restore full sentence:
 For field definitions and state descriptions, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference). For how {{kib}} records actions in `.alert-actions` and how notification gating works, refer to [Notification gating](../notifications/notification-gating.md#notification-gating).
 -->
