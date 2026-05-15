@@ -357,7 +357,7 @@ settings:
 
 **Cause.** Your user role is missing one of the Workflows feature privileges.
 
-**Resolution.** Ensure your role has at least `All` on the **Analytics > Workflows** feature. For finer-grained access, seven granular sub-feature privileges are available: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
+**Resolution.** Ensure your role has at least `All` on the **Analytics > Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
 
 ### Workflows isn't visible in {{kib}} [workflows-ts-ui-missing]
 
