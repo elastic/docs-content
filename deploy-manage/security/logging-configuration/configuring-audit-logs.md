@@ -36,7 +36,6 @@ When auditing security events, a single client request might generate multiple a
 
 {applies_to}`stack: ga 9.5+` Starting with {{stack}} 9.5, all auditing settings are [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting), including `xpack.security.audit.enabled`. Update them with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Changes apply immediately without restarting nodes.
 
-    In {{es}}, all auditing settings are dynamic. This means you can configure them using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
     :::{note}
     :applies_to: stack: ga 9.0-9.4
