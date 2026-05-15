@@ -62,7 +62,7 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 ::::::{step} Create an API key
 
 :::{note}
-The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported — API keys with custom index-level role descriptors will return a `PermissionDenied` error. Support for index-level privilege scoping is planned for a future release.
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
 :::
 
 :::::{applies-switch}
