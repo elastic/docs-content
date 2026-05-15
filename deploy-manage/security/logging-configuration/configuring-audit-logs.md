@@ -32,7 +32,9 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
     ::::{tip}
-    :applies_to: stack: ga 9.5+
+{applies_to}`stack: ga 9.0-9.4` In these {{stack}} versions, all auditing settings except `xpack.security.audit.enabled` are [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting). You can use the [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API to configure them and updates will apply immediately without restarting nodes. Only `xpack.security.audit.enabled` is static. Set it in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node and restart those nodes to turn auditing on or off.
+
+{applies_to}`stack: ga 9.5+` Starting with {{stack}} 9.5, all auditing settings are [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting), including `xpack.security.audit.enabled`. Update them with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Changes apply immediately without restarting nodes.
 
     In {{es}}, all auditing settings are dynamic. This means you can configure them using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
