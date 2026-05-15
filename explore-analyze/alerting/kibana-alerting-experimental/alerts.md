@@ -143,7 +143,10 @@ For field definitions, refer to [Alert states and fields reference](alerts/alert
 
 Both `.rule-events` and `.alert-actions` are data streams, append-only, time-series stores optimized for writes. On every rule evaluation, {{kib}} writes a **new document** to `.rule-events` rather than updating the previous one. Each document is a point-in-time snapshot. The `episode.status` field records the lifecycle state the episode was in at that exact evaluation. Nothing is overwritten.
 
-Because every evaluation produces its own document, you can reconstruct the full history of an episode by querying all documents that share the same `episode.id`. Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover) for example queries.
+Because every evaluation produces its own document, you can reconstruct the full history of an episode by querying all documents that share the same `episode.id`.
+<!-- TODO: Uncomment after PR #6521 merges and toc.yml in this branch is updated to nest files under kibana-alerting-experimental.md. The anchor exists but can't be indexed until the toc parent chain is complete.
+Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover) for example queries.
+-->
 
 Retention is managed automatically through ILM. Older backing indices move through storage tiers and are deleted when the retention window expires. You do not need to manually remove documents. {{kib}} manages versioning, retention, and lifecycle for both streams. Do not change their mappings or index settings.
 
