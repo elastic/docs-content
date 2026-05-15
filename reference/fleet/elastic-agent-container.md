@@ -11,7 +11,7 @@ products:
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in {{k8s}}, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
 Running {{agent}} in a container is supported only in Linux environments. For this reason, we don't provide {{agent}} container images for Windows.
 
@@ -240,7 +240,6 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 You can run {{agent}} in docker-compose. The following example shows how to enroll an {{agent}}:
 
 ```yaml subs=true
-version: "3"
 services:
   elastic-agent:
     image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
@@ -271,7 +270,16 @@ Refer to [Environment variables](/reference/fleet/agent-environment-variables.md
 
 {{agent}} requires a persistent state directory to store enrollment data and application state. By default, this directory is `/usr/share/elastic-agent/state`. If you don't mount a persistent volume, the container loses its state when it's removed or restarted, and {{agent}} re-enrolls as a new agent every time it starts.
 
-To preserve agent state across container restarts, mount a named Docker volume to a directory and set the `STATE_PATH` environment variable to that path.
+To preserve agent state across container restarts, bind mount a host directory into the container and set the `STATE_PATH` environment variable to that mount point. The container runs as the non-root `elastic-agent` user (UID 1000) by default, so the host directory must be writable by that UID.
+
+First, create the host directory and set its ownership:
+
+```bash
+mkdir -p ./elastic-agent-state
+sudo chown 1000:1000 ./elastic-agent-state
+```
+
+Then start {{agent}} using one of the following examples.
 
 **`docker run` example:**
 
@@ -280,32 +288,33 @@ docker run \
   --env FLEET_ENROLL=1 \
   --env FLEET_URL=<fleet-server-host-url> \
   --env FLEET_ENROLLMENT_TOKEN=<enrollment-token> \
-  --mount source=elastic-agent-state,destination=/state \
+  --user 1000:1000 \ <1>
+  --volume "$(pwd)/elastic-agent-state:/state" \
   --env STATE_PATH=/state \
   docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
+1. Set this to the UID:GID that owns the host directory you bind-mounted. `1000:1000` is the default `elastic-agent` user inside the image, but any UID:GID works as long as it matches the directory's ownership.
+
 **Docker Compose example:**
 
 ```yaml subs=true
-version: "3"
 services:
   elastic-agent:
     image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
     container_name: elastic-agent
     restart: always
-    user: root
+    user: "1000:1000" <1>
     environment:
       - FLEET_ENROLLMENT_TOKEN=<enrollment-token>
       - FLEET_ENROLL=1
       - FLEET_URL=<fleet-server-url>
       - STATE_PATH=/state
     volumes:
-      - elastic-agent-state:/state
-
-volumes:
-  elastic-agent-state:
+      - ./elastic-agent-state:/state
 ```
+
+1. Set this to the UID:GID that owns the host directory you bind-mounted. `1000:1000` is the default `elastic-agent` user inside the image, but any UID:GID works as long as it matches the directory's ownership.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 
@@ -326,9 +335,9 @@ Running into errors with {{fleet-server}}? Check the fleet-server subprocess log
 
 ## Debugging [_debugging]
 
-You can enable a monitoring endpoint to expose resource usage and event processing data. The endpoint is compatible with {{agent}}s running in both {{fleet}} mode and Standalone mode.
+You can activate a monitoring endpoint to expose resource usage and event processing data. The endpoint is compatible with {{agent}}s running in both {{fleet}} mode and Standalone mode.
 
-Enable the monitoring endpoint in `elastic-agent.yml` on the host where the {{agent}} is installed. A sample configuration looks like this:
+Turn on the monitoring endpoint in `elastic-agent.yml` on the host where the {{agent}} is installed. A sample configuration looks like this:
 
 ```yaml
 agent.monitoring:
