@@ -380,6 +380,18 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/kibana-alerting-experimental/rules.md
+        children:
+          - file: alerting/kibana-alerting-experimental/rules/author-rules.md
+          - file: alerting/kibana-alerting-experimental/rules/esql-query-patterns.md
+          - file: alerting/kibana-alerting-experimental/rules/create-rule-from-rule-builder.md
+          - file: alerting/kibana-alerting-experimental/rules/create-rule-from-discover.md
+          - file: alerting/kibana-alerting-experimental/rules/create-rule-with-yaml.md
+            children:
+              - file: alerting/kibana-alerting-experimental/rules/yaml-rule-schema-reference.md
+          - file: alerting/kibana-alerting-experimental/rules/configure-a-rule.md
+          - file: alerting/kibana-alerting-experimental/rules/view-manage-rules.md
+          - file: alerting/kibana-alerting-experimental/rules/rule-event-field-reference.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
