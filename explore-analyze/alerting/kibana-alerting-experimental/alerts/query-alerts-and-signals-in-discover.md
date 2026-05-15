@@ -22,7 +22,9 @@ To use this page, open Discover, select {{esql}}, paste a query from the example
 <!--[CONTENT NEEDED for M2: Review and expand the query examples below once M2 field renames (`group_hash` → `series.key`, new `series.tracked_by`, `episode.severity`, `episode.severity_max`) are finalized. Add examples that take advantage of the new first-class severity and series fields.]
 -->
 
+<!-- TODO: Uncomment after PR #6521 merges and toc.yml in this branch is updated to nest files under kibana-alerting-experimental.md. The anchor exists but can't be indexed until the toc parent chain is complete.
 For field names, types, and episode fields, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference). For triage in the product UI, refer to [View, manage, and reference alerts](view-and-manage-alerts.md).
+-->
 <!-- TODO: Uncomment when PR #6523 (rules) is merged and restore full sentence:
 For field names, types, and episode fields, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference) and [Rule event and field reference](../rules/rule-event-field-reference.md#rule-reference). For triage in the product UI, refer to [View, manage, and reference alerts](view-and-manage-alerts.md).
 -->

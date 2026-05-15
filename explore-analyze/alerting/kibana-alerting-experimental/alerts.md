@@ -131,7 +131,10 @@ A rule in Detect mode only writes signals. It never opens episodes, so action po
 
 Alert events are stored in `.rule-events`. Triage actions (acknowledge, snooze, resolve) are stored in `.alert-actions`. Both are queryable in Discover.
 
-Every time you take an action on an episode — acknowledging it, snoozing it, resolving it, editing its tags — {{kib}} writes a new document to `.alert-actions`. These documents are append-only and can be queried in Discover for auditing and metrics such as mean time to acknowledge (MTTA). For field definitions, refer to [Alert states and fields reference](alerts/alert-states-and-fields-reference.md#alert-states-reference).
+Every time you take an action on an episode — acknowledging it, snoozing it, resolving it, editing its tags — {{kib}} writes a new document to `.alert-actions`. These documents are append-only and can be queried in Discover for auditing and metrics such as mean time to acknowledge (MTTA).
+<!-- TODO: Uncomment after PR #6521 merges and toc.yml in this branch is updated to nest files under kibana-alerting-experimental.md. The anchor exists but can't be indexed until the toc parent chain is complete.
+For field definitions, refer to [Alert states and fields reference](alerts/alert-states-and-fields-reference.md#alert-states-reference).
+-->
 
 <!--[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->

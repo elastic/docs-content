@@ -128,7 +128,9 @@ Some actions apply only to the specific episode you acted on. Others apply to ev
 | Edit tags | Episode |
 | Assign | Episode |
 
+<!-- TODO: Uncomment after PR #6521 merges and toc.yml in this branch is updated to nest files under kibana-alerting-experimental.md. The anchor exists but can't be indexed until the toc parent chain is complete.
 For field definitions and state descriptions, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference).
+-->
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged and restore full sentence:
 For field definitions and state descriptions, refer to [Alert states and fields reference](alert-states-and-fields-reference.md#alert-states-reference). For how {{kib}} records actions in `.alert-actions` and how notification gating works, refer to [Notification gating](../notifications/notification-gating.md#notification-gating).
 -->
