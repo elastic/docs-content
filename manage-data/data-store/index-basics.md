@@ -99,16 +99,17 @@ For the full list of available settings, refer to [Index settings](elasticsearch
 
 ## How an index stores data
 
-When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster. Each shard is a self-contained [Apache Lucene](https://lucene.apache.org/) index with practical limits on how much data it can efficiently manage, so splitting data across multiple shards keeps individual shards performant. Distributing those shards across cluster nodes adds horizontal scaling and redundancy. The right number of shards depends on your data volume, query patterns, and cluster topology — there is no single correct answer. Refer to [shard sizing and distribution recommendations](/deploy-manage/production-guidance/optimize-performance/size-shards.md#sizing-shard-guidelines) for more information and best practices.
+When you create an index, {{es}} doesn't store all its documents in a single location. Instead, it divides the index into one or more _shards_ and distributes those shards across the nodes in your cluster.
+
+::::{include} /deploy-manage/distributed-architecture/_snippets/shard-lucene-and-distribution.md
+::::
 
 You don't interact with shards directly when indexing or searching. Instead, you target the index by name and {{es}} routes the operation to the appropriate shards. However, the number and size of shards you configure affects performance and stability. Refer to [Common index design decisions](#common-index-design-decisions) for more information.
 
 A shard holds a subset of the index's documents and can independently handle indexing and search operations. Inside each shard, data is organized into immutable _segments_ that are written as documents are indexed. To learn how segments affect search availability, refer to [Near real-time search](/manage-data/data-store/near-real-time-search.md).
 
-There are two types of shards:
-
-* **Primary shards**: Every document belongs to exactly one primary shard. The number of primary shards is fixed at index creation, either through an [index template](/manage-data/data-store/templates.md) or the [`index.number_of_shards`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the create index request.
-* **Replica shards**: Copies of primary shards that provide redundancy and serve read requests. You can adjust the number of replicas at any time using the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) setting.
+::::{include} /deploy-manage/distributed-architecture/_snippets/shard-primary-replica.md
+::::
 
 By distributing shards across multiple nodes, {{es}} can scale horizontally and continue operating even when individual nodes fail. For a detailed explanation of this distributed model, refer to [](/deploy-manage/distributed-architecture.md).
 To learn how {{es}} coordinates reads and writes across primary and replica shards, refer to [Reading and writing documents](/deploy-manage/distributed-architecture/reading-and-writing-documents.md).

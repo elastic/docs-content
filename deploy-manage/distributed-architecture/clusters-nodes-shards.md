@@ -17,14 +17,13 @@ Nodes and shards are what make {{es}} distributed and scalable. These concepts a
 * **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
 ::::
 
-You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all of the available nodes.
+You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all available nodes.
+{{es}} does that in part by subdividing each index into one or more *shards*.
 
-Elastic is able to distribute your data across nodes by subdividing an index into *shards*. Each index in {{es}} is a grouping of one or more physical shards, where each shard is a self-contained Lucene index containing a subset of the documents in the index. By distributing the documents in an index across multiple shards, and distributing those shards across multiple nodes, {{es}} increases indexing and query capacity.
+::::{include} _snippets/shard-lucene-and-distribution.md
+::::
 
-There are two types of shards: *primaries* and *replicas*. Each document in an index belongs to one primary shard. A replica shard is a copy of a primary shard. Replicas maintain redundant copies of your data across the nodes in your cluster. This protects against hardware failure and increases capacity to serve read requests like searching or retrieving a document.
-
-::::{tip}
-The number of primary shards in an index is fixed at the time that an index is created, but the number of replica shards can be changed at any time, without interrupting indexing or query operations.
+::::{include} _snippets/shard-primary-replica.md
 ::::
 
 Shard copies in your cluster are automatically balanced across nodes to provide scale and high availability. All nodes are aware of all the other nodes in the cluster and can forward client requests to the appropriate node. This allows {{es}} to distribute indexing and query load across the cluster.
