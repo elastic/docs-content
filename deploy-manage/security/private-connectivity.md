@@ -23,6 +23,13 @@ Private connectivity is a secure way for your {{ecloud}} deployments and project
 Private connection policies are a type of [network security policy](/deploy-manage/security/network-security-policies.md).
 :::
 
+## Required permissions
+
+:::{include} _snippets/network-sec-permissions.md
+:::
+
+## Available services
+
 Choose the relevant option for your cloud service provider:
 
 | Cloud service provider | Service | Applicable deployment types |

@@ -37,15 +37,14 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 :::
 
 ## Requirements
-```{applies_to}
-serverless:
-```
-The following requirements apply to the project where you want to apply an IP filter policy:
+
+:::{include} _snippets/network-sec-permissions.md
+:::
+
+The following requirements also apply to {{serverless-short}} Observability and Security projects where you want to apply an IP filter policy:
 
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
-
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
 ## Limitations
 ```{applies_to}
