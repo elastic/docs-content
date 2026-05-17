@@ -10,15 +10,15 @@ You can extend and build on the Elastic Platform in several ways. Whether you ne
 
 There are two main approaches to extending Elastic: creating standardized Integrations for data ingestion or building custom solutions by developing directly against our REST APIs.
 
-## Path 1: Create an Elastic Integration
+## Path 1: Create an Elastic integration
 
-If your primary goal is to bring a new data source into the Elastic Stack in a standardized, reusable way, building an Elastic Integration is the best path. Integrations are pre-packaged assets that make it simple for users to collect and process data from a specific service or platform.
+If your primary goal is to bring a new data source into the Elastic Stack in a standardized, reusable way, building an Elastic integration is the best path. Integrations are pre-packaged assets that make it efficient for users to collect and process data from a specific service or platform.
 
 This approach is ideal for shipping data, logs, metrics, and traces. By building an integration, you contribute to the ever-growing ecosystem that both you and the community can benefit from.
 
-* Integrations are built on a consistent framework, providing users with a turnkey experience, including dashboards, visualizations, and alerts.  
+* We build integrations on a consistent framework, providing users with a turnkey experience, including dashboards, visualizations, and alerts.  
 * **`elastic-package`** is a command-line tool that is your primary interface for creating, testing, and packaging your integration. It scaffolds the entire project structure, letting you focus on the logic for data collection.  
-* Your integration will run on the Elastic Agent, our single, unified agent for data shipping.
+* Your integration runs on the Elastic Agent, our single, unified agent for data shipping.
 
 **When to choose this path**
 
@@ -34,14 +34,14 @@ For complete control and custom development, you can interact directly with Elas
 
 * The APIs provide direct access to the core capabilities of Elasticsearch and Kibana. If you can do it in the UI, you can automate it with the API.  
 * Elastic provides and supports official [clients](/reference/elasticsearch-clients/index.md) for popular languages like Java, Go, .NET, PHP, Python, Ruby, and JavaScript. These clients simplify interacting with the API, handling requests, and processing responses.
-* The APIs are secured using role-based access control (RBAC). You can create API keys or use bearer tokens with fine-grained permissions to ensure your interactions are safe.
+* Role-based access control (RBAC) secures the APIs. You can create API keys or use bearer tokens with fine-grained permissions to ensure your interactions are safe.
 
 ### Elastic APIs at a glance
 
 * Use the Elasticsearch APIs to:
 
-  * Create, read, update, and delete documents.  
-  * Perform everything from simple keyword searches to complex analytical aggregations.  
+  * Create, read, update, and remove documents.  
+  * Perform everything from efficient keyword searches to complex analytical aggregations.  
   * Monitor cluster health, manage nodes, and configure settings.  
   * Manage users, roles, and API keys.  
 
