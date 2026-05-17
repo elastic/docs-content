@@ -359,7 +359,7 @@ $$$azure-integration-monitor$$$How do I monitor my existing Azure services?
 
 
 ::::{note}
-If you want to send platform logs to a deployment that has [network security policies](/deploy-manage/security/network-security.md) applied, then you need to contact [the Elastic Support Team](#azure-integration-support) to perform additional configurations. Refer support to the article [Azure++ Resource Logs blocked by Traffic Filters](https://support.elastic.co/knowledge/18603788).
+If you want to send platform logs to a deployment that has [network security policies](/deploy-manage/security/network-security.md) applied, then you need to contact [the Elastic Support Team](#azure-integration-support) to perform additional configurations. Refer support to the article [ECH: Azure Native ISV Resource Logs blocked by Traffic Filters](https://support.elastic.co/knowledge/18603788).
 
 ::::
 
