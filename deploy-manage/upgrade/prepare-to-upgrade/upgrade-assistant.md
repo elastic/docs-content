@@ -24,6 +24,10 @@ Running the latest patched version of 8.19 will apply latest version of the upgr
 
 The assistant identifies deprecated settings in your configuration, and if any of those settings are enabled, it guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing options to reindex older indices or mark them as read-only. 
 
+:::{tip}
+If errors occur, the UI will surface buttons to sub-modules with more troubleshooting information for you to investigate. Refer to [Troubleshoot Upgrade Assistant](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md) for common issues.
+:::
+
 ## Required permissions [_required_permissions_11] 
 
 To access the Upgrade Assistant, you need the `manage` cluster privilege. 
