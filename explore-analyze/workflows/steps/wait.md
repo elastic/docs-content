@@ -82,6 +82,7 @@ Wait for one minute after the API call completes:
 steps:
   - name: api-call
     type: http
+    with: {}
     on-failure:
       retry:
         max-attempts: 3

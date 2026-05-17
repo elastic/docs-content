@@ -31,11 +31,12 @@ Streams action steps, along with the Streams feature itself, are in technical pr
 
 ## `kibana.streams.list` [kibana-streams-list]
 
-List every available stream in the current {{kib}} space. This step takes no parameters.
+List every available stream in the current {{kib}} space. This step takes no step-specific parameters, but every workflow step requires a `with` block, so pass an empty `with: {}`.
 
 ```yaml
 - name: list_streams
   type: kibana.streams.list
+  with: {}
 ```
 
 ## `kibana.streams.get` [kibana-streams-get]

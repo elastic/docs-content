@@ -19,12 +19,13 @@ The `loop.continue` step skips the rest of the current iteration in the innermos
 
 ## Parameters
 
-`loop.continue` takes no parameters.
+`loop.continue` takes no step-specific parameters; only the standard `name`, `type`, and `with` fields required on every step.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `name` | top level | string | Yes | Unique step identifier. |
 | `type` | top level | string | Yes | Must be `loop.continue`. |
+| `with` | top level | object | Yes | Pass `{}` (empty object). Every workflow step requires a `with` block, even when the step has no `with`-level parameters. |
 
 ## Example: Skip benign alerts
 
@@ -39,6 +40,7 @@ The `loop.continue` step skips the rest of the current iteration in the innermos
       steps:
         - name: next
           type: loop.continue
+          with: {}
 
     - name: enrich
       type: virustotal.scanFileHash

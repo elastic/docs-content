@@ -254,6 +254,7 @@ Parse a JSON string into an object.
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `source` | top level | string | Yes | JSON string to parse. |
+| `with` | top level | object | Yes | Pass `{}` (empty object). Every workflow step requires a `with` block, even when the step has no `with`-level parameters. |
 
 ```yaml
 - name: parse_payload
