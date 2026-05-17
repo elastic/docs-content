@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -68,7 +68,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** > **Detection rules (SIEM)**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** > **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]

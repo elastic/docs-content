@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-protection-rules.html
   - https://www.elastic.co/guide/en/serverless/current/endpoint-protection-rules.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -54,7 +54,7 @@ If you choose to use the feature-specific protection rules, we recommend that yo
 ::::
 
 
-To use these rules, you need to manually enable them from the **Rules** page in the {{security-app}}. Follow the instructions for [installing and enabling Elastic prebuilt rules](../detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules).
+To use these rules, you need to manually enable them from the **{{siem-rules-ui}}** page in the {{security-app}}. Follow the instructions for [installing and enabling Elastic prebuilt rules](../detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules).
 
 
 ## Endpoint security exception handling [_endpoint_security_exception_handling]

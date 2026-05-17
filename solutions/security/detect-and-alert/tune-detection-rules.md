@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/tuning-detection-signals.html
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -31,7 +31,7 @@ Organizations frequently use uncommon and in-house applications. Occasionally, t
 
 For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](detection-rules://rules/windows/defense_evasion_unusual_dir_ads.md) rule from producing alerts for an in-house application named `myautomatedbuild`:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, search for and then click on the **Unusual Process Execution Path - Alternate Data Stream** rule.
 
     The **Unusual Process Execution Path - Alternate Data Stream** rule details page is displayed.

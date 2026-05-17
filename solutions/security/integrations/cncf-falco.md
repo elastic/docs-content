@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-falco.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-falco.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
@@ -31,9 +31,8 @@ In {{elastic-sec}}:
 
 Next, to make alerts from Falco appear on {{elastic-sec}}'s Alerts page:
 
-1. Find the **Rules** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Detection rules (SIEM)**.
-3. Search for a rule called `External Alerts`. Install it if necessary, and enable it.
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for a rule called `External Alerts`. Install it if necessary, and enable it.
 
 
 ## Configure Falco and Falcosidekick [ingest-falco-setup-falco]
