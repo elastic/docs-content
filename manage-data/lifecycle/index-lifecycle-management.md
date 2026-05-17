@@ -33,16 +33,16 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
 
 * You can use {{ilm-init}} to manage indices and data streams:
 
-    * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
+  * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
 
-    * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
+  * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
 
 * {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data lifecycle option.
 
     :::{admonition} Simpler lifecycle management in Serverless environments
     {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, data stream lifecycle is available as a data management option.
 
-    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
+    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without authoring full phase-by-phase {{ilm-init}} policies across [data tiers](/manage-data/lifecycle/data-tiers.md). For more detail, refer to [Data lifecycle](/manage-data/lifecycle.md).
     :::
 
 ## Index lifecycle actions
