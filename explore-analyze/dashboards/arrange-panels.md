@@ -11,7 +11,7 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
-Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, loads faster, and helps viewers locate important information more quickly.
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, your dashboard becomes easier to read, loads faster, and helps viewers locate important information more quickly. For panel sizing recommendations and layout patterns, refer to [Best practices for creating dashboards](dashboards-best-practices.md).
 
 ## Requirements [arrange-panels-requirements]
 
@@ -68,7 +68,7 @@ Compare the data in your panels side-by-side, organize panels by priority, resiz
 In the application menu, click **Edit**, then use the following options:
 
 * To move, hover over the panel, click and hold ![The move control icon](/explore-analyze/images/kibana-move-control.png "The move control icon =4%x4%") and drag to the new location. Your screen scrolls automatically when you drag above or below the visible parts of the dashboard.
-* To resize, click and hold the bottom right corner of the panel and drag to the new dimensions.
+* To resize, click and hold the bottom right corner of the panel and drag to the new dimensions. Panels snap to a 48-column grid; for reference widths and sizing recommendations, refer to [Best practices for creating dashboards](dashboards-best-practices.md#dashboard-grid).
 * To maximize to full screen, open the panel menu and click **Maximize**.
 
   ::::{tip}

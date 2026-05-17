@@ -61,6 +61,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Region maps are choropleth maps, where color represents data values. Be aware that larger regions can visually dominate, even if their values are smaller.
 
 Refer to [Region map chart settings](#region-map-chart-settings) to find all configuration options for your region map chart.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 :::::
 
 :::::{step} Save the chart

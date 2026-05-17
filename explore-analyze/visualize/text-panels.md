@@ -12,6 +12,8 @@ products:
 
 To provide context to your dashboard panels, add **Text** panels that display important information, instructions, images, and more. You can create **Text** panels using GitHub-flavored Markdown text.
 
+For guidance on when to use a text panel and when to reach for [collapsible sections](/explore-analyze/dashboards/arrange-panels.md#collapsible-sections) or descriptive panel titles instead, refer to [Best practices for creating dashboards](/explore-analyze/dashboards/dashboards-best-practices.md#choose-panel-type).
+
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can also save a Markdown panel to the **Visualize Library** to reuse it across multiple dashboards. For details, refer to [Save and reuse Markdown panels across dashboards](#markdown-library-reuse).
 
 ## Create a Markdown panel [create-markdown-panel]

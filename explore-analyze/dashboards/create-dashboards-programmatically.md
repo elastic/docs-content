@@ -43,6 +43,8 @@ Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-pan
 
 Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements.
 
+When you set panel coordinates by hand, the dashboard editor's automatic packing no longer applies. For guidance on panel sizing, grid packing, and information hierarchy, refer to [Best practices for creating dashboards](dashboards-best-practices.md).
+
 ## Visualizations API [lens-visualizations-api]
 ```{applies_to}
 stack: preview 9.4+

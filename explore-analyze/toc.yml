@@ -283,6 +283,7 @@ toc:
           - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
+          - file: dashboards/dashboards-best-practices.md
           - file: dashboards/duplicate-dashboards.md
           - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md

@@ -66,6 +66,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Keep labels inside or close to slices when possible. For charts with many small slices or long labels, use the legend instead.
 
 Refer to [Pie chart settings](#pie-chart-settings) to find all configuration options for your pie chart.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 :::::
 
 :::::{step} Save the chart

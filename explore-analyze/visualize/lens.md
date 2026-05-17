@@ -19,6 +19,8 @@ Data views are created automatically if you [upload a file](/manage-data/ingest/
 
 Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
 
+For panel titles, axis labels, and dashboard sizing recommendations, refer to [Best practices for creating dashboards](/explore-analyze/dashboards/dashboards-best-practices.md).
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
 :::

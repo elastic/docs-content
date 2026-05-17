@@ -77,6 +77,8 @@ Tweak the appearance of the table to your needs. Consider the following best pra
 :   Adjust table density based on your use case. Use **Compact** for fitting more rows, **Expanded** for better readability.
 
 Refer to [](#settings) for a complete list of options.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 ::::
 
 ::::{step} Save the table

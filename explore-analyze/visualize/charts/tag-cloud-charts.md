@@ -61,6 +61,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use colors to add meaning (categories) or keep them neutral to focus attention on size differences.
 
 Refer to [Tag cloud chart settings](#tag-cloud-chart-settings) to find all configuration options for your tag cloud chart.
+
+For dashboard-wide guidance on panel sizing, layout, and titling, refer to [Best practices for creating dashboards](../../dashboards/dashboards-best-practices.md).
 :::::
 
 :::::{step} Save the chart
