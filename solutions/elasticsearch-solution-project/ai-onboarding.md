@@ -11,6 +11,13 @@ products:
 
 # AI onboarding in {{es}} projects
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/blob/main/skills/elasticsearch/elasticsearch-onboarding
+This skill guides users through search concepts and helps create a working search use case.
+
+`npx skills add elastic/agent-skills@elasticsearch-onboarding`
+:::
+
 **AI onboarding** is a skill you can invoke in your IDE, CLI, or directly within your Elastic deployment using [](/explore-analyze/ai-features/elastic-agent-builder.md). This skill enables an AI agent to guide you from an initial idea for your use case to a working search experience, using natural language.
 
 The agent asks what you’re building, understands your data, recommends the right approach, and generates a working implementation. This helps you get started immediately without reading documentation or creating templates.
@@ -45,11 +52,10 @@ Install Elastic onboarding skills in your preferred coding assistant (for exampl
 1. Click **Copy prompt**.
 2. Copy the generated prompt.
 
-  :::{image} /solutions/images/ai-onboarding-copy-prompt.png
-  :alt: AI onboarding prompt
-  :screenshot:
-  :::
-3. Paste the prompt into your coding agent to install the onboarding skills.
+:::{image} /solutions/images/ai-onboarding-copy-prompt.png
+:alt: AI onboarding prompt
+:screenshot:
+::: 3. Paste the prompt into your coding agent to install the onboarding skills.
 
 Once installed, your coding agent can guide you through the onboarding flow.
 
@@ -60,11 +66,10 @@ You can start onboarding directly in Elastic using the [Agent Builder](/explore-
 1. Click **Open Elastic AI Agent**.
 2. A chat interface opens.
 
-  :::{image} /solutions/images/ai-onboarding-chat.png
-  :alt: AI onboarding chat
-  :screenshot:
-  :::
-3. Describe what you want to build.
+:::{image} /solutions/images/ai-onboarding-chat.png
+:alt: AI onboarding chat
+:screenshot:
+::: 3. Describe what you want to build.
 
 The agent asks about your use case and data, recommends an appropriate search approach, guides you through mappings and setup, and generates a working implementation.
 
