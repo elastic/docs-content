@@ -5,8 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-billing-stop-project.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless

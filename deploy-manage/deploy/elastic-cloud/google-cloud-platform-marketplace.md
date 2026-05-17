@@ -14,12 +14,15 @@ products:
 
 Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic draws against your cloud purchase commitment.
 
+If you already have an {{ecloud}} trial, you can [convert it to a GCP Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new organization through the GCP Marketplace.
+
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
 * New {{ecloud}} customers obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.
 * Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
+% is this still true?
 ::::{important} 
 Only one {{ecloud}} organization can be subscribed through GCP Marketplace per GCP billing account.
 ::::
@@ -34,8 +37,8 @@ To subscribe to {{ecloud}} through the GCP Marketplace:
 5. When you are presented with a pop-up that specifies that "Your order request has been sent to Elastic" choose **Sign up with Elastic** to continue.
 6. After choosing to sign up, a new window will appear. Do one of the following:
 
-    * Create a new, unique user account for an {{ecloud}} {{ecloud}} organization.
-    * Log in with an existing user account that’s associated with an {{ecloud}} trial. This links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization.
+    * Create a new, unique user account for an {{ecloud}} organization.
+    * Log in with an existing user account. If the account is associated with an {{ecloud}} trial, it links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization. [Learn more](marketplace-trial-conversion.md).
 
 7. After signing up, check your inbox to verify the email address you signed up with. Upon verification, you will be asked to create a password, and once created your organization will be set up and you will be logged into it.
 

@@ -4,6 +4,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-work-with-apis.html
 products:
   - id: cloud-hosted
+applies_to:
+  deployment:
+    ech: ga
+  serverless: ga
 ---
 
 # Tools and APIs for your Cloud organization [ec-work-with-apis]
