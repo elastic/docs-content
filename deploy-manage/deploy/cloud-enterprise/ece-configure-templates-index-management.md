@@ -29,7 +29,7 @@ Index curation (Curator) {applies_to}`stack: deprecated 6.7`
     If your users need to delete indices once they are no longer useful to them, they can run [Curator](curator://reference/index.md) on-premise to manage indices for {{es}} clusters hosted on {{ece}}.
 
     ::::{note}
-    Index curation has been deprecated in favor of [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md). For {{stack}} version 6.7 and later, any deployments using index curation will be prompted to [migrate to ILM](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md).
+    Index curation has been deprecated in favor of [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md). For {{stack}} version 6.7 and later, any deployments using index curation will be prompted to [migrate to ILM](/migrate/data-management/to-ilm.md).
     ::::
 
 
@@ -49,7 +49,7 @@ stack: deprecated 6.7
 ```
 
 ::::{note}
-Index curation has been deprecated in favor of [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md). For {{stack}} version 6.7 and later, any deployments using index curation will be prompted to [migrate to ILM](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md).
+Index curation has been deprecated in favor of [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md). For {{stack}} version 6.7 and later, any deployments using index curation will be prompted to [migrate to ILM](/migrate/data-management/to-ilm.md).
 ::::
 
 To configure index curation as part of your deployment template:

@@ -3,9 +3,6 @@ toc:
   - file: fleet-agent-serverless-restrictions.md
   - file: beats-agent-comparison.md
   - file: elastic-agent-as-otel-collector.md
-  - file: migrate-from-beats-to-elastic-agent.md
-    children:
-      - file: migrate-auditbeat-to-agent.md
   - file: deployment-models.md
     children:
       - file: fleet-server.md

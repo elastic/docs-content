@@ -79,7 +79,7 @@ or which features may be relevant to you? Continue to the next topic to view our
 
 Use these resources to learn more about {{elastic-sec}} or get started in a different way.
 
-* Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](../security/get-started/automatic-migration.md). 
+* Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](/solutions/security/get-started/automatic-migration.md). 
 * Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
 * Get started with [AI for Security](../security/ai.md). 
 * Learn how to use {{es}} Query Language ({{esql}}) for [security use cases](/solutions/security/esql-for-security.md). 

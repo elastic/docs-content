@@ -3,14 +3,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-create-deployment.html
 applies_to:
   deployment:
-    ece: all
+    ece: ga all
 products:
   - id: cloud-enterprise
 ---
 
 # Create a deployment
 
-An ECE deployment is a fully managed {{stack}} environment running on {{ece}}. It includes {{es}}, {{kib}}, and optional features like Machine Learning or an Integrations (Fleet & APM) Server.
+An ECE deployment is a fully managed {{stack}} environment running on {{ece}}. It includes {{es}}, {{kib}}, and optional features like {{ml-app}} or an {{integrations}} ({{fleet}} & {{product.apm}}) Server.
 
 Each deployment is based on a [deployment template](./deployment-templates.md), which defines its resources, default topology, scaling policies, and available features. Deployments can be customized based on workload requirements, snapshot settings, and security configurations.
 
@@ -43,15 +43,15 @@ To create a deployment in ECE:
 
 7. Select **Create deployment**. It takes a few minutes before your deployment gets created.
 
-    While you're waiting, you will be prompted to save the admin credentials for your deployment, which grant superuser access to {{es}}. Write down the password for the `elastic` user and keep it somewhere safe. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) at any time.
+    While you're waiting, you will be prompted to save the admin credentials for your deployment, which grant superuser access to {{es}}. Write down the password for the `elastic` user and keep it somewhere safe. These credentials also help you [add data using {{kib}}](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) at any time.
 
 8. Once the deployment is ready, select **Continue** to open the deployment’s main page.
 
-After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](../../../manage-data/migrate.md).
+After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](/migrate/elasticsearch-data/index.md).
 
 ## Next steps
 
-That’s it! Now that you are up and running, you may want to:
+Now that you are up and running, you might want to:
 
 * [Start exploring with {{kib}}](./access-kibana.md), our open-source visualization tool. If you’re not familiar with adding data, yet, {{kib}} can show you how to index your data into {{es}}.
 * [Connect your applications to {{es}}](./connect-elasticsearch.md) to start [ingesting data](../../../manage-data/ingest.md)

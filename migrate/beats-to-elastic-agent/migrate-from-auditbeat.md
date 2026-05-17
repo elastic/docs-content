@@ -10,9 +10,9 @@ products:
   - id: elastic-agent
 ---
 
-# Migrate from Auditbeat to Elastic Agent [migrate-auditbeat-to-agent]
+# Move from Auditbeat to Elastic Agent [migrate-auditbeat-to-agent]
 
-Before you begin, read [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md) to learn how to deploy {{agent}} and install integrations.
+Before you begin, read [Migrate from {{beats}} to {{agent}}](/migrate/beats-to-elastic-agent/migrate-from-beats.md) to learn how to deploy {{agent}} and install integrations.
 
 Then come back to this page to learn about the integrations available to replace functionality provided by {{auditbeat}}.
 

@@ -34,7 +34,7 @@ Ready to try [{{agent}}](/reference/fleet/index.md)? Check out the [installation
 :::{include} /manage-data/_snippets/beats.md
 :::
 
-**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/reference/fleet/migrate-from-beats-to-elastic-agent.md).
+**Best practice:** Use [{{agent}}](/reference/fleet/index.md) whenever possible. If your data source is not yet supported by {{agent}}, use {{beats}}. Check out the {{beats}} and {{agent}} [comparison](/reference/fleet/beats-agent-comparison.md) for more info. When you are ready to upgrade, check out [Migrate from {{beats}} to {{agent}}](/migrate/beats-to-elastic-agent/migrate-from-beats.md).
 
 ## OpenTelemetry (OTel) collectors [ingest-otel]
 

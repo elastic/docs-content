@@ -41,7 +41,7 @@ To configure ILM Migration in the console:
 :::
 
 :::{applies-item} ece:
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 
     On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.

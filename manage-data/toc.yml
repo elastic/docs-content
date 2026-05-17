@@ -158,17 +158,12 @@ toc:
               - file: lifecycle/index-lifecycle-management/tutorial-general-content-with-data-streams.md
               - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
           - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
-          - file: lifecycle/index-lifecycle-management/migrate-ilm.md
-            children:
-              - file: lifecycle/index-lifecycle-management/migrate-index-management.md
-              - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
-              - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
+          - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
       - file: lifecycle/data-stream.md
         children:
           - file: lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md
           - file: lifecycle/data-stream/tutorial-update-existing-data-stream.md
           - file: lifecycle/data-stream/tutorial-data-stream-retention.md
-          - file: lifecycle/data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md
       - file: lifecycle/curator.md
       - file: lifecycle/rollup.md
         children:
@@ -177,11 +172,4 @@ toc:
           - file: lifecycle/rollup/understanding-groups.md
           - file: lifecycle/rollup/rollup-aggregation-limitations.md
           - file: lifecycle/rollup/rollup-search-limitations.md
-          - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
-  - file: migrate.md
-    children:
-      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
-      - file: migrate/migrate-internal-indices.md
-      - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
-      - file: migrate/migrate-with-logstash.md  
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

@@ -14,7 +14,7 @@ products:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. [Migrate](/migrate/data-management/rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 Learn about the search constraints when querying rolled-up data. While the rollup function is flexible, the nature of summarizing data means there are some limitations. Once live data is discarded, some loss of flexibility is inevitable.
