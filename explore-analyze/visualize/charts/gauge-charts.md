@@ -91,6 +91,40 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 
 ![Example Lens gauge chart showing yearly sales goal](/explore-analyze/images/gauge-chart-scenario-goal.png "=75%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a semi-circle gauge that sums order revenue from the eCommerce sample data, providing a quick view of progress toward a sales goal.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",                                                                 <1>
+  "title": "Yearly sales goal",
+  "dataset": { "type": "index", "index": "kibana_sample_data_ecommerce", "time_field": "order_date" },
+  "filters": [],
+  "query": { "query": "" },
+  "shape": { "type": "semi_circle" },                                              <2>
+  "metric": {
+    "operation": "sum",
+    "field": "taxful_total_price",                                                 <3>
+    "label": "Revenue",
+    "format": { "type": "number" },
+    "filter": { "query": "" }
+  }
+}'
+```
+
+1. `gauge` renders a single-value chart with a colored arc or bar showing position within a range.
+2. `semi_circle` draws the gauge as a half-circle arc. Other options include `circle` and `linear`.
+3. `sum` of `taxful_total_price` tracks cumulative revenue as the gauge metric.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Configure color bands for thresholds [color-bands]
 
 Color bands help users quickly understand whether a value is within acceptable ranges.
@@ -113,6 +147,48 @@ This example shows a gauge with server response time and color-coded health indi
 
 ![Example Lens gauge chart showing average response time in milliseconds](/explore-analyze/images/gauge-chart-scenario-thresholds.png "=50%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a gauge with three color-coded threshold bands so the arc turns green, yellow, or red depending on the average byte count.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Server response time",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "shape": { "type": "semi_circle" },
+  "metric": {
+    "operation": "average",
+    "field": "bytes",
+    "label": "Avg response bytes",
+    "format": { "type": "number" },
+    "filter": { "query": "" },
+    "color": {                                                                     <1>
+      "type": "dynamic",
+      "range": "absolute",
+      "steps": [
+        { "color": "#209280", "gte": 0, "lt": 6000 },                             <2>
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }
+      ]
+    }
+  }
+}'
+```
+
+1. `color.type: "dynamic"` applies color bands based on the metric value, giving instant visual feedback on health status.
+2. Each `steps` entry defines a range and color: green for healthy (0--6000), yellow for warning (6000--8000), and red for critical (8000+).
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 ### Use dynamic bounds and goals [dynamic-bounds]
 
 Instead of entering fixed static values, you can use fields from your data to set the minimum, maximum, or goal dynamically using aggregations.
@@ -122,6 +198,38 @@ Instead of entering fixed static values, you can use fields from your data to se
 3. Optionally, do the same for **Minimum value** (for example, `Min(baseline)`) or **Goal** (for example, `Average(target)`).
 
 This approach is useful when bounds or targets vary by category, time period, or user. You can also use formulas to define dynamic bounds or goals. Refer to [Lens formulas](/explore-analyze/visualize/lens.md#lens-formulas) for more details.
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a gauge that tracks total bytes transferred, formatted in human-readable byte units. Use the Lens editor to set dynamic minimum, maximum, or goal values from your data.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Bytes vs quota",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "shape": { "type": "semi_circle" },
+  "metric": {
+    "operation": "sum",
+    "field": "bytes",
+    "label": "Total bytes",
+    "format": { "type": "bytes" },                                                <1>
+    "filter": { "query": "" }
+  }
+}'
+```
+
+1. `format.type: "bytes"` renders the metric in human-readable units (KB, MB, GB) rather than raw numbers.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
 
 ## Gauge chart settings [gauge-chart-settings]
 
@@ -228,6 +336,48 @@ The following examples show various configuration options for building impactful
 
 ![Example Lens gauge chart showing average CPU usage in percent](/explore-analyze/images/gauge-chart-example-cpu.png "=50%")
 
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a CPU-monitoring gauge with green/yellow/red threshold bands. Replace `bytes` with your actual CPU metric field (for example, `system.cpu.total.pct`).
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "CPU usage",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "shape": { "type": "semi_circle" },
+  "metric": {
+    "operation": "average",                                                        <1>
+    "field": "bytes",
+    "label": "Avg CPU %",
+    "format": { "type": "number" },
+    "filter": { "query": "" },
+    "color": {
+      "type": "dynamic",
+      "range": "absolute",
+      "steps": [                                                                   <2>
+        { "color": "#209280", "gte": 0, "lt": 6000 },
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }
+      ]
+    }
+  }
+}'
+```
+
+1. `average` computes the mean value over the time range, which is typical for monitoring metrics like CPU usage.
+2. `steps` defines three color bands -- green, yellow, and red -- so the gauge arc changes color as the value crosses thresholds.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
+
 **Disk space utilization**
 :   Display disk space usage as a percentage of capacity:
 
@@ -238,3 +388,45 @@ The following examples show various configuration options for building impactful
     * **Color bands**: 0-60% (green), 60-80% (yellow), 80-100% (red)
 
 ![Example Lens gauge chart showing disk space utilization in percent](/explore-analyze/images/gauge-chart-example-disk-space.png "=50%")
+
+:::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a disk utilization gauge with color bands that shift from green to red as usage increases. Replace the field and thresholds to match your disk metrics.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "gauge",
+  "title": "Disk space utilization",
+  "dataset": { "type": "index", "index": "kibana_sample_data_logs", "time_field": "timestamp" },
+  "filters": [],
+  "query": { "query": "" },
+  "shape": { "type": "semi_circle" },                                              <1>
+  "metric": {
+    "operation": "average",
+    "field": "bytes",
+    "label": "Disk usage %",
+    "format": { "type": "number" },
+    "filter": { "query": "" },
+    "color": {
+      "type": "dynamic",
+      "range": "absolute",
+      "steps": [
+        { "color": "#209280", "gte": 0, "lt": 6000 },
+        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
+        { "color": "#cc5642", "gte": 8000 }                                       <2>
+      ]
+    }
+  }
+}'
+```
+
+1. `semi_circle` works well for utilization gauges because the 180-degree arc mimics a traditional dial meter.
+2. The highest band has no upper limit (`lt` omitted), so any value at or above 8000 shows in red.
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::
