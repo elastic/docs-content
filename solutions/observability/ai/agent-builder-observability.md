@@ -43,6 +43,19 @@ serverless: ga
 
 When you chat with the agent from an {{observability}} UI, it uses the current page's time picker as the default time range when invoking tools, unless you specify a different range in your prompt. Outside of a UI context, tools fall back to their built-in defaults.
 
+### Synthetics monitor context
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you chat with the agent from a Synthetics monitor detail page, it automatically has access to the monitor's configuration via the `observability.monitor` context. This context is available on all monitor detail tabs (Overview, History, Errors, and Alerts), and includes:
+
+- Monitor name, type, and schedule
+- Configured locations (public and private)
+- Tags
+
 :::
 
 :::{applies-item} stack: preview =9.3, removed =9.4
