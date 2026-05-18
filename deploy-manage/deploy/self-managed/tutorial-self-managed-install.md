@@ -19,7 +19,7 @@ This tutorial demonstrates how to install and configure the latest {{version.sta
 ::::{note}
 This installation flow relies on the {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md), which secures {{es}} by default during the initial installation.
 
-If you plan to use custom certificates (for example, corporate-provided or publicly trusted certificates), or if you need to configure HTTPS for browser-to-{{kib}} communication, you can combine this tutorial with the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) at the appropriate stage of the installation.
+If you plan to use custom certificates (for example, corporate-provided or publicly trusted certificates), or if you need to configure HTTPS for browser-to-{{kib}} communication, you can combine this tutorial with [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
 
 For more details, refer to [Security overview](#security-overview).
 ::::
@@ -92,7 +92,7 @@ This tutorial results in a secure-by-default environment, but not every connecti
 
 * {{es}} uses the [automatic security setup](/deploy-manage/security/self-auto-setup.md) during the initial installation flow. This process generates certificates and enables TLS for both the transport and HTTP layers.
 * {{kib}} connects to {{es}} using the enrollment flow from the initial {{es}} setup.
-* HTTPS for browser-to-{{kib}} communication is **not configured** in this tutorial, although it is strongly recommended for production environments. This configuration is covered in the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
+* HTTPS for browser-to-{{kib}} communication is **not configured** in this tutorial, although it is strongly recommended for production environments. This configuration is covered in [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
 * {{fleet-server}} is installed using the Quick Start flow, which uses a self-signed certificate for its HTTPS endpoint.
 * {{agent}} enrolls using that Quick Start flow, which requires the install command to include the `--insecure` flag.
 
@@ -670,7 +670,7 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
     :::{note}
     The automatic setup used in this tutorial does not configure TLS certificates for browser access to {{kib}}, which is highly recommended for production environments.
 
-    To configure HTTPS for {{kib}}, refer to [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser). Alternatively, this is also covered in the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
+    To configure HTTPS for {{kib}}, refer to [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser). Alternatively, this is also covered in [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
     :::
 
 1. When {{kib}} starts, you're prompted for an enrollment token. You must generate this token in {{es}}:
@@ -702,7 +702,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}. {{fleet-se
 ::::{note}
 This tutorial uses the **Quick Start** installation flow, which generates a self-signed certificate for the {{fleet-server}} by default. For more details about **Quick Start** and **Advanced** setup options, refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md).
 
-If you want to use custom SSL/TLS certificates, continue with the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
+If you want to use custom SSL/TLS certificates, continue with [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
 ::::
 
 Before proceeding, confirm the following prerequisites:
@@ -810,7 +810,7 @@ You can install only one {{agent}} per host.
     The `--insecure` flag is required in this tutorial to allow connections to a {{fleet-server}} endpoint that uses a self-signed certificate. For related guidance, refer to [Install Fleet-managed Elastic Agents](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
     :::{tip}
-    If you want to set up secure communications using custom SSL certificates, refer to the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    If you want to set up secure communications using custom SSL certificates, refer to [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
     :::
 
     The result should look like the following:
@@ -866,7 +866,7 @@ You've successfully set up a three-node {{es}} cluster, with {{kib}}, {{fleet-se
 
 ## Next steps [install-stack-self-next-steps]
 
-Now that you've successfully configured an on-premises {{stack}}, you can learn how to customize the certificate configuration for the {{stack}} in a production environment using trusted CA-signed certificates. Refer to the follow-up tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) to learn more.
+Now that you've successfully configured an on-premises {{stack}}, you can learn how to customize the certificate configuration for the {{stack}} in a production environment using trusted CA-signed certificates. Refer to [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) to learn more.
 
 You can also start using your newly set up {{stack}} right away:
 
