@@ -23,6 +23,26 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+**Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4**
+
+**Impact**<br>
+Upgrading a cluster from 9.2.x to 9.3.x can fail if any rule (including Detection Rules and other Security rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**<br>
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+To check rule action parameter sizes before upgrading, query the `.kibana_alerting_cases_*` index directly in {{es}} and inspect the `alert.actions.params` fields for any values that approach or exceed 32,766 bytes.
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+:::
+
 :::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
 **Applies to: 9.4.0**
 
