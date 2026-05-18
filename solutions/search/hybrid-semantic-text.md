@@ -19,7 +19,7 @@ This tutorial walks you through hybrid search using the [`semantic_text`](elasti
 - Ingest documents so the same text is embedded for semantic search and available for full-text search
 - Run hybrid queries using [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md)
 
-In hybrid search, semantic retrieval scores by meaning while lexical search scores by term overlap. Combining them often results in more robust rankings than either alone.
+In hybrid search, semantic retrieval scores by meaning while lexical search scores by textual similarity. Combining them often results in more robust rankings than either alone.
 
 The recommended way to use hybrid search in the {{stack}} follows the `semantic_text` workflow: you avoid hand-building {{infer}} ingest pipelines for embeddings while still keeping a dedicated `text` field for keyword-style matching. 
 
