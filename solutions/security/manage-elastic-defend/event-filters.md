@@ -30,6 +30,8 @@ Since an event filter blocks an event from streaming to {{es}}, be conscious of 
 
 By default, event filters are recognized globally across all hosts running {{elastic-defend}}. You can also assign an event filter to a specific {{elastic-defend}} integration policy, which would filter endpoint events from the hosts assigned to that policy.
 
+## Add an event filter [add-event-filter]
+
 Create event filters from the **Hosts** page or, depending on your version, from the **Artifacts** ({applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`) or **Event filters** ({applies_to}`stack: ga 9.0-9.3`) page.
 
 1. Do one of the following:
@@ -46,11 +48,6 @@ Create event filters from the **Hosts** page or, depending on your version, from
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` To create an event filter from the **Artifacts** page, select the **Event filters** tab, then click **Add event filter**.
     * {applies_to}`stack: ga 9.0-9.3` To create an event filter from the **Event filters** page, click **Add event filter**.
 
-
-    :::{image} /solutions/images/security-event-filter.png
-    :alt: Add event filter flyout
-    :screenshot:
-    :::
 
 2. Fill in these fields in the **Details** section:
 
@@ -99,6 +96,12 @@ Create event filters from the **Hosts** page or, depending on your version, from
 6. Add a comment if you want to provide more information about the event filter (optional).
 7. Click **Add event filter**. The new filter is added to the **Event filters** list.
 
+::::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To add multiple event filters at once, you can import an NDJSON file instead. Refer to [Import and export event filters](#import-export-event-filters).
+::::
+
 
 ## View and manage event filters [manage-event-filters]
 
@@ -108,6 +111,36 @@ The **Event filters** UI displays all the event filters that have been added to 
 :alt: event filters list
 :screenshot:
 :::
+
+
+### Import and export event filters [import-export-event-filters]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To export event filters, you need the **Event Filters: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Event Filters: All** privilege.
+* To import global items, you need the **Event Filters: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export event filters as NDJSON files:
+
+- **When the list is empty**: Click **Import event filters**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import event filters** or **Export event filters**.
+
+::::{note}
+The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
+::::
+
+When you import an NDJSON file, the imported event filters are appended to your existing entries — existing entries are not removed or overwritten.
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 
 ### Edit an event filter [edit-event-filter]

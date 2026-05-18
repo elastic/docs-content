@@ -36,7 +36,7 @@ triggers:
 
 The supported units are:
 
-* Seconds: `s`  (minimum supported value: `30s`)
+* Seconds: `s`  (minimum supported value: `60s`)
 * Minutes: `m`
 * Hours: `h`
 * Days: `d`
