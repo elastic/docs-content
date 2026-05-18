@@ -111,7 +111,7 @@ POST /_security/api_key
 }
 ```
 :::{note}
-The API key authenticates the OTLP shipper to the {{motlp}}. The `event:write` privilege for the `apm` application is the minimum required to send data through the endpoint.
+The API key authenticates the OTLP shipper to the {{motlp}}. To send data through the endpoint, the API key needs, at minimum, the `event:write` privilege for the `apm` application.
 :::
 :::
 ::::
