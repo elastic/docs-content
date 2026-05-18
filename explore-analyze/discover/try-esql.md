@@ -320,8 +320,8 @@ In this version, you cannot fully reset the index configuration. For example, yo
 
 ### Limitations [discover-esql-lookup-editor-limitations]
 
-- **Row display limit:** The lookup index editor displays up to 1,000 rows. Use the search field to find specific rows when the index contains more entries: it searches the full index, not just the visible rows.
-- **`LIMIT` command:** The `LIMIT` command in your ES|QL query has no effect on the data displayed in the lookup index editor.
+Row display limit
+:   The lookup index editor displays up to 1,000 rows. The `LIMIT` command in your ES|QL query has no effect on the data shown here. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index.
 
 ## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
