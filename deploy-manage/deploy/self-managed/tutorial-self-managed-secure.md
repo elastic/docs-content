@@ -18,23 +18,7 @@ This tutorial demonstrates how to replace the default certificates and keys from
 To review the baseline security and TLS configuration established by [Install a self-managed {{stack}}](tutorial-self-managed-install.md), including {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md) and the self-signed {{fleet-server}} certificate from the Quick Start flow, refer to [Security overview](tutorial-self-managed-install.md#security-overview).
 :::
 
-With this tutorial, you can replace or extend that default setup by generating and configuring your own certificates across the {{stack}}. For example, you might want to:
-
-- Use certificates signed by your organization's CA or a public CA for HTTP endpoints.
-- Enable HTTPS for browser-to-{{kib}} communication (**not included in the automatic security setup**).
-- Replace the default self-signed certificates generated for {{fleet-server}} and {{agent}} with your own PKI.
-
-:::{note}
-This tutorial does not cover mutual TLS authentication (mTLS) for HTTP client connections to {{es}}. If you require client certificate authentication, refer to the following documentation:
-
-- [Mutual TLS authentication between {{kib}} and {{es}}](/deploy-manage/security/kibana-es-mutual-tls.md)
-- [{{fleet}} and {{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md)
-- [{{fleet}} TLS flow (one-way and mutual TLS), including output SSL options](/reference/fleet/tls-overview.md#output-ssl-options)
-:::
-
-## Overview
-
-This tutorial is organized into the following phases:
+The tutorial is organized into the following phases:
 
 - **Configure TLS certificates for the {{es}} transport layer**
   - Generate a new certificate authority (CA) for transport
@@ -56,13 +40,25 @@ This tutorial is organized into the following phases:
   - Install {{agent}}
   - View your system data
 
-Each section is independent unless otherwise noted, so you can follow only the parts relevant to your setup.
+Each section is independent unless otherwise noted, so you can follow only the parts relevant to your setup. Estimated completion time is 90 minutes.
 
-It should take between one and two hours to complete all the steps.
+:::{note}
+This tutorial does not cover mutual TLS authentication (mTLS) for HTTP client connections to {{es}}. If you require client certificate authentication, refer to the following documentation:
+
+- [Mutual TLS authentication between {{kib}} and {{es}}](/deploy-manage/security/kibana-es-mutual-tls.md)
+- [{{fleet}} and {{agent}} deployment models with mutual TLS](/reference/fleet/mutual-tls.md)
+- [{{fleet}} TLS flow (one-way and mutual TLS), including output SSL options](/reference/fleet/tls-overview.md#output-ssl-options)
+:::
 
 ## Prerequisites and assumptions [install-stack-demo-secure-prereqs]
 
+This tutorial shares the same prerequisites as [Install a self-managed {{stack}}](tutorial-self-managed-install.md#install-stack-self-prereqs).
+
+## Before you begin 
+
 Before starting, you must have an on-premises {{es}} cluster with {{kib}} already set up, following the steps in the tutorial [Install a self-managed {{stack}}](tutorial-self-managed-install.md).
+
+### Verify existing configuration
 
 As a result of the cluster installation, all your {{es}} nodes should contain the following files under `/etc/elasticsearch/certs`:
 
@@ -107,7 +103,7 @@ xpack.security.transport.ssl.truststore.secure_password
 If your setup uses different certificate files or paths, or does not have TLS configured, you might need to adapt some of the steps in this tutorial accordingly.
 :::
 
-## Preparations [preparations]
+### Prepare the PKI host [preparations]
 
 In this tutorial, `/usr/share/elasticsearch/pki` is used as a central working directory for generating and storing certificates before distributing them to the corresponding nodes.
 
@@ -279,15 +275,15 @@ After completing this step, the following files should be present on each {{es}}
 - `/etc/elasticsearch/certs/transport_ca_new.pem`, containing the CA certificate in PEM format.
 - `/etc/elasticsearch/certs/transport_cert_new.p12`, containing the node’s transport keystore in PKCS#12 format.
 
-1. On the host used to generate all certificates (the [PKI host](#preparations)), do the following:
+1. From the host used to generate all certificates (the [PKI host](#preparations)), copy the transport CA certificate and the node certificate together to each corresponding {{es}} node:
 
-    1. Copy the transport CA certificate and the node certificate together to each corresponding {{es}} node:
+    ```sh
+    sudo scp /usr/share/elasticsearch/pki/transport/ca/ca.crt \
+      /usr/share/elasticsearch/pki/transport/<es-node-name>/<es-node-name>.p12 \
+      <user>@<node-host>:/home/user/
+    ```
 
-        ```sh
-        sudo scp /usr/share/elasticsearch/pki/transport/ca/ca.crt \
-          /usr/share/elasticsearch/pki/transport/<es-node-name>/<es-node-name>.p12 \
-          <user>@<node-host>:/home/user/
-        ```
+    Repeat this command for each node, replacing `<es-node-hostname>` and `<es-node-host>` with the corresponding values.
 
 1. On each {{es}} node, move the copied certificate files from that directory to the configuration directory:
 
@@ -315,11 +311,9 @@ There are two ways to apply the changes, depending on whether you can tolerate a
 Choose the approach that best fits your operational requirements.
 
 :::{note}
-For more information about restart procedures, refer to [Full cluster and rolling restart procedures](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md).
+In [Full cluster and rolling restart procedures](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md), you apply changes after you shut down all nodes (full-cluster restart), or after you shut down the current node (rolling restart).
 
-In this tutorial, to reduce downtime, the changes to `elasticsearch.yml` and secure settings are applied while the node is still running, as they do not take effect until restart.
-
-In the official procedures, these correspond to the step **Perform any needed changes**, but are applied here before stopping the node(s).
+In this tutorial, those changes are made before the stop and restart steps to reduce downtime. This order is acceptable when the changes do not affect the running node and only take effect after the service restart.
 :::
 
 #### Preparations for a rolling restart update [apply-rolling-preparations]
@@ -383,7 +377,7 @@ On the first {{es}} node, complete the following actions to configure it to use 
       keystore.path: certs/transport_cert_new.p12 <2>
       truststore.path: certs/transport_cert_new.p12 <3>
     ```
-    1. If you generated individual certificates for each node that include the corresponding DNS names or IP addresses, you can set the verification mode to `full`. Refer to [`xpack.security.transport.ssl.verification_mode`] parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
+    1. If you generated individual certificates for each node that include the corresponding DNS names or IP addresses, you can set the verification mode to `full`. Refer to `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
     2. If you created the certificates with different names, set them accordingly in every node.
     3. The truststore uses the same file name because the generated PKCS#12 file includes also the CA certificate.
 
@@ -440,9 +434,9 @@ On the first {{es}} node, complete the following actions to configure it to use 
       sudo tail -f /var/log/elasticsearch/elasticsearch-demo.log
       ```
 
-      Refer to [Rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) for more details.
+      Refer to [Rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) for operational guidance and additional verification steps.
 
-    - **For a full cluster restart**: Repeat the previous steps on all nodes, and once all nodes are configured, stop and start the entire cluster:
+    - **For a full-cluster restart**: Repeat the previous steps on all nodes, and once all nodes are configured, stop and start the entire cluster:
 
       To stop the cluster, run this on all nodes:
 
@@ -456,7 +450,7 @@ On the first {{es}} node, complete the following actions to configure it to use 
       systemctl start elasticsearch
       ```
 
-      Refer to [Full cluster restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-full) for more details.
+      Refer to [Full-cluster restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-full) for operational guidance and additional verification steps.
    
 ## Configure TLS certificates for the {{es}} HTTP layer [ssl-http]
 
