@@ -320,7 +320,7 @@ In this version, you cannot fully reset the index configuration. For example, yo
 
 ### Limitations [discover-esql-lookup-editor-limitations]
 
-The following limitations apply to the lookup index editor in Kibana. For general limitations of the `LOOKUP JOIN` command, refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#_limitations).
+The following limitations apply to the lookup index editor in Kibana. For general limitations of the `LOOKUP JOIN` command, refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#limitations).
 
 Row display limit
 :   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your ES|QL query has no effect on the data shown here.
