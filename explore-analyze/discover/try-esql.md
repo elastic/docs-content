@@ -193,7 +193,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
+In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor.
 
 :::{note}
 This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
