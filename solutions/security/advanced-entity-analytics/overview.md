@@ -53,10 +53,10 @@ AI-generated leads appear at the top of the page, giving threat hunters a curate
 
 Interact with this section in the following ways:
 
-* Turn **Auto-refresh** on to automatically regenerate leads every 24 hours.
-* Click **Generate** to manually trigger a new set of leads without waiting for the next automatic refresh.
-* Click a lead or click **Hunt in Chat** to open an AI-assisted investigation session in Agent Builder.
-* Click **See all** to access and search the full list of current leads.
+* Click **Generate** or **Regenerate** to manually trigger a new set of leads without waiting for the next automatic refresh.
+* Click a lead or click **Hunt with AI** to open an AI-assisted investigation session in Agent Builder.
+* Click **See recent leads** to access and search the most recent leads.
+* Click the options menu {icon}`boxes_vertical` to select a connector and toggle **Auto-generate every 24 hours** on or off.
 
 
 ## Entity risk levels [entity-risk-levels]
