@@ -77,7 +77,7 @@ deployment:
   ece: all
 ```
 
-{{es}} clusters using directly-attached (local) storage generally perform better than those using remote storage. This is typically because direct storage achieves lower latency on I/O operations. Remote storage can often achieve very high throughput, but this is less important to most {{es}} workloads than the latency on individual operations.
+{{es}} clusters using directly-attached (local) storage generally perform better than those using remote storage. Direct storage typically provides lower latency for I/O operations, which is more critical for most {{es}} workloads than the high throughput that remote storage can often achieve.
 
 Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, on certain workloads and with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine whether it will meet your performance goals. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify suitable tuning parameter values.
 
