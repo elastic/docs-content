@@ -247,7 +247,7 @@ PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
 
 Reference the `inference_id` of this endpoint in [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings, in `embedding` {{infer}} requests, or in search queries that call the endpoint.
 
-The examples below use the custom `inference_id` called `eis-jina-embeddings-v5-omni-small` that was created in the earlier PUT request. Replace it with your own `inference_id` or with the predefined endpoint name if needed.
+The examples below use the custom `inference_id` called `eis-jina-embeddings-v5-omni-nano` that was created in the earlier PUT request. Replace it with your own `inference_id` or with the predefined endpoint name if needed.
 
 
 ##### Text as a JSON array
