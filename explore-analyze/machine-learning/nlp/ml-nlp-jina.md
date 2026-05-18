@@ -31,7 +31,7 @@ Currently, the following models are available as built-in models:
 * [`jina-reranker-v2`](#jina-reranker-v2)
 
 :::{note}
-Different Jina models have different availability depending on your {{stack}} version. For which embedding models are supported in each version, refer to the [Elastic {{infer-cap}} Service supported models: embedding models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models) table.
+Jina model availability varies by {{stack}} version. Refer to the [Elastic {{infer-cap}} Service supported models: embedding models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models) table for details.
 :::
 
 ## Embedding models
