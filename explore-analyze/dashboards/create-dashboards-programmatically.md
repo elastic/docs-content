@@ -39,6 +39,8 @@ Use the Dashboards API when you need to:
 
 The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Panel types without a schema, such as Maps and Links, are not supported yet and return an error on write.
 
+Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 100 top-level items (panels and sections combined), 100 panels per section, and 100 pinned controls. Requests that exceed these limits are rejected with a validation error.
+
 Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements.
 
 ## Visualizations API [lens-visualizations-api]

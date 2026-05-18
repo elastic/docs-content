@@ -12,6 +12,15 @@ Review the changes, fixes, and more to {{serverless-full}}.
 <!-- :::{changelog} /releases
 ::: -->
 
+:::{include} _snippets/2026-05-14/index.md
+:::
+
+:::{include} _snippets/2026-05-12/index.md
+:::
+
+:::{include} _snippets/2026-05-11/index.md
+:::
+
 :::{include} _snippets/2026-05-06/index.md
 :::
 
@@ -709,6 +718,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 
 * Improves {{esql}} controls to retrieve variable types from query results, preventing query failures when numeric values are stored as keyword fields [#254436]({{kib-pull}}254436)
 * Adds a size gauge to dashboard panels while resizing, showing the current grid dimensions [#255363]({{kib-pull}}255363)
+* Enforces panel limits on dashboards: up to 100 top-level items (panels, unpinned controls, and sections combined), up to 100 panels per section, and up to 100 pinned controls [#256102]({{kib-pull}}256102)
 * Prevents time series index mode from being enabled on non-metrics data stream types in input packages [#251205]({{kib-pull}}251205)
 * Adds autocomplete and validation support for the `MMR` command in the {{esql}} editor [#254014]({{kib-pull}}254014)
 * Defaults to table view in Discover when an index or data view has five or fewer columns [#255292]({{kib-pull}}255292)
