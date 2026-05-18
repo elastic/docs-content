@@ -218,7 +218,9 @@ PUT _inference/embedding/jina-omni-small-32d
 
 ### `jina-embeddings-v5-omni-nano` [jina-embeddings-v5-omni-nano]
 
-{applies_to}`stack: ga 9.5` 
+```{applies_to}
+stack: ga 9.5
+```
 
 The `jina-embeddings-v5-omni-nano` model is a multimodal dense vector embedding model available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 It maps text, images, video, audio, and documents such as PDF into one vector space for retrieval, clustering, and similarity scoring. 
