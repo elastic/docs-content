@@ -66,13 +66,11 @@ As a result of the cluster installation, all your {{es}} nodes should contain th
 sudo ls -l /etc/elasticsearch/certs
 -rw-rw----. 1 root elasticsearch  1935 ... http_ca.crt <1>
 -rw-rw----. 1 root elasticsearch 10077 ... http.p12 <2>
--rw-r--r--. 1 root root           1931 ... transport_ca.pem <3>
--rw-rw----. 1 root elasticsearch  5838 ... transport.p12 <4>
+-rw-rw----. 1 root elasticsearch  5838 ... transport.p12 <3>
 ```
 1. HTTP CA, in PEM format
 2. HTTP keystore for the node, in PKCS#12 format, including the server certificate and key, and the HTTP CA
-3. Transport CA, in PEM format
-4. Transport keystore for the node, in PKCS#12 format, including the server certificate, the key, and the transport CA
+3. Transport keystore for the node, in PKCS#12 format, including the server certificate, the key, and the transport CA
 
 The existing `elasticsearch.yml` configuration in all nodes should include settings like the following:
 
@@ -128,7 +126,7 @@ On the PKI host, run the following commands:
 1. Install `unzip` tool, if not installed already:
 
     ```sh
-    yum install -y unzip
+    sudo yum install -y unzip
     ```
 
 ## Configure TLS certificates for the {{es}} transport layer
@@ -297,7 +295,7 @@ After completing this step, the following files should be present on each {{es}}
 
    ```shell
    sudo chown -R root:elasticsearch /etc/elasticsearch/certs/
-   sudo chmod 640 /etc/elasticsearch/certs/*
+   sudo sh -c 'chmod 640 /etc/elasticsearch/certs/*'
    sudo chmod 750 /etc/elasticsearch/certs
    ```
 
@@ -326,6 +324,25 @@ These steps are only needed if you want to apply the changes one node at a time,
 
 To prepare the cluster to trust both existing and new certificates, perform the following steps on all {{es}} nodes:
 
+1. Extract the original transport CA from the existing PKCS#12 truststore. The original CA will be needed in a later step.
+
+    ```sh
+    sudo openssl pkcs12 -in /etc/elasticsearch/certs/transport.p12 \ <1>
+      -cacerts -nokeys \
+      -out /etc/elasticsearch/certs/transport_ca_old.pem
+    ```
+    1. `transport.p12` is the name of the transport TLS truststore being used (`xpack.security.transport.ssl.truststore.path`).
+
+    When prompted, enter the truststore password. The command creates the `/etc/elasticsearch/certs/transport_ca_old.pem` file, containing the original CA in PEM format.
+
+    ::::{tip}
+    If you don't know the password of your original truststore, you can obtain it from the {{es}} secure settings with:
+
+    ```sh
+    sudo /usr/share/elasticsearch/bin/elasticsearch-keystore show xpack.security.transport.ssl.truststore.secure_password
+    ```
+    ::::
+
 1. Import the newly-created CA certificate into the existing {{es}} truststore. This step ensures that your running cluster will trust nodes presenting the new certificates:
 
     ```shell
@@ -337,31 +354,36 @@ To prepare the cluster to trust both existing and new certificates, perform the 
     1. `transport.p12` is the name of the transport TLS truststore being used (`xpack.security.transport.ssl.truststore.path`).
     2. `transport_ca_new.pem` is the newly-created transport CA, in PEM format.
 
-    ::::{tip}
-    If you don't know the password of your original truststore, you can obtain it from the {{es}} secure settings with:
-
-    ```sh
-    sudo /usr/share/elasticsearch/bin/elasticsearch-keystore show xpack.security.transport.ssl.truststore.secure_password
-    ```
-    ::::
-
-    You can verify that the new key was added to the keystore with the following command:
+    To verify that the CA was added to the truststore, run:
 
     ```shell
     sudo /usr/share/elasticsearch/jdk/bin/keytool \
       -keystore /etc/elasticsearch/certs/transport.p12 -list
     ```
 
-1. Import the original CA into the new `transport_cert_new.p12` PKCS#12 file. This step ensures that reconfigured nodes can join and communicate with existing nodes that still use the previous CA.
+    In the output, confirm that the `new-transport-ca` alias is present.
+
+1. Import the original CA into the new `transport_cert_new.p12` PKCS#12 file. This step ensures that reconfigured nodes can join and communicate with existing nodes that still use the original CA.
 
     ```shell
     sudo /usr/share/elasticsearch/jdk/bin/keytool -importcert -trustcacerts -noprompt \
       -keystore /etc/elasticsearch/certs/transport_cert_new.p12 \ <1>
-      -storepass <password> -alias old-transport-ca \
-      -file /etc/elasticsearch/certs/transport_ca.pem <2>
+      -storepass <password> -alias old-transport-ca \ <2>
+      -file /etc/elasticsearch/certs/transport_ca_old.pem <3>
     ```
     1. `transport_cert_new.p12` is the name of the new transport TLS certificate.
-    2. `transport_ca.pem` is the current transport CA being used, in PEM format.
+    2. Use the same password you used in [Step 2: Generate transport certificates](#install-stack-demo-secure-transport).
+    3. `transport_ca_old.pem` is the current transport CA being used, in PEM format.
+
+    To verify that the CA was added to the truststore, run:
+
+    ```shell
+    sudo /usr/share/elasticsearch/jdk/bin/keytool \
+      -keystore /etc/elasticsearch/certs/transport_cert_new.p12 -list
+    ```
+
+    In the output, confirm that the `old-transport-ca` alias is present.
+
 
 #### Nodes configuration [configure-es-tls-nodes]
 
@@ -421,7 +443,7 @@ On the first {{es}} node, complete the following actions to configure it to use 
 
       To restart a running node:
       ```sh
-      systemctl restart elasticsearch
+      sudo systemctl restart elasticsearch
       ```
 
       Confirm that {{es}} is running:
@@ -451,6 +473,15 @@ On the first {{es}} node, complete the following actions to configure it to use 
       ```
 
       Refer to [Full-cluster restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-full) for operational guidance and additional verification steps.
+
+1. After all {{es}} nodes are running with the new certificates, if you followed the rolling restart approach and [prepared the nodes for a rolling restart](#apply-rolling-preparations), remove the original CA (`old-transport-ca`) from the new truststore in all nodes:
+
+    ```sh
+    sudo /usr/share/elasticsearch/jdk/bin/keytool -delete \
+      -keystore /etc/elasticsearch/certs/transport_cert_new.p12 \
+      -storepass <password> \
+      -alias old-transport-ca
+    ```
    
 ## Configure TLS certificates for the {{es}} HTTP layer [ssl-http]
 
@@ -692,18 +723,11 @@ For each node in the cluster, complete this procedure, one by one:
 
 1. Verify that the restarted node rejoins the cluster by following the checks in the [rolling restart procedure](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
+    In the event of any problems, you can also monitor the {{es}} logs for any issues by tailing the {{es}} log file:
 
-    1. Run the `systemctl status` command to confirm that {{es}} is running:
-
-        ```shell
-        sudo systemctl status elasticsearch.service
-        ```
-
-        In the event of any problems, you can also monitor the {{es}} logs for any issues by tailing the {{es}} log file:
-
-        ```shell
-        sudo tail -f /var/log/elasticsearch/elasticsearch-demo.log
-        ```
+    ```shell
+    sudo tail -f /var/log/elasticsearch/elasticsearch-demo.log
+    ```
 
 1. Verify that the node responds to HTTP requests with the new CA:
 
@@ -711,6 +735,8 @@ For each node in the cluster, complete this procedure, one by one:
       curl -u elastic --cacert /etc/elasticsearch/certs/elastic-stack-http-ca.crt "https://<NODE_IP>:9200/_cat/nodes?v" <1>
       ```
       1. Use the node IP, hostname, or FQDN according to the SAN entries you included when generating the HTTP certificates.
+
+1. Continue with the next node.
 
 #### Configure {{kib}} to trust {{es}} [es-ca-kibana-trust]
 

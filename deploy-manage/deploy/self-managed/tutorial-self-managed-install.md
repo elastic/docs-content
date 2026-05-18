@@ -196,6 +196,10 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    node.name: es-node1
    ```
 
+   :::{important}
+   If you change `node.name` on the first {{es}} node, make sure to align its name with the `cluster.initial_master_nodes` setting, so the cluster can be bootstrapped.
+   :::
+
 1. Configure networking settings.
 
    1. Uncomment the line `#transport.host: 0.0.0.0` to accept connections on all available network interfaces.
