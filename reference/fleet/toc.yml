@@ -99,6 +99,10 @@ toc:
       - file: fleet-enrollment-tokens.md
       - file: fleet-api-docs.md
   - file: monitor-otel-collectors.md
+    children:
+      - file: add-otel-collector.md
+      - file: view-otel-collectors.md
+      - file: add-otel-collector-internal-telemetry.md
   - file: configure-standalone-elastic-agents.md
     children:
       - file: create-standalone-agent-policy.md

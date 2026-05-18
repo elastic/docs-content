@@ -710,7 +710,7 @@ Your OTel Collector is running but doesn't appear in the {{fleet}} **Agents** li
    - The enrollment API key is correct
 
    :::{note}
-   On {{ech}} and {{serverless-short}} {{observability}} projects, the {{fleet-server}} URL is provided by the platform. Find it in the **Add collector** flyout in {{fleet}}, or in the **Fleet Server hosts** section on the **Fleet** > **Settings** page. For example, `https://<fleet-server-host-url>/v1/opamp`.
+   On {{ech}} and {{serverless-short}} {{observability}} projects, the {{fleet-server}} URL is provided by the platform. Find it in the **Add collector** flyout in {{fleet}}, or in the **Fleet Server hosts** section on the **Fleet** → **Settings** page. For example, `https://<fleet-server-host-url>/v1/opamp`.
    :::
 
 2. Check the collector logs for OpAMP errors:
@@ -780,7 +780,7 @@ Internal telemetry uses a self-loop pattern: the collector emits its own metrics
            endpoint: 0.0.0.0:4317
    ```
 
-3. Add an exporter that sends telemetry to your {{es}} backend. If your collector already exports telemetry, you can reuse the existing exporter — just add the OTLP receiver to its pipelines. Otherwise, configure the `elasticsearch/otel` exporter:
+3. Add an exporter that sends telemetry to your {{es}} backend. If your collector already exports telemetry, you can reuse the existing exporter and add the OTLP receiver to its pipelines. Otherwise, configure the `elasticsearch/otel` exporter:
 
    ```yaml
    exporters:
@@ -1000,7 +1000,7 @@ service:
 Using `insecure_skip_verify: true` skips TLS certificate verification and makes your connection vulnerable to man-in-the-middle attacks. Only use this for testing in isolated environments.
 :::
 
-For more details on TLS configuration, refer to [Configure TLS for Fleet Server connection](/reference/fleet/monitor-otel-collectors.md#configure-tls-for-fleet-server-connection).
+For more details on TLS configuration, refer to [Configure TLS for Fleet Server connection](/reference/fleet/add-otel-collector.md#configure-tls-for-fleet-server-connection).
 
 
 ## Elastic Cloud and Kibana
