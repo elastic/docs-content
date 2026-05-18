@@ -78,10 +78,15 @@ user,,bob.smith,user:bob@acme.com@active_directory
 5. Confirm to apply the links.
 
 ::::{note}
-Bulk unlinking is not available in the UI; use the API instead.
+Bulk unlinking is not available in the UI; use the [Entity store API]({{kib-apis}}operation/operation-post-security-entity-store-resolution-unlink) instead.
 ::::
 
 ### Manage resolution groups from the entity flyout [entity-resolution-flyout]
 
 You can view, add to, and remove entities from a resolution group directly from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution). The flyout's **Resolution group** tab shows all linked records and lets you search for entities to add, or remove individual aliases.
+
+:::{image} /solutions/images/security-resolution-from-flyout.png
+:alt: Resolution group tab on the entity details flyout
+:screenshot:
+:::
 

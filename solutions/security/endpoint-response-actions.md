@@ -282,7 +282,7 @@ Examples:
 #### {{elastic-defend}} [runscript-defend]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: unavailable
+serverless: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
