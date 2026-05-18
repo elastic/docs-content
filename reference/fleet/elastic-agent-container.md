@@ -19,7 +19,7 @@ In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have
 
 Considerations:
 
-* When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded.
+* When {{agent}} runs inside a container, it cannot be upgraded through {{fleet}} as it expects that the container itself is upgraded. For a summary of upgrade support across all install methods, see [Restrictions](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
 * Enrolling and running an {{agent}} is usually a two-step process. However, this doesn’t work in a container, so a special subcommand, `container`, is called. This command allows environment variables to configure all properties, and runs the `enroll` and `run` commands as a single command.
 
 
