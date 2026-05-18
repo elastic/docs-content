@@ -1,4 +1,18 @@
 redirects:
+  # migration hub — files moved from scattered locations
+  'reference/fleet/migrate-from-beats-to-elastic-agent.md': 'migrate/beats-to-elastic-agent/migrate-from-beats.md'
+  'reference/fleet/migrate-auditbeat-to-agent.md': 'migrate/beats-to-elastic-agent/migrate-from-auditbeat.md'
+  'manage-data/migrate.md': 'migrate/elasticsearch-data/index.md'
+  'manage-data/migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md': 'migrate/elasticsearch-data/cluster-to-cluster.md'
+  'manage-data/migrate/migrate-with-logstash.md': 'migrate/elasticsearch-data/with-logstash.md'
+  'manage-data/migrate/migrate-internal-indices.md': 'migrate/elasticsearch-data/system-indices.md'
+  'manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md': 'migrate/elasticsearch-data/remote-reindex.md'
+  'manage-data/lifecycle/index-lifecycle-management/migrate-ilm.md': 'migrate/data-management/index.md'
+  'manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md': 'migrate/data-management/to-ilm.md'
+  'manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md': 'migrate/data-management/to-data-tiers.md'
+  'manage-data/lifecycle/data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md': 'migrate/data-management/ilm-to-data-stream-lifecycle.md'
+  'manage-data/lifecycle/rollup/migrating-from-rollup-to-downsampling.md': 'migrate/data-management/rollup-to-downsampling.md'
+  'solutions/security/get-started/automatic-migration.md': 'migrate/to-elastic-security/automatic-migration.md'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   'solutions/elasticsearch-solution-project/full-text/search-with-synonyms.md': 'solutions/search/full-text/search-with-synonyms.md'

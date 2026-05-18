@@ -14,7 +14,7 @@ products:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. [Migrate](/migrate/data-management/rollup-to-downsampling.md) to [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 When you work with indexed data in {{es}}, there are some limitations to how the document fields can be rolled up or aggregated. This page highlights the major limitations so that you are aware of them.

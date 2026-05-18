@@ -36,7 +36,7 @@ Indexing from the source
 Reindex from a remote cluster
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. Depending on your security settings for your old cluster, you might need to temporarily allow TCP traffic on port 9243 for this procedure.
 
-    For {{ech}}, if your old cluster is self-managed and uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) to establish trust and configure remote reindex to ECH.
+    For {{ech}}, if your old cluster is self-managed and uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](remote-reindex.md) to establish trust and configure remote reindex to ECH.
 
 Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an {{es}} version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that the new cluster can access.
@@ -44,7 +44,7 @@ Restore from a snapshot
 :::{admonition} Migrating system {{es}} indices
 In {{es}} 8.0 and later versions, to back up and restore system indices and system data streams such as `.kibana` or `.security`, you must snapshot and restore the related feature's [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state).
 
-Refer to [Migrate system indices](./migrate/migrate-internal-indices.md) to learn how to restore the internal {{es}} system indices from a snapshot.
+Refer to [Migrate system indices](system-indices.md) to learn how to restore the internal {{es}} system indices from a snapshot.
 :::
 
 ## Index from the source [ec-index-source]
@@ -66,7 +66,7 @@ Before migrating your {{es}} data, define the necessary [mappings](/manage-data/
 ::::{note}
 :applies_to: { ess: }
 
-For {{ech}}, if your old cluster uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md) to establish trust.
+For {{ech}}, if your old cluster uses [TLS certificates](/deploy-manage/security/set-up-basic-security-plus-https.md) signed by a private (non–publicly trusted) certificate authority, follow [this guide](remote-reindex.md) to establish trust.
 ::::
 
 Follow these steps to reindex data remotely:
@@ -136,7 +136,7 @@ This method is especially useful when:
 * You want to fully replicate the old cluster or when remote reindexing is not feasible, for example if the old cluster is in a degraded or unreachable state.
 * Your old cluster contains mostly static data, allowing you to snapshot the old cluster, restore in the new cluster, and continue operations.
 
-When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md) guide.
+When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](cluster-to-cluster.md) guide.
 
 ### Requirements [ec-restore-snapshots-requirements]
 

@@ -59,7 +59,7 @@ Four tutorials are available to help you set up and manage data streams with dat
 * To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. Refer to [](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream is created with the respective data stream lifecycle.
 * To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs]({{es-apis}}group/endpoint-data-stream). Refer to [](data-stream/tutorial-update-existing-data-stream.md) for details.
 * Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
-* To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
+* To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [](/migrate/data-management/ilm-to-data-stream-lifecycle.md).
 
 ::::{note}
 Updating the data stream lifecycle of an existing data stream is different from updating the settings or the mapping, because it is applied on the data stream level and not on the individual backing indices.

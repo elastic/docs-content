@@ -14,7 +14,7 @@ products:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. [Migrate](/migrate/data-management/rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 Learn how to configure {{es}} rollup jobs with groupings for rollup queries and aggregations, as well as best practices for grouping time series data.

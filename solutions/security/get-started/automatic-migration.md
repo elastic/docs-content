@@ -40,7 +40,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 **Requirements**
 
-* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+* Minimum [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
 
   - `All` for **SIEM migrations**
   - At least `Read` for **Rules**
@@ -54,7 +54,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
+* `All` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
@@ -65,7 +65,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 :::{applies-item} stack: ga 9.0-9.2
 **Requirements**
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
+* `All` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > SIEM migrations** {{kib}} feature.
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.

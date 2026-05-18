@@ -1,0 +1,26 @@
+project: 'Migrate'
+toc:
+  - file: index.md
+  - file: beats-to-elastic-agent/index.md
+    children:
+      - file: beats-to-elastic-agent/migrate-from-beats.md
+      - file: beats-to-elastic-agent/migrate-from-auditbeat.md
+  - file: apm-agents-to-edot/index.md
+    children:
+      - title: Java
+        crosslink: elastic-otel-java://reference/edot-java/migration.md
+      - title: Node.js
+        crosslink: elastic-otel-node://reference/edot-node/migration.md
+      - title: Python
+        crosslink: elastic-otel-python://reference/edot-python/migration.md
+      - title: .NET
+        crosslink: elastic-otel-dotnet://reference/edot-dotnet/migration.md
+      - title: PHP
+        crosslink: elastic-otel-php://reference/edot-php/migration.md
+      - file: apm-agents-to-edot/rum-js.md
+  - file: to-edot-collector/index.md
+    children:
+      - file: to-edot-collector/from-apm-agents.md
+      - title: Move deprecated components
+        crosslink: elastic-agent://reference/edot-collector/components/migrate-components.md
+      - file: to-edot-collector/from-upstream-collector.md

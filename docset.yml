@@ -75,6 +75,7 @@ toc:
   - toc: get-started
   - toc: solutions
   - toc: manage-data
+  - toc: migrate  # temporary placement — will move to level-one nav when elastic/docs-builder#2927 lands
   - toc: explore-analyze
   - toc: deploy-manage
   - toc: cloud-account

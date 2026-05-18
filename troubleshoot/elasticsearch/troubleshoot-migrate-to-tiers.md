@@ -21,7 +21,7 @@ To fix this issue, use the following steps.
 You can run the following steps using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
 :::{tip}
-To learn how to assign tiers to your data nodes, refer to [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md).
+To learn how to assign tiers to your data nodes, refer to [](/migrate/data-management/to-data-tiers.md).
 :::
 
 To get the shards assigned, call the [migrate to data tiers routing](../../manage-data/lifecycle/data-tiers.md) API, which resolves the conflicting routing configurations to using the standardized [data tiers](../../manage-data/lifecycle/data-tiers.md). This also future-proofs the system by migrating the index templates and ILM policies if needed.
