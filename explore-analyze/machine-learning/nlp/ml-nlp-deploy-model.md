@@ -24,6 +24,11 @@ You can optimize your deployment for typical use cases, such as search and inges
 Each deployment will be fine-tuned automatically based on its specific purpose you choose.
 
 ::::{note}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+The **Optimize for use case** options (Ingest, Search, Balanced) appear only for embedding models. Rerank models do not include this selector in the deployment modal. From the **{{models-app}}** page, you can use **Start deployment** and **Update deployment** for rerank models. For Elastic Rerank, you can also deploy using the [{{infer}} API](ml-nlp-rerank.md#ml-nlp-rerank-deploy-steps).
+::::
+
+::::{note}
 Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API]({{kib-apis}}group/endpoint-ml).
 ::::
 

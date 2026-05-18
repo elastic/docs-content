@@ -46,16 +46,29 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API]({{es-apis}}operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
+You can download and deploy Elastic Rerank using the [create {{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch) or from the **{{models-app}}** page.
 
 ::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
 
 ::::
 
+### Using the {{models-app}} page [ml-nlp-rerank-deploy-kibana]
+
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+1. Navigate to **{{ml-app}}** > **{{models-app}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+2. Find the rerank model (for example, `.rerank-v1`) in the list.
+3. From the **Actions** menu, use **Start deployment** to deploy the model or **Update deployment** to change an existing deployment.
+
+Unlike embedding models, rerank models do not show the **Optimize for use case** selector (Ingest, Search, Balanced) in the deployment modal. This optimization applies only to embedding models.
+
 ### Create an inference endpoint [ml-nlp-rerank-deploy-steps]
 
-1. In {{kib}}, navigate to the **Dev Console**.
+1. Navigate to the **Dev Console** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 2. Create an {{infer}} endpoint with the Elastic Rerank service by running:
 
 ```console
