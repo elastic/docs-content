@@ -27,7 +27,7 @@ Known issues are significant defects or limitations that may impact your impleme
 **Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4**
 
 **Impact**<br>
-Upgrading a cluster from 9.2.x to 9.3.x can fail if any rule (including Detection Rules and other Security rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+Upgrading from 9.2.x to 9.3.x can fail if any rule (including Detection Rules and other Security rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
 
 During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
 
