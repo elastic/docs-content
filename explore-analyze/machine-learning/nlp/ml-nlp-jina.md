@@ -58,7 +58,7 @@ To use `jina-embeddings-v5-omni-small`, you must have the [appropriate subscript
 
 #### Getting started with `jina-embeddings-v5-omni-small` through Elastic {{infer-cap}} Service [jina-embeddings-v5-omni-small-getting-started]
 
-This request creates a new {{infer}} endpoint. The URL path uses the `embedding` task type and ends with the `inference_id` you want to use (`eis-jina-embeddings-v5-omni-small` here).
+Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field using the `embedding` task type.
 
 ```console
 PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
