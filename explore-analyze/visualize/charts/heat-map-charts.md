@@ -90,7 +90,7 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example creates a heat map with time on the horizontal axis and response codes on the vertical axis, making it easy to spot days with elevated error rates.
+This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — grey for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -98,39 +98,54 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "heatmap", <1>
+  "type": "heatmap",
   "title": "Error rates per day",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "axis": { "x": { "scale": "temporal" }, "y": {} },
+  "legend": { "visibility": "visible", "position": "right" },
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
+  "styling": { "cells": { "labels": { "visible": true } } },
   "x": {
-    "operation": "date_histogram", <2>
-    "field": "timestamp"
+    "operation": "date_histogram",
+    "field": "@timestamp",
+    "suggested_interval": "auto",
+    "use_original_time_range": false,
+    "include_empty_rows": true,
+    "drop_partial_intervals": false
   },
   "y": {
-    "operation": "terms",
-    "fields": ["response.keyword"], <3>
-    "limit": 10
+    "operation": "filters", <1>
+    "label": "Errors",
+    "filters": [
+      { "filter": { "expression": "\"response.keyword\" : \"404\"" }, "label": "Client errors" },
+      { "filter": { "expression": "\"response.keyword\" : \"503\"" }, "label": "Server errors" }
+    ]
   },
   "metric": {
-    "operation": "count",
-    "format": {
-      "type": "number"
-    },
-    "filter": { "expression": "" }
+    "operation": "formula", <2>
+    "formula": "count()",
+    "format": { "type": "number", "decimals": 0, "suffix": "%", "compact": false },
+    "color": {
+      "type": "dynamic", <3>
+      "range": "absolute",
+      "steps": [
+        { "color": "#c2cbdb", "gte": 0, "lt": 5 },
+        { "color": "#EAAE01", "gte": 5, "lt": 10 },
+        { "color": "#F6726A", "gte": 10, "lte": null }
+      ]
+    }
   },
   "data_source": {
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_logs",
-    "time_field": "timestamp"
+    "time_field": "@timestamp"
   }
 }'
 ```
 
-1. `heatmap` renders a two-dimensional grid where cell color intensity represents the metric value.
-2. `date_histogram` on the horizontal axis creates one column per time bucket.
-3. `response.keyword` on the vertical axis creates one row per HTTP status code, so each cell shows the count for a specific status on a specific day.
+1. The `filters` grouping on the vertical axis creates two named rows — "Client errors" (404s) and "Server errors" (503s) — isolating each error type so every cell represents one error type in one time bucket.
+2. The `formula` metric counts matching documents with `count()` and appends a `%` suffix to the display format, presenting counts in a percentage-like style without computing an actual ratio.
+3. The `dynamic` color uses absolute count thresholds: grey for 0–4 errors, yellow for 5–9, and red for 10 or more, flagging time buckets with elevated error activity at a glance.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -304,22 +319,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "y": {
     "operation": "terms",
     "fields": ["hour_of_day"], <1>
-    "limit": 24 <2>
+    "limit": 24, <2>
+    "other_bucket": { "include_documents_without_field": false },
+    "rank_by": { "type": "alphabetical", "direction": "desc" }
   },
   "metric": {
     "operation": "count",
-    "format": { "type": "number" },
-    "filter": { "expression": "" },
+    "empty_as_null": true,
     "color": {
-      "type": "legacy_dynamic",
+      "type": "legacy_dynamic", <3>
       "palette": "cool",
       "range": "percentage",
-      "shift": false,
+      "shift": true,
       "steps": [
-        { "color": "#caf0f8", "gte": null, "lt": 25 },
-        { "color": "#48cae4", "gte": 25, "lt": 50 },
-        { "color": "#0096c7", "gte": 50, "lt": 75 },
-        { "color": "#023e8a", "gte": 75, "lte": null }
+        { "color": "#cee1ff", "gte": 0, "lt": 20 },
+        { "color": "#b5d2ff", "gte": 20, "lt": 40 },
+        { "color": "#9bc2ff", "gte": 40, "lt": 60 },
+        { "color": "#80b2ff", "gte": 60, "lt": 80 },
+        { "color": "#61a2ff", "gte": 80, "lte": null }
       ]
     }
   },
@@ -331,8 +348,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `hour_of_day` is a runtime field that extracts the hour (0--23) from `@timestamp`, creating one row per hour.
-2. `limit: 24` ensures all 24 hours appear on the vertical axis, giving a complete picture of daily activity.
+1. `hour_of_day` is a runtime field that extracts the hour (0–23) from `@timestamp`, creating one row per hour.
+2. `limit: 24` ensures all 24 hours appear on the vertical axis. Combined with alphabetical descending sort, hours are ordered 23 → 0 for a top-to-bottom timeline feel.
+3. The `legacy_dynamic` coloring with the `cool` palette and `range: "percentage"` distributes the blue gradient proportionally across the actual value range, so the lightest blue always marks the quietest hours and the darkest blue the busiest.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -379,18 +397,18 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "operation": "sum", <3>
     "field": "taxful_total_price",
     "label": "Revenue",
-    "format": { "type": "number" },
-    "filter": { "expression": "" },
+    "empty_as_null": true,
     "color": {
       "type": "legacy_dynamic",
       "palette": "positive",
       "range": "percentage",
-      "shift": false,
+      "shift": true,
       "steps": [
-        { "color": "#e9f7ef", "gte": null, "lt": 25 },
-        { "color": "#82e0aa", "gte": 25, "lt": 50 },
-        { "color": "#28b463", "gte": 50, "lt": 75 },
-        { "color": "#1a5276", "gte": 75, "lte": null }
+        { "color": "#d4efe6", "gte": 0, "lt": 20 },
+        { "color": "#b1e4d1", "gte": 20, "lt": 40 },
+        { "color": "#8cd9bb", "gte": 40, "lt": 60 },
+        { "color": "#62cea6", "gte": 60, "lt": 80 },
+        { "color": "#24c292", "gte": 80, "lte": null }
       ]
     }
   },
