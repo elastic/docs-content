@@ -14,5 +14,5 @@ Use the following URL structure. This URL is built from endpoint information ret
 :::{tip}
 You can use either 443 or 9243 as a port.
 
-You can also connect to the cluster using the {{es}} cluster or project ID, for example, https://6b111580caaa4a9e84b18ec7c600155e.{{example-phz-dn}}
+You can also connect to the cluster using the {{es}} cluster or project ID, for example, https://6b111580caaa4a9e84b18ec7c600155e.{{example-phz-dn}}.
 :::

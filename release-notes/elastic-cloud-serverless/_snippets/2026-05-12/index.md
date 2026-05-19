@@ -10,7 +10,7 @@
 * Mark all LLM connectors as deprecated. [#261591](https://github.com/elastic/kibana/pull/261591)
 * Enable installation of dependencies for composable packages. [#263762](https://github.com/elastic/kibana/pull/263762)
 * Add cloud navigation links to Search homepage. [#267434](https://github.com/elastic/kibana/pull/267434)
-* Add namespace level customization for packages. [#262568](https://github.com/elastic/kibana/pull/262568) [#245181](https://github.com/elastic/kibana/issues/245181)
+* Add namespace-level customization for integration packages. [#262568](https://github.com/elastic/kibana/pull/262568) [#245181](https://github.com/elastic/kibana/issues/245181)
 * Add model memory estimation to edit job flyout. [#266590](https://github.com/elastic/kibana/pull/266590)
 * Add connector-specific access control for Agent Builder agents. [#267333](https://github.com/elastic/kibana/pull/267333)
 * Add custom workflow triggers for cases. [#257284](https://github.com/elastic/kibana/pull/257284)
