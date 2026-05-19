@@ -169,6 +169,7 @@ The following examples show various configuration options for building impactful
       * Top 6 values
       * Advanced: include values matching the `.+` regular expression to exclude blank values
     * **Metric**: Sum of `bytes`
+    * **Value display**: Percentage
 
 ![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
 
@@ -201,9 +202,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "group_by": [
     {
-      "operation": "terms",
+      "operation": "terms", <2>
       "fields": ["extension.keyword"],
-      "limit": 6 <2>
+      "limit": 6,
+      "includes": { "values": [".+"], "as_regex": true },
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "direction": "desc", "metric_index": 0 },
+      "increase_accuracy": true
     }
   ],
   "data_source": {
@@ -211,13 +216,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "absolute" } } <3>
+  "styling": { "values": { "mode": "percentage" } } <3>
 }'
 ```
 
 1. `treemap` renders nested rectangles whose area is proportional to the metric value.
-2. `limit: 6` limits the chart to the top 6 file extensions, keeping the layout readable.
-3. `absolute` displays the raw byte count on each rectangle instead of a percentage.
+2. The `terms` grouping limits to the top 6 extensions ranked by `sum of bytes` (descending), uses `includes` with `as_regex: true` and pattern `.+` to exclude blank values, groups any remaining extensions into an **Other** bucket, and enables accuracy mode.
+3. `percentage` displays each extension's share of total bytes instead of the raw count.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
