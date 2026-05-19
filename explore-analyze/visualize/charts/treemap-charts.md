@@ -229,6 +229,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Group by** (Level 1): `Carrier` (Top 5 values)
     * **Group by** (Level 2): `DestCountry` (Top 5 values)
     * **Metric**: Count
+    * **Value display**: Percentage
 
 ![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
 
@@ -273,7 +274,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_flights",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "absolute" } }
+  "styling": { "values": { "mode": "percentage" } }
 }'
 ```
 
