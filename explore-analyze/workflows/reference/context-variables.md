@@ -249,7 +249,7 @@ Base URL of the {{kib}} instance. Useful for building deep links in notification
   with:
     channel: "#soc"
     text: |
-      Case created: <{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.id }}|Open in {{kib}}>
+      Case created: <{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}|Open in {{kib}}>
 ```
 
 ## Related [workflows-ctx-related]
