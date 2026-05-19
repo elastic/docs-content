@@ -71,7 +71,7 @@ Whether {{agent}} can be upgraded through {{fleet}} depends on how it was instal
 ::::{include} _snippets/install-method-upgrade-support.md
 ::::
 
-For full details and manual upgrade procedures for DEB and RPM packages, see [Upgrade {{fleet}}-managed {{agent}}s](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
+For full details and manual upgrade procedures for DEB and RPM packages, refer to [Upgrade {{fleet}}-managed {{agent}}s](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
 
 ::::{admonition} Restrictions in {{serverless-short}}
 :class: important

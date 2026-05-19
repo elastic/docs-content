@@ -27,7 +27,7 @@ This approach simplifies the process of keeping your agents up to date. It also 
 By default, {{agent}}s require internet access to perform binary upgrades from {{fleet}}. However, you can host your own artifacts repository and configure {{agent}}s to download binaries from it. For more information, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
 ::::{note}
-Not all install methods support {{fleet}}-managed upgrades. For details, see [Restrictions](#upgrade-agent-restrictions).
+Not all install methods support {{fleet}}-managed upgrades. For details, refer to [Restrictions](#upgrade-agent-restrictions).
 ::::
 
 
