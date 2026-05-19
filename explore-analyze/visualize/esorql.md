@@ -116,6 +116,8 @@ serverless: ga
 
 {{esql}} visualizations support [dashboard and URL drilldowns](../dashboards/drilldowns.md). Select a data point in an {{esql}} visualization to navigate to another dashboard or an external URL.
 
+Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+
 ::::{note}
 Discover drilldowns are not available for {{esql}} visualizations.
 ::::
