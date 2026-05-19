@@ -103,21 +103,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Donut chart by destination",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "metrics": [
-    {
-      "operation": "count",
-      "format": {
-        "type": "number"
-      },
-      "filter": { "expression": "" }
-    }
-  ],
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [{ "operation": "count", "empty_as_null": true }],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["geo.dest"],
-      "limit": 5 <2>
+      "limit": 5, <2>
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
     }
   ],
   "data_source": {
@@ -125,13 +120,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } } <3>
+  "styling": {
+    "donut_hole": "m", <3>
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
-1. `pie` creates a pie or donut chart. The donut hole size is an appearance setting you can adjust in the Lens editor.
+1. `pie` creates a pie or donut chart. The `donut_hole` style setting controls the size of the center hole.
 2. `limit: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
-3. `percentage` displays each slice's share of the total rather than its raw count.
+3. `donut_hole: "m"` hollows out the center of the pie. Valid values are `"s"` (small), `"m"` (medium), and `"l"` (large).
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -148,7 +147,7 @@ This is useful when:
 
 #### Example: Server resource consumption
 
-Imagine your web logs data includes multiple numeric fields representing different resource types, such as `response_bytes`, `processing_time_ms`, and `memory_used_kb`. You want to visualize how each resource contributes to overall server load.
+This example uses the **Kibana Sample Data Logs** data set and groups requests by file extension to approximate resource usage: `.zip` files map to processing time, `.gz` files map to bandwidth, and `.rpm` files map to memory usage.
 
 1. Create a **Pie** chart and remove any existing **Slice by** dimension.
 2. Open **Layer settings**:
@@ -157,28 +156,24 @@ Imagine your web logs data includes multiple numeric fields representing differe
 3. Select **Multiple metrics**, then close the **Layer settings** menu.
 4. Add metrics for each resource type:
 
-   | Slice | Metric configuration |
-   |-------|---------------------|
-   | Bandwidth | `Sum(response_bytes)` |
-   | Processing time | `Sum(processing_time_ms)` |
-   | Memory usage | `Sum(memory_used_kb)` |
+   | Slice | Metric configuration | Filter |
+   |-------|---------------------|--------|
+   | Processing time | `Count of records` | `extension: zip` |
+   | Bandwidth | `Count of records` | `extension: gz` |
+   | Memory usage | `Count of records` | `extension: rpm` |
 
-   For each metric, select the **Metric** dimension and configure the field. Customize the **Name** to display meaningful labels in the legend.
+   For each metric, select the **Metric** dimension, set the function to **Count**, add a KQL filter in the **Advanced** section, and customize the **Name** to display meaningful labels.
 
-5. Optionally, assign custom colors to each metric by selecting the metric and choosing a **Series color**.
+5. Assign a custom color to each metric by selecting the metric and choosing a **Series color**.
 
 ![Pie chart with three slices showing different server resource metrics](/explore-analyze/images/pie-chart-multiple-metrics-example.png)
 
-This example demonstrates the core value of multiple metrics: comparing different numeric fields that represent distinct concepts. Unlike **Slice by**, which splits a single metric by category values, multiple metrics lets you place fundamentally different measurements side by side.
-
-:::{note}
-The {{kib}} sample data sets don't include multiple comparable numeric fields. To try this scenario, adapt the field names to match your own data.
-:::
+This example demonstrates the core value of multiple metrics: using KQL filters on each metric to compare distinct categories. Unlike **Slice by**, which splits a single metric by category values, multiple metrics lets you define completely custom groupings — even those that don't exist as a field in your data.
 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example uses multiple metrics mode (no `group_by`) so each slice represents a distinct aggregation rather than values from a single field.
+This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -190,27 +185,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Server resource consumption",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
+  "legend": { "visibility": "auto", "nested": false },
   "metrics": [ <1>
     {
-      "operation": "sum",
-      "field": "bytes",
-      "label": "Bandwidth", <2>
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
-    },
-    {
-      "operation": "sum",
-      "field": "machine.ram",
-      "label": "Memory usage",
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Processing time", <2>
+      "filter": { "expression": "extension: zip", "language": "kql" },
+      "color": { "type": "static", "color": "#eaae01" }
     },
     {
       "operation": "count",
-      "label": "Request count",
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
+      "empty_as_null": true,
+      "label": "Bandwidth",
+      "filter": { "expression": "extension: gz", "language": "kql" },
+      "color": { "type": "static", "color": "#61a2ff" }
+    },
+    {
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Memory usage",
+      "filter": { "expression": "extension: rpm", "language": "kql" },
+      "color": { "type": "static", "color": "#16c5c0" }
     }
   ],
   "data_source": {
@@ -218,12 +214,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": {
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
 1. Three entries in `metrics` without a `group_by` activates multiple-metrics mode, where each metric becomes its own slice.
-2. Each `label` provides the legend text for that slice (for example, "Bandwidth", "Memory usage", "Request count").
+2. Each metric uses a `filter` to scope its count to a specific file extension, and a `color` with `type: "static"` to pin it to a specific hex color regardless of palette.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -269,8 +268,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Top hosts with Other",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [{ "operation": "count", "empty_as_null": true }],
   "group_by": [
     {
       "operation": "terms",
@@ -284,7 +283,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": {
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
@@ -440,31 +442,31 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Website traffic by source",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
+  "legend": { "visibility": "visible", "nested": false },
   "metrics": [
     {
       "operation": "formula", <1>
       "formula": "count(kql='referer : *elastic*')", <2>
       "label": "Elastic website",
-      "format": { "type": "number" },
-    },
-    {
-      "operation": "formula",
-      "formula": "count(kql='referer : *twitter*')",
-      "label": "Twitter/X",
-      "format": { "type": "number" },
+      "color": { "type": "auto" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *facebook*')",
       "label": "Facebook",
-      "format": { "type": "number" },
+      "color": { "type": "auto" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='referer:*twitter*')",
+      "label": "Twitter/X",
+      "color": { "type": "auto" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *nytimes*')",
       "label": "NY Times",
-      "format": { "type": "number" },
+      "color": { "type": "auto" }
     }
   ],
   "data_source": {
@@ -472,7 +474,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": {
+    "donut_hole": "m",
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
@@ -507,21 +513,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Revenue distribution by product category",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
+  "legend": { "visibility": "auto", "nested": false },
   "metrics": [
     {
       "operation": "sum", <1>
       "field": "taxful_total_price",
-      "label": "Revenue",
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
+      "empty_as_null": true
     }
   ],
   "group_by": [
     {
       "operation": "terms",
       "fields": ["category.keyword"], <2>
-      "limit": 6
+      "limit": 6,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
     }
   ],
   "data_source": {
@@ -529,7 +536,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_ecommerce",
     "time_field": "order_date"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": {
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
@@ -568,13 +578,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Error distribution by type",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
+  "legend": { "visibility": "auto", "nested": false },
   "metrics": [
     {
       "operation": "count",
-      "label": "Count of records",
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
+      "empty_as_null": true
     }
   ],
   "group_by": [
@@ -607,7 +615,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": {
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
 }'
 ```
 
