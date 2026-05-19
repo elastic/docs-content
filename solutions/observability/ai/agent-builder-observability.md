@@ -50,7 +50,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-When you chat with the agent from a Synthetics monitor detail page, it automatically has access to the monitor's configuration via the `observability.monitor` context. This context is available on all monitor detail tabs (Overview, History, Errors, and Alerts), and includes:
+When you chat with the agent from a Synthetics monitor detail page, it automatically has access to the monitor's configuration via the `observability.monitor` attachment. This context is available on all monitor detail tabs (Overview, History, Errors, and Alerts), and includes:
 
 - Monitor name, type, and schedule
 - Configured locations (public and private)
