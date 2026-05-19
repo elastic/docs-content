@@ -26,6 +26,10 @@ When subscribing from a marketplace, your marketplace email is used for your [El
 [Serverless projects](https://docs.elastic.co/serverless) are only available for the AWS Marketplace, and are in technical preview on the Azure Marketplace. Support for GCP Marketplace will be added in the near future.
 ::::
 
+::::{tip}
+You can also purchase {{ecloud}} through a reseller on any of these marketplaces. To explore this option, contact your reseller or [Elastic sales](https://www.elastic.co/contact).
+::::
+
 
 
 
