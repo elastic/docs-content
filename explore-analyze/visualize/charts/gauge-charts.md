@@ -224,42 +224,6 @@ Instead of entering fixed static values, you can use fields from your data to se
 
 This approach is useful when bounds or targets vary by category, time period, or user. You can also use formulas to define dynamic bounds or goals. Refer to [Lens formulas](/explore-analyze/visualize/lens.md#lens-formulas) for more details.
 
-:::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
-
-This example creates a gauge that tracks total bytes transferred, formatted in human-readable byte units. Use the Lens editor to set dynamic minimum, maximum, or goal values from your data.
-
-```bash
-curl -X POST "${KIBANA_URL}/api/visualizations" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type": "gauge",
-  "title": "Bytes vs quota",
-  "filters": [],
-  "query": { "expression": "" },
-  "metric": {
-    "operation": "sum",
-    "field": "bytes",
-    "label": "Total bytes",
-    "format": { "type": "bytes" }, <1>
-    "empty_as_null": true
-  },
-  "data_source": {
-    "type": "data_view_spec",
-    "index_pattern": "kibana_sample_data_logs",
-    "time_field": "timestamp"
-  },
-  "styling": { "shape": { "type": "semi_circle" } }
-}'
-```
-
-1. `format.type: "bytes"` renders the metric in human-readable units (KB, MB, GB) rather than raw numbers.
-
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
-
 ## Gauge chart settings [gauge-chart-settings]
 
 Customize your gauge chart to display exactly the information you need, formatted the way you want.
