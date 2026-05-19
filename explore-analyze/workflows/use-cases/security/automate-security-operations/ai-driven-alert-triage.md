@@ -112,7 +112,7 @@ Loop over the alert IDs that make up the discovery and attach them:
     - name: add_alert
       type: cases.addAlerts
       with:
-        case_id: "{{ steps.create_case.output.id }}"
+        case_id: "{{ steps.create_case.output.case.id }}"
         alerts:
           - alertId: "{{ foreach.item }}"
             index: ".alerts-security.alerts-default"
@@ -152,7 +152,7 @@ Then attach the agent's analysis to the case:
 - name: add_analysis
   type: cases.addComment
   with:
-    case_id: "{{ steps.create_case.output.id }}"
+    case_id: "{{ steps.create_case.output.case.id }}"
     comment: "{{ steps.triage.output.message }}"
 ```
 ::::
@@ -192,9 +192,9 @@ Use `kibana.request` to call the endpoint isolation API and link the action to t
     body:
       endpoint_ids:
         - "{{ foreach.item.host.id }}"
-      comment: "Automated isolation pending analyst review. Case {{ steps.create_case.output.id }}."
+      comment: "Automated isolation pending analyst review. Case {{ steps.create_case.output.case.id }}."
       case_ids:
-        - "{{ steps.create_case.output.id }}"
+        - "{{ steps.create_case.output.case.id }}"
 ```
 
 If your Attack Discovery payload doesn't carry `host.id`, swap in a search step to look up the endpoint by hostname before isolation.
@@ -226,7 +226,7 @@ Post a rich Slack message with the AI summary, the risk score, and deep links ba
           elements:
             - type: button
               text: { type: plain_text, text: "View case" }
-              url: "{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.id }}"
+              url: "{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}"
             - type: button
               text: { type: plain_text, text: "View workflow run" }
               url: "{{ kibanaUrl }}/app/workflows/{{ workflow.id }}?executionId={{ execution.id }}&tab=executions"
@@ -289,7 +289,7 @@ steps:
           - name: add_alert
             type: cases.addAlerts
             with:
-              case_id: "{{ steps.create_case.output.id }}"
+              case_id: "{{ steps.create_case.output.case.id }}"
               alerts:
                 - alertId: "{{ foreach.item }}"
                   index: ".alerts-security.alerts-default"
@@ -315,7 +315,7 @@ steps:
       - name: add_analysis
         type: cases.addComment
         with:
-          case_id: "{{ steps.create_case.output.id }}"
+          case_id: "{{ steps.create_case.output.case.id }}"
           comment: "{{ steps.triage.output.message }}"
 
       - name: ai_summary
@@ -341,9 +341,9 @@ steps:
           body:
             endpoint_ids:
               - "{{ foreach.item.host.id }}"
-            comment: "Automated isolation pending analyst review. Case {{ steps.create_case.output.id }}."
+            comment: "Automated isolation pending analyst review. Case {{ steps.create_case.output.case.id }}."
             case_ids:
-              - "{{ steps.create_case.output.id }}"
+              - "{{ steps.create_case.output.case.id }}"
 
       - name: notify_slack
         type: http
@@ -366,7 +366,7 @@ steps:
                 elements:
                   - type: button
                     text: { type: plain_text, text: "View case" }
-                    url: "{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.id }}"
+                    url: "{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}"
           timeout: 30s
 ```
 
