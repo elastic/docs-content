@@ -12,40 +12,36 @@ products:
 
 # Overview in AutoOps [ec-autoops-overview-view]
 
-The **Overview** page displays the current status of customer deployments and clusters that are linked to the same Elastic organization. 
+The **Overview** page offers an at-a-glance look at the health of all your deployments and clusters that are linked to the same Elastic organization. 
 
-This view offers an at-a-glance look into high-level metrics such as the most important and currently open events and the number of active deployments and nodes. You can also view the cluster status, the number of open events in each {{es}} deployment or cluster over different periods of time, and navigate to a specific deployment or cluster for more details.
+This view displays quick metrics about active deployments and nodes, cluster status, and top events. You can also navigate to a specific deployment or cluster for more details.
 
-To get to the **Overview** page, go to AutoOps in your deployment or cluster and select **Overview** from the side navigation.
+::::{important}
+The **Overview** page lists only those deployments and clusters in your Elastic organization that run in a [region where AutoOps is available](/deploy-manage/monitor/autoops/ec-autoops-regions.md).
+::::
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :screenshot:
 :alt: Screenshot showing the Overview in AutoOps
 :::
 
-::::{note}
-The **Overview** page displays a complete list of deployments and clusters only if AutoOps is available in the specific Cloud Service Provider (CSP) region.
-::::
+To get to the **Overview** page, go to AutoOps in your deployment or cluster and select **Overview** from the side navigation.
 
-## Panels on the Overview page
+## Sections on the Overview page
 
-The **Overview** page shows the following panels.
+The **Overview** page shows the following information.
 
-### Deployments table [ec-autoops-deployment-table]
+### {{es}} metrics [ec-autoops-es-info]
 
-The **Deployments** table lists all active deployments as well as inactive deployments for which AutoOps collected information in the past. You can also see real-time updates of {{es}} status, the number of open critical events, the number of {{es}} nodes, and the total number of shards in each deployment. Select a deployment to get a more detailed view of all open and closed events.
+Under the **Deployments** header, you can view the number of active deployments, nodes, and a summary of memory and disk usage across your organization.
 
-### {{es}} Info [ec-autoops-es-info]
+### Deployments [ec-autoops-deployment-table]
 
-The **{{es}} Info** panel shows the number of active deployments, the number of nodes, and a summary of used resources, such as total disk size used and total memory connected for all clusters.
+The **Deployments** table lists all active and inactive deployments monitored by AutoOps, along with real-time updates of {{es}} status, the number of open critical events, and the number of nodes and shards in each deployment. Select a deployment for a more detailed view of its events, resource usage, and performance.
 
 ### Top Events [ec-autoops-top-events]
 
-The **Top Events** panel provides a quick overview of the top open events. You can filter by deployment or cluster, severity, name, and search for a specific event across all of the connected deployments or clusters.
+The **Top Events** list provides a quick overview of the top open events across all deployments and connected clusters that AutoOps is monitoring. You can filter the list by specific events, severity, and deployment or cluster.
 
-The default view lists the top 10 important events, sorted by severity. Each event card indicates when the event occurred last, the number of occurrences across all deployments or clusters, the deployments or clusters impacted by the event, and it includes a direct link to the event to get additional details.
-
-### Events in Time Period [ec-autoops-events-time-period]
-
-The **Events in Time Period** panel shows a time series chart displaying all events identified across the connected deployments or clusters during the selected time period. Use this panel to detect which deployment or cluster is generating the most events, so that you can investigate further and take action to resolve the underlying issues.
+The default view lists the top 10 most important events, sorted by severity. Each event ribbon indicates the number of occurrences across all deployments or clusters and a timestamp of when the event last occurred, which you can click to find additional details.
 
