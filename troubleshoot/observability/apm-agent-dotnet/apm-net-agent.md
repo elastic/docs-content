@@ -289,7 +289,7 @@ We recommend using `trace_continuation_strategy` set to `restart` or `restart_ex
 
 ## Broken distributed traces on Google Cloud Run [gcp-cloud-run-broken-distributed-traces]
 
-Services deployed on Google Cloud Run may show transactions as root transactions rather than child spans, and the APM UI may show "incomplete trace" warnings even when the upstream caller is correctly instrumented.
+Services deployed on Google Cloud Run might show transactions as root transactions rather than child spans, and the APM UI might show "incomplete trace" warnings even when the upstream caller is correctly instrumented.
 
 Google Cloud Run's infrastructure intercepts every inbound HTTP request before it reaches the application. It creates a span in Google Cloud Trace and overwrites the W3C `traceparent` header with a new value referencing that GCP-internal span. The Elastic APM .NET agent reads this overwritten header, so all transactions started by the Cloud Run service become children of a GCP-internal span that Elastic APM has no visibility into.
 
