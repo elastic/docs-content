@@ -94,7 +94,7 @@ Use a gauge to track progress toward a specific target, such as monthly sales go
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example creates a semi-circle gauge that sums order revenue from the eCommerce sample data, providing a quick view of progress toward a sales goal.
+This example creates a horizontal bullet gauge that sums order revenue from the eCommerce sample data, providing a quick view of progress toward a sales goal.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -102,35 +102,43 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "gauge", <1>
+  "type": "gauge",
   "title": "Yearly sales goal",
   "filters": [],
   "query": { "expression": "" },
+  "styling": {
+    "shape": { "type": "bullet", "orientation": "horizontal" } <1>
+  },
   "metric": {
     "operation": "sum", <2>
-    "field": "taxful_total_price",
-    "label": "Revenue",
-    "format": {
-      "type": "number"
-    },
-    "filter": { "expression": "" }
+    "field": "products.taxful_price",
+    "empty_as_null": true,
+    "label": "Yearly sales",
+    "max": { "operation": "static_value", "value": 1500000 }, <3>
+    "goal": { "operation": "static_value", "value": 1000000 },
+    "title": { "visible": true },
+    "ticks": { "visible": true, "mode": "bands" },
+    "color": {
+      "type": "dynamic",
+      "range": "absolute",
+      "steps": [
+        { "gte": 0, "lt": 750000, "color": "#f6726a" },
+        { "gte": 750000, "lt": 1000000, "color": "#aee8d2" },
+        { "gte": 1000000, "color": "#24c292" }
+      ]
+    }
   },
   "data_source": {
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_ecommerce",
     "time_field": "order_date"
-  },
-  "styling": {
-    "shape": { <3>
-      "type": "semi_circle"
-    }
   }
 }'
 ```
 
-1. `gauge` renders a single-value chart with a colored arc or bar showing position within a range.
-2. `sum` of `taxful_total_price` tracks cumulative revenue as the gauge metric.
-3. `semi_circle` draws the gauge as a half-circle arc. Other options include `circle` and `linear`.
+1. `bullet` with `orientation: "horizontal"` renders a compact linear bar gauge, ideal for placing multiple KPIs in a row.
+2. `sum` of `products.taxful_price` tracks cumulative revenue as the gauge metric.
+3. `max` sets the upper bound of the scale (1.5M) and `goal` places a target marker at 1M, so progress toward the goal is immediately visible. The three `steps` color bands turn the bar red below 750K, light green approaching the goal, and green once it's reached.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -172,30 +180,23 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Server response time",
   "filters": [],
   "query": { "expression": "" },
+  "styling": { "shape": { "type": "bullet", "orientation": "horizontal" } },
   "metric": {
-    "operation": "average",
-    "field": "bytes",
-    "label": "Avg response bytes",
-    "format": { "type": "number" },
-    "filter": { "expression": "" },
+    "operation": "median",
+    "field": "memory",
+    "label": "Average response time - last hour",
+    "format": { "type": "duration", "from": "microseconds", "to": "asMilliseconds" },
+    "min": { "operation": "static_value", "value": 0 },
+    "max": { "operation": "formula", "formula": "1000000" },
+    "title": { "visible": true },
+    "ticks": { "visible": true, "mode": "bands" },
     "color": { <1>
       "type": "dynamic",
       "range": "absolute",
       "steps": [ <2>
-        {
-          "color": "#209280",
-          "gte": 0,
-          "lt": 6000
-        },
-        {
-          "color": "#d6bf57",
-          "gte": 6000,
-          "lt": 8000
-        },
-        {
-          "color": "#cc5642",
-          "gte": 8000
-        }
+        { "color": "#24c292", "gte": 0, "lt": 200000 },
+        { "color": "#aee8d2", "gte": 200000, "lt": 500000 },
+        { "color": "#f6726a", "gte": 500000 }
       ]
     }
   },
@@ -203,13 +204,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
-  },
-  "styling": { "shape": { "type": "semi_circle" } }
+  }
 }'
 ```
 
 1. `color.type: "dynamic"` applies color bands based on the metric value, giving instant visual feedback on health status.
-2. Each `steps` entry defines a range and color: green for healthy (0--6000), yellow for warning (6000--8000), and red for critical (8000+).
+2. Each `steps` entry defines a range and color: green for healthy (0–200ms), light green for warning (200–500ms), and red for critical (500ms+). The `duration` format converts raw microsecond values to human-readable milliseconds.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -244,7 +244,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "field": "bytes",
     "label": "Total bytes",
     "format": { "type": "bytes" }, <1>
-    "filter": { "expression": "" }
+    "empty_as_null": true
   },
   "data_source": {
     "type": "data_view_spec",
@@ -357,18 +357,18 @@ The following examples show various configuration options for building impactful
 **CPU usage monitoring**
 :   Monitor system CPU usage with threshold-based coloring:
 
-    * Example based on: System metrics data
-    * **Metric**: `Average(system.cpu.total.pct)` formatted as percent
-    * **Shape**: Minor arc
-    * **Minimum**: 0, **Maximum**: 100
-    * **Color bands**: 0-50% (green), 50-75% (yellow), 75-100% (red)
+    * Example based on: {{kib}} Sample Data Logs
+    * **Metric**: Formula `average(machine.ram)/20000000000` formatted as percent
+    * **Maximum**: Formula `max(machine.ram)/32211000000`
+    * **Shape**: Semi-circle
+    * **Color bands**: 0–50% (green), 50–75% (yellow), 75%+ (red)
 
 ![Example Lens gauge chart showing average CPU usage in percent](/explore-analyze/images/gauge-chart-example-cpu.png "=50%")
 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example creates a CPU-monitoring gauge with green/yellow/red threshold bands. Replace `bytes` with your actual CPU metric field (for example, `system.cpu.total.pct`).
+This example creates a CPU-monitoring gauge with green/yellow/red threshold bands, using `machine.ram` from the logs sample data as a proxy for a CPU-like metric.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -380,19 +380,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "CPU usage",
   "filters": [],
   "query": { "expression": "" },
+  "styling": { "shape": { "type": "semi_circle" } },
   "metric": {
-    "operation": "average", <1>
-    "field": "bytes",
-    "label": "Avg CPU %",
-    "format": { "type": "number" },
-    "filter": { "expression": "" },
+    "operation": "formula", <1>
+    "formula": "average(machine.ram)/20000000000",
+    "label": "CPU usage",
+    "format": { "type": "percent", "decimals": 2, "compact": false },
+    "max": { "operation": "formula", "formula": "max(machine.ram)/32211000000" },
+    "title": { "visible": true },
+    "ticks": { "visible": true, "mode": "bands" },
     "color": {
       "type": "dynamic",
-      "range": "absolute",
+      "range": "percentage",
       "steps": [ <2>
-        { "color": "#209280", "gte": 0, "lt": 6000 },
-        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
-        { "color": "#cc5642", "gte": 8000 }
+        { "gte": 0, "lt": 50, "color": "#24c292" },
+        { "gte": 50, "lt": 75, "color": "#EAAE01" },
+        { "gte": 75, "color": "#f6726a" }
       ]
     }
   },
@@ -400,13 +403,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
-  },
-  "styling": { "shape": { "type": "semi_circle" } }
+  }
 }'
 ```
 
-1. `average` computes the mean value over the time range, which is typical for monitoring metrics like CPU usage.
-2. `steps` defines three color bands -- green, yellow, and red -- so the gauge arc changes color as the value crosses thresholds.
+1. `formula` computes the ratio of average RAM to a reference value, producing a 0–1 ratio formatted as a percentage. Replace with your actual CPU metric field (for example, `average(system.cpu.total.pct)`).
+2. `range: "percentage"` maps the color thresholds proportionally across the gauge's 0–100% scale: green below 50%, yellow between 50–75%, and red above 75%.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -414,18 +416,18 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 **Disk space utilization**
 :   Display disk space usage as a percentage of capacity:
 
-    * Example based on: System metrics data
-    * **Metric**: Formula `sum(system.filesystem.used.bytes) / sum(system.filesystem.total.bytes) * 100`
+    * Example based on: {{kib}} Sample Data Logs
+    * **Metric**: Formula `average(machine.ram)/29000000000` formatted as percent
+    * **Maximum**: Formula `max(machine.ram)/32211000000`
     * **Shape**: Circle
-    * **Minimum**: 0, **Maximum**: 100
-    * **Color bands**: 0-60% (green), 60-80% (yellow), 80-100% (red)
+    * **Color bands**: 0–60% (green), 60–80% (yellow), 80%+ (red)
 
 ![Example Lens gauge chart showing disk space utilization in percent](/explore-analyze/images/gauge-chart-example-disk-space.png "=50%")
 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example creates a disk utilization gauge with color bands that shift from green to red as usage increases. Replace the field and thresholds to match your disk metrics.
+This example creates a full-circle disk utilization gauge with color bands that shift from green to red as usage increases, using `machine.ram` from the logs sample data as a proxy.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -437,19 +439,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Disk space utilization",
   "filters": [],
   "query": { "expression": "" },
+  "styling": {
+    "shape": { "type": "circle" } <1>
+  },
   "metric": {
-    "operation": "average",
-    "field": "bytes",
-    "label": "Disk usage %",
-    "format": { "type": "number" },
-    "filter": { "expression": "" },
+    "operation": "formula",
+    "formula": "average(machine.ram)/29000000000", <2>
+    "label": "Disk space utilization",
+    "format": { "type": "percent", "decimals": 2, "compact": false },
+    "max": { "operation": "formula", "formula": "max(machine.ram)/32211000000" },
+    "title": { "visible": true },
+    "ticks": { "visible": true, "mode": "bands" },
     "color": {
       "type": "dynamic",
-      "range": "absolute",
-      "steps": [
-        { "color": "#209280", "gte": 0, "lt": 6000 },
-        { "color": "#d6bf57", "gte": 6000, "lt": 8000 },
-        { "color": "#cc5642", "gte": 8000 } <1>
+      "range": "percentage",
+      "steps": [ <3>
+        { "gte": 0, "lt": 60, "color": "#24c292" },
+        { "gte": 60, "lt": 80, "color": "#EAAE01" },
+        { "gte": 80, "color": "#f6726a" }
       ]
     }
   },
@@ -457,15 +464,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
-  },
-  "styling": {
-    "shape": { "type": "semi_circle" } <2>
   }
 }'
 ```
 
-1. The highest band has no upper limit (`lt` omitted), so any value at or above 8000 shows in red.
-2. `semi_circle` works well for utilization gauges because the 180-degree arc mimics a traditional dial meter.
+1. `circle` draws a full 360-degree gauge, which works well for utilization percentages where the full range is always visible.
+2. The `formula` divides average RAM by a reference capacity value to produce a 0–1 ratio formatted as percent. Replace with your actual disk metric (for example, `sum(system.filesystem.used.bytes) / sum(system.filesystem.total.bytes)`).
+3. The `percentage` range maps thresholds proportionally: green below 60%, yellow between 60–80%, and red above 80%, so the gauge turns red only when disk usage becomes critical.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
