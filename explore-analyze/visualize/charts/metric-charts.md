@@ -150,17 +150,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "type": "primary",
       "operation": "count",
+      "empty_as_null": true,
       "label": "Page views",
-      "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "expression": "" }
+      "format": { "type": "number", "decimals": 0, "compact": true }
     },
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "count(shift='''1w''')",
+      "formula": "count(shift='\''1w'\'')", <1>
+      "compare": { <2>
+        "to": "primary",
+        "palette": "compare_to",
+        "icon": true,
+        "value": true
+      },
       "label": "Compared to previous week",
-      "format": { "type": "number", "decimals": 0, "compact": true },
-      "color": { "type": "static", "color": "#6092c0" }
+      "color": { "type": "none" }
     }
   ],
   "data_source": {
@@ -170,10 +175,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "styling": {
     "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
-    "secondary": { "value": { "alignment": "right" } }
+    "secondary": {
+      "label": { "visible": true, "placement": "before" },
+      "value": { "alignment": "right" }
+    }
   }
 }'
 ```
+
+1. `shift='1w'` runs the same count offset by one week, providing the comparison baseline.
+2. `compare.to: "primary"` displays the *difference* between primary and secondary instead of the raw secondary value. `palette: "compare_to"` colors the badge green for increases and red for decreases. `icon: true` adds a directional arrow.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
@@ -211,6 +222,8 @@ You can combine progress bars with secondary metrics to show both progress towar
 ::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
+This example creates a metric that shows average daily transactions against a target of 300, with a progress bar that fills as the metric approaches the goal.
+
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -218,27 +231,41 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Content-Type: application/json" \
   -d '{
   "type": "metric",
-  "title": "Storage used",
+  "title": "Transactions per day",
   "filters": [],
   "query": { "expression": "" },
   "metrics": [
     {
       "type": "primary",
-      "operation": "sum",
-      "field": "bytes",
-      "format": { "type": "bytes" },
-      "filter": { "expression": "" }
+      "operation": "formula",
+      "formula": "count() / (time_range() / 1000 / 60 / 60 / 24)", <1>
+      "label": "Transactions per day",
+      "format": { "type": "number", "compact": true, "decimals": 2 },
+      "background_chart": { <2>
+        "type": "bar",
+        "max_value": { "operation": "static_value", "value": 300 } <3>
+      },
+      "color": { "type": "auto" }
     }
   ],
-  "breakdown_by": { "operation": "terms", "fields": ["machine.os.keyword"], "limit": 5 },
   "data_source": {
     "type": "data_view_spec",
-    "index_pattern": "kibana_sample_data_logs",
-    "time_field": "timestamp"
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
   },
-  "styling": { "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } } }
+  "styling": {
+    "primary": {
+      "position": "bottom",
+      "labels": { "alignment": "left" },
+      "value": { "sizing": "auto", "alignment": "right" }
+    }
+  }
 }'
 ```
+
+1. `time_range()` returns the current time range in milliseconds. Dividing by it normalizes the count to a per-day rate regardless of how wide the time range is.
+2. `background_chart.type: "bar"` renders a horizontal progress bar behind the metric value.
+3. `static_value: 300` sets the target. The bar fills proportionally as the metric approaches this value.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
@@ -393,18 +420,28 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "type": "primary",
       "operation": "formula",
-      "formula": "count(kql='''response >= 200 and response < 300''') / count()", <1>
+      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)", <1>
       "label": "Successful requests (2xx)",
-      "format": { "type": "percent", "decimals": 1 }, <2>
-      "color": { "type": "static", "color": "#209280" }
+      "format": { "type": "percent", "decimals": 1, "compact": true },
+      "background_chart": { "type": "trend" }, <2>
+      "color": { <3>
+        "type": "dynamic",
+        "range": "absolute",
+        "steps": [
+          { "lt": 0.75, "color": "#f6726a" },
+          { "gte": 0.75, "lt": 0.95, "color": "#fcd883" },
+          { "gte": 0.95, "color": "#24c292" }
+        ]
+      },
+      "apply_color_to": "background" <4>
     },
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "0.95", <3>
+      "formula": "0.95", <5>
+      "format": { "type": "percent", "decimals": 2 },
       "label": "Target:",
-      "format": { "type": "percent", "decimals": 0 },
-      "color": { "type": "static", "color": "#6092c0" }
+      "color": { "type": "none" }
     }
   ],
   "data_source": {
@@ -413,15 +450,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "time_field": "timestamp"
   },
   "styling": {
-    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
-    "secondary": { "value": { "alignment": "right" } }
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": { "label": { "visible": true, "placement": "before" }, "value": { "alignment": "right" } }
   }
 }'
 ```
 
-1. A KQL-filtered formula divides successful responses (2xx) by total responses.
-2. Formats the result as a percentage.
-3. The secondary metric displays a fixed 95% target for comparison.
+1. `response.keyword` is stored as a string in the sample data, so the comparison values must be quoted.
+2. `background_chart.type: "trend"` renders a sparkline in the background showing how the metric evolves over time.
+3. `dynamic` color with `absolute` thresholds applies different colors based on the metric value — red below 75%, yellow between 75% and 95%, green at or above 95%.
+4. `apply_color_to: "background"` colors the tile background rather than the number itself.
+5. The secondary metric displays a fixed 95% target for comparison.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
@@ -462,24 +501,36 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "type": "primary",
       "operation": "formula",
-      "formula": "count(kql='''response >= 200 and response < 300''') / count()",
+      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)",
       "label": "Successful requests (2xx)",
-      "format": { "type": "percent", "decimals": 1 },
-      "color": { "type": "static", "color": "#209280" }
+      "format": { "type": "percent", "decimals": 1, "compact": true },
+      "background_chart": { "type": "trend" },
+      "color": {
+        "type": "dynamic",
+        "range": "absolute",
+        "steps": [
+          { "lt": 0.75, "color": "#f6726a" },
+          { "gte": 0.75, "lt": 0.95, "color": "#fcd883" },
+          { "gte": 0.95, "color": "#24c292" }
+        ]
+      },
+      "apply_color_to": "background"
     },
     {
       "type": "secondary",
       "operation": "formula",
       "formula": "0.95",
+      "format": { "type": "percent", "decimals": 2 },
       "label": "Target:",
-      "format": { "type": "percent", "decimals": 0 },
-      "color": { "type": "static", "color": "#6092c0" }
+      "color": { "type": "none" }
     }
   ],
   "breakdown_by": { <1>
     "operation": "terms",
     "fields": ["geo.dest"],
-    "limit": 10 <2>
+    "limit": 10, <2>
+    "rank_by": { "type": "custom", "operation": "count", "field": "___records___", "direction": "desc" }, <3>
+    "columns": 5 <4>
   },
   "data_source": {
     "type": "data_view_spec",
@@ -487,14 +538,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "time_field": "timestamp"
   },
   "styling": {
-    "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
-    "secondary": { "value": { "alignment": "right" } }
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": { "label": { "visible": true, "placement": "before" }, "value": { "alignment": "right" } }
   }
 }'
 ```
 
 1. `breakdown_by` splits the metric into separate tiles, one per destination country.
 2. Shows the top 10 countries by document count.
+3. `rank_by` with `field: "___records___"` ranks tiles by document count, ensuring the countries with the most traffic appear first.
+4. `columns: 5` arranges the tiles in a 5-column grid.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
@@ -532,29 +585,26 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "type": "primary",
       "operation": "count",
+      "empty_as_null": true,
       "label": "Page views",
       "format": { <1>
         "type": "number",
         "decimals": 0,
         "compact": true
-      },
-      "filter": { "expression": "" }
+      }
     },
     {
       "type": "secondary", <2>
       "operation": "formula",
-      "formula": "count(shift='''1w''')", <3>
-      "label": "Compared to previous week",
-      "format": {
-        "type": "number",
-        "decimals": 0,
-        "compact": true
+      "formula": "count(shift='\''1w'\'')", <3>
+      "compare": { <4>
+        "to": "primary",
+        "palette": "compare_to",
+        "icon": true,
+        "value": true
       },
-      "filter": { "expression": "" },
-      "color": {
-        "type": "static",
-        "color": "#6092c0"
-      }
+      "label": "Compared to previous week",
+      "color": { "type": "none" }
     }
   ],
   "data_source": {
@@ -564,14 +614,18 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   },
   "styling": {
     "primary": { "labels": { "alignment": "left" }, "value": { "alignment": "right" } },
-    "secondary": { "value": { "alignment": "right" } }
+    "secondary": {
+      "label": { "visible": true, "placement": "before" },
+      "value": { "alignment": "right" }
+    }
   }
 }'
 ```
 
 1. `compact: true` displays large numbers in abbreviated form (for example, 1.2K).
-2. The secondary metric appears below the primary value as a comparison indicator.
-3. `shift='1w'` runs the same count query offset by one week, enabling trend detection.
+2. The secondary metric appears below the primary value as a comparison badge.
+3. `shift='1w'` runs the same count query offset by one week.
+4. `compare.to: "primary"` displays the difference from the primary rather than the raw secondary value. `palette: "compare_to"` colors the badge green for increases and red for decreases. `icon: true` adds a directional arrow (↑ or ↓).
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
