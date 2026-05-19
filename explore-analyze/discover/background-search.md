@@ -112,6 +112,7 @@ From the list of background searches, you can reopen and edit any searches, but 
    - To open it to view its results and continue your explorations, select its name. Relative dates are converted to absolute dates.
    - To rename it, select the {icon}`boxes_horizontal` **More actions** button, then select {icon}`pencil` **Edit name**. By default, background searches get default names that indicate their execution date and time.
    - To extend its current expiration date by another 7 days, select the {icon}`boxes_horizontal` More actions button, then select **Extend**.
+   - {applies_to}`stack: ga 9.5, serverless: ga` To inspect the details of a background search, select the {icon}`boxes_horizontal` **More actions** button, then select {icon}`document` **Inspect**. A child flyout opens showing the configuration for that background search.
    - To delete it, select the {icon}`boxes_horizontal` More actions button, then select {icon}`trash` **Delete**.
 
 
