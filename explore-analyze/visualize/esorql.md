@@ -11,7 +11,7 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
+You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard. For a comparison of ES|QL and Lens (data view-based) visualizations, refer to [Choose between Lens and ES|QL](../visualize.md#lens-vs-esql).
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 

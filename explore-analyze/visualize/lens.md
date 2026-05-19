@@ -17,7 +17,7 @@ The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.
 
 Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
 
-Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers. For use cases that require full query language flexibility, such as cross-index queries or complex transformations, consider [ES|QL visualizations](esorql.md) instead. For a side-by-side comparison, refer to [Choose between Lens and ES|QL](../visualize.md#lens-vs-esql).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards

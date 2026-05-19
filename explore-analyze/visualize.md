@@ -46,3 +46,15 @@ $$$panels-editors$$$
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
 
+## Choose between Lens and ES|QL [lens-vs-esql]
+
+**Lens** and **ES|QL** are the two primary approaches for building chart visualizations in {{kib}}. Both work on dashboards, but they suit different use cases:
+
+| Use case | Recommended approach |
+|---|---|
+| Simple aggregations such as count, average, or sum on a known index | [Lens](visualize/lens.md): drag-and-drop fields, no query required |
+| Complex filtering, custom calculations, or data transformations | [{{esql}}](visualize/esorql.md): full query language flexibility |
+| Queries that span multiple indices or ad-hoc exploration | [{{esql}}](visualize/esorql.md): `FROM` supports any index pattern |
+| Formulas or time-shift comparisons | [Lens](visualize/lens.md): [formulas](visualize/lens.md#lens-formulas) and [time shifts](visualize/lens.md#compare-data-with-time-offsets) are Lens-specific features |
+| Quick prototyping starting from Discover | [{{esql}}](visualize/esorql.md): edit the query and visualization in one flow |
+
