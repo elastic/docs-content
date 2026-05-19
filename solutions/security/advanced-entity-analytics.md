@@ -31,14 +31,18 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Investigate entity connections and relationships in a graph | [](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
-| {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
+| {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
 
 Entity analytics operates continuously across several stages:
 
-1. **Collect data:** The risk scoring engine ingests detection alerts, asset criticality levels, and privileged user designations from across your {{elastic-sec}} deployment.
-2. **Score risk:** The engine calculates risk scores (0–100) for hosts, users, and services based on alert severity, frequency, and asset criticality. Scores are recalculated on a recurring interval.
+1. **Collect data:** Risk scoring ingests the following risk inputs from across your {{elastic-sec}} deployment:
+    * Detection alerts
+    * Asset criticality levels
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Watchlist membership
+    * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user designations
+2. **Score risk:**  Risk scores (0–100) are calculated for hosts, users, and services based on alert severity, frequency, and asset criticality. Scores are recalculated on a recurring interval.
 3. **Detect anomalies:** Prebuilt {{ml}} jobs identify unusual patterns in user and host behavior that may indicate compromise or insider threats.
 4. **Enrich entities:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) reconciles data from ingested logs, identity providers, and risk scores into a unified view of each entity.
 
@@ -52,7 +56,7 @@ Entity analytics provides the following core capabilities that work together to 
 
 ### Entity risk scoring
 
-Assign risk scores to hosts, users, and services based on detection alerts and asset criticality. The risk scoring engine runs on a recurring interval, using a weighted sum to calculate scores from 0 (lowest risk) to 100 (highest risk). Use risk scores to identify which entities require immediate attention and track how risk changes over time.
+Assign risk scores to hosts, users, and services based on detection alerts and asset criticality. Risk scoring runs on a recurring interval, using a weighted sum to calculate scores from 0 (lowest risk) to 100 (highest risk). Use risk scores to identify which entities require immediate attention and track how risk changes over time.
 
 ### Advanced behavioral detections
 
@@ -84,7 +88,7 @@ Investigate entity connections and relationships directly from the entity detail
 
 ### Privileged user monitoring
 ```yaml {applies_to}
-stack: deprecated =9.4, ga =9.3, preview 9.1-9.2
+stack: removed =9.4, ga =9.3, preview 9.1-9.2
 ```
 
 Track the activity of users with elevated permissions, such as system administrators or users with access to sensitive data. Identify suspicious activities like over-provisioning of rights or potential insider threats before they cause damage.
