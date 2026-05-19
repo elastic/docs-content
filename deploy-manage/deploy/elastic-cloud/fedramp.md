@@ -28,7 +28,7 @@ This table provides a comparison of features and capabilities included in {{ech}
 
 | Feature | {{ech}} | {{fedramp-mod}} | {{fedramp-high}} |
 |--------------|-----------|--------|-----------|
-| Trial period | 14 days | 30 days | none |
+| Trial period | 14 days | 14 days | none |
 | Marketplace offering | AWS/GCP/Azure | AWS GovCloud | AWS GovCloud  |
 | Cloud service provider | AWS/GCP/Azure | AWS GovCloud | AWS GovCloud |
 | [Required subscription level](https://www.elastic.co/pricing) | Standard, Gold, Platinum, Enterprise | Platinum, Enterprise | Enterprise |

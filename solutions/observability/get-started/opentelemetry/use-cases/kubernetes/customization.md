@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Customize the configuration
+# Customize the EDOT Kubernetes configuration [k8s-edot-customization]
 
 To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
 
