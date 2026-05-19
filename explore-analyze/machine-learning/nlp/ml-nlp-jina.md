@@ -19,11 +19,11 @@ Currently, the following models are available as built-in models:
 
 **Embedding models**
 
-* [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small)
-* [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano)
-* [`jina-embeddings-v5-text-small`](#jina-embeddings-v5-text-small)
-* [`jina-embeddings-v5-text-nano`](#jina-embeddings-v5-text-nano)
-* [`jina-embeddings-v3`](#jina-embeddings-v3)
+* [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small): multimodal (text, image, audio, video, PDF)
+* [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano): multimodal (text, image, audio, video, PDF)
+* [`jina-embeddings-v5-text-small`](#jina-embeddings-v5-text-small): text-only
+* [`jina-embeddings-v5-text-nano`](#jina-embeddings-v5-text-nano): text-only
+* [`jina-embeddings-v3`](#jina-embeddings-v3): text-only
 
 **Rerankers**
 
@@ -41,24 +41,59 @@ Texts with similar meaning are mapped to nearby points in vector space, so you c
 
 When you send text to an EIS {{infer}} endpoint that uses an embedding model, the model returns a vector of floating-point numbers (for example, 1024 values). {{es}} stores these vectors in [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields or through the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field and uses vector similarity search to retrieve the most relevant documents for a given query. Unlike [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), which expands text into sparse token-weight vectors, these models produce compact dense vectors that are well suited for multilingual and cross-domain use cases. Multimodal models embed text, images, video, audio, and documents such as PDF into the same vector space so you can index and query across media types together.
 
-### `jina-embeddings-v5-omni-small` [jina-embeddings-v5-omni-small]
+### Jina v5 omni embedding models [jina-embeddings-v5-omni]
 
 {applies_to}`stack: ga 9.5`
 
-The `jina-embeddings-v5-omni-small` model is a multimodal dense vector embedding model available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
-It turns text, images, video, audio, and documents such as PDF into vectors in one shared space, so you can retrieve, cluster, and score similarity across languages and media types from a single index.
+The Jina v5 omni embedding models are multimodal dense vector embedding models available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They turn text, images, video, audio, and documents such as PDF into vectors in one shared space, so you can retrieve, cluster, and score similarity across languages and media types from a single index. There are two Jina v5 omni embedding models available:
 
-The `jina-embeddings-v5-omni-small` model has 700M parameters, supports a 32768 token input context window, and produces 1024-dimension embeddings by default.
+- [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small): has 700M parameters, supports a 32768 token input context window, and produces 1024-dimension embeddings
+
+- [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano): has 266M parameters, supports up to an 8192-token text context window, and produces 768-dimensional vectors
 
 For more information, refer to the [Elastic blog post](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index), the [model card](https://huggingface.co/jinaai/jina-embeddings-v5-omni-small) on Hugging Face, or the [model collection](https://huggingface.co/collections/jinaai/jina-embeddings-v5-omni).
 
 #### Requirements [jina-embeddings-v5-omni-small-req]
 
-To use `jina-embeddings-v5-omni-small`, you must have the [appropriate subscription]({{subscriptions}}) level or the trial period activated.
+To use `jina-embeddings-v5-omni-small` and `jina-embeddings-v5-omni-nano`, you must have the [appropriate subscription]({{subscriptions}}) level or the trial period activated.
 
-#### Getting started with `jina-embeddings-v5-omni-small` through Elastic {{infer-cap}} Service [jina-embeddings-v5-omni-small-getting-started]
+#### Performance considerations [jina-omni-performance]
 
-Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field using the `embedding` task type.
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
+
+- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
+- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
+- For long text fields: the model accepts up to a 32768 token context window, but splitting very large passages into chunks often improves latency and per-chunk quality.
+
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+- Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
+- Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
+- `jina-embeddings-v5-omni-nano` works best on small, medium or large sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
+- Although the model supports an 8192 token context window, consider chunking very large fields to control latency and cost.
+- Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
+- The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+
+:::
+
+::::
+
+#### Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service [jina-omni-getting-started]
+
+This request creates a new {{infer}} endpoint. The URL path uses the `embedding` task type and ends with the `inference_id` you want to use.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -69,13 +104,39 @@ PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
   }
 }
 ```
- Reference the `inference_id` of this endpoint in [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings, in `embedding` {{infer}} requests, or in search queries that call the endpoint.
 
-The examples below use the custom `inference_id` called `eis-jina-embeddings-v5-omni-small` that was created in the earlier PUT request. Replace it with your own `inference_id` or with the predefined endpoint name if needed.
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "service": "elastic",
+  "service_settings": {
+    "model_id": "jina-embeddings-v5-omni-nano"
+  }
+}
+```
+
+:::
+
+::::
+
+Reference the `inference_id` of this endpoint in [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings, in `embedding` {{infer}} requests, or in search queries that call the endpoint.
+
+Below are examples of ingesting different types of content and generating vector embeddings for text, images, audio, video, and PDF documents using the `inference_id` created in the earlier request.
 
 ##### Text as a JSON array
 
 Pass one or more plain text strings in the `input` array.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -86,9 +147,33 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    "A small blue square"
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### Text and image fused into one embedding
 
 List both a `text` entry and a base64 `image` entry inside `content` so the model produces one embedding that represents the combined multimodal input.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -111,9 +196,45 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "A small blue square"
+        },
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### Image only (base64-encoded image bytes)
 
 Use a single `image` block when the input contains only image data.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -132,9 +253,41 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "image",
+          "format": "base64",
+          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### Video only (base64-encoded video bytes)
 
 Encode a short video clip as base64. Short video clips usually produce more accurate embeddings for search than creating a single embedding from a longer video.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -153,9 +306,41 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "video",
+          "format": "base64",
+          "value": "data:video/mp4;base64,<BASE64_VIDEO_DATA>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### Audio only (base64-encoded audio bytes)
 
 Use this pattern for speech, music, or other audio you have already read and base64-encoded.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -174,9 +359,41 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "audio",
+          "format": "base64",
+          "value": "data:audio/wav;base64,<BASE64_AUDIO_DATA>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### PDF or other supported documents (base64-encoded file bytes)
 
 Use the document block with base64-encoded files, such as PDFs, to create document embeddings.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 POST _inference/embedding/eis-jina-embeddings-v5-omni-small
@@ -195,9 +412,41 @@ POST _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
+:::
+
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
+
+```console
+POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "pdf",
+          "format": "base64",
+          "value": "data:application/pdf;base64,<BASE64_PDF_DATA>"
+        }
+      ]
+    }
+  ]
+}
+```
+
+:::
+
+::::
+
 ##### Custom endpoint with truncated embedding dimensions (Matryoshka-style output size)
 
-You can create another endpoint with a smaller dimensions value if you want shorter vectors from the same model. Smaller vectors, such as 32 dimensions, can reduce storage usage and improve search speed.
+You can create another endpoint with a smaller `dimensions` value if you want shorter vectors from the same model. Smaller vectors, such as 32 dimensions, can reduce storage usage and improve search speed.
+
+::::{tab-set}
+:group: jina-omni
+
+:::{tab-item} jina-embeddings-v5-omni-small
+:sync: omni-small
 
 ```console
 PUT _inference/embedding/jina-omni-small-32d
@@ -210,173 +459,10 @@ PUT _inference/embedding/jina-omni-small-32d
 }
 ```
 
-#### Performance considerations [jina-embeddings-v5-omni-small-performance]
+:::
 
-* Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
-* Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
-* For long text fields: the model accepts up to a 32768 token context window, but splitting very large passages into chunks often improves latency and per-chunk quality.
-
-### `jina-embeddings-v5-omni-nano` [jina-embeddings-v5-omni-nano]
-
-```{applies_to}
-stack: ga 9.5
-```
-
-The `jina-embeddings-v5-omni-nano` model is a multimodal dense vector embedding model available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
-It maps text, images, video, audio, and documents such as PDF into one vector space for retrieval, clustering, and similarity scoring. 
-
-The default setup uses 266M parameters, supports up to an 8192-token text context window, and writes 768-dimensional vectors.
-
-For more information, refer to the [Elastic blog post](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index), the [model card](https://huggingface.co/jinaai/jina-embeddings-v5-omni-nano) on Hugging Face, or the [model collection](https://huggingface.co/collections/jinaai/jina-embeddings-v5-omni).
-
-#### Requirements [jina-embeddings-v5-omni-nano-req]
-
-To use `jina-embeddings-v5-omni-nano`, you must have the [appropriate subscription]({{subscriptions}}) level or the trial period activated.
-
-#### Getting started with `jina-embeddings-v5-omni-nano` through Elastic {{infer-cap}} Service [jina-embeddings-v5-omni-nano-getting-started]
-
-Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-nano` model in the `model_id` field using the `embedding` task type.
-
-```console
-PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "service": "elastic",
-  "service_settings": {
-    "model_id": "jina-embeddings-v5-omni-nano"
-  }
-}
-```
-
-Reference the `inference_id` of this endpoint in [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings, in `embedding` {{infer}} requests, or in search queries that call the endpoint.
-
-The examples below use the custom `inference_id` called `eis-jina-embeddings-v5-omni-nano` that was created in the earlier PUT request. Replace it with your own `inference_id` or with the predefined endpoint name if needed.
-
-
-##### Text as a JSON array
-
-Pass one or more plain text strings in the `input` array.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    "This is a test"
-  ]
-}
-```
-
-##### Text and image fused into one embedding
-
-List both a `text` entry and a base64 `image` entry inside `content` so the model produces one embedding that represents the combined multimodal input.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    {
-      "content": [
-        {
-          "type": "text",
-          "value": "A small blue square"
-        },
-        {
-          "type": "image",
-          "format": "base64",
-          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
-        }
-      ]
-    }
-  ]
-}
-```
-
-##### Image only (base64-encoded image bytes)
-
-Use a single `image` block when the input contains only image data.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    {
-      "content": [
-        {
-          "type": "image",
-          "format": "base64",
-          "value": "data:image/png;base64,<BASE64_IMAGE_DATA>"
-        }
-      ]
-    }
-  ]
-}
-```
-
-##### Video only (base64-encoded video bytes)
-
-Encode a short video clip as base64. Short video clips usually produce more accurate embeddings for search than creating a single embedding from a longer video.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    {
-      "content": [
-        {
-          "type": "video",
-          "format": "base64",
-          "value": "data:video/mp4;base64,<BASE64_VIDEO_DATA>"
-        }
-      ]
-    }
-  ]
-}
-```
-
-##### Audio only (base64-encoded audio bytes)
-
-Use this pattern for speech, music, or other audio you have already read and base64-encoded.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    {
-      "content": [
-        {
-          "type": "audio",
-          "format": "base64",
-          "value": "data:audio/wav;base64,<BASE64_AUDIO_DATA>"
-        }
-      ]
-    }
-  ]
-}
-```
-
-##### PDF or other supported documents (base64-encoded file bytes)
-
-Use the document block with base64-encoded files, such as PDFs, to create document embeddings.
-
-```console
-POST _inference/embedding/eis-jina-embeddings-v5-omni-nano
-{
-  "input": [
-    {
-      "content": [
-        {
-          "type": "pdf",
-          "format": "base64",
-          "value": "data:application/pdf;base64,<BASE64_PDF_DATA>"
-        }
-      ]
-    }
-  ]
-}
-```
-
-##### Custom endpoint with truncated embedding dimensions (Matryoshka-style output size)
-
-You can create another endpoint with a smaller dimensions value if you want shorter vectors from the same model. Smaller vectors, such as 32 dimensions, can reduce storage usage and improve search speed.
+:::{tab-item} jina-embeddings-v5-omni-nano
+:sync: omni-nano
 
 ```console
 PUT _inference/embedding/jina-omni-nano-32d
@@ -389,15 +475,9 @@ PUT _inference/embedding/jina-omni-nano-32d
 }
 ```
 
-#### Performance considerations [jina-embeddings-v5-omni-nano-performance]
+:::
 
-* Use short video clips instead of long videos. Embeddings created from long videos are often less accurate for search because they try to represent too much content at once. Splitting videos into short clips or scenes improves retrieval quality.
-* Image, video, and audio {{infer}} is typically more expensive than text alone. Batch and chunk content to control latency and cost.
-* `jina-embeddings-v5-omni-nano` works best on small, medium or large sized fields that contain natural language.
-For connector or web crawler use cases, this aligns best with fields like title, description, summary, or abstract.
-Although the model supports an 8192 token context window, consider chunking very large fields to control latency and cost.
-* Larger documents take longer at ingestion time, and {{infer}} time per document also increases the more fields in a document that need to be processed.
-* The more fields your pipeline has to perform {{infer}} on, the longer it takes per document to ingest.
+::::
 
 ### `jina-embeddings-v5-text-small` [jina-embeddings-v5-text-small]
 
