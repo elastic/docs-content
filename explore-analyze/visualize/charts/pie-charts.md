@@ -91,7 +91,7 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example creates a pie chart sliced by the top 5 destination countries, with values shown as percentages. The donut hole size is controlled in the Lens UI style settings.
+This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -100,19 +100,29 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Content-Type: application/json" \
   -d '{
   "type": "pie", <1>
-  "title": "Donut chart by destination",
+  "title": "Logs per type",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "visibility": "auto", "nested": false },
+  "legend": { "visibility": "visible", "nested": false },
   "metrics": [{ "operation": "count", "empty_as_null": true }],
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["geo.dest"],
-      "limit": 5, <2>
+      "fields": ["tags.keyword"],
+      "limit": 5,
       "other_bucket": { "include_documents_without_field": false },
       "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
-      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [ <2>
+          { "values": ["success"], "color": { "type": "from_palette", "palette": "default", "index": 0 } },
+          { "values": ["error"],   "color": { "type": "from_palette", "palette": "default", "index": 6 } },
+          { "values": ["info"],    "color": { "type": "from_palette", "palette": "default", "index": 3 } },
+          { "values": ["warning"], "color": { "type": "from_palette", "palette": "default", "index": 9 } },
+          { "values": ["security"],"color": { "type": "from_palette", "palette": "default", "index": 4 } }
+        ]
+      }
     }
   ],
   "data_source": {
@@ -123,13 +133,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "styling": {
     "donut_hole": "m", <3>
     "labels": { "visible": true, "position": "inside" },
-    "values": { "visible": true, "mode": "percentage" }
+    "values": { "visible": true, "mode": "absolute" }
   }
 }'
 ```
 
 1. `pie` creates a pie or donut chart. The `donut_hole` style setting controls the size of the center hole.
-2. `limit: 5` limits the chart to the top 5 destination countries, keeping the pie readable.
+2. `color.mapping` pins each tag value to a specific palette index so colors stay consistent even when data changes.
 3. `donut_hole: "m"` hollows out the center of the pie. Valid values are `"s"` (small), `"m"` (medium), and `"l"` (large).
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
@@ -616,6 +626,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "time_field": "timestamp"
   },
   "styling": {
+    "donut_hole": "l",
     "labels": { "visible": true, "position": "inside" },
     "values": { "visible": true, "mode": "percentage" }
   }
