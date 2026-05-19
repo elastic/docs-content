@@ -64,15 +64,6 @@ You have a few options for installing and managing an {{agent}}:
     * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
-## Upgrade support by installation method [elastic-agent-upgrade-support]
-
-Whether {{agent}} can be upgraded through {{fleet}} depends on how it was installed:
-
-::::{include} _snippets/install-method-upgrade-support.md
-::::
-
-For full details and manual upgrade procedures for DEB and RPM packages, refer to [Upgrade {{fleet}}-managed {{agent}}s](/reference/fleet/upgrade-elastic-agent.md#upgrade-agent-restrictions).
-
 ::::{admonition} Restrictions in {{serverless-short}}
 :class: important
 
