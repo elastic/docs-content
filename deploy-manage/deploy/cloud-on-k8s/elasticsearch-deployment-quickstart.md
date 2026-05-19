@@ -164,7 +164,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
             ```
 
             :::{note}
-            Port-forwarding is mainly intended for local testing. In production environments, if the cluster must be accessible from outside the {{k8s}} cluster, use a `LoadBalancer` Service or an Ingress. Refer to [Allow public access](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-allow-public-access) for more information.
+            Port-forwarding is mainly intended for local testing. In production environments, if the cluster must be accessible from outside the {{k8s}} cluster, consider using a `LoadBalancer` Service or another exposure mechanism. Refer to [Allow public access](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-allow-public-access) for more information.
             :::
 
         1. Access {{es}} through the forwarded port:
