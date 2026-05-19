@@ -123,7 +123,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
 
     By default, ECK enables HTTPS for {{es}}, generates a private CA for each cluster, and issues certificates signed for the associated DNS service names, such as `quickstart-es-http.<namespace>.svc`.
 
-    The CA certificate is available in the `<name>-es-http-certs-public` secret. For this `quickstart` cluster, you can obtain the CA with:
+    The CA certificate is available in the `<name>-es-http-certs-public` secret. For this `quickstart` cluster, run the following command to save the CA certificate to a local file named `quickstart-es-ca.crt`:
 
     ```sh
     kubectl get secret quickstart-es-http-certs-public -o go-template='{{index .data "ca.crt" | base64decode }}' > quickstart-es-ca.crt
