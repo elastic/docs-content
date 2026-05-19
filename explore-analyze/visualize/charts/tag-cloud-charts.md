@@ -163,21 +163,22 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "kbn-xsrf: true" \
   -H "Content-Type: application/json" \
   -d '{
-  "type": "tag_cloud", <1>
+  "type": "tag_cloud",
   "title": "Popular request URLs",
   "filters": [],
   "query": { "expression": "" },
-  "metric": {
-    "operation": "count",
-    "format": {
-      "type": "number"
-    },
-    "filter": { "expression": "" }
-  },
+  "metric": { "operation": "count", "empty_as_null": true },
   "tag_by": {
     "operation": "terms",
-    "fields": ["request.keyword"], <2>
-    "limit": 30 <3>
+    "fields": ["request.keyword"], <1>
+    "limit": 30, <2>
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+  },
+  "styling": {
+    "orientation": "horizontal",
+    "font_size": { "min": 18, "max": 72 },
+    "caption": { "visible": true }
   },
   "data_source": {
     "type": "data_view_spec",
@@ -187,9 +188,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `tag_cloud` renders text labels with font size proportional to the metric value.
-2. `request.keyword` provides the text for each tag, showing the full URL path.
-3. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+1. `request.keyword` provides the text for each tag, showing the full URL path. Tags are ranked by count so the most-visited URLs appear largest.
+2. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -200,7 +200,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * Example based on: {{kib}} Sample Data Flights
     * **Tags**: `DestCityName` (Top 30 values)
     * **Metric**: Count
-    * **Orientation**: Multiple
+    * **Orientation**: Angled
     * **Color**: Gradient
 
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
@@ -220,28 +220,36 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Most popular flight destinations",
   "filters": [],
   "query": { "expression": "" },
-  "metric": {
-    "operation": "count", <1>
-    "format": { "type": "number" },
-    "filter": { "expression": "" }
-  },
+  "metric": { "operation": "count", "empty_as_null": true },
   "tag_by": {
     "operation": "terms",
-    "fields": ["DestCityName"], <2>
+    "fields": ["DestCityName"], <1>
     "limit": 30,
-    "color": { "mode": "gradient", "palette": "default" }
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": {
+      "mode": "gradient", <2>
+      "palette": "default",
+      "mapping": [],
+      "sort": "desc",
+      "gradient": [{ "type": "from_palette", "palette": "default", "index": 0 }]
+    }
+  },
+  "styling": {
+    "orientation": "angled", <3>
+    "font_size": { "min": 18, "max": 112 },
+    "caption": { "visible": true }
   },
   "data_source": {
     "type": "data_view_spec",
     "index_pattern": "kibana_sample_data_flights",
     "time_field": "timestamp"
-  },
-  "styling": { "orientation": "angled" }
+  }
 }'
 ```
 
-1. `count` sizes each tag by the number of flights to that destination. You could use `sum` or `average` on a numeric field for a different perspective (for example, total revenue per city).
-2. `DestCityName` provides human-readable city names as tag labels. The `color` gradient applies a spectrum of hues across city names, and `orientation: angled` allows words to appear at multiple angles.
+1. `DestCityName` provides human-readable city names as tag labels, sized by flight count so the busiest destinations appear largest.
+2. The `gradient` color mode with `sort: "desc"` applies the palette spectrum from the most to the least popular city, reinforcing the frequency ranking with color intensity.
+3. `orientation: "angled"` allows tags to appear at multiple angles, making better use of space when many cities compete for room.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
