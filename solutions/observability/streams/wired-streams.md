@@ -2,6 +2,7 @@
 applies_to:
   stack: preview 9.2
   serverless: preview
+description: Wired streams receive log data through a dedicated endpoint and route it into child streams based on partitioning rules.
 products:
   - id: observability
   - id: cloud-serverless
