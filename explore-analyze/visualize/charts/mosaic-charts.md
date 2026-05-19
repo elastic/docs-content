@@ -223,19 +223,16 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Response status by operating system",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "metric": {
-    "operation": "count",
-    "format": {
-      "type": "number"
-    },
-    "filter": { "expression": "" }
-  },
+  "legend": { "visibility": "auto", "nested": false },
+  "metric": { "operation": "count", "empty_as_null": true },
   "group_by": [ <2>
     {
       "operation": "terms",
       "fields": ["machine.os.keyword"],
-      "limit": 5
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
     }
   ],
   "group_breakdown_by": [ <3>
@@ -262,13 +259,13 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_logs",
     "time_field": "timestamp"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": { "values": { "visible": true, "mode": "percentage" } }
 }'
 ```
 
 1. `mosaic` renders a grid where both column width and row height encode proportions, making it easy to compare distributions across two dimensions.
-2. `group_by` defines the horizontal axis (columns). Each OS gets a column whose width reflects its share of total traffic.
-3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries. Color mapping for the breakdown dimension is not configurable via the API — Kibana applies the default palette automatically.
+2. `group_by` defines the horizontal axis (columns). Each OS gets a column whose width reflects its share of total traffic. The `color` on this dimension assigns palette colors to each OS value.
+3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -298,20 +295,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Product categories by continent",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "metric": { "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } },
+  "legend": { "visibility": "auto", "nested": false },
+  "metric": { "operation": "count", "empty_as_null": true },
   "group_by": [
     {
       "operation": "terms",
       "fields": ["geoip.continent_name"], <1>
-      "limit": 5
+      "limit": 9,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
     }
   ],
   "group_breakdown_by": [
     {
       "operation": "terms",
       "fields": ["category.keyword"], <2>
-      "limit": 5
+      "limit": 9,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
     }
   ],
   "data_source": {
@@ -319,11 +321,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     "index_pattern": "kibana_sample_data_ecommerce",
     "time_field": "order_date"
   },
-  "styling": { "values": { "mode": "percentage" } }
+  "styling": { "values": { "visible": true, "mode": "percentage" } }
 }'
 ```
 
-1. `geoip.continent_name` on the horizontal axis creates one column per continent, with width proportional to order volume.
+1. `geoip.continent_name` on the horizontal axis creates one column per continent, with width proportional to order volume. The `color` on this dimension assigns palette colors to each continent.
 2. `category.keyword` on the vertical axis splits each column by product category, so you can compare category proportions across regions.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
