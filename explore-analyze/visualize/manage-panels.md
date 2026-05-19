@@ -15,6 +15,21 @@ When creating a panel, you can choose to add it to a dashboard, or to save it to
 There are also some common options that you can configure on the various types of panels to make a dashboard easier to navigate and analyze.
 
 
+## Linked panels and dashboard-only panels [panel-states]
+
+Panels on a dashboard exist in one of two states:
+
+- **Linked to the Visualize Library**: the panel is saved as a shared object in the Visualize Library. You can add it to multiple dashboards. Any updates you make to the panel propagate to every dashboard that references it.
+- **Dashboard-only**: the panel configuration lives only inside the dashboard. It is not shared across dashboards. If you remove a dashboard-only panel, its configuration is permanently lost unless you saved it to the Visualize Library beforehand.
+
+You can move a panel between these two states:
+
+- **Link to library**: From the panel menu, select **Save to library** to promote a dashboard-only panel to a shared library object.
+- **Unlink from library**: From the panel menu, select **Unlink from library** to create an independent, dashboard-only copy of the panel. The original library object is unchanged, and future edits to the library object no longer affect this dashboard.
+
+Not all panel types support the Visualize Library. For details, refer to [Panel types compatible with the Visualize Library](visualize-library.md#visualize-library-compatibility).
+
+
 ### Save to the Visualize Library [save-to-visualize-library] 
 
 To use a panel on multiple dashboards, you can save it to the **Visualize Library**. Any updates made to a shared panel are replicated to all dashboards where the panel is added.
@@ -99,7 +114,7 @@ To make changes to the panel, use the panel menu options.
 
     * **Edit visualization** — Opens the editor so you can make changes to the panel.
 
-        To make changes without changing the original version, open the panel menu and click **Unlink from library**.
+        If the panel is linked to the Visualize Library, your edits affect every dashboard that uses the same library object. To make changes that apply only to this dashboard, select **Unlink from library** from the panel menu before editing. This creates an independent, dashboard-only copy: the original library object is unchanged, and this copy is no longer updated when the library object changes. Use this option when you need a dashboard-specific variation of a shared panel.
 
         :::{note}
         :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
