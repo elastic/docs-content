@@ -77,7 +77,7 @@ Customize your mosaic chart to display exactly the information you need, formatt
 
 ### Horizontal axis settings [horizontal-axis-settings]
 
-The **Horizontal axis** dimension defines the columns of the mosaic. Column widths represent the proportion of each category.
+The **Horizontal axis** dimension defines the columns of the mosaic. Column widths represent the proportion of each category. In the API, this corresponds to `group_breakdown_by`.
 
 **Data**
 :   The **Horizontal axis** dimension supports the following functions:
@@ -110,7 +110,7 @@ The **Horizontal axis** dimension defines the columns of the mosaic. Column widt
 
 ### Vertical axis settings [vertical-axis-settings]
 
-The **Vertical axis** dimension defines the rows within each column. Rectangle heights represent the proportion of each category within the column.
+The **Vertical axis** dimension defines the rows within each column. Rectangle heights represent the proportion of each category within the column. In the API, this corresponds to `group_by`, and color mapping is configured here.
 
 **Data**
 :   The **Vertical axis** dimension supports the following functions:
@@ -198,13 +198,13 @@ The following examples show various configuration options for building impactful
 :   Visualize how response status categories vary across operating systems:
 
     * Example based on: {{kib}} Sample Data Logs
-    * **Horizontal axis**: `machine.os.keyword` (Top 5 values)
-    * **Vertical axis**: **Filters**
+    * **Horizontal axis** (columns): `machine.os.keyword` (Top 5 values)
+    * **Vertical axis** (rows): **Filters**
       - "Success (2xx/3xx)": `response.keyword >= "200" AND response.keyword < "400"`
       - "Client errors (4xx)": `response.keyword >= "400" AND response.keyword < "500"`
       - "Server errors (5xx)": `response.keyword >= "500"`
     * **Metric**: Count
-    * **Color mapping**: Green for success, yellow for client errors, red for server errors
+    * **Color mapping**: Teal for success, pink for client errors, red for server errors
 
 ![Mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-example-response-by-os.png "=70%")
 
@@ -227,16 +227,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "metric": { "operation": "count", "empty_as_null": true },
   "group_by": [ <2>
     {
-      "operation": "terms",
-      "fields": ["machine.os.keyword"],
-      "limit": 5,
-      "other_bucket": { "include_documents_without_field": false },
-      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
-      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
-    }
-  ],
-  "group_breakdown_by": [ <3>
-    {
       "operation": "filters",
       "filters": [
         {
@@ -251,7 +241,25 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           "filter": { "expression": "response.keyword >= \"500\"" },
           "label": "Server errors (5xx)"
         }
-      ]
+      ],
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "from_palette", "palette": "default", "index": 0 } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "from_palette", "palette": "default", "index": 8 } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "from_palette", "palette": "default", "index": 6 } }
+        ]
+      }
+    }
+  ],
+  "group_breakdown_by": [ <3>
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
     }
   ],
   "data_source": {
@@ -264,8 +272,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `mosaic` renders a grid where both column width and row height encode proportions, making it easy to compare distributions across two dimensions.
-2. `group_by` defines the horizontal axis (columns). Each OS gets a column whose width reflects its share of total traffic. The `color` on this dimension assigns palette colors to each OS value.
-3. `group_breakdown_by` with `filters` defines the vertical axis (rows), splitting each column into response status categories using KQL queries.
+2. `group_by` defines the vertical axis (rows). Using `filters` here creates three named rows — one per response status category — each colored from the `mapping` so success, client errors, and server errors are immediately distinguishable.
+3. `group_breakdown_by` defines the horizontal axis (columns). Each OS becomes a column whose width reflects its share of total traffic.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -274,8 +282,8 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :   Show how product preferences vary across regions:
 
     * Example based on: {{kib}} Sample Data eCommerce
-    * **Horizontal axis**: `geoip.continent_name` (Top values)
-    * **Vertical axis**: `category.keyword` (Top 5 values)
+    * **Horizontal axis** (columns): `geoip.continent_name` (Top values)
+    * **Vertical axis** (rows): `category.keyword` (Top 9 values)
     * **Metric**: Count
 
 ![Mosaic chart showing product categories by continent](/explore-analyze/images/mosaic-example-category-by-continent.png "=70%")
@@ -300,7 +308,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_by": [
     {
       "operation": "terms",
-      "fields": ["geoip.continent_name"], <1>
+      "fields": ["category.keyword"], <1>
       "limit": 9,
       "other_bucket": { "include_documents_without_field": false },
       "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
@@ -310,7 +318,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "group_breakdown_by": [
     {
       "operation": "terms",
-      "fields": ["category.keyword"], <2>
+      "fields": ["geoip.continent_name"], <2>
       "limit": 9,
       "other_bucket": { "include_documents_without_field": false },
       "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
@@ -325,8 +333,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `geoip.continent_name` on the horizontal axis creates one column per continent, with width proportional to order volume. The `color` on this dimension assigns palette colors to each continent.
-2. `category.keyword` on the vertical axis splits each column by product category, so you can compare category proportions across regions.
+1. `category.keyword` on the vertical axis (`group_by`) creates one row per product category. The `color` mapping assigns a distinct palette color to each category, making it easy to track a category across columns.
+2. `geoip.continent_name` on the horizontal axis (`group_breakdown_by`) creates one column per continent, with width proportional to order volume from that region.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
