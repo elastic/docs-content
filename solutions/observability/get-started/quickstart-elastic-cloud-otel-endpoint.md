@@ -6,6 +6,9 @@ applies_to:
   serverless: ga
   deployment:
     ech:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -58,6 +61,10 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
 
 ::::::{step} Create an API key
 
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
+
 :::::{applies-switch}
 ::::{applies-item} serverless:
 
@@ -69,11 +76,11 @@ Alternatively, from within your project, go to **Add data**, select **Applicatio
     ```json
     {
       "otlp_writer": {
-        "cluster": [],
-        "indices": [
+        "applications": [
           {
-            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-            "privileges": ["auto_configure", "create_doc"]
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
           }
         ]
       }
@@ -92,11 +99,11 @@ POST /_security/api_key
   "name": "otlp-writer",
   "role_descriptors": {
     "otlp_writer": {
-      "cluster": [],
-      "indices": [
+      "applications": [
         {
-          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-          "privileges": ["auto_configure", "create_doc"]
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
         }
       ]
     }
@@ -104,7 +111,7 @@ POST /_security/api_key
 }
 ```
 :::{note}
-The API key authenticates the OTLP shipper to the {{motlp}} and authorizes writes to the destination {{es}} data streams. The `auto_configure` and `create_doc` privileges are required for all target data streams. The patterns above cover all dataset names for the three OTLP signal types. If you use data streams outside the `*.otel-*` pattern, add the corresponding index patterns to the `names` list.
+The API key authenticates the OTLP shipper to the {{motlp}}. To send data through the endpoint, the API key needs, at minimum, the `event:write` privilege for the `apm` application.
 :::
 :::
 ::::
@@ -118,11 +125,11 @@ The API key authenticates the OTLP shipper to the {{motlp}} and authorizes write
     ```json
     {
       "otlp_writer": {
-        "cluster": [],
-        "indices": [
+        "applications": [
           {
-            "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-            "privileges": ["auto_configure", "create_doc"]
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
           }
         ]
       }
@@ -141,17 +148,20 @@ POST /_security/api_key
   "name": "otlp-writer",
   "role_descriptors": {
     "otlp_writer": {
-      "cluster": [],
-      "indices": [
+      "applications": [
         {
-          "names": ["traces-*.otel-*", "metrics-*.otel-*", "logs-*.otel-*"],
-          "privileges": ["auto_configure", "create_doc"]
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
         }
       ]
     }
   }
 }
 ```
+:::{note}
+The API key authenticates the OTLP shipper to the {{motlp}}. The `event:write` privilege for the `apm` application is the minimum required to send data through the endpoint.
+:::
 :::
 ::::
 :::::
