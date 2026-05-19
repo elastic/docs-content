@@ -24,6 +24,6 @@ When subscribing from a marketplace, your marketplace email is used for your [El
 
 
 ::::{tip}
-You can also purchase {{ecloud}} through a reseller on any of these marketplaces. To explore this option, contact your reseller or [Elastic sales](https://www.elastic.co/contact).
+You can also purchase {{ecloud}} through a reseller on any of these marketplaces. Contact your reseller to learn more.
 ::::
 
