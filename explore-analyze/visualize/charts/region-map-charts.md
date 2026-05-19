@@ -156,7 +156,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["geo.dest"], <2>
-    "limit": 50 <3>
+    "limit": 50, <3>
+    "ems": { <4>
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
   },
   "data_source": {
     "type": "data_view_spec",
@@ -169,6 +173,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `region_map` renders a geographic choropleth where region color intensity reflects the metric value.
 2. `geo.dest` contains ISO country codes that are matched to EMS world country boundaries.
 3. `limit: 50` includes up to 50 countries, providing broad geographic coverage.
+4. `ems` sets the EMS boundary layer (`world_countries`) and the join field (`iso2`) used to match `geo.dest` values to map regions.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -208,7 +213,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["geoip.country_iso_code"], <2>
-    "limit": 50
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
   },
   "data_source": {
     "type": "data_view_spec",
@@ -219,7 +228,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. `unique_count` on `customer_id` counts distinct customers per country, avoiding inflation from repeat buyers.
-2. `geoip.country_iso_code` provides ISO codes that map directly to EMS world country boundaries.
+2. `geoip.country_iso_code` provides ISO codes that map directly to EMS world country boundaries via the `iso2` join field.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -259,7 +268,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "region": {
     "operation": "terms",
     "fields": ["DestCountry"], <2>
-    "limit": 50
+    "limit": 50,
+    "ems": {
+      "boundaries": "world_countries",
+      "join": "iso2"
+    }
   },
   "data_source": {
     "type": "data_view_spec",
