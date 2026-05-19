@@ -12,7 +12,7 @@ products:
 
 # Elastic Security MCP App [elastic-security-mcp-app]
 
-The Elastic Security MCP App brings interactive {{elastic-sec}} dashboards into Claude, Cursor, Visual Studio Code, and other [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) hosts. Triage alerts, hunt threats, correlate attack chains, and open cases inside the AI conversation, with each action writing back to {{es}} and {{kib}} through the same APIs the product uses.
+The Elastic Security MCP App brings interactive {{elastic-sec}} dashboards into Claude, Cursor, Visual Studio Code, and other [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) hosts. Use it to triage alerts, hunt threats, correlate attack chains, and open cases inside the AI conversation, with each action writing back to {{es}} and {{kib}} through the same APIs the product uses.
 
 The app is a reference implementation that you install on your own machine. The [`elastic/example-mcp-app-security`](https://github.com/elastic/example-mcp-app-security) repository hosts the open-source project, including the source code, releases, and host-specific setup guides. The app is not a built-in {{kib}} feature.
 
@@ -42,8 +42,8 @@ For per-tool capabilities and screenshots, refer to the [features overview](http
 ## Requirements [requirements]
 
 ::::{admonition} Requirements
-* {{stack}} 9.4 or later, or an {{sec-serverless}} project. Enable {{es}} security on stateful deployments.
-* A supported MCP host: [Claude Desktop](https://claude.ai/download), [Claude.ai](https://claude.ai/), [Cursor](https://cursor.com/), [Visual Studio Code](https://code.visualstudio.com/) with [GitHub Copilot Chat](https://code.visualstudio.com/docs/copilot/overview), or [Claude Code](https://docs.claude.com/en/docs/claude-code).
+* {{stack}} 9.4 or later, or an {{sec-serverless}} project.
+* A supported MCP host, such as: [Claude Desktop](https://claude.ai/download), [Claude.ai](https://claude.ai/), [Cursor](https://cursor.com/), [Visual Studio Code](https://code.visualstudio.com/) with [GitHub Copilot Chat](https://code.visualstudio.com/docs/copilot/overview), or [Claude Code](https://docs.claude.com/en/docs/claude-code).
 * The {{es}} URL, {{kib}} URL, and an {{es}} API key for an account with the [required permissions](#permissions).
 * A configured [large language model (LLM) connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) in {{kib}} for any tool that calls Attack Discovery.
 * Node.js is not required if you install with the prebuilt `.mcpb` bundle. Build-from-source workflows require Node.js 20 or later.
@@ -51,7 +51,7 @@ For per-tool capabilities and screenshots, refer to the [features overview](http
 
 ## How it works [how-it-works]
 
-The Elastic Security MCP App builds on the [MCP Apps extension](https://modelcontextprotocol.io/docs/extensions/apps.md) to the Model Context Protocol. MCP Apps lets a tool server return an interactive HTML interface alongside its text response. The host renders that interface inside a sandboxed iframe in the conversation, and the app communicates with the host through a JSON-RPC channel that uses the [`postMessage` API](https://developer.mozilla.org/docs/Web/API/Window/postMessage).
+The Elastic Security MCP App builds on the [MCP Apps extension](https://modelcontextprotocol.io/docs/extensions/apps.md) to the Model Context Protocol, which lets a tool server return an interactive HTML interface alongside its text response. The host renders that interface inside a sandboxed iframe in the conversation, and the app communicates with the host through a JSON-RPC channel that uses the [`postMessage` API](https://developer.mozilla.org/docs/Web/API/Window/postMessage).
 
 When you ask Claude (or another supported host) to triage alerts or run a threat hunt, the host calls a model-facing tool on the app's MCP server. The server returns a compact text summary that the model reasons over, plus a React UI that renders inline. From that point on, the UI calls app-only tools directly for all subsequent interactions, which keeps the LLM context small while the UI has full data access.
 
@@ -114,7 +114,7 @@ Expose the MCP app to Claude.ai through a [`cloudflared`](https://developers.clo
 
 :::::
 
-To learn when and how the agent should use each tool, install the optional [Claude Skills](https://github.com/elastic/example-mcp-app-security/blob/main/docs/setup-skills.md) that ship with the app. Skills are `SKILL.md` files that teach the agent the prompt patterns each tool responds to.
+Next, install the [skills](https://github.com/elastic/example-mcp-app-security/blob/main/docs/setup-skills.md) that help your agent determine when to use each tool.
 
 ## Example workflow [example-workflow]
 
@@ -138,7 +138,6 @@ For the narrative version of this walkthrough, refer to the [Elastic Security La
 ## Related pages [related-pages]
 
 * [Attack Discovery](/solutions/security/ai/attack-discovery.md): The native, in-{{kib}} version of the attack-correlation engine the MCP app calls.
-* [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md): The native AI chat experience inside {{elastic-sec}}.
 * [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md): The native, in-{{kib}} agent platform that complements the MCP app's external-host workflow.
 * [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md): Set up a generative AI provider for Attack Discovery and other AI-powered features.
 * [MCP Apps overview](https://modelcontextprotocol.io/docs/extensions/apps.md): The Model Context Protocol extension that powers the interactive UI surface.
