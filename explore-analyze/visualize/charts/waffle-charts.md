@@ -225,6 +225,11 @@ Waffle charts do not have configurable style settings. The chart automatically d
 
 ## Waffle chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file waffle-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful waffle charts.
 
 **Response status breakdown**

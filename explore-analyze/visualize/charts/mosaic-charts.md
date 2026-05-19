@@ -192,6 +192,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 ## Mosaic chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file mosaic-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful mosaic charts.
 
 **Response status by operating system**
@@ -271,7 +276,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `mosaic` renders a grid where both column width and row height encode proportions, making it easy to compare distributions across two dimensions.
+1. `mosaic` renders a grid where both column width and row height encode proportions, making distribution comparisons clear across two dimensions.
 2. `group_by` defines the vertical axis (rows). Using `filters` here creates three named rows — one per response status category — each colored from the `mapping` so success, client errors, and server errors are immediately distinguishable.
 3. `group_breakdown_by` defines the horizontal axis (columns). Each OS becomes a column whose width reflects its share of total traffic.
 
@@ -333,7 +338,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. `category.keyword` on the vertical axis (`group_by`) creates one row per product category. The `color` mapping assigns a distinct palette color to each category, making it easy to track a category across columns.
+1. `category.keyword` on the vertical axis (`group_by`) creates one row per product category. The `color` mapping assigns a distinct palette color to each category, making each category trackable across columns.
 2. `geoip.continent_name` on the horizontal axis (`group_breakdown_by`) creates one column per continent, with width proportional to order volume from that region.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).

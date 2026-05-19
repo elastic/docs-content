@@ -55,7 +55,7 @@ Using the dropdown indicating **Bar**, select **Table**.
 
 The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
 
-Refer to [](#settings) to find all configuration options for your table.
+See [](#settings) for all configuration options for your table.
 ::::
 
 ::::{step} Customize the table to follow best practices
@@ -257,6 +257,11 @@ When creating or editing a table visualization, you can customize several appear
 :   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 ## Table examples
+
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file tables.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 The following examples show various configuration options you can use for building effective tables.
 

@@ -90,7 +90,7 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — grey for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
+This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — gray for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -145,7 +145,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. The `filters` grouping on the vertical axis creates two named rows — "Client errors" (404s) and "Server errors" (503s) — isolating each error type so every cell represents one error type in one time bucket.
 2. The `formula` metric counts matching documents with `count()` and appends a `%` suffix to the display format, presenting counts in a percentage-like style without computing an actual ratio.
-3. The `dynamic` color uses absolute count thresholds: grey for 0–4 errors, yellow for 5–9, and red for 10 or more, flagging time buckets with elevated error activity at a glance.
+3. The `dynamic` color uses absolute count thresholds: gray for 0–4 errors, yellow for 5–9, and red for 10 or more, flagging time buckets with elevated error activity at a glance.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 :::
@@ -285,6 +285,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 ## Heat map chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file heat-map-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful heat map charts.
 
 **Request volume by day and hour**
@@ -369,7 +374,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 :::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-This example uses two `terms` dimensions (city and product category) to create a category-vs-region grid, with cell color representing total revenue.
+This example uses two `terms` dimensions (city and product category) to create a category-versus-region grid, with cell color representing total revenue.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -420,7 +425,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. Cities on the horizontal axis create one column per location, making it easy to scan geographic performance.
+1. Cities on the horizontal axis create one column per location, making geographic performance quick to scan.
 2. Product categories on the vertical axis form the rows, so each cell shows revenue for one category in one city.
 3. `sum` of `taxful_total_price` colors cells by total revenue rather than document count.
 

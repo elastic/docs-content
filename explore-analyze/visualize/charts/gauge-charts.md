@@ -316,6 +316,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 ## Gauge chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file gauge-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful gauge charts.
 
 **CPU usage monitoring**

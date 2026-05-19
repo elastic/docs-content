@@ -96,81 +96,6 @@ You can also compute the relative change by defining the axis data with a [formu
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
 ::::
 
-:::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
-
-Send the following request to create two line layers that compare the current average bytes against the previous week.
-
-```bash
-curl -X POST "${KIBANA_URL}/api/visualizations" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type": "xy",
-  "title": "Current vs previous period - bytes",
-  "filters": [],
-  "query": { "expression": "" },
-  "legend": { "visibility": "auto" },
-  "axis": {},
-  "layers": [
-    {
-      "type": "line", <1>
-      "x": { "operation": "date_histogram", "field": "timestamp" },
-      "y": [
-        {
-          "operation": "average",
-          "field": "bytes",
-          "label": "Current period",
-          "format": {
-            "type": "number"
-          },
-          "filter": { "expression": "" }
-        }
-      ],
-      "data_source": {
-        "type": "data_view_spec",
-        "index_pattern": "kibana_sample_data_logs",
-        "time_field": "timestamp"
-      }
-    },
-    {
-      "type": "line", <2>
-      "x": { "operation": "date_histogram", "field": "timestamp" },
-      "y": [
-        {
-          "operation": "average",
-          "field": "bytes",
-          "label": "Previous week",
-          "time_shift": "1w", <3>
-          "format": {
-            "type": "number"
-          },
-          "filter": { "expression": "" }
-        }
-      ],
-      "data_source": {
-        "type": "data_view_spec",
-        "index_pattern": "kibana_sample_data_logs",
-        "time_field": "timestamp"
-      }
-    }
-  ],
-  "styling": {
-    "fitting": {
-      "type": "none"
-    }
-  }
-}'
-```
-
-1. First `line` layer shows the current period average bytes.
-2. Second `line` layer provides the comparison baseline.
-3. The `time_shift` of `1w` offsets this layer by one week.
-
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
-
 ### Highlight thresholds with reference lines [line-reference-lines]
 
 Use reference lines to indicate important thresholds, such as SLOs or alert limits.
@@ -179,78 +104,6 @@ Use reference lines to indicate important thresholds, such as SLOs or alert limi
 
 1. In the chart settings, add a static value reference line to mark your target or threshold visually.
 2. Use the **Text decoration** setting to provide a name, for example, `Target` or `SLO`, choose a color, and optionally a band.
-
-:::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
-
-Send the following request to create a line chart with a static reference line marking an SLO target.
-
-```bash
-curl -X POST "${KIBANA_URL}/api/visualizations" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type": "xy",
-  "title": "Bytes with SLO reference line",
-  "filters": [],
-  "query": { "expression": "" },
-  "legend": { "visibility": "auto" },
-  "axis": {},
-  "layers": [
-    {
-      "type": "line", <1>
-      "x": { "operation": "date_histogram", "field": "timestamp" },
-      "y": [
-        {
-          "operation": "average",
-          "field": "bytes",
-          "label": "Average bytes",
-          "format": {
-            "type": "number"
-          },
-          "filter": { "expression": "" }
-        }
-      ],
-      "data_source": {
-        "type": "data_view_spec",
-        "index_pattern": "kibana_sample_data_logs",
-        "time_field": "timestamp"
-      }
-    },
-    {
-      "type": "reference_lines", <2>
-      "thresholds": [
-        {
-          "operation": "static_value",
-          "value": 6000, <3>
-          "format": {
-            "type": "number"
-          },
-          "label": "SLO target"
-        }
-      ],
-      "data_source": {
-        "type": "data_view_spec",
-        "index_pattern": "kibana_sample_data_logs",
-        "time_field": "timestamp"
-      }
-    }
-  ],
-  "styling": {
-    "fitting": {
-      "type": "none"
-    }
-  }
-}'
-```
-
-1. The data layer uses `line` to plot average bytes over time.
-2. A `referenceLines` layer draws a horizontal threshold line on the chart.
-3. Sets the static threshold value to `6000`.
-
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
 
 ## Line chart settings [settings]
 
@@ -338,6 +191,11 @@ When creating or editing a visualization, you can adjust the following settings.
 
 ## Line chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file line-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 **Average RAM per host**
 :   Monitoring the average of RAM over time for the first four hosts:
 
@@ -370,30 +228,27 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "title": "Average RAM per host",
   "filters": [],
   "query": { "expression": "" },
-  "legend": { "visibility": "auto" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "bottom" },
   "axis": {},
   "layers": [
     {
-      "type": "line", <1>
+      "type": "line",
       "x": {
         "operation": "date_histogram",
-        "field": "timestamp"
+        "field": "timestamp",
+        "suggested_interval": "1h"
       },
       "y": [
         {
-          "operation": "moving_average", <2>
+          "operation": "moving_average", <1>
           "of": {
             "operation": "average",
             "field": "machine.ram",
-            "format": {
-              "type": "bytes"
-            },
+            "format": { "type": "bytes", "decimals": 0 },
             "filter": { "expression": "" }
           },
           "label": "Moving average of RAM",
-          "format": {
-            "type": "bytes"
-          },
+          "format": { "type": "bytes", "decimals": 0 },
           "filter": { "expression": "" },
           "color": {
             "type": "static",
@@ -401,10 +256,11 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
           }
         }
       ],
-      "breakdown_by": { <3>
+      "breakdown_by": { <2>
         "operation": "terms",
         "fields": ["host.keyword"],
-        "limit": 4
+        "limit": 4,
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <3>
       },
       "data_source": {
         "type": "data_view_spec",
@@ -414,30 +270,27 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     }
   ],
   "styling": {
-    "fitting": {
-      "type": "none"
-    }
+    "fitting": { "type": "linear" }
   }
 }'
 ```
 
-1. Uses a `line` layer type for the XY chart.
-2. Applies a `moving_average` operation over the `average` of `machine.ram`.
-3. Breaks down the series by the top 4 values of `host.keyword`.
+1. `moving_average` over the `average` of `machine.ram` smooths out spikes and produces a trend line. `decimals: 0` keeps the byte labels clean.
+2. `breakdown_by` splits the chart into one line per host, limited to the top 4 values of `host.keyword`.
+3. `rank_by: "alphabetical"` is required here because `moving_average` is a pipeline aggregation and cannot be used to sort breakdown buckets.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
 
 **Unique IPs over time**
-:   Visualizing unique IP sessions throughout the day:
+:   Visualize the number of unique client IPs throughout the day to identify traffic patterns and peak usage periods:
 
-1. Drag `@timestamp` to the **Horizontal axis** and set the following settings: 
-   * **Functions**: `Date histogram`
-   * **Minimum interval**: `Hour`
-2. Drag `host.keyword` to the **Vertical axis** and set the following settings:
-   * **Functions**: : `Unique count`
-   * **Value format**: `Bytes (1024)`
+1. Drag `timestamp` to the **Horizontal axis** and set **Functions** to `Date histogram` with **Minimum interval** set to `Hour`.
+2. Drag `clientip` to the **Vertical axis** and set the following settings:
+   * **Functions**: `Unique count`
+   * **Value format**: `Number`
    * **Decimals**: `0`
+3. In the **Visual options**, set **Missing values** to `Linear` to connect gaps in the line.
 4. Save your chart.
 
 ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
@@ -445,7 +298,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 ::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
-Send the following request to create a line chart that plots the unique count of hosts over time.
+Send the following request to create a line chart that plots the unique count of client IPs over time, with linear interpolation for missing values.
 
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
@@ -461,16 +314,17 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   "axis": {},
   "layers": [
     {
-      "type": "line", <1>
+      "type": "line",
       "x": {
         "operation": "date_histogram",
-        "field": "timestamp"
+        "field": "timestamp",
+        "suggested_interval": "1h" <1>
       },
       "y": [
         {
           "operation": "unique_count", <2>
-          "field": "host.keyword",
-          "label": "Unique hosts",
+          "field": "clientip",
+          "label": "Unique IPs",
           "format": {
             "type": "number",
             "decimals": 0
@@ -487,14 +341,15 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
   ],
   "styling": {
     "fitting": {
-      "type": "none"
+      "type": "linear" <3>
     }
   }
 }'
 ```
 
-1. Uses a `line` layer type for the XY chart.
-2. Counts the unique values of `host.keyword` to track distinct IP sessions.
+1. `suggested_interval: "1h"` sets the date histogram to bucket by hour.
+2. `unique_count` on `clientip` counts distinct IP addresses per time bucket, tracking unique visitors rather than total requests.
+3. `fitting.type: "linear"` connects data points across empty buckets with a straight line instead of leaving gaps.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
