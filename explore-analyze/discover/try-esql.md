@@ -113,6 +113,8 @@ You can open either browser from:
 
 Both browsers operate on the main query only and don't apply to subqueries.
 
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` When your query sources from a [wired stream](../../solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix action is available. Select it to add `SET unmapped_fields = "LOAD";` to the start of your query. This setting makes unmapped fields queryable by loading their values from `_source`. The quick fix only appears when the error is detected client-side.
+
 
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
 
