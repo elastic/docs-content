@@ -447,28 +447,24 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(kql='referer : *elastic*')", <2>
       "label": "Elastic website",
       "format": { "type": "number" },
-      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *twitter*')",
       "label": "Twitter/X",
       "format": { "type": "number" },
-      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *facebook*')",
       "label": "Facebook",
       "format": { "type": "number" },
-      "filter": { "expression": "" }
     },
     {
       "operation": "formula",
       "formula": "count(kql='referer : *nytimes*')",
       "label": "NY Times",
       "format": { "type": "number" },
-      "filter": { "expression": "" }
     }
   ],
   "data_source": {

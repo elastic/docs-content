@@ -160,7 +160,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(shift='''1w''')",
       "label": "Compared to previous week",
       "format": { "type": "number", "decimals": 0, "compact": true },
-      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],
@@ -397,7 +396,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(kql='''response >= 200 and response < 300''') / count()", <1>
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1 }, <2>
-      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#209280" }
     },
     {
@@ -406,7 +404,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "0.95", <3>
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
-      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],
@@ -468,7 +465,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count(kql='''response >= 200 and response < 300''') / count()",
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1 },
-      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#209280" }
     },
     {
@@ -477,7 +473,6 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "0.95",
       "label": "Target:",
       "format": { "type": "percent", "decimals": 0 },
-      "filter": { "expression": "" },
       "color": { "type": "static", "color": "#6092c0" }
     }
   ],

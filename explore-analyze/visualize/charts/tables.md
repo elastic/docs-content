@@ -99,51 +99,9 @@ To create a pivot table:
 3. Add one or more metrics.
 4. Drag a categorical field to **Split metrics by** to create separate columns for each unique value.
 
-For example, you could show visits per date in rows, split by the top 3 hours of the day with most traffic, and add various metrics such as the number of visits or the percentage of successful requests. This creates a pivot table showing the various metrics for each hour of the day with the most traffic.
+For example, you could show visits per date in rows, split by the top 3 HTTP response codes, and add various metrics such as the number of unique visitors, total bytes, or the percentage of successful requests. This creates a pivot table showing the various metrics for each response code.
 
 ![Example of a table in Lens using the Split metrics by functionality](../../images/lens-table-breakdown-by-example.png)
-
-:::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
-
-Send the following request to create a pivot table that shows visit counts by date, split into columns by the top 3 hours of the day.
-
-```bash
-curl -X POST "${KIBANA_URL}/api/visualizations" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type": "data_table", <1>
-  "title": "Pivot table - visits by date split by hour",
-  "filters": [],
-  "query": { "expression": "" },
-  "rows": [{ "operation": "date_histogram", "field": "timestamp" }],
-  "metrics": [
-    {
-      "operation": "count",
-      "label": "Visits",
-      "format": {
-        "type": "number"
-      },
-      "filter": { "expression": "" }
-    }
-  ],
-  "split_metrics_by": [{ "operation": "terms", "fields": ["hour_of_day"], "limit": 3 }], <2>
-  "data_source": {
-    "type": "data_view_spec",
-    "index_pattern": "kibana_sample_data_logs",
-    "time_field": "timestamp"
-  },
-  "styling": { "density": { "mode": "default" } }
-}'
-```
-
-1. Sets the visualization type to `data_table`.
-2. The `split_metrics_by` dimension creates separate columns for the top 3 hours of the day, producing a pivot table layout.
-
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
 
 Refer to [Analyze the data in a table](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#view-customers-over-time-by-continents) for a detailed example.
 
@@ -164,58 +122,6 @@ To add a formula to a table:
 4. Customize the column name and formatting.
 
 Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for formula examples, including time-shifting comparisons and mathematical operations, and the {icon}`documentation` **Formula reference** available from Lens.
-
-:::{dropdown} Create this chart using the API
-:applies_to: { stack: preview 9.4, serverless: preview }
-
-Send the following request to create a table with a count column and a formula column that calculates the week-over-week change.
-
-```bash
-curl -X POST "${KIBANA_URL}/api/visualizations" \
-  -H "Authorization: ApiKey ${API_KEY}" \
-  -H "kbn-xsrf: true" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "type": "data_table",
-  "title": "Table with formula column",
-  "filters": [],
-  "query": { "expression": "" },
-  "rows": [
-    {
-      "operation": "date_histogram",
-      "field": "order_date"
-    }
-  ],
-  "metrics": [
-    {
-      "operation": "count", <1>
-      "label": "Orders this week",
-      "format": { "type": "number" },
-      "filter": { "expression": "" }
-    },
-    {
-      "operation": "formula", <2>
-      "formula": "count() / count(shift='1w') - 1", <3>
-      "label": "Change from last week",
-      "format": { "type": "percent", "decimals": 2 },
-      "filter": { "expression": "" }
-    }
-  ],
-  "data_source": {
-    "type": "data_view_spec",
-    "index_pattern": "kibana_sample_data_ecommerce",
-    "time_field": "order_date"
-  },
-  "styling": { "density": { "mode": "default" } }
-}'
-```
-
-1. First metric column counts records for the current period.
-2. Second metric uses a `formula` operation for a calculated column.
-3. The formula divides the current count by the time-shifted count and subtracts 1 to produce a percentage change.
-
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
 
 ### Use emojis in tables [esql-table-emojis]
 
@@ -359,6 +265,7 @@ The following examples show various configuration options you can use for buildi
 
     * **Rows**: `request.keyword` field using **Top values** function
       * **Number of values**: `5`
+      * **Advanced**: Group remaining values as "Other"
     * **Metrics**: `clientip` field using **Unique count** function
       * **Value format**: `Number`
       * **Text alignment**: `Right`
@@ -384,7 +291,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms", <1>
       "fields": ["request.keyword"],
-      "limit": 5
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false }
     }
   ],
   "metrics": [
@@ -419,6 +327,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
       * **Name**: `Sales per day`
     * **Metrics**: `customer_id` field using **Unique count** function
     * **Split metrics by**: `geoip.continent_name` field using **Top values** set to `3`
+      * **Advanced**: Group remaining values as "Other"
 
 ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
 
@@ -441,6 +350,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "date_histogram", <1>
       "field": "order_date",
+      "suggested_interval": "1d",
       "label": "Sales per day"
     }
   ],
@@ -449,7 +359,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "operation": "unique_count", <2>
       "field": "customer_id",
       "label": "Unique customers",
-      "format": { "type": "number" },
+      "format": { "type": "number", "decimals": 0 },
       "filter": { "expression": "" }
     }
   ],
@@ -457,7 +367,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "terms",
       "fields": ["geoip.continent_name"],
-      "limit": 3
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false }
     }
   ],
   "data_source": {
@@ -510,7 +421,10 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "range", <1>
       "field": "bytes",
-      "ranges": [{ "lte": 10240 }, { "gt": 10240 }], <2>
+      "ranges": [
+        { "lte": 10240, "label": "Below 10KB" },
+        { "gt": 10240, "label": "Above 10KB" }
+      ], <2>
       "label": "File size"
     }
   ],
@@ -520,6 +434,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "field": "bytes",
       "label": "Total bytes transferred",
       "format": { "type": "bytes" },
+      "alignment": "right",
+      "color": { "type": "auto" },
+      "apply_color_to": "value",
       "filter": { "expression": "" }
     }
   ],
@@ -533,8 +450,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 ```
 
 1. Uses a `range` operation to create custom row buckets from the `bytes` field.
-2. Defines two ranges: documents up to 10 KB and documents above 10 KB.
-3. Sums the `bytes` field within each range to show total bytes transferred.
+2. Defines two ranges, each with a label: documents up to 10 KB (`Below 10KB`) and documents above 10 KB (`Above 10KB`).
+3. The `sum` metric sums the `bytes` field within each range, right-aligns the column, and applies dynamic `auto` coloring to highlight ranges with higher byte transfers.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
@@ -548,10 +465,10 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Metrics** (two columns):
       1. `Records` using **Count** function
          * **Name**: `Orders this week`
+         * **Value format**: `Number`, 0 decimals
       2. **Formula**: `count() / count(shift='1w') - 1`
          * **Name**: `Change from last week`
          * **Value format**: `Percent`, 2 decimals
-         * **Color by value**: Dynamic (green for positive growth, red for negative)
          * **Text alignment**: `Right`
 
 ::::{dropdown} Create this chart using the API
@@ -573,6 +490,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "date_histogram", <1>
       "field": "order_date",
+      "suggested_interval": "1w",
       "label": "Week"
     }
   ],
@@ -580,7 +498,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
     {
       "operation": "count",
       "label": "Orders this week",
-      "format": { "type": "number" },
+      "format": { "type": "number", "decimals": 0 },
       "filter": { "expression": "" }
     },
     {
@@ -588,7 +506,7 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
       "formula": "count() / count(shift='1w') - 1", <3>
       "label": "Change from last week",
       "format": { "type": "percent", "decimals": 2 },
-      "filter": { "expression": "" }
+      "alignment": "right"
     }
   ],
   "data_source": {
@@ -600,8 +518,8 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 }'
 ```
 
-1. Groups rows by `order_date` with a date histogram to produce weekly buckets.
-2. Uses a `formula` metric to compute a calculated column.
+1. Groups rows by `order_date` with a weekly date histogram.
+2. Uses a `formula` metric to compute a calculated column. Formula metrics must not include a `filter` field — omitting it is required for time shift to work correctly.
 3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
