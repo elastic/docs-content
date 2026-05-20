@@ -14,7 +14,7 @@ This page shows examples of managing deployments through the [deployments API]({
 
 For update workflows, the deployments API also provides dedicated operations for certain use cases, such as upgrades or {{es}} tier sizing changes.
 
-If you haven’t created an API Key yet, you can follow the [Authentication documentation](../../api-keys/elastic-cloud-api-keys.md).
+If you haven’t created an API key yet, then refer to [](../../api-keys/elastic-cloud-api-keys.md).
 
 
 ## Common operations with dedicated endpoints [ec_common_operations_with_dedicated_endpoints]
@@ -25,7 +25,7 @@ Previously, many update scenarios required using a generic deployment update wor
 
 | Task | Endpoints |
 | --- | --- |
-| Upgrade a deployment to a newer {{stack}} version | [Upgrade deployment endpoint]({{cloud-apis}}operation/operation-upgrade-deployment) |
+| Upgrade a deployment to a newer {{stack}} version | [Upgrade deployment]({{cloud-apis}}operation/operation-upgrade-deployment) |
 | Manage [user settings](edit-stack-settings.md) of the deployment| [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)<br><br>[Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings) |
 | Scale {{es}} tiers by updating memory size and zone count | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
 | Attach another deployment’s built-in snapshot repository (`found-snapshots`) for cross-deployment snapshot access and restore workflows | [Attach snapshots from a source deployment]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Detach an attached snapshot repository]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
@@ -309,7 +309,7 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 ## Update a deployment [ec_update_a_deployment]
 
-Use [Update deployment API]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources or settings in one request. For supported specific update tasks, use the dedicated deployment operations listed in [Common operations with dedicated endpoints](#ec_common_operations_with_dedicated_endpoints).
+Use the [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources or settings in one request. For some specific update tasks, use the dedicated deployment operations listed in [Common operations with dedicated endpoints](#ec_common_operations_with_dedicated_endpoints).
 
 This example modifies the {{es}} resource by increasing the amount of memory to 8 GB.
 
