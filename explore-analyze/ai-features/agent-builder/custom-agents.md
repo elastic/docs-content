@@ -83,15 +83,14 @@ Configure the essential agent settings in the **Settings** tab:
 
 :::::
 
-:::::{step} Enable Elastic capabilities
-:anchor: create-custom-agent-enable-elastic-capabilities
+:::::{step} Enable Elastic capabilities (optional)
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Use the **Enable Elastic Capabilities** toggle to activate built-in Elastic tools and skills for your agent. This toggle is disabled by default.
+Optionally enable the **Enable Elastic capabilities** toggle to automatically assign all Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins to your agent. This toggle is disabled by default for custom agents.
 
-For more information, refer to [Enable Elastic Capabilities](#enable-elastic-capabilities).
+For more information, refer to [Elastic capabilities](agent-builder-agents.md#elastic-capabilities).
 
 :::::
 
@@ -201,23 +200,6 @@ Control who can view and edit your agent by configuring its visibility. To chang
 :::{image} images/agent-visibility-levels.png
 :alt: Agent visibility dropdown showing Public, Shared, and Private.
 :width: 700px
-:::
-
-## Enable Elastic Capabilities [enable-elastic-capabilities]
-
-```{applies_to}
-stack: ga 9.4+
-```
-
-When the **Enable Elastic Capabilities** toggle is enabled, it automatically assigns all current and future Elastic-built skills, plugins, and tools to the agent. The set of assigned capabilities is dynamic and grows as Elastic adds new built-in content.
-
-To review which skills and tools are active, open the agent's **Skills** or **Tools** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
-
-Disable this toggle to manage skill, plugin, and tool assignments manually.
-
-:::{image} images/elastic-capabilities.png
-:alt: Enable Elastic Capabilities toggle ON
-:width: 500px
 :::
 
 ## Best practices for custom agents
