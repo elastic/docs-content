@@ -151,7 +151,7 @@ Existing workflows auto-migrate on save. New workflows must use the new shape.
 
 In 9.3, `type: http` steps without a `connector-id` used the workflow execution engine HTTP client and were controlled by `workflowsExecutionEngine.http.allowedHosts`.
 
-In 9.4, those HTTP steps run through the Actions framework HTTP connector. As a result, outbound URLs are validated against [`xpack.actions.allowedHosts`](/docs/reference/kibana/configuration-reference/alerting-settings).
+In 9.4, those HTTP steps run through the Actions framework HTTP connector. As a result, outbound URLs are validated against [`xpack.actions.allowedHosts`](/reference/kibana/configuration-reference/alerting-settings.md).
 
 If `xpack.actions.allowedHosts` is not set, it defaults to `["*"]`, so all hosts are allowed. If your deployment sets a restrictive allowlist, add the hosts used by workflow HTTP steps:
 
