@@ -157,7 +157,7 @@ spec:
 
 ### Reserve static IP and custom domain [k8s-static-ip-custom-domain]
 
-By default, ECK-generated HTTP certificates include DNS names for the {{k8s}} Services of the corresponding cluster in their Subject Alternative Names (SANs), such as `<name>-es-http.<namespace>.svc`.
+By default, ECK-generated HTTP certificates include DNS names for the {{k8s}} services of the corresponding cluster as Subject Alternative Names (SANs), such as `<name>-es-http.<namespace>.svc`.
 
 If you need additional DNS names or IP addresses (for example, a custom domain or a static load balancer IP), add them through `selfSignedCertificate.subjectAltNames`:
 

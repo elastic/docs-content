@@ -96,7 +96,7 @@ quickstart    green     1         {{version.stack}}     Ready         1m
 
 ## Access your {{es}} cluster [k8s_request_es_access]
 
-ECK automatically creates a `ClusterIP` Service for [HTTP access to your cluster](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-kubernetes-service). You can verify it with `kubectl get`:
+ECK automatically creates a `ClusterIP` service for [HTTP access to your cluster](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-kubernetes-service). You can verify it with `kubectl get`:
 
 ```sh
 kubectl get service quickstart-es-http
@@ -131,7 +131,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
 
     Refer to [Manage HTTP certificates on ECK](/deploy-manage/security/k8s-https-settings.md) for information about customizing HTTP TLS configuration.
 
-1. Request the [{{es}} root API]({{es-apis}}group/endpoint-info). You can do so from inside the {{k8s}} cluster or from your local workstation.
+1. Issue a request to the [{{es}} info API]({{es-apis}}group/endpoint-info). You can do so from inside the {{k8s}} cluster or from your local workstation.
 
     :::{tip}
     The following examples use `curl` to access the {{es}} endpoint with full TLS verification, providing the CA certificate with the `--cacert` option.
@@ -164,7 +164,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
             ```
 
             :::{note}
-            Port-forwarding is mainly intended for local testing. In production environments, if the cluster must be accessible from outside the {{k8s}} cluster, consider using a `LoadBalancer` Service or another exposure mechanism. Refer to [Allow public access](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-allow-public-access) for more information.
+            Port-forwarding is mainly intended for local testing. In production environments, if the cluster must be accessible from outside the {{k8s}} cluster, consider using a `LoadBalancer` service or another exposure mechanism. Refer to [Allow public access](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-allow-public-access) for more information.
             :::
 
         1. Access {{es}} through the forwarded port:
