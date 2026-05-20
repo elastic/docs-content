@@ -37,6 +37,12 @@ Add a trusted device to exempt it from device control:
     * **Per Policy**: Assign the trusted device to one or more specific {{elastic-defend}} integration policies.
 6. Click **Add trusted device**.
 
+::::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To add multiple trusted devices at once, you can import an NDJSON file instead. Refer to [Import and export trusted devices](#import-export-trusted-devices).
+::::
+
 ## View and manage trusted devices
 
 The **Trusted devices** UI displays all the trusted devices that have been added to the {{security-app}}. To refine the list, use the search bar to search by name, description, or field value.
@@ -45,6 +51,36 @@ The **Trusted devices** UI displays all the trusted devices that have been added
 :alt: trusted apps list
 :screenshot:
 :::
+
+
+### Import and export trusted devices [import-export-trusted-devices]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{admonition} Requirements
+* To export trusted devices, you need the **Trusted Devices: Read** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* To import per-policy items, you need the **Trusted Devices: All** privilege.
+* To import global items, you need the **Trusted Devices: All** and the **Global artifact management: All** privilege.
+* To import items to a different space, you need the **Global artifact management: All** privilege.
+::::
+
+You can import and export trusted devices as NDJSON files:
+
+- **When the list is empty**: Click **Import trusted devices**.
+- **When the list has entries**: Click the actions menu {icon}`boxes_vertical`, then select **Import trusted devices** or **Export trusted devices**.
+
+::::{note}
+The imported file must be an NDJSON file exported from {{kib}}. Files exported from third-party software are not supported.
+::::
+
+When you import an NDJSON file, the imported trusted devices are appended to your existing entries — existing entries are not removed or overwritten.
+
+Items are processed individually on import — per-policy items that are not visible in the current space are skipped, while the remaining items are imported.
+
+If an imported per-policy item is assigned to a policy that doesn't exist in the current environment, the item is imported with the policy assignment removed.
 
 
 ### Edit a trusted device

@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenTelemetry use cases
-description: Overview of different use cases for the {{edot}}.
+description: Overview of use cases for Elastic Distributions of OpenTelemetry (EDOT), including Kubernetes monitoring, LLM observability, and application instrumentation.
 applies_to:
   stack:
   serverless:
