@@ -81,7 +81,7 @@ The endpoint accepts `POST` requests with:
 
 By default, metrics are ingested into the `metrics-generic.prometheus-default` data stream.
 You can control the target data stream using URL path parameters or per-time-series labels.
-In both cases, dataset and namespace values are sanitized — any character that is not alphanumeric, a hyphen, or an underscore is replaced with `_`.
+In both cases, Elasticsearch sanitizes dataset and namespace values, replacing any character that is not alphanumeric, a hyphen, or an underscore with `_`.
 
 ### Route by URL path
 
@@ -93,7 +93,7 @@ Set the dataset and namespace via URL path segments:
 | `/_prometheus/metrics/{dataset}/api/v1/write` | `metrics-{dataset}.prometheus-default` |
 | `/_prometheus/metrics/{dataset}/{namespace}/api/v1/write` | `metrics-{dataset}.prometheus-{namespace}` |
 
-For example, to route infrastructure metrics into a dedicated data stream:
+For example, to route infrastructure metrics to a dedicated data stream, set the remote write URL to:
 
 ```yaml
 remote_write:
@@ -106,7 +106,7 @@ This sends data to the `metrics-infrastructure.prometheus-production` data strea
 
 You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series. These labels take precedence over the URL path when set, and allow a single remote write endpoint to fan out metrics to multiple data streams.
 
-These routing labels are control fields and are not stored in the document's `labels` object.
+Elasticsearch treats these as control fields and does not store them in the document's `labels` object.
 
 If only one of the two labels is present on a time series, the other value falls back to the URL path segment (or the default if no path segment was given).
 
