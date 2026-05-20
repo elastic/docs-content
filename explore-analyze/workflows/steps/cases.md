@@ -510,11 +510,11 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
         description: "Source of malicious activity"
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
 ```
 
-The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`).
+The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-file-hash`). Use `observable-type-file-hash` for all hash types (MD5, SHA-1, SHA-256, and so on); the algorithm (for example, `sha256`) describes the hash subtype, not the top-level type key.
 
 ### `cases.getAllAttachments` [cases-getallattachments]
 
