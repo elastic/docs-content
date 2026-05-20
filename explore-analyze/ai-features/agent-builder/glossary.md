@@ -161,8 +161,8 @@ Elastic Managed LLM
 :   A pre-configured LLM provided by Elastic and powered by the Elastic Inference Service. On {{ech}} and {{serverless-full}}, an Elastic Managed LLM is available out of the box, so {{agent-builder}} works with no additional setup. See [](models.md#default-model-configuration).
 
 $$$enable-elastic-capabilities$$$
-Enable Elastic Capabilities {applies_to}`stack: ga 9.4+`
-:   The toggle on a custom agent's **Settings** tab that opts the agent in to all current and future Elastic-built skills, plugins, and tools. The toggle is off by default. See [](custom-agents.md#enable-elastic-capabilities).
+Elastic capabilities {applies_to}`stack: ga 9.4+`
+:   The toggle on an agent's **Settings** tab that opts the agent in to all current and future Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins. Enabled by default for built-in agents; disabled by default for custom agents. See [](agent-builder-agents.md#elastic-capabilities).
 
 $$$entity-store$$$
 Entity store
