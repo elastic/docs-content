@@ -43,11 +43,6 @@ For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column 
 
 To view a summary of all rule executions (including the most recent failures, execution times, and gaps), select the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page. To access the tab, find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
 
-:::{image} /solutions/images/security-monitor-table.png
-:alt: Rule Monitoring tab on the Detection rules (SIEM) page
-:screenshot:
-:::
-
 On the **Rule Monitoring** tab, you can [sort and filter rules](../detect-and-alert/manage-detection-rules.md#sort-filter-rules) just like you can on the **Installed Rules** tab.
 
 ::::{tip}
