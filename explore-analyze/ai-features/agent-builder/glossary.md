@@ -162,7 +162,7 @@ Elastic Managed LLM
 
 $$$enable-elastic-capabilities$$$
 Elastic capabilities {applies_to}`stack: ga 9.4+`
-:   The toggle on an agent's **Settings** tab that opts the agent in to all current and future Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins. Enabled by default for built-in agents; disabled by default for custom agents. See [](agent-builder-agents.md#elastic-capabilities).
+:   The toggle on an agent's **Settings** tab that opts the agent in to all current and future Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins. Enabled by default for built-in agents, disabled by default for custom agents. See [](agent-builder-agents.md#elastic-capabilities).
 
 $$$entity-store$$$
 Entity store
