@@ -50,10 +50,6 @@ This tutorial does not cover mutual TLS authentication (mTLS) for HTTP client co
 - [{{fleet}} TLS flow (one-way and mutual TLS), including output SSL options](/reference/fleet/tls-overview.md#output-ssl-options)
 :::
 
-## Prerequisites and assumptions [install-stack-demo-secure-prereqs]
-
-This tutorial shares the same prerequisites as [Install a self-managed {{stack}}](tutorial-self-managed-install.md#install-stack-self-prereqs).
-
 ## Before you begin 
 
 Before starting, you must have an on-premises {{es}} cluster with {{kib}} already set up, following the steps in the tutorial [Install a self-managed {{stack}}](tutorial-self-managed-install.md).
