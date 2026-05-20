@@ -10,7 +10,6 @@ products:
 
 # Capture {{es}} diagnostics [diagnostic]
 
-
 The {{es}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of cluster statistics and most settings. It works against all {{es}} versions.
 
 This information can be used to troubleshoot problems with your cluster. For examples of issues that you can troubleshoot using Support Diagnostic tool output, refer to [the Elastic blog](https://www.elastic.co/blog/why-does-elastic-support-keep-asking-for-diagnostic-files).
@@ -19,14 +18,23 @@ You can generate diagnostic information using this tool before you contact [Elas
 
 Watch [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
+
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
-
-
 
 ## Requirements [diagnostic-tool-requirements]
 
 * Java Runtime Environment or Java Development Kit v1.8 or higher
+
+::::{tip}
+The following examples assume your endpoint uses a trusted certificate. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
 
 
 ## Access the tool [diagnostic-tool-access]
@@ -43,12 +51,12 @@ You can also directly download the `diagnostics-X.X.X-dist.zip` file for the lat
 
 To capture an {{es}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect to your {{es}} cluster by polling the cluster’s [health]({{es-apis}}operation/operation-cluster-health).
 
     For example, with the parameters `host:localhost`, `port:9200`, and `username:elastic`, you’d use the following curl request:
 
     ```sh
-    curl -X GET -k -u elastic -p https://localhost:9200/_cluster/health
+    curl -X GET -u elastic -p https://localhost:9200/_cluster/health
     ```
 
     If you receive a an HTTP 200 `OK` response, then you can proceed to the next step. If you receive a different response code, then [diagnose the issue](#diagnostic-non-200) before proceeding.
@@ -115,7 +123,7 @@ The following are common errors that you might encounter when running the diagno
 
 * `Could not retrieve the {{es}} version due to a system or network error - unable to continue.`
 
-    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the dianostic batch or shell file.
+    This indicates that the diagnostic couldn’t run commands against the cluster. Poll the cluster’s health again, and ensure that you’re using the same parameters when you run the diagnostic batch or shell file.
 
 * A `security_exception` that includes `is unauthorized for user`:
 

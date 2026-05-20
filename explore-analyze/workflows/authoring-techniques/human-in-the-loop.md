@@ -28,15 +28,6 @@ Not every decision should be fully automated. *Human-in-the-loop* (HITL) is the 
 
 HITL is built on one step type: [`waitForInput`](/explore-analyze/workflows/steps/flow-control-steps.md#waitforinput). When the workflow reaches it, execution pauses. The reviewer sees the message (optionally with a form generated from a JSON Schema). When they respond, the workflow resumes with their input available as `steps.<step_name>.output`.
 
-## Design a good HITL form
-
-A HITL message is read by a human mid-incident. Design for speed:
-
-- **Lead with the decision.** The first line should say what the reviewer needs to decide.
-- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the reviewer doesn't have to dig.
-- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough.
-- **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
-
 ## Write a HITL workflow
 
 The three ingredients: a preceding step that gathers context, a `waitForInput` step that presents it, and subsequent steps that branch on the reviewer's decision.
@@ -139,6 +130,15 @@ Content-Type: application/json
 ```
 
 The input body is available to subsequent steps as `steps.<step_name>.output`. Reference individual fields like `{{ steps.review.output.approved }}` and `{{ steps.review.output.notes }}`.
+
+## Design a good HITL form
+
+A HITL message is read by a human mid-incident. Design for speed:
+
+- **Lead with the decision.** The first line should say what the reviewer needs to decide.
+- **Include the evidence.** Relevant context (alert details, enrichment results, AI rationale) belongs in the message so the reviewer doesn't have to dig.
+- **Keep the schema small.** Three fields is a lot. One boolean plus an optional notes field is often enough.
+- **Use Markdown.** The message supports Markdown, so use headings, bold text, and bullets to make it scannable.
 
 ## What happens while the workflow is paused
 

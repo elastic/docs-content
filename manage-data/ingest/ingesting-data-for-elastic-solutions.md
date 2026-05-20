@@ -39,7 +39,7 @@ To use [Elastic Agent](/reference/fleet/index.md) and [Elastic integrations](htt
 * [Elastic Search for integrations](https://www.elastic.co/integrations/data-integrations?solution=search)
 * [{{es}} Guide](elasticsearch://reference/index.md)
 
-    * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
+    * [{{es}} document APIs]({{es-apis}}group/endpoint-document)
     * [{{es}} language clients](/reference/elasticsearch-clients/index.md)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)
@@ -99,7 +99,7 @@ Bring your ideas and use {{es}} and the {{stack}} to store, search, and visualiz
 * [Install {{agent}}](/reference/fleet/install-elastic-agents.md)
 * [{{es}} Guide](elasticsearch://reference/index.md)
 
-    * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
+    * [{{es}} document APIs]({{es-apis}}group/endpoint-document)
     * [{{es}} language clients](/reference/elasticsearch-clients/index.md)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)

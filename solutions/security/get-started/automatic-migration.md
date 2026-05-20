@@ -99,9 +99,9 @@ Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Spl
 
    ```
    | rest /servicesNS/-/-/saved/searches
-   | search is_scheduled=1 AND eai:acl.app=splunksysmonsecurity
+   | search action.correlationsearch.enabled = "1" OR (eai:acl.app = "Splunk_Security_Essentials" AND is_scheduled=1)
    | where disabled=0
-   | table id, title, search, description, action.escu.eli5,
+   | table id, title, search, description, action.escu.eli5, action.correlationsearch.annotations, alert.severity
    ```
 
    For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) because much of the data would be irrelevant to asset migration.

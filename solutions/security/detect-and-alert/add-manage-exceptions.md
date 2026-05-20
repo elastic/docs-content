@@ -168,6 +168,16 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
+::::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+If you've opted in to per-policy {{elastic-endpoint}} exception behavior, {{elastic-endpoint}} exceptions are no longer evaluated by detection rules and cannot be added to them. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
+::::
+
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
+
 {{elastic-endpoint}} exceptions apply to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) and to any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected. These exceptions are applied to both the detection rule and the {{elastic-endpoint}} on your hosts.
 
 ::::{important}

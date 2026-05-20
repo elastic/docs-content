@@ -10,6 +10,11 @@ products:
 # Jina models [ml-nlp-jina]
 
 This page collects all Jina models you can use as part of the {{stack}}.
+
+:::{note}
+Jina models are currently available only through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) or [external {{infer}}](docs-content://explore-analyze/elastic-inference/external.md) providers. Since these models rely on external connectivity, they cannot currently be deployed on [{{ml}} nodes](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#ml-node-role) and are not compatible with fully air-gapped environments.
+:::
+
 Currently, the following models are available as built-in models:
 
 **Embedding models**
