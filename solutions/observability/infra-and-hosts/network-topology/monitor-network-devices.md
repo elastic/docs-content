@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview 9.4+
+  stack: preview 9.0+
   serverless: unavailable
   deployment:
     self: preview
@@ -38,18 +38,18 @@ If you don't have SNMP-enabled devices to point at yet, you can evaluate the plu
 
 ## Step 1: Install the plugin [network-topology-install-plugin]
 
-::::{note}
-The {{kib}} version in the plugin `.zip` must exactly match the target {{kib}} instance version. When you upgrade {{kib}}, rebuild the plugin from the matching {{kib}} source tree before installing it.
-::::
-
 1. Download the latest Network Topology plugin release `.zip` from [the plugin releases page on GitHub](https://github.com/elastic/kibana-network-topology-plugin/releases).
-2. From your {{kib}} install directory, install the plugin:
+2. Unzip the plugin bundle.
+3. Open the `kibana/networkTopology/kibana.json` manifest file included in the bundle.
+4. Locate the `kibanaVersion` property and replace the placeholder value with your exact {{kib}} version. Save the file.
+5. Re-zip the plugin bundle, preserving the `kibana/networkTopology` folder hierarchy. If the folder structure changes, installation will fail.
+6. From the root of your {{kib}} install directory, run:
 
     ```shell
-    bin/kibana-plugin install file:///absolute/path/to/networkTopology-<version>.zip
+    bin/kibana-plugin install file:///absolute/path/to/networkTopology.zip
     ```
 
-3. Restart {{kib}}.
+7. Restart {{kib}}.
 
 ### Troubleshooting: plugin installs but doesn't load [network-topology-install-troubleshooting]
 
@@ -78,7 +78,7 @@ The Network Topology plugin reads from an {{es}} data stream that {{ls}} populat
     For details on the fields you'll configure in this pipeline, refer to [Location and role metadata fields](/solutions/observability/infra-and-hosts/network-topology/field-reference.md#network-topology-fields-network).
     ::::
 
-2. Start {{ls}} with your pipeline configuration. If you use [{{ls}} centralized pipeline management](logstash://reference/logstash-centralized-pipeline-management.html), you can push the pipeline directly from {{kib}} instead — no SSH access to a {{ls}} host required.
+2. Start {{ls}} with your pipeline configuration. If you use [{{ls}} centralized pipeline management](logstash://reference/logstash-centralized-pipeline-management), you can push the pipeline directly from {{kib}} instead — no SSH access to a {{ls}} host required.
 
 ### Troubleshooting: common SNMP input errors [network-topology-logstash-troubleshooting]
 

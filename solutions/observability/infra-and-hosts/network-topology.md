@@ -12,7 +12,7 @@ products:
 # Network Topology [network-topology]
 
 ::::{note}
-The Network Topology plugin is only supported on self-managed {{kib}}. It is _not_ compatible with {{ess}} or {{serverless-full}}.
+The Network Topology plugin is only supported on self-managed {{kib}}. It is _not_ compatible with {{ech}} or {{serverless-full}}.
 ::::
 
 The Network Topology plugin lets you monitor SNMP-enabled network devices from a single view in {{kib}}. On this page, you'll find information on [use cases](#network-topology-use-cases), [features](#network-topology-features), and [how the plugin works](#network-topology-how-it-works).
