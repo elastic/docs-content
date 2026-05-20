@@ -2,6 +2,7 @@
 applies_to:
   serverless: preview
   stack: preview =9.1, ga 9.2+
+description: Monitor Streams data quality by tracking degraded documents, failed documents, quality scores, and ingestion trends over time.
 products:
   - id: observability
   - id: elasticsearch
@@ -15,7 +16,7 @@ products:
 
 # Manage data quality [streams-data-quality]
 
-From the **Streams** page, use the **Data quality** menu to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
+From the **Streams** page, use the **Data quality** column to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
 
 Use the following components to monitor the health of your data and identify and fix issues:
 
@@ -32,6 +33,12 @@ Use the following components to monitor the health of your data and identify and
 * {applies_to}`stack: preview 9.2` **Issues:** Find issues with specific fields, how often they've occurred, and when they've occurred.
 
 ## Data quality calculation [streams-data-quality-calculation]
+
+Streams uses the following {{esql}} queries to calculate the quality score for a stream:
+
+- All documents (including failed documents): `FROM <stream-name>, <stream-name>::failures | STATS doc_count = COUNT(*)`
+- Failed documents only: `FROM <stream-name>::failures | STATS failed_doc_count = COUNT(*)`
+- Degraded documents: `FROM <stream-name> METADATA _ignored | WHERE _ignored IS NOT NULL | STATS degraded_doc_count = COUNT(*)`
 
 Streams calculates data quality as follows:
 
@@ -53,3 +60,11 @@ For example, for a stream called `my-stream`, Streams fetches all documents from
 In Streams, you need to turn on failure stores to get failed documents. To do this, select **Enable failure store** in the **Failed documents** component. From here you can set your failure store retention period.
 
 For more information on data quality, refer to the [data set quality](../../data-set-quality-monitoring.md) documentation.
+
+## Create a data quality alert [streams-data-quality-alert]
+
+To get notified when the percentage of degraded documents in a stream exceeds a threshold, create an alert rule from the **Data quality** tab.
+
+1. Open the **Data quality** tab for the stream you want to monitor.
+2. Select **Create rule** ({icon}`bell`).
+3. [Define the conditions](../../incident-management/create-a-degraded-docs-rule.md#degraded-docs-rule-conditions)) for your rule.

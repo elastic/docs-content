@@ -33,7 +33,7 @@ For example, you can assign **Extreme impact** to business-critical entities, or
 
 ## View and assign asset criticality [_view_and_assign_asset_criticality]
 
-Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [Asset criticality API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
+Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [Asset criticality API]({{kib-apis}}group/endpoint-security-entity-analytics-api).
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
@@ -44,38 +44,15 @@ If you assign asset criticality using the file import feature, risk scores are *
 
 You can view, assign, change, or unassign asset criticality from the following places in the {{elastic-sec}} app:
 
-* The [host details page](/solutions/security/advanced-entity-analytics/hosts-page.md#host-details-page) and [user details page](/solutions/security/advanced-entity-analytics/users-page.md#user-details-page):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-host-details.png
-    :alt: Assign asset criticality from the host details page
-    :screenshot:
-    :::
-
-* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-host-flyout.png
-    :alt: Assign asset criticality from the host details flyout
-    :screenshot:
-    :::
-
-* The entity details flyout in [Timeline](../investigate/timeline.md):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-timeline.png
-    :alt: Assign asset criticality from the host details flyout in Timeline
-    :screenshot:
-    :::
-
+* The [host details page](/solutions/security/advanced-entity-analytics/hosts-page.md#host-details-page) and [user details page](/solutions/security/advanced-entity-analytics/users-page.md#user-details-page)
+* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout)
+* The entity details flyout in [Timeline](../investigate/timeline.md)
 
 If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
 
 * {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
-
-:::{image} /solutions/images/security-entities-section.png
-:alt: Entities section
-:screenshot:
-:::
-
+security-asset-criticality-impact
 
 ### Bulk assign asset criticality [bulk-assign-asset-criticality]
 
