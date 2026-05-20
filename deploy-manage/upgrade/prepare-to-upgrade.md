@@ -110,7 +110,7 @@ If you're upgrading to the current {{version.stack}} release from an earlier 8.x
 
 If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
 
-If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. If you prefer to migrate your user data to a new cluster instead of performing an in-place upgrade, refer to [Migrate your {{es}} data](/manage-data/migrate.md).
 
 :::{note}
 For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
@@ -826,36 +826,3 @@ DELETE _transform/my-transform?delete_dest_index
 ```
 :::
 
-## Reindex to upgrade [reindex-to-upgrade]
-
-If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote.
-
-This method is intended only for migrating your own user or application data and should not be used to migrate Elastic system indices, {{kib}} data, or other {{stack}} features such as {{ml}}, transforms, {{kib}} alerting, or detection rules. To preserve these configurations and feature data, follow the standard upgrade procedure instead.
-
-Follow these steps to perform a reindex-based upgrade to a new deployment or cluster:
-
-1. **Provision an additional deployment running the desired version, such as {{version.stack}}**
-
-    Create it on your chosen platform ({{ech}}, {{ece}}, {{eck}}, or self-managed) and configure it to meet your new requirements.
-
-    ::::{note}
-    On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
-    ::::
-
-2. **Migrate ingest pipelines, templates, and configuration**
-
-    Create in the new cluster the index templates, ingest pipelines, and ILM policies so that they work similarly to those in the old cluster.
-
-3. **Reindex your data into the new {{es}} cluster**
-
-    Use the [reindex documents API]({{es-apis}}v8/operation/operation-reindex) to migrate existing data from the old cluster to the new one, and temporarily send new indexing requests to both clusters.
-
-4. **Validate and cut over**
-
-    Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-
-    The exact process to switch traffic from the old cluster to the new one depends on your environment and requirements. You are responsible for defining this cutover strategy, which can range from a brief maintenance window to a gradual transition. Common approaches include updating client configurations, DNS records, or load balancer targets once validation of the new cluster is complete.
-
-5. **Delete the old deployment**
-
-    Once the new cluster is fully operational and all traffic has been redirected, you can safely delete the old deployment.
