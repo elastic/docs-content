@@ -19,6 +19,10 @@ This guide tells you how to get started with:
 
 If you are a Python application programmer who is new to the Elastic Stack, this content can help you get started more easily.
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-ingest
+:::
+
 *Time required: 45 minutes*
 
 
@@ -356,7 +360,7 @@ es = Elasticsearch(
 )
 ```
 
-Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 For more information on refreshing an index, searching, updating, and deleting, check the [elasticsearch-py examples](elasticsearch-py://reference/examples.md).
 

@@ -49,3 +49,4 @@ Once you understand the basics, explore these common tasks:
 ## About managed dashboards [managed-dashboards]
 
 Some dashboards are created and managed by the system, and are identified as `managed` in your list of dashboards. This generally happens when you set up an integration to add data. You can't edit managed dashboards directly, but you can [duplicate](dashboards/duplicate-dashboards.md) them and edit the duplicates.
+

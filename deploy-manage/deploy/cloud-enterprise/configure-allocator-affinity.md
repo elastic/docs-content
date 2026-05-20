@@ -17,7 +17,13 @@ One of the benefits of the ECE platform is its robust deployment instance distri
 
 Configuring allocator affinity is an optional post-installation task that changes the behavior of {{ece}}. If you do not explicitly set an affinity strategy, all instances use the [`fill-anti-affinity`](#fill-anti-affinity) strategy by default.
 
-To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing purposes only, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400 until you get your TLS certificate sorted out.
+To follow these steps, you must be familiar with using the ECE RESTful API. The API examples in this topic use HTTPS, which requires that you have a [TLS certificate already installed](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
 
 
 ## Affinity strategies [ece_affinity_strategies] 
@@ -31,7 +37,7 @@ $$$fill-anti-affinity$$$`fill-anti-affinity` (default)
 :   Similar to the previous strategy, optimizes for maximum utilization of already used allocators before expanding to new, unused ones. Because this strategy makes sure that existing resources are fully utilized before requiring new ones to be provisioned, it is especially useful when running ECE on cloud environments where you typically pay only for provisioned capacity. With this strategy, new {{es}} nodes and {{kib}} instances for a deployment are created on the least empty allocator in a given zone, even if multiple instances end up on the same allocator, making sure to fill it first before moving on to the next allocator in that zone. The trade-off is that you potentially give up host-level high availability (HA) if an allocator gets filled with multiple instances from the same deployment. This strategy was the default for ECE 2.2 and earlier.
 
 `distribute`
-:   This strategy optimizes for distributing the deployment instances as evenly as possible across all available resources in a given availability zone, creating new deployment instances on the least used allocators. This stategy is useful in scenarios where the hardware resources are already provisioned, typically in on-premise datacenters, and you want to use as much of them as possible. Available in ECE 2.4 and later.
+:   This strategy optimizes for distributing the deployment instances as evenly as possible across all available resources in a given availability zone, creating new deployment instances on the least used allocators. This strategy is useful in scenarios where the hardware resources are already provisioned, typically in on-premise datacenters, and you want to use as much of them as possible. Available in ECE 2.4 and later.
 
 `distribute-anti-affinity`
 :   Similar to the previous strategy, with one change: this strategy prefers to create instances of the same deployment on separate allocators in a specific zone, if available, in order to minimize the impact of an allocator failure on any given deployment. Available in ECE 2.4 and later.
@@ -42,7 +48,7 @@ $$$fill-anti-affinity$$$`fill-anti-affinity` (default)
 To check how allocator affinity is currently configured:
 
 ```sh
-curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X GET -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
   "errors": [{
     "code": "platform.config.store.not_found",
@@ -56,7 +62,7 @@ If a configuration option cannot be found, the default `fill-anti-affinity` stra
 To set allocator affinity to the `distribute-anti-affinity` strategy:
 
 ```sh
-curl -X POST -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
+curl -X POST -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
 {
   "changed": false,
   "name": "constructor",
@@ -67,7 +73,7 @@ curl -X POST -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platfor
 To update allocator affinity to the `distribute` strategy:
 
 ```sh
-curl -X PUT -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
+curl -X PUT -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
 {
   "changed": true,
   "name": "constructor",
@@ -78,7 +84,7 @@ curl -X PUT -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform
 To change allocator affinity back to the default behavior:
 
 ```sh
-curl -X DELETE -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X DELETE -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
 
 }

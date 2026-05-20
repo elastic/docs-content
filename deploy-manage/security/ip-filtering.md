@@ -7,6 +7,14 @@ applies_to:
     self: ga
   serverless: ga
 navigation_title: "Add IP filters"
+products:
+  - id: elastic-stack
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # IP filtering
@@ -27,6 +35,13 @@ In {{serverless-full}} and {{ech}}, IP filters are a type of [network security p
   * [Using the {{ecloud}} API](/deploy-manage/security/network-security-api.md)
   
 To learn how multiple IP filters are processed, and how IP filters and [private connections](/deploy-manage/security/private-connectivity.md) work together in ECH, refer to [](/deploy-manage/security/network-security-policies.md).
+
+:::{note}
+{{serverless-short}} Observability and Security projects must belong to a specific feature tier to apply IP filter policies:
+
+* Observability: [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md) 
+* Security: [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md)  
+:::
 
 ## ECE
 

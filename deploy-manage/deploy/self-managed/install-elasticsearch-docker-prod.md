@@ -3,6 +3,10 @@ applies_to:
   deployment:
     self:
 navigation_title: Production settings
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
 ---
 
 # Using the Docker images in production [docker-prod-prerequisites]
@@ -127,7 +131,7 @@ You can also run an {{es}} container using both a custom UID and GID. You must e
 
 ## Increase ulimits for nofile and nproc [_increase_ulimits_for_nofile_and_nproc]
 
-Increased ulimits for [nofile](setting-system-settings.md) and [nproc](/deploy-manage/deploy/self-managed/bootstrap-checks.md#max-number-threads-check) must be available for the {{es}} containers. Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
+Increased ulimits for [open files](/deploy-manage/deploy/self-managed/file-descriptors.md) and [user process limits](/deploy-manage/deploy/self-managed/max-number-of-threads.md) must be available for the {{es}} containers. Verify the [init system](https://github.com/moby/moby/tree/ea4d1243953e6b652082305a9c3cda8656edab26/contrib/init) for the Docker daemon sets them to acceptable values.
 
 To check the Docker daemon defaults for ulimits, run:
 
@@ -233,9 +237,9 @@ You should use a volume bound to `/usr/share/elasticsearch/data` for the followi
 3. It allows the use of advanced [Docker volume plugins](https://docs.docker.com/engine/extend/plugins/#volume-plugins).
 
 
-## Avoid using `loop-lvm` mode [_avoid_using_loop_lvm_mode]
+## Use the `overlay2` storage driver
 
-If you are using the devicemapper storage driver, do not use the default `loop-lvm` mode. Configure docker-engine to use [direct-lvm](https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/#configure-docker-with-devicemapper).
+We recommend you configure docker-engine to use the [`overlay2`](https://docs.docker.com/engine/storage/drivers/overlayfs-driver/) storage driver for your workloads.
 
 
 ## Centralize your logs [_centralize_your_logs]

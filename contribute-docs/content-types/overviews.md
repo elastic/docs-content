@@ -19,7 +19,7 @@ Whether you're a regular contributor or reviewing someone else's work, these gui
 
 ## What is an overview
 
-An overview provides conceptual information that helps users understand a feature, product, or concept. It answers two fundamental questions:
+An overview provides conceptual information that helps users understand a feature, product, or concept. It answers three fundamental questions:
 
 - **What is it?**
 - **How does it work?**

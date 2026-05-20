@@ -26,11 +26,30 @@ To use Attack Discovery, your role needs specific privileges.
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.3+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
 Ensure your role has:
 
-* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules** {{kib}} feature.
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **Attack discovery**
+  - At least `Read` for **Rules**
+  - At least `Read` for **Alerts**
+
+* The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
+
+| Action | Indices | {{es}} privileges |
+|---------|---------|--------------------------|
+| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
+| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read`, `view_index_metadata`, `write`, and `maintenance`|
+
+:::
+
+:::{applies-item} { "stack": "ga 9.3"}
+
+Ensure your role has:
+
+* `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 
     ![attack-discovery-rules-rbac](/solutions/images/attack-discovery-rules-rbac.png "elasticsearch =60%x60%")
 
@@ -49,7 +68,7 @@ Ensure your role has:
 
 * `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature and at least `Read` privileges for the **Security > Rules, Alerts, and Exceptions** {{kib}} feature.
 
-    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+    ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
 
 * The appropriate [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_index_privileges), based on what you want to do with Attack Discovery alerts:
 
@@ -64,7 +83,7 @@ Ensure your role has:
 
 Ensure your role has `All` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the **Security > Attack discovery** {{kib}} feature.
 
-![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
+![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png "elasticsearch =60%x60%")
 
 :::
 
@@ -82,10 +101,11 @@ In {{stack}} 9.0.0, the **Run** button is called **Generate**.
 
 ::::{image} /solutions/images/security-attack-discovery-settings.png
 :alt: Attack Discovery's settings menu
-:width: 500px
+:screenshot:
+:width: 60%
 ::::
 
-You can select which alerts Attack Discovery will process by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can see more details about the selected alerts.
+You can select which alerts Attack Discovery processes by filtering based on a KQL query, the time and date selector, and the **Number of alerts** slider. Note that sending more alerts than your chosen LLM can handle may result in an error. Under **Alert summary** you can view a summary of the selected alerts grouped by various fields, and under **Alerts preview** you can view more details about the selected alerts.
 
 :::{admonition} How to add non-ECS fields to Attack Discovery
 Attack Discovery is designed for use with alerts based on data that complies with ECS, and by default only analyses ECS-compliant fields. However, you can enable Attack Discovery to review additional fields by following these steps:
@@ -112,11 +132,6 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
 
    :::
 
-
-    :::{image} /solutions/images/security-attck-disc-select-model-empty.png
-    :alt: attck disc select model empty
-    :::
-
 3. Once you’ve selected a connector, do one of the following to start the analysis:
    - {applies_to}`stack: ga 9.1+` Click **Save and run**.
    - {applies_to}`stack: ga =9.0` Click **Generate**.
@@ -138,6 +153,8 @@ Each discovery includes the following information describing the potential threa
 
 :::{image} /solutions/images/security-attck-disc-example-disc.png
 :alt: Attack Discovery detail view
+:screenshot:
+:width: 60%
 :::
 
 
@@ -147,12 +164,13 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 
 * Click an entity’s name to open the entity details flyout and view more details that may be relevant to your investigation.
 * Hover over an entity’s name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
-* Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/cases.md). This makes it easy to share the information with your team and other stakeholders.
+* Click **Take action**, then select **Add to new case** or **Add to existing case** to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.
 
 :::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
+:width: 60%
 :::
 
 ## Schedule discoveries
@@ -160,6 +178,10 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 ```yaml {applies_to}
 stack: ga 9.1
 ```
+
+:::{note}
+{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also create and manage schedules from the [Attacks page](/solutions/security/ai/attacks-page.md). Schedules created on either page appear on both.
+:::
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
 

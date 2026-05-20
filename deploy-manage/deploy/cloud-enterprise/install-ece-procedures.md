@@ -3,6 +3,8 @@ navigation_title: Installation procedures
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # ECE installation procedures

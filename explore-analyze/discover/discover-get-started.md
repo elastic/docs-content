@@ -20,9 +20,10 @@ Learn how to explore your {{product.elasticsearch}} data using **Discover**. Thi
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
-% LINK/PAGE TBD  * **Traces exploration**
-% * Security:
-% LINK/PAGE TBD  * **Security data exploration**
+  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
+  {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+* Security:
+  * **[Security data exploration](/solutions/security/investigate/discover-security.md)** {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
 
@@ -38,7 +39,9 @@ In this case **Discover** provides the default experience until it detects that 
 
 You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
 
-1. Select **Inspect** from Discover's toolbar.
+1. Open the Inspector:
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+   * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. Open the **View** dropdown, then select **Profiles**.
 
 The various profiles listed show details such as the active solution and data source contexts, which determine Discover's context-aware experiences.
@@ -52,7 +55,7 @@ Select the data you want to explore, and then specify the time range in which to
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
-   You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
+   You can also [use {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
    If you’re using sample data, data views are automatically created and are ready to use.
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -198,12 +201,15 @@ You can use **Discover** to compare and diff the field values of multiple result
 5. Exit the comparison view at any time using the **Exit comparison mode** button.
 
 
-### Copy results as text or JSON [copy-row-content]
+### Copy results as text, JSON, or Markdown [copy-row-content]
 
 You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
 
-1. Select the results you want to copy.
-2. Open the **Selected** menu in the table toolbar, and select **Copy selection as text** or **Copy documents as JSON**.
+1. Select the rows you want to copy.
+2. Open the **Selected** menu in the table toolbar, and select one of the available formats:
+   - **Copy selection as text**.
+   - **Copy documents as JSON**, or **Copy results as JSON** if you're in {{esql}} mode.
+   - {applies_to}`stack: ga 9.3+` **Copy selection as Markdown**: Selected results are copied as a Markdown table.
 
 The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
 
@@ -285,16 +291,43 @@ For example, exclude results from the ecommerce sample data view where day of we
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
-You can switch to the ES|QL mode of Discover from the application menu bar.
+You can switch to ES|QL mode in Discover from the application menu, and can [revert back to classic mode](try-esql.md#revert-to-classic-mode) at any time.
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to ES|QL `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
 
 In ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
-{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:applies_to: stack: ga 9.1+
+Partial results appear when an {{esql}} query:
+- times out. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+- {applies_to}`stack: ga 9.3+` is canceled.
 :::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
+
+### Cancel a running query [cancel-query-in-discover]
+
+When you cancel a running query in **Discover**, you might still see some results depending on which version you're using.
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless:, stack: ga 9.3+ }
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and displays the partial results collected up to that point.
+::::
+
+::::{applies-item} stack: ga 9.0-9.2
+Select the **Cancel** button that appears while the query executes. **Discover** stops the search and shows an empty results table.
+::::
+
+:::::
+
+This behavior applies to all query types (KQL, Lucene, and {{esql}}).
+
+:::{tip}
+For long-running queries, you can also [send the query to the background](background-search.md) instead of canceling it, allowing it to complete while you continue working.
+:::
 
 ### Run multiple explorations with tabs
 ```{applies_to}
@@ -323,11 +356,12 @@ To manage and organize your tabs, you can:
 - Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
 
   :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
+  If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
   :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
+- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
+  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once.
 
-To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
 ### Inspect your Discover queries
 
@@ -347,15 +381,16 @@ You can send your long-running KQL or {{esql}} queries to the background from **
 
 Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
-1. In the application menu bar, click **Save**.
-2. Give your session a title and a description.
+1. In the application menu, select **Save**.
+2. Enter a title and a description for the session.
 3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. Click **Save**.
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
+5. Select **Save**.
 
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]
@@ -363,14 +398,14 @@ To share your search and **Discover** view with a larger audience, click {icon}`
 From **Discover**, you can create a rule to periodically check when data goes above or below a certain threshold within a given time interval.
 
 1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
-2. In the application menu bar, click **Alerts > Create search threshold rule**.
+2. In the application menu, click **Alerts > Create search threshold rule**.
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
-3. [Configure your query](../alerts-cases/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
+3. [Configure your query](../alerting/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
 4. Click **Save**.
 
-For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerts-cases/alerts.md).
+For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerting/alerts.md).
 
 
 ## What’s next? [_whats_next_4]

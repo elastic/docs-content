@@ -1,5 +1,14 @@
 ---
 navigation_title: LLM and agentic AI observability
+products:
+  - id: observability
+  - id: apm
+  - id: edot-sdk
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # LLM and agentic AI observability
@@ -10,6 +19,10 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
 - APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/llm-obs
+:::
 
 ## LLM and agentic AI platform observability with Elastic integrations
 

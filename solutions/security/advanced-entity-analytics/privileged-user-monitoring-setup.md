@@ -1,7 +1,7 @@
 ---
 navigation_title: Set up privileged user monitoring
 applies_to:
-  stack: ga 9.3, preview 9.1
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
     security: ga
 products:
@@ -10,6 +10,11 @@ products:
 ---
 
 # Set up and manage privileged user monitoring
+
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
 
 :::{admonition} Requirements
 To use privileged user monitoring, you must:
@@ -109,6 +114,10 @@ Follow the steps to install the integration.
 3. Select **Add privileged users**.
 
 All user names, specified in the `user.name` field in your selected indices, will be defined as privileged users.
+
+:::{note}
+By default, the index selector excludes dot-prefixed indices and index patterns that are part of the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security) (such as `logs-*`). This prevents adding excessive data to privileged user monitoring, which could cause performance issues.
+:::
 
 ### Import a list of privileged users from a text file [privmon-upload]
 

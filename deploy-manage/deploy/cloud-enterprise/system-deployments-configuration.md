@@ -18,6 +18,9 @@ We will review each cluster and provide recommendations to make sure that you ar
 By default, the system deployments have a dedicated `system_owned` flag set to `true` to avoid mistakenly changing the configuration of those clusters. Most configuration changes suggested in this section do not require this flag to be set to `false`, but there are some cases where changing the flag might be required. If you do change this flag, always make sure to set it back to `true` once you have completed the changes. The flag can be set by navigating to the **Data** section in the **Advanced cluster configuration** page.
 ::::
 
+:::{warning}
+Independent upgrades should only be performed when Elastic Support explicitly instructs you to do so.
+:::
 
 
 ## Overview of system deployments [ece_overview_of_system_deployments] 
@@ -29,7 +32,7 @@ Logging and metrics - `logging-and-metrics`
 :   As part of an ECE environment, a Beats sidecar with Filebeat and Metricbeat is installed on each ECE host. The logs and metrics collected by those beats are indexed in the `logging-and-metrics` cluster. This includes ECE service logs, such as proxy logs, director logs, and more. It also includes hosted deployments logs, security cluster audit logs, and metrics, such as CPU and disk usage. Data is collected from all hosts. This information is critical in order to be able to monitor ECE and troubleshoot issues. You can also use this data to configure watches to alert you in case of an issue, or machine learning jobs that can provide alerts based on anomalies or forecasting.
 
 Security - `security`
-:   When you enable the user management feature, you trigger the creation of a third system deployment named `security`. This cluster stores all security-related configurations, such as native users and the related native realm, integration with SAML or LDAP as external authentication providers and their role mapping, and the realm ordering. The health of this cluster is critical to provide access to the ECE Cloud UI and REST API. To learn more, check [Configure role-based access control](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md). Beginning with {{ece}} 2.5.0 the `security` cluster is created automatically for you. It is recommended to use the [dedicated API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-security-deployment) to manage the cluster.
+:   When you enable the user management feature, you trigger the creation of a third system deployment named `security`. This cluster stores all security-related configurations, such as native users and the related native realm, integration with SAML or LDAP as external authentication providers and their role mapping, and the realm ordering. The health of this cluster is critical to provide access to the ECE Cloud UI and REST API. To learn more, check [Configure role-based access control](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md). Beginning with {{ece}} 2.5.0 the `security` cluster is created automatically for you. It is recommended to use the [dedicated API]({{ece-apis}}operation/operation-update-security-deployment) to manage the cluster.
 
 
 ## High availability [ece_high_availability] 
@@ -62,7 +65,7 @@ When sizing your `logging-and-metrics` cluster, consider:
 
 * the expected workload, which affects the daily ingest size.
 * the number of ECE hosts, deployments, and log types you want to enable, such as slow logs or audit logs.
-* the desired retention period for the data. As with any other time-series data, you must properly manage your indices and delete old indices based on that retention period.
+* the desired [retention period for the data](/deploy-manage/monitor/orchestrators/ece-monitoring-ece-set-retention.md). As with any other time-series data, you must properly manage your indices and delete old indices based on that retention period.
 
 ## Access to system deployments [ece_access_to_system_deployments] 
 
@@ -79,3 +82,8 @@ You can’t use ECE’s single sign-on (SSO) to access system deployments.
 ::::{note} 
 Enabling integration with external authentication provider requires that you set the `system_owned` flag to `false` in order to change the elasticsearch.yaml configuration. Remember to set the flag back to `true` after you are done.
 ::::
+
+## System cluster upgrade policy
+
+The system cluster stack versions are validated as part of each ECE release and are not intended to be upgraded separately from the platform. Platform services depend on the versions that ship with the installed ECE release. Upgrading them out of band can create incompatibilities and might lead to reduced availability or platform failures. Instead, to change the system cluster versions, upgrade to a supported ECE release. You can review which stack versions align with each release in the [default system deployment versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) page.
+

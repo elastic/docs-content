@@ -19,10 +19,10 @@ description: Learn the fundamentals of Elastic. Discover what Elastic offers, ex
 
 # Elastic fundamentals
 
-Welcome to Elastic fundamentals. This section helps you understand our platform, learn core concepts, and explore deployment options.
+Elastic fundamentals is your starting point for understanding the Elastic platform. This section covers the core concepts of the Elastic Stack, explains the available deployment options, and links to training and glossary resources so you can get productive quickly.
 
 :::{tip}
-If you're on a trial and need guidance on building a proof of concept, refer to [Evaluate Elastic](/get-started/evaluate-elastic.md).
+If you are using a [free 14-day {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and need guidance on building a proof of concept, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
 :::
 
 In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and how to set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options to understand how everything fits together.
@@ -51,7 +51,7 @@ Continue your journey with these essential guides that will help you understand 
 
 ## Training resources
 
-Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
+Whether you are getting started with Elastic, an expert, or want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
 
 Ready to dive in? Check out [https://www.elastic.co/training](https://www.elastic.co/training) to browse our virtual and on-demand training courses. If you're unsure where to start, check out the [Elasticsearch Engineer](https://www.elastic.co/training/elasticsearch-engineer) course. 
 

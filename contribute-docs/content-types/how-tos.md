@@ -14,7 +14,7 @@ Use this page to:
 
 Whether you're a regular contributor or reviewing someone else's work, these guidelines help ensure consistency, completeness, and quality across the Elastic documentation.
 
-## What is a how-to guide?
+## What is a how-to guide
 
 How-to guides contain a short set of instructions to be carried out, in sequence, to accomplish a specific task. You can think of it like a cooking recipe.
 
@@ -25,7 +25,8 @@ How-to guides include two essential components:
 
 How-to guides focus on a single, self-contained task. For longer procedural content, use a tutorial.
 
-% TODO: Add eventual snippet that disambiguates how-tos, tutorials, and quickstarts -->
+::::{include} /contribute-docs/content-types/_snippets/how-to-tutorial-disambiguation-note.md
+::::
 
 ## Structure of a how-to guide
 

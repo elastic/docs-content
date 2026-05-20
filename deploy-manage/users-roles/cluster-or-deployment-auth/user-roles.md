@@ -12,6 +12,10 @@ products:
 
 After a user is [authenticated](user-authentication.md), {{stack}} needs to determine whether the user behind an incoming request is allowed to execute the request. The primary method of authorization in a cluster is [role-based access control](#roles) (RBAC), although {{stack}} also supports [Attribute-based access control](#attributes) (ABAC).
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+:::
+
 :::{tip}
 If you use {{ece}} or {{ech}}, then you can also implement RBAC at the level of your [{{ece}} orchestrator](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md) or [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization.md).
 
@@ -83,7 +87,7 @@ To create custom roles for {{serverless-full}}, refer to [](/deploy-manage/users
 The way that you assign roles to users depends on your authentication realm:
 
 * [Native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md): 
-  * Using {{es}} API [`_security` endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security)
+  * Using {{es}} API [`_security` endpoints]({{es-apis}}group/endpoint-security)
   * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), from the **Users** management page. Find the page in the navigation menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * [File realm](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md): 
   * Using a [`user_roles` file](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)

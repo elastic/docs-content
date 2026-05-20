@@ -9,12 +9,16 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-navigation_title: AI Assistant
+navigation_title: AI Assistant for Security
 ---
 
 # Elastic AI Assistant for Security
 
 Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+
+:::{important}
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
+:::
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
@@ -29,7 +33,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 ::::{admonition} Requirements
 * {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
 * {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
-* To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Monitor** Elasticsearch [Cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which AI Assistant uses to generate responses.
 * A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
@@ -42,13 +46,11 @@ stack: ga 9.2
 serverless: ga
 ```
 
-The [**GenAI settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) page allows you to:
+The [GenAI and Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) pages allow you to:
 
-- Manage which AI connectors are available in your environment. 
+- Manage which AI connectors or models are available in your environment.
 - Enable or disable AI Assistant and other AI-powered features in your environment.
 - {applies_to}`stack: ga 9.2+` {applies_to}`serverless: unavailable` Specify in which Elastic solutions the `AI Assistant for Observability and Search` and the `AI Assistant for Security` appear.
-
-
 
 ## Your data and AI Assistant [data-information]
 
@@ -69,7 +71,7 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ::::
 
-### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
+### Elastic Managed LLMs [elastic-managed-llm-security-ai-assistant]
 
 :::{include} ../../_snippets/elastic-managed-llm.md
 :::
@@ -112,7 +114,7 @@ Use these optional features to adjust and act on your conversations with AI Assi
 * Create new custom Quick Prompts by clicking **Add quick prompt**.
 
 :::{tip}
-System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page. 
+System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page.
 :::
 
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
@@ -135,7 +137,7 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space. 
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space.
 
 To share a conversation, do one of the following:
 
@@ -356,7 +358,7 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right. 
+To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right.
 
 ::::{image} /solutions/images/security-ai-assistant-settings-menu.png
 :alt: AI Assistant's settings popover
@@ -377,7 +379,7 @@ It has the following tabs:
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
 
-To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window. 
+To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window.
 
 ::::{image} /solutions/images/security-ai-assistant-chat-options-menu.png
 :alt: AI Assistant's chat options menu
@@ -395,7 +397,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 
 ::::
 
-When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider. 
+When you send alert data to AI Assistant, you may want to obfuscate sensitive information before it reaches the LLM provider.
 
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated (replaced by placeholders), so AI Assistant won't have access to their actual values.
 
@@ -439,6 +441,6 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 * “I need to monitor for unusual file creation patterns that could indicate ransomware activity. How would I construct this query using EQL?”
 
 
-## Learn more 
+## Learn more
 
-The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md).

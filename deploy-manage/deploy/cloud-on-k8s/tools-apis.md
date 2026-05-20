@@ -3,6 +3,8 @@ applies_to:
   deployment:
     eck: all
 navigation_title: Tools and APIs
+products:
+  - id: cloud-kubernetes
 ---
 
 # Tools and APIs for {{eck}}

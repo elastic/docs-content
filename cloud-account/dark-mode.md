@@ -2,6 +2,9 @@
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Use dark mode in Kibana

@@ -39,7 +39,7 @@ There are more specific guidelines on badge placement to follow when using speci
 
 ### Page frontmatter
 
-Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader.
+Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader. You should use only one `applies_to` [dimension](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions) at the page level. This dimension represents the user's primary context, whether it's a platform version, deployment type, or supporting piece of software.
 
 ::::{warning}
 Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/applies#section-level) or [inline annotations](https://elastic.github.io/docs-builder/syntax/applies#inline-level) with the page title.
@@ -49,7 +49,7 @@ Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/app
 
 Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or higher level is version or product-specific.
 
-For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
+For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/ai/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
 
 ::::{image} ./images/heading-correct.png
 :screenshot:

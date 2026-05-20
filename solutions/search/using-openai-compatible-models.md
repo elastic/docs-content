@@ -3,6 +3,13 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Using OpenAI compatible models
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Using OpenAI compatible models with the {{infer-cap}} API

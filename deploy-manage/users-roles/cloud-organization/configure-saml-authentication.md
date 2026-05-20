@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ech: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---
@@ -45,10 +45,11 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 * You must have a SAML 2.0 compatible identity provider.
 
 
-## Risks and considerations [ec_risks_and_considerations]
+## Limitations, risks, and considerations [ec_risks_and_considerations]
 
-Before you configure SAML SSO, familiarize yourself with the following risks and considerations:
+Before you configure SAML SSO, familiarize yourself with the following limitations, risks, and considerations:
 
+* You can claim a maximum of 10 domains for your organization, including subdomains.
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 
     To immediately revoke a user’s active sessions, an [Organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
@@ -72,7 +73,7 @@ Follow this procedure to set up SAML SSO with your IdP.
 
 Before you can register and use your IdP with {{ecloud}}, you must claim one or more domains. Only users that have email addresses that match claimed domains can authenticate with your IdP.
 
-If the members of your {{ecloud}} organization have email addresses from multiple domains, you can claim multiple domains.
+If the members of your {{ecloud}} organization have email addresses from multiple domains, you can claim multiple domains. You can claim up to 10 domains, including subdomains.
 
 You must have authority to modify your domain’s DNS records and be a member of the **Organization owner** role in {{ecloud}} to complete this step.
 

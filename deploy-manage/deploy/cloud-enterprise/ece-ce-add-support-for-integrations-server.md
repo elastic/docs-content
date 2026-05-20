@@ -13,12 +13,18 @@ products:
 
 Custom deployment templates should be updated in order to support Integrations Server. While system-owned deployment templates are updated automatically during the ECE upgrade process, user-created deployment templates require a manual update.
 
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
+
 To manually update your custom deployment templates to support Integrations Server:
 
 1. Obtain a list of all existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://${COORDINATOR_HOST}:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://${COORDINATOR_HOST}:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Copy the template you’d like to update and add an `integrations_server` entry under the `deployment_template.resources` section of the JSON. The result should look like the following:
@@ -53,11 +59,11 @@ Send a `PUT` request with the updated template in the payload to replace the ori
 * The following request is just an example; other resources in the request payload should remain unchanged (they have been truncated in the example).
 * You need to replace `{{template_id}}` in the URL with the `id` that you collected in Step 1.
 
-Refer to [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.
+Refer to [set deployment template API]({{ece-apis}}operation/operation-set-deployment-template-v2) for more details.
 
 ::::{dropdown} Update template API request example
 ```sh
-curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
+curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
 {
   "name": "ECE Custom Template",
   "description": "ECE custom template with added Integrations Server",

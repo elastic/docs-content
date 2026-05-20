@@ -5,6 +5,13 @@ applies_to:
   serverless: ga
   deployment:
     self: unavailable
+products:
+  - id: elasticsearch
+  - id: machine-learning
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Using ML-nodes or Elastic {{infer-cap}} Service (EIS) [ml-nodes-vs-eis]

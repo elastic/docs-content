@@ -14,10 +14,6 @@ $$$install-reporting-packages$$$
 
 $$$set-reporting-server-host$$$
 
-$$$csv-limitations$$$
-
-$$$embed-code$$$
-
 $$$grant-user-access-basic$$$
 
 $$$grant-user-access-external-provider$$$
@@ -31,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the {icon}`share` **Share** and {icon}`download` **Export** menus in the toolbar.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar.
 
 ## Permissions
 
@@ -54,8 +50,6 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
-
 
 ## Export as a file [manually-generate-reports]
 
@@ -70,18 +64,7 @@ Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboa
 * **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-
-$$$reporting-layout-sizing$$$
-The layout and size of the report depends on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
-
-To change the output size, change the size of the browser, which resizes the shareable container before the report generates. It might take some trial and error before you’re satisfied.
-
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
+* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
@@ -116,6 +99,22 @@ Go to the **Reporting** page to access all of your reports. To find the page, na
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 ::::
 
+### Resize PDF and PNG reports [reporting-layout-sizing]
+```{applies_to}
+serverless: unavailable
+```
+
+The layout and size of PDF and PNG reports depend on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
+
+To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
+
+In the following dashboard, the shareable container is highlighted:
+
+:::{image} /explore-analyze/images/kibana-shareable-container.png
+:alt: Shareable Container
+:screenshot:
+:::
+
 ### CSV report limitations [csv-limitations]
 
 We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Report timeout and incomplete data issues are likely if you are exporting data where:
@@ -129,7 +128,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 
 To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
 
-For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
+For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
 [Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
@@ -154,22 +153,24 @@ Create and share JSON files for workpads.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
+```{applies_to}
+serverless: unavailable
+```
 
-* {applies_to}`stack: beta` {applies_to}`serverless: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
+* {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
 * **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
-::::
+For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 
 
-## Share workpads on a website [add-workpad-website]
+### Share workpads on a website [add-workpad-website]
 ```{applies_to}
 stack: beta
-serverless: beta
+serverless: unavailable
 ```
 
 Create and securely share static **Canvas** workpads on a website. To customize the behavior of the workpad on your website, you can choose to autoplay the pages or hide the workpad toolbar.
@@ -188,7 +189,11 @@ Create and securely share static **Canvas** workpads on a website. To customize 
 5. To change the settings, click the settings icon, then choose the settings you want to use.
 
 
-## Embed code [embed-code]
+### Embed code [embed-code]
+```{applies_to}
+stack: ga
+serverless: unavailable
+```
 
 Display your dashboards on an internal company website or personal web page with an iframe. To embed other {{kib}} objects, manually create the HTML code.
 
