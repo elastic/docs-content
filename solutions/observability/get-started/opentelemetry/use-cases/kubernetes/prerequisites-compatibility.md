@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Prerequisites
+# Prerequisites and compatibility for Kubernetes observability with EDOT [k8s-edot-prerequisites]
 
 Before setting up observability for Kubernetes, make sure you have the following:
 
