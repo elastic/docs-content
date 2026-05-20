@@ -414,13 +414,12 @@ On the first {{es}} node, complete the following actions to configure it to use 
         xpack.security.transport.ssl.truststore.secure_password
         ```
 
-        These secure settings contain the passwords that protect the PKCS#12 certificates created during the installation, and need to be replaced with the passwords of the newly-created certificates.
+        These secure settings contain the passwords that protect the existing PKCS#12 certificates created during the installation, and need to be replaced with the passwords of the newly-created certificates.
 
     1. Remove the existing settings for the default transport keystore and truststore:
 
         ```shell
         sudo /usr/share/elasticsearch/bin/elasticsearch-keystore remove xpack.security.transport.ssl.keystore.secure_password
-
         sudo /usr/share/elasticsearch/bin/elasticsearch-keystore remove xpack.security.transport.ssl.truststore.secure_password
         ```
 
@@ -428,7 +427,6 @@ On the first {{es}} node, complete the following actions to configure it to use 
 
         ```shell
         sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
-
         sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password <1>
         ```
         1. Use the same password in both secure settings, as both `keystore` and `truststore` {{es}} YAML settings are pointing to the same file.
@@ -699,17 +697,19 @@ Complete this procedure for each node in the cluster:
    ```
    1. Ensure this path matches the location of the new HTTP certificate deployed on each node.
 
-1. Update the HTTP keystore password configured as a [secure setting](/deploy-manage/security/secure-settings.md), using the [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) utility. First remove the existing entry:
+1. Update the HTTP keystore password configured as a [secure setting](/deploy-manage/security/secure-settings.md), using the [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) utility:
 
-   ```shell
-   sudo /usr/share/elasticsearch/bin/elasticsearch-keystore remove xpack.security.http.ssl.keystore.secure_password
-   ```
+    1. First remove the existing entry:
 
-1. Add the secure setting again, using the password of the new HTTP certificate:
+        ```shell
+        sudo /usr/share/elasticsearch/bin/elasticsearch-keystore remove xpack.security.http.ssl.keystore.secure_password
+        ```
 
-   ```shell
-   sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
-   ```
+    1. Add the secure setting again, using the password of the new HTTP certificate:
+
+        ```shell
+        sudo /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
+        ```
 
 1. Restart the {{es}} service for the changes to take effect:
 
