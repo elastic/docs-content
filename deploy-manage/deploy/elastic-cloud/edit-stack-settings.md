@@ -36,7 +36,7 @@ To add or edit user settings:
 4. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
 ::::{note}
-In some cases, you may get a warning saying "User settings are different across {{es}} instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the Master, {{ml-app}}, and Coordinating nodes).
+If you see a warning saying `User settings are different across {{es}} instances`, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the master, {{ml-app}}, and coordinating nodes).
 ::::
 
 ::::{warning}
