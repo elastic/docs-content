@@ -110,8 +110,6 @@ If you're upgrading to the current {{version.stack}} release from an earlier 8.x
 
 If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
 
-If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. If you prefer to migrate your user data to a new cluster instead of performing an in-place upgrade, refer to [Migrate your {{es}} data](/manage-data/migrate.md).
-
 :::{note}
 For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
 
