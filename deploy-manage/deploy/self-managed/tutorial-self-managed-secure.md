@@ -974,7 +974,7 @@ Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet
 
 1. On the **Install {{fleet-server}} to a centralized host** step, select the **Linux Tar** tab (or the tab for your host OS). TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{fleet-server}} using {{fleet}}.
 
-1. Run the first three commands. The commands do the following, respectively:
+1. In the command block shown in {{kib}}, run the first three preparation commands. These commands do the following:
 
     1. Download the {{fleet-server}} package from the {{artifact-registry}}.
     1. Unpack the package archive.
@@ -1003,8 +1003,8 @@ Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet
         Replace the `fleet-server-es-ca-trusted-fingerprint setting` with the returned value. Your updated command should be similar to the following:
 
         ```shell
-        sudo ./elastic-agent install -url=https://203.0.113.41:8220 \
-          --fleet-server-es=https://203.0.113.21:9200 \
+        sudo ./elastic-agent install -url=https://203.0.113.41:8220 \ <1>
+          --fleet-server-es=https://203.0.113.21:9200 \ <2>
           --fleet-server-service-token=<token> \
           --fleet-server-policy=fleet-server-policy \
           --fleet-server-es-ca-trusted-fingerprint=<fingerprint> \
@@ -1013,6 +1013,8 @@ Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet
           --fleet-server-cert-key=/etc/fleet/fleet-server.key \
           --fleet-server-port=8220
         ```
+        1. Set this to the HTTPS endpoint where {{agent}}s will connect to {{fleet-server}} (the host and port configured in the **Add your {{fleet-server}} host** step, typically port `8220`).
+        2. Set this to the HTTPS endpoint of your {{es}} cluster.
 
         Refer to [`elastic-agent install`](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) for all options.
 
@@ -1099,11 +1101,11 @@ Next, we'll install {{agent}} on another host and use the System integration to 
 
     As with {{fleet-server}}, note that TAR/ZIP packages are recommended over RPM/DEB system packages, since only the former support upgrading {{agent}} using {{fleet}}.
 
-   Run the first three commands in the terminal on your {{agent}} host. These commands do the following, respectively:
+1. In the command block shown in {{kib}}, run the first three preparation commands in the terminal on your {{agent}} host. These commands do the following:
 
-     1. Download the {{agent}} package from the {{artifact-registry}}.
-     1. Unpack the package archive.
-     1. Change into the directory containing the install binaries.
+    1. Download the {{agent}} package from the {{artifact-registry}}.
+    1. Unpack the package archive.
+    1. Change into the directory containing the install binaries.
 
 1. Before running the `elastic-agent install` command, make the following changes:
 
@@ -1114,10 +1116,11 @@ Next, we'll install {{agent}} on another host and use the System integration to 
 
     ```shell
     sudo ./elastic-agent install \
-    --url=https://203.0.113.41:8220 \
+    --url=https://203.0.113.41:8220 \ <1>
     --enrollment-token=<token> \
     --certificate-authorities=/etc/agent/fleet-server-ca.crt
     ```
+    1. Ensure this IP address matches the {{fleet-server}} host that you just installed.
 
 1. Run the `elastic-agent install` command. Enter `Y` when prompted. Wait for the **Add agent** flyout to show the agent as connected and for **Confirm incoming data** to complete, then close the flyout.
 
