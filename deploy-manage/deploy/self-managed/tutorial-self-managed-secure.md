@@ -484,7 +484,7 @@ This section covers TLS configuration for {{es}} HTTP connections. It includes c
 ::::{note}
 Unlike the transport layer, where using a CA dedicated exclusively to the cluster is recommended for security reasons, there are multiple valid approaches for HTTP certificates. For example, you can use certificates signed by a publicly trusted CA, or certificates signed by your organization's CA.
 
-You can also use a single shared HTTP CA across the stack (for example, for {{es}}, {{kib}}, and {{fleet-server}} certificates), or use different CAs and certificate profiles per component to separate trust domains.
+You can also use a single shared HTTP CA across the stack (for example, for {{es}}, {{kib}}, and {{fleet-server}} certificates), or use different CAs and certificate profiles per component to separate trust domains. Refer to [Same CA](/deploy-manage/security/same-ca.md) and [Different CA](/deploy-manage/security/different-ca.md) for more details about these trust models.
 ::::
 
 ### Step 1: Generate a new CA for the {{stack}} [install-stack-demo-secure-ca]
@@ -776,6 +776,8 @@ In this tutorial, you generate a new TLS certificate for {{kib}} using the Certi
 * If you prefer to create a new CA for {{kib}} HTTP, repeat the steps in [Generate a new HTTP CA for the {{stack}}](#install-stack-demo-secure-ca) and provide different file names.
 * If you want to create a CSR and submit it to your organization, you can follow the example provided in [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
+For additional guidance on {{kib}} security and HTTPS configuration, refer to [Configure security in {{kib}}](/deploy-manage/security/using-kibana-with-security.md) and [Set up HTTPS](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
+
 ### Step 1: Generate new certificate for {{kib}} HTTP [install-stack-demo-secure-kib-es]
 
 To create a new certificate for {{kib}} using an existing HTTP CA, complete the following actions:
@@ -1003,7 +1005,7 @@ Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet
         Replace the `fleet-server-es-ca-trusted-fingerprint setting` with the returned value. Your updated command should be similar to the following:
 
         ```shell
-        sudo ./elastic-agent install -url=https://203.0.113.41:8220 \ <1>
+        sudo ./elastic-agent install --url=https://203.0.113.41:8220 \ <1>
           --fleet-server-es=https://203.0.113.21:9200 \ <2>
           --fleet-server-service-token=<token> \
           --fleet-server-policy=fleet-server-policy \
