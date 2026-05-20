@@ -18,12 +18,12 @@ Provides inventory information from Docker. {{agent}} uses the Docker provider t
 
 ```yaml
 providers.docker:
-  host: "unix:///var/run/docker.sock"
-  #cleanup_timeout: 60s
-  #ssl:
-  #  certificate_authority: "/etc/pki/root/ca.pem"
-  #  certificate:           "/etc/pki/client/cert.pem"
-  #  key:                   "/etc/pki/client/cert.key"
+  host: "unix:///var/run/docker.sock"  # default; change for TCP or non-standard socket paths
+  cleanup_timeout: 60s
+  ssl:
+    certificate_authority: "/etc/pki/root/ca.pem"
+    certificate:           "/etc/pki/client/cert.pem"
+    key:                   "/etc/pki/client/cert.key"
 ```
 
 `host`
@@ -51,14 +51,14 @@ The available dynamic variables are:
 
 Label keys are available as variables using their original names, including dots. For example, for a container with the label `com.docker.compose.service=redis`, you can reference it as `${docker.container.labels.com.docker.compose.service}`.
 
-However, when the Docker provider enriches events via the `add_docker_metadata` processor, dots in label keys are replaced with underscores by default (`labels.dedot: true`). This means that in the resulting {{es}} document, the same label is stored as `container.labels.com_docker_compose_service`.
+However, when the Docker provider enriches events using the `add_docker_metadata` processor, dots in label keys are replaced with underscores by default (`labels.dedot: true`). This means that in the resulting {{es}} document, the same label is stored as `container.labels.com_docker_compose_service`.
 
 | Context | Label key format |
 | --- | --- |
-| Variable reference in config template (`${...}`) | Dots preserved — `docker.container.labels.com.docker.compose.service` |
+| Variable reference in the configuration template (`${...}`) | Dots preserved — `docker.container.labels.com.docker.compose.service` |
 | Field in the event/{{es}} document | Dots replaced by `_` — `container.labels.com_docker_compose_service` |
 
-For more details on the dedotting behavior, refer to [Working with labels](/reference/fleet/add_docker_metadata-processor.md#labels-dedot-behavior) in the `add_docker_metadata` processor documentation.
+For more details on the label behavior, refer to [Working with labels](/reference/fleet/add_docker_metadata-processor.md#labels-dedot-behavior) in the `add_docker_metadata` processor documentation.
 
 To set the container ID dynamically in the configuration, use a variable in the {{agent}} policy to return container ID information from the provider:
 
