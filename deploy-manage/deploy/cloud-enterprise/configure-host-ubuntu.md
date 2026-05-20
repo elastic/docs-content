@@ -12,7 +12,7 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on Ubuntu.
+Use the following workflow to ready an Ubuntu server for {{ece}} (ECE). The steps install Docker from the upstream Docker `apt` repository, set up an XFS volume for cluster data, tune kernel and systemd parameters for production workloads, and pin the Docker version so unattended upgrades don't break ECE.
 
 * [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
@@ -22,7 +22,7 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 
 ## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install a compatible Docker version on Ubuntu.
+Install a compatible Docker version on Ubuntu using `apt`.
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
@@ -49,10 +49,10 @@ Install a compatible Docker version on Ubuntu.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
+4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker {{ece-docker-version}}. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
 
     ```sh
-    sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
+    sudo apt update && sudo apt install -y docker-ce=5:{{ece-docker-version}}.* docker-ce-cli=5:{{ece-docker-version}}.* containerd.io
     ```
 
 

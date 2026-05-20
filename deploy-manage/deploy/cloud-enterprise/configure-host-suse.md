@@ -12,78 +12,76 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-The following instructions explain how to prepare your hosts on SUSE Linux Enterprise Server 12 SP5 (SLES 12) or 15 (SLES 15).
+SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require XFS quotas to be set up manually, since SLES doesn't ship XFS as the default filesystem. The procedure below covers both SLES 12 SP5 and SLES 15, but note that SLES 12 SP5 reached general support end of life in October 2024 — new {{ece}} installations should target SLES 15.
+
+Always cross-check your SLES version and Docker version against the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) before installing. The commands shown on this page are examples; substitute the versions you've selected from the support matrix.
 
 * [Install Docker](#ece-install-docker-sles12)
 * [Set up XFS quotas](#ece-xfs-setup-sles12)
 * [Update the configurations settings](#ece-update-config-sles)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
 
-If you want to install {{ece}} (ECE) on your own hosts, the steps for preparing your hosts can take a bit of time. There are two ways you can approach this:
-
-* **Think like a minimalist**: [Install the correct version of Docker](#ece-install-docker-sles12) on hosts that meet the [prerequisites](prepare-environment.md) for ECE, then skip ahead and [install ECE](install.md#install-ece). Be aware that some checks during the installation can fail with this approach, which will mean doing further host preparation work before retrying the installation.
-* **Cover your bases**: If you want to make absolutely sure that your installation of {{ece}} can succeed on hosts that meet the [prerequisites](prepare-environment.md), or if any of the checks during the installation failed previously, run through the full preparation steps in this section and then and [install ECE](install.md#install-ece). You’ll do a bit more work now, but life will be simpler later on.
-
-Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with ECE.
-
 ## Install Docker on SLES [ece-install-docker-sles12]
 
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
+::::{warning}
+SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{ece}} deployments should target SLES 15. Existing SLES 12 SP5 hosts should be migrated to a supported SLES 15 release.
+::::
 
-1. Remove Docker and previously installed podman packages (if previously installed).
+1. Remove Docker and any previously installed podman packages (if previously installed).
 
     ```sh
     sudo zypper remove -y docker docker-ce podman podman-remote
     ```
 
-2. Update packages to the latest available versions
+2. Update packages to the latest available versions.
 
     ```sh
     sudo zypper refresh
     sudo zypper update -y
     ```
 
-3. Install Docker and other required packages:
-
-    * For SLES 12:
-
-        ```sh
-        sudo zypper install -y docker=24.0.7_ce-98.109.3
-        ```
+3. Install Docker and other required packages. The following commands are examples of installing Docker {{ece-docker-version}}. If you decide to install a different Docker version, replace `{{ece-docker-version}}` with the desired version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
     * For SLES 15:
 
         ```sh
-        sudo zypper install -y curl device-mapper lvm2 net-tools docker=24.0.7_ce-150000.198.2 net-tools
+        sudo zypper install -y curl device-mapper lvm2 net-tools docker={{ece-docker-version}}.*
         ```
 
-4. Disable nscd, as it interferes with Elastic’s services:
+    * For SLES 12 SP5 (EOL — only use on existing deployments):
+
+        ```sh
+        sudo zypper install -y docker={{ece-docker-version}}.*
+        ```
+
+    ::::{tip}
+    If `zypper` reports that the requested Docker version isn't available, ensure that the SUSE **Containers Module** is enabled (`sudo SUSEConnect -p sle-module-containers/15.<sp>/x86_64`) or refer to SUSE's documentation for adding the upstream Docker repository.
+    ::::
+
+4. Set up the OS groups and add your user.
+
+    1. Create the `elastic` and `docker` groups if they don't already exist:
+
+        ```sh
+         sudo groupadd elastic
+         sudo groupadd docker
+        ```
+
+    2. Add the user to both groups:
+
+        ```sh
+         sudo usermod -aG elastic,docker $USER
+        ```
+
+5. Disable nscd, as it interferes with Elastic's services:
 
     ```sh
     sudo systemctl stop nscd
     sudo systemctl disable nscd
     ```
-
-
-
-## Set up OS groups and user [ece_set_up_os_groups_and_user]
-
-1. If they don’t already exist, create the following OS groups:
-
-    ```sh
-     sudo groupadd elastic
-     sudo groupadd docker
-    ```
-
-2. Add the user to these groups:
-
-    ```sh
-     sudo usermod -aG elastic,docker $USER
-    ```
-
-
 
 ## Set up XFS quotas [ece-xfs-setup-sles12]
 
@@ -95,11 +93,9 @@ Disk space quotas set a limit on the amount of disk space an {{es}} cluster node
 Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting ECE.
 ::::
 
-
 ::::{important}
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
+You must use XFS and have quotas enabled on all allocators, otherwise disk usage won't display correctly.
 ::::
-
 
 **Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` in the following example with the corresponding device on your host.
 
@@ -127,8 +123,6 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo mount -a
     ```
 
-
-
 ## Update the configurations settings [ece-update-config-sles]
 
 1. Stop the Docker service:
@@ -151,7 +145,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
         sudo update-bootloader
         ```
 
-3. Configure kernel parameters
+3. Configure kernel parameters.
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
@@ -171,12 +165,11 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than {{es}} clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
 
-
     1. Apply the settings:
 
         ```sh
         sudo sysctl -p
-        sudo service network restart
+        sudo systemctl restart NetworkManager
         ```
 
 4. Adjust the system limits.
@@ -204,7 +197,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             soft    memlock        unlimited
     ```
 
-5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
+5. NOTE: This step is optional if the Docker registry doesn't require authentication.
 
     Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
@@ -246,8 +239,6 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     sudo install -o $USER -g elastic -d -m 700 /mnt/data/docker
     ```
 
-
-
 ## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
 1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
@@ -266,7 +257,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     }
     ```
 
-2. The user installing ECE must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic`` group created earlier (likely to be 1000). You can set this using the following command:
+2. The user installing ECE must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic` group created earlier (likely to be 1000). You can set this using the following command:
 
     ```sh
     sudo usermod -g <elastic_group_gid> $USER
@@ -311,7 +302,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
     * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
     * Values below 300 seconds are used as-is.
-    
+
     For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
     * `net.ipv4.tcp_keepalive_time`
     * `net.ipv4.tcp_keepalive_intvl`
@@ -319,7 +310,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     :::
 
 
-    1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
+    1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot:
 
         ```sh
         SCRIPT_LOCATION="/var/lib/cloud/scripts/per-boot/00-load-sysctl-settings"
