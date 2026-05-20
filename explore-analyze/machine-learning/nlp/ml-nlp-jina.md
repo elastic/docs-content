@@ -47,9 +47,11 @@ When you send text to an EIS {{infer}} endpoint that uses an embedding model, th
 
 The Jina v5 omni embedding models are multimodal dense vector embedding models available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They turn text, images, video, audio, and documents such as PDF into vectors in one shared space, so you can retrieve, cluster, and score similarity across languages and media types from a single index. There are two Jina v5 omni embedding models available:
 
-- [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small): has 700M parameters, supports a 32768 token input context window, and produces 1024-dimension embeddings
+$$$jina-embeddings-v5-omni-small$$$ `jina-embeddings-v5-omni-small`
+:   Has 700M parameters, supports a 32768 token input context window, and produces 1024-dimension embeddings.
 
-- [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano): has 266M parameters, supports up to an 8192-token text context window, and produces 768-dimensional vectors
+$$$jina-embeddings-v5-omni-nano$$$ `jina-embeddings-v5-omni-nano`
+:   Has 266M parameters, supports up to an 8192-token text context window, and produces 768-dimensional vectors.
 
 For more information, refer to the [Elastic blog post](https://www.elastic.co/search-labs/blog/jina-embeddings-v5-omni-all-media-one-index), the [model card](https://huggingface.co/jinaai/jina-embeddings-v5-omni-small) on Hugging Face, or the [model collection](https://huggingface.co/collections/jinaai/jina-embeddings-v5-omni).
 
