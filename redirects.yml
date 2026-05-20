@@ -888,7 +888,7 @@ redirects:
           'inference-endpoints': 'manage-models'
           'create-custom-eis': 'add-endpoint'
 
-  # Elastic capabilities section moved from custom-agents to agents overview
+  # https://github.com/elastic/docs-content/pull/6582
   'explore-analyze/ai-features/agent-builder/custom-agents.md':
     to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
     many:
