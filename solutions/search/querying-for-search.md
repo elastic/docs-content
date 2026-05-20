@@ -50,7 +50,7 @@ Choose [retrievers](retrievers-overview.md) when you need to:
 - Compose multi-stage retrieval pipelines in a single `_search` call (for example, retrieve, rerank, diversify)
 - Combine multiple retrieval strategies using RRF or linear combination
 - Apply semantic reranking with the `text_similarity_reranker` retriever
-- Use the multi-field query format for simple hybrid search across lexical and semantic fields with automatic score normalization
+- Use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format) for simple hybrid search across lexical and semantic fields with automatic score normalization
 
 Retrievers wrap Query DSL and add composability. If your search involves multiple retrieval stages, such as combining BM25 with vector search or adding a reranking step, retrievers let you express the entire pipeline declaratively.
 
@@ -58,10 +58,9 @@ Retrievers wrap Query DSL and add composability. If your search involves multipl
 
 Choose [ES|QL](esql-for-search.md) when you need to:
 
-- Transform or aggregate results alongside your search (for example, filter, search, rerank, generate)
 - Build end-to-end search queries using piped syntax, including hybrid search with `FORK`/`FUSE`, reranking with `RERANK`, and text generation with `COMPLETION`
+- Combine search with aggregations, stats, or other data transformations in a single query
 - Explore data interactively using a familiar SQL-like syntax in Kibana or the API
-- Combine search with analytics such as aggregations, stats, or data transformations in a single query
 
 ES|QL is a good fit when your workflow extends beyond retrieval. For example, you can search, rerank, and summarize results in a single piped query.
 

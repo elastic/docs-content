@@ -92,7 +92,7 @@ Both use the same underlying inference endpoints and re-ranking models.
 
 Both approaches require an inference endpoint configured for the `rerank` task. You have the following options:
 
-1. Use a reranking model through the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). The recommended model is [Jina Reranker v3](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-reranker-v3).
+1. Use the preconfigured `.jina-reranker-v3` endpoint, powered by the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md). This is the recommended option. Learn more about [Jina Reranker v3](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-reranker-v3).
 2. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [{{infer}} API’s {{es}} service]({{es-apis}}operation/operation-inference-put-elasticsearch).
 3. Use the [Jina AI Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-jinaai) to create a `rerank` endpoint.
 4. Use the [Cohere Rerank {{infer}} endpoint]({{es-apis}}operation/operation-inference-put-cohere) to create a `rerank` endpoint.
@@ -109,7 +109,7 @@ You can perform semantic re-ranking using either retrievers or {{esql}}.
 
 Use the [retriever syntax](../retrievers-overview.md) to compose multi-stage retrieval pipelines declaratively within a single `_search` call. This is a good fit when you want to combine re-ranking with other retriever stages like [RRF](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever), [linear](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever), or [pinned](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever).
 
-Create a `rerank` endpoint using the [{{es}} Inference API]({{es-apis}}operation/operation-inference-put), then define a `text_similarity_reranker` retriever in your search request.
+You can use a preconfigured rerank endpoint (such as `.jina-reranker-v3` or `.rerank-v1-elasticsearch`) or create a custom one using the [{{es}} Inference API]({{es-apis}}operation/operation-inference-put). Then define a `text_similarity_reranker` retriever in your search request.
 
 ::::{dropdown} Example: Retriever-based semantic reranking
 ```console
