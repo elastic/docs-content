@@ -497,7 +497,7 @@ You can also use a single shared HTTP CA across the stack (for example, for {{es
 
 This section covers TLS configuration for HTTP connections across the {{stack}} by creating a shared HTTP CA used to sign certificates for {{es}}, {{kib}}, and {{fleet-server}}.
 
-From the host where you generate the certificates (the [PKI host](#preparations)), run the following commands:
+On the host where you generate the certificates (the [PKI host](#preparations)), run the following commands:
 
 1. Create a new self-signed CA:
 
@@ -529,7 +529,7 @@ From the host where you generate the certificates (the [PKI host](#preparations)
         └── ca.key
     ```
 
-1. Rename the files using meaningful names:
+1. Rename the files using descriptive names:
 
     ```shell
     sudo mv /usr/share/elasticsearch/pki/http/ca/ca.crt /usr/share/elasticsearch/pki/http/ca/elastic-stack-http-ca.crt
@@ -587,9 +587,9 @@ If you already obtained HTTP certificates from your security team or certificate
       If you prefer to create a single certificate for all cluster nodes, answer `n` when prompted to generate one certificate per node, and make sure to include the IP address(es) and FQDN(s) that clients use to access the cluster.
       ::::
 
-    * **For each certificate to create:**
+    * **For each certificate you create, complete the following actions:**
       1. Enter a descriptive name for the node, for example `es-node1`.
-      1. Enter the list of hostnames to be added as "DNS" names in the "Subject Alternative Name" (SAN) field in your certificate.
+      1. Enter the list of hostnames to be added as `DNS` names in the `Subject Alternative Name` (SAN) field in your certificate.
 
           :::{note}
           If there's a common FQDN that you want all nodes to accept, include it in all certificates. This is useful when you access the cluster through an external load balancer or reverse proxy.
@@ -653,7 +653,7 @@ In this step, you copy the generated PKCS#12 certificates and the CA to the corr
 This tutorial uses `scp` to copy files to a regular user's home directory and then `mv` to the {{es}} configuration directory. If your environment supports a more direct transfer method to the final destination, use that instead.
 :::
 
-After completing this step, each {{es}} node should have the following files in `/etc/elasticsearch/certs`:
+After completing this step, the following files should be present on each Elasticsearch node in `/etc/elasticsearch/certs`:
 
 - `http.p12`, containing the currently active HTTP certificate.
 - `http_new.p12`, containing the new HTTP certificate for that node.
@@ -676,7 +676,7 @@ After completing this step, each {{es}} node should have the following files in 
    sudo mv /home/user/elastic-stack-http-ca.crt /etc/elasticsearch/certs/elastic-stack-http-ca.crt
    ```
 
-1. Ensure the certificate files have the correct ownership and permissions on each {{es}} node:
+1. Ensure the certificate files have the correct ownership and permissions configured on each {{es}} node:
 
    ```shell
    sudo chown -R root:elasticsearch /etc/elasticsearch/certs/
@@ -692,7 +692,7 @@ Updating HTTP certificates in {{es}} clusters can be done one node at a time, fo
 Using new HTTP certificates signed by a different CA can affect client HTTP connections to the cluster, such as {{kib}}, {{fleet-server}}, and {{agent}} hosts. Clients that do not trust the new CA will fail to connect to {{es}}. For production environments, add the new HTTP CA to all client trust stores before applying the changes.
 :::
 
-For each node in the cluster, complete this procedure, one by one:
+Complete this procedure for each node in the cluster:
 
 1. Open the configuration file (`/etc/elasticsearch/elasticsearch.yml`) in a text editor and update the HTTP SSL settings to point to the new certificate keystore:
 
@@ -776,15 +776,15 @@ Server-side SSL/TLS certificates for {{kib}} are strongly recommended. They are 
 
 In this tutorial, you generate a new TLS certificate for {{kib}} using the Certificate Authority (CA) created in [Generate a new HTTP CA for the {{stack}}](#install-stack-demo-secure-ca), but there are other valid options:
 
-* If you obtain the certificates from a publicly trusted CA or by your organization's CA, copy them to your {{kib}} host, and skip directly to [Configure {{kib}} SSL server and restart](#kib-ssl-configure).
+* If you obtain the certificates from a publicly trusted CA or from your organization's CA, copy them to your {{kib}} host, and skip directly to [Configure {{kib}} SSL server and restart](#kib-ssl-configure).
 * If you prefer to create a new CA for {{kib}} HTTP, repeat the steps in [Generate a new HTTP CA for the {{stack}}](#install-stack-demo-secure-ca) and provide different file names.
 * If you want to create a CSR and submit it to your organization, you can follow the example provided in [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser).
 
 ### Step 1: Generate new certificate for {{kib}} HTTP [install-stack-demo-secure-kib-es]
 
-To create a new certificate for {{kib}} using an existing HTTP CA:
+To create a new certificate for {{kib}} using an existing HTTP CA, complete the following actions:
 
-1. From the host where you generate the certificates (the [PKI host](#preparations)), use the certificate utility to generate a certificate bundle for the {{kib}} server.
+1. On the host where you generate the certificates (the [PKI host](#preparations)), use the certificate utility to generate a certificate bundle for the {{kib}} server.
 
     ```shell
     sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert --name kibana-server \
@@ -813,7 +813,7 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
    sudo unzip -d /usr/share/elasticsearch/pki/kibana/ /usr/share/elasticsearch/pki/kibana/kibana-cert-bundle.zip
    ```
 
-1. The resulting bundle structure is similar to:
+1. The resulting bundle structure is similar to the following:
 
    ```text
    /usr/share/elasticsearch/pki/kibana/
@@ -908,9 +908,9 @@ To create a new certificate for {{kib}} using an existing HTTP CA:
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we'll set up in a later step.
 
-Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md) and [Configure SSL/TLS for self-managed {{fleet-server}}](/reference/fleet/secure-connections.md) for more detail.
+Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md) and [Configure SSL/TLS for self-managed {{fleet-server}}](/reference/fleet/secure-connections.md) for more detail.
 
-1. Log in to the host where the HTTP CA was generated and use the certificate utility to generate a certificate bundle for {{fleet-server}}. In the command, replace `<DNS name>` and `<IP address>` with the name and IP address of your {{fleet-server}} host:
+1. Log in to the host where the HTTP CA was generated (the [PKI host](#preparations)) and use the certificate utility to generate a certificate bundle for {{fleet-server}}. In the command, replace `<DNS name>` and `<IP address>` with the name and IP address of your {{fleet-server}} host:
 
     ```shell
     sudo /usr/share/elasticsearch/bin/elasticsearch-certutil cert --name fleet-server \
@@ -990,7 +990,7 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
         - The {{fleet-server}} certificate (`fleet-server.crt`)
         - The {{fleet-server}} key (`fleet-server.key`)
 
-    1. The `fleet-server-es-ca-trusted-fingerprint` also needs to be updated. Run the following command to get the correct fingerprint from `es-ca.crt`:
+    1. Update the `fleet-server-es-ca-trusted-fingerprint`. Run the following command to get the correct fingerprint from `es-ca.crt`:
 
         ```shell
         grep -v ^- /etc/fleet/es-ca.crt | base64 -d | sha256sum
@@ -1022,7 +1022,7 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 
 1. Run the `elastic-agent install` command to install {{fleet-server}}.
 
-    When prompted, confirm that {{agent}} should run as a service. If everything goes well, the install will complete successfully:
+    When prompted, confirm that {{agent}} should run as a service. The following message displays when the installation completes successfully:
 
     ```shell subs=true
     {{agent}} has been successfully installed.
@@ -1034,9 +1034,9 @@ Refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server
 
 1. In the {{kib}} **Add a {{fleet-server}}** flyout, wait for confirmation that {{fleet-server}} has connected, then close the flyout.
 
-    {{fleet-server}} is now fully set up!
+    {{fleet-server}} is now fully set up.
 
-1. Before proceeding to install {{agent}}, there are a few steps needed to update the `kibana.yml` settings file with the {{es}} CA fingerprint:
+1. Before installing {{agent}}, complete the following steps to update the `kibana.yml` settings file with the {{es}} CA fingerprint:
 
     :::{note}
     You can also configure this in the {{fleet}} UI by going to **Settings** -> **Outputs**, editing the default output, and setting the CA trusted fingerprint there.
@@ -1109,7 +1109,7 @@ Next, we'll install {{agent}} on another host and use the System integration to 
      1. Unpack the package archive.
      1. Change into the directory containing the install binaries.
 
-1. Before running the provided `elastic-agent install` command, you'll need to make a few changes:
+1. Before running the `elastic-agent install` command, make the following changes:
 
     1. For the `--url` parameter, confirm that the port number is `8220` (this is the default port for on-premises {{fleet-server}}).
     1. Add a `--certificate-authorities` parameter with the full path of your CA certificate file. For example, `--certificate-authorities=/etc/agent/fleet-server-ca.crt`.
