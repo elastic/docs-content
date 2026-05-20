@@ -111,4 +111,4 @@ Upgrading from {{stack}} version 7.17 to the latest {{version.stack}} release in
 
 For detailed guidance on planning and executing these upgrades, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md).
 
-If you prefer to migrate your data to a new cluster instead of performing an in-place upgrade, refer to [Migrate your {{es}} data](/manage-data/migrate.md). This approach focuses on user and application data, and does not include {{kib}} data, system indices, or other {{stack}} feature data.
+If you prefer to migrate your data to a new cluster instead of performing an in-place upgrade, refer to [Migrate your {{es}} data](/manage-data/migrate.md). In upgrade scenarios, this approach focuses on user and application data, and does not include {{kib}} data, system indices, or other {{stack}} feature data.
