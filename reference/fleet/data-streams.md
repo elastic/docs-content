@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -94,7 +97,7 @@ When you install an integration, {{fleet}} creates two default `@custom` compone
 * A `@custom` component template allowing customization across all documents of a given data stream type, named following the pattern: `<data_stream_type>@custom`.
 * A `@custom` component template for each data stream, named following the pattern: `<name_of_data_stream>@custom`.
 
-The `@custom` component template specific to a datastream has higher precedence over the data stream type `@custom` component template.
+The `@custom` component template specific to a data stream has higher precedence over the data stream type `@custom` component template.
 
 You can edit a `@custom` component template to customize your {{es}} indices:
 
@@ -130,10 +133,14 @@ You can edit a `@custom` component template to customize your {{es}} indices:
         ```
 
 
-Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. You can do this with the {{es}} [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover).
+Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. You can do this with the {{es}} [Rollover API]({{es-apis}}operation/operation-indices-rollover).
 
 
 ## Index lifecycle management ({{ilm-init}}) [data-streams-ilm]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
 
@@ -158,7 +165,7 @@ If you create a custom index pipeline, Elastic is not responsible for ensuring t
 `global@custom`
 :   Apply processing to all events
 
-    For example, the following [pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request adds a new field `my-global-field` for all events:
+    For example, the following [pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) request adds a new field `my-global-field` for all events:
 
     ```console
     PUT _ingest/pipeline/global@custom

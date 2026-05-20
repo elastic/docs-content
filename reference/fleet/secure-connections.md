@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
+applies_to:
+  deployment: 
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,13 +22,12 @@ For a summary of flow by which TLS is established between components using eithe
 ::::
 
 
-
 ## Prerequisites [prereqs]
 
-Configure security and generate certificates for the {{stack}}. For more information about securing the {{stack}}, refer to [Configure security for the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+Configure security and generate certificates for the {{stack}}. For more information about securing the {{stack}}, refer to [Secure your cluster, deployment, or project](/deploy-manage/security/secure-your-cluster-deployment.md).
 
 ::::{important}
-{{agent}}s require a PEM-formatted CA certificate to send encrypted data to {{es}}. If you followed the steps in [Configure security for the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), your certificate will be in a p12 file. To convert it, use OpenSSL:
+{{agent}}s require a PEM-formatted CA certificate to send encrypted data to {{es}}. If you followed the steps in [Secure your cluster, deployment, or project](/deploy-manage/security/secure-your-cluster-deployment.md), your certificate will be in a p12 file. To convert it, use OpenSSL:
 
 ```shell
 openssl pkcs12 -in path.p12 -out cert.crt -clcerts -nokeys
@@ -38,7 +40,13 @@ Key passwords are not currently supported.
 
 
 ::::{important}
-When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} need to be generated using [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). For a full list of available algorithms to use when configuring TLS or mTLS, see [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md). These settings are available for both standalone and {{fleet}}-managed {{agent}}.
+When you run {{agent}} with the {{elastic-defend}} integration, note the following TLS certificate requirements:
+
+* {applies_to}`stack: ga 9.1+` The [TLS certificates](https://en.wikipedia.org/wiki/X.509) used to connect to {{fleet-server}} and {{es}} can use either [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) or Elliptic Curve (EC) keys.
+
+* {applies_to}`stack: ga =9.0` The TLS certificates used to connect to {{fleet-server}} and {{es}} need to be generated using RSA.
+
+For a full list of available algorithms to use when configuring TLS or mTLS, refer to [Configure SSL/TLS for standalone {{agents}}](/reference/fleet/elastic-agent-ssl-configuration.md). These settings are available for both standalone and {{fleet}}-managed {{agent}}.
 ::::
 
 
@@ -83,7 +91,7 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
     Store the files in a secure location. You’ll need these files later to encrypt traffic between {{agent}}s and {{fleet-server}}.
 
 
-## Configure SSL/TLS using CLI  [fleet-server-ssl-cli-settings]
+## Configure SSL/TLS using CLI [fleet-server-ssl-cli-settings]
 
 Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
 
@@ -98,7 +106,7 @@ For the steps in this section, imagine you have the following files:
 | `ca.crt` | The CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}. |
 | `fleet-server.crt` | The certificate you generated for {{fleet-server}}. |
 | `fleet-server.key` | The private key you generated for {{fleet-server}}.<br>If the `fleet-server.key` file is encrypted with a passphrase, the passphrase will need to be specified through a file. |
-| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>Note that the CA certificate’s SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
+| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>The CA certificate's SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
 
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
@@ -111,50 +119,51 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         For host settings, use the `https` protocol. DNS-based names are also allowed.
         ::::
 
-    2. Under **Outputs**, search for the default output, then select the **Edit** icon in the **Action** column.
+    2. In the **Outputs** section, search for the default output, then select the **Edit** icon in the **Actions** column.
     3. In the **Hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, [https://192.0.2.0:9200](https://192.0.2.0:9200).
-    4. Specify either a CA certificate or CA fingerprint to connect securely {{es}}:
+    4. Specify either a CA certificate or a CA fingerprint to connect securely to {{es}}:
 
+        * If you have a valid HEX-encoded SHA-256 CA trusted fingerprint, specify it in the **Elasticsearch CA trusted fingerprint** field. The fingerprint must be for a CA certificate that's present in the certificate chain {{es}} sends during the TLS handshake. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
+        * Otherwise, specify the certificate authorities to use to connect to {{es}}.
+        
+          You can specify the path to one or more CA certificates (if the files are available), or embed the certificate content directly. If you specify file paths, the certificates must be available on the hosts running the {{agent}}s.
 
-* If you have a valid HEX encoded SHA-256 CA trusted fingerprint from root CA, specify it in the **Elasticsearch CA trusted fingerprint** field. To learn more, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
-* Otherwise, under **Advanced YAML configuration**, set `ssl.certificate_authorities` and specify the CA certificate to use to connect to {{es}}. You can specify a list of file paths (if the files are available), or embed a certificate directly in the YAML configuration. If you specify file paths, the certificates must be available on the hosts running the {{agent}}s.
+          ::::{applies-switch}
 
-    File path example:
+          :::{applies-item} stack: ga 9.1+
 
-    ```yaml
-    ssl.certificate_authorities: ["/path/to/your/elasticsearch-ca.crt"] <1>
-    ```
+          1. Expand the **Authentication** section.
+          2. In the **Server SSL certificate authorities** field, specify the path to the CA certificate, or paste the certificate content directly.
+          3. (Optional) Select **Add row** to provide additional certificate authorities.
 
-    1. The path to the CA certificate on the {{agent}} host.
+          :::
 
+          ::::{applies-item} stack: ga =9.0
 
-    Pasted certificate example:
+          In the **Advanced YAML configuration** field, set `ssl.certificate_authorities` and specify one or more CA certificates to use to connect to {{es}}.
 
-    ```yaml
-    ssl:
-      certificate_authorities:
-      - |
-        -----BEGIN CERTIFICATE-----
-        MIIDSjCCAjKgAwIBAgIVAKlphSqJclcni3P83gVsirxzuDuwMA0GCSqGSIb3DQEB
-        CwUAMDQxMjAwBgNVBAMTKUVsYXN0aWMgQ2VydGlmaWNhdGUgVG9vbCBBdXRvZ2Vu
-        ZXJhdGVkIENBMB4XDTIxMDYxNzAxMzIyOVoXDTI0MDYxNjAxMzIyOVowNDEyMDAG
-        A1UEAxMpRWxhc3RpYyBDZXJ0aWZpY2F0ZSBUb29sIEF1dG9nZW5lcmF0ZWQgQ0Ew
-        ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDOFgtVri7Msy2iR33nLrVO
-        /M/6IyF72kFXup1E67TzetI22avOxNlq+HZTpZoWGV1I4RgxiQeN12FLuxxhd9nm
-        rxfZEqpuIjvo6fvU9ifC03WjXg1opgdEb6JqH93RHKw0PYimxhQfFcwrKxFseHUx
-        DeUNQgHkMQhDZgIfNgr9H/1X6qSU4h4LemyobKY3HDKY6pGsuBzsF4iOCtIitE9p
-        sagiWR21l1gW/lNaEW2ICKhJXbaqbE/pis45/yyPI4Q1Jd1VqZv744ejnZJnpAx9
-        mYSE5RqssMeV6Wlmu1xWljOPeerOVIKUfHY38y8GZwk7TNYAMajratG2dj+v9eAV
-        AgMBAAGjUzBRMB0GA1UdDgQWBBSCNCjkb66eVsIaa+AouwUsxU4b6zAfBgNVHSME
-        GDAWgBSCNCjkb66eVsIaa+AouwUsxU4b6zAPBgNVHRMBAf8EBTADAQH/MA0GCSqG
-        SIb3DQEBCwUAA4IBAQBVSbRObxPwYFk0nqF+THQDG/JfpAP/R6g+tagFIBkATLTu
-        zeZ6oJggWNSfgcBviTpXc6i1AT3V3iqzq9KZ5rfm9ckeJmjBd9gAcyqaeF/YpWEb
-        ZAtbxfgPLI3jK+Sn8S9fI/4djEUl6F/kARpq5ljYHt9BKlBDyL2sHymQcrDC3pTZ
-        hEOM4cDbyKHgt/rjcNhPRn/q8g3dDhBdzjlNzaCNH/kmqWpot9AwmhhfPTcf1VRc
-        gxdg0CTQvQvuceEvIYYYVGh/cIsIhV2AyiNBzV5jJw5ztQoVyWvdqn3B1YpMP8oK
-        +nadUcactH4gbsX+oXRULNC7Cdd9bp2G7sQc+aZm
-        -----END CERTIFICATE-----
-    ```
+          File path example:
+
+          ```yaml
+          ssl.certificate_authorities: ["/path/to/your/elasticsearch-ca.crt"] <1>
+          ```
+
+          1. The path to the CA certificate on the {{agent}} host.
+
+          Pasted certificate example:
+
+          ```yaml
+          ssl:
+            certificate_authorities:
+            - |
+              -----BEGIN CERTIFICATE-----
+              MIIDSjCCAjKgAwIBAgIVAKlphSqJclcni3P83gVsirxzuDuwMA0GCSqGSIb3DQEB
+              ...
+              -----END CERTIFICATE-----
+          ```
+          :::
+          ::::
+        
 
     1. Install an {{agent}} as a {{fleet-server}} on the host and configure it to use TLS:
 
@@ -224,7 +233,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `elastic-agent-cert-key`
             :   The path to the private key to use as for {{agent}}'s connections to {{fleet-server}}.
 
-            `elastic-agent-cert-key`
+            `elastic-agent-cert-key-passphrase`
             :   The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}}. The file must only contain the characters of the passphrase, no newline or extra non-printing characters. This option is only used if the `elastic-agent-cert-key` is encrypted and requires a passphrase to use.
 
             `fleet-server-es-cert`
@@ -236,7 +245,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             `fleet-server-client-auth`
             :   One of `none`, `optional`, or `required`. Defaults to `none`. {{fleet-server}}'s client_authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs specified in the `--certificate-authorities` flag.
 
-            Note that additionally an optional passphrase for the private key may be specified with:
+            Additionally an optional passphrase for the private key may be specified with:
 
             `fleet-server-cert-key-passphrase`
             :   Passphrase file used to decrypt {{fleet-server}}'s private key.
@@ -274,6 +283,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
 
 ## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]
+
 ```{applies_to}
   stack: ga 9.1
 ```

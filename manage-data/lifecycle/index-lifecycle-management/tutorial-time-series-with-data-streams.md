@@ -32,7 +32,7 @@ To set up a data stream, first create an index template to specify the lifecycle
 For example, you might create a template named `timeseries_template` and use it for a future data stream named `timeseries`.
 To configure {{ilm-init}} to manage the data stream, you specify the name of the lifecycle policy that you want to apply to the data stream with the `index.lifecycle.name` setting.
 
-Use the {{kib}} **Create template** wizard to add a template or the [Create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add a template and apply the lifecycle policy to indices matching the template.
+Use the {{kib}} **Create template** wizard to add a template or the [Create or update index template]({{es-apis}}operation/operation-indices-put-index-template) API to add a template and apply the lifecycle policy to indices matching the template.
 
 ::::{tab-set}
 :group: kibana-api
@@ -155,7 +155,7 @@ The following response shows the data stream’s first generation backing index 
 }
 ```
 
-1. The age of the index used for calculating when to rollover the index via the `max_age`
+1. The age of the index used for calculating when to rollover the index using the `max_age`
 2. The policy used to manage the index
 3. The age of the indexed used to transition to the next phase (in this case it is the same with the age of the index).
 4. The step {{ilm-init}} is performing on the index

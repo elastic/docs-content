@@ -43,7 +43,7 @@ To add or edit {{es}} user settings:
 $$$ece-change-user-settings-examples$$$
 ## Example: enable email notifications [ece_enable_email_notifications_from_gmail]
 
-To enable email notifications in your {{es}} cluster, you need to configure an email account and related settings. For complete instructions, refer to [Configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md#configuring-email).
+To enable email notifications in your {{es}} cluster, you need to configure an email account and related settings. For complete instructions, refer to [Configuring email accounts](/explore-analyze/alerting/watcher/actions-email.md#configuring-email).
 
 ```yaml
 xpack.notification.email.account:

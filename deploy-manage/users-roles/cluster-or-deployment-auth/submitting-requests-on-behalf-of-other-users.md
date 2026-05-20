@@ -3,11 +3,7 @@ navigation_title: Submit requests on behalf of other users
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
 products:
   - id: elasticsearch
 ---
@@ -63,7 +59,7 @@ For example, JWT realms can authenticate external users specified in JWTs, and e
 
 ## Apply the `run_as` privilege to roles [run-as-privilege-apply]
 
-You can apply the `run_as` privilege when creating roles with the [role management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role), or using the [role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) in {{kib}}. Users who are assigned a role that contains the `run_as` privilege inherit all privileges from their role, and can also submit requests on behalf of the indicated users.
+You can apply the `run_as` privilege when creating roles with the [role management API]({{es-apis}}operation/operation-security-put-role), or using the [role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) in {{kib}}. Users who are assigned a role that contains the `run_as` privilege inherit all privileges from their role, and can also submit requests on behalf of the indicated users.
 
 ::::{note} 
 Roles for the authenticated user and the `run_as` user are not merged. If a user authenticates without specifying the `run_as` parameter, only the authenticated user’s roles are used. If a user authenticates and their roles include the `run_as` parameter, only the `run_as` user’s roles are used.

@@ -2,14 +2,23 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Query downsampled data"
+navigation_title: "Querying"
 products:
   - id: elasticsearch
 ---
 
 # Querying downsampled data [querying-downsampled-indices]
 
-To query a downsampled index, use the [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints. 
+To query a downsampled index, use the [`_query`]({{es-apis}}operation/operation-esql-query) endpoint. The [`_search`]({{es-apis}}operation/operation-search) and [`_async_search`]({{es-apis}}operation/operation-async-search-submit) endpoints are also supported but not optimized for time series processing.
+
+## {{esql}} `TS` command
+```{applies_to}
+stack: preview 9.2-9.3, ga 9.4+
+```
+
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
+
+## _search aggregations
 
 * You can query multiple raw data and downsampled indices in a single request, and a single request can include downsampled indices with multiple downsampling intervals (for example, `15m`, `1h`, `1d`).
 * When you run queries in {{kib}} and through Elastic solutions, a standard response is returned, with no indication that some of the queried indices are downsampled.
@@ -26,3 +35,4 @@ Date histograms are based on UTC values. Some time zone situations require offse
 When offsetting is applied, responses include the field `downsampled_results_offset: true`.
 
 For more details, refer to [Date histogram aggregation: Time zone](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#datehistogram-aggregation-time-zone).
+

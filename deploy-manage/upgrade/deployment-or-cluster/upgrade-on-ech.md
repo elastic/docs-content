@@ -33,6 +33,18 @@ If your indices are not highly available (configured with at least one replica),
 
 Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for more information about High Availability (HA) on ECH.
 
+## Check your {{kib}} instance size 
+
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/kib-instance-size.md
+:::
+
+[Learn how to edit settings for existing deployments](/deploy-manage/deploy/elastic-cloud/configure.md).
+
+:::{note}
+{{kib}} instances in {{ech}} deployments created in May 2026 or later have 2 GB of RAM by default. 
+Increasing the instance size above 1 GB [affects billing](/deploy-manage/cloud-organization/billing/billing-faq.md#faq-included).
+:::
+
 ## Perform the upgrade [perform-cloud-upgrade]
 
 Log in to your {{ecloud}} environment:
@@ -65,6 +77,11 @@ Security realm settings
 
     1. On the **Update security realm settings** window, edit the settings.
     2. Click **Update settings**. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
+
+## Archived settings [archived-settings]
+
+:::{include} _snippets/archived-settings-post.md
+:::
 
 ## Next steps
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/create-a-policy-no-ui.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -30,6 +33,10 @@ For more information, refer to [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-a
 
 
 ## Option 2. Create agent policies with preconfiguration [use-preconfiguration-to-create-policy]
+
+```{applies_to}
+serverless: unavailable
+```
 
 Add preconfigured policies to [`kibana.yml`](/deploy-manage/stack-settings.md) config.
 

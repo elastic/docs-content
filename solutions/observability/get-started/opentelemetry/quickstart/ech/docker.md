@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart for Docker on Elastic Cloud Hosted
+# Quickstart for Docker on {{product.cloud-hosted}}
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces.
 
@@ -107,6 +107,10 @@ instrument your target applications following the setup instructions:
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
    Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+:::{tip}
+Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+:::
 
 ::::
 

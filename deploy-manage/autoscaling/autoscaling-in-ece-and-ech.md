@@ -78,22 +78,34 @@ On a highly available deployment, autoscaling events are always applied to insta
 ## Notifications[ec-autoscaling-notifications]
 In the event that a data tier or machine learning node scales up to its maximum possible size, you’ll receive an email, and a notice also appears on the deployment overview page prompting you to adjust your autoscaling settings to ensure optimal performance.
 
-In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../explore-analyze/alerts-cases/watcher.md).
+In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../explore-analyze/alerting/watcher.md).
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
+
+### Generic limitations
 
 The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
 
+### {{ech}}-specific limitations
+
 In {{ech}} the following additional limitations apply:
 
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../autoscaling/trained-model-autoscaling.md).
+* The maximum configurable node count is 32. This means that the `Maximum size per zone` in autoscaling is limited to the maximum RAM size of the instance configuration in use, multiplied by 32. 
+
+   For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the `Maximum size per zone` in autoscaling is limited to `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI). 
+   
+   For more details, refer to [Restrictions and known problems > Node count and size](../deploy/elastic-cloud/restrictions-known-problems.md#ec-node-count-size).
+
+
+### {{ece}}-specific limitations
 
 In {{ece}}, the following additional limitations apply:
 
-* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
+* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API]({{ece-apis}}operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 
@@ -102,7 +114,7 @@ To enable or disable autoscaling on a deployment:
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-4. Under the deployment's name in the navigation menu, select **Edit**.
+4. From the navigation menu, select **Edit**.
 5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
 6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
@@ -117,7 +129,7 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 :::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Edit**.
+3. From the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
@@ -237,12 +249,18 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
-::::{tab-set}
+:::::{applies-switch}
 
-:::{tab-item} {{ece}}
+::::{applies-item} ece:
 
-```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+:::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+:::
+
+```sh subs=true
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
  "resources": {
@@ -379,7 +397,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "elasticsearch": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          },
          "deployment_template": {
            "id": "default"
@@ -401,14 +419,14 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            {
              "instance_configuration_id": "kibana",
              "size": {
-               "value": 1024,
+               "value": 2048,
                "resource": "memory"
              },
              "zone_count": 1
            }
          ],
          "kibana": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -430,7 +448,7 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
            }
          ],
          "apm": {
-           "version": "8.13.1"
+           "version": "{{version.stack}}"
          }
        }
      }
@@ -441,11 +459,11 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 '
 ```
 
-:::
+::::
 
-:::{tab-item} {{ech}}
+::::{applies-item} ess:
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -636,7 +654,7 @@ curl -XPOST \
            }
          ],
          "apm": {
-           "version": "7.11.0"
+           "version": "{{version.stack}}"
          }
        },
        "ref_id": "main-apm"
@@ -648,6 +666,6 @@ curl -XPOST \
 '
 ```
 
-:::
-
 ::::
+
+:::::

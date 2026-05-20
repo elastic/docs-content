@@ -20,7 +20,7 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 
 ### Search and filter with Query DSL [search-analyze-query-dsl-search-filter]
 
-Query DSL support a wide range of search techniques, including the following:
+Query DSL supports a wide range of search techniques, including the following:
 
 * [**Full-text search**](/solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
 * [**Keyword search**](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
@@ -42,7 +42,7 @@ The following aggregation types are available:
 * [Bucket](elasticsearch://reference/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
 * [Pipeline](elasticsearch://reference/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
 
-Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
+Run aggregations by specifying the [search API]({{es-apis}}operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
 
 
 ## How does it work? [query-dsl]
@@ -87,14 +87,14 @@ The execution of such queries can be prevented by setting the value of the `sear
 
 By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query.
 
-The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
+The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search]({{es-apis}}operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
 
 
 ### Query context [query-context]
 
 In the query context, a query clause answers the question *How well does this document match this query clause?* Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 
-Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#request-body-search-query) API.
+Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search]({{es-apis}}operation/operation-search#request-body-search-query) API.
 
 
 ### Filter context [filter-context]

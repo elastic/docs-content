@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.1
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Cloud Asset Discovery
@@ -15,7 +22,7 @@ For step-by-step getting started guides, refer to the following getting started 
 
 * [Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md)
 * [Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md)
-* [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md).
+* [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md)
 
 ## Requirements
 

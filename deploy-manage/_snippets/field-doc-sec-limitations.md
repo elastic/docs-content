@@ -15,7 +15,7 @@ When a user’s role enables [document level security](/deploy-manage/users-role
 
 * If suggesters are specified and document level security is enabled, the specified suggesters are ignored.
 * A search request cannot be profiled if document level security is enabled.
-* The [terms enum API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-terms-enum) does not return terms if document level security is enabled.
+* The [terms enum API]({{es-apis}}operation/operation-terms-enum) does not return terms if document level security is enabled.
 * The [`multi_match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) query does not support specifying fields using wildcards.
 
 :::{note}
@@ -33,12 +33,12 @@ When a user’s role enables document or [field level security](/deploy-manage/u
 
 * The user cannot perform operations that effectively make contents accessible under another name, including actions from the following APIs:
 
-    * [Clone index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone)
-    * [Shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink)
-    * [Split index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split)
-    * [Aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases)
+    * [Clone index API]({{es-apis}}operation/operation-indices-clone)
+    * [Shrink index API]({{es-apis}}operation/operation-indices-shrink)
+    * [Split index API]({{es-apis}}operation/operation-indices-split)
+    * [Aliases API]({{es-apis}}operation/operation-indices-update-aliases)
 
 * The request cache is disabled for search requests if either of the following are true:
 
-    * The role query that defines document level security is [templated](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) using a [stored script](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts).
+    * The role query that defines document level security is [templated](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) using a [stored script](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md).
     * The target indices are a mix of local and remote indices.

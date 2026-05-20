@@ -3,11 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  serverless:
+  stack:
 products:
   - id: elasticsearch
   - id: cloud-hosted
@@ -23,7 +20,7 @@ Depending on your deployment type, you can use a variety of solutions for monito
 
 You have several options for monitoring your cluster or deployment.
 
-Use [AutoOps](/deploy-manage/monitor/autoops.md) in your {{ech}}, ECE, ECK, or self-managed deployments. AutoOps is a monitoring tool that simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
+Use [](/deploy-manage/monitor/autoops.md) to simplify cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. 
 
 Alternatively, you can use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
 
@@ -36,31 +33,33 @@ The following sections provide more details.
 ### AutoOps (recommended)
 
 ```{applies_to}
-deployment:
-  ess:
-  self:
-  ece:
-  eck:
+serverless:
+stack:
 ```
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-In the [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md) where it has been rolled out, AutoOps is automatically available in [{{ech}} deployments](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md), and can be set up for [ECE, ECK, and self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+:::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
+:::
+
+:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
+:::
+
 
 ### Stack monitoring
 
 ```{applies_to}
-deployment:
-  ess:
-  ece:
-  eck:
-  self:
+stack:
 ```
 
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-def.md
 :::
 
-In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you, simplifying the stack monitoring setup process.
+In {{ece}} and {{ech}}, Elastic manages the installation and configuration of the monitoring agent for you, simplifying the stack monitoring setup process. To enable it, refer to [](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+
+For self-managed, refer to enablement options under [](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
+
+In {{eck}}, the operator manages the installation once enabled. For more information, refer to [](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md).
 
 :::{include} /deploy-manage/monitor/_snippets/stack-monitoring-prod.md
 :::
@@ -73,7 +72,7 @@ deployment:
   ess:
 ```
 
-{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise:
+{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployments and resolving health issues when they arise:
 
 * [Cluster health information](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
 * A [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md)
@@ -90,6 +89,14 @@ Out of the box logs and metrics tools, including ECH preconfigured logs and metr
 :::
 
 To learn more about the health and performance tools in {{ecloud}}, refer to [](/deploy-manage/monitor/cloud-health-perf.md).
+
+## Query activity
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+The [Query activity](/deploy-manage/monitor/query-activity.md) page in {{kib}} gives you a real-time view of all search queries currently running in your {{es}} cluster. Use it to identify long-running queries, inspect their details, trace them back to their source, and cancel them when needed.
 
 ## {{kib}} task manager monitoring
 

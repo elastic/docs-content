@@ -7,9 +7,10 @@ products:
   - id: elasticsearch
 ---
 
-# Migrate index allocation filters to node roles [migrate-index-allocation-filters]
+# Migrate index allocation filters to {{ilm-init}} node roles [migrate-index-allocation-filters]
 
-If you currently use [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices through [data tiers](../data-tiers.md) in a [hot-warm-cold architecture](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management), we recommend that you switch to using the built-in node roles and automatic [data tier allocation](../data-tiers.md#data-tier-allocation). Using node roles enables {{ilm-init}} to automatically move indices between data tiers.
+
+If your cluster currently relies on [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices between [data tiers](../data-tiers.md), migrating to {{es}} node roles simplifies management. Node roles work with {{ilm}} ({{ilm-init}}) to automatically move indices through hot, warm, cold, and frozen tiers, reducing manual configuration and ensuring efficient shard allocation.
 
 ::::{note}
 While we recommend relying on automatic data tier allocation to manage your data in a hot-warm-cold architecture, you can still use attribute-based allocation filters to control shard allocation for other purposes.
@@ -149,5 +150,5 @@ PUT my-index/_settings
 }
 ```
 
-This situation can occur in a system that defaults to data tiers when, e.g., an ILM policy that uses node attributes is restored and transitions the managed indices from the hot phase into the warm phase. In this case the node attribute configuration indicates the correct tier where the index should be allocated.
+This situation can occur in a system that defaults to data tiers when, for example, an ILM policy that uses node attributes is restored and transitions the managed indices from the hot phase into the warm phase. In this case the node attribute configuration indicates the correct tier where the index should be allocated.
 

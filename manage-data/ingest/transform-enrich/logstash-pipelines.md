@@ -10,7 +10,7 @@ products:
 
 # Logstash pipelines [logstash-pipelines]
 
-This content applies to: [![Elasticsearch](/manage-data/images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](/manage-data/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/manage-data/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Elasticsearch](/manage-data/images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](/manage-data/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/manage-data/images/serverless-sec-badge.svg "")](../../../solutions/security.md)
 
 On the **{{ls-pipelines-app}}** management page, you can control multiple {{ls}} instances and pipeline configurations.
 

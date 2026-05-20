@@ -5,9 +5,14 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
+navigation_title: Regions
 ---
 
-# Regions [regions]
+# {{serverless-short}} regions [regions]
+
+:::::{note}
+If you're looking for regions for {{ech}} deployments, refer to [{{ech}} regions](cloud://reference/cloud-hosted/regions.md).
+:::::
 
 A region is the geographic area where the data center of the cloud provider that hosts your project is located. Review the available {{serverless-full}} regions to decide which region to use. If you aren’t sure which region to pick, choose one that is geographically close to you to reduce latency.
 
@@ -15,19 +20,18 @@ A region is the geographic area where the data center of the cloud provider that
 
 ::::{note} 
 Currently, a limited number of Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) regions are available. More regions for AWS, Azure, and GCP, will be added in the future.
-
 ::::
-
-
 
 ## Amazon Web Services (AWS) regions [regions-amazon-web-services-aws-regions]
 
-The following AWS regions are currently available:
+The following AWS regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| ap-southeast-2 | Asia Pacific (Sydney) |
+| ca-central-1 | Canada (Central) |
 | eu-central-1 | Europe (Frankfurt) |
 | eu-west-1 | Europe (Ireland) |
 | eu-west-2 | Europe (London) |
@@ -38,27 +42,36 @@ The following AWS regions are currently available:
 
 ## Microsoft Azure regions [regions-azure-regions]
 
-The following Azure regions are currently available:
+The following Azure regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
-| eastus | East US |
-| northeurope | North Europe |
-| australiaeast | Australia East |
-| westus2 | West US 2 |
+| australiaeast | Australia East (New South Wales) |
+| eastus | East US (Virginia) |
+| eastus2 | East US 2 (Virginia) |
+| germanywestcentral | Germany West Central (Frankfurt) |
+| northeurope | North Europe (Ireland) |
+| southeastasia | Southeast Asia (Singapore) |
+| spaincentral | Spain Central (Madrid) |
+| uaenorth | UAE (Dubai) |
+| westus2 | West US 2 (Washington) |
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
 
-The following GCP regions are currently available:
+The following GCP regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
-| asia-south1 | Mumbai |
-| europe-west1 | Belgium |
-| us-central1 | Iowa |
-| us-east1 | South Carolina |
-| us-east4 | Virginia |
-| us-west1 | Oregon |
+| asia-south1 | India (Mumbai) |
+| asia-southeast1 | Singapore (Jurong West) |
+| europe-west1 | Belgium (St. Ghislain) |
+| europe-west2 | England (London) |
+| europe-west3 | Germany (Frankfurt) |
+| europe-west4 | Netherlands (Eemshaven) |
+| us-central1 | United States (Iowa) |
+| us-east1 | United States (South Carolina) |
+| us-east4 | United States (Virginia) |
+| us-west1 | United States (Oregon) |
 
 ## Marketplaces
 

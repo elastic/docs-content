@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-event-settings.html
 applies_to:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack:
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes
@@ -31,7 +27,8 @@ The event settings include:
 * Data roles tier to exclude from indications - Add threshold based on the type of data tier.
 
 :::{image} /deploy-manage/images/cloud-autoops-event-settings.png
-:alt: Event settings
+:screenshot:
+:alt: Screenshot showing the Event Settings dialogue in AutoOps
 :::
 
 
@@ -42,6 +39,7 @@ The **Event Settings** report provides a list of all the events for which the se
 From the **Event Settings** report, you can click **Add** to add new settings, or select the edit icon to modify the existing settings.
 
 :::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
-:alt: Event settings report
+:screenshot:
+:alt: Screenshot showing the Event Settings page with the Add button
 :::
 

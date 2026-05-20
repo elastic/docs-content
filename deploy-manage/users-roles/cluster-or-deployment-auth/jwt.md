@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html
 applies_to:
-  deployment:
-    self:
-    ess:
-    ece:
-    eck:
+  stack: all
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -121,10 +117,22 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   :   Indicates that {{es}} should use the `RS256` or `HS256` signature algorithms to verify the signature of the JWT from the JWT issuer.
 
   `pkc_jwkset_path`
-  :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys.
+  :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys. Background JWKS reloading can also be configured with the setting `pkc_jwkset_reload.enabled`. This ensures that rotated keys are automatically discovered and used to verify JWT signatures.
+
+  `pkc_jwkset_reload.enabled` {applies_to}`stack: ga 9.3`
+  :   Indicates whether JWKS background reloading is enabled. Defaults to `false`.
+
+  `pkc_jwkset_reload.file_interval` {applies_to}`stack: ga 9.3`
+  :   Specifies the reload interval for file-based JWKS. Defaults to `5m`.
+
+  `pkc_jwkset_reload.url_interval_min` {applies_to}`stack: ga 9.3`
+  :   Specifies the minimum reload interval for URL-based JWKS. The `Expires` and `Cache-Control` HTTP response headers inform the reload interval. This configuration setting is the lower bound of what is considered, and it is also the default interval in the absence of useful response headers. Defaults to `1h`.
+
+  `pkc_jwkset_reload.url_interval_max` {applies_to}`stack: ga 9.3`
+  :   Specifies the maximum reload interval for URL-based JWKS. This configuration setting is the upper bound of what is considered from header responses (`5d`).
 
   `claims.principal`
-  :   The name of the JWT claim that contains the user’s principal (username).
+  :   The name of the JWT claim that contains the user’s principal. Defaults to `username`.
 
   ::::
 
@@ -157,7 +165,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
   :   Specifies a list of JWT subjects that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
 
   `allowed_subject_patterns`
-  :   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example "a?\**", matches "a1*" and "ab*whatever", but not "a", "abc", or "abc*" (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md) must be enclosed between `/`, for example "/https?://[^/]+/?/" matches any http or https URL with no path component (matches "https://elastic.co/" but not "https://elastic.co/guide").
+  :   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example `a?\**` matches `a1*` and `ab*whatever`, but not `a`, `abc`, or `abc*` (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md) must be enclosed between `/`, for example `/https?://[^/]+/?/` matches any http or https URL with no path component (matches `https://elastic.co/` but not `https://elastic.co/docs`).
 
   At least one of the `allowed_subjects` or `allowed_subject_patterns` settings must be specified (and be non-empty) when `token_type` is `access_token`.
 
@@ -287,7 +295,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 * By delegating authorization [to another realm](#jwt-authorization-delegation).
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
@@ -298,7 +306,7 @@ You can't map roles in the JWT realm using the `role_mapping.yml` file.
 
 ### Authorizing with the role mapping API [jwt-authorization-role-mapping]
 
-You can use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
+You can use the [create or update role mappings API]({{es-apis}}operation/operation-security-put-role-mapping) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
 
 ```console
 PUT /_security/role_mapping/jwt1_users?refresh=true <1>
@@ -345,7 +353,7 @@ The following example shows how you define delegation authorization in the [`ela
 xpack.security.authc.realms.jwt.jwt2.authorization_realms: file1,native1,ldap1,ad1
 ```
 
-You can then use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
+You can then use the [create or update role mappings API]({{es-apis}}operation/operation-security-put-role-mapping) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
 
 ```console
 PUT /_security/role_mapping/native1_users?refresh=true
@@ -393,7 +401,7 @@ POST /_security/role_mapping/jwt_user1?refresh=true
 }
 ```
 
-After mapping the roles, you can make an [authenticated call](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
+After mapping the roles, you can make an [authenticated call]({{es-apis}}operation/operation-security-authenticate) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
 
 $$$jwt-auth-shared-secret-scheme-example$$$
 
@@ -433,6 +441,8 @@ JWT authentication supports signature verification using PKC (Public Key Cryptog
 PKC JSON Web Token Key Sets (JWKS) can contain public RSA and EC keys. HMAC JWKS or an HMAC UTF-8 JWK contain secret keys. JWT issuers typically rotate PKC JWKS more frequently (such as daily), because RSA and EC public keys are designed to be easier to distribute than secret keys like HMAC.
 
 JWT realms load a PKC JWKS and an HMAC JWKS or HMAC UTF-8 JWK at startup. JWT realms can also reload PKC JWKS contents at runtime; a reload is triggered by signature validation failures.
+
+JWT realms can also be configured to reload a PKC JWKS periodically in the background.
 
 ::::{note}
 HMAC JWKS or HMAC UTF-8 JWK reloading is not supported at this time.

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/tls-overview.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -18,6 +21,10 @@ You can also configure one-way and mutual TLS connections using {{kib}}. {applie
 
 
 ## Simple one-way TLS connection [one-way-tls-connection]
+
+```{applies_to}
+serverless: unavailable
+```
 
 The following `elastic-agent install` command configures a {{fleet-server}} with the required certificates and certificate authorities to enable one-way TLS connections between the components involved:
 
@@ -57,6 +64,10 @@ During the TLS connection setup, {{fleet-server}} presents its certificate `flee
 
 ## Mutual TLS connection [mutual-tls-connection]
 
+```{applies_to}
+serverless: unavailable
+```
+
 The following `elastic-agent install` command configures a {{fleet-server}} with the required certificates and certificate authorities to enable mutual TLS connections between the components involved:
 
 ```shell
@@ -64,7 +75,7 @@ elastic-agent install --url=https://your-fleet-server.elastic.co:443 \
 --certificate-authorities=/path/to/fleet-ca,/path/to/agent-ca \
 --elastic-agent-cert=/path/to/agent-cert \
 --elastic-agent-cert-key=/path/to/agent-cert-key \
---elastic-agent-cert-key=/path/to/agent-cert-key-passphrase \
+--elastic-agent-cert-key-passphrase=/path/to/agent-cert-key-passphrase \
 --fleet-server-es=https://es.elastic.com:443 \
 --fleet-server-es-ca=/path/to/es-ca \
 --fleet-server-es-cert=/path/to/fleet-es-cert \
@@ -91,7 +102,7 @@ To establish a mutual TLS connection, the agent presents its certificate, `agent
 :alt: Diagram of mutual TLS connection between Fleet Server and Elasticsearch
 :::
 
-Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
+You can also configure mutual TLS for {{fleet-server}} and {{agent}} [using a proxy](/reference/fleet/mutual-tls.md#mutual-tls-cloud-proxy).
 
 
 ### Relationship between components in a mutual TLS connection [_relationship_between_components_in_a_mutual_tls_connection]
@@ -101,13 +112,24 @@ Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [
 :::
 
 ## Configure TLS/mTLS settings in the Fleet UI [tls-ui-settings]
+
 ```{applies_to}
   stack: ga 9.1
 ```
 
-You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} and outputs using the {{fleet}} UI.
+In self-managed and {{ech}} deployments, you can configure TLS and mutual TLS (mTLS) for {{fleet-server}} and outputs in the {{fleet}} UI. 
+
+:::{{note}}
+:applies_to: serverless: ga
+
+On {{serverless-short}}, the {{fleet-server}} settings are managed, but you can still configure TLS/mTLS for your outputs.
+:::
 
 ### Fleet Server SSL options
+
+```{applies_to}
+serverless: unavailable
+```
 
 To access these settings:
 

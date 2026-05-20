@@ -3,6 +3,13 @@ applies_to:
   stack: preview 9.1
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Set up Cloud Asset Discovery for AWS
@@ -13,7 +20,7 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 ## Requirements
 * The user who gives the Cloud Asset Discovery integration AWS permissions must be an AWS account `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing).
 * The Cloud Asset Discovery integration supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
@@ -25,8 +32,8 @@ You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud 
 
 Two deployment technologies are available: agentless and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 ## Agentless deployment [cad-aws-agentless]
 
@@ -36,15 +43,23 @@ Two deployment technologies are available: agentless and agent-based.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
 6. In **Deployment options**, select **Agentless**.
-7. Next, you’ll need to authenticate to AWS. Two methods are available:
+7. Next, you’ll need to authenticate to AWS. The following methods are available:
 
-    * Option 1: Direct access keys/CloudFormation (Recommended). For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
+    * Option 1: [Cloud connector](/manage-data/ingest/agentless/cloud-connector-deployment.md) (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` 
+      * To use a pre-existing cloud connector for this deployment, select **Existing connection** then the cloud connector's name. 
+      * To use a new cloud connector: under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to assume role** section. Complete the instructions to generate a `Role ARN` and `External ID`; enter them in {{kib}}.
+      
+      ::::{important}
+      {applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+      ::::
+
+    * Option 2: Direct access keys/CloudFormation. For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
        ::::
 
-    * Option 2: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/asset-disc-aws.md#cad-aws-temp-credentials).
+    * Option 3: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/asset-disc-aws.md#cad-aws-temp-credentials).
 
 8. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
@@ -311,5 +326,5 @@ If you want to monitor an AWS account or organization where you have not yet dep
 If you want to monitor an AWS account or organization where you have already deployed {{agent}}:
 
 * Select **Existing hosts**.
-* Select an agent policy that applies the AWS account you want to monitor.
+* Select an {{agent}} policy that applies the AWS account you want to monitor.
 * Click **Save and continue**.

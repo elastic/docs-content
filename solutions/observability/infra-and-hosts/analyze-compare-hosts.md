@@ -31,7 +31,7 @@ To access the **Hosts** page in:
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/observability/metrics-reference.md) documentation.
 
 ::::{note}
 **Don’t see any metrics?**
@@ -163,6 +163,7 @@ serverless: ga
 
 The **Schema** menu shows the available data collection schemas for the current query. If host data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected by the Elastic System integration.
 
+Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for OpenTelemetry and the Elastic System integration.
 
 ## View host details [view-host-details]
 
@@ -171,7 +172,7 @@ Without leaving the **Hosts** page, you can view enhanced metrics relating to ea
 {applies_to}`{stack: "ga 9.2", serverless: "ga"}` The host details overlay adapts according to the [selected schema](#host-schema-selector). When viewing host data collected using OpenTelemetry, you see the following differences:
 
 * Anomaly detection isn't available for OpenTelemetry hosts, so there is no **Anomalies** tab.
-* The Lens charts use the [OpenTelemetry field calculation formulas](/reference/data-analysis/observability/observability-host-metrics.md#open-telemetry-host-metrics).
+* The Lens charts use the [OpenTelemetry field calculation formulas](/reference/observability/observability-host-metrics.md#open-telemetry-host-metrics).
 
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.

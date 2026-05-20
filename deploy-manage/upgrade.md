@@ -48,6 +48,10 @@ Upgrading your Elastic cluster or deployment involves several stages, including 
 
 - [Upgrade ingest components](./upgrade/ingest-components.md): Covers supporting components such as {{beats}}, {{agent}}, {{ls}}, and APM Server.
 
+:::{note}
+If you’re still running {{stack}} version 7.17 or earlier, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md) for detailed guidance on planning and executing the upgrade to the latest {{version.stack}} release.
+:::
+
 Additionally, if you're using a self-managed orchestration platform such as {{ece}} or {{eck}}, refer to [Upgrade your ECE or ECK orchestrator](/deploy-manage/upgrade/orchestrator.md) to keep the orchestrator up to date.
 
 ## Availability during upgrades
@@ -97,3 +101,12 @@ If you're upgrading to the current {{version.stack}} release from an earlier 8.x
 For flexible upgrade scheduling, 8.19 {{agent}}, {{beats}}, and {{ls}} are compatible with all 9.x versions of {{es}}.
 
 By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x cluster.
+
+### Upgrade paths from 7.17 [upgrade-paths-7.x]
+
+Upgrading from {{stack}} version 7.17 to the latest {{version.stack}} release involves two major upgrades:
+
+- From 7.17 to 8.19
+- From 8.19 to {{version.stack}}
+
+For detailed guidance on planning and executing these upgrades, refer to the [Upgrade from 7.17 guide](/deploy-manage/upgrade/deployment-or-cluster/upgrade-717.md).

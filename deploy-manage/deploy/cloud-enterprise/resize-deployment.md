@@ -34,7 +34,7 @@ To resize a deployment:
         ::::
 
     RAM per instance
-    :   Node and instance capacity should be sufficient to sustain your search workload, even if you lose an availability zone. Currently, half of the memory is assigned to the JVM heap. For example, on an {{es}} cluster node with 32 GB RAM, 16 GB would be allotted to heap. Up to 64 GB RAM and 1 TB storage per node are supported.
+    :   Node and instance capacity should be sufficient to sustain your search workload, even if you lose an availability zone. For instances up to 64 GB of RAM, half the memory is assigned to the JVM heap. For instances larger than 64 GB, the heap size is capped at 32 GB. For example, on an {{es}} cluster node with 32 GB RAM, 16 GB would be allotted to heap, while on a 128 GB node, 32 GB would be allotted to heap. Up to 256 GB RAM and 1 TB storage per node are supported.
 
     Before finalizing your changes, you can review the **Architecture** summary, which shows the total number of instances per zone, with each circle color representing a different type of instance.
 

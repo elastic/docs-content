@@ -35,11 +35,11 @@ At its core, the most important benefit of runtime fields is the ability to add 
 
 ## Incentives [runtime-incentives]
 
-Runtime fields can replace many of the ways you can use scripting with the `_search` API. How you use a runtime field is impacted by the number of documents that the included script runs against. For example, if you’re using the `fields` parameter on the `_search` API to [retrieve the values of a runtime field](retrieve-runtime-field.md), the script runs only against the top hits just like script fields do.
+Runtime fields can replace many of the ways you can use scripting with the `_search` API. How you use a runtime field is impacted by the number of documents that the included script runs against. For example, if you're using the `fields` parameter on the `_search` API to [retrieve the values of a runtime field](retrieve-runtime-field.md), the script runs only against the top hits, similar to script fields.
 
 You can use [script fields](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) to access values in `_source` and return calculated values based on a script valuation. Runtime fields have the same capabilities, but provide greater flexibility because you can query and aggregate on runtime fields in a search request. Script fields can only fetch values.
 
-Similarly, you could write a [script query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md) that filters documents in a search request based on a script. Runtime fields provide a very similar feature that is more flexible. You write a script to create field values and they are available everywhere, such as [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md), [all queries](../../../explore-analyze/query-filter/languages/querydsl.md), and [aggregations](../../../explore-analyze/query-filter/aggregations.md).
+Similarly, you could write a [script query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-query.md) that filters documents in a search request based on a script. Runtime fields provide a similar feature that is more flexible. You write a script to create field values and they are available everywhere, such as [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md), [all queries](../../../explore-analyze/query-filter/languages/querydsl.md), and [aggregations](../../../explore-analyze/query-filter/aggregations.md).
 
 You can also use scripts to [sort search results](elasticsearch://reference/elasticsearch/rest-apis/sort-search-results.md#script-based-sorting), but that same script works exactly the same in a runtime field.
 
@@ -52,7 +52,7 @@ Runtime fields use less disk space and provide flexibility in how you access you
 
 To balance search performance and flexibility, index fields that you’ll frequently search for and filter on, such as a timestamp. {{es}} automatically uses these indexed fields first when running a query, resulting in a fast response time. You can then use runtime fields to limit the number of fields that {{es}} needs to calculate values for. Using indexed fields in tandem with runtime fields provides flexibility in the data that you index and how you define queries for other fields.
 
-Use the [asynchronous search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches that include runtime fields. This method of search helps to offset the performance impacts of computing values for runtime fields in each document containing that field. If the query can’t return the result set synchronously, you’ll get results asynchronously as they become available.
+Use the [asynchronous search API]({{es-apis}}operation/operation-async-search-submit) to run searches that include runtime fields. This method of search helps to offset the performance impacts of computing values for runtime fields in each document containing that field. If the query can’t return the result set synchronously, you’ll get results asynchronously as they become available.
 
 ::::{important}
 Queries against runtime fields are considered expensive. If [`search.allow_expensive_queries`](../../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) is set to `false`, expensive queries are not allowed and {{es}} will reject any queries against runtime fields.

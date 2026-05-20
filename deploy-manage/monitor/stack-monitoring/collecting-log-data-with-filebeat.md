@@ -31,7 +31,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../../security/logging-configuration/logfile-audit-output.md), [deprecation logs](/deploy-manage/monitor/logging-configuration/elasticsearch-deprecation-logs.md), [gc logs](elasticsearch://reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md). For more information about the location of your {{es}} logs, refer to the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
     ::::{important}
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
@@ -117,7 +117,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 9. Check whether the appropriate indices exist on the monitoring cluster.
 
-    For example, use the [cat indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
+    For example, use the [cat indices]({{es-apis}}operation/operation-cat-indices) command to verify that there are new `filebeat-*` indices.
 
     ::::{tip}
     If you want to use the **Monitoring** UI in {{kib}}, there must also be `.monitoring-*` indices. Those indices are generated when you collect metrics about {{stack}} products. For example, see [Collecting monitoring data with {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md).

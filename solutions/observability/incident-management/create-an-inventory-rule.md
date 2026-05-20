@@ -3,6 +3,9 @@ navigation_title: Inventory
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/infrastructure-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-inventory-threshold-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -31,13 +34,24 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
+## Requirements
+
+To create inventory rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` and `metricbeat-*` for metrics; `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
+
 ## Inventory conditions [inventory-conditions]
 
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
 
 :::{note}
-{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
-Most inventory types respect the default data collection method (for example, [Elastic system integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}`
+Most inventory types respect the default data collection method (for example, [Elastic System Integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
 :::
 
 In the following example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
@@ -46,6 +60,15 @@ In the following example, Kubernetes Pods is the selected inventory type. The co
 :alt: Inventory rule
 :screenshot:
 :::
+
+### Supported data by inventory type
+
+For more on the data supported by each inventory type, refer to the following references:
+
+* [Hosts](../../../reference/observability/observability-host-metrics.md)
+* [{{k8s}} Pods](../../../reference/observability/observability-kubernetes-pod-metrics.md)
+* [Docker Containers](../../../reference/observability/observability-container-metrics.md)
+* [AWS](../../../reference/observability/observability-aws-metrics.md)
 
 ## Add actions [action-types-infrastructure]
 
@@ -123,7 +146,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

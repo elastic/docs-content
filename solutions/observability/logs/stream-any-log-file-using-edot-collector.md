@@ -1,5 +1,5 @@
 ---
-navigation_title: Stream any log file using OTel Collector
+navigation_title: Send any log file using OTel Collector
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-stream-edot.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files-edot.html
@@ -11,19 +11,17 @@ products:
   - id: cloud-serverless
 ---
 
-# Stream any log file using OTel Collector [logs-stream-edot]
+# Send any log file using OTel Collector [logs-stream-edot]
 
-This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Stream any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
+This guide shows you how to manually configure the {{edot}} (EDOT) Collector to send your log data to {{es}} by configuring the `otel.yml` file. For an Elastic Agent equivalent, refer to [Send any log file using {{agent}}](/solutions/observability/logs/stream-any-log-file.md).
 
 For more OpenTelemetry quickstarts, refer to [EDOT quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 ## Prerequisites [logs-stream-edot-prereq]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
 
@@ -37,8 +35,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -147,11 +144,9 @@ $content | Set-Content .\otel.yml
 
 To collect logs from specific log files, you need to modify the `otel.yml` configuration file. The configuration includes receivers, processors, and exporters that handle log data.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 Here's an example configuration for collecting log files with Elastic Stack:
 
@@ -231,8 +226,7 @@ service:
 :::
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 Here's an example configuration for collecting log files with Elastic Cloud Serverless:
 

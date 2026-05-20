@@ -6,13 +6,14 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Sort search results by relevance score in Discover to identify the documents that best match your query. Use the score field to prioritize the most relevant data.
 ---
 
 # Search for relevance [discover-search-for-relevance]
 
-{{es}} assigns a relevancy, or score to each document, so you can can narrow your search to the documents with the most relevant results. The higher the score, the better it matches your query.
+{{product.elasticsearch}} assigns a relevancy score to each document based on how well it matches your query. Sorting by this score helps you identify the most relevant results quickly. This guide shows how to use **Discover** to sort documents by relevance score, putting the best matches at the top of your results.
 
-This example shows how to use **Discover** to list your documents from most relevant to least relevant. This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
+This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.
 
@@ -28,7 +29,7 @@ This example shows how to use **Discover** to list your documents from most rele
 4. From the list of **Meta fields** list in the sidebar, add `_score`.
 5. Add any other fields you want to the document table.
 
-    At this point, you’re sorting by the`timestamp` field.
+    You're sorting by the`timestamp` field.
 
 6. To turn off sorting by the `timestamp` field, click the **field sorted** option, and then click **Clear sorting.**
 7. Open the **Pick fields to sort by** menu, and then click **_score**.

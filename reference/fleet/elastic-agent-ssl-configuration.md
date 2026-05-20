@@ -2,6 +2,9 @@
 navigation_title: SSL/TLS
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-ssl-configuration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -33,7 +36,7 @@ $$$common-ssl-options$$$
 
 
 `ssl.cipher_suites` $$$ssl.cipher_suites-common-setting$$$
-:   (list) The list of cipher suites to use. The first entry has the highest priority. If this option is omitted, the Go crypto library’s [default suites](https://golang.org/pkg/crypto/tls/) are used (recommended). Note that TLS 1.3 cipher suites are not individually configurable in Go, so they are not included in this list.
+:   (list) The list of cipher suites to use. The first entry has the highest priority. If this option is omitted, the Go crypto library's [default suites](https://golang.org/pkg/crypto/tls/) are used (recommended). TLS 1.3 cipher suites are not individually configurable in Go, so they are not included in this list.
 
     The following cipher suites are available:
 
@@ -50,7 +53,7 @@ $$$common-ssl-options$$$
     * ECDHE-RSA-AES-128-GCM-SHA256: TLS 1.2 only.
     * ECDHE-RSA-AES-256-CBC-SHA
     * ECDHE-RSA-AES-256-GCM-SHA384: TLS 1.2 only.
-    * ECDHE-RSA-CHACHA20-POLY1205: TLS 1.2 only.
+    * ECDHE-RSA-CHACHA20-POLY1305: TLS 1.2 only.
     * ECDHE-RSA-RC4-128-SHA: Disabled by default. RC4 not recommended.
     * RSA-3DES-CBC3-SHA
     * RSA-AES-128-CBC-SHA
@@ -177,7 +180,7 @@ $$$client-ssl-options$$$
     **Default:** `full`
 
 `ssl.ca_trusted_fingerprint` $$$ssl.ca_trusted_fingerprint$$$
-:   (string) A HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally.
+:   (string) A HEX-encoded SHA-256 of a CA certificate that's present in the certificate chain the server sends during the TLS handshake. If this certificate is found in the chain, it'll be added to the `certificate_authorities` list and the handshake will continue normally.
 
     Example:
 

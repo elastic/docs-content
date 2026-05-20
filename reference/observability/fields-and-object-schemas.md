@@ -24,7 +24,7 @@ This reference covers {{infrastructure-app}} fields.
 
 ## Infrastructure app fields [metrics-app-fields]
 
-This section lists the required fields the {{infrastructure-app}} uses to display data. Note that some of the fields listed are not [ECS fields](ecs://reference/index.md#_what_is_ecs).
+This section lists the required fields the {{infrastructure-app}} uses to display data. Some of the fields listed are not [ECS fields](ecs://reference/index.md#_what_is_ecs).
 
 ### Additional field details [_additional_field_details]
 

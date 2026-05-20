@@ -24,7 +24,7 @@ This document provides a general overview of the retriever abstraction. For a fu
 
 Retrievers come in various types, each tailored for different search operations. The following retrievers are currently available:
 
-* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#search-api-knn), in the context of a retriever framework.
+* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search]({{es-apis}}operation/operation-search#search-api-knn), in the context of a retriever framework.
 * [**Linear retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores.
 * [**Pinned retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever). Always places specified documents at the top of the results, with the remaining hits provided by a secondary retriever.
 * [**Rescorer retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever). Re-scores the results produced by its child retriever.
@@ -133,14 +133,18 @@ Here are some important terms:
 * **Rerankers**. Special compound retrievers that reorder hits and may adjust the number of hits, with distinctions between first-stage and second-stage rerankers.
 
 
-## Retrievers in action [retrievers-overview-play-in-search]
+## Test retriever syntax in Playground [retrievers-overview-play-in-search]
 
-The Search Playground builds Elasticsearch queries using the retriever abstraction. It automatically detects the fields and types in your index and builds a retriever tree based on your selections.
+```{applies_to}
+stack: beta
+elasticsearch: beta
+```
 
-You can use the Playground to experiment with different retriever configurations and see how they affect search results.
+Playground builds {{es}} queries using the retriever abstraction. It automatically detects the fields and types in your index and builds a retriever tree based on your selections.
 
-Refer to the [Playground documentation](rag/playground.md) for more information.
+You can use the Playground to experiment with different retriever configurations and observe how they affect search results.
 
+Refer to the [Playground documentation](/solutions/elasticsearch-solution-project/playground.md) for more information.
 
 ## Reference docs and examples [retrievers-overview-api-reference]
 

@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---
@@ -13,9 +14,11 @@ products:
 # Get started with Universal Profiling [profiling-get-started]
 
 
-On this page, you’ll learn how to configure and use Universal Profiling. This page covers:
+This page shows you how to configure and use Universal Profiling on an {{ecloud}} deployment. To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
 
-* Prerequisites to setting up Universal Profiling
+This page covers:
+
+* Prerequisites to setting up Universal Profiling on {{ecloud}}
 * Setting up Universal Profiling in your {{ecloud}} deployment
 * Installing the Universal Profiling Agent
 * Installing the Universal Profiling Agent integration
@@ -27,7 +30,7 @@ We would appreciate feedback on your experience with this product and any other 
 
 Before setting up Universal Profiling, make sure you meet the following requirements:
 
-* An {{stack}} deployment on [{{ecloud}}](http://cloud.elastic.co) at version 8.7.0 or higher. Universal Profiling is currently only available on Elastic Cloud.
+* An {{stack}} deployment on [{{ecloud}}](http://cloud.elastic.co). To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
 * The workloads you’re profiling must be running on Linux machines with x86_64 or ARM64 CPUs.
 * The minimum supported kernel version is either 4.19 for x86_64 or 5.5 for ARM64 machines.
 * The Integrations Server must be enabled on your {{ecloud}} deployment.
@@ -42,7 +45,7 @@ The minimum supported versions of each interpreter are:
 
 * JVM/JDK: 7
 * Python: 3.6
-* V8: 8.1.0
+* V8: 8.1.0 (AMD64 systems require {{stack}} 9.2.2 or later; ARM64 systems require {{stack}} version 9.1.8 or 9.2.2 or later)
 * Perl: 5.28
 * PHP: 7.3
 * Ruby: 2.5
@@ -143,6 +146,22 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 5. Click **Save and continue**.
 
+#### Deploy {{agent}} using `Kubernetes` with the Universal Profiling Agent integration
+
+To deploy {{agent}} with the Universal Profiling Agent integration using Kubernetes,
+make sure that the following options are set in the manifest.
+
+```console
+hostPID: true
+securityContext:
+  readOnlyRootFilesystem: true
+  privileged: true
+  runAsUser: 0
+  runAsGroup: 0
+  capabilities:
+    add:
+      - SYS_ADMIN
+```
 
 ## Install the Universal Profiling Agent in standalone mode [profiling-install-agent-standalone]
 
@@ -167,3 +186,4 @@ Consider the following when configuring your Universal Profiling Agent:
 * You can find a list of container image versions in the [Elastic container library repository](https://container-library.elastic.co/r/observability/profiling-agent).
 * For {{k8s}} deployments, the Helm chart version is already used to configure the same container image, unless overwritten with the `version` parameter in the Helm values file.
 * For {{stack}} version 8.8, use `v3` host agents. For version 8.7, use `v2`. `v3` host agents are incompatible with 8.7 {{stack}} versions.
+* Deploying the Universal Profiling Agent as a sidecar is not supported or recommended.

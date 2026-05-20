@@ -91,11 +91,17 @@ To search documents that contain terms within a provided range, use KQL’s rang
 http.response.bytes < 10000
 ```
 
-To search for an inclusive range, combine multiple range queries. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
+To search for an inclusive range, combine multiple range conditions. For example, to search for documents where `http.response.bytes` is greater than 10000 but less than or equal to 20000, use the following syntax:
 
 ```yaml
 http.response.bytes > 10000 and http.response.bytes <= 20000
 ```
+
+:::{note}
+When using range queries with multiple conditions on multi-value fields, each condition is evaluated independently against all values in the array. 
+
+For example, the query `number > 300 AND number < 400` will match a document with `"number": [500, 10]` because 500 satisfies the first condition and 10 satisfies the second condition. If you need all conditions to be satisfied by the same value, consider using [Query DSL](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) instead, which will only match documents where at least one value falls entirely within the specified range.
+:::
 
 You can also use range syntax for string values, IP addresses, and timestamps. For example, to search for documents earlier than two weeks ago, use the following syntax:
 

@@ -1,12 +1,18 @@
 ---
+navigation_title: Deploy on-premises and self-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Deploy on-premises and self-managed [add-fleet-server-on-prem]
+# Deploy on-premises and self-managed {{fleet-server}} [add-fleet-server-on-prem]
 
 To use {{fleet}} for central management, a [{{fleet-server}}](/reference/fleet/fleet-server.md) must be running and accessible to your hosts.
 
@@ -32,7 +38,6 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 ::::
 
 
-
 ## Compatibility [add-fleet-server-on-prem-compatibility]
 
 {{fleet-server}} is compatible with the following Elastic products:
@@ -50,12 +55,11 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
     For more information about hosting {{fleet-server}} on {{ece}}, refer to [](/deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
 
 
-
 ## Prerequisites [add-fleet-server-on-prem-prereq]
 
 Before deploying, you need to:
 
-* Obtain or generate a Cerfiticate Authority (CA) certificate.
+* Obtain or generate a Certificate Authority (CA) certificate.
 * Ensure components have access to the ports needed for communication.
 
 
@@ -70,24 +74,22 @@ This is not required when testing and iterating using the **Quick start** option
 ::::
 
 
-
 ### Default port assignments [default-port-assignments-on-prem]
 
 When {{es}} or {{fleet-server}} are deployed, components communicate over well-defined, pre-allocated ports. You may need to allow access to these ports. Refer to the following table for default port assignments:
 
 | Component communication | Default port |
 | --- | --- |
-| Elastic Agent → {{fleet-server}} | 8220 |
-| Elastic Agent → {{es}} | 9200 |
-| Elastic Agent → Logstash | 5044 |
-| Elastic Agent → {{kib}} ({{fleet}}) | 5601 |
+| {{agent}} → {{fleet-server}} | 8220 |
+| {{agent}} → {{es}} | 9200 |
+| {{agent}} → {{ls}} | 5044 |
+| {{agent}} → {{kib}} ({{fleet}}) | 5601 |
 | {{fleet-server}} → {{kib}} ({{fleet}}) | 5601 |
 | {{fleet-server}} → {{es}} | 9200 |
 
 ::::{note}
 Connectivity to {{kib}} on port 5601 is optional and not required at all times. {{agent}} and {{fleet-server}} may need to connect to {{kib}} if deployed in a container environment where an enrollment token can not be provided during deployment.
 ::::
-
 
 
 ## Add {{fleet-server}} [add-fleet-server-on-prem-add-server]
@@ -116,7 +118,7 @@ To add a {{fleet-server}}:
             If you are providing your own certificates:
 
             * Before running the `install` command, make sure you replace the values in angle brackets.
-            * Note that the URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
+            * The URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
 
             ::::
 
@@ -135,7 +137,6 @@ To add a {{fleet-server}}:
 
     ::::
 
-
     At the **Install Fleet Server to a centralized host** step, the `elastic-agent install` command installs an {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, refer to the [{{agent}} command reference](/reference/fleet/agent-command-reference.md).
 
 5. If installation is successful, a confirmation indicates that {{fleet-server}} is set up and connected.
@@ -150,6 +151,30 @@ You can update your {{fleet-server}} configuration in {{kib}} at any time by goi
 * Configure additional outputs where agents should send data.
 * Specify the location from where agents should download binaries.
 * Specify proxy URLs to use for {{fleet-server}} or {{agent}} outputs.
+
+
+## {{fleet-server}} setup using a load balancer [fleet-server-setup-using-a-load-balancer]
+
+Follow these steps when deploying {{fleet-server}} behind a load balancer/reverse proxy:
+
+1. Create a certificate that contains DNS entries for the agent-facing load balancer, and the hostnames it routes to. For example, the load balancer `fleet.example.com` will route to hostnames `fleet1.example.com`, and `fleet2.example.com`.
+
+2. Configure the load balancer/reverse proxy.
+    * Ensure the load balancer directs traffic to all {{fleet-server}} instances.
+    * Ensure that timeouts for the load balancer have been raised to support the long-polling connections {{agents}} create when checking in to {{fleet-server}}.
+      By default, the timeout for long-poll in {{fleet-server}} is 5 minutes, while the {{fleet-server}}'s write timeout and the {{agent}}'s request timeout are set to 10 minutes. In this case, the load balancer timeout should be set to 10 minutes.
+    * (Recommended) Configure the load balancer with TLS pass through.
+
+    ::::{note}
+    :applies_to: stack: ga 9.2+
+    You can use the {{fleet-server}} `GET /api/status` API endpoint to determine instance health from the load balancer.
+    ::::
+
+3. In **{{fleet}} > Settings**, add the load balancer (for example, `https://fleet.example.com:8220`) as a {{fleet-server}} host.
+
+4. Install {{fleet-server}} on each backing host using the in-product instructions which should specify the load balancer as the URL.
+
+5. Enroll other {{agent}} instances using the load balancer URL.
 
 
 ## Troubleshooting [add-fleet-server-on-prem-troubleshoot]

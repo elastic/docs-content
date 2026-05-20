@@ -29,9 +29,8 @@ Some differences exist when you subscribe to {{ecloud}} through the AWS Marketpl
 * Regardless of where your deployment is hosted (visible in the {{ecloud}} console), the AWS Marketplace charges for all AWS regions are metered in US East (Northern Virginia). As a result, US East (Northern Virginia) is listed as the region in the AWS Marketplace console.
 
 For a detailed breakdown of your charges by deployment or by product, complete the following steps:
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From a deployment or project on the home page, select **Manage**.
-3. From the lower navigation menu, select **Billing and Subscription**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the navigation menu, select **Billing > Usage**.
 4. Find your breakdown on the **Usage** page.
 
 To end your trial or unsubscribe from the service, delete your deployment(s).<br>

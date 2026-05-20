@@ -16,6 +16,18 @@ products:
 
 OpenTelemetry is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. You can use OpenTelemetry to collect application performance data in Elastic APM, whether you’re running serverless, self-managed, or hybrid deployments.
 
+:::{important}
+:applies_to: {"stack": "ga 9.2", "serverless": "ga"}
+
+**Install OpenTelemetry content packs to work with OpenTelemetry data**
+
+To visualize data from OpenTelemetry receivers which is stored natively as OpenTelemetry semantic conventions, you must install content-only packs that provide dashboards compatible with OpenTelemetry data.
+
+In the Kibana Integrations UI, search for `otel` to find and install available integrations, like **System OpenTelemetry Assets**, to access the dashboards. We are adding more OpenTelemetry content packs every week, reach out by [opening an issue](https://github.com/elastic/integrations/issues) if what you are looking for is not available as an OTel content pack.
+
+Other Integrations which are beats-based include dashboards based on ECS data and are not compatible with OpenTelemetry semantic conventions.
+:::
+
 Elastic offers several distributions of OpenTelemetry. Each [Elastic Distribution of OpenTelemetry](opentelemetry://reference/index.md) is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
 :::{include} /solutions/_snippets/edot-reference-arch.md
@@ -29,13 +41,14 @@ With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://ref
 * The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
 * By sending data through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
 
-To set up OpenTelemetry with Elastic, refer to these guides for each language:
+To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 
 * [**Elastic Distribution of OpenTelemetry Java**](elastic-otel-java://reference/edot-java/index.md)
 * [**Elastic Distribution of OpenTelemetry .NET**](elastic-otel-dotnet://reference/edot-dotnet/index.md)
 * [**Elastic Distribution of OpenTelemetry Node.js**](elastic-otel-node://reference/edot-node/index.md)
 * [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
 * [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
+* [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).

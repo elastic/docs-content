@@ -2,6 +2,9 @@
 navigation_title: registered_domain
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/registered_domain-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -22,7 +25,7 @@ This processor uses the Mozilla Public Suffix list to determine the value.
       field: dns.question.name
       target_field: dns.question.registered_domain
       target_etld_field: dns.question.top_level_domain
-      target_subdomain_field: dns.question.sudomain
+      target_subdomain_field: dns.question.subdomain
       ignore_missing: true
       ignore_failure: true
 ```

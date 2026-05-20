@@ -90,7 +90,7 @@ To fix the issue, try the following:
 
 	Restart after changing any configuration. Some SDKs only read environment variables at startup.
 
-If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for EDOT SDKs](enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](enable-debug-logging.md#verify-youre-looking-at-the-right-logs).
+If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md) for guidance. Make sure to [verify that you're looking at the right logs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md#verify-youre-looking-at-the-right-logs). If traces are missing due to sampling configuration, refer to [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md).
 
 ## Auto-instrumentation isn’t attaching [auto-instrumentation-not-attached]
 
@@ -127,7 +127,7 @@ Check the following:
 
 	* **PHP:** Ensure the extension is loaded and restart PHP-FPM/Apache so bootstrap hooks are active. Refer to [PHP SDK setup](opentelemetry://reference/edot-sdks/php/setup/index.md).
 
-	If using Docker or Kubernetes confirm preloading flags or environment variables are placed where the actual process starts.
+	If using Docker or Kubernetes confirm preloading flags or environment variables are placed where the actual process starts. For connectivity issues that might prevent telemetry from reaching the Collector, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 ### Resolution [res-instrumentation]
 
@@ -174,3 +174,5 @@ To fix the issue, try the following:
 * **Retest with a minimal app**
 
 	Strip down to core dependencies to rule out issues introduced by third-party libraries.
+
+If you're not seeing any telemetry data in {{kib}} at all, refer to [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md) for additional troubleshooting steps.

@@ -2,6 +2,9 @@
 navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kafka-output.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -10,9 +13,24 @@ products:
 # Kafka output [kafka-output]
 
 
-The Kafka output sends events to Apache Kafka.
+The Kafka output sends events to Apache Kafka. Starting in 9.4.0, the Kafka client uses franz-go instead of Sarama, and some options are no longer configurable.
 
 **Compatibility:** This output can connect to Kafka version 0.8.2.0 and later. Older versions might work as well, but are not supported.
+
+:::{admonition} Kafka timestamps and {{agent}}
+* Kafka 3.6+ introduces stricter timestamp validation with the introduction of two new broker/topic-level properties: [log.message.timestamp.before.max.ms](https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html#message-timestamp-before-max-ms) and
+[log.message.timestamp.after.max.ms](https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html#message-timestamp-after-max-ms).
+
+  These properties limit the time difference between the message timestamp (from {{agent}}) and the Kafka broker receive time.
+  Messages can be rejected if the values are exceeded and `log.message.timestamp.type=CreateTime` is set.
+
+  These checks are ignored if `log.message.timestamp.type=LogAppendTime` is set.
+
+* For Kafka version 0.10.0.0+ the message creation timestamp is set by {{agent}} and equals the initial timestamp of the event. This behavior affects the retention policy in Kafka. For example, if an {{agent}} event was created 2 weeks ago, the retention policy is set to 7 days and the message from {{agent}} arrives to Kafka today, it is immediately discarded because the timestamp value is before the last 7 days.
+
+  You can change this behavior by setting timestamps on message arrival instead.
+  The message is not discarded but kept for 7 more days. Set `log.message.timestamp.type` to `LogAppendTime` (default `CreateTime`) in the Kafka configuration.
+:::
 
 This example configures a Kafka output called `kafka-output` in the {{agent}} `elastic-agent.yml` file, with settings as described further in:
 
@@ -36,7 +54,11 @@ outputs:
       round_robin:
         group_events: 1
     topic: 'elastic-agent'
-    headers: []
+    headers:
+    - key: "some-key"
+      value: "some value"
+    - key: "another-key"
+      value: "another value"
     timeout: 30
     broker_timeout: 30
     required_acks: 1
@@ -175,13 +197,13 @@ Use these options to set the Kafka topic for each {{agent}} event.
     For example:
     
     ```yaml
-    topic: '${data_stream.type}'
+    topic: '%{[data_stream.type]}'
     ```
 
     You can also set a custom field. This is useful if you need to construct a more complex or structured topic name. For example, this configuration uses the `fields.kafka_topic` custom field to set the topic for each event:
 
     ```yaml
-    topic: '${fields.kafka_topic}'
+    topic: '%{[fields.kafka_topic]}'
     ```
     
     To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to the input configuration settings of your standalone {{agent}}.
@@ -192,7 +214,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
     - add_fields:
         target: ''
         fields: 
-          kafka_topic: '${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}' <1>
+          kafka_topic: '%{[data_stream.type]}-%{[data_stream.dataset]}-%{[data_stream.namespace]}' <1>
     ```
     1. Depending on the values of the data stream fields, this generates topic names such as `logs-nginx.access-production` or `metrics-system.cpu-staging` as the value of the custom `kafka_topic` field.
 
@@ -201,7 +223,7 @@ Use these options to set the Kafka topic for each {{agent}} event.
 
 ## Partition settings [output-kafka-partition-settings]
 
-The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash.
+The number of partitions created is set automatically by the Kafka broker based on the list of topics. Records are then published to partitions either randomly, in round-robin order, or according to a calculated hash. The default is hash partitioner.
 
 In the following example, after each event is published to a partition, the partitioner selects the next partition in round-robin fashion.
 
@@ -212,16 +234,16 @@ In the following example, after each event is published to a partition, the part
 ```
 
 `random.group_events` $$$kafka-random.group-events-setting$$$
-:   Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.
+:   (int) Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.
 
 `round_robin.group_events` $$$kafka-round_robin.group_events-setting$$$
-:   Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.
+:   (int) Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.
 
 `hash.hash` $$$kafka-hash.hash-setting$$$
-:   List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
+:   ([]string) List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
 
 `hash.random` $$$kafka-hash.random-setting$$$
-:   Randomly distribute events if no hash or key value can be computed.
+:   (bool) Randomly distribute events if no hash or key value can be computed. The default value is `true`.
 
 
 ## Header settings [output-kafka-header-settings]
@@ -255,22 +277,34 @@ You can specify these various other options in the `kafka-output` section of the
 `broker_timeout` $$$kafka-broker_timeout-setting$$$
 :   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `required_acks` setting further in).
 
-    **Default:** `30` (seconds)
+    **Default:** `10` (seconds)
 
-`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$
+`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
 
     **Default:** `0`
+    
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `bulk_flush_frequency` no longer applies.
+    :::
 
 `bulk_max_size` $$$kafka-bulk_max_size-setting$$$
 :   (int) The maximum number of events to bulk in a single Kafka request.
 
     **Default:** `2048`
 
-`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$
+`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$ {applies_to}`stack: removed 9.4.0+`
 :   (int) Per Kafka broker number of messages buffered in output pipeline.
 
     **Default:** `256`
+
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so `channel_buffer_size` no longer applies.
+    :::
+
+    
 
 `codec` $$$kafka-codec-setting$$$
 :   Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.
@@ -315,16 +349,22 @@ You can specify these various other options in the `kafka-output` section of the
 
 `metadata` $$$kafka-metadata-setting$$$
 :   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
+
     `refresh_frequency`
     :   Metadata refresh interval. Defaults to 10 minutes.
 
-    `full`
+    :::{note}
+    :applies_to: stack: ga 9.4.0+
+    Starting in 9.4.0, the Kafka client uses franz-go, so the `full`, `retry.max`, and `retry.backoff` metadata options no longer apply.
+    :::
+
+    `full` {applies_to}`stack: removed 9.4+`
     :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
 
-    `retry.max`
+    `retry.max` {applies_to}`stack: removed 9.4+`
     :   Total number of metadata update retries. The default is 3.
 
-    `retry.backoff`
+    `retry.backoff` {applies_to}`stack: removed 9.4+`
     :   Waiting time between retries. The default is 250ms.
 
 `required_acks` $$$kafka-required_acks-setting$$$

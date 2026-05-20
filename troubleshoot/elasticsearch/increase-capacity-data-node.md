@@ -4,65 +4,33 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-capacity-data-node.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
 
 # Increase the disk capacity of data nodes [increase-capacity-data-node]
 
-:::::::{tab-set}
+Disk capacity pressures may cause index failures, unassigned shards, and cluster instability. 
 
-::::::{tab-item} {{ech}}
-In order to increase the disk capacity of the data nodes in your cluster:
+{{es}} uses [disk-based shard allocation watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to manage disk space on nodes, which can block allocation or indexing when nodes run low on disk space. Refer to [](/troubleshoot/elasticsearch/fix-watermark-errors.md) for additional details on how to address this situation.
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
-3. If autoscaling is available but not enabled, enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
+To increase the disk capacity of the data nodes in your cluster, complete these steps:
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_banner.png
-    :alt: Autoscaling banner
-    :screenshot:
-    :::
+1. [Estimate how much disk capacity you need](#estimate-required-capacity).
+1. [Increase the disk capacity](#increase-disk-capacity-of-data-nodes).
 
-    Or you can go to `Actions > Edit deployment`, check the checkbox `Autoscale` and click `save` at the bottom of the page.
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-enable_autoscaling.png
-    :alt: Enabling autoscaling
-    :screenshot:
-    :::
+## Estimate the amount of required disk capacity [estimate-required-capacity]
 
-4. If autoscaling has succeeded the cluster should return to `healthy` status. If the cluster is still out of disk, check if autoscaling has reached its limits. You will be notified about this by the following banner:
+The following steps explain how to retrieve the current disk watermark configuration of the cluster and how to check the current disk usage on the nodes.
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-autoscaling_limits_banner.png
-    :alt: Autoscaling banner
-    :screenshot:
-    :::
-
-    or you can go to `Actions > Edit deployment` and look for the label `LIMIT REACHED` as shown below:
-
-    :::{image} /troubleshoot/images/elasticsearch-reference-reached_autoscaling_limits.png
-    :alt: Autoscaling limits reached
-    :screenshot:
-    :::
-
-    If you are seeing the banner click `Update autoscaling settings` to go to the `Edit` page. Otherwise, you are already in the `Edit` page, click `Edit settings` to increase the autoscaling limits. After you perform the change click `save` at the bottom of the page.
-::::::
-
-::::::{tab-item} Self-managed
-In order to increase the data node capacity in your cluster, you will need to calculate the amount of extra disk space needed.
-
-1. First, retrieve the relevant disk thresholds that will indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
+1. Retrieve the relevant disk thresholds that indicate how much space should be available. The relevant thresholds are the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so only the high watermark is retrieved:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     {
@@ -83,33 +51,42 @@ In order to increase the data node capacity in your cluster, you will need to ca
     }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more on how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage, disk usage must drop below the 90% or have more than 150GB available. Read more on how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
-2. The next step is to find out the current disk usage, this will indicate how much extra space is needed. For simplicity, our example has one node, but you can apply the same for every node over the relevant threshold.
+1. Find the current disk usage, which in turn indicates how much extra space is required. For simplicity, our example has one node, but you can apply the same for every node over the relevant threshold.
 
     ```console
     GET _cat/allocation?v&s=disk.avail&h=node,disk.percent,disk.avail,disk.total,disk.used,disk.indices,shards
     ```
 
-    The response will look like this:
+    The response looks like this:
 
     ```console-result
     node                disk.percent disk.avail disk.total disk.used disk.indices shards
     instance-0000000000           91     4.6gb       35gb    31.1gb       29.9gb    111
     ```
 
-3. The high watermark configuration indicates that the disk usage needs to drop below 90%. To achieve this, 2 things are possible:
+In this scenario, the high watermark configuration indicates that the disk usage needs to drop below 90%, while the current disk usage is 91%.
 
-    * to add an extra data node to the cluster (this requires that you have more than one shard in your cluster), or
-    * to extend the disk space of the current node by approximately 20% to allow this node to drop to 70%. This will give enough space to this node to not run out of space soon.
 
-4. In the case of adding another data node, the cluster will not recover immediately. It might take some time to relocate some shards to the new node. You can check the progress here:
+## Increase the disk capacity of your data nodes [increase-disk-capacity-of-data-nodes]
 
-    ```console
-    GET /_cat/shards?v&h=state,node&s=state
-    ```
+Here are the most common ways to increase disk capacity:
 
-    If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED` or until the health disk indicator turns to `green`.
-::::::
+* You can expand the disk space of the existing nodes. This is typically achieved by replacing your nodes with ones with higher capacity.
+* You can add additional data nodes to the data tier that is short of disk space, increasing the overall capacity of that tier and potentially improving performance by distributing data and workload across more resources.
 
-:::::::
+To resize your deployment, follow the recommendations that apply to your deployment type:
+
+:::{include} /troubleshoot/elasticsearch/_snippets/resize-your-deployment.md
+:::
+
+
+When you add another data node, the cluster doesn't recover immediately and it might take some time until shards are relocated to the new node. 
+You can check the progress with the following API call:
+
+```console
+GET /_cat/shards?v&h=state,node&s=state
+```
+
+If in the response the shards' state is `RELOCATING`, it means that shards are still moving. Wait until all shards turn to `STARTED`.

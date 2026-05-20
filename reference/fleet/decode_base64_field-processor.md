@@ -2,6 +2,9 @@
 navigation_title: decode_base64_field
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_base64_field-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

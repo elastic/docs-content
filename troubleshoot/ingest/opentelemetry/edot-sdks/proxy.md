@@ -15,7 +15,7 @@ products:
 
 # Proxy settings for EDOT SDKs
 
-EDOT SDKs generally use the standard proxy environment variables. However, there are exceptions and limitations depending on the language and exporter type.
+EDOT SDKs generally use the standard proxy environment variables. However, there are exceptions and limitations depending on the language and exporter type. For general connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
 ## Python SDK
 
@@ -33,7 +33,7 @@ The Node.js SDK does not currently support `HTTP_PROXY`, `HTTPS_PROXY`, or `NO_P
 
 ## Java SDK
 
-If you’re using Java SDK, you must configure Java system properties using the Java Virtual Machine (JVM). Refer to [Troubleshooting Java SDK proxy issues](/troubleshoot/ingest/opentelemetry/edot-sdks/java/proxy-issues.md) for more information.
+If you're using Java SDK, you must configure Java system properties using the Java Virtual Machine (JVM). Refer to [Troubleshooting Java SDK proxy issues](/troubleshoot/ingest/opentelemetry/edot-sdks/java/proxy-issues.md) for more information.
 
 ## Other SDKs
 

@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -37,7 +38,7 @@ For a detailed view of the {{agent}} upgrade process and the interactions betwee
 
 Note the following restrictions with upgrading an {{agent}}:
 
-* {{agent}} cannot be upgraded to a version higher than the highest currently installed version of {{fleet-server}}. When you upgrade a set of {{agents}} that are currently at the same version, you should first upgrade any agents that are acting as {{fleet-server}} (any agents that have a {{fleet-server}} policy associated with them).
+* {{agent}} cannot be upgraded to a minor version higher than the currently installed minor version of {{fleet-server}}. For example, you can enroll 9.1.5 {{agents}} with a 9.1.0 {{fleet-server}}, but not 9.2.0 {{agents}}. So while you can install newer maintenance releases, you cannot install newer minor versions. Before you upgrade {{agents}} to a newer minor version, you should first upgrade any agents that are acting as a [{{fleet-server}}](/reference/fleet/fleet-server.md) (any agents associated with a {{fleet-server}} policy).
 * To be upgradeable, {{agent}} must not be running inside a container.
 * To be upgradeable in a Linux environment, {{agent}} must be running as a service. The Linux Tar install instructions for {{agent}} provided in {{fleet}} include the commands to run it as a service. {{agent}} RPM and DEB system packages cannot be upgraded through {{fleet}}.
 
@@ -103,7 +104,7 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
 5. Upgrade the agents.
 
-Note that agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
+Agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
 
 ## Schedule an upgrade [schedule-agent-upgrade]
 
@@ -150,7 +151,7 @@ The following table explains the upgrade states in the order that they can occur
 | Upgrade rolled back | The upgrade was unsuccessful. {{agent}} is being rolled back to the former, pre-upgrade version. |
 | Upgrade failed | An error has been detected in the newly upgraded {{agent}} and the attempt to roll the upgrade back to the previous version has failed. |
 
-Under routine circumstances, an {{agent}} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a very useful tool especially if you need to diagnose the state of an agent that may have become stuck, or just appears to have become stuck, during the upgrade process.
+Under routine circumstances, an {{agent}} upgrade happens quickly. You typically will not see the agent transition through each of the upgrade states. The detailed upgrade status can be a useful tool especially if you need to diagnose the state of an agent that may have become stuck, or appears to have become stuck, during the upgrade process.
 
 Beside the upgrade status indicator, you can hover your cursor over the information icon to get more detail about the upgrade.
 
@@ -164,7 +165,7 @@ Beside the upgrade status indicator, you can hover your cursor over the informat
 :screenshot:
 :::
 
-Note that when you upgrade agents from versions below 8.12, the upgrade details are not provided.
+When you upgrade agents from versions below 8.12, the upgrade details are not provided.
 
 :::{image} images/upgrade-non-detailed.png
 :alt: An earlier release agent showing only the updating state without additional details
@@ -196,7 +197,7 @@ An {{agent}} upgrade process may sometimes stall. This can happen for various re
 
 When an {{agent}} upgrade has been detected to be stuck, a warning indicator appears on the UI. When this occurs, you can restart the upgrade from either the **Agents** tab on the main {{fleet}} page or from the details page for any individual agent.
 
-Note that there is a required 10 minute cooldown period in between restart attempts. After launching a restart action you need to wait for the cooldown to complete before initiating another restart.
+There is a required 10 minute cooldown period in between restart attempts. After launching a restart action you need to wait for the cooldown to complete before initiating another restart.
 
 Restart from main {{fleet}} page:
 
@@ -287,6 +288,14 @@ You can view the status of the automatic upgrade in the following ways:
 
 - On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
 
+## Automatic reassignment to version-specific policies after an upgrade [upgrade-version-specific-policy-assignment]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you upgrade an {{agent}} that is enrolled in a policy containing an integration with a minimum agent version requirement, {{fleet}} reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This usually completes within a minute after the upgraded agent checks in with {{fleet}}.
 
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
 
@@ -309,7 +318,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 
 ### Upgrade an RPM {{agent}} installation: [_upgrade_an_rpm_agent_installation]
@@ -326,4 +335,44 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
+
+## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
+
+```{applies_to}
+stack: ga 9.3.0+
+serverless: ga
+```
+
+:::{admonition} Elastic subscription
+The manual rollback feature for {{agent}} is available only for some [Elastic subscription levels]({{subscriptions}}).
+:::
+
+The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk, typically seven days after the upgrade. 
+
+To roll back one or more {{agent}} upgrades:
+1. Go to the **Actions** menu.
+2. Select **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
+
+For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
+For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 
+
+
+### Limitations for manual rollback [rollback-upgrade-fleet-managed]
+
+These limitations apply for the manual rollback feature: 
+
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Data required for the rollback is stored on disk for seven days, which can impact available disk space.
+* Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
+* Manual rollback is not available for system-managed packages such as DEB and RPM.
+* Some data might be re-ingested after rollback.
+
+#### Possible errors [rollback-upgrade-fleet-managed]
+
+If no version is available on disk to rollback to, you get an error.
+This situation can happen if:
+
+- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
+
+- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 

@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html
 products:
   - id: elastic-stack
-description: Explore the new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+ (latest 9.1.1), Elastic Cloud Serverless, and...
+description: Explore new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+, Elastic Cloud Serverless, and all other Elastic products
 navigation_title: Release notes
 ---
 
@@ -16,7 +16,7 @@ Release notes cover all the latest Elastic product changes, including the follow
 * {{stack}} {{version.stack.base}} and later, including the most recent {{version.stack}} release
 * {{serverless-full}}, including updates to {{es}}, and {{observability}} and {{elastic-sec}} solutions
 
-## What's new in the latest Elastic release?
+## What's new in the latest Elastic release
 
 Elastic Stack {{version.stack}} includes new features, enhancements, and critical fixes across {{es}}, {{observability}}, {{elastic-sec}}, {{kib}}, and more. To view detailed release notes, select a product.
 

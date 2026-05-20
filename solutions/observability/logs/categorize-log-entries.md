@@ -27,6 +27,12 @@ Create a {{ml}} job to categorize log messages automatically. {{ml-cap}} observe
 3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 4. Click **Create ML job**. This creates and runs the job. It takes a few minutes for the {{ml}} robots to collect the necessary data. After the job has processed the data, you can view its results.
 
+::::{note}
+:applies_to: stack: ga 9.2
+
+Log categorization {{ml}} jobs retain results for 120 days by default. Modify the `results_retention_days` setting to change this period.
+::::
+
 
 ## Analyze log categories [analyze-log-categories]
 

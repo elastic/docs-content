@@ -13,7 +13,7 @@ products:
 
 1. Apply the following specification to deploy Filebeat and collect the logs of all containers running in the Kubernetes cluster. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md).
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: beat.k8s.elastic.co/v1beta1
     kind: Beat
@@ -98,8 +98,14 @@ products:
 
     * Follow the {{es}} deployment [guide](elasticsearch-deployment-quickstart.md) and run:
 
+        ::::{tip}
+        If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+        ::::
+
         ```sh
-        curl -u "elastic:$PASSWORD" -k "https://localhost:9200/filebeat-*/_search"
+        curl -u "elastic:$PASSWORD" "https://localhost:9200/filebeat-*/_search"
         ```
 
     * Follow the {{kib}} deployment [guide](kibana-instance-quickstart.md), log in and go to **Kibana** > **Discover**.

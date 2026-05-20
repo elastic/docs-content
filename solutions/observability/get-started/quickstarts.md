@@ -1,5 +1,6 @@
 ---
 navigation_title: Elastic Observability quickstarts
+description: Quickstart guides for ingesting and visualizing Elastic Observability data with fast paths for hosts, Kubernetes, applications, and synthetic monitoring.
 applies_to:
   stack: ga
   serverless: ga
@@ -38,7 +39,6 @@ Want to use {{fleet}} or some other feature not covered in the quickstarts? Foll
 
 Ready to dig into more features of Elastic Observability? See these guides:
 
-* [Add data from Splunk](/solutions/observability/get-started/other-tutorials/add-data-from-splunk.md).
 * [Create an alert](/solutions/observability/incident-management/alerting.md).
 * [Create a service-level objective (SLO)](/solutions/observability/incident-management/create-an-slo.md).
 

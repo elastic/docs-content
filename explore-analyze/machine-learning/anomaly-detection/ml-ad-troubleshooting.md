@@ -19,7 +19,7 @@ If an {{anomaly-job}} fails, try to restart the job by following the procedure d
 
 If an {{anomaly-job}} has failed, do the following to recover from `failed` state:
 
-1. *Force* stop the corresponding {{dfeed}} by using the [Stop {{dfeed}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-stop-datafeed) with the `force` parameter being `true`. For example, the following request force stops the `my_datafeed` {{dfeed}}.
+1. *Force* stop the corresponding {{dfeed}} by using the [Stop {{dfeed}} API]({{es-apis}}operation/operation-ml-stop-datafeed) with the `force` parameter being `true`. For example, the following request force stops the `my_datafeed` {{dfeed}}.
    ```console
    POST _ml/datafeeds/my_datafeed/_stop
     {
@@ -27,7 +27,7 @@ If an {{anomaly-job}} has failed, do the following to recover from `failed` stat
     }
    ```
 
-2. *Force* close the {{anomaly-job}} by using the [Close {{anomaly-job}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-close-job) with the `force` parameter being `true`. For example, the following request force closes the `my_job` {{anomaly-job}}:
+2. *Force* close the {{anomaly-job}} by using the [Close {{anomaly-job}} API]({{es-apis}}operation/operation-ml-close-job) with the `force` parameter being `true`. For example, the following request force closes the `my_job` {{anomaly-job}}:
    ```console
    POST _ml/anomaly_detectors/my_job/_close?force=true
    ```
@@ -69,7 +69,7 @@ It’s an online model and updated continuously. Old parts of the model are prun
 There is a set of benchmarks to monitor the performance of the {{anomaly-detect}} algorithms and to ensure no regression occurs as the methods are continuously developed and refined. They are called "data scenarios" and consist of 3 things:
 
 * a dataset (stored as an {{es}} snapshot),
-* a {{ml}} config ({{anomaly-detect}}, dfanalysis, {{transform}}, or {{infer}}),
+* a {{ml}} config ({{anomaly-detect}}, dfanalysis, transform, or {{infer}}),
 * an arbitrary set of static assertions (bucket counts, anomaly scores, accuracy value, and so on).
 
 Performance metrics are collected from each and every scenario run and they are persisted in an Elastic Cloud cluster. This information is then used to track the performance over time, across the different builds, mainly to detect any regressions in the performance (both result quality and compute time).

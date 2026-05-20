@@ -28,7 +28,7 @@ The following APM rules are supported:
 | **Latency threshold** | Alert when the latency or failed transaction rate is abnormal.Threshold rules can be as broad or as granular as you’d like, enabling you to define exactly when you want to be alerted—whether that’s at the environment level, service name level, transaction type level, and/or transaction name level. Read more in [Latency threshold rule →](/solutions/observability/incident-management/create-latency-threshold-rule.md) |
 
 ::::{tip}
-For a complete walkthrough of the **Create rule** flyout panel, including detailed information on each configurable property, see Kibana’s [Create and manage rules](/explore-analyze/alerts-cases/alerts/create-manage-rules.md).
+For a complete walkthrough of the **Create rule** flyout panel, including detailed information on each configurable property, see Kibana’s [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md).
 
 ::::
 
@@ -67,8 +67,8 @@ From the Applications UI, select **Alerts and rules** → **Manage rules** to be
 
 ### More information [apm-alert-more-info]
 
-See [Alerting](/explore-analyze/alerts-cases.md) for more information.
+See [Alerting](/explore-analyze/alerting.md) for more information.
 
 ::::{note}
-If you are using an **on-premise** Elastic Stack deployment with security, communication between Elasticsearch and Kibana must have TLS configured. More information is in the alerting [prerequisites](/explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-prerequisites).
+If you are using an **on-premise** Elastic Stack deployment with security, communication between Elasticsearch and Kibana must have TLS configured. More information is in the alerting [prerequisites](/explore-analyze/alerting/alerts/alerting-setup.md#alerting-prerequisites).
 ::::

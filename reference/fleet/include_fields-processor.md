@@ -2,6 +2,9 @@
 navigation_title: include_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/include_fields-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

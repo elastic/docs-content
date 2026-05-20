@@ -59,7 +59,8 @@ Learn how to secure your Elastic environment to restrict access to only authoriz
 * [](/deploy-manage/manage-spaces.md): Learn how to organize content in {{kib}}, and restrict access to this content to specific users.
 * [](/deploy-manage/api-keys.md): Authenticate and authorize programmatic access to your deployments and {{es}} resources.
 * [](/deploy-manage/manage-connectors.md): Manage connection information between Elastic and third-party systems.
-* [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/solutions/search/cross-cluster-search.md).
+* [](/deploy-manage/remote-clusters.md): Enable communication between {{es}} clusters to support [cross-cluster replication](/deploy-manage/tools/cross-cluster-replication.md) and [cross-cluster search](/explore-analyze/cross-cluster-search.md).
+* [Cross-project search](/deploy-manage/cross-project-search-config.md): Link multiple {{serverless-full}} projects to broaden the dataset users can query and visualize. {applies_to}`serverless: preview` 
 
 ## Administer and maintain
 

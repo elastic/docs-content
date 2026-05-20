@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/es-output-settings.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -30,7 +33,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
     Refer to the [{{fleet-server}}](/reference/fleet/fleet-server.md) documentation for default ports and other configuration details.
 
 **{{es}} CA trusted fingerprint** $$$es-trusted-fingerprint-yaml-setting$$$
-:   HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally. To learn more about trusted fingerprints, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+:   HEX-encoded SHA-256 of a CA certificate that's present in the certificate chain {{es}} sends during the TLS handshake. If this certificate is found in the chain, it'll be added to the `certificate_authorities` list and the handshake will continue normally. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
 
 **Proxy** $$$es-agent-proxy-output$$$
 :   Select a proxy URL for {{agent}} to connect to {{es}}. To learn about proxy configuration, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
@@ -71,11 +74,14 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
     5. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
     When you create an {{agent}} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.
 
+**Write to logs streams** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2`
+:   When this setting is on, `logs` and `logs.*` are added to the output streams configuration in the agent policy using this output. Enabling this setting is only part of the process for allowing {{agent}} to send data to [wired streams](/solutions/observability/streams/streams.md#streams-wired-streams). For additional required steps, refer to [Ship data to streams > {{fleet}}](/solutions/observability/streams/wired-streams.md#streams-wired-streams-ship).
+
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
-`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
+`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
-    Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+    This setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
     **Default:** `true`
 
@@ -132,6 +138,10 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
     **Default:** `1`
 
+`status_reporting.enabled` $$$output-elasticsearch-fleet-settings-status_reporting.enabled-setting$$$
+:   (boolean) Whether status reporting is enabled for this output. When disabled, the output does not change its health status if there is a connectivity problem.
+
+    **Default:** `true`
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
 
@@ -147,7 +157,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](beats://reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
 
-`Balanced` represents the new default setting (out of the box behavior). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
+`Balanced` represents the new default setting (out of the box behavior). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degradation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
 
 As mentioned, the `custom` preset allows you to input your own set of parameters for a finer tuning of performance. The following table is a summary of a few data points and how the resulting EPS compares to the `Balanced` setting mentioned above.
 

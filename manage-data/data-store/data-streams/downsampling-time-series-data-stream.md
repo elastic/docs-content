@@ -8,7 +8,6 @@ applies_to:
 products:
   - id: elasticsearch
 ---
-% TODO flesh out after the rest of the section has been restructured
 
 # Downsampling a time series data stream [downsampling]
 
@@ -20,3 +19,4 @@ This section explains the available downsampling options and helps you understan
 
 * [](downsampling-concepts.md)
 * [](run-downsampling.md)
+* [](query-downsampled-data.md)

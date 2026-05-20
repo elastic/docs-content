@@ -1,11 +1,8 @@
 ---
 navigation_title: Centrally configure EDOT SDKs
 applies_to:
-  deployment:
-      ess: preview 9.1
-  stack: preview 9.1
+  stack: preview 9.1+
   serverless: unavailable
-
 products:
   - id: observability
   - id: kibana
@@ -17,10 +14,6 @@ products:
 APM Agent Central Configuration allows you to fine-tune your EDOT SDKs from within the Applications UI. Changes are automatically propagated to your SDKs, so there’s no need to redeploy.
 
 To get started, select the services and environments you want to configure. The Applications UI lets you know when your EDOT SDKs have applied your configurations.
-
-::::{important}
-To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](/solutions/observability/apm/opentelemetry/edot-sdks-central-configuration.md).
-::::
 
 ## Precedence [_precedence]
 

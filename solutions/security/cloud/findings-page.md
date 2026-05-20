@@ -18,7 +18,7 @@ products:
 
 $$$cspm-findings-page-filter-findings$$$
 
-The **Misconfigurations** tab on the Findings page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations, as well as data from [third-party integrations](/solutions/security/cloud/ingest-third-party-cloud-security-data.md).
+The **Misconfigurations** tab on the **Findings** page displays the configuration risks identified by the [CSPM](/solutions/security/cloud/cloud-security-posture-management.md) and [KSPM](/solutions/security/cloud/kubernetes-security-posture-management.md) integrations, as well as data from [third-party integrations](/solutions/security/integrations/ingest-third-party-security-data.md).
 
 :::{image} /solutions/images/security-findings-page.png
 :alt: Findings page

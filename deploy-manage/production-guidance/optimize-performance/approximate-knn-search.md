@@ -35,7 +35,7 @@ The speed of kNN search scales linearly with the number of vector dimensions, be
 {{es}} stores the original JSON document that was passed at index time in the [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md). By default, each hit in the search results contains the full document `_source`. When the documents contain high-dimensional `dense_vector` fields, the `_source` can be quite large and expensive to load. This could significantly slow down the speed of kNN search.
 
 ::::{note}
-[reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex), [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update), and [update by query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
+[reindex]({{es-apis}}operation/operation-reindex), [update]({{es-apis}}operation/operation-update), and [update by query]({{es-apis}}operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
 ::::
 
 
@@ -46,18 +46,69 @@ Another option is to use  [synthetic `_source`](elasticsearch://reference/elasti
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory]
 
-{{es}} uses the [HNSW](https://arxiv.org/abs/1603.09320) algorithm for approximate kNN search. HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures. To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API.
+{{es}} uses either the Hierarchical Navigable Small World ([HNSW](https://arxiv.org/abs/1603.09320)) algorithm or the Disk Better Binary Quantization ([DiskBBQ](https://www.elastic.co/search-labs/blog/diskbbq-elasticsearch-introduction)) algorithm for approximate kNN search. 
+
+HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures.
+
+DiskBBQ is a clustering algorithm which can scale efficiently often on less memory than HNSW.  Where HNSW typically performs poorly without sufficient memory to fit the entire structure in RAM, DiskBBQ scales linearly when using less available memory than the total index size. You can start with enough RAM to hold the vector data and index structures but, in most cases, you should be able to reduce your RAM allocation and still maintain good performance. In testing, as little as 1-5% of the index structure size (centroids and quantized vector data) loaded in off-heap RAM is necessary for reasonable performance for each set of queries that accesses largely overlapping clusters.  
+
+To check the size of the vector data, you can use the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API.
 
 Here are estimates for different element types and quantization levels:
 
-* `element_type: float`: `num_vectors * num_dimensions * 4`
-* `element_type: float` with `quantization: int8`: `num_vectors * (num_dimensions + 4)`
-* `element_type: float` with `quantization: int4`: `num_vectors * (num_dimensions/2 + 4)`
-* `element_type: float` with `quantization: bbq`: `num_vectors * (num_dimensions/8 + 14)`
-* `element_type: byte`: `num_vectors * num_dimensions`
-* `element_type: bit`: `num_vectors * (num_dimensions/8)`
+| `element_type` | `quantization` | Required RAM |
+| --- | --- | --- |
+| `float` | none | `num_vectors * num_dimensions * 4` | 
+| `float` | `int8` | `num_vectors * (num_dimensions + 4)` |
+| `float` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
+| `float` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
+| `bfloat16` | none | `num_vectors * num_dimensions * 2` |
+| `bfloat16` | `int8` | `num_vectors * (num_dimensions + 4)` |
+| `bfloat16` | `int4` | `num_vectors * (num_dimensions/2 + 4)` |
+| `bfloat16` | `bbq` |  `num_vectors * (num_dimensions/8 + 14)` |
+| `byte` | none |  `num_vectors * num_dimensions` |
+| `bit` | none | `num_vectors * (num_dimensions/8)` |
 
-If utilizing HNSW, the graph must also be in memory, to estimate the required bytes use `num_vectors * 4 * HNSW.m`. The default value for `HNSW.m` is 16, so by default `num_vectors * 4 * 16`.
+If you're using HNSW, the graph must also be in memory. To estimate the required bytes, use the following formula below. The default value for the HNSW `m` parameter is `16`.
+
+```{math}
+\begin{align*}
+estimated\ bytes &= num\_vectors \times 4 \times m \\
+&= num\_vectors \times 4 \times 16
+\end{align*}
+```
+
+The following is an example of an estimate with the HNSW indexed `element_type: float` with no quantization, `m` set to `16`, and `1,000,000` vectors of `1024` dimensions:
+
+```{math}
+\begin{align*}
+estimated\ bytes &= (1,000,000 \times 4 \times 16) + (1,000,000 \times 4 \times 1024) \\
+&= 64,000,000 + 4,096,000,000 \\
+&= 4,160,000,000 \\
+&= 3.87GB
+\end{align*}
+```
+
+If you're using DiskBBQ, a fraction of the clusters and centroids need to be in memory.  When doing this estimation, it makes more sense to include both the index structure and the quantized vectors together as the structures are dependent. To estimate the total bytes, first compute the number of clusters, then compute the cost of the centroids plus the cost of the quantized vectors within the clusters to get the total estimated bytes.  The default value for the number of `vectors_per_cluster` is `384`.
+
+```{math}
+\begin{align*}
+num\_clusters=\frac{num\_vectors}{vectors\_per\_cluster}=\frac{num\_vectors}{384}
+\end{align*}
+```
+
+```{math}
+\begin{align*}
+estimated\ centroid\ bytes &= num\_clusters \times num\_dimensions \times 4 \\
+& + num\_clusters \times (num\_dimensions + 14)
+\end{align*}
+```
+
+```{math}
+\begin{align*}
+estimated\ quantized\ vector\ bytes = num\_vectors \times ((num\_dimensions/8 + 14 + 2) \times 2)
+\end{align*}
+```
 
 Note that the required RAM is for the filesystem cache, which is separate from the Java heap.
 
@@ -72,16 +123,53 @@ If the machine running {{es}} is restarted, the filesystem cache will be empty, 
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
 ::::
 
-
 The following file extensions are used for the approximate kNN search: Each extension is broken down by the quantization types.
 
+* {applies_to}`stack: ga 9.3+` `cenivf` for DiskBBQ to store centroids
+* {applies_to}`stack: ga 9.3+` `clivf` for DiskBBQ to store clusters of quantized vectors
 * `vex` for the HNSW graph
 * `vec` for all non-quantized vector values. This includes all element types: `float`, `byte`, and `bit`.
 * `veq` for quantized vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `int4` or `int8`
 * `veb` for binary vectors indexed with [`quantization`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `bbq`
 * `vem`, `vemf`, `vemq`, and `vemb` for metadata, usually small and not a concern for preloading
 
-Generally, if you are using a quantized index, you should only preload the relevant quantized values and the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.
+Generally, if you are using a quantized index, you should only preload the relevant quantized values and index structures such as the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive, because paging in the raw vectors might cause the OS to evict important index structures from the cache.
+
+You can gather additional detail about the specific files by using the [stats endpoint]({{es-apis}}operation/operation-indices-stats), which displays information about the index and fields.
+
+For example, for DiskBBQ, the response might look like this:
+
+```console
+GET my_index/_stats?filter_path=indices.my_index.primaries.dense_vector
+
+{
+    "indices": {
+        "my_index": {
+            "primaries": {
+                "dense_vector": {
+                    "value_count": 3,
+                    "off_heap": {
+                        "total_size_bytes": 249,
+                        "total_veb_size_bytes": 0,
+                        "total_vec_size_bytes": 36,
+                        "total_veq_size_bytes": 0,
+                        "total_vex_size_bytes": 0,
+                        "total_cenivf_size_bytes": 111,
+                        "total_clivf_size_bytes": 102,
+                        "fielddata": {
+                            "my_vector": {
+                                "cenivf_size_bytes": 111,
+                                "clivf_size_bytes": 102,
+                                "vec_size_bytes": 36
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 
 ## Reduce the number of index segments [_reduce_the_number_of_index_segments]
@@ -113,7 +201,7 @@ When possible, it’s best to avoid heavy indexing during approximate kNN search
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](elasticsearch://reference/elasticsearch/index-settings/store.md#file-system)).
 
-Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing {{es}} [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
+Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing {{es}} [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update]({{es-apis}}group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.html) as a transient setting). We recommend a value of `128KiB` for readahead.
 
@@ -122,13 +210,11 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 ::::
 
 
-## Use Direct IO when the vector data does not fit in RAM
+## Use on-disk rescoring when the vector data does not fit in RAM
 ```{applies_to}
-stack: preview 9.1
+stack: preview 9.3
 serverless: unavailable
 ```
-If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
+If you use quantized indices and your nodes don't have enough off-heap RAM to store all vector data in memory, then you might experience high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float vectors.
 
-In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
-
-Only use this option if you're experiencing very high query latencies on indices of type `bbq_hnsw`. Otherwise, enabling direct IO may increase your query latencies.
+In these scenarios, on-disk rescoring can significantly reduce query latency. Enable it by setting the `on_disk_rescore: true` option on your vector indices. Your data must be re-indexed or force-merged to use the new setting in subsequent searches.

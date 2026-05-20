@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/advanced-kubernetes-managed-by-fleet.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -83,7 +86,7 @@ containers:
 ```
 
 Notes
-:   The <ImageVersion> is just a placeholder for the elastic-agent image version that you will download in your manifest: eg. `image: docker.elastic.co/elastic-agent/elastic-agent: 8.11.0` Important thing is to update your manifest with args details
+:   The <ImageVersion> is a placeholder for the elastic-agent image version that you will download in your manifest: eg. `image: docker.elastic.co/elastic-agent/elastic-agent: 8.11.0` Important thing is to update your manifest with args details
 
 ```yaml
 volumeMounts:

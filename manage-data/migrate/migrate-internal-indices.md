@@ -4,9 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data-internal.html
 applies_to:
   stack: ga
-  deployment:
-    ess: ga
-    ece: ga
 products:
   - id: cloud-hosted
 ---
@@ -25,7 +22,7 @@ To restore system indices from a snapshot, follow the same procedure described i
 
 For more details about restoring feature states, or the entire cluster state, refer to [](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state).
 
-The following example describes how to restore the `security` feature using the [restore snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore):
+The following example describes how to restore the `security` feature using the [restore snapshot API]({{es-apis}}operation/operation-snapshot-restore):
 
 ```sh
 POST _snapshot/REPOSITORY/SNAPSHOT_NAME/_restore

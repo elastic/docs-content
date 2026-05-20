@@ -28,7 +28,7 @@ If you’ve been using [](/manage-data/lifecycle/curator.md) or some other mecha
 
 The simplest way to transition to managing your periodic indices with {{ilm-init}} is to [configure an index template](configure-lifecycle-policy.md#apply-policy-template) to apply a lifecycle policy to new indices. A number of [example {{ilm-init}} polices](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#ilm-rollover-ex) are available, showing how index rollover can be initiated based on different criteria.
 
-Once the index you are writing to is being managed by {{ilm-init}}, you can [manually apply a policy](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md) to your older indices. Define a separate policy for your older indices that omits the rollover action. Rollover is used to manage where new data goes, so isn’t applicable.
+Once the index you are writing to is being managed by {{ilm-init}}, you can manually [apply a policy to your older indices](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md). Define a separate policy for your older indices that omits the rollover action. Rollover is used to manage where new data goes, so isn’t applicable.
 
 Keep in mind that policies applied to existing indices compare the `min_age` for each phase to the original creation date of the index, and might proceed through multiple phases immediately. If your policy performs resource-intensive operations like force merge, you don’t want to have a lot of indices performing those operations all at once when you switch over to {{ilm-init}}.
 
@@ -68,10 +68,10 @@ To reindex into the managed index:
 
     1. Check once a minute to see if {{ilm-init}} actions such as rollover need to be performed.
 
-3. Reindex your data using the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
+3. Reindex your data using the [reindex API]({{es-apis}}operation/operation-reindex). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
 
     ::::{important}
-    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) in the reindex call to append the original index name to the document ID.
+    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script]({{es-apis}}operation/operation-reindex) in the reindex call to append the original index name to the document ID.
     ::::
 
 

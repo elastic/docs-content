@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -44,7 +47,7 @@ To create an enrollment token:
 1. In {{kib}}, go to **Management → {{fleet}} → Enrollment tokens**.
 2. Click  **Create enrollment token**. Name your token and select an agent policy.
 
-    Note that the token name you specify must be unique so as to avoid conflict with any existing API keys.
+    The token name you specify must be unique so as to avoid conflict with any existing API keys.
 
     :::{image} images/create-token.png
     :alt: Enrollment tokens tab in {{fleet}}
@@ -89,10 +92,10 @@ To revoke an enrollment token:
     To re-enroll your {{agent}}s, use an active enrollment token.
 
 
-Note that when an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) for details).
+When an enrollment token is revoked it is not immediately deleted. Deletion occurs automatically after the duration specified in the {{es}} [`xpack.security.authc.api_key.delete.retention_period`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings-delete-retention-period) setting has expired (see [Invalidate API key API]({{es-apis}}operation/operation-security-invalidate-api-key) for details).
 
 Until the enrollment token has been deleted:
 
-* The token name may not be re-used when you [create an enrollment token](#create-fleet-enrollment-tokens).
+* The token name may not be reused when you [create an enrollment token](#create-fleet-enrollment-tokens).
 * The token continues to be visible in the {{fleet}} UI.
 * The token continues to be returned by a `GET /api/fleet/enrollment_api_keys` API request. Revoked enrollment tokens are identified as `"active": false`.

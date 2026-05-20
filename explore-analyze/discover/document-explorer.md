@@ -6,11 +6,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+description: Customize the Discover view with flexible display options for the document table, chart, and sidebar. Adjust columns, density, row height, and field visibility for optimal exploration.
 ---
 
 # Customize the Discover view [document-explorer]
 
-Fine tune your explorations by customizing **Discover** to bring out the the best view of your documents.
+**Discover** offers flexible customization options to optimize your data exploration experience. Adjust the document table layout, modify column arrangements, control chart, results table, and sidebar visibility, and configure display density to focus on the data that matters most. These customizations persist across sessions and help you work more efficiently with your {{product.elasticsearch}} data.
 
 :::{tip}
 Discover provides default [context-aware experiences](/explore-analyze/discover/discover-get-started.md#context-aware-discover) tailored to the type of data that you're exploring, and you can further customize your Discover view on top of them.
@@ -24,7 +25,12 @@ Discover provides default [context-aware experiences](/explore-analyze/discover/
 
 ## Hide or resize areas [document-explorer-c]
 
-* You can hide and show the chart and the fields list using the available collapse and expand button in the corresponding area.
+* To show or hide sections of the Discover view:
+  * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Use the **Panels visibility** button group to show or hide areas of **Discover** independently. The button group stays in a fixed position regardless of which sections are shown or hidden.
+      * {icon}`transitionTopOut` / {icon}`transitionTopIn` to show or hide the chart
+      * {icon}`transition_bottom_out` / {icon}`transition_bottom_in` to show or hide the results table
+      * {icon}`transitionLeftOut` / {icon}`transitionLeftIn` to show or hide the fields list
+  * {applies_to}`stack: ga 9.0-9.3` Use the available collapse and expand button in the corresponding area to show or hide the chart and the fields list.
 * Adjust the width and height of each area by dragging their border to the size you want. The size of each area is saved in your browser for the next time you open **Discover**.
 
 
@@ -100,7 +106,7 @@ Change how {{kib}} displays a field.
 
 ### Filter the documents [document-explorer-compare-data]
 
-Narrow your results to a subset of documents so you’re comparing just the data of interest.
+Narrow your results to a subset of documents so you're comparing the data of interest.
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.

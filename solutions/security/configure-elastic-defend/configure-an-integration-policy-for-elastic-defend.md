@@ -13,7 +13,17 @@ products:
 
 # Configure an integration policy for {{elastic-defend}}
 
-After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
+After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. To meet your organization’s security needs, you can update the integration policy to configure:
+
+* Protection settings
+* Event collection
+* Antivirus settings
+* Trusted applications
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Trusted devices
+* Event filters
+* Host isolation exceptions
+* Blocked applications 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` {{elastic-endpoint}} exceptions
 
 You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
@@ -28,6 +38,20 @@ To configure an integration policy:
 In addition to configuring an {{elastic-defend}} policy through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy [through the API](/solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md).
 ::::
 
+## How {{elastic-defend}} protections work [understand-endpoint-protections]
+
+{{elastic-defend}} is an endpoint security solution with multiple layers of protections that work in tandem to detect and stop threats. This differs from traditional antivirus software, which typically relies on a single layer of pre-execution file scanning.
+
+{{elastic-defend}}'s protection layers include:
+
+* **Pre-execution protections**: Some layers, like [malware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), operate before execution — as soon as a threat is introduced to the file system, it's scanned and can be blocked before it ever runs.
+
+* **Post-execution protections**: Most layers operate after a threat launches or executes. These include [memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection) and [malicious behavior protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection), which monitor running processes for suspicious activity and in-memory threats that can evade traditional file-based detection.
+
+This layered approach means that even if a threat bypasses one protection layer, other layers can still detect and stop it once it runs. In a realistic attack scenario, {{elastic-defend}} comprehensively detects and stops the attack in its tracks, even when malicious activity begins after a user interacts with a threat.
+
+
+## Configure policy settings [configure-policy-settings]
 
 To configure an integration policy:
 
@@ -40,12 +64,22 @@ To configure an integration policy:
     * [Memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection)
     * [Malicious behavior protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)
     * [Attack surface reduction](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#attack-surface-reduction)
+    * [Device control](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#device-control)
     * [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection)
     * [Register {{elastic-sec}} as antivirus (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#register-as-antivirus)
     * [Advanced policy settings (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings)
     * [Save the general policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#save-policy)
 
-4. Click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
+4. To review the endpoint policy artifacts assigned to this integration policy, click the following tabs:
+
+    * [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md)
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` [Trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md)
+    * [Event filters](/solutions/security/manage-elastic-defend/event-filters.md)
+    * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md)
+    * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) 
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Endpoint exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md)
+ 
+   On these tabs, you can:
 
     * Expand and view an artifact: Click the arrow next to its name.
     * View an artifact’s details: Click the actions menu (**…**), then select **View full details**.
@@ -53,7 +87,9 @@ To configure an integration policy:
     * Assign an existing artifact: Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}
-    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
+    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to: 
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`  The **Artifacts** page, then select the tab for the artifact you want to create.
+    * {applies_to}`stack: ga 9.0-9.3` The artifact's dedicated page (for example, to create a new trusted application, go to the **Trusted applications** page).
     ::::
 
 5. Click the **Protection updates** tab to configure how {{elastic-defend}} receives updates from Elastic with the latest threat detections, malware models, and other protection artifacts. Refer to [Configure updates for protection artifacts](/solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md) for more information.
@@ -153,7 +189,7 @@ If you have the appropriate license or project feature tier, you can customize t
 
 Memory threat protection detects and stops in-memory threats, such as shellcode injection, which are used to evade traditional file-based detection techniques.
 
-:::{admonition} Requirements
+::::{admonition} Requirements
 :class: note
 * In {{stack}}, memory threat protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, memory threat protection will be disabled by default.
 * In {{serverless-short}}, memory threat protection requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
@@ -230,6 +266,56 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 :screenshot:
 :::
 
+## Device control [device-control]
+
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
+Device control helps protect your Windows and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
+
+::::{important}
+Device control only affects external USB storage devices. It does not affect other peripherals such as Yubikeys, webcams, or keyboards.
+::::
+
+To configure device control for one or more hosts, edit the {{elastic-defend}} policy that affects those hosts. Your policy specifies which operations these devices are allowed to take on a host. You can create [trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md) to define exceptions to your policy for specific devices. 
+
+
+:::{image} /solutions/images/security-defend-policy-device-control.png
+:alt: Detail of device control section.
+:screenshot:
+:::
+
+By default, each {{kib}} instance includes a Device Control dashboard. When at least one of your {{elastic-defend}} policies has device control enabled, the dashboard displays data about attempted device connections and their outcomes. To access it and review information about blocked connections, search for `device control` in the **Dashboards** page's **Custom Dashboards** section.
+
+:::{important} 
+To collect device control data, {{elastic-defend}} must be updated to at least version 9.2.0. Until you update it to this version, the device control dashboard will not appear and device control events will not be ingested. Device control blocking will still work. 
+:::
+
+### Access levels for Windows devices
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Device control supports the following USB storage access levels:
+
+* **Allow all**
+* **Read only**
+* **Block execute**
+* **Block all**
+
+These access levels apply fully to native Windows volumes (USB mass storage devices), such as USB flash drives and external hard drives. However, Windows Portable Devices, such as smartphones and digital cameras, use a transfer protocol that doesn't support granular access control. For these devices, device control maps access levels as follows:
+
+| Configured access level | Behavior for Windows Portable Devices |
+|-------------------------|---------------------------------------|
+| Allow all               | Allow all                             |
+| Read only               | Block all                             |
+| Block execute           | Block all                             |
+| Block all               | Block all                             |
+
+This means that if you want to allow any access to Windows Portable Devices, you must select **Allow all**. The **Read only** and **Block execute** options block these devices entirely to maintain security when granular control isn't possible.
 
 ## Event collection [event-collection]
 

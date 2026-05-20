@@ -10,7 +10,7 @@ products:
 
 # Index a runtime field [runtime-indexed]
 
-Runtime fields are defined by the context where they run. For example, you can define runtime fields in the [context of a search query](define-runtime-fields-in-search-request.md) or within the [`runtime` section](map-runtime-field.md) of an index mapping. If you decide to index a runtime field for greater performance, just move the full runtime field definition (including the script) to the context of an index mapping. {{es}} automatically uses these indexed fields to drive queries, resulting in a fast response time. This capability means you can write a script only once, and apply it to any context that supports runtime fields.
+Runtime fields are defined by the context where they run. For example, you can define runtime fields in the [context of a search query](define-runtime-fields-in-search-request.md) or within the [`runtime` section](map-runtime-field.md) of an index mapping. If you decide to index a runtime field for greater performance, move the full runtime field definition (including the script) to the context of an index mapping. {{es}} automatically uses these indexed fields to drive queries, resulting in a fast response time. This capability means you can write a script only once, and apply it to any context that supports runtime fields.
 
 ::::{note}
 Indexing a `composite` runtime field is currently not supported.

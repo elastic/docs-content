@@ -16,8 +16,8 @@ Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then 
 
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
-* New customers {{ecloud}} obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.
-* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/endpoints/elasticsearch-service.gcpmarketplace.elastic.co) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
+* New {{ecloud}} customers obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.
+* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
 ::::{important} 
@@ -29,7 +29,7 @@ To subscribe to {{ecloud}} through the GCP Marketplace:
 
 1. Log in to your Google Cloud Platform account.
 2. Go to the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace.
-3. On the {{ecloud}} page select **Subscribe**, where you will be directed to another page. There is only one plan—the Elastic plan—and it’s pre-selected. The billing account you are logged into will be pre-selected for this purchase, though you can change it at this time.
+3. On the {{ecloud}} page select **Subscribe**, where you will be directed to another page. There is only one plan—the Elastic plan—and it’s preselected. The billing account you are logged into will be preselected for this purchase, though you can change it at this time.
 4. Accept the terms of service (TOS) and select **Subscribe**.
 5. When you are presented with a pop-up that specifies that "Your order request has been sent to Elastic" choose **Sign up with Elastic** to continue.
 6. After choosing to sign up, a new window will appear. Do one of the following:

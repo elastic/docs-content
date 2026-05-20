@@ -15,7 +15,7 @@ products:
 
 
 ::::{note}
-This feature was introduced in version 8.12.0 and is only available to certain subscription levels. For more information, see {{subscriptions}}.
+This feature was introduced in version 8.12.0 and is only available to certain subscription levels. For more information, refer to [Elastic self-managed subscriptions]({{subscriptions}}).
 ::::
 
 
@@ -83,7 +83,7 @@ feature_extractors=[
 ::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
+It is common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the [`script_score`](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) query.
 
 ::::
 
@@ -144,7 +144,7 @@ MLModel.import_ltr_model(
 )
 ```
 
-This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model).
+This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API]({{es-apis}}operation/operation-ml-put-trained-model).
 
 The following types of models are currently supported for LTR with {{es}}:
 
@@ -159,5 +159,5 @@ More model types will be supported in the future.
 
 ## Learning To Rank model management [learning-to-rank-model-management]
 
-Once your model is deployed in {{es}} you can manage it using the [trained model APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-trained-model). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
+Once your model is deployed in {{es}} you can manage it using the [trained model APIs]({{es-apis}}group/endpoint-ml-trained-model). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
 

@@ -1,5 +1,6 @@
 ---
 navigation_title: Logs Essentials
+description: Step-by-step guide to getting started with Elastic Observability Serverless Logs Essentials, covering log collection, setup, and data exploration.
 applies_to:
   serverless: ga
 products:
@@ -42,7 +43,7 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 
 1. Select **Create serverless project**. It takes a few minutes to create your project.
 1. When the project is ready, click **Continue**.
-
+::::
 ::::::
 
 ::::::{step} Collect infrastructure logs
@@ -89,6 +90,7 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 3. Select the integration you want to add.
 4. Select **Add**.
 :::
+::::
 
 :::::
 
@@ -135,7 +137,7 @@ Many {{observability}} integrations are available to collect and process your da
 
 ### Other resources
 
-* [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
+* [What's Elastic {{observability}}](/solutions/observability.md)
 * [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
 * [Log monitoring](/solutions/observability/logs.md)

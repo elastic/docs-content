@@ -22,7 +22,7 @@ This guide will explain how to set up and configure a Fleet-managed APM Server.
 
 You need {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it. When setting these components up, you need:
 
-* {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
+* {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. Refer to [](/deploy-manage/deploy.md).
 * Secure, encrypted connection between {{kib}} and {{es}}. For more information, refer to [](/deploy-manage/security/self-setup.md).
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
@@ -170,7 +170,7 @@ POST kbn:/api/fleet/epm/packages/apm/9.0.0
 { "force": true }
 ```
 
-See [Kibana API](https://www.elastic.co/docs/api/doc/kibana/) to learn more about how to use the Kibana APIs.
+See [Kibana API]({{kib-apis}}) to learn more about how to use the Kibana APIs.
 
 ::::
 
@@ -231,7 +231,7 @@ elasticApm {
 1. You can find the latest version in the [Gradle plugin portal](https://plugins.gradle.org/plugin/co.elastic.apm.android).
 2. Defaults to your `android.defaultConfig.applicationId` value.
 3. Defaults to your `android.defaultConfig.versionName` value.
-4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+4. Defaults to null. More info on API Keys [here]({{es-apis}}operation/operation-security-create-api-key).
 5. Defaults to null.
 
 ::::{note}

@@ -1,14 +1,19 @@
 ---
 applies_to:
-  stack: preview 9.1
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
 ---
 
 # Privileged user monitoring
+
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
 
 Privileged user monitoring allows you to track the activity of users with elevated permissions, such as system administrators or users with access to sensitive data. These accounts are often targets for attackers who try to gain elevated privileges and access critical systems. To reduce this risk, it’s important to monitor and audit privileged users’ behavior regularly. 
 

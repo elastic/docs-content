@@ -12,7 +12,7 @@ products:
 
 The {{ece}} RESTful APIs support both key-based and token-based authentication. Key-based is generally the preferred method.
 
-{{ece}} API keys allow you to manage your {{ece}} platform and deployments using the [{{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise/) API.
+{{ece}} API keys allow you to manage your {{ece}} platform and deployments using the [{{ece}}]({{ece-apis}}) API.
 
 
 ## Authenticate using an API key [ece-api-keys]
@@ -54,12 +54,18 @@ For token-based API authentication, you can use the same username and password t
 
 For operations that only read information, but don’t create, update or delete, you can authenticate with a user that has restricted permissions, such as the `readonly` user.
 
+::::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::
+
 To create a bearer token:
 
 1. Open a terminal and send your credentials to the login endpoint:
 
     ```sh
-    curl -k -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
+    curl -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
     {
       "username": "USER",
       "password": "PASSWORD"

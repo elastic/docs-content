@@ -12,8 +12,15 @@ products:
 
 # Synthetic monitoring [monitor-uptime-synthetics]
 
-::::{note}
-The Synthetics UI is for viewing result data from monitors created and managed directly in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or managed externally using a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). This can include both lightweight and browser-based monitors, and can include monitors running from either Elastic’s global managed testing infrastructure or from [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
+Use the Synthetics UI to view results from monitors you create and manage directly in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or externally through a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). You can run lightweight or browser-based monitors from Elastic's global managed testing infrastructure or from your own [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
+
+::::{important}
+**Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring**
+
+For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
+
+* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The Uptime app is deprecated as of 8.15 and is not available in Serverless.
 
 ::::
 
@@ -35,7 +42,7 @@ You can monitor the status of network endpoints using the following lightweight 
 | --- | --- |
 | **HTTP monitor** | Monitor your website. The HTTP monitor checks to make sure specific endpoints return the correctstatus code and display the correct text. |
 | **ICMP monitor** | Check the availability of your hosts. The ICMP monitor uses ICMP (v4 and v6) EchoRequests to check the network reachability of the hosts you are pinging. This will tell you whether thehost is available and connected to the network, but doesn’t tell you if a service on the host is running ornot. |
-| **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual portsto make sure the service is accessible and running. |
+| **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual ports to make sure the service is accessible and running. |
 
 To set up your first monitor, refer to [Get started](/solutions/observability/synthetics/get-started.md).
 

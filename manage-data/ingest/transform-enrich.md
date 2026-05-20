@@ -19,7 +19,7 @@ According to your use case, you may want to control the structure of your ingest
 
 Finally, to help ensure optimal query results, you may want to customize how text is analyzed and how text fields are defined inside {{es}}.
 
-Note that you can also perform transforms on existing {{es}} indices to pivot data into a summarized format, for example to break down web requests by geography or browser type. To learn more, refer to [Transforming data](../../explore-analyze/transforms.md).
+You can also perform transforms on existing {{es}} indices to pivot data into a summarized format, for example to break down web requests by geography or browser type. To learn more, refer to [Transforming data](../../explore-analyze/transforms.md).
 
 {{agent}} processors
 :   You can use [{{agent}} processors](/reference/fleet/agent-processors.md) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
@@ -49,7 +49,7 @@ Index mapping
 
 :   Ingested data can be mapped dynamically, where {{es}} adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
 
-:   You can use {{es}} [runtime fields](../data-store/mapping/runtime-fields.md) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and/or define fields for a specific use without modifying the underlying schema.
+:   You can use {{es}} [runtime fields](../data-store/mapping/runtime-fields.md) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and define fields for a specific use without modifying the underlying schema.
 
 :   Refer to the [Index mapping](../data-store/mapping.md) pages to learn about the dynamic mapping rules that {{es}} runs by default, which ones you can customize, and how to configure your own explicit data to field mappings.
 

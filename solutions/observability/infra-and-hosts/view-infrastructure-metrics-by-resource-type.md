@@ -23,7 +23,7 @@ To open the **Infrastructure inventory** page in:
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md).
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/observability/metrics-reference.md).
 
 ::::{note}
 **Don’t see any metrics?**
@@ -39,10 +39,10 @@ Need help getting started? Follow the steps in [Get started with system metrics]
 
 To get started with your analysis, select the type of resources you want to show in the high-level view. From the **Show** menu, select one of the following:
 
-* **Hosts** — the default
-* **Kubernetes Pods**
-* **Docker Containers** — shows *all* containers, not just Docker
-* **AWS** — includes EC2 instances, S3 buckets, RDS databases, and SQS queues
+* **Hosts**: the default view. Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for this view.
+* **Kubernetes Pods**: Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) for more on supported data types for this view.
+* **Docker Containers**: shows *all* containers, not only Docker containers. Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
+* **AWS**: includes EC2 instances, S3 buckets, RDS databases, and SQS queues. Refer to [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
 
 When you hover over each resource in the waffle map, the metrics specific to that resource are displayed.
 
@@ -58,6 +58,10 @@ You can also use the search bar to create structured queries using [{{kib}} Quer
 To examine the metrics for a specific time, use the time filter to select the date and time.
 
 ## View host metrics [analyze-hosts-inventory]
+
+:::{note}
+Refer to [Host metrics](../../../reference/observability/observability-host-metrics.md) for more on supported data types for this view.
+:::
 
 By default the **Infrastructure Inventory** page displays a waffle map that shows the hosts you are monitoring and the current CPU usage for each host. Alternatively, you can click the **Table view** icon ![table view icon](/solutions/images/observability-table-view-icon.png "") to switch to a table view.
 
@@ -262,6 +266,10 @@ These metrics are also available when viewing hosts on the **Hosts** page.
 
 ## View container metrics [analyze-containers-inventory]
 
+:::{note}
+Refer to [Container metrics](../../../reference/observability/observability-container-metrics.md) for more on supported data types for this view.
+:::
+
 When you select **Docker containers**, the **Infrastructure inventory** page displays a waffle map that shows the containers you are monitoring and the current CPU usage for each container. Alternatively, you can click the **Table view** icon ![Table view icon](/solutions/images/serverless-table-view-icon.png "") to switch to a table view.
 
 Without leaving the **Infrastructure inventory** page, you can view enhanced metrics relating to each container running in your infrastructure.
@@ -351,6 +359,10 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 
 ## View metrics for other resources [analyze-resource-metrics]
+
+:::{note}
+Refer to [{{k8s}} pod metrics](../../../reference/observability/observability-kubernetes-pod-metrics.md) and [AWS metrics](../../../reference/observability/observability-aws-metrics.md) for more on supported data types for this view.
+:::
 
 When you have searched and filtered for a specific resource, you can drill down to analyze the metrics relating to it. For example, when viewing Kubernetes Pods in the high-level view, click the Pod you want to analyze and select **Kubernetes Pod metrics** to see detailed metrics:
 

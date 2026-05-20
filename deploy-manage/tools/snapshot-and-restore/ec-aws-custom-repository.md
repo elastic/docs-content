@@ -6,15 +6,18 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+    ece:
 products:
   - id: cloud-hosted
 navigation_title: AWS S3
 ---
 
-# Configure an AWS S3 snapshot repository in {{ech}} [ec-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in ECH and ECE [ec-aws-custom-repository]
 
 Configure a custom snapshot repository using an S3 storage bucket in your AWS account.
 
+::::{include} _snippets/ece_ech_custom_repo.md
+::::
 
 ## Prepare an S3 bucket [ec-prepare-aws-bucket]
 

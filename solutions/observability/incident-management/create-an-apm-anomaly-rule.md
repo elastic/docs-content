@@ -10,30 +10,27 @@ products:
 
 # Create an APM anomaly rule [observability-create-anomaly-alert-rule]
 
-::::{important}
-To use the APM Anomaly rule, you have to enable [machine learning](/solutions/observability/apm/machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection), which requires an [appropriate license](https://www.elastic.co/subscriptions).
+## Requirements
 
-::::
+To create APM anomaly rules, you need the following:
 
-::::{note}
+- {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions), permissions to run [machine learning](/solutions/observability/apm/machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection) jobs, and the permission for the [APM application](/solutions/observability/apm/secure-access-to-applications-ui.md).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+### Indices used by this rule
 
-::::
+This rule queries the ML anomaly indices and the transaction indices defined in the APM index settings. The default index patterns are `.ml-anomalies-*` and `traces-apm*,apm-*,traces-*.otel-*`. You cannot override these indices on a per-rule basis.
 
+## Create an anomaly rule
 
-You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is abnormal. Anomaly rules can be set at different levels: environment, service, and/or transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
+You can create an anomaly rule to alert you when either the latency, throughput, or failed transaction rate of a service is unusual. Anomaly rules can be set at different levels: environment, service, and transaction type. Add actions to raise alerts via services or third-party integrations (for example, send an email or create a Jira issue).
 
 :::{image} /solutions/images/serverless-alerts-create-apm-anomaly.png
 :alt: Create rule for APM anomaly alert
 :screenshot:
 :::
 
-::::{tip}
 These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create anomaly rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
-
-::::
-
 
 To create your anomaly rule:
 
@@ -116,7 +113,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

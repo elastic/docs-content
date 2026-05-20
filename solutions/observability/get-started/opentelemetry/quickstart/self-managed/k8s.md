@@ -22,6 +22,10 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
+## Prerequisites
+
+To use the OpenTelemetry Kube Stack Chart, you need Helm version 3.9+ up to and including {{helm-version}}.
+
 ## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
@@ -37,7 +41,7 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up credentials
 
-Retrieve your [{{es}} endpoint](/solutions/search/search-connection-details.md) and [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
+Retrieve your [{{es}} endpoint](/solutions/elasticsearch-solution-project/search-connection-details.md) and [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
 
 ```bash
 kubectl create namespace opentelemetry-operator-system

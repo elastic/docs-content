@@ -1,10 +1,14 @@
 ---
 navigation_title: Contribute to API docs
+description: "Learn how to contribute to Elastic API docs, from writing summaries and descriptions to previewing your changes locally."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Elastic API docs
 
-Learn how to contribute to Elastic's Open API docs across our various product repositories. While each team uses different toolchains and workflows, the core principles of how to write excellent API docs are the same.
+Learn how to contribute to Elastic's OpenAPI docs across our various product repositories. While each team uses different toolchains and workflows, the core principles of how to write excellent API docs are the same.
 
 1. [**How Elastic API docs work**](./overview.md) - Understand how API docs work at Elastic today, from source files to OpenAPI documents and published documentation.
 
@@ -14,7 +18,7 @@ Learn how to contribute to Elastic's Open API docs across our various product re
 
 4. [**Organize and annotate**](./organize-annotate.md) - Learn how to group your APIs using tags and how to signal lifecycle status, deployment-type availability, and required permissions.
 
-5. [**Contribute locally: Elasticsearch**](./quickstart.md) - Follow a step-by-step guide to contribute to Elasticsearch API docs, including environment setup, local development workflow, and preview generation.
+5. [**Quickstarts: {{es}} and {{kib}}**](./quickstart.md) - Follow step-by-step guides to contribute to {{es}} and {{kib}} API docs, including environment setup, local development workflow, and preview generation.
 
 6. [**Find your workflow**](./workflows.md) - Find the workflow for the specific Elastic API docs you're interested in and learn how the OpenAPI docs are generated, validated, and published.
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/integrations-assets-best-practices.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -55,7 +58,7 @@ Note, however, that creating standalone integration assets based off of {{fleet}
 
 ## Editing assets managed by {{fleet}} [assets-restrictions-editing-assets]
 
-{{fleet}}-managed integration assets should not be edited. Examples of these assets include an integration index template, the `@package` component templates, and ingest pipelines that are bundled with integrations. Any changes made to these assets will be overwritten when the integration is upgraded.
+{{fleet}}-managed integration assets should not be edited. Examples of these assets include an integration index template, the `@package` component templates, and ingest pipelines that are bundled with integrations. Any changes made to these assets will be overwritten when the integration is upgraded, and might be overwritten at any other time without notice.
 
 
 ## Creating custom component templates [assets-restrictions-custom-component-templates]
@@ -64,7 +67,7 @@ While creating a `@custom` component template for a package integration is suppo
 
 For example:
 
-* If the `@package` component template of an integration is changed from a "normal" datastream to `TSDB` or `LogsDB`, some of the custom settings or mappings introduced may not be compatible with these indexing modes.
+* If the `@package` component template of an integration is changed from a "normal" data stream to `TSDB` or `LogsDB`, some of the custom settings or mappings introduced may not be compatible with these indexing modes.
 * If the type of an ECS field is overridden from, for example, `keyword` to `text`, aggregations based on that field may be prevented for built-in dashboards.
 
 A similar caution against custom index mappings is noted in [Edit the {{es}} index template](/reference/fleet/data-streams.md#data-streams-index-templates-edit).
@@ -83,6 +86,6 @@ When you clone the index template of an integration package, this involves risk 
 
 Additionally, cloning index templates to add or inject additional component templates cannot be tested by Elastic, so we cannot guarantee that the template will work in future releases.
 
-If you want to change the ILM Policy, the number of shards, or other settings for the datastreams of one or more integrations, but the changes do not need to be specific to a given namespace, it’s highly  recommended to use the `package@custom` component templates, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md) of the Customize data retention policies tutorial, so as to avoid the problems mentioned above.
+If you want to change the ILM Policy, the number of shards, or other settings for the data streams of one or more integrations, but the changes do not need to be specific to a given namespace, it’s highly  recommended to use the `package@custom` component templates, as described in [Scenario 1](/reference/fleet/data-streams-scenario1.md) and [Scenario 2](/reference/fleet/data-streams-scenario2.md) of the Customize data retention policies tutorial, so as to avoid the problems mentioned above.
 
 If you want to change these settings for the data streams in one or more integrations and the changes **need to be namespace specific**, then you can do so following the steps in [Scenario 3](/reference/fleet/data-streams-scenario3.md) of the Customize data retention policies tutorial, but be aware of the restrictions mentioned above.

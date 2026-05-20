@@ -1,12 +1,9 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 navigation_title: "Error: Unable to parse response body"
+products:
+  - id: elasticsearch
 ---
 
 # Fix error: Unable to parse response body [unable-to-parse-response-body]

@@ -25,14 +25,14 @@ As a first step, review the [supported technologies](elastic-otel-python://refer
 
 Follow these recommended actions to make sure that EDOT Python is configured correctly.
 
-### EDOT Logging level 
+### EDOT logging level 
 
 ```{applies_to}
 product:
   edot_python: ga 1.9.0
 ```
 
-You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values.
+You can change the default verbosity of both EDOT Python and OpenTelemetry Python SDK code with `OTEL_LOG_LEVEL`, see [configuration](elastic-otel-python://reference/edot-python/configuration.md#differences-from-opentelemetry-python) for the possible values. For more detailed debugging information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 ### Log configuration
 
@@ -69,6 +69,8 @@ If only a subset of instrumentation are causing disruptions, turn them off using
 
 Activating the Python logging module auto-instrumentation with `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true` calls the [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) method that makes your own application calls to it a no-op. The side effect of this is that you won't see your application logs in the console. If you are already shipping logs by other means, you don't need to turn this on.
 
+If you're not seeing telemetry data in {{kib}}, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md) for troubleshooting steps.
+
 ## Check stability of semantic conventions
 
 For some semantic conventions, like HTTP, there is a migration path, but the conversion to stable HTTP semantic conventions is not done yet for all the instrumentations.
@@ -76,3 +78,15 @@ For some semantic conventions, like HTTP, there is a migration path, but the con
 ## Access or modification of application code
 
 EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.
+
+## Issues with binary packages on the Kubernetes Operator
+
+Some EDOT Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
+
+EDOT Python provides a Docker image that includes auto-instrumentation code for both:
+
+- glibc-based distributions (for example, Ubuntu)
+- musl-based distributions (for example, Alpine)
+
+If the provided Docker images don't work in your environment and you encounter errors when loading modules, build a custom Docker image instead.
+You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the EDOT Python repository.

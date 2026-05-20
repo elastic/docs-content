@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
+description: Browse, search, organize, and track usage of your Kibana dashboards using tags, favorites, filters, and sorting options.
 applies_to:
   stack: ga
   serverless: ga
@@ -9,6 +10,8 @@ products:
 ---
 
 # Managing dashboards [_manage_dashboards]
+
+Manage your collection of dashboards in {{product.kibana}} using search, filtering, and organization features that help you quickly find and track the dashboards you need. Whether you're working with a few dashboards or hundreds, these management tools help you stay organized and monitor dashboard usage across your team.
 
 
 ## Browse dashboards [find-dashboards]
@@ -35,7 +38,6 @@ Similarly, managed dashboards created by integrations are identified as created 
 The creator information is only available for dashboards created on or after version 8.14. For dashboards from previous versions, the creator is empty.
 ::::
 
-
 :::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
 :alt: Option to filter the list of dashboards by creator
 :::
@@ -43,6 +45,13 @@ The creator information is only available for dashboards created on or after ver
 **Sort by name or last update date**
 
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
+
+
+## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
+
+To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). To do that, search for **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using the Security and Observability solution views or project types, the **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. With the **Classic** solution view or in previous versions, the Visualize Library is available from the **Visualize** page in the navigation menu.
 
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]

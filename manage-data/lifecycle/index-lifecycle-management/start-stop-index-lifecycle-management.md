@@ -10,6 +10,8 @@ products:
 
 # Start and stop index lifecycle management [start-stop-ilm]
 
+By default, the {{ilm-init}} service is in a `RUNNING` state and manages all indices that have lifecycle policies. You can stop and restart the {{ilm}} service as needed.
+
 Follow these steps to check the current {{ilm-init}} status, and to stop or restart it as needed.
 
 ### Get {{ilm-init}} status 

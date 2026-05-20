@@ -28,8 +28,7 @@ Regardless of which approach you take, the steps in this section need to be perf
 
 ## Install Docker on SLES [ece-install-docker-sles12]
 
-::::{important}
-Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
 
@@ -157,7 +156,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
@@ -307,6 +306,18 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     net.netfilter.nf_conntrack_max=262140
     SETTINGS
     ```
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
 
     1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
 

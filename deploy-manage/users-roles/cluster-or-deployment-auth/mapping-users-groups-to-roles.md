@@ -4,11 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
 applies_to:
-  deployment:
-    ece:
-    eck:
-    ess:
-    self:
+  stack: all
 products:
   - id: elasticsearch
   - id: kibana
@@ -52,7 +48,7 @@ It’s possible for a single user to have some roles that were mapped through th
 
 ## Using the role mapping API [mapping-roles-api]
 
-You can define and manage role mappings through the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+You can define and manage role mappings through the [add role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 
 To learn about the properties that you can include in a role mapping resource, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/role-mapping-resources.md).
 
@@ -79,7 +75,7 @@ The `manage_security` cluster privilege is required to manage role mappings.
 2. Click **Create role mapping**.
 3. Give your role mapping a unique name, and choose which roles you want to assign to your users.
 
-    If you need more flexibility, you can use [role templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) instead.
+    If you need more flexibility, you can use [role templates]({{es-apis}}operation/operation-security-put-role-mapping) instead.
 
 4. Define the rules describing which users should receive the roles you defined. Rules can optionally grouped and nested, allowing for sophisticated logic to suite complex requirements.
 5. View the [role mapping resources for an overview of the allowed rule types](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).

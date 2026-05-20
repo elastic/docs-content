@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-secrets.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Fleet Server Secrets [fleet-server-secrets]
+# {{fleet-server}} secrets [fleet-server-secrets]
 
 {{fleet-server}} configuration can contain secret values. You may specify these values directly in the configuration or through secret files. You can use command line arguments to pass the values or file paths when you are running under {{agent}}, or you can use environment variables if {{agent}} is running in a container.
 
@@ -17,12 +20,11 @@ Stand-alone {{fleet-server}} is under active development.
 ::::
 
 
-
 ## Secret values [_secret_values]
 
 The following secret values may be used when configuring {{fleet-server}}.
 
-Note that the configuration fragments shown below are specified either in the UI as part of the output specification or as part of the {{fleet-server}} integration settings.
+The configuration fragments shown below are specified either in the UI as part of the output specification or as part of the {{fleet-server}} integration settings.
 
 `service_token`
 :   The `service_token` is used to communicate with {{es}}.
@@ -129,6 +131,3 @@ APM secret token
     ```
 
     You may also specify the token by value using the environment variable `ELASTIC_APM_SECRET_TOKEN`.
-
-
-

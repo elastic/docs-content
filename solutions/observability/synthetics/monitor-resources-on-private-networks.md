@@ -48,6 +48,8 @@ Start by setting up {{fleet-server}} and {{agent}}:
 ::::{important}
 A {{private-location}} should be set up against an agent policy that runs on a single {{agent}}. The {{agent}} must be **enrolled in Fleet** ({{private-location}}s cannot be set up using **standalone** {{agents}}). Do *not* run the same agent policy on multiple agents being used for {{private-location}}s, as you may end up with duplicate or missing tests. {{private-location}}s do not currently load balance tests across multiple {{agents}}. See [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling) for information on increasing the capacity within a {{private-location}}.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The agent policy must be in the **same {{kib}} space** as the private location. Cross-space agent policies are not supported. If you need monitors to run in multiple spaces, create a separate agent policy in each space.
+
 By default {{private-location}}s are configured to allow two simultaneous browser tests and an unlimited number of lightweight checks. As a result, if more than two browser tests are assigned to a particular {{private-location}}, there may be a delay to run them.
 
 ::::
@@ -56,10 +58,9 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 
 After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
 
-Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. For monitors running on {{private-location}}s, you *must* use the `elastic-agent-complete` Docker image to create a self-hosted {{agent}} node. The standard {{ecloud}} or self-hosted {{agent}} will not work.
-
+Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. Additional installation methods can be found on the [{{agent}} installation guide](/reference/fleet/install-elastic-agents.md). 
 ::::{important}
-The `elastic-agent-complete` Docker image is the only way to have all available options that you see in the UI.
+For running browser monitors on {{private-location}}s, you *must* use one of the `elastic-agent-complete` Docker image variants in a containerized environment. The standard {{agent}} variant only supports TCP, ICMP, and HTTP monitors.
 
 ::::
 
@@ -67,31 +68,38 @@ To pull the Docker image run:
 
 ::::{tab-set}
 :group: docker
-:::{tab-item} Latest
-:sync: latest
+:::{tab-item} elastic-agent-complete
+:sync: specific
 
-```shell subs=true
+```sh subs=true
+# Supports all monitor types: TCP, ICMP, HTTP and Browser
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
 :::
 
-:::{tab-item} Specific version
-:sync: specific
+:::{tab-item} elastic-agent
+:sync: latest
 
-```sh subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:<SPECIFIC.VERSION.NUMBER>
+```shell subs=true
+# Supports TCP, ICMP and HTTP monitors
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
-You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 :::
 
 ::::
+
+You can download and install a specific version of the {{stack}} by replacing `{{version.stack}}` with the version number you want. For example, you can replace `{{version.stack}}` with {{version.stack.base}}.
 
 Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL of the {{fleet-server}}. You can use the default enrollment token for your policy or create new policies and [enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md) as needed.
 
 For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 
+::::{tab-set}
+:group: docker
+:::{tab-item} elastic-agent-complete
+:sync: specific
 
 ```shell subs=true
 docker run \
@@ -103,8 +111,26 @@ docker run \
   --rm docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
-::::{important}
-The `elastic-agent-complete` Docker image requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+The `elastic-agent-complete` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
+
+:::{tab-item} elastic-agent
+:sync: latest
+
+```shell subs=true
+docker run \
+  --env FLEET_ENROLL=1 \
+  --env FLEET_URL={fleet_server_host_url} \
+  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
+  --cap-add=NET_RAW \
+  --cap-add=SETUID \
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+The `elastic-agent` container, when running as Synthetics Private Locations, requires additional capabilities to operate correctly. Ensure `NET_RAW` and `SETUID` are enabled on the container.
+
+:::
 
 ::::
 
@@ -122,14 +148,56 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 1. Go to the **{{private-location}}s** tab.
 1. Click **Create location**.
 1. Give your new location a unique _Location name_.
-1. Select the _Agent policy_ you created above.
+1. Select the _Agent policy_ you created above. 
+    
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Only agent policies that exist in the **current space** are available for selection.
 1. (Optional) In _Tags_ select [tags](/explore-analyze/find-and-organize/tags.md) to assign to this location.
 1. (Optional) In _Spaces_ specify the [spaces](/deploy-manage/manage-spaces.md) where this location will be available.
 1. Click **Save**.
 
+::::{note}
+:applies_to: stack: ga 9.4+
+If you upgraded from a version that allowed cross-space agent policy selection, any private location that references an agent policy from a different space will show **Policy not found in the current space** in the UI. To resolve this, reassign the private location to an agent policy in the same space, or create a new agent policy in the current space and re-enroll the {{agent}}.
+::::
+
 ::::{important}
 It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).
 ::::
+
+## Monitor integration health [synthetics-private-location-health]
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+
+Synthetics automatically detects when private location monitors have broken {{fleet}} integrations and surfaces health status in the UI with actionable recovery options. This can happen if an agent policy or {{fleet}} package policy is deleted after a monitor is configured, or if the referenced private location no longer exists.
+
+### Failure types [synthetics-private-location-health-failure-types]
+
+Each monitor is evaluated per location. The following failure types can occur, listed in priority order — only the first matching issue per location is reported, since it is the root cause:
+
+| Status | Cause | Recovery |
+|--------|-------|----------|
+| `missing_location` | The monitor references a private location that no longer exists. | Manual |
+| `missing_agent_policy` | The agent policy associated with the private location was deleted. | Manual |
+| `missing_package_policy` | The {{fleet}} package policy for this monitor/location pair is missing. | Automatic (Reset) |
+
+### Health status in the UI [synthetics-private-location-health-ui]
+
+Health status surfaces in three places:
+
+- **Monitor list**: An orange warning icon appears next to unhealthy monitors. Hover over the icon to see per-location details on why the monitor is affected.
+- **Monitor details page**: A warning callout lists the affected locations. A **Reset monitor** button is shown when the failure type is `missing_package_policy`, which recreates the missing Fleet resources.
+- **Private Locations settings**: Each location shows a badge with the count of unhealthy monitors. Clicking the badge opens a popover listing the affected monitors and a **Reset monitors** button that bulk-resets all recoverable monitors at that location.
+
+### Reset behavior [synthetics-private-location-health-reset]
+
+Only monitors with a `missing_package_policy` status can be auto-reset. The **Reset** action recreates the missing Fleet package policy, restoring the monitor to a healthy state.
+
+Monitors with `missing_agent_policy` or `missing_location` statuses are excluded from auto-reset because the underlying infrastructure must be restored before Fleet resources can be recreated. When you initiate a reset, the confirmation dialog lists which monitors will be reset and which will be skipped and why.
+
+To resolve failures that require manual intervention:
+
+- **`missing_agent_policy`**: Recreate the agent policy and re-enroll an {{agent}}, then update the affected private location under **Settings > {{private-location}}s** to reference the new agent policy.
+- **`missing_location`**: [Re-create the private location](#synthetics-private-location-add) or edit the affected monitors to remove or replace the deleted location.
 
 ## Scaling {{private-location}}s [synthetics-private-location-scaling]
 
@@ -140,16 +208,17 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 It is critical to allocate enough memory and CPU capacity to handle configured limits. Resource requirements will vary depending on simultaneous workload and monitor complexity:
 
 **For browser monitors**: Start by allocating at least 2 GiB of memory and two cores _per browser instance_ to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed.
-**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run a large number of lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
+**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run many lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
 
 Example: For a private location expected to run 2 concurrent browser monitors and 100 HTTP checks, the recommended allocation is 2 * (2 GiB + 2 vCPU) + (512 MiB + 2 vCPU) => 4,5 GiB + 6 vCPU.
 
 ### Known limitations on vertical scaling
 
 - A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
-- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached.
 
-If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
+- Many Synthetics monitors, or monitors with complex configurations, can cause the check-in payload to exceed the default 1 MiB `checkin_limit.max_body_byte_size` limit on {{fleet-server}}. When this happens, check-ins are rejected and agents appear offline or unhealthy in the Fleet UI even though monitors are executing successfully. To resolve this, increase the `server.limits.checkin_limit.max_body_byte_size` setting on your self-managed Fleet Server. Refer to [Advanced {{fleet-server}} options](/reference/fleet/fleet-server-scalability.md#fleet-server-configuration) for configuration details and an example.
+
+If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each allotted a portion of the original location monitors.
 
 ## Next steps [synthetics-private-location-next]
 

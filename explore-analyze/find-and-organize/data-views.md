@@ -13,17 +13,6 @@ products:
 
 # Data views [data-views]
 
-$$$field-formatters-numeric$$$
-
-$$$managing-fields$$$
-
-$$$runtime-fields$$$
-
-$$$management-cross-cluster-search$$$
-
-$$$data-views-read-only-access$$$
-
-
 By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
@@ -122,7 +111,7 @@ serverless: unavailable
 stack: ga
 ```
 
-If your {{es}} clusters are configured for [{{ccs}}](../../solutions/search/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
+If your {{es}} clusters are configured for [{{ccs}}](../../explore-analyze/cross-cluster-search.md), you can create a {{data-source}} to search across the clusters of your choosing. Specify data streams, indices, and aliases in a remote cluster using the following syntax:
 
 ```ts
 <remote_cluster_name>:<target>
@@ -160,7 +149,21 @@ cluster_*:logstash-*,-cluster_one:*
 
 Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
 
-For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../solutions/search/cross-cluster-search.md#exclude-problematic-clusters).
+For more information, refer to [Excluding clusters or indices from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+
+
+### Use {{data-sources}} with {{cps}} [management-cross-project-search]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
+
+To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
+
+* **Use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
+* **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
 
 
 ## Delete a {{data-source}} [delete-data-view]
@@ -176,7 +179,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](/explore-analyze/images/kibana-delete.png "") in the **Actions** column.
 
 
-## {{data-source}} field cache [data-view-field-cache]
+## Data view field cache [data-view-field-cache]
 
 The browser caches {{data-source}} field lists for increased performance. This is particularly impactful for {{data-sources}} with a high field count that span a large number of indices and clusters. The field list is updated every couple of minutes in typical {{kib}} usage. Alternatively, use the refresh button on the {{data-source}} management detail page to get an updated field list. A force reload of {{kib}} has the same effect.
 
@@ -184,7 +187,7 @@ The field list may be impacted by changes in indices and user permissions.
 
 ## Manage data views [managing-data-views]
 
-To customize the data fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data fields.
+To customize the fields in your data view, you can add runtime fields to the existing documents, add scripted fields to compute data on the fly, and change how {{kib}} displays the data view fields.
 
 
 ### Explore your data with runtime fields [runtime-fields]
@@ -347,9 +350,9 @@ doc['field_name'].value
 For more information on scripted fields and additional examples, refer to [Using Painless in {{kib}} scripted fields](https://www.elastic.co/blog/using-painless-kibana-scripted-fields)
 
 
-#### Migrate to runtime fields or ES|QL queries [migrate-off-scripted-fields]
+#### Migrate to runtime fields or {{esql}} queries [migrate-off-scripted-fields]
 
-The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an ES|QL query, highlighting the differences between each approach.
+The following code snippets demonstrate how an example scripted field called `computed_values` on the Kibana Sample Data Logs data view could be migrated to either a runtime field or an {{esql}} query, highlighting the differences between each approach.
 
 
 ##### Scripted field [scripted-field-example]
@@ -463,9 +466,9 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 
 
-### Format data fields [managing-fields]
+### Format data view fields [managing-fields]
 
-{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
+{{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data view fields, use the formatting options.
 
 1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
@@ -474,7 +477,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields, the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -521,6 +524,18 @@ The resulting URL replaces `{{value}}` with the user ID from the field.
 The `{{value}}` template string URL-encodes the contents of the field. When a field encoded into a URL contains non-ASCII characters, the characters are replaced with a `%` character and the appropriate hexadecimal code. For example, field contents `users/admin` result in the URL template adding `users%2Fadmin`.
 
 When the formatter type is **Image**, the `{{value}}` template string specifies the name of an image at the specified URI.
+
+You can render base64 images from data within a document by using the following **URL template**:
+
+```text
+data:image/png;base64,{{value}}
+```
+
+For example:
+![Data view editing to load base64 encoded PNG data](/explore-analyze/images/kibana-data_view_format_url_image_base64.png "")
+
+This configuration renders a PNG file in Discover as follows:
+![Sample output of PNG loading in Discover](/explore-analyze/images/kibana-discover-render_base64_image.png "")
 
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
 

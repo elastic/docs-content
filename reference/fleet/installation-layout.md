@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/installation-layout.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -25,7 +28,7 @@ products:
 `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
-`/usr/bin/elastic-agent`
+`/usr/local/bin/elastic-agent`
 :   Shell wrapper installed into PATH
 
 You can install {{agent}} in a custom base path other than `/Library`.  When installing {{agent}} with the `./elastic-agent install` command, use the `--base-path` CLI option to specify the custom base path.

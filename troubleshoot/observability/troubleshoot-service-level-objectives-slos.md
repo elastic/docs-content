@@ -92,6 +92,11 @@ It’s also recommended that you perform the following transform checks:
 
     If a transform has been deleted, the easiest way to recreate it is using the [Reset SLO](#slo-troubleshoot-reset) action, forcing the recreation of the transforms. If a transform was stopped, try to start it, and then check the `health tab` of the transform.
 
+    ::::{note}
+    :applies_to: stack: ga 9.4 
+    SLO transforms are protected from accidental deletion. The Transforms UI displays a warning tooltip to indicate that these transforms are managed by the SLO application and should not be deleted. If you previously deleted transforms manually to reset SLO state, use the [Reset SLO](#slo-troubleshoot-reset) action instead, as manual deletion of protected transforms is no longer supported.
+    ::::
+
 * [Inspect SLO assets](#slo-troubleshoot-inspect) to analyze the SLO definition and all associated resources.
 
     Use the direct links offered by the **Inspect UI** and check that all referenced resources exist, as that’s not verified by the inspect functionality.
@@ -194,7 +199,7 @@ Where `sloId` can be obtained from the [Inspect SLO assets](#slo-troubleshoot-in
 
 ### Using API calls to retrieve SLO details [slo-api-calls]
 
-Refer to [SLO API calls](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-findslosop) as an alternative to [using SLO Inspect](#slo-troubleshoot-inspect).
+Refer to [SLO API calls]({{kib-apis}}operation/operation-findslosop) as an alternative to [using SLO Inspect](#slo-troubleshoot-inspect).
 
 
 ## Upgrade from beta to GA [slo-troubleshoot-beta]
@@ -209,8 +214,8 @@ To migrate your SLO definitions, open the SLO overview. A banner will display th
 
 If you have a large number of SLO definitions, it is possible to automate this process. To do this, you’ll need to use two Elastic APIs:
 
-* [SLO Definitions Find API](https://github.com/elastic/kibana/blob/9cb830fe9a021cda1d091effbe3e0cd300220969/x-pack/plugins/observability/docs/openapi/slo/bundled.yaml#L453-L514) (`/api/observability/slos/_definitions`)
-* [SLO Reset API](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-resetsloop)
+* [SLO Definitions Find API]({{kib-apis}}operation/operation-getdefinitionsop)
+* [SLO Reset API]({{kib-apis}}operation/operation-resetsloop)
 
 Pass in `includeOutdatedOnly=1` as a query parameter to the Definitions Find API. This will display your outdated SLO definitions. Loop through this list, one by one, calling the Reset API on each outdated SLO definition. The Reset API loads the outdated SLO definition and resets it to the new format required for GA. Once an SLO is reset, it will start to regenerate SLIs and summary data.
 

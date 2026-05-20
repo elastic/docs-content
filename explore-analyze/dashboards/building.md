@@ -1,29 +1,43 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboards.html
+description: Choose how to create Kibana dashboards — from the UI, programmatically using REST APIs, or using AI-powered tools — and find the right starting point for your workflow.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: overview
 ---
 
 # Building dashboards [create-dashboards]
 
-{{kib}} offers many ways to build powerful dashboards that will help you visualize and keep track of the most important information contained in your {{es}} data.
+{{product.kibana}} offers many ways to build powerful dashboards that help you visualize and keep track of the most important information in your {{product.elasticsearch}} data. Combine multiple visualizations, metrics, and interactive elements into a cohesive view that tells your data story and enables rapid decision-making.
 
-* Create and assemble visualizations such as charts or maps, and enrich them with helpful legends containing key data.
-* Extract and show key indicators and metrics to keep them visible and highlighted at all times.
-* Add text, images, and links to help viewers make the most of your dashboard.
-* Include additional controls to facilitate filtering and browsing the data.
+Use the following table to find the right approach for building your dashboards, then follow the link to get started.
 
-$$$dashboard-minimum-requirements$$$
-To create or edit dashboards, you first need to:
+| Approach | When to use this | What you get |
+|---|---|---|
+| [Create a dashboard from the UI](create-dashboard.md) | Exploring data interactively and assembling dashboards panel by panel | Saved dashboard |
+| [Create dashboards programmatically](create-dashboards-programmatically.md) | Automating deployments, managing dashboards and visualizations as code, CI/CD pipelines | Saved dashboard or visualization |
+| [Create dashboards using AI](create-dashboards-using-ai.md) | Generating dashboards from natural language, or building AI tools that create dashboards | Dashboard through chat that you save when ready, or saved dashboard using the API |
 
-* have [data indexed into {{es}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md). A data view is a subset of your {{es}} data, and allows you to load just the right data when building a visualization or exploring it.
+Once you have a dashboard, you can also:
+
+* [Add filter controls](add-controls.md) to let viewers explore the data interactively
+* [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
+* [Arrange and resize panels](arrange-panels.md) to get the layout you want
+* [Duplicate a dashboard](duplicate-dashboards.md) as a starting point for a new one
+* [Import a dashboard](import-dashboards.md) exported from another {{product.kibana}} instance
+
+## Requirements [dashboard-minimum-requirements]
+
+To create or edit dashboards, you need:
+
+* [Data indexed into {{product.elasticsearch}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md). A data view is a subset of your {{product.elasticsearch}} data, and allows you to load the right data when building a visualization or exploring it.
 
   ::::{tip}
-  If you don’t have data at hand and still want to explore dashboards, you can import one of the [sample data sets](../../manage-data/ingest/sample-data.md) available.
+  If you don't have data at hand and still want to explore dashboards, you can import one of the [sample data sets](../../manage-data/ingest/sample-data.md) available.
   ::::
 
-* have sufficient permissions on the **Dashboard** feature. If that’s not the case, you might get a read-only indicator. A {{kib}} administrator can [grant you the required privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+* Sufficient privileges for the **Dashboard** feature. Without them, you might get a read-only indicator. A {{product.kibana}} administrator can [grant you the required privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).

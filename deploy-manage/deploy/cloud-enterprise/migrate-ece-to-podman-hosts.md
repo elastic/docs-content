@@ -129,27 +129,27 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     * For Podman 5
 
-        * Install the latest available version of Podman `5.2.2` using dnf.
+        * Install the latest available version `5.*` using dnf.
 
             :::{note}
-            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later build of `5.2.2`, such as `5.2.2-16` or newer. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later version. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
             :::
 
             ```sh
-            sudo dnf install podman-5.2.2 podman-remote-5.2.2
+            sudo dnf install podman-5.* podman-remote-5.*
             ```
 
-        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2`.
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `5.*` while still allowing minor and patch updates.
 
             ```sh
             ## Install versionlock
             sudo dnf install 'dnf-command(versionlock)'
 
             ## Lock major version
-            sudo dnf versionlock add --raw 'podman-5.2.2'
-            sudo dnf versionlock add --raw 'podman-remote-5.2.2'
+            sudo dnf versionlock add --raw 'podman-5.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.*'
 
-            ## Verify that podman-5.2.2 and podman-remote-5.2.2 appear in the output
+            ## Verify that podman-5.* and podman-remote-5.* appear in the output
             sudo dnf versionlock list
             ```
 
@@ -348,7 +348,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
     # Required by Elasticsearch
-    vm.max_map_count=262144
+    vm.max_map_count=1048576
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
@@ -465,7 +465,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     3. Put the docker-based allocator you want to replace with a podman allocator in maintenance mode by following the [Enable Maintenance Mode](../../maintenance/ece/enable-maintenance-mode.md) documentation.
 
-        As an alternative, use the [Start maintenance mode](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-start-allocator-maintenance-mode) API.
+        As an alternative, use the [Start maintenance mode]({{ece-apis}}operation/operation-start-allocator-maintenance-mode) API.
 
     4. Move all instances from the Docker allocator to the podman allocator by following the [Move Nodes From Allocators](../../maintenance/ece/move-nodes-instances-from-allocators.md) documentation.
 
@@ -483,12 +483,12 @@ Using Docker or Podman as container runtime is a configuration local to the host
         :alt: Move instances
         :::
 
-        As an alternative, use the [*Move clusters*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-move-clusters) API.
+        As an alternative, use the [*Move clusters*]({{ece-apis}}operation/operation-move-clusters) API.
 
         To identifying the correct target allocator, the following APIs might be helpful:
 
-        * [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)
-        * [*Get allocator metadata*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocator-metadata)
+        * [*Get allocators*]({{ece-apis}}operation/operation-get-allocators)
+        * [*Get allocator metadata*]({{ece-apis}}operation/operation-get-allocator-metadata)
 
             ```json
             {
@@ -513,14 +513,14 @@ Using Docker or Podman as container runtime is a configuration local to the host
             }
             ```
 
-            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)  API should contain the tag.
+            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*]({{ece-apis}}operation/operation-get-allocators)  API should contain the tag.
 
 
             This information allows you to determine what allocators are running on top of podman (automated way)
 
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
-    As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.
+    As an alternative, use the [Delete Runner]({{ece-apis}}operation/operation-delete-runner) API.
 
 ::::{note}
 When using Podman, removing an image with the `--force` (`-f`) option not only deletes the image reference but also removes any containers that depend on that image. This behavior differs from Docker, where forced image removal does not automatically remove running or stopped containers. Therefore, avoid using the `--force` (`-f`) option with the `docker rmi` command.

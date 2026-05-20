@@ -6,6 +6,13 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Configure audit logging [audit-logging-configuration]
@@ -14,21 +21,31 @@ When auditing security events, a single client request might generate multiple a
 
 ### {{es}} auditing configuration
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-audit
+:::
+
 {{es}} configuration options include:
 
   * [{{es}} audited events settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#event-audit-settings): Use include and exclude filters to control the types of events that get logged.
   * [{{es}} node information settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#node-audit-settings): Control whether to add or hide node information such as hostname or IP address in the audited events.
   * [{{es}} ignore policies settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
-    ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
-    ::::
+The way you update these settings differs by version:
+
+* {applies_to}`stack: ga 9.0-9.4`: All auditing settings except `xpack.security.audit.enabled` are [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting). You can use the [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API to configure them and updates will apply immediately without restarting nodes. Only `xpack.security.audit.enabled` is static. Set it in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node and restart those nodes to turn auditing on or off.
+
+* {applies_to}`stack: ga 9.5+` All auditing settings are [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting), including `xpack.security.audit.enabled`. Update them with the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Changes apply immediately without restarting nodes.
 
 For a complete description of event details and format, refer to the following resources:
   * [{{es}} audit events details and schema](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md)
   * [{{es}} log entry output format](./logfile-audit-output.md#audit-log-entry-format)
 
 ### {{kib}} auditing configuration
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
+:::
 
 To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 

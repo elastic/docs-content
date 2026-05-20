@@ -6,11 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
-  deployment:
-    self: all
-    ess: all
-    ece: all
-    eck: all
+  stack: all
 products:
   - id: elasticsearch
   - id: cloud-kubernetes
@@ -23,7 +19,8 @@ The easiest way to manage and authenticate users is with the internal `native` r
 
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
-:::{{tip}}
+
+:::{tip}
 This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also manage and authenticate users natively at the following levels:
@@ -32,6 +29,9 @@ You can also manage and authenticate users natively at the following levels:
 * For an [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/manage-users.md).
 :::
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-authz
+:::
 
 ## Configure a native realm [native-realm-configuration]
 
@@ -97,7 +97,7 @@ POST /_security/user/user1/_password
 }
 ```
 
-For more information and examples, see [Users](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+For more information and examples, see [Users]({{es-apis}}group/endpoint-security).
 
 ## Reset passwords for native users using the command line [reset-pw-cmd-line]
 

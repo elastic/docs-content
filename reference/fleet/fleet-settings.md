@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-settings.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -76,7 +79,7 @@ The {{ecloud}} internal output is locked and cannot be edited. This output is us
 
 To add or edit an output:
 
-1. Go to **{{fleet}} > Settings**.
+1. Go to **{{fleet}}** > **Settings**.
 2. Under **Outputs**, select **Add output** or **Edit**.
 
     :::{image} images/fleet-add-output-button.png
@@ -107,41 +110,97 @@ For {{agent}}s that cannot access the internet, you can specify agent binary dow
 
 To add or edit the source of binary downloads:
 
-1. Go to **{{fleet}} > Settings**.
-2. Under **Agent Binary Download**, select **Add agent binary source** or **Edit**.
+1. Go to **{{fleet}}** > **Settings**.
+2. Under **Agent Binary Download**, select **Add agent binary source** or edit an existing agent binary source.
 3. Set the agent binary source name.
 4. For **Host**, specify the address where you are hosting the artifacts repository.
 5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
 
 
-### Configure SSL for binary downloads [agent-binary-ssl]
+### Configure TLS for binary downloads [agent-binary-ssl]
+
 ```{applies_to}
-  stack: ga 9.1
+stack: ga 9.1+
 ```
 
 You can optionally secure connections to your binary download source using TLS. These settings correspond to the certificates the agent uses when connecting to the download host.
 
-The following SSL options are available when adding or editing an agent binary source:
+In the **Add/Edit agent binary source** flyout, expand this section to configure TLS:
 
-| **UI Field**           | **Purpose**                                                                  |
-|------------------------|------------------------------------------------------------------------------|
-| Certificate authorities | Trusted CAs for verifying the server certificate.                           |
-| Certificate             | Client certificate to use for mTLS authentication with the download host.  |
-| Certificate key         | Private key associated with the client certificate.                         |
+* {applies_to}`stack: ga 9.4+` **TLS / Secure connection**
+* {applies_to}`stack: ga 9.1-9.3` **Authentication**
+
+The following TLS options are available when adding or editing an agent binary source:
+
+| **UI field**                       | **Purpose**                                                                 |
+|------------------------------------|-----------------------------------------------------------------------------|
+| Server SSL certificate authorities | Trusted certificate authorities (CAs) for verifying the server certificate. |
+| Client SSL certificate             | Client certificate to use for mTLS authentication with the download host.   |
+| Client SSL certificate key         | Private key associated with the client certificate.                         |
+
+
+### Configure authentication for binary downloads [agent-binary-auth]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+If your self-hosted artifact registry requires authentication, configure {{agents}} to send the appropriate credentials when downloading binaries. {{fleet}} supports HTTP Basic authentication with a username and password, or authentication with an API key.
+
+To configure authentication:
+
+1. Go to **{{fleet}}** > **Settings**.
+2. Under **Agent Binary Download**, select **Add agent binary source** or edit an existing agent binary source.
+3. Expand the **Authentication** section.
+4. Select the authentication mode:
+
+    * **None** (default): No credentials are sent with download requests.
+    * **Username & password**: {{agent}} sends an HTTP Basic authentication header with each request. You must provide a value in the **Username** and **Password** fields.
+    * **API key**: {{agent}} sends an `Authorization: ApiKey <api-key>` header with each request. You must provide an **API key**.
+
+    :::{note}
+    The **Password** and **API key** values are stored as [secrets](/reference/fleet/agent-policy.md#agent-policy-secret-values) managed by {{fleet-server}}.
+    :::
+
+5. Optionally, you can add custom HTTP headers that {{agent}} includes on every request to your artifact registry:
+    
+    1. Under **Headers**, enter a **Key** and **Value** pair for the custom header.
+    2. (Optional) Select **Add header** to add another key-value pair.
+
+6. Click **Save and apply settings**.
 
 
 ## Proxies [proxy-settings]
 
 You can specify a proxy server to be used in {{fleet-server}}, {{agent}} outputs, or for any agent binary download sources. For full details about proxy configuration refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
+## Advanced settings [fleet-advanced-settings]
 
-## Delete unenrolled agents [delete-unenrolled-agents-setting]
+On the **{{fleet}}** > **Settings** page, you can also configure {{fleet}} to automatically delete unenrolled agents or to display agentless resources for inspection and diagnostics purposes.
 
-After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained just in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically.
+### Delete unenrolled agents [delete-unenrolled-agents-setting]
 
-Note that this option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the [{{kib}} settings file](/get-started/the-stack.md).
+After an {{agent}} has been unenrolled in {{fleet}}, a number of documents about the agent are retained in case the agent needs to be recovered at some point. You can choose to have all data related to an unenrolled agent deleted automatically. The cleanup is performed every hour.
+
+This option can also be enabled by adding the `xpack.fleet.enableDeleteUnenrolledAgents: true` setting to the [{{kib}} settings file](/deploy-manage/stack-settings.md#kib-settings).
 
 To enable automatic deletion of unenrolled agents:
 
-1. Go to **{{fleet}} > Settings**.
-2. Under **Advanced Settings**, enable the **Delete unenrolled agents** option.
+1. Go to **{{fleet}}** > **Settings**.
+2. In the **Advanced Settings** section, enable the **Delete unenrolled agents** option.
+
+### Show agentless resources [show-agentless-resources-setting]
+```{applies_to}
+stack: ga 9.1.6
+serverless: ga
+```
+
+If you have [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md) deployed, you can enable the **Show agentless resources** option to display agentless agents and policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+
+To display agentless resources in the agent and agent policy lists:
+
+1. Go to **{{fleet}}** > **Settings**.
+2. In the **Advanced Settings** section, enable **Show agentless resources**.
+
+You can [view and request diagnostics](/troubleshoot/ingest/fleet/diagnostics.md#agent-diagnostics-collect) for agentless agents, but you cannot upgrade, unenroll, or reassign them.

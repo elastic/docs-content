@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,13 +16,13 @@ products:
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-  ::::{tab-set}
+  ::::{applies-switch}
 
-  :::{tab-item} {{ech}}
+  :::{applies-item} ess:
   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
   :::
 
-  :::{tab-item} Self-managed
+  :::{applies-item} self:
   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
   :::
 
@@ -158,15 +161,16 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
 1. Launch {{kib}}:
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} ess:
 
     1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
     2. Navigate to the {{kib}} endpoint in your deployment.
     :::
 
-    :::{tab-item} Self-managed
+    :::{applies-item} self:
+    
     Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
     :::
 
@@ -266,4 +270,24 @@ If you are using Red Hat OpenShift, you need to specify additional settings in t
 
 Refer to [Kubernetes autodiscovery with {{agent}}](/reference/fleet/elastic-agent-kubernetes-autodiscovery.md) for more information.
 
+## Logging considerations
 
+Altering the default logging in a standalone container requires additional considerations. By default the {{agent}} logs to `stderr` and an internal destination so that diagnostics can be properly collected.
+
+
+To log to a custom filepath, make these changes to the manifest file:
+- {{agent}} logging must be configured in the configmap for `agent.yml`:
+    ```yaml
+    agent:
+      logging:
+        level: info
+        to_files: true  # Log to a custom filepath
+        to_stderr: true # Also log to stderr so that commands such as kubectl logs works as intended
+      files:
+          path: ${LOGS_PATH} # Use the env var to determine the logging path.
+    ```
+- The `LOGS_PATH` environment variable must be defined as a part of the Daeomonset's container specification.
+- The default DaemonSet container args must be changed to remove the `-e` option:
+    ```yaml
+    args: ["-c", "/etc/elastic-agent/agent.yml"]
+    ```

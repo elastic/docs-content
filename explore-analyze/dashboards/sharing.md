@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
+description: Share Kibana dashboards with your team using links, embeds, JSON exports for the dashboards API, or NDJSON files for migration.
 applies_to:
   stack: ga
   serverless: ga
@@ -10,19 +11,52 @@ products:
 
 # Sharing dashboards [share-the-dashboard]
 
-To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
+Share your dashboards with team members and stakeholders using shareable links, embeds, or file exports. You can also manage permissions to control who can view or edit a dashboard. Kibana provides multiple sharing options to fit different collaboration needs, from quick URL sharing to exporting complete dashboard configurations for migration between environments.
+To share a dashboard with a larger audience, click {icon}`share` **Share** in the application menu.
 
-![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
+:::{image} /explore-analyze/images/share-dashboard.png
+:screenshot:
+:width: 60%
+:::
+
+## Manage access of other users on your dashboard
+```{applies_to}
+serverless:
+stack: ga 9.3+
+```
+
+From the icon {icon}`share`, you can set whether other users in the space can edit or view a dashboard you own:
+
+- **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+- **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
+
+:::{include} ../_snippets/dashboard-ownership.md
+:::
+
+## Share a dashboard [share-dashboard-link]
+
+You can share your dashboards in several ways:
+- [Share with a direct link](../report-and-share.md#share-a-direct-link)
+- {applies_to}`serverless: unavailable` [Embed a dashboard outside of {{kib}}](../report-and-share.md#embed-code)
+
+For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
 
 ::::{tip}
 When sharing a dashboard with a link while a panel is in maximized view, the generated link will also open the dashboard on the same maximized panel view.
 ::::
 
-
-
 ## Export dashboards [export-dashboards]
 
-You can export dashboards from **Stack Management** > **Saved Objects**. To configure and start the export:
+You can export a dashboard from {{kib}} in two formats. Use the table to choose the one that fits your goal.
+
+| Format | Use it to | What it includes |
+|---|---|---|
+| [NDJSON](#export-ndjson) | Move dashboards between spaces or clusters, back them up, or share them in bulk. | The selected dashboards along with their related objects, such as data views and visualizations. Supports exporting multiple dashboards at once. |
+| [JSON](#export-dashboard-json) {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its state. | One dashboard, with the panel types and properties that the dashboards API supports. Any panel types and properties not supported by the API are listed in the export flyout and removed from the export. |
+
+### Export as NDJSON saved objects [export-ndjson]
+
+Export dashboards as NDJSON files to migrate them to other {{product.kibana}} instances, back them up, or share them with other teams. You can export dashboards from **Stack Management** > **Saved Objects**. To configure and start the export:
 
 1. Select the dashboard that you want, then click **Export**.
 2. Enable **Include related objects** if you want that objects associated to the selected dashboard, such as data views and visualizations, also get exported. This option is enabled by default and recommended if you plan to import that dashboard again in a different space or cluster.
@@ -30,4 +64,23 @@ You can export dashboards from **Stack Management** > **Saved Objects**. To conf
 
 ![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
 
-To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API]({{kib-apis}}group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+
+### Export as dashboards API-compatible JSON [export-dashboard-json]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+
+To export a dashboard as JSON:
+
+1. Open the dashboard you want to export.
+2. From the toolbar, select {icon}`download` **Export** > **Export JSON**.
+3. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
+4. Choose how to use the JSON source:
+
+   * Select **Copy to clipboard** to copy the JSON.
+   * Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
+   * Select **Download JSON** to save the JSON source to a file.

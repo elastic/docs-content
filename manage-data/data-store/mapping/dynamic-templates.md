@@ -15,7 +15,7 @@ Dynamic templates allow you greater control over how {{es}} maps your data beyon
 * [`match_mapping_type` and `unmatch_mapping_type`](#match-mapping-type) operate on the data type that {{es}} detects
 * [`match` and `unmatch`](#match-unmatch) use a pattern to match on the field name
 * [`path_match` and `path_unmatch`](#path-match-unmatch) operate on the full dotted path to the field
-* If a dynamic template doesn’t define `match_mapping_type`, `match`, or `path_match`, it won’t match any field. You can still refer to the template by name in `dynamic_templates` section of a [bulk request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
+* If a dynamic template doesn’t define `match_mapping_type`, `match`, or `path_match`, it won’t match any field. You can still refer to the template by name in `dynamic_templates` section of a [bulk request]({{es-apis}}operation/operation-indices-put-settings).
 
 Use the `{{name}}` and `{{dynamic_type}}` [template variables](#template-variables) in the mapping specification as placeholders.
 
@@ -50,7 +50,7 @@ If a provided mapping contains an invalid mapping snippet, a validation error is
 * If no `match_mapping_type` has been specified but the template is valid for at least one predefined mapping type, the mapping snippet is considered valid. However, a validation error is returned at index time if a field matching the template is indexed as a different type. For example, configuring a dynamic template with no `match_mapping_type` is considered valid as string type, but if a field matching the dynamic template is indexed as a long, a validation error is returned at index time. It is recommended to configure the `match_mapping_type` to the expected JSON type or configure the desired `type` in the mapping snippet.
 * If the `{{name}}` placeholder is used in the mapping snippet, validation is skipped when updating the dynamic template. This is because the field name is unknown at that time. Instead, validation occurs when the template is applied at index time.
 
-Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
+Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping]({{es-apis}}operation/operation-indices-put-mapping) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
 
 
 ## Mapping runtime fields in a dynamic template [dynamic-mapping-runtime-fields]
@@ -193,7 +193,7 @@ The `match_pattern` parameter adjusts the behavior of the `match` parameter to s
   "match": "^profit_\d+$"
 ```
 
-The following example matches all `string` fields whose name starts with `long_` (except for those which end with `_text`) and maps them as `long` fields:
+The following example matches all `string` fields whose name starts with `long_` (except for those that end with `_text`) and maps them as `long` fields:
 
 ```console
 PUT my-index-000001
@@ -247,7 +247,7 @@ PUT my-index-000001
   }
 }
 
-PUT my-index/_doc/1
+PUT my-index-000001/_doc/1
 {
   "one_ip":   "will not match", <1>
   "ip_two":   "will not match", <2>
@@ -265,7 +265,7 @@ PUT my-index/_doc/1
 
 ## `path_match` and `path_unmatch` [path-match-unmatch]
 
-The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, e.g. `some_object.*.some_field`.
+The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, for example, `some_object.*.some_field`.
 
 This example copies the values of any fields in the `name` object to the top-level `full_name` field, except for the `middle` field:
 
@@ -342,7 +342,7 @@ PUT my-index-000001/_doc/2
 }
 ```
 
-Note that the `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can’t be mapped as text:
+The `path_match` and `path_unmatch` parameters match on object paths in addition to leaf fields. As an example, indexing the following document will result in an error because the `path_match` setting also matches the object field `name.title`, which can't be mapped as text:
 
 ```console
 PUT my-index-000001/_doc/2

@@ -4,6 +4,11 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Start and stop services

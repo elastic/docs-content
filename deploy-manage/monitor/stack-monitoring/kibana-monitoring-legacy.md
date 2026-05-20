@@ -31,7 +31,7 @@ The following method involves sending the metrics to the production cluster, whi
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
-1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is is disabled (`false`).
+1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
 
     ::::{note}
     You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{stack-security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
@@ -63,7 +63,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings]({{es-apis}}operation/operation-cluster-put-settings).
 
 2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. These are the default values. For more information, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
 3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. This property has a default value of `http://localhost:9200`.<br>

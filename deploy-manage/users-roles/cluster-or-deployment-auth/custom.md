@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/custom-realms.html
 applies_to:
-  deployment:
-    ece:
-    ess:
-    eck:
-    self:
+  stack: all
 products:
   - id: elasticsearch
 ---

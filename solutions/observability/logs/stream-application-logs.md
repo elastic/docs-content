@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Stream application logs [observability-correlate-application-logs]
+# Send application log data [observability-correlate-application-logs]
 
 Application logs provide valuable insight into events that have occurred within your services and applications.
 

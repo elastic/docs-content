@@ -12,18 +12,22 @@ products:
 
 When using {{ecloud}}, there are some limitations you should be aware of:
 
+* [Stack versions](#ec-stack-versions)
 * [Security](#ec-restrictions-security)
 * [APIs](#ec-restrictions-apis)
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
-* [Private connectivity and SSO to {{kib}} URLs](#ec-restrictions-network-security-kibana-sso)
+* [Private connectivity](#ec-restrictions-network-security-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
 * [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
+* [Node count and size](#ec-node-count-size)
+* [Repository analysis API is unavailable in {{ecloud}}](#ec-repository-analyis-unavailable)
+* [Service status](#ec-service-status)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
@@ -31,12 +35,19 @@ For limitations related to logging and monitoring, check the [Restrictions and l
 
 To learn more about the features that are supported by {{ecloud}}, check [{{ecloud}} Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
+## Stack versions [ec-stack-versions]
+
+* Due to a known issue with the {{stack}}, certain upgrade paths to and from version 8.17 are currently blocked or disabled. Review [this KB article](https://support.elastic.co/knowledge/7c3ad709) for more guidance on the known issue. Additionally, review [this KB article](https://support.elastic.co/knowledge/e87d76a5) for detailed information regarding the specific versions affected. 
+
+* Due to a known issue with the {{stack}}, the upgrade path from 9.1.10 to 9.2.4 is unavailable. Refer to [Elasticsearch known issues](elasticsearch://release-notes/known-issues.md#elasticsearch-9.2.4-known-issues) for more information on the underlying issue.
+
 
 ## Security [ec-restrictions-security]
 
 * File and LDAP realms cannot be used. The Native realm is enabled, but the realm configuration itself is fixed in {{ecloud}}. Alternatively, authentication protocols such as SAML, OpenID Connect, or Kerberos can be used.
 * Client certificates, such as PKI certificates, are not supported.
 * IPv6 is not supported.
+* Additional limitations apply when using SAML SSO at the organization level. Refer to [Configure {{ecloud}} SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md#ec_risks_and_considerations) for more information.
 
 
 ## APIs [ec-restrictions-apis]
@@ -54,7 +65,7 @@ $$$ec-restrictions-apis-elasticsearch$$$
 $$$ec-restrictions-apis-kibana$$$
 
 {{kib}} APIs
-:   There are no rate limits restricting your use of the {{kib}} APIs. However, {{kib}} features are affected by the [{{kib}} configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add {{kib}} user settings](edit-stack-settings.md). For all details about using the {{kib}} APIs, check the [{{kib}} API reference documentation](https://www.elastic.co/docs/api/doc/kibana/).
+:   There are no rate limits restricting your use of the {{kib}} APIs. However, {{kib}} features are affected by the [{{kib}} configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add {{kib}} user settings](edit-stack-settings.md). For all details about using the {{kib}} APIs, check the [{{kib}} API reference documentation]({{kib-apis}}).
 
 
 ## Transport client [ec-restrictions-transport-client]
@@ -70,7 +81,7 @@ $$$ec-restrictions-apis-kibana$$$
 * {{es}} plugins, are not enabled by default for security purposes. Reach out to support if you would like to enable {{es}} plugins support on your account.
 * Some {{es}} plugins do not apply to {{ecloud}}. For example, you won’t ever need to change discovery, as {{ecloud}} handles how nodes discover one another.
 % * In {{es}} 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins {{ecloud}} might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not {{es}} itself.
-% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/data-store/index-basics.md#manage-indices) if you want more detailed information or perform index management actions.
+% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/data-store/perform-index-operations.md#manage-indices) if you want more detailed information or perform index management actions.
 
 
 ## Watcher [ec-restrictions-watcher]
@@ -81,13 +92,15 @@ Changing the default throttle period is not possible. You can specify a throttle
 
 Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerting/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-network-security-kibana-sso]
+## Private connectivity
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connections. However, you can still SSO into private {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+$$$ec-restrictions-network-security-kibana-sso$$$
 
+```{include} /deploy-manage/security/_snippets/private-connectivity-limitations-ech.md
+```
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 
@@ -98,7 +111,9 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 ## {{kib}} [ec-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerting/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Workflows using the `elasticsearch.bulk` step might mishandle bulk operations in Elastic Cloud Hosted. Bulk action metadata (such as `index`, `create`, `update`, or `delete`) can be interpreted as document data, which might cause unexpected behavior for bulk operations beyond basic indexing. The workaround is to use a generic Elasticsearch request action in the workflow to call the Bulk API directly instead of using the `elasticsearch.bulk` step. For more information, refer to [Generic request actions](https://www.elastic.co/docs/explore-analyze/workflows/steps/elasticsearch#generic-request-actions). This issue is fixed in Serverless deployments.
+
 
 ## Fleet with network security [ec-restrictions-fleet-network-security]
 
@@ -131,6 +146,19 @@ To make a seamless migration, after restoring from a snapshot there are some add
 * The AWS `us-west-1` region is limited to two availability zones for ES data nodes and one (tiebreaker only) virtual zone (as depicted by the `-z` in the AZ (`us-west-1z`). Deployment creation with three availability zones for {{es}} data nodes for hot, warm, and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The virtual zone `us-west-1z` can only hold an {{es}} tiebreaker node (no data nodes). The workaround is to use a different AWS US region that allows three availability zones, or to scale existing nodes up within the two availability zones.
 * The AWS `eu-central-2` region is limited to two availability zones for CPU Optimized (ARM) Hardware profile ES data node and warm/cold tier. Deployment creation with three availability zones for {{es}} data nodes for hot (for CPU Optimized (ARM) profile), warm and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The workaround is to use a different AWS region that allows three availability zones, or to scale existing nodes up within the two availability zones.
 
-## Repository Analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
+## Node count and size [ec-node-count-size]
+* In the {{ecloud}} console UI, the maximum configurable node count is 32.
+  The total RAM for `Size per zone` is calculated by multiplying the maximum RAM size of the [instance configuration](cloud://reference/cloud-hosted/hardware.md) in use by 32. For example, for the instance configuration [`aws.es.datahot.c6gd`](cloud://reference/cloud-hosted/aws-default.md), the maximum RAM size is 60GB. Therefore, the total RAM for `Size per zone` is `60GB x 32 = 1.875TB` (displayed as `1.88TB` in the {{ecloud}} console UI).
+  
+  This maximum node count limitation applies to the UI and affects both the maximum `Size per zone` during manual scaling and the `Maximum size per zone` in autoscaling. This limit is in place to prevent users from inadvertently deploying excessive capacity. 
+  
+  This limitation does not apply when using the API for manual scaling or autoscaling. If you require additional capacity, you can use the [Elastic Cloud API](cloud://reference/cloud-hosted/ec-api-restful.md) to scale up or configure the maximum size for autoscaling, in a self-sufficient way. Refer to the [Update a deployment](cloud://reference/cloud-hosted/ec-api-deployment-crud.md#ec_update_a_deployment) example to learn how to make a deployment update request using the API.
+* Apart from the maximum node count configurable in the {{ecloud}} console UI, there are other service limits based on each instance configuration. These service limits are typically greater than 32. For more details, please [contact Elastic support for assistance](/troubleshoot/index.md).
 
-* The {{es}} [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
+
+* The {{es}} [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+
+## Service status [ec-service-status]
+
+* To ensure we can continue evolving our status page to best serve our customers, we cannot guarantee consistency of API implementation or component API identifiers. However, we communicate changes which might impact status page subscribers on a best-effort basis. Review [Service status](../../cloud-organization/service-status.md#service-status-support-limitations) for more guidance.

@@ -10,7 +10,10 @@ products:
 
 # Manage transport certificates on ECK [k8s-transport-settings]
 
-The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [{{es}} documentation](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+The transport module in {{es}} is used for internal communication between nodes within the cluster as well as communication between remote clusters. For more information, refer to [Networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). For customization options of the HTTP layer, refer to [Access services](../deploy/cloud-on-k8s/accessing-services.md) and [HTTP TLS certificates](./k8s-https-settings.md).
+
+:::{include} ./_snippets/own-ca-warning.md
+:::
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -29,18 +32,19 @@ spec:
 
 Check the [Kubernetes Publishing Services (ServiceTypes)](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) that are currently available.
 
-::::{note}
-When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This will cause a short network disruption, but in most cases it should not affect existing connections as the transport module uses long-lived TCP connections.
-::::
+Consider the following when customizing the Kubernetes services handled by ECK:
 
+* When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This causes a short network disruption, but it should not affect existing connections as the transport module uses long-lived TCP connections.
+
+* If you change the service’s `port` to expose a different port externally, set `targetPort` to `9300`, which is the default {{es}} transport interface port. Otherwise, Kubernetes uses the same value for both, resulting in failed connections.
 
 ## Configure a custom Certificate Authority [k8s-transport-ca]
 
-{{es}} uses X.509 certificates to establish encrypted and authenticated connections across nodes in the cluster. By default, ECK creates a self-signed CA certificate to issue a certificate [for each node in the cluster](/deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
+{{es}} uses X.509 certificates to establish encrypted and authenticated connections between nodes in the cluster. By default, ECK creates a transport CA for each cluster and uses it to issue a certificate for each node in the cluster. Refer to [Transport layer security](/deploy-manage/security/secure-cluster-communications.md#encrypt-internode-communication) for more information.
 
-You can use a Kubernetes secret to provide your own CA instead of the self-signed certificate that ECK will then use to create node certificates for transport connections. The CA certificate must be stored in the secret under `ca.crt` and the private key must be stored under `ca.key`.
+Instead of using the default ECK-generated CA, you can provide your own CA through a Kubernetes secret. ECK uses this CA to issue node certificates for transport connections. The CA certificate must be stored under `ca.crt` in the secret, and the private key under `ca.key`.
 
-You need to reference the name of a secret that contains the TLS private key and the CA certificate, in the `spec.transport.tls.certificate` section, as shown in this example:
+To use your own CA, reference the secret containing the CA certificate and private key in the `spec.transport.tls.certificate` section of the {{es}} resource, as shown in the following example:
 
 ```yaml
 spec:
@@ -53,7 +57,7 @@ spec:
 
 ## Customize the node transport certificates [k8s_customize_the_node_transport_certificates]
 
-The operator generates a self-signed TLS certificates for each node in the cluster. You can add extra IP addresses or DNS names to the generated certificates as follows:
+The operator generates TLS certificates for each node in the cluster. You can add extra IP addresses or DNS names to the generated certificates as follows:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -78,7 +82,7 @@ spec:
 When following the instructions in [Configure a custom Certificate Authority](#k8s-transport-ca) the issuance of certificates is orchestrated by the ECK operator and the operator needs access to the CAs private key. If this is undesirable it is also possible to configure node transport certificates without involving the ECK operator. The following two pre-requisites apply:
 
 1. The tooling used must be able to issue individual certificates for each {{es}} node and dynamically add or remove certificates as the cluster scales up and down.
-2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../remote-clusters/eck-remote-clusters.md#k8s-remote-clusters-connect-external) support to work.
+2. The ECK operator must be configured to be aware of the CA in use for the [remote cluster](../remote-clusters/eck-remote-clusters.md) support to work.
 
 The following example configuration using [cert-manager csi-driver](https://cert-manager.io/docs/projects/csi-driver/) and [trust-manager](https://cert-manager.io/docs/projects/trust-manager/) meets these two requirements:
 
@@ -119,7 +123,7 @@ spec:
               csi.cert-manager.io/dns-names: "${POD_NAME}.${POD_NAMESPACE}.svc.cluster.local" <3>
 ```
 
-1. Disables the self-signed certificates generated by ECK for the transport layer.
+1. Disables the default certificates generated by ECK for the transport layer.
 2. The example assumes that a `ClusterIssuer` by the name of `ca-cluster-issuer` exists and a PEM encoded version of the CA certificate is available in a ConfigMap (in the example named `trust`).  The CA certificate must be in a file called `ca.crt` inside the ConfigMap in the same namespace as the {{es}} resource.
 3. If the remote cluster server is enabled, then the DNS names must also include both:* The DNS name for the related Kubernetes `Service`: `<cluster-name>-es-remote-cluster.${POD_NAMESPACE}.svc`
 * The Pod DNS name: `${POD_NAME}.<cluster-name>-es-<nodeset-name>.${POD_NAMESPACE}.svc`

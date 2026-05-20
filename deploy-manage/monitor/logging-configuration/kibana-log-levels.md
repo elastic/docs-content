@@ -1,10 +1,8 @@
 ---
 applies_to:
-  deployment:
-    self:
-    eck:
-    ece:
-    ess:
+  stack: all
+products:
+  - id: kibana
 ---
 
 # Set global log levels for {{kib}}

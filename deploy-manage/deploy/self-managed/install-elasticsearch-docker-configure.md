@@ -3,6 +3,8 @@ applies_to:
   deployment:
     self:
 navigation_title: Configure
+products:
+  - id: elasticsearch
 ---
 
 # Configure {{es}} with Docker [docker-configuration-methods]

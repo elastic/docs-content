@@ -1,12 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
 ---
 
-# Kubernetes Provider [kubernetes-provider]
+# Kubernetes provider [kubernetes-provider]
 
 Provides inventory information from Kubernetes.
 
@@ -79,7 +82,7 @@ as well as using the environment variables `KUBERNETES_SERVICE_HOST` and `KUBERN
 :   (Optional) If set to be `true` in the provider config, then `.` in annotations will be replaced with `_`. By default it is `true`.
 
 `add_resource_metadata`
-:   (Optional) Specify filters and configration for the extra metadata, that will be added to the event. Configuration parameters:
+:   (Optional) Specify filters and configuration for the extra metadata, that will be added to the event. Configuration parameters:
 
     * `node` or `namespace`: Specify labels and annotations filters for the extra metadata coming from node and namespace. By default all labels are included while annotations are not. To change the default behavior `include_labels`, `exclude_labels` and `include_annotations` can be defined. These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output. The enrichment of `node` or `namespace` metadata can be individually disabled by setting `enabled: false`. Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`.
     * `deployment`: If resource is `pod` and it is created from a `deployment`, by default the deployment name isn’t added, this can be enabled by setting `deployment: true`.
@@ -141,7 +144,7 @@ These are the fields available within config templating. The `kubernetes.*` fiel
 ::::
 
 
-Note that not all of these fields are available by default and special configuration options are needed in order to include them.
+Not all of these fields are available by default and special configuration options are needed in order to include them.
 
 For example, if the Kubernetes provider provides the following inventory:
 
@@ -150,11 +153,12 @@ For example, if the Kubernetes provider provides the following inventory:
     {
        "id": "1",
        "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-controllermanger"}},
-       "processors": {"add_fields": {"kuberentes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}
+       "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-controllermanger"}}}
+    },
     {
         "id": "2",
         "mapping:": {"namespace": "kube-system", "pod": {"name": "kube-scheduler"}},
-        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}
+        "processors": {"add_fields": {"kubernetes.namespace": "kube-system", "kubernetes.pod": {"name": "kube-scheduler"}}}
     }
 ]
 ```
@@ -163,8 +167,8 @@ For example, if the Kubernetes provider provides the following inventory:
 
 ```json
 [
-    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}},
-    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}},
+    {"kubernetes": {"id": "1", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-controllermanger"}}},
+    {"kubernetes": {"id": "2", "namespace": {"name": "kube-system"}, "pod": {"name": "kube-scheduler"}}}
 ]
 ```
 
@@ -212,7 +216,7 @@ providers.kubernetes:
       enabled: true
 ```
 
-Note that this resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
+This resource is only available with `scope: cluster` setting and `node` cannot be used as scope.
 
 The available keys are:
 

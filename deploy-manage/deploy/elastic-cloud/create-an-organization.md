@@ -41,61 +41,44 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
-**One serverless project**
+**Three {{serverless-short}} projects**
 
-Serverless projects package {{stack}} features by type of solution:
+{{serverless-short}} projects package {{stack}} features by type of solution:
 
 * [{{es}}](../../../solutions/search.md)
 * [Observability](../../../solutions/observability.md)
-* [Security](../../../solutions/security/elastic-security-serverless.md)
+* [Security](../../../solutions/security.md)
 
 When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
 
 For more information, check the [{{serverless-short}} documentation](serverless.md).
 
-
 ### Trial limitations [general-sign-up-trial-what-limits-are-in-place-during-a-trial]
 
-During the free 14 day trial, Elastic provides access to one hosted deployment and one serverless project. If all you want to do is try out Elastic, the trial includes more than enough to get you started. During the trial period, some limitations apply.
+:::{include} ../_snippets/trial-limitations.md
+:::
 
-**Hosted deployments**
+### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
-* You can have one active deployment at a time
-* The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
-* Machine learning nodes are available up to 4GB RAM, or up to 8GB when using Reranker
-* Custom {{es}} plugins are not enabled
-* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
+Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
 
-For more information, check the [{{ech}} documentation](cloud-hosted.md).
-
-**Serverless projects**
-
-* You can have one active serverless project at a time.
-* Search Power is limited to 100. This setting only exists in {{es-serverless}} projects
-* Search Boost Window is limited to 7 days. This setting only exists in {{es-serverless}} projects
-* Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
-* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
-
-**Remove limitations**
+### Remove trial limitations
 
 Subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md) for the following benefits:
 
 * Increased memory or storage for deployment components, such as {{es}} clusters, machine learning nodes, and APM server.
 * As many deployments and projects as you need.
 * Third availability zone for your deployments.
-* Access to additional features, such as cross-cluster search and cross-cluster replication.
+* Access to additional features, such as {{ccs}} and {{ccr}}.
 
-You can subscribe to {{ecloud}} at any time during your trial. [Billing](../../../deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe. To maximize the benefits of your trial, subscribe at the end of the free period. To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
-
-
-### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
-
-Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
-
+You can subscribe to {{ecloud}} at any time during your trial.
+[Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe.
+To maximize the benefits of your trial, subscribe at the end of the free period.
+To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]
 
-When your trial expires, the deployment and project that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and serverless project, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, serverless project, and ingested data are permanently deleted.
+When your trial expires, the deployment and projects that you created during the trial period are suspended until you subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md). When you subscribe, you are able to resume your deployment and {{serverless-short}} projects, and regain access to the ingested data. After your trial expires, you have 30 days to subscribe. After 30 days, your deployment, {{serverless-short}} projects, and ingested data are permanently deleted.
 
 If you’re interested in learning more ways to subscribe to {{ecloud}}, don’t hesitate to [contact us](https://www.elastic.co/contact).
 

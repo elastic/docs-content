@@ -27,7 +27,7 @@ Make sure you have set a service name set using `OTEL_SERVICE_NAME=my-service` o
 
 ## Check connectivity
 
-Check from the host, VM, pod, container running your application, that connectivity is available to the Collector. Run the following command:
+Check from the host, VM, pod, container running your application, that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md). Run the following command:
 
 ```bash
 curl -i $ELASTIC_OTLP_ENDPOINT \
@@ -85,8 +85,10 @@ node --import @elastic/opentelemetry-node my-app.js
 Turn on verbose diagnostic or debug logging from EDOT Node.js:
 
 1. Set the `OTEL_LOG_LEVEL` environment variable to `verbose`.
-2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated.
+2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated. For troubleshooting missing telemetry, refer to [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md).
 3. Gather the full verbose log from application start until after the issue was reproduced.
+
+For more information, refer to [Enable debug logging for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 
 The start of the diagnostic log will look something like this:
 

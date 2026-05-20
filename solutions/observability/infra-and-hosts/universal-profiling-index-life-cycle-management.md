@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: observability
 ---
@@ -133,7 +134,7 @@ If the custom policy is already applied, the result should include the following
 }
 ```
 
-If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
+If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API]({{es-apis}}operation/operation-indices-rollover):
 
 ```bash
 POST /profiling-events-5pow01/_rollover/

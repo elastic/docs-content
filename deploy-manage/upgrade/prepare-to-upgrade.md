@@ -31,6 +31,15 @@ Although breaking changes typically affect [major upgrades](#prepare-upgrade-fro
 If you are affected by a breaking change, you have to take action before upgrading. This can include updating your code, change configuration settings, or other steps.
 ::::
 
+::::{step} Check for archived settings
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/archived-index-settings-pre.md
+:::
+
+Additionally, check if there are any archived settings from a previous upgrade that should have been removed. If found, remove them before proceeding with the new upgrade.
+
+Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archived-settings.md) for details on how to detect and remove archived settings at cluster and index levels.
+::::
+
 ::::{step} Verify plugin compatibility
 If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
 ::::
@@ -40,6 +49,11 @@ Take a [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md)
 
 :::{important}
 After you start to upgrade your {{es}} cluster, you cannot downgrade any of its nodes. If you can't complete the upgrade process, you must [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) which was taken before starting the upgrade.
+:::
+::::
+
+::::{step} Check your {{kib}} instance size
+:::{include} /deploy-manage/upgrade/deployment-or-cluster/_snippets/kib-instance-size.md
 :::
 ::::
 
@@ -59,7 +73,7 @@ The monitoring cluster should be running the same version, or a newer one, than 
 ::::
 
 ::::{step} Upgrade remote clusters first
-If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
+If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../explore-analyze/cross-cluster-search.md).
 
 If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
@@ -150,6 +164,12 @@ If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}}
 If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
 ::::
 
+::::{step} Migrate Enterprise Search functionality
+In {{stack}} 9.0.0 and later, Enterprise Search is no longer available, and it must be removed before upgrading from 8.x.
+
+If you are currently using App Search, Workplace Search, or the Elastic Web Crawler, these features will cease to function if you remove Enterpise Search from your deployment. Therefore, it is critical to first [migrate your Enterprise Search use cases](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html) before decommissioning your Enterprise Search instances.
+::::
+
 :::::
 
 After completing all the preparation steps, you're ready to [upgrade your deployment or cluster](./deployment-or-cluster.md).
@@ -192,7 +212,7 @@ Reindex, mark as read-only, or delete the `.ml-anomalies-*` {{anomaly-detect}} r
 **Delete**: Delete jobs that are no longer needed in the {{ml-app}} app in {{kib}}. The result index is deleted when all jobs that store results in it have been deleted.
 
 :::{dropdown} Which indices require attention?
-To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
+To identify indices that require action, use the [Deprecation info API]({{es-apis}}operation/operation-migration-deprecations-1):
 
 ```
 GET /.ml-anomalies-*/_migration/deprecations
@@ -216,7 +236,7 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::
 
 :::{dropdown} Reindexing anomaly result indices
-If an index size is less than 10 GB and contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+If an index size is less than 10 GB and contains results from multiple jobs that are still required, we recommend reindexing into a new format using the UI. You can use the [Get index information API]({{es-apis}}operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.ml-anomalies-custom-example?v&h=index,store.size
@@ -446,7 +466,7 @@ The transform destination indices created in {{es}} 7.x must be either reset, re
 **Deleting**: You can delete any transform that's no longer being used. Once the transform is deleted, you can delete the destination index or make it read-only.
 
 :::{dropdown} Which indices require attention?
-To identify indices that require action, use the [Deprecation info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations-1):
+To identify indices that require action, use the [Deprecation info API]({{es-apis}}operation/operation-migration-deprecations-1):
 
 ```json
 GET /_migration/deprecations
@@ -470,7 +490,7 @@ The response contains the list of critical deprecation warnings in the `index_se
 :::
 
 :::{dropdown} Resetting the transform
-If the index was created by the transform, you can use the [Transform Reset API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) to delete the destination index and recreate it the next time the transform runs.
+If the index was created by the transform, you can use the [Transform Reset API]({{es-apis}}operation/operation-transform-reset-transform) to delete the destination index and recreate it the next time the transform runs.
 
 If the index was not created by the transform and you still want to reset it, you can manually delete and recreate the index, then call the Reset API.
 
@@ -482,7 +502,7 @@ POST _transform/my-transform/_reset
 :::{dropdown} Reindexing the transform’s destination index while the transform is paused
 When the Upgrade Assistant reindexes the documents, {{kib}} will put a write block on the old destination index, copy the results to a new index, delete the old index, and create an alias to the new index. During this time, the transform will pause and wait for the destination to become writable again. If you do not want the transform to pause, continue to reindexing the transform’s destination index while the transform is running.
 
-If an index size is less than 10 GB, we recommend using the Upgrade Assistant to automatically migrate the index. You can use the [Get index information API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices-1) to obtain the size of an index:
+If an index size is less than 10 GB, we recommend using the Upgrade Assistant to automatically migrate the index. You can use the [Get index information API]({{es-apis}}operation/operation-cat-indices-1) to obtain the size of an index:
 
 ```
 GET _cat/indices/.transform-destination-example?v&h=index,store.size
@@ -794,7 +814,7 @@ POST _transform/my-transform/_update
 :::
 
 :::{dropdown} Deleting the transform
-You can use the [Transform Delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform) to delete the transform and stop it from writing to the destination index.
+You can use the [Transform Delete API]({{es-apis}}operation/operation-transform-delete-transform) to delete the transform and stop it from writing to the destination index.
 
 ```json
 DELETE _transform/my-transform
@@ -828,7 +848,7 @@ Follow these steps to perform a reindex-based upgrade to a new deployment or clu
 
 3. **Reindex your data into the new {{es}} cluster**
 
-    Use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) to migrate existing data from the old cluster to the new one, and temporarily send new indexing requests to both clusters.
+    Use the [reindex documents API]({{es-apis}}v8/operation/operation-reindex) to migrate existing data from the old cluster to the new one, and temporarily send new indexing requests to both clusters.
 
 4. **Validate and cut over**
 

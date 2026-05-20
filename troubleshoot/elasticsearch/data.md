@@ -1,5 +1,7 @@
 ---
 navigation_title: Data
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot data issues in {{es}} 

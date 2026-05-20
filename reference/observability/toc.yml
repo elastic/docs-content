@@ -1,3 +1,9 @@
 toc:
   - file: index.md
   - file: fields-and-object-schemas.md
+  - file: metrics-reference.md
+    children:
+      - file: observability-host-metrics.md
+      - file: observability-container-metrics.md
+      - file: observability-kubernetes-pod-metrics.md
+      - file: observability-aws-metrics.md

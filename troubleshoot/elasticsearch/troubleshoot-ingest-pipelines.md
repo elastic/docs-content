@@ -2,11 +2,6 @@
 navigation_title: Ingest Pipelines
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -15,13 +10,13 @@ products:
 
 {{es}} [Ingest Pipelines](https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines) allow you to transform data during ingest. Per [write model](https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents#basic-write-model), they run from `ingest` [node roles](https://www.elastic.co/docs/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles) under the `write` [thread pool](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/thread-pool-settings).
 
-You can edit ingest pipelines in {{kib}}'s **Ingest Pipelines** management page or from {{es}}'s [Modify Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline). They store under {{es}}'s [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state) as accessed from [List Pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline).
+You can edit ingest pipelines in {{kib}}'s **Ingest Pipelines** management page or from {{es}}'s [Modify Pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline). They store under {{es}}'s [cluster state]({{es-apis}}operation/operation-cluster-state) as accessed from [List Pipelines]({{es-apis}}operation/operation-ingest-get-pipeline).
 
-Ingest pipelines can be [Simulated](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) during testing, but after go-live are triggered during event ingest from
+Ingest pipelines can be [Simulated]({{es-apis}}operation/operation-ingest-simulate) during testing, but after go-live are triggered during event ingest from
 
-* The query parameter `pipeline` flag the [create doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) or [update doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) or [bulk modify docs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) API request.
+* The query parameter `pipeline` flag the [create doc]({{es-apis}}operation/operation-create) or [update doc]({{es-apis}}operation/operation-update) or [bulk modify docs]({{es-apis}}operation/operation-bulk) API request.
 * The ingest target's backing [index setting](https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules#dynamic-index-settings) for `index.default_pipeline` and/or `index.final_pipeline`.
-* An Ingest Pipeline may sub-call another as a [pipelinen processor](https://www.elastic.co/docs/reference/enrich-processor/pipeline-processor).
+* An Ingest Pipeline may sub-call another as a [pipeline processor](https://www.elastic.co/docs/reference/enrich-processor/pipeline-processor).
 
 ## Symptoms [troubleshooting-pipelines-symptoms]
 
@@ -30,7 +25,7 @@ You might notice an Ingest Pipeline is not running as performant as possible und
 
 ### High CPU usage [troubleshooting-pipelines-symptoms-cpu]
 
-While running, if Ingest Pipelines cause [high CPU usage](https://www.elastic.co/docs/troubleshoot/elasticsearch/high-cpu-usage), their logger `org.elasticsearch.ingest.Pipeline` will show under [Node Hot Threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads). An example output might prefix like this:
+While running, if Ingest Pipelines cause [high CPU usage](https://www.elastic.co/docs/troubleshoot/elasticsearch/high-cpu-usage), their logger `org.elasticsearch.ingest.Pipeline` will show under [Node Hot Threads]({{es-apis}}operation/operation-nodes-hot-threads). An example output might prefix like this:
 
 ```text
 ::: {instance-0000000001}{XXXXX}{XXXXX}{instance-0000000001}{XXXXX}{XXXXX}{hirst}{9.0.0}{XXXXX}{XXXXX}
@@ -80,7 +75,7 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
-This will update every time the event is modifed when passing through pipeline. If you need to troubleshoot the original event creation only and the field `event.created` is not already being set upstream in your data pipeline you might consider adding this processor example at the beginning of the first Ingest Pipeline:
+This will update every time the event is modified when passing through pipeline. If you need to troubleshoot the original event creation only and the field `event.created` is not already being set upstream in your data pipeline you might consider adding this processor example at the beginning of the first Ingest Pipeline:
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -98,10 +93,19 @@ PUT _ingest/pipeline/my-pipeline
 }
 ```
 
+### Errors
+
+The {{es}} API response body includes errors encountered at any stage of the ingestion flow. To diagnose ingestion issues, it's also recommended to review error logs. Elastic client-side products, including [Logstash](https://www.elastic.co/docs/reference/logstash/logging#_update_logging_levels) and [Elastic Agent](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level), might require the `debug` logging level to be enabled to report HTTP 400-level errors. 
+
+To demonstrate a common example, a document can be rejected from indexing due to a [mapping](/manage-data/data-store/mapping.md) conflict when the incoming data does not match the [explicit field types](/manage-data/data-store/mapping/explicit-mapping.md) defined inside the existing index's mapping. The {{es}} logs might include entries such as:
+
+```console
+[index] Error while parsing document for index [index]: [1:852] object mapping for [field] tried to parse field [field] as object, but found a concrete value at org.elasticsearch.index.mapper.DocumentParser.throwOnConcreteValue(DocumentParser.java:359)
+```
 
 ## Metrics [troubleshooting-pipelines-metrics]
 
-When Ingest Pipelines run, they log their cumulative statistics to [List Node Statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats). 
+When Ingest Pipelines run, they log their cumulative statistics to [List Node Statistics]({{es-apis}}operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats/ingest
