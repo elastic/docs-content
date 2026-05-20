@@ -21,7 +21,7 @@ If you haven’t created an API key yet, then refer to [](../../api-keys/elastic
 
 For common update tasks, use the dedicated deployment operation that matches the change you need.
 
-Previously, many update scenarios required using a generic deployment update workflow: retrieve the current deployment details, adapt it to the update request format, apply the desired change, and submit the updated payload. Dedicated operations simplify common tasks and help reduce the risk of unintended changes to unrelated deployment settings.
+Dedicated operations let you update only the intended setting without submitting the full deployment resource specification. This simplifies common update workflows and helps reduce the risk of unintended changes to unrelated deployment settings.
 
 | Task | Endpoints |
 | --- | --- |
