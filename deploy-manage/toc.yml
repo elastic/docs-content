@@ -1,4 +1,8 @@
 project: 'Deploy and manage'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: deploy.md
@@ -793,6 +797,7 @@ toc:
   - file: kibana-reporting-configuration.md
   - file: cloud-organization.md
     children:
+      - hidden: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

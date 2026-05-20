@@ -132,13 +132,6 @@ You’ll need to select an LLM connector before you can analyze alerts. To get s
 
    :::
 
-
-    :::{image} /solutions/images/security-attck-disc-select-model-empty.png
-    :alt: attck disc select model empty
-    :screenshot:
-    :width: 60%
-    :::
-
 3. Once you’ve selected a connector, do one of the following to start the analysis:
    - {applies_to}`stack: ga 9.1+` Click **Save and run**.
    - {applies_to}`stack: ga =9.0` Click **Generate**.

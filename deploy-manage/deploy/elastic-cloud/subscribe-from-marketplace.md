@@ -22,10 +22,7 @@ When subscribing from a marketplace, your marketplace email is used for your [El
 * [GCP Marketplace](google-cloud-platform-marketplace.md)
 * [Heroku](heroku.md)
 
-::::{note}
-[Serverless projects](https://docs.elastic.co/serverless) are only available for the AWS Marketplace, and are in technical preview on the Microsoft Marketplace. Support for GCP Marketplace will be added in the near future.
+::::{tip}
+You can also purchase {{ecloud}} through a reseller on any of these marketplaces. Contact your reseller to learn more.
 ::::
-
-
-
 
