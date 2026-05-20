@@ -24,7 +24,6 @@ Known issues are significant defects or limitations that may impact your impleme
 % :::
 
 ::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
-::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
 
 Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4
 
