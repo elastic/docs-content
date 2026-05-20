@@ -96,5 +96,5 @@ If the inline shell script command doesn’t work, you can run the check directl
     ```
 2. Look for the following lines in the output
   *  `zk_server_state leader` or `zk_server_state follower` — indicates the node’s ZooKeeper role
-  *  `zk_quorum_size` on the leader to validate the amount of voting members are expected
+  *  `zk_quorum_size` on the leader to validate that the number of voting members is as expected
 
