@@ -1,9 +1,9 @@
 ---
 navigation_title: Fill rule execution gaps
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

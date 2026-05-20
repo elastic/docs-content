@@ -74,10 +74,9 @@ You can only add Osquery to investigation guides for custom rules because prebui
 ## Run live queries from an investigation guide [run-live-queries-ig]
 
 1. Go to the **{{siem-rules-ui}}** page. To access it, find **{{siem-rules-ui}}** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select a rule to open the its details.
-3. Go to **Rules** → **{{siem-rules-ui}}**, then select a rule to open its details.
-4. Go to the About section of the rule details page and click **Investigation guide**.
-5. Click the query. The Run Osquery pane displays with the **Query** field autofilled. Do the following:
+2. Select a rule to open its details.
+3. Go to the About section of the rule details page and click **Investigation guide**.
+4. Click the query. The Run Osquery pane displays with the **Query** field autofilled. Do the following:
 
     1. Select one or more {{agent}}s or groups to query. Start typing in the search field to get suggestions for {{agent}}s by name, ID, platform, and policy.
     2. Expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
@@ -86,7 +85,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
         Overwriting the query’s default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
         ::::
 
-6. Click **Submit** to run the query. Query results display in the flyout.
+5. Click **Submit** to run the query. Query results display in the flyout.
 
     ::::{note}
     Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more information about query results.
