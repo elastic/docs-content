@@ -51,7 +51,7 @@ If you don't have SNMP-enabled devices to point at yet, you can evaluate the plu
 
 7. Restart {{kib}}.
 
-### Troubleshooting: plugin installs but doesn't load [network-topology-install-troubleshooting]
+### Troubleshooting: Plugin installs but doesn't load [network-topology-install-troubleshooting]
 
 If `kibana-plugin install` reports success but the Network Topology plugin doesn't appear in {{kib}}, check the file permissions on the {{kib}} `plugins/` directory. The plugin files must be readable by the user that {{kib}} runs as. Correct the ownership or mode of the plugin directory and restart {{kib}}.
 
@@ -78,9 +78,9 @@ The Network Topology plugin reads from an {{es}} data stream that {{ls}} populat
     For details on the fields you'll configure in this pipeline, refer to [Location and role metadata fields](/solutions/observability/infra-and-hosts/network-topology/field-reference.md#network-topology-fields-network).
     ::::
 
-2. Start {{ls}} with your pipeline configuration. If you use [{{ls}} centralized pipeline management](logstash://reference/logstash-centralized-pipeline-management), you can push the pipeline directly from {{kib}} instead — no SSH access to a {{ls}} host required.
+2. Start {{ls}} with your pipeline configuration. If you use [{{ls}} centralized pipeline management](logstash://reference/logstash-centralized-pipeline-management.md), you can push the pipeline directly from {{kib}} instead — no SSH access to a {{ls}} host required.
 
-### Troubleshooting: common SNMP input errors [network-topology-logstash-troubleshooting]
+### Troubleshooting: Common SNMP input errors [network-topology-logstash-troubleshooting]
 
 Problems with an SNMP get, walk, or table operation cause the following error in the {{ls}} log:
 
