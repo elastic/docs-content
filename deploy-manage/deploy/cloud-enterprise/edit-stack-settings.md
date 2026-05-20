@@ -30,6 +30,6 @@ The following sections provide extra details and examples for different componen
 
 ## Manage settings with the {{ece}} API
 
-If you manage deployments programmatically in {{ece}}, you can update user settings through the generic [Update Deployment]({{ece-apis}}operation/operation-update-deployment) endpoint by submitting an updated deployment payload.
+If you manage deployments programmatically in {{ece}}, you can update user settings through the generic [Update Deployment API]({{ece-apis}}operation/operation-update-deployment) by submitting an updated deployment payload.
 
 Refer to [{{ece}} tools and APIs](tools-apis.md) for authentication and API usage guidance.
