@@ -20,22 +20,22 @@ To review the baseline security and TLS configuration established by [Install a 
 
 The tutorial is organized into the following phases:
 
-- **Configure TLS certificates for the {{es}} transport layer**
+- [Configure TLS certificates for the {{es}} transport layer](#install-stack-demo-secure-transport-tls)
   - Generate a new certificate authority (CA) for transport
   - Generate transport certificates for all nodes
   - Apply configuration changes and restart the nodes
 
-- **Configure TLS certificates for the {{es}} HTTP layer**
+- [Configure TLS certificates for the {{es}} HTTP layer](#ssl-http)
   - Generate a shared HTTP CA for the {{stack}}
   - Generate HTTP certificates for {{es}} nodes
   - Apply configuration changes and restart the cluster
   - Configure {{kib}} client to trust {{es}} HTTP CA
 
-- **Configure HTTPS for {{kib}}**
+- [Configure HTTPS for {{kib}}](#install-stack-demo-secure-kib-https)
   - Generate server-side TLS certificates for {{kib}}
   - Apply configuration changes and restart {{kib}}
 
-- **Configure {{fleet-server}} and {{agent}} with custom certificates**
+- [Configure {{fleet-server}} and {{agent}} with custom certificates](#install-stack-demo-secure-fleet-agent-tls)
   - Install {{fleet-server}} with custom TLS certificates
   - Install {{agent}}
   - View your system data
@@ -125,7 +125,7 @@ On the PKI host, run the following commands:
     sudo yum install -y unzip
     ```
 
-## Configure TLS certificates for the {{es}} transport layer
+## Configure TLS certificates for the {{es}} transport layer [install-stack-demo-secure-transport-tls]
 
 In this section, you create a self-signed certificate authority (CA) used to issue transport certificates for all {{es}} nodes in the cluster. These certificates can replace the existing ones, or can be used to enable transport TLS on clusters where it is not yet configured.
 
@@ -900,7 +900,7 @@ To create a new certificate for {{kib}} using an existing HTTP CA, complete the 
     To avoid browser security warnings and ensure secure TLS validation, client browsers must trust the CA that signed the {{kib}} server certificate (`elastic-stack-http-ca.crt`), or a certificate chain that includes it.
     :::
 
-## Configure {{fleet-server}} and {{agent}} with custom certificates
+## Configure {{fleet-server}} and {{agent}} with custom certificates [install-stack-demo-secure-fleet-agent-tls]
 
 ### Step 1: Install {{fleet-server}} with custom TLS certificates [install-stack-demo-secure-fleet]
 
@@ -959,7 +959,7 @@ Refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet
    cd fleet-install-files
    ```
 
-1. Obtain the host IP address for your {{fleet-server}} host (for example, by running `ifconfig`). You need this value later.
+1. Obtain the host IP address for your {{fleet-server}} host (for example, by running `ifconfig`). You'll need this value later.
 
 1. In your web browser, open {{kib}} **Management -> {{fleet}}**, click **Add {{fleet-server}}**, and select the **Advanced** tab.
 
