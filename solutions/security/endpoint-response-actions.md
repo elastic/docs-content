@@ -282,7 +282,7 @@ Examples:
 #### {{elastic-defend}} [runscript-defend]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: unavailable
+serverless: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
@@ -441,12 +441,6 @@ Click {icon}`question` **Help** in the upper-right to open the **Help** panel, w
 This panel displays only the response actions that you have the user role or privileges to perform.
 ::::
 
-
-:::{image} /solutions/images/security-response-console-help-panel.png
-:alt: Help panel
-:width: 65%
-:screenshot:
-:::
 
 You can use this panel to build commands with less typing. Click the add icon (![Add icon](/solutions/images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 

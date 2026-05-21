@@ -86,7 +86,7 @@ For non-default spaces, if you're enabling risk scoring for the first time:
 
 :::::
 
-:::{image} /solutions/images/security-turn-on-risk-engine.png
+:::{image} /solutions/images/security-turn-on-risk-scoring.png
 :alt: Turn on entity risk scoring
 :screenshot:
 :::

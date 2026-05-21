@@ -334,4 +334,4 @@ You can verify the new certificate chain by using the openssl command:
 
 * You cannot add certificates signed by an internal certificate authority to be used for outbound connections.
 * In versions 2.6 up to 2.10, some or all platform certificates were generated with a 398-day expiration. If your {{ece}} installation ever ran on these versions, even momentarily before an upgrade, you must rotate the certificates manually before expiry. For details, check [our KB article](https://ela.st/ece-certificate-rotation).
-
+* Intermediate certificates that contain X.509 policy constraints are not currently supported. In particular, certificate chains that include the `X509v3 Policy Constraints: Require Explicit Policy` extension fail to import with the error `non-null policy tree required and policy tree is null`. Reissue the intermediate CA without policy constraints and rebuild the certificate chain before uploading it.
