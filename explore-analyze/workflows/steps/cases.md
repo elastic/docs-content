@@ -3,7 +3,7 @@ navigation_title: Cases
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference for the 27 Cases action steps that let workflows create, query, update, attach content, and manage the lifecycle of cases in any Cases-enabled app.
+description: Reference for the 28 Cases action steps that let workflows create, query, update, attach content, push to external connectors, and manage the lifecycle of cases in any Cases-enabled app.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -63,7 +63,7 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
 
 ## Step catalog [workflows-cases-catalog]
 
-The 27 Cases steps group into six operational categories. Jump to any step:
+The 28 Cases steps group into seven operational categories. Jump to any step:
 
 **Create, fetch, and search**
 [`cases.createCase`](#cases-createcase) ·
@@ -100,6 +100,9 @@ The 27 Cases steps group into six operational categories. Jump to any step:
 **Update and delete observables**
 [`cases.updateObservable`](#cases-updateobservable) ·
 [`cases.deleteObservable`](#cases-deleteobservable)
+
+**Push to external connector**
+[`cases.pushCases`](#cases-pushcases)
 
 **Delete**
 [`cases.deleteCases`](#cases-deletecases)
@@ -507,11 +510,11 @@ Add observables (indicators of compromise such as IPs, file hashes, domains, or 
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
         description: "Source of malicious activity"
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
 ```
 
-The `typeKey` must match one of the built-in observable type keys (for example, `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, `observable-type-hash-sha256`, `observable-type-hash-md5`).
+The `typeKey` must match one of the built-in observable type keys: `observable-type-ipv4`, `observable-type-ipv6`, `observable-type-url`, `observable-type-domain`, or `observable-type-file-hash`. Use `observable-type-file-hash` for all hash algorithms (MD5, SHA-1, SHA-256, and so on).
 
 ### `cases.getAllAttachments` [cases-getallattachments]
 
@@ -593,6 +596,39 @@ Remove an observable from a case.
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `observable_id` | `with` | string | Yes | Observable ID. |
+
+---
+
+## Push to external connector
+
+### `cases.pushCases` [cases-pushcases]
+
+Push one or more cases to their configured external connector. Each case must have a connector configured; the step fails if any case in `case_ids` doesn't have one.
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_ids` | `with` | `string[]` | Yes | Array of case IDs to push. Each case must already have a connector configured. |
+
+Output: `{ cases: array }`. Each element is the updated case object returned after the push.
+
+```yaml
+- name: push_case
+  type: cases.pushCases
+  with:
+    case_ids:
+      - "abc-123-def-456"
+```
+
+Push multiple cases in a single step:
+
+```yaml
+- name: push_cases
+  type: cases.pushCases
+  with:
+    case_ids:
+      - "abc-123-def-456"
+      - "ghi-789-jkl-012"
+```
 
 ---
 
