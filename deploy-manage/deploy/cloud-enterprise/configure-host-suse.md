@@ -54,7 +54,7 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLE
 
     ::::{tip}
     If `zypper` reports that the requested Docker version isn't available, make sure the SUSE **Containers Module** is enabled, or refer to [SUSE's documentation](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-docker-installation.html) for adding the upstream Docker repository.
-    ::::s
+    ::::
 
     ::::{note}
     Installation on SLES 12 SP5 is no longer covered here because SLES 12 SP5 is past general support end of life. If you're maintaining an existing SLES 12 SP5 deployment, install the last Docker version that SUSE shipped for SLES 12 SP5 and plan a migration to SLES 15.
