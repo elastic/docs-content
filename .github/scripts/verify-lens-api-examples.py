@@ -5,11 +5,11 @@ creates a working visualization.
 Background
 ----------
 The chart pages under ``explore-analyze/visualize/charts/`` each embed one or
-more ``curl`` examples that POST to ``/api/visualizations``.  The Visualizations
+more API examples that POST to ``/api/visualizations``.  The Visualizations
 API is in technical preview, so its schema can change between minor versions.
-This script extracts every JSON payload from those markdown files, strips
-docs-builder ``<n>`` callout markers, posts each one to a live Kibana, asserts
-HTTP 201, then cleans up by deleting the created visualization.
+This script extracts every JSON payload from the Console tab of each dropdown,
+strips docs-builder ``<n>`` callout markers, posts each one to a live Kibana,
+asserts HTTP 201, then cleans up by deleting the created visualization.
 
 Usage
 -----
@@ -71,35 +71,36 @@ CHART_FILES = [
 
 
 def extract_payloads(markdown_path: Path) -> list[tuple[str, dict]]:
-    """Return (title, parsed_payload) for every curl block in the file.
+    """Return (title, parsed_payload) for every Console tab block in the file.
 
     Extraction strategy
     -------------------
-    Each API dropdown contains a bash code fence with a ``curl`` block ending
-    in ``  -d '{\n    ...\n  }'``.  We locate the ``-d '{\n`` ... ``\n}'``
-    span, then apply three transformations before JSON-parsing:
+    Each API dropdown now contains a ``console`` code fence of the form::
 
-    * Strip ``<n>`` callout markers added by docs-builder.
-    * Decode the ``'\\''`` shell escape sequence back to a literal ``'``.
-    * Strip ``'''`` sequences (bash empty-string concatenation used to embed
-      single quotes inside a single-quoted string; net output is nothing).
+        ```console
+        POST kbn://api/visualizations
+        {
+          ...JSON...
+        }
+        ```
+
+    We locate every such block, strip ``<n>`` callout markers, then
+    JSON-parse the body.  No shell-unescaping is needed because the Console
+    tab carries plain JSON (unlike the curl tab which uses single-quote
+    shell escaping).
     """
     text = markdown_path.read_text(encoding="utf-8")
     results = []
 
-    # Match from -d '{ to the closing }' that sits on its own line.
-    # The \n}' sentinel is unambiguous: a literal }' never appears inside
-    # valid JSON (} is always followed by ,  }  ]  or whitespace there).
-    pattern = re.compile(r"-d '\{(.*?)\n\}'", re.DOTALL)
+    pattern = re.compile(
+        r"```console\nPOST kbn://api/visualizations\n(\{.*?\n\})\n```",
+        re.DOTALL,
+    )
 
     for match in pattern.finditer(text):
-        raw = "{" + match.group(1) + "\n}"
-        # 1. Strip callout markers e.g.  <1>  <2>
+        raw = match.group(1)
+        # Strip callout markers e.g.  <1>  <2>
         cleaned = re.sub(r"\s*<\d+>", "", raw)
-        # 2. Decode '\'' shell escape → literal '
-        cleaned = cleaned.replace("'\\''", "'")
-        # 3. Strip ''' (bash empty-string concat that produces no output char)
-        cleaned = cleaned.replace("'''", "")
 
         try:
             payload = json.loads(cleaned)
