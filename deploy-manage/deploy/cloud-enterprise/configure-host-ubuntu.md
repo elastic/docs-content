@@ -12,7 +12,7 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-Use the following workflow to ready an Ubuntu server for {{ece}} (ECE). These steps install Docker from the upstream Docker `apt` repository, set up an XFS volume for cluster data, tune kernel and systemd parameters for production workloads, and pin the Docker version so unattended upgrades don't break ECE.
+Use the steps on this page to prepare an Ubuntu server for {{ece}} (ECE): install Docker from the upstream Docker `apt` repository, set up an XFS volume for cluster data, tune kernel and systemd parameters for production workloads, and pin the Docker version so unattended upgrades don't break ECE.
 
 * [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
