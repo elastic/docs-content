@@ -6,17 +6,11 @@ products:
 
 # {{serverless-full}} breaking changes [elastic-cloud-serverless-breaking-changes]
 
-<!-- :::{changelog} /releases
+:::{changelog} /releases/elastic-cloud-serverless
 :type: breaking-change
-::: -->
-
-<!--
-:::{include} _snippets/2026-05-06/breaking-changes.md
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
-
-:::{include} _snippets/2026-05-04/breaking-changes.md
-:::
--->
 
 ## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
 
