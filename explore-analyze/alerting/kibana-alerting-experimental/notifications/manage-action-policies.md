@@ -5,12 +5,20 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Enable, disable, snooze, bulk actions, and API key rotation for action policies in the {{alerting-v2}}."
+description: "View policy details, enable, disable, snooze, review execution history, and rotate API keys for action policies in the {{alerting-v2}}."
 ---
 
 # Manage action policies
 
-Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to enable and disable policies, snooze them during planned outages, and rotate their API keys.
+Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to view policy details, enable and disable policies, snooze them during planned outages, rotate their API keys, and review execution history.
+
+## View policy details
+
+From the **Action policies** list, you can open a policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
+
+## Execution history
+
+The dispatcher records the outcome of every notification attempt for each policy. To investigate delivery issues or audit which policies ran for an episode, query the `.alert-actions` data stream in Discover and filter by `outcome` or `policy_id`. For a description of each outcome, refer to [Dispatch outcomes](action-policy-reference.md#dispatch-outcomes).
 
 ## Enable and snooze
 
@@ -18,7 +26,7 @@ You can disable a policy so it is not evaluated for new episodes. You can snooze
 
 ### Maintenance windows [maintenance-windows]
 
-During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically — no policy configuration is required. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Maintenance windows are configured separately, not on the action policy.
+During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. No policy configuration is required. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Maintenance windows are configured separately, not on the action policy.
 
 ## Update API keys
 

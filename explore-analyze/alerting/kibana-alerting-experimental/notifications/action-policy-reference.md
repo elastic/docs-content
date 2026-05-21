@@ -23,6 +23,7 @@ Use these fields in the **Match conditions** expression to filter which episodes
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. | `data.severity: "critical"` or `data.host.name: "web-01"` |
 | `rule.id` | Unique identifier for the rule that generated the episode. | `rule.id: "rule-001"` |
 | `rule.name` | Display name of the rule. | `rule.name: "High CPU"` |
+| `rule.tags` | Tags attached to the rule. Use to match episodes from rules with a specific tag. | `rule.tags: "payment-service"` |
 | `rule.labels` | Key-value labels attached to the rule. Use dot notation to target a specific label key. | `rule.labels.env: "production"` |
 
 <!--[CONTENT NEEDED for M2: M2 adds two first-class episode-level severity fields that will be directly matchable in KQL:
@@ -42,7 +43,7 @@ Controls how the policy batches matching episodes before sending a notification.
 | Option | Description | When to use |
 |---|---|---|
 | Episode | Each episode triggers its own notification independently. Default selection. | You need per-issue visibility and want to handle each problem separately. |
-| Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value (a **notification group**). | A rule produces many related episodes (for example, one per service or host) and you want to reduce noise by batching them into shared notifications. |
+| Group | The policy bundles episodes that share the same value for a specified `data.*` field into one notification per unique value. Each unique value forms a **notification group**. | A rule produces many related episodes, such as one per service or host, and you want to reduce noise by batching them into shared notifications. |
 | Digest | The policy combines all matching episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alerts. |
 
 ## Frequency [throttle-strategies]
@@ -51,7 +52,7 @@ Controls how the policy batches matching episodes before sending a notification.
 
 | Option | Description | When to use |
 |---|---|---|
-| On status change | Notifies when the episode status changes (for example, active → recovering). One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
+| On status change | Notifies when the episode status changes, for example from active to recovering. One notification per transition. | You only need to know when something breaks and when it's resolved. No reminders needed. |
 | On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the episode remains in the same status. | You want status change alerts plus periodic notifications that a problem is still unresolved, in case it has been missed or pushed aside. |
 | At most once every… | Caps notifications at one per episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit alert volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
@@ -94,6 +95,6 @@ The system records each notification attempt with one of the following outcomes.
 |---|---|
 | `dispatched` | The system sent the notification successfully. |
 | `throttled` | The system skipped delivery because the **frequency** interval had not elapsed. This is expected behavior, not an error. |
-| `suppressed` | Dispatch was blocked before the notification went out—the rule was acknowledged, snoozed, or deactivated. |
+| `suppressed` | Dispatch was blocked before the notification went out. The episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched this episode, so no workflow ran. |
 | `error` | An error occurred during processing. Check {{kib}} logs to identify the cause. |
