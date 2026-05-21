@@ -1122,7 +1122,7 @@ Next, we'll install {{agent}} on another host and use the System integration to 
     --enrollment-token=<token> \
     --certificate-authorities=/etc/agent/fleet-server-ca.crt
     ```
-    1. Ensure this IP address matches the {{fleet-server}} host that you just installed.
+    1. Ensure the value matches the {{fleet-server}} URL you configured earlier.
 
 1. Run the `elastic-agent install` command. Enter `Y` when prompted. Wait for the **Add agent** flyout to show the agent as connected and for **Confirm incoming data** to complete, then close the flyout.
 
