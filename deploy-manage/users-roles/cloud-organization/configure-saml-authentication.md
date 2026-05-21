@@ -218,8 +218,8 @@ To ensure continuous access and control over your organization settings, the fir
 To allow for role mapping verification, SSO must be configured and enabled for you to create role mappings.
 
 ::::{note}
-* If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
-* If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
+* If [SSO enforcement](#enforce-sso) is not enabled, organization member roles might not be consistent with your role mapping and additional manual role assignment might be needed.
+* Roles manually assigned to a member using the {{ecloud}} Console are overwritten by the role mapping every time the member logs in using SSO.
 ::::
 
 ### Create a role mapping
