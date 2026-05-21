@@ -122,7 +122,7 @@ Use the search bar and **Tags** filter to find specific rules. For example, filt
 ::::
 
 :::{image} /solutions/images/security-prebuilt-rules-update.png
-:alt: The Rule Updates tab on the Rules page
+:alt: The Rule Updates tab on the Detection rules (SIEM) page
 :screenshot:
 :::
 

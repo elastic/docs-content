@@ -25,7 +25,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
-* Whether related integrations are displayed on the Rules page tables
+* Whether related integrations are displayed on the {{siem-rules-ui}} page tables
 * The options provided in the alert tag menu
 * The maximum number of cases the Cases connector can open each time a detection rule runs 
 

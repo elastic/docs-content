@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: View, edit, enable, duplicate, and manage detection rules from the Rules page, including deprecated prebuilt rules.
+description: View, edit, enable, duplicate, and manage detection rules from the Detection rules (SIEM) page, including deprecated prebuilt rules.
 ---
 
 # Manage detection rules [security-rules-ui-management]
