@@ -161,7 +161,7 @@ POST kbn://api/visualizations
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "count(order_id,shift='\''1w'\'')", <1>
+      "formula": "count(order_id,shift='1w')", <1>
       "label": "Compared to previous week",
       "compare": { <2>
         "to": "primary",
@@ -330,7 +330,7 @@ POST kbn://api/visualizations
     {
       "type": "secondary",
       "operation": "formula",
-      "formula": "count(shift='\''1w'\'')",
+      "formula": "count(shift='1w')",
       "label": "Since last week",
       "compare": { "to": "primary", "palette": "compare_to", "icon": true, "value": true },
       "color": { "type": "none" }
@@ -576,7 +576,7 @@ POST kbn://api/visualizations
     {
       "type": "primary",
       "operation": "formula",
-      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)", <1>
+      "formula": "count(kql=response.keyword >= \"200\" and response.keyword < \"300\") / count(response.keyword)", <1>
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1, "compact": true },
       "background_chart": { "type": "trend" }, <2>
@@ -723,7 +723,7 @@ POST kbn://api/visualizations
     {
       "type": "primary",
       "operation": "formula",
-      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)",
+      "formula": "count(kql=response.keyword >= \"200\" and response.keyword < \"300\") / count(response.keyword)",
       "label": "Successful requests (2xx)",
       "format": { "type": "percent", "decimals": 1, "compact": true },
       "background_chart": { "type": "trend" },
@@ -890,7 +890,7 @@ POST kbn://api/visualizations
     {
       "type": "secondary", <2>
       "operation": "formula",
-      "formula": "count(shift='\''1w'\'')", <3>
+      "formula": "count(shift='1w')", <3>
       "label": "Compared to previous week",
       "compare": { <4>
         "to": "primary",

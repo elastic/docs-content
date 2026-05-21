@@ -207,6 +207,10 @@ def extract_json_from_curl(bash_block: str) -> str | None:
         return None
 
     json_body = rest[: end_m.start()]
+    # Convert shell single-quote escapes to literal characters so the Console
+    # tab contains valid JSON (e.g. shift='\''1w'\'' → shift='1w').
+    json_body = json_body.replace("'\\''", "'")
+    json_body = json_body.replace("'''", "")
     return json_body
 
 
