@@ -349,6 +349,8 @@ You can open new tabs or duplicate existing ones to compare different queries:
 - To start a fresh exploration in a new tab, select the {icon}`plus` icon next to the existing tabs.
 - To test variations of your current query in a new tab, hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Duplicate**.
 
+A session supports a maximum of 25 open tabs. When the limit is reached, the {icon}`plus` icon and **Duplicate** are disabled.
+
 To manage and organize your tabs, you can:
 - Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
 - Reorder them: Drag and drop a tab to move it.
@@ -359,7 +361,7 @@ To manage and organize your tabs, you can:
   If you want to discard all open tabs, you can also start a {icon}`plus` **New session**/**New** from the application menu. When you use this option, any unsaved changes to your current session are lost.
   :::
 - Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`arrow_down` **Tabs menu** icon located at the end of the tab bar.
-  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once.
+  - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Tabs closed at the same time (for example, when navigating away from Discover) are grouped together in the {icon}`arrow_down` **Tabs menu**. You can expand a group to view the individual tabs, restore a specific tab, or restore all tabs in the group at once. If restoring a group would exceed the 25-tab limit, only the first tabs in the group are restored up to the remaining capacity.
 
 To keep all your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
 
