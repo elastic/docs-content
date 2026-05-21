@@ -3,7 +3,7 @@ navigation_title: Migrate workflows from 9.3 to 9.4
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Port workflows from the 9.3 technical preview to 9.4 GA. Covers the Cases namespace migration, HTTP timeout relocation, and schedule minimum interval.
+description: Port workflows from the 9.3 technical preview to 9.4 GA. Covers the Cases namespace migration, HTTP step configuration changes, and schedule minimum interval.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,9 +15,9 @@ products:
 
 # Migrate workflows from 9.3 to 9.4 [workflows-migrate-from-9-3]
 
-9.4 brings a handful of breaking changes to the workflow schema. Existing 9.3 workflows continue to run (the deprecated step aliases still resolve), but the editor blocks you from creating new workflows that use the old shapes, and several new capabilities are only available through the new shapes.
+9.4 brings a handful of breaking changes to the workflow schema and HTTP step runtime behavior. Existing 9.3 workflows continue to run in most cases: the deprecated step aliases still resolve, `timeout` auto-migrates on save, and sub-minute schedules auto-migrate when edited. However, deployments with restrictive outbound action connector hosts might need a Kibana configuration update for HTTP steps.
 
-This guide is the side-by-side for the three migrations every 9.3 workflow author needs.
+This guide is the side-by-side for the migrations every 9.3 workflow author needs.
 
 ## Summary
 
@@ -25,6 +25,7 @@ This guide is the side-by-side for the three migrations every 9.3 workflow autho
 |---|---|---|---|
 | Case management | `kibana.createCaseDefaultSpace`, `kibana.getCaseDefaultSpace`, `kibana.updateCaseDefaultSpace`, `kibana.addCaseCommentDefaultSpace` | `cases.createCase`, `cases.getCase`, `cases.updateCase`, `cases.addComment` (plus 23 additional `cases.*` steps) | Deprecated aliases still work. New workflows must use `cases.*`. |
 | HTTP step `timeout` | Inside `with` | At the step top level (common field) | Existing workflows auto-migrate on save. |
+| HTTP step allowed hosts | `workflowsExecutionEngine.http.allowedHosts` controlled workflow HTTP steps. The default was `["*"]`. | `xpack.actions.allowedHosts` controls HTTP steps because they now run through the Actions framework HTTP connector. | If `xpack.actions.allowedHosts` is unset, the default is still `["*"]`. If it is set restrictively, existing HTTP steps can fail until their target hosts are added. |
 | Scheduled trigger interval minimum | Any duration | Minimum `1m` / `60s` | Sub-minute intervals auto-migrate to `1m` on first edit. |
 
 ## 1. Cases: `kibana.*` aliases to `cases.*` [workflows-migrate-cases]
@@ -146,7 +147,33 @@ In 9.3, the `http` step accepted `timeout` inside `with`. In 9.4, `timeout` is a
 
 Existing workflows auto-migrate on save. New workflows must use the new shape.
 
-## 3. Scheduled trigger minimum interval [workflows-migrate-scheduled]
+## 3. HTTP step allowed hosts [workflows-migrate-http-allowed-hosts]
+
+In 9.3, `type: http` steps without a `connector-id` used the workflow execution engine HTTP client and were controlled by `workflowsExecutionEngine.http.allowedHosts`.
+
+In 9.4, those HTTP steps run through the Actions framework HTTP connector. As a result, outbound URLs are validated against [`xpack.actions.allowedHosts`](https://www.elastic.co/docs/reference/kibana/configuration-reference/alerting-settings#action-settings).
+
+If `xpack.actions.allowedHosts` is not set, it defaults to `["*"]`, so all hosts are allowed. If your deployment sets a restrictive allowlist, add the hosts used by workflow HTTP steps:
+
+```yaml
+xpack.actions.allowedHosts: ["api.example.com", "hooks.example.net"]
+```
+
+To allow all outbound hosts:
+
+```yaml
+xpack.actions.allowedHosts: ["*"]
+```
+
+This setting applies to all action connectors, including connectors used by workflows. It does not apply to integrations, and it cannot currently be scoped per connector or per workflow.
+
+For self-managed deployments, configure this in `kibana.yml` and restart Kibana. On Elastic Cloud Hosted, configure it in the deployment's Kibana user settings.
+
+:::{note}
+If an upgraded workflow HTTP step fails with an `unexpected error`, check whether the target host is blocked by `xpack.actions.allowedHosts`.
+:::
+
+## 4. Scheduled trigger minimum interval [workflows-migrate-scheduled]
 
 9.3 accepted any `with.every` value on a scheduled trigger, including sub-minute intervals such as `30s`. 9.4 enforces a minimum of `1m` / `60s`.
 
