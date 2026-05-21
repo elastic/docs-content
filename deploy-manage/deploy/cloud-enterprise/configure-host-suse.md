@@ -12,9 +12,14 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require XFS quotas to be set up manually, since SLES doesn't ship XFS as the default filesystem. The procedure below targets SLES 15. SLES 12 SP5 reached general support end of life in October 2024 — new {{ece}} installations should use SLES 15, and existing SLES 12 SP5 hosts should be migrated.
+SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require XFS quotas to be set up manually, since SLES doesn't ship XFS as the default filesystem. The steps on this page target SLES 15. 
 
-Always cross-check your SLES version and Docker version against the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) before installing. The commands shown on this page are examples; substitute the versions you've selected from the support matrix.
+Before installing, make sure to cross-check your SLES version and Docker version against the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). The commands shown on this page are examples; substitute the versions you've identified in the support matrix.
+
+::::{warning}
+SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLES 15 or later for new {{ece}} installations, and migrate existing SLES 12 SP5 hosts.
+::::
+
 
 * [Install Docker](#ece-install-docker-sles12)
 * [Set up XFS quotas](#ece-xfs-setup-sles12)
@@ -26,11 +31,9 @@ Always cross-check your SLES version and Docker version against the [Support mat
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
-::::{warning}
-SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{ece}} deployments should target SLES 15. Existing SLES 12 SP5 hosts should be migrated to a supported SLES 15 release.
-::::
 
-1. Remove Docker and any previously installed podman packages (if previously installed).
+
+1. Remove Docker and any previously installed podman packages.
 
     ```sh
     sudo zypper remove -y docker docker-ce podman podman-remote
@@ -43,15 +46,15 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{e
     sudo zypper update -y
     ```
 
-3. Install Docker and other required packages on SLES 15. The following command is an example of installing Docker {{ece-docker-version}}. If you decide to install a different Docker version, replace `{{ece-docker-version}}` with the desired version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
+3. Install Docker and other required packages on SLES 15. The following command is an example of installing Docker {{ece-docker-version}}. To install a different Docker version, replace {{ece-docker-version}} with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
-    ```sh
+    ```sh subs=true
     sudo zypper install -y curl device-mapper lvm2 net-tools docker={{ece-docker-version}}.*
     ```
 
     ::::{tip}
-    If `zypper` reports that the requested Docker version isn't available, ensure that the SUSE **Containers Module** is enabled, or refer to [SUSE's documentation](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-docker-installation.html) for adding the upstream Docker repository.
-    ::::
+    If `zypper` reports that the requested Docker version isn't available, make sure the SUSE **Containers Module** is enabled, or refer to [SUSE's documentation](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-docker-installation.html) for adding the upstream Docker repository.
+    ::::s
 
     ::::{note}
     Installation on SLES 12 SP5 is no longer covered here because SLES 12 SP5 is past general support end of life. If you're maintaining an existing SLES 12 SP5 deployment, install the last Docker version that SUSE shipped for SLES 12 SP5 and plan a migration to SLES 15.
@@ -72,7 +75,7 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{e
          sudo usermod -aG elastic,docker $USER
         ```
 
-5. Disable nscd, as it interferes with Elastic's services:
+5. Disable `nscd`, which can interfere with Elastic services:
 
     ```sh
     sudo systemctl stop nscd
@@ -90,7 +93,7 @@ Using LVM, `mdadm`, or a combination of the two for block device management is p
 ::::
 
 ::::{important}
-You must use XFS and have quotas enabled on all allocators, otherwise disk usage won't display correctly.
+You must use XFS and have quotas enabled on all allocators; otherwise, disk usage won't display correctly.
 ::::
 
 **Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` in the following example with the corresponding device on your host.
