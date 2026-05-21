@@ -57,6 +57,8 @@ The default policy and repository are used when:
 
 In {{ech}}, you can [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters, but only within the same region.
 
+For API-driven deployment linking of platform-managed snapshots, refer to [Manage snapshot repositories in {{ech}}](snapshot-and-restore/elastic-cloud-hosted.md#register-snapshot-repos-ech).
+
 You can customize the snapshot retention settings in that policy to adjust them to your needs.
 
 To use a custom snapshot repository, [register a new snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) and [create another SLM policy](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
