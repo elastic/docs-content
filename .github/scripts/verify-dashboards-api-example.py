@@ -79,20 +79,20 @@ EXPECTED_PANEL_COUNT = 11
 
 
 def extract_payload(markdown_path: Path) -> dict:
-    """Return the parsed JSON payload from the curl example in the markdown."""
+    """Return the parsed JSON payload from the Console tab example in the markdown."""
     text = markdown_path.read_text(encoding="utf-8")
     match = re.search(
-        r"curl[^\n]*\n(?:[^\n]*\n)*?\s*-d '(\{.*?\})'\n```",
+        r"```console\nPOST kbn://api/dashboards\n(\{.*?\})\n```",
         text,
         re.DOTALL,
     )
     if not match:
-        # Failure mode 2: the regex couldn't find a curl block matching our
+        # Failure mode 2: the regex couldn't find a Console block matching our
         # expected shape. The page has been restructured, the dropdown was
         # removed, or the fence/indent changed. Inspect the markdown to
         # confirm the example still exists.
         raise SystemExit(
-            f"Could not find a curl POST example in {markdown_path}. "
+            f"Could not find a Console POST example in {markdown_path}. "
             "Has the page structure changed?"
         )
     raw = match.group(1)
@@ -100,9 +100,7 @@ def extract_payload(markdown_path: Path) -> dict:
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError as exc:
-        # Failure mode 3: a docs edit produced syntactically invalid JSON
-        # inside the curl block. The parser reports the line/column to look
-        # at; also worth checking for smart quotes or trailing commas.
+        # Failure mode 3: a docs edit produced syntactically invalid JSON.
         raise SystemExit(f"Extracted JSON is not valid: {exc}") from exc
 
 
