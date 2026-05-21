@@ -18,7 +18,7 @@ This page focuses on the semantic search workflows available in {{es}}. For deta
 
 Semantic search uses [{{nlp}} (NLP)](/explore-analyze/machine-learning/nlp.md) models and [vector search](vector.md) to find results based on meaning, not just keywords. This page covers the managed workflows available in {{es}} for implementing semantic search.
 
-For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and inference endpoints, refer to the [Elastic Inference overview](../../explore-analyze/elastic-inference.md) page.
+For the foundational concepts behind vector search, refer to [Vector search in {{es}}](vector.md). To compare semantic search with lower-level vector search and decide which path fits your project, refer to [Semantic search and vector search](vector.md#semantic-search-vs-vector-search). To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and {{infer}} endpoints, refer to the [Elastic {{infer-cap}} overview](../../explore-analyze/elastic-inference.md) page.
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
 

@@ -55,16 +55,15 @@ Natural Language Processing (NLP) enables you to analyze natural language data a
 
 ### Vector search
 
-[Vector search](/solutions/search/vector.md) helps you find data based on intent and contextual meaning using vector embeddings, which use {{ml}} models to capture meaning in content.
+[Vector search](/solutions/search/vector.md) uses embeddings and similarity matching to find related data in {{es}}. {{ml-cap}} models convert text, images, and other content into vectors. Use cases include recommendations, duplicate detection, fraud and anomaly detection, image similarity, and meaning-based text search.
+
+For direct control over embeddings, field types, and queries, implement dense or sparse vector search with [`dense_vector`](https://www.elastic.co/docs/solutions/search/vector/dense-vector) and [`sparse_vector`](https://www.elastic.co/docs/solutions/search/vector/sparse-vector) field types. Refer to [Vector search in {{es}}](/solutions/search/vector.md) for concepts, field types, and tutorials.
 
 #### Semantic and hybrid search
 
-Depending on your team's technical expertise and requirements, you can choose from two broad paths for implementing semantic search:
+For meaning-based text search, use [semantic search](/solutions/search/semantic-search.md) workflows built on vector search. Start with the [`semantic_text`](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) workflow for managed embedding generation and model setup.
 
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
-
-[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with vector search for more powerful search experiences that serve a wider range of user needs.
+[Hybrid search](/solutions/search/hybrid-search.md) combines full-text search with semantic search in one request so results can match both exact terms and meaning.
 
 ### Semantic re-ranking
 

@@ -14,7 +14,7 @@ products:
 # Vector search use cases
 
 :::{tip}
-New to vector search? Start with this [vector search quick start](../get-started/semantic-search.md).
+New to semantic search? Start with the [semantic search quickstart](../get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
 
 To understand core vector search concepts in {{es}}, including embeddings, field types, retrieval methods, and available workflows, refer to [Vector search in {{es}}](../vector.md#vectors-and-embeddings).
 :::
@@ -42,11 +42,13 @@ Read how retrieval-augmented generation fits into {{es}} and how it relates to s
 
 :::::{step} Choose a search strategy
 
-Implement retrieval that matches your content and latency needs: lexical search, semantic vector retrieval, or a hybrid of both. Hybrid setups often use [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to merge rankings.
+Implement retrieval that matches your content and latency needs. Use [semantic search](../semantic-search.md) workflows for managed meaning-based retrieval, [vector search](../vector.md) when you configure embeddings and fields directly, or [hybrid search](../hybrid-search.md) to combine full-text and semantic retrieval. Hybrid setups often use [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to merge rankings.
 
 - [Search approaches](../search-approaches.md)
+- [Semantic search and vector search](../vector.md#semantic-search-vs-vector-search)
 - [Hybrid search](../hybrid-search.md)
 - [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
+- [kNN search](knn.md)
 - [Reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
 
 :::::
@@ -100,7 +102,7 @@ Narrow candidates with structured filters (availability, region, permissions, ca
 
 :::::{step} Refine ranking
 
-When raw top-k similarity is not enough, combine vector retrieval with lexical signals or add a second-stage ranker. Use hybrid retrieval when you need both semantic and keyword signals, or LTR when you have labeled training data.
+When raw top-k similarity is not enough, combine vector retrieval with full-text signals or add a second-stage ranker. Use [hybrid search](../hybrid-search.md) when you need both meaning based and keyword matches in one result set, or LTR when you have labeled training data.
 
 - [Ranking and reranking](../ranking.md)
 - [Semantic reranking](../ranking/semantic-reranking.md)
@@ -215,21 +217,23 @@ Model memory documents with stable identifiers (user, session, agent), timestamp
 
 :::::{step} Ingest and embed new memories
 
-Index new entries through a `semantic_text` mapping or an ingest pipeline that calls the inference processor so vectors stay aligned with your production embedding model.
+Choose how you store embeddings so ingest and query use the same model.
 
-- [Ingest data with `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-ingestions.md)
-- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md)
-- [Inference processor](elasticsearch://reference/enrich-processor/inference-processor.md)
+- [Semantic search with `semantic_text`](../semantic-search/semantic-search-semantic-text.md): index through a `semantic_text` mapping so {{es}} manages {{infer}} and embedding generation
+- [Ingest data with `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-ingestions.md): mapping and ingest reference for `semantic_text`
+- [Inference processor](elasticsearch://reference/enrich-processor/inference-processor.md): generate embeddings in an ingest pipeline for vector search
+- [Bring your own dense vectors](bring-own-vectors.md): index precomputed vectors into a `dense_vector` field
 
 :::::
 
 :::::{step} Retrieve context for each prompt
 
-At query time, run semantic retrieval (and lexical or hybrid retrieval when users supply keywords) to pull the top-k memories, then supply those hits to your orchestration layer alongside the current user message.
+Retrieve the top-k memories with the same approach you used at ingest, then pass those hits to your orchestration layer with the current user message.
 
-- [Semantic search](../semantic-search.md)
-- [Hybrid search](../hybrid-search.md)
-- [kNN search](knn.md)
+- [Semantic search](../semantic-search.md): query `semantic_text` fields with managed semantic workflows
+- [kNN search](knn.md): run vector retrieval against `dense_vector` fields
+- [Hybrid search](../hybrid-search.md): combine semantic or vector retrieval with full-text when queries include exact keywords
+
 
 :::::
 
