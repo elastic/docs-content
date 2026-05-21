@@ -12,7 +12,7 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require XFS quotas to be set up manually, since SLES doesn't ship XFS as the default filesystem. The procedure below covers both SLES 12 SP5 and SLES 15, but note that SLES 12 SP5 reached general support end of life in October 2024 — new {{ece}} installations should target SLES 15.
+SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require XFS quotas to be set up manually, since SLES doesn't ship XFS as the default filesystem. The procedure below targets SLES 15. SLES 12 SP5 reached general support end of life in October 2024 — new {{ece}} installations should use SLES 15, and existing SLES 12 SP5 hosts should be migrated.
 
 Always cross-check your SLES version and Docker version against the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) before installing. The commands shown on this page are examples; substitute the versions you've selected from the support matrix.
 
@@ -43,22 +43,18 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{e
     sudo zypper update -y
     ```
 
-3. Install Docker and other required packages. The following commands are examples of installing Docker {{ece-docker-version}}. If you decide to install a different Docker version, replace `{{ece-docker-version}}` with the desired version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
+3. Install Docker and other required packages on SLES 15. The following command is an example of installing Docker {{ece-docker-version}}. If you decide to install a different Docker version, replace `{{ece-docker-version}}` with the desired version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
-    * For SLES 15:
-
-        ```sh
-        sudo zypper install -y curl device-mapper lvm2 net-tools docker={{ece-docker-version}}.*
-        ```
-
-    * For SLES 12 SP5 (EOL — only use on existing deployments):
-
-        ```sh
-        sudo zypper install -y docker={{ece-docker-version}}.*
-        ```
+    ```sh
+    sudo zypper install -y curl device-mapper lvm2 net-tools docker={{ece-docker-version}}.*
+    ```
 
     ::::{tip}
-    If `zypper` reports that the requested Docker version isn't available, ensure that the SUSE **Containers Module** is enabled (`sudo SUSEConnect -p sle-module-containers/15.<sp>/x86_64`) or refer to SUSE's documentation for adding the upstream Docker repository.
+    If `zypper` reports that the requested Docker version isn't available, ensure that the SUSE **Containers Module** is enabled, or refer to [SUSE's documentation](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-docker-installation.html) for adding the upstream Docker repository.
+    ::::
+
+    ::::{note}
+    Installation on SLES 12 SP5 is no longer covered here because SLES 12 SP5 is past general support end of life. If you're maintaining an existing SLES 12 SP5 deployment, install the last Docker version that SUSE shipped for SLES 12 SP5 and plan a migration to SLES 15.
     ::::
 
 4. Set up the OS groups and add your user.
@@ -85,7 +81,7 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. New {{e
 
 ## Set up XFS quotas [ece-xfs-setup-sles12]
 
-XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
+XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 15, you need to set up an XFS file system and have quotas enabled.
 
 Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
@@ -169,7 +165,6 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
         ```sh
         sudo sysctl -p
-        sudo systemctl restart NetworkManager
         ```
 
 4. Adjust the system limits.
