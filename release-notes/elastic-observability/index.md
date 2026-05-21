@@ -21,6 +21,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.2 [elastic-observability-9.4.2-release-notes]
+
+### Fixes [elastic-observability-9.4.2-fixes]
+* Fixes false **missing integration** warnings for project Synthetics monitors on private locations [#270137]({{kib-pull}}270137).
+* Fixes horizontal scroll clipping on the {{product.apm}} **Traces** page [#269936]({{kib-pull}}269936).
+* Fixes the **Explain this log entry** AI insight in the logs flyout collapsing and losing its state on auto-refresh [#268895]({{kib-pull}}268895).
+* Fixes the Streams **Significant Events** tab and import/export flyouts to correctly enforce the Enterprise license requirement [#268515]({{kib-pull}}268515).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
+* Fixes the **Modify suggestions** button in Streams so clicking it while the popover is open correctly closes the popover [#265254]({{kib-pull}}265254).
+
+
 ## 9.4.1 [elastic-observability-9.4.1-release-notes]
 
 There are no user-facing changes in {{observability}} for the 9.4.1 release.
