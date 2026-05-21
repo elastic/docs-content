@@ -66,7 +66,7 @@ There are some limitations to note for using the FedRAMP authorized Cloud offeri
 % Copied from https://www.elastic.co/docs/deploy-manage/security/fips-ingest#ingest-limitations-tls
 % I'll single-source this if the finalized content is identical to what we have in the security section.
 
-Only FIPS 140-2 compliant TLS protocols, ciphers, and curve types are allowed to be used as listed below.
+Only the following FIPS 140-2 compliant TLS protocols, ciphers, and curve types are allowed to be used:
 * The supported TLS version is `TLS v1.2`.
 * The supported cipher suites are `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, and `ECDHE-ECDSA-AES-256-GCM-SHA384`.
 * The supported curve types are `P-256`, `P-384` and `P-521`.
