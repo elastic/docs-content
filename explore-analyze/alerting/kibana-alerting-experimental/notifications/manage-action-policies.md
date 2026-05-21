@@ -10,7 +10,7 @@ description: "Enable, disable, snooze, maintenance windows, bulk actions, and AP
 
 # Manage action policies
 
-Managing action policies is part of the {{alerting-v2}} in Kibana. After you create an action policy, you can control when it runs, pause it temporarily, and keep its credentials current. This page covers those management tasks.
+Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to enable and disable policies, snooze them during planned outages, and rotate their API keys.
 
 ## Enable, snooze, and maintenance
 

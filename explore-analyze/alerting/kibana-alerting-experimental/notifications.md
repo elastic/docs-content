@@ -8,7 +8,7 @@ products:
 description: "How {{alerting-v2}} action policies route alert episodes to notifications: matchers, grouping, frequency, and workflow destinations."
 ---
 
-# {{alerting-v2-cap}} notifications
+# Notification routing in {{alerting-v2}}
 
 After a rule produces alert episodes, action policies decide what to do about them: who gets notified, how often, and through which channel.
 
@@ -23,8 +23,8 @@ Each policy has four controls:
 
 | Control | What it does |
 | --- | --- |
-| Matcher (optional KQL) | Filters which episodes this policy applies to. An empty matcher matches all episodes in the space. |
-| Dispatch per (grouping) | Controls how episodes batch into notifications: one per episode, one per notification group (Dispatch per **Group**), or one digest for all. |
+| Match conditions (optional KQL) | Filters which episodes this policy applies to. An empty match condition matches all episodes in the space. |
+| Notify per (grouping) | Controls how episodes batch into notifications: one per episode, one per notification group (Notify per **Group**), or one digest for all. |
 | Frequency | Controls how often the policy can notify for the same notification group. |
 | Destinations | One or more workflows to invoke when all conditions are met. |
 

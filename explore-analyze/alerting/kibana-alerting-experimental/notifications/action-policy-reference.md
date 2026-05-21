@@ -5,17 +5,17 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Grouping modes, frequency options, dispatch outcomes, and matcher field reference for action policies in the {{alerting-v2}}."
+description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies in the {{alerting-v2}}."
 ---
 
 # Action policy reference [action-policy-reference]
 
 
-Action policies are part of the {{alerting-v2}} in Kibana. Use this page when building action policies. Below, you will find details about valid matcher fields, grouping modes and frequency options, dispatch outcome, and more. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
+Action policies are part of the {{alerting-v2}} in {{kib}}. This page is a reference for match conditions fields, grouping modes, frequency options, and dispatch outcomes. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 
-## Matcher fields [matcher-fields]
+## Match conditions fields [matcher-fields]
 
-Use these fields in the **Matcher** expression to filter which episodes a policy applies to. Combine them with standard KQL operators, for example `data.severity: "critical" AND episode_status: "active"`.
+Use these fields in the **Match conditions** expression to filter which episodes a policy applies to. Combine them with standard KQL operators, for example `data.severity: "critical" AND episode_status: "active"`.
 
 | Field | Description | Example |
 |---|---|---|
@@ -35,7 +35,7 @@ Add both fields to this table with examples. Update the introductory sentence to
 There is also an open M2 question about whether a severity change mid-episode (de-escalation or escalation) triggers policy re-evaluation. If it does, document the re-evaluation behavior in the frequency options section below, since it interacts with frequency limits.]
 -->
 
-## Dispatch per options [notification-grouping]
+## Notify per options [notification-grouping]
 
 Controls how the policy batches matching episodes before sending a notification.
 
@@ -47,7 +47,7 @@ Controls how the policy batches matching episodes before sending a notification.
 
 ## Frequency [throttle-strategies]
 
-**Frequency** controls how often the policy fires for a given episode or notification group. The available options depend on the **Dispatch per** setting. Not all options are valid for all modes.
+**Frequency** controls how often the policy fires for a given episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
 
 | Option | Description | When to use |
 |---|---|---|
@@ -61,7 +61,7 @@ Controls how the policy batches matching episodes before sending a notification.
 
 ### Frequency options for Episode [frequency-when-episode-per_episode]
 
-Available frequency options when you set **Dispatch per** to **Episode**.
+Available frequency options when you set **Notify per** to **Episode**.
 
 | Option | Description | Example |
 |---|---|---|
@@ -71,7 +71,7 @@ Available frequency options when you set **Dispatch per** to **Episode**.
 
 ### Frequency options for Group
 
-Available frequency options when you set **Dispatch per** to **Group**.
+Available frequency options when you set **Notify per** to **Group**.
 
 | Option | Description | Example |
 |---|---|---|
@@ -80,7 +80,7 @@ Available frequency options when you set **Dispatch per** to **Group**.
 
 ### Frequency options for Digest
 
-Available frequency options when you set **Dispatch per** to **Digest**.
+Available frequency options when you set **Notify per** to **Digest**.
 
 | Option | Description | Example |
 |---|---|---|
