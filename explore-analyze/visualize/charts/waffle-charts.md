@@ -94,59 +94,11 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
-:::::::{dropdown} Create this chart using the API
+:::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example uses two metrics without a `group_by` to create a goal-tracking waffle: one metric shows earned revenue and the other calculates the gap to a $500K target.
 
-:::::{tab-set}
-
-:::{tab-item} Console
-:sync: api-console
-```console
-POST kbn://api/visualizations
-{
-  "type": "waffle", <1>
-  "title": "Revenue progress toward sales target",
-  "filters": [],
-  "query": { "expression": "" },
-  "legend": { "size": "auto" },
-  "metrics": [
-    {
-      "operation": "sum", <2>
-      "field": "taxful_total_price",
-      "label": "Revenue earned",
-      "format": {
-        "type": "number"
-      },
-      "filter": { "expression": "" }
-    },
-    {
-      "operation": "formula", <3>
-      "formula": "500000 - sum(taxful_total_price)",
-      "label": "Remaining to goal",
-      "format": {
-        "type": "number"
-      },
-      "filter": { "expression": "" }
-    }
-  ],
-  "data_source": {
-    "type": "data_view_spec",
-    "index_pattern": "kibana_sample_data_ecommerce",
-    "time_field": "order_date"
-  },
-  "styling": { "values": { "mode": "percentage" } }
-}
-```
-
-1. `waffle` renders a 10x10 grid of squares where each square represents 1% of the whole.
-2. The first metric fills squares proportionally to earned revenue, showing progress at a glance.
-3. The `formula` metric computes the gap between a $500K target and actual revenue, filling the remaining squares.
-:::
-
-:::{tab-item} curl
-:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -190,12 +142,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `waffle` renders a 10x10 grid of squares where each square represents 1% of the whole.
 2. The first metric fills squares proportionally to earned revenue, showing progress at a glance.
 3. The `formula` metric computes the gap between a $500K target and actual revenue, filling the remaining squares.
-:::
-
-:::::
 
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::::::
+:::
 
 ## Waffle chart settings [waffle-chart-settings]
 
