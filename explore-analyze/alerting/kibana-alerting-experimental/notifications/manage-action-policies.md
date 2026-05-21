@@ -5,21 +5,20 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Enable, disable, snooze, maintenance windows, bulk actions, and API key rotation for action policies in the {{alerting-v2}}."
+description: "Enable, disable, snooze, bulk actions, and API key rotation for action policies in the {{alerting-v2}}."
 ---
 
 # Manage action policies
 
 Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to enable and disable policies, snooze them during planned outages, and rotate their API keys.
 
-## Enable, snooze, and maintenance
+## Enable and snooze
 
 You can disable a policy so it is not evaluated for new episodes. You can snooze a policy for a defined window so that it does not dispatch notifications during that period. Policies that are not enabled or are snoozed are skipped when the dispatcher evaluates policies.
 
 ### Maintenance windows [maintenance-windows]
 
-
-Maintenance windows are scheduled periods during which a policy does not dispatch notifications. They are configured on the action policy alongside snooze and other policy controls, not on the rule. Rule evaluation continues and alert episodes can still be recorded in `.rule-events`. Only dispatch through that policy pauses. Use maintenance windows for planned deployments, infrastructure changes, or recurring quiet periods.
+During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically — no policy configuration is required. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Maintenance windows are configured separately, not on the action policy.
 
 ## Update API keys
 

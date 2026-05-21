@@ -13,7 +13,7 @@ description: "Create action policies in the {{alerting-v2}}, configure match con
 
 Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to configure match conditions, set grouping and frequency, and attach workflow destinations. Where rules define what counts as a problem, action policies define what happens when one is detected — which episodes generate notifications, how they batch for dispatch, and where they're routed.
 
-Because policies are separate from rules and global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
+Because policies are separate from rules and are global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
 
 For match conditions fields, grouping modes, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference.md).
 
