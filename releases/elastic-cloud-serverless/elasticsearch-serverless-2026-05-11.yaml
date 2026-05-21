@@ -1,0 +1,565 @@
+products:
+- product: cloud-serverless
+  target: 2026-05-11
+  repo: elasticsearch-serverless
+  owner: elastic
+entries:
+- file:
+    name: 148511.yaml
+    checksum: dc921c1d6605a381f77ea4261c3f9d483de70583
+  type: enhancement
+  title: Add agent builder otel privileges to kibana_system user
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148511
+- file:
+    name: 148439.yaml
+    checksum: 4d2aa31f40cd7db5b29120119ffe13c70b9d6aab
+  type: enhancement
+  title: Two-phase I/O for Parquet on remote storage
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148439
+- file:
+    name: 148340.yaml
+    checksum: f1e08c794e612f2060d22934bf63baa9d99c7d9e
+  type: enhancement
+  title: Enable multiple items per content object for Elastic service
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Inference
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148340
+- file:
+    name: 148356.yaml
+    checksum: 551e73c39816f7a56d994ff3d6ba0889e5e7aab7
+  type: bug-fix
+  title: 'ESQL: Use lat/lon ordering for DECAY geo_point origin'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148356
+- file:
+    name: 148360.yaml
+    checksum: d69ad69a054100d5eaf6a893063e1872c93bdc3b
+  type: enhancement
+  title: Pre-warm dictionary/bloom for predicate columns
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148360
+- file:
+    name: 148622.yaml
+    checksum: 7f2288b939d2095b0817e49112f1d934d82cf18d
+  type: enhancement
+  title: Enable the batched query phase
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  description: >-
+    Searches that target multiple shards on the same data node now batch shards into a single round-trip per data node, with partial reductions performed on the data nodes.
+
+    This reduces transport layer overhead and spreads the load of reductions across multiple nodes.
+
+    The enhancement is controlled by a setting `search.batched_query_phase`, which is enabled by default in 9.5.0.
+  highlight: true
+  areas:
+  - Search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148622
+- file:
+    name: 148198.yaml
+    checksum: a0d73d0566ccc991a4f9705abc4d9e47a8c76dfb
+  type: bug-fix
+  title: doHandleStartHandoff runs allocation-ID check even when PIT is disabled
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148198
+  issues:
+  - https://github.com/elastic/elasticsearch/issues/147957
+- file:
+    name: 148474.yaml
+    checksum: 451198f3e38ce2d460708516c069591c99d7d53c
+  type: bug-fix
+  title: Drop late-mat byte-ratio gate, fix trivially-passes shortcut
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148474
+- file:
+    name: 148422.yaml
+    checksum: 00f11375d89bf293ac399241ba437f5212da0291
+  type: bug-fix
+  title: 'ESQL: Fix Page leak on partial deserialization'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148422
+- file:
+    name: 148434.yaml
+    checksum: e0ded82093743259be7b3522b1be8abba50f3e64
+  type: enhancement
+  title: push LIKE to Parquet late materialization
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148434
+- file:
+    name: 146282.yaml
+    checksum: 53026f1f87066d04d56a60c2cddf6885902d6319
+  type: enhancement
+  title: ES|QL|DS Parquet Rs Reader integration
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/146282
+- file:
+    name: 147217.yaml
+    checksum: 0d5b7b68e57a76f61dce701900844b3428d0a0e0
+  type: enhancement
+  title: Add byte_level_bpe ML tokenization with merges
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Machine learning
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147217
+- file:
+    name: 148603.yaml
+    checksum: d37ddbe460dc28b9694c413ffdbfa52e3769f4ec
+  type: enhancement
+  title: add significant_events-* privileges to kibana_system user
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Security
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148603
+- file:
+    name: 148341.yaml
+    checksum: 28c9dceb1cb02ce5df8255fd1a10a087fa416e6e
+  type: bug-fix
+  title: Record authc time histograms in milliseconds
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Security
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148341
+- file:
+    name: 6610.yaml
+    checksum: 66cc40dac1b6850b848e1bc8ebc6ff77dff4b136
+  type: bug-fix
+  title: 'ESQL: Unmute EsqlSpecIT request breaker leak tests'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+- file:
+    name: 147562.yaml
+    checksum: c60aacfd878c5c049931f33e5391a94f04f21237
+  type: enhancement
+  title: 'ES|QL|DS: route FROM dataset through the EXTERNAL pipeline (Phase 1)'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147562
+- file:
+    name: 148394.yaml
+    checksum: d41720083274f24472e9ff2be0c939156d5efa8b
+  type: other
+  title: bump netty version
+  products:
+  - product: cloud-serverless
+    lifecycle: ga
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148394
+- file:
+    name: 148327.yaml
+    checksum: 5088cce38221e79fbc5c1b3e26c1477bc246f769
+  type: bug-fix
+  title: 'ES|QL: validate data-source configuration keys at planning time'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148327
+- file:
+    name: 146378.yaml
+    checksum: 82da1f34c521c052326bed3113aa15633bec1220
+  type: enhancement
+  title: Wait for shard readiness before executing search on data node
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/146378
+  issues:
+  - https://github.com/elastic/elasticsearch/issues/139672
+- file:
+    name: 148521.yaml
+    checksum: 13dc232668e3fa8f5cc3f1d3b07695fa6c32829b
+  type: bug-fix
+  title: Make `CompoundOutputEval` implement `SortAgnostic`
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148521
+  issues:
+  - https://github.com/elastic/elasticsearch/issues/148500
+- file:
+    name: 148556.yaml
+    checksum: c858de0c91a55bcfc9dfc73fee8dc436a979bd7c
+  type: bug-fix
+  title: Report shutdowns as IN_PROGRESS if a remaining shard has canAllocate=NOT_PREFERRED
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148556
+- file:
+    name: 148453.yaml
+    checksum: 2ee778ed33da1cf79a29570b3253267d76bef585
+  type: bug-fix
+  title: Fix double-release in two-phase parquet path
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148453
+- file:
+    name: 148473.yaml
+    checksum: 7d9d2f7cc807dac9d02a110b11ba96763a5ad6b2
+  type: feature
+  title: 'ESQL: Add a BY subclause to CHANGE_POINT command '
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148473
+- file:
+    name: 145304.yaml
+    checksum: 6bb99b410a25ebc5746102f2c7a120eac0390943
+  type: bug-fix
+  title: Fix CCR follow to handle indexing_complete race
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/145304
+- file:
+    name: 147678.yaml
+    checksum: fb9863b9716e5dfdd224897b1e7530a14bc0a65b
+  type: bug-fix
+  title: Fix race in TickerScheduleTriggerEngine by checking watcher to node allocation
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147678
+- file:
+    name: 148470.yaml
+    checksum: 7b09a8e294e591539cb326c38c771087f8593f5f
+  type: bug-fix
+  title: No re-sync for paused or re-assigned shard snapshot
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148470
+- file:
+    name: 148523.yaml
+    checksum: 8c99828853ef275a1f0e232eeea82d17163d5b0d
+  type: enhancement
+  title: Update watcher-settings.md
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148523
+- file:
+    name: 148489.yaml
+    checksum: e867356a3f249ccd47b2603241a6c2784f1caf79
+  type: bug-fix
+  title: Default PromQL index to `metrics-*`
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148489
+- file:
+    name: 148333.yaml
+    checksum: 41b0b874e3016b3ba74da39ce0cf7f44b1fc8048
+  type: enhancement
+  title: 'ESQL: Ordinal fast path for BytesRefTopNBlockHash'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148333
+- file:
+    name: 148260.yaml
+    checksum: 0148887236719f95d258c0d9389fe3cd4c14855b
+  type: enhancement
+  title: 'Painless: honor search timeout in score scripts'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Infra/Scripting
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148260
+- file:
+    name: 148554.yaml
+    checksum: b14b220ed054596113ab38867624a021ea23fd86
+  type: bug-fix
+  title: Stash ML_ORIGIN for hasIlm GetIndex during daily maintenance
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Machine learning
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148554
+- file:
+    name: 148607.yaml
+    checksum: 085d89f99ca69a4f383ca1fbc3f808f79b1d3f5d
+  type: bug-fix
+  title: Pass CircuitBreakingException through SearchExecutionContext#toQuery
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148607
+- file:
+    name: 147985.yaml
+    checksum: c586b2723279843032573bddab4d010d4ff2c154
+  type: enhancement
+  title: Propagate Retry-After header if present in EIS responses
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Inference
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147985
+- file:
+    name: 148365.yaml
+    checksum: 0e2cf1592fd5d4feba8fa357b2c38adbc48d1ca1
+  type: bug-fix
+  title: Implement RerankingInferenceService for Elastic service
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Inference
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148365
+- file:
+    name: 148332.yaml
+    checksum: 05f53dc92f58973c73f3c6381bd6a33e0c97c373
+  type: enhancement
+  title: Dictionary short-circuit for late-mat filters
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148332
+- file:
+    name: 148349.yaml
+    checksum: acdf3abed09e7036b89e849de0e94ed01221222d
+  type: enhancement
+  title: Cache parquet dictionary array across batches
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148349
+- file:
+    name: 148354.yaml
+    checksum: 42aec17451f930ef02b948965cfc8afcc910f7a3
+  type: enhancement
+  title: 'ESQL: Cache FilterOperator/EvalOperator toString'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148354
+- file:
+    name: 148616.yaml
+    checksum: 0a155aa6883db0bf4fb1569e60f7e8e9b5e0a4ca
+  type: bug-fix
+  title: Fix SQL REPLACE with empty pattern
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - SQL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148616
+- file:
+    name: 148529.yaml
+    checksum: ef8c1b303b1e4b001050da165310d7c0fbb31344
+  type: enhancement
+  title: 'ESQL: two-phase I/O fixes — sparse read, mask short-circuit, coalesce gap'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148529
+- file:
+    name: 147865.yaml
+    checksum: 13833a6bb406a76d080f367ddf802fdc69ee0c82
+  type: enhancement
+  title: i8 bulk AVX-512 shared-b
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Vector search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147865
+- file:
+    name: 147166.yaml
+    checksum: 97772a551a419369718046f7ea76c5640d6fa34a
+  type: bug-fix
+  title: Fix Sparkline generating extra bucket bug
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147166
+- file:
+    name: 148509.yaml
+    checksum: 2744bfe271214be87a3086754c3242252f81201f
+  type: bug-fix
+  title: Return an empty response for scrolls with no shard contexts
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148509
+  issues:
+  - https://github.com/elastic/elasticsearch/issues/143532
+- file:
+    name: 147886.yaml
+    checksum: c2fc9679729b7991832ab1cde703919cc1074e45
+  type: bug-fix
+  title: 'query approximation: add min source row count'
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - ES|QL
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147886
+- file:
+    name: 148271.yaml
+    checksum: 9389c315b4051a74963c51fdba7c9a56407882a9
+  type: other
+  title: Update elastic-apm-agent-java8 to 1.55.6
+  products:
+  - product: cloud-serverless
+    lifecycle: ga
+  areas:
+  - Security
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/148271
+- file:
+    name: 147151.yaml
+    checksum: 994a10c0432ab1e3c8ecd66cb2ea2f18c02d479e
+  type: enhancement
+  title: Expand index pressure on update expansion
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147151
+- file:
+    name: 147999.yaml
+    checksum: e5f93c5762845f35bc709d01de9e1f42b654fa05
+  type: enhancement
+  title: i7u bulk AVX-512 shared-b and prefetch optimizations
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Vector search
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/147999
+- file:
+    name: 145971.yaml
+    checksum: 223a44fe5f1c51f8d063be7d94bb2847dfb6e1b6
+  type: bug-fix
+  title: Change exception.message to match_only_text
+  products:
+  - product: cloud-serverless
+    target: 2026-05-11
+  areas:
+  - Data streams
+  prs:
+  - https://github.com/elastic/elasticsearch/pull/145971

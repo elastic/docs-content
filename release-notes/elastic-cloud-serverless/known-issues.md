@@ -16,17 +16,12 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
-<!-- :::{changelog} /releases
+:::{changelog} /releases/elastic-cloud-serverless
 :type: known-issue
-:::
--->
-<!--
-:::{include} _snippets/2026-05-06/known-issues.md
+:link-visibility: keep-links
+:description-visibility: keep-descriptions
 :::
 
-:::{include} _snippets/2026-05-04/known-issues.md
-:::
--->
 ## Active
 
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
