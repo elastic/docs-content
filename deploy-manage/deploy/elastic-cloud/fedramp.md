@@ -67,10 +67,8 @@ There are some limitations to note for using the FedRAMP authorized Cloud offeri
 % I'll single-source this if the finalized content is identical to what we have in the security section.
 
 Only FIPS 140-2 compliant TLS protocols, ciphers, and curve types are allowed to be used as listed below.
-* The supported TLS versions are `TLS v1.2` and `TLS v1.3`.
-* The supported cipher suites are:
-  * `TLS v1.2`: `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, `ECDHE-ECDSA-AES-256-GCM-SHA384`
-  * `TLS v1.3`: `TLS-AES-128-GCM-SHA256`, `TLS-AES-256-GCM-SHA384`
+* The supported TLS version is `TLS v1.2`.
+* The supported cipher suites are `ECDHE-RSA-AES-128-GCM-SHA256`, `ECDHE-RSA-AES-256-GCM-SHA384`, `ECDHE-ECDSA-AES-128-GCM-SHA256`, and `ECDHE-ECDSA-AES-256-GCM-SHA384`.
 * The supported curve types are `P-256`, `P-384` and `P-521`.
 
 Support for encrypted private keys is not available, as the cryptographic modules used for decrypting password protected keys are not FIPS validated. If an output or any other component with an SSL key that is password protected is configured, the components will fail to load the key. When running in FIPS mode, you must provide non-encrypted keys.
