@@ -110,11 +110,64 @@ To create a stacked bar chart:
 
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Stacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false }, <3>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}
+```
+
+1. `bar_stacked` renders bars with colored segments stacked on top of each other, showing both the total and the contribution of each category.
+2. `breakdown_by` splits each bar into segments by the top 3 HTTP response codes, ranked by document count.
+3. `other_bucket` groups any remaining response codes beyond the top 3 into an **Other** segment.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -162,8 +215,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `breakdown_by` splits each bar into segments by the top 3 HTTP response codes, ranked by document count.
 3. `other_bucket` groups any remaining response codes beyond the top 3 into an **Other** segment.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
@@ -183,11 +240,63 @@ To create an unstacked bar chart:
 
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Unstacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false },
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}
+```
+
+1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
+2. `breakdown_by` creates a separate bar for each of the top 3 HTTP response codes within every time bucket.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -234,8 +343,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
 2. `breakdown_by` creates a separate bar for each of the top 3 HTTP response codes within every time bucket.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 ## Bar chart settings [settings]
 
@@ -398,11 +511,64 @@ The following examples show various configuration options that you can use for b
 
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Weekly website traffic per region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "x": { "operation": "date_histogram", "field": "timestamp", "suggested_interval": "1w" }, <1>
+      "y": [
+        {
+          "operation": "count",
+          "label": "Page Views", <2>
+          "format": { "type": "number" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 9, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}
+```
+
+1. `suggested_interval: "1w"` sets each bar to represent one week of data.
+2. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count."
+3. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+4. `other_bucket` groups remaining regions into an **Other** segment so the total is always accounted for.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -450,8 +616,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 3. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
 4. `other_bucket` groups remaining regions into an **Other** segment so the total is always accounted for.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Request error rate per host (with threshold)**
 :   Monitor error rates across hosts with a target threshold line:
@@ -471,11 +641,83 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Request error rate per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_horizontal", <1>
+      "x": {
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "label": "Hosts",
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <2>
+      },
+      "y": [
+        {
+          "operation": "formula", <3>
+          "formula": "count(kql='response.keyword > \"300\"') / count()",
+          "label": "Error rate",
+          "format": { "type": "percent" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "reference_lines", <4>
+      "thresholds": [
+        {
+          "operation": "static_value",
+          "value": 0.1,
+          "format": { "type": "percent" },
+          "label": "Maximum acceptable error rate",
+          "color": { "type": "static", "color": "#BD271E" },
+          "stroke_dash": "dashed",
+          "text": { "visible": true }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}
+```
+
+1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
+2. `rank_by: "alphabetical"` sorts the hosts alphabetically so the order is consistent regardless of error rate.
+3. `formula` computes the error rate as the ratio of responses above 300 to total requests. `response.keyword` is stored as a string in the sample data.
+4. A `reference_lines` layer draws a threshold at 10% so hosts exceeding it are immediately visible. `stroke_dash: "dashed"` and `color` mark it red and dashed. `text.visible: true` displays the label on the line.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -542,5 +784,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 3. `formula` computes the error rate as the ratio of responses above 300 to total requests. `response.keyword` is stored as a string in the sample data.
 4. A `reference_lines` layer draws a threshold at 10% so hosts exceeding it are immediately visible. `stroke_dash: "dashed"` and `color` mark it red and dashed. `text.visible: true` displays the label on the line.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::

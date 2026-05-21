@@ -178,11 +178,63 @@ The following examples show various configuration options for building impactful
 
 ![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a single-level treemap where each rectangle represents a file extension and its size reflects total bandwidth consumed.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap", <1>
+  "title": "Bytes per file extension",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Total bytes",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <2>
+      "fields": ["extension.keyword"],
+      "limit": 6,
+      "includes": { "values": [".+"], "as_regex": true },
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "direction": "desc", "metric_index": 0 },
+      "increase_accuracy": true
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } } <3>
+}
+```
+
+1. `treemap` renders nested rectangles whose area is proportional to the metric value.
+2. The `terms` grouping limits to the top 6 extensions ranked by `sum of bytes` (descending), uses `includes` with `as_regex: true` and pattern `.+` to exclude blank values, groups any remaining extensions into an **Other** bucket, and enables accuracy mode.
+3. `percentage` displays each extension's share of total bytes instead of the raw count.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -229,8 +281,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. The `terms` grouping limits to the top 6 extensions ranked by `sum of bytes` (descending), uses `includes` with `as_regex: true` and pattern `.+` to exclude blank values, groups any remaining extensions into an **Other** bucket, and enables accuracy mode.
 3. `percentage` displays each extension's share of total bytes instead of the raw count.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Flights by carrier and destination country**
 :   Show how flight volume is distributed across airlines and their destination countries, using two hierarchy levels:
@@ -243,11 +299,60 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a two-level treemap: the outer rectangles represent airlines and the inner rectangles show destination countries, revealing how each carrier's flight volume is distributed geographically.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap",
+  "title": "Flights by carrier and destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Flights",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["Carrier"],
+      "limit": 5
+    },
+    {
+      "operation": "terms", <2>
+      "fields": ["DestCountry"],
+      "limit": 5
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. The first `group_by` entry creates the outer (parent) rectangles, one per airline carrier.
+2. The second `group_by` entry nests destination countries inside each carrier, forming the two-level hierarchy.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -291,8 +396,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. The first `group_by` entry creates the outer (parent) rectangles, one per airline carrier.
 2. The second `group_by` entry nests destination countries inside each carrier, forming the two-level hierarchy.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Response status per host**
 :   See which hosts handle the most traffic and how their response status breaks down:
@@ -309,11 +418,79 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example nests KQL-based response status categories inside host rectangles, combining `terms` and `filters` groupings to show both traffic volume and health per host.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap",
+  "title": "Response status per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["host.keyword"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false },
+      "color": {
+        "mode": "gradient",
+        "palette": "default",
+        "gradient": [{ "type": "color_code", "value": "#ffc7db" }],
+        "sort": "desc"
+      }
+    },
+    {
+      "operation": "filters", <2>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ]
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. `other_bucket` adds an "Other" segment for hosts outside the top 3. The `color` gradient applies a pink hue (`#ffc7db`) across the host values, reversed with `sort: "desc"` to match the UI example.
+2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -376,5 +553,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. `other_bucket` adds an "Other" segment for hosts outside the top 3. The `color` gradient applies a pink hue (`#ffc7db`) across the host values, reversed with `sort: "desc"` to match the UI example.
 2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::

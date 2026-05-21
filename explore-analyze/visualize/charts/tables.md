@@ -277,11 +277,56 @@ The following examples show various configuration options you can use for buildi
 
 ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a table that displays the top 5 request pages ranked by unique visitor count.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Top pages by unique visitors",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "terms", <1>
+      "fields": ["request.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "clientip",
+      "label": "Unique visitors",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Uses `terms` on `request.keyword` to create one row per top page, limited to 5.
+2. Counts unique values of `clientip` to measure distinct visitors per page.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -321,8 +366,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. Uses `terms` on `request.keyword` to create one row per top page, limited to 5.
 2. Counts unique values of `clientip` to measure distinct visitors per page.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Sales by date and continent (pivot table)**
 :   Create a pivot table showing customer counts across different continents over time:
@@ -336,11 +385,65 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a pivot table that shows unique customer counts per day, split into columns by the top 3 continents.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Sales by date and continent",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1d",
+      "label": "Sales per day"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "customer_id",
+      "label": "Unique customers",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    }
+  ],
+  "split_metrics_by": [ <3>
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Groups rows by `order_date` using a date histogram.
+2. Counts unique `customer_id` values as the table metric.
+3. Splits the metric into separate columns for the top 3 continents.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -389,8 +492,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. Counts unique `customer_id` values as the table metric.
 3. Splits the metric into separate columns for the top 3 continents.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Document comparison with custom ranges**
 :   Compare metrics across custom-defined ranges:
@@ -407,11 +514,63 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Additional styling**:
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a table that compares total bytes transferred across custom-defined file size ranges.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Document comparison with custom ranges",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "range", <1>
+      "field": "bytes",
+      "ranges": [
+        { "lte": 10240, "label": "Below 10KB" },
+        { "gt": 10240, "label": "Above 10KB" }
+      ], <2>
+      "label": "File size"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "sum", <3>
+      "field": "bytes",
+      "label": "Total bytes transferred",
+      "format": { "type": "bytes" },
+      "alignment": "right",
+      "color": { "type": "auto" },
+      "apply_color_to": "value",
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Uses a `range` operation to create custom row buckets from the `bytes` field.
+2. Defines two ranges, each with a label: documents up to 10 KB (`Below 10KB`) and documents above 10 KB (`Above 10KB`).
+3. The `sum` metric sums the `bytes` field within each range, right-aligns the column, and applies dynamic `auto` coloring to highlight ranges with higher byte transfers.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -458,8 +617,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. Defines two ranges, each with a label: documents up to 10 KB (`Below 10KB`) and documents above 10 KB (`Above 10KB`).
 3. The `sum` metric sums the `bytes` field within each range, right-aligns the column, and applies dynamic `auto` coloring to highlight ranges with higher byte transfers.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Weekly sales with percentage change**
 :   Show week-over-week sales trends with calculated percentage changes:
@@ -476,11 +639,63 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
          * **Value format**: `Percent`, 2 decimals
          * **Text alignment**: `Right`
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a table that shows weekly order counts alongside a formula-based percentage change column.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Weekly sales with percentage change",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1w",
+      "label": "Week"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Orders this week",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    },
+    {
+      "operation": "formula", <2>
+      "formula": "count() / count(shift='1w') - 1", <3>
+      "label": "Change from last week",
+      "format": { "type": "percent", "decimals": 2 },
+      "alignment": "right"
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Groups rows by `order_date` with a weekly date histogram.
+2. Uses a `formula` metric to compute a calculated column. Formula metrics must not include a `filter` field — omitting it is required for time shift to work correctly.
+3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -527,5 +742,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. Uses a `formula` metric to compute a calculated column. Formula metrics must not include a `filter` field — omitting it is required for time shift to work correctly.
 3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

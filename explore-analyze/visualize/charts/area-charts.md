@@ -216,11 +216,71 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
    
 ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Traffic by geographic region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp", "include_empty_rows": true }, <2>
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Records",
+          "format": { "type": "number", "decimals": 0 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 3, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+        "aggregate_first": true <5>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 },
+    "points": { "visibility": "visible" }
+  }
+}
+```
+
+1. Uses `area_stacked` to show each region's contribution to the total traffic.
+2. `include_empty_rows: true` fills time buckets with no data as zero rather than leaving gaps.
+3. Shows only the top 3 geographic destinations.
+4. `other_bucket` groups all remaining destinations into an **Other** segment.
+5. `aggregate_first: true` ranks destinations globally across the full time range, ensuring the same top 3 appear consistently in every bucket.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -275,8 +335,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 4. `other_bucket` groups all remaining destinations into an **Other** segment.
 5. `aggregate_first: true` ranks destinations globally across the full time range, ensuring the same top 3 appear consistently in every bucket.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Response code over time with annotations**
 
@@ -293,11 +357,97 @@ Visualizing HTTP response codes over time, highlighting the proportion of succes
 
 ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Response code over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "bottom", "layout": { "type": "list" } },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_percentage", <1>
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Count of records",
+          "format": { "type": "number", "decimals": 2 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "filters", <2>
+        "filters": [
+          {
+            "filter": { "expression": "response.keyword >= 200 and response.keyword < 400" },
+            "label": "Success/Redirection"
+          },
+          {
+            "filter": { "expression": "response.keyword >= 400 and response.keyword < 500" },
+            "label": "Client Error"
+          },
+          { "filter": { "expression": "response.keyword >= 500" }, "label": "Server Error" }
+        ]
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "annotations", <3>
+      "ignore_global_filters": true,
+      "events": [
+        {
+          "type": "query",
+          "label": "Event",
+          "query": { "language": "kql", "expression": "tags:error AND tags:security" },
+          "time_field": "timestamp",
+          "color": { "type": "static", "color": "#ee72a6" },
+          "visible": true,
+          "icon": "asterisk"
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 }
+  }
+}
+```
+
+1. `area_percentage` normalizes each time bucket to 100% so you see the proportion of each response class, not absolute counts.
+2. `filters` breakdown creates one area per KQL filter instead of splitting by field values.
+3. The `annotations` layer marks events matching `tags:error AND tags:security` on the time axis with a pink asterisk.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -378,8 +528,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `filters` breakdown creates one area per KQL filter instead of splitting by field values.
 3. The `annotations` layer marks events matching `tags:error AND tags:security` on the time axis with a pink asterisk.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 
 

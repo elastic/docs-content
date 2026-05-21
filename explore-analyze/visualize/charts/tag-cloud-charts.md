@@ -157,11 +157,51 @@ The following examples show various configuration options for building impactful
 
 ![Tag cloud showing popular request URLs](/explore-analyze/images/tag-cloud-example-urls.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a tag cloud of the 30 most frequently requested URLs, where tag size reflects how often each URL was accessed.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "tag_cloud",
+  "title": "Popular request URLs",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["request.keyword"], <1>
+    "limit": 30, <2>
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+  },
+  "styling": {
+    "orientation": "horizontal",
+    "font_size": { "min": 18, "max": 72 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `request.keyword` provides the text for each tag, showing the full URL path. Tags are ranked by count so the most-visited URLs appear largest.
+2. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -196,8 +236,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `request.keyword` provides the text for each tag, showing the full URL path. Tags are ranked by count so the most-visited URLs appear largest.
 2. `limit: 30` displays the top 30 URLs, which is within the recommended range for readable tag clouds.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Most popular flight destinations**
 :   Show which cities receive the most flights, with larger tags indicating higher traffic:
@@ -210,11 +254,58 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Tag cloud showing most popular flight destinations](/explore-analyze/images/tag-cloud-example-destinations.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a tag cloud of destination city names from the flights sample data, with the most popular destinations appearing in larger text.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "tag_cloud",
+  "title": "Most popular flight destinations",
+  "filters": [],
+  "query": { "expression": "" },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "tag_by": {
+    "operation": "terms",
+    "fields": ["DestCityName"], <1>
+    "limit": 30,
+    "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+    "color": {
+      "mode": "gradient", <2>
+      "palette": "default",
+      "mapping": [],
+      "sort": "desc",
+      "gradient": [{ "type": "from_palette", "palette": "default", "index": 0 }]
+    }
+  },
+  "styling": {
+    "orientation": "angled", <3>
+    "font_size": { "min": 18, "max": 112 },
+    "caption": { "visible": true }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `DestCityName` provides human-readable city names as tag labels, sized by flight count so the busiest destinations appear largest.
+2. The `gradient` color mode with `sort: "desc"` applies the palette spectrum from the most to the least popular city, reinforcing the frequency ranking with color intensity.
+3. `orientation: "angled"` allows tags to appear at multiple angles, making better use of space when many cities compete for room.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -256,5 +347,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. The `gradient` color mode with `sort: "desc"` applies the palette spectrum from the most to the least popular city, reinforcing the frequency ranking with color intensity.
 3. `orientation: "angled"` allows tags to appear at multiple angles, making better use of space when many cities compete for room.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::

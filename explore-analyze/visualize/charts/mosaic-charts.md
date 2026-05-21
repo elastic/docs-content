@@ -213,11 +213,79 @@ The following examples show various configuration options for building impactful
 
 ![Mosaic chart showing response status by operating system](/explore-analyze/images/mosaic-example-response-by-os.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a mosaic chart where column widths represent OS popularity and the colored rows within each column show the proportion of success, client error, and server error responses.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "mosaic", <1>
+  "title": "Response status by operating system",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "group_by": [ <2>
+    {
+      "operation": "filters",
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ],
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "from_palette", "palette": "default", "index": 0 } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "from_palette", "palette": "default", "index": 8 } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "from_palette", "palette": "default", "index": 6 } }
+        ]
+      }
+    }
+  ],
+  "group_breakdown_by": [ <3>
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "visible": true, "mode": "percentage" } }
+}
+```
+
+1. `mosaic` renders a grid where both column width and row height encode proportions, making distribution comparisons clear across two dimensions.
+2. `group_by` defines the vertical axis (rows). Using `filters` here creates three named rows — one per response status category — each colored from the `mapping` so success, client errors, and server errors are immediately distinguishable.
+3. `group_breakdown_by` defines the horizontal axis (columns). Each OS becomes a column whose width reflects its share of total traffic.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -280,8 +348,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `group_by` defines the vertical axis (rows). Using `filters` here creates three named rows — one per response status category — each colored from the `mapping` so success, client errors, and server errors are immediately distinguishable.
 3. `group_breakdown_by` defines the horizontal axis (columns). Each OS becomes a column whose width reflects its share of total traffic.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Product categories by continent**
 :   Show how product preferences vary across regions:
@@ -293,11 +365,60 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Mosaic chart showing product categories by continent](/explore-analyze/images/mosaic-example-category-by-continent.png "=70%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example uses `terms` on both axes to compare product category preferences across continents, revealing how shopping behavior varies by region.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "mosaic",
+  "title": "Product categories by continent",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metric": { "operation": "count", "empty_as_null": true },
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["category.keyword"], <1>
+      "limit": 9,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+    }
+  ],
+  "group_breakdown_by": [
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"], <2>
+      "limit": 9,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "visible": true, "mode": "percentage" } }
+}
+```
+
+1. `category.keyword` on the vertical axis (`group_by`) creates one row per product category. The `color` mapping assigns a distinct palette color to each category, making each category trackable across columns.
+2. `geoip.continent_name` on the horizontal axis (`group_breakdown_by`) creates one column per continent, with width proportional to order volume from that region.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -341,5 +462,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `category.keyword` on the vertical axis (`group_by`) creates one row per product category. The `color` mapping assigns a distinct palette color to each category, making each category trackable across columns.
 2. `geoip.continent_name` on the horizontal axis (`group_breakdown_by`) creates one column per continent, with width proportional to order volume from that region.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::

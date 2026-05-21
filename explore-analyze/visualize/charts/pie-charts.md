@@ -88,11 +88,66 @@ Donut charts are pie charts with a hollow center. The empty space can provide a 
 
 ![Setting the donut hole size in Pie chart Style settings](/explore-analyze/images/pie-chart-donut.png "50%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a donut chart sliced by the top 5 log tag values, with raw counts shown inside each slice.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie", <1>
+  "title": "Logs per type",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "nested": false },
+  "metrics": [{ "operation": "count", "empty_as_null": true }],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["tags.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [ <2>
+          { "values": ["success"], "color": { "type": "from_palette", "palette": "default", "index": 0 } },
+          { "values": ["error"],   "color": { "type": "from_palette", "palette": "default", "index": 6 } },
+          { "values": ["info"],    "color": { "type": "from_palette", "palette": "default", "index": 3 } },
+          { "values": ["warning"], "color": { "type": "from_palette", "palette": "default", "index": 9 } },
+          { "values": ["security"],"color": { "type": "from_palette", "palette": "default", "index": 4 } }
+        ]
+      }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "donut_hole": "m", <3>
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "absolute" }
+  }
+}
+```
+
+1. `pie` creates a pie or donut chart. The `donut_hole` style setting controls the size of the center hole.
+2. `color.mapping` pins each tag value to a specific palette index so colors stay consistent even when data changes.
+3. `donut_hole: "m"` hollows out the center of the pie. Valid values are `"s"` (small), `"m"` (medium), and `"l"` (large).
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -142,8 +197,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `color.mapping` pins each tag value to a specific palette index so colors stay consistent even when data changes.
 3. `donut_hole: "m"` hollows out the center of the pie. Valid values are `"s"` (small), `"m"` (medium), and `"l"` (large).
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 ### Compare multiple metrics in a pie chart [multiple-metrics]
 
@@ -180,11 +239,66 @@ This example uses the **Kibana Sample Data Logs** data set and groups requests b
 
 This example demonstrates the core value of multiple metrics: using KQL filters on each metric to compare distinct categories. Unlike **Slice by**, which splits a single metric by category values, multiple metrics lets you define completely custom groupings — even those that don't exist as a field in your data.
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example uses multiple metrics mode (no `group_by`) where each metric counts documents matching a specific file extension, with each metric assigned a static color.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie",
+  "title": "Server resource consumption",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [ <1>
+    {
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Processing time", <2>
+      "filter": { "expression": "extension: zip", "language": "kql" },
+      "color": { "type": "static", "color": "#eaae01" }
+    },
+    {
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Bandwidth",
+      "filter": { "expression": "extension: gz", "language": "kql" },
+      "color": { "type": "static", "color": "#61a2ff" }
+    },
+    {
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Memory usage",
+      "filter": { "expression": "extension: rpm", "language": "kql" },
+      "color": { "type": "static", "color": "#16c5c0" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
+}
+```
+
+1. Three entries in `metrics` without a `group_by` activates multiple-metrics mode, where each metric becomes its own slice.
+2. Each metric uses a `filter` to scope its count to a specific file extension, and a `color` with `type: "static"` to pin it to a specific hex color regardless of palette.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -234,8 +348,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. Three entries in `metrics` without a `group_by` activates multiple-metrics mode, where each metric becomes its own slice.
 2. Each metric uses a `filter` to scope its count to a specific file extension, and a `color` with `type: "static"` to pin it to a specific hex color regardless of palette.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 ### Group smaller values into a single slice [other-category]
 
@@ -263,11 +381,52 @@ The resulting chart shows the 3 most common hosts, with all remaining hosts comb
 
 ![Pie chart showing top 3 hosts with remaining hosts grouped as Other](/explore-analyze/images/pie-chart-group-as-other.png)
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example shows the top 3 hosts as individual slices and groups all remaining hosts into an "Other" slice using the `other_bucket` option.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie",
+  "title": "Top hosts with Other",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [{ "operation": "count", "empty_as_null": true }],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["host.keyword"],
+      "limit": 3, <1>
+      "other_bucket": { "include_documents_without_field": true } <2>
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
+}
+```
+
+1. `limit: 3` limits the chart to the top 3 hosts by count.
+2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -303,8 +462,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `limit: 3` limits the chart to the top 3 hosts by count.
 2. `other_bucket` groups every remaining host into a single "Other" slice, including documents that lack the field entirely.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 ## Pie chart settings [pie-chart-settings]
 
@@ -442,11 +605,70 @@ The following examples show various configuration options for building impactful
 
 ![Donut chart with traffic by sources](/explore-analyze/images/pie-chart-example-traffic-by-source.png "=60%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example uses formula-based metrics to count visits from specific referrer domains, producing one slice per traffic source without a `group_by` dimension.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie",
+  "title": "Website traffic by source",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "nested": false },
+  "metrics": [
+    {
+      "operation": "formula", <1>
+      "formula": "count(kql='referer : *elastic*')", <2>
+      "label": "Elastic website",
+      "color": { "type": "auto" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='referer : *facebook*')",
+      "label": "Facebook",
+      "color": { "type": "auto" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='referer:*twitter*')",
+      "label": "Twitter/X",
+      "color": { "type": "auto" }
+    },
+    {
+      "operation": "formula",
+      "formula": "count(kql='referer : *nytimes*')",
+      "label": "NY Times",
+      "color": { "type": "auto" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "donut_hole": "m",
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
+}
+```
+
+1. `formula` lets each metric apply its own KQL filter, creating slices that represent custom-defined categories.
+2. The `kql` parameter inside `count()` filters documents to only those whose `referer` field matches the given pattern.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -500,8 +722,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `formula` lets each metric apply its own KQL filter, creating slices that represent custom-defined categories.
 2. The `kql` parameter inside `count()` filters documents to only those whose `referer` field matches the given pattern.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Revenue distribution by product category**
 :   Show how revenue is distributed across product categories:
@@ -513,11 +739,60 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Pie chart with revenue by product category](/explore-analyze/images/pie-chart-example-revenue-by-product-category.png "=60%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a pie chart that sums revenue per product category from the eCommerce sample data, showing each category's share of total revenue.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie",
+  "title": "Revenue distribution by product category",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [
+    {
+      "operation": "sum", <1>
+      "field": "taxful_total_price",
+      "empty_as_null": true
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms",
+      "fields": ["category.keyword"], <2>
+      "limit": 6,
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+      "color": { "mode": "categorical", "palette": "default", "mapping": [] }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": {
+    "labels": { "visible": true, "position": "outside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
+}
+```
+
+1. `sum` on `taxful_total_price` sizes each slice by total revenue rather than document count.
+2. `category.keyword` splits the pie by product category, with each of the top 6 categories becoming its own slice.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -561,8 +836,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 1. `sum` on `taxful_total_price` sizes each slice by total revenue rather than document count.
 2. `category.keyword` splits the pie by product category, with each of the top 6 categories becoming its own slice.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::
 
 **Error distribution by type**
 :   Display the proportion of different error types in your application:
@@ -578,11 +857,74 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Donut chart with distribution of errors by type](/explore-analyze/images/pie-chart-example-response-distribution.png "=60%")
 
-:::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example uses the `filters` grouping operation to define custom slices based on HTTP response code ranges, rather than relying on field values directly.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "pie",
+  "title": "Error distribution by type",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "nested": false },
+  "metrics": [
+    {
+      "operation": "count",
+      "empty_as_null": true
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters", <1>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client Error"
+        },
+        { "filter": { "expression": "response.keyword >= \"500\"" }, "label": "Server Error" },
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success"
+        }
+      ],
+      "color": {
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Client Error"], "color": { "type": "color_code", "value": "#CC5642" } },
+          { "values": ["Server Error"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Success"],      "color": { "type": "color_code", "value": "#209280" } }
+        ]
+      }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "donut_hole": "l",
+    "labels": { "visible": true, "position": "inside" },
+    "values": { "visible": true, "mode": "percentage" }
+  }
+}
+```
+
+1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx). The `color` mapping assigns explicit hex colors to each category — red for client errors, yellow for server errors, green for success.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -640,5 +982,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 
 1. `filters` creates one slice per KQL query, letting you define arbitrary categories such as "Client Error" (4xx), "Server Error" (5xx), and "Success" (2xx/3xx). The `color` mapping assigns explicit hex colors to each category — red for client errors, yellow for server errors, green for success.
 
+::::
+
+:::::
+
 For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
-:::
+:::::::

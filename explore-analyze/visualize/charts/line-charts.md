@@ -213,11 +213,78 @@ See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a line chart that plots the moving average of RAM, broken down by the top 4 hosts.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Average RAM per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "bottom" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h"
+      },
+      "y": [
+        {
+          "operation": "moving_average", <1>
+          "of": {
+            "operation": "average",
+            "field": "machine.ram",
+            "format": { "type": "bytes", "decimals": 0 },
+            "filter": { "expression": "" }
+          },
+          "label": "Moving average of RAM",
+          "format": { "type": "bytes", "decimals": 0 },
+          "filter": { "expression": "" },
+          "color": {
+            "type": "static",
+            "color": "#6092c0"
+          }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <3>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "linear" }
+  }
+}
+```
+
+1. `moving_average` over the `average` of `machine.ram` smooths out spikes and produces a trend line. `decimals: 0` keeps the byte labels clean.
+2. `breakdown_by` splits the chart into one line per host, limited to the top 4 values of `host.keyword`.
+3. `rank_by: "alphabetical"` is required here because `moving_average` is a pipeline aggregation and cannot be used to sort breakdown buckets.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -279,8 +346,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `breakdown_by` splits the chart into one line per host, limited to the top 4 values of `host.keyword`.
 3. `rank_by: "alphabetical"` is required here because `moving_average` is a pipeline aggregation and cannot be used to sort breakdown buckets.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Unique IPs over time**
 :   Visualize the number of unique client IPs throughout the day to identify traffic patterns and peak usage periods:
@@ -295,11 +366,68 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a line chart that plots the unique count of client IPs over time, with linear interpolation for missing values.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Unique IPs over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h" <1>
+      },
+      "y": [
+        {
+          "operation": "unique_count", <2>
+          "field": "clientip",
+          "label": "Unique IPs",
+          "format": {
+            "type": "number",
+            "decimals": 0
+          },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": {
+      "type": "linear" <3>
+    }
+  }
+}
+```
+
+1. `suggested_interval: "1h"` sets the date histogram to bucket by hour.
+2. `unique_count` on `clientip` counts distinct IP addresses per time bucket, tracking unique visitors rather than total requests.
+3. `fitting.type: "linear"` connects data points across empty buckets with a straight line instead of leaving gaps.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -351,8 +479,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `unique_count` on `clientip` counts distinct IP addresses per time bucket, tracking unique visitors rather than total requests.
 3. `fitting.type: "linear"` connects data points across empty buckets with a straight line instead of leaving gaps.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 ---
 

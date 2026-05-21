@@ -133,11 +133,71 @@ To add trend indicators to your metric visualization:
 
 The metric visualization now shows the secondary metric as a comparison with a trend indicator.
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 Send the following request to create a metric that counts unique orders for the current period and compares the result to the previous week using a time-shifted formula.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "metric",
+  "title": "Total orders with trend",
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "unique_count",
+      "field": "order_id",
+      "empty_as_null": true,
+      "label": "Total orders",
+      "subtitle": "Weekly",
+      "color": { "type": "auto" }
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "count(order_id,shift='\''1w'\'')", <1>
+      "label": "Compared to previous week",
+      "compare": { <2>
+        "to": "primary",
+        "palette": "compare_to",
+        "icon": true,
+        "value": true
+      },
+      "color": { "type": "none" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": {
+    "primary": { "position": "bottom", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "right" } },
+    "secondary": {
+      "label": { "visible": true, "placement": "before" },
+      "value": { "alignment": "right" }
+    }
+  }
+}
+```
+
+1. `shift='1w'` runs the same count offset by one week, providing the comparison baseline.
+2. `compare.to: "primary"` displays the *difference* between primary and secondary instead of the raw secondary value. `palette: "compare_to"` colors the badge green for increases and red for decreases. `icon: true` adds a directional arrow.
+
+:::{note}
+When `compare.to: "primary"` is first applied, Kibana sets the secondary metric **Label** to **Auto**, which displays **Difference**. To use a custom label, select the secondary metric in the Lens editor, set **Label** to **Custom**, and type your text. Once saved, the custom label is stored in the `label` field of the payload and preserved in exports.
+:::
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -192,8 +252,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 When `compare.to: "primary"` is first applied, Kibana sets the secondary metric **Label** to **Auto**, which displays **Difference**. To use a custom label, select the secondary metric in the Lens editor, set **Label** to **Custom**, and type your text. Once saved, the custom label is stored in the `label` field of the payload and preserved in exports.
 :::
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 ### Show progress by setting a maximum value [metric-progress]
 
@@ -225,11 +289,73 @@ The metric visualization now shows a progress bar indicating how close the curre
 You can combine progress bars with secondary metrics to show both progress toward a goal and trends over time. To do this, add both a maximum value and a secondary metric to your visualization.
 ::::
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a metric that shows the current count of users against a target of 2,500, with a progress bar and a weekly comparison badge.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "metric",
+  "title": "Quarterly net new users",
+  "filters": [],
+  "query": { "expression": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "formula",
+      "formula": "count()",
+      "label": "Quarterly net new users",
+      "subtitle": "Target: 2500",
+      "background_chart": { <1>
+        "type": "bar",
+        "max_value": { "operation": "formula", "formula": "2500" } <2>
+      },
+      "color": { <3>
+        "type": "dynamic",
+        "range": "absolute",
+        "steps": [
+          { "lt": 1000, "color": "#f6726a" },
+          { "gte": 1000, "lt": 2000, "color": "#fcd883" },
+          { "gte": 2000, "color": "#24c292" }
+        ]
+      }
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "count(shift='\''1w'\'')",
+      "label": "Since last week",
+      "compare": { "to": "primary", "palette": "compare_to", "icon": true, "value": true },
+      "color": { "type": "none" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": { "label": { "visible": true, "placement": "before" }, "value": { "alignment": "left" } }
+  }
+}
+```
+
+1. `background_chart.type: "bar"` renders a horizontal progress bar behind the metric value.
+2. `max_value` with `formula: "2500"` sets the target. The bar fills proportionally as the metric approaches this value. You can also use `operation: "static_value", value: 2500` for a plain number.
+3. `dynamic` color with `absolute` thresholds changes the tile color as the metric progresses — red below 1,000, yellow between 1,000 and 2,000, and green at or above 2,000.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -286,8 +412,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 2. `max_value` with `formula: "2500"` sets the target. The bar fills proportionally as the metric approaches this value. You can also use `operation: "static_value", value: 2500` for a plain number.
 3. `dynamic` color with `absolute` thresholds changes the tile color as the metric progresses — red below 1,000, yellow between 1,000 and 2,000, and green at or above 2,000.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 ## Metric chart settings [settings]
 
@@ -425,11 +555,73 @@ The following examples show various configuration options that you can use for b
 
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a metric that calculates the ratio of successful HTTP requests using a formula with a KQL filter, and adds a fixed target value as a secondary metric.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "metric",
+  "title": "Successful requests (2xx)",
+  "filters": [],
+  "query": { "expression": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "formula",
+      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)", <1>
+      "label": "Successful requests (2xx)",
+      "format": { "type": "percent", "decimals": 1, "compact": true },
+      "background_chart": { "type": "trend" }, <2>
+      "color": { <3>
+        "type": "dynamic",
+        "range": "absolute",
+        "steps": [
+          { "lt": 0.75, "color": "#f6726a" },
+          { "gte": 0.75, "lt": 0.95, "color": "#fcd883" },
+          { "gte": 0.95, "color": "#24c292" }
+        ]
+      },
+      "apply_color_to": "background" <4>
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "0.95", <5>
+      "format": { "type": "percent", "decimals": 2 },
+      "label": "Target:",
+      "color": { "type": "none" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": { "label": { "visible": true, "placement": "before" }, "value": { "alignment": "right" } }
+  }
+}
+```
+
+1. `response.keyword` is stored as a string in the sample data, so the comparison values must be quoted.
+2. `background_chart.type: "trend"` renders a sparkline in the background showing how the metric evolves over time.
+3. `dynamic` color with `absolute` thresholds applies different colors based on the metric value — red below 75%, yellow between 75% and 95%, green at or above 95%.
+4. `apply_color_to: "background"` colors the tile background rather than the number itself.
+5. The secondary metric displays a fixed 95% target for comparison.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -486,8 +678,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 4. `apply_color_to: "background"` colors the tile background rather than the number itself.
 5. The secondary metric displays a fixed 95% target for comparison.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Ratio of successful requests per origin**
 :   This example builds on the previous one to display the percentage of successful requests for the 10 countries with the most incoming requests on a monitoring dashboard:
@@ -506,11 +702,79 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Metric with below target successful request percentage](../../images/metric-example-successful-requests-rate-top-countries.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example builds on the previous one by adding a breakdown that splits the success rate into one tile per destination country.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "metric",
+  "title": "Successful requests per origin",
+  "filters": [],
+  "query": { "expression": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "formula",
+      "formula": "count(kql='''response.keyword >= \"200\" and response.keyword < \"300\"''') / count(response.keyword)",
+      "label": "Successful requests (2xx)",
+      "format": { "type": "percent", "decimals": 1, "compact": true },
+      "background_chart": { "type": "trend" },
+      "color": {
+        "type": "dynamic",
+        "range": "absolute",
+        "steps": [
+          { "lt": 0.75, "color": "#f6726a" },
+          { "gte": 0.75, "lt": 0.95, "color": "#fcd883" },
+          { "gte": 0.95, "color": "#24c292" }
+        ]
+      },
+      "apply_color_to": "background"
+    },
+    {
+      "type": "secondary",
+      "operation": "formula",
+      "formula": "0.95",
+      "format": { "type": "percent", "decimals": 2 },
+      "label": "Target:",
+      "color": { "type": "none" }
+    }
+  ],
+  "breakdown_by": { <1>
+    "operation": "terms",
+    "fields": ["geo.dest"],
+    "limit": 10, <2>
+    "rank_by": { "type": "custom", "operation": "count", "field": "___records___", "direction": "desc" }, <3>
+    "columns": 5 <4>
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": { "label": { "visible": true, "placement": "before" }, "value": { "alignment": "right" } }
+  }
+}
+```
+
+1. `breakdown_by` splits the metric into separate tiles, one per destination country.
+2. Shows the top 10 countries by document count.
+3. `rank_by` with `field: "___records___"` ranks tiles by document count, ensuring the countries with the most traffic appear first.
+4. `columns: 5` arranges the tiles in a 5-column grid.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -573,8 +837,12 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 3. `rank_by` with `field: "___records___"` ranks tiles by document count, ensuring the countries with the most traffic appear first.
 4. `columns: 5` arranges the tiles in a 5-column grid.
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Website traffic with trend**
 :   Monitor current traffic and show whether it's increasing or decreasing compared to the previous period:
@@ -590,11 +858,77 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
 
 ![Metric showing weekly visits with weekly comparison trend](../../images/metric-website-views-weekly-trend-example.png "=70%")
 
-::::{dropdown} Create this chart using the API
+:::::::{dropdown} Create this chart using the API
 :applies_to: { stack: preview 9.4, serverless: preview }
 
 This example creates a metric that counts page views and compares the current value to the previous week using a time-shifted formula.
 
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "metric",
+  "title": "Weekly page views",
+  "filters": [],
+  "query": { "expression": "" },
+  "metrics": [
+    {
+      "type": "primary",
+      "operation": "count",
+      "empty_as_null": true,
+      "label": "Page views",
+      "format": { <1>
+        "type": "number",
+        "decimals": 0,
+        "compact": true
+      }
+    },
+    {
+      "type": "secondary", <2>
+      "operation": "formula",
+      "formula": "count(shift='\''1w'\'')", <3>
+      "label": "Compared to previous week",
+      "compare": { <4>
+        "to": "primary",
+        "palette": "compare_to",
+        "icon": true,
+        "value": true
+      },
+      "color": { "type": "none" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": {
+    "primary": { "position": "top", "labels": { "alignment": "left" }, "value": { "sizing": "auto", "alignment": "left" } },
+    "secondary": {
+      "label": { "visible": true, "placement": "before" },
+      "value": { "alignment": "right" }
+    }
+  }
+}
+```
+
+1. `compact: true` displays large numbers in abbreviated form (for example, 1.2K).
+2. The secondary metric appears below the primary value as a comparison badge.
+3. `shift='1w'` runs the same count query offset by one week.
+4. `compare.to: "primary"` displays the difference from the primary rather than the raw secondary value. `palette: "compare_to"` colors the badge green for increases and red for decreases. `icon: true` adds a directional arrow (↑ or ↓).
+
+:::{note}
+When `compare.to: "primary"` is first applied, Kibana sets the secondary metric **Label** to **Auto**, which displays **Difference**. To use a custom label, select the secondary metric in the Lens editor, set **Label** to **Custom**, and type your text. Once saved, the custom label is stored in the `label` field of the payload and preserved in exports.
+:::
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
 ```bash
 curl -X POST "${KIBANA_URL}/api/visualizations" \
   -H "Authorization: ApiKey ${API_KEY}" \
@@ -655,5 +989,9 @@ curl -X POST "${KIBANA_URL}/api/visualizations" \
 When `compare.to: "primary"` is first applied, Kibana sets the secondary metric **Label** to **Auto**, which displays **Difference**. To use a custom label, select the secondary metric in the Lens editor, set **Label** to **Custom**, and type your text. Once saved, the custom label is stored in the `label` field of the payload and preserved in exports.
 :::
 
-For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
 ::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
