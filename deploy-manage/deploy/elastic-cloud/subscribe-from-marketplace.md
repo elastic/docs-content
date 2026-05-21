@@ -18,10 +18,9 @@ Trial availability and duration can vary depending on the marketplace.
 When subscribing from a marketplace, your marketplace email is used for your [Elastic account](../../../cloud-account/update-your-email-address.md).
 
 * [AWS Marketplace](aws-marketplace.md)
-* [Azure Marketplace](azure-native-isv-service.md)
+* [Microsoft Marketplace](azure-native-isv-service.md)
 * [GCP Marketplace](google-cloud-platform-marketplace.md)
 * [Heroku](heroku.md)
-
 
 ::::{tip}
 You can also purchase {{ecloud}} through a reseller on any of these marketplaces. Contact your reseller to learn more.
