@@ -31,13 +31,38 @@ Use these reference widths to keep panels aligned across a row:
 | Quarter     | 12      |
 | Sixth       | 8       |
 
+Size panels to match what they show. Use these as starting points and adjust for the density of your data:
+
+| Chart type | Recommended width | Recommended height (rows) |
+| ---------- | ----------------- | ------------------------- |
+| KPI / metric | Quarter (12) | 4–6 |
+| Bar chart, gauge, pie | Half (24) | 8–12 |
+| Line chart, area chart (time series) | Full (48) | 12–15 |
+| Heat map | Full (48) | 15–25 |
+| Table | Half (24) to full (48) | 15+ |
 
 Consider the following best practices to keep dashboards scannable as you add panels:
 
-* **Match panel shape to the chart.** Single-value metrics and KPIs work in compact panels of any shape. Time series, bar charts with many categories, and tables need horizontal room so axes and columns are not cramped. Pie and donut charts read best in roughly square panels.
+* **Place KPIs and key trends above the fold.** On a 1080p screen, roughly 20–24 rows are visible without scrolling. Put metrics in the top row so viewers see the most important information first.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
-* **Use width to signal importance.** Give primary charts more horizontal room, and group dense KPI metrics into narrower panels along a single row. Use the column reference widths above to keep panels aligned.
-* **Separate primary from secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
+* **Match panel width to importance.** Give primary charts more horizontal room, and group compact KPI metrics into narrower panels along a single row.
+* **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
+
+When you use the [Dashboards API](create-dashboards-programmatically.md) to author dashboards, you specify `x`, `y`, `w`, and `h` as grid coordinates directly. The dashboard editor's automatic packing no longer applies, so the same guidelines apply in your panel definitions.
+
+### Panel limits [dashboard-panel-limits]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Each dashboard enforces the following limits:
+
+- Up to 100 top-level items (panels, including unpinned controls, and sections combined)
+- Up to 100 panels inside each section
+- Up to 100 [pinned controls](add-controls.md)
+
+These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 100 sections at the top level, and 100 panels inside each of those sections.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
