@@ -11,15 +11,10 @@ products:
 
 # Lens [lens]
 
-**Lens** is {{kib}}'s modern, point-and-click visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
+**Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 
-The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
-
-Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
-
-Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
-
-For complex queries, cross-index data, or prototyping from Discover, consider [ES|QL visualizations](esorql.md) instead.
+- **Point-and-click**: configure your visualization interactively by selecting fields from a [data view](/explore-analyze/find-and-organize/data-views.md), choosing aggregations, and setting dimensions and display options. No query writing required. Data views are created automatically when you [upload a file](/manage-data/ingest/upload-data-files.md) or [add sample data](/manage-data/ingest/sample-data.md); otherwise, you need to create one manually.
+- **Query**: write an [{{esql}}](elasticsearch://reference/query-languages/esql.md) or [PromQL](elasticsearch://reference/query-languages/esql/commands/promql.md) query to retrieve and transform your data, then configure the visualization on top of the result. Best suited for cross-index queries, complex filtering, and custom calculations. Refer to [ES|QL visualizations](esorql.md) for details.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
