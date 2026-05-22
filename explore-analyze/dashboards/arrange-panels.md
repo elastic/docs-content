@@ -37,7 +37,7 @@ Size panels to match what they show. Use these as starting points and adjust for
 | ---------- | ----------------- | ------------------------- |
 | KPI / metric | Quarter (12) | 4–6 |
 | Bar chart, gauge, pie | Half (24) | 8–12 |
-| Line chart, area chart (time series) | Half (24) to full (48) | 12–15 |
+| Line chart, area chart (time series) | Third (16) to full (48) | 12–15 |
 | Heat map | Full (48) | 15–25 |
 | Table | Half (24) to full (48) | 15+ |
 
@@ -47,6 +47,18 @@ Consider the following best practices to keep dashboards scannable as you add pa
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
 * **Match panel width to importance.** Give primary charts more horizontal room, and group compact KPI metrics into narrower panels along a single row.
 * **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
+
+A common starting layout puts KPIs first, charts in the middle, and a detail table at the bottom. Use two half-width charts per row, or three at third width when comparing multiple dimensions:
+
+```text
+┌──────────┬──────────┬──────────┬──────────┐
+│  KPI     │  KPI     │  KPI     │  KPI     │  4 × 12 cols, ~5 rows
+├──────────┴──────────┼──────────┴──────────┤
+│  Chart              │  Chart              │  2 × 24 cols, ~10–12 rows
+├─────────────────────┴─────────────────────┤
+│  Table or distribution chart              │  48 cols, 15+ rows
+└───────────────────────────────────────────┘
+```
 
 When you use the [Dashboards API](create-dashboards-programmatically.md) to author dashboards, you specify `x`, `y`, `w`, and `h` as grid coordinates directly. The dashboard editor's automatic packing no longer applies, so the same guidelines apply in your panel definitions.
 
