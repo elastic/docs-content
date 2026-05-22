@@ -43,7 +43,7 @@ After Attack discovery outlines your threat landscape, use Elastic AI Assistant 
 
 ## Use AI Assistant to analyze a threat [use-case-incident-reporting-use-ai-assistant-to-analyze-a-threat]
 
-From a discovery on the Attack discovery page, click **View in AI Assistant** to start a chat that includes the discovery as context.
+From a discovery on the Attack discovery page, click **View in AI Assistant** or **Add to chat** to start a chat that includes the discovery as context.
 
 :::{image} /solutions/images/security-attck-disc-remediate-threat.gif
 :alt: A dialogue with AI Assistant that has the attack discovery as context
@@ -62,7 +62,7 @@ At any point in a conversation with AI Assistant, you can add data, narrative su
 
 ## Generate reports [use-case-incident-reporting-create-a-case-using-ai-assistant]
 
-From the AI Assistant dialog window, click **Add to case** (![Add to case icon](/solutions/images/security-icon-add-to-case.png "title =20x20")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
+From the AI Assistant dialog window, click **Add to case** (![Add to case icon](/solutions/images/security-icon-add-to-case.png "title =20x20")) next to a message to add the information in that message to a [case](/solutions/security/investigate/security-cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
 
 If you add a message that contains a discovery to a case, AI Assistant automatically adds the attack summary and all associated alerts to the case. You can also add AI Assistant messages that contain remediation steps and relevant data to the case.
 

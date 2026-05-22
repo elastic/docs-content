@@ -22,7 +22,7 @@ The data you store in {{es}} generally falls into one of two categories:
 To help you manage your data, {{es}} offers you the following options: {{ilm-cap}}, Data stream lifecycle, and Elastic Curator.
 
 ::::{note}
-[Data rollup](/manage-data/lifecycle/rollup.md) is a deprecated {{es}} feature that allows you to manage the amount of data that your cluster stores, similar to the downsampling functionality of{{ilm-init}} and data stream lifecycle. Do not use this feature for new deployments.
+[Data rollup](/manage-data/lifecycle/rollup.md) is a deprecated {{es}} feature that allows you to manage the amount of data that your cluster stores, similar to the downsampling functionality of {{ilm-init}} and data stream lifecycle. Do not use this feature for new deployments.
 ::::
 
 ## {{ilm-init}} [ilm]

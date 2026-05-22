@@ -4,6 +4,11 @@ applies_to:
   deployment:
     ess: all
     ece: all
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elastic-stack
+  - id: elasticsearch
 ---
 
 # Resiliency in ECH and ECE deployments

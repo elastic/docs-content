@@ -3,6 +3,14 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Elastic Inference
+products:
+  - id: elasticsearch
+  - id: machine-learning
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Elastic {{infer-cap}}
@@ -17,6 +25,7 @@ There are several ways to perform {{infer}} in the {{stack}}, depending on the u
 
   - [Elastic {{infer-cap}} Service](elastic-inference/eis.md): a managed service that runs {{infer}} outside your cluster resources.
   - [Trained models deployed in your cluster](machine-learning/nlp/ml-nlp-overview.md): models run on your own {{ml}} nodes
+  - [External inference](/explore-analyze/elastic-inference/external.md): third-party services that provide models.
 
 - **Access methods:**
 

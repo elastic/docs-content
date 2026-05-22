@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
+description: Step-by-step guide for setting up the EDOT Collector and SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces.
 applies_to:
   stack:
   serverless:

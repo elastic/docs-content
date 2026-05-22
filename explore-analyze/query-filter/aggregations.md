@@ -25,7 +25,7 @@ An aggregation summarizes your data as metrics, statistics, or other analytics. 
 
 ## Run an aggregation [run-an-agg]
 
-You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) on `my-field`:
+You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API]({{es-apis}}operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) on `my-field`:
 
 ```console
 GET /my-index-000001/_search

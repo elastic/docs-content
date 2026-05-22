@@ -54,8 +54,8 @@ Click the star icon (![Favorite icon](/solutions/images/security-favorite-icon.p
 ## View and refine Timeline results [refine-timeline-results]
 
 You can select whether Timeline displays detection alerts and other raw events, or just alerts. By default, Timeline displays both raw events and alerts. To hide raw events and display alerts only:
-* {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Select the `Security solution alerts` data view.
-* {applies_to}`stack: ga 9.0` Click **Data view** to the left of the KQL query bar, then select **Show only detection alerts**.
+* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Select the `Security solution alerts` data view.
+* {applies_to}`stack: ga 9.0-9.1` Click **Data view** to the left of the KQL query bar, then select **Show only detection alerts**.
 
 
 ## Inspect an event or alert [timeline-inspect-events-alerts]
@@ -170,7 +170,7 @@ When you convert a [Timeline template](/solutions/security/investigate/timeline-
 
 To attach a Timeline to a new or existing case, open it, click **Attach to case** in the upper right corner, then select either **Attach to new case** or **Attach to existing case**.
 
-To learn more about cases, refer to [Cases](/solutions/security/investigate/cases.md).
+To learn more about cases, refer to [Cases](/solutions/security/investigate/security-cases.md).
 
 
 ## Manage existing Timelines [manage-timelines-ui]

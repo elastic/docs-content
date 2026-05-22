@@ -12,11 +12,9 @@ products:
 
 # Grant users access to secured resources [observability-synthetics-feature-roles]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 Typically you need to create the following separate roles:
 
@@ -34,8 +32,7 @@ In general, you'll work with the following privilege types:
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 * **Viewer**:
 

@@ -29,11 +29,9 @@ We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](
 
 ## Prerequisites [_prerequisites]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
@@ -49,8 +47,7 @@ We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * An Elastic deployment. If you don’t have one yet, go to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, select **Create hosted deployment**.
@@ -71,11 +68,9 @@ We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](
 
 ## Collect your data [_collect_your_data]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
@@ -100,8 +95,7 @@ We recommend using the [Elastic Distribution of OpenTelemetry (EDOT) Collector](
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.

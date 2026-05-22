@@ -1,0 +1,1 @@
+If you upgrade an {{es}} cluster that uses deprecated cluster or index settings that are not used in the target version, they are archived. You should remove any archived settings after upgrading. For more information, refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archived-settings.md).

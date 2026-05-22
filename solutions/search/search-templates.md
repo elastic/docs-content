@@ -19,9 +19,9 @@ If you use {{es}} for a custom application, search templates let you change your
 
 ### Create a search template [create-search-template] 
 
-To create or update a search template, use the [create stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script).
+To create or update a search template, use the [create stored script API]({{es-apis}}operation/operation-put-script).
 
-The request’s `source` supports the same parameters as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s request body.`source` also accepts [Mustache](https://mustache.github.io/) variables, from an open source project [mustache.java](https://github.com/spullara/mustache.java).
+The request’s `source` supports the same parameters as the [search API]({{es-apis}}operation/operation-search)'s request body.`source` also accepts [Mustache](https://mustache.github.io/) variables, from an open source project [mustache.java](https://github.com/spullara/mustache.java).
 
 Typically [Mustache](https://mustache.github.io/) variables are enclosed in double curly brackets: `{{my-var}}`. When you run a templated search, {{es}} replaces these variables with values from `params`. To learn more about mustache syntax - see [Mustache.js manual](http://mustache.github.io/mustache.5.html) Search templates must use a `lang` of `mustache`.
 
@@ -51,7 +51,7 @@ PUT _scripts/my-search-template
 ### Validate a search template [validate-search-template] 
 
 $$$_validating_templates$$$
-To test a template with different `params`, use the [render search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template).
+To test a template with different `params`, use the [render search template API]({{es-apis}}operation/operation-render-search-template).
 
 ```console
 POST _render/template
@@ -65,7 +65,7 @@ POST _render/template
 }
 ```
 
-When rendered, the template outputs a [search request body](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
+When rendered, the template outputs a [search request body]({{es-apis}}operation/operation-search).
 
 ```console-result
 {
@@ -106,7 +106,7 @@ POST _render/template
 
 ### Run a templated search [run-templated-search] 
 
-To run a search with a search template, use the [search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template). You can specify different `params` with each request.
+To run a search with a search template, use the [search template API]({{es-apis}}operation/operation-search-template). You can specify different `params` with each request.
 
 ```console
 GET my-index/_search/template
@@ -120,7 +120,7 @@ GET my-index/_search/template
 }
 ```
 
-The response uses the same properties as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s response.
+The response uses the same properties as the [search API]({{es-apis}}operation/operation-search)'s response.
 
 ```console-result
 {
@@ -155,7 +155,7 @@ The response uses the same properties as the [search API](https://www.elastic.co
 
 ### Run multiple templated searches [run-multiple-templated-searches] 
 
-To run multiple templated searches with a single request, use the [multi search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template). These requests often have less overhead and faster speeds than multiple individual searches.
+To run multiple templated searches with a single request, use the [multi search template API]({{es-apis}}operation/operation-msearch-template). These requests often have less overhead and faster speeds than multiple individual searches.
 
 ```console
 GET my-index/_msearch/template
@@ -168,13 +168,13 @@ GET my-index/_msearch/template
 
 ### Get search templates [get-search-templates] 
 
-To retrieve a search template, use the [get stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script).
+To retrieve a search template, use the [get stored script API]({{es-apis}}operation/operation-get-script).
 
 ```console
 GET _scripts/my-search-template
 ```
 
-To get a list of all search templates and other stored scripts, use the [cluster state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
+To get a list of all search templates and other stored scripts, use the [cluster state API]({{es-apis}}operation/operation-cluster-state).
 
 ```console
 GET _cluster/state/metadata?pretty&filter_path=metadata.stored_scripts
@@ -183,7 +183,7 @@ GET _cluster/state/metadata?pretty&filter_path=metadata.stored_scripts
 
 ### Delete a search template [delete-search-template] 
 
-To delete a search template, use the [delete stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script).
+To delete a search template, use the [delete stored script API]({{es-apis}}operation/operation-delete-script).
 
 ```console
 DELETE _scripts/my-search-template
@@ -697,14 +697,16 @@ PUT _scripts/my-search-template
 {
   "script": {
     "lang": "mustache",
-    "source": {
+    "source": """
+    {
       "query":{
         "multi_match":{
           "query": "{{query_string}}",
-          "fields": """[{{#text_fields}}{{user_name}},{{/text_fields}}]"""
+          "fields": [{{#text_fields}}"{{field_name}}",{{/text_fields}}]
         }
       }
     }
+    """
   }
 }
 ```
@@ -719,10 +721,10 @@ POST _render/template
     "query_string": "My string",
     "text_fields": [
       {
-        "user_name": "John"
+        "field_name": "first_name"
       },
       {
-        "user_name": "kimchy"
+        "field_name": "last_name"
       }
     ]
   }
@@ -737,7 +739,7 @@ When rendered, template outputs:
     "query": {
       "multi_match": {
         "query": "My string",
-        "fields": "[John,kimchy,]"
+        "fields": ["first_name","last_name",]
       }
     }
   }
@@ -756,14 +758,16 @@ PUT _scripts/my-search-template
 {
   "script": {
     "lang": "mustache",
-    "source": {
+    "source": """
+    {
       "query":{
         "multi_match":{
           "query": "{{query_string}}",
-          "fields": """[{{#text_fields}}{{user_name}}{{^last}},{{/last}}{{/text_fields}}]"""
+          "fields": [{{#text_fields}}"{{field_name}}"{{^last}},{{/last}}{{/text_fields}}]
         }
       }
     }
+    """
   }
 }
 ```
@@ -778,11 +782,11 @@ POST _render/template
     "query_string": "My string",
     "text_fields": [
       {
-        "user_name": "John",
+        "field_name": "first_name",
         "last": false
       },
       {
-        "user_name": "kimchy",
+        "field_name": "last_name",
         "last": true
       }
     ]
@@ -798,7 +802,10 @@ When rendered the template outputs:
     "query": {
       "multi_match": {
         "query": "My string",
-        "fields": "[John,kimchy]"
+        "fields": [
+          "first_name",
+          "last_name"
+        ]
       }
     }
   }

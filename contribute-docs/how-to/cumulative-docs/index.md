@@ -3,7 +3,7 @@
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulatively. This means that in our Markdown-based docs, there is no longer a new documentation set published with every minor release: the same page stays valid over time and shows version-related evolutions.
@@ -11,12 +11,12 @@ In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulative
 :::{important}
 This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like EDOT docs. It also includes our unversioned products: Serverless and Elastic Cloud.
 
-Nothing changes for our ASCIIDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, etc.
+Nothing changes for our AsciiDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, etc.
 :::
 
 ## Reader experience
 
-With cumulative documentation, when a user arrives in our documentation from an outside source, they land on a page that is a single source of truth. This means it will be more likely that the page they land on contains content that applies to them regardless of which version or deployment type they are using.
+With cumulative documentation, when a user arrives in our documentation from an outside source, they land on a page that is a single source of truth. This means it is more likely that the page they land on contains content that applies to them regardless of which version or deployment type they are using.
 
 Users can then compare and contrast differences on a single page to understand what is available to them and explore the ways certain offerings might improve their experience.
 
@@ -27,7 +27,7 @@ Users can then compare and contrast differences on a single page to understand w
 
 ## Contributor experience
 
-With cumulative documentation, there is a single "source of truth" for each feature, which helps us to maintain consistency, accuracy, and maintainability of our documentation over time, and avoids "drift" between multiple similar sets of documentation.
+With cumulative documentation, there is a single "source of truth" for each feature, which helps with consistency, accuracy, and maintainability of our documentation over time. It also avoids "drift" between multiple similar sets of documentation.
 
 As new minor versions are released, we want users to be able to distinguish which content applies to their own ecosystem and product versions without having to switch between different versions of a page.
 
@@ -46,7 +46,7 @@ You should also generally tag content when:
 * Functionality changes state, like going from beta to GA
 * Availability varies, like being available in Elastic Cloud Enterprise but not in Elastic Cloud Hosted
 
-**For detailed guidance on contributing to cumulative docs, refer to [guidelines.md](guidelines.md).**
+**For detailed guidance on contributing to cumulative docs, refer to [](guidelines.md).**
 
 ### When _not_ to tag content
 

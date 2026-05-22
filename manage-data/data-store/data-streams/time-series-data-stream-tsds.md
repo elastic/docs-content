@@ -69,18 +69,17 @@ You can also simplify dimension definitions by using [pass-through](elasticsearc
 
 Metrics are numeric measurements that change over time. Documents in a TSDS typically contain one or more metric fields. 
 
-To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The following field types support the `time_series_metric` parameter:
-
-* All [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
-* [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md), for internal use during downsampling (rarely user-populated)
-
-The valid values for `time_series_metric` are `counter` and `gauge`:
+To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The valid values for `time_series_metric` are `counter`, `gauge` and `histogram`:
 
 `counter`
-:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. 
+:   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 
 `gauge`
-:   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. 
+:   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).
+
+`histogram` {applies_to}`stack: preview 9.3, ga 9.4`
+:   A metric that tracks the distribution of numerical values, like latency or size distributions. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md), [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) 
+and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
 
 #### `_tsid` metadata field [tsid]
 
@@ -100,19 +99,22 @@ A time series data stream works like a regular data stream, with some key differ
 * **Dimension-based routing:** The routing logic uses dimension fields to map all data points of a time series to the same shard, improving storage efficiency and query performance. Duplicate data points are rejected.
 * **Sorting:** A TSDS uses internal [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) to order shard segments by `_tsid` and `@timestamp`, for better compression. Time series data streams do not use `index.sort.*` settings.
 * **Source field:** A TSDS uses [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions) and [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) applied to the `_source` field.
-* {applies_to}`stack: ga 9.3` **Doc value Skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow {{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
+* {applies_to}`stack: ga 9.3` **Doc values skippers:** A TSDS enables [docvalue skippers](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md#doc-values-skippers) on its `_tsid`, `@timestamp`, [dimension](#time-series-dimension), and [metric](#time-series-metric) fields. Because `tsid` and `@timestamp` are part of the index sort, the skippers allow \{\{es}} to avoid building backing indexes for these fields, meaning lower disk usage and faster ingest speed.
+* {applies_to}`stack: ga 9.4` **Sequence numbers are disabled:** A TSDS [disables sequence numbers](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-disable-sequence-numbers) by default to substantially improve storage efficiency (up to 2x). 
+
+  When sequence numbers are disabled, [optimistic concurrency control](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md) gets disabled, causing [update-by-query]({{es-apis}}/operation/operation-update-by-query) and [delete-by-query]({{es-apis}}/operation/operation-delete-by-query) operations to execute with weaker consistency. These capabilities are normally not relevant for time series workloads, but if you need them for your application, you can restore sequence numbers by setting `index.disable_sequence_numbers: false` in the index template of the relevant TSDS.
 
 ## Query time series data
 ```{applies_to}
-serverless: preview
+stack: preview 9.2-9.3, ga 9.4+
 ```
 
-You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for time series data. It also enables the use of aggregation functions that efficiently process metrics per time series, before aggregating results.
-
+You can use the {{esql}} [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md) to query time series data streams. The `TS` command is optimized for processing time series data efficiently and enables the use of time series [aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) with window support.
 
 ## Next steps [tsds-whats-next]
 
 * Try the [quickstart](/manage-data/data-store/data-streams/quickstart-tsds.md) for a hands-on introduction
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
+* [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint

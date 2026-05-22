@@ -5,6 +5,9 @@ applies_to:
 description: Learn how to ingest, store, and manage data in Elasticsearch. Understand
   indices, mappings, text analysis, data lifecycle management, and data migration between
   clusters.
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Manage data

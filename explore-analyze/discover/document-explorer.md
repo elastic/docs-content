@@ -11,7 +11,7 @@ description: Customize the Discover interface to optimize your data exploration.
 
 # Customize the Discover view [document-explorer]
 
-Adjust the **Discover** interface to match your workflow and data exploration needs. Customize table columns, density, and row height to display your data effectively. Configure sample sizes, sorting, and layout to focus on the information that matters most.
+**Discover** offers flexible customization options to optimize your data exploration experience. Adjust the document table layout, modify column arrangements, control chart, results table, and sidebar visibility, and configure display density to focus on the data that matters most. These customizations persist across sessions and help you work more efficiently with your {{product.elasticsearch}} data.
 
 :::{tip}
 **Discover** provides default [context-aware experiences](context-aware-discover.md) tailored to your data type. You can further customize these views to suit your specific needs.
@@ -25,7 +25,12 @@ Adjust the **Discover** interface to match your workflow and data exploration ne
 
 ## Hide or resize areas [document-explorer-c]
 
-* You can hide and show the chart and the fields list using the available collapse and expand button in the corresponding area.
+* To show or hide sections of the Discover view:
+  * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Use the **Panels visibility** button group to show or hide areas of **Discover** independently. The button group stays in a fixed position regardless of which sections are shown or hidden.
+      * {icon}`transitionTopOut` / {icon}`transitionTopIn` to show or hide the chart
+      * {icon}`transition_bottom_out` / {icon}`transition_bottom_in` to show or hide the results table
+      * {icon}`transitionLeftOut` / {icon}`transitionLeftIn` to show or hide the fields list
+  * {applies_to}`stack: ga 9.0-9.3` Use the available collapse and expand button in the corresponding area to show or hide the chart and the fields list.
 * Adjust the width and height of each area by dragging their border to the size you want. The size of each area is saved in your browser for the next time you open **Discover**.
 
 

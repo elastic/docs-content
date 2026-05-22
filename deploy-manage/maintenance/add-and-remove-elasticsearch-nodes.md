@@ -49,7 +49,74 @@ You can enroll additional nodes on your local machine to experiment with how an 
 If you installed your new {{es}} node using an [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster) or [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md#existing-cluster) package, then you can pass your enrollment token to the [`elasticsearch-reconfigure-node`](elasticsearch://reference/elasticsearch/command-line-tools/reconfigure-node.md) tool to simplify the configuration process.
 :::
 
-## Master-eligible nodes [add-elasticsearch-nodes-master-eligible]
+## Remove a node from an {{es}} cluster
+
+When you need to remove a node from an {{es}} cluster, you must first empty the node by relocating all its shards to other nodes in the cluster, and then stop the {{es}} process on that node. This ensures that no data is lost and the cluster continues to operate normally during the removal process.
+
+:::{important}
+If the node to remove is a master-eligible node, review the [master-eligible node considerations](#modules-discovery-removing-nodes) before proceeding and do not remove multiple master-eligible nodes at the same time.
+:::
+
+1. Optional: Stop indexing and perform a synced flush:
+
+    If you can afford to stop indexing for a short period, stop indexing before removing the node from the cluster and then perform a synced flush. This operation helps speed up the recovery process that occurs after a node is removed. To perform a synced flush, run the following command:
+
+    ```console
+    POST /_flush/synced
+    ```
+
+2. Retrieve the node name:
+
+    You need to know the node name to remove it from the cluster. You can retrieve the node name by running the following command:
+
+    ```console
+    GET /_cat/nodes?v
+    ```
+
+    This command returns a list of nodes in the cluster along with their node names. Identify the node you want to remove and make a note of its name.
+
+3. Remove the node from the cluster:
+
+    After you've determined the node name, you can begin removing the node from the cluster by excluding it from shard allocation. This tells {{es}} to stop allocating shards to the node and to relocate any existing shards to other nodes in the cluster. This step can be skipped for nodes that do not hold data, such as dedicated master or coordinating-only nodes.
+
+    To exclude the node from shard allocation, update the cluster settings using its node name. Run the following command, replacing `<node_name>` with the node name you retrieved in the previous step. This command instructs {{es}} to move all shards from the specified node to other nodes in the cluster.
+
+    ```console
+    PUT /_cluster/settings
+    {
+      "persistent": {
+        "cluster.routing.allocation.exclude._name": "<node_name>"
+      }
+    }
+    ```
+
+    Wait for the shard relocation process to complete before proceeding to the next step. You can monitor the progress of shard relocation by running the following command:
+
+    ```console
+    GET /_cat/shards?v
+    ```
+
+4. Stop the {{es}} process on the node:
+
+    After all shards have relocated to the other nodes, you can safely [stop the {{es}} process](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#stopping-elasticsearch) on the node you want to remove. Depending on your installation method and operating system, the command to stop {{es}} may vary. For example, if you are using systemd on a Linux system, you can run the following command:
+
+    ```console
+    sudo systemctl stop elasticsearch
+    ```
+
+    When the process stops, the node disconnects from the cluster and no longer appears as part of the cluster.
+
+5. Verify the cluster health:
+
+    Finally, verify the health of the cluster by running the following command:
+
+    ```console
+    GET /_cluster/health
+    ```
+
+    Ensure that the cluster status is green, meaning that all shards are properly allocated, and verify that the number of nodes in the cluster has been reduced by one.
+
+## Master-eligible node considerations [add-elasticsearch-nodes-master-eligible]
 
 As nodes are added or removed {{es}} maintains an optimal level of fault tolerance by automatically updating the cluster’s *voting configuration*, which is the set of [master-eligible nodes](../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) whose responses are counted when making decisions such as electing a new master or committing a new cluster state.
 
@@ -69,7 +136,7 @@ More precisely, if you shut down half or more of the master-eligible nodes all a
 
 As long as there are at least three master-eligible nodes in the cluster, as a general rule it is best to remove nodes one-at-a-time, allowing enough time for the cluster to [automatically adjust](../distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md) the voting configuration and adapt the fault tolerance level to the new set of nodes.
 
-If there are only two master-eligible nodes remaining then neither node can be safely removed since both are required to reliably make progress. To remove one of these nodes you must first inform {{es}} that it should not be part of the voting configuration, and that the voting power should instead be given to the other node. You can then take the excluded node offline without preventing the other node from making progress. A node which is added to a voting configuration exclusion list still works normally, but {{es}} tries to remove it from the voting configuration so its vote is no longer required. Importantly, {{es}} will never automatically move a node on the voting exclusions list back into the voting configuration. Once an excluded node has been successfully auto-reconfigured out of the voting configuration, it is safe to shut it down without affecting the cluster’s master-level availability. A node can be added to the voting configuration exclusion list using the [Voting configuration exclusions](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions) API. For example:
+If there are only two master-eligible nodes remaining then neither node can be safely removed since both are required to reliably make progress. To remove one of these nodes you must first inform {{es}} that it should not be part of the voting configuration, and that the voting power should instead be given to the other node. You can then take the excluded node offline without preventing the other node from making progress. A node which is added to a voting configuration exclusion list still works normally, but {{es}} tries to remove it from the voting configuration so its vote is no longer required. Importantly, {{es}} will never automatically move a node on the voting exclusions list back into the voting configuration. Once an excluded node has been successfully auto-reconfigured out of the voting configuration, it is safe to shut it down without affecting the cluster’s master-level availability. A node can be added to the voting configuration exclusion list using the [Voting configuration exclusions]({{es-apis}}operation/operation-cluster-post-voting-config-exclusions) API. For example:
 
 ```console
 # Add node to voting configuration exclusions list and wait for the system

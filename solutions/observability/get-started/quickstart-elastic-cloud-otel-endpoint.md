@@ -5,8 +5,10 @@ mapped_pages:
 applies_to:
   serverless: ga
   deployment:
-    ess: preview
-    self: unavailable
+    ech:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
@@ -23,46 +25,156 @@ The {{motlp}} is designed for the following use cases:
 Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to your Serverless project or {{ech}} cluster.
 
 :::{note}
-:applies_to: { ess:, stack: preview 9.2 }
-The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:applies_to: ech:
+On {{ech}}, the Managed OTLP endpoint requires a deployment version 9.0 or later.
 :::
 
 ## Send data to Elastic
 
 Follow these steps to send data to Elastic using the {{motlp}}.
 
-::::::{stepper}
+:::::::{stepper}
 
-:::::{step} Retrieve your endpoint and API key
+::::::{step} Find your endpoint
 
-To retrieve your {{motlp}} endpoint address and API key, follow these steps:
+:::::{applies-switch}
+::::{applies-item} serverless:
+1. Log in to the {{ecloud}} Console.
+2. Find your project and select **Manage**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+4. Copy the endpoint value.
 
-::::{applies-switch}
-:::{applies-item} serverless:
-1. In {{ecloud}}, create an Observability project or open an existing one.
-2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
-
-Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
-:::
-
-:::{applies-item} ess:
-{applies_to}`stack: preview 9.2`
-1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
-2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
+:::{tip}
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}. Copy the authentication headers value from the same screen to skip the next step.
 :::
 ::::
 
+::::{applies-item} ech:
+1. Log in to the {{ecloud}} Console.
+2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
+4. Copy the public endpoint value.
+::::
 :::::
 
-:::::{step} Configure your OTLP shipper
+::::::
+
+::::::{step} Create an API key
+
+:::{note}
+The {{motlp}} validates API keys using {{product.apm}} application privileges. Index-level privilege scoping is not yet supported, meaning that API keys with custom index-level role descriptors return a `PermissionDenied` error.
+:::
+
+:::::{applies-switch}
+::::{applies-item} serverless:
+
+:::{dropdown} Using {{kib}}
+1. Go to **Admin and Settings** → **API keys**.
+2. Click **Create API key**, enter a name, and enable **Control security privileges**.
+3. In the role descriptors box, enter the following privileges:
+
+    ```json
+    {
+      "otlp_writer": {
+        "applications": [
+          {
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
+          }
+        ]
+      }
+    }
+    ```
+
+4. Click **Create API key** and copy the encoded value.
+:::
+
+:::{dropdown} Using the {{es}} API
+Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) API:
+
+```console
+POST /_security/api_key
+{
+  "name": "otlp-writer",
+  "role_descriptors": {
+    "otlp_writer": {
+      "applications": [
+        {
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
+        }
+      ]
+    }
+  }
+}
+```
+:::{note}
+The API key authenticates the OTLP shipper to the {{motlp}}. To send data through the endpoint, the API key needs, at minimum, the `event:write` privilege for the `apm` application.
+:::
+:::
+::::
+
+::::{applies-item} ech:
+:::{dropdown} Using {{kib}}
+1. Go to **Stack Management** → **API keys**.
+2. Click **Create API key**, enter a name, and enable **Control security privileges**.
+3. In the role descriptors box, enter the following privileges:
+
+    ```json
+    {
+      "otlp_writer": {
+        "applications": [
+          {
+            "application": "apm",
+            "resources": ["*"],
+            "privileges": ["event:write"]
+          }
+        ]
+      }
+    }
+    ```
+
+4. Click **Create API key** and copy the encoded value.
+:::
+
+:::{dropdown} Using the {{es}} API
+Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API:
+
+```console
+POST /_security/api_key
+{
+  "name": "otlp-writer",
+  "role_descriptors": {
+    "otlp_writer": {
+      "applications": [
+        {
+          "application": "apm",
+          "resources": ["*"],
+          "privileges": ["event:write"]
+        }
+      ]
+    }
+  }
+}
+```
+:::{note}
+The API key authenticates the OTLP shipper to the {{motlp}}. The `event:write` privilege for the `apm` application is the minimum required to send data through the endpoint.
+:::
+:::
+::::
+:::::
+
+::::::
+
+::::::{step} Configure your OTLP shipper
 
 The final step is to configure your Collector or SDK to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
 
-::::{tab-set}
+:::::{tab-set}
 
-:::{tab-item} OpenTelemetry Collector example
+::::{tab-item} OpenTelemetry Collector
 To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collector, configure the `otlp` exporter:
 
 ```yaml
@@ -74,23 +186,23 @@ exporters:
 ```
 
 Set the API key as an environment variable or directly in the configuration as shown in the example.
-:::
+::::
 
-:::{tab-item} OpenTelemetry SDK example
+::::{tab-item} OpenTelemetry SDK
 To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
 ```
-:::
+::::
 
-:::{tab-item} Kubernetes example
+::::{tab-item} Kubernetes
 You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
 
-The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it.
+The API key from {{kib}} does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it.
 
-For example, if your API key from Kibana is `abc123`, run:
+For example, if your API key from {{kib}} is `abc123`, run:
 
 ```bash
 kubectl create secret generic otlp-api-key \
@@ -122,13 +234,13 @@ env:
 :::{important}
 When creating a Kubernetes secret, always encode the full string in Base64, including the scheme (for example, `ApiKey abc123`).
 :::
-:::
-
 ::::
 
 :::::
 
 ::::::
+
+:::::::
 
 ## Differences from the Elastic APM Endpoint
 
@@ -136,34 +248,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Troubleshooting
 
-The following sections provide troubleshooting information for the {{motlp}}.
-
-### You don't have a Collector or SDK running
-
-Don't have a collector or SDK running? Spin up an EDOT collector in few steps:
-
-* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
-* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
-
-### Api Key prefix not found
-
-The following error is due to an improperly formatted API key:
-
-```txt
-Exporting failed. Dropping data.
-{"kind": "exporter", "data_type": }
-"Unauthenticated desc = ApiKey prefix not found"
-```
-
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
-
-### Error: too many requests
-
-If you see HTTP `429 Too Many Requests` errors when sending data through the Elastic Cloud Managed OTLP Endpoint (mOTLP) endpoint, your project might be hitting ingest rate limits.
-
-Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](/troubleshoot/ingest/opentelemetry/429-errors-motlp.md) troubleshooting guide for details on causes, rate limits, and solutions.
-
+Refer to the [Troubleshoot EDOT](opentelemetry://reference/motlp/troubleshooting.md) guide for troubleshooting information for the {{motlp}}.
 
 ## Provide feedback
 

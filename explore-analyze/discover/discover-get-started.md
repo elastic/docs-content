@@ -31,13 +31,25 @@ Learn how to explore your {{product.elasticsearch}} data using **Discover**. Thi
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/discover-logs.md)**
   * **[Metrics exploration](/solutions/observability/infra-and-hosts/discover-metrics.md)** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
-% LINK/PAGE TBD  * **Traces exploration**
-% * Security:
-% LINK/PAGE TBD  * **Security data exploration**
+  * **[Traces exploration](/solutions/observability/apm/discover-traces.md)**
+  {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+* Security:
+  * **[Security data exploration](/solutions/security/investigate/discover-security.md)** {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
 
 This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
 
 When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
+
+### Inspect context-aware profiles
+
+To confirm which context-aware experience is active and review the solution and data source contexts that determine it:
+
+1. Open the Inspector:
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+   * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
+2. Open the **View** dropdown, then select **Profiles**.
+
+The listed profiles show details such as the active solution and data source contexts.
 
 * If you don't already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on {{ecloud}}.
 * You must have data in {{es}}. This tutorial uses the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
@@ -56,9 +68,9 @@ First, select the data you want to explore and set the time range.
 2. Select the {{data-source}} that contains the data you want to explore. For this tutorial, select **{{kib}} Sample Data eCommerce** if you've installed the sample data.
    
    ::::{tip}
-   By default, {{kib}} requires a {{data-source}} to access your {{es}} data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). 
-   
-   Alternatively, you can try {{esql}}, which lets you query any data you have in {{es}} without selecting a {{data-source}} first.
+   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your {{es}} data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+
+   You can also [use {{esql}}](try-esql.md), which lets you query any data you have in {{es}} without selecting a {{data-source}} first.
    ::::
 
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -143,9 +155,10 @@ For geo point fields (![Geo point field icon](/explore-analyze/images/kibana-geo
 
 ## Step 4: Explore individual documents [look-inside-a-document]
 
-Dive deeper into individual documents to view all their fields and values.
+$$$document-explorer-expand-documents$$$
+Dive into an individual document to view its fields and the documents that occurred before and after it.
 
-1. In the document table, click the expand icon (![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "")) next to any document.
+1. In the document table, click the expand icon (![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "")) to show document details.
 
     ![Table view with document expanded](/explore-analyze/images/kibana-document-table-expanded.png "")
 
@@ -158,6 +171,7 @@ Dive deeper into individual documents to view all their fields and values.
 3. Try these additional actions:
    * Click **View single document** to open a standalone view you can bookmark and share
    * Click **View surrounding documents** to see documents that occurred before and after this one in time
+
 
 
 ## Step 5: Search and filter your data [search-in-discover]
@@ -192,23 +206,17 @@ For more detailed information on searching and filtering, see [Search and filter
 
 ## Step 6: Save your session [save-discover-search]
 
-Save your Discover session so you can return to it later or share it with others.
+Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
 
-1. Click **Save** in the toolbar.
-2. Give your session a meaningful name like "US ecommerce purchases".
-3. Optionally add a description and [tags](../find-and-organize/tags.md).
-To manage and organize your tabs, you can:
-- Rename them: Double-click its label or hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Rename**.
-- Reorder them: Drag and drop a tab to move it.
-- Close them: Hover over a tab and select the {icon}`cross` icon.
-- Close several tabs at once: When you hover over a tab and select the {icon}`boxes_vertical` **Actions** icon, options let you **Close other tabs** to keep only the active tab open or **Close tabs to the right** to only keep your first tabs and discard any subsequent tabs.
+1. In the application menu, select **Save**.
+2. Enter a title and a description for the session.
+3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
+4. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Optionally, use **Add to dashboard** to also add the session as a panel on a dashboard, in addition to the library. For details, refer to [Save a Discover session](save-open-search.md#_save_a_discover_session).
+5. Select **Save**.
 
-  :::{tip}
-  If you want to discard all open tabs, you can also start a {icon}`plus` **New session** from the toolbar. When you use this option, any unsaved changes to your current session are lost.
-  :::
-- Reopen recently closed tabs: If you close a tab by mistake, you can retrieve it by selecting the {icon}`boxes_vertical` **Tabs menu** icon located at the end of the tab bar.
+### Share your Discover session [share-your-findings]
 
-To keep all of your tabs for later, you can [Save your Discover session](#save-discover-search). All currently open tabs are saved within the session and will be there when you open it again.
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 ### Inspect your Discover queries
 
@@ -222,19 +230,6 @@ serverless: unavailable
 ```
 
 You can send your long-running KQL or {{esql}} queries to the background from **Discover** and let them run while you continue exploring your data. Refer to [Run queries in the background](/explore-analyze/discover/background-search.md).
-
-
-### Save your Discover session for later use [save-discover-search]
-
-Save your Discover session so you can use it later, generate a CSV report, or use it to create visualizations, dashboards, and Canvas workpads. Saving a Discover session saves all open tabs, along with their query text, filters, and current view of **Discover**, including the columns selected in the document table, the sort order, and the {{data-source}}.
-
-1. In the application menu bar, click **Save**.
-2. Give your session a title and a description.
-3. Optionally store [tags](../find-and-organize/tags.md) and the time range with the session.
-4. Click **Save**.
-
-Your session is now saved with all your settings: the query, filters, selected fields, time range, and {{data-source}}. You can reopen it anytime by clicking **Open** in the toolbar.
-
 
 ## What's next
 
@@ -256,3 +251,15 @@ Now that you're familiar with the basics of **Discover**, explore these guides t
 * **[View field statistics](show-field-statistics.md)** - Explore field distributions and statistics
 * **[Run pattern analysis](run-pattern-analysis-discover.md)** - Find patterns in log messages
 * **[Search for relevance](discover-search-for-relevance.md)** - Sort documents by relevance score
+
+
+## Troubleshooting [_troubleshooting]
+
+This section references common questions and issues encountered when using Discover. Also check the following blog post: [Learn how to resolve common issues with Discover.](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load)
+
+**Some fields show as empty while they should not be, why is that?**
+
+This can happen in several cases:
+
+* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
+* Due to the structure of nested fields, a leaf field added to the table as a column will not contain values in any of its cells. Instead, add the root field as a column to view a JSON representation of its values. Learn more in [this blog post](https://www.elastic.co/de/blog/discover-uses-fields-api-in-7-12).

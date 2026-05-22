@@ -1,0 +1,1 @@
+Before upgrading, remove any unsupported index settings from index and component templates. {{es}} doesn't archive unsupported index settings in templates during an upgrade. Attempts to use a template that contains an unsupported index setting will fail and return an error. This includes automated operations, such the {{ilm-init}} rollover action.

@@ -38,21 +38,18 @@ If Synthetics browser data streams are storing data longer than necessary, you c
 
 To find Synthetics data streams:
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
-1. In {{kib}}, navigate to [Index Management](/manage-data/data-store/index-basics.md#index-management).
+1. In {{kib}}, navigate to [Index Management](/manage-data/data-store/perform-index-operations.md#manage-indices).
 2. Filter the list of data streams for those containing the term `synthetics`.
 
     1. In the UI there will be three types of browser data streams: `synthetics-browser-*`, `synthetics-browser.network-*`, and `synthetics-browser.screenshot-*`.
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. Navigate to **Project settings** → **Management** → **Index Management** → **Data Streams**.
 2. Filter the list of data streams for those containing the term `synthetics`.

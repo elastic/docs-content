@@ -17,9 +17,7 @@ The following table shows how badges for versioned products are displayed based 
 | removed     | prerelease     | {applies_to}`stack: removed 99.99`    |
 |             | post-release   | {applies_to}`stack: removed 9.1`      |
 
-This is computed at build time (there is a docs build every 30 minutes). The documentation team tracks and maintains released versions for these products centrally in [`versions.yml`](https://github.com/elastic/docs-builder/blob/main/config/versions.yml).
-
-When multiple lifecycle statuses and versions are specified in the sources, several badges are shown.
+This is computed at build time. The documentation team tracks and maintains released versions for these products centrally in [`versions.yml`](https://github.com/elastic/docs-builder/blob/main/config/versions.yml).
 
 :::{note}
 Visuals and wording in the output documentation are subject to changes and optimizations.

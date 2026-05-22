@@ -16,14 +16,14 @@ products:
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-  ::::{tab-set}
+  ::::{applies-switch}
 
-  :::{tab-item} {{ech}}
+  :::{applies-item} ess:
 
   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
   :::
 
-  :::{tab-item} Self-managed
+  :::{applies-item} self:
 
   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
   :::
@@ -197,15 +197,15 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
 1. Launch {{kib}}:
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} ess:
 
     1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
     2. Navigate to the {{kib}} endpoint in your deployment.
     :::
 
-    :::{tab-item} Self-managed
+    :::{applies-item} self:
 
     Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
 

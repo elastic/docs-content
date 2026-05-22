@@ -3,6 +3,8 @@ navigation_title: "{{eck}}"
 applies_to:
   deployment:
     eck: ga
+products:
+  - id: cloud-kubernetes
 ---
 
 # Secure your {{eck}} orchestrator [eck-securing-considerations]

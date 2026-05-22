@@ -1,5 +1,5 @@
 ---
-navigation_title: Inference integrations
+navigation_title: Default endpoints, adaptive allocations, and chunking
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
 applies_to:
@@ -8,15 +8,12 @@ applies_to:
 products:
   - id: kibana
 ---
-
-# {{infer-cap}} integrations
+# Default {{infer}} endpoints, adaptive allocations, and chunking
 
 {{es}} provides a machine learning [{{infer}} API]({{es-apis}}group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint:
-
-- using the [Create an inference endpoint API]({{es-apis}}operation/operation-inference-put)
-- through the [Inference endpoints UI](#add-inference-endpoints).
+You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint using the [create an {{infer}} endpoint API]({{es-apis}}operation/operation-inference-put).
+Alternatively, you can use [EIS](/explore-analyze/elastic-inference/eis.md) or [External {{infer}}](/explore-analyze/elastic-inference/external.md) apps in {{kib}}.
 
 ## Default {{infer}} endpoints [default-enpoints]
 
@@ -32,44 +29,21 @@ The following section lists the default {{infer}} endpoints, identified by their
 
 - `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`self: unavailable` {applies_to}`serverless: preview`
 
+For more information, refer to [](/explore-analyze/elastic-inference/eis-supported-models.md).
+
 ### Default endpoints used on ML-nodes
 
 - `.elser-2-elasticsearch`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2_linux-x86_64`.
 - `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
 
-Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
+Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} endpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
 
-## {{infer-cap}} endpoints UI [inference-endpoints]
-
-The **{{infer-cap}} endpoints** page provides an interface for managing {{infer}} endpoints.
-
-:::{image} /explore-analyze/images/kibana-inference-endpoints-ui.png
-:alt: Inference endpoints UI
-:screenshot:
-:::
-
-Available actions:
-
-- Add new endpoint
-- View endpoint details
-- Copy the inference endpoint ID
-- Delete endpoints
-
-## Add new {{infer}} endpoint [add-inference-endpoints]
-
-To add a new {{infer}} endpoint using the UI:
-
-1. Select the **Add endpoint** button.
-1. Select a service from the drop down menu.
-1. Provide the required configuration details.
-1. Select **Save** to create the endpoint.
-
-If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
+For an end-to-end tutorial on using {{infer}} endpoints with `semantic_text` fields, refer to [Semantic search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow {{infer}} services to dynamically adjust the number of model allocations based on the current load.
-This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for models used through the Elastic {{infer-cap}} Service (EIS) and third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are not deployed within your Elasticsearch cluster.
+This feature is only supported for models deployed in Elastic's infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for models used through the Elastic {{infer-cap}} Service (EIS) and third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
@@ -101,7 +75,7 @@ Each chunk will include the text subpassage and the corresponding embedding gene
 
 By default, documents are split into sentences and grouped in sections up to 250 words with 1 sentence overlap so that each chunk shares a sentence with the previous chunk. Overlapping ensures continuity and prevents vital contextual information in the input text from being lost by a hard break.
 
-{{es}} uses the [ICU4J](https://unicode-org.github.io/icu-docs/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, not just the presence of a whitespace character. For written languages that do use whitespace such as Chinese or Japanese dictionary lookups are used to detect word boundaries.
+{{es}} uses the [ICU4J](https://unicode-org.github.io/icu-docs/) library to detect word and sentence boundaries for chunking. [Word boundaries](https://unicode-org.github.io/icu/userguide/boundaryanalysis/#word-boundary) are identified by following a series of rules, which include detecting the presence of a whitespace character. For written languages that do not use whitespace, such as Chinese or Japanese, dictionary lookups are used to detect word boundaries.
 
 ### Chunking strategies
 
@@ -288,5 +262,3 @@ PUT _inference/sparse_embedding/none_chunking
   }
 }
 ```
-
-

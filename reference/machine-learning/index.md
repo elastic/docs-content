@@ -1,3 +1,15 @@
+---
+products:
+  - id: elasticsearch
+  - id: machine-learning
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+---
+
 # Machine learning
 
 This section contains reference information for the following machine learning features:

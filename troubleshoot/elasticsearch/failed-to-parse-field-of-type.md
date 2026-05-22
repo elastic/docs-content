@@ -2,6 +2,8 @@
 applies_to:
   stack:
 navigation_title: "Error: Failed to parse field of type in document with id"
+products:
+  - id: elasticsearch
 ---
 
 # Fix error: Failed to parse field [failed-to-parse-field-of-type]

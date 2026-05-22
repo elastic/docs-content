@@ -30,37 +30,40 @@ The following REST APIs allow you to manage your {{ecloud}} organization, users,
 
 | Area | API | Tasks |
 | --- | --- | --- |
-| {{ecloud}} organization<br><br>{{ech}} deployments | [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) | Manage your Cloud organization, members, costs, billing, and more.<br><br>Manage your hosted deployments and all of the resources associated with them, including scaling or autoscaling resources, and managing network security, deployment extensions, remote clusters, and {{stack}} versions.<br><br>Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md) for usage information and examples. |
-| {{serverless-full}} projects | [{{serverless-full}} API](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless) | Manage {{serverless-full}} projects. |
+| {{ecloud}} organization<br><br>{{ech}} deployments | [{{ecloud}} API]({{cloud-apis}}) | Manage your Cloud organization, members, costs, billing, and more.<br><br>Manage your hosted deployments and all of the resources associated with them, including scaling or autoscaling resources, and managing network security, deployment extensions, remote clusters, and {{stack}} versions.<br><br>Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md) for usage information and examples. |
+| {{serverless-full}} projects | [{{serverless-full}} API]({{cloud-serverless-apis}}) | Manage {{serverless-full}} projects. |
 | {{ecloud}} services | [Service Status API](https://status.elastic.co/api/) | Programmatically ingest [service status](/deploy-manage/cloud-organization/service-status.md) updates. |
-| {{ecloud}} billing information | [Cloud Billing API](https://www.elastic.co/docs/api/doc/cloud-billing/) | Retrieve additional billing and cost information about your {{ecloud}} organization. |
+| {{ecloud}} billing information | [Cloud Billing API]({{cloud-billing-apis}}) | Retrieve additional billing and cost information about your {{ecloud}} organization. |
 
 
 ### APIs to interact with data and solution features
 
 The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your {{ech}} deployments and {{serverless-full}} projects. Separate APIs are used for {{ech}} and {{serverless-full}}.
 
-Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the these APIs on {{ecloud}}.
+Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using these APIs on {{ecloud}}.
 
 :::{tip}
 Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to learn about headers, request body conventions, and examples for {{es-serverless}} and {{es}} REST APIs.
 :::
 
-:::::{tab-set}
-:group: serverless-hosted
-::::{tab-item} {{serverless-short}}
-:sync: serverless
+:::::{applies-switch}
+
+::::{applies-item} serverless:
 
 The following APIs are available for {{es-serverless}} users:
 
-- [{{es}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Use these APIs to index, manage, search, and analyze your data in {{es-serverless}}.
+- [{{es}} {{serverless-short}} APIs]({{es-serverless-apis}}): Use these APIs to index, manage, search, and analyze your data in {{es-serverless}}.
 
   Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/get-started.md).
-- [{{kib}} {{serverless-short}} APIs](https://www.elastic.co/docs/api/doc/serverless): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
+- [{{kib}} {{serverless-short}} APIs]({{kib-serverless-apis}}): Use these APIs to manage resources such as connectors, data views, and saved objects for your {{serverless-full}} project.
+
+#### Version reporting [serverless-tools-apis-version-reporting]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
 ::::
 
-::::{tab-item} {{ech}}
-:sync: hosted
+::::{applies-item} ess:
 
 The following APIs are available for {{ech}} users:
 
@@ -103,7 +106,7 @@ serverless: unavailable
 
 ## Elastic Cloud email service
 
-{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerts-cases/alerts.md) notifications and is also supported in {{ech}} by [Watcher](/explore-analyze/alerts-cases/watcher/enable-watcher.md).
+{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerting/alerts.md) notifications and is also supported in {{ech}} by [Watcher](/explore-analyze/alerting/watcher/enable-watcher.md).
 
 ### Email service limits
 

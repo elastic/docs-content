@@ -20,6 +20,14 @@ Most options on this page are supported by all APM Server deployment methods whe
 Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
 ::::
 
+::::{note}
+If you're manually configuring `LimitNOFILE` or `LimitNOFILESoft` in systemd and using tail-based sampling, the APM Server process might encounter a `too many open files` error. Refer to [Configuring the `nofile` limit](/solutions/observability/apm/apm-server/systemd.md#configuring-nofile-limit) for more information.
+::::
+
+::::{note}
+If you're running the APM Server binary standalone (not using the provided deb, RPM packages, or Docker image), you might need to adjust the `nofile` limit based on your throughput requirements. Refer to [Modify the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit) for guidance.
+::::
+
 Tail-based sampling configuration options.
 
 :::::::{tab-set}
@@ -76,7 +84,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 
 ### TTL [sampling-tail-ttl-ref]
 
-Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`).
+Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`). If the TTL expires before a sampling decision is made, the trace event is silently dropped and never indexed.
 
 Default: `30m` (30 minutes). (duration)
 
@@ -117,7 +125,7 @@ A value of `0GB` (or equivalent) does not set a concrete limit, but rather allow
 
 If this is not desired, a concrete `GB` value can be set for the maximum amount of disk used for tail-based sampling.
 
-If the configured storage limit is insufficient, it logs "configured limit reached". When the storage limit is reached, the event will be indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) configuration.
+If the configured storage limit is insufficient, it logs "configured limit reached". When the storage limit is reached, the event will be indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) configuration. By default (`discard_on_write_failure: false`), the event bypasses tail-based sampling and is indexed immediately to the standard APM data streams (`traces-apm-*` for transactions and spans).
 
 Default: `0GB`. (text)
 
@@ -209,6 +217,46 @@ This metric can also be used to get an estimate of the storage requirements for 
 ### `apm-server.sampling.tail.storage.value_log_size` [sampling-tail-monitoring-storage-value-log-size-ref]
 
 This metric tracks the storage size for value log files used by the previous implementation of a tail-based sampler. This metric was deprecated in 9.0.0 and should always report `0`.
+
+### `apm-server.sampling.tail.storage.storage_limit` [sampling-tail-monitoring-storage-storage-limit-ref]
+
+```yaml {applies_to}
+stack: ga 9.2+
+```
+
+Available in 9.2.7+, 9.3.2+, and 9.4.0+.
+
+This metric tracks the configured [storage limit](#sampling-tail-storage_limit-ref) in bytes, where `0` indicates that no absolute limit is set.
+
+### `apm-server.sampling.tail.storage.disk_used` [sampling-tail-monitoring-storage-disk-used-ref]
+
+```yaml {applies_to}
+stack: ga 9.2+
+```
+
+Available in 9.2.7+, 9.3.2+, and 9.4.0+.
+
+This metric tracks the used disk space in bytes on the filesystem partition that hosts the tail-based sampling storage directory.
+
+### `apm-server.sampling.tail.storage.disk_total` [sampling-tail-monitoring-storage-disk-total-ref]
+
+```yaml {applies_to}
+stack: ga 9.2+
+```
+
+Available in 9.2.7+, 9.3.2+, and 9.4.0+.
+
+This metric tracks the total disk capacity in bytes of the filesystem partition that hosts the tail-based sampling storage directory.
+
+### `apm-server.sampling.tail.storage.disk_usage_threshold_pct` [sampling-tail-monitoring-storage-disk-usage-threshold-pct-ref]
+
+```yaml {applies_to}
+stack: ga 9.2+
+```
+
+Available in 9.2.7+, 9.3.2+, and 9.4.0+.
+
+This metric tracks the configured disk usage threshold as a fraction between `0` and `1`, where `1` represents 100% of the total disk space. When the used disk space exceeds this threshold, new writes to the tail-based sampling storage are rejected, and trace events are indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) setting.
 
 ## Frequently Asked Questions (FAQ) [sampling-tail-faq-ref]
 

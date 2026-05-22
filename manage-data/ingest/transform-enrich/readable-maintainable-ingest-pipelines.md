@@ -2,6 +2,9 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Create readable and maintainable ingest pipelines

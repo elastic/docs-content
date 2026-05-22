@@ -35,6 +35,8 @@ If you're not sure where to start, review the Collector's logs for error message
 
 * [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md): Resolve export failures caused by `sending_queue` overflow and {{es}} exporter timeouts.
 
+* [`ResourceExhausted` errors and decompression limits in Collector-to-Collector pipelines](/troubleshoot/ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md): Troubleshoot `ResourceExhausted` errors caused by gRPC message size limits, decompression limits, memory pressure, or backpressure in Collector-to-Collector pipelines.
+
 ## Debugging
 
 * [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md): Learn how to enable debug logging for the EDOT Collector in supported environments.
