@@ -39,7 +39,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.4.2-fixes]
 
-* Upgrades `langsmith` from `0.5.25` to `0.7.1` [#269462]({{kib-pull}}269462).
 * Fixes an issue where users with read-only access could see the asset criticality update dropdown in the entity details flyout. The dropdown is now correctly gated on write permissions [#269164]({{kib-pull}}269164).
 * Fixes an issue where the alert details flyout **Overview** tab crashed in Discover for external alert documents [#269000]({{kib-pull}}269000).
 * Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
