@@ -23,7 +23,9 @@ A workflow definition has eleven top-level fields. Most of them are optional. Th
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
 enabled: true                        # activation
-tags: [observability, slo]
+tags:                                # for filtering and organization
+  - observability
+  - slo
 
 version: "1"                         # schema version
 
@@ -70,7 +72,7 @@ steps:                               # what it does
 | `settings` | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
 | `steps` | `Step[]` | Yes | Ordered list of steps to execute. Refer to [Steps](/explore-analyze/workflows/steps.md). |
 
-## Identity fields [workflows-anatomy-identity]
+## `name` — workflow identity [workflows-anatomy-name]
 
 `name` is what you'll type when you talk about this workflow. Pick something that reads well in a list. A common convention is `<domain>--<verb>-<noun>`:
 
@@ -80,15 +82,44 @@ name: observability--respond-to-slo-breach
 name: platform--rotate-service-account-keys
 ```
 
-`description` shows up directly below the name in the UI. One sentence is plenty.
+The name must be unique within the {{kib}} space. The engine also uses it as the workflow's identifier in API calls.
 
-`tags` are the filter keys in the workflow list. Teams often tag by product area (`security`, `observability`, `search`), by criticality (`prod`, `demo`), or by audience (`soc`, `oncall`).
+## `description` — short subtitle [workflows-anatomy-description]
+
+`description` is the short subtitle shown directly below the name in the workflow list UI. Keep it to one sentence that explains what the workflow does, not how it does it.
+
+```yaml
+description: Investigate and mitigate SLO breaches in production services.
+```
 
 ## `enabled` — the kill switch [workflows-anatomy-enabled]
 
 `enabled: false` parks the workflow without deleting it. Scheduled triggers stop firing, alert-attached workflows stop responding, and manual runs return a clear "workflow is disabled" error. Flip it back to `true` when you're ready.
 
 Disabling is safer than deleting when you're experimenting or reworking a workflow because alerting rules that reference the workflow don't break.
+
+## `tags` — for filtering and organization [workflows-anatomy-tags]
+
+`tags` are the filter keys in the workflow list. Teams often tag by product area, by criticality, or by audience:
+
+```yaml
+tags:
+  - security
+  - prod
+  - soc
+```
+
+Tags are free-form strings. Pick a convention that matches how your team navigates the workflow list. Common patterns include product-area tags (`security`, `observability`, `search`), criticality tags (`prod`, `demo`), and audience tags (`soc`, `oncall`).
+
+## `version` — schema version [workflows-anatomy-version]
+
+`version` declares the workflow schema version. It defaults to `"1"` and you can leave it unset. The engine uses this field for forward compatibility: if the workflow schema ever evolves in an incompatible way, older workflows can be migrated based on this field.
+
+```yaml
+version: "1"
+```
+
+Note the value is the string `"1"`, not the number `1`. Unquoted `1` is parsed as a number and the schema rejects it.
 
 ## `triggers` — when it runs [workflows-anatomy-triggers]
 
