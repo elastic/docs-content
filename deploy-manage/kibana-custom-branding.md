@@ -43,4 +43,4 @@ To revert a setting to its default value, clear the field and select **Save chan
 
 ## Related pages
 
-- [Advanced Settings](kibana://reference/advanced-settings.md#kibana-custom-branding-settings): Full reference for all custom branding settings.
+- [{{kib}} advanced settings](kibana://reference/advanced-settings.md#kibana-custom-branding-settings)
