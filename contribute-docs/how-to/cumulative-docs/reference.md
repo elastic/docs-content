@@ -1,4 +1,4 @@
-# Quick reference
+# applies_to syntax reference
 
 :::{note}
 If you have questions about how to write cumulative documentation while contributing,

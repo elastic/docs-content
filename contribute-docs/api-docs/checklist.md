@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# API docs checklist
+# Elastic API docs checklist
 
 Use this checklist to verify the quality, completeness, and consistency of your API docs contributions.
 

@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# Add core content
+# Write API documentation summaries and descriptions
 
 This page covers the core guidelines for excellent API docs. Learn how to write clear summaries and descriptions, create helpful examples, and add useful links.
 

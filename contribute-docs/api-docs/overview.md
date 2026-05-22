@@ -8,7 +8,7 @@ applies_to:
 
 # How Elastic API docs work
 
-This page explains at a high-level how API docs work at Elastic today, with context on how this differs from our previous approaches and where we're heading. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
+This page explains how Elastic API documentation is generated from source code to published HTML pages. You'll learn how OpenAPI specifications drive our REST API documentation, understand the evolution from manual maintenance to automated generation, and see how different teams across Elastic produce API docs using varied toolchains. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
 
 :::{tip}
 The API docs use a different system to the main Elastic docs. Refer to [Contribute to Elastic docs](../index.md) for an overview of the two systems.

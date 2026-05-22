@@ -1,6 +1,6 @@
-# How-to guides
+# Documentation contribution how-to guides
 
-Find practical guides for common documentation tasks.
+Find practical guides for common documentation tasks including writing effective issues, updating Integrations documentation, optimizing content for search, and writing cumulative documentation that adapts to different product versions and deployment types.
 
 ## Write good issues
 

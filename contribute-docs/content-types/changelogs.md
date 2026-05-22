@@ -6,8 +6,7 @@ description: "Guidelines for writing effective release notes content in changelo
 
 % Title and technical-formatting guidance updated (base-form verbs, {{esql}}, cleanup checklist, YAML quoting note) — documentation agent, 2026-05-11.
 
-This page provides guidelines for writing useful and consistent changelogs, which are the building blocks of Elastic release notes.
-Use this content type and the associated schema to draft new changelogs or to evaluate existing content.
+Changelogs describe product changes in YAML format, including new features, enhancements, bug fixes, breaking changes, and deprecations. They are the building blocks of Elastic release notes, helping users understand what changed, why it matters, and what actions they need to take. Use this page to write clear, user-focused changelog entries and evaluate existing changelogs against Elastic documentation standards.
 
 Use this page to:
 

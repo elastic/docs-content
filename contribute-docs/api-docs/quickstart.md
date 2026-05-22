@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# Write Elastic API docs locally: Quickstart guides
+# Elastic API docs quickstart guides
 
 These guides provide step-by-step workflows for contributing to Elastic API documentation locally. These workflows enable you to validate, preview, and debug your changes before submitting them for review.
 

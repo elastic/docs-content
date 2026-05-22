@@ -1,4 +1,4 @@
-# Badge usage and placement
+# Apply version and deployment badges in cumulative docs
 
 :::{note}
 This content is still in development.

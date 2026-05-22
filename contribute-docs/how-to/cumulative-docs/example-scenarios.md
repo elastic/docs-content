@@ -9,9 +9,7 @@ If you have questions about how to write cumulative documentation while contribu
 reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
-Browse common scenarios you might run into as a docs contributor that require different approaches to labeling cumulative docs.
-
-While you can use any of these tools at any stage, the tools and approaches you use for cumulative documentation often differ depending on the maturity and complexity of your documentation. The scenarios below are organized by documentation stage to help you find the right approach for your situation.
+This page shows common scenarios contributors encounter when writing cumulative documentation that requires version and deployment tagging. You'll find examples organized by documentation maturity stage, from documenting new features to managing complex version differences across products. Browse these scenarios to find the right tagging approach for your situation and see real examples of how to apply applies_to badges effectively.
 
 :::{note}
 Screenshots might not exactly match the example pages linked to.

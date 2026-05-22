@@ -5,12 +5,7 @@ description: Guidelines for writing accessible and inclusive content.
  
 # Accessibility
 
-These guidelines are intended for all content authors and contains common tips and tricks for writing accessible content. It is not exhaustive and does not replace the official [WCAG 2.0 guidelines](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#guidelines).
-
-**Accessibility** for content means ensuring that all of our users can understand the content we publish—all of it—independently of how they choose or have to interact with it.
-
-Our users and readers are diverse, with different abilities and disabilities. 
-They also interact with our content in different ways, such as screen readers, mobile devices, and Braille. The list is long and constantly evolving. 
+These guidelines help content authors write accessible documentation that all users can understand, regardless of how they interact with it. Accessibility means ensuring that readers using screen readers, Braille devices, mobile devices, or other assistive technologies can perceive, operate, and understand our content. This page covers common accessibility requirements including alternative text for images, meaningful link text, device-agnostic language, and inclusive writing practices. The guidelines are based on WCAG 2.0 standards but are not exhaustive; refer to the official [WCAG 2.0 guidelines](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#guidelines) for the complete specification.
 
 As content authors, it is our responsibility to provide them with [perceivable, operable, understandable, and robust content](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head).
 

@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 ---
-# API docs process by product
+# OpenAPI documentation workflow by product
 
 Each product team has a specific process for producing OpenAPI documents.
 This page provides a quick reference to help you navigate to the right resources.
