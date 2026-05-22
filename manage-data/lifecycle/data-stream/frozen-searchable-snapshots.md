@@ -53,17 +53,20 @@ When a backing index becomes eligible for frozen conversion, DLM performs the fo
 
 ## Tune the transition service [dlm-frozen-transition-tuning]
 
-You can configure the following settings in `elasticsearch.yml` to control the frozen transition service:
+You can configure the following [settings](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md) in `elasticsearch.yml` to control the frozen transition service:
 
-- [`dlm.frozen_transition.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#dlm-frozen-transition-poll-interval) — How often the master node scans for indices ready for conversion (default: `5m`).
-- [`dlm.frozen_transition.max_concurrency`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#dlm-frozen-transition-max-concurrency) — Maximum number of concurrent in-flight conversions (default: `10`).
-- [`dlm.frozen_transition.max_queue_size`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#dlm-frozen-transition-max-queue-size) — Maximum number of indices that can be queued for conversion at once (default: `500`).
+- `dlm.frozen_transition.poll_interval` — How often the master node scans for indices ready for conversion (default: `5m`).
+- `dlm.frozen_transition.max_concurrency` — Maximum number of concurrent in-flight conversions (default: `10`).
+- `dlm.frozen_transition.max_queue_size` — Maximum number of indices that can be queued for conversion at once (default: `500`).
+
+<!-- TO-DO: Add link to specific anchors #dlm-frozen-transition-poll-interval, #dlm-frozen-transition-max-concurrency, #dlm-frozen-transition-max-queue-size -->
 
 ## Cleanup of orphaned artifacts [dlm-frozen-transition-cleanup]
 
 If a conversion is interrupted, {{dlm-init}} might leave behind orphaned clone indices (`dlm-clone-*`) or snapshots. A background cleanup service running on the master node periodically removes these artifacts.
 
-The cleanup interval is controlled by [`dlm.frozen_cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#dlm-frozen-cleanup-poll-interval) (default: `1d`, minimum: `1h`).
+The cleanup interval is controlled by [`dlm.frozen_cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md (default: `1d`, minimum: `1h`).
+<!-- TO-DO: Add link to #dlm-frozen-cleanup-poll-interval anchor -->
 
 ## Failures and retries [dlm-frozen-transition-failures]
 

@@ -13,14 +13,14 @@ products:
 Follow these steps to create an {{es}} data stream with a configured lifecycle. Learn how to set the retention period for your data and to retrieve the lifecycle configuration details.
 
 1. [Create an index template](#create-index-template-with-lifecycle)
-2. [Include optional archival to frozen searchable snapshots](#optional-frozen-after)
-3. [Create a data stream](#create-data-stream-with-lifecycle)
-4. [Retrieve lifecycle information](#retrieve-lifecycle-information)
-
+1. [Create a data stream](#create-data-stream-with-lifecycle)
+1. [Retrieve lifecycle information](#retrieve-lifecycle-information)
 
 ## Create an index template [create-index-template-with-lifecycle]
 
-A data stream requires a matching [index template](../../data-store/templates.md). You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings. You can define an index template that sets a lifecycle as follows:
+A data stream requires a matching [index template](../../data-store/templates.md).
+You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings.
+You can define an index template that sets a lifecycle as follows:
 
 * Include the `data_stream` object to enable data streams.
 * Define the lifecycle in the template section or include a composable template that defines the lifecycle.
@@ -51,15 +51,17 @@ PUT _index_template/my-index-template
 To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. Prerequisites and tuning options are documented in [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 :::
 
+## Create a data stream [create-data-stream-with-lifecycle]
+
 You can create a data stream in these ways:
 
-* By manually creating the stream using the [create data stream API]({{es-apis}}operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
+* By manually creating the stream using the [create data stream API]({{es-apis}}operation/operation-indices-create-data-stream). The stream's name must still match one of your template's index patterns.
 
     ```console
     PUT _data_stream/my-data-stream-test
     ```
 
-* By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
+* By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream's name. This name must match one of your index template's index patterns.
 
     ```console
     PUT my-data-stream-test/_bulk
@@ -73,8 +75,6 @@ You can create a data stream in these ways:
     1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     1. From the upper right, select **Create classic stream**.
     1. Select the index template you want to use, name your stream, and select **Create**.
-
-
 
 ## Retrieve lifecycle information [retrieve-lifecycle-information]
 
@@ -142,5 +142,3 @@ The result will look like this:
 2. If it is managed by the built-in data stream lifecycle.
 3. Time since the index was created.
 4. The lifecycle configuration that is applied on this backing index.
-
-

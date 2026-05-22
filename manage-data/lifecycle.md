@@ -56,7 +56,7 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 
 * Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period at a later time.
 * Improve the performance of your data stream by performing background operations that optimize how {{es}} stores your data stream.
-* {applies_to}`stack: ga 9.5, serverless: unavailable` Optionally move older backing indices to partially mounted{{search-snaps}} on the frozen tier, so you can keep data searchable for longer at lower local storage cost before retention deletes it. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: unavailable` Optionally move older backing indices to partially mounted{{search-snaps}} on the frozen tier, so you can keep data searchable for longer at lower local storage cost before retention deletes it. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 
 **[Read more in Data stream lifecycle ->](/manage-data/lifecycle/data-stream.md)**
 
