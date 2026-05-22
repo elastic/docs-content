@@ -17,7 +17,7 @@ This page collects all Jina models you can use as part of the {{stack}}.
 
 Currently, the following models are available as built-in models:
 
-**Embedding models**
+Embedding models
 
 * [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small): multimodal (text, image, audio, video, PDF)
 * [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano): multimodal (text, image, audio, video, PDF)
@@ -25,7 +25,7 @@ Currently, the following models are available as built-in models:
 * [`jina-embeddings-v5-text-nano`](#jina-embeddings-v5-text-nano): text-only
 * [`jina-embeddings-v3`](#jina-embeddings-v3): text-only
 
-**Rerankers**
+Rerankers
 
 * [`jina-reranker-v3`](#jina-reranker-v3)
 * [`jina-reranker-v2`](#jina-reranker-v2)
@@ -43,13 +43,17 @@ When you send text to an EIS {{infer}} endpoint that uses an embedding model, th
 
 ### Jina v5 omni embedding models [jina-embeddings-v5-omni]
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+{applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`
 
-::::{important}
-{applies_to}`stack: ga 9.5+` While Jina v5 omni embedding models are available from {{stack}} 9.4, the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type supports these models only from {{stack}} 9.5.
+::::{note}
+The Jina v5 omni models availability and the support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type depend on your {{stack}} version:
+
+- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
+- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
 ::::
 
-The Jina v5 omni embedding models are multimodal dense vector embedding models available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They turn text, images, video, audio, and documents such as PDF into vectors in one shared space, so you can retrieve, cluster, and score similarity across languages and media types from a single index. There are two Jina v5 omni embedding models available:
+The Jina v5 omni embedding models are multimodal dense vector embedding models available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They turn text, images, video, audio, and documents such as PDF into vectors in one shared space. There are two Jina v5 omni embedding models available:
 
 $$$jina-embeddings-v5-omni-small$$$ `jina-embeddings-v5-omni-small`
 :   Has 700M parameters, supports a 32768 token input context window, and produces 1024-dimension embeddings.
@@ -130,7 +134,7 @@ PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
 
 ::::
 
-Reference the `inference_id` of this endpoint in [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings, in `embedding` {{infer}} requests, or in search queries that call the endpoint.
+Reference the `inference_id` in `embedding` {{infer}} requests or search queries on any supported version.
 
 Below are examples of ingesting different types of content and generating vector embeddings for text, images, audio, video, and PDF documents using the `inference_id` created in the earlier request.
 

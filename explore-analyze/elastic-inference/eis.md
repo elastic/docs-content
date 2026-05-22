@@ -94,12 +94,16 @@ The following sections describe how to get started with specific models availabl
 ### Jina v5 omni embedding models [jina-embeddings-v5-omni]
 
 ```{applies_to}
-stack: ga 9.4+
+stack: ga 9.3+
 serverless: ga
 ```
 
 ::::{important}
-{applies_to}`stack: ga 9.5+` While Jina v5 omni embedding models are available from {{stack}} 9.4, the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type supports these models only from {{stack}} 9.5.
+The Jina v5 omni models availability and the support for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type depend on your {{stack}} version:
+
+- {applies_to}`stack: ga 9.3+` In {{stack}} 9.3 and later, you can create endpoints and run multimodal `embedding` {{infer}} requests. You cannot use these models with the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type.
+- {applies_to}`stack: ga 9.4+` In {{stack}} 9.4 and later, you can use [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) mappings for text-only embeddings at ingest and search time.
+- {applies_to}`stack: ga 9.5+` In {{stack}} 9.5 and later, the `semantic_field` field type supports all modalities, such as text, images, video, audio, and documents.
 ::::
 
 There are two Jina v5 omni embedding models available through Elastic {{infer-cap}} Service, [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) and [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis). Both models support multimodal embeddings for text, images, video, audio, and documents such as PDF in one shared vector space.
@@ -121,9 +125,9 @@ PUT _inference/embedding/eis-jina-embeddings-v5-omni-small
 }
 ```
 
-You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
+You can reference the `inference_id` in `embedding` {{infer}} tasks and search queries on any supported version. For [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) and `semantic_field` mappings, refer to the version requirements in the note above.
 
-For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the **jina-embeddings-v5-omni-small** tab in each example.
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the jina-embeddings-v5-omni-small tab in each example.
 
 #### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
 
@@ -139,9 +143,9 @@ PUT _inference/embedding/eis-jina-embeddings-v5-omni-nano
 }
 ```
 
-You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, `embedding` {{infer}} tasks, or search queries.
+You can reference the `inference_id` in `embedding` {{infer}} tasks and search queries on any supported version. For [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) and `semantic_field` mappings, refer to the version requirements in the note above.
 
-For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the **jina-embeddings-v5-omni-nano** tab in each example.
+For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the jina-embeddings-v5-omni-nano tab in each example.
 
 ### `jina-embeddings-v5-text-small` on EIS [jina-embeddings-v5-on-eis]
 
