@@ -1,7 +1,3 @@
-% Companion page to the Custom branding section of the Advanced Settings reference:
-% kibana://reference/advanced-settings.md#kibana-custom-branding-settings
-% If setting names, descriptions, or constraints change in either page, update the other too.
-
 ---
 type: how-to
 applies_to:
@@ -9,9 +5,13 @@ applies_to:
   serverless: unavailable
 products:
   - id: kibana
-navigation_title: Customize {{kib}} branding
+navigation_title: Customize Kibana branding
 description: Replace the default Elastic branding in Kibana with your own logo, organization name, page title, and favicon.
 ---
+
+% Companion page to the Custom branding section of the Advanced Settings reference:
+% kibana://reference/advanced-settings.md#kibana-custom-branding-settings
+% If setting names, descriptions, or constraints change in either page, update the other too.
 
 # Customize {{kib}} branding
 
