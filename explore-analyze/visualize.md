@@ -14,7 +14,7 @@ products:
 
 Use one of the editors to create visualizations of your data. Each editor offers various capabilities.
 
-The **Visualize Library** column indicates whether the panel type can be saved to the [Visualize Library](visualize/visualize-library.md) and reused across multiple dashboards. For a full explanation of linked and dashboard-only panels, refer to [Linked panels and dashboard-only panels](visualize/manage-panels.md#panel-states).
+Panels marked **Yes** in the **Visualize Library** column can be shared across multiple dashboards. Panels marked **No** are dashboard-only and are permanently lost when removed. For details, refer to [Linked panels and dashboard-only panels](visualize/manage-panels.md#panel-states).
 
 $$$panels-editors$$$
 
@@ -22,7 +22,7 @@ $$$panels-editors$$$
 || --- | --- | --- | --- |
 || Visualizations | [Lens](visualize/lens.md) | Create powerful charts in {{kib}}. This is the default editor. | Yes |
 ||  | [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from {{esql}} queries | Yes |
-||  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a Discover session directly in your dashboard. Sessions are saved as shared Discover session objects. | Yes |
+||  | [Discover sessions](discover.md) {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` | Create a Discover session directly in your dashboard. Saved sessions can be added to multiple dashboards from the **Add panel** flow. | No |
 ||  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data | Yes |
 ||  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard | No |
 ||  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations | Yes |

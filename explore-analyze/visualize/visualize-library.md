@@ -38,19 +38,20 @@ Not all panel types support saving to the Visualize Library. Only panels that ca
 - **ES|QL** visualizations
 - **Maps**
 - **Custom visualizations** (Vega)
-- **Discover sessions**: saved as shared Discover session objects
 - **Aggregation-based** (legacy)
 - **TSVB** (legacy)
 
 **Dashboard-only (not saved to the Visualize Library):**
 
-The following panel types are always dashboard-only. They cannot be saved to the Visualize Library and are permanently removed from the dashboard when you delete them:
+The following panel types are always dashboard-only (availability varies by solution and deployment type). They cannot be saved to the Visualize Library and are permanently lost when you remove the panel from the dashboard:
 
 - **Alerts** panels
 - **Collapsible sections**, **Markdown text**, **Image**, and **Links** panels: layout and content elements
 - **Anomaly swim lane**, **Anomaly chart**, and **Single Metric Viewer**: machine learning panels
 - **Change point detection**: AIOps panel
 - **SLO Overview**, **SLO Alerts**, and **SLO Error Budget**: observability panels
+
+**Discover sessions** do not appear in the Visualize Library, but you can add a saved session to multiple dashboards from the **Add panel** flow.
 
 
 ## Annotation groups [visualize-library-annotation-groups]

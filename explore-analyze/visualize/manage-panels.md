@@ -22,17 +22,16 @@ Panels on a dashboard exist in one of two states:
 - **Linked to the Visualize Library**: the panel is saved as a shared object in the Visualize Library. You can add it to multiple dashboards. Any updates you make to the panel propagate to every dashboard that references it.
 - **Dashboard-only**: the panel configuration lives only inside the dashboard. It is not shared across dashboards. If you remove a dashboard-only panel, its configuration is permanently lost unless you saved it to the Visualize Library beforehand.
 
-You can move a panel between these two states:
+To promote a dashboard-only panel to a shared library object, open the panel menu and select **Save to library**.
 
-- **Link to library**: From the panel menu, select **Save to library** to promote a dashboard-only panel to a shared library object.
-- **Unlink from library**: From the panel menu, select **Unlink from library** to create an independent, dashboard-only copy of the panel. The original library object is unchanged, and future edits to the library object no longer affect this dashboard.
+To create an independent, dashboard-only copy of a linked panel, open the panel menu and select **Unlink from library**. The original library object is unchanged, and future edits to the library object no longer affect this dashboard.
 
 Not all panel types support the Visualize Library. For details, refer to [Panel types compatible with the Visualize Library](visualize-library.md#visualize-library-compatibility).
 
 
-### Save to the Visualize Library [save-to-visualize-library] 
+## Save to the Visualize Library [save-to-visualize-library]
 
-To use a panel on multiple dashboards, you can save it to the **Visualize Library**. Any updates made to a shared panel are replicated to all dashboards where the panel is added.
+To use a panel on multiple dashboards, you can save it to the **Visualize Library**.
 
 If you created the panel from a dashboard:
 
@@ -57,7 +56,7 @@ To add unsaved dashboard panels to the **Visualize Library**:
 2. Enter the panel title, then click **Save**.
 
 
-### Save to the dashboard [save-to-the-dashboard] 
+## Save to the dashboard [save-to-the-dashboard]
 
 Return to the dashboard and add the panel without specifying the save options or adding the panel to the **Visualize Library**.
 
@@ -114,12 +113,14 @@ To make changes to the panel, use the panel menu options.
 
     * **Edit visualization** — Opens the editor so you can make changes to the panel.
 
-        If the panel is linked to the Visualize Library, your edits affect every dashboard that uses the same library object. To make changes that apply only to this dashboard, select **Unlink from library** from the panel menu before editing. This creates an independent, dashboard-only copy: the original library object is unchanged, and this copy is no longer updated when the library object changes. Use this option when you need a dashboard-specific variation of a shared panel.
+        If the panel is linked to the Visualize Library, your edits affect every dashboard that references it. To edit only this instance of the panel, select **Unlink from library** first.
 
         :::{note}
         :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
         For Discover session panels added from the library, **Edit** opens a tab selector where you can choose which tab the panel displays. Select **Apply** to save your changes or **Discard** to revert them. For step-by-step instructions, refer to [Add search results to a dashboard](../discover/save-open-search.md#_add_search_results_to_a_dashboard).
         :::
+
+    * **Unlink from library** — Creates an independent, dashboard-only copy of the panel. The original library object is unchanged, and this copy is no longer updated when the library object changes. Use this when you need a dashboard-specific variation of a shared panel.
 
     * **Convert to Lens** — Opens **TSVB** and aggregation-based visualizations in **Lens**.
     * **Settings** — Opens the **Settings** flyout to change the **title**, **description**, and **time range**.
