@@ -5,12 +5,13 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+navigation_title: Azure Native Service
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Azure Native Service [ec-azure-marketplace-native]
+# {{ecloud}} Azure Native Service [ec-azure-marketplace-native]
 
 The {{ecloud}} Azure Native Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Microsoft Marketplace. The service brings the following benefits:
 
