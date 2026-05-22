@@ -18,7 +18,7 @@ Create alerting rules directly from **Discover** to monitor your data automatica
 
 ## Prerequisites
 
-* You must have the appropriate privileges to create rules. Refer to [Alerting setup](../alerts-cases/alerts/alerting-setup.md).
+* You must have the appropriate privileges to create rules. Refer to [Alerting setup](../alerting/alerts/alerting-setup.md).
 * Your query should be tested and refined to return the data you want to monitor.
 
 ## Create a search threshold rule
@@ -29,7 +29,7 @@ Create alerting rules directly from **Discover** to monitor your data automatica
 
    The **Create rule** form opens, pre-filled with the latest query sent to {{es}}.
 
-4. [Configure your query](../alerts-cases/alerts/rule-type-es-query.md) by setting:
+4. [Configure your query](../alerting/alerts/rule-type-es-query.md) by setting:
    * **Threshold conditions**: Define when the alert should fire (for example, when the count is above, below, or between certain values)
    * **Time window**: Specify the time interval to check (for example, last 5 minutes)
    * **Check frequency**: How often to run the query (for example, every 1 minute)
@@ -75,7 +75,7 @@ Now your team will be notified whenever the checkout service logs more than 50 e
 
 ## Learn more
 
-* [Alerting](../alerts-cases/alerts.md) - Complete guide to {{alert-features}}
-* [{{es}} query rule](../alerts-cases/alerts/rule-type-es-query.md) - Detailed configuration options
+* [Alerting](../alerting/alerts.md) - Complete guide to {{alert-features}}
+* [{{es}} query rule](../alerting/alerts/rule-type-es-query.md) - Detailed configuration options
 * [{{connectors-ui}}](../../deploy-manage/manage-connectors.md) - Available notification methods
 
