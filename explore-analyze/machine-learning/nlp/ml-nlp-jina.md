@@ -17,7 +17,7 @@ This page collects all Jina models you can use as part of the {{stack}}.
 
 Currently, the following models are available as built-in models:
 
-Embedding models
+**Embedding models**
 
 * [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small): multimodal (text, image, audio, video, PDF)
 * [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano): multimodal (text, image, audio, video, PDF)
@@ -25,7 +25,7 @@ Embedding models
 * [`jina-embeddings-v5-text-nano`](#jina-embeddings-v5-text-nano): text-only
 * [`jina-embeddings-v3`](#jina-embeddings-v3): text-only
 
-Rerankers
+**Rerankers**
 
 * [`jina-reranker-v3`](#jina-reranker-v3)
 * [`jina-reranker-v2`](#jina-reranker-v2)
