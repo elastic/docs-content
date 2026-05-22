@@ -25,7 +25,7 @@ To learn more about the new docs UX, read [How to use the documentation](/get-st
 
 |System|What it covers|Published to|Format|How to contribute
 |----|----|----|----|----|----|
-|Main docs|Guides, troubleshooting, release notes, etc.|[elastic.co/docs](https://www.elastic.co/docs)|Markdown|- [On the web](on-the-web.md) (quick edits) <br> - [Locally](locally.md) (complex changes) <br> - [Syntax guide](syntax-quick-reference.md)|
+|Main docs|Guides, troubleshooting, release notes, and more|[elastic.co/docs](https://www.elastic.co/docs)|Markdown|- [On the web](on-the-web.md) (quick edits) <br> - [Locally](locally.md) (complex changes) <br> - [Syntax guide](syntax-quick-reference.md)|
 
 ## Contribute to `elastic.co/guide` (Asciidoc)
 
