@@ -1,5 +1,6 @@
 ---
 navigation_title: Elastic Docs Utilities
+description: "Install and use the Elastic Docs Utilities extension for Visual Studio Code to get autocompletion, validation, and previews for Elastic documentation."
 ---
 
 # Elastic Docs Utilities

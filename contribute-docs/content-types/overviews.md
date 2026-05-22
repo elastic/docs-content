@@ -30,7 +30,7 @@ Readers of overview pages are typically in a learning state rather than a goal-o
 Overviews serve several purposes:
 
 - Explain what something is and why it matters.
-- Inform users how features and capabilities improve their workflows.
+- Tell users how features and capabilities improve their workflows.
 - Help users navigate to the right content for their needs.
 - Clarify how components, features, or concepts relate to each other.
 - Help users choose between options or understand trade-offs.
@@ -60,7 +60,7 @@ Every overview must include the following elements:
 4. An **introduction:** Explain what the feature or concept is and why it matters to users. This should:
    - Answer "What is it?" at a high level.
    - Establish the scope: what the overview covers and, optionally, what it doesn't.
-   - Help readers quickly determine if they're in the right place.
+   - Help readers quickly determine if they've found the correct page.
 
 5. **Core content sections:** The body of the overview explaining how it works, key concepts, components, or use cases. Structure these sections based on what users need to understand.
 
