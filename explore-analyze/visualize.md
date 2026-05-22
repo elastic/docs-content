@@ -46,15 +46,15 @@ $$$panels-editors$$$
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
 
-## Choose between Lens and ES|QL [lens-vs-esql]
+## Choose your visualization approach [visualization-approach]
 
-**Lens** and **ES|QL** are the two primary approaches for building chart visualizations in {{kib}}. Both work on dashboards, but they suit different use cases:
+Lens offers two approaches for building chart visualizations in {{kib}}. Both work on dashboards, but they suit different use cases:
 
 | Use case | Recommended approach |
 |---|---|
-| Simple aggregations such as count, average, or sum on a known index | [Lens](visualize/lens.md): drag-and-drop fields, no query required |
-| Complex filtering, custom calculations, or data transformations | [{{esql}}](visualize/esorql.md): full query language flexibility |
-| Queries that span multiple indices or ad-hoc exploration | [{{esql}}](visualize/esorql.md): `FROM` supports any index pattern |
-| Formulas or time-shift comparisons | [Lens](visualize/lens.md): [formulas](visualize/lens.md#lens-formulas) and [time shifts](visualize/lens.md#compare-data-with-time-offsets) are Lens-specific features |
-| Quick prototyping starting from Discover | [{{esql}}](visualize/esorql.md): edit the query and visualization in one flow |
+| Simple aggregations such as count, average, or sum on a known index | [Drag-and-drop mode](visualize/lens.md): select fields from a data view, no query required |
+| Complex filtering, custom calculations, or data transformations | [{{esql}} mode](visualize/esorql.md): full query language flexibility |
+| Queries that span multiple indices or ad-hoc exploration | [{{esql}} mode](visualize/esorql.md): `FROM` supports any index pattern |
+| Formulas or time-shift comparisons | [Drag-and-drop mode](visualize/lens.md): [formulas](visualize/lens.md#lens-formulas) and [time shifts](visualize/lens.md#compare-data-with-time-offsets) are available in this mode |
+| Quick prototyping starting from Discover | [{{esql}} mode](visualize/esorql.md): edit the query and visualization in one flow |
 
