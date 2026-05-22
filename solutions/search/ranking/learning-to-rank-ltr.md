@@ -11,7 +11,7 @@ products:
 # Learning To Rank (LTR) [learning-to-rank]
 
 ::::{note}
-This feature was introduced in version 8.12.0 and is only available to certain subscription levels. For more information, see {{subscriptions}}.
+This feature was introduced in version 8.12.0 and is only available to certain subscription levels. For more information, refer to [Elastic self-managed subscriptions]({{subscriptions}}).
 ::::
 
 
