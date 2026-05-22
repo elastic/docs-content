@@ -93,17 +93,21 @@ The following sections describe how to get started with specific models availabl
 
 ### Jina v5 omni embedding models [jina-embeddings-v5-omni]
 
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+::::{important}
+{applies_to}`stack: ga 9.5+` While Jina v5 omni embedding models are available from {{stack}} 9.4, the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type supports these models only from {{stack}} 9.5.
+::::
+
 There are two Jina v5 omni embedding models available through Elastic {{infer-cap}} Service, [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) and [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis). Both models support multimodal embeddings for text, images, video, audio, and documents such as PDF in one shared vector space.
 
 - Use [`jina-embeddings-v5-omni-small`](#jina-embeddings-v5-omni-small-on-eis) for larger context windows and higher-capacity retrieval workloads. 
 - Use [`jina-embeddings-v5-omni-nano`](#jina-embeddings-v5-omni-nano-on-eis) for lower cost and lower resource usage.
 
 #### `jina-embeddings-v5-omni-small` on EIS [jina-embeddings-v5-omni-small-on-eis]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
 
 Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-small` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
 
@@ -122,11 +126,6 @@ You can reference the `inference_id` of the endpoint in index mappings for the [
 For examples of ingesting different media types and generating embeddings for text, images, audio, and video, refer to [Getting started with Jina v5 omni embedding models through Elastic {{infer-cap}} Service](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md#jina-omni-getting-started). Select the **jina-embeddings-v5-omni-small** tab in each example.
 
 #### `jina-embeddings-v5-omni-nano` on EIS [jina-embeddings-v5-omni-nano-on-eis]
-
-```{applies_to}
-stack: ga 9.5+
-serverless: ga
-```
 
 Create an {{infer}} endpoint that references the `jina-embeddings-v5-omni-nano` model in the `model_id` field. Use the `embedding` task type so the endpoint can accept multimodal input.
 

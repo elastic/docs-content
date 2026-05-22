@@ -43,7 +43,11 @@ When you send text to an EIS {{infer}} endpoint that uses an embedding model, th
 
 ### Jina v5 omni embedding models [jina-embeddings-v5-omni]
 
-{applies_to}`stack: ga 9.5`
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga`
+
+::::{important}
+{applies_to}`stack: ga 9.5+` While Jina v5 omni embedding models are available from {{stack}} 9.4, the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type supports these models only from {{stack}} 9.5.
+::::
 
 The Jina v5 omni embedding models are multimodal dense vector embedding models available through [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). They turn text, images, video, audio, and documents such as PDF into vectors in one shared space, so you can retrieve, cluster, and score similarity across languages and media types from a single index. There are two Jina v5 omni embedding models available:
 
