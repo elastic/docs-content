@@ -353,6 +353,8 @@ The {{esql}} editor autocompletes the setting name and its accepted values. Once
 
 The first time a query references an unmapped field, the editor shows a warning so you can confirm the reference is intentional and not a typo. After a `KEEP` or `STATS` command that limits the available columns, references to unmapped fields downstream are flagged as errors.
 
+The `LOAD` value has the following limitations: `FORK`, `LOOKUP JOIN`, subqueries, views, and full-text search functions are not supported anywhere in the query. Referencing partially unmapped non-keyword fields requires a cast or conversion function (for example `::keyword` or `TO_STRING()`), unless the field appears in a `KEEP` or `DROP` command.
+
 {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
 

@@ -261,10 +261,6 @@ When `LOAD` is set, unmapped fields are loaded from `_source` as `keyword` field
 
 {applies_to}`stack: preview 9.5` When you query a wired stream and the ES|QL editor detects an unknown column error, a **Load unmapped fields** quick fix action is available. Select it to apply this setting automatically.
 
-:::{note}
-`SET unmapped_fields = "LOAD"` is not supported in queries that use `FORK`, `LOOKUP JOIN`, subqueries, views, or full-text search functions.
-:::
-
 For more details, refer to [Handle unmapped fields with `SET unmapped_fields`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-unmapped-fields).
 
 ## Next steps
