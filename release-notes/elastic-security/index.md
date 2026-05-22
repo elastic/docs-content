@@ -225,7 +225,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.3.5-fixes]
 
-* Upgrades `langsmith` from `0.5.25` to `0.7.1` [#269462]({{kib-pull}}269462).
 * Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
 * Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was configured with a non-English locale [#265782]({{kib-pull}}265782).
 * Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
