@@ -220,6 +220,28 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
+
+## 9.3.5 [elastic-security-9.3.5-release-notes]
+
+### Fixes [elastic-security-9.3.5-fixes]
+
+* Upgrades `langsmith` from `0.5.25` to `0.7.1` [#269462]({{kib-pull}}269462).
+* Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
+* Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was configured with a non-English locale [#265782]({{kib-pull}}265782).
+* Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where {{elastic-defend}} failed to send data to {{ls}} output when the kernel TCP send buffer was full, causing connections to drop prematurely.
+* Updates eBPF probes for {{elastic-defend}} on Linux to support 7.0 kernels.
+* Fixes {{elastic-defend}} on Linux to report more accurate path names for file-less execution events.
+* Fixes an issue where {{elastic-endpoint}} could get stuck in the `CONFIGURING` state when updating an {{elastic-defend}} policy with rollback enabled on Windows.
+* Fixes a sharing violation in the `get-file` response action for {{elastic-defend}}.
+* Fixes an issue where {{elastic-defend}} did not display end user notifications for device control events.
+* Improves legacy event source compatibility with newer kernel versions (6.1+ and 7.0+) in {{elastic-defend}} on Linux.
+* Fixes an issue where {{elastic-defend}} on Linux could trigger unnecessary automount activity on systems using `autofs`.
+* Improves `fanotify` event collection reliability in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+* Fixes an edge case where {{elastic-defend}} could lose tamper protection.
+
+
 ## 9.3.4 [elastic-security-9.3.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.3.4-features-enhancements]
