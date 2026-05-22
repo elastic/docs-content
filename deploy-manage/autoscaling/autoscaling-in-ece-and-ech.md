@@ -249,12 +249,18 @@ Although autoscaling can scale some tiers by CPU, the primary measurement of tie
 
 Run this example API request to create a deployment with autoscaling:
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} ece:
+::::{applies-item} ece:
+
+:::{important}
+The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
+
+For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+:::
 
 ```sh subs=true
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
  "name": "my-first-autoscaling-deployment",
  "resources": {
@@ -453,9 +459,9 @@ curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOS
 '
 ```
 
-:::
+::::
 
-:::{applies-item} ess:
+::::{applies-item} ess:
 
 ```sh subs=true
 curl -XPOST \
@@ -660,6 +666,6 @@ curl -XPOST \
 '
 ```
 
-:::
-
 ::::
+
+:::::

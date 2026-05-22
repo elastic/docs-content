@@ -101,17 +101,13 @@ jobs:
           body: |
             ## Summary
 
-            This PR updates the EIS model list based on CSV generated from Google Sheets.
+            Automated update to the EIS model list from the [source spreadsheet](https://docs.google.com/spreadsheets/d/1aViZ8DBKOIqgVXnHMll9JWHxeUT2KdNUpSK4Rw6Ob9c/edit?gid=156561157#gid=156561157).
 
-            ### Changes
-
-            Please review the changes in the Files tab to ensure the data looks correct.
-
-            ### Next Steps
+            ### Review checklist
 
             - [ ] Review the CSV changes
             - [ ] Verify data accuracy
-            - [ ] Merge when ready
+            - [ ] **Merge this PR once approved**
 
             ---
 

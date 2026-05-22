@@ -12,6 +12,18 @@ Review the changes, fixes, and more to {{serverless-full}}.
 <!-- :::{changelog} /releases
 ::: -->
 
+:::{include} _snippets/2026-05-19/index.md
+:::
+
+:::{include} _snippets/2026-05-14/index.md
+:::
+
+:::{include} _snippets/2026-05-12/index.md
+:::
+
+:::{include} _snippets/2026-05-11/index.md
+:::
+
 :::{include} _snippets/2026-05-06/index.md
 :::
 
@@ -709,6 +721,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 
 * Improves {{esql}} controls to retrieve variable types from query results, preventing query failures when numeric values are stored as keyword fields [#254436]({{kib-pull}}254436)
 * Adds a size gauge to dashboard panels while resizing, showing the current grid dimensions [#255363]({{kib-pull}}255363)
+* Enforces panel limits on dashboards: up to 100 top-level items (panels, unpinned controls, and sections combined), up to 100 panels per section, and up to 100 pinned controls [#256102]({{kib-pull}}256102)
 * Prevents time series index mode from being enabled on non-metrics data stream types in input packages [#251205]({{kib-pull}}251205)
 * Adds autocomplete and validation support for the `MMR` command in the {{esql}} editor [#254014]({{kib-pull}}254014)
 * Defaults to table view in Discover when an index or data view has five or fewer columns [#255292]({{kib-pull}}255292)
@@ -2801,7 +2814,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
 * Skips search shards with `INDEX_REFRESH_BLOCK`
-* Adds the `created_date` and `modified_date` system-managed properties to pipelines #130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Adds the `created_date` and `modified_date` system-managed properties to pipelines [#130847](https://github.com/elastic/elasticsearch/pull/130847)
 * Adds the `created_date` and `modified_date` system-managed properties to component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
 * Adds entity store and asset criticality index privileges to built-in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 * Organization IdP routes are now public in the OpenAPI specifications.
