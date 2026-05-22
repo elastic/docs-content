@@ -5,7 +5,7 @@ applies_to:
 products:
   - id: kibana
 navigation_title: Customize {{kib}} branding
-description: Replace the default Elastic branding in Kibana with your own logo, organization name, page title, and favicon. Requires an Enterprise subscription and the Advanced Settings Kibana privilege.
+description: Replace the default Elastic branding in Kibana with your own logo, organization name, page title, and favicon.
 ---
 
 # Customize {{kib}} branding
@@ -19,7 +19,7 @@ Replace the default Elastic logo, organization name, browser tab title, and favi
 
 ## Configure custom branding
 
-1. Open **Advanced Settings** by finding **Stack Management** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open **Advanced Settings** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Global Settings** tab.
 3. In the **Custom branding** section, configure one or more of the following settings:
 
