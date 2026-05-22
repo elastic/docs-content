@@ -102,13 +102,9 @@ After your PR is merged, changes don't appear immediately on the docs site. The 
 
    > Package {package_name} - {version} containing this change is available at https://epr.elastic.co/package/{package_name}/{version}
 
-2. **Docs sync**: A scheduled job in the `elastic/integration-docs` repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
+2. **Docs sync**: A scheduled job in the `elastic/integrations` repository pulls the latest packages from EPR and opens an automated PR. This job runs once a day.
 
 3. **Docs build**: Once the automated PR is merged, changes propagate to the docs site.
-
-:::{tip}
-If you need changes to appear sooner, you can manually trigger the [update-docs workflow](https://github.com/elastic/integration-docs/actions/workflows/run-update-docs.yml) in the integration-docs repository.
-:::
 
 ## Special case integrations
 

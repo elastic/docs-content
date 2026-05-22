@@ -56,7 +56,7 @@ If your request relates to existing tickets or discussions, provide relevant lin
 
 For external contributors, include links to any public discussions, GitHub issues, forum posts, or blog posts that provide relevant background.
 
-For internal contributors, if your request stems from internal tickets or discussions, summarize the key points and mark any internal-only links clearly. If you need to provide sensitive context (such as UI copy for early-stage designs or billing changes), you can create an issue in the private repo, [elastic/docs-content-internal](https://github.com/elastic/docs-content-internal/issues/new/choose). Most issues should be opened in the public repo, [elastic/docs-content](https://github.com/elastic/docs-content/issues/new/choose).
+For internal contributors, if your request stems from internal tickets or discussions, summarize the key points and mark any internal-only links clearly. Most issues should be opened in the public repo, [elastic/docs-content](https://github.com/elastic/docs-content/issues/new/choose).
 
 :::{tip}
 **For internal contributors:** You can link to public docs issues from internal support cases and private issues. This adds a link to the docs issue's GitHub timeline for users within the Elastic org.

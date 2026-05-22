@@ -43,7 +43,7 @@ To learn more about the new docs UX, read [How to use the documentation](/get-st
 
 |Issue type|Where to report|
 |----|----|
-|Documentation|- [Open a docs issue](https://github.com/elastic/docs-content/issues/new?template=internal-request.yaml) or [fix it yourself](locally.md) <br> - Elastic employees can use the [internal repo](https://github.com/elastic/docs-content-internal/issues/new/choose)|
+|Documentation|- [Open a docs issue](https://github.com/elastic/docs-content/issues/new?template=internal-request.yaml) or [fix it yourself](locally.md)|
 |`docs-builder`|- [Bug report](https://github.com/elastic/docs-builder/issues/new?template=bug-report.yaml) <br> - [Discussion](https://github.com/elastic/docs-builder/discussions)|
 
 :::{note}

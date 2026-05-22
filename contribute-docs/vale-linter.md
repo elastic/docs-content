@@ -136,5 +136,5 @@ You can report issues or suggest improvements to the Elastic style guide by crea
 
 ## Additional resources [additional-resources]
 
-- [Vale's official documentation](https://vale.sh/docs/vale-cli/overview/)
+- [Vale's official documentation](https://vale.sh/docs/)
 - [Elastic Vale rules repository](https://github.com/elastic/vale-rules)

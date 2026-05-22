@@ -193,7 +193,7 @@ refer to [](reference.md#key).
   * For example, if a portion of a page is applicable to a different context than what was specified at the page level,
   clarify in what context it applies using section or inline `applies_to` badges.
   * Section-level and inline annotations can reference items from a different dimension than the page-level dimension when needed to clarify specific requirements.
-% Source: https://elastic.github.io/docs-builder/versions/#defaults-and-hierarchy
+% Source: https://elastic.github.io/docs-builder/configure/site/versions
 * **Do not assume a default product or deployment type.**
   Treat all products and deployment types equally. Don't treat one as the "base" and the other as the "exception".
 

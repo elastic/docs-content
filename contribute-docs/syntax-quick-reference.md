@@ -603,7 +603,7 @@ Use {kbd}`ctrl|cmd+c` to copy text.
 **DON'Ts**<br>
 ❌ **Don't:** Use raw `+` or `|` characters when you mean to display them as keys
 
-For more details and available key names, refer to [Keyboard markup](https://elastic.github.io/docs-builder/syntax/keyboard).
+For more details and available key names, refer to [Keyboard markup](https://elastic.github.io/docs-builder/syntax/kbd).
 <br>
 <br>
 

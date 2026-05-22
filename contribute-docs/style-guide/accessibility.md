@@ -124,7 +124,7 @@ Assistive technology allows individuals with disabilities to access
 information technology and perform functions that might be otherwise impossible, like
 reading text, navigating websites, or listening to a video.
 
-[Text-to-speech and screen readers](https://libguides.reading.ac.uk/inclusive-technology/text-to-speech)
+[Text-to-speech and screen readers](https://www.w3.org/WAI/perspective-videos/speech/)
 read what's on your screen through the semantics placed in the content by developers.
 
 [Screen magnification software](https://www.afb.org/blindness-and-low-vision/using-technology/using-computer/part-ii-experienced-computer-user-new-0)
