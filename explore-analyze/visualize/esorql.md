@@ -11,13 +11,13 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-{{esql}} mode is particularly useful when you need to:
+Creating visualizations using queries with {{esql}} mode is particularly useful when you need to:
 
 - Query data across multiple indices without a pre-configured data view
 - Apply complex filtering, transforms, or custom calculations in a single query
 - Prototype a visualization directly from an {{esql}} query in Discover
 
-For simpler aggregations on a known index, [Lens in point-and-click mode](lens.md) may be easier to use.
+For less advanced aggregations on a known index, [the point-and-click mode](lens.md) is a good alternative.
 
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 
