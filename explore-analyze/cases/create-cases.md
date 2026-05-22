@@ -103,7 +103,7 @@ You do not need to configure an email connector or update {{kib}} user settingsâ
           hasAuth: true/false
     ```
 
-3. If you want the email notifications to contain links back to the case, configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
+3. If you want the email notifications to contain links back to the case, configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md) setting.
 
 :::
 

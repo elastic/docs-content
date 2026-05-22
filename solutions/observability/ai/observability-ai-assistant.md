@@ -343,7 +343,7 @@ Main functions:
 
 ::::::{important}
 :applies_to: self:
-For self‑managed deployments, you must configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in your `kibana.yml` to use the `kibana` function.
+For self‑managed deployments, you must configure [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md) in your `kibana.yml` to use the `kibana` function.
 ::::::
 
 `query`

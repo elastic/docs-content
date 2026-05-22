@@ -23,7 +23,7 @@ The config directory can be changed using the `KBN_PATH_CONF` environment variab
 KBN_PATH_CONF=/home/kibana/config ./bin/kibana
 ```
 
-The default host and port settings configure {{kib}} to run on `localhost:5601`. To change this behavior and allow remote users to connect, you need to update your [`server.host`](kibana://reference/configuration-reference/general-settings.md#server-host) and [`server.port`](kibana://reference/configuration-reference/general-settings.md#server-port) settings in the `kibana.yml` file.
+The default host and port settings configure {{kib}} to run on `localhost:5601`. To change this behavior and allow remote users to connect, you need to update your [`server.host`](kibana://reference/configuration-reference/general-settings.md) and [`server.port`](kibana://reference/configuration-reference/general-settings.md) settings in the `kibana.yml` file.
 
 In this file, you can also enable SSL and set a variety of other options.
 

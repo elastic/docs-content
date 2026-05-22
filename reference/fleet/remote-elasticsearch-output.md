@@ -68,7 +68,7 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::
 
 :::{note}
-To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
+To prevent unauthorized access, the {{es}} service token is stored as a secret value. While secret storage is recommended, you can override this setting and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or later. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md).
 :::
 :::::
 

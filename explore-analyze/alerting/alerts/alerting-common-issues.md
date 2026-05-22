@@ -21,9 +21,9 @@ Rules with a small check interval, such as every two seconds, run later than sch
 
 **Solution**
 
-Rules run as background tasks at a cadence defined by their **check interval**. When a Rule **check interval** is smaller than the Task Manager [`poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings), the rule will run late.
+Rules run as background tasks at a cadence defined by their **check interval**. When a Rule **check interval** is smaller than the Task Manager [`poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md), the rule will run late.
 
-Either tweak the [{{kib}} Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) or increase the **check interval** of the rules in question.
+Either tweak the [{{kib}} Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md) or increase the **check interval** of the rules in question.
 
 For more details, see [Tasks with small schedule intervals run late](../../../troubleshoot/kibana/task-manager.md#task-manager-health-scheduled-tasks-small-schedule-interval-run-late).
 
@@ -246,8 +246,8 @@ This error happens when the `xpack.encryptedSavedObjects.encryptionKey` value us
 
 |     |     |
 | --- | --- |
-| If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-keyrotation-decryptiononlykeys). |
-| If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](kibana://reference/configuration-reference/security-settings.md#xpack-encryptedsavedobjects-keyrotation-decryptiononlykeys) for previously used encryption keys. |
+| If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](kibana://reference/configuration-reference/security-settings.md). |
+| If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](kibana://reference/configuration-reference/security-settings.md) for previously used encryption keys. |
 | If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui}}**, select **Update API key** from the action menu. |
 
 ## Rules stop running after upgrade [known-issue-upgrade-rule]

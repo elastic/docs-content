@@ -29,6 +29,6 @@ From the **Stack Monitoring** section, you can also configure [{{kib}} alerts](/
 
 If you're having trouble accessing your monitoring data within the **Stack Monitoring** section, then refer to [](/deploy-manage/monitor/monitoring-data/monitor-troubleshooting.md).
 
-If you enable monitoring across the {{stack}}, each monitored component is considered unique based on its persistent UUID, which is written to the [`path.data`](kibana://reference/configuration-reference/general-settings.md#path-data) directory when the node or instance starts.
+If you enable monitoring across the {{stack}}, each monitored component is considered unique based on its persistent UUID, which is written to the [`path.data`](kibana://reference/configuration-reference/general-settings.md) directory when the node or instance starts.
 
 

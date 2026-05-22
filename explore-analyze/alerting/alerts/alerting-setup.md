@@ -18,7 +18,7 @@ products:
 If you are using an **on-premises** {{stack}} deployment:
 
 * In the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md) setting.
-* For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) configuration setting.
+* For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md) configuration setting.
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
 

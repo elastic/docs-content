@@ -32,7 +32,7 @@ If you lose this index, all scheduled alerts and actions are lost.
 
 {{kib}} background tasks are managed as follows:
 
-- An {{es}} task index is polled for overdue tasks at 500-millisecond intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
+- An {{es}} task index is polled for overdue tasks at 500-millisecond intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md) setting.
 - Tasks are claimed by updating them in the {{es}} index, using optimistic concurrency control to prevent conflicts. Each {{kib}} instance can run a maximum of 10 concurrent tasks, so a maximum of 10 tasks are claimed each interval.
 - Tasks are run on the {{kib}} server.
 - Task Manager ensures that tasks:
@@ -86,9 +86,9 @@ At times, the sustainable approach might be to expand the throughput of your clu
 
 Other times it, might be preferable to increase the throughput of individual {{kib}} instances.
 
-Tweak the capacity with the [`xpack.task_manager.capacity`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull a higher number of tasks per interval. This setting can impact the performance of each instance as the workload will be higher.
+Tweak the capacity with the [`xpack.task_manager.capacity`](kibana://reference/configuration-reference/task-manager-settings.md) setting, which enables each {{kib}} instance to pull a higher number of tasks per interval. This setting can impact the performance of each instance as the workload will be higher.
 
-Tweak the poll interval with the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
+Tweak the poll interval with the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
 
 ### Choosing a scaling strategy [task-manager-choosing-scaling-strategy]
 

@@ -15,7 +15,7 @@ Access {{kib}} through the web application on port 5601.
 
 1. Point your web browser to the machine where you are running {{kib}} and specify the port number. For example, `localhost:5601` or `https://YOURDOMAIN.com:5601`.
 
-    To remotely connect to {{kib}}, set [`server.host`](kibana://reference/configuration-reference/general-settings.md#server-host) to a non-loopback address.
+    To remotely connect to {{kib}}, set [`server.host`](kibana://reference/configuration-reference/general-settings.md) to a non-loopback address.
 
     :::{note}
     For production deployments, you should always [secure {{kib}} with a certificate](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http) and access it over HTTPS.

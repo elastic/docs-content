@@ -18,7 +18,7 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 * [Manually transfer prebuilt rules](#import-export-airgapped): Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
 ::::{note}
-A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond what's bundled with your {{kib}} version, use one of the methods described on this page.
+A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md) is set to `true`. However, to receive rule updates beyond what's bundled with your {{kib}} version, use one of the methods described on this page.
 ::::
 
 :::{admonition} Air-gapped deployment setup
@@ -104,8 +104,8 @@ xpack.fleet.registryUrl: "http://<your-registry-host>:8080"
 xpack.fleet.isAirGapped: true
 ```
 
-* [`xpack.fleet.registryUrl`](kibana://reference/configuration-reference/fleet-settings.md#fleet-data-visualizer-settings): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
-* [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
+* [`xpack.fleet.registryUrl`](kibana://reference/configuration-reference/fleet-settings.md): Points {{kib}} to your self-hosted registry. Replace `<your-registry-host>` with the hostname or IP address of your registry.
+* [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md): Enables air-gapped mode, which allows {{fleet}} to skip requests or operations that require internet access.
 ::::
 
 :::::

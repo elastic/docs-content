@@ -47,9 +47,9 @@ For a complete description of event details and format, refer to the following r
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-audit
 :::
 
-To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md). These are a list of filters that determine which events should be excluded from the audit log.
 
-In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](kibana://reference/configuration-reference/security-settings.md#audit-logging-settings).
+In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](kibana://reference/configuration-reference/security-settings.md).
 
 
 ::::{tip}
@@ -60,7 +60,7 @@ For a complete description of auditing event details, such as `category`, `type`
 
 ### General recommendations
 
-* Consider starting with {{es}} [`xpack.security.audit.logfile.events.include`](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#xpack-sa-lf-events-include) and [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters) settings to specify the type of events you want to include or exclude in the auditing output.
+* Consider starting with {{es}} [`xpack.security.audit.logfile.events.include`](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#xpack-sa-lf-events-include) and [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md) settings to specify the type of events you want to include or exclude in the auditing output.
 
 * If you need a more granular control, refer to [{{es}} audit events ignore policies](./logfile-audit-events-ignore-policies.md) for a better understanding how ignore policies work and when they are beneficial.
 

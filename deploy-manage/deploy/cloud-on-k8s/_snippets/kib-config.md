@@ -1,6 +1,6 @@
 You can add your own {{kib}} settings to the `spec.config` section.
 
-The following example demonstrates how to set the [`elasticsearch.requestHeadersWhitelist`](kibana://reference/configuration-reference/general-settings.md#elasticsearch-requestheaderswhitelist) configuration option.
+The following example demonstrates how to set the [`elasticsearch.requestHeadersWhitelist`](kibana://reference/configuration-reference/general-settings.md) configuration option.
 
 ```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1

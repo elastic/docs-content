@@ -925,9 +925,9 @@ Tasks are scheduled to run every 2 seconds, but seem to be running late.
 
 **Solution**:
 
-The Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which is 3 seconds by default. This means that a task can run late if it uses a schedule that is smaller than this setting.
+The Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md) setting, which is 3 seconds by default. This means that a task can run late if it uses a schedule that is smaller than this setting.
 
-You can adjust the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.  However, this adds some load to both {{kib}} and {{es}} instances in the cluster, as they have to perform more queries.
+You can adjust the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md) setting.  However, this adds some load to both {{kib}} and {{es}} instances in the cluster, as they have to perform more queries.
 
 
 ### Tasks run late [task-manager-health-tasks-run-late]

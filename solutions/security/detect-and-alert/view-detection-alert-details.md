@@ -44,7 +44,7 @@ If you've enabled grouping on the Alerts page, expand a group and select an indi
 
 ::::{note}
 :applies_to:{stack: ga}
-If you've configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) in `kibana.yml`, the shareable URL also appears in the `kibana.alert.url` field on the **Table** tab.
+If you've configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md) in `kibana.yml`, the shareable URL also appears in the `kibana.alert.url` field on the **Table** tab.
 ::::
 
 #### Alert details
