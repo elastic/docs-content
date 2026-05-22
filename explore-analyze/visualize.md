@@ -46,7 +46,4 @@ $$$panels-editors$$$
 Legacy panel types only appear in the **Add panel** dashboard menu if you already have such panels in your dashboards. If you have never used these panel types, use Lens instead.
 :::
 
-## Choose your visualization approach [visualization-approach]
-
-Lens supports two modes for building visualizations: a point-and-click editor that works with data views, and an {{esql}} query editor. For a side-by-side comparison of their strengths, refer to [Choose your visualization approach](visualize/lens.md#visualization-approach) on the Lens page.
 

@@ -17,7 +17,7 @@ The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.
 
 Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
 
-Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers. For more complex queries or cross-index data, consider [ES|QL visualizations](esorql.md).
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
@@ -44,20 +44,6 @@ With Lens, you can create the following visualization types:
 | [Heat map](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal density or patterns across two dimensions using color intensity. |
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
-
-## Choose your visualization approach [visualization-approach]
-
-Lens supports two modes for building visualizations. Both work on dashboards, but they suit different workflows:
-
-| | Point-and-click mode | [{{esql}} mode](esorql.md) |
-|---|:---:|:---:|
-| No query required | ✅ | |
-| [Formulas](#lens-formulas) and math functions | ✅ | |
-| [Time-shift comparisons](#compare-data-with-time-offsets) | ✅ | |
-| Full query language (filtering, transforms, calculations) | | ✅ |
-| Cross-index queries | | ✅ |
-| No data view required | | ✅ |
-| Prototype from Discover | | ✅ |
 
 ## Create visualizations [create-the-visualization-panel]
 
