@@ -49,7 +49,7 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution.
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. For the full reference on every top-level field and the execution lifecycle, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════
@@ -128,5 +128,5 @@ Explore what you can automate:
 Concepts, reference, and authoring:
 
 - [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
-- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
+- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, the anatomy of a workflow, workflow settings, choosing the right step, passing data between steps, handling errors, and more.
 - [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.

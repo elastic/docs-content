@@ -74,7 +74,7 @@ By default, if any step fails the entire workflow execution stops immediately (t
 | Layer | What it controls | Use for |
 |---|---|---|
 | **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
-| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
+| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). | A consistent global retry policy. |
 | **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
 ### Configuration levels [workflows-on-failure-levels]

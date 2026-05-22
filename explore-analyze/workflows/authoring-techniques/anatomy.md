@@ -1,0 +1,232 @@
+---
+navigation_title: Anatomy of a workflow
+applies_to:
+  stack: ga 9.4+
+  serverless: ga
+description: Reference for every top-level field in a workflow YAML definition, what it does, and the execution lifecycle that results.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+---
+
+# Anatomy of a workflow [workflows-anatomy]
+
+A workflow definition has eleven top-level fields. Most of them are optional. This page is the reference for all of them.
+
+## The complete shape [workflows-anatomy-shape]
+
+```yaml
+name: slo-breach-response            # identity
+description: Investigate and mitigate SLO breaches.
+enabled: true                        # activation
+tags: [observability, slo]
+
+version: "1"                         # schema version
+
+triggers:                            # when it runs
+  - type: alert
+
+inputs:                              # runtime parameters (optional)
+  - name: service_name
+    type: string
+    required: true
+
+consts:                              # reusable constants (optional)
+  severity_threshold: 70
+
+outputs:                             # declared output schema (optional)
+  - name: result
+    type: string
+
+settings:                            # global behavior (optional)
+  timeout: "5m"
+  concurrency:
+    strategy: drop
+
+steps:                               # what it does
+  - name: investigate
+    type: elasticsearch.esql.query
+    with:
+      query: "..."
+```
+
+## Field reference [workflows-anatomy-fields]
+
+| Field | Type | Required | Purpose |
+|---|---|---|---|
+| `name` | string | Yes | Unique name for the workflow. Appears in the UI and identifies the workflow programmatically. |
+| `description` | string | No | Short description shown in the workflow list. |
+| `enabled` | boolean | No | Whether the workflow is active. Defaults to `true`. Set to `false` to park a workflow without deleting it. |
+| `tags` | `string[]` | No | Classification tags. Used for filtering in the list UI and for organizational conventions. |
+| `version` | string | No | Schema version. Defaults to `"1"`. The engine uses this for forward compatibility; leave it unset unless instructed otherwise. |
+| `triggers` | `Trigger[]` | Yes | One or more triggers that start the workflow. Refer to [Triggers](/explore-analyze/workflows/triggers.md). |
+| `inputs` | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. |
+| `consts` | object | No | Constant values reusable as `{{ consts.<name> }}`. Use for thresholds, index names, or other values you want to name. |
+| `outputs` | object or `Output[]` | No | Declared output schema. Required for workflows invoked through [composition](/explore-analyze/workflows/steps/composition.md) — the parent needs to know the child's output shape. |
+| `settings` | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
+| `steps` | `Step[]` | Yes | Ordered list of steps to execute. Refer to [Steps](/explore-analyze/workflows/steps.md). |
+
+## Identity fields [workflows-anatomy-identity]
+
+`name` is what you'll type when you talk about this workflow. Pick something that reads well in a list. A common convention is `<domain>--<verb>-<noun>`:
+
+```yaml
+name: security--triage-malware-alert
+name: observability--respond-to-slo-breach
+name: platform--rotate-service-account-keys
+```
+
+`description` shows up directly below the name in the UI. One sentence is plenty.
+
+`tags` are the filter keys in the workflow list. Teams often tag by product area (`security`, `observability`, `search`), by criticality (`prod`, `demo`), or by audience (`soc`, `oncall`).
+
+## `enabled` — the kill switch [workflows-anatomy-enabled]
+
+`enabled: false` parks the workflow without deleting it. Scheduled triggers stop firing, alert-attached workflows stop responding, and manual runs return a clear "workflow is disabled" error. Flip it back to `true` when you're ready.
+
+Disabling is safer than deleting when you're experimenting or reworking a workflow because alerting rules that reference the workflow don't break.
+
+## `triggers` — when it runs [workflows-anatomy-triggers]
+
+Every workflow needs at least one trigger. You can list several:
+
+```yaml
+triggers:
+  - type: manual
+  - type: scheduled
+    with:
+      every: "1h"
+```
+
+That workflow can be run on demand and also runs hourly automatically. Refer to [Triggers](/explore-analyze/workflows/triggers.md) for the available trigger types.
+
+## `inputs` — runtime parameters [workflows-anatomy-inputs]
+
+`inputs` declare values the workflow expects at invocation time. They're what the user types in the **Run** modal, or what an API caller provides in the request body.
+
+```yaml
+inputs:
+  - name: alert_id
+    type: string
+    required: true
+  - name: severity
+    type: choice
+    options: [low, medium, high, critical]
+    default: medium
+  - name: dry_run
+    type: boolean
+    default: false
+```
+
+Inside the workflow, reference them as `{{ inputs.alert_id }}`.
+
+Supported input types are `string`, `number`, `boolean`, `choice` (with an `options` array), and `object`. `required` defaults to `false`; provide a `default` to give optional inputs a fallback value.
+
+:::{note}
+The trigger defines *when* a workflow runs. Inputs define *what values* it accepts at runtime. A manual-triggered workflow typically has explicit inputs the user fills in. An alert-triggered workflow usually has no inputs, because the alert payload arrives as `event` automatically. You can still add inputs if you need values the alert payload doesn't carry.
+:::
+
+## `consts` — named constants [workflows-anatomy-consts]
+
+`consts` are fixed values you want to name once and reference many times.
+
+```yaml
+consts:
+  watch_index: "security.watch.findings"
+  threshold: 0.85
+  slack_channel: "#soc-oncall"
+
+steps:
+  - name: post
+    type: slack.postMessage
+    with:
+      channel: "{{ consts.slack_channel }}"
+      text: "Threshold {{ consts.threshold }} exceeded."
+```
+
+Constants are evaluated once at workflow load. They don't have access to `inputs`, `steps`, or `event`. Use a [`data.set` step](/explore-analyze/workflows/steps/data.md#data-set) if you need a dynamic value.
+
+## `outputs` — declared result shape [workflows-anatomy-outputs]
+
+`outputs` describe what the workflow produces when it finishes. The canonical use case is [workflow composition](/explore-analyze/workflows/steps/composition.md) — a parent workflow that invokes this one needs to know what shape to expect back.
+
+```yaml
+outputs:
+  - name: verdict
+    type: string
+  - name: severity
+    type: number
+  - name: evidence
+    type: object
+```
+
+A workflow that doesn't declare outputs can still complete successfully. `outputs` is only required when the workflow is called as a child workflow through composition.
+
+## `settings` — global behavior [workflows-anatomy-settings]
+
+`settings` is the grab bag for workflow-wide behavior: timeout, timezone, concurrency, and global error handling.
+
+```yaml
+settings:
+  timeout: "10m"
+  timezone: "America/Los_Angeles"
+  max-step-size: "10mb"
+  concurrency:
+    key: "{{ event.alerts[0].host.name }}"
+    strategy: drop
+    max: 1
+  on-failure:
+    retry:
+      max-attempts: 2
+      delay: "10s"
+```
+
+Every field in `settings` is optional. The full reference with per-field semantics lives on the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md).
+
+## `steps` — the body of the workflow [workflows-anatomy-steps]
+
+`steps` is an ordered list. Each step has a required `name` (unique within the workflow), a required `type` (the step type identifier), and a type-specific `with` block.
+
+```yaml
+steps:
+  - name: fetch
+    type: elasticsearch.search
+    with:
+      index: logs-*
+      size: 100
+  - name: summarize
+    type: ai.summarize
+    connector-id: my-openai
+    with:
+      input: "{{ steps.fetch.output.hits.hits | map: '_source.message' | join: '\\n' }}"
+```
+
+Every step also accepts a standard set of common fields for control flow and error handling. Refer to the [Steps overview](/explore-analyze/workflows/steps.md) for those.
+
+## The execution lifecycle [workflows-anatomy-lifecycle]
+
+When you invoke a workflow — manually, on schedule, or through a trigger — the engine puts it through this lifecycle:
+
+| State | Meaning |
+|---|---|
+| `pending` | The execution is queued and waiting to start. |
+| `running` | At least one step is executing. |
+| `waiting` | The workflow has paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) or [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) step. Returns to `running` when the timer fires or the input arrives. |
+| `completed` | Terminal. The workflow finished successfully. |
+| `failed` | Terminal. A step failed and `on-failure` did not recover. |
+| `cancelled` | Terminal. The operator cancelled the run, or the timeout or concurrency strategy stopped it. |
+| `skipped` | Terminal. The concurrency `drop` strategy skipped this run because another execution was already in flight. |
+
+Four states are terminal: `completed`, `failed`, `cancelled`, and `skipped`. Every terminal execution reports its usage to the consumption metering system. Refer to the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md) for how concurrency and execution metering interact.
+
+## Related [workflows-anatomy-related]
+
+- [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md): The full `settings` reference.
+- [Choose the right step](/explore-analyze/workflows/authoring-techniques/choose-the-right-step.md): Decision aid for picking step types.
+- [Steps overview](/explore-analyze/workflows/steps.md): The step catalog.
+- [Triggers overview](/explore-analyze/workflows/triggers.md): The trigger catalog.
+- [Cheat sheet](/explore-analyze/workflows/reference/cheat-sheet.md): One-page bookmark reference.
