@@ -28,32 +28,6 @@ Find **Visualize** in the navigation menu or by using the [global search field](
 By default the **Visualizations** page opens first. Here you can create new visualizations, or select from a list of previously created visualizations. To learn more, refer to [Save to the Visualize Library](../../explore-analyze/visualize/manage-panels.md).
 
 
-## Panel types compatible with the Visualize Library [visualize-library-compatibility]
-
-Not all panel types support saving to the Visualize Library. Only panels that can be saved as standalone saved objects appear in the Visualize Library and can be linked across multiple dashboards.
-
-**Compatible with the Visualize Library:**
-
-- **Lens** visualizations
-- **ES|QL** visualizations
-- **Maps**
-- **Custom visualizations** (Vega)
-- **Aggregation-based** (legacy)
-- **TSVB** (legacy)
-
-**Dashboard-only (not saved to the Visualize Library):**
-
-The following panel types are always dashboard-only (availability varies by solution and deployment type). They cannot be saved to the Visualize Library and are permanently lost when you remove the panel from the dashboard:
-
-- **Alerts** panels
-- **Collapsible sections**, **Markdown text**, **Image**, and **Links** panels: layout and content elements
-- **Anomaly swim lane**, **Anomaly chart**, and **Single Metric Viewer**: machine learning panels
-- **Change point detection**: AIOps panel
-- **SLO Overview**, **SLO Alerts**, and **SLO Error Budget**: observability panels
-
-**Discover sessions** do not appear in the Visualize Library, but you can add a saved session to multiple dashboards from the **Add panel** flow.
-
-
 ## Annotation groups [visualize-library-annotation-groups]
 
 **Annotation groups** give you the option to mark points on a visualization panel with events, such as a deployment, to help track performance. These annotations can be reused across multiple visualization panels.

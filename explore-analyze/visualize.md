@@ -14,8 +14,6 @@ products:
 
 Use one of the editors to create visualizations of your data. Each editor offers various capabilities.
 
-Panels marked **Yes** in the **Visualize Library** column can be shared across multiple dashboards. Panels marked **No** are dashboard-only and are permanently lost when removed. For details, refer to [Linked panels and dashboard-only panels](visualize/manage-panels.md#panel-states).
-
 $$$panels-editors$$$
 
 || **Content** | **Panel type** | **Description** | **Visualize Library** |
