@@ -11,7 +11,7 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-Creating visualizations using queries with {{esql}} mode is particularly useful when you need to:
+Creating visualizations using an {{esql}} query is particularly useful when you need to:
 
 - Query data across multiple indices without a pre-configured data view
 - Apply complex filtering, transforms, or custom calculations in a single query
