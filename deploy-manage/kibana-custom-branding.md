@@ -2,6 +2,7 @@
 type: how-to
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: kibana
 navigation_title: Customize Kibana branding
