@@ -41,6 +41,8 @@ Before creating a dashboard, ensure you have:
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
+    Panels added from the **Visualize Library** stay linked to it. Edits you make are reflected on every dashboard that uses them. Panels created directly on the dashboard are local to it and are permanently lost if you remove them without saving to the library first.
+
     {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can add up to 100 panels to a dashboard. Refer to [Panel limits](arrange-panels.md#dashboard-panel-limits) for the full breakdown.
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
