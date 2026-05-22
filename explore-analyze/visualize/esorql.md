@@ -11,7 +11,7 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
-You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard. For guidance on choosing between the {{esql}} mode and the drag-and-drop mode, refer to [Choose your visualization approach](../visualize.md#visualization-approach).
+You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard. For guidance on choosing between the {{esql}} mode and the point-and-click mode, refer to [Choose your visualization approach](../visualize.md#visualization-approach).
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
