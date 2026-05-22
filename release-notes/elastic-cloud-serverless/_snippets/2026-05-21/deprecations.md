@@ -1,2 +1,2 @@
-﻿## May 20, 2026 [elastic-2026-05-20-deprecations]
+﻿## May 21, 2026 [elastic-2026-05-21-deprecations]
 _There are no deprecations associated with this release._
