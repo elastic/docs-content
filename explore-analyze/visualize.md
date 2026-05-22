@@ -48,13 +48,5 @@ Legacy panel types only appear in the **Add panel** dashboard menu if you alread
 
 ## Choose your visualization approach [visualization-approach]
 
-Lens offers two approaches for building chart visualizations in {{kib}}. Both work on dashboards, but they suit different use cases:
-
-| Use case | Recommended approach |
-|---|---|
-| Simple aggregations such as count, average, or sum on a known index | [Point-and-click mode](visualize/lens.md): select fields from a data view, no query required |
-| Complex filtering, custom calculations, or data transformations | [{{esql}} mode](visualize/esorql.md): full query language flexibility |
-| Queries that span multiple indices or ad-hoc exploration | [{{esql}} mode](visualize/esorql.md): `FROM` supports any index pattern |
-| Formulas or time-shift comparisons | [Point-and-click mode](visualize/lens.md): [formulas](visualize/lens.md#lens-formulas) and [time shifts](visualize/lens.md#compare-data-with-time-offsets) are available in this mode |
-| Quick prototyping starting from Discover | [{{esql}} mode](visualize/esorql.md): edit the query and visualization in one flow |
+Lens supports two modes for building visualizations: a point-and-click editor that works with data views, and an {{esql}} query editor. For a side-by-side comparison of their strengths, refer to [Choose your visualization approach](visualize/lens.md#visualization-approach) on the Lens page.
 
