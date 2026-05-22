@@ -99,7 +99,7 @@ To make changes to the panel, use the panel menu options.
 
     * **Edit visualization** — Opens the editor so you can make changes to the panel.
 
-        If the panel is linked to the Visualize Library, your edits affect every dashboard that uses it. To make changes specific to this dashboard, open the panel menu and select **Unlink from library**. This creates a local copy and leaves the library version unchanged.
+        If the panel is linked to the library, your edits affect every dashboard that uses it. To make changes specific to this dashboard, open the panel menu and select **Unlink from library**. This creates a local copy and leaves the library version unchanged.
 
         :::{note}
         :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
