@@ -4,7 +4,7 @@ applies_to:
   stack: ga
 products:
   - id: kibana
-navigation_title: Customize {{kib}} branding
+navigation_title: Customize Kibana branding
 description: Replace the default Elastic branding in Kibana with your own logo, organization name, page title, and favicon.
 ---
 
