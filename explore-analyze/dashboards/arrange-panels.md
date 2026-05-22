@@ -37,7 +37,7 @@ Size panels to match what they show. Use these as starting points and adjust for
 | ---------- | ----------------- | ------------------------- |
 | KPI / metric | Quarter (12) | 4–6 |
 | Bar chart, gauge, pie | Half (24) | 8–12 |
-| Line chart, area chart (time series) | Full (48) | 12–15 |
+| Line chart, area chart (time series) | Half (24) to full (48) | 12–15 |
 | Heat map | Full (48) | 15–25 |
 | Table | Half (24) to full (48) | 15+ |
 
