@@ -12,14 +12,14 @@ products:
   - id: elastic-agent
   - id: fleet
 ---
-# Tutorial 1: Install a self-managed {{stack}} [installing-stack-demo-self]
+# Install a self-managed {{stack}} [installing-stack-demo-self]
 
 This tutorial demonstrates how to install and configure the latest {{version.stack}} version of the {{stack}} in a self-managed environment. Following these steps sets up a three node {{es}} cluster, with {{kib}}, {{fleet-server}}, and {{agent}}, each on separate hosts. The {{agent}} is configured with the System integration, enabling it to gather local system logs and metrics and deliver them into the {{es}} cluster. Finally, the tutorial shows how to view the system data in {{kib}}.
 
 ::::{note}
 This installation flow relies on the {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md), which secures {{es}} by default during the initial installation.
 
-If you plan to use custom certificates (for example, corporate-provided or publicly trusted certificates), or if you need to configure HTTPS for browser-to-{{kib}} communication, you can follow this tutorial in combination with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) at the appropriate stage of the installation.
+If you plan to use custom certificates (for example, corporate-provided or publicly trusted certificates), or if you need to configure HTTPS for browser-to-{{kib}} communication, you can combine this tutorial with [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
 
 For more details, refer to [Security overview](#security-overview).
 ::::
@@ -78,9 +78,9 @@ The examples in this tutorial use the following host addresses:
 
 | Component | Example host name | Example IP address |
 | --- | --- | --- |
-| {{es}} node 1 | `instance-1` | `203.0.113.21` |
-| {{es}} node 2 | `instance-2` | `203.0.113.22` |
-| {{es}} node 3 | `instance-3` | `203.0.113.23` |
+| {{es}} node 1 | `es-node1` | `203.0.113.21` |
+| {{es}} node 2 | `es-node2` | `203.0.113.22` |
+| {{es}} node 3 | `es-node3` | `203.0.113.23` |
 | {{kib}} | `kibana-host` | `203.0.113.31` |
 | {{fleet-server}} | `fleet-server-host` | `203.0.113.41` |
 
@@ -92,17 +92,17 @@ This tutorial results in a secure-by-default environment, but not every connecti
 
 * {{es}} uses the [automatic security setup](/deploy-manage/security/self-auto-setup.md) during the initial installation flow. This process generates certificates and enables TLS for both the transport and HTTP layers.
 * {{kib}} connects to {{es}} using the enrollment flow from the initial {{es}} setup.
-* HTTPS for browser-to-{{kib}} communication is **not configured** in this tutorial, although it is strongly recommended for production environments. {{kib}} HTTPS is covered in [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
+* HTTPS for browser-to-{{kib}} communication is **not configured** in this tutorial, although it is strongly recommended for production environments. This configuration is covered in [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
 * {{fleet-server}} is installed using the Quick Start flow, which uses a self-signed certificate for its HTTPS endpoint.
 * {{agent}} enrolls using that Quick Start flow, which requires the install command to include the `--insecure` flag.
 
 ::::{note}
-If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial until {{kib}} is installed (Step 7), and then continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
+If you plan to use certificates signed by your organization's certificate authority or by a public CA, complete this tutorial through Step 7 (install {{kib}}), and then continue with the tutorial [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) before installing {{fleet-server}} and {{agent}}.
 ::::
 
 ## Step 1: Set up the first {{es}} node [install-stack-self-elasticsearch-first]
 
-To begin, use RPM to install {{es}} on the first host. This initial {{es}} instance bootstraps a new cluster. You can find details about all of the following steps in the document [Install {{es}} with RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md).
+To begin, use RPM to install {{es}} on the first host. This initial {{es}} node bootstraps a new cluster. You can find details about all of the following steps in the document [Install {{es}} with RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md).
 
 ::::{note}
 For installation steps for other supported methods, refer to [Install {{es}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md#installation-methods).
@@ -180,7 +180,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    sudo vim /etc/elasticsearch/elasticsearch.yml
    ```
 
-1. In a multi-node {{es}} cluster, all of the {{es}} instances must have the same cluster name.
+1. In a multi-node {{es}} cluster, all of the {{es}} nodes must have the same cluster name.
 
    In the configuration file, uncomment the line `#cluster.name: my-application` and give the {{es}} cluster any name that you'd like:
 
@@ -188,19 +188,23 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
    cluster.name: elasticsearch-demo
    ```
 
-1. (Optional) Set a node name for this instance. If you don't set one, {{es}} uses its host name by default.
+1. (Optional) Set a node name for this node. If you don't set one, {{es}} uses its host name by default.
 
-   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} instance any name that you'd like:
+   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} node any name that you'd like:
 
    ```yaml
-   node.name: instance-1
+   node.name: es-node1
    ```
+
+   :::{important}
+   If you change `node.name` on the first {{es}} node, make sure to align its name with the `cluster.initial_master_nodes` setting, so the cluster can be bootstrapped.
+   :::
 
 1. Configure networking settings.
 
    1. Uncomment the line `#transport.host: 0.0.0.0` to accept connections on all available network interfaces.
 
-      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} instances from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address:
+      By default, {{es}} listens for transport traffic on `localhost`, which prevents other {{es}} nodes from joining the cluster. To allow communication between nodes, you need to bind the transport interface to a non-loopback address:
 
       ```yaml
       transport.host: 0.0.0.0 <1>
@@ -254,7 +258,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
    ```json subs=true
    {
-     "name" : "instance-1",
+    "name" : "es-node1",
      "cluster_name" : "elasticsearch-demo",
      "cluster_uuid" : "<cluster-uuid>",
      "version" : {
@@ -279,7 +283,7 @@ Before moving ahead to configure additional {{es}} nodes, you need to update the
 
 To set up a second {{es}} node, you start by installing the {{es}} RPM package, but then follow a different configuration flow so that the node joins the existing cluster instead of creating a new one. You can find additional details in [Reconfigure a node to join an existing cluster](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md#existing-cluster).
 
-1. Log in to the host where you'd like to set up your second {{es}} instance.
+1. Log in to the host where you'd like to set up your second {{es}} node.
 
 1. Create a working directory for the installation package:
 
@@ -364,7 +368,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
 
 1. Obtain your host IP address (for example, by running `ifconfig`). You need this value later.
 
-1. Open the new {{es}} instance configuration file in a text editor:
+1. Open the new {{es}} node configuration file in a text editor:
 
    ```shell
    sudo vim /etc/elasticsearch/elasticsearch.yml
@@ -381,12 +385,12 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
    cluster.name: elasticsearch-demo
    ```
 
-1. (Optional) Set a node name for this instance. If you don't set one, {{es}} uses its host name by default.
+1. (Optional) Set a node name for this node. If you don't set one, {{es}} uses its host name by default.
 
-   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} instance any name that you'd like:
+   In the configuration file, uncomment the line `#node.name: node-1` and give the {{es}} node any name that you'd like:
 
    ```yaml
-   node.name: instance-2
+   node.name: es-node2
    ```
 
 1. (Optional) Review networking settings.
@@ -424,25 +428,25 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
     In the log output, you should see entries similar to the following as the node initializes, starts transport, and waits to join the cluster:
 
     ```text
-    [<instance-2>] Security is enabled
-    [<instance-2>] Profiling is enabled
-    [<instance-2>] using discovery type [multi-node] and seed hosts providers [settings]
-    [<instance-2>] initialized
-    [<instance-2>] starting ...
-    [<instance-2>] publish_address {<node-ip>:9300}, bound_addresses {[::]:9300}
-    [<instance-2>] master not discovered or elected yet ...
+    [<es-node2>] Security is enabled
+    [<es-node2>] Profiling is enabled
+    [<es-node2>] using discovery type [multi-node] and seed hosts providers [settings]
+    [<es-node2>] initialized
+    [<es-node2>] starting ...
+    [<es-node2>] publish_address {<node-ip>:9300}, bound_addresses {[::]:9300}
+    [<es-node2>] master not discovered or elected yet ...
     ```
 
     After a minute or so, the log should include a message similar to:
 
     ```text
-    [<instance-2>] master node changed {previous [], current [<instance-1>...]}
+    [<es-node2>] master node changed {previous [], current [<es-node1>...]}
     ```
 
-    Here, `instance-2` is the {{es}} node you are starting, and `instance-1` represents the node that becomes the elected master. Shortly after that, you should also see:
+    Here, `es-node2` is the {{es}} node you are starting, and `es-node1` represents the node that becomes the elected master. Shortly after that, you should also see:
 
     ```text
-    [<instance-2>] started {<instance-2>}...
+    [<es-node2>] started {<es-node2>}...
     ```
 
     These messages indicate that the second {{es}} node initialized successfully, detected the elected master, and joined the cluster.
@@ -460,7 +464,7 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
 
         ```json subs=true
         {
-            "name" : "instance-2",
+            "name" : "es-node2",
             "cluster_name" : "elasticsearch-demo",
             "cluster_uuid" : "<cluster-uuid>",
             "version" : {
@@ -483,8 +487,8 @@ To set up a second {{es}} node, you start by installing the {{es}} RPM package, 
         The output should include the new node together with the existing node or nodes in the cluster, for example:
 
         ```shell
-        203.0.113.22 46 97 18 0.21 0.23 0.10 cdfhilmrstw - instance-2
-        203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * instance-1
+        203.0.113.22 46 97 18 0.21 0.23 0.10 cdfhilmrstw - es-node2
+        203.0.113.21 31 96  1 0.04 0.03 0.01 cdfhilmrstw * es-node1
         ```
 
 ## Step 5: Set up additional {{es}} nodes [install-stack-self-elasticsearch-third]
@@ -670,7 +674,7 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
     :::{note}
     The automatic setup used in this tutorial does not configure TLS certificates for browser access to {{kib}}, which is highly recommended for production environments.
 
-    To configure HTTPS for {{kib}}, refer to [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser). Alternatively, this is also covered in [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    To configure HTTPS for {{kib}}, refer to [Encrypt traffic between your browser and {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-browser). Alternatively, this is also covered in [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md#install-stack-demo-secure-kib-https).
     :::
 
 1. When {{kib}} starts, you're prompted for an enrollment token. You must generate this token in {{es}}:
@@ -695,14 +699,6 @@ In this section, you start {{kib}} for the first time and complete enrollment wi
 
 {{kib}} is now fully set up and communicating with your {{es}} cluster.
 
-:::{warning} - Stop here if you plan to use your own TLS/SSL certificates
-This tutorial already uses the {{es}} [automatic security setup](/deploy-manage/security/self-auto-setup.md), which configures security for {{es}} by default, including TLS for both the transport and HTTP layers.
-
-If you plan to use certificates signed by your organization's certificate authority or by a public CA instead, stop here after installing {{kib}} and continue with [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md). That tutorial is the right place to replace or adjust the default certificate configuration before installing {{fleet-server}} and {{agent}}.
-
-Following that path avoids installing {{fleet-server}} and {{agent}} with the certificate setup from this tutorial and then needing to reinstall the components after changing the security configuration.
-:::
-
 ## Step 8: Install {{fleet-server}} [install-stack-self-fleet-server]
 
 Now that {{kib}} is up and running, you can install {{fleet-server}}. {{fleet-server}} connects {{agent}} instances to {{fleet}} and serves as a control plane for updating agent policies and collecting agent status information.
@@ -710,7 +706,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}. {{fleet-se
 ::::{note}
 This tutorial uses the **Quick Start** installation flow, which generates a self-signed certificate for the {{fleet-server}} by default. For more details about **Quick Start** and **Advanced** setup options, refer to [Deploy on-premises and self-managed {{fleet-server}}](/reference/fleet/add-fleet-server-on-prem.md).
 
-If you want to use custom SSL/TLS certificates, follow [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
+If you want to use custom SSL/TLS certificates, continue with [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) instead of continuing with these steps.
 ::::
 
 Before proceeding, confirm the following prerequisites:
@@ -818,7 +814,7 @@ You can install only one {{agent}} per host.
     The `--insecure` flag is required in this tutorial to allow connections to a {{fleet-server}} endpoint that uses a self-signed certificate. For related guidance, refer to [Install Fleet-managed Elastic Agents](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
     :::{tip}
-    If you want to set up secure communications using custom SSL certificates, refer to [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
+    If you want to set up secure communications using custom SSL certificates, refer to [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md).
     :::
 
     The result should look like the following:
@@ -874,7 +870,7 @@ You've successfully set up a three-node {{es}} cluster, with {{kib}}, {{fleet-se
 
 ## Next steps [install-stack-self-next-steps]
 
-Now that you've successfully configured an on-premises {{stack}}, you can learn how to customize the certificate configuration for the {{stack}} in a production environment using trusted CA-signed certificates. Refer to [Tutorial 2: Customize certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) to learn more.
+Now that you've successfully configured an on-premises {{stack}}, you can learn how to customize the certificate configuration for the {{stack}} in a production environment using trusted CA-signed certificates. Refer to [Customize TLS certificates for a self-managed {{stack}}](tutorial-self-managed-secure.md) to learn more.
 
 You can also start using your newly set up {{stack}} right away:
 
