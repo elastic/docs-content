@@ -1,7 +1,7 @@
 ---
 navigation_title: Network Topology
 applies_to:
-  stack: preview 9.4+
+  stack: preview 9.0+
   serverless: unavailable
   deployment:
     self: preview
