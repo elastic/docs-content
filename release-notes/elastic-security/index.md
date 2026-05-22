@@ -226,7 +226,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.3.5-fixes]
 
 * Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
-* Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was configured with a non-English locale [#265782]({{kib-pull}}265782).
+* Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was set to Japanese [#265782]({{kib-pull}}265782).
 * Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
 * Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
 * Fixes an issue where {{elastic-defend}} failed to send data to {{ls}} output when the kernel TCP send buffer was full, causing connections to drop prematurely.
