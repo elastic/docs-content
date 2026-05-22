@@ -1,5 +1,6 @@
 ---
 navigation_title: Contribute to Asciidoc docs
+description: "Instructions for contributing to Asciidoc-based documentation published at elastic.co/guide, including editing workflows and conversion tools."
 ---
 
 # Contribute to `elastic.co/guide` (Asciidoc)

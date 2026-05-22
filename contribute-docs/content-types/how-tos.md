@@ -1,4 +1,5 @@
 ---
+navigation_title: "How-to guides"
 description: "Guidelines for writing effective how-to guides in the Elastic documentation."
 ---
 

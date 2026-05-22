@@ -1,5 +1,6 @@
 ---
 navigation_title: Guidelines
+description: "Guidelines for writing cumulative documentation that stays valid across multiple product versions."
 ---
 
 # Cumulative docs guidelines

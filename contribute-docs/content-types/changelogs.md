@@ -1,4 +1,5 @@
 ---
+navigation_title: "Changelogs"
 description: "Guidelines for writing effective release notes content in changelog YAML files for Elastic products."
 ---
 

@@ -1,3 +1,7 @@
+---
+description: "Learn how to write cumulative documentation that stays valid across multiple product versions in Elastic Docs V3."
+---
+
 # Write cumulative documentation
 
 :::{note}

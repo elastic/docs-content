@@ -1,3 +1,7 @@
+---
+description: "Patterns and use cases for placing applies_to badges in cumulative documentation."
+---
+
 # Badge usage and placement
 
 :::{note}

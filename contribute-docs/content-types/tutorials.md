@@ -1,4 +1,5 @@
 ---
+navigation_title: "Tutorials"
 description: "Guidelines for writing effective tutorials in the Elastic documentation."
 ---
 

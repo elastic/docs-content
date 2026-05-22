@@ -1,5 +1,6 @@
 ---
 navigation_title: Contribute to the docs
+description: "Learn how to contribute to Elastic documentation, including setup instructions, style guidelines, and available tools."
 ---
 
 # Contribute to Elastic documentation
