@@ -15,49 +15,49 @@ products:
 
 # Streams
 
-Streams is a centralized {{kib}} feature that turns raw, unstructured log data into actionable
-insights — automatically. It uses AI to parse logs, detect significant events, organize data into
-streams, and manage retention, so you spend less time configuring pipelines and more time
-understanding what's happening in your systems.
+Streams is a centralized {{kib}} feature that uses AI to turn raw, unstructured log data into actionable
+insights.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
-:::
+::::{dropdown} What is Streams: Basic concepts
+A Stream is defined by three intrinsic properties: where data comes from (sources), what happens to it in transit (pipeline), and where it ends up (destinations). These aren't separate systems — they're built into the stream itself.
 
-## Why use Streams [streams-why]
+### Sources
 
+Sources define how data enters a stream. Elastic supports two models:
+
+Push (OpenTelemetry, Syslog, _bulk, Splunk): external systems send data to Elastic endpoints. Built for high-volume, continuous telemetry with strong buffering and queuing guarantees.
+Pull (S3, Kafka, SaaS APIs): Elastic fetches data on a schedule. Ideal for audit logs, SaaS integrations, and historical ingestion.
+The underlying mechanism — Fleet agent, Agentless, Cloud forwarder — is invisible to the user. Adding a source means data starts flowing immediately. Multiple sources can feed the same stream simultaneously, letting diverse telemetry types converge naturally.
+
+### Pipelines
+
+A pipeline is not an external system — it's a property of the stream, expressed through Streamlang (with OTTL available for advanced cases). Pipelines handle filtering, enrichment, field extraction, and conditional routing. They're stateless by default, with stateful processing reserved for specialized cases like tail-based sampling.
+
+### Destinations
+
+A destination is itself a stream, making the model inherently composable. Routing is many-to-many: one stream can fan out to multiple destinations, and one destination can receive from multiple upstream streams. Destinations are queryable via ESQL views. Unlike today's implicit default storage, the unified model makes every routing decision explicit and visible.
+::::
+
+::::{dropdown} Why use Streams
 Log data holds the answers to most production incidents, but raw logs are noisy, expensive, and
 hard to query. Streams addresses each of these challenges:
 
-**Organize logs automatically**
-Streams uses AI to partition your log data by source and component — without manual regex rules or
+**Organize logs automatically.**
+Streams uses AI to partition your log data by source and component, without manual regex rules or
 pipeline configuration. As new log formats arrive, Streams continues to learn and extend its
 partitioning automatically.
 
-**Get meaning from logs**
+**Get meaning from logs.**
 The AI-powered processing pipeline detects log formats (including custom ones like Apache Spark)
 and generates parsing rules that extract structured fields from unstructured text. You get clean,
 queryable data without writing a single GROK expression.
 
-**Find problems in logs — in minutes, not hours**
+**Find problems in logs. In minutes, not hours.**
 Significant Events detection continuously scans your streams for critical signals: out-of-memory
 errors, crash loops, certificate expirations, and anomalies. Instead of manually scanning
 thousands of log lines, you get a prioritized list of what matters.
 
-## Prerequisites [streams-prerequisites]
-
-Before using Streams, make sure you have the following in place:
-
-- **{{es}} and {{kib}}**: Streams is available from {{es}} 9.1 (API, preview), 9.2 (Wired streams,
-  preview), and 9.2+ (GA for classic streams). For {{serverless-full}}, Streams is generally
-  available.
-- **Log data ingestion**: Logs can be sent to Streams via OpenTelemetry Collector, Fluentd,
-  Fluentbit, or through Elastic one-click integrations. No agent deployment is required for
-  agentless ingest via the `/logs` endpoint (Logs Streams, tech preview).
-- **Required permissions**: See [Required permissions](#streams-required-permissions) for the full
-  list of cluster and data stream permissions needed to manage or view streams.
-
-## Use cases [streams-use-cases]
+### Use cases [streams-use-cases]
 
 **Incident investigation**
 An SRE receives an alert that a trading application is down. Instead of manually searching through
@@ -71,28 +71,13 @@ context. Using Streams, they set per-stream retention policies, route high-value
 retention tiers, and use the failure store to catch and investigate parsing errors — all from a
 single UI.
 
-## Get started with Streams [streams-get-started]
+::::
 
-### End-to-end user journey [streams-journey]
+::::::{dropdown} Who Streams is for
 
-A typical Streams workflow looks like this:
 
-1. **Ingest log data** — send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic
-   integration. For agentless ingest, send directly to the `/logs` endpoint.
-2. **Access Streams in {{kib}}** — select **Streams** from the navigation menu, or open it from
-   the **Discover** document details flyout.
-3. **Review AI-suggested partitions** — Streams automatically organizes your logs by source and
-   component. Accept, adjust, or add partitions manually.
-4. **Configure processing** — use the [**Processing** tab](./management/extract.md) to parse and
-   extract fields from log messages. Accept AI-generated GROK rules or write your own.
-5. **Set retention policies** — use the [**Retention** tab](./management/retention.md) to define
-   how long each stream stores data and to review ingestion volume.
-6. **Investigate with Significant Events** — review the
-   [**Significant Events** view](./management/significant-events.md) to triage critical signals
-   across your streams.
-
-### Novice path [streams-novice]
-
+:::::{tab-set}
+::::{tab-item} Novice user
 If you're new to log management or to Elastic, start with the **Streams UI** and let AI do the
 heavy lifting:
 
@@ -100,9 +85,9 @@ heavy lifting:
 - Accept AI-suggested partitions and parsing rules to get structured data quickly.
 - Use the **Significant Events** view to understand what's happening before diving into raw logs.
 - Explore individual streams using **Discover** to build familiarity with ES|QL queries.
+::::
 
-### Expert path [streams-expert]
-
+::::{tab-item} Expert user
 If you already manage {{es}} data pipelines and want full control:
 
 - Use [Wired streams](./wired-streams.md) to build a parent-child stream hierarchy with inherited
@@ -113,67 +98,25 @@ If you already manage {{es}} data pipelines and want full control:
   control.
 - Use the [**Advanced** tab](./management/advanced.md) to inspect and manage underlying
   {{es}} components when needed.
+::::
+:::::
 
-### Alternatives [streams-alternatives]
+::::::
 
-Streams is not the only way to manage log data in Elastic. Consider these alternatives depending
-on your needs:
+::::::{dropdown} Get started with Streams
 
-- **Elastic Agent integrations**: Pre-built integrations with automatic parsing and dashboards for
-  common data sources. Best when your sources are covered by the
-  [Elastic integration catalog](https://www.elastic.co/integrations).
-- **Logstash pipelines**: Highly customizable, code-first pipeline configuration. Best for complex
-  transformations or when you need to fan out to multiple destinations.
-- **{{es}} ingest pipelines**: Low-level pipeline configuration via the ES API. Best for teams who
-  already manage {{es}} directly and want fine-grained control without a UI.
+### Prerequisites
 
-## Classic versus wired streams [streams-classic-vs-wired]
+Before using Streams, make sure you have the following in place:
 
-Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ
-in configuration, inheritance, and field mapping.
+- **{{es}} and {{kib}}**: Streams is available from {{es}} 9.1 (API, preview), 9.2 (Wired streams,
+  preview), and 9.2+ (GA for classic streams). For {{serverless-full}}, Streams is generally
+  available.
+- **Log data ingestion**: Logs can be sent to Streams via OpenTelemetry Collector, Fluentd,
+  Fluentbit, or through Elastic one-click integrations. No agent deployment is required for
+  agentless ingest via the `/logs` endpoint (Logs Streams, tech preview).
 
-### Classic streams [streams-classic-streams]
-
-Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease
-of extracting fields and configuring data retention while working with data that's already being
-ingested into {{es}}.
-
-Classic streams:
-
-- Are based on existing data streams, index templates, and component templates.
-- Can follow the data retention policy set in the existing index template.
-- Do not support hierarchical inheritance or cascading configuration updates.
-
-### Wired streams [streams-wired-streams]
-```{applies_to}
-stack: preview 9.2
-serverless: preview
-```
-
-Wired streams send data directly to an endpoint, from which you can route data into child streams
-based on [partitioning](./management/partitioning.md) set up manually or with the help of AI
-suggestions.
-
-Wired streams:
-- Allow you to organize streams in a parent-child hierarchy.
-- Let child streams automatically inherit mappings, lifecycle settings, and processors.
-- Send configuration changes through the hierarchy to keep streams consistent.
-
-For more information, refer to [Wired streams](./wired-streams.md).
-
-## Managed components [streams-managed-components]
-
-When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api),
-{{es}}-level components like templates and pipelines are created for the stream. These components
-are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream
-through the Streams UI or API, continue doing so whenever possible.
-
-You can still edit non-managed ingest pipelines, templates, and other components, but avoid those
-marked as managed or any per-data-stream mappings and settings. This behavior is similar to how
-{{es}} handles components managed by integrations. Refer to the
-[**Advanced** tab](./management/advanced.md) to review managed components.
-
-## Required permissions [streams-required-permissions]
+### Required permissions
 
 Streams requires the following permissions:
 
@@ -202,6 +145,73 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ::::
 
+### Get started with Streams
+
+:::::{stepper}
+
+::::{step} Ingest log data
+Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For agentless ingest, send directly to the `/logs` endpoint.
+::::
+
+::::{step} Access Streams
+
+**From {{kib}}**
+
+- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+
+**Using the API**
+
+{applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+::::
+
+::::{step} Review AI-suggested partitions
+Streams automatically organizes your logs by source and component. Accept, adjust, or add partitions manually.
+::::
+
+::::{step} Configure processing
+Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+::::
+
+::::{step} Set retention policies
+Use the [**Retention** tab](./management/retention.md) to define how long each stream stores data and to review ingestion volume.
+::::
+
+::::{step} Investigate with Significant Events
+Review the [**Significant Events** view](./management/significant-events.md) to triage critical signals across your streams.
+::::
+
+:::::
+
+::::::
+
+### Alternatives paths to manage log data in Elastic [streams-alternatives]
+
+Streams is not the only way, consider these alternatives depending on your needs:
+
+- **Elastic Agent integrations**: Pre-built integrations with automatic parsing and dashboards for
+  common data sources. Best when your sources are covered by the
+  [Elastic integration catalog](https://www.elastic.co/integrations).
+- **Logstash pipelines**: Highly customizable, code-first pipeline configuration. Best for complex
+  transformations or when you need to fan out to multiple destinations.
+- **{{es}} ingest pipelines**: Low-level pipeline configuration via the ES API. Best for teams who
+  already manage {{es}} directly and want fine-grained control without a UI.
+
+## Managed components [streams-managed-components]
+
+When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api),
+{{es}}-level components like templates and pipelines are created for the stream. These components
+are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream
+through the Streams UI or API, continue doing so whenever possible.
+
+You can still edit non-managed ingest pipelines, templates, and other components, but avoid those
+marked as managed or any per-data-stream mappings and settings. This behavior is similar to how
+{{es}} handles components managed by integrations. Refer to the
+[**Advanced** tab](./management/advanced.md) to review managed components.
+
+
+
 ## Manage Streams visibility [streams-space-privileges]
 ```{applies_to}
 stack: ga 9.3+
@@ -219,21 +229,7 @@ level. Refer to [Required permissions](#streams-required-permissions) for more i
 % Creating [significant events](./management/significant-events.md) requires access to the `default` space.
 % :::
 
-## Access Streams [streams-access]
 
-Open Streams from the following places in {{kib}}:
-
-- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
-
-### Streams API [streams-api]
-``` yaml {applies_to}
-stack: preview 9.1
-serverless: preview
-```
-
-You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Manage individual streams [streams-management-tab]
 

@@ -7,7 +7,29 @@ products:
   - id: cloud-serverless
 ---
 
-# Wired streams [streams-wired-streams]
+# Classic versus wired streams [streams-classic-vs-wired]
+
+Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ
+in configuration, inheritance, and field mapping.
+
+## Classic streams [streams-classic-streams]
+
+Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease
+of extracting fields and configuring data retention while working with data that's already being
+ingested into {{es}}.
+
+Classic streams:
+
+- Are based on existing data streams, index templates, and component templates.
+- Can follow the data retention policy set in the existing index template.
+- Do not support hierarchical inheritance or cascading configuration updates.
+
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
+:::
+
+## Wired streams [streams-wired-streams]
 
 Wired streams send your documents to a wired streams endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) rules you set up manually or with the help of AI suggestions.
 
@@ -41,7 +63,7 @@ For more on wired streams, refer to:
 - [Send data to wired streams](#streams-wired-streams-ship)
 - [View wired streams in Discover](#streams-wired-streams-discover)
 
-## Wired streams field naming [streams-wired-streams-field-naming]
+### Wired streams field naming [streams-wired-streams-field-naming]
 
 ::::{applies-switch}
 
@@ -49,11 +71,11 @@ For more on wired streams, refer to:
 
 Field naming depends on the endpoint you use.
 
-### `logs.ecs` endpoint
+#### `logs.ecs` endpoint
 
 Data ingested into the `logs.ecs` endpoint is stored in the original ECS field names without being transformed. The fields remain as shown in the "ECS field" column in the [field naming table](#streams-wired-streams-field-name-table).
 
-### `logs.otel` endpoint
+#### `logs.otel` endpoint
 
 Data ingested into the `logs.otel` endpoint is stored and processed in a normalized OpenTelemetry (OTel)–compatible format. This format aligns ECS fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
 
@@ -83,7 +105,7 @@ Refer to the following table for ECS fields and corresponding OTel fields.
 
 ::::
 
-### Field naming table [streams-wired-streams-field-name-table]
+#### Field naming table [streams-wired-streams-field-name-table]
 
 The following table lists the ECS fields and the corresponding OTel fields.
 
@@ -97,7 +119,7 @@ The following table lists the ECS fields and the corresponding OTel fields.
 | `host.ip` | `resource.attributes.host.ip` |
 | `custom_field` | `attributes.custom_field` |
 
-## Manage wired streams [streams-wired-streams-enable]
+### Manage wired streams [streams-wired-streams-enable]
 
 :::::{applies-switch}
 
@@ -236,14 +258,14 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 :::::
 
-## View wired streams in Discover [streams-wired-streams-discover]
+### View wired streams in Discover [streams-wired-streams-discover]
 
 To view wired log streams in Discover:
 
 1. Manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
 1. add the wireds streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-## Next steps
+### Next steps
 
 After sending your data to wired streams:
 
