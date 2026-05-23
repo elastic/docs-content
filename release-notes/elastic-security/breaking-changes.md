@@ -41,8 +41,7 @@ The standalone risk engine is replaced by an entity maintainer integrated into t
 
 **Impact**<br> Any scripts or automations using this endpoint will fail.
 
-**Action**<br> Remove references to this endpoint. Risk scoring is now managed through the entity store lifecycle. Refer to the Entity Store API documentation for the new endpoints.
-% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+**Action**<br> Remove references to this endpoint. Risk scoring is now managed through the entity store lifecycle. Refer to the [Entity store API documentation]({{kib-apis}}group/endpoint-security-entity-store) for the new endpoints.
 ::::
 
 ::::{dropdown} Entity Analytics: Asset criticality values reset and CSV format changed after upgrading to 9.4
@@ -108,8 +107,7 @@ Removed endpoints:
 
 **Impact**<br> Any scripts or automations using these endpoints will fail after upgrading to 9.4.
 
-**Action**<br> Remove references to these endpoints. Refer to the Entity Store API documentation for information on new endpoints.
-% TODO: Add link to Entity Store API documentation when available. See https://github.com/elastic/docs-content-internal/issues/1100
+**Action**<br> Remove references to these endpoints. Refer to the [Entity store API documentation]({{kib-apis}}group/endpoint-security-entity-store) for information on new endpoints.
 ::::
 
 ::::{dropdown} Entity store index structure has changed

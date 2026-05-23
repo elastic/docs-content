@@ -13,12 +13,15 @@ products:
 
 Custom deployment templates should be updated in order to support Integrations Server. While system-owned deployment templates are updated automatically during the ECE upgrade process, user-created deployment templates require a manual update.
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 To manually update your custom deployment templates to support Integrations Server:
 
 1. Obtain a list of all existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://${COORDINATOR_HOST}:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://${COORDINATOR_HOST}:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Copy the template you’d like to update and add an `integrations_server` entry under the `deployment_template.resources` section of the JSON. The result should look like the following:
@@ -57,7 +60,7 @@ Refer to [set deployment template API]({{ece-apis}}operation/operation-set-deplo
 
 ::::{dropdown} Update template API request example
 ```sh
-curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
+curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
 {
   "name": "ECE Custom Template",
   "description": "ECE custom template with added Integrations Server",

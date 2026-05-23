@@ -20,3 +20,5 @@ You can restore a snapshot to recover indices and data streams after deletion or
 3. Configure the deployment and snapshot to use.
 4. Click *Restore snapshot* to start the restore process.
 
+::::{include} _snippets/ech-snapshot-repository-linking-note.md
+::::
