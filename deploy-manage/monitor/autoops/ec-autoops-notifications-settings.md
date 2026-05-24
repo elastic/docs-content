@@ -118,7 +118,7 @@ The VictorOps integration consists of the following parts:
 **AutoOps configuration**
 
 1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **VictorOps** as your connector type.
-2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 
@@ -139,7 +139,7 @@ The Opsgenie integration consists of the following parts:
 **AutoOps configuration**
 
 1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Opsgenie** as your connector type.
-2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 :::{dropdown} Microsoft Teams 
@@ -153,7 +153,7 @@ Save the URL displayed during the creation of the incoming webhook, as you will 
 **AutoOps configuration**
 
 1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Microsoft Teams** as your connector type.
-2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 
@@ -191,7 +191,7 @@ A webhook enables an application to provide other applications with real-time in
 
 4. Click **Run to test** to check your settings, and then click **Save**.
 5. Optionally, you can test the webhook integration by using the [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
-6. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
+6. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 ## Notifications report [ec-notification-report]
