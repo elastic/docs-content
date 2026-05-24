@@ -22,5 +22,5 @@ products:
 
     ![Restoring from a snapshot](/deploy-manage/images/cloud-enterprise-restore-from-snapshot.png "")
 
-3. Manually recreate users using the X-Pack security features or using Shield on the new cluster. User information is not included when you restore across clusters.
+3. If your original cluster included [native users](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md), recreate them on the new cluster. User information is not included when you restore across clusters.
 

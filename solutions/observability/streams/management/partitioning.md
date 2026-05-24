@@ -2,6 +2,7 @@
 applies_to:
   serverless: preview
   stack: preview 9.2
+description: Route log data into child streams using manual field-based rules or AI-generated partition suggestions in Streams.
 products:
   - id: observability
   - id: elasticsearch

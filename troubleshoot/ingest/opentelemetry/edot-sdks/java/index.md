@@ -27,7 +27,7 @@ Make you have set a service name, for example `-Dotel.service.name=Service1` or 
 
 Check from the host, VM, pod, container, or image running the app that connectivity is available to the Collector. For more detailed connectivity troubleshooting, refer to [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md).
 
-The following examples use a default URL, `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
+The following examples use a default URL, `http://127.0.0.1:4318/`, which you should replace with the endpoint you are using:
 
 - OpenTelemetry or EDOT Collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
 - OpenTelemetry or EDOT Collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
