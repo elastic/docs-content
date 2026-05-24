@@ -32,10 +32,8 @@ Before using Streams, make sure you have the following in place:
 
 :::{applies-item} serverless:
 Streams requires these {{serverless-full}} roles:
-
 - Admin: Ability to manage all Streams
 - Editor/Viewer: Limited access, cannot perform all actions
-
 :::
 
 :::{applies-item} stack:

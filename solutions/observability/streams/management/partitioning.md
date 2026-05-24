@@ -13,7 +13,7 @@ products:
   - id: elastic-stack
 ---
 
-# Partition data into child streams [streams-partitioning]
+# Partition data [streams-partitioning]
 :::{note}
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::

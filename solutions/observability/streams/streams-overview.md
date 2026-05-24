@@ -15,20 +15,9 @@ products:
 
 # Streams
 
-Streams is a centralized {{kib}} feature that uses AI to turn raw, unstructured log data into actionable insights.
+Stop spending weeks on pipeline setup and data engineering before you can start investigating. Streams handles the heavy lifting — automatically parsing, structuring, and organizing your log data so you can query it immediately, without writing Grok expressions or maintaining custom pipelines.
 
-Streams brings AI-assisted parsing, intelligent logs organization, and proactive event detection into a simple, intuitive workflow, so you can focus on solving problems, not wrangling pipelines.
-
-SREs are drowning in alerts and brittle pipelines because the "why" behind most incidents is buried in chaotic, context-rich logs. Streams turns that chaos into clarity in minutes, giving you the answers you need to make logs your first stop for investigations.
-
-From raw logs to real answers
-From ingest to investigation, Streams simplifies and automates the work of building custom pipelines and manually extracting fields, giving you clean, structured, high-fidelity data and helping you find the needle in the haystack.
-
-Log management made easy
-Forget grepping through petabytes of logs. Streams detects patterns humans can't see, parsing, partitioning, and structuring logs, and surfacing significant events with AI.
-
-
-Unlike traditional observability solutions that treat logs as secondary to metrics and traces, Streams makes logs a primary signal for both detection and investigation, helping you get to resolution faster. AI-driven workflows make logs usable and actionable, highlighting the "why" that's missing from traditional observability tools so SREs can resolve incidents faster, without having to spend weeks on data engineering and building complex pipelines.
+When an incident hits, Streams gets you to answers faster. AI-powered detection continuously scans your logs for critical signals and surfaces what matters, so instead of manually sifting through thousands of log lines, you have a prioritized list of issues to act on — turning logs from a last resort into your most valuable first signal.
 
 :::{image} ../../images/streams-overview.png
 :screenshot:

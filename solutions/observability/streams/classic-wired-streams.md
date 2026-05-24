@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Classic versus wired streams [streams-classic-vs-wired]
+# Classic vs wired streams [streams-classic-vs-wired]
 
 Streams can operate in two modes: wired and classic. Both manage data streams in {{es}}, but differ
 in configuration, inheritance, and field mapping.

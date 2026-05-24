@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage data quality
 applies_to:
   serverless: preview
   stack: preview =9.1, ga 9.2+
@@ -13,7 +14,7 @@ products:
   - id: elastic-stack
 ---
 
-# Manage data quality [streams-data-quality]
+# Manage data quality for Streams [streams-data-quality]
 
 From the **Streams** page, use the **Data quality** column to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
 
