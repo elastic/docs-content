@@ -102,10 +102,7 @@ If your organization’s deployments already trust each other by default, you ca
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-::::{tip}
-If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it.
-
-For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
 ::::
 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
