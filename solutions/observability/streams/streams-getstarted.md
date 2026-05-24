@@ -16,8 +16,51 @@ products:
 
 # Get started with Streams
 
+This hands-on guide will take you through to the core features and common use cases of Streams. You will learn how to:
 
-## Prerequisites
+:::::{stepper}
+
+::::{step} Ingest log data
+Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For agentless ingest, send directly to the `/logs` endpoint.
+::::
+
+::::{step} Access Streams
+
+:::{dropdown} From {{kib}}
+- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+:::
+
+:::{dropdown} Using the API
+{applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+:::
+::::
+
+::::{step} Review AI-suggested partitions
+Streams automatically organizes your logs by source and component. Accept, adjust, or add partitions manually.
+::::
+
+::::{step} Configure processing
+Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+::::
+
+::::{step} Set retention policies
+Use the [**Retention** tab](./management/retention.md) to define how long each stream stores data and to review ingestion volume.
+::::
+
+::::{step} Manage data quality
+Use the [**Data quality** column](./management/data-quality.md) to filter your streams by data quality status.
+::::
+
+::::{step} Investigate with Significant Events
+Review the [**Significant Events** view](./management/significant-events.md) to triage critical signals across your streams.
+::::
+
+:::::
+
+::::::
+
+## Before you start
 
 Before using Streams, make sure you have the following in place:
 
@@ -50,47 +93,6 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 :::
 
 ::::
-
-## Get started with Streams
-
-:::::{stepper}
-
-::::{step} Ingest log data
-Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For agentless ingest, send directly to the `/logs` endpoint.
-::::
-
-::::{step} Access Streams
-
-**From {{kib}}**
-
-- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
-
-**Using the API**
-
-{applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
-::::
-
-::::{step} Review AI-suggested partitions
-Streams automatically organizes your logs by source and component. Accept, adjust, or add partitions manually.
-::::
-
-::::{step} Configure processing
-Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
-::::
-
-::::{step} Set retention policies
-Use the [**Retention** tab](./management/retention.md) to define how long each stream stores data and to review ingestion volume.
-::::
-
-::::{step} Investigate with Significant Events
-Review the [**Significant Events** view](./management/significant-events.md) to triage critical signals across your streams.
-::::
-
-:::::
-
-::::::
 
 ## Alternatives paths to manage log data in Elastic
 
