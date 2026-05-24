@@ -22,15 +22,7 @@ The actions available on the **{{models-app}}** page depend on the model type:
 
 * **{{dfanalytics}} models**: Use **Deploy model** to create an {{infer}} pipeline. See [Models trained by {{dfanalytics}}](#_models_trained_by_dfanalytics).
 * **NLP models** (such as ELSER and E5): Download, start, update, and test deployments from the **Actions** menu. See [Deploy trained models](../nlp/ml-nlp-deploy-models.md).
-
-### Rerank models [ml-trained-models-rerank-actions]
-
-```{applies_to}
-stack: ga 9.5
-serverless: ga
-```
-
-Rerank-type models (such as [Elastic Rerank](../nlp/ml-nlp-rerank.md)) support **Start deployment** and **Update deployment** from the **Actions** menu on the **{{models-app}}** page. The deployment modal does not include the **Optimize for use case** selector (Ingest, Search, Balanced) that appears for embedding models, because this optimization does not apply to rerank models.
+* **Rerank models** (such as [Elastic Rerank](../nlp/ml-nlp-rerank.md), available from version 9.5): Use **Start deployment** and **Update deployment** from the **Actions** menu. The deployment modal does not include the **Optimize for use case** selector (Ingest, Search, Balanced), because this optimization does not apply to rerank models. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga`
 
 ## Deploying trained models [deploy-dfa-trained-models]
 
