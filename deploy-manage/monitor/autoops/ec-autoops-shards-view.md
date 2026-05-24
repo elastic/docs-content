@@ -14,7 +14,7 @@ products:
 
 The **Shards** view allows you to monitor the shards allocated to each node in your cluster. With this granular view into your cluster's health, you can get to the root cause of issues and resolve them to ensure optimal performance and reliability of your search and indexing operations.
 
-Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the controls on the right side of the screen to drill down on specific nodes, indices, metrics, and time ranges.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker on the right side of the screen to select a time period for the data shown.
 
 :::{image} /deploy-manage/images/cloud-autoops-shard-view.png
 :screenshot:
@@ -31,9 +31,18 @@ The **Shards** view provides the following insights:
 * **Indexing rate and latency**: Keep an eye on indexing performance with real-time indexing rates and latencies. This ensures efficient and timely data indexing, helping maintain optimal performance.
 * **Search rate and latency**: Optimize search functionalities by monitoring search rates and latencies. This ensures your search queries are processed quickly and effectively.
 
-## Metrics in the Shards view
+## Sections in the Shards view
 
-Use the metrics dropdown to view shard information sorted by different metrics. Select from the following:
+The **Shards** view includes the following panels and controls.
+
+### Time slider
+Use the time slider at the top-right of the screen to move through the selected time period and observe how shard data changes over time.
+
+### Nodes and indices selectors
+Select which nodes and indices to include in your view. For nodes, you can select all, select a group, or choose tier-based grouping. 
+
+### Metric selector
+Use the metric selector to drill down into shard information based on different metrics. Select from the following:
 
 * Indexing Latency
 * Indexing Rate
@@ -43,5 +52,12 @@ Use the metrics dropdown to view shard information sorted by different metrics. 
 * Search Rate
 * Size in Bytes
 
-You can also use the time slider at the top of the screen to move forward and backward and observe how shards data changes over time.
+### Shard matrix
 
+A color-coded chart reflecting activity in your selected nodes and indices. Scroll horizontally to view all node columns. 
+Click on a cell to view a popover with more details about that specific node. 
+
+:::{image} /deploy-manage/images/shard-view-popover.png
+:screenshot:
+:alt: Screenshot showing the popover that appears when you click on a cell in the Shard matrix
+:::
