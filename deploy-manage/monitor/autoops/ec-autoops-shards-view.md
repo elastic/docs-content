@@ -55,7 +55,7 @@ Use the metric selector to drill down into shard information based on different 
 ### Shard matrix
 
 A color-coded chart reflecting activity in your selected nodes and indices. Scroll horizontally to view all node columns. 
-Click on a cell to view a popover with more details about that specific node. 
+Click on a cell to view a popover with more details about that specific shard. 
 
 :::{image} /deploy-manage/images/shard-view-popover.png
 :screenshot:

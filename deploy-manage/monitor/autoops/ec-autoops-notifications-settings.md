@@ -31,9 +31,9 @@ To receive notifications for new events, the first step is to specify where the 
 
 ## Set up a connector [ec-setup-autoops-connectors]
 
-1. On the **Notifications Settings** page, navigate to the **Connector Settings** tab and click **Add**.
-2. From the drop-down list, choose the connector you want to set up and follow the instructions.
-3. Click **Validate** to send a test message.
+1. On the **Notifications Settings** page, navigate to the **Connector settings** tab and click **Add connector**.
+2. Select a connector type and fill in the required fields.
+3. Click **Run to test** to send a test notification.
 4. Save your settings.
 
 
@@ -43,11 +43,11 @@ A notification filter lets you choose which events to receive notifications for 
 
 To set up a filter, follow these steps:
 
-1. On the **Notification settings** page, navigate to the **Filter Setting** tab and click **Add**.
+1. On the **Notification settings** page, navigate to the **Filter setting** tab and click **Add filter**.
 2. Choose a name that best describes the type of alert notification. This name will appear in other reports and dashboards.
-3. Select the deployments that the new created events will trigger the alert for.
+3. Select the deployments for which this filter should trigger notifications.
 4. Select the connectors to receive the notification.
-5. Use the **Delay** field to set the period of time AutoOps will hold before sending the notification. If during this time all of the events listed in this filter are closed by AutoOps, no notification will be sent.
+5. Use the **Delay** field to set the period of time you want AutoOps to wait before sending the notification. If all the events listed in this filter are closed by AutoOps in this time, no notification will be sent.
 6. Choose the type of events this filter applies to.
 
 
@@ -55,25 +55,15 @@ To set up a filter, follow these steps:
 
 The following connectors are available with AutoOps:
 
-* [Email](#email)
-* [PagerDuty](#ec-autoops-pagerduty)
-* [Slack](#ec-autoops-slack)
-* [VictorOps](#ec-autoops-victorops)
-* [Opsgenie](#ec-autoops-opsgenie)
-* [Microsoft Teams Configuration](#ec-autoops-ms-configuration)
-* [Webhook](#ec-autoops-webhook)
-
 :::{dropdown} Email
 $$$email$$$
 
-To set up notifications via email, follow these steps:
+To set up notifications through email:
 
-1. Add a new **Email** connector.
-2. Add a list of emails.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Email** as your connector type.
+2. Add a list of recipients.
    You can add up to 40 emails for a single email connector, and opt in to get alerts also when events close.
-3. To receive notifications, scroll down the **Notification** page and click **Add**.
-4. Fill in the filter details.
-5. Select the events that you want to send to this connector.
+3. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 :::{dropdown} PagerDuty 
@@ -89,10 +79,8 @@ The PagerDuty integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty connector using the PagerDuty configuration application key.
-2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click **Add**.
-3. Fill in the filter details.
-4. Select the events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **PagerDuty** as your connector type.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 
@@ -129,10 +117,8 @@ The VictorOps integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty connector using the PagerDuty configuration application key.
-2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click Add.
-3. Fill in the filter details.
-4. Select the events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **VictorOps** as your connector type.
+2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
 :::
 
 
@@ -152,12 +138,8 @@ The Opsgenie integration consists of the following parts:
 
 **AutoOps configuration**
 
-1. Open AutoOps and go to **User Profile**. Then, select **Notifications**.
-2. Click **Add** and select **Opsgenie** from the dropdown list.
-3. Name your connector and add Api Key from opsgenie API configuration. Click the validate button to make sure that your notification setting is working. Don’t forget to save your notification connector!
-4. To receive notifications on Opsgenie, you need to add a notification filter. Scroll down the **Notification** page and click **Add**.
-5. Fill in the filter details.
-6. Select events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Opsgenie** as your connector type.
+2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
 :::
 
 :::{dropdown} Microsoft Teams 
@@ -170,14 +152,12 @@ Save the URL displayed during the creation of the incoming webhook, as you will 
 
 **AutoOps configuration**
 
-1. Add a new MS team connector using the URL from Microsoft Teams.
-2. To receive notifications into Microsoft Teams, you need to add a notification filter. Scroll down the Notification page and click Add.
-3. Fill in the filter details.
-4. Select events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Microsoft Teams** as your connector type.
+2. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
 :::
 
 
-::::{dropdown} Webhook 
+:::{dropdown} Webhook 
 
 $$$ec-autoops-webhook$$$
 
@@ -185,8 +165,8 @@ A webhook enables an application to provide other applications with real-time in
 
 **How to add a webhook notification**
 
-1. Go to **Settings** > **Notifications** > **Connector settings** and click **Add**.
-2. Select Webhook from the drop-dowon list and enter the following details:
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **Webhook** as your connector type.
+2. Complete the fields as follows:
 
     * **Name**: It must be a unique name for this webhook.
     * **URL**: This is the endpoint to which HTTP POST requests will be sent when events occur.
@@ -209,12 +189,10 @@ A webhook enables an application to provide other applications with real-time in
     * `AFFECTED_INDICES`: List of indices names.
     * `EVENT_LINK`: Direct link to the event in AutoOps.
 
-4. Click **Validate** to check your settings, and then click **Save**.
+4. Click **Run to test** to check your settings, and then click **Save**.
 5. Optionally, you can test the webhook integration by using the [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
-
-::::{note}
-When the connector settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
-::::
+6. Add a [notification filter](#add-notification-filters-ec-add-notification-filters) for this connector.
+:::
 
 ## Notifications report [ec-notification-report]
 
@@ -233,8 +211,8 @@ The notification can have one of the following statuses:
 * Notification failed to send
 * Event closed before notification sent
 
-The notification status appears also in the event details window.
+The notification status for each event is also shown in the flyout when you select an event on the **Deployment** or **Cluster** page.
 
 :::{image} /deploy-manage/images/cloud-autoops-notification-status.png
-:alt: Notification status
+:alt: Notification status in an event flyout
 :::

@@ -34,10 +34,14 @@ Depending on the event, settings can include:
 
 The **Event settings** report provides a list of all the events for which settings have been customized.
 
-On the **Event settings** page, click **Add event settings** to add new settings, or select the edit icon to modify existing settings.
-
 :::{image} /deploy-manage/images/cloud-autoops-events-settings-report.png
 :screenshot:
 :alt: Screenshot showing the Event settings page with the Add event settings button
 :::
 
+On the **Events settings** page, click **Add event settings** to add new settings, or select the edit icon to modify existing settings.
+
+:::{image} /deploy-manage/images/add-event-settings-flyout.png
+:screenshot:
+:alt: Screenshot of the Add event settings flyout with custom settings for the "Sharp increase of shards on node" event type
+:::
