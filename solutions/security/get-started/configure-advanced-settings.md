@@ -197,7 +197,7 @@ The `securitySolution:ipReputationLinks` field determines which IP reputation si
 
 **Example**
 
-Adds a link to https://www.dnschecker.org on **IP detail** pages:
+Adds a link to [dnschecker.org](https://www.dnschecker.org) on **IP detail** pages:
 
 ```json
 [
