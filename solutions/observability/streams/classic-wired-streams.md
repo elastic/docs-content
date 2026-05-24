@@ -2,6 +2,7 @@
 applies_to:
   stack: preview 9.2
   serverless: preview
+description: Wired streams receive log data through a dedicated endpoint and route it into child streams based on partitioning rules.
 products:
   - id: observability
   - id: cloud-serverless
@@ -53,7 +54,7 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-:applies_to: {"stack": "9.4+", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
 The `/logs` endpoint is deprecated and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 

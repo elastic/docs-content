@@ -152,7 +152,7 @@ On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured m
 
 After you test the default `Elastic AI Agent`, create a [custom skill](custom-skills.md) for a specific workflow. Skills package task-specific instructions, context, and the tools needed to complete the workflow.
 
-Add [tools](tools.md) when the skill needs to retrieve data, run queries, call APIs, or take action. Create a [custom agent](custom-agents.md#create-a-new-agent) when you need a distinct persona, system prompt, model configuration, or set of enabled skills. You don't need a separate agent for every workflow: a single agent can use skill descriptions to choose the right skills and tools for the user's request.
+Add [tools](tools.md) when the skill needs to retrieve data, run queries, call APIs, or take action. Create a [custom agent](custom-agents.md#create-a-new-agent) when you need a distinct persona, system prompt, model configuration, or set of enabled skills. You don't need a separate agent for every workflow: a single agent can use skill descriptions to choose the right skills and tools for the user's request. Note that custom agents don't include [Elastic capabilities](agent-builder-agents.md#elastic-capabilities) by default — enable the toggle to assign all Elastic-built tools, skills, and plugins automatically.
 
 To build programmatically, try the [{{agent-builder}} API tutorial](agent-builder-api-tutorial.md) or explore the [Kibana APIs](programmatic-access.md).
 
