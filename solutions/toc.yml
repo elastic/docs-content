@@ -455,8 +455,11 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-      - file: observability/streams/streams.md
+      - file: observability/streams/streams-overview.md
         children:
+        - file: observability/streams/streams-basic-concepts.md
+        - file: observability/streams/streams-getstarted.md
+        - file: observability/streams/streams-use-cases.md
         - file: observability/streams/management/retention.md
         - file: observability/streams/management/extract.md
           children:
