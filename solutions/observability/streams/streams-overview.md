@@ -30,6 +30,12 @@ Forget grepping through petabytes of logs. Streams detects patterns humans can't
 
 Unlike traditional observability solutions that treat logs as secondary to metrics and traces, Streams makes logs a primary signal for both detection and investigation, helping you get to resolution faster. AI-driven workflows make logs usable and actionable, highlighting the "why" that's missing from traditional observability tools so SREs can resolve incidents faster, without having to spend weeks on data engineering and building complex pipelines.
 
+:::{image} ../../images/streams-overview.png
+:screenshot:
+:alt: Streams overview
+:width: 900px
+:::
+
 **Use Streams to...**
 
 Log data holds the answers to most production incidents, but raw logs are noisy, expensive, and
@@ -45,7 +51,7 @@ partitioning automatically.
 and generates parsing rules that extract structured fields from unstructured text. You get clean,
 queryable data without writing a single GROK expression.
 
-**Find problems in logs. In minutes, not hours**
+**Solve incidents in minutes, not hours**
 :   Significant Events detection continuously scans your streams for critical signals: out-of-memory
 errors, crash loops, certificate expirations, and anomalies. Instead of manually scanning
 thousands of log lines, you get a prioritized list of what matters.
