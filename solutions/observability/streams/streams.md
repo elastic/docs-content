@@ -95,7 +95,7 @@ heavy lifting:
 ::::{tab-item} Expert user
 If you already manage {{es}} data pipelines and want full control:
 
-- Use [Wired streams](./wired-streams.md) to build a parent-child stream hierarchy with inherited
+- Use [Wired streams](./classic-wired-streams.md#streams-wired-streams) to build a parent-child stream hierarchy with inherited
   mappings, lifecycle settings, and processors.
 - Automate stream configuration with the [Streams API]({{kib-apis}}group/endpoint-streams) to
   integrate Streams into your infrastructure-as-code workflows.
@@ -106,4 +106,3 @@ If you already manage {{es}} data pipelines and want full control:
 ::::
 :::::
 ::::::
-
