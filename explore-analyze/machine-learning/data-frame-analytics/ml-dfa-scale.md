@@ -89,10 +89,8 @@ By default, optimized hyperparameter values are chosen automatically. It is poss
 
 The `model_memory_limit` job configuration option sets the approximate maximum amount of memory resources required for training and analysis. When you create a {{dfanalytics-job}} in {{kib}}, the job creation wizard can estimate this limit based on your data and analysis configuration.
 
-If a job fails to start because it requires more memory than the configured limit, or your data characteristics change, you can update `model_memory_limit` on a stopped job using the [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics). 
-
-{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply estimation** to apply a memory estimate without running the explain API manually.
+If a job fails to start because it requires more memory than the configured limit, or your data characteristics change, you can update `model_memory_limit` on a stopped job using the [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics). {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` In {{kib}}, navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply** under the **Model memory limit** field to apply the estimate without running the explain API manually.
 
 ::::{tip}
-You can obtain a memory estimate at any time by running the [explain {{dfanalytics}} API]({{es-apis}}operation/operation-ml-explain-data-frame-analytics), which reports how much memory the analysis is estimated to require. {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` To estimate `model_memory_limit` for an existing job in {{kib}}, use **Apply estimation** in the edit job flyout.
+To get a memory estimate, use the [explain {{dfanalytics}} API]({{es-apis}}operation/operation-ml-explain-data-frame-analytics), which reports how much memory the analysis might require. {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Alternatively, select **Apply** under the **Model memory limit** field in the edit job flyout.
 ::::
