@@ -5,11 +5,12 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+navigation_title: AWS Marketplace
 products:
   - id: cloud-hosted
 ---
 
-# AWS Marketplace [ec-billing-aws]
+# {{ecloud}} from AWS Marketplace [ec-billing-aws]
 
 7-Day Free Trial Sign-Up: On the [{{ecloud}} AWS marketplace page](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), click **View purchase options**, sign into your AWS account, then start using {{ecloud}}.
 

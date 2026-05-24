@@ -140,7 +140,7 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
     observables:
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
@@ -265,7 +265,7 @@ steps:
         with:
           case_id: "{{ steps.create_case.output.case.id }}"
           observables:
-            - typeKey: "observable-type-hash-sha256"
+            - typeKey: "observable-type-file-hash"
               value: "{{ event.alerts[0].file.hash.sha256 }}"
             - typeKey: "observable-type-ipv4"
               value: "{{ event.alerts[0].source.ip }}"
