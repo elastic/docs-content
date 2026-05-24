@@ -16,7 +16,7 @@ products:
 
 # Get started with Streams
 
-This hands-on guide will take you through to the core features and common use cases of Streams. You will learn how to:
+This hands-on guide will take you through to the core features and common use cases of Streams.
 
 :::::{stepper}
 
