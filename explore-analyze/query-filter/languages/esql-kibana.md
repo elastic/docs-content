@@ -116,7 +116,7 @@ The search bar closes automatically when you start typing in the editor or selec
 
 #### Filter your data with KQL
 
-1. Open the search bar.
+1. Open the editor's search bar ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Select the data sources to search.
 3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
 4. Submit your search by pressing **Enter**. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
