@@ -132,7 +132,7 @@ serverless: preview
 
 You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
 
-When natural language is available, the {icon}`magnify` search icon in the toolbar picks up {icon}`sparkles` and its tooltip reads `Search your data using KQL or natural language`.
+When natural language is available, the search icon in the toolbar changes to {icon}`magnify_sparkles` and its tooltip reads `Search your data using KQL or natural language`.
 
 **Requirements**
 
