@@ -99,13 +99,13 @@ You can find the list of shortcuts directly from the editor. Look for the ![keyb
 :::
 
 
-### Create queries from KQL or natural language [esql-kibana-quick-search]
+### Build queries with KQL or natural language [esql-kibana-quick-search]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that helps you get a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then get a query using:
+The {{esql}} editor includes a search bar that helps you build a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then build a query using:
 
 - **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
@@ -124,7 +124,7 @@ The search bar closes automatically when you start typing in the editor or selec
 
 ![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
-#### Generate a query from natural language [esql-kibana-search-bar-nl]
+#### Generate a query from natural language [esql-kibana-quick-search-nl]
 ```{applies_to}
 stack: preview 9.5+
 serverless: preview
@@ -145,7 +145,7 @@ You can describe the query you want in plain language and let an LLM translate i
 4. Submit your request by pressing **Enter**. The editor replaces or updates the current query and runs it.
 5. Review the generated query and refine it with any other {{esql}} command or function that you need, or by continuing to use natural language through the search bar.
 
-![Natural language mode in the {{esql}} editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
+![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
 
 :::{tip}
 The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
