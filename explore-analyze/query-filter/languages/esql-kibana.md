@@ -105,7 +105,7 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that helps you write a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then get a query using:
+The {{esql}} editor includes a search bar that helps you get a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then get a query using:
 
 - **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
