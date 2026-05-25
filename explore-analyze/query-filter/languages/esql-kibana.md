@@ -105,7 +105,7 @@ serverless: preview
 stack: preview 9.3+
 ```
 
-**Quick search** is a bar that opens above the {{esql}} editor to help you draft a query without writing the full {{esql}} syntax. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open it. You can then draft a query using:
+**Quick search** is a bar that opens above the {{esql}} editor to help you draft a query without writing the full {{esql}} syntax. Select the {icon}`magnify` **Quick search** button in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open it. You can then draft a query using:
 
 - **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
