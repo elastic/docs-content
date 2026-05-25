@@ -5,14 +5,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Open the {{alerting-v2}} alert episodes table, triage actions, and episode details. Field and state tables live on a separate reference page."
+description: "Open the {{alerting-v2}} alert episodes table, triage actions, and episode details."
 ---
 
 # View and manage alerts in {{alerting-v2}} [manage-alerts]
 
-Alert triage is part of the {{alerting-v2}} in Kibana. 
-
-When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. From here you can examine alert episodes, use filters to find what needs attention, triage alerts, and more. This is the operational surface for working through alerts day to day.
+Alert triage is part of the {{alerting-v2}} in {{kib}}. When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. From here you can examine alert episodes, use filters to find what needs attention, triage alerts, and more. This is the operational surface for working through alerts day to day.
 
 <!--[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
@@ -63,14 +61,11 @@ To unsnooze multiple episodes at once, select rows using the checkboxes and choo
 
 ## Open in Discover [open-episode-in-discover]
 
-
 Select **Discover** on any episode row to open the rule's base query in Discover. The base query is the {{esql}} statement the rule runs on each evaluation. It reflects the data the alert is monitoring, not just the specific rows that breached the condition. Discover opens with the time range set to 15 minutes before and after the episode timestamp so you can see the underlying data in context.
-
-This requires {{esql}} to be enabled and Discover access.
 
 Use this when you want to understand why an episode opened, verify that the rule is querying the data you expect, or investigate whether a condition is genuinely a problem or an artifact of the data shape.
 
-For ad hoc analysis over `.rule-events` and `.alert-actions` with copy-paste {{esql}} examples, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover.md).
+To learn how to query `.rule-events` and `.alert-actions` directly, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover.md).
 
 ## Episode detail page [alert-episode-details]
 
@@ -83,18 +78,17 @@ Open an episode's detail page by selecting its name or ID from the table row. Th
 - **Related episodes:** Other episodes on the same rule or series, split into two subsections for easier triage.
 - **Actors:** Users who have taken actions on the episode, visible so teams can track activity and accountability.
 - **Metadata:** A dedicated tab surfacing additional fields from the source event that triggered the alert.
-- **Grouping:** When the rule uses grouping, grouping field values are surfaced in both the episodes table and on the detail page. Each value shows the field name and value that identify the series — for example, `host.name: web-01` — so you can understand episode scope at a glance without opening each episode individually.
+- **Grouping:** When the rule uses grouping, grouping field values are surfaced in both the episodes table and on the detail page. Each value shows the field name and value that identify the series (for example, `host.name: web-01`) so you can understand episode scope at a glance without opening each episode individually.
 
 ### Related episodes [related-episodes]
 
 
 The **Related episodes** section is split into two subsections that help you distinguish between a condition that keeps recurring on one entity and a rule that is triggering across many different entities:
 
-- **Same alert series:** Other episodes sharing the same `rule_id` and `group_hash` as the current episode. These represent recurrences of the exact same alert condition — the same rule firing on the same series (for example, the same host or service). If this list is long, the condition is repeating and the underlying issue may not be fully resolved each time.
-- **Other series for this rule:** Episodes from the same rule but with a different `group_hash`, or all other rule episodes when the rule does not use grouping. These show broader rule activity — other entities or conditions the same rule is also triggering on. Use this list to understand the rule's overall blast radius and whether a problem is isolated to one entity or affecting many.
+- **Same alert series:** Other episodes sharing the same `rule_id` and `group_hash` as the current episode. These represent recurrences of the exact same alert condition. The same rule firing on the same series, for example, the same host or service. If this list is long, the condition is repeating and the underlying issue may not be fully resolved each time.
+- **Other series for this rule:** Episodes from the same rule but with a different `group_hash`, or all other rule episodes when the rule does not use grouping. These show broader rule activity, including other entities or conditions the same rule is also triggering on. Use this list to understand whether a problem is isolated to one entity or affecting many.
 
 ### Metadata tab [metadata-tab]
-
 
 The **Metadata** tab surfaces additional information about the alert episode that is not shown in the main detail view. This includes field values from the source event that triggered the alert, giving you direct access to the raw signal during triage without switching to Discover.
 

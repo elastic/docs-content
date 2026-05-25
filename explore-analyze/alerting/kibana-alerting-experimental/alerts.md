@@ -5,12 +5,12 @@ applies_to:
   serverless: preview
 products:
   - id: kibana
-description: "Alert episodes in {{alerting-v2}}: lifecycle states, series and episodes, signals versus alerts, and where to find them."
+description: "Alert episodes in {{alerting-v2}}, including lifecycle states, series and episodes, signals versus alerts, and where to find them."
 ---
 
 # Alerts in {{alerting-v2}}
 
-Alerts and alert episodes are part of the {{alerting-v2}} in Kibana. When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
+Alerts and alert episodes are part of the {{alerting-v2}} in {{kib}}. When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
 
 <!--[CONTENT NEEDED for M2: UI. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
