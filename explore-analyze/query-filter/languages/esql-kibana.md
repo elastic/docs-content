@@ -92,39 +92,39 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
-| {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open [Quick search](#esql-kibana-quick-search) |
+| {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-search-bar) |
 
 :::{tip}
 You can find the list of shortcuts directly from the editor. Look for the ![keyboard](../../images/keyboard.svg "keyboard =2%") icon.
 :::
 
 
-### Quick search [esql-kibana-quick-search]
+### Draft queries with KQL or natural language [esql-kibana-search-bar]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
 ```
 
-**Quick search** is a bar that opens above the {{esql}} editor to help you draft a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then draft a query using:
+The {{esql}} editor includes a search bar that helps you draft a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then draft a query using:
 
 - **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
 
-In either case, Quick search generates a new {{esql}} query that overwrites the current query in the editor and runs it. The editor saves the query in your [query history](#esql-kibana-query-history) so you can restore it later.
+In either case, the editor replaces the current query with a generated {{esql}} query and runs it. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 
-The Quick search bar closes automatically when you start typing in the editor or select outside of it.
+The search bar closes automatically when you start typing in the editor or select outside of it.
 
 #### Filter your data with KQL
 
-1. Open the Quick search bar.
+1. Open the search bar.
 2. Select the data sources to search.
 3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
 4. Submit your search by pressing **Enter**. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
 5. Refine your query with any other {{esql}} command or function that you need.
 
-![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
+![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
-#### Generate a query from natural language [esql-kibana-quick-search-nl]
+#### Generate a query from natural language [esql-kibana-search-bar-nl]
 ```{applies_to}
 stack: preview 9.5+
 serverless: preview
@@ -132,16 +132,16 @@ serverless: preview
 
 You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
 
-When natural language is available, the search icon that opens Quick search picks up {icon}`sparkles` and its tooltip reads `Search your data using KQL or natural language`.
+When natural language is available, the {icon}`magnify` search icon in the toolbar picks up {icon}`sparkles` and its tooltip reads `Search your data using KQL or natural language`.
 
 **Requirements**
 
 - An Enterprise license.
-- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). If no connector is available, Quick search prompts you to set one up.
+- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). If no connector is available, the search bar prompts you to set one up.
 
 **Generate a query**
 
-1. Open the Quick search bar.
+1. Open the search bar.
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
 4. Submit your request by pressing **Enter**. The editor replaces the current query with the generated {{esql}} query and runs it.
