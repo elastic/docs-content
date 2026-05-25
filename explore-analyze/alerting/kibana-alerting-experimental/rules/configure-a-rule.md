@@ -8,10 +8,10 @@ products:
 description: "Configure rules in the {{alerting-v2}}: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
 ---
 
-# Configure a rule in the {{alerting-v2}} [rule-settings]
+# Configure a rule in {{alerting-v2}} [rule-settings]
 
 
-Configuring rules is part of the {{alerting-v2}} in Kibana. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
+Rule configuration is part of the {{alerting-v2}} in {{kib}}. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
 
 For query authoring, refer to [Author rules](author-rules.md).
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
@@ -29,7 +29,7 @@ Choose a mode that matches how you want to use results:
 | Mode | Behavior |
 | --- | --- |
 | Detect | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
-| Alert | Lifecycle tracking and notifications: alerts move through states (pending, active, recovering, and so on), and you can attach action policies so episodes dispatch through workflows. |
+| Alert | Lifecycle tracking and actions: alerts move through states (pending, active, recovering, and so on), and you can attach action policies so episodes dispatch through workflows. |
 
 Several settings on this page apply only when the rule is in Alert mode (`kind: alert`).
 
@@ -43,6 +43,8 @@ The rule's {{esql}} query defines what to evaluate. It has a base query and an o
 Rule grouping splits alert event generation by one or more group key fields so that each unique combination of field values produces its own alert series. Each series has independent lifecycle tracking, recovery detection, and per-series snooze.
 
 Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules.md) for query patterns.
+
+When writing a rule that uses grouping, writing the query first and then specifying group fields avoids mismatches between the query output and the grouping configuration. The group fields in the rule form reflect the columns produced by the `STATS ... BY` clause, so if you add or remove a `BY` field in the query, the corresponding group field must be updated to match.
 
 Note that rule grouping is separate from notification grouping on an action policy, which controls how episodes batch into messages.
 

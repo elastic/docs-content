@@ -8,21 +8,27 @@ products:
 description: "Use the rules list and rule details page in the {{alerting-v2}}: filters, search, bulk actions, and what you find in rule conditions."
 ---
 
-# View and manage rules in the {{alerting-v2}} [manage-rules]
+# View and manage rules in {{alerting-v2}} [manage-rules]
 
-
-
-Viewing and managing rules is part of the {{alerting-v2}} in Kibana. After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
+Rule management is part of the {{alerting-v2}} in {{kib}}. After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
 
 ## Find and filter rules [find-filter-rules]
 
+Use the search bar at the top of the rules list to find rules by name or description. The search field accepts plain text; each space-separated term is matched independently (terms are AND'd) using prefix matching. Type any part of a rule name or description to narrow the list.
 
-Use the search bar at the top of the rules list to find rules by name. The search field accepts plain text and matches against rule names without requiring structured query syntax — type any part of a rule name to narrow the list. Combine text search with filter controls to narrow results further by rule type, status, or tags.
+Search matches rule name and description only. Tags and grouping fields are displayed in search results but are not included in free-text search. Special characters in rule names and descriptions, including consecutive hyphens, are handled correctly.
 
-Select any column header to sort the list. Use bulk actions when you need to enable, disable, or delete multiple rules at once.
+Combine text search with filter controls to narrow results further by rule type, status, or tags. Select any column header to sort the list. Use bulk actions when you need to enable, disable, or delete multiple rules at once.
+
+## Quick-edit a rule [quick-edit-rule]
+
+To update common rule settings without opening the full rule details page, use the inline edit option on any row in the rules list. The inline editor also opens from the rule summary flyout header.
+
+Editable fields in this view include name, description, tags, grouping key, time field, interval, lookback window, alert delay, recovery type, and recovery delay. The {{esql}} query and alert tracking behavior are read-only in this view. For changes to the query or rule mode, open the full rule details page.
+
+Use inline edit when you need to adjust metadata or scheduling settings quickly without navigating away from the list.
 
 ## Rule summary flyout [rule-summary-flyout]
-
 
 To inspect a rule without navigating away from the rules list, select the expand icon on any row. The rule summary flyout opens alongside the list and shows a snapshot of the rule: its status, last run time, recent alert episode activity, and quick actions such as enable, disable, and snooze.
 

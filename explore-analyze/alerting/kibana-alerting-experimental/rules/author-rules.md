@@ -8,10 +8,10 @@ products:
 description: "Learn how to write ES|QL queries for rules. Choose a rule mode, structure a base query and alert condition, set thresholds, and assign severity levels."
 ---
 
-# Author rules for the {{alerting-v2}} [author-rules]
+# Rule authoring in {{alerting-v2}} [author-rules]
 
 
-Authoring rules is part of the {{alerting-v2}} in Kibana. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
+Rule authoring is part of the {{alerting-v2}} in {{kib}}. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
 
 This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder.md), [YAML editor](create-rule-with-yaml.md), or [a Discover session](create-rule-from-discover.md).
 
@@ -46,6 +46,20 @@ WHERE avg_cpu > 0.9
 ```
 
 The `KEEP` command controls which fields appear on each stored alert event. Only the fields you `KEEP` are available for policy matchers, grouping keys, and triage in the Alerts UI.
+
+### Recovery condition [recovery-condition]
+
+Recovery conditions are optional. They determine when an active episode closes. 
+
+Three recovery types are available:
+
+| Type | Behavior |
+| --- | --- |
+| Default | The episode recovers automatically when the alert condition is no longer met. |
+| Custom | Uses a separate {{esql}} expression you define. The episode recovers when that expression returns no rows. |
+| No recovery | The episode stays active until manually closed. *(Coming soon.)* |
+
+When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach is not a reliable recovery signal — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
 
 ## Data sources
 

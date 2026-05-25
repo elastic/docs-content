@@ -8,9 +8,9 @@ products:
 description: "What rules are in the {{alerting-v2}}, how evaluation works, and how rules connect to alerts and notifications."
 ---
 
-# Rules in the {{alerting-v2}}
+# Rules in {{alerting-v2}}
 
-Rules are part of the {{alerting-v2}} in Kibana. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
+Rules are part of the {{alerting-v2}} in {{kib}}. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
 
 A rule is where the {{alerting-v2}} start. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
 
@@ -35,7 +35,16 @@ This separation means you can build and test a rule without anyone getting paged
 
 % You can query this history in Discover, build dashboards from it, or write follow-on rules that read `.rule-events` as a data source.
 
+## Create a rule [create-a-rule]
+
+Rules in the {{alerting-v2}} are always created and edited through a flyout. Three starting points are available:
+
+- **From scratch**: Build the rule query and settings directly in the rule form. The form and the YAML editor are both available inside the same flyout; you can switch between them at any point without losing your work. Start here when you know what you want to detect. See [Create rules using the rule builder](rules/create-rule-from-rule-builder.md).
+- **From Discover**: Start from an {{esql}} query you've already written and validated in Discover. The rule creation flyout opens pre-populated with the current query, so you can verify how the data groups before committing to a schedule. See [Create rules from Discover](rules/create-rule-from-discover.md).
+- **With the AI agent**: Describe what you want to detect in plain language. Agent Builder generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to express it as an {{esql}} query.
+
 ## Next steps
 
 - **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
+- **[Configure a rule](rules/configure-a-rule.md):** Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
 - **[View and manage rules](rules/view-manage-rules.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.

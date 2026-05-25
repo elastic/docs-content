@@ -8,10 +8,10 @@ products:
 description: "Complete field reference for YAML rule definitions in the {{alerting-v2}}: required fields, metadata, schedule, grouping, state transitions, no-data handling, and duration format."
 ---
 
-# YAML rule schema reference [yaml-rule-schema-reference]
+# YAML rule schema reference for {{alerting-v2}} [yaml-rule-schema-reference]
 
 
-YAML rule schema is part of the {{alerting-v2}} in Kibana. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
+YAML rule schema is part of the {{alerting-v2}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
 
 ## Required fields
 
