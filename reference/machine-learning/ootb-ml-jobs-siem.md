@@ -1294,6 +1294,44 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_rare_destination_country.json)
 
+::::{applies-switch}
+
+:::{applies-item} {stack: ga 9.5+, serverless: ga}
+
+`dns_tunneling_ea`
+:   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
+
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+
+    **Supported OS:** Windows, Linux, macOS
+
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/dns_tunneling_ea.json)
+
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_dns_tunneling_ea.json)
+
+:::
+
+::::
+
+::::{applies-switch}
+
+:::{applies-item} {stack: ga 9.5+, serverless: ga}
+
+`rare_dns_question_ea`
+:   Looks for unusual DNS activity that could indicate command-and-control activity.
+
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+
+    **Supported OS:** Windows, Linux, macOS
+
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/rare_dns_question_ea.json)
+
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_rare_dns_question_ea.json)
+
+:::
+
+::::
+
 
 ## Security: {{packetbeat}} [security-packetbeat-jobs]
 
@@ -1303,7 +1341,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.4+, serverless: ga}
+:::{applies-item} {stack: ga 9.4}
 
 `packetbeat_dns_tunneling_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1337,7 +1375,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.4+, serverless: ga}
+:::{applies-item} {stack: ga 9.4}
 
 `packetbeat_rare_dns_question_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
