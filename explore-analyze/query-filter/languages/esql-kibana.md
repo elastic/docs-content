@@ -110,7 +110,7 @@ The {{esql}} editor includes a search bar that helps you get a query without wri
 - **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
 - {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
 
-In either case, the editor replaces the current query with a generated {{esql}} query and runs it. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
+In either case, the editor updates the current query with a generated {{esql}} query and runs it. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 
 The search bar closes automatically when you start typing in the editor or select outside of it.
 
