@@ -84,10 +84,8 @@ to set the window's viewport.
 - Set your zoom level to 100%.
 - If you have made any color adjustments, reset to the default on your monitor or
   select Generic RGB.
-- Avoid: drop shadows, jagged edges, and oversized images.
-- Include only the essential UI components. The main menu, 
-  breadcrumbs, header, toolbar, and search bar often change, so we generally
-  exclude them. 
+- Avoid adding drop shadows, jagged edges, or oversized images. Drop shadows that appear natively in the Kibana chrome (for example, on the application menu) are part of the product. Only avoid drop shadows that you add yourself.
+- Include only the parts of the UI that are essential to the task. Exclude the side navigation, breadcrumbs, global header, application menu, and global search field whenever you can. These elements change frequently as the Kibana chrome evolves, so capturing them in a screenshot creates ongoing maintenance work without helping the reader follow the steps.
 - Add a border around the screenshot to give it definition and ensure it's not "floating" against a white background. Refer to [Screenshots](https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/syntax/images#screenshots) for details about the `:screenshot:` attribute.
 - If you need to draw attention to a specific part of the screenshot, you can draw a border or use an annotation, such as an arrow. If you do, keep these in mind:
   - Use Elastic's [brand colors](https://eui.elastic.co/#/theming/colors/values) for the annotation. We recommend the pink accent color, hex `#F04E98`.   
@@ -108,12 +106,26 @@ In Kibana, there are multiple ways for users to navigate to apps and pages. Depe
 
 When referring to apps or pages in the docs, and especially in tasks and tutorials, it's important that you remain as close as possible to the user's truth. For that, use one of the following solution-agnostic patterns:
 
-- The app is directly available in the main menu: `Find <APP> in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
+- The app is directly available in the side navigation: `Find <APP> in the side navigation or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
-- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
+- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the side navigation or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
-You can adapt these patterns and the link to the search bar documentation to match your context and scenario. 
+You can adapt these patterns and the link to the search bar documentation to match your context and scenario.
 
+## Naming Kibana UI elements
+
+The Kibana chrome, the persistent layout that wraps every app, evolves over time. Use these names consistently when you refer to its parts in documentation.
+
+| Term | What it refers to |
+|---|---|
+| **Side navigation** | The primary navigation panel on the left side of Kibana. Use this in place of "main menu" or "navigation menu". |
+| **Sidebar** | The global, resizable right-hand panel where plugins register apps (for example, the Agent Builder chat). |
+| **Application menu** | The bar above the application area that hosts app-specific actions. |
+| **Solution view** | The per-space setting that controls navigation (Search, Observability, Security, or Classic). |
+| **Classic navigation** or **Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |
+| **Collapse navigation menu** | The button in the side navigation footer that collapses or expands the side navigation. |
+
+For the phrasing to use when guiding users to a specific app or page, refer to [Referring to apps and pages](#referring-to-apps-and-pages).
 
 ## Choosing the right word
 
