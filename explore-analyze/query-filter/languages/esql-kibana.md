@@ -139,7 +139,7 @@ You can describe the query you want in plain language and let an LLM translate i
 
 **Generate a query**
 
-1. Open the search bar.
+1. Open the editor's {icon}`magnify_sparkles` search bar.
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
 4. Submit your request by pressing **Enter**. The editor replaces or updates the current query and runs it.
