@@ -99,7 +99,7 @@ You can find the list of shortcuts directly from the editor. Look for the ![keyb
 :::
 
 
-### Draft queries with KQL or natural language [esql-kibana-search-bar]
+### Create queries from KQL or natural language [esql-kibana-search-bar]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
