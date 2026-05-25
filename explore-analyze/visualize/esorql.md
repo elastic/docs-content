@@ -11,6 +11,14 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
+Creating visualizations using an {{esql}} query is particularly useful when you need to:
+
+- Query data across multiple indices without a pre-configured data view
+- Apply complex filtering, transforms, or custom calculations in a single query
+- Prototype a visualization directly from an {{esql}} query in Discover
+
+For less advanced aggregations on a known index, [the point-and-click mode](lens.md) is a good alternative.
+
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
