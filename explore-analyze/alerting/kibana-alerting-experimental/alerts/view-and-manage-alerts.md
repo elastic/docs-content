@@ -8,8 +8,9 @@ products:
 description: "Open the {{alerting-v2}} alert episodes table, triage actions, and episode details. Field and state tables live on a separate reference page."
 ---
 
-# View and manage alerts [manage-alerts]
+# View and manage alerts in {{alerting-v2}} [manage-alerts]
 
+Alert triage is part of the {{alerting-v2}} in Kibana. 
 
 When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. From here you can examine alert episodes, use filters to find what needs attention, triage alerts, and more. This is the operational surface for working through alerts day to day.
 
@@ -63,12 +64,11 @@ To unsnooze multiple episodes at once, select rows using the checkboxes and choo
 ## Open in Discover [open-episode-in-discover]
 
 
-Select **Discover** on a row to open the rule's base query in Discover. The base query is the {{esql}} statement the rule runs on each evaluation. It reflects the data the alert is monitoring, not just the specific rows that breached the condition. Discover opens scoped to a time window around the episode so you can see the underlying data in context.
-Snooze applies at the series level. All episodes sharing the same `group_hash` are silenced for the duration, not just the row you acted on. Use snooze when a known condition is expected to persist for a fixed time and you want to stop the noise without disabling the rule entirely. The snooze expires automatically when the duration ends.
+Select **Discover** on any episode row to open the rule's base query in Discover. The base query is the {{esql}} statement the rule runs on each evaluation. It reflects the data the alert is monitoring, not just the specific rows that breached the condition. Discover opens with the time range set to 15 minutes before and after the episode timestamp so you can see the underlying data in context.
+
+This requires {{esql}} to be enabled and Discover access.
 
 Use this when you want to understand why an episode opened, verify that the rule is querying the data you expect, or investigate whether a condition is genuinely a problem or an artifact of the data shape.
-
-<!--[CONTENT NEEDED for M2: This feature may change in M2 to surface both the base query and the alert condition query, giving a more complete view of what triggered the episode. Verify whether the behavior changes in M2 and update this section accordingly.]-->
 
 For ad hoc analysis over `.rule-events` and `.alert-actions` with copy-paste {{esql}} examples, refer to [Query alerts and signals in Discover](query-alerts-and-signals-in-discover.md).
 
@@ -83,7 +83,7 @@ Open an episode's detail page by selecting its name or ID from the table row. Th
 - **Related episodes:** Other episodes on the same rule or series, split into two subsections for easier triage.
 - **Actors:** Users who have taken actions on the episode, visible so teams can track activity and accountability.
 - **Metadata:** A dedicated tab surfacing additional fields from the source event that triggered the alert.
-- **Grouping:** When the rule uses grouping, the detail view surfaces the field values that identify the series.
+- **Grouping:** When the rule uses grouping, grouping field values are surfaced in both the episodes table and on the detail page. Each value shows the field name and value that identify the series — for example, `host.name: web-01` — so you can understand episode scope at a glance without opening each episode individually.
 
 ### Related episodes [related-episodes]
 

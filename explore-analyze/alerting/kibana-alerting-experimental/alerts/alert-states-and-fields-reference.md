@@ -8,7 +8,7 @@ products:
 description: "Reference for episode status, `.rule-events` row status, and `.alert-actions` document fields in the {{alerting-v2}}."
 ---
 
-# Alert states and fields reference [alert-states-reference]
+# Alert states and fields reference in {{alerting-v2}} [alert-states-reference]
 
 
 Alert states and fields are part of the {{alerting-v2}} in Kibana. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
