@@ -143,13 +143,13 @@ You can describe the query you want in plain language and let an LLM translate i
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
 4. Submit your request by pressing **Enter**. The editor replaces or updates the current query and runs it.
-5. Review the generated query and refine it with any other {{esql}} command or function that you need, or by continuing to use natural language through the search bar.
-
-![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
+5. Review the generated query and refine it with any other {{esql}} command or function that you need.
 
 :::{tip}
 The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
 :::
+
+![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
 
 
 ### Commands with additional editor support
