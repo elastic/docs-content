@@ -99,24 +99,55 @@ You can find the list of shortcuts directly from the editor. Look for the ![keyb
 :::
 
 
-### Free-text quick search [esql-kibana-quick-search]
+### Quick search [esql-kibana-quick-search]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
 ```
 
-You can use the **Quick search** functionality of the {{esql}} editor to translate a free-text or KQL search into a functioning {{esql}} query with a `WHERE KQL()` clause. This can be useful if you're getting started with {{esql}} or are familiar with [KQL](kql.md).
+**Quick search** is a bar that opens above the {{esql}} editor to help you draft a query without writing the full {{esql}} syntax. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open it. You can then draft a query using:
 
-1. Select **Quick search** in the editor's footer, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux) to open the **Quick search** bar.
+- **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
+- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
+
+In either case, **Quick search** generates a new {{esql}} query that overwrites the current query in the editor and runs it. The editor saves the query in your [query history](#esql-kibana-query-history) so you can restore it later.
+
+The **Quick search** bar closes automatically when you start typing in the editor or select outside of it.
+
+#### Filter your data with KQL
+
+1. Open **Quick search**.
 2. Select the data sources to search.
 3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
-4. Submit your search by pressing **Enter**. The editor generates a new {{esql}} query that overwrites the current query and runs it. It includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The editor saves previously run queries in the query history if you need to restore them. 
-
-   The **Quick search** bar closes automatically when you press **Enter**, start typing in the editor or click outside of it.
-
+4. Submit your search by pressing **Enter**. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
 5. Refine your query with any other {{esql}} command or function that you need.
 
 ![Quick search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
+
+#### Generate a query from natural language [esql-kibana-quick-search-nl]
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
+
+**Requirements**
+
+- An Enterprise license.
+- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). If no connector is available, **Quick search** prompts you to set one up.
+
+**Generate a query**
+
+1. Open **Quick search**.
+2. From the mode selector, select **Natural language**.
+3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
+4. Submit your request by pressing **Enter**. The editor replaces the current query with the generated {{esql}} query and runs it.
+5. Review the generated query and refine it with any other {{esql}} command or function that you need.
+
+:::{tip}
+The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
+:::
 
 
 ### Commands with additional editor support
