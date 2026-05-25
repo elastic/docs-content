@@ -25,23 +25,6 @@ When an incident hits, Streams gets you to answers faster. AI-powered detection 
 :width: 900px
 :::
 
-:::{dropdown} Use Streams to...
-**Organize logs automatically**
-:   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
-
-**Get meaning from logs**
-:   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single GROK expression.
-
-**Solve incidents in minutes, not hours**
-:   Significant Events detection continuously scans your streams for critical signals: out-of-memory errors, crash loops, certificate expirations, and anomalies. 
-
-**Reduce time spent on managing pipelines**
-:   Streams uses AI to simplify parsing, enrichment, partitioning, and schema updates. You can start investigating issues within minutes, rather than spending weeks on pipeline setup and data engineering.
-
-**Control storage costs**
-:   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams allows you to retain high-value data without discarding important information, reducing overall storage costs.
-:::
-
 :::{dropdown} Basic concepts
 A Stream is defined by three intrinsic properties: where data comes from (sources), what happens to it in transit (pipeline), and where it ends up (destinations). These aren't separate systems — they're built into the stream itself.
 
@@ -62,21 +45,21 @@ The underlying mechanism — Fleet agent, Agentless, Cloud forwarder — is invi
 :   A destination is itself a stream, making the model inherently composable. Routing is many-to-many: one stream can fan out to multiple destinations, and one destination can receive from multiple upstream streams. Destinations are queryable via ESQL views. Unlike today's implicit default storage, the unified model makes every routing decision explicit and visible.
 :::
 
+:::{dropdown} Use Streams to...
+**Organize logs automatically**
+:   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
 
-:::{dropdown} Use cases
-**Incident investigation**
+**Get meaning from logs**
+:   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single GROK expression.
 
-An SRE receives an alert that a trading application is down. Instead of manually searching through
-millions of log lines, they open Streams, where Significant Events has already surfaced a Java
-out-of-memory error with the relevant context. In minutes — not hours — they identify the root
-cause, escalate to the right team, and restore service.
+**Solve incidents in minutes, not hours**
+:   Significant Events detection continuously scans your streams for critical signals: out-of-memory errors, crash loops, certificate expirations, and anomalies. 
 
-**High-volume log management for platform team**
+**Reduce time spent on managing pipelines**
+:   Streams uses AI to simplify parsing, enrichment, partitioning, and schema updates. You can start investigating issues within minutes, rather than spending weeks on pipeline setup and data engineering.
 
-A platform team ingests logs from dozens of microservices and needs to control costs without losing
-context. Using Streams, they set per-stream retention policies, route high-value logs to longer
-retention tiers, and use the failure store to catch and investigate parsing errors — all from a
-single UI.
+**Control storage costs**
+:   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams allows you to retain high-value data without discarding important information, reducing overall storage costs.
 :::
 
 ::::::{dropdown} Who Streams is for
@@ -106,3 +89,22 @@ If you already manage {{es}} data pipelines and want full control:
 ::::
 :::::
 ::::::
+
+
+:::{dropdown} Use cases
+**Incident investigation**
+
+An SRE receives an alert that a trading application is down. Instead of manually searching through
+millions of log lines, they open Streams, where Significant Events has already surfaced a Java
+out-of-memory error with the relevant context. In minutes — not hours — they identify the root
+cause, escalate to the right team, and restore service.
+
+**High-volume log management for platform team**
+
+A platform team ingests logs from dozens of microservices and needs to control costs without losing
+context. Using Streams, they set per-stream retention policies, route high-value logs to longer
+retention tiers, and use the failure store to catch and investigate parsing errors — all from a
+single UI.
+:::
+
+

@@ -37,19 +37,23 @@ Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For 
 ::::
 
 ::::{step} Review AI-suggested partitions
-Streams automatically organizes your logs by source and component. Accept, adjust, or add partitions manually.
-::::
-
-::::{step} Configure processing
-Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+Streams automatically organizes your logs by source and component. Accept, adjust, or add [**partitions**](./management/partitioning.md) manually.
 ::::
 
 ::::{step} Set retention policies
 Use the [**Retention** tab](./management/retention.md) to define how long each stream stores data and to review ingestion volume.
 ::::
 
+::::{step} Configure processing
+Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+::::
+
 ::::{step} Manage data quality
 Use the [**Data quality** column](./management/data-quality.md) to filter your streams by data quality status.
+::::
+
+::::{step} Configure advanced settings
+Use the [**Advanced** tab](./management/advanced.md) to view the underlying {{es}} configuration and advanced settings for this stream.
 ::::
 
 ::::{step} Investigate with Significant Events
