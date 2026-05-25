@@ -28,7 +28,7 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
 {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Entity relationships sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
 
@@ -66,7 +66,7 @@ For each entity type (hosts, users, and services):
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: planned }
 The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -98,7 +98,7 @@ Once the entity store is enabled, you may want to clear the stored data and star
 The impact of clearing entity store data on risk scores and asset criticality depends on your version:
 
 :::::{applies-switch}
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: planned }
 Clearing entity store data does not delete your source data. However, asset criticality assignments will need to be reapplied, and risk scoring will run again for the new entities repopulated into the store.
 :::
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -115,7 +115,7 @@ To clear entity data:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: planned }
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Clear Entity Data**.
 :::
@@ -134,7 +134,7 @@ Once the entity store is enabled, you can verify which engines are installed and
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.4+, serverless: planned }
 To access the **Engine Status** tab, find **Entity Analytics** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 :::
 
@@ -173,7 +173,7 @@ Examples of supported integrations include:
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless: planned
 ```
 
 The entity store runs scheduled log extraction to keep entity data up to date.
@@ -191,13 +191,7 @@ A process might be **unhealthy** if:
 * Component health indicators are degraded.
 * Extraction appears stalled and no forward progress is visible.
 
-If log extraction appears slow, you can modify the following log extraction configuration settings to balance freshness, coverage, and query cost.
-
-#### `frequency`
-
-Use `frequency` to control how often extraction runs.
-
-* Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
+If log extraction appears slow, you can modify the following log extraction configuration settings to balance freshness, coverage, and query cost. Use the [update entity store API]({{kib-apis}}operation/operation-put-security-entity-store) to apply these settings.
 
 #### `docsLimit`
 
@@ -205,6 +199,19 @@ Use `docsLimit` to control how many entities can be processed in one extraction 
 
 * Lower it if {{kib}} is consuming too much memory.
 * Default: `10000` entities.
+
+#### `excludedIndexPatterns`
+
+Use `excludedIndexPatterns` to exclude specific index patterns from log extraction.
+
+* By default, the entity store extracts entities from all data sources defined in the [default {{elastic-sec}} data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security). Use this parameter to skip patterns that are noisy, irrelevant, or too resource-intensive to process.
+* Accepts an array of index pattern strings.
+
+#### `frequency`
+
+Use `frequency` to control how often extraction runs.
+
+* Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
 
 #### `maxLogsPerPage`
 
@@ -214,3 +221,11 @@ Use `maxLogsPerPage` to cap the raw-log slice size before aggregation.
 * Default: `40000` documents.
 
 Start with `maxLogsPerPage` rather than `docsLimit` when extraction is slow or unstable, because it reduces the amount of raw source data processed in each extraction operation. Adjust `docsLimit` if tuning `maxLogsPerPage` is insufficient and you still see performance issues.
+
+#### `maxTimeWindowSize`
+
+Use `maxTimeWindowSize` to cap the width of each extraction probe window.
+
+* In lagging environments, the extraction window can grow unboundedly, causing probe cost to spiral. Setting this parameter ensures extraction advances through any lag in sequential sub-windows of at most `maxTimeWindowSize` width, rather than querying the full lag in a single pass.
+* Increase this value if extraction is falling behind in high-volume deployments.
+* Default: `15m`.

@@ -24,7 +24,7 @@ To check that ZooKeeper is in sync with the correct number of followers, run the
     ```sh
     docker exec frc-zookeeper-servers-zookeeper sh -c '
     for i in $(seq 2191 2199); do 
-      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count"); 
+      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count|quorum_size"); 
       if [ -n "$output" ]; then 
         echo "ZK mntr Response from port $i:"; 
         echo "$output"; 
@@ -39,28 +39,29 @@ To check that ZooKeeper is in sync with the correct number of followers, run the
 
 2. From the Leader node’s output, make sure to check that:
 
-    * The count of followers is correct and expected
+    * The count of followers and quorum size are correct and expected
     * All followers are listed as synced
-
 
 The inline shell script command can return the following types of output:
 
-* If the host is the current ZooKeeper Leader, the command returns the Leader’s info including follower count and follower sync status.
+* If the host is the current ZooKeeper Leader, the command returns the Leader’s info including quorum size, follower count, and follower sync status.
 
     ```
     ZK mntr Response from port 2191:
     zk_server_state leader
     zk_znode_count  783
     zk_synced_followers     2
+    zk_quorum_size 3
     ...
     ```
 
-* If the host is a follower, the command returns only the follower state, and continues until it finds the Leader:
+* If the host is a follower, the command returns only the follower state.  Run the command on the other director nodes until you find the leader node.
 
     ```
     ZK mntr Response from port 2193:
     zk_server_state follower
     zk_znode_count  777
+    zk_quorum_size 3
     ...
     ```
 
@@ -85,7 +86,7 @@ If the inline shell script command doesn’t work, you can run the check directl
 1. Run the equivalent inline shell script directly on the host terminal, outside of the zookeeper container
     ```
     for i in $(seq 2191 2199); do 
-      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count"); 
+      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count|quorum_size"); 
       if [ -n "$output" ]; then 
         echo "ZK mntr Response from port $i:"; 
         echo "$output"; 
@@ -95,4 +96,5 @@ If the inline shell script command doesn’t work, you can run the check directl
     ```
 2. Look for the following lines in the output
   *  `zk_server_state leader` or `zk_server_state follower` — indicates the node’s ZooKeeper role
+  *  `zk_quorum_size` on the leader to validate that the number of voting members is as expected
 

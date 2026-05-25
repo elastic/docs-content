@@ -59,8 +59,11 @@ The end date is related to the check interval for the rule. You can use this vie
 
 There is a rich set of HTTP endpoints to introspect and manage rules and connectors. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 ```txt
-curl -X POST -k \
+curl -X POST \
  -H 'kbn-xsrf: foo' \
  -H 'content-type: application/json' \
  api/actions/connector/a692dc89-15b9-4a3c-9e47-9fb6872e49ce/_execute \
