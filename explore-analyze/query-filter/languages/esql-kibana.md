@@ -145,6 +145,8 @@ You can describe the query you want in plain language and let an LLM translate i
 4. Submit your request by pressing **Enter**. The editor replaces the current query with the generated {{esql}} query and runs it.
 5. Review the generated query and refine it with any other {{esql}} command or function that you need.
 
+![Natural language mode in the {{esql}} editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
+
 :::{tip}
 The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
 :::
