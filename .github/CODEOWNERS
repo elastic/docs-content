@@ -2,7 +2,7 @@
 *                                           @elastic/docs
 
 # Templates, workflows, and config
-/.github/                                   @elastic/doc-leads
+/.github/                                   @elastic/doc-leads @elastic/docs-tech-leads
 /.github/workflows/                         @elastic/docs-engineering
 /.github/scripts/                           @elastic/docs-engineering
 /acrolinx/                                  @elastic/doc-leads
@@ -11,13 +11,14 @@
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
 
-/explore-analyze/                           @elastic/experience-docs
+/explore-analyze/                           @elastic/experience-docs @elastic/developer-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
 /explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/experience-docs
 /explore-analyze/machine-learning/          @elastic/developer-docs @elastic/experience-docs
 /explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
 /explore-analyze/scripting/                 @elastic/admin-docs
 /explore-analyze/cross-cluster-search/      @elastic/developer-docs
+/explore-analyze/cross-project-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
 
 /extend/                                    @elastic/core-docs

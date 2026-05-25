@@ -16,7 +16,7 @@ Snapshots allow you to back up and restore {{es}} indices, helping protect data 
 To set up automated snapshots for {{es}} on {{k8s}} you have to:
 
 1. Register the snapshot repository with the {{es}} API.
-2. Set up a Snapshot Lifecycle {{manage-app}} Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [{{kib}} UI](/deploy-manage/tools/snapshot-and-restore.md)
+2. Set up a Snapshot Lifecycle {{manage-app}} Policy through [API]({{es-apis}}group/endpoint-slm) or the [{{kib}} UI](/deploy-manage/tools/snapshot-and-restore.md)
 
 ::::{note}
 Support for S3, GCS and Azure repositories is bundled in {{es}} by default from version 8.0. On older versions of {{es}}, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).

@@ -78,8 +78,8 @@ You can use Painless in multiple contexts throughout {{es}}:
 * [**Ingest pipelines**](/manage-data/ingest/transform-enrich/ingest-pipelines.md)**:** for data transformation during indexing  
 * [**Search queries**](/solutions/search.md)**:** for custom scoring and script fields  
 * [**Runtime fields**](/manage-data/data-store/mapping/runtime-fields.md)**:** for dynamic field creation  
-* [**Update API:**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) for document modification  
-* [**Watcher**](/explore-analyze/alerts-cases/watcher.md)**:** for alert conditions and actions
+* [**Update API:**]({{es-apis}}operation/operation-update) for document modification
+* [**Watcher**](/explore-analyze/alerting/watcher.md)**:** for alert conditions and actions
 
 ## Start scripting
 

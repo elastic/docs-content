@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
-description: Learn about Elastic workflows.
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
+description: Build automated workflows in Kibana to turn data insights into action.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -14,7 +14,13 @@ products:
 
 # Workflows [workflows-overview]
 
-A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It is a reusable, versionable "recipe" that transforms inputs into actions.
+:::{admonition} Welcome to the Elastic workflow docs! 
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
+:::
+
+## What are workflows [workflows-what]
+
+A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
 
 ## Why use workflows [workflows-why]
 
@@ -39,7 +45,7 @@ Some key concepts to understand while working with workflows:
 
 * **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
 * **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
-* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/data.md) to learn more.
+* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) to learn more.
 
 ## Workflow structure [workflow-structure]
 
@@ -110,5 +116,17 @@ steps:
 
 ## Learn more
 
-- To create and run your first workflow, refer to [](/explore-analyze/workflows/get-started.md).
-- Understand how to use the YAML editor in {{kib}} to define and run your workflows. Refer to [](/explore-analyze/workflows/author-workflows.md) to learn more.
+Start here:
+
+- [Set up Workflows](/explore-analyze/workflows/get-started/setup.md): Turn on the feature and configure role-based access.
+- [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md): A hands-on tutorial using sample data.
+
+Explore what you can automate:
+
+- [Use cases](/explore-analyze/workflows/use-cases.md): Browse security, observability, and AI-augmented patterns you can build with workflows today.
+
+Concepts, reference, and authoring:
+
+- [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
+- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
+- [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.

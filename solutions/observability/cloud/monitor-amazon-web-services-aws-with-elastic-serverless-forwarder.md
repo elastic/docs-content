@@ -29,7 +29,7 @@ In this tutorial, you’ll learn how to:
 
 ## Before you begin [aws-esf-prerequisites]
 
-Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment or [{{obs-serverless}}](../../../deploy-manage/deploy/elastic-cloud/create-serverless-project.md) project. Both include an {{es}} cluster for storing and searching your data and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
 
 
 ## Step 1: Create an S3 Bucket to store VPC flow logs [esf-step-one]
@@ -120,6 +120,9 @@ Note that you can store more than one configuration file.
 
 Elastic Serverless Forwarder uses the configuration file to know the input source and the Elastic connection for the destination information.
 
+::::{applies-switch}
+
+:::{applies-item} stack: ga
 1. In Elastic Cloud, from the AWS Integrations page click **Connection details** on the upper right corner and copy your Cloud ID.
 2. Create an encoded API key for authentication.
 
@@ -133,10 +136,33 @@ Elastic Serverless Forwarder uses the configuration file to know the input sourc
           - type: "elasticsearch"
             args:
               cloud_id: "<your-cloud-id>"
-              api_key: "<your-api-key>>"
+              api_key: "<your-api-key>"
+    ```
+
+3. Upload the configuration file you created to the S3 bucket you created at step 5.
+:::
+
+:::{applies-item} serverless: ga
+1. From your {{serverless-short}} project, select the help icon, then select **Connection details** and copy your **{{es}} endpoint**.
+2. Create an encoded API key for authentication.
+
+    You are going to reference both the {{es}} endpoint and the newly created API key from the configuration file. Here is an example:
+
+    ```yaml
+    inputs:
+      - type: "s3-sqs"
+        id: "<your-sqs-queue-arn>"
+        outputs:
+          - type: "elasticsearch"
+            args:
+              hosts: "<https://hostname:port>"
+              api_key: "<your-api-key>"
     ```
 
 3. Upload the configuration file you have just created to the S3 bucket you created at step 5.
+:::
+
+::::
 
 
 ## Step 7: Ingest VPC flow logs into Elastic [esf-step-seven]

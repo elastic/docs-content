@@ -19,6 +19,10 @@ Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}
 
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
+:::{note}
+Elastic also provides the [{{edot}} Browser](elastic-otel-rum-js://reference/edot-browser/index.md) (EDOT Browser), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
+:::
+
 ## Before you begin [before-you-begin]
 
 You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
@@ -683,6 +687,35 @@ connect-src collector.example.com:4318/v1/traces
 ### Cross-origin resource sharing (CORS)
 
 If your website and the configured endpoint have a different origin, your browser might block the export requests. If you followed the instructions in the [OTLP endpoint](#before-you-begin) section, you already set up the necessary CORS headers. Otherwise you need to configure special headers for CORS in the receiving endpoint.
+
+## Explore your data in {{kib}}
+
+After ingesting OpenTelemetry RUM data, you can explore it in {{kib}}.
+
+### Available views
+
+You can explore OpenTelemetry RUM data in these {{kib}} experiences:
+
+- **{{product.apm}} service inventory**  
+  Browser apps that generate traces appear in the {{product.apm}} service inventory. The names displayed in the list correspond to the [`service.name` resource attribute](#otel-rum-basic-settings) defined when instrumenting the app. You can view service details, open distributed traces, and explore end-to-end traces that include browser spans.
+
+- **Distributed tracing**  
+  OpenTelemetry RUM traces are integrated with Elastic distributed tracing. Analyze request flows across browser and backend services in a single trace view.
+
+- **Discover**  
+  RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion.
+
+:::{note}
+The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. For browser performance dashboards compatible with OpenTelemetry RUM data, install the [OTel RUM Dashboards](https://github.com/elastic/integrations/tree/main/packages/otel_rum_dashboards) integration from the {{kib}} Integrations catalog.
+:::
+
+### Confirm that ingestion is working
+
+To verify that OpenTelemetry RUM data is reaching Elastic:
+
+1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}} → Applications → Service Inventory**.
+2. Look for your browser application in the **Service Inventory**.
+3. Open **Discover** and filter for recent events from your browser application to verify that data is indexed.
 
 ## Known limitations
 

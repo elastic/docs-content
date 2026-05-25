@@ -33,11 +33,11 @@ Watch these video tutorials to help you get started:
 
 ## How Playground works [playground-how-it-works]
 
-Here’s a simpified overview of how Playground works:
+Here’s a simplified overview of how Playground works:
 
 * User **creates a connection** to LLM provider
 * User **selects a model** to use for generating responses
-* User **define the model’s behavior and tone** with initial instructions
+* User **defines the model’s behavior and tone** with initial instructions
 
     * **Example**: "*You are a friendly assistant for question-answering tasks. Keep responses as clear and concise as possible.*"
 
@@ -140,7 +140,7 @@ There are many options for ingesting data into {{es}}, including:
 
 * The [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) for web content (**NOTE**: Not yet available in *Serverless*)
 * [Elastic connectors](elasticsearch://reference/search-connectors/index.md) for data synced from third-party sources
-* The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
+* The {{es}} [Bulk API]({{es-apis}}operation/operation-bulk) for JSON documents
 
     ::::{dropdown} Expand for example
     To add a few documents to an index called `books` run the following in Dev Tools Console:

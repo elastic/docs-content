@@ -33,7 +33,7 @@ Rule and action tasks can run late or at an inconsistent schedule. This is typic
 
 You can address such issues by tweaking the [Task Manager settings](kibana://reference/configuration-reference/task-manager-settings.md) or scaling the deployment to better suit your use case.
 
-For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md).
+For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerting/alerts/alerting-troubleshooting.md).
 
 ::::
 
@@ -62,7 +62,7 @@ For more information on data stream lifecycle management, see: [Data stream life
 
 ## Performance guardrails [alerting-circuit-breakers]
 
-There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable settings](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) that act as performance guardrails (sometimes referred to as _alerting circuit breakers_), placing limits on how frequently rules run, how long they can execute, and how many actions they can generate, helping minimize these effects.
+There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable settings](kibana://reference/configuration-reference/alerting-settings.md) that act as performance guardrails (sometimes referred to as _alerting circuit breakers_), placing limits on how frequently rules run, how long they can execute, and how many actions they can generate, helping minimize these effects.
 
 ### Rules with very short intervals [_rules_with_very_short_intervals]
 

@@ -34,7 +34,7 @@ When using a custom {{kib}} Space, include the space name in the URL:
 ```
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#copy-your-mcp-server-url).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
 :::
 
 ## Configuring MCP clients
@@ -87,6 +87,7 @@ POST /_security/api_key
   "expiration": "30d",
   "role_descriptors": {
     "mcp-access": {
+      "cluster": ["monitor_inference"], <1>
       "indices": [
         {
           "names": ["*"],
@@ -95,8 +96,8 @@ POST /_security/api_key
       ],
       "applications": [
         {
-          "application": "kibana-.kibana",
-          "privileges": ["feature_agentBuilder.read"],
+          "application": "kibana-.kibana", <2>
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]
@@ -104,6 +105,9 @@ POST /_security/api_key
   }
 }
 ```
+
+1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
+2. Must be exactly `kibana-.kibana`. This is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
 
 :::{note}
 Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
@@ -126,16 +130,17 @@ POST /_security/api_key
   "expiration": "30d",
   "role_descriptors": {
     "mcp-access": {
+      "cluster": ["monitor_inference"], <1>
       "indices": [
         {
-          "names": ["logs-*", "metrics-*"], <1>
-          "privileges": ["read", "view_index_metadata"] <2>
+          "names": ["logs-*", "metrics-*"], <2>
+          "privileges": ["read", "view_index_metadata"] <3>
         }
       ],
       "applications": [
         {
-          "application": "kibana-.kibana", <3>
-          "privileges": ["feature_agentBuilder.read"],
+          "application": "kibana-.kibana", <4>
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]
@@ -144,6 +149,7 @@ POST /_security/api_key
 }
 ```
 
-1. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
-2. Read-only privileges prevent the agent from modifying data.
-3. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.
+1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
+2. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
+3. Read-only privileges prevent the agent from modifying data.
+4. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.

@@ -7,5 +7,6 @@
 | eu-central-1 | Europe (Frankfurt) |
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| ap-south-1 | Asia Pacific (Mumbai) |
 
 More cloud service providers and regions are coming soon.

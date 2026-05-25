@@ -288,6 +288,14 @@ You can view the status of the automatic upgrade in the following ways:
 
 - On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
 
+## Automatic reassignment to version-specific policies after an upgrade [upgrade-version-specific-policy-assignment]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you upgrade an {{agent}} that is enrolled in a policy containing an integration with a minimum agent version requirement, {{fleet}} reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This usually completes within a minute after the upgraded agent checks in with {{fleet}}.
 
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
 
@@ -310,7 +318,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 
 ### Upgrade an RPM {{agent}} installation: [_upgrade_an_rpm_agent_installation]
@@ -327,4 +335,44 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
+
+## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
+
+```{applies_to}
+stack: ga 9.3.0+
+serverless: ga
+```
+
+:::{admonition} Elastic subscription
+The manual rollback feature for {{agent}} is available only for some [Elastic subscription levels]({{subscriptions}}).
+:::
+
+The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk, typically seven days after the upgrade. 
+
+To roll back one or more {{agent}} upgrades:
+1. Go to the **Actions** menu.
+2. Select **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
+
+For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
+For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 
+
+
+### Limitations for manual rollback [rollback-upgrade-fleet-managed]
+
+These limitations apply for the manual rollback feature: 
+
+* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Data required for the rollback is stored on disk for seven days, which can impact available disk space.
+* Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
+* Manual rollback is not available for system-managed packages such as DEB and RPM.
+* Some data might be re-ingested after rollback.
+
+#### Possible errors [rollback-upgrade-fleet-managed]
+
+If no version is available on disk to rollback to, you get an error.
+This situation can happen if:
+
+- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
+
+- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 

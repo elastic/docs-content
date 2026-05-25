@@ -2,6 +2,7 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+description: Streams provides a centralized UI for extracting fields, setting retention, routing data, and managing Elasticsearch data streams.
 products:
   - id: observability
   - id: elasticsearch
@@ -16,6 +17,10 @@ products:
 # Streams
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/streams
+:::
 
 ## Classic versus wired streams [streams-classic-vs-wired]
 
@@ -37,14 +42,14 @@ stack: preview 9.2
 serverless: preview
 ```
 
-Wired streams send data directly to a single endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
+Wired streams send data directly to an endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) set up manually or with the help of AI suggestions.
 
 Wired streams:
 - Allow you to organize streams in a parent-child hierarchy.
 - Let child streams automatically inherit mappings, lifecycle settings, and processors.
 - Send configuration changes through the hierarchy to keep streams consistent.
 
-For more information, refer to [sending data to wired streams](./wired-streams.md).
+For more information, refer to [Wired streams](./wired-streams.md).
 
 ## Managed components [streams-managed-components]
 When you configure classic or wired streams through the Streams UI or [Streams API](#streams-api), {{es}}-level components like templates and pipelines are created for the stream. These components are considered *managed* and shouldn't be modified using {{es}} APIs. When managing a stream through the Streams UI or API, continue doing so whenever possible.
@@ -90,9 +95,9 @@ You can set Streams visibility on a space-by-space basis by defining users' acce
 
 Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
 
-:::{note}
-Creating [significant events](./management/significant-events.md) requires access to the `default` space.
-:::
+% :::{note}
+% Creating [significant events](./management/significant-events.md) requires access to the `default` space.
+% :::
 
 ## Access Streams [streams-access]
 
@@ -108,7 +113,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-You can also access Streams features using the Streams API. Refer to the [Streams API documentation](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-streams) for more information.
+You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Manage individual streams [streams-management-tab]
 
@@ -120,3 +125,4 @@ Interact with and configure your streams in the following ways:
 - [**Schema**](./management/schema.md): Manage field mappings.
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Knowledge Indicators**](./management/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.

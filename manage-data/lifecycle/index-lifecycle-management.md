@@ -1,5 +1,5 @@
 ---
-navigation_title: Index lifecycle managment
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
@@ -51,7 +51,7 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
 
 * **Rollover**: Creates a new write index when the current one reaches a certain size, number of docs, or age.
 * **Shrink**: Reduces the number of primary shards in an index.
-* **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
+* **Force merge**: Triggers a [force merge]({{es-apis}}operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
 * [And more](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md)
 
@@ -75,7 +75,7 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 ## Create and manage {{ilm-init}} policies
 
-You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/index-basics.md#index-management) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+You can create and manage index lifecycle policies through {{kib}}'s [Index Management](/manage-data/data-store/perform-index-operations.md#manage-indices) UI or the [{{ilm-init}} APIs]({{es-apis}}group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
 
 * [Create an {{ilm}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [Check the {{ilm-init}} status of {{es}} indices and data streams](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)

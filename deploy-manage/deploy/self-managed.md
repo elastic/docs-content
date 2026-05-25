@@ -80,6 +80,13 @@ Review a list of all of the resources that you can use to interact with your sel
 
 [](/deploy-manage/deploy/self-managed/tools-apis.md).
 
+### Tutorials
+
+Two tutorials are available to guide you through installing and securing a full, self-managed {{stack}}:
+
+* [](/deploy-manage/deploy/self-managed/tutorial-self-managed-install.md)
+* [](/deploy-manage/deploy/self-managed/tutorial-self-managed-secure.md)
+
 ## Other important sections
 
 Review these other sections for critical information about securing and managing your self-managed cluster.

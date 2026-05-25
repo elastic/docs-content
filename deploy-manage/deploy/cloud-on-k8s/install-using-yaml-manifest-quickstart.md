@@ -30,6 +30,8 @@ Before you begin, review the following prerequisites and recommendations:
 
 * You're running a Kubernetes cluster using a [supported platform](/deploy-manage/deploy/cloud-on-k8s.md#k8s-supported).
 
+* [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) is installed and configured to connect to your Kubernetes cluster.
+
 * If you are using GKE, make sure your user has `cluster-admin` permissions. For more information, check [Prerequisites for using Kubernetes RBAC on GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#iam-rolebinding-bootstrap).
 
 * If you are using Amazon EKS, make sure the Kubernetes control plane is allowed to communicate with the Kubernetes nodes on port 443. This is required for communication with the validating webhook. For more information, check [Recommended inbound traffic](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html).

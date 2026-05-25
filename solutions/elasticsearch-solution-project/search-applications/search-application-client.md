@@ -49,7 +49,7 @@ To follow this guide, you’ll need:
 
 * A **search application**.
 
-    * Create and manage search applications in the [{{kib}} UI](../search-applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
+    * Create and manage search applications in the [{{kib}} UI](../search-applications.md#search-application-overview-get-started-ui) or using the [API]({{es-apis}}operation/operation-search-application-put).
 
 * A **web app** to query your search application, using [Search Application client](https://github.com/elastic/search-application-client#installation).
 
@@ -223,7 +223,7 @@ const results = await request()
 
 ### Example template [search-application-client-client-template-example]
 
-We recommend getting started with the [boilerplate template](https://github.com/elastic/search-application-client#boilerplate-template) provided in the client repository. For an example how this is used, [view this script](https://github.com/elastic/search-application-client/blob/main/bin/boilerplate_template.js). The `dictionary` parameter is used to pass in a JSON schema definition that describes structure and validation rules for the request object. This schema is important, because it restricts the use of certain features in the {{es}} query. [View the schema](https://github.com/elastic/search-application-client/blob/main/bin/request_schema.json).
+We recommend getting started with the [boilerplate template](https://github.com/elastic/search-application-client#boilerplate-template) provided in the client repository. For an example of how this is used, [view this script](https://github.com/elastic/search-application-client/blob/main/bin/boilerplate_template.js). The `dictionary` parameter is used to pass in a JSON schema definition that describes structure and validation rules for the request object. This schema is important, because it restricts the use of certain features in the {{es}} query. [View the schema](https://github.com/elastic/search-application-client/blob/main/bin/request_schema.json).
 
 Each search functionality in this guide requires a feature included in this template. These features require specific parameters to be present in the template:
 

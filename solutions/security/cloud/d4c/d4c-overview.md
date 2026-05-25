@@ -34,21 +34,28 @@ D4C for Kubernetes uses a flexible policy language to restrict container workloa
 
 ## Support matrix [_support_matrix] 
 
-|  | EKS 1.24-1.27 (AL2022) | GKE 1.24-1.27 (COS) |
-| --- | --- | --- |
-| Process event exports | ✓ | ✓ |
-| Network event exports | ✓ | ✓ |
-| File event exports | ✓ | ✓ |
-| File blocking | ✓ | ✓ |
-| Process blocking | ✓ | ✓ |
-| Network blocking | ✗ | ✗ |
-| Drift prevention | ✓ | ✓ |
-| Mount point awareness | ✓ | ✓ |
+The integration runs on **Linux** (x86_64 architecture) and requires **Kubernetes 1.24+** with **containerd** or **CRI-O** as the container runtime interface (CRI).
 
+### Managed Kubernetes clusters [_managed_kubernetes_clusters] 
+
+|  |  EKS (AL2, AL2023) | GKE (COS, Ubuntu) | AKS (AzureLinux3) |
+| --- | --- | --- | --- |
+| Process event exports | ✓ | ✓ | ✓ |
+| Network event exports | ✗ | ✗ | ✗ |
+| File event exports | ✓ | ✓ | ✓ |
+| File blocking | ✓ | ✓ | ✓ |
+| Process blocking | ✓ | ✓ | ✓ |
+| Network blocking | ✗ | ✗ | ✗ | 
+| Drift prevention | ✓ | ✓ | ✓ |
+| Mount point awareness | ✓ | ✓ | ✓ |
+
+### Self-managed Kubernetes clusters [_self_managed_kubernetes_clusters] 
+
+The integration works on self-managed Kubernetes clusters as long as the node, operating system, and kernel meet the [requirements](/solutions/security/cloud/d4c/get-started-with-d4c.md).
 
 ## How D4C for Kubernetes works [_how_cwp_for_kubernetes_works] 
 
-When you set up the D4C integration, it gets deployed by {{agent}}. Specifically, the {{agent}} is installed as a DaemonSet on your Kubernetes clusters, where it enables D4C to use eBPF Linux Security Modules ([LSM](https://docs.kernel.org/bpf/prog_lsm.md)) and tracepoint probes to record system events. Events are evaluated against LSM hook points, enabling {{agent}} to evaluate system activity against your policy before allowing it to proceed.
+When you set up the D4C integration, it gets deployed by {{agent}}. Specifically, the {{agent}} is installed as a DaemonSet on your Kubernetes clusters, where it enables D4C to use eBPF Linux Security Modules ([LSM](https://docs.kernel.org/bpf/prog_lsm.html)) and tracepoint probes to record system events. Events are evaluated against LSM hook points, enabling {{agent}} to evaluate system activity against your policy before allowing it to proceed.
 
 Your D4C integration policy determines which system behaviors (for example, process execution or file creation or deletion) will result in which actions. *Selectors* and *responses* define each policy. Selectors define the conditions which cause the associated responses to run. Responses are associated with one or more selectors, and specify one or more actions (such as `log`, `alert`, or `block`) that should occur when the conditions defined in an associated selector are met.
 

@@ -9,7 +9,7 @@ products:
 description: Use Elastic Inference Service (EIS) with your self-managed, ECE, and ECK clusters through Cloud Connect.
 ---
 
-# Elastic Inference Service for self-managed clusters
+# Elastic {{infer-cap}} Service for self-managed clusters
 
 [Elastic {{infer-cap}} Service (EIS)](eis.md) is available with zero setup on Elastic Cloud Hosted and Serverless deployments. To use EIS with other deployment types, you can use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself.
 
@@ -69,7 +69,8 @@ On the **Cloud connected services** page, click **Connect** for Elastic {{infer-
 
 :::::::
 
-After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases, along with corresponding {{kib}} AI connectors. Supported {{kib}} features now use these connectors automatically.
+After you connect Elastic {{infer-cap}} Service through Cloud Connect, {{es}} automatically creates multiple {{infer}} endpoints for search and chat use cases.
+Supported {{kib}} features now use these endpoints automatically.
 
 ## Test EIS through Cloud Connect with semantic search
 
@@ -93,7 +94,7 @@ PUT /semantic-search-eis
 }
 ```
 
-1. Because you already enabled EIS, the `semantic_text` field type uses EIS through the default {{infer}} endpoint (`.elser-2-elastic`). To learn more, refer to [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
+1. Because you already enabled EIS, the `semantic_text` field type uses EIS through the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 
@@ -156,9 +157,29 @@ The response should include the indexed document:
 }
 ```
 
+## Supported models with EIS through Cloud Connect
+
+Using Elastic {{infer-cap}} Service through Cloud Connect, you have access to all available models listed under [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md), including LLMs, embedding models, and rerankers.
+
+To use these models:
+
+- {applies_to}`stack: ga 9.3` You need [{{kib}} connectors](kibana://reference/connectors-kibana.md) (for LLMs) or [{{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference). There are preconfigured {{infer}} endpoints for all models. For some LLMs, connectors need to be created manually.
+- {applies_to}`stack: ga 9.4+` Use the preconfigured {{infer}} endpoints or create custom endpoints as described in [](/explore-analyze/elastic-inference/eis.md).
+
+### LLMs 
+
+For Claude 3.7 and Claude 4.5, connectors are preconfigured and ready to be used.
+
+To use other LLMs listed under [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md), you must [create the {{kib}} connectors](kibana://reference/connectors-kibana.md#creating-new-connector) manually. The corresponding {{infer}} endpoints are preconfigured.
+
+### Embedding and rerank models
+
+Predefined {{infer}} endpoints and connectors are available for all models listed under [Embedding models](/explore-analyze/elastic-inference/eis-supported-models.md#embedding-models) and [Rerankers](/explore-analyze/elastic-inference/eis-supported-models.md#rerankers).
+
+For these models, you only need to create new {{infer}} endpoints if you want to use custom settings.
+
 ## Regions and billing
 
-For information about EIS regions and request routing, refer to [Region and hosting](eis.md#eis-regions).
+For information about EIS regions and request routing, refer to [Region and hosting](/explore-analyze/elastic-inference/eis-supported-models.md#eis-regions).
 
-EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](eis.md#pricing) and [Monitor your token usage](eis.md#monitor-your-token-usage).
-
+EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](/explore-analyze/elastic-inference/eis-supported-models.md#pricing) and [Monitor your token usage](/explore-analyze/elastic-inference/eis-supported-models.md#monitor-your-token-usage).

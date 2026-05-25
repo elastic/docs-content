@@ -46,6 +46,7 @@ Because self-managed {{fleet-server}} is not supported on {{serverless-full}}, t
 * [logs](#elastic-agent-logs-command)
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
+* [windows](#elastic-agent-windows-command) {applies_to}`stack: ga 9.4+`
 
 
 
@@ -230,7 +231,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Timeout waiting for {{agent}} daemon.
 
 `--delay-enroll`
-:   Delays enrollment to occur on first start of the {{agent}} service. This setting is useful when you don’t want the {{agent}} to enroll until the next reboot or manual start of the service, for example, when you’re preparing an image that includes {{agent}}.
+:   Delays enrollment to occur on first start of the {{agent}} service. This setting is useful when you don't want the {{agent}} to enroll until the next reboot or manual start of the service, for example, when you're preparing an image that includes {{agent}} or deploying to environments where network access may not be immediately available. If {{fleet-server}} is unreachable when the service starts, {{agent}} will retry enrollment indefinitely until it succeeds.
 
 `--elastic-agent-cert`
 :   Certificate to use as the client certificate for the {{agent}}'s connections to {{fleet-server}}.
@@ -263,10 +264,10 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Start a {{fleet-server}} process when {{agent}} is started, and connect to the specified {{es}} URL.
 
 `--fleet-server-es-ca <string>` {applies_to}`serverless: unavailable`
-:   Path to certificate authority to use to communicate with {{es}}.
+:   Path to certificate authority file to use to communicate with {{es}}. This is an alternative to using `--fleet-server-es-ca-trusted-fingerprint`.
 
 `--fleet-server-es-ca-trusted-fingerprint <string>` {applies_to}`serverless: unavailable`
-:   The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint will be used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.
+:   The SHA-256 fingerprint (hash) of a certificate authority that is present in the certificate chain sent by {{es}} during the TLS handshake. If this certificate is found in the chain, it will be added to the trusted CAs. This is an alternative to using `--fleet-server-es-ca` to provide a CA certificate file. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
 
 `--fleet-server-es-cert` {applies_to}`serverless: unavailable`
 :   The path to the client certificate that {{fleet-server}} will use when connecting to {{es}}.
@@ -741,10 +742,10 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 :   Start a {{fleet-server}} process when {{agent}} is started, and connect to the specified {{es}} URL.
 
 `--fleet-server-es-ca <string>` {applies_to}`serverless: unavailable`
-:   Path to certificate authority to use to communicate with {{es}}.
+:   Path to certificate authority file to use to communicate with {{es}}. This is an alternative to using `--fleet-server-es-ca-trusted-fingerprint`.
 
 `--fleet-server-es-ca-trusted-fingerprint <string>` {applies_to}`serverless: unavailable`
-:   The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint will be used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.
+:   The SHA-256 fingerprint (hash) of a certificate authority that is present in the certificate chain sent by {{es}} during the TLS handshake. If this certificate is found in the chain, it will be added to the trusted CAs. This is an alternative to using `--fleet-server-es-ca` to provide a CA certificate file. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).
 
 `--fleet-server-es-cert` {applies_to}`serverless: unavailable`
 :   The path to the client certificate that {{fleet-server}} will use when connecting to {{es}}.
@@ -1207,6 +1208,7 @@ elastic-agent upgrade <version> [--source-uri <string>] [--help] [flags]
 
 `--source-uri <string>`
 :   The source URI to download the new version from. By default, {{agent}} uses the Elastic Artifacts URL.
+:   A file path is also accepted here. Example: `file://<file path>`
 
 `--skip-verify`
 :   Skip the package verification process. This option is not recommended as it is insecure.
@@ -1295,4 +1297,41 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 
 ```shell
 elastic-agent version
+```
+
+
+## elastic-agent windows [elastic-agent-windows-command]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Windows-specific subcommands for managing {{agent}} registry entries. These commands require Administrator privileges.
+
+### Synopsis [_synopsis_14]
+
+```shell
+elastic-agent windows [command]
+```
+
+### Available commands [_available_commands_2]
+
+`registry update`
+:   Creates or updates the {{agent}} entry in the Windows Add/Remove Programs list and configures the registry key access control list (ACL) so unprivileged upgrades can update it automatically. Also removes any stale MSI-generated entries. Run this command once after upgrading from a version earlier than 9.4.0 in unprivileged mode.
+
+`registry remove`
+:   Removes the {{agent}} entry from the Windows Add/Remove Programs list. Run this command when you need to manually clean up the registry entry, such as during troubleshooting or before a manual uninstall.
+
+### Examples [_example_43]
+
+Create or update the {{agent}} entry in the Windows Add/Remove Programs list:
+
+```shell
+elastic-agent windows registry update
+```
+
+Remove the {{agent}} entry from the Windows Add/Remove Programs list:
+
+```shell
+elastic-agent windows registry remove
 ```

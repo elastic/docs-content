@@ -15,7 +15,7 @@ products:
 
 Cloud Connect enables you to use {{ecloud}} services in your [ECE](/deploy-manage/deploy/cloud-enterprise.md), [ECK](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
 
-AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
+The following services are available for use with Cloud Connect. More services are coming soon.
 
 ## AutoOps
 
@@ -24,6 +24,9 @@ AutoOps is the first service available for use with Cloud Connect. More services
 AutoOps can be connected to clusters on {{es}} version 7.17 and later.
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
+
+:::{include} /deploy-manage/monitor/_snippets/cc-autoops-all-licenses.md
+:::
 
 ## Elastic {{infer-cap}} Service (EIS)
 
@@ -46,21 +49,11 @@ Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-m
 Find answers to your questions about Cloud Connect.
 
 * [Does Cloud Connect require additional payment?](#cc-additional-payment)
-* [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?](#cc-ech)
 * [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?](#cc-ech-eis)
 * [Are more services going to be available with Cloud Connect?](#cc-more-services)
 
 $$$cc-additional-payment$$$ **Does Cloud Connect require additional payment?** 
-:   Each cloud connected service has its own licensing and payment requirements. 
-
-    - :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-
-    - :::{include} /deploy-manage/_snippets/eis-cc-payment-faq.md
-::: 
-
-$$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?**
-:   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
-:::
+:   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
 
 $$$cc-ech-eis$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to EIS?**
 :   For {{ech}} deployments with an Enterprise license, EIS is set up and enabled automatically.

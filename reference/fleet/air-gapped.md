@@ -99,6 +99,18 @@ xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 For more information, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
 
+### Allow network access to the public {{package-registry}} [air-gapped-network-access-epr]
+
+If you need to configure firewall rules to allow network access to [epr.elastic.co](https://epr.elastic.co/), allowlist the domain rather than specific IP addresses whenever possible, as IP addresses might change without notice.
+
+If allowlisting the domain is not an option, these are the current IP addresses used for the {{package-registry}}:
+
+* **IPv4**: `34.120.127.130`
+* **IPv6**: `2600:1901:0:1d7::`
+
+You can verify the current IP addresses using DNS lookup tools like `nslookup` or `dig`.
+
+
 ## Host your own {{package-registry}} [air-gapped-diy-epr]
 
 ::::{note}
@@ -291,7 +303,13 @@ To make binaries available in an air-gapped environment, you can host your own c
 2. Add the agent binary download location to {{fleet}} settings:
 
     1. Open **{{fleet}} → Settings**.
-    2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more detail about these settings, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agent}}s to download binaries from this location, set it as the default.
+    2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
+
+        :::{note}
+        :applies_to: stack: ga 9.4+
+
+        To authenticate requests to your artifact registry, expand the **Authentication** section, and provide either a username and password, or an API key. Optionally, you can also add custom HTTP headers. For more details, refer to [Configure authentication for binary downloads](/reference/fleet/fleet-settings.md#agent-binary-auth).
+        :::
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 

@@ -1,6 +1,10 @@
+---
+description: "SEO guidelines for structuring Elastic documentation content for search visibility, discoverability, and AI-powered tools."
+---
+
 # Make your docs findable
 
-Learn how to structure content for search visibility, craft clear and user-focused copy, and apply techniques that improve discoverability and usability. To deliver value to users, search engines and AI-powered tools—including large language models (LLMs), use the SEO guidelines to ensure your documentation is easy to find, understand, and maintain.
+Learn how to structure content for search visibility, craft clear and user-focused copy, and apply techniques that improve discoverability and usability. To deliver value to users, search engines and AI-powered tools—including large language models (LLMs), use the SEO guidelines to ensure your documentation is efficient to find, understand, and maintain.
 
 As AI-powered assistants and LLMs become more common, documentation is increasingly consumed by both humans and AI tools. Following these best practices ensures your content is discoverable, understandable, and actionable not only for search engines and users, but also for AI-driven platforms that rely on clear structure and context to provide accurate answers and guidance.
 
@@ -11,6 +15,8 @@ Use these guidelines to ensure your documentation is easy to find, understand, a
 Headings provide a clear structure to your documentation, making it easier to scan and understand. For SEO, headings (H1, H2, H3, and so on) signal the hierarchy and main topics of your content, helping search engines, LLMs (Large Language Models) determine the relevance of your page to specific queries. For users, well-structured headings improve readability, accessibility, and navigation, especially for long or complex pages.
 
 Use headings in order, maintaining [W3C standards](https://www.w3.org/standards/). Accurately reflect the content that follows each heading. Avoid vague headings like "Introduction" or "Overview", and use specific headings like "Introduction to using Elasticsearch". Make heading text unique, especially for headings higher in the hierarchy.
+
+Avoid "stacking" headings. Every heading should be followed by at least one paragraph of introductory or body text before the next heading appears. This provides context to the reader and improves the "snippet" preview in search results.
 
 ### H1: Primary page title
 

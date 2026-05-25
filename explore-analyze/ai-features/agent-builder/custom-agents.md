@@ -17,21 +17,45 @@ products:
 Custom agents enable you to create specialized AI assistants tailored to your specific use cases and workflows. Unlike [built-in agents](builtin-agents-reference.md), which are pre-configured by Elastic, custom agents give you full control over instructions, tools, and behavior.
 
 :::{note}
-Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
+Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch. The **Elastic AI Agent** is an exception {applies_to}`stack: ga 9.4+`: as the default agent for each space, it can be edited directly.
+:::
+
+Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/agent-builder
 :::
 
 ## Create a custom agent
 
 Follow these steps to create a new custom agent:
 
-:::::{stepper}
-::::{step} Navigate to the Agents page
+::::::{stepper}
+:::::{step} Navigate to the Agents page
 
-Navigate to the **Agents** page to access the agent management interface.
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+Select **Manage components** at the bottom of the left sidebar, then select **Agents**.
+
+:::{tip}
+You can also reach this page from the agent selector: open the selector in the left sidebar and select **New Agent**.
+:::
+
+:::
+
+:::{applies-item} { stack: ga =9.3 }
+
+Navigate to **Agents** in the main navigation.
+
+:::
 
 ::::
 
-::::{step} Create a new agent
+:::::
+
+:::::{step} Create a new agent
 
 Select the **New agent** button to begin creating a new agent.
 
@@ -42,9 +66,9 @@ Select the **New agent** button to begin creating a new agent.
 :::
 
 
-::::
+:::::
 
-::::{step} Configure essential settings
+:::::{step} Configure essential settings
 
 Configure the essential agent settings in the **Settings** tab:
 
@@ -57,26 +81,74 @@ Configure the essential agent settings in the **Settings** tab:
 3. Set the **Display name** for users.
 4. Add a **Display description** to explain the agent's purpose.
 
-::::
+:::::
 
-::::{step} Assign tools
+:::::{step} Enable Elastic capabilities (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Optionally enable the **Enable Elastic capabilities** toggle to automatically assign all Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins to your agent. This toggle is disabled by default for custom agents.
+
+For more information, refer to [Elastic capabilities](agent-builder-agents.md#elastic-capabilities).
+
+:::::
+
+:::::{step} Set visibility
+```{applies_to}
+stack: ga 9.4+
+```
+
+Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
+
+For more information, refer to [Visibility settings](#visibility-settings).
+
+:::::
+
+:::::{step} Assign tools
 
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
 
-::::
+:::::
 
-::::{step} Customize appearance (optional)
+:::::{step} Assign skills (optional)
+```{applies_to}
+stack: ga 9.4+
+```
+
+Switch to the **Skills** tab to assign skills to your agent. Skills are reusable instruction sets that give the agent specialized expertise for particular types of tasks.
+
+You can assign skills that already exist in your deployment's skill library—you create and manage those from [**Manage components**](chat.md#manage-components) > **Skills**—or you can create new skills inline from this tab. For an overview of skills, built-in versus custom skills, and APIs, refer to [Skills in {{agent-builder}}](skills.md).
+
+:::::
+
+:::::{step} Assign plugins (optional)
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+Switch to the **Plugins** tab to assign plugins to your agent. Each plugin bundles a set of related skills into a single install. Before you can assign a plugin, install it from the global **Plugins** page in **Manage components**.
+For more information, refer to [Plugins in {{agent-builder}}](plugins.md).
+
+:::{note}
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+:::
+
+:::::
+
+:::::{step} Customize appearance (optional)
 
 Optionally customize the agent's appearance and organization:
 
 - Add **Labels** to organize your agents.
 - Select an **Avatar color** and **Avatar symbol** to help visually distinguish the agent.
 
-::::
+:::::
 
-::::{step} Save your changes
+:::::{step} Save your changes
 
 Select **Save** to create your agent, or **Save and chat** to create the agent and immediately begin a conversation with it.
 
@@ -86,8 +158,8 @@ Select **Save** to create your agent, or **Save and chat** to create the agent a
 :width: 270px
 :::
 
-::::
 :::::
+::::::
 
 ## Manage custom agents
 
@@ -105,7 +177,29 @@ From the **Agents** page, you can perform various actions on custom agents:
 :::
 
 :::{note}
-These management options apply only to custom agents. Built-in agents like the **Elastic AI Agent** can only be chatted with or cloned, not edited or deleted.
+These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
+:::
+
+## Visibility settings [visibility-settings]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Control who can view and edit your agent by configuring its visibility. To change visibility, edit the agent and scroll to the **Organization** section.
+
+**Public**
+:   Anyone can view and edit.
+
+**Shared**
+:   Anyone can view. Only the owner or an administrator can edit.
+
+**Private**
+:   Only the owner or an administrator can view and edit.
+
+:::{image} images/agent-visibility-levels.png
+:alt: Agent visibility dropdown showing Public, Shared, and Private.
+:width: 700px
 :::
 
 ## Best practices for custom agents
@@ -144,7 +238,7 @@ The Agents API enables programmatic management of custom agents.
 
 For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents-apis).
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 
@@ -152,3 +246,7 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [](prompt-engineering.md)
 - [Built-in agents reference](builtin-agents-reference.md)
 - [Tools](tools.md)
+- [Skills in {{agent-builder}}](skills.md)
+- [Skill creation guidelines](skill-creation-guidelines.md)
+- [Plugins in {{agent-builder}}](plugins.md)
+- [Connectors in {{agent-builder}}](connectors.md)

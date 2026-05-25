@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ech: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---
@@ -45,10 +45,11 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 * You must have a SAML 2.0 compatible identity provider.
 
 
-## Risks and considerations [ec_risks_and_considerations]
+## Limitations, risks, and considerations [ec_risks_and_considerations]
 
-Before you configure SAML SSO, familiarize yourself with the following risks and considerations:
+Before you configure SAML SSO, familiarize yourself with the following limitations, risks, and considerations:
 
+* You can claim a maximum of 10 domains for your organization, including subdomains.
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 
     To immediately revoke a user’s active sessions, an [Organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
@@ -72,7 +73,7 @@ Follow this procedure to set up SAML SSO with your IdP.
 
 Before you can register and use your IdP with {{ecloud}}, you must claim one or more domains. Only users that have email addresses that match claimed domains can authenticate with your IdP.
 
-If the members of your {{ecloud}} organization have email addresses from multiple domains, you can claim multiple domains.
+If the members of your {{ecloud}} organization have email addresses from multiple domains, you can claim multiple domains. You can claim up to 10 domains, including subdomains.
 
 You must have authority to modify your domain’s DNS records and be a member of the **Organization owner** role in {{ecloud}} to complete this step.
 
@@ -136,7 +137,7 @@ Add the information that you collected to {{ecloud}}.
 The **Enforce SAML SSO** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
 ::::
 
-
+$$$sp-details$$$
 If your configuration is valid, the following details of the service provider (SP) will be displayed:
 
 * **SSO Login URL**: The URL that your organization members can use to log in to your organization using your IdP.
@@ -160,7 +161,7 @@ Additional details that you might want to use in your IdP configuration, such as
 
 ### Step 3: Test SSO [ec_test_sso]
 
-After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the identity provider SSO URL in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
+After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the [SSO Login URL provided by {{ecloud}}](#sp-details) in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
 
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
@@ -217,8 +218,8 @@ To ensure continuous access and control over your organization settings, the fir
 To allow for role mapping verification, SSO must be configured and enabled for you to create role mappings.
 
 ::::{note}
-* If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
-* If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
+* If [SSO enforcement](#enforce-sso) is not enabled, organization member roles might not be consistent with your role mapping and additional manual role assignment might be needed.
+* Roles manually assigned to a member using the {{ecloud}} Console are overwritten by the role mapping every time the member logs in using SSO.
 ::::
 
 ### Create a role mapping

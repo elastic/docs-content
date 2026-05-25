@@ -35,6 +35,9 @@ To install or run the risk scoring engine, you need the following:
 | --- | --- | --- | --- |
 | Install the risk engine | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run the risk engine | `manage_transform` | N/A | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Preview the risk score results | N/A | `Read` for `.alerts-security.alerts-*` | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security > Alerts** feature |
+| {applies_to}`stack: ga 9.4+` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 
 
 ### Predefined roles [ers_roles]
@@ -61,7 +64,7 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ### Known limitations [_known_limitations]
 
-* The risk scoring engine uses an internal user role to score all hosts, users, and services, and doesn’t respect privileges applied to custom users or roles. After you turn on the risk scoring engine for a {{kib}} space, all alerts in the space will contribute to host, user, and service risk scores.
+* The risk scoring engine uses an internal user role to score all hosts, users, and services, and doesn’t respect privileges applied to custom users or roles. After you turn on risk scoring for a {{kib}} space, all alerts in the space will contribute to host, user, and service risk scores.
 * You cannot customize alert data views or risk weights associated with alerts and asset criticality levels.
 
 
@@ -69,17 +72,30 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 To use asset criticality, you need the following:
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
+* In {{stack}}, you need the appropriate [privileges](#_privileges_2).
+* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2).
 
 ### Privileges [_privileges_2]
 
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: planned }
 
 | Action | Index privilege |
 | --- | --- |
-| View asset criticality | `read` |
-| View, assign, or change asset criticality | `read` and `write` |
-| Unassign asset criticality | `delete` |
+| View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*` |
+| View, assign, unassign, or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write`, and `view_index_metadata` for `.entities.v2.latest.security_<space-id>-*` |
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
+| Action | Index privilege |
+| --- | --- |
+| View asset criticality | `read` for `.asset-criticality.asset-criticality-<space-id>` |
+| View, assign, or change asset criticality | `read` and `write` for `.asset-criticality.asset-criticality-<space-id>` |
+| Unassign asset criticality | `delete` for `.asset-criticality.asset-criticality-<space-id>` |
+:::
+
+::::
 
 ### Predefined roles [ac_roles]
 ```yaml {applies_to}
@@ -97,9 +113,32 @@ serverless: all
 To turn on the entity store, you need the following:
 
 * In {{stack}}, you need the appropriate [privileges](#_privileges_3).
-* In serverless, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
+* In {{serverless-short}}, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
 
 ### Privileges [_privileges_3]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+#### Cluster
+
+- `manage_index_templates`
+
+#### Index
+
+- `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`
+- `read` and `manage` for `risk-score.risk-score-*`
+- `read` and `write` for `.entities.v2.latest.security_*`
+- Additionally, `manage` for `.entities.v2.latest.security_*` is required to add or remove entities from a resolution group in the [Resolution](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) section of the entity details flyout
+- `read` and `view_index_metadata` for all {{elastic-sec}} indices
+
+#### {{kib}}
+
+**All** for the **Security** and **Saved Objects Management** features
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
 
 #### Cluster
 
@@ -118,3 +157,6 @@ To turn on the entity store, you need the following:
 #### {{kib}}
 
 **All** for the **Security** and **Saved Objects Management** features
+:::
+
+::::
