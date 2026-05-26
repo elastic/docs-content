@@ -69,7 +69,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 #### Query formatting [_make_your_query_readable]
 
-For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
+For readability, you can put each processing command on a new line and add indentation. Use the {icon}`line_break` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
 
 ![Automatic line breaks and indentation for ES|QL queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltb7c28c7b10f58b68/69ebb4e4a7cffb580c9a34c5/prettify-esql.gif "=75%")
 

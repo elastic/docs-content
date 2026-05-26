@@ -153,11 +153,11 @@ You can add custom tags for any piece of metadata that might help you to categor
 #### Create custom tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.
-2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_in_circle` Add tags**.
+2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_circle` Add tags**.
 3. Add a key and value for your custom tag, and then click **Add**.
 4. When you're finished creating tags, click **Save**.
 
-To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_in_circle`  Add tags**.
+To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_circle`  Add tags**.
 
 #### Custom tags using the {{serverless-full}} API
 
