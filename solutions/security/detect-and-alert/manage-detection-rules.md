@@ -21,7 +21,7 @@ After you [install prebuilt rules](/solutions/security/detect-and-alert/install-
 :::
 
 ::::{note}
-The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, and 9.2.6.
 ::::
 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
