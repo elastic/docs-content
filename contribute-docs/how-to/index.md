@@ -1,3 +1,7 @@
+---
+description: "Practical guides for common Elastic documentation tasks, including writing issues, SEO, and cumulative documentation."
+---
+
 # How-to guides
 
 Find practical guides for common documentation tasks.
