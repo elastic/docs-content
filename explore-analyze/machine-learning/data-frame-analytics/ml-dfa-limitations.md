@@ -37,7 +37,7 @@ Nested fields are not supported for {{dfanalytics-jobs}}. These fields are ignor
 
 You cannot update most {{dfanalytics}} configuration settings after job creation (such as the analysis type, dependent variable, or source index). To change those settings, delete the {{dfanalytics-job}} and create a new one.
 
-You can update `model_memory_limit` on a stopped job using the [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics). {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` In {{kib}}, navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply** under the **Model memory limit** field in the edit job flyout.
+You can update `model_memory_limit` on a stopped job using the [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics). {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` In {{kib}}, navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply** under the **Model memory limit** field.
 
 ### {{dfanalytics-cap}} memory limitation [dfa-dataframe-size-limitations]
 
