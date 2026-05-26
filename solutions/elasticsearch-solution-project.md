@@ -19,6 +19,8 @@ The {{es}} solution and serverless project type provide specialized UI tools tha
 
 These UI affordances are exclusive to the {{es}} solution and serverless project type.
 
+Firemen and whitelist!
+
 ::::{tip}
 Not sure which deployment type is right for you? Use the following resources to help you decide:
 
