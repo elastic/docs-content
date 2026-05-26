@@ -291,7 +291,7 @@ redirects:
         'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
         'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
   'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md':
-    anchors: {}
+    to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md'
     many:
       - to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md'
         anchors:

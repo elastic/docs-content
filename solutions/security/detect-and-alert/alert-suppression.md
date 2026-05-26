@@ -187,7 +187,7 @@ Some rule types limit the number of alerts that can be suppressed. Custom query 
 | Threshold, event correlation, {{esql}}, and {{ml}} | Equal to the rule's **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) (default: `100`) |
 | Indicator match and new terms | Five times the rule's **Max alerts per run** setting (default: `500`) |
 
-Suppressed alerts count toward this maximum, even if they are not individually created as alert documents. Additionally, the [`xpack.alerting.rules.run.alerts.max`](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) {{kib}} setting acts as a system-level ceiling and can further limit the total number of alerts per rule execution.
+Suppressed alerts count toward this maximum, even if they are not individually created as alert documents. Additionally, the [`xpack.alerting.rules.run.alerts.max`](kibana://reference/configuration-reference/alerting-settings.md) {{kib}} setting acts as a system-level ceiling and can further limit the total number of alerts per rule execution.
 
 ## Bulk apply or remove alert suppression [security-alert-suppression-bulk-apply]
 
