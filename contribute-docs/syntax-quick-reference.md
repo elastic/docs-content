@@ -529,7 +529,9 @@ Include icons inline using the `` {icon}`icon-name` `` syntax.
 :open:
 ```markdown
 Click the {icon}`gear` **Settings** icon.
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
+New icons: {icon}`ellipsis` {icon}`cloud` {icon}`chart_bar_vertical`
+Aliases still work: {icon}`checkCircle` {icon}`bellSlash` {icon}`pipeBreaks`
 ```
 :::
 
@@ -537,7 +539,11 @@ Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Er
 :open:
 Click the {icon}`gear` **Settings** icon.
 
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
+
+New icons: {icon}`ellipsis` {icon}`cloud` {icon}`chart_bar_vertical`
+
+Aliases still work: {icon}`checkCircle` {icon}`bellSlash` {icon}`pipeBreaks`
 :::
 
 **DOs**<br>
