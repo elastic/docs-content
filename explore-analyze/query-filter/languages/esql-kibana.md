@@ -134,7 +134,7 @@ You can describe the query you want in plain language and let an LLM translate i
 
 **Requirements**
 
-- An Enterprise license.
+- For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license .
 - A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). If no connector is available, the search bar prompts you to set one up.
 
 **Generate a query**
