@@ -69,6 +69,7 @@ A common starting layout puts KPIs first, charts in the middle, and a detail tab
 :::
 ::::
 
+When you use the [Dashboards API](create-dashboards-programmatically.md) to author dashboards, you specify `x`, `y`, `w`, and `h` as grid coordinates directly. The dashboard editor's automatic packing no longer applies, so the same guidelines apply in your panel definitions.
 
 ### Panel limits [dashboard-panel-limits]
 ```{applies_to}
