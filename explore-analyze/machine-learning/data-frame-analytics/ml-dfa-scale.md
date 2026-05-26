@@ -92,5 +92,7 @@ The `model_memory_limit` job configuration option sets the approximate maximum a
 If a job fails to start because it requires more memory than the configured limit, or your data characteristics change, you can update `model_memory_limit` on a stopped job using the [update {{dfanalytics-jobs}} API]({{es-apis}}operation/operation-ml-update-data-frame-analytics). {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` In {{kib}}, navigate to the **Data Frame Analytics** page, open the edit flyout for the stopped job, and select **Apply** under the **Model memory limit** field to apply the estimate without running the explain API manually.
 
 ::::{tip}
-To get a memory estimate, use the [explain {{dfanalytics}} API]({{es-apis}}operation/operation-ml-explain-data-frame-analytics), which reports how much memory the analysis might require. {applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Alternatively, select **Apply** under the **Model memory limit** field in the edit job flyout.
+To get a memory estimate, use the [explain {{dfanalytics}} API]({{es-apis}}operation/operation-ml-explain-data-frame-analytics), which reports how much memory the analysis might require. 
+
+{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Alternatively, select **Apply** under the **Model memory limit** field in the edit job flyout.
 ::::
