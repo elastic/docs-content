@@ -60,6 +60,15 @@ A common starting layout puts KPIs first, charts in the middle, and a detail tab
 └───────────────────────────────────────────┘
 ```
 
+:::{dropdown} Dashboard layout examples
+![A Kibana dashboard showing KPI metrics at the top, followed by charts and a data table](/explore-analyze/images/kibana-dashboard-overview.png "")
+
+:::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
+:alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
+:screenshot:
+:::
+:::
+
 When you use the [Dashboards API](create-dashboards-programmatically.md) to author dashboards, you specify `x`, `y`, `w`, and `h` as grid coordinates directly. The dashboard editor's automatic packing no longer applies, so the same guidelines apply in your panel definitions.
 
 ### Panel limits [dashboard-panel-limits]
