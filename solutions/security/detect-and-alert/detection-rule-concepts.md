@@ -121,7 +121,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   Records created when a rule's query finds matching events. Each alert represents a potential threat for analysts to investigate.
 
 **API key**
-:   A credential that captures the privileges of the user who last edited a rule. Rules use API keys to execute queries and write alerts.
+:   A credential that rules use to execute queries and write alerts. The key type and ownership model depends on your deployment. Refer to [Elasticsearch API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [Elastic Cloud API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
 
 **Connectors**
 :   Integrations that connect actions to external services like Slack, {{jira}}, or PagerDuty.
