@@ -81,10 +81,11 @@ The affected field is `event.created`. When this field is empty, {{kib}} cannot 
 This does not affect the primary `@timestamp` field.
 
 **Workaround**<br>
-Downgrade to {{agent}} 9.3.3, which is not affected by this issue.
+Upgrade to {{agent}} 9.3.5, which is not affected by this issue.
 
-**Fix**<br>
-The performance optimization has been reverted. A fix will be available in the next release. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+**Resolved**<br>
+
+Resolved in {{agent}} 9.3.5. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
 :::
 
 :::{dropdown} Details about gap fills aren't properly updated
