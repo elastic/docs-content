@@ -28,6 +28,9 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`), written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). Authentication-style references stay at the top level in kebab-case; content parameters stay inside `with` in camelCase.
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## `ai.prompt` [ai-prompt]
 
 ```{applies_to}

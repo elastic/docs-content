@@ -41,6 +41,9 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     severity: high
 ```
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 % Ben Ironside Goldstein, 2026-04-27: Engineering review (Janmonschke) noted that not all 27 steps
 % support push-case. A complete list of which steps support it would strengthen this section once
 % available. For now the page documents the optional flag generally and leaves per-step support

@@ -52,6 +52,9 @@ The execution engine enforces a maximum composition depth to prevent infinite re
 
 ---
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## `workflow.execute` [workflow-execute]
 
 Run a child workflow synchronously. The parent waits for the child to finish and receives its validated outputs.
