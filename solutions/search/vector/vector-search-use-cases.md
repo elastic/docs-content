@@ -42,7 +42,7 @@ Read how retrieval-augmented generation fits into {{es}} and how it relates to s
 
 :::::{step} Choose a search strategy
 
-Implement retrieval that matches your content and latency needs. Use [semantic search](../semantic-search.md) workflows for managed meaning-based retrieval, [vector search](../vector.md) when you configure embeddings and fields directly, or [hybrid search](../hybrid-search.md) to combine full-text and semantic retrieval. Hybrid setups often use [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to merge rankings.
+Implement retrieval that matches your content and latency needs. Use [semantic search](../semantic-search.md) when you want a managed workflow (for example the `semantic_text` field type), [vector search](../vector.md) when you configure embeddings and vector fields directly, or [hybrid search](../hybrid-search.md) to combine full-text with semantic or vector retrieval in one request. Hybrid setups often use [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to merge rankings.
 
 - [Search approaches](../search-approaches.md)
 - [Semantic search and vector search](../vector.md#semantic-search-vs-vector-search)
@@ -102,7 +102,7 @@ Narrow candidates with structured filters (availability, region, permissions, ca
 
 :::::{step} Refine ranking
 
-When raw top-k similarity is not enough, combine vector retrieval with full-text signals or add a second-stage ranker. Use [hybrid search](../hybrid-search.md) when you need both meaning based and keyword matches in one result set, or LTR when you have labeled training data.
+When raw top-k similarity is not enough, combine vector retrieval with full-text search or add a second-stage ranker. Use [hybrid search](../hybrid-search.md) when you need keyword matching and similarity search in one ranked list, or LTR when you have labeled training data.
 
 - [Ranking and reranking](../ranking.md)
 - [Semantic reranking](../ranking/semantic-reranking.md)
