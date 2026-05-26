@@ -90,7 +90,7 @@ stack: ga
 serverless: ga
 ```
 
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. The rule uses this API key to:
+Rules run in the background using the privileges of the user who last edited them. On Stack deployments, when you create or modify a rule, {{elastic-sec}} generates an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. The rule uses this key to:
 
 * Execute detection queries against the configured data sources
 * Write alerts to the alerts index
@@ -121,7 +121,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   Records created when a rule's query finds matching events. Each alert represents a potential threat for analysts to investigate.
 
 **API key**
-:   A credential that rules use to execute queries and write alerts. The key type and ownership model depends on your deployment. Refer to [Elasticsearch API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [Elastic Cloud API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
+:   A credential that rules use to execute queries and write alerts. The key type and ownership model depends on your deployment. Refer to [Elasticsearch API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
 
 **Connectors**
 :   Integrations that connect actions to external services like Slack, {{jira}}, or PagerDuty.
@@ -145,7 +145,7 @@ Either action rebinds the rule to a user who has the necessary access.
 :   The logic that defines what threat behavior or pattern a rule detects. Syntax varies by rule type.
 
 **Rule authorization**
-:   The privilege model that determines what a rule can access. Rules execute using an API key tied to the user who last edited them.
+:   The privilege model that determines what a rule can access. The API key type depends on your deployment: on Stack, rules use an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited them; in Serverless, rules use an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that stays tied to the original creator.
 
 **Rule type**
 :   The detection method a rule uses (custom query, EQL, threshold, indicator match, new terms, {{esql}}, or {{ml}}).

@@ -91,7 +91,7 @@ The rule type also affects the privileges that are required. For example, to vie
 
 For more information on configuring roles that provide access to features, go to [Feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
-### API keys [alerting-authorization]
+### {{es}} API keys [alerting-authorization]
 
 Rules are authorized using an API key. Its credentials are used to run all background tasks associated with the rule, including condition checks like {{es}} queries and triggered actions.
 
@@ -101,7 +101,7 @@ When you disable a rule, it retains the associated API key which is reused when 
 
 You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
-If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
+If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create {{es}} API keys and use them in the header of your API calls as described in [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password. An API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 
 ::::{important}
 If a rule requires certain privileges, such as index privileges, to run and a user without those privileges updates the rule, the rule will no longer function. Conversely, if a user with greater or administrator privileges modifies the rule, it will begin running with increased privileges. The same behavior occurs when you change the API key in the header of your API calls.
