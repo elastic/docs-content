@@ -93,7 +93,7 @@ You can also start or update a rerank model deployment from the **{{models-app}}
 2. Find the rerank model (for example, `.rerank-v1`) in the list.
 3. From the **Actions** menu, use **Start deployment** to deploy the model or **Update deployment** to change an existing deployment.
 
-Unlike embedding models, rerank models do not show the **Optimize for use case** selector (Ingest, Search, Balanced) in the deployment modal. This optimization applies only to embedding models.
+Rerank models are optimized for search by default. This optimization applies only to embedding models.
 
 ## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 
