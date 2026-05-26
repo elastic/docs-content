@@ -98,6 +98,9 @@ Rules run in the background using the privileges of the user who last edited the
 
 This means rules continue running with their editor's privileges, even when that user is not logged in.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ::::{important}
 Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
 

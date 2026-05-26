@@ -32,6 +32,8 @@ Rules run in the background using the privileges of the user who last edited the
 
 ::::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
 
 ## Sort and filter the rules list [sort-filter-rules]
 

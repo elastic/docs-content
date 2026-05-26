@@ -30,6 +30,9 @@ The {{es}} query rule type runs a user-configured query, compares the number of 
 An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define the conditions [observability-create-elasticsearch-query-rule-define-the-conditions]
 
 When you create an {{es}} query rule, your choice of query type affects the information you must provide. For example:

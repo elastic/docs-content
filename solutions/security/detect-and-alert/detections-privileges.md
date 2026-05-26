@@ -17,7 +17,7 @@ Learn about the access requirements for detection features, including:
 
 - **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
 - **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
-- **Authorization model**: How rules inherit privileges from their last editor using API keys
+- **Authorization model**: How rules inherit privileges from their last editor using API keys, and how this changes in {{serverless-full}} projects
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
 

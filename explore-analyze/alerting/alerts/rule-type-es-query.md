@@ -15,6 +15,9 @@ The {{es}} query rule type runs a user-configured query, compares the number of 
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define the conditions [_define_the_conditions_2]
 
 When you create an {{es}} query rule, your choice of query type affects the information you must provide. For example:

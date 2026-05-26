@@ -23,6 +23,9 @@ There are two types of TLS certificate rule:
   :::
 
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Synthetics TLS certificate rule [tls-rule-synthetics]
 
 Within the Synthetics UI, create a **TLS certificate** rule to receive notifications based on errors and outages.

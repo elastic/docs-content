@@ -53,6 +53,9 @@ To create your latency threshold rule:
 10. **Save** your rule.
 
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Add actions [observability-create-latency-threshold-alert-rule-add-actions]
 
 You can extend your rules with actions that interact with third-party systems, write to logs or indices, or send user notifications. You can add an action to a rule at any time. You can create rules without adding actions, and you can also define multiple actions for a single rule.

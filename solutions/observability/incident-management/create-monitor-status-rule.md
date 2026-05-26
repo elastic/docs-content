@@ -17,6 +17,9 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 1. To access this page, go to **Synthetics** → **Overview**.
 2. At the top of the page, click **Alerts** → **Monitor status rule** → **Create status rule**.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create synthetic monitor status rules, you need the following:

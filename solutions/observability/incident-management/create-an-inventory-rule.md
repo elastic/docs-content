@@ -34,6 +34,9 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create inventory rules, you need the following:

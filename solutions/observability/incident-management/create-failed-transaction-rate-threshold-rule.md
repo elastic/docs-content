@@ -20,6 +20,9 @@ You can create a failed transaction rate threshold rule to alert you when the ra
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create failed transaction rate threshold rules, you need the following:

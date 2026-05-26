@@ -33,6 +33,9 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 :::
 
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define rule data [custom-threshold-scope]
 
 Specify the following settings to define the data the rule applies to:

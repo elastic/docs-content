@@ -36,6 +36,13 @@ On the **Alerts** page, the Alerts table provides a snapshot of alerts occurring
 You can filter this table by alert status or time period, customize the visible columns, and search for specific alerts (for example, alerts related to a specific service or environment) using KQL. Select **View alert detail** from the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg ""), or click the Reason link for any alert to [view alert](/solutions/observability/incident-management/view-alerts.md) in detail, and you can then either **View in app** or **View rule details**.
 
 
+## Authentication [observability-alerting-authentication]
+
+Rules use an API key for authorization. The key's credentials are used to run all background tasks associated with the rule, including condition checks and triggered actions.
+
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Next steps [observability-alerting-next-steps]
 
 * [](/solutions/observability/incident-management/create-manage-rules.md)

@@ -64,6 +64,9 @@ Select the appropriate tab for your setup, then follow the instructions to creat
 
 ::::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Add actions [observability-create-failed-docs-alert-rule-add-actions]
 
 You can extend your rules with actions that interact with third-party systems, write to logs or indices, or send user notifications. You can add an action to a rule at any time. You can create rules without adding actions, and you can also define multiple actions for a single rule.

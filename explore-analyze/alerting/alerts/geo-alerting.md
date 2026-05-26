@@ -15,6 +15,9 @@ The tracking containment rule alerts when an entity is contained or no longer co
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Tracking containment** rule type then fill in the name and optional tags.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define the conditions [_define_the_conditions_3]
 
 When you create a tracking containment rule, you must define the conditions that it detects. For example:

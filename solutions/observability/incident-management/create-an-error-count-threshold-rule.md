@@ -20,6 +20,9 @@ Create an error count threshold rule to alert you when the number of errors in a
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create error count threshold rules, you need the following:

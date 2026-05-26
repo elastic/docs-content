@@ -19,6 +19,9 @@ Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead
 
 Within the {{uptime-app}}, create an **Uptime duration anomaly** rule to receive notifications based on the response durations for all of the geographic locations of each monitor. When a monitor runs for an unusual amount of time, at a particular time, an anomaly is recorded and highlighted on the [Monitor duration](/solutions/observability/uptime/inspect-duration-anomalies.md) chart.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create uptime duration anomaly rules, you need the permission for the {{uptime-app}}.

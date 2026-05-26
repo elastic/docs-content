@@ -22,6 +22,9 @@ navigation_title: Create and manage rules
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ::::{note}
 :applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
 

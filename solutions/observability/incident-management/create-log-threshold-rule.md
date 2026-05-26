@@ -17,6 +17,9 @@ products:
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create log threshold rules, you need the following:

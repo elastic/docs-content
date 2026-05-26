@@ -108,6 +108,9 @@ If a rule requires certain privileges, such as index privileges, to run and a us
 
 ::::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ### Restrict actions [alerting-restricting-actions]
 
 For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](kibana://reference/configuration-reference/alerting-settings.md) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.

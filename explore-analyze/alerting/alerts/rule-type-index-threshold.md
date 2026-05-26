@@ -15,6 +15,9 @@ The index threshold rule type runs an {{es}} query. It aggregates field values f
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Index threshold** rule type then fill in the name and optional tags.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define the conditions [_define_the_conditions]
 
 When you create an index threshold rule, you must define the conditions for the rule to detect. For example:

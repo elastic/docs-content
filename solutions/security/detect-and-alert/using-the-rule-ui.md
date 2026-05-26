@@ -15,6 +15,9 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 
 # Create a detection rule using the UI [security-rules-create]
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 Once the Detections feature is [turned on](/solutions/security/detect-and-alert/turn-on-detections.md), follow these steps to create a detection rule. At any step, you can preview the rule before saving it to see what kind of results you can expect.
 
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type. For field descriptions specific to each type, refer to the [Rule types](/solutions/security/detect-and-alert/rule-types.md) section.

@@ -10,6 +10,9 @@ products:
 
 # Create an APM anomaly rule [observability-create-anomaly-alert-rule]
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create APM anomaly rules, you need the following:

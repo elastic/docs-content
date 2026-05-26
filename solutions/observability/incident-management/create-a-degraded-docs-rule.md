@@ -37,6 +37,9 @@ You can also access this rule from the **Data Set Quality** page:
 1. Select **Actions** in the upper-right corner of the page.
 1. Select **Create rule**.
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Define the conditions [degraded-docs-rule-conditions]
 
 Define the following conditions for your rule:

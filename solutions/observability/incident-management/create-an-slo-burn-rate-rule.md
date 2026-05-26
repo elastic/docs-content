@@ -24,6 +24,9 @@ Choose which SLO to monitor and then define multiple burn rate windows with appr
 :screenshot:
 :::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create SLO burn rate rules, you need the following:

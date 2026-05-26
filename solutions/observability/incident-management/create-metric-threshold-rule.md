@@ -21,6 +21,9 @@ When you create this rule on the **Metrics Explorer** page, the rule is automati
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
 ::::
 
+:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::
+
 ## Requirements
 
 To create metric threshold rules, you need the following:
