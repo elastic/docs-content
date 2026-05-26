@@ -16,17 +16,11 @@ The Elastic Security MCP App brings interactive {{elastic-sec}} dashboards into 
 
 The app is a reference implementation that you install on your own machine. The [`elastic/example-mcp-app-security`](https://github.com/elastic/example-mcp-app-security) repository hosts the open-source project, including the source code, releases, and host-specific setup guides. The app is not a built-in {{kib}} feature.
 
-:::{warning}
-This feature is in technical preview and might change in future releases. Test it in non-production environments before relying on it for production workflows.
-:::
-
-For a demo, refer to the following video (click to view).
-
-[![Elastic Security MCP App demo](https://play.vidyard.com/Axjk85zS4bxE7kdU48Xqwe.jpg)](https://videos.elastic.co/watch/Axjk85zS4bxE7kdU48Xqwe?)
-
 ## What you can do [what-you-can-do]
 
-The Elastic Security MCP App ships with six tools, each backed by an interactive React UI that renders inline in the AI host conversation:
+The Elastic Security MCP App ships with the following tools, each backed by an interactive React UI that renders inline in the AI host conversation. For a demo, refer to the following video (click to view).
+
+[![Elastic Security MCP App demo](https://play.vidyard.com/Axjk85zS4bxE7kdU48Xqwe.jpg)](https://videos.elastic.co/watch/Axjk85zS4bxE7kdU48Xqwe?)
 
 | Tool | What it does |
 |---|---|
@@ -41,13 +35,22 @@ For per-tool capabilities and screenshots, refer to the [features overview](http
 
 ## Requirements [requirements]
 
-::::{admonition} Requirements
-* {{stack}} 9.4 or later, or an {{sec-serverless}} project.
 * A supported MCP host, such as: [Claude Desktop](https://claude.ai/download), [Claude.ai](https://claude.ai/), [Cursor](https://cursor.com/), [Visual Studio Code](https://code.visualstudio.com/) with [GitHub Copilot Chat](https://code.visualstudio.com/docs/copilot/overview), or [Claude Code](https://docs.claude.com/en/docs/claude-code).
 * The {{es}} URL, {{kib}} URL, and an {{es}} API key for an account with the [required permissions](#permissions).
 * A configured [large language model (LLM) connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md) in {{kib}} for any tool that calls Attack Discovery.
 * Node.js is not required if you install with the prebuilt `.mcpb` bundle. Build-from-source workflows require Node.js 20 or later.
-::::
+
+## Permissions [permissions]
+
+The Elastic Security MCP App authenticates to {{es}} with an API key. The fastest way to set up a working API key is to combine a built-in {{kib}} role with a small companion role that grants the index privileges the app needs.
+
+For most users, the built-in `editor` role (full-featured) or `viewer` role (read-only) covers all the {{kib}} feature privileges the app needs (Security, Cases, Timeline, Notes, Rules, Alerts, AI Assistant, Attack Discovery, Actions and Connectors). You only need to add a companion role that grants {{es}} index privileges on the alert backing indices, `logs-*`, and `risk-score.risk-score-latest-*`, plus the cluster `monitor` privilege.
+
+For step-by-step instructions, including the full Quickstart procedure, a fully scripted custom-role JSON, version-specific feature names, and troubleshooting for common 401 and 403 errors, refer to the repository's [permissions guide](https://github.com/elastic/example-mcp-app-security/blob/main/docs/permissions.md).
+
+:::{note}
+The repository's permissions guide targets stateful deployments ({{stack}} self-managed and {{ech}}). {{serverless-short}} permissions guidance, including the role mapping for {{sec-serverless}} tiers such as `t1_analyst` and `soc_manager`, is pending. If you run the app against an {{sec-serverless}} project, contact the repository maintainers for guidance.
+:::
 
 ## How it works [how-it-works]
 
@@ -57,21 +60,9 @@ When you ask Claude (or another supported host) to triage alerts or run a threat
 
 The MCP server runs locally on your machine and connects directly to {{es}} using your API key. The LLM only ever receives the compact summaries; the UI loads full investigation data through the same server. The same role-based access controls you enforce through your {{es}} API key apply to every action the app takes.
 
-## Permissions [permissions]
-
-The Elastic Security MCP App authenticates to {{es}} with an API key. The fastest way to set up a working API key is to combine a built-in {{kib}} role with a small companion role that grants the index privileges the app needs.
-
-For most users, the built-in `editor` role (full-featured) or `viewer` role (read-only) covers all the {{kib}} feature privileges the app needs (Security, Cases, Timeline, Notes, Rules, Alerts, AI Assistant, Attack Discovery, Actions and Connectors). You only need to add a companion role that grants {{es}} index privileges on the alert backing indices, `logs-*`, and `risk-score.risk-score-latest-*`, plus the cluster `monitor` privilege.
-
-For step-by-step instructions, including the full Quickstart procedure, a fully scripted custom-role JSON, version-specific feature names for {{stack}} 9.0 through 9.4, and troubleshooting for common 401 and 403 errors, refer to the repository's [permissions guide](https://github.com/elastic/example-mcp-app-security/blob/main/docs/permissions.md).
-
-:::{note}
-The repository's permissions guide currently targets stateful deployments ({{stack}} self-managed and {{ech}}). {{serverless-short}} permissions guidance, including the role mapping for {{sec-serverless}} tiers such as `t1_analyst` and `soc_manager`, is pending. If you run the app against an {{sec-serverless}} project, contact the repository maintainers for guidance.
-:::
-
 ## Get started [get-started]
 
-Pick the tab for your MCP host. Each tab covers the fastest path to a working install. For full configuration options and troubleshooting, follow the linked setup guide in the repository.
+Select the tab for your MCP host. Each tab covers the fastest path to a working install. For full configuration options and troubleshooting, follow the linked setup guide in the repository.
 
 :::::{tab-set}
 
@@ -118,7 +109,7 @@ Next, install the [skills](https://github.com/elastic/example-mcp-app-security/b
 
 ## Example workflow [example-workflow]
 
-The six tools compose into an end-to-end SOC loop you can drive entirely from the AI conversation. A typical walkthrough looks like this:
+The tools compose into an end-to-end SOC loop you can drive entirely from the AI conversation. A typical walkthrough looks like this:
 
 1. **Generate sample data.** Ask the agent to populate your cluster with one of the four pre-built attack scenarios (ransomware, lateral movement, credential theft, or data exfiltration). The Sample Data tool writes ECS-compliant events you can safely clean up later.
 2. **Triage alerts.** Ask the agent to triage by host, rule, user, or time window. The Alert Triage tool returns AI verdict cards above the raw alert list. Click any alert for the process tree, network events, related alerts, and MITRE ATT&CK tags.
@@ -130,9 +121,9 @@ For the narrative version of this walkthrough, refer to the [Elastic Security La
 
 ## Known limitations [known-limitations]
 
-* The app currently targets the `default` {{kib}} space only. Cross-space workflows aren't supported in this release.
+* The app targets the `default` {{kib}} space only. Cross-space workflows aren't supported.
 * The app is a reference implementation, not a built-in {{kib}} feature. It's licensed under [Elastic-2.0](https://github.com/elastic/example-mcp-app-security/blob/main/LICENSE.txt) and supported through the [project repository](https://github.com/elastic/example-mcp-app-security/issues), not Elastic support channels.
-* {{serverless-short}} permissions guidance is pending. The repository's permissions guide currently covers {{stack}} self-managed and {{ech}} only.
+* {{serverless-short}} permissions guidance is pending. The repository's permissions guide covers {{stack}} self-managed and {{ech}} only.
 * Host support depends on the MCP host. Refer to the [MCP Apps client matrix](https://modelcontextprotocol.io/extensions/client-matrix) for the current list of compatible hosts.
 
 ## Related pages [related-pages]
