@@ -119,7 +119,7 @@ The search bar closes automatically when you start typing in the editor or selec
 1. Open the editor's search bar ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Select the data sources to search.
 3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
-4. Submit your search by pressing **Enter**. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
+4. Submit your search by pressing {kbd}`enter`. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
 5. Refine your query with any other {{esql}} command or function that you need.
 
 ![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
