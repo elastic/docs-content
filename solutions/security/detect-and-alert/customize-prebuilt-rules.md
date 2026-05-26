@@ -59,7 +59,7 @@ Duplicated rules are entirely separate from the original prebuilt rule. They don
 ::::
 
 1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Rules** table, select the **Elastic rules** filter.
+2. In the Rules table, select the **Elastic rules** filter.
 3. Do one of the following:
     * Duplicate a single rule: Select the **All actions** menu {icon}`boxes_horizontal` on the rule, then select **Duplicate**.
     * Duplicate multiple rules: Select one or more rules (or select **Select all *x* rules**), then select **Bulk actions** > **Duplicate**.
