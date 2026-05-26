@@ -17,6 +17,20 @@ Customize your dashboard layout by arranging panels into logical groups and adju
 
 To organize dashboard panels, you need the **All** privilege for the **Dashboard** feature in {{product.kibana}}.
 
+## Panel limits [dashboard-panel-limits]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+Each dashboard enforces the following limits:
+
+- Up to 100 top-level items (panels, including unpinned controls, and sections combined)
+- Up to 100 panels inside each section
+- Up to 100 [pinned controls](add-controls.md)
+
+These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 100 sections at the top level, and 100 panels inside each of those sections.
+
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
 stack: ga 9.1
@@ -51,7 +65,7 @@ Users viewing the dashboard will find the section in the same state as when you 
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear immediately on the dashboard, and more.
 
-In the toolbar, click **Edit**, then use the following options:
+In the application menu, click **Edit**, then use the following options:
 
 * To move, hover over the panel, click and hold ![The move control icon](/explore-analyze/images/kibana-move-control.png "The move control icon =4%x4%") and drag to the new location. Your screen scrolls automatically when you drag above or below the visible parts of the dashboard.
 * To resize, click and hold the bottom right corner of the panel and drag to the new dimensions.
@@ -94,7 +108,7 @@ To duplicate a panel and its configured functionality, use the clone and copy pa
 
 Duplicated panels appear next to the original panel, and move the other panels to provide a space on the dashboard.
 
-1. In the toolbar, click **Edit**.
+1. In the application menu, click **Edit**.
 2. Open the panel menu and select **Duplicate**.
 
 

@@ -21,6 +21,235 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.1 [elastic-observability-9.4.1-release-notes]
+
+There are no user-facing changes in {{observability}} for the 9.4.1 release.
+
+## 9.4.0 [elastic-observability-9.4.0-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.0-features-enhancements]
+
+* Removes the confirmation modal when switching to AI Agent mode [#264839]({{kib-pull}}264839).
+* Adds the `observability.investigation` skill to the Elastic Agent, providing structured investigation methodology across all Observability tools for service health, dependency analysis, and log and trace correlation [#262293]({{kib-pull}}262293).
+* Adds AI Agent as the default Observability chat experience. AI Assistant has been deprecated. Users can return to AI Assistant through **GenAI Settings** [#260570]({{kib-pull}}260570).
+* Adds a continuous Knowledge Indicator extraction workflow to Streams **Significant Events Discovery** that automatically identifies stream features on a configurable schedule [#260322]({{kib-pull}}260322).
+* Consolidates LLM connector listing through the inference plugin for consistent AI connector management [#258530]({{kib-pull}}258530).
+* Adds a Streams exploration skill to the AI Agent Builder [#258330]({{kib-pull}}258330).
+* Adds entity retrieval and enrichment capabilities for contextual data loading in AI-powered features [#256628]({{kib-pull}}256628).
+* Adds Synthetics monitor attachment support to the AI Agent for contextual monitor data [#256540]({{kib-pull}}256540).
+* Updates the AI Agent system prompt to use the time range from screen context attachments [#256343]({{kib-pull}}256343).
+* Adds the `get_logs` tool and a log search skill to the AI Agent for natural-language log retrieval [#256206]({{kib-pull}}256206).
+* Adds Gemini 2.5 Flash Lite, Claude 4.5 Haiku, and Claude 4.6 Sonnet preconfigured connectors [#253109]({{kib-pull}}253109).
+* Adds host metrics and correlation data to the Alerts AI Insight for enriched alert context [#252973]({{kib-pull}}252973).
+* Adds SLO and service entity attachments to the AI Agent Builder for richer observability context [#252390]({{kib-pull}}252390).
+* Adds an Anthropic Claude Opus 4.6 preconfigured connector [#252177]({{kib-pull}}252177).
+* Adds the `get_service_topology` tool to the AI Agent for retrieving APM service topology data [#251770]({{kib-pull}}251770).
+* Adds the `get_runtime_metrics` tool to the AI Agent for retrieving service runtime metrics [#251768]({{kib-pull}}251768).
+* Adds the `get_traces` tool to the AI Agent for retrieving distributed trace samples [#250952]({{kib-pull}}250952).
+* Enhances the `get_log_groups` tool (formerly `get_log_categories`) with exception support [#250331]({{kib-pull}}250331).
+* Adds latency percentile sorting and retrieval to the `get_trace_metrics` AI Agent tool [#249488]({{kib-pull}}249488).
+* Adds new preconfigured connectors for AI inference providers [#249379]({{kib-pull}}249379).
+* Adds an Elastic Inference Service (EIS) pricing callout to the Observability AI Assistant **Knowledge Base** settings for semantic search models [#249298]({{kib-pull}}249298).
+* Improves context provided to the Alerts AI Insight for more accurate analysis [#248195]({{kib-pull}}248195).
+* Adds the `get_trace_change_points` tool to the AI Agent for identifying performance change points in traces [#247810]({{kib-pull}}247810).
+* Adds log and metric change point analysis tools to the AI Agent [#242423]({{kib-pull}}242423).
+* Adds a **Partitioning** tab to classic streams with support for query-based stream routing [#261162]({{kib-pull}}261162).
+* Adds a **Create enrich policy** link to the Streams enrich processor form [#260800]({{kib-pull}}260800).
+* Enables users to iteratively refine AI-generated partition suggestions in Streams by providing natural language guidance [#260264]({{kib-pull}}260264).
+* Adds an `enrich` processor to Streams for enriching log data using Elasticsearch enrich policies [#256971]({{kib-pull}}256971).
+* Adds a `split` and `sort` processor to Streams [#251681]({{kib-pull}}251681).
+* Improves condition filtering in the Streams processing editor [#251129]({{kib-pull}}251129).
+* Adds a `network_direction` processor to Streams [#250894]({{kib-pull}}250894).
+* Adds a `redact` processor to Streams for masking sensitive field values [#250389]({{kib-pull}}250389).
+* Adds a features table with a detail flyout and bulk delete to the Streams management interface [#250379]({{kib-pull}}250379).
+* Adds an `includes` operator to the Streams routing condition editor [#248985]({{kib-pull}}248985).
+* Adds empty state messaging to the Streams stream listing [#248636]({{kib-pull}}248636).
+* Adds background task-based significant events query generation in Streams, with dedicated `_task` and `_status` API endpoints [#248608]({{kib-pull}}248608).
+* Adds empty state messaging to the Streams **Partitioning** and **Processing** tabs [#248463]({{kib-pull}}248463).
+* Adds a **Queries** tab to Streams for managing query-based routing configurations [#248243]({{kib-pull}}248243).
+* Adds a `concat` processor to Streams [#247940]({{kib-pull}}247940).
+* Adds abort support and silent mode for AI-generated stream descriptions in Streams [#247082]({{kib-pull}}247082).
+* Adds `uppercase`, `lowercase`, and `trim` processors to Streams [#246540]({{kib-pull}}246540).
+* Adds a range operator to the Streams condition editor, supporting inclusive and exclusive boundaries with date math [#243011]({{kib-pull}}243011).
+* Adds integration health detection and self-healing for Synthetics monitors to automatically recover from integration failures [#256738]({{kib-pull}}256738).
+* Adds a reset API endpoint for individual Synthetics monitors [#256696]({{kib-pull}}256696).
+* Updates browser monitors on private locations to explicitly enable network and screenshot data streams [#255967]({{kib-pull}}255967).
+* Improves the maintenance window callout for private location Synthetics monitors [#252847]({{kib-pull}}252847).
+* Reduces the default sync interval for private location monitors and makes the interval configurable [#252708]({{kib-pull}}252708).
+* Adds a configurable timeout for browser monitors running on private locations [#252156]({{kib-pull}}252156).
+* Adds OpenAPI examples to SLO API endpoints [#259859]({{kib-pull}}259859).
+* Improves SLO template discoverability in the SLO creation workflow [#256545]({{kib-pull}}256545).
+* Displays APM SLOs in the **Service Inventory** for at-a-glance SLO health per service [#249374]({{kib-pull}}249374).
+* Enables creating and managing SLOs directly from the **Service Inventory** [#249259]({{kib-pull}}249259).
+* Adds cluster-wide SLO health scanning using API-triggered background tasks [#248004]({{kib-pull}}248004).
+* Enables the instance selector on the **SLO Details** page when browsing grouped SLOs without a specific instance selected [#247638]({{kib-pull}}247638).
+* Enables management of SLO stale threshold settings on Elastic Serverless [#246760]({{kib-pull}}246760).
+* Changes default APM alert rules to group by `transaction.name` for more precise alert scoping [#261929]({{kib-pull}}261929).
+* Adds alert and SLO health badges to the APM **Service Map** for at-a-glance service status [#261822]({{kib-pull}}261822).
+* Adds a unified APM correlations API endpoint for both latency and failed transaction analysis [#254607]({{kib-pull}}254607).
+* Adds error handling to the Observability landing page redirect logic to prevent crashes on invalid routes [#254171]({{kib-pull}}254171).
+* Adds support for ECS-formatted errors in APM service details [#254138]({{kib-pull}}254138).
+* Enables exploring service map requests in Discover directly from the APM **Service Map** [#254011]({{kib-pull}}254011).
+* Adds OTel and semconv support for Kubernetes pods and containers, and Docker containers in the APM **Infrastructure** tab [#252188]({{kib-pull}}252188).
+* Shows RED metrics charts in Discover for `traces.*` queries [#249909]({{kib-pull}}249909).
+* Adds a **View in Discover** link to the **Alert Details** page for APM rule-based alerts, enabling direct navigation to the triggering documents [#248990]({{kib-pull}}248990).
+* Enables troubleshooting of requests between nodes directly from the APM **Service Map** [#248646]({{kib-pull}}248646).
+* Replaces the legacy APM trace waterfall component with the unified Trace Waterfall for a consistent trace viewing experience [#248629]({{kib-pull}}248629).
+* Migrates the traces panel in Discover to the unified flyout system [#247451]({{kib-pull}}247451).
+* Adds critical path highlighting to the traces view in Discover [#246952]({{kib-pull}}246952).
+* Synchronizes span link and error count badges in the unified Trace Waterfall [#246510]({{kib-pull}}246510).
+* Metrics exploration in Discover is now generally available [#261325]({{kib-pull}}261325).
+* Improves `METRICS_INFO` failure handling in the UI to prevent error states [#260940]({{kib-pull}}260940).
+* Adds tooltip descriptions to metrics in the **View details** flyout [#257053]({{kib-pull}}257053).
+* Supports multi-dimension breakdowns in Lens series layers [#251731]({{kib-pull}}251731).
+* Migrates the metrics panel in the Discover flyout to the unified flyout system [#251395]({{kib-pull}}251395).
+* Supports multi-dimension breakdown in Discover's unified metrics view [#250727]({{kib-pull}}250727).
+* Connects the Discover sidebar field breakdown selection to the metrics view breakdown dimension [#248920]({{kib-pull}}248920).
+* Enables multi-terms chart aggregations in {{esql}}-powered Lens visualizations [#244743]({{kib-pull}}244743).
+* Enables **Unified Rules** as the default experience [#258214]({{kib-pull}}258214).
+* Adds the ability to acknowledge and unacknowledge alerts from the Observability **Alerts** page [#252945]({{kib-pull}}252945).
+* Extends no-data behavior options from metric threshold rules to custom threshold rules [#251976]({{kib-pull}}251976).
+* Supports KQL filtering across all aggregation types in Custom Threshold Rules [#248845]({{kib-pull}}248845).
+* Adds a unified rules list for managing all Observability alert rules in one place [#242208]({{kib-pull}}242208).
+* Enables the Fleet `POST /api/fleet/service_tokens` endpoint and Remote Elasticsearch outputs in serverless deployments [#260515]({{kib-pull}}260515).
+* Adds data detection and loading indicators to Observability onboarding flows [#257870]({{kib-pull}}257870).
+* Adds an EDOT Cloud Forwarder quick-start tile to the Observability onboarding experience for ingesting VPC Flow, ELB Access, and CloudTrail logs from AWS S3 [#250325]({{kib-pull}}250325).
+* Adds Windows host support to the OpenTelemetry host onboarding flow [#248478]({{kib-pull}}248478).
+* Adds a **Manage jobs** link to the Machine Learning left navigation for direct access to anomaly detection jobs [#260605]({{kib-pull}}260605).
+* Adds **Visualizations** and **Annotation Groups** tabs to the Dashboards interface and removes the standalone Visualize Library from solution navigations [#241795]({{kib-pull}}241795).
+
+### Fixes [elastic-observability-9.4.0-fixes]
+
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
+* Fixes the layout of the Elastic Inference Service (EIS) pricing callout [#262780]({{kib-pull}}262780).
+* Adds the EIS cost callout to all relevant AI Assistant settings locations [#255588]({{kib-pull}}255588).
+* Fixes AI/Inference connector creation to correctly use the `location` field for provider configuration [#250838]({{kib-pull}}250838).
+* Updates the AI Insight UI description [#250137]({{kib-pull}}250137).
+* Fixes truncated inline attachments in the AI Agent [#249799]({{kib-pull}}249799).
+* Updates AI Insights and flyout configuration to use the Observability Agent [#249776]({{kib-pull}}249776).
+* Adds `maxQueue` backpressure to the anonymization regex worker pool to prevent memory pressure under load [#249108]({{kib-pull}}249108).
+* Fixes the icon in the **Elastic documentation not available** callout in AI Assistant settings [#247885]({{kib-pull}}247885).
+* Exposes the `canReadFailureStore` permission on a per-stream basis [#264087]({{kib-pull}}264087).
+* Fixes dimension type conflicts in Streams by casting dimension values [#263472]({{kib-pull}}263472).
+* Fixes an error in Streams when generating patterns from invalid AI suggestions [#260325]({{kib-pull}}260325).
+* Adds support for Cross-Cluster Replication (CCR) and clusters without security enabled in Streams [#259175]({{kib-pull}}259175).
+* Fixes AI pipeline suggestions in Streams that were using incorrect field names on ECS and OTel streams [#258139]({{kib-pull}}258139).
+* Marks {{esql}} rule execution errors as user-triggered in Streams rules to prevent unnecessary Task Manager retries [#255011]({{kib-pull}}255011).
+* Fixes time range refresh in Streams to apply the updated time range correctly [#253295]({{kib-pull}}253295).
+* Fixes overlapping badge display for processor names in Streams [#251874]({{kib-pull}}251874).
+* Fixes a `too_small` validation error for AI pipeline suggestions with empty grok patterns [#251113]({{kib-pull}}251113).
+* Fixes filtering by multiline string fields in Streams [#250047]({{kib-pull}}250047).
+* Fixes query synchronization on save and adds debounce to the Streams Significant Events preview chart [#249833]({{kib-pull}}249833).
+* Prevents editing of AI-generated significant event queries to protect their integrity [#249716]({{kib-pull}}249716).
+* Fixes child stream name validation in Streams to prevent spaces in stream names [#249384]({{kib-pull}}249384).
+* Fixes document rejection in Streams partitioning when documents arrive during routing evaluation [#247953]({{kib-pull}}247953).
+* Fixes time range state being lost when navigating to the **Retention** tab in Streams [#247544]({{kib-pull}}247544).
+* Fixes field name autocomplete in the Streams **Processing** tab for newly mapped fields [#246934]({{kib-pull}}246934).
+* Fixes a `mapper_parsing_exception` error in wired streams during document ingestion [#245838]({{kib-pull}}245838).
+* Fixes the **Failed Tests by Step** panel in Synthetics to update correctly when the time range changes [#263317]({{kib-pull}}263317).
+* Fixes the flyout toggle state sticking when switching between Synthetics monitors in the details flyout [#253314]({{kib-pull}}253314).
+* Fixes Synthetics package policy ID management by removing `spaceId` from the policy ID and storing it as a reference in the monitor saved object [#251018]({{kib-pull}}251018).
+* Fixes project monitors to use the monitor query ID for package policies [#248762]({{kib-pull}}248762).
+* Fixes duplicate Synthetics test results appearing on the monitor status heat map at higher granularity [#248761]({{kib-pull}}248761).
+* Fixes a validation error when applying maintenance windows to lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes Synthetics console state persisting across journey steps [#247376]({{kib-pull}}247376).
+* Fixes Synthetics tasks to only update package policies for monitors that reference maintenance windows, preventing unnecessary updates [#246088]({{kib-pull}}246088).
+* Fixes default rule creation to only trigger when creating or editing a monitor, not on navigation events [#245441]({{kib-pull}}245441).
+* Adds a spaces constraint to private locations, restricting monitor creation to associated spaces [#233662]({{kib-pull}}233662).
+* Fixes an error on the burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435).
+* Fixes dashboard filters not being applied to the SLO embeddable when grouping fields are used [#255746]({{kib-pull}}255746).
+* Fixes alert visibility and filters for grouped SLOs on the **SLO details** page [#254601]({{kib-pull}}254601).
+* Fixes SLO filter behavior for filters containing spaces and wildcard characters [#251033]({{kib-pull}}251033).
+* Aligns APM service navigation in serverless with stateful deployments [#263119]({{kib-pull}}263119).
+* Fixes APM routing and settings page navigation [#262723]({{kib-pull}}262723).
+* Fixes **Service Map** layout failures when the Dagre rendering algorithm encounters errors [#262240]({{kib-pull}}262240).
+* Improves static dashboard selection in the APM **Metrics** tab by incorporating service runtime version into dashboard resolution [#258483]({{kib-pull}}258483).
+* Fixes crashes on APM transaction pages for mobile services [#257447]({{kib-pull}}257447).
+* Fixes APM waterfall view crashes when Elasticsearch documents are missing optional fields [#257368]({{kib-pull}}257368).
+* Fixes APM app crashes caused by invalid `rangeFrom` or `rangeTo` URL query parameter values [#256887]({{kib-pull}}256887).
+* Fixes a 500 error on the APM error group details page caused by missing `transaction.sampled` fields [#255788]({{kib-pull}}255788).
+* Fixes a crash on the APM service **Metrics** tab caused by a stale `controlGroupState` reference [#254999]({{kib-pull}}254999).
+* Fixes trace sample titles in APM from wrapping vertically [#254536]({{kib-pull}}254536).
+* Improves the copy displayed when a trace relationship is missing in APM [#251850]({{kib-pull}}251850).
+* Fixes the waterfall summary panel width in the Discover traces view [#250556]({{kib-pull}}250556).
+* Fixes flyout remounting when switching document types in the Trace Waterfall [#250406]({{kib-pull}}250406).
+* Fixes incorrect dependency statistics in the APM **Dependencies** view [#249434]({{kib-pull}}249434).
+* Adds a cold start badge to the unified Trace Waterfall to identify slow cold-start spans [#248857]({{kib-pull}}248857).
+* Fixes missing service environment values in APM custom links [#248631]({{kib-pull}}248631).
+* Prevents nested button rendering in the full traces view in Discover [#247808]({{kib-pull}}247808).
+* Fixes missing spans in the traces view in Discover [#247689]({{kib-pull}}247689).
+* Fixes trace links that were calculating date ranges incorrectly [#247531]({{kib-pull}}247531).
+* Fixes a spurious error rate chart warning on first page load in APM [#247052]({{kib-pull}}247052).
+* Adds OTel host metric support to the **Hosts** table [#261564]({{kib-pull}}261564).
+* Fixes **Hosts** exclusion filters so hosts with excluded metadata values are no longer shown after enrichment [#260426]({{kib-pull}}260426).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Improves **View details** flyout UI layout [#259428]({{kib-pull}}259428).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage [#259372]({{kib-pull}}259372).
+* Fixes asset details locator parameters in custom dashboards [#256412]({{kib-pull}}256412).
+* Fixes the dimensions dropdown position when in fullscreen mode [#255049]({{kib-pull}}255049).
+* Fixes focus management when entering fullscreen mode in the metrics grid [#254701]({{kib-pull}}254701).
+* Updates the Discover metrics flyout to use {{esql}} instead of legacy SQL [#254537]({{kib-pull}}254537).
+* Fixes pagination in the dimensions list in the **View details** flyout [#251250]({{kib-pull}}251250).
+* Fixes metrics grid panel titles not updating when the panel order changes [#250963]({{kib-pull}}250963).
+* Reverts a change that inadvertently removed infrastructure UI custom dashboards [#249973]({{kib-pull}}249973).
+* Replaces the custom chart header with the Lens highlight implementation for consistency [#249450]({{kib-pull}}249450).
+* Fixes series tooltips not working in fullscreen chart views [#248148]({{kib-pull}}248148).
+* Fixes the **Metrics explorer** search bar layout on smaller screen sizes [#246945]({{kib-pull}}246945).
+* Adds `maxSize` constraints to unbounded array schemas in rule connector configurations to prevent oversized payloads [#261021]({{kib-pull}}261021).
+* Converts the notification policy and alert action API endpoints from internal to public (experimental) [#260510]({{kib-pull}}260510).
+* Fixes Index Threshold rule `filterKuery` wildcard behavior on keyword fields so generated queries return the expected matches [#260283]({{kib-pull}}260283).
+* Fixes metric threshold rule evaluation for wildcard KQL filters when no data view is available [#260046]({{kib-pull}}260046).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes missing action variables in the Slack Web API connector when using text message mode [#259499]({{kib-pull}}259499).
+* Fixes custom threshold rules where wildcard filters were not returning results or triggering alerts [#256979]({{kib-pull}}256979).
+* Fixes alerts wildcard queries on keyword fields by correctly passing the alerts data view to query building [#255225]({{kib-pull}}255225).
+* Falls back to an Elasticsearch API Key when UIAM API Key grant fails for rule execution [#254707]({{kib-pull}}254707).
+* Fixes {{esql}} rule execution to correctly handle empty result sets [#250759]({{kib-pull}}250759).
+* Fixes {{esql}} rule execution to propagate errors correctly for user-visible error reporting [#250605]({{kib-pull}}250605).
+* Fixes KQL autocomplete in the custom threshold rule creation form [#250044]({{kib-pull}}250044).
+* Adds no-data behavior options to alert rules for controlling alert behavior when data stops reporting [#247669]({{kib-pull}}247669).
+* Fixes the **Related dashboards** tab for Elasticsearch Query rules and other stack rules in Observability [#247564]({{kib-pull}}247564).
+* Fixes integration limit enforcement in `parseIntegrationsTSV` to apply after deduplication [#252486]({{kib-pull}}252486).
+* Fixes Elastic Agent from incorrectly interpreting JavaScript template literals as policy variables [#247284]({{kib-pull}}247284).
+* Fixes minor issues in the Observability onboarding flow [#246208]({{kib-pull}}246208).
+* Renames workflow label references to tags throughout the Observability UI for consistency [#260329]({{kib-pull}}260329).
+* Fixes crashes caused by malformed URLs in plugins; affected instances now attempt automatic recovery [#257245]({{kib-pull}}257245).
+* Fixes dashboard scanning to correctly include sections [#254600]({{kib-pull}}254600).
+* Fixes the annotation API on Elastic Serverless [#254285]({{kib-pull}}254285).
+* Fixes a race condition in the data quality controller that caused incorrect Discover navigation [#254139]({{kib-pull}}254139).
+* Fixes an infinite loading loop in the document flyout when using relative time ranges [#251647]({{kib-pull}}251647).
+* Adjusts the panel height in Discover for improved layout [#250778]({{kib-pull}}250778).
+* Fixes **View In Context** links in the Discover modal that were not respecting the selected date range [#248939]({{kib-pull}}248939).
+* Fixes loss of UI state in signal-specific Discover flyout tabs when refreshing a query [#248203]({{kib-pull}}248203).
+* Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
+* Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
+
+
+## 9.3.4 [elastic-observability-9.3.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.4-features-enhancements]
+* Defaults new APM alert rules to group by `transaction.name`, providing more granular out-of-the-box alerting for latency threshold, failed transaction rate, and error count rules. Existing rules are unaffected [#261929]({{kib-pull}}261929).
+
+### Fixes [elastic-observability-9.3.4-fixes]
+* Fixes an issue where Observability alerts sent recovery notifications but remained `active` in {{kib}} instead of transitioning to `recovered` [#261012]({{kib-pull}}261012).
+* Fixes the Serverless APM navigation so **Service inventory** stays active on service map, service groups, and related paths, matching stateful behavior [#263119]({{kib-pull}}263119).
+* Fixes the **Hosts** table on the Observability Overview page to display OTel (semconv) host metrics alongside ECS metrics, so hosts ingesting through OpenTelemetry are no longer missing from the table [#261564]({{kib-pull}}261564).
+* Fixes an issue where malformed URL query parameters could crash APM and other plugins; affected pages now automatically recover by applying parameter defaults and redirecting to the corrected URL [#257245]({{kib-pull}}257245).
+
+## 9.3.3 [elastic-observability-9.3.3-release-notes]
+
+### Fixes [elastic-observability-9.3.3-fixes]
+* Fixes **Hosts** exclusion filters so hosts with excluded metadata values are no longer shown after enrichment [#260426]({{kib-pull}}260426).
+* Fixes Index threshold rule `filterKuery` wildcard behavior on keyword fields so generated queries return the expected matches [#260283]({{kib-pull}}260283).
+* Fixes metric threshold rule evaluation for wildcard KQL filters when no data view is available, so alerts evaluate correctly [#260046]({{kib-pull}}260046).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes missing action variables in Slack Web API text message mode [#259499]({{kib-pull}}259499).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
+* Improves static dashboard selection in the APM **Metrics** tab by incorporating service runtime version into dashboard resolution [#258483]({{kib-pull}}258483).
+
 ## 9.3.2 [elastic-observability-9.3.2-release-notes]
 
 
@@ -40,7 +269,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Features and enhancements [elastic-observability-9.3.1-features-enhancements]
-* Adds a concat processor to Streams [#247940]({{kib-pull}}247940).
 * Adds error handling to {{observability}} landing page redirect logic [#254171]({{kib-pull}}254171).
 * Adds support for ECS formatted errors in service details [#254138]({{kib-pull}}254138).
 
@@ -131,7 +359,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes related dashboards for ES Query and other stack rules supported in observability [#247564]({{kib-pull}}247564).
 * Fixes default alerts flow when default rules are not defined [#245736]({{kib-pull}}245736).
 * Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
-* Fixes empty **Related dashboards** meu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
+* Fixes empty **Related dashboards** menu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
 * Prevents default alerts from being created when connectors are not defined [#237504]({{kib-pull}}237504).
 * Copies alert states to payload [#240411]({{kib-pull}}240411).
 * Replaces metric names inside filter values [#238849]({{kib-pull}}238849).
@@ -200,6 +428,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes icon colors for navigation menu [#237970]({{kib-pull}}237970).
 * Fixes gap while loading data [#238879]({{kib-pull}}238879).
 * Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
+
+## 9.2.8 [elastic-observability-9.2.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.8-features-enhancements]
+* Adds no-data behavior options to custom threshold rules, including options to recover, remain active, or trigger a no-data alert [#251976]({{kib-pull}}251976).
+
+
+### Fixes [elastic-observability-9.2.8-fixes]
+* Fixes **Hosts** exclusion filters by applying post-enrichment filtering to excluded metadata values [#260426]({{kib-pull}}260426).
+* Fixes **Hosts** filter option suggestions to match the selected schema (ECS or semconv) [#259825]({{kib-pull}}259825).
+* Fixes alert tags when source tags are provided as a string [#259729]({{kib-pull}}259729).
+* Fixes OTel metric mapping in the **Infrastructure** tab so host, pod, and container metrics no longer show `N/A` when data exists [#259552]({{kib-pull}}259552).
+* Fixes semconv metric calculations on the **Hosts** page to prevent `N/A` values and align CPU, memory, and disk usage calculations [#259372]({{kib-pull}}259372).
 
 ## 9.2.7 [elastic-observability-9.2.7-release-notes]
 
@@ -285,6 +526,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313).
 * Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
 * Escapes special characters when creating ES|QL query for Lens charts [#241662]({{kib-pull}}241662).
+* Hides non-trace services in **Service Inventory** and **Service Map** [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
 
 
 ## 9.2.0 [elastic-observability-9.2.0-release-notes]
@@ -401,7 +643,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
 * Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
-* Hides non-trace services from APM service inventory [#241080]({{kib-pull}}241080).
+* Hides non-trace services in **Service Inventory** and **Service Map** [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
 
 ## 9.1.6 [elastic-observability-9.1.6-release-notes]
 
@@ -409,7 +651,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
 * Removes {{es}} `_sources` from query responses [#239205]({{kib-pull}}239205).
-* Fixes rule condition chart parser replacing metric names in filter values [#238849]{{kib-pull}}(238849).
+* Fixes rule condition chart parser replacing metric names in filter values [#238849]({{kib-pull}}238849).
 * Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
 * Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
 * Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).

@@ -1,5 +1,6 @@
 ---
 navigation_title: Tools
+description: "Tools for writing Elastic documentation more efficiently, including the VS Code extension and Vale linter."
 ---
 
 # Documentation tools

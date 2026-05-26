@@ -55,7 +55,7 @@ Using the dropdown indicating **Bar**, select **Table**.
 
 The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
 
-Refer to [](#settings) to find all configuration options for your table.
+See [](#settings) for all configuration options for your table.
 ::::
 
 ::::{step} Customize the table to follow best practices
@@ -99,7 +99,7 @@ To create a pivot table:
 3. Add one or more metrics.
 4. Drag a categorical field to **Split metrics by** to create separate columns for each unique value.
 
-For example, you could show visits per date in rows, split by the top 3 hours of the day with most traffic, and add various metrics such as the number of visits or the percentage of successful requests. This creates a pivot table showing the various metrics for each hour of the day with the most traffic.
+For example, you could show visits per date in rows, split by the top 3 HTTP response codes, and add various metrics such as the number of unique visitors, total bytes, or the percentage of successful requests. This creates a pivot table showing the various metrics for each response code.
 
 ![Example of a table in Lens using the Split metrics by functionality](../../images/lens-table-breakdown-by-example.png)
 
@@ -163,7 +163,9 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -201,7 +203,9 @@ Customize your table to display exactly the information you need, formatted the 
     - **Functions**:
       - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each column group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -249,7 +253,15 @@ When creating or editing a table visualization, you can customize several appear
     
     When disabled, all rows appear in a scrollable view (up to the maximum returned by the query).
 
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
+
 ## Table examples
+
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file tables.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 The following examples show various configuration options you can use for building effective tables.
 
@@ -258,11 +270,108 @@ The following examples show various configuration options you can use for buildi
 
     * **Rows**: `request.keyword` field using **Top values** function
       * **Number of values**: `5`
+      * **Advanced**: Group remaining values as "Other"
     * **Metrics**: `clientip` field using **Unique count** function
       * **Value format**: `Number`
       * **Text alignment**: `Right`
 
-    ![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
+![Table showing top pages by unique visitors](../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a table that displays the top 5 request pages ranked by unique visitor count.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Top pages by unique visitors",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "terms", <1>
+      "fields": ["request.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "clientip",
+      "label": "Unique visitors",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Uses `terms` on `request.keyword` to create one row per top page, limited to 5.
+2. Counts unique values of `clientip` to measure distinct visitors per page.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Top pages by unique visitors",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "terms", <1>
+      "fields": ["request.keyword"],
+      "limit": 5,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "clientip",
+      "label": "Unique visitors",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}'
+```
+
+1. Uses `terms` on `request.keyword` to create one row per top page, limited to 5.
+2. Counts unique values of `clientip` to measure distinct visitors per page.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Sales by date and continent (pivot table)**
 :   Create a pivot table showing customer counts across different continents over time:
@@ -272,8 +381,123 @@ The following examples show various configuration options you can use for buildi
       * **Name**: `Sales per day`
     * **Metrics**: `customer_id` field using **Unique count** function
     * **Split metrics by**: `geoip.continent_name` field using **Top values** set to `3`
+      * **Advanced**: Group remaining values as "Other"
 
-    ![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
+![Table showing customers over time by continent](../../images/kibana-lens_table_over_time.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a pivot table that shows unique customer counts per day, split into columns by the top 3 continents.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Sales by date and continent",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1d",
+      "label": "Sales per day"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "customer_id",
+      "label": "Unique customers",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    }
+  ],
+  "split_metrics_by": [ <3>
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Groups rows by `order_date` using a date histogram.
+2. Counts unique `customer_id` values as the table metric.
+3. Splits the metric into separate columns for the top 3 continents.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Sales by date and continent",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1d",
+      "label": "Sales per day"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "unique_count", <2>
+      "field": "customer_id",
+      "label": "Unique customers",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    }
+  ],
+  "split_metrics_by": [ <3>
+    {
+      "operation": "terms",
+      "fields": ["geoip.continent_name"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}'
+```
+
+1. Groups rows by `order_date` using a date histogram.
+2. Counts unique `customer_id` values as the table metric.
+3. Splits the metric into separate columns for the top 3 continents.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Document comparison with custom ranges**
 :   Compare metrics across custom-defined ranges:
@@ -287,8 +511,118 @@ The following examples show various configuration options you can use for buildi
       * **Name**: `Total bytes transferred`
       * **Value format**: `Bytes`
       * **Text alignment**: `Right`
-    * **Additional styling**: 
+    * **Additional styling**:
       * **Color by value**: Dynamic coloring to highlight ranges with higher byte transfers
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a table that compares total bytes transferred across custom-defined file size ranges.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Document comparison with custom ranges",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "range", <1>
+      "field": "bytes",
+      "ranges": [
+        { "lte": 10240, "label": "Below 10KB" },
+        { "gt": 10240, "label": "Above 10KB" }
+      ], <2>
+      "label": "File size"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "sum", <3>
+      "field": "bytes",
+      "label": "Total bytes transferred",
+      "format": { "type": "bytes" },
+      "alignment": "right",
+      "color": { "type": "auto" },
+      "apply_color_to": "value",
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Uses a `range` operation to create custom row buckets from the `bytes` field.
+2. Defines two ranges, each with a label: documents up to 10 KB (`Below 10KB`) and documents above 10 KB (`Above 10KB`).
+3. The `sum` metric sums the `bytes` field within each range, right-aligns the column, and applies dynamic `auto` coloring to highlight ranges with higher byte transfers.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Document comparison with custom ranges",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "range", <1>
+      "field": "bytes",
+      "ranges": [
+        { "lte": 10240, "label": "Below 10KB" },
+        { "gt": 10240, "label": "Above 10KB" }
+      ], <2>
+      "label": "File size"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "sum", <3>
+      "field": "bytes",
+      "label": "Total bytes transferred",
+      "format": { "type": "bytes" },
+      "alignment": "right",
+      "color": { "type": "auto" },
+      "apply_color_to": "value",
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "density": { "mode": "default" } }
+}'
+```
+
+1. Uses a `range` operation to create custom row buckets from the `bytes` field.
+2. Defines two ranges, each with a label: documents up to 10 KB (`Below 10KB`) and documents above 10 KB (`Above 10KB`).
+3. The `sum` metric sums the `bytes` field within each range, right-aligns the column, and applies dynamic `auto` coloring to highlight ranges with higher byte transfers.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Weekly sales with percentage change**
 :   Show week-over-week sales trends with calculated percentage changes:
@@ -299,8 +633,118 @@ The following examples show various configuration options you can use for buildi
     * **Metrics** (two columns):
       1. `Records` using **Count** function
          * **Name**: `Orders this week`
+         * **Value format**: `Number`, 0 decimals
       2. **Formula**: `count() / count(shift='1w') - 1`
          * **Name**: `Change from last week`
          * **Value format**: `Percent`, 2 decimals
-         * **Color by value**: Dynamic (green for positive growth, red for negative)
          * **Text alignment**: `Right`
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a table that shows weekly order counts alongside a formula-based percentage change column.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "data_table",
+  "title": "Weekly sales with percentage change",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1w",
+      "label": "Week"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Orders this week",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    },
+    {
+      "operation": "formula", <2>
+      "formula": "count() / count(shift='1w') - 1", <3>
+      "label": "Change from last week",
+      "format": { "type": "percent", "decimals": 2 },
+      "alignment": "right"
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}
+```
+
+1. Groups rows by `order_date` with a weekly date histogram.
+2. Uses a `formula` metric to compute a calculated column. Formula metrics must not include a `filter` field — omitting it is required for time shift to work correctly.
+3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "data_table",
+  "title": "Weekly sales with percentage change",
+  "filters": [],
+  "query": { "expression": "" },
+  "rows": [
+    {
+      "operation": "date_histogram", <1>
+      "field": "order_date",
+      "suggested_interval": "1w",
+      "label": "Week"
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Orders this week",
+      "format": { "type": "number", "decimals": 0 },
+      "filter": { "expression": "" }
+    },
+    {
+      "operation": "formula", <2>
+      "formula": "count() / count(shift='1w') - 1", <3>
+      "label": "Change from last week",
+      "format": { "type": "percent", "decimals": 2 },
+      "alignment": "right"
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "density": { "mode": "default" } }
+}'
+```
+
+1. Groups rows by `order_date` with a weekly date histogram.
+2. Uses a `formula` metric to compute a calculated column. Formula metrics must not include a `filter` field — omitting it is required for time shift to work correctly.
+3. Divides the current week's count by the previous week's count and subtracts 1 to get the percentage change.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

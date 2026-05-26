@@ -12,10 +12,7 @@ products:
   - id: kibana
 ---
 
-
-
 # Capture {{kib}} diagnostics [kibana-diagnostic]
-
 
 The {{kib}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of {{kib}} and its Task Manager health. It works on {{kib}} versions 7.11.0 and above.
 
@@ -24,6 +21,11 @@ You can use the information captured by the tool to troubleshoot problems with {
 You can generate diagnostic information using this tool before you contact [Elastic Support](https://support.elastic.co) or [Elastic Discuss](https://discuss.elastic.co) to help get a timely answer.
 
 See this [this video](https://www.youtube.com/watch?v=t0J32qBKlIU) for a walkthrough of capturing a {{kib}} diagnostic.
+
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
+::::
 
 ## Requirements [kibana-diagnostic-tool-requirements]
 
@@ -42,14 +44,17 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 
 ## Capture diagnostic information [kibana-diagnostic-capture]
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 To run a {{kib}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
+1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health]({{kib-apis}}operation/operation-task-manager-health).
 
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
     ```sh
-    curl -X GET -k -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
+    curl -X GET -H 'kbn-xsrf: true' -u elastic -p https://localhost:5601/api/task_manager/_health
     ```
 
     If you receive an HTTP 200 `OK` response, you can proceed to the next step. If you receive a different response code, you must [diagnose the issue](#kibana-diagnostic-non-200) before proceeding.
@@ -76,9 +81,9 @@ To run a {{kib}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `kibana-local` (default, recommended): Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/), gathers operating system info, and captures cluster and garbage collection (GC) logs.
+    * `kibana-local` (default, recommended): Polls the [{{kib}} API]({{kib-apis}}), gathers operating system info, and captures cluster and garbage collection (GC) logs.
     * `kibana-remote`: Establishes an SSH session to the applicable target server to pull the same information as `kibana-local`.
-    * `kibana-api`: Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/). All other data must be collected manually.
+    * `kibana-api`: Polls the [{{kib}} API]({{kib-apis}}). All other data must be collected manually.
 
     ::::
 

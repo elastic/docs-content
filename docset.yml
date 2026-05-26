@@ -7,6 +7,8 @@ features:
 exclude:
   - 'README.md'
   - 'raw-migrated-files/**'
+  - 'changelog/**'
+  - 'releases/**'
 
 cross_links:
   - apm-agent-android
@@ -48,6 +50,7 @@ cross_links:
   - elastic-otel-node
   - elastic-otel-php
   - elastic-otel-python
+  - elastic-otel-rum-js
   - elasticsearch
   - elasticsearch-hadoop
   - elasticsearch-java
@@ -289,9 +292,10 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.12.4
-  helm-version: 3.19.5
+  helm-version: 3.20.2
   ece-docker-images-8: 8.19.11
   ece-docker-images-9: 9.3.0
   search-platform: "Search AI Platform"
-
-
+  fedramp-mod: "FedRAMP Moderate"
+  fedramp-high: "FedRAMP High"
+  fedramp-il5: "FedRAMP IL5"

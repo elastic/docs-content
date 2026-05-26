@@ -8,6 +8,19 @@ applies_to:
 products:
   - id: cloud-serverless
 description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
+sub:
+  abb-anchor: elasticsearch-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with data exploration, analysis, and automated tasks within your Elasticsearch Serverless project. Agent usage is billed in addition to VCU-based dimensions, based on the number of executions completed in your project over the course of a month.
+  abb-free-executions: 1,000
+  abb-pricing-label: Elasticsearch Serverless pricing page
+  abb-pricing-url: https://www.elastic.co/pricing/serverless-search
+  wfe-anchor: elasticsearch-billing-workflow-executions
+  wfe-preamble: Workflows enable you to automate multi-step processes within your Elasticsearch project.
+  wfe-billing-detail: In addition to the VCU-based billing dimensions above, workflow usage is billed based on the number of executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-free-executions: 10,000
+  wfe-pricing-label: Elasticsearch Serverless pricing page
+  wfe-pricing-url: https://www.elastic.co/pricing/serverless-search
 ---
 
 # {{es-serverless}} billing dimensions [elasticsearch-billing]
@@ -30,8 +43,10 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} uses the following VCU types:
 
-* **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption.
+* **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption. Ingest VCU billing scales to zero during periods with no ingest activity.
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
+
+  Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
 * **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. Elastic Managed LLMs can power all AI Search features (such as Playground and AI Assistant for Search), as well as features in the Security and Observability products, and are enabled by default.
 
@@ -39,18 +54,20 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 {{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
-## Serverless Plus add-on [elasticsearch-billing-serverless-plus-add-on]
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
 
-The [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) is an optional add-on for {{es-serverless}} projects. It includes enterprise features such as IP filtering, private connectivity, and {{cps}} (coming soon).
-
-Serverless Plus is free for a limited promotional period. Enabling or using features included in the add-on opts your project in. When the promotional period ends, a charge for the add-on is applied as a percentage of the project's ECUs. To learn more about the add-on and the promotional period, refer to [Project features and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus).
+:::{include} _snippets/workflow-executions-billing.md
+:::
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
 You can control costs using the following strategies:
 
-* **Search Power setting**: [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
-* **Search boost window**: By limiting the number of days of [time series data](/solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
+* **Search Power setting**: [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data and the size of the baseline resources kept provisioned for your project. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
+* **Search-ready dataset size**: The [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size for a project is 100% of the index size for regular indices and the data within the Boost Window for [time series data](https://www.elastic.co/docs/manage-data/data-store/data-streams/time-series-data-stream-tsds#differences-from-regular-data-stream). This size is an important factor, along with your Search Power setting, that determines the baseline resources provisioned for your project, and therefore the reduced rate billed during idle periods. During active search, Search VCU consumption scales up based on query load; during idle periods, it drops to a reduced rate proportional to the search-ready dataset size.
+
+  For regular indices, reducing the search-ready dataset size means reducing what you store and search: consolidating small indices, removing unused data, or moving historical data out of the project. For time series data, shortening the Search Boost Window is typically the most direct lever: data outside the window remains fully searchable from the Search AI Lake but has a minimal impact on the baseline capacity, lowering both active and idle Search VCU costs.
 * **Machine learning trained model autoscaling**: [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
 
   Trained model deployments automatically scale down to zero allocations after 24 hours without any inference requests. When they scale up again, they remain active for 5 minutes before they can scale down. During these cooldown periods, you will continue to be billed for the active resources.

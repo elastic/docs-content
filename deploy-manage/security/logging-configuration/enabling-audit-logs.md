@@ -46,6 +46,12 @@ When audit logging is enabled, security events are persisted to a dedicated `<cl
 To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled` to `true` in **all {{es}} or {{kib}} nodes**, then restart the nodes to apply the changes. For detailed instructions, select your deployment type:
 
 ::::{note}
+:applies_to: stack: ga 9.5+
+
+In {{es}} deployments running {{stack}} 9.5 or later, `xpack.security.audit.enabled` is a [dynamic setting](/deploy-manage/stack-settings.md#dynamic-cluster-setting) and can be changed at runtime using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings) without restarting nodes. The {{kib}} setting still follows the static configuration flow in the following section.
+::::
+
+::::{note}
 Audit logs are disabled by default and must be explicitly enabled.
 ::::
 
@@ -58,6 +64,21 @@ Audit logs are disabled by default and must be explicitly enabled.
 
 1. In all nodes, set `xpack.security.audit.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 2. Restart the cluster by following the [rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) procedure.
+
+:::{tip}
+:applies_to: stack: ga 9.5+
+
+Starting with {{stack}} 9.5, `xpack.security.audit.enabled` is [dynamic](/deploy-manage/stack-settings.md#dynamic-cluster-setting). You can enable or disable audit logging at runtime by sending a [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) API request, without restarting nodes:
+
+```console
+PUT _cluster/settings
+{
+  "persistent": {
+    "xpack.security.audit.enabled": true
+  }
+}
+```
+:::
 
 **To enable audit logging in {{kib}}**:
 

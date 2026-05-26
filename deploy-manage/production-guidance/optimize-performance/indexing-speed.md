@@ -41,7 +41,7 @@ Similarly to sizing bulk requests, only testing can tell what the optimal number
 
 ## Unset or increase the refresh interval [_unset_or_increase_the_refresh_interval]
 
-The operation that consists of making changes visible to search - called a [refresh](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
+The operation that consists of making changes visible to search - called a [refresh]({{es-apis}}operation/operation-indices-refresh) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
 
@@ -82,7 +82,7 @@ PUT /my-index-000001/_settings
 
 1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
 
-When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
+When bulk indexing is complete, consider running a [force merge]({{es-apis}}operation/operation-indices-forcemerge) to optimize search performance. Force merging is not available on {{serverless-full}}.
 
 ```console
 POST /my-index-000001/_forcemerge?max_num_segments=5
@@ -147,9 +147,9 @@ deployment:
   ece: all
 ```
 
-Directly-attached (local) storage generally performs better than remote storage because it is simpler to configure well and avoids communications overheads.
+{{es}} clusters using directly-attached (local) storage generally perform better than those using remote storage. Direct storage typically provides lower latency for I/O operations, which is more critical for most {{es}} workloads than the high throughput that remote storage can often achieve.
 
-Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
+Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, on certain workloads and with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine whether it will meet your performance goals. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify suitable tuning parameter values.
 
 ::::{note}
 For {{eck}} deployments, refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.

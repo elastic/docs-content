@@ -2,6 +2,7 @@
 applies_to:
   stack: preview 9.2
   serverless: preview
+description: Wired streams receive log data through a dedicated endpoint and route it into child streams based on partitioning rules.
 products:
   - id: observability
   - id: cloud-serverless
@@ -31,12 +32,13 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-The `/logs` endpoint is deprecated in {{stack}} 9.4. [Reenable wired streams](#streams-wired-streams-enable) to update your deployment or project to use the `logs.otel` and `logs.ecs` endpoints.
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
+The `/logs` endpoint is deprecated and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 
 For more on wired streams, refer to:
 - [Wired streams field naming](#streams-wired-streams-field-naming)
-- [Turn on wired streams](#streams-wired-streams-enable)
+- [Manage wired streams](#streams-wired-streams-enable)
 - [Send data to wired streams](#streams-wired-streams-ship)
 - [View wired streams in Discover](#streams-wired-streams-discover)
 
@@ -96,12 +98,31 @@ The following table lists the ECS fields and the corresponding OTel fields.
 | `host.ip` | `resource.attributes.host.ip` |
 | `custom_field` | `attributes.custom_field` |
 
-## Turn on wired streams [streams-wired-streams-enable]
+## Manage wired streams [streams-wired-streams-enable]
+
+:::::{applies-switch}
+
+::::{applies-item} { serverless: preview, stack: preview 9.4+ }
+
+Wired streams are on by default. To disable wired streams:
+
+1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
+1. Turn off **Enable wired streams**.
+
+To re-enable, repeat these steps and turn on **Enable wired streams**.
+
+::::
+
+::::{applies-item} stack: preview 9.2-9.3
 
 To turn on wired streams:
 
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
 1. Turn on **Enable wired streams**.
+
+::::
+
+:::::
 
 ## Ship data to streams [streams-wired-streams-ship]
 
@@ -203,7 +224,7 @@ Set the endpoint in the following configuration based on your {{stack}} version:
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
-Send data to the endpoint using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Refer to the following example for more information:
+Send data to the endpoint using the [Bulk API]({{es-apis}}operation/operation-bulk). Refer to the following example for more information:
 
 ```json
 POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.4+), or `logs` (stack 9.2–9.3)

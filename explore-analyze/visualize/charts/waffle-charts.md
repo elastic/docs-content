@@ -94,6 +94,112 @@ This example uses the **Kibana Sample Data eCommerce** data set. If you haven't 
 
 ![Waffle chart showing revenue progress toward a sales target](/explore-analyze/images/waffle-scenario-completion.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses two metrics without a `group_by` to create a goal-tracking waffle: one metric shows earned revenue and the other calculates the gap to a $500K target.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "waffle", <1>
+  "title": "Revenue progress toward sales target",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "sum", <2>
+      "field": "taxful_total_price",
+      "label": "Revenue earned",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    },
+    {
+      "operation": "formula", <3>
+      "formula": "500000 - sum(taxful_total_price)",
+      "label": "Remaining to goal",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. `waffle` renders a 10x10 grid of squares where each square represents 1% of the whole.
+2. The first metric fills squares proportionally to earned revenue, showing progress at a glance.
+3. The `formula` metric computes the gap between a $500K target and actual revenue, filling the remaining squares.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle", <1>
+  "title": "Revenue progress toward sales target",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "sum", <2>
+      "field": "taxful_total_price",
+      "label": "Revenue earned",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    },
+    {
+      "operation": "formula", <3>
+      "formula": "500000 - sum(taxful_total_price)",
+      "label": "Remaining to goal",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}'
+```
+
+1. `waffle` renders a 10x10 grid of squares where each square represents 1% of the whole.
+2. The first metric fills squares proportionally to earned revenue, showing progress at a glance.
+3. The `formula` metric computes the gap between a $500K target and actual revenue, filling the remaining squares.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 ## Waffle chart settings [waffle-chart-settings]
 
 Customize your waffle chart to display exactly the information you need, formatted the way you want.
@@ -107,7 +213,9 @@ The **Group by** dimension defines how the waffle is divided into colored sectio
 
     - **Top values**: Create sections for the most common values in a field.
       - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term sections. When multiple fields are selected, each section represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+      - **Number of values**: How many top values to display. The default number of values depends on your environment:
+        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       - **Collapse by**: Aggregate values into a single number using `Sum`, `Average`, `Min`, or `Max`.
@@ -171,6 +279,11 @@ Waffle charts do not have configurable style settings. The chart automatically d
 
 ## Waffle chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file waffle-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful waffle charts.
 
 **Response status breakdown**
@@ -186,6 +299,140 @@ The following examples show various configuration options for building impactful
 
 ![Waffle chart showing response status breakdown](/explore-analyze/images/waffle-example-response-status.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses `filters` grouping to define three custom categories based on HTTP response code ranges, each filling a proportional section of the waffle grid.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "waffle",
+  "title": "Response status breakdown",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters", <1>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ],
+      "color": { <2>
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "color_code", "value": "#209280" } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "color_code", "value": "#CC5642" } }
+        ]
+      }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. `filters` creates one waffle section per KQL query, letting you define arbitrary status categories rather than grouping by raw field values.
+2. `color` assigns explicit hex colors to each category by label — green for success, yellow for client errors, red for server errors.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "Response status breakdown",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "filters", <1>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ],
+      "color": { <2>
+        "mode": "categorical",
+        "palette": "default",
+        "mapping": [
+          { "values": ["Success (2xx/3xx)"], "color": { "type": "color_code", "value": "#209280" } },
+          { "values": ["Client errors (4xx)"], "color": { "type": "color_code", "value": "#D6BF57" } },
+          { "values": ["Server errors (5xx)"], "color": { "type": "color_code", "value": "#CC5642" } }
+        ]
+      }
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}'
+```
+
+1. `filters` creates one waffle section per KQL query, letting you define arbitrary status categories rather than grouping by raw field values.
+2. `color` assigns explicit hex colors to each category by label — green for success, yellow for client errors, red for server errors.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **OS distribution**
 :   Show the distribution of operating systems used by your website visitors:
 
@@ -194,3 +441,83 @@ The following examples show various configuration options for building impactful
     * **Metric**: Count
 
 ![Waffle chart showing OS distribution](/explore-analyze/images/waffle-example-os.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a waffle chart grouped by operating system, where each colored section represents a different OS and its size shows the proportion of visitors using it.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "waffle",
+  "title": "OS distribution",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
+  "group_by": [ <1>
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "limit": 5
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } } <2>
+}
+```
+
+1. `group_by` splits the waffle into sections by `machine.os.keyword`, with the top 5 OSes each getting a proportionally sized colored section.
+2. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "waffle",
+  "title": "OS distribution",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [{ "operation": "count", "format": { "type": "number" }, "filter": { "expression": "" } }],
+  "group_by": [ <1>
+    {
+      "operation": "terms",
+      "fields": ["machine.os.keyword"],
+      "limit": 5
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } } <2>
+}'
+```
+
+1. `group_by` splits the waffle into sections by `machine.os.keyword`, with the top 5 OSes each getting a proportionally sized colored section.
+2. `percentage` mode labels each section with its share of total traffic, which maps naturally to the waffle's 100-square grid.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

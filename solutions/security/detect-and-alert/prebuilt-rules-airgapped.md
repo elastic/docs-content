@@ -18,7 +18,7 @@ description: Learn how to install and update Elastic prebuilt detection rules in
 * [Manually transfer prebuilt rules](#import-export-airgapped): Export rules from an internet-connected {{elastic-sec}} instance and import them into your air-gapped environment. This is a simpler approach for one-time transfers or when container infrastructure isn't available.
 
 ::::{note}
-A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond whats bundled with your {{kib}} version, use one of the methods described on this page.
+A set of prebundled detection rules that you can install without a {{package-registry}} are included when [`xpack.fleet.isAirGapped`](kibana://reference/configuration-reference/fleet-settings.md#general-fleet-settings-kb) is set to `true`. However, to receive rule updates beyond what's bundled with your {{kib}} version, use one of the methods described on this page.
 ::::
 
 :::{admonition} Air-gapped deployment setup

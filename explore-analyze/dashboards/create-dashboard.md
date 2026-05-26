@@ -1,20 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+navigation_title: Create from the UI
 description: Create a new Kibana dashboard from scratch by adding visualizations, controls, and organizing panels to display your data insights.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
-# Create a dashboard [create-dashboard]
+# Create a dashboard from the UI [create-dashboard]
 
-Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data that meets your specific monitoring and analysis needs.
+Create a new dashboard in {{product.kibana}} to start visualizing and monitoring your data. Once created, you can add visualizations, configure interactive controls, and organize panels to build a comprehensive view of your data.
 
-:::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
+:::{tip} - New ways to create dashboards
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
+New ways to create dashboards are available. You can also [create dashboards programmatically](create-dashboards-programmatically.md) using REST APIs, or [create dashboards using AI](create-dashboards-using-ai.md) through natural language.
 :::
 
 ## Requirements [create-dashboard-requirements]
@@ -38,8 +41,10 @@ Before creating a dashboard, ensure you have:
     * [**Add annotations or navigation panels**](../visualize.md#panels-editors). Make your dashboard more informative and easier to read with sections, text, and images.
     * [**Add controls**](add-controls.md). Define a set of interactive filters (options lists, range or time sliders) that you and future users of this dashboard can use to explore its data.
 
+    {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can add up to 100 panels to a dashboard. Refer to [Panel limits](arrange-panels.md#dashboard-panel-limits) for the full breakdown.
+
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
-5. Define the main settings of your dashboard from the **Settings** menu located in the toolbar.
+5. Define the main settings of your dashboard from the **Settings** menu in the application menu.
 
     1. A meaningful title, description, and [tags](../find-and-organize/tags.md) allow you to find the dashboard quickly later when browsing your list of dashboards or using the {{kib}} search bar.
     2. Additional display options allow you unify the look and feel of the dashboard’s panels:
@@ -47,28 +52,38 @@ Before creating a dashboard, ensure you have:
         * **Store time with dashboard** — Saves the specified time filter.
         * **Use margins between panels** — Adds a margin of space between each panel.
         * **Show panel titles** — Displays the titles in the panel headers.
+        * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` **Show panel borders** — Displays a border around each panel. Turn off for a cleaner look. Individual panels can override this setting from their own settings.
         * **Sync color palettes across panels** — Applies the same color palette to all panels on the dashboard.
         * **Sync cursor across panels** — When you hover your cursor over a time series chart or a heatmap, the cursor on all other related dashboard charts automatically appears.
         * **Sync tooltips across panels** — When you hover your cursor over a **Lens** chart, the tooltips on all other related dashboard charts automatically appear.
+        * {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard** — Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when anyone opens it.
 
     3. Click **Apply**.
        
-       ![Change and apply dashboard settings](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4a6e9807f1fac9f8/6750ee9cef6d5a250c229e50/dashboard-settings-8.17.0.gif "title =50%")
 
 
-6. Save the dashboard.
+6. Save the dashboard. When saving, you can configure the following options:
 
-    {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` When you save the dashboard for the first time, you can manage dashboard permissions.
+    - **Title** and **Description**: Give the dashboard a meaningful name and description so you and others can find it later.
+    - **Tags**: Add [tags](../find-and-organize/tags.md) to organize and categorize the dashboard.
+    - **Store time with dashboard**: Saves the current time filter with the dashboard.
+    - {applies_to}`serverless: preview` {applies_to}`stack: unavailable` **Store CPS scope with dashboard**: Saves the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) with the dashboard so it restores automatically when opened. When this option is not active, the dashboard opens with the {{cps-init}} scope currently active for the session.
+    - {applies_to}`serverless:` {applies_to}`stack: ga 9.3+` **Permissions**: Control who can access the dashboard. You can share with one of the following permissions:
+      - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
+      - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it.
+    
+      :::{include} ../_snippets/dashboard-ownership.md
+      :::
 
     :::{image} /explore-analyze/images/save-as-new-dashboard.png
     :screenshot:
     :width: 400px
     :::
 
-    When you create a dashboard, you become its owner and control who can access it. You can share your dashboard with one of the following permissions:
-    - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
-    - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator. 
 
-    :::{include} ../_snippets/dashboard-ownership.md
-    :::
+
+
+## Create a dashboard with {{agent-builder}}
+
+You can also create dashboards through natural language chat with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/chat.md) agents. Describe what you want to visualize and the agent builds a dashboard with {{esql}}-powered visualization panels. You can iterate on the dashboard in conversation before saving it. To learn more, refer to [Dashboards and visualizations in chat](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md).
 
