@@ -21,6 +21,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.1 [elastic-observability-9.4.1-release-notes]
+
+There are no user-facing changes in {{observability}} for the 9.4.1 release.
+
 ## 9.4.0 [elastic-observability-9.4.0-release-notes]
 
 ### Features and enhancements [elastic-observability-9.4.0-features-enhancements]
@@ -647,7 +651,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Fixes layout of SLO management page combo box filter [#239418]({{kib-pull}}239418).
 * Removes {{es}} `_sources` from query responses [#239205]({{kib-pull}}239205).
-* Fixes rule condition chart parser replacing metric names in filter values [#238849]{{kib-pull}}(238849).
+* Fixes rule condition chart parser replacing metric names in filter values [#238849]({{kib-pull}}238849).
 * Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
 * Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
 * Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).

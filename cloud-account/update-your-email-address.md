@@ -33,9 +33,9 @@ If you log in using Google or Microsoft Sign-In, follow these steps to update yo
 2. Follow the instructions in the "Reset your password" email.
 3. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), update your [User settings](https://cloud.elastic.co/user/settings) to the new email address.
 
-## Changing your email address with an Azure Marketplace account
+## Changing your email address with a Microsoft Marketplace account
 
-If your organization is associated with [Azure Marketplace](../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can’t change your primary email address using the above methods. Instead, [invite another user](../deploy-manage/users-roles/cloud-organization/manage-users.md) with the desired email address to join your organization.
+If your organization is associated with [Microsoft Marketplace](../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can’t change your primary email address using the above methods. Instead, [invite another user](../deploy-manage/users-roles/cloud-organization/manage-users.md) with the desired email address to join your organization.
 
 ## Sign up using an existing email address [sign-up-existing]
 
