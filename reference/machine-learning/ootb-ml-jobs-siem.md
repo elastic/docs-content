@@ -1341,7 +1341,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.0-9.4}
+:::{applies-item} {stack: removed 9.5+, ga = 9.4}
 
 `packetbeat_dns_tunneling_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1375,7 +1375,7 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.0-9.4}
+:::{applies-item} {stack: removed 9.5+, ga = 9.4}
 
 `packetbeat_rare_dns_question_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
