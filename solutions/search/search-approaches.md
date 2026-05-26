@@ -21,7 +21,7 @@ The following table provides an overview of the fundamental search techniques av
 | Name | Description | Use when |
 |------|-------------|----------|
 | [**Full-text search**](full-text.md) | Traditional lexical search with analyzers and relevance tuning | Exact words and phrases in the query should match the index. You want fast keyword matching without ML setup. |
-| [**Semantic search**](semantic-search.md) | Meaning-based search using NLP models to match intent, not just keywords | Queries use everyday language or synonyms instead of exact index terms. You prefer managed workflows like [`semantic_text`](semantic-search/semantic-search-semantic-text.md). |
+| [**Semantic search**](semantic-search.md) | Search based on meaning and intent, not just keywords. A use case of vector search.| Queries use everyday language or synonyms instead of exact index terms. Get started with the managed [`semantic_text`](semantic-search/semantic-search-semantic-text.md) workflow. |
 | [**Vector search**](vector.md) | Similarity search using vector embeddings stored in vector fields | You bring your own embeddings or need direct control over vector fields and models. |
 | [**Hybrid search**](hybrid-search.md) | Combines full-text and semantic search in one request | You need exact keyword matches and meaning based matches in one result set. |
 | [**Ranking and reranking**](ranking.md) | Post-processing results to improve relevance | First stage retrieval is good enough but top results need finer ordering. |
