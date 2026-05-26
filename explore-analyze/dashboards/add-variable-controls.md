@@ -10,11 +10,11 @@ products:
 
 # Add variable controls with ES|QL [add-variable-control]
 
-Variable controls let you bind interactive controls to variables in your {{esql}} visualization queries. Unlike standard [dashboard controls](add-controls.md) that filter using data view fields, variable controls work directly with {{esql}} queries to enable dynamic filtering, grouping, and function selection.
+Variable controls bind interactive controls to variables in your {{esql}} visualization queries. Unlike the standard [dashboard controls](dashboard-controls.md) that filter using data view fields, variable controls work directly with {{esql}} queries to enable dynamic filtering, grouping, and function selection.
 
 :::{note}
-:applies_to: stack: ga 9.0-9.1
-In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
+:applies_to: {"stack": "ga 9.0-9.1"}
+In versions 9.0 and 9.1, variable controls are called {{esql}} controls.
 :::
 
 ## Before you begin
@@ -25,23 +25,24 @@ In versions `9.0` and `9.1`, variable controls are called {{esql}} controls.
 
 ## Create a variable control [create-variable-control]
 
-You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
+Variable controls act as variables in your {{esql}} visualization queries. When you write an {{esql}} query, the autocomplete suggests inserting a control for field values, field names, function configuration, or function names.
 
-{applies_to}`{ serverless: ga, stack: ga 9.4 }` When you add a variable control from an {{esql}} panel, for example, by choosing **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+Only **Options lists** are supported for variable controls. Options can be:
 
-Only **Options lists** are supported for {{esql}}-based controls. Options can be:
-- values or fields that can be static or defined by a query
-- {applies_to}`stack: ga 9.1` functions 
+- Values or fields, either static or defined by a query.
+- {applies_to}`stack: ga 9.1` Functions.
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
-If you added it by starting from a query, the control is directly inserted in that query and you can continue editing it.
-You can then insert it in any other {{esql}} visualization queries by typing the control's name.
+When you create a control from a query, the variable is inserted into that query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
 
 :::{tip}
-You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+:applies_to: {"serverless": "ga", "stack": "ga 9.4"}
+When you create a variable control from an {{esql}} panel, for example by selecting **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This makes the control apply only to that visualization and exposes visualization configuration such as date histogram interval controls to dashboard users.
 :::
+
+To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the dashboard toolbar. You can then reference the control by name in any {{esql}} visualization query.
 
 :::{include} ../_snippets/variable-control-examples.md
 :::
@@ -57,15 +58,13 @@ serverless: preview
 
 ## Chain variable controls [chain-variable-controls]
 ```{applies_to}
+stack: ga 9.3
 serverless: ga
-stack: ga 9.3+
 ```
 
-You can set up variable controls in such a way that the selection of one control determines the options available for another control.
+Chain variable controls so that the selection in one control determines the options available in another. This is useful when you work with data from multiple indices or need hierarchical filtering, because it narrows control selections dynamically without filtering the entire dashboard.
 
-This allows you to narrow down control selections dynamically without affecting the entire dashboard, which is especially useful when working with data from multiple indices or when you need hierarchical filtering.
-
-To chain variable controls, you reference one control's variable in another control's {{esql}} query using the `?variable_name` syntax.
+To chain variable controls, reference one control's variable in another control's {{esql}} query using the `?variable_name` syntax.
 
 **Example**: You create a dashboard that analyzes web traffic by region and IP address. Next, you want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
 
