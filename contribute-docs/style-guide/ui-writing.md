@@ -117,7 +117,7 @@ You can adapt these patterns and the link to the search bar documentation to mat
 The Kibana chrome, the persistent layout that wraps every app, evolves over time. Use these names consistently when you refer to its parts in documentation.
 
 :::{image} images/kibana-chrome-layout.svg
-:alt: Wireframe of the Kibana chrome showing the global header, navigation menu, secondary navigation, application menu, app workspace, flyout, and sidebar regions.
+:alt: Wireframe of the Kibana chrome showing the global header, navigation menu, secondary navigation, application menu, workspace, flyout, and sidebar regions.
 :::
 
 | Term | What it refers to |
@@ -127,9 +127,9 @@ The Kibana chrome, the persistent layout that wraps every app, evolves over time
 | &nbsp;&nbsp;&nbsp;&nbsp;**Solution view** | The per-space setting that controls the **navigation menu**. Possible values: Search, Observability, Security, or Classic. |
 | &nbsp;&nbsp;&nbsp;&nbsp;**Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |
 | **Secondary navigation** | The panel that opens to the right of the navigation menu when a top-level item expands into sub-items. |
-| **Application menu** | The bar above the app workspace that hosts app-specific actions. |
-| **App workspace** | The main content area of the current app. "Workspace" is also fine when the context is unambiguous. |
-| **Flyout** | A panel that slides in from the right of the app workspace to show contextual content. |
+| **Application menu** | The bar above the workspace that hosts app-specific actions. |
+| **Workspace** | The main content area of the current app. |
+| **Flyout** | A panel that slides in from the right of the workspace to show contextual content. |
 | **Sidebar** | The global, resizable right-hand panel where plugins register apps (for example, the Agent Builder chat). |
 
 This table covers the main parts of the chrome. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table above as your starting point, then introduce additional names only when a section requires it.
