@@ -3,7 +3,7 @@ navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
-description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, time filtering, variables, and query management.
+description: Overview of the ES|QL editor in Kibana, including query structure, editor tools, AI assistance, time filtering, variables, and query management.
 applies_to:
   stack: ga
   serverless: ga
@@ -67,6 +67,55 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In **Discover**, the editor includes interactive browsers for selecting data sources and field names from the autocomplete menu. Refer to [](/explore-analyze/discover/try-esql.md#discover-esql-resource-browsers) for details.
 
+#### AI assistance [esql-kibana-ai-assistance]
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+When the editor is connected to a large language model (LLM), you can describe what you want in plain language and have the LLM generate {{esql}} for you, or ask it to fix a query that fails validation. To generate a full query from a natural-language prompt instead, use the editor's [search bar](#esql-kibana-quick-search-nl).
+
+**Requirements**
+
+- For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
+- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+
+Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior.
+
+##### Generate {{esql}} from a comment
+
+Write a `//` comment that describes what you want, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). The editor sends your comment to the LLM and inserts the generated {{esql}} on the next line.
+
+You can use this to:
+
+- Start a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
+- Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the LLM generates a single pipe to append. If the LLM determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
+
+While you write, the editor offers two hints to remind you how to invoke the feature:
+
+- On an empty line in a non-empty editor: `Type // and press ⌘+J to ask AI to add a step`.
+- On a line that starts with `//`: `Press ⌘+J to generate`.
+
+The placeholder shown in an empty editor also mentions the shortcut.
+
+While the LLM is generating, an italic `Generating...` indicator appears next to your comment. Pressing the shortcut again cancels the in-flight request and starts a new one.
+
+When the generated code is ready, the editor highlights it and shows review actions:
+
+- **Keep** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) accepts the change and leaves your comment in place so you can refine it and regenerate.
+- **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) removes the generated code.
+
+When the LLM rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
+
+##### Fix query errors with AI
+
+When your query fails validation, hover over the underlined error in the editor. The error popup includes a **✨ Fix with AI** link. Select it to send the query and the error to the LLM and have it propose a corrected version.
+
+The original lines are shown with a strikethrough, and the proposed replacement appears underneath, highlighted. The same review actions as for comment-driven generation apply:
+
+- **Keep AI fix** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
+- **Undo AI fix** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`pipeBreaks` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
@@ -92,6 +141,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
+| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-assistance) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-quick-search) |
 
 :::{tip}
@@ -130,7 +180,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
+You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use. To generate or fix individual pipes directly inside an existing query, use [AI assistance in the editor](#esql-kibana-ai-assistance) instead.
 
 **Requirements**
 
