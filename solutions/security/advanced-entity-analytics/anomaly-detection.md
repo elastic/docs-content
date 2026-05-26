@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/machine-learning.html
   - https://www.elastic.co/guide/en/serverless/current/security-machine-learning.html
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
     security: ga all
 products:
