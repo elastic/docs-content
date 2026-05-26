@@ -35,7 +35,7 @@ On {{stack}}, automatic updates are supported for the current {{elastic-sec}} ve
 Before applying updates, you can examine what's changing in each rule.
 
 1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the **Rules** table, select the **Rule Updates** tab.
+2. In the Rules table, select the **Rule Updates** tab.
 
     ::::{note}
     The **Rule Updates** tab doesn't appear if all your installed prebuilt rules are up to date.
