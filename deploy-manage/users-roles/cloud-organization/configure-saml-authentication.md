@@ -147,6 +147,8 @@ If your configuration is valid, the following details of the service provider (S
 * **Service provider Entity ID**: The unique identifier that allows your IDP to recognize and validate requests from {{ecloud}}.
 * **Service provider ACS URL**: The {{ecloud}} URL that receives SAML assertions from your IdP.
 * **Metadata URL**: The link to an XML metadata file that contains the Elastic service provider metadata. If your IdP accepts metadata files, then you can use this file to configure your IdP.
+* **Request signing certificate**: The certificate that can be used to verify the signature of SAML requests from {{ecloud}} to your IdP.
+* **Encryption certificate**: The certificate that can be used by your IdP to encrypt SAML assertions in the SAML response sent to {{ecloud}}.
 
 
 #### Update the SAML 2 application in your IdP [ec_update_the_saml_2_application_in_your_idp]
@@ -166,6 +168,14 @@ After you register the IdP in {{ecloud}} and configure your IdP, you can test au
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
 To guarantee ongoing access to the organization, you can also run a [role mapping verification](#role-mapping-verification) when you add, edit, or delete [role mappings](#role-mappings) that impact the organization owner role.
+
+### (Optional) Set up SAML request signature verification or SAML assertion encryption
+
+{{ecloud}} signs its SAML requests to your IdP. It also supports encrypted SAML assertions in the SAML response sent by your IdP.
+
+Some IdPs support SAML request signature verification to ensure only trusted parties are able to initiate SSO with the IdP. To enable verification, download the **Request signing certificate** from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
+
+Some IdPs support encrypting SAML assertions in the SAML response they send to the service provider. This can ensure that intermediate parties are unable to read the contents of the assertion during transit. {{ecloud}} supports encrypted SAML assertions but doesn't require it. To enable encrypted SAML assertions, download the **Encryption certificate** from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
 
 
 ## Enforce SSO [enforce-sso]
