@@ -514,6 +514,16 @@ serverless: ga
 ```
 When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
 
+**Style template** {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga`
+:   Apply a preset that sets the position and alignment of the primary metric, title, and secondary value in one step. Choose between:
+
+    - **Top**: Primary value and title at the top, secondary value below. All elements are left-aligned.
+    - **Middle**: Title at the top, primary value centered, secondary value below. All elements are center-aligned.
+    - **Bottom**: Title at the top, secondary and primary values at the bottom. The primary and secondary values are right-aligned. New metric visualizations use this template by default.
+    - **Custom**: Keep your individual appearance settings. Select **Custom**, then adjust each control independently in the **Details** section. Lens switches to **Custom** automatically when your settings no longer match any preset.
+
+    The detailed appearance controls described in the next section are grouped under a **Details** accordion. Select **Details** to expand the section and adjust individual settings, or select a different template to apply its preset values to all styling settings at once.
+
 **Primary metric**
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
