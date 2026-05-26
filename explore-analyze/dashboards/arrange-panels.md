@@ -19,7 +19,7 @@ To organize dashboard panels, you need the **All** privilege for the **Dashboard
 
 ## Dashboard grid layout and best practices [dashboard-grid-layout]
 
-Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default. Common fractions divide evenly into the grid: half (24), third (16), quarter (12), and sixth (8).
+Dashboards use a 48-column grid with rows of fixed height. When you move or resize a panel, it snaps to column and row boundaries on this grid. New panels are created at half width (24 columns) by default.
 
 Size panels to match what they show. Use these as starting points and adjust for the density of your data:
 
