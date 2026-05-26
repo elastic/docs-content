@@ -134,7 +134,6 @@ The Kibana chrome, the persistent layout that wraps every app, evolves over time
 
 This table covers the main parts of the chrome. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table above as your starting point, then introduce additional names only when a section requires it.
 
-For the phrasing to use when guiding users to a specific app or page, refer to [Referring to apps and pages](#referring-to-apps-and-pages).
 
 ## Choosing the right word
 
