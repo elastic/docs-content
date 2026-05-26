@@ -116,15 +116,24 @@ You can adapt these patterns and the link to the search bar documentation to mat
 
 The Kibana chrome, the persistent layout that wraps every app, evolves over time. Use these names consistently when you refer to its parts in documentation.
 
-% TODO: add a wireframe diagram of the Kibana chrome with the navigation menu, sidebar, and application menu labeled (similar to the "Chrome layout grid" wireframe from the Workspace Chrome team). Drop the image into `images/` and replace this placeholder with a `:::{image}` directive.
+:::{image} images/kibana-chrome-layout.svg
+:alt: Wireframe of the Kibana chrome showing the banner, global header, navigation menu, secondary navigation, application menu, app workspace, flyout, and sidebar regions.
+:::
 
 | Term | What it refers to |
 |---|---|
+| **Banner** | The optional strip at the very top of the page used for system-wide announcements. |
+| **Global header** | The top bar of the Kibana chrome that hosts global controls (for example, the global search field and the space switcher). |
 | **Navigation menu** | The primary navigation panel on the left side of Kibana. Its contents and structure depend on the **Solution view** setting. |
 | &nbsp;&nbsp;&nbsp;&nbsp;**Solution view** | The per-space setting that controls the **navigation menu**. Possible values: Search, Observability, Security, or Classic. |
-| &nbsp;&nbsp;&nbsp;&nbsp;**Classic navigation** or **Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |
+| **Secondary navigation** | The panel that opens to the right of the navigation menu when a top-level item expands into sub-items. |
+| **Application menu** | The optional bar above the app workspace that hosts app-specific actions. |
+| **App workspace** | The main content area of the current app. "Workspace" is also fine when the context is unambiguous. |
+| **Flyout** | A panel that slides in from the right of the app workspace to show contextual content. |
 | **Sidebar** | The global, resizable right-hand panel where plugins register apps (for example, the Agent Builder chat). |
-| **Application menu** | The bar above the application area that hosts app-specific actions. |
+
+This table covers the main parts of the chrome. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table above as your starting point, then introduce additional names only when a section requires it.
 
 For the phrasing to use when guiding users to a specific app or page, refer to [Referring to apps and pages](#referring-to-apps-and-pages).
 
