@@ -2,7 +2,6 @@
 
 * `experimental`
 * `preview`
-* `beta`
 * `ga`
 * `deprecated`
 * `removed`
