@@ -67,10 +67,7 @@ A dashboard with KPI metrics across the top row, charts in the middle, and a det
 
 A five-panel dashboard built in the [analytics tutorial](../kibana-data-exploration-learning-tutorial.md), showing a metric, two line charts, a bar chart, and an ES|QL table arranged using the same hierarchy:
 
-:::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
-:alt: A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom
-:screenshot:
-:::
+![A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom](/explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png "")
 ::::
 
 When you use the [Dashboards API](create-dashboards-programmatically.md) to author dashboards, you specify `x`, `y`, `w`, and `h` as grid coordinates directly. The dashboard editor's automatic packing no longer applies, so the same guidelines apply in your panel definitions.
