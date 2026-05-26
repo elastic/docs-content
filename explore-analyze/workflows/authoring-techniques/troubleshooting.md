@@ -283,9 +283,9 @@ Refer to [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summar
 
 ### Templated `agent-id` or `connector-id` isn't substituted [workflows-ts-ai-top-level-templating]
 
-**Symptom.** An AI step fails because a referenced resource isn't found — for example, `agent not found`, `connector not found` — even though the value is correctly defined in `consts:`.
+**Symptom.** An AI step fails because a referenced resource (for example, an agent or connector) isn't found, even though the value is correctly defined in `consts:`.
 
-**Cause.** Liquid templating only resolves inside the step's `with:` block. Top-level step fields — `agent-id`, `connector-id`, `inference-id`, `conversation-id`, alongside `name`, `type`, `if`, `foreach` — receive their string value as written. So `agent-id: "{{ consts.agent_id }}"` is sent to the runtime as the literal string `{{ consts.agent_id }}`, not substituted.
+**Cause.** Liquid expressions are evaluated only inside the step's `with:` block. On fields outside `with:`, including `agent-id`, `connector-id`, `inference-id`, and `conversation-id`, the engine sends the text to the runtime as-is. So `agent-id: "{{ consts.agent_id }}"` arrives at the API as the literal text `{{ consts.agent_id }}`, instead of being substituted with the value of `consts.agent_id`.
 
 **Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id` entirely (the agent encodes its connector). For fields that need templating, place them inside `with:` in snake-case (for example, `conversation_id`).
 
