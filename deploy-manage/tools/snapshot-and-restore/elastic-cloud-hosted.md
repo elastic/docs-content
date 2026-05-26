@@ -69,6 +69,15 @@ Alternatively, you can register a repository using the {{es}} [create snapshot r
 ::::{include} _snippets/ech-snapshot-repository-linking-note.md
 ::::
 
+### Set the default snapshot repository [snapshot-repo-default]
+
+```{applies_to}
+stack: ga 9.5
+```
+
+:::{include} _snippets/default-snapshot-repository.md
+:::
+
 ## Verify a repository [snapshots-repository-verification]
 
 When you register a snapshot repository, {{es}} automatically verifies that the repository is available and functional on all master and data nodes.

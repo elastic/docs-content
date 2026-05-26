@@ -49,6 +49,15 @@ To register a snapshot repository, click **Register repository**.
 
 You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
+### Set the default snapshot repository [snapshot-repo-default]
+
+```{applies_to}
+stack: ga 9.5
+```
+
+:::{include} _snippets/default-snapshot-repository.md
+:::
+
 ## Self-managed repository types [self-managed-repo-types]
 
 If you manage your own {{es}} cluster, you can use the following built-in snapshot repository types:
