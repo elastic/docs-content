@@ -17,12 +17,14 @@ Learn about the access requirements for detection features, including:
 
 - **Privilege requirements**: Cluster, index, and {{kib}} privileges that your role needs to enable detections, manage rules, view and edit alerts, and more
 - **Predefined {{serverless-full}} roles**: {{serverless-short}} roles with detection privileges
-- **Authorization model**: How rule authorization works using {{es}} API keys on Stack and {{ecloud}} API keys in {{serverless-full}} projects, and what each model means for privilege inheritance
+- **Authorization model**: How rule authorization works across Stack and {{serverless-full}} deployments, and what each API key model means for privilege inheritance
 
 For instructions on turning on the detections feature, refer to [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md).
 
 :::{important}
-Rules run in the background using the privileges of the user who last edited them. Ensure that only users with the appropriate access edit them. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
+Rules run in the background using an API key. The key type depends on your deployment. Stack deployments use [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited the rule, and Serverless projects use [{{ecloud}} API keys](../../../deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) tied to the original creator. 
+
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 :::
 
 ## About index privileges

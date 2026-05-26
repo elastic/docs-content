@@ -19,7 +19,9 @@ If you prefer to use the UI for creating rules, refer to [Using the UI](/solutio
 
 ::::{important}
 
-Rules run in the background using the privileges of the user who last edited them. When you create or modify a rule, {{elastic-sec}} generates an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) that captures a snapshot of your current privileges. If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the right privileges to either modify the rule or update the API key. To learn more, refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept).
+Rules run in the background using an API key. The key type depends on your deployment. Stack deployments use [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited the rule, and Serverless projects use [{{ecloud}} API keys](../../../deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) tied to the original creator. 
+
+Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
 
 ::::
 

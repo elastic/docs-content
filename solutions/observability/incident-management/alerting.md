@@ -38,10 +38,7 @@ You can filter this table by alert status or time period, customize the visible 
 
 ## Authentication [observability-alerting-authentication]
 
-Rules use an API key for authorization. The key's credentials are used to run all background tasks associated with the rule, including condition checks and triggered actions.
-
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
-:::
+Rules use an API key to authorize all background tasks, including condition checks and triggered actions. The key type depends on your deployment. Refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) for {{stack}} or [{{ecloud}} API keys](/deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) for Serverless.
 
 ## Next steps [observability-alerting-next-steps]
 
