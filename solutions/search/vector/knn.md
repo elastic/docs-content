@@ -109,7 +109,7 @@ To run an approximate kNN search:
     ...
     ```
 
-3. Query using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) or a [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md).
+3. Query using the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) or a [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md).
 
     ```console
     POST image-index/_search
@@ -138,7 +138,7 @@ For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW g
 {applies_to}`stack: ga 9.2` In addition to search-time parameters, HNSW and DiskBBQ expose index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
 ::::{tip}
-When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. See [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples.
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) with dense vector embeddings, you can also configure `index_options` directly on the field. Refer to [Optimizing vector storage with `index_options`](vector-storage-for-semantic-search.md) for examples.
 ::::
 
 ```console
@@ -186,7 +186,7 @@ When [quantization](elasticsearch://reference/elasticsearch/mapping-reference/de
 
 ### Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
-The approximate kNN search API also supports `byte` (int8) value vectors alongside `float` vectors. Use the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) to search a `dense_vector` field with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled. Byte vectors reduce memory footprint and can improve cache efficiency for large-scale vector similarity search.
+The approximate kNN search API also supports `byte` (int8) value vectors alongside `float` vectors. Use the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) to search a `dense_vector` field with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled. Byte vectors reduce memory footprint and can improve cache efficiency for large-scale vector similarity search.
 
 1. Explicitly map one or more `dense_vector` fields with [`element_type`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) set to `byte` and indexing enabled.
 
@@ -220,7 +220,7 @@ The approximate kNN search API also supports `byte` (int8) value vectors alongsi
     { "byte-image-vector": [11, 23], "title": "full moon" }
     ```
 
-3. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) ensuring the `query_vector` values are integers within the range [-128, 127].
+3. Run the search using the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) ensuring the `query_vector` values are integers within the range [-128, 127].
 
     ```console
     POST byte-image-index/_search
@@ -296,7 +296,7 @@ PUT quantized-image-index
     { "image-vector": [1.2, 0.1], "title": "full moon" }
     ```
 
-2. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn). When searching, the `float` vector is automatically quantized to a `byte` vector.
+2. Run the search using the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn). When searching, the `float` vector is automatically quantized to a `byte` vector.
 
     ```console
     POST quantized-image-index/_search
@@ -392,7 +392,7 @@ To avoid significant performance drawbacks, Lucene implements the following stra
 
 ### Combine approximate kNN with other features [_combine_approximate_knn_with_other_features]
 
-You can perform **hybrid retrieval** by combining the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) with a standard [`query`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-query). This blends vector similarity with lexical relevance, filters, and aggregations.
+You can perform **hybrid retrieval** by combining the [`knn` option]({{es-apis}}operation/operation-search#operation-search-body-application-json-knn) with a standard [`query`]({{es-apis}}operation/operation-search#operation-search-query). This blends vector similarity with lexical relevance, filters, and aggregations.
 
 ```console
 POST image-index/_search
@@ -468,48 +468,12 @@ Reference the deployed text embedding model or the model deployment in the `quer
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
 
+:::{tip}
+For an overview of `query_vector_builder` options (`text_embedding`, `embedding`, and `lookup`), refer to [Build query vectors for knn search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#build-query-vectors-for-knn-search).
+:::
+
+
 For more information on how to deploy a trained model and use it to create text embeddings, refer to this [end-to-end example](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md).
-
-### Use `lookup` to build the query vector [knn-query-vector-lookup]
-```{applies_to}
-stack: ga 9.4
-```
-
-If your query vector already exists in Elasticsearch, use the `lookup` query vector builder to fetch that vector directly from a document at search time.
-
-Use `lookup` when you want to:
-
-- Find similar items for recommendations
-- Retrieve related content from a seed document
-- Avoid an extra client round-trip to fetch a vector before searching
-
-The lookup source must reference a `dense_vector` field that contains a single vector value. As with any kNN search, the looked-up vector must be compatible with the target kNN field (same dimensions and same embedding model semantics).
-
-```js
-(...)
-{
-  "knn": {
-    "field": "product-vector",
-    "k": 10,
-    "num_candidates": 100,
-    "query_vector_builder": {
-      "lookup": { <1>
-        "id": "product-123", <2>
-        "index": "seed-products", <3>
-        "path": "product-vector", <4>
-        "routing": "tenant-a" <5>
-      }
-    }
-  }
-}
-(...)
-```
-
-1. Use the `lookup` query vector builder to retrieve the vector from an existing document.
-2. The ID of the source document that contains the vector to use for search.
-3. The name of the index that stores the source document.
-4. The vector field path in the source document. It must reference a `dense_vector` field containing a single vector value.
-5. Optional routing value used to retrieve the source document.
 
 ### Search multiple kNN fields [_search_multiple_knn_fields]
 
@@ -1238,7 +1202,7 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 * {{es}} uses the [HNSW algorithm](https://arxiv.org/abs/1603.09320) for efficient kNN. Like most approximate methods, HNSW trades perfect accuracy for speed, so results aren’t always the true *k* closest neighbors.
 
 ::::{note}
-Approximate kNN always uses the [`dfs_query_then_fetch`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) search type to gather the global top `k` matches across shards. You can’t set `search_type` explicitly for kNN search.
+Approximate kNN always uses the [`dfs_query_then_fetch`]({{es-apis}}operation/operation-search) search type to gather the global top `k` matches across shards. You can’t set `search_type` explicitly for kNN search.
 ::::
 
 ### Oversampling and rescoring for quantized vectors [dense-vector-knn-search-rescoring]
@@ -1429,7 +1393,7 @@ To run an exact kNN search, use a `script_score` query with a vector function.
     ...
     ```
 
-3. Use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to run a `script_score` query containing a [vector function](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md#vector-functions).
+3. Use the [search API]({{es-apis}}operation/operation-search) to run a `script_score` query containing a [vector function](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md#vector-functions).
 
     ::::{tip}
     To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.

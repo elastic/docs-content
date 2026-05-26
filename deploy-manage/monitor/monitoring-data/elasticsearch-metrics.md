@@ -107,9 +107,9 @@ To view {{ccr}} metrics, click **CCR**. For each follower index on the cluster, 
 
 * **Error**: Any exceptions returned for the most recent document in the selected time period.
 
-If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats) documentation.
+If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API]({{es-apis}}operation/operation-ccr-follow-stats) documentation.
 
-If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats).
+If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API]({{es-apis}}operation/operation-ccr-follow-stats).
 
 Learn more about [{{ccr-cap}}](../../tools/cross-cluster-replication.md).
 

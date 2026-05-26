@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Build automated workflows in Kibana to turn data insights into action.
 products:
   - id: kibana
@@ -125,8 +125,8 @@ Explore what you can automate:
 
 - [Use cases](/explore-analyze/workflows/use-cases.md): Browse security, observability, and AI-augmented patterns you can build with workflows today.
 
-Reference and authoring:
+Concepts, reference, and authoring:
 
+- [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
 - [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, pass data between steps, and handle errors.
-- [Reference](/explore-analyze/workflows/reference.md): Triggers, steps, and templating engine reference.
 - [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.

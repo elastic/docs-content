@@ -57,6 +57,8 @@ The default policy and repository are used when:
 
 In {{ech}}, you can [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters, but only within the same region.
 
+For API-driven deployment linking of platform-managed snapshots, refer to [Manage snapshot repositories in {{ech}}](snapshot-and-restore/elastic-cloud-hosted.md#register-snapshot-repos-ech).
+
 You can customize the snapshot retention settings in that policy to adjust them to your needs.
 
 To use a custom snapshot repository, [register a new snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) and [create another SLM policy](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
@@ -107,7 +109,7 @@ Snapshots don’t contain or back up:
 
 ### Feature states [feature-state]
 
-A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security, {{kib}}, {{fleet}}, or {{watcher}}. To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
+A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security, {{kib}}, {{fleet}}, or {{watcher}}. To retrieve a list of feature states, use the [Features API]({{es-apis}}operation/operation-features-get-features).
 
 ```console
 GET /_features

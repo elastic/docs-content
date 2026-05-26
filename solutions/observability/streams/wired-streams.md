@@ -2,6 +2,7 @@
 applies_to:
   stack: preview 9.2
   serverless: preview
+description: Wired streams receive log data through a dedicated endpoint and route it into child streams based on partitioning rules.
 products:
   - id: observability
   - id: cloud-serverless
@@ -31,7 +32,7 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-:applies_to: {"stack": "9.4+", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
 The `/logs` endpoint is deprecated and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 
@@ -223,7 +224,7 @@ Set the endpoint in the following configuration based on your {{stack}} version:
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
-Send data to the endpoint using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Refer to the following example for more information:
+Send data to the endpoint using the [Bulk API]({{es-apis}}operation/operation-bulk). Refer to the following example for more information:
 
 ```json
 POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.4+), or `logs` (stack 9.2–9.3)

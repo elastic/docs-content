@@ -75,10 +75,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 `server.timeouts`
 :   `checkin_timestamp`
-:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting may improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
+:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
 
 `checkin_long_poll`
-:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting may improve performance.
+:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance.
 
 `server.limits`
 :   `policy_throttle`
@@ -89,7 +89,7 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   How quickly {{fleet-server}} dispatches pending actions to the agents.
 
 `action_limit.burst`
-:   Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
+:   Burst of actions that might be dispatched before falling back to the rate limit defined by `interval`.
 
 `checkin_limit.max`
 :   Maximum number of agents that can call the checkin API concurrently.
@@ -101,7 +101,15 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   Burst of check-ins allowed before falling back to the rate defined by `interval`.
 
 `checkin_limit.max_body_byte_size`
-:   Maximum size in bytes of the checkin API request body.
+:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the Fleet UI despite monitors executing successfully. For example:
+
+    ```yaml
+    server:
+      limits:
+        max_body_byte_size: 104857600
+        checkin_limit:
+          max_body_byte_size: 104857600
+    ```
 
 `artifact_limit.max`
 :   Maximum number of agents that can call the artifact API concurrently. It allows the user to avoid overloading the {{fleet-server}} from artifact API calls.

@@ -23,6 +23,70 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+**Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4**
+
+**Impact**<br>
+Upgrading from 9.2.x to 9.3.x can fail if any rule (including detection rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**<br>
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+:::
+
+:::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
+**Applies to: 9.4.0**
+
+**Impact**<br>
+
+
+After you upgrade to v9.4, any Detection Rules created by users without access to the `.entities.v2.latest.security_*` index (i.e., the entity store) do not enrich their alerts with entity analytics data. This means that alerts which contain user or host entities and were created from rules authored by users without access to the index show as failures. The alert document still generates, but without entity analytics data.
+
+When a rule fires successfully and generates an alert, Asset Criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is a feature on by default in the default space.
+
+Detection Rules use their author’s permissions to enrich alerts with entity data. When rules are created or modified, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate and actions are still scheduled).
+
+**Workaround**<br>
+
+Give appropriate `read` index-level permissions for the entity store index and alias in the appropriate space (`.entities.v2.latest.security_${spaceId}*` and `entities-latest-${spaceId}*`)  to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.1
+:::
+
+:::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4
+**Applies to: {{agent}} 9.3.4**
+
+**Impact**<br>
+If you use the SentinelOne integration, response actions such as host isolation fail with a `500 Internal Server Error` (`search_phase_execution_exception`). This is caused by a bug in {{agent}} 9.3.4 where a performance optimization incorrectly serializes certain timestamp fields from Beats-based inputs and integrations to an empty `{}` JSON object instead of a valid timestamp value.
+
+The affected field is `event.created`. When this field is empty, {{kib}} cannot execute the underlying search that response actions depend on. For example, SentinelOne alert documents are written with `event.created` set to `{}` instead of a timestamp:
+
+```json
+  "event": {
+    "dataset": "sentinel_one.agent",
+    "created": {}
+  }
+```
+
+This does not affect the primary `@timestamp` field.
+
+**Workaround**<br>
+Downgrade to {{agent}} 9.3.3, which is not affected by this issue.
+
+**Fix**<br>
+The performance optimization has been reverted. A fix will be available in the next release. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+:::
+
 :::{dropdown} Details about gap fills aren't properly updated
 
 Applies to: 9.3
@@ -390,7 +454,7 @@ Resolved in {{elastic-defend}} 9.0.1
 :::
 
 
-:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernal driver causes slow down on Windows systems
+:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernel driver causes slow down on Windows systems
 
 Applies to: {{elastic-defend}} 9.0.0
 

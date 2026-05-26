@@ -87,6 +87,9 @@ The command returns a response similar to the following:
 
 If you do not receive a similar response, your system returns an error indicating one or more reasons for the failure as outlined in the following table. Use the corresponding proposed solution to fix the issue.
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 | Reason for failure | Proposed solution |
 | :--- | :--- |
 | The {{es}} endpoint URL you specified is incorrect/not reachable | - Make sure you are using the correct protocol in the cluster URL:`http` or `https`. <br> - Make sure you are providing the correct port. The default port is **9200**. <br> - If you have verified that the URL is correct, your network team might need to open the firewall to allow-list this URL. |
@@ -94,7 +97,7 @@ If you do not receive a similar response, your system returns an error indicatin
 | Your username or password is incorrect | - Recheck for typos. <br> - Ensure that your provided user has the [necessary privileges](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#configure-agent). We do not recommend providing a privileged superuser like `elastic` for this purpose.|
 | You are providing both the API key and username/password | Choose one type of authentication only. |
 | A proxy is blocking communication with your {{es}} cluster | You might have to [configure `NO_PROXY`](/reference/fleet/host-proxy-env-vars.md). |
-| You are using a custom SSL/TLS configuration with {{es}} | Disable SSL/TLS verification so that your system trusts all certificates. We do not recommend disabling verification in production environments. <br><br> If you are using API key authentication, run the following command: <br><br>`curl -XGET --insecure -i $AUTOOPS_ES_URL \ -H "Authorization: ApiKey $AUTOOPS_ES_API_KEY"`. <br><br> If you are using username/password authentication, run the following command: <br><br> `curl -XGET --insecure -i $AUTOOPS_ES_URL \ -u $AUTOOPS_ES_USERNAME` <br><br> If the issue is resolved, you need to [configure {{agent}} with your custom SSL/TLS certificate](/deploy-manage/monitor/autoops/autoops-sm-custom-certification.md). If the issue persists, contact [Elastic support](https://support.elastic.co/).| 
+| You are using a custom SSL/TLS configuration with {{es}} | Add `--insecure` to your curl command to temporarily deactivate SSL/TLS certificate verification and test whether a certificate issue is causing the problem. We do not recommend disabling verification in production environments. <br><br> If you are using API key authentication: `curl --insecure -XGET -i $AUTOOPS_ES_URL \ -H "Authorization: ApiKey $AUTOOPS_ES_API_KEY"` <br><br> If you are using username/password authentication: `curl --insecure -XGET -i $AUTOOPS_ES_URL \ -u $AUTOOPS_ES_USERNAME` <br><br> If the issue is resolved, you need to [configure {{agent}} with your custom SSL/TLS certificate](/deploy-manage/monitor/autoops/autoops-sm-custom-certification.md). If the issue persists, contact [Elastic support](https://support.elastic.co/).| 
 | You are connecting a local development cluster using Docker without specifying `--network host` | - Make sure you are following all the steps to [connect your local development cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md#connect-your-local-development-cluster-to-autoops). <br> - In the [Install agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#install-agent) step, make sure you are replacing `docker run -d \` with `docker run -d --network host \`. |
 
 ### 2. Test your cluster's registration with {{ecloud}} 
