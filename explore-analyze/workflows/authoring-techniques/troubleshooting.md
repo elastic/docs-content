@@ -281,6 +281,31 @@ The same pattern applies to `agent-id` and `inference-id` on AI steps. Refer to 
 
 Refer to [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize).
 
+### Templated `agent-id` or `connector-id` isn't substituted [workflows-ts-ai-top-level-templating]
+
+**Symptom.** An AI step fails because a referenced resource isn't found — for example, `agent not found`, `connector not found` — even though the value is correctly defined in `consts:`.
+
+**Cause.** Liquid templating only resolves inside the step's `with:` block. Top-level step fields — `agent-id`, `connector-id`, `inference-id`, `conversation-id`, alongside `name`, `type`, `if`, `foreach` — receive their string value as written. So `agent-id: "{{ consts.agent_id }}"` is sent to the runtime as the literal string `{{ consts.agent_id }}`, not substituted.
+
+**Resolution.** Use literal values in top-level fields. For `ai.agent`, drop `connector-id` entirely (the agent encodes its connector). For fields that need templating, place them inside `with:` in snake-case (for example, `conversation_id`).
+
+```yaml
+# Wrong — Liquid in top-level fields isn't resolved
+- type: ai.agent
+  agent-id: "{{ consts.agent_id }}"
+  connector-id: "{{ consts.connector_id }}"
+  with:
+    message: "..."
+
+# Right — literal top-level values
+- type: ai.agent
+  agent-id: elastic-ai-agent
+  with:
+    message: "..."
+```
+
+Tracked engine-side at [elastic/security-team#17236](https://github.com/elastic/security-team/issues/17236).
+
 ## Composition [workflows-ts-composition]
 
 ### `workflow.execute` rejects `workflow_id` [workflows-ts-workflow-id]

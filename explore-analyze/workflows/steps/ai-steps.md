@@ -26,6 +26,8 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 
 :::{important}
 `connector-id`, `agent-id`, and `inference-id` are **top-level step fields** (alongside `name`, `type`, `if`, `foreach`), written in **kebab-case**. They are not nested under `with`, and not `connectorId`. Inside `with`, most AI parameters use `camelCase` (`systemPrompt`, `maxLength`, `includeRationale`). Authentication-style references stay at the top level in kebab-case; content parameters stay inside `with` in camelCase.
+
+These top-level fields don't currently resolve Liquid templating — `agent-id: "{{ consts.agent_id }}"` is passed through literally, not substituted. Use literal values for these fields. Tracked at [elastic/security-team#17236](https://github.com/elastic/security-team/issues/17236).
 :::
 
 ## `ai.prompt` [ai-prompt]
