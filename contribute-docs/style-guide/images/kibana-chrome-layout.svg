@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 640" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 600" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
   <title id="title">Kibana chrome layout</title>
-  <desc id="desc">Wireframe of the Kibana chrome, showing the Banner, Global header, Navigation menu, Secondary navigation, Application menu, App workspace, Flyout, and Sidebar regions.</desc>
+  <desc id="desc">Wireframe of the Kibana chrome, showing the Global header, Navigation menu, Secondary navigation, Application menu, App workspace, Flyout, and Sidebar regions.</desc>
 
   <style>
     .box { stroke: #b8c0d0; stroke-width: 1.5; stroke-dasharray: 4 3; }
     .label { fill: #34495e; font-size: 16px; text-anchor: middle; dominant-baseline: middle; }
     .label-bold { font-weight: 600; }
-    .label-muted { fill: #6c7a89; font-size: 13px; }
   </style>
 
-  <!-- Background -->
-  <rect x="0" y="0" width="1024" height="640" fill="#ffffff"/>
-
-  <!-- Banner (optional) -->
-  <rect class="box" x="16" y="14" width="992" height="28" fill="#fdf6e3" rx="2"/>
-  <text class="label label-bold" x="512" y="28" fill="#9c8b4a">Banner <tspan class="label-muted" fill="#9c8b4a" font-weight="400">(optional)</tspan></text>
+  <rect x="0" y="0" width="1024" height="600" fill="#ffffff"/>
 
   <!-- Global header -->
-  <rect class="box" x="16" y="50" width="992" height="36" fill="#eef1f6" rx="2"/>
-  <text class="label label-bold" x="512" y="68">Global header</text>
+  <rect class="box" x="16" y="20" width="992" height="36" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="512" y="38">Global header</text>
 
   <!-- Navigation menu (left vertical strip) -->
-  <rect class="box" x="16" y="96" width="48" height="500" fill="#eef1f6" rx="2"/>
-  <text class="label label-bold" x="40" y="346" transform="rotate(-90 40 346)">Navigation menu</text>
+  <rect class="box" x="16" y="68" width="48" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="40" y="326" transform="rotate(-90 40 326)">Navigation menu</text>
 
   <!-- Secondary navigation -->
-  <rect class="box" x="72" y="96" width="148" height="500" fill="#eef1f6" rx="2"/>
-  <text class="label label-bold" x="146" y="338">Secondary</text>
-  <text class="label label-bold" x="146" y="358">navigation</text>
+  <rect class="box" x="72" y="68" width="148" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="146" y="316">Secondary</text>
+  <text class="label label-bold" x="146" y="336">navigation</text>
 
-  <!-- Application menu (optional) -->
-  <rect class="box" x="228" y="96" width="392" height="40" fill="#eef1f6" rx="2"/>
-  <text class="label label-bold" x="424" y="116">Application menu <tspan class="label-muted" font-weight="400">(optional)</tspan></text>
+  <!-- Application menu -->
+  <rect class="box" x="228" y="68" width="392" height="40" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="424" y="88">Application menu</text>
 
   <!-- App workspace -->
-  <rect class="box" x="228" y="144" width="392" height="452" fill="#b9e8cf" rx="2"/>
-  <text class="label label-bold" x="424" y="370" fill="#1f4d3a">App workspace</text>
+  <rect class="box" x="228" y="116" width="392" height="468" fill="#b9e8cf" rx="2"/>
+  <text class="label label-bold" x="424" y="350" fill="#1f4d3a">App workspace</text>
 
   <!-- Flyout -->
-  <rect class="box" x="628" y="96" width="156" height="500" fill="#d2efe0" rx="2"/>
-  <text class="label label-bold" x="706" y="346" fill="#1f4d3a">Flyout</text>
+  <rect class="box" x="628" y="68" width="156" height="516" fill="#d2efe0" rx="2"/>
+  <text class="label label-bold" x="706" y="326" fill="#1f4d3a">Flyout</text>
 
   <!-- Sidebar -->
-  <rect class="box" x="792" y="96" width="216" height="500" fill="#eef1f6" rx="2"/>
-  <text class="label label-bold" x="900" y="346">Sidebar</text>
+  <rect class="box" x="792" y="68" width="216" height="516" fill="#eef1f6" rx="2"/>
+  <text class="label label-bold" x="900" y="326">Sidebar</text>
 </svg>
