@@ -425,6 +425,10 @@ toc:
                   - file: observability/infra-and-hosts/step-4-run-backend-applications.md
                   - file: observability/infra-and-hosts/step-5-next-steps.md
               - file: observability/infra-and-hosts/operate-universal-profiling-backend.md
+          - file: observability/infra-and-hosts/network-topology.md
+            children:
+              - file: observability/infra-and-hosts/network-topology/monitor-network-devices.md
+              - file: observability/infra-and-hosts/network-topology/field-reference.md
           - file: observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
