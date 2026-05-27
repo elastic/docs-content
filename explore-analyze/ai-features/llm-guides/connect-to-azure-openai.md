@@ -86,7 +86,13 @@ Finally, configure the connector in {{kib}}:
     4. (Optional) Alternatively, refer to the [API documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference) to learn how to create the URL manually.
 
 6. Under **API key**, enter one of your API keys.
-7. Click **Save & test**, then click **Run**.
+7. {applies_to}`stack: ga 9.2+`  (Optional) In the **Default model** field, enter a model name, for example `gpt-4o`.
+
+   :::{note}
+   This field is only required if you're routing requests through Azure API Management (APIM) or another proxy endpoint that cannot infer the model from the deployment URL. Standard Azure OpenAI deployments do not need it. When set, the value acts as a fallback: it is only injected into the request body when the request does not already specify a model.
+   :::
+
+8. Click **Save & test**, then click **Run**.
 
 Your LLM connector is now configured. The following video demonstrates these steps (click to watch).
 
