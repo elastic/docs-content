@@ -161,8 +161,8 @@ For example, when you create a Discover drilldown for a pie chart, you can click
 
 The following panel types support Discover drilldowns:
 
-* **Visualizations created with Lens**
-* {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **{{esql}} visualizations**
+* **Lens visualizations that use a data view**
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Lens visualizations that use {{esql}}**
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless:` On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
 
