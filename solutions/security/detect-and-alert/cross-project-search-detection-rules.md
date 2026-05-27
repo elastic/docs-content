@@ -12,7 +12,7 @@ description: Learn how detection rules work with cross-project search to query d
 :::{include} /solutions/_snippets/cps-sec-obs-rules.md
 :::
 
-If your data spans {{stack}} clusters rather than linked {{serverless-short}} projects, refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) instead.
+If your data spans ECH, ECE, ECK, or self-managed clusters rather than linked {{serverless-short}} projects, refer to [{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md) instead.
 
 ## {{cps-cap}} context in alerts and the event log [cps-context-in-alerts]
 
@@ -20,9 +20,9 @@ When a detection rule runs with {{cps}} enabled, the scope in effect at executio
 
 ### When scope fields appear [cps-scope-fields-when]
 
-Scope fields are written at rule execution time, not added to existing documents later. You need linked projects, a configured space-level {{cps}} scope, and at least one enabled detection rule that has run successfully with {{cps}} enabled.
+Scope fields are written at rule execution time, not added to existing documents later. You need [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), a [configured space-level {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md), and at least one enabled detection rule that has run successfully with {{cps}} enabled.
 
-On **alert documents**, `kibana.cps_scope.expression` and `kibana.cps_scope.linked_projects` are present only when that run generated an alert. Alerts from runs before {{cps}} was enabled are not updated retroactively.
+On **alert documents**, `kibana.cps_scope.expression` and `kibana.cps_scope.linked_projects` are present only when that run generated an alert. Alerts created before {{cps}} was enabled are not updated retroactively.
 
 On **event log entries**, `kibana.cps_scope_expression` and `kibana.cps_scope_linked_projects` are recorded for every {{cps}}-scoped execution, including runs that created no alerts.
 
@@ -51,11 +51,11 @@ To find rule executions that ran with a particular scope, run a search against t
 ```txt
 GET .kibana-event-log-*/_search
 {
-  "size": 5,
+  "size": 5,  <1>
   "query": {
-    "match": { "kibana.cps_scope_expression": "_alias:*" }
+    "match": { "kibana.cps_scope_expression": "_alias:*" }  <2>
   },
-  "_source": [
+  "_source": [  <3>
     "event.action",
     "message",
     "kibana.cps_scope_expression",
@@ -65,13 +65,8 @@ GET .kibana-event-log-*/_search
 }
 ```
 
-This request searches the event log indices (`.kibana-event-log-*`) for documents that have a `kibana.cps_scope_expression` value. It limits the response to five events and returns only the fields listed in `_source`, including the {{cps}} scope, linked projects, and space ID for each execution. The event log is a system index, so by default only users with a `superuser` role can run this search. For more example queries and details on required privileges, refer to the [event log index](/explore-analyze/alerting/alerts/event-log-index.md).
-
-
-:::{admonition} Before you run the example
-To run this request in {{dev-tools-app}} or your own API client, update the example first:
-
-1. In the `match` query, replace the value for `kibana.cps_scope_expression`. The example uses `_alias:*`; change this to the scope you want to find. To match the scope from a specific alert, copy the value from that alert's `kibana.cps_scope.expression` field.
-2. Change `size` to return more or fewer events.
+1. Change `size` to return more or fewer events.
+2. Replace `_alias:*` with the scope you want to find. To match the scope from a specific alert, copy the value from that alert's `kibana.cps_scope.expression` field.
 3. Edit the `_source` array to include the fields you need in the response.
-:::
+
+This request searches the event log indices (`.kibana-event-log-*`) for documents that have a `kibana.cps_scope_expression` value. It limits the response to five events and returns only the fields listed in `_source`, including the {{cps}} scope, linked projects, and space ID for each execution. The event log is a system index, so by default only users with a `superuser` role can run this search. For more example queries and details on required privileges, refer to the [event log index](/explore-analyze/alerting/alerts/event-log-index.md).
