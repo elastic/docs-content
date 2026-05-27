@@ -23,7 +23,7 @@ For deployments without internet access, refer to [Prebuilt rules in air-gapped 
 When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **{{siem-rules-ui}}** page.
 
 ::::{note}
-The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1 and 9.2.6.
 ::::
 
 :::{admonition} Automatic updates

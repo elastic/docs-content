@@ -36,7 +36,7 @@ Refer to [Predefined roles](/solutions/security/detect-and-alert/detections-priv
 To activate the detection engine, open the **{{siem-rules-ui}}** page. Find **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The engine initializes automatically when a user with [sufficient privileges](/solutions/security/detect-and-alert/detections-privileges.md) opens the page.
 
 ::::{note}
-The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1 and 9.2.6.
 ::::
 
 No additional configuration is required.
