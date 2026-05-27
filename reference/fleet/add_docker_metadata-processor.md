@@ -29,7 +29,7 @@ Each event is annotated with the following fields:
 | `container.id` | Container ID |
 | `container.name` | Container name |
 | `container.image.name` | Container image name |
-| `container.labels.<key>` | One field per Docker label. By default, dots (`.`) in label keys are replaced with underscores (`_`). Refer to [`labels.dedot`](#labels-dedot-behavior) for more information. |
+| `container.labels.<key>` | One field per Docker label. By default, dots (`.`) in label keys are replaced with underscores (`_`). Refer to the [working with labels](#labels-dedot-behavior) section for more information. |
 
 ### Working with labels [labels-dedot-behavior]
 
@@ -46,7 +46,7 @@ To preserve the original key names with dots, set `labels.dedot` to `false`. In 
 Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use [conditions-based autodiscover templates](/reference/fleet/conditions-based-autodiscover.md) instead.
 ::::
 
-The Docker provider exposes the same labels as variables for configuration templating (`${docker.container.labels.com.docker.compose.service}`). The provider preserves dots in the key for variable references, regardless of the `labels.dedot` setting. For more information, refer to [Docker provider](/reference/fleet/docker-provider.md).
+The Docker provider exposes the same labels as variables for configuration templating (`${docker.container.labels.com.docker.compose.service}`). The provider always references keys in the dotted format. For more information, refer to [Docker provider](/reference/fleet/docker-provider.md).
 
 ::::{note}
 When running {{agent}} in a container, you need to provide access to Docker’s unix socket in order for the `add_docker_metadata` processor to work. You can do this by mounting the socket inside the container. For example:
