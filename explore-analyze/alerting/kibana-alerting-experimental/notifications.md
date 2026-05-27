@@ -42,7 +42,7 @@ Multiple policies can match the same episode, and each runs independently. There
 ## How action policies are evaluated [how-action-policies-evaluated]
 
 
-{{kib}} runs a background process called the dispatcher that checks for eligible episodes on a short interval (around 10 seconds) and evaluates action policies against them. The dispatcher is separate from the rule schedule. Rules write events on their own cadence, and the dispatcher picks them up asynchronously.
+{{kib}} runs a background process called the dispatcher that checks for eligible episodes on a short interval (around 5 seconds) and evaluates action policies against them. The dispatcher is separate from the rule schedule. Rules write events on their own cadence, and the dispatcher picks them up asynchronously.
 
 For each enabled policy that is not snoozed, the dispatcher works through the following steps:
 
