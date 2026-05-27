@@ -23,7 +23,7 @@ There are two types of TLS certificate rule:
   :::
 
 
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
+:::{include} /solutions/_snippets/api-key-rules.md
 :::
 
 ## Synthetics TLS certificate rule [tls-rule-synthetics]

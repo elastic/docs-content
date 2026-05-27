@@ -34,15 +34,15 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
-:::
-
 ## Requirements
 
 To create inventory rules, you need the following:
 
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ### Indices used by this rule
 

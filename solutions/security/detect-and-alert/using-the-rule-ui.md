@@ -15,9 +15,6 @@ description: Step-by-step guide to create detection rules using the Kibana rule 
 
 # Create a detection rule using the UI [security-rules-create]
 
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
-:::
-
 Once the Detections feature is [turned on](/solutions/security/detect-and-alert/turn-on-detections.md), follow these steps to create a detection rule. At any step, you can preview the rule before saving it to see what kind of results you can expect.
 
 1. Define the [rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#rule-types). The configuration for this step varies depending on the rule type. For field descriptions specific to each type, refer to the [Rule types](/solutions/security/detect-and-alert/rule-types.md) section.
@@ -36,12 +33,8 @@ Once the Detections feature is [turned on](/solutions/security/detect-and-alert/
 If you prefer to create rules programmatically instead of using the UI, refer to [Using the API](/solutions/security/detect-and-alert/using-the-api.md).
 :::
 
-::::{important}
-
-Rules run in the background using an API key. The key type depends on your deployment. Stack deployments use [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited the rule, and Serverless projects use [{{ecloud}} API keys](../../../deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) tied to the original creator. 
-
+::::{important} 
 Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
-
 ::::
 
 ## Detection rule requirements

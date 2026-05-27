@@ -13,17 +13,9 @@ navigation_title: Create and manage rules
 
 # Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage rules for alerting. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
 
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
-:::
 
 ::::{note}
 :applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
@@ -31,6 +23,8 @@ Alerting enables you to define *rules*, which detect complex conditions within d
 All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
 ::::
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
 

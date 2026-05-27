@@ -10,15 +10,15 @@ products:
 
 # Create an APM anomaly rule [observability-create-anomaly-alert-rule]
 
-:::{include} /solutions/_snippets/elastic-cloud-api-key-rules.md
-:::
-
 ## Requirements
 
 To create APM anomaly rules, you need the following:
 
 - {applies_to}`stack: ga` An [appropriate license](https://www.elastic.co/subscriptions), permissions to run [machine learning](/solutions/observability/apm/machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection) jobs, and the permission for the [APM application](/solutions/observability/apm/secure-access-to-applications-ui.md).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ### Indices used by this rule
 

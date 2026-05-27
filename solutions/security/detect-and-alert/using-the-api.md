@@ -17,12 +17,8 @@ You can create and manage detection rules programmatically instead of using the 
 If you prefer to use the UI for creating rules, refer to [Using the UI](/solutions/security/detect-and-alert/using-the-rule-ui.md).
 :::
 
-::::{important}
-
-Rules run in the background using an API key. The key type depends on your deployment. Stack deployments use [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited the rule, and Serverless projects use [{{ecloud}} API keys](../../../deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) tied to the original creator. 
-
+::::{important} 
 Ensure that only users with the appropriate access edit rules. Refer to [](/solutions/security/detect-and-alert/detection-rule-concepts.md#rule-authorization-concept) for more details.
-
 ::::
 
 ## API endpoints
