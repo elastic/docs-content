@@ -38,6 +38,8 @@ Moreover, a high availability (HA) cluster requires at least three master-eligib
 
 The data in your {{es}} clusters is also backed up every 30 minutes, 4 hours, or 24 hours, depending on which snapshot interval you choose. These regular intervals provide an extra level of redundancy. We do support [snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md), regardless of whether you use one, two, or three availability zones. However, with only a single availability zone and in the event of an outage, it might take a while for your cluster come back online. Using a single availability zone also leaves your cluster exposed to the risk of data loss, if the backups you need are not usable (failed or partial snapshots missing the indices to restore) or no longer available by the time that you realize that you might need the data (snapshots have a retention policy).
 
+Registered snapshot repositories are not included in snapshots. If you use a single availability zone and must recover from a snapshot after node failure, you might need to restore repository registration before you can restore index data. Custom repositories must be re-registered manually. See [Manage snapshot repositories in {{ech}}](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md) and [Fault tolerance](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-high-availability).
+
 ::::{warning}
 Clusters that use only one availability zone are not highly
 available and are at risk of data loss. To safeguard against data loss,

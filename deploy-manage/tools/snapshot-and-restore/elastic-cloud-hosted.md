@@ -31,6 +31,9 @@ From within {{ech}}, you can restore a snapshot from a different deployment in t
 
 ## Considerations
 
+::::{include} _snippets/ech-non-ha-snapshot-repositories.md
+::::
+
 When working with snapshot repositories in {{ech}}, keep the following in mind:
 
 - Each snapshot repository is separate and independent. {{es}} doesn’t share data between repositories.

@@ -41,6 +41,12 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 - If no such template exists, you can [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) or restore a cluster state that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 - If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the Enterprise Search encryption key before restoring the snapshot.
 
+:::{note}
+:applies_to: deployment: ess
+
+On {{ech}} deployments that use a [single availability zone](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec-high-availability), registered snapshot repositories are not stored in snapshots and might need to be restored before you can run a restore. See [Manage snapshot repositories in {{ech}}](elastic-cloud-hosted.md).
+:::
+
 ## Considerations
 
 When restoring data from a snapshot, keep the following in mind:
