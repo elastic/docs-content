@@ -95,6 +95,6 @@ The system records each notification attempt with one of the following outcomes.
 |---|---|
 | `dispatched` | The system sent the notification successfully. |
 | `throttled` | The system skipped delivery because the **frequency** interval had not elapsed. This is expected behavior, not an error. |
-| `suppressed` | Dispatch was blocked before the notification went out. The episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../../alerts/maintenance-windows.md). |
+| `suppressed` | Dispatch was blocked before the notification went out. The episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched this episode, so no workflow ran. |
 | `error` | An error occurred during processing. Check {{kib}} logs to identify the cause. |

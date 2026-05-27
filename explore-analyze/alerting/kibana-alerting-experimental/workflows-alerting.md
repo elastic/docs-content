@@ -13,11 +13,7 @@ description: "How workflows connect to the {{alerting-v2}} action policies and r
 
 Workflows are part of the {{alerting-v2}} in Kibana. Without a workflow, an action policy has nowhere to send notifications. [Workflows](../../workflows.md) are the delivery layer. They define the actual steps that run when a policy matches an episode: sending a message, calling a webhook, triggering automation, or any combination. Setting up a workflow is what connects the {{alerting-v2}} to the tools your team already uses for incident response.
 
-Before creating an action policy, make sure the workflows you want to use already exist in your space. Policies store references to workflow IDs, so a destination workflow must exist before you can select it. 
-
-::::{note}
-Only manual triggers are supported for workflows used with action policies.
-::::
+Before creating an action policy, make sure the workflows you want to use already exist in your space. Policies store references to workflow IDs, so a destination workflow must exist before you can select it.
 
 ## Runtime execution order [runtime-execution-order]
 

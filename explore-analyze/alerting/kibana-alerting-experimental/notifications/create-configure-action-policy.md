@@ -74,7 +74,3 @@ For detailed descriptions, frequency options, and examples for each mode, refer 
 ### Destinations
 
 One or more workflows to invoke when the policy matches. Use the search field to find and attach workflows.
-
-### Snooze
-
-An optional time window during which the policy doesn't dispatch. Useful for planned maintenance or quiet periods without disabling the policy entirely.
