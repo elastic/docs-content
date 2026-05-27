@@ -2,6 +2,7 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+description: Streams provides a centralized UI for extracting fields, setting retention, routing data, and managing Elasticsearch data streams.
 products:
   - id: observability
   - id: elasticsearch
@@ -125,4 +126,3 @@ Interact with and configure your streams in the following ways:
 - [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
 - [**Knowledge Indicators**](./management/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
-

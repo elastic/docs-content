@@ -2,6 +2,7 @@
 applies_to:
   serverless: preview
   stack: preview 9.1+
+description: Define periodic queries that surface important events from a stream using custom filters or AI-generated suggestions.
 products:
   - id: observability
   - id: elasticsearch
