@@ -105,7 +105,7 @@ You can also create and view custom dashboards. Refer to [](/solutions/security/
 
 Expand this section to access the following pages:
 
-* [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
+* [{{siem-rules-ui}}](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
 * [Benchmarks](/solutions/security/cloud/benchmarks.md): View, set up, or configure cloud security benchmarks.
 
