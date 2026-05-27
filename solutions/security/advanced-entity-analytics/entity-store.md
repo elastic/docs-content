@@ -73,7 +73,8 @@ The entity store is automatically enabled when you turn on risk scoring. In the 
 2. Turn the toggle on.
 
 :::{note}
-If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
+* If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
+* If you use [cross-cluster search](/explore-analyze/cross-cluster-search.md), the entity store ingests logs from every remote cluster. To avoid unnecessary load, turn off risk scoring on any remote cluster where it isn't actively used.
 :::
 :::
 
