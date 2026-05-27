@@ -11,6 +11,14 @@ products:
 
 # ES|QL visualizations [esql-visualizations]
 
+Creating visualizations using an {{esql}} query is particularly useful when you need to:
+
+- Query data across multiple indices without a pre-configured data view
+- Apply complex filtering, transforms, or custom calculations in a single query
+- Prototype a visualization directly from an {{esql}} query in Discover
+
+For less advanced aggregations on a known index, [the point-and-click mode](lens.md) is a good alternative.
+
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
@@ -115,6 +123,8 @@ serverless: ga
 ```
 
 {{esql}} visualizations support [dashboard and URL drilldowns](../dashboards/drilldowns.md). Select a data point in an {{esql}} visualization to navigate to another dashboard or an external URL.
+
+Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
 
 ::::{note}
 Discover drilldowns are not available for {{esql}} visualizations.
