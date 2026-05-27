@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# View and manage Kibana alerting alerts [view-alerts]
+# View and manage alerts from {{kib}} alerting rules [view-alerts]
 
-Kibana alerting creates an alert when the conditions of a rule are met. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Kibana alerting](../alerts.md).
+{{kib}} alerting creates an alert when the conditions of a rule are met. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [{{kib}} alerting](../alerts.md).
 
 Manage alerts from the following places:
 

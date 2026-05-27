@@ -13,9 +13,9 @@ products:
 description: "Overview of Kibana alerting: rules, alerts, actions, connectors, and how they work together."
 ---
 
-# Kibana alerting [alerts]
+# {{kib}} alerting [alerts]
 
-Kibana alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
+{{kib}} alerting is the built-in alerting system in {{kib}}. It lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
 <!-- TODO: Uncomment when PR #6521 (experimental overview) is merged:
 For the {{alerting-v2}} built on {{esql}}, refer to [{{alerting-v2-cap}}](kibana-alerting-experimental.md).
 -->
