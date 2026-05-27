@@ -108,6 +108,19 @@ Refer to [Signals](signals.md) for the full list of telltale surface mentions.
 - Replace the duplicate with a cross-reference
 - Refer to [Strategies for deployment-type variation](strategies.md#pick-a-strategy) for when this pattern applies
 
+## 9. A missing feature on some deployment types is silently omitted
+
+**Symptom:** A page covers a feature that exists for several deployment types but doesn't acknowledge that the feature is removed or replaced on others — most often {{serverless-short}} ({{ilm-init}}, {{watcher}}, custom plugins, audit logging).
+
+**Why it matters:** Readers arriving from another deployment type expect to find the feature where they normally look for it. Silence reads as either "this applies to me too" or "you missed something."
+
+**What to do:**
+
+- Leave the removed type off the page-level `applies_to`
+- Use a section-level or inline `applies_to` (for example, `serverless: unavailable`) at the point where users would look for the feature
+- Link to the closest alternative if one exists
+- For version-specific removals, use the `removed` lifecycle
+
 ---
 
 ## See also

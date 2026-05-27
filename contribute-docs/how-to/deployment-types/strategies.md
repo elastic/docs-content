@@ -23,6 +23,36 @@ The goal is to avoid two opposite mistakes:
 
 For tagging syntax and patterns, refer to [Cumulative docs example scenarios](/contribute-docs/how-to/cumulative-docs/example-scenarios.md).
 
+## Common difference patterns
+
+A feature can differ across deployment types in more than one way. This section walks through patterns we see often, with examples from existing docs. None of these are rules — they're starting points to recognize what's going on before you choose a strategy.
+
+### Identical across deployment types
+
+Many Elasticsearch primitives behave the same wherever they're deployed: query DSL, mappings, ingest pipelines, [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md), [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md) where it's available. A single page tagged at the `stack` level — no per-deployment forking, no section tags — usually does the job.
+
+### Same capability, different config surface
+
+The capability is the same, but the config surface differs: `elasticsearch.yml`, a Kubernetes CRD, a Cloud UI editor, a project setting. [Stack settings](/deploy-manage/stack-settings.md) and [Secure your settings](/deploy-manage/security/secure-settings.md) handle this with `applies-switch` tabs showing each surface side by side.
+
+### Augmented by the platform
+
+Sometimes the platform adds something on top of the base capability without changing the underlying primitive. ECH and ECE add Cloud SSO on top of Elasticsearch authentication realms — the realm content stays shared, and the Cloud SSO layer lives in scoped sections or admonitions where it applies.
+
+When the augmentation is substantial enough to change the workflow — like ECH and ECE's managed snapshot lifecycle on top of native Elasticsearch snapshots, or orchestrator-driven autoscaling — sibling pages often work better than one over-stuffed page. The [snapshot and restore section](/deploy-manage/tools/snapshot-and-restore.md) splits this way: a shared concept page, plus dedicated pages for [ECH](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md), [ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), [ECK](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md), and [self-managed](/deploy-manage/tools/snapshot-and-restore/self-managed.md).
+
+### Constrained on some deployment types
+
+The capability exists everywhere but some types restrict it: ECH and ECE block certain auth realm types (file, PKI), ECK reserves settings the operator manages, Serverless blocks JVM access. A single page usually still works — flag the constraints inline or in admonitions at the point they're relevant, rather than rewriting the page around them.
+
+### Replaced by a different mechanism
+
+Sometimes a feature is replaced wholesale on one deployment type. Serverless replaces Elasticsearch security realms with Cloud org-level authentication, and replaces Elasticsearch custom roles with project-scoped role assignments. When the mechanisms differ enough that they can't comfortably coexist on one page, a shared overview that orients the user, plus sibling pages for each mechanism, usually reads better than `applies-switch` tabs that bury one or the other.
+
+### Removed or unavailable
+
+Some features are simply absent on a deployment type: no {{ilm-init}}, custom plugins, Watcher, or audit logging on Serverless; no JVM customization. Silently omitting these from feature pages tends to confuse readers who arrive looking for them. If the rest of the page covers other deployment types, leave the removed type off the page-level `applies_to` and use a section-level or inline `applies_to` to call out the absence where users would expect to find it. For version-specific removals, use the `removed` lifecycle value.
+
 ## Two principles that cut across all strategies
 
 **Extract atomic actions once.** Setup steps like configuring a setting, adding a keystore entry, or accessing Kibana appear in dozens of guides. Write the procedure once with all deployment types covered, and link to it from each higher-level guide. Don't restate the procedure in every doc.
@@ -80,6 +110,10 @@ This keeps the whole stack monitoring narrative in one place while providing a c
 ### Migrate-style scoped guide
 
 When a guide genuinely only applies to a subset of deployment types (often because it's still work-in-progress), use a note at the top of the page to explain the scope and offer escape hatches for readers outside the scope. The [Migrate your Elasticsearch data](/manage-data/migrate.md) page is an example: the page is scoped to ECH and ECE, with a note explaining that the same approach can be adapted for other deployment types.
+
+### Signal absence
+
+When a feature isn't available on some deployment types — especially when users coming from another deployment type might look for it — don't silently omit it. Briefly note that it isn't available and link to the closest alternative if there is one. This applies most often to Serverless, which removes or replaces features like {{ilm-init}}, Watcher, custom plugins, audit logging, and JVM customization.
 
 ---
 
