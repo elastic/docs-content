@@ -321,6 +321,11 @@ When you're ready to move beyond your trial into production:
 3. If moving from trial to production, plan data migration and configuration transfer. Use [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) to preserve your work.
 4. [Contact Elastic Sales](https://www.elastic.co/contact) to discuss your trial results and production requirements.
 
+For deployment-level sizing and platform selection:
+
+- For hosted deployments, compare storage, RAM, and vCPU trade-offs before choosing a profile. Refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [instance configuration hardware reference](cloud://reference/cloud-hosted/hardware.md).
+- For {{serverless-short}}, review [{{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and choose the deployment model that best fits your workload with [{{ech}} and {{serverless-short}} comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md).
+
 To retain your {{ech}} deployment or {{serverless-short}} project, refer to [Remove trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#remove-trial-limitations) and [Maintain access to your trial projects and data](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-happens-at-the-end-of-the-trial).
 
 ::::{tip}
