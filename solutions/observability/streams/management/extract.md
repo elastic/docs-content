@@ -69,11 +69,9 @@ To add a processor from the **Processing** tab:
 1. Select a processor from the **Processor** menu.
 1. Configure the processor and select **Create** to save the processor.
 
-After adding all desired processors and conditions, select **Save changes**.
+After adding all desired processors and conditions, select **Save changes**. After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
 Refer to individual [supported processors](#streams-extract-processors) for more on configuring specific processors.
-
-After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
