@@ -1,3 +1,7 @@
+---
+description: "Learn how to write cumulative documentation that stays valid across multiple product versions in Elastic Docs V3."
+---
+
 # Write cumulative documentation
 
 :::{note}
@@ -11,7 +15,7 @@ In [elastic.co/docs](https://elastic.co/docs) (Docs V3) we write docs cumulative
 :::{important}
 This new behavior starts with the following **versions** of our products: Elastic Stack 9.0, ECE 4.0, ECK 3.0, and even more like EDOT docs. It also includes our unversioned products: Serverless and Elastic Cloud.
 
-Nothing changes for our AsciiDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, etc.
+Nothing changes for our AsciiDoc-based documentation system, that remains published and maintained for the following versions: Elastic Stack until 8.x, ECE until 3.x, ECK until 2.x, and so on.
 :::
 
 ## Reader experience

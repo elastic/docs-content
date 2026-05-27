@@ -5,12 +5,13 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+navigation_title: Azure Native Service
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Azure Native Service [ec-azure-marketplace-native]
+# {{ecloud}} Azure Native Service [ec-azure-marketplace-native]
 
 The {{ecloud}} Azure Native Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Microsoft Marketplace. The service brings the following benefits:
 
@@ -270,3 +271,6 @@ Delete the deployment directly from the Azure portal. The delete operation perfo
 $$$azure-integration-delete-resource-group$$$
 If you delete an Azure Resource Group containing {{ecloud}} resources, the latter will be deleted automatically. However, you should not delete the Azure Resource Group containing the first deployment or project that you created. The usage associated with any other Elastic deployment created outside of the first resource group will continue to get reported and charged against this resource group. If you want to stop all charges to this Resource Group, you should delete the individual deployments.
 
+### Troubleshooting
+
+To troubleshoot issues with the Azure Native Service, refer to [](azure-native-isv-service-troubleshooting.md).
