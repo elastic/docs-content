@@ -242,7 +242,27 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 To view wired log streams in Discover:
 
 1. Manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
-1. add the wireds streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+### Query unmapped fields [streams-wired-streams-discover-unmapped]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Wired streams can contain fields stored in `_source` that are not explicitly mapped. By default, ES|QL returns an error when a query references an unmapped field. To make unmapped fields queryable, add `SET unmapped_fields = "LOAD";` at the start of your ES|QL query:
+
+```esql
+SET unmapped_fields = "LOAD";
+FROM logs.otel
+| WHERE my_custom_field == "value"
+```
+
+When `LOAD` is set, unmapped fields are loaded from `_source` as `keyword` fields, or treated as null if absent from `_source`.
+
+{applies_to}`stack: preview 9.5` When you query a wired stream and the ES|QL editor detects an unknown column error, a **Load unmapped fields** quick fix action is available. Select it to apply this setting automatically.
+
+For more details, refer to [Handle unmapped fields with `SET unmapped_fields`](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-unmapped-fields).
 
 ## Next steps
 
