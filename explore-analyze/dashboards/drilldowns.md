@@ -46,8 +46,8 @@ For example, if you have a dashboard that shows the logs and metrics for multipl
 
 The following panel types support dashboard drilldowns:
 
-* **Visualizations created with Lens**
-* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **{{esql}} visualizations**
+* **Lens visualizations that use a data view**
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **Lens visualizations that use {{esql}}**
 * **Maps**
 * **TSVB**
 * **Vega**
