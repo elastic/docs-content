@@ -394,6 +394,7 @@ toc:
               - file: alerting/alerts/geo-alerting.md
           - file: alerting/alerts/rule-action-variables.md
           - file: alerting/alerts/notifications-domain-allowlist.md
+          - file: alerting/alerts/inspect-rule-queries.md
           - file: alerting/alerts/alerting-troubleshooting.md
             children:
               - file: alerting/alerts/alerting-common-issues.md
