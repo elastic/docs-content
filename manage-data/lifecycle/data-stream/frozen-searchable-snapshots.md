@@ -55,9 +55,9 @@ When a backing index becomes eligible for frozen conversion, DLM performs the fo
 
 You can configure the following [settings](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md) in `elasticsearch.yml` to control the frozen transition service:
 
-- `dlm.frozen_transition.poll_interval` — How often the master node scans for indices ready for conversion (default: `5m`).
-- `dlm.frozen_transition.max_concurrency` — Maximum number of concurrent in-flight conversions (default: `10`).
-- `dlm.frozen_transition.max_queue_size` — Maximum number of indices that can be queued for conversion at once (default: `500`).
+- `dlm.frozen_transition.poll_interval` — How often the master node scans for indices ready for conversion.
+- `dlm.frozen.transition.thread_pool.size` — Maximum number of concurrent in-flight conversions.
+- `dlm.frozen.transition.thread_pool.queue_size` — Maximum number of indices that can be queued for conversion at once.
 
 <!-- TO-DO: Add link to specific anchors #dlm-frozen-transition-poll-interval, #dlm-frozen-transition-max-concurrency, #dlm-frozen-transition-max-queue-size -->
 
