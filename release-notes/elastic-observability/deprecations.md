@@ -29,6 +29,8 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 The Observability agent has been removed from Agent Builder, replaced by skills in the Elastic AI agent.
 
 View [#262937]({{kib-pull}}262937).
+
+**Impact**<br> Conversations stored with the Observability agent will no longer appear in the conversation list and cannot be continued from the UI. No automatic migration is planned.
 ::::
 
 ::::{dropdown} Metrics Explorer is deprecated in favor of Discover
