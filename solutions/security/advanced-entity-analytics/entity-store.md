@@ -243,7 +243,7 @@ serverless: planned
 Use `maxLogsPerWindowCapBehavior` to control what happens when `maxLogsPerWindow` is reached during a run.
 
 * `drop` — the next run advances past the uncapped logs (cursor jumps to the end of the window). Logs above the cap are skipped permanently. Use this to keep the cluster healthy in exchange for coverage gaps when ingest exceeds the cap.
-* `defer` — the next run resumes from where the cap fired and processes the remaining logs. Use this to preserve full coverage at the cost of falling behind real time when logs exceeds the cap.
+* `defer` — the next run resumes from where the cap fired and processes the remaining logs. Use this to preserve full coverage at the cost of falling behind real time when logs exceed the cap.
 * Default: `drop`.
 
 #### `maxTimeWindowSize`
