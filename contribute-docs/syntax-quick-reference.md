@@ -1,5 +1,6 @@
 ---
 navigation_title: "Syntax quick reference"
+description: "Quick reference for commonly used Markdown syntax elements in Elastic documentation, including directives, metadata, and tagging."
 ---
 
 # Syntax quick reference

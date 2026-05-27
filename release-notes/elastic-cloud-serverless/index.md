@@ -12,6 +12,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 <!-- :::{changelog} /releases
 ::: -->
 
+:::{include} _snippets/2026-05-20/index.md
+:::
+
+:::{include} _snippets/2026-05-19/index.md
+:::
+
 :::{include} _snippets/2026-05-14/index.md
 :::
 
