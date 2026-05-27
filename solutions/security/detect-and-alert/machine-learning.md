@@ -41,20 +41,20 @@ For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect
 
 {{ml-cap}} jobs associated with {{elastic-sec}} prebuilt rules are managed in a dedicated interface:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the settings menu in the upper-right corner of the page, then select **ML job settings**.
 
 From there you can view, start, and stop all {{ml}} jobs associated with prebuilt detection rules.
 
 ::::{note}
-You can also create custom {{ml}} jobs in the {{ml-app}} app and reference them when creating custom {{ml}} rules. Custom jobs are managed in the {{ml-app}} app, not the {{rules-ui}} page settings menu.
+You can also create custom {{ml}} jobs in the {{ml-app}} app and reference them when creating custom {{ml}} rules. Custom jobs are managed in the {{ml-app}} app, not the **{{siem-rules-ui}}** page settings menu.
 ::::
 
 ### Rule's details page
 
 You can also check and control job status for a specific rule:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select the rule name in the Rules table.
+1. Find **{{siem-rules-ui}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select the rule name in the Rules table.
 2. In the **Definition** section of the rule's details page, check whether the required {{ml}} jobs are running.
 3. Use the toggles to start or stop each job.
 
