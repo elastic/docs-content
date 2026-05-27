@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

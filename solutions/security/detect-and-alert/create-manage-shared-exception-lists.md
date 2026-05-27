@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/shared-exception-lists.html
   - https://www.elastic.co/guide/en/serverless/current/security-shared-exception-lists.html
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

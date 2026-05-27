@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/invest-guide-run-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-invest-guide-run-osquery.html
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

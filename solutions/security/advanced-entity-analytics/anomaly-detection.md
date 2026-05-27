@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

@@ -2,9 +2,9 @@
 navigation_title: Detect and respond to threats with SIEM
 description: An introduction to detecting threats with SIEM in {{elastic-sec}}.
 applies_to:
-  stack: ga all
+  stack: ga
   serverless:
-    security: ga all
+    security: ga
 products:
   - id: security
 ---
