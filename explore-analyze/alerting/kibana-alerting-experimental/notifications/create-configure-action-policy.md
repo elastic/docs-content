@@ -11,9 +11,9 @@ description: "Create action policies in the {{alerting-v2}}, configure match con
 # Create and configure an action policy [create-manage-action-policies]
 
 
-Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to configure match conditions, set grouping and frequency, and attach workflow destinations. Where rules define what counts as a problem, action policies define what happens when one is detected — which episodes generate notifications, how they batch for dispatch, and where they're routed.
+Action policies are part of the {{alerting-v2}} in {{kib}}. This page covers how to configure policy type, match conditions, grouping, frequency, and workflow destinations. Where rules define what counts as a problem, action policies define what happens when one is detected: which episodes generate notifications, how they batch for dispatch, and where they're routed.
 
-Because policies are separate from rules and global within a space, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
+Because policies are separate from rules, you can update notification behavior across many rules at once without touching detection logic, and you can route the same alerts differently depending on severity or source. You create and manage policies from the **Action policies** page, not from the rule form.
 
 For match conditions fields, grouping modes, frequency options, and dispatch outcomes, refer to [Action policy reference](action-policy-reference.md).
 
@@ -25,12 +25,25 @@ For match conditions fields, grouping modes, frequency options, and dispatch out
 
 ## Policy fields [policy-fields]
 
+### Policy type [policy-type]
+
+An action policy can be **global** or **per-rule**:
+
+- **Global** policies apply to any episode in the space. Use a global policy when you want to route episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
+- **Per-rule** policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
+
+The policy type is set at creation and cannot be changed. If you need a different type, create a new policy.
+
+### Tags [policy-tags]
+
+Optional string labels you assign to a policy to categorize it or filter it on the Action policies list. Unlike rule tags, policy tags describe the policy itself rather than the alerts it matches. You can add, edit, or remove tags at any time without affecting routing behavior.
+
 ### Match conditions [matcher]
 
 
-An optional KQL expression that filters which episodes this policy applies to. An empty match condition matches every episode in the space.
+An optional KQL expression that filters which episodes this policy applies to. An empty match condition matches every episode covered by the policy's scope. For a global policy, that means all episodes in the space. For a per-rule policy, it means all episodes from the associated rule.
 
-Use match conditions to route different episodes to different policies, for example, one policy for `data.severity: "critical"` episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
+Use match conditions to route different episodes to different policies, for example, one policy for `rule.tags: "payment-service"` episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 
 <!--[CONTENT NEEDED for M2: The `data.severity: "critical"` example above will become the legacy approach once M2 ships. M2 promotes severity to `episode.severity` and `episode.severity_max` as first-class episode fields. Update this example to use `episode.severity: "CRITICAL"` and update the cross-reference to include the new fields. Also decide whether to retain `data.severity` as an alternative for rules that haven't migrated, or to remove it from guidance entirely.]
 -->
@@ -46,7 +59,7 @@ Use match conditions to route different episodes to different policies, for exam
 | Notify per | What it does | Available Frequency options |
 |---|---|---|
 | Episode | One notification per episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
-| Group | Bundle episodes that share a field value. Specify **Group by** (for example `data.service.name` or `data.host.name`). | - At most once every… <br> - Every evaluation |
+| Group | Bundle episodes that share a field value. Specify a **Group by** field such as `data.service.name` or `data.host.name`. | - At most once every… <br> - Every evaluation |
 | Digest | One notification for all matching episodes combined. | Every evaluation |
 
 :::
@@ -61,7 +74,3 @@ For detailed descriptions, frequency options, and examples for each mode, refer 
 ### Destinations
 
 One or more workflows to invoke when the policy matches. Use the search field to find and attach workflows.
-
-### Snooze
-
-An optional time window during which the policy doesn't dispatch. Useful for planned maintenance or quiet periods without disabling the policy entirely.

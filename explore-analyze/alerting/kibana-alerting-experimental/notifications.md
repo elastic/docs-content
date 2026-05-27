@@ -17,20 +17,25 @@ This page explains how action policies work. For creating and configuring them s
 ## What is an action policy [action-policies]
 
 
-An action policy is a saved object in your space that controls notification routing. It's not attached to a rule. It's global within the space, so when an episode is produced, the system evaluates all enabled policies in the space that are not snoozed and decides which ones apply.
+An action policy is a saved object in your space that controls notification routing. Policies can be **global** or **per-rule**:
+
+- **Global** policies apply to all episodes in the space, from any rule. When an episode is produced, the dispatcher evaluates all enabled global policies that are not snoozed. Global is the default type and suits most use cases.
+- **Per-rule** policies are scoped to a single rule. They apply only to episodes produced by that specific rule. Use a per-rule policy when routing is specific to one rule and you don't want it to affect other rules in the space. The rule association is set at creation and cannot be changed.
 
 Each policy has four controls:
 
 | Control | What it does |
 | --- | --- |
-| Match conditions (optional KQL) | Filters which episodes this policy applies to. An empty match condition matches all episodes in the space. |
-| Notify per (grouping) | Controls how episodes batch into notifications: one per episode, one per notification group (Notify per **Group**), or one digest for all. |
+| Match conditions (optional KQL) | Filters which episodes this policy applies to. An empty match condition matches all episodes covered by the policy's scope. |
+| Notify per | Controls how episodes batch into notifications: one per episode, one per notification group using **Group** mode, or one digest for all. |
 | Frequency | Controls how often the policy can notify for the same notification group. |
 | Destinations | One or more workflows to invoke when all conditions are met. |
 
 ## How policies apply to rules
 
-Action policies don't reference rules directly. You scope a policy using KQL over episode and rule fields, for example `rule.labels: "checkout"` or `data.severity: "critical"`. A policy applies to every matching episode in the space, from any rule.
+**Global policies** don't reference rules directly. You scope them using KQL over episode and rule fields, for example `rule.tags: "checkout"` or `data.severity: "critical"`. A global policy applies to every matching episode in the space, from any rule.
+
+**Per-rule policies** are bound to a specific rule at creation. They apply only to episodes from that rule, and you can still use match conditions to filter further within that rule's episodes.
 
 Multiple policies can match the same episode, and each runs independently. There's no precedence or merging between them. If no policy matches an episode, no notification is sent. This is intentional.
 
@@ -58,20 +63,20 @@ Each notification attempt results in one of the following outcomes.
 | --- | --- |
 | `dispatched` | A notification was sent. |
 | `throttled` | Dispatch was suppressed because the **frequency** interval had not elapsed. |
-| `suppressed` | The episode was suppressed before dispatch (acknowledged, snoozed, or deactivated). |
-| `unmatched` | No policy matched this episode; no workflow ran. |
+| `suppressed` | Dispatch was blocked before the notification went out. The episode was acknowledged, snoozed, or deactivated, or the space is currently in a maintenance window. |
+| `unmatched` | No policy matched this episode and no workflow ran. |
 | `error` | Processing failed. Check {{kib}} logs. |
 
 You can query these outcomes in Discover through the `.alert-actions` data stream.
 
 ## Why policies are separate from rules
 
-Rules don't own policies. A rule can't say "notify team X when it fires." Instead, team X creates an action policy that uses a KQL matcher to pick up matching episodes.
-
-This design means:
-- One policy can cover episodes from many rules.
+Policies are independent of rules, which means:
+- One global policy can cover episodes from many rules. For example, a policy matching `data.severity: "critical"` applies regardless of which rule produced the episode.
 - You can update routing without touching any rule.
-- Rules can be created without any notification policy, which is useful for testing.
+- Rules can be created without any action policy, which is useful for testing.
+
+When you do need routing that's specific to one rule, create a per-rule policy and bind it to that rule at creation.
 
 When you're ready to route notifications, go to [Create and configure an action policy](notifications/create-configure-action-policy.md).
 
