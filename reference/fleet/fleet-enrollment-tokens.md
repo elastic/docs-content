@@ -65,7 +65,7 @@ You can use the {{fleet}} API to get a list of enrollment tokens. For more infor
 
 The **Enrollment tokens** tab provides controls to help you find specific tokens:
 
-* Use the search bar to filter tokens using [Kibana Query Language (KQL)](elasticsearch://reference/query-languages/kql).
+* Use the search bar to filter tokens using [Kibana Query Language (KQL)](elasticsearch://reference/query-languages/kql.md).
 * {applies_to}`stack: ga 9.5+` Use the **Agent policy** dropdown to select one or more policies and show only tokens associated with those policies.
 * {applies_to}`stack: ga 9.5+` Use the **Active** and **Inactive** filters to show tokens in that status. The **Active** filter is selected by default.
 
