@@ -19,12 +19,12 @@ You can create a latency threshold rule to alert you when the latency of a speci
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-The following steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
-
 :::{image} /solutions/images/serverless-alerts-create-rule-apm-latency-threshold.png
 :alt: Create rule for APM latency threshold alert
 :screenshot:
 :::
+
+The following steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 
 To create your latency threshold rule:

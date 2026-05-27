@@ -30,7 +30,7 @@ To create failed transaction rate threshold rules, you need the following:
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the Metrics indices from APM indices settings (when `xpack.apm.searchAggregatedTransactions` is different from never) or Transaction indices from APM indices settings. The default index patterns are `metrics-apm*`, `apm-*`, and `metrics-*.otel-*`. You cannot override these indices on a per-rule basis.
 

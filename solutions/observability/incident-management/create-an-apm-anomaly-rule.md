@@ -20,7 +20,7 @@ To create APM anomaly rules, you need the following:
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the ML anomaly indices and the transaction indices defined in the APM index settings. The default index patterns are `.ml-anomalies-*` and `traces-apm*,apm-*,traces-*.otel-*`. You cannot override these indices on a per-rule basis.
 

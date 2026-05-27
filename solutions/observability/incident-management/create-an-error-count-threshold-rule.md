@@ -30,7 +30,7 @@ To create error count threshold rules, you need the following:
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the error indices from the APM indices settings. The defaults are `logs-apm*`, `apm-*`, and `logs-*.otel-*`. You cannot override these indices on a per-rule basis.
 

@@ -21,9 +21,6 @@ When you create this rule on the **Metrics Explorer** page, the rule is automati
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
 ::::
 
-:::{include} /solutions/_snippets/api-key-rules.md
-:::
-
 ## Requirements
 
 To create metric threshold rules, you need the following:
@@ -31,7 +28,10 @@ To create metric threshold rules, you need the following:
 - {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
 - {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-### Indices used by this rule
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
+## Indices used by this rule
 
 This rule queries the metrics indices from the [Infrastructure and Metrics Explorer settings](/solutions/observability/infra-and-hosts/configure-settings.md). The default are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
 

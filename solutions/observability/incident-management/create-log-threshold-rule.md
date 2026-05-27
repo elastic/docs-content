@@ -11,6 +11,7 @@ products:
 
 # Create a log threshold rule [logs-threshold-alert]
 
+Create a log threshold rule to trigger an alert when the number of log messages matching a set of conditions exceeds a defined threshold within a given time window.
 
 :::{image} /solutions/images/observability-log-threshold-alert.png
 :alt: Log threshold alert configuration
@@ -27,7 +28,7 @@ To create log threshold rules, you need the following:
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings. The defaults are `logs-*-*`, `logs-*`, and `filebeat-*`. You cannot override these indices on a per-rule basis.
 

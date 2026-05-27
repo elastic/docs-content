@@ -27,7 +27,7 @@ To create uptime duration anomaly rules, you need the permission for the {{uptim
 :::{include} /solutions/_snippets/api-key-rules.md
 :::
 
-### Indices used by this rule
+## Indices used by this rule
 
 This rule queries the machine learning anomalies indices and the index patterns specified in the uptime settings. The default is `heartbeat-*` (might include `synthetics-*`). You cannot override these indices on a per-rule basis.
 
