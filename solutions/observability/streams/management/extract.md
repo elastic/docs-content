@@ -2,6 +2,7 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+description: Process and extract fields from incoming Streams documents using configurable processors, conditions, and live simulation previews.
 products:
   - id: observability
   - id: elasticsearch

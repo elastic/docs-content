@@ -1,3 +1,7 @@
+---
+description: "Make documentation updates directly in your browser using GitHub's web editor without setting up a local development environment."
+---
+
 # Contribute on the web
 
 Learn how to make documentation updates directly in your browser without setting up a local development environment.
