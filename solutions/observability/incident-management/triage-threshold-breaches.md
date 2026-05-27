@@ -49,7 +49,7 @@ Explore charts on the page to learn more about the threshold breach:
     :::
 
 
-Analyze these charts to better understand when the breach started, it’s current state, and how the issue is trending.
+Analyze these charts to better understand when the breach started, its current state, and how the issue is trending.
 
 ## Inspect the query behind an alert [triage-threshold-inspect-query]
 
