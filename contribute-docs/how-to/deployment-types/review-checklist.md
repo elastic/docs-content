@@ -9,6 +9,20 @@ Use this checklist when reviewing PRs, auditing existing docs, or assessing cont
 
 These symptoms often co-occur. Fixing one often surfaces another.
 
+## Symptoms at a glance
+
+| # | Symptom |
+|---|---|
+| 1 | Specific deployment type as a prerequisite |
+| 2 | `applies_to` doesn't match deployment types mentioned in prose |
+| 3 | Orchestrator surfaces mentioned in generic content |
+| 4 | Manual file edits or filesystem paths |
+| 5 | API calls for setup tasks that have better UI pathways |
+| 6 | Prerequisites don't match the page scope |
+| 7 | Readers from other deployment types are stranded |
+| 8 | Duplicated procedure where a cross-reference would do |
+| 9 | A missing feature on some deployment types is silently omitted |
+
 ## 1. Specific deployment type as a prerequisite
 
 **Symptom:** A page or procedure for a deployment-agnostic task opens with "Create an {{ech}} deployment" (or similar) as a prerequisite.

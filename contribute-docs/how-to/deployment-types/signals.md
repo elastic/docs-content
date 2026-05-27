@@ -38,23 +38,11 @@ For the full review checklist, refer to [Review checklist](review-checklist.md).
 
 ## Examples
 
-**A "generic Kibana" page that opens with:**
-
-> Log in to {{ecloud}} Console and open Kibana.
-
-Signal: "{{ecloud}} Console" indicates {{ech}}. If the rest of the page is about a Kibana feature that works on every deployment type, the opening sentence scopes the whole page to {{ech}} unnecessarily.
-
-**A configuration topic that says:**
-
-> Edit `elasticsearch.yml` to set this value.
-
-Signal: editing `elasticsearch.yml` directly is only possible on self-managed. On orchestrated deployment types, the same setting is applied through user settings (ECH, ECE), CRDs (ECK), or isn't user-configurable (Serverless). If the page is meant to apply to all deployment types, this needs an `applies-switch` or a link to [stack settings](/deploy-manage/stack-settings.md).
-
-**A workflow that includes:**
-
-> apiVersion: elasticsearch.k8s.elastic.co/v1
-
-Signal: this is an ECK manifest. The surrounding content should either be ECK-scoped or clearly call out that this code block is one of several deployment-specific approaches.
+| What you see | What it signals | What to do if the page should be cross-deployment |
+|---|---|---|
+| "Log in to {{ecloud}} Console and open Kibana" on a generic Kibana feature page | {{ech}} (orchestrator surface) | Replace with deployment-agnostic phrasing (for example, "Open {{kib}}") and link to a single generic "access {{kib}}" doc |
+| "Edit `elasticsearch.yml` to set this value" on a setting-configuration page | Self-managed direct file access. Other deployment types use user settings (ECH, ECE), CRDs (ECK), or don't expose the setting (Serverless) | Use an `applies-switch` per surface, or link to [Stack settings](/deploy-manage/stack-settings.md) |
+| A code block starting with `apiVersion: elasticsearch.k8s.elastic.co/v1` | ECK manifest | Either scope the surrounding content to ECK or clearly mark the code block as one of several deployment-specific approaches |
 
 ---
 

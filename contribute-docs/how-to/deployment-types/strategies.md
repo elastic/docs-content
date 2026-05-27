@@ -25,33 +25,17 @@ For tagging syntax and patterns, refer to [Cumulative docs example scenarios](/c
 
 ## Common difference patterns
 
-A feature can differ across deployment types in more than one way. This section walks through patterns we see often, with examples from existing docs. None of these are rules — they're starting points to recognize what's going on before you choose a strategy.
+A feature can differ across deployment types in more than one way. This table summarizes the patterns we see most often, with examples from existing docs. None of these are rules — they're starting points to recognize what's going on before you choose a strategy.
 
-### Identical across deployment types
-
-Many Elasticsearch primitives behave the same wherever they're deployed: query DSL, mappings, ingest pipelines, [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md), [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md) where it's available. A single page tagged at the `stack` level — no per-deployment forking, no section tags — usually does the job.
-
-### Same capability, different config surface
-
-The capability is the same, but the config surface differs: `elasticsearch.yml`, a Kubernetes CRD, a Cloud UI editor, a project setting. [Stack settings](/deploy-manage/stack-settings.md) and [Secure your settings](/deploy-manage/security/secure-settings.md) handle this with `applies-switch` tabs showing each surface side by side.
-
-### Augmented by the platform
-
-Sometimes the platform adds something on top of the base capability without changing the underlying primitive. ECH and ECE add Cloud SSO on top of Elasticsearch authentication realms — the realm content stays shared, and the Cloud SSO layer lives in scoped sections or admonitions where it applies.
-
-When the augmentation is substantial enough to change the workflow — like ECH and ECE's managed snapshot lifecycle on top of native Elasticsearch snapshots, or orchestrator-driven autoscaling — sibling pages often work better than one over-stuffed page. The [snapshot and restore section](/deploy-manage/tools/snapshot-and-restore.md) splits this way: a shared concept page, plus dedicated pages for [ECH](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md), [ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), [ECK](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md), and [self-managed](/deploy-manage/tools/snapshot-and-restore/self-managed.md).
-
-### Constrained on some deployment types
-
-The capability exists everywhere but some types restrict it: ECH and ECE block certain auth realm types (file, PKI), ECK reserves settings the operator manages, Serverless blocks JVM access. A single page usually still works — flag the constraints inline or in admonitions at the point they're relevant, rather than rewriting the page around them.
-
-### Replaced by a different mechanism
-
-Sometimes a feature is replaced wholesale on one deployment type. Serverless replaces Elasticsearch security realms with Cloud org-level authentication, and replaces Elasticsearch custom roles with project-scoped role assignments. When the mechanisms differ enough that they can't comfortably coexist on one page, a shared overview that orients the user, plus sibling pages for each mechanism, usually reads better than `applies-switch` tabs that bury one or the other.
-
-### Removed or unavailable
-
-Some features are simply absent on a deployment type: no {{ilm-init}}, custom plugins, Watcher, or audit logging on Serverless; no JVM customization. Silently omitting these from feature pages tends to confuse readers who arrive looking for them. If the rest of the page covers other deployment types, leave the removed type off the page-level `applies_to` and use a section-level or inline `applies_to` to call out the absence where users would expect to find it. For version-specific removals, use the `removed` lifecycle value.
+| Difference | Examples | Common approach |
+|---|---|---|
+| **Identical across deployment types** | Query DSL, mappings, ingest pipelines, [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md), [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md) where available | Single page tagged at the `stack` level. No per-deployment forking, no section tags. |
+| **Same capability, different config surface** | `elasticsearch.yml`, a Kubernetes CRD, a Cloud UI editor, or a project setting all configuring the same thing | Single page with [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs per surface. See [Stack settings](/deploy-manage/stack-settings.md), [Secure your settings](/deploy-manage/security/secure-settings.md). |
+| **Augmented by the platform (minor)** | ECH and ECE add Cloud SSO on top of native {{es}} authentication realms | Single page, with a scoped section or admonition for the addition. The base content stays shared. |
+| **Augmented by the platform (significant)** | ECH and ECE's managed snapshot lifecycle on top of native {{es}} snapshots; orchestrator-driven autoscaling | Shared overview + sibling pages per type. See [snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md), with dedicated pages for [ECH](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md), [ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), [ECK](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md), and [self-managed](/deploy-manage/tools/snapshot-and-restore/self-managed.md). |
+| **Constrained on some deployment types** | ECH and ECE block file and PKI auth realms; ECK reserves operator-managed settings; {{serverless-short}} blocks JVM access | Single page. Flag constraints inline or in admonitions at the point they're relevant, rather than rewriting the page. |
+| **Replaced by a different mechanism** | {{serverless-short}} replaces {{es}} security realms with Cloud org-level authentication; replaces {{es}} custom roles with project-scoped role assignments | Shared overview that orients the user, plus sibling pages for each mechanism. Tabs tend to bury one side or the other. |
+| **Removed or unavailable** | No {{ilm-init}}, {{watcher}}, custom plugins, or audit logging on {{serverless-short}}; no JVM customization | Leave the removed type off the page-level `applies_to`. Use section-level or inline `applies_to` (for example, `serverless: unavailable`) at the point users would look. For version-specific removals, use the `removed` lifecycle. |
 
 ## Two principles that cut across all strategies
 
@@ -87,6 +71,13 @@ When a feature has both shared usage and deployment-specific configuration, the 
 ## Named patterns
 
 These patterns recur often enough that it's useful to recognize them by name.
+
+| Pattern | When to use it |
+|---|---|
+| Access Kibana | A doc needs the user to "open Kibana" but isn't specifically about Kibana access |
+| Stack monitoring (split setup / shared body / shared visualization) | A topic has both shared concepts and deployment-specific setup |
+| Migrate-style scoped guide | A guide genuinely only applies to a subset of deployment types |
+| Signal absence | A feature isn't available on some deployment types and users from those types might still look for it |
 
 ### Access Kibana
 
