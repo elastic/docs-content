@@ -126,9 +126,7 @@ serverless: ga
 
 Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
 
-::::{note}
-Discover drilldowns are not available for {{esql}} visualizations.
-::::
+{applies_to}`stack: ga 9.5` {applies_to}`serverless:` [Discover drilldowns](../dashboards/drilldowns.md#discover-drilldowns) are also supported. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies in **Discover**.
 
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}
