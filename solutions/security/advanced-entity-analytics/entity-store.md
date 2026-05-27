@@ -231,7 +231,7 @@ serverless: planned
 Use `maxLogsPerWindow` to cap the total number of raw log documents processed in a single extraction run, across all slices in the window.
 
 * Lower it if a single task run can still saturate {{es}} CPU even after lowering `maxLogsPerPage`. This is the most effective lever for protecting a cluster from CPU overload, because it bounds the work a single extraction task can do.
-* Increase in case cluster cpu is not overloaded and can handle the amount of proccessed logs.
+* Increase in case cluster CPU is not overloaded and can handle the amount of processed logs.
 * Default: {applies_to}`stack: ga 9.4.2+` `100000` documents.
 
 #### `maxLogsPerWindowCapBehavior`
