@@ -5,12 +5,13 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+navigation_title: Google Cloud Platform Marketplace
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Google Cloud Platform Marketplace [ec-billing-gcp]
+# {{ecloud}} from Google Cloud Platform Marketplace [ec-billing-gcp]
 
 Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic draws against your cloud purchase commitment.
 

@@ -14,7 +14,7 @@ navigation_title: Logs and metrics
 $$$ec-azure-logs-and-metrics$$$
 $$$azure-integration-monitor$$$
 
-The {{ecloud}} Azure Native Service simplifies logging for Azure services with the {{stack}}. This integration supports:
+The [{{ecloud}} Azure Native Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md) simplifies logging for Azure services with the {{stack}}. This integration supports:
 
 * Azure subscription logs
 * Azure resources logs (check [Supported categories for Azure Resource Logs](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories?WT.mc_id=Portal-Azure_Marketplace_Elastic) for examples)
