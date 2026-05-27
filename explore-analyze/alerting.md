@@ -31,7 +31,7 @@ Kibana alerting gives you ready-made rule types that work with applications such
 
 [Get started with Kibana alerting →](alerting/alerts.md)
 
-## {{alerting-v2-cap}}
+## {{alerting-v2}} overview
 
 ```{applies_to}
 serverless: preview
@@ -43,7 +43,7 @@ The {{alerting-v2}} are built on {{esql}}. You write the query that defines what
 [Get started with {{alerting-v2}} →](alerting/kibana-alerting-experimental.md)
 
 :::{note}
-{{alerting-v2-cap}} runs next to Kibana alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting will remain available.
+The {{alerting-v2}} run next to Kibana alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. Kibana alerting will remain available.
 :::
 
 ## Watcher

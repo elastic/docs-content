@@ -8,7 +8,7 @@ products:
 description: "How the {{alerting-v2}} watch your data, turn conditions into signals and alerts, route episodes through action policies and workflows, and where to go next in the docs."
 ---
 
-# {{alerting-v2-cap}} [alerting-overview]
+# {{alerting-v2}} overview [alerting-overview]
 
 The {{alerting-v2}} in Kibana are marked **Experimental** in the UI and are subject to change before general availability. They include alerts, alert episodes, rules, notification policies, workflows, and connectors. For the existing Kibana alerting system, see [Kibana alerting](alerts.md).
 
@@ -33,13 +33,15 @@ Refer to [Rules](kibana-alerting-experimental/rules.md) to learn more.
 -->
 
 ### Alerts
-When a rule runs in Alert mode, it creates an alert for each problem it detects. An alert isn't a single snapshot. It's an ongoing record that follows the problem through its full lifecycle, from when it first appeared to when it resolved. You triage and manage alerts on the **Alerts** page.
+In Alert mode, a rule tracks each problem over time. Rather than starting a new alert on every run, the rule keeps updating the same alert until the problem clears. You see one lifecycle for that problem, from when it started to when it resolved, instead of a separate alert per check. You triage and manage them on the **Alerts** page.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 Refer to [Alerts](kibana-alerting-experimental/alerts.md) to learn more.
 -->
 
+<!-- TODO: Clarify and address Tia's suggestion to use alert episodes and rule_events instead -->
+
 ### Action policies
-An action policy controls whether an alert should trigger a notification, and how often. You can set conditions to filter which alerts it applies to, for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space.
+An action policy controls whether an alert should trigger an action, and how often. You can set conditions to filter which alerts it applies to, for example, only critical severity alerts from a specific service. A single action policy can apply to alerts from any rule in your space.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
 Refer to [Notifications](kibana-alerting-experimental/notifications.md) to learn more.
 -->
@@ -60,14 +62,14 @@ What happens after a rule finds something depends entirely on the rule's mode.
 Use Alert mode when you want to track issues and be notified. The rule opens an episode when the condition is met and keeps it open until the condition clears.
 
 ```
-Rule runs → finds something → writes an alert event
+Rule runs → finds something → writes a rule event
   → episode opens (pending → active)  → you get notified
   → condition clears (recovering → inactive) → you get notified again
   → action policy → workflow → notification
 ```
 
-1. The rule evaluates {{esql}} on a schedule and writes an alert event to `.rule-events`.
-2. The alert event joins an episode, which is tracked until the condition resolves.
+1. The rule evaluates {{esql}} on a schedule and writes a rule event to `.rule-events`.
+2. The rule event joins an episode, which is tracked until the condition resolves.
 3. Action policies match eligible episodes and decide whether outreach should run.
 4. Matched policies invoke configured workflows, which deliver messages or run automation steps.
 5. Notifications are the outcome (email, chat, webhook, and so on) when all prior steps pass.
@@ -94,21 +96,23 @@ Rule runs → finds something → writes a signal event
 
 #### Example: Rule runs in Detect mode
 
-A security team wants to track when a rarely-used admin API endpoint is called, not because every call is a problem, but because the pattern matters during investigations. They create a rule in Detect mode that checks for requests to that endpoint every hour.
+A security team wants to track when a rarely-used admin API endpoint is called. Individual calls are not inherently suspicious, so they do not want a notification every time the rule fires. The pattern only becomes meaningful in context. They create a rule in Detect mode that checks for requests to the endpoint every hour.
 
-The rule writes a signal each time it finds a match. No episodes are opened and no notifications go out. When an incident is under investigation, the team queries `.rule-events` in Discover to see a full timeline of admin API activity alongside other signals, without any alert noise in between.
+The rule writes a signal each time it finds a match. No episodes are opened and no notifications go out.
 
 :::{image} ../images/rule-detect-mode-diagram.png
-:alt: Diagram of Detect mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal event to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL. No episode is opened, no action policy is evaluated, and no notification is sent.
+:alt: Diagram of Detect mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal event to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
 :::
 
+Later, an on-call alert fires for unusual privilege escalation on the same host. During the investigation, the team queries `.rule-events` in Discover and finds that the admin API endpoint was called three times in the hour before the escalation. The Detect mode signals did not surface the incident. The Alert mode rule did. But without the signals already in the index, the admin API activity would have been invisible during the post-incident review.
 
-## {{alerting-v2-cap}} terms [key-concepts-glossary]
+
+## {{alerting-v2}} terms [key-concepts-glossary]
 
 These terms appear throughout the {{alerting-v2}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   How you control who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how episodes batch into notifications (Dispatch per), and which workflow should send the message. One action policy can apply to alerts from multiple rules.
+:   How you control who gets notified, when, and how often. You configure a matcher to filter which alerts it applies to, how episodes batch into notifications, and which workflow should send the message. One action policy can apply to alerts from multiple rules.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
     To learn more, refer to [Notifications](kibana-alerting-experimental/notifications.md).
 -->
