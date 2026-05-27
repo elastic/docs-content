@@ -8,7 +8,7 @@ products:
 description: "How the {{alerting-v2}} watch your data, turn conditions into signals and alerts, route episodes through action policies and workflows, and where to go next in the docs."
 ---
 
-# {{alerting-v2}} overview [alerting-overview]
+# {{alerting-v2-cap}} overview [alerting-overview]
 
 The {{alerting-v2}} in Kibana are marked **Experimental** in the UI and are subject to change before general availability. They include alerts, alert episodes, rules, notification policies, workflows, and connectors. For the existing Kibana alerting system, see [Kibana alerting](alerts.md).
 
