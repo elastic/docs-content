@@ -218,27 +218,19 @@ Use `frequency` to control how often extraction runs.
 Use `maxLogsPerPage` to cap the raw-log slice size before aggregation.
 
 * Lower it if queries are too heavy or time-consuming.
-* Default: {applies_to}`stack: ga 9.4.0-9.4.1` `40000` documents. {applies_to}`stack: ga 9.4.2+` `50000` documents.
+* Default: `50000` documents.
 
 Start with `maxLogsPerPage` rather than `docsLimit` when extraction is slow or unstable, because it reduces the amount of raw source data processed in each extraction operation. Adjust `docsLimit` if tuning `maxLogsPerPage` is insufficient and you still see performance issues.
 
 #### `maxLogsPerWindow`
-```yaml {applies_to}
-stack: ga 9.4.2+
-serverless: planned
-```
 
 Use `maxLogsPerWindow` to cap the total number of raw log documents processed in a single extraction run, across all slices in the window.
 
 * Lower it if a single task run can still saturate {{es}} CPU even after lowering `maxLogsPerPage`. This is the most effective lever for protecting a cluster from CPU overload, because it bounds the work a single extraction task can do.
-* Increase in case cluster CPU is not overloaded and can handle the amount of processed logs.
-* Default: {applies_to}`stack: ga 9.4.2+` `100000` documents.
+* Increase it if cluster CPU is not overloaded and can handle more processed logs.
+* Default: `100000` documents.
 
 #### `maxLogsPerWindowCapBehavior`
-```yaml {applies_to}
-stack: ga 9.4.2+
-serverless: planned
-```
 
 Use `maxLogsPerWindowCapBehavior` to control what happens when `maxLogsPerWindow` is reached during a run.
 
