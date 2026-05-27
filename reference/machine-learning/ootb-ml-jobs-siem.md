@@ -1378,7 +1378,7 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
 :::{note}
 :applies_to: {stack: ga 9.5+, serverless: ga}
-This job is replaced by `rare_dns_tunneling_ea` in the [Network module](#security-network-jobs).
+This job is replaced by `rare_dns_question_ea` in the [Network module](#security-network-jobs).
 :::
 
 ::::
