@@ -11,6 +11,10 @@ The rare functions detect values that occur rarely in time or rarely for a popul
 
 The `rare` analysis detects anomalies according to the number of distinct rare values. This differs from `freq_rare`, which detects anomalies according to the number of times (frequency) rare values occur.
 
+Firemen!
+
+Does > That
+
 ::::{note}
 * The `rare` and `freq_rare` functions should not be used in conjunction with `exclude_frequent`.
 * You cannot create forecasts for {{anomaly-jobs}} that contain `rare` or `freq_rare` functions.
