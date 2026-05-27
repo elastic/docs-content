@@ -1338,8 +1338,8 @@ In the {{ml-app}} app, these configurations are available only when data exists 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
 
 :::{note}
-:applies_to: stack: ga 9.5+
-This job is replaced by `dns_tunneling_ea` in the Network module.
+:applies_to: {stack: ga 9.5+, serverless: ga}
+This job is replaced by `dns_tunneling_ea` in the [Network module](#security-network-jobs).
 :::
 
 ::::
@@ -1377,8 +1377,8 @@ This job is replaced by `dns_tunneling_ea` in the Network module.
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
 
 :::{note}
-:applies_to: stack: ga 9.5+
-This job is replaced by `rare_dns_tunneling_ea` in the Network module.
+:applies_to: {stack: ga 9.5+, serverless: ga}
+This job is replaced by `rare_dns_tunneling_ea` in the [Network module](#security-network-jobs).
 :::
 
 ::::
