@@ -16,7 +16,7 @@ products:
 - [Share with a link](#share-dashboard-link): Copy a direct link to the dashboard.
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of your dashboard.
-- [Download visualization data as CSV](#download-csv): Download the data behind individual Lens visualizations.
+- [Download visualization data as CSV](#download-csv): Download the data behind individual visualizations.
 - [Export dashboard configuration](#export-dashboards): Export as NDJSON for backup or migration, or as JSON for the dashboards API.
 
 Most options start from the {icon}`share` **Share** button in the dashboard application menu, where you can also [set who can edit the dashboard](#manage-dashboard-access). CSV download and dashboard configuration export use different entry points; see each section for details.
