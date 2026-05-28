@@ -25,7 +25,7 @@ Most options start from the {icon}`share` **Share** button in the dashboard tool
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
-:width: 60%
+:width: 40%
 :::
 
 ## Share with a link [share-dashboard-link]
