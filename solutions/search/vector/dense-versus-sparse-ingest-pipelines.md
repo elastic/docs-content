@@ -50,11 +50,12 @@ Use dense embeddings when you want to match content by overall meaning in vector
 
 Common use cases include:
 
+- [Context engineering for AI agents](/explore-analyze/ai-features/elastic-agent-builder.md): Combine retrieval, tools, and instructions so responses are grounded in your data. [Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) provides an out-of-the-box toolkit for this workflow.
 - [Retrieval augmented generation (RAG)](../rag.md): Retrieve document passages that answer a user's question, even when the question and the source text use different words.
 - [Natural language Q&A](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md): Match questions like "How do I reset my password?" to FAQ entries, product documentation, or policy pages.
 - [Recommendations and similarity](knn.md): Find related articles, products, or media. For example, you can surface articles like the current one or visually similar product images.
 
-Dense embeddings are a good choice when you need multilingual retrieval or a specific third-party embedding model you have already evaluated on your data.
+Dense embeddings are ideal when you care more about the semantic meaning of search terms than exact keyword matches - they excel at retrieving relevant results based on synonyms and paraphrasing of the original query to return results that reflect the user's intensions.
 
 For more detail, refer to [Dense vector search in {{es}}](dense-vector.md).
 
