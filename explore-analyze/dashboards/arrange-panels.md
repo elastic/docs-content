@@ -16,6 +16,7 @@ Customize your dashboard layout by arranging panels into logical groups and adju
 This page covers:
 
 - [Dashboard grid layout and best practices](#dashboard-grid-layout)
+- [Layout examples](#dashboard-layout-examples)
 - [Collapsible sections](#collapsible-sections)
 - [Moving and resizing panels](#resizing-containers)
 - [Copying and duplicating panels](#duplicate-panels)
@@ -47,7 +48,7 @@ Consider the following best practices to keep dashboards scannable as you add pa
 * **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
 * **Don't use text panels as section headers.** They take up vertical space without showing data. Use collapsible section labels and descriptive panel titles instead.
 
-::::{dropdown} Examples
+### Layout examples [dashboard-layout-examples]
 
 **Starting point**: a metric row, two half-width charts, and a detail table.
 
@@ -61,7 +62,9 @@ Consider the following best practices to keep dashboards scannable as you add pa
 └───────────────────────────────────────────┘
 ```
 
+::::{dropdown} Screenshot
 ![A polished dashboard with metrics at the top, time series charts in the middle, and a bar chart and table at the bottom](/explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png "")
+::::
 
 **Dense layout**: six compact metrics, two rows of three charts at third width, and a table.
 
@@ -77,6 +80,7 @@ Consider the following best practices to keep dashboards scannable as you add pa
 └─────────────────────────────────────────────────────┘
 ```
 
+::::{dropdown} Screenshot
 ![A Kibana dashboard showing KPI metrics at the top, followed by charts and a data table](/explore-analyze/images/kibana-dashboard-overview.png "")
 ::::
 
