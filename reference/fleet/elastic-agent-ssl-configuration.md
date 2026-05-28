@@ -147,7 +147,7 @@ $$$client-ssl-options$$$
     **Default:** `true`
 
     ::::{note}
-    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` explicitly to opt in.
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
     ::::
 
 `ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-client-setting$$$
