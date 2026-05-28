@@ -89,7 +89,7 @@ For general information about reporting across all {{kib}} apps, [how to configu
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in a **Lens** visualization on your dashboard as a CSV file. The option is available for chart and table visualizations, and does not appear on panel types that don't expose tabular data, such as **Markdown**, **Image**, **Link**, or **Maps** panels.
+You can download the data displayed in a visualization on your dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
 
 1. Open the panel menu of the visualization, then select **Download CSV**.
 2. The CSV file is downloaded to your machine.
