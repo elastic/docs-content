@@ -21,7 +21,7 @@ products:
 
 You can also [set who can edit the dashboard](#manage-dashboard-access).
 
-Most options start from the {icon}`share` **Share** button in the dashboard toolbar. CSV download and dashboard configuration export use different entry points; see each section for details.
+Most options start from the {icon}`share` **Share** button in the dashboard application menu. CSV download and dashboard configuration export use different entry points; see each section for details.
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
@@ -78,7 +78,7 @@ serverless: unavailable
 
 Generate and download a PDF or PNG file of your dashboard. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 
-1. Open the dashboard, then click {icon}`download` **Export** in the toolbar.
+1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
 2. Select **PDF** or **PNG**.
 3. Optional: For PDF exports, enable **Print format** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
 4. Click the button to generate the report.
@@ -138,7 +138,7 @@ Export the JSON source of a dashboard in a format that the {{kib}} dashboards AP
 To export a dashboard as JSON:
 
 1. Open the dashboard you want to export.
-2. From the toolbar, select {icon}`download` **Export** → **Export JSON**.
+2. From the application menu, select {icon}`download` **Export** → **Export JSON**.
 3. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
 4. Choose how to use the JSON source:
 
