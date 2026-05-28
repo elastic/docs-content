@@ -21,7 +21,7 @@ Detection rules only protect your environment when they run reliably. This page 
 | Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
 | Get a summary of rule execution details and access individual rules | [Rule Monitoring tab](#rule-monitoring-tab) |
 | Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
-| {applies_to}`stack: ga 9.4+` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) (Rules page and rule details) |
+| {applies_to}`stack: ga 9.4+` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) ({{siem-rules-ui}} page and rule details) |
 | Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
 | Run a rule manually for a specific time range | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
 | View rule performance metrics in a dashboard | [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) |
@@ -41,7 +41,7 @@ For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column 
 
 ## Rule Monitoring tab [rule-monitoring-tab]
 
-To view a summary of all rule executions (including the most recent failures, execution times, and gaps), select the **Rule Monitoring** tab on the {{rules-ui}} page. To access the tab, find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
+To view a summary of all rule executions (including the most recent failures, execution times, and gaps), select the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page. To access the tab, find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
 
 On the **Rule Monitoring** tab, you can [sort and filter rules](../detect-and-alert/manage-detection-rules.md#sort-filter-rules) just like you can on the **Installed Rules** tab.
 
