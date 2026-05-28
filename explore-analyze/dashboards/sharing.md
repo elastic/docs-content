@@ -19,7 +19,7 @@ products:
 - [Download visualization data as CSV](#download-csv): Download the data behind individual visualizations.
 - [Export dashboard configuration](#export-dashboards): Export as NDJSON for backup or migration, or as JSON for the dashboards API.
 
-You can also [set who can edit the dashboard](#manage-dashboard-access).
+You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
