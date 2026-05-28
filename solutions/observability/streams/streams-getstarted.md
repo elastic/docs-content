@@ -16,7 +16,39 @@ products:
 
 # Get started with Streams
 
-This hands-on guide will take you through to the core features and common use cases of Streams.
+This hands-on guide will take you through to the core features and common use cases of Streams. Before using Streams, make sure you have the following in place:
+
+- **{{es}} and {{kib}}**: Streams is available from {{es}} 9.1 (API, preview), 9.2 (Wired streams,
+  preview), and 9.2+ (GA for classic streams). For {{serverless-full}}, Streams is generally
+  available.
+- **Log data ingestion**: Logs can be sent to Streams via OpenTelemetry Collector, Fluentd,
+  Fluentbit, or through Elastic one-click integrations. No agent deployment is required for
+  agentless ingest via the `/logs` endpoint (Logs Streams, tech preview).
+- **Required permissions**:
+::::{applies-switch}
+
+:::{applies-item} serverless:
+Streams requires these {{serverless-full}} roles:
+- Admin: Ability to manage all Streams
+- Editor/Viewer: Limited access, cannot perform all actions
+:::
+
+:::{applies-item} stack:
+To manage all streams, you need the following permissions:
+
+- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
+- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
+
+To view streams, you need the following permissions:
+- **Data stream level**: `read`, `view_index_metadata`, `monitor`
+
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+
+:::
+
+To start using Streams:
+
+::::
 
 :::::{stepper}
 
@@ -63,40 +95,6 @@ Review the [**Significant Events** view](./management/significant-events.md) to 
 :::::
 
 ::::::
-
-## Before you start
-
-Before using Streams, make sure you have the following in place:
-
-- **{{es}} and {{kib}}**: Streams is available from {{es}} 9.1 (API, preview), 9.2 (Wired streams,
-  preview), and 9.2+ (GA for classic streams). For {{serverless-full}}, Streams is generally
-  available.
-- **Log data ingestion**: Logs can be sent to Streams via OpenTelemetry Collector, Fluentd,
-  Fluentbit, or through Elastic one-click integrations. No agent deployment is required for
-  agentless ingest via the `/logs` endpoint (Logs Streams, tech preview).
-- **Required permissions**:
-::::{applies-switch}
-
-:::{applies-item} serverless:
-Streams requires these {{serverless-full}} roles:
-- Admin: Ability to manage all Streams
-- Editor/Viewer: Limited access, cannot perform all actions
-:::
-
-:::{applies-item} stack:
-To manage all streams, you need the following permissions:
-
-- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
-- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
-
-To view streams, you need the following permissions:
-- **Data stream level**: `read`, `view_index_metadata`, `monitor`
-
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
-
-:::
-
-::::
 
 ## Alternatives paths to manage log data in Elastic
 
