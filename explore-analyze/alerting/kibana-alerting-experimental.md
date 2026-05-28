@@ -16,7 +16,7 @@ The {{alerting-v2-system}} watches your {{es}} data continuously, so your team d
 
 ## The core idea [kibana-alerting-v2-overview]
 
-The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. A rule watches your data and records what it finds. Action policies decide what actions to trigger, who to notify, and when. In most alerting systems, notification settings are wired directly onto each rule, which means changing who gets notified requires editing every rule. This design lets you build and test detection logic before wiring up any actions, and update action routing without touching your rules.
+The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. A rule watches your data and records what it finds. Action policies decide which workflows to invoke, who to notify, and when. In most alerting systems, notification settings are wired directly onto each rule, which means changing who gets notified requires editing every rule. This design lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
 
 ## The four building blocks
 
@@ -39,9 +39,9 @@ Refer to [Alert episodes](kibana-alerting-experimental/alerts.md) to learn more.
 -->
 
 ### Action policies
-An action policy controls whether an alert episode should trigger an action, and how often. You can set conditions to filter which alert episodes it applies to, for example, only critical severity alert episodes from a specific service. A single action policy can apply to alert episodes from any rule in your space.
+An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating suppression, match conditions, and frequency. You can set conditions to filter which alert episodes it applies to, for example, only critical severity alert episodes from a specific service. Global action policies apply to alert episodes from any rule in the space. Per-rule action policies scope to a single rule for more targeted routing.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-Refer to [Notifications](kibana-alerting-experimental/notifications.md) to learn more.
+Refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md) to learn more.
 -->
 
 ### Workflows
@@ -61,20 +61,22 @@ Use Alert mode when you want to track issues and be notified. The rule opens an 
 
 ```
 Rule runs → finds something → writes a rule event
-  → alert episode opens (pending → active)  → you get notified
-  → condition clears (recovering → inactive) → you get notified again
-  → action policy → workflow → notification
+  → alert episode (pending → active)
+      → [dispatcher] → action policy → workflow → notification
+  → condition clears (recovering → inactive)
+      → [dispatcher] → action policy → workflow → notification
 ```
 
 1. The rule evaluates {{esql}} on a schedule and writes a rule event to `.rule-events`.
-2. The rule event joins an alert episode, which is tracked until the condition resolves.
-3. Action policies match eligible alert episodes and decide whether outreach should run.
-4. Matched policies invoke configured workflows, which deliver messages or run automation steps.
-5. Notifications are the outcome (email, chat, webhook, and so on) when all prior steps pass.
+2. The rule event opens or updates an alert episode, which is tracked until the condition resolves.
+3. The dispatcher runs on a short interval, independently of the rule schedule, and picks up active alert episodes.
+4. For each active alert episode, the dispatcher evaluates all enabled action policies. Each policy runs the episode through a sequence of gates: suppression, match conditions, and frequency.
+5. For policies where the episode clears all gates, the dispatcher invokes the configured workflows.
+6. Workflows deliver the notification or run the automation (email, chat, webhook, and so on).
 
 #### Example: Rule runs in Alert mode
 
-An SRE team creates a rule in Alert mode that checks checkout service latency every five minutes. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode. An action policy with a `rule.labels: "checkout"` matcher picks it up, skips low-severity alert episodes, and sends a Slack message through an on-call workflow.
+An SRE team creates a rule in Alert mode that checks checkout service latency every five minutes. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode. An action policy with a `rule.tags: "checkout"` matcher picks it up, skips low-severity alert episodes, and sends a Slack message through an on-call workflow.
 
 The on-call engineer gets one message, investigates, fixes a slow query, and latency drops. The alert episode recovers automatically. No dashboard watching required.
 
@@ -114,9 +116,9 @@ Later, an on-call alert fires for unusual privilege escalation on the same host.
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   How you control who gets notified, when, and how often. You configure a matcher to filter which alert episodes it applies to, how alert episodes batch into notifications, and which workflow should send the message. One action policy can apply to alert episodes from multiple rules.
+:   The gating layer between an alert episode and a workflow. You configure suppression rules, match conditions to filter which alert episodes it applies to, frequency settings to control batching and cooldown, and which workflow should send the message. Global action policies apply to alert episodes from any rule in the space. Per-rule action policies scope to a single rule.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-    To learn more, refer to [Notifications](kibana-alerting-experimental/notifications.md).
+    To learn more, refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md).
 -->
 
 **Alert episode**
@@ -126,9 +128,9 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   A single moment when a rule's query finds a match. One breach doesn't necessarily trigger a notification. You can configure a rule to require several consecutive breaches before it confirms the problem is real.
 
 **Dispatcher**
-:   The background process in {{kib}} that runs the notification pipeline. On a short interval (around 10 seconds), it evaluates each enabled action policy against active alert episodes and sends notifications. The dispatcher runs on its own cadence, separate from the rule schedule.
+:   The background process in {{kib}} that runs the notification pipeline. On a short interval (around 5 seconds), it evaluates each enabled action policy against active alert episodes and sends notifications. The dispatcher runs on its own cadence, separate from the rule schedule.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-    To learn more, refer to [Notification gating](kibana-alerting-experimental/notifications/notification-gating.md).
+    To learn more, refer to [Reduce notification noise](kibana-alerting-experimental/action-policies/reduce-notification-noise.md).
 -->
 
 **{{esql}}**
@@ -137,7 +139,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 **Notification**
 :   The message or action delivered when an alert episode matches an action policy and a workflow sends it. Examples include a Slack message, an email, or a webhook call.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-    To learn more, refer to [How action policies are evaluated](kibana-alerting-experimental/notifications.md#how-action-policies-evaluated).
+    To learn more, refer to [How action policies are evaluated](kibana-alerting-experimental/notifications-actions.md#how-action-policies-evaluated).
 -->
 
 **Rule**

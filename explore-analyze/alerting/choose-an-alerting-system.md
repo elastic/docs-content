@@ -20,9 +20,9 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | All deployments |
 | Use rules built for Security, Observability, APM, or Maps | [{{kib}} alerting](alerts.md) | All deployments |
-| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} |
-| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} |
+| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
+| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | Self-managed and {{ech}} only |
 
 ## Compare at a glance
@@ -33,6 +33,6 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 | **Rule definition** | Select a rule type and fill in parameters | Write an {{esql}} query | Write a JSON watch definition |
 | **Alert data** | In-place updates; limited query support | Append-only events queryable with {{esql}} in Discover | Watch history index |
 | **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules | Action-level throttling and conditions |
-| **Noise reduction** | Snooze per rule, maintenance windows | Per-series snooze; matcher-based action routing and per-episode acknowledgment | Action conditions and throttling |
-| **Available on {{serverless-full}}** | Yes | Yes | No |
-| **Available on {{stack}}** | Yes | No | Yes |
+| **Noise reduction** | Snooze per rule, maintenance windows | Per-episode acknowledge or deactivate; per-series snooze; maintenance windows; match condition routing in action policies | Action conditions and throttling |
+| **Available on {{serverless-full}}** | Yes | Yes (preview) | No |
+| **Available on {{stack}}** | Yes | Yes, 9.5+ (preview) | Yes |

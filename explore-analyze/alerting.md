@@ -35,13 +35,13 @@ serverless: ga
 
 ```{applies_to}
 serverless: preview
-stack: unavailable
+stack: preview
 ```
 
-The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose how alert episodes are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, and rules on alert episodes for correlation and escalation. It is a strong fit when you want full control over what data travels with each alert episode and how your team is notified.
+The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose how alert episodes are tracked per series, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, and rules on alert episodes for correlation and escalation. It is a strong fit when you want full control over what data travels with each alert episode and how your team is notified.
 
 :::{note}
-The {{alerting-v2-system}} runs next to {{kib}} alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. {{kib}} alerting will remain available.
+The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} and {{stack}} 9.5 and later. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. {{kib}} alerting will remain available.
 :::
 
 [Get started with the {{alerting-v2-system}} →](alerting/kibana-alerting-experimental.md)
