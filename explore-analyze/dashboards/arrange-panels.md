@@ -25,8 +25,8 @@ Size panels to match what they show. Use these as starting points and adjust for
 
 | Chart type | Recommended width | Recommended height (rows) |
 | ---------- | ----------------- | ------------------------- |
-| KPI / metric | Quarter (12) | 4–6 |
-| Dense KPI row | Sixth (8) | 4–5 |
+| Metric | Quarter (12) | 4–6 |
+| Metric (on dense row) | Sixth (8) | 4–5 |
 | Bar chart, gauge, pie | Half (24) | 8–12 |
 | Line chart, area chart (time series) | Third (16) to full (48) | 12–15 |
 | Heat map | Full (48) | 15–25 |
@@ -34,17 +34,14 @@ Size panels to match what they show. Use these as starting points and adjust for
 
 Consider the following best practices to keep dashboards scannable as you add panels:
 
-* **Place KPIs and key trends above the fold.** On a 1080p screen, roughly 20–24 rows are visible without scrolling. Put metrics in the top row so viewers see the most important information first. For operational dashboards, aim for 8–12 panels above the fold.
+* **Place KPIs and key trends above the fold.** On a 1080p screen, roughly 20–24 rows are visible without scrolling. Put metrics in the top row so viewers see the most important information first. Aim for 8–12 panels above the fold.
 * **Keep heights consistent within a row.** When several panels sit side by side, use the same height for all of them. Mismatched heights leave awkward gaps and make the row harder to read.
 * **Match panel width to importance.** Give primary charts more horizontal room, and group compact KPI metrics into narrower panels along a single row.
 * **Separate secondary content with collapsible sections.** When a dashboard accumulates supporting panels and detail tables, place them inside a [collapsible section](#collapsible-sections) so the primary view stays focused and the dashboard loads faster.
 * **Don't use text panels as section headers.** They take up vertical space without showing data. Use collapsible section labels and descriptive panel titles instead.
 
-A common starting layout puts KPIs first, charts in the middle, and a detail table at the bottom. Use two half-width charts per row, or three at third width when comparing multiple dimensions:
+A common starting layout puts metrics first, charts in the middle, and a detail table at the bottom. Use two half-width charts per row, or three at third width when comparing multiple dimensions:
 
-```text
-┌──────────┬──────────┬──────────┬──────────┐
-│  KPI     │  KPI     │  KPI     │  KPI     │  4 × 12 cols, ~5 rows
 ├──────────┴──────────┼──────────┴──────────┤
 │  Chart              │  Chart              │  2 × 24 cols, ~10–12 rows
 ├─────────────────────┴─────────────────────┤
