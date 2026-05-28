@@ -19,7 +19,7 @@ products:
 - [Download visualization data as CSV](#download-csv): Download the data behind individual visualizations.
 - [Export dashboard configuration](#export-dashboards): Export as NDJSON for backup or migration, or as JSON for the dashboards API.
 
-Most options start from the {icon}`share` **Share** button in the dashboard application menu, where you can also [set who can edit the dashboard](#manage-dashboard-access). CSV download and dashboard configuration export use different entry points; see each section for details.
+You can also [set who can edit the dashboard](#manage-dashboard-access).
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
