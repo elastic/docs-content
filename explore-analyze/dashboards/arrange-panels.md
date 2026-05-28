@@ -42,6 +42,9 @@ Consider the following best practices to keep dashboards scannable as you add pa
 
 A common starting layout puts metrics first, charts in the middle, and a detail table at the bottom. Use two half-width charts per row, or three at third width when comparing multiple dimensions:
 
+```text
+┌──────────┬──────────┬──────────┬──────────┐
+│  Metric  │  Metric  │  Metric  │  Metric  │  4 × 12 cols, ~5 rows
 ├──────────┴──────────┼──────────┴──────────┤
 │  Chart              │  Chart              │  2 × 24 cols, ~10–12 rows
 ├─────────────────────┴─────────────────────┤
