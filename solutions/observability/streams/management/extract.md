@@ -13,48 +13,30 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Process documents [streams-extract-fields]
+# Process your documents [streams-extract-fields]
 
 After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
-The **Processing** tab also has the following features:
+## Why process your documents with Streams?
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` [Generate pipeline suggestions](#streams-generate-pipeline-suggestions).
-- Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end.
-- Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
+- **[Add processors](#streams-add-processors)**: Use the Streams UI without needing to manually configuring configuring pipeline JSON or Grok syntax.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**: Let Streams analyze sample documents and suggests pipeline patterns, so you're refining instead of writing from scratch.
+- **[Preview changes](#streams-preview-changes)**: Use the data preview to view which fields your pattern extracts per document, removing the guesswork.
+- **[Detect and resolve processing issues](#streams-detect-failures)**: Identify which processor or condition is causing documents to fail during processing.
+- **[Catch mapping conflicts](#streams-processing-mapping-conflicts)**: Identify potential mapping conflicts before they cause cluster-wide failures. Streams simulates the indexing process end-to-end before deploying.
 
-After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
-
-:::{note}
-Applied changes aren't retroactive and only affect *future ingested data*.
-:::
-
-## Supported processors [streams-extract-processors]
-
-:::{include} ../../../_snippets/streams-supported-processors.md
-:::
-
-## Add processors [streams-add-processors]
+## Add and configure processors [streams-add-processors]
 
 Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
 To add a processor from the **Processing** tab:
 
-1. Select **Create** → **Create processor** to open a list of supported processors.
-1. Select a processor from the **Processor** menu.
-1. Configure the processor and select **Create** to save the processor.
+:::::{stepper}
+::::{step} Let Streams suggest processors
+:anchor: streams-generate-pipeline-suggestions
 
-After adding all desired processors and conditions, select **Save changes**.
-
-Refer to individual [supported processors](#streams-extract-processors) for more on configuring specific processors.
-
-:::{note}
-Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
-:::
-
-### Generate pipeline suggestions [streams-generate-pipeline-suggestions]
 ```{applies_to}
 stack: preview 9.3+
 serverless: preview
@@ -63,7 +45,7 @@ serverless: preview
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
-Setting up processors is generally a multistep process. For example, you might need a grok processor to extract fields, a date processor to convert timestamps, and a remove processor to get rid of temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
+Setting up processors is generally a multi-step process. For example, you might need a grok processor to extract fields, a date processor to convert timestamps, and a remove processor to get rid of temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
 
 1. From the **Processing** tab, select **Suggest a pipeline**.
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
@@ -73,8 +55,27 @@ Setting up processors is generally a multistep process. For example, you might n
 
 :::{include} ../../../_snippets/streams-suggestions.md
 :::
+::::
 
-### Add conditions [streams-add-processor-conditions]
+::::{step} Manually add processors
+:anchor: streams-add-processors-manually
+
+If you know which processors you want to use, you can add them manually:
+
+1. Select **Create processor**. You can also let Streams suggest processors by selecting [Suggest a pipeline](#streams-generate-pipeline-suggestions).
+1. Select a processor from the **Processor** menu.
+
+  :::{note}
+  Let Streams suggest patterns for [Grok](./extract/grok.md#streams-grok-patterns) and [dissect](./extract/dissect.md#streams-dissect-patterns) processors by selecting **Generate pattern**. This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+  :::
+
+1. Configure the processor and select **Create** to save the processor.
+1. Optional: Enable **Ignore failures** if you want document processing to continue even when this processor fails.
+1. Optional: For dissect, Grok, and rename processors, enable **Ignore missing fields** if you want processing to continue when a source field is missing.
+::::
+
+::::{step} Add conditions
+:anchor: streams-add-processor-conditions
 
 You can add conditions, Boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
 
@@ -83,7 +84,6 @@ To add a condition:
 1. Select **Create** → **Create condition**.
 1. Provide a **Field**, a **Value**, and a comparator.
 1. Select **Create condition**.
-1. Select **Save changes**.
 
 :::{dropdown} Supported comparators
 Streams processors support the following comparators:
@@ -102,8 +102,99 @@ Streams processors support the following comparators:
 :::
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+::::
 
-### Editing modes [streams-editing-modes]
+::::{step} Preview changes
+:anchor: streams-preview-changes
+
+After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
+
+When you add or edit processors, the **Data preview** tab updates automatically.
+
+:::{note}
+To avoid unexpected results, it's best to add processors rather than remove or reorder existing ones.
+:::
+
+The **Data preview** tab loads 100 documents from your existing data and runs your changes against them.
+For any newly created processors and conditions, the preview results are reliable, and you can freely create and reorder during the preview.
+
+If you edit the stream after previewing your changes, keep the following in mind:
+
+- Adding processors to the end of the list works as expected.
+- Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
+- Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
+::::
+
+::::{step} View processor statistics and detected fields
+:anchor: streams-stats-and-detected-fields
+
+Once saved, the processor displays its success rate and the fields it added.
+
+:::{image} ../../../images/logs-streams-field-stats.png
+:screenshot:
+:::
+::::
+
+::::{step} Detect and resolve failures
+:anchor: streams-detect-failures
+
+Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
+
+In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
+
+:::{image} ../../../images/logs-streams-parsed.png
+:screenshot:
+:::
+
+You can filter your documents by selecting **Parsed** or **Failed** on the **Data preview** tab.
+Selecting **Failed** shows the documents that weren't parsed correctly:
+
+:::{image} ../../../images/logs-streams-failures.png
+:screenshot:
+:::
+
+Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
+
+:::{image} ../../../images/logs-streams-processor-failures.png
+:screenshot:
+:::
+::::
+
+::::{step} Detect mapping conflicts
+:anchor: streams-processing-mapping-conflicts
+
+As part of processing, Streams simulates your changes end-to-end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
+
+:::{image} ../../../images/logs-streams-mapping-conflicts.png
+:screenshot:
+:::
+
+Use the information in the failure message to find and troubleshoot the mapping issues.
+::::
+
+::::{step} Save changes
+After adding all desired processors and conditions, select **Save changes**. After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
+::::
+:::::
+
+Refer to the [Streamlang reference](./streamlang.md) for supported processor and configuration details.
+
+:::{note}
+Applied changes aren't retroactive and only affect *future ingested data*.
+:::
+
+## Modify an existing processor [streams-processor-actions]
+
+To modify an existing processor, open the actions menu {icon}`boxes_vertical` next to it to see the available options:
+
+* **Move up** or **Move down**: Change the order of the processor.
+* **Add description**: Change the processor description from its metadata to a description of your choice.
+* **Remove description**: For processors with an added description, use this option to return the description to the metadata.
+* **Edit**: Modify the processor configuration.
+* **Duplicate**: Create another processor with the same configuration to use as a template.
+* **Delete**: Remove the processor permanently.
+
+### Switch between interactive and YAML editing modes [streams-editing-modes]
 
 The Streams processing UI provides an [interactive mode](#streams-editing-interactive-mode) and a [YAML mode](#streams-editing-yaml-mode) for editing processors and conditions.
 
@@ -133,88 +224,6 @@ stack: ga 9.3+
 - Advanced configurations with complex or deeply nested conditions
 
 Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, condition operators, and examples.
-
-
-### Preview changes [streams-preview-changes]
-
-After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
-
-When you add or edit processors, the **Data preview** tab updates automatically.
-
-:::{note}
-To avoid unexpected results, it's best to add processors rather than remove or reorder existing ones.
-:::
-
-The **Data preview** tab loads 100 documents from your existing data and runs your changes against them.
-For any newly created processors and conditions, the preview results are reliable, and you can freely create and reorder during the preview.
-
-After making sure everything in the **Data preview** tab is correct, select **Save changes** to apply your changes to the data stream.
-
-If you edit the stream after saving your changes, keep the following in mind:
-
-- Adding processors to the end of the list works as expected.
-- Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
-- Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
-
-### Ignore failures [streams-ignore-failures]
-
-Each processor has the **Ignore failures** option. When enabled, document processing continues when even if the processor fails.
-
-### Ignore missing fields [streams-ignore-missing-fields]
-
-Dissect, grok, and rename processors include the **Ignore missing fields** option. When enabled, document processing continues even if a source field is missing.
-
-### Processor actions [streams-processor-actions]
-
-To modify an existing processor, open the actions menu {icon}`boxes_vertical` next to it to see the available options:
-
-* **Move up** or **Move down**: Change the order of the processor.
-* **Add description**: Change the processor description from its metadata to a description of your choice.
-* **Remove description**: For processors with an added description, use this option to return the description to the metadata.
-* **Edit**: Modify the processor configuration.
-* **Duplicate**: Create another processor with the same configuration to use as a template.
-* **Delete**: Remove the processor permanently.
-
-## Detect and resolve failures [streams-detect-failures]
-
-Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
-
-In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
-
-:::{image} ../../../images/logs-streams-parsed.png
-:screenshot:
-:::
-
-You can filter your documents by selecting **Parsed** or **Failed** on the **Data preview** tab.
-Selecting **Failed** shows the documents that weren't parsed correctly:
-
-:::{image} ../../../images/logs-streams-failures.png
-:screenshot:
-:::
-
-Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
-
-:::{image} ../../../images/logs-streams-processor-failures.png
-:screenshot:
-:::
-
-### Mapping conflicts [streams-processing-mapping-conflicts]
-
-As part of processing, Streams simulates your changes end to end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
-
-:::{image} ../../../images/logs-streams-mapping-conflicts.png
-:screenshot:
-:::
-
-Use the information in the failure message to find and troubleshoot the mapping issues.
-
-## Processor statistics and detected fields [streams-stats-and-detected-fields]
-
-Once saved, the processor displays its success rate and the fields it added.
-
-:::{image} ../../../images/logs-streams-field-stats.png
-:screenshot:
-:::
 
 ## Advanced: How and where do these changes get applied to the underlying data stream? [streams-applied-changes]
 
