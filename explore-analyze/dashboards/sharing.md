@@ -77,7 +77,7 @@ serverless: unavailable
 Generate and download a PDF or PNG file of your dashboard. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 
 1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
-2. Select **PDF** or **PNG**.
+2. Select **PDF reports** or **PNG reports**.
 3. Optional: For PDF exports, enable **Print format** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
 4. Select **Export PDF** or **Export PNG** to generate the report.
 
