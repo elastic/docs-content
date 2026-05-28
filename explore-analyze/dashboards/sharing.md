@@ -99,11 +99,10 @@ For general information about reporting across all {{kib}} apps, known limitatio
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in individual **Lens** visualizations on your dashboard as CSV files.
+You can download the data displayed in a **Lens** visualization on your dashboard as a CSV file.
 
-1. On the dashboard, open the Lens visualization you want to export.
-2. Click {icon}`download` **Export**, then select **CSV Download**.
-3. The CSV file is downloaded to your machine.
+1. Open the panel menu of the visualization, then select **Download CSV**.
+2. The CSV file is downloaded to your machine.
 
 ::::{note}
 If the visualization contains data that starts with characters that spreadsheet applications might interpret as formulas (such as `=`, `+`, `-`, or `@`), a warning is displayed.
