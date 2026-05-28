@@ -35,16 +35,16 @@ serverless: ga
 
 ```{applies_to}
 serverless: preview
-stack: preview
+stack: unavailable
 ```
 
-The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose how alerts are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). They add alert lifecycle tracking with episodes, per-series snooze, and rules on alerts for correlation and escalation. The {{alerting-v2-system}} is a strong fit when you want full control over what data travels with each alert and how your team is notified.
-
-[Get started with the {{alerting-v2-system}} →](alerting/kibana-alerting-experimental.md)
+The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose how alert episodes are tracked per series, and control notifications through action policies (shared objects that handle routing, frequency, and notification batching across many rules at once). The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, and rules on alert episodes for correlation and escalation. It is a strong fit when you want full control over what data travels with each alert episode and how your team is notified.
 
 :::{note}
 The {{alerting-v2-system}} runs next to {{kib}} alerting on supported deployments. You do not have to move everything at once. Teams can copy or rebuild rules when they are ready. {{kib}} alerting will remain available.
 :::
+
+[Get started with the {{alerting-v2-system}} →](alerting/kibana-alerting-experimental.md)
 
 ## Watcher
 
@@ -56,7 +56,7 @@ serverless: unavailable
 Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{kib}} alerting. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most teams, {{kib}} alerting or the {{alerting-v2-system}} is easier to adopt: it includes more ready-made building blocks and a single place in {{kib}} to work with rules.
+For most teams, {{kib}} alerting or the {{alerting-v2-system}} is easier to adopt than Watcher: both work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
 :::
 
 [Get started with Watcher →](alerting/watcher.md)

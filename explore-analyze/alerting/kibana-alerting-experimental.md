@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: unavailable
+  stack: preview 
   serverless: preview
 products:
   - id: kibana
@@ -10,17 +10,17 @@ description: "How the {{alerting-v2-system}} watches your data, turns conditions
 
 # {{alerting-v2-system-cap}} overview [alerting-overview]
 
-The {{alerting-v2-system}} in {{kib}} is marked **Experimental** in the UI and is subject to change before general availability. It includes alerts, alert episodes, rules, notification policies, workflows, and connectors. For the existing {{kib}} alerting system, refer to [{{kib}} alerting](alerts.md).
+The {{alerting-v2-system}} in {{kib}} is marked **Experimental** in the UI and is subject to change before general availability. It includes rules, alert episodes, action policies, workflows, and connectors. For the existing {{kib}} alerting system, refer to [{{kib}} alerting](alerts.md).
 
 The {{alerting-v2-system}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
 
 ## The core idea [kibana-alerting-v2-overview]
 
-The {{alerting-v2-system}} separates *detecting* a problem from *notifying* people about it. A rule watches your data and records what it finds. Separate action policies decide who hears about it and when. This lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
+The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. A rule watches your data and records what it finds. Action policies decide what actions to trigger, who to notify, and when. In most alerting systems, notification settings are wired directly onto each rule, which means changing who gets notified requires editing every rule. This design lets you build and test detection logic before wiring up any actions, and update action routing without touching your rules.
 
 ## The four building blocks
 
-The {{alerting-v2-system}} is built around four objects, rules, alerts, action policies, and workflows, each with a distinct role.
+The {{alerting-v2-system}} is built around four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
 
 ### Rules
 A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes:
@@ -32,10 +32,10 @@ A rule defines what to watch for in your data and how often to check. Every rule
 Refer to [Rules](kibana-alerting-experimental/rules.md) to learn more.
 -->
 
-### Alerts
-In Alert mode, a rule tracks each problem over time. Rather than opening a new alert episode on every run, the rule keeps updating the same alert episode until the problem clears. You see one lifecycle for that problem, from when it started to when it resolved, instead of a separate alert episode per check. You triage and manage them on the **Alerts** page.
+### Alert episodes
+In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive) giving you one lifecycle to triage rather than a separate item per rule check. You manage alert episodes on the **Alerts** page.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-Refer to [Alerts](kibana-alerting-experimental/alerts.md) to learn more.
+Refer to [Alert episodes](kibana-alerting-experimental/alerts.md) to learn more.
 -->
 
 ### Action policies
@@ -79,7 +79,7 @@ An SRE team creates a rule in Alert mode that checks checkout service latency ev
 The on-call engineer gets one message, investigates, fixes a slow query, and latency drops. The alert episode recovers automatically. No dashboard watching required.
 
 :::{image} ../images/rule-alert-mode-diagram.png
-:alt: Diagram of Alert mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes an alert event tied to an ongoing alert episode. The alert episode moves through pending, active, recovering, and inactive states. An action policy matches eligible alert episodes and routes them to a workflow, which delivers a notification.
+:alt: Diagram of Alert mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a rule event tied to an ongoing alert episode. The alert episode moves through pending, active, recovering, and inactive states. An action policy matches eligible alert episodes and routes them to a workflow, which delivers a notification.
 :::
 
 ### Detect mode
@@ -87,10 +87,14 @@ The on-call engineer gets one message, investigates, fixes a slow query, and lat
 Use Detect mode when you want to record matches for querying and analysis without alerting anyone. The rule writes a signal and stops. An alert episode is not opened, and notifications are not sent.
 
 ```
-Rule runs → finds something → writes a signal event
+Rule runs → finds something → writes a signal
   → queryable in Discover
   → no alert episode, no action policy, no notification
 ```
+
+1. The rule evaluates {{esql}} on a schedule and writes a rule event (signal) to `.rule-events`.
+2. The signal is available for querying in Discover, dashboards, and ES|QL.
+3. No alert episode is opened. No action policy is evaluated. No notification is sent.
 
 #### Example: Rule runs in Detect mode
 
@@ -99,7 +103,7 @@ A security team wants to track when a rarely-used admin API endpoint is called. 
 The rule writes a signal each time it finds a match. No alert episodes are opened and no notifications go out.
 
 :::{image} ../images/rule-detect-mode-diagram.png
-:alt: Diagram of Detect mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal event to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
+:alt: Diagram of Detect mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
 :::
 
 Later, an on-call alert fires for unusual privilege escalation on the same host. During the investigation, the team queries `.rule-events` in Discover and finds that the admin API endpoint was called three times in the hour before the escalation. The Detect mode signals did not surface the incident. The Alert mode rule did. But without the signals already in the index, the admin API activity would have been invisible during the post-incident review.
@@ -165,3 +169,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
     To learn more, refer to [Workflows for the {{alerting-v2-system}}](kibana-alerting-experimental/workflows-alerting.md).
 -->
+
+## Next steps
+
+To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Choose an alerting system](choose-an-alerting-system.md).
