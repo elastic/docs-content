@@ -19,6 +19,10 @@ products:
 :::{include} ../get-started/_snippets/observability-overview.md
 :::
 
+Firemen!
+
+This > That
+
 ## Related reference [_reference_documentation]
 
 The {{observability}} reference documentation is available in the [Elastic reference documentation](/reference/observability/index.md).
