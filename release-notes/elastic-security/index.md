@@ -27,6 +27,36 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+
+## 9.4.2 [elastic-security-9.4.2-release-notes]
+
+### Features and enhancements [elastic-security-9.4.2-features-enhancements]
+
+* Improves Automatic Migration dashboard migration accuracy by sampling index records before query translation, enabling the LLM to generate {{esql}} queries with correct field names and values from the first attempt [#261927]({{kib-pull}}261927).
+* Adds a warning callout to the **Endpoint exceptions**, **Trusted applications**, and **Event filters** forms when users enter unnecessarily escaped characters [#268477]({{kib-pull}}268477).
+* Adds a warning callout and confirmation modal to the rule exceptions form when entering escaped characters (such as `\*` or `\?`) with the `matches` operator, indicating they might have intended wildcards instead [#268397]({{kib-pull}}268397).
+* Updates the {{agent-builder}} announcement modal so that clicking **Revert** immediately switches all space users back to AI Assistant [#267906]({{kib-pull}}267906).
+
+### Fixes [elastic-security-9.4.2-fixes]
+
+* Fixes an issue where users with read-only access could see the asset criticality update dropdown in the entity details flyout. The dropdown is now correctly gated on write permissions [#269164]({{kib-pull}}269164).
+* Fixes an issue where the alert details flyout **Overview** tab crashed in Discover for external alert documents [#269000]({{kib-pull}}269000).
+* Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
+* Fixes an incorrect banner shown in the Discover document flyout when Discover is embedded in a dashboard [#268249]({{kib-pull}}268249).
+* Fixes empty **Last results**, **Docs**, and **Agents** columns on the Osquery pack details page for scheduled queries [#267894]({{kib-pull}}267894).
+* Fixes multiple rendering issues in the entity details flyout when opened in **Preview** mode from {{agent-builder}} [#267342]({{kib-pull}}267342).
+* Fixes an issue where the alert details flyout failed to render its header, content, and footer when Discover was embedded in a dashboard [#267321]({{kib-pull}}267321).
+* Fixes the AI rule creation flow to respect the `enableESQL` advanced setting. When {{esql}} is disabled, the AI rule creation option is hidden and {{esql}} rule creation is blocked in {{agent-builder}} [#267247]({{kib-pull}}267247).
+* Fixes a duplicate "AI Assistant" section on the **Feature Settings** page by consolidating the {{elastic-sec}} AI Assistant configuration under the **Security** group, and hides the AI Assistant for Security entry when AI Assistant is not the selected chat experience [#266697]({{kib-pull}}266697).
+* Fixes the **Manage license** link on the Attack Discovery page to navigate directly to **License Management** instead of the {{stack-manage-app}} landing page [#266445]({{kib-pull}}266445).
+* Fixes an issue where **View in AI Assistant** buttons and context menu items in Attack Discovery remained visible when the AI Assistant was hidden via **GenAI Settings** [#266111]({{kib-pull}}266111).
+* Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
+* Fixes an issue where {{elastic-endpoint}} could get stuck in the `CONFIGURING` state when updating an {{elastic-defend}} policy with rollback enabled on Windows.
+* Fixes a sharing violation in the `get-file` response action for {{elastic-defend}}.
+* Improves legacy event source compatibility with newer kernel versions (6.1+ and 7.0+) in {{elastic-defend}} on Linux.
+* Fixes an issue where {{elastic-defend}} on Linux could trigger unnecessary automount activity on systems using `autofs`.
+* Improves `fanotify` event collection reliability in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+
 ## 9.4.1 [elastic-security-9.4.1-release-notes]
 
 ### Fixes [elastic-security-9.4.1-fixes]
