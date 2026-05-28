@@ -30,8 +30,8 @@ You can also [set whether other users of your space can edit dashboards you own]
 
 Share a direct link to your dashboard so that others can access it in {{kib}}.
 
-1. Open the dashboard, then click {icon}`share` **Share**.
-2. On the **Link** tab, click **Copy link**.
+1. Open the dashboard, then select {icon}`share` **Share**.
+2. On the **Link** tab, select **Copy link**.
 
 The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions. Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 
@@ -50,14 +50,14 @@ serverless: unavailable
 
 Embed a fully interactive dashboard as an iframe on an internal company website or personal web page.
 
-1. Open the dashboard, then click {icon}`share` **Share**.
+1. Open the dashboard, then select {icon}`share` **Share**.
 2. Go to the **Embed** tab.
 3. Under **Include**, select which parts of the dashboard to display in the embedded view:
    - **Top menu**
    - **Query**
    - **Time filter**
    - **Filter bar** (enabled by default)
-4. Click **Copy embed code**.
+4. Select **Copy embed code**.
 5. Paste the iframe code into your web page HTML.
 
 <!-- TODO: add screenshot of the embed tab -->
@@ -79,25 +79,17 @@ Generate and download a PDF or PNG file of your dashboard. PDF and PNG reports a
 1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
 2. Select **PDF** or **PNG**.
 3. Optional: For PDF exports, enable **Print format** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
-4. Click the button to generate the report.
+4. Select **Export PDF** or **Export PNG** to generate the report.
 
-A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**.
-
-:::{note}
-For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
-:::
-
-::::{note}
-When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-::::
+A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**. If the report contains a data table or Discover session, the PDF includes only the visible data.
 
 {applies_to}`stack: ga 9.1+` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
 
-For general information about reporting across all {{kib}} apps, known limitations, and troubleshooting, refer to [Reporting and sharing](../report-and-share.md).
+For general information about reporting across all {{kib}} apps, [how to configure reporting](/deploy-manage/kibana-reporting-configuration.md), known limitations, and troubleshooting, refer to [Reporting and sharing](../report-and-share.md).
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in a **Lens** visualization on your dashboard as a CSV file.
+You can download the data displayed in a **Lens** visualization on your dashboard as a CSV file. The option is available for chart and table visualizations, and does not appear on panel types that don't expose tabular data, such as **Markdown**, **Image**, **Link**, or **Maps** panels.
 
 1. Open the panel menu of the visualization, then select **Download CSV**.
 2. The CSV file is downloaded to your machine.
@@ -119,7 +111,7 @@ You can export a dashboard from {{kib}} in two formats. Use the table to choose 
 
 Export dashboards as NDJSON files to migrate them to other {{kib}} instances, back them up, or share them with other teams. You can export dashboards from **Stack Management** → **Saved Objects**. To configure and start the export:
 
-1. Select the dashboard that you want, then click **Export**.
+1. Select the dashboard that you want, then select **Export**.
 2. Enable **Include related objects** if you want objects associated with the selected dashboard, such as data views and visualizations, to also be exported. This option is enabled by default and recommended if you plan to import that dashboard again in a different space or cluster.
 3. Select **Export**.
 
@@ -132,8 +124,6 @@ serverless: preview
 ```
 
 Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
-
-To export a dashboard as JSON:
 
 1. Open the dashboard you want to export.
 2. From the application menu, select {icon}`download` **Export** → **Export JSON**.
