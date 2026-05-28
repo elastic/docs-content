@@ -49,7 +49,13 @@ triggers:
   - type: workflows.failed             # tech preview
     on:
       condition: "event.workflow.name : 'critical-ingest-pipeline'"
+
+  - type: cases.caseCreated            # tech preview (9.5+)
+    on:
+      condition: 'event.owner: "securitySolution"'
 ```
+
+The full cases trigger family also includes `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`. Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md).
 
 Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/workflows/triggers.md).
 
@@ -79,7 +85,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 |---|---|
 | Query {{es}} | `elasticsearch.search`, `elasticsearch.esql.query` |
 | Write to {{es}} | `elasticsearch.index`, `elasticsearch.bulk`, `elasticsearch.update` |
-| Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts` |
+| Manage cases | `cases.createCase`, `cases.updateCase`, `cases.addComment`, `cases.addAlerts`, `cases.pushCases` |
 | Manage alerts | `kibana.SetAlertsStatus`, `kibana.SetAlertTags` (PascalCase) |
 | Call an API | `http` (with optional `connector-id`) |
 | Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |

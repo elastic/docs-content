@@ -193,7 +193,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
+In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor.
 
 :::{note}
 This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
@@ -317,6 +317,13 @@ In this version, you cannot fully reset the index configuration. For example, yo
 ::::
 
 :::::
+
+### Limitations [discover-esql-lookup-editor-limitations]
+
+The following limitations apply to the lookup index editor in {{kib}}. For general limitations of the `LOOKUP JOIN` command, refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#limitations).
+
+Row display limit
+:   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
 
 ## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}

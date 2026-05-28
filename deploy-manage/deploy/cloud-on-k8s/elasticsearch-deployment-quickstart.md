@@ -94,10 +94,9 @@ NAME          HEALTH    NODES     VERSION   PHASE         AGE
 quickstart    green     1         {{version.stack}}     Ready         1m
 ```
 
+## Access your {{es}} cluster [k8s_request_es_access]
 
-## Request {{es}} access [k8s_request_es_access]
-
-A `ClusterIP` Service is automatically created for your cluster as checked with [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/):
+ECK automatically creates a `ClusterIP` service for [HTTP access to your cluster](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-kubernetes-service). You can verify it with `kubectl get`:
 
 ```sh
 kubectl get service quickstart-es-http
@@ -120,28 +119,69 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
     PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
     ```
 
-2. Request the [{{es}} root API]({{es-apis}}group/endpoint-info). You can do so from inside the Kubernetes cluster or from your local workstation. For demonstration purposes, certificate verification is disabled using the `-k` curl flag; however, this is not recommended outside of testing purposes. Refer to [Setup your own certificate](/deploy-manage/security/k8s-https-settings.md#k8s-setting-up-your-own-certificate) for more information.
+1. Retrieve the CA certificate.
 
-    * From inside the Kubernetes cluster:
+    By default, ECK enables HTTPS for {{es}}, generates a private CA for each cluster, and issues certificates signed for the associated DNS service names, such as `quickstart-es-http.<namespace>.svc`.
+
+    The CA certificate is available in the `<name>-es-http-certs-public` secret. For this `quickstart` cluster, run the following command to save the CA certificate to a local file named `quickstart-es-ca.crt`:
+
+    ```sh
+    kubectl get secret quickstart-es-http-certs-public -o go-template='{{index .data "ca.crt" | base64decode }}' > quickstart-es-ca.crt
+    ```
+
+    Refer to [Manage HTTP certificates on ECK](/deploy-manage/security/k8s-https-settings.md) for information about customizing HTTP TLS configuration.
+
+1. Issue a request to the [{{es}} info API]({{es-apis}}group/endpoint-info). You can do so from inside the {{k8s}} cluster or from your local workstation.
+
+    :::{tip}
+    The following examples use `curl` to access the {{es}} endpoint with full TLS verification, providing the CA certificate with the `--cacert` option.
+
+    For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+    :::
+
+    * **From inside the Kubernetes cluster**
+
+        Use the service name to access the {{es}} endpoint from any {{k8s}} Pod:
 
         ```sh
-        curl -u "elastic:$PASSWORD" -k "<ELASTICSEARCH_HOST_URL>:9200"
+        curl --cacert <PATH_TO_CA> -u "elastic:$PASSWORD" "https://quickstart-es-http.<namespace>.svc:9200" <1>
+        ```
+        1. Replace `<namespace>` with the namespace where your {{es}} cluster is deployed.
+
+        For example, if you run the command from an {{es}} Pod and the cluster is deployed in the `default` namespace, you can run:
+
+        ```sh
+        curl --cacert /usr/share/elasticsearch/config/http-certs/ca.crt \
+          -u "elastic:$PASSWORD" "https://quickstart-es-http.default.svc:9200"
         ```
 
-    * From your local workstation:
+    * **From your local workstation**
 
-        1. Use the following command in a separate terminal:
+        1. Start a local port-forward in a separate terminal to route `localhost:9200` to the `quickstart-es-http` {{k8s}} Service:
 
             ```sh
             kubectl port-forward service/quickstart-es-http 9200
             ```
 
-        2. Request `localhost`:
+            :::{note}
+            Port-forwarding is mainly intended for local testing. In production environments, if the cluster must be accessible from outside the {{k8s}} cluster, consider using a `LoadBalancer` service or another exposure mechanism. Refer to [Allow public access](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-allow-public-access) for more information.
+            :::
+
+        1. Access {{es}} through the forwarded port:
 
             ```sh
-            curl -u "elastic:$PASSWORD" -k "https://localhost:9200"
+            curl --cacert quickstart-es-ca.crt -u "elastic:$PASSWORD" "https://localhost:9200"
             ```
 
+            The previous command validates the certificate with the provided CA, but hostname verification fails because `localhost` is not present in the certificate SANs. To perform full TLS verification of both the certificate and the requested hostname, use:
+
+            ```sh
+            NAMESPACE=default <1>
+            curl --cacert quickstart-es-ca.crt -u "elastic:$PASSWORD" \
+              --resolve quickstart-es-http.${NAMESPACE}.svc:9200:127.0.0.1 \
+              "https://quickstart-es-http.${NAMESPACE}.svc:9200"
+            ```
+            1. Set `NAMESPACE` to the namespace where your {{es}} cluster is deployed.
 
 ## Next steps
 

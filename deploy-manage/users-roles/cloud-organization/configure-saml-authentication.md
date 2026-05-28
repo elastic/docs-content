@@ -139,7 +139,7 @@ Add the information that you collected to {{ecloud}}.
 The **Enforce SAML SSO** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
 ::::
 
-
+$$$sp-details$$$
 If your configuration is valid, the following details of the service provider (SP) will be displayed:
 
 * **SSO Login URL**: The URL that your organization members can use to log in to your organization using your IdP.
@@ -163,7 +163,7 @@ Additional details that you might want to use in your IdP configuration, such as
 
 ### Step 3: Test SSO [ec_test_sso]
 
-After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the identity provider SSO URL in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
+After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the [SSO Login URL provided by {{ecloud}}](#sp-details) in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
 
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
@@ -220,8 +220,8 @@ To ensure continuous access and control over your organization settings, the fir
 To allow for role mapping verification, SSO must be configured and enabled for you to create role mappings.
 
 ::::{note}
-* If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
-* If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
+* If [SSO enforcement](#enforce-sso) is not enabled, organization member roles might not be consistent with your role mapping and additional manual role assignment might be needed.
+* Roles manually assigned to a member using the {{ecloud}} Console are overwritten by the role mapping every time the member logs in using SSO.
 ::::
 
 ### Create a role mapping
