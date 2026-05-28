@@ -413,9 +413,10 @@ To start an analysis:
 1. Switch to {{esql}} mode and run a query so results are loaded in the table.
 2. Select the **AI Agent** button in the {{kib}} header, or press {kbd}`cmd+;` (Mac) / {kbd}`ctrl+;` (Windows and Linux), to open the agent chat.
 
-   When you open the agent on a new {{esql}} tab that has no active conversation, the analysis starts automatically. Otherwise, ask the agent to analyze your data.
+   The agent automatically receives your current query, columns, sample rows, and time range as context.
 
-3. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
+3. Ask the agent to analyze your data. For example, prompt it with `analyze this data` or a more specific question.
+4. Review the agent's findings, the inline visualization, and the suggested drill-down queries.
 
 You can also ask the agent for follow-up analyses, including correlations between fields, time-over-time comparisons, and field statistics for specific columns.
 
