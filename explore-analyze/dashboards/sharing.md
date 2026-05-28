@@ -42,7 +42,7 @@ If the dashboard has unsaved changes, you get a temporary link that might break 
 {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When sharing, you can choose to use a relative or an absolute time range:
 
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users always see the most recent 7 days when they open the link.
-* **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link always shows that exact week of January 1-7, 2025, regardless of when users open the link.
+* **Absolute time range**: The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link always shows that exact week of January 1-7, 2025, regardless of when users open the link.
 
 ## Embed in a webpage [embed-dashboard]
 ```{applies_to}
