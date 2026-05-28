@@ -43,7 +43,7 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
 
     **Assigned tools:** `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
 
-    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates automatically when you open the **AI Agent** button from **Discover** in a new tab that is in {{esql}} mode and has no active conversation. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates automatically when you open the **AI Agent** from a Discover session tab that is in {{esql}} mode and has no active conversation. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
 
 $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Creates, modifies, and validates [Elastic Workflows](/explore-analyze/workflows.md) YAML definitions from natural language user input. Covers step types, triggers, Liquid templating, connector integrations, and validation. Use this skill when a user wants to draft a new workflow from a description, edit an existing workflow, change a workflow's trigger, or update top-level properties such as name, description, or tags. The agent validates the generated or modified YAML before proposing the change so the user can accept or decline it.
