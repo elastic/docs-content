@@ -104,7 +104,7 @@ This sends data to the `metrics-infrastructure.prometheus-production` data strea
 
 ### Route by labels
 
-You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series. These labels take precedence over the URL path when set, and allow a single remote write endpoint to fan out metrics to multiple data streams.
+You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series. These labels take precedence over the URL path when set and allow a single remote write endpoint to fan out metrics to multiple data streams.
 
 Elasticsearch treats these as control fields and does not store them in the document's `labels` object.
 
@@ -122,7 +122,7 @@ remote_write:
         replacement: production
 ```
 
-This attaches `data_stream_dataset=myapp` and `data_stream_namespace=production` to every time series in this remote write target, routing all metrics to `metrics-myapp.prometheus-production`.
+This example attaches `data_stream_dataset=myapp` and `data_stream_namespace=production` to every time series in this remote write target and routes all metrics to `metrics-myapp.prometheus-production`.
 
 ## Data mapping
 
