@@ -8,7 +8,7 @@ products:
 description: "How {{alerting-v2-system}} action policies route alert episodes to notifications and actions."
 ---
 
-# {{alerting-v2-system-cap}} notifications and actions
+# Notifications and actions for the {{alerting-v2-system}}
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. After a rule produces alert episodes, action policies decide whether and when to invoke workflows. Workflows are what actually send the notification or run the automation.
 
@@ -18,10 +18,10 @@ This page explains how action policies work. For creating and configuring them s
 
 An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates. A workflow runs only if the alert episode clears each gate in sequence.
 
-The three gates are match conditions, suppression, and frequency:
+The three gates are suppression, match conditions, and frequency:
 
-* **Match conditions**: Match conditions filter which alert episodes the policy applies to. You define them using [KQL](../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes within the policy's scope.
 * **Suppression**: Suppression checks whether the alert episode should be silenced. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](action-policies/reduce-notification-noise.md).
+* **Match conditions**: Match conditions filter which alert episodes the policy applies to. You define them using [KQL](../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes within the policy's scope.
 * **Frequency**: Frequency controls how often the policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
 
 If any gate stops the episode, the workflow is not invoked for that policy.

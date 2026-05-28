@@ -381,12 +381,12 @@ toc:
   - file: alerting.md
     children:
       - file: alerting/kibana-alerting-experimental/workflows-alerting.md
-      - file: alerting/kibana-alerting-experimental/notifications.md
+      - file: alerting/kibana-alerting-experimental/notifications-actions.md
         children:
-          - file: alerting/kibana-alerting-experimental/notifications/create-configure-action-policy.md
-          - file: alerting/kibana-alerting-experimental/notifications/action-policy-reference.md
-          - file: alerting/kibana-alerting-experimental/notifications/manage-action-policies.md
-          - file: alerting/kibana-alerting-experimental/notifications/notification-gating.md
+          - file: alerting/kibana-alerting-experimental/action-policies/create-configure-action-policy.md
+          - file: alerting/kibana-alerting-experimental/action-policies/action-policy-reference.md
+          - file: alerting/kibana-alerting-experimental/action-policies/manage-action-policies.md
+          - file: alerting/kibana-alerting-experimental/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
