@@ -11,7 +11,7 @@ products:
 
 # Share and export dashboards [share-the-dashboard]
 
-{{kib}} provides several ways to share dashboards with others and export their content:
+{{kib}} provides several ways to share and export dashboards:
 
 - [Share with a link](#share-dashboard-link): Copy a direct link to the dashboard.
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
@@ -19,9 +19,7 @@ products:
 - [Download visualization data as CSV](#download-csv): Download the data behind individual Lens visualizations.
 - [Export dashboard configuration](#export-dashboards): Export as NDJSON for backup or migration, or as JSON for the dashboards API.
 
-You can also [set who can edit the dashboard](#manage-dashboard-access).
-
-Most options start from the {icon}`share` **Share** button in the dashboard application menu. CSV download and dashboard configuration export use different entry points; see each section for details.
+Most options start from the {icon}`share` **Share** button in the dashboard application menu, where you can also [set who can edit the dashboard](#manage-dashboard-access). CSV download and dashboard configuration export use different entry points; see each section for details.
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
