@@ -125,8 +125,6 @@ Export dashboards as NDJSON files to migrate them to other {{kib}} instances, ba
 2. Enable **Include related objects** if you want objects associated with the selected dashboard, such as data views and visualizations, to also be exported. This option is enabled by default and recommended if you plan to import that dashboard again in a different space or cluster.
 3. Select **Export**.
 
-![Option to export a dashboard](/explore-analyze/images/kibana-dashboard-export-saved-object.png "")
-
 To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API]({{kib-apis}}group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
 
 ### Export as dashboards API-compatible JSON [export-dashboard-json]
