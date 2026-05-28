@@ -15,7 +15,7 @@ products:
 
 # Flow control steps [workflows-flow-control-steps]
 
-Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. 9.4 ships the full set of 8 step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, and `waitForInput`.
+Flow control steps shape a workflow's logic. They decide what runs, what gets skipped, when the workflow loops, and where it pauses. Workflows include 8 flow-control step types: `if`, `foreach`, `while`, `switch`, `wait`, `loop.break`, `loop.continue`, and `waitForInput`.
 
 ## When to reach for each
 

@@ -237,6 +237,12 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
 
 
+## 9.3.5 [elastic-observability-9.3.5-release-notes]
+
+### Fixes [elastic-observability-9.3.5-fixes]
+* Fixes the **Hosts** page KPI tiles showing `N/A` and the **Hosts** table displaying stale data when the in-app **Refresh** button is used with a relative time range after the page has been idle [#265515]({{kib-pull}}265515).
+* Fixes `too_small` zod error for AI pipeline suggestions with empty string grok patterns [#251113]({{kib-pull}}251113).
+
 ## 9.3.4 [elastic-observability-9.3.4-release-notes]
 
 ### Features and enhancements [elastic-observability-9.3.4-features-enhancements]
