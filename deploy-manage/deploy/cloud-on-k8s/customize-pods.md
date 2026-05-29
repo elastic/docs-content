@@ -57,7 +57,7 @@ spec:
         - name: kibana
           env:
             - name: NODE_OPTIONS
-              value:  "--max-old-space-size=2048"
+              value:  "--max-old-space-size=2048"  <1>
           resources:
             requests:
               memory: 1Gi
@@ -67,9 +67,7 @@ spec:
               cpu: 2
 ```
 
-::::{note} 
-When manually setting `NODE_OPTIONS`, make sure you adjust the container's `resources.limits.memory` appropriately.
-::::
+1. When manually setting `--max-old-space-size`, make sure you adjust the container's `resources.limits.memory` appropriately.
 
 ::::{note} 
 Configuration for other {{stack}} applications, like APM Server, or Beats, is identical to the {{kib}} configuration except for the `apiVersion` and `kind` fields.
