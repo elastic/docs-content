@@ -46,9 +46,10 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 :::
 
-To start using Streams:
-
 ::::
+
+
+To start using Streams:
 
 :::::{stepper}
 
