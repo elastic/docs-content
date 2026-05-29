@@ -27,6 +27,16 @@ For example, in [Discover](../../../../explore-analyze/discover.md), extracted f
 - **[Detect and resolve processing issues](#streams-detect-failures)**: Identify which processor or condition is causing documents to fail during processing.
 - **[Catch mapping conflicts](#streams-processing-mapping-conflicts)**: Identify potential mapping conflicts before they cause cluster-wide failures. Streams simulates the indexing process end-to-end before deploying.
 
+## Processor limitations and inconsistencies [streams-processor-inconsistencies]
+
+Streams exposes a [Streamlang](../observability/streams/management/streamlang.md) configuration, but internally it relies on {{es}} ingest pipeline processors and ES|QL. Streamlang doesn't always have 1:1 parity with the ingest processors because it needs to support options that work in both ingest pipelines and ES|QL. In most cases, you won't need to worry about these details, but the underlying design decisions still affect the UI and available configuration options. The following are some limitations and inconsistencies when using Streamlang processors:
+
+- **Consistently typed fields**: ES|QL requires one consistent type per column, so workflows that produce mixed types across documents won't transpile.
+- **Conversion of types**: ES|QL and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
+- **Multi-value commands/functions**: Fields can contain one or multiple values. ES|QL and ingest processors don't always handle these cases the same way. For example, grok in ES|QL handles multiple values automatically, while the grok processor does not
+- **Conditional execution**: ES|QL's enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
+- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
+
 ## Add and configure processors [streams-add-processors]
 
 Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.

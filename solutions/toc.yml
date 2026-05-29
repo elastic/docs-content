@@ -471,7 +471,6 @@ toc:
         - file: observability/streams/management/data-quality.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/management/significant-events.md
-        - file: observability/streams/classic-wired-streams.md
 
         - file: observability/streams/management/knowledge-indicators.md
 
