@@ -11,7 +11,7 @@ products:
 
 # Run ECE diagnostics tool [ece-run-ece-diagnostics]
 
-ECE diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to [Elastic support](/troubleshoot/index.md#troubleshoot-work-with-support) for troubleshooting and investigation purposes.
+{{ece}} diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to [Elastic support](/troubleshoot/index.md#troubleshoot-work-with-support) for troubleshooting and investigation purposes.
 
 ::::{note}
 :::{include} /troubleshoot/_snippets/diagnostics-privacy.md
@@ -24,16 +24,25 @@ ECE diagnostics is a command line tool that you can run on hosts where the ECE i
 Don’t use the diagnostics tool that comes bundled in ECE images. Always download the latest binary to avoid any known vulnerabilities in the diagnostics acquisition and shipping flow.
 ::::
 
-Download the bundled diagnostic binary.
+1. Download the bundled diagnostic binary.
 
-* For x86_64 CPU architectures: [https://download.elasticsearch.org/cloud/amd64/ece-diagnostics](https://download.elasticsearch.org/cloud/amd64/ece-diagnostics)
-* For ARM CPU architectures: [https://download.elasticsearch.org/cloud/arm64/ece-diagnostics](https://download.elasticsearch.org/cloud/arm64/ece-diagnostics)
+    * For x86_64 AMD CPU architectures: [https://download.elasticsearch.org/cloud/amd64/ece-diagnostics](https://download.elasticsearch.org/cloud/amd64/ece-diagnostics)
 
-Make it executable.
+        ```sh
+        curl --compressed --silent -o ./ece-diagnostics https://download.elasticsearch.org/cloud/amd64/ece-diagnostics
+        ```
 
-```sh
-chmod +x ./ece-diagnostics
-```
+    * For ARM CPU architectures: [https://download.elasticsearch.org/cloud/arm64/ece-diagnostics](https://download.elasticsearch.org/cloud/arm64/ece-diagnostics)
+
+        ```sh
+        curl --compressed --silent -o ./ece-diagnostics https://download.elasticsearch.org/cloud/arm64/ece-diagnostics
+        ```
+
+2. Make it executable.
+
+    ```sh
+    chmod +x ./ece-diagnostics
+    ```
 
 
 ## How to use [ece_how_to_use] 
