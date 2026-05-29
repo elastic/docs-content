@@ -30,5 +30,5 @@ Starting in {{kib}} version 9.4.0, containers set the default Node.js heap to 75
 
 In orchestrated environments like {{ech}}, {{ece}}, you should not override Kibana’s default memory limit using `--max-old-space-size`. Instead, set the desired {{kib}} memory size at the deployment level. This automatically adjusts the container’s memory allocation and ensures more consistent and predictable performance.
 
-In {{eck}}, the {{kib}} memory size is not automatically adjusted, but the default memory size logic mentioned above applies.
+In {{eck}}, the {{kib}} memory size is not automatically adjusted, but the default memory size logic applies.
 ::::
