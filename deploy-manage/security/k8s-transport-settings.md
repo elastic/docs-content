@@ -90,7 +90,7 @@ The following example configuration using [cert-manager csi-driver](https://cert
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: es
+  name: quickstart
 spec:
   version: 8.16.1
   transport:
@@ -130,16 +130,18 @@ spec:
 ::::{dropdown} Remote cluster server with third-party transport certificates
 If you enable the remote cluster server interface for [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters-landing.md) with API key-based authentication and use third-party tools to issue transport certificates, you must apply additional configuration beyond the settings shown in the previous example:
 
-* DNS names: configure `csi.cert-manager.io/dns-names` to include the remote cluster service and Pod FQDNs
-* Remote cluster server SSL certificate and key
+* DNS names: configure `csi.cert-manager.io/dns-names` to include the remote cluster service and Pod FQDNs, in the following format:
+  * `<cluster-name>-es-remote-cluster.${POD_NAMESPACE}.svc`
+  * `${POD_NAME}.<cluster-name>-es-<nodeset-name>.${POD_NAMESPACE}.svc`
+* Remote cluster server SSL settings: add the certificate and key.
 
-The following manifest shows a complete configuration:
+The following manifest shows a complete configuration for a cluster named `quickstart` with a single nodeSet named `default`:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: es
+  name: quickstart
 spec:
   version: 8.16.1
   remoteClusterServer:
@@ -173,7 +175,7 @@ spec:
             volumeAttributes:
               csi.cert-manager.io/issuer-name: ca-cluster-issuer
               csi.cert-manager.io/issuer-kind: ClusterIssuer
-              csi.cert-manager.io/dns-names: "${POD_NAME}.${POD_NAMESPACE}.svc.cluster.local,<cluster-name>-es-remote-cluster.${POD_NAMESPACE}.svc,${POD_NAME}.<cluster-name>-es-<nodeset-name>.${POD_NAMESPACE}.svc" <2>
+              csi.cert-manager.io/dns-names: "${POD_NAME}.${POD_NAMESPACE}.svc.cluster.local,quickstart-es-remote-cluster.${POD_NAMESPACE}.svc,${POD_NAME}.quickstart-es-default.${POD_NAMESPACE}.svc" <2>
 ```
 1. The remote cluster server endpoint uses the same certificate as the transport endpoint.
 2. The DNS names include the Pod FQDNs and the remote cluster service FQDN.
