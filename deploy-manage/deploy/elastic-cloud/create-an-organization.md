@@ -61,14 +61,14 @@ For more information, check the [{{serverless-short}} documentation](serverless.
 ### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
 Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
-For a more structured trial plan with success criteria and a two-week PoC framework, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
+For a more structured trial plan with success criteria and a 14-day proof-of-concept framework, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
 
 ### Plan your deployment model and sizing
 
 As you move from trial to production:
 
-* For hosted deployments, compare storage, RAM, and vCPU trade-offs before choosing a profile. Refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [instance configuration hardware reference](cloud://reference/cloud-hosted/hardware.md).
-* For {{serverless-short}}, review [{{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and choose the deployment model that best fits your workload with [{{ech}} and {{serverless-short}} comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md).
+* For hosted deployments: Compare storage, RAM, and vCPU trade-offs before choosing a profile. Refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [instance configuration hardware reference](cloud://reference/cloud-hosted/hardware.md).
+* For {{serverless-short}}: Review [{{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and choose the deployment model that best fits your workload with [{{ech}} and {{serverless-short}} comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md).
 
 ### Remove trial limitations
 
