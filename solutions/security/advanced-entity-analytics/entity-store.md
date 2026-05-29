@@ -28,15 +28,15 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
-{applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Entity relationships sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
+{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Entity relationships sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
 
 When the entity store is enabled, the following resources are created for the active space:
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: planned }
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
 * A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.security_<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
@@ -66,7 +66,7 @@ For each entity type (hosts, users, and services):
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -99,7 +99,7 @@ Once the entity store is enabled, you may want to clear the stored data and star
 The impact of clearing entity store data on risk scores and asset criticality depends on your version:
 
 :::::{applies-switch}
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 Clearing entity store data does not delete your source data. However, asset criticality assignments will need to be reapplied, and risk scoring will run again for the new entities repopulated into the store.
 :::
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -116,7 +116,7 @@ To clear entity data:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Clear Entity Data**.
 :::
@@ -135,7 +135,7 @@ Once the entity store is enabled, you can verify which engines are installed and
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 To access the **Engine Status** tab, find **Entity Analytics** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 :::
 
@@ -174,7 +174,7 @@ Examples of supported integrations include:
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: planned
+serverless: ga
 ```
 
 The entity store runs scheduled log extraction to keep entity data up to date.
