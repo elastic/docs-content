@@ -32,8 +32,8 @@ Enabling the remote cluster server triggers a restart of the {{es}} cluster.
 ::::{note}
 If you use externally managed certificates for the transport layer, ensure that:
 
-* Your certificates cover the corresponding {{k8s}} service (`<cluster-name>-es-remote-cluster`) and Pod FQDNs. 
-* Each nodeSet sets the corresponding `xpack.security.remote_cluster_server.ssl.key` and `xpack.security.remote_cluster_server.ssl.certificate` settings.
+* Your certificates cover the remote cluster service (`<cluster-name>-es-remote-cluster`) and Pod FQDNs.
+* Each nodeSet defines the `xpack.security.remote_cluster_server.ssl.key` and `xpack.security.remote_cluster_server.ssl.certificate` settings.
 
 For a complete example, refer to [Issue node transport certificates with third-party tools](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-third-party-tools).
 ::::
