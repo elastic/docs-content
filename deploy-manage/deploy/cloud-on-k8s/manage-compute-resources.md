@@ -321,7 +321,7 @@ If `resources` is not defined in the specification of an object, then the operat
 | --- | --- | --- |
 | APM Server | `512Mi` | `512Mi` |
 | {{es}} | `2Gi` | `2Gi` |
-| {{kib}} | `1Gi` | `2Gi` |
+| {{kib}} | `2Gi` | `2Gi` |
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
