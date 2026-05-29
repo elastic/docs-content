@@ -60,7 +60,7 @@ spec:
               value:  "--max-old-space-size=2048"  <1>
           resources:
             requests:
-              memory: 1Gi
+              memory: 2Gi
               cpu: 0.5
             limits:
               memory: 2.5Gi
