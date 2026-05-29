@@ -107,7 +107,7 @@ You have a few options to access your deployment or project:
 $$$azure-integration-prior-cloud-account$$$
 If you already have an {{ecloud}} account with the same email address as your Azure account, you might need to contact `support@elastic.co`.
 
-### Convert a trial to Azure ISV [azure-integration-convert-trial]
+### Convert a trial to Azure Native Service [azure-integration-convert-trial]
 
 You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your organization over to Azure. There are a few requirements:
 
@@ -271,6 +271,6 @@ Delete the deployment directly from the Azure portal. The delete operation perfo
 $$$azure-integration-delete-resource-group$$$
 If you delete an Azure Resource Group containing {{ecloud}} resources, the latter will be deleted automatically. However, you should not delete the Azure Resource Group containing the first deployment or project that you created. The usage associated with any other Elastic deployment created outside of the first resource group will continue to get reported and charged against this resource group. If you want to stop all charges to this Resource Group, you should delete the individual deployments.
 
-### Troubleshooting
+## Troubleshooting
 
 To troubleshoot issues with the Azure Native Service, refer to [](azure-native-isv-service-troubleshooting.md).
