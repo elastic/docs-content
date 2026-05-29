@@ -321,7 +321,7 @@ If `resources` is not defined in the specification of an object, then the operat
 | --- | --- | --- |
 | APM Server | `512Mi` | `512Mi` |
 | {{es}} | `2Gi` | `2Gi` |
-| {{kib}} | `1Gi` | `1Gi` |
+| {{kib}} | `1Gi` | `2Gi` |
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
@@ -330,7 +330,7 @@ If `resources` is not defined in the specification of an object, then the operat
 | AutoOps Agent | `400Mi` | `400Mi` |
 
 ::::{note}
-The default 1 Gi {{kib}} limit is sufficient for core functionality. For Platinum and Enterprise users, we recommend at least 2 Gi of memory for each {{kib}} instance. With less than 2 Gi, you can face service interruptions when using features such as Security detection rules, reporting, workflows, and Agent Builder.
+The default 2 Gi {{kib}} limit is sufficient for core functionality. For Platinum and Enterprise users, we recommend at least 2 Gi of memory for each {{kib}} instance. With less than 2 Gi, you can face service interruptions when using features such as Security detection rules, reporting, workflows, and Agent Builder.
 ::::
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.
