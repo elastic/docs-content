@@ -58,12 +58,22 @@ spec:
           env:
             - name: NODE_OPTIONS
               value:  "--max-old-space-size=2048"
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.5
+            limits:
+              memory: 2.5Gi
+              cpu: 2
 ```
+
+::::{note} 
+When manually setting `NODE_OPTIONS`, make sure you adjust the container's `resources.limits.memory` appropriately.
+::::
 
 ::::{note} 
 Configuration for other {{stack}} applications, like APM Server, or Beats, is identical to the {{kib}} configuration except for the `apiVersion` and `kind` fields.
 ::::
-
 
 The following example shows how it’s also possible to customize the init containers created as part of the Pods to initialize the filesystem or to manage the keystores.
 
