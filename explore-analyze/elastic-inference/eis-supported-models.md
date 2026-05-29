@@ -20,6 +20,8 @@ The corresponding {{kib}} connectors and {{infer}} endpoints for these models ar
 The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests are processed and where data is sent.
 ::::
 
+For region availability and request routing, refer to [Region and hosting](eis-region-and-hosting.md).
+
 ### LLM chat models
 
 :::{csv-include} chat-models.csv
@@ -46,23 +48,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 * Elastic makes every effort to use third party providers who do not use inputs to train models, and do not retain any data (zero data retention). Browse the tables on this page to double-check the status of a specific model.
 ::::
 
-## Region and hosting [eis-regions]
 
-Elastic {{infer-cap}} Service is currently available in these regions:
-
-**AWS:**
-
-* `us-east-1` (Virginia)
-
-**GCP:**
-
-* `asia-southeast1` (Singapore)
-* `europe-west1` (Belgium)
-* `us-east4` (Virginia)
-
-All {{infer}} requests sent through EIS are routed to the nearest region, regardless of where your {{es}} deployment or {{serverless-short}} project is hosted.
-
-Depending on the model being used, request processing may involve Elastic {{infer}} infrastructure and, in some cases, trusted third-party model providers. For example, ELSER and Jina requests are processed entirely within Elastic {{infer}} infrastructure. Other models, such as large language models or third-party embedding models, may involve additional processing by their respective model providers, which can operate in different cloud platforms or regions.
 
 ## Rate limits
 
