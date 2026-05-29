@@ -8,13 +8,13 @@ description: Learn which regions host Elastic Inference Service (EIS) and how in
 
 # Region and hosting [eis-regions]
 
-Elastic {{infer-cap}} Service is currently available in these regions:
+This page lists the {{aws}} and {{gcp}} regions where Elastic {{infer-cap}} Service (EIS) is available and explains how {{infer}} requests are routed.
 
-**AWS:**
+**{{aws}}:**
 
 * `us-east-1` (Virginia)
 
-**GCP:**
+**{{gcp}}:**
 
 * `asia-southeast1` (Singapore)
 * `europe-west1` (Belgium)

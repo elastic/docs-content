@@ -182,4 +182,4 @@ For these models, you only need to create new {{infer}} endpoints if you want to
 
 For information about EIS regions and request routing, refer to [Region and hosting](eis-region-and-hosting.md).
 
-EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](/explore-analyze/elastic-inference/eis-supported-models.md#pricing) and [Monitor your token usage](/explore-analyze/elastic-inference/eis-supported-models.md#monitor-your-token-usage).
+EIS is billed per million tokens and consumes ECUs. For details on pricing and usage tracking, refer to [Pricing](eis.md#pricing) and [Monitor your token usage](eis.md#monitor-your-token-usage).
