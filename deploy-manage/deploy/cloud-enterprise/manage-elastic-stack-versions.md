@@ -40,8 +40,8 @@ $$$ece-elastic-stack-stackpacks-recent$$$
 
 | Stack pack download link | Minimum required ECE version |
 | --- | --- |
-| [{{es}}, {{kib}}, and APM stack pack: 9.4.1](https://download.elastic.co/cloud-enterprise/versions/9.4.1.zip) | ECE 4.0.0 |
-| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.14](https://download.elastic.co/cloud-enterprise/versions/8.19.14.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, and APM stack pack: 9.4.2](https://download.elastic.co/cloud-enterprise/versions/9.4.2.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.16](https://download.elastic.co/cloud-enterprise/versions/8.19.16.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.29](https://download.elastic.co/cloud-enterprise/versions/7.17.29.zip) | ECE 2.2.2 |
 
 
@@ -52,8 +52,10 @@ Following is the full list of available packs containing {{stack}} versions. Not
 ::::{dropdown} Expand to view the full list
 | Stack pack download link | Minimum required ECE version |
 | --- | --- |
+| [{{es}}, {{kib}}, and APM stack pack: 9.4.2](https://download.elastic.co/cloud-enterprise/versions/9.4.2.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.1](https://download.elastic.co/cloud-enterprise/versions/9.4.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.4.0](https://download.elastic.co/cloud-enterprise/versions/9.4.0.zip) | ECE 4.0.0 | Kibana requires 2GB instance
+| [{{es}}, {{kib}}, and APM stack pack: 9.3.5](https://download.elastic.co/cloud-enterprise/versions/9.3.5.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.4](https://download.elastic.co/cloud-enterprise/versions/9.3.4.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.3](https://download.elastic.co/cloud-enterprise/versions/9.3.3.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.3.2](https://download.elastic.co/cloud-enterprise/versions/9.3.2.zip) | ECE 4.0.0 |
@@ -87,6 +89,7 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.2](https://download.elastic.co/cloud-enterprise/versions/9.0.2.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.1](https://download.elastic.co/cloud-enterprise/versions/9.0.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.16](https://download.elastic.co/cloud-enterprise/versions/8.19.16.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.15](https://download.elastic.co/cloud-enterprise/versions/8.19.15.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.14](https://download.elastic.co/cloud-enterprise/versions/8.19.14.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.19.13](https://download.elastic.co/cloud-enterprise/versions/8.19.13.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
@@ -280,10 +283,7 @@ For *offline* or *air-gapped* installations, additional steps are required to ad
 
 The examples shown all use HTTPS over port 12443, which requires that you have [a TLS certificate configured](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
 
-::::{important}
-The `curl` examples on this page use HTTPS. If the remote endpoint uses a certificate that is not publicly trusted (for example, one signed by a private or corporate CA), provide the corresponding CA certificate using `--cacert /path/to/ca.pem` so that `curl` can verify it. For more details, refer to [manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md).
-
-For testing only, you can use [`--insecure`](https://curl.se/docs/manpage.html#-k) (or `-k`) to skip certificate verification. This flag turns off TLS trust checks and should not be used in production.
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
 ::::
 
 
