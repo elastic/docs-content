@@ -20,7 +20,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` To access this page, you need the following privileges:
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To access this page, you need the following privileges:
   * `read` for `entities-latest-<space-id>` and `.entities.v2.latest.security_<space-id>-*`
   * **Read** for the **Management > Saved Objects Management** feature 
 * {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
@@ -33,7 +33,7 @@ To access the page:
 ## Threat hunting leads [entity-threat-hunting-leads]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: planned
+serverless: preview
 ```
 
 :::{admonition} Requirements
@@ -63,7 +63,7 @@ Interact with this section in the following ways:
 ## Entity risk levels [entity-risk-levels]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: planned
+serverless: ga
 ```
 
 :::{admonition} Requirements
@@ -76,7 +76,7 @@ This panel shows the distribution of entity risk across your environment, groupe
 ## Recent anomalies [entity-recent-anomalies]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: planned
+serverless: ga
 ```
 
 :::{admonition} Requirements
@@ -106,7 +106,7 @@ This section provides a centralized view of all hosts, users, and services in yo
 Interact with the table to filter and explore entity data:
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: planned }
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
 * Use the **Group entities by** dropdown to group entities by **Resolution**, **Entity type**, or a custom field. By default, entities are grouped by **Resolution**: alias entities appear nested under their primary entity, while unresolved entities appear on their own.
 * Filter the table by watchlist membership to focus on specific entity groups.
@@ -141,6 +141,7 @@ Entity data from different sources appears in the **Entities** section based on 
 ## Entity KPIs (key performance indicators) [entity-kpis]
 ```yaml {applies_to}
 stack: ga 9.1-9.3
+serverless: removed
 ```
 
 This section displays the total number of critical hosts, critical users, and anomalies. Select a link to jump to the **Hosts** page, **Users** page, or **Anomalies** table.
@@ -149,6 +150,7 @@ This section displays the total number of critical hosts, critical users, and an
 ## User Risk Scores [entity-user-risk-scores]
 ```yaml {applies_to}
 stack: ga 9.1-9.3
+serverless: removed
 ```
 
 :::{admonition} Requirements
@@ -172,6 +174,7 @@ For more information about user risk scores, refer to [](/solutions/security/adv
 ## Host Risk Scores [entity-host-risk-scores]
 ```yaml {applies_to}
 stack: ga 9.1-9.3
+serverless: removed
 ```
 
 :::{admonition} Requirements
@@ -195,6 +198,7 @@ For more information about host risk scores, refer to [](/solutions/security/adv
 ## Service Risk Scores [service-risk-scores]
 ```yaml {applies_to}
 stack: ga 9.1-9.3
+serverless: removed
 ```
 
 :::{admonition} Requirements
@@ -217,7 +221,7 @@ For more information about service risk scores, refer to [](/solutions/security/
 ## Anomalies [entity-anomalies]
 ```yaml {applies_to}
 stack: ga 9.1-9.3
-
+serverless: removed
 ```
 
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The **Anomalies** table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).
