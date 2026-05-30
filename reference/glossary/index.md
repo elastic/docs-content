@@ -110,7 +110,7 @@ $$$CA$$$CA
 :   Certificate authority. An entity that issues digital certificates to verify identities over a network.
 
 $$$glossary-classic-view$$$ classic view
-:   The non-solution option in the [solution view](/reference/glossary/index.md#glossary-solution-view) setting in {{kib}}. The classic view surfaces all solutions in a [space](/reference/glossary/index.md#glossary-space) through a multi-layered [navigation menu](/reference/glossary/index.md#glossary-navigation-menu), instead of a navigation dedicated to a single solution. Don't use "Classic" on its own to refer to the navigation, because it's also used in Discover to refer to the Classic mode (as opposed to {{esql}} mode).
+:   The non-solution option in the [solution view](/reference/glossary/index.md#glossary-solution-view) setting in {{kib}}. The classic view surfaces all solutions in a [space](/reference/glossary/index.md#glossary-space) through a multi-layered [navigation menu](/reference/glossary/index.md#glossary-navigation-menu), instead of a navigation dedicated to a single solution.
 
 $$$glossary-client-forwarder$$$ client forwarder
 :   Used for secure internal communications between various components of {{ece}} and ZooKeeper.
