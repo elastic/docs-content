@@ -381,7 +381,7 @@ $$$glossary-geojson$$$ GeoJSON
 :   A format for representing geospatial data. GeoJSON is also a file-type, commonly used in the **Maps** application to upload a file of geospatial data. See [GeoJSON data](/explore-analyze/visualize/maps/indexing-geojson-data-tutorial.md).
 
 $$$glossary-global-header$$$ global header
-:   The top bar of the {{kib}} chrome that hosts global controls, such as the global search field and the [space](/reference/glossary/index.md#glossary-space) switcher.
+:   The top bar of {{kib}} that hosts global controls, such as the global search field and the [space](/reference/glossary/index.md#glossary-space) switcher.
 
 $$$glossary-graph$$$ graph
 :   A data structure and visualization that shows interconnections between a set of entities. Each entity is represented by a node. Connections between nodes are represented by [edges](/reference/glossary/index.md#glossary-edge). See [Graph](/explore-analyze/visualize/graph.md).
