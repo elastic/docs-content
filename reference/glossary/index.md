@@ -874,7 +874,7 @@ $$$glossary-workpad$$$ workpad
 :   A workspace where you build presentations of your live data in [Canvas](/reference/glossary/index.md#glossary-canvas). See [Create a workpad](/explore-analyze/visualize/canvas.md).
 
 $$$glossary-workspace$$$ workspace
-:   The main content area of the active [app](/reference/glossary/index.md#glossary-app) in {{kib}}. The workspace sits below the [application menu](/reference/glossary/index.md#glossary-application-menu) and is framed by the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) on the left and, when present, the [sidebar](/reference/glossary/index.md#glossary-sidebar) on the right.
+:   The main area of the active [app](/reference/glossary/index.md#glossary-app) in {{kib}}.
 
 
 ## X [x-glos]
