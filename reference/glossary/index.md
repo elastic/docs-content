@@ -563,7 +563,7 @@ $$$glossary-namespace$$$ namespace
 :   A user-configurable arbitrary data grouping, such as an environment (`dev`, `prod`, or `qa`), a team, or a strategic business unit.
 
 $$$glossary-navigation-menu$$$ navigation menu
-:   The primary navigation panel on the left side of {{kib}}. Its contents and structure depend on the active [solution view](/reference/glossary/index.md#glossary-solution-view) in the current [space](/reference/glossary/index.md#glossary-space). When a top-level item expands into sub-items, those sub-items appear in the [secondary navigation](/reference/glossary/index.md#glossary-secondary-navigation). Not to be confused with the [sidebar](/reference/glossary/index.md#glossary-sidebar), which is a separate panel on the right side of {{kib}}.
+:   The primary navigation of {{kib}}. Its contents and structure depend on the active [solution view](/reference/glossary/index.md#glossary-solution-view) in the current [space](/reference/glossary/index.md#glossary-space) or on the project type.
 
 $$$glossary-nlp$$$ natural language processing (NLP)
 :   A {{ml}} feature that enables you to perform operations such as language identification, named entity recognition (NER), text classification, or text embedding. See [NLP overview](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
