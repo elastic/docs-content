@@ -126,7 +126,7 @@ Available features can differ based on deployment type, product lifecycle stage,
 | Lifecycle state | Description |
 | ----- | ----- |
 | Experimental | Feature is in early development stage and might change or be removed at any time |
-| Technical preview | Feature is nearing general availability and ready for evaluation. Use with caution in production |
+| Technical preview | Feature is nearing general availability and ready for evaluation. Use with caution in production. |
 | Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
 | Deprecated | Feature is still usable, but is planned to be removed or replaced in a future update |
 | Removed | Feature can no longer be used |
