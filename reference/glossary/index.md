@@ -63,7 +63,7 @@ $$$glossary-apm-server$$$ APM Server
 :   An open-source application that receives data from [APM agents](/reference/glossary/index.md#glossary-apm-agent) and sends it to {{es}}.
 
 $$$glossary-app$$$ app
-:   A top-level {{kib}} component that is accessed through the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu). Apps include core {{kib}} components such as Discover and Dashboard, solutions like {{observability}} and Security, and special-purpose tools like Maps and {{stack-manage-app}}.
+:   A top-level {{kib}} feature such as Agent Builder, Discover, Dashboards, Synthetics, Workflows, and many more.
 
 $$$glossary-application-menu$$$ application menu
 :   The bar above the [workspace](/reference/glossary/index.md#glossary-workspace) in {{kib}} that hosts actions specific to the active [app](/reference/glossary/index.md#glossary-app).
