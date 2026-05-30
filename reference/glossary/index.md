@@ -754,7 +754,7 @@ $$$glossary-solution$$$ solution
 :   In {{ecloud}}, deployments with specialized [templates](/reference/glossary/index.md#glossary-deployment-template) that are pre-configured with sensible defaults and settings for common use cases.
 
 $$$glossary-solution-view$$$ solution view
-:   The per-[space](/reference/glossary/index.md#glossary-space) setting that controls the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) in {{kib}}. Possible values are Search, {{observability}}, Security, or [Classic](/reference/glossary/index.md#glossary-classic-view). The first three values display a navigation dedicated to that solution; Classic surfaces all solutions through a multi-layered navigation menu.
+:   The per-[space](/reference/glossary/index.md#glossary-space) setting that controls the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) in {{kib}}.
 
 $$$glossary-source_field$$$ source field
 :   Original JSON object provided during [indexing](/reference/glossary/index.md#glossary-index). See the [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md).
