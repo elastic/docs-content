@@ -1,5 +1,6 @@
 ---
 navigation_title: Style guide
+description: "Editorial guidelines for writing clear, consistent Elastic documentation, including voice, tone, and formatting conventions."
 ---
 
 # Technical writing style guide
