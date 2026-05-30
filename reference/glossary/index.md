@@ -503,7 +503,7 @@ $$$glossary-kibana$$$ {{kib}}
 ## L [l-glos]
 
 $$$glossary-labs$$$ labs
-:   An in-progress or experimental feature in **Canvas** or **Dashboard** that you can try out and provide feedback. When enabled, you'll see **Labs** in the [application menu](/reference/glossary/index.md#glossary-application-menu).
+:   An in-progress or experimental feature in **Canvas** or **Dashboard** that you can try out and provide feedback on. When enabled, you'll see **Labs** in the [application menu](/reference/glossary/index.md#glossary-application-menu).
 
 $$$glossary-leader-index$$$ leader index
 :   Source [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A leader index exists on a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) and is replicated to [follower indices](/reference/glossary/index.md#glossary-follower-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
