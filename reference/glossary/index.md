@@ -739,7 +739,7 @@ $$$glossary-shrink$$$ shrink
 :   Reduces the number of [primary shards](/reference/glossary/index.md#glossary-primary-shard) in an index.
 
 $$$glossary-sidebar$$$ sidebar
-:   A global, resizable panel on the right side of {{kib}} where plugins can register apps, such as the {{agent-builder}} chat. Unlike a [flyout](/reference/glossary/index.md#glossary-flyout), which is contextual to the active app, the sidebar persists across apps. Not to be confused with the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu), which is the primary navigation panel on the left side of {{kib}}.
+:   A resizable panel on the right side of {{kib}} that hosts specific functionality, such as the {{agent-builder}} chat. Unlike a [flyout](/reference/glossary/index.md#glossary-flyout), which is contextual to the active app, the sidebar persists across apps.
 
 $$$glossary-snapshot-lifecycle-policy$$$ snapshot lifecycle policy
 :   Specifies how frequently to perform automatic backups of a cluster and how long to retain the resulting [snapshots](/reference/glossary/index.md#glossary-snapshot). See [Automate snapshots with {{slm-init}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
