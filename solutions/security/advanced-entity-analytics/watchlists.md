@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+
   serverless:
-    security: planned
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -49,6 +49,11 @@ An entity can belong to more than one watchlist.
 ## View and manage watchlists [watchlists-manage]
 
 The **Watchlists** tab displays all watchlists in the current {{kib}} space. You can edit and delete individual watchlists using the icons in the relevant watchlist row.
+
+:::{image} /solutions/images/security-watchlists.png
+:alt: The Watchlists tab on the Entity analytics management page
+:screenshot:
+:::
 
 ## Filter entities by watchlist [watchlists-filter]
 
