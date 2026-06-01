@@ -35,5 +35,5 @@ If you use externally managed certificates for the transport layer, ensure that:
 * Your certificates cover the remote cluster service (`<cluster-name>-es-remote-cluster`) and Pod FQDNs.
 * Each nodeSet defines the `xpack.security.remote_cluster_server.ssl.key` and `xpack.security.remote_cluster_server.ssl.certificate` settings.
 
-For a complete example, refer to [Configure remote cluster server with externally managed certificates](/deploy-manage/security/k8s-transport-settings.md#k8s-transport-third-party-tools#rcs-third-party).
+For a complete example, refer to [Configure remote cluster server with externally managed certificates](/deploy-manage/security/k8s-transport-settings.md#rcs-third-party).
 ::::
