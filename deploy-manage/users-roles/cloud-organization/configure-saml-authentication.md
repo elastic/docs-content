@@ -173,7 +173,7 @@ To guarantee ongoing access to the organization, you can also run a [role mappin
 
 {{ecloud}} signs its SAML requests to your IdP. It also supports encrypted SAML assertions in the SAML response sent by your IdP.
 
-Some IdPs support SAML request signature verification to ensure only trusted parties are able to initiate SSO with the IdP. To enable verification, download the **Request signing certificate** from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
+Some IdPs support SAML request signature verification to ensure only trusted parties are able to initiate SSO with the IdP. To enable verification, [download the **Request signing certificate**](#sp-details) from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
 
 Some IdPs support encrypting SAML assertions in the SAML response they send to the service provider. This can ensure that intermediate parties are unable to read the contents of the assertion during transit. {{ecloud}} supports encrypted SAML assertions but doesn't require it. To enable encrypted SAML assertions, download the **Encryption certificate** from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
 
