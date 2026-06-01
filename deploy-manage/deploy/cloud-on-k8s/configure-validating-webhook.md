@@ -45,7 +45,7 @@ You can customize almost all aspects of the webhook setup by changing the [opera
 
 | Configuration option | Default value | Description |
 | --- | --- | --- |
-| `enable-webhook` | false | Set to `true` to enable the webhook server. Although the operator default is `false`, the standard ECK installation manifests and Helm chart explicitly set it to `true`. |
+| `enable-webhook` | false | Set to `true` to enable the webhook server.<br><br>Although the operator default is `false`, the standard ECK installation manifests and Helm chart explicitly set it to `true`. |
 | `manage-webhook-certs` | true | Set to `false` to disable auto-generating the certificate for the webhook. If disabled, you must provide your own certificates using one of the methods described later in this document. |
 | `webhook-cert-dir` | /tmp/k8s-webhook-server/serving-certs | Path to mount the certificate. |
 | `webhook-name` | elastic-webhook.k8s.elastic.co | Name of the `ValidatingWebhookConfiguration` resource. |
