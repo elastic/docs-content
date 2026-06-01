@@ -27,9 +27,8 @@ toc:
       - folder: deployment-types
         children:
           - file: index.md
-          - file: signals.md
+          - file: about.md
           - file: strategies.md
-          - file: review-checklist.md
   - folder: style-guide
     children:
     - file: index.md

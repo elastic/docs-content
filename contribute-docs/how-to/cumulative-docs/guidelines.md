@@ -70,9 +70,8 @@ Most pages focus on one primary context, so you should only use keys from one di
 
 ### Dimension usage tips
 
-* `serverless` can appear in both the Stack/Serverless dimension and the Deployment dimension. This is because Serverless acts as both a "version" or "flavor" of the stack (like `stack`), and a unique deployment type with specialized management processes (like `ece` or `eck`).
-* The versioned Elastic Stack (`stack`) can be deployed across ECE, ECK, ECH, and self-managed clusters. When deployment, configuration, or management tasks are available or consistent across these deployment types (often because they're built into Elasticsearch), use `stack` in the Stack/Serverless dimension rather than specifying each deployment type individually.
-  * **Shorthand rule:** If content covers **all four** versioned deployment types (ECH, ECE, ECK, and self-managed), use `stack`. If it covers **only some** of them, use `deployment` with the relevant subkeys.
+:::{include} /contribute-docs/_snippets/applies_to-stack-serverless.md
+:::
 * If your content has nuances specific to another dimension, determine the "primary" dimension for the page level `applies_to` frontmatter, and then add the secondary dimension information as requirements, or as tagged sections later on the page. 
 * To determine the primary dimension of a page, consider what the main focus of the page is, what most of the content relates to, and what context users will primarily identify with when they arrive at the page. For example, if a page is primarily about a Kibana feature but mentions deployment-specific configuration, use the Stack/Serverless dimension as primary. Refer to [Cumulative docs example scenarios](/contribute-docs/how-to/cumulative-docs/example-scenarios.md#primary-dimension) for an example.
 
