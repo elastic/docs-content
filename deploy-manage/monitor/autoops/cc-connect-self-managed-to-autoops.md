@@ -204,7 +204,7 @@ Depending on your selected installation method, you might have to provide some o
   :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
 * $$$storage-location$$$**Storage location**: Select where to store your metrics data.\
-In the **Cloud provider** field, select **Amazon Web Services**. In the **Region** field, select from the list of available AWS regions:
+Choose a cloud provider and then in the **Region** field, select from the list of available regions:
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
