@@ -87,8 +87,8 @@ You are not limited to a single retrieval style. Search applications can combine
 
 These approaches are implemented in one of two ways:
 
-- One option is a single [`_search`](the-search-api.md) request built with [retrievers](retrievers-overview.md), where each retrieval stage is defined in the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) JSON structure. 
-- The other option is a piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results.
+- One option is a single [`_search`](the-search-api.md) request built with [retrievers](retrievers-overview.md), where each retrieval stage is defined in the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) JSON structure.
+- The other option is a piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) (`RRF`) or weighted score combination (`LINEAR`).
 
 ### Combining search strategies using retrievers [vector-search-combine-retrievers]
 
@@ -109,10 +109,13 @@ Use {{esql}} commands to combine multiple search strategies in a single query.
 For example, you can:
 
 * Use [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run lexical and semantic searches in parallel
-* Use [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to merge and score results from multiple search branches
+* Use [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) with `fuse_method` set to `RRF` to merge rankings with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
+* Use [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) with `fuse_method` set to `LINEAR` to combine scores with custom weights
 * Use [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) to apply semantic reranking to the top search results after combining them
 
-Refer to [{{esql}} for search](/solutions/search/esql-for-search.md#fork-and-fuse) for examples using `FORK` and `FUSE`. For end-to-end hybrid search tutorials, refer to [Hybrid search with `semantic_text`](hybrid-semantic-text.md), and [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
+Refer to [{{esql}} for search](/solutions/search/esql-for-search.md#fork-and-fuse) for examples using `FORK` and `FUSE`. For `FUSE` parameters such as `fuse_method`, `weights`, and `rank_constant`, refer to the [`FUSE` command reference](elasticsearch://reference/query-languages/esql/commands/fuse.md). 
+
+For end-to-end hybrid search tutorials, refer to [Hybrid search with `semantic_text`](hybrid-semantic-text.md), and [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
 ## Vector storage optimization
 
