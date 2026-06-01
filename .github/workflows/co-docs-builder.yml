@@ -18,6 +18,9 @@ on:
       - '**.gif'
     types: [closed, opened, synchronize, labeled]
 
+permissions:
+  contents: read
+
 jobs:
   publish:
     if: contains(github.event.pull_request.labels.*.name, 'ci:doc-build')
