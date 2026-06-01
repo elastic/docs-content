@@ -69,7 +69,9 @@ For each entity type (hosts, users, and services):
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
-1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Turn the toggle on.
 
 :::{note}
@@ -117,7 +119,9 @@ To clear entity data:
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Click **Clear Entity Data**.
 :::
 
