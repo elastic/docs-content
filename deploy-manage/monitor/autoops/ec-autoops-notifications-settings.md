@@ -80,6 +80,24 @@ To set up notifications via email, follow these steps:
 
 $$$ec-autoops-pagerduty$$$
 
+**PagerDuty configuration**
+1. In PagerDuty, go to [Services](https://support.pagerduty.com/docs/services-and-integrations) > Service Directory.
+2. Create a new service (or open an existing one) for AutoOps alerts.
+3. Assign an escalation policy to specify who gets paged.
+4. On the service **Integrations** tab, click **Add another integration**.
+5. Choose [Events API v2](https://developer.pagerduty.com/docs/events-api-v2-overview) (or add it during service creation).
+6. Expand the integration and copy the Integration key (also known as the routing key for Events API v2).
+7. Store the key securely. You will need it in AutoOps.
+
+**AutoOps configuration**
+1. In AutoOps, open **Notifications settings** > **Connector settings**.
+2. Click **Add** and complete the fields as follows:
+**Connector type**: PagerDuty.
+**Connector name**: e.g. Production Elasticsearch on-call.
+3. Paste the PagerDuty Integration key.
+4. Click **Run to test** and then **Save**.
+5. Ensure the connector is enabled.
+
 The PagerDuty integration consists of the following parts:
 
 **PagerDuty configuration**
@@ -120,19 +138,22 @@ To set up a webhook to send AutoOps notifications to a Slack channel, go through
 
 $$$ec-autoops-victorops$$$
 
-The VictorOps integration consists of the following parts:
+AutoOps integrates with VictorOps/Splunk On-Call using the [REST Endpoint integration](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/splunk-on-call/integrations-with-splunk-on-call/rest-endpoint-integration-for-splunk-on-call).
 
-**VictorOps configuration**
+**Splunk On-Call configuration**
 
-1. Follow the steps described in the [REST Endpoint Integration Guide](https://help.victorops.com/knowledge-base/rest-endpoint-integration-guide/).
-2. Save the integration URL key as you will need it later.
+1. In Splunk On-Call, open **Integrations** > **3rd Party Integrations** > **REST - Generic** and enable it.
+2. Copy the REST Endpoint URL.
+3. Replace `$routing_key` at the end of the URL with your routing key (for example `elastic`).
+4. Configure routing keys under **Settings** > **Keys** so alerts reach the right team.
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty connector using the PagerDuty configuration application key.
-2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click Add.
-3. Fill in the filter details.
-4. Select the events that should be sent to this output.
+1. In AutoOps, open **Notifications settings** > **Connector settings** > **Add connector**.
+2. Select **VictorOps**, enter a name, and paste the full REST Endpoint URL in **URL**.
+3. Click **Run to test** and then **Save**.
+4. Open **Filter settings** > **Add**, select deployments, your VictorOps connector, delay, and event types > **Save**.
+
 :::
 
 
