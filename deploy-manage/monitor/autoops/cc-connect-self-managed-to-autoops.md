@@ -106,7 +106,7 @@ Depending on your selected installation method, you might have to provide some o
 * **Preferred authentication method**: Choose one of the following:
   
   :::::{tab-set}
-  :group: api-key-or-basic
+  :group: api-key-or-devtools
 
   ::::{tab-item} API key
   :sync: api-key
@@ -153,8 +153,8 @@ Depending on your selected installation method, you might have to provide some o
 
   ::::
 
-  ::::{tab-item} Basic
-  :sync: basic
+  ::::{tab-item} Dev Tools
+  :sync: devtools
 
   With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with these privileges:
 
