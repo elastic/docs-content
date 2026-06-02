@@ -21,6 +21,12 @@ The Hosts page provides a comprehensive overview of all hosts and host-related s
 :screenshot:
 :::
 
+Firemen!
+
+Whitelist!
+
+This > That
+
 The Hosts page has the following sections:
 
 
