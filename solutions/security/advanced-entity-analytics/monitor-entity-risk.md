@@ -90,7 +90,7 @@ This panel displays recent entity-related anomalies detected by prebuilt {{ml}} 
 
 * Use the **View by** dropdown to group anomalies by **Entity** or **Job ID**.
 * Use the **Anomaly score** filters to focus on anomalies by severity range.
-* Click **View all in Anomaly Explorer** to access and search all {{ml}} jobs in the **Anomaly Explorer**.
+* Click **Open in Anomaly Explorer** to access and search all {{ml}} jobs in the **Anomaly Explorer**.
 
 
 ## Entities [entity-entities]
@@ -143,7 +143,7 @@ Entity data from different sources appears in the **Entities** section based on 
 
 ## Entity KPIs (key performance indicators) [entity-kpis]
 ```yaml {applies_to}
-stack: ga 9.1-9.3
+stack: removed 9.4+, ga 9.1-9.3
 serverless: removed
 ```
 
@@ -152,7 +152,7 @@ This section displays the total number of critical hosts, critical users, and an
 
 ## User Risk Scores [entity-user-risk-scores]
 ```yaml {applies_to}
-stack: ga 9.1-9.3
+stack: removed 9.4+, ga 9.1-9.3
 serverless: removed
 ```
 
@@ -176,7 +176,7 @@ For more information about user risk scores, refer to [](/solutions/security/adv
 
 ## Host Risk Scores [entity-host-risk-scores]
 ```yaml {applies_to}
-stack: ga 9.1-9.3
+stack: removed 9.4+, ga 9.1-9.3
 serverless: removed
 ```
 
@@ -200,7 +200,7 @@ For more information about host risk scores, refer to [](/solutions/security/adv
 
 ## Service Risk Scores [service-risk-scores]
 ```yaml {applies_to}
-stack: ga 9.1-9.3
+stack: removed 9.4+, ga 9.1-9.3
 serverless: removed
 ```
 
@@ -223,7 +223,7 @@ For more information about service risk scores, refer to [](/solutions/security/
 
 ## Anomalies [entity-anomalies]
 ```yaml {applies_to}
-stack: ga 9.1-9.3
+stack: removed 9.4+, ga 9.1-9.3
 serverless: removed
 ```
 

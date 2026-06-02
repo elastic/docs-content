@@ -72,7 +72,9 @@ user,,bob.smith,user:bob@acme.com@active_directory
 
 #### Import a CSV file [entity-resolution-csv-import]
 
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Entity Resolution** tab.
 3. Select or drag and drop your CSV file.
 4. Review the file validation results and fix any errors if needed.
