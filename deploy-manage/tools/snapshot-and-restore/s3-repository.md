@@ -82,7 +82,7 @@ Amazon S3 supports a variety of  *storage classes*, each of which offers differe
 
 You can specify the storage class that {{es}} uses to store data objects with the `storage_class` repository setting. 
 
-{applies_to}`stack: ga 9.5` You can also specify storage objects with `data_storage_class` and `metadata_storage_class` settings. For {{es}} versions 9.5 and later, we recommended you specify the `data_storage_class` and `metadata_storage_class` settings instead of the `storage_class` setting.
+{applies_to}`stack: ga 9.5` You can also specify the storage class for objects with the `data_storage_class` and `metadata_storage_class` settings. For {{es}} versions 9.5 and later, we recommended you specify the `data_storage_class` and `metadata_storage_class` settings instead of the `storage_class` setting.
 
 Changing the `storage_class`, `data_storage_class`, or `metadata_storage_class` setting on an existing repository only affects the storage class for newly created objects, resulting in a mixed usage of storage classes.
 
