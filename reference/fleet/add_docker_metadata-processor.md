@@ -33,7 +33,7 @@ Each event is annotated with the following fields:
 
 ### Working with labels [labels-dedot-behavior]
 
-Docker label keys often contain dots, for example `com.docker.compose.service`. By default (`labels.dedot: true`), the processor replaces dots with underscores when writing labels to the event:
+Docker label keys often contain dots, for example `com.docker.compose.service`. By default, the processor replaces dots with underscores when writing labels to the event:
 
 | Original Docker label | Field name in event |
 | --- | --- |
@@ -43,7 +43,7 @@ Docker label keys often contain dots, for example `com.docker.compose.service`. 
 To preserve the original key names with dots, set `labels.dedot` to `false`. In that case, the labels are stored as nested objects (for example, `container.labels.com.docker.compose.service`).
 
 ::::{note}
-Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use [conditions-based autodiscover templates](/reference/fleet/conditions-based-autodiscover.md) instead.
+Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use the [Docker provider](/reference/fleet/docker-provider.md) with conditions instead.
 ::::
 
 The Docker provider exposes the same labels as variables for configuration templating (`${docker.container.labels.com.docker.compose.service}`). The provider always references keys in the dotted format. For more information, refer to [Docker provider](/reference/fleet/docker-provider.md).
