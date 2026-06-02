@@ -23,7 +23,7 @@ The `inputs` field can sit at the top of the workflow or inside a `manual` trigg
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.4
+:::{applies-item} stack: preview 9.3, ga 9.4
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -185,11 +185,11 @@ That workflow can be run on demand and also runs hourly automatically. Refer to 
 
 `inputs` declare values the workflow expects at invocation time. They're what the user types in the **Run** modal, or what an API caller provides in the request body.
 
-The location of `inputs` in the YAML depends on your version. On 9.4, `inputs` sits at the top level of the workflow. On 9.5+ and serverless, `inputs` sits inside the `manual` trigger. Existing workflows authored with the top-level form continue to run, but new workflows on 9.5+ or serverless can't be enabled with the top-level form.
+The location of `inputs` in the YAML depends on your version. On stack 9.4 and earlier, `inputs` sits at the top level of the workflow. From stack 9.5+ and on serverless, new workflows place `inputs` inside the `manual` trigger; existing top-level workflows continue to run.
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.4
+:::{applies-item} stack: preview 9.3, ga 9.4
 ```yaml
 inputs:
   - name: alert_id
