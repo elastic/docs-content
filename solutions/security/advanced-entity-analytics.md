@@ -30,25 +30,19 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
-| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Investigate entity connections and relationships in a graph | [](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
+| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
 | {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
 
 Entity analytics operates continuously across several stages:
 
-1. **Collect data:** Risk scoring ingests the following risk inputs from across your {{elastic-sec}} deployment:
-    * Detection alerts
-    * Asset criticality levels
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Watchlist membership
-    * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user designations
-2. **Score risk:**  Risk scores (0–100) are calculated for hosts, users, and services based on alert severity, frequency, and asset criticality. Scores are recalculated on a recurring interval.
-3. **Detect anomalies:** Prebuilt {{ml}} jobs identify unusual patterns in user and host behavior that may indicate compromise or insider threats.
-4. **Enrich entities:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) reconciles data from ingested logs, identity providers, and risk scores into a unified view of each entity.
+1. **Collects data:** Risk scoring ingests several [risk inputs](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#security-entity-risk-scoring-risk-scoring-inputs) from across your {{elastic-sec}} deployment.
+2. **Scores risk:**  Risk scores (0–100) are calculated for hosts, users, and services based on alert severity, frequency, and asset criticality. Scores are recalculated on a recurring interval.
+3. **Detects anomalies:** Prebuilt {{ml}} jobs identify unusual patterns in user and host behavior that may indicate compromise or insider threats.
+4. **Enriches entities:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) reconciles data from ingested logs, identity providers, and risk scores into a unified view of each entity.
 
     {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` The entity store resolves entities using shared identity matching across sources, so a single real-world entity observed across multiple identity providers appears as one deduplicated record.
-
-5. **Investigate and respond:** Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md) to review risk scores, surface anomalies, and prioritize investigations.
 
 ## Key capabilities
 
@@ -99,5 +93,6 @@ Track the activity of users with elevated permissions, such as system administra
 - [Enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md) for centralized entity management.
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.
+- Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md) to review risk scores, surface anomalies, and prioritize investigations.
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
 - [Explore host, user, and network data](/solutions/security/advanced-entity-analytics/explore.md) across your environment.
