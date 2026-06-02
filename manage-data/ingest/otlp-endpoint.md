@@ -180,22 +180,6 @@ Examples:
 | Metrics | Scope name contains `/receiver/hostmetrics`, no `data_stream.*` attributes | `metrics-hostmetrics.otel-default` |
 | Metrics | No matching attributes or receiver scope name | `metrics-generic.otel-default` |
 
-## Body map mode for logs
-```{applies_to}
-stack: preview 9.5
-```
-
-By default, OTLP log records are mapped into {{es}}'s standard OTel document structure, preserving resource, scope, and record metadata.
-
-If an upstream component has already shaped the log body to match the desired document structure, you can opt into the body map mode.
-In this mode, the log record's body map is used as the complete document, without copying the surrounding OTLP metadata.
-
-Enable body map mode in either of two ways:
-
-* Per request, by setting the `X-Elastic-Mapping-Mode` HTTP header to `bodymap`.
-* Per instrumentation scope, by setting the `elastic.mapping.mode` scope attribute to `bodymap`.
-  The scope attribute takes precedence over the header.
-
 ## Configure histogram handling for metrics
 ```{applies_to}
 stack: preview =9.3, ga 9.4+

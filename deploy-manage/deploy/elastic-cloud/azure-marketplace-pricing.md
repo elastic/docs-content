@@ -9,12 +9,12 @@ products:
   - id: cloud-hosted
 ---
 
-# Azure Marketplace pricing [ec-azure-marketplace-pricing]
+# Microsoft Marketplace pricing [ec-azure-marketplace-pricing]
 
-The pricing in Azure Marketplace defines how on-demand usage and prepaid fees get converted from ECUs and discounts into the local currency in which you transact on Azure Marketplace.
+The pricing in Microsoft Marketplace defines how on-demand usage and prepaid fees get converted from ECUs and discounts into the local currency in which you transact on Microsoft Marketplace.
 
-We will be updating the pricing plan for {{ecloud}} on Azure Marketplace effective November 1st, 2025. This update will affect customers paying in CHF, DKK, EUR, GBP, or SEK.
-In the past, we had updated the pricing plan for {{ecloud}} on Azure Marketplace effective January 1st, 2024. This update had affected customers paying in non-USD currencies.
+We will be updating the pricing plan for {{ecloud}} on Microsoft Marketplace effective November 1st, 2025. This update will affect customers paying in CHF, DKK, EUR, GBP, or SEK.
+In the past, we had updated the pricing plan for {{ecloud}} on Microsoft Marketplace effective January 1st, 2024. This update had affected customers paying in non-USD currencies.
 
 ## Why we’re making these changes [ec_why_were_making_these_changes]
 
@@ -22,7 +22,7 @@ The pricing plan update enables us to align with market trends and adapt to chan
 
 ## Who is affected in November 2025 [ec_who_is_affected-nov-2025]
 
-These price changes will apply to customers who are currently paying for Azure Marketplace services in CHF, DKK, EUR, GBP, SEK, or TWD. If you are paying in USD or any other currency, your pricing and billing will remain unchanged.
+These price changes will apply to customers who are currently paying for Microsoft Marketplace services in CHF, DKK, EUR, GBP, SEK, or TWD. If you are paying in USD or any other currency, your pricing and billing will remain unchanged.
 Note that if you are using a private plan, your price is not affected.
 
 | Currency | Price | Elastic Billing Units for Azure† |
@@ -36,7 +36,7 @@ Note that if you are using a private plan, your price is not affected.
 
 ## Who was affected in January 2024 [ec_who_is_affected]
 
-These pricing changes have applied to customers who were currently paying for Azure Marketplace services in non-USD currencies. If you are paying in USD, your pricing and billing will remain unchanged.
+These pricing changes have applied to customers who were currently paying for Microsoft Marketplace services in non-USD currencies. If you are paying in USD, your pricing and billing will remain unchanged.
 
 | Currency | Price | Elastic Billing Units for Azure† |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ These pricing changes have applied to customers who were currently paying for Az
 
 ## How the changes affect you [ec_how_the_changes_will_affect_you]
 
-For customers paying in non-USD currencies, any future prepaid fees, or on-demand usage after the plan/price change are charged at the new currency exchange rate. The applicable rate is clearly displayed on the Azure Marketplace listing page, allowing you to stay informed about the pricing adjustments. 
+For customers paying in non-USD currencies, any future prepaid fees, or on-demand usage after the plan/price change are charged at the new currency exchange rate. The applicable rate is clearly displayed on the Microsoft Marketplace listing page, allowing you to stay informed about the pricing adjustments. 
 
 
 ## Our commitment to you [ec_our_commitment_to_you]

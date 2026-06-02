@@ -2,6 +2,7 @@
 applies_to:
   serverless: preview
   stack: preview =9.1, ga 9.2+
+description: Monitor Streams data quality by tracking degraded documents, failed documents, quality scores, and ingestion trends over time.
 products:
   - id: observability
   - id: elasticsearch

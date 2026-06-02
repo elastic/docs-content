@@ -105,7 +105,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   Specify the maximum number of alerts the rule can create each time it executes. Default is 100.
 
 ::::{admonition} System-level alert limit
-The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md#alert-settings) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
+The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
 **MITRE ATT&CK threats** (optional)
