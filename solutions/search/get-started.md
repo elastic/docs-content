@@ -18,10 +18,8 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, go
 :::
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/blob/main/skills/elasticsearch/elasticsearch-onboarding
+:url: https://github.com/elastic/agent-skills@elasticsearch-onboarding
 This skill guides users through search concepts and helps create a working search use case.
-
-`npx skills add elastic/agent-skills@elasticsearch-onboarding`
 :::
 
 ::::::{stepper}
