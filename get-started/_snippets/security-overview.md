@@ -1,4 +1,4 @@
-{{elastic-sec}} is a unified security solution that unifies SIEM (Security Information and Event Management), XDR, (Extended Detection and Response), endpoint security, and cloud security into a single platform so you can detect, prevent, and respond to cyber threats across your entire environment in near real time.
+{{elastic-sec}} is a unified security solution that unifies SIEM (Security Information and Event Management), XDR (Extended Detection and Response), endpoint security, and cloud security into a single platform so you can detect, prevent, and respond to cyber threats across your entire environment in near real time.
 {{elastic-sec}} leverages {{es}}'s powerful search and analytics capabilities, and {{kib}}'s visualization and collaboration features.
 By combining prevention, detection, and response capabilities, {{elastic-sec}} helps your organization reduce its security risk.
 
