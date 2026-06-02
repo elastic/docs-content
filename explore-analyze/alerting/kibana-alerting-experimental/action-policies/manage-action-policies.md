@@ -41,7 +41,10 @@ During a [maintenance window](../../alerts/maintenance-windows.md), action polic
 
 You can rotate the API key used to run a policy's workflows without changing matchers or destinations. Use the **Update API key** action on one policy or for multiple selected policies.
 
-::::{important} Production considerations
+::::{important} 
+
+**Production considerations**
+
 When you update or delete an action policy, previous API keys used for execution are marked for invalidation and removed on a schedule managed by {{kib}}. Allow for a short delay before new keys are used for dispatch.
 ::::
 
