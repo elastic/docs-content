@@ -18,7 +18,7 @@ products:
 Composition lets one workflow call another. Done well, it turns a sprawling multi-purpose workflow into a small, testable parent that delegates to focused children. This page covers the authoring decisions: when to extract a child workflow, how to design its input and output contract, how to test it in isolation, and how to fan out to background jobs.
 
 :::{warning}
-Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview in 9.4. Use them for prototypes and reusable utility workflows. Hold off on critical paths until composition reaches GA.
+Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview. Use them for prototypes and reusable utility workflows. Hold off on critical paths until composition reaches GA.
 :::
 
 For the step parameter reference, refer to [Composition steps](/explore-analyze/workflows/steps/composition.md).

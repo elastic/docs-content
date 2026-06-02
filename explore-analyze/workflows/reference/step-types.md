@@ -96,10 +96,10 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 
 In addition to the steps listed previously, every configured {{kib}} connector exposes one or more `<connector>.<action>` step types. Common examples include:
 
-- `slack.postMessage` — post a message to a Slack channel.
-- `jira.createIssue` — create a Jira issue.
-- `pagerduty.triggerIncident` — page an on-call rotation.
-- `virustotal.scanFileHash` — scan a file hash.
+- `slack.postMessage` — Post a message to a Slack channel.
+- `jira.createIssue` — Create a Jira issue.
+- `pagerduty.triggerIncident` — Page an on-call rotation.
+- `virustotal.scanFileHash` — Scan a file hash.
 
 Because the available connector steps depend on which connectors your deployment has configured, they aren't enumerated here. Refer to the [{{kib}} connectors reference](kibana://reference/connectors-kibana.md) for the full catalog.
 

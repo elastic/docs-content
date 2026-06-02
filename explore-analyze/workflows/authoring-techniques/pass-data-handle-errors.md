@@ -81,7 +81,7 @@ By default, if any step fails the entire workflow execution stops immediately (t
 
 You can configure `on-failure` at two levels:
 
-**Step-level** — applies to a specific step:
+**Step-level** — Applies to a specific step:
 
 ```yaml
 steps:
@@ -93,7 +93,7 @@ steps:
         delay: "5s"
 ```
 
-**Workflow-level** (configured under `settings`) — applies to all steps as the default error handling behavior:
+**Workflow-level** (configured under `settings`) — Applies to all steps as the default error handling behavior:
 
 ```yaml
 settings:
