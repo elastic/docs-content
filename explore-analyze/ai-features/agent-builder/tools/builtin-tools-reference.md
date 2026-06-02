@@ -232,7 +232,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.
+Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
