@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-source-only-repository.html
 applies_to:
-  stack: ga all
+  stack: ga
 products:
   - id: elasticsearch
 ---
