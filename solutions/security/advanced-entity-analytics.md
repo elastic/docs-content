@@ -31,7 +31,7 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
-| {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
+| {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
 
