@@ -31,9 +31,9 @@ For a user-facing overview, refer to [](/get-started/deployment-options.md). For
 
 Review the following sections to learn the basics of each deployment type, and what's distinctive about it.
 
-::::{dropdown} Self-managed
+:::{dropdown} Self-managed
 Users own the platform and the {{stack}}, with no orchestration or automation. Installation, configuration, and upgrades are all manual. In this context, the term "cluster" is used more often than "deployment", even though components other than {{es}} are not part of a cluster directly.
-::::
+:::
 
 :::{dropdown} {{ech}} (ECH)
 Elastic's SaaS offering: Elastic operates the platform, users own their deployments. Deployments are discrete instances of the {{stack}} (such as an {{es}} cluster + {{kib}} + {{integrations-server}}) that are provisioned through the {{ecloud}} Console or API, using hardware profiles and {{es}} architectures offered by Elastic.
