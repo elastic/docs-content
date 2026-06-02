@@ -796,6 +796,7 @@ toc:
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
+  - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
       - hidden: cloud-organization/manage-multiple-organizations.md
