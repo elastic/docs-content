@@ -134,7 +134,7 @@ The workflow fails when all retries are exhausted, unless paired with `fallback`
 
 ### Fallback [workflows-on-failure-fallback]
 
-Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error.message}}`. The `error` object also exposes other fields, such as `error.status` for HTTP-style failures; reference a specific field rather than the whole object, which renders as `[object Object]`.
 
 ```yaml
 on-failure:
@@ -147,10 +147,10 @@ on-failure:
     - name: log_failure
       type: console
       with:
-        message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
+        message: "Document deletion failed, error: {{steps.delete_critical_document.error.message}}"
 ```
 
-Within fallback steps, access error information from the failed primary step using `steps.<failed_step_name>.error`.
+Within fallback steps, access the failed primary step's error object at `steps.<failed_step_name>.error` and reference its fields (`message`, `status`, and others) rather than the object itself.
 
 ### Continue [workflows-on-failure-continue]
 
