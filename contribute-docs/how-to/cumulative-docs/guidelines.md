@@ -283,7 +283,7 @@ For versioned products like the Elastic Stack:
   % ([example](example-scenarios.md#))
 * When a feature in a versioned product changes lifecycle state,
   append the new lifecycle state and the version in which the state changed to the relevant key in `applies_to`.
-  This applies to all lifecycle states including `preview`, `beta`, `ga`, `deprecated`, and `removed`
+  This applies to all lifecycle states including `preview`, `ga`, `deprecated`, `experimental`, and `removed`
   ([example](example-scenarios.md#lifecycle-changed)).
 
 
