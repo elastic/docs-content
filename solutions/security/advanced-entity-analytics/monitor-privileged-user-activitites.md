@@ -1,4 +1,5 @@
 ---
+description: Monitor privileged users' activity using the privileged user monitoring dashboard in Elastic Security. Removed in favor of watchlists.
 applies_to:
   stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:

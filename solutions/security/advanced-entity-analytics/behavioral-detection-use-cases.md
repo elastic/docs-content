@@ -1,4 +1,5 @@
 ---
+description: Explore behavioral detection use cases that flag suspicious internal and external user and host activity using machine learning in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/behavioral-detection-use-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-behavioral-detection-use-cases.html

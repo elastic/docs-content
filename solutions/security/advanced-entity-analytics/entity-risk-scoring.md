@@ -1,4 +1,5 @@
 ---
+description: Learn how Elastic Security calculates entity risk scores for hosts, users, and services from detection alerts, asset criticality, and watchlist membership.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/entity-risk-scoring.html
   - https://www.elastic.co/guide/en/serverless/current/security-entity-risk-scoring.html

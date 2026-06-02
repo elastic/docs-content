@@ -1,5 +1,6 @@
 ---
 navigation_title: Explore
+description: Explore host, user, and network data in Elastic Security with KPI charts, data tables, and interactive widgets to investigate events in Timeline.
 applies_to:
   stack: all
   serverless:

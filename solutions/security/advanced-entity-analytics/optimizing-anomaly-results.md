@@ -1,4 +1,5 @@
 ---
+description: Tune machine learning anomaly detection results in Elastic Security to reduce false positives for rarely used applications and processes.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/tuning-anomaly-results.html
   - https://www.elastic.co/guide/en/serverless/current/security-tuning-anomaly-results.html

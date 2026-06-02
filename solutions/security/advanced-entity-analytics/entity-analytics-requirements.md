@@ -1,4 +1,6 @@
 ---
+navigation_title: Entity analytics requirements
+description: Privileges, subscription tiers, roles, and limitations required to use entity risk scoring, asset criticality, and the entity store in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ers-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ers-requirements.html
@@ -11,13 +13,17 @@ products:
   - id: cloud-serverless
 ---
 
-# Entity risk scoring requirements
+# Entity analytics requirements
 
 This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
 
 To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In {{serverless-short}}, you need the appropriate user roles or a custom role with the right privileges.
 
 In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In {{serverless-short}}, they require the Security Analytics Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+
+::::{note}
+For the requirements to run {{anomaly-jobs}} and behavioral detection rules, refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md).
+::::
 
 
 ## Entity risk scoring [_entity_risk_scoring]

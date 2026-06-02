@@ -1,4 +1,5 @@
 ---
+description: Requirements and known limitations for the privileged user monitoring feature in Elastic Security.
 applies_to:
   stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:

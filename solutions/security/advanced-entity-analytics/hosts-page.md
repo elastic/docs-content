@@ -1,4 +1,5 @@
 ---
+description: Investigate hosts and host-related security events in Elastic Security using KPI charts, data tables, anomalies, risk scores, and sessions.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/hosts-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-hosts-overview.html

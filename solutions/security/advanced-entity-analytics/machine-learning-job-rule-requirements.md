@@ -1,4 +1,5 @@
 ---
+description: Requirements for running and creating machine learning jobs and detection rules in Elastic Security, including licenses, roles, and privileges.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ml-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ml-requirements.html

@@ -1,4 +1,5 @@
 ---
+description: Inspect an entity's risk summary, resolution group, insights, and connection graph from the entity details flyout in Elastic Security.
 applies_to:
   stack: all
   serverless:
