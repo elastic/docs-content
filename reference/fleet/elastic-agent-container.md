@@ -11,7 +11,7 @@ products:
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in {{k8s}}, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container, either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in {{k8s}}, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
 Running {{agent}} in a container is supported only in Linux environments. For this reason, we don't provide {{agent}} container images for Windows.
 
@@ -91,7 +91,7 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{{versi
 
 ## Step 2: Verify the image (optional) [_step_2_optional_verify_the_image]
 
-We recommend verifying the signatures included with your downloaded Docker images to ensure that the images are valid.
+Verify the signatures included with your downloaded Docker images to ensure that the images are valid.
 
 Elastic images are signed with Cosign which is part of the [Sigstore](https://www.sigstore.dev) project. Cosign supports container signing, verification, and storage in an OCI registry. Install the appropriate Cosign application for your operating system.
 
@@ -321,7 +321,7 @@ Refer to [Environment variables](/reference/fleet/agent-environment-variables.md
 
 ## Logs [_logs]
 
-Since a container supports only a single version of {{agent}}, logs and state are stored differently than when running an {{agent}} outside of a container. Logs are stored at `/usr/share/elastic-agent/state/data/logs/*`.
+Because a container supports only a single version of {{agent}}, logs and state are stored differently than when running an {{agent}} outside of a container. Logs are stored at `/usr/share/elastic-agent/state/data/logs/*`.
 
 Only the logs from the {{agent}} process itself are sent to `stdout`. Subprocess logs are not. Each subprocess writes its own logs to the `default` directory inside the logs directory:
 
