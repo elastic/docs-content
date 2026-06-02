@@ -3,48 +3,46 @@ navigation_title: Documentation strategies
 description: "Editorial strategies for documenting Elastic features and procedures that vary by deployment type. Includes a strategy decision table, IA placement guidance, examples, and review symptoms."
 ---
 
-# Documentation strategies for deployment-type variation
+# Strategies for documenting across deployment types
 
-Use this page to choose an editorial approach when content varies by deployment type, and to spot common issues during review. For background on the deployment types and how they differ, refer to [](about.md).
+Use this page to choose an editorial approach when content varies by deployment type, and to spot common issues when reviewing your own or others' work. For background on the deployment types and how they differ, refer to [](about.md).
 
 ## Strategies
 
-When an action or activity differs depending on deployment type, there are three broad strategies:
-
-- Create one doc per deployment type for the same activity.
-- Make the doc valid for all deployment types (for example, with [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs).
-- If the activity is part of a bigger guide, rely on a separate doc that explains the activity for all deployment types, and link to it.
-
-The right choice depends on the activity, the scope of the surrounding doc, and how widely the steps differ across deployment types.
-
-### Pick a strategy
+When an action or activity differs depending on deployment type, the right approach depends on the activity, the scope of the surrounding doc, and how widely the steps differ across deployment types.
 
 | Use case | Approach | Example |
 |---|---|---|
-| Activity is atomic and required or performed in many other docs | Create a dedicated doc that covers the activity for all deployment types. Refer to that doc from other docs that need the activity. | Configure `elasticsearch.yml`; add a keystore or secure setting; put a file into the config directory |
-| Longer process that differs more by deployment type | Evaluate the trade-off between fitting everything into a single document and creating multiple per-deployment-type documents. | Configure remote clusters (multiple docs); manage snapshot repositories (multiple docs); file-based user management (one doc for self-managed and ECK) |
+| Activity is atomic and required or performed in many other docs | Create a dedicated doc that covers the activity for all deployment types. Refer to that doc from other docs that need the activity. | • [](/deploy-manage/stack-settings.md)<br>• [](/deploy-manage/security/secure-settings.md) |
+| Longer process that differs more by deployment type | Evaluate the trade-off between fitting everything into a single document and creating one document for each deployment type. Tools like [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs can help keep variation in one doc. See [Patterns by how a capability differs across deployment types](#patterns-by-how-a-capability-differs-across-deployment-types) for guidance. | • [](/deploy-manage/remote-clusters.md)<br>• [](/deploy-manage/tools/snapshot-and-restore.md) |
 | Guide exists but only for some deployment types | Evaluate whether the scope is intentional (meets a business need) or a gap. If a gap, expand the doc to cover other deployment types. If it must stay scoped, tell the user why and offer alternatives or escape hatches. | [](/manage-data/migrate.md), currently scoped to ECH and ECE |
-| Pathway or process only exists for one or some deployment types | Break the content out into a labelable chunk: a bullet, a callout, or a section. Indicate applicability with [`applies_to`](/contribute-docs/how-to/cumulative-docs/index.md) tags. | An {{es}} command-line utility for cron expression validation, only available on self-managed |
+| Pathway or process only exists for one or some deployment types | Break the content out into a labelable chunk: a bullet, a callout, or a section. Indicate applicability with [`applies_to`](/contribute-docs/how-to/cumulative-docs/index.md) tags. | [`elasticsearch-croneval`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-croneval.md), an {{es}} CLI utility for cron expression validation, only available on self-managed |
 
-### Where new content lives in the IA
+### Patterns by how a capability differs across deployment types
 
-Some parts of the docs IA are organized by deployment type (for example, [](/deploy-manage/deploy.md) has separate sections for self-managed, ECK, ECE, ECH, and {{serverless-short}}). Other sections are organized by concept and apply across deployment types.
+You have a lot of flexibility when deciding how to shape content that varies by deployment type. However, if you're not sure what to do, here are some patterns to help you decide.
 
-| Section type | Belongs here |
-|---|---|
-| Deployment-specific | First-mile setup, architecture and value proposition for that deployment type, concepts unique to that deployment's structure (for example, config file location), and wayfinding to shared concepts |
-| Shared (concept-based) | Cross-deployment primitives extended by deployment-specific modes, config or admin tasks users return to repeatedly or that happen after hello-world, and feature usage regardless of deployment type |
+| Relationship | Content shape | `applies_to` pattern |
+|---|---|---|
+| **Identical primitive and config.** Same behavior, same config surface. | One page, no deployment-specific content. | Page-level `applies_to: stack`. |
+| **Same primitive, different config surface.** For example, set the same setting in `elasticsearch.yml` vs. a {{k8s}} CRD vs. the {{ecloud}} UI. | One central page: shared concept, then forked steps. | Page-level `applies_to` listing the deployment types that apply. [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs for the forked steps. |
+| **Augmented (minor).** Platform adds a convenience on top of the base primitive. | One page: base capability, then a scoped section for what the platform adds. | Page-level `applies_to` covers all types. Section-level or admonition `applies_to` on the scoped section. |
+| **Augmented (significant).** Platform adds a layer that changes the user's mental model or workflow (for example, Cloud SSO wrapping {{es}} auth). | Shared overview, then forked content. The base capability and the platform-added behavior each need room. | Page-level `applies_to` on the overview. [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs if the workflows are parallel; sibling pages if the platform-specific workflow would overwhelm the base. |
+| **Constrained by platform.** Same primitive, restricted on some types. | One page: full capability, with restrictions called out where relevant. | Page-level `applies_to` covers all types where the feature exists. Inline `applies_to` or admonitions to flag constraints. Use `unavailable` sparingly for blocked sub-features. |
+| **Replaced by a different mechanism.** Same user goal, different mechanism (most often {{serverless-short}}). | Shared overview of the user goal, then forked content for each mechanism. | Page-level `applies_to` on the overview. [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs if mechanisms are parallel; sibling pages if they're too different to coexist. |
+| **Removed or not available.** Capability missing on some deployment types. | Don't just omit. Signal the absence where users are likely to look. | Don't add the missing type to page-level `applies_to`. Use section-level or inline `serverless: unavailable` where confusion is likely. Use the `removed` lifecycle value for version-specific removals. |
 
 ## Examples
 
-### Access {{kib}}
+The following are real-world examples of how we chose to address varying processes across deployment types.
 
+:::{dropdown} Access {{kib}}
 If we include all deployment-type instructions in every doc that asks the reader to open {{kib}}, the docs feel repetitive and become longer than they need to be without any benefit to the reader.
 
 Instead, create a single generic doc that explains how to open {{kib}} across all deployment types, and link to it. Users who already know how to access {{kib}} can skip the link.
+:::
 
-### Stack monitoring
-
+:::{dropdown} Stack monitoring
 [](/deploy-manage/monitor/stack-monitoring.md) is a core {{es}} concept, but Elastic provides helpful shortcuts and utilities to set it up in ECH, ECK, and ECE.
 
 The stack monitoring docs stay together as one narrative, but:
@@ -54,21 +52,26 @@ The stack monitoring docs stay together as one narrative, but:
 - Visualization and alerting configuration are shared topics that apply regardless of deployment type.
 
 This keeps the full stack monitoring narrative in one place while providing a clear pathway for each deployment type.
+:::
 
 ## Things to watch for
 
-Use this list when reviewing PRs or auditing existing pages.
+Use this checklist when reviewing PRs or auditing existing pages. These are common issues that we encounter when trying to document across deployment types.
 
-- **Specific deployment types as a prerequisite.** A deployment-agnostic task that opens with "Create an {{ech}} deployment" scopes itself unnecessarily.
-- **`applies_to` doesn't match the deployment types mentioned in prose.** Either the prose or the tag is wrong.
-- **Shared procedures use a deployment-specific surface.** For example, a procedure that should work for ECK or self-managed opens with "use the {{ecloud}} Console."
-- **Manually editing config files or dropping files in filesystem folders** without acknowledging that orchestrated deployment types don't expose those files the same way.
-- **API calls for setup or config tasks** when some deployment types have better UI pathways for the same task.
-- **Prerequisites don't match the page scope.** A page tagged for one set of deployment types or versions has prerequisites tagged for a different set. Either the prerequisite or the page-level `applies_to` is wrong.
-- **Readers from other deployment types are stranded.** A page scoped to some deployment types offers no cross-reference or explanation for readers on the others. Link to the equivalent procedure or note why one doesn't exist.
-- **Duplicated procedure where a cross-reference would do.** An atomic procedure (configure a setting, access {{kib}}, install an integration) is restated in multiple guides instead of being maintained in one place and linked to.
-- **A missing feature on some deployment types is silently omitted.** A page covers a feature available on several deployment types but doesn't acknowledge that it's removed or replaced on others (most often {{serverless-short}}: {{ilm-init}}, {{watcher}}, custom plugins, audit logging). Note the absence and link to the closest alternative.
-- **"Self-managed" used as a grouping label.** A page uses "self-managed" to mean ECK, ECE, and self-managed together. Use the specific deployment type instead.
+- [ ] **Specific deployment types as a prerequisite.** A deployment-agnostic task includes "Create an {{ech}} deployment" as a prerequisite.
+- [ ] **`applies_to` doesn't match the deployment types mentioned in prose.** For example, the page label is `stack` but the opening sentence says "In ECE and ECH, ..."
+- [ ] **Shared procedures use a deployment-specific surface.** A procedure that should work for ECK or self-managed opens with "use the {{ecloud}} Console."
+- [ ] **Manually editing config files or dropping files in filesystem folders** without acknowledging that orchestrated deployment types don't expose those files the same way. Link to a central doc that covers the task across deployment types, fork the procedure, or add a note.
+- [ ] **API calls for setup or config tasks** when some deployment types have better UI pathways for the same task. Unless it is much more contextually appropriate to use the API, link to a central doc that covers the task in additional surfaces, fork the procedure, or add a note.
+- [ ] **Prerequisites don't match the page scope.** A page tagged for one set of deployment types or versions has prerequisites tagged for a different set (not the same as [dimensions](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions)).
+- [ ] **Readers from other deployment types are stranded.** A page scoped to one or more deployment types (but not all) offers no cross-reference or explanation for readers using other deployment types. Link to the equivalent procedure or note why one doesn't exist.
+- [ ] **A duplicated procedure where a cross-reference would do.** An atomic procedure (configure a setting, access {{kib}}, install an integration) is restated in multiple guides instead of being maintained in one place and linked to, or a procedure documented elsewhere is restated on a page without a snippet.
+- [ ] **A missing feature on some deployment types is silently omitted.** A page covers a feature available on several deployment types but doesn't acknowledge that it's removed or replaced on others (most often {{serverless-short}}: for example, {{ilm-init}}, {{watcher}}, custom plugins, audit logging). Note the absence and link to the closest alternative.
+- [ ] **"Self-managed" used as a grouping label.** Some people refer to everything not hosted on {{ecloud}} as "self-managed", grouping ECK, ECE, and self-managed together. Don't use this grouping in our docs. ECK, ECE, and self-managed differ in meaningful ways that the grouping obscures. Always name the specific deployment type.
+
+:::{admonition} It's a marathon, not a sprint
+Sometimes, we don't have time to rework a tutorial to make it deployment-agnostic. Acknowledging the limitation and providing a way forward is a good first step. Open an issue or PR to track a longer-term fix.
+:::
 
 ## Resources
 

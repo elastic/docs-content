@@ -34,6 +34,6 @@ Learn about the cumulative documentation model and how to tag content for differ
 
 We document all deployment types together in a single source of truth where possible. These resources help you work within the cumulative docs model when content varies by deployment, including tips to recognize when content is deployment-sensitive, and guidance on how to shape content based on how it varies.
 
-- [Documenting deployment types in Elastic Docs](deployment-types/index.md) - Overview and how the resources fit together
+- [Document deployment types in Elastic Docs](deployment-types/index.md) - Overview and how the resources fit together
 - [Deployment types reference for docs contributors](deployment-types/about.md) - The deployment types, stack components and flavors available on each, and where user-facing tasks differ
-- [Documentation strategies for deployment-type variation](deployment-types/strategies.md) - Editorial approaches, IA placement, and review symptoms
+- [Strategies for documenting across deployment types](deployment-types/strategies.md) - Editorial approaches, IA placement, and review symptoms

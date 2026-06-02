@@ -198,6 +198,9 @@ refer to [](reference.md#key).
 * **Do not assume a default product or deployment type.**
   Treat all products and deployment types equally. Don't treat one as the "base" and the other as the "exception."
 
+:::{include} /contribute-docs/_snippets/self-managed-naming.md
+:::
+
 ### Common scenarios [products-and-deployment-models-examples]
 
 Here are some common scenarios you might come across:
