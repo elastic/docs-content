@@ -2,7 +2,7 @@
 applies_to:
   stack: ga 9.4+
   serverless:
-    security: planned
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -34,7 +34,9 @@ To learn how watchlist weighting fits into the overall risk score calculation, r
 
 To create a watchlist:
 
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Watchlists** tab.
 3. Click **Create watchlist**.
 4. Enter a name and, optionally, a description.
@@ -49,6 +51,11 @@ An entity can belong to more than one watchlist.
 ## View and manage watchlists [watchlists-manage]
 
 The **Watchlists** tab displays all watchlists in the current {{kib}} space. You can edit and delete individual watchlists using the icons in the relevant watchlist row.
+
+:::{image} /solutions/images/security-watchlists.png
+:alt: The Watchlists tab on the Entity analytics management page
+:screenshot:
+:::
 
 ## Filter entities by watchlist [watchlists-filter]
 

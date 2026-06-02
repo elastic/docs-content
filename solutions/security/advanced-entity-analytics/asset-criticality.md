@@ -44,38 +44,15 @@ If you assign asset criticality using the file import feature, risk scores are *
 
 You can view, assign, change, or unassign asset criticality from the following places in the {{elastic-sec}} app:
 
-* The [host details page](/solutions/security/advanced-entity-analytics/hosts-page.md#host-details-page) and [user details page](/solutions/security/advanced-entity-analytics/users-page.md#user-details-page):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-host-details.png
-    :alt: Assign asset criticality from the host details page
-    :screenshot:
-    :::
-
-* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-host-flyout.png
-    :alt: Assign asset criticality from the host details flyout
-    :screenshot:
-    :::
-
-* The entity details flyout in [Timeline](../investigate/timeline.md):
-
-    :::{image} /solutions/images/security-assign-asset-criticality-timeline.png
-    :alt: Assign asset criticality from the host details flyout in Timeline
-    :screenshot:
-    :::
-
+* The [host details page](/solutions/security/advanced-entity-analytics/hosts-page.md#host-details-page) and [user details page](/solutions/security/advanced-entity-analytics/users-page.md#user-details-page)
+* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout)
+* The entity details flyout in [Timeline](../investigate/timeline.md)
 
 If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
 
 * {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
-
-:::{image} /solutions/images/security-entities-section.png
-:alt: Entities section
-:screenshot:
-:::
-
+security-asset-criticality-impact
 
 ### Bulk assign asset criticality [bulk-assign-asset-criticality]
 
@@ -110,7 +87,9 @@ To import a file:
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Asset Criticality** tab.
 3. Select or drag the file you want to import.
 

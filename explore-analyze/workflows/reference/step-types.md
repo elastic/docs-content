@@ -40,6 +40,7 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) | Cases | Fetch a case by ID. |
 | [`cases.getCases`](/explore-analyze/workflows/steps/cases.md#cases-getcases) | Cases | Fetch multiple cases by ID. |
 | [`cases.getCasesByAlertId`](/explore-analyze/workflows/steps/cases.md#cases-getcasesbyalertid) | Cases | Find cases containing a specific alert. |
+| [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
 | [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
 | [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) | Cases | Set a custom field on a case. |
 | [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |
@@ -95,10 +96,10 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 
 In addition to the steps listed previously, every configured {{kib}} connector exposes one or more `<connector>.<action>` step types. Common examples include:
 
-- `slack.postMessage` — post a message to a Slack channel.
-- `jira.createIssue` — create a Jira issue.
-- `pagerduty.triggerIncident` — page an on-call rotation.
-- `virustotal.scanFileHash` — scan a file hash.
+- `slack.postMessage` — Post a message to a Slack channel.
+- `jira.createIssue` — Create a Jira issue.
+- `pagerduty.triggerIncident` — Page an on-call rotation.
+- `virustotal.scanFileHash` — Scan a file hash.
 
 Because the available connector steps depend on which connectors your deployment has configured, they aren't enumerated here. Refer to the [{{kib}} connectors reference](kibana://reference/connectors-kibana.md) for the full catalog.
 

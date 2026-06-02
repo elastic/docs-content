@@ -112,9 +112,22 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.issue.number,
             });
-            if (pullRequest.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`) {
-              core.setOutput('docs_review_triggered', 'false');
-              return;
+            const isForkPR = pullRequest.head.repo.full_name !== `${context.repo.owner}/${context.repo.repo}`;
+            if (isForkPR) {
+              let isOrgMember = false;
+              try {
+                const { status } = await github.rest.orgs.checkMembershipForUser({
+                  org: context.repo.owner,
+                  username: context.actor,
+                });
+                isOrgMember = status === 204;
+              } catch {
+                isOrgMember = false;
+              }
+              if (!isOrgMember) {
+                core.setOutput('docs_review_triggered', 'false');
+                return;
+              }
             }
 
             const body = context.payload.comment.body || '';
