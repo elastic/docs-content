@@ -83,14 +83,16 @@ Query DSL is the JSON request body for the `_search` API and related search endp
 
 Supported types for {{esql}} change by version. Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/limitations.md) before relying on vector-related {{esql}} functions in production.
 
+## Combining search strategies [vector-search-combine-strategies]
+
 You are not limited to a single retrieval style. Search applications can combine [traditional keyword search](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md), [nearest neighbor vector search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md), [sparse learned retrieval](elasticsearch://reference/query-languages/query-dsl/query-dsl-sparse-vector-query.md), and [reranking](ranking/semantic-reranking.md) within the same workflow.
 
-These approaches are implemented in one of two ways:
+You can implement these combinations in one of two ways:
 
-- One option is a single [`_search`](the-search-api.md) request built with [retrievers](retrievers-overview.md), where each retrieval stage is defined in the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) JSON structure.
-- The other option is a piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) (`RRF`) or weighted score combination (`LINEAR`).
+- A single [`_search`](the-search-api.md) request built with [retrievers](retrievers-overview.md), where each retrieval stage is defined in the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) JSON structure.
+- A piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) (`RRF`) or weighted score combination (`LINEAR`).
 
-### Combining search strategies using retrievers [vector-search-combine-retrievers]
+### Using retrievers [vector-search-combine-retrievers]
 
 Use [retrievers](retrievers-overview.md) to combine multiple retrieval strategies in a single `_search` request. 
 
@@ -102,7 +104,7 @@ For example, you can:
 
 For supported retriever types and request syntax, refer to the [retrievers reference](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md). Refer to [Hybrid search](hybrid-search.md) for an end-to-end guide to combining lexical and semantic search.
 
-### Combining search strategies using {{esql}} [vector-search-combine-esql]
+### Using {{esql}} [vector-search-combine-esql]
 
 Use {{esql}} commands to combine multiple search strategies in a single query.
 
