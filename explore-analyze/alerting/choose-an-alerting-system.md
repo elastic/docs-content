@@ -16,14 +16,14 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 
 ## Select by use case
 
-| Goal | Suggested system | Availability |
-|---|---|---|
-| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | All deployments |
-| Use rules built for Security, Observability, APM, or Maps | [{{kib}} alerting](alerts.md) | All deployments |
-| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
-| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {{serverless-full}} and {{stack}} 9.5+ |
-| Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | Self-managed and {{ech}} only |
+| Goal | Suggested system |
+|---|---|
+| Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) |
+| Use rules built for Security, Observability, APM, or Maps | [{{kib}} alerting](alerts.md) |
+| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5` |
+| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5` |
+| Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance
 
@@ -31,8 +31,8 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 |---|---|---|---|
 | **Best for** | Teams using built-in rule types with form-based setup | Teams that need full control over detection and notification routing | Custom alerting logic requiring scripting |
 | **Rule definition** | Select a rule type and fill in parameters | Write an {{esql}} query | Write a JSON watch definition |
-| **Alert data** | In-place updates; limited query support | Append-only events queryable with {{esql}} in Discover | Watch history index |
+| **Alert data** | In-place updates, limited query support | Append-only events queryable with {{esql}} in Discover | Watch history index |
 | **Notifications** | Configured per action on each rule | Centralized action policies, reusable across rules | Action-level throttling and conditions |
-| **Noise reduction** | Snooze per rule, maintenance windows | Per-episode acknowledge or deactivate; per-series snooze; maintenance windows; match condition routing in action policies | Action conditions and throttling |
-| **Available on {{serverless-full}}** | Yes | Yes (preview) | No |
-| **Available on {{stack}}** | Yes | Yes, 9.5+ (preview) | Yes |
+| **Noise reduction** | Snooze per rule, maintenance windows | Per-episode acknowledge or deactivate, per-series snooze, maintenance windows, match condition routing in action policies | Action conditions and throttling |
+| **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: experimental` | No |
+| **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: experimental 9.5+` | Yes |

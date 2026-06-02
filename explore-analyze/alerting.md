@@ -18,7 +18,7 @@ description: "Elastic alerting overview: Kibana alerting, the {{alerting-v2-syst
 
 Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
-Elastic offers three alerting systems, summarized below. Each has a **Get started** link to the full guide for that option.
+Elastic offers three alerting systems, summarized below. Each has a **Get started** link to the full guide for that option. If you're not sure which to use, refer to [Choose an alerting system](alerting/choose-an-alerting-system.md).
 
 ## {{kib}} alerting
 
@@ -31,11 +31,11 @@ serverless: ga
 
 [Get started with {{kib}} alerting →](alerting/alerts.md)
 
-## {{alerting-v2-system-cap}} overview
+## {{alerting-v2-system-cap}}
 
 ```{applies_to}
-serverless: preview
-stack: preview
+serverless: experimental
+stack: experimental
 ```
 
 The {{alerting-v2-system}} is built on {{esql}}. You write the query that defines what to watch for, choose how alert episodes are tracked per series, and control notifications through action policies that handle routing, frequency, and notification batching. The {{alerting-v2-system}} also adds alert episode lifecycle tracking, per-series snooze, and rules on alert episodes for correlation and escalation. It is a strong fit when you want full control over what data travels with each alert episode and how your team is notified.

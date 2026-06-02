@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 
-  serverless: preview
+  stack: experimental 
+  serverless: experimental
 products:
   - id: kibana
   - id: cloud-serverless
@@ -16,7 +16,7 @@ The {{alerting-v2-system}} watches your {{es}} data continuously, so your team d
 
 ## The core idea [kibana-alerting-v2-overview]
 
-The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. A rule watches your data and records what it finds. Action policies decide which workflows to invoke, who to notify, and when. In most alerting systems, notification settings are wired directly onto each rule, which means changing who gets notified requires editing every rule. This design lets you build and test detection logic before wiring up any notifications, and update notification routing without touching your rules.
+The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. Rules focus purely on what to watch for in your data. Action policies handle who gets notified, when, and how, independently of any rule. You can build and test detection logic before wiring up any notifications, and update notification routing across all rules in one place without editing the rules themselves.
 
 ## The four building blocks
 
@@ -60,7 +60,7 @@ What happens after a rule finds something depends entirely on the rule's mode.
 Use Alert mode when you want to track issues and be notified. The rule opens an alert episode when the condition is met and keeps it open until the condition clears.
 
 ```
-Rule runs → finds something → writes a rule event
+Rule runs → the rule's conditions are met → writes a rule event
   → alert episode (pending → active)
       → [dispatcher] → action policy → workflow → notification
   → condition clears (recovering → inactive)
@@ -89,7 +89,7 @@ The on-call engineer gets one message, investigates, fixes a slow query, and lat
 Use Detect mode when you want to record matches for querying and analysis without alerting anyone. The rule writes a signal and stops. An alert episode is not opened, and notifications are not sent.
 
 ```
-Rule runs → finds something → writes a signal
+Rule runs → the rule's conditions are met → writes a signal
   → queryable in Discover
   → no alert episode, no action policy, no notification
 ```
