@@ -219,7 +219,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-On 9.5+ and serverless, `inputs` is defined under the `manual` trigger instead of at the workflow root. The reference form `{{ inputs.<name> }}` is the same in either placement; only the declaration moves.
+On stack 9.5+ and on serverless, `inputs` is defined under the `manual` trigger instead of at the workflow root. The reference form `{{ inputs.<name> }}` is the same in either placement; only the declaration moves.
 
 Existing workflows continue to run with `inputs` at the root, but new workflows can't be enabled with the root-level form. The {{kib}} editor flags root-level `inputs` as an error even though the engine still accepts it.
 

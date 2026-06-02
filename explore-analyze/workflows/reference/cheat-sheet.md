@@ -33,7 +33,7 @@ settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
 
-On 9.4, `inputs:` also sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
+On stack 9.4 and earlier, `inputs:` also sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
 
 ## Triggers [workflows-cheat-triggers]
 
