@@ -80,9 +80,11 @@ For a complete list of all S3 repository settings, refer to [S3 repository setti
 
 Amazon S3 supports a variety of  *storage classes*, each of which offers different operational characteristics. For instance, some classes cost less per byte stored per month, but cost more per request, and other classes may vary in terms of their availability guarantees.
 
-You may specify the storage class that {{es}} uses to store data objects with the `storage_class` repository setting.
+You can specify the storage class that {{es}} uses to store data objects with the `storage_class` repository setting. 
 
-Changing the `storage_class` setting on an existing repository only affects the storage class for newly created objects, resulting in a mixed usage of storage classes.
+{applies_to}`stack: ga 9.5` You can also specify the storage class for objects with the `data_storage_class` and `metadata_storage_class` settings. For {{es}} versions 9.5 and later, we recommended you specify the `data_storage_class` and `metadata_storage_class` settings instead of the `storage_class` setting. To learn about the differences between these settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-repository-settings).
+
+Changing the `storage_class`, `data_storage_class`, or `metadata_storage_class` setting on an existing repository only affects the storage class for newly created objects, resulting in a mixed usage of storage classes.
 
 You may use an S3 Lifecycle Policy to adjust the storage class of existing objects in your repository, but you must not transition objects to an unsupported class such as the Glacier classes, and you must not expire objects. If you use a Glacier storage class, or another unsupported storage class, or object expiry, then you may permanently lose access to your repository contents.
 

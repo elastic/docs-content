@@ -1,10 +1,6 @@
 ---
 applies_to:
-  deployment:
-    self: ga all
-    ess: ga all
-    ece: ga all
-    eck: ga all
+  stack: all
 products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
