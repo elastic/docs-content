@@ -152,6 +152,11 @@ If the workflow was invoked by a parent through `workflow.execute`, the parent r
 
 A common pattern: a platform team maintains a set of `shared--<verb>-<noun>` workflows, each with a clean manual trigger and a documented input and output schema. Product teams then compose those shared workflows into their own domain-specific automation.
 
+The location of `inputs` in the YAML depends on your version. On 9.4 and earlier (and on serverless today), `inputs` sits at the top level of the workflow. On 9.5+, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4, serverless: ga }
 ```yaml
 # Platform team's shared workflow
 name: shared--enrich-alerts
@@ -179,6 +184,39 @@ steps:
       enriched_alerts: "${{ steps.enrich.output }}"
       enrichment_stats: "${{ steps.stats.output }}"
 ```
+:::
+
+:::{applies-item} stack: ga 9.5+
+```yaml
+# Platform team's shared workflow
+name: shared--enrich-alerts
+description: Enrich alerts with threat intel and geo data.
+
+triggers:
+  - type: manual
+    inputs:
+      - name: alerts
+        type: object
+        required: true
+
+outputs:
+  - name: enriched_alerts
+    type: object
+  - name: enrichment_stats
+    type: object
+
+steps:
+  # ...enrichment logic...
+
+  - name: return_result
+    type: workflow.output
+    with:
+      enriched_alerts: "${{ steps.enrich.output }}"
+      enrichment_stats: "${{ steps.stats.output }}"
+```
+:::
+
+::::
 
 ```yaml
 # Security team's workflow that composes it

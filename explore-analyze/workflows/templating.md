@@ -110,8 +110,13 @@ This section covers common patterns for accessing and transforming data in your 
 
 ### Reference inputs [workflows-ref-inputs]
 
-Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are defined at the workflow level and can be provided when the workflow is triggered manually.
+Reference input parameters defined in the workflow using `{{inputs.<input_name>}}`. Inputs are values provided when the workflow is triggered manually.
 
+The location of `inputs` in the YAML depends on your version. On 9.4 and earlier (and on serverless today), `inputs` sits at the top level of the workflow. On 9.5+, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4, serverless: ga }
 ```yaml
 inputs:
   - name: environment
@@ -134,6 +139,33 @@ steps:
         - Environment: {{inputs.environment}}
         - Batch Size: {{inputs.batchSize}}
 ```
+:::
+
+:::{applies-item} stack: ga 9.5+
+```yaml
+triggers:
+  - type: manual
+    inputs:
+      - name: environment
+        type: string
+        required: true
+        default: "staging"
+      - name: batchSize
+        type: number
+        default: 100
+
+steps:
+  - name: log_config
+    type: console
+    with:
+      message: |
+        Running with:
+        - Environment: {{inputs.environment}}
+        - Batch Size: {{inputs.batchSize}}
+```
+:::
+
+::::
 
 ### Reference outputs [workflows-ref-step-outputs]
 
