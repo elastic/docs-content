@@ -29,7 +29,7 @@ Elastic provides several self-managed and Elastic-managed options.
 For simplicity and speed, try out {{serverless-full}}:
 
 ::::{dropdown} Create a serverless project
-:::{include} /deploy-manage/deploy/\_snippets/create-serverless-project-intro.md
+:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
 
 If you're not sure which project type to choose, select the **{{es}}** project type. This project type provides core {{es}} search capabilities along with additional UI tools to help you build search-powered applications faster.
@@ -53,10 +53,10 @@ Get hands-on experience with {{es}} using guided tutorials that walk you through
 - [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
 - [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
 - [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search using embeddings
-  :::::
-  :::::{step} Identify your search goals
-  Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
-  Each approach affects your options for storing and querying your data.
+:::::
+:::::{step} Identify your search goals
+Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
+Each approach affects your options for storing and querying your data.
 
 If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
 
@@ -84,6 +84,7 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 ::::::
 
+
 ## Related resources
 
 Use these resources to learn more about {{es}} or get started in a different way:
@@ -93,3 +94,5 @@ Use these resources to learn more about {{es}} or get started in a different way
 - [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 - [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
+
+
