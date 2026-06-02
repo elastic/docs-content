@@ -11,7 +11,7 @@ products:
 
 # Docker provider [docker-provider]
 
-Provides inventory information from Docker. {{agent}} uses the Docker provider to automatically discover containers and build input configurations.
+Provides inventory information from Docker. {{agent}} uses the Docker provider to automatically discover containers and build input configurations. For information on how container metadata is added to events, refer to [`add_docker_metadata` processor](/reference/fleet/add_docker_metadata-processor.md).
 
 
 ## Provider configuration [_provider_configuration]
