@@ -49,7 +49,7 @@ Some key concepts to understand while working with workflows:
 
 ## Workflow structure [workflow-structure]
 
-Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. The example below uses the 9.5+ structure, where `inputs` is defined under the `manual` trigger. On 9.4 and serverless today, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. The example below uses the 9.5+ and serverless structure, where `inputs` is defined under the `manual` trigger. On 9.4, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
 
 ```yaml
 # ═══════════════════════════════════════════════════════════════

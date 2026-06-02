@@ -43,7 +43,7 @@ The workflow runs on demand with a list of rule IDs:
 
 Inputs make the workflow reusable without editing YAML. Declare both the list of rule IDs and the lookback window in minutes.
 
-This example uses the 9.5+ structure, where `inputs` nests under the `manual` trigger. On 9.4 and serverless today, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
+This example uses the 9.5+ and serverless structure, where `inputs` nests under the `manual` trigger. On 9.4, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
 
 ```yaml
 triggers:

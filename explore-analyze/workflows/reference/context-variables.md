@@ -23,11 +23,11 @@ This page is the canonical reference. For the mental model and the `{{ }}` vs. `
 
 ### `inputs.<name>` [workflows-ctx-inputs]
 
-Values provided at workflow invocation time. The location of the `inputs` block in the YAML depends on your version. On 9.4 and earlier (and on serverless today), `inputs` sits at the top level of the workflow. On 9.5+, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference. The reference form `{{ inputs.<name> }}` is the same in either placement.
+Values provided at workflow invocation time. The location of the `inputs` block in the YAML depends on your version. On 9.4, `inputs` sits at the top level of the workflow. On 9.5+ and serverless, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference. The reference form `{{ inputs.<name> }}` is the same in either placement.
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4, serverless: ga }
+:::{applies-item} stack: ga 9.4
 ```yaml
 inputs:
   - name: service_name
@@ -42,7 +42,7 @@ steps:
 ```
 :::
 
-:::{applies-item} stack: ga 9.5+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 triggers:
   - type: manual

@@ -212,20 +212,19 @@ Beyond the breaking changes, 9.4 adds many capabilities that don't require you t
 - **Expanded AI steps.** `ai.classify` and `ai.summarize` join `ai.prompt` and `ai.agent`. To learn more, refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
 - **Data transformation steps.** 11 `data.*` steps for inline data work: filter, map, aggregate, parse JSON, regex extract, and more. To learn more, refer to [Data action steps](/explore-analyze/workflows/steps/data.md).
 
-## Looking ahead to 9.5: `inputs` schema change [workflows-migrate-inputs-9-5]
+## `inputs` schema change in 9.5 and serverless [workflows-migrate-inputs-9-5]
 
 ```{applies_to}
 stack: ga 9.5+
+serverless: ga
 ```
 
-On 9.5+, `inputs` is defined under the `manual` trigger instead of at the workflow root. The reference form `{{ inputs.<name> }}` is the same in either placement; only the declaration moves.
+On 9.5+ and serverless, `inputs` is defined under the `manual` trigger instead of at the workflow root. The reference form `{{ inputs.<name> }}` is the same in either placement; only the declaration moves.
 
-Existing workflows continue to run on 9.5+ with `inputs` at the root, but new workflows can't be enabled with the root-level form. The {{kib}} editor flags root-level `inputs` as an error on 9.5+ even though the engine still accepts it.
-
-The change is not yet live in serverless.
+Existing workflows continue to run with `inputs` at the root, but new workflows can't be enabled with the root-level form. The {{kib}} editor flags root-level `inputs` as an error even though the engine still accepts it.
 
 ```yaml
-# Old (9.4 — also works on 9.5+ for existing workflows)
+# Old (9.4 — also works on 9.5+ and serverless for existing workflows)
 inputs:
   - name: alert_id
     type: string
@@ -236,7 +235,7 @@ triggers:
 ```
 
 ```yaml
-# New (9.5+)
+# New (9.5+ and serverless)
 triggers:
   - type: manual
     inputs:

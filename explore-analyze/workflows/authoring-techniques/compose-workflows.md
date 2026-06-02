@@ -45,11 +45,11 @@ A child workflow is a unit of code with a public interface. Treat it like one.
 
 Use the `inputs` and `outputs` fields to spell out the contract. The engine validates inputs at invocation and outputs at `workflow.output` time, so callers can rely on shape without guarding against missing keys.
 
-The location of `inputs` in the YAML depends on your version. On 9.4 and earlier (and on serverless today), `inputs` sits at the top level of the workflow. On 9.5+, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+The location of `inputs` in the YAML depends on your version. On 9.4, `inputs` sits at the top level of the workflow. On 9.5+ and serverless, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4, serverless: ga }
+:::{applies-item} stack: ga 9.4
 ```yaml
 name: shared--enrich-alerts
 description: Enrich alerts with threat intel and geo data.
@@ -79,7 +79,7 @@ steps:
 ```
 :::
 
-:::{applies-item} stack: ga 9.5+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
 ```yaml
 name: shared--enrich-alerts
 description: Enrich alerts with threat intel and geo data.
