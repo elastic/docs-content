@@ -1,0 +1,28 @@
+﻿## May 20, 2026 [elastic-release-notes-2026-05-20]
+### Features and enhancements [elastic-2026-05-20-features-enhancements]
+* Add file attachment option to Cases. [#269560](https://github.com/elastic/kibana/pull/269560)
+* Add bulk actions for Attack Discovery schedules. [#267549](https://github.com/elastic/kibana/pull/267549)
+* Preserve metric details flyout state across Discover navigation. [#266718](https://github.com/elastic/kibana/pull/266718) [#235834](https://github.com/elastic/kibana/issues/235834)
+* Expand alert consumer list to include ml and stackAlerts. [#269718](https://github.com/elastic/kibana/pull/269718)
+* Merge Triggers and Steps into a single column in the workflow list. [#269454](https://github.com/elastic/kibana/pull/269454)
+* Add 'unnecessary escaping' warning to Endpoint artifacts. [#268477](https://github.com/elastic/kibana/pull/268477)
+* Move APM service map controls menu to the right of the toggle. [#269705](https://github.com/elastic/kibana/pull/269705) [#269685](https://github.com/elastic/kibana/issues/269685)
+* Improve Discover Metrics telemetry for rows with multiple units. [#269484](https://github.com/elastic/kibana/pull/269484)
+* Add sparkline charts to the Discover table. [#268785](https://github.com/elastic/kibana/pull/268785) [#262503](https://github.com/elastic/kibana/issues/262503)
+* Add "Fix with AI" for ES|QL commands in Discover. [#269455](https://github.com/elastic/kibana/pull/269455)
+* Restore SPARKLINE in the identify patterns recommended query. [#269438](https://github.com/elastic/kibana/pull/269438)
+* Add default repository setting. [#265592](https://github.com/elastic/kibana/pull/265592) [#263954](https://github.com/elastic/kibana/issues/263954) [#263955](https://github.com/elastic/kibana/issues/263955)
+* Add `ignoreGlobalDefault` flag to inference feature config. [#269227](https://github.com/elastic/kibana/pull/269227)
+* Add `secretQueryParams` support to HTTP connector. [#258291](https://github.com/elastic/kibana/pull/258291) [#256491](https://github.com/elastic/kibana/issues/256491)
+
+### Fixes [elastic-2026-05-20-fixes]
+* Fix filters and drilldowns when ES|QL renames a column field. [#268424](https://github.com/elastic/kibana/pull/268424) [#260184](https://github.com/elastic/kibana/issues/260184)
+* Fix custom rank by count operation for terms bucket. [#268620](https://github.com/elastic/kibana/pull/268620) [#265786](https://github.com/elastic/kibana/issues/265786)
+* Fix Elasticsearch search sort validation in workflows. [#269687](https://github.com/elastic/kibana/pull/269687)
+* Fix APM Traces table horizontal scroll on narrow viewports. [#269936](https://github.com/elastic/kibana/pull/269936) [#269668](https://github.com/elastic/kibana/issues/269668)
+* Fix AI rule creation when ES|QL is disabled in a space. [#267247](https://github.com/elastic/kibana/pull/267247) [#266378](https://github.com/elastic/kibana/issues/266378)
+* Fix empty pack details columns for scheduled Osquery queries. [#267894](https://github.com/elastic/kibana/pull/267894)
+* Fix metric chart queries when using a single backing index source. [#266520](https://github.com/elastic/kibana/pull/266520) [#262360](https://github.com/elastic/kibana/issues/262360)
+* Fix missing aria labels on modals and popovers. [#269652](https://github.com/elastic/kibana/pull/269652)
+* Fix ARM ELSER model selection during product doc installation. [#266234](https://github.com/elastic/kibana/pull/266234)
+* Fix rule saves with oversized action message payloads. [#269467](https://github.com/elastic/kibana/pull/269467) [#268982](https://github.com/elastic/kibana/issues/268982)

@@ -11,13 +11,10 @@ products:
 
 # Lens [lens]
 
-**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
+**Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 
-The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
-
-Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
-
-Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+- **Point-and-click**: Configure your visualization interactively by selecting fields from a [data view](/explore-analyze/find-and-organize/data-views.md), choosing aggregations, and setting dimensions and display options. No query writing required. Data views are created automatically when you [upload a file](/manage-data/ingest/upload-data-files.md) or [add sample data](/manage-data/ingest/sample-data.md); otherwise, you need to create one manually.
+- **Query**: Write an [{{esql}}](elasticsearch://reference/query-languages/esql.md) or [PromQL](elasticsearch://reference/query-languages/esql/commands/promql.md) query to retrieve and transform your data, then configure the visualization on top of the result. Best suited for cross-index queries, complex filtering, and custom calculations. Refer to [ES|QL visualizations](esorql.md) for details.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
@@ -44,6 +41,21 @@ With Lens, you can create the following visualization types:
 | [Heat map](/explore-analyze/visualize/charts/heat-map-charts.md) | Reveal density or patterns across two dimensions using color intensity. |
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
+
+## Create visualizations with the API [lens-api]
+
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
+
+Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
+
+:::{note}
+The Visualizations API is in technical preview and may change in future releases.
+:::
 
 ## Create visualizations [create-the-visualization-panel]
 

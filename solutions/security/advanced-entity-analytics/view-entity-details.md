@@ -25,11 +25,11 @@ You can learn more about an entity (host, user, or service) from the entity deta
 
 The entity details flyout includes the following sections:
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Flyout header, which displays key entity information and allows you to assign asset criticality.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Entity risk summary](#entity-risk-summary), which displays entity risk data and inputs.
-* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
+* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
 * {applies_to}`stack: removed =9.4, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
@@ -80,25 +80,25 @@ The risk summary visualization shows the entity risk score and risk level. Hover
 
 The risk summary table shows the category, score, and number of risk inputs that determine the entity risk score. Hover over the table to display the **Inspect** button, which allows you to inspect the table's queries.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
 To expand the entity risk summary section, click **View risk contributions**. The **Risk contributions** tab displays additional details about the entity's risk inputs:
 
 * Non-alert risk inputs and their contribution scores, including: 
   * Asset criticality level
-  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` Watchlist membership 
+  * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
   * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), each risk input row includes an **Entity ID** column identifying which group member contributed that input.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), each risk input row includes an **Entity ID** column identifying which group member contributed that input.
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: planned` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` If you have [AI Assistant](/solutions/security/ai/ai-assistant.md) set up, you can also ask it to explain how the risk inputs contributed to the entity's risk score and recommend next steps.
 
 ### Visualizations [visualizations]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: planned
+serverless: preview
 ```
 
 ::::{admonition} Requirements
@@ -116,7 +116,7 @@ The **Visualizations** section shows a collapsible graph preview centered on the
 ### Resolution [resolution]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: planned
+serverless: ga
 ```
 
 The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open the tab, which displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
