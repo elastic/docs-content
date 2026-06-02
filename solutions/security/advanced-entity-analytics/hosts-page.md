@@ -1,4 +1,5 @@
 ---
+description: The Hosts page provides an overview of all hosts and host-related security events, with data tables, KPI charts, and interactive widgets.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/hosts-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-hosts-overview.html
@@ -54,11 +55,11 @@ The tables within the **Events** and **Sessions** tabs include inline actions an
 
 ## Host details page [host-details-page]
 
-A host’s details page displays all relevant information for the selected host. To view a host’s details page, click its **Host name** link in the **All hosts** table.
+A host's details page displays all relevant information for the selected host. To view a host's details page, click its **Host name** link in the **All hosts** table.
 
 The host details page includes the following sections:
 
-* **Asset Criticality**: This section displays the host’s current [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md).
+* **Asset Criticality**: This section displays the host's current [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md).
 * **Summary**: Details such as the host ID, when the host was first and last seen, the associated IP addresses, and associated operating system. If the host risk score feature is enabled, this section also displays host risk score data.
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).
 * **Data tables**: The same data tables as on the main Hosts page, except with values for the selected host instead of all hosts.
@@ -68,3 +69,7 @@ The host details page includes the following sections:
 :screenshot:
 :::
 
+
+## Navigate to host investigation tools [host-nav-tools]
+
+In order to utilize the investigation tools, go to **Hosts** > **All hosts** > **Sessions**. Select a session and click **Open in Session View** to begin investigating. Please note that this feature is only available for Linux hosts.
