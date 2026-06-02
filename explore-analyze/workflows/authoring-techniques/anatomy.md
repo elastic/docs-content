@@ -19,6 +19,11 @@ A workflow definition has eleven top-level fields. Most of them are optional. Th
 
 ## The complete shape [workflows-anatomy-shape]
 
+The `inputs` field can sit at the top of the workflow or inside a `manual` trigger, depending on your version. Use the tabs to see each form.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4, serverless: ga }
 ```yaml
 name: slo-breach-response            # identity
 description: Investigate and mitigate SLO breaches.
@@ -30,7 +35,7 @@ tags:                                # for filtering and organization
 version: "1"                         # schema version
 
 triggers:                            # when it runs
-  - type: alert
+  - type: manual
 
 inputs:                              # runtime parameters (optional)
   - name: service_name
@@ -55,6 +60,47 @@ steps:                               # what it does
     with:
       query: "..."
 ```
+:::
+
+:::{applies-item} stack: ga 9.5+
+```yaml
+name: slo-breach-response            # identity
+description: Investigate and mitigate SLO breaches.
+enabled: true                        # activation
+tags:                                # for filtering and organization
+  - observability
+  - slo
+
+version: "1"                         # schema version
+
+triggers:                            # when it runs
+  - type: manual
+    inputs:                          # runtime parameters (optional)
+      - name: service_name
+        type: string
+        required: true
+
+consts:                              # reusable constants (optional)
+  severity_threshold: 70
+
+outputs:                             # declared output schema (optional)
+  - name: result
+    type: string
+
+settings:                            # global behavior (optional)
+  timeout: "5m"
+  concurrency:
+    strategy: drop
+
+steps:                               # what it does
+  - name: investigate
+    type: elasticsearch.esql.query
+    with:
+      query: "..."
+```
+:::
+
+::::
 
 ## Field reference [workflows-anatomy-fields]
 
@@ -66,7 +112,7 @@ steps:                               # what it does
 | `tags` | `string[]` | No | Classification tags. Used for filtering in the list UI and for organizational conventions. |
 | `version` | string | No | Schema version. Defaults to `"1"`. The engine uses this for forward compatibility; leave it unset unless instructed otherwise. |
 | `triggers` | `Trigger[]` | Yes | One or more triggers that start the workflow. Refer to [Triggers](/explore-analyze/workflows/triggers.md). |
-| `inputs` | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. |
+| `inputs` | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. On 9.5+, defined under the `manual` trigger. Refer to [`inputs`](#workflows-anatomy-inputs). |
 | `consts` | object | No | Constant values reusable as `{{ consts.<name> }}`. Use for thresholds, index names, or other values you want to name. |
 | `outputs` | object or `Output[]` | No | Declared output schema. Required for workflows invoked through [composition](/explore-analyze/workflows/steps/composition.md) — the parent needs to know the child's output shape. |
 | `settings` | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
@@ -139,6 +185,11 @@ That workflow can be run on demand and also runs hourly automatically. Refer to 
 
 `inputs` declare values the workflow expects at invocation time. They're what the user types in the **Run** modal, or what an API caller provides in the request body.
 
+The location of `inputs` in the YAML depends on your version. On 9.4 and earlier (and on serverless today), `inputs` sits at the top level of the workflow. On 9.5+, `inputs` sits inside the `manual` trigger. Existing workflows authored with the top-level form continue to run on 9.5+, but new workflows can't be enabled with the top-level form.
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.4, serverless: ga }
 ```yaml
 inputs:
   - name: alert_id
@@ -152,10 +203,31 @@ inputs:
     type: boolean
     default: false
 ```
+:::
 
-Inside the workflow, reference them as `{{ inputs.alert_id }}`.
+:::{applies-item} stack: ga 9.5+
+```yaml
+triggers:
+  - type: manual
+    inputs:
+      - name: alert_id
+        type: string
+        required: true
+      - name: severity
+        type: choice
+        options: [low, medium, high, critical]
+        default: medium
+      - name: dry_run
+        type: boolean
+        default: false
+```
+:::
 
-Supported input types are `string`, `number`, `boolean`, `choice` (with an `options` array), and `object`. `required` defaults to `false`; provide a `default` to give optional inputs a fallback value.
+::::
+
+Inside the workflow, reference them as `{{ inputs.alert_id }}` (the reference form is the same in either placement).
+
+Supported input types are `string`, `number`, `boolean`, `choice` (with an `options` array), and `array` (with optional `minItems` and `maxItems`). `required` defaults to `false`; provide a `default` to give optional inputs a fallback value. The legacy array-of-fields form documented here is being migrated to a JSON Schema form; both are accepted today.
 
 :::{note}
 The trigger defines *when* a workflow runs. Inputs define *what values* it accepts at runtime. A manual-triggered workflow typically has explicit inputs the user fills in. An alert-triggered workflow usually has no inputs, because the alert payload arrives as `event` automatically. You can still add inputs if you need values the alert payload doesn't carry.
@@ -246,13 +318,16 @@ When you invoke a workflow — manually, on schedule, or through a trigger — t
 |---|---|
 | `pending` | The execution is queued and waiting to start. |
 | `running` | At least one step is executing. |
-| `waiting` | The workflow has paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) or [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) step. Returns to `running` when the timer fires or the input arrives. |
+| `waiting` | The workflow has paused on a [`wait`](/explore-analyze/workflows/steps/wait.md) step. Returns to `running` when the timer fires. |
+| `waiting_for_input` | The workflow has paused on a [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md) step. Returns to `running` when the input arrives. |
+| `waiting_for_child` | The workflow has paused waiting for a child workflow invoked through [`workflow.execute`](/explore-analyze/workflows/steps/composition.md) to complete. |
 | `completed` | Terminal. The workflow finished successfully. |
 | `failed` | Terminal. A step failed and `on-failure` did not recover. |
-| `cancelled` | Terminal. The operator cancelled the run, or the timeout or concurrency strategy stopped it. |
+| `cancelled` | Terminal. The operator cancelled the run, or the concurrency strategy stopped it. |
+| `timed_out` | Terminal. The workflow exceeded its `settings.timeout`. |
 | `skipped` | Terminal. The concurrency `drop` strategy skipped this run because another execution was already in flight. |
 
-Four states are terminal: `completed`, `failed`, `cancelled`, and `skipped`. Every terminal execution reports its usage to the consumption metering system. Refer to the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md) for how concurrency and execution metering interact.
+Five states are terminal: `completed`, `failed`, `cancelled`, `timed_out`, and `skipped`. Every terminal execution reports its usage to the consumption metering system. Refer to the [Workflow settings page](/explore-analyze/workflows/authoring-techniques/settings.md) for how concurrency and execution metering interact.
 
 ## Related [workflows-anatomy-related]
 
