@@ -1,8 +1,8 @@
 ---
 navigation_title: Notifications and actions
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "How {{alerting-v2-system}} action policies route alert episodes to notifications and actions."

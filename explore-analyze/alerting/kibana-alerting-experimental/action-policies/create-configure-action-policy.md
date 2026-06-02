@@ -1,8 +1,8 @@
 ---
 navigation_title: Create an action policy
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Create action policies in the {{alerting-v2-system}}, configure match conditions, Notify per, Frequency, and workflow destinations."

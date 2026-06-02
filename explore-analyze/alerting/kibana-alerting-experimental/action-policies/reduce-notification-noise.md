@@ -1,8 +1,8 @@
 ---
 navigation_title: Reduce notification noise
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "How to reduce notification noise in the {{alerting-v2-system}} using acknowledge, snooze, and deactivate to silence alert episodes."
@@ -31,6 +31,10 @@ Snooze applies at the group level (by `group_hash`), not per individual alert ep
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 For instructions on snoozing and unsnoozing single or multiple episodes, refer to [View and manage alerts](../alerts/view-and-manage-alerts.md#snooze-episode).
 -->
+
+:::{note}
+Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-and-snooze). When you snooze a policy, the dispatch mechanism is paused and every series the policy would process is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy would have handled it. Use policy snooze when you want to pause all notifications from a given policy, for example, during planned maintenance on a destination system.
+:::
 
 ## Related pages
 

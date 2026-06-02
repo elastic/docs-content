@@ -1,8 +1,8 @@
 ---
 navigation_title: Manage action policies
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "View policy details, enable, disable, snooze, review execution history, and rotate API keys for action policies in the {{alerting-v2-system}}."
@@ -32,6 +32,10 @@ To investigate delivery issues or audit which policies ran for an alert episode,
 ## Enable and snooze
 
 You can disable a policy so it is not evaluated for new alert episodes. You can snooze a policy for a defined window so that it does not dispatch notifications during that period. Policies that are not enabled or are snoozed are skipped when the dispatcher evaluates policies.
+
+:::{note}
+Snoozing a policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze a policy, the dispatch mechanism is paused and every series the policy would process is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy would have handled it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same policy.
+:::
 
 ### Maintenance windows [maintenance-windows]
 
