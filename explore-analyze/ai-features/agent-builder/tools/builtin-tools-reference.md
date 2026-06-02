@@ -99,20 +99,6 @@ The following tools manage file attachments in conversations:
 :   Shows the differences between versions of a file attachment.
 -->
 
-## Dashboard tools
-```{applies_to}
-stack: preview 9.4+
-serverless: preview
-```
-
-Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
-
-`dashboard.create_dashboard`
-:   Creates a dashboard with specified title, description, panels, and markdown summary.
-
-`dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications.
-
 ## Streams tools
 ```{applies_to}
 stack: ga 9.4+
@@ -246,7 +232,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
+Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
