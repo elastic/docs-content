@@ -13,7 +13,7 @@ products:
 
 # Create a follower index to replicate a specific index [ccr-getting-started-follower-index]
 
-When you create a follower index in your local cluster, you reference the remote cluster and the leader index in that remote cluster.
+When you create a follower index in your local cluster, you reference the remote cluster and the leader index.
 
 To create a follower index in {{kib}}:
 
