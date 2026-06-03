@@ -26,5 +26,9 @@ The option accepts a limit in MB:
 ```
 
 ::::{note}
-In orchestrated environments like {{ech}}, {{ece}}, or {{eck}}, you should not override Kibana’s default memory limit using `--max-old-space-size`. Instead, set the desired {{kib}} memory size at the deployment level. This automatically adjusts the container’s memory allocation and ensures more consistent and predictable performance.
+Starting in {{kib}} version 9.4.0, containers set the default Node.js heap to 75% of available memory, up to a maximum of 4096 MB. Previously, this was set to 50% regardless of the environment.
+
+In orchestrated environments like {{ech}}, {{ece}}, you should not override Kibana’s default memory limit using `--max-old-space-size`. Instead, set the desired {{kib}} memory size at the deployment level. This automatically adjusts the container’s memory allocation and ensures more consistent and predictable performance.
+
+In {{eck}}, the {{kib}} memory size is not automatically adjusted, but the default memory size logic applies. You can override the default memory settings if they do not meet your requirements. Review [ECK - Manage compute resources](../deploy/cloud-on-k8s/manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more guidance.
 ::::
