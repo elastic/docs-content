@@ -70,7 +70,7 @@ Use this checklist when reviewing PRs or auditing existing pages. These are comm
 - [ ] **"Self-managed" used as a grouping label.** The term "self-managed" is sometimes used as a catch-all for anything not hosted on {{ecloud}}, including ECK and ECE. ECK, ECE, and self-managed are distinct deployment types with meaningful differences, and tying them together obscures those distinctions. Always refer to each deployment type by name.
 
 :::{admonition} Use an incremental, iterative approach
-Sometimes, there's not enough time to rework a tutorial to make it deployment-agnostic. Acknowledging the limitation and providing a way forward is a good first step. Open an issue or PR to track a longer-term fix.
+Sometimes, there's not enough time to rework a tutorial to make it deployment-agnostic. Acknowledging the limitation and providing a way forward is a good first step. Open an issue to track a longer-term fix.
 :::
 
 ## Resources
