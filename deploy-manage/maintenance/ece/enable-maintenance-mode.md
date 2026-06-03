@@ -33,7 +33,7 @@ If you need the existing instances to stop routing requests, refer to the [stop 
 
 ## Controller maintenance mode
 
-Placing a controller (also known as "coordinator") in maintenance mode stops it from accepting new deployment configuration changes. Any deployment changes that are in progress continue processing. New deployment change requests get routed to other controllers, if available.
+Placing a controller (also known as a "coordinator") in maintenance mode stops it from accepting new deployment configuration changes. Any deployment changes that are in progress continue processing. New deployment change requests get routed to other controllers, if available.
 
 To put a controller into maintenance mode:
 
