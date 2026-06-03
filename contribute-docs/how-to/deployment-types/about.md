@@ -91,7 +91,7 @@ Highly orchestrated deployments of the versioned stack, such as ECH and ECE, and
 |---|---|---|
 | Self-managed | All components (manual install) | Versioned stack |
 | ECH | {{es}}, {{kib}}, {{integrations-server}} ({{fleet-server}} + {{apm-server}}), agentless integrations | Versioned stack |
-| ECE | Same as ECH | Versioned stack |
+| ECE | {{es}}, {{kib}}, {{integrations-server}} ({{fleet-server}} + {{apm-server}}), agentless integrations | Versioned stack |
 | ECK | All components | Versioned stack |
 | {{serverless-full}} | {{es}}, {{kib}}, {{fleet-server}} ({{serverless-short}} versions) | {{serverless-short}} |
 
