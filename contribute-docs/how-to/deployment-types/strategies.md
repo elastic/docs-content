@@ -16,7 +16,7 @@ When an action or activity differs depending on deployment type, the right appro
 | Activity is atomic and required or performed in many other docs | Create a dedicated doc that covers the activity for all deployment types. Refer to that doc from other docs that need the activity. | • [](/deploy-manage/stack-settings.md)<br>• [](/deploy-manage/security/secure-settings.md) |
 | Longer process that differs more by deployment type | Evaluate the trade-off between fitting everything into a single document and creating one document for each deployment type. Tools like [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) tabs can help keep variation in one doc. See [Patterns by how a capability differs across deployment types](#patterns-by-how-a-capability-differs-across-deployment-types) for guidance. | • [](/deploy-manage/remote-clusters.md)<br>• [](/deploy-manage/tools/snapshot-and-restore.md) |
 | Guide exists but only for some deployment types | Evaluate whether the scope is intentional (meets a business need) or a gap. If a gap, expand the doc to cover other deployment types. If it must stay scoped, tell the user why and offer alternatives or escape hatches. | [](/manage-data/migrate.md), currently scoped to ECH and ECE |
-| Pathway or process only exists for one or some deployment types | Break the content out into a labelable chunk: a bullet, a callout, or a section. Indicate applicability with [`applies_to`](/contribute-docs/how-to/cumulative-docs/index.md) tags. | [`elasticsearch-croneval`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-croneval.md), an {{es}} CLI utility for cron expression validation, only available on self-managed |
+| Pathway or process only exists for one or some deployment types | Break the content into elements you can label: bullets, callouts, or sections. Indicate applicability with [`applies_to`](/contribute-docs/how-to/cumulative-docs/index.md) tags. | [`elasticsearch-croneval`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-croneval.md), an {{es}} CLI utility for cron expression validation, only available on self-managed |
 
 ### Patterns by how a capability differs across deployment types
 
@@ -34,7 +34,7 @@ You have a lot of flexibility when deciding how to shape content that varies by 
 
 ## Examples
 
-The following are real-world examples of how we chose to address varying processes across deployment types.
+The following are real-world examples of how we address varying processes across deployment types.
 
 :::{dropdown} Access {{kib}}
 If we include all deployment-type instructions in every doc that asks the reader to open {{kib}}, the docs feel repetitive and become longer than they need to be without any benefit to the reader.
@@ -69,8 +69,8 @@ Use this checklist when reviewing PRs or auditing existing pages. These are comm
 - [ ] **A missing feature on some deployment types is silently omitted.** A page covers a feature available on several deployment types but doesn't acknowledge that it's removed or replaced on others (most often {{serverless-short}}: for example, {{ilm-init}}, {{watcher}}, custom plugins, audit logging). Note the absence and link to the closest alternative.
 - [ ] **"Self-managed" used as a grouping label.** The term "self-managed" is sometimes used as a catch-all for anything not hosted on {{ecloud}}, including ECK and ECE. ECK, ECE, and self-managed are distinct deployment types with meaningful differences, and tying them together obscures those distinctions. Always refer to each deployment type by name.
 
-:::{admonition} It's a marathon, not a sprint
-Sometimes, we don't have time to rework a tutorial to make it deployment-agnostic. Acknowledging the limitation and providing a way forward is a good first step. Open an issue or PR to track a longer-term fix.
+:::{admonition} Use an incremental, iterative approach
+Sometimes, there's not enough time to rework a tutorial to make it deployment-agnostic. Acknowledging the limitation and providing a way forward is a good first step. Open an issue or PR to track a longer-term fix.
 :::
 
 ## Resources

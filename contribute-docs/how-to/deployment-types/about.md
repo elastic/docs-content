@@ -11,9 +11,9 @@ Deployment types define the supported ways to provision and run the {{stack}} ac
 - Some deployment types automate parts of the platform and {{stack}} lifecycle.
 - Not all deployment types allow deploying every stack component.
 
-This page provides a lightweight overview of the deployment types, how they relate to {{stack}} components and flavors, and a primer on where the same task can require different steps on different deployment types.
+This page provides an overview of the available deployment types, how they relate to {{stack}} components and flavors, and a primer on where the same task can require different steps on different deployment types.
 
-## The deployment types
+## Deployment types
 
 The supported deployment types differ by where the {{stack}} runs and how much of the platform Elastic operates.
 
@@ -21,9 +21,9 @@ The supported deployment types differ by where the {{stack}} runs and how much o
 |---|---|
 | Self-managed | On your own premises, hardware, VMs, or cloud VMs with no orchestration |
 | {{ech}} (ECH) | On {{ecloud}} (SaaS, platform handled by Elastic) |
-| {{serverless-full}} | On {{ecloud}}, fully managed (platform and stack lifecycle handled by Elastic) |
 | {{ece}} (ECE) | Self-managed orchestrator similar to ECH, but owned by you |
 | {{eck}} (ECK) | On {{k8s}} |
+| {{serverless-full}} | On {{ecloud}}, fully managed (platform and stack lifecycle handled by Elastic) |
 
 For a user-facing overview, refer to [](/get-started/deployment-options.md). For the full user-facing deployment documentation, refer to [](/deploy-manage/index.md).
 
@@ -43,17 +43,17 @@ Elastic's SaaS offering: Elastic operates the platform, users own their deployme
 
 ECH is not a fully managed service. Users retain significant responsibility for their deployment.
 
-ECH is hosted on {{ecloud}}, which is a common platform that it shares with {{serverless-short}} and certain services offered through [cloud connect](/deploy-manage/cloud-connect.md). This means that some configurations can be managed centrally, and then shared between ECH deployments and {{serverless-short}} projects. Common areas include, but are not limited to, user management, network security, and billing.
+ECH is hosted on {{ecloud}}, which is a common platform that it shares with {{serverless-short}} and certain services offered through [Cloud Connect](/deploy-manage/cloud-connect.md). This means that some configurations can be managed centrally, and then shared across ECH deployments and {{serverless-short}} projects. Common areas include, but are not limited to, user management, network security, and billing.
 :::
 
 :::{dropdown} {{ece}} (ECE)
 The self-managed version of the ECH platform, built on the same software. ECE lets organizations offer an ECH-like experience on their own infrastructure.
 
-Not all ECH features are available in ECE: plugins, bundles, private links, and agentless integrations differ or are ECH-only. Unlike ECH, where the platform layer is Elastic SRE's responsibility and isn't documented, ECE platform administration is the customer's responsibility and is fully documented.
+Not all ECH features are available in ECE: plugins, bundles, private links, and agentless integrations differ or are ECH-only. Unlike ECH, where the platform layer is Elastic SREs' responsibility and isn't documented, ECE platform administration is the customer's responsibility and is fully documented.
 :::
 
 :::{dropdown} {{eck}} (ECK)
-A self-managed orchestrator that deploys {{stack}} components on {{k8s}}, with no platform UI similar to ECH or ECE. There are almost no restrictions on configuration flexibility, though mechanisms are adapted to {{k8s}}: files are added through volumes and volume mounts; plugins are added through init containers.
+A self-managed orchestrator that deploys {{stack}} components on {{k8s}}, with no platform UI (like the ones provided by ECH or ECE). There are almost no restrictions on configuration flexibility, though mechanisms are adapted to {{k8s}}: files are added through volumes and volume mounts; plugins are added through init containers.
 
 Connectivity, authentication, and authorization between components are applied automatically by the operator but can be customized.
 :::
@@ -66,9 +66,9 @@ Compared to ECH orchestration:
 * Some things are **automated / managed**: scaling, server security
 * Some things are **opinionated**: cross project user management only
 * Some things are **limited**: no custom plugins or bundles
-* Some things are **not yet available** (but planned): no user-controlled snapshot/restore, BYOK (++)
+* Some things are **not yet available** (but planned): no user-controlled snapshot/restore, BYOK, etc.
 
-{{serverless-short}} is hosted on {{ecloud}}, which is a common platform that it shares with ECH and certain services offered through [cloud connect](/deploy-manage/cloud-connect.md). This means that some configurations can be managed centrally, and then shared between ECH deployments and {{serverless-short}} projects. Common areas include, but are not limited to, user management, network security, and billing.
+{{serverless-short}} is hosted on {{ecloud}}, which is a common platform that it shares with ECH and certain services offered through [Cloud Connect](/deploy-manage/cloud-connect.md). This means that some configurations can be managed centrally, and then shared across ECH deployments and {{serverless-short}} projects. Common areas include, but are not limited to, user management, network security, and billing.
 :::
 
 :::{include} /contribute-docs/_snippets/self-managed-naming.md
