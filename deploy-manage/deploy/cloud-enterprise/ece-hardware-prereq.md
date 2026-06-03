@@ -33,7 +33,7 @@ ECE installations with **spinning disks** are not supported when you run allocat
 | --- | --- | --- | --- | --- |
 | Minimum to install | 8 GB RAM | 8 GB RAM | 8 GB RAM | 8 GB RAM<br> |
 | Minimum recommended | 16 GB RAM | 8 GB RAM | 8 GB RAM | 128 GB to 256 GB RAM (1)<br> |
-| **Small deployment** (2) | 32 GB RAM | 32 GB RAM | 16 GB RAM | 128 GB RAM<br> |
+| **Small deployment**^1^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 128 GB RAM<br> |
 | **Medium deployment** (2) | 32 GB RAM | 32 GB RAM | 16 GB RAM | 256 GB RAM<br> |
 | **Large deployment** (3) | 128 GB RAM | 128 GB RAM | 16 GB RAM | 256 GB RAM<br> |
 
