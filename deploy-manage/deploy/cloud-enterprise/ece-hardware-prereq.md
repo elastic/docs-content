@@ -31,7 +31,7 @@ ECE installations with **spinning disks** are not supported when you run allocat
 
 | **Memory** | Coordinators | Directors | Proxies | Allocators |
 | --- | --- | --- | --- | --- |
-| Minimum to install | 8 GB RAM | 8 GB RAM | 8 GB RAM | 8 GB RAM<br> |
+| Minimum to install | 8 GB RAM | 8 GB RAM | 8 GB RAM | 8 GB RAM |
 | Minimum recommended | 16 GB RAM | 8 GB RAM | 8 GB RAM | 128 GB to 256 GB RAM^1^ |
 | **Small deployment**^2^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 128 GB RAM |
 | **Medium deployment**^2^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 256 GB RAM |
@@ -49,11 +49,11 @@ The size of your ECE deployment has a bearing on the JVM heap sizes that you sho
 | **Storage** | Coordinators | Directors | Proxies | Allocators |
 | --- | --- | --- | --- | --- |
 | Minimum to install | 10 GB | 10 GB | 15 GB | 10 GB |
-| Minimum recommended | 1:4 RAM-to-storage ratio (1) | 1:4 RAM-to-storage ratio (1) | 1:4 RAM-to-storage ratio (1) | Enough storage to support the RAM-to-storage ratio (2) |
+| Minimum recommended | 1:4 RAM-to-storage ratio^1^ | 1:4 RAM-to-storage ratio^1^ | 1:4 RAM-to-storage ratio^1^ | Enough storage to support the RAM-to-storage ratio^2^ |
 
-1. Control-plane management services usually require about 1:4 RAM-to-storage ratio, this may vary.
+^1^ Control-plane management services usually require about 1:4 RAM-to-storage ratio, this may vary.
 
-2. For example, if you use a host with 256 GB of RAM and the default ratio of 1:32, your host must provide 8192 GB of disk space.
+^2^ For example, if you use a host with 256 GB of RAM and the default ratio of 1:32, your host must provide 8192 GB of disk space.
 
 
 ## SSD storage [ece-ssd]
