@@ -32,16 +32,14 @@ ECE installations with **spinning disks** are not supported when you run allocat
 | **Memory** | Coordinators | Directors | Proxies | Allocators |
 | --- | --- | --- | --- | --- |
 | Minimum to install | 8 GB RAM | 8 GB RAM | 8 GB RAM | 8 GB RAM<br> |
-| Minimum recommended | 16 GB RAM | 8 GB RAM | 8 GB RAM | 128 GB to 256 GB RAM (1)<br> |
-| **Small deployment**^1^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 128 GB RAM<br> |
-| **Medium deployment** (2) | 32 GB RAM | 32 GB RAM | 16 GB RAM | 256 GB RAM<br> |
-| **Large deployment** (3) | 128 GB RAM | 128 GB RAM | 16 GB RAM | 256 GB RAM<br> |
+| Minimum recommended | 16 GB RAM | 8 GB RAM | 8 GB RAM | 128 GB to 256 GB RAM^1^ |
+| **Small deployment**^2^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 128 GB RAM |
+| **Medium deployment**^2^ | 32 GB RAM | 32 GB RAM | 16 GB RAM | 256 GB RAM |
+| **Large deployment**^2^ | 128 GB RAM | 128 GB RAM | 16 GB RAM | 256 GB RAM |
 
-1. Allocators must be sized to support your {{es}} clusters and {{kib}} instances. We recommend host machines that provide between 128 GB and 256 GB of memory. While smaller hosts might not pack larger {{es}} clusters and {{kib}} instances as efficiently, larger hosts might provide fewer CPU resources per GB of RAM on average. For example, running 64 * 2GB nodes on a 128GB host with 16 vCPUs means that each node will get 2/128 of the total CPU time. This is 1/4 core on average, and might not be sufficient. We recommend inspecting both what is the expected number and size of the nodes you plan to run on your hosts in order to understand which hardware will work best in your environment.
+^1^ Allocators must be sized to support your {{es}} clusters and {{kib}} instances. We recommend host machines that provide between 128 GB and 256 GB of memory. While smaller hosts might not pack larger {{es}} clusters and {{kib}} instances as efficiently, larger hosts might provide fewer CPU resources per GB of RAM on average. For example, running 64 * 2GB nodes on a 128GB host with 16 vCPUs means that each node will get 2/128 of the total CPU time. This is 1/4 core on average, and might not be sufficient. We recommend inspecting both what is the expected number and size of the nodes you plan to run on your hosts in order to understand which hardware will work best in your environment.
 
-2. For high availability, requires three hosts each of the capacities indicated, spread across three availability zones.
-
-3. For high availability, requires three hosts each of the capacities indicated (except for allocators), spread across three availability zones. For allocators, requires three or more hosts of the capacity indicated, spread across three availability zones.
+^2^ For [high availability](/deploy-manage/deploy/cloud-enterprise/ece-ha.md), deploy at least three hosts of the capacities indicated, spread across three availability zones. Refer to [Identify the deployment scenario](/deploy-manage/deploy/cloud-enterprise/identify-deployment-scenario.md) for the recommended host layouts and role distribution.
 
 The size of your ECE deployment has a bearing on the JVM heap sizes that you should specify during installation. To learn more, check [JVM Heap Sizes](ece-jvm.md).
 
