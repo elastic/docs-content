@@ -14,13 +14,9 @@ products:
 
 # Workflows [workflows-overview]
 
-:::{admonition} Welcome to the Elastic workflow docs! 
-If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
-:::
-
-## What are workflows [workflows-what]
-
 A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
+
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
 
 ## Why use workflows [workflows-why]
 
@@ -33,11 +29,7 @@ Workflows address common operational challenges, such as:
 * **Manual, repetitive work**: Automate routine tasks consistently.
 * **Tool fragmentation**: Eliminate the need to add on external automation tools.
 
-Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes.
-
-## Who should use workflows [workflows-who]
-
-Workflows are for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
+Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes. They're for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
 
 ## Key concepts [workflows-concepts]
 

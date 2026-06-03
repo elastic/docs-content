@@ -21,7 +21,7 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 
 ## I want to… [workflows-choose-intent]
 
-### …query or modify {{es}} data [workflows-choose-elasticsearch]
+### Query or modify {{es}} data [workflows-choose-elasticsearch]
 
 | Intent | Step |
 |---|---|
@@ -33,7 +33,7 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 | Create, delete, or check an index | [`elasticsearch.indices.create`](/explore-analyze/workflows/steps/elasticsearch.md), [`elasticsearch.indices.delete`](/explore-analyze/workflows/steps/elasticsearch.md), [`elasticsearch.indices.exists`](/explore-analyze/workflows/steps/elasticsearch.md) |
 | Call an {{es}} API not listed above | [`elasticsearch.request`](/explore-analyze/workflows/steps/elasticsearch.md) |
 
-### …work with cases [workflows-choose-cases]
+### Work with cases [workflows-choose-cases]
 
 | Intent | Step |
 |---|---|
@@ -47,14 +47,14 @@ For an alphabetical catalog of every step type, refer to the [Step type index](/
 
 The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.updateCase`, `kibana.addCaseComment`) are deprecated. Use the `cases.*` replacements. Refer to [Migrate workflows from 9.3 to 9.4](/explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md).
 
-### …manage detection alerts [workflows-choose-alerts]
+### Manage detection alerts [workflows-choose-alerts]
 
 | Intent | Step |
 |---|---|
 | Change alert status (`open`, `closed`, `acknowledged`, `in-progress`) | [`kibana.SetAlertsStatus`](/explore-analyze/workflows/steps/kibana.md) (PascalCase) |
 | Add or remove tags on alerts | [`kibana.SetAlertTags`](/explore-analyze/workflows/steps/kibana.md) (PascalCase) |
 
-### …call an external system [workflows-choose-external]
+### Call an external system [workflows-choose-external]
 
 | Intent | Step |
 |---|---|
@@ -62,7 +62,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | No dedicated connector, credentials matter | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) with a configured HTTP connector for secrets storage. |
 | No dedicated connector, quick one-off | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) without a `connector-id`. |
 
-### …branch or loop [workflows-choose-flow-control]
+### Branch or loop [workflows-choose-flow-control]
 
 | Intent | Step |
 |---|---|
@@ -74,14 +74,14 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Exit or skip a loop iteration | [`loop.break`](/explore-analyze/workflows/steps/loop-break.md), [`loop.continue`](/explore-analyze/workflows/steps/loop-continue.md) |
 | Small conditional on a single step | Step-level `if:` field. Refer to the [Steps overview](/explore-analyze/workflows/steps.md). |
 
-### …pause [workflows-choose-pause]
+### Pause [workflows-choose-pause]
 
 | Intent | Step |
 |---|---|
 | Fixed-duration pause | [`wait`](/explore-analyze/workflows/steps/wait.md) |
 | Pause for human input | [`waitForInput`](/explore-analyze/workflows/steps/wait-for-input.md). Refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md). |
 
-### …transform data between steps [workflows-choose-transform]
+### Transform data between steps [workflows-choose-transform]
 
 | Intent | Step |
 |---|---|
@@ -96,7 +96,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Extract or replace through regex | [`data.regexExtract`](/explore-analyze/workflows/steps/data.md#data-regexextract), [`data.regexReplace`](/explore-analyze/workflows/steps/data.md#data-regexreplace) |
 | A small inline transform | [Liquid templating](/explore-analyze/workflows/templating.md), no step needed |
 
-### …call an AI model [workflows-choose-ai]
+### Call an AI model [workflows-choose-ai]
 
 | Intent | Step |
 |---|---|
@@ -105,7 +105,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Summarize content | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) |
 | Invoke an {{agent-builder}} agent | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) |
 
-### …call another workflow [workflows-choose-composition]
+### Call another workflow [workflows-choose-composition]
 
 | Intent | Step |
 |---|---|
@@ -114,7 +114,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Emit outputs from a child workflow | [`workflow.output`](/explore-analyze/workflows/steps/composition.md) {applies_to}`stack: preview 9.4+` |
 | Explicitly terminate a workflow as failed | [`workflow.fail`](/explore-analyze/workflows/steps/composition.md) {applies_to}`stack: preview 9.4+` |
 
-### …log or debug [workflows-choose-debug]
+### Log or debug [workflows-choose-debug]
 
 | Intent | Step |
 |---|---|

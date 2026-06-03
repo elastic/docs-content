@@ -17,7 +17,7 @@ products:
 
 A workflow definition has eleven top-level fields. Most of them are optional. This page is the reference for all of them.
 
-## The complete shape [workflows-anatomy-shape]
+## The complete workflow shape [workflows-anatomy-shape]
 
 The `inputs` field can sit at the top of the workflow or inside a `manual` trigger, depending on your version. Use the tabs to see each form.
 
@@ -106,17 +106,17 @@ steps:                               # what it does
 
 | Field | Type | Required | Purpose |
 |---|---|---|---|
-| `name` | string | Yes | Unique name for the workflow. Appears in the UI and identifies the workflow programmatically. |
-| `description` | string | No | Short description shown in the workflow list. |
-| `enabled` | boolean | No | Whether the workflow is active. Defaults to `true`. Set to `false` to park a workflow without deleting it. |
-| `tags` | `string[]` | No | Classification tags. Used for filtering in the list UI and for organizational conventions. |
-| `version` | string | No | Schema version. Defaults to `"1"`. The engine uses this for forward compatibility; leave it unset unless instructed otherwise. |
-| `triggers` | `Trigger[]` | Yes | One or more triggers that start the workflow. Refer to [Triggers](/explore-analyze/workflows/triggers.md). |
-| `inputs` | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. On 9.5+, defined under the `manual` trigger. Refer to [`inputs`](#workflows-anatomy-inputs). |
-| `consts` | object | No | Constant values reusable as `{{ consts.<name> }}`. Use for thresholds, index names, or other values you want to name. |
-| `outputs` | object or `Output[]` | No | Declared output schema. Required for workflows invoked through [composition](/explore-analyze/workflows/steps/composition.md) — the parent needs to know the child's output shape. |
-| `settings` | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
-| `steps` | `Step[]` | Yes | Ordered list of steps to execute. Refer to [Steps](/explore-analyze/workflows/steps.md). |
+| [`name`](#workflows-anatomy-name) | string | Yes | Unique name for the workflow. Appears in the UI and identifies the workflow programmatically. |
+| [`description`](#workflows-anatomy-description) | string | No | Short description shown in the workflow list. |
+| [`enabled`](#workflows-anatomy-enabled) | boolean | No | Whether the workflow is active. Defaults to `true`. Set to `false` to park a workflow without deleting it. |
+| [`tags`](#workflows-anatomy-tags) | `string[]` | No | Classification tags. Used for filtering in the list UI and for organizational conventions. |
+| [`version`](#workflows-anatomy-version) | string | No | Schema version. Defaults to `"1"`. The engine uses this for forward compatibility; leave it unset unless instructed otherwise. |
+| [`triggers`](#workflows-anatomy-triggers) | `Trigger[]` | Yes | One or more triggers that start the workflow. Refer to [Triggers](/explore-analyze/workflows/triggers.md). |
+| [`inputs`](#workflows-anatomy-inputs) | object or `Input[]` | No | Runtime parameters the workflow accepts. Values provided at invocation time become `{{ inputs.<name> }}` inside the workflow. On 9.5+, defined under the `manual` trigger. |
+| [`consts`](#workflows-anatomy-consts) | object | No | Constant values reusable as `{{ consts.<name> }}`. Use for thresholds, index names, or other values you want to name. |
+| [`outputs`](#workflows-anatomy-outputs) | object or `Output[]` | No | Declared output schema. Required for workflows invoked through [composition](/explore-analyze/workflows/steps/composition.md) — the parent needs to know the child's output shape. |
+| [`settings`](#workflows-anatomy-settings) | object | No | Global behavior: timeout, timezone, concurrency, global error handling, output-size cap. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). |
+| [`steps`](#workflows-anatomy-steps) | `Step[]` | Yes | Ordered list of steps to execute. Refer to [Steps](/explore-analyze/workflows/steps.md). |
 
 ## `name` — workflow identity [workflows-anatomy-name]
 
@@ -310,7 +310,7 @@ steps:
 
 Every step also accepts a standard set of common fields for control flow and error handling. Refer to the [Steps overview](/explore-analyze/workflows/steps.md) for those.
 
-## The execution lifecycle [workflows-anatomy-lifecycle]
+## The execution lifecycle of a workflow [workflows-anatomy-lifecycle]
 
 When you invoke a workflow — manually, on schedule, or through a trigger — the engine puts it through this lifecycle:
 

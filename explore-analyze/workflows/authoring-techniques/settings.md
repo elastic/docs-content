@@ -95,7 +95,7 @@ Use `settings.concurrency` to prevent overlapping executions from colliding. Thi
 | `strategy` | string | `cancel-in-progress` (cancel the currently running execution when a new one arrives) or `drop` (the new execution is skipped). |
 | `max` | number | Maximum concurrent executions per group. |
 
-### Example: per-host serialization [workflows-settings-concurrency-per-host]
+### Serialize per host [workflows-settings-concurrency-per-host]
 
 The most common use case is "per host, only one execution at a time": group by host, drop new executions when one is already running.
 
@@ -113,7 +113,7 @@ When two alerts fire on the same host within seconds, the first workflow runs; t
 Concurrency keys that use `event.*` are alert-specific. `event.alerts[0].host.name` is only populated when an [alert trigger](/explore-analyze/workflows/triggers/alert-triggers.md) fires. If the same workflow is ever invoked by a manual or scheduled trigger, the key evaluates to the empty string and all executions share one group. For workflows that mix trigger types, prefer a key derived from an input (`{{ inputs.host_name }}`) or a static key (`"my-workflow"`).
 :::
 
-### Example: cancel-in-progress for scheduled health checks [workflows-settings-concurrency-cancel]
+### Cancel in-progress runs for scheduled health checks [workflows-settings-concurrency-cancel]
 
 A health-check workflow runs every 5 minutes but occasionally takes longer. You want the newest status, not a backlog:
 
@@ -134,7 +134,7 @@ When the new execution arrives, the old one is cancelled and the new one starts.
 | `drop` | The ongoing execution is doing valid work you don't want to interrupt. The new trigger would have done the same thing anyway. |
 | `cancel-in-progress` | The new trigger carries fresher information than the ongoing one. You'd rather have the new one complete than the old one. |
 
-## Full example [workflows-settings-full-example]
+## Complete settings example [workflows-settings-full-example]
 
 ```yaml
 settings:
