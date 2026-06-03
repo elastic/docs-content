@@ -32,6 +32,7 @@ In this section, you'll learn how to perform the following tasks in ECK:
 - [**Apply updates to your deployments**](./update-deployments.md): Modify existing deployments, scale clusters, and update configurations, while ensuring minimal disruption.
 - [**Configure access to your deployments**](./accessing-services.md): Use and adapt Kubernetes services to your needs.
 - [**Advanced configuration**](./configure-deployments.md): Explore available settings for {{es}} and {{kib}}, including storage, networking, security, and scaling options.
+- [**Hardened (Wolfi) images**](./hardened-images.md): Learn how the ECK Operator and the {{stack}} components managed by ECK use Wolfi-based images to reduce CVE exposure, and what this means in practice.
 
 For a complete reference on configuration possibilities for {{es}} and {{kib}}, see:
 
