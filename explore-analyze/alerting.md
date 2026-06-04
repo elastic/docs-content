@@ -11,7 +11,7 @@ products:
   - id: elasticsearch
   - id: cloud-hosted
 navigation_title: Alerting
-description: "Elastic alerting overview: Kibana alerting, the {{alerting-v2-system}} (ES|QL, action policies, alert history), and Watcher; where each runs and how to get started."
+description: Watch your data and respond to conditions automatically with Elastic alerting. Compare Kibana alerting, the experimental ES|QL-based alerting system, and Watcher to find the right fit.
 ---
 
 # Alerting [alerting-overview]

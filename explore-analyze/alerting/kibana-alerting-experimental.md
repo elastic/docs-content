@@ -5,7 +5,7 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "How the {{alerting-v2-system}} watches your data, turns conditions into signals and alert episodes, routes alert episodes through action policies and workflows, and where to go next in the docs."
+description: The experimental Kibana alerting system uses ES|QL rules to detect conditions, track problems as alert episodes, and route notifications through reusable action policies.
 ---
 
 # {{alerting-v2-system-cap}} overview [alerting-overview]
@@ -23,10 +23,11 @@ The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. 
 The {{alerting-v2-system}} is built around four objects: rules, alert episodes, action policies, and workflows, each with a distinct role.
 
 ### Rules
-A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes:
 
-- **Detect mode** - The rule records what it finds, but doesn't track whether the problem is ongoing or send any notifications. Use this for observation and investigation.
-- **Alert mode** - The rule tracks problems over time and can trigger notifications when something needs attention.
+A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes: alert or signal.
+
+- **Alert**: Opens an alert episode when the rule finds a match, keeps it open until the condition clears, and can notify your team or trigger automated actions when the state changes. Use this when you want the system to track an issue and tell someone about it.
+- **Signal**: Records each match as a data point with no ongoing tracking and no notifications. Use this when you want to capture activity for later querying and investigation.
 
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
 Refer to [Rules](kibana-alerting-experimental/rules.md) to learn more.
@@ -84,9 +85,9 @@ The on-call engineer gets one message, investigates, fixes a slow query, and lat
 :alt: Diagram of Alert mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a rule event tied to an ongoing alert episode. The alert episode moves through pending, active, recovering, and inactive states. An action policy matches eligible alert episodes and routes them to a workflow, which delivers a notification.
 :::
 
-### Detect mode
+### Signal mode
 
-Use Detect mode when you want to record matches for querying and analysis without alerting anyone. The rule writes a signal and stops. An alert episode is not opened, and notifications are not sent.
+Use Signal mode when you want to record matches for querying and analysis without alerting anyone. The rule writes a signal and stops. An alert episode is not opened, and notifications are not sent.
 
 ```
 Rule runs → the rule's conditions are met → writes a signal
@@ -98,17 +99,17 @@ Rule runs → the rule's conditions are met → writes a signal
 2. The signal is available for querying in Discover, dashboards, and ES|QL.
 3. No alert episode is opened. No action policy is evaluated. No notification is sent.
 
-#### Example: Rule runs in Detect mode
+#### Example: Rule runs in Signal mode
 
-A security team wants to track when a rarely-used admin API endpoint is called. Individual calls are not inherently suspicious, so they do not want a notification every time the rule fires. The pattern only becomes meaningful in context. They create a rule in Detect mode that checks for requests to the endpoint every hour.
+A security team wants to track when a rarely-used admin API endpoint is called. Individual calls are not inherently suspicious, so they do not want a notification every time the rule fires. The pattern only becomes meaningful in context. They create a rule in Signal mode that checks for requests to the endpoint every hour.
 
 The rule writes a signal each time it finds a match. No alert episodes are opened and no notifications go out.
 
 :::{image} ../images/rule-detect-mode-diagram.png
-:alt: Diagram of Detect mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
+:alt: Diagram of Signal mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
 :::
 
-Later, an on-call alert fires for unusual privilege escalation on the same host. During the investigation, the team queries `.rule-events` in Discover and finds that the admin API endpoint was called three times in the hour before the escalation. The Detect mode signals did not surface the incident. The Alert mode rule did. But without the signals already in the index, the admin API activity would have been invisible during the post-incident review.
+Later, an on-call alert fires for unusual privilege escalation on the same host. During the investigation, the team queries `.rule-events` in Discover and finds that the admin API endpoint was called three times in the hour before the escalation. The Signal mode rule events did not surface the incident. The Alert mode rule did. But without the signals already in the index, the admin API activity would have been invisible during the post-incident review.
 
 
 ## {{alerting-v2-system-cap}} glossary [key-concepts-glossary]
@@ -143,13 +144,13 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 -->
 
 **Rule**
-:   The definition of what to watch for in your data, how often to check, and what counts as a problem. Rules run on a schedule. In Detect mode they produce signals. In Alert mode they track ongoing alert episodes.
+:   The definition of what to watch for in your data, how often to check, and what counts as a problem. Rules run on a schedule. In Signal mode they produce signals. In Alert mode they track ongoing alert episodes.
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
     To learn more, refer to [Rules](kibana-alerting-experimental/rules.md).
 -->
 
 **Rule event**
-:   A record written to `.rule-events` every time a rule runs and its query finds a match. Every rule produces rule events. In Detect mode the record is a signal. In Alert mode it belongs to an alert episode.
+:   A record written to `.rule-events` every time a rule runs and its query finds a match. Every rule produces rule events. In Signal mode the record is a signal. In Alert mode it belongs to an alert episode.
 
 **Severity**
 :   A label you can attach to alert episodes to indicate how serious they are. Severity is available as a filter in action policies, so you can route critical alert episodes differently from low-priority ones.
@@ -158,7 +159,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 -->
 
 **Signal**
-:   A rule event produced when a rule runs in Detect mode. Signals are stored and queryable, but they don't open alert episodes or trigger notifications.
+:   A rule event recorded when a rule runs in Signal mode. Signals are stored and queryable, but they don't open alert episodes or trigger notifications.
 
 **Threshold**
 :   The condition a rule uses to decide when something is worth alerting on. This includes both the query that detects the problem and settings that control how many times the condition must be met before an alert episode opens or closes.

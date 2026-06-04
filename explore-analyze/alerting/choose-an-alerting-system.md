@@ -7,7 +7,7 @@ products:
   - id: cloud-serverless
   - id: elasticsearch
   - id: cloud-hosted
-description: Short guide to select Kibana alerting, the {{alerting-v2-system}}, or Watcher by use case, deployment, and how much control you need, with links to detailed docs.
+description: Compare Kibana alerting, the experimental ES|QL-based alerting system, and Watcher by use case and deployment type to select the right tool for your monitoring needs.
 ---
 
 # Choose an alerting system [choose-an-alerting-system]
