@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Alert episodes in {{alerting-v2}}: lifecycle states, series and episodes, signals versus alerts, and where to find them."
+description: "Alert episodes in Kibana's experimental alerting system track one problem from first detection through recovery. Each episode accumulates the full lifecycle history without overwriting past evaluations."
 ---
 
-# {{alerting-v2-cap}} alerts
+# {{alerting-v2-system-cap}} alerts
 
-When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
+Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each alert episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
 
 <!--[CONTENT NEEDED for M2: UI. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
@@ -39,12 +39,12 @@ Activation and recovery thresholds control how many consecutive evaluations must
 
 A checkout-latency rule runs in Alert mode every 5 minutes. Latency breaches at 14:05 and clears at 14:50:
 
-1. **14:00** — Routine check. p95 is within budget. The episode is `inactive`.
-2. **14:05** — p95 jumps to 3.1s. The first breach is detected. With no activation threshold, the episode opens immediately as `active`.
-3. **14:10–14:45** — Every evaluation finds high latency. The same episode stays `active`. No new episodes are created.
-4. **14:50** — p95 drops back under 2s. With no recovery threshold, the episode resolves immediately to `inactive`.
+1. **14:00** - Routine check. p95 is within budget. The alert episode is `inactive`.
+2. **14:05** — p95 jumps to 3.1s. The first breach is detected. With no activation threshold, the alert episode opens immediately as `active`.
+3. **14:10–14:45** — Every evaluation finds high latency. The same alert episode stays `active`. No new alert episodes are created.
+4. **14:50** — p95 drops back under 2s. With no recovery threshold, the alert episode resolves immediately to `inactive`.
 
-One problem is tracked in one episode, even though the rule evaluated many times while the condition was ongoing.
+One problem is tracked in one alert episode, even though the rule evaluated many times while the condition was ongoing.
 
 <!-- TODO: Add image once alert-episode-example-without-threshold.png is available in explore-analyze/images/
 :::{image} ../../images/alert-episode-example-without-threshold.png
@@ -56,14 +56,14 @@ One problem is tracked in one episode, even though the rule evaluated many times
 
 The same checkout-latency rule, now with an activation threshold of 2 consecutive breaches and a recovery threshold of 2 consecutive clears:
 
-1. **14:00** — Routine check. p95 is within budget. The episode is `inactive`.
-2. **14:05** — p95 jumps to 3.1s. The first breach is detected. The episode is created in `pending` and the system starts counting consecutive breaches.
-3. **14:10** — p95 is still elevated. The second consecutive breach meets the activation threshold. The episode moves from `pending` to `active`, and the engineer is paged.
-4. **14:10–14:45** — Latency stays elevated. The episode remains `active`.
-5. **14:50** — p95 drops back under 2s. The first clean check moves the episode to `recovering`. The system starts counting consecutive clears.
-6. **14:55** — A second consecutive clear meets the recovery threshold. The episode moves from `recovering` to `inactive`.
+1. **14:00** — Routine check. p95 is within budget. The alert episode is `inactive`.
+2. **14:05** — p95 jumps to 3.1s. The first breach is detected. The alert episode is created in `pending` and the system starts counting consecutive breaches.
+3. **14:10** — p95 is still elevated. The second consecutive breach meets the activation threshold. The alert episode moves from `pending` to `active`, and the engineer is paged.
+4. **14:10–14:45** — Latency stays elevated. The alert episode remains `active`.
+5. **14:50** — p95 drops back under 2s. The first clean check moves the alert episode to `recovering`. The system starts counting consecutive clears.
+6. **14:55** — A second consecutive clear meets the recovery threshold. The alert episode moves from `recovering` to `inactive`.
 
-Thresholds prevent brief spikes from opening episodes and transient dips from closing them prematurely. The episode waits in `pending` until the problem is confirmed, and waits in `recovering` until the resolution is confirmed.
+Thresholds prevent brief spikes from opening alert episodes and transient dips from closing them prematurely. The alert episode waits in `pending` until the problem is confirmed, and waits in `recovering` until the resolution is confirmed.
 
 <!-- TODO: Add image once alert-episode-example-with-activation-threshold.png is available in explore-analyze/images/
 :::{image} ../../images/alert-episode-example-with-activation-threshold.png
@@ -85,7 +85,7 @@ For the fields that identify a series in alert event documents, refer to [Rule e
 
 ### How series and episodes relate
 
-An episode lives inside a series. A series can contain many episodes over its lifetime, one for each time that service had a problem.
+An alert episode lives inside a series. A series can contain many alert episodes over its lifetime, one for each time that service had a problem.
 
 ```
 Series: checkout-service
@@ -95,12 +95,12 @@ Series: checkout-service
 └── Episode 3: errors on April 18 (active right now)
 ```
 
-The series is the container. Episodes are the individual problems that happened within it. When the series breaches again after recovering, a new episode starts.
+The series is the container. Alert episodes are the individual problems that happened within it. When the series breaches again after recovering, a new alert episode starts.
 
-This means you can track "the checkout service was broken from 02:14 to 03:21" and "the payment service was broken at the same time" as separate episodes, even when both come from the same rule.
+This means you can track "the checkout service was broken from 02:14 to 03:21" and "the payment service was broken at the same time" as separate alert episodes, even when both come from the same rule.
 
 :::{tip}
-Snooze operates at the series level, not the episode level. If you snooze `checkout-service`, you're silencing all notifications from that series for the next X hours, regardless of how many new episodes start during that time. You're quieting a specific ongoing situation, not a single alert.
+Snooze operates at the series level, not the alert episode level. If you snooze `checkout-service`, you're silencing all notifications from that series for the next X hours, regardless of how many new alert episodes start during that time. You're quieting a specific ongoing situation, not a single alert episode.
 :::
 
 ### A practical way to think about it
@@ -109,23 +109,23 @@ Snooze operates at the series level, not the episode level. If you snooze `check
 | --- | --- |
 | Rule | A security camera watching the building |
 | Series | The camera's feed for one specific door |
-| Episode | A specific incident caught on that feed |
+| Alert episode | A specific incident caught on that feed |
 | Rule events | The individual video frames |
 
-The camera runs continuously (rule), always watching door 3 (series). One night someone breaks in. That's an episode. The frames captured during the break-in are the rule events.
+The camera runs continuously (rule), always watching door 3 (series). One night someone breaks in. That's an alert episode. The frames captured during the break-in are the rule events.
 
 ## Signals versus alerts
 
 Every time a rule finds a match, it writes a document to `.rule-events`. Whether that document is a signal or an alert depends on the rule's mode, and that choice determines whether the system only records what happened or actively tracks it through to resolution.
 
-A **signal** is a one-time observation. The system writes it and moves on, no lifecycle, no notifications, no follow-up. An **alert** participates in an episode. The system links it to every other document from the same problem, tracks the lifecycle states, and routes notifications through action policies.
+A **signal** is a one-time observation. The system writes it and moves on, no lifecycle, no notifications, no follow-up. An **alert** (`type: alert`) participates in an alert episode. The system links it to every other document from the same problem, tracks the lifecycle states, and routes notifications through action policies.
 
 | Type | What it is | When it's created |
 | --- | --- | --- |
 | Signal | A point-in-time record that the query matched (`type: signal`). Stored in `.rule-events`. | Rules in Detect mode |
 | Alert | A lifecycle-tracked episode with `type: alert` and `episode.*` fields. Stored in `.rule-events`. | Rules in Alert mode |
 
-A rule in Detect mode only writes signals. It never opens episodes, so action policies have nothing to match against.
+A rule in Detect mode only writes signals. It never opens alert episodes, so action policies have nothing to match against.
 
 ## Where alerts live
 
@@ -138,6 +138,10 @@ For field definitions, refer to [Alert states and fields reference](alerts/alert
 
 <!--[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
+
+### Kibana spaces
+
+Alert episodes in the {{alerting-v2-system}} are scoped to the Kibana space in which they were created. Alert episodes from one space are not visible when viewing a different space. This matches how other Kibana features behave across spaces.
 
 ### Data stream storage and retention
 
