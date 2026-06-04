@@ -61,7 +61,7 @@ Read [https://www.elastic.co/cloud/shared-responsibility](https://www.elastic.co
 If in doubt, reach out to Support.
 :::
 
-* Know whether you are disabling a tier that stores **regular indices** (for example hot, warm, or cold without {{search-snaps}}) or **{{search-snaps}}** (for example cold or frozen with {{ilm-init}}). The **cold** tier can hold either; use these requests to check for {{search-snap}} indices:
+* Know whether you are disabling a tier that stores regular indices or {{search-snaps}}. The frozen tier only holds [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. The cold tier can hold regular indices or [fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}}. The hot tier usually holds regular indices, but an {{ilm-init}} policy can mount a fully mounted {{search-snap}} on the hot tier (for example, when the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action runs in the `hot` phase). Use these requests to check for {{search-snap}} indices on the tier you are removing:
 
     ```sh
     # cold data tier: {{search-snap}} indices
@@ -75,9 +75,9 @@ If in doubt, reach out to Support.
 
 ### Remove a tier with regular indices [non-searchable-snapshot-data-tier]
 
-The hot and warm tiers store regular indices, while the frozen tier stores {{search-snaps}}. The cold tier can store either; use the checks in [Before you remove a data tier](#before-you-remove-a-data-tier) if you are unsure.
+The frozen tier only stores [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) {{search-snaps}}. [Fully mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) {{search-snaps}} can be allocated to the hot or cold tier depending on the {{ilm-init}} phase, while the cold tier can also hold regular indices. Use the checks in [Before you remove a data tier](#before-you-remove-a-data-tier) if you are unsure what is on the tier.
 
-{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a tier that holds only regular indices (for example, hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your {{ilm-init}} policies to prevent new indices from being moved to the data tier you want to disable.
+When you update the deployment, {{ech}} and {{ece}} try to move all data from the nodes that are removed. To disable a tier that holds only regular indices, make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your {{ilm-init}} policies to prevent new indices from being moved to the data tier you want to disable.
 
 To make sure that all data can be migrated from the data tier you want to disable, follow these steps:
 
@@ -163,7 +163,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
         }
         ```
 
-        You must remove the relevant tier from the inclusion rules. For example, to disable the warm tier, the `data_warm` tier preference should be removed:
+        You must remove the relevant tier from the inclusion rules. For example, to disable the warm tier, remove the `data_warm` parameter and set `_tier_preference` to a tier you are keeping. Prefer promoting data through the lifecycle, for example from warm to cold, not back to hot, unless the cluster has no colder tier to accept the data:
 
         ```sh
         PUT /my-index/_settings
@@ -171,12 +171,14 @@ To make sure that all data can be migrated from the data tier you want to disabl
             "routing": {
               "allocation": {
                 "include": {
-                    "_tier_preference": "data_hot"
+                    "_tier_preference": "data_cold,data_warm,data_hot" <1>
                 }
               }
             }
         }
         ```
+
+        1. If the cluster has no cold tier, use the lowest remaining tier in order of preference, for example `data_hot` when no `data_cold` nodes exist. The frozen tier is for partially mounted {{search-snaps}} only, not a destination for regular indices in this flow.
 
         Updating allocation inclusion rules will trigger a shard re-allocation, moving the shards from the nodes to be removed.
 
@@ -213,7 +215,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
         }
         ```
 
-        Removing required attributes does not trigger a shard reallocation. These shards are moved when applying the plan to disable the data tier. Alternatively, you can use the [cluster re-route API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) to manually re-allocate the shards before removing the nodes, or explicitly re-allocate shards to hot nodes by using the following code:
+        Removing required attributes does not trigger a shard reallocation. These shards are moved when applying the plan to disable the data tier. Alternatively, you can use the [cluster re-route API]({{es-apis}}operation/operation-cluster-reroute) to manually re-allocate the shards before removing the nodes, or set `require` to migrate shards to a desired tier. For example, to force an index to nodes with `data` attribute of `cold`, use the following request:
 
         ```sh
         PUT /my-index/_settings
@@ -221,12 +223,14 @@ To make sure that all data can be migrated from the data tier you want to disabl
             "routing": {
               "allocation": {
                 "require": {
-                    "data": "hot"
+                    "data": "cold"
                 }
               }
             }
         }
         ```
+
+        Adjust the `data` value to match the [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [index-level shard allocation filters](elasticsearch://reference/elasticsearch/index-settings/shard-allocation.md) your indices already use. You cannot send regular indices to the frozen tier.
 
     3. Removing custom allocation rules.
 
@@ -245,6 +249,10 @@ To make sure that all data can be migrated from the data tier you want to disabl
         }
         ```
 
+    :::{important}
+    Confirm that no shards are left on the nodes to be removed after the allocation completes: `GET /_cat/shards` (filter by `node` as needed) should show that the tier is empty. Updating settings starts the relocation process, but you must wait until [shard allocation and recovery](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery.md) finish. If shards stay on the original tier, use the [cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API to determine the cause. Common reasons can be [disk watermarks](/troubleshoot/elasticsearch/fix-watermark-errors.md) or [`index.routing.allocation.total_shards_per_node`](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) on the destination nodes.
+    :::
+
 5. Edit the deployment, disabling the data tier.
 
     If autoscaling is enabled, set the maximum size to 0 for the data tier to ensure autoscaling does not re-enable the data tier.
@@ -259,7 +267,11 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
 ### Remove a tier with {{search-snaps}} [searchable-snapshot-data-tier]
 
-When data reaches the `cold` or `frozen` phases, it is automatically converted to a [{{search-snap}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) by {{ilm-init}}. If you do not intend to delete this data, you should manually restore each of the {{search-snap}} indices to a regular index before disabling the data tier, by following these steps:
+:::{tip}
+Fully mounted [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) on the hot or cold tier can often be moved to another remaining tier by updating the [`index.routing.allocation.include._tier_preference`](#update-data-tier-allocation-rules) setting and related [allocation rules](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) alone, without a `POST _snapshot/.../_restore` call. When {{es}} creates them with the [`searchable_snapshot` ILM action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md), the index name is typically prefixed with `restored-*`. If you [mount a snapshot yourself](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the index name is not limited to that pattern. Use a full restore to a new regular index when you are [rehydrating](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) or when you have [partially mounted](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) indices on frozen and need a regular index on another tier. In a `frozen` tier, the ILM action typically uses a `partial-*` name prefix; self-managed partial mounts do not have to follow it.
+:::
+
+When an [{{ilm-init}} policy’s `searchable_snapshot` action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) runs in a `hot`, `cold`, or `frozen` phase, it can convert a managed index into a [{{search-snap}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) (`restored-*` in non-frozen phases, or `partial-*` in the `frozen` phase). If the data is no longer required, the `delete` phase of the same policy can remove it. If you must retain the data while removing the tier, follow these steps:
 
 1. Stop {{ilm-init}} and check {{ilm-init}} status is `STOPPED` to prevent data from migrating to the phase you intend to disable while you are working through the next steps.
 
@@ -271,9 +283,9 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
     GET _ilm/status
     ```
 
-2. Capture a comprehensive list of index and {{search-snap}} names.
+2. Capture a comprehensive list of index and {{search-snap}} names, and which snapshot repository each snapshot lives in.
 
-    1. The index name of the {{search-snaps}} may differ based on the data tier. If you intend to disable the cold tier, then perform the following request with the `restored-*` prefix. If the frozen tier is the one to be disabled, use the `partial-*` prefix.
+    1. The index name of the {{search-snaps}} may differ based on the data tier. If you intend to disable the cold tier, use the `restored-*` prefix. If the frozen tier is the one to be disabled, use the `partial-*` prefix. If you are removing a tier that had a [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action in an earlier phase, for example during the `hot` phase, also run the same query for `restored-*` on that tier.
 
         ```sh
         GET <searchable-snapshot-index-prefix>/_settings?filter_path=**.index.store.snapshot.snapshot_name&expand_wildcards=all
@@ -315,27 +327,27 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 5. Restore indices from the {{search-snaps}}.
 
-    1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers/manage-data-tiers-ech-ece.md#update-data-tier-allocation-rules).
+    1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers/manage-data-tiers-ech-ece.md#update-data-tier-allocation-rules) for the tier you are keeping.
     2. Remove the associated {{ilm-init}} policy (set it to `null`). If you want to apply a different {{ilm-init}} policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
     3. If needed, specify the alias for rollover, otherwise set it to `null`.
     4. Optionally, specify the desired number of replica shards.
 
         ```sh
-        POST _snapshot/found-snapshots/<searchable_snapshot_name>/_restore
+        POST _snapshot/<snapshot_repository_name>/<searchable_snapshot_name>/_restore
         {
           "indices": "*",
           "index_settings": {
             "index.routing.allocation.include._tier_preference": "<data_tiers>",
-            "number_of_replicas": X,
+            "index.number_of_replicas": 0,
             "index.lifecycle.name": "<new-policy-name>",
             "index.lifecycle.rollover_alias": "<alias-for-rollover>"
           }
         }
         ```
 
-        The  `<searchable_snapshot_name>` refers to the above-mentioned step: "Capture a comprehensive list of index and {{search-snap}} names".
+        For `<searchable_snapshot_name>` use the names that you obtained in step 2. Adjust `index.number_of_replicas` to match your resiliency needs.
 
-        In the example we are restoring `frozen-index-1` from the snapshot in `found-snapshots` (default snapshot repository) and placing it in the warm tier.
+        The example request restores `frozen-index-1` and places it in the warm tier; the snapshot can be found in `found-snapshots`, which is the default snapshot repository.
 
         :::{image} /manage-data/images/cloud-enterprise-ec-ce-remove-tier-restore-snapshot.png
         :alt: A screenshot showing the process of restoring a {{search-snap}} to a regular index

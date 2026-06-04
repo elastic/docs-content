@@ -16,7 +16,7 @@ products:
 
 # {{agent-builder}} built-in tools reference
 
-This page lists all built-in tools available in {{agent-builder}}, grouped by namespace. Built-in tools are read-only: you can't modify or delete them.
+This page lists all built-in tools available in {{agent-builder}}, grouped by [namespace](custom-tools.md#protected-namespaces). Built-in tools are read-only: you can't modify or delete them.
 
 Platform tools are available across all deployments. Observability and security tools are scoped to their respective solutions. Tool prefixes (`platform.core`, `platform.streams`, `observability`, `security`) reflect this scoping.
 
@@ -68,10 +68,10 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Searches and retrieves [cases](/explore-analyze/cases.md) for tracking and managing issues.
 
 `platform.core.get_workflow_execution_status` {applies_to}`stack: ga 9.3+`
-:   Retrieves the execution status of a workflow.
+:   Retrieves the status and, if available, the final output of an [Elastic Workflows](/explore-analyze/workflows.md) execution from its execution ID.
 
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
-:   Resumes a workflow execution that is paused and waiting for human input.
+:   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
 
 <!--
 ### Attachment tools
@@ -98,20 +98,6 @@ The following tools manage file attachments in conversations:
 `platform.core.attachment_diff`
 :   Shows the differences between versions of a file attachment.
 -->
-
-## Dashboard tools
-```{applies_to}
-stack: preview 9.4+
-serverless: preview
-```
-
-Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
-
-`dashboard.create_dashboard`
-:   Creates a dashboard with specified title, description, panels, and markdown summary.
-
-`dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications.
 
 ## Streams tools
 ```{applies_to}
@@ -149,11 +135,6 @@ Streams tools provide capabilities for exploring and managing [Streams](/solutio
 ## Observability tools
 
 Observability tools provide specialized capabilities for monitoring applications, infrastructure, and logs.
-
-% TODO (9.4): Document time range awareness behavior change in agent-builder-observability.md.
-% As of 9.4, the agent uses the current page's time picker by default when invoking tools,
-% unless the user specifies a different time range.
-% Source: https://github.com/elastic/kibana/pull/256343
 
 `observability.get_alerts` {applies_to}`stack: ga 9.3+`
 :   Retrieves Observability [alerts](/solutions/observability/incident-management/alerting.md) within a specified time range, supporting filtering by status (active/recovered) and KQL queries.
@@ -251,7 +232,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
+Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).

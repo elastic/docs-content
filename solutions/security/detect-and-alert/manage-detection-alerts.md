@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -68,7 +68,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** > **Detection rules (SIEM)**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** > **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]
@@ -149,7 +149,7 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 | [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
 | [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
-| [Add {{elastic-endpoint}} exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) | Prevent {{elastic-endpoint}} alerts for specific conditions |
+| [Add {{elastic-endpoint}} exception](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) | Prevent {{elastic-endpoint}} alerts for specific conditions |
 | [Apply alert tags](#apply-alert-tags) | Categorize alerts for filtering |
 | [Assign users](#assign-users-to-alerts) | Assign analysts to investigate |
 | [Investigate in Timeline](#signals-to-timelines) | Open alert in Timeline for analysis |

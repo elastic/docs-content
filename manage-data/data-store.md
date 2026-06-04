@@ -19,7 +19,7 @@ As your data grows, how you structure, size, and manage your indices directly af
 For production architecture guidance, including resilience, scaling, and performance optimization, refer to [](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 :::{tip}
-You can index a document using the [Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index) API. For production ingestion workflows and related concepts such as pipelines, agents, and Logstash, refer to [Ingest: Bring your data to Elastic](/manage-data/ingest.md).
+You can index a document using the [Index]({{es-apis}}operation/operation-index) API. For production ingestion workflows and related concepts such as pipelines, agents, and Logstash, refer to [Ingest: Bring your data to Elastic](/manage-data/ingest.md).
 :::
 
 ## Understand data storage
