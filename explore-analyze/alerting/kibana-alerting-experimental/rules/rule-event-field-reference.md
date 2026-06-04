@@ -74,7 +74,7 @@ Grouping is configured in YAML. The fields listed here control how the rule part
 
 Each time a rule evaluates, {{kib}} writes one document per matched series to `.rule-events`. The `type` field determines the document kind:
 
-- **signal:** A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents do not include `episode.*` fields.
+- **signal:** A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
 - **alert:** A lifecycle-tracked episode visible in the alert inbox, episode details, and triage views. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
 
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
@@ -106,7 +106,7 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 -->
 
 :::{admonition} Fields not stored as a dedicated column
-There is no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.
+There's no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged and restore full sentence:
 For triage or reporting, derive duration from [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover), the alert UI, or your own queries over timestamps and episode identifiers.
 -->
@@ -121,11 +121,5 @@ These fields only appear on documents with `type: alert`, written by rules runni
 | `episode.id` | keyword | Episode identifier for this series. |
 | `episode.status` | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
 | `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
-
-<!--[CONTENT NEEDED for M2: M2 promotes severity to two new first-class episode fields. Add the following rows to this table once M2 ships:
-
-- `episode.severity` (keyword) — the severity value from the most recent rule event (current state). Replaces the M1 convention of storing severity in `data.severity`.
-- `episode.severity_max` (keyword) — the highest severity seen across the episode's lifetime (high-water mark). Enables "peaked at CRITICAL" display in the episode UI and policy matching like `episode.severity_max: "CRITICAL"`.
-
-Several details are still open in M2 planning: the accepted value set (whether it is enforced or convention-based), whether severity de-escalation triggers policy re-evaluation, and whether manual override of `episode.severity` is supported. Do not document specifics until these are resolved. When documenting, also cross-reference the matcher fields in [Action policy reference](../notifications/action-policy-reference.md#matcher-fields).]
--->
+| `episode.severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |
+| `episode.severity_max` | keyword | Highest severity level observed across the episode's lifetime (high-water mark). Enables routing or display based on peak severity, for example, "this episode peaked at `critical`". |

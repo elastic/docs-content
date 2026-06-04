@@ -37,14 +37,19 @@ This separation means you can build and test a rule without anyone getting paged
 
 ## Create a rule [create-a-rule]
 
-Rules in the {{alerting-v2}} are always created and edited through a flyout. Three starting points are available:
+Rules in the {{alerting-v2}} are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
 
-- **From scratch**: Build the rule query and settings directly in the rule form. The form and the YAML editor are both available inside the same flyout; you can switch between them at any point without losing your work. Start here when you know what you want to detect. See [Create rules using the rule builder](rules/create-rule-from-rule-builder.md).
-- **From Discover**: Start from an {{esql}} query you've already written and validated in Discover. The rule creation flyout opens pre-populated with the current query, so you can verify how the data groups before committing to a schedule. See [Create rules from Discover](rules/create-rule-from-discover.md).
-- **With the AI agent**: Describe what you want to detect in plain language. Agent Builder generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to express it as an {{esql}} query.
+- **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results and a YAML editor also available. Use this when you want full control over the query. See [Create rules](rules/create-rule-from-rule-builder.md).
+- **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
+- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. The [Threshold Alert](rules/create-rule-from-rule-builder.md#threshold-alert-builder) type is available in this release, with more planned. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
+
+If you already have an {{esql}} query working in Discover, you can also [create a rule directly from there](rules/create-rule-from-discover.md) to skip re-entering the query.
 
 ## Next steps
 
 - **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
 - **[Configure a rule](rules/configure-a-rule.md):** Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
 - **[View and manage rules](rules/view-manage-rules.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.
+- **Rule Doctor:** Analyze your rules for duplicates, stale conditions, threshold tuning opportunities, and coverage gaps. Rule Doctor surfaces findings with impact and confidence ratings and tracks each insight through an open → applied or dismissed lifecycle. Access it from the {{alerting-v2}} navigation.
+
+<!-- TODO: Update this description and link to the Rule Doctor dedicated page once it is published. The page should cover the insight types, the open/applied/dismissed lifecycle, impact and confidence ratings, continuous analysis scheduling, and required privileges (read-alerting-v2-rule-doctor / write-alerting-v2-rule-doctor). -->

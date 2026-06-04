@@ -24,7 +24,7 @@ Two paths lead to Discover-based rule creation:
 
 Starting a rule from Discover means your query is already tested and returns the shape you expect before the rule is ever saved. Instead of drafting a query in the rule builder and hoping it works, you iterate in Discover (where you can see real results immediately) and then create the rule when the query is ready.
 
-When you trigger rule creation from Discover, your {{esql}} query pre-fills the rule form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run. This lets you verify grouping logic against live data before committing to a schedule.
+When you trigger rule creation from Discover, your {{esql}} query pre-fills the **Create ES|QL rule** form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run. This lets you verify grouping logic against live data before committing to a schedule.
 
 ## Form and YAML editing [discover-form-yaml]
 
@@ -38,7 +38,7 @@ Use YAML mode when you want to fine-tune the raw rule definition, copy a pattern
 The query preview in the rule creation flow runs your {{esql}} query against current data and displays the resulting rows. Use this to:
 
 - **Confirm grouping**: Check that your `BY` clause produces the series you intend — for example, one distinct series per host or per service, not a single undifferentiated result.
-- **Catch unexpected output**: Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name will not behave as expected once the rule runs on a schedule.
+- **Catch unexpected output**: Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
 - **Refine before committing**: Edit the query in the preview panel and re-run it without leaving the rule creation form. Once the preview looks correct, proceed to fill in the remaining settings.
 
 <!--[CONTENT NEEDED: UI. Add a step-by-step procedure once the Discover-to-rule workflow is confirmed in the shipped UI.

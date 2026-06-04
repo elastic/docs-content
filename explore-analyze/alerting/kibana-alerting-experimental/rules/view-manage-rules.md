@@ -16,7 +16,7 @@ Rule management is part of the {{alerting-v2}} in {{kib}}. After a rule is creat
 
 Use the search bar at the top of the rules list to find rules by name or description. The search field accepts plain text; each space-separated term is matched independently (terms are AND'd) using prefix matching. Type any part of a rule name or description to narrow the list.
 
-Search matches rule name and description only. Tags and grouping fields are displayed in search results but are not included in free-text search. Special characters in rule names and descriptions, including consecutive hyphens, are handled correctly.
+Search matches rule name and description only. Tags and grouping fields are displayed in search results but aren't included in free-text search. Special characters in rule names and descriptions, including consecutive hyphens, are handled correctly.
 
 Combine text search with filter controls to narrow results further by rule type, status, or tags. Select any column header to sort the list. Use bulk actions when you need to enable, disable, or delete multiple rules at once.
 

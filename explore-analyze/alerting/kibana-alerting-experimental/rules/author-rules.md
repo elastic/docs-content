@@ -59,11 +59,11 @@ Three recovery types are available:
 | Custom | Uses a separate {{esql}} expression you define. The episode recovers when that expression returns no rows. |
 | No recovery | The episode stays active until manually closed. *(Coming soon.)* |
 
-When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach is not a reliable recovery signal — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
+When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach isn't a reliable recovery signal — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
 
 ## Data sources
 
-Use `FROM` to point the rule at the indices or data streams to read. The query itself defines the scope. There is no separate data source step.
+Use `FROM` to point the rule at the indices or data streams to read. The query itself defines the scope. There's no separate data source step.
 
 ```esql
 FROM logs-checkout-service-*
@@ -86,12 +86,45 @@ For how alert states connect to episodes, refer to [Alert lifecycle](../alerts.m
 
 ## Severity levels [severity-levels]
 
-Severity is carried by convention as a field under `data.*`, for example `data.severity` or `data.priority`. Include it in your `KEEP` so it is available as a matcher field on action policies, for example `data.severity: "critical"` in a policy KQL matcher.
+Severity is a first-class field on alert episodes in the {{alerting-v2}}. To set severity, include a column named `severity` in your ES|QL query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels:
 
-There is no required severity field name or fixed value set. Use whatever convention your team aligns on, and reference those same field names in your action policies.
+| Value | Meaning |
+| --- | --- |
+| `info` | Informational; lowest urgency |
+| `low` | Low-severity condition |
+| `medium` | Moderate-severity condition |
+| `high` | High-severity condition |
+| `critical` | Critical; highest urgency |
 
-<!--[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property rather than a `data.*` convention field. Once this ships, the guidance above will need to change: there will be a defined field name, possibly a defined value set, and severity will be directly available on the episode without needing to be threaded through `KEEP` and matched using KQL. Update this section to reflect the M2 severity schema and revise any query examples that output severity as a plain string into `data.*`.]
--->
+Severity matching is case-insensitive. Values that don't match one of the five levels are silently ignored — the alert episode is still created, but `episode.severity` is not set.
+
+Severity is set only on `breached` rule events. `recovered` and `no_data` events don't carry a severity value.
+
+When severity is set, the framework stores two fields on the alert episode:
+
+- `episode.severity` — the severity value from the most recent breached event (current state).
+- `episode.severity_max` — the highest severity level observed across the episode's lifetime. Useful for routing like "this episode peaked at critical."
+
+Both fields are available for action policy matchers. For the full field reference, see [Rule event and field reference](rule-event-field-reference.md#episode-fields).
+
+```esql
+FROM metrics-*
+| STATS
+    errors_5m = COUNT_IF(outcome == "failure" AND @timestamp >= NOW() - 5 minutes),
+    total_5m   = COUNT_IF(@timestamp >= NOW() - 5 minutes)
+  BY service.name
+| EVAL burn_5m = errors_5m / total_5m
+| EVAL severity = CASE(
+    burn_5m > 14.4, "critical",
+    burn_5m > 6.0,  "high",
+    burn_5m > 1.0,  "medium",
+    "low"
+  )
+| WHERE burn_5m > 1.0
+| KEEP service.name, burn_5m, severity
+```
+
+The `severity` column in `KEEP` is what tells the framework to set `episode.severity` on each resulting alert episode.
 
 ## Next steps
 

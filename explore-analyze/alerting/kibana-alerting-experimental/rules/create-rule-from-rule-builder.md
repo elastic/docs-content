@@ -5,32 +5,44 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create a rule with the interactive rule builder in the {{alerting-v2}}: when to use it, creation paths, and Form/YAML switching."
+description: "Create a rule in the {{alerting-v2}}: the three creation paths, when to use each, and how the Threshold Alert builder works."
 ---
 
-# Create rules using the rule builder in {{alerting-v2}} [create-rules-rule-builder]
+# Create rules in {{alerting-v2}} [create-rules-rule-builder]
 
-The rule builder is part of the {{alerting-v2}} in {{kib}}. It is the right starting point when you're creating a rule from scratch and want inline guidance through each setting. For a full description of what each setting does, refer to [Configure a rule](configure-a-rule.md).
-
-If you already have a working query in Discover, you can [create a rule directly from there](create-rule-from-discover.md) without re-entering it. If you're managing rules as code or need to version-control rule definitions, use the [YAML editor](create-rule-with-yaml.md) instead.
+The rule builder is part of the {{alerting-v2}} in {{kib}}. For a full description of what each setting does, refer to [Configure a rule](configure-a-rule.md).
 
 ## Creation paths [rule-creation-paths]
 
-All rules are created through a flyout. The flyout opens from the rules list. When no rules exist yet, a panel offering three options displays:
+All rules are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
 
-- **From scratch**: Opens the rule form directly. Use this when you know what you want to detect and want full control over the definition.
-- **From recommended rules**: Starts from a curated template. Use this when you want a pre-built starting point that you can review and adapt to your environment.
-- **With AI agent**: Opens Agent Builder with a rule management skill pre-loaded. Describe the problem you want to detect in plain language. The agent generates a rule definition and walks you through saving it. Use this when you know the problem but aren't sure how to express it as an {{esql}} query.
+- **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results. A YAML editor is also available within this path. Use this when you want full control over the query. If you already have a query working in Discover, you can [start from there instead](create-rule-from-discover.md) to skip re-entering it.
+- **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
+- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard rule type without writing {{esql}} by hand. See [Threshold Alert](#threshold-alert-builder) for the currently available type.
 
-Once rules exist, the **Create rule** button also gives you access to the AI agent path directly from the rules list.
+## Threshold Alert [threshold-alert-builder]
 
-## Form and YAML editing [rule-builder-form-yaml]
+Threshold Alert is the first rule type available under **Start from a rule builder**. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
 
-The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option.
+You define the rule by filling in structured fields for the data source, aggregation, filters, and alert conditions. The builder generates the {{esql}} query automatically from those inputs. Rules created through the builder can be reopened and edited in builder mode as long as the underlying {{esql}} hasn't been edited directly.
 
-Use YAML mode when you want to fine-tune the raw rule definition, copy a configuration from an existing rule, or work faster than filling in individual form fields allows. Use the form when you want inline validation and contextual guidance for each setting.
+If you open a builder-created rule and the {{esql}} has been modified outside the builder, the rule falls back to the {{esql}} editor view with a notification. This is a best-effort round-trip, not a strict one-way door.
+
+More rule types are planned for future releases.
+
+Use the **Create ES|QL rule** path when the detection logic requires more than a single metric threshold, such as multi-window burn rates or cross-series correlation.
+
+### Recovery conditions [threshold-builder-recovery]
+
+When you define alert conditions in the Threshold Alert builder, the builder automatically derives corresponding recovery conditions by flipping the comparators. For example, a `greater than` alert condition produces a `less than or equal to` recovery condition. You can customize the derived conditions or leave the defaults as generated. Recovery conditions are preserved correctly when you reopen an existing rule in builder mode for editing.
+
+## ES|QL rule: form and YAML editing [rule-builder-form-yaml]
+
+The **Create ES|QL rule** path supports both a step-by-step form and a YAML editing mode. You can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option.
+
+Use YAML mode when you want to fine-tune the raw rule definition, copy a configuration from an existing rule, or work faster than filling in individual form fields allows. The YAML editor isn't available within the Threshold Alert builder or other rule builder types.
 
 For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
-<!--[CONTENT NEEDED: UI. This page needs a step-by-step procedure once the rule builder UI is finalized: how to open it, how to fill in settings, how to preview, and how to save. Navigation paths, button labels, and form field arrangement should all be verified against the shipped UI before publishing. Hold until the rule builder workflow is confirmed.]
+<!--[CONTENT NEEDED: UI. This page needs step-by-step procedures once the creation flows are finalized: how to open each path, how to fill in settings, how to preview, and how to save. Navigation paths, button labels, and form field arrangement should all be verified against the shipped UI before publishing.]
 -->

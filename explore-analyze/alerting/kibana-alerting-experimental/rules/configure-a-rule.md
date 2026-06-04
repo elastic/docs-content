@@ -19,7 +19,9 @@ For notification routing, refer to [Notifications](../notifications.md).
 -->
 
 :::{note}
-Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule builder form does not link to policies.
+For Alert-mode rules, you can create and attach action policies directly from the rule form's **Actions** step. Existing action policies that match the rule are listed on load. If none exist, an onboarding panel appears. Action policies are created or updated alongside the rule when you save. The **Actions** step is not shown for Detect-mode rules.
+
+You can also manage action policies independently from the **Action policies** area, using KQL matchers to scope them to any episodes you want to route.
 :::
 
 ## Rule mode [rule-mode]
@@ -97,6 +99,10 @@ Each timeframe value must be between 5 seconds and 365 days.
 
 Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
 
+:::{note}
+The `recovery_policy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_policy.type` defaults to `no_breach`, which recovers the episode when its active group no longer appears in the breach batch. When creating a rule through the API or Agent Builder, you can omit `recovery_policy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-policy-fields).
+:::
+
 ## No-data handling [no-data-handling]
 
 No-data handling controls what happens when a rule executes and the base query returns no results. Proper configuration prevents false recoveries and misleading `no_data` events when data sources stop reporting.
@@ -111,7 +117,7 @@ Set `no_data.behavior` to one of the following values:
 | `last_status` | Carry forward the previous status |
 | `recover` | Treat absence as recovery |
 
-These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
+These behaviors apply when the base query returns zero rows. They don't help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
 
 ## Tags and investigation guide [tags-investigation]
 
