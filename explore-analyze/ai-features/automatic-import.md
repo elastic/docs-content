@@ -109,7 +109,9 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 9. Click **Analyze logs** and wait for processing to complete. This can take several minutes. The data stream(s) continue to process as shown by the status on the **Manage my integrations** menu, so you can navigate away and come back later.
 
    :::{note}
-   The **Manage my integrations** menu lists only integrations created with Automatic Import on versions 9.4+. To install a prebuilt integration package, select **Upload integration package** from the **Create new integration** menu on the **Manage my integrations** page. Uploaded `.zip` packages are installed directly to the **Installed integrations** tab and aren't tracked under **Manage my integrations**. For details on building an uploadable package, refer to [Upload a new integration](https://www.elastic.co/docs/extend/integrations/upload-new-integration).
+   The **Manage my integrations** menu lists only integrations created with Automatic Import on versions 9.4+. 
+   
+   Manually created custom integration `.zip`s  get installed from the **Installed integrations** tab and aren't tracked on the **Manage my integrations** menu. For more information about user-created custom integrations, refer to [Upload a new integration](https://www.elastic.co/docs/extend/integrations/upload-new-integration).
    :::
 
    :::{image} /solutions/images/security-auto-import-data-streams-status.png
