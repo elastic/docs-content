@@ -90,7 +90,7 @@ You are not limited to a single retrieval style. Search applications can combine
 You can implement these combinations in one of two ways:
 
 - Use [retrievers](retrievers-overview.md) to configure multi-stage retrieval pipelines within a single `_search` call.
-- A piped [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that uses [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results with [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) (`RRF`) or weighted score combination (`LINEAR`).
+- Use an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query that leverages [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) to run retrieval branches in parallel and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) to combine the results using RRF or linear combination algorithms.
 
 ### Using retrievers [vector-search-combine-retrievers]
 
