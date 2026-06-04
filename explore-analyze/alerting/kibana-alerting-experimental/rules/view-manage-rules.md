@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use the rules list and rule details page in the {{alerting-v2-system}}: filters, search, bulk actions, and what you find in rule conditions."
+description: "Use the rules list and rule details page in the experimental alerting system."
 ---
 
 # View and manage rules in the {{alerting-v2-system}} [manage-rules]
@@ -14,7 +14,7 @@ Rule management is part of the {{alerting-v2-system}} in {{kib}}. After a rule i
 
 ## Find and filter rules [find-filter-rules]
 
-Use the search bar at the top of the rules list to find rules by name or description. The search field accepts plain text; each space-separated term is matched independently (terms are AND'd) using prefix matching. Type any part of a rule name or description to narrow the list.
+Use the search bar at the top of the rules list to find rules by name or description. The search field accepts plain text. Each space-separated term is matched independently (terms are AND'd) using prefix matching. Type any part of a rule name or description to narrow the list.
 
 Search matches rule name and description only. Tags and grouping fields are displayed in search results but aren't included in free-text search. Special characters in rule names and descriptions, including consecutive hyphens, are handled correctly.
 

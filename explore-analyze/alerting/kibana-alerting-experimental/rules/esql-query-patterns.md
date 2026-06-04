@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2-system}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
+description: "Advanced ES|QL query patterns for rules in the experimental alerting system: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
 ---
 
 # {{esql}} query patterns for rules in the {{alerting-v2-system}} [esql-query-patterns]

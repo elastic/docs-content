@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create a rule in the {{alerting-v2-system}}: the three creation paths, when to use each, and how the Threshold Alert builder works."
+description: "Create a rule in the experimental alerting system."
 ---
 
 # Create rules in the {{alerting-v2-system}} [create-rules-rule-builder]
@@ -18,7 +18,7 @@ All rules are created through a flyout that opens from the **Create rule** butto
 
 - **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results. A YAML editor is also available within this path. Use this when you want full control over the query. If you already have a query working in Discover, you can [start from there instead](create-rule-from-discover.md) to skip re-entering it.
 - **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
-- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard rule type without writing {{esql}} by hand. See [Threshold Alert](#threshold-alert) for the currently available type.
+- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard rule type without writing {{esql}} by hand. Refer to [Threshold Alert](#threshold-alert) for the available type.
 
 ## Threshold Alert
 

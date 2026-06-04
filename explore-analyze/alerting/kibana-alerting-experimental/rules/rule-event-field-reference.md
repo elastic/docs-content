@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Reference for rule configuration fields and documents written to `.rule-events` in the {{alerting-v2-system}}."
+description: "Reference for rule configuration fields and documents written to .rule-events in the experimental alerting system."
 ---
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]

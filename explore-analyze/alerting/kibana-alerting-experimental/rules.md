@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "What rules are in the {{alerting-v2-system}}, how evaluation works, and how rules connect to alerts and notifications."
+description: "What rules are in the experimental alerting system, how evaluation works, and how rules connect to alerts and notifications."
 ---
 
 # Rules in the {{alerting-v2-system}}

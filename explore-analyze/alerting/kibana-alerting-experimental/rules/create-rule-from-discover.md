@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Turn an {{esql}} query in Discover into a rule in the {{alerting-v2-system}} with pre-filled evaluation and lookback."
+description: "Turn an ES|QL query in Discover into a rule in the experimental alerting system with pre-filled evaluation and lookback."
 ---
 
 # Create rules from Discover in the {{alerting-v2-system}} [create-rules-discover]

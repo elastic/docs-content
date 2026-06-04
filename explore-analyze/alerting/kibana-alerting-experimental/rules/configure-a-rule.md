@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure rules in the {{alerting-v2-system}}: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
+description: "Configure rules in the experimental alerting system: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
 ---
 
 # Configure a rule in {{alerting-v2-system}} [rule-settings]
@@ -31,7 +31,7 @@ Choose a mode that matches how you want to use results:
 | Mode | Behavior |
 | --- | --- |
 | Signal | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
-| Alert | Lifecycle tracking and actions: alerts move through states (pending, active, recovering, and so on), and you can attach action policies so alert episodes dispatch through workflows. |
+| Alert | Lifecycle tracking and actions. Alerts move through states (pending, active, recovering, and so on), and you can attach action policies so alert episodes dispatch through workflows. |
 
 Several settings on this page apply only when the rule is in Alert mode (`kind: alert`).
 

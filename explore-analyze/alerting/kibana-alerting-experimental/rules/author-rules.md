@@ -101,10 +101,10 @@ Severity is set only on `breached` rule events. `recovered` and `no_data` events
 
 When severity is set, the framework stores two fields on the alert episode:
 
-- `episode.severity` — the severity value from the most recent breached event (current state).
-- `episode.severity_max` — the highest severity level observed across the episode's lifetime. Useful for routing like "this episode peaked at critical."
+- `episode.severity` — The severity value from the most recent breached event (current state).
+- `episode.severity_max` — The highest severity level observed across the episode's lifetime. Useful for routing like "this episode peaked at critical."
 
-Both fields are available for action policy matchers. For the full field reference, see [Rule event and field reference](rule-event-field-reference.md#episode-fields).
+Both fields are available for action policy matchers. Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for more information about these fields.
 
 ```esql
 FROM metrics-*
