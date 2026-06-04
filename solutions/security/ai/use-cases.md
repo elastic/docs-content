@@ -31,4 +31,6 @@ In addition to AI Assistant and Attack Discovery, {{elastic-sec}} provides sever
 
   {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` Helps you detect any issues in {{elastic-defend}} integration policies and suggests remediation steps.
 
+* [Elastic Workflows](/explore-analyze/workflows.md): Automate SOC tasks declaratively in YAML. AI-augmented workflows can classify and route mixed items with `ai.classify`, summarize with `ai.summarize`, and reason over alerts with `ai.agent`. For an example, refer to [Classify and route mixed items with AI](/explore-analyze/workflows/use-cases/ai-augmented-workflows/classify-and-route-alerts.md).
+
 
