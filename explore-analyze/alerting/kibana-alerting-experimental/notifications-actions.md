@@ -30,6 +30,12 @@ If any gate stops the episode, the workflow is not invoked for that policy.
 Because each action policy evaluates alert episodes independently, an episode that is blocked by one policy can still trigger a workflow through a second policy with different conditions.
 :::
 
+## Why policies are separate from rules
+
+Policies are independent of rules. A single global policy can cover alert episodes from many rules, so a policy matching `data.severity: "critical"` applies regardless of which rule produced the alert episode. You can also update notification routing without touching any rule, and you can create rules without any action policy, which is useful for testing detection logic before wiring up notifications.
+
+When you do need routing that is specific to one rule, create a per-rule policy and bind it to that rule at creation.
+
 ## Policy types [policy-types]
 
 Policies can be global or per-rule. Global policies apply across all rules in a space and suit most use cases. Per-rule policies apply to a single rule and give you precise control over routing for that rule without affecting anything else in the space.
@@ -67,12 +73,6 @@ For each enabled policy that is not snoozed, the dispatcher works through the fo
 5. **Destinations:** Invoke the configured workflows.
 
 Workflow invocations may not happen immediately after a rule evaluates.
-
-## Why policies are separate from rules
-
-Policies are independent of rules. A single global policy can cover alert episodes from many rules, so a policy matching `data.severity: "critical"` applies regardless of which rule produced the alert episode. You can also update notification routing without touching any rule, and you can create rules without any action policy, which is useful for testing detection logic before wiring up notifications.
-
-When you do need routing that is specific to one rule, create a per-rule policy and bind it to that rule at creation.
 
 ## Next steps
 
