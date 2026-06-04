@@ -19,7 +19,7 @@ For notification routing, refer to [Notifications](../notifications.md).
 -->
 
 :::{note}
-For Alert-mode rules, you can create and attach action policies directly from the rule form's **Actions** step. Existing action policies that match the rule are listed on load. If none exist, an onboarding panel appears. Action policies are created or updated alongside the rule when you save. The **Actions** step is not shown for Detect-mode rules.
+For Alert-mode rules, you can create and attach action policies directly from the rule form's **Actions** step. Existing action policies that match the rule are listed on load. If none exist, an onboarding panel appears. Action policies are created or updated alongside the rule when you save. The **Actions** step is not shown for Signal-mode rules.
 
 You can also manage action policies independently from the **Action policies** area, using KQL matchers to scope them to any episodes you want to route.
 :::
@@ -30,7 +30,7 @@ Choose a mode that matches how you want to use results:
 
 | Mode | Behavior |
 | --- | --- |
-| Detect | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
+| Signal | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
 | Alert | Lifecycle tracking and actions: alerts move through states (pending, active, recovering, and so on), and you can attach action policies so alert episodes dispatch through workflows. |
 
 Several settings on this page apply only when the rule is in Alert mode (`kind: alert`).

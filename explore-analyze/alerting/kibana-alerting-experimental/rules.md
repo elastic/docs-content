@@ -17,9 +17,9 @@ A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data
 ## What rules do [detection-and-notification]
 
 
-On each run, a rule executes an {{esql}} query against your data. If the query finds a match and the rule is in Detect mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
+On each run, a rule executes an {{esql}} query against your data. If the query finds a match and the rule is in Signal mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
 
-When creating a rule, choose Detect mode to record and query results without alerting anyone, or Alert mode when you want to track issues and route notifications.
+When creating a rule, choose Signal mode to record and query results without alerting anyone, or Alert mode when you want to track issues and route notifications.
 
 ## What rules don't do 
 
@@ -47,7 +47,7 @@ If you already have an {{esql}} query working in Discover, you can also [create 
 
 ## Next steps
 
-- **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
+- **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Signal or Alert mode, and structure your data sources and conditions.
 - **[Configure a rule](rules/configure-a-rule.md):** Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
 - **[View and manage rules](rules/view-manage-rules.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.
 - **Rule Doctor:** Analyze your rules for duplicates, stale conditions, threshold tuning opportunities, and coverage gaps. Rule Doctor surfaces findings with impact and confidence ratings and tracks each insight through an open → applied or dismissed lifecycle. Access it from the {{alerting-v2-system}} navigation.

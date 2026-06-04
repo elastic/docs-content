@@ -20,7 +20,7 @@ Before creating the rule, decide what you want it to do:
 
 | Mode | What it does |
 | --- | --- |
-| Detect (`kind: signal`) | Records query matches as signals. No alert episodes, no notifications. Good for testing a query or building a data history without alerting anyone. |
+| Signal (`kind: signal`) | Records query matches as signals. No alert episodes, no notifications. Good for testing a query or building a data history without alerting anyone. |
 | Alert (`kind: alert`) | Records matches and maintains alert episodes with lifecycle states. Alert episodes appear on the **Alerts** page and can be matched by action policies for notifications. |
 
 You can switch a rule's mode after creation from the rule list or rule detail page.
