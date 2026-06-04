@@ -1,8 +1,8 @@
 ---
 navigation_title: Privileges
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
   - id: cloud-serverless
