@@ -14,7 +14,7 @@ Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page cov
 
 ## View policy details
 
-From the **Action policies** list, you can open a policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
+From the **Action policies** list, you can open a policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. The list also shows the display name of the user who created the policy and the user who last updated it. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
 
 ## Execution history
 
