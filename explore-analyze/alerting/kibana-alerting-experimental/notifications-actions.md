@@ -32,7 +32,7 @@ Because each action policy evaluates alert episodes independently, an episode th
 
 ## Why policies are separate from rules
 
-Policies are independent of rules. A single global policy can cover alert episodes from many rules, so a policy matching `data.severity: "critical"` applies regardless of which rule produced the alert episode. You can also update notification routing without touching any rule, and you can create rules without any action policy, which is useful for testing detection logic before wiring up notifications.
+Policies are independent of rules. A single global policy can cover alert episodes from many rules, so a policy matching `episode.severity: "critical"` applies regardless of which rule produced the alert episode. You can also update notification routing without touching any rule, and you can create rules without any action policy, which is useful for testing detection logic before wiring up notifications.
 
 When you do need routing that is specific to one rule, create a per-rule policy and bind it to that rule at creation.
 

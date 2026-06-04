@@ -41,9 +41,9 @@ Optional string labels you assign to a policy to categorize it or filter it on t
 
 An optional [KQL](../../../query-filter/languages/kql.md) expression that filters which alert episodes this policy applies to. An empty match condition matches every alert episode covered by the policy's scope. For a global policy, that means all alert episodes in the space. For a per-rule policy, it means all alert episodes from the associated rule.
 
-Use match conditions to route different alert episodes to different policies, for example, one policy for `rule.tags: "payment-service"` alert episodes routed to PagerDuty and another for warnings routed to Slack. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
+Use match conditions to route different alert episodes to different policies, for example, one policy for `episode.severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 
-<!--[CONTENT NEEDED for M2: The `data.severity: "critical"` example above will become the legacy approach once M2 ships. M2 promotes severity to `episode.severity` and `episode.severity_max` as first-class episode fields. Update this example to use `episode.severity: "CRITICAL"` and update the cross-reference to include the new fields. Also decide whether to retain `data.severity` as an alternative for rules that haven't migrated, or to remove it from guidance entirely.]
+<!--[CONTENT NEEDED: Confirm whether `data.severity` on legacy rules (rules that have not migrated to `episode.severity`) should be documented as an alternative matcher, or removed from guidance entirely. If retained, add a note in the reference explaining when to use `data.*` severity fields versus `episode.severity`.]
 -->
 
 ## Grouping and frequency [reduce-noise-grouping]

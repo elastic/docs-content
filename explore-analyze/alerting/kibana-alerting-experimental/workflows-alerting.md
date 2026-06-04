@@ -14,6 +14,7 @@ Workflows are part of the {{alerting-v2-system}} in {{kib}}. Without a workflow 
 
 :::{important}
 Before creating an action policy, make sure the workflows you want to use already exist in your space. For information on creating a workflow, refer to [Build your first workflow](../../workflows/get-started/build-your-first-workflow.md).
+
 :::
 
 ## Runtime execution order [runtime-execution-order]
