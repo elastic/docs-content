@@ -84,7 +84,7 @@ Configure activation using count, timeframe, or both:
 | Field | Description |
 | --- | --- |
 | `pending_count` | Consecutive breaches required |
-| `pending_timeframe` | Minimum duration the condition must persist |
+| `pending_timeframe` | Minimum duration the condition must persist (shown as **Alert delay** in the UI) |
 | `pending_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
 Each timeframe value must be between 5 seconds and 365 days.
