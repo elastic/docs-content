@@ -5,15 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
+description: "Advanced ES|QL query patterns for rules in the experimental alerting system: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
 ---
 
-# {{esql}} query patterns for rules in the {{alerting-v2}} [esql-query-patterns]
+# {{esql}} query patterns for rules in the {{alerting-v2-system}} [esql-query-patterns]
 
 
-ES|QL query patterns for rules are part of the {{alerting-v2}} in Kibana. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
+ES|QL query patterns for rules are part of the {{alerting-v2-system}} in {{kib}}. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
 
-Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2}} work, start with [Author rules](author-rules.md) first.
+Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2-system}} work, start with [Author rules](author-rules.md) first.
 
 ## Basic threshold query [threshold-query]
 
@@ -39,7 +39,7 @@ An SLO burn rate query asks a different question than a basic threshold: are you
 
 ### Why multiple windows
 
-Checking both a short window (for example, 5 minutes) and a long window (for example, 1 hour) together filters out brief spikes that do not represent a real budget threat. CRITICAL fires only when *both* the short and long burn rates exceed the threshold. The two-window requirement is what separates a genuine budget emergency from a momentary blip.
+Checking both a short window (for example, 5 minutes) and a long window (for example, 1 hour) together filters out brief spikes that don't represent a real budget threat. A `critical`-severity alert episode fires only when *both* the short and long burn rates exceed the threshold. The two-window requirement is what separates a genuine budget emergency from a momentary blip.
 
 ### Query structure
 
@@ -68,11 +68,11 @@ FROM metrics-*
     burn_30m = errors_30m / total_30m,
     burn_6h  = errors_6h  / total_6h
 | EVAL severity = CASE(
-    // CRITICAL: both the fast and sustained windows exceed 14.4x the baseline error rate.
+    // critical: both the fast and sustained windows exceed 14.4x the baseline error rate.
     // Requiring both prevents a single brief spike from triggering a critical alert.
-    burn_5m  > 14.4 AND burn_1h  > 14.4, "CRITICAL",
-    // HIGH: same two-window logic at a lower threshold
-    burn_30m > 6.0  AND burn_6h  > 6.0,  "HIGH",
+    burn_5m  > 14.4 AND burn_1h  > 14.4, "critical",
+    // high: same two-window logic at a lower threshold
+    burn_30m > 6.0  AND burn_6h  > 6.0,  "high",
     "none"
   )
 | WHERE severity != "none"             // Only breaching SLOs become alert rows
@@ -83,11 +83,7 @@ The burn rate multipliers (14.4×, 6×) reflect standard SLO error budget consum
 
 Because the query computes several window pairs in one pass, the lookback window on the rule must cover the longest window in the query (3 days in the example above).
 
-<!--[CONTENT NEEDED for M2: An open design question from M1 is whether SLO burn rates should be pre-computed and indexed separately (for example, via a transform writing to a dedicated metrics index) rather than calculated inside the rule query. If this pattern is adopted as the recommended approach, the query structure above will need to be revised or replaced. Confirm the recommended pattern before finalizing this section.]
--->
-
-<!--[CONTENT NEEDED for M2: M2 promotes severity to a first-class episode-level property. The current query outputs severity as a plain string in a `data.*` field (for example, `"CRITICAL"`, `"HIGH"`). Verify whether M2 requires this output to map explicitly to the new episode severity property, and update the query and surrounding explanation accordingly.]
--->
+The `severity` column in `KEEP` maps directly to `episode.severity` on each resulting alert episode. For the accepted values and matching rules, see [Severity levels](author-rules.md#severity-levels).
 
 ## No-data detection [no-data-esql-query]
 
@@ -147,13 +143,13 @@ FROM metrics-*
 | KEEP host.name, total_buckets, exceeding_buckets
 ```
 
-The rule's lookback window must cover all the buckets you want to check (50 minutes for 10 five-minute buckets in this example). If any bucket is missing from the data because the host stopped reporting briefly mid-window, `total_buckets` drops below 10 and the condition does not fire. Design the query so that gaps in reporting produce the behavior you want: either treating partial coverage as a non-breach or adjusting the `WHERE` filter to allow it.
+The rule's lookback window must cover all the buckets you want to check (50 minutes for 10 five-minute buckets in this example). If any bucket is missing from the data because the host stopped reporting briefly mid-window, `total_buckets` drops below 10 and the condition doesn't fire. Design the query so that gaps in reporting produce the behavior you want: either treating partial coverage as a non-breach or adjusting the `WHERE` filter to allow it.
 
 <!--[CONTENT NEEDED for M2: M2's Track By feature gives the system a native concept of series identity and may provide a way to track how many consecutive evaluations a series has been breaching. If this lands, persistent breach detection could become a rule configuration option rather than something expressed entirely in the {{esql}} query. Verify whether M2 adds consecutive-breach tracking at the series level, and if so, document the configuration approach here alongside or instead of this workaround.]
 -->
 
 ### Derivative aggregation [derivative-aggregation]
 
-{{esql}} does not have a `DERIVATIVE` function. In the {{es}} aggregations API, a derivative pipeline aggregation calculates the rate of change between consecutive time buckets (for example, "how fast is this counter increasing per minute?"). There is no equivalent in {{esql}} today.
+{{esql}} does not have a `DERIVATIVE` function. In the {{es}} aggregations API, a derivative pipeline aggregation calculates the rate of change between consecutive time buckets (for example, "how fast is this counter increasing per minute?"). There is no equivalent in {{esql}}.
 
 Use cases that require true per-bucket deltas (such as detecting a sudden acceleration in error rate) cannot be expressed as an {{esql}} rule at this time. Consider pre-computing deltas in an ingest pipeline or using a transform to write derived metrics to a separate index that your rule can then query with a standard threshold pattern.

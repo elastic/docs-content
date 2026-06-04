@@ -5,13 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Complete field reference for YAML rule definitions in the {{alerting-v2}}: required fields, metadata, schedule, grouping, state transitions, no-data handling, and duration format."
+description: "YAML rule definitions in Kibana's experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
 ---
 
-# YAML rule schema reference [yaml-rule-schema-reference]
+# YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
 
 
-YAML rule schema is part of the {{alerting-v2}} in Kibana. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
+YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
 
 ## Required fields
 
@@ -39,13 +39,12 @@ YAML rule schema is part of the {{alerting-v2}} in Kibana. This page lists valid
 
 ## Recovery policy fields
 
+The `recovery_policy` field is optional. When absent, the rule emits no recovery events and active alert episodes don't close automatically. Omitting `recovery_policy` is only possible when creating a rule via the API or Agent Builder. Rules created through the Kibana UI always include `recovery_policy.type: no_breach` by default.
+
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `recovery_policy.type` | string | `no_breach` or `query` | How recovery is detected. `no_breach` recovers when the query returns no results. `query` uses a separate recovery query. |
+| `recovery_policy.type` | string | `no_breach` or `query` | How recovery is detected. `no_breach` recovers when the query returns no breach results for the active group. `query` uses a separate recovery query. |
 | `recovery_policy.query.base` | string | Valid {{esql}} query | Required when `recovery_policy.type` is `query`. The query that checks whether the condition has cleared. |
-
-<!--[CONTENT NEEDED for M2: M2 adds a third `recovery_policy.type` value: `manual`. When set to `manual`, an episode never auto-recovers — it must be explicitly closed by a human or API call. This is designed for security-style rules where a finding should not disappear just because the log event aged out of the lookback window. Add `manual` to the accepted values list and document its behavior and when to use it.]
--->
 
 ## State transition fields
 

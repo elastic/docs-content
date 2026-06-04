@@ -5,13 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure rules in the {{alerting-v2}}: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
+description: "Configure rules in the experimental alerting system: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."
 ---
 
-# Configure a rule in the {{alerting-v2}} [rule-settings]
+# Configure a rule in {{alerting-v2-system}} [rule-settings]
 
 
-Configuring rules is part of the {{alerting-v2}} in Kibana. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
+Rule configuration is part of the {{alerting-v2-system}} in {{kib}}. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
 
 For query authoring, refer to [Author rules](author-rules.md).
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
@@ -19,7 +19,9 @@ For notification routing, refer to [Notifications](../notifications.md).
 -->
 
 :::{note}
-Action policies are not configured on the rule form. You create them separately in the **Action policies** area and use KQL matchers to scope them to the episodes you want to route. The rule builder form does not link to policies.
+For Alert-mode rules, you can create and attach action policies directly from the rule form's **Actions** step. Existing action policies that match the rule are listed on load. If none exist, an onboarding panel appears. Action policies are created or updated alongside the rule when you save. The **Actions** step is not shown for Signal-mode rules.
+
+You can also manage action policies independently from the **Action policies** area, using KQL matchers to scope them to any episodes you want to route.
 :::
 
 ## Rule mode [rule-mode]
@@ -28,8 +30,8 @@ Choose a mode that matches how you want to use results:
 
 | Mode | Behavior |
 | --- | --- |
-| Detect | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
-| Alert | Lifecycle tracking and notifications: alerts move through states (pending, active, recovering, and so on), and you can attach action policies so episodes dispatch through workflows. |
+| Signal | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
+| Alert | Lifecycle tracking and actions. Alerts move through states (pending, active, recovering, and so on), and you can attach action policies so alert episodes dispatch through workflows. |
 
 Several settings on this page apply only when the rule is in Alert mode (`kind: alert`).
 
@@ -44,7 +46,9 @@ Rule grouping splits alert event generation by one or more group key fields so t
 
 Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules.md) for query patterns.
 
-Note that rule grouping is separate from notification grouping on an action policy, which controls how episodes batch into messages.
+When writing a rule that uses grouping, writing the query first and then specifying group fields avoids mismatches between the query output and the grouping configuration. The group fields in the rule form reflect the columns produced by the `STATS ... BY` clause, so if you add or remove a `BY` field in the query, the corresponding group field must be updated to match.
+
+Note that rule grouping is separate from notification grouping on an action policy, which controls how alert episodes batch into messages.
 
 <!--[CONTENT NEEDED for M2: M2 replaces the current `grouping.fields` approach with a `track_by` concept and introduces a `series.*` block that gives each series a stable, explicit identity. Update this section to document the `track_by` configuration, explain how the `series.*` block differs from the current `group_hash` approach, and revise any references to `grouping.fields` or the `BY` clause alignment requirement once the M2 schema is finalized.]
 -->
@@ -80,7 +84,7 @@ Configure activation using count, timeframe, or both:
 | Field | Description |
 | --- | --- |
 | `pending_count` | Consecutive breaches required |
-| `pending_timeframe` | Minimum duration the condition must persist |
+| `pending_timeframe` | Minimum duration the condition must persist (shown as **Alert delay** in the UI) |
 | `pending_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
 Each timeframe value must be between 5 seconds and 365 days.
@@ -94,6 +98,10 @@ Each timeframe value must be between 5 seconds and 365 days.
 | `recovering_operator` | How to combine count and timeframe (`AND` or `OR`) |
 
 Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
+
+:::{note}
+The `recovery_policy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_policy.type` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch. When creating a rule through the API or Agent Builder, you can omit `recovery_policy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-policy-fields).
+:::
 
 ## No-data handling [no-data-handling]
 
@@ -109,7 +117,7 @@ Set `no_data.behavior` to one of the following values:
 | `last_status` | Carry forward the previous status |
 | `recover` | Treat absence as recovery |
 
-These behaviors apply when the base query returns zero rows. They do not help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
+These behaviors apply when the base query returns zero rows. They don't help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
 
 ## Tags and investigation guide [tags-investigation]
 

@@ -5,13 +5,13 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Define rules as YAML in the {{alerting-v2}} for version control, infrastructure-as-code, and bulk provisioning."
+description: "Define rules as YAML in Kibana's experimental alerting system for version control, infrastructure-as-code, and bulk provisioning of detection logic."
 ---
 
-# Create rules using the YAML editor [create-rules-yaml]
+# Create rules using the YAML editor in {{alerting-v2-system}} [create-rules-yaml]
 
 
-The YAML editor is part of the {{alerting-v2}} in Kibana. It lets you define rules as text documents rather than filling in a form. Use it when you want to version-control rule definitions alongside your other configuration, manage rules through infrastructure-as-code tooling, copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once.
+The YAML editor is part of the {{alerting-v2-system}} in {{kib}}. It lets you define rules as text documents rather than filling in a form. Use it when you want to version-control rule definitions alongside your other configuration, manage rules through infrastructure-as-code tooling, copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once.
 
 If you're creating a rule from scratch and want guidance through each setting, the [rule builder](create-rule-from-rule-builder.md) is the better starting point. If you have a query already working in Discover, you can [create a rule directly from there](create-rule-from-discover.md).
 
