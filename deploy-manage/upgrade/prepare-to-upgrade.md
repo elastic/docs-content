@@ -110,8 +110,6 @@ If you're upgrading to the current {{version.stack}} release from an earlier 8.x
 
 If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
 
-If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
-
 :::{note}
 For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
 
@@ -826,11 +824,3 @@ DELETE _transform/my-transform?delete_dest_index
 ```
 :::
 
-## Reindex to upgrade [reindex-to-upgrade]
-
-If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote:
-
-1. Provision an additional deployment running the desired version, such as {{version.stack}}.
-2. To reindex your data into the new {{es}} cluster, use the [reindex documents API]({{es-apis}}v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
-3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
