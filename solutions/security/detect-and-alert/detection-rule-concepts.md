@@ -98,7 +98,7 @@ Rules run in the background using an API key. The key type and ownership model d
 
 On Stack deployments, {{elastic-sec}} generates an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) when you create or modify a rule. The key captures a snapshot of your current privileges, and ownership transfers to whoever last edited the rule. This means rules continue running with their editor's privileges, even when that user is not logged in.
 
-In {{serverless-full}} projects, rules use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) tied to the original creator. Unlike {{es}} API keys, ownership does not transfer when a different user edits the rule. Refer to [Rules and API keys in Serverless](/deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md) for details on how this affects access, scope, and what to check after migration.
+In {{serverless-full}} projects, rules use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) tied to the original creator. Unlike {{es}} API keys, ownership does not transfer when a different user edits the rule. Refer to [Rules and API keys in Serverless](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md) for details on how this affects access, scope, and what to check after migration.
 
 ::::{important}
 Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
@@ -108,7 +108,7 @@ If a user without the required privileges (such as index read access) updates a 
 - **Edit and save the rule**: On Stack deployments, this regenerates the {{es}} API key with the current user's privileges. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn more.
 - **Update the API key directly** (Stack only): This allows the rule configuration to remain unchanged. Refer to [](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) to learn more.
 
-Either action rebinds the rule to a user who has the necessary access. For Serverless projects, refer to [Rules and API keys in Serverless](/deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md#post-migration-checklist) for guidance on resolving migration and access errors.
+Either action rebinds the rule to a user who has the necessary access. For Serverless projects, refer to [Rules and API keys in Serverless](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md#post-migration-checklist) for guidance on resolving migration and access errors.
 ::::
 
 ## Key terms quick reference
