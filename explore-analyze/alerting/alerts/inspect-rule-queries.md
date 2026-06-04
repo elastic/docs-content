@@ -19,19 +19,17 @@ Currently, the rule query inspector is only available for **custom threshold rul
 
 ## Access the inspector [inspect-access]
 
-The inspector is available from two places, each showing a different query:
+The inspector is available from two places, each showing a different query: the rule details page (shows current rule parameters) and the alert details page (shows historical parameters)
 
-**From the rule details page (current rule parameters)**
-:   Open **{{stack-manage-app}}** > **{{rules-ui}}**, find your rule, and click its name to open the rule details page. Click **Rule query inspector**. The inspector builds the query from the rule's _current_ parameters. Use this view to verify that the rule is configured correctly and would match the data you expect.
+* **Rule details page**: Open **{{stack-manage-app}}** > **{{rules-ui}}**, find your rule, and click its name to open the rule details page. Click **Rule query inspector**. The inspector builds the query from the rule's _current_ parameters. Use this view to verify that the rule is configured correctly and would match the data you expect.
 
-**From an alert details page (historical parameters)**
-:   Go to the **Alerts** page, then open an individual alert. Click **Rule query inspector**. The inspector uses the rule parameters _as they existed when that specific alert fired_, including the exact evaluation time range. Use this view to understand why a particular alert was or wasn't triggered.
+* **Alert details page**: Go to the **Alerts** page, then open an individual alert. Click **Rule query inspector**. The inspector uses the rule parameters _as they existed when that specific alert was generated_, including the exact evaluation time range. Use this view to understand why a particular alert was or wasn't triggered.
 
-The key difference: the rule details page reflects the rule as it is _now_, while the alert details page reflects the rule as it was _then_. If you've edited the rule since an alert fired, the two inspectors will show different queries.
+The key difference is that the rule details page reflects the rule as it is _now_, while the alert details page reflects the rule as it was _then_. If you've edited the rule since an alert fired, the two inspectors will show different queries.
 
 ## What the inspector shows [inspect-tabs]
 
-The inspector has two tabs:
+The inspector has a **Request** and **Response** tab.
 
 **Request**
 :   Shows the full {{es}} query that the rule sends when it evaluates your data. Use it to verify the index pattern, time range, query filter, and aggregations match what you configured in the rule.
