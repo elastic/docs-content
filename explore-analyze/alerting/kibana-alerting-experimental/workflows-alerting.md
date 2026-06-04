@@ -2,7 +2,7 @@
 navigation_title: Connect workflows
 applies_to:
   stack: experimental 9.5+
-  serverless: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "How workflows connect to the {{alerting-v2-system}} action policies and rule automation, and where to configure them."
