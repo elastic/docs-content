@@ -8,10 +8,9 @@ products:
 description: "Learn how to write ES|QL queries for rules. Choose a rule mode, structure a base query and alert condition, set thresholds, and assign severity levels."
 ---
 
-# Rule authoring in {{alerting-v2}} [author-rules]
+# Rule authoring in the {{alerting-v2-system}} [author-rules]
 
-
-Rule authoring is part of the {{alerting-v2}} in {{kib}}. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
+Rule authoring is part of the {{alerting-v2-system}} in {{kib}}. Authoring a rule means deciding three things: what condition in your data counts as a problem, whether you want the rule to silently record matches or actively track issues through to resolution, and which fields to carry forward onto each alert event so you can route and triage effectively. Getting these decisions right in the query is what makes the difference between a rule that fires on everything and one that surfaces the problems that actually need attention.
 
 This page covers the query concepts behind a rule definition. For settings beyond the query (such as schedules, grouping, and lifecycle thresholds), refer to [Configure a rule](configure-a-rule.md). Once you understand what goes into a rule, you can write one using the [rule builder](create-rule-from-rule-builder.md), [YAML editor](create-rule-with-yaml.md), or [a Discover session](create-rule-from-discover.md).
 
@@ -21,8 +20,8 @@ Before creating the rule, decide what you want it to do:
 
 | Mode | What it does |
 | --- | --- |
-| Detect (`kind: signal`) | Records query matches as signals. No episodes, no notifications. Good for testing a query or building a data history without alerting anyone. |
-| Alert (`kind: alert`) | Records matches and maintains alert episodes with lifecycle states. Episodes appear on the **Alerts** page and can be matched by action policies for notifications. |
+| Detect (`kind: signal`) | Records query matches as signals. No alert episodes, no notifications. Good for testing a query or building a data history without alerting anyone. |
+| Alert (`kind: alert`) | Records matches and maintains alert episodes with lifecycle states. Alert episodes appear on the **Alerts** page and can be matched by action policies for notifications. |
 
 You can switch a rule's mode after creation from the rule list or rule detail page.
 
@@ -49,17 +48,17 @@ The `KEEP` command controls which fields appear on each stored alert event. Only
 
 ### Recovery condition [recovery-condition]
 
-Recovery conditions are optional. They determine when an active episode closes. 
+Recovery conditions are optional. They determine when an active alert episode closes.
 
 Three recovery types are available:
 
 | Type | Behavior |
 | --- | --- |
-| Default | The episode recovers automatically when the alert condition is no longer met. |
-| Custom | Uses a separate {{esql}} expression you define. The episode recovers when that expression returns no rows. |
-| No recovery | The episode stays active until manually closed. *(Coming soon.)* |
+| Default | The alert episode recovers automatically when the alert condition is no longer met. |
+| Custom | Uses a separate {{esql}} expression you define. The alert episode recovers when that expression returns no rows. |
+| No recovery | The alert episode stays active until manually closed. *(Coming soon.)* |
 
-When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach isn't a reliable recovery signal — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
+When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach isn't a reliable recovery indicator — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
 
 ## Data sources
 
@@ -78,7 +77,7 @@ The [{{esql}} reference](elasticsearch://reference/query-languages/esql.md) cove
 
 The alert condition in {{esql}} defines what counts as a breach in each evaluation.
 
-The activation and recovery thresholds on the rule are separate from the query. They control how many consecutive breaches must occur, or how long the condition must persist, before an episode becomes active or moves back to inactive. Those settings are in [Configure a rule](configure-a-rule.md#activation-recovery-thresholds).
+The activation and recovery thresholds on the rule are separate from the query. They control how many consecutive breaches must occur, or how long the condition must persist, before an alert episode becomes active or moves back to inactive. Those settings are in [Configure a rule](configure-a-rule.md#activation-recovery-thresholds).
 
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 For how alert states connect to episodes, refer to [Alert lifecycle](../alerts.md#alert-lifecycle).
@@ -86,7 +85,7 @@ For how alert states connect to episodes, refer to [Alert lifecycle](../alerts.m
 
 ## Severity levels [severity-levels]
 
-Severity is a first-class field on alert episodes in the {{alerting-v2}}. To set severity, include a column named `severity` in your ES|QL query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels:
+Severity is a first-class field on alert episodes in the {{alerting-v2-system}}. To set severity, include a column named `severity` in your ES|QL query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels:
 
 | Value | Meaning |
 | --- | --- |

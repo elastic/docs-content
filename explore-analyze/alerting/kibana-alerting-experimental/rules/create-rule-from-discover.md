@@ -5,19 +5,19 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Turn an {{esql}} query in Discover into a rule in the {{alerting-v2}} with pre-filled evaluation and lookback."
+description: "Turn an {{esql}} query in Discover into a rule in the {{alerting-v2-system}} with pre-filled evaluation and lookback."
 ---
 
-# Create rules from Discover in {{alerting-v2}} [create-rules-discover]
+# Create rules from Discover in the {{alerting-v2-system}} [create-rules-discover]
 
 
-Creating rules from Discover is part of the {{alerting-v2}} in {{kib}}. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including schedule and lifecycle settings, refer to [Configure a rule](configure-a-rule.md).
+Discover-based rule creation is part of the {{alerting-v2-system}} in {{kib}}. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including schedule and lifecycle settings, refer to [Configure a rule](configure-a-rule.md).
 
 ## Entry points [discover-rule-entry-points]
 
 Two paths lead to Discover-based rule creation:
 
-- **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and the {{alerting-v2}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
+- **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and the {{alerting-v2-system}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
 - **Rules list**: From the rules list, selecting the option to create a rule from Discover opens the Discover-based rule creation experience directly. The flyout embeds a live Discover session so you can compose and test the query before saving the rule. After saving, you return to the rules list.
 
 ## How it works [discover-rule-flow]

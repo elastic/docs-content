@@ -5,15 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
+description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2-system}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."
 ---
 
-# {{esql}} query patterns for rules in {{alerting-v2}} [esql-query-patterns]
+# {{esql}} query patterns for rules in the {{alerting-v2-system}} [esql-query-patterns]
 
 
-ES|QL query patterns for rules are part of the {{alerting-v2}} in {{kib}}. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
+ES|QL query patterns for rules are part of the {{alerting-v2-system}} in {{kib}}. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
 
-Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2}} work, start with [Author rules](author-rules.md) first.
+Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2-system}} work, start with [Author rules](author-rules.md) first.
 
 ## Basic threshold query [threshold-query]
 
@@ -39,7 +39,7 @@ An SLO burn rate query asks a different question than a basic threshold: are you
 
 ### Why multiple windows
 
-Checking both a short window (for example, 5 minutes) and a long window (for example, 1 hour) together filters out brief spikes that don't represent a real budget threat. CRITICAL fires only when *both* the short and long burn rates exceed the threshold. The two-window requirement is what separates a genuine budget emergency from a momentary blip.
+Checking both a short window (for example, 5 minutes) and a long window (for example, 1 hour) together filters out brief spikes that don't represent a real budget threat. A `critical`-severity alert episode fires only when *both* the short and long burn rates exceed the threshold. The two-window requirement is what separates a genuine budget emergency from a momentary blip.
 
 ### Query structure
 

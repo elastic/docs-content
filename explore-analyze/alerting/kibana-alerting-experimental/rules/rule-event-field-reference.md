@@ -5,13 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Reference for rule configuration fields and documents written to `.rule-events` in the {{alerting-v2}}."
+description: "Reference for rule configuration fields and documents written to `.rule-events` in the {{alerting-v2-system}}."
 ---
 
-# Rule event and field reference [rule-reference]
+# Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
 
-
-Rule event fields are part of the {{alerting-v2}} in {{kib}}. This page lists technical fields for rule configuration and rule event documents written to `.rule-events`.
+Rule event fields are part of the {{alerting-v2-system}} in {{kib}}. This page lists technical fields for rule configuration and rule event documents written to `.rule-events`.
 <!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
 For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
 -->

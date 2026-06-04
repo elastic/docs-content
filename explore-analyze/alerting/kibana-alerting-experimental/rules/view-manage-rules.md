@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use the rules list and rule details page in the {{alerting-v2}}: filters, search, bulk actions, and what you find in rule conditions."
+description: "Use the rules list and rule details page in the {{alerting-v2-system}}: filters, search, bulk actions, and what you find in rule conditions."
 ---
 
-# View and manage rules in {{alerting-v2}} [manage-rules]
+# View and manage rules in the {{alerting-v2-system}} [manage-rules]
 
-Rule management is part of the {{alerting-v2}} in {{kib}}. After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
+Rule management is part of the {{alerting-v2-system}} in {{kib}}. After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
 
 ## Find and filter rules [find-filter-rules]
 

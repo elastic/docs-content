@@ -5,14 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "What rules are in the {{alerting-v2}}, how evaluation works, and how rules connect to alerts and notifications."
+description: "What rules are in the {{alerting-v2-system}}, how evaluation works, and how rules connect to alerts and notifications."
 ---
 
-# Rules in {{alerting-v2}}
+# Rules in the {{alerting-v2-system}}
 
-Rules are part of the {{alerting-v2}} in {{kib}}. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
+Rules are part of the {{alerting-v2-system}} in {{kib}}. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
 
-A rule is where the {{alerting-v2}} start. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
+A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
 
 ## What rules do [detection-and-notification]
 
@@ -23,7 +23,7 @@ When creating a rule, choose Detect mode to record and query results without ale
 
 ## What rules don't do 
 
-Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies — global objects, scoped to your space, that match episodes from any rule. A rule has no say in which policies pick it up.
+Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies — global objects, scoped to your space, that match alert episodes from any rule. A rule has no say in which policies pick it up.
 
 This separation means you can build and test a rule without anyone getting paged, update notification routing without touching the rule, and have multiple action policies respond to the same rule independently.
 
@@ -31,17 +31,17 @@ This separation means you can build and test a rule without anyone getting paged
 
 % Rules never overwrite old data. Each evaluation appends rows to `.rule-events`, giving you a complete, queryable history of every time the condition was met, when it cleared, and what the data looked like.
 
-% When a rule groups by fields (for example `BY host.name`), each unique combination is its own series, identified by `group_hash`. An episode spans one lifecycle arc on a series from first breach through recovery, identified by `episode_id`.
+% When a rule groups by fields (for example `BY host.name`), each unique combination is its own series, identified by `group_hash`. An alert episode spans one lifecycle arc on a series from first breach through recovery, identified by `episode_id`.
 
 % You can query this history in Discover, build dashboards from it, or write follow-on rules that read `.rule-events` as a data source.
 
 ## Create a rule [create-a-rule]
 
-Rules in the {{alerting-v2}} are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
+Rules in the {{alerting-v2-system}} are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
 
 - **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results and a YAML editor also available. Use this when you want full control over the query. See [Create rules](rules/create-rule-from-rule-builder.md).
 - **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
-- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. The [Threshold Alert](rules/create-rule-from-rule-builder.md#threshold-alert-builder) type is available in this release, with more planned. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
+- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. The [Threshold Alert](rules/create-rule-from-rule-builder.md#threshold-alert) type is available in this release, with more planned. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
 
 If you already have an {{esql}} query working in Discover, you can also [create a rule directly from there](rules/create-rule-from-discover.md) to skip re-entering the query.
 
@@ -50,6 +50,6 @@ If you already have an {{esql}} query working in Discover, you can also [create 
 - **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Detect or Alert mode, and structure your data sources and conditions.
 - **[Configure a rule](rules/configure-a-rule.md):** Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
 - **[View and manage rules](rules/view-manage-rules.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.
-- **Rule Doctor:** Analyze your rules for duplicates, stale conditions, threshold tuning opportunities, and coverage gaps. Rule Doctor surfaces findings with impact and confidence ratings and tracks each insight through an open → applied or dismissed lifecycle. Access it from the {{alerting-v2}} navigation.
+- **Rule Doctor:** Analyze your rules for duplicates, stale conditions, threshold tuning opportunities, and coverage gaps. Rule Doctor surfaces findings with impact and confidence ratings and tracks each insight through an open → applied or dismissed lifecycle. Access it from the {{alerting-v2-system}} navigation.
 
 <!-- TODO: Update this description and link to the Rule Doctor dedicated page once it is published. The page should cover the insight types, the open/applied/dismissed lifecycle, impact and confidence ratings, continuous analysis scheduling, and required privileges (read-alerting-v2-rule-doctor / write-alerting-v2-rule-doctor). -->
