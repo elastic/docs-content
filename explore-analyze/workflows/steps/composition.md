@@ -18,7 +18,7 @@ products:
 Composition steps let one workflow invoke another. Use them to build reusable workflow building blocks, break long workflows into testable pieces, and fan out to background jobs.
 
 :::{warning}
-Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview in 9.4. The parameter shapes can change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
+Composition steps (`workflow.execute`, `workflow.executeAsync`, `workflow.output`, `workflow.fail`) are in technical preview. The parameter shapes can change in future releases. Use for prototypes and reusable utility workflows; hold off on critical paths until composition reaches GA.
 :::
 
 ## When to use composition
