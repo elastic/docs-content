@@ -25,9 +25,7 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `last_event_timestamp` | string | ISO 8601 timestamp of the most recent event recorded for the alert episode. | ISO 8601 timestamp | `last_event_timestamp > "2026-01-01"` |
 | `rule.id` | string | Unique identifier of the rule that generated the alert episode. | Any string | `rule.id: "rule-001"` |
 | `rule.name` | string | Display name of the rule. | Any string | `rule.name: "High CPU"` |
-| `rule.description` | string | Description of the rule. | Any string | `rule.description: *checkout*` |
 | `rule.tags` | string[] | Tags attached to the rule. Use to match alert episodes from rules with a specific tag. | Any string | `rule.tags: "payment-service"` |
-| `rule.enabled` | boolean | Whether the rule is currently enabled. | `true`, `false` | `rule.enabled: true` |
 | `data.*` | object | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard episode fields above. | Depends on rule type | `data.host.name: "web-01"` |
 
 <!--[CONTENT NEEDED: 
