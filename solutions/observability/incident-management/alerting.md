@@ -36,8 +36,8 @@ On the **Alerts** page, the Alerts table provides a snapshot of alerts occurring
 The **Alerts** page displays alerts from the following rule types:
 
 * Observability rules, including APM, Logs, Metrics, Uptime, and SLO rules
-* {applies_to}`stack: ga 9.5` ML anomaly detection rules
-* {applies_to}`stack: ga 9.5` Stack Management rules
+* {applies_to}`stack: ga 9.5+` {{ml}} anomaly detection rules
+* {applies_to}`stack: ga 9.5+` {{stack-manage-app}} rules
 
 ::::{note}
 ML anomaly detection and Stack Management alerts are visible only to users with the corresponding feature privileges, as access is controlled by Kibana's role-based access control (RBAC).
