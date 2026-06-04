@@ -73,7 +73,7 @@ You can query vector fields using [Query DSL](elasticsearch://reference/query-la
 
 Query DSL is the JSON request body for the `_search` API and related search endpoints. You describe match clauses, filters, scoring, and vector queries in nested objects.
 
-{{esql}} is a piped query language in {{es}}. You write a linear pipeline of commands and functions to read, filter, and score data instead of building the same logic as nested Query DSL JSON. Learn how to use [{{esql}} for search](/solutions/search/esql-for-search.md).
+{{esql}} is a piped query language in {{es}}. You write a linear pipeline of commands and functions to read, filter, and score data. Learn how to use [{{esql}} for search](/solutions/search/esql-for-search.md).
 
 | Field type      | Vector type     | Query DSL query                                                                              | {{esql}} (search-related functions) |
 |-----------------|-----------------|----------------------------------------------------------------------------------------------|---------------------------------------|
