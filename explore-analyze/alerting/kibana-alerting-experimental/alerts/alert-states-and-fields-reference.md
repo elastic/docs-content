@@ -5,26 +5,26 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Reference for episode status, `.rule-events` row status, and `.alert-actions` document fields in the {{alerting-v2}}."
+description: "Status values and field definitions for alert episodes in Kibana's experimental alerting system. Covers episode lifecycle states, rule event status, and alert action document fields."
 ---
 
 # Alert states and fields reference [alert-states-reference]
 
 
-Alert states and fields are part of the {{alerting-v2}} in Kibana. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
+Alert states and fields are part of the {{alerting-v2-system}} in {{kib}}. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
 For rule evaluation fields on `.rule-events`, refer to [Rule event and field reference](../rules/rule-event-field-reference.md#rule-reference).
 -->
 
-## Episode status
+## Alert episode status
 
 The `episode.status` field appears on documents with `type: alert` in `.rule-events`. It represents the current lifecycle state of the alert episode.
 
 | Value | Description |
 |---|---|
-| `inactive` | Episode not in an active breach state in the lifecycle model. |
+| `inactive` | Alert episode not in an active breach state in the lifecycle model. |
 | `pending` | Condition met but activation thresholds not yet satisfied. |
-| `active` | Episode is actively breaching per rule logic. |
+| `active` | Alert episode is actively breaching per rule logic. |
 | `recovering` | Condition clearing but recovery thresholds not yet satisfied. |
 
 <!--[CONTENT NEEDED for M2: M2 adds two first-class severity fields to the episode document:
@@ -37,7 +37,7 @@ Add a new table or rows for these fields once M2 ships. The episode detail UI is
 
 ## Rule event status
 
-The `status` field appears on all documents in `.rule-events`, for both `type: signal` and `type: alert`. It reflects the outcome of a single rule evaluation row, independent of the episode lifecycle.
+The `status` field appears on all documents in `.rule-events`, for both `type: signal` and `type: alert`. It reflects the outcome of a single rule evaluation row, independent of the alert episode lifecycle.
 
 | Value | Description |
 |---|---|
@@ -52,7 +52,7 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 | Field | Type | Description |
 |---|---|---|
 | `@timestamp` | date | When the action was recorded. |
-| `episode.id` | keyword | Target episode. |
-| `rule.id` | keyword | Rule that owns the episode. |
-| `action.type` | keyword | The action type, for example: <br>- `acknowledge`: User acknowledged the alert.<br>- `snooze`: Notifications snoozed for a period.<br>- `tag`: Tag applied to the alert.<br>- `fire`: Notification or escalation fired for the episode.<br>- `unmatched`: No action policy matched the episode, so no workflow ran for it under these policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](view-and-manage-alerts.md#alert-actions). |
-| `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`.<br>For example, if the episode stays `pending` for three rule evaluations in a row, the value is `3`. |
+| `episode.id` | keyword | Target alert episode. |
+| `rule.id` | keyword | Rule that owns the alert episode. |
+| `action.type` | keyword | The action type, for example: <br>- `acknowledge`: User acknowledged the alert episode.<br>- `snooze`: Notifications snoozed for a period.<br>- `tag`: Tag applied to the alert episode.<br>- `fire`: Notification or escalation fired for the alert episode.<br>- `unmatched`: No action policy matched the alert episode, so no workflow ran for it under these policies. <br><br> For the full set of action types and UI behavior, refer to [Alert actions](view-and-manage-alerts.md#alert-actions). |
+| `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`.<br>For example, if the alert episode stays `pending` for three rule evaluations in a row, the value is `3`. |

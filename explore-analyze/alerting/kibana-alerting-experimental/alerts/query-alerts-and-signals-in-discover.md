@@ -5,15 +5,15 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use {{esql}} in Discover against `.rule-events` and `.alert-actions`: sample queries, trends, and MTTA-style analysis for the {{alerting-v2}}."
+description: "Query alert episodes and signals with ES|QL in Kibana's experimental alerting system. Access rule evaluation history, triage actions, and operational metrics from .rule-events and .alert-actions."
 ---
 
 # Query alerts and signals in Discover [explore-alerts-discover]
 
 
-Querying alerts and signals in Discover is part of the {{alerting-v2}} in Kibana. Discover gives you direct {{esql}} access to everything the {{alerting-v2}} record, including rule evaluation history, episode progressions, triage actions, and operational metrics like mean time to acknowledge.
+Alert and signal queries in Discover are part of the {{alerting-v2-system}} in {{kib}}. Discover gives you direct {{esql}} access to everything the {{alerting-v2-system}} records, including rule evaluation history, alert episode progressions, triage actions, and operational metrics like mean time to acknowledge.
 
-The Alerts UI shows current episode state. Discover lets you go further: ask arbitrary questions, spot trends over time, replay how a specific incident unfolded, or correlate alert history with other data in your environment.
+The Alerts UI shows current alert episode state. Discover lets you go further: ask arbitrary questions, spot trends over time, replay how a specific incident unfolded, or correlate alert history with other data in your environment.
 
 To use this page, open Discover, select {{esql}}, paste a query from the examples below, then adjust the time range and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment.
 
