@@ -26,7 +26,7 @@ After selecting a stream, use the **Retention** tab to set how long your stream 
 - **{{ilm-init}} policy data tiers**: {applies_to}`stack: preview =9.1, ga 9.2-9.3` The amount of data in each data tier (**Hot**, **Warm**, **Cold**).
 - **Ingestion over time**: Estimated ingestion volume over time based on the number of documents over that time, multiplied by the average document size in the backing index.
 
-For more information on data retention, refer to [Data stream lifecycle](../../../../manage-data/lifecycle/data-stream.md).
+For more information on data retention, refer to [Data stream lifecycle](../../../manage-data/lifecycle/data-stream.md).
 
 ## Required permissions
 
@@ -34,7 +34,7 @@ To edit data retention in {{stack}}, you need the following data stream level pr
 - `manage_data_stream_lifecycle`
 - `manage_ilm`
 
-For more information, refer to [Granting privileges for data streams and aliases](../../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
+For more information, refer to [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
 ## Configure data retention [streams-update-data-retention]
 
@@ -73,14 +73,14 @@ The **Retention period** is the minimum number of days after which the data is d
 1. Select **Custom period**.
 1. Set the period of time that you want to retain data.
 
-To define a global default retention policy, refer to [project settings](../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+To define a global default retention policy, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ### Follow an {{ilm-init}} policy [streams-retention-ilm]
 ```{applies_to}
 serverless: unavailable
 stack: preview =9.1, ga 9.2+
 ```
-[{{ilm-init}} policies](../../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across Streams and other data streams.
+[{{ilm-init}} policies](../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across Streams and other data streams.
 
 To have your streams follow an existing policy:
 
@@ -88,7 +88,7 @@ To have your streams follow an existing policy:
 1. Turn off **Inherit from index template** or **parent stream**, if on.
 1. Select **{{ilm-init}} policy**, then select a pre-defined {{ilm-init}} policy from the list.
 
-If the policy you want doesn't exist, create a new {{ilm-init}} policy. Refer to [Configure a lifecycle policy](../../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for more information.
+If the policy you want doesn't exist, create a new {{ilm-init}} policy. Refer to [Configure a lifecycle policy](../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for more information.
 
 ## Modify data lifecycle
 ```{applies_to}
@@ -122,7 +122,7 @@ The following phases and options are available:
 **Delete**
 : Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [searchable snapshots](#streams-retention-searchable-snapshots).
 
-For more information on {{ilm-init}} phases and available actions, refer to [Index lifecycle](../../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
+For more information on {{ilm-init}} phases and available actions, refer to [Index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 ### Downsampling [streams-retention-downsampling]
 
@@ -130,7 +130,7 @@ Downsampling reduces storage for time series data by replacing original metrics 
 
 Downsampling is available in the Hot, Warm, and Cold phases and only applies to time series data streams.
 
-For more information, refer to [Downsampling concepts](../../../../manage-data/data-store/data-streams/downsampling-concepts.md).
+For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
 ### Searchable snapshots [streams-retention-searchable-snapshots]
 
@@ -138,10 +138,10 @@ Searchable snapshots let you search infrequently accessed, read-only data direct
 
 Searchable snapshots are available in the Cold and Frozen phases.
 
-For more information, refer to [Searchable snapshots](../../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
+For more information, refer to [Searchable snapshots](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
 ## Set failure store data retention
 
-A [failure store](../../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents.
+A [failure store](../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents.
 
 You can enable failure stores from the **Retention** tab by selecting **Enable failure store**. This opens the failure store configuration for your stream. From here, you can set the retention period.

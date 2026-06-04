@@ -42,10 +42,10 @@ Avoid editing components marked as **managed** or any per-data-stream mappings a
 
 For classic streams, you can access the following components:
 
-- [Index templates](../../../../manage-data/data-store/templates.md#index-templates)
-- [Component templates](../../../../manage-data/data-store/templates.md#component-templates)
-- [Pipelines](../../../../manage-data/ingest/transform-enrich.md)
-- [Data streams](../../../../manage-data/data-store/data-streams.md)
+- [Index templates](../../../manage-data/data-store/templates.md#index-templates)
+- [Component templates](../../../manage-data/data-store/templates.md#component-templates)
+- [Pipelines](../../../manage-data/ingest/transform-enrich.md)
+- [Data streams](../../../manage-data/data-store/data-streams.md)
 
 For both wired ({applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`) and classic streams, you can manually configure:
 

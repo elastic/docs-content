@@ -241,8 +241,8 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 To view wired log streams in Discover:
 
-1. Manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
-1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Manually [create a data view](../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
+1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ### Query unmapped fields [streams-wired-streams-discover-unmapped]
 ```{applies_to}

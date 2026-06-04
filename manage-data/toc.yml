@@ -183,5 +183,38 @@ toc:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
-      - file: migrate/migrate-with-logstash.md  
+      - file: migrate/migrate-with-logstash.md
+  - file: streams/streams.md
+    children:
+    - file: streams/management/retention.md
+    - file: streams/management/extract.md
+    - file: streams/management/partitioning.md
+    - file: streams/management/schema.md
+    - file: streams/management/data-quality.md
+    - hidden: streams/management/significant-events.md
+    - file: streams/management/advanced.md
+    - file: streams/management/knowledge-indicators.md
+    - file: streams/wired-streams.md
+    - file: streams/management/streamlang.md
+      children:
+        - file: streams/management/extract/append.md
+        - file: streams/management/extract/concat.md
+        - file: streams/management/extract/convert.md
+        - file: streams/management/extract/date.md
+        - file: streams/management/extract/dissect.md
+        - file: streams/management/extract/drop.md
+        - file: streams/management/extract/enrich.md
+        - file: streams/management/extract/grok.md
+        - file: streams/management/extract/join.md
+        - file: streams/management/extract/lowercase.md
+        - file: streams/management/extract/math.md
+        - file: streams/management/extract/network-direction.md
+        - file: streams/management/extract/redact.md
+        - file: streams/management/extract/remove.md
+        - file: streams/management/extract/rename.md
+        - file: streams/management/extract/replace.md
+        - file: streams/management/extract/set.md
+        - file: streams/management/extract/trim.md
+        - file: streams/management/extract/uppercase.md
+        - file: streams/management/extract/manual-pipeline-configuration.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

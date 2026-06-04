@@ -79,7 +79,7 @@ To manage all streams, you need the following permissions:
 To view streams, you need the following permissions:
 - **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
 
 :::
 
@@ -91,7 +91,7 @@ stack: ga 9.3+
 serverless: ga
 ```
 
-You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
+You can set Streams visibility on a space-by-space basis by defining users' access to specific spaces. Refer to [Define access to a space](../../deploy-manage/manage-spaces.md#spaces-control-user-access) for more information.
 
 Space settings only affect visibility. Set permissions to manage and edit Streams at the {{es}} level. Refer to [Required permissions](#streams-required-permissions) for more information.
 
@@ -103,7 +103,7 @@ Space settings only affect visibility. Set permissions to manage and edit Stream
 
 Open Streams from the following places in {{kib}}:
 
-- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Select **Streams** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 

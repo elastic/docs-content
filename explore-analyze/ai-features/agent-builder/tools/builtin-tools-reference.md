@@ -104,7 +104,7 @@ The following tools manage file attachments in conversations:
 stack: ga 9.4+
 ```
 
-Streams tools provide capabilities for exploring and managing [Streams](/solutions/observability/streams/streams.md).
+Streams tools provide capabilities for exploring and managing [Streams](/manage-data/streams/streams.md).
 
 `platform.streams.list_streams` {applies_to}`stack: ga 9.4+`
 :   Lists all streams the current user has access to, returning each stream's name, type, and description.

@@ -17,7 +17,7 @@ products:
 
 After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
-For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
+For example, in [Discover](../../../explore-analyze/discover.md), extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
 The **Processing** tab also has the following features:
 
@@ -61,7 +61,7 @@ Streams exposes a [Streamlang](./streamlang.md) configuration, but internally it
 
 ## Add processors [streams-add-processors]
 
-Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
+Streams uses [{{es}} ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
 To add a processor from the **Processing** tab:
 
@@ -94,7 +94,7 @@ Setting up processors is generally a multistep process. For example, you might n
 
 #### How does **Suggest a pipeline** work? [streams-pipeline-generation]
 
-:::{include} ../../../_snippets/streams-suggestions.md
+:::{include} ../../_snippets/streams-suggestions.md
 :::
 
 ### Add conditions [streams-add-processor-conditions]
@@ -132,7 +132,7 @@ The Streams processing UI provides an [interactive mode](#streams-editing-intera
 
 To switch modes, select the appropriate tab from the top of the processing page.
 
-:::{image} ../../../images/streams-editing-modes.png
+:::{image} ../../images/streams-editing-modes.png
 :screenshot:
 :::
 
@@ -204,20 +204,20 @@ Documents can fail processing for various reasons. Streams helps you identify an
 
 In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
 
-:::{image} ../../../images/logs-streams-parsed.png
+:::{image} ../../images/logs-streams-parsed.png
 :screenshot:
 :::
 
 You can filter your documents by selecting **Parsed** or **Failed** on the **Data preview** tab.
 Selecting **Failed** shows the documents that weren't parsed correctly:
 
-:::{image} ../../../images/logs-streams-failures.png
+:::{image} ../../images/logs-streams-failures.png
 :screenshot:
 :::
 
 Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
 
-:::{image} ../../../images/logs-streams-processor-failures.png
+:::{image} ../../images/logs-streams-processor-failures.png
 :screenshot:
 :::
 
@@ -225,7 +225,7 @@ Streams displays failures at the bottom of the process editor. Some failures mig
 
 As part of processing, Streams simulates your changes end to end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
-:::{image} ../../../images/logs-streams-mapping-conflicts.png
+:::{image} ../../images/logs-streams-mapping-conflicts.png
 :screenshot:
 :::
 
@@ -235,7 +235,7 @@ Use the information in the failure message to find and troubleshoot the mapping 
 
 Once saved, the processor displays its success rate and the fields it added.
 
-:::{image} ../../../images/logs-streams-field-stats.png
+:::{image} ../../images/logs-streams-field-stats.png
 :screenshot:
 :::
 

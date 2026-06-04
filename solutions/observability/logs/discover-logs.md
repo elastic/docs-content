@@ -101,7 +101,7 @@ The **Similar errors** section shows an occurrences chart for errors that share 
 Select **Open in Discover** to open a filtered view of all similar errors.
 
 ### Stream [discover-logs-stream]
-The **Stream** section provides a link to the related [stream](../streams/streams.md) for the selected log. From here, you can extract fields, set data retention, and route data from one place.
+The **Stream** section provides a link to the related [stream](../../../manage-data/streams/streams.md) for the selected log. From here, you can extract fields, set data retention, and route data from one place.
 
 ### Stacktrace [discover-logs-stacktrace]
 

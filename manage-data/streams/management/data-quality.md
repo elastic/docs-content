@@ -48,18 +48,18 @@ Streams calculates data quality as follows:
 
 ## Failure store [streams-data-quality-failure]
 
-A [failure store](../../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents. Instead of losing documents that are rejected during ingestion, a failure store retains them in a `::failures` index, so you can review failed documents to understand what went wrong and how to fix it.
+A [failure store](../../../manage-data/data-store/data-streams/failure-store.md) is a secondary set of indices inside a data stream, dedicated to storing failed documents. Instead of losing documents that are rejected during ingestion, a failure store retains them in a `::failures` index, so you can review failed documents to understand what went wrong and how to fix it.
 
 For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
 
 ### Required permissions
-:::{include} ../../../_snippets/failure-store-permissions.md
+:::{include} ../../_snippets/failure-store-permissions.md
 :::
 
 ### Turn on failure stores
 In Streams, you need to turn on failure stores to get failed documents. To do this, select **Enable failure store** in the **Failed documents** component. From here you can set your failure store retention period.
 
-For more information on data quality, refer to the [data set quality](../../data-set-quality-monitoring.md) documentation.
+For more information on data quality, refer to the [data set quality](../../../solutions/observability/data-set-quality-monitoring.md) documentation.
 
 ## Create a data quality alert [streams-data-quality-alert]
 
@@ -67,4 +67,4 @@ To get notified when the percentage of degraded documents in a stream exceeds a 
 
 1. Open the **Data quality** tab for the stream you want to monitor.
 2. Select **Create rule** ({icon}`bell`).
-3. [Define the conditions](../../incident-management/create-a-degraded-docs-rule.md#degraded-docs-rule-conditions)) for your rule.
+3. [Define the conditions](../../../solutions/observability/incident-management/create-a-degraded-docs-rule.md#degraded-docs-rule-conditions)) for your rule.

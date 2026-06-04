@@ -23,8 +23,8 @@ The **Manual pipeline configuration** lets you create a JSON-encoded array of in
 
 Refer to the following documentation for more on manually configuring processors:
 
-- [Create readable and maintainable ingest pipelines](../../../../../manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)
-- [Error handling in ingest pipelines](../../../../../manage-data/ingest/transform-enrich/error-handling.md)
+- [Create readable and maintainable ingest pipelines](../../../../manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)
+- [Error handling in ingest pipelines](../../../../manage-data/ingest/transform-enrich/error-handling.md)
 - [Ingest processor reference](elasticsearch://reference/enrich-processor/index.md)
 
 To manually create an array of ingest pipeline processors:

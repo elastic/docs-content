@@ -21,9 +21,9 @@ After selecting a stream, map fields either after creating a processor on the **
 
 Field mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query performance.
 
-Unmapped fields can still be searched using [runtime fields](../../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs.
+Unmapped fields can still be searched using [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs.
 
-After identifying which fields you query most often, you can map them to improve performance, at the cost of additional storage. For more background, refer to the [Mapping](../../../../manage-data/data-store/mapping.md) overview.
+After identifying which fields you query most often, you can map them to improve performance, at the cost of additional storage. For more background, refer to the [Mapping](../../../manage-data/data-store/mapping.md) overview.
 
 ## Map fields from the Processing tab
 
