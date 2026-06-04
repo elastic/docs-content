@@ -50,20 +50,17 @@ $$$sparse-vectors$$$ Sparse vectors
 
 ### Semantic search and vector search [semantic-search-vs-vector-search]
 
-[Semantic search](semantic-search.md) and vector search solve related problems but sit at different levels in {{es}}.
+{{es}} uses vector search as the foundation for semantic search capabilities. You can work with this technology in two ways:
+1. The [**Semantic search**](https://www.elastic.co/docs/solutions/search/semantic-search) section provides managed workflows that use vector search under the hood:
+   - The `semantic_text` field type offers the simplest path with automatic embedding generation and model management
+   - Additional implementation options available for more complex needs
+2. [**Vector search**](https://www.elastic.co/docs/solutions/search/vector) gives you direct access to the underlying technology:
+   - Manual configuration of dense or sparse vectors
+   - Flexibility to bring your own embeddings
+   - Direct implementation of vector similarity matching
 
-**Vector search** is the underlying technology. You store embeddings in [`dense_vector`](vector/dense-vector.md) or [`sparse_vector`](vector/sparse-vector.md) fields and query them for similarity (for example with [`knn`](vector/knn.md)). You choose embedding models, field mappings, ingest pipelines, and query structure.
+Once you've implemented either approach, you can combine it with full-text search to create [hybrid search](https://www.elastic.co/docs/solutions/search/hybrid-search) solutions that leverage both meaning-based and keyword-based matching.
 
-**Semantic search** is how you implement meaning-based text search using managed workflows. Approaches such as [`semantic_text`](semantic-search/semantic-search-semantic-text.md), the [{{infer}} API](semantic-search/semantic-search-inference.md), or [ELSER ingest pipelines](semantic-search/semantic-search-elser-ingest-pipelines.md) generate embeddings and run similarity search for you. They use vector search under the hood.
-
-| | Semantic search | Vector search |
-|--|-----------------|---------------|
-| What you work with | Managed workflows and the `semantic_text` field type | Vector fields, models, and queries you configure directly |
-| Embedding setup | Handled by the workflow (defaults or endpoint configuration) | You deploy models, build pipelines, or supply precomputed vectors |
-| Typical use | Natural language search, quick setup, [hybrid search](hybrid-search.md) with full-text | Bring your own embeddings, custom models, or similarity beyond text (for example images) |
-| Control | Less manual configuration | Full control over storage, models, and retrieval |
-
-Choose semantic search when you want meaning-based matching with minimal setup. Choose vector search when you need direct control or already have embeddings. 
 
 For a broader view of when each search approach fits your goals, refer to [Search approaches](search-approaches.md).
 
