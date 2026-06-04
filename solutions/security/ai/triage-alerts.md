@@ -110,7 +110,7 @@ Based on your initial AI-assisted analysis, determine whether you're dealing wit
 
 :::::
 
-## Related: automate triage with workflows [ai-triage-related-workflows]
+## Related: Automate triage with workflows [ai-triage-related-workflows]
 
 The interactive flow above is one way to triage; you can also encode the same job as a declarative automation that runs without an analyst in the loop:
 

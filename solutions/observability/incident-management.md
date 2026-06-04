@@ -22,4 +22,4 @@ Explore the topics in this section to learn how to respond to incidents detected
 
 ## Automate incident response with workflows [incident-management-automate]
 
-Use [Elastic Workflows](/explore-analyze/workflows.md) to encode your incident-response runbooks as declarative YAML automations triggered by alerts. The [Automate root cause analysis for an observability alert](/explore-analyze/workflows/use-cases/observability/root-cause-analysis.md) workflow shows how to invoke an Agent Builder agent on each alert, attach the analysis to a case, and notify the on-call channel.
+Use [Elastic Workflows](/explore-analyze/workflows.md) to encode your incident-response runbooks as declarative YAML automations triggered by alerts. The [Automate root cause analysis for an {{observability}} alert](/explore-analyze/workflows/use-cases/observability/root-cause-analysis.md) workflow shows how to invoke an Agent Builder agent on each alert, attach the analysis to a case, and notify the on-call channel.
