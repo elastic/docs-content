@@ -161,7 +161,7 @@ Store embeddings in `dense_vector` fields when vectors are produced outside a ma
 
 :::::
 
-:::::{step} Encode queries in the same space
+:::::{step} Encode queries in the same vector space
 
 At search time, turn the user’s text or media into an embedding using the same {{infer}} endpoint and settings as at ingest (task type, model, dimensions).
 
