@@ -161,7 +161,7 @@ The [Semantic search](semantic-search.md) section provides managed workflows tha
 
 ### Advanced tutorials
 
-These tutorials provide more direct or customizable approaches to working with vector search:
+These guides provide more direct or customizable approaches to working with vector search:
 
 - [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
