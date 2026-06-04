@@ -1,8 +1,8 @@
 ---
 navigation_title: YAML rule schema reference
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Complete field reference for YAML rule definitions in the {{alerting-v2}}: required fields, metadata, schedule, grouping, state transitions, no-data handling, and duration format."

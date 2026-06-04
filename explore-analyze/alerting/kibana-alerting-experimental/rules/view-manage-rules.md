@@ -1,8 +1,8 @@
 ---
 navigation_title: View and manage rules
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Use the rules list and rule details page in the {{alerting-v2}}: filters, search, bulk actions, and what you find in rule conditions."

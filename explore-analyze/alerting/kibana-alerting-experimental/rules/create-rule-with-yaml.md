@@ -1,8 +1,8 @@
 ---
 navigation_title: Using the YAML editor
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Define rules as YAML in the {{alerting-v2}} for version control, infrastructure-as-code, and bulk provisioning."

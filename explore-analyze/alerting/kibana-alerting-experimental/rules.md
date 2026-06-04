@@ -1,8 +1,8 @@
 ---
 navigation_title: Rules
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "What rules are in the {{alerting-v2}}, how evaluation works, and how rules connect to alerts and notifications."

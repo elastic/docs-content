@@ -1,8 +1,8 @@
 ---
 navigation_title: Using Discover
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Turn an {{esql}} query in Discover into a rule in the {{alerting-v2}} with pre-filled evaluation and lookback."

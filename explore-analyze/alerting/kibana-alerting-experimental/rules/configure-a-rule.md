@@ -1,8 +1,8 @@
 ---
 navigation_title: Configure a rule
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Configure rules in the {{alerting-v2}}: mode, ES|QL, grouping, schedule, lookback, activation and recovery, no-data handling, tags, and evaluation."

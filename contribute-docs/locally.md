@@ -1,3 +1,7 @@
+---
+description: "Set up Elastic documentation repositories locally and learn how to build, preview, and submit documentation changes."
+---
+
 # Contribute locally
 
 This document describes the process to set up Elastic documentation repositories locally, enabling you to contribute effectively.
