@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create a rule in the experimental alerting system."
+description: "Create ES|QL rules, AI-assisted rules, and Threshold Alert rules in Kibana's experimental alerting system using the rule builder flyout."
 ---
 
 # Create rules in the {{alerting-v2-system}} [create-rules-rule-builder]
@@ -22,13 +22,9 @@ All rules are created through a flyout that opens from the **Create rule** butto
 
 ## Threshold Alert
 
-Threshold Alert is the first rule type available under **Start from a rule builder**. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
+Threshold Alert is the rule type available under **Start from a rule builder**. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
 
 You define the rule by filling in structured fields for the data source, aggregation, filters, and alert conditions. The builder generates the {{esql}} query automatically from those inputs. Rules created through the builder can be reopened and edited in builder mode as long as the underlying {{esql}} hasn't been edited directly.
-
-If you open a builder-created rule and the {{esql}} has been modified outside the builder, the rule falls back to the {{esql}} editor view with a notification. This is a best-effort round-trip, not a strict one-way door.
-
-More rule types are planned for future releases.
 
 Use the **Create ES|QL rule** path when the detection logic requires more than a single metric threshold, such as multi-window burn rates or cross-series correlation.
 

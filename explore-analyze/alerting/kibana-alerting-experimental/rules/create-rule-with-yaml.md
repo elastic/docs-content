@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Define rules as YAML in the {{alerting-v2-system}} for version control, infrastructure-as-code, and bulk provisioning."
+description: "Define rules as YAML in Kibana's experimental alerting system for version control, infrastructure-as-code, and bulk provisioning of detection logic."
 ---
 
 # Create rules using the YAML editor in {{alerting-v2-system}} [create-rules-yaml]

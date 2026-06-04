@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Reference for rule configuration fields and documents written to .rule-events in the experimental alerting system."
+description: "Field reference for rule configuration and .rule-events documents in Kibana's experimental alerting system. Covers schedule, activation thresholds, and rule event output fields."
 ---
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
@@ -87,7 +87,7 @@ Refer to [Query alerts and signals in Discover](../alerts/query-alerts-and-signa
 
 ### Signal and alert fields
 
-These fields appear on all `.rule-events` documents, regardless of whether the rule is in Detect or Alert mode.
+These fields appear on all `.rule-events` documents, regardless of whether the rule is in Signal or Alert mode.
 
 | Field | Type | Required | Description |
 |---|---|---|---|

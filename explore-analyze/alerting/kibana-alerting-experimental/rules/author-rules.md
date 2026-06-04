@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Learn how to write ES|QL queries for rules. Choose a rule mode, structure a base query and alert condition, set thresholds, and assign severity levels."
+description: "Write ES|QL detection queries for rules in Kibana's experimental alerting system. Choose Signal or Alert mode, structure base queries and conditions, and assign severity levels."
 ---
 
 # Rule authoring in the {{alerting-v2-system}} [author-rules]
@@ -56,7 +56,6 @@ Three recovery types are available:
 | --- | --- |
 | Default | The alert episode recovers automatically when the alert condition is no longer met. |
 | Custom | Uses a separate {{esql}} expression you define. The alert episode recovers when that expression returns no rows. |
-| No recovery | The alert episode stays active until manually closed. *(Coming soon.)* |
 
 When no recovery condition is configured, Default recovery applies. Use a custom recovery condition when the absence of a breach isn't a reliable recovery indicator — for example, when the alert condition uses a narrow lookback window and you want recovery to require the condition to stay clear across a longer period, or when the recovery logic requires a different query shape than the alert detection.
 

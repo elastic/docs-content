@@ -150,6 +150,6 @@ The rule's lookback window must cover all the buckets you want to check (50 minu
 
 ### Derivative aggregation [derivative-aggregation]
 
-{{esql}} does not have a `DERIVATIVE` function. In the {{es}} aggregations API, a derivative pipeline aggregation calculates the rate of change between consecutive time buckets (for example, "how fast is this counter increasing per minute?"). There's no equivalent in {{esql}} today.
+{{esql}} does not have a `DERIVATIVE` function. In the {{es}} aggregations API, a derivative pipeline aggregation calculates the rate of change between consecutive time buckets (for example, "how fast is this counter increasing per minute?"). There is no equivalent in {{esql}}.
 
 Use cases that require true per-bucket deltas (such as detecting a sudden acceleration in error rate) cannot be expressed as an {{esql}} rule at this time. Consider pre-computing deltas in an ingest pipeline or using a transform to write derived metrics to a separate index that your rule can then query with a standard threshold pattern.

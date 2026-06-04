@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Use the rules list and rule details page in the experimental alerting system."
+description: "Search, filter, sort, and bulk-manage rules from the rules list in Kibana's experimental alerting system. Inline editing and a summary flyout let you update settings without a full page reload."
 ---
 
 # View and manage rules in the {{alerting-v2-system}} [manage-rules]
