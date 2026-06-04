@@ -22,6 +22,8 @@ To add drilldowns to dashboard panels, you need:
 * For dashboard drilldowns: A target dashboard to navigate to
 * For URL drilldowns: A URL template that can include dynamic variables from the clicked data
 
+Drilldowns rely on a field that exists in the underlying data source. They cannot be triggered from values that come from computed fields, such as those produced by {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results. When you click a value from a computed field, the drilldown option is not available. For more information, refer to [Add pills by interacting with visualizations](using.md#_add_pills_by_interacting_with_visualizations).
+
 ## Drilldown types [drilldown-types]
 
 There are three types of drilldowns you can add to dashboards:
