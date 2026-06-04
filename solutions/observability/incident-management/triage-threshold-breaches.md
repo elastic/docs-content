@@ -58,17 +58,17 @@ stack: ga 9.5
 serverless: ga
 ```
 
-To understand exactly what {{es}} evaluated when the alert fired, use the rule query inspector. From the alert details page, click **Rule query inspector**.
+To understand exactly what {{es}} evaluated when the alert was generated, use the rule query inspector. From the alert details page, click **Rule query inspector**.
 
-Unlike the inspector on the rule details page, which reflects the rule's _current_ parameters, the inspector on an alert details page uses the parameters that were active at the time the alert fired, including the exact evaluation time range stored on the alert document. This makes it useful for investigating historical alerts, especially if the rule has been edited since.
+Unlike the inspector on the rule details page, which reflects the rule's _current_ parameters, the inspector on an alert details page uses the parameters that were active at the time the alert was generated, including the exact evaluation time range stored on the alert document. This makes it useful for investigating historical alerts, especially if the rule has been edited since.
 
 Use the inspector to:
 
-- Confirm the time range that was evaluated when the alert fired.
+- Confirm the time range that was evaluated when the alert was generated.
 - Review the aggregation values that were returned and compare them to the threshold.
 - Identify whether a missing group, a too-restrictive filter, or unexpected data caused the alert to behave differently than expected.
 
-For an explanation of the query structure, aggregation types, and how to read the response, refer to [the rule query inspector](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
+For more information, refer to [Inspect rule queries](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
 
 After investigating the alert, you may want to:
 
