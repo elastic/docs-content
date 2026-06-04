@@ -69,7 +69,7 @@ For a broader view of when each search approach fits your goals, refer to [Searc
 
 ## Field types and queries [vector-queries-and-field-types]
 
-The table below matches the main vector field types to the [Query DSL](elasticsearch://reference/query-languages/querydsl.md) queries and [{{esql}}](elasticsearch://reference/query-languages/esql.md) tools you use with each.
+You can query vector fields using [Query DSL](elasticsearch://reference/query-languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax. The following table explains how to work with each field type in these languages.
 
 Query DSL is the JSON request body for the `_search` API and related search endpoints. You describe match clauses, filters, scoring, and vector queries in nested objects.
 
