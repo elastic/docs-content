@@ -874,6 +874,19 @@ redirects:
       - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
         anchors:
           'supported-models': 
+  'explore-analyze/elastic-inference/eis-supported-models.md':
+    to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-region-and-hosting.md'
+        anchors:
+          'eis-regions': 'eis-regions'
+      - to: 'explore-analyze/elastic-inference/eis-rate-limits.md'
+        anchors:
+          'rate-limits': 'eis-rate-limits'
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'pricing': 'pricing'
+          'monitor-your-token-usage': 'monitor-your-token-usage'
 # Split off links to inference UI pages
   'explore-analyze/elastic-inference/inference-api.md':
     to: 'explore-analyze/elastic-inference/inference-api.md'
