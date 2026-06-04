@@ -122,6 +122,9 @@ elastic-endpoint install --upgrade --resources endpoint-security-resources.zip
 
 Save a memory dump of the {{elastic-endpoint}} service.
 
+::::{note}
+On Linux, GNU Debugger (GDB) must be installed to perform a memory dump.
+::::
 
 ### Options [_options_2]
 

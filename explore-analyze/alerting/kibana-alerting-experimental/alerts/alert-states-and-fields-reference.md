@@ -1,8 +1,8 @@
 ---
 navigation_title: Alert states and fields
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Reference for episode status, `.rule-events` row status, and `.alert-actions` document fields in the {{alerting-v2}}."

@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -25,7 +25,7 @@ The advanced settings control the behavior of the {{security-app}}, such as:
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
-* Whether related integrations are displayed on the Rules page tables
+* Whether related integrations are displayed on the **{{siem-rules-ui}}** page tables
 * The options provided in the alert tag menu
 * The maximum number of cases the Cases connector can open each time a detection rule runs 
 
@@ -197,7 +197,7 @@ The `securitySolution:ipReputationLinks` field determines which IP reputation si
 
 **Example**
 
-Adds a link to https://www.dnschecker.org on **IP detail** pages:
+Adds a link to [dnschecker.org](https://www.dnschecker.org) on **IP detail** pages:
 
 ```json
 [
@@ -227,9 +227,9 @@ stack: ga 9.2
 
 To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
-## Show/hide related integrations in Rules page tables [show-related-integrations]
+## Show/hide related integrations on the {{siem-rules-ui}} page [show-related-integrations]
 
-By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tables include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
+By default, Elastic prebuilt rules on the **Installed Rules** and **Rule Monitoring** tabs include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
 
 
 ## Manage alert tag options [manage-alert-tags]

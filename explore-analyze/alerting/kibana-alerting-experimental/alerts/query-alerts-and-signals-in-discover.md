@@ -1,8 +1,8 @@
 ---
 navigation_title: Query alerts in Discover
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Use {{esql}} in Discover against `.rule-events` and `.alert-actions` including sample queries, trends, and MTTA-style analysis for the {{alerting-v2}}."
