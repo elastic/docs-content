@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: experimental 
+  stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
