@@ -107,7 +107,7 @@ Currently, the rule query inspector is only available for **custom threshold rul
 
 From the rule details page, click **Rule query inspector** to view the Elasticsearch request the rule sends during evaluation. The inspector builds the query from the rule's current parameters, including the data view, query filter, time window, and aggregations you've configured. Use it to confirm the rule is targeting the right data before an alert is generated.
 
-For troubleshooting guidance and an explanation of what the inspector shows, refer to [Diagnose rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
+For troubleshooting guidance and an explanation of what the inspector shows, refer to [Inspect rule queries](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
 
 ## Snooze and disable rules [observability-create-manage-rules-snooze-and-disable-rules]
 
