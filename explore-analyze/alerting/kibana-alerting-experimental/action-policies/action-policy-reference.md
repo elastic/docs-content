@@ -104,4 +104,6 @@ The dispatcher records each run with one of the following outcomes. To investiga
 
 - [Create and configure an action policy](create-configure-action-policy.md) to apply these fields and options when setting up a policy.
 - [Manage action policies in {{alerting-v2-system}}](manage-action-policies.md) to enable, disable, snooze, or audit your policies.
+<!-- TODO: Uncomment when the notifications-actions overview page exists:
 - [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md) to understand how action policies evaluate and gate alert episodes.
+-->
