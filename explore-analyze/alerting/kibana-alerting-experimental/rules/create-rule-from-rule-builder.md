@@ -1,8 +1,8 @@
 ---
 navigation_title: Using the rule builder
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Create a rule with the interactive rule builder"

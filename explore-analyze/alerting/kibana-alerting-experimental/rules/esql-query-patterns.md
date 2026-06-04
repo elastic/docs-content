@@ -1,8 +1,8 @@
 ---
 navigation_title: ES|QL query patterns
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Advanced {{esql}} query patterns for rules in the {{alerting-v2}}: SLO burn rate, no-data detection, persistent breach, and unsupported operations."

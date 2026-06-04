@@ -1,8 +1,8 @@
 ---
 navigation_title: Rule and event fields
 applies_to:
-  stack: unavailable
-  serverless: preview
+  stack: experimental 9.5+
+  serverless: experimental
 products:
   - id: kibana
 description: "Reference for rule configuration fields and documents written to `.rule-events` in the {{alerting-v2}}."
