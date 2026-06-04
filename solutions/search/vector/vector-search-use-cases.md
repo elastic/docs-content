@@ -14,7 +14,7 @@ products:
 # Vector search use cases
 
 :::{tip}
-New to semantic search? Start with the [semantic search quickstart](../get-started/semantic-search.md), which uses the managed `semantic_text` workflow.
+New to vector search? You might want to start with the [managed `semantic_text` workflow](../get-started/semantic-search.md).
 
 To understand core vector search concepts in {{es}}, including embeddings, field types, retrieval methods, and available workflows, refer to [Vector search in {{es}}](../vector.md#vectors-and-embeddings).
 :::
