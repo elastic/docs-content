@@ -15,7 +15,6 @@ Workflows are part of the {{alerting-v2-system}} in {{kib}}. Without a workflow 
 :::{important}
 Before creating an action policy, make sure the workflows you want to use already exist in your space. For information on creating a workflow, refer to [Build your first workflow](../../workflows/get-started/build-your-first-workflow.md).
 
-On {{stack}}, workflows must be enabled before they can be used as destinations in action policies. If workflows are not enabled, you will not be able to select a workflow destination when creating or editing an action policy. To enable workflows, go to **Stack Management > Advanced Settings** and turn on the **Workflows** (`workflows:ui:enabled`) setting.
 :::
 
 ## Runtime execution order [runtime-execution-order]
