@@ -56,7 +56,7 @@ Complete the fields in the **Create skill** dialog:
 - **Name**: A human-readable name (64-character limit).
 - **Description**: A short description of when the agent should use the skill (1024-character limit). This field is always included in the agent's context, so it should be specific and semantically distinct from other skill descriptions.
 - **Instructions**: The skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
-- **Referenced content**: Named content blocks that give the agent supplementary knowledge such as runbooks, playbooks, or reference material it can read selectively when the skill is triggered. Available under **Advanced options** in the UI. Corresponds to `referenced_content` in the API.
+- **Referenced content** {applies_to}`stack: ga 9.5+`: Named content blocks that give the agent supplementary knowledge such as runbooks, playbooks, or reference material it can read selectively when the skill is triggered. Available under **Advanced options** in the UI. Corresponds to `referenced_content` in the API.
 - **Associated tools**: The tools the skill should have access to (up to 100). Available under **Advanced options** in the UI. Corresponds to `tool_ids` in the API.
 
 ::::
@@ -90,10 +90,10 @@ For guidance on writing effective instructions, refer to [Skill creation guideli
 
 ## Create a skill from chat
 
-:::{applies_to}
+```{applies_to}
 stack: ga 9.5+
 serverless: ga
-:::
+```
 
 You can create custom skills conversationally by asking an agent to build one directly in the chat interface. Instead of filling in a form, you describe the skill you want and the agent guides you through defining the name, description, instructions, and tools.
 
