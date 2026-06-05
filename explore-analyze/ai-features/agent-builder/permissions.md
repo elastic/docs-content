@@ -37,7 +37,13 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 #### `Read`
 
-Required to use agents, send chat messages, view tools and skills, and access conversations.
+Grants access to:
+
+- Use agents
+- Send chat messages
+- View tools
+- View skills {applies_to}`stack: ga 9.5+`
+- Access conversations
 
 Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
 
@@ -47,7 +53,13 @@ Instead of `All`, you can pair `Read` with individual sub-features for more gran
 
 #### `All`
 
-The broadest access level. Grants everything in `Read`, plus the ability to create, update, or delete custom agents, tools, and skills. Includes all management sub-features by default.
+The broadest access level. Grants everything in `Read`, plus the ability to:
+
+- Create, update, or delete custom agents
+- Create, update, or delete custom tools
+- Create, update, or delete custom skills {applies_to}`stack: ga 9.5+`
+
+Includes all management sub-features by default.
 :::
 
 :::{applies-item} { stack: ga 9.2-9.3 }
