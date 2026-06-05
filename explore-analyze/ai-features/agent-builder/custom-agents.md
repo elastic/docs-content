@@ -99,9 +99,9 @@ For more information, refer to [Elastic capabilities](agent-builder-agents.md#el
 stack: ga 9.4+
 ```
 
-Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**. You can also configure per-agent access controls to grant specific users view or edit access.
+Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
 
-For more information, refer to [Visibility settings](#visibility-settings).
+For more information, refer to [Visibility settings](#visibility-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
 
 :::::
 
