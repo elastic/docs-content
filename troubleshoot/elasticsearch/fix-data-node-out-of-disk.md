@@ -12,7 +12,7 @@ products:
 
 # Fix data nodes out of disk [fix-data-node-out-of-disk]
 
-{{es}} is using data nodes to distribute your data inside the cluster. If one or more of these nodes are running out of space, {{es}} takes action to redistribute your data within the nodes so all nodes have enough available disk space. This is known as hitting disk watermarks and you can refer to [troubleshooting watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md) for additional information. If {{es}} cannot facilitate enough available space in a node, then disk capacity might be exhausted. In this case, you can intervene in one of two ways:
+{{es}} is using data nodes to distribute your data inside the cluster. If one or more of these nodes are running out of space, {{es}} takes action to redistribute your data within the nodes so all nodes have enough available disk space. This is known as hitting disk watermarks and you can refer to [troubleshooting watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md) for additional information.
 
 If {{es}} cannot facilitate enough available space in a node, then you can intervene in one of two ways:
 
