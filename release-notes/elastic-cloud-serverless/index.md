@@ -18,6 +18,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 :::{include} _snippets/2026-05-28/index.md
 :::
 
+:::{include} _snippets/2026-05-26/index.md
+:::
+
 :::{include} _snippets/2026-05-20/index.md
 :::
 
