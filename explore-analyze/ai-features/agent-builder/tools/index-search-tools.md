@@ -122,7 +122,7 @@ The following examples show typical index patterns and domain-specific tool conf
 
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
-* **Cross-cluster patterns**: `remote_cluster:logs-*`, `cluster_a:events-*`
+* **Cross-cluster patterns** (9.4+): `remote_cluster:logs-*`, `cluster_a:events-*`. For previous versions, refer to [Cross-cluster search support](../limitations-known-issues.md#cross-cluster-search-support).
 
 Instead of creating a single generic search tool, consider creating multiple focused tools that target specific data domains. This gives the agent a smaller, higher-quality list of potential data sources, reducing the chance of retrieving irrelevant data.
 
