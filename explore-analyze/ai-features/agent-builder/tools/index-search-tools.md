@@ -122,6 +122,7 @@ The following examples show typical index patterns and domain-specific tool conf
 
 * **Wildcard patterns**: `logs-*`, `metrics-*`, `events-*`
 * **Specific indices**: `products`, `users`, `orders`
+* **Cross-cluster patterns**: `remote_cluster:logs-*`, `cluster_a:events-*`
 
 Instead of creating a single generic search tool, consider creating multiple focused tools that target specific data domains. This gives the agent a smaller, higher-quality list of potential data sources, reducing the chance of retrieving irrelevant data.
 
@@ -139,6 +140,14 @@ Instead of creating a single generic search tool, consider creating multiple foc
 **Pattern**: `finance-invoices-*`
 
 **Description**: "Search through settled and pending invoices. Use this to retrieve payment status, billing addresses, or invoice details for accounting queries."
+:::
+
+:::{dropdown} Cross-cluster search tool example
+**Tool name**: `Search Remote Logs`
+
+**Pattern**: `remote_cluster:logs-*`
+
+**Description**: "Search log data stored on remote_cluster. Use this tool when the user asks about remote logs or logs on a specific remote cluster."
 :::
 
 :::{dropdown} Security alerts tool example
