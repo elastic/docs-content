@@ -63,7 +63,7 @@ You can configure the following [settings](elasticsearch://reference/elasticsear
 
 If a conversion is interrupted, {{dlm-init}} might leave behind orphaned clone indices (`dlm-clone-*`) or snapshots. A background cleanup service running on the master node periodically removes these artifacts.
 
-The cleanup interval is controlled by [`dlm.frozen_cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md (default: `1d`, minimum: `1h`).
+The cleanup interval is controlled by [`dlm.frozen_cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md) (default: `1d`, minimum: `1h`).
 <!-- TO-DO: Add link to #dlm-frozen-cleanup-poll-interval anchor -->
 
 ## Failures and retries [dlm-frozen-transition-failures]
