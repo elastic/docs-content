@@ -148,6 +148,8 @@ Instead of creating a single generic search tool, consider creating multiple foc
 **Pattern**: `remote_cluster:logs-*`
 
 **Description**: "Search log data stored on remote_cluster. Use this tool when the user asks about remote logs or logs on a specific remote cluster."
+
+Index search tools only search remote clusters when you explicitly configure a cross-cluster pattern. Without a remote pattern, the tool resolves indices locally.
 :::
 
 :::{dropdown} Security alerts tool example
