@@ -28,7 +28,7 @@ This feature requires the appropriate {{stack}} [subscription](https://www.elast
 
 ### Cross-cluster search support
 
-In version 9.4+, [index search tools](tools/index-search-tools.md) support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md). To learn how to configure a tool for remote clusters, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
+In version 9.4+, [index search tools](tools/index-search-tools.md) support [cross-cluster search (CCS)](/explore-analyze/cross-cluster-search.md). Index search tools only search remote clusters when you explicitly configure a cross-cluster pattern like `remote_cluster:logs-*`. Without a remote pattern, the tool resolves indices locally. To learn how to configure a tool for remote clusters, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
