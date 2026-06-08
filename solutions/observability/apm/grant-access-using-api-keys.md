@@ -30,7 +30,7 @@ To create an API key:
     :screenshot:
     :::
 
-3. Enter a name for your API key and select **Restrict privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
+3. Enter a name for your API key and enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
 
     ```json
     {
@@ -101,7 +101,7 @@ To open the **API keys** management page, find it in the navigation menu or use 
 :screenshot:
 :::
 
-Enter a name for your API key and select **Restrict privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
+Enter a name for your API key and enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
 
 ```json
 {
