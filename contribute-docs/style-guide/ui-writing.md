@@ -132,7 +132,7 @@ The Kibana chrome, the persistent layout that wraps every app, evolves over time
 | **Flyout** | A panel that slides in from the right of the workspace to show contextual content. |
 | **Sidebar** | The global, resizable right-hand panel where plugins register apps (for example, the Agent Builder chat). |
 
-This table covers the main parts of the chrome. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table above as your starting point, then introduce additional names only when a section requires it.
+This table covers the main parts of the interface. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table as your starting point, then introduce additional names only when a section requires it.
 
 
 ## Choosing the right word
