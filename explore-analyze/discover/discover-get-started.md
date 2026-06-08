@@ -406,7 +406,7 @@ serverless: ga
 
 **Discover** integrates with [{{agent-builder}}](../ai-features/elastic-agent-builder.md) to provide AI-powered analysis of your {{esql}} query results. The [`discover-data-analysis` skill](../ai-features/agent-builder/builtin-skills-reference.md#agent-builder-discover-data-analysis-skill) runs aggregation queries against the full dataset behind your current view, renders a chart for the main finding, and proposes drill-down queries you can run in a new tab.
 
-This feature is available only when **Discover** is in {{esql}} mode.
+This feature is available only when **Discover** is in [{{esql}} mode](/explore-analyze/discover/try-esql.md).
 
 To start an analysis:
 
