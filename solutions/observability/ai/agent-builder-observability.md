@@ -84,7 +84,9 @@ Workflows are tightly integrated with Agent Builder functionalities:
 
 ## Examples: Agent Builder and Elastic Workflows
 
-For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
+For an end-to-end documented example, refer to [Automate root cause analysis for an {{observability}} alert](/explore-analyze/workflows/use-cases/observability/root-cause-analysis.md), which invokes an Agent Builder agent on each alert, opens a case populated with the analysis, and supports configurable next-step branches.
+
+For additional examples, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
 
 
 ## Related resources
