@@ -32,8 +32,7 @@ When you create vectors (or _vectorize_ your data), you convert complex content 
 In this guide, you’ll use documents that already include dense vector embeddings. To deploy a vector embedding model in {{es}} and generate vectors during ingest and search, refer to the links in [Learn more](#bring-your-own-vectors-learn-more).
 
 ::::{tip}
-This is an advanced use case that uses the `dense_vector` field type. Refer to [](/solutions/search/semantic-search.md) for an overview of your options for semantic search with {{es}}.
-To learn about the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
+This advanced use case uses the `dense_vector` field type for direct control over embeddings and indexing. For a managed workflow using the `semantic_text` field type, refer to [Semantic search](/solutions/search/semantic-search.md). To compare both approaches, refer to [Semantic search and vector search](/solutions/search/vector.md#semantic-search-vs-vector-search).
 ::::
 
 :::::{stepper}

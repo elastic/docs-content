@@ -81,4 +81,8 @@ Attach [Timelines](/solutions/security/investigate/timeline.md) to cases to pres
 
 ::::{tip}
 To insert a Timeline link in the case description, click the Timeline icon {icon}`timeline`.
-:::: 
+::::
+
+## Automate case workflows [cases-automate]
+
+Use [Elastic Workflows](/explore-analyze/workflows.md) to create, update, and close cases programmatically as part of a larger SOC automation. The [Triage a security alert into a case](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-triage-with-case.md) workflow shows the end-to-end pattern: open a case when a detection alert fires, attach the alert and observables, isolate the host, and notify the on-call analyst. For the full `cases.*` step reference, refer to [Cases action steps](/explore-analyze/workflows/steps/cases.md).
