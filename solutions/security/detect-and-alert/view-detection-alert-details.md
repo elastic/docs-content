@@ -123,21 +123,45 @@ The Investigation section (on the **Overview** tab) provides starting points for
 
 ## Visualizations [visualizations-section]
 
-The Visualizations section (on the **Overview** tab) shows processes that led to the alert and what happened after. Use these previews to understand the attack chain without leaving the alert flyout.
+The Visualizations section (on the **Overview** tab) shows how the alert unfolded — the processes that led to it and what happened after, as well as the entities involved and how they're connected. Use these previews to understand the attack chain without leaving the alert flyout.
 
 | Section | What it shows | How to use it |
 |---------|---------------|---------------|
 | Session view preview| Process activity during the Linux session | See commands executed before and after the alert. Click to open Session View in Timeline for the full session history. |
 | Analyzer preview | Process tree (up to 3 ancestor and 3 descendant levels) | Trace how the process was spawned and what it launched. The {icon}`boxes_horizontal` icon indicates more levels exist. Click to open Event Analyzer in Timeline. |
+| Graph preview {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | A graph of the entities involved in the alert and their relationships | See which entities acted and which were targeted, and how they connect. Click to open the **Graph view** tab in the expanded **Visualize** view. |
 
 
 ### Expanded visualizations view [expanded-visualizations-view]
 
-Click either preview to open the **Visualize** tab, which provides a detailed view while keeping the Alerts table visible. From here you can:
+Click a preview to open the **Visualize** tab, which provides a detailed view while keeping the Alerts table visible. From here you can:
 
 * Examine related processes and their associated alerts or events
 * Click **Show full alert details** on any related item to investigate it further
 
+#### Graph view [graph-view]
+```yaml {applies_to}
+stack: preview 9.4+
+serverless: preview
+```
+
+::::{admonition} Requirements
+[Entity store](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space, and the alert must contain both an actor entity and at least one target entity.
+::::
+
+The **Graph view** shows the entities involved in the alert and the relationships between them, helping you understand who or what acted, what was targeted, and how they're connected.
+
+{{elastic-sec}} identifies the entities from the alert's fields:
+
+* **Actor**: The entity that performed the action. {{elastic-sec}} selects a single actor based on the first set of fields that's populated in the alert, in this order: `user.*`, then `host.*`, then `service.*`, then `entity.*`.
+* **Targets**: The entities the action was performed on. {{elastic-sec}} captures all matching target entities from the `user.target.*`, `host.target.*`, `service.target.*`, and `entity.target.*` fields.
+
+In the graph view, you can:
+
+* Hover over an entity node and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show entity details**.
+* Hover over the relationship between two entities and click the plus icon {icon}`plus_circle` to open the actions menu, then select **Show related events** or **Show event details**.
+* Filter the graph using KQL syntax in the search bar. Supported fields include Entity Unique Identifier (EUID) values (for example, `entity.id : "user:alice@example.com"`) and raw ECS identity fields such as `user.id`, `user.email`, or `user.name`.
+* Select **Investigate in Timeline** ({icon}`timeline`) to open the current graph view in Timeline.
 
 ## Insights [insights-section]
 

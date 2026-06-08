@@ -94,6 +94,7 @@ When you downgrade your Security project features selection from **Security Anal
 * Case connectors
 * Endpoint response actions history
 * Endpoint host isolation exceptions
+* Trusted devices
 * AI Assistant
 * Attack discovery
 
