@@ -87,7 +87,7 @@ In the Lens editor, you can customize the appearance of your visualization by cl
 
 ::::{step} (Optional) Add layers
 
-You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_in_square` , then choose the layer type and select the {{data-source}}. 
+You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_square` , then choose the layer type and select the {{data-source}}. 
 To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
 ::::
@@ -293,7 +293,7 @@ stack: preview
 ```
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
-Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and select the annotation method you want to use:
+Click the **Add layer** icon {icon}`plus_square` , select **Annotations** and select the annotation method you want to use:
 
 :::{dropdown} New annotation
 1. Select the {{data-source}} for the annotation.
