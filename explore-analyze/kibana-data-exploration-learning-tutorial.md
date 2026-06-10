@@ -74,7 +74,7 @@ Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasti
 
 :::::{step} Run your first query
 
-Enter the following query, then select {icon}`playFilled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
+Enter the following query, then select {icon}`play_filled` **Run** or **Search**. If you choose to type your own query, the editor helps you with relevant autocomplete suggestions for commands, fields, and values.
 
 ```esql
 FROM kibana_sample_data_logs <1>
@@ -227,7 +227,7 @@ A dashboard often starts with a row of metrics for key numbers at a glance. Usin
 4. From the **Available fields** list, drag **host.keyword** to the **Breakdown** area. Lens draws one line per host, each in a different color, so you can compare traffic patterns across servers.
 
 5. Add a reference line to give the chart visual context:
-   1. Select the **Add layer** icon {icon}`plus_in_square`, then select **Reference lines**.
+   1. Select the **Add layer** icon {icon}`plus_square`, then select **Reference lines**.
    2. Select the reference line value and enter `80`. This marks a "high traffic" threshold on the chart.
    3. Set the color to red, then under **Text decoration**, enter a label such as `High traffic` and select **Fill below** to shade the area under the line.
 
