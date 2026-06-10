@@ -34,7 +34,7 @@
 * Fix empty sort array triggering unsaved changes. [#269018](https://github.com/elastic/kibana/pull/269018) [#269016](https://github.com/elastic/kibana/issues/269016)
 * Disallow deletion of managed data views in Stack Management UI. [#270608](https://github.com/elastic/kibana/pull/270608) [#270030](https://github.com/elastic/kibana/issues/270030)
 * Fix unhandled DOM exceptions in ES|QL editor. [#270603](https://github.com/elastic/kibana/pull/270603)
-* Fix missing .otel suffix on named OTel inputs. [#269074](https://github.com/elastic/kibana/pull/269074)
+* Fix missing `.otel` suffix on named OTel inputs. [#269074](https://github.com/elastic/kibana/pull/269074)
 * Fix Links panel saving unsupported `enhancements` property. [#270230](https://github.com/elastic/kibana/pull/270230) [#270190](https://github.com/elastic/kibana/issues/270190)
 * Fix waffle chart legend values not persisting correctly through the API. [#269774](https://github.com/elastic/kibana/pull/269774) [#268819](https://github.com/elastic/kibana/issues/268819)
 * Fix "Conversation not found" errors during first message in Agent Builder. [#270597](https://github.com/elastic/kibana/pull/270597)
