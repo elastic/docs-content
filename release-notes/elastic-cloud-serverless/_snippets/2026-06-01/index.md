@@ -4,7 +4,6 @@
 * Add external links to Security solution classic navigation. [#269683](https://github.com/elastic/kibana/pull/269683)
 * Add ability to create skills via Agent Builder chat. [#265883](https://github.com/elastic/kibana/pull/265883)
 * Add RRULE-based scheduling API routes with Fleet fan-out. [#270639](https://github.com/elastic/kibana/pull/270639)
-* Enable change history feature. [#270091](https://github.com/elastic/kibana/pull/270091)
 * Add developer support for `kbn-evals` Vault. [#271633](https://github.com/elastic/kibana/pull/271633)
 * Add Microsoft Sentinel watchlist ingestion for SIEM rule migrations. [#269726](https://github.com/elastic/kibana/pull/269726)
 * Improve APM infrastructure tab empty state. [#271090](https://github.com/elastic/kibana/pull/271090)
