@@ -66,35 +66,58 @@ steps:
 
 ## HTTP actions
 
-The native `http` action is a built-in HTTP client that does not require a pre-configured connector. Use it for one-off requests to public or internal APIs.
+The native `http` action is a built-in HTTP client for calling external APIs. It supports two modes:
+
+* **Configured HTTP connector**: For authenticated requests, first [configure an HTTP connector](/deploy-manage/manage-connectors.md). Then reference it from the workflow step with `connector-id`. The connector stores the base URL, authentication settings, and secrets using {{kib}}'s centralized {{connectors-ui}} framework.
+* **Direct URL**: For simple requests that don't require connector-managed secrets, omit `connector-id` and provide the full `url` directly in the step. Avoid placing secrets directly in workflow YAML.
+
+To use a configured connector, add `connector-id` at the same level as `type`:
+
+```yaml
+steps:
+  - name: call_third_party_api
+    type: http
+    connector-id: "third-party-api"
+    with:
+      path: "/v1/actions"
+      method: "POST"
+      headers:
+        Content-Type: "application/json"
+      body:
+        event_id: "{{ event.id }}"
+```
 
 Use the following parameters in the `with` block to configure the request:
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `url` | Yes | The full URL of the endpoint to call |
-| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, or `DELETE`) |
-| `headers` | No | An object with key-value pairs for HTTP headers |
-| `body` | No | The request body (typically a JSON object) |
+| `url` | Yes, when `connector-id` is not provided | The full URL of the endpoint to call. |
+| `path` | No | The path appended to the configured connector's base URL. Use this with `connector-id`. |
+| `method` | No (defaults to `GET`) | The HTTP method (`GET`, `POST`, `PUT`, `PATCH`, or `DELETE`). |
+| `headers` | No | An object with key-value pairs for additional HTTP headers. Request headers take precedence over connector headers. |
+| `query` | No | An object with key-value pairs for query string parameters. |
+| `body` | No | The request body (typically a JSON object). |
 
-::::{admonition} Known limitation
-The native `http` action does not have access to a centralized secret store for managing authentication credentials. If your endpoint requires authentication, you must include the credentials directly in the `headers` block.
+### Example: Call an API with a configured HTTP connector
 
-:::{dropdown} Click to show syntax example
+This example uses a pre-configured HTTP connector named `"security-response-api"`. The connector stores the base URL and authentication secrets, while the workflow step provides the endpoint path and request body.
+
 ```yaml
 steps:
-  - name: call_secure_api
+  - name: trigger_response_action
     type: http
+    connector-id: "security-response-api"
     with:
-      url: "https://api.thirdparty.com/v1/data"
-      method: "GET"
+      path: "/v1/response-actions/isolate"
+      method: "POST"
       headers:
-        Authorization: "Bearer my-secret-api-token"
+        Content-Type: "application/json"
+      body:
+        endpoint_id: "{{ event.agent.id }}"
+        reason: "Triggered by workflow '{{ workflow.name }}'"
 ```
-:::
-::::
 
-### Example: Call a custom webhook
+### Example: Call a custom webhook without a connector
 
 This example makes a POST request to a custom automation endpoint, passing data from the workflow context.
 
@@ -111,4 +134,3 @@ steps:
         event_id: "{{ event.id }}"
         message: "Workflow action triggered by '{{ workflow.name }}'"
 ```
-
