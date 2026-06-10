@@ -47,7 +47,6 @@
 * Fix {{esql}} error message for invalid `DATE_PERIOD` usage. [#149942](https://github.com/elastic/elasticsearch/pull/149942)
 * Fix partition configuration key threading into file source factory for {{esql}}. [#149816](https://github.com/elastic/elasticsearch/pull/149816)
 * Re-enable `statsByFlattenedAllRows` {{esql}} test.
-* Revert IVF dynamic visit ratio fix when rescore oversampling is active. [#150177](https://github.com/elastic/elasticsearch/pull/150177)
 * Fix IVF dynamic visit ratio when rescore oversampling is active. [#150184](https://github.com/elastic/elasticsearch/pull/150184)
 * Enforce maximum expression depth limit in EQL and SQL to prevent excessive nesting. [#150003](https://github.com/elastic/elasticsearch/pull/150003)
 * Remove `TBUCKET` fallback in PromQL for queries without explicit time bounds. [#149689](https://github.com/elastic/elasticsearch/pull/149689)
