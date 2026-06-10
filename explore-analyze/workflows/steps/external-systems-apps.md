@@ -18,7 +18,7 @@ products:
 External systems actions allow your workflows to communicate with third-party services and custom endpoints. You can interact with external systems in the following ways:
 
 * [Connector-based actions](#connector-based-actions): Use pre-configured connectors to integrate with services such as Slack and {{jira}}
-* [HTTP actions](#http-actions): Make direct HTTP requests to any API endpoint
+* [HTTP actions](#http-actions): Make HTTP requests to APIs directly or through a configured HTTP connector
 
 ## Connector-based actions
 
