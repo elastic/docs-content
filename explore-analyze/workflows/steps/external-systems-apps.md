@@ -71,22 +71,6 @@ The native `http` action is a built-in HTTP client for calling external APIs. It
 * **Configured HTTP connector**: For authenticated requests, first [configure an HTTP connector](/deploy-manage/manage-connectors.md). Then reference it from the workflow step with `connector-id`. The connector stores the base URL, authentication settings, and secrets using {{kib}}'s centralized {{connectors-ui}} framework.
 * **Direct URL**: For simple requests that don't require connector-managed secrets, omit `connector-id` and provide the full `url` directly in the step. Avoid placing secrets directly in workflow YAML.
 
-To use a configured connector, add `connector-id` at the same level as `type`:
-
-```yaml
-steps:
-  - name: call_third_party_api
-    type: http
-    connector-id: "third-party-api"
-    with:
-      path: "/v1/actions"
-      method: "POST"
-      headers:
-        Content-Type: "application/json"
-      body:
-        event_id: "{{ event.id }}"
-```
-
 Use the following parameters in the `with` block to configure the request:
 
 | Parameter | Required | Description |
@@ -98,9 +82,8 @@ Use the following parameters in the `with` block to configure the request:
 | `query` | No | An object with key-value pairs for query string parameters. |
 | `body` | No | The request body (typically a JSON object). |
 
-### Example: Call an API with a configured HTTP connector
-
-This example uses a pre-configured HTTP connector named `"security-response-api"`. The connector stores the base URL and authentication secrets, while the workflow step provides the endpoint path and request body.
+:::{dropdown} Click to show syntax example
+Use a configured HTTP connector:
 
 ```yaml
 steps:
@@ -117,9 +100,7 @@ steps:
         reason: "Triggered by workflow '{{ workflow.name }}'"
 ```
 
-### Example: Call a custom webhook without a connector
-
-This example makes a POST request to a custom automation endpoint, passing data from the workflow context.
+Call a URL directly without a connector:
 
 ```yaml
 steps:
@@ -134,3 +115,4 @@ steps:
         event_id: "{{ event.id }}"
         message: "Workflow action triggered by '{{ workflow.name }}'"
 ```
+:::
