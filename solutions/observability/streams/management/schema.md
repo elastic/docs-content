@@ -43,7 +43,7 @@ The **Schema** tab provides an overview of how fields are defined within your st
 
 - **Wired streams:** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` the **Schema** tab determines field mappings by combining information from the current stream’s index and its parent streams. Fields with a type defined in a parent stream have the **Inherited** status. You can navigate to that parent stream to view or edit the mapping (except for fields defined in the root logs stream, which you can't modify).
 
-  When you add a mapping to a wired stream, all of its child streams automatically inherit it.
+  When you add a mapping to a wired stream, all its child streams automatically inherit it.
 
 ### Edit mappings from the Schema tab
 
