@@ -221,6 +221,10 @@ To configure per-agent access controls:
 
 Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base visibility setting. For example, you can set an agent to **Private** and then grant specific users view or edit access.
 
+::::{note}
+Agents with **Public** visibility are always visible and usable by everyone, regardless of the access list assigned.
+::::
+
 ## Best practices for custom agents
 
 When creating custom agents, follow these best practices to ensure optimal performance and usability:
