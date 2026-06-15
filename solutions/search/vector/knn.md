@@ -64,6 +64,10 @@ Approximate kNN offers low latency and good accuracy, while exact kNN guarantees
 Approximate kNN search has specific resource requirements. For instance, for HNSW, all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
 
+::::{note}
+The top-level `knn` search option described in this section only works with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields. To run a kNN search on a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field, use the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text) instead. You can also query `semantic_text` fields using a [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), which is the simplest approach.
+::::
+
 To run an approximate kNN search:
 
 1. Map one or more `dense_vector` fields. Approximate kNN search requires the following mapping options:  
