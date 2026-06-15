@@ -176,7 +176,7 @@ The bucket needs to exist to register a repository for snapshots. If you did not
 
 You can also impose similar restrictions using a [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html).
 
-Do not impose any additional restrictions on access to your bucket, for instance by using more restrictive `Condition` clauses than the ones documented above.
+Do not impose any additional restrictions on access to your bucket, for instance by using stricter `Condition` clauses than the ones documented above. Overly-restrictive access policies can prevent {{es}} snapshots from working correctly.
 
 #### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts]
 
