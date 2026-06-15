@@ -56,7 +56,7 @@ Complete the fields in the **Create skill** dialog:
 - **Name**: A human-readable name (64-character limit).
 - **Description**: A short description of when the agent should use the skill (1024-character limit). This field is always included in the agent's context, so it should be specific and semantically distinct from other skill descriptions.
 - **Instructions**: The skill content in Markdown. Include trigger conditions, step-by-step instructions, examples, and edge cases. Corresponds to `content` in the API.
-- **Referenced content** {applies_to}`stack: ga 9.5+`: Named content blocks that give the agent supplementary knowledge such as runbooks, playbooks, or reference material it can read selectively when the skill is triggered. Available under **Advanced options** in the UI. Corresponds to `referenced_content` in the API.
+- **Referenced content** {applies_to}`stack: ga 9.5+`: Named content blocks that give the agent supplementary knowledge such as runbooks, playbooks, or reference material it can read selectively when the skill is triggered. Available under **Advanced options** in the UI. Corresponds to [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) in the API.
 - **Associated tools**: The tools the skill should have access to (up to 100). Available under **Advanced options** in the UI. Corresponds to `tool_ids` in the API.
 
 ::::
@@ -103,7 +103,7 @@ This approach is useful when you want to iterate quickly or when you find it eas
 
 ## Skills API
 
-You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, including `referenced_content` for additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
+You can also create and manage skills programmatically using the {{kib}} REST API. The API supports all the same fields as the UI, including [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) for additional named content blocks the agent can read selectively. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
 - [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
 - [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
