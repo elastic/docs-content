@@ -488,22 +488,15 @@ To access the deployment or project:
 
 AWS supports cross-region PrivateLink as described on the [AWS blog](https://aws.amazon.com/blogs/networking-and-content-delivery/introducing-cross-region-connectivity-for-aws-privatelink/).
 
-This means your deployment or project on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment or project endpoints. 
+This means your deployment or project on {{ecloud}} can be in a different region than the PrivateLink endpoints or the clients that consume the deployment or project endpoints.
 
 ### Supported source regions
 
-Cross-region PrivateLink connections can originate from any [AWS region where {{ecloud}} is available](#ec-private-link-service-names-aliases), as well as some additional AWS opt-in regions:
+You can set up a cross-region PrivateLink connection from any AWS region where AWS supports cross-region PrivateLink to any [AWS region where {{ecloud}} is available](#ec-private-link-service-names-aliases). For more information about how cross-region PrivateLink works, including opt-in region requirements and other considerations, refer to [Cross-Region access](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#endpoint-service-cross-region) in the AWS documentation.
 
-| Region | Location |
-| --- | --- |
-| ap-south-2 | Asia Pacific (Hyderabad) |
-| ap-southeast-3 | Asia Pacific (Jakarta) |
-| ap-southeast-4 | Asia Pacific (Melbourne) |
-| ap-southeast-5 | Asia Pacific (Malaysia) |
-| ca-west-1 | Canada West (Calgary) |
-| eu-south-2 | Europe (Spain) |
-| il-central-1 | Israel (Tel Aviv) |
-| me-central-1 | Middle East (UAE) |
+Cross-region PrivateLink does not cross AWS partition boundaries. You can't establish a cross-region PrivateLink connection between commercial AWS regions and AWS GovCloud or AWS China regions.
+
+If a specific source region isn't working, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 
 ### Set up a cross-region PrivateLink connection
 
@@ -514,9 +507,9 @@ In this example, `region 1` contains your VPC endpoint and `region 2` is the reg
     * In the **Service name** field, enter the [VPC service name](#ec-private-link-service-names-aliases) for `region 2`.
     * Select **Enable Cross Region endpoint** and select `region 2` from the **Select a region** drop-down list.
 
-1. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment or project is hosted (`region 2`), and [associate it](#associate-private-connection-policy) with your deployment or project.
+2. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment or project is hosted (`region 2`), and [associate it](#associate-private-connection-policy) with your deployment or project.
 
-2. [Test the connection](#ec-access-the-deployment-over-private-link) from a VM or client in `region 1` to your Private Link endpoint, and it should be able to connect to your {{es}} deployment or project hosted in `region 2`.
+3. [Test the connection](#ec-access-the-deployment-over-private-link) from a VM or client in `region 1` to your Private Link endpoint, and it should be able to connect to your {{es}} deployment or project hosted in `region 2`.
 
 ## Manage private connection policies
 
