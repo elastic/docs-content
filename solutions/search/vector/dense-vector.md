@@ -1,6 +1,6 @@
 ---
 navigation_title: Dense vector
-description: Semantic search using neural embeddings to find similar content, match natural language queries, and power recommendations.
+description: Learn how dense vector search works in Elasticsearch, including how to generate embeddings and query them with kNN.
 applies_to:
   stack:
   serverless:

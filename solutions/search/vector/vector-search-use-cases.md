@@ -1,6 +1,6 @@
 ---
 navigation_title: Use cases
-description: Common vector search patterns and implementation strategies for semantic text search, embeddings, and hybrid retrieval in Elasticsearch.
+description: Explore vector search use cases in Elasticsearch, including RAG, recommendations, image search, and hybrid retrieval.
 applies_to:
   stack:
   serverless:

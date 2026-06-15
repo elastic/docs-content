@@ -7,7 +7,7 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
-description: Store and search dense vector embeddings in Elasticsearch using k-nearest neighbor (kNN) queries for AI-driven semantic relevance.
+description: Learn how to index pre-generated dense vector embeddings and search them with kNN queries in Elasticsearch.
 ---
 
 # Bring your own dense vectors to {{es}} [bring-your-own-vectors]

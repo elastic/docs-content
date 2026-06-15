@@ -1,5 +1,5 @@
 ---
-description: Sparse vector search using ELSER to expand content into weighted terms for enhanced keyword search with explainable semantic understanding.
+description: Use ELSER to expand documents and queries into weighted terms for semantic search with sparse vectors in Elasticsearch.
 applies_to:
   stack:
   serverless:
