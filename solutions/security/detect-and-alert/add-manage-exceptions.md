@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/add-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-exceptions.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -63,7 +63,7 @@ For required privileges to view and manage {{elastic-endpoint}} exceptions, refe
 
 You can add exceptions from several places in the UI:
 
-* **Rule details page**: Find **Detection rules (SIEM)** in the navigation menu, select a rule, scroll to the **Rule exceptions** tab, and click **Add rule exception**.
+* **Rule details page**: Find **{{siem-rules-ui}}** in the navigation menu, select a rule, scroll to the **Rule exceptions** tab, and click **Add rule exception**.
 
     :::{image} /solutions/images/security-rule-exception-tab.png
     :alt: Detail of rule exceptions tab
@@ -168,6 +168,16 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
+::::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+If you've opted in to per-policy {{elastic-endpoint}} exception behavior, {{elastic-endpoint}} exceptions are no longer evaluated by detection rules and cannot be added to them. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
+::::
+
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
+
 {{elastic-endpoint}} exceptions apply to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) and to any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected. These exceptions are applied to both the detection rule and the {{elastic-endpoint}} on your hosts.
 
 ::::{important}
@@ -178,7 +188,7 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 You can add Endpoint exceptions from the following places:
 
-* **Rule details page**: Find **Detection rules (SIEM)** in the navigation menu, select an [endpoint protection rule](../manage-elastic-defend/endpoint-protection-rules.md), scroll to the **Endpoint exceptions** tab, and click **Add endpoint exception**.
+* **Rule details page**: Find **{{siem-rules-ui}}** in the navigation menu, select an [endpoint protection rule](../manage-elastic-defend/endpoint-protection-rules.md), scroll to the **Endpoint exceptions** tab, and click **Add endpoint exception**.
 * **Alerts table**: Find **Alerts** in the navigation menu, go to an {{elastic-endpoint}} alert, click the **More actions** menu {icon}`boxes_horizontal`, and select **Add Endpoint exception**.
 * **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, expand the **Endpoint Security Exception List** (or click its name), and click **Add endpoint exception**.
 
@@ -270,7 +280,7 @@ Creates an exception that excludes all LFC-signed trusted processes:
 
 To view a rule's exceptions:
 
-1. Open the rule's details page. To do this, find **Detection rules (SIEM)** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
+1. Open the rule's details page. To do this, find **{{siem-rules-ui}}** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
 2. Scroll down and select the **Rule exceptions** or **Endpoint exceptions** tab. All exceptions that belong to the rule will display in a list.
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.

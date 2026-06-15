@@ -123,6 +123,12 @@ Define formatting rules to ensure consistency between the LLM, the tools, and th
 * **Financial values**: "Input monetary values as integers in cents for tool calls, but display them as `$XX.XX` in user responses."
 * **Domain context**: Define organizational acronyms or naming conventions. (Example: "In this context, 'AOV' refers to Average Order Value.")
 
+### Instruct agents to search remote clusters
+
+If your data spans multiple clusters, create an [index search tool](tools/index-search-tools.md) with a cross-cluster target pattern such as `remote_cluster:logs-*`. Add a descriptive tool name and description so the agent knows when to route queries to the remote cluster.
+
+To learn more, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
+
 ## Error handling and guardrails
 
 Agents encounter incomplete data, failed tool calls, and ambiguous requests. Explicit instructions for these scenarios prevent the agent from guessing or hallucinating responses.

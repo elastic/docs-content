@@ -13,12 +13,12 @@ products:
 This functionality is experimental. It may change or be removed at anytime.
 :::
 
-**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a pre-selected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
+**Discover** offers a dedicated experience for exploring trace data. When **Discover** detects data in `traces-*` indices, it automatically enables features that help you investigate distributed traces more effectively. The traces experience includes a preselected set of trace fields in the data grid, a structured overview of each document's key attributes, latency comparisons for similar spans, and a waterfall visualization of the full trace timeline.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](/explore-analyze/discover.md).
 
 :::{image} /solutions/images/discover-traces-main.png
-:alt: Discover showing trace data with the traces profile active, including pre-selected columns for service name, transaction name, span name, and duration.
+:alt: Discover showing trace data with the traces profile active, including preselected columns for service name, transaction name, span name, and duration.
 :screenshot:
 :::
 
@@ -54,7 +54,7 @@ The traces experience is available in:
 
 ## Traces-specific features [traces-specific-features]
 
-When **Discover** recognizes trace data, it pre-selects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`. You can [reorder or resize these columns](/explore-analyze/discover/document-explorer.md#document-explorer-columns), or add new ones, using the standard **Discover** column controls.
+When **Discover** recognizes trace data, it preselects a set of relevant fields as columns in the data grid: `service.name`, `transaction.name`, `span.name`, `transaction.duration.us`, `span.duration.us`, and `event.outcome`. You can [reorder or resize these columns](/explore-analyze/discover/document-explorer.md#document-explorer-columns), or add new ones, using the standard **Discover** column controls.
 
 ### Overview charts ({{esql}}) [traces-overview-charts]
 

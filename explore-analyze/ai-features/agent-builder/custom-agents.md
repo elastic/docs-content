@@ -83,15 +83,14 @@ Configure the essential agent settings in the **Settings** tab:
 
 :::::
 
-:::::{step} Enable Elastic capabilities
-:anchor: create-custom-agent-enable-elastic-capabilities
+:::::{step} Enable Elastic capabilities (optional)
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Use the **Enable Elastic Capabilities** toggle to activate built-in Elastic tools and skills for your agent. This toggle is disabled by default.
+Optionally enable the **Enable Elastic capabilities** toggle to automatically assign all Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins to your agent. This toggle is disabled by default for custom agents.
 
-For more information, refer to [Enable Elastic Capabilities](#enable-elastic-capabilities).
+For more information, refer to [Elastic capabilities](agent-builder-agents.md#elastic-capabilities).
 
 :::::
 
@@ -127,10 +126,16 @@ You can assign skills that already exist in your deployment's skill library—yo
 
 :::::{step} Assign plugins (optional)
 ```{applies_to}
-stack: ga 9.4+
+stack: preview 9.4+
+serverless: preview
 ```
 
-Switch to the **Plugins** tab to assign plugins to your agent. Plugins extend agents with additional skills and capabilities. Before you can assign a plugin, it must first be installed from the global **Plugins** page in **Manage components**.
+Switch to the **Plugins** tab to assign plugins to your agent. Each plugin bundles a set of related skills into a single install. Before you can assign a plugin, install it from the global **Plugins** page in **Manage components**.
+For more information, refer to [Plugins in {{agent-builder}}](plugins.md).
+
+:::{note}
+The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) in {{kib}}.
+:::
 
 :::::
 
@@ -197,23 +202,6 @@ Control who can view and edit your agent by configuring its visibility. To chang
 :width: 700px
 :::
 
-## Enable Elastic Capabilities [enable-elastic-capabilities]
-
-```{applies_to}
-stack: ga 9.4+
-```
-
-When the **Enable Elastic Capabilities** toggle is enabled, it automatically assigns all current and future Elastic-built skills, plugins, and tools to the agent. The set of assigned capabilities is dynamic and grows as Elastic adds new built-in content.
-
-To review which skills and tools are active, open the agent's **Skills** or **Tools** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
-
-Disable this toggle to manage skill, plugin, and tool assignments manually.
-
-:::{image} images/elastic-capabilities.png
-:alt: Enable Elastic Capabilities toggle ON
-:width: 500px
-:::
-
 ## Best practices for custom agents
 
 When creating custom agents, follow these best practices to ensure optimal performance and usability:
@@ -250,7 +238,7 @@ The Agents API enables programmatic management of custom agents.
 
 For an overview of agent API operations, refer to [Agents API](kibana-api.md#agents-apis).
 
-For the complete API reference, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-agent-builder-agents).
+For the complete API reference, refer to the [Kibana API reference]({{kib-apis}}operation/operation-get-agent-builder-agents).
 
 ## Related pages
 
@@ -260,3 +248,5 @@ For the complete API reference, refer to the [Kibana API reference](https://www.
 - [Tools](tools.md)
 - [Skills in {{agent-builder}}](skills.md)
 - [Skill creation guidelines](skill-creation-guidelines.md)
+- [Plugins in {{agent-builder}}](plugins.md)
+- [Connectors in {{agent-builder}}](connectors.md)

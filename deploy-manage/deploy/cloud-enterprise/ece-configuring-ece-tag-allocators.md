@@ -74,10 +74,13 @@ If you have an allocator that meets several criteria, such as an allocator with 
 
 ## Tag an allocator through the RESTful API [ece_tag_an_allocator_through_the_restful_api]
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 1. Get a list of the allocators in your ECE installation:
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators
     ```
 
     ::::{note}
@@ -87,22 +90,19 @@ If you have an allocator that meets several criteria, such as an allocator with 
 2. $$$check-allocator-tags$$$Check what tags have already been assigned to your allocators. In a new or newly upgraded ECE installation, this command returns `[]`, which means that you have not assigned any tags, yet.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata
     ```
 
     `ALLOCATOR_ID`
     :   The value of the `allocator_id` field for one of your allocators as returned by the `/api/v1/platform/infrastructure/allocators` API endpoint.
 
-        ::::{tip}
-        The examples in this section all use HTTPS over port 12443 and run against a host that holds the coordinator role. Using HTTPS requires that you have [a TLS certificate already installed](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For testing purposes only, you can specify the `-k` option to turn off certificate verification, as shown in our examples, or use HTTP over port 12400 until you get your TLS certificate sorted out.
-        ::::
 
 3. Tag an allocator by assigning it the tags that you might need.
 
     * Example: To assign a single `highCPU: true` tag to an allocator:
 
         ```sh
-        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata/highCPU  -H 'content-type: application/json' -d '{ "value": "true" }'
+        curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata/highCPU  -H 'content-type: application/json' -d '{ "value": "true" }'
         [{
           "key": "highCPU",
           "value": "true"
@@ -114,7 +114,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
     * Example: To assign multiple tags to an allocator with a single command:
 
         ```sh
-        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata -H 'content-type: application/json' -d '
+        curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata -H 'content-type: application/json' -d '
         {
           "items": [
             {
