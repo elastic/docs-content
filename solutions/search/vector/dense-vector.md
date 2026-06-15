@@ -1,5 +1,6 @@
 ---
 navigation_title: Dense vector
+description: Semantic search using neural embeddings to find similar content, match natural language queries, and power recommendations.
 applies_to:
   stack:
   serverless:

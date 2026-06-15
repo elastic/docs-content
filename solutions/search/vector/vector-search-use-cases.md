@@ -1,5 +1,6 @@
 ---
 navigation_title: Use cases
+description: Common vector search patterns and implementation strategies for semantic text search, embeddings, and hybrid retrieval in Elasticsearch.
 applies_to:
   stack:
   serverless:

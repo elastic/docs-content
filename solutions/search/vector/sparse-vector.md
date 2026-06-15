@@ -1,4 +1,5 @@
 ---
+description: Sparse vector search using ELSER to expand content into weighted terms for enhanced keyword search with explainable semantic understanding.
 applies_to:
   stack:
   serverless:
