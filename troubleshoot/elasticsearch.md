@@ -30,6 +30,7 @@ This section helps you fix issues with {{es}} deployments.
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
+* [](/troubleshoot/elasticsearch/fix-date-timestamps.md)
 
 ## Management [troubleshooting-management]
 

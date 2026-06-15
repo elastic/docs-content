@@ -33,6 +33,7 @@ toc:
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
           - file: elasticsearch/troubleshoot-ingest-pipelines.md
+          - file: elasticsearch/fix-date-timestamps.md
 
       - file: elasticsearch/capacity.md
         children:  
