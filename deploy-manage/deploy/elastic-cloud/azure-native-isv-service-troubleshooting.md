@@ -13,7 +13,7 @@ navigation_title: Troubleshooting
 
 $$$ec-azure-integration-troubleshooting$$$
 
-This page describes some scenarios that you might experience onboarding to {{ecloud}} through the Azure portal. If you're running into issues, you can always [get support](#azure-integration-support).
+This page describes some scenarios that you might experience [onboarding to {{ecloud}} through the Azure portal](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md). If you're running into issues, you can always [get support](#azure-integration-support).
 
 
 ## Authorization errors
