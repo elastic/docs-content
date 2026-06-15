@@ -222,7 +222,7 @@ To configure per-agent access controls:
 Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base visibility setting. For example, you can set an agent to **Private** and then grant specific users view or edit access.
 
 ::::{note}
-Per-agent access controls don't restrict **Public** agents. Public agents are always visible and usable by all users in your organization.
+Per-agent access controls only apply to **Private** and **Shared** agents. Any user in your organization can view and use a **Public** agent.
 ::::
 
 ## Best practices for custom agents
