@@ -48,7 +48,7 @@ Make sure that the visualization type is set to **Line**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
-   - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+   - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
 :::::
@@ -64,8 +64,9 @@ You can tweak the appearance of your chart by adjusting axes, legends, and serie
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
 
-For layout, hierarchy, and color guidance on dashboards, check EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
