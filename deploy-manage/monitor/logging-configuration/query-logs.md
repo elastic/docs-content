@@ -358,3 +358,4 @@ Each query language may also include its own fields, prefixed with `elasticsearc
 
 - [Query activity](/deploy-manage/monitor/query-activity.md)
 - [Tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md)
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md)
