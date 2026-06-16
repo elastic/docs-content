@@ -34,6 +34,8 @@ settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
 
+Full reference: [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
 ## Triggers [workflows-cheat-triggers]
 
 ```yaml
