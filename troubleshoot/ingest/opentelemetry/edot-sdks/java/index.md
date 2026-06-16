@@ -45,7 +45,7 @@ Determine if the issue is related to the EDOT agent, other agents, extensions or
 1. Start the application with no agent (remove `-javaagent:` argument) and restart the application:
   - If the issue is still present without the agent, then the problem is likely related to the application or its environment.
   - If the issue is resolved, then re-adding the agent should allow to confirm that the issue is related to the agent.
-1. If more than one agent is being used on the application (multiple `-javagent:` JVM arguments), remove other agents and restart the application. Multiple instrumentation agents can conflict with each other and is a know cause of unpredictable behavior
+1. If more than one agent is being used on the application (multiple `-javaagent:` JVM arguments), remove other agents and restart the application. Multiple instrumentation agents can conflict with each other and are a known cause of unpredictable behavior.
   - If the issue is still present with only the EDOT agent, then it indicates the problem is likely related to the agent.
   - If the issue is resolved, then it indicates the problem might be related to interactions between agents.
 1. If [instrumentation extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) are being used with the `otel.javaagent.extensions` JVM system property or the `OTEL_JAVAAGENT_EXTENSIONS` environment variable, remove them and restart the application.
