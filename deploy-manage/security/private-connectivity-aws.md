@@ -494,7 +494,7 @@ This means your deployment or project on {{ecloud}} can be in a different region
 
 You can set up a cross-region PrivateLink connection from any AWS region where AWS supports cross-region PrivateLink to any [AWS region where {{ecloud}} is available](#ec-private-link-service-names-aliases). For more information about how cross-region PrivateLink works, including opt-in region requirements and other considerations, refer to [Cross-Region access](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#endpoint-service-cross-region) in the AWS documentation.
 
-Cross-region PrivateLink does not cross AWS partition boundaries. You can't establish a cross-region PrivateLink connection between commercial AWS regions and AWS GovCloud or AWS China regions.
+Cross-region PrivateLink [does not cross AWS partition boundaries](https://aws.amazon.com/about-aws/whats-new/2024/11/aws-privatelink-across-region-connectivity/). You can't establish a cross-region PrivateLink connection between commercial AWS regions and AWS GovCloud or AWS China regions.
 
 If a specific source region isn't working, [contact Elastic Support](/troubleshoot/index.md#contact-us).
 
