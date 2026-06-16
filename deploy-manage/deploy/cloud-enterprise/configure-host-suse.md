@@ -269,7 +269,24 @@ You must use XFS and have quotas enabled on all allocators. Otherwise, disk usag
         "max-size": "500m",
         "max-file": "10"
       },
-      "data-root": "/mnt/data/docker"
+      "data-root": "/mnt/data/docker",
+      "default-ulimits": {
+        "nofile": {
+          "Name": "nofile",
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
+        }
+      }
     }
     ```
 
