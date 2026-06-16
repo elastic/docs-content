@@ -12,7 +12,7 @@ products:
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} on Podman rather than Docker. Use these steps to install Podman with `dnf`; configure the Podman socket so the standard `docker` CLI works against it; and apply the SELinux, XFS, and kernel tuning that ECE expects on Red Hat-family hosts.
+Red Hat Enterprise Linux 8 and 9, along with Rocky Linux 8 and 9, run {{ece}} (ECE) on Podman rather than Docker. Use these steps to install and configure Podman, and to apply the SELinux, XFS, and kernel tuning that ECE expects on Red Hat-family hosts.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
 * [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
