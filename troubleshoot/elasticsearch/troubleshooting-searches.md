@@ -243,3 +243,5 @@ xpack.security.audit.logfile.events.emit_request_body: true
 ```
 
 Refer to [Advanced tuning: finding and fixing slow Elasticsearch queries](https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries) for more information.
+
+For {{esql}}-specific slow query diagnosis and prevention, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).

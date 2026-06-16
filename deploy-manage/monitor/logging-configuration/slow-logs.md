@@ -263,4 +263,4 @@ Slow logging checks each event against the reporting threshold when the event is
 
 ## Learn more [_learn_more]
 
-To learn about other ways to optimize your search and indexing requests, refer to [tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md) and [tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md).
+To learn about other ways to optimize your search and indexing requests, refer to [tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md) and [tune for indexing speed](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md). For {{esql}}-specific guidance, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).

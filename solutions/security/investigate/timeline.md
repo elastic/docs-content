@@ -284,3 +284,5 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
 To get started using {{esql}}, read the tutorial for [using {{esql}} in {{kib}}](/explore-analyze/query-filter/languages/esql-kibana.md). Much of the functionality available in {{kib}} is also available in Timeline.
 
 To find examples of using {{esql}} for threat hunting, check out [our blog](https://www.elastic.co/blog/introduction-to-esql-new-query-language-flexible-iterative-analytics).
+
+For tips on writing faster {{esql}} queries, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
