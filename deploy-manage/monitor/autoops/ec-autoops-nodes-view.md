@@ -14,30 +14,22 @@ products:
 
 The **Nodes** view provides a thorough look into essential metrics for all monitored nodes. With this view, you can gain deeper insight into your cluster's health on a per-node basis and observe each metric over extended periods of time.
 
-To get to the **Nodes** view, go to AutoOps in your deployment or cluster and select **Nodes** from the side navigation.
+Use the dropdowns at the top of the screen to select the deployment or cluster and nodes you want to view. For nodes, you can select all, select a group, or choose tier-based grouping.
+
+Use the date picker on the right side of the screen to select a time period for the data shown. 
 
 :::{image} /deploy-manage/images/cloud-autoops-node-view.png
 :screenshot:
 :alt: Screenshot showing the Nodes view in AutoOps
 :::
 
-## Panels in the Nodes view
+To get to the **Nodes** view, go to AutoOps in your deployment or cluster and select **Nodes** from the side navigation.
 
-The **Nodes** view shows the following panels.
+## Sections in the Nodes view
 
-### Nodes
+The following table lists all the sections in the **Nodes** view that drill down into specific monitoring areas, along with the names and descriptions of metrics they present. 
 
-The **Nodes** table lists all the nodes used by the {{es}} cluster, along with their name, role, and status. The elected master node is marked with a star.
-
-### Open Events
-
-The **Open Events** panel lists open events sorted by severity and time. When the conditions that triggered the event no longer exist, the event is automatically set to close and appear in the **Events History** panel. Closing an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it.
-
-### Panels covering other monitoring areas
-
-The following table lists all the other panels in the **Nodes** view that drill down into specific monitoring areas, along with the names and descriptions of metrics they present. 
-
-| Area | Metrics name | Metrics description | 
+| Area | Metric name | Metric description | 
 | --- | --- | --- | 
 | Activity | Indexing rate | Number of documents being indexed per second on all primary and replica shards hosted on the node. |
 |  | Indexing latency | Average latency for indexing documents, which is the time it takes to index documents divided by the number that were indexed in all primary and replica shards hosted on the node. |

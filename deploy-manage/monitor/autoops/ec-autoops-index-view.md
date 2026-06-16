@@ -16,12 +16,14 @@ The **Indices** view provides detailed statistics for each {{es}} index in your 
 
 Information about each index is organized into a clear table with columns for the index's name, primary and total shards, indexing and search rate per second, and more. You can expand each index entry to dive deeper into real-time metrics.
 
-To get to the **Indices** view, go to AutoOps in your deployment or cluster and select **Indices** from the side navigation.
+Use the **Deployment** or **Cluster** dropdown at the top of the screen to select which deployment or cluster you want to view, and use the date and time picker on the right side of the screen to select a time period for the data shown.
 
 :::{image} /deploy-manage/images/cloud-autoops-index-view.png
 :screenshot:
 :alt: Screenshot showing the Indices view in AutoOps
 :::
+
+To get to the **Indices** view, go to AutoOps in your deployment or cluster and select **Indices** from the side navigation.
 
 ## Metrics in the Indices view [ec-autoops-index-metrics]
 
