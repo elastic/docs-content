@@ -2,33 +2,95 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_configure_privileges_for_cross_cluster_replication_2.html
 applies_to:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
+  stack: all
+
 products:
   - id: elasticsearch
 ---
 
-# Configure privileges for cross-cluster replication [_configure_privileges_for_ccr_2]
+# Configure privileges for {{ccr}} [_configure_privileges_for_ccr_2]
 
-The {{ccr}} user requires different cluster and index privileges on the remote cluster and local cluster. Use the following requests to create separate roles on the local and remote clusters, and then create a user with the required roles.
+To use a [remote cluster](/deploy-manage/remote-clusters.md) for {{ccr}}, you need to configure user roles with the correct cluster and index privileges. The steps depend on the [remote cluster security model](/deploy-manage/remote-clusters/security-models.md) in use:
 
+* [API key authentication](#configure-privileges-for-ccr-api-key) (recommended), where you create roles with the required privileges on the local cluster.
+* {applies_to}`stack: deprecated 9.0` [TLS certificate authentication](#configure-privileges-for-ccr-cert), where you create matching roles on both the local and remote clusters.
 
-## Remote cluster [_remote_cluster_4]
+You can manage roles in {{kib}} on the **Roles** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use the [role management]({{es-apis}}group/endpoint-security) APIs to add, update, remove, and retrieve roles dynamically. When you use the UI or APIs to manage roles, the roles are stored in an internal {{es}} index. When you use local files, the roles are only stored in those files. For more information, refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
-On the remote cluster that contains the leader index, the {{ccr}} role requires the `read_ccr` cluster privilege, and `monitor` and `read` privileges on the leader index.
+The following examples use the [create or update roles]({{es-apis}}operation/operation-security-put-role) API and the [create or update users]({{es-apis}}operation/operation-security-put-user) API. You must have at least the `manage_security` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) to use these APIs.
 
-::::{note}
-If requests are authenticated with an [API key]({{es-apis}}operation/operation-security-create-api-key), the API key requires the above privileges on the **local** cluster, instead of the remote.
-::::
+## API key authentication [configure-privileges-for-ccr-api-key]
 
+Authorization for {{ccr}} works in two parts:
 
-::::{note}
-If requests are issued [on behalf of other users](../../users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the `run_as` privilege on the remote cluster.
-::::
+* The [cross-cluster API key](/deploy-manage/remote-clusters/remote-clusters-api-key.md) used to connect to a remote cluster defines the maximum access that cluster allows.
+* Roles on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) further limit which remote indices each user can replicate.
 
+To grant a user {{ccr}} access, you create a role on the local cluster, assign it the `manage_ccr` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and the `cross_cluster_replication` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the remote cluster alias and leader index, then assign that role to the user.
+
+:::{note}
+The cross-cluster API key used by the local cluster to connect the remote cluster must have sufficient privileges to cover all remote indices privileges required by individual users.
+:::
+
+Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a role called `remote-replication` on the local cluster that allows replicating the remote `leader-index` index:
+
+```console
+POST /_security/role/remote-replication
+{
+  "cluster": [
+    "manage_ccr"
+  ],
+  "remote_indices": [
+    {
+      "clusters": [ "my_remote_cluster" ],
+      "names": [
+        "leader-index"
+      ],
+      "privileges": [
+        "cross_cluster_replication"
+      ]
+    }
+  ]
+}
+```
+
+After creating the local `remote-replication` role, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+
+```console
+POST /_security/user/cross-cluster-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-replication" ]
+}
+```
+
+Note that you only need to create this user on the local cluster.
+
+You can then [configure {{ccr}}](set-up-cross-cluster-replication.md) to replicate your data across datacenters.
+
+## TLS certificate authentication [configure-privileges-for-ccr-cert]
+```{applies_to}
+stack: deprecated 9.0
+```
+
+:::{warning}
+
+Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
+:::
+
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create a user role on both the local and remote clusters and assign the necessary privileges.
+
+:::{important}
+You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-replication` role name on both clusters. However, you can specify different role definitions on each cluster.
+:::
+
+### Remote cluster [_remote_cluster_4]
+
+On the remote cluster that contains the leader index, the {{ccr}} role requires the `read_ccr` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster), and `monitor` and `read` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on the leader index.
+
+:::{note}
+If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege).
+:::
 
 The following request creates a `remote-replication` role on the remote cluster:
 
@@ -52,10 +114,9 @@ POST /_security/role/remote-replication
 }
 ```
 
+### Local cluster [_local_cluster_4]
 
-## Local cluster [_local_cluster_4]
-
-On the local cluster that contains the follower index, the `remote-replication` role requires the `manage_ccr` cluster privilege, and `monitor`, `read`, `write`, and `manage_follow_index` privileges on the follower index.
+On the local cluster that contains the follower index, the `remote-replication` role requires the `manage_ccr` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster), and `monitor`, `read`, `write`, and `manage_follow_index` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on the follower index.
 
 The following request creates a `remote-replication` role on the local cluster:
 
@@ -81,7 +142,7 @@ POST /_security/role/remote-replication
 }
 ```
 
-After creating the `remote-replication` role on each cluster, use the [create or update users API]({{es-apis}}operation/operation-security-put-user) to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
+After creating the `remote-replication` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-replication` role. For example, the following request assigns the `remote-replication` role to a user named `cross-cluster-user`:
 
 ```console
 POST /_security/user/cross-cluster-user
@@ -94,3 +155,5 @@ POST /_security/user/cross-cluster-user
 ::::{note}
 You only need to create this user on the **local** cluster.
 ::::
+
+You can then [configure {{ccr}}](set-up-cross-cluster-replication.md) to replicate your data across datacenters.

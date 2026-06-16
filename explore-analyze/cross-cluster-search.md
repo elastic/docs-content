@@ -36,7 +36,7 @@ The following APIs support {{ccs}}:
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [Remote clusters](/deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
@@ -49,7 +49,202 @@ The following APIs support {{ccs}}:
 
 
 * If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
-* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. Refer to [Configure privileges](#configure-privileges-for-ccs) for details.
+
+
+## Configure privileges for {{ccs}} [configure-privileges-for-ccs]
+
+After [remote clusters are connected](/deploy-manage/remote-clusters.md), you can configure which users on your local cluster can search data on remote clusters. The steps depend on the [remote cluster security model](/deploy-manage/remote-clusters/security-models.md) in use:
+
+* [API key authentication](#configure-privileges-for-ccs-api-key) (recommended), where you create roles with the required privileges on the local cluster.
+* {applies_to}`stack: deprecated 9.0` [TLS certificate authentication](#configure-privileges-for-ccs-cert), where you create matching roles on both the local and remote clusters.
+
+You can manage roles in {{kib}} on the **Roles** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use the [role management]({{es-apis}}group/endpoint-security) APIs to add, update, remove, and retrieve roles dynamically. When you use the UI or APIs to manage roles, the roles are stored in an internal {{es}} index. When you use local files, the roles are only stored in those files. For more information, refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+
+The following examples use the [create or update roles]({{es-apis}}operation/operation-security-put-role) API and the [create or update users]({{es-apis}}operation/operation-security-put-user) API. You must have at least the `manage_security` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) to use these APIs.
+
+### API key authentication [configure-privileges-for-ccs-api-key]
+
+Authorization for {{ccs}} works in two parts:
+
+* The [cross-cluster API key](/deploy-manage/remote-clusters/remote-clusters-api-key.md) used to connect to a remote cluster defines the maximum access that cluster allows.
+* Roles on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) further limit which remote indices each user can search.
+
+To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
+
+::::{note}
+The cross-cluster API key used by the local cluster to connect the remote cluster must have sufficient privileges to cover all remote indices privileges required by individual users.
+::::
+
+Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
+
+```console
+POST /_security/role/remote-search
+{
+  "remote_indices": [
+    {
+      "clusters": [ "my_remote_cluster" ],
+      "names": [
+        "target-index"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster",
+        "view_index_metadata"
+      ]
+    }
+  ]
+}
+```
+
+After creating the `remote-search` role, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+Note that you only need to create this user on the local cluster.
+
+### TLS certificate authentication [configure-privileges-for-ccs-cert]
+```{applies_to}
+stack: deprecated 9.0
+```
+
+::::{warning}
+
+Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
+::::
+
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create a user role on both the local and remote clusters and assign the necessary privileges.
+
+::::{important}
+You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
+::::
+
+#### Remote cluster [configure-privileges-for-ccs-cert-remote]
+
+On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
+
+::::{note}
+If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the `run_as` privilege on the remote cluster.
+::::
+
+The following request creates a `remote-search` role on the remote cluster:
+
+```console
+POST /_security/role/remote-search
+{
+  "indices": [
+    {
+      "names": [
+        "target-indices"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster"
+      ]
+    }
+  ]
+}
+```
+
+#### Local cluster [configure-privileges-for-ccs-cert-local]
+
+On the local cluster, which is the cluster used to initiate cross cluster search, a user only needs the `remote-search` role. The role privileges can be empty.
+
+The following request creates a `remote-search` role on the local cluster:
+
+```console
+POST /_security/role/remote-search
+{}
+```
+
+After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+::::{note}
+You only need to create this user on the **local** cluster.
+::::
+
+#### {{kib}} users [configure-privileges-for-ccs-kibana-cert]
+
+When using {{kib}} to search across multiple clusters, a two-step authorization process determines whether or not the user can access data streams and indices on a remote cluster:
+
+* First, the local cluster determines if the user is authorized to access remote clusters. The local cluster is the cluster that {{kib}} is connected to.
+* If the user is authorized, the remote cluster then determines if the user has access to the specified data streams and indices.
+
+To grant {{kib}} users access to remote clusters, assign them a local role with read privileges to indices on the remote clusters. You specify data streams and indices in a remote cluster as `<remote_cluster_name>:<target>`.
+
+To grant users read access on the remote data streams and indices, you must create a matching role on the remote clusters that grants the `read_cross_cluster` privilege with access to the appropriate data streams and indices.
+
+For example, you might be actively indexing {{ls}} data on a local cluster and periodically offload older time-based indices to an archive on your remote cluster. You want to search across both clusters, so you must enable {{kib}} users on both clusters.
+
+On the local cluster, create a `logstash-reader` role that grants `read` and `view_index_metadata` privileges on the local `logstash-*` indices.
+
+::::{note}
+If you configure the local cluster as another remote in {{es}}, the `logstash-reader` role on your local cluster also needs to grant the `read_cross_cluster` privilege.
+::::
+
+```console
+POST /_security/role/logstash-reader
+{
+  "indices": [
+    {
+      "names": [
+        "logstash-*"
+        ],
+        "privileges": [
+          "read",
+          "view_index_metadata"
+          ]
+    }
+  ]
+}
+```
+
+Assign your {{kib}} users a role that grants [access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md), as well as your `logstash_reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
+
+```console
+PUT /_security/user/cross-cluster-kibana
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [
+    "logstash-reader",
+    "kibana-access"
+    ]
+}
+```
+
+On the remote cluster, create a `logstash-reader` role that grants the `read_cross_cluster` privilege and `read` and `view_index_metadata` privileges for the `logstash-*` indices.
+
+```console
+POST /_security/role/logstash-reader
+{
+  "indices": [
+    {
+      "names": [
+        "logstash-*"
+        ],
+        "privileges": [
+          "read_cross_cluster",
+          "read",
+          "view_index_metadata"
+          ]
+    }
+  ]
+}
+```
 
 
 ## {{ccs-cap}} examples [ccs-example]
