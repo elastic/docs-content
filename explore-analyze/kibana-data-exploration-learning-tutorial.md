@@ -359,6 +359,8 @@ Drag panels by their header to reposition them, and drag the corner handles to r
 - **Middle rows:** arrange time series charts (line charts) and bar charts below the metrics. A moderate height (roughly 10–12 grid rows) gives charts enough room to be readable without wasting space.
 - **Bottom row:** use wider panels for tables that benefit from more horizontal space and can afford a taller height.
 
+For a panel sizing reference with recommended widths and heights for each chart type, refer to [Organize dashboard panels](dashboards/arrange-panels.md#dashboard-grid-layout).
+
 To reduce clutter, consider hiding redundant axis titles. For example, on a bar chart the x-axis title may not add value when the panel title already describes the data. To hide it, edit the panel in Lens, open the {icon}`brush` **Style** panel, then under **Bottom axis**, set **Axis title** to **None**.
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-dashboard-polished.png
