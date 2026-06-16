@@ -1,5 +1,6 @@
 ---
 navigation_title: Dense vector
+description: Learn how dense vector search works in Elasticsearch, including how to generate embeddings and query them with kNN.
 applies_to:
   stack:
   serverless:

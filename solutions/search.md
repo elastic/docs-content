@@ -54,6 +54,22 @@ For an introduction to core {{es}} concepts such as indices, documents, and mapp
 
 To dive more deeply into the building blocks of {{es}} clusters, including nodes, shards, primaries, and replicas, refer to [](/deploy-manage/distributed-architecture.md).
 
+## {{es}} as a vector database [es-as-vector-database]
+
+{{es}} functions as a vector database by storing vector embeddings and retrieving the most similar results to a query vector. Vector embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to perform semantic similarity search and return results based on meaning rather than exact keyword matches.
+
+This capability is the foundation for vector search and related use cases in {{es}}. It enables you to work with semantic retrieval on the same data and infrastructure that you already use for full-text search, structured filters, and aggregations. {{es}} supports this by storing embeddings in vector field types such as `dense_vector` and `sparse_vector`, alongside your other indexed data.
+
+To use {{es}} as a vector database, you can use the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type. When you index content into a `semantic_text` field, {{es}} automatically generates vector embeddings using a configured {{ml}} model and stores them in the underlying vector field. These embeddings are indexed for efficient [k-nearest neighbor (kNN) search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md), enabling fast similarity-based retrieval at query time.
+
+For a high-level understanding of vector search concepts and capabilities in {{es}}, refer to Vector search. For an overview of use cases and guidance on how to implement them, refer to Vector search use cases.
+
+<!--
+TODO: Once https://github.com/elastic/docs-content/pull/5567 is merged:
+- Place link to definition list items on the new Vector search landing page for the following terms: vector database, vector embeddings, dense_vector, sparse_vector
+- Place links to Vector search and Vector search use cases
+-->
+
 ## Related reference
 
 * [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
