@@ -68,7 +68,9 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Provide a descriptive title and axis labels that clearly communicate what the chart shows. For example, mention the metric being visualized ("Average Response Time") and reference the time period when relevant ("Dec 8-16, 2025").
 
-Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.  
+Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
