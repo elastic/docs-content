@@ -109,7 +109,7 @@ The right source does not provide individual documents, but instead provides the
 }
 ```
 
-The terms aggregation creates a bucket for each unique **geo.src** value. Metrics are calucated for all documents in a bucket.
+The terms aggregation creates a bucket for each unique **geo.src** value. Metrics are calculated for all documents in a bucket.
 
 The following shows an example terms aggregation response. Note the **key** property, which defines the shared key for the right source.
 

@@ -25,19 +25,22 @@ You cannot edit system templates through the UI; they can only be configured thr
 The API user must have the `Platform admin` role in order to configure system templates.
 ::::
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 1. Obtain the existing system deployment template you wish to modify. Note the `id` of the system deployment template as you will include this value in the API call to edit the template.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Edit the JSON of the system deployment template you wish to modify.
-3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more detail.
+3. Make the API call to modify the deployment template. Note that the last path segment in the URL is the `id` of the system template you wish to modify. Check [set deployment template API]({{ece-apis}}operation/operation-set-deployment-template-v2) for more detail.
 
     The following example modifies the Default system deployment template (that, is the system template with `id` value of `default`), setting the default value of `autoscaling_enabled` to `true` and the default autoscaling maximum size of the hot tier to 4,194,304MB (64GB * 64 nodes).
 
     ```sh
-    curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/default?region=ece-region -H 'content-type: application/json' -d '{
+    curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/default?region=ece-region -H 'content-type: application/json' -d '{
       {
       "name" : "Default",
       "description" : "Default deployment template for clusters",
@@ -255,7 +258,7 @@ The API user must have the `Platform admin` role in order to configure system te
                   {
                     "instance_configuration_id" : "kibana",
                     "size" : {
-                      "value" : 1024,
+                      "value" : 2048,
                       "resource" : "memory"
                     }
                   }

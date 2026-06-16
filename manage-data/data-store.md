@@ -10,7 +10,7 @@ products:
 
 # The {{es}} data store [elasticsearch-intro-what-is-es]
 
-[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and vector database built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You can interact with an [index](/manage-data/data-store/index-basics.md) using its unique name or through a logical reference such as an [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own schema, defined by a [mapping](elasticsearch://reference/elasticsearch/mapping-reference/index.md) that specifies the fields and their types.
+[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable document store, and [vector database](/solutions/search.md#es-as-vector-database) built on [Apache Lucene](https://lucene.apache.org/). It stores data as JSON documents, organized into _indices_. You can interact with an [index](/manage-data/data-store/index-basics.md) using its unique name or through a logical reference such as an [alias](/manage-data/data-store/aliases.md). Each index holds a dataset with its own schema, defined by a [mapping](elasticsearch://reference/elasticsearch/mapping-reference/index.md) that specifies the fields and their types.
 
 You can store many independent datasets side by side — each in its own index or [data stream](/manage-data/data-store/data-streams.md) — and search them individually or together.
 
@@ -19,7 +19,7 @@ As your data grows, how you structure, size, and manage your indices directly af
 For production architecture guidance, including resilience, scaling, and performance optimization, refer to [](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 :::{tip}
-You can index a document using the [Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index) API. For production ingestion workflows and related concepts such as pipelines, agents, and Logstash, refer to [Ingest: Bring your data to Elastic](/manage-data/ingest.md).
+You can index a document using the [Index]({{es-apis}}operation/operation-index) API. For production ingestion workflows and related concepts such as pipelines, agents, and Logstash, refer to [Ingest: Bring your data to Elastic](/manage-data/ingest.md).
 :::
 
 ## Understand data storage

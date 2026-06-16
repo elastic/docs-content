@@ -9,15 +9,15 @@ products:
   - id: kibana
 ---
 
-# Set up [alerting-setup]
+# Set up {{kib}} alerting [alerting-setup]
 
-{{kib}} {{alert-features}} are automatically enabled, but might require some additional configuration.
+{{kib}} alerting is the built-in alerting system in {{kib}}. {{alert-features}} are automatically enabled, but might require some additional configuration.
 
 ## Prerequisites [alerting-prerequisites]
 
 If you are using an **on-premises** {{stack}} deployment:
 
-* In the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
+* In the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md) setting.
 * For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) configuration setting.
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
@@ -101,7 +101,7 @@ When you disable a rule, it retains the associated API key which is reused when 
 
 You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
-If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication](https://www.elastic.co/docs/api/doc/kibana/authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
+If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 
 ::::{important}
 If a rule requires certain privileges, such as index privileges, to run and a user without those privileges updates the rule, the rule will no longer function. Conversely, if a user with greater or administrator privileges modifies the rule, it will begin running with increased privileges. The same behavior occurs when you change the API key in the header of your API calls.
@@ -110,7 +110,7 @@ If a rule requires certain privileges, such as index privileges, to run and a us
 
 ### Restrict actions [alerting-restricting-actions]
 
-For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
+For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](kibana://reference/configuration-reference/alerting-settings.md) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
 
 ## Space isolation [alerting-spaces]
 

@@ -1,5 +1,6 @@
 ---
 navigation_title: Dense vector
+description: Learn how dense vector search works in Elasticsearch, including how to generate embeddings and query them with kNN.
 applies_to:
   stack:
   serverless:
@@ -57,5 +58,5 @@ New indices with 384 or more dimensions will default to BBQ HNSW automatically f
 Learn more about how BBQ works, supported algorithms, and configuration examples in the [Better Binary Quantization (BBQ) documentation](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq).
 
 ::::{tip}
-When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `index_options` parameter. Refer to [Optimizing vector storage with `index_options`](../semantic-search/semantic-search-semantic-text.md#semantic-text-index-options) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `index_options` parameter. Refer to [Optimizing vector storage with `index_options`](vector-storage-for-semantic-search.md) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
 ::::

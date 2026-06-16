@@ -6,9 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html#troubleshoot-signals
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html#troubleshoot-signals
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -22,12 +22,12 @@ This topic covers common troubleshooting issues when creating or managing [detec
 
 ## Setup errors [setup-errors-ts]
 
-Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **Rules** page:
+Depending on your privileges and whether detection system indices have already been created for the {{kib}} space, you might get one of these error messages when you open the **Alerts** or **{{siem-rules-ui}}** page:
 
 ::::{dropdown} Let's set up your detection engine
 :name: setup-detection-engine-ts
 
-If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
+If you get this message, a user with specific privileges must visit the **Alerts** or **{{siem-rules-ui}}** page before you can view detection alerts and rules. Refer to [Detections prerequisites and requirements](../../solutions/security/detect-and-alert/detections-privileges.md) for a list of all the requirements.
 
 :::{note}
 For **self-managed** {{stack}} deployments only, this message might display when the `xpack.encryptedSavedObjects.encryptionKey` setting has not been added to the `kibana.yml` file. For more information, refer to [Turn on detections](../../solutions/security/detect-and-alert/turn-on-detections.md).
@@ -54,7 +54,7 @@ For **self-managed** {{stack}} deployments only, this message might display when
 
 If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are running and start any jobs that have stopped.
 
-1. Go to **Rules** → **Detection rules (SIEM)**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
+1. Go to **Rules** → **{{siem-rules-ui}}**, then select the {{ml}} rule. The required {{ml}} jobs and their statuses are listed in the **Definition** section.
 
    :::{image} /troubleshoot/images/security-rules-ts-ml-job-stopped.png
    :alt: Rule details page with ML job stopped
@@ -132,7 +132,7 @@ A field can have type conflicts *and* be unmapped in specified indices.
 
 ### Fields with conflicting types [fields-with-conflicting-types]
 
-Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
+Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data]({{es-apis}}operation/operation-reindex). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
 
 In the following example, the selected field has been defined as different types across five indices.
 
@@ -154,6 +154,17 @@ In the following example, the selected field is unmapped across two indices.
 :::
 
 :::::
+
+
+## {{esql}} rules [esql-rules-ts]
+
+::::{dropdown} Non-aggregating {{esql}} rule: validation warning about `_id` or duplicate alerts
+:name: esql-missing-id-ts
+
+For **non-aggregating** {{esql}} detection rules, the engine uses document `_id` to avoid generating duplicate alerts for the same source event. 
+
+{applies_to}`stack: ga 9.4+` The detection engine automatically adds `METADATA _id` to the `FROM` command when your query omits it, and makes a best-effort attempt to keep `_id` available in the pipeline (for example by appending `_id` to restrictive `KEEP` commands). Refer to [](../../solutions/security/detect-and-alert/esql.md#esql-alert-deduplication) to learn more.
+::::
 
 
 ## Rule executions

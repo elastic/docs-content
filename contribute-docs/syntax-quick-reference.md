@@ -1,5 +1,6 @@
 ---
 navigation_title: "Syntax quick reference"
+description: "Quick reference for commonly used Markdown syntax elements in Elastic documentation, including directives, metadata, and tagging."
 ---
 
 # Syntax quick reference
@@ -213,7 +214,7 @@ Content for Serverless
 
 **DOs**<br>
 ✅ **Do:** Use when content varies significantly by deployment type or version<br>
-✅ **Do:** Combine multiple `applies_to` definitions using YAML object notation: `{ ece: ga 4.0+, ess: ga }`
+✅ **Do:** Combine multiple `applies_to` definitions using YAML object notation: `{ ece: ga 4.0+, ech: ga }`
 
 For more details, refer to [Applies switch](https://elastic.github.io/docs-builder/syntax/applies-switch).
 <br>
@@ -528,7 +529,7 @@ Include icons inline using the `` {icon}`icon-name` `` syntax.
 :open:
 ```markdown
 Click the {icon}`gear` **Settings** icon.
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
 ```
 :::
 
@@ -536,7 +537,7 @@ Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Er
 :open:
 Click the {icon}`gear` **Settings** icon.
 
-Status: {icon}`checkCircle` Success | {icon}`warning` Warning | {icon}`error` Error
+Status: {icon}`check_circle` Success | {icon}`warning` Warning | {icon}`error` Error
 :::
 
 **DOs**<br>

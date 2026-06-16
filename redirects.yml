@@ -290,10 +290,6 @@ redirects:
         'ec-restrictions-fleet-traffic-filters': 'ec-restrictions-fleet-network-security'
         'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
         'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
-  'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md':
-    to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md'
-    anchors:
-      'azure-integration-deployment-failed-traffic-filter': 'azure-integration-deployment-failed-network-security'
   'deploy-manage/remote-clusters/ec-enable-ccs.md':
     to: 'deploy-manage/remote-clusters/ec-enable-ccs.md'
     anchors:
@@ -824,6 +820,8 @@ redirects:
   'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
   'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
   'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
+  'solutions/observability/incident-management/create-manage-cases.md': 'explore-analyze/cases/create-cases.md'
+
 # Related to https://github.com/elastic/docs-content/pull/5251
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
@@ -853,6 +851,7 @@ redirects:
   'reference/fleet/elastic-agent-as-otel-collector.md':
     anchors:
       'hybrid-elastic-agent': 'elastic-agent-multiple-collection-methods'
+      'beat-receivers': 'beat-receivers'
   'reference/fleet/otel-integrations.md':
     anchors:
       'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
@@ -867,3 +866,41 @@ redirects:
   'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
   'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
   'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
+  'explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md': 'explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md'
+# Split off links for the EIS supported models page
+  'explore-analyze/elastic-inference/eis.md':
+    to: 'explore-analyze/elastic-inference/eis.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+        anchors:
+          'supported-models': 
+  'explore-analyze/elastic-inference/eis-supported-models.md':
+    to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-region-and-hosting.md'
+        anchors:
+          'eis-regions': 'eis-regions'
+      - to: 'explore-analyze/elastic-inference/eis-rate-limits.md'
+        anchors:
+          'rate-limits': 'eis-rate-limits'
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'pricing': 'pricing'
+          'monitor-your-token-usage': 'monitor-your-token-usage'
+# Split off links to inference UI pages
+  'explore-analyze/elastic-inference/inference-api.md':
+    to: 'explore-analyze/elastic-inference/inference-api.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'add-inference-endpoints': 'add-endpoint'
+          'inference-endpoints': 'manage-models'
+          'create-custom-eis': 'add-endpoint'
+
+  # https://github.com/elastic/docs-content/pull/6582
+  'explore-analyze/ai-features/agent-builder/custom-agents.md':
+    to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+    many:
+      - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
+        anchors:
+          'enable-elastic-capabilities': 'elastic-capabilities'
