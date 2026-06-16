@@ -55,7 +55,7 @@ Index search tools support the following configuration parameters:
 When an agent calls an index search tool:
 
 1. The agent provides a natural language query (for example, "find recent errors related to authentication")
-2. The tool selects a **single index** from the configured pattern based on the query intent and available index metadata
+2. The tool selects a single index from the configured pattern based on the query intent and available index metadata
 3. It automatically orchestrates built-in tools to:
    - Explore the selected index's structure and mappings
    - Generate appropriate queries ({{esql}} or query DSL)
