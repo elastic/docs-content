@@ -64,8 +64,9 @@ You can tweak the appearance of your chart by adjusting axes, legends, and serie
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
 
-For layout, hierarchy, and color guidance on dashboards, check EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
