@@ -167,7 +167,7 @@ The following panel types support Discover drilldowns:
     On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
 
 ::::{tip}
-To open all of the **Lens** dashboard panel data in **Discover** without setting up a drilldown, check [Open panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents).
+You can [open Lens dashboard panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
 
