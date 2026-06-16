@@ -193,7 +193,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
-    **Example**: In case you use `docker.elastic.co`, the file content looks like as follows:
+    **Example**: If you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {
