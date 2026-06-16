@@ -23,7 +23,7 @@ outputs:
   default:
     type: elasticsearch
     hosts: [127.0.0.1:9200]
-    api_key: "id:api_key"
+    api_key: "<id>:<key>"
 ```
 
 To create an API key with the required privileges, refer to [Grant standalone {{agent}}s access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).

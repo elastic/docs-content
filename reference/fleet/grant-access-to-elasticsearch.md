@@ -14,7 +14,7 @@ products:
 You can use either API keys (recommended) or user credentials to grant standalone {{agents}} access to {{es}} resources.
 
 ::::{important}
-API key authentication is required for {{serverless-full}}. API key authentication is recommended for {{stack}} deployments in order to avoid exposing usernames and passwords in configuration files.
+API key authentication is required for {{serverless-full}}. API key authentication is recommended for {{stack}} deployments to avoid exposing usernames and passwords in configuration files.
 ::::
 
 The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
@@ -79,7 +79,7 @@ To create an API key for {{agent}}:
     :screenshot:
     :::
 
-7. Copy the API key. You will need this for the next step, and you will not be able to view it again.
+7. Copy the API key. You need this for the next step and won't be able to view it again.
 8. To use the API key, specify the `api_key` setting in the `elastic-agent.yml` file. For example:
 
     ```yaml

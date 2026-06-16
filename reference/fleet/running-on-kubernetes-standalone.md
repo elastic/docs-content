@@ -101,7 +101,7 @@ Set the {{es}} connection settings in the manifest before deploying. The manifes
   value: "https://somesuperhostiduuid.europe-west1.gcp.cloud.es.io:9243" <2>
 ```
 
-1. Replace with the API key you created in {{kib}}. Use the **Beats** format (`<id>:<key>`), not the Base64-encoded value shown by default when the key is created.
+1. Replace `<your-api-key-id>:<your-api-key-secret>` with the API key you created in {{kib}}. Use the {{beats}} format (`<id>:<key>`), not the Base64-encoded value shown by default when the key is created.
 2. The {{es}} host to communicate with.
 
 ::::{note}
