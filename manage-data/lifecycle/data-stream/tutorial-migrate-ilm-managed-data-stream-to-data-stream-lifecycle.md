@@ -241,7 +241,7 @@ GET _data_stream/dsl-data-stream
 
 1. The existing backing index will continue to be managed by {{ilm-init}}
 2. The existing backing index will continue to be managed by {{ilm-init}}
-3. The next generation index will be managed by data stream lifecycle
+3. The next generation index will be managed by data stream lifecycle ({{dlm-init}})
 4. The `prefer_ilm` setting value we configured in the index template is reflected and will be configured accordingly for new backing indices.
 
 We'll now rollover the data stream to see the new generation index being managed by data stream lifecycle:

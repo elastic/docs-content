@@ -48,7 +48,7 @@ PUT _index_template/my-index-template
 1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
 
 :::{tip}
-To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. Prerequisites and tuning options are documented in [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. Prerequisites and configuration options are documented in [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 :::
 
 ## Create a data stream [create-data-stream-with-lifecycle]

@@ -32,7 +32,7 @@ If a node fails and {{search-snap}} shards need to be recovered elsewhere, there
 You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot]({{es-apis}}operation/operation-searchable-snapshots-mount) API.
 
 ::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+:applies_to: {"stack": "ga 9.5"}
 
 For data streams, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automate partially mounted {{search-snaps}} using `frozen_after` on older backing indices. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 ::::

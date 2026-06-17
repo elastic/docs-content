@@ -42,7 +42,7 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
     :::{admonition} Simpler lifecycle management in Serverless environments
     {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, data stream lifecycle is available as a data management option.
 
-    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without authoring full phase-by-phase {{ilm-init}} policies across [data tiers](/manage-data/lifecycle/data-tiers.md). For more detail, refer to [Data lifecycle](/manage-data/lifecycle.md).
+    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
     :::
 
 ## Index lifecycle actions

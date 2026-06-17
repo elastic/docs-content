@@ -813,8 +813,6 @@ GET _data_stream/my-datastream
 4. The retention is currently determined by the default.  
 
 ::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
-
 [`frozen_after`](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md) is valid only on the main data stream lifecycle, not on the failure store lifecycle.
 ::::
 

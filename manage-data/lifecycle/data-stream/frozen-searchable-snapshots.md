@@ -8,15 +8,15 @@ products:
 ---
 # Move data stream backing indices to the frozen phase with the data stream lifecycle
 
-The data stream lifecycle (DLM) can automatically convert older backing indices to [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) on the [frozen phase](/manage-data/lifecycle/data-tiers.md). This lets you retain data for long periods at low storage cost while keeping it searchable.
+The data stream lifecycle ({{dlm-init}}) can automatically convert older backing indices to [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) on the [frozen phase](/manage-data/lifecycle/data-tiers.md). This lets you retain data for long periods at low storage cost while keeping it searchable.
 
-When a backing index's creation date is older than the `frozen_after` period configured on the data stream lifecycle, DLM converts it to a [partially mounted searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) index on the frozen phase. The conversion happens automatically in the background without requiring any manual intervention.
+When a backing index's creation date is older than the `frozen_after` period configured on the data stream lifecycle, DLM converts it to a [partially mounted searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) index allocated on frozen nodes. The conversion happens automatically in the background without requiring any manual intervention.
 
 ## Prerequisites [dlm-frozen-transition-prerequisites]
 
 Before using DLM frozen phase transitions:
 
-- A **default snapshot repository** must be registered. DLM uses the cluster's default snapshot repository to store the frozen snapshot. See [Register a snapshot repository](/deploy-manage/tools/snapshot-and-restore/self-managed.md) for details.
+- A **default snapshot repository** must be registered. DLM uses the cluster's default snapshot repository to store the frozen snapshot. See [](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for details.
 - The data stream must have [data stream lifecycle](/manage-data/lifecycle/data-stream.md) configured with the `frozen_after` field. This field is only valid on the data lifecycle and cannot be set on the failure-store lifecycle.
 
 ::::{note}
@@ -35,11 +35,11 @@ PUT _data_stream/my-stream/_lifecycle
 }
 ```
 
-In this example, backing indices older than 30 days are automatically converted to the frozen phase. {{dlm-init}} continues to apply the `data_retention` period: indices older than 365 days are deleted even after they have been frozen.
+In this example, backing indices older than 30 days are automatically converted to frozen searchable snapshots. {{dlm-init}} continues to apply the `data_retention` period: indices older than 365 days are deleted even after they have been frozen.
 
-The `frozen_after` value must be a positive [time unit value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). To stop future frozen conversions, update the lifecycle and omit or null the `frozen_after` field. However, once an index has been seen to be past its `frozen_after` time and marked as eligible for conversion, changing the `frozen_after` will not stop the conversion.
+The `frozen_after` value must be a positive [time unit value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). To stop future frozen conversions, update the lifecycle and omit or null the `frozen_after` field. However, after an index is past its `frozen_after` time and marked as eligible for conversion, changing the `frozen_after` will not stop the conversion.
 
-## Conversion process [dlm-frozen-transition-process]
+## How conversion works [dlm-frozen-transition-process]
 
 When a backing index becomes eligible for frozen conversion, DLM performs the following steps on the master node:
 
@@ -49,9 +49,9 @@ When a backing index becomes eligible for frozen conversion, DLM performs the fo
 4. **Force merge to one segment** — The index (or its clone) is force-merged to a single segment per shard, which improves query performance and reduces snapshot size.
 5. **Take a snapshot** — DLM snapshots the force-merged index to the default snapshot repository. The snapshot is named `dlm-frozen-<original-index>`.
 6. **Mount as a searchable snapshot** — The snapshot is mounted as a partially mounted index on the frozen phase (named `dlm-frozen-<original-index>`).
-7. **Swap and delete originals** — The frozen index replaces the original in the data stream. The original and any clone created during the process are then deleted. This swap is atomic, and queries will remain consistent before, during, and after the swap.
+7. **Swap and delete originals** — The frozen index replaces the original in the data stream. The original and any clone created during the process are then deleted. This swap is atomic, and queries remain consistent before, during, and after the swap.
 
-## Tune the transition service [dlm-frozen-transition-tuning]
+## Configuring the transition service [dlm-frozen-transition-tuning]
 
 You can configure the following [settings](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#_frozen_tier_transition_settings) in `elasticsearch.yml` to control the frozen transition service:
 

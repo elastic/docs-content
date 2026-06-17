@@ -42,7 +42,7 @@ While optional, we recommend using the {{ilm}} ({{ilm-init}}) capability in {{st
 :::
 
 ::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+:applies_to: {"stack": "ga 9.5"}
 
 If you choose [data stream lifecycle](/manage-data/lifecycle/data-stream.md) over {{ilm-init}} for a data stream, you can use `frozen_after` to move older backing indices to frozen-tier {{search-snaps}} while retention still governs when data is deleted. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 ::::

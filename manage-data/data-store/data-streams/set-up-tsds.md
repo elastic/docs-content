@@ -42,9 +42,9 @@ serverless: unavailable
 In most cases, you can use a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage your time series data stream. If you're using [data tiers](/manage-data/lifecycle/data-tiers.md) in {{stack}}, you can use [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md).
 
 ::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+:applies_to: {"stack": "ga 9.5"}
 
-If you standardize on data stream lifecycle but still want frozen-tier {{search-snaps}}, configure `frozen_after` instead of only using {{ilm-init}} for the frozen phase. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+{{ilm-init}} isn't required for frozen-tier {{search-snaps}}. Data stream lifecycle can manage them directly. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 ::::
 
 :::{dropdown} Create an ILM policy

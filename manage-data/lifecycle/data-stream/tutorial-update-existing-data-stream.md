@@ -21,7 +21,7 @@ These steps are for data stream lifecycle only. For the steps to configure {{ilm
 
 ## Set a data stream's lifecycle [set-lifecycle]
 
-To add or to change the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
+To add or modify the retention period of your data stream you can use the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 
 :::::{tab-set}
 :group: kibana-api
@@ -150,7 +150,7 @@ stack: ga 9.5
 serverless: unavailable
 ```
 
-You can add `frozen_after` to the lifecycle so older backing indices become partially mounted {{search-snaps-cap}} on the frozen tier. For prerequisites, how the conversion runs, tuning, and troubleshooting, refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+You can add `frozen_after` to the lifecycle so older backing indices become partially mounted {{search-snaps}} on the frozen tier. For prerequisites, how the conversion runs, tuning, and troubleshooting, refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 
 Use the [PUT data stream lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle).
 For example:
@@ -163,7 +163,7 @@ PUT _data_stream/my-data-stream/_lifecycle
 }
 ```
 
-After indices are frozen, {{es}} can still delete them once their `generation_time` exceeds the effective retention period.
+After indices are frozen, {{es}} can still delete them when their `generation_time` exceeds the effective retention period.
 
 ::::{note}
 The **{{index-manage-app}}** data stream details flow is focused on retention.

@@ -36,7 +36,7 @@ serverless: unavailable
 :::{dropdown} Why?
 In an {{ecloud}} or self-managed environment, ILM lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
 
-[Data stream lifecycle](#data-stream-lifecycle) is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without having to author full phase-by-phase {{ilm-init}} policies across [data tiers](/manage-data/lifecycle/data-tiers.md). On {{stack}} 9.5 and later, you can use `frozen_after` so data stream lifecycle moves older backing indices to the frozen tier as {{search-snaps}}; refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md). That `frozen_after` path is not available for data stream lifecycle on {{es-serverless}}--use retention and downsampling there.
+[Data stream lifecycle](#data-stream-lifecycle) is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary hardware-centric concepts like data tiers.
 :::
 ::::
 
@@ -56,7 +56,7 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 
 * Define the retention period of your data. The retention period is the minimum time {{es}} stores your data. {{es}} can delete data older than this period at a later time.
 * Improve the performance of your data stream by performing background operations that optimize how {{es}} stores your data stream.
-* {applies_to}`stack: ga 9.5` {applies_to}`serverless: unavailable` Optionally move older backing indices to partially mounted{{search-snaps}} on the frozen tier, so you can keep data searchable for longer at lower local storage cost before retention deletes it. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless: unavailable` Move older backing indices to partially mounted {{search-snaps}} on the frozen tier, so you can keep data searchable for longer at a lower local storage cost. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 
 **[Read more in Data stream lifecycle ->](/manage-data/lifecycle/data-stream.md)**
 

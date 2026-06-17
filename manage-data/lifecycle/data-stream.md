@@ -12,7 +12,7 @@ products:
 # Data stream lifecycle in {{es}} [data-stream-lifecycle]
 
 A data stream lifecycle in {{es}} is a built-in automation mechanism for managing data retention, performance, storage cost, and ingest efficiency.
-By configuring rollover, retention, downsampling, and frozen phase transitions to long-term searchable archives, your [data streams](/manage-data/data-store/data-streams.md) stay efficient as they age.
+By configuring rollover, retention, downsampling, and frozen transitions to long-term searchable archives, your [data streams](/manage-data/data-store/data-streams.md) stay efficient as they age.
 This page explains how the lifecycle works, its key features, and how to configure it for both new and existing data streams.
 
 Data stream lifecycle manages your data streams according to your retention and storage goals. For example, you can configure the lifecycle to:
@@ -58,13 +58,13 @@ Steps `2-5` apply only to backing indices that are not already managed by {{ilm-
 
 Since the lifecycle is configured on the data stream level, the process to configure a lifecycle on a new data stream and on an existing one differ.
 
-These tutorials help you set up and manage data streams with data stream lifecycle:
+The following tutorials help you set up and manage data streams with data stream lifecycle:
 
 * To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. Refer to [](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream is created with the respective data stream lifecycle.
 * To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs]({{es-apis}}group/endpoint-data-stream). Refer to [](data-stream/tutorial-update-existing-data-stream.md) for details.
 * Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 * To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
-* {applies_to}`stack: ga 9.5+` To move older backing indices to {{search-snaps}}, refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` To move older backing indices to {{search-snaps}}, refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
 
 ::::{note}
 Updating the data stream lifecycle of an existing data stream is different from updating the settings or the mapping, because it is applied on the data stream level and not on the individual backing indices.

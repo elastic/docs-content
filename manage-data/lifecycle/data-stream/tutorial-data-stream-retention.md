@@ -176,13 +176,13 @@ We see that it will remain the same with what the user configured:
 
 ## How is the effective retention applied? [effective-retention-application]
 
-Retention is applied to the remaining backing indices of a data stream as the last step of [a data stream lifecycle run](../data-stream.md#data-streams-lifecycle-how-it-works). Data stream lifecycle will retrieve the backing indices whose `generation_time` is longer than the effective retention period and delete them. The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured using the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting.
+Retention is applied to the remaining backing indices of a data stream as the last step of [a data stream lifecycle run](../data-stream.md#data-streams-lifecycle-how-it-works). Data stream lifecycle retrieves the backing indices whose `generation_time` is longer than the effective retention period and deletes them. The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured using the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting.
+
+We use the `generation_time` instead of the creation time because this ensures that all data in the backing index have passed the retention period.
+As a result, the retention period is not the exact time data get deleted, but the minimum time data is stored.
 
 ::::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
 
 Backing indices may be converted to {{search-snaps}} on the frozen tier **before** retention makes them eligible for deletion if you set [`frozen_after`](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md). Effective retention still applies: indices are removed after their `generation_time` exceeds the effective retention period.
-::::
-
-We use the `generation_time` instead of the creation time because this ensures that all data in the backing index have passed the retention period.
-As a result, the retention period is not the exact time data get deleted, but the minimum time data will be stored.
+::::
