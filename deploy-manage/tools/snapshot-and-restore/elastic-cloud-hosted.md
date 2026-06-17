@@ -64,8 +64,8 @@ To manage repositories in {{kib}}:
 2. Select the **Repositories** tab. 
 3. To register a snapshot repository, select **Register repository**.
 
-:::{include} _snippets/register-repository-fields.md
-:::
+    :::{include} _snippets/register-repository-fields.md
+    :::
 
 Alternatively, you can register a repository using the {{es}} [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
