@@ -40,7 +40,7 @@ The Collector should produce output similar to the following:
 
 ## Agent troubleshooting
 
-Determine if the issue is related to the EDOT agent, other agents, extensions or connectivity issues by following these steps:
+Determine if the issue is related to the EDOT agent, other agents, extensions, or connectivity issues by following these steps:
 
 :::::{stepper}
 
@@ -60,7 +60,7 @@ If more than one instrumentation agent is being used on the application (multipl
 ::::{step} Remove instrumentation extensions
 If [instrumentation extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) are being used with the `otel.javaagent.extensions` JVM system property or the `OTEL_JAVAAGENT_EXTENSIONS` environment variable, remove them and restart the application.
 - If the issue is still present without the extensions, then the problem is likely related to the EDOT agent.
-- If the issue is resolved, then it indicates the problem might be related to the extensions
+- If the issue is resolved, then it indicates the problem might be related to the extensions.
 ::::
 
 ::::{step} Check end-to-end connectivity
