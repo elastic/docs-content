@@ -14,4 +14,4 @@ To change the default repository, use one of the following methods:
    1. Open the actions menu for the repository you want to use as the default.
    2. Select **Set as default**.
    3. In the **Change default repository?** dialog, select **Change default** to confirm.
-* When you edit a repository: Turn on the **Set as default repository** option, then save. If a different repository is already the default, a confirmation dialog appears before the change is applied.
+* When you edit a repository: Turn on the **Set as default repository** option, then save.
