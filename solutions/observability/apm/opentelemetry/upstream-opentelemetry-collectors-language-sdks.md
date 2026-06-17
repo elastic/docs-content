@@ -246,7 +246,7 @@ stack: ga
 ```
 
 :::{note}
-For new users, Elastic recommends using the OpenTelemetry path through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP](opentelemetry://reference/motlp.md) rather than sending data directly to the {{apm-server}}.
+For new users, Elastic recommends sending OpenTelemetry data to the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or [Managed OTLP endpoint](opentelemetry://reference/motlp.md) instead of to the {{apm-server}}.
 :::
 
 {{apm-server}} supports both the [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp) protocol on the same port as Elastic {{apm-agent}} requests. For ease of setup, use OTLP/HTTP when proxying or load balancing requests to Elastic.
