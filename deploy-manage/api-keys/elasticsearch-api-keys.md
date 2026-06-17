@@ -15,7 +15,7 @@ products:
 The following types of {{es}} API keys are available:
 
 * **Personal/User** API key: allows external services to access the {{stack}}, including the [{{es}}]({{es-apis}}) and [{{kib}}]({{kib-apis}}) APIs, on behalf of a user.
-* **Cross-cluster** API key: allows other clusters to connect to this cluster for tasks like cross-cluster search and replication. See [](/deploy-manage/remote-clusters.md).
+* **Cross-cluster** API key: allows other clusters to connect to this cluster for tasks like {{ccs}} and replication. Refer to [](/deploy-manage/remote-clusters.md) for more information.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
 
 :::{tip}
