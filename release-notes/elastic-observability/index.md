@@ -21,6 +21,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.4.3 [elastic-observability-9.4.3-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.3-features-enhancements]
+* Improves investigation skill matching in the AI Agent to more reliably load for alert-related queries [#269377]({{kib-pull}}269377).
+* Improves the AI Agent investigation skill with a hypothesis-driven methodology [#268973]({{kib-pull}}268973).
+
+### Fixes [elastic-observability-9.4.3-fixes]
+* Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
+* Fixes knowledge base recall in Observability AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
+
 ## 9.4.2 [elastic-observability-9.4.2-release-notes]
 
 ### Fixes [elastic-observability-9.4.2-fixes]
