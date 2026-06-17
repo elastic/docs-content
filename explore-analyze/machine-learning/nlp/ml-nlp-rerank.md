@@ -46,7 +46,7 @@ Elastic Rerank is available in Elastic Stack version 8.17+:
 
 ## Download and deploy [ml-nlp-rerank-deploy]
 
-To download and deploy Elastic Rerank, use the [create inference API]({{es-apis}}operation/operation-inference-put-elasticsearch) to create an {{es}} service `rerank` endpoint.
+The easiest and recommended way to download and deploy Elastic Rerank is to create an {{infer}} endpoint using the [{{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch). The API request automatically downloads and deploys the model, and the endpoint is then ready to use with a [`text_similarity_reranker`]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) retriever.
 
 ::::{tip}
 Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb) for an end-to-end example using Elastic Rerank.
@@ -55,7 +55,7 @@ Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/bl
 
 ### Create an inference endpoint [ml-nlp-rerank-deploy-steps]
 
-1. In {{kib}}, navigate to the **Dev Console**.
+1. Navigate to the **Dev Console** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 2. Create an {{infer}} endpoint with the Elastic Rerank service by running:
 
 ```console
@@ -74,16 +74,26 @@ PUT _inference/rerank/my-rerank-model
     }
 ```
 
-::::{note}
 The API request automatically downloads and deploys the model. This example uses [autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) through adaptive allocation.
-::::
 
 ::::{note}
-You might see a 502 bad gateway error in the response when using the {{kib}} Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the {{ml-app}} UI. If using the Python client, you can set the `timeout` parameter to a higher value.
-
+You might see a 502 bad gateway error in the response when using the {{kib}} Console. This error usually just reflects a timeout while the model downloads in the background. You can check the download progress in the **{{ml-app}}** UI. If using the Python client, you can set the `timeout` parameter to a higher value.
 ::::
 
-After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever) retriever.
+### Using the {{models-app}} page [ml-nlp-rerank-deploy-kibana]
+
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+You can also start or update a rerank model deployment from the **{{models-app}}** page:
+
+1. Navigate to **{{ml-app}}** > **{{models-app}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+2. Find the rerank model (for example, `.rerank-v1`) in the list.
+3. From the **Actions** menu, use **Start deployment** to deploy the model or **Update deployment** to change an existing deployment.
+
+Rerank models are optimized for search by default. This optimization applies only to embedding models.
 
 ## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 
