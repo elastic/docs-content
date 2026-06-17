@@ -12,3 +12,5 @@ To manage repositories in {{kib}}:
     * {applies_to}`stack: ga 9.5` Whether to set the repository as the [default snapshot repository](#snapshot-repo-default). The first repository you register becomes the default automatically.
 
     Select **Register** to save the repository.
+
+You can also register a repository using the {{es}} [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).

@@ -61,8 +61,6 @@ In **{{ech}}**, the `found-snapshots` managed repository is automatically regist
 :::{include} _snippets/register-repository-kibana-steps.md
 :::
 
-Alternatively, you can register a repository using the {{es}} [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
-
 ::::{include} _snippets/ech-snapshot-repository-linking-note.md
 ::::
 
