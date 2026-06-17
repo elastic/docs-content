@@ -46,7 +46,7 @@ The forward compatibility policy allows client applications to continue to work 
 
 You should avoid using response timeouts in your HTTP client. Elasticsearch always responds to every request, but some requests can take several minutes to complete. For example, you might receive `429 Too Many Requests` responses while your Elastic deployment [autoscales](/deploy-manage/autoscaling.md), which is expected behavior.
 
-To learn more, refer to [HTTP client configuration](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings#_http_client_configuration).
+To learn more, refer to [HTTP client configuration](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#_http_client_configuration).
 
 
 ## Local server development
