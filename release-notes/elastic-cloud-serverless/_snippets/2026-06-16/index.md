@@ -1,0 +1,37 @@
+﻿## June 16, 2026 [elastic-release-notes-2026-06-16]
+### Features and enhancements [elastic-2026-06-16-features-enhancements]
+* Grant `monitor_inference` to Observability viewer and editor roles. [#150858](https://github.com/elastic/elasticsearch/pull/150858)
+* Add keyless workload-identity auth to S3 datasource. [#150845](https://github.com/elastic/elasticsearch/pull/150845)
+* Add keyless workload-identity auth to ES|QL Azure datasource. [#150824](https://github.com/elastic/elasticsearch/pull/150824)
+* Add destructive reset endpoint for project encryption key. [#150466](https://github.com/elastic/elasticsearch/pull/150466)
+* Improve Painless timeout handling for stream terminal operations. [#151080](https://github.com/elastic/elasticsearch/pull/151080)
+* Improve Painless timeout handling for JDK iteration methods. [#151059](https://github.com/elastic/elasticsearch/pull/151059)
+* Improve Painless timeout handling for collection iterations. [#151016](https://github.com/elastic/elasticsearch/pull/151016)
+* Support the Google Vertex AI global endpoint for inference endpoints. [#151054](https://github.com/elastic/elasticsearch/pull/151054) [#150990](https://github.com/elastic/elasticsearch/issues/150990)
+* Change EIS rerank request format to use objects for query and documents. [#150172](https://github.com/elastic/elasticsearch/pull/150172)
+* Add cluster settings to configure replicas for system indices. [#149892](https://github.com/elastic/elasticsearch/pull/149892)
+* Extend relocation deadline for warming. [#150591](https://github.com/elastic/elasticsearch/pull/150591)
+* Improve Prometheus labels API performance for high-cardinality metrics. [#150948](https://github.com/elastic/elasticsearch/pull/150948)
+* Improve vector search performance for 2-bit quantized indices. [#149344](https://github.com/elastic/elasticsearch/pull/149344)
+* Improve ES|QL worker queue sizing based on cluster memory and CPUs. [#151103](https://github.com/elastic/elasticsearch/pull/151103)
+* Optimize sorted numeric field data loading for dense fields. [#150138](https://github.com/elastic/elasticsearch/pull/150138)
+
+### Fixes [elastic-2026-06-16-fixes]
+* Fix ES|QL `date_range` errors in `TOP N` aggregations. [#150475](https://github.com/elastic/elasticsearch/pull/150475) [#150383](https://github.com/elastic/elasticsearch/issues/150383)
+* Fix ES|QL EXTERNAL queries failing when object-store connections drop. [#150204](https://github.com/elastic/elasticsearch/pull/150204)
+* Fix ES|QL external-read memory leaks on storage read failures. [#150746](https://github.com/elastic/elasticsearch/pull/150746)
+* Fix ES|QL TSTEP missing `@timestamp` when timestamp is omitted. [#151044](https://github.com/elastic/elasticsearch/pull/151044)
+* Fix ES|QL crashes from deeply nested RLIKE patterns. [#150238](https://github.com/elastic/elasticsearch/pull/150238) [#149838](https://github.com/elastic/elasticsearch/issues/149838)
+* Fix incorrect results for ES|QL time series IN subqueries. [#150324](https://github.com/elastic/elasticsearch/pull/150324)
+* Fix inflated row counts from ES|QL EXTERNAL source stats. [#150775](https://github.com/elastic/elasticsearch/pull/150775) [#150571](https://github.com/elastic/elasticsearch/issues/150571) [#150594](https://github.com/elastic/elasticsearch/issues/150594) [#150595](https://github.com/elastic/elasticsearch/issues/150595) [#150599](https://github.com/elastic/elasticsearch/issues/150599) [#150614](https://github.com/elastic/elasticsearch/issues/150614) [#150615](https://github.com/elastic/elasticsearch/issues/150615) [#150616](https://github.com/elastic/elasticsearch/issues/150616) [#150620](https://github.com/elastic/elasticsearch/issues/150620) [#150628](https://github.com/elastic/elasticsearch/issues/150628) [#150642](https://github.com/elastic/elasticsearch/issues/150642) [#150643](https://github.com/elastic/elasticsearch/issues/150643) [#150653](https://github.com/elastic/elasticsearch/issues/150653) [#150657](https://github.com/elastic/elasticsearch/issues/150657) [#150670](https://github.com/elastic/elasticsearch/issues/150670) [#150678](https://github.com/elastic/elasticsearch/issues/150678) [#150705](https://github.com/elastic/elasticsearch/issues/150705) [#150710](https://github.com/elastic/elasticsearch/issues/150710) [#150723](https://github.com/elastic/elasticsearch/issues/150723) [#150744](https://github.com/elastic/elasticsearch/issues/150744) [#150758](https://github.com/elastic/elasticsearch/issues/150758) [#150771](https://github.com/elastic/elasticsearch/issues/150771) [#150783](https://github.com/elastic/elasticsearch/issues/150783)
+* Fix ES|QL verification errors for subqueries with mixed data types. [#150704](https://github.com/elastic/elasticsearch/pull/150704)
+* Fix `dimensions_set_by_user` persistence for SageMaker OpenAI endpoints. [#150834](https://github.com/elastic/elasticsearch/pull/150834) [#146881](https://github.com/elastic/elasticsearch/issues/146881)
+* Fix inference streaming shutdown race during request cancellation. [#150789](https://github.com/elastic/elasticsearch/pull/150789) [#150742](https://github.com/elastic/elasticsearch/issues/150742)
+* Fix slow resource release when canceling inference streaming requests. [#149987](https://github.com/elastic/elasticsearch/pull/149987)
+* Fix division of `max_docs` between slices in reindex. [#150808](https://github.com/elastic/elasticsearch/pull/150808)
+* Fix Prometheus info API queries missing `_doc` metadata. [#150949](https://github.com/elastic/elasticsearch/pull/150949)
+* Fix incorrect exception message for transform version conflicts. [#150083](https://github.com/elastic/elasticsearch/pull/150083)
+* Fix shard recovery failures when runtime fields shadow index sort fields. [#150636](https://github.com/elastic/elasticsearch/pull/150636) [#149500](https://github.com/elastic/elasticsearch/issues/149500)
+
+### Other changes [elastic-2026-06-16-other]
+* Upgrade netty to 4.1.135.Final. [#151099](https://github.com/elastic/elasticsearch/pull/151099)
