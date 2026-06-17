@@ -99,10 +99,6 @@ GET _nodes/stats/breaker
 
 High JVM memory pressure often causes circuit breaker errors. See [High JVM memory pressure](high-jvm-memory-pressure.md).
 
-**Optimize {{esql}} queries**
-
-High-cardinality {{esql}} aggregations are a common trigger for circuit breaker errors. Refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md) for techniques to reduce memory usage, including avoiding high-cardinality `STATS BY` groupings.
-
 **Avoid using fielddata on `text` fields**
 
 For high-cardinality `text` fields, fielddata can use a large amount of JVM memory. To avoid this, {{es}} disables fielddata on `text` fields by default. If you’ve enabled fielddata and triggered the [fielddata circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker), consider disabling it and using a `keyword` field instead. See [`fielddata` mapping parameter](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param).
@@ -114,6 +110,10 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 ```console
 POST _cache/clear?fielddata=true
 ```
+
+**Optimize expensive queries**
+
+Both Query DSL and {{esql}} queries can trigger circuit breaker errors when they consume large amounts of memory. For {{esql}}, high-cardinality `STATS BY` groupings are a common cause. Refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md) for techniques to reduce memory usage.
 
 ## Memory evaluation
 

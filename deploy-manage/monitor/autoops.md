@@ -76,7 +76,3 @@ In this section, you'll find the following information:
 * Which [views](/deploy-manage/monitor/autoops/views.md) AutoOps offers to gain insight into your deployment.
 * What AutoOps [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) are and how you can configure [event settings](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) and [notifications](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md).
 * [Frequently asked questions](/deploy-manage/monitor/autoops/ec-autoops-faq.md) about AutoOps.
-
-## Related pages
-
-* [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): AutoOps detects common {{esql}} anti-patterns automatically. This guide covers the patterns and how to fix them.

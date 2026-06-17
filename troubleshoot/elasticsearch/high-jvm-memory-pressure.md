@@ -170,7 +170,7 @@ This section contains some common suggestions for reducing JVM memory pressure r
 
 Expensive searches can use large amounts of memory. To better track expensive searches on your cluster, enable [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md).
 
-Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). To prevent expensive searches, consider the following setting changes:
+Expensive searches may have a large [`size` argument](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md), use aggregations with a large number of buckets, or include [expensive queries](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries). For {{esql}}-specific guidance, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md). To prevent expensive searches, consider the following setting changes:
 
 * Lower the `size` limit using the [`index.max_result_window`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-max-result-window) index setting.
 * Decrease the maximum number of allowed aggregation buckets using the [search.max_buckets](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md#search-settings-max-buckets) cluster setting.
