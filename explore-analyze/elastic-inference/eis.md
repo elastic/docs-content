@@ -213,3 +213,27 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 ##### Get started with semantic search with ELSER on EIS
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+## Pricing [pricing]
+
+All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
+
+This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
+
+### Token-based billing
+
+EIS is billed per million tokens used:
+
+* For **chat** models, input and output tokens are billed. Longer conversations with extensive context or detailed responses will consume more tokens.
+* For **embeddings** models, only input tokens are billed.
+
+Tokens are the fundamental units that language models process for both input and output. Tokenizers convert text into numerical data by segmenting it into subword units. A token can be a complete word, part of a word, or a punctuation mark, depending on the model's trained tokenizer and the frequency patterns in its training data.
+
+For example, the sentence `It was the best of times, it was the worst of times.` contains 52 characters but would tokenize into approximately 14 tokens with a typical word-based approach, though the exact count varies by tokenizer.
+
+### Monitor your token usage [monitor-your-token-usage]
+
+To track your token consumption:
+
+1. Navigate to [**Billing > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
+2. Look for line items where the **Billing dimension** is set to "Inference".

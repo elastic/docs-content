@@ -1,0 +1,58 @@
+﻿## June 2, 2026 [elastic-release-notes-2026-06-02]
+### Features and enhancements [elastic-2026-06-02-features-enhancements]
+* Enable DOC partitioning for all {{esql}} external data sources. [#149642](https://github.com/elastic/elasticsearch/pull/149642)
+* Improve {{esql}} NDJSON keyword decoding performance by reducing string allocation. [#149992](https://github.com/elastic/elasticsearch/pull/149992)
+* Extract CSV record splitter into reusable component for {{esql}}. [#150048](https://github.com/elastic/elasticsearch/pull/150048)
+* Add profiling and slow-log observability for {{esql}} external data sources. [#148530](https://github.com/elastic/elasticsearch/pull/148530)
+* Add project routing tests for {{esql}} query distribution.
+* Extend `FIRST` and `EARLIEST` to support `dense_vector`, `exponential_histogram`, and `tdigest` types. [#149716](https://github.com/elastic/elasticsearch/pull/149716)
+* Introduce the `RecordSplitter` service provider interface for {{esql}}. [#149996](https://github.com/elastic/elasticsearch/pull/149996)
+* Add NDJSON record splitter for {{esql}} external data sources. [#150114](https://github.com/elastic/elasticsearch/pull/150114)
+* Improve {{esql}} query optimization by pruning redundant STATS groupings. [#150030](https://github.com/elastic/elasticsearch/pull/150030)
+* Change {{esql}} CSV/TSV `multi_value_syntax` default to `none` for faster reads. [#150009](https://github.com/elastic/elasticsearch/pull/150009)
+* Stop retrying shard requests on replica shards for non-retriable errors. [#149506](https://github.com/elastic/elasticsearch/pull/149506) [#72349](https://github.com/elastic/elasticsearch/issues/72349)
+* Expose `_clusters` metadata in open point-in-time response for cross-cluster search. [#149466](https://github.com/elastic/elasticsearch/pull/149466) [#84400](https://github.com/elastic/elasticsearch/issues/84400)
+* Add tests for origin project exclusion in search routing.
+* Allow appending synonyms to existing synonym rules through `append=true`. [#146870](https://github.com/elastic/elasticsearch/pull/146870) [#146864](https://github.com/elastic/elasticsearch/issues/146864)
+* Add support for form-encoded REST request bodies. [#149005](https://github.com/elastic/elasticsearch/pull/149005)
+* Add workload identity issuer client for JWT authentication. [#149767](https://github.com/elastic/elasticsearch/pull/149767)
+* Hide Agent Builder traces from editor and viewer roles. [#149994](https://github.com/elastic/elasticsearch/pull/149994)
+* Register `.evaluation-*` indices as hidden with system, viewer, and editor access. [#148880](https://github.com/elastic/elasticsearch/pull/148880)
+* Add implicit type coercion between counter and gauge types in {{esql}} and PromQL. [#149985](https://github.com/elastic/elasticsearch/pull/149985) [#140035](https://github.com/elastic/elasticsearch/issues/140035)
+* Add support for the `GET /_prometheus/api/v1/status/buildinfo` endpoint. [#150235](https://github.com/elastic/elasticsearch/pull/150235)
+* Add distinct storage class settings for S3. [#148920](https://github.com/elastic/elasticsearch/pull/148920)
+* Track remote reindex HTTP response bytes in the request circuit breaker. [#149389](https://github.com/elastic/elasticsearch/pull/149389)
+* Add support for `POST` form encoding in Prometheus APIs. [#148974](https://github.com/elastic/elasticsearch/pull/148974)
+* Improve file watching test reliability by adding timestamp delay.
+* Improve search engine refresh listener coordination. [#149889](https://github.com/elastic/elasticsearch/pull/149889)
+* Improve error message when total mapping field limit is reached. [#149768](https://github.com/elastic/elasticsearch/pull/149768)
+* Update reindex resilience reference documentation. [#148786](https://github.com/elastic/elasticsearch/pull/148786)
+* Temporarily disable `LogsdbIndexingRollingUpgradeIT` rolling upgrade test.
+* Add `TO_COUNTER()` function and `::counter` cast operator to {{esql}}. [#149687](https://github.com/elastic/elasticsearch/pull/149687)
+* Add `TO_GAUGE()` function and `::gauge` cast operator to {{esql}}. [#149713](https://github.com/elastic/elasticsearch/pull/149713)
+* Allow omitting secret settings when updating inference endpoints. [#149628](https://github.com/elastic/elasticsearch/pull/149628)
+* Add cancellation checks to Painless fetch, aggregation-reduce, and bulk-write contexts. [#149754](https://github.com/elastic/elasticsearch/pull/149754)
+* Reduce vector index merge cost in DiskBBQ by reusing segment centroids. [#145863](https://github.com/elastic/elasticsearch/pull/145863) [#131054](https://github.com/elastic/elasticsearch/issues/131054)
+
+### Fixes [elastic-2026-06-02-fixes]
+* Fix {{esql}} to enforce the maximum nested function depth limit. [#149971](https://github.com/elastic/elasticsearch/pull/149971)
+* Fix {{esql}} external schema adapter to skip empty data projections. [#149930](https://github.com/elastic/elasticsearch/pull/149930)
+* Fix wildcard view resolution that dropped duplicate index copies. [#149418](https://github.com/elastic/elasticsearch/pull/149418) [#149416](https://github.com/elastic/elasticsearch/issues/149416)
+* Fix {{esql}} TSV scanner livelock when processing literal quote characters. [#149886](https://github.com/elastic/elasticsearch/pull/149886)
+* Fix {{esql}} `LIKE` operator rewrite compatibility for cross-cluster queries. [#149941](https://github.com/elastic/elasticsearch/pull/149941)
+* Fix {{esql}} subquery and FORK with inline STATS pruning. [#149783](https://github.com/elastic/elasticsearch/pull/149783)
+* Fix {{esql}} deferred column extraction for Parquet struct leaf fields. [#149976](https://github.com/elastic/elasticsearch/pull/149976)
+* Fix long integer overflow in {{esql}} `AVG` by casting to double. [#148519](https://github.com/elastic/elasticsearch/pull/148519) [#99575](https://github.com/elastic/elasticsearch/issues/99575)
+* Fix {{esql}} over-reading in multi-file queries and cap external parse parallelism. [#149938](https://github.com/elastic/elasticsearch/pull/149938)
+* Fix {{esql}} error message for invalid `DATE_PERIOD` usage. [#149942](https://github.com/elastic/elasticsearch/pull/149942)
+* Fix partition configuration key threading into file source factory for {{esql}}. [#149816](https://github.com/elastic/elasticsearch/pull/149816)
+* Re-enable `statsByFlattenedAllRows` {{esql}} test.
+* Fix IVF dynamic visit ratio when rescore oversampling is active. [#150184](https://github.com/elastic/elasticsearch/pull/150184)
+* Enforce maximum expression depth limit in EQL and SQL to prevent excessive nesting. [#150003](https://github.com/elastic/elasticsearch/pull/150003)
+* Remove `TBUCKET` fallback in PromQL for queries without explicit time bounds. [#149689](https://github.com/elastic/elasticsearch/pull/149689)
+* Fix scalar float division precision gated on time-bucket capability. [#150142](https://github.com/elastic/elasticsearch/pull/150142)
+* Fix PromQL scalar integer division to preserve fractional values. [#150010](https://github.com/elastic/elasticsearch/pull/150010) [#149792](https://github.com/elastic/elasticsearch/issues/149792)
+* Allow updating `chunking_settings` on existing inference endpoints. [#149723](https://github.com/elastic/elasticsearch/pull/149723) [#139575](https://github.com/elastic/elasticsearch/issues/139575)
+* Add tests for qualified origin exclusion fix in search routing.
+* Fix null pointer exception in `cross_fields` query when `zero_terms_query` is null. [#149935](https://github.com/elastic/elasticsearch/pull/149935) [#149934](https://github.com/elastic/elasticsearch/issues/149934)
+* Fix memory accounting in percolator by releasing per-iteration circuit breaker memory. [#150181](https://github.com/elastic/elasticsearch/pull/150181)
