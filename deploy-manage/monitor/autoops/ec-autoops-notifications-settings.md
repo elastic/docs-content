@@ -29,15 +29,15 @@ To set up notifications you have to:
 To receive notifications for new events, the first step is to specify where the notifications should be sent. AutoOps provides a selection of [built-in connectors](#ec-built-in-connectors) to choose from. You can set up multiple connectors, even of the same type, based on your needs.
 
 
-## Set up a connector [ec-setup-autoops-connectors]
+### Set up a connector [ec-setup-autoops-connectors]
 
-1. On the **Notifications Settings** page, navigate to the **Connector Settings** tab and click **Add**.
-2. From the drop-down list, choose the connector you want to set up and follow the instructions.
-3. Click **Validate** to send a test message.
+1. On the **Notifications Settings** page, navigate to the **Connector settings** tab and click **Add connector**.
+2. Select a connector type and fill in the required fields.
+3. Click **Run to test** to send a test notification.
 4. Save your settings.
 
 
-## Add notification filters [ec-add-notification-filters]
+### Add notification filters [ec-add-notification-filters]
 
 A notification filter lets you choose which events to receive notifications for and how you want to be notified. You can create an unlimited number of filters, and the same connector can be used across multiple filters.
 
@@ -45,13 +45,13 @@ To set up a filter, follow these steps:
 
 1. On the **Notification settings** page, navigate to the **Filter Setting** tab and click **Add**.
 2. Choose a name that best describes the type of alert notification. This name will appear in other reports and dashboards.
-3. Select the deployments that the new created events will trigger the alert for.
+Select the deployments for which this filter should trigger notifications.
 4. Select the connectors to receive the notification.
-5. Use the **Delay** field to set the period of time AutoOps will hold before sending the notification. If during this time all of the events listed in this filter are closed by AutoOps, no notification will be sent.
+5. Use the **Delay** field to set the period of time you want AutoOps to wait before sending the notification. If all the events listed in this filter are closed by AutoOps in this time, no notification will be sent.
 6. Choose the type of events this filter applies to.
 
 
-## Built-in connectors [ec-built-in-connectors]
+### Built-in connectors [ec-built-in-connectors]
 
 The following connectors are available with AutoOps:
 
@@ -83,16 +83,17 @@ $$$ec-autoops-pagerduty$$$
 The PagerDuty integration consists of the following parts:
 
 **PagerDuty configuration**
-
-1. Follow the steps described in the [Events Integration Functionality](https://developer.pagerduty.com/docs/8a76ad16d6b52-events-integration-functionality) section.
-2. Save the integration URL key as you will need it later.
+1. In PagerDuty, go to **Services** > **Service Directory**.
+2. Create a new service (or open an existing one) for AutoOps alerts.
+3. Assign an escalation policy to specify who gets paged.
+4. On the service **Integrations** tab, click **Add another integration**.
+5. Choose [Events API v2](https://developer.pagerduty.com/docs/events-api-v2-overview) (or add it during service creation).
+6. Expand the integration and copy the Integration key (also known as the routing key for Events API v2).
+7. Store the key securely. You will need it when configuring the connector in AutoOps.
 
 **AutoOps configuration**
-
-1. Add a new PagerDuty connector using the PagerDuty configuration application key.
-2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click **Add**.
-3. Fill in the filter details.
-4. Select the events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **PagerDuty** as your connector type.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
 :::
 
 
@@ -120,19 +121,20 @@ To set up a webhook to send AutoOps notifications to a Slack channel, go through
 
 $$$ec-autoops-victorops$$$
 
-The VictorOps integration consists of the following parts:
+AutoOps integrates with VictorOps/Splunk On-Call using the [REST Endpoint integration](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/splunk-on-call/integrations-with-splunk-on-call/rest-endpoint-integration-for-splunk-on-call).
 
-**VictorOps configuration**
+**Splunk On-Call configuration**
 
-1. Follow the steps described in the [REST Endpoint Integration Guide](https://help.victorops.com/knowledge-base/rest-endpoint-integration-guide/).
-2. Save the integration URL key as you will need it later.
+1. In Splunk On-Call, open **Integrations** > **3rd Party Integrations** > **REST - Generic** and enable it.
+2. Copy the REST Endpoint URL.
+3. Replace `$routing_key` at the end of the URL with your routing key (for example `elastic`).
+4. Configure routing keys under **Settings** > **Keys** so alerts reach the right team.
 
 **AutoOps configuration**
 
-1. Add a new PagerDuty connector using the PagerDuty configuration application key.
-2. To receive Slack notifications, add a notification filter. Scroll down the Notification page and click Add.
-3. Fill in the filter details.
-4. Select the events that should be sent to this output.
+1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and choose **VictorOps** as your connector type.
+2. Add a [notification filter](#ec-add-notification-filters) for this connector.
+
 :::
 
 
