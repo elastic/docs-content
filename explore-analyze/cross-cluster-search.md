@@ -107,7 +107,9 @@ POST /_security/user/cross-search-user
 }
 ```
 
-Note that you only need to create this user on the local cluster.
+::::{note}
+You only need to create this user on the **local** cluster.
+::::
 
 ### TLS certificate authentication [configure-privileges-for-ccs-cert]
 ```{applies_to}
@@ -130,7 +132,7 @@ You must use the same role names on both the local and remote clusters. For exam
 On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
 
 ::::{note}
-If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the `run_as` privilege on the remote cluster.
+If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) on the remote cluster.
 ::::
 
 The following request creates a `remote-search` role on the remote cluster:
@@ -179,7 +181,7 @@ You only need to create this user on the **local** cluster.
 
 #### {{kib}} users [configure-privileges-for-ccs-kibana-cert]
 
-When using {{kib}} to search across multiple clusters, a two-step authorization process determines whether or not the user can access data streams and indices on a remote cluster:
+When using {{kib}} to search across multiple clusters, a two-step authorization process determines whether the user can access data streams and indices on a remote cluster:
 
 * First, the local cluster determines if the user is authorized to access remote clusters. The local cluster is the cluster that {{kib}} is connected to.
 * If the user is authorized, the remote cluster then determines if the user has access to the specified data streams and indices.
@@ -213,7 +215,7 @@ POST /_security/role/logstash-reader
 }
 ```
 
-Assign your {{kib}} users a role that grants [access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md), as well as your `logstash_reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
+Assign your {{kib}} users a role that grants [access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md), as well as your `logstash-reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
 
 ```console
 PUT /_security/user/cross-cluster-kibana
