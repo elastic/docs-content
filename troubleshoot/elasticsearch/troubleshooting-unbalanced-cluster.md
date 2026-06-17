@@ -13,13 +13,17 @@ products:
 :::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
 :::
 
-{{es}} assumes all nodes within a [data tier](/manage-data/lifecycle/data-tiers.md) share the same hardware profile. This enables its Allocation feature to balance distributing index shards across target nodes.
+{{es}} assumes all nodes within a [data tier](/manage-data/lifecycle/data-tiers.md) share the same hardware profile. This enables its allocation feature to balance distributing index shards across target nodes.
 
-Allocation sequentially computes from [cluster-level settings and filters](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md), then an individual node's [disk watermark](/troubleshoot/elasticsearch/fix-watermark-errors.md), and finally from shard awareness. Within these logical prerequisites, such as [data tiers](/manage-data/lifecycle/data-tiers.md), {{es}} [balances shards](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) to achieve a good compromise between:
+Allocation respects [cluster-level settings and filters](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md), [disk watermarks](/troubleshoot/elasticsearch/fix-watermark-errors.md), [shard allocation awareness](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md), and each index's [data tier preference](/manage-data/lifecycle/data-tiers.md#data-tier-allocation), which scopes the index to a single tier at a time. Within that scope, {{es}} [balances shards](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) to keep the following roughly even across nodes:
 
 * current shard count
 * forecasted disk usage
-* write load (for indices in data streams)
+* write load (for indices in data streams)
+
+::::{note}
+When an index's tier preference changes, for example during an [ILM](/manage-data/lifecycle/index-lifecycle-management.md) phase transition, its shards migrate to the new tier only as capacity allows. The balancer cannot redistribute these shards within their original tier, because that tier is no longer eligible. If you see persistent imbalance during a tier transition, investigate the destination tier's capacity rather than the balancer.
+::::
 
 There is no guarantee that individual components will be evenly spread across the nodes. This could happen if some nodes have fewer shards, or are using less disk space, but are assigned shards with higher write loads.
 
@@ -73,7 +77,7 @@ You can monitor shard migrations using the [cat recovery command]({{es-apis}}ope
 GET _cat/recovery?v=true&expand_wildcards=all&active_only=true&h=time,tb,bp,top,ty,st,snode,tnode,idx,sh&s=time:desc
 ```
 
-## Divergent balances [troubleshooting-unbalanced-cluster-check]
+## Fix slow or stalled rebalancing [fix-stalled-rebalancing]
 
 If a cluster takes a long time to finish rebalancing, you might find the following log entries:
 
@@ -85,7 +89,7 @@ This is not concerning as long as the number of such shards is decreasing and th
 
 If the cluster has this warning repeatedly for an extended period of time (multiple hours), it is possible that the desired balance is diverging too far from the current state.
 
-If so, you should:
+If so, increase the rebalancing threshold and reset the desired balance:
 
 1. Increase the [`cluster.routing.allocation.balance.threshold`](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) setting to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
 
