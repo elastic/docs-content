@@ -45,11 +45,14 @@ To manage repositories in {{kib}}:
 1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **Repositories** tab. 
 
-To register a snapshot repository, click **Register repository**.
+To register a snapshot repository, select **Register repository**.
+
+:::{include} _snippets/register-repository-fields.md
+:::
 
 You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
-### Set the default snapshot repository [snapshot-repo-default]
+## Change the default snapshot repository [snapshot-repo-default]
 
 ```{applies_to}
 stack: ga 9.5
