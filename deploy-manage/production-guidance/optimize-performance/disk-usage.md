@@ -107,12 +107,8 @@ By default documents are compressed together in the order that they are added to
 
 Due to the fact that multiple documents are compressed together into blocks, it is more likely to find longer duplicate strings in those `_source` documents if fields always occur in the same order.
 
-## Roll up historical data [roll-up-historical-data]
+## Define the lifecycle of your data [roll-up-historical-data]
 
-Keeping older data can be useful for later analysis but is often avoided due to storage costs. You can use downsampling to summarize and store historical data at a fraction of the raw data's storage cost. Refer to [Downsampling a time series data stream](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
-
-::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
-
-For data streams, you can configure their lifecycle to move older backing indices to {{search-snaps}} to keep data searchable at a lower disk cost. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
-::::
+Keeping older data can be useful for later analysis but is often avoided due to storage costs.
+Create a [data lifecycle](/manage-data/lifecycle.md) strategy to specify when to move your data to cheaper storage tiers and when to delete it.
+You can also use [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to summarize and store historical time series data at a fraction of the raw data storage cost.

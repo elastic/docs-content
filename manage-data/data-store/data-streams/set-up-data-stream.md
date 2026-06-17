@@ -38,14 +38,8 @@ serverless: unavailable
 While optional, we recommend using the {{ilm}} ({{ilm-init}}) capability in {{stack}} deployments to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
 
 :::{admonition} Simpler lifecycle management in {{serverless-short}} projects
-{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}}, where performance optimizations are automatic. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
+{{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}}, where  performance optimizations are automatic. Instead, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data management option.
 :::
-
-::::{note}
-:applies_to: {"stack": "ga 9.5"}
-
-If you choose [data stream lifecycle](/manage-data/lifecycle/data-stream.md) over {{ilm-init}} for a data stream, you can use `frozen_after` to move older backing indices to frozen-tier {{search-snaps}} while retention still governs when data is deleted. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
-::::
 
 To create an index lifecycle policy in {{kib}}:
 
