@@ -73,7 +73,6 @@ Alternatively, you can register a repository using the {{es}} [create snapshot r
 ::::
 
 ## Change the default snapshot repository [snapshot-repo-default]
-
 ```{applies_to}
 stack: ga 9.5
 ```

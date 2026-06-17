@@ -52,7 +52,6 @@ To manage repositories in {{kib}}:
 You can also register a repository using the [Create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
 
 ## Change the default snapshot repository [snapshot-repo-default]
-
 ```{applies_to}
 stack: ga 9.5
 ```
