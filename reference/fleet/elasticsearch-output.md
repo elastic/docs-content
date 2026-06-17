@@ -16,7 +16,7 @@ The {{es}} output sends events directly to {{es}} by using the {{es}} HTTP API.
 
 **Compatibility:** This output works with all compatible versions of {{es}}. See the [Elastic Support Matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
-This example configures an {{es}} output called `default` in the `elastic-agent.yml` file using the recommended [token-based (API key) authentication](#output-elasticsearch-apikey-authentication-settings):
+This example configures an {{es}} output called `default` in the `elastic-agent.yml` file using the recommended [token-based authentication (API key)](#output-elasticsearch-apikey-authentication-settings):
 
 ```yaml
 outputs:

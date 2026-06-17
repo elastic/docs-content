@@ -105,7 +105,7 @@ Set the {{es}} connection settings in the manifest before deploying. The manifes
 2. The {{es}} host to communicate with.
 
 ::::{note}
-To use username and password authentication instead, comment out the `api_key` setting in the manifest's `outputs` section, uncomment the `username` and `password` settings, and set the `ES_USERNAME` and `ES_PASSWORD` environment variables. For the required privileges, refer to [Create a standalone agent role](/reference/fleet/grant-access-to-elasticsearch.md#create-role-standalone-agent).
+To authenticate with a username and password instead, comment out the `api_key` setting in the manifest's `outputs` section, uncomment the `username` and `password` settings, and set the `ES_USERNAME` and `ES_PASSWORD` environment variables. For the required privileges, refer to [Create a standalone agent role](/reference/fleet/grant-access-to-elasticsearch.md#create-role-standalone-agent).
 ::::
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
