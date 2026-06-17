@@ -16,4 +16,4 @@ The following constraints apply:
 * Read-only repositories cannot be set as the default.
 * URL repositories cannot be set as the default.
 
-To change the default repository from {{kib}}, you need the `cluster:admin/settings/update` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). Without it, the **Default** badge is still visible, but the controls for changing the default are hidden. The default repository is stored in the `repositories.default_repository` cluster setting.
+To change the default repository from {{kib}}, you need the `cluster:admin/settings/update` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). Without it, the **Default** badge is still visible, but the controls for changing the default are hidden. The default repository is stored in the [`repositories.default_repository`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#repositories-default-repository) cluster setting.
