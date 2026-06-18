@@ -6,9 +6,10 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: "observability"
+  - id: "serverless-observability"
 navigation_title: Create and manage rules
+description: Create and manage alerting rules for Elastic Observability applications and SLOs. Define rules that detect conditions across APM, logs, metrics, and infrastructure, and configure actions to trigger when conditions are met.
 ---
 
 # Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
@@ -92,6 +93,7 @@ A rule can have one of the following responses:
 
 `warning`
 :   The rule ran with some non-critical errors.
+
 
 ## Snooze and disable rules [observability-create-manage-rules-snooze-and-disable-rules]
 

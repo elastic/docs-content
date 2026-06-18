@@ -74,7 +74,7 @@ stack: ga 9.5
 
 When reviewing alerts, use the rule query inspector to go beyond the alert summary and examine the underlying {{es}} query. This is useful when an alert requires closer investigation. For example, use it when you need to verify that the rule evaluated the data you expected, check whether a filter or group-by is excluding results, or confirm how the rule was configured at the time a specific alert was generated.
 
-For more details, refer to [Inspect rule queries](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
+For more details, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
 
 
 ## Understand alert statuses [observability-view-alerts-understand-statuses]

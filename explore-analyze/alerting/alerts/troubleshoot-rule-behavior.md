@@ -1,22 +1,20 @@
 ---
-navigation_title: Inspect rule queries
-description: Use the rule query inspector to view the Elasticsearch request a rule used, confirm it targeted the right data, and diagnose why alerts were or weren't generated.
+navigation_title: Troubleshoot rule behavior
 applies_to:
   stack: ga 9.5
   serverless: ga
-products:
-  - id: kibana
+description: Use the rule query inspector to view the Elasticsearch query a rule ran, confirm it targeted the right data, and diagnose why a rule ran or didn't run.
 ---
 
-# Inspect rule queries [inspect-rule-queries]
+# Troubleshoot rule behavior with the rule query inspector [troubleshoot-rule-behavior]
 
-The rule query inspector gives you direct visibility into the {{es}} queries that your alerting rules run. When a rule fires unexpectedly, stays silent, or runs slowly, use the inspector to see exactly what query ran and what data it returned.
+The rule query inspector gives you direct visibility into the {{es}} queries that your rules run. When a rule fires unexpectedly, stays silent, or runs slowly, use the inspector to see exactly what query ran and what data it returned.
 
 The inspector is available from two places: the rule details page and the alert details page. From the rule details page, you can find out how the rule is configured _now_. From the alert details page, you can find out how the rule was configured _when a specific alert was generated_. If you've modified a rule, the two views may show different queries.
 
 ## Supported rule types [inspect-supported-rule-types]
 
-Currently, the rule query inspector is only available for custom threshold rules.
+Currently, the rule query inspector is only available for [custom threshold rules](/solutions/observability/incident-management/create-custom-threshold-rule.md).
 
 ## Access the inspector [inspect-access]
 
@@ -39,11 +37,11 @@ The inspector displays the {{es}} query made by the rule, the most recent raw re
 
 Expand the following to learn how the inspector can help.
 
-:::{dropdown} Confirm why an alert was generated
+:::{dropdown} Confirm why a rule ran
 Open the inspector from the alert details page. Review the time range to confirm it matches the evaluation period. Check the response to confirm the results met the rule's conditions during that window. If they did, the alert was correctly generated.
 :::
 
-:::{dropdown} Investigate why an alert wasn't generated
+:::{dropdown} Investigate why a rule didn't run
 Open the inspector from the rule details page and confirm the query targets the right index pattern and time range. Also check the query filter for uncessary restrictions. If the response returns data but the results don't meet the rule's conditions, the rule evaluated your data correctly but didn't generate an alert because the rule's conditions were not satisfied during that evaluation window.
 :::
 
@@ -51,11 +49,11 @@ Open the inspector from the rule details page and confirm the query targets the 
 If you've modified the rule since the alert was generated, open the inspector from the _alert details page_ rather than the rule details page. The alert inspector uses the parameters that were active at the time the alert was generated, so the query will reflect the older configuration.
 :::
 
-:::{dropdown} Identify why the response shows no data
+:::{dropdown} Find out why a rule's query returns no results
 The query matched no documents. Check whether the index pattern in the data view is correct, whether your time range is appropriate, and whether any query filter is too restrictive. Also verify that the data stream or index has data in the expected time period by running the same query in [Discover](/explore-analyze/discover.md) or [Dev Tools](/explore-analyze/query-filter/tools/console.md).
 :::
 
-:::{dropdown} Find out why a group is missing from the results
+:::{dropdown} Find out why a rule isn't detecting a specific group
 If a group you expected (such as a specific host) doesn't appear in the buckets, no documents for that group matched the query during the evaluation window. This can happen when the group was inactive, when a filter excluded its documents, or when the field used for grouping has a different value in the actual documents than you expected.
 :::
 
