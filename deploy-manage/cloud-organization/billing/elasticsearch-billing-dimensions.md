@@ -71,6 +71,9 @@ You can control costs using the following strategies:
 * **Machine learning trained model autoscaling**: [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
 
   Trained model deployments automatically scale down to zero allocations after 24 hours without any inference requests. When they scale up again, they remain active for 5 minutes before they can scale down. During these cooldown periods, you will continue to be billed for the active resources.
+* **Ingest VCU scaling**: Ingest VCU consumption scales with your indexing load. After 15 minutes with no ingest activity, ingest capacity scales down to zero and ingest charges are minimal during idle periods. Continuous indexing requests prevent idle windows, so ingest VCUs remain provisioned and you continue to incur costs.
+ 
+  Where your use case allows, batch documents into fewer, larger [`_bulk`]({{cloud-serverless-apis}}operation/operation-bulk) requests and group indexing into scheduled batches to maximize idle time and reduce ingest VCU usage.
 * **Indexing strategies**: Consider your indexing strategies and how they might impact overall VCU usage and costs.
   To ensure optimal performance and cost-effectiveness for your project, it's important to consider how you structure your data.
   
