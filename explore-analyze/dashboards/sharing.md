@@ -33,15 +33,14 @@ Share a direct link to your dashboard so that others can access it in {{kib}}.
 :width: 40%
 :::
 
-The link opens the dashboard with your current view, including any filters and search query you have applied.
+The link opens the dashboard with your current view, including any filters and search query you have applied. Keep the following in mind when you share a link:
 
-The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions.
+- **Authentication**: Recipients must log in to {{kib}} with an account that has the necessary permissions.
+- {applies_to}`serverless: unavailable` **Anonymous access**: Users can open the link without logging in if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
+- **Permanent links**: If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link.
+- **Maximized panels**: If you share a link while a panel is maximized, the link reopens the dashboard with that same panel maximized.
 
-{applies_to}`serverless: unavailable` Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
-
-If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link. If you share a link while a panel is maximized, the link reopens the dashboard with that same panel maximized.
-
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When sharing, you can choose to use a relative or an absolute time range:
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can also choose whether the link uses a relative or an absolute time range:
 
 * **Relative time range** (default): The link shows current data. For example, if you share a "Last 7 days" view, users always see the most recent 7 days when they open the link.
 * **Absolute time range**: The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link always shows that exact week of January 1-7, 2025, regardless of when users open the link.
