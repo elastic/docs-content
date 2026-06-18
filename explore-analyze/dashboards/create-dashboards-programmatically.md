@@ -41,7 +41,7 @@ The API supports all panel types that have a defined schema, including visualiza
 
 Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 100 top-level items (panels and sections combined), 100 panels per section, and 100 pinned controls. Requests that exceed these limits are rejected with a validation error.
 
-Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements.
+Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
 
 ## Visualizations API [lens-visualizations-api]
 ```{applies_to}

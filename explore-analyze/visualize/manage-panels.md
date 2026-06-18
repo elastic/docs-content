@@ -103,7 +103,7 @@ To make changes to the panel, use the panel menu options.
 
         :::{note}
         :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-        For Discover session panels added from the library, **Edit** opens a tab selector where you can choose which tab the panel displays. Select **Apply** to save your changes or **Discard** to revert them. For step-by-step instructions, refer to [Add search results to a dashboard](../discover/save-open-search.md#_add_search_results_to_a_dashboard).
+        For Discover session panels added from the library, **Edit** opens a tab selector where you can choose which tab the panel displays. Select **Apply** to save your changes or **Discard** to revert them. For step-by-step instructions, refer to [Choose which tab a session panel displays](../discover/save-open-search.md#discover-session-choose-tab).
         :::
 
     * **Convert to Lens** — Opens **TSVB** and aggregation-based visualizations in **Lens**.
