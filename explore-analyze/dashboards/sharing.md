@@ -11,13 +11,13 @@ products:
 
 # Share and export dashboards [share-the-dashboard]
 
-{{kib}} provides several ways to share and export dashboards:
+Share a dashboard with others, or export its contents for reporting, backup, or reuse:
 
 - [Share with a link](#share-dashboard-link): Copy a direct link to the dashboard.
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of your dashboard.
-- [Download visualization data as CSV](#download-csv): Download the data behind individual visualizations.
-- [Export dashboard configuration](#export-dashboards): Export as JSON for the dashboards API, or as NDJSON for bulk moves and backups.
+- [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
+- [Export dashboard configuration](#export-dashboards): Export as JSON for the dashboards API, or as NDJSON saved objects.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -25,7 +25,7 @@ You can also [set whether other users of your space can edit dashboards you own]
 
 Share a direct link to your dashboard so that others can access it in {{kib}}.
 
-1. Open the dashboard, then select {icon}`share` **Share**.
+1. Open the dashboard, then select {icon}`share` **Share** in the application menu.
 2. On the **Link** tab, select **Copy link**.
 
 :::{image} /explore-analyze/images/share-dashboard.png
@@ -33,7 +33,9 @@ Share a direct link to your dashboard so that others can access it in {{kib}}.
 :width: 40%
 :::
 
-The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions. Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
+The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions.
+
+{applies_to}`serverless: unavailable` Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 
 If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link. If you share a link while a panel is maximized, the link reopens the dashboard with that same panel maximized.
 
@@ -50,13 +52,13 @@ serverless: unavailable
 
 Embed a fully interactive dashboard as an iframe on an internal company website or personal web page.
 
-1. Open the dashboard, then select {icon}`share` **Share**.
+1. Open the dashboard, then select {icon}`share` **Share** in the application menu.
 2. Go to the **Embed** tab.
 3. Under **Include**, select which parts of the dashboard to display in the embedded view:
-   - **Top menu**
-   - **Query**
-   - **Time filter**
-   - **Filter bar** (enabled by default)
+   - **Top menu**: the menu bar at the top of the dashboard
+   - **Query**: the search query bar
+   - **Time filter**: the time range selector
+   - **Filter bar** (enabled by default): the bar showing applied filters
 4. Select **Copy embed code**.
 5. Paste the iframe code into your web page HTML.
 
@@ -98,7 +100,7 @@ If the visualization contains data that starts with characters that spreadsheet 
 
 ## Export dashboard configuration [export-dashboards]
 
-You can export a dashboard configuration in two formats. The API-compatible JSON export produces a single dashboard's source in a format that the {{kib}} dashboards API can consume, and is intended to replace the saved-objects-based NDJSON export. Use NDJSON when you need to export multiple dashboards at once, move them between spaces or clusters, or create backups.
+You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format is the modern approach, better suited for working with dashboards through the API and in GitOps workflows, and is intended to replace the NDJSON export.
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
@@ -141,7 +143,7 @@ serverless: ga
 stack: ga 9.3+
 ```
 
-From the {icon}`share` **Share** dialog, you can choose whether others in the space can edit your dashboard, or only view it:
+Open the dashboard, then select {icon}`share` **Share** in the application menu. In the dialog, you can choose whether others in the space can edit your dashboard, or only view it:
 
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator.
