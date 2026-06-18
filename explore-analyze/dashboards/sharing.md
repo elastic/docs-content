@@ -100,7 +100,7 @@ If the visualization contains data that starts with characters that spreadsheet 
 
 ## Export dashboard configuration [export-dashboards]
 
-You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format produces a dashboard definition that the {{kib}} dashboards API can consume, which makes it better suited for working with dashboards through the API and in GitOps workflows. It is intended to replace the NDJSON export.
+You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format produces a dashboard definition that the {{kib}} dashboards API can consume. We recommend using JSON to manage dashboards as code or to work with the dashboards API.
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
