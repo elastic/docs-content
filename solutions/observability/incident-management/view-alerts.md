@@ -34,6 +34,11 @@ Use the toolbar buttons in the upper-left to control which columns appear and ho
 
 You can also use the toolbar buttons in the upper-right to customize the display options or view the table in full-screen mode.
 
+::::{note}
+:applies_to: {"stack": "ga 9.5"}
+If a rule generated unexpected alerts or failed to generate alerts when you expected it to, use the rule query inspector to examine the underlying {{es}} query and the data the rule evaluated. For more details, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
+::::
+
 ## View alert details [observability-view-alerts-view-alert-details]
 
 There are a few ways to inspect the details for a specific alert.
@@ -65,17 +70,6 @@ Check related alerts to find other alerts that might be related to the same inci
 To find related alerts, go to the **Related alerts** tab from an alert's details page. Within the table, alerts are ordered from most to least relevant. To only view alerts that were created around the same time as the current alert (+/- 30 minutes), apply the **Triggered around the same time** filter.
 
 Alerts are ranked by how closely they match the current alert based on timing, tags, group values, and other shared attributes.
-
-## Investigate alert behavior with the rule query inspector [observability-view-alerts-inspect-rule-query]
-
-```{applies_to}
-stack: ga 9.5
-```
-
-When reviewing alerts, use the rule query inspector to go beyond the alert summary and examine the underlying {{es}} query. This is useful when an alert requires closer investigation. For example, use it when you need to verify that the rule evaluated the data you expected, check whether a filter or group-by is excluding results, or confirm how the rule was configured at the time a specific alert was generated.
-
-For more details, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
-
 
 ## Understand alert statuses [observability-view-alerts-understand-statuses]
 

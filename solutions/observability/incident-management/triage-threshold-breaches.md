@@ -41,7 +41,7 @@ The page includes several charts to help you investigate the breach:
 
 ::::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-To dig deeper into why an alert was generated, click **Rule query inspector** from the alert details page. The inspector shows the exact {{es}} query and data the rule evaluated at the time the alert was triggered. For more information, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
+If the rule behaved unexpectedly (for example, it ran when it shouldn't have, stayed silent, or evaluated the wrong data) click **Rule query inspector** from the alert details page to find the exact {{es}} query and data the rule used. For more information, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
 ::::
 
 ## Take action on the alert [triage-threshold-take-action]
