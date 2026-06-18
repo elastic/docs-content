@@ -244,7 +244,7 @@ The same applies to the `if` step's `condition`. Refer to [`data.filter`](/explo
 
 **Cause.** The templating engine caps the size, render time, and memory of each template render. A template that builds a large string, such as a final report that concatenates thousands of rows, can exceed one of these limits.
 
-**Resolution.** Reduce the size of the rendered output: return structured data or write results to an index instead of formatting one large string, and move heavy filtering or grouping into [`data.*` steps](/explore-analyze/workflows/steps/data.md). Refer to [Template rendering limits](/explore-analyze/workflows/templating.md#workflows-template-limits).
+**Resolution.** Reduce the size of the rendered output by returning structured data or write results to an index instead of formatting one large string, and move heavy filtering or grouping into [`data.*` steps](/explore-analyze/workflows/steps/data.md). Refer to [Template rendering limits](/explore-analyze/workflows/templating.md#workflows-template-limits).
 
 ## AI steps [workflows-ts-ai]
 
