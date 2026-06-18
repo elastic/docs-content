@@ -33,6 +33,8 @@ Share a direct link to your dashboard so that others can access it in {{kib}}.
 :width: 40%
 :::
 
+The link opens the dashboard with your current view, including any filters and search query you have applied.
+
 The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions.
 
 {applies_to}`serverless: unavailable` Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
@@ -98,7 +100,7 @@ If the visualization contains data that starts with characters that spreadsheet 
 
 ## Export dashboard configuration [export-dashboards]
 
-You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format is the modern approach, better suited for working with dashboards through the API and in GitOps workflows, and is intended to replace the NDJSON export.
+You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format produces a dashboard definition that the {{kib}} dashboards API can consume, which makes it better suited for working with dashboards through the API and in GitOps workflows. It is intended to replace the NDJSON export.
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
