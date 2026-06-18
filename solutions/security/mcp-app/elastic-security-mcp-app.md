@@ -54,13 +54,15 @@ For the narrative version of this walkthrough, refer to the [Elastic Security La
 
 ## Permissions [permissions]
 
-The Elastic Security MCP App authenticates to {{es}} with an API key. For role and privilege requirements, including a Quickstart procedure with built-in roles, a fully scripted custom-role JSON, and troubleshooting for common 401 and 403 errors, refer to the repository's [permissions guide](https://github.com/elastic/example-mcp-app-security/blob/main/docs/permissions.md).
+The Elastic Security MCP App authenticates to {{es}} with an API key. Most users can start with a built-in {{kib}} role plus a small companion role for index access. Fully custom roles are also supported. For role and privilege requirements, including a Quickstart procedure with built-in roles, a fully scripted custom-role JSON, and troubleshooting for common 401 and 403 errors, refer to the repository's [permissions guide](https://github.com/elastic/example-mcp-app-security/blob/main/docs/permissions.md).
 
 :::{note}
 The repository's permissions guide targets stateful deployments ({{stack}} self-managed and {{ech}}). {{serverless-short}} permissions guidance, including the role mapping for {{sec-serverless}} tiers such as `t1_analyst` and `soc_manager`, is pending. To request guidance, [open an issue in the repository](https://github.com/elastic/example-mcp-app-security/issues).
 :::
 
 ## Get started [get-started]
+
+Install the app in your MCP host of choice.
 
 :::::{tab-set}
 
@@ -103,7 +105,7 @@ Expose the MCP app to Claude.ai through a [`cloudflared`](https://developers.clo
 
 :::::
 
-Next, install the [skills](https://github.com/elastic/example-mcp-app-security/blob/main/docs/setup-skills.md) that help your agent determine when to use each tool.
+Next, install the optional [Claude Skills](https://github.com/elastic/example-mcp-app-security/blob/main/docs/setup-skills.md) that help your agent determine when to use each tool.
 
 ## How it works [how-it-works]
 
@@ -111,11 +113,12 @@ When you ask Claude (or another supported host) to triage alerts or run a threat
 
 The LLM only ever receives compact summaries. The UI loads full investigation data through the same local server. Your {{es}} API key permissions apply to every action the app takes.
 
+The app implements the [MCP Apps extension](https://modelcontextprotocol.io/docs/extensions/apps.md) to the Model Context Protocol.
+
 ## Known limitations [known-limitations]
 
 * The app targets the `default` {{kib}} space only. Cross-space workflows aren't supported.
 * The app is a reference implementation, not a built-in {{kib}} feature. It's licensed under [Elastic-2.0](https://github.com/elastic/example-mcp-app-security/blob/main/LICENSE.txt) and supported through the [project repository](https://github.com/elastic/example-mcp-app-security/issues), not Elastic support channels.
-* {{serverless-short}} permissions guidance is pending. The repository's permissions guide covers {{stack}} self-managed and {{ech}} only.
 * Host support depends on the MCP host. Refer to the [MCP Apps client matrix](https://modelcontextprotocol.io/extensions/client-matrix) for the current list of compatible hosts.
 
 ## Related pages [related-pages]
