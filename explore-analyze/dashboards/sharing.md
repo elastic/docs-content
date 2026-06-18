@@ -98,18 +98,11 @@ If the visualization contains data that starts with characters that spreadsheet 
 
 ## Export dashboard configuration [export-dashboards]
 
-You can export a dashboard from {{kib}} in two formats. The JSON format is the modern way to export and recreate dashboards through the {{kib}} dashboards API, and is intended to replace the saved-objects-based NDJSON export. While JSON is in technical preview and limited to one dashboard at a time, NDJSON remains the right choice for bulk operations and cross-space moves.
+You can export a dashboard configuration in two formats. The API-compatible JSON export produces a single dashboard's source in a format that the {{kib}} dashboards API can consume, and is intended to replace the saved-objects-based NDJSON export. Use NDJSON when you need to export multiple dashboards at once, move them between spaces or clusters, or create backups.
 
-| Format | Use it to | What it includes |
-|---|---|---|
-| [JSON](#export-dashboard-json) {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` | Manage a single dashboard as code, version-control it, recreate it through the dashboards API, or inspect its state. | One dashboard, with the panel types and properties that the dashboards API supports. Any panel types and properties not supported by the API are listed in the export flyout and removed from the export. |
-| [NDJSON](#export-ndjson) | Move dashboards between spaces or clusters, back them up, or share them in bulk. | The selected dashboards along with their related objects, such as data views and visualizations. Supports exporting multiple dashboards at once. |
+::::{applies-switch}
 
-### Export as dashboards API-compatible JSON [export-dashboard-json]
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
+:::{applies-item} {stack: preview 9.4, serverless: preview}
 
 Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
 
@@ -122,7 +115,9 @@ Export the JSON source of a dashboard in a format that the {{kib}} dashboards AP
    * Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
    * Select **Download JSON** to save the JSON source to a file.
 
-### Export as NDJSON saved objects [export-ndjson]
+:::
+
+:::{applies-item} {stack: ga 9.0-9.3}
 
 Export dashboards as NDJSON files to migrate them to other {{kib}} instances, back them up, or share them with other teams. You can export dashboards from **Stack Management** → **Saved Objects**. To configure and start the export:
 
@@ -131,6 +126,12 @@ Export dashboards as NDJSON files to migrate them to other {{kib}} instances, ba
 3. Select **Export**.
 
 To automate {{kib}}, you can export dashboards as NDJSON using the [Export saved objects API]({{kib-apis}}group/endpoint-saved-objects). It is important to export dashboards with all necessary references.
+
+You can still use the NDJSON export on later versions, but the API-compatible JSON export is now the recommended way to manage a single dashboard as code.
+
+:::
+
+::::
 
 ## Set edit permissions [manage-dashboard-access]
 ```{applies_to}
