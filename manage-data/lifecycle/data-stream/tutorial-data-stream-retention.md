@@ -184,5 +184,5 @@ As a result, the retention period is not the exact time data get deleted, but th
 ::::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
 
-Backing indices may be converted to {{search-snaps}} on the frozen tier **before** retention makes them eligible for deletion if you set [`frozen_after`](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md). Effective retention still applies: indices are removed after their `generation_time` exceeds the effective retention period.
-::::
+Backing indices may be converted to {{search-snaps}} on the frozen tier **before** retention makes them eligible for deletion if you set [`frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md). Effective retention still applies: indices are removed after their `generation_time` exceeds the effective retention period.
+::::

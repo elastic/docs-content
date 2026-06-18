@@ -34,7 +34,7 @@ You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snap
 ::::{note}
 :applies_to: {"stack": "ga 9.5"}
 
-For data streams, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automate partially mounted {{search-snaps}} using `frozen_after` on older backing indices. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+For data streams, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automate partially mounted {{search-snaps}} using `frozen_after` on older backing indices. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 ::::
 
 To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone]({{es-apis}}operation/operation-snapshot-clone) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.

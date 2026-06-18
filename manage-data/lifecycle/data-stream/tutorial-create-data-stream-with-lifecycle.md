@@ -48,7 +48,29 @@ PUT _index_template/my-index-template
 1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
 
 :::{tip}
-To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. Prerequisites and configuration options are documented in [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+
+To move older backing indices to the frozen tier automatically, include `frozen_after` in the lifecycle you put on the template. For requirements and how conversion works, refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md). For example:
+
+```console
+PUT _index_template/my-index-template
+{
+  "index_patterns": ["my-data-stream-test"],
+  "data_stream": { },
+  "priority": 500,
+  "template": {
+    "lifecycle": {
+      "data_retention": "365d",
+      "frozen_after": "30d"
+    }
+  },
+  "_meta": {
+    "description": "Template with data stream lifecycle and frozen transitions"
+  }
+}
+```
+
+Confirm that a default snapshot repository is registered before indexing data. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
 :::
 
 ## Create a data stream [create-data-stream-with-lifecycle]

@@ -813,7 +813,7 @@ GET _data_stream/my-datastream
 4. The retention is currently determined by the default.  
 
 ::::{note}
-[`frozen_after`](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md) is valid only on the main data stream lifecycle, not on the failure store lifecycle.
+[`frozen_after`](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) is valid only on the main data stream lifecycle, not on the failure store lifecycle.
 ::::
 
 The default retention respects any maximum retention values.

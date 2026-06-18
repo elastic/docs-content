@@ -130,7 +130,7 @@ This setting will not unallocate a currently allocated shard, but might prevent 
 
 {{ilm-init}} automatically transitions managed indices through the available data tiers using the [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action. By default, this action is automatically injected in every phase.
 
-{applies_to}`stack: ga 9.5+` [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automatically transition older backing indices to the frozen tier using `frozen_after`. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md).
+{applies_to}`stack: ga 9.5+` [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) can automatically transition older backing indices to the frozen tier using `frozen_after`. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 
 ### Disable data tier allocation [data-tier-allocation]
 

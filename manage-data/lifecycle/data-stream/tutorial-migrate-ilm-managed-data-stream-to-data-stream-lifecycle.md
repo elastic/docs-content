@@ -315,7 +315,7 @@ GET _data_stream/dsl-data-stream
 :::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
 
-If your {{ilm-init}} policy used the frozen phase with the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action, you can configure a comparable archive path using `frozen_after` on your data stream lifecycle. Refer to [](/manage-data/lifecycle/data-stream/frozen-searchable-snapshots.md) for prerequisites, API examples, and limitations.
+If your {{ilm-init}} policy used the frozen phase with the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action, you can configure a comparable archive path using `frozen_after` on your data stream lifecycle. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) for prerequisites, API examples, and limitations.
 :::
 
 ## Migrate data stream back to ILM [migrate-from-dsl-to-ilm]
