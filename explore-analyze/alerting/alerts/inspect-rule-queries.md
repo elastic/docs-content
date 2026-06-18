@@ -40,11 +40,11 @@ The inspector displays the {{es}} query made by the rule, the most recent raw re
 Expand the following to learn how the inspector can help.
 
 :::{dropdown} Confirm why an alert was generated
-Open the inspector from the alert details page. Review the time range to confirm it matches the evaluation period. Find the aggregation bucket for your group and check the value against the threshold. If the value exceeds the threshold, the alert was generated correctly.
+Open the inspector from the alert details page. Review the time range to confirm it matches the evaluation period. Check the response to confirm the results met the rule's conditions during that window. If they did, the alert was correctly generated.
 :::
 
 :::{dropdown} Investigate why an alert wasn't generated
-Open the inspector from the rule details page and confirm the query targets the right index pattern and time range. Check the query filter for unintended restrictions. If the aggregation values in the response are below the threshold, the rule evaluated correctly but your data didn't breach the threshold during that window.
+Open the inspector from the rule details page and confirm the query targets the right index pattern and time range. Also check the query filter for uncessary restrictions. If the response returns data but the results don't meet the rule's conditions, the rule evaluated your data correctly but didn't generate an alert because the rule's conditions were not satisfied during that evaluation window.
 :::
 
 :::{dropdown} Compare the current rule configuration to a historical alert
@@ -59,8 +59,8 @@ The query matched no documents. Check whether the index pattern in the data view
 If a group you expected (such as a specific host) doesn't appear in the buckets, no documents for that group matched the query during the evaluation window. This can happen when the group was inactive, when a filter excluded its documents, or when the field used for grouping has a different value in the actual documents than you expected.
 :::
 
-:::{dropdown} Diagnose a slow or timing-out rule
-Check the request time in the inspector. A high request time means the Elasticsearch query is likely the cause. To reduce it, simplify the query by reducing the number of criteria, shortening the time window, adding a tighter KQL filter, or reducing group-by cardinality. If the rule has multiple criteria, use the dropdown to compare request times across criteria and identify which condition is the most expensive.
+:::{dropdown} Find out why a rule is slow or times out
+Check the request time in the inspector. A high request time indicates that the {{es}} query is the likely bottleneck. To reduce query execution time, shorten the evaluation time window, add a KQL filter to reduce the number of documents scanned, or group by a lower-cardinality field. If the rule has multiple conditions, use the criterion dropdown to compare request times across conditions and identify which one takes the longest to execute.
 
-If the request time is near zero, the query isn't the bottleneck and the timeout is likely caused by something else, such as task manager queue pressure or scheduling overhead. For broader investigation, including how to identify long-running rules using the event log and how to adjust timeout settings, refer to [Rules take a long time to run](alerting-common-issues.md#rules-long-run-time).
+If the request time is near zero, the query isn't the bottleneck. The rule may be waiting too long before it starts running, which can happen when {{kib}} is handling too many rules or tasks at the same time. For broader investigation, including how to identify long-running rules using the event log and how to adjust timeout settings, refer to [Rules take a long time to run](alerting-common-issues.md#rules-long-run-time).
 :::
