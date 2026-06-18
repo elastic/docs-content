@@ -29,7 +29,7 @@ The key difference is that the rule details page reflects the rule as it is _now
 
 ## What the inspector shows [inspect-tabs]
 
-The inspector displays the {{es}} query the rule sent, the raw response it received, and how long the query took to execute.
+The inspector displays the {{es}} query made by the rule, the most recent raw response the rule received, and how long the query took to run.
 
 | Element | Description |
 | --- | --- |
