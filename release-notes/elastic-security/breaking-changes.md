@@ -58,6 +58,8 @@ The built-in Security roles have been updated to grant these privileges. Custom 
   privileges:
     - read
 ```
+
+For more information, check [#255800]({{kib-pull}}255800).
 ::::
 
 ::::{dropdown} Entity Analytics: Risk engine management APIs removed
