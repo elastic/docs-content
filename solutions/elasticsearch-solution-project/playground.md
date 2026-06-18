@@ -243,7 +243,7 @@ Click **⟳ Clear chat** to clear chat history and start a new conversation.
 
 ### View and download Python code [playground-getting-started-view-code]
 
-Select {icon}`export` to view the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
+Select {icon}`external` to view the Python code that powers the chat interface. You can integrate it into your own application, modifying as needed. We currently support two implementation options:
 
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider

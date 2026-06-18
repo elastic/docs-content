@@ -151,6 +151,7 @@ This discipline pays off quickly once more than one team depends on a shared wor
 ## Related pages [workflows-compose-related]
 
 - [Composition steps reference](/explore-analyze/workflows/steps/composition.md): Parameter shapes for `workflow.execute`, `workflow.executeAsync`, `workflow.output`, and `workflow.fail`.
+- [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-outputs): Background on the `outputs` field required for child workflows.
 - [Use the YAML editor](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md): How test runs work when you're iterating on a child workflow.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): `on-failure` interacts with `workflow.fail` in predictable ways.
 - [Foreach step](/explore-analyze/workflows/steps/foreach.md): Pair with `workflow.executeAsync` for the fan-out pattern.
