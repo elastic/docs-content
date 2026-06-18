@@ -34,7 +34,11 @@ When there are multiple hosts for each role, the inbound networking and ports ca
 | 3 | Proxy | 9200, 9243 | {{es}} REST API. 9200 is plain text and 9243 is with TLS, also required by load balancers<br> |
 | 3 | Proxy | 9300, 9343 | {{es}} transport client. 9300 is plain text and 9343 is with TLS, also required by load balancers<br> |
 | 3 | Proxy | 9400, 9443 | {{es}} Cross Cluster Search and Cross Cluster Replication with TLS authentication (9400) or API key authentication (9443), also required by load balancers. Can be blocked if [CCR/CCS](../../remote-clusters/ece-enable-ccs.md) is not used.<br> |
-| 7 | Coordinator | 12400/12443 | Cloud UI console to API  (HTTP/HTTPS)<br> |
+| 7 | Coordinator | 12443 (required), 12400 (optional) | Cloud UI console (HTTPS required for browser access, HTTP for API only)<br> |
+
+:::{note}
+Starting with ECE 3.7.0, browser access to the Cloud UI requires HTTPS on port 12443. Port 12400 (HTTP) remains functional for programmatic API access (for example, `curl`), but browsers cannot render the Cloud UI over HTTP due to security policy headers. Ensure that port 12443 is open in your network policies before upgrading to ECE 3.7.0 or later.
+:::
 
 **Inbound traffic from other ECE hosts**
 
