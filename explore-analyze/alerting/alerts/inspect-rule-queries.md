@@ -10,7 +10,7 @@ products:
 
 # Inspect rule queries [inspect-rule-queries]
 
-The rule query inspector lets you view the {{es}} request that a rule sends when it evaluates your data. Use it to understand the query structure, confirm the rule is targeting the right data, and diagnose why an alert was or wasn't generated.
+The rule query inspector lets you view the {{es}} request that a rule sent when it evaluated your data. Use it to understand the query structure, confirm the rule targeted the right data, and diagnose why an alert was or wasn't generated.
 
 ::::{note}
 :applies_to: {"stack": "ga 9.5", "serverless": "ga"}
