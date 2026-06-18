@@ -3,7 +3,7 @@ During the free 14-day trial, Elastic provides access to one hosted deployment a
 **Hosted deployments**
 
 * You can only have one active deployment at a time.
-* The deployment size is limited to 8 GB RAM. The available storage depends on the selected hardware profile, cloud provider, and region. To compare profile trade-offs, refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md).
+* The deployment size is limited to 4 GB RAM per availability zone for {{es}} data nodes, up to 2 availability zones (8 GB total). The available storage depends on the selected hardware profile, cloud provider, and region. To compare profile trade-offs, refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md).
 * Storage in a trial deployment is not a fixed value and can vary significantly even with the same RAM allocation. For example, vector search-optimized profiles generally provide less storage than more storage-dense profile options.
 * {{ml-cap}} nodes are available up to 4GB RAM, or up to 8GB when using Reranker.
 * Custom {{es}} plugins are not enabled.
