@@ -1,6 +1,6 @@
 ---
 navigation_title: Inspect rule queries
-description: Use the rule query inspector to view the Elasticsearch request behind a rule, confirm it targets the right data, and diagnose why an alert was or wasn't generated.
+description: Use the rule query inspector to view the Elasticsearch request a rule used, confirm it targeted the right data, and diagnose why alerts were or weren't generated.
 applies_to:
   stack: ga 9.5
   serverless: ga
