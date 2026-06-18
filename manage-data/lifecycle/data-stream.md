@@ -11,7 +11,7 @@ products:
 
 # Data stream lifecycle in {{es}} [data-stream-lifecycle]
 
-A data stream lifecycle in {{es}} is a built-in automation mechanism for managing data retention, performance, storage cost, and ingest efficiency.
+A data stream lifecycle in {{es}} is a built-in automation mechanism for managing data retention, performance, and storage optimization.
 By configuring rollover, retention, downsampling, and frozen transitions to long-term searchable archives, your [data streams](/manage-data/data-store/data-streams.md) stay efficient as they age.
 This page explains how the lifecycle works, its key features, and how to configure it for both new and existing data streams.
 
@@ -19,7 +19,7 @@ Data stream lifecycle manages your data streams according to your retention and 
 
 * Ensure that data indexed in the data stream is kept at least for the retention time you defined.
 * Ensure that data older than the retention period is deleted automatically by {{es}} at a later time.
-* {applies_to}`stack: ga 9.5+` Move older backing indices to low-cost searchable storage. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Move older backing indices to low-cost searchable storage. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 
 To achieve these, data stream lifecycle supports:
 
@@ -44,7 +44,7 @@ In intervals configured by [`data_streams.lifecycle.poll_interval`](elasticsearc
 2. Rolls over the write index of the data stream, if it fulfills the conditions defined by [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover).
 3. After an index is not the write index anymore (that is, the data stream has been rolled over), automatically tail merges the index. Data stream lifecycle executes a merge operation that only targets the long tail of small segments instead of the whole shard. As the segments are organised into tiers of exponential sizes, merging the long tail of small segments is only a fraction of the cost of force merging to a single segment. The small segments would usually hold the most recent data so tail merging will focus the merging resources on the higher-value data that is most likely to keep being queried.
 4. If [downsampling]({{es-apis}}operation/operation-indices-put-data-lifecycle) is configured it will execute all the configured downsampling rounds.
-5. {applies_to}`stack: ga 9.5+` Transitions eligible backing indices to partially mounted {{search-snaps}}. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
+5. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: unavailable` Transitions eligible backing indices to partially mounted {{search-snaps}}. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 6. Applies retention to the remaining backing indices. This means deleting the backing indices whose `generation_time` is longer than the effective retention period (read more about the [effective retention calculation](data-stream/tutorial-data-stream-retention.md#effective-retention-calculation)). The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured in the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting. Retention can delete indices even after they have been moved to {{search-snaps}}.
 
 ::::{important}
