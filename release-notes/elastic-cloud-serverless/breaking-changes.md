@@ -18,6 +18,37 @@ products:
 :::
 -->
 
+## May 28, 2026 [elastic-cloud-serverless-05282026-breaking]
+
+::::{dropdown} Entity Analytics requires additional index privileges for custom roles
+
+The entity store reads entity data from a new set of indices. Roles that grant access to the Entity Analytics features must now include `read` on the following index patterns:
+
+- `.entities.v2.latest.security_*`
+- `.entities.v2.updates.security_*`
+- `entities-latest-*`
+- `risk-score.risk-score-*`
+- `.entity_analytics.*`
+
+The built-in Security roles have been updated to grant these privileges. Custom roles created against the `v1` index patterns (`.entities.v1.latest.security_*`) are not updated automatically.
+
+**Impact:**
+
+Users assigned a custom role that does not include the index patterns above will see the **Entity Analytics** page load in a degraded state — without entity data and without the standard "insufficient privileges" message. Users assigned built-in Security roles are not affected.
+
+**Action:** If you use custom roles to control access to Entity Analytics, add `read` on the following entity store and risk score index patterns to each affected role:
+
+```yaml
+- names:
+    - ".entities.v2.latest.security_*"
+    - "entities-latest-*"
+    - "risk-score.risk-score-*"
+    - ".entity_analytics.*"
+  privileges:
+    - read
+```
+::::
+
 ## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
 
 :::{dropdown} Disables sequence numbers for TSDB indices in release builds
