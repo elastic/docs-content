@@ -604,7 +604,7 @@ POST /_ingest/pipeline/_simulate
       "_index": "index",
       "_id": "id",
       "_source": {
-        "foo.bar": "baz", <6>
+        "foo.bar": "baz" <6>
       }
     }
   ]
