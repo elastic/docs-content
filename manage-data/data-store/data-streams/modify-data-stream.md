@@ -548,4 +548,4 @@ POST /_data_stream/_modify
 
 1. Adds an index to the data stream's backing indices
 2. Remove and keep an index from the data stream's backing indices
-3. Remove and delete an index from the data stream's backing indices
+3. Remove and delete an index from the data stream's backing indices {applies_to}`stack: ga 9.5+`
