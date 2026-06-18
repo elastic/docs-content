@@ -17,7 +17,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of your dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
-- [Export dashboard configuration](#export-dashboards): Export as JSON for the dashboards API, or as NDJSON saved objects.
+- [Export dashboard configuration](#export-dashboards): Export the dashboard's definition as a JSON or NDJSON file to back it up, move it, or manage it as code.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -62,11 +62,9 @@ Embed a fully interactive dashboard as an iframe on an internal company website 
 4. Select **Copy embed code**.
 5. Paste the iframe code into your web page HTML.
 
-For information about granting access to embedded dashboards, refer to [Authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
+Save the dashboard before you generate the embed code. Embedding a dashboard with unsaved changes might result in an embed code that does not work properly.
 
-::::{tip}
-Save the dashboard before generating the embed code. Embedding a dashboard with unsaved changes might result in an embed code that does not work properly.
-::::
+For information about granting access to embedded dashboards, refer to [Authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 
 ## Export as PDF or PNG [export-dashboard-pdf-png]
 ```{applies_to}
@@ -85,7 +83,7 @@ A notification confirms that the report is queued. When it is ready, download it
 
 {applies_to}`stack: ga 9.1+` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
 
-For general information about reporting across all {{kib}} apps, [how to configure reporting](/deploy-manage/kibana-reporting-configuration.md), known limitations, and troubleshooting, refer to [Reporting and sharing](../report-and-share.md).
+For general information about reporting across all {{kib}} apps, including known limitations and troubleshooting, refer to [Reporting and sharing](../report-and-share.md). To set up reporting, see [Configure reporting](/deploy-manage/kibana-reporting-configuration.md).
 
 ## Download visualization data as CSV [download-csv]
 
