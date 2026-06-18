@@ -10,22 +10,19 @@ products:
 
 # Inspect rule queries [inspect-rule-queries]
 
-The rule query inspector lets you view the {{es}} request that a rule sent when it evaluated your data. Use it to understand the query structure, confirm the rule targeted the right data, and diagnose why an alert was or wasn't generated.
+The rule query inspector gives you direct visibility into the {{es}} queries that your alerting rules run. When a rule fires unexpectedly, stays silent, or runs slowly, use the inspector to see exactly what query ran and what data it returned.
 
-::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-Currently, the rule query inspector is only available for **custom threshold rules**. 
-::::
+The inspector is available from two places: the rule details page and the alert details page. From the rule details page, you can find out how the rule is configured _now_. From the alert details page, you can find out how the rule was configured _when a specific alert was generated_. If you've modified a rule, the two views may show different queries.
+
+## Supported rule types [inspect-supported-rule-types]
+
+Currently, the rule query inspector is only available for custom threshold rules.
 
 ## Access the inspector [inspect-access]
-
-The inspector is available from two places, each showing a different query:
 
 * **Rule details page**: Open **{{stack-manage-app}}** > **{{rules-ui}}**, find your rule, and click its name to open its details page. Click **Rule query inspector**. The inspector builds the query from the rule's _current_ parameters. Use this view to verify that the rule is configured correctly and would match the data you expect.
 
 * **Alert details page**: Go to the **Alerts** page, then open an individual alert. Click **Rule query inspector**. The inspector uses the rule parameters _as they existed when that specific alert was generated_, including the exact evaluation time range. Use this view to understand why a particular alert was or wasn't triggered.
-
-The key difference is that the rule details page reflects the rule as it is _now_, while the alert details page reflects the rule as it was _then_. If you've edited the rule since an alert was generated, the two inspectors will show different queries.
 
 ## What the inspector shows [inspect-tabs]
 
@@ -37,19 +34,6 @@ The inspector displays the {{es}} query made by the rule, the most recent raw re
 | **Request** | Shows the full {{es}} query that the rule sends when it evaluates your data. Use it to verify the index pattern, time range, query filter, and aggregations match what you configured in the rule. |
 | **Response** | Shows the raw {{es}} response. Use it to confirm whether data was found, whether the groups you expect are present, and what values the rule was working with when it made its alerting decision. |
 | **Request time** | Shows how long {{es}} took to execute the query. This measures the query portion of rule execution only. It doesn't include time spent waiting in the task queue or processing actions after the query returns. Use it to identify whether the query itself is the bottleneck when a rule is slow. |
-
-## Factors that affect request time [inspect-request-time-factors]
-
-The request time can be affected by the following factors. When optimizing for performance, verify that any changes don't affect the rule's detection logic, for example, a shorter time window or tighter filter may prevent the rule from catching the conditions it was designed to detect.
-
-| Factor | Why it increases execution time | How to reduce it |
-| --- | --- | --- |
-| **Index size** | Rules that search indices with more documents take longer to execute. | Add a KQL filter to narrow the documents the rule searches. |
-| **Query complexity** | Metric aggregations such as average, rate, or percentile are heavier than a simple count. | Simplify criteria or swap a complex aggregation for a lighter one where possible. |
-| **Number of criteria** | Each criterion is a separate {{es}} query. | Reduce the number of criteria in the rule. |
-| **Group-by cardinality** | Grouping by a high-cardinality field (such as `host.name` with thousands of hosts) significantly increases query cost. | Choose a lower-cardinality field, or apply a KQL filter to narrow the population before grouping. |
-| **Shard count and cluster load** | Query time increases when {{es}} is under heavy load. | This is outside the rule configuration. If high cluster load is consistent, consider reviewing your cluster sizing or spreading rule evaluation across off-peak hours. |
-| **Time window size** | A longer window means {{es}} must scan more data. | Shorten the time window in the rule configuration. |
 
 ## Using the inspector [inspect-troubleshoot]
 
