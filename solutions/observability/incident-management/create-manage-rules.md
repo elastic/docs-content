@@ -100,12 +100,7 @@ stack: ga 9.5
 serverless: ga
 ```
 
-::::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
-Currently, the rule query inspector is only available for **custom threshold rules**. 
-::::
-
-From the rule details page, click **Rule query inspector** to view the Elasticsearch request the rule sends during evaluation. The inspector builds the query from the rule's current parameters, including the data view, query filter, time window, and aggregations you've configured. Use it to confirm the rule is targeting the right data before an alert is generated.
+From the rule details page, click **Rule query inspector** to view the {{es}} request the rule sends during evaluation. The inspector builds the query from the rule's current parameters, including the data view, query filter, time window, and aggregations you've configured. Use it to confirm the rule is targeting the right data before an alert is generated.
 
 For troubleshooting guidance and an explanation of what the inspector shows, refer to [Inspect rule queries](/explore-analyze/alerting/alerts/inspect-rule-queries.md).
 
