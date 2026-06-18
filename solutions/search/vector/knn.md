@@ -71,7 +71,7 @@ If you use `semantic_text` fields, query them with a [`match` query](elasticsear
 
 ### Exact, brute-force kNN [knn-methods-exact]
 
-Uses a `script_score` query with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](#exact-knn).
+Uses a [`script_score` query ](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](#exact-knn).
 
 Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With exact kNN, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
