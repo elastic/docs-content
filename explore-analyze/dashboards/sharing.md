@@ -100,6 +100,8 @@ If the visualization contains data that starts with characters that spreadsheet 
 
 You can export a dashboard configuration in two formats. The API-compatible JSON export produces a single dashboard's source in a format that the {{kib}} dashboards API can consume, and is intended to replace the saved-objects-based NDJSON export. Use NDJSON when you need to export multiple dashboards at once, move them between spaces or clusters, or create backups.
 
+$$$export-dashboard-json$$$ $$$export-ndjson$$$
+
 ::::{applies-switch}
 
 :::{applies-item} {stack: preview 9.4, serverless: preview}
