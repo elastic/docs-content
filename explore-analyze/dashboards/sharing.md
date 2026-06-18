@@ -21,17 +21,17 @@ products:
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
-:::{image} /explore-analyze/images/share-dashboard.png
-:screenshot:
-:width: 40%
-:::
-
 ## Share with a link [share-dashboard-link]
 
 Share a direct link to your dashboard so that others can access it in {{kib}}.
 
 1. Open the dashboard, then select {icon}`share` **Share**.
 2. On the **Link** tab, select **Copy link**.
+
+:::{image} /explore-analyze/images/share-dashboard.png
+:screenshot:
+:width: 40%
+:::
 
 The link requires authentication. To access the dashboard, users must log in to {{kib}} with an account that has the necessary permissions. Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 
@@ -142,6 +142,11 @@ From the {icon}`share` **Share** dialog, you can choose whether others in the sp
 
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator.
+
+:::{image} /explore-analyze/images/share-dashboard.png
+:screenshot:
+:width: 40%
+:::
 
 :::{include} ../_snippets/dashboard-ownership.md
 :::
