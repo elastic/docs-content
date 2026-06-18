@@ -90,7 +90,7 @@ An alert produced by a {{elastic-sec}} detection rule. Always in state `new` whe
 
 ### ES|QL [workflows-glossary-esql]
 
-Elasticsearch Query Language. {{es}}'s SQL-like query language. Used in `elasticsearch.esql.query` steps. Refer to [Elasticsearch action steps](/explore-analyze/workflows/steps/elasticsearch.md) and [ES|QL reference](/explore-analyze/query-filter/languages/esql.md).
+Elasticsearch Query Language. {{es}}'s SQL-like query language. Used in `elasticsearch.esql.query` steps. Refer to [Elasticsearch action steps](/explore-analyze/workflows/steps/elasticsearch.md) and [ES|QL reference](elasticsearch://reference/query-languages/esql.md).
 
 ### Event [workflows-glossary-event]
 
