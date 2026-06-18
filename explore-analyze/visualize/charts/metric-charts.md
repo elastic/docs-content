@@ -72,6 +72,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
