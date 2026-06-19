@@ -196,10 +196,20 @@ When the LLM rewrites an existing pipe instead of adding one, the original pipe 
 
 When your query fails validation, hover over the underlined error in the editor. The error popup includes a **✨ Fix with AI** link. Select it to send the query and the error to the LLM and have it propose a corrected version.
 
+:::{image} /explore-analyze/images/kibana-esql-fix-with-ai.png
+:alt: An ES|QL query error popup showing the Fix with AI link
+:screenshot:
+:::
+
 The original lines are shown with a strikethrough, and the proposed replacement appears underneath, highlighted. The same review actions as for comment-driven generation apply:
 
-- **Keep AI fix** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
-- **Undo AI fix** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
+- **Replace** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
+- **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
+
+:::{image} /explore-analyze/images/kibana-esql-fix-with-ai-review.png
+:alt: An ES|QL editor showing the original query with a strikethrough and the proposed AI fix highlighted, with Replace and Undo actions
+:screenshot:
+:::
 
 :::{tip}
 :applies_to: {"stack": "ga 9.5", "serverless": "ga"}
