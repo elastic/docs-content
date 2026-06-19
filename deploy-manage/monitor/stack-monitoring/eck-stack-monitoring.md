@@ -197,8 +197,3 @@ spec:
           env:
           - foo: bar
 ```
-
-## Next steps
-
-:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
-:::

@@ -6,6 +6,7 @@ features:
 
 exclude:
   - 'README.md'
+  - 'raw-migrated-files/**'
   - 'changelog/**'
   - 'releases/**'
 
