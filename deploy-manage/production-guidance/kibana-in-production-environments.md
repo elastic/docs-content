@@ -19,9 +19,9 @@ How you deploy {{kib}} largely depends on your use case. If you are the only use
 
 ## Scalability
 
-Scaling {{kib}} requires accounting for a mix of interactive UI traffic, API requests, and background work executed by [{{kib}} Task Manager](./kibana-task-manager-scaling-considerations.md).
+Scaling {{kib}} requires accounting for a mix of interactive UI traffic, API requests, and background work. The relative impact of each can vary depending on the features and solutions you use.
 
-This background work includes alerting rules, detection rules, reports, and other periodic tasks that Task Manager schedules, executes, and coordinates.
+This background work includes alerting rules, detection rules, reports, and other periodic tasks managed by [{{kib}} Task Manager](./kibana-task-manager-scaling-considerations.md), which schedules, executes, and coordinates these tasks.
 
 Additionally, the task manager enables distributed coordination across multiple {{kib}} instances, allowing {{kib}} to function as a logical cluster in certain aspects.
 
