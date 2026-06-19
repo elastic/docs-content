@@ -87,6 +87,6 @@ You can create, read, update, and delete tags outside the {{kib}} UI using the T
 
 The Tags API replaces the tag CRUD endpoints under `/api/saved_objects_tagging`, which are now deprecated. If you have automation that calls those endpoints, migrate it to the Tags API.
 
-For the available operations and the full request and response schema, refer to the [{{kib}} API reference](https://www.elastic.co/docs/api/doc/kibana) ([serverless](https://www.elastic.co/docs/api/doc/serverless)).
+For the available operations and the full request and response schema, refer to the [Tags API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-tags) ([serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-tags)).
 
 
