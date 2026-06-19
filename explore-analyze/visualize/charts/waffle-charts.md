@@ -85,7 +85,7 @@ You can use **Multiple metrics** to show progress toward a goal, with filled squ
 This example uses the **Kibana Sample Data eCommerce** data set. If you haven't installed it yet, refer to [Sample data](/manage-data/ingest/sample-data.md) for instructions.
 
 1. Create a **Waffle** chart using the **Kibana Sample Data eCommerce** {{data-source}}.
-2. Open **Settings**/**Layer settings**:
+2. Open the layer settings:
    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`gear` **Settings**/**Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_horizontal`, then select **Layer settings**.
 3. Select **Multiple metrics**, then close the layer settings.
