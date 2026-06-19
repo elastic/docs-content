@@ -98,7 +98,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
-| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-comment) {applies_to}`stack: ga 9.5+` |
+| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-comment) {applies_to}`stack: preview 9.5+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-quick-search) |
 
 :::{tip}
@@ -106,7 +106,7 @@ You can find the list of shortcuts directly from the editor. Look for the ![keyb
 :::
 
 
-### Build queries with KQL [esql-kibana-quick-search]
+### Build ES|QL queries from KQL syntax [esql-kibana-quick-search]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
@@ -132,8 +132,8 @@ To filter your data with KQL:
 
 ### Write and fix queries with AI [esql-kibana-ai-assistance]
 ```{applies_to}
-stack: ga 9.5
-serverless: ga
+stack: preview 9.5
+serverless: preview
 ```
 
 When your deployment has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically.
@@ -152,10 +152,6 @@ Choose the entry point that matches what you want to do:
 Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. In the search bar, if no connector is available, you're prompted to set one up.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
-```{applies_to}
-stack: preview 9.5+
-serverless: preview
-```
 
 You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
 
@@ -180,12 +176,7 @@ You can use this to:
 - Start a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
 - Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the LLM generates a single pipe to append. If the LLM determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
 
-While you write, the editor offers two hints to remind you how to invoke the feature:
-
-- On an empty line in a non-empty editor: `Type // and press ⌘+J to ask AI to add a step`.
-- On a line that starts with `//`: `Press ⌘+J to generate`.
-
-The placeholder shown in an empty editor reminds you of the order: write a `//` comment describing what you want first, then press the shortcut to generate the query from it.
+As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
 
 While the LLM is generating, an italic `Generating...` indicator appears next to your comment. Pressing the shortcut again cancels the in-flight request and starts a new one.
 
