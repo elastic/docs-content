@@ -79,8 +79,8 @@ To assign, delete, or clear multiple tags, select them in the **Tags** view, and
 
 ## Manage tags programmatically [tags-api]
 ```{applies_to}
-stack: preview 9.5
-serverless: preview
+stack: experimental 9.5
+serverless: experimental
 ```
 
 You can create, read, update, and delete tags outside the {{kib}} UI using the Tags API. Use it to manage tags as code, automate tag creation in CI/CD pipelines, or integrate tag management into your own tooling.
