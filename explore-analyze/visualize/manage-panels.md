@@ -10,14 +10,14 @@ products:
 
 # Manage panels [manage-panels]
 
-When creating a panel, you can choose to add it to a dashboard, or to save it to the **Visualize Library** so it can be added to multiple dashboards. Edits to a library panel are reflected everywhere it appears. Dashboard-only panels are permanently lost if you remove them without saving to the library first.
+When creating a panel, you can choose to add it to a dashboard, or to save it to the **Visualize Library** so it can be added to multiple dashboards. Changes to a library panel propagate to all dashboards where it appears. If you remove a dashboard-only panel without saving it to the library first, it is permanently deleted.
 
 There are also some common options that you can configure on the various types of panels to make a dashboard easier to navigate and analyze.
 
 
 ### Save to the Visualize Library [save-to-visualize-library]
 
-To use a panel on multiple dashboards, you can save it to the **Visualize Library**.
+To use a panel on multiple dashboards, save it to the **Visualize Library**.
 
 If you created the panel from a dashboard:
 
