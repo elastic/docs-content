@@ -72,7 +72,7 @@ serverless: unavailable
 
 Generate and download a PDF or PNG file of your dashboard. The report is a static, point-in-time capture of the dashboard as currently displayed, including any filters, query, and time range you have applied. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 
-To generate reports, you need the **Generate PDF or PNG reports** privilege, granted through the **Dashboard** feature privileges. The same privilege gives you access to the **Reporting** page, where generated reports are listed.
+To generate reports, you need the **Generate PDF or PNG reports** privilege, located under **Reporting** in the **Dashboard** feature privileges. The same privilege grants access to the **Reporting** page, where generated reports are listed.
 
 1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
 2. Choose the PDF or PNG option.
