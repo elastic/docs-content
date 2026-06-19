@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building heat map charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create heat map charts to visualize patterns across two dimensions, identify correlations, and spot anomalies in large datasets.
 ---
 
 # Build heat map charts with {{kib}}

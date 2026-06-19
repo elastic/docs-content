@@ -3,7 +3,7 @@ navigation_title: Bar charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building bar charts with Kibana Lens in Elastic.
+description: Create bar charts to compare values across categories, display distributions, and show rankings side by side.
 products:
   - id: kibana
   - id: cloud-serverless

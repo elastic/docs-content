@@ -3,7 +3,7 @@ navigation_title: Area charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building area charts with Kibana Lens in Elastic.
+description: Create area charts to visualize trends and quantitative values over time, such as traffic, CPU usage, or error rates.
 products:
   - id: kibana
   - id: cloud-serverless

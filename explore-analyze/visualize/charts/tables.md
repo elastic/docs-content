@@ -3,7 +3,7 @@ navigation_title: Tables
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building tables with {{kib}} Lens in Elastic.
+description: Create tables to display detailed data in rows and columns, compare multiple metrics, and build pivot-style views.
 products:
   - id: kibana
   - id: cloud-serverless
