@@ -201,7 +201,7 @@ When your query fails validation, hover over the underlined error in the editor.
 :screenshot:
 :::
 
-The original lines are shown with a strikethrough, and the proposed replacement appears underneath, highlighted. The same review actions as for comment-driven generation apply:
+The proposed fix appears directly below your query: the original lines are highlighted in amber and the suggested replacement in green. The same review actions as for comment-driven generation apply:
 
 - **Replace** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
 - **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
