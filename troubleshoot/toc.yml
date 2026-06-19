@@ -33,6 +33,7 @@ toc:
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
           - file: elasticsearch/troubleshoot-ingest-pipelines.md
+          - file: elasticsearch/fix-date-timestamps.md
 
       - file: elasticsearch/capacity.md
         children:  
@@ -55,6 +56,8 @@ toc:
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
       - file: elasticsearch/file-based-recovery.md
+      - file: elasticsearch/troubleshooting-upgrades.md
+      - file: elasticsearch/troubleshooting-upgrade-assistant.md
       - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md

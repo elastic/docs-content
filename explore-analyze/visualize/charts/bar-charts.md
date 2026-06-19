@@ -77,6 +77,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Sort bars by value (ascending or descending) to make comparisons easier, or keep them in alphabetical/chronological order when the sequence matters.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
