@@ -151,13 +151,4 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 6. Optional: [Configure the indices that store the monitoring data](../monitoring-data/configuring-data-streamsindices-for-monitoring.md).
 7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
-## Next steps
-
-:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
-:::
-
-
-
-
-
 

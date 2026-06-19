@@ -83,8 +83,3 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 6. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
-## Next steps
-
-:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
-:::
-
