@@ -74,7 +74,7 @@ service:
       exporters: [debug, otlp]
 ```
 
-1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by APM agents, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
+1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by OpenTelemetry SDKs, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
 2. Use the [Batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md) and the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md). For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
 3. The [debug exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter) is helpful for troubleshooting, and supports configurable verbosity levels: `basic` (default), `normal`, and `detailed`.
 4. Elastic endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://opentelemetry.io/docs/specs/otlp/#otlphttp). To learn more about these exporters, refer to the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter). When adding an endpoint to an existing configuration an optional name component can be added, like `otlp/elastic`, to distinguish endpoints as described in the [OpenTelemetry Collector Configuration Basics](https://opentelemetry.io/docs/collector/configuration/#basics).
@@ -125,7 +125,7 @@ service:
       exporters: [logging, otlp/elastic]
 ```
 
-1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by {{product.apm}} agents, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
+1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by OpenTelemetry SDKs, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
 2. We recommend using the [Batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md) and the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md). For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
 3. The [logging exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter) is helpful for troubleshooting and supports various logging levels, like `debug`, `info`, `warn`, and `error`.
 4. {{obs-serverless}} endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlphttp). To learn more about these exporters, refer to the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter).
@@ -141,13 +141,13 @@ service:
 You’re now ready to export traces and metrics from your services and applications.
 
 ::::{important}
-When using the OpenTelemetry Collector, send data through the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter). Using other methods, like the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter), bypasses all of the validation and data processing that Elastic performs. In addition, your data will not be viewable in your {{observability}} project if you use the `elasticsearch` exporter.
+When using the OpenTelemetry Collector, send data through the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter). Using other methods, like the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter), bypasses all the validation and data processing that Elastic performs. Also, your data will not be viewable in your {{observability}} project if you use the `elasticsearch` exporter.
 ::::
 
 ## Send data from a contrib OpenTelemetry SDK [apm-instrument-apps-otel]
 
 ::::{note}
-The following instructions show how to send data directly from a contrib OpenTelemetry SDK to Elastic, which is appropriate when getting started. However, sending data from an OpenTelemetry SDK to the OpenTelemetry Collector is preferred, as the Collector processes and exports data to Elastic. Read more about when and how to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
+The following instructions show how to send data directly from an OpenTelemetry SDK to Elastic, which is appropriate when getting started. However, sending data from an OpenTelemetry SDK to the OpenTelemetry Collector is preferred, as the Collector processes and exports data to Elastic. Read more about when and how to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
 ::::
 
 To export traces and metrics to Elastic, instrument your services and applications with the OpenTelemetry API, SDK, or both. For example, if you are a Java developer, you need to instrument your Java app with the [OpenTelemetry agent for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). Refer to the [OpenTelemetry Instrumentation guides](https://opentelemetry.io/docs/instrumentation/) to download the OpenTelemetry agent or SDK for your language.
@@ -160,7 +160,7 @@ Define environment variables to configure the OpenTelemetry agent or SDK and ena
 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES=service.name=checkoutService,service.version=1.1,deployment.environment=production
-export OTEL_EXPORTER_OTLP_ENDPOINT=https://elastic-endpoint:8200
+export OTEL_EXPORTER_OTLP_ENDPOINT=https://elastic-endpoint:4318
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer a_secret_token"
 export OTEL_METRICS_EXPORTER="otlp" \
 export OTEL_LOGS_EXPORTER="otlp" \ <1>
@@ -175,7 +175,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 :   Fields that describe the service and the environment that the service runs in. Refer to [attributes](/solutions/observability/apm/opentelemetry/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
-:   Elastic endpoint URL. For self-managed deployments, use your {{apm-server}} address (for example, `https://elastic-endpoint:8200`). For {{ech}} (ECH), use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
+:   Elastic endpoint URL. For self-managed deployments, use the address of your EDOT Collector or {{apm-server}} OTLP endpoint. For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
 
 `OTEL_EXPORTER_OTLP_HEADERS`
 :   Authorization header that includes the Elastic secret token or API key: `"Authorization=Bearer a_secret_token"` or `"Authorization=ApiKey an_api_key"`.
@@ -189,7 +189,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
     ::::
 
 `OTEL_METRICS_EXPORTER`
-:   Metrics exporter to use. refer to [exporter selection](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) for more information.
+:   Metrics exporter to use. Refer to [exporter selection](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) for more information.
 
 `OTEL_LOGS_EXPORTER`
 :   Logs exporter to use. Refer to [exporter selection](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) for more information.
@@ -200,7 +200,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES=service.name=checkoutService,service.version=1.1,deployment.environment=production
-export OTEL_EXPORTER_OTLP_ENDPOINT=https://your-motlp-endpoint
+export OTEL_EXPORTER_OTLP_ENDPOINT=https://your-motlp-endpoint:443
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"
 export OTEL_METRICS_EXPORTER="otlp" \
 export OTEL_LOGS_EXPORTER="otlp" \   <1>
