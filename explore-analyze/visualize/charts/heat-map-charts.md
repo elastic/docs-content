@@ -64,6 +64,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
 Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
@@ -86,6 +88,134 @@ You can configure custom color ranges on the **Cell value** dimension to emphasi
    - Anomalous range: Attention-grabbing colors (red, orange)
 
 ![Example Lens heat map chart showing error rates per day for various errors](/explore-analyze/images/heat-map-chart-example-server-errors.png)
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example tracks 404 and 503 error activity over time. Named filter rows isolate each error type, and absolute count thresholds drive the color — gray for normal, yellow for elevated, red for high — so anomalous periods stand out immediately.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "heatmap",
+  "title": "Error rates per day",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "position": "right" },
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
+  "styling": { "cells": { "labels": { "visible": true } } },
+  "x": {
+    "operation": "date_histogram",
+    "field": "@timestamp",
+    "suggested_interval": "auto",
+    "use_original_time_range": false,
+    "include_empty_rows": true,
+    "drop_partial_intervals": false
+  },
+  "y": {
+    "operation": "filters", <1>
+    "label": "Errors",
+    "filters": [
+      { "filter": { "expression": "\"response.keyword\" : \"404\"" }, "label": "Client errors" },
+      { "filter": { "expression": "\"response.keyword\" : \"503\"" }, "label": "Server errors" }
+    ]
+  },
+  "metric": {
+    "operation": "formula", <2>
+    "formula": "count()",
+    "format": { "type": "number", "decimals": 0, "suffix": "%", "compact": false },
+    "color": {
+      "type": "dynamic", <3>
+      "range": "absolute",
+      "steps": [
+        { "color": "#c2cbdb", "gte": 0, "lt": 5 },
+        { "color": "#EAAE01", "gte": 5, "lt": 10 },
+        { "color": "#F6726A", "gte": 10, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "@timestamp"
+  }
+}
+```
+
+1. The `filters` grouping on the vertical axis creates two named rows — "Client errors" (404s) and "Server errors" (503s) — isolating each error type so every cell represents one error type in one time bucket.
+2. The `formula` metric counts matching documents with `count()` and appends a `%` suffix to the display format, presenting counts in a percentage-like style without computing an actual ratio.
+3. The `dynamic` color uses absolute count thresholds: gray for 0–4 errors, yellow for 5–9, and red for 10 or more, flagging time buckets with elevated error activity at a glance.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Error rates per day",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "position": "right" },
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
+  "styling": { "cells": { "labels": { "visible": true } } },
+  "x": {
+    "operation": "date_histogram",
+    "field": "@timestamp",
+    "suggested_interval": "auto",
+    "use_original_time_range": false,
+    "include_empty_rows": true,
+    "drop_partial_intervals": false
+  },
+  "y": {
+    "operation": "filters", <1>
+    "label": "Errors",
+    "filters": [
+      { "filter": { "expression": "\"response.keyword\" : \"404\"" }, "label": "Client errors" },
+      { "filter": { "expression": "\"response.keyword\" : \"503\"" }, "label": "Server errors" }
+    ]
+  },
+  "metric": {
+    "operation": "formula", <2>
+    "formula": "count()",
+    "format": { "type": "number", "decimals": 0, "suffix": "%", "compact": false },
+    "color": {
+      "type": "dynamic", <3>
+      "range": "absolute",
+      "steps": [
+        { "color": "#c2cbdb", "gte": 0, "lt": 5 },
+        { "color": "#EAAE01", "gte": 5, "lt": 10 },
+        { "color": "#F6726A", "gte": 10, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "@timestamp"
+  }
+}'
+```
+
+1. The `filters` grouping on the vertical axis creates two named rows — "Client errors" (404s) and "Server errors" (503s) — isolating each error type so every cell represents one error type in one time bucket.
+2. The `formula` metric counts matching documents with `count()` and appends a `%` suffix to the display format, presenting counts in a percentage-like style without computing an actual ratio.
+3. The `dynamic` color uses absolute count thresholds: gray for 0–4 errors, yellow for 5–9, and red for 10 or more, flagging time buckets with elevated error activity at a glance.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 ## Heat map chart settings [heat-map-chart-settings]
 
@@ -222,6 +352,11 @@ When creating or editing a visualization, you can customize several appearance o
 
 ## Heat map chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file heat-map-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 The following examples show various configuration options for building impactful heat map charts.
 
 **Request volume by day and hour**
@@ -235,6 +370,122 @@ The following examples show various configuration options for building impactful
 
 ![Heat map showing request volume by hour and day](/explore-analyze/images/heat-map-example-request-volume.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example builds a day-by-hour traffic grid using a runtime field (`hour_of_day`) on the vertical axis to reveal peak activity patterns across the week.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "heatmap",
+  "title": "Request volume by day and hour",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "axis": { "x": { "scale": "temporal" }, "y": {} },
+  "x": { "operation": "date_histogram", "field": "timestamp" },
+  "y": {
+    "operation": "terms",
+    "fields": ["hour_of_day"], <1>
+    "limit": 24, <2>
+    "other_bucket": { "include_documents_without_field": false },
+    "rank_by": { "type": "alphabetical", "direction": "desc" }
+  },
+  "metric": {
+    "operation": "count",
+    "empty_as_null": true,
+    "color": {
+      "type": "legacy_dynamic", <3>
+      "palette": "cool",
+      "range": "percentage",
+      "shift": true,
+      "steps": [
+        { "color": "#cee1ff", "gte": 0, "lt": 20 },
+        { "color": "#b5d2ff", "gte": 20, "lt": 40 },
+        { "color": "#9bc2ff", "gte": 40, "lt": 60 },
+        { "color": "#80b2ff", "gte": 60, "lt": 80 },
+        { "color": "#61a2ff", "gte": 80, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}
+```
+
+1. `hour_of_day` is a runtime field that extracts the hour (0–23) from `@timestamp`, creating one row per hour.
+2. `limit: 24` ensures all 24 hours appear on the vertical axis. Combined with alphabetical descending sort, hours are ordered 23 → 0 for a top-to-bottom timeline feel.
+3. The `legacy_dynamic` coloring with the `cool` palette and `range: "percentage"` distributes the blue gradient proportionally across the actual value range, so the lightest blue always marks the quietest hours and the darkest blue the busiest.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Request volume by day and hour",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "axis": { "x": { "scale": "temporal" }, "y": {} },
+  "x": { "operation": "date_histogram", "field": "timestamp" },
+  "y": {
+    "operation": "terms",
+    "fields": ["hour_of_day"], <1>
+    "limit": 24, <2>
+    "other_bucket": { "include_documents_without_field": false },
+    "rank_by": { "type": "alphabetical", "direction": "desc" }
+  },
+  "metric": {
+    "operation": "count",
+    "empty_as_null": true,
+    "color": {
+      "type": "legacy_dynamic", <3>
+      "palette": "cool",
+      "range": "percentage",
+      "shift": true,
+      "steps": [
+        { "color": "#cee1ff", "gte": 0, "lt": 20 },
+        { "color": "#b5d2ff", "gte": 20, "lt": 40 },
+        { "color": "#9bc2ff", "gte": 40, "lt": 60 },
+        { "color": "#80b2ff", "gte": 60, "lt": 80 },
+        { "color": "#61a2ff", "gte": 80, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  }
+}'
+```
+
+1. `hour_of_day` is a runtime field that extracts the hour (0–23) from `@timestamp`, creating one row per hour.
+2. `limit: 24` ensures all 24 hours appear on the vertical axis. Combined with alphabetical descending sort, hours are ordered 23 → 0 for a top-to-bottom timeline feel.
+3. The `legacy_dynamic` coloring with the `cool` palette and `range: "percentage"` distributes the blue gradient proportionally across the actual value range, so the lightest blue always marks the quietest hours and the darkest blue the busiest.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **Sales performance by product and region**
 :   Compare product sales across geographic regions:
 
@@ -245,3 +496,127 @@ The following examples show various configuration options for building impactful
     * **Color palette**: Positive (sequential)
 
 ![Heat map showing sales performance by product and region](/explore-analyze/images/heat-map-example-sales-performance.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example uses two `terms` dimensions (city and product category) to create a category-versus-region grid, with cell color representing total revenue.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "heatmap",
+  "title": "Sales performance by product and region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
+  "x": {
+    "operation": "terms",
+    "fields": ["geoip.city_name"], <1>
+    "limit": 10
+  },
+  "y": {
+    "operation": "terms",
+    "fields": ["category.keyword"], <2>
+    "limit": 5
+  },
+  "metric": {
+    "operation": "sum", <3>
+    "field": "taxful_total_price",
+    "label": "Revenue",
+    "empty_as_null": true,
+    "color": {
+      "type": "legacy_dynamic",
+      "palette": "positive",
+      "range": "percentage",
+      "shift": true,
+      "steps": [
+        { "color": "#d4efe6", "gte": 0, "lt": 20 },
+        { "color": "#b1e4d1", "gte": 20, "lt": 40 },
+        { "color": "#8cd9bb", "gte": 40, "lt": 60 },
+        { "color": "#62cea6", "gte": 60, "lt": 80 },
+        { "color": "#24c292", "gte": 80, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  }
+}
+```
+
+1. Cities on the horizontal axis create one column per location, making geographic performance quick to scan.
+2. Product categories on the vertical axis form the rows, so each cell shows revenue for one category in one city.
+3. `sum` of `taxful_total_price` colors cells by total revenue rather than document count.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "heatmap",
+  "title": "Sales performance by product and region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "axis": { "x": { "scale": "ordinal" }, "y": {} },
+  "x": {
+    "operation": "terms",
+    "fields": ["geoip.city_name"], <1>
+    "limit": 10
+  },
+  "y": {
+    "operation": "terms",
+    "fields": ["category.keyword"], <2>
+    "limit": 5
+  },
+  "metric": {
+    "operation": "sum", <3>
+    "field": "taxful_total_price",
+    "label": "Revenue",
+    "empty_as_null": true,
+    "color": {
+      "type": "legacy_dynamic",
+      "palette": "positive",
+      "range": "percentage",
+      "shift": true,
+      "steps": [
+        { "color": "#d4efe6", "gte": 0, "lt": 20 },
+        { "color": "#b1e4d1", "gte": 20, "lt": 40 },
+        { "color": "#8cd9bb", "gte": 40, "lt": 60 },
+        { "color": "#62cea6", "gte": 60, "lt": 80 },
+        { "color": "#24c292", "gte": 80, "lte": null }
+      ]
+    }
+  },
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_ecommerce",
+    "time_field": "order_date"
+  }
+}'
+```
+
+1. Cities on the horizontal axis create one column per location, making geographic performance quick to scan.
+2. Product categories on the vertical axis form the rows, so each cell shows revenue for one category in one city.
+3. `sum` of `taxful_total_price` colors cells by total revenue rather than document count.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

@@ -12,7 +12,7 @@
 * Add Elastic Cloud identifiers to connector user agent. [#268069](https://github.com/elastic/kibana/pull/268069)
 
 ### Fixes [elastic-2026-05-14-fixes]
-* Fixes entity details not rendered properly on preview mode from Agent Builder. [#267342](https://github.com/elastic/kibana/pull/267342) [#265943](https://github.com/elastic/kibana/issues/265943)
+* Fix entity details not rendered properly on preview mode from Agent Builder. [#267342](https://github.com/elastic/kibana/pull/267342) [#265943](https://github.com/elastic/kibana/issues/265943)
 * Fix SLO count display for newly created SLOs in overview. [#266315](https://github.com/elastic/kibana/pull/266315) [#266313](https://github.com/elastic/kibana/issues/266313)
 * Fix "View in AI Assistant" button availability when AI Assistant is disabled. [#266111](https://github.com/elastic/kibana/pull/266111)
 * Fix license management navigation link in Security. [#266445](https://github.com/elastic/kibana/pull/266445)

@@ -2,6 +2,7 @@
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
+description: Process and extract fields from incoming Streams documents using configurable processors, conditions, and live simulation previews.
 products:
   - id: observability
   - id: elasticsearch
@@ -16,19 +17,13 @@ products:
 
 After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
-For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
+For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
 The **Processing** tab also has the following features:
 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` [Generate pipeline suggestions](#streams-generate-pipeline-suggestions).
 - Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end.
 - Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
-
-After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
-
-:::{note}
-Applied changes aren't retroactive and only affect *future ingested data*.
-:::
 
 ## Supported processors [streams-extract-processors]
 
@@ -74,12 +69,12 @@ To add a processor from the **Processing** tab:
 1. Select a processor from the **Processor** menu.
 1. Configure the processor and select **Create** to save the processor.
 
-After adding all desired processors and conditions, select **Save changes**.
+After adding all desired processors and conditions, select **Save changes**. Streams parses all future data ingested into the stream into structured fields accordingly.
 
 Refer to individual [supported processors](#streams-extract-processors) for more on configuring specific processors.
 
 :::{note}
-Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
+Applied changes aren't retroactive and only affect *future ingested data*.
 :::
 
 ### Generate pipeline suggestions [streams-generate-pipeline-suggestions]
@@ -129,7 +124,7 @@ Streams processors support the following comparators:
 - not exists
 :::
 
-After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_circle`.
 
 ### Editing modes [streams-editing-modes]
 

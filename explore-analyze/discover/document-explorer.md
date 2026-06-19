@@ -27,9 +27,9 @@ Discover provides default [context-aware experiences](/explore-analyze/discover/
 
 * To show or hide sections of the Discover view:
   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Use the **Panels visibility** button group to show or hide areas of **Discover** independently. The button group stays in a fixed position regardless of which sections are shown or hidden.
-      * {icon}`transitionTopOut` / {icon}`transitionTopIn` to show or hide the chart
+      * {icon}`transition_top_out` / {icon}`transition_top_in` to show or hide the chart
       * {icon}`transition_bottom_out` / {icon}`transition_bottom_in` to show or hide the results table
-      * {icon}`transitionLeftOut` / {icon}`transitionLeftIn` to show or hide the fields list
+      * {icon}`transition_left_out` / {icon}`transition_left_in` to show or hide the fields list
   * {applies_to}`stack: ga 9.0-9.3` Use the available collapse and expand button in the corresponding area to show or hide the chart and the fields list.
 * Adjust the width and height of each area by dragging their border to the size you want. The size of each area is saved in your browser for the next time you open **Discover**.
 

@@ -2,6 +2,7 @@
 applies_to:
   serverless: preview
   stack: preview 9.2
+description: Route log data into child streams using manual field-based rules or AI-generated partition suggestions in Streams.
 products:
   - id: observability
   - id: elasticsearch
@@ -60,8 +61,8 @@ To manually configure when to send data to child streams:
 
 1. Select **Create partition manually**.
 1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting:
-  - {icon}`plus_in_circle` to add routing conditions that equal the field.
-  - {icon}`minus_in_circle`to add routing conditions that do not equal the field.
+  - {icon}`plus_circle` to add routing conditions that equal the field.
+  - {icon}`minus_circle`to add routing conditions that do not equal the field.
 1. Under **Stream name**, give your stream a name based on the condition.
 1. Select **Save** to create the child stream.
 

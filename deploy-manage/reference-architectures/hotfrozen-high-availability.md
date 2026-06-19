@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/hot-frozen-architecture.html
 applies_to:
-  deployment:
-    self: all
-    ess: all
-    ece: all
-    eck: all
+  stack: all
 products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
