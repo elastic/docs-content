@@ -14,6 +14,10 @@ products:
 
 If {{product.apm}} services and metrics are not appearing in {{kib}} despite a healthy-looking traces pipeline, the `elasticapm` connector may be misconfigured. This is one of the most common causes of a silent, empty {{product.apm}} UI when using the EDOT Collector with direct {{es}} ingestion.
 
+:::{note}
+This page applies when exporting directly to {{es}} using the `elasticsearch` exporter (typically with `mapping.mode: otel`). If you're sending data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) or {{apm-server-or-mis}} via OTLP, neither the `elasticapm` processor nor the connector is required.
+:::
+
 For general no-data troubleshooting, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
 ## Symptoms
