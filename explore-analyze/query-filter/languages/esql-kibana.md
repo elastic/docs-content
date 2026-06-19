@@ -80,11 +80,7 @@ The {{esql}} editor includes several built-in tools to help you write queries ef
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`line_break` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltb7c28c7b10f58b68/69ebb4e4a7cffb580c9a34c5/prettify-esql.gif
-:alt: Automatic line breaks and indentation for ES|QL queries
-:screenshot:
-:width: 75%
-:::
+![Automatic line breaks and indentation for ES|QL queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltb7c28c7b10f58b68/69ebb4e4a7cffb580c9a34c5/prettify-esql.gif "=75%")
 
 #### Warnings [_warnings]
 
@@ -134,11 +130,7 @@ To filter your data with KQL:
 4. Submit your search by pressing {kbd}`enter`. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 5. Refine your query with any other {{esql}} command or function that you need.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif
-:alt: Search bar in the ES|QL editor
-:screenshot:
-:width: 60%
-:::
+![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
 
 
 ### Write and fix queries with AI [esql-kibana-ai-assistance]
@@ -344,11 +336,7 @@ serverless: preview
 
 The {{esql}} editor keeps track of your queries so you can reuse and organize them.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2446c9af9847b87e/69ebb870086ade348a1acc35/esql-recent-starred.gif
-:alt: ES|QL editor query history and starred queries
-:screenshot:
-:width: 60%
-:::
+![ES|QL editor query history and starred queries](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt2446c9af9847b87e/69ebb870086ade348a1acc35/esql-recent-starred.gif "=60%")
 
 ### Query history [esql-kibana-query-history]
 
