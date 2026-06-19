@@ -23,7 +23,7 @@ These are the key metrics displayed for Docker containers.
 
 :::{note}
 :applies_to: stack: ga 9.3
-For Docker container metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [Docker integration](integration-docs://reference/docker.md).
+For Docker container metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [Docker integration](integration-docs://reference/docker.md). If you're using {{edot}} and these views appear empty, refer to [{{k8s}} Pods and Docker Containers views empty when using EDOT](/troubleshoot/observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md).
 :::
 
 ### Entity definition [monitor-docker-container-entity]
@@ -72,8 +72,8 @@ stack: ga 9.3
 These are the key metrics displayed for {{k8s}} (containerd) containers.
 
 :::{note}
-:applies_to: stack: ga 9.3
-For {{k8s}} container metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [{{k8s}} integration](integration-docs://reference/kubernetes.md).
+:applies_to: stack: ga 9.3+
+For {{k8s}} container metrics, the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) and [inventory rules](/solutions/observability/incident-management/create-an-inventory-rule.md) only support metric data collected by the [{{k8s}} integration](integration-docs://reference/kubernetes.md). If you're using {{edot}} and these views appear empty, refer to [{{k8s}} Pods and Docker Containers views empty when using EDOT](/troubleshoot/observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md).
 :::
 
 ### Entity definition [monitor-k8s-container-entity]
