@@ -14,16 +14,20 @@ products:
 
 Entity relationships represent the connections between entities — for example, `user-1 communicates_with host-1`. The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) stores these connections as a fixed set of relationship keys on each entity record, under the schema `entity.relationships.<key>.ids`. Relationships feed entity analytics views, including the [entity graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the entity details flyout. Relationships are populated only when the entity store is enabled and populated in the active space.
 
-The relationship model is the foundation for representing how entities interact across your environment. A clear mapping between integrations, fields, and relationship keys helps you understand:
+The relationship model represents how entities interact across your environment. A clear mapping between integrations, fields, and relationship keys helps you understand:
 
-* Which fields a third-party integration must emit for its data to participate in a given relationship.
 * Which relationships exist and how they are populated.
+* Which fields a third-party integration must emit for its data to participate in a given relationship.
 
 ## How relationships are produced [entity-relationships-maintainers]
 
 Entity relationships are produced by *maintainers* — background tasks that scan ingested events from supported integrations and write the result into the entity store.
 
-Each maintainer scans a specific integration's index pattern for events that match an {{esql}} filter, identifies an actor (a user) and a target (a user, host, or service), computes the target's entity unique identifier (EUID), and writes the relationship onto the actor entity record under `entity.relationships.<key>.ids`.
+Each maintainer runs through the following steps:
+1. Scans a specific integration's index pattern for events that match an {{esql}} filter
+2. Identifies an actor (a user) and a target (a user, host, or service)
+3. Computes the target entity's unique identifier (EUID)
+4. Writes the relationship onto the actor entity under `entity.relationships.<key>.ids`.
 
 ## Requirements for an event to participate [entity-relationships-requirements]
 
@@ -38,7 +42,7 @@ For an event to be picked up by a maintainer, it must meet the following conditi
 
 The following sections describe each supported relationship key, the integrations that populate it, and the criteria an event must match. To populate a relationship, ingest events into one of the listed integration indices with the required actor and target identity fields.
 
-### `accesses_frequently` / `accesses_infrequently` [entity-relationships-accesses]
+### `accesses_frequently` / `accesses_infrequently` relationships [entity-relationships-accesses]
 
 These relationships are bucketed by event count over a 30-day window. A `COUNT(*) >= 4` results in `accesses_frequently`; otherwise, the relationship is `accesses_infrequently`.
 
@@ -54,9 +58,9 @@ These relationships are bucketed by event count over a 30-day window. A `COUNT(*
 
 :::
 
-To populate `entity.relationships.accesses_frequently.ids` or `entity.relationships.accesses_infrequently.ids` for a user, ingest events into one of the supported integration indices with the actor identity (`user.name` or `user.id`) and a target host identity (`host.id` or `host.name`), and ensure they match the {{esql}} filter.
+To populate `entity.relationships.accesses_frequently.ids` or `entity.relationships.accesses_infrequently.ids` for a user, ingest events into one of the supported integration indices with the actor identity (`user.name`, `user.id`, or `user.email`) and a target host identity (`host.id`, `host.name`, or `host.hostname`), and ensure they match the {{esql}} filter.
 
-### `communicates_with` [entity-relationships-communicates-with]
+### The `communicates_with` relationship [entity-relationships-communicates-with]
 
 This relationship captures when a user interacts with a target user or host — based on activity such as identity provider events, cloud API calls, and device management logs from the supported integrations.
 
