@@ -136,9 +136,9 @@ stack: ga 9.5
 serverless: ga
 ```
 
-By default, an {{esql}} visualization responds to the global filters and the KQL or Lucene query applied at the dashboard level. You can make a layer run its query independently of that context, so it always returns the same data regardless of the dashboard's filters and query.
+By default, an {{esql}} visualization responds to the global filters and the KQL or Lucene query applied at the dashboard level. You can configure a layer to run its query independently of that context.
 
-To do this, select the {icon}`gear` **Settings** icon on the layer header, then turn off **Use global filters**. This option mirrors the equivalent setting available on form-based layers.
+To do this, select the {icon}`gear` **Settings** icon on the layer header, then turn off **Use global filters**. The layer then ignores the dashboard filters and the KQL or Lucene query, and always returns the same data. The dashboard time range still applies.
 
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}
