@@ -16,7 +16,23 @@ The {{es}} output sends events directly to {{es}} by using the {{es}} HTTP API.
 
 **Compatibility:** This output works with all compatible versions of {{es}}. See the [Elastic Support Matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
-This example configures an {{es}} output called `default` in the `elastic-agent.yml` file:
+This example configures an {{es}} output called `default` in the `elastic-agent.yml` file using the recommended [token-based authentication (API key)](#output-elasticsearch-apikey-authentication-settings):
+
+```yaml
+outputs:
+  default:
+    type: elasticsearch
+    hosts: [127.0.0.1:9200]
+    api_key: "<id>:<key>"
+```
+
+To create an API key with the required privileges, refer to [Grant standalone {{agent}}s access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).
+
+::::{note}
+Token-based authentication is required in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment.
+::::
+
+Alternatively, you can use [basic authentication](#output-elasticsearch-basic-authentication-settings):
 
 ```yaml
 outputs:
@@ -26,20 +42,6 @@ outputs:
     username: elastic
     password: changeme
 ```
-
-This example is similar to the previous one, except that it uses the recommended [token-based (API key) authentication](#output-elasticsearch-apikey-authentication-settings):
-
-```yaml
-outputs:
-  default:
-    type: elasticsearch
-    hosts: [127.0.0.1:9200]
-    api_key: "my_api_key"
-```
-
-::::{note}
-Token-based authentication is required in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment.
-::::
 
 
 ## {{es}} output configuration settings [_es_output_configuration_settings]
