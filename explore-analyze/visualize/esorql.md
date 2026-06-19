@@ -130,6 +130,16 @@ serverless: ga
 
 Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
 
+## Ignore global filters [esql-viz-ignore-global-filters]
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+By default, an {{esql}} visualization responds to the global filters and the KQL or Lucene query applied at the dashboard level. You can make a layer run its query independently of that context, so it always returns the same data regardless of the dashboard's filters and query.
+
+To do this, select the {icon}`gear` **Settings** icon on the layer header, then turn off **Use global filters**. This option mirrors the equivalent setting available on form-based layers.
+
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}
 stack: ga 9.1
