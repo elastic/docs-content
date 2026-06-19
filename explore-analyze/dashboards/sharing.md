@@ -70,11 +70,11 @@ stack: ga
 serverless: unavailable
 ```
 
-Generate and download a PDF or PNG file of your dashboard. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
+Generate and download a PDF or PNG file of your dashboard. The report is a static, point-in-time capture of the dashboard as currently displayed, including any filters, query, and time range you have applied. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 
 1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
 2. Choose the PDF or PNG option.
-3. Optional: For PDF exports, enable **Print format** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
+3. Optional: For PDF exports, enable **Optimize for printing** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
 4. Select **Export PDF** or **Export PNG** to generate the report.
 
 A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**. If the report contains a data table or Discover session, the PDF includes only the visible data.
@@ -141,6 +141,8 @@ Open the dashboard, then select {icon}`share` **Share** in the application menu.
 
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator.
+
+You don't need edit access to share a dashboard or export its contents. The **Share** and **Export** options are available in view mode; these permissions only control who can modify the dashboard itself.
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
