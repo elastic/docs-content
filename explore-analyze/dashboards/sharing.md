@@ -74,8 +74,9 @@ Generate and download a PDF or PNG file of your dashboard. The report is a stati
 
 1. Open the dashboard, then select {icon}`download` **Export** in the application menu.
 2. Choose the PDF or PNG option.
-3. Optional: For PDF exports, enable **Optimize for printing** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
-4. Select **Export PDF** or **Export PNG** to generate the report.
+3. Optional: For PDF exports, enable **Print format** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
+4. Optional: To generate the report programmatically outside {{kib}}, for example in Watcher, copy the value from the **Post URL** field.
+5. Select **Export PDF** or **Export PNG** to generate the report.
 
 A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**. If the report contains a data table or Discover session, the PDF includes only the visible data.
 
