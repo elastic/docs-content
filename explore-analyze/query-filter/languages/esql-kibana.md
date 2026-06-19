@@ -197,6 +197,11 @@ When the generated code is ready, the editor highlights it and shows review acti
 - **Keep** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) accepts the change and leaves your comment in place so you can refine it and regenerate.
 - **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) removes the generated code.
 
+:::{image} /explore-analyze/images/kibana-esql-generate-from-comment.png
+:alt: The ES|QL editor showing a query generated from a comment, highlighted with Keep and Undo review actions
+:screenshot:
+:::
+
 When the LLM rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
 
 #### Fix query errors with AI
