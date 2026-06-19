@@ -22,7 +22,7 @@ For example, Elastic APM maps the OpenTelemetry `deployment.environment` field t
 :::{important}
 **Set `deployment.environment` for the {{product.apm}} Service Map**
 
-The `deployment.environment` attribute populates the environment selector in the {{kib}} {{product.apm}} Service Map. Without it, services appear without environment context and environment-based filtering is not available. Set this attribute at the Collector level using the `resource` processor so it applies consistently to all telemetry from your services — see the configuration examples below.
+The `deployment.environment` attribute populates the environment selector in the {{kib}} {{product.apm}} Service Map. Without it, services appear without environment context and environment-based filtering is not available. Set this attribute at the Collector level using the `resource` processor so it applies consistently to all telemetry from your services.
 :::
 
 ## Setting resource attributes
