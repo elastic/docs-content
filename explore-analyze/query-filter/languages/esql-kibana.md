@@ -188,7 +188,7 @@ While you write, the editor offers two hints to remind you how to invoke the fea
 - On an empty line in a non-empty editor: `Type // and press ⌘+J to ask AI to add a step`.
 - On a line that starts with `//`: `Press ⌘+J to generate`.
 
-The placeholder shown in an empty editor also mentions the shortcut.
+The placeholder shown in an empty editor reminds you of the order: write a `//` comment describing what you want first, then press the shortcut to generate the query from it.
 
 While the LLM is generating, an italic `Generating...` indicator appears next to your comment. Pressing the shortcut again cancels the in-flight request and starts a new one.
 
