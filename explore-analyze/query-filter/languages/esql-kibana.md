@@ -207,7 +207,7 @@ The proposed fix appears directly below your query: the original lines are highl
 - **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
 
 :::{image} /explore-analyze/images/kibana-esql-fix-with-ai-review.png
-:alt: An ES|QL editor showing the original query with a strikethrough and the proposed AI fix highlighted, with Replace and Undo actions
+:alt: An ES|QL editor showing the original line highlighted in amber and the proposed AI fix in green, with Replace and Undo actions
 :screenshot:
 :::
 
