@@ -98,7 +98,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
-| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-assistance) {applies_to}`stack: ga 9.5+` |
+| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-comment) {applies_to}`stack: ga 9.5+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-quick-search) |
 
 :::{tip}
@@ -106,57 +106,28 @@ You can find the list of shortcuts directly from the editor. Look for the ![keyb
 :::
 
 
-### Build queries with KQL or natural language [esql-kibana-quick-search]
+### Build queries with KQL [esql-kibana-quick-search]
 ```{applies_to}
 serverless: preview
 stack: preview 9.3+
 ```
 
-The {{esql}} editor includes a search bar that helps you build a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). You can then build a query using:
+The {{esql}} editor includes a search bar that helps you build a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). The search bar offers two modes:
 
-- **KQL**: filter your data with free-text or [KQL](kql.md) syntax.
-- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Requires an Enterprise license and a configured LLM connector.
-
-In either case, the editor updates the current query with a generated {{esql}} query and runs it. The new query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
+- **KQL**: filter your data with free text or [KQL](kql.md) syntax, as described in this section.
+- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Refer to [Generate a full query from natural language](#esql-kibana-quick-search-nl).
 
 The search bar closes automatically when you start typing in the editor or select outside of it.
 
-#### Filter your data with KQL
+To filter your data with KQL:
 
 1. Open the editor's search bar ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Select the data sources to search.
 3. Type the text you want to search for as free text or using [KQL](kql.md) syntax.
-4. Submit your search by pressing {kbd}`enter`. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar.
+4. Submit your search by pressing {kbd}`enter`. The generated query includes a `FROM` command based on the data sources you selected (or `TS` if the data source is a time series data stream), and a `WHERE KQL()` command that contains the text you typed in the search bar. The query is saved to your [query history](#esql-kibana-query-history) so you can restore it later.
 5. Refine your query with any other {{esql}} command or function that you need.
 
 ![Search bar in the ES|QL editor](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc3b8614d0ecabbd9/69ebb647065c54efe579b251/esql-quick-search-kql.gif "=60%")
-
-#### Generate a query from natural language [esql-kibana-quick-search-nl]
-```{applies_to}
-stack: preview 9.5+
-serverless: preview
-```
-
-You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use. To generate or fix individual pipes directly inside an existing query, use [AI assistance in the editor](#esql-kibana-ai-assistance) instead.
-
-**Requirements**
-
-- For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license .
-- A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md). If no connector is available, the search bar prompts you to set one up.
-
-**Generate a query**
-
-1. Open the editor's search bar ({icon}`magnify_sparkles`).
-2. From the mode selector, select **Natural language**.
-3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
-4. Submit your request by pressing **Enter**. The editor replaces or updates the current query and runs it.
-5. Review the generated query and refine it with any other {{esql}} command or function that you need.
-
-:::{tip}
-The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
-:::
-
-![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
 
 
 ### Write and fix queries with AI [esql-kibana-ai-assistance]
@@ -165,16 +136,42 @@ stack: ga 9.5
 serverless: ga
 ```
 
-When your deployment has a configured large language model (LLM) connector, you can describe what you want in plain language and have the LLM generate {{esql}} for you, or ask it to fix a query that fails validation. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically. To generate a full query from a natural-language prompt instead, use the editor's [search bar](#esql-kibana-quick-search-nl).
+When your deployment has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically.
+
+Choose the entry point that matches what you want to do:
+
+- [**Generate a full query from natural language**](#esql-kibana-quick-search-nl) in the editor's search bar, when you're starting from scratch or want to replace the whole query.
+- [**Generate {{esql}} from a comment**](#esql-kibana-ai-comment) to add or change a single pipe inside the query you're writing.
+- [**Fix query errors with AI**](#esql-kibana-ai-fix) when a query fails validation.
 
 **Requirements**
 
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
 - A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior.
+Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. In the search bar, if no connector is available, you're prompted to set one up.
 
-#### Generate {{esql}} from a comment
+#### Generate a full query from natural language [esql-kibana-quick-search-nl]
+```{applies_to}
+stack: preview 9.5+
+serverless: preview
+```
+
+You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
+
+1. Open the editor's search bar ({icon}`magnify_sparkles`).
+2. From the mode selector, select **Natural language**.
+3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
+4. Submit your request by pressing **Enter**. The editor replaces or updates the current query, runs it, and saves it to your [query history](#esql-kibana-query-history).
+5. Review the generated query and refine it with any other {{esql}} command or function that you need.
+
+:::{tip}
+The current query in the editor is sent to the LLM as context, so you can ask follow-up requests that build on it. For example, after running a generated query, ask `Group the results by region` to extend it.
+:::
+
+![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
+
+#### Generate {{esql}} from a comment [esql-kibana-ai-comment]
 
 Write a `//` comment that describes what you want, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). The editor sends your comment to the LLM and inserts the generated {{esql}} on the next line.
 
@@ -204,7 +201,7 @@ When the generated code is ready, the editor highlights it and shows review acti
 
 When the LLM rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
 
-#### Fix query errors with AI
+#### Fix query errors with AI [esql-kibana-ai-fix]
 
 When your query fails validation, hover over the underlined error in the editor. The error popup includes a **✨ Fix with AI** link. Select it to send the query and the error to the LLM and have it propose a corrected version.
 
