@@ -57,9 +57,15 @@ When querying many indices at once without filters, the response might be too la
 
 ### Editor tools
 
-The {{esql}} editor includes several built-in tools to help you write queries efficiently.
+The {{esql}} editor includes several built-in tools to help you write queries efficiently:
 
-#### Autocomplete and in-app help
+- [Autocomplete and in-app help](#esql-kibana-autocomplete)
+- [Query formatting](#_make_your_query_readable)
+- [Warnings](#_warnings)
+- [Query statistics](#esql-kibana-query-statistics)
+- [Keyboard shortcuts](#esql-kibana-keyboard-shortcuts)
+
+#### Autocomplete and in-app help [esql-kibana-autocomplete]
 
 {{esql}} features in-app help, inline suggestions, and an autocomplete menu so you can get started faster and don't have to leave the application to check syntax.
 
@@ -77,7 +83,7 @@ For readability, you can put each processing command on a new line and add inden
 
 A query might result in warnings, for example when querying an unsupported field type. When that happens, the query bar displays a warning symbol. To see the detailed warning, expand the query bar, and select **warnings**.
 
-#### Query statistics
+#### Query statistics [esql-kibana-query-statistics]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
@@ -85,7 +91,7 @@ serverless: ga
 
 After running a query, the editor's footer displays statistics about the last run, including the number of documents processed. These statistics are available in **Discover** and in **{{esql}} visualizations** in dashboards.
 
-#### Keyboard shortcuts
+#### Keyboard shortcuts [esql-kibana-keyboard-shortcuts]
 
 | Mac                | Windows/Linux       | Description                 |
 |--------------------|---------------------|-----------------------------|
