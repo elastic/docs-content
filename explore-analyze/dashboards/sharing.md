@@ -40,7 +40,12 @@ The link opens the dashboard with your current view, including any filters and s
 - {applies_to}`serverless: unavailable` **Anonymous access**: Users can open the link without logging in if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 - **Permanent links**: If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link.
 
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` By default, the link uses a relative time range and always shows current data. For example, a "Last 7 days" view always shows the most recent 7 days when users open the link. To capture a fixed time period instead, turn on **Use absolute time range**: a "Last 7 days" view shared on January 7, 2025 then always shows January 1-7, 2025, regardless of when users open the link. This switch appears only when your current time range is relative. To switch back, select a relative range in the time picker first.
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` The **Use absolute time range** switch controls the time range that the link captures. It appears only when your current time range is relative:
+
+- **Off** (default): the link uses a relative time range and always shows current data. For example, a "Last 7 days" view always shows the most recent 7 days when users open the link.
+- **On**: the link captures a fixed time period. For example, a "Last 7 days" view shared on January 7, 2025 always shows January 1-7, 2025, regardless of when users open the link.
+
+To switch back to a relative range, select one in the time picker first.
 
 ## Embed in a webpage [embed-dashboard]
 ```{applies_to}
