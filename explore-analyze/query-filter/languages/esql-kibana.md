@@ -188,6 +188,7 @@ When the generated code is ready, the editor highlights it and shows review acti
 :::{image} /explore-analyze/images/kibana-esql-generate-from-comment.png
 :alt: The ES|QL editor showing a query generated from a comment, highlighted with Keep and Undo review actions
 :screenshot:
+:width: 50%
 :::
 
 When the LLM rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
@@ -199,6 +200,7 @@ When your query fails validation, hover over the underlined error in the editor.
 :::{image} /explore-analyze/images/kibana-esql-fix-with-ai.png
 :alt: An ES|QL query error popup showing the Fix with AI link
 :screenshot:
+:width: 50%
 :::
 
 The proposed fix appears directly below your query: the original lines are highlighted in amber and the suggested replacement in green. The same review actions as for comment-driven generation apply:
@@ -209,6 +211,7 @@ The proposed fix appears directly below your query: the original lines are highl
 :::{image} /explore-analyze/images/kibana-esql-fix-with-ai-review.png
 :alt: An ES|QL editor showing the original line highlighted in amber and the proposed AI fix in green, with Replace and Undo actions
 :screenshot:
+:width: 50%
 :::
 
 :::{tip}
