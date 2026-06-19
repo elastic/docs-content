@@ -116,6 +116,11 @@ The original lines are shown with a strikethrough, and the proposed replacement 
 - **Keep AI fix** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
 - **Undo AI fix** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
 
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+:::
+
 #### Query formatting [_make_your_query_readable]
 
 For readability, you can put each processing command on a new line and add indentation. Use the {icon}`line_break` **Prettify query** button from the query editor's footer to format your query automatically. You can also adjust the editor's height by dragging its bottom border.
