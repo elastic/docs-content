@@ -145,10 +145,10 @@ serverless: ga
 stack: ga 9.3+
 ```
 
-Open the dashboard, then select {icon}`share` **Share** in the application menu. In the dialog, you can choose whether others in the space can edit your dashboard, or only view it:
+Only the dashboard owner or a {{kib}} administrator can control whether other users in the space can edit the dashboard or only view it. To set this, open the dashboard, select {icon}`share` **Share** in the application menu, and choose:
 
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
-- **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. This read-only setting can be changed at any time by the dashboard owner or a {{kib}} administrator.
+- **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. The owner or a {{kib}} administrator can change this setting at any time.
 
 :::{image} /explore-analyze/images/share-dashboard.png
 :screenshot:
