@@ -42,8 +42,7 @@ In this case **Discover** provides the default experience until it detects that 
 You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
 
 1. Open the Inspector:
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4.2` Or select **Inspect tab** from the application menu to inspect the active tab.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
    * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. Open the **View** dropdown, then select **Profiles**.
 

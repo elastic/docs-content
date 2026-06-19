@@ -469,7 +469,7 @@ You can go back to the classic data view and KQL mode in Discover at any time. W
 2. Switch the active tab from either location:
 
    - From the tab's contextual menu ({icon}`boxes_vertical`), select **Switch to classic**.
-   - {applies_to}`serverless:` {applies_to}`stack: ga 9.4.2` From the application menu, select **Switch to Classic**.
+   - From the application menu, select **Switch to Classic**.
 
    This affects only the active Discover tab.
 
