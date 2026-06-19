@@ -37,7 +37,9 @@ Use the Dashboards API when you need to:
 - Automate dashboard creation or updates as part of your own tooling
 - Create dashboards with [ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. This is the only programmatic path for ES|QL charts.
 
-The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Panel types without a schema, such as Maps and Links, are not supported yet and return an error on write.
+The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Maps panels don't have a defined schema yet, so they're not supported and return an error on write.
+
+{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Links panels are also supported. Define them inline as a `links` panel with links to dashboards or external URLs, or reference an existing Links panel by its ID.
 
 Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 100 top-level items (panels and sections combined), 100 panels per section, and 100 pinned controls. Requests that exceed these limits are rejected with a validation error.
 
