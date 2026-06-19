@@ -165,7 +165,7 @@ stack: ga 9.5
 serverless: ga
 ```
 
-When the editor is connected to a large language model (LLM), you can describe what you want in plain language and have the LLM generate {{esql}} for you, or ask it to fix a query that fails validation. To generate a full query from a natural-language prompt instead, use the editor's [search bar](#esql-kibana-quick-search-nl).
+When your deployment has a configured large language model (LLM) connector, you can describe what you want in plain language and have the LLM generate {{esql}} for you, or ask it to fix a query that fails validation. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically. To generate a full query from a natural-language prompt instead, use the editor's [search bar](#esql-kibana-quick-search-nl).
 
 **Requirements**
 
