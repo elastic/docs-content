@@ -34,9 +34,8 @@ To build a table:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a table, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Table
@@ -82,8 +81,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 ::::{step} Save the table
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
