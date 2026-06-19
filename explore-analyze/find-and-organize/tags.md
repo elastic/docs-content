@@ -85,7 +85,7 @@ serverless: experimental
 
 You can create, read, update, and delete tags outside the {{kib}} UI using the Tags API. Use it to manage tags as code, automate tag creation in CI/CD pipelines, or integrate tag management into your own tooling.
 
-The Tags API replaces the tag CRUD endpoints under `/api/saved_objects_tagging`, which are now deprecated. If you have automation that calls those endpoints, migrate it to the Tags API.
+The Tags API replaces the tag CRUD endpoints under `/api/saved_objects_tagging`, which are deprecated. If you have automation that calls those endpoints, migrate it to the Tags API.
 
 For the available operations and the full request and response schema, refer to the [Tags API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-tags) ([serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-tags)).
 
