@@ -18,5 +18,6 @@ Explore specific use cases for the {{edot}}:
 
 - [Kubernetes observability](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md)
 - [LLM observability](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md)
+- [Upstream OpenTelemetry Collector (self-managed)](/solutions/observability/get-started/opentelemetry/use-cases/upstream-collector/index.md)
 
 
