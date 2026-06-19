@@ -37,9 +37,21 @@ Use the Dashboards API when you need to:
 - Automate dashboard creation or updates as part of your own tooling
 - Create dashboards with [ES|QL](/explore-analyze/query-filter/languages/esql-kibana.md)-powered visualizations. This is the only programmatic path for ES|QL charts.
 
-The API supports all panel types that have a defined schema, including visualizations, Discover sessions, markdown panels, and filter controls. Maps panels don't have a defined schema yet, so they're not supported and return an error on write.
+The API supports any panel type that has a defined schema:
 
-{applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Links panels are also supported. Define them inline as a `links` panel with links to dashboards or external URLs, or reference an existing Links panel by its ID.
+- Visualizations
+- Discover sessions
+- Markdown
+- Image
+- Controls: options list, range slider, time slider, and ES|QL
+- SLO panels: overview, alerts, error budget, and burn rate
+- Synthetics panels: stats overview and monitors
+- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Links
+- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` APM service map
+- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Machine learning panels: single metric viewer, anomaly swim lane, and anomaly charts
+- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Log rate analysis, change point detection, and pattern analysis panels
+
+Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
 Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 100 top-level items (panels and sections combined), 100 panels per section, and 100 pinned controls. Requests that exceed these limits are rejected with a validation error.
 
