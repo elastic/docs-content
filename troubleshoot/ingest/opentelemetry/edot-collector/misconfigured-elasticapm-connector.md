@@ -33,18 +33,18 @@ The pipeline looks healthy, but no {{product.apm}} data reaches {{kib}}:
 
 There are two distinct `elasticapm` components in the EDOT Collector:
 
-* **`elasticapm` processor**, which enriches OpenTelemetry spans with Elastic-specific attributes. Declare it under `processors:`.
-* **`elasticapm` connector**, which generates pre-aggregated {{product.apm}} metrics from trace data. Declare it under `connectors:`. This component is used as an exporter in the `traces` pipeline, and as a receiver in a dedicated `metrics` pipeline.
+* **`elasticapm` processor**, which enriches OpenTelemetry spans with Elastic-specific attributes. Declare it under `processors`.
+* **`elasticapm` connector**, which generates pre-aggregated {{product.apm}} metrics from trace data. Declare it under `connectors`. This component is used as an exporter in the `traces` pipeline, and as a receiver in a dedicated `metrics` pipeline.
 
-A common misconfiguration is placing the connector under `processors:` instead of `connectors:`, or omitting the connector declaration entirely. Because the traces pipeline continues to function even without the connector, the Collector logs no errors. However, {{product.apm}} metrics are never produced, so service maps, transaction histograms, and service-level indicators don't appear in {{kib}}.
+A common misconfiguration is placing the connector under `processors` instead of `connectors`, or omitting the connector declaration entirely. Because the traces pipeline continues to function even without the connector, the Collector logs no errors. However, {{product.apm}} metrics are never produced, so service maps, transaction histograms, and service-level indicators don't appear in {{kib}}.
 
 ## Resolution
 
 ::::{stepper}
 
-:::{step} Check that the connector is declared under `connectors:`
+:::{step} Check that the connector is declared under `connectors`
 
-Open your Collector configuration and confirm `elasticapm` appears under `connectors:`, not only under `processors:`:
+Open your Collector configuration and confirm `elasticapm` appears under `connectors`, not only under `processors`:
 
 ```yaml
 connectors:
