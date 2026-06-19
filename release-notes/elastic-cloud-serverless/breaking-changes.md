@@ -47,6 +47,8 @@ Users assigned a custom role that does not include the index patterns above will
   privileges:
     - read
 ```
+
+For more information, view [#255800]({{kib-pull}}255800).
 ::::
 
 ## April 15, 2026 [elastic-cloud-serverless-04152026-breaking]
