@@ -1,0 +1,87 @@
+---
+navigation_title: elasticapm connector misconfigured
+description: Troubleshoot missing APM services and metrics in Kibana when the elasticapm connector is incorrectly placed under processors instead of connectors in your OTel Collector configuration.
+applies_to:
+  serverless: ga
+  product:
+    edot_collector: ga
+products:
+  - id: observability
+  - id: edot-collector
+---
+
+# {{product.apm}} services missing due to misconfigured elasticapm connector
+
+If {{product.apm}} services and metrics are not appearing in {{kib}} despite a healthy-looking traces pipeline, the `elasticapm` connector may be misconfigured. This is one of the most common causes of a silent, empty {{product.apm}} UI when using the EDOT Collector with direct {{es}} ingestion.
+
+For general no-data troubleshooting, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
+
+## Symptoms
+
+* Collector traces pipeline runs without errors
+* Traces are exported successfully (no 4xx or 5xx errors in Collector logs)
+* No {{product.apm}} services, transactions, or service map entries appear in {{kib}} {{product.apm}}
+* {{product.apm}} metrics data streams remain empty
+
+## Causes
+
+There are two distinct `elasticapm` components in the EDOT Collector:
+
+* **`elasticapm` processor** — enriches OpenTelemetry spans with Elastic-specific attributes. Declared under `processors:`.
+* **`elasticapm` connector** — generates pre-aggregated {{product.apm}} metrics from trace data. Declared under `connectors:`, used as an **exporter** in the `traces` pipeline, and used as a **receiver** in a dedicated `metrics` pipeline.
+
+A common misconfiguration is placing the connector under `processors:` instead of `connectors:`, or omitting the connector declaration entirely. Because the traces pipeline continues to function without the connector, the Collector logs no errors. However, {{product.apm}} metrics are never produced, so service maps, transaction histograms, and service-level indicators don't appear in {{kib}}.
+
+## Resolution
+
+::::{stepper}
+
+:::{step} Check that the connector is declared under `connectors:`
+
+Open your Collector configuration and confirm `elasticapm` appears under `connectors:`, not only under `processors:`:
+
+```yaml
+connectors:
+  elasticapm: {}
+```
+
+:::
+
+:::{step} Wire the connector as an exporter in `traces` and a receiver in a dedicated `metrics` pipeline
+
+The connector must appear in two places in `service.pipelines`: as an exporter in `traces` (to receive trace data and generate metrics) and as a receiver in a separate `metrics` pipeline (to forward those metrics to {{es}}):
+
+```yaml
+processors:
+  elasticapm: {}  # the elasticapm processor — enriches spans
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, elasticapm]         # elasticapm processor enriches spans
+      exporters: [elasticapm, elasticsearch/otel]  # elasticapm connector generates metrics
+    metrics/aggregated-otel-metrics:
+      receivers: [elasticapm]                 # connector forwards metrics to ES
+      processors: []
+      exporters: [elasticsearch/otel]
+```
+
+For the complete configuration example, refer to [Elastic {{product.apm}} connector](elastic-agent://reference/edot-collector/components/elasticapmconnector.md).
+
+:::
+
+:::{step} Restart the Collector and verify
+
+After updating your configuration, restart the Collector. Wait a few minutes for data to accumulate, then check {{kib}} {{product.apm}} for services and service maps.
+
+If data still doesn't appear, refer to [Enable debug logging](/troubleshoot/ingest/opentelemetry/edot-collector/enable-debug-logging.md) to increase Collector verbosity and check for export errors.
+
+:::
+
+::::
+
+## Resources
+
+* [Elastic {{product.apm}} connector reference](elastic-agent://reference/edot-collector/components/elasticapmconnector.md)
+* [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md)
