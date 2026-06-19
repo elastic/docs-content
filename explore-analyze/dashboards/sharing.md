@@ -145,7 +145,7 @@ serverless: ga
 stack: ga 9.3+
 ```
 
-Only the dashboard owner or a {{kib}} administrator can control whether other users in the space can edit the dashboard or only view it. To set this, open the dashboard, select {icon}`share` **Share** in the application menu, and choose:
+As the owner of a dashboard or {{kib}} administrator, you can control whether other users in the space can edit it or only view it. To set this, open the dashboard, select {icon}`share` **Share** in the application menu, and choose:
 
 - **Can edit**: Everybody in the space can edit, delete, and fully manage the dashboard.
 - **Can view**: Everybody in the space can view the dashboard, but cannot edit or delete it. They can duplicate it. The owner or a {{kib}} administrator can change this setting at any time.
