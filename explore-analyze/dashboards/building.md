@@ -29,6 +29,7 @@ Once you have a dashboard, you can also:
 * [Arrange and resize panels](arrange-panels.md) to get the layout you want
 * [Duplicate a dashboard](duplicate-dashboards.md) as a starting point for a new one
 * [Import a dashboard](import-dashboards.md) exported from another {{product.kibana}} instance
+* [Manage dashboards as code](manage-dashboards-as-code.md) to version-control them and deploy them across environments
 
 ## Requirements [dashboard-minimum-requirements]
 

@@ -281,6 +281,7 @@ toc:
           - file: dashboards/create-dashboard.md
           - file: dashboards/create-dashboards-programmatically.md
           - file: dashboards/create-dashboards-using-ai.md
+          - file: dashboards/manage-dashboards-as-code.md
           - file: dashboards/open-dashboard.md
           - file: dashboards/add-controls.md
           - file: dashboards/drilldowns.md
