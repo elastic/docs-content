@@ -401,7 +401,7 @@ Customize your bar chart to display exactly the information you need, formatted 
 **Data**
 :   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. It supports the following functions:
 
-    :::{include} ../../_snippets/lens-bucket-top-values-secondary.md
+    :::{include} ../../_snippets/lens-bucket-top-values.md
     :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::

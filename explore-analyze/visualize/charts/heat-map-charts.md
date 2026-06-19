@@ -253,7 +253,7 @@ The **Vertical axis** dimension defines the rows of the heat map.
 **Data**
 :   The **Vertical axis** dimension supports the same functions as the horizontal axis:
 
-    :::{include} ../../_snippets/lens-bucket-top-values-secondary.md
+    :::{include} ../../_snippets/lens-bucket-top-values.md
     :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::

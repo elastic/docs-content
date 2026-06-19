@@ -150,7 +150,7 @@ Customize your area chart to match the information you need and how you want it 
 **Data**
 :   To represent the metrics or values you want to visualize, you can use quick functions like Average, Count, Percentile, Counter rate, or create custom calculations with formulas. Refer to [](/explore-analyze/visualize/lens.md#lens-formulas) for examples.
 
-    :::{include} ../../_snippets/area-vertical-axis-advanced-settings.md
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
     :::
 
 **Appearance**
@@ -167,7 +167,7 @@ You can split your data by a categorical field to create multiple stacked or ove
 **Data**
 :   
     - **Functions**:
-      :::{include} ../../_snippets/lens-bucket-top-values-secondary.md
+      :::{include} ../../_snippets/lens-bucket-top-values.md
       :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::

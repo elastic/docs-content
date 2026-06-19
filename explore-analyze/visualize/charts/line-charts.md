@@ -154,7 +154,7 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 **Data**
 :   
     - **Functions**:
-      :::{include} ../../_snippets/lens-bucket-top-values-secondary.md
+      :::{include} ../../_snippets/lens-bucket-top-values.md
       :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::

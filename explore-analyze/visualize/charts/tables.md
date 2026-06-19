@@ -193,7 +193,7 @@ Customize your table to display exactly the information you need, formatted the 
 :   Optionally split your metrics into separate columns based on a categorical field. This creates a pivot table view where each unique value of the split field becomes its own column. This is useful for comparing the same metric across different categories side by side.
 
     - **Functions**:
-      :::{include} ../../_snippets/lens-bucket-top-values-secondary.md
+      :::{include} ../../_snippets/lens-bucket-top-values.md
       :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
