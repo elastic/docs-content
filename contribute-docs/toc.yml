@@ -24,6 +24,11 @@ toc:
           - file: badge-placement.md
           - file: example-scenarios.md
           - file: reference.md
+      - folder: deployment-types
+        children:
+          - file: index.md
+          - file: about.md
+          - file: strategies.md
   - folder: style-guide
     children:
     - file: index.md
