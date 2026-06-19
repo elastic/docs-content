@@ -21,13 +21,24 @@ When you create this rule on the **Metrics Explorer** page, the rule is automati
 You can also create a rule based on a single graph. On the **Metrics Explorer** page, click **Alerts and rules** → **Create alert**. The condition and filter sections of the threshold rule are automatically populated.
 ::::
 
+## Requirements
+
+To create metric threshold rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the metrics indices from the [Infrastructure and Metrics Explorer settings](/solutions/observability/infra-and-hosts/configure-settings.md). The default are `metrics-*` and `metricbeat-*`. You cannot override these indices on a per-rule basis.
+
 ## Metric conditions [metrics-conditions]
 
 Conditions for each rule can be applied to specific metrics that you select. You can select the aggregation type (refer to [Aggregation options](aggregation-options.md)), the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. To help you determine which thresholds are meaningful to you, the preview charts provide a visualization.
 
 In this example, the conditions state that you receive a critical alert for hosts with a CPU usage of 120% or above and a warning alert if CPU usage is 100% or above. Note that you will receive an alert only if memory usage is 20% or above, as per the second condition.
 
-{applies_to}`stack: ga =9.0, removed 9.1+` When you select **Alert me if there’s no data**, the rule is triggered if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
+{applies_to}`stack: ga =9.0, removed 9.1+` When you select **Alert me if there’s no data**, the rule triggers if the metrics don’t report any data over the expected time period, or if the rule fails to query {{es}}.
 
 
 :::{image} /solutions/images/observability-metrics-alert-nodata.png
@@ -41,7 +52,7 @@ In this example, the conditions state that you receive a critical alert for host
 The **Filters** control the scope of the rule. If used, the rule will only evaluate metric data that matches the query in this field. In this example, the rule will only alert on metrics reported from a Cloud region called `us-east`.
 
 ::::{note}
-If you've made a rule with the [create rule API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-alerting-rule-id) and added Query DSL filters using the `filterQuery` parameter, the filters won't appear in the UI for editing a rule. As a workaround, manually re-add the filters through the UI and save the rule. As you're modifying the rule's filters from the UI, be mindful of the following:
+If you've made a rule with the [create rule API]({{kib-apis}}operation/operation-post-alerting-rule-id) and added Query DSL filters using the `filterQuery` parameter, the filters won't appear in the UI for editing a rule. As a workaround, manually re-add the filters through the UI and save the rule. As you're modifying the rule's filters from the UI, be mindful of the following:
 
 - The **Filter** field only accepts KQL syntax, meaning you may need to manually convert your Query DSL filters to KQL.
 - After you save the rule, filters you've added to the **Filter** field are converted appropriately and specified in the rule's `filterQuery` parameter.

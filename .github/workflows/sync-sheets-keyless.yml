@@ -92,26 +92,22 @@ jobs:
           base: main
           branch: automated/sheets-sync
           delete-branch: true
-          title: "Update CSV from Google Sheets"
+          title: "[Automation] Update EIS model list"
           commit-message: |
-            Update CSV from Google Sheets
+            Update the EIS model list based on CSV generated from Google Sheets
 
             Generated: ${{ github.run_id }}
             Workflow run: ${{ github.run_number }}
           body: |
             ## Summary
 
-            This PR updates CSV files with the latest data from Google Sheets.
+            Automated update to the EIS model list from the [source spreadsheet](https://docs.google.com/spreadsheets/d/1aViZ8DBKOIqgVXnHMll9JWHxeUT2KdNUpSK4Rw6Ob9c/edit?gid=156561157#gid=156561157).
 
-            ### Changes
-
-            Please review the changes in the Files tab to ensure the data looks correct.
-
-            ### Next Steps
+            ### Review checklist
 
             - [ ] Review the CSV changes
             - [ ] Verify data accuracy
-            - [ ] Merge when ready
+            - [ ] **Merge this PR once approved**
 
             ---
 

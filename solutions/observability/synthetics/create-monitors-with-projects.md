@@ -130,6 +130,7 @@ journey('My Example Journey', ({ page, params }) => {
   monitor.use({
     id: 'example-monitor',
     schedule: 10,
+    timeout: 60,
   });
   step('launch application', async () => {
     await page.goto(params.url);

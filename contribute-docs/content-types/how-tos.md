@@ -1,4 +1,5 @@
 ---
+navigation_title: "How-to guides"
 description: "Guidelines for writing effective how-to guides in the Elastic documentation."
 ---
 
@@ -54,7 +55,7 @@ Every how-to guide must include the following elements:
 
 6. A set of **steps:** Numbered instructions that begin with imperative verb phrases. Keep each step focused on a single action.
    :::{tip}
-   Use an [ordered list](https://elastic.github.io/docs-builder/syntax/lists/#ordered-list) for simple, linear steps. For longer how-tos or those with complex steps, use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/).
+   Use an [ordered list](https://elastic.github.io/docs-builder/syntax/lists/#ordered-list) for basic, linear steps. For longer how-tos or those with complex steps, use the [stepper component](https://elastic.github.io/docs-builder/syntax/stepper/).
    :::
 
 7. **Success checkpoints:** Include confirmation steps that show users whether critical actions succeeded before moving on.

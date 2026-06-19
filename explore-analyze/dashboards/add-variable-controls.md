@@ -42,7 +42,7 @@ When you create a control from a query, the variable is inserted into that query
 When you create a variable control from an {{esql}} panel, for example by selecting **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This makes the control apply only to that visualization and exposes visualization configuration such as date histogram interval controls to dashboard users.
 :::
 
-To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the dashboard toolbar. You can then reference the control by name in any {{esql}} visualization query.
+To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
 
 :::{include} ../_snippets/variable-control-examples.md
 :::
@@ -76,7 +76,7 @@ To chain variable controls, reference one control's variable in another control'
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 

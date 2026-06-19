@@ -78,7 +78,7 @@ The time slider must be pinned to the dashboard header. It is not available as a
 
     ::::{applies-switch}
     :::{applies-item} {"serverless": "ga", "stack": "ga 9.2"}
-    In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
     :::
     :::{applies-item} {"stack": "ga 9.0-9.1"}
     In **Edit** mode, select **Controls** > **Add time slider control**.

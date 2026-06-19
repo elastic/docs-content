@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# View and manage alerts in {{kib}} [view-alerts]
+# View and manage alerts from {{kib}} alerting rules [view-alerts]
 
-When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
+{{kib}} alerting creates an alert when the conditions of a rule are met. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [{{kib}} alerting](../alerts.md).
 
 Manage alerts from the following places:
 
@@ -89,7 +89,7 @@ If an alert is active or flapping, you can mute it to temporarily suppress futur
 You can mute individual alerts or multiple ones:
 
 - Mute individual alerts: Find the **Alerts** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), open the action menu ({icon}`boxes_vertical`) for the appropriate alert, then select **Mute**.
-- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bellSlash` in the Alerts table. 
+- Bulk-mute alerts: Select one or more alerts from the **Alerts** management page, click **Selected _x_ alerts** at the upper-left above the table, then select **Mute selected**. Select the **Unmute selected** option to unmute alerts. Muted alerts display the icon {icon}`bell_slash` in the Alerts table. 
 :::
 
 :::{applies-item} stack: ga 9.0-9.2
@@ -103,6 +103,23 @@ You can only mute individual alerts. To mute an alert, find the **Alerts** manag
 To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
+::::
+
+## Acknowledge alerts [acknowledge-alerts]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Acknowledge an alert to explicitly indicate that someone is investigating it. Acknowledged alerts have their `kibana.alert.workflow_status` set to `acknowledged`, which displays a badge in the alert lifecycle status cell.
+
+Acknowledging an alert does not suppress future notifications or affect rule recovery. The alert continues to update its status normally.
+
+To acknowledge an alert, go to the Alerts table, click the action menu icon {icon}`boxes_vertical` for the appropriate alert, then select **Acknowledge**. To revert the acknowledgment, from the action menu, select **Unacknowledge**.
+
+::::{tip}
+To filter for acknowledged alerts in the Alerts table, enter `kibana.alert.workflow_status : "acknowledged"` in the KQL bar.
 ::::
 
 ## Apply and filter alert tags [tag-alerts]

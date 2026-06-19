@@ -20,8 +20,8 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 - **Selections**: Allow multiple selections, or restrict the control to a single selection.
 - **Searching** (for string and IP address fields): Choose how the control's embedded search matches values.
 
-  - **Prefix**: Match values that start with the entered text.
-  - **Contains**: Match values that contain the entered text. Only available for string fields. Results can take longer to populate.
+  - **Prefix** (default for IP address fields): Match values that start with the entered text.
+  - **Contains** (default for string fields): Match values that contain the entered text. Only available for string fields. Results can take longer to populate.
   - **Exact**: Match values that exactly equal the entered text.
 
   Searches are not case sensitive. For example, searching for `ios` still returns `iOS`.
@@ -100,7 +100,7 @@ By default, the dashboard updates as soon as a selection is made in a control. T
 
 1. Open the **Control settings** flyout:
 
-   - {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+   - {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. Configure the following settings:

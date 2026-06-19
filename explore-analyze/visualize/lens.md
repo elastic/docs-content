@@ -11,13 +11,10 @@ products:
 
 # Lens [lens]
 
-**Lens** is {{kib}}'s modern, drag‑and‑drop visualization editor designed to make data exploration fast and intuitive. It allows you to build charts and tables by dragging fields from a data view onto a workspace, while {{kib}} automatically suggests the most appropriate visualization types based on the data.
+**Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 
-The Lens editor uses [data views](/explore-analyze/find-and-organize/data-views.md) to define the available {{es}} indices and fields. 
-
-Data views are created automatically if you [upload a file](/manage-data/ingest/upload-data-files.md), or [add sample data](/manage-data/ingest/sample-data.md) by using one of the {{kib}} [ingest options](/manage-data/ingest.md). Otherwise, you must create a {{data-source}} manually.
-
-Once you select a {{data-source}}, you can build many types of visualizations by choosing aggregations, splitting dimensions, and configuring chart styles, legends, and layers.
+- **Point-and-click**: Configure your visualization interactively by selecting fields from a [data view](/explore-analyze/find-and-organize/data-views.md), choosing aggregations, and setting dimensions and display options. No query writing required. Data views are created automatically when you [upload a file](/manage-data/ingest/upload-data-files.md) or [add sample data](/manage-data/ingest/sample-data.md); otherwise, you need to create one manually.
+- **Query**: Write an [{{esql}}](elasticsearch://reference/query-languages/esql.md) or [PromQL](elasticsearch://reference/query-languages/esql/commands/promql.md) query to retrieve and transform your data, then configure the visualization on top of the result. Best suited for cross-index queries, complex filtering, and custom calculations. Refer to [ES|QL visualizations](esorql.md) for details.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-dashboards
@@ -45,6 +42,21 @@ With Lens, you can create the following visualization types:
 | [Tag cloud](/explore-analyze/visualize/charts/tag-cloud-charts.md) | Highlight the most frequent or important terms in a dataset. |
 | [Region map](/explore-analyze/visualize/charts/region-map-charts.md) | Show how values vary across geographic regions (choropleth). |
 
+## Create visualizations with the API [lens-api]
+
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+You can create and manage Lens visualizations programmatically using the Visualizations API ([stateful](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations), [serverless](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-visualizations)). This is useful for managing visualizations as code, automating their lifecycle, or building tooling around Lens charts.
+
+Visualizations created through this API can be added to dashboards using the Kibana UI or the Dashboards API.
+
+:::{note}
+The Visualizations API is in technical preview and may change in future releases.
+:::
+
 ## Create visualizations [create-the-visualization-panel]
 
 If you’re unsure about the visualization type you want to use, or how you want to display the data, drag the fields you want to visualize onto the workspace, then let **Lens** choose for you.
@@ -55,7 +67,8 @@ If you already know the visualization type you want to use, and how you want to 
 
 ::::{step} Choose the visualization type
 
-New visualizations default to **Bar** charts. Use the dropdown indicating **Bar** and select the visualization type you want.
+New visualizations generally default to **Bar** or **Line** charts. You can change that manually to the visualization type that you want.
+
 As you drag fields into the workspace or to the layer pane, Lens automatically generates alternative visualizations. To view them, click **Suggestions** at the bottom of the workspace. If a suggested visualization meets your needs, click **Save and return** to add it to the dashboard.
 
 ::::
@@ -74,7 +87,7 @@ In the Lens editor, you can customize the appearance of your visualization by cl
 
 ::::{step} (Optional) Add layers
 
-You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_in_square` , then choose the layer type and select the {{data-source}}. 
+You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_square` , then choose the layer type and select the {{data-source}}. 
 To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
 ::::
@@ -138,6 +151,8 @@ To assign colors to terms in your visualization:
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Elastic (line optimized)**: A variant of the Elastic palette that reorders colors for better contrast between adjacent series in line charts. Lens automatically applies this palette when you create or switch to a line chart. Switching to a different chart type reverts to the standard palette. You can override this by manually selecting a different palette.
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Severity**: A theme-aware categorical palette designed for severity-based data, with colors that adapt to both light and dark themes.
    * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
    * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
@@ -278,7 +293,7 @@ stack: preview
 ```
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
-Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and select the annotation method you want to use:
+Click the **Add layer** icon {icon}`plus_square` , select **Annotations** and select the annotation method you want to use:
 
 :::{dropdown} New annotation
 1. Select the {{data-source}} for the annotation.
@@ -286,7 +301,7 @@ Click the **Add layer** icon {icon}`plus_in_square` , select **Annotations** and
 
 To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
 
-From the annotation panel, you can choose the type of placement and adjsut the its appearance.
+From the annotation panel, you can choose the type of placement and adjust the its appearance.
 
 **Placement**
 :   
@@ -471,7 +486,9 @@ When creating or editing a visualization, you can customize several appearance o
 :   Define the formatting of the primary metric in terms of **Position**, **Alignment**, and **Font size**.
 
 **Title and subtitle**
-:   Enter a subtitle and define the relevant **Alignment** and **Font weight**.
+:   Enter a subtitle and define the relevant settings:
+    - **Alignment**
+    - {applies_to}`stack: ga 9.2-9.3` **Font weight**
 
 **Secondary metric**
 :   Define the **Alignment**.
@@ -492,6 +509,9 @@ When creating or editing a visualization, you can customize several appearance o
 
 **Paginate table**
 :   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
+
+**Show row numbers** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   Toggle a leading column that numbers each row in the table. Turned on by default for new tables, and turned off by default for tables that were saved before this option was introduced. When pagination is turned on, numbering restarts at `1` on each page.
 
 #### Pie charts
 

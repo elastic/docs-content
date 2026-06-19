@@ -24,6 +24,7 @@ To install {{ece}} on additional hosts:
       --coordinator-host HOST_IP
       --roles-token 'TOKEN'
       --cloud-enterprise-version VERSION_NAME
+      --availability-zone ZONE_NAME
     ```
     If you are creating a larger {{ece}} installation:
 

@@ -1,14 +1,19 @@
 ---
 applies_to:
-  stack: ga 9.3, preview 9.1
+  stack: removed =9.4, ga =9.3, preview 9.1-9.2
   serverless:
-    security: ga
+    security: removed
 products:
   - id: security
   - id: cloud-serverless
 ---
 
 # Monitor privileged user activities
+
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
 
 After you [set up privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-setup.md), you can start monitoring your privileged users' activity using the different panels on the Privileged user monitoring dashboard.
 

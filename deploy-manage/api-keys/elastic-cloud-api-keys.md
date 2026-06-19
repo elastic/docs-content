@@ -110,7 +110,7 @@ When an API key expires, it is automatically removed from the **API keys** tab.
 
 Roles grant an API key specific privileges for your {{ecloud}} organization and resources.
 
-You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster roles.
+You can grant a cloud API key [the same types of roles that you assign to users](/deploy-manage/users-roles/cloud-organization/user-roles.md#types-of-roles): organization-level roles, cloud resource access roles, and connected cluster access roles.
 
 ### Granting {{es}} and {{kib}} API access [project-access]
 ```{applies_to}
@@ -125,6 +125,11 @@ When you grant **Organization owner** access, or **Cloud resource** access for o
 | **Cloud, {{es}}, and {{kib}} API** | Grants the following access:<br><br>• [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs<br><br>• [{{es}} {{serverless-short}}]({{es-serverless-apis}}), and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) API endpoints for the relevant projects |
 
 Using {{ecloud}} keys for project-level API access, rather than [granting keys from within each {{serverless-short}} project](serverless-project-api-keys.md), allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console.
+
+:::{important} 
+:applies_to: serverless: preview
+The [cross-project search feature](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#manage-user-and-api-key-access) requires {{ecloud}} API keys for programmatic access.
+:::
 
 When granting Cloud resource access, you can apply a [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) to granularly control access to the specified resources. The selected role controls access to resources in all relevant APIs. 
 

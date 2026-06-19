@@ -22,4 +22,6 @@ You can interact with filter pills to edit them, temporarily alter their behavio
 **Delete**
 :    Removes the filter.
 
-You can perform most of these actions at once for all filters in your current view using the **Filter** icon {icon}`filter`. From the menu that opens, select **Apply to all**, then choose the action you'd like to perform.
+You can perform most of these actions at once for all filters in your current view using the **Query menu**. From that menu, select **Apply to all**, then choose the action you'd like to perform.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When at least one filter pill is present, you can collapse the filter pills section to reclaim screen space. Select {icon}`filter` **Collapse filters** to hide the pills, or {icon}`filter` **Expand filters** to show them again. Your preference is saved across sessions.

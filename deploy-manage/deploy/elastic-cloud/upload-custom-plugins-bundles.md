@@ -11,6 +11,12 @@ products:
 
 # Upload custom plugins and bundles
 
+::::{note}
+This page applies to {{ech}} deployments only. {{serverless-full}} projects do not support custom plugin or bundle uploads, including dictionary files used for synonyms, stop words, or [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md).
+
+If you use {{serverless-short}} and need to manage synonyms, use the [synonyms APIs]({{es-serverless-apis}}group/endpoint-synonyms) or refer to [Search with synonyms](/solutions/search/full-text/search-with-synonyms.md). For how {{ech}} and Serverless differ on plugins, bundles, and dictionary options, see [Compare {{ech}} and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-custom-plugins-and-bundles).
+::::
+
 There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
 
 * Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md).
@@ -252,4 +258,4 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-Refer to [Extensions API reference](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-extensions) for the complete set of HTTP methods and payloads.
+Refer to [Extensions API reference]({{cloud-apis}}group/endpoint-extensions) for the complete set of HTTP methods and payloads.

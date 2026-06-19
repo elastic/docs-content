@@ -14,6 +14,8 @@ products:
 
 Controls can be **pinned** to the dashboard header, where they apply to all panels, or **unpinned** and placed anywhere in the dashboard body. When an unpinned control sits inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to the panels within that section.
 
+{applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
+
 :::{note}
 :applies_to: {"stack": "ga 9.0-9.3"}
 In versions earlier than 9.4, controls are always pinned to the dashboard header, and settings such as chaining and validation apply to all controls on the dashboard at once. Refer to [Dashboard control settings](dashboard-control-settings.md) to manage these shared settings.
@@ -34,12 +36,12 @@ There are four types of controls:
 * **Options list**: A dropdown that filters data by one or more selected values.
   For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field to display only the logs generated from `osx` and `ios` operating systems.
 
-  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard_controlsOptionsList.png "title =50%")
+  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
 
 * **Range slider**: A slider that filters data within a specified range of values. Only compatible with numeric fields.
   For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field to display only the log data from 9:00 AM to 5:00 PM.
 
-  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
+  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
 
 * **Time slider**: A time range slider that filters data within a specified time range. Advance the range backward and forward, or animate the data change across the range.
 

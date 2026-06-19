@@ -3,25 +3,25 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-ui-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-rules-ui-management.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
-description: View, edit, enable, duplicate, and manage detection rules from the Rules page.
+description: View, edit, enable, duplicate, and manage detection rules from the Detection rules (SIEM) page, including deprecated prebuilt rules.
 ---
 
 # Manage detection rules [security-rules-ui-management]
 
-After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **Rules** page to manage them. The **Rules** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the **Rules** page, find **Detection rules (SIEM)** in the navigation menu or by using the global search field.
+After you [install prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) or [create custom rules](/solutions/security/detect-and-alert/author-rules.md), use the **{{siem-rules-ui}}** page to manage them. The **{{siem-rules-ui}}** page is your central hub for viewing rule status, editing configurations, controlling rule execution, and performing bulk operations. To perform these tasks, you need the [appropriate privileges](/solutions/security/detect-and-alert/turn-on-detections.md). To open the page, find **{{siem-rules-ui}}** in the navigation menu or by using the global search field.
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/detection-rule-management
 :::
 
 ::::{note}
-The **Rules** page was renamed to **Detection rules (SIEM)** in versions 9.3.1, 9.2.6, and 8.19.12.
+The page was renamed from **Rules** to **{{siem-rules-ui}}** in versions 9.3.1, and 9.2.6.
 ::::
 
 The following sections explain how to filter rules, edit settings, control execution, export and import rules, and perform bulk operations.
@@ -49,7 +49,6 @@ You can also filter the rules list by selecting the **Tags**, **Last response**,
 The rules list retains your sorting and filtering settings when you navigate away and return to the page. These settings are also preserved when you copy the page’s URL and paste into another browser. Select **Clear filters** above the table to revert to the default view.
 
 
-
 ## Edit rule settings [edit-rules-settings]
 
 Edit rule settings to modify detection logic, notifications, schedules, and other rule configurations. You can edit a single rule or use bulk actions to update multiple rules at once.
@@ -61,18 +60,23 @@ Edit rule settings to modify detection logic, notifications, schedules, and othe
 
 ### Edit a single rule [edit-single-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Edit rule settings**.
     * Click on a rule's name to open its details page, then click **Edit rule settings**.
 3. The **Edit rule settings** view opens, where you can modify the [rule's settings](/solutions/security/detect-and-alert/using-the-rule-ui.md). To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon {icon}`bell`.
 4. Click **Save changes**.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+From the rule details page or the **Edit rule settings** view, you can use **Add to chat** to pass the rule to an AI Agent for analysis and suggestions. Refer to [Create and refine detection rules in Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md#create-and-refine-detection-rules-in-agent-builder).
+:::
+
 ### Bulk edit rule settings [bulk-edit-rules]
 
 Use bulk editing to update settings on multiple rules simultaneously. Rules that can't be modified are automatically skipped, for example, if you try to apply a tag to rules that already have that tag, or apply an index pattern to rules that use data views.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to edit.
 3. From the **Bulk actions** menu, select one of the following:
 
@@ -93,7 +97,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 
 ### Enable or disable a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
     * Switch the rule's **Enabled** toggle on or off.
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Enable** or **Disable**.
@@ -101,7 +105,7 @@ Enable rules to activate them so they run on their defined schedules and generat
 
 ### Bulk enable or disable rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to enable or disable.
 3. From the **Bulk actions** menu, select **Enable** or **Disable**.
 
@@ -112,7 +116,7 @@ Duplicate rules to create copies that you can modify independently. This is usef
 
 ### Duplicate a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Duplicate**.
     * Click on a rule's name to open its details page, then select **All actions** > **Duplicate**.
@@ -127,7 +131,7 @@ If you duplicate the rule and its exceptions, copies of the exceptions are creat
 
 ### Bulk duplicate rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to duplicate.
 3. From the **Bulk actions** menu, select **Duplicate**.
 4. If any selected rules have exceptions, choose how to handle them.
@@ -139,7 +143,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ### Delete a single rule
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
     * In the Rules table, select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Delete**.
     * Click on a rule's name to open its details page, then select **All actions** > **Delete**.
@@ -147,7 +151,7 @@ Delete rules to permanently remove them from your system. This action cannot be 
 
 ### Bulk delete rules
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, select the rules you want to delete.
 3. From the **Bulk actions** menu, select **Delete**.
 4. Confirm the deletion.
@@ -174,7 +178,7 @@ Manually run enabled rules for a specified time period to deliberately test them
 Before manually running rules, make sure you properly understand and plan for rule dependencies. Incorrect scheduling can lead to inconsistent rule results.
 ::::
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
 
     * Select the **All actions** menu {icon}`boxes_horizontal` on a rule, then select **Manual run**.
@@ -184,6 +188,10 @@ Before manually running rules, make sure you properly understand and plan for ru
 4. Select **Run** to manually run the rule.
 
 The rule runs over the time range that you selected. All [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) are also activated, except for **Summary of alerts** actions that run at a custom frequency.
+
+:::{tip}
+To run multiple rules on demand from a script, scheduled task, or other automation, use [Elastic Workflows](/explore-analyze/workflows.md). The [Run detection rules on demand](/explore-analyze/workflows/use-cases/security/manage-detection-rules/run-rules-on-demand.md) workflow shows how to iterate over a list of rule IDs and trigger a manual run for each over a configurable lookback window.
+:::
 
 ::::{note}
 Be mindful of the following:
@@ -248,7 +256,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 ### Export rules [export-rules-ui]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
     * Export a single rule: Find the rule in the Rules table, then select **All actions** > **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** > **Export**).
@@ -291,3 +299,15 @@ The following table summarizes bulk actions that are available from the **Bulk a
 | Update rule schedules | Update schedules and look-back times on selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 | Apply Timeline template | Apply a Timeline template to selected rules. Refer to [Bulk edit rule settings](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-edit-rules). |
 
+## Handle deprecated prebuilt rules [deprecated-prebuilt-rules]
+```yaml {applies_to}
+stack: ga 9.4+
+```
+
+When a prebuilt rule that you installed is deprecated, it is no longer maintained as part of Elastic’s prebuilt rule library. Deprecated rules do not receive new updates or fixes from Elastic. If you want to keep the same detection logic and maintain it yourself, duplicate the rule as a custom rule before you remove the deprecated prebuilt installation.
+
+{{elastic-sec}} surfaces deprecated prebuilt rules in the UI so you can find them and respond. If any are installed, a dismissible callout on the **Installed Rules** tab alerts you. On a rule’s details page, a callout also marks deprecated prebuilt rules and includes a deprecation reason if the package provides one. From that page you can choose to delete the deprecated prebuilt rule, or [create a duplicate](#duplicate-rules) as a custom rule before deleting the original prebuilt rule. That way you keep the same detection logic and can maintain it as a custom rule.
+
+:::{tip}
+Staying current with Elastic’s prebuilt rule updates helps you get the latest detection logic and fixes while rules are still supported. Refer to [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md) for more details.
+:::

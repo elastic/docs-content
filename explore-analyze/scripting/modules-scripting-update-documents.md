@@ -9,7 +9,7 @@ products:
 
 # Update documents using scripts [scripts-update-scripts]
 
-You can use the [update API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) to update documents with a specified script. The script can update, delete, or skip modifying the document. The update API also supports passing a partial document, which is merged into the existing document.
+You can use the [update API]({{es-apis}}operation/operation-update) to update documents with a specified script. The script can update, delete, or skip modifying the document. The update API also supports passing a partial document, which is merged into the existing document.
 
 First, let’s index a simple document:
 
