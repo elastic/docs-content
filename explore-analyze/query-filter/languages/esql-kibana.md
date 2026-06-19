@@ -98,7 +98,7 @@ After running a query, the editor's footer displays statistics about the last ru
 | {kbd}`cmd+enter`   | {kbd}`ctrl+enter`   | Run a query                 |
 | {kbd}`cmd+/`       | {kbd}`ctrl+/`       | Comment or uncomment the current line or selected lines |
 | {kbd}`cmd+i`       | {kbd}`ctrl+i`       | [Prettify query](#_make_your_query_readable) {applies_to}`stack: ga 9.4+` |
-| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-assistance) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` |
+| {kbd}`cmd+j`       | {kbd}`ctrl+j`       | [Generate {{esql}} from a `//` comment](#esql-kibana-ai-assistance) {applies_to}`stack: ga 9.5+` |
 | {kbd}`cmd+k`       | {kbd}`ctrl+k`       | Open the [search bar](#esql-kibana-quick-search) |
 
 :::{tip}
