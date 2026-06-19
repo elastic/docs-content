@@ -100,33 +100,36 @@ POST /_security/user/cross-search-user
 }
 ```
 
-::::{note}
+
+:::{note}
 You only need to create this user and role on the **local** cluster.
-::::
+
+The same user can hold multiple roles, or a single role can combine [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) with local index privileges and {{kib}} access roles.
+:::
 
 ### TLS certificate authentication [configure-privileges-for-ccs-cert]
 ```{applies_to}
 stack: deprecated 9.0
 ```
 
-::::{warning}
+:::{warning}
 
 Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
-::::
+:::
 
 After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the same names defined locally.
 
-::::{important}
+:::{important}
 You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
-::::
+:::
 
 #### Remote cluster [configure-privileges-for-ccs-cert-remote]
 
 On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
 
-::::{note}
+:::{note}
 If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) on the remote cluster.
-::::
+:::
 
 The following request creates a `remote-search` role on the remote cluster:
 
@@ -149,14 +152,18 @@ POST /_security/role/remote-search
 
 #### Local cluster [configure-privileges-for-ccs-cert-local]
 
-On the local cluster, which is the cluster used to initiate cross cluster search, a user only needs the `remote-search` role. The role privileges can be empty.
+On the local cluster, which is the cluster used to initiate cross cluster search, assign users the `remote-search` role. If users only need remote access, you can leave the local role empty. If they also need to query local indices or use {{kib}}, grant the required local privileges in the same role or assign the user additional roles.
 
-The following request creates a `remote-search` role on the local cluster:
+The following request creates a `remote-search` role on the local cluster with no privileges:
 
 ```console
 POST /_security/role/remote-search
 {}
 ```
+
+:::{note}
+In {{kib}}, you query remote indices using the `<remote_cluster_name>:<target>` pattern. To give users local index or {{kib}} access, add the required privileges to `remote-search` on the local cluster, or assign them separate roles.
+:::
 
 After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
 
@@ -168,78 +175,9 @@ POST /_security/user/cross-search-user
 }
 ```
 
-::::{note}
+:::{note}
 You only need to create this user on the **local** cluster.
-::::
-
-#### {{kib}} users [configure-privileges-for-ccs-kibana-cert]
-
-When using {{kib}} to search across multiple clusters, a two-step authorization process determines whether the user can access data streams and indices on a remote cluster:
-
-* First, the local cluster determines if the user is authorized to access remote clusters. The local cluster is the cluster that {{kib}} is connected to.
-* If the user is authorized, the remote cluster then determines if the user has access to the specified data streams and indices.
-
-To grant {{kib}} users access to remote clusters, assign them a local role with read privileges to indices on the remote clusters. You specify data streams and indices in a remote cluster as `<remote_cluster_name>:<target>`.
-
-To grant users read access on the remote data streams and indices, you must create a matching role on the remote clusters that grants the `read_cross_cluster` privilege with access to the appropriate data streams and indices.
-
-For example, you might be actively indexing {{ls}} data on a local cluster and periodically offload older time-based indices to an archive on your remote cluster. You want to search across both clusters, so you must enable {{kib}} users on both clusters.
-
-On the local cluster, create a `logstash-reader` role that grants `read` and `view_index_metadata` privileges on the local `logstash-*` indices.
-
-::::{note}
-If you configure the local cluster as another remote in {{es}}, the `logstash-reader` role on your local cluster also needs to grant the `read_cross_cluster` privilege.
-::::
-
-```console
-POST /_security/role/logstash-reader
-{
-  "indices": [
-    {
-      "names": [
-        "logstash-*"
-        ],
-        "privileges": [
-          "read",
-          "view_index_metadata"
-          ]
-    }
-  ]
-}
-```
-
-Assign your {{kib}} users a role that grants [access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md), as well as your `logstash-reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
-
-```console
-PUT /_security/user/cross-cluster-kibana
-{
-  "password" : "l0ng-r4nd0m-p@ssw0rd",
-  "roles" : [
-    "logstash-reader",
-    "kibana-access"
-    ]
-}
-```
-
-On the remote cluster, create a `logstash-reader` role that grants the `read_cross_cluster` privilege and `read` and `view_index_metadata` privileges for the `logstash-*` indices.
-
-```console
-POST /_security/role/logstash-reader
-{
-  "indices": [
-    {
-      "names": [
-        "logstash-*"
-        ],
-        "privileges": [
-          "read_cross_cluster",
-          "read",
-          "view_index_metadata"
-          ]
-    }
-  ]
-}
-```
+:::
 
 
 ## {{ccs-cap}} examples [ccs-example]

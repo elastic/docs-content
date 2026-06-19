@@ -917,11 +917,11 @@ redirects:
       - to: 'explore-analyze/cross-cluster-search.md'
         anchors:
           'remote-clusters-privileges-ccs': 'configure-privileges-for-ccs-cert'
-          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-kibana-cert'
+          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-cert-local'
           '_remote_cluster_2': 'configure-privileges-for-ccs-cert-remote'
           '_local_cluster_2': 'configure-privileges-for-ccs-cert-local'
-          '_local_cluster_3': 'configure-privileges-for-ccs-kibana-cert'
-          '_remote_cluster_3': 'configure-privileges-for-ccs-kibana-cert'
+          '_local_cluster_3': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_3': 'configure-privileges-for-ccs-cert-remote'
 
   # Rehome CCS and CCR API key privileges from remote-clusters-api-key.md
   'deploy-manage/remote-clusters/remote-clusters-api-key.md':
