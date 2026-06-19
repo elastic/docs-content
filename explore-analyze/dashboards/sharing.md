@@ -34,9 +34,9 @@ Share a direct link to a dashboard so that others can access it in {{kib}}.
 :width: 40%
 :::
 
-The link opens the dashboard with your current view, including any filters and search query you have applied. Keep the following in mind when you share a link:
+The link opens the dashboard in the same {{kib}} instance with your current view, including any filters and search query you have applied. Recipients need access to that instance to open the link. Keep the following in mind when you share a link:
 
-- **Authentication**: Recipients must log in to {{kib}} with an account that has the necessary permissions.
+- **Authentication**: Recipients must log in to {{kib}} with an account that has permission to view the dashboard.
 - {applies_to}`serverless: unavailable` **Anonymous access**: Users can open the link without logging in if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 - **Permanent links**: If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link.
 
