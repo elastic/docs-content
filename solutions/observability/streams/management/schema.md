@@ -1,5 +1,6 @@
 ---
 navigation_title: Map fields
+description: Map Streams fields to define how Elasticsearch stores and indexes your data, balancing query performance and storage cost.
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+

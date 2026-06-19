@@ -1,4 +1,8 @@
 project: 'Deploy and manage'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: deploy.md
@@ -17,6 +21,9 @@ toc:
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
+                    children:
+                      - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -788,8 +795,10 @@ toc:
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
+  - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
+      - hidden: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

@@ -83,15 +83,14 @@ Configure the essential agent settings in the **Settings** tab:
 
 :::::
 
-:::::{step} Enable Elastic capabilities
-:anchor: create-custom-agent-enable-elastic-capabilities
+:::::{step} Enable Elastic capabilities (optional)
 ```{applies_to}
 stack: ga 9.4+
 ```
 
-Use the **Enable Elastic Capabilities** toggle to activate built-in Elastic tools and skills for your agent. This toggle is disabled by default.
+Optionally enable the **Enable Elastic capabilities** toggle to automatically assign all Elastic-built [tools](tools/builtin-tools-reference.md), [skills](builtin-skills-reference.md), and plugins to your agent. This toggle is disabled by default for custom agents.
 
-For more information, refer to [Enable Elastic Capabilities](#enable-elastic-capabilities).
+For more information, refer to [Elastic capabilities](agent-builder-agents.md#elastic-capabilities).
 
 :::::
 
@@ -102,7 +101,7 @@ stack: ga 9.4+
 
 Configure the **Visibility** for your agent in the **Organization** section. Visibility controls who can view and edit the agent. The default setting is **Public**.
 
-For more information, refer to [Visibility settings](#visibility-settings).
+For more information, refer to [Visibility settings](#visibility-settings). You can also configure [per-agent access controls](#per-agent-access-controls) for more granular control.
 
 :::::
 
@@ -181,13 +180,15 @@ From the **Agents** page, you can perform various actions on custom agents:
 These management options apply only to custom agents and the Elastic AI Agent {applies_to}`stack: ga 9.4+`. Other built-in agents can only be chatted with or cloned, not edited or deleted.
 :::
 
-## Visibility settings [visibility-settings]
+## Visibility settings
 
 ```{applies_to}
 stack: ga 9.4+
 ```
 
 Control who can view and edit your agent by configuring its visibility. To change visibility, edit the agent and scroll to the **Organization** section.
+
+Every agent has one of three visibility levels:
 
 **Public**
 :   Anyone can view and edit.
@@ -203,22 +204,26 @@ Control who can view and edit your agent by configuring its visibility. To chang
 :width: 700px
 :::
 
-## Enable Elastic Capabilities [enable-elastic-capabilities]
+### Per-agent access controls
 
 ```{applies_to}
-stack: ga 9.4+
+stack: ga 9.5+
+serverless: ga
 ```
 
-When the **Enable Elastic Capabilities** toggle is enabled, it automatically assigns all current and future Elastic-built skills, plugins, and tools to the agent. The set of assigned capabilities is dynamic and grows as Elastic adds new built-in content.
+In addition to the three visibility levels, you can configure access controls for individual users on a per-agent basis. This allows you to grant specific users view or edit access to an agent, giving you more granular control over who can interact with and modify your agents.
 
-To review which skills and tools are active, open the agent's **Skills** or **Tools** tab after enabling the toggle. Elastic-provided items are marked with a lock icon.
+To configure per-agent access controls:
 
-Disable this toggle to manage skill, plugin, and tool assignments manually.
+1. Edit the agent and scroll to the **Organization** section.
+2. Select a base visibility level.
+3. Add individual users and assign each one a **View** or **Edit** access level.
 
-:::{image} images/elastic-capabilities.png
-:alt: Enable Elastic Capabilities toggle ON
-:width: 500px
-:::
+Users you add to the access list can interact with the agent according to the access level you assign, regardless of the base visibility setting. For example, you can set an agent to **Private** and then grant specific users view or edit access.
+
+::::{note}
+Per-agent access controls only apply to **Private** and **Shared** agents. Any user in your organization can view and use a **Public** agent.
+::::
 
 ## Best practices for custom agents
 

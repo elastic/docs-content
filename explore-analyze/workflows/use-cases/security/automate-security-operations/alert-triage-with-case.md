@@ -140,7 +140,7 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
   with:
     case_id: "{{ steps.create_case.output.case.id }}"
     observables:
-      - typeKey: "observable-type-hash-sha256"
+      - typeKey: "observable-type-file-hash"
         value: "{{ event.alerts[0].file.hash.sha256 }}"
       - typeKey: "observable-type-ipv4"
         value: "{{ event.alerts[0].source.ip }}"
@@ -265,7 +265,7 @@ steps:
         with:
           case_id: "{{ steps.create_case.output.case.id }}"
           observables:
-            - typeKey: "observable-type-hash-sha256"
+            - typeKey: "observable-type-file-hash"
               value: "{{ event.alerts[0].file.hash.sha256 }}"
             - typeKey: "observable-type-ipv4"
               value: "{{ event.alerts[0].source.ip }}"
@@ -321,4 +321,6 @@ steps:
 - [Automate security operations](/explore-analyze/workflows/use-cases/security/automate-security-operations.md): The outcomes this workflow supports.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Reference for every `cases.*` step.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): How retry, fallback, and continue work together.
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): The interactive triage flow this workflow automates.
+- [Security cases](/solutions/security/investigate/security-cases.md): The product surface this workflow drives.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): More security workflow examples.

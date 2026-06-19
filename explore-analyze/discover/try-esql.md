@@ -193,7 +193,7 @@ stack: preview 9.2
 serverless: preview
 ```
 
-In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
+In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor.
 
 :::{note}
 This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
@@ -318,6 +318,13 @@ In this version, you cannot fully reset the index configuration. For example, yo
 
 :::::
 
+### Limitations [discover-esql-lookup-editor-limitations]
+
+The following limitations apply to the lookup index editor in {{kib}}. For general limitations of the `LOOKUP JOIN` command, refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#limitations).
+
+Row display limit
+:   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
+
 ## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
@@ -435,8 +442,8 @@ The grouping field is preselected from your `STATS BY` clause. Open the **Group 
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
 
-- Selecting {icon}`plus_in_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
-- Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
+- Selecting {icon}`plus_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
+- Selecting {icon}`minus_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
 
 :::{note}
 :applies_to: { serverless:, stack: ga 9.3+ }
@@ -444,6 +451,11 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 :::
 
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+:::
 
 ## Revert to Discover's classic mode [revert-to-classic-mode]
 

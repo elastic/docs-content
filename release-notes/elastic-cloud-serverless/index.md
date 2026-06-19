@@ -12,6 +12,30 @@ Review the changes, fixes, and more to {{serverless-full}}.
 <!-- :::{changelog} /releases
 ::: -->
 
+:::{include} _snippets/2026-06-16/index.md
+:::
+
+:::{include} _snippets/2026-06-02/index.md
+:::
+
+:::{include} _snippets/2026-06-01/index.md
+:::
+
+:::{include} _snippets/2026-05-29/index.md
+:::
+
+:::{include} _snippets/2026-05-28/index.md
+:::
+
+:::{include} _snippets/2026-05-26/index.md
+:::
+
+:::{include} _snippets/2026-05-20/index.md
+:::
+
+:::{include} _snippets/2026-05-19/index.md
+:::
+
 :::{include} _snippets/2026-05-14/index.md
 :::
 
@@ -2811,7 +2835,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Adds table list view to the space selector screen [#229046]({{kib-pull}}229046)
 * Adds `kibana.alert.grouping` field to infra alerts [#229054]({{kib-pull}}229054)
 * Skips search shards with `INDEX_REFRESH_BLOCK`
-* Adds the `created_date` and `modified_date` system-managed properties to pipelines #130847](https://github.com/elastic/elasticsearch/pull/130847)
+* Adds the `created_date` and `modified_date` system-managed properties to pipelines [#130847](https://github.com/elastic/elasticsearch/pull/130847)
 * Adds the `created_date` and `modified_date` system-managed properties to component templates [#131536](https://github.com/elastic/elasticsearch/pull/131536)
 * Adds entity store and asset criticality index privileges to built-in roles [#129662](https://github.com/elastic/elasticsearch/pull/129662)
 * Organization IdP routes are now public in the OpenAPI specifications.

@@ -3,6 +3,7 @@ applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
 navigation_title: Configure advanced settings
+description: Configure advanced Streams settings, including stream descriptions, feature identification, and underlying Elasticsearch index configuration.
 products:
   - id: observability
   - id: elasticsearch
