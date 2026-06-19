@@ -33,6 +33,15 @@ Elastic offers several distributions of OpenTelemetry. Each [Elastic Distributio
 :::{include} /solutions/_snippets/edot-reference-arch.md
 :::
 
+## Collector deployment models [otel-collector-deployment-models]
+
+How you deploy the EDOT Collector—or whether you use an upstream Collector—depends on your infrastructure and goals:
+
+* **EDOT Collector in {{agent}} (9.2+)**: The EDOT Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. No separate Collector installation is needed. Refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md).
+* **Standalone EDOT Collector**: Run the EDOT Collector independently as its own process, without {{agent}}.
+* **Upstream `otelcol-contrib` Collector**: Use the community-built Collector binary to forward data to an EDOT Collector or directly to {{apm-server-or-mis}} via OTLP. Useful when you need to fan out to multiple observability backends or evaluate vendors before committing to a pipeline. Refer to [Contrib OpenTelemetry Collectors and language SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md).
+* **Managed OTLP endpoint** ({{serverless-short}} and {{ech}}): Send OTel data directly to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) without managing your own Collector.
+
 ## Why use the Elastic Distributions of OpenTelemetry?
 
 With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://reference/edot-sdks/index.md) you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
