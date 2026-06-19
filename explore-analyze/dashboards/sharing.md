@@ -16,7 +16,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 
 - [Share with a link](#share-dashboard-link): Copy a direct link to the dashboard.
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
-- [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of your dashboard.
+- [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of the dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
 - [Export dashboard configuration](#export-dashboards): Export the dashboard's definition as a JSON or NDJSON file to back it up, move it, or manage it as code.
 
@@ -24,7 +24,7 @@ You can also [set whether other users of your space can edit dashboards you own]
 
 ## Share with a link [share-dashboard-link]
 
-Share a direct link to your dashboard so that others can access it in {{kib}}.
+Share a direct link to a dashboard so that others can access it in {{kib}}.
 
 1. Open the dashboard, then select {icon}`share` **Share** in the application menu.
 2. On the **Link** tab, select **Copy link**.
@@ -75,7 +75,7 @@ stack: ga
 serverless: unavailable
 ```
 
-Generate and download a PDF or PNG file of your dashboard. The report is a static, point-in-time capture of the dashboard as currently displayed, including any filters, query, and time range you have applied. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
+Generate and download a PDF or PNG file of a dashboard. The report is a static, point-in-time capture of the dashboard as currently displayed, including any filters, query, and time range you have applied. PDF and PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 
 To generate reports, you need the **Generate PDF or PNG reports** privilege, located under **Reporting** in the **Dashboard** feature privileges. The same privilege grants access to the **Reporting** page, where generated reports are listed.
 
@@ -93,7 +93,7 @@ For general information about reporting across all {{kib}} apps, including known
 
 ## Download visualization data as CSV [download-csv]
 
-You can download the data displayed in a visualization on your dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
+You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
 
 1. Open the panel menu of the visualization, then select **Download CSV**.
 2. The CSV file is downloaded to your machine.
