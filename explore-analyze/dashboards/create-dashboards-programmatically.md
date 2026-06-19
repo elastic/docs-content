@@ -46,10 +46,10 @@ The API supports any panel type that has a defined schema:
 - Controls: options list, range slider, time slider, and ES|QL
 - SLO panels: overview, alerts, error budget, and burn rate
 - Synthetics panels: stats overview and monitors
-- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Links
-- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` APM service map
-- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Machine learning panels: single metric viewer, anomaly swim lane, and anomaly charts
-- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` Log rate analysis, change point detection, and pattern analysis panels
+- {applies_to}`stack: ga 9.5` Links
+- {applies_to}`stack: ga 9.5` APM service map
+- {applies_to}`stack: ga 9.5` Machine learning panels: single metric viewer, anomaly swim lane, and anomaly charts
+- {applies_to}`stack: ga 9.5` Log rate analysis, change point detection, and pattern analysis panels
 
 Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
