@@ -136,7 +136,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your deployment has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically.
+When your deployment or project has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}; it isn't a connection that you configure for the editor specifically.
 
 Choose the entry point that matches what you want to do:
 
