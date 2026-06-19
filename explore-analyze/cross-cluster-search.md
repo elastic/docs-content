@@ -56,25 +56,18 @@ The following APIs support {{ccs}}:
 
 After [remote clusters are connected](/deploy-manage/remote-clusters.md), you can configure which users on your local cluster can search data on remote clusters. The steps depend on the [remote cluster security model](/deploy-manage/remote-clusters/security-models.md) in use:
 
-* [API key authentication](#configure-privileges-for-ccs-api-key) (recommended), where you create roles with the required privileges on the local cluster.
+* [API key authentication](#configure-privileges-for-ccs-api-key) (recommended), where you create roles with the required remote privileges on the local cluster.
 * {applies_to}`stack: deprecated 9.0` [TLS certificate authentication](#configure-privileges-for-ccs-cert), where you create matching roles on both the local and remote clusters.
 
-You can manage roles in {{kib}} on the **Roles** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use the [role management]({{es-apis}}group/endpoint-security) APIs to add, update, remove, and retrieve roles dynamically. When you use the UI or APIs to manage roles, the roles are stored in an internal {{es}} index. When you use local files, the roles are only stored in those files. For more information, refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
-
-The following examples use the [create or update roles]({{es-apis}}operation/operation-security-put-role) API and the [create or update users]({{es-apis}}operation/operation-security-put-user) API. You must have at least the `manage_security` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) to use these APIs.
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-role-management.md
+:::
 
 ### API key authentication [configure-privileges-for-ccs-api-key]
 
-Authorization for {{ccs}} works in two parts:
-
-* The [cross-cluster API key](/deploy-manage/remote-clusters/remote-clusters-api-key.md) used to connect to a remote cluster defines the maximum access that cluster allows.
-* Roles on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) further limit which remote indices each user can search.
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-api-key-authorization.md
+:::
 
 To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
-
-::::{note}
-The cross-cluster API key used by the local cluster to connect the remote cluster must have sufficient privileges to cover all remote indices privileges required by individual users.
-::::
 
 Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
 
@@ -108,7 +101,7 @@ POST /_security/user/cross-search-user
 ```
 
 ::::{note}
-You only need to create this user on the **local** cluster.
+You only need to create this user and role on the **local** cluster.
 ::::
 
 ### TLS certificate authentication [configure-privileges-for-ccs-cert]
@@ -121,7 +114,7 @@ stack: deprecated 9.0
 Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
 ::::
 
-After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create a user role on both the local and remote clusters and assign the necessary privileges.
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the same names defined locally.
 
 ::::{important}
 You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
