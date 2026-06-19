@@ -153,7 +153,7 @@ The current query in the editor is sent to the LLM as context, so you can ask fo
 ![Natural language mode in the ES|QL editor search bar](/explore-analyze/images/kibana-esql-search-bar-nl.png "=60%")
 
 
-### AI assistance [esql-kibana-ai-assistance]
+### Write and fix queries with AI [esql-kibana-ai-assistance]
 ```{applies_to}
 stack: ga 9.5
 serverless: ga
