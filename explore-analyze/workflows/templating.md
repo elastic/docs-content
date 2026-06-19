@@ -363,6 +363,22 @@ tags: ["admin", "user"]
 | Undefined variables | Returned as empty string in string syntax and as `undefined` in type-preserving syntax |
 | Missing context properties | Treated as undefined |
 
+## Template rendering limits [workflows-template-limits]
+
+To protect execution stability, the templating engine enforces limits on every template render. These limits are most often reached by large `console` reports or loops that concatenate big strings.
+
+| Limit | Default | What it caps |
+|---|---|---|
+| Parse size | 150,000 characters | Total characters allowed in a single template |
+| Render time | 1,000 ms | Time spent rendering a single template |
+| Memory | 15,000,000 operations | Object allocations (array and string operations) during a single render |
+
+If a template exceeds one of these limits, the step fails and the render stops. To stay within the limits:
+
+- Reduce the size of the rendered output. For large reports, write results to an index or return structured data instead of formatting a single large string.
+- Move heavy transformations (filtering, grouping, or parsing large arrays) into [`data.*` steps](/explore-analyze/workflows/steps/data.md) instead of Liquid.
+- Simplify or shorten loops that build large strings.
+
 ## Learn more
 
 - [Liquid templating language](https://shopify.github.io/liquid/)
