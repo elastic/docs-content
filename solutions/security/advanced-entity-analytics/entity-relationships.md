@@ -44,7 +44,7 @@ The following sections describe each supported relationship key, the integration
 
 ### `accesses_frequently` / `accesses_infrequently` relationships [entity-relationships-accesses]
 
-These relationships are bucketed by event count over a 30-day window. A `COUNT(*) >= 4` results in `accesses_frequently`; otherwise, the relationship is `accesses_infrequently`.
+These relationships are recalculated daily. Each run buckets an actor's accesses to a given target entity by event count over the previous 30 days: a `COUNT(*) >= 4` results in `accesses_frequently`; otherwise, the relationship is `accesses_infrequently`.
 
 :::{table}
 :widths: 2-3-1-6
