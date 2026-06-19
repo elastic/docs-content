@@ -784,10 +784,10 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/entity-store.md
             children:
               - file: security/advanced-entity-analytics/entity-relationships.md
-          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
