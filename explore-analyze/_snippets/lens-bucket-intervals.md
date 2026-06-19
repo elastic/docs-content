@@ -1,0 +1,5 @@
+- **Intervals**: Create numeric ranges for continuous data by grouping a numeric field into buckets.
+  - **Field**: Select the numeric field to create intervals from.
+  - **Intervals granularity**: Use the slider to control how many intervals to create. {{kib}} divides the field into evenly spaced intervals (incremented by 10, 5, or 2) between the field's minimum and maximum values. The minimum granularity is 1, and the maximum is set by the `histogram:maxBars` advanced setting.
+  - **Create custom ranges**: Define your own ranges with specific lower and upper bounds and optional labels, instead of using the automatic granularity.
+  - **Include empty rows**: Include intervals that contain no matching documents. On by default.

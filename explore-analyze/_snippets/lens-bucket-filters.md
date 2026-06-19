@@ -1,0 +1,1 @@
+- **Filters**: Define custom KQL filters. Each filter creates one group from the documents that match its query.
