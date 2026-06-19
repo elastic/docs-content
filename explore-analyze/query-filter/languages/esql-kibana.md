@@ -132,7 +132,7 @@ To filter your data with KQL:
 
 ### Write and fix queries with AI [esql-kibana-ai-assistance]
 ```{applies_to}
-stack: preview 9.5
+stack: preview 9.5+
 serverless: preview
 ```
 
