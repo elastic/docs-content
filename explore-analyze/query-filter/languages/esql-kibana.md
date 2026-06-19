@@ -218,13 +218,13 @@ When your query fails validation, hover over the underlined error in the editor.
 :width: 50%
 :::
 
-The proposed fix appears directly below your query: the original lines are highlighted in amber and the suggested replacement in green. The same review actions as for comment-driven generation apply:
+The proposed fix appears directly below your query, with the original lines and the suggested replacement highlighted in different colors. The same review actions as for comment-driven generation apply:
 
 - **Replace** ({kbd}`cmd+shift+enter` on Mac, {kbd}`ctrl+shift+enter` on Windows/Linux) replaces the original lines with the suggested fix.
 - **Undo** ({kbd}`cmd+shift+backspace` on Mac, {kbd}`ctrl+shift+backspace` on Windows/Linux) discards the suggestion and restores the original query.
 
 :::{image} /explore-analyze/images/kibana-esql-fix-with-ai-review.png
-:alt: An ES|QL editor showing the original line highlighted in amber and the proposed AI fix in green, with Replace and Undo actions
+:alt: An ES|QL editor showing the original lines and the proposed AI fix highlighted in different colors, with Replace and Undo actions
 :screenshot:
 :width: 50%
 :::
