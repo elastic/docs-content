@@ -15,7 +15,7 @@ products:
 
 # Glossary [workflows-glossary]
 
-Every term and acronym used elsewhere in the Workflows documentation. Each entry links to the canonical reference page where one exists.
+Every term and acronym used in the Workflows documentation. Each entry links to the canonical reference page where one exists.
 
 ## A-B [workflows-glossary-a-b]
 
@@ -29,7 +29,7 @@ A {{kib}} feature for building conversational AI agents. Workflows integrates as
 
 ### Alert [workflows-glossary-alert]
 
-A document produced by an alerting rule when it fires. See also [Detection alert](#workflows-glossary-detection-alert).
+A document produced by an alerting rule when it fires. Refer to [Detection alert](#workflows-glossary-detection-alert).
 
 ### Alert state [workflows-glossary-alert-state]
 
@@ -177,7 +177,7 @@ An `on-failure` strategy that re-runs a step. Supports exponential backoff, jitt
 
 ### RRule [workflows-glossary-rrule]
 
-Recurrence Rule. The iCalendar recurrence specification. Scheduled triggers accept rrules for calendar-style recurrence. Refer to [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md).
+Recurrence Rule. The iCalendar recurrence specification. Scheduled triggers accept rules for calendar-style recurrence. Refer to [Scheduled triggers](/explore-analyze/workflows/triggers/scheduled-triggers.md).
 
 ## S [workflows-glossary-s]
 

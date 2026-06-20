@@ -17,7 +17,7 @@ products:
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
-For definitions of the terms used on this page (context, inputs, on-failure, fallback, retry, and so on), refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
+For definitions of the terms used on this page, refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
 
 ## Data flow [workflows-data-flow]
 
