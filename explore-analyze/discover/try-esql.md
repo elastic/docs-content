@@ -9,11 +9,11 @@ products:
 description: Step-by-step tutorial for querying data with Elasticsearch Query Language (ES|QL) in Discover using piped commands to filter, transform, and aggregate data with sample data and visualizations.
 ---
 
-# Using ES|QL [try-esql]
+# Query and explore data using {{esql}} in Discover [try-esql]
 
-Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{product.elasticsearch}} data directly in **Discover**, without a [data view](discover-get-started.md#find-the-data-you-want-to-use). {{esql}} uses a piped syntax where you chain commands together to filter, transform, and aggregate data without needing to switch between different query interfaces. This tutorial walks you through querying sample data with {{esql}}, from basic field selection to complex filtering and visualization.
+The {{es}} Query Language ({{esql}}) provides a powerful piped syntax for querying and modifying data directly in **Discover**. With {{esql}}, you can query your data without selecting a {{data-source}} first, build complex queries by chaining commands, and create visualizations from your query results.
 
-## Prerequisites [try-esql-prerequisites]
+This tutorial walks you through the fundamentals of using {{esql}} in **Discover**. You'll learn how to write queries with piped commands, filter and modify data, and create visualizations. The examples use {{kib}} sample web logs, but you can follow along with your own data.
 
 - The `enableESQL` setting must be enabled in {{product.kibana}}'s **Advanced Settings** (enabled by default).
 - You must have data in {{product.elasticsearch}}.
@@ -22,6 +22,7 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 ::::{tip}
 For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
 ::::
+
 
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
@@ -114,7 +115,7 @@ You can open either browser from:
 Both browsers operate on the main query only and don't apply to subqueries.
 
 
-## Edit the ES|QL visualization [_edit_the_esql_visualization]
+## Edit the {{esql}} visualization [_edit_the_esql_visualization]
 
 You can make changes to the visualization by clicking the pencil icon. This opens additional settings that let you adjust the chart type, axes, breakdown, colors, and information displayed to your liking. If you’re not sure which route to go, check one of the suggestions available in the visualization editor.
 
@@ -165,9 +166,9 @@ FROM kibana_sample_data_logs
 ```
 
 
-## ES|QL and time series data [_esql_and_time_series_data]
+## {{esql}} and time series data [_esql_and_time_series_data]
 
-By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
+By default, {{esql}} identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 
 If your index doesn’t have an explicit `@timestamp` field, but has a different time field, you can still enable the time range selector and visualization options by calling the `?_tstart` and `?_tend` parameters in your query.
 
