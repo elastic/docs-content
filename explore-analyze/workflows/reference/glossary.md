@@ -3,7 +3,7 @@ navigation_title: Glossary
 applies_to:
   stack: ga 9.4+
   serverless: ga
-description: Reference of terms used across Elastic Workflows documentation, with concrete examples and links to the canonical reference pages.
+description: Reference of terms used across Elastic Workflows documentation, with links to the canonical reference pages.
 products:
   - id: kibana
   - id: cloud-serverless
