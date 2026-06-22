@@ -14,7 +14,7 @@ This page extends [Send data from a contrib OpenTelemetry Collector](/solutions/
 
 In {{k8s}}, you deploy the EDOT gateway as a `Deployment` and expose it as a `Service` so contrib Collectors can reach it using cluster DNS.
 
-The EDOT Collector image for standalone use is `docker.elastic.co/elastic-agent/elastic-otel-collector`. The image entrypoint starts {{agent}} in `otel` mode when the `ELASTIC_AGENT_OTEL` environment variable is set to `true`, so the container only needs the `--config` flag in its `args`.
+The EDOT Collector image for standalone use is `docker.elastic.co/elastic-agent/elastic-otel-collector`. Unlike the full {{agent}} image, this image's entrypoint unconditionally starts in `otel` mode — no extra environment variables are required.
 
 ## Prerequisites
 
@@ -110,8 +110,6 @@ spec:
           image: docker.elastic.co/elastic-agent/elastic-otel-collector:{{version.edot_collector}}
           args: ["--config", "/etc/edot/gateway.yaml"]
           env:
-            - name: ELASTIC_AGENT_OTEL
-              value: "true"
             - name: ELASTIC_ENDPOINT
               valueFrom:
                 secretKeyRef:
