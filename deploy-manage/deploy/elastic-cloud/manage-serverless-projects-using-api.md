@@ -18,9 +18,13 @@ On this page, you can find examples of how to create and manage serverless proje
 - [Updating a project](#general-manage-project-with-api-update-project)
 - [Listing regions where projects can be created](#general-manage-project-with-api-list-available-regions)
 
+To try the examples in this section, start by [setting up an API key](#general-manage-project-with-api-set-up-api-key).
+
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/cloud/manage-project
 :::
+
+## API resources
 
 To learn about API principles, authentication, and how to use the OpenAPI specification, refer to the [Elastic Cloud Serverless API]({{cloud-serverless-apis}}) documentation.
 
@@ -29,8 +33,6 @@ The available APIs are grouped by project type:
 - APIs for [Search projects]({{cloud-serverless-apis}}group/endpoint-elasticsearch-projects)
 - APIs for [Observability projects]({{cloud-serverless-apis}}group/endpoint-observability-projects)
 - APIs for [Security projects]({{cloud-serverless-apis}}group/endpoint-security-projects)
-
-To try the examples in this section, start by [setting up an API key](#general-manage-project-with-api-set-up-api-key).
 
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
 
