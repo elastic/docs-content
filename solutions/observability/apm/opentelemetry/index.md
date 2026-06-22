@@ -83,9 +83,9 @@ You can set up an OpenTelemetry Collector based on contrib OpenTelemetry, instru
 This approach works well when you need to instrument a technology that Elastic doesn’t provide a solution for. For example, if you want to instrument C or C++ you can use the [OpenTelemetry C++ client](https://github.com/open-telemetry/opentelemetry-cpp). However, there are some limitations when using contrib OpenTelemetry collectors and language SDKs, including:
 
 * Elastic can’t provide implementation support on how to use contrib OpenTelemetry tools.
-* You won’t have access to Elastic enterprise APM features.
+* You won’t have access to Elastic enterprise {{product.apm}} features.
 * You might experience problems with performance efficiency.
-* Data ingested through a contrib Collector won’t trigger automatic installation of OpenTelemetry content-pack assets, such as dashboards. Only data ingested through the EDOT Collector or {{agent}} does.
+* Data ingested through a contrib Collector won't trigger automatic installation of OpenTelemetry content-pack assets, such as dashboards. Only data ingested through the EDOT Collector or {{agent}} does.
 
 For more on the limitations associated with using contrib OpenTelemetry tools, refer to [Limitations](/solutions/observability/apm/opentelemetry/limitations.md).
 
