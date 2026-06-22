@@ -12,9 +12,19 @@ products:
 
 # Kibana Fleet APIs [fleet-api-docs]
 
-You can find details for all available {{fleet}} API endpoints in the [Kibana API docs]({{kib-apis}}). For {{serverless-full}} projects, check the [Kibana Serverless API docs]({{kib-serverless-apis}}).
+This page provides cURL and {{kib}} Console examples for commonly used {{fleet}} APIs, including agent policies, integration policies, enrollment tokens, agent listing, KQL filtering, and agent rollback.
 
-In this section, we provide examples of some commonly used {{fleet}} APIs.
+For full endpoint specifications, parameters, and response schemas, refer to the [Kibana API docs]({{kib-apis}}). For {{serverless-full}} projects, use the [Kibana Serverless API docs]({{kib-serverless-apis}}).
+
+
+## Before you begin [fleet-api-before-you-begin]
+
+You'll need:
+
+* A running {{kib}} deployment or {{serverless-full}} project with {{fleet}} available
+* The {{kib}} host URL for your deployment (for example, `https://my-kibana-host:9243`)
+* Authentication credentials for {{kib}} API requests. API key authentication is recommended. For details, refer to [Authentication]({{kib-apis}}authentication).
+* A {{kib}} user with the required {{fleet}} and {{integrations}} privileges. For details, refer to [Roles and privileges](/reference/fleet/fleet-roles-privileges.md).
 
 
 ## Using the Console [using-the-console]
@@ -30,11 +40,6 @@ You can run {{fleet}} API requests through the {{kib}} Console.
 
 
 For more details about using the {{kib}} Console, refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
-
-
-## Authentication [authentication]
-
-You must authenticate to send {{fleet}} API requests. For more information, refer to [Authentication]({{kib-apis}}authentication).
 
 
 ## Create agent policy [create-agent-policy-api]
@@ -418,7 +423,7 @@ Example response (formatted for readability):
 Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of enrolled {{agents}}:
 
 ```shell
-curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents'
 ```
 
 By default, a maximum of 10,000 agents are returned, with 20 agents listed per page.
@@ -509,3 +514,22 @@ This situation can happen if:
 - The version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions.
 
 - The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space.
+
+
+## Next steps [fleet-api-next-steps]
+
+After you create agent and integration policies with the API:
+
+* [Enroll {{agents}}](/reference/fleet/fleet-enrollment-tokens.md) using enrollment tokens from your agent policy
+* [Manage {{agents}} in {{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md) to monitor status and policy assignments
+* [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md) for automation use cases
+
+
+## Related pages [fleet-api-related-pages]
+
+* [Kibana API docs]({{kib-apis}})
+* [Run API requests](/explore-analyze/query-filter/tools/console.md)
+* [Roles and privileges](/reference/fleet/fleet-roles-privileges.md)
+* [Fleet enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md)
+* [Grant standalone {{agents}} access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md)
+* [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md)
