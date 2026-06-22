@@ -161,10 +161,6 @@ POST /_security/role/remote-search
 {}
 ```
 
-:::{note}
-In {{kib}}, you query remote indices using the `<remote_cluster_name>:<target>` pattern. To give users local index or {{kib}} access, add the required privileges to `remote-search` on the local cluster, or assign them separate roles.
-:::
-
 After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
 
 ```console
