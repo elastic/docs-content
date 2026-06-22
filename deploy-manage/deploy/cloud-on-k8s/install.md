@@ -29,6 +29,14 @@ Deleting CRDs will trigger deletion of all custom resources ({{eck_resources_lis
 
 For a list of supported Kubernetes versions refer to [](../cloud-on-k8s.md#k8s-supported)
 
+## Container images [k8s-installing-eck-container-images]
+
+Elastic has partnered with [Chainguard](https://www.chainguard.dev/) to provide hardened container images based on [Wolfi](https://github.com/wolfi-dev/os), a minimal, security-focused Linux distribution designed for containerized environments. These images significantly reduce the CVE footprint of Elastic containers by including only the application and its necessary runtime dependencies. For background on this initiative, refer to the blog post [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
+
+::::{note}
+Only container images distributed via `docker.elastic.co` are officially supported by Elastic. Third-party hardened image sources, such as Docker Hardened Images (DHI) on Docker Hub, are not maintained by Elastic and fall outside the scope of Elastic support.
+::::
+
 ## Installation methods
 
 ECK supports multiple installation methods. Choose the one that best fits your infrastructure:
