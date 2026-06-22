@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/add-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-exceptions.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -15,6 +15,10 @@ description: Add and manage rule exceptions to prevent false positives and reduc
 # Add and manage exceptions [add-exceptions]
 
 Exceptions prevent a rule from generating alerts when specific conditions are met. You can add exceptions to individual rules, or create [shared exception lists](create-manage-shared-exception-lists.md) that apply to multiple rules.
+
+::::{note}
+Escaping rules differ between detection rule exceptions and {{elastic-endpoint}} exceptions. Before configuring exception conditions, refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) to verify you're using the correct format.
+::::
 
 ## Prerequisites [exceptions-requirements]
 
@@ -26,8 +30,8 @@ To use exceptions, your role must have the appropriate access. To learn how to a
 
 :::{applies-item} { "stack": "ga 9.4", "serverless": "ga" }
 
-- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and deselect **Manage Exceptions** for the `Exceptions` sub-feature.
-- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the `Security > Rules, Alerts, and Exceptions` {{kib}} feature and ensure **Manage Exceptions** remains selected for the `Exceptions` sub-feature.
+- **View only access**: To view exceptions for individual and multiple rules, your role needs at least `Read` [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Security > Rules and Exceptions` {{kib}} feature and deselect **Manage Exceptions** for the `Exceptions` sub-feature.
+- **Manage access**: To create and manage exceptions for individual and multiple rules, your role needs at least `Read` {{kib}} privileges for the `Security > Rules and Exceptions` {{kib}} feature and ensure **Manage Exceptions** remains selected for the `Exceptions` sub-feature. You can pair **Read** for **Rules** with **All** for **Exceptions** so users can maintain exceptions without changing the rest of the rule. Refer to [View and manage rules and exceptions separately](/solutions/security/detect-and-alert/detections-privileges.md#rules-exceptions-subfeatures).
 
 :::
 
@@ -59,7 +63,7 @@ For required privileges to view and manage {{elastic-endpoint}} exceptions, refe
 
 You can add exceptions from several places in the UI:
 
-* **Rule details page**: Find **Detection rules (SIEM)** in the navigation menu, select a rule, scroll to the **Rule exceptions** tab, and click **Add rule exception**.
+* **Rule details page**: Find **{{siem-rules-ui}}** in the navigation menu, select a rule, scroll to the **Rule exceptions** tab, and click **Add rule exception**.
 
     :::{image} /solutions/images/security-rule-exception-tab.png
     :alt: Detail of rule exceptions tab
@@ -103,7 +107,7 @@ After selecting one of the entry points above, the **Add rule exception** flyout
         * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{note}
-            Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
+            Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. These escaping rules apply **only** to detection rule exceptions. {{elastic-endpoint}} exceptions and trusted applications do **not** require escaping. Refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) for a full syntax comparison.
             ::::
 
             ::::{important}
@@ -164,6 +168,16 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
 
+::::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+If you've opted in to per-policy {{elastic-endpoint}} exception behavior, {{elastic-endpoint}} exceptions are no longer evaluated by detection rules and cannot be added to them. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
+::::
+
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
+
 {{elastic-endpoint}} exceptions apply to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) and to any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected. These exceptions are applied to both the detection rule and the {{elastic-endpoint}} on your hosts.
 
 ::::{important}
@@ -174,7 +188,7 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 You can add Endpoint exceptions from the following places:
 
-* **Rule details page**: Find **Detection rules (SIEM)** in the navigation menu, select an [endpoint protection rule](../manage-elastic-defend/endpoint-protection-rules.md), scroll to the **Endpoint exceptions** tab, and click **Add endpoint exception**.
+* **Rule details page**: Find **{{siem-rules-ui}}** in the navigation menu, select an [endpoint protection rule](../manage-elastic-defend/endpoint-protection-rules.md), scroll to the **Endpoint exceptions** tab, and click **Add endpoint exception**.
 * **Alerts table**: Find **Alerts** in the navigation menu, go to an {{elastic-endpoint}} alert, click the **More actions** menu {icon}`boxes_horizontal`, and select **Add Endpoint exception**.
 * **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, expand the **Endpoint Security Exception List** (or click its name), and click **Add endpoint exception**.
 
@@ -192,7 +206,7 @@ The **Add Endpoint Exception** flyout opens.
 1. Modify the conditions as needed. The same [operators](#detection-rule-exceptions) apply, with these differences:
 
     * Fields with conflicts are marked with a warning icon {icon}`warning`. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
-    * Unlike detection rule exceptions, Elastic Endpoint exceptions do not require escaping special characters.
+    * Unlike detection rule exceptions, {{elastic-endpoint}} exceptions do not require escaping special characters. Enter file paths and values exactly as they appear on the host (for example, `C:\Windows\explorer.exe`, not `C:\\Windows\\explorer.exe`). Refer to [Exception types and value syntax](/solutions/security/manage-elastic-defend/exception-types-and-syntax.md) for syntax details and examples.
 
 2. (Optional) Add a comment to the exception.
 3. Select any applicable alert actions:
@@ -266,7 +280,7 @@ Creates an exception that excludes all LFC-signed trusted processes:
 
 To view a rule's exceptions:
 
-1. Open the rule's details page. To do this, find **Detection rules (SIEM)** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
+1. Open the rule's details page. To do this, find **{{siem-rules-ui}}** in the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule's name to open its details.
 2. Scroll down and select the **Rule exceptions** or **Endpoint exceptions** tab. All exceptions that belong to the rule will display in a list.
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.

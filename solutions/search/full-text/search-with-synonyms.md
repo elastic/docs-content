@@ -108,7 +108,7 @@ The UI supports the same synonym rule formats as the file-based approach. Change
 
 ### Method 2: REST API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to 
+You can use the [synonyms APIs]({{es-apis}}group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows you to dynamically define and modify synonyms sets. For examples of how to
 create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
@@ -161,7 +161,7 @@ foo => foo bar, baz
 
 To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
 
-When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers)
+When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers)
 
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
@@ -188,6 +188,19 @@ Synonyms sets must exist before they can be added to indices. If an index is cre
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
+:::{note}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+
+When building the synonyms map, {{es}} checks available heap memory using a circuit breaker to prevent synonym token filters from causing out-of-memory errors when processing large numbers of synonym rules. The circuit breaker trips when more than 95% of heap memory is in use.
+
+The threshold is configurable using the [`indices.breaker.total.limit` parent circuit breaker setting](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker). {applies_to}`serverless: unavailable`
+
+When the circuit breaker trips, the behavior is determined by the `lenient` parameter:
+
+* If `lenient` is `true`, an empty synonyms map is used and the event is logged in the {{es}} logs.
+* If `lenient` is `false`, the affected index enters a red state.
+:::
+
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
 
@@ -200,7 +213,7 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 
 ## Step 3: Test your analyzer [synonyms-test-analyzer]
 
-You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to test your analyzer chain:
+You can test an analyzer configuration without modifying your index settings. Use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to test your analyzer chain:
 
 ```console
 GET /_analyze
@@ -223,8 +236,8 @@ Analyzers can be applied at [index time or search time](../../../manage-data/dat
 
 You need to decide when to apply your synonyms:
 
-* **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
-* **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
+* **Index time**: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing]({{es-apis}}operation/operation-reindex).
+* **Search time**: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn't require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
   :::{note}
   Synonyms sets created using the synonyms API or the UI can only be used at search time.
   :::

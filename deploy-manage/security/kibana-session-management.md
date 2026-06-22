@@ -17,7 +17,7 @@ When you log in, {{kib}} creates a session that is used to authenticate subseque
 
 When your session expires, or you log out, {{kib}} will invalidate your cookie and remove session information from the index. {{kib}} also periodically invalidates and removes any expired sessions that weren’t explicitly invalidated.
 
-To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-user-session). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
+To manage user sessions programmatically, {{kib}} exposes [session management APIs]({{kib-apis}}group/endpoint-user-session). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
 
 ## Session idle timeout [session-idle-timeout]
 
@@ -30,7 +30,7 @@ xpack.security.session.idleTimeout: "30m"
 
 ## Session lifespan [session-lifespan]
 
-You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
+You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days for self-managed, ECE, and ECK deployments, and 24 hours for Elastic Cloud Hosted deployments. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
 
 ```yaml
 xpack.security.session.lifespan: "7d"

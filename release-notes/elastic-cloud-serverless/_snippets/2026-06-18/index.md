@@ -1,0 +1,25 @@
+﻿## June 18, 2026 [elastic-release-notes-2026-06-18]
+### Features and enhancements [elastic-2026-06-18-features-enhancements]
+* Add read-only privilege tier to the Model Management pages. [#272204](https://github.com/elastic/kibana/pull/272204)
+* Perform value-based rewrite of otelcol extensions. [#273374](https://github.com/elastic/kibana/pull/273374) [#273375](https://github.com/elastic/kibana/issues/273375)
+* Highlight related dashboard panels on click. [#264426](https://github.com/elastic/kibana/pull/264426) [#204508](https://github.com/elastic/kibana/issues/204508)
+* Add above top section when unpinning controls in Dashboard. [#273089](https://github.com/elastic/kibana/pull/273089) [#264029](https://github.com/elastic/kibana/issues/264029)
+* Move Agent Builder link to the top of the Security solution's navigation. [#271532](https://github.com/elastic/kibana/pull/271532) [#265845](https://github.com/elastic/kibana/issues/265845)
+* Reject unknown keys in Entity Store API requests. [#273098](https://github.com/elastic/kibana/pull/273098)
+* Add remote cluster filter to the Synthetics monitors overview. [#267849](https://github.com/elastic/kibana/pull/267849) [#267847](https://github.com/elastic/kibana/issues/267847)
+* Add attachment type and author filter in Cases > Attachments. [#272759](https://github.com/elastic/kibana/pull/272759)
+
+### Fixes [elastic-2026-06-18-fixes]
+* Remove reasoning panel and render as stream in Agent Builder. [#272967](https://github.com/elastic/kibana/pull/272967)
+* Increase maximum panels on dashboards and add custom dashboard validation. [#272931](https://github.com/elastic/kibana/pull/272931) [#272128](https://github.com/elastic/kibana/issues/272128)
+* Fix filters not being applied when section is collapsed. [#272751](https://github.com/elastic/kibana/pull/272751) [#272535](https://github.com/elastic/kibana/issues/272535)
+* Fix scroll jump in Security alert flyout table. [#273521](https://github.com/elastic/kibana/pull/273521)
+* Fix the mute, unmute, and snooze actions failing without connector privileges. [#273392](https://github.com/elastic/kibana/pull/273392) [#273246](https://github.com/elastic/kibana/issues/273246)
+* Include all-environment SLOs in the SLO overview flyout link. [#273367](https://github.com/elastic/kibana/pull/273367) [#273366](https://github.com/elastic/kibana/issues/273366)
+* Fix Liquid for-loop validation and autocompletion in the workflow editor. [#270596](https://github.com/elastic/kibana/pull/270596)
+* Fix OpenTelemetry integrations that declare a storage extension within a data stream failing to start. [#273330](https://github.com/elastic/kibana/pull/273330)
+* Fix multiple data stream selectors in input packages with multiple policy templates. [#273364](https://github.com/elastic/kibana/pull/273364)
+* Fix Fleet `product_versions` fetch hanging when request times out. [#272715](https://github.com/elastic/kibana/pull/272715) [#234653](https://github.com/elastic/kibana/issues/234653)
+* Fix agent policy deploy timeouts when deploying many policies. [#272932](https://github.com/elastic/kibana/pull/272932)
+* Render the Discover background searches "Extend" action icon as inline SVG. [#272754](https://github.com/elastic/kibana/pull/272754)
+* Fix Discover session panel ID resolution after copy to spaces. [#272610](https://github.com/elastic/kibana/pull/272610) [#272609](https://github.com/elastic/kibana/issues/272609)

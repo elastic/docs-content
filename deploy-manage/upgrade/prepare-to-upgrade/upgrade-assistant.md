@@ -24,6 +24,10 @@ Running the latest patched version of 8.19 will apply latest version of the upgr
 
 The assistant identifies deprecated settings in your configuration, and if any of those settings are enabled, it guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing options to reindex older indices or mark them as read-only. 
 
+:::{tip}
+If there are issues with your data or configuration, the Upgrade Assistant provides next steps or more details. Refer to [](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md).
+:::
+
 ## Required permissions [_required_permissions_11] 
 
 To access the Upgrade Assistant, you need the `manage` cluster privilege. 
@@ -45,7 +49,7 @@ The Upgrade Assistant pulls information about deprecations from the following so
 * {{es}} deprecation logs
 * {{kib}} deprecations API
 
-For more information about Upgrade Assistant APIs, refer to [Upgrade Assistant APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-upgrade).
+For more information about Upgrade Assistant APIs, refer to [Upgrade Assistant APIs]({{kib-apis}}group/endpoint-upgrade).
 
 The {{es}} deprecation info API reports features that will be removed or changed in the next major version, such as cluster, node, and index level settings. You must address the reported issues before upgrading to the next major version. However, no action is required when upgrading within a major version, such as from {{es}} {{version.stack.base}} to {{version.stack}}. Deprecated features remain fully supported and continue to work in the current version, and when upgrading to a newer minor or patch release in the same major version.
 

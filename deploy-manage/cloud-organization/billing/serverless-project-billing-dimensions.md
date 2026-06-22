@@ -38,13 +38,14 @@ To learn about billing dimensions for specific offerings, refer to:
 
 If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
 
-### Serverless Plus [serverless-plus-add-on]
 
-:::{include} /deploy-manage/deploy/_snippets/serverless-plus.md
-:::
+### {{cps-cap}} [general-serverless-billing-cps]
+```{applies_to}
+serverless: preview
+```
 
-#### Availability [serverless-plus-add-on-availability]
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 
-:::{include} /deploy-manage/deploy/_snippets/serverless-plus-availability.md
-:::
+::::{include} /deploy-manage/_snippets/cps-billing.md
+::::
 

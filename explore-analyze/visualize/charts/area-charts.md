@@ -48,7 +48,7 @@ Using the **Visualization type** dropdown, select **Area**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to the **Breakdown** settings to segment your data by a categorical field, and create multiple areas within the same chart.
-   - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+   - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show filled areas plotted over time. Each area represents a series, with the filled region emphasizing the volume of data.
 :::::
@@ -68,7 +68,9 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Provide a descriptive title and axis labels that clearly communicate what the chart shows. For example, mention the metric being visualized ("Average Response Time") and reference the time period when relevant ("Dec 8-16, 2025").
 
-Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.  
+Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
@@ -112,9 +114,9 @@ In Area charts, you can enable time shift to compare different periods and ident
 4. Optionally, customize the appearance of the layer to adjust how it looks on the chart. When you duplicate a layer, {{kib}} automatically assigns a different **Series color** to the new layer. You can for example change this color, or adjust the layer's name and axis position. This name is used for the chart's legend.
 
 ::::{tip}
-You can also compute the relative change using a formula, for example:  
+You can also compute the relative change using a formula, for example:
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
-:::: 
+::::
 
 ## Area chart settings [area-chart-settings]
 
@@ -127,7 +129,9 @@ Customize your area chart to match the information you need and how you want it 
     - **Functions**:
       - **Top values**: Create separate areas for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -167,7 +171,9 @@ You can split your data by a categorical field to create multiple stacked or ove
     - **Functions**:
       - **Top values**: Create separate areas for the most common values in a field.
         - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each area represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+        - **Number of values**: How many top values to display. The default number of values depends on your environment:
+          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
+          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
@@ -199,28 +205,337 @@ When creating or editing a visualization, you can adjust the following settings.
 
 ## Area chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file area-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 **Traffic by geographic region**
 :   Visualizing which geographic regions generate the most traffic:
    - **Horizontal axis**: `@timestamp` (Date histogram)
    - **Vertical axis**: `records`
    - **Breakdown**: `geo.dest`
    
-   ![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
+![Example Lens area chart geographical regions](../../images/kibana-area-geo-regions.png " =70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a stacked area chart that shows record counts broken down by geographic destination.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Traffic by geographic region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp", "include_empty_rows": true }, <2>
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Records",
+          "format": { "type": "number", "decimals": 0 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 3, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+        "aggregate_first": true <5>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 },
+    "points": { "visibility": "visible" }
+  }
+}
+```
+
+1. Uses `area_stacked` to show each region's contribution to the total traffic.
+2. `include_empty_rows: true` fills time buckets with no data as zero rather than leaving gaps.
+3. Shows only the top 3 geographic destinations.
+4. `other_bucket` groups all remaining destinations into an **Other** segment.
+5. `aggregate_first: true` ranks destinations globally across the full time range, ensuring the same top 3 appear consistently in every bucket.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Traffic by geographic region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp", "include_empty_rows": true }, <2>
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Records",
+          "format": { "type": "number", "decimals": 0 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 3, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" },
+        "aggregate_first": true <5>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 },
+    "points": { "visibility": "visible" }
+  }
+}'
+```
+
+1. Uses `area_stacked` to show each region's contribution to the total traffic.
+2. `include_empty_rows: true` fills time buckets with no data as zero rather than leaving gaps.
+3. Shows only the top 3 geographic destinations.
+4. `other_bucket` groups all remaining destinations into an **Other** segment.
+5. `aggregate_first: true` ranks destinations globally across the full time range, ensuring the same top 3 appear consistently in every bucket.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Response code over time with annotations**
 
-:   Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events: 
+Visualizing HTTP response codes over time, highlighting the proportion of success, client error, and server error responses, with annotations for key events:
 
 * **Horizontal axis**: `@timestamp` (Date histogram)
 * **Vertical axis**: `Count of records`
-  * **Breakdown**: 
-    * **Success/Redirection**`response.keyword >= 200 and response.keyword < 400`
-    * **Client Error**`response.keyword >= 400 and response.keyword < 500`
-    * **Server Error**`response.keyword >= 500`
-  * **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
-    * **Annotation Query**: `tags:error AND tags:security`
+* **Breakdown**:
+  * **Success/Redirection**: `response.keyword >= 200 and response.keyword < 400`
+  * **Client Error**: `response.keyword >= 400 and response.keyword < 500`
+  * **Server Error**: `response.keyword >= 500`
+* **Stacking**: `Percentage` to show the distribution relative to the total count at each point in time.
+* **Annotation query**: `tags:error AND tags:security`
 
-   ![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
+![Example Lens area chart response code annotations](../../images/kibana-response-code-annotations.png " =70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a percentage area chart that shows the distribution of HTTP response codes over time.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Response code over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "bottom", "layout": { "type": "list" } },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_percentage", <1>
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Count of records",
+          "format": { "type": "number", "decimals": 2 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "filters", <2>
+        "filters": [
+          {
+            "filter": { "expression": "response.keyword >= 200 and response.keyword < 400" },
+            "label": "Success/Redirection"
+          },
+          {
+            "filter": { "expression": "response.keyword >= 400 and response.keyword < 500" },
+            "label": "Client Error"
+          },
+          { "filter": { "expression": "response.keyword >= 500" }, "label": "Server Error" }
+        ]
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "annotations", <3>
+      "ignore_global_filters": true,
+      "events": [
+        {
+          "type": "query",
+          "label": "Event",
+          "query": { "language": "kql", "expression": "tags:error AND tags:security" },
+          "time_field": "timestamp",
+          "color": { "type": "static", "color": "#ee72a6" },
+          "visible": true,
+          "icon": "asterisk"
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 }
+  }
+}
+```
+
+1. `area_percentage` normalizes each time bucket to 100% so you see the proportion of each response class, not absolute counts.
+2. `filters` breakdown creates one area per KQL filter instead of splitting by field values.
+3. The `annotations` layer marks events matching `tags:error AND tags:security` on the time axis with a pink asterisk.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Response code over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto", "placement": "outside", "position": "bottom", "layout": { "type": "list" } },
+  "axis": {},
+  "layers": [
+    {
+      "type": "area_percentage", <1>
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp"
+      },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": false,
+          "label": "Count of records",
+          "format": { "type": "number", "decimals": 2 },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "filters", <2>
+        "filters": [
+          {
+            "filter": { "expression": "response.keyword >= 200 and response.keyword < 400" },
+            "label": "Success/Redirection"
+          },
+          {
+            "filter": { "expression": "response.keyword >= 400 and response.keyword < 500" },
+            "label": "Client Error"
+          },
+          { "filter": { "expression": "response.keyword >= 500" }, "label": "Server Error" }
+        ]
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "annotations", <3>
+      "ignore_global_filters": true,
+      "events": [
+        {
+          "type": "query",
+          "label": "Event",
+          "query": { "language": "kql", "expression": "tags:error AND tags:security" },
+          "time_field": "timestamp",
+          "color": { "type": "static", "color": "#ee72a6" },
+          "visible": true,
+          "icon": "asterisk"
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" },
+    "areas": { "fill_opacity": 0.3 }
+  }
+}'
+```
+
+1. `area_percentage` normalizes each time bucket to 100% so you see the proportion of each response class, not absolute counts.
+2. `filters` breakdown creates one area per KQL filter instead of splitting by field values.
+3. The `annotations` layer marks events matching `tags:error AND tags:security` on the time axis with a pink asterisk.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 
 

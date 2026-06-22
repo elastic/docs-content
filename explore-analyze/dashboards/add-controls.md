@@ -13,7 +13,7 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help future viewers filter and display only the data they want to explore more efficiently. Controls apply filters to relevant panels to focus on specific data segments without writing filtering queries.
 
-* {applies_to}`stack: ga 9.4` **Pinned** control: Appears in the dashboard's sticky header and apply to the whole dashboard. 
+* {applies_to}`stack: ga 9.4` **Pinned** control: Appears in the dashboard's sticky header and applies to the whole dashboard. A dashboard supports up to 100 pinned controls.
 
 * {applies_to}`stack: ga 9.4` **Unpinned** control: Lives in the dashboard body; when a control is inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to panels within that section. Controls outside sections (or pinned) have global scope. Refer to [Organize dashboard panels](arrange-panels.md#collapsible-sections) for how section placement affects filter scope.
 
@@ -32,12 +32,12 @@ There are three types of controls:
 * [**Options list**](#create-and-add-options-list-and-range-slider-controls) — Adds a dropdown that allows to filter data by selecting one or more values.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
 
-  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard_controlsOptionsList.png "title =50%")
+  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
 
 * [**Range slider**](#create-and-add-options-list-and-range-slider-controls) — Adds a slider that allows to filter the data within a specified range of values. This type of control only works with numeric fields.
   For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
 
-  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
+  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
 
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can select the previous and next buttons to advance the time range backward or forward, and select the play button to watch how the data changes over the last 7 days.
@@ -75,6 +75,13 @@ To add interactive Options list and Range slider controls, create the controls, 
     * **Label**: Overwrite the default field name with a clearer and self-explanatory label.
     - **Selections**:
       Select multiple values to filter with the control, or only one.
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
+
+      * **Prefix** (default for *IP address* type fields): Show options that *start with* the entered value.
+      * **Contains** (default for *string* type fields): Show options that *contain* the entered value. This setting is only available for *string* type fields.
+      * **Exact**: Show options that are an *exact* match with the entered value.
+
+      The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
     - **Additional settings**:
 
       - **Use global filters**: A panel-level setting that applies to each individual control. It is enabled by default.
@@ -90,17 +97,17 @@ To add interactive Options list and Range slider controls, create the controls, 
     - **Selections**:
       Select multiple values to filter with the control, or only one.
 
-    - **Additional settings**:
+    - **Searching**: For Options list controls on *string* and *IP address* type fields, you can define how the control's embedded search should behave.
 
-      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
-
-      For Options list controls on *string* and *IP address* type fields, you can define how the control’s embedded search should behave:
-
-      * **Prefix**: Show options that *start with* the entered value.
-      * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
+      * **Prefix** (default): Show options that *start with* the entered value.
+      * **Contains**: Show options that *contain* the entered value. This setting is only available for *string* type fields.
       * **Exact**: Show options that are an *exact* match with the entered value.
 
       The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+
+    - **Additional settings**:
+
+      - **Ignore timeout for results**: Delays the display of the list of values until it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
     :::
 
     ::::
@@ -162,7 +169,7 @@ If you added it by starting from a query, the control is directly inserted in th
 You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
 :::{tip}
-You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the dashboard's toolbar. 
+You can also create variable controls to add later to any query by selecting **Add** > **Controls** > **Variable control** in the application menu.
 :::
 
 :::{include} ../_snippets/variable-control-examples.md
@@ -199,7 +206,7 @@ To chain variable controls, you reference one control's variable in another cont
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the toolbar, then define the control:
+   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 
@@ -260,7 +267,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. Add a time slider control.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
@@ -292,7 +299,7 @@ For pinned controls, you can click the Settings {icon}`gear` icon on control to 
 
 1. Configure the control settings.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
     * {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
 
 2. On the **Control settings** flyout, configure the following settings:

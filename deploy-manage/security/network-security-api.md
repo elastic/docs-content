@@ -12,6 +12,8 @@ products:
   - id: cloud-enterprise
   - id: cloud-serverless
 navigation_title: Through the API
+sub:
+  policy-type: "network security"
 ---
 
 # Manage network security through the API
@@ -45,16 +47,24 @@ Refer to [](network-security.md) to learn more about network security across all
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
 :::
 
-:::{note}
-Serverless projects require the [Serverless Plus add-on](/deploy-manage/deploy/elastic-cloud/project-settings.md#serverless-plus) to apply network security policies. During the promotional period, applying a network security policy to a project opts that project in to Serverless Plus.
+## Requirements
+```{applies_to}
+serverless:
+```
+
+The following requirements apply to the project where you want to apply a network security policy:
+
+:::{include} _snippets/network-sec-tier-reqs.md
 :::
+
+There are no specific requirements for {{es-serverless}} projects, {{ech}} deployments, or {{ece}} deployments.
 
 ## API reference
 
 To learn more about these endpoints, refer to the reference for your deployment type:
 
-* [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deploymentstrafficfilter)
-* [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-deploymentstrafficfilter)
+* [{{ecloud}} API]({{cloud-apis}}group/endpoint-deploymentstrafficfilter)
+* [{{ece}} API]({{ece-apis}}group/endpoint-deploymentstrafficfilter)
 
 
 ## Terminology in the {{ecloud}} console and APIs
@@ -432,6 +442,10 @@ Send a request like the following to update an IP filter ingress policy or rule 
 
 Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
+:::{warning}
+Updating a policy replaces its entire `rules` array. To add or remove individual rules, first retrieve the current rules, then send the request with the complete updated list. Any rule not included in the request body is removed from the policy.
+:::
+
 ::::{applies-switch}
 
 :::{applies-item} ess:
@@ -546,7 +560,7 @@ To associate a network security policy to a project, you must update the project
 curl -X PATCH \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-https://api.elastic-cloud.com/api/v1/admin/serverless/projects/elasticsearch \ <1>
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/$PROJECT_ID \ <1>
 -d '
 {
   "traffic_filters": [
@@ -560,7 +574,7 @@ https://api.elastic-cloud.com/api/v1/admin/serverless/projects/elasticsearch \ <
 }
 '
 ```
-1. Pass the project type in the endpoint URL: either `elasticsearch`, `observability`, or `security`.
+1. Pass the project type and ID in the URL: `/api/v1/serverless/projects/{project-type}/{project-id}`. The project type is `elasticsearch`, `observability`, or `security`.
 
 :::{warning}
 When adding, updating, or removing a policy association, you must provide a complete list of policies to be associated with the project in the `PATCH` request body. Any policies not included in this list will be removed from the project. 
@@ -611,7 +625,7 @@ To remove a network security policy from a project, you must update the project 
 curl -X PATCH \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-https://api.elastic-cloud.com/api/v1/admin/serverless/projects/elasticsearch \ <1>
+https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/$PROJECT_ID \ <1>
 -d '
 {
   "traffic_filters": [
@@ -622,7 +636,7 @@ https://api.elastic-cloud.com/api/v1/admin/serverless/projects/elasticsearch \ <
 }
 '
 ```
-1. Pass the project type in the endpoint URL: either `elasticsearch`, `observability`, or `security`.
+1. Pass the project type and ID in the URL: `/api/v1/serverless/projects/{project-type}/{project-id}`. The project type is `elasticsearch`, `observability`, or `security`.
 2. `$POLICY_ID`, the policy that you want to remove, is not included in the list.
 :::
 :::

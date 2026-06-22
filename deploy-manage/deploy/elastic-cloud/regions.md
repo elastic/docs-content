@@ -5,9 +5,14 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
+navigation_title: Regions
 ---
 
-# Regions [regions]
+# {{serverless-short}} regions [regions]
+
+:::::{note}
+If you're looking for regions for {{ech}} deployments, refer to [{{ech}} regions](cloud://reference/cloud-hosted/regions.md).
+:::::
 
 A region is the geographic area where the data center of the cloud provider that hosts your project is located. Review the available {{serverless-full}} regions to decide which region to use. If you aren’t sure which region to pick, choose one that is geographically close to you to reduce latency.
 
@@ -15,19 +20,18 @@ A region is the geographic area where the data center of the cloud provider that
 
 ::::{note} 
 Currently, a limited number of Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) regions are available. More regions for AWS, Azure, and GCP, will be added in the future.
-
 ::::
-
-
 
 ## Amazon Web Services (AWS) regions [regions-amazon-web-services-aws-regions]
 
-The following AWS regions are currently available:
+The following AWS regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
 | ap-northeast-1 | Asia Pacific (Tokyo) |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| ap-southeast-2 | Asia Pacific (Sydney) |
+| ca-central-1 | Canada (Central) |
 | eu-central-1 | Europe (Frankfurt) |
 | eu-west-1 | Europe (Ireland) |
 | eu-west-2 | Europe (London) |
@@ -38,7 +42,7 @@ The following AWS regions are currently available:
 
 ## Microsoft Azure regions [regions-azure-regions]
 
-The following Azure regions are currently available:
+The following Azure regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
@@ -49,28 +53,29 @@ The following Azure regions are currently available:
 | northeurope | North Europe (Ireland) |
 | southeastasia | Southeast Asia (Singapore) |
 | spaincentral | Spain Central (Madrid) |
+| uaenorth | UAE (Dubai) |
 | westus2 | West US 2 (Washington) |
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
 
-The following GCP regions are currently available:
+The following GCP regions are currently available for {{serverless-short}} projects:
 
 | Region | Name |
 | :--- | :--- |
-| asia-south1 | Mumbai |
-| asia-southeast1 | Singapore |
-| europe-west1 | Belgium |
-| europe-west2 | London |
-| europe-west3 | Frankfurt |
-| europe-west4 | Netherlands |
-| us-central1 | Iowa |
-| us-east1 | South Carolina |
-| us-east4 | Virginia |
-| us-west1 | Oregon |
+| asia-south1 | India (Mumbai) |
+| asia-southeast1 | Singapore (Jurong West) |
+| europe-west1 | Belgium (St. Ghislain) |
+| europe-west2 | England (London) |
+| europe-west3 | Germany (Frankfurt) |
+| europe-west4 | Netherlands (Eemshaven) |
+| us-central1 | United States (Iowa) |
+| us-east1 | United States (South Carolina) |
+| us-east4 | United States (Virginia) |
+| us-west1 | United States (Oregon) |
 
 ## Marketplaces
 
-When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
+When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Microsoft Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
 
 You can implement a multi-cloud strategy by creating a separate {{ecloud}} organization, either from another marketplace, or directly at [cloud.elastic.co](https://cloud.elastic.co).
 For example, if you have created a project in `eu-central-1` after signing up on AWS Marketplace, you can provision another project in GCP `europe-west1` by signing up for a second {{ecloud}} organization on GCP Marketplace, using another email address.
