@@ -1,6 +1,6 @@
 The default snapshot repository is a repository that {{es}} features can use when they need to perform snapshot or restore operations without explicitly specifying a repository. Currently, only [data stream lifecycle management (DLM)](/manage-data/lifecycle/data-stream.md) uses it to create searchable snapshots when moving data to the frozen tier.
 
-When you register the first repository in {{kib}}, it becomes the default automatically. You can change the default repository at any time.
+When you register your first repository in {{kib}}, the **Set as default repository** option is turned on by default, so that repository becomes the default unless you turn it off. You can change the default repository at any time.
 
 To change the default repository from {{kib}}, you need the `cluster:admin/settings/update` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster). The default repository is stored in the [`repositories.default_repository`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#repositories-default-repository) cluster setting.
 

@@ -9,7 +9,7 @@ To manage repositories in {{kib}}:
     * The repository name and type
     * Type-specific connection settings, such as the storage location and credentials
     * Repository behavior, such as whether the repository is read-only
-    * {applies_to}`stack: ga 9.5` Whether to set the repository as the [default snapshot repository](#snapshot-repo-default). The first repository you register becomes the default automatically.
+    * {applies_to}`stack: ga 9.5` Whether to set the repository as the [default snapshot repository](#snapshot-repo-default). When you register your first repository, this option is turned on by default.
 
     Select **Register** to save the repository.
 
