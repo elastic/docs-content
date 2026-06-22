@@ -118,7 +118,7 @@ stack: preview 9.3+
 The {{esql}} editor includes a search bar that helps you build a query without writing the full {{esql}} syntax. To open it, select the {icon}`magnify` or {icon}`magnify_sparkles` search icon in the editor's toolbar, or press {kbd}`cmd+k` (Mac) or {kbd}`ctrl+k` (Windows/Linux). The search bar offers two modes:
 
 - **KQL**: filter your data with free text or [KQL](kql.md) syntax, as described in this section.
-- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an LLM generate it for you. Refer to [Generate a full query from natural language](#esql-kibana-quick-search-nl).
+- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` **Natural language**: describe the query you want in plain language and let an AI agent generate it for you. Refer to [Generate a full query from natural language](#esql-kibana-quick-search-nl).
 
 The search bar closes automatically when you start typing in the editor or select outside of it.
 
@@ -139,7 +139,7 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your deployment or project has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}. It isn't a connection that you configure for the editor specifically.
+When your deployment or project has a configured large language model (LLM) connector, {{kib}} can use AI to help you author {{esql}}. The editor uses the same default AI connector as {{kib}}'s other AI features, such as {{agent-builder}}. You don't need to configure a specific connection for the editor.
 
 Choose the entry point that matches what you want to do:
 
@@ -152,16 +152,16 @@ Choose the entry point that matches what you want to do:
 - For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, you need an Enterprise license.
 - A configured LLM connector. Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
-Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. In the search bar, if no connector is available, you're prompted to set one up.
+Without these requirements, the AI prompts and actions don't appear and the editor uses only its standard autocomplete behavior. If no connector is available in the search bar, you're prompted to set one up.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
-You can describe the query you want in plain language and let an LLM translate it into {{esql}}. This is useful when you know what you want to ask of your data but are not sure which {{esql}} commands or functions to use.
+Not sure how to write an {{esql}} query? Describe what you want from your data in natural language and a specialized AI agent writes the query for you.
 
 1. Open the editor's search bar ({icon}`magnify_sparkles`).
 2. From the mode selector, select **Natural language**.
 3. In the input, describe the query you want. For example, `Show the average response time per host for the last 24 hours`.
-4. Submit your request by pressing **Enter**. The editor replaces or updates the current query, runs it, and saves it to your [query history](#esql-kibana-query-history).
+4. Press **Enter** to submit your request. The editor replaces or updates the current query, runs it, and saves it to your [query history](#esql-kibana-query-history).
 5. Review the generated query and refine it with any other {{esql}} command or function that you need.
 
 :::{tip}
@@ -176,16 +176,16 @@ The current query in the editor is sent to the LLM as context, so you can ask fo
 
 #### Generate {{esql}} from a comment [esql-kibana-ai-comment]
 
-Write a `//` comment that describes what you want, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). The editor sends your comment to the LLM and inserts the generated {{esql}} on the next line.
+Write a `//` comment that describes what you want, then press {kbd}`cmd+J` (Mac) or {kbd}`ctrl+J` (Windows/Linux). The editor sends your comment to the AI agent and inserts the generated {{esql}} on the next line.
 
 You can use this to:
 
-- Start a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
-- Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the LLM generates a single pipe to append. If the LLM determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
+- Write a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
+- Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the AI agent generates a single pipe to append. If the AI agent determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
 
 As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
 
-While the LLM is generating, an italic `Generating...` indicator appears next to your comment. Pressing the shortcut again cancels the in-flight request and starts a new one.
+While the AI agent is generating, a `Generating...` indicator appears next to your comment. Press the shortcut again to cancel the in-flight request and start a new one.
 
 When the generated code is ready, the editor highlights it and shows review actions:
 
@@ -198,11 +198,11 @@ When the generated code is ready, the editor highlights it and shows review acti
 :width: 50%
 :::
 
-When the LLM rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
+When the AI agent rewrites an existing pipe instead of adding one, the original pipe appears with a strikethrough and the **Keep** button becomes **Replace**, indicating that accepting the suggestion removes the original pipe.
 
 #### Fix query errors with AI [esql-kibana-ai-fix]
 
-When your query fails validation, hover over the underlined error in the editor. The error popup includes a **✨ Fix with AI** link. Select it to send the query and the error to the LLM and have it propose a corrected version.
+When your query fails validation, hover over the underlined error in the editor. The error popup includes a **✨ Fix with AI** link. Select it to send the query and the error to the AI agent and have it propose a corrected version.
 
 :::{image} /explore-analyze/images/kibana-esql-fix-with-ai.png
 :alt: An ES|QL query error popup showing the Fix with AI link
