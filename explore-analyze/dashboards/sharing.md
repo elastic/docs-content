@@ -108,7 +108,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 ::::{applies-item} {stack: preview 9.4, serverless: preview}
 
-Export the dashboard's JSON source in a format that the [{{kib}} dashboards API]({{kib-apis}}group/endpoint-dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
 
 1. Open the dashboard you want to export.
 2. From the application menu, select {icon}`download` **Export** → **Export JSON**.
