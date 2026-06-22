@@ -37,7 +37,7 @@ The inspector displays the {{es}} query made by the rule, the most recent raw re
 
 Expand the following to learn how the inspector can help.
 
-:::{dropdown} Confirm why a rule ran
+:::{dropdown} Confirm why an alert was generated
 Open the inspector from the alert details page. Review the time range to confirm it matches the evaluation period. Check the response to confirm the results met the rule's conditions during that window. If they did, the alert was correctly generated.
 :::
 
