@@ -73,17 +73,17 @@ The native `http` action is a built-in HTTP client for calling external APIs. It
 
 ### Create an HTTP connector
 
-You can create an HTTP connector from **Stack Management → Connectors** by selecting the **HTTP** connector type.
+You can create or select a connector without leaving the workflow editor. Enter `connector-id:` in an HTTP step and select **Create a new connector**.
 
-![Select the HTTP connector type from Stack Management](/explore-analyze/images/workflows-http-connector-stack-management.png "")
+![Create or select an HTTP connector from connector-id autocomplete](/explore-analyze/images/workflows-http-connector-autocomplete.png "")
 
-In the connector flyout, set the connector ID, base URL, authentication, and any encrypted headers that should be stored with the connector.
+In the connector flyout, set the connector ID, base URL, authentication, and any encrypted headers that should be stored with the connector. After you save the connector, its connector ID is added to the workflow YAML.
 
 ![Configure an HTTP connector with authentication and encrypted headers](/explore-analyze/images/workflows-http-connector-flyout.png "")
 
-You can also create or select a connector without leaving the workflow editor. Enter `connector-id:` in an HTTP step and select **Create a new connector**. After you save the connector in the flyout, its connector ID is added to the workflow YAML.
+You can also create an HTTP connector from **Stack Management → Connectors** by selecting the **HTTP** connector type.
 
-![Create or select an HTTP connector from connector-id autocomplete](/explore-analyze/images/workflows-http-connector-autocomplete.png "")
+![Select the HTTP connector type from Stack Management](/explore-analyze/images/workflows-http-connector-stack-management.png "")
 
 Use the following parameters in the `with` block to configure the request:
 
