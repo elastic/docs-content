@@ -43,7 +43,7 @@ The API supports any panel type that has a defined schema:
 - Discover sessions
 - Markdown
 - Image
-- Controls: options list, range slider, time slider, and ES|QL
+- Controls: options list, range slider, time slider, and {{esql}}
 - SLO panels: overview, alerts, error budget, and burn rate
 - Synthetics panels: stats overview and monitors
 - {applies_to}`stack: ga 9.5` Links
