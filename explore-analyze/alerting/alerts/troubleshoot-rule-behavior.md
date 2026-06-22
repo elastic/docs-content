@@ -20,7 +20,7 @@ Currently, the rule query inspector is only available for [custom threshold rule
 
 * **Rule details page**: Open **{{stack-manage-app}}** > **{{rules-ui}}**, find your rule, and click its name to open its details page. Click **Rule query inspector**. The inspector builds the query from the rule's _current_ parameters. Use this view to verify that the rule is configured correctly and would match the data you expect.
 
-* **Alert details page**: Go to the **Alerts** page, then open an individual alert. Click **Rule query inspector**. The inspector uses the rule parameters _as they existed when that specific alert was generated_, including the exact evaluation time range. Use this view to understand why a particular alert was or wasn't triggered.
+* **Alert details page**: Go to the **Alerts** page, then open an individual alert. Click **Rule query inspector**. The inspector uses the rule parameters _as they existed when that specific alert was generated_, including the exact evaluation time range. Use this view to understand why a particular alert was triggered.
 
 ## What the inspector shows [inspect-tabs]
 
