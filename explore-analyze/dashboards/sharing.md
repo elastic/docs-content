@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
-description: Share Kibana dashboards with your team using links or embeds, and export them as PDF, PNG, CSV, JSON, or NDJSON files.
+description: Share Kibana dashboards with your team using links or embeds, and export them as PDF, PNG, CSV, or JSON files.
 applies_to:
   stack: ga
   serverless: ga
@@ -18,7 +18,7 @@ Share a dashboard with others, or export its contents for reporting, backup, or 
 - [Embed in a webpage](#embed-dashboard): Embed an interactive dashboard as an iframe on external web pages.
 - [Export as PDF or PNG](#export-dashboard-pdf-png): Generate a report file of the dashboard.
 - [Download visualization data as CSV](#download-csv): Download the data from a visualization as a CSV file.
-- [Export dashboard configuration](#export-dashboards): Export the dashboard's definition as a JSON or NDJSON file to back it up, move it, or manage it as code.
+- [Export JSON](#export-dashboards): Export the dashboard's definition as a JSON file to back it up, move it, or manage it as code.
 
 You can also [set whether other users of your space can edit dashboards you own](#manage-dashboard-access).
 
@@ -98,9 +98,9 @@ You can download the data displayed in a visualization on a dashboard as a CSV f
 1. Open the panel menu of the visualization, then select **Download CSV**.
 2. The CSV file is downloaded to your machine.
 
-## Export dashboard configuration [export-dashboards]
+## Export JSON [export-dashboards]
 
-You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it. Two formats are available: dashboards API-compatible JSON and saved-objects NDJSON. The JSON format produces a dashboard definition that the {{kib}} dashboards API can consume. We recommend using JSON to manage dashboards as code or to work with the dashboards API.
+You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.
 
 $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
@@ -108,7 +108,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 ::::{applies-item} {stack: preview 9.4, serverless: preview}
 
-Export the JSON source of a dashboard in a format that the {{kib}} dashboards API can consume. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
+Export the dashboard's JSON source in a format that the {{kib}} dashboards API can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
 
 1. Open the dashboard you want to export.
 2. From the application menu, select {icon}`download` **Export** → **Export JSON**.
