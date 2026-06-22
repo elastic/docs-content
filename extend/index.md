@@ -10,6 +10,12 @@ You can extend and build on the Elastic Platform in several ways. Whether you ne
 
 There are two main approaches to extending Elastic: creating standardized Integrations for data ingestion or building custom solutions by developing directly against our REST APIs.
 
+Firemen!
+
+8.8 or higher
+
+This > That
+
 ## Path 1: Create an Elastic Integration
 
 If your primary goal is to bring a new data source into the Elastic Stack in a standardized, reusable way, building an Elastic Integration is the best path. Integrations are pre-packaged assets that make it simple for users to collect and process data from a specific service or platform.
