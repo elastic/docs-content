@@ -29,7 +29,7 @@ Complete the following steps:
 1. On the host machine, open the `elastic-agent.yml` file. The default location is `/opt/Elastic/Agent/elastic-agent.yml`.
 2. In the `elastic-agent.yml` file, locate the `receivers.metricbeatreceiver.metricbeat.modules` section. 
 3. In this section, there are two modules configured for `autoops_es`, one for metrics and one for templates. \
-  Add the `ss.certificate_authorities` setting to both these modules using one of the following options:
+  Add the `ssl.certificate_authorities` setting to both these modules using one of the following options:
 
     :::::{tab-set}
     :group: add-cert-auth-setting-to-module
