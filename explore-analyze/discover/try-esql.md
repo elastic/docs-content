@@ -29,7 +29,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
 1. Go to **Discover**.
 2. Switch to {{esql}} mode. You can do this from:
 
-   - **Try {{esql}}** or {icon}`code` **{{esql}}** in the application menu.
+   - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
    - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
 
    Things to know:
@@ -466,10 +466,15 @@ You can go back to the classic data view and KQL mode in Discover at any time. W
 ::::{applies-item} {serverless:, stack: ga 9.4+ }
 1. Open the Discover tab that you want to switch to classic mode.
 
-2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
+2. Switch the active tab from either location:
+
+   - From the tab's contextual menu ({icon}`boxes_vertical`), select **Switch to classic**.
+   - From the application menu, select **Switch to Classic**.
+
+   This affects only the active Discover tab.
 
 :::{tip}
-The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
+The contextual menu **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
 :::
 ::::
 
