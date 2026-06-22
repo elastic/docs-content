@@ -1,14 +1,14 @@
 ---
-navigation_title: Contrib collector
-description: Send data from a Contrib OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an EDOT Collector gateway.
+navigation_title: Contrib Collector
+description: Send data from a contrib OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an EDOT Collector gateway.
 applies_to:
-  stack: ga 9.2
+  stack: ga 9.2+
 products:
   - id: observability
   - id: edot-collector
 ---
 
-# Send data from an contrib OpenTelemetry Collector [upstream-collector-self-managed]
+# Send data from a contrib OpenTelemetry Collector [upstream-collector-self-managed]
 
 This guide shows how to forward telemetry data from an upstream contrib OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector in gateway mode.
 
@@ -19,31 +19,31 @@ Use this pattern if you:
 * Already run a contrib OpenTelemetry Collector and want to add Elastic as a backend without replacing your existing setup
 * Need to fan out telemetry to multiple observability backends from a single contrib Collector
 * Evaluate Elastic alongside another backend before committing to a full migration
-* Use a technology or language that Elastic doesn't provide an EDOT distribution for
+* Use a technology or language for which Elastic doesn't provide an EDOT distribution
 
 ## Architecture
 
-Your services send telemetry to the contrib otelcol-contrib, which forwards it over OTLP/gRPC to the EDOT Collector gateway. The gateway applies Elastic-specific processing and writes directly to {{es}}.
+Your services send telemetry to the contrib Collector (`otelcol-contrib`), which forwards it over OTLP/gRPC to the EDOT Collector gateway. The gateway applies Elastic-specific processing and writes directly to {{es}}.
 
 ```mermaid
 flowchart LR
-    S["Your services"] -->|OTLP| U["Upstream otelcol-contrib\n(one per host)"]
+    S["Your services"] -->|OTLP| U["Upstream otelcol-contrib<br/>(one per host)"]
     U -->|"OTLP/gRPC :4317"| G
 
     subgraph G["EDOT Collector (gateway)"]
-        P["elasticapm processor\nenriches spans"]
-        C["elasticapm connector\ngenerates aggregated metrics"]
+        P["elasticapm processor<br/>enriches spans"]
+        C["elasticapm connector<br/>generates aggregated metrics"]
     end
 
-    G -->|"elasticsearch exporter\nmapping.mode: otel"| E[("ES")]
+    G -->|"elasticsearch exporter<br/>mapping.mode: otel"| E[("ES")]
 ```
 
-The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments. The Managed OTLP endpoint is not available for self-managed installations.
+The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments. The Managed OTLP endpoint isn't available for self-managed installations. Sending directly to {{apm-server-or-mis}} through OTLP is also possible but not recommended. Use the EDOT gateway path when available.
 
 ## Prerequisites
 
 * A running self-managed {{es}} cluster
-* The [EDOT Collector binary](elastic-agent://reference/edot-collector/index.md) installed on the gateway host
+* The [EDOT Collector](elastic-agent://reference/edot-collector/index.md) installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
 * The [contrib OpenTelemetry Collector](https://opentelemetry.io/docs/collector/installation/) installed on your agent hosts
 * Network connectivity from the contrib Collector hosts to the EDOT gateway host on port 4317
 
@@ -56,7 +56,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
 1. In {{kib}}, navigate to **{{stack-manage-app}}** → **API keys**.
 2. Select **Create API key**.
 3. Give the key a name (for example, `edot-gateway`) and assign it the necessary privileges for writing to {{es}} data streams.
-4. Copy the encoded key. You will use it as `ELASTIC_API_KEY` in the gateway configuration.
+4. Copy the encoded key to use as the `ELASTIC_API_KEY` value in the gateway configuration.
 
 :::
 
@@ -135,15 +135,15 @@ The `elasticapm` connector and processor are required for full {{product.apm}} f
 Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
 :::
 
-Start the EDOT gateway:
+Start the EDOT gateway. The EDOT Collector is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
 
 ```bash
-edot-collector --config gateway.yml
+elastic-agent otel --config gateway.yml
 ```
 
 :::
 
-:::{step} Configure the contrib otelcol-contrib
+:::{step} Configure the contrib Collector
 
 On each contrib Collector host, configure the OTLP exporter to point to the EDOT gateway. Add or update the `exporters` and `service` sections in your existing `config.yml`:
 
@@ -152,7 +152,7 @@ exporters:
   otlp:
     endpoint: "gateway-host:4317"
     tls:
-      insecure: true  # Set to false and configure ca_file for production
+      insecure: true  # Set to `false` and configure `ca_file` for production
 
 service:
   pipelines:
@@ -189,9 +189,9 @@ Restart the contrib Collector to apply the changes.
 
 After starting both Collectors, wait a few minutes for data to appear. Then verify in {{kib}}:
 
-1. Navigate to **Observability** → **{{product.apm}}** → **Services** to confirm your services appear.
-2. Navigate to **Observability** → **{{product.apm}}** → **Service Map** to confirm environment-based filtering works.
-3. Navigate to **Discover** and check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams for incoming data.
+* Navigate to **{{observability}}** → **{{product.apm}}** → **Services** to confirm your services appear.
+* Navigate to **{{observability}}** → **{{product.apm}}** → **Service Map** to confirm environment-based filtering works.
+* Navigate to **Discover** and check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams for incoming data.
 
 If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
@@ -203,9 +203,11 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 
 If you're running in {{k8s}}, you can deploy the EDOT gateway as a {{k8s}} `Deployment` and expose it as a `Service` so contrib Collectors can reach it using the cluster DNS.
 
-The EDOT Collector image for standalone use is `docker.elastic.co/elastic-agent/elastic-otel-collector`.
+The EDOT Collector image for standalone use is `docker.elastic.co/elastic-agent/elastic-otel-collector`. The image entrypoint starts {{agent}} in `otel` mode when the `ELASTIC_AGENT_OTEL` environment variable is set to `true`, so the container only needs the `--config` flag in its `args`.
 
-### Create a secret for credentials
+::::{stepper}
+
+:::{step} Create a secret for credentials
 
 ```bash
 kubectl create secret generic elastic-secret-otel \
@@ -213,7 +215,9 @@ kubectl create secret generic elastic-secret-otel \
   --from-literal=elastic_api_key='your-encoded-api-key'
 ```
 
-### Deploy the EDOT gateway
+:::
+
+:::{step} Deploy the EDOT gateway
 
 Apply the following manifest. The `ConfigMap` holds the gateway configuration, the `Deployment` runs the EDOT Collector, and the `Service` exposes port 4317 for contrib Collectors inside the cluster.
 
@@ -328,25 +332,33 @@ spec:
       targetPort: 4318
 ```
 
-### Configure the contrib Collector
+:::
 
-Point the contrib otelcol-contrib OTLP exporter at the gateway `Service`:
+:::{step} Configure the contrib Collector
+
+Point the contrib Collector's OTLP exporter at the gateway `Service`:
 
 ```yaml
 exporters:
   otlp:
     endpoint: "edot-gateway:4317"
     tls:
-      insecure: true  # Set to false and configure ca_file for production
+      insecure: true  # Set to `false` and configure `ca_file` for production
 ```
 
-:::{note}
-For comprehensive {{k8s}} observability (including host metrics, pod logs, {{k8s}} events, and cluster metrics) use the `opentelemetry-kube-stack` Helm chart with the Elastic values instead. Refer to [{{k8s}} observability](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md).
 :::
 
-## Next steps
+:::{step} Verify data in {{kib}}
 
-* [EDOT Collector gateway configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode)
-* [{{k8s}} observability with EDOT](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md)
-* [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
-* [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
+After the gateway pods are running and your contrib Collectors point to the `edot-gateway` Service, confirm that data flows in:
+
+1. Check your services in **{{observability}}** → **{{product.apm}}**.
+2. Check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams in **Discover**.
+
+:::
+
+::::
+
+:::{note}
+For comprehensive {{k8s}} observability (including host metrics, pod logs, {{k8s}} events, and cluster metrics), use the `opentelemetry-kube-stack` Helm chart with the Elastic values instead. Refer to [{{k8s}} observability](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md) for more information.
+:::
