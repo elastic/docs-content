@@ -461,6 +461,24 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&se
 ```
 
 
+## Filter results with KQL [filter-results-with-kql]
+
+Many {{fleet}} list endpoints accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string. Use it to return only the items that match a filter, such as a specific integration.
+
+Reference each field by the saved object type that stores it. {{fleet}} stores package policies as `ingest-package-policies` objects, so to filter package policies by integration name, query the `ingest-package-policies.package.name` field.
+
+This cURL example returns only the package policies for the `nginx` integration:
+
+```shell
+curl --request GET \
+  --url 'https://my-kibana-host:9243/api/fleet/package_policies?kuery=ingest-package-policies.package.name:nginx' \
+  --header 'Authorization: ApiKey yourbase64encodedkey' \
+  --header 'kbn-xsrf: xx'
+```
+
+For the full query syntax, including wildcards, ranges, and boolean operators, refer to [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md).
+
+
 ## Manually roll back an {{agent}} upgrade [agent-rollback-api]
 ```{applies_to}
 stack: ga 9.3+
