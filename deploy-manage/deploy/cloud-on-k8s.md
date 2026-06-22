@@ -75,7 +75,15 @@ ECK is compatible with the following {{k8s}} distributions and related technolog
 
 ::::{applies-switch}
 
-:::{applies-item} eck: ga 3.3+
+:::{applies-item} eck: ga 3.4+
+
+* {{k8s}} 1.31-1.36
+* OpenShift 4.16-4.22
+* Google {{k8s}} Engine (GKE), Azure {{k8s}} Service (AKS), and Amazon Elastic {{k8s}} Service (EKS)
+* Helm: {{eck_helm_minimum_version}}+
+  :::
+
+:::{applies-item} eck: ga =3.3
 
 * {{k8s}} 1.31-1.35
 * OpenShift 4.16-4.20
