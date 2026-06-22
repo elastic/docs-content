@@ -194,12 +194,19 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
      cases:
        - case: critical
          steps:
-           - { name: page_oncall, type: pagerduty.triggerIncident, with: { ... } }
+           - name: page_oncall
+             type: pagerduty.triggerIncident
+             with: { ... }
        - case: high
          steps:
-           - { name: notify_team, type: slack.postMessage, with: { ... } }
+           - name: notify_team
+             type: slack.postMessage
+             with: { ... }
      default:
-       - { name: log_only, type: console, with: { message: "low severity" } }
+       - name: log_only
+         type: console
+         with:
+           message: "low severity"
    ```
 
 4. **`cases.*` parameters use `snake_case`:** `case_id`, not `caseId`.
@@ -287,20 +294,20 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
     parsed: "{{ steps.http.output.body | json_parse }}"
     ```
 
-11. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item.severity : 'critical'`, not `item.severity == 'critical'`.
+11. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item._source.severity : 'critical'`, not `item._source.severity == 'critical'`.
 
     ```yaml
     # Wrong — Liquid comparison
     - type: data.filter
-      items: "${{ steps.search.output }}"
+      items: "${{ steps.search.output.hits.hits }}"
       with:
-        condition: "item.severity == 'critical'"
+        condition: "item._source.severity == 'critical'"
 
     # Right — KQL equality
     - type: data.filter
-      items: "${{ steps.search.output }}"
+      items: "${{ steps.search.output.hits.hits }}"
       with:
-        condition: "item.severity : 'critical'"
+        condition: "item._source.severity : 'critical'"
     ```
 
 ## Related [workflows-cheat-related]
