@@ -20,7 +20,7 @@ In this section, we provide examples of some commonly used {{fleet}} APIs.
 
 You can run {{fleet}} API requests through the {{kib}} Console.
 
-1. Open the {{kib}} menu and go to **Management → Dev Tools**.
+1. From the {{kib}} menu, go to **Management → Dev Tools**.
 2. In your request, prepend your {{fleet}} API endpoint with `kbn:`, for example:
 
     ```sh
@@ -28,17 +28,17 @@ You can run {{fleet}} API requests through the {{kib}} Console.
     ```
 
 
-For more detail about using the {{kib}} Console refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
+For more details about using the {{kib}} Console, refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
 
 
 ## Authentication [authentication]
 
-Authentication is required to send {{fleet}} API requests. For more information, refer to [Authentication]({{kib-apis}}authentication).
+You must authenticate to send {{fleet}} API requests. For more information, refer to [Authentication]({{kib-apis}}authentication).
 
 
 ## Create agent policy [create-agent-policy-api]
 
-To create a new agent policy in {{fleet}}, call `POST /api/fleet/agent_policies`.
+To create an agent policy in {{fleet}}, call `POST /api/fleet/agent_policies`.
 
 This cURL example creates an agent policy called `Agent policy 1` in the default namespace.
 
@@ -96,7 +96,7 @@ Example response:
 }
 ```
 
-1. Make a note of the policy ID. You’ll need the policy ID to add integration policies.
+1. Note the policy ID. You need it to add integration policies.
 
 
 
@@ -109,7 +109,7 @@ You can use the {{fleet}} API to [Create and customize an {{elastic-defend}} pol
 ::::
 
 
-This cURL example creates an integration policy for Nginx and adds it to the agent policy created in the previous example:
+This cURL example creates an integration policy for Nginx and adds it to the agent policy you created in [Create agent policy](#create-agent-policy-api):
 
 ```shell
 curl --request POST \
@@ -414,7 +414,7 @@ Example response (formatted for readability):
 
 ## List all {{agents}} [list-agents-api]
 
-Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of currently enrolled {{agents}}:
+Use the [Get agents API]({{kib-apis}}operation/operation-get-fleet-agents) to retrieve a list of enrolled {{agents}}:
 
 ```shell
 curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents
@@ -463,7 +463,7 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&se
 
 ## Filter results with KQL [filter-results-with-kql]
 
-Many {{fleet}} list endpoints accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string. Use it to return only the items that match a filter, such as a specific integration.
+The {{fleet}} list endpoints for agents, agent policies, package policies, and enrollment tokens accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string to filter results. To check whether another endpoint accepts `kuery`, refer to its parameters in the [Kibana API docs]({{kib-apis}}).
 
 Reference each field by the saved object type that stores it. {{fleet}} stores package policies as `ingest-package-policies` objects, so to filter package policies by integration name, query the `ingest-package-policies.package.name` field.
 
@@ -484,19 +484,17 @@ For the full query syntax, including wildcards, ranges, and boolean operators, r
 stack: ga 9.3+
 ```
 
-The manual rollback feature for {{agent}} gives you the ability to roll back to the previously installed version if the install artifacts are still available on disk--typically seven days after the upgrade. 
+The manual rollback feature for {{agent}} lets you roll back to the previously installed version if the install artifacts are still available on disk (typically seven days after the upgrade).
 
-To roll back a single agent:
-   :Call `POST /api/fleet/agents/{agentID}/rollback`.
+To roll back a single agent, call `POST /api/fleet/agents/{agentID}/rollback`.
 
-To roll back multiple agents:
-   :Call `POST /api/fleet/agents/bulk_rollback`.
+To roll back multiple agents, call `POST /api/fleet/agents/bulk_rollback`.
 
 ### Limitations for manual rollback [rollback-limitations-api]
 
-These limitations apply for the manual rollback feature: 
+These limitations apply for the manual rollback feature:
 
-* Rollback is limited to the version running _before_ the upgrade. Both the previously and currently running versions must be 9.3.0 or later for this functionality to be available.
+* Rollback is limited to the version running _before_ the upgrade. Both the pre-upgrade and post-upgrade versions must be 9.3.0 or later for this functionality to be available.
 * Data required for the rollback is stored on disk for seven days, which can impact available disk space.
 * Rollback must be performed within seven days of the upgrade. Rollback data is automatically cleaned up after seven days and becomes unavailable.
 * Manual rollback is not available for system-managed packages such as DEB and RPM.
@@ -507,6 +505,6 @@ These limitations apply for the manual rollback feature:
 If no version is available on disk to rollback to, you get an error.
 This situation can happen if:
 
-- the version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions. 
+- The version you upgraded from is earlier than 9.3.0, as the feature is not supported for earlier versions.
 
-- the rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space. 
+- The rollback window has ended (typically more than seven days). When the rollback window ends, the files from the previous version are removed to free up disk space.
