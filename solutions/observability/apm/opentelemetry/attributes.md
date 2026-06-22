@@ -19,6 +19,10 @@ Resource attributes are a type of attribute that contains information about the 
 
 For example, Elastic APM maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
 
+:::{note}
+The `deployment.environment` attribute populates the environment selector in the {{kib}} {{product.apm}} Service Map. Without it, services appear under an "unset" environment, meaning you can't distinguish between production, staging, or other environments using the selector. Set this attribute at the Collector level using the `resource` processor so it applies consistently to all telemetry from your services.
+:::
+
 ## Setting resource attributes
 
 You can set resource attributes through environment variables or by editing the configuration of the resource processor of the OpenTelemetry Collector.
