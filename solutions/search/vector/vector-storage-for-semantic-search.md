@@ -335,7 +335,7 @@ The response includes the `index_options` you configured under the `content` fie
 }
 ```
 
-1. The `index_options` block confirms your quantization strategy is applied. After indexing data, the mapping may also include auto-detected `model_settings` such as dimensions and similarity metric.
+1. The `index_options` block confirms your quantization strategy is applied. After indexing data, the mapping might also include auto-detected `model_settings` such as dimensions and similarity metric.
 
 :::
 

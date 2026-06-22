@@ -33,6 +33,16 @@ On the **Alerts** page, the Alerts table provides a snapshot of alerts occurring
 :screenshot:
 :::
 
+The **Alerts** page displays alerts from the following rule types:
+
+* Observability rules, including APM, Logs, Metrics, Uptime, and SLO rules
+* {applies_to}`stack: ga 9.5+` {{ml}} anomaly detection rules
+* {applies_to}`stack: ga 9.5+` {{stack-manage-app}} rules
+
+::::{note}
+ML anomaly detection and Stack Management alerts are visible only to users with the corresponding feature privileges, as access is controlled by role-based access control (RBAC).
+::::
+
 You can filter this table by alert status or time period, customize the visible columns, and search for specific alerts (for example, alerts related to a specific service or environment) using KQL. Select **View alert detail** from the **More actions** menu ![action menu](/solutions/images/serverless-boxesHorizontal.svg ""), or click the Reason link for any alert to [view alert](/solutions/observability/incident-management/view-alerts.md) in detail, and you can then either **View in app** or **View rule details**.
 
 
