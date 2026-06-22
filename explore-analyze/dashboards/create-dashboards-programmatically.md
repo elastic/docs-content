@@ -53,7 +53,7 @@ The API supports any panel type that has a defined schema:
 
 Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
-Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 100 top-level items (panels and sections combined), 100 panels per section, and 100 pinned controls. Requests that exceed these limits are rejected with a validation error.
+Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 1,000 top-level items (panels and sections combined), 1,000 panels per section, and 100 pinned controls. The total number of panels, sections, and pinned controls across the dashboard also can't exceed 1,000. Requests that exceed these limits are rejected with a validation error.
 
 Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
 
