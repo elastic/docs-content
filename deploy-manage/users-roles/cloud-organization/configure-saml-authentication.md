@@ -46,7 +46,7 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 
     * **{{ech}}**: Requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
     * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
-    * **Self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Each connected cluster is evaluated individually against its own license. A cluster licensed Platinum or Enterprise is eligible, with no paid {{ecloud}} subscription required. Clusters on lower tiers, such as Basic, are not eligible, even if other eligible clusters are connected to the same organization.
+    * **ECK, ECE, and self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Each connected cluster qualifies individually based on its license. A cluster with a Platinum or Enterprise license is eligible, with no paid {{ecloud}} subscription required. Clusters on lower tiers, such as Basic, are not eligible, even if other eligible clusters are connected to the same organization.
 
 
 ## Risks and considerations [ec_risks_and_considerations]

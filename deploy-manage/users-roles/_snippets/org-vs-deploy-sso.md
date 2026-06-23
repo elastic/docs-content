@@ -13,4 +13,4 @@ If you want to avoid exposing users to the {{ecloud}} Console, or have users who
 
 In some circumstances, you might want to use both organization-level and deployment-level SSO. For example, if you have a data analyst who interacts only with data in specific deployments, then you might want to configure deployment-level SSO for them. If you manage multiple tenants in a single organization, then you might want to configure organization-level SSO to administer deployments, and deployment-level SSO for the users who are using each deployment.
 
-Availability and entitlement for organization-level SAML SSO vary by deployment model. For details, refer to the [prerequisites for configuring {{ecloud}} SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md#ec_prerequisites_4).
+Organization-level SAML SSO availability varies by resource type. For details, refer to the [prerequisites for configuring {{ecloud}} SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md#ec_prerequisites_4).
