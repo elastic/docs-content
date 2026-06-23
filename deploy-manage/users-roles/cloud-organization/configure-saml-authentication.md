@@ -41,8 +41,12 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 
 ## Prerequisites [ec_prerequisites_4]
 
-* This functionality requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
 * You must have a SAML 2.0 compatible identity provider.
+* Eligibility for organization-level SAML SSO depends on your deployment model:
+
+    * **{{ech}}**: Requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
+    * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
+    * **Self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Included when at least one connected cluster is licensed Platinum or Enterprise. No paid {{ecloud}} subscription is required; clusters on lower tiers, such as Basic, are not eligible.
 
 
 ## Risks and considerations [ec_risks_and_considerations]
