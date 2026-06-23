@@ -90,7 +90,7 @@ stack: ga
 serverless: ga
 ```
 
-Rules run in the background using an API key. The key type and ownership model depends on your deployment. In both cases, the key is used to:
+{{kib}} uses an API key to authorize rule execution each time a rule runs. The key is used to:
 
 * Execute detection queries against the configured data sources
 * Write alerts to the alerts index
@@ -98,18 +98,11 @@ Rules run in the background using an API key. The key type and ownership model d
 
 On Stack deployments, {{elastic-sec}} generates an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) when you create or modify a rule. The key captures a snapshot of your current privileges, and ownership transfers to whoever last edited the rule. This means rules continue running with their editor's privileges, even when that user is not logged in.
 
-In {{serverless-full}} projects, rules use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) tied to the original creator. Unlike {{es}} API keys, ownership does not transfer when a different user edits the rule. Refer to [Rules and API keys in Serverless](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md) for details on how this affects access, scope, and what to check after migration.
+In {{serverless-full}} projects, rules use [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md). Refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md) for details on how this key type affects rule access and behavior.
 
-::::{important}
-Ensure that only users with the [appropriate access](/solutions/security/detect-and-alert/detections-privileges.md) edit rules.
+### Impact of insufficient user privileges [rule-privilege-impact]
 
-If a user without the required privileges (such as index read access) updates a rule, the rule can stop functioning correctly and no longer generate alerts. To fix this, a user with the required privileges (such as access to manage rules) must do one of the following:
-
-- **Edit and save the rule**: On Stack deployments, this regenerates the {{es}} API key with the current user's privileges. Refer to [](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn more.
-- **Update the API key directly** (Stack only): This allows the rule configuration to remain unchanged. Refer to [](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) to learn more.
-
-Either action rebinds the rule to a user who has the necessary access. For Serverless projects, refer to [Rules and API keys in Serverless](/explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md#post-migration-checklist) for guidance on resolving migration and access errors.
-::::
+When a user without the [appropriate privileges](/solutions/security/detect-and-alert/detections-privileges.md) edits a rule, the rule can stop functioning correctly and no longer generate alerts. A user with the appropriate privileges must edit and save the rule to regenerate the API key with their credentials and restore access. On {{stack}} deployments, you can also [update the API key directly](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md#update-api-key) without changing the rule configuration.
 
 ## Key terms quick reference
 
@@ -144,7 +137,7 @@ Either action rebinds the rule to a user who has the necessary access. For Serve
 :   The logic that defines what threat behavior or pattern a rule detects. Syntax varies by rule type.
 
 **Rule authorization**
-:   The privilege model that determines what a rule can access. The API key type depends on your deployment. On {{stack}}, rules use an [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) tied to the user who last edited them. In {{serverless-short}}, rules use an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) that stays tied to the original creator.
+:   The privilege model that determines what a rule can access. Refer to [Rule authorization](#rule-authorization-concept) for more details.
 
 **Rule type**
 :   The detection method a rule uses (custom query, EQL, threshold, indicator match, new terms, {{esql}}, or {{ml}}).
