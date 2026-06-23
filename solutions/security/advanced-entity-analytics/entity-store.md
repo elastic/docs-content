@@ -204,7 +204,7 @@ User correlation requires higher-confidence identity data. A user entity is crea
 | Endpoint telemetry | {{elastic-defend}}, CrowdStrike, SentinelOne | Both `user.name` and `host.id` (the user is treated as a medium-confidence local user tied to that host) |
 
 
-If a document doesn't meet either user creation path, the user may still appear in observed fields or highlighted fields, but it isn't processed as an entity store user. As a result, that user doesn't receive entity analytics processing such as risk scoring, entity resolution, or watchlist matching. In this case, it's expected that a host can show a risk score while the user shows no risk score, assuming the alert resolved the host entity but not a valid user entity.
+If a document doesn't meet either user creation path, the user might still appear in observed fields or highlighted fields, but it isn't processed as an entity store user. As a result, that user doesn't receive entity analytics processing such as risk scoring, entity resolution, or watchlist matching. In this case, it's expected that a host can show a risk score while the user shows no risk score, assuming the alert resolved the host entity but not a valid user entity.
 
 ::::{dropdown} Click for entity creation examples
 **A document that creates a user entity (IDP source)**
