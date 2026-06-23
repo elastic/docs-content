@@ -203,7 +203,7 @@ Depending on your selected installation method, you might have to provide some o
 
   :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* $$$storage-location$$$**Storage location**: Select a cloud service provider and region for storing your metrics data. For a list of the available options, refer to the [FAQ](../autoops/ec-autoops-faq.md#sm-autoops-metrics-storage).
+* $$$storage-location$$$**Storage location**: Select a cloud service provider and region for storing your metrics data. For a list of the available options, refer to [Metrics storage locations](../autoops/cc-autoops-metrics-storage-locations.md).
 
 $$$firewall-allowlist$$$
 ::::{note}
