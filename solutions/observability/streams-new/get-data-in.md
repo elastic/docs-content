@@ -18,7 +18,7 @@ products:
 
 Streams supports two entry points depending on where your data is today:
 
-- **[Work with new data](#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Best for new deployments, custom logs, and mixed-format sources. 
+- **[Ingest new data](#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Best for new deployments, custom logs, and mixed-format sources. 
 - **[Work with existing data](#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
 
 ## Prerequisites [get-data-in-prerequisites]
@@ -50,7 +50,7 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ::::
 
-## Ingest new data with wired streams [get-data-in-wired]
+## Ingest new data [get-data-in-wired]
 
 ```{applies_to}
 stack: preview 9.2+
@@ -168,9 +168,9 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 :::::
 
-## Ingest existing data with classic streams [get-data-in-classic]
+## Work with existing data [get-data-in-classic]
 
-Classic streams work with existing {{es}} data streams. Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
 
 Classic streams:
 
