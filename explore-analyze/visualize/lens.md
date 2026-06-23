@@ -284,7 +284,7 @@ For detailed instructions on creating pie charts, including best practices and c
 stack: preview
 ```
 
-Data sampling allows you to improve the visualization loading time. When you can create your visualization, click the **Settings**/**Layer settings** icon {icon}`gear` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease the loading time by using a lower sampling percentage. This increases performance but lowers the accuracy.
+Data sampling allows you to improve the visualization loading time. When you create your visualization, click the **Settings**/**Layer settings** icon {icon}`gear` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease loading time by using a lower sampling percentage. This increases performance but reduces accuracy.
 
 
 ### Add annotations [add-annotations]

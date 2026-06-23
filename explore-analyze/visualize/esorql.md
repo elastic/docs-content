@@ -136,7 +136,9 @@ stack: ga 9.5
 serverless: ga
 ```
 
-By default, an {{esql}} visualization applies the filters and the KQL or Lucene query set at the dashboard level. To make a layer run its query independently of them, select the {icon}`gear` **Settings** icon on the layer header, then turn off **Use global filters**.
+By default, an {{esql}} visualization applies the filters and the KQL or Lucene query set at the dashboard level. To force a layer to run its query without these filters:
+1. Select the {icon}`gear` **Settings** icon on the layer header.
+2. Turn off **Use global filters**.
 
 This option covers the dashboard's filter pills and the query from the search bar. The dashboard time range is a separate control that always applies, whether or not the option is turned on.
 
