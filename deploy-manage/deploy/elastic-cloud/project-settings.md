@@ -6,9 +6,10 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
+navigation_title: Project settings
 ---
 
-# Project settings
+# Serverless project settings
 
 Project settings are configurations that apply to your entire project, managed from the {{ecloud}} console. While Elastic [manages many things for you](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md), you can customize the following aspects of your project:
 
@@ -59,12 +60,24 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 
 ## Project features and add-ons [project-features-add-ons]
 
-Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type:
+Project capabilities and billing are controlled by two settings:
+
+* **Feature tier**: A package of capabilities. The selected tier determines the baseline features available and which add-ons can be enabled.
+* **Add-ons**: Optional capabilities you turn on in the project settings. Available add-ons depend on the project type and feature tier. 
+
+  Other add-ons, such as data out and support, apply automatically based on usage or your subscription level. See [{{serverless-short}} project billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md#add-ons).
+
+
+The project features and add-ons you can configure depend on your project type:
 
 * [{{sec-serverless}} project features](#elastic-sec-project-features)
 * [{{obs-serverless}} project features](#obs-serverless-project-features) 
 
-There are no additional project features or add-ons for {{es-serverless}} projects.
+There are no project feature tiers or add-ons for {{es-serverless}} projects.
+ 
+:::{note}
+Unlike in {{ech}} deployments, your organization's [{{ecloud}} subscription level](/deploy-manage/cloud-organization/billing/manage-subscription.md) does not control which features are available in your projects. Your subscription level only controls the support level you receive.
+:::
 
 ### {{sec-serverless}} project features [elastic-sec-project-features]
 
@@ -76,39 +89,8 @@ For {{sec-serverless}} projects, edit the **Project features** to select a featu
 | **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.|
 | **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.|
 
-#### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
-
-:::{note}
-You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
-:::
-
-When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
-
-* All Entity Analytics features
-* The ability to use certain entity analytics-related integration packages, such as:
-  * Data Exfiltration detection
-  * Lateral Movement detection
-  * Living off the Land Attack detection
-* Intelligence Indicators page
-* External rule action connectors
-* Case connectors
-* Endpoint response actions history
-* Endpoint host isolation exceptions
-* Trusted devices
-* AI Assistant
-* Attack discovery
-
-And, the following data may be permanently deleted:
-
-* AI Assistant conversation history
-* AI Assistant settings
-* Entity Analytics user and host risk scores
-* Entity Analytics asset criticality information
-* Detection rule external connector settings
-* Detection rule response action settings
-
 :::{tip}
-For a full feature comparison, upgrading instructions, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
+For a full feature comparison, upgrading instructions, downgrading information, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
 :::
 
 ### {{obs-serverless}} project features

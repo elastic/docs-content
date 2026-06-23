@@ -7,24 +7,39 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-licensing.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ess: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: cloud-hosted
 ---
 
-# Manage your subscription
+# Manage your {{ecloud}} subscription
 
 When you decide to add your credit card and become a paying customer, you can choose a subscription level.
 
-Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
+Your {{ecloud}} organization has a single subscription level that applies to both {{ech}} deployments and {{serverless-full}} projects, with different effects for each:
+  * **{{ech}} deployments**: The subscription determines which features your deployments can use and the support level you receive. 
+  * **{{serverless-short}} projects**: The subscription determines the support level only. Project features are controlled by each project's [feature tier and add-ons](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons). 
 
-* [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service/pricing)
-* [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search)
+For details, refer to [Licenses and subscriptions](/deploy-manage/license.md). 
+
+:::{note}
+A paid {{ecloud}} subscription is not required for Cloud Connect. Each cluster's local license determines eligibility for connected services and certain {{ecloud}} features. [Learn more](/deploy-manage/cloud-connect.md).
+:::
+ 
+## What's included in your subscription
+
+On the following pricing pages, you can review additional details about what you get at each subscription level:
+
+* [{{ecloud}} managed service features]({{subscriptions}}/cloud): Includes feature availability for {{ech}} deployments, and support levels for both {{ech}} deployments and {{serverless-short}} projects.
+* [{{ech}} pricing](https://www.elastic.co/pricing/cloud-hosted): Includes a summary of feature availability for {{ech}} deployments, and support levels for both {{ech}} deployments and {{serverless-short}} projects.
+* {{serverless-full}} pricing:
+  * [{{es-serverless}} project pricing](https://www.elastic.co/pricing/serverless-search)
+  * [{{obs-serverless}} project pricing](https://www.elastic.co/pricing/serverless-observability)
+  * [{{sec-serverless}} project pricing](https://www.elastic.co/pricing/serverless-security)
 
 You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section.
-
 
 ## Change your subscription level [ec-select-subscription-level]
 
@@ -44,10 +59,9 @@ To change your subscription level:
 ::::
 
 ### Feature usage notifications [ec_feature_usage_notifications]
-
 ```{applies_to}
 deployment:
-  ess: all
+  ech: ga
 ```
 
 If you try to change your subscription to a lower level, but you are using features that belong either to your current level or to a higher one, you need to make some changes before you can proceed, as described in **Review required feature changes**.

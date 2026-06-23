@@ -12,15 +12,20 @@ products:
 
 {{serverless-full}} billing is based on your usage across these dimensions:
 
-* [Offerings](#offerings)
+* [Project charges](#project-charges)
 * [Add-ons](#add-ons)
 
-Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
+Specific prices can be found in the [{{ecloud}} Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
 
-## Offerings [offerings] 
+## Project charges
 
-To learn about billing dimensions for specific offerings, refer to:
+Your charges for each {{serverless-short}} project depend on the following factors:
 
+* **Project type**: Which solution you've created a project for ({{es}}, {{observability}}, or Security). The project type determines what features are available and how the project's core usage is metered.
+* **Feature tier**: For {{observability}} and Security projects, the tier selected within the project determines which features the project can use.
+* **Usage**: The volume of activity in the project, such as data ingested, data retained, compute units consumed, or executions run.
+
+For the specific billing dimensions, tiers, and usage units of each project type, refer to:
 * [](elasticsearch-billing-dimensions.md)
 * [](elastic-observability-billing-dimensions.md)
 * [](security-billing-dimensions.md)
@@ -28,6 +33,7 @@ To learn about billing dimensions for specific offerings, refer to:
 
 ## Add-ons [add-ons] 
 
+The add-ons in this section apply across all project types. Other add-ons are specific to a project type and documented on the [individual project pages](#projects). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
 
 ### Data out [general-serverless-billing-data-out] 
 
@@ -36,7 +42,9 @@ To learn about billing dimensions for specific offerings, refer to:
 
 ### Support [general-serverless-billing-support] 
 
-If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
+How the Support charge appears on your bill depends on your organization's [{{ecloud}} subscription level](/deploy-manage/license.md). 
+
+At the lowest subscription level, Support is included at no separate charge. At higher subscription levels, Support is billed as a percentage of the ECUs consumed by your {{serverless-short}} projects. For the support level included with each subscription level, refer to [{{ech}} pricing](https://www.elastic.co/pricing/cloud-hosted). To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support)
 
 
 ### {{cps-cap}} [general-serverless-billing-cps]
