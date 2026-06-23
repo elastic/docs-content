@@ -97,7 +97,7 @@ Rules use an API key to authorize all background tasks, including condition chec
 
 On Stack deployments, when you create a rule in {{kib}}, an {{es}} API key is created that captures a snapshot of your privileges. Likewise when you update a rule, the API key is updated with a snapshot of your privileges at the time of the edit.
 
-On {{serverless-short}} projects, a key is also created automatically when you create or save a rule, scoped to your roles at that time. Unlike Stack deployments, the key is not updated when you edit a rule. For details on how {{ecloud}} API keys affect rule behavior and what changes automatically, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](rules-and-elastic-cloud-api-keys.md).
+On {{serverless-short}} projects, a key is also created automatically when you create or save a rule, scoped to your roles at that time. For details on how {{ecloud}} API keys affect rule behavior, refer to [Rules and {{ecloud}} API keys in {{serverless-short}}](rules-and-elastic-cloud-api-keys.md).
 
 When you disable a rule, it retains the associated API key which is reused when the rule is enabled. If the API key is missing when you enable the rule, a new key is generated that has your current security privileges. When you import a rule, you must enable it before you can use it and a new API key is generated at that time.
 
