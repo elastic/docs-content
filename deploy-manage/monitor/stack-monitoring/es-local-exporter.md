@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/local-exporter.html
 applies_to:
   deployment:
-    self: deprecated 7.16.0
+    self: deprecated 7.16, removed 10.0
 products:
   - id: elasticsearch
 ---
