@@ -101,12 +101,21 @@ curl -fsSL https://raw.githubusercontent.com/elastic/autoops-install/main/tools/
 
 After the tool has finished running all the checks, it presents one of the following messages to indicate the results. Refer to the **Action** column for next steps.
 
+:::{important}
+If your result output shows **FAIL: SSL certificate verification failed**, your system doesn't recognize the security certificate of the server. If you are using a custom or internal CA, you must point the tool to your certificate file using the following command:
+
+```bash
+export AUTOOPS_ES_CA=/path/to/your/cert.pem
+```
+:::
+
 | Message type | Description | Action |
 |---|---|---|
 | SUCCESS | The connection to {{ecloud}} or {{es}} worked perfectly. | No action needed. Continue the steps in the installation wizard. |
 | FAIL: 'curl' required | The script cannot run because the curl tool is missing. | Install curl using your system’s package manager (`sudo apt install curl`). |
 | FAIL: DNS resolution | Your computer cannot find the address for {{ecloud}}. | Check your internet connection or verify DNS settings. |
 | FAIL: Connection timeout | A firewall is likely blocking the request on port {port-number}. | Open port {port-number} for outbound traffic to {{ecloud}}. |
+| FAIL: SSL certificate verification failed (CA certificate) | Your system doesn't recognize the security certificate of the server. | If you are using a custom or internal CA, you must point the tool to your certificate file using the following command: `export AUTOOPS_ES_CA=/path/to/your/cert.pem` |
 | FAIL: SSL handshake | The secure connection was blocked, often by "SSL Inspection." | Allowlist the Elastic URLs to bypass inspection. |
 | FAIL: 401 Unauthorized | The username, password, or API key provided is incorrect. | Double-check your credentials for typos and then re-run the tool. |
 | FAIL: 403 Forbidden | Your account connects but lacks the required permissions. | Update the user role in {{kib}} to include monitor privileges. |
@@ -116,12 +125,6 @@ After the tool has finished running all the checks, it presents one of the follo
 | SKIPPED | The {{es}} check was skipped because no URL was set. | Set `AUTOOPS_ES_URL` in Step 1 if you want to run the {{es}} check |
 ::::
 
-:::{important}
-If your result output shows **SSL certificate verification failed**, your system doesn't recognize the security certificate of the server. If you are using a custom or internal CA, you must point the tool to your certificate file using the following command:
 
-```bash
-export AUTOOPS_ES_CA=/path/to/your/cert.pem
-```
-:::
 
 :::::
