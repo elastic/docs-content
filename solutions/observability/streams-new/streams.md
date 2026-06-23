@@ -20,33 +20,8 @@ Streams allows you to automatically parse, structure, and organize your log data
 
 When an incident hits, Streams gets you to answers faster. AI-powered detection continuously scans your logs for critical signals and surfaces what matters. Instead of manually scanning thousands of log lines, you get a prioritized list of what matters.
 
-:::{image} ../../images/streams-overview.png
-:screenshot:
-:alt: Streams overview
-:width: 900px
-:::
+## Use Streams to...
 
-:::{dropdown} Basic concepts
-A Stream is defined by three intrinsic properties: where data comes from (sources), what happens to it in transit (pipeline), and where it ends up (destinations). These aren't separate systems — they're built into the stream itself.
-
-**Sources**
-
-:   Sources define how data enters a stream. Elastic supports two models:
-
-    - **Push (OpenTelemetry, Syslog, _bulk, Splunk)**: external systems send data to Elastic endpoints. Built for high-volume, continuous telemetry with strong buffering and queuing guarantees.
-    - **Pull (S3, Kafka, SaaS APIs)**: Elastic fetches data on a schedule. Ideal for audit logs, SaaS integrations, and historical ingestion.
-The underlying mechanism — Fleet agent, Agentless, Cloud forwarder — is invisible to the user. Adding a source means data starts flowing immediately. Multiple sources can feed the same stream simultaneously, letting diverse telemetry types converge naturally.
-
-**Pipelines**
-
-:   A pipeline is not an external system — it's a property of the stream, expressed through Streamlang (with OTTL available for advanced cases). Pipelines handle filtering, enrichment, field extraction, and conditional routing. They're stateless by default, with stateful processing reserved for specialized cases like tail-based sampling.
-
-**Destinations**
-
-:   A destination is itself a stream, making the model inherently composable. Routing is many-to-many: one stream can fan out to multiple destinations, and one destination can receive from multiple upstream streams. Destinations are queryable via ESQL views. Unlike today's implicit default storage, the unified model makes every routing decision explicit and visible.
-:::
-
-:::{dropdown} Use Streams to...
 **Organize logs automatically**
 :   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
 
@@ -61,32 +36,46 @@ The underlying mechanism — Fleet agent, Agentless, Cloud forwarder — is invi
 
 **Control storage costs**
 :   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams allows you to retain high-value data without discarding important information, reducing overall storage costs.
+
+
+## Quick tour
+
+This is a quick overview of the main steps to get started with Streams in {{kib}}. It covers how to get data in, organize it into streams, parse and enrich your logs, set retention policies, and monitor data quality.
+
+This tour is an ideal way to familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ecloud}} or self-managed {{es}} environment.
+
+
+:::::{stepper}
+
+::::{step} Get data in
+Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For agentless ingest, send directly to the `/logs` endpoint.
+::::
+
+::::{step} Organize your data
+
+:::{dropdown} From {{kib}}
+- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 :::
 
-% ::::::{dropdown} Who Streams is for
-%
-% :::::{tab-set}
-% ::::{tab-item} Novice user
-% If you're new to log management or to Elastic, start with the **Streams UI** and let AI do the
-% heavy lifting:
-%
-% - Use the **Streams** navigation entry in {{kib}} as your home base.
-% - Accept AI-suggested partitions and parsing rules to get structured data quickly.
-% - Use the **Significant Events** view to understand what's happening before diving into raw logs.
-% - Explore individual streams using **Discover** to build familiarity with ES|QL queries.
-% ::::
-%
-% ::::{tab-item} Expert user
-% If you already manage {{es}} data pipelines and want full control:
-%
-% - Use [Wired streams](./classic-wired-streams.md#streams-wired-streams) to build a parent-child stream hierarchy with inherited
-%   mappings, lifecycle settings, and processors.
-% - Automate stream configuration with the [Streams API]({{kib-apis}}group/endpoint-streams) to
-%   integrate Streams into your infrastructure-as-code workflows.
-% - Define advanced ILM policies and failure store management for fine-grained cost and quality
-%   control.
-% - Use the [**Advanced** tab](./management/advanced.md) to inspect and manage underlying
-%   {{es}} components when needed.
-% ::::
-% :::::
-% ::::::
+:::{dropdown} Using the API
+{applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+:::
+::::
+
+::::{step} Parse and process
+Streams automatically organizes your logs by source and component. Accept, adjust, or add [**partitions**](./organize-your-data.md) manually. Use the [**Processing** tab](./parse-and-process.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+::::
+
+::::{step} Configure retention
+Use the [**Retention** tab](./configure-retention.md) to define how long each stream stores data and to review ingestion volume.
+::::
+
+::::{step} Manage data quality
+Use the [**Data quality** column](./manage-data-quality.md) to filter your streams by data quality status.
+::::
+
+:::::
+
+::::::
+

@@ -461,7 +461,6 @@ toc:
               - file: observability/logs/logs-index-template-defaults.md
       - file: observability/streams-new/streams.md
         children:
-        - file: observability/streams-new/streams-tour.md
         - file: observability/streams-new/get-data-in.md
         - file: observability/streams-new/organize-your-data.md
         - file: observability/streams-new/parse-and-process.md
