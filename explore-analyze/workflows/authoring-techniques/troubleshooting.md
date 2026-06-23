@@ -290,6 +290,9 @@ The same pattern applies to `agent-id` and `inference-id` on AI steps. Refer to 
 Refer to [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize).
 
 ### Templated `agent-id` or `connector-id` isn't substituted [workflows-ts-ai-top-level-templating]
+```{applies_to}
+stack: ga 9.3-9.4
+```
 
 **Symptom.** An AI step fails because a referenced resource (for example, an agent or connector) isn't found, even though the value is correctly defined in `consts:`.
 
