@@ -24,7 +24,6 @@ During technical preview, there are no additional costs associated with deployin
 * Agentless integrations are supported only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}} deployments. 
 * On {{ech}}, agentless integrations require a working [{{fleet-server}}](/reference/fleet/fleet-server.md).
 * To set up a new agentless integration, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* For {{serverless-short}} deployments, traffic filtering must be turned off.
 
 ## Generally available (GA) agentless integrations
 
