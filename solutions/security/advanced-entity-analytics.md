@@ -95,6 +95,6 @@ Track the activity of users with elevated permissions, such as system administra
 - [Enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md) for centralized entity management.
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.
-- Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md) to review risk scores, surface anomalies, and prioritize investigations.
+- Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) to review risk scores, surface anomalies, and prioritize investigations.
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
 - [Explore host, user, and network data](/solutions/security/advanced-entity-analytics/explore.md) across your environment.
