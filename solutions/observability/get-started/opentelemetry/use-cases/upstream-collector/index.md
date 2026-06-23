@@ -10,7 +10,7 @@ products:
 
 # Send data from a contrib OpenTelemetry Collector [upstream-collector-self-managed]
 
-This guide shows how to forward telemetry data from an upstream contrib OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector in gateway mode.
+This guide shows how to forward telemetry data from an upstream contrib OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector configured as a gateway.
 
 ## When to use this setup
 
@@ -62,7 +62,7 @@ The EDOT gateway authenticates to {{es}} using an API key.
 
 :::{step} Configure the EDOT gateway
 
-Create a configuration file for the EDOT Collector running in gateway mode. Save this as `gateway.yml` on the gateway host.
+Create a configuration file for the EDOT Collector acting as a gateway. Save this as `gateway.yml` on the gateway host.
 
 Set the following environment variables on the gateway host before starting the Collector:
 
