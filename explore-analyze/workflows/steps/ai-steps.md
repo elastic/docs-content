@@ -30,6 +30,9 @@ AI steps let workflows call a large language model (LLM) for reasoning, classifi
 {applies_to}`stack: ga 9.3-9.4` Liquid expressions in these top-level fields aren't evaluated. For example, writing `agent-id: "{{ consts.agent_id }}"` sends the text `{{ consts.agent_id }}` to the API as-is, instead of substituting the value of `consts.agent_id`. Always use a literal value here (for example, `agent-id: elastic-ai-agent`). Tracked at [elastic/security-team#17236](https://github.com/elastic/security-team/issues/17236).
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## `ai.prompt` [ai-prompt]
 
 ```{applies_to}

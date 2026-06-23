@@ -21,7 +21,7 @@ To use entity risk scoring, your role must have the appropriate user role or pri
 
 ## Preview risky entities [_preview_risky_entities]
 
-You can preview risky entities before installing the latest risk engine. The preview shows the riskiest hosts, users, and services found in the 1000 sampled entities during the time frame selected in the date picker.
+You can preview risky entities before turning on risk scoring. The preview shows the riskiest hosts, users, and services found in the 1000 sampled entities during the time frame selected in the date picker.
 
 ::::{note}
 The preview is limited to two risk scores per {{kib}} instance or serverless project.
@@ -60,7 +60,7 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 Turning on risk scoring and entity store on deployments with less than 4 GB of memory is not recommended, as the cluster might become heavily loaded by the processes required to run Entity Analytics. For optimal performance, we recommend at least 8 GB of memory.
 :::
 
-In the default {{kib}} space, both the risk scoring engine and entity store are enabled automatically.
+In the default {{kib}} space, both risk scoring and entity store are enabled automatically.
 
 For non-default spaces, if you're enabling risk scoring for the first time:
 
@@ -70,7 +70,7 @@ For non-default spaces, if you're enabling risk scoring for the first time:
 2. Turn the toggle on.
 
    :::{note}
-   The toggle activates both the risk scoring engine and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md).
+   The toggle activates both risk scoring and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md).
    :::
 
 3. In the **Entity Risk Score** tab, choose whether to retain the [last calculated risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#residual-risk-score).
