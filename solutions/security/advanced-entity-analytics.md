@@ -23,12 +23,12 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 
 | Your goal | Start here |
 |-----------|------------|
-| Understand the foundation that powers entity analytics | [](/solutions/security/advanced-entity-analytics/entity-store.md) |
 | Check what you need before setting up | [](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md) |
-| Set up entity risk scoring for the first time | [](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md) → [](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) |
+| Understand the foundation that powers entity analytics | [](/solutions/security/advanced-entity-analytics/entity-store.md) |
+| Set up entity risk scoring for the first time | [](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) |
+| Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | Monitor risk scores for hosts, users, and services | [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) → [](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md) |
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
-| Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) |
