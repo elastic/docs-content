@@ -37,6 +37,7 @@ This issue is typically caused by one or more of the following:
 * Network issues, such as proxy misconfigurations
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
+* Missing or misconfigured `generic.otel` index template — when using `mapping.mode: otel`, if the template hasn't been installed yet or the exporter is misconfigured, the Collector reports success but no data reaches {{kib}}. Refer to [{{es}} `generic.otel` index template missing or misconfigured](/troubleshoot/ingest/opentelemetry/edot-collector/missing-otel-index-template.md) for more information.
 * Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDK
 
 ## Resolution
