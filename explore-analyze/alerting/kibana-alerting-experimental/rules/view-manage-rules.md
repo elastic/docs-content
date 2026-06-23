@@ -10,7 +10,7 @@ description: "Search, filter, sort, and bulk-manage rules from the rules list in
 
 # View and manage rules in the {{alerting-v2-system}} [manage-rules]
 
-Rule management is part of the {{alerting-v2-system}} in {{kib}}. After a rule is created, edit its settings, pause it, remove it, and more from the page listing rules. The rules list gives you search, filter, sort, and bulk actions across all rules in the space. Selecting a rule name opens its details page, where you can review the full configuration and edit or act on it directly.
+Rule management is part of the {{alerting-v2-system}} in {{kib}}. This page covers how to find and filter rules in the rules list, quick-edit settings without leaving the list, use the rule summary flyout, and navigate the rule details page including the alert activity timeline.
 
 ## Find and filter rules [find-filter-rules]
 

@@ -12,7 +12,9 @@ description: "Rules in Kibana's experimental alerting system define what to dete
 
 Rules are part of the {{alerting-v2-system}} in {{kib}}. For rules in the existing Kibana alerting system, see [Rules in Kibana alerting](../alerts/create-manage-rules.md).
 
-A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects.
+A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects. 
+
+This page explains what rules do, what they don't control, and how to choose a creation path.
 
 ## What rules do [detection-and-notification]
 

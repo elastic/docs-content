@@ -11,7 +11,9 @@ description: "Turn an ES|QL query in Discover into a rule in the experimental al
 # Create rules from Discover in the {{alerting-v2-system}} [create-rules-discover]
 
 
-Discover-based rule creation is part of the {{alerting-v2-system}} in {{kib}}. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. For the full rule form including schedule and lifecycle settings, refer to [Configure a rule](configure-a-rule.md).
+Discover-based rule creation is part of the {{alerting-v2-system}} in {{kib}}. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. 
+
+This page covers the entry points for starting a rule from Discover, how the query pre-fills the rule form, and how to use the preview panel to verify grouping and output shape before saving. For the rule form, including schedule and lifecycle settings, refer to [Configure a rule](configure-a-rule.md).
 
 ## Entry points [discover-rule-entry-points]
 

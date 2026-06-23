@@ -11,12 +11,12 @@ description: "Configure rules in the experimental alerting system: mode, ES|QL, 
 # Configure a rule in {{alerting-v2-system}} [rule-settings]
 
 
-Rule configuration is part of the {{alerting-v2-system}} in {{kib}}. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production: how often it runs, how it groups related problems, when it opens and closes alerts, and what it does when data stops arriving.
-
-For query authoring, refer to [Author rules](author-rules.md).
+Rule configuration is part of the {{alerting-v2-system}} in {{kib}}. The {{esql}} query defines what a rule detects. The settings on this page determine whether it behaves correctly in production. For query authoring, refer to [Author rules](author-rules.md).
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
 For notification routing, refer to [Notifications](../notifications.md).
 -->
+
+This page covers how to configure a rule's mode, schedule, grouping, activation and recovery thresholds, and no-data behavior.
 
 :::{note}
 For Alert-mode rules, you can create and attach action policies directly from the rule form's **Actions** step. Existing action policies that match the rule are listed on load. If none exist, an onboarding panel appears. Action policies are created or updated alongside the rule when you save. The **Actions** step is not shown for Signal-mode rules.

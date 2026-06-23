@@ -13,7 +13,7 @@ description: "Advanced ES|QL query patterns for rules in the experimental alerti
 
 ES|QL query patterns for rules are part of the {{alerting-v2-system}} in {{kib}}. Some detection problems can't be expressed as a single metric compared to a fixed threshold. You might need to know whether an SLO is burning through its error budget across multiple time windows at once. Or whether a specific host has gone silent, rather than whether the query returned nothing. Or whether a condition has persisted continuously across consecutive time buckets rather than appearing once. These are structurally different problems that require different query shapes.
 
-Use this page when a basic `STATS ... WHERE` pattern isn't enough, or when the detection logic itself requires multi-window calculation, last-seen reasoning, or bucket-level persistence checks. If you're still learning how rules in the {{alerting-v2-system}} work, start with [Author rules](author-rules.md) first.
+This page covers query patterns for SLO burn rate detection across multiple windows, no-data detection for silent hosts or stopped sources, and persistent breach detection using bucket-level continuity checks. Use it when a basic `STATS ... WHERE` pattern isn't enough. If you're still learning how rules in the {{alerting-v2-system}} work, start with [Author rules](author-rules.md) first.
 
 ## Basic threshold query [threshold-query]
 

@@ -10,7 +10,7 @@ description: "Create ES|QL rules, AI-assisted rules, and Threshold Alert rules i
 
 # Create rules in the {{alerting-v2-system}} [create-rules-rule-builder]
 
-The rule builder is part of the {{alerting-v2-system}} in {{kib}}. For a full description of what each setting does, refer to [Configure a rule](configure-a-rule.md).
+The rule builder is part of the {{alerting-v2-system}} in {{kib}}. This page covers the three creation paths available from the rules list, how the Threshold Alert builder works including alert delay and recovery conditions, and how to switch between form and YAML editing modes. For descriptions of what each setting does, refer to [Configure a rule](configure-a-rule.md).
 
 ## Creation paths [rule-creation-paths]
 
