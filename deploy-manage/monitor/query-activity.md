@@ -124,7 +124,7 @@ This filters out fast-completing queries so you can focus on the ones that are m
 
 To change this threshold:
 
-1. Go to **{{stack-manage-app}} → Advanced Settings** (or **Management → Advanced Settings** in {{serverless-short}}).
+1. Go to the **Advanced Settings** page.
 2. Search for `query_activity:minRunningTime`.
 3. Enter a new value in milliseconds.
 4. Select **Save changes**.
