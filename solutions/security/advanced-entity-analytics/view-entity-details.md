@@ -87,7 +87,7 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * Non-alert risk inputs and their contribution scores, including: 
   * Asset criticality level
   * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
+  * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 

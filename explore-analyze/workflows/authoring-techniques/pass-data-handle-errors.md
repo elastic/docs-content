@@ -17,6 +17,8 @@ products:
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
+For definitions of the terms used on this page, refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
+
 ## Data flow [workflows-data-flow]
 
 Every step in a workflow produces an output. By default, this output is added to a global `steps` object in the workflow's context, making it available to all subsequent steps.

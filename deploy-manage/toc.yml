@@ -701,6 +701,7 @@ toc:
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
             children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-autoops-metrics-storage-locations.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/autoops-disable-metrics-collection.md

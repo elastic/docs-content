@@ -19,6 +19,9 @@ The `waitForInput` step pauses workflow execution until a human submits input. I
 
 For the end-to-end pattern including resume API details and design guidance, refer to [Human-in-the-loop](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |
