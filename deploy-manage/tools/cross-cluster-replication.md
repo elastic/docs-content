@@ -231,8 +231,8 @@ This following sections provide more information about how to configure and use 
 * [Cluster settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Searchable snapshot](snapshot-and-restore/searchable-snapshots.md)
 
-If you want to replicate any of this data, you must replicate it to a remote cluster manually.
+If you want to replicate any of this data, you must replicate it to a local cluster manually.
 
 ::::{note}
-Data for [searchable snapshot](snapshot-and-restore/searchable-snapshots.md) indices is stored in the snapshot repository. {{ccr-cap}} won’t replicate these indices completely, even though they’re either partially or fully-cached on the {{es}} nodes. To achieve searchable snapshots in a remote cluster, configure snapshot repositories on the remote cluster and use the same {{ilm}} policy from the local cluster to move data into the cold or frozen tiers on the remote cluster.
+Data for [searchable snapshot](snapshot-and-restore/searchable-snapshots.md) indices is stored in the snapshot repository. {{ccr-cap}} won’t replicate these indices completely, even though they’re either partially or fully-cached on the {{es}} nodes. To achieve searchable snapshots in a local cluster, configure snapshot repositories on the local cluster and use the same {{ilm}} policy from the remote cluster to move data into the cold or frozen tiers on the local cluster.
 ::::
