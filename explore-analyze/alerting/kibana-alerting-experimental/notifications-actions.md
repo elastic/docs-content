@@ -5,14 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How {{alerting-v2-system}} action policies route alert episodes to notifications and actions."
+description: "How experimental alerting system action policies route alert episodes to notifications and actions."
 ---
 
 # Notifications and actions for the {{alerting-v2-system}}
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. After a rule produces alert episodes, action policies decide whether and when to invoke workflows. Workflows are what actually send the notification or run the automation.
+Action policies are part of the {{alerting-v2-system}} in {{kib}}. After a rule produces alert episodes in Alert mode, action policies decide whether and when to invoke workflows. Workflows are what actually send the notification or run the automation. Rules running in Detect mode produce signals, which are not processed by action policies.
 
-This page explains how action policies work. For creating and configuring them step by step, refer to [Create and configure an action policy](action-policies/create-configure-action-policy.md).
+This page covers how action policies gate alert episodes before invoking a workflow, the difference between global and per-rule policies, and how the dispatcher evaluates them on a continuous cycle. For creating and configuring them step by step, refer to [Create and configure an action policy](action-policies/create-configure-action-policy.md).
 
 ## What is an action policy [action-policies]
 

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies in the {{alerting-v2-system}}."
+description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies in the experimental alerting system."
 ---
 
 # Action policy reference for the {{alerting-v2-system}} [action-policy-reference]
