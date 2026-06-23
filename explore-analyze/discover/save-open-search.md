@@ -39,7 +39,7 @@ By default, a Discover session stores the query text, filters, and current view 
     2. If the session is time-based, turn on **Store time with Discover session** to save the current time filter and refresh interval with it.
     3. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` In **Add to dashboard**, choose whether to also add the session as a panel on a dashboard. Select **New** to create a dashboard, **Existing** to choose one, or **None** to skip. The session is saved to the library in all cases.
 2. Select **Save**.
-3. To reload your search results in **Discover**, select **Open** in the application menu, and select the saved Discover session.
+3. To reload your search results in **Discover**, select **Open session** (or **Open** in earlier versions) in the application menu, and select the saved Discover session.
 
 If the saved Discover session is associated with a different {{data-source}} than is currently selected, opening the saved Discover session changes the selected {{data-source}}. The query language used for the saved Discover session is also automatically selected.
 

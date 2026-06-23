@@ -42,7 +42,7 @@ In this case **Discover** provides the default experience until it detects that 
 You can check which experience is currently active for your current Discover session. This can help you confirm whether the type of data you're currently exploring is properly detected or if Discover is currently using its default experience.
 
 1. Open the Inspector:
-   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+   * {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
    * {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
 1. Open the **View** dropdown, then select **Profiles**.
 
@@ -437,7 +437,7 @@ If your query doesn't match any context-aware profile, the agent infers the anal
 From **Discover**, you can create a rule to periodically check when data goes above or below a certain threshold within a given time interval.
 
 1. Ensure that your data view, query, and filters fetch the data for which you want an alert.
-2. In the application menu, click **Alerts > Create search threshold rule**.
+2. In the application menu, select **Create alert rule** (or **Alerts** in earlier versions), then select **Create search threshold rule**.
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 

@@ -30,11 +30,17 @@ xpack.security.session.idleTimeout: "30m"
 
 ## Session lifespan [session-lifespan]
 
-You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days for self-managed, ECE, and ECK deployments, and 24 hours for Elastic Cloud Hosted deployments. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
+You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
 
 ```yaml
 xpack.security.session.lifespan: "7d"
 ```
+
+::::{note}
+You can define session lifespan globally with `xpack.security.session.lifespan`, or per authentication provider with `xpack.security.authc.providers.<provider-type>.<provider-name>.session.lifespan`. For more details, refer to [Valid settings for all authentication providers](kibana://reference/configuration-reference/security-settings.md#authentication-provider-settings).
+
+For example, when using [{{ecloud}} SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md), {{ecloud}} sets a default lifespan of `24h` for the Cloud SSO SAML provider.
+::::
 
 
 ## Session cleanup interval [session-cleanup-interval]

@@ -172,7 +172,7 @@ If [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-ri
 | Unknown (less than 20) | Any | Neutral (no signal either way) |
 
 :::{tip}
-:applies_to: stack: ga 9.3+
+:applies_to: stack: removed =9.4, ga =9.3, preview 9.1-9.2
 The risk scoring engine includes privileged user status as an additional risk input. If a user entity in the finding has privileged status, treat this as equivalent to high-impact asset criticality.
 :::
 
