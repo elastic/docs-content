@@ -32,10 +32,15 @@ Use inline edit when you need to adjust metadata or scheduling settings quickly 
 
 To inspect a rule without navigating away from the rules list, select the expand icon on any row. The rule summary flyout opens alongside the list and shows a snapshot of the rule: its status, last run time, recent alert episode activity, and quick actions such as enable, disable, and snooze.
 
+The flyout includes tabs for the rule overview, execution history, and a query preview. The query preview tab is only available for rules created through the AI Agent builder. It renders the rule's underlying {{esql}} in an interactive sandbox so you can inspect or test the query without navigating to the full rule details page.
+
 Use the flyout when you want to confirm a rule is healthy or take a quick action without committing to a full page load. To open the complete rule configuration with all settings and edit controls, select the rule name in the table row or in the flyout header.
 
 ## Rule details page
 
+The rule details page is organized into tabs that let you review a rule's configuration and activity history.
+
+- **Overview** (Alert mode only): Shows an alert activity timeline for each series the rule tracks. The timeline displays a color-coded history of alert episode state transitions per series, along with summary statistics: alert episodes started, recovered, still open, and median duration. A link to view all matching alert episodes is available, filtered to the current rule and time range. Lane labels appear only for grouped rules. The overview tab is not shown for Signal-mode rules, which don't open alert episodes.
 - **Conditions**: The full {{esql}} base query, alert condition, schedule, lookback, grouping, and recovery settings.
 - **Runbook**: If the rule has an investigation guide, it appears here alongside Conditions.
 

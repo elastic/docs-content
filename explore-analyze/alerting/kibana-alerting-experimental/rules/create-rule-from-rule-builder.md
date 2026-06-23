@@ -28,6 +28,12 @@ You define the rule by filling in structured fields for the data source, aggrega
 
 Use the **Create ES|QL rule** path when the detection logic requires more than a single metric threshold, such as multi-window burn rates or cross-series correlation.
 
+### Alert delay [threshold-builder-alert-delay]
+
+When the rule is in Alert mode, the threshold builder includes an alert delay field that controls when the rule opens an alert episode after the threshold is first breached. Three modes are available: immediate activation on the first breach, activation after a set number of consecutive breaches, or activation after the condition has persisted for a specified duration. For a description of each mode and guidance on when to use it, refer to [Activation thresholds](configure-a-rule.md#activation-recovery-thresholds).
+
+The alert delay field is only shown for Alert-mode rules. Signal-mode rules don't maintain alert episode lifecycle tracking, so activation thresholds don't apply.
+
 ### Recovery conditions [threshold-builder-recovery]
 
 When you define alert conditions in the Threshold Alert builder, the builder automatically derives corresponding recovery conditions by flipping the comparators. For example, a `greater than` alert condition produces a `less than or equal to` recovery condition. You can customize the derived conditions or leave the defaults as generated. Recovery conditions are preserved correctly when you reopen an existing rule in builder mode for editing.

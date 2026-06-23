@@ -46,6 +46,18 @@ WHERE avg_cpu > 0.9
 
 The `KEEP` command controls which fields appear on each stored alert event. Only the fields you `KEEP` are available for policy matchers, grouping keys, and triage in the Alerts UI.
 
+### Query parameters [query-parameters]
+
+{{esql}} rule queries support `?param` placeholder syntax for values you want to supply separately from the query body. Placeholders let you write a reusable query and vary threshold values through the rule configuration rather than hard-coding them inline.
+
+```esql
+FROM metrics-*
+| STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
+| WHERE avg_cpu > ?threshold
+```
+
+<!-- TODO: Confirm the exact mechanism for supplying parameter values — whether through the rule form, API, or YAML `params` key — and document the supported value types and validation behavior once the M2 parameterization API is finalized. -->
+
 ### Recovery condition [recovery-condition]
 
 Recovery conditions are optional. They determine when an active alert episode closes.

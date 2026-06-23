@@ -21,6 +21,9 @@ YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lis
 | `metadata.name` | string | Max 256 characters | The name of the rule. |
 | `schedule.every` | duration | For example, `5s`, `1m`, `5m` | How often the rule runs. Minimum interval applies. |
 | `evaluation.query.base` | string | Valid {{esql}} query, max 10,000 characters | The query that checks your data on each run. |
+| `evaluation.query.blocks` | array of strings | Valid {{esql}} expressions | Optional additional {{esql}} expressions appended to the base query. Each block is applied in sequence after the base query runs. Use blocks to define reusable conditions or to separate the base data shape from alert conditions. |
+
+<!-- TODO: Confirm the accepted structure for `evaluation.query.blocks` — specifically whether each block is a bare {{esql}} clause (for example, `WHERE avg_cpu > ?threshold`) or a full expression, and whether there is a maximum count or length per block. Verify against the M2 schema once available. -->
 
 ## Metadata fields
 

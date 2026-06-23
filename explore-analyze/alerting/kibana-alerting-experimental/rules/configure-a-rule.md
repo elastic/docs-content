@@ -79,15 +79,23 @@ These settings are only available for Alert-mode rules (`kind: alert`).
 
 ### Activation thresholds
 
-Configure activation using count, timeframe, or both:
+Activation thresholds control when a breached rule transitions from pending to active. Three delay modes are available:
+
+| Mode | Behavior | When to use |
+| --- | --- | --- |
+| Immediate | Opens an alert episode as soon as the threshold is breached on the first evaluation. | Use when any single breach warrants attention and latency matters. |
+| Breaches | Opens an alert episode after the threshold is breached a set number of times in a row. | Use when a single breach isn't enough reason to act (for example, when brief spikes are normal and you only care if the condition keeps firing). |
+| Duration | Opens an alert episode after the threshold has been continuously breached for a set time. | Use when duration of the problem matters more than how many evaluations caught it (for example, sustained high CPU rather than a momentary spike). |
+
+You can also use Breaches and Duration together. For example, require the threshold to be breached five times in a row _and_ persist for at least two minutes before an alert episode opens. Use `pending_operator` to control whether both constraints must be met (`AND`) or either one is enough (`OR`).
+
+Configure these modes using the following fields. Timeframe values must be between 5 seconds and 365 days.
 
 | Field | Description |
 | --- | --- |
-| `pending_count` | Consecutive breaches required |
-| `pending_timeframe` | Minimum duration the condition must persist (shown as **Alert delay** in the UI) |
-| `pending_operator` | How to combine count and timeframe (`AND` or `OR`) |
-
-Each timeframe value must be between 5 seconds and 365 days.
+| `pending_count` | Number of consecutive breach evaluations required before the alert episode opens. |
+| `pending_timeframe` | How long the condition must remain breached before the alert episode opens. |
+| `pending_operator` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
 ### Recovery thresholds
 
