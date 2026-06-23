@@ -40,7 +40,9 @@ When you define alert conditions in the Threshold Alert builder, the builder aut
 
 ## ES|QL rule: form and YAML editing [rule-builder-form-yaml]
 
-The **Create ES|QL rule** path supports both a step-by-step form and a YAML editing mode. You can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option.
+The **Create ES|QL rule** path supports both a step-by-step form and a YAML editing mode. When creating a new rule, you can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option.
+
+When editing an existing rule, the form/YAML toggle is disabled if the rule's YAML configuration contains settings the form cannot represent. In that case, the rule opens in YAML-only mode to prevent the form from silently dropping fields on save. The YAML editor remains fully functional. For the list of configurations that trigger this restriction, refer to [YAML-only mode when editing rules](create-rule-with-yaml.md#yaml-only-edit).
 
 Use YAML mode when you want to fine-tune the raw rule definition, copy a configuration from an existing rule, or work faster than filling in individual form fields allows. The YAML editor isn't available within the Threshold Alert builder or other rule builder types.
 
