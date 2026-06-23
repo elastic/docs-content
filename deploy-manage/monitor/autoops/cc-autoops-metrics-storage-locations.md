@@ -12,7 +12,7 @@ products:
 
 # AutoOps metrics storage locations [cc-autoops-metrics-storage-locations]
 
-When you connect an ECE, ECK, or self-managed cluster to AutoOps, you [choose a storage location](cc-connect-self-managed-to-autoops.md#storage-location) where AutoOps stores your metrics. 
+When you connect an ECE, ECK, or self-managed cluster to AutoOps, you [choose a storage location](cc-connect-self-managed-to-autoops.md#storage-location) where your metrics are stored. 
 
 The following cloud service providers (CSPs) and regions are available.
 
