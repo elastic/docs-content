@@ -144,7 +144,7 @@ $$$connect-more-clusters$$$**Do I have to re-run the installation wizard to conn
 ### Collected metrics and data in AutoOps for ECE, ECK, or self-managed clusters
 
 $$$sm-autoops-metrics-storage$$$ **Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?**
-:   When you connect your cluster, you choose the cloud service provider and region where AutoOps stores your metrics.
+:   When you connect your cluster, you choose the cloud service provider and region where your metrics are stored.
 
     For the full list of supported storage locations, refer to [Metrics storage locations](/deploy-manage/monitor/autoops/cc-autoops-metrics-storage-locations.md).
 
