@@ -35,7 +35,10 @@ If you don't have the required privileges, the page displays a message asking yo
 
 ## Access query activity
 
-To open **Query activity**, go to **{{stack-manage-app}} → Cluster performance → Query activity**.
+How you open **Query activity** depends on your deployment type:
+
+* {applies_to}`stack:` Go to **{{stack-manage-app}} → Cluster performance → Query activity**.
+* {applies_to}`serverless:` Go to **Admin and Settings → Project performance → Query activity**.
 
 ## View running queries
 
@@ -121,7 +124,7 @@ This filters out fast-completing queries so you can focus on the ones that are m
 
 To change this threshold:
 
-1. Go to **{{stack-manage-app}} → Advanced Settings**.
+1. Go to **{{stack-manage-app}} → Advanced Settings** (or **Management → Advanced Settings** in {{serverless-short}}).
 2. Search for `query_activity:minRunningTime`.
 3. Enter a new value in milliseconds.
 4. Select **Save changes**.
