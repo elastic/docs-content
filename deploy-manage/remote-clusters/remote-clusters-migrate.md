@@ -119,7 +119,7 @@ On the local cluster, stop any persistent tasks that refer to the remote cluster
 
 On the local cluster:
 
-1. Enhance any roles used by local cluster users with the required [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) for {{ccr}} and {{ccs}}. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key). Note:
+1. Enhance any roles used by local cluster users with the required [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) for {{ccr}} and {{ccs}}. Refer to [Configure privileges for {{ccr}}](/deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md#configure-privileges-for-ccr-api-key) and [Configure privileges for {{ccs}}](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs-api-key). Note:
 
     * You only need to assign additional `remote_indices` or `remote_cluster` privileges to existing roles used for cross-cluster operations. You should be able to copy these privileges from the original roles on the remote cluster, where they are defined under the certification based security model.
     * The roles on the local cluster can’t exceed the `access` privilege granted by the cross-cluster API key. Any extra local privileges will be suppressed by the cross-cluster API key’s privileges.

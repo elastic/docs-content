@@ -15,9 +15,9 @@ products:
 
 Entity risk scoring is an advanced {{elastic-sec}} analytics feature that helps security analysts detect changes in an entity’s risk posture, hunt for new threats, and prioritize incident response.
 
-Entity risk scoring allows you to monitor risk score changes of hosts, users, and services in your environment. When generating advanced scoring analytics, the risk scoring engine utilizes threats from its end-to-end XDR use cases, such as SIEM, cloud, and endpoint. It leverages the Elastic SIEM detection engine to generate host, user, and service risk scores from the last 30 days.
+Entity risk scoring allows you to monitor risk score changes of hosts, users, and services in your environment. When generating advanced scoring analytics, risk scoring utilizes threats from its end-to-end XDR use cases, such as SIEM, cloud, and endpoint. It leverages the Elastic SIEM detection engine to generate host, user, and service risk scores from the last 30 days.
 
-It also generates risk scores on a recurring interval, and allows for easy onboarding and management. The engine is built to factor in risks from all {{elastic-sec}} use cases, and allows you to customize and control how and when risk is calculated.
+It also generates risk scores on a recurring interval, and allows for easy onboarding and management. Risk scoring is built to factor in risks from all {{elastic-sec}} use cases, and allows you to customize and control how and when risk is calculated.
 
 
 ## Risk scoring inputs [security-entity-risk-scoring-risk-scoring-inputs]
@@ -52,7 +52,7 @@ The resulting entity risk scores are stored in the `risk-score.risk-score-<space
 :::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-1. Risk scoring runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). Up to 10,000 alerts are processed per entity.
+1. The risk scoring maintainer runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). Up to 10,000 alerts are processed per entity.
 
     ::::{note}
     * Starting in 9.4, only entities that exist in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) receive a risk score. Alerts referencing entities not in the entity store do not contribute to any risk score.
