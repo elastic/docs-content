@@ -35,10 +35,7 @@ If you don't have the required privileges, the page displays a message asking yo
 
 ## Access query activity
 
-How you open **Query activity** depends on your deployment type:
-
-* {applies_to}`stack:` Go to **{{stack-manage-app}} → Cluster performance → Query activity**.
-* {applies_to}`serverless:` Go to **Admin and Settings → Project performance → Query activity**.
+Find the **Query activity** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## View running queries
 
