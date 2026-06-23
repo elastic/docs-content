@@ -14,9 +14,9 @@ products:
   - id: elastic-stack
 ---
 
-# Add significant events
+# Add significant events to Streams [streams-significant-events]
 
-Significant Events periodically runs a query on your stream to find important events. Significant events could be error messages, exceptions, or other log messages that are of interest to you.
+Significant Events periodically runs a query on your stream to find important events. Use it to create significant-event queries from AI suggestions or custom filters, and to surface errors, exceptions, or other log messages that matter to you.
 
 To define significant events, either:
 

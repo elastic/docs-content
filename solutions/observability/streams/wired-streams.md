@@ -10,7 +10,7 @@ products:
 
 # Wired streams [streams-wired-streams]
 
-Wired streams send your documents to a wired streams endpoint, from which you can route data into child streams based on [partitioning](./management/partitioning.md) rules you set up manually or with the help of AI suggestions.
+Wired streams receive log data through a dedicated endpoint and route it into child streams based on partitioning rules. Unlike classic streams that work with existing data streams, wired streams let you organize streams hierarchically with automatic inheritance of mappings, lifecycle settings, and processors. This page explains wired stream field naming conventions, how to enable and send data to wired streams, and how to view them in Discover.
 
 :::::{applies-switch}
 

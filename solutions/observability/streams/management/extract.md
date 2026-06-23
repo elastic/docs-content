@@ -13,7 +13,7 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Process documents [streams-extract-fields]
+# Process documents in Streams [streams-extract-fields]
 
 After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 

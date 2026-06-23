@@ -14,7 +14,7 @@ products:
   - id: elastic-stack
 ---
 
-# Manage data quality [streams-data-quality]
+# Manage data quality in Streams [streams-data-quality]
 
 From the **Streams** page, use the **Data quality** column to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
 

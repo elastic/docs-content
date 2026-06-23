@@ -15,11 +15,12 @@ products:
 ---
 
 # Partition data into child streams [streams-partitioning]
+
+For [wired streams](../wired-streams.md), use the **Partitioning** tab to organize and route log data into meaningful child streams based on manual field-based rules or AI-generated suggestions. Partitioning helps you manage data from multiple systems by creating logical groupings (such as by team or technology) and applying different lifecycles to each partition. This page explains when to partition your data, how to create partitions manually or with AI, and best practices for partition granularity.
+
 :::{note}
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
-
-For [wired streams](../wired-streams.md), the wired streams endpoints act as the entry point for all your log data.
 
 Once you've sent your data to a wired streams endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
