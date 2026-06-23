@@ -904,4 +904,3 @@ redirects:
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'
-  'deploy-manage/api-keys/rules-and-elastic-cloud-api-keys.md': 'explore-analyze/alerting/alerts/rules-and-elastic-cloud-api-keys.md'
