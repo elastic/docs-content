@@ -480,7 +480,7 @@ spec:
                 mountPath: /usr/share/elasticsearch/config/custom-truststore
               env:
               - name: ES_JAVA_OPTS
-                value: "-Djavax.net.ssl.trustStore=/usr/share/elasticsearch/config/custom-truststore/cacerts -Djavax.net.ssl.keyStorePassword=changeit"
+                value: "-Djavax.net.ssl.trustStore=/usr/share/elasticsearch/config/custom-truststore/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
     ```
 
 7. Create the snapshot repository
