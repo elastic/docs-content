@@ -48,7 +48,7 @@ Use the [**Retention** tab](./configure-retention.md) to define how long each st
 ::::
 
 ::::{step} Manage data quality
-Use the [**Data quality** column](./monitor-and-fix-data-quality.md) to filter your streams by data quality status.
+Use the [**Data quality** column](./manage-data-quality.md) to filter your streams by data quality status.
 ::::
 
 :::::
