@@ -105,7 +105,7 @@ serverless: preview
 [Entity store v2](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space.
 ::::
 
-The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and relationships. To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
+The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and [relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md). To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
 
 * Hover over an entity node and click the plus {icon}`plus_in_circle` to open the actions menu, where you can show or hide entity relationships, the entity's actions, actions done to the entity, or related events, or show the entity's details.
 
