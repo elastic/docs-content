@@ -40,15 +40,15 @@ Send logs via OpenTelemetry, Fluentd, Fluentbit, or an Elastic integration. For 
 ::::
 
 ::::{step} Parse and process
-Streams automatically organizes your logs by source and component. Accept, adjust, or add [**partitions**](./management/partitioning.md) manually. Use the [**Processing** tab](./management/extract.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
+Streams automatically organizes your logs by source and component. Accept, adjust, or add [**partitions**](./organize-your-data.md) manually. Use the [**Processing** tab](./parse-and-process.md) to parse and extract fields from log messages. Accept AI-generated GROK rules or write your own.
 ::::
 
 ::::{step} Configure retention
-Use the [**Retention** tab](./management/retention.md) to define how long each stream stores data and to review ingestion volume.
+Use the [**Retention** tab](./configure-retention.md) to define how long each stream stores data and to review ingestion volume.
 ::::
 
 ::::{step} Manage data quality
-Use the [**Data quality** column](./management/data-quality.md) to filter your streams by data quality status.
+Use the [**Data quality** column](./monitor-and-fix-data-quality.md) to filter your streams by data quality status.
 ::::
 
 :::::
