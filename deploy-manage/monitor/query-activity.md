@@ -121,7 +121,7 @@ This filters out fast-completing queries so you can focus on the ones that are m
 
 To change this threshold:
 
-1. Go to the **Advanced Settings** page.
+1. Find the **Advanced Settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `query_activity:minRunningTime`.
 3. Enter a new value in milliseconds.
 4. Select **Save changes**.
