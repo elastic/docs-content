@@ -18,8 +18,8 @@ products:
 
 Streams supports two entry points depending on where your data is today:
 
-- **New data**: Send logs to a managed endpoint for new ingestion. Best for new deployments, custom logs, and mixed-format sources. Refer to [Wired streams](#get-data-in-wired).
-- **Existing data**: Work with data already flowing into {{es}}. No migration or configuration changes required. Refer to [Classic streams](#get-data-in-classic).
+- **[Work with new data](#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Best for new deployments, custom logs, and mixed-format sources. 
+- **[Work with existing data](#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
 
 ## Prerequisites [get-data-in-prerequisites]
 
