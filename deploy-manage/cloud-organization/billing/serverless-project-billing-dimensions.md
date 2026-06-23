@@ -17,7 +17,7 @@ products:
 
 Specific prices can be found in the [{{ecloud}} Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
 
-## Project charges
+## Project charges [project-charges]
 
 Your charges for each {{serverless-short}} project depend on the following factors:
 
@@ -33,7 +33,7 @@ For the specific billing dimensions, tiers, and usage units of each project type
 
 ## Add-ons [add-ons] 
 
-The add-ons in this section apply across all project types. Other add-ons are specific to a project type and documented on the [individual project pages](#projects). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
+The add-ons in this section apply across all project types. Other add-ons are specific to a project type and documented on the [individual project pages](#project-charges). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
 
 ### Data out [general-serverless-billing-data-out] 
 
