@@ -1,7 +1,7 @@
 ---
 applies_to:
-  serverless: ga
-  stack: preview =9.1, ga 9.2+
+  serverless: preview
+  stack: preview 9.2+
 description: Learn how to organize your data streams using routing and partitioning.
 products:
   - id: observability
@@ -16,9 +16,78 @@ products:
 
 # Organize your data
 
-**Goal**: Logs are separated into logical groups that can be managed independently.
-User partitions their wired stream into child streams, by team, service, technology, or environment. Manual rules or AI-suggested groupings.
+When logs from multiple sources flow into a single wired stream, partitioning lets you route subsets of that data into dedicated child streams. Each child stream can then be managed independently, with its own retention policy, processing rules, and field mappings, while automatically inheriting the parent's defaults.
 
-**Why Streams**: No external routing infrastructure (no Logstash, no third-party tools). Child streams inherit everything from the parent. Config changes propagate automatically through the hierarchy.
+For example, you can route firewall logs to a `logs.otel.firewall` child stream with a 7-day retention, and application logs to a `logs.otel.application` child stream with a 30-day retention, without duplicating any shared configuration.
 
-Skip this step if: using classic streams, or all logs need identical treatment.
+:::{note}
+Partitioning is only available on [wired streams](./get-data-in.md#get-data-in-wired). If you're using classic streams or all your logs need identical treatment, skip this step.
+:::
+
+## Partitioning recommendations [organize-partitioning-recommendations]
+
+Before creating partitions, keep the following in mind:
+
+- **Partition by logical groupings**, not by high-cardinality fields. Group logs by team, technology type, or environment (for example, `web-servers`, `application`, `security`) rather than by individual service names or host identifiers, which can generate too many streams to manage effectively.
+- **Aim for tens of partitions, not hundreds.** Each partition creates a dedicated data stream in {{es}}. There is a cost to each one, so keep the number manageable.
+- **Only partition when you need different lifecycle policies.** If all your logs can share the same retention and processing rules, a single stream is simpler to operate.
+
+## Partition your data [organize-partitioning]
+
+:::::{stepper}
+
+::::{step} Open the Partitioning tab
+1. Open Streams from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select your wired stream from the list.
+1. Go to the **Partitioning** tab.
+::::
+
+::::{step} Create a partition
+Choose how to define partitions: manually using field-based conditions, or by letting AI analyze your data and suggest groupings.
+
+:::{dropdown} Create partitions manually
+1. Select **Create partition manually**.
+1. In the **Data preview**, hover over a field and select:
+   - {icon}`plus_circle` to route data where the field matches the value.
+   - {icon}`minus_circle` to route data where the field does not match the value.
+1. Under **Stream name**, give the child stream a name that reflects the condition.
+1. Select **Save** to create the child stream.
+
+Under **Condition**, you can also set the field, comparator, and value directly. Turn on the **Syntax editor** to enter conditions in YAML. For more on conditions, refer to [Streamlang conditions](../streams/management/streamlang.md#streams-streamlang-conditions).
+:::
+
+:::{dropdown} Suggest partitions with AI
+**Requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).**
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+`
+
+1. Select **Suggest partitions with AI**. Streams analyzes your data and suggests groupings.
+1. Review the suggested partitions, then **Accept** or **Reject** each one.
+1. To refine the results, select **Modify suggestions**, provide guidance (for example, "Partition by service name and severity level"), and submit. Streams regenerates suggestions based on your input.
+1. Continue refining as needed, or select **Try again** to start over.
+1. After accepting, review the generated **Stream name** and **Condition**.
+1. Select **Create stream**.
+
+{applies_to}`stack: preview 9.2-9.3`
+
+1. Select **Suggest partitions with AI**. Streams analyzes your data and suggests groupings.
+1. **Accept** or **Reject** the suggestions. After accepting, review the **Stream name** and **Condition**.
+1. Select **Create stream**.
+:::
+::::
+
+::::{step} Review the stream hierarchy
+After saving, your stream list updates to show the parent-child relationship. For example:
+
+```
+logs
+├── logs.otel.application  [30d retention]
+└── logs.otel.firewall     [7d retention]
+```
+
+Child streams automatically inherit the parent's field mappings, lifecycle settings, and processors. You can override any inherited setting at the child level without affecting the parent or other children.
+::::
+
+:::::
+
+After partitioning, each child stream can be configured independently. You're ready to add [processing rules](./parse-and-process.md) to extract fields, set [retention policies](./configure-retention.md) per stream, or monitor [data quality](./monitor-and-fix-data-quality.md) for individual streams.
