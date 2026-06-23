@@ -198,10 +198,3 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 :::
 
 ::::
-
-## Next steps
-
-* [EDOT Collector gateway configuration reference](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode)
-* [{{k8s}} observability with EDOT](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md)
-* [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
-* [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
