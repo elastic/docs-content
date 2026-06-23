@@ -31,7 +31,7 @@ In [YAML mode](../extract.md#streams-editing-yaml-mode), configure the concat pr
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
-| `from` | array | Yes | Items to concatenate. Each item is either `{ type: "field", value: "<field_name>" }` or `{ type: "literal", value: "<text>" }`. |
+| `from` | array | Yes | Field references or literal strings to concatenate. |
 | `to` | string | Yes | Target field. |
 | `ignore_missing` | boolean | No | When `true`, skip this processor if any referenced field is missing. |
 

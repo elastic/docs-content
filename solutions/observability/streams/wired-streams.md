@@ -32,7 +32,7 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 :::::
 
 :::{warning}
-:applies_to: {"stack": "preview 9.4+", "serverless": "preview"}
+:applies_to: {stack: preview 9.4+, serverless: preview}
 The `/logs` endpoint is deprecated and replaced by the `logs.otel` and `logs.ecs` endpoints.
 :::
 
@@ -104,7 +104,7 @@ The following table lists the ECS fields and the corresponding OTel fields.
 
 ::::{applies-item} { serverless: preview, stack: preview 9.4+ }
 
-Wired streams are on by default. To disable wired streams:
+Wired streams are on by default. To turn off wired streams:
 
 1. Go to the **Streams** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Settings**.
 1. Turn off **Enable wired streams**.

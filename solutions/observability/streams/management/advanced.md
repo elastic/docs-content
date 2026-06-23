@@ -26,7 +26,7 @@ Describe the data in the stream. AI features like system identification use this
 
 ## Stream feature configuration [streams-advanced-features]
 
-Streams analyzes your data and identifies features. Features are a way to classify some of the data you have in your stream.
+Streams analyzes your data and identifies features. Features are a way to classify some data you have in your stream.
 
 Each feature has a natural language description and an optional filter which points to a subset of your data.
 
