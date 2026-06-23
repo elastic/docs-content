@@ -52,8 +52,8 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.list_indices` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
-:   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
+$$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
+:   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
