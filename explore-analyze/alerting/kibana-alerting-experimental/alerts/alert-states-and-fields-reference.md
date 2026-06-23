@@ -11,7 +11,7 @@ description: "Status values and field definitions for alert episodes in Kibana's
 # Alert states and fields reference [alert-states-reference]
 
 
-Alert states and fields are part of the {{alerting-v2-system}} in {{kib}}. Use these tables when you read alert UI state, query `.rule-events` or `.alert-actions` in Discover, or align API payloads with what operators see. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
+Alert states and fields are part of the {{alerting-v2-system}} in {{kib}}. This page is a reference for alert episode lifecycle status values, rule event evaluation status values, and the fields written to `.alert-actions` when users or the system act on an episode. Use it when reading alert UI state, writing queries against `.rule-events` or `.alert-actions` in Discover, or aligning API payloads with what the Alerts UI shows. For triage controls (acknowledge, snooze, resolve, tags) and how they map to storage, refer to [Alert actions](view-and-manage-alerts.md#alert-actions).
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
 For rule evaluation fields on `.rule-events`, refer to [Rule event and field reference](../rules/rule-event-field-reference.md#rule-reference).
 -->

@@ -10,7 +10,7 @@ description: "Alert episodes in Kibana's experimental alerting system track one 
 
 # {{alerting-v2-system-cap}} alerts
 
-Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each alert episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten.
+Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule fires repeatedly on the same problem, a flat list of events doesn't tell you when the issue started, whether it's still happening, or how long it's been going on. Alert episodes fill that gap. Each alert episode is a persistent record of one issue on one series, from first breach through recovery, with every evaluation appended to the same history. Nothing is overwritten. This page explains how alert episodes move through their lifecycle states, how series organize episodes over time, the difference between alert episodes and signals, and how alert data is stored and retained.
 
 <!--[CONTENT NEEDED for M2: UI. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->

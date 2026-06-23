@@ -10,7 +10,7 @@ description: "Examine, triage, and investigate alert episodes in Kibana's experi
 
 # View and manage alerts [manage-alerts]
 
-Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. From here you can examine alert episodes, use filters to find what needs attention, triage them, and more.
+Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule detects a problem, use the Alerts UI to understand what's happening and decide what to do about it. This page covers how to read health and trend summaries above the episodes table, filter and search alert episodes, take triage actions (acknowledge, snooze, resolve, activate, and tag), and use the episode detail page to investigate lifecycle history, related episodes, assignees, and raw metadata.
 
 <!--[CONTENT NEEDED for M2: UI. "V2 Alerting Preview" is a development-phase navigation label. Once the navigation and page name have been confirmed, add instructions for opening the Alerts page.]
 -->
