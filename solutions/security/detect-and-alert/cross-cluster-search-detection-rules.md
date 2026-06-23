@@ -27,7 +27,7 @@ This section explains the general process for setting up cross-cluster search in
     * [Add remote clusters using API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md)
     * [Add remote clusters using TLS certificate authentication](../../../deploy-manage/remote-clusters/remote-clusters-cert.md)
 
-2. On both the local and remote clusters, [create a role for cross-cluster search privileges](../../../deploy-manage/remote-clusters/remote-clusters-cert.md#clusters-privileges-ccs-kibana-cert), and make sure the two roles have *identical* names. Assign each role the following privileges:
+2. On both the local and remote clusters, [create a role for {{ccs}} privileges](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs-cert), and make sure the two roles have *identical* names. Assign each role the following privileges:
 
     1. **Local cluster role**: Assign the `read` privilege to the indices you want to search, using *both* the local and remote index patterns for each index. To specify a remote index, use the pattern `<remote_cluster_name>:<index_name>`.
 

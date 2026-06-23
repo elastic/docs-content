@@ -125,11 +125,9 @@ Define formatting rules to ensure consistency between the LLM, the tools, and th
 
 ### Instruct agents to search remote clusters
 
-[Index search tools](tools/index-search-tools.md) do not automatically discover remote cluster indices. If your data spans multiple clusters, add custom instructions that tell the agent to query remote clusters using the `remote_cluster:index_name` syntax in {{esql}} queries.
+If your data spans multiple clusters, create an [index search tool](tools/index-search-tools.md) with a cross-cluster target pattern such as `remote_cluster:logs-*`. Add a descriptive tool name and description so the agent knows when to route queries to the remote cluster.
 
-For example, you could add an instruction like: "When searching for security logs, also query the `remote_dc:logs-security-*` index on the remote cluster."
-
-To learn more about cross-cluster search limitations, refer to [Limitations](limitations-known-issues.md#cross-cluster-search-limitations).
+To learn more, refer to [Index search tools](tools/index-search-tools.md#common-patterns).
 
 ## Error handling and guardrails
 

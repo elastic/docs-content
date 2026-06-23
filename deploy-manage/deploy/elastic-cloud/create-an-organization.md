@@ -37,7 +37,7 @@ Your free 14-day trial includes:
 
 **One hosted deployment**
 
-A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the {{stack}}. They includes 8 GB of RAM spread out over two availability zones, and enough storage space to get you started. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, machine learning, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
+A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the {{stack}}. They include two 4 GB RAM instances, one per availability zone, and storage capacity based on the selected hardware profile. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, {{ml}}, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
@@ -61,6 +61,14 @@ For more information, check the [{{serverless-short}} documentation](serverless.
 ### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
 Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
+For a more structured trial plan with success criteria and a 14-day proof-of-concept framework, refer to [Evaluate Elastic during a trial](/get-started/evaluate-elastic.md).
+
+### Plan your deployment model and sizing
+
+As you move from trial to production:
+
+* **Hosted deployments:** Compare storage, RAM, and vCPU trade-offs before choosing a profile. Refer to [Hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [instance configuration hardware reference](cloud://reference/cloud-hosted/hardware.md).
+* **{{serverless-short}}:** Review [{{serverless-short}} billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and use the [{{ech}} and {{serverless-short}} comparison](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) to choose the deployment model for your workload.
 
 ### Remove trial limitations
 

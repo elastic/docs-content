@@ -87,7 +87,9 @@ To import a file:
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Asset Criticality** tab.
 3. Select or drag the file you want to import.
 
@@ -133,7 +135,7 @@ Once you assign a criticality level to an entity, all subsequent alerts related 
 
 ### Monitor an entity’s risk [monitor-entity-risk]
 
-The risk scoring engine dynamically factors in an entity’s asset criticality, along with `Open` and `Acknowledged` detection alerts to [calculate the entity’s overall risk score](entity-risk-scoring.md#how-is-risk-score-calculated). This dynamic risk scoring allows you to monitor changes in the risk profiles of your most sensitive entities, and quickly escalate high-risk threats.
+Risk scoring dynamically factors in an entity’s asset criticality, along with `Open` and `Acknowledged` detection alerts to [calculate the entity’s overall risk score](entity-risk-scoring.md#how-is-risk-score-calculated). This dynamic risk scoring allows you to monitor changes in the risk profiles of your most sensitive entities, and quickly escalate high-risk threats.
 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 

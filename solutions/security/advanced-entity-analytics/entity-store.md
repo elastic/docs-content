@@ -28,15 +28,15 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: planned` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
-{applies_to}`stack: preview 9.4+` {applies_to}`serverless: planned` Entity relationships sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
+{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab. Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
 
 When the entity store is enabled, the following resources are created for the active space:
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: planned }
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
 * A latest entity alias, `entities-latest-<space-id>`, backed by the concrete index `.entities.v2.latest.security_<space-id>-<mapping_version>`. Query this alias to retrieve the current state of all entities in the entity store.
 * History snapshot indices, `.entities.v2.history.security_<space-id>.<timestamp>`, which store daily snapshots of entity data and enable [historical analysis](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md#historical-entity-analysis) of entity attributes over time.
 
@@ -66,14 +66,17 @@ For each entity type (hosts, users, and services):
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 The entity store is automatically enabled when you turn on risk scoring. In the default {{kib}} space, both are enabled automatically. In non-default spaces, you must enable them manually:
 
-1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Turn the toggle on.
 
 :::{note}
-If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
+* If you've upgraded from a previous version, and the entity store was installed in any space, it's automatically migrated after the upgrade. Your existing index data is retained.
+* If you use [cross-cluster search](/explore-analyze/cross-cluster-search.md), the entity store ingests logs from every remote cluster. To avoid unnecessary load, turn off risk scoring on any remote cluster where it isn't actively used.
 :::
 :::
 
@@ -98,7 +101,7 @@ Once the entity store is enabled, you may want to clear the stored data and star
 The impact of clearing entity store data on risk scores and asset criticality depends on your version:
 
 :::::{applies-switch}
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 Clearing entity store data does not delete your source data. However, asset criticality assignments will need to be reapplied, and risk scoring will run again for the new entities repopulated into the store.
 :::
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -115,8 +118,10 @@ To clear entity data:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
-1. Find the **Entity Analytics** management page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Click **Clear Entity Data**.
 :::
 
@@ -134,7 +139,7 @@ Once the entity store is enabled, you can verify which engines are installed and
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: planned }
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
 To access the **Engine Status** tab, find **Entity Analytics** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 :::
 
@@ -173,7 +178,7 @@ Examples of supported integrations include:
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: planned
+serverless: ga
 ```
 
 The entity store runs scheduled log extraction to keep entity data up to date.
@@ -218,9 +223,25 @@ Use `frequency` to control how often extraction runs.
 Use `maxLogsPerPage` to cap the raw-log slice size before aggregation.
 
 * Lower it if queries are too heavy or time-consuming.
-* Default: `40000` documents.
+* Default: `50000` documents.
 
 Start with `maxLogsPerPage` rather than `docsLimit` when extraction is slow or unstable, because it reduces the amount of raw source data processed in each extraction operation. Adjust `docsLimit` if tuning `maxLogsPerPage` is insufficient and you still see performance issues.
+
+#### `maxLogsPerWindow`
+
+Use `maxLogsPerWindow` to cap the total number of raw log documents processed in a single extraction run, across all slices in the window.
+
+* Lower it if a single task run can still saturate {{es}} CPU even after lowering `maxLogsPerPage`. This is the most effective lever for protecting a cluster from CPU overload, because it bounds the work a single extraction task can do.
+* Increase it if cluster CPU is not overloaded and can handle more processed logs.
+* Default: `100000` documents.
+
+#### `maxLogsPerWindowCapBehavior`
+
+Use `maxLogsPerWindowCapBehavior` to control what happens when `maxLogsPerWindow` is reached during a run.
+
+* `drop` — the next run advances past the uncapped logs (cursor jumps to the end of the window). Logs above the cap are skipped permanently. Use this to keep the cluster healthy in exchange for coverage gaps when ingest exceeds the cap.
+* `defer` — the next run resumes from where the cap fired and processes the remaining logs. Use this to preserve full coverage at the cost of falling behind real time when logs exceed the cap.
+* Default: `drop`.
 
 #### `maxTimeWindowSize`
 

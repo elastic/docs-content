@@ -36,10 +36,18 @@ Flattened field [alert.actions.params] contains one immense field whose keyed en
 ```
 
 **Workaround**<br>
+
+Upgrade to 9.3.5 or 9.4.2.
+
 If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
 
 
 For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.5 and 9.4.2.
 :::
 
 :::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
@@ -81,10 +89,11 @@ The affected field is `event.created`. When this field is empty, {{kib}} cannot 
 This does not affect the primary `@timestamp` field.
 
 **Workaround**<br>
-Downgrade to {{agent}} 9.3.3, which is not affected by this issue.
+Upgrade to {{agent}} 9.3.5, which is not affected by this issue.
 
-**Fix**<br>
-The performance optimization has been reverted. A fix will be available in the next release. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+**Resolved**<br>
+
+Resolved in {{agent}} 9.3.5. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
 :::
 
 :::{dropdown} Details about gap fills aren't properly updated
