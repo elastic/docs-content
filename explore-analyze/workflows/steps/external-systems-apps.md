@@ -71,6 +71,20 @@ The native `http` action is a built-in HTTP client for calling external APIs. It
 * **Configured HTTP connector**: For authenticated requests, first [configure an HTTP connector](/deploy-manage/manage-connectors.md). Then reference it from the workflow step with `connector-id`. The connector stores the base URL, authentication settings, and secrets using {{kib}}'s centralized {{connectors-ui}} framework.
 * **Direct URL**: For simple requests that don't require connector-managed secrets, omit `connector-id` and provide the full `url` directly in the step. Avoid placing secrets directly in workflow YAML.
 
+### Create an HTTP connector
+
+You can create or select a connector without leaving the workflow editor. Enter `connector-id:` in an HTTP step and select **Create a new connector**.
+
+![Create or select an HTTP connector from connector-id autocomplete](/explore-analyze/images/workflows-http-connector-autocomplete.png "")
+
+In the connector flyout, set the connector ID, base URL, authentication, and any encrypted headers that should be stored with the connector. After you save the connector, its connector ID is added to the workflow YAML.
+
+![Configure an HTTP connector with authentication and encrypted headers](/explore-analyze/images/workflows-http-connector-flyout.png "")
+
+You can also create an HTTP connector from **Stack Management → Connectors** by selecting the **HTTP** connector type.
+
+![Select the HTTP connector type from Stack Management](/explore-analyze/images/workflows-http-connector-stack-management.png "")
+
 Use the following parameters in the `with` block to configure the request:
 
 | Parameter | Required | Description |
