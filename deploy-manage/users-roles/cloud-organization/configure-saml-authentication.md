@@ -42,7 +42,7 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 ## Prerequisites [ec_prerequisites_4]
 
 * You must have a SAML 2.0 compatible identity provider.
-* * Eligibility for organization-level SAML SSO varies by resource type, rather than being a single, organization-wide entitlement:
+* Eligibility for organization-level SAML SSO varies by resource type, rather than being a single, organization-wide entitlement:
 
     * **{{ech}}**: Requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
     * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
