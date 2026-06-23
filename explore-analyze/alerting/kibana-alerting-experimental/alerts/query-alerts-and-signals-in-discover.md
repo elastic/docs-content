@@ -17,6 +17,14 @@ The Alerts UI shows current alert episode state. Discover lets you go further: a
 
 To use this page, open Discover, select {{esql}}, paste a query from the examples below, then adjust the time range and placeholders (`YOUR_RULE_ID`, `YOUR_GROUP_HASH`) to match your environment.
 
+## Create rules from Discover [create-rules-from-discover]
+
+The **Alerts** menu in the Discover top navigation is also an entry point for creating rules in the {{alerting-v2-system}}. Users with {{alerting-v2-system}} access — including users who do not hold Kibana alerting permissions — can open this menu to create ES|QL threshold rules. Access to the menu requires either Kibana alerting access or {{alerting-v2-system}} access; both are not required.
+
+When the {{alerting-v2-system}} is enabled, the Alerts menu in Discover routes rule creation to the {{alerting-v2-system}} rule form instead of the Kibana alerting rule form. When it is disabled, the Kibana alerting form is used.
+
+<!-- [CONTENT NEEDED: Add step-by-step instructions for creating a rule from Discover once a dedicated create-rule-from-discover page is written. Link from this section to that page. The Alerts menu UI was redesigned in 9.5.0 (see PR #272724) — confirm the new menu structure and update screenshots before publishing.] -->
+
 <!--[CONTENT NEEDED: The queries on this page use `.rule-events` and `.alert-actions` directly. Confirm whether these will remain the intended query surface, or whether users should query an ES|QL view or a stable user-facing data stream instead. Update all examples accordingly before publishing.]-->
 
 <!--[CONTENT NEEDED for M2: Review and expand the query examples below once M2 field renames (`group_hash` → `series.key`, new `series.tracked_by`, `episode.severity`, `episode.severity_max`) are finalized. Add examples that take advantage of the new first-class severity and series fields.]-->

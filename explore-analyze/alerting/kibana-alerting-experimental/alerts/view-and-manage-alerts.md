@@ -19,6 +19,20 @@ Alert episodes are part of the {{alerting-v2-system}} in {{kib}}. When a rule de
 
 Alert episodes in the {{alerting-v2-system}} are scoped to the current {{kib}} space. Alert episodes created in one space aren't visible when viewing a different space, including the Default space. 
 
+## Monitor alert health and trends [monitor-alert-trends]
+
+Above the alert episodes table, two sets of panels give you an at-a-glance summary of your alert environment.
+
+**KPI panels** surface aggregate counts for the current filter state and time range. Use these counts to understand the scale of a situation before drilling into individual rows — for example, whether a single noisy rule is responsible for most activity, or whether many rules are firing at the same time. Counts update dynamically as you change filters or adjust the time range.
+
+<!-- [CONTENT NEEDED: The specific metrics shown in each KPI panel (total episodes, distinct firing rules, assigned to current user, unassigned, acknowledged, snoozed) are accurate as of 9.5.0 but the panel layout and labels may change before GA. Add a labeled breakdown of each panel once the UI stabilizes.] -->
+
+**Episode histogram** shows how episode counts have changed across the selected time range. Use it to identify when a wave of alert episodes began, whether the situation is improving, and whether a spike was an isolated event or part of a broader pattern. You can break down the chart by dimensions such as status, rule, or assignee. Selecting a range directly in the histogram narrows the global time filter and focuses the table on that interval.
+
+:::{note}
+The episode histogram queries up to 10,000 alert episodes per time range. If your environment exceeds this limit, a warning appears in the chart. Narrow the time range or add filters to stay within this cap.
+:::
+
 ## Filter and search
 
 - **Rule:** Limit rows to one or more rules.
