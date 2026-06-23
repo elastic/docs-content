@@ -29,6 +29,7 @@ The following debugging tools are available:
 
 * {{kib}} versions 7.10 and above have a [Test connector](testing-connectors.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](../../../troubleshoot/kibana/task-manager.md#task-manager-diagnosing-root-cause).
+* {applies_to}`stack: ga 9.5` The [rule query inspector](troubleshoot-rule-behavior.md) lets you view the {{es}} request a rule sent during evaluation, confirm the rule is targeting the right data, and investigate rule behavior.
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
 
