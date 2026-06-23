@@ -374,7 +374,9 @@ Osquery responses include the following information:
 * Everything prefaced with `osquery.` is part of the query response. These fields are not mapped to ECS by default.
 * Results include some ECS fields by default, such as `host.*` and `agent.*`, which provide information about the host that was queried.
 * For live queries, the `action_data.query` is the query that was sent.
-* For scheduled queries in a pack, the `action_id` has the format `pack_<pack-name>_<query-ID>`. You can use this information to look up the query that was run.
+* For scheduled queries in a pack:
+    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Use `schedule_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run. `action_id` is populated only for live queries. Scheduled responses also include `pack_id`, `response_id`, `schedule_execution_count`, and `planned_schedule_time` for correlation. This behavior requires the Osquery Manager integration v1.23.0 or later.
+    * {applies_to}`stack: ga 9.0-9.3` Use `action_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run.
 * By default, all query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 * Osquery data is stored in the `logs-osquery_manager.result-<namespace>` datastream, and the result row data is under the `osquery` property in the document.
 

@@ -3,11 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/reference-architectures-overview.html
   - https://www.elastic.co/guide/en/reference-architectures/current/index.html
 applies_to:
-  deployment:
-    self: all
-    ess: all
-    ece: all
-    eck: all
+  stack: all
 products:
   - id: cloud-enterprise
   - id: cloud-kubernetes

@@ -52,8 +52,8 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 `platform.core.list_indices` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
-:   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
+$$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
+:   Searches {{es}} data using natural language, automatically selecting between query DSL and {{esql}} based on the query intent.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
@@ -98,20 +98,6 @@ The following tools manage file attachments in conversations:
 `platform.core.attachment_diff`
 :   Shows the differences between versions of a file attachment.
 -->
-
-## Dashboard tools
-```{applies_to}
-stack: preview 9.4+
-serverless: preview
-```
-
-Dashboard tools enable agents to create and manage [dashboards](/explore-analyze/dashboards.md) through [chat](../chat.md).
-
-`dashboard.create_dashboard`
-:   Creates a dashboard with specified title, description, panels, and markdown summary.
-
-`dashboard.update_dashboard`
-:   Updates an existing dashboard with new panels or modifications.
 
 ## Streams tools
 ```{applies_to}
@@ -246,7 +232,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ## Inline tools
 
-Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active.
+Some [built-in skills](../builtin-skills-reference.md), such as the [`dashboard-management`](../builtin-skills-reference.md#agent-builder-dashboard-management-skill) skill, include inline tools that are only available while that skill is active.
 
 :::{tip}
 You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
