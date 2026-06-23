@@ -13,7 +13,7 @@ applies_to:
 # Solutions overview [introduction]
 
 Elastic offers three major search-powered solutions: {{es}}, Elastic {{observability}}, and {{elastic-sec}}—all built on an open source, extensible [platform](/get-started/the-stack.md).
-Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs needs.
+Whether you're building a search experience, monitoring your infrastructure, or securing your environment, there is a solution that is right for your business needs.
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
