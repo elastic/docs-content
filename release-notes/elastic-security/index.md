@@ -27,6 +27,36 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+
+## 9.4.2 [elastic-security-9.4.2-release-notes]
+
+### Features and enhancements [elastic-security-9.4.2-features-enhancements]
+
+* Improves Automatic Migration dashboard migration accuracy by sampling index records before query translation, enabling the LLM to generate {{esql}} queries with correct field names and values from the first attempt [#261927]({{kib-pull}}261927).
+* Adds a warning callout to the **Endpoint exceptions**, **Trusted applications**, and **Event filters** forms when users enter unnecessarily escaped characters [#268477]({{kib-pull}}268477).
+* Adds a warning callout and confirmation modal to the rule exceptions form when entering escaped characters (such as `\*` or `\?`) with the `matches` operator, indicating they might have intended wildcards instead [#268397]({{kib-pull}}268397).
+* Updates the {{agent-builder}} announcement modal so that clicking **Revert** immediately switches all space users back to AI Assistant [#267906]({{kib-pull}}267906).
+
+### Fixes [elastic-security-9.4.2-fixes]
+
+* Fixes an issue where users with read-only access could see the asset criticality update dropdown in the entity details flyout. The dropdown is now correctly gated on write permissions [#269164]({{kib-pull}}269164).
+* Fixes an issue where the alert details flyout **Overview** tab crashed in Discover for external alert documents [#269000]({{kib-pull}}269000).
+* Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
+* Fixes an incorrect banner shown in the Discover document flyout when Discover is embedded in a dashboard [#268249]({{kib-pull}}268249).
+* Fixes empty **Last results**, **Docs**, and **Agents** columns on the Osquery pack details page for scheduled queries [#267894]({{kib-pull}}267894).
+* Fixes multiple rendering issues in the entity details flyout when opened in **Preview** mode from {{agent-builder}} [#267342]({{kib-pull}}267342).
+* Fixes an issue where the alert details flyout failed to render its header, content, and footer when Discover was embedded in a dashboard [#267321]({{kib-pull}}267321).
+* Fixes the AI rule creation flow to respect the `enableESQL` advanced setting. When {{esql}} is disabled, the AI rule creation option is hidden and {{esql}} rule creation is blocked in {{agent-builder}} [#267247]({{kib-pull}}267247).
+* Fixes a duplicate "AI Assistant" section on the **Feature Settings** page by consolidating the {{elastic-sec}} AI Assistant configuration under the **Security** group, and hides the AI Assistant for Security entry when AI Assistant is not the selected chat experience [#266697]({{kib-pull}}266697).
+* Fixes the **Manage license** link on the Attack Discovery page to navigate directly to **License Management** instead of the {{stack-manage-app}} landing page [#266445]({{kib-pull}}266445).
+* Fixes an issue where **View in AI Assistant** buttons and context menu items in Attack Discovery remained visible when the AI Assistant was hidden via **GenAI Settings** [#266111]({{kib-pull}}266111).
+* Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
+* Fixes an issue where {{elastic-endpoint}} could get stuck in the `CONFIGURING` state when updating an {{elastic-defend}} policy with rollback enabled on Windows.
+* Fixes a sharing violation in the `get-file` response action for {{elastic-defend}}.
+* Improves legacy event source compatibility with newer kernel versions (6.1+ and 7.0+) in {{elastic-defend}} on Linux.
+* Fixes an issue where {{elastic-defend}} on Linux could trigger unnecessary automount activity on systems using `autofs`.
+* Improves `fanotify` event collection reliability in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+
 ## 9.4.1 [elastic-security-9.4.1-release-notes]
 
 ### Fixes [elastic-security-9.4.1-fixes]
@@ -219,6 +249,36 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where `user.name` and `group.name` fields were missing from {{elastic-defend}} events in some LDAP environments.
 * Fixes an issue where {{elastic-defend}} on Windows could log a warning about "Quarantine directory failed validation due to ACL or file attribute change" for empty removable media drives such as optical drives.
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
+
+
+## 9.3.6 [elastic-security-9.3.6-release-notes]
+
+### Fixes [elastic-security-9.3.6-fixes]
+
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Fixes alert action error toasts (assign, tag, open, close, acknowledge) so they show the full error message from {{es}} instead of a blank body [#269592]({{kib-pull}}269592).
+* Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+
+## 9.3.5 [elastic-security-9.3.5-release-notes]
+
+### Fixes [elastic-security-9.3.5-fixes]
+
+* Fixes incorrect button alignment in Timeline [#268314]({{kib-pull}}268314).
+* Fixes an issue where the **Data Quality** dashboard showed no data when {{kib}} was set to Japanese [#265782]({{kib-pull}}265782).
+* Fixes an issue where auto-refresh on the **Alerts** page with grouping applied caused open flyouts and dialogs to close unexpectedly [#264518]({{kib-pull}}264518).
+* Fixes a denial-of-service risk in Timeline bulk export by validating the number of Timeline IDs (up to 1,000), deduplicating IDs, and bounding enrichment work [#260265]({{kib-pull}}260265).
+* Fixes an issue where {{elastic-defend}} failed to send data to {{ls}} output when the kernel TCP send buffer was full, causing connections to drop prematurely.
+* Updates eBPF probes for {{elastic-defend}} on Linux to support 7.0 kernels.
+* Fixes {{elastic-defend}} on Linux to report more accurate path names for file-less execution events.
+* Fixes an issue where {{elastic-endpoint}} could get stuck in the `CONFIGURING` state when updating an {{elastic-defend}} policy with rollback enabled on Windows.
+* Fixes a sharing violation in the `get-file` response action for {{elastic-defend}}.
+* Fixes an issue where {{elastic-defend}} did not display end user notifications for device control events.
+* Improves legacy event source compatibility with newer kernel versions (6.1+ and 7.0+) in {{elastic-defend}} on Linux.
+* Fixes an issue where {{elastic-defend}} on Linux could trigger unnecessary automount activity on systems using `autofs`.
+* Improves `fanotify` event collection reliability in {{elastic-defend}} on Ubuntu 26.04 and Linux 7.0.
+* Fixes an edge case where {{elastic-defend}} could lose tamper protection.
+
 
 ## 9.3.4 [elastic-security-9.3.4-release-notes]
 
