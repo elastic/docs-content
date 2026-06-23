@@ -90,4 +90,4 @@ Child streams automatically inherit the parent's field mappings, lifecycle setti
 
 :::::
 
-After partitioning, each child stream can be configured independently. You're ready to add [processing rules](./parse-and-process.md) to extract fields, set [retention policies](./configure-retention.md) per stream, or monitor [data quality](./monitor-and-fix-data-quality.md) for individual streams.
+After partitioning, each child stream can be configured independently. You're ready to add [processing rules](./parse-and-process.md) to extract fields, set [retention policies](./configure-retention.md) per stream, or monitor [data quality](./manage-data-quality.md) for individual streams.
