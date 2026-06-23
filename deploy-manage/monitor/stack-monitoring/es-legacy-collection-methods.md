@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/collecting-monitoring-data.html
 applies_to:
   deployment:
-    self: deprecated 7.16.0
+    self: deprecated 7.16, removed 10.0
 products:
   - id: elasticsearch
 ---
@@ -12,8 +12,13 @@ products:
 # Legacy collection methods for self-managed {{es}} [collecting-monitoring-data]
 
 
-::::{admonition} Deprecated in 7.16
-Using the {{es}} Monitoring plugin to collect and ship monitoring data is deprecated. {{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster. If you previously configured legacy collection methods, you should migrate to using [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) collection methods.
+::::{warning}
+The {{es}} Monitoring plugin is deprecated and will be removed in 10.0. Choose one of the following replacements to monitor your {{es}} cluster:
+
+* **[AutoOps](../autoops.md)** (recommended): Simplifies cluster management through performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths.
+* **Stack monitoring with [{{agent}}](collecting-monitoring-data-with-elastic-agent.md) or [{{metricbeat}}](collecting-monitoring-data-with-metricbeat.md)**: Collect logs and metrics from {{es}} and ship them to a monitoring cluster for visualization in {{kib}}.
+
+To help you decide, refer to the [AutoOps and Stack Monitoring comparison](../autoops-vs-stack-monitoring.md).
 ::::
 
 
