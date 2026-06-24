@@ -17,7 +17,7 @@ This page provides strategies to reduce the storage footprint of your {{es}} ind
 
 ## Disable the features you do not need [_disable_the_features_you_do_not_need]
 
-By default, {{es}} indexes and adds doc values to most fields so that they can be searched and aggregated out of the box. For instance, if you have a numeric field called `foo` that you need to run histograms on but that you never need to filter on, you can safely disable indexing on this field in your [mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create):
+By default, {{es}} indexes and adds doc values to most fields so that they can be searched and aggregated out of the box. For instance, if you have a numeric field called `foo` that you need to run histograms on but that you never need to filter on, you can safely disable indexing on this field in your [mappings]({{es-apis}}operation/operation-indices-create):
 
 ```console
 PUT index
@@ -65,7 +65,7 @@ PUT index
 
 ## Watch your shard size [_watch_your_shard_size]
 
-Larger shards are going to be more efficient at storing data. To increase the size of your shards, you can decrease the number of primary shards in an index by [creating indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) with fewer primary shards, creating fewer indices (e.g. by leveraging the [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover)), or modifying an existing index using the [Shrink API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink).
+Larger shards are going to be more efficient at storing data. To increase the size of your shards, you can decrease the number of primary shards in an index by [creating indices]({{es-apis}}operation/operation-indices-create) with fewer primary shards, creating fewer indices (e.g. by leveraging the [Rollover API]({{es-apis}}operation/operation-indices-rollover)), or modifying an existing index using the [Shrink API]({{es-apis}}operation/operation-indices-shrink).
 
 Keep in mind that large shard sizes come with drawbacks, such as long full recovery times.
 
@@ -85,7 +85,7 @@ The `_source` and stored fields can easily take a non negligible amount of disk 
 
 Indices in {{es}} are stored in one or more shards. Each shard is a Lucene index and made up of one or more segments - the actual files on disk. Larger segments are more efficient for storing data.
 
-The [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) can be used to reduce the number of segments per shard. In many cases, the number of segments can be reduced to one per shard by setting `max_num_segments=1`.
+The [force merge API]({{es-apis}}operation/operation-indices-forcemerge) can be used to reduce the number of segments per shard. In many cases, the number of segments can be reduced to one per shard by setting `max_num_segments=1`.
 
 ::::{warning}
 **We recommend only force merging a read-only index (meaning the index is no longer receiving writes).**  When documents are updated or deleted, the old version is not immediately removed, but instead soft-deleted and marked with a "tombstone". These soft-deleted documents are automatically cleaned up during regular segment merges. But force merge can cause very large (> 5GB) segments to be produced, which are not eligible for regular merges. So the number of soft-deleted documents can then grow rapidly, resulting in higher disk usage and worse search performance. If you regularly force merge an index receiving writes, this can also make snapshots more expensive, since the new documents can’t be backed up incrementally.
@@ -95,7 +95,7 @@ The [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operatio
 
 ## Shrink index [_shrink_index]
 
-The [shrink API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) allows you to reduce the number of shards in an index. Together with the force merge API above, this can significantly reduce the number of shards and segments of an index.
+The [shrink API]({{es-apis}}operation/operation-indices-shrink) allows you to reduce the number of shards in an index. Together with the force merge API above, this can significantly reduce the number of shards and segments of an index.
 
 
 ## Use the smallest numeric type that is sufficient [_use_the_smallest_numeric_type_that_is_sufficient]

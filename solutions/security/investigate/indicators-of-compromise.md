@@ -99,7 +99,7 @@ When you add an indicator to Timeline, a new Timeline opens with an auto-generat
 
 ### Example indicator Timeline investigation [example-indicator-timeline]
 
-The following image shows a file hash indictor being investigated in Timeline. The indicator field-value pair is:
+The following image shows a file hash indicator being investigated in Timeline. The indicator field-value pair is:
 
 `threat.indicator.file.hash.sha256 : 116dd9071887611c19c24aedde270285a4cf97157b846e6343407cf3bcec115a`
 
@@ -174,5 +174,9 @@ You can add indicator values to the blocklist from the Indicators table or the I
 ::::{note}
 Refer to [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for more information about blocklist entries.
 ::::
+
+## Automate threat-intel enrichment with workflows [indicators-automate-enrichment]
+
+Use [Elastic Workflows](/explore-analyze/workflows.md) to query external threat-intel providers on demand or in response to an alert, attach the result to the alert's case, and gate downstream actions on the reputation score. The [Enrich an alert with threat intelligence](/explore-analyze/workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md) workflow shows the pattern using a VirusTotal hash lookup.
 
 

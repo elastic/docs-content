@@ -1,5 +1,5 @@
 ---
-navigation_title: Index lifecycle managment
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
@@ -15,7 +15,7 @@ products:
 
 # {{ilm-cap}} ({{ilm-init}}) in {{es}}
 
-{{ilm}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
+{{ilm-cap}} ({{ilm-init}}) automates the management of time-based indices, such as logs and metrics. Using {{ILM-init}} policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
 
 For example, you can use {{ilm-init}} to:
 
@@ -51,7 +51,7 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
 
 * **Rollover**: Creates a new write index when the current one reaches a certain size, number of docs, or age.
 * **Shrink**: Reduces the number of primary shards in an index.
-* **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
+* **Force merge**: Triggers a [force merge]({{es-apis}}operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
 * [And more](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md)
 

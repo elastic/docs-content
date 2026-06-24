@@ -79,7 +79,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
-`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
+`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$ {applies_to}`stack: deprecated 9.5+`
 :   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
     This setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
 
@@ -157,7 +157,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](beats://reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
 
-`Balanced` represents the new default setting (out of the box behavior). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
+`Balanced` represents the new default setting (out of the box behavior). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degradation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
 
 As mentioned, the `custom` preset allows you to input your own set of parameters for a finer tuning of performance. The following table is a summary of a few data points and how the resulting EPS compares to the `Balanced` setting mentioned above.
 

@@ -166,7 +166,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for {{ece}} as well. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -188,6 +188,10 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             hard    nofile         1024000
     root             soft    memlock        unlimited
     ```
+
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Docker containers. To ensure the same limits are enforced inside containers, you must also configure the Docker daemon default ulimits. Refer to [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu) for details.
+    ::::
 
 5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
 
@@ -246,14 +250,28 @@ For more information, refer to the [Docker daemon configuration overview](https:
       "default-ulimits": {
         "nofile": {
           "Name": "nofile",
-          "Soft": 1048576,
-          "Hard": 1048576
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
         }
       }
     }
     ```
 
-    This configuration increases the maximum number of open file descriptors available to Docker containers.
+    This configuration ensures that all containers created by the Docker daemon inherit the required resource limits, which are not inherited from `/etc/security/limits.conf`.
+
+    ::::{note}
+    If you already have a `/etc/docker/daemon.json` file with other settings, merge the `default-ulimits` key into the existing file rather than replacing it.
+    ::::
 
 1. Create the `/etc/systemd/system/docker.service.d` directory if it does not exist, then create or update the `/etc/systemd/system/docker.service.d/docker.conf` file with the following configuration:
 

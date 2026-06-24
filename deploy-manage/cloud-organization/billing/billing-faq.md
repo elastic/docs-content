@@ -102,14 +102,17 @@ $$$billing-cc-additional-payment$$$Does Cloud Connect require additional payment
 :   :::{include} /deploy-manage/_snippets/cc-license-and-payment.md
 
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
-:   All subscription tiers for {{ech}} include the following free allowance:
+:   All subscription tiers for {{ech}} include the following:
 
-    * Free 1GB RAM {{kib}} instance
-    * Free 1GB RAM Machine Learning node
-    * Free 1GB RAM APM / Integrations Server instance
+    * Free 1 GB RAM {{kib}} instance. 
+      :::{note}
+      Deployments created in May 2026 or later include 2 GB RAM {{kib}} instances to support growing built-in functionality. You are charged in full for 2 GB of RAM. Instances in existing deployments are not automatically resized.
+      :::
+    * Free 1 GB RAM Machine Learning node
+    * Free 1 GB RAM APM / Integrations Server instance
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 
-    Note that if you go above the free tier of Kibana/ML/APM (for example, a 2GB {{kib}} instance), you will be charged in full for the size of that instance.
+    Note that if you go above the free allowance of Kibana/ML/APM (for example, a 2 GB {{kib}} instance), you will be charged in full for the size of that instance.
 
 
 $$$faq-dts$$$What are the data transfer and storage charges and how can I control them?
@@ -152,7 +155,7 @@ $$$faq-usage$$$Where can I follow the remaining balance and usage?
 :   The current usage and remaining balance can be found in the [Usage](monitor-analyze-usage.md) page. You will also receive monthly usage statements that are published in the [Billing history](view-billing-history.md) page.
 
 $$$faq-notification$$$How will I know that I am running out of credits?
-:   Your account billing contacts and the members of your organization will receive email notifications when your credit balance falls below 33%, 25%, and 16% of credits remaining.
+:   Your account billing contacts and the members of your organization will receive email notifications when your credit balance reaches one of these remaining-credit thresholds: 33%, 25%, 16%, or 0%.
 
 $$$faq-on-demand$$$How can I pay for on-demand usage?
 :   We only support PO (invoicing) for on-demand usage, for prepaid consumption customers. The issued invoices include tax.

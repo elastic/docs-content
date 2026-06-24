@@ -5,7 +5,7 @@ mapped_pages:
 description: Remote ES output allows you to send agent data to a remote cluster, keeping data separate and independent from the deployment where you use Fleet.
 applies_to:
   stack: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -14,6 +14,8 @@ products:
 # Remote {{es}} output [remote-elasticsearch-output]
 
 Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluster. This is especially useful for data that you want to keep separate and independent from the deployment where you use {{fleet}} to manage the {{agent}}s.
+
+Both the management cluster (where you configure {{fleet}}) and the remote cluster (where {{agents}} send data) can be either an {{stack}} deployment or a {{serverless-short}} project. When the remote cluster is a {{serverless-short}} project, some features are not available. Refer to [Limitations](#remote-output-limitations).
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your management {{es}} cluster.
 
@@ -24,6 +26,7 @@ These limitations apply to remote {{es}} output:
 * All {{fleet-server}} hosts that are configured for the remote output must be able to reach the remote {{es}} cluster with a service token to generate API keys for the {{agents}} that use the remote output for data ingestion.
 * Using a remote {{es}} output with a target cluster that has [network security](/deploy-manage/security/network-security.md) enabled is not currently supported.
 * Using {{elastic-defend}} when a remote {{es}} output is configured for an {{agent}} is not currently supported.
+* When the remote {{es}} cluster is a {{serverless-short}} project, [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) is not available.
 
 ## Configure the remote output [remote-output-config]
 
@@ -58,7 +61,7 @@ In the **Service Token** field, add a service token to access the remote cluster
 :::{dropdown} Create a service token to access the remote cluster
 :open:
 1. Copy the API request located below the **Service Token** field.
-2. In the remote cluster, open the {{kib}} menu, then go to **Management** → **Dev Tools** in self-managed deployments, or to **Developer tools** in {{ecloud}} deployments.
+2. In the remote cluster, open {{kib}} and go to **Developer tools** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Paste the API request in the console, then run it.
 4. Copy the value for the generated service token.
 5. In the management cluster, paste the value you copied into the **Service Token** field of the remote output configuration.
@@ -75,7 +78,7 @@ Configure SSL certificate authorities if the remote {{es}} cluster uses certific
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
+:::{applies-item} { stack: ga 9.1+, serverless: ga }
 
 Expand the **Authentication** section, and in the **Server SSL certificate authorities** field, enter the path to the CA certificate or paste the certificate content directly.
 
@@ -114,7 +117,7 @@ If your remote {{es}} cluster requires mutual TLS (mTLS) authentication, configu
 
 ::::{applies-switch}
 
-:::{applies-item} stack: ga 9.1
+:::{applies-item} { stack: ga 9.1+, serverless: ga }
 
 Expand the **Authentication** section to configure mTLS settings:
 
@@ -161,7 +164,7 @@ For more information about TLS configuration options, refer to [One-way and mutu
 1. {applies_to}`stack: ga 9.1` Choose whether integrations should be automatically synchronized on the remote {{es}} cluster. To configure this feature, refer to [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md).
 
    :::{note}
-   Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
+   Automatic integrations synchronization is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page. This feature is not available when the remote {{es}} cluster is a {{serverless-short}} project. Refer to [Limitations](#remote-output-limitations).
    :::
 
 2. Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
@@ -202,3 +205,24 @@ If you choose not to synchronize integrations automatically, you need to ensure 
 {{fleet-server}} requires connectivity to the remote cluster to generate API keys for {{agents}}. When you use a remote {{es}} output, {{fleet-server}} tests whether it can reach the remote cluster. The result determines whether the remote output is reported as healthy or unhealthy in the **Status** column for the output on the **{{fleet}}** → **Settings** page.
 
 If you have multiple {{fleet-server}} instances, each {{fleet-server}} tests connectivity to all remote {{es}} outputs. If the {{fleet-server}} instances have different network scopes, some of them might not be able to reach a certain remote output. In this case, the remote output will display as unhealthy in the UI with an `Unable to connect` error. You can ignore this status as long as the {{fleet-server}} instance that manages the {{agents}} using that remote output has connectivity to the remote cluster.
+
+## Set up {{ccs}} to query remote data [set-up-ccs]
+
+In some cases, {{ccs}} (CCS) is required to query data on the remote cluster from the management cluster, such as Osquery queries on {{agents}} that use a remote {{es}} output.
+
+:::{note}
+You don't need to set up {{ccs-init}} for {{agents}} to send data to a remote {{es}} output or for [automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md). Add {{ccs}} only when the management cluster must search data stored on the remote cluster.
+:::
+
+To configure {{ccs-init}} in the management cluster:
+
+1. Open the {{kib}} menu, and go to **{{manage-app}}** → **{{stack-manage-app}}** → **Remote Clusters**.
+2. Select **Add a remote cluster**, then follow the steps to add your remote cluster.
+
+    When prompted to add the _remote address_, enter your remote cluster's proxy address:
+
+    1. In your remote cluster, go to **Deployment** → **Manage this deployment** → **Security** (or go to `deployments/<deployment_id>/security`).
+    2. Scroll to the **Remote cluster parameters** section, then copy the **Proxy Address**.
+    3. In your management cluster, enter the copied value in the **Remote address** field of the remote cluster setup.
+
+    Refer to [Remote clusters](/deploy-manage/remote-clusters.md) for more details on adding a remote cluster.

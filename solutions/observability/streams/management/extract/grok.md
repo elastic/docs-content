@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Parse unstructured log messages and extract fields using predefined or custom grok patterns with the Streams grok processor in Streamlang.
 ---
 # Grok processor [streams-grok-processor]
 

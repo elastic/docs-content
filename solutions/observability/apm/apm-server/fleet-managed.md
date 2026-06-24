@@ -170,7 +170,7 @@ POST kbn:/api/fleet/epm/packages/apm/9.0.0
 { "force": true }
 ```
 
-See [Kibana API](https://www.elastic.co/docs/api/doc/kibana/) to learn more about how to use the Kibana APIs.
+See [Kibana API]({{kib-apis}}) to learn more about how to use the Kibana APIs.
 
 ::::
 
@@ -231,7 +231,7 @@ elasticApm {
 1. You can find the latest version in the [Gradle plugin portal](https://plugins.gradle.org/plugin/co.elastic.apm.android).
 2. Defaults to your `android.defaultConfig.applicationId` value.
 3. Defaults to your `android.defaultConfig.versionName` value.
-4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+4. Defaults to null. More info on API Keys [here]({{es-apis}}operation/operation-security-create-api-key).
 5. Defaults to null.
 
 ::::{note}

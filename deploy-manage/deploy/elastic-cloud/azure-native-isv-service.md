@@ -5,18 +5,19 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
+navigation_title: Azure Native Service
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Azure Native ISV Service [ec-azure-marketplace-native]
+# {{ecloud}} Azure Native Service [ec-azure-marketplace-native]
 
-The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service brings the following benefits:
+The {{ecloud}} Azure Native Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Microsoft Marketplace. The service brings the following benefits:
 
 * **Easy deployment for managed {{stack}} instances**
 
-    {{stack}} instances managed by Elastic are deployed directly from the Azure console. This provides the complete {{stack}} experience with all commercial features.
+    {{stack}} instances managed by Elastic are deployed directly from the Azure portal. This provides the complete {{stack}} experience with all available features.
 
 * **Integrated billing**
 
@@ -24,10 +25,10 @@ The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances o
 
 * **Easy consolidation of your Azure logs in Elastic**
 
-    Use a single-step setup to ingest logs from your Azure services into the {{stack}}. For details, refer to [Azure Native ISV Service logs and metrics](azure-native-isv-service-logs-metrics.md).
+    Use a single-step setup to ingest logs from your Azure services into the {{stack}}. For details, refer to [Azure Native Service logs and metrics](azure-native-isv-service-logs-metrics.md).
 
 ::::{tip}
-The full product name in the Azure integrated marketplace is _{{ecloud}} (Elasticsearch) - An Azure Native ISV Service_.
+The full product name in the Microsoft Marketplace is _Elasticsearch - Search & Vector Database (Free 7-Day Trial)_.
 ::::
 
 $$$ec-azure-integration-faq$$$
@@ -38,11 +39,11 @@ $$$azure-integration-regions$$$
 $$$azure-integration-existing-email$$$
 $$$ec-supported-regions$$$
 
-Before setting up an {{ecloud}} deployment or project through the Azure Native ISV Service, review the following requirements:
+Before setting up an {{ecloud}} deployment or project through the Azure Native Service, review the following requirements:
 
 * Your Azure account role for the subscription must be set to **Owner** or **Contributor**. For details and steps to assign roles, refer to [Roles and permissions](https://learn.microsoft.com/en-us/marketplace/roles-permissions#roles-and-permissions-1) in the Azure documentation.
 * If you already have an {{ecloud}} account, you can sign in with your existing credentials during setup. Your new resource will be linked to an existing organization or a new one will be created. For details on how accounts and organizations work together, refer to [Subscribe from a marketplace](subscribe-from-marketplace.md#ec-marketplace-org-relationship).
-* You must have a credit card registered on your Azure subscription. If you have a non-payment subscription, such as a [Virtual Studio Subscription](https://visualstudio.microsoft.com/subscriptions/), you can't create an {{ecloud}} deployment. Refer to the Azure [Purchase errors](https://learn.microsoft.com/en-us/azure/partner-solutions/elastic/troubleshoot#marketplace-purchase-errors) troubleshooting documentation for more information.
+* You must have a payment method registered on your Azure subscription. If you have a non-payment subscription, such as a [Virtual Studio Subscription](https://visualstudio.microsoft.com/subscriptions/), you can't create an {{ecloud}} deployment. Refer to the Azure [Purchase errors](https://learn.microsoft.com/en-us/azure/partner-solutions/elastic/troubleshoot#marketplace-purchase-errors) troubleshooting documentation for more information.
 * To single sign-on into your {{ecloud}} deployment or project from Azure, you need to request approval from your Azure administrator.
 
 ## Create a deployment or {{serverless-short}} project [ec-azure-integration-getting-started]
@@ -60,7 +61,7 @@ If you select **Cloud Hosted**, a deployment is created with **16GB of RAM** and
 You can create and manage {{ecloud}} deployments and projects using a variety of tools:
 
 * **Azure tools**
-    * The Azure console
+    * The Azure portal
     * [Azure Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/elastic_cloud_elasticsearch)
     * The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/elastic?view=azure-cli-latest)
     * The Azure [REST API](https://docs.microsoft.com/en-us/rest/api/elastic)
@@ -81,7 +82,7 @@ You can create and manage {{ecloud}} deployments and projects using a variety of
     Refer to [Tools and APIs](/deploy-manage/deploy/elastic-cloud/tools-apis.md) for a complete list.
 
     :::{note}
-    When you use any of the {{ecloud}} methods to create a deployment or project, it will not be available in the Azure Portal. To have the necessary metadata to be visible in the Azure Portal, {{ecloud}} resources need to be created in Microsoft Azure.
+    When you use any of the {{ecloud}} methods to create a deployment or project, it will not be available in the Azure portal. To have the necessary metadata to be visible in the Azure portal, {{ecloud}} resources need to be created in Microsoft Azure.
     :::
 
 ## Access your deployment or project [azure-integration-how-to-access]
@@ -114,22 +115,22 @@ The following limitations apply:
 $$$azure-integration-prior-cloud-account$$$
 If you already have an {{ecloud}} account, you can sign in with your existing credentials when creating an Elastic resource in the Azure portal. If your account has a single organization, the resource is added to that organization. If you have multiple organizations, refer to [Multi-org accounts and the Azure portal](#ec-azure-multi-org-limitations).
 
-### Convert a trial to Azure ISV [azure-integration-convert-trial]
+### Convert a trial to Azure Native Service [azure-integration-convert-trial]
 
-If you have an existing {{ecloud}} trial, you can convert it to an Azure Marketplace subscription. For step-by-step instructions, refer to [Convert a trial to a marketplace subscription](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
+If you have an existing {{ecloud}} trial, you can convert it to a Microsoft Marketplace subscription. For step-by-step instructions, refer to [Convert a trial to a marketplace subscription](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
 
 Keep in mind:
 
 * When creating resources in the trial account, specify Azure as the cloud provider so that the organization is [eligible for conversion](marketplace-trial-conversion.md#ec-marketplace-conversion-candidates).
-* To convert your trial to the Azure Marketplace, [create a resource](#ec-azure-integration-getting-started) in the Azure console. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
-* Any resources created during your trial won't show up in the Azure console, because they weren't created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
+* To convert your trial to the Microsoft Marketplace, [create a resource](#ec-azure-integration-getting-started) in the Azure portal. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
+* Any resources created during your trial won't show up in the Azure portal, because they weren't created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
 
-### Start a trial from Azure Marketplace [azure-integration-native-trials]
+### Start a trial from Microsoft Marketplace [azure-integration-native-trials]
 
-You can start a 7-day trial by creating a deployment through the Azure Marketplace. The following restrictions apply:
+You can start a 7-day trial by creating a deployment through the Microsoft Marketplace. The following restrictions apply:
 
 * During the 7-day trial period, you can create up to one deployment and three serverless projects. If you want to convert to a paid subscription before the end of the trial period, contact `support@elastic.co`.
-* After 7 days, the trial will automatically convert to a paid offering. You can contact Elastic Support to unsubscribe, but doing so might result in your resources being deleted after a grace period.
+* After 7 days, the trial will automatically convert to a paid offering. If you don't want to convert your trial, then you can delete the resource you created in the Azure portal. You can also contact Elastic Support to unsubscribe, which might result in your resources being deleted after a grace period.
 * You can sign up for only one trial per user account. After the trial expires, you can't start another trial. If you need a trial extension, reach out to Elastic Support.
 
 ## Pricing [azure-integration-pricing]
@@ -154,11 +155,11 @@ To estimate your costs, you can use the following calculators:
 
 ## Integrated billing [ec-azure-integration-billing-summary]
 
-Azure Native ISV Service includes integrated billing: Elastic resource costs are posted to your Azure subscription through the Microsoft Commercial Marketplace. You can create various {{ecloud}} resources (deployments and projects) across different Azure subscriptions, with all of the costs associated with an {{ecloud}} organization posted to a single Azure subscription.
+Azure Native Service includes integrated billing: Elastic resource costs are posted to your Azure subscription through the Microsoft Commercial Marketplace. You can create various {{ecloud}} resources (deployments and projects) across different Azure subscriptions, with all of the costs associated with an {{ecloud}} organization posted to a single Azure subscription.
 
 The integrated billing process involves the following concepts:
 
-* **Azure Marketplace SaaS ID**: This is a unique identifier that's generated one time by Microsoft Commercial Marketplace when a user creates their first Elastic resource (deployment or project) using the Microsoft Azure (Portal, API, SDK, or Terraform). This is mapped to a User ID and Azure Subscription ID.
+* **Microsoft Marketplace SaaS ID**: This is a unique identifier that's generated one time by Microsoft Commercial Marketplace when a user creates their first Elastic resource (deployment or project) using the Microsoft Azure (Portal, API, SDK, or Terraform). This is mapped to a User ID and Azure Subscription ID.
 * **{{ecloud}} organization**: An [organization](/deploy-manage/cloud-organization.md) is the foundational construct under which everything in {{ecloud}} is grouped and managed. An organization is created as a step during the creation of your first Elastic resource, whether that's done through Microsoft Azure (Portal, API, SDK, or Terraform). The initial member of the {{ecloud}} organization can then invite other users.
 * **Elastic resource (deployment or project)**: An {{ecloud}} deployment or project helps you manage an {{es}} cluster and instances of other Elastic products in one place. You can work with Elastic resources from within the Azure ecosystem. Multiple users in the {{ecloud}} organization can create different resources from different Azure subscriptions. They can also create resources from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
@@ -177,7 +178,7 @@ The following diagram shows how your {{ecloud}} organization costs are reported 
 
 ### Resubscribe to Azure [azure-resubscribe-flow]
 
-If your organization is currently unsubscribed from the Azure Marketplace, you can resubscribe through any of your existing Azure deployments in the Azure Portal:
+If your organization is currently unsubscribed from the Microsoft Marketplace, you can resubscribe through any of your existing Azure deployments in the Azure portal:
 
 1. Open one of your deployments or projects to view its overview page.
 2. From the left navigation pane, select **Connected Elastic Cloud Resources**.
@@ -196,30 +197,30 @@ If your organization is currently unsubscribed from the Azure Marketplace, you c
 
 $$$azure-integration-billing-which-subscription$$$
 
-The Azure Marketplace integrated billing posts all of the Elastic resource costs related to an {{ecloud}} organization to the Azure subscription you used to create your first-ever Elastic resource, even if your individual Elastic resources (deployments and projects) are spread across different Azure subscriptions.
+The Microsoft Marketplace integrated billing posts all of the Elastic resource costs related to an {{ecloud}} organization to the Azure subscription you used to create your first-ever Elastic resource, even if your individual Elastic resources (deployments and projects) are spread across different Azure subscriptions.
 
 $$$azure-integration-billing-different-deployments$$$
 To have different Elastic resources' costs reported to different Azure subscriptions, they need to be in separate {{ecloud}} organizations. To create a separate organization, [create a new Elastic resource](#ec-azure-integration-getting-started) from the Azure portal. A new organization is created as part of the resource creation process.
 
 #### How costs are reported
 
-$$$azure-integration-billing-elastic-costs$$$
-
-The costs associated with Elastic resources are reported under **unassigned** in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resource costs. For granular Elastic resource costs, refer to [Monitor and analyze your account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md).
-
 $$$azure-integration-billing-deployments$$$
 
-The costs for Elastic resources are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the resources created using the Azure Portal, API, SDK, or CLI, and also those created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization.
+The costs for Elastic resources are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the resources created using the Azure portal, API, SDK, or CLI, and also those created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization.
+
+$$$azure-integration-billing-elastic-costs$$$
+
+The costs associated with Elastic resources are reported under **unassigned** in the Azure portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resource costs. For granular Elastic resource costs, refer to [Monitor and analyze your account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md).
 
 $$$azure-integration-billing-instance-values$$$
 
 #### Invoice values
 
-* **Instance name/ID** The Azure Marketplace SaaS identifier that represents an {{ecloud}} organization. For Microsoft Azure, `Microsoft.SaaS` (namespace) resources are used for billing Marketplace Resources -- in this case, Elastic.
+* **Instance name/ID** The Microsoft Marketplace SaaS identifier that represents an {{ecloud}} organization. For Microsoft Azure, `Microsoft.SaaS` (namespace) resources are used for billing Marketplace Resources -- in this case, Elastic.
 
     For instance: Elastic Organization `Org1` is associated with a Marketplace SaaS (Microsoft.SaaS) asset `AzureElastic_GUID_NAME`. The Elastic resources (`Microsoft.Elastic`) `E1`, `E2`, and `E3` within `Org1` are all mapped to `AzureElastic_GUID_NAME`.
 
-* `Microsoft.SaaS` (Instance name) asset is shown in the Azure Marketplace invoice and represents costs related to an {{ecloud}} organization and not individual Elastic resources. To understand the cost breakdown for individual Elastic resources, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
+* `Microsoft.SaaS` (Instance name) asset is shown in the Microsoft Marketplace invoice and represents costs related to an {{ecloud}} organization and not individual Elastic resources. To understand the cost breakdown for individual Elastic resources, refer to [Monitor and analyze your account usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 
 ## Users and access [ec-azure-integration-users-access]
 
@@ -231,22 +232,22 @@ There are several options to integrate Microsoft authentication with {{ecloud}}:
 
 {{ecloud}} is not automatically integrated with Azure:
 
-* [{{ecloud}} RBAC capabilities](../../users-roles/cloud-organization/user-roles.md) are available only from the {{ecloud}} Console and is not integrated with Azure Portal. Users who interact with Elastic resources from Azure Portal will not be recognized by the {{ecloud}} RBAC policies.
+* [{{ecloud}} RBAC capabilities](../../users-roles/cloud-organization/user-roles.md) are available only from the {{ecloud}} Console and is not integrated with Azure portal. Users who interact with Elastic resources from Azure portal will not be recognized by the {{ecloud}} RBAC policies.
 
 $$$azure-integration-authorization-access$$$
-* Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant can't access clusters through the Cloud console other than those that they themselves created.
+* Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant cannot access clusters through the Cloud console other than those that they themselves created.
 
     When trying to access resources such as {{es}}, {{kib}}, or {{product.apm}} in a deployment or project that was created by another Azure user, the following error is shown:
 
-    :::{image} /deploy-manage/images/cloud-ec-marketplace-azure026.png
-    :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
-    :::
+    ```txt
+    To access the resource [r:/<resource-type>/<resource-id>], the user must have the required authorization.
+    ```
 
 ### Allow multiple users to create resources in an organization [azure-integration-multiple-users]
 
 $$$azure-integration-no-inbox$$$
 
-Multiple Azure users can deploy to the same {{ecloud}} organization. Before another user creates a native resource from the Azure Portal, invite them to your {{ecloud}} organization at [https://cloud.elastic.co/account/members](https://cloud.elastic.co/account/members). When they create the resource, it will get added to the existing organization instead of creating a new one, allowing you to benefit from consolidated billing, RBAC, and other benefits of an {{ecloud}} organization.
+Multiple Azure users can deploy to the same {{ecloud}} organization. Before another user creates a native resource from the Azure portal, invite them to your {{ecloud}} organization at [https://cloud.elastic.co/account/members](https://cloud.elastic.co/account/members). When they create the resource, it will get added to the existing organization instead of creating a new one, allowing you to benefit from consolidated billing, RBAC, and other benefits of an {{ecloud}} organization.
 
 You can add Azure users as members of your organization even if they don't have an inbox. Reach out to Elastic support.
 
@@ -255,7 +256,7 @@ You can add Azure users as members of your organization even if they don't have 
 {{es}} resources deployed in an Azure tenant are managed by Elastic. The management capabilities associated with this tenant are the same as used to run Elastic's managed service, which also allows users to deploy on Azure. {{es}} is not deployed into your Azure tenant.
 
 $$$azure-integration-azure-tenant-info$$$
-After you subscribe to {{ecloud}} through the Azure Native ISV Service, Elastic has access to the following Azure tenant information:
+After you subscribe to {{ecloud}} through the Azure Native Service, Elastic has access to the following Azure tenant information:
 
 * Data defined in the marketplace [Saas fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
 * The following additional data:
@@ -268,28 +269,16 @@ After you subscribe to {{ecloud}} through the Azure Native ISV Service, Elastic 
     * Last name
     * Country
 
-Elastic can also access data from {{ecloud}} Azure Native ISV Service features, including [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview). This data is available to Elastic only if you enable it. By default, Elastic does not have access to this information.
-
-## Migrate from classic Azure marketplace [azure-integration-migrate]
-
-First create a new account configured with {{ecloud}} Azure Native ISV Service, then perform the migration as follows:
-
-1. From your classic Azure marketplace account, navigate to the deployment and [configure a custom snapshot repository using Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md).
-2. Using the newly configured snapshot repository, [create a snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the data to migrate.
-3. Navigate to Azure and log in as the user that manages the {{es}} resources.
-4. Before proceeding, ensure the new account is configured according to the [prerequisites](#azure-integration-get-started).
-5. Create a [new {{es}} resource](#azure-integration-get-started) for each existing deployment that needs migration from the classic Azure account.
-6. In the new {{es}} resource, follow the steps in [Restore from a snapshot](/manage-data/migrate.md#ec-restore-snapshots) to register the custom snapshot repository from Step 1.
-7. In the same set of steps, restore the snapshot data from the snapshot repository that you registered.
-8. Confirm the data has moved successfully into your new {{es}} resource on Azure.
-9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the {{ecloud}} ({{es}}) marketplace subscription. This action triggers the existing deployments' termination.
-
+Elastic can also access data from {{ecloud}} Azure Native Service features, including [resource and activity log data](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/platform-logs-overview). This data is available when [log ingestion](azure-native-isv-service-logs-metrics.md#configure-log-ingestion) is configured. By default, Elastic does not have access to this information.
 
 ## Delete a resource or Azure resource group [ec-azure-integration-delete]
 
 $$$azure-integration-delete-deployment$$$
-Delete the deployment directly from the Azure console. The delete operation performs clean-up activities in the Elastic console to ensure any running components are removed, so that no additional charges occur.
+Delete the deployment directly from the Azure portal. The delete operation performs clean-up activities in the Elastic console to ensure any running components are removed, so that no additional charges occur.
 
 $$$azure-integration-delete-resource-group$$$
 If you delete an Azure Resource Group containing {{ecloud}} resources, the latter will be deleted automatically. However, you should not delete the Azure Resource Group containing the first deployment or project that you created. The usage associated with any other Elastic deployment created outside of the first resource group will continue to get reported and charged against this resource group. If you want to stop all charges to this Resource Group, you should delete the individual deployments.
 
+## Troubleshooting
+
+To troubleshoot issues with the Azure Native Service, refer to [](azure-native-isv-service-troubleshooting.md).

@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# Create and manage alerting rules with {{kib}} [create-and-manage-rules]
+# Create and manage {{kib}} alerting rules [create-and-manage-rules]
 
-The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
+The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of {{kib}} alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -40,6 +40,22 @@ For more information on alerting concepts and the types of rules and connectors 
 ## Required permissions [_required_permissions]
 
 Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
+
+## {{cps-cap}} scope for rules [cps-scope-for-rules]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), alerting rules query data across linked projects based on the **space-level {{cps}} scope**. You cannot set a {{cps}} scope on individual rules.
+
+When you open a rule to create or edit it, the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header shows the current {{cps}} scope but is read-only. To change which projects rules query, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+
+For {{esql}} rules, you can use [`SET project_routing`](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) in the rule query to target specific linked projects, overriding the space-level scope. For non-{{esql}} rules that use index patterns, you can use [qualified index expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions) to scope the rule to specific projects.
+
+:::{note}
+{{ml-cap}} rules don't support {{cps}}; they search data in the origin project only. Other features also have limited or no {{cps}} support. For details, refer to [{{cps-cap}} availability by app](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-availability).
+:::
 
 ## Create and edit rules [create-edit-rules]
 
@@ -172,7 +188,7 @@ Click the rule name to access a rule details page:
 
 In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met. For more information about alerts, go to [*View alerts*](view-alerts.md).
 
-If there are rule actions that failed to run successfully, you can see the details on the **History** tab. In the **Message** column, click the warning or expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") or click the number in the **Errored actions** column to open the **Errored Actions** panel. In this example, the action failed because the [`xpack.actions.email.domain_allowlist`](kibana://reference/configuration-reference/alerting-settings.md#action-config-email-domain-allowlist) setting was updated and the action’s email recipient is no longer included in the allowlist:
+If there are rule actions that failed to run successfully, you can see the details on the **History** tab. In the **Message** column, click the warning or expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") or click the number in the **Errored actions** column to open the **Errored Actions** panel. In this example, the action failed because the [`xpack.actions.email.domain_allowlist`](kibana://reference/configuration-reference/alerting-settings.md) setting was updated and the action’s email recipient is no longer included in the allowlist:
 
 :::{image} /explore-analyze/images/kibana-rule-details-errored-actions.png
 :alt: Rule histor page with alerts that have errored actions

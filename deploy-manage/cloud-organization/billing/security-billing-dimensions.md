@@ -3,12 +3,29 @@ navigation_title: Security projects
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
 applies_to:
-  serverless: all
+  serverless:
+    security: ga
 products:
   - id: cloud-serverless
+sub:
+  offering: Security Analytics
+  abb-anchor: security-billing-agent-builder-executions
+  abb-preamble: |
+    Elastic Agent Builder enables you to create AI agents that assist with security operations, including alert investigation, threat triage, root cause analysis, and guided response actions. Agent Builder Executions is a billing dimension for Elastic Security Serverless projects on the Security Analytics Complete tier.
+
+    Billing is based on the number of agent executions completed in your project over the course of a month.
+  abb-free-executions: 10,000
+  abb-pricing-label: Elastic Cloud pricing table
+  abb-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
+  wfe-anchor: security-billing-workflow-executions
+  wfe-preamble: Workflows enable you to automate multi-step processes across your security operations, including alert triage, case management, enrichment, and response actions. Workflow Executions is a billing dimension for Security Serverless projects on the Security Analytics Complete tier and the Elastic AI SOC Engine (EASE) tier.
+  wfe-billing-detail: Billing is based on the number of workflow executions completed successfully in your project over the course of a month. Each execution represents one end-to-end run of a workflow. Failed executions are not billed.
+  wfe-free-executions: 10,000
+  wfe-pricing-label: Elastic Cloud pricing table
+  wfe-pricing-url: https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security
 ---
 
-# {{elastic-sec}} billing dimensions [security-billing]
+# {{elastic-sec}} Serverless billing dimensions [security-billing]
 
 {{elastic-sec}} serverless projects provide you with all the capabilities of {{elastic-sec}} to perform SIEM, security analytics, endpoint security, and cloud security workflows. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption based. Security Analytics/SIEM is available in two tiers of carefully selected features to enable common security operations:
 
@@ -72,6 +89,19 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
-## Elastic Managed LLMs
+:::{include} _snippets/agent-builder-executions-billing.md
+:::
+
+:::{include} _snippets/workflow-executions-billing.md
+:::
+
+## Elastic Managed LLMs [security-billing-elastic-managed-llms]
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to leverage AI-powered search as a service without deploying a model in your serverless project. The models are configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" feature tier. Using Elastic Managed LLMs will use tokens and incur related token-based add-on billing for your serverless project.
+
+## {{cps-cap}} [security-billing-cps]
+```{applies_to}
+serverless: preview
+```
+:::{include} _snippets/cps-billing-obs-sec.md
+:::

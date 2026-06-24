@@ -11,11 +11,6 @@ products:
 
 # Advanced configuration for Elastic Maps Server on {{eck}} [k8s-maps-advanced-configuration]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 If you already looked at the [{{es}} on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
 
 * Customize the Pod configuration

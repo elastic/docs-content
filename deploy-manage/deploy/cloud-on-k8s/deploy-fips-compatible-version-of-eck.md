@@ -19,7 +19,11 @@ For the ECK operator, adherence to FIPS 140-2 is ensured by:
 * Using FIPS approved / NIST recommended cryptographic algorithms.
 * Compiling the operator using the [BoringCrypto](https://github.com/golang/go/blob/dev.boringcrypto/README.boringcrypto.md) library for various cryptographic primitives.
 
-## FIPS compliant installation using Helm [k8s_fips_compliant_installation_using_helm]
+::::{warning}
+Due to a build configuration issue, ECK operator images published between versions 2.9.0 and 3.3.1 use the standard Go cryptography library instead of BoringCrypto. Standard Go **does not use FIPS 140-2/3 validated cryptographic libraries**. Upgrade to version 3.3.2 or later to get images built using FIPS 140-2/3 validated cryptographic libraries.
+::::
+
+## FIPS compatible installation using Helm [k8s_fips_compliant_installation_using_helm]
 
 Set `image.fips=true` to install a FIPS-enabled version of the ECK Operator. Refer to [Install ECK using the Helm chart](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md) for full Helm installation instructions.
 
@@ -29,7 +33,7 @@ helm install elastic-operator elastic/eck-operator \
   --set=image.fips=true
 ```
 
-## FIPS compliant installation using manifests [k8s_fips_compliant_installation_using_manifests]
+## FIPS compatible installation using manifests [k8s_fips_compliant_installation_using_manifests]
 
 The `StatefulSet` definition within the yaml installation manifest will need to be patched prior to installation to append `-fips` to the `spec.template.spec.containers[*].image` to install a FIPS-enabled version of the ECK Operator. Refer to [Install ECK using the YAML manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md) for full manifest installation instructions.
 
@@ -46,4 +50,24 @@ If the Operator has already been installed using the manifests, the installation
 ```sh
 kubectl patch sts elastic-operator -n elastic-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"manager", "image":"docker.elastic.co/eck/eck-operator-fips:${ECK_VERSION}"}]}}}}'
 ```
+
+## Operator-managed {{es}} FIPS keystore password [k8s-fips-keystore-password]
+
+```{applies_to}
+eck: ga 3.4
+```
+
+When FIPS mode is enabled in {{es}} (`xpack.security.fips_mode.enabled: true`), {{es}} requires a password-protected keystore. Starting with ECK 3.4.0 and {{es}} 9.4.0+, the operator automatically manages this for you by generating, storing, and configuring the {{es}} keystore password, eliminating the need for manual `podTemplate` overrides.
+
+The operator creates a Secret named `<cluster-name>-es-keystore-password` containing the generated password and mounts it into the {{es}} pods. The keystore init container uses this password to create a password-protected keystore.
+
+This feature activates automatically when all of the following conditions are met:
+
+* `xpack.security.fips_mode.enabled: true` is set in any NodeSet config or via a StackConfigPolicy
+* {{es}} version is 9.4.0 or later
+* No user-provided keystore password is detected
+
+If you have already configured a keystore password through environment variables (`KEYSTORE_PASSWORD`, `KEYSTORE_PASSWORD_FILE`, or `ES_KEYSTORE_PASSPHRASE_FILE`) in the `podTemplate`, the operator respects your configuration and does not generate its own.
+
+When FIPS mode is disabled or the {{es}} version is downgraded below 9.4.0, the operator automatically cleans up the managed keystore password Secret.
 

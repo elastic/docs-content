@@ -15,5 +15,5 @@ This snippet is in use in the following locations:
 - ec-remote-cluster-ece.md
 - ec-enable-ccs-for-eck.md
 -->
-1. On the remote cluster, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it to include access to the indices you want to use for {{ccs}} or {{ccr}}.
+1. On the remote cluster, use the [{{es}} API]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it to include access to the indices you want to use for {{ccs}} or {{ccr}}.
 2. Copy the encoded key (`encoded` in the response) to a safe location. It is required for the local cluster configuration.

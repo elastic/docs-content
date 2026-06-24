@@ -47,6 +47,13 @@ The creator information is only available for dashboards created on or after ver
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
 
 
+## Browse saved visualizations and annotation groups [find-visualizations-annotation-groups]
+
+To browse your saved visualizations and annotation groups, open the [Visualize Library](../visualize/visualize-library.md). To do that, search for **Visualize** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When using the Security and Observability solution views or project types, the **Dashboards** page includes **Visualizations** and **Annotation groups** tabs for direct access to the Visualize Library. With the **Classic** solution view or in previous versions, the Visualize Library is available from the **Visualize** page in the navigation menu.
+
+
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]
 
 You can mark any dashboards as favorite, using the ✩ **star icon** from the **Dashboards** page or from the dashboard itself.

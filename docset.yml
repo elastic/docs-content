@@ -7,6 +7,8 @@ features:
 exclude:
   - 'README.md'
   - 'raw-migrated-files/**'
+  - 'changelog/**'
+  - 'releases/**'
 
 cross_links:
   - apm-agent-android
@@ -110,6 +112,7 @@ subs:
   stack-manage-app:   "Stack Management"
   stack-monitor-app:   "Stack Monitoring"
   rules-ui:   "Rules"
+  siem-rules-ui: "Detection rules (SIEM)"
   connectors-ui:   "Connectors"
   connectors-feature:   "Actions and Connectors"
   stack-rules-feature:   "Stack Rules"
@@ -121,6 +124,8 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
+  alerting-v2:   "experimental alerting features"
+  alerting-v2-cap:   "Experimental alerting features"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -290,9 +295,9 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.12.4
-  helm-version: 3.19.5
-  ece-docker-images-8: 8.19.11
-  ece-docker-images-9: 9.3.0
+  helm-version: 3.21.0
+  ece-docker-images-8: 8.19.16
+  ece-docker-images-9: 9.3.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"

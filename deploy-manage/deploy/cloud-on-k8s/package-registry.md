@@ -55,10 +55,12 @@ Refer to the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{
 
 ### Packages are not available
 
-Since the {{package-registry}} distribution images contain a snapshot of packages, if you are seeing issues where packages are not available, ensure you're using the correct image version that is equal to or greater than your {{stack}} version. For the latest packages, use the `production` or `lite` distribution tags, for example:
+Since the {{package-registry}} distribution images contain a snapshot of packages, if you are seeing issues where packages are not available, ensure you're using the correct image version that is equal to or greater than your {{stack}} version.
 
-* `docker.elastic.co/package-registry/distribution:production` - All packages from the production registry
-* `docker.elastic.co/package-registry/distribution:lite` - Subset of commonly used packages
+By default, ECK deploys the `lite` {{package-registry}} distribution, that matches the `.spec.version` configured. For the latest packages, specify `.spec.image` and use the `production` or `lite` distribution tags, for example:
+
+* `docker.elastic.co/package-registry/distribution:production` - All packages from the production registry. This image is updated every time a new version of a package gets published.
+* `docker.elastic.co/package-registry/distribution:lite` - Subset of commonly used packages. This image is updated every time a new version of a package gets published.
 
 ```yaml subs=true
 apiVersion: packageregistry.k8s.elastic.co/v1alpha1
@@ -69,7 +71,7 @@ metadata:
 spec:
   version: {{version.stack}}
   count: 1
-  image: docker.elastic.co/package-registry/distribution:production-{{version.stack}}
+  image: docker.elastic.co/package-registry/distribution:production
 ```
 
 ## See also

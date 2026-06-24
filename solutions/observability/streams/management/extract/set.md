@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Assign a value to a field, creating it if it doesn't exist or overwriting it if it does, with the Streams set processor in Streamlang.
 ---
 # Set processor [streams-set-processor]
 

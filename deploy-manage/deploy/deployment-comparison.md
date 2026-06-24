@@ -17,10 +17,10 @@ For more details about feature availability in {{serverless-short}}, refer to []
 
 ## Security
 
-| Feature/capability | Fully self-managed, ECE, ECK | ECH | {{serverless-short}} |
+| Feature/capability | Fully self-managed, ECK | ECH, ECE | {{serverless-short}} |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
-| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through {{ecloud}} only |
+| [Authentication](/deploy-manage/users-roles.md) | {{es}} realms | {{es}} realms, {{ecloud}} SSO | {{ecloud}} SSO only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
 | [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
 
@@ -57,7 +57,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Custom plugins and bundles | Available | Available | No |
 | [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) | Available | Limited | Limited |
 | [{{es}}-Hadoop integration](elasticsearch-hadoop://reference/index.md) | Available | Available | No |
-| [Cross cluster search (CCS)](/explore-analyze/cross-cluster-search.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) (as cross project search) |
+| [Cross cluster search (CCS)](/explore-analyze/cross-cluster-search.md) | Available | Available | Tech preview (as [cross-project search](/deploy-manage/cross-project-search-config.md)) |
 | [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ## Development and testing features

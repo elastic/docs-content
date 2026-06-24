@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Move a field value to a new field name and remove the original with the Streams rename processor in Streamlang.
 ---
 # Rename processor [streams-rename-processor]
 

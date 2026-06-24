@@ -46,3 +46,18 @@ For services instrumented with OpenTelemetry, the tab exclusively shows OTel-obs
 
 * **Hosts**: Links to the [**Hosts**](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md) UI, which supports OpenTelemetry and its semantic conventions.
 * **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md), as the Containers and Pods UIs do not yet support OTel semantic conventions.
+
+::::{important}
+:applies_to: stack: ga 9.4+
+The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. It infers the schema is inferred from the APM agent name:
+
+**Elastic APM Agent** or **Elastic Agent system integration**: Queries ECS data from Metricbeat or Elastic Agent integrations.
+
+**OTel SDK** or **EDOT SDK**: Queries OpenTelemetry semantic convention (semconv) data from the OTel Collector or EDOT Collector (for example, `hostmetricsreceiver.otel`, `kubeletstatsreceiver.otel`, `dockerstatsreceiver.otel`).
+Cross-schema setups show as **N/A**:
+
+- A service instrumented with Elastic APM or Elastic Agent, but running on infrastructure observed only by the OTel Collector.
+- A service instrumented with an OTel or EDOT SDK, but running on infrastructure observed only by Metricbeat or the Elastic Agent system, Kubernetes, or Docker integrations.
+
+To see infrastructure metrics, make sure the service instrumentation and the infrastructure collector use the same schema.
+::::

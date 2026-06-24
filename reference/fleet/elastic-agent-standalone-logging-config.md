@@ -13,12 +13,34 @@ products:
 # Configure logging for standalone {{agent}}s [elastic-agent-standalone-logging-config]
 
 
-The Logging section of the `elastic-agent.yml` config file contains settings for configuring the logging output. The logging system can write logs to the `syslog`, `file`, `stderr`, `eventlog`, or rotate log files. If you do not explicitly configure logging, the `stderr` output is used.
+The Logging section of the `elastic-agent.yml` config file contains settings for configuring the logging output.
 
-This example configures {{agent}} logging:
+{{agent}} always writes logs to an internal set of rotating files, regardless of any configuration. These internal logs are written to the following locations and cannot be turned off or reconfigured:
+
+* **macOS**: `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent-*.ndjson`
+* **Linux**: `/opt/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent-*.ndjson`
+* **Windows**: `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\elastic-agent-*.ndjson`
+* **DEB**: `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent-*.ndjson`
+* **RPM**: `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent-*.ndjson`
+
+In addition to the internal logging, you can configure a single external logging output: `stderr`, `syslog`, `eventlog`, or `files` (rotating files). If you don't explicitly configure an external output, `stderr` is used by default.
+
+External logging outputs are mutually exclusive, meaning that only one can be active at a time. If multiple outputs are turned on, {{agent}} silently selects the highest-priority one, according to the following priority order: 
+
+1. `to_stderr`
+2. `to_syslog`
+3. `to_eventlog`
+4. `to_files`
+
+::::{note}
+Because `to_stderr` is on by default, you must explicitly set `to_stderr: false` to use any other output.
+::::
+
+This example configures {{agent}} to log to rotating files:
 
 ```yaml
 agent.logging.level: info
+agent.logging.to_stderr: false
 agent.logging.to_files: true
 agent.logging.files:
   path: /var/log/elastic-agent
@@ -32,7 +54,7 @@ agent.logging.files:
 
 You can specify the following settings in the Logging section of the `elastic-agent.yml` config file.
 
-Some outputs will log raw events on errors like indexing errors in the Elasticsearch output, to prevent logging raw events (that may contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It will use the same level, selectors and all other configurations from the default logger, but it will have its own file configuration.
+Some outputs log raw events on errors like indexing errors in the {{es}} output, to prevent logging raw events (that might contain sensitive information) together with other log messages, a different log file, only for log entries containing raw events, is used. It uses the same level, selectors and all other configurations from the default logger, but has its own file configuration.
 
 Having a different log file for raw events also prevents event data from drowning out the regular log files. Use `agent.logging.event_data` to configure the events logger.
 
@@ -47,8 +69,8 @@ The events log file is not collected by the {{agent}} monitoring. If the events 
 | `agent.logging.to_eventlog`<br> | Set to `true` to write all logging output to the Windows `eventlog` output.<br><br>Default: `false`<br> |
 | `agent.logging.metrics.enabled`<br> | Set to `true` for {{agent}} to periodically log its internal metrics that have changed in the last period. For each metric that changed, the delta from the value at the beginning of the period is logged. Also, the total values for all non-zero internal metrics get logged on shutdown. If set to `false`, no metrics for the agent or any of the {{beats}} running under it are logged.<br><br>Default: `true`<br> |
 | `agent.logging.metrics.period`<br> | Specify the period after which to log the internal metrics. This setting is not passed to any {{beats}} running under the {{agent}}.<br><br>Default: `30s`<br> |
-| `agent.logging.to_files`<br> | Set to `true` to log to rotating files. Set to `false` to disable logging to files.<br><br>Default: `true`<br> |
-| `agent.logging.files.path`<br> | The directory that log files is written to. <br>Logs file names end with a date and optional number: log-date.ndjson, log-date-1.ndjson, and so on as new files are created during rotation.<br><br>macOS: `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`<br>Linux: `/opt/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`<br>Windows: `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\elastic-agent.ndjson`<br>DEB: `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`<br>RPM: `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`|
+| `agent.logging.to_files`<br> | Set to `true` to log to rotating files. Set to `false` to turn off logging to files. For this output to take effect, you must also set `to_stderr: false`.<br><br>Default: `false`<br> |
+| `agent.logging.files.path`<br> | The directory that log files are written to when `to_files: true` is configured. Log file names end with a date and optional number: log-date.ndjson, log-date-1.ndjson, and so on as new files are created during rotation. This setting does not affect the internal logging output.<br> |
 | `agent.logging.files.name`<br> | The name of the file that logs are written to.<br><br>Default: `elastic-agent`<br> |
 | `agent.logging.files.rotateeverybytes`<br> | The maximum size limit of a log file. If the limit is reached, a new log file is generated.<br><br>Default: `10485760` (10MB)<br> |
 | `agent.logging.files.keepfiles`<br> | The most recent number of rotated log files to keep on disk. Older files are deleted during log rotation. The value must be in the range of `2` to `1024` files.<br><br>Default: `7`<br> |

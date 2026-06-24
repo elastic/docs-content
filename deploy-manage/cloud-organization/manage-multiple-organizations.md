@@ -11,7 +11,7 @@ navigation_title: Manage multiple organizations
 
 # Manage multiple {{ecloud}} organizations
 
-You can create or access multiple organizations from a single {{ecloud}} account. 
+An [organization](/deploy-manage/cloud-organization.md) is the umbrella for all of your {{ecloud}} resources, users, and account settings. You can create or access multiple organizations from a single {{ecloud}} account.
 
 You might want to create multiple organizations for reasons such as the following:
 

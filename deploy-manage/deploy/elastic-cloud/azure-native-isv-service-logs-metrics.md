@@ -9,12 +9,12 @@ products:
 navigation_title: Logs and metrics
 ---
 
-# Azure Native ISV Service logs and metrics
+# Azure Native Service logs and metrics
 
 $$$ec-azure-logs-and-metrics$$$
 $$$azure-integration-monitor$$$
 
-The {{ecloud}} Azure Native ISV Service simplifies logging for Azure services with the {{stack}}. This integration supports:
+The [{{ecloud}} Azure Native Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md) simplifies logging for Azure services with the {{stack}}. This integration supports:
 
 * Azure subscription logs
 * Azure resources logs (check [Supported categories for Azure Resource Logs](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/resource-logs-categories?WT.mc_id=Portal-Azure_Marketplace_Elastic) for examples)
@@ -43,7 +43,7 @@ If your Azure resources and Elastic deployment or project are in different subsc
 If you already created diagnostic settings before the `Microsoft.Elastic` resource provider was registered, delete and add the diagnostic setting again.
 ::::
 
-In the Azure console, configure the ingestion of Azure logs into either a new or existing {{ecloud}} deployment or project:
+In the Azure portal, configure the ingestion of Azure logs into either a new or existing {{ecloud}} deployment or project:
 
 * When creating a new deployment or project, use the **Logs & metrics** tab in Azure to specify the log type and a key/value tag pair. Any Azure resources that match on the tag value automatically send log data to the {{ecloud}} deployment or project, once it's been created.
 
@@ -51,7 +51,7 @@ In the Azure console, configure the ingestion of Azure logs into either a new or
 :alt: The Logs & Metrics tab on the Create Elastic Resource page
 :::
 
-* For existing deployments or projects, configure Azure logs from the [resource overview page](https://portal.azure.com/#browse/Microsoft.Elastic%2Fmonitors) in the Azure console.
+* For existing deployments or projects, configure Azure logs from the [resource overview page](https://portal.azure.com/#browse/Microsoft.Elastic%2Fmonitors) in the Azure portal.
 
 ::::{important}
 Note the following restrictions for logging:
@@ -84,7 +84,7 @@ $$$azure-integration-ingest-metrics$$$
 
 ## Ingest metrics
 
-Metrics are not supported as part of the current {{ecloud}} Azure Native ISV Service. This will be implemented in a future phase. Metrics can still be collected from all Azure services using {{metricbeat}}. For details, check [Ingest other Azure metrics using the {{metricbeat}} Azure module](../../../solutions/observability/cloud/monitor-microsoft-azure-with-beats.md#azure-step-four).
+Metrics are not supported as part of the current {{ecloud}} Azure Native Service. This will be implemented in a future phase. Metrics can still be collected from all Azure services using {{metricbeat}}. For details, check [Ingest other Azure metrics using the {{metricbeat}} Azure module](../../../solutions/observability/cloud/monitor-microsoft-azure-with-beats.md#azure-step-four).
 
 
 $$$azure-integration-vm-extensions$$$

@@ -100,10 +100,13 @@ If your organization’s deployments already trust each other by default, you ca
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
+curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
 ```
 
 For example:
@@ -177,7 +180,7 @@ This section only applies if you’re using TLS certificates as cross-cluster se
 
 
 ```sh
-curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
+curl -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
 {
   "resources" : [
     {
@@ -205,11 +208,11 @@ Note the following when using the {{ece}} RESTful API:
 The following API request retrieves the remote clusters configuration:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
+curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
 ```
 
 ::::{note}
-The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
+The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API]({{es-apis}}operation/operation-cluster-remote-info) directly.
 ::::
 
 ## Configure roles and users [ece_configure_roles_and_users]

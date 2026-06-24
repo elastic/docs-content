@@ -13,6 +13,7 @@ AGENTS.md
 CLAUDE.md
 GEMINI.md
 .cursor
+.claude/worktrees
 
 # VS code settings
 .vscode

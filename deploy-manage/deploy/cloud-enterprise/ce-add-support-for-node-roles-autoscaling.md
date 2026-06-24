@@ -253,7 +253,7 @@ The following example is based on the `default` system owned deployment template
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -450,7 +450,7 @@ The existing template contains three {{es}} topology elements and two resources 
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -694,7 +694,7 @@ After adding support for `node_roles`, the resulting deployment template should 
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1018,7 +1018,7 @@ Similar to the `node_roles` example, the following one is also based on the `def
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1348,7 +1348,7 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
               {
                 "instance_configuration_id": "kibana",
                 "size": {
-                  "value": 1024,
+                  "value": 2048,
                   "resource": "memory"
                 }
               }
@@ -1415,17 +1415,20 @@ After adding support for autoscaling to the [example](#ece-node-roles-support-ex
 
 Having added support for `node_roles` and autoscaling to your custom template, it is possible to perform the update through the RESTful API, by following these steps:
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 1. Obtain the existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
-2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.
+2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API]({{ece-apis}}operation/operation-set-deployment-template-v2) for more details.
 
     ::::{dropdown} Update template API request example
     ```sh
-    curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
+    curl -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
     {
       "name": "ECE Custom Template",
       "description": "ECE custom template with support for node_roles and autoscaling",
@@ -1673,7 +1676,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
                   {
                     "instance_configuration_id": "kibana",
                     "size": {
-                      "value": 1024,
+                      "value": 2048,
                       "resource": "memory"
                     }
                   }
@@ -1756,7 +1759,7 @@ If you do not intend to perform any of these actions, the migration can only be 
 1. Go to the deployment **Edit** page.
 2. Get the deployment update payload by clicking **Equivalent API request** at the bottom of the page.
 3. Update the payload by replacing `node_type` with `node_roles` in each {{es}} topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
-4. Send a `PUT` request with the updated deployment payload to conclude the migration. Check the [Update Deployment](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-deployment) API documentation for more details.
+4. Send a `PUT` request with the updated deployment payload to conclude the migration. Check the [Update Deployment]({{ece-apis}}operation/operation-update-deployment) API documentation for more details.
 
 **Using the Advanced edit:**
 

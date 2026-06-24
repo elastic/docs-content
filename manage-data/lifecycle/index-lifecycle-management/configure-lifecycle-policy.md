@@ -84,7 +84,7 @@ To add an ILM policy to an {{es}} cluster:
 
 :::{tab-item} API
 :sync: api
-Use the [Create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
+Use the [Create or update policy]({{es-apis}}operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
 
 ```console
 PUT _ilm/policy/my_policy
@@ -151,7 +151,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
         * The template priority, version, and any metadata.
         * Whether or not to overwrite the `action.auto_create_index` cluster setting.
 
-        Refer to the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) documentation for details about these options.
+        Refer to the [Create or update index template API]({{es-apis}}operation/operation-indices-put-index-template) documentation for details about these options.
 
 1. On the **Component templates** page, use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings, mappings, and aliases defined in the component templates and apply them to indices when they're created.
 
@@ -186,7 +186,7 @@ The newly created index template will be used for all new indices with names tha
 
 :::{tab-item} API
 :sync: api
-Use the [Create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add an index template to a cluster and apply the lifecycle policy to indices matching the template:
+Use the [Create or update index template API]({{es-apis}}operation/operation-indices-put-index-template) to add an index template to a cluster and apply the lifecycle policy to indices matching the template:
 
 ```console
 PUT _index_template/my_template
@@ -257,7 +257,7 @@ Now you can start indexing data to the rollover alias specified in the lifecycle
 
 :::{tab-item} API
 :sync: api
-Use the [Create an index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create the initial managed index.
+Use the [Create an index API]({{es-apis}}operation/operation-indices-create) to create the initial managed index.
 
 The following request creates the `test-000001` index, with the alias `test-alias`. Because the index name matches the index pattern specified in `my_template`, {{es}} automatically applies the settings from that template.
 

@@ -592,7 +592,7 @@ Using `date` without passing any arguments will return the current date and time
 | Argument | Type | Description |
 | --- | --- | --- |
 | *Unnamed*<br>Alias: `value` | `string` | An optional date string that is parsed into milliseconds since epoch. The date string can be either a valid JavaScript `Date` input or a string to parse using the `format` argument. Must be an ISO8601 string, or you must provide the format. |
-| `format` | `string` | The MomentJS format used to parse the specified date string. For more information, see [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/). |
+| `format` | `string` | The MomentJS format used to parse the specified date string. For more information, refer to the [Moment.js format documentation](https://momentjs.com/docs/#/displaying/format/). |
 
 **Returns:** `number`
 
@@ -1020,7 +1020,7 @@ kibana
 
 ### `formatdate` [formatdate_fn]
 
-Formats an ISO8601 date string or a date in milliseconds since epoch using MomentJS. See [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/).
+Formats an ISO8601 date string or a date in milliseconds since epoch using MomentJS. Refer to [Moment.js format documentation](https://momentjs.com/docs/#/displaying/format/).
 
 **Expression syntax**
 
@@ -1047,7 +1047,7 @@ This transforms the dates in the `time` field into strings that look like `"Jan 
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* **\***<br>Alias: `format` | `string` | A MomentJS format. For example, `"MM/DD/YYYY"`. See [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/). |
+| *Unnamed* **\***<br>Alias: `format` | `string` | A MomentJS format. For example, `"MM/DD/YYYY"`. Refer to [Moment.js format documentation](https://momentjs.com/docs/#/displaying/format/). |
 
 **Returns:** `string`
 
@@ -1536,7 +1536,7 @@ Uses a regular expression to replace parts of a string.
 | Argument | Type | Description |
 | --- | --- | --- |
 | *Unnamed*<br>Aliases: `pattern`, `regex` | `string` | The text or pattern of a JavaScript regular expression. For example, `"[aeiou]"`. You can use capturing groups here. |
-| `flags`<br>Alias: `modifiers` | `string` | Specify flags. See [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).<br>Default: `"g"` |
+| `flags`<br>Alias: `modifiers` | `string` | Specify flags. Refer to [the RegExp reference on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).<br>Default: `"g"` |
 | `replacement` | `string` | The replacement for the matching parts of string. Capturing groups can be accessed by their index. For example, `"$1"`.<br>Default: `""` |
 
 **Returns:** `string`
@@ -1565,7 +1565,7 @@ Uses a MomentJS formatting string to round milliseconds since epoch, and returns
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed*<br>Alias: `format` | `string` | The MomentJS format to use for bucketing. For example, `"YYYY-MM"` rounds to months. See [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/). |
+| *Unnamed*<br>Alias: `format` | `string` | The MomentJS format to use for bucketing. For example, `"YYYY-MM"` rounds to months. Refer to [Moment.js format documentation](https://momentjs.com/docs/#/displaying/format/). |
 
 **Returns:** `number`
 
@@ -1763,7 +1763,7 @@ Uses Timelion to extract one or more time series from many sources.
 | *Unnamed*<br>Aliases: `q`, `query` | `string` | A Timelion query<br>Default: `".es(*)"` |
 | `from` | `string` | The Elasticsearch `datemath` string for the beginning of the time range.<br>Default: `"now-1y"` |
 | `interval` | `string` | The bucket interval for the time series.<br>Default: `"auto"` |
-| `timezone` | `string` | The timezone for the time range. See [https://momentjs.com/timezone/](https://momentjs.com/timezone/).<br>Default: `"UTC"` |
+| `timezone` | `string` | The timezone for the time range. Refer to [Moment.js timezone documentation](https://momentjs.com/timezone/).<br>Default: `"UTC"` |
 | `to` | `string` | The Elasticsearch `datemath` string for the end of the time range.<br>Default: `"now"` |
 
 **Returns:** `datatable`

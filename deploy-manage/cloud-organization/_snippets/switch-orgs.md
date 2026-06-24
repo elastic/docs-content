@@ -1,6 +1,6 @@
 ## Switch to a different organization
 
-You can switch between organizations at any time. Depending on the authentication requirements for the organization, you might be required to re-authenticate.
+You can switch between organizations at any time. Depending on the authentication requirements for the organization, you might be required to re-authenticate. Switching also ends any active {{ecloud}} sessions you have open in other browser tabs.
 
 ### From your user profile
 

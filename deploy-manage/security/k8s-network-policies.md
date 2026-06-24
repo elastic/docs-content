@@ -336,7 +336,7 @@ Some {{agent}} policies may require additional access rules other than those lis
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• TCP port 8220 to {{fleet}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• TCP port 8220 to {{fleet}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br>• TCP port 443 of the {{k8s}} API server, required by the {{agent}} kubernetes provider and autodiscovery features.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1

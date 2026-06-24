@@ -1,5 +1,6 @@
 ---
 navigation_title: Vale style checker
+description: "Set up and use the Vale prose linter to check Elastic documentation against the style guide in your IDE or pull requests."
 ---
 
 # Elastic style guide for Vale

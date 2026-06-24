@@ -133,7 +133,7 @@ The result should include the following:
 2. The name of the {{ilm-init}} policy applied to the new component template in step two
 
 
-New {{ilm-init}} policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
+New {{ilm-init}} policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API]({{es-apis}}operation/operation-indices-rollover):
 
 ```bash
 POST /metrics-system.network-production/_rollover/

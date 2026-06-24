@@ -1,8 +1,8 @@
 ---
 navigation_title: Elasticsearch
 applies_to:
-  stack: preview 9.3
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 description: Learn about Elasticsearch action steps for searching, indexing, and managing data in workflows.
 products:
   - id: kibana
@@ -171,6 +171,6 @@ steps:
 
 Key concepts in this example:
 
-* [Data flow](/explore-analyze/workflows/data.md#workflows-data-flow): The output of the `search_for_docs` step is available to subsequent steps at `steps.search_for_docs.output`.
+* [Data flow](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md#workflows-data-flow): The output of the `search_for_docs` step is available to subsequent steps at `steps.search_for_docs.output`.
 * [Foreach loop](/explore-analyze/workflows/steps/foreach.md): The `foreach` step iterates over the `hits.hits` array from the search results.
-* [Item variable](/explore-analyze/workflows/data/templating.md): Inside the loop, the `item` variable holds the current document being processed, allowing you to access its fields such as `item._index` and `item._id`.
+* [Item variable](/explore-analyze/workflows/templating.md): Inside the loop, the `item` variable holds the current document being processed, allowing you to access its fields such as `item._index` and `item._id`.

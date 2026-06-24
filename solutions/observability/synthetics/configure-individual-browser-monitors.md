@@ -26,6 +26,7 @@ You’ll need to set a few configuration options:
 * **Set the schedule.** Specify the interval at which your tests will run.
 * **Specify where the monitors should run.** You can run monitors on Elastic’s global managed testing infrastructure or [create a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md) to run monitors from your own premises.
 * {applies_to}`stack: ga 9.1+` **Choose which spaces the monitor is visible in.** ({{kib}} only) You can make the monitor visible in one or more [spaces](/deploy-manage/manage-spaces.md), or use `'*'` for all spaces. Options set in `monitor.use()` override the project-level `spaces` setting in your [Synthetics project config](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor).
+* {applies_to}`stack: ga 9.4+` **Set a timeout for private location runs.** Use `timeout` to specify the maximum time (in seconds) a browser monitor is allowed to run before timing out when running on [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md). The minimum value is 30 seconds. This option is silently ignored for monitors running on Elastic's global managed testing infrastructure. If `timeout` is set but no private location is configured, the API returns a warning. This option is only available through the API and is not yet available in the Synthetics UI.
 * **Set other options as needed.** There are several other options you can set to customize your implementation including params, tags, screenshot options, throttling options, and more.
 
 Configure each monitor directly in your `journey` code using `monitor.use`. The `monitor` API allows you to set unique options for each journey’s monitor directly through code. For example:
@@ -43,6 +44,7 @@ journey('Ensure placeholder is correct', ({ page, params }) => {
       upload: 5,
       latency: 100,
     },
+    timeout: 60,
   });
   step('Load the demo page', async () => {
     await page.goto('https://elastic.github.io/synthetics-demo/');

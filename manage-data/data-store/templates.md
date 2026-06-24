@@ -31,7 +31,7 @@ For a detailed exploration and examples of setting up composable templates, refe
 The following conditions apply to using templates:
 
 * Composable index templates take precedence over any [legacy templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html), which were deprecated in {{es}} 7.8. If no composable template matches a given index, a legacy template might still match and be applied.
-* If an index is created with explicit settings and also matches an index template, the settings from the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
+* If an index is created with explicit settings and also matches an index template, the settings from the [create index]({{es-apis}}operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
 * Settings specified in the index template itself take precedence over the settings in its component templates.
 * When you specify multiple component templates in the `composed_of` field of an index template, the component templates are merged in the order specified, which means that later component templates override earlier component templates.
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
@@ -55,7 +55,7 @@ If you use {{es}} {{security-features}}, the following [security privileges](ela
 
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
+To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
 :::
 
 To create an index template, complete the following steps:
@@ -80,7 +80,7 @@ To create an index template, complete the following steps:
         * The template priority, version, and any metadata.
         * Whether or not to overwrite the `action.auto_create_index` cluster setting.
 
-        Refer to the [create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API documentation for details about these options.
+        Refer to the [create or update index template]({{es-apis}}operation/operation-indices-put-index-template) API documentation for details about these options.
 
 1. On the **Component templates** page, you can use the search and filter tools to select any [component templates](/manage-data/data-store/templates.md#component-templates) to include in the index template. The index template will inherit the settings (**S**), mappings (**M**), and aliases (**A**) defined in the component templates and apply them to indices when they're created.
 
@@ -169,7 +169,7 @@ To test your newly created template, you can create two new indices, for example
     }
     ```
 
-1. Use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to view the configurations for the new indices. The indices were configured using the index template you created earlier.
+1. Use the [get index API]({{es-apis}}operation/operation-indices-get) to view the configurations for the new indices. The indices were configured using the index template you created earlier.
 
     ```console
     GET /my-index-000001,my-index-000002
@@ -180,7 +180,7 @@ To test your newly created template, you can create two new indices, for example
 
 ::::{tab-item} API
 :sync: api
-Use the [create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add an index template to a cluster.
+Use the [create or update index template]({{es-apis}}operation/operation-indices-put-index-template) API to add an index template to a cluster.
 
 The following request creates an index template that is *composed of* the two component templates shown in the [component templates](#component-templates) example.
 
@@ -252,7 +252,7 @@ The following features can be useful when you're setting up index templates:
 
 If you use {{fleet}} or {{agent}}, assign your index templates a priority lower than `100` to avoid overriding these templates. Otherwise, to avoid accidentally applying the templates, do one or more of the following:
 
-* To disable all built-in index and component templates, set [`stack.templates.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) to `false` using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Note, however, that this is not recommended, see the [setting documentation](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) for more information.
+* To disable all built-in index and component templates, set [`stack.templates.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) to `false` using the [cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings). Note, however, that this is not recommended, see the [setting documentation](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) for more information.
 * Use a non-overlapping index pattern.
 * Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `501`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
 * To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
@@ -282,7 +282,7 @@ You can create, edit, clone, and delete your component templates on the **Index 
 
 ::::{tab-item} API
 :sync: api
-You can create and manage component templates using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API.
+You can create and manage component templates using the [component template]({{es-apis}}operation/operation-cluster-put-component-template) API.
 The following request creates the two component templates used in the previous index template example:
 
 ```console

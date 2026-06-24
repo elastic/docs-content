@@ -10,7 +10,7 @@ products:
 
 # Create or update synonyms set API examples [create-update-synonyms-set-api-examples]
 
-On this page, you can find practical examples of how to create or update a synonyms set using the [Synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms). The examples below show how to create a new synonyms set, validate its rules, and explain how analyzers are reloaded automatically when the synonyms set is updated.
+On this page, you can find practical examples of how to create or update a synonyms set using the [Synonyms APIs]({{es-apis}}group/endpoint-synonyms). The examples below show how to create a new synonyms set, validate its rules, and explain how analyzers are reloaded automatically when the synonyms set is updated.
 
 The following example creates a new synonyms set called `my-synonyms-set`:
 
@@ -69,7 +69,7 @@ PUT _synonyms/my-synonyms-set
 ## Analyzer reloading [synonyms-set-analyzer-reloading]
 
 When an existing synonyms set is updated, the [search-analyzer](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/search-analyzer) that use the synonyms set are reloaded automatically for all indices.
-This would be equivalent to invoking [Reload search analyzers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) for all indices that use the synonyms set.
+This would be equivalent to invoking [Reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers) for all indices that use the synonyms set.
 
 For example, creating an index with a synonyms set and updating it:
 

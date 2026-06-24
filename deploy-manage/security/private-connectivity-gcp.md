@@ -87,7 +87,7 @@ The process of setting up the Private link connection to your deployments is spl
 | [2. Create a DNS record pointing to the Private Service Connect endpoint.](#ec-private-service-connect-enpoint-dns) |  |
 |  | [3. Optional: Create a private connection policy with the PSC Connection ID.](#create-private-connection-policy) |
 |  | [4. Optional: Associate the private connection policy with your deployments.](#associate-private-connection-policy) | 
-|  | [5. Optional: Add an IP filter to allow traffic to {{kib}}](#optional-add-an-ip-filter-to-allow-traffic-to-kib). |
+|  | [5. Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
 |  | [6. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
@@ -134,7 +134,7 @@ To test the connection:
     :::{include} _snippets/find-endpoint.md
     :::
 
- 1. Access your cluster over Private Link:
+2. Access your cluster over Private Link:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
     * Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
@@ -240,7 +240,7 @@ If the policy doesn't contain a VPC filter, then the association can serve as a 
 4. Under **Apply to resources**, associate the policy with one or more deployments.
 5. Click **Update** to save your changes.
 
-## Optional: Add an IP filter to allow traffic to {{kib}}
+## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::

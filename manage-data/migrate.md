@@ -55,7 +55,7 @@ If the original source isn’t available or has other issues that make it non-vi
 
 ## Reindex from a remote cluster [ech-reindex-remote]
 
-Through the {{es}} [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex), you can connect your new {{es}} deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run than a [snapshot restore](#ec-restore-snapshots).
+Through the {{es}} [reindex API]({{es-apis}}operation/operation-reindex), you can connect your new {{es}} deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run than a [snapshot restore](#ec-restore-snapshots).
 
 ::::{warning}
 Reindex operations do not migrate index mappings, settings, or associated index templates from the source cluster.
@@ -115,7 +115,7 @@ Follow these steps to reindex data remotely:
     }
     ```
 
-    For additional options and details, refer to the [reindex API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+    For additional options and details, refer to the [reindex API documentation]({{es-apis}}operation/operation-reindex).
 
 6. Verify that the new index is present:
 

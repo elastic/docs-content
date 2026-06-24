@@ -40,7 +40,7 @@ While no schema is required to use EQL, we recommend using the [ECS](ecs://refer
 
 ## Run an EQL search [run-an-eql-search]
 
-Use the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) to run a [basic EQL query](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-basic-syntax).
+Use the [EQL search API]({{es-apis}}operation/operation-eql-search) to run a [basic EQL query](elasticsearch://reference/query-languages/eql/eql-syntax.md#eql-basic-syntax).
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1136,7 +1136,7 @@ The async search continues to run in the background without blocking other reque
 }
 ```
 
-To check the progress of an async search, use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
+To check the progress of an async search, use the [get async EQL search API]({{es-apis}}operation/operation-eql-get) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s
@@ -1155,7 +1155,7 @@ If the response’s `is_running` value is `false`, the async search has finished
 }
 ```
 
-Another more lightweight way to check the progress of an async search is to use the [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status) with the search ID.
+Another more lightweight way to check the progress of an async search is to use the [get async EQL status API]({{es-apis}}operation/operation-eql-get-status) with the search ID.
 
 ```console
 GET /_eql/search/status/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1187,13 +1187,13 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-You can use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
+You can use the [get async EQL search API]({{es-apis}}operation/operation-eql-get)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?keep_alive=5d
 ```
 
-Use the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
+Use the [delete async EQL search API]({{es-apis}}operation/operation-eql-delete) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
 
 ```console
 DELETE /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1228,7 +1228,7 @@ The response includes a search ID. `is_partial` and `is_running` are `false`, in
 }
 ```
 
-Use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) to get the same results later:
+Use the [get async EQL search API]({{es-apis}}operation/operation-eql-get) to get the same results later:
 
 ```console
 GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUToxMDY=
@@ -1236,9 +1236,9 @@ GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUTo
 
 Saved synchronous searches are still subject to the `keep_alive` parameter’s retention period. When this period ends, the search and its results are deleted.
 
-You can also check only the status of the saved synchronous search without results by using [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status).
+You can also check only the status of the saved synchronous search without results by using [get async EQL status API]({{es-apis}}operation/operation-eql-get-status).
 
-You can also manually delete saved synchronous searches using the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete).
+You can also manually delete saved synchronous searches using the [delete async EQL search API]({{es-apis}}operation/operation-eql-delete).
 
 
 ## Run an EQL search across clusters [run-eql-search-across-clusters]
@@ -1250,7 +1250,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 The EQL search API supports [cross-cluster search](../../../explore-analyze/cross-cluster-search.md). However, the local and [remote clusters](../../../deploy-manage/remote-clusters.md) must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 
-The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request adds two remote clusters: `cluster_one` and `cluster_two`.
+The following [cluster update settings]({{es-apis}}operation/operation-cluster-put-settings) request adds two remote clusters: `cluster_one` and `cluster_two`.
 
 ```console
 PUT /_cluster/settings

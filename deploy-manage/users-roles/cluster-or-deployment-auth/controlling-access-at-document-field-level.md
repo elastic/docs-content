@@ -32,8 +32,8 @@ You'll also learn the following:
 * Considerations for using document and field level security when [searching across clusters using cross-cluster API keys](#ccx-apikeys-dls-fls).
 
 You can use an API to manage roles:
-* In an {{stack}} deployment, use the [security](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) API.
-* In {{serverless-full}}, use the [security](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-put-role) API.
+* In an {{stack}} deployment, use the [security]({{es-apis}}operation/operation-security-put-role) API.
+* In {{serverless-full}}, use the [security]({{es-serverless-apis}}operation/operation-security-put-role) API.
 
 The examples on this page include API requests and equivalent {{kib}} steps where applicable.
 
@@ -634,7 +634,7 @@ If you need to restrict access to both documents and fields, consider splitting 
 serverless: unavailable
 ```
 
-[Cross-cluster API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) can be used to authenticate requests to a remote cluster. The `search` parameter defines permissions for cross-cluster search. The `replication` parameter defines permissions for cross-cluster replication.
+[Cross-cluster API keys]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) can be used to authenticate requests to a remote cluster. The `search` parameter defines permissions for cross-cluster search. The `replication` parameter defines permissions for cross-cluster replication.
 
 `replication` does not support any field or document level security. `search` supports field and document level security.
 

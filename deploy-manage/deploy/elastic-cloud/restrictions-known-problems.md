@@ -64,7 +64,7 @@ $$$ec-restrictions-apis-elasticsearch$$$
 $$$ec-restrictions-apis-kibana$$$
 
 {{kib}} APIs
-:   There are no rate limits restricting your use of the {{kib}} APIs. However, {{kib}} features are affected by the [{{kib}} configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add {{kib}} user settings](edit-stack-settings.md). For all details about using the {{kib}} APIs, check the [{{kib}} API reference documentation](https://www.elastic.co/docs/api/doc/kibana/).
+:   There are no rate limits restricting your use of the {{kib}} APIs. However, {{kib}} features are affected by the [{{kib}} configuration settings](kibana://reference/configuration-reference.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add {{kib}} user settings](edit-stack-settings.md). For all details about using the {{kib}} APIs, check the [{{kib}} API reference documentation]({{kib-apis}}).
 
 
 ## Transport client [ec-restrictions-transport-client]
@@ -156,7 +156,7 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Repository analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
 
-* The {{es}} [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* The {{es}} [Repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
 
 ## Service status [ec-service-status]
 

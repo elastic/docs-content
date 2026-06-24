@@ -19,7 +19,7 @@ This page describes how to troubleshoot the Task Manager health and resolve comm
 
 ## Check Task Manager health [task-manager-health-check]
 
-The following steps demonstrate a typical investigation flow. It assumes the [Task Manager Health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) is saved locally as `task_manager_health.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor. It does not require that the `taskManager` plugin is flagged as unhealthy under the [{{kib}} server status](/troubleshoot/kibana/access.md).
+The following steps demonstrate a typical investigation flow. It assumes the [Task Manager Health]({{kib-apis}}operation/operation-task-manager-health) is saved locally as `task_manager_health.json`, and uses third-party tool [JQ](https://jqlang.github.io/jq/) as a JSON processor. It does not require that the `taskManager` plugin is flagged as unhealthy under the [{{kib}} server status](/troubleshoot/kibana/access.md).
 
 1. Check the overall status.
 
@@ -1028,7 +1028,9 @@ This log message tells us that when Task Manager was running one of our rules, i
 
 For example, in this case, we’d expect to see a corresponding log line from the Alerting framework itself, saying that the rule failed. You should look in the Kibana log for a line similar to the log line below (probably shortly before the Task Manager log line):
 
+```txt
 Executing Rule "27559295-44e4-4983-aa1b-94fe043ab4f9" has resulted in Error: Unable to load resource ‘/api/something’
+```
 
 This would confirm that the error did in fact happen in the rule itself (rather than the Task Manager) and it would help us pin-point the specific ID of the rule which failed: 27559295-44e4-4983-aa1b-94fe043ab4f9
 

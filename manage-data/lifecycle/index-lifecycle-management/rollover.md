@@ -18,7 +18,7 @@ The rollover feature is an important part of how [{{ilm}}](../index-lifecycle-ma
 * **Optimized performance** - keeps shard sizes within [recommended limits](/deploy-manage/production-guidance/optimize-performance/size-shards.md) (10-50 GB)
 * **Queries run faster** - improves search performance
 
-Rollover can be triggered using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
+Rollover can be triggered using the [API]({{es-apis}}operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
 
 :::{tip}
 The following tutorials are available to help you configure rollover for your indices, for three different scenarios:

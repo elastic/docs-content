@@ -147,6 +147,20 @@ GET /locations/_search
 }
 ```
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also embed `${variableName}` inside a longer string value in the request body. The token is substituted in place, so `"frozen_${indexName}"` becomes `"frozen_logs"` when `indexName` is set to `logs`. Variables with an empty string value are substituted as `""`.
+
+```console
+PUT _index_template/${indexName}-template
+{
+  "index_patterns": ["${indexName}-*"],
+  "template": {
+    "aliases": {
+      "frozen_${indexName}": {}
+    }
+  }
+}
+```
+
 
 ### Auto-formatting [auto-formatting]
 
@@ -216,7 +230,7 @@ You can export requests:
 
 * by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
 
-    When running copied requests from an external environment, you’ll need to add [authentication information](https://www.elastic.co/docs/api/doc/kibana/authentication) to the request.
+    When running copied requests from an external environment, you’ll need to add [authentication information]({{kib-apis}}authentication) to the request.
 
 
 

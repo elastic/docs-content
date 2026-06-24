@@ -51,7 +51,7 @@ To separate `staging` and `production` APM data, we’d need to create six filte
 
 The `production-<event>-apm` aliases will contain a filter that only provides access to documents where the `service.environment` is `production`. Similarly, the `staging-<event>-apm` aliases will contain a filter that only provides access to documents where the `service.environment` is `staging`.
 
-To create these six filtered aliases, use the {{es}} [Aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases). In {{kib}}, open **Dev Tools** and run the following POST requests.
+To create these six filtered aliases, use the {{es}} [Aliases API]({{es-apis}}operation/operation-indices-update-aliases). In {{kib}}, open **Dev Tools** and run the following POST requests.
 
 ::::{dropdown} traces-apm* production alias example
 ```console
@@ -258,7 +258,7 @@ Using the table below, assign each role the following privileges:
 :screenshot:
 :::
 
-Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role):
+Alternatively, you can use the {{es}} [Create or update roles API]({{es-apis}}operation/operation-security-put-role):
 
 ::::{dropdown} Create a production_apm_viewer role
 This request creates a `production_apm_viewer` role:
@@ -332,7 +332,7 @@ The last thing to do is assign users to the newly created roles above. Users wil
 
 For information on how to create users and assign them roles with the {{kib}} UI, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 
-Alternatively, you can use the {{es}} [Create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user).
+Alternatively, you can use the {{es}} [Create or update users API]({{es-apis}}operation/operation-security-put-user).
 
 This example creates a new user and assigns them the `production_apm_viewer` role created in the previous step. This user will only have access to the production space and data with a `service.environment` of `production`. Remember to change the `password`, `full_name`, and `email` fields.
 

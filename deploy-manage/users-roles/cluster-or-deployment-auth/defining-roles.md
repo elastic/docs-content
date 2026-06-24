@@ -67,7 +67,7 @@ To manage roles, log in to {{kib}} and go to **Management > Security > Roles**.
 
 ### Role management API [roles-management-api]
 
-The Role Management APIs enable you to add, update, remove and retrieve roles dynamically. For more information and examples, see [Roles](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+The Role Management APIs enable you to add, update, remove and retrieve roles dynamically. For more information and examples, see [Roles]({{es-apis}}group/endpoint-security).
 
 
 ### File-based role management [roles-management-file]

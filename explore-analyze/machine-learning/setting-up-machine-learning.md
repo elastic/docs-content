@@ -134,8 +134,8 @@ The exported files contain configuration details only; they do not contain the {
 
 #### Prerequisites
 
-- If your {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md) with filter lists, the filter lists must exist; otherwise, the import fails. To create filter lists, use {{kib}} or the [create filters API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-filter)
-- If your {{anomaly-jobs}} were associated with [calendars](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars), you must create the calendar in the new environment and add your imported jobs to the calendar. Use {{kib}} or the [create calendars](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-calendar), [add events to calendar](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-calendar-events), and [add jobs to calendar](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-calendar-job) APIs.
+- If your {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md) with filter lists, the filter lists must exist; otherwise, the import fails. To create filter lists, use {{kib}} or the [create filters API]({{es-apis}}operation/operation-ml-put-filter)
+- If your {{anomaly-jobs}} were associated with [calendars](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars), you must create the calendar in the new environment and add your imported jobs to the calendar. Use {{kib}} or the [create calendars]({{es-apis}}operation/operation-ml-put-calendar), [add events to calendar]({{es-apis}}operation/operation-ml-post-calendar-events), and [add jobs to calendar]({{es-apis}}operation/operation-ml-put-calendar-job) APIs.
 
 #### Export {{anomaly-detect}} jobs
 

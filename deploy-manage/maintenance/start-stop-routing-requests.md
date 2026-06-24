@@ -49,7 +49,7 @@ In {{ece}}, in addition to stopping routing requests for particular instances, y
 * `API_URL` Url of the administration API.
 * `AUTH_HEADER` Curl format string representing the authentication header.
 * `ALLOCATOR_ID` Action target allocator id.
-* `ENABLE_TRAFFIC` Wether traffic to the selected allocator instances should be enabled (`true`) or disabled (`false`).
+* `ENABLE_TRAFFIC` Whether traffic to the selected allocator instances should be enabled (`true`) or disabled (`false`).
 
 This is an example of script execution to disable routing on all instances running on a given allocator:
 

@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Parse date strings and set document timestamps with the Streams date processor in Streamlang. Supports ISO8601, UNIX, UNIX_MS, TAI64N, and Java time patterns.
 ---
 
 # Date processor [streams-date-processor]
@@ -22,7 +23,7 @@ To extract a timestamp field using the date processor:
 1. Select **Create** → **Create processor**.
 1. Select **Date** from the **Processor** menu.
 1. Set the **Source Field** to the field containing the timestamp.
-1. Set the **Format** field to one of the accepted date formats (ISO8602, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
+1. Set the **Format** field to one of the accepted date formats (ISO8601, UNIX, UNIX_MS, or TAI64N) or use a Java time pattern. Refer to the [example formats](#streams-date-examples) for more information.
 
 This functionality uses the {{es}} [Date processor](elasticsearch://reference/enrich-processor/date-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
 

@@ -65,13 +65,12 @@ Use `curl` to test the connection to each host in `elasticsearch.hosts`:
 curl <ELASTICSEARCH_HOST_URL>:9200/
 ```
 
-If you're using TLS, try one of the following:
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
+If you're using TLS, use your CA certificate to test the connection:
 
 ```bash
-# Insecure test
-curl -u elastic -k https://es01:9200/
-
-# Secure test
 curl -u elastic --cacert ~/certs/ca/ca.crt https://es01:9200/
 ```
 

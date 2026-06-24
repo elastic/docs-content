@@ -25,7 +25,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 
     ![Explore in discover](/manage-data/images/ilm-explore-in-discover.png "")
 
-1. In **Discover**, the list of documents shows the columns for fields applicable to the visualzation that you selected. Select any document that has data for those fields and click the **Toggle dialog with details** icon.
+1. In **Discover**, the list of documents shows the columns for fields applicable to the visualization that you selected. Select any document that has data for those fields and click the **Toggle dialog with details** icon.
 
     ![Discover documents list](/manage-data/images/ilm-toggle-document-details.png "")
 

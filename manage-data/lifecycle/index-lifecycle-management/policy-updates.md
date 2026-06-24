@@ -64,7 +64,7 @@ To update a lifecycle policy:
 
 :::{tab-item} API
 :sync: api
-Use the [Create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API to update an existing ILM policy:
+Use the [Create or update policy]({{es-apis}}operation/operation-ilm-put-lifecycle) API to update an existing ILM policy:
 
 ```console
 PUT _ilm/policy/my_policy
@@ -124,27 +124,27 @@ To switch an index’s lifecycle policy:
 
 :::{tab-item} API
 :sync: api
-Use the {{es}} [remove policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) and [update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) APIs to switch an index’s lifecycle policy:
+Use the {{es}} [remove policy]({{es-apis}}operation/operation-ilm-remove-policy) and [update settings]({{es-apis}}operation/operation-indices-put-settings) APIs to switch an index’s lifecycle policy:
 
-1. Remove the existing policy using the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy). Target a data stream or alias to remove the policies of all its indices.
+1. Remove the existing policy using the [remove policy API]({{es-apis}}operation/operation-ilm-remove-policy). Target a data stream or alias to remove the policies of all its indices.
 
     ```console
     POST logs-my_app-default/_ilm/remove
     ```
 
-2. Use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state. Target a data stream or alias to get the state of all its indices.
+2. Use the [get index API]({{es-apis}}operation/operation-indices-get) to check an index’s state. Target a data stream or alias to get the state of all its indices.
 
     ```console
     GET logs-my_app-default
     ```
 
-    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open).
+    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API]({{es-apis}}operation/operation-indices-open).
 
     ```console
     POST logs-my_app-default/_open
     ```
 
-3. Assign a new policy using the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
+3. Assign a new policy using the [update settings API]({{es-apis}}operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
 
     ::::::{warning}
     * Don’t assign a new policy without first removing the existing policy. This can cause [phase execution](index-lifecycle.md#ilm-phase-execution) to silently fail.

@@ -37,7 +37,7 @@ To create a data stream, you need an index template to base it on. The template 
 
 A TSDS uses _dimension_ fields and _metric_ fields. [Dimensions](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension) are used to uniquely identify the time series and are typically based on a descriptive property like `location`.  [Metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric) are measurements that change over time.  
 
-Use an [`_index_template` request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create a template with two identifying dimension fields and two metric fields for weather measurements:
+Use an [`_index_template` request]({{es-apis}}operation/operation-indices-put-index-template) to create a template with two identifying dimension fields and two metric fields for weather measurements:
 
 ``` console
 PUT _index_template/quickstart-tsds-template  
@@ -87,7 +87,7 @@ You should get a response of `"acknowledged": true` that confirms the template w
 
 In this step, create a new data stream called `quickstart-weather` based on the index template defined in Step 1. You can create the data stream and add documents in a single API call.
 
-Use a [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) request to add multiple documents at once. Make sure to adjust the timestamps to within a few minutes of the current time.
+Use a [`_bulk` API]({{es-apis}}operation/operation-bulk) request to add multiple documents at once. Make sure to adjust the timestamps to within a few minutes of the current time.
 
 % TODO simplify timestamps
 
@@ -207,98 +207,22 @@ If you get an error about timestamp values, check the error response for the val
 ::::
 ::::{step} Run a query
 
-Now that your data stream has some documents, you can use the [`_search` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to query the data. This sample aggregation shows average temperature for each location, in hourly buckets. (You don't need to understand the details of aggregations to follow this example.) 
+Now that your data stream has some documents, you can use the ES|QL [`_query` endpoint]({{es-apis}}operation/operation-esql-query) to query the data. This sample aggregation shows the maximum of average temperature per sensor for each location, in hourly buckets.
 
 ```console
-POST quickstart-weather/_search  
+POST _query
 {
-  "size": 0,
-  "aggs": {
-    "by_location": {
-      "terms": {
-        "field": "location"  # The location dimension defined in the template.
-      },
-      "aggs": {
-        "avg_temp_per_hour": {
-          "date_histogram": {
-            "field": "@timestamp",
-            "fixed_interval": "1h"
-          },
-          "aggs": {
-            "avg_temp": {
-              "avg": {
-                "field": "temperature"  # A metric field defined in the template.
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  query: "TS quickstart-weather | STATS max(avg_over_time(temperature) BY location, TBUCKET(1h)"
 }
 ```
 
 :::{dropdown} Example response
 
 ```console-result
-{
-  "took": 1,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 5,
-      "relation": "eq"
-    },
-    "max_score": null,
-    "hits": []
-  },
-  "aggregations": {
-    "by_location": {
-      "doc_count_error_upper_bound": 0,
-      "sum_other_doc_count": 0,
-      "buckets": [
-        {
-          "key": "base",
-          "doc_count": 3,
-          "avg_temp_per_hour": {
-            "buckets": [
-              {
-                "key_as_string": "2025-09-08T21:00:00.000Z",
-                "key": 1757365200000,
-                "doc_count": 3,
-                "avg_temp": {
-                  "value": 27.333333333333332
-                }
-              }
-            ]
-          }
-        },
-        {
-          "key": "satellite",
-          "doc_count": 2,
-          "avg_temp_per_hour": {
-            "buckets": [
-              {
-                "key_as_string": "2025-09-08T21:00:00.000Z",
-                "key": 1757365200000,
-                "doc_count": 2,
-                "avg_temp": {
-                  "value": 32.359375
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  }
-}
+MAX(AVG_OVER_TIME(temperature))|   location   |      TBUCKET(1h)       
+-------------------------------+--------------+------------------------
+27.333333333333332             |base          |2025-09-08T21:00:00.000Z
+32.359375                      |satellite     |2025-09-08T21:00:00.000Z
 ```
 :::
 
@@ -323,6 +247,6 @@ If you're working with OpenTelemetry (OTLP) or Prometheus data, refer to:
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 
-* [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk)
-* [Index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
-* [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Bulk API]({{es-apis}}operation/operation-bulk)
+* [Index template API]({{es-apis}}operation/operation-indices-put-index-template)
+* [Search API]({{es-apis}}operation/operation-search)

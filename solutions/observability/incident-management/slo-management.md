@@ -46,7 +46,7 @@ Select **Needs attention** to inspect the transforms with issues.
 For more on SLO transforms and troubleshooting SLO health, refer to [Understanding SLO internals](../../../troubleshoot/observability/troubleshoot-service-level-objectives-slos.md#slo-understanding-slos).
 
 ## Bulk delete SLOs
-Use the **SLO Managment** page to delete multiple SLOs at once. To bulk delete SLOs:
+Use the **SLO Management** page to delete multiple SLOs at once. To bulk delete SLOs:
 
 1. From the **SLO Management** page, select the checkbox next to the SLOs you want to delete.
 1. From the **Selected [number] SLO** menu, select **Delete**.

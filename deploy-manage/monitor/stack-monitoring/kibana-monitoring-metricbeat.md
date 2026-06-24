@@ -69,7 +69,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [the Cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [the Cluster update settings API]({{es-apis}}operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
 5. Enable the {{kib}} X-Pack module in {{metricbeat}}.<br>

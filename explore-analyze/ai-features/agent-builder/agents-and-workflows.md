@@ -34,10 +34,10 @@ Before you begin:
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
 * Enable the Workflows feature in **Advanced settings**.
 * Ensure you have the correct privileges to create and run workflows.
-* For details, refer to [Set up workflows](/explore-analyze/workflows/setup.md).
+* For details, refer to [Set up workflows](/explore-analyze/workflows/get-started/setup.md).
 * Create at least one workflow.
 
-## Use the `ai.agent` step
+## Use the `ai.agent` step [use-ai-agent-workflow-step]
 
 Follow these steps to invoke an `ai.agent` as a step within a workflow.
 
@@ -98,12 +98,13 @@ Use the following parameters in the `with` block to configure the step:
 | `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 
 
-## Use `kibana.request` step
+## Use `kibana.request` step [use-kibana-request-workflow-step]
+
 Use the generic `kibana.request` step to interact with {{agent-builder}} APIs programmatically.
 
 1. Add a new step with the type `kibana.request`.
 2. Set the method (for example: `GET`, `POST`).
-3. Set the `path` to the specific [Agent Builder API endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder).
+3. Set the `path` to the specific [Agent Builder API endpoint]({{kib-apis}}group/endpoint-agent-builder).
 
 ### Example: List available agents
 This step retrieves a list of all agents currently available in Agent Builder.
@@ -129,4 +130,4 @@ The [`elastic/workflows` GitHub repo](https://github.com/elastic/workflows) cont
 * [Tools overview](./tools.md)
 * [Workflow tools](../agent-builder/tools/workflow-tools.md)
 * [Workflows](/explore-analyze/workflows.md)
-* [Agent Builder API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-agent-builder)
+* [Agent Builder API]({{kib-apis}}group/endpoint-agent-builder)

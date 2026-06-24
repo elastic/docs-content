@@ -258,7 +258,7 @@ The `kerberos` realm enables you to map Kerberos users to roles.
 You can map these users to roles in multiple ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 
 You identify users by their `username` field.
 

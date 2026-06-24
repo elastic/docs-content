@@ -13,7 +13,7 @@ products:
 
 Learn how to monitor your NGINX server by collecting logs and metrics with a standalone {{agent}} on Linux.
 
-You'll use {{kib}} and {{fleet}} to create an [agent policy that combines both ECS-based integrations and OpenTelemetry input packages](/reference/fleet/otel-integrations.md#otel-integrations-hybrid-policies), then download the policy file and deploy it to your standalone {{agent}}.
+You'll use {{kib}} and {{fleet}} to create an [agent policy that combines both ECS-based integrations and OpenTelemetry input packages](/reference/fleet/otel-integrations.md#agent-policies-multiple-integrations), then download the policy file and deploy it to your standalone {{agent}}.
 
 You’ll collect:
 

@@ -28,6 +28,13 @@ Remote clusters are especially useful in two cases:
 :::{include} ./remote-clusters/_snippets/terminology.md
 :::
 
+::::{admonition} Alternatives for {{serverless-short}}
+Remote clusters are not available in {{serverless-full}}.
+
+* The equivalent of {{ccs}} in {{serverless-full}} is [{{cps}}](/deploy-manage/cross-project-search-config.md). {{cps-init}} does not require remote cluster configuration.
+* A feature equivalent to cross-cluster replication is anticipated in a future release.
+::::
+
 ## Security models and connection modes
 
 When configuring remote clusters, you can choose between two security models and two connection modes. Both security models are compatible with either connection mode.

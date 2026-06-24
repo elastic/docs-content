@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Convert a string field to lowercase with the Streams lowercase processor in Streamlang.
 ---
 
 # Lowercase processor [streams-lowercase-processor]

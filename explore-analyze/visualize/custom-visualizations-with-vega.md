@@ -1323,6 +1323,72 @@ When using `"%context%": true` or defining a value for `"%timefield%"` the body 
 The `"%timefilter%"` can also be used to specify a single min or max value. The date_histogram’s `extended_bounds` can be set with two values - min and max. Instead of hardcoding a value, you may use `"min": {"%timefilter%": "min"}`, which will be replaced with the beginning of the current time range. The `shift` and `unit` values are also supported. The `"interval"` can also be set dynamically, depending on the currently picked range: `"interval": {"%autointerval%": 10}` will try to get about 10-15 data points (buckets).
 
 
+##### Writing {{esql}} queries in Vega [vega-esql-queries]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+To use an [{{esql}}](../query-filter/languages/esql-kibana.md) query as a data source, set `"%type%"` to `"esql"` in the `url` object and provide your query in the `"query"` parameter. {{esql}} queries work in both **Vega** and **Vega-Lite** visualizations.
+
+```json
+{
+  "data": [
+    {
+      "name": "my_data",
+      "url": {
+        "%type%": "esql",
+        "query": "FROM kibana_sample_data_logs | STATS count=COUNT()"
+      }
+    }
+  ]
+}
+```
+
+The `url` object supports the following parameters:
+
+| Parameter | Description |
+|-----------|-------------|
+| `"%type%"` | Set to `"esql"` to use the {{esql}} parser. |
+| `"query"` | The {{esql}} query to run. Required. |
+| `"%context%"` | When set to `true`, applies the dashboard filters to the query. |
+| `"%timefield%"` | When set, enables the `?_tstart` and `?_tend` named parameters in the query. These parameters are replaced with the start and end of the dashboard time range. |
+| `"dropNullColumns"` | Defaults to `true`. When `true`, columns that contain only `null` values are excluded from the response. |
+| `"params"` | An array of named parameter objects to substitute into the query. |
+
+The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
+
+The following example creates a metric that counts documents over time, using the dashboard filters and time range through `"%context%"`, `"%timefield%"`, and the `?_tstart` and `?_tend` parameters. To try it, [install the sample web logs data set](/manage-data/ingest/sample-data.md), open a new custom visualization on a dashboard, and paste the spec:
+
+```json
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Event counts over time",
+  "data": {
+    "url": {
+      "%type%": "esql",
+      "%context%": true,
+      "%timefield%": "@timestamp",
+      "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
+    }
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "key",
+      "type": "temporal",
+      "axis": {"title": false}
+    },
+    "y": {
+      "field": "doc_count",
+      "type": "quantitative",
+      "axis": {"title": "Document count"}
+    }
+  }
+}
+```
+
+
 #### Access Elastic Map Service files [vega-esmfiles]
 ```{applies_to}
 stack: preview
@@ -1465,7 +1531,7 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 ##### Inspect {{es}} requests [inspect-elasticsearch-requests]
 
-**Vega** uses the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
+**Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests

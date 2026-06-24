@@ -290,26 +290,6 @@ redirects:
         'ec-restrictions-fleet-traffic-filters': 'ec-restrictions-fleet-network-security'
         'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
         'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
-  'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md':
-    anchors: {}
-    many:
-      - to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md'
-        anchors:
-          'azure-integration-deployment-failed-traffic-filter': 'azure-integration-deployment-failed-network-security'
-          'azure-integration-deployment-failed-network-security': 'azure-integration-deployment-failed-network-security'
-          'azure-integration-authorization-access': 'authorization-errors'
-          'azure-integration-failed-sso': 'azure-integration-failed-sso'
-          'azure-integration-cant-see-deployment': 'azure-integration-cant-see-deployment'
-          'azure-integration-logs-not-ingested': 'azure-integration-logs-not-ingested'
-          'azure-integration-support': 'azure-integration-support'
-          'ec-azure-integration-troubleshooting': 'ec-azure-integration-troubleshooting'
-          'ec-getting-support': 'ec-getting-support'
-      - to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md'
-        anchors:
-          'azure-integration-monitor': 'azure-integration-monitor'
-          'azure-integration-ingest-metrics': 'azure-integration-ingest-metrics'
-          'azure-integration-vm-extensions': 'azure-integration-vm-extensions'
-          'ec-azure-logs-and-metrics': 'ec-azure-logs-and-metrics'
   'deploy-manage/remote-clusters/ec-enable-ccs.md':
     to: 'deploy-manage/remote-clusters/ec-enable-ccs.md'
     anchors:
@@ -840,6 +820,8 @@ redirects:
   'solutions/security/investigate/security-cases-features.md': 'solutions/security/investigate/security-cases.md'
   'solutions/security/investigate/cases.md': 'solutions/security/investigate/security-cases.md'
   'solutions/observability/incident-management/cases.md': 'solutions/observability/incident-management/observability-cases.md'
+  'solutions/observability/incident-management/create-manage-cases.md': 'explore-analyze/cases/create-cases.md'
+
 # Related to https://github.com/elastic/docs-content/pull/5251
   'solutions/security/get-started/agentless-integrations-faq.md': 'manage-data/ingest/agentless/agentless-integrations-faq.md'
   'solutions/security/get-started/agentless-integrations.md': 'manage-data/ingest/agentless/agentless-integrations.md'
@@ -858,3 +840,102 @@ redirects:
 
 # Renamed for SEO - URL now matches page title
   'solutions/security/detect-and-alert/requirements-privileges.md': 'solutions/security/detect-and-alert/turn-on-detections.md'
+
+# Related to https://github.com/elastic/docs-content/pull/5245
+  'explore-analyze/cross-project-search/cross-project-search-link-projects.md': 'deploy-manage/cross-project-search-config/cps-config-link-and-manage.md'
+
+# No more elasticsearch solution add-ons
+  'solutions/elasticsearch-solution-project/es-serverless-add-ons.md': 'solutions/elasticsearch-solution-project.md'
+  
+# Fleet: removed "Hybrid Agent" product wording; remap section anchors on the same pages
+  'reference/fleet/elastic-agent-as-otel-collector.md':
+    anchors:
+      'hybrid-elastic-agent': 'elastic-agent-multiple-collection-methods'
+      'beat-receivers': 'beat-receivers'
+  'reference/fleet/otel-integrations.md':
+    anchors:
+      'otel-integrations-hybrid-policies': 'agent-policies-multiple-integrations'
+
+# Workflows docset IA restructure (April 2026) — see explore-analyze/workflows/
+# Note: no redirect for workflows/get-started.md because that URL is now occupied by a new parent
+# index page. External links to the old tutorial land on the new parent, which links to the tutorial.
+  'explore-analyze/workflows/setup.md': 'explore-analyze/workflows/get-started/setup.md'
+  'explore-analyze/workflows/core-components.md': 'explore-analyze/workflows.md'
+  'explore-analyze/workflows/data.md': 'explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md'
+  'explore-analyze/workflows/data/templating.md': 'explore-analyze/workflows/templating.md'
+  'explore-analyze/workflows/author-workflows.md': 'explore-analyze/workflows/authoring-techniques/use-yaml-editor.md'
+  'explore-analyze/workflows/monitor-troubleshoot.md': 'explore-analyze/workflows/authoring-techniques/monitor-workflows.md'
+  'explore-analyze/workflows/manage-workflows.md': 'explore-analyze/workflows/authoring-techniques/manage-workflows.md'
+  'explore-analyze/workflows/authoring-techniques/migrate-from-9.3.md': 'explore-analyze/workflows/authoring-techniques/migrate-from-9-3.md'
+# Split off links for the EIS supported models page
+  'explore-analyze/elastic-inference/eis.md':
+    to: 'explore-analyze/elastic-inference/eis.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+        anchors:
+          'supported-models': 
+  'explore-analyze/elastic-inference/eis-supported-models.md':
+    to: 'explore-analyze/elastic-inference/eis-supported-models.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis-region-and-hosting.md'
+        anchors:
+          'eis-regions': 'eis-regions'
+      - to: 'explore-analyze/elastic-inference/eis-rate-limits.md'
+        anchors:
+          'rate-limits': 'eis-rate-limits'
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'pricing': 'pricing'
+          'monitor-your-token-usage': 'monitor-your-token-usage'
+# Split off links to inference UI pages
+  'explore-analyze/elastic-inference/inference-api.md':
+    to: 'explore-analyze/elastic-inference/inference-api.md'
+    many:
+      - to: 'explore-analyze/elastic-inference/eis.md'
+        anchors:
+          'add-inference-endpoints': 'add-endpoint'
+          'inference-endpoints': 'manage-models'
+          'create-custom-eis': 'add-endpoint'
+
+  # https://github.com/elastic/docs-content/pull/6582
+  'explore-analyze/ai-features/agent-builder/custom-agents.md':
+    to: 'explore-analyze/ai-features/agent-builder/custom-agents.md'
+    many:
+      - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
+        anchors:
+          'enable-elastic-capabilities': 'elastic-capabilities'
+
+  # Rehome CCS and CCR privileges from remote-clusters-cert.md
+  'deploy-manage/remote-clusters/remote-clusters-cert.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          'remote-clusters-privileges-ccr': 'configure-privileges-for-ccr-cert'
+          '_remote_cluster': '_remote_cluster_4'
+          '_local_cluster': '_local_cluster_4'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          'remote-clusters-privileges-ccs': 'configure-privileges-for-ccs-cert'
+          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_2': 'configure-privileges-for-ccs-cert-remote'
+          '_local_cluster_2': 'configure-privileges-for-ccs-cert-local'
+          '_local_cluster_3': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_3': 'configure-privileges-for-ccs-cert-remote'
+
+  # Rehome CCS and CCR API key privileges from remote-clusters-api-key.md
+  'deploy-manage/remote-clusters/remote-clusters-api-key.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-api-key.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          '_configure_privileges_for_ccr': 'configure-privileges-for-ccr-api-key'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          '_configure_privileges_for_ccs': 'configure-privileges-for-ccs-api-key'
+
+  # Redirect removed CCS privileges child page
+  'explore-analyze/cross-cluster-search/configure-privileges-for-cross-cluster-search.md':
+    to: 'explore-analyze/cross-cluster-search.md'
+    anchors:
+      '': 'configure-privileges-for-ccs'

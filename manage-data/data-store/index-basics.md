@@ -87,7 +87,7 @@ For example, the following mapping defines field types for a few common data typ
 
 ### Settings [index-settings]
 
-Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
+Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request]({{es-apis}}operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be updated dynamically on a live index.
 
 Common settings include:
 

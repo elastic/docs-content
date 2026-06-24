@@ -11,6 +11,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+description: Remove leading and trailing whitespaces from a string field with the Streams trim processor in Streamlang.
 ---
 
 # Trim processor [streams-trim-processor]

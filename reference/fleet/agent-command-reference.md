@@ -46,6 +46,7 @@ Because self-managed {{fleet-server}} is not supported on {{serverless-full}}, t
 * [logs](#elastic-agent-logs-command)
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
+* [windows](#elastic-agent-windows-command) {applies_to}`stack: ga 9.4+`
 
 
 
@@ -1207,6 +1208,7 @@ elastic-agent upgrade <version> [--source-uri <string>] [--help] [flags]
 
 `--source-uri <string>`
 :   The source URI to download the new version from. By default, {{agent}} uses the Elastic Artifacts URL.
+:   A file path is also accepted here. Example: `file://<file path>`
 
 `--skip-verify`
 :   Skip the package verification process. This option is not recommended as it is insecure.
@@ -1295,4 +1297,41 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 
 ```shell
 elastic-agent version
+```
+
+
+## elastic-agent windows [elastic-agent-windows-command]
+
+```{applies_to}
+stack: ga 9.4+
+```
+
+Windows-specific subcommands for managing {{agent}} registry entries. These commands require Administrator privileges.
+
+### Synopsis [_synopsis_14]
+
+```shell
+elastic-agent windows [command]
+```
+
+### Available commands [_available_commands_2]
+
+`registry update`
+:   Creates or updates the {{agent}} entry in the Windows Add/Remove Programs list and configures the registry key access control list (ACL) so unprivileged upgrades can update it automatically. Also removes any stale MSI-generated entries. Run this command once after upgrading from a version earlier than 9.4.0 in unprivileged mode.
+
+`registry remove`
+:   Removes the {{agent}} entry from the Windows Add/Remove Programs list. Run this command when you need to manually clean up the registry entry, such as during troubleshooting or before a manual uninstall.
+
+### Examples [_example_43]
+
+Create or update the {{agent}} entry in the Windows Add/Remove Programs list:
+
+```shell
+elastic-agent windows registry update
+```
+
+Remove the {{agent}} entry from the Windows Add/Remove Programs list:
+
+```shell
+elastic-agent windows registry remove
 ```

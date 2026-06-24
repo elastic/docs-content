@@ -13,6 +13,10 @@ products:
 
 Metadata can enrich your events and make application performance monitoring even more useful. Let’s explore the different types of metadata that Elastic APM offers.
 
+::::{note}
+If you’re using OpenTelemetry SDKs, refer to [OpenTelemetry attributes](/solutions/observability/apm/opentelemetry/attributes.md) to learn how to add attributes to your telemetry data.
+::::
+
 ## Labels [apm-data-model-labels]
 
 Labels add **indexed** information to transactions, spans, and errors. Indexed means the data is searchable and aggregatable in {{es}}. Add additional key-value pairs to define multiple labels.

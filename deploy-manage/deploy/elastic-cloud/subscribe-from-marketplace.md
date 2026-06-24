@@ -23,9 +23,13 @@ Trial availability and duration can vary depending on the marketplace.
 ## Marketplace options
 
 * [{{aws}} Marketplace](aws-marketplace.md)
-* [Azure Marketplace](azure-native-isv-service.md)
+* [Microsoft Marketplace](azure-native-isv-service.md)
 * [{{gcp}} Marketplace](google-cloud-platform-marketplace.md)
 * [Heroku](heroku.md) ({{ech}} only - no organization functionality)
+
+::::{tip}
+You can also purchase {{ecloud}} through a reseller on any of these marketplaces. Contact your reseller to learn more.
+::::
 
 ## How marketplaces, organizations, and accounts work together [ec-marketplace-org-relationship]
 

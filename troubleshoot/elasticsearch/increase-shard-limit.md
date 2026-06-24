@@ -36,7 +36,7 @@ You can run the following steps using either [API console](/explore-analyze/quer
 
 ### Check the current index setting [check-the-index-setting]
 
-Use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to inspect the `index.routing.allocation.total_shards_per_node` value for the index with unassigned shards:
+Use the [get index settings]({{es-apis}}operation/operation-indices-get-settings) API to inspect the `index.routing.allocation.total_shards_per_node` value for the index with unassigned shards:
 
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.total_shards_per_node?flat_settings
@@ -58,7 +58,7 @@ The response looks like this:
 
 ### Increase the setting
 
-Use the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API to increase the value for the total number of shards that can be assigned on a node to a higher value that accommodates your workload:
+Use the [update index settings]({{es-apis}}operation/operation-indices-put-settings) API to increase the value for the total number of shards that can be assigned on a node to a higher value that accommodates your workload:
 
 ```console
 PUT /my-index-000001/_settings

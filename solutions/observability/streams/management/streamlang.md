@@ -2,6 +2,7 @@
 applies_to:
   serverless: ga
   stack: ga 9.2+
+description: Streamlang reference for the YAML configuration format used to define Streams processing pipelines, conditions, and processor parameters.
 products:
   - id: observability
   - id: elasticsearch
