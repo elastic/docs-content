@@ -20,7 +20,7 @@ AutoOps is currently not available in any region for GovCloud customers.
 
 ## AutoOps for {{ECH}} regions
 
-[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions for AWS and GCP. Regions for Azure are coming soon.
+[AutoOps for {{ECH}}](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) is set up and enabled automatically in the following regions for AWS, GCP, and Azure.
 
 ### AWS
 
@@ -73,6 +73,16 @@ AutoOps is currently not available in any region for GovCloud customers.
 | us-east4 | US East (N. Virginia) |
 | us-east1 | US East (S. Carolina) |
 | us-west1 | US West (Oregon) |
+
+### Azure
+
+| Region | Name |
+| --- | --- |
+| australiaeast | Australia East (New South Wales) |
+| eastus | East US (Virginia) |
+| eastus2 | East US 2 (Virginia) |
+| northeurope | North Europe (Ireland) |
+| westus2 | West US 2 (Washington) |
 
 ## AutoOps for {{serverless-full}} regions
 
