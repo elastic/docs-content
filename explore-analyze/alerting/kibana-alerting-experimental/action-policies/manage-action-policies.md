@@ -27,7 +27,7 @@ After each dispatcher run, {{kib}} records the outcome in the `.alert-actions` i
 | `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
 
-The Execution history view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome. Use the outcome filter to isolate `dispatched` or `throttled` events when troubleshooting delivery issues. The count of new events shown in the view reflects the active search and filter criteria.
+The **Execution history** view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome.
 
 To query raw dispatch records directly, open Discover and query the `.alert-actions` index. Filter by `action_type` to narrow by outcome, or by `policy_id` to filter by policy.
 
