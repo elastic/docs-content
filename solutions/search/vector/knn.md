@@ -257,7 +257,7 @@ POST byte-image-index/_search
 If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization allows you to provide `float` vectors, but internally they are indexed as `byte` vectors. Additionally, the original `float` vectors are still retained in the index.
 
 ::::{note}
-The default index type for `dense_vector` is either `bbq_hnsw` or `int8_hnsw`, depending on your product version. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
+The default index type for `float` vectors is either `bbq_hnsw` or `int8_hnsw`, depending on your product version and vector dimensions. Other element types, such as `byte`, default to plain `hnsw` with no quantization. Refer to [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 ::::
 
 You can use the default quantization strategy or specify an index option.
