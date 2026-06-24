@@ -48,6 +48,8 @@ For detailed examples of implementing SAML SSO using common identity providers, 
     * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
     * **ECK, ECE, and self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Each connected cluster qualifies individually based on its license. A cluster with a Platinum or Enterprise license is eligible, with no paid {{ecloud}} subscription required. Clusters on lower tiers, such as Basic, are not eligible, even if other eligible clusters are connected to the same organization.
 
+    Eligibility is assessed independently for each resource type, so meeting the requirement for one does not grant entitlement to another. For example, an organization with both a {{serverless-full}} project and an {{ech}} deployment on a Standard subscription can use organization-level SAML SSO with the Serverless project, where it is included, but the {{ech}} deployment remains ineligible until the organization upgrades to an Enterprise subscription.
+
 
 ## Risks and considerations [ec_risks_and_considerations]
 
