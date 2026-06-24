@@ -15,10 +15,12 @@ Each {{ecloud}} account has a primary email associated with it. By default, the 
 
 Your email address is used to uniquely identify you. It can’t be used for more than one {{ecloud}} account, whether that account is a trial account, a standard {{ecloud}} account, or a subscription account through a marketplace. However, a single {{ecloud}} account can belong to [multiple organizations](/cloud-account/switch-organizations.md).
 
-:::{tip}
 If you have separate {{ecloud}} accounts for different organizations and want to consolidate to a single account, ask an organization owner in each organization to [reconcile your accounts](/deploy-manage/cloud-organization/manage-multiple-organizations.md#reconcile-alternative-email-addresses).
+
+:::{note}
+If you belong to any organization that enforces a specific authentication method (such as SAML SSO, Google Sign-In, or Microsoft Sign-In), you can't change your primary email address using the procedures on this page. This restriction applies even if other organizations you belong to don't enforce a login method.
 :::
- 
+
 ## Change your email address (native sign-in)
 
 If you log in using a standard email and password, follow these steps to update your email address:
