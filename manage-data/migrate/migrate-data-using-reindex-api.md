@@ -51,7 +51,7 @@ The following steps walk you through locating the source index and {{es}} endpoi
 
     1. Open the Developer Tools [Console](/explore-analyze/query-filter/tools/console.md).
 
-    1. Call the reindex API to migrate your index. If you have multiple indices to migrate, thnn you should perform a separate call for each.
+    1. Call the reindex API to migrate your index. If you have multiple indices to migrate, then you should perform a separate call for each.
 
         Example: Reindex from an {{ech}} deployment to a {{serverless-short}} project using an API key:
 
