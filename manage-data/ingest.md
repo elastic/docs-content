@@ -17,6 +17,13 @@ products:
 
 # Ingest: Bring your data to Elastic
 
+::::{admonition} Draft for review
+:class: note
+
+See [Choose an ingest method](ingest/choose-an-ingest-method.md) — a draft decision guide for stakeholder review.
+
+::::
+
 Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
 Our ingest tools are flexible, and support a wide range of scenarios. We can help you with everything from popular and straightforward use cases, all the way to advanced use cases that require additional processing to modify or reshape your data before it goes to {{es}}.

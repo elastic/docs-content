@@ -76,6 +76,7 @@ toc:
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
     children:
+      - hidden: ingest/choose-an-ingest-method.md
       - file: ingest/ingesting-timeseries-data.md
       - file: ingest/ingesting-data-for-elastic-solutions.md
       - file: ingest/ingesting-data-from-applications.md
