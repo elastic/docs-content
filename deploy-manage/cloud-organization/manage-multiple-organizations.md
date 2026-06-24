@@ -20,6 +20,10 @@ You might want to create multiple organizations for reasons such as the followin
 
 Although you can access multiple organizations from the same {{ecloud}} account, each organization is independent. Each organization has its own set of resources, users, settings, and billing and licensing. Because of this, you need to be logged in to the organization you want to manage to make changes to its resources and settings.
 
+:::{tip}
+This page covers admin tasks for managing organizations. To learn about joining, viewing, switching between, or leaving organizations as a member, refer to [](/cloud-account/join-or-leave-an-organization.md) and [](/cloud-account/switch-organizations.md).
+:::
+
 You can perform the following tasks to manage multiple organizations:
 
 * [Create a new organization](#create-a-new-organization)

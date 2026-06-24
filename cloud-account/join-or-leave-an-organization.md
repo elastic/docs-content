@@ -13,11 +13,15 @@ products:
 
 # Join or leave an organization
 
-Organizations in {{ecloud}} group user accounts, projects and deployments under a common billing and access structure. If you have been invited to an organization, you can accept the invitation and become a member. You can join multiple organizations, or [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization).
+Organizations in {{ecloud}} group user accounts, projects, and deployments under a common billing and access structure. If you have been invited to an organization, you can accept the invitation and become a member. You can join multiple organizations, or [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization).
 
-You can also leave an organization at any time, as long as you don’t have active projects or deployments associated with your account.
+You can also leave an organization, with some restrictions. Refer to [Leave an organization](#ec-leave-organization) for details.
 
 This guide explains how to join or leave an organization. To learn how to view organizations you have access to and switch between them, refer to [](switch-organizations.md).
+
+:::{tip}
+If you're an organization owner or admin, refer to [](/deploy-manage/cloud-organization/manage-multiple-organizations.md) to learn how to manage multiple organizations.
+:::
 
 ## Accept an invitation [ec-accept-invitation]
 

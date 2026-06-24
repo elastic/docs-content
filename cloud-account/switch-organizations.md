@@ -5,10 +5,10 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
-navigation_title: Switch between organizations
+navigation_title: View and switch between organizations
 ---
 
-# Switch between {{ecloud}} organizations
+# View and switch between {{ecloud}} organizations
 
 From a single {{ecloud}} account, you can access multiple organizations.
 
@@ -25,6 +25,12 @@ If you're an organization owner, then you can learn more about managing multiple
 To join an additional organization, [accept an invitation](/cloud-account/join-or-leave-an-organization.md#ec-accept-invitation) to join the organization. You can also [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization).
 :::
 
+:::{include} /deploy-manage/cloud-organization/_snippets/view-orgs.md
+:::
+
+:::{include} /deploy-manage/cloud-organization/_snippets/switch-orgs.md
+:::
+
 ## Log in with multiple organizations
 
 When you belong to multiple organizations, the login experience depends on whether your browser has information about the organization you most recently used:
@@ -35,9 +41,3 @@ When you belong to multiple organizations, the login experience depends on wheth
 If your last used organization enforces a specific login method (such as SAML SSO), you're directed to that login flow automatically.
 
 If you log out, your browser remembers which organization you last used. The next time you log in, you're directed to the appropriate login page for that organization.
-
-:::{include} /deploy-manage/cloud-organization/_snippets/view-orgs.md
-:::
-
-:::{include} /deploy-manage/cloud-organization/_snippets/switch-orgs.md
-:::

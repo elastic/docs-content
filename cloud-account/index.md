@@ -45,7 +45,7 @@ If you use password-based login, then you can perform the following additional t
 Organizations are groupings of {{ecloud}} resources and associated settings. As an {{ecloud}} user, you can be a member of multiple organizations.
 
 * [](/cloud-account/join-or-leave-an-organization.md)
-* [View and switch between organizations](/cloud-account/switch-organizations.md)
+* [](/cloud-account/switch-organizations.md)
 
 ## Customize your interface
 
