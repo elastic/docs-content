@@ -228,7 +228,7 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
 
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
 
-   :::{note}
+   :::{tip}
    :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
    The search field supports free text and [KQL](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
    :::
