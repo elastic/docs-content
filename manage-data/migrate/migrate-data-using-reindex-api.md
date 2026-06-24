@@ -1,7 +1,7 @@
 ---
 navigation_title: Migrate data using the reindex API
 applies_to:
-  serverless: preview
+  serverless: ga
   stack: ga
 products:
   - id: elasticsearch
