@@ -50,4 +50,3 @@ For more details about what is included in each subscription level or, for {{ser
     * [](/solutions/observability/observability-serverless-feature-tiers.md)
 
     There are no additional project features or add-ons for {{es-serverless}} projects. 
-  * [{{ecloud}} pricing](https://www.elastic.co/pricing)
