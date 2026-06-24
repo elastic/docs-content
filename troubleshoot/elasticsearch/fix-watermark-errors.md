@@ -51,9 +51,7 @@ The following are some common setup issues leading to watermark errors:
 * A high number of replicas can quickly multiply storage requirements, as each replica consumes the same disk space as the primary shard. Refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) for details.
 * Oversized shards can make disk usage spikes more likely and slow down recovery and rebalancing. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md#shard-size-recommendation) for guidance.
 
-:::{tip}
-For common examples, refer to our blog [Why your Elasticsearch cluster is hitting disk watermarks: 14 real-world causes explained](https://www.elastic.co/search-labs/blog/elasticsearch-disk-watermark-troubleshooting).
-:::
+For more causes and remediation guidance, refer to the Elastic blog post [Why your Elasticsearch cluster is hitting disk watermarks](https://www.elastic.co/search-labs/blog/elasticsearch-disk-watermark-troubleshooting).
 
 ## Monitor disk usage [fix-watermark-errors-monitor]
 
