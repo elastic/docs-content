@@ -67,6 +67,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Provide clear titles that explain what the gauge measures and what the target value represents.
 
 Refer to [Gauge chart settings](#gauge-chart-settings) to find all configuration options for your gauge chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart

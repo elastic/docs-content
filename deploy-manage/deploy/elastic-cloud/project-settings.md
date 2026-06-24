@@ -151,6 +151,8 @@ You can add custom tags for any piece of metadata that might help you to categor
 * The team or department that uses the project: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
 
+Project tags must start with a letter, and can contain only lowercase letters, numbers, hyphens, and underscores.
+
 #### Create custom tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.

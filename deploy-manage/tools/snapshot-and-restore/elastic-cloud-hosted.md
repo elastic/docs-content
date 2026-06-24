@@ -58,16 +58,19 @@ In **{{ech}}**, the `found-snapshots` managed repository is automatically regist
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs]({{es-apis}}group/endpoint-snapshot)
 
-To manage repositories in {{kib}}:
-
-1. Go to the **Snapshot and Restore** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the **Repositories** tab. 
-3. To register a snapshot repository, click **Register repository**.
-
-Alternatively, you can register a repository using the {{es}} [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository).
+:::{include} _snippets/register-repository-kibana-steps.md
+:::
 
 ::::{include} _snippets/ech-snapshot-repository-linking-note.md
 ::::
+
+## Change the default snapshot repository [snapshot-repo-default]
+```{applies_to}
+stack: ga 9.5
+```
+
+:::{include} _snippets/default-snapshot-repository.md
+:::
 
 ## Verify a repository [snapshots-repository-verification]
 

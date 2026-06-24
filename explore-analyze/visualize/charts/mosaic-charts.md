@@ -62,6 +62,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Colors typically represent the vertical axis categories, making it easier to track how each category appears across columns.
 
 Refer to [Mosaic chart settings](#mosaic-chart-settings) to find all configuration options for your mosaic chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart

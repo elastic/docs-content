@@ -64,6 +64,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   For categorical axes, order values logically (alphabetically, by frequency, or by a natural ordering like days of the week). Use the **Sort order** [style setting](#appearance-options) to control how axis values are sorted.
 
 Refer to [Heat map chart settings](#heat-map-chart-settings) to find all configuration options for your heat map chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
@@ -312,6 +314,9 @@ When creating or editing a visualization, you can customize several appearance o
 **Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
 :   Control the sort order of the vertical axis values:
     - **Unsorted**: Use the default sort order (default).
+      
+      {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When the vertical axis uses numeric data, descending numeric order is used. Axes that use other data types, such as strings, are unaffected: their rows appear in the order the data is returned. You can still set the sort order manually.
+   
     - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
     - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
 

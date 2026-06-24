@@ -1,5 +1,6 @@
 ---
 navigation_title: "Tutorial: Manual dense and sparse workflows"
+description: Set up semantic search with deployed NLP models using ingest pipelines for dense or sparse vector embeddings.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html
 applies_to:
@@ -204,7 +205,7 @@ To ingest data through the pipeline to generate text embeddings with your chosen
 ::::::
 
 :::::::
-Now it is time to perform semantic search!
+Now it is time to perform semantic search.
 
 ## Search the data with vector search [deployed-search]
 
@@ -256,7 +257,7 @@ GET my-index/_search
 
 ## Beyond semantic search with hybrid search [deployed-hybrid-search]
 
-In some situations, lexical search may perform better than semantic search. For example, when searching for single words or IDs, like product numbers.
+In some situations, lexical search might perform better than semantic search. For example, when searching for single words or IDs, like product numbers.
 
 Combining semantic and lexical search into one hybrid search request using [reciprocal rank fusion](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) provides the best of both worlds. Not only that, but hybrid search using reciprocal rank fusion [has been shown to perform better in general](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-hybrid).
 

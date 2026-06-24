@@ -63,6 +63,8 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Arrange categories from largest to smallest or in a natural order (such as satisfaction ratings from low to high).
 
 Refer to [Waffle chart settings](#waffle-chart-settings) to find all configuration options for your waffle chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
