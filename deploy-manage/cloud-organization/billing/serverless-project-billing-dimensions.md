@@ -33,7 +33,11 @@ For the specific billing dimensions, tiers, and usage units of each project type
 
 ## Add-ons [add-ons] 
 
-The add-ons in this section apply across all project types. Other add-ons are specific to a project type and documented on the [individual project pages](#project-charges). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
+Add-ons are additional features that you can use in your project. They are billed separately from the base project charges.
+
+The following add-ons in this section apply across all project types, and are billed based on usage or your {{ecloud}}subscription level. 
+
+Other add-ons might impact your bill. These add-ons are specific to a project type and documented on the [individual project pages](#project-charges). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
 
 ### Data out [general-serverless-billing-data-out] 
 
