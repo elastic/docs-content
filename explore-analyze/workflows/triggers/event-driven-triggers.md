@@ -359,7 +359,7 @@ Alert episode lifecycle triggers fire when an alert episode changes state in the
 | `alerting.episodeSnoozed` | An alert episode is snoozed. |
 | `alerting.episodeUnsnoozed` | An alert episode is unsnoozed. |
 | `alerting.episodeAcked` | An alert episode is acknowledged. |
-| `alerting.episodeUnacked` | An alert episode acknowledgement is removed. |
+| `alerting.episodeUnacked` | An alert episode acknowledgment is removed. |
 | `alerting.episodeAssigned` | An alert episode is assigned to a user. |
 | `alerting.episodeUnassigned` | An alert episode assignment is removed. |
 | `alerting.episodeTagged` | A tag is applied to an alert episode. |
