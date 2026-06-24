@@ -5,12 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How to reduce notification noise in the {{alerting-v2-system}} using acknowledge, snooze, and deactivate to silence alert episodes."
+description: "How to reduce notification noise in the experimental alerting system using acknowledge, snooze, and deactivate to silence alert episodes."
 ---
 
 # Reduce notification noise for the {{alerting-v2-system}} [reduce-notification-noise]
 
-Acknowledge, snooze, and deactivate are part of the {{alerting-v2-system}} in {{kib}}. Each one silences notifications for an alert episode at a different scope. When an alert episode is silenced, the dispatcher stops processing it before any action policy matching, grouping, or frequency evaluation runs. For an overview of where this fits in the full dispatch cycle, refer to [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md).
+Acknowledge, snooze, and deactivate are part of the {{alerting-v2-system}} in {{kib}}. Each one silences notifications for an alert episode at a different scope. When an alert episode is silenced, the dispatcher stops processing it before any action policy matching, grouping, or frequency evaluation runs.
+
+This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of a policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md).
 
 ## Silencing mechanisms [silencing-mechanisms]
 
@@ -33,7 +35,7 @@ For instructions on snoozing and unsnoozing single or multiple episodes, refer t
 -->
 
 :::{note}
-Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-and-snooze). When you snooze a policy, the dispatch mechanism is paused and every series the policy would process is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy would have handled it. Use policy snooze when you want to pause all notifications from a given policy, for example, during planned maintenance on a destination system.
+Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-disable-and-snooze). When you snooze a policy, the dispatch mechanism is paused and every series the policy would process is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy would have handled it. Use policy snooze when you want to pause all notifications from a given policy, for example, during planned maintenance on a destination system.
 :::
 
 ## Related pages

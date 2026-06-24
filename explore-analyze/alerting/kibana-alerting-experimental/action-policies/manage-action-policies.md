@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "View policy details, enable, disable, snooze, review execution history, and rotate API keys for action policies in the {{alerting-v2-system}}."
+description: "View policy details, enable, disable, snooze, review execution history, and rotate API keys for action policies in the experimental alerting system."
 ---
 
 # Manage action policies for the {{alerting-v2-system}}
@@ -27,9 +27,11 @@ After each dispatcher run, {{kib}} records the outcome in the `.alert-actions` i
 | `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
 
-To investigate delivery issues or audit which policies ran for an alert episode, open Discover and query the `.alert-actions` index. Filter by `action_type` to narrow by outcome, or by `policy_id` to filter by policy.
+The **Execution history** view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome.
 
-## Enable and snooze
+To query raw dispatch records directly, open Discover and query the `.alert-actions` index. Filter by `action_type` to narrow by outcome, or by `policy_id` to filter by policy.
+
+## Enable, disable, and snooze
 
 You can disable a policy so it is not evaluated for new alert episodes. You can snooze a policy for a defined window so that it does not dispatch notifications during that period. Policies that are not enabled or are snoozed are skipped when the dispatcher evaluates policies.
 

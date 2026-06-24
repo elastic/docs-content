@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Create action policies in the {{alerting-v2-system}}, configure match conditions, Notify per, Frequency, and workflow destinations."
+description: "Create action policies in the experimental alerting system, configure match conditions, Notify per, Frequency, and workflow destinations."
 ---
 
 # Create an action policy for the {{alerting-v2-system}} [create-manage-action-policies]
@@ -25,10 +25,12 @@ For match conditions fields, grouping modes, frequency options, and dispatch out
 
 ## Policy type [policy-type]
 
+Action policies only process alert episodes from rules running in Alert mode. Signals produced by rules running in Detect mode are not eligible for action policy evaluation.
+
 An action policy can be global or per-rule:
 
-- **Global**: Global policies apply to any alert episode in the space. Use a global policy when you want to route alert episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
-- **Per-rule**: Per-rule policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
+- **Global** - Global policies apply to any alert episode in the space. Use a global policy when you want to route alert episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
+- **Per-rule** - Per-rule policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
 
 The policy type is set at creation and cannot be changed. If you need a different type, create a new policy.
 
@@ -40,6 +42,8 @@ Optional string labels you assign to a policy to categorize it or filter it on t
 
 
 An optional [KQL](../../../query-filter/languages/kql.md) expression that filters which alert episodes this policy applies to. An empty match condition matches every alert episode covered by the policy's scope. For a global policy, that means all alert episodes in the space. For a per-rule policy, it means all alert episodes from the associated rule.
+
+The match condition is the sole mechanism for scoping a policy beyond its base type. There are no separate rule type or rule ID selector fields. All scoping is done through this expression. For a global policy that should target a specific rule, use `rule.id: "my-rule-id"` or `rule.tags: "my-tag"` in the match condition.
 
 Use match conditions to route different alert episodes to different policies, for example, one policy for `episode.severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 

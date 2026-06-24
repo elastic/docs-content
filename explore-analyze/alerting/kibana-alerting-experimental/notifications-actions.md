@@ -5,14 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How {{alerting-v2-system}} action policies route alert episodes to notifications and actions."
+description: "How experimental alerting system action policies route alert episodes to notifications and actions."
 ---
 
 # Notifications and actions for the {{alerting-v2-system}}
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. After a rule produces alert episodes, action policies decide whether and when to invoke workflows. Workflows are what actually send the notification or run the automation.
+Action policies are part of the {{alerting-v2-system}} in {{kib}}. After a rule produces alert episodes in Alert mode, action policies decide whether and when to invoke workflows. Workflows are what actually send the notification or run the automation. Rules running in Detect mode produce signals, which are not processed by action policies.
 
-This page explains how action policies work. For creating and configuring them step by step, refer to [Create and configure an action policy](action-policies/create-configure-action-policy.md).
+This page covers how action policies gate alert episodes before invoking a workflow, the difference between global and per-rule policies, and how the dispatcher evaluates them on a continuous cycle. For creating and configuring them step by step, refer to [Create and configure an action policy](action-policies/create-configure-action-policy.md).
 
 ## What is an action policy [action-policies]
 
@@ -20,9 +20,9 @@ An action policy is the gating layer between an alert episode and a workflow. It
 
 The three gates are suppression, match conditions, and frequency:
 
-* **Suppression**: Suppression checks whether the alert episode should be silenced. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](action-policies/reduce-notification-noise.md).
-* **Match conditions**: Match conditions filter which alert episodes the policy applies to. You define them using [KQL](../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes within the policy's scope.
-* **Frequency**: Frequency controls how often the policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
+* **Suppression** - Suppression checks whether the alert episode should be silenced. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](action-policies/reduce-notification-noise.md).
+* **Match conditions** - Match conditions filter which alert episodes the policy applies to. You define them using [KQL](../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes within the policy's scope.
+* **Frequency** - Frequency controls how often the policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
 
 If any gate stops the episode, the workflow is not invoked for that policy.
 
@@ -64,7 +64,7 @@ Per-rule policies are bound to a specific rule at creation. They apply only to a
 
 {{kib}} runs a background process called the dispatcher that checks for eligible alert episodes on a short interval (around 5 seconds) and evaluates action policies against them. The dispatcher runs on its own cycle, separate from the rule schedule.
 
-For each enabled policy that is not snoozed, the dispatcher works through the following steps.
+For each enabled policy that is not snoozed, the dispatcher works through the following steps:
 
 1. **Gating:** Is the alert episode acknowledged, snoozed, or deactivated? If so, skip. Refer to [Reduce notification noise](action-policies/reduce-notification-noise.md) to learn more.
 2. **Matcher:** Does the alert episode match the policy's KQL? If not, skip this policy.

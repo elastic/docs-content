@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: preview 9.4+
   serverless: preview
-description: Run a workflow in response to a platform event. Includes workflows.failed and the cases trigger family.
+description: Run a workflow in response to a platform event. Includes workflows.failed, the cases trigger family, and alert episode lifecycle triggers.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,10 +15,11 @@ products:
 
 # Event-driven triggers [workflows-event-driven-triggers]
 
-Event-driven triggers let workflows react to events elsewhere in {{kib}}. Two trigger families are available:
+Event-driven triggers let workflows react to events elsewhere in {{kib}}. Three trigger families are available:
 
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
+- **Alert episode lifecycle triggers** — Fire when an alert episode changes state in the experimental {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
 :::{warning}
 The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
@@ -340,7 +341,54 @@ triggers:
       condition: 'event.owner: "securitySolution"'
 ```
 
+## Alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
+
+```{applies_to}
+stack: experimental 9.5+
+serverless: experimental
+```
+
+Alert episode lifecycle triggers fire when an alert episode changes state in the experimental {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per state change. There is no polling interval or frequency gate.
+
+### Available triggers [alert-episode-lifecycle-triggers-available]
+
+| Trigger ID | When it fires |
+|---|---|
+| `alerting.episodeActivated` | An alert episode transitions to the active state. |
+| `alerting.episodeDeactivated` | An alert episode is manually deactivated or recovers. |
+| `alerting.episodeSnoozed` | An alert episode is snoozed. |
+| `alerting.episodeUnsnoozed` | An alert episode is unsnoozed. |
+| `alerting.episodeAcked` | An alert episode is acknowledged. |
+| `alerting.episodeUnacked` | An alert episode acknowledgment is removed. |
+| `alerting.episodeAssigned` | An alert episode is assigned to a user. |
+| `alerting.episodeUnassigned` | An alert episode assignment is removed. |
+| `alerting.episodeTagged` | A tag is applied to an alert episode. |
+
+### Event payload [alert-episode-lifecycle-triggers-event]
+
+All lifecycle triggers include these common fields in the event payload.
+
+| `event.*` field | Contains |
+|---|---|
+| `event.episodeId` | Unique identifier of the alert episode. |
+| `event.ruleId` | ID of the rule that produced the alert episode. |
+| `event.spaceId` | ID of the {{kib}} space where the event occurred. |
+
+Reference these fields with Liquid templating in workflow steps:
+
+```yaml
+- name: log
+  type: console
+  with:
+    message: |
+      Episode {{ event.episodeId }} from rule {{ event.ruleId }} changed state.
+```
+
+Use these fields to write workflow conditions that scope the automation to specific rules or episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
+
 ## Prevent cascading handler loops
+
+This section applies to `workflows.failed` handlers. Alert episode lifecycle triggers fire once per state change and do not re-trigger on workflow failure.
 
 If a handler workflow itself fails, it can re-trigger itself. Two safeguards help you avoid infinite loops:
 
@@ -354,3 +402,4 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 - [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
+- [Connect workflows to the {{alerting-v2-system}}](../../alerting/kibana-alerting-experimental/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
