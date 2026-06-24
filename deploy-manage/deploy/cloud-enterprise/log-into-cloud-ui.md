@@ -19,7 +19,7 @@ To access the Cloud UI in a web browser:
     ```
 
     :::{note}
-    Starting with ECE 3.7.0, browser access to the Cloud UI requires HTTPS on port 12443. HTTP on port 12400 remains available for API calls (for example, using `curl`), but browsers will not render the UI correctly over HTTP due to security policy headers.
+    Starting with ECE 3.7.0, the Cloud UI requires HTTPS on port 12443. Ensure this port is open in your network policies.
     :::
 
     Secure access through the HTTPS protocol is available with certificates generated during the installation of {{ece}}, but will prompt you with a warning in your browser. To avoid this warning, you can add [your own TLS/SSL security certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). If you are on AWS and can't access the Cloud UI, [check if the URL points to a private IP address](../../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
