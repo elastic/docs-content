@@ -25,6 +25,17 @@ If you're an organization owner, then you can learn more about managing multiple
 To join an additional organization, [accept an invitation](/cloud-account/join-or-leave-an-organization.md#ec-accept-invitation) to join the organization. You can also [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization).
 :::
 
+## Log in with multiple organizations
+
+When you belong to multiple organizations, the login experience depends on whether your browser has information about the organization you most recently used:
+
+* **Returning user (same browser):** You're automatically logged in to the organization you last used. You don't need to select an organization.
+* **New browser or cleared data:** After logging in, you're presented with a list of your organizations to choose from. Select the organization you want to access.
+
+If your last used organization enforces a specific login method (such as SAML SSO), you're directed to that login flow automatically.
+
+If you log out, your browser remembers which organization you last used. The next time you log in, you're directed to the appropriate login page for that organization.
+
 :::{include} /deploy-manage/cloud-organization/_snippets/view-orgs.md
 :::
 

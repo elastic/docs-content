@@ -1,4 +1,4 @@
-Because users are managed at the organization level, you must [invite users](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users) from within the organization that you want them to join. You can't invite users to join multiple organizations at once.
+You must [send invitations](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users) from the organization you want users to join. You can't invite users to join multiple organizations at once.
 
 If a user already has an {{ecloud}} account, then they don't need to sign up again. Instead, they can log in with their selected login method. 
 
