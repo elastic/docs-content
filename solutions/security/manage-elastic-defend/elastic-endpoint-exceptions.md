@@ -35,7 +35,7 @@ By default, {{elastic-endpoint}} exceptions apply globally across all hosts runn
 
 For deployments upgraded from an earlier version, per-policy assignment for {{elastic-endpoint}} exceptions requires opting in. New deployments are automatically opted in to per-policy {{elastic-endpoint}} exceptions with no action required.
 
-If you're upgrading from an earlier version, a callout appears on the **Artifacts** page prompting you to opt in. You must have the **superuser** role in {{stack}}, or the **admin** role in {{serverless-short}}, to perform the opt-in.
+If you're upgrading from an earlier version, a callout appears on the **Artifacts** page prompting you to opt in. When you opt in, existing exceptions will be preserved and shown under Artifacts and managed there from now on. You must have the **superuser** role in {{stack}}, or the **admin** role in {{serverless-short}}, to perform the opt-in.
 
 ::::{important}
 Opting in is permanent and cannot be reversed. After opting in:
