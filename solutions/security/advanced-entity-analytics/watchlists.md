@@ -24,7 +24,7 @@ A **Privileged Users** watchlist is available by default. It automatically pulls
 
 ## Risk weighting [watchlists-risk-weighting]
 
-Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk scoring engine applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
+Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk score maintainer applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
 
 For example, assigning a higher risk weighting to a watchlist of executives means that suspicious activity involving those users scores higher and surfaces sooner during investigations.
 

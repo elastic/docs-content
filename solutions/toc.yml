@@ -590,6 +590,7 @@ toc:
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
           - file: security/ai/ease/ease-value-report.md
+      - file: security/mcp-app/elastic-security-mcp-app.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/before-you-begin.md
