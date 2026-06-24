@@ -1324,7 +1324,15 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 :::::{applies-switch}
 
-::::{applies-item} stack: removed 9.5+, ga =9.4
+::::{applies-item} { stack: removed 9.5+, serverless: removed }
+
+`packetbeat_dns_tunneling_ea`
+
+This job is replaced by `dns_tunneling_ea` in the [Network module](#security-network-jobs).
+
+::::
+
+::::{applies-item} stack: ga =9.4
 
 `packetbeat_dns_tunneling_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1336,11 +1344,6 @@ In the {{ml-app}} app, these configurations are available only when data exists 
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_dns_tunneling_ea.json)
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
-
-:::{note}
-:applies_to: {stack: ga 9.5+, serverless: ga}
-This job is replaced by `dns_tunneling_ea` in the [Network module](#security-network-jobs).
-:::
 
 ::::
 
@@ -1363,7 +1366,15 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
 :::::{applies-switch}
 
-::::{applies-item} stack: removed 9.5+, ga =9.4
+::::{applies-item} { stack: removed 9.5+, serverless: removed }
+
+`packetbeat_rare_dns_question_ea`
+
+This job is replaced by `rare_dns_question_ea` in the [Network module](#security-network-jobs).
+
+::::
+
+::::{applies-item} stack: ga =9.4
 
 `packetbeat_rare_dns_question_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
@@ -1375,11 +1386,6 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
     **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/packetbeat_rare_dns_question_ea.json)
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
-
-:::{note}
-:applies_to: {stack: ga 9.5+, serverless: ga}
-This job is replaced by `rare_dns_question_ea` in the [Network module](#security-network-jobs).
-:::
 
 ::::
 
