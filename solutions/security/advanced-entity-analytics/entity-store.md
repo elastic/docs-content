@@ -183,11 +183,11 @@ serverless: ga
 
 The entity store creates an entity only when an ingested document contains enough identity information to derive a stable Entity Unique Identifier (EUID). Because [risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md), [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md), and [watchlist](/solutions/security/advanced-entity-analytics/watchlists.md) matching apply only to entities that exist in the store, an alert can reference a user or host that does not receive any of this processing if the source document doesn't meet the creation criteria.
 
-Host correlation is more permissive than user correlation, which is why host entities are often created when a matching user entity is not.
+Host correlation is more permissive than user correlation, which is why host entities are often created without matching user entities.
 
 ### Host entities [entity-store-host-creation]
 
-A host entity is created when a document contains at least one of the following fields. The entity store evaluates them in priority order to derive the host EUID:
+A host entity is created when a document contains at least one of the following fields. The entity store uses them in the following priority order to derive the host EUID:
 
 1. `host.id`
 2. `host.name`
@@ -195,25 +195,34 @@ A host entity is created when a document contains at least one of the following 
 
 ### User entities [entity-store-user-creation]
 
-User correlation requires higher-confidence identity data. A user entity is created through one of two paths:
+A user entity is created through one of two paths:
 
 
 | Source type | Example integrations | Required identity fields |
 | --- | --- | --- |
-| Identity and account (IDP) | Okta, Microsoft Entra ID, Active Directory, Microsoft 365 | At least one of `user.email`, `user.id`, `user.name` + `user.domain`, or `user.name`, combined with the source namespace |
+| Identity and account (IDP) | Okta, Microsoft Entra ID, Active Directory, Microsoft 365 | At least one of `user.email`, `user.id`, `user.name` + `user.domain`, or `user.name` |
 | Endpoint telemetry | {{elastic-defend}}, CrowdStrike, SentinelOne | Both `user.name` and `host.id` (the user is treated as a medium-confidence local user tied to that host) |
 
+For identity provider sources, the entity store also factors in the source namespace (for example, `okta`) when deriving the user EUID, so the same identity from different providers stays distinct.
 
-If a document doesn't meet either user creation path, the user might still appear in observed fields or highlighted fields, but it isn't processed as an entity store user. As a result, that user doesn't receive entity analytics processing such as risk scoring, entity resolution, or watchlist matching. In this case, it's expected that a host can show a risk score while the user shows no risk score, assuming the alert resolved the host entity but not a valid user entity.
+If a document doesn't meet either user creation path, the user might still appear in observed fields or highlighted fields, but it isn't added to the entity store. As a result, that user doesn't receive entity analytics processing such as risk scoring, entity resolution, or watchlist matching. In this situation, it's expected that a host will show a risk score while the associated user shows none.
 
 ::::{dropdown} Click for entity creation examples
 **A document that creates a user entity (IDP source)**
 
-An Okta event from an identity provider source includes `user.email: jdoe@example.com`. Because the source is an identity provider and the document carries a qualifying identity field, the entity store derives a user EUID and creates a user entity. That entity is eligible for risk scoring, entity resolution, and watchlist matching.
+An alert from an identity source carries account identity fields:
+
+```
+event.module: okta
+user.email:   jane@acme.com
+user.name:    jane
+```
+
+Because `event.module` identifies the data as coming from a supported identity provider, and the document carries a qualifying identity field (`user.email`), the entity store derives a user EUID and creates a user entity. That entity is eligible for risk scoring, entity resolution, and watchlist matching.
 
 **A document that does not create a user entity (endpoint telemetry without `host.id`)**
 
-An endpoint alert includes `user.name: jdoe` but no `host.id`. Because endpoint telemetry requires both `user.name` and `host.id` to create a user entity, no user entity is created. The user may still appear in the alert's observed or highlighted fields, but it doesn't receive risk scoring, entity resolution, or watchlist matching. If the same alert resolves a host entity, the host can show a risk score while the user does not.
+An endpoint alert includes `user.name: jdoe` and `host.name: prod-web-01` but no `host.id`. Because endpoint telemetry requires both `user.name` and `host.id` to create a user entity, no user entity is created. The user may still appear in the alert's observed or highlighted fields, but it doesn't receive risk scoring, entity resolution, or watchlist matching. If the same alert resolves a host entity, the host can show a risk score while the user does not.
 ::::
 
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
