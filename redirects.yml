@@ -908,3 +908,38 @@ redirects:
       - to: 'explore-analyze/ai-features/agent-builder/agent-builder-agents.md'
         anchors:
           'enable-elastic-capabilities': 'elastic-capabilities'
+
+  # Rehome CCS and CCR privileges from remote-clusters-cert.md
+  'deploy-manage/remote-clusters/remote-clusters-cert.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          'remote-clusters-privileges-ccr': 'configure-privileges-for-ccr-cert'
+          '_remote_cluster': '_remote_cluster_4'
+          '_local_cluster': '_local_cluster_4'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          'remote-clusters-privileges-ccs': 'configure-privileges-for-ccs-cert'
+          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_2': 'configure-privileges-for-ccs-cert-remote'
+          '_local_cluster_2': 'configure-privileges-for-ccs-cert-local'
+          '_local_cluster_3': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_3': 'configure-privileges-for-ccs-cert-remote'
+
+  # Rehome CCS and CCR API key privileges from remote-clusters-api-key.md
+  'deploy-manage/remote-clusters/remote-clusters-api-key.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-api-key.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          '_configure_privileges_for_ccr': 'configure-privileges-for-ccr-api-key'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          '_configure_privileges_for_ccs': 'configure-privileges-for-ccs-api-key'
+
+  # Redirect removed CCS privileges child page
+  'explore-analyze/cross-cluster-search/configure-privileges-for-cross-cluster-search.md':
+    to: 'explore-analyze/cross-cluster-search.md'
+    anchors:
+      '': 'configure-privileges-for-ccs'
