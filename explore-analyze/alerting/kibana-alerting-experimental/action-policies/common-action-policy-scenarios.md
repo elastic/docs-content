@@ -99,6 +99,6 @@ If you want re-notification for episodes that stay active without a status chang
 
 ## Related pages
 
-- [Action policy reference](action-policy-reference.md) - Find descriptions of match condition fields, grouping modes, and frequency options.
-- [About action policies](about-action-policies.md) - Understand how action policies evaluate and gate alert episodes.
-- [Create and configure an action policy](create-configure-action-policy.md) - Learn how to set up policy type, match conditions, grouping, frequency, and workflow destinations.
+- [Action policy reference](action-policy-reference.md) to find descriptions of match condition fields, grouping modes, and frequency options.
+- [About action policies](about-action-policies.md) to understand how action policies evaluate and gate alert episodes.
+- [Create and configure an action policy](create-configure-action-policy.md) to learn how to set up policy type, match conditions, grouping, frequency, and workflow destinations.
