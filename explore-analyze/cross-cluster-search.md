@@ -36,7 +36,7 @@ The following APIs support {{ccs}}:
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [Remote clusters](/deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
@@ -49,7 +49,131 @@ The following APIs support {{ccs}}:
 
 
 * If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
-* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](/deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. Refer to [Configure privileges](#configure-privileges-for-ccs) for details.
+
+
+## Configure privileges for {{ccs}} [configure-privileges-for-ccs]
+
+After [remote clusters are connected](/deploy-manage/remote-clusters.md), you can configure which users on your local cluster can search data on remote clusters. The steps depend on the [remote cluster security model](/deploy-manage/remote-clusters/security-models.md) in use:
+
+* [API key authentication](#configure-privileges-for-ccs-api-key) (recommended), where you create roles with the required remote privileges on the local cluster.
+* {applies_to}`stack: deprecated 9.0` [TLS certificate authentication](#configure-privileges-for-ccs-cert), where you create matching roles on both the local and remote clusters.
+
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-role-management.md
+:::
+
+### API key authentication [configure-privileges-for-ccs-api-key]
+
+:::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-api-key-authorization.md
+:::
+
+To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
+
+Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
+
+```console
+POST /_security/role/remote-search
+{
+  "remote_indices": [
+    {
+      "clusters": [ "my_remote_cluster" ],
+      "names": [
+        "target-index"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster",
+        "view_index_metadata"
+      ]
+    }
+  ]
+}
+```
+
+After creating the `remote-search` role, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+
+:::{note}
+You only need to create this user and role on the **local** cluster.
+
+The same user can hold multiple roles, or a single role can combine [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) with local index privileges and {{kib}} access roles.
+:::
+
+### TLS certificate authentication [configure-privileges-for-ccs-cert]
+```{applies_to}
+stack: deprecated 9.0
+```
+
+:::{warning}
+
+Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
+:::
+
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the same names defined locally.
+
+:::{important}
+You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
+:::
+
+#### Remote cluster [configure-privileges-for-ccs-cert-remote]
+
+On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
+
+:::{note}
+If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) on the remote cluster.
+:::
+
+The following request creates a `remote-search` role on the remote cluster:
+
+```console
+POST /_security/role/remote-search
+{
+  "indices": [
+    {
+      "names": [
+        "target-indices"
+      ],
+      "privileges": [
+        "read",
+        "read_cross_cluster"
+      ]
+    }
+  ]
+}
+```
+
+#### Local cluster [configure-privileges-for-ccs-cert-local]
+
+On the local cluster, which is the cluster used to initiate cross cluster search, assign users the `remote-search` role. If users only need remote access, you can leave the local role empty. If they also need to query local indices or use {{kib}}, grant the required local privileges in the same role or assign the user additional roles.
+
+The following request creates a `remote-search` role on the local cluster with no privileges:
+
+```console
+POST /_security/role/remote-search
+{}
+```
+
+After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
+
+```console
+POST /_security/user/cross-search-user
+{
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "remote-search" ]
+}
+```
+
+:::{note}
+You only need to create this user on the **local** cluster.
+:::
 
 
 ## {{ccs-cap}} examples [ccs-example]
