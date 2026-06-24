@@ -1322,17 +1322,17 @@ Detect suspicious network activity in {{packetbeat}} data.
 
 In the {{ml-app}} app, these configurations are available only when data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/manifest.json). In the {{security-app}}, it looks in the {{data-source}} specified in the [`securitySolution:defaultIndex` advanced setting](kibana://reference/advanced-settings.md#securitysolution-defaultindex) for data that matches the query.
 
-:::::{applies-switch}
+::::{applies-switch}
 
-::::{applies-item} { stack: removed 9.5+, serverless: removed }
+:::{applies-item} { stack: removed 9.5+, serverless: removed }
 
 `packetbeat_dns_tunneling_ea`
 
 This job is replaced by `dns_tunneling_ea` in the [Network module](#security-network-jobs).
 
-::::
+:::
 
-::::{applies-item} stack: ga =9.4
+:::{applies-item} stack: ga =9.4
 
 `packetbeat_dns_tunneling_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1345,9 +1345,9 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling_ea.json)
 
-::::
+:::
 
-::::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga 9.0-9.3}
 
 `packetbeat_dns_tunneling`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1360,21 +1360,21 @@ This job is replaced by `dns_tunneling_ea` in the [Network module](#security-net
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_dns_tunneling.json)
 
+:::
+
 ::::
 
-:::::
+::::{applies-switch}
 
-:::::{applies-switch}
-
-::::{applies-item} { stack: removed 9.5+, serverless: removed }
+:::{applies-item} { stack: removed 9.5+, serverless: removed }
 
 `packetbeat_rare_dns_question_ea`
 
 This job is replaced by `rare_dns_question_ea` in the [Network module](#security-network-jobs).
 
-::::
+:::
 
-::::{applies-item} stack: ga =9.4
+:::{applies-item} stack: ga =9.4
 
 `packetbeat_rare_dns_question_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
@@ -1387,9 +1387,9 @@ This job is replaced by `rare_dns_question_ea` in the [Network module](#security
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question_ea.json)
 
-::::
+:::
 
-::::{applies-item} {stack: ga 9.0-9.3}
+:::{applies-item} {stack: ga 9.0-9.3}
 
 `packetbeat_rare_dns_question`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
@@ -1402,9 +1402,9 @@ This job is replaced by `rare_dns_question_ea` in the [Network module](#security
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/9.3/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_packetbeat/ml/datafeed_packetbeat_rare_dns_question.json)
 
-::::
+:::
 
-:::::
+::::
 
 ::::{applies-switch}
 
