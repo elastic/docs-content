@@ -30,7 +30,7 @@ Each policy evaluates alert episodes independently:
 
 - An episode with `severity: "critical"` matches Policy A but not Policy B.
 - An episode with `severity: "high"` matches Policy B but not Policy A.
-- If an episode's severity changes mid-lifecycle, the policies that match it change accordingly. For example, if an episode escalates from `high` to `critical`, Policy A starts matching and Policy B stops matching. Policy A also then executes because it has no prior notification record for that episode.
+- If an episode's severity changes mid-lifecycle, the policies that match it change accordingly. For example, if an episode escalates from `high` to `critical`, Policy A starts matching and Policy B stops matching. Policy A fires because it has no prior notification record for that episode.
 
 ## Manage notifications across severity changes [severity-escalation]
 
@@ -59,7 +59,7 @@ If a policy already matched an episode at a lower severity and the episode escal
 | Field | Value |
 |---|---|
 | **Policy type** | Global |
-| **Match conditions** | (none — matches all episodes) |
+| **Match conditions** | (None, matches all episodes) |
 | **Notify per** | Episode |
 | **Frequency** | On status change |
 | **Destinations** | Slack workflow |
@@ -94,7 +94,7 @@ If you want re-notification for episodes that stay active without a status chang
 | **Policy type** | Global |
 | **Match conditions** | `severity: "critical"` |
 | **Notify per** | Episode |
-| **Frequency** | At most once every 1h |
+| **Frequency** | At most once every 1 hour |
 | **Destinations** | PagerDuty workflow |
 
 ## Related pages

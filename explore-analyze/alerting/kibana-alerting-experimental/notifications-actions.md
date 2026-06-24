@@ -30,7 +30,7 @@ If you need an action to fire exactly once in response to a specific alert episo
 
 - [Connect workflows](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime.
 - [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes.
-- [Create an action policy](action-policies/create-configure-action-policy.md) - Cnfigure policy type, match conditions, grouping, frequency, and destinations.
+- [Create an action policy](action-policies/create-configure-action-policy.md) - Configure policy type, match conditions, grouping, frequency, and destinations.
 - [Action policy reference](action-policies/action-policy-reference.md) - Available match condition fields, grouping modes, and frequency options.
 - [Manage action policies](action-policies/manage-action-policies.md) - Enable, disable, snooze, edit, or delete policies.
 - [Reduce notification noise](action-policies/reduce-notification-noise.md) - Suppress alerts using acknowledgment, snooze, and maintenance windows.

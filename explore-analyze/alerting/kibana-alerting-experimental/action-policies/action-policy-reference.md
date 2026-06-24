@@ -29,9 +29,7 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `data.*` | object | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard episode fields above. | Depends on rule type | `data.host.name: "web-01"` |
 
 <!--[CONTENT NEEDED: 
-1. Confirm whether `severity_max` (highest severity over the episode's lifetime) is also available. If so, add it to the table after `severity` with the description: "Highest severity reached over the lifetime of the alert episode. Use to catch episodes that were once critical even if they have since de-escalated." Accepted values: `info`, `low`, `medium`, `high`, `critical`.
-2. Confirm whether a severity change mid-episode (escalation or de-escalation of `severity`) triggers policy re-evaluation independently of episode status changes. If it does, a note is needed in the Frequency section below explaining the interaction between severity changes and the "On status change" option.
-3. When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
+When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
 -->
 
 ## Notify per options [notification-grouping]
@@ -54,9 +52,6 @@ Frequency controls how often the policy fires for a given alert episode or notif
 | On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the alert episode remains in the same status. | You want status change notifications plus periodic reminders that a problem is still unresolved, in case it has been missed or pushed aside. |
 | At most once every… | Caps notifications at one per alert episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit notification volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
-
-<!--[CONTENT NEEDED: Confirm whether a severity change mid-episode (escalation or de-escalation of `severity`) triggers policy re-evaluation independently of episode status changes. If it does, this table needs a note or a new strategy option explaining the interaction between severity changes and the "On status change" option.]
--->
 
 ### Frequency options for Episode [frequency-when-episode-per_episode]
 
