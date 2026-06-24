@@ -24,12 +24,21 @@ Use the following parameters to configure a `foreach` step:
 | `type` | Yes | Step type - must be `foreach` |
 | `foreach` | Yes | A template or JSON expression that evaluates to an array |
 | `steps` | Yes | An array of steps to run for each iteration |
+| `if` | No | KQL expression that skips the entire loop when it evaluates to false |
+| `max-iterations` | No | Maximum number of iterations to run. Use a number or an object with `limit` and `on-limit`. |
+| `timeout` | No | Timeout for the entire loop |
+| `on-failure` | No | Loop-level failure handling policy. Supports the same `continue`, `retry`, and `fallback` options as other steps. |
+| `iteration-timeout` | No | Timeout for each individual iteration |
+| `iteration-on-failure` | No | Per-iteration failure handling policy. Supports `continue`, `retry`, and `fallback` without failing the whole loop. |
 
 ```yaml
 steps:
   - name: loopStep
     type: foreach
     foreach: <array expression>
+    max-iterations:
+      limit: 100
+      on-limit: fail
     steps:
       # Steps to run for each item
       # Current item is available as 'foreach.item'
@@ -38,6 +47,45 @@ steps:
 ::::{note}
 Inside the loop, the current item is always available as `foreach.item`. You cannot customize this variable name.
 ::::
+
+## Guardrails
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Use loop-level guardrails to control the `foreach` step as a whole:
+
+* `max-iterations` prevents unexpectedly large collections from creating runaway loops. A bare number is treated as `{ limit: N, on-limit: continue }`, so the loop succeeds when the limit is reached. Use the object form with `on-limit: fail` when reaching the cap should fail the workflow.
+* `timeout` limits the total time spent in the loop, across all iterations.
+* `on-failure` defines loop-level failure handling with the same `continue`, `retry`, and `fallback` options used by other steps.
+* `if` skips the entire loop when the condition evaluates to false.
+
+Use iteration-level guardrails to control each pass through the loop:
+
+* `iteration-timeout` limits how long one iteration can run.
+* `iteration-on-failure` handles failures for one iteration with `continue`, `retry`, or `fallback` without failing the whole loop.
+
+```yaml
+steps:
+  - name: processAlerts
+    type: foreach
+    foreach: "${{ event.alerts }}"
+    if: "inputs.process_alerts : true"
+    max-iterations:
+      limit: 100
+      on-limit: fail
+    timeout: "10m"
+    iteration-timeout: "30s"
+    iteration-on-failure:
+      continue: true
+    steps:
+      - name: logAlert
+        type: console
+        with:
+          message: "Processing alert {{ foreach.item._id }}"
+```
 
 The `foreach` field supports the following expression types:
 

@@ -198,9 +198,9 @@ In the following example:
 
 ### Restrictions [workflows-on-failure-restrictions]
 
-- Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
 - Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
+- For `foreach` and `while` loops, use `iteration-on-failure` when you want to handle one failed iteration without failing the whole loop.
 
 ### Handle failures across workflows [workflows-cross-workflow-handler]
 
