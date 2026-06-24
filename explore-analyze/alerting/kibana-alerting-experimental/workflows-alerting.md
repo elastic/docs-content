@@ -16,16 +16,16 @@ This page covers how action policies drive workflow invocations at runtime, the 
 
 The {{alerting-v2-system}} connects to workflows through two pathways.
 
-- **Action policies** evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
-- **Alert episode lifecycle triggers** fire a workflow once when a specific state change occurs on an alert episode, such as when it is activated, assigned, or resolved.
+- **Action policies** - Action policies evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
+- **Alert episode lifecycle triggers** - Workflows are invoked when a specific state change occurs on an alert episode, such as when the alert episode is activated, assigned, or resolved.
 
-## Action policy-driven workflows [action-policy-driven-workflows]
+## How action policies invoke workflows [action-policy-driven-workflows]
 
 :::{important}
-Before creating an action policy, make sure the workflows you want to use already exist in your space. For information on creating a workflow, refer to [Build your first workflow](../../workflows/get-started/build-your-first-workflow.md).
+Action policies need a workflow to act on alert episodes. Without one, the policy has nowhere to send notifications or run automations. If you haven't created a workflow yet, [build your first workflow](../../workflows/get-started/build-your-first-workflow.md) before continuing.
 :::
 
-Without a workflow attached, an action policy cannot act on an alert episode. After a rule runs, processing follows these steps.
+After a rule runs, the system routes alert episodes to workflows through the following steps.
 
 ```
 Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notification
@@ -40,47 +40,23 @@ Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notif
 
 ## Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
-:::{note}
-Alert episode lifecycle triggers are available in Stack deployments only, from 9.5.0.
+A workflow trigger is a signal that starts a workflow automatically when a specific event occurs. Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md). The {{alerting-v2-system}} emits one each time an alert episode changes state, for example, when an alert episode is activated, assigned to a user, acknowledged, or snoozed. Any workflow attached to that trigger type runs immediately in response.
+
+:::{tip}
+If you're unsure whether to use a lifecycle trigger or an action policy, refer to [Choosing between lifecycle triggers and action policies](#choosing-lifecycle-triggers-action-policies).
 :::
 
-The {{alerting-v2-system}} emits a workflow trigger event each time a significant state change occurs on an alert episode. You can attach a workflow to any of these triggers to run automations in response to specific transitions without routing through an action policy.
+For the full list of available triggers and event payload fields, refer to [Alert episode lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven).
 
-### Available triggers
+## Choosing between lifecycle triggers and action policies [choosing-lifecycle-triggers-action-policies]
 
-<!-- [CONTENT NEEDED: Issue #6873 (Jun 8) documents a trigger with the ID `alertingV2.episodeAssigned`, while issue #7006 (Jun 19) lists the same trigger as `alerting.episodeAssigned`. Confirm the correct trigger ID prefix before publishing. The table below uses `alerting.*` per the more recent issue.] -->
+Action policies and lifecycle triggers serve different purposes. Both can run different workflows simultaneously and coexist without conflict.
 
-| Trigger ID | When it fires |
-|---|---|
-| `alerting.episodeActivated` | An alert episode transitions to the active state. |
-| `alerting.episodeDeactivated` | An alert episode is manually deactivated or recovers. |
-| `alerting.episodeSnoozed` | An alert episode is snoozed. |
-| `alerting.episodeUnsnoozed` | An alert episode is unsnoozed. |
-| `alerting.episodeAcked` | An alert episode is acknowledged. |
-| `alerting.episodeAssigned` | An alert episode is assigned to a user. |
-| `alerting.episodeUnassigned` | An alert episode assignment is removed. |
-| `alerting.episodeTagged` | A tag is applied to an alert episode. |
-
-### Event payload
-
-All lifecycle triggers include these common fields in the event payload.
-
-| Field | Description |
-|---|---|
-| `episodeId` | Unique identifier of the alert episode. |
-| `ruleId` | ID of the rule that produced the alert episode. |
-| `spaceId` | ID of the Kibana space where the event occurred. |
-
-Use these fields to write workflow conditions that scope the automation to specific rules or episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
-
-### When to use lifecycle triggers vs action policies
-
-Action policies and lifecycle triggers serve different purposes.
-
-- **Use action policies** when you need recurring notifications or escalation logic that runs as long as a problem persists. Action policies evaluate continuously and apply frequency controls, grouping, and suppression.
-- **Use lifecycle triggers** when you need a one-shot response to a specific state change, such as opening a ticket when an alert episode is first assigned, or posting a summary when it resolves.
-
-Both can run different workflows simultaneously and coexist without conflict.
+| | Action policies | Lifecycle triggers |
+|---|---|---|
+| **How they run** | Evaluate alert episodes on a continuous schedule | React immediately to a specific state change |
+| **Frequency control** | Apply suppression, grouping, and frequency gates | Fire exactly once per state change, no gates to configure |
+| **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when an episode is assigned or posting a message when it resolves |
 
 ## Next steps
 

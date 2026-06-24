@@ -29,8 +29,8 @@ Action policies only process alert episodes from rules running in Alert mode. Si
 
 An action policy can be global or per-rule:
 
-- **Global**: Global policies apply to any alert episode in the space. Use a global policy when you want to route alert episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
-- **Per-rule**: Per-rule policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
+- **Global** - Global policies apply to any alert episode in the space. Use a global policy when you want to route alert episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
+- **Per-rule** - Per-rule policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
 
 The policy type is set at creation and cannot be changed. If you need a different type, create a new policy.
 
