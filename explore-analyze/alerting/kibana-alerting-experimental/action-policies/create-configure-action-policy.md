@@ -45,9 +45,9 @@ An optional [KQL](../../../query-filter/languages/kql.md) expression that filter
 
 The match condition is the sole mechanism for scoping a policy beyond its base type. There are no separate rule type or rule ID selector fields. All scoping is done through this expression. For a global policy that should target a specific rule, use `rule.id: "my-rule-id"` or `rule.tags: "my-tag"` in the match condition.
 
-Use match conditions to route different alert episodes to different policies, for example, one policy for `episode.severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
+Use match conditions to route different alert episodes to different policies, for example, one policy for `severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 
-<!--[CONTENT NEEDED: Confirm whether `data.severity` on legacy rules (rules that have not migrated to `episode.severity`) should be documented as an alternative matcher, or removed from guidance entirely. If retained, add a note in the reference explaining when to use `data.*` severity fields versus `episode.severity`.]
+<!--[CONTENT NEEDED: Confirm whether `data.severity` on legacy rules (rules that have not migrated to `severity`) should be documented as an alternative matcher, or removed from guidance entirely. If retained, add a note in the reference explaining when to use `data.*` severity fields versus `severity`.]
 -->
 
 ## Grouping and frequency [reduce-noise-grouping]
@@ -73,6 +73,10 @@ For detailed descriptions, frequency options, and examples for each mode, refer 
 
 **Frequency** limits how often the policy can fire for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available options by **Notify per** mode, refer to [Frequency](action-policy-reference.md#throttle-strategies).
 
+:::{note}
+`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If an episode escalates from `low` to `critical` but the policy already matched it and the status hasn't changed, the throttle blocks re-notification. To receive escalation notifications, either create separate policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Controlling re-notification](common-action-policy-scenarios.md#controlling-re-notification).
+:::
+
 ## Destinations
 
 One or more workflows to invoke when the policy matches. Use the search field to find and attach workflows.
@@ -81,4 +85,4 @@ One or more workflows to invoke when the policy matches. Use the search field to
 
 - [Manage action policies in {{alerting-v2-system}}](manage-action-policies.md) to view, enable, disable, or snooze the policies you create.
 - [Action policy reference in {{alerting-v2-system}}](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
-- [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md) to understand how action policies evaluate and gate alert episodes.
+- [About action policies](about-action-policies.md) to understand how action policies evaluate and gate alert episodes.

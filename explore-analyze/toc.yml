@@ -382,9 +382,11 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/kibana-alerting-experimental/workflows-alerting.md
       - file: alerting/kibana-alerting-experimental/notifications-actions.md
         children:
+          - file: alerting/kibana-alerting-experimental/workflows-alerting.md
+          - file: alerting/kibana-alerting-experimental/action-policies/about-action-policies.md
+          - file: alerting/kibana-alerting-experimental/action-policies/common-action-policy-scenarios.md
           - file: alerting/kibana-alerting-experimental/action-policies/create-configure-action-policy.md
           - file: alerting/kibana-alerting-experimental/action-policies/action-policy-reference.md
           - file: alerting/kibana-alerting-experimental/action-policies/manage-action-policies.md

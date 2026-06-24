@@ -10,22 +10,20 @@ description: "How workflows connect to the experimental alerting system through 
 
 # Connect workflows to the {{alerting-v2-system}} [connect-workflows-experimental-alerting-system]
 
-Workflows are part of the {{alerting-v2-system}} in {{kib}}. [Workflows](../../workflows.md) are the delivery layer. They define what happens when the {{alerting-v2-system}} decides to act, such as sending a message, calling a webhook, or triggering an automation. Setting up a workflow is what connects the {{alerting-v2-system}} to the tools your team uses for incident response.
+[Workflows](../../workflows.md) are part of the {{alerting-v2-system}} in {{kib}}. They are the delivery layer that defines what happens when the {{alerting-v2-system}} takes an action, such as sending a message, calling a webhook, or triggering an automation. Workflows are what allow your team's incident response tools to connect with the {{alerting-v2-system}}.
 
 This page covers how action policies drive workflow invocations at runtime, the available alert episode lifecycle triggers, and when to use each pathway.
+
+## How the alerting system connects to workflows [connection-pathways]
 
 The {{alerting-v2-system}} connects to workflows through two pathways.
 
 - **Action policies** - Action policies evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions and frequency settings.
 - **Alert episode lifecycle triggers** - Workflows are invoked when a specific state change occurs on an alert episode, such as when the alert episode is activated, assigned, or resolved.
 
-## How action policies invoke workflows [action-policy-driven-workflows]
+### Action policies [action-policy-driven-workflows]
 
-:::{important}
-Action policies need a workflow to act on alert episodes. Without one, the policy has nowhere to send notifications or run automations. If you haven't created a workflow yet, [build your first workflow](../../workflows/get-started/build-your-first-workflow.md) before continuing.
-:::
-
-After a rule runs, the system routes alert episodes to workflows through the following steps.
+Action policies evaluate alert episodes on a continuous schedule and invoke workflows when an episode meets the configured conditions. After a rule runs, the system routes alert episodes to workflows through the following steps.
 
 ```
 Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notification
@@ -38,15 +36,15 @@ Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notif
 5. For policies where the episode clears all gates, the dispatcher invokes the configured workflows.
 6. Workflows deliver the notification or run the automation.
 
-## Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
+### Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
-Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow automatically when a specific event occurs. 
+Lifecycle triggers start a workflow immediately in response to a specific state change on an alert episode, without any scheduling or gating. Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow automatically when a specific event occurs. 
 
 The {{alerting-v2-system}} emits a trigger event each time an alert episode changes state (for example, when it's activated, assigned to a user, acknowledged, or snoozed) and any workflow attached to that trigger type runs immediately in response. 
 
 For a list of available triggers and event payload fields, refer to [Alert episode lifecycle triggers](../../workflows/triggers/event-driven-triggers.md). 
 
-## Choosing between lifecycle triggers and action policies [choosing-lifecycle-triggers-action-policies]
+### When to use action policies or lifecycle triggers [when-to-use-action-policies-lifecycle-triggers]
 
 If you're unsure whether to use lifecycle triggers or action policies, the following table compares when each option is a good fit. Both can run different workflows simultaneously and coexist without conflict.
 
@@ -59,5 +57,5 @@ If you're unsure whether to use lifecycle triggers or action policies, the follo
 ## Next steps
 
 - [Create and configure an action policy](action-policies/create-configure-action-policy.md) to start routing alert episodes to workflows.
-- [Notifications and actions in {{alerting-v2-system}}](notifications-actions.md) to learn how action policies evaluate and gate alert episodes before invoking a workflow.
+- [About action policies](action-policies/about-action-policies.md) to learn how action policies evaluate and gate alert episodes before invoking a workflow.
 

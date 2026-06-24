@@ -12,7 +12,7 @@ description: "How to reduce notification noise in the experimental alerting syst
 
 Acknowledge, snooze, and deactivate are part of the {{alerting-v2-system}} in {{kib}}. Each one silences notifications for an alert episode at a different scope. When an alert episode is silenced, the dispatcher stops processing it before any action policy matching, grouping, or frequency evaluation runs.
 
-This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of a policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md).
+This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of a policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
 
 ## Silencing mechanisms [silencing-mechanisms]
 
@@ -44,6 +44,6 @@ Snoozing an alert episode differs from [snoozing an action policy](manage-action
 - [View and manage alerts](../alerts/view-and-manage-alerts.md) to apply gating actions from the alerts table or episode detail page.
 - [{{alerting-v2-system}} alerts](../alerts.md) to understand alert episode lifecycle, series, and where alert data is stored.
 -->
-- [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md) to learn how action policies route and throttle alert episodes after silencing.
+- [About action policies](about-action-policies.md) to learn how action policies route and throttle alert episodes after silencing.
 - [Create and configure an action policy](create-configure-action-policy.md) to set up the policies that run after gating checks pass.
 - [Action policy reference](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
