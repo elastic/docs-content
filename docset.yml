@@ -296,8 +296,8 @@ subs:
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.12.4
   helm-version: 3.21.0
-  ece-docker-images-8: 8.19.11
-  ece-docker-images-9: 9.3.0
+  ece-docker-images-8: 8.19.16
+  ece-docker-images-9: 9.3.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
