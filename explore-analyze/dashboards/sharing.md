@@ -51,15 +51,14 @@ serverless: unavailable
 
 Embed a fully interactive dashboard as an iframe on an internal company website or personal web page.
 
-1. Open the dashboard, then select {icon}`share` **Share** in the application menu.
-2. Go to the **Embed** tab.
-3. Under **Include**, select which parts of the dashboard to display in the embedded view:
+1. Open the dashboard, select {icon}`share` **Share** in the application menu, then go to the **Embed** tab.
+2. Under **Include**, select which parts of the dashboard to display in the embedded view:
    - **Top menu**: the menu bar at the top of the dashboard
    - **Query**: the search query bar
    - **Time filter**: the time range selector
    - **Filter bar** (enabled by default): the bar showing applied filters
-4. Select **Copy embed code**.
-5. Paste the iframe code into your web page HTML.
+3. Select **Copy embed code**.
+4. Paste the iframe code into your web page HTML.
 
 Save the dashboard before you generate the embed code. Embedding a dashboard with unsaved changes might result in an embed code that does not work properly.
 
@@ -91,8 +90,8 @@ For general information about reporting across all {{kib}} apps, including known
 
 You can download the data displayed in a visualization on a dashboard as a CSV file. The option is available for chart and table visualizations that expose tabular data, typically those created with **Lens**. It does not appear on panel types such as **Markdown**, **Image**, **Link**, or **Maps**.
 
-1. Open the panel menu of the visualization, then select **Download CSV**.
-2. The CSV file is downloaded to your machine.
+1. On the dashboard, open the panel menu of the visualization.
+2. Select **Download CSV**. The file downloads to your machine.
 
 ## Export JSON [export-dashboards]
 
@@ -106,14 +105,13 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance.
 
-1. Open the dashboard you want to export.
-2. From the application menu, select {icon}`download` **Export** → **Export JSON**.
-3. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
-4. Choose how to use the JSON source:
+1. Open the dashboard, then select {icon}`download` **Export** → **Export JSON** from the application menu.
+2. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.
+3. Choose how to use the JSON source:
 
-   * Select **Copy to clipboard** to copy the JSON.
-   * Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
-   * Select **Download JSON** to save the JSON source to a file.
+   - Select **Copy to clipboard** to copy the JSON.
+   - Select **Open in Console** to open {{kib}} Dev Tools Console with a Create dashboard API request pre-populated with the JSON source. This option is available if you have access to **Dev Tools**.
+   - Select **Download JSON** to save the JSON source to a file.
 
 ::::
 
