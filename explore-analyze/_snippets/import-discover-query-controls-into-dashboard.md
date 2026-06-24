@@ -18,7 +18,7 @@ A new panel appears on the dashboard with the results of the query along with an
 
 ![Importing Discover session with controls into a dashboard](/explore-analyze/images/import-discover-control-dashboard.png " =40%")
 
-**Method 2: Adding the Discover visualization** {applies_to}`serverless:` {applies_to}`stack: ga 9.3`
+**Method 2: Adding the Discover visualization** {applies_to}`{"stack": "ga 9.3", "serverless": "ga"}`
 
 This method allows you to add the visualization of your Discover {{esql}} query to any dashboard.
 
