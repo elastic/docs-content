@@ -40,17 +40,15 @@ Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notif
 
 ## Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
-A workflow trigger is a signal that starts a workflow automatically when a specific event occurs. Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md). The {{alerting-v2-system}} emits one each time an alert episode changes state, for example, when an alert episode is activated, assigned to a user, acknowledged, or snoozed. Any workflow attached to that trigger type runs immediately in response.
+Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow automatically when a specific event occurs. 
 
-:::{tip}
-If you're unsure whether to use a lifecycle trigger or an action policy, refer to [Choosing between lifecycle triggers and action policies](#choosing-lifecycle-triggers-action-policies).
-:::
+The {{alerting-v2-system}} emits a trigger event each time an alert episode changes state (for example, when it's activated, assigned to a user, acknowledged, or snoozed) and any workflow attached to that trigger type runs immediately in response. 
 
-For the full list of available triggers and event payload fields, refer to [Alert episode lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven).
+For a list of available triggers and event payload fields, refer to [Alert episode lifecycle triggers](../../workflows/triggers/event-driven-triggers.md). 
 
 ## Choosing between lifecycle triggers and action policies [choosing-lifecycle-triggers-action-policies]
 
-Action policies and lifecycle triggers serve different purposes. Both can run different workflows simultaneously and coexist without conflict.
+If you're unsure whether to use lifecycle triggers or action policies, the following table compares when each option is a good fit. Both can run different workflows simultaneously and coexist without conflict.
 
 | | Action policies | Lifecycle triggers |
 |---|---|---|
