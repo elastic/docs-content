@@ -42,17 +42,17 @@ Go to the [{{ecloud}} listing on the {{gcp}} Marketplace](https://console.cloud.
 :::::{step} Sign in with your existing credentials
 When prompted to create a new account or sign in, choose to **sign in** with your existing {{ecloud}} credentials.
 :::::
-:::::{step} Select the organization to convert
+:::::{step} Select the organization to upgrade
+The upgrade page shows the cloud provider account that the subscription will be linked to. Confirm this is the correct account before continuing.
+
 What happens next depends on how many organizations your account belongs to:
 
-- **Single convertible trial organization:** You are presented with an option to convert the trial to the marketplace subscription. Billing through the marketplace begins immediately upon conversion.
-- **Multiple organizations:** You are shown a list of your organizations. Organizations that are eligible for conversion have a **Convert** option. Select the organization you want to convert.
+- **Single convertible trial organization:** You are presented with an option to upgrade the trial to the marketplace subscription. Billing through the marketplace begins immediately upon upgrade.
+- **Multiple organizations:** You are shown a list of your eligible organizations. Click the organization you want to upgrade. To also see organizations that aren't eligible, toggle **Show non-convertible organizations**.
 
-You can also choose to **create a new organization** instead of converting an existing one. The new organization starts with its own 7-day marketplace trial.
+You can also choose to **create a new organization** instead of upgrading an existing one. The new organization starts with its own 7-day marketplace trial.
 
-% TODO: confirm CTA labels from Figma
-
-If none of your existing organizations are eligible for conversion, you can still create a new organization through the marketplace, or refer to [Which organizations can be converted](#ec-marketplace-conversion-candidates) to understand why.
+If none of your existing organizations are eligible for upgrading, you can still create a new organization through the marketplace, or refer to [Which organizations can be converted](#ec-marketplace-conversion-candidates) to understand why.
 :::::
 ::::::
 

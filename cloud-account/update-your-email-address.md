@@ -14,6 +14,10 @@ products:
 Each {{ecloud}} account has a primary email associated with it. By default, the primary email address is used to sign up for {{ecloud}} and to log in. If needed, you can change this primary email address.
 
 Your email address is used to uniquely identify you. It can’t be used for more than one {{ecloud}} account, whether that account is a trial account, a standard {{ecloud}} account, or a subscription account through a marketplace. However, a single {{ecloud}} account can belong to [multiple organizations](/cloud-account/switch-organizations.md).
+
+:::{tip}
+If you have separate {{ecloud}} accounts for different organizations and want to consolidate to a single account, ask an organization owner in each organization to [reconcile your accounts](/deploy-manage/cloud-organization/manage-multiple-organizations.md#reconcile-alternative-email-addresses).
+:::
  
 ## Change your email address (native sign-in)
 
