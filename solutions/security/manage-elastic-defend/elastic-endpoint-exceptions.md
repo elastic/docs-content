@@ -30,12 +30,13 @@ By default, {{elastic-endpoint}} exceptions apply globally across all hosts runn
 
 {{elastic-endpoint}} exceptions are space-aware: when you create a per-policy exception, it is associated with the space you're working in. For more information on how spaces interact with endpoint artifacts, refer to [](/solutions/security/get-started/spaces-defend-faq.md).
 
+If you're upgrading from an earlier version, your existing {{elastic-endpoint}} exceptions are preserved and are managed from the **Artifacts** page. 
 
 ## Opt in to per-policy {{elastic-endpoint}} exceptions [endpoint-exceptions-opt-in]
 
 For deployments upgraded from an earlier version, per-policy assignment for {{elastic-endpoint}} exceptions requires opting in. New deployments are automatically opted in to per-policy {{elastic-endpoint}} exceptions with no action required.
 
-If you're upgrading from an earlier version, a callout appears on the **Artifacts** page prompting you to opt in. When you opt in, existing exceptions will be preserved and shown under Artifacts and managed there from now on. You must have the **superuser** role in {{stack}}, or the **admin** role in {{serverless-short}}, to perform the opt-in.
+If you're upgrading from an earlier version, a callout appears on the **Artifacts** page prompting you to opt in. You must have the **superuser** role in {{stack}}, or the **admin** role in {{serverless-short}}, to perform the opt-in.
 
 ::::{important}
 Opting in is permanent and cannot be reversed. After opting in:
