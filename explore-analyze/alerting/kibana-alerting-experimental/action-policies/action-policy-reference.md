@@ -14,13 +14,13 @@ Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page is 
 
 ## Match conditions fields [matcher-fields]
 
-Use these fields in the **Match conditions** expression to filter which alert episodes a policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `episode.severity: "critical" AND episode_status: "active"`.
+Use these fields in the **Match conditions** expression to filter which alert episodes a policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
 
 | Field | Type | Description | Accepted values | Example |
 |---|---|---|---|---|
 | `episode_id` | string | Unique identifier of the alert episode. | Any string | `episode_id: "ep-001"` |
 | `episode_status` | string | Current lifecycle status of the alert episode. | `inactive`, `pending`, `active`, `recovering` | `episode_status: "active"` |
-| `episode.severity` | string | Current severity of the alert episode. Populated when the rule's ES\|QL query includes a `severity` column whose value matches a supported level (case-insensitive). Unrecognized values are silently ignored and the field is absent. Not set during recovery. Use to route high-severity episodes to dedicated workflows. | `info`, `low`, `medium`, `high`, `critical` | `episode.severity: "critical" OR episode.severity: "high"` |
+| `severity` | string | Current severity of the alert episode. Populated when the rule's ES\|QL query includes a `severity` column whose value matches a supported level (case-insensitive). Unrecognized values are silently ignored and the field is absent. Not set during recovery. Use to route high-severity episodes to dedicated workflows. | `info`, `low`, `medium`, `high`, `critical` | `severity: "critical" OR severity: "high"` |
 | `group_hash` | string | Stable hash identifying the alert series the alert episode belongs to. | Any string | `group_hash: "abc123"` |
 | `last_event_timestamp` | string | ISO 8601 timestamp of the most recent event recorded for the alert episode. | ISO 8601 timestamp | `last_event_timestamp > "2026-01-01"` |
 | `rule.id` | string | Unique identifier of the rule that generated the alert episode. | Any string | `rule.id: "rule-001"` |
@@ -29,9 +29,7 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `data.*` | object | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard episode fields above. | Depends on rule type | `data.host.name: "web-01"` |
 
 <!--[CONTENT NEEDED: 
-1. Confirm whether `episode.severity_max` (highest severity over the episode's lifetime) is also available. If so, add it to the table after `episode.severity` with the description: "Highest severity reached over the lifetime of the alert episode. Use to catch episodes that were once critical even if they have since de-escalated." Accepted values: `info`, `low`, `medium`, `high`, `critical`.
-2. Confirm whether a severity change mid-episode (escalation or de-escalation of `episode.severity`) triggers policy re-evaluation independently of episode status changes. If it does, a note is needed in the Frequency section below explaining the interaction between severity changes and the "On status change" option.
-3. When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
+When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
 -->
 
 ## Notify per options [notification-grouping]
@@ -54,9 +52,6 @@ Frequency controls how often the policy fires for a given alert episode or notif
 | On status change + repeat at interval | Notifies on status change, then resends notifications at a regular interval while the alert episode remains in the same status. | You want status change notifications plus periodic reminders that a problem is still unresolved, in case it has been missed or pushed aside. |
 | At most once every… | Caps notifications at one per alert episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit notification volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
-
-<!--[CONTENT NEEDED: Confirm whether a severity change mid-episode (escalation or de-escalation of `episode.severity`) triggers policy re-evaluation independently of episode status changes. If it does, this table needs a note or a new strategy option explaining the interaction between severity changes and the "On status change" option.]
--->
 
 ### Frequency options for Episode [frequency-when-episode-per_episode]
 
@@ -101,4 +96,4 @@ The dispatcher records each run with one of the following outcomes. To investiga
 
 - [Create and configure an action policy](create-configure-action-policy.md) to apply these fields and options when setting up a policy.
 - [Manage action policies in {{alerting-v2-system}}](manage-action-policies.md) to enable, disable, snooze, or audit your policies.
-- [Notifications and actions in {{alerting-v2-system}}](../notifications-actions.md) to understand how action policies evaluate and gate alert episodes.
+- [About action policies](about-action-policies.md) to understand how action policies evaluate and gate alert episodes.
