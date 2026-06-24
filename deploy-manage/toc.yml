@@ -559,7 +559,6 @@ toc:
             children:
               - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-okta.md
               - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-microsoft-entra-id.md
-          - file: users-roles/cloud-organization/manage-mcp-client-connections.md
       - file: users-roles/cloud-enterprise-orchestrator.md
         children:
           - file: users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md
