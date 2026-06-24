@@ -55,7 +55,7 @@ The resulting entity risk scores are stored in the `risk-score.risk-score-<space
 1. The risk scoring maintainer runs hourly to aggregate `Open` and `Acknowledged` alerts from the last 30 days, including [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md). Up to 10,000 alerts are processed per entity.
 
     ::::{note}
-    * Starting in 9.4, only entities that exist in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) receive a risk score. Alerts referencing entities not in the entity store do not contribute to any risk score.
+    * Only entities that exist in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) receive a risk score. Alerts referencing entities not in the entity store do not contribute to any risk score. To learn why an alert's user or host might not exist in the entity store, refer to [How entities are created](/solutions/security/advanced-entity-analytics/entity-store.md#entity-store-creation-criteria).
 
     * By default, only `Open` and `Acknowledged` alerts are included. When [turning on risk scoring](turn-on-risk-scoring-engine.md), you can choose to also include `Closed` alerts and apply additional KQL filters. Entities with no alerts that match the configured filters are not assigned a risk score.
 
