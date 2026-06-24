@@ -27,7 +27,9 @@ You can also [set whether other users of your space can edit dashboards you own]
 Share a direct link to a dashboard so that others can access it in {{kib}}.
 
 1. Open the dashboard, then select {icon}`share` **Share** in the application menu, and go to the **Link** tab.
-2. {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Optional: If your current time range is relative, turn on **Use absolute time range** to make the link capture a fixed time period instead. By default, the link keeps the relative range.
+2. {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` If your current time range is relative, use the **Use absolute time range** switch to choose what the link captures:
+   - **Off** (default): the link uses a relative time range and always shows current data. For example, a "Last 7 days" view always shows the most recent 7 days when users open the link.
+   - **On**: the link captures a fixed time period. For example, a "Last 7 days" view shared on January 7, 2025 always shows January 1-7, 2025, regardless of when users open the link.
 3. Select **Copy link**.
 
 :::{image} /explore-analyze/images/share-dashboard.png
@@ -40,13 +42,6 @@ The link opens the dashboard in the same {{kib}} instance with your current view
 - **Authentication**: Recipients must log in to {{kib}} with an account that has permission to view the dashboard.
 - {applies_to}`serverless: unavailable` **Anonymous access**: Users can open the link without logging in if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has the necessary privileges.
 - **Permanent links**: If the dashboard has unsaved changes, you get a temporary link that might break later, for example after an upgrade. Save the dashboard first to get a permanent link.
-
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When your current time range is relative, the **Use absolute time range** switch determines what the link captures:
-
-- **Off** (default): the link uses a relative time range and always shows current data. For example, a "Last 7 days" view always shows the most recent 7 days when users open the link.
-- **On**: the link captures a fixed time period. For example, a "Last 7 days" view shared on January 7, 2025 always shows January 1-7, 2025, regardless of when users open the link.
-
-To switch back to a relative range, select one in the time picker first.
 
 ## Embed in a webpage [embed-dashboard]
 ```{applies_to}
