@@ -15,7 +15,9 @@ The YAML editor is part of the {{alerting-v2-system}} in {{kib}}. It lets you de
 
 This page covers when to use the YAML editor instead of the rule builder, and how to get started. For the full list of supported fields and accepted values, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
-Use the YAML editor when you want to version-control rule definitions alongside your other configuration, manage rules through infrastructure-as-code tooling, copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. If you're creating a rule from scratch and want guidance through each setting, the [rule builder](create-rule-from-rule-builder.md) is the better starting point. If you have a query already working in Discover, you can [create a rule directly from there](create-rule-from-discover.md).
+## When to use the YAML editor
+
+Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. If you're creating a rule from scratch and want guidance through each setting, the [rule builder](create-rule-from-rule-builder.md) is the better starting point. If you have a query already working in Discover, you can [create a rule directly from there](create-rule-from-discover.md).
 
 ## YAML-only mode when editing rules [yaml-only-edit]
 

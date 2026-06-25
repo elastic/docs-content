@@ -120,5 +120,4 @@ These fields only appear on documents with `type: alert`, written by rules runni
 | `episode.id` | keyword | Episode identifier for this series. |
 | `episode.status` | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
 | `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
-| `episode.severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |
-| `episode.severity_max` | keyword | Highest severity level observed across the episode's lifetime (high-water mark). Enables routing or display based on peak severity, for example, "this episode peaked at `critical`". |
+| `severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |

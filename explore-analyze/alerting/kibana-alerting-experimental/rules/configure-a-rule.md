@@ -33,22 +33,95 @@ Choose a mode that matches how you want to use results:
 | Signal | Signals only: the rule produces detections without alert lifecycle tracking or notifications. |
 | Alert | Lifecycle tracking and actions. Alerts move through states (pending, active, recovering, and so on), and you can attach action policies so alert episodes dispatch through workflows. |
 
-Several settings on this page apply only when the rule is in Alert mode (`kind: alert`).
+Several settings on this page apply only when the rule is in Alert mode.
 
 ## {{esql}} query [esql-query-rule]
 
-The rule's {{esql}} query defines what to evaluate. It has a base query and an optional alert condition. Together they drive which rows become alert events and how no-data behavior applies. See [{{esql}} query structure](author-rules.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
+The rule's {{esql}} query defines what to evaluate. It has a base query and an optional alert condition. Together they drive which rows become alert events and how no-data behavior applies. Refer to [{{esql}} query structure](author-rules.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
+
+### Query parameters [query-parameters]
+
+{{esql}} rule queries support `?param` placeholder syntax for values you want to supply separately from the query body. Placeholders let you write a reusable query and vary threshold values through the rule configuration rather than hard-coding them inline.
+
+```esql
+FROM metrics-*
+| STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
+| WHERE avg_cpu > ?threshold
+```
+
+<!-- TODO: Confirm the exact mechanism for supplying parameter values — whether through the rule form, API, or YAML `params` key — and document the supported value types and validation behavior once the M2 parameterization API is finalized. -->
+
+## Severity [rule-severity]
+
+Severity is optional. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels:
+
+| Value | Meaning |
+| --- | --- |
+| `info` | Informational; lowest urgency |
+| `low` | Low-severity condition |
+| `medium` | Moderate-severity condition |
+| `high` | High-severity condition |
+| `critical` | Critical; highest urgency |
+
+### How the {{alerting-v2-system}} reads severity values
+
+The {{alerting-v2-system}} reads the `severity` column after each evaluation and applies the following rules:
+
+- Matching is case-insensitive.
+- Values that don't match one of the five levels are silently ignored. The alert episode is still created, but `severity` isn't set.
+- Severity is only set on `breached` events. `recovered` and `no_data` events don't carry a severity value.
+
+### Stored fields
+
+When severity is set, the {{alerting-v2-system}} stores two fields on the alert episode that are available for action policy matchers:
+
+| Field | Description |
+| --- | --- |
+| `severity` | The severity value from the most recent breached event (current state). |
+| `severity_max` | The highest severity level observed across the episode's lifetime. Useful for routing like "this episode peaked at critical." |
+
+Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for more information about these fields.
+
+### Example
+
+```esql
+FROM metrics-*
+| STATS
+    errors_5m = COUNT_IF(outcome == "failure" AND @timestamp >= NOW() - 5 minutes),
+    total_5m   = COUNT_IF(@timestamp >= NOW() - 5 minutes)
+  BY service.name
+| EVAL burn_5m = errors_5m / total_5m
+| EVAL severity = CASE(
+    burn_5m > 14.4, "critical",
+    burn_5m > 6.0,  "high",
+    burn_5m > 1.0,  "medium",
+    "low"
+  )
+| WHERE burn_5m > 1.0
+| KEEP service.name, burn_5m, severity
+```
+
+- **`STATS`** - Counts failures and total requests in the last 5 minutes, grouped by service.
+- **`EVAL burn_5m`** - Computes the error burn rate as a ratio of failures to total requests.
+- **`EVAL severity`** - Maps the burn rate to a severity level.
+- **`WHERE`** - Only rows above the threshold count as breaches.
+- **`KEEP`** - Includes `severity` in the output so the {{alerting-v2-system}} reads and stores it.
 
 ## Rule grouping [rule-grouping]
 
+Rule grouping lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
-Rule grouping splits alert event generation by one or more group key fields so that each unique combination of field values produces its own alert series. Each series has independent lifecycle tracking, recovery detection, and per-series snooze.
+Each group tracks its own lifecycle, recovery, and snooze state.
 
-Group key fields must align with the `BY` clause in your {{esql}} query's `STATS` command. See [Author rules](author-rules.md) for query patterns.
+Rule grouping controls how alert series are created. Notification grouping — configured on an action policy — controls how those alert episodes are batched into messages. These are separate settings.
 
-When writing a rule that uses grouping, writing the query first and then specifying group fields avoids mismatches between the query output and the grouping configuration. The group fields in the rule form reflect the columns produced by the `STATS ... BY` clause, so if you add or remove a `BY` field in the query, the corresponding group field must be updated to match.
+### Aligning `BY` fields with your rule's query
 
-Note that rule grouping is separate from notification grouping on an action policy, which controls how alert episodes batch into messages.
+The `BY` fields you specify for grouping must match the columns in the `BY` clause of your {{esql}} `STATS` command. If they don't match, the grouping configuration won't work as expected.
+
+:::{tip}
+Write the query first, then set the group fields. That way the `BY` columns are already defined and you can select them directly. If you later add or remove a `BY` field in the query, update the group fields to match.
+:::
 
 <!--[CONTENT NEEDED for M2: M2 replaces the current `grouping.fields` approach with a `track_by` concept and introduces a `series.*` block that gives each series a stable, explicit identity. Update this section to document the `track_by` configuration, explain how the `series.*` block differs from the current `group_hash` approach, and revise any references to `grouping.fields` or the `BY` clause alignment requirement once the M2 schema is finalized.]
 -->
@@ -75,7 +148,7 @@ The lookback must not exceed 365 days. If the lookback is shorter than the execu
 
 Activation and recovery thresholds control when alerts transition between lifecycle states. They reduce noise from short spikes and from rapid flapping between active and recovered.
 
-These settings are only available for Alert-mode rules (`kind: alert`).
+These settings are only available for Alert-mode rules.
 
 ### Activation thresholds
 
@@ -99,6 +172,8 @@ Configure these modes using the following fields. Timeframe values must be betwe
 
 ### Recovery thresholds
 
+Recovery thresholds control when an active alert episode transitions back to inactive. The same delay modes available for activation — consecutive recoveries required, minimum recovery duration, or both — apply here.
+
 | Field | Description |
 | --- | --- |
 | `recovering_count` | Consecutive recoveries required |
@@ -108,7 +183,9 @@ Configure these modes using the following fields. Timeframe values must be betwe
 Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
 
 :::{note}
-The `recovery_policy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_policy.type` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch. When creating a rule through the API or Agent Builder, you can omit `recovery_policy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-policy-fields).
+The `recovery_policy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_policy.type` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch. 
+
+When creating a rule through Agent Builder, you can omit `recovery_policy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-policy-fields).
 :::
 
 ## No-data handling [no-data-handling]
@@ -127,12 +204,12 @@ Set `no_data.behavior` to one of the following values:
 
 These behaviors apply when the base query returns zero rows. They don't help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
 
-## Tags and investigation guide [tags-investigation]
+## Tags and runbooks [tags-investigation]
 
 Alert-mode rules support two optional metadata fields:
 
-- **Tags**: Free-form labels for filtering and organization.
-- **Investigation guide**: A runbook stored with the rule so responders have context when an alert fires.
+- **Tags** - Free-form labels for filtering and organization.
+- **Runbooks** - An investigation guide stored with the rule so responders have context when alerts are generated.
 
 ## Evaluate rule output [evaluate-rule-output]
 
