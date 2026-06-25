@@ -19,6 +19,9 @@ The `while` step runs its nested steps repeatedly as long as a {{kib}} Query Lan
 
 Use `while` for polling patterns: checking a status until it reaches `ready`, retrying an operation until it succeeds, or waiting for an external job to complete. For iterating over a known collection, use [`foreach`](/explore-analyze/workflows/steps/foreach.md) instead.
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |
