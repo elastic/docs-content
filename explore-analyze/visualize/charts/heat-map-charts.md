@@ -313,6 +313,9 @@ When creating or editing a visualization, you can customize several appearance o
 **Sort order** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
 :   Control the sort order of the vertical axis values:
     - **Unsorted**: Use the default sort order (default).
+      
+      {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` When the vertical axis uses numeric data, descending numeric order is used. Axes that use other data types, such as strings, are unaffected: their rows appear in the order the data is returned. You can still set the sort order manually.
+   
     - **Ascending**: Sort values in ascending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
     - **Descending**: Sort values in descending order. Automatically detects whether to use numeric or alphabetical sorting based on the data type.
 

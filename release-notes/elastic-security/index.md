@@ -251,6 +251,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
 
+## 9.3.6 [elastic-security-9.3.6-release-notes]
+
+### Fixes [elastic-security-9.3.6-fixes]
+
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Fixes alert action error toasts (assign, tag, open, close, acknowledge) so they show the full error message from {{es}} instead of a blank body [#269592]({{kib-pull}}269592).
+* Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+
 ## 9.3.5 [elastic-security-9.3.5-release-notes]
 
 ### Fixes [elastic-security-9.3.5-fixes]
