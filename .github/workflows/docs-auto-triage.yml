@@ -1,8 +1,7 @@
-name: Docs Triage
+name: Docs Auto Triage
 on:
-  issue_comment:
-    types: [created]
-  workflow_dispatch:
+  issues:
+    types: [opened]
 
 permissions:
   actions: read
@@ -14,10 +13,7 @@ permissions:
 
 jobs:
   run:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      startsWith(github.event.comment.body, '/triage')
-    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-auto-triage.lock.yml@v1
     with:
       additional-instructions: |
         ## Team Ownership Mapping

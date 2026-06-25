@@ -66,7 +66,6 @@ jobs:
     permissions:
       contents: read
     outputs:
-      triage_triggered: ${{ steps.evaluate.outputs.triage_triggered }}
       issue_scope_triggered: ${{ steps.evaluate.outputs.issue_scope_triggered }}
 
     steps:
@@ -87,18 +86,14 @@ jobs:
 
             const previousState = menu.parseMenuState(previousBody);
             const currentState = menu.parseMenuState(body);
-            const triageTriggered = !previousState.triage.selected && currentState.triage.selected;
             const issueScopeTriggered = !previousState.issueScope.selected && currentState.issueScope.selected;
 
-            core.setOutput('triage_triggered', String(triageTriggered));
             core.setOutput('issue_scope_triggered', String(issueScopeTriggered));
 
   refresh-menu-after-trigger:
     name: Refresh AI menu after trigger
     needs: [evaluate-trigger]
-    if: >-
-      needs.evaluate-trigger.outputs.triage_triggered == 'true' ||
-      needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
+    if: needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -123,13 +118,6 @@ jobs:
             const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const statusOverrides = {};
 
-            if ('${{ needs.evaluate-trigger.outputs.triage_triggered }}' === 'true') {
-              statusOverrides.triage = {
-                detailsUrl: progressUrl,
-                status: 'in_progress',
-              };
-            }
-
             if ('${{ needs.evaluate-trigger.outputs.issue_scope_triggered }}' === 'true') {
               statusOverrides.issueScope = {
                 detailsUrl: progressUrl,
@@ -146,37 +134,6 @@ jobs:
               statusOverrides,
             });
 
-  run-docs-triage:
-    name: Docs AI / triage
-    needs: [evaluate-trigger]
-    if: needs.evaluate-trigger.outputs.triage_triggered == 'true'
-    permissions:
-      actions: read
-      contents: read
-      copilot-requests: write
-      discussions: write
-      issues: write
-      pull-requests: write
-    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
-    with:
-      additional-instructions: |
-        ## Team Ownership Mapping
-
-        This mapping is derived from the repository's CODEOWNERS file. Use it to determine which team owns each issue. Match based on the issue title, body, any mentioned URLs, and labels.
-
-        | Team Label | Owns | Keywords / URL paths |
-        |---|---|---|
-        | `Team:Admin` | Elasticsearch admin, cluster mgmt, cloud, deployment docs | Cluster management, index management, auth, roles, API keys, network security, cluster security, snapshots, ILM, data lifecycle, CCR, CCS, licensing, subscriptions, upgrade, monitoring, Elastic Cloud, ECE, ECK, serverless. Paths: `deploy-manage/`, `cloud-account/`, `manage-data/` (except `manage-data/ingest/`), `serverless/`, `troubleshoot/deployments/`, `troubleshoot/elasticsearch/` |
-        | `Team:Experience` | Kibana, observability solution, security solution | Kibana, dashboards, visualizations, Discover, observability, security, APM UI, maps, canvas, Lens, alerting, rules, cases, SIEM, endpoint security, detection rules, security analytics. Paths: `explore-analyze/` (default), `solutions/observability/`, `solutions/security/`, `reference/kibana/`, `reference/observability/`, `reference/security/` |
-        | `Team:Developer` | Elasticsearch developer, search solution docs | Elasticsearch APIs, ES|QL, query DSL, search features, relevance, vector search, semantic search, inference APIs, connectors, developer tools, clients, search applications, App Search, Workplace Search. Paths: `solutions/search/`, `reference/elasticsearch/clients/`, `reference/search/`, `reference/machine-learning/`, `explore-analyze/ai-features/`, `explore-analyze/cross-cluster-search/`, `explore-analyze/cross-project-search/`, `explore-analyze/transforms/` |
-        | `Team:Ingest` | Data ingestion, Fleet, APM agents docs | Fleet, Elastic Agent, Beats, Logstash, pipelines, integrations, data streams, APM agents, APM server, OpenTelemetry. Paths: `manage-data/ingest/`, `reference/apm-agents/`, `reference/fleet/`, `reference/ingestion-tools/`, `solutions/observability/apm/apm-agents/`, `solutions/observability/apm/apm-server/`, `solutions/observability/apm/ingest/`, `solutions/observability/apm/opentelemetry/` |
-        | `Team:DocsEng` | Docs infrastructure | Docs build system, CI/CD, website rendering, broken navigation, docs-builder bugs, elastic.co website issues not related to content. Paths: `.github/workflows/`, `.github/scripts/` |
-        | `Team:Projects` | Internal projects, docs initiatives | Internal documentation projects, content strategy, information architecture, get-started guides. Paths: `get-started/` |
-
-        **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
-        **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
-        **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
-
   run-docs-issue-scope:
     name: Docs AI / issue scope
     needs: [evaluate-trigger]
@@ -189,53 +146,6 @@ jobs:
       issues: write
       pull-requests: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-docs-issue-scope.lock.yml@v1
-
-  refresh-menu-after-docs-triage:
-    name: Refresh AI menu after docs triage
-    needs: [evaluate-trigger, refresh-menu-after-trigger, run-docs-triage]
-    if: always() && needs.evaluate-trigger.outputs.triage_triggered == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-    concurrency:
-      group: docs-ai-menu-${{ github.event.issue.number }}
-      cancel-in-progress: false
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6.0.2
-        with:
-          persist-credentials: false
-
-      - name: Refresh AI menu status
-        uses: actions/github-script@v9.0.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
-            const issueNumber = context.payload.issue.number;
-            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const triageResult = '${{ needs.run-docs-triage.result }}';
-
-            await menu.upsertMenuComment({
-              core,
-              createIfMissing: false,
-              github,
-              context,
-              issueNumber,
-              statusOverrides: {
-                triage: {
-                  conclusion: triageResult === 'success'
-                    ? 'success'
-                    : triageResult === 'cancelled'
-                      ? 'cancelled'
-                      : 'failure',
-                  detailsUrl: progressUrl,
-                  status: 'completed',
-                },
-              },
-            });
 
   refresh-menu-after-docs-issue-scope:
     name: Refresh AI menu after docs issue scope
