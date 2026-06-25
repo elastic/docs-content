@@ -60,13 +60,10 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 
 ## Project features and add-ons [project-features-add-ons]
 
-Project capabilities and billing are controlled by two settings:
+Project capabilities are controlled by two settings:
 
 * **Feature tier**: A package of capabilities. The selected tier determines the baseline features available and which add-ons can be enabled.
 * **Add-ons**: Optional capabilities you turn on in the project settings. Available add-ons depend on the project type and feature tier. 
-
-  Other add-ons, such as data out and support, apply automatically based on usage or your subscription level. See [{{serverless-short}} project billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md#add-ons).
-
 
 The project features and add-ons you can configure depend on your project type:
 
@@ -76,7 +73,9 @@ The project features and add-ons you can configure depend on your project type:
 There are no project feature tiers or add-ons for {{es-serverless}} projects.
  
 :::{note}
-Unlike in {{ech}} deployments, your organization's [{{ecloud}} subscription level](/deploy-manage/cloud-organization/billing/manage-subscription.md) does not control which features are available in your projects. Your subscription level only controls the support level you receive.
+* Your feature tier and add-on selections affect your monthly bill, along with other add-ons that apply automatically based on usage or your subscription level. For details, refer to [](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
+* Unlike in {{ech}} deployments, your organization's {{ecloud}} subscription level does not control which features are available in your projects. Your subscription level only controls the support level you receive. [Learn more about subscriptions](/deploy-manage/license.md).
 :::
 
 ### {{sec-serverless}} project features [elastic-sec-project-features]

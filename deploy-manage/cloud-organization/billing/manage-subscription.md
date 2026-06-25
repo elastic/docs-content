@@ -32,9 +32,9 @@ A paid {{ecloud}} subscription is not required for Cloud Connect. Each cluster's
 
 On the following pricing pages, you can review additional details about what you get at each subscription level:
 
-* [{{ecloud}} managed service features]({{subscriptions}}/cloud): Includes feature availability for {{ech}} deployments, and support levels for both {{ech}} deployments and {{serverless-short}} projects.
-* [{{ech}} pricing](https://www.elastic.co/pricing/cloud-hosted): Includes a summary of feature availability for {{ech}} deployments, and support levels for both {{ech}} deployments and {{serverless-short}} projects.
-* {{serverless-full}} pricing:
+* [{{ecloud}} managed service features]({{subscriptions}}/cloud): Side-by-side comparison of every feature available at each subscription level for {{ech}}, plus the support level included with each subscription level. The support level associated with your subscription applies to both {{ech}} deployments and {{serverless-short}} projects.
+* [{{ech}} pricing](https://www.elastic.co/pricing/cloud-hosted): Starting monthly prices for each subscription level, with support response times, SLAs, and a pricing calculator.
+* {{serverless-full}}:
   * [{{es-serverless}} project pricing](https://www.elastic.co/pricing/serverless-search)
   * [{{obs-serverless}} project pricing](https://www.elastic.co/pricing/serverless-observability)
   * [{{sec-serverless}} project pricing](https://www.elastic.co/pricing/serverless-security)
