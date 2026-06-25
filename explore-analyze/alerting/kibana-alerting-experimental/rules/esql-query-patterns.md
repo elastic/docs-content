@@ -83,7 +83,7 @@ The burn rate multipliers (14.4×, 6×) reflect standard SLO error budget consum
 
 Because the query computes several window pairs in one pass, the lookback window on the rule must cover the longest window in the query (3 days in the example above).
 
-The `severity` column in `KEEP` maps directly to `episode.severity` on each resulting alert episode. For the accepted values and matching rules, see [Severity levels](author-rules.md#severity-levels).
+The `severity` column in `KEEP` maps directly to `episode.severity` on each resulting alert episode. For the accepted values and matching rules, refer to [Severity levels](author-rules.md#severity-levels).
 
 ## No-data detection [no-data-esql-query]
 

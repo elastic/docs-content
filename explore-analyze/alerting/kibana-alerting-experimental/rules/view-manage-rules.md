@@ -18,19 +18,19 @@ Use the search bar to find rules by name or description. Each space-separated te
 
 Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort, or use bulk actions to enable, disable, or delete multiple rules at once.
 
-## Quick-edit a rule [quick-edit-rule]
+## Edit a rule inline [quick-edit-rule]
 
 To update common rule settings without opening the full rule details page, use the inline edit option on any row in the rules list. The inline editor also opens from the rule summary flyout header.
 
 Use inline edit when you need to adjust metadata or scheduling settings quickly without navigating away from the list.
 
-## Rule summary flyout [rule-summary-flyout]
+## Inspect a rule with the summary flyout [rule-summary-flyout]
 
 To inspect a rule without navigating away from the rules list, select the expand icon on any row. The rule summary flyout opens alongside the list and shows a snapshot of the rule: its status, last run time, recent alert episode activity, and quick actions such as enable, disable, and snooze.
 
 Use the flyout when you want to confirm a rule is healthy or take a quick action without committing to a full page load. To open the complete rule configuration with all settings and edit controls, select the rule name in the table row or in the flyout header.
 
-## Rule details page
+## Review rule configuration and activity [rule-details-page]
 
 The rule details page is organized into tabs that let you review a rule's configuration and activity history.
 
@@ -40,7 +40,7 @@ The rule details page is organized into tabs that let you review a rule's config
 
 Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
 
-## Disable versus snooze
+## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. This is different from snoozing, which suppresses notifications or quiets a series or policy without stopping rule evaluation.
 
