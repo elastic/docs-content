@@ -45,7 +45,7 @@ Use `while` for polling patterns: checking a status until it reaches `ready`, re
 
 Use loop-level guardrails to control the `while` step as a whole:
 
-* `max-iterations` prevents runaway loops. The default is **2000** iterations. A bare number is treated as `{ limit: N, on-limit: continue }`, so the loop succeeds when the limit is reached. Use the object form with `on-limit: fail` when reaching the cap should fail the workflow.
+* `max-iterations` caps the number of iterations to prevent runaway loops.
 * `timeout` limits the total time spent in the loop, across all iterations.
 * `on-failure` defines loop-level failure handling with the same `continue`, `retry`, and `fallback` options used by other steps.
 * `if` skips the entire loop when the condition evaluates to false.

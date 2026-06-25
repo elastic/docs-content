@@ -54,7 +54,7 @@ For expression syntax and additional examples, refer to [If step](/explore-analy
 
 ## `foreach` [foreach]
 
-Iterate over an array, running nested steps once per item. Inside the loop, the current item is available as `foreach.item`, the zero-based position as `foreach.index`, and the total count as `foreach.total`. Use `max-iterations`, `timeout`, `on-failure`, and `if` to guard the loop as a whole; use `iteration-timeout` and `iteration-on-failure` to guard each iteration.
+Iterate over an array, running nested steps once per item. Inside the loop, the current item is available as `foreach.item`, the zero-based position as `foreach.index`, and the total count as `foreach.total`. It also supports guardrails to cap iterations, set timeouts, and handle failures.
 
 ```yaml
 - name: process_alerts
@@ -75,7 +75,7 @@ For the full parameter reference, refer to [Foreach step](/explore-analyze/workf
 
 ## `while` [while]
 
-Loop while a KQL condition evaluates to true. The `max-iterations` field caps the number of iterations and defaults to **2000**. The default `on-limit` behavior is `continue`, which means the step succeeds quietly when the cap is reached. To fail the workflow on the cap instead, use the object form with `on-limit: fail`. Like `foreach`, `while` also supports loop-level `timeout`, `on-failure`, and `if`, plus per-iteration `iteration-timeout` and `iteration-on-failure`.
+Loop while a KQL condition evaluates to true. The `max-iterations` field caps the number of iterations and defaults to **2000**. The default `on-limit` behavior is `continue`, which means the step succeeds quietly when the cap is reached. To fail the workflow on the cap instead, use the object form with `on-limit: fail`. Like `foreach`, it also supports loop-level guardrails and per-iteration controls.
 
 ```yaml
 - name: poll_until_ready

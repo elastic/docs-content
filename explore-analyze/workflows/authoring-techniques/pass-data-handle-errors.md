@@ -198,6 +198,7 @@ In the following example:
 
 ### Restrictions [workflows-on-failure-restrictions]
 
+- The `if` step cannot have an `on-failure` configuration. (`foreach` and `while` loops do support loop-level `on-failure`; see their step references.)
 - Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
 - For `foreach` and `while` loops, use `iteration-on-failure` when you want to handle one failed iteration without failing the whole loop.
