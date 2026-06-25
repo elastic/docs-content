@@ -103,7 +103,7 @@ You have a few options to access your deployment or project:
 
 ## Multi-org accounts and the Azure portal [ec-azure-multi-org-limitations]
 
-Unlike {{aws}} and {{gcp}}, the Azure portal does not provide an organization picker during resource creation. When your account has a single organization, the Azure portal automatically adds new resources to that organization and can handle trial conversion. When your account has multiple organizations, the portal may not be able to determine which organization to target.
+Unlike {{aws}} and {{gcp}}, the Azure portal does not provide an organization picker during resource creation. When your account has a single organization, the Azure portal automatically adds new resources to that organization and can handle trial conversion. When your account has multiple organizations, the portal might not be able to determine which organization to target.
 
 The following limitations apply:
 

@@ -5,7 +5,9 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 navigation_title: View and switch between organizations
+description: Learn how to view all Elastic Cloud organizations you belong to, switch between them, and understand the login experience when you have multiple organizations.
 ---
 
 # View and switch between {{ecloud}} organizations

@@ -5,6 +5,7 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
+description: Learn how to convert an existing Elastic Cloud trial to an AWS, Azure, or GCP marketplace subscription.
 ---
 
 # Convert a trial to a marketplace subscription [ec-marketplace-trial-conversion]
