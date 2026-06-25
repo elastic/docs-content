@@ -21,6 +21,9 @@ Streams action steps operate on Observability [Streams](/solutions/observability
 Streams action steps, along with the Streams feature itself, are in technical preview. Schemas and semantics can change in future releases. Use these steps for prototypes and investigation workflows; hold off on critical automation until Streams reaches GA.
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Step types
 
 - [`kibana.streams.list`](#kibana-streams-list): Enumerate available streams.
