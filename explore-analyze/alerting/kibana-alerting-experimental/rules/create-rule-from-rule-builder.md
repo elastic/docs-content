@@ -10,43 +10,67 @@ description: "Create ES|QL rules, AI-assisted rules, and Threshold Alert rules i
 
 # Create rules in the {{alerting-v2-system}} [create-rules-rule-builder]
 
-The rule builder is part of the {{alerting-v2-system}} in {{kib}}. This page covers the three creation paths available from the rules list, how the Threshold Alert builder works including alert delay and recovery conditions, and how to switch between form and YAML editing modes. For descriptions of what each setting does, refer to [Configure a rule](configure-a-rule.md).
+The rule builder is part of the {{alerting-v2-system}} in {{kib}}. This page covers the three creation paths available from the rules list, how to configure an ES|QL rule, and how the Threshold Alert builder works. For descriptions of what each setting does, refer to [Configure a rule](configure-a-rule.md).
 
 ## Creation paths [rule-creation-paths]
 
 All rules are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
 
-- **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results. A YAML editor is also available within this path. Use this when you want full control over the query. If you already have a query working in Discover, you can [start from there instead](create-rule-from-discover.md) to skip re-entering it.
-- **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
-- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard rule type without writing {{esql}} by hand. Refer to [Threshold Alert](#threshold-alert) for the available type.
+| Option | What it does | When to use |
+| --- | --- | --- |
+| **Create ES\|QL rule** | Write the detection query as {{esql}} directly. Includes a query sandbox for previewing results and a YAML editor. If you already have a query working in Discover, you can [start from there instead](create-rule-from-discover.md). | When you want full control over the query. |
+| **Create with AI Agent** | Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. | When you know the problem but aren't sure how to write the {{esql}}. |
+| **Start from a rule builder** | Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. | When you want to create a standard rule type without writing {{esql}} by hand. |
 
-## Threshold Alert
+## Create an {{esql}} rule [rule-builder-form-yaml]
 
-Threshold Alert is the rule type available under **Start from a rule builder**. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
+The **Create ES|QL rule** path gives you two ways to define the query:
 
-You define the rule by filling in structured fields for the data source, aggregation, filters, and alert conditions. The builder generates the {{esql}} query automatically from those inputs. Rules created through the builder can be reopened and edited in builder mode as long as the underlying {{esql}} hasn't been edited directly.
+- **Rule form** - Fill in the step-by-step form with a live preview of results.
+- **YAML mode** - Switch to YAML and edit the raw rule definition. You can switch between form and YAML at any point; edits are preserved.
 
-Use the **Create ES|QL rule** path when the detection logic requires more than a single metric threshold, such as multi-window burn rates or cross-series correlation.
+The YAML editor isn't available within the Threshold Alert builder or other rule builder types. For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
-### Alert delay [threshold-builder-alert-delay]
+### Preview query results in the sandbox [rule-builder-query-sandbox]
 
-When the rule is in Alert mode, the threshold builder includes an alert delay field that controls when the rule opens an alert episode after the threshold is first breached. Three modes are available: immediate activation on the first breach, activation after a set number of consecutive breaches, or activation after the condition has persisted for a specified duration. For a description of each mode and guidance on when to use it, refer to [Activation thresholds](configure-a-rule.md#activation-recovery-thresholds).
+The query sandbox lets you run your {{esql}} query against current data and preview the results before applying them to the rule form. Use the time field selector and date picker to control the time range, then select **Search** (or press ⌘↵) to execute. When the results look correct, select **Apply changes** to populate the form.
 
-The alert delay field is only shown for Alert-mode rules. Signal-mode rules don't maintain alert episode lifecycle tracking, so activation thresholds don't apply.
+Use the sandbox to:
 
-### Recovery conditions [threshold-builder-recovery]
+- **Confirm grouping** - Check that your `BY` clause produces the series you intend, for example, one distinct series per host or per service, not a single undifferentiated result.
+- **Catch unexpected output** - Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
+- **Refine before committing** - Edit the query and re-run it as many times as needed without leaving the rule creation form.
 
-When you define alert conditions in the Threshold Alert builder, the builder automatically derives corresponding recovery conditions by flipping the comparators. For example, a `greater than` alert condition produces a `less than or equal to` recovery condition. You can customize the derived conditions or leave the defaults as generated. Recovery conditions are preserved correctly when you reopen an existing rule in builder mode for editing.
+## Create a rule with AI Agent [create-rule-ai-agent]
 
-## ES|QL rule: form and YAML editing [rule-builder-form-yaml]
+The **Create with AI Agent** option opens the Elastic AI agent pre-loaded with rule management knowledge. Describe what you want to monitor in plain language and the agent resolves the relevant data source and builds a rule proposal.
 
-The **Create ES|QL rule** path supports both a step-by-step form and a YAML editing mode. When creating a new rule, you can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option.
+The proposal appears as an inline attachment card in the conversation showing the rule name, type, schedule, and tags. Select the card to open a flyout with three tabs:
 
-When editing an existing rule, the form/YAML toggle is disabled if the rule's YAML configuration contains settings the form cannot represent. In that case, the rule opens in YAML-only mode to prevent the form from silently dropping fields on save. The YAML editor remains fully functional. For the list of configurations that trigger this restriction, refer to [YAML-only mode when editing rules](create-rule-with-yaml.md#yaml-only-edit).
+- **Conditions** - The full rule configuration, including query, thresholds, grouping, and schedule.
+- **Query preview** - Runs the {{esql}} query and shows results inline so you can verify the detection logic without leaving the conversation.
+- **Runbook** - A free-text runbook associated with the rule.
 
-Use YAML mode when you want to fine-tune the raw rule definition, copy a configuration from an existing rule, or work faster than filling in individual form fields allows. The YAML editor isn't available within the Threshold Alert builder or other rule builder types.
+The agent doesn't save the rule automatically. When the proposal looks correct, select **Save as rule** from the flyout header to persist it. After saving, you can ask the agent to configure notifications, which creates an action policy scoped to that rule.
 
-For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+:::{note}
+Signal-mode rules don't support notifications. If you ask the agent to set up notifications on a signal rule, the agent will explain the limitation and offer to convert the rule to Alert mode or create a new Alert-mode rule.
+:::
 
-<!--[CONTENT NEEDED: UI. This page needs step-by-step procedures once the creation flows are finalized: how to open each path, how to fill in settings, how to preview, and how to save. Navigation paths, button labels, and form field arrangement should all be verified against the shipped UI before publishing.]
--->
+### Example prompts for creating rules [ai-agent-sample-prompts]
+
+Use these prompts as a starting point, then adjust them to your data and thresholds:
+
+- Create an error threshold rule on my checkout service data. Alert when there are more than 3 HTTP 5xx errors in the past 5 minutes, grouped by URL path.
+- Monitor average CPU usage across all hosts. Alert when any host exceeds 90% for more than 10 minutes.
+- Alert me when log volume from the payments service drops below 100 events in a 5-minute window. This likely means data has stopped flowing.
+- Set up a rule that tracks error rate by service. Alert at medium severity when the rate exceeds 1%, and critical when it exceeds 5%.
+
+## Use the rule builder [use-rule-builder]
+
+The **Start from a rule builder** option provides a guided form for creating rules without writing {{esql}} by hand. The builder generates the {{esql}} query automatically from structured inputs for the data source, aggregation, filters, and alert conditions.
+
+### Threshold Alert [use-threshold-alert-builder]
+
+Threshold Alert is the only rule type available in the rule builder. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
+
