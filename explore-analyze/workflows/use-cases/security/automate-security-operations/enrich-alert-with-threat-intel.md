@@ -42,21 +42,22 @@ The workflow runs on demand, takes the indicator you want to enrich as an `input
 
 ::::{step} Declare the input and constants
 
-Inputs let you run the workflow against any indicator without editing YAML. Constants hold the API key and base URL:
+Inputs let you run the workflow against any indicator without editing YAML. Constants hold the API key and base URL.
+
+This example uses the stack 9.5+ and serverless structure, where `inputs` nests under the `manual` trigger. On stack 9.4 and earlier, `inputs` sits at the workflow root. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for both forms.
 
 ```yaml
-inputs:
-  - name: hash
-    type: string
-    description: SHA256 file hash to look up.
-    required: true
-
 consts:
   vt_api_key: "YOUR-VIRUSTOTAL-API-KEY"
   vt_base_url: "https://www.virustotal.com/api/v3"
 
 triggers:
   - type: manual
+    inputs:
+      - name: hash
+        type: string
+        description: SHA256 file hash to look up.
+        required: true
 ```
 
 When you run the workflow from the YAML editor, {{kib}} prompts you for the `hash` input.
@@ -128,18 +129,17 @@ description: Enrich a file hash with VirusTotal reputation data and print a shor
 enabled: true
 tags: ["enrichment", "threat-intel"]
 
-inputs:
-  - name: hash
-    type: string
-    description: SHA256 file hash to look up.
-    required: true
-
 consts:
   vt_api_key: "YOUR-VIRUSTOTAL-API-KEY"
   vt_base_url: "https://www.virustotal.com/api/v3"
 
 triggers:
   - type: manual
+    inputs:
+      - name: hash
+        type: string
+        description: SHA256 file hash to look up.
+        required: true
 
 steps:
   - name: lookup_hash

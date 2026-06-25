@@ -43,8 +43,13 @@ A child workflow is a unit of code with a public interface. Treat it like one.
 
 ### Declare inputs and outputs at the top
 
-Use the top-level `inputs` and `outputs` fields to spell out the contract. The engine validates inputs at invocation and outputs at `workflow.output` time, so callers can rely on shape without guarding against missing keys.
+Use the `inputs` and `outputs` fields to spell out the contract. The engine validates inputs at invocation and outputs at `workflow.output` time, so callers can rely on shape without guarding against missing keys.
 
+The location of `inputs` in the YAML depends on your version. On stack 9.4 and earlier, `inputs` sits at the top level of the workflow. On stack 9.5+ and on serverless, `inputs` sits inside the `manual` trigger. Refer to [Workflow anatomy](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs) for the full reference.
+
+::::{applies-switch}
+
+:::{applies-item} stack: preview 9.3, ga 9.4
 ```yaml
 name: shared--enrich-alerts
 description: Enrich alerts with threat intel and geo data.
@@ -72,6 +77,38 @@ steps:
       enriched_alerts: "${{ steps.enrich.output }}"
       enrichment_stats: "${{ steps.stats.output }}"
 ```
+:::
+
+:::{applies-item} { stack: ga 9.5+, serverless: ga }
+```yaml
+name: shared--enrich-alerts
+description: Enrich alerts with threat intel and geo data.
+
+triggers:
+  - type: manual
+    inputs:
+      - name: alerts
+        type: object
+        required: true
+
+outputs:
+  - name: enriched_alerts
+    type: object
+  - name: enrichment_stats
+    type: object
+
+steps:
+  # ...enrichment logic...
+
+  - name: return_result
+    type: workflow.output
+    with:
+      enriched_alerts: "${{ steps.enrich.output }}"
+      enrichment_stats: "${{ steps.stats.output }}"
+```
+:::
+
+::::
 
 ### Keep the shape small
 

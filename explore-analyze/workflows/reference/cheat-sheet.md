@@ -26,15 +26,14 @@ enabled: true
 tags: [team, domain]
 version: "1"
 
-triggers: [ ... ]        # required
-inputs: [ ... ]          # optional
+triggers: [ ... ]        # required; inputs nest under manual triggers on 9.5+
 consts: { ... }          # optional
 outputs: [ ... ]         # required only for composed workflows
 settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
 
-Full reference: [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+On stack 9.4 and earlier, `inputs:` also sits at the workflow root. For the full anatomy reference covering every top-level field, the execution lifecycle, and [both `inputs` placements](/explore-analyze/workflows/authoring-techniques/anatomy.md#workflows-anatomy-inputs), refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
 
 ## Triggers [workflows-cheat-triggers]
 
