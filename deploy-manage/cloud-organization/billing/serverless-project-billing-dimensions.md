@@ -22,7 +22,7 @@ Specific prices can be found in the [{{ecloud}} Pricing Table](https://cloud.ela
 Your charges for each {{serverless-short}} project depend on the following factors:
 
 * **Project type**: Which solution you've created a project for ({{es}}, {{observability}}, or Security). The project type determines what features are available and how the project's core usage is metered.
-* **Feature tier**: For {{observability}} and Security projects, the tier selected within the project determines which features the project can use.
+* **Feature tier**: For {{observability}} and Security projects, the tier selected within the project determines which features the project can use, as well as the rates that apply to certain billing dimensions.
 * **Usage**: The volume of activity in the project, such as data ingested, data retained, compute units consumed, or executions run.
 
 For the specific billing dimensions, tiers, and usage units of each project type, refer to:
@@ -35,7 +35,7 @@ For the specific billing dimensions, tiers, and usage units of each project type
 
 Add-ons are additional features that you can use in your project. They are billed separately from the base project charges.
 
-The following add-ons in this section apply across all project types, and are billed based on usage or your {{ecloud}}subscription level. 
+The following add-ons in this section apply across all project types, and are billed based on usage or your {{ecloud}} subscription level. 
 
 Other add-ons might impact your bill. These add-ons are specific to a project type and documented on the [individual project pages](#project-charges). Some are [opt-in](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons), such as endpoint protection and synthetics. Others apply automatically based on usage, such as agent executions, workflow executions, and managed LLMs.
 

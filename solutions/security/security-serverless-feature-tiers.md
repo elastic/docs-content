@@ -104,7 +104,7 @@ When you downgrade your Security project features selection from **Security Anal
 * AI Assistant
 * Attack discovery
 
-And, the following data may be permanently deleted:
+And, the following data might be permanently deleted:
 
 * AI Assistant conversation history
 * AI Assistant settings
