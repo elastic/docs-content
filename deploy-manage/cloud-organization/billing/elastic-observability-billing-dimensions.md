@@ -34,8 +34,8 @@ sub:
 
 Your monthly bill is based on the capabilities you use. When you use {{obs-serverless}}, your bill is calculated based on data volume, which has these components:
 
-* **Ingest** — Measured by the number of GB of data that you send to your Observability project over the course of a month. Metrics data stored in TSDS (time series) index mode is priced at 25% of the standard per-GB ingest rate; logs and traces are priced at the standard rate.
-* **Retention** — Measured by the total amount of ingested data stored in your Observability project. Retained metrics data in TSDS index mode is priced at 25% of the standard per-GB retention rate; logs and traces are priced at the standard rate.
+* **Ingest** — Measured by the number of GB of data that you send to your Observability project over the course of a month. Metrics data ingested in TSDS (time series data streams) index mode is priced at 25% of the standard per-GB ingest rate. Logs and traces are priced at the standard rate.
+* **Retention** — Measured by the total amount of ingested data stored in your Observability project. Metrics data stored in TSDS index mode is priced at 25% of the standard per-GB retention rate. Logs and traces are priced at the standard rate.
 
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
