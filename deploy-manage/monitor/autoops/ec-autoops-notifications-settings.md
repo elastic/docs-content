@@ -53,16 +53,11 @@ To set up notifications through email, follow these steps:
 :::{dropdown} PagerDuty
 :name: ec-autoops-pagerduty
 
-The PagerDuty integration consists of the following parts:
+To set up this integration, you need to perform configurations in PagerDuty and AutoOps.
 
 **PagerDuty configuration**
-1. In PagerDuty, go to **Services** > **Service Directory**.
-2. Create a new service (or open an existing one) for AutoOps alerts.
-3. Assign an escalation policy to specify who gets paged.
-4. On the service **Integrations** tab, click **Add another integration**.
-5. select [Events API v2](https://developer.pagerduty.com/docs/events-api-v2-overview).
-6. Expand the integration and copy the integration key (also known as the routing key for Events API v2).
-7. Store the key securely. You will need it when configuring the connector in AutoOps.
+1. Follow PagerDuty's instructions to [create a generic events API integration](https://support.pagerduty.com/main/docs/services-and-integrations#create-a-generic-events-api-integration).
+2. Store the integration key securely. You will need it when configuring the connector in AutoOps.
 
 **AutoOps configuration**
 1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and select **PagerDuty** as your connector type.
@@ -74,19 +69,12 @@ The PagerDuty integration consists of the following parts:
 :::{dropdown} Slack
 :name: ec-autoops-slack
 
-The Slack integration consists of the following parts:
+To set up this integration, you need to perform configurations in Slack and AutoOps.
 
 **Slack configuration**
 
-1. Go to [Slack API](https://api.slack.com/apps)
-2. Click **Create an App** > **From scratch**.
-3. Enter an app name and select your workspace, and then click **Create App**.
-4. From the left menu, select **Incoming Webhooks**.
-5. Turn on **Activate Incoming Webhooks**.
-6. Click **Request to Add New Webhook** and submit a request to your organization's admins. 
-7. When your request is approved, select a Slack channel from the list of **Webhook URLs for Your Workspace** and click **Allow**.
-8. Copy the webhook URL.
-9. Store the URL securely. You will need it when configuring the connector in AutoOps.
+1. Follow Slack's instructions to [get started with incoming webhooks](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/#getting_started).
+2. Store the webhook URL displayed during the creation securely. You will need it when configuring the connector in AutoOps.
 
 **AutoOps configuration**
 1. Follow the instructions to [set up a connector](#ec-setup-autoops-connectors) and select **Slack** as your connector type.
@@ -101,7 +89,7 @@ The Slack integration consists of the following parts:
 
 AutoOps integrates with VictorOps/Splunk On-Call using the [REST Endpoint integration](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/splunk-on-call/integrations-with-splunk-on-call/rest-endpoint-integration-for-splunk-on-call).
 
-The VictorOps/Splunk On-Call integration consists of the following parts:
+To set up this integration, you need to perform configurations in VictorOps/Splunk On-Call and AutoOps.
 
 **VictorOps/Splunk On-Call configuration**
 
@@ -123,14 +111,14 @@ The VictorOps/Splunk On-Call integration consists of the following parts:
 :::{dropdown} Opsgenie
 :name: ec-autoops-opsgenie
 
-The Opsgenie integration consists of the following parts:
+To set up this integration, you need to perform configurations in Opsgenie and AutoOps.
 
 **Opsgenie configuration**
 
 1. Open the main page of your Opsgenie account and click the **Teams** tab. Make sure a team is defined.
 2. Go to **Settings** > **Integrations**.
 3. Click **Add Integration**. In the **Integration List**, search for **API**.
-4. Complete the fields and click **Save**.
+4. Complete the fields and save your changes.
 5. Copy the API key and store it securely. You will need it when configuring the connector in AutoOps.
 
 **AutoOps configuration**
@@ -143,11 +131,11 @@ The Opsgenie integration consists of the following parts:
 :::{dropdown} Microsoft Teams
 :name: ec-autoops-ms-configuration
 
-The Microsoft Teams integration consists of the following parts:
+To set up this integration, you need to perform configurations in Microsoft Teams and AutoOps.
 
 **Microsoft Teams configuration**
 
-1. Follow Microsoft Teams' instructions to create an [incoming webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook).
+1. Follow Microsoft Teams' instructions to [create incoming webhooks](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook).
 2. Store the URL displayed during the creation securely. You will need it when configuring the connector in AutoOps.
 
 **AutoOps configuration**
@@ -184,7 +172,7 @@ To set up notifications through a custom webhook, follow these steps:
     * `AFFECTED_NODES`: List of affected nodes.
     * `AFFECTED_INDICES`: List of affected indices.
     * `EVENT_LINK`: Direct link to the event in AutoOps.
-4. Optionally, test the webhook integration by using the [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
+4. Optionally, test the webhook integration by using a tool like [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
 5. Add a [notification filter](#ec-add-notification-filters) for this connector.
 
 :::
@@ -205,7 +193,7 @@ To add a filter, follow these steps:
 
 ## Notifications report [ec-notification-report]
 
-From the **Notifications** report, you can check all the notifications sent. The report lists all the events that were set up in the notification filters and their status.
+From the **Notifications** report, you can review all of the notifications that have been sent by AutoOps. The report lists all the events that were set up in the notification filters and their status.
 
 :::{image} /deploy-manage/images/cloud-autoops-notifications-report.png
 :alt: The Notifications report
