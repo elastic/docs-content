@@ -4,8 +4,8 @@
 ### Features and enhancements [elastic-2026-06-25-features-enhancements]
 * Add Box data source. [#271306](https://github.com/elastic/kibana/pull/271306)
 * Improve Synthetics search performance by honoring excluded data tiers setting. [#273418](https://github.com/elastic/kibana/pull/273418) [#273086](https://github.com/elastic/kibana/issues/273086)
-* Add Amazon CloudWatch (OTel) quickstart tile to the Add data Cloud category. [#273736](https://github.com/elastic/kibana/pull/273736)
-* Add server-side sorting for Name and Enabled columns in the workflows table. [#271286](https://github.com/elastic/kibana/pull/271286)
+* Add Amazon CloudWatch (OTel) quickstart tile to the Cloud category on the Add data page. [#273736](https://github.com/elastic/kibana/pull/273736)
+* Add server-side sorting for the Name and Enabled columns in the workflows table. [#271286](https://github.com/elastic/kibana/pull/271286)
 * Add sample report empty state. [#265091](https://github.com/elastic/kibana/pull/265091)
 * Add OpenTelemetry-first Kubernetes onboarding flow. [#271387](https://github.com/elastic/kibana/pull/271387)
 * Add embeddable Agent Builder conversation input for solution plugins. [#272166](https://github.com/elastic/kibana/pull/272166)
@@ -33,6 +33,6 @@
 * Fix error toast when viewing memory usage on the machine learning overview page without ML node permissions. [#273898](https://github.com/elastic/kibana/pull/273898)
 * Fix unreadable wrapped log messages in Logs Anomalies example table. [#273221](https://github.com/elastic/kibana/pull/273221)
 * Fix Entity Analytics watchlist sync to use the watchlist creator's credentials. [#270292](https://github.com/elastic/kibana/pull/270292)
-* Fix all Security AI Assistant conversations deleted when saving one after select all. [#274033](https://github.com/elastic/kibana/pull/274033) [#243315](https://github.com/elastic/kibana/issues/243315)
+* Fix an issue where all Security AI Assistant conversations were deleted after selecting all conversations and saving one. [#274033](https://github.com/elastic/kibana/pull/274033) [#243315](https://github.com/elastic/kibana/issues/243315)
 * Fix dashboard panel column type inference. [#270563](https://github.com/elastic/kibana/pull/270563)
 * Fix save and return for maps opened from the Visualize library. [#274002](https://github.com/elastic/kibana/pull/274002) [#273690](https://github.com/elastic/kibana/issues/273690)
