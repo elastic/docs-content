@@ -48,4 +48,11 @@ Prefer inline panels when portability matters most, and library panels when reus
 
 ## Automate with Terraform [dashboards-as-code-terraform]
 
-For a fully managed GitOps workflow, the [Elastic Stack Terraform provider](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs) includes an `elasticstack_kibana_dashboard` resource that maps the dashboards API to Terraform configuration. With it, you get `terraform plan` diffs, drift detection when someone edits a dashboard manually in the UI, per-environment deployments, and rollback by reverting to a previous commit.
+If you already manage your infrastructure with Terraform, the [Elastic Stack Terraform provider](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_dashboard) includes an `elasticstack_kibana_dashboard` resource that manages dashboards through the dashboards API. You define the dashboard in the provider's own configuration schema, then apply it like any other resource, so dashboard changes flow through `terraform plan` and `terraform apply` alongside the rest of your stack.
+
+This resource is in technical preview and still evolving. Keep two things in mind when you plan an adoption:
+
+- **There's no automatic conversion from an exported dashboard to Terraform.** The JSON you export from a dashboard doesn't map to the resource's schema, so Terraform suits dashboards you author as code from the start rather than existing dashboards you want to bring in. You can place an existing dashboard under Terraform management with `terraform import`, but you still write the matching configuration by hand.
+- **Confirm the schema covers the panels you need.** The resource doesn't yet expose every panel type and dashboard-level option that the dashboards API supports.
+
+Refer to the [resource documentation](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_dashboard) for the supported schema and examples.
