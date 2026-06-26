@@ -27,7 +27,7 @@ Known issues are significant defects or limitations that may impact your impleme
 **Applies to: {{stack}} 9.3.6 and 8.19.17**
 
 **Impact**<br>
-The [Problem Child](https://www.elastic.co/docs/reference/integrations/problemchild) and [DGA](https://www.elastic.co/docs/reference/integrations/dga) integration packages fail to install. This is caused by an {{es}} validation that limits field names in trained models to 100 characters.
+The [ProblemChild](https://www.elastic.co/docs/reference/integrations/problemchild) (Living off the Land Detection) and [DGA](https://www.elastic.co/docs/reference/integrations/dga) integration packages fail to install. This is caused by an {{es}} validation that limits field names in trained models to 100 characters.
 
 **Workaround**<br>
 Upgrade to {{stack}} 9.3.7 or 8.19.18.
