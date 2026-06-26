@@ -290,6 +290,37 @@ The `inference_id` should now show `elser-2-elasticsearch`. If it does, the fiel
 
 ---
 
+If the `inference_id` is correct but integrations still do not appear for translated rules, verify that the ELSER model is deployed and started.
+
+### Step 14 — Check the ELSER model status
+
+```http
+GET _ml/trained_models/.elser_model_2/_stats
+```
+
+Review the model stats to confirm whether `.elser_model_2` is already deployed and running.
+
+---
+
+### Step 15 — Start the ELSER model deployment and verify it
+
+```http
+POST _ml/trained_models/.elser_model_2/deployment/_start?wait_for=started&timeout=3m
+{
+  "number_of_allocations": 1,
+  "threads_per_allocation": 1,
+  "deployment_id": "elser-2-elasticsearch"
+}
+```
+
+```http
+GET _ml/trained_models/.elser_model_2/_stats
+```
+
+After starting the deployment, run the stats API again to confirm the model is started and available to the `elser-2-elasticsearch` deployment.
+
+---
+
 ### Summary of root causes addressed
 
 | Problem | Cause | Fix applied |
