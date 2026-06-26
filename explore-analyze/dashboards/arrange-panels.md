@@ -94,11 +94,13 @@ serverless: ga
 
 Each dashboard enforces the following limits:
 
-- Up to 100 top-level items (panels, including unpinned controls, and sections combined)
-- Up to 100 panels inside each section
+- Up to 1,000 top-level items (panels, including unpinned controls, and sections combined)
+- Up to 1,000 panels inside each section
 - Up to 100 [pinned controls](add-controls.md)
 
-These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 100 sections at the top level, and 100 panels inside each of those sections.
+These limits are independent of each other. For example, a single dashboard can have 100 pinned controls, 1,000 sections at the top level, and 1,000 panels inside each of those sections.
+
+When you create or update a dashboard with the [Dashboards API](create-dashboards-programmatically.md), an additional combined limit applies: the total number of panels, sections, and pinned controls can't exceed 1,000. Requests that exceed this limit are rejected with a validation error.
 
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
