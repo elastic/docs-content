@@ -234,7 +234,13 @@ toc:
                  children:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
+               - file: ai-features/agent-builder/mcp-in-agent-builder.md
                - file: ai-features/agent-builder/mcp-server.md
+               - file: ai-features/agent-builder/mcp-client-oauth.md
+                 children:
+                   - file: ai-features/agent-builder/mcp-client-create.md
+                   - file: ai-features/agent-builder/mcp-client-connect.md
+                   - file: ai-features/agent-builder/mcp-client-revoke.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md
