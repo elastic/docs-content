@@ -1,0 +1,20 @@
+name: Docs Size
+on:
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  copilot-requests: write
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.event.comment.body, '/size')
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-size.lock.yml@v1

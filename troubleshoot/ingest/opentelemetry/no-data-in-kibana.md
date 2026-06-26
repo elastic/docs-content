@@ -37,6 +37,7 @@ This issue is typically caused by one or more of the following:
 * Network issues, such as proxy misconfigurations
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
+* The `elasticapmconnector` is misconfigured as a processor, which means that traces flow normally but {{product.apm}} metrics are never produced, so services don't appear in {{kib}} {{product.apm}}. Refer to [{{product.apm}} services missing due to misconfigured `elasticapmconnector`](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md).
 * Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDK
 
 ## Resolution
