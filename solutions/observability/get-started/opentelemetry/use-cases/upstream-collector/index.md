@@ -1,6 +1,6 @@
 ---
-navigation_title: Contrib Collector
-description: Send data from a contrib OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an EDOT Collector gateway.
+navigation_title: Upstream OpenTelemetry Collector
+description: Send data from an upstream OpenTelemetry Collector to a self-managed Elastic Stack by routing it through an EDOT Collector gateway.
 applies_to:
   stack: ga 9.2+
 products:
@@ -8,16 +8,16 @@ products:
   - id: edot-collector
 ---
 
-# Send data from a contrib OpenTelemetry Collector [upstream-collector-self-managed]
+# Send data from an upstream OpenTelemetry Collector [upstream-collector-self-managed]
 
-This guide shows how to forward telemetry data from an upstream contrib OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector configured as a gateway.
+This guide shows how to forward telemetry data from an upstream OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector configured as a gateway. The examples use `otelcol-contrib`, but the same approach works with any upstream OTel Collector distribution, including custom builds assembled with the [OpenTelemetry Collector Builder](https://opentelemetry.io/docs/collector/custom-collector/).
 
 ## When to use this setup
 
 Use this pattern if you:
 
-* Already run a contrib OpenTelemetry Collector and want to add Elastic as a backend without replacing your existing setup
-* Need to fan out telemetry to multiple observability backends from a single contrib Collector
+* Already run an upstream OpenTelemetry Collector and want to add Elastic as a backend without replacing your existing setup
+* Need to fan out telemetry to multiple observability backends from a single upstream Collector
 * Evaluate Elastic alongside another backend before committing to a full migration
 * Use a technology or language for which Elastic doesn't provide an EDOT distribution
 
@@ -44,8 +44,8 @@ The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path f
 
 * A running self-managed {{es}} cluster
 * The [EDOT Collector](elastic-agent://reference/edot-collector/index.md) installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
-* The [contrib OpenTelemetry Collector](https://opentelemetry.io/docs/collector/installation/) installed on your agent hosts
-* Network connectivity from the contrib Collector hosts to the EDOT gateway host on port 4317
+* An upstream OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
+* Network connectivity from the upstream Collector hosts to the EDOT gateway host on port 4317
 
 ::::{stepper}
 
