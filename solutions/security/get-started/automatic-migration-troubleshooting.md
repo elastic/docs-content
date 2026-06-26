@@ -14,7 +14,7 @@ products:
 
 # Troubleshoot Automatic Migration
 
-## Wrong inference model on the `elser_embedding` field
+## No integrations found for translated rules (Wrong inference model on the `elser_embedding` field)
 
 ### Problem description
 
