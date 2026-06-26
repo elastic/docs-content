@@ -50,14 +50,31 @@ The default type of {{es-serverless}} project is suitable for this use case unle
 Refer to [](dense-vector.md#vector-profiles).
 :::
 
-## kNN search methods: Approximate and exact kNN [knn-methods]
+## kNN search methods [knn-methods]
 
-{{es}} supports two methods for kNN search:
+{{es}} provides several ways to perform kNN search. Which one you use depends on your field type and whether you need to combine kNN with other queries.
 
-* [**Approximate kNN**](#approximate-knn): Fast, scalable similarity search using the `knn` option, `knn` query, or a `knn` retriever. Ideal for most production workloads.  
-* [**Exact, brute-force kNN**](#exact-knn): Uses a `script_score` query with a vector function. Best for small datasets or precise scoring.
+### Approximate kNN [knn-methods-approximate]
 
-Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With this approach, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
+Fast, scalable similarity search. Ideal for most production workloads. There are three ways to run approximate kNN search, with different field type support:
+
+| Method | Supported field types | Use case |
+|---|---|---|
+| [Top-level `knn` option](#approximate-knn) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Standalone kNN search or hybrid search with score fusion |
+| [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Composable with other queries in a `bool` clause. Required for `semantic_text` fields |
+| [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/knn-retriever.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Use within a retriever pipeline for ranking and result merging |
+
+::::{tip}
+If you use `semantic_text` fields, query them with a [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) for the simplest approach, or use the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text) when you need more control over the search.
+::::
+
+### Exact, brute-force kNN [knn-methods-exact]
+
+Uses a [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](#exact-knn).
+
+### Choosing between approximate and exact kNN
+
+Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With exact kNN, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
 ## Approximate kNN search [approximate-knn]
 
