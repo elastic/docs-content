@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building mosaic charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create mosaic charts to visualize relationships between two categorical variables and explore conditional distributions.
 ---
 
 # Build mosaic charts with {{kib}}
@@ -26,9 +31,8 @@ To build a mosaic chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a mosaic chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Mosaic
@@ -62,11 +66,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Colors typically represent the vertical axis categories, making it easier to track how each category appears across columns.
 
 Refer to [Mosaic chart settings](#mosaic-chart-settings) to find all configuration options for your mosaic chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::

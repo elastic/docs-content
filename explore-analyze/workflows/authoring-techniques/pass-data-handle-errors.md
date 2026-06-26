@@ -17,6 +17,8 @@ products:
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
+For definitions of the terms used on this page, refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
+
 ## Data flow [workflows-data-flow]
 
 Every step in a workflow produces an output. By default, this output is added to a global `steps` object in the workflow's context, making it available to all subsequent steps.
@@ -74,7 +76,7 @@ By default, if any step fails the entire workflow execution stops immediately (t
 | Layer | What it controls | Use for |
 |---|---|---|
 | **Per-step** `on-failure` | What happens when one step fails. | Retry transient failures, continue past non-critical steps, or provide a fallback. |
-| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. | A consistent global retry policy. |
+| **Workflow-level** `settings.on-failure` | Default `on-failure` applied to every step. Refer to [Workflow settings](/explore-analyze/workflows/authoring-techniques/settings.md). | A consistent global retry policy. |
 | **Cross-workflow** [`workflows.failed` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md) | A separate handler workflow that runs after another workflow has failed. | Paging on-call, opening cases, central error reporting. |
 
 ### Configuration levels [workflows-on-failure-levels]
@@ -134,7 +136,7 @@ The workflow fails when all retries are exhausted, unless paired with `fallback`
 
 ### Fallback [workflows-on-failure-fallback]
 
-Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error}}`.
+Runs alternative steps after the primary step fails and all retries are exhausted. In the following example, when the `delete_critical_document` step fails, the workflow runs two additional steps: one sends a Slack notification to devops-alerts using `{{workflow.name}}`, while the other logs the error details from the failed step using `{{steps.delete_critical_document.error.message}}`. The `error` object also exposes other fields, such as `error.status` for HTTP-style failures; reference a specific field rather than the whole object, which renders as `[object Object]`.
 
 ```yaml
 on-failure:
@@ -147,10 +149,10 @@ on-failure:
     - name: log_failure
       type: console
       with:
-        message: "Document deletion failed, error: {{steps.delete_critical_document.error}}"
+        message: "Document deletion failed, error: {{steps.delete_critical_document.error.message}}"
 ```
 
-Within fallback steps, access error information from the failed primary step using `steps.<failed_step_name>.error`.
+Within fallback steps, access the failed primary step's error object at `steps.<failed_step_name>.error` and reference its fields (`message`, `status`, and others) rather than the object itself.
 
 ### Continue [workflows-on-failure-continue]
 

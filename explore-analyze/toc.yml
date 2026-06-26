@@ -44,6 +44,8 @@ toc:
       - file: elastic-inference/eis.md
         children:
           - file: elastic-inference/eis-supported-models.md
+          - file: elastic-inference/eis-region-and-hosting.md
+          - file: elastic-inference/eis-rate-limits.md
           - file: elastic-inference/connect-self-managed-cluster-to-eis.md
           - hidden: elastic-inference/ml-node-vs-eis.md
       - file: elastic-inference/external.md
@@ -397,6 +399,7 @@ toc:
           - file: alerting/alerts/alerting-troubleshooting.md
             children:
               - file: alerting/alerts/alerting-common-issues.md
+              - file: alerting/alerts/troubleshoot-rule-behavior.md
               - file: alerting/alerts/event-log-index.md
               - file: alerting/alerts/testing-connectors.md
           - file: alerting/alerts/maintenance-windows.md
@@ -514,12 +517,16 @@ toc:
           - file: workflows/reference.md
             children:
               - file: workflows/reference/cheat-sheet.md
-              - file: workflows/reference/step-types.md
               - file: workflows/reference/context-variables.md
+              - file: workflows/reference/glossary.md
               - file: workflows/reference/liquid-filters.md
+              - file: workflows/reference/step-types.md
       - file: workflows/authoring-techniques.md
         children:
           - file: workflows/authoring-techniques/use-yaml-editor.md
+          - file: workflows/authoring-techniques/anatomy.md
+          - file: workflows/authoring-techniques/settings.md
+          - file: workflows/authoring-techniques/choose-the-right-step.md
           - file: workflows/authoring-techniques/pass-data-handle-errors.md
           - file: workflows/authoring-techniques/compose-workflows.md
           - file: workflows/authoring-techniques/human-in-the-loop.md

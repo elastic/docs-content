@@ -92,7 +92,7 @@ Only `DAILY`, `WEEKLY`, and `MONTHLY` `freq` values are supported. `HOURLY`, `YE
 :::
 
 :::{tip}
-`tzid` defaults to `UTC` if omitted. For any business-hours schedule, set `tzid` explicitly to avoid daylight-saving surprises.
+`tzid` defaults to `UTC` if omitted. For any business-hours schedule, set `tzid` explicitly to avoid daylight-saving surprises. You can also set a workflow-wide default with [`settings.timezone`](/explore-analyze/workflows/authoring-techniques/settings.md#workflows-settings-timezone); `rrule.tzid` overrides it when both are set.
 :::
 
 The following example shows the basic syntax for an RRule-based scheduled trigger:

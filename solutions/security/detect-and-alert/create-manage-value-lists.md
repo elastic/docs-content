@@ -119,7 +119,7 @@ You can also edit value lists while creating and managing exceptions that use va
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 
-    - Click the **Export value list** icon {icon}`export` to export the value list.
+    - Click the **Export value list** icon {icon}`external` to export the value list.
     - Click the **Remove value list** icon {icon}`trash` to delete the value list.
 
 ## Configure upload limits [adv-list-settings]

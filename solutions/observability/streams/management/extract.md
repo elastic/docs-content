@@ -124,7 +124,7 @@ Streams processors support the following comparators:
 - not exists
 :::
 
-After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_circle`.
 
 ### Editing modes [streams-editing-modes]
 
