@@ -271,6 +271,6 @@ Rule migration data appears in `.kibana-siem-rule-migrations-rules-default`. Das
 
 Assets that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation.
 
-**Why does semantic search return incorrect or inconsistent results after migration?**
+**Why does semantic search return incorrect or inconsistent results after migration, or why are no integrations shown for translated rules?**
 
-This can occur if the `.kibana-siem-rule-migrations-integrations` index was created when the ELSER inference endpoint was unavailable, causing it to fall back to a different embedding model. Refer to [Troubleshoot Automatic Migration](automatic-migration-troubleshooting.md) for instructions on how to re-create the index with the correct ELSER inference endpoint.
+This can occur if the `.kibana-siem-rule-migrations-integrations` index was created when the ELSER inference endpoint was unavailable, causing it to fall back to a different embedding model. This mismatched model causes integration matching to fail, resulting in no integrations appearing for translated rules, as well as inconsistent or empty semantic search results. Refer to [Troubleshoot Automatic Migration](automatic-migration-troubleshooting.md) for instructions on how to re-create the index with the correct ELSER inference endpoint.

@@ -22,6 +22,7 @@ The `.kibana-siem-rule-migrations-integrations` index contains a `semantic_text`
 
 This causes the following symptoms:
 
+- **No integrations found for translated rules** — after completing an automatic migration, the **Integrations** column on the Translated rules page shows no integrations even when they should exist, because integration matching relies on semantic search against this index.
 - **Inconsistent search results across machines or clusters** — the same query returns different documents because the query-time inference model doesn't match the index-time model on the other cluster.
 - **Semantic search returning no results or wrong results** — Jina produces dense vectors; ELSER produces sparse vectors; they are incompatible vector spaces.
 - **`function_score` queries with `min_score` returning zero hits** — scores computed against mismatched embeddings are meaningless and rarely cross any threshold.
