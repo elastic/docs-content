@@ -77,7 +77,7 @@ Now that you have a basic understanding of the monitoring architecture, let’s 
 
 Before you can monitor Kubernetes, you need the following:
 
-* {{es}} for storing and searching your observability data and {{kib}} for visualizing and managing it.
+* {{es}} for storing and searching your observability data and {{kib}} for visualizing and managing it. If you don't already have an Elastic deployment, you can [start a free trial](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes).
 * If you want to collect Kubernetes state metrics, you need to deploy `kube-state-metrics`. For deployment instructions, refer to the Kubernetes [docs](https://github.com/kubernetes/kube-state-metrics#kubernetes-deployment).
 
 
@@ -540,7 +540,7 @@ Think of a latency spike — APM can help you narrow the scope of your investiga
 
 Application monitoring data is streamed from your applications running in Kubernetes to APM, where it is validated, processed, and transformed into {{es}} documents.
 
-There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using an {{ech}} deployment. If you haven’t done so already, enable APM in the [{{ecloud}} Console](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes).
+There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using an {{ech}} deployment. If you haven’t done so already, enable APM in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 If you want to manage APM yourself, there are a few alternative options:
 
