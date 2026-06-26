@@ -42,18 +42,3 @@ If you log in using Google or Microsoft Sign-In, follow these steps to update yo
 ## Changing your email address with a Microsoft Marketplace account
 
 If your organization is associated with [Microsoft Marketplace](../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can’t change your primary email address using the above methods. Instead, [invite another user](../deploy-manage/users-roles/cloud-organization/manage-users.md) with the desired email address to join your organization.
-
-## Sign up using an existing email address [sign-up-existing]
-
-% is this still needed at all?
-
-In some situations, you might want to create a new {{ecloud}} account using an email address that is already associated with an existing account. To sign up to {{ecloud}} using an email address associated with another {{ecloud}} account, you must remove the email address from your previous account and replace it with a new address.
-
-:::{note}
-You don't need to follow this procedure if you want to [join an additional organization](/cloud-account/join-or-leave-an-organization.md) or [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization). One account can belong to and own multiple organizations.
-:::
-
-1. Use your current email address (for example, `my.preferred.address@foobar.com`) to log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Follow the steps from one of the procedures on this page to update that email address to another email address, such as `my.alternate.address@gmail.com`.
-
-You can now use the email address from step 1 to [sign up for a new account](/deploy-manage/deploy/elastic-cloud/create-an-organization.md).
