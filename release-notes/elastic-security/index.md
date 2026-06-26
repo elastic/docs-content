@@ -251,6 +251,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
 
+## 9.3.7 [elastic-security-9.3.7-release-notes]
+
+### Fixes [elastic-security-9.3.7-fixes]
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue in the AI Assistant where selecting all conversations and then saving an edit to a single conversation deleted all conversations instead of updating only the edited one [#274033]({{kib-pull}}274033).
+* Fixes `bulk_max_size` output setting validation in {{elastic-defend}}.
+
 ## 9.3.6 [elastic-security-9.3.6-release-notes]
 
 ### Fixes [elastic-security-9.3.6-fixes]
