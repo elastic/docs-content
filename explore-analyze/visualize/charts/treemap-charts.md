@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building treemap charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create treemap charts to visualize hierarchical data, show part-to-whole relationships, and compare relative sizes across multiple levels.
 ---
 
 # Build treemap charts with {{kib}}

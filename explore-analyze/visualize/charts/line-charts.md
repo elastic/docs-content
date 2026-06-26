@@ -3,7 +3,7 @@ navigation_title: Line charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building line charts with Kibana Lens in Elastic.
+description: Create line charts to visualize how metrics evolve over time, spot seasonal patterns, and detect spikes or regressions.
 products:
   - id: kibana
   - id: cloud-serverless

@@ -3,7 +3,14 @@ navigation_title: Pie charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building pie and donut charts with Kibana Lens in Elastic.
+description: Create pie and donut charts to illustrate relative prevalence of categorical data and display proportional relationships.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build pie charts with {{kib}}

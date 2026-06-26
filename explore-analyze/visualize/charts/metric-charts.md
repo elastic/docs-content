@@ -3,7 +3,7 @@ navigation_title: Metric charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
+description: Create metric charts to highlight important KPIs with dynamic coloring and trend indicators on dashboards.
 products:
   - id: kibana
   - id: cloud-serverless

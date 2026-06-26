@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building waffle charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create waffle charts to show percentages as discrete units, visualize survey results, and compare similarly-sized proportions.
 ---
 
 # Build waffle charts with {{kib}}

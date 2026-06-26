@@ -5,7 +5,12 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
-description: Instructions and best practices for building tag cloud charts with Kibana Lens in Elastic.
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create tag cloud charts to visualize word frequency, show popular categories, and summarize text-based data at a glance.
 ---
 
 # Build tag cloud charts with {{kib}}
