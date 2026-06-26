@@ -37,7 +37,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 
 ::::{applies-item} stack: ga 9.2+
 
-* A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes).
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
 :::{dropdown} Expand to view required privileges
@@ -52,7 +52,7 @@ In {{stack}} versions 9.0 and 9.1, the quickstart uses [Kubectl](https://kuberne
 
 ::::{applies-item} stack: ga 9.0-9.1
 
-* A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes).
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
 :::{dropdown} Expand to view required privileges

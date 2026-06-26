@@ -36,7 +36,7 @@ First you’ll focus on monitoring logs, then you’ll add metrics after you’v
 
 ## Before you begin [aws-elastic-agent-before-you-begin]
 
-Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 In this tutorial, we assume that:
 
