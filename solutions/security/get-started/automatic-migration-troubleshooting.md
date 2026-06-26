@@ -41,6 +41,8 @@ The fix requires re-creating the index with the correct ELSER inference endpoint
 
 ### Step 1 — Verify the problem
 
+Run the following API requests in [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md). In self-managed deployments, go to **Management** → **Dev Tools**. In {{ecloud}} deployments, go to **Developer tools**.
+
 **1a. Check what inference endpoints are currently configured on the cluster:**
 
 ```http
