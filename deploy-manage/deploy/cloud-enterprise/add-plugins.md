@@ -1,5 +1,7 @@
 ---
 navigation_title: Add plugins and extensions
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html
 applies_to:
   deployment:
     ece:

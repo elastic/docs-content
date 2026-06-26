@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-plugins.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-elastic-plugins.html
   - https://www.elastic.co/guide/en/cloud/current/ec-adding-plugins.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-adding-elastic-plugins.html
 applies_to:
   deployment:
     ess: ga
