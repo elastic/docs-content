@@ -3,7 +3,6 @@
 <!-- _Released: June 26, 2026_ -->
 ### Features and enhancements [elastic-2026-06-26-features-enhancements]
 * Add `IP_LOCATION` command to ES|QL. [#149421](https://github.com/elastic/elasticsearch/pull/149421) [#132489](https://github.com/elastic/elasticsearch/issues/132489) [#150231](https://github.com/elastic/elasticsearch/issues/150231)
-* Add postings bytes to the search tier memory estimate for autoscaling.
 * Add circuit breaker protection for multi-search requests. [#150115](https://github.com/elastic/elasticsearch/pull/150115)
 * Enable deleting a backing index through the modify data streams API. [#151137](https://github.com/elastic/elasticsearch/pull/151137)
 * Improve security behavior when no password is configured. [#151405](https://github.com/elastic/elasticsearch/pull/151405)
@@ -19,7 +18,6 @@
 * Add `data_storage_class` and `metadata_storage_class` settings for GCP repository. [#151058](https://github.com/elastic/elasticsearch/pull/151058)
 * Add PromQL top-level `or` set operator support. [#151486](https://github.com/elastic/elasticsearch/pull/151486)
 * Support implicit `le` in PromQL `histogram_quantile`. [#151456](https://github.com/elastic/elasticsearch/pull/151456)
-* Enable doc values by default for text/match_only_text fields in strictly columnar mode. [#151347](https://github.com/elastic/elasticsearch/pull/151347)
 * Improve vector search performance with optimized blob cache memory advice. [#150066](https://github.com/elastic/elasticsearch/pull/150066)
 * Improve Painless script compile-time memory allocation checks. [#151339](https://github.com/elastic/elasticsearch/pull/151339)
 
