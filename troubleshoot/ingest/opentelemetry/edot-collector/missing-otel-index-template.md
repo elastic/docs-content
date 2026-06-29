@@ -45,7 +45,7 @@ GET _component_template/generic.otel@mappings
 
 If either one returns a 404, it means that the template is missing. Continue to [Reinstall the index template](#reinstall-the-index-template).
 
-If both return results, the template is present. You can skip to [Verify `mapping.mode: otel` is set on the exporter](#verify-mappingmode-otel-is-set-on-the-exporter).
+If both return results, the template is present. Skip to step 3 (*Verify `mapping.mode: otel` is set on the exporter*).
 :::
 
 :::{step} Reinstall the index template
