@@ -160,7 +160,7 @@ The [Semantic search](semantic-search.md) section provides managed workflows tha
 
 These guides provide more direct or customizable approaches to working with vector search:
 
-- [kNN search in Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
+- [kNN search on Elasticsearch](vector/knn.md): Perform vector similarity search using the `dense_vector` field type and k-nearest neighbor queries.
 - [Bring your own dense vectors](vector/bring-own-vectors.md): Use this if you already have embeddings and want to index and search them in Elasticsearch.
 - [Sparse vector search in Elasticsearch](vector/sparse-vector.md): Perform semantic search using sparse vectors with the ELSER model and the `sparse_vector` field type.
 - [Manual dense and sparse workflows](vector/dense-versus-sparse-ingest-pipelines.md): Generate embeddings at ingest time using pipelines and perform semantic or hybrid search with dense or sparse models.

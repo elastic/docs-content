@@ -1158,7 +1158,7 @@ The [vector tile search API]({{es-apis}}operation/operation-search-mvt) always m
 
 
 ::::{note}
-The [Approximate kNN search](/solutions/search/vector/knn.md#approximate-knn) doesn’t support minimizing network roundtrips, and sets the parameter `ccs_minimize_roundtrips` to `false`.
+The [Approximate kNN search](/solutions/search/vector/knn/approximate-knn.md#approximate-knn) doesn’t support minimizing network roundtrips, and sets the parameter `ccs_minimize_roundtrips` to `false`.
 ::::
 
 
