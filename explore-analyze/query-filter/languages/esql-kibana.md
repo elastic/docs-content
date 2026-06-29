@@ -445,6 +445,8 @@ serverless: preview
 
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Enable approximation from the {{kib}} UI with **Fast mode**, or from within a query with the [`SET approximation`](#esql-kibana-approximation) directive.
 
+However you enable it, approximation isn't forced: {{es}} still runs your query exactly when sampling wouldn't help, such as when the queried data set is small or a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
+
 ### Turn Fast mode on or off [esql-kibana-fast-mode-toggle]
 ```{applies_to}
 stack: preview 9.5
@@ -455,8 +457,6 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Look for the {ic
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
 - In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to all {{esql}} visualizations of the dashboard that use one `STATS` command. The option is not available when the dashboard has no such visualization.
-
-Turning **Fast mode** on doesn't force approximation: {{es}} still runs your query exactly when it wouldn't help, such as when the queried data set is small enough or when a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups.
 
 **Fast mode** is preserved when you save or share a dashboard or a Discover {{esql}} query.
 
