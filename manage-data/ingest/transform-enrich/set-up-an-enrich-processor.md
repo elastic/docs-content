@@ -135,12 +135,16 @@ The enrich policy executor is a component that manages the executions of all enr
 
 ## Node Settings [ingest-enrich-settings]
 
+```{applies_to}
+serverless: unavailable
+```
+
 The `enrich` processor has node settings for enrich coordinator and enrich policy executor.
 
 The enrich coordinator supports the following node settings:
 
 `enrich.cache_size`
-:   Maximum size of the cache that stores searches used to enrich documents. You can specify the size in three units:
+:   Maximum size of the cache that stores the results of searches used to enrich documents. You can specify the size in three units:
 
     * A raw number of cached searches, for example `1000`.
     * An absolute size in bytes, for example `100Mb`.
@@ -155,7 +159,7 @@ The enrich coordinator supports the following node settings:
 :   Maximum number of searches to include in a [multi-search request]({{es-apis}}operation/operation-msearch) when enriching documents. Defaults to `128`.
 
 `enrich.coordinator_proxy.queue_capacity`
-:   Coordinator queue capacity. Defaults to `max_concurrent_requests * max_lookups_per_request`.
+:   Maximum number of enrichment lookups the coordinator can queue while waiting to run them. When the queue is full, {{es}} rejects new enrichment requests with an HTTP 429 error. If bursts of ingest traffic cause 429 errors, increase this value so the node can buffer more lookups. A larger queue uses more memory. Defaults to `max_concurrent_requests * max_lookups_per_request`.
 
 The enrich policy executor supports the following node settings:
 
