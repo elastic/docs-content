@@ -122,13 +122,25 @@ stack: ga 9.4
 serverless: ga
 ```
 
-{{esql}} visualizations support [dashboard and URL drilldowns](../dashboards/drilldowns.md). Select a data point in an {{esql}} visualization to navigate to another dashboard or an external URL.
+{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md):
+
+- **Dashboard** drilldowns: open another dashboard from a data point.
+- **URL** drilldowns: open an external URL from a data point.
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
 Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
 
-::::{note}
-Discover drilldowns are not available for {{esql}} visualizations.
-::::
+## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+By default, an {{esql}} visualization applies the filters and the KQL or Lucene query set at the dashboard level. To force a layer to run its query without these filters:
+1. Select the {icon}`gear` **Settings** icon on the layer header.
+2. Turn off **Use global filters**.
+
+This option covers the dashboard's filter pills and the query from the search bar. The dashboard time range is a separate control that always applies, whether or not the option is turned on.
 
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}

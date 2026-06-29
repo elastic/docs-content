@@ -2,7 +2,7 @@ The request **Inspector** is available in **Discover** and for all **Dashboards*
 
 1. Open the **Inspector**:
    - If you're in **Discover**:
-      - {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**.
+      - {applies_to}`serverless:` {applies_to}`stack: ga 9.4` Hover over the active tab and select the {icon}`boxes_vertical` **Actions** icon, then select **Inspect**. You can also select **Inspect tab** from the application menu to inspect the active tab.
       - {applies_to}`stack: ga 9.0-9.3` Select **Inspect** from the application menu.
    - If you're in **Dashboards**, open the panel menu and select **Inspect**.
 1. Open the **View** dropdown, then select **Requests**.
