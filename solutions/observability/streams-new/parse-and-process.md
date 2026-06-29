@@ -130,20 +130,20 @@ Documents can fail processing for various reasons. Streams helps you identify an
 
 In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
 
-:::{image} ../../../images/logs-streams-parsed.png
+:::{image} ../../images/logs-streams-parsed.png
 :screenshot:
 :::
 
 You can filter your documents by selecting **Parsed** or **Failed** on the **Data preview** tab.
 Selecting **Failed** shows the documents that weren't parsed correctly:
 
-:::{image} ../../../images/logs-streams-failures.png
+:::{image} ../../images/logs-streams-failures.png
 :screenshot:
 :::
 
 Streams displays failures at the bottom of the process editor. Some failures might require fixes, while others serve as a warning:
 
-:::{image} ../../../images/logs-streams-processor-failures.png
+:::{image} ../../images/logs-streams-processor-failures.png
 :screenshot:
 :::
 
@@ -151,7 +151,7 @@ Streams displays failures at the bottom of the process editor. Some failures mig
 
 As part of processing, Streams also simulates your changes end-to-end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
-:::{image} ../../../images/logs-streams-mapping-conflicts.png
+:::{image} ../../images/logs-streams-mapping-conflicts.png
 :screenshot:
 :::
 
@@ -174,7 +174,7 @@ The Streams processing UI provides an [interactive mode](#streams-editing-intera
 
 To switch modes, select the appropriate tab from the top of the processing page.
 
-:::{image} ../../../images/streams-editing-modes.png
+:::{image} ../../images/streams-editing-modes.png
 :screenshot:
 :::
 
