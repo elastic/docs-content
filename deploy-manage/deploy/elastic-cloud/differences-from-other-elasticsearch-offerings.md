@@ -162,7 +162,7 @@ This table compares Security capabilities between {{ech}} deployments and Server
 To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations.
 
 If you created your index after **June 1, 2026**, your index can grow upto 4.8TB without any performance impact.
-That limit can be raised further via certain project overrides.
+That limit can be raised further via overrides.
 
 If you created your index before **June 1, 2026**, follow these recommendations according to project type:
 
