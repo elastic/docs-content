@@ -31,7 +31,7 @@ This section shows the most common ways for you to filter dashboard data. For mo
 
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
-When a dashboard includes an {{esql}} visualization that uses `STATS`, a {icon}`bolt` Fast mode button appears next to the query bar. Turn it on to return faster, estimated results on large datasets. Refer to [Get faster results with Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+When a dashboard includes an {{esql}} visualization that uses `STATS`, you can turn on Fast mode from the {icon}`bolt` button next to the query bar to return faster, estimated results on large datasets. Refer to [Get faster results with Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
 :::
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]

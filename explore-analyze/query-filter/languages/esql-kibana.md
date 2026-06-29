@@ -443,12 +443,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-When exact results are not strictly necessary, you can return faster, estimated results for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md). {{es}} rewrites the query to use random sampling and returns estimates together with confidence intervals. The performance benefit grows with the size of the source data.
-
-You can enable approximation in two ways:
-
-- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Fast mode** turns approximation on from the {{kib}} UI, without editing your query.
-- The [`SET approximation`](#esql-kibana-approximation) directive enables approximation from within a query and takes precedence over the Fast mode toggle.
+On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Enable approximation from the {{kib}} UI with **Fast mode**, or from within a query with the [`SET approximation`](#esql-kibana-approximation) directive.
 
 ### Turn Fast mode on or off [esql-kibana-fast-mode-toggle]
 ```{applies_to}
@@ -456,23 +451,16 @@ stack: preview 9.5
 serverless: preview
 ```
 
-Fast mode is the {{kib}} UI control for {{esql}} approximation. It's available from the {{esql}} query bar wherever you run {{esql}} queries against large datasets:
+Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon}`bolt` Fast mode button next to the query bar, then use the toggle in the popover. Where it applies depends on the context:
 
-- In [**Discover**](/explore-analyze/discover/try-esql.md), when Discover is in {{esql}} mode.
-- In [**Dashboards**](/explore-analyze/visualize/esorql.md), for {{esql}} visualizations.
+- In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but Fast mode applies only to queries that use exactly one `STATS` command.
+- In [**Dashboards**](/explore-analyze/visualize/esorql.md), Fast mode applies to {{esql}} visualizations that use `STATS`. The button is disabled when the dashboard has no such visualization.
 
-To turn Fast mode on or off, select the {icon}`bolt` Fast mode button next to the query bar, then use the toggle in the popover. When Fast mode is on, the button is highlighted and your `STATS` queries return estimated results.
+Turning Fast mode on doesn't force approximation: {{es}} still runs your query exactly when sampling wouldn't help, such as when a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups.
 
-The button is available only when approximation can apply:
+In **Dashboards**, Fast mode is saved with the dashboard and preserved when you share a dashboard or a Discover {{esql}} query.
 
-- In **Discover**, the query must use exactly one `STATS` command.
-- In **Dashboards**, at least one {{esql}} visualization must use `STATS`.
-
-Because results are estimated, they can change between runs, and groups with few matching documents might be omitted. In the chart that Discover generates automatically, the confidence interval and certified fields aren't plotted.
-
-In **Dashboards**, the Fast mode state is saved with the dashboard and restored when you reopen it. It's also preserved when you share a dashboard or a Discover {{esql}} query.
-
-To control approximation for a single query regardless of the toggle, use the [`SET approximation`](#esql-kibana-approximation) directive.
+To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
 ### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
 ```{applies_to}
