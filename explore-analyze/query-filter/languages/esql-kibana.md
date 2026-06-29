@@ -437,7 +437,7 @@ The first time a query references an unmapped field, the editor shows a warning 
 {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
 
 
-## Get faster results with Fast mode [approximation-fast-mode]
+## Get faster results with approximate `STATS` [approximation-fast-mode]
 ```{applies_to}
 stack: preview 9.4
 serverless: preview
