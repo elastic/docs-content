@@ -445,7 +445,7 @@ serverless: preview
 
 On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Enable approximation from the {{kib}} UI with **Fast mode**, or from within a query with the [`SET approximation`](#esql-kibana-approximation) directive.
 
-However you enable it, approximation isn't forced: {{es}} still runs your query exactly when sampling wouldn't help, such as when the queried data set is small or a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
+However you enable it, approximation isn't forced: the speedup comes from sampling, so {{es}} runs your query exactly when sampling wouldn't help, such as when a selective filter has already narrowed the matching data. Approximate results are estimates, so they can vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
 
 ### Turn Fast mode on or off [esql-kibana-fast-mode-toggle]
 ```{applies_to}
