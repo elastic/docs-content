@@ -31,7 +31,7 @@ You'll need:
 
 You can run {{fleet}} API requests through the {{kib}} Console.
 
-1. From the {{kib}} menu, go to **Management → Dev Tools**.
+1. To open **Console**, find **Dev Tools** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In your request, prepend your {{fleet}} API endpoint with `kbn:`, for example:
 
     ```sh
@@ -469,11 +469,18 @@ curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&se
 
 ## Filter results with KQL [filter-results-with-kql]
 
-The {{fleet}} list endpoints for agents, agent policies, package policies, and enrollment tokens accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string to filter results. To check whether another endpoint accepts `kuery`, refer to its parameters in the [Kibana API docs]({{kib-apis}}).
+The following {{fleet}} list endpoints accept a `kuery` query parameter that takes a [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md) string to filter results: agents (`GET /api/fleet/agents`), agent policies (`GET /api/fleet/agent_policies`), package policies (`GET /api/fleet/package_policies`), and enrollment tokens (`GET /api/fleet/enrollment_api_keys`). To check whether another endpoint accepts `kuery`, refer to its parameters in the [Kibana API docs]({{kib-apis}}).
 
-Reference each field by the saved object type that stores it. {{fleet}} stores package policies as `ingest-package-policies` objects, so to filter package policies by integration name, query the `ingest-package-policies.package.name` field.
+**Agents and enrollment tokens** are stored in {{es}} system indices. Reference fields directly, with no prefix. This cURL example returns only the online agents:
 
-This cURL example returns only the package policies for the `nginx` integration:
+```shell
+curl --request GET \
+  --url 'https://my-kibana-host:9243/api/fleet/agents?kuery=status:online' \
+  --header 'Authorization: ApiKey yourbase64encodedkey' \
+  --header 'kbn-xsrf: xx'
+```
+
+**Agent policies and package policies** are stored as saved objects. When a field path contains a dot, prefix it with the saved object type so the query parser reads it as a field name and not as a type. This cURL example returns only the package policies for the `nginx` integration:
 
 ```shell
 curl --request GET \
@@ -481,6 +488,10 @@ curl --request GET \
   --header 'Authorization: ApiKey yourbase64encodedkey' \
   --header 'kbn-xsrf: xx'
 ```
+
+::::{tip}
+The accepted saved object type prefix can differ across deployments and endpoints. If a query returns a `KQLSyntaxError` stating that a key does not exist in a saved object index pattern, use the index pattern named in the error as your prefix. For example, if the error names `ingest-agent-policies`, query `ingest-agent-policies.name`.
+::::
 
 For the full query syntax, including wildcards, ranges, and boolean operators, refer to [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md).
 
@@ -530,6 +541,5 @@ After you create agent and integration policies with the API:
 * [Kibana API docs]({{kib-apis}})
 * [Run API requests](/explore-analyze/query-filter/tools/console.md)
 * [Roles and privileges](/reference/fleet/fleet-roles-privileges.md)
-* [Fleet enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md)
 * [Grant standalone {{agents}} access to {{es}}](/reference/fleet/grant-access-to-elasticsearch.md)
 * [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md)
