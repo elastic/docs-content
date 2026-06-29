@@ -31,7 +31,7 @@ The execution identity depends on how the workflow is triggered:
 * Manual runs from the {{kib}} UI or API use the permissions of the logged-in user who starts the run.
 * Scheduled workflows use the permissions of the user who last modified the workflow. When an enabled scheduled workflow is edited, {{kib}} refreshes the stored execution credentials for future runs.
 * Alert and detection rule triggers use the permissions of the user who last modified the rule. If the rule has not been modified, they use the permissions of the user who created the rule.
-* Event-based triggers use the permissions of the user whose action produced the event. For example, a `case.commentAdded` event runs the workflow with the permissions of the user who added the comment.
+* Event-based triggers use the permissions of the user whose action produced the event. For example, a `cases.addComment` event runs the workflow with the permissions of the user who added the comment.
 
 When a workflow run starts, {{kib}} records execution metadata:
 
