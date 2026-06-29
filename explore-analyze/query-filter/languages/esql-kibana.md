@@ -378,7 +378,7 @@ SET setting_name = setting_value[, ..., settingN = valueN];
 
 The {{esql}} editor autocompletes supported settings and validates their values. Settings particularly useful from {{kib}} include:
 
-- [`approximation`](#approximation-fast-mode): Trade exact results for speed on large `STATS` queries using random sampling. The {{kib}} UI exposes this as the [Fast mode](#approximation-fast-mode) toggle.
+- [`approximation`](#approximation-fast-mode): Trade exact results for speed on large `STATS` queries using random sampling. Several {{kib}} apps expose this functionality with a [Fast mode](#approximation-fast-mode) UI option.
 - [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
 - [`unmapped_fields`](#esql-kibana-unmapped-fields): Choose how to handle fields that are not present in the index mapping.
 
@@ -451,14 +451,14 @@ stack: preview 9.5
 serverless: preview
 ```
 
-Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon}`bolt` Fast mode button next to the query bar, then use the toggle in the popover. Where it applies depends on the context:
+Fast mode is the {{kib}} UI control for {{esql}} approximation. Look for the {icon}`bolt` **Fast mode** option to turn it on. Where it applies depends on the context:
 
-- In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but Fast mode applies only to queries that use exactly one `STATS` command.
-- In [**Dashboards**](/explore-analyze/visualize/esorql.md), Fast mode applies to {{esql}} visualizations that use `STATS`. The button is disabled when the dashboard has no such visualization.
+- In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
+- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to all {{esql}} visualizations of the dashboard that use one `STATS` command. The option is not available when the dashboard has no such visualization.
 
-Turning Fast mode on doesn't force approximation: {{es}} still runs your query exactly when sampling wouldn't help, such as when a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups.
+Turning **Fast mode** on doesn't force approximation: {{es}} still runs your query exactly when it wouldn't help, such as when the queried data set is small enough or when a selective filter already narrows the matching data. Estimated results can also vary between runs and might drop low-frequency groups.
 
-In **Dashboards**, Fast mode is saved with the dashboard and preserved when you share a dashboard or a Discover {{esql}} query.
+**Fast mode** is preserved when you save or share a dashboard or a Discover {{esql}} query.
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
