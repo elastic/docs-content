@@ -157,9 +157,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
-## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
 
-To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations:
+## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
+To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations.
+
+If you created your index after **June 1, 2026**, your index can grow upto 4.8TB without any performance impact.
+That limit can be raised further via certain project overrides.
+
+If you created your index before **June 1, 2026**, follow these recommendations according to project type:
 
 | **Use case** | Maximum index size | Project configuration |
 | --- | --- | --- |
