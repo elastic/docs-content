@@ -13,7 +13,7 @@ products:
 
 An organization is the umbrella for a group of {{ecloud}} resources, users, and account settings. Every organization has a unique identifier.
 
-When you [sign up for {{ecloud}}](/deploy-manage/deploy/elastic-cloud/create-an-organization.md), you have the option to create a new organization. You also can be [added to an existing organization](/deploy-manage/users-roles/cloud-organization/manage-users.md).
+When you [sign up for {{ecloud}}](/deploy-manage/deploy/elastic-cloud/create-an-organization.md), you have the option to create a new organization. You also can be [added to an existing organization](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users).
 
 The administrator of an organization is referred to as the organization owner, and belongs to the [Organization owner role](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles). An organization can have more than one organization owner.
 

@@ -15,7 +15,7 @@ products:
 You can subscribe to {{ecloud}} from a cloud marketplace instead of paying Elastic directly. Marketplace subscriptions offer the following benefits:
 
 - **Consolidated billing.** Your {{ecloud}} charges appear on your existing cloud provider bill alongside your other services.
-- **Spend commitment.** Your {{ecloud}} usage draws against your committed spend with your cloud provider. If you subscribe directly to Elastic (with a credit card or an Elastic contract), your {{ecloud}} spend does not count toward any cloud provider commitment.
+- **Spend commitment.** Your {{ecloud}} usage counts toward your committed spend with your cloud provider. If you subscribe directly to Elastic (with a credit card or an Elastic contract), your {{ecloud}} spend does not count toward any cloud provider commitment.
 - **Simplified procurement.** No need to set up a separate billing relationship with Elastic.
 
 Trial availability and duration can vary depending on the marketplace.
@@ -52,4 +52,4 @@ Because a single {{ecloud}} account can belong to multiple organizations, and ea
 - An {{aws}} Marketplace subscription for an organization running production workloads on {{aws}}
 - A {{gcp}} Marketplace subscription for a separate organization running analytics workloads on {{gcp}}
 
-Each subscription draws against the respective cloud provider's spend commitment, letting you maximize the benefits of each marketplace independently.
+Each subscription counts toward the respective cloud provider's spend commitment, letting you maximize the benefits of each marketplace independently.

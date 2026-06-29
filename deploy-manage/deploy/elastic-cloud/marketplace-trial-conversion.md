@@ -19,7 +19,7 @@ This works for both active and expired trials, as long as the organization is el
 - An {{ecloud}} trial organization that is [eligible for conversion](#ec-marketplace-conversion-candidates).
 - Access to one of the supported marketplaces: [{{aws}} Marketplace](aws-marketplace.md), [Azure Marketplace](azure-native-isv-service.md), or [{{gcp}} Marketplace](google-cloud-platform-marketplace.md).
 - The email address associated with your {{ecloud}} account matches the credentials you use during the marketplace sign-up process.
-- To convert from the Azure Marketplace: your {{ecloud}} account must only be owner of a single [convertible](#ec-marketplace-conversion-candidates) organization.
+- To convert from the Azure Marketplace: your {{ecloud}} account must only own a single [convertible](#ec-marketplace-conversion-candidates) organization.
 
 ## Convert your trial in {{aws}} and {{gcp}} marketplaces [ec-marketplace-trial-conversion-aws-gcp]
 
@@ -41,7 +41,7 @@ Go to the [{{ecloud}} listing on the {{gcp}} Marketplace](https://console.cloud.
 ::::
 :::::
 :::::{step} Sign in with your existing credentials
-When prompted to create a new account or sign in, choose to **sign in** with your existing {{ecloud}} credentials.
+When prompted to create a new account or sign in, choose to sign in with your existing {{ecloud}} credentials.
 :::::
 :::::{step} Select the organization to upgrade
 The upgrade page shows the cloud provider account that the subscription will be linked to. Confirm this is the correct account before continuing.
@@ -51,9 +51,9 @@ What happens next depends on how many organizations your account belongs to:
 - **Single convertible trial organization:** You are presented with an option to upgrade the trial to the marketplace subscription. Billing through the marketplace begins immediately upon upgrade.
 - **Multiple organizations:** You are shown a list of your eligible organizations. Click the organization you want to upgrade. To also see organizations that aren't eligible, toggle **Show non-convertible organizations**.
 
-You can also choose to **create a new organization** instead of upgrading an existing one. The new organization starts with its own 7-day marketplace trial.
+You can also choose to create a new organization instead of upgrading an existing one. The new organization starts with its own 7-day marketplace trial.
 
-If none of your existing organizations are eligible for upgrading, you can still create a new organization through the marketplace, or refer to [Which organizations can be converted](#ec-marketplace-conversion-candidates) to understand why.
+If none of your existing organizations are [eligible](#ec-marketplace-conversion-candidates) for upgrading, you can still create a new organization through the marketplace.
 :::::
 ::::::
 
@@ -78,10 +78,10 @@ Not all organizations are eligible for marketplace conversion. An organization c
 
 - You are the owner of the organization.
 - The organization is on a trial subscription (active or expired).
-- The organization does not already have a credit card or another marketplace subscription attached.
+- The organization does not already have billing details or another marketplace subscription attached.
 - The organization's deployments and projects are hosted on the same cloud provider as the marketplace. For example, an organization with deployments on {{aws}} can only be converted to an {{aws}} Marketplace subscription, not a {{gcp}} Marketplace subscription.
 
-If none of your organizations are eligible, you can create a new organization through the marketplace sign-up flow, or [subscribe directly](/deploy-manage/cloud-organization/billing/add-billing-details.md) with a credit card.
+If none of your organizations are eligible, you can create a new organization through the marketplace sign-up flow, or subscribe directly by [adding your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md).
 
 ## After conversion [ec-marketplace-post-conversion]
 

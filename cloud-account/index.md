@@ -22,8 +22,8 @@ This section explains how to manage your {{ecloud}} account as a user, including
 This section covers only your personal account. Organization-wide settings, such as user permissions and organization-level access controls, are managed by organization administrators.
 
 For information on organization and access management, refer to:
-- [Manage your Cloud organization](/deploy-manage/cloud-organization.md)
-- [Manage user roles and permissions](/deploy-manage/users-roles/cloud-organization/user-roles.md)
+- [](/deploy-manage/cloud-organization.md)
+- [](/deploy-manage/users-roles/cloud-organization/user-roles.md)
 ::::
 
 
@@ -49,4 +49,4 @@ Organizations are groupings of {{ecloud}} resources and associated settings. As 
 
 ## Customize your interface
 
-Some options also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.
+Some account features also let you set personal preferences and customize the interface, such as [using dark mode](dark-mode.md) in your projects and deployments.

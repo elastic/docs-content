@@ -13,7 +13,7 @@ products:
 
 # {{ecloud}} from Google Cloud Platform Marketplace [ec-billing-gcp]
 
-Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic draws against your cloud purchase commitment.
+Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic counts toward your cloud purchase commitment.
 
 If you already have an {{ecloud}} trial, you can [convert it to a GCP Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new organization through the GCP Marketplace.
 
@@ -23,11 +23,9 @@ Some differences exist when you subscribe to {{ecloud}} through the GCP Marketpl
 * Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
-% is this still true?
 ::::{important} 
 Only one {{ecloud}} organization can be subscribed through GCP Marketplace per GCP billing account.
 ::::
-
 
 To subscribe to {{ecloud}} through the GCP Marketplace:
 

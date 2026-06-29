@@ -108,7 +108,7 @@ Unlike {{aws}} and {{gcp}}, the Azure portal does not provide an organization pi
 The following limitations apply:
 
 - **Multiple Azure MP organizations:** You can't create resources from the Azure portal. Create resources directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) instead, where you can select the specific organization to use.
-- **Multiple eligible trial organizations:** You can't convert a trial from the Azure portal. To resolve this, leave the other trial organizations so that only one eligible organization remains. Alternatively, use the [{{aws}}](aws-marketplace.md) or [{{gcp}}](google-cloud-platform-marketplace.md) marketplace instead, which support an organization picker during sign-up.
+- **Multiple eligible trial organizations:** You can't convert a trial from the Azure portal. To resolve this, leave the other trial organizations so that only one eligible organization remains. Alternatively, use the [{{aws}}](aws-marketplace.md) or [{{gcp}}](google-cloud-platform-marketplace.md) marketplaces instead, which support an organization picker during sign-up.
 
 ## Trials and existing accounts [ec-azure-integration-trials]
 
@@ -117,7 +117,7 @@ If you already have an {{ecloud}} account, you can sign in with your existing cr
 
 ### Convert a trial to Azure Native Service [azure-integration-convert-trial]
 
-If you have an existing {{ecloud}} trial, you can convert it to a Microsoft Marketplace subscription. For step-by-step instructions, refer to [Convert a trial to a marketplace subscription](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
+If you have an existing {{ecloud}} trial, you can convert it to a Microsoft Marketplace subscription. For step-by-step instructions, refer to [Convert your trial in the Azure Marketplace](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
 
 Keep in mind:
 

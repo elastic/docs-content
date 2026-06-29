@@ -8,5 +8,5 @@ You can switch between organizations at any time. Depending on the authenticatio
 4. Click the name of the organization you want to switch to. If it doesn't appear in the list, click **Manage organizations** to view all of the organizations you have access to.
 
 :::{tip}
-You can also switch organizations from the breadcrumbs at the top of any page. Click your current organization name and select another organization from the list.
+You can also switch organizations from the breadcrumbs at the top of any page. Click your current organization's name and select another organization from the list.
 :::

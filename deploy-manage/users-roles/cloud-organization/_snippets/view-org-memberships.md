@@ -6,4 +6,4 @@ To view the organizations:
 2. From a deployment or project on the home page, select **Manage**.
 3. From the lower navigation menu, select **Organization**.
 4. Click the **Members** tab.
-5. Click the name of the user you want to view the organizations for.
+5. Click the name of the user whose organization memberships you want to view.

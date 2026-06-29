@@ -81,7 +81,7 @@ This section describes some scenarios that you may experience onboarding onto th
 
 This occurs when you attempt to sign up to the marketplace offer using an email address that already exists in {{ecloud}}, such as part of a trial account. You have a few options:
 
-* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then [convert an existing trial organization](marketplace-trial-conversion.md) to your AWS Marketplace subscription or create a new organization.
+* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then convert an existing trial organization to your AWS Marketplace subscription or create a new organization. [Learn more](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-aws-gcp).
 * **Sign up using a different email address** - Sign up to {{ecloud}} using a different email address.
 
 
@@ -91,8 +91,6 @@ If the {{ecloud}} login page displays when coming from the AWS console, then an 
 
 If you can’t remember which email address you used to sign up to {{ecloud}}, or you need more help, contact `support@elastic.co`.
 
-
-% is this still true?
 ### When I try to configure an account from the AWS console I get an error that an active AWS subscription already exists. [ec-awsmp-account-collision03]
 
 This error occurs when you have already provisioned a marketplace subscription under your AWS user account. Each AWS user account can only subscribe to {{ecloud}} once.

@@ -43,7 +43,7 @@ To decline an invitation, you can ignore the email. The invitation expires autom
 
 You can leave an organization at any time. If you are the only owner of an organization, you must transfer ownership before leaving.
 
-You can leave only the organization you're currently signed in to. To leave a different organization, [switch to it](/cloud-account/switch-organizations.md) first.
+You can leave only the organization you're currently signed in to. To leave a different organization, [switch to it](/cloud-account/switch-organizations.md#switch-to-a-different-organization) first.
 
 :::{warning}
 Leaving an organization revokes your access to all of its resources, including deployments, projects, and settings. This action cannot be undone. To rejoin the organization, ask an organization owner to invite you again.

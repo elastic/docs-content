@@ -30,9 +30,8 @@ You can perform the following tasks to manage multiple organizations:
 * [View the organizations you have access to](#view-organizations)
 * [Switch to a different organization](#switch-to-a-different-organization)
 * [Invite users to join additional organizations](#invite-additional-orgs)
-
-:::{include} _snippets/view-orgs.md
-:::
+* [Reconcile alternative email addresses](#reconcile-email)
+* [View your users' organization memberships](#view-org-memberships)
 
 ## Create a new organization
 
@@ -52,6 +51,9 @@ After you create the organization, you can switch to it by clicking the organiza
 You can also create a new organization by clicking on your current organization name and selecting {icon}`plus_in_circle`  **Create**.
 :::
 
+:::{include} _snippets/view-orgs.md
+:::
+
 :::{include} _snippets/switch-orgs.md
 :::
 
@@ -60,12 +62,12 @@ You can also create a new organization by clicking on your current organization 
 :::{include} /deploy-manage/users-roles/cloud-organization/_snippets/invite-additional-orgs.md
 :::
 
-## Reconcile alternative email addresses
+## Reconcile alternative email addresses [reconcile-email]
 
 :::{include} /deploy-manage/users-roles/cloud-organization/_snippets/reconcile-email.md
 :::
 
-## View your users' organization memberships
+## View your users' organization memberships [view-org-memberships]
 
 :::{include} /deploy-manage/users-roles/cloud-organization/_snippets/view-org-memberships.md
 :::
