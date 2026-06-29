@@ -10,14 +10,14 @@ products:
 
 # Send data from an upstream OpenTelemetry Collector [upstream-collector-self-managed]
 
-This guide shows how to forward telemetry data from an upstream OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector configured as a gateway. The examples use `otelcol-contrib`, but the same approach works with any upstream OTel Collector distribution, including custom builds assembled with the [OpenTelemetry Collector Builder](https://opentelemetry.io/docs/collector/custom-collector/).
+This guide shows how to forward telemetry data from an existing (upstream) OpenTelemetry Collector to a self-managed {{stack}} using an EDOT Collector configured as a gateway. The examples use the [contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib) (`otelcol-contrib`), but the same approach works with any OTel Collector distribution, including vendor distributions and custom builds assembled with the [OpenTelemetry Collector Builder](https://opentelemetry.io/docs/collector/custom-collector/).
 
 ## When to use this setup
 
 Use this pattern if you:
 
-* Already run an upstream OpenTelemetry Collector and want to add Elastic as a backend without replacing your existing setup
-* Need to fan out telemetry to multiple observability backends from a single upstream Collector
+* Already run an existing OpenTelemetry Collector and want to add Elastic as a backend without replacing your current setup
+* Need to fan out telemetry to multiple observability backends from a single Collector
 * Evaluate Elastic alongside another backend before committing to a full migration
 * Use a technology or language for which Elastic doesn't provide an EDOT distribution
 
@@ -44,8 +44,8 @@ The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path f
 
 * A running self-managed {{es}} cluster
 * The [EDOT Collector](elastic-agent://reference/edot-collector/index.md) installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
-* An upstream OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
-* Network connectivity from the upstream Collector hosts to the EDOT gateway host on port 4317
+* An existing OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
+* Network connectivity from your Collector hosts to the EDOT gateway host on port 4317
 
 ::::{stepper}
 
@@ -86,13 +86,6 @@ connectors:
   elasticapm: {}
 
 processors:
-  batch:
-    send_batch_size: 1000
-    timeout: 1s
-    send_batch_max_size: 1500
-  batch/metrics:
-    send_batch_max_size: 0
-    timeout: 1s
   elasticapm: {}
 
 exporters:
@@ -102,16 +95,21 @@ exporters:
     api_key: ${env:ELASTIC_API_KEY}
     mapping:
       mode: otel
+    batcher:
+      enabled: true
+      min_size_items: 1000
+      max_size_items: 1500
+      flush_timeout: 1s
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch, elasticapm]
+      processors: [elasticapm]
       exporters: [elasticapm, elasticsearch/otel]
     metrics:
       receivers: [otlp]
-      processors: [batch/metrics]
+      processors: []
       exporters: [elasticsearch/otel]
     metrics/aggregated-otel-metrics:
       receivers: [elasticapm]
@@ -119,7 +117,7 @@ service:
       exporters: [elasticsearch/otel]
     logs:
       receivers: [otlp]
-      processors: [batch]
+      processors: []
       exporters: [elasticsearch/otel]
 ```
 
@@ -127,7 +125,7 @@ Key components in this configuration:
 
 * **`elasticapm` processor** (under `processors`): Enriches spans with attributes required by the {{product.apm}} UI.
 * **`elasticapm` connector** (under `connectors`): Generates pre-aggregated {{product.apm}} metrics from trace data. It appears as an exporter in the `traces` pipeline and as a receiver in the `metrics/aggregated-otel-metrics` pipeline.
-* **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`).
+* **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). Batching is handled by the {{es}} exporter's built-in `batcher` instead of the `batch` processor, which avoids data loss when the downstream export is rejected.
 
 :::{note}
 The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
