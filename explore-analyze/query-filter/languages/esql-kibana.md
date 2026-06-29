@@ -447,7 +447,7 @@ On large datasets, you can trade exact results for speed by enabling [approximat
 
 However you enable it, approximation isn't forced: {{es}} runs your query exactly when approximation wouldn't make it faster, such as when a selective filter has already narrowed the matching data. Approximate results are estimates, so they can vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
 
-### Turn Fast mode on or off [esql-kibana-fast-mode-toggle]
+### Use Fast mode [esql-kibana-fast-mode-toggle]
 ```{applies_to}
 stack: preview 9.5
 serverless: preview
@@ -462,7 +462,7 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Look for the {ic
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
 
-### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
+### Use the `SET approximation` directive [esql-kibana-approximation]
 ```{applies_to}
 stack: preview 9.4
 serverless: preview
