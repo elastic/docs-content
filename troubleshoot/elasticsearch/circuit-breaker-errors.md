@@ -111,10 +111,6 @@ If you’ve triggered the fielddata circuit breaker and can’t disable fielddat
 POST _cache/clear?fielddata=true
 ```
 
-**Optimize expensive queries**
-
-Both [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) and {{esql}} queries can trigger circuit breaker errors when they consume large amounts of memory. For {{esql}}, high-cardinality `STATS BY` groupings are a common cause. Refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md) for techniques to reduce memory usage.
-
 ## Memory evaluation
 
 Circuit breakers may either directly evaluate memory usage estimates or indirectly limit operations that are likely to cause excessive memory consumption. For example, the `script` circuit breaker checks memory indirectly by rate-limiting Painless/Mustache script compilations. However, even with circuit breakers in place, nodes can still encounter out-of-memory (OOM) conditions. This can occur, for example, because:
