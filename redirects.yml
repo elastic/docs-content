@@ -834,6 +834,11 @@ redirects:
   'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
   'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
   'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'
+
+# Entity analytics IA restructure: renamed pages
+  'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+  'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
+  'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
   
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'

@@ -1,4 +1,5 @@
 ---
+description: Classify hosts, users, and services by operational impact with asset criticality to prioritize alert triage and weight entity risk scores in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/asset-criticality.html
   - https://www.elastic.co/guide/en/serverless/current/security-asset-criticality.html
@@ -14,7 +15,7 @@ products:
 # Asset criticality [asset-criticality]
 
 ::::{admonition} Requirements
-To view and assign asset criticality, you must have the appropriate user role. For more information, refer to [Entity risk scoring requirements](entity-risk-scoring-requirements.md).
+To view and assign asset criticality, you must have the appropriate user role. For more information, refer to [Entity analytics requirements](entity-analytics-requirements.md).
 
 ::::
 
@@ -50,9 +51,8 @@ You can view, assign, change, or unassign asset criticality from the following p
 
 If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
 
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
-security-asset-criticality-impact
 
 ### Bulk assign asset criticality [bulk-assign-asset-criticality]
 
