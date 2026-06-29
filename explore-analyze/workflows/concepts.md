@@ -24,7 +24,7 @@ Concept and reference material for the components that make up a workflow defini
 
 ## Execution permissions [workflows-execution-permissions]
 
-Workflows execute with a {{kib}} user context. The user context determines which {{kib}} and {{es}} resources the workflow can access, including whether the workflow can use referenced connectors. Connector steps can also use credentials stored in the connector to authenticate to the external system.
+Workflows execute with a {{kib}} user context. The user context determines which {{kib}} and {{es}} resources the workflow can access. Connector steps use credentials stored in the connector to authenticate to the external system.
 
 When a workflow run starts, {{kib}} records execution metadata:
 
