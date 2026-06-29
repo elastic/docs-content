@@ -57,23 +57,21 @@ For more information on data retention, refer to [Data stream lifecycle](../../.
 
 Select **Edit retention method** to open the configuration options, then choose one of the following methods:
 
+- **Inherit retention**: Use retention settings from the stream's index template (classic streams) or parent stream (wired streams). No custom period or policy needed. For classic streams, this is useful when onboarding existing data streams and preserving their lifecycle behavior while still benefiting from Streams' visibility and {{monitor-features}}. For wired streams, this allows child streams to automatically inherit lifecycle settings from their nearest ancestor, and cascade changes when the parent stream is updated.
+- **Set a retention period**: Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance.
+- **Follow an {{ilm-init}} policy**: Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages.
+
 :::::{tab-set}
 
 ::::{tab-item} Inherit retention
 
-The stream uses retention settings from its index template (classic streams) or parent stream (wired streams). No custom period or policy is needed.
+To use the retention settings from the stream's index template (classic streams) or parent stream (wired streams) without setting a custom period or policy:
 
-**Classic streams** default to the data stream's existing index template's data retention configuration. When a stream inherits retention settings from an index template, Streams doesn't manage retention. This is useful when onboarding existing data streams and preserving their lifecycle behavior while still benefiting from Streams' visibility and {{monitor-features}}.
-
-**Wired streams** {applies_to}`serverless: preview` {applies_to}`stack: preview 9.2+` follow a hierarchical structure that supports inheritance. A child stream can inherit the lifecycle of its nearest ancestor that has a set {{ilm-init}} or retention period policy. When the ancestor's lifecycle is updated, Streams cascades the change to all child streams that inherit it.
-
-To enable inheritance, turn on **Inherit from index template** or **parent stream** in the **Edit retention method** options.
+1. Select Edit retention method.
+1. Turn on **Inherit from index template** or **parent stream**.
 ::::
 
 ::::{tab-item} Set a retention period
-
-Set the minimum number of days after which data is deleted. Data stays in the hot phase for best indexing and search performance.
-
 To set a specific retention period:
 
 1. Select **Edit retention method**.
@@ -99,6 +97,8 @@ To follow an existing policy:
 1. Turn off **Inherit from index template** or **parent stream**, if enabled.
 1. Select **{{ilm-init}} policy**, then choose a pre-defined policy from the list.
 
+After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Retention** tab.
+
 If the policy you need doesn't exist, refer to [Configure a lifecycle policy](../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) to create one.
 ::::
 
@@ -106,7 +106,21 @@ If the policy you need doesn't exist, refer to [Configure a lifecycle policy](..
 
 ::::::
 
-::::::{step} Configure data lifecycle phases
+::::::{step} Apply retention to child streams
+
+```{applies_to}
+serverless: preview
+stack: preview 9.2+
+```
+
+For wired streams, retention policies cascade automatically from parent to child streams. When you update a parent stream's retention policy, Streams propagates the change to all child streams that inherit from it.
+
+To override retention for a specific child stream, open that stream's **Retention** tab and configure a different method. The child stream uses its own policy instead of inheriting from the parent.
+::::::
+
+:::::::
+
+## Configure data lifecycle phases [streams-configure-data-lifecycle-phases]
 
 ```{applies_to}
 stack: ga 9.4+
@@ -150,22 +164,7 @@ For more information, refer to [Downsampling concepts](../../../manage-data/data
 
 {{search-snaps-cap}} are available in the Cold and Frozen phases.
 
-For more information, refer to [Searchable snapshots](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
-::::::
-
-::::::{step} Apply retention to child streams
-
-```{applies_to}
-serverless: preview
-stack: preview 9.2+
-```
-
-For wired streams, retention policies cascade automatically from parent to child streams. When you update a parent stream's retention policy, Streams propagates the change to all child streams that inherit from it.
-
-To override retention for a specific child stream, open that stream's **Retention** tab and configure a different method. The child stream uses its own policy instead of inheriting from the parent.
-::::::
-
-:::::::
+For more information, refer to [{{search-snaps-cap}}](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
 ## Set failure store retention [streams-configure-failure-store-retention]
 
