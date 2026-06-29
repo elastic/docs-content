@@ -802,7 +802,7 @@ toc:
                 children:
                   - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
                   - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-                  - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
           - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
             children:
               - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md

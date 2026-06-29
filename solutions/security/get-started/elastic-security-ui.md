@@ -190,7 +190,7 @@ To access this section, turn on the `securitySolution:enablePrivilegedUserMonito
 Expand this section to access the following pages:
 
 - [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
 ### Explore [_explore] 
