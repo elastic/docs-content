@@ -13,7 +13,7 @@ products:
 # Entity store [entity-store]
 
 ::::{admonition} Requirements
-To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md).
+To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md).
 
 ::::
 

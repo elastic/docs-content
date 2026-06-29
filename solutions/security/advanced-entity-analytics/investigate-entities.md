@@ -14,5 +14,5 @@ products:
 
 Once risk scores and anomalies are populated, use these surfaces to investigate the entities that need attention.
 
-* [Monitor entity risk and anomalies](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Review entity risk scores, behavioral anomalies, and AI-generated threat hunting leads from the **Entity Analytics** page.
+* [Monitor entity risk and anomalies](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Review entity risk scores, behavioral anomalies, and AI-generated threat hunting leads from the **Entity analytics** page.
 * [View entity details](/solutions/security/advanced-entity-analytics/view-entity-details.md): Inspect an individual entity's risk summary, resolution group, and connection graph from the entity details flyout.

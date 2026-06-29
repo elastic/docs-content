@@ -20,7 +20,7 @@ The {{security-app}} provides several ways to monitor the change in the risk pos
 After reviewing an entity’s risk score, the recommended next step is to investigate the risky entity in [Timeline](/solutions/security/investigate/timeline.md).
 ::::
 
-## Entity Analytics page [entity-analytics-overview]
+## Entity analytics page [entity-analytics-overview]
 
 On the [Entity Analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
 
