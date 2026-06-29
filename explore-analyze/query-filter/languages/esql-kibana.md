@@ -378,44 +378,13 @@ SET setting_name = setting_value[, ..., settingN = valueN];
 
 The {{esql}} editor autocompletes supported settings and validates their values. Settings particularly useful from {{kib}} include:
 
-- [`approximation`](#esql-kibana-approximation): Trade exact results for speed on large `STATS` queries using random sampling.
+- [`approximation`](#approximation-fast-mode): Trade exact results for speed on large `STATS` queries using random sampling. The {{kib}} UI exposes this as the [Fast mode](#approximation-fast-mode) toggle.
 - [`project_routing`](#esql-kibana-cps): Limit a [cross-project search](/explore-analyze/cross-project-search.md) to specific projects.
 - [`unmapped_fields`](#esql-kibana-unmapped-fields): Choose how to handle fields that are not present in the index mapping.
 
 The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
 
 For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
-
-
-### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
-
-When exact results are not strictly necessary, you can enable [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. {{es}} rewrites the query to use random sampling and returns estimates together with confidence intervals. The performance benefit grows with the size of the source data.
-
-To approximate a `STATS` query with default settings, prepend `SET approximation=true;` to your query:
-
-```esql
-SET approximation=true;
-FROM kibana_sample_data_logs
-| WHERE @timestamp >= NOW()-30d
-| STATS total_hits = COUNT(),
-        avg_bytes = AVG(bytes)
-  BY geo.dest
-| SORT total_hits DESC
-| LIMIT 5
-```
-
-To tune the sample size or disable confidence intervals, pass a map. For example:
-
-- `SET approximation={"rows":5000000};` increases the sample size from the default.
-- `SET approximation={"confidence_level":null};` skips confidence interval computation for additional speedup.
-
-The editor autocompletes these map parameters as you type.
-
-For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
 ### Search across projects with `SET project_routing` [esql-kibana-cps]
@@ -466,6 +435,74 @@ The first time a query references an unmapped field, the editor shows a warning 
 :::
 
 {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
+
+
+## Get faster results with Fast mode [approximation-fast-mode]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When exact results are not strictly necessary, you can return faster, estimated results for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md). {{es}} rewrites the query to use random sampling and returns estimates together with confidence intervals. The performance benefit grows with the size of the source data.
+
+You can enable approximation in two ways:
+
+- {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Fast mode** turns approximation on from the {{kib}} UI, without editing your query.
+- The [`SET approximation`](#esql-kibana-approximation) directive enables approximation from within a query and takes precedence over the Fast mode toggle.
+
+### Turn Fast mode on or off [esql-kibana-fast-mode-toggle]
+```{applies_to}
+stack: preview 9.5
+serverless: preview
+```
+
+Fast mode is the {{kib}} UI control for {{esql}} approximation. It's available from the {{esql}} query bar wherever you run {{esql}} queries against large datasets:
+
+- In [**Discover**](/explore-analyze/discover/try-esql.md), when Discover is in {{esql}} mode.
+- In [**Dashboards**](/explore-analyze/visualize/esorql.md), for {{esql}} visualizations.
+
+To turn Fast mode on or off, select the {icon}`bolt` Fast mode button next to the query bar, then use the toggle in the popover. When Fast mode is on, the button is highlighted and your `STATS` queries return estimated results.
+
+The button is available only when approximation can apply:
+
+- In **Discover**, the query must use exactly one `STATS` command.
+- In **Dashboards**, at least one {{esql}} visualization must use `STATS`.
+
+Because results are estimated, they can change between runs, and groups with few matching documents might be omitted. In the chart that Discover generates automatically, the confidence interval and certified fields aren't plotted.
+
+In **Dashboards**, the Fast mode state is saved with the dashboard and restored when you reopen it. It's also preserved when you share a dashboard or a Discover {{esql}} query.
+
+To control approximation for a single query regardless of the toggle, use the [`SET approximation`](#esql-kibana-approximation) directive.
+
+### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+The [`SET approximation`](elasticsearch://reference/query-languages/esql/commands/set.md) directive enables approximation from within a query. It takes precedence over the [Fast mode](#esql-kibana-fast-mode-toggle) toggle, so you can force approximate or exact results for a specific query.
+
+To approximate a `STATS` query with default settings, prepend `SET approximation=true;` to your query:
+
+```esql
+SET approximation=true;
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= NOW()-30d
+| STATS total_hits = COUNT(),
+        avg_bytes = AVG(bytes)
+  BY geo.dest
+| SORT total_hits DESC
+| LIMIT 5
+```
+
+To tune the sample size or disable confidence intervals, pass a map. For example:
+
+- `SET approximation={"rows":5000000};` increases the sample size from the default.
+- `SET approximation={"confidence_level":null};` skips confidence interval computation for additional speedup.
+
+The editor autocompletes these map parameters as you type.
+
+For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
 ## Related pages

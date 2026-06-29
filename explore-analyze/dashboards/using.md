@@ -29,6 +29,11 @@ This page covers the main ways to explore dashboard data: using Kibana Query Lan
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
+:::{note}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+When a dashboard includes an {{esql}} visualization that uses `STATS`, a {icon}`bolt` Fast mode button appears next to the query bar. Turn it on to return faster, estimated results on large datasets. Refer to [Get faster results with Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+:::
+
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
 The query bar lets you build filters using [{{kib}} Query Language (KQL)](../query-filter/languages/kql.md). When typing, it dynamically suggests matching fields, operators, and values to help you get the exact results that you want.
