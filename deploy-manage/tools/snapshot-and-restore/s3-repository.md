@@ -174,6 +174,9 @@ You may further restrict the permissions by specifying a prefix within the bucke
 
 The bucket needs to exist to register a repository for snapshots. If you did not create the bucket then the repository registration will fail.
 
+You can also impose similar restrictions using a [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html).
+
+Do not impose any additional restrictions on access to your bucket, for instance by using stricter `Condition` clauses than the ones documented above. Overly-restrictive access policies can prevent {{es}} snapshots from working correctly.
 
 #### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts]
 
@@ -287,7 +290,7 @@ stack: ga 9.3
 
 From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
-If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behavior from AWS S3 then it will work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+If your storage does not support conditional writes then it is not fully S3-compatible. In this case {{es}} can fall back to using the multipart upload APIs for its linearizable registers, as long as these APIs have strongly consistent semantics as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
 
 ### Multipart uploads
 

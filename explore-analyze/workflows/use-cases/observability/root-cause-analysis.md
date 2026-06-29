@@ -283,5 +283,7 @@ steps:
 - [Observability workflows](/explore-analyze/workflows/use-cases/observability.md): The outcome this workflow supports.
 - [AI steps reference](/explore-analyze/workflows/steps/ai-steps.md): Parameters for `ai.agent` and related AI steps.
 - [{{agent-builder}} for Observability](/solutions/observability/ai/agent-builder-observability.md): How Agent Builder integrates with observability workflows.
+- [{{observability}} incident management](/solutions/observability/incident-management.md): The product surface this workflow automates.
+- [{{observability}} alerting](/solutions/observability/incident-management/alerting.md): How alert triggers fire on {{observability}} rules.
 - [Cases action steps](/explore-analyze/workflows/steps/cases.md): Full reference for `cases.*` steps.
 - [`elastic/workflows` examples folder](https://github.com/elastic/workflows/tree/main/workflows/examples): More end-to-end examples.

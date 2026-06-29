@@ -46,8 +46,8 @@ For example, if you have a dashboard that shows the logs and metrics for multipl
 
 The following panel types support dashboard drilldowns:
 
-* **Visualizations created with Lens**
-* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **{{esql}} visualizations**
+* **Lens visualizations that use a data view**
+* {applies_to}`stack: ga 9.4` {applies_to}`serverless:` **Lens visualizations built with {{esql}}**
 * **Maps**
 * **TSVB**
 * **Vega**
@@ -159,8 +159,15 @@ For example, when you create a Discover drilldown for a pie chart, you can click
 
 ![Drilldown on bar vertical stacked chart that navigates to Discover](/explore-analyze/images/kibana-dashboard_discoverDrilldown_8.3.gif "")
 
-::::{note}
-Discover drilldowns are supported only by **Lens** panels that use data views. {{esql}} visualization panels do not support Discover drilldowns. To open all of the **Lens** dashboard panel data in **Discover**, check [Open panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents).
+The following panel types support Discover drilldowns:
+
+* **Lens visualizations that use a data view**
+* {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Lens visualizations built with {{esql}}**
+
+    On {{esql}} panels, dashboard filters and the dashboard KQL or Lucene query are translated into a `WHERE` clause in the panel's ES|QL query, so the same context applies in **Discover**. Filters that can't be expressed in ES|QL are dropped. The **Explore in Discover** panel action applies the same translation.
+
+::::{tip}
+You can [open Lens dashboard panel data in Discover](../visualize/manage-panels.md#explore-the-underlying-documents) without setting up a drilldown.
 ::::
 
 

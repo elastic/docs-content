@@ -30,6 +30,7 @@ If you're not sure where to start, review the Collector's logs for error message
 * [Missing or incomplete traces due to Collector sampling](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md): Troubleshoot missing or incomplete traces caused by sampling configuration.
 
 * [{{es}} `generic.otel` index template missing or misconfigured](/troubleshoot/ingest/opentelemetry/edot-collector/missing-otel-index-template.md): Resolve silent ingest failure caused by a missing or misconfigured `generic.otel` index template when using `mapping.mode: otel`.
+* [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md): Resolve missing {{product.apm}} services and metrics caused by placing the `elasticapm` connector under `processors:` instead of `connectors:`.
 
 * [Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Learn why the Collector doesn't extract custom attributes and how to propagate such values using EDOT SDKs.
 

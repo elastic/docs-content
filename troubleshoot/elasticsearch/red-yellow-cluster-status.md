@@ -15,7 +15,10 @@ A red or yellow cluster health status indicates one or more shards are not assig
 * **Red health status**: The cluster has some unassigned primary shards, which means that some operations such as searches and indexing may fail.
 * **Yellow health status**: The cluster has no unassigned primary shards but some unassigned replica shards. This increases your risk of data loss and can degrade cluster performance.
 
-When your cluster has a red or yellow health status, it will continue to process searches and indexing where possible, but may delay certain management and cleanup activities until the cluster returns to green health status. For instance, some [{{ilm-init}}](../../manage-data/lifecycle/index-lifecycle-management.md) actions require the index on which they operate to have a green health status.
+When your cluster has a red or yellow health status, it will continue to process searches and indexing where possible, but may delay certain management and cleanup activities until the cluster returns to green health status. For instance:
+
+* Some [{{ilm-init}}](../../manage-data/lifecycle/index-lifecycle-management.md) actions require the index on which they operate to have a green health status.
+* {{kib}} requires its backing system index dependencies to be green to load. Otherwise, it returns the error [`Kibana server is not ready yet`](/troubleshoot/kibana/error-server-not-ready.md).
 
 In many cases, your cluster will recover to green health status automatically. If the cluster doesn’t automatically recover, then you must [manually address](#fix-red-yellow-cluster-status) the remaining problems so management and cleanup activities can proceed. See [this video](https://www.youtube.com/watch?v=v2mbeSd1vTQ) for a walkthrough of monitoring allocation health.
 

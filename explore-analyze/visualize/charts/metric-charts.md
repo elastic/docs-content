@@ -3,7 +3,7 @@ navigation_title: Metric charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
+description: Create metric charts to highlight important KPIs with dynamic coloring and trend indicators on dashboards.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -35,9 +35,8 @@ To build a metric chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a metric chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization..
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Metric
@@ -72,11 +71,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Use titles and subtitles to explain what the metric shows. "45,234" is a number, but "Active Users" as a title gives it meaning, and "Last 24 hours" as a subtitle makes it unambiguous.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::

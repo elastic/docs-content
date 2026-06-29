@@ -3,7 +3,7 @@ navigation_title: Line charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building line charts with Kibana Lens in Elastic.
+description: Create line charts to visualize how metrics evolve over time, spot seasonal patterns, and detect spikes or regressions.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -31,9 +31,8 @@ To build a line chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a line chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Line
@@ -48,7 +47,7 @@ Make sure that the visualization type is set to **Line**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
-   - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+   - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
 :::::
@@ -64,13 +63,14 @@ You can tweak the appearance of your chart by adjusting axes, legends, and serie
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
 
-For layout, hierarchy, and color guidance on dashboards, check EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library.
-- If you accessed Lens from the Visualize library, select **Save**. The Save menu also lets you add the visualization to a dashboard and the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::

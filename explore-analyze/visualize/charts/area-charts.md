@@ -3,7 +3,7 @@ navigation_title: Area charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building area charts with Kibana Lens in Elastic.
+description: Create area charts to visualize trends and quantitative values over time, such as traffic, CPU usage, or error rates.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -31,9 +31,8 @@ To build an area chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add an area chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Area
@@ -48,7 +47,7 @@ Using the **Visualization type** dropdown, select **Area**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to the **Breakdown** settings to segment your data by a categorical field, and create multiple areas within the same chart.
-   - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+   - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show filled areas plotted over time. Each area represents a series, with the filled region emphasizing the volume of data.
 :::::
@@ -68,12 +67,14 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 **Label clearly**
 :   Provide a descriptive title and axis labels that clearly communicate what the chart shows. For example, mention the metric being visualized ("Average Response Time") and reference the time period when relevant ("Dec 8-16, 2025").
 
-Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.  
+Refer to [Area chart settings](#area-chart-settings) to find all configuration options for your area chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::

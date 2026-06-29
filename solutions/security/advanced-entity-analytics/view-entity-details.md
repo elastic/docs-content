@@ -87,7 +87,7 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * Non-alert risk inputs and their contribution scores, including: 
   * Asset criticality level
   * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: deprecated =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
+  * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
@@ -105,7 +105,7 @@ serverless: preview
 [Entity store v2](/solutions/security/advanced-entity-analytics/entity-store.md) must be enabled and populated in the active space.
 ::::
 
-The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and relationships. To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
+The **Visualizations** section shows a collapsible graph preview centered on the entity, covering the last 30 days of connections and [relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md). To open the full interactive graph, click **Graph preview** to expand the flyout. In the graph view, you can:
 
 * Hover over an entity node and click the plus {icon}`plus_in_circle` to open the actions menu, where you can show or hide entity relationships, the entity's actions, actions done to the entity, or related events, or show the entity's details.
 

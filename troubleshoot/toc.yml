@@ -33,6 +33,7 @@ toc:
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
           - file: elasticsearch/troubleshoot-ingest-pipelines.md
+          - file: elasticsearch/fix-date-timestamps.md
 
       - file: elasticsearch/capacity.md
         children:  
@@ -55,6 +56,8 @@ toc:
       - file: elasticsearch/start-ilm.md
       - file: elasticsearch/index-lifecycle-management-errors.md
       - file: elasticsearch/file-based-recovery.md
+      - file: elasticsearch/troubleshooting-upgrades.md
+      - file: elasticsearch/troubleshooting-upgrade-assistant.md
       - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
@@ -155,6 +158,7 @@ toc:
               - file: ingest/opentelemetry/edot-collector/collector-not-starting.md
               - file: ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md
               - file: ingest/opentelemetry/edot-collector/missing-otel-index-template.md
+              - file: ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md
               - file: ingest/opentelemetry/edot-collector/trace-export-errors.md
               - file: ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md
           - file: ingest/opentelemetry/edot-sdks/index.md

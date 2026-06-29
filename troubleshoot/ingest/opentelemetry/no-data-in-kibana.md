@@ -38,6 +38,7 @@ This issue is typically caused by one or more of the following:
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
 * Missing or misconfigured `generic.otel` index template — when using `mapping.mode: otel`, if the template hasn't been installed yet or the exporter is misconfigured, the Collector reports success but no data reaches {{kib}}. Refer to [{{es}} `generic.otel` index template missing or misconfigured](/troubleshoot/ingest/opentelemetry/edot-collector/missing-otel-index-template.md) for more information.
+* The `elasticapmconnector` is misconfigured as a processor, which means that traces flow normally but {{product.apm}} metrics are never produced, so services don't appear in {{kib}} {{product.apm}}. Refer to [{{product.apm}} services missing due to misconfigured `elasticapmconnector`](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md).
 * Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDK
 
 ## Resolution
