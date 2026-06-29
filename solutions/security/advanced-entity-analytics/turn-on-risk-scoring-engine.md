@@ -1,4 +1,5 @@
 ---
+description: Turn on the entity risk scoring engine in Elastic Security to calculate risk scores for hosts, users, and services, and preview risky entities first.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/turn-on-risk-engine.html
   - https://www.elastic.co/guide/en/serverless/current/security-turn-on-risk-engine.html
@@ -14,8 +15,8 @@ products:
 # Turn on risk scoring
 
 
-::::{important}
-To use entity risk scoring, your role must have the appropriate user role or privileges. For more information, refer to [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md).
+::::{admonition} Requirements
+To use entity risk scoring, your role must have the appropriate user role or privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md).
 ::::
 
 

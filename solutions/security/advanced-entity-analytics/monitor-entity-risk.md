@@ -1,4 +1,6 @@
 ---
+navigation_title: Monitor entity risk
+description: Monitor entity risk scores, behavioral anomalies, and AI-generated threat hunting leads from the Entity analytics page in Elastic Security.
 applies_to:
   stack: ga 9.1+
   serverless:
@@ -8,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Entity analytics overview
+# Monitor entity risk and anomalies
 
 The **Entity analytics** page provides a centralized workspace for investigating entity risk across your environment. Use it to explore entity risk scores, surface behavioral anomalies, and prioritize threat investigations.
 
