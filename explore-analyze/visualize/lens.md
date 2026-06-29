@@ -274,7 +274,7 @@ To create partition charts, such as pie charts, configure one or more **Slice by
 
 For detailed instructions on creating pie charts, including best practices and configuration options, refer to [Build pie charts with {{kib}}](/explore-analyze/visualize/charts/pie-charts.md).
 
-1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
+1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Settings**/**Layer settings**.
 2. Select **Multiple metrics**.
 3. Click **X**.
 
@@ -284,7 +284,7 @@ For detailed instructions on creating pie charts, including best practices and c
 stack: preview
 ```
 
-Data sampling allows you to improve the visualization loading time. When you can create your visualization, click the **Layer settings** icon {icon}`app_management` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease the loading time by using a lower sampling percentage. This increases performance but lowers the accuracy.
+Data sampling allows you to improve the visualization loading time. When you create your visualization, click the **Settings**/**Layer settings** icon {icon}`gear` and use the slider to adjust the **Sampling** percentage. For example, on large datasets, you can decrease loading time by using a lower sampling percentage. This increases performance but reduces accuracy.
 
 
 ### Add annotations [add-annotations]
@@ -299,7 +299,7 @@ Click the **Add layer** icon {icon}`plus_square` , select **Annotations** and se
 1. Select the {{data-source}} for the annotation.
 2. From the fields list, drag a field to the **Horizontal axis** field.
 
-To use global filters in the annotation, click the **Layer settings** icon {icon}`app_management` on the annotations layer, and select **Use global filters**.
+To use global filters in the annotation, click the **Settings**/**Layer settings** icon {icon}`gear` on the annotations layer, and select **Use global filters**.
 
 From the annotation panel, you can choose the type of placement and adjust the its appearance.
 
