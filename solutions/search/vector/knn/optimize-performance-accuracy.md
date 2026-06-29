@@ -222,7 +222,7 @@ All quantization introduces some accuracy loss, and higher compression generally
 * `int4` often benefits from rescoring for higher accuracy or recall; 1.5×–2× oversampling usually recovers most loss.
 * `bbq` commonly requires rescoring except on very large indices or models specifically designed for quantization; 3×–5× oversampling is generally sufficient, but higher might be needed for low-dimension vectors or embeddings that quantize poorly.
 
-### The `rescore_vector` option
+### The `rescore_vector` option [the-rescore_vector-option]
 ```{applies_to}
 stack: preview =9.0, ga 9.1+
 ```
