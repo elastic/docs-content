@@ -1,7 +1,7 @@
 ---
 description: Track the activity of users with elevated permissions to identify suspicious behavior and insider threats. Removed in favor of watchlists in Elastic Security.
 applies_to:
-  stack: removed =9.4, ga =9.3, preview 9.1-9.2
+  stack: removed 9.4+, ga =9.3, preview 9.1-9.2
   serverless:
     security: ga
 products:

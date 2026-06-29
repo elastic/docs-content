@@ -16,4 +16,4 @@ Once [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-
 
 * [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md): Define groups of important entities — such as executives or critical infrastructure hosts — and factor their membership into entity risk scoring.
 * [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md): Link multiple entity records that represent the same real-world identity and consolidate their risk scores into a single view.
-* [Privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md): {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Track the activity of users with elevated permissions. Replaced by watchlists.
+* {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` [Privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md): Track the activity of users with elevated permissions. Replaced by watchlists.

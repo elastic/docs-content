@@ -22,7 +22,7 @@ After reviewing an entity’s risk score, the recommended next step is to invest
 
 ## Entity analytics page [entity-analytics-overview]
 
-On the [Entity Analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
 
 If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
 

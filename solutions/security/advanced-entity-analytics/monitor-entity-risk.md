@@ -1,6 +1,6 @@
 ---
 navigation_title: Monitor entity risk
-description: Monitor entity risk scores, behavioral anomalies, and AI-generated threat hunting leads from the Entity Analytics page in Elastic Security.
+description: Monitor entity risk scores, behavioral anomalies, and AI-generated threat hunting leads from the Entity analytics page in Elastic Security.
 applies_to:
   stack: ga 9.1+
   serverless:
