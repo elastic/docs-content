@@ -33,7 +33,7 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
-| {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
+| {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
 
@@ -84,7 +84,7 @@ Investigate entity connections and relationships directly from the entity detail
 
 ### Privileged user monitoring
 ```yaml {applies_to}
-stack: removed =9.4, ga =9.3, preview 9.1-9.2
+stack: removed 9.4+, ga =9.3, preview 9.1-9.2
 ```
 
 Track the activity of users with elevated permissions, such as system administrators or users with access to sensitive data. Identify suspicious activities like over-provisioning of rights or potential insider threats before they cause damage.

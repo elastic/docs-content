@@ -40,7 +40,7 @@ Entity risk scores are determined by the following risk inputs:
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
-| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
+| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
 :::
 
 :::::
