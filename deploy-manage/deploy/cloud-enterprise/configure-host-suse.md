@@ -12,14 +12,17 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-SUSE Linux Enterprise Server (SLES) hosts use `zypper` to install Docker and require manual XFS quota setup, because XFS is not the default filesystem on SLES. The steps on this page target SLES 15 SP4.
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings.
 
-Before installing, make sure to cross-check the compatible SLES version and Docker version combination against the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). The commands shown on this page are examples. Substitute the versions you've identified in the support matrix.
+SLES hosts use `zypper` to install Docker and require manual XFS quota setup because XFS is not the default filesystem on SLES. The steps on this page target SLES 15 SP4.
+
+Before you begin, identify a supported SLES and Docker version combination in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Substitute the example versions in this guide with the versions listed there.
 
 ::::{warning}
 SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLES 15 or later for new {{ece}} installations, and migrate existing SLES 12 SP5 hosts.
 ::::
 
+* [Prerequisites](#ece-configure-host-suse-prerequisites)
 * [Install Docker](#ece-install-docker-sles12)
 * [Set up XFS quotas](#ece-xfs-setup-sles12)
 * [Prepare the data directories](#ece-prepare-data-directories-sles)
@@ -27,6 +30,70 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLE
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
 * [Verify the host configuration](#ece-verify-host-config-sles)
 * [Next steps](#ece-configure-host-suse-next-steps)
+
+## Prerequisites [ece-configure-host-suse-prerequisites]
+
+Before continuing, make sure that:
+
+- You are logged in as the non-root user that will install and run ECE. The commands in this guide assume that `$USER` refers to this user. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
+- This user can run commands with `sudo` to perform administrative tasks.
+
+## Prepare the user account for ECE
+
+1. Set up the OS groups and add your user.
+
+    1. Create the `elastic` and `docker` groups if they don't already exist:
+
+        ```sh
+        sudo groupadd elastic
+        sudo groupadd docker
+        ```
+
+    1. (Optional) Create a dedicated user for ECE:
+
+        If the user you are currently logged in as is not the user that will install and run ECE, create a dedicated user. The following example creates the recommended `elastic` user:
+
+        ```sh
+        sudo useradd -m -g elastic -G docker elastic
+        ```
+
+        ::::{note}
+        If you create a dedicated user, we recommend granting it `sudo` privileges and then logging in or switching to that user before continuing. This allows `$USER` to automatically resolve to the user that will install and run ECE.
+
+        Alternatively, you can continue using a different account with `sudo` privileges, and replace `$USER` with the name of the user that will install and run ECE in the remaining commands in this guide.
+        ::::
+
+    1. Add the user to both groups:
+
+        ```sh
+        sudo usermod -aG elastic,docker $USER
+        ```
+
+    1. Verify that the user that will run ECE has a UID and GID of at least 1000:
+
+        ```sh
+        id $USER
+        ```
+
+        The output should show a `uid` and `gid` value of `1000` or higher.
+
+    1. Verify that the user's primary group is `elastic`:
+
+        ```sh
+        id -gn $USER
+        ```
+
+        If the command doesn't return `elastic`, find the `elastic` group GID:
+
+        ```sh
+        grep elastic /etc/group
+        ```
+
+        Then set the user's primary group to `elastic`:
+
+        ```sh
+        sudo usermod -g <elastic_group_gid> $USER
+        ```
 
 ## Install Docker on SLES [ece-install-docker-sles12]
 
@@ -72,79 +139,14 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLE
     sudo systemctl stop docker
     ```
 
-## Prepare the user account for ECE
-
-The following commands assume that you are logged in as the non-root user account that will run ECE. We recommend using a dedicated `elastic` user, but you can also use an existing non-root user account with a UID greater than 1000.
-
-1. Set up the OS groups and add your user.
-
-    1. Create the `elastic` and `docker` groups if they don't already exist:
-
-        ```sh
-        sudo groupadd elastic
-        sudo groupadd docker
-        ```
-
-    1. (Optional) If you want to use the recommended `elastic` user and it doesn't exist yet, create it:
-
-        ```sh
-        sudo useradd -m -g elastic -G docker elastic
-        ```
-
-        The user that prepares the host must be able to run commands with `sudo`. Configure sudo access according to your organization's policies. For example, to allow the `elastic` user to run the commands in this guide without entering a password:
-
-        ```sh
-        echo "elastic ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/99-ece-users
-        sudo chmod 440 /etc/sudoers.d/99-ece-users
-        sudo visudo -cf /etc/sudoers.d/99-ece-users
-        ```
-
-        Then log in as `elastic` before continuing, so that `$USER` resolves to the user that will run ECE.
-
-        ```sh
-        sudo su - elastic
-        ```
-
-    1. Add the user to both groups:
-
-        ```sh
-        sudo usermod -aG elastic,docker $USER
-        ```
-
-    1. Verify that the user running ECE has a UID and GID of at least 1000:
-
-        ```sh
-        id $USER
-        ```
-
-        The output should show a `uid` and `gid` value of `1000` or higher.
-
-    1. Verify that the user's primary group is `elastic`:
-
-        ```sh
-        id -gn $USER
-        ```
-
-        If the command doesn't return `elastic`, find the `elastic` group GID:
-
-        ```sh
-        grep elastic /etc/group
-        ```
-
-        Then set the user's primary group to `elastic`:
-
-        ```sh
-        sudo usermod -g <elastic_group_gid> $USER
-        ```
-
 ## Set up XFS quotas [ece-xfs-setup-sles12]
 
-XFS is required to support disk space quotas for {{es}} data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 15, you need to set up an XFS file system and have quotas enabled.
+{{ece}} relies on XFS project quotas to manage disk space for {{es}} data directories. These quotas limit the amount of disk space available to each {{es}} cluster node based on the RAM-to-disk ratio defined by its [instance configuration](deployment-templates.md#ece-getting-started-instance-configurations). For example, the default `data.default` instance configuration uses a 1:32 ratio, allowing 32 GB of disk space for every 1 GB of RAM assigned to a cluster node.
 
-Disk space quotas set a limit on the amount of disk space an {{es}} cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
+To use disk quotas, the file system mounted at `/mnt/data` must be an XFS file system with project quotas enabled. This guide creates a dedicated XFS file system for `/mnt/data`, which is the recommended configuration. If `/mnt/data` already resides on an XFS file system with project quotas enabled, you can skip the file system creation steps.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting ECE.
+You can use LVM, `mdadm`, or a combination of the two for block device management. However, their configuration is outside the scope of this guide and is not covered by ECE support.
 ::::
 
 ::::{important}
@@ -167,26 +169,30 @@ You must use XFS and have quotas enabled on all allocators. Otherwise, disk usag
 
 ## Prepare the data directories [ece-prepare-data-directories-sles]
 
-Prepare the data directories used by {{ece}} and Docker. These steps ensure that `/mnt/data` exists, the XFS volume is mounted, and the required ownership and permissions are applied.
+Prepare the data directories used by {{ece}} and Docker. These steps create the `/mnt/data` and `/mnt/data/docker` directories, mount an XFS file system if applicable, and apply the required ownership and permissions.
 
-1. Create the `/mnt/data/` directory as a mount point if it doesn't already exist:
+1. Create the `/mnt/data` directory if it doesn't already exist:
 
     ```sh
     sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
-1. Mount the file systems configured in `/etc/fstab`:
+1. If you configured a dedicated XFS file system in [Set up XFS quotas](#ece-xfs-setup-sles12):
 
-    ```sh
-    sudo mount -a
-    ```
+    1. Mount the file system configured in `/etc/fstab`:
 
-1. Set the ownership and permissions on the mounted file system at `/mnt/data`:
+        ```sh
+        sudo mount -a
+        ```
 
-    ```sh
-    sudo chown $USER:elastic /mnt/data
-    sudo chmod 700 /mnt/data
-    ```
+    1. Set the ownership and permissions for `/mnt/data`:
+
+        Mounting the XFS file system for the first time replaces the original mount point. Reapply the required ownership and permissions to the mounted file system.
+
+        ```sh
+        sudo chown $USER:elastic /mnt/data
+        sudo chmod 700 /mnt/data
+        ```
 
 1. Create the `/mnt/data/docker` directory for Docker storage:
 
@@ -194,7 +200,7 @@ Prepare the data directories used by {{ece}} and Docker. These steps ensure that
     sudo install -o $USER -g elastic -d -m 700 /mnt/data/docker
     ```
 
-## Update the system configuration [ece-update-config-sles]
+## Configure system settings [ece-update-config-sles]
 
 1. Stop the `nscd` service and prevent it from starting automatically (it can interfere with Elastic services):
 
@@ -243,7 +249,25 @@ Prepare the data directories used by {{ece}} and Docker. These steps ensure that
         sudo sysctl -p
         ```
 
-1. (Optional) Tune network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
+1. Adjust the system limits by adding the following configuration values to the `/etc/security/limits.conf` file. These values are based on the {{ecloud}} hosted offering and should be used for ECE as well. If needed, make sure to replace `elastic` with your user name.
+
+    ```sh
+    *                soft    nofile         1024000
+    *                hard    nofile         1024000
+    *                soft    memlock        unlimited
+    *                hard    memlock        unlimited
+    elastic          soft    nofile         1024000
+    elastic          hard    nofile         1024000
+    elastic          soft    memlock        unlimited
+    elastic          hard    memlock        unlimited
+    elastic          soft    nproc          unlimited
+    elastic          hard    nproc          unlimited
+    root             soft    nofile         1024000
+    root             hard    nofile         1024000
+    root             soft    memlock        unlimited
+    ```
+
+1. (Optional) Tune additional network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
 
     ```sh
     cat << SETTINGS | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
@@ -272,40 +296,6 @@ Prepare the data directories used by {{ece}} and Docker. These steps ensure that
     * `net.ipv4.tcp_keepalive_intvl`
     * `net.ipv4.tcp_keepalive_probes`
     :::
-
-1. Adjust the system limits by adding the following configuration values to the `/etc/security/limits.conf` file. These values are based on the {{ecloud}} hosted offering and should be used for ECE as well. If needed, make sure to replace `elastic` with your user name.
-
-    ```sh
-    *                soft    nofile         1024000
-    *                hard    nofile         1024000
-    *                soft    memlock        unlimited
-    *                hard    memlock        unlimited
-    elastic          soft    nofile         1024000
-    elastic          hard    nofile         1024000
-    elastic          soft    memlock        unlimited
-    elastic          hard    memlock        unlimited
-    elastic          soft    nproc          unlimited
-    elastic          hard    nproc          unlimited
-    root             soft    nofile         1024000
-    root             hard    nofile         1024000
-    root             soft    memlock        unlimited
-    ```
-
-1. _If the Docker registry doesn't require authentication, skip this step._
-
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: If you use `docker.elastic.co`, the file content looks like this:
-
-    ```text
-    {
-     "auths": {
-       "docker.elastic.co": {
-         "auth": "<auth-token>"
-       }
-     }
-    }
-    ```
 
 ## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
@@ -344,6 +334,28 @@ Prepare the data directories used by {{ece}} and Docker. These steps ensure that
     1. The `max-size` and `max-file` options configure rotation for the `json-file` logs created by each container. Adjust these values to match your logging requirements.
     2. The `default-ulimits` setting increases the maximum number of open file descriptors available to Docker containers.
 
+1. _If the Docker registry doesn't require authentication, skip this step._
+
+    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
+
+    **Example**: If you use `docker.elastic.co`, the file content looks like this:
+
+    ```text
+    {
+     "auths": {
+       "docker.elastic.co": {
+         "auth": "<auth-token>"
+       }
+     }
+    }
+    ```
+
+1. Enable Docker to start on boot:
+
+    ```sh
+    sudo systemctl enable docker
+    ```
+
 1. Apply the updated Docker daemon configuration:
 
    * Reload the Docker daemon configuration:
@@ -358,15 +370,9 @@ Prepare the data directories used by {{ece}} and Docker. These steps ensure that
         sudo systemctl restart docker
         ```
 
-   * Enable Docker to start on boot:
-
-        ```sh
-        sudo systemctl enable docker
-        ```
-
 ## Verify the host configuration [ece-verify-host-config-sles]
 
-Reboot the host and verify that the kernel parameters, Docker configuration, mount point, directory permissions, user, and groups are configured correctly.
+Reboot the host and verify that the required system, storage, and Docker configuration has been applied successfully.
 
 1. Reboot your system to ensure that all configuration changes take effect:
 
@@ -374,23 +380,27 @@ Reboot the host and verify that the kernel parameters, Docker configuration, mou
     sudo reboot
     ```
 
+    Then log in again as your ECE user.
+
 1. Verify that the Docker daemon started automatically:
 
     ```sh
     sudo systemctl status docker
     ```
 
-    If Docker is not running, review your Docker daemon configuration and the previous setup steps.
+    If Docker is not running, review your Docker installation and daemon configuration.
 
 1. After rebooting, verify your Docker settings:
 
     ```sh
-    sudo docker info | grep Root
+    docker info | grep Root
     ```
 
     If the command returns `Docker Root Dir: /mnt/data/docker`, your changes were applied successfully and persist as expected.
 
     If the command returns `Docker Root Dir: /var/lib/docker`, review [Configure the Docker daemon](#ece-configure-docker-daemon-sles12) to make sure the Docker settings are applied correctly. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
+
+    If the command returns a permission denied error, make sure your user is a member of the `docker` group.
 
 1. Verify that the required kernel parameters are applied:
 
@@ -407,6 +417,47 @@ Reboot the host and verify that the kernel parameters, Docker configuration, mou
     vm.swappiness = 1
     ```
 
+1. Verify that memory cgroup accounting is enabled:
+
+    ```sh
+    cat /proc/cmdline
+    ```
+
+    Verify that the output includes the following kernel parameters:
+
+    ```text
+    cgroup_enable=memory swapaccount=1 cgroup.memory=nokmem
+    ```
+
+1. Verify the limits configured for the ECE user:
+
+    ```sh
+    sudo su - elastic -c 'ulimit -n && ulimit -l && ulimit -u' <1>
+    ```
+    1. Replace `elastic` with your ECE user if you are using a different user name.
+
+    The output should show:
+
+    ```text
+    1024000
+    unlimited
+    unlimited
+    ```
+
+1. Verify default limits applied to Docker containers:
+
+    ```sh
+    docker run --rm alpine sh -c 'ulimit -n && ulimit -l && ulimit -u'
+    ```
+
+    The output should show:
+
+    ```text
+    1024000
+    unlimited
+    unlimited
+    ```
+
 1. Verify that `/mnt/data` is mounted with XFS:
 
     ```sh
@@ -415,14 +466,14 @@ Reboot the host and verify that the kernel parameters, Docker configuration, mou
 
     The output should show `/mnt/data` as an `xfs` file system with project quotas enabled.
 
-1. Verify the ownership and permissions of the data directories:
+1. Verify the ownership and permissions of the data directory:
 
     ```sh
-    stat -c "%U:%G %a %n" /mnt/data /mnt/data/docker
+    stat -c "%U:%G %a %n" /mnt/data
     ```
 
-    The output should show that both directories are owned by the ECE user and the `elastic` group, and use `700` permissions.
+    The output should show that the directory is by the ECE user and the `elastic` group, and use `700` permissions.
 
 ## Next steps [ece-configure-host-suse-next-steps]
 
-Repeat these host preparation steps on every host that you want to use with {{ece}}. After all hosts are prepared and verified, continue to [Installation procedures](install-ece-procedures.md) to install {{ece}}.
+Repeat these host preparation steps for every host that you want to use with {{ece}}. After preparing and verifying all hosts, continue to [Installation procedures](install-ece-procedures.md) to install {{ece}}.
