@@ -49,10 +49,10 @@ Install a compatible Docker version on Ubuntu using `apt`.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker {{ece-docker-version}}. To install a different Docker version, replace {{ece-docker-version}} with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
+4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker 27.0. To install a different Docker version, replace 27.0 with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
     ```sh subs=true
-    sudo apt update && sudo apt install -y docker-ce=5:{{ece-docker-version}}.* docker-ce-cli=5:{{ece-docker-version}}.* containerd.io
+    sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
 

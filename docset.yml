@@ -93,7 +93,6 @@ subs:
   ecloud:   "Elastic Cloud"
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
-  ece-docker-version: "27.0"
   eck:   "Elastic Cloud on Kubernetes"
   edot:  "Elastic Distribution of OpenTelemetry"
   motlp: "Elastic Cloud Managed OTLP Endpoint"
