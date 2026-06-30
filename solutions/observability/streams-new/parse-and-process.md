@@ -69,13 +69,13 @@ Setting up processors is generally a multi-step process. For example, you might 
 
 ::::{tab-item} Manually add processors
 
-If you know which processors you want to use, you can add them manually from the Streams UI. Refer to the [Streamlang reference](../streams/management/streamlang.md) for supported processors and configuration details.
+If you know which processors you want to use, you can add them manually from the Streams UI. Refer to the [Streamlang reference](./streamlang.md) for supported processors and configuration details.
 
 1. Select **Create processor**. You can also let Streams suggest processors by selecting [Suggest a pipeline](#streams-generate-pipeline-suggestions).
 1. Select a processor from the **Processor** menu.
 
    :::{note}
-   Let Streams suggest patterns for [Grok](../streams/management/extract/grok.md#streams-grok-patterns) and [dissect](../streams/management/extract/dissect.md#streams-dissect-patterns) processors by selecting **Generate pattern**. This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+   Let Streams suggest patterns for [Grok](./processors/grok.md#streams-grok-patterns) and [dissect](./processors/dissect.md#streams-dissect-patterns) processors by selecting **Generate pattern**. This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
    :::
 
 1. Configure the processor and select **Create** to save the processor.
@@ -94,7 +94,7 @@ To add a condition:
 1. Select **Create condition**.
 1. After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
-Refer to [Conditions](../streams/management/streamlang.md#streams-streamlang-conditions) in the Streamlang reference for supported operators and examples.
+Refer to [Conditions](./streamlang.md#streams-streamlang-conditions) in the Streamlang reference for supported operators and examples.
 ::::
 
 :::::
@@ -197,13 +197,13 @@ stack: ga 9.3+
 - Users who prefer working with code
 - Advanced configurations with complex or deeply nested conditions
 
-Refer to the [Streamlang reference](../streams/management/streamlang.md) for the complete syntax, condition operators, and examples.
+Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, condition operators, and examples.
 
 ## Known limitations [streams-known-limitations]
 
-- Streams does not support all processors. Refer to the [Streamlang reference](../streams/management/streamlang.md) for supported processors.
+- Streams does not support all processors. Refer to the [Streamlang reference](./streamlang.md) for supported processors.
 - The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
-- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](../streams/management/extract/manual-pipeline-configuration.md) that supports {{product.painless}} scripting and all ingest processors.
+- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./processors/manual-pipeline-configuration.md) that supports {{product.painless}} scripting and all ingest processors.
 
 ## Advanced: How Streams applies processing changes to the underlying data stream [streams-applied-changes]
 

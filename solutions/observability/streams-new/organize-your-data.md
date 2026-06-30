@@ -1,4 +1,5 @@
 ---
+navigation_title: Organize your data
 applies_to:
   serverless: preview
   stack: preview 9.2+
@@ -14,7 +15,7 @@ products:
   - id: elastic-stack
 ---
 
-# Organize your data
+# Organize your data with Streams
 
 When logs from multiple sources flow into a single wired stream, partitioning lets you route subsets of that data into dedicated child streams. Each child stream can then be managed independently, with its own retention policy, processing rules, and field mappings, while automatically inheriting the parent's defaults.
 
@@ -30,7 +31,7 @@ Before creating partitions, keep the following in mind:
 
 - **Partition by logical groupings**, not by high-cardinality fields. Group logs by team, technology type, or environment (for example, `web-servers`, `application`, `security`) rather than by individual service names or host identifiers, which can generate too many streams to manage effectively.
 - **Aim for tens of partitions, not hundreds.** Each partition creates a dedicated data stream in {{es}}. There is a cost to each one, so keep the number manageable.
-- **Only partition when you need different lifecycle policies.** If all your logs can share the same retention and processing rules, a single stream is simpler to operate.
+- **Partition only when logs form meaningfully distinct groups: by structure, behavior, or both** Each partition should map to a set of logs with a distinct schema (fields, formats, or log shapes that differ from other sources), different operational behavior (retention duration, access patterns, storage destination), or both. Firewall logs and application logs warrant a split because they look different and often need different retention. Logs from two web servers do not: same schema, same lifecycle, partitioning adds overhead without benefit. If your logs are structurally similar and need identical treatment, a single stream is simpler to operate.
 
 ## Partition your data [organize-partitioning]
 
@@ -48,12 +49,12 @@ Choose how to define partitions: manually using field-based conditions, or by le
 :::{dropdown} Create partitions manually
 1. Select **Create partition manually**.
 1. In the **Data preview**, hover over a field and select:
-   - {icon}`plus_circle` to route data where the field matches the value.
-   - {icon}`minus_circle` to route data where the field does not match the value.
+   - The plus icon to route data where the field matches the value.
+   - The minus icon to route data where the field does not match the value.
 1. Under **Stream name**, give the child stream a name that reflects the condition.
 1. Select **Save** to create the child stream.
 
-Under **Condition**, you can also set the field, comparator, and value directly. Turn on the **Syntax editor** to enter conditions in YAML. For more on conditions, refer to [Streamlang conditions](../streams/management/streamlang.md#streams-streamlang-conditions).
+Under **Condition**, you can also set the field, comparator, and value directly. Turn on the **Syntax editor** to enter conditions in YAML. For more on conditions, refer to [Streamlang conditions](./streamlang.md#streams-streamlang-conditions).
 :::
 
 :::{dropdown} Suggest partitions with AI
@@ -90,4 +91,4 @@ Child streams automatically inherit the parent's field mappings, lifecycle setti
 
 :::::
 
-After partitioning, each child stream can be configured independently. You're ready to add [processing rules](./parse-and-process.md) to extract fields, set [retention policies](./configure-retention.md) per stream, or monitor [data quality](./manage-data-quality.md) for individual streams.
+After partitioning, each child stream can be configured independently. You're ready to add [processing rules](./parse-and-process.md) to extract fields, set [retention policies](./configure-retention.md) per stream, monitor [data quality](./manage-data-quality.md) for individual streams, or review [field naming](./wired-streams-field-naming.md) for the `logs.otel` and `logs.ecs` endpoints.

@@ -1,4 +1,5 @@
 ---
+navigation_title: Get data in
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
@@ -14,12 +15,13 @@ products:
   - id: elastic-stack
 ---
 
-# Get data in
+# Get data into Streams
 
-Streams supports two entry points depending on where your data is today:
+Streams supports the following ways to ingest data depending on where your data is today:
 
-- **[Ingest new data](#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Best for new deployments, custom logs, and mixed-format sources. 
-- **[Work with existing data](#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
+- **[Ingest new data](#get-data-in-wired)**: Use wired streams to send logs to a managed endpoint for new ingestion. Data lands in a managed hierarchy with inheritance, partitioning, and cascading configuration.
+Best for new deployments, custom logs, and mixed-format sources.
+- **[Work with existing data](#get-data-in-classic)**: Use classic streams to work with data already flowing into {{es}}. No migration or configuration changes required.
 
 ## Prerequisites [get-data-in-prerequisites]
 
@@ -57,7 +59,7 @@ stack: preview 9.2+
 serverless: preview
 ```
 
-Wired streams send your documents to a managed endpoint, from which you can route data into child streams based on partitioning rules. Child streams automatically inherit mappings, lifecycle settings, and processors from the parent, and configuration changes propagate through the hierarchy.
+Wired streams send your documents to a managed endpoint, from which you can route data into child streams based on [partitioning](./organize-your-data.md) rules. Child streams automatically inherit mappings, lifecycle settings, and processors from the parent, and configuration changes propagate through the hierarchy.
 
 To send data to a wired stream, configure your shipper to point to the appropriate endpoint:
 
@@ -67,8 +69,8 @@ To send data to a wired stream, configure your shipper to point to the appropria
 :::{note}
 Set the index based on your {{stack}} version:
 
-- {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 :::
 
 ```yaml
@@ -168,6 +170,17 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 :::::
 
+### Verify data is flowing
+
+After configuring your data source, confirm data is appearing in Discover.
+
+For wired streams, you first need to make the index pattern available:
+
+1. Manually [create a {{data-source}}](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
+1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+Once data appears in Discover, you're ready to start organizing, parsing, and configuring retention for your streams.
+
 ## Work with existing data [get-data-in-classic]
 
 Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
@@ -178,11 +191,10 @@ Classic streams:
 - Can follow the data retention policy set in the existing index template.
 - Do not support hierarchical inheritance or cascading configuration updates.
 
-No additional configuration is required. Open Streams from {{kib}} and your existing data streams appear automatically.
+No additional configuration is required.
 
-:::::{stepper}
+To open Streams for existing data:
 
-::::{step} Open Streams
 Open Streams from the following places in {{kib}}:
 
 - Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -190,17 +202,11 @@ Open Streams from the following places in {{kib}}:
 - Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 
 You can also access Streams features using the Streams API. {applies_to}`stack: preview 9.1+` {applies_to}`serverless: preview` Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
-::::
 
-::::{step} Verify data is flowing
-After configuring your data source, confirm data is appearing in Discover.
+## Next steps [get-data-in-next-steps]
 
-For wired streams, you first need to make the index pattern available:
+Once your data is flowing into Streams, you can start organizing and enriching it:
 
-1. Manually [create a {{data-source}}](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
-1. Add the wired streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- **[Organize your data](./organize-your-data.md)**: Use partitioning to route data subsets into dedicated child streams with independent retention and processing rules. Partitioning is only available for wired streams.
+- **[Parse and process](./parse-and-process.md)**: Build a processing pipeline to extract structured fields from raw log messages using AI-generated or manually configured processors.
 
-Once data appears in Discover, you're ready to start organizing, parsing, and configuring retention for your streams.
-::::
-
-:::::

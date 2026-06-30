@@ -21,10 +21,10 @@ Managing data retention across multiple indexes typically requires configuring s
 The Streams **Retention** tab provides a single place to manage lifecycle policies for your streams:
 
 - **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
-- **Cascade retention to child streams**: For wired streams, parent retention policies automatically apply to child streams. Override at the child level when a specific stream needs different settings.
+- **Child streams can inherit retention from parent streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
 - **Monitor storage in one view**: See storage size, ingestion averages, and tier distribution so you can align retention periods with storage costs and compliance requirements.
 
-## Required permissions [streams-configure-retention-permissions]
+## Before you get started [streams-configure-retention-permissions]
 
 To edit data retention in {{stack}}, you need the following data stream level privileges:
 
@@ -35,13 +35,13 @@ For more information, refer to [Granting privileges for data streams and aliases
 
 ## Configure retention [streams-configure-retention-steps]
 
-Use the following steps to review your stream's storage footprint, choose a retention method, and apply it.
+Follow these steps to review your stream's storage footprint, choose a retention method, and apply it.
 
 :::::::{stepper}
 
 ::::::{step} Review storage and ingestion data
 
-Select a stream and open its **Retention** tab. Before setting a retention policy, review the following panels to understand your data's footprint:
+Select a stream and open its **Data lifecycle** tab. Before setting a retention policy, review the following panels to understand your data's footprint:
 
 - **Storage size**: Total data volume and document count for the stream.
 - **Ingestion averages**: Estimated ingestion per day and per month, based on total stream size divided by stream age.

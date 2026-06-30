@@ -28,7 +28,7 @@ The Streams **Data quality** tab provides a single place to monitor and resolve 
 
 ## Find and fix data quality issues [streams-data-quality-workflow]
 
-Use the following steps to use Streams to identify failing documents, trace the source of failure, and deploy a fix.
+Use Streams to identify failing documents, trace the source of failure, and deploy a fix.
 
 :::::::{stepper}
 
