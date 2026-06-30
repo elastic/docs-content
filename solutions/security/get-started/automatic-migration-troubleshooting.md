@@ -20,12 +20,9 @@ products:
 
 The `.kibana-siem-rule-migrations-integrations` index contains a `semantic_text` field named `elser_embedding` that is intended to use Elastic's ELSER sparse embedding model for semantic search. However, on some deployments the field may be bound to a different embedding model (for example, a Jina dense embedding model with `inference_id: .jina-embeddings-v5-text-small`) instead.
 
-This causes the following symptoms:
+This can cause the following symptom:
 
 - **No integrations found for translated rules** — after completing an automatic migration, the **Integrations** column on the Translated rules page shows no integrations even when they should exist, because integration matching relies on semantic search against this index.
-- **Inconsistent search results across machines or clusters** — the same query returns different documents because the query-time inference model doesn't match the index-time model on the other cluster.
-- **Semantic search returning no results or wrong results** — Jina produces dense vectors; ELSER produces sparse vectors; they are incompatible vector spaces.
-- **`function_score` queries with `min_score` returning zero hits** — scores computed against mismatched embeddings are meaningless and rarely cross any threshold.
 
 The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is just a label; what matters is the `inference_id` baked into the index mapping at creation time.
 
@@ -57,34 +54,60 @@ Confirm whether an ELSER endpoint exists. If you only see Jina or other non-ELSE
 GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
 ```
 
-Look for the `inference_id` inside the field mapping. If it shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the steps below are required.
+Look for the `inference_id` inside the field mapping. If it shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the steps below are required. For example:
+
+```json
+"elser_embedding": {
+  "type": "semantic_text",
+  "inference_id": ".jina-embeddings-v5-text-small"
+}
+```
+
+The corrected mapping should reference an ELSER inference endpoint, such as:
+
+```json
+"elser_embedding": {
+  "type": "semantic_text",
+  "inference_id": "elser-2-elasticsearch"
+}
+```
 
 ---
 
 ### Step 2 — Create the ELSER inference endpoint
 
+You can create the ELSER inference endpoint with the API request below, or deploy ELSER from the Kibana **Model Management** > **Trained Models** page. For more information, refer to [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md).
+
 ```http
 PUT _inference/sparse_embedding/elser-2-elasticsearch
 {
-  "service": "elser",
-  "service_settings": { "num_allocations": 1, "num_threads": 1 }
+  "service": "elasticsearch",
+  "service_settings": {
+    "adaptive_allocations": {
+      "enabled": true,
+      "min_number_of_allocations": 1,
+      "max_number_of_allocations": 10
+    },
+    "num_threads": 1,
+    "model_id": ".elser_model_2"
+  }
 }
 ```
 
-This registers a new ELSER sparse embedding inference endpoint with the ID `elser-2-elasticsearch`. This ID will be referenced in the index mapping.
+This registers a new ELSER sparse embedding inference endpoint with the ID `elser-2-elasticsearch`. This ID will be referenced in the index mapping. If you deploy ELSER from Kibana instead, use that endpoint ID in the mapping examples below.
 
 ::::{note}
 The inference ID cannot start with a dot (`.`) — that prefix is reserved for system-provisioned endpoints on Elastic Cloud. Use a plain alphanumeric name.
 
-Increase `num_allocations` and `num_threads` for better throughput during reindex if your cluster has spare ML capacity.
+Adjust the adaptive allocation settings and `num_threads` for better throughput during reindex if your cluster has spare ML capacity.
 ::::
 
 ---
 
-### Step 3 — Create a staging index (`-v2`)
+### Step 3 — Create a backup index
 
 ```http
-PUT .kibana-siem-rule-migrations-integrations-v2
+PUT kibana-siem-rule-migrations-integrations-backup
 {
   "settings": {
     "index.mapping.total_fields.limit": 2000
@@ -115,12 +138,12 @@ PUT .kibana-siem-rule-migrations-integrations-v2
 ::::{note}
 **Why `dynamic: false`:** ELSER sparse vectors store thousands of unique NLP tokens as sub-fields at index time. With `dynamic: true` (the default), each token becomes a new mapped field, quickly exhausting the `total_fields.limit`. Setting `dynamic: false` prevents these token fields from being added to the mapping while still allowing them to be indexed and searched correctly.
 
-**Why a staging index (`-v2`) first:** The original index cannot have its `inference_id` changed in-place — mappings are immutable for `semantic_text` fields. A staging index lets you validate the reindex succeeded before destroying the original.
+**Why a backup index first:** The original index cannot have its `inference_id` changed in-place — mappings are immutable for `semantic_text` fields. A backup index lets you validate the reindex succeeded before destroying the original, and it remains available after final verification.
 ::::
 
 ---
 
-### Step 4 — Reindex into the staging index
+### Step 4 — Reindex into the backup index
 
 ```http
 POST _reindex?wait_for_completion=false
@@ -132,7 +155,7 @@ POST _reindex?wait_for_completion=false
     }
   },
   "dest": {
-    "index": ".kibana-siem-rule-migrations-integrations-v2"
+    "index": "kibana-siem-rule-migrations-integrations-backup"
   },
   "script": {
     "source": """
@@ -177,10 +200,10 @@ Check for:
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_count
-GET .kibana-siem-rule-migrations-integrations-v2/_count
+GET kibana-siem-rule-migrations-integrations-backup/_count
 ```
 
-Both counts must be equal before proceeding. If the staging index (`-v2`) has fewer documents, check the task failures from Step 5 before continuing.
+Both counts must be equal before proceeding. If the backup index has fewer documents, check the task failures from Step 5 before continuing.
 
 ---
 
@@ -229,17 +252,17 @@ PUT .kibana-siem-rule-migrations-integrations
 }
 ```
 
-The original index name is hardcoded in Kibana's SIEM rule migration code. The index must exist under its original name. This step recreates it with the correct mapping used for the staging index.
+The original index name is hardcoded in Kibana's SIEM rule migration code. The index must exist under its original name. This step recreates it with the correct mapping used for the backup index.
 
 ---
 
-### Step 9 — Reindex from the staging index back into the original
+### Step 9 — Reindex from the backup index back into the original
 
 ```http
 POST _reindex?wait_for_completion=false
 {
   "source": {
-    "index": ".kibana-siem-rule-migrations-integrations-v2"
+    "index": "kibana-siem-rule-migrations-integrations-backup"
   },
   "dest": {
     "index": ".kibana-siem-rule-migrations-integrations"
@@ -247,7 +270,7 @@ POST _reindex?wait_for_completion=false
 }
 ```
 
-The staging index already contains correct ELSER embeddings, so no script or exclusions are needed — this is a straight document copy.
+The backup index already contains correct ELSER embeddings, so no script or exclusions are needed — this is a straight document copy.
 
 ---
 
@@ -265,61 +288,20 @@ Replace `<task_id>` with the one returned in Step 9. Apply the same checks as St
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_count
-GET .kibana-siem-rule-migrations-integrations-v2/_count
+GET kibana-siem-rule-migrations-integrations-backup/_count
 ```
 
 Confirm that both document counts match.
 
 ---
 
-### Step 12 — Clean up the staging index
-
-```http
-DELETE .kibana-siem-rule-migrations-integrations-v2
-```
-
-Only delete once Step 11 confirms counts match. Keep the staging index as a backup until you are confident the original is working correctly.
-
----
-
-### Step 13 — Confirm the fix
+### Step 12 — Confirm the fix
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
 ```
 
-The `inference_id` should now show `elser-2-elasticsearch`. If it does, the field is correctly bound to ELSER and semantic search queries will produce consistent, correct results.
-
----
-
-If the `inference_id` is correct but integrations still do not appear for translated rules, verify that the ELSER model is deployed and started.
-
-### Step 14 — Check the ELSER model status
-
-```http
-GET _ml/trained_models/.elser_model_2/_stats
-```
-
-Review the model stats to confirm whether `.elser_model_2` is already deployed and running.
-
----
-
-### Step 15 — Start the ELSER model deployment and verify it
-
-```http
-POST _ml/trained_models/.elser_model_2/deployment/_start?wait_for=started&timeout=3m
-{
-  "number_of_allocations": 1,
-  "threads_per_allocation": 1,
-  "deployment_id": "elser-2-elasticsearch"
-}
-```
-
-```http
-GET _ml/trained_models/.elser_model_2/_stats
-```
-
-After starting the deployment, run the stats API again to confirm the model is started and available to the `elser-2-elasticsearch` deployment.
+The `inference_id` should now show `elser-2-elasticsearch`. If it does, the field is correctly bound to ELSER. Keep `kibana-siem-rule-migrations-integrations-backup` available as a backup after final verification.
 
 ---
 
@@ -328,6 +310,3 @@ After starting the deployment, run the stats API again to confirm the model is s
 | Problem | Cause | Fix applied |
 |---|---|---|
 | Wrong inference model on `elser_embedding` | Index created when ELSER was unavailable; fell back to a different model | Recreated index with explicit `inference_id: elser-2-elasticsearch` |
-| Inconsistent results across machines | Different vector spaces (dense vs ELSER sparse) | All embeddings regenerated with ELSER |
-| `total_fields.limit` exceeded during reindex | ELSER tokens dynamically mapped as individual fields | Set `dynamic: false` on index mapping |
-| Old vectors copied instead of re-embedded | `elser_embedding` source contained vector structure | Excluded field from `_source`, re-injected plain text via Painless script |
