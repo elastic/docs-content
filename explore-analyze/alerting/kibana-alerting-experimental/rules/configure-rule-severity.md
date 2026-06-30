@@ -15,7 +15,7 @@ Severity is an optional setting for rules in the {{alerting-v2-system}}. To set 
 | Value | Description | Urgency |
 | --- | --- | --- |
 | `info` | Informational event worth recording. | No action required. |
-| `low` | Minor condition that may need monitoring. | Review when convenient. |
+| `low` | Minor condition that might need monitoring. | Review when convenient. |
 | `medium` | Notable condition that warrants investigation. | Investigate soon. |
 | `high` | Serious condition requiring prompt attention. | Address promptly. |
 | `critical` | Severe condition requiring immediate action. | Act immediately. |
@@ -40,7 +40,7 @@ Refer to [Rule event and field reference](rule-event-field-reference.md#episode-
 
 ## Examples
 
-### Static severity for a simple threshold rule
+### Static severity for a fixed threshold rule
 
 If every breach of a rule is equally urgent, assign a fixed severity rather than computing it dynamically. The `EVAL` command adds a constant `severity` column to every row the query returns.
 

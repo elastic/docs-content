@@ -29,7 +29,7 @@ Set `no_data_strategy` to one of the following values:
 
 ### Maintain alert state during a metrics collection outage
 
-This rule monitors infrastructure CPU. If the metrics collection agent stops sending data, you don't want an active CPU breach to auto-recover just because the query returned nothing. Set `no_data_strategy` to `last_known_status`. The rule holds the alert in its current state until data resumes.
+This rule monitors infrastructure CPU. If the metrics collection agent stops sending data, you don't want an active CPU breach to auto-recover because the query returned nothing. Set `no_data_strategy` to `last_known_status`. The rule holds the alert in its current state until data resumes.
 
 Use this when an empty query result most likely means a pipeline problem rather than a genuine recovery.
 

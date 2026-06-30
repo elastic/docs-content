@@ -63,7 +63,7 @@ These parameters work across all rule creation methods.
 
 ### Set configurable values in the rule form (`?param`) [form-variables]
 
-When creating a rule through the form, you can use `?param` placeholders, such as `?threshold`, as {{esql}} Control variables. The form resolves these variables and inlines their values into the query before saving. The stored rule and the YAML representation of it contains the resolved values, not the placeholder tokens.
+When creating a rule through the form, you can use `?param` placeholders, such as `?threshold`, as {{esql}} Control variables. The form resolves these variables and embeds their values into the query before saving. The stored rule and the YAML representation of it contains the resolved values, not the placeholder tokens.
 
 ## Examples
 
@@ -83,7 +83,7 @@ If you omit the time filter, the query scans the full index on every evaluation,
 
 ### Using a form variable for a configurable threshold
 
-This query uses `?threshold` as a form variable so the threshold can be set in the rule form UI without editing the query directly. When the rule is saved, the form resolves `?threshold` to its configured value and inlines it. The stored query contains the literal number, not the placeholder.
+This query uses `?threshold` as a form variable so the threshold can be set in the rule form UI without editing the query directly. When the rule is saved, the form resolves `?threshold` to its configured value and embeds it. The stored query contains the literal number, not the placeholder.
 
 ```esql
 FROM logs-*

@@ -50,7 +50,7 @@ Without a matching `grouping.fields` entry, the rule treats all services as a si
 
 ### Track CPU usage per host and region
 
-When the query groups by multiple fields, include all of them in `grouping.fields` to create one alert series per unique combination.
+When the query groups by multiple fields, include all fields in `grouping.fields` to create one alert series per unique combination.
 
 ```esql
 FROM metrics-*

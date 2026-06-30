@@ -19,7 +19,7 @@ Tags and runbooks are optional metadata fields for Alert-mode rules in the {{ale
 
 ### Tag a rule for team ownership and severity
 
-Tags make it easy to filter alerts by team, environment, or severity tier. For a checkout service rule, you might add tags like:
+Tags let you filter alerts by team, environment, or severity tier. For a checkout service rule, you might add tags like:
 
 - `team:payments`
 - `env:production`

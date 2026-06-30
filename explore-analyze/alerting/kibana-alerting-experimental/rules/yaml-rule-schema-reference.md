@@ -31,8 +31,8 @@ Use `composed` when breach, recovery, and no-data conditions all start from the 
 | Field | Type | Description |
 |---|---|---|
 | `query.base` | ES\|QL string | Base query that runs on every evaluation. Time filters are applied automatically using the lookback window. Required. |
-| `query.breach.segment` | ES\|QL segment string | Appendable ES\|QL segment for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. Required. |
-| `query.recovery.segment` | ES\|QL segment string | Appendable ES\|QL segment for recovery detection. Required when `recovery_strategy` is `query`. |
+| `query.breach.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. Required. |
+| `query.recovery.segment` | ES\|QL segment string | ES\|QL segment appended to the base query for recovery detection. Required when `recovery_strategy` is `query`. |
 
 ### Fields for `query.format: standalone`
 

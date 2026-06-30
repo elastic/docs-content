@@ -28,7 +28,7 @@ Signal-mode rules don't support notifications. If you ask the agent to set up no
 
 Use these prompts as a starting point, then adjust them to your data and thresholds:
 
-- Create an error threshold rule on my checkout service data. Alert when there are more than 3 HTTP 5xx errors in the past 5 minutes, grouped by URL path.
+- Create an error threshold rule on the checkout service data. Alert when there are more than 3 HTTP 5xx errors in the past 5 minutes, grouped by URL path.
 - Monitor average CPU usage across all hosts. Alert when any host exceeds 90% for more than 10 minutes.
-- Alert me when log volume from the payments service drops below 100 events in a 5-minute window. This likely means data has stopped flowing.
+- Alert when log volume from the payments service drops below 100 events in a 5-minute window. This likely means data has stopped flowing.
 - Set up a rule that tracks error rate by service. Alert at medium severity when the rate exceeds 1%, and critical when it exceeds 5%.

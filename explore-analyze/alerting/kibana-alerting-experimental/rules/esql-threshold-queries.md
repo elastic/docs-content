@@ -52,7 +52,7 @@ The `BY` fields you use here must match the grouping configuration in the rule. 
 
 ## Next steps
 
-If both of these patterns are too simple for your use case, the next pages cover more specific detection problems:
+If both of these patterns don't fit your use case, the next pages cover more specific detection problems:
 
 - [No-data detection](esql-no-data-detection.md): when a host or source stops reporting entirely
 - [SLO burn rate](esql-slo-burn-rate.md): when you need to check error budget consumption across multiple time windows

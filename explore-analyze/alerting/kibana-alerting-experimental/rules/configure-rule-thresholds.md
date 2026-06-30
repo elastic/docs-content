@@ -44,7 +44,7 @@ Recovery thresholds control when an active alert episode transitions back to ina
 | `recovering_timeframe` | Duration string | How long the condition must remain non-breaching before the alert episode closes. |
 | `recovering_operator` | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
-Timeframe fields accept the same `5s` to `365d` bounds as activation timeframes. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
+Time frame fields accept the same `5s` to `365d` bounds as activation time frames. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
 :::{note}
 The `recovery_strategy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_strategy` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch.
@@ -56,7 +56,7 @@ When creating a rule through Agent Builder, you can omit `recovery_strategy` ent
 
 ### Ignore brief CPU spikes
 
-This rule monitors CPU usage and runs every minute. A single high reading is often just a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
+This rule monitors CPU usage and runs every minute. A single high reading is often a process starting up. Set `pending_count` to `3` so the rule requires 3 consecutive breaches before opening an episode, meaning the condition has been true for at least 3 minutes. This filters out noise without losing real signals.
 
 ### Require sustained breach before escalating
 

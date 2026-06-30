@@ -10,7 +10,7 @@ description: "Configure rules in the experimental alerting system: mode, ES|QL q
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
 
-Rules in the {{alerting-v2-system}} have three required settings and several optional ones. The table below lists each setting, what it controls, and whether it is required to save a rule.
+Rules in the {{alerting-v2-system}} have three required settings and several optional ones. The following table lists each setting, what it controls, and whether it is required to save a rule.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
 For notification routing, refer to [Notifications](../notifications.md).
 -->

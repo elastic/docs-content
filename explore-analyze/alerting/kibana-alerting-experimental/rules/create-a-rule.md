@@ -10,7 +10,7 @@ description: "Create rules in Kibana's experimental alerting system using the ES
 
 # Create a rule in the {{alerting-v2-system}} [create-a-rule]
 
-The {{alerting-v2-system}} in {{kib}} provides several ways to create rules. For descriptions of configurable rule setting, refer to [Configure a rule](configure-a-rule.md). 
+The {{alerting-v2-system}} in {{kib}} provides several ways to create rules. For descriptions of configurable rule settings, refer to [Configure a rule](configure-a-rule.md). 
 
 | Option | Best for |
 | --- | --- |
