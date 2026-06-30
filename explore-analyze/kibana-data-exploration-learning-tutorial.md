@@ -150,7 +150,7 @@ The aggregation query produced a chart showing event counts by response code. Yo
 :screenshot:
 :::
 
-**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it.
+**Result:** {{kib}} opens a new, unsaved dashboard with your response code chart already on it. The chart is saved to the library and linked to the dashboard, so any edits you make to the chart are reflected on every dashboard that uses it. Panels you add directly to a dashboard without saving to the library are local to that dashboard only.
 
 :::{tip}
 Want to show the results table on a dashboard instead of the chart? Save your Discover session (select **Save** in the toolbar), then from your dashboard, import it from the library as a new panel. This embeds the table view, including the query and any filters you applied.

@@ -248,6 +248,21 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 * Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
 
+## 9.3.7 [elastic-observability-9.3.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.7-features-enhancements]
+* Adds check to ensure APM integration policy updates have API keys in their configuration [#274647]({{kib-pull}}274647).
+
+
+### Fixes [elastic-observability-9.3.7-fixes]
+* Fixes deleted monitor labels from reappearing on the next fetch [#274404]({{kib-pull}}274404).
+* Fixes Canvas autoplay from stopping at the first page [#272619]({{kib-pull}}272619).
+
+## 9.3.6 [elastic-observability-9.3.6-release-notes]
+
+### Fixes [elastic-observability-9.3.6-fixes]
+* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
 
 ## 9.3.5 [elastic-observability-9.3.5-release-notes]
 
