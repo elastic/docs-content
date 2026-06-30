@@ -38,17 +38,17 @@ jobs:
           "Team:Security":    "1034"
         }
     steps:
-      - name: Remove the retired team label
-        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
-        uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          labels: ${{ github.event.label.name }}
-
       - name: Add the Team:SKI label
         if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: Team:SKI
+
+      - name: Remove the retired team label
+        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: ${{ github.event.label.name }}
 
       # Tolerate issues that don't carry needs-team (already triaged, etc.).
       - name: Remove needs-team label
