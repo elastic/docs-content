@@ -16,13 +16,12 @@ This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host fo
 
 SLES hosts use `zypper` to install Docker and require manual XFS quota setup because XFS is not the default filesystem on SLES. The steps on this page target SLES 15 SP4.
 
-Before you begin, identify a supported SLES and Docker version combination in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Substitute the example versions in this guide with the versions listed there.
-
 ::::{warning}
 SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLES 15 or later for new {{ece}} installations, and migrate existing SLES 12 SP5 hosts.
 ::::
 
 * [Prerequisites](#ece-configure-host-suse-prerequisites)
+* [Prepare the user account for ECE](#ece-prepare-user-sles)
 * [Install Docker](#ece-install-docker-sles12)
 * [Set up XFS quotas](#ece-xfs-setup-sles12)
 * [Prepare the data directories](#ece-prepare-data-directories-sles)
@@ -33,12 +32,19 @@ SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLE
 
 ## Prerequisites [ece-configure-host-suse-prerequisites]
 
-Before continuing, make sure that:
+Before you begin:
 
-- You are logged in as the non-root user that will install and run ECE. The commands in this guide assume that `$USER` refers to this user. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
-- This user can run commands with `sudo` to perform administrative tasks.
+- Identify a supported SLES and Docker version combination in the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Substitute the example versions in this guide with the versions listed there.
 
-## Prepare the user account for ECE
+- Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
+
+- Review the [Users and permissions prerequisites](ece-users-permissions.md) for ECE. The commands in this guide assume that you are logged in as the non-root user that will install and run ECE. We recommend using a dedicated `elastic` user account. If it does not already exist, you can create it in the next section.
+
+- If you use one user to prepare the host and another to install ECE, replace `$USER` with the name of the ECE user in the applicable commands throughout this guide.
+
+## Prepare the user account for ECE [ece-prepare-user-sles]
+
+Follow these steps to configure the user account according to the [Users and permissions prerequisites](ece-users-permissions.md) for a SLES host.
 
 1. Set up the OS groups and add your user.
 
