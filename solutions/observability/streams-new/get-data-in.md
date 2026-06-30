@@ -183,7 +183,7 @@ Once data appears in Discover, you're ready to start organizing, parsing, and co
 
 ## Work with existing data [get-data-in-classic]
 
-Use classic streams when you want the ease of extracting fields and configuring data retention while working with data that's already being ingested into {{es}}.
+Classic streams let you use the Streams UI to extract fields and configure data retention for data that's already being ingested into {{es}} without additional configuration.
 
 Classic streams:
 
@@ -191,13 +191,9 @@ Classic streams:
 - Can follow the data retention policy set in the existing index template.
 - Do not support hierarchical inheritance or cascading configuration updates.
 
-No additional configuration is required.
+Open classic streams from the following places in {{kib}}:
 
-To open Streams for existing data:
-
-Open Streams from the following places in {{kib}}:
-
-- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+- Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md), and find the data stream in the Streams table.
 
 - Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 

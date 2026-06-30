@@ -1,4 +1,5 @@
 ---
+navigation_title: Configure data retention
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
@@ -14,7 +15,7 @@ products:
   - id: elastic-stack
 ---
 
-# Configure retention [streams-configure-retention]
+# Configure data retention with Streams [streams-configure-retention]
 
 Managing data retention across multiple indexes typically requires configuring several different settings—{{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings—each in a different place. Streams replaces this with a single UI so you can efficiently control storage costs and meet regulatory or compliance requirements.
 
