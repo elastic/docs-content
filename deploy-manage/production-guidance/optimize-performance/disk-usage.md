@@ -35,8 +35,7 @@ PUT index
 
 [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) fields store normalization factors in the index to facilitate document scoring. If you only need matching capabilities on a `text` field but do not care about the produced scores, you can use the [`match_only_text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#match-only-text-field-type) type instead. This field type saves significant space by dropping scoring and positional information.
 
-
-## Don’t use default dynamic string mappings [default-dynamic-string-mapping]
+## Don't use default dynamic string mappings [default-dynamic-string-mapping]
 
 The default [dynamic string mappings](../../../manage-data/data-store/mapping/dynamic-mapping.md) will index string fields both as [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md). This is wasteful if you only need one of them. Typically an `id` field will only need to be indexed as a `keyword` while a `body` field will only need to be indexed as a `text` field.
 
@@ -62,7 +61,6 @@ PUT index
 }
 ```
 
-
 ## Watch your shard size [_watch_your_shard_size]
 
 Larger shards are going to be more efficient at storing data. To increase the size of your shards, you can decrease the number of primary shards in an index by [creating indices]({{es-apis}}operation/operation-indices-create) with fewer primary shards, creating fewer indices (e.g. by leveraging the [Rollover API]({{es-apis}}operation/operation-indices-rollover)), or modifying an existing index using the [Shrink API]({{es-apis}}operation/operation-indices-shrink).
@@ -73,13 +71,11 @@ Refer to [](./size-shards.md) for more information about sharding strategies.
 
 ## Disable `_source` [disable-source]
 
-The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don’t need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won’t work.
-
+The [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field stores the original JSON body of the document. If you don't need access to it you can disable it. However, APIs that needs access to `_source` such as update, highlight and reindex won't work.
 
 ## Use `best_compression` [best-compression]
 
 The `_source` and stored fields can easily take a non negligible amount of disk space. They can be compressed more aggressively by using the `best_compression` [codec](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-codec).
-
 
 ## Force merge [_force_merge]
 
@@ -88,10 +84,8 @@ Indices in {{es}} are stored in one or more shards. Each shard is a Lucene index
 The [force merge API]({{es-apis}}operation/operation-indices-forcemerge) can be used to reduce the number of segments per shard. In many cases, the number of segments can be reduced to one per shard by setting `max_num_segments=1`.
 
 ::::{warning}
-**We recommend only force merging a read-only index (meaning the index is no longer receiving writes).**  When documents are updated or deleted, the old version is not immediately removed, but instead soft-deleted and marked with a "tombstone". These soft-deleted documents are automatically cleaned up during regular segment merges. But force merge can cause very large (> 5GB) segments to be produced, which are not eligible for regular merges. So the number of soft-deleted documents can then grow rapidly, resulting in higher disk usage and worse search performance. If you regularly force merge an index receiving writes, this can also make snapshots more expensive, since the new documents can’t be backed up incrementally.
+**We recommend only force merging a read-only index (meaning the index is no longer receiving writes).**  When documents are updated or deleted, the old version is not immediately removed, but instead soft-deleted and marked with a "tombstone". These soft-deleted documents are automatically cleaned up during regular segment merges. But force merge can cause very large (> 5GB) segments to be produced, which are not eligible for regular merges. So the number of soft-deleted documents can then grow rapidly, resulting in higher disk usage and worse search performance. If you regularly force merge an index receiving writes, this can also make snapshots more expensive, since the new documents can't be backed up incrementally.
 ::::
-
-
 
 ## Shrink index [_shrink_index]
 
@@ -109,12 +103,12 @@ When {{es}} stores `_source`, it compresses multiple documents at once in order 
 
 By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](elasticsearch://reference/elasticsearch/index-settings/sorting.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
 
-
 ## Put fields in the same order in documents [_put_fields_in_the_same_order_in_documents]
 
 Due to the fact that multiple documents are compressed together into blocks, it is more likely to find longer duplicate strings in those `_source` documents if fields always occur in the same order.
 
+## Define the lifecycle of your data [roll-up-historical-data]
 
-## Roll up historical data [roll-up-historical-data]
-
-Keeping older data can be useful for later analysis but is often avoided due to storage costs. You can use downsampling to summarize and store historical data at a fraction of the raw data’s storage cost. See [Downsampling a time series data stream](../../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
+Keeping older data can be useful for later analysis but is often avoided due to storage costs.
+Create a [data lifecycle](/manage-data/lifecycle.md) strategy to specify when to move your data to cheaper storage tiers and when to delete it.
+You can also use [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to summarize and store historical time series data at a fraction of the raw data storage cost.
