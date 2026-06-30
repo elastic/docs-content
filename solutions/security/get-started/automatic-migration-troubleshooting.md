@@ -18,19 +18,19 @@ products:
 
 ### Problem description
 
-The `.kibana-siem-rule-migrations-integrations` index contains a `semantic_text` field named `elser_embedding` that is intended to use Elastic's ELSER sparse embedding model for semantic search. However, on some deployments the field may be bound to a different embedding model (for example, a Jina dense embedding model with `inference_id: .jina-embeddings-v5-text-small`) instead.
+The `.kibana-siem-rule-migrations-integrations` index contains a `semantic_text` field named `elser_embedding` that is intended to use Elastic's ELSER sparse embedding model for semantic search. However, on some deployments the field might be bound to a different embedding model (for example, a Jina dense embedding model with `inference_id: .jina-embeddings-v5-text-small`) instead.
 
 This can cause the following symptom:
 
 - **No integrations found for translated rules** — after completing an automatic migration, the **Integrations** column on the Translated rules page shows no integrations even when they should exist, because integration matching relies on semantic search against this index.
 
-The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is just a label; what matters is the `inference_id` baked into the index mapping at creation time. To confirm whether the field is bound to the wrong inference endpoint, refer to [Check the `elser_embedding` inference ID](#verify-elser-inference-id).
+The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is a label, but what matters is the `inference_id` baked into the index mapping at creation time. To confirm whether the field is bound to the wrong inference endpoint, refer to [Check the `elser_embedding` inference ID](#verify-elser-inference-id).
 
 The fix requires re-creating the index with the correct ELSER inference endpoint and re-indexing all documents so their embeddings are regenerated using ELSER.
 
 ### Prerequisites
 
-- ELSER ML model must be available and startable on the cluster.
+- ELSER ML model must be available on the cluster.
 - You must have index admin privileges.
 - Expect downtime or degraded search on this index during the reindex process.
 
@@ -54,7 +54,7 @@ Confirm whether an ELSER endpoint exists. If you only see Jina or other non-ELSE
 GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
 ```
 
-Look for the `inference_id` inside the field mapping. If it shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the steps below are required. For example:
+Look for the `inference_id` inside the field mapping. If it shows `.jina-embeddings-v5-text-small` (or anything other than an ELSER endpoint), the field is misconfigured and the remediation steps in this guide are required. For example:
 
 ```json
 "elser_embedding": {
