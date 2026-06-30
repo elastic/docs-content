@@ -1,5 +1,5 @@
 ---
-navigation_title: Add plugins provided with {{ech}}
+navigation_title: Provided with ECH
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-adding-elastic-plugins.html
   - https://www.elastic.co/guide/en/cloud/current/ec-adding-elastic-plugins.html
@@ -12,7 +12,7 @@ products:
 
 # Add plugins provided with {{ech}} [ec-adding-elastic-plugins]
 
-You can use a variety of official plugins that are compatible with your version of {{es}}. When you upgrade to a new {{es}} version, these plugins are upgraded with the rest of your deployment.
+You can use a variety of [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md) that are compatible with your version of {{es}}. When you upgrade to a new {{es}} version, these plugins are upgraded with the rest of your deployment.
 
 ## Before you begin [ec_before_you_begin_6]
 

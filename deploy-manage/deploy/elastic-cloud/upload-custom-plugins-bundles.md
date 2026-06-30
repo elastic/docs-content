@@ -1,4 +1,5 @@
 ---
+navigation_title: Custom plugins and bundles
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
@@ -124,10 +125,7 @@ You must upload your files before you can apply them to your cluster configurati
 After creating your extension, you can [enable it on an existing {{es}} deployment](#ec-update-bundles) or enable it when creating new deployments.
 
 ::::{note}
-Creating extensions larger than 200MB should be done through the extensions API.
-
-Refer to [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md) for more details.
-
+Creating extensions larger than 200MB must be done through the API. Refer to [Upload an extension using the API](#ec-extension-api-usage-guide).
 ::::
 
 
@@ -144,14 +142,6 @@ After uploading your files, you can enable them when creating a new {{es}} deplo
 
 While you can update the ZIP file for any plugin or bundle, these are downloaded and made available only when a node is started.
 
-:::{important}
-Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
-:::
-
-:::{tip}
-If you need to update your extension, instead of updating an existing extension with a new file directly, we recommend that you create a new extension to test the behavior first, verify it's validity, and then reflect it to your deployment.
-:::
-
 If the extension is not in use by any deployments, you can update the files or extension details. However, if the extension is in use, and if you need to update it with a new file, it is recommended to [create a new extension](#ec-add-your-plugin) rather than updating the existing one that is in use.
 
 By following this method, only the one node would be down even if the extension file is faulty. This would ensure that HA clusters remain available.
@@ -166,21 +156,22 @@ To replace an extension with a new file version:
 2. On the **Extensions** page, [upload a new extension](#ec-add-your-plugin).
 3. Follow the steps in [Enable extensions on a deployment](#ec-update-bundles). On the **Extensions** tab, select the new extension and deselect the old one before you save.
 
+### Considerations for updating an in-use extension
 
-## How to use the extensions API [ec-extension-api-usage-guide]
+* Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
+* If you need to update your extension, instead of updating an existing extension with a new file directly, create a new extension to test the behavior first, verify its validity, and then apply it to your deployment.
 
-::::{note}
-For a full set of examples, check [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md).
-::::
+## Upload an extension using the API [ec-extension-api-usage-guide]
 
+Use the extensions API to upload plugins and bundles programmatically. You must use the API for extensions larger than 200MB; the Cloud UI supports uploads up to that size. You must also use the API for automation or when your ZIP file is not reachable from a public URL in a single request.
 
-If you don’t already have one, create an [API key](../../../deploy-manage/api-keys/elastic-cloud-api-keys.md)
+Before you start, create an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). To manage extensions after upload, add them to a deployment, update metadata, or delete them. Refer to [Managing plugins and extensions through the API](manage-plugins-extensions-through-api.md). For the complete HTTP reference, see [Extensions API]({{cloud-apis}}group/endpoint-extensions).
 
-There are ways that you can use the extensions API to upload a file.
+### Upload from a local file [ec_method_1_use_http_post_to_create_metadata_and_then_upload_the_file_using_http_put]
 
-### Method 1: Use HTTP `POST` to create metadata and then upload the file using HTTP `PUT` [ec_method_1_use_http_post_to_create_metadata_and_then_upload_the_file_using_http_put]
+Create the extension metadata first, then upload the ZIP file in a second request.
 
-Step 1: Create metadata
+**Step 1: Create metadata**
 
 ```text
 curl -XPOST \
@@ -195,7 +186,7 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-Step 2: Upload the file
+**Step 2: Upload the file**
 
 ```text
 curl -XPUT \
@@ -223,7 +214,9 @@ r = requests.put('https://api.elastic-cloud.com/api/v1/deployments/extensions/{}
 ```
 
 
-### Method 2: Single step. Use a `download_url` so that the API server downloads the object at the specified URL [ec_method_2_single_step_use_a_download_url_so_that_the_api_server_downloads_the_object_at_the_specified_url]
+### Upload from a download URL [ec_method_2_single_step_use_a_download_url_so_that_the_api_server_downloads_the_object_at_the_specified_url]
+
+When your ZIP is hosted at a publicly accessible URL, create the extension in one request. {{ecloud}} downloads and validates the file from the URL you provide. This method is required for plugins larger than 200MB.
 
 ```text
 curl -XPOST \
@@ -238,5 +231,3 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
   "download_url": "https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.13.2.zip"
 }'
 ```
-
-Refer to [Extensions API reference]({{cloud-apis}}group/endpoint-extensions) for the complete set of HTTP methods and payloads.

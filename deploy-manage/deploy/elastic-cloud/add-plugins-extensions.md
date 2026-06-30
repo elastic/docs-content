@@ -15,7 +15,7 @@ products:
 Plugins extend the core functionality of {{es}}. On {{ech}}, you can add plugins to a deployment in one of two ways, depending on whether {{ecloud}} provides the plugin or you supply it yourself:
 
 * [Add plugins provided with {{ech}}](add-plugins-provided-with-ech.md): {{ecloud}} includes compatible official plugins for your {{es}} version. Enable them per deployment from the **Extensions** list. When you upgrade {{es}}, these plugins are upgraded with the rest of your deployment, except when there are breaking changes.
-* [Upload custom plugins and bundles](upload-custom-plugins-bundles.md): Upload a custom plugin or bundle, then enable it per deployment. Custom plugins can include official {{es}} plugins not provided with {{ecloud}}, community-sourced plugins, or [plugins that you write yourself](elasticsearch://extend/index.md). Uploading custom plugins requires a Gold, Platinum, Enterprise, or Private subscription. All subscription levels, including Standard, can upload scripts and dictionaries.
+* [Upload custom plugins and bundles](upload-custom-plugins-bundles.md): Upload a plugin to install software that extends {{es}}, such as an official plugin not provided with {{ecloud}}, a community-sourced plugin, or [one you write yourself](elasticsearch://extend/index.md). Upload a bundle to supply files that every node needs, such as synonym dictionaries, stop-word lists, scripts, or SAML metadata; bundles are extracted to the configuration directory and are not installed as plugins. Uploading custom plugins requires a Gold, Platinum, or Enterprise subscription. All subscription levels, including Standard, can upload scripts and dictionaries.
 
 Plugin availability depends on your {{es}} version.
 
@@ -28,3 +28,5 @@ There are many categories of plugins available, including:
 To learn more about official and community-sourced plugins, refer to [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md).
 
 For a detailed guide with examples of using the {{ecloud}} API to create, get information about, update, and delete extensions and plugins, check [Managing plugins and extensions through the API](manage-plugins-extensions-through-api.md).
+
+Plugins are not supported for {{kib}}. To learn more, check [Restrictions for {{es}} and {{kib}} plugins](restrictions-known-problems.md#ec-restrictions-plugins).
