@@ -69,31 +69,31 @@ Before continuing, make sure that:
         sudo usermod -aG elastic,docker $USER
         ```
 
-    1. Verify that the user that will run ECE has a UID and GID of at least 1000:
+1. Verify that the user that will run ECE has a UID and GID of at least 1000:
 
-        ```sh
-        id $USER
-        ```
+    ```sh
+    id $USER
+    ```
 
-        The output should show a `uid` and `gid` value of `1000` or higher.
+    The output should show a `uid` and `gid` value of `1000` or higher.
 
-    1. Verify that the user's primary group is `elastic`:
+1. Verify that the user's primary group is `elastic`:
 
-        ```sh
-        id -gn $USER
-        ```
+    ```sh
+    id -gn $USER
+    ```
 
-        If the command doesn't return `elastic`, find the `elastic` group GID:
+    If the command doesn't return `elastic`, find the `elastic` group GID:
 
-        ```sh
-        grep elastic /etc/group
-        ```
+    ```sh
+    grep elastic /etc/group
+    ```
 
-        Then set the user's primary group to `elastic`:
+    Then set the user's primary group to `elastic`:
 
-        ```sh
-        sudo usermod -g <elastic_group_gid> $USER
-        ```
+    ```sh
+    sudo usermod -g <elastic_group_gid> $USER
+    ```
 
 ## Install Docker on SLES [ece-install-docker-sles12]
 

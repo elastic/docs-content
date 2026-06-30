@@ -51,7 +51,7 @@ Install a compatible Docker version on Ubuntu using `apt`.
 
 4. Install the correct version of the `docker-ce` package. The following command is an example of installing Docker 27.0. To install a different Docker version, replace 27.0 with your preferred version from the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise).
 
-    ```sh subs=true
+    ```sh
     sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
