@@ -67,6 +67,7 @@ jobs:
       contents: read
     outputs:
       triage_triggered: ${{ steps.evaluate.outputs.triage_triggered }}
+      size_triggered: ${{ steps.evaluate.outputs.size_triggered }}
       issue_scope_triggered: ${{ steps.evaluate.outputs.issue_scope_triggered }}
 
     steps:
@@ -88,9 +89,11 @@ jobs:
             const previousState = menu.parseMenuState(previousBody);
             const currentState = menu.parseMenuState(body);
             const triageTriggered = !previousState.triage.selected && currentState.triage.selected;
+            const sizeTriggered = !previousState.size.selected && currentState.size.selected;
             const issueScopeTriggered = !previousState.issueScope.selected && currentState.issueScope.selected;
 
             core.setOutput('triage_triggered', String(triageTriggered));
+            core.setOutput('size_triggered', String(sizeTriggered));
             core.setOutput('issue_scope_triggered', String(issueScopeTriggered));
 
   refresh-menu-after-trigger:
@@ -98,6 +101,7 @@ jobs:
     needs: [evaluate-trigger]
     if: >-
       needs.evaluate-trigger.outputs.triage_triggered == 'true' ||
+      needs.evaluate-trigger.outputs.size_triggered == 'true' ||
       needs.evaluate-trigger.outputs.issue_scope_triggered == 'true'
     runs-on: ubuntu-latest
     permissions:
@@ -125,6 +129,13 @@ jobs:
 
             if ('${{ needs.evaluate-trigger.outputs.triage_triggered }}' === 'true') {
               statusOverrides.triage = {
+                detailsUrl: progressUrl,
+                status: 'in_progress',
+              };
+            }
+
+            if ('${{ needs.evaluate-trigger.outputs.size_triggered }}' === 'true') {
+              statusOverrides.size = {
                 detailsUrl: progressUrl,
                 status: 'in_progress',
               };
@@ -176,6 +187,19 @@ jobs:
         **Shared ownership**: Some paths have shared ownership (e.g., `/explore-analyze/machine-learning/` is shared by Developer and Experience). Pick the team whose keywords best match the issue content.
         **Internal projects**: If the issue seems related to an internal documentation project, initiative, or content strategy effort, apply `Team:Projects`.
         **Fallback**: If you genuinely cannot determine the owning team, apply `cross-team` so the issue stays visible to all teams.
+
+  run-docs-size:
+    name: Docs AI / size
+    needs: [evaluate-trigger]
+    if: needs.evaluate-trigger.outputs.size_triggered == 'true'
+    permissions:
+      actions: read
+      contents: read
+      copilot-requests: write
+      discussions: write
+      issues: write
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/gh-aw-issue-size.lock.yml@v1
 
   run-docs-issue-scope:
     name: Docs AI / issue scope
@@ -229,6 +253,53 @@ jobs:
                   conclusion: triageResult === 'success'
                     ? 'success'
                     : triageResult === 'cancelled'
+                      ? 'cancelled'
+                      : 'failure',
+                  detailsUrl: progressUrl,
+                  status: 'completed',
+                },
+              },
+            });
+
+  refresh-menu-after-docs-size:
+    name: Refresh AI menu after docs size
+    needs: [evaluate-trigger, refresh-menu-after-trigger, run-docs-size]
+    if: always() && needs.evaluate-trigger.outputs.size_triggered == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: docs-ai-menu-${{ github.event.issue.number }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Refresh AI menu status
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const menu = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/docs_ai_menu.cjs`);
+            const issueNumber = context.payload.issue.number;
+            const progressUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const sizeResult = '${{ needs.run-docs-size.result }}';
+
+            await menu.upsertMenuComment({
+              core,
+              createIfMissing: false,
+              github,
+              context,
+              issueNumber,
+              statusOverrides: {
+                size: {
+                  conclusion: sizeResult === 'success'
+                    ? 'success'
+                    : sizeResult === 'cancelled'
                       ? 'cancelled'
                       : 'failure',
                   detailsUrl: progressUrl,

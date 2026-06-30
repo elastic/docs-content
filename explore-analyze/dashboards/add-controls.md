@@ -158,6 +158,11 @@ When you add a variable control from an {{esql}} panel, for example, by choosing
 
 A control's filter scope depends on where you place it: controls inside a [collapsible section](arrange-panels.md#collapsible-sections) apply only to panels in that section, while controls outside sections or pinned to the dashboard apply to all panels.
 
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+In **Edit** mode, you can select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time, and you can select the label again to stop highlighting them. A variable control that no visualization uses displays a warning.
+:::
+
 Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
 - {applies_to}`stack: ga 9.1` functions 
