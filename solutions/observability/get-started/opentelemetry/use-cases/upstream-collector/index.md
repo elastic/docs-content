@@ -95,11 +95,6 @@ exporters:
     api_key: ${env:ELASTIC_API_KEY}
     mapping:
       mode: otel
-    batcher:
-      enabled: true
-      min_size_items: 1000
-      max_size_items: 1500
-      flush_timeout: 1s
 
 service:
   pipelines:
@@ -125,7 +120,7 @@ Key components in this configuration:
 
 * **`elasticapm` processor** (under `processors`): Enriches spans with attributes required by the {{product.apm}} UI.
 * **`elasticapm` connector** (under `connectors`): Generates pre-aggregated {{product.apm}} metrics from trace data. It appears as an exporter in the `traces` pipeline and as a receiver in the `metrics/aggregated-otel-metrics` pipeline.
-* **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). Batching is handled by the {{es}} exporter's built-in `batcher` instead of the `batch` processor, which avoids data loss when the downstream export is rejected.
+* **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). The exporter handles batching automatically using `sending_queue`. Refer to [Performance and batching](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md#performance-and-batching) to customize throughput for your environment.
 
 :::{note}
 The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
