@@ -947,6 +947,9 @@ redirects:
       - to: 'solutions/search/vector/knn/approximate-knn.md'
         anchors:
           'approximate-knn': 'approximate-knn'
+      - to: 'solutions/search/vector/knn/exact-knn.md'
+        anchors:
+          'exact-knn': 'exact-knn'
       - to: 'solutions/search/vector/knn/optimize-performance-accuracy.md'
         anchors:
           'dense-vector-knn-search-rescoring': 'dense-vector-knn-search-rescoring'

@@ -60,7 +60,7 @@ Fast, scalable similarity search. Ideal for most production workloads. Refer to 
 
 | Method | Supported field types | Use case |
 |---|---|---|
-| [Top-level `knn` option](knn/approximate-knn.md#approximate-knn) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Standalone kNN search or hybrid search with score fusion |
+| [Top-level `knn` option](knn/approximate-knn.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Standalone kNN search or hybrid search with score fusion |
 | [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Composable with other queries in a `bool` clause. Required for `semantic_text` fields |
 | [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/knn-retriever.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Use within a retriever pipeline for ranking and result merging |
 
@@ -70,7 +70,7 @@ If you use `semantic_text` fields, query them with a [`match` query](elasticsear
 
 ### Exact, brute-force kNN [knn-methods-exact]
 
-Uses a [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](knn/exact-knn.md#exact-knn).
+Uses a [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) with a vector function. Best for small datasets or precise scoring. Refer to [exact kNN](knn/exact-knn.md).
 
 ### Choosing between approximate and exact kNN
 

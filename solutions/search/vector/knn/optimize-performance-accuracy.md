@@ -4,9 +4,6 @@ description: Tune approximate kNN search in Elasticsearch for speed, recall, vec
 applies_to:
   stack:
   serverless:
-products:
-  - id: elasticsearch
-  - id: cloud-serverless
 ---
 
 # Optimize performance and accuracy [optimize-knn-performance-accuracy]

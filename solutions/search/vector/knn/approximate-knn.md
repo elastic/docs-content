@@ -1,18 +1,12 @@
 ---
 navigation_title: Approximate kNN search
 description: Run fast, scalable approximate k-nearest neighbor (kNN) vector search in Elasticsearch using dense_vector fields and HNSW indexing.
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-knn-search.html
 applies_to:
   stack:
   serverless:
-products:
-  - id: elasticsearch
-  - id: cloud-serverless
 ---
 
-# Approximate kNN search [approximate-knn]
+# Approximate kNN search
 
 Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where low latency matters more than perfect recall. For tuning trade-offs among speed, accuracy, storage, and quantization, refer to [Optimize performance and accuracy](optimize-performance-accuracy.md). For query patterns such as filtering, hybrid retrieval, and nested vectors, refer to [Build search queries](build-search-queries.md).
 

@@ -11,7 +11,6 @@ products:
 
 # Exact kNN search [exact-knn]
 
-
 To run an exact kNN search, use a `script_score` query with a vector function.
 
 1. Explicitly map one or more `dense_vector` fields. If you don’t intend to use the field for approximate kNN, set the `index` mapping option to `false`. This can significantly improve indexing speed.
