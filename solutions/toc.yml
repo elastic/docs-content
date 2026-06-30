@@ -125,6 +125,7 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/components.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/collector-custom-resource.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/instrumenting-applications.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
