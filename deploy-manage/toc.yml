@@ -15,7 +15,7 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
-                  - file: deploy/elastic-cloud/marketplace-trial-conversion.md
+                  - file: deploy/elastic-cloud/marketplace-trial-upgrade.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md

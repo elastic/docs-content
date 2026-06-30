@@ -74,7 +74,7 @@ Subscribe to [{{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-
 * Third availability zone for your deployments.
 * Access to additional features, such as {{ccs}} and {{ccr}}.
 
-You can subscribe to {{ecloud}} at any time during your trial by [adding your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md) or by [converting your trial to a marketplace subscription](marketplace-trial-conversion.md).
+You can subscribe to {{ecloud}} at any time during your trial by [adding your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md) or by [upgrading your trial to a marketplace subscription](marketplace-trial-upgrade.md).
 [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) starts when you subscribe.
 To maximize the benefits of your trial, subscribe at the end of the free period.
 To monitor charges, anticipate future costs, and adjust your usage, check your [account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).

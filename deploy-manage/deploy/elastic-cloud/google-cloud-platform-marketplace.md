@@ -15,7 +15,7 @@ products:
 
 Subscribe to {{ecloud}} directly from the Google Cloud Platform (GCP). You then have the convenience of viewing your {{ecloud}} subscription as part of your GCP bill, and you do not have to supply any additional credit card information to Elastic. Your investment in Elastic counts toward your cloud purchase commitment.
 
-If you already have an {{ecloud}} trial, you can [convert it to a GCP Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new organization through the GCP Marketplace.
+If you already have an {{ecloud}} trial, you can [upgrade it to a GCP Marketplace subscription](marketplace-trial-upgrade.md) instead of creating a new organization through the GCP Marketplace.
 
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
@@ -37,7 +37,7 @@ To subscribe to {{ecloud}} through the GCP Marketplace:
 6. After choosing to sign up, a new window will appear. Do one of the following:
 
     * Create a new, unique user account for an {{ecloud}} organization.
-    * Log in with an existing user account. If the account is associated with an {{ecloud}} trial, it links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization. [Learn more](marketplace-trial-conversion.md).
+    * Log in with an existing user account. If the account is associated with an {{ecloud}} trial, it links the billing account used for the purchase on GCP Marketplace to the existing Elastic organization. [Learn more](marketplace-trial-upgrade.md).
 
 7. After signing up, check your inbox to verify the email address you signed up with. Upon verification, you will be asked to create a password, and once created your organization will be set up and you will be logged into it.
 

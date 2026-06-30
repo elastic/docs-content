@@ -22,7 +22,7 @@ The free trial includes provisioning of a single deployment and you are not char
 
 You can subscribe to {{ecloud}} directly from the AWS Marketplace. You then have the convenience of viewing your {{ecloud}} subscription as part of your AWS bill, and you do not have to supply any additional billing information to Elastic.
 
-If you already have an {{ecloud}} trial, you can [convert it to an AWS Marketplace subscription](marketplace-trial-conversion.md) instead of creating a new account.
+If you already have an {{ecloud}} trial, you can [upgrade it to an AWS Marketplace subscription](marketplace-trial-upgrade.md) instead of creating a new account.
 
 Some differences exist when you subscribe to {{ecloud}} through the AWS Marketplace:
 
@@ -81,7 +81,7 @@ This section describes some scenarios that you may experience onboarding onto th
 
 This occurs when you attempt to sign up to the marketplace offer using an email address that already exists in {{ecloud}}, such as part of a trial account. You have a few options:
 
-* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then convert an existing trial organization to your AWS Marketplace subscription or create a new organization. [Learn more](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-aws-gcp).
+* **Sign in with your existing account** - Choose to sign in instead of signing up. You can then upgrade an existing trial organization to your AWS Marketplace subscription or create a new organization. [Learn more](marketplace-trial-upgrade.md#ec-marketplace-trial-upgrade-aws-gcp).
 * **Sign up using a different email address** - Sign up to {{ecloud}} using a different email address.
 
 

@@ -43,7 +43,7 @@ When you subscribe to {{ecloud}} through a marketplace, a relationship is establ
 - **A single {{ecloud}} account can belong to [multiple organizations](/deploy-manage/cloud-organization/manage-multiple-organizations.md).** When you subscribe through a marketplace, you can either create a new organization or link the subscription to an existing one. If your account is organization owner for multiple organizations, you choose which organization to associate with the marketplace subscription.
 - **Your {{ecloud}} account uses a single email address across all your organizations.** If you already have an {{ecloud}} account, you can sign in with your existing credentials during the marketplace sign-up process. If you don't have an account, one is created using your marketplace email.
 
-If you already have an {{ecloud}} trial and want to start paying through a marketplace, you can [convert your trial to a marketplace subscription](marketplace-trial-conversion.md) without losing your existing deployments, projects, or data.
+If you already have an {{ecloud}} trial and want to start paying through a marketplace, you can [upgrade your trial to a marketplace subscription](marketplace-trial-upgrade.md) without losing your existing deployments, projects, or data.
 
 ## Multi-cloud strategy [ec-marketplace-multi-cloud]
 

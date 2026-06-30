@@ -13,7 +13,7 @@ products:
 
 If you want to use {{ecloud}} beyond the trial period or if you want to use features not included in the trial, then you need to add a credit card to your account. Your credit card information is sent securely to our [billing provider](http://recurly.com/security) and stored with them.
 
-Alternatively, if you want to pay for {{ecloud}} together with other cloud services that you're already using, then you can subscribe to {{ecloud}} through a [marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). If you already have an {{ecloud}} trial, you can [convert it to a marketplace subscription](/deploy-manage/deploy/elastic-cloud/marketplace-trial-conversion.md) to preserve your existing deployments and data.
+Alternatively, if you want to pay for {{ecloud}} together with other cloud services that you're already using, then you can subscribe to {{ecloud}} through a [marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). If you already have an {{ecloud}} trial, you can [upgrade it to a marketplace subscription](/deploy-manage/deploy/elastic-cloud/marketplace-trial-upgrade.md) to preserve your existing deployments and data.
 
 If you plan to use {{ech}}, then you can estimate how much your use case will cost using our [pricing calculator](https://www.elastic.co/cloud/elasticsearch-service/pricing). 
 

@@ -115,14 +115,14 @@ The following limitations apply:
 $$$azure-integration-prior-cloud-account$$$
 If you already have an {{ecloud}} account, you can sign in with your existing credentials when creating an Elastic resource in the Azure portal. If your account has a single organization, the resource is added to that organization. If you have multiple organizations, refer to [Multi-org accounts and the Azure portal](#ec-azure-multi-org-limitations).
 
-### Convert a trial to Azure Native Service [azure-integration-convert-trial]
+### Upgrade a trial to Azure Native Service [azure-integration-convert-trial]
 
-If you have an existing {{ecloud}} trial, you can convert it to a Microsoft Marketplace subscription. For step-by-step instructions, refer to [Convert your trial in the Azure Marketplace](marketplace-trial-conversion.md#ec-marketplace-trial-conversion-azure).
+If you have an existing {{ecloud}} trial, you can upgrade it to a Microsoft Marketplace subscription. For step-by-step instructions, refer to [Upgrade your trial in the Azure Marketplace](marketplace-trial-upgrade.md#ec-marketplace-trial-upgrade-azure).
 
 Keep in mind:
 
-* When creating resources in the trial account, specify Azure as the cloud provider so that the organization is [eligible for conversion](marketplace-trial-conversion.md#ec-marketplace-conversion-candidates).
-* To convert your trial to the Microsoft Marketplace, [create a resource](#ec-azure-integration-getting-started) in the Azure portal. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
+* When creating resources in the trial account, specify Azure as the cloud provider so that the organization is [eligible for upgrade](marketplace-trial-upgrade.md#ec-marketplace-upgrade-candidates).
+* To upgrade your trial to the Microsoft Marketplace, [create a resource](#ec-azure-integration-getting-started) in the Azure portal. Delete this resource if you don't need it. After you create the new resource, your marketplace subscription is ready.
 * Any resources created during your trial won't show up in the Azure portal, because they weren't created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
 
 ### Start a trial from Microsoft Marketplace [azure-integration-native-trials]
