@@ -1,4 +1,5 @@
 ---
+description: Use Elastic Security machine learning to detect behavioral threats with anomaly detection jobs and behavioral detection use cases.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-behavioral-detections.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-behavioral-detections.html
