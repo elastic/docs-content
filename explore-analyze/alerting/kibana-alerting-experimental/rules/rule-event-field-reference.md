@@ -54,9 +54,10 @@ These settings determine what the rule records when the {{esql}} query returns n
 
 | Behavior | Effect |
 |---|---|
-| `no_data` (default) | Record a no-data event. |
-| `last_status` | Carry forward the previous status. |
+| `emit` | Record a no-data event. |
+| `last_known_status` | Carry forward the previous status. |
 | `recover` | Treat absence as recovery. |
+| `none` | Disable no-data detection. |
 
 ## Rule grouping
 
@@ -65,9 +66,6 @@ Grouping is configured in YAML. The fields listed here control how the rule part
 | Key | Description |
 |---|---|
 | `grouping.fields` | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
-
-<!--[CONTENT NEEDED for M2: `grouping.fields` is being renamed to `track_by.fields`. Update this section heading, table key, and description once the rename ships. Also add the `series.*` output fields that M2 introduces: `series.key` (replaces `group_hash` as the internal series identity hash) and `series.tracked_by` (a structured object of the tracked field names and values, for example `{"host.name": "web-01"}`). The `series.tracked_by` fields are directly filterable in {{esql}} queries without decoding.]
--->
 
 ## Rule event documents
 
@@ -101,8 +99,7 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 | `source` | keyword | Yes | Origin of this event. Product-specific identifier. |
 | `type` | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
-<!--[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` (the internal hash) and `series.tracked_by` (a structured object of field names and values). Update this table to replace the `group_hash` row with the two new `series.*` fields once M2 ships. Any {{esql}} examples that filter or display `group_hash` will also need to be updated to use `series.key` for lookups and `series.tracked_by.*` for human-readable series identification.]
--->
+<!-- TODO: A `group_hash` → `series.key` / `series.tracked_by` replacement has been discussed for a future release but is not in the current codebase. Do not update this section until the change has shipped and is confirmed in the schema. -->
 
 :::{admonition} Fields not stored as a dedicated column
 There's no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.

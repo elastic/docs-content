@@ -13,41 +13,67 @@ description: "YAML rule definitions in Kibana's experimental alerting system sup
 
 YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
 
-## Required fields
+## Base rule fields
+
+These four fields are required on every rule, regardless of format or mode. The value of `query.format` determines which additional query fields are required.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `kind` | string | `alert` or `signal` | Whether the rule tracks ongoing episodes (`alert`) or records point-in-time observations (`signal`). |
-| `metadata.name` | string | Max 256 characters | The name of the rule. |
-| `schedule.every` | duration | For example, `5s`, `1m`, `5m` | How often the rule runs. Minimum interval applies. |
-| `evaluation.query.base` | string | Valid {{esql}} query, max 10,000 characters | The query that checks your data on each run. |
-| `evaluation.query.blocks` | array of strings | Valid {{esql}} expressions | Optional additional {{esql}} expressions appended to the base query. Each block is applied in sequence after the base query runs. Use blocks to define reusable conditions or to separate the base data shape from alert conditions. |
+| `metadata.name` | string | Any string | The name of the rule. Max 256 characters. |
+| `schedule.every` | duration | Any duration string | How often the rule runs. For example: `5s`, `1m`, `5m`. Minimum interval applies. |
+| `query.format` | string | `composed` or `standalone` | The query structure the rule uses. `standalone` means each condition (breach, recovery, no-data) is a separate, self-contained ES\|QL query. `composed` means you write one base query and each condition is a pipe segment appended to it. The UI always creates `standalone` rules. |
 
-<!-- TODO: Confirm the accepted structure for `evaluation.query.blocks` — specifically whether each block is a bare {{esql}} clause (for example, `WHERE avg_cpu > ?threshold`) or a full expression, and whether there is a maximum count or length per block. Verify against the M2 schema once available. -->
+### Fields for `query.format: composed`
+
+Use `composed` when breach, recovery, and no-data conditions all start from the same data shape. Define that shape once in the base query and each condition adds only what differs.
+
+| Field | Type | Description |
+|---|---|---|
+| `query.base` | ES\|QL string | Base query that runs on every evaluation. Time filters are applied automatically using the lookback window. Required. |
+| `query.breach.segment` | ES\|QL segment string | Appendable ES\|QL segment for breach detection. Written as a pipe command, for example `\| WHERE count > 5`. Required. |
+| `query.recovery.segment` | ES\|QL segment string | Appendable ES\|QL segment for recovery detection. Required when `recovery_strategy` is `query`. |
+
+### Fields for `query.format: standalone`
+
+Use `standalone` when conditions need full independence. Each query can target different indices, apply different filters, or return a completely different shape.
+
+| Field | Type | Description |
+|---|---|---|
+| `query.breach.query` | Full ES\|QL string | Full ES\|QL query for breach detection. Required. |
+| `query.recovery.query` | Full ES\|QL string | Full ES\|QL query for recovery detection. Required when `recovery_strategy` is `query`. |
+| `query.no_data.query` | Full ES\|QL string | Full ES\|QL query that detects presence of data. Required when `no_data_strategy` is not `none`. Only supported on `standalone` format. |
 
 ## Metadata fields
 
+These optional fields add descriptive information to a rule for identification, ownership, and filtering. None affect rule evaluation behavior.
+
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `metadata.description` | string | Max 1,024 characters | Optional description of what the rule monitors. |
-| `metadata.owner` | string | Max 256 characters | Team or person responsible for the rule. |
-| `metadata.tags` | array of strings | Max 100 tags | Labels for filtering and organization. |
+| `metadata.description` | string | Any string | Optional description of what the rule monitors. Max 1,024 characters. |
+| `metadata.owner` | string | Any string | Team or person responsible for the rule. Max 256 characters. |
+| `metadata.tags` | array of strings | Array of strings | Labels for filtering and organization. Max 20 tags, each max 128 characters. |
 
 ## Schedule fields
 
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `schedule.lookback` | duration | For example, `5m`, `24h` | How far back in time the query searches on each run. |
-| `time_field` | string | Any valid field name, max 128 characters | The timestamp field used for the lookback window filter. Defaults to `@timestamp`. |
-
-## Recovery policy fields
-
-The `recovery_policy` field is optional. When absent, the rule emits no recovery events and active alert episodes don't close automatically. Omitting `recovery_policy` is only possible when creating a rule via the API or Agent Builder. Rules created through the Kibana UI always include `recovery_policy.type: no_breach` by default.
+These fields control how far back each evaluation looks and which timestamp field is used for the time range filter. Both are optional, but omitting `schedule.lookback` means the query runs without a time bound.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `recovery_policy.type` | string | `no_breach` or `query` | How recovery is detected. `no_breach` recovers when the query returns no breach results for the active group. `query` uses a separate recovery query. |
-| `recovery_policy.query.base` | string | Valid {{esql}} query | Required when `recovery_policy.type` is `query`. The query that checks whether the condition has cleared. |
+| `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
+| `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
+
+## Recovery strategy
+
+The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `recovery_strategy` | string | `no_breach`, `query`, or `none` | How recovery is detected. <br><br> -`no_breach`: Recovers an episode when its active group no longer appears in the breach results. <br> - `query`: Evaluates a separate recovery query defined in `query.recovery.segment` (composed) or `query.recovery.query` (standalone) <br> - `none`: Turns off recovery. |
+
+:::{note}
+Signal-mode rules (`kind: signal`) must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
+:::
 
 ## State transition fields
 
@@ -56,47 +82,41 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
-| `state_transition.pending_count` | integer | 0 or more | Number of consecutive breaches required before the episode becomes active. |
-| `state_transition.pending_timeframe` | duration | For example, `5m` | Time window within which the breach count must be met. |
+| `state_transition.pending_count` | integer | Integer ≥ 0 | Number of consecutive breaches required before the episode becomes active. |
+| `state_transition.pending_timeframe` | duration | Any duration string | Time window within which the breach count must be met. For example: `5m`. |
 | `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
-| `state_transition.recovering_count` | integer | 0 or more | Number of consecutive clear evaluations required before the episode recovers. |
-| `state_transition.recovering_timeframe` | duration | For example, `5m` | Time window within which the recovery count must be met. |
+| `state_transition.recovering_count` | integer | Integer ≥ 0 | Number of consecutive clear evaluations required before the episode recovers. |
+| `state_transition.recovering_timeframe` | duration | Any duration string | Time window within which the recovery count must be met. For example: `5m`. |
 
 ## Grouping fields
 
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `grouping.fields` | array of strings | Max 16 fields, each max 256 characters | Fields to group results by. Each unique combination becomes its own series. |
-
-<!--[CONTENT NEEDED for M2: The `grouping` key is being renamed to `track_by` in M2 (for example, `track_by: { fields: [host.name] }`). The rename is not cosmetic: the old name implied a direct relationship to the ES|QL `STATS ... BY` clause, which caused confusion. `track_by` captures the actual intent — which fields identify the thing you're monitoring.
-
-Two additional behaviors change with this rename:
-
-- **New default**: When `track_by` is omitted, the rule creates one stable series per rule, computed from `sha256(ruleId + spaceId)`. The current `grouping` default is broken — with no fields specified it generates a per-row, per-execution hash that changes every run, orphaning episodes on every evaluation.
-- **New `series.*` document fields**: M2 adds `series.key` (the internal hash, replacing `group_hash`) and `series.tracked_by` (a structured object of the field names and values, for example `{"host.name": "web-01"}`).
-
-Update this section to replace `grouping.fields` with `track_by.fields`, document the new default behavior, and add the `series.*` output fields. Until M2 ships, `grouping.fields` remains the correct field name.]
--->
-
-## No-data fields
+Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects — such as CPU usage per host — without creating a separate rule for each. Each series maintains its own alert episode lifecycle.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `no_data.behavior` | string | `no_data`, `last_status`, or `recover` | What happens when the query returns no results. `no_data` records a no-data event. `last_status` keeps the current status. `recover` closes any active episode. |
-| `no_data.timeframe` | duration | For example, `5m` | How long the query must return no results before the no-data behavior applies. |
+| `grouping.fields` | array of strings | Array of field names | Fields to group results by. Each unique combination becomes its own series. Max 16 fields, each max 256 characters. |
+
+## No-data strategy
+
+Use `no_data_strategy` to control what the rule does when an evaluation returns no results. This matters when data sources can go silent: without a no-data strategy, a quiet data source and a healthy one look identical to the rule.
+
+| Field | Type | Accepted values | Description |
+|---|---|---|---|
+| `no_data_strategy` | string | `emit`, `last_known_status`, `recover`, or `none` | Optional. What happens when the rule evaluates and returns no results. `emit` records a no-data event. `last_known_status` holds the last known status. `recover` forces recovery. `none` disables no-data detection. |
+
+:::{note}
+No-data detection is only supported with `query.format: standalone`. Setting `no_data_strategy` to any active value on a `composed` rule has no effect because `query.no_data.query` can only be defined on a standalone query. Signal-mode rules (`kind: signal`) must omit `no_data_strategy` or set it to `none`.
+:::
 
 ## Artifact fields
 
-| Field | Type | Accepted values | Description |
-|---|---|---|---|
-| `artifacts[].type` | string | For example, `runbook` | The type of artifact being attached. |
-| `artifacts[].value` | string | Markdown content | The content of the artifact. Runbooks are rendered as markdown in the rule detail view. |
-
-## Notification policy fields
+Artifacts let you attach reference material — such as a runbook — directly to a rule. The content is stored with the rule and displayed in the rule detail view so responders have context when an alert fires. All artifact fields are optional.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
-| `notification_policies[].ref` | string | Format: `policies/<id>` | Links a notification policy to the rule. |
+| `artifacts[].id` | string | Any string | Artifact identifier. Required. Max 256 characters. |
+| `artifacts[].type` | string | Any string | The type of artifact being attached. For example: `runbook`. |
+| `artifacts[].value` | string | Any string | The content of the artifact. Accepts markdown. Runbooks are rendered as markdown in the rule detail view. |
 
 ## Duration format
 

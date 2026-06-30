@@ -21,6 +21,7 @@ A threshold query evaluates one metric over one lookback window and fires if a v
 
 ```esql
 FROM logs-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend  // Bind to the rule's configured lookback window
 | STATS
     // Count only error responses; count all requests for the denominator
     error_count = COUNT_IF(http.response.status_code >= 500),
@@ -83,7 +84,7 @@ The burn rate multipliers (14.4×, 6×) reflect standard SLO error budget consum
 
 Because the query computes several window pairs in one pass, the lookback window on the rule must cover the longest window in the query (3 days in the example above).
 
-The `severity` column in `KEEP` maps directly to `episode.severity` on each resulting alert episode. For the accepted values and matching rules, refer to [Severity levels](author-rules.md#severity-levels).
+The `severity` column in `KEEP` maps directly to the `severity` field on each resulting alert episode. For the accepted values and matching rules, refer to [Severity levels](author-rules.md#severity-levels).
 
 ## No-data detection [no-data-esql-query]
 
@@ -116,8 +117,7 @@ The lookback must be wide enough that known hosts appear in the result set. If t
 
 For no-data behavior when the entire base query returns zero rows (as opposed to detecting specific silent sources), refer to [No-data handling](configure-a-rule.md#no-data-handling).
 
-<!--[CONTENT NEEDED for M2: M2 introduces Track By and a `series.*` block that gives the system a stable, explicit identity for each monitored series. Once series identity is formalized, the system may support native detection of when a known series stops producing events, which is the same problem this query solves manually today. Verify whether M2 adds a built-in no-data detection option at the series level, and if so, document it here as the preferred approach and move this manual `MAX(@timestamp)` pattern to a "how it works" explanation or a workaround note for cases the native approach does not cover.]
--->
+<!-- TODO: A native series-level no-data detection option has been discussed for a future release but is not in the current codebase. If it ships, document it here as the preferred approach and move this manual pattern to a workaround note. -->
 
 ## Limitations and workarounds [esql-limitations]
 
@@ -145,8 +145,7 @@ FROM metrics-*
 
 The rule's lookback window must cover all the buckets you want to check (50 minutes for 10 five-minute buckets in this example). If any bucket is missing from the data because the host stopped reporting briefly mid-window, `total_buckets` drops below 10 and the condition doesn't fire. Design the query so that gaps in reporting produce the behavior you want: either treating partial coverage as a non-breach or adjusting the `WHERE` filter to allow it.
 
-<!--[CONTENT NEEDED for M2: M2's Track By feature gives the system a native concept of series identity and may provide a way to track how many consecutive evaluations a series has been breaching. If this lands, persistent breach detection could become a rule configuration option rather than something expressed entirely in the {{esql}} query. Verify whether M2 adds consecutive-breach tracking at the series level, and if so, document the configuration approach here alongside or instead of this workaround.]
--->
+<!-- TODO: Native consecutive-breach tracking at the series level has been discussed for a future release but is not in the current codebase. If it ships, document the configuration approach here alongside or instead of this query pattern. -->
 
 ### Derivative aggregation [derivative-aggregation]
 

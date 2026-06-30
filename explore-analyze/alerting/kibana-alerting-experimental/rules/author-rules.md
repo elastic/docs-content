@@ -1,5 +1,5 @@
 ---
-navigation_title: Author rules
+navigation_title: Rule authoring
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -36,12 +36,12 @@ The base query shapes results with `STATS`, `WHERE`, and `EVAL`, and controls wh
 The alert conditions query is the `WHERE` clause that's applied after the base query. Only rows that pass the alert condition are treated as breaches. Without an alert condition, every row returned by the base query is a breach.
 
 ```esql
--- Base query: compute average CPU per host
+// Base query: compute average CPU per host
 FROM metrics-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
 | STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
-
--- Alert condition: only rows above the threshold count as breaches
-WHERE avg_cpu > 0.9
+// Alert condition: only rows above the threshold count as breaches
+| WHERE avg_cpu > 0.9
 ```
 
 The `KEEP` command controls which fields appear on each stored alert event. Only the fields you `KEEP` are available for policy matchers, grouping keys, and triage in the Alerts UI.

@@ -41,15 +41,24 @@ The rule's {{esql}} query defines what to evaluate. It has a base query and an o
 
 ### Query parameters [query-parameters]
 
-{{esql}} rule queries support `?param` placeholder syntax for values you want to supply separately from the query body. Placeholders let you write a reusable query and vary threshold values through the rule configuration rather than hard-coding them inline.
+Two types of parameters are available in {{esql}} rule queries: reserved runtime parameters and UI form variables.
+
+**Reserved runtime parameters**
+
+The executor automatically binds `?_tstart` and `?_tend` to the lookback window start and end timestamps on every rule evaluation. Use these to filter your query to the evaluation window:
 
 ```esql
-FROM metrics-*
-| STATS avg_cpu = AVG(system.cpu.total.pct) BY host.name
-| WHERE avg_cpu > ?threshold
+FROM logs-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS error_count = COUNT(*) BY service.name
+| WHERE error_count > 10
 ```
 
-<!-- TODO: Confirm the exact mechanism for supplying parameter values — whether through the rule form, API, or YAML `params` key — and document the supported value types and validation behavior once the M2 parameterization API is finalized. -->
+These are the only parameters supported across all rule creation methods (rule form, YAML editor, and API).
+
+**Rule form variables**
+
+The rule form supports additional `?param` placeholders — for example, `?threshold` — through ES|QL Control variables. The form resolves these variables and inlines their values into the query string before saving. The stored rule and any API or YAML representation contain the resolved values, not the placeholder tokens.
 
 ## Severity [rule-severity]
 
@@ -73,38 +82,39 @@ The {{alerting-v2-system}} reads the `severity` column after each evaluation and
 
 ### Stored fields
 
-When severity is set, the {{alerting-v2-system}} stores two fields on the alert episode that are available for action policy matchers:
+When severity is set, the {{alerting-v2-system}} stores the following field on the alert episode, available to action policy matchers:
 
 | Field | Description |
 | --- | --- |
-| `severity` | The severity value from the most recent breached event (current state). |
-| `severity_max` | The highest severity level observed across the episode's lifetime. Useful for routing like "this episode peaked at critical." |
+| `severity` | The severity value from the most recent breached event. |
 
-Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for more information about these fields.
+Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for more information about this field.
 
 ### Example
 
 ```esql
 FROM metrics-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend  // Bind to the rule's configured lookback window
 | STATS
-    errors_5m = COUNT_IF(outcome == "failure" AND @timestamp >= NOW() - 5 minutes),
-    total_5m   = COUNT_IF(@timestamp >= NOW() - 5 minutes)
+    errors = COUNT_IF(outcome == "failure"),
+    total  = COUNT(*)
   BY service.name
-| EVAL burn_5m = errors_5m / total_5m
+| EVAL burn_rate = errors / total
 | EVAL severity = CASE(
-    burn_5m > 14.4, "critical",
-    burn_5m > 6.0,  "high",
-    burn_5m > 1.0,  "medium",
+    burn_rate > 14.4, "critical",
+    burn_rate > 6.0,  "high",
+    burn_rate > 1.0,  "medium",
     "low"
   )
-| WHERE burn_5m > 1.0
-| KEEP service.name, burn_5m, severity
+| WHERE burn_rate > 1.0
+| KEEP service.name, burn_rate, severity
 ```
 
-- **`STATS`** - Counts failures and total requests in the last 5 minutes, grouped by service.
-- **`EVAL burn_5m`** - Computes the error burn rate as a ratio of failures to total requests.
+- **`WHERE`** (time filter) - Scopes the query to the rule's configured lookback window using the reserved `?_tstart` and `?_tend` parameters.
+- **`STATS`** - Counts failures and total requests, grouped by service.
+- **`EVAL burn_rate`** - Computes the error rate as a fraction of failures to total requests.
 - **`EVAL severity`** - Maps the burn rate to a severity level.
-- **`WHERE`** - Only rows above the threshold count as breaches.
+- **`WHERE burn_rate`** - Only services above the minimum threshold count as breaches.
 - **`KEEP`** - Includes `severity` in the output so the {{alerting-v2-system}} reads and stores it.
 
 ## Rule grouping [rule-grouping]
@@ -113,7 +123,7 @@ Rule grouping lets a single rule track multiple things independently. For exampl
 
 Each group tracks its own lifecycle, recovery, and snooze state.
 
-Rule grouping controls how alert series are created. Notification grouping — configured on an action policy — controls how those alert episodes are batched into messages. These are separate settings.
+Rule grouping controls how alert series are created. Notification grouping (configured on an action policy) controls how those alert episodes are batched into messages. These are separate settings.
 
 ### Aligning `BY` fields with your rule's query
 
@@ -183,9 +193,9 @@ Recovery thresholds control when an active alert episode transitions back to ina
 Time frame fields use the same 5 seconds to 365 days bounds as activation timeframes.
 
 :::{note}
-The `recovery_policy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_policy.type` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch. 
+The `recovery_strategy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_strategy` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch.
 
-When creating a rule through Agent Builder, you can omit `recovery_policy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-policy-fields).
+When creating a rule through Agent Builder, you can omit `recovery_strategy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-strategy).
 :::
 
 ## No-data handling [no-data-handling]
@@ -194,13 +204,14 @@ No-data handling controls what happens when a rule executes and the base query r
 
 ### Behaviors
 
-Set `no_data.behavior` to one of the following values:
+Set `no_data_strategy` to one of the following values:
 
 | Behavior | Effect |
 | --- | --- |
-| `no_data` | Record a no-data event (default) |
-| `last_status` | Carry forward the previous status |
+| `emit` | Record a no-data event |
+| `last_known_status` | Carry forward the previous status |
 | `recover` | Treat absence as recovery |
+| `none` | Disable no-data detection |
 
 These behaviors apply when the base query returns zero rows. They don't help when you want to *detect* that a specific host or data source has gone silent. That requires a different query approach. See [No-data detection](esql-query-patterns.md#no-data-esql-query) in the authoring guide for an {{esql}} pattern that surfaces silent sources as alert rows.
 

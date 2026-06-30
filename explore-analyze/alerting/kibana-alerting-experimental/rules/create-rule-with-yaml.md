@@ -33,8 +33,3 @@ The following configurations force YAML-only mode when editing:
 | `query.no_data` block | The form has no UI for inline no-data query definitions. |
 
 If the toggle is disabled and you want to use the form, you must remove the non-representable configuration from the YAML before saving, then reopen the rule.
-
-<!-- TODO: Verify field names against the shipped M2 YAML schema. Issue #7092 references `recovery_strategy`, `no_data_strategy`, and `query.no_data`, which differ from the currently documented `recovery_policy.type` and `no_data.behavior` in yaml-rule-schema-reference.md. Confirm whether these are updated M2 field names or whether the issue uses conceptual rather than schema-level names, and update the table and yaml-rule-schema-reference.md accordingly. -->
-
-<!--[CONTENT NEEDED: UI. This page needs a procedure once the YAML editor UI is finalized: how to open it, how to paste or edit a definition, and how to save. Hold until the editor workflow is confirmed.]
--->
