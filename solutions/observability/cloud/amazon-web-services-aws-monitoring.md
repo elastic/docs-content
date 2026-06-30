@@ -18,13 +18,14 @@ Elastic Observability offers powerful monitoring solutions to keep your AWS envi
 
 Learn how to use the Elastic Observability solution to observe and monitor a broad range of AWS resources and applications.
 
+If you don't already have an Elastic deployment, you can [start a free trial](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws).
+
 * [Monitor {{aws}} with {{agent}}](monitor-amazon-web-services-aws-with-elastic-agent.md)
 * [Monitor {{aws}} with {{beats}}](monitor-amazon-web-services-aws-with-beats.md)
 * [Monitor {{aws}} with Amazon Data Firehose](monitor-amazon-web-services-aws-with-amazon-data-firehose.md)
 * [Monitor {{aws}} with Elastic Serverless Forwarder](monitor-amazon-web-services-aws-with-elastic-serverless-forwarder.md)
 
 For a full list of supported AWS integrations, check the [Elastic Integrations docs](https://docs.elastic.co/en/integrations).
-
 
 
 
