@@ -3,7 +3,7 @@ navigation_title: Bar charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building bar charts with Kibana Lens in Elastic.
+description: Create bar charts to compare values across categories, display distributions, and show rankings side by side.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -33,9 +33,8 @@ To build a bar chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a bar chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Bar
@@ -82,8 +81,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::

@@ -197,6 +197,7 @@ The [`MMR` command](elasticsearch://reference/query-languages/esql/commands/mmr.
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
 - [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}, with concrete examples of the functionalities described in this page
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries, including using full-text search functions instead of `LIKE` or `RLIKE`
 
 ### Technical reference [esql-for-search-reference]
 

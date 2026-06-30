@@ -834,6 +834,11 @@ redirects:
   'solutions/security/explore/users-page.md': 'solutions/security/advanced-entity-analytics/users-page.md'
   'solutions/security/explore/configure-network-map-data.md': 'solutions/security/advanced-entity-analytics/configure-network-map-data.md'
   'solutions/security/explore/configure-dns-histogram.md': 'solutions/security/advanced-entity-analytics/configure-dns-histogram.md'
+
+# Entity analytics IA restructure: renamed pages
+  'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+  'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
+  'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
   
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
@@ -949,3 +954,37 @@ redirects:
           '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
           'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
           'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
+  # Rehome CCS and CCR privileges from remote-clusters-cert.md
+  'deploy-manage/remote-clusters/remote-clusters-cert.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          'remote-clusters-privileges-ccr': 'configure-privileges-for-ccr-cert'
+          '_remote_cluster': '_remote_cluster_4'
+          '_local_cluster': '_local_cluster_4'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          'remote-clusters-privileges-ccs': 'configure-privileges-for-ccs-cert'
+          'clusters-privileges-ccs-kibana-cert': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_2': 'configure-privileges-for-ccs-cert-remote'
+          '_local_cluster_2': 'configure-privileges-for-ccs-cert-local'
+          '_local_cluster_3': 'configure-privileges-for-ccs-cert-local'
+          '_remote_cluster_3': 'configure-privileges-for-ccs-cert-remote'
+
+  # Rehome CCS and CCR API key privileges from remote-clusters-api-key.md
+  'deploy-manage/remote-clusters/remote-clusters-api-key.md':
+    to: 'deploy-manage/remote-clusters/remote-clusters-api-key.md'
+    many:
+      - to: 'deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md'
+        anchors:
+          '_configure_privileges_for_ccr': 'configure-privileges-for-ccr-api-key'
+      - to: 'explore-analyze/cross-cluster-search.md'
+        anchors:
+          '_configure_privileges_for_ccs': 'configure-privileges-for-ccs-api-key'
+
+  # Redirect removed CCS privileges child page
+  'explore-analyze/cross-cluster-search/configure-privileges-for-cross-cluster-search.md':
+    to: 'explore-analyze/cross-cluster-search.md'
+    anchors:
+      '': 'configure-privileges-for-ccs'
