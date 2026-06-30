@@ -3,7 +3,14 @@ navigation_title: Pie charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building pie and donut charts with Kibana Lens in Elastic.
+description: Create pie and donut charts to illustrate relative prevalence of categorical data and display proportional relationships.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Build pie charts with {{kib}}
@@ -24,9 +31,8 @@ To build a pie chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a pie chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Pie
@@ -71,8 +77,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and reuse it later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -221,10 +227,10 @@ This is useful when:
 This example uses the **Kibana Sample Data Logs** data set and groups requests by file extension to approximate resource usage: `.zip` files map to processing time, `.gz` files map to bandwidth, and `.rpm` files map to memory usage.
 
 1. Create a **Pie** chart and remove any existing **Slice by** dimension.
-2. Open **Layer settings**:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`app_management` **Layer settings**.
+2. Open the layer settings:
+   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3` Select {icon}`gear` **Settings**/**Layer settings**.
    * {applies_to}`stack: ga 9.0-9.2` Select {icon}`boxes_vertical`, then select **Layer settings**.
-3. Select **Multiple metrics**, then close the **Layer settings** menu.
+3. Select **Multiple metrics**, then close the layer settings menu.
 4. Add metrics for each resource type:
 
    | Slice | Metric configuration | Filter |
