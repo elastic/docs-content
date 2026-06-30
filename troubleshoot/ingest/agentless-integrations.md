@@ -1,7 +1,5 @@
 ---
 navigation_title: Agentless integrations
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/agentless-integration-troubleshooting.html
 applies_to:
   stack: preview
   serverless: preview

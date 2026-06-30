@@ -1,18 +1,19 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/agentless-integrations.html
-  - https://www.elastic.co/guide/en/serverless/current/agentless-integration-troubleshooting.html
 applies_to:
-  stack: all
-  serverless:
-    security: all
+  stack: preview
+  serverless: preview
 products:
-  - id: security
+  - id: elastic-agent
+  - id: fleet
   - id: cloud-serverless
-navigation_title: Agentless integrations FAQs
+  - id: cloud-hosted
+  - id: observability
+  - id: security
+description: Frequently asked questions and troubleshooting steps for agentless integrations, including limits, supportability, and common setup issues.
+navigation_title: FAQ
 ---
 
-# {{elastic-sec}} agentless integrations FAQs [agentless-integration-troubleshooting]
+# {{managed-integrations-cap}} FAQ [agentless-integration-faq]
 
 :::{include} ../_snippets/agentless-integrations-faq.md
 :::

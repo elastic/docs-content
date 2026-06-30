@@ -195,7 +195,8 @@ toc:
           - file: ingest/fleet/common-problems.md
           - file: ingest/fleet/frequently-asked-questions.md
       - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
-      - file: ingest/elastic-serverless-forwarder.md      
+      - file: ingest/elastic-serverless-forwarder.md
+      - file: ingest/agentless-integrations.md
   - file: deployments/elastic-cloud.md
     children:
       - file: deployments/serverless.md

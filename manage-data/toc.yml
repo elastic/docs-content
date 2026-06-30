@@ -110,6 +110,7 @@ toc:
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
       - file: ingest/agentless/agentless-integrations.md
         children:
+          - file: ingest/agentless/enable-agentless-integration.md
           - file: ingest/agentless/cloud-connector-deployment.md
           - file: ingest/agentless/agentless-integrations-faq.md
       - file: ingest/otlp-endpoint.md
