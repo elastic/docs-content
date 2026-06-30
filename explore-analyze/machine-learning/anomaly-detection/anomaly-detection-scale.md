@@ -76,13 +76,17 @@ This consideration only applies to {{dfeeds}} that **do not** use aggregations. 
 
 The `model_memory_limit` job configuration option sets the approximate maximum amount of memory resources required for analytical processing. When you create an {{anomaly-job}} in {{kib}}, it provides an estimate for this limit. The estimate is based on the analysis configuration details for the job and cardinality estimates, which are derived by running aggregations on the source indices as they exist at that specific point in time.
 
-If you change the resources available on your {{ml}} nodes or make significant changes to the characteristics or cardinality of your data, the model memory requirements might also change. You can update the model memory limit for a job while it is closed. If you want to decrease the limit below the current model memory usage, however, you must clone and re-run the job.
+If you change the resources available on your {{ml}} nodes or make significant changes to the characteristics or cardinality of your data, the model memory requirements might also change. You can update the model memory limit for a job while it is closed. 
+
+{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` Navigate to the **Anomaly Detection Jobs** page, open the edit flyout for the closed job, and select **Apply** under the **Model memory limit** field to apply the estimate without running the estimate API manually. If you want to decrease the limit to less than the current model memory usage, however, you must recreate the job.
 
 ::::{tip}
-You can view the current model size statistics with the [get {{anomaly-job}} stats]({{es-apis}}operation/operation-ml-get-job-stats) and [get model snapshots]({{es-apis}}operation/operation-ml-get-model-snapshots) APIs. You can also obtain a model memory limit estimate at any time by running the [estimate {{anomaly-jobs}} model memory API]({{es-apis}}operation/operation-ml-estimate-model-memory). However, you must provide your own cardinality estimates.
+You can view the current model size statistics with the [get {{anomaly-job}} stats]({{es-apis}}operation/operation-ml-get-job-stats) and [get model snapshots]({{es-apis}}operation/operation-ml-get-model-snapshots) APIs. 
+
+{applies_to}`stack: ga 9.5`{applies_to}`serverless: ga` To estimate `model_memory_limit` for an existing job in {{kib}}, select **Apply** under the **Model memory limit** field in the edit job flyout. Alternatively, use the [estimate {{anomaly-jobs}} model memory API]({{es-apis}}operation/operation-ml-estimate-model-memory) to get a model memory limit estimate. However, you must provide your own cardinality estimates when using the API.
 ::::
 
-As a job approaches its model memory limit, the memory status is `soft_limit` and older models are more aggressively pruned to free up space. If you have categorization jobs, no further examples are stored. When a job exceeds its limit, the memory status is `hard_limit` and the job no longer models new entities. It is therefore important to have appropriate memory model limits for each job. If you reach the hard limit and are concerned about the missing data, ensure that you have adequate resources then clone and re-run the job with a larger model memory limit.
+As a job approaches its model memory limit, the memory status is `soft_limit` and older models are more aggressively pruned to free up space. If you have categorization jobs, no further examples are stored. When a job exceeds its limit, the memory status is `hard_limit` and the job no longer models new entities. It is therefore important to have appropriate memory model limits for each job. If you reach the hard limit and are concerned about the missing data, ensure that you have adequate resources then recreate the job with a larger model memory limit.
 
 ## 8. Pre-aggregate your data [pre-aggregate-data]
 
