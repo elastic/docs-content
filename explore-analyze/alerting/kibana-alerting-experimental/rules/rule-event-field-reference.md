@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Field reference for rule configuration and .rule-events documents in Kibana's experimental alerting system. Covers schedule, activation thresholds, and rule event output fields."
+description: "Field reference for .rule-events documents in Kibana's experimental alerting system. Covers signal and alert base fields, episode fields, and the append-only data stream behavior."
 ---
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
 
-Rule event fields are part of the {{alerting-v2-system}} in {{kib}}. This page lists technical fields for rule configuration and rule event documents written to `.rule-events`.
+This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For rule configuration settings, refer to [Configure a rule](configure-a-rule.md).
 <!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
 For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
 -->
@@ -18,56 +18,6 @@ For alert actions in `.alert-actions`, refer to [Alert states and fields referen
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through ILM. Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
 :::
-
-## Schedule and lookback
-
-These fields control when a rule runs and how far back its {{esql}} query looks on each evaluation.
-
-| Field | Description |
-|---|---|
-| `schedule.every` | Execution interval; minimum 5 seconds, maximum 365 days. |
-| `schedule.lookback` | Time range the {{esql}} query covers; must not exceed 365 days; should be at least `schedule.every` to avoid gaps. |
-
-## Activation thresholds
-
-These fields are only available in Alert mode. They control how many consecutive breaches, or how long a condition must persist, before an episode transitions from `pending` to `active`.
-
-| Field | Description |
-|---|---|
-| `pending_count` | Consecutive breaches required. |
-| `pending_timeframe` | Minimum duration the condition must persist. |
-| `pending_operator` | How to combine count and timeframe (`AND` or `OR`). |
-
-## Recovery thresholds
-
-These fields are only available in Alert mode. They control how many consecutive recoveries, or how long the condition must be clear, before an episode transitions from `recovering` to `inactive`.
-
-| Field | Description |
-|---|---|
-| `recovering_count` | Consecutive recoveries required. |
-| `recovering_timeframe` | Minimum duration for recovery. |
-| `recovering_operator` | How to combine count and timeframe (`AND` or `OR`). |
-
-## No-data handling
-
-These settings determine what the rule records when the {{esql}} query returns no rows on an evaluation.
-
-| Behavior | Effect |
-|---|---|
-| `no_data` (default) | Record a no-data event. |
-| `last_status` | Carry forward the previous status. |
-| `recover` | Treat absence as recovery. |
-
-## Rule grouping
-
-Grouping is configured in YAML. The fields listed here control how the rule partitions results into independent series, each with its own lifecycle.
-
-| Key | Description |
-|---|---|
-| `grouping.fields` | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
-
-<!--[CONTENT NEEDED for M2: `grouping.fields` is being renamed to `track_by.fields`. Update this section heading, table key, and description once the rename ships. Also add the `series.*` output fields that M2 introduces: `series.key` (replaces `group_hash` as the internal series identity hash) and `series.tracked_by` (a structured object of the tracked field names and values, for example `{"host.name": "web-01"}`). The `series.tracked_by` fields are directly filterable in {{esql}} queries without decoding.]
--->
 
 ## Rule event documents
 
@@ -79,7 +29,7 @@ Each time a rule evaluates, {{kib}} writes one document per matched series to `.
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
 
 :::{note}
-`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`.
+`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation; existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 Refer to [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover) for example queries.
 -->
@@ -101,9 +51,6 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 | `source` | keyword | Yes | Origin of this event. Product-specific identifier. |
 | `type` | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
-<!--[CONTENT NEEDED for M2: `group_hash` is being replaced by `series.key` (the internal hash) and `series.tracked_by` (a structured object of field names and values). Update this table to replace the `group_hash` row with the two new `series.*` fields once M2 ships. Any {{esql}} examples that filter or display `group_hash` will also need to be updated to use `series.key` for lookups and `series.tracked_by.*` for human-readable series identification.]
--->
-
 :::{admonition} Fields not stored as a dedicated column
 There's no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged and restore full sentence:
@@ -111,14 +58,13 @@ For triage or reporting, derive duration from [Query alerts and signals in Disco
 -->
 :::
 
-### Episode fields
+### Episode fields [episode-fields]
 
-These fields only appear on documents with `type: alert`, written by rules running in Alert mode. They carry the lifecycle state for the episode associated with the matched series.
+These fields are stored in `.rule-events`, on the same document as the base fields, when the rule runs in Alert mode. They only appear on documents with `type: alert` and carry the lifecycle state for the episode associated with the matched series.
 
 | Field | Type | Description |
 |---|---|---|
 | `episode.id` | keyword | Episode identifier for this series. |
 | `episode.status` | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
 | `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
-| `episode.severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |
-| `episode.severity_max` | keyword | Highest severity level observed across the episode's lifetime (high-water mark). Enables routing or display based on peak severity, for example, "this episode peaked at `critical`". |
+| `severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |
