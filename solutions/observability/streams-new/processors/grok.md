@@ -56,7 +56,7 @@ Instead of writing the Grok patterns by hand, you can select **Generate Patterns
 
 Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating patterns manually generally creates more accurate results.
 
-:::{image} ../../../../images/logs-streams-patterns.png
+:::{image} ../../../images/logs-streams-patterns.png
 :screenshot:
 :::
 
@@ -69,7 +69,7 @@ To add a generated grok pattern:
 
 ### How does **Generate patterns** work? [streams-grok-pattern-generation]
 
-:::{include} ../../../../_snippets/streams-suggestions.md
+:::{include} ../../../_snippets/streams-suggestions.md
 :::
 
 ## YAML reference [streams-grok-yaml-reference]
