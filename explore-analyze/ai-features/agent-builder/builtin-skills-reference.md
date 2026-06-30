@@ -123,7 +123,7 @@ $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` 
 
     **Prerequisites:** [Elastic Defend](/solutions/security/configure-elastic-defend.md) deployed and reporting.
 
-    {applies_to}`stack: removed 9.5+` {applies_to}`serverless: removed` The `automaticTroubleshootingSkill` experimental feature flag must be enabled for the skill to appear.
+    {applies_to}`stack: preview =9.4` In this version, the `automaticTroubleshootingSkill` experimental feature flag must be enabled for the skill to appear.
 
 ## Elasticsearch skills
 ```{applies_to}
