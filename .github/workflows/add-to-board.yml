@@ -9,6 +9,25 @@ permissions:
   contents: read
 
 jobs:
+  remap-legacy-team-label:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.label.name == 'Team:Ingest' ||
+      github.event.label.name == 'Team:Experience'
+    steps:
+      - name: Remove the legacy team label
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: ${{ github.event.label.name }}
+
+      # Use the PAT (not GITHUB_TOKEN) so the new label re-triggers the
+      # `route` job below; labels added by GITHUB_TOKEN don't start a run.
+      - name: Add the Team:SKI label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.ADD_TO_BOARD_TOKEN }}
+          labels: Team:SKI
+
   route:
     runs-on: ubuntu-latest
     if: |
