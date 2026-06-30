@@ -26,6 +26,8 @@ The same four stages apply whether you manage dashboards with the Dashboards API
 | **Review** | Review changes in a pull request before they ship. | Diff the structured JSON to see exactly which panel, query, or filter changed. | Diff the HCL, and run `terraform plan` to preview the change. |
 | **Deploy** | Apply the definition to each target environment, reusing the same source to keep development, staging, and production in sync. | Send the definition to the Dashboards API in each environment. | Run `terraform apply` per environment or workspace. |
 
+Once a dashboard is managed as code, treat Git as the single source of truth: changes made directly in the UI are overwritten the next time you deploy.
+
 For the request schema and authentication details, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards).
 
 ## Design for portability across environments [dashboards-as-code-portability]
@@ -47,12 +49,7 @@ Panels can reference other saved objects, such as data views or Discover session
 
 ### Choose inline or library panels [dashboards-as-code-panels]
 
-The Dashboards API supports two ways to define a visualization panel, and the choice affects how portable your definition is. The API refers to these as **by value** (inline) and **by reference** (library):
-
-- **Inline panels** define the visualization entirely within the dashboard definition. The dashboard is self-contained and carries no external references to resolve, which makes it the most portable option for deploying across environments.
-- **Library panels** are stored as standalone [visualizations](create-dashboards-programmatically.md#lens-visualizations-api) and embedded by reference. Use them when you want to reuse a chart across multiple dashboards and have a single update propagate everywhere. The referenced visualization must exist in the target environment.
-
-Prefer inline panels when portability matters most, and library panels when reuse across dashboards matters most.
+How you define a visualization panel affects portability. **Inline panels** (by value) embed the visualization in the dashboard definition, so it's self-contained and the most portable across environments. **Library panels** (by reference) point to a standalone [saved visualization](create-dashboards-programmatically.md#lens-visualizations-api) that must already exist in the target environment, but let you reuse one chart across dashboards and update it in a single place. Prefer inline panels when portability matters most, and library panels when reuse matters most.
 
 ## Automate with Terraform [dashboards-as-code-terraform]
 
@@ -75,7 +72,7 @@ For every attribute and panel type, refer to the [`elasticstack_kibana_dashboard
 
 To put this workflow into practice, choose the path that matches your tooling:
 
-- **Use the Dashboards API directly**: start with [Create dashboards programmatically](create-dashboards-programmatically.md), which introduces the API and links to its full reference.
+- **Use the Dashboards API directly**: see the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the request schema and authentication, or [Create dashboards programmatically](create-dashboards-programmatically.md) for an overview of the supported panel types and limits.
 - **Manage dashboards with Terraform**: follow [Getting started with Kibana dashboards](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/guides/kibana-dashboard-getting-started) to build your first dashboard as code.
 
 For the background on this workflow and a worked Terraform example, see the [Kibana dashboards as code: GitOps with Terraform](https://www.elastic.co/search-labs/blog/kibana-dashboards-as-code-terraform-api) blog (May 2026).
