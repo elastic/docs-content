@@ -24,7 +24,7 @@ This can cause the following symptom:
 
 - **No integrations found for translated rules** — after completing an automatic migration, the **Integrations** column on the Translated rules page shows no integrations even when they should exist, because integration matching relies on semantic search against this index.
 
-The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is just a label; what matters is the `inference_id` baked into the index mapping at creation time.
+The root cause is that when the index was created, the ELSER inference endpoint was not available, so Elasticsearch fell back to whichever inference endpoint was configured. The field name `elser_embedding` is just a label; what matters is the `inference_id` baked into the index mapping at creation time. To confirm whether the field is bound to the wrong inference endpoint, refer to [Check the `elser_embedding` inference ID](#verify-elser-inference-id).
 
 The fix requires re-creating the index with the correct ELSER inference endpoint and re-indexing all documents so their embeddings are regenerated using ELSER.
 
@@ -38,7 +38,7 @@ The fix requires re-creating the index with the correct ELSER inference endpoint
 
 ### Step 1 — Verify the problem
 
-Run the following API requests in [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md). In self-managed deployments, go to **Management** → **Dev Tools**. In {{ecloud}} deployments, go to **Developer tools**.
+Run the following API requests in [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md).
 
 **1a. Check what inference endpoints are currently configured on the cluster:**
 
@@ -48,7 +48,7 @@ GET _inference
 
 Confirm whether an ELSER endpoint exists. If you only see Jina or other non-ELSER endpoints, ELSER has not been deployed on this cluster and must be created in Step 2.
 
-**1b. Check what `inference_id` is bound to the `elser_embedding` field:**
+#### 1b. Check the elser_embedding inference ID [verify-elser-inference-id]
 
 ```http
 GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
@@ -304,9 +304,3 @@ GET .kibana-siem-rule-migrations-integrations/_mapping/field/elser_embedding
 The `inference_id` should now show `elser-2-elasticsearch`. If it does, the field is correctly bound to ELSER. Keep `kibana-siem-rule-migrations-integrations-backup` available as a backup after final verification.
 
 ---
-
-### Summary of root causes addressed
-
-| Problem | Cause | Fix applied |
-|---|---|---|
-| Wrong inference model on `elser_embedding` | Index created when ELSER was unavailable; fell back to a different model | Recreated index with explicit `inference_id: elser-2-elasticsearch` |
