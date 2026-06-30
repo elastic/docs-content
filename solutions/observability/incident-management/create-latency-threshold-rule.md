@@ -14,24 +14,17 @@ products:
 # Create a latency threshold rule [observability-create-latency-threshold-alert-rule]
 
 
-::::{note}
-
-**For Observability serverless projects**, the **Editor** role or higher is required to create latency threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
-
-::::
-
-
 You can create a latency threshold rule to alert you when the latency of a specific transaction type in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 :::{image} /solutions/images/serverless-alerts-create-rule-apm-latency-threshold.png
 :alt: Create rule for APM latency threshold alert
 :screenshot:
 :::
 
-::::{tip}
-These steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
-
-::::
+The following steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 
 To create your latency threshold rule:

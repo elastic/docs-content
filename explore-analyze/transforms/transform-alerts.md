@@ -12,6 +12,9 @@ products:
 
 {{kib}} {{alert-features}} include support for transform health rules, which check the health of {{ctransforms}} with certain conditions. If the conditions of the rule are met, an alert is created and the associated actions run. For example, you can create a rule to check if a {{ctransform}} is started and to notify you in an email if it is not. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../alerting/alerts/alerting-getting-started.md).
 
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
+
 ## Creating a rule [creating-transform-rules]
 
 You can create transform rules under **{{stack-manage-app}} > {{rules-ui}}**.

@@ -13,7 +13,10 @@ products:
 
 The tracking containment rule alerts when an entity is contained or no longer contained within a boundary.
 
-In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Tracking containment** rule type then fill in the name and optional tags.
+In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **Tracking containment** rule type then fill in the name and optional tags.
+
+:::{include} /solutions/_snippets/api-key-rules.md
+:::
 
 ## Define the conditions [_define_the_conditions_3]
 
