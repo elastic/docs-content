@@ -46,7 +46,6 @@ Three creation options are available:
 - **[Start from a rule builder](rules/use-rule-builder.md)**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
 
 If you already have an {{esql}} query working in Discover, you can also [create a rule directly from there](rules/create-rule-from-discover.md) to skip re-entering the query.
-
 ## Next steps
 
 - **[Author rules](rules/author-rules.md):** Write the {{esql}} query, choose Signal or Alert mode, and structure your data sources and conditions.

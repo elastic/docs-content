@@ -384,14 +384,6 @@ toc:
     children:
       - file: alerting/kibana-alerting-experimental/rules.md
         children:
-          - file: alerting/kibana-alerting-experimental/rules/author-rules.md
-          - file: alerting/kibana-alerting-experimental/rules/esql-query-patterns.md
-            children:
-              - file: alerting/kibana-alerting-experimental/rules/esql-first-rule-query.md
-              - file: alerting/kibana-alerting-experimental/rules/esql-threshold-queries.md
-              - file: alerting/kibana-alerting-experimental/rules/esql-no-data-detection.md
-              - file: alerting/kibana-alerting-experimental/rules/esql-slo-burn-rate.md
-              - file: alerting/kibana-alerting-experimental/rules/esql-persistent-breach.md
           - file: alerting/kibana-alerting-experimental/rules/create-a-rule.md
             children:
               - file: alerting/kibana-alerting-experimental/rules/create-esql-rule.md
@@ -411,6 +403,13 @@ toc:
               - file: alerting/kibana-alerting-experimental/rules/configure-no-data-handling.md
               - file: alerting/kibana-alerting-experimental/rules/configure-rule-tags.md
           - file: alerting/kibana-alerting-experimental/rules/view-manage-rules.md
+          - file: alerting/kibana-alerting-experimental/rules/esql-query-patterns.md
+            children:
+              - file: alerting/kibana-alerting-experimental/rules/esql-first-rule-query.md
+              - file: alerting/kibana-alerting-experimental/rules/esql-threshold-queries.md
+              - file: alerting/kibana-alerting-experimental/rules/esql-no-data-detection.md
+              - file: alerting/kibana-alerting-experimental/rules/esql-slo-burn-rate.md
+              - file: alerting/kibana-alerting-experimental/rules/esql-persistent-breach.md
           - file: alerting/kibana-alerting-experimental/rules/rule-event-field-reference.md
       - file: alerting/alerts.md
         children:

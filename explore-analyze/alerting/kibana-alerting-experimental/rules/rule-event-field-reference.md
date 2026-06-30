@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Field reference for rule configuration and .rule-events documents in Kibana's experimental alerting system. Covers schedule, activation thresholds, and rule event output fields."
+description: "Field reference for .rule-events documents in Kibana's experimental alerting system. Covers signal and alert base fields, episode fields, and the append-only data stream behavior."
 ---
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
 
-Rule event fields are part of the {{alerting-v2-system}} in {{kib}}. This page lists technical fields for rule configuration and rule event documents written to `.rule-events`.
+This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For rule configuration settings, refer to [Configure a rule](configure-a-rule.md).
 <!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
 For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
 -->
@@ -18,54 +18,6 @@ For alert actions in `.alert-actions`, refer to [Alert states and fields referen
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through ILM. Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
 :::
-
-## Schedule and lookback
-
-These fields control when a rule runs and how far back its {{esql}} query looks on each evaluation.
-
-| Field | Description |
-|---|---|
-| `schedule.every` | Execution interval; minimum 5 seconds, maximum 365 days. |
-| `schedule.lookback` | Time range the {{esql}} query covers; must not exceed 365 days; should be at least `schedule.every` to avoid gaps. |
-
-## Activation thresholds
-
-These fields are only available in Alert mode. They control how many consecutive breaches, or how long a condition must persist, before an episode transitions from `pending` to `active`.
-
-| Field | Description |
-|---|---|
-| `pending_count` | Consecutive breaches required. |
-| `pending_timeframe` | Minimum duration the condition must persist. |
-| `pending_operator` | How to combine count and timeframe (`AND` or `OR`). |
-
-## Recovery thresholds
-
-These fields are only available in Alert mode. They control how many consecutive recoveries, or how long the condition must be clear, before an episode transitions from `recovering` to `inactive`.
-
-| Field | Description |
-|---|---|
-| `recovering_count` | Consecutive recoveries required. |
-| `recovering_timeframe` | Minimum duration for recovery. |
-| `recovering_operator` | How to combine count and timeframe (`AND` or `OR`). |
-
-## No-data handling
-
-These settings determine what the rule records when the {{esql}} query returns no rows on an evaluation.
-
-| Behavior | Effect |
-|---|---|
-| `emit` | Record a no-data event. |
-| `last_known_status` | Carry forward the previous status. |
-| `recover` | Treat absence as recovery. |
-| `none` | Disable no-data detection. |
-
-## Rule grouping
-
-Grouping is configured in YAML. The fields listed here control how the rule partitions results into independent series, each with its own lifecycle.
-
-| Key | Description |
-|---|---|
-| `grouping.fields` | Array of field names; must align with `STATS ... BY` in the {{esql}} query. |
 
 ## Rule event documents
 
@@ -108,7 +60,7 @@ For triage or reporting, derive duration from [Query alerts and signals in Disco
 
 ### Episode fields [episode-fields]
 
-These fields only appear on documents with `type: alert`, written by rules running in Alert mode. They carry the lifecycle state for the episode associated with the matched series.
+These fields are stored in `.rule-events`, on the same document as the base fields, when the rule runs in Alert mode. They only appear on documents with `type: alert` and carry the lifecycle state for the episode associated with the matched series.
 
 | Field | Type | Description |
 |---|---|---|

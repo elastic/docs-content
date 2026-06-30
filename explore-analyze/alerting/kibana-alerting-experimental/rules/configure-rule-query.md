@@ -10,15 +10,47 @@ description: "Configure the ES|QL query and query parameters for rules in Kibana
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
-Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. Refer to [{{esql}} query structure](author-rules.md#esql-query-structure) for how the base and alert queries interact.
+Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. The rule executor also supports [dynamic values](#dynamic-query-values) that let you do more like filtering by the evaluation window or setting configurable values like thresholds through the rule form.
 
-## Query parameters [query-parameters]
+## Base query [query-base]
 
-Two types of parameters are available in {{esql}} rule queries: reserved runtime parameters and UI form variables.
+The base query is the main {{esql}} expression. Use `FROM` to point the rule at the indices or data streams to read. Shape results with `STATS`, `WHERE`, and `EVAL`, and control which fields are stored with `KEEP`. The base query runs on every evaluation, even when no match occurs, which is what enables no-data detection and recovery. The [{{esql}} reference](elasticsearch://reference/query-languages/esql.md) covers all available commands and processing functions.
 
-**Reserved runtime parameters**
+This query counts HTTP 5xx errors per service over the lookback window and stores only the fields needed for triage:
 
-The executor automatically binds `?_tstart` and `?_tend` to the lookback window start and end timestamps on every rule evaluation. Use these to filter your query to the evaluation window:
+```esql
+FROM logs-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS error_count = COUNT_IF(http.response.status_code >= 500) BY service.name
+| KEEP service.name, error_count
+```
+
+Without an alert condition, every row returned by this query is treated as a breach, so the rule fires for every service that logged at least one 5xx error.
+
+## Alert condition [query-alert-condition]
+
+The alert condition is an optional `WHERE` clause appended after the base query. Only rows that pass the condition are treated as breaches. Use an alert condition when the base query returns aggregate results and you only want to alert when a value crosses a threshold.
+
+This example extends the base query above to only fire when a service exceeds 10 errors:
+
+```esql
+FROM logs-*
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS error_count = COUNT_IF(http.response.status_code >= 500) BY service.name
+| KEEP service.name, error_count
+// Alert condition: only services with more than 10 errors become breaches
+| WHERE error_count > 10
+```
+
+The `KEEP` command controls which fields appear on each stored alert event. Only the fields in `KEEP` are available for action policy matchers, grouping keys, and triage.
+
+## Use dynamic values in your rule query [dynamic-query-values]
+
+{{esql}} rule queries support two kinds of parameters that make queries more dynamic: time bounds that the executor injects automatically, and form variables you define when creating a rule. You don't need either to write a working rule, but they're useful for scoping queries precisely to the evaluation window or making thresholds configurable without editing the query.
+
+### Filter your query to the evaluation window (`?_tstart` and `?_tend`) [time-bound-parameters]
+
+`?_tstart` and `?_tend` are reserved parameter names that the rule executor binds automatically on every evaluation. They hold the start and end timestamps of the lookback window, so you can scope a query to exactly the period the rule is evaluating:
 
 ```esql
 FROM logs-*
@@ -27,11 +59,11 @@ FROM logs-*
 | WHERE error_count > 10
 ```
 
-These are the only parameters supported across all rule creation methods (rule form, YAML editor, and API).
+These parameters work across all rule creation methods.
 
-**Rule form variables**
+### Set configurable values in the rule form (`?param`) [form-variables]
 
-The rule form supports additional `?param` placeholders, such as `?threshold`, through ES|QL Control variables. The form resolves these variables and inlines their values into the query string before saving. The stored rule and any API or YAML representation contain the resolved values, not the placeholder tokens.
+When creating a rule through the form, you can use `?param` placeholders, such as `?threshold`, as {{esql}} Control variables. The form resolves these variables and inlines their values into the query before saving. The stored rule and the YAML representation of it contains the resolved values, not the placeholder tokens.
 
 ## Examples
 
