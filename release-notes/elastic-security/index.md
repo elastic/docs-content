@@ -46,6 +46,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
 * Fixes a rare edge case where {{elastic-defend}} could lose Tamper Protection.
 * Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+
 
 ## 9.4.2 [elastic-security-9.4.2-release-notes]
 
