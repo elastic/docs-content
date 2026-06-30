@@ -1,1 +1,1 @@
-- **Collapse by**: Hide this dimension from the visualization and aggregate all metric values that share the same value for it into a single number, using `Sum`, `Min`, `Max`, or `Average`.
+- **Collapse by**: Aggregate all metric values that share the same value for this dimension into a single number, removing it as an independent grouping. Available aggregation methods: `Sum`, `Min`, `Max`, or `Average`.

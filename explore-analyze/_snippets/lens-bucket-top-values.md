@@ -2,4 +2,4 @@
   - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term groups. When multiple fields are selected, each group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
   - **Number of values**: How many top values to display. The default number of values depends on your environment:
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-    - {applies_to}`stack: ga 9.0-9.3` Defaults to 5 for the first dimension and 3 for each additional dimension.
+    - {applies_to}`stack: ga 9.0-9.3` Defaults to 5 for the first Top values dimension added to the chart and 3 for each additional one.
