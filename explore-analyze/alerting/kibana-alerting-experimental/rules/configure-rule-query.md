@@ -10,7 +10,7 @@ description: "Configure the ES|QL query and query parameters for rules in Kibana
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
-The rule's {{esql}} query defines what to evaluate. It has a base query and an optional alert condition. Together they drive which rows become alert events and how no-data behavior applies. Refer to [{{esql}} query structure](author-rules.md#esql-query-structure) for how those pieces interact with no-data behavior and `KEEP`.
+Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. Refer to [{{esql}} query structure](author-rules.md#esql-query-structure) for how the base and alert queries interact.
 
 ## Query parameters [query-parameters]
 

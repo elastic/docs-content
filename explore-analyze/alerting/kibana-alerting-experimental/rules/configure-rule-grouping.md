@@ -10,7 +10,7 @@ description: "Configure rule grouping in Kibana's experimental alerting system t
 
 # Rule grouping in the {{alerting-v2-system}} [rule-grouping]
 
-Rule grouping lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
+Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
 Each group tracks its own lifecycle, recovery, and snooze state.
 

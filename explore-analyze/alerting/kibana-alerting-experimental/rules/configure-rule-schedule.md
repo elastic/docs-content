@@ -10,7 +10,7 @@ description: "Configure the execution schedule and lookback window for rules in 
 
 # Schedule and lookback in the {{alerting-v2-system}} [schedule-lookback]
 
-The schedule and lookback settings control how often a rule runs and how far back it looks when evaluating data.
+Schedule and lookback are required settings for rules in the {{alerting-v2-system}}. They control how often a rule runs and how far back it looks when evaluating data.
 
 Both fields accept duration strings such as `30s`, `5m`, `2h`, or `7d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 

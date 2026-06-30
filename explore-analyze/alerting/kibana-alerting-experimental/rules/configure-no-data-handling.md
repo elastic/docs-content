@@ -10,7 +10,7 @@ description: "Configure no-data handling for rules in Kibana's experimental aler
 
 # No-data handling in the {{alerting-v2-system}} [no-data-handling]
 
-Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
+No-data handling is an optional setting for rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
 
 Set `no_data_strategy` to one of the following values:
 

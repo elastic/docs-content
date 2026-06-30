@@ -10,9 +10,7 @@ description: "Configure activation and recovery thresholds for Alert-mode rules 
 
 # Activation and recovery thresholds in the {{alerting-v2-system}} (Alert mode only) [activation-recovery-thresholds]
 
-Activation and recovery thresholds control when alerts transition between lifecycle states. They reduce noise from short spikes and from rapid flapping between active and recovered.
-
-These settings are only available for Alert-mode rules.
+Activation and recovery thresholds are optional settings for Alert-mode rules in the {{alerting-v2-system}}. They control when alerts transition between lifecycle states, reducing noise from short spikes and rapid flapping between active and recovered.
 
 ## Activation thresholds
 

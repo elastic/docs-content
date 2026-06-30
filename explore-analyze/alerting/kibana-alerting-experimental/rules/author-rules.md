@@ -16,7 +16,7 @@ This page explains the concepts behind rule modes, detection logic, and severity
 
 ## Rule modes
 
-A rule's mode is set by the creation method; some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options.
+A rule's mode is set by the creation method. Some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options.
 
 | Mode | What it does |
 | --- | --- |

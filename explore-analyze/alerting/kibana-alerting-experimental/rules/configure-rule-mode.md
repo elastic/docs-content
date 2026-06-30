@@ -10,7 +10,7 @@ description: "Choose between Signal and Alert mode for rules in Kibana's experim
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-A rule's mode is set by the creation method; some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options. In the YAML editor, set `mode` to `signal` or `alert`.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. Rule mode set by the rule creation method and some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options.
 
 | Mode | Behavior | Best for |
 | --- | --- | --- |

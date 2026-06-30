@@ -10,7 +10,7 @@ description: "Add tags and runbooks to Alert-mode rules in Kibana's experimental
 
 # Tags and runbooks in the {{alerting-v2-system}} (Alert mode only) [tags-investigation]
 
-Tags and runbooks are optional metadata fields available for Alert-mode rules.
+Tags and runbooks are optional metadata fields for Alert-mode rules in the {{alerting-v2-system}}.
 
 - **Tags**: Free-form labels for filtering and organization. Maximum 20 tags per rule; each tag can be up to 128 characters.
 - **Runbooks**: An investigation guide stored with the rule so responders have context when alerts are generated.
