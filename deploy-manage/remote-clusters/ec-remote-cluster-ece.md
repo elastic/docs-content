@@ -9,6 +9,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Enterprise
 ---
 
@@ -47,7 +49,7 @@ If network security filters are applied to the remote cluster on ECE, the remote
 :::
 
 
-### Configure the local deployment [ec_configure_the_local_deployment]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -147,7 +149,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 :::
 
 ::::{note}
-If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
+If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
 ::::
 
 ### Using the {{es}} API [ec_using_the_elasticsearch_api_3]

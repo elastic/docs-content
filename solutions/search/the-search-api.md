@@ -17,7 +17,7 @@ A *search* consists of one or more queries that are combined and sent to {{es}}.
 
 A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results.
 
-You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
+You can use the [search API]({{es-apis}}operation/operation-search) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
 
 
 ## Run a search [run-an-es-search]
@@ -172,28 +172,42 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 ## Search timeout [search-timeout]
 
-By default, search requests don’t time out. The request waits for complete results from each shard before returning a response.
+By default, search requests do not time out. The request waits for complete results from every shard before returning a response.
 
-While [async search](async-search-api.md) is designed for long-running searches, you can also use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests.
+You can set a [`timeout` value]({{es-apis}}operation/operation-search) to apply per shard, starting when the query phase begins on that shard. It does not enforce an overall search-level timeout for other parts of the [read model](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model). The timeout value is exceeded on a shard, it returns partial results and the search response is marked with `"timed_out": true`:
 
-```console
-GET /my-index-000001/_search
+
+```json
 {
-  "timeout": "2s",
-  "query": {
-    "match": {
-      "user.id": "kimchy"
-    }
+ "took" : 11,
+  "timed_out" : true,
+  "_shards" : {
+    "total" : 40,
+    "successful" : 40,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 98393, // possibly incomplete value
+      "relation" : "eq"
+    },
+    // ... 
   }
 }
 ```
 
-To set a cluster-wide default timeout for all search requests, configure `search.default_search_timeout` using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). This global timeout duration is used if no `timeout` argument is passed in the request. If the global search timeout expires before the search request finishes, the request is cancelled using [task cancellation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). The `search.default_search_timeout` setting defaults to `-1` (no timeout).
+If a particular search request should error out instead of returning partial results, consider setting the [`default_allow_partial_results` setting]({{es-apis}}operation/operation-search) to `false`.
 
+You can set a fallback cluster-wide default timeout for all search requests by configuring the `search.default_search_timeout` cluster setting. In this case, the request will be cancelled using the [task cancellation API]({{es-apis}}/operation/operation-tasks-cancel).
+
+:::{note}
+The `search.default_search_timeout` setting's resolution sensitivity is determined by the `thread_pool.estimated_time_interval` setting, which defaults to `200ms`. This means the minimum meaningful impact threshold for `search.default_search_timeout` would also be `200ms`. Elastic recommends against overriding this expert setting as it has far reaching impact.
+:::
 
 ## Search cancellation [global-search-cancellation]
 
-You can cancel a search request using the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
+You can cancel a search request using the [task management API]({{es-apis}}group/endpoint-tasks). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
 
 
 ## Track total hits [track-total-hits]

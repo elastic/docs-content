@@ -2,9 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
 ---
 
-# Manage a data stream [index-management-manage-data-streams]
+# Manage a data stream in {{kib}} [index-management-manage-data-streams]
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
@@ -21,14 +25,15 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream’s name. From this view, you can navigate to **Discover** to further explore data within the data stream.
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
-* To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**.
+* A value in the **Data retention** column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
+* To modify the data retention value, select a data stream, open the **Manage**  menu, and click **Edit data retention**. On {{stack}}, this action is only available if your data stream is managed by a [data stream lifecycle](/manage-data/lifecycle/data-stream.md).
 
 ## Manage data streams on the Streams page [manage-data-streams-with-streams]
 ```{applies_to}
 serverless: ga
-stack: preview 9.1, ga 9.2
+stack: preview =9.1, ga 9.2+
 ```
-Starting with {{stack}} version 9.2, the [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
+The [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
 
 :::{image} /manage-data/images/data-stream-management-streams.png
 :alt: The Streams page
@@ -40,6 +45,6 @@ You can perform the following data management tasks on the **Streams** page:
 * [define parsing and field extraction logic](/solutions/observability/streams/management/extract.md)
 * [configure data retention policies](/solutions/observability/streams/management/retention.md)
 * [manually adjust index settings](/solutions/observability/streams/management/advanced.md)
-* [manage and update field mappings](/solutions/observability/streams/management/schema.md) {applies_to}`stack: unavailable 9.1`
-* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md) {applies_to}`stack: unavailable 9.1`
-* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`
+* [manage and update field mappings](/solutions/observability/streams/management/schema.md)
+* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md)
+* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`

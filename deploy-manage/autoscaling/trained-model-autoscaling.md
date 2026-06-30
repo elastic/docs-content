@@ -61,10 +61,10 @@ If you set the minimum number of allocations to 1, you will be charged even if t
 
 You can enable adaptive allocations by using:
 
-* the create inference endpoint API for [ELSER](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elser), [E5 and models uploaded through Eland](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) that are used as inference services.
-* the [start trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) or [update trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-trained-model-deployment) APIs for trained models that are deployed on {{ml}} nodes.
+* the create inference endpoint API for [ELSER]({{es-apis}}operation/operation-inference-put-elser), [E5 and models uploaded through Eland]({{es-apis}}operation/operation-inference-put-elasticsearch) that are used as inference services.
+* the [start trained model deployment]({{es-apis}}operation/operation-ml-start-trained-model-deployment) or [update trained model deployment]({{es-apis}}operation/operation-ml-update-trained-model-deployment) APIs for trained models that are deployed on {{ml}} nodes.
 
-If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
+If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint]({{es-apis}}group/endpoint-inference).
 
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]
 
@@ -104,7 +104,7 @@ On {{serverless-short}}, VCUs for {{ml}} are based on the amount of vCPU and mem
 As a math formula, `VCUs = 8 * allocations * threads`, or `1` VCU for every `1GB` of memory consumed, whichever is greater.
 ::::
 
-If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values.
+If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API]({{es-apis}}operation/operation-ml-info) to check these values.
 
 The following tables show you the number of allocations, threads, and vCPUs available in ECE and ECH when adaptive resources are enabled or disabled.
 
@@ -114,9 +114,9 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
@@ -141,11 +141,11 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 ::::
 
 #### Adaptive resources disabled
-
-::::{tab-set}
-
-:::{tab-item} ECH, ECE
-
+```{applies_to}
+deployment:
+  ess:
+  ece:
+```
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
 | Low | 2 if available, otherwise 1, statically | 1 | 2 if available |
@@ -154,9 +154,6 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-:::
-
-::::
 
 ### Search optimized
 
@@ -164,9 +161,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources enabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -178,13 +175,13 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 0 to 1 dynamically | 2 | 0 to 16 dynamically |
-| Medium | 0 to 2 dynamically for Search and Observatibility<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observatibility<br> 8 to 256 dynamically for Security |
-| High | 0 to 32 dynamically for Search and Observatibility<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
+| Medium | 0 to 2 dynamically for Search and Observability<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observability<br> 8 to 256 dynamically for Security |
+| High | 0 to 32 dynamically for Search and Observability<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
 
 :::
 
@@ -192,9 +189,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 #### Adaptive resources disabled
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} ECH, ECE
+:::{applies-item} { ess:, ece: }
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |

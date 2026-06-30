@@ -105,3 +105,4 @@ These Elastic Integrations have components that are **not** FIPS compatible, and
 - [MySQL Integration](integration-docs://reference/mysql.md)
 - [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
 - [Oracle Integration](integration-docs://reference/oracle.md)
+- [Elastic Defend](integration-docs://reference/endpoint.md)

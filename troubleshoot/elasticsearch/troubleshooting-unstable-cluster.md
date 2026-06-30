@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unstable-cluster.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -66,13 +61,24 @@ Nodes will also log a message containing `master node changed` whenever they sta
 
 If a node restarts, it will leave the cluster and then join the cluster again. When it rejoins, the `NodeJoinExecutor` will log that it processed a `node-join` task indicating that the node is `joining after restart`. If a node is unexpectedly restarting, look at the node’s logs to see why it is shutting down.
 
-The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on the affected node will also provide some useful information about the situation.
+The [Health]({{es-apis}}operation/operation-health-report) API on the affected node will also provide some useful information about the situation.
 
 If the node did not restart then you should look at the reason for its departure more closely. Each reason has different troubleshooting steps, described below. There are three possible reasons:
 
 * `disconnected`: The connection from the master node to the removed node was closed.
-* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted timeout. By default, this timeout is 2 minutes. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
+* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted time. By default, `cluster.follower_lag.timeout` is `90s` (in addition to `cluster.publish.timeout` which defaults to `30s`). Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) and [Publishing the cluster state](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview.md#cluster-state-publishing) for how these timeouts interact.
 * `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
+
+## Ruling out network delays with TCP timeouts on Linux [troubleshooting-unstable-cluster-tcp-retries-node-left]
+
+`Lagging` and `follower check retry count exceeded` removals can be caused by severe network delays or by slow or overloaded nodes (CPU, heap, disk). The `node-left` reason alone does not tell you which it is.
+
+To rule out network delay, on Linux configure `net.ipv4.tcp_retries2` so TCP does not spend many minutes retransmitting lost data before the kernel fails the connection. The default on many distributions is high, often set to `15`, which corresponds to retransmissions over a long period, during which traffic can stall while {{es}} may still report `lagging` or failed follower checks. 
+To expose TCP-level problems faster, you can configure `net.ipv4.tcp_retries2` to a lower value, for example `5`. Refer to [Decrease the TCP retransmission timeout](/deploy-manage/deploy/self-managed/system-config-tcpretries.md) for more information. This exposes TCP-level problems on the order of tens of seconds instead of many minutes: bad paths are more likely to show up as connection timeouts or a `disconnected` `node-left` task when the transport drops, which points clearly at the network stack.
+
+If unstable behavior aligns with faster, clearer TCP or transport failures after lowering `net.ipv4.tcp_retries2`, treat network delay or packet loss as a strong suspect and keep investigating connectivity, firewalls, and path quality. If you still see `lagging` or `follower check retry count exceeded` with no improvement after this change, network delay is less likely to be the main explanation. You can focus on the affected node’s performance and the guidance in the sections below.
+
+Lowering `net.ipv4.tcp_retries2` does not fix a faulty network or an overloaded node; it only changes how soon Linux reports a broken TCP path, which helps you decide whether delays are network-related. You can use this on Linux hosts that you operate yourself (not as a substitute for correcting switches, firewalls, or JVM issues). Whether the master logs `disconnected`, `lagging`, or `follower check retry count exceeded` is decided by {{es}} [cluster fault detection](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md); the sysctl does not set or rename that reason.
 
 
 ## Diagnosing `disconnected` nodes [troubleshooting-unstable-cluster-disconnected]
@@ -89,7 +95,7 @@ To determine whether the node which left the cluster with the `disconnected` rea
 
 {{es}} needs every node to process cluster state updates reasonably quickly. If a node takes too long to process a cluster state update, it can be harmful to the cluster. The master will remove these nodes with the `lagging` reason. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. To rule out network delays, ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md). Log messages that contain `warn threshold` may provide more information about the root cause.
+Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability. Log messages that contain `warn threshold` may provide more information about the root cause.
 
 If you’re an advanced user, you can get more detailed information about what the node was doing when it was removed by configuring the following logger:
 
@@ -97,7 +103,7 @@ If you’re an advanced user, you can get more detailed information about what t
 logger.org.elasticsearch.cluster.coordination.LagDetector: DEBUG
 ```
 
-When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API on the faulty node and report the results in the logs on the elected master. The results are compressed, encoded, and split into chunks to avoid truncation:
+When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API on the faulty node and report the results in the logs on the elected master. The results are compressed, encoded, and split into chunks to avoid truncation:
 
 ```text
 [DEBUG][o.e.c.c.LagDetector      ] [master] hot threads from node [{node}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] lagging at version [183619] despite commit of cluster state version [183620] [part 1]: H4sIAAAAAAAA/x...
@@ -120,7 +126,7 @@ Nodes sometimes leave the cluster with reason `follower check retry count exceed
 
 {{es}} needs every node to respond to network messages successfully and reasonably quickly. If a node rejects requests or does not respond at all then it can be harmful to the cluster. If enough consecutive checks fail then the master will remove the node with reason `follower check retry count exceeded` and will indicate in the `node-left` message how many of the consecutive unsuccessful checks failed and how many of them timed out. Refer to [Discovery and cluster formation settings](elasticsearch://reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
-Timeouts and failures may be due to network delays or performance problems on the affected nodes. Ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md) to eliminate network delays as a possible cause for this kind of instability. Log messages containing `warn threshold` may give further clues about the cause of the instability.
+Timeouts and failures may be due to network delays or performance problems on the affected nodes. Refer to [Ruling out network delays with `net.ipv4.tcp_retries2`](#troubleshooting-unstable-cluster-tcp-retries-node-left), to eliminate network delays as a possible cause for this kind of instability. Log messages containing `warn threshold` may give further clues about the cause of the instability.
 
 If the last check failed with an exception then the exception is reported, and typically indicates the problem that needs to be addressed. If any of the checks timed out then narrow down the problem as follows.
 
@@ -129,7 +135,7 @@ If the last check failed with an exception then the exception is reported, and t
 * Packet captures will reveal system-level and network-level faults, especially if you capture the network traffic simultaneously at the elected master and the faulty node and analyse it alongside the {{es}} logs from those nodes. The connection used for follower checks is not used for any other traffic so it can be easily identified from the flow pattern alone, even if TLS is in use: almost exactly every second there will be a few hundred bytes sent each way, first the request by the master and then the response by the follower. You should be able to observe any retransmissions, packet loss, or other delays on such a connection.
 * Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.
 
-    The [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
+    The [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
 
     The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. See [Networking threading model](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.
 
@@ -147,7 +153,7 @@ To gather more information about the reason for shards shutting down slowly, con
 logger.org.elasticsearch.env.NodeEnvironment: DEBUG
 ```
 
-When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API whenever it encounters a `ShardLockObtainFailedException`. The results are compressed, encoded, and split into chunks to avoid truncation:
+When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads]({{es-apis}}operation/operation-nodes-hot-threads) API whenever it encounters a `ShardLockObtainFailedException`. The results are compressed, encoded, and split into chunks to avoid truncation:
 
 ```text
 [DEBUG][o.e.e.NodeEnvironment    ] [master] hot threads while failing to obtain shard lock for [index][0] [part 1]: H4sIAAAAAAAA/x...
@@ -168,7 +174,7 @@ cat shardlock.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 
 {{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these transport connections to remain open [forever](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a transport connection is closed then {{es}} tries to reopen the connection, failing any in-flight operations that were using the connection at the time. Occasional closures of transport connections might be acceptable because they have a small impact on the cluster, but repeatedly-dropped transport connections severely affect its operations.
 
-{{es}} nodes only actively close an outbound transport connection to another node if the other node leaves the cluster. Refer to [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for further information about identifying and troubleshooting this situation. If an outbound transport connection closes for some other reason, {{es}} logs messages such as the following:
+{{es}} nodes only actively close an outbound transport connection to another node if the other node leaves the cluster. If an outbound transport connection closes for some other reason, {{es}} logs messages such as the following:
 
 ```text
 [INFO ][o.e.t.ClusterConnectionManager] [node-1] transport connection to [{node-2}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] closed by remote

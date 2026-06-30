@@ -20,7 +20,7 @@ Security models work independently of [connection modes](./connection-modes.md).
 
 ## API key authentication [api-key]
 
-API key authentication enables a local cluster to authenticate itself with a remote cluster using a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key, and grants access based on the API key’s privileges.
+API key authentication enables a local cluster to authenticate itself with a remote cluster using a [cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key, and grants access based on the API key’s privileges.
 
 ### Authorization
 
@@ -45,6 +45,27 @@ Mutual TLS is not required in this model.
 ### Setup
 
 Refer to [Remote cluster setup](../remote-clusters.md#setup) for configuration guidance across all deployment types.
+
+### Strong identity verification [remote-cluster-strong-verification]
+```{applies_to}
+stack: preview 9.3
+```
+
+::::{include} _snippets/rcs_strong_identity_intro.md
+::::
+
+#### How strong identity verification works [_how_strong_verification_works]
+
+::::{include} _snippets/rcs_strong_identity_how.md
+::::
+
+#### Configure strong identity verification
+
+To configure strong identity verification for remote clusters, refer to the appropriate guide for your deployment type:
+- [Configure strong identity verification on {{ech}} deployments](./ec-remote-cluster-strong-identity.md)
+- [Configure strong identity verification in self-managed clusters](./remote-clusters-api-key.md#remote-cluster-strong-verification)
+
+The self-managed configuration procedure can be adapted to other deployment types, such as {{ece}} and {{eck}}, using the platform-specific methods to apply the required configuration.
 
 ## TLS certificate authentication
 ```{applies_to}

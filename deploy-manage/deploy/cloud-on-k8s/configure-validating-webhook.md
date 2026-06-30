@@ -27,7 +27,7 @@ Validating webhooks are defined using a `ValidatingWebhookConfiguration` object 
 
 ## Defaults provided by ECK [k8s-webhook-defaults]
 
-When using the default `operator.yaml` manifest, ECK is installed with a `ValidatingWebhookConfiguration` configured as follows:
+When installing ECK using the [`operator.yaml` manifest](install-using-yaml-manifest-quickstart.md) or the [Helm chart](install-using-helm-chart.md) with default values, ECK is installed with a `ValidatingWebhookConfiguration` configured as follows:
 
 * Validate all known Elastic custom resources ({{eck_resources_list}}) on create and update.
 * The operator itself is the webhook server — which is exposed through a service named `elastic-webhook-server` in the `elastic-system` namespace.
@@ -36,22 +36,21 @@ When using the default `operator.yaml` manifest, ECK is installed with a `Valida
 
 ## Manual configuration [k8s-webhook-manual-config]
 
-If you installed ECK without the webhook and want to enable it later on, or if you want to customise the configuration such as providing your own certificates, this section describes the options available to you.
+If you installed ECK without the webhook and want to enable it later on, or if you want to customize the configuration such as providing your own certificates, this section describes the options available to you.
 
 
 ### Configuration options [k8s-webhook-config-options]
 
-You can customise almost all aspects of the webhook setup by changing the [operator configuration](configure-eck.md).
+You can customize almost all aspects of the webhook setup by changing the [operator configuration](configure-eck.md).
 
 | Configuration option | Default value | Description |
 | --- | --- | --- |
-| `enable-webhook` | false | This must be set to `true` to enable the webhook server. |
+| `enable-webhook` | false | Set to `true` to enable the webhook server.<br><br>Although the operator default is `false`, the standard ECK installation manifests and Helm chart explicitly set it to `true`. |
 | `manage-webhook-certs` | true | Set to `false` to disable auto-generating the certificate for the webhook. If disabled, you must provide your own certificates using one of the methods described later in this document. |
 | `webhook-cert-dir` | /tmp/k8s-webhook-server/serving-certs | Path to mount the certificate. |
 | `webhook-name` | elastic-webhook.k8s.elastic.co | Name of the `ValidatingWebhookConfiguration` resource. |
 | `webhook-secret` | elastic-webhook-server-cert | Name of the secret containing the certificate for the webhook server. |
 | `webhook-port` | 9443 | Port to listen for incoming validation requests. |
-
 
 ### Using your own certificates [k8s-webhook-existing-certs]
 

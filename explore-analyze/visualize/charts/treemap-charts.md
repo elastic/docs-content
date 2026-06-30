@@ -1,0 +1,563 @@
+---
+navigation_title: Treemap charts
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+description: Create treemap charts to visualize hierarchical data, show part-to-whole relationships, and compare relative sizes across multiple levels.
+---
+
+# Build treemap charts with {{kib}}
+
+Treemap charts display hierarchical data as nested rectangles, where each rectangle's size represents a quantitative value. They are ideal for showing part-to-whole relationships within hierarchies, comparing relative sizes of categories, and visualizing how data is distributed across multiple levels.
+
+You can create treemap charts in {{kib}} using [**Lens**](../lens.md).
+
+![Example Lens treemap charts based on sample data](/explore-analyze/images/treemap-example.png)
+
+## Build a treemap chart
+
+:::{include} ../../_snippets/lens-prerequisites.md
+:::
+
+To build a treemap chart:
+
+::::::{stepper}
+
+:::::{step} Access Lens
+:::{include} ../../_snippets/access-lens.md
+:::
+:::::
+
+:::::{step} Set the visualization to Treemap
+New visualizations often start as **Bar** charts.
+
+Using the **Visualization type** dropdown, select **Treemap**.
+:::::
+
+:::::{step} Define the data to show
+1. Select the {{data-source}} that contains your data.
+2. Configure the [**Group by**](#group-by-settings) dimension to define how the rectangles are grouped. Add multiple **Group by** dimensions to create a hierarchy.
+3. Configure the [**Metric**](#metric-settings) dimension to define the size of each rectangle.
+
+The chart preview updates to show rectangles sized by your metric. If you added multiple **Group by** dimensions, smaller rectangles appear nested inside the top-level categories.
+:::::
+
+:::::{step} Customize the chart to follow best practices
+Tweak the appearance of the chart to your needs. Consider the following best practices:
+
+**Limit hierarchy depth**
+:   Keep your treemap to 2-3 levels of hierarchy. Deeper nesting becomes difficult to read and interpret.
+
+**Order categories by size**
+:   Arrange rectangles by size (largest first) to make comparisons easier. This is the default behavior in Lens.
+
+**Use color meaningfully**
+:   Apply colors to distinguish top-level categories or to represent an additional metric (such as growth rate or status).
+
+**Ensure readable labels**
+:   Labels are automatically hidden on rectangles that are too small to fit them. If too many labels are missing, reduce the number of categories or increase the panel size.
+
+Refer to [Treemap chart settings](#treemap-chart-settings) to find all configuration options for your treemap chart.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
+:::::
+
+:::::{step} Save the chart
+:::{include} ../../_snippets/save-visualization.md
+:::
+:::::
+
+::::::
+
+## Treemap chart settings [treemap-chart-settings]
+
+Customize your treemap chart to display exactly the information you need, formatted the way you want.
+
+### Group by settings [group-by-settings]
+
+The **Group by** dimension defines how rectangles are grouped. You can add up to 2 levels of grouping to create hierarchical visualizations.
+
+**Data**
+:   The **Group by** dimension supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
+
+**Appearance**
+:   - **Name**: Customize the legend label.
+    - **Color mapping**: Select a color palette or assign specific colors to categories. Refer to [Assign colors to terms](../lens.md#assign-colors-to-terms) for details. Color mapping is only available on the first **Group by** dimension. Nested levels inherit colors from their parent category.
+
+### Metric settings [metric-settings]
+
+The **Metric** dimension defines the size of each rectangle.
+
+**Data**
+:   The value that determines rectangle size. When you drag a field onto the chart, {{kib}} suggests a function based on the field type. You can use aggregation functions like `Sum`, `Average`, `Count`, `Median`, and more, or create custom calculations with [formulas](/explore-analyze/visualize/lens.md#lens-formulas).
+
+    :::{include} ../../_snippets/lens-value-advanced-settings.md
+    :::
+
+**Appearance**
+:   - **Name**: Customize the metric label displayed in tooltips and legends.
+    - **Value format**: Control how numeric values are displayed (number, percent, bytes, and more).
+
+### General layout [appearance-options]
+
+When creating or editing a visualization, you can customize several appearance options from the {icon}`brush` **Style** or ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") **Legend** menus.
+
+#### Style settings
+
+**Slice labels**
+:   Control how labels appear on rectangles:
+    - **Show**: Display labels on all rectangles where space permits (default).
+    - **Hide**: Do not display labels on rectangles.
+
+**Slice values**
+:   Control what values appear on rectangles:
+    - **Percentage**: Display the percentage of total (default).
+    - **Integer**: Display the raw numeric value.
+    - **Hide**: Do not display values.
+
+    When displaying percentages, you can also configure the **Decimal places** (default: 2).
+
+#### Legend settings
+
+**Visibility**
+:   Specify whether to automatically show the legend or hide it:
+    - **Auto**: Hide the legend (default).
+    - **Show**: Always show the legend.
+    - **Hide**: Never show the legend.
+
+**Width**
+:   Control the width of the legend panel: **Small**, **Medium**, **Large**, or **Extra large**.
+
+**Label truncation**
+:   Toggle whether to truncate long legend labels. When enabled, set the **Line limit** to control how many lines to display before truncating (1-5, default: 1).
+
+**Nested**
+:   When using multiple **Group by** dimensions, enable this option to show the legend in a hierarchical format.
+
+## Treemap chart examples
+
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file treemap-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
+The following examples show various configuration options for building impactful treemap charts.
+
+**Bytes per file extension**
+:   See which file extensions consume the most bandwidth, excluding blank values:
+
+    * Example based on: {{kib}} Sample Data Logs
+    * **Group by**: `extension.keyword`
+      * Top 6 values
+      * Advanced: include values matching the `.+` regular expression to exclude blank values
+    * **Metric**: Sum of `bytes`
+    * **Value display**: Percentage
+
+![Treemap showing bytes per file extension](/explore-analyze/images/treemap-example-bytes-per-extension.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a single-level treemap where each rectangle represents a file extension and its size reflects total bandwidth consumed.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap", <1>
+  "title": "Bytes per file extension",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Total bytes",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <2>
+      "fields": ["extension.keyword"],
+      "limit": 6,
+      "includes": { "values": [".+"], "as_regex": true },
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "direction": "desc", "metric_index": 0 },
+      "increase_accuracy": true
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } } <3>
+}
+```
+
+1. `treemap` renders nested rectangles whose area is proportional to the metric value.
+2. The `terms` grouping limits to the top 6 extensions ranked by `sum of bytes` (descending), uses `includes` with `as_regex: true` and pattern `.+` to exclude blank values, groups any remaining extensions into an **Other** bucket, and enables accuracy mode.
+3. `percentage` displays each extension's share of total bytes instead of the raw count.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap", <1>
+  "title": "Bytes per file extension",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "sum",
+      "field": "bytes",
+      "label": "Total bytes",
+      "format": {
+        "type": "number"
+      },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <2>
+      "fields": ["extension.keyword"],
+      "limit": 6,
+      "includes": { "values": [".+"], "as_regex": true },
+      "other_bucket": { "include_documents_without_field": false },
+      "rank_by": { "type": "metric", "direction": "desc", "metric_index": 0 },
+      "increase_accuracy": true
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } } <3>
+}'
+```
+
+1. `treemap` renders nested rectangles whose area is proportional to the metric value.
+2. The `terms` grouping limits to the top 6 extensions ranked by `sum of bytes` (descending), uses `includes` with `as_regex: true` and pattern `.+` to exclude blank values, groups any remaining extensions into an **Other** bucket, and enables accuracy mode.
+3. `percentage` displays each extension's share of total bytes instead of the raw count.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
+**Flights by carrier and destination country**
+:   Show how flight volume is distributed across airlines and their destination countries, using two hierarchy levels:
+
+    * Example based on: {{kib}} Sample Data Flights
+    * **Group by** (Level 1): `Carrier` (Top 5 values)
+    * **Group by** (Level 2): `DestCountry` (Top 5 values)
+    * **Metric**: Count
+    * **Value display**: Percentage
+
+![Treemap showing flights by carrier and destination country](/explore-analyze/images/treemap-example-flights-carrier.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a two-level treemap: the outer rectangles represent airlines and the inner rectangles show destination countries, revealing how each carrier's flight volume is distributed geographically.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap",
+  "title": "Flights by carrier and destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Flights",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["Carrier"],
+      "limit": 5
+    },
+    {
+      "operation": "terms", <2>
+      "fields": ["DestCountry"],
+      "limit": 5
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. The first `group_by` entry creates the outer (parent) rectangles, one per airline carrier.
+2. The second `group_by` entry nests destination countries inside each carrier, forming the two-level hierarchy.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Flights by carrier and destination country",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Flights",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["Carrier"],
+      "limit": 5
+    },
+    {
+      "operation": "terms", <2>
+      "fields": ["DestCountry"],
+      "limit": 5
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_flights",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}'
+```
+
+1. The first `group_by` entry creates the outer (parent) rectangles, one per airline carrier.
+2. The second `group_by` entry nests destination countries inside each carrier, forming the two-level hierarchy.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
+**Response status per host**
+:   See which hosts handle the most traffic and how their response status breaks down:
+
+    * Example based on: {{kib}} Sample Data Logs
+    * **Group by** (Level 1): `host.keyword` (Top 3 values, with Other)
+    * **Group by** (Level 2): Filters
+      - "Success (2xx/3xx)": `response.keyword >= "200" AND response.keyword < "400"`
+      - "Client errors (4xx)": `response.keyword >= "400" AND response.keyword < "500"`
+      - "Server errors (5xx)": `response.keyword >= "500"`
+    * **Metric**: Count
+    * **Value display**: Percentage
+    * **Color**: Gradient (`#ffc7db`), reversed
+
+![Treemap showing response status per host](/explore-analyze/images/treemap-example-response-per-host.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example nests KQL-based response status categories inside host rectangles, combining `terms` and `filters` groupings to show both traffic volume and health per host.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "treemap",
+  "title": "Response status per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["host.keyword"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false },
+      "color": {
+        "mode": "gradient",
+        "palette": "default",
+        "gradient": [{ "type": "color_code", "value": "#ffc7db" }],
+        "sort": "desc"
+      }
+    },
+    {
+      "operation": "filters", <2>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ]
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}
+```
+
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. `other_bucket` adds an "Other" segment for hosts outside the top 3. The `color` gradient applies a pink hue (`#ffc7db`) across the host values, reversed with `sort: "desc"` to match the UI example.
+2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "treemap",
+  "title": "Response status per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "size": "auto" },
+  "metrics": [
+    {
+      "operation": "count",
+      "label": "Count",
+      "format": { "type": "number" },
+      "filter": { "expression": "" }
+    }
+  ],
+  "group_by": [
+    {
+      "operation": "terms", <1>
+      "fields": ["host.keyword"],
+      "limit": 3,
+      "other_bucket": { "include_documents_without_field": false },
+      "color": {
+        "mode": "gradient",
+        "palette": "default",
+        "gradient": [{ "type": "color_code", "value": "#ffc7db" }],
+        "sort": "desc"
+      }
+    },
+    {
+      "operation": "filters", <2>
+      "filters": [
+        {
+          "filter": { "expression": "response.keyword >= \"200\" AND response.keyword < \"400\"" },
+          "label": "Success (2xx/3xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"400\" AND response.keyword < \"500\"" },
+          "label": "Client errors (4xx)"
+        },
+        {
+          "filter": { "expression": "response.keyword >= \"500\"" },
+          "label": "Server errors (5xx)"
+        }
+      ]
+    }
+  ],
+  "data_source": {
+    "type": "data_view_spec",
+    "index_pattern": "kibana_sample_data_logs",
+    "time_field": "timestamp"
+  },
+  "styling": { "values": { "mode": "percentage" } }
+}'
+```
+
+1. The top-level `terms` grouping creates one outer rectangle per host, sized by total request count. `other_bucket` adds an "Other" segment for hosts outside the top 3. The `color` gradient applies a pink hue (`#ffc7db`) across the host values, reversed with `sort: "desc"` to match the UI example.
+2. The nested `filters` grouping splits each host rectangle into success, client error, and server error segments using KQL queries.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

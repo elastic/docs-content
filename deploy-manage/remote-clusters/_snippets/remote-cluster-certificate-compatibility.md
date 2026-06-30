@@ -1,8 +1,9 @@
 <!--
 This snippet is in use in the following locations:
-- /deploy-manage/remote-clusters/remote-clusters-cert.md
-- /deploy-manage/remote-clusters/ece-enable-ccs.md
-- /deploy-manage/remote-clusters/ec-enable-ccs.md
+- eck-remote-clusters-landing.md
+- remote-clusters-cert.md
+- ece-enable-ccs.md
+- ec-enable-ccs.md
 -->
 
 :::::{dropdown} Version compatibility table

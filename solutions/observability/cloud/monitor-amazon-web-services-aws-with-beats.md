@@ -30,7 +30,7 @@ You’ll learn how to:
 
 ## Before you begin [aws-before-you-begin]
 
-Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment or [{{obs-serverless}}](../../../deploy-manage/deploy/elastic-cloud/create-serverless-project.md) project. Both include an {{es}} cluster for storing and searching your data and {{kib}} for visualizing and managing your data.
 
 With this tutorial, we assume that your logs and your infrastructure data are already shipped to CloudWatch. We are going to show you how you can stream your data from CloudWatch to {{es}}. If you don’t know how to put your AWS logs and infrastructure data in CloudWatch, Amazon provides a lot of documentation around this specific topic:
 
@@ -181,13 +181,29 @@ If script execution is disabled on your system, you need to set the execution po
 
 ### Set up assets [_set_up_assets]
 
-{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+::::{applies-switch}
+
+:::{applies-item} stack: ga
+{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./filebeat setup -e -E 'cloud.id=YOUR_DEPLOYMENT_CLOUD_ID' -E 'cloud.auth=elastic:YOUR_SUPER_SECRET_PASS' <1>
 ```
 
 1. Substitute your Cloud ID and an administrator’s `username:password` in this command. To find your Cloud ID, click on your [deployment](https://cloud.elastic.co/deployments).
+:::
+
+:::{applies-item} serverless: ga
+{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
+
+```bash
+./filebeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
+```
+
+1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+:::
+
+::::
 
 
 ::::{important}
@@ -199,16 +215,29 @@ Setting up {{filebeat}} is an admin-level task that requires extra privileges. A
 
 ### Configure {{filebeat}} output [_configure_filebeat_output]
 
-Next, you are going to configure {{filebeat}} output to {{ecloud}}.
+Next, you are going to configure {{filebeat}} output to {{es}}.
 
-1. Use the {{filebeat}} keystore to store [secure settings](beats://reference/filebeat/keystore.md). Store the Cloud ID in the keystore.
+1. Use the {{filebeat}} keystore to store [secure settings](beats://reference/filebeat/keystore.md). Store your connection details in the keystore.
 
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga
     ```bash
     ./filebeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./filebeat keystore add CLOUD_ID --stdin
     ```
+    :::
 
-2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Send the following request:
+    :::{applies-item} serverless: ga
+    ```bash
+    ./filebeat keystore create
+    echo -n "<Your Elasticsearch endpoint URL>" | ./filebeat keystore add ES_HOST --stdin
+    ```
+    :::
+
+    ::::
+
+2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{es}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Send the following request:
 
     ```console
     POST /_security/api_key
@@ -252,13 +281,27 @@ Next, you are going to configure {{filebeat}} output to {{ecloud}}.
     ./filebeat keystore list
     ```
 
-5. To configure {{filebeat}} to output to {{ecloud}}, edit the `filebeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{filebeat}} to output to {{es}}, edit the `filebeat.yml` configuration file. Add the following lines to the end of the file.
 
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga
     ```yaml
     cloud.id: ${CLOUD_ID}
     output.elasticsearch:
       api_key: ${ES_API_KEY}
     ```
+    :::
+
+    :::{applies-item} serverless: ga
+    ```yaml
+    output.elasticsearch:
+      hosts: ["${ES_HOST}"]
+      api_key: ${ES_API_KEY}
+    ```
+    :::
+
+    ::::
 
 6. Finally, test if the configuration is working. If it is not working, verify that you used the right credentials and, if necessary, add them again.
 
@@ -478,13 +521,29 @@ If script execution is disabled on your system, you need to set the execution po
 
 ### Set up assets [_set_up_assets_2]
 
-{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+::::{applies-switch}
+
+:::{applies-item} stack: ga
+{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./metricbeat setup -e -E 'cloud.id=YOUR_DEPLOYMENT_CLOUD_ID' -E 'cloud.auth=elastic:YOUR_SUPER_SECRET_PASS' <1>
 ```
 
 1. Substitute your Cloud ID and an administrator’s `username:password` in this command. To find your Cloud ID, click on your [deployment](https://cloud.elastic.co/deployments).
+:::
+
+:::{applies-item} serverless: ga
+{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
+
+```bash
+./metricbeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
+```
+
+1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+:::
+
+::::
 
 
 ::::{important}
@@ -496,16 +555,29 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 ### Configure {{metricbeat}} output [_configure_metricbeat_output]
 
-Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
+Next, you are going to configure {{metricbeat}} output to {{es}}.
 
-1. Use the {{metricbeat}} keystore to store [secure settings](beats://reference/metricbeat/keystore.md). Store the Cloud ID in the keystore.
+1. Use the {{metricbeat}} keystore to store [secure settings](beats://reference/metricbeat/keystore.md). Store your connection details in the keystore.
 
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
+    :::
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
+    :::{applies-item} serverless: ga
+    ```bash
+    ./metricbeat keystore create
+    echo -n "<Your Elasticsearch endpoint URL>" | ./metricbeat keystore add ES_HOST --stdin
+    ```
+    :::
+
+    ::::
+
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{es}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key
@@ -542,13 +614,27 @@ Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
     ./metricbeat keystore list
     ```
 
-5. To configure {{metricbeat}} to output to {{ecloud}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{metricbeat}} to output to {{es}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
+    ::::{applies-switch}
+
+    :::{applies-item} stack: ga
     ```yaml
     cloud.id: ${CLOUD_ID}
     output.elasticsearch:
       api_key: ${ES_API_KEY}
     ```
+    :::
+
+    :::{applies-item} serverless: ga
+    ```yaml
+    output.elasticsearch:
+      hosts: ["${ES_HOST}"]
+      api_key: ${ES_API_KEY}
+    ```
+    :::
+
+    ::::
 
 6. Finally, test if the configuration is working. If it is not working, verify if you used the right credentials and add them again.
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-eks-managed-by-fleet.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -17,14 +20,14 @@ Follow these steps to configure the Elastic Agent Add-On on Amazon EKS.
 * An existing Amazon EKS cluster. To deploy one, see [Create an Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-  ::::{tab-set}
+  ::::{applies-switch}
 
-  :::{tab-item} {{ech}}
+  :::{applies-item} ess:
 
   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
   :::
 
-  :::{tab-item} Self-managed
+  :::{applies-item} self:
 
   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
   :::
@@ -70,15 +73,15 @@ When the Elastic Agent is Active, it appears in Fleet and its configuration is d
 
 1. Launch {{kib}}:
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} ess:
 
     1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
     2. Navigate to the {{kib}} endpoint in your deployment.
     :::
 
-    :::{tab-item} Self-managed
+    :::{applies-item} self:
 
     Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
 

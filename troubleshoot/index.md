@@ -57,14 +57,16 @@ If you have an [Elastic subscription](https://www.elastic.co/pricing), you can c
 * **By email:** [support@elastic.co](mailto:support@elastic.co)
 
   :::{tip}
-  If you contact us by email, use the email address you registered with so we can help you more quickly. If your registered email is a distribution list, you can register a second email address with us. Just open a case to let us know the name and email address you want to add.
+  If you contact us by email, use the email address you registered with so we can help you more quickly. If your registered email is a distribution list, you can register a second email address with us by [managing support contacts](https://support.elastic.co/contacts).
   :::
 
   :::{warning}
   All cases opened by email default to a normal severity level. For incidents, open a case through the [Elastic Support Portal](https://support.elastic.co/) and select the [appropriate severity](https://www.elastic.co/support/welcome#what-to-say-in-a-case).
   :::
 
-## Working with support [troubleshoot-work-with-support]
+See this [How to contact Elastic support](https://www.youtube.com/watch?v=6tT92ze05RU) video for a walkthrough of opening a case.
+
+### Working with support [troubleshoot-work-with-support]
 
 When you open a support case:
 
@@ -94,7 +96,7 @@ When you open a support case:
     * Ingest tools:
 
       * {{ls}} [diagnostic](/troubleshoot/ingest/logstash/diagnostic.md) and [debug logs](logstash://reference/logging.md)
-      * {{agent}} [diagnostic](https://www.elastic.co/docs/troubleshoot/ingest/fleet/common-problems#trb-collect-agent-diagnostics) and [debug logs](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level)
+      * {{agent}} [diagnostic](/troubleshoot/ingest/fleet/diagnostics.md) with [debug logs](https://www.elastic.co/docs/reference/fleet/monitor-elastic-agent#change-logging-level) enabled
   
 
   :::{tip}
@@ -102,6 +104,6 @@ When you open a support case:
   :::
 
   :::{warning}
-  Diagnostics and logs mainly emit product metadata and settings, but they may expose sensitive data which needs to be redacted before being shared outside of your organization. Refer to each product's diagnostics page for information on sanitizing output.
+  Diagnostics and logs mainly emit product metadata and settings. They are redacted for privacy as much as possible, but might still contain sensitive data that you should redact before you share it outside your organization. You should not upload these outputs to public forums. Uploads to the [Elastic Support Portal](https://support.elastic.co) are handled in accordance with the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement). Refer to each product's diagnostics page for information on sanitizing output.
   :::
 

@@ -6,12 +6,17 @@ toc:
   - folder: content-types
     children:
       - file: index.md
+      - file: changelogs.md
       - file: how-tos.md
+      - file: overviews.md
+      - file: troubleshooting.md
+      - file: tutorials.md
   - folder: how-to
     children:
       - file: index.md
       - file: good-issues.md
       - file: seo.md
+      - file: update-integrations-docs.md
       - folder: cumulative-docs
         children:
           - file: index.md
@@ -19,6 +24,11 @@ toc:
           - file: badge-placement.md
           - file: example-scenarios.md
           - file: reference.md
+      - folder: deployment-types
+        children:
+          - file: index.md
+          - file: about.md
+          - file: strategies.md
   - folder: style-guide
     children:
     - file: index.md

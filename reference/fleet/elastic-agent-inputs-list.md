@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-inputs-list.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -31,7 +34,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | --- | --- | --- |
 | `activemq/metrics` | Periodically fetches JMX metrics from Apache ActiveMQ. | [ActiveMQ module](beats://reference/metricbeat/metricbeat-module-activemq.md) ({{metricbeat}} docs) |
 | `apache/metrics` | Periodically fetches metrics from [Apache HTTPD](https://httpd.apache.org/) servers. | [Apache module](beats://reference/metricbeat/metricbeat-module-apache.md) ({{metricbeat}} docs) |
-| `aws/metrics` | Periodically fetches monitoring metrics from AWS CloudWatch using [GetMetricData API](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.md) for AWS services. | [AWS module](beats://reference/metricbeat/metricbeat-module-aws.md) ({{metricbeat}} docs) |
+| `aws/metrics` | Periodically fetches monitoring metrics from AWS CloudWatch using [GetMetricData API](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html) for AWS services. | [AWS module](beats://reference/metricbeat/metricbeat-module-aws.md) ({{metricbeat}} docs) |
 | `awsfargate/metrics` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Retrieves various metadata, network metrics, and Docker stats about tasks and containers. | [AWS Fargate module](beats://reference/metricbeat/metricbeat-module-awsfargate.md) ({{metricbeat}} docs) |
 | `azure/metrics` | Collects and aggregates Azure logs and metrics from a variety of sources into a common data platform where it can be used for analysis, visualization, and alerting. | [Azure module](beats://reference/metricbeat/metricbeat-module-azure.md) ({{metricbeat}} docs) |
 | `beat/metrics` | Collects metrics about any Beat or other software based on libbeat. | [Beat module](beats://reference/metricbeat/metricbeat-module-beat.md) ({{metricbeat}} docs) |
@@ -93,7 +96,7 @@ When you [configure inputs](/reference/fleet/elastic-agent-input-configuration.m
 | `entity-analytics` | Collects identity assets, such as users, from external identity providers. | [Entity Analytics input](beats://reference/filebeat/filebeat-input-entity-analytics.md) ({{filebeat}} docs) |
 | `event/file` | Alias for `log`. | n/a |
 | `event/tcp` | Alias for `tcp`. | n/a |
-| `filestream` | Reads lines from active log files. Replaces and imporoves on the `log` input. | [filestream input](beats://reference/filebeat/filebeat-input-filestream.md) ({{filebeat}} docs) |
+| `filestream` | Reads lines from active log files. Replaces and improves on the `log` input. | [filestream input](beats://reference/filebeat/filebeat-input-filestream.md) ({{filebeat}} docs) |
 | `gcp-pubsub` | Reads messages from a Google Cloud Pub/Sub topic subscription. | [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) ({{filebeat}} docs) |
 | `gcs` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Reads content from files stored in buckets which reside on your Google Cloud. | [Google Cloud Storage input](beats://reference/filebeat/filebeat-input-gcs.md) ({{filebeat}} docs) |
 | `http_endpoint` | {applies_to}`stack: beta` {applies_to}`serverless: beta` Initializes a listening HTTP server that collects incoming HTTP POST requests containing a JSON body. | [HTTP Endpoint input](beats://reference/filebeat/filebeat-input-http_endpoint.md) ({{filebeat}} docs) |

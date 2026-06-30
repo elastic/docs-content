@@ -48,3 +48,16 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 ## Customize integrations [customize-integrations]
 
 After you've started using integrations to ingest data, you can customize how the data is managed over time. Refer to [{{ilm-cap}}](/reference/fleet/data-streams.md#data-streams-ilm) to learn more.
+
+## Deprecated integrations [deprecated-integrations-overview]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Integration developers can mark integration packages or individual features as deprecated when retiring them or replacing them with newer alternatives. When an integration or feature is marked as deprecated in a specific version, {{fleet}} displays warnings throughout the UI to help you plan for migration to alternative solutions.
+
+Deprecated integrations enter a maintenance period (typically one year) during which they remain available in the {{package-registry}} for installation and use. For integrations with automatic policy upgrades enabled, the upgrade is paused when deprecations are detected, and you must review and accept the upgrade before proceeding. After the maintenance period ends, the integration might be removed from the {{package-registry}}.
+
+For detailed information about the deprecation lifecycle, identifying deprecated integrations in the UI, and how deprecations affect integration upgrades, refer to [Understanding deprecated integrations](/reference/fleet/deprecated-integrations.md).

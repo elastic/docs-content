@@ -10,11 +10,6 @@ products:
 
 # Deploy Elastic Maps Server [k8s-maps-es]
 
-::::{warning} 
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 Deploying Elastic Maps Server can be done with a simple manifest:
 
 ```yaml subs=true

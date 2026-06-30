@@ -1,9 +1,13 @@
+---
+description: "Patterns and use cases for placing applies_to badges in cumulative documentation."
+---
+
 # Badge usage and placement
 
 :::{note}
 This content is still in development.
 If you have questions about how to write cumulative documentation while contributing,
-reach out to **@elastic/docs** in the related GitHub issue or PR. 
+reach out to **@elastic/docs** in the related GitHub issue or PR.
 :::
 
 As you continue contributing to documentation and more versions are released,
@@ -19,13 +23,12 @@ version and deployment type differences in your docs:
 * **Headings**: Provide signals about a section’s scope so a user can choose to read or skip it as needed.
 * **Lists**: Identify features in a list of features that are exclusive to a specific context, or that were introduced in a specific version or comparing differing requirements, limits, and other simple, mirrored facts.
 * **Definition lists**: Identify settings or options that are exclusive to a specific context, or that were introduced in a specific version.
-* **Tabs**: Provide two sets of procedures when one or more steps in a process differs between contexts or versions.
+* **Tabs**: Provide two sets of procedures when one or more steps in a process differs between contexts. For differences per version or deployment type, you should use [`applies-switch`](https://elastic.github.io/docs-builder/syntax/applies-switch/) instead of a generic [`tab-set`](https://elastic.github.io/docs-builder/syntax/tabs/).
 * **Admonitions**: Draw attention to happy differences and basic clarifications.
 * **Sibling pages**: When the information is too complex to be addressed with only the other content patterns.
 
 ## General placement principles
 
-% Source: Brandon's PR review comment
 At a high level, you should follow these badge placement principles:
 
 * Place badges where they're most visible but least disruptive to reading flow.
@@ -40,7 +43,7 @@ There are more specific guidelines on badge placement to follow when using speci
 
 ### Page frontmatter
 
-Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader.
+Use [`applies_to` in a page's frontmatter](https://elastic.github.io/docs-builder/syntax/applies#syntax) to provide signals that a page applies to the reader. You should use only one `applies_to` [dimension](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimensions) at the page level. This dimension represents the user's primary context, whether it's a platform version, deployment type, or supporting piece of software.
 
 ::::{warning}
 Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/applies#section-level) or [inline annotations](https://elastic.github.io/docs-builder/syntax/applies#inline-level) with the page title.
@@ -48,9 +51,9 @@ Do **not** use [section-level](https://elastic.github.io/docs-builder/syntax/app
 
 ### Headings [headings]
 
-Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or higher level is version or product-specific.
+Use [section annotations](https://elastic.github.io/docs-builder/syntax/applies#section-level) on the next line after a heading when the entire content between that heading and the next [heading](https://elastic.github.io/docs-builder/syntax/headings) of the same or later level is version or product-specific.
 
-For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
+For example, on the [Observability AI Assistant](https://www.elastic.co/docs/solutions/observability/ai/observability-ai-assistant#choose-the-knowledge-base-language-model) page, all the content in this section is only applicable to Elastic Stack versions 9.1.0 and later.
 
 ::::{image} ./images/heading-correct.png
 :screenshot:
@@ -105,7 +108,7 @@ Do **not** put the `applies_to` badge at the beginning or end of the definition 
 
 #### If the badge is only relevant to a portion of the definition, follow the appropriate placement guidelines for the elements used in the definition [definition-list-item-part]
 
-This might include labeling just one of multiple paragraphs, or one item in an ordered or unordered list. For example, on the [Google Gemini Connector page](https://www.elastic.co/docs/reference/kibana/connectors-kibana/gemini-action-type#gemini-connector-configuration), the default model is different depending on the deployment type and version of the Elastic Stack. These differences should be called out with their own `applies_to` badges.
+This might include labeling only one of multiple paragraphs, or one item in an ordered or unordered list. For example, on the [Google Gemini Connector page](https://www.elastic.co/docs/reference/kibana/connectors-kibana/gemini-action-type#gemini-connector-configuration), the default model is different depending on the deployment type and version of the Elastic Stack. These differences should be called out with their own `applies_to` badges.
 
 In this example, the `applies_to` badges should be at the beginning of each list item as described in [the guidelines for lists](#ordered-and-unordered-lists).
 
@@ -129,7 +132,7 @@ For example, the [Streaming Input](https://www.elastic.co/docs/reference/beats/f
 :alt:
 ::::
 
-In some cases it might be appropriate to add column dedicated to applicability,
+Sometimes it might be appropriate to add column dedicated to applicability,
 but you should avoid adding specific Markdown real estate to the page layout and
 causing existing tables with content from long before the base version,
 for example Elastic Stack 9.0.0, look incomplete.

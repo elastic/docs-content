@@ -15,7 +15,7 @@ products:
 
 # Stack monitoring alerts [kibana-alerts]
 
-The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerts-cases/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
+The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerting/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
 
 :::{image} /deploy-manage/images/kibana-monitoring-kibana-alerting-notification.png
 :alt: {{kib}} alerting notifications in {{stack-monitor-app}}
@@ -32,7 +32,10 @@ When you open **{{stack-monitor-app}}** for the first time, you will be asked to
 
 If you denied creation of the default rules initially, or to recreate any deleted rules, then you can trigger {{kib}} to create the rules by going to **Alerts and rules** > **Create default rules**.
 
-To receive external notifications for these alerts, you need to [configure a connector](/deploy-manage/manage-connectors.md) and modify the relevant rule to use the connector. If you're using {{ech}}, then you can use the default `Elastic-Cloud-SMTP` email connector or configure your own.
+To receive external notifications for these alerts, you need to set up a connector and attach it to one or more rules:
+
+1. [Configure a connector](/deploy-manage/manage-connectors.md) for the notification channel you want to use, such as [Slack](kibana://reference/connectors-kibana/slack-action-type.md), [email](kibana://reference/connectors-kibana/email-action-type.md), [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md), or any of the other [supported connectors](kibana://reference/connectors-kibana.md). On {{ech}} deployments, the default `Elastic-Cloud-SMTP` email connector is available without additional setup.
+2. [Modify a Stack Monitoring rule](#modify-rules) and select the connector under the **Actions** section.
 
 ::::{note}
 Some action types are subscription features, while others are free. For a comparison of the Elastic subscription levels, see the alerting section of the [Subscriptions page](https://www.elastic.co/subscriptions).

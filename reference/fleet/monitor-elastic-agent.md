@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html
 applies_to:
-  stack: ga 
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -15,12 +16,14 @@ products:
 * [View agent status overview](#view-agent-status)
 * [View details for an agent](#view-agent-details)
 * [View agent activity](#view-agent-activity)
+* [View the configuration delivered to an agent](#view-agent-configuration)
 * [View agent logs](#view-agent-logs)
 * [Change the logging level](#change-logging-level)
 * [Collect {{agent}} diagnostics](#collect-agent-diagnostics)
 * [View the {{agent}} metrics dashboard](#view-agent-metrics)
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
 * [Send {{agent}} monitoring data to a remote {{es}} cluster](#external-elasticsearch-monitoring)
+* [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
 * [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting)
 
 Agent monitoring is turned on by default in the agent policy unless you turn it off. Want to turn off agent monitoring to stop collecting logs and metrics? See [Change {{agent}} monitoring settings](#change-agent-monitoring).
@@ -44,7 +47,7 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 ::::
 
 
-{{agent}}s can have the following statuses:
+{{agent}}s can have these statuses:
 
 |     |     |
 | --- | --- |
@@ -57,7 +60,7 @@ The **Agents** tab in **{{fleet}}** displays a maximum of 10,000 agents, shown o
 | **Unenrolled** | {{agent}}s have been manually unenrolled and their API keys have been removed from the system. You can [unenroll](/reference/fleet/unenroll-elastic-agent.md) an offline {{agent}} using {{agent}} actions if you determine it’s offline and no longer valid.<br>These agents need to re-enroll in {{fleet}} to be operational again. |
 | **Uninstalled** | {{agent}}s have been successfully uninstalled and removed from the host system. |
 
-The following diagram shows the flow of {{agent}} statuses:
+This diagram shows the flow of {{agent}} statuses:
 
 :::{image} images/agent-status-diagram.png
 :alt: Diagram showing the flow of Fleet Agent statuses
@@ -113,6 +116,24 @@ On the **Agents** tab, click **Agent activity**. All agent operations are shown,
 :::{image} images/agent-activity.png
 :alt: Agent activity panel
 :screenshot:
+:::
+
+
+## View the configuration delivered to an agent [view-agent-configuration]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+Because the configuration sent to an {{agent}} on a [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md) can differ from the primary policy template, {{fleet}} provides an action to view the rendered YAML delivered to a specific agent.
+
+On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics → View agent policy**.
+
+The flyout shows the rendered YAML configuration and the revision of the primary policy the agent uses.
+
+:::{note}
+This action is different from the **Actions → View policy** action on the agent policy itself, which shows the primary policy template before {{fleet}} renders it for each agent.
 :::
 
 
@@ -237,14 +258,27 @@ You may want to store all of the health and status data about your {{agents}} in
 
 To do so, follow the steps in [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md). After the new output is configured, follow the steps to update the {{agent}} policy and make sure that the **Output for agent monitoring** setting is enabled. {{agent}} monitoring data will use the remote {{es}} output that you configured.
 
+## {{agent}} out-of-the-box alert rules [agent-out-of-the-box-alert-rules]
+```{applies_to}
+stack: ga 9.2+
+```
 
-## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status [fleet-alerting]
+{{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
+Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
 
-You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerts-cases.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
+## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
+```{applies_to}
+stack: ga 9.0-9.1
+```
+:::{tip}
+For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md). 
+:::
+
+You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
 
 This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 
-The following data streams and fields are available.
+These data streams and fields are available.
 
 Data stream
 :   `metrics-fleet_server.agent_status-default`

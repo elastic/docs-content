@@ -1,5 +1,7 @@
 ---
 navigation_title: Known issues
+products:
+  - id: cloud-serverless
 ---
 # {{serverless-full}} known issues [elastic-cloud-serverless-known-issues]
 Known issues are significant defects or limitations that may impact your implementation. These issues are actively being worked on and will be addressed in a future release. Review the {{serverless-full}} known issues to help you make informed decisions, such as upgrading to a new version.
@@ -14,6 +16,17 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
+<!-- :::{changelog} /releases
+:type: known-issue
+:::
+-->
+<!--
+:::{include} _snippets/2026-05-06/known-issues.md
+:::
+
+:::{include} _snippets/2026-05-04/known-issues.md
+:::
+-->
 ## Active
 
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work

@@ -18,7 +18,7 @@ GET my-index-000001/_search
     "my_doubled_field": {
       "script": {
         "lang":   "painless",
-        "source": "doc['my_field'].value * params.get('multiplier');",
+        "source": "return doc['my_field'].value * params.get('multiplier');",
         "params": {
           "multiplier": 2
         }

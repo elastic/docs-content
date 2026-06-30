@@ -10,7 +10,28 @@ products:
 
 # Manage deployments using the {{ecloud}} API [ec-api-deployment-crud]
 
-The following examples demonstrate Create, Read, Update and Delete operations on a `deployments` resource. If you haven’t created an API Key yet, you can follow the [Authentication documentation](../../api-keys/elastic-cloud-api-keys.md).
+This page shows examples of managing deployments through the [deployments API]({{cloud-apis}}group/endpoint-deployments), including listing deployments, getting deployment details, and creating or updating deployments.
+
+For update workflows, the deployments API also provides dedicated operations for certain use cases, such as upgrades or {{es}} tier sizing changes.
+
+If you haven’t created an API key yet, then refer to [](../../api-keys/elastic-cloud-api-keys.md).
+
+
+## Common operations with dedicated endpoints [ec_common_operations_with_dedicated_endpoints]
+
+For common update tasks, use the dedicated deployment operation that matches the change you need.
+
+Dedicated operations let you update only the intended setting without submitting the full deployment resource specification. This simplifies common update workflows and helps reduce the risk of unintended changes to unrelated deployment settings.
+
+| Task | Endpoints |
+| --- | --- |
+| Upgrade a deployment to a newer {{stack}} version | [Upgrade deployment]({{cloud-apis}}operation/operation-upgrade-deployment) |
+| Manage [user settings](edit-stack-settings.md) of the deployment| [Get deployment resource user settings]({{cloud-apis}}operation/operation-get-deployment-resource-user-settings)<br><br>[Update deployment resource user settings]({{cloud-apis}}operation/operation-update-deployment-resource-user-settings) |
+| Scale {{es}} tiers by updating memory size and zone count | [Get deployment {{es}} tiers]({{cloud-apis}}operation/operation-get-deployment-es-resource-tiers)<br><br>[Update deployment {{es}} tiers]({{cloud-apis}}operation/operation-update-deployment-es-resource-tier) |
+| Attach another deployment’s built-in snapshot repository (`found-snapshots`) for cross-deployment snapshot access and restore workflows | [Attach snapshots from a source deployment]({{cloud-apis}}operation/operation-create-deployment-es-resource-snapshot-repository)<br><br>[List attached snapshot repositories]({{cloud-apis}}operation/operation-get-deployment-es-resource-snapshot-repository)<br><br>[Detach an attached snapshot repository]({{cloud-apis}}operation/operation-delete-deployment-es-resource-snapshot-repository) |
+| Manage deployment tags | [Get the tags for a deployment]({{cloud-apis}}operation/operation-get-deployment-tags)<br><br>[Set the tags for a deployment]({{cloud-apis}}operation/operation-set-deployment-tags) |
+
+Use the generic [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources in one request.
 
 
 ## Listing your deployments [ec_listing_your_deployments]
@@ -47,14 +68,14 @@ When you create a new deployment through the API, you have two options:
 
 This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
 "https://api.elastic-cloud.com/api/v1/deployments?template_id=gcp-general-purpose" \
 -d '
 {
-  "version": "8.17.1",<1>
+  "version": "{{version.stack}}",<1>
   "region": "gcp-europe-west1"<2>
 }
 '
@@ -64,18 +85,18 @@ curl -XPOST \
 2. Required: One of the [available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
 
 
-A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the the deployment template.
+A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the deployment template.
 
 
 ### Create a deployment [ec_create_a_deployment]
 
 This example creates a new deployment named "my-first-api-deployment" with the following characteristics:
 
-* Version 8.17.1 of the {{stack}}
+* Version {{version.stack}} of the {{stack}}
 * {{es}} cluster in two zones with 4 GB of memory for each node
-* 1 GB single zone {{kib}} instance and 1 GB Integrations Server instance
+* 2 GB single zone {{kib}} instance and 1 GB Integrations Server instance
 
-```sh
+```sh subs=true
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -154,7 +175,7 @@ curl -XPOST \
                   "data": "frozen"
                 }
               },
-              "instance_configuration_id": "gcp.es.datafrozen.n2.68x10x95",
+              "instance_configuration_id": "gcp.es.datafrozen.n2.68x10x90",
               "node_roles": [
                 "data_frozen"
               ],
@@ -205,11 +226,11 @@ curl -XPOST \
             }
           ],
           "elasticsearch": {
-            "version": "8.17.1",
+            "version": "{{version.stack}}",
             "enabled_built_in_plugins": []
           },
           "deployment_template": {
-            "id": "gcp-general-purpose-v3" <5>
+            "id": "gcp-us-central1" <5>
           }
         }
       }
@@ -225,12 +246,12 @@ curl -XPOST \
               "zone_count": 1, <6>
               "size": {
                 "resource": "memory",
-                "value": 1024 <7>
+                "value": 2048 <7>
               }
             }
           ],
           "kibana": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           }
         },
         "ref_id": "main-kibana"
@@ -252,7 +273,7 @@ curl -XPOST \
             }
           ],
           "integrations_server": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           }
         },
         "ref_id": "main-integrations_server"
@@ -288,9 +309,11 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 ## Update a deployment [ec_update_a_deployment]
 
-Modify the {{es}} resource by increasing the amount of memory to 8 GB.
+Use the [Update deployment endpoint]({{cloud-apis}}operation/operation-update-deployment) when you need to apply broader plan changes that affect multiple resources or settings in one request. For some specific update tasks, use the dedicated deployment operations listed in [Common operations with dedicated endpoints](#ec_common_operations_with_dedicated_endpoints).
 
-```sh
+This example modifies the {{es}} resource by increasing the amount of memory to 8 GB.
+
+```sh subs=true
 curl -XPUT \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
@@ -330,10 +353,10 @@ curl -XPUT \
             }
           ],
           "elasticsearch": {
-            "version": "8.17.1"
+            "version": "{{version.stack}}"
           },
           "deployment_template": {
-            "id": "gcp-general-purpose-v3"
+            "id": "gcp-us-central1"
           }
         }
       }
@@ -346,10 +369,8 @@ curl -XPUT \
 1. Give the deployment a new name
 2. Increase the amount of memory allocated for each {{es}} node to 8 GB
 
+A 200 status code means that the configuration change was accepted.
 
 ::::{tip}
 You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
 ::::
-
-
-A 200 status code means that the configuration change was accepted.

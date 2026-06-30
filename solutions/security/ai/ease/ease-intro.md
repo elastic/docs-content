@@ -3,10 +3,13 @@ navigation_title: Elastic AI SOC Engine
 applies_to:
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 # Elastic AI SOC Engine with {{sec-serverless}}
 
-Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides cutting-edge AI-powered tools to augment your existing SIEM and EDR/XDR platforms. Because serverless deployments are quick to deploy and easy to configure, and because all the integrations that you can use to ingest data to EASE support fast and easy [agentless](/solutions/security/get-started/agentless-integrations.md) deployment, you can start getting value from EASE in minutes.
+Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides cutting-edge AI-powered tools to augment your existing SIEM and EDR/XDR platforms. Because serverless deployments are quick to deploy and easy to configure, and because all the integrations that you can use to ingest data to EASE support fast and easy [agentless](/manage-data/ingest/agentless/agentless-integrations.md) deployment, you can start getting value from EASE in minutes.
 
 This page describes how to create an EASE project, how to ingest your data, and how to use its key features.
 
@@ -33,7 +36,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
     You can add custom information to AI Assistant's [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md), either in the form of individual documents or entire indices containing numerous documents. This information informs the AI Assistant's responses and can include everything from threat intelligence, to information about your team's on-call rotation, to information about your infrastructure, and more. 
 
-- **[Cases](/solutions/security/investigate/cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
+- **[Cases](/solutions/security/investigate/security-cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 
     :::{image} /solutions/images/security-ease-cases.png
     :alt: The Cases page in an EASE project showing the default state
@@ -79,5 +82,4 @@ To ingest third-party security data:
 
 ## Select a model
 
-EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. The Elastic Managed LLM is enabled by default. You can also [configure your own third-party LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks. 
-
+EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. Elastic Managed LLMs are enabled by default. You can also [configure your own third-party LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks.

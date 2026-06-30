@@ -29,13 +29,13 @@ Some of the resources, such as saved objects and API keys, may no longer be avai
 
 The following debugging tools are available:
 
-* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerts-cases/alerts/testing-connectors.md) UI.
+* {{kib}} versions 7.10 and above have a [Test connector](../../explore-analyze/alerting/alerts/testing-connectors.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](task-manager.md#task-manager-diagnosing-root-cause).
 
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
 
-**{{rules-ui}}** in **{{stack-manage-app}}** lists the rules available in the space you’re currently in. When you click a rule name, you are navigated to the [details page](../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#rule-details) for the rule, where you can see currently active alerts. The start date on this page indicates when a rule is triggered, and for what alerts. In addition, the duration of the condition indicates how long the instance is active.
+**{{rules-ui}}** in **{{stack-manage-app}}** lists the rules available in the space you’re currently in. When you click a rule name, you are navigated to the [details page](../../explore-analyze/alerting/alerts/create-manage-rules.md#rule-details) for the rule, where you can see currently active alerts. The start date on this page indicates when a rule is triggered, and for what alerts. In addition, the duration of the condition indicates how long the instance is active.
 
 :::{image} /troubleshoot/images/kibana-rule-details-alerts-inactive.png
 :alt: Alerting management details
@@ -59,8 +59,11 @@ The end date is related to the check interval for the rule. You can use this vie
 
 There is a rich set of HTTP endpoints to introspect and manage rules and connectors. One of the HTTP endpoints available for actions is the run connector API. You can use this to “test” an action. For instance, if you have a server log action created, you can run it via curling the endpoint:
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 ```txt
-curl -X POST -k \
+curl -X POST \
  -H 'kbn-xsrf: foo' \
  -H 'content-type: application/json' \
  api/actions/connector/a692dc89-15b9-4a3c-9e47-9fb6872e49ce/_execute \
@@ -103,7 +106,7 @@ Task Manager provides a visible status which can be used to diagnose issues and 
 
 When a rule is created, a task is created, scheduled to run at the interval specified. For example, when a rule is created and configured to check every 5 minutes, then the underlying task will be expected to run every 5 minutes. In practice, after each time the rule runs, the task is scheduled to run again in 5 minutes, rather than being scheduled to run every 5 minutes indefinitely.
 
-If you use the [alerting APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting), such as the get rule API or find rules API, you’ll get an object that contains rule details:
+If you use the [alerting APIs]({{kib-apis}}group/endpoint-alerting), such as the get rule API or find rules API, you’ll get an object that contains rule details:
 
 ```txt
 {
@@ -167,7 +170,7 @@ For example:
 }
 ```
 
-For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
+For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API]({{kib-apis}}operation/operation-task-manager-health) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
 
 `status`
 :   This is the current status of the task.  Is Task Manager currently running? Is Task Manager idle,  and you’re waiting for it to run?  Or has Task Manager has tried to run and failed?
@@ -182,9 +185,9 @@ Investigating the underlying task can help you gauge whether the problem you’r
 
 In addition to the above methods, refer to the following approaches and common issues:
 
-* [Alerting common issues](../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md)
-* [Querying event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md)
-* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](../../explore-analyze/alerts-cases/alerts/testing-connectors.md)
+* [Alerting common issues](../../explore-analyze/alerting/alerts/alerting-common-issues.md)
+* [Querying event log index](../../explore-analyze/alerting/alerts/event-log-index.md)
+* [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](../../explore-analyze/alerting/alerts/testing-connectors.md)
 
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
@@ -197,7 +200,7 @@ xpack.task_manager.poll_interval: 1h
 ```
 
 ::::{warning}
-This approach should be used only temporarily as a last resort to restore function to {{kib}} when it is unresponsive and attempts to identify and [snooze or disable](../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#controlling-rules) slow-running rules have not fixed the situation. It severely throttles all background tasks, not just those relating to {{alert-features}}. The task manager will run only one task at a time and will look for more work each hour.
+This approach should be used only temporarily as a last resort to restore function to {{kib}} when it is unresponsive and attempts to identify and [snooze or disable](../../explore-analyze/alerting/alerts/create-manage-rules.md#controlling-rules) slow-running rules have not fixed the situation. It severely throttles all background tasks, not just those relating to {{alert-features}}. The task manager will run only one task at a time and will look for more work each hour.
 
 ::::
 

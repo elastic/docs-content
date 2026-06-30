@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/configuring-kubernetes-metadata.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -80,7 +83,7 @@ add_resource_metadata block needs to be configured to all datasets that are enab
 * For **Standalone {{agent}} configuration**:
 
 ```yaml
-[output trunctated ...]
+[output truncated ...]
 - data_stream:
        dataset: kubernetes.state_pod
         type: metrics

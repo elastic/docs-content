@@ -3,6 +3,12 @@ applies_to:
   deployment:
     self:
 navigation_title: Multi-node cluster
+sub:
+  image: elasticsearch
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Start a multi-node cluster with Docker Compose [docker-compose-file]
@@ -20,6 +26,10 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     If you’re using Docker Desktop, Docker Compose is installed automatically. Make sure to allocate at least 4GB of memory to Docker Desktop. You can adjust memory usage in Docker Desktop by going to **Settings > Resources**.
 
+    :::{note}
+    This guide uses the legacy `docker-compose` command. If Docker Compose is installed as a Docker CLI plugin, replace `docker-compose` with `docker compose`.
+    :::
+
 2. Create or navigate to an empty directory for the project.
 3. Download and save the following files in the project directory:
 
@@ -28,7 +38,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
 4. In the `.env` file, specify a password for the `ELASTIC_PASSWORD` and `KIBANA_PASSWORD` variables.
 
-    The passwords must be alphanumeric and can’t contain special characters, such as `!` or `@`. The bash script included in the `docker-compose.yml` file only works with alphanumeric characters. Example:
+    The passwords must be at least 6 characters long, alphanumeric, and can’t contain special characters, such as `!` or `@`. The bash script included in the `docker-compose.yml` file only works with alphanumeric characters. Example:
 
     ```txt
     # Password for the 'elastic' user (at least 6 characters)

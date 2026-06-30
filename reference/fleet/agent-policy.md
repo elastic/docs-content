@@ -4,6 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -63,6 +64,7 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the maximum CPU usage](#agent-policy-limit-cpu) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the {{agent}} log level](#agent-policy-log-level) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure log file rotation and retention](#agent-policy-log-file-rotation-retention) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the {{agent}} binary download location](#agent-binary-download-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set the {{agent}} host name format](#fleet-agent-hostname-format-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Set an unenrollment timeout for inactive agents](#fleet-agent-unenrollment-timeout) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -102,6 +104,9 @@ To add a new integration to one or more {{agent}} policies:
     1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
     2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
+    ::::{include} _snippets/version-specific-policy-integration-warning.md
+    ::::
+
 7. Click **Save and continue** to confirm your settings.
 
 This action installs the integration and adds it to the {{agent}} policies that you specified. {{fleet}} distributes the new integration policy to all {{agent}}s that are enrolled in the agent policies.
@@ -136,12 +141,17 @@ You can apply policies to one or more {{agent}}s. To apply a policy:
 
 3. Select the {{agent}} policy from the dropdown list, and click **Assign policy**.
 
-The {{agent}} status indicator and {{agent}} logs indicate that the policy is being applied. It may take a few minutes for the policy change to complete before the {{agent}} status updates to "Healthy".
+The {{agent}} status indicator and {{agent}} logs indicate that the policy is being applied. It might take a few minutes for the policy change to complete before the {{agent}} status updates to **Healthy**.
 
+:::{note}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+When you assign an agent to a policy that contains an integration with a minimum {{agent}} version requirement, {{fleet}} automatically reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This typically happens within a minute.
+:::
 
 ## Edit or delete an integration policy [policy-edit-or-delete]
 
-Integrations can easily be reconfigured or deleted. To edit or delete an integration policy:
+Integrations can be reconfigured or deleted. To edit or delete an integration policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to edit or delete.
 2. Search or scroll to a specific integration. Open the **Actions** menu and select **Edit integration** or **Delete integration**.
@@ -188,7 +198,7 @@ To add a custom field:
 4. Specify a field name and value.
 
     :::{image} images/agent-policy-custom-field.png
-    :alt: Sceen capture showing the UI to add a custom field and value
+    :alt: Screen capture showing the UI to add a custom field and value
     :screenshot:
     :::
 
@@ -200,7 +210,7 @@ To edit a custom field:
 2. Click the **Settings** tab and scroll to **Custom fields**. Any custom fields that have been configured are shown.
 3. Click the edit icon to update a field or click the delete icon to remove it.
 
-Adding custom tags is not supported for a small set of inputs:
+Adding custom fields is not supported for a small set of inputs:
 
 * `apm`
 * `cloudbeat` and all `cloudbeat/*` inputs
@@ -208,6 +218,7 @@ Adding custom tags is not supported for a small set of inputs:
 * `fleet-server`
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
+* `elastic_agent` inputs
 
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]
@@ -362,10 +373,34 @@ You can also set the log level for an individual agent:
 1. In {{fleet}}, click **Agents**. In the **Host** column, select the agent you want to edit. 
 2. Find the **Agent logging level** setting:
    
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` On the agent's **Settings** tab.
-   - {applies_to}`stack: ga 9.0.0` On the agent's **Logs** tab.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` On the agent's **Settings** tab.
+   - {applies_to}`stack: ga =9.0` On the agent's **Logs** tab.
 
 3. Set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+
+
+## Configure log file rotation and retention [agent-policy-log-file-rotation-retention]
+
+You can configure log file rotation and retention settings for {{agents}} enrolled in the selected policy. These settings control how {{agents}} manage their log files, including file size limits, the number of files to keep, and time-based rotation intervals.
+
+To configure log file rotation and retention:
+
+1. In {{fleet}}, click **Agent policies**. Select the name of the policy you want to edit.
+2. Click the **Settings** tab and scroll to **Advanced settings**.
+3. Configure the file logging settings as needed:
+
+::::{note}
+The fields are empty by default. When left empty, the values are set by {{agent}}. The default {{agent}} values are shown in the following table for reference.
+::::
+
+| Setting | Description |
+| ------- | ----------- |
+| **Agent logging to files** | When enabled, agents enrolled in the policy write logs to rotating files. |
+| **Agent logging file size limit** | The maximum size limit of a log file in bytes. When the limit is reached, a new log file is generated automatically.<br><br>Agent default value: `10485760` (10 MB) |
+| **Agent logging number of files** | The number of rotated log files to keep on disk. When this limit is reached, the oldest files are deleted first during log rotation. The value must be an integer between `2` and `1024`.<br><br>Agent default value: `7`|
+| **Agent logging file rotation interval** | Enables log file rotation on time intervals in addition to size-based rotation. Specify a duration string such as `1s`, `1m`, `1h`, or `24h`. Time intervals of `1m`, `1h`, `24h`, `7*24h`, `30*24h`, and `365*24h` are boundary-aligned with minutes, hours, days, weeks, months, and years as reported by the local system clock. All other intervals are calculated from the Unix epoch.<br><br>Agent default value: `0` (Deactivated) |
+
+4. Save your changes.
 
 
 ## Change the {{agent}} binary download location [agent-binary-download-settings]

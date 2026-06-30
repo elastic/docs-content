@@ -3,159 +3,191 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-monitor.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-ui-monitor.html
 applies_to:
-  stack: all
+  stack: ga all
   serverless:
-    security: all
+    security: ga all
 products:
   - id: security
   - id: cloud-serverless
+description: Monitor Elastic Security detection rule executions, view execution results and details, check rule status, and identify and help troubleshoot performance issues using the Rule Monitoring tab and Execution results tab.
 ---
 
 # Monitor rule executions [alerts-ui-monitor]
 
-Several tools can help you gain insight into the performance of your detection rules:
+Detection rules only protect your environment when they run reliably. This page helps you confirm rules are running and troubleshoot when they're not.
 
-* [Rule Monitoring tab](#rule-monitoring-tab) — The current state of all detection rules and their most recent executions. Go to the **Rule Monitoring** tab to get an overview of which rules are running, how long they’re taking, and if they’re having any trouble.
-* [Execution results](#rule-execution-logs) — Historical data for a single detection rule’s executions over time. Consult the execution results to understand how a particular rule is running and whether it’s creating the alerts you expect.
-* [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) — Visualizations to help you monitor the overall health and performance of {{elastic-sec}}'s detection rules. Consult this dashboard for a high-level view of whether your rules are running successfully and how long they’re taking to run, search data, and create alerts.
+| You want to | Where to go |
+|-----------|-------------|
+| Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
+| Get a summary of rule execution details and access individual rules | [Rule Monitoring tab](#rule-monitoring-tab) |
+| Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
+| {applies_to}`stack: ga 9.4+` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) ({{siem-rules-ui}} page and rule details) |
+| Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
+| Run a rule manually for a specific time range | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
+| View rule performance metrics in a dashboard | [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) |
+| Investigate missing alerts | [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-signals) |
 
-Refer to the [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-signals) section for strategies on adjusting rules if they aren’t creating the expected alerts.
+
+## Rule execution status [rule-status]
+
+The **Last response** column in the Rules table displays the current status of each rule, based on the most recent attempt to run:
+
+* **Succeeded**: The rule completed its defined search. This doesn't necessarily mean it generated an alert, just that it ran without error.
+* **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn't running.
+* **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn't be found in {{es}}.
+
+For {{ml}} rules, an indicator icon {icon}`warning` also appears in this column if a required {{ml}} job isn't running. Select the icon to list the affected jobs, then select **Visit rule details page to investigate** to open the rule's details page, where you can start the {{ml}} job.
 
 
 ## Rule Monitoring tab [rule-monitoring-tab]
 
-To view a summary of all rule executions (including the most recent failures, execution times, and gaps in rule executions), select the **Rule Monitoring** tab on the **Rules** page. To access the tab, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
-
-:::{image} /solutions/images/security-monitor-table.png
-:alt: monitor table
-:screenshot:
-:::
+To view a summary of all rule executions (including the most recent failures, execution times, and gaps), select the **Rule Monitoring** tab on the **{{siem-rules-ui}}** page. To access the tab, find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
 
 On the **Rule Monitoring** tab, you can [sort and filter rules](../detect-and-alert/manage-detection-rules.md#sort-filter-rules) just like you can on the **Installed Rules** tab.
 
 ::::{tip}
-To sort the rules list, click any column header. To sort in descending order, click the column header again.
+To sort the rules list, select any column header. To sort in descending order, select the column header again.
 ::::
 
+For detailed information on a rule, the alerts it generated, and associated errors, select its name in the table. This also allows you to perform the same actions available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
+### Gap information [gap-information]
 
-For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The panel contains the following:
-
-* **Time filter**: Allows you to select a time range for viewing gap data. 
-* **Total rules with gaps:** Provides metrics for rules with gaps:
-  
-  * {applies_to}`stack: ga 9.0` Tells you how many rules have unfilled or partially filled gaps within the selected time range. 
-  * {applies_to}`stack: ga 9.1` Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric). 
-  
-* {applies_to}`stack: ga 9.0` **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
-* {applies_to}`stack: ga 9.1` **Only rules with unfilled gaps**: Filters the Rules table to only display rules with unfilled gaps. Note that the filter excludes rules with gaps that are being filled. 
-
-Within the Rules table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`). 
-
-::::{tip}
-For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
-::::
+The **Rule Monitoring** tab also displays information about gaps in rule executions. For more information, refer to [Gap information](/solutions/security/detect-and-alert/fill-rule-gaps.md#gap-information).
 
 ## Execution results tab [rule-execution-logs]
 
-From the **Execution results** tab, you can access the rule’s execution log, monitor and address gaps in a rule's execution schedule, and check manual runs for the rule. To find the tab, click the rule's name to open its details, then scroll down.
+From the **Execution results** tab on a **rule's details page**, you can review how each run performed, monitor gaps, and check manual runs. To find this tab, select the rule's name to open its details, then scroll down.
 
 ### Execution log table [execution-log-table]
 
-Each detection rule execution is logged, including the execution type, the execution’s success or failure, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you troubleshoot a particular rule if it isn’t behaving as expected (for example, if it isn’t creating alerts or takes a long time to run).
+::::{applies-switch}
 
-:::{image} /solutions/images/security-rule-execution-logs.png
-:alt: Execution log table on the rule execution results tab
-:screenshot:
-:::
+:::{applies-item} { stack: ga 9.4+ }
 
-You can hover over each column heading to display a tooltip about that column’s data. Click a column heading to sort the table by that column. Within the Execution log table, you can click the arrow at the end of a row to expand a long warning or error message.
+Each detection rule execution is logged with status, timing, and how many alerts the run produced. The table helps you understand rule performance and troubleshoot failures.
 
-Use these controls to filter what’s included in the logs table:
+You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column.
 
-* The **Run type** drop-down filters the table by rule execution type:
+| Column | Description |
+|--------|-------------|
+| Status | Overall status of the execution. |
+| Run type | Whether the run was a standard scheduled execution or a manual run. **Manual** includes manual runs that you start and runs generated by the automatic gap fill feature. |
+| Timestamp | Date and time the rule execution started. |
+| Execution duration | How long the rule took to run. |
+| Alerts created | Number of new alerts generated during this execution. |
+| Message | Outcome message from the execution (including warnings or errors when applicable). |
+
+From the table, you can use the following row actions:
+
+* **Filter alerts by rule execution ID**: Opens the Alerts table filtered to alerts from this execution. This control is disabled when the execution created no alerts (hover to see a tooltip).
+* **View details**: Opens the [execution details flyout](#execution-details-flyout) for that run.
+
+Use these controls to filter what appears in the table:
+
+* The **Run type** drop-down filters by rule execution type:
 
     * **Scheduled**: Automatic, scheduled rule executions.
-    * **Manual**: Rule executions that were [started manually](manage-detection-rules.md#manually-run-rules).
+    * **Manual**: [Manually started](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) runs and runs generated by the [automatic gap fill](/solutions/security/detect-and-alert/fill-rule-gaps.md#fill-gaps-automatically) feature.
 
-* The **Status** drop-down filters the table by rule execution status:
+* The **Status** drop-down filters by rule execution status:
 
-    * **Succeeded**: The rule completed its defined search. This doesn’t necessarily mean it generated an alert, just that it ran without error.
-    * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
-    * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
+    * **Succeeded**: The rule completed its defined search.
+    * **Failed**: The rule encountered an error that prevented it from running.
+    * **Warning**: The rule ran but might have returned unexpected results.
+
+* The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
+
+Additional timing, indexing, and gap details that were previously available through extra table columns and toggles are now shown in the [execution details flyout](#execution-details-flyout).
+
+:::
+
+:::{applies-item} { stack: ga 9.0-9.3 }
+
+The **Execution results** tab shows the run history in this layout. Each detection rule execution is logged, including the execution type, success or failure status, any warning or error messages, how long it took to search for data, create alerts, and complete. This can help you identify and troubleshoot a rule if it isn't behaving as expected (for example, if it isn't creating alerts or takes a long time to run).
+
+
+You can hover over each column heading to display a tooltip about that column's data. Select a column heading to sort the table by that column. You can select the arrow at the end of a row to expand a long warning or error message.
+
+Use these controls to filter what's included in the table:
+
+* The **Run type** drop-down filters by rule execution type:
+
+    * **Scheduled**: Automatic, scheduled rule executions.
+    * **Manual**: [Manually started](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) runs and runs that [fill gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md). 
+
+* The **Status** drop-down filters by rule execution status:
+
+    * **Succeeded**: The rule completed its defined search.
+    * **Failed**: The rule encountered an error that prevented it from running.
+    * **Warning**: The rule ran but might have returned unexpected results.
 
 * The date and time picker sets the time range of rule executions included in the table. This is separate from the global date and time picker at the top of the rule details page.
 * The **Source event time range** button toggles the display of data pertaining to the time range of manual runs.
 * The **Show metrics columns** toggle includes more or less data in the table, pertaining to the timing of each rule execution.
-* The **Actions** column allows you to show alerts generated from a given rule execution. Click the filter icon (![Filter icon](/solutions/images/security-filter-icon.png "title =20x20")) to create a global search filter based on the rule execution’s ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by clicking **Restore previous filters** in the notification.
+* The **Actions** column allows you to show alerts generated from a given rule execution. Select the filter icon {icon}`filter_in_circle` to create a global search filter based on the rule execution's ID value. This replaces any previously applied filters, changes the global date and time range to 24 hours before and after the rule execution, and displays a confirmation notification. You can revert this action by selecting **Restore previous filters** in the notification.
+
+:::
+
+::::
 
 
-### Gaps table [gaps-table]
-
-```{applies_to}
-   stack: preview 9.0, ga 9.1
+### Execution details flyout [execution-details-flyout]
+```yaml {applies_to}
+stack: ga 9.4+
 ```
 
-Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
-
-::::{tip}
-Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
-::::
-
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. In {{stack}} 9.1 and Serverless, fill all gaps for the current rule by clicking **Fill all gaps** in the Gaps table. 
+The execution details flyout displays additional timing, indexing, and gap details for the selected run. Use it to get a better understanding of that run, including errors and warnings, the number of candidate detections that became stored alerts, which indices were searched, and more. To open the execution details flyout, select **View details** on a row in the Execution log table.
 
 ::::{note}
-{applies_to}`stack: ga 9.1` From the Rules table, fill gaps for multiple rules with the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules).
+These flyout metrics are stored only for executions logged on {{stack}} 9.4 or later, and for {{serverless-full}} projects after the same data began to be persisted. Executions logged on older versions (for example {{stack}} 9.3 or earlier) might have blank fields in the flyout because those values were not recorded when the run was logged.
 ::::
 
-:::{image} /solutions/images/security-gaps-table.png
-:alt: Gaps table on the rule execution results tab
-:screenshot:
-:::
+#### Outcome
 
-The Gaps table has the following columns:
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Message | Whether the run completed successfully, plus errors or warnings such as index or query issues. | When a run failed or shows a warning, read this field before timing or alert counts. |
 
-* **Status**: The current state of the gap. It can be `Filled`, `Partially filled`, or `Unfilled`.
-* **Detected at**: The date and time the gap was first discovered.
-* **Manual fill tasks**: The status of the manual run that’s filling the gap. For more details about the manual run, refer to its entry in the [Manual runs table](/solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table).
-* **Event time covered**: How much progress the manual run has made filling the gap.
+#### Source event time range
 
-    ::::{note}
-    If you stop a manual run that's hasn't finished filling a gap, the gap’s status will be set to `Partially filled`. To fill the remaining gap, you can select the **Fill remaining gap** action or [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) the rule over the gap's time frame.
-    ::::
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Source event time range | Shown when this run targeted a defined source window, such as a manual run, a gap-fill run, or a run from automatic gap fill. Standard scheduled executions do not show this section. Those runs use the rule’s interval and look-back for timing instead. When this section appears, `From` and `To` bound the source events searched, not the clock time when the run started. | Compare `From` and `To` to the Timestamp column in the [Execution results](#rule-execution-logs) table. The job can run later while querying an earlier source window. Use when validating a manual run or gap-fill coverage. |
 
-* **Range**: When the gap started and ended.
-* **Total gap duration**: How long the gap lasted.
-* **Actions**: The actions that you can take for the gap. They can be **Fill gap** (starts a manual run to fill the gap) or **Fill remaining gap** (starts a manual run that fills the leftover portion of the gap).
+#### Alerts
 
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Candidate alerts | Detections produced by the rule query before deduplication and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md). | If this number is high but **Alerts created** is low, review duplicate detection, suppression settings, and exception lists to find where alerts were dropped. |
+| Alerts created | Alerts written to {{es}} after deduplication and suppression. These are the alerts shown on the **Alerts** page and in downstream workflows. | Use this count to judge whether the run added meaningful new issues versus noise. |
 
-### Manual runs table [manual-runs-table]
+#### Indices
 
-You can [manually run](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) enabled rules for a specified period of time to deliberately test them, provide additional rule coverage, or fill gaps in rule executions. Each manual run can produce multiple rule executions, depending on the time range of the run and the rule's execution schedule.
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Matched indices | How many concrete indices matched the rule’s index patterns or data view for this run. | If you expected data from a new index and this is `0`, check index names, data streams, and whether the index pattern includes the right time range. |
+| Frozen indices queried | How many indices on the [frozen](/manage-data/lifecycle/data-tiers.md) data tier were searched. Searching frozen data is slow compared to warmer tiers. | If this is non-zero, it is a likely reason for high Search time in the breakdown below. |
 
-::::{note}
-Manual runs are executed with low priority and limited concurrency, meaning they might take longer to complete. This can be especially apparent for rules requiring multiple executions.
-::::
+#### Scheduling and gaps
 
-The Manual runs table tracks manual rule executions and provides important details such as:
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Gap duration | How much source event time was _not_ searched between this run and the previous execution. It measures missing coverage over events, not how late the run started. For start-time lag, use **Scheduling delay**. | Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) and consider look-back, load, or maintenance windows. |
+| Scheduling delay | How long after its scheduled start time this run began. It measures queue or wait time before work starts, not missing event time between runs. For gaps in event coverage, use **Gap duration**. | Large delays often point to queue backlog, cluster load, or resource limits rather than a problem inside the rule query itself. |
 
-* The total number of rule executions that the manual run will produce and how many are failing, pending, running, and completed.
-* When the manual run started and the time range that it will cover.
+#### Execution duration and breakdown
 
-    ::::{note}
-    To stop an active run, go to the appropriate row in the table and click **Stop run** in the **Actions** column. Completed rule executions for each manual run are logged in the Execution log table.
-    ::::
+| Field | Description | How to use |
+|-------|-------------|------------|
+| Execution duration | End-to-end time for this run. Includes search and indexing work attributed to the run. | Compare to the rule’s run interval. If runs routinely approach or exceed the interval, consider narrowing scope, optimizing queries, or scaling the cluster. |
+| Search | Time in {{es}} for queries and aggregations. | If this value is the largest part of the breakdown, focus on query cost, index patterns, shard count, and whether frozen indices were queried. |
+| Indexing | Time spent persisting new alerts. | If this value is the largest part of the breakdown, investigate alert volume per run, bulk indexing health, and {{es}} performance on alert indices. |
 
-* The status of each manual run:
+### Gaps table
 
-    * `Pending`: The rule is not yet running.
-    * `Running`: The rule is executing during the time range you specified. Some rule types, such as indicator match rules, can take longer to run.
-    * `Error`: The rule's configuration is preventing it from running correctly. For example, the rule's conditions cannot be validated.
+The **Execution results** tab also includes a Gaps table that shows detailed gap information for the specific rule. To learn how to use the Gaps table to find and fill gaps, refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md#gaps-table).
 
-:::{image} /solutions/images/security-manual-rule-run-table.png
-:alt: Manual rule runs table on the rule execution results tab
-:screenshot:
-:::
+### Manual runs table
 
-
+The **Execution results** tab includes a Manual runs table that tracks manual rule executions. To learn more about running rules manually and monitoring manual runs, refer to [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules).

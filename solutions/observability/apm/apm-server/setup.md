@@ -3,6 +3,14 @@ navigation_title: Set up
 applies_to:
   stack: ga
   serverless: unavailable
+products:
+  - id: observability
+  - id: apm
+  - id: elastic-agent
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Set up APM Server

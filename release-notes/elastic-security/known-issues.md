@@ -1,5 +1,12 @@
 ---
 navigation_title: Known issues
+products:
+  - id: security
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # {{elastic-sec}} known issues [elastic-security-known-issues]
@@ -15,6 +22,187 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround**<br> Steps for a workaround until the known issue is fixed.
 
 % :::
+
+:::{dropdown} Problem Child and DGA integrations fail to install
+**Applies to: {{stack}} 9.3.6**
+
+**Impact**<br>
+The [ProblemChild](https://www.elastic.co/docs/reference/integrations/problemchild) (Living off the Land Detection) and [DGA](https://www.elastic.co/docs/reference/integrations/dga) integration packages fail to install. This is caused by an {{es}} validation that limits field names in trained models to 100 characters.
+
+**Workaround**<br>
+Upgrade to {{stack}} 9.3.7.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.3.7.
+:::
+
+:::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+**Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4**
+
+**Impact**<br>
+Upgrading from 9.2.x to 9.3.x can fail if any rule (including detection rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**<br>
+
+Upgrade to 9.3.5 or 9.4.2.
+
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.5 and 9.4.2.
+:::
+
+:::{dropdown} Detection Rule run failures due to failed Entity Analytics enrichment
+**Applies to: 9.4.0**
+
+**Impact**<br>
+
+
+After you upgrade to v9.4, any Detection Rules created by users without access to the `.entities.v2.latest.security_*` index (i.e., the entity store) do not enrich their alerts with entity analytics data. This means that alerts which contain user or host entities and were created from rules authored by users without access to the index show as failures. The alert document still generates, but without entity analytics data.
+
+When a rule fires successfully and generates an alert, Asset Criticality and Entity Risk score values enrich the alert document. In 9.4, these values come from the entity store index `.entities.v2.latest.security_*` , which is a feature on by default in the default space.
+
+Detection Rules use their author’s permissions to enrich alerts with entity data. When rules are created or modified, those permissions are stored as a "snapshot" in an API key. If the author lacks access to the `.entities.v2.latest.security_*` index, enrichment fails and the rule reports a failure status (though alerts still generate and actions are still scheduled).
+
+**Workaround**<br>
+
+Give appropriate `read` index-level permissions for the entity store index and alias in the appropriate space (`.entities.v2.latest.security_${spaceId}*` and `entities-latest-${spaceId}*`)  to a user, and have that user perform a no-op bulk update to all rules in the space. The rule will succeed on subsequent runs.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.4.1
+:::
+
+:::{dropdown} SentinelOne response actions fail in Elastic Agent 9.3.4
+**Applies to: {{agent}} 9.3.4**
+
+**Impact**<br>
+If you use the SentinelOne integration, response actions such as host isolation fail with a `500 Internal Server Error` (`search_phase_execution_exception`). This is caused by a bug in {{agent}} 9.3.4 where a performance optimization incorrectly serializes certain timestamp fields from Beats-based inputs and integrations to an empty `{}` JSON object instead of a valid timestamp value.
+
+The affected field is `event.created`. When this field is empty, {{kib}} cannot execute the underlying search that response actions depend on. For example, SentinelOne alert documents are written with `event.created` set to `{}` instead of a timestamp:
+
+```json
+  "event": {
+    "dataset": "sentinel_one.agent",
+    "created": {}
+  }
+```
+
+This does not affect the primary `@timestamp` field.
+
+**Workaround**<br>
+Upgrade to {{agent}} 9.3.5, which is not affected by this issue.
+
+**Resolved**<br>
+
+Resolved in {{agent}} 9.3.5. For more information, refer to [#266355](https://github.com/elastic/kibana/issues/266355).
+:::
+
+:::{dropdown} Details about gap fills aren't properly updated
+
+Applies to: 9.3
+
+**Impact**
+
+After upgrading to 9.3 from a {{stack}} version earlier than 8.9, you might encounter the following issues with gap fill functionality:
+
+* **Gap fills**: Manual runs are scheduled to fill gaps, but gap statuses aren't updated to `Filled` after the manual runs complete.
+
+* **Rule deletion**: If a rule has gaps and you delete the rule, the rule is removed but the gaps are not marked as deleted. You may see incorrect numbers when viewing total rules with gaps.
+
+**Root cause**
+
+When upgrading from {{stack}} versions earlier than 8.9, the old event log index is reindexed with a new name:
+
+* Old index: `.reindexed-v8-kibana-event-log-{version}-000001`
+* Aliases: `.kibana-event-log-{version}`, `.kibana-event-log-{version}-000001`
+
+Starting in {{stack}} 8.9.0, a new data stream (`.kibana-event-log-ds`) was introduced for event log storage.
+
+The `elastic/kibana` service account has permissions to access the new data stream but does not have permissions to access the old reindexed indices. When {{kib}} queries `.kibana-event-log-*`, it matches both the new data stream and the old reindexed index, causing Point-in-Time (PIT) operations to fail.
+
+**Workaround**
+
+Migrate data from the old reindexed index to the new data stream, then delete the old index.
+
+1. **Identify the old index**:
+
+    ```console
+    GET .kibana-event-log-*
+    ```
+
+    Look for indices with names like `.reindexed-v8-kibana-event-log-{version}-*`.
+
+2. **Reindex data to the new data stream**:
+
+    ```console
+    POST _reindex
+    {
+      "source": {
+        "index": ".reindexed-v8-kibana-event-log-7.17.29-000001" <1>
+      },
+      "dest": {
+        "index": ".kibana-event-log-ds",
+        "op_type": "create"
+      }
+    }
+    ```
+
+    1. Replace `7.17.29` with your version number.
+
+3. **Delete the old index**:
+
+    ```console
+    DELETE .reindexed-v8-kibana-event-log-7.17.29-000001
+    ```
+
+4. **Verify**:
+
+    ```console
+    GET .kibana-event-log-*
+    ```
+
+    Only the data stream (`.kibana-event-log-ds`) and its backing indices (`.ds-.kibana-event-log-ds-*`) should remain.
+
+:::{important}
+* **Backup**: Consider backing up your data before performing these operations in production environments.
+* **Event log retention**: Event log data has a default retention of 90 days. If you don't need historical data, you can skip the reindex step and simply delete the old index and its aliases.
+:::
+
+:::
+
+:::{dropdown} Intermittent blue screen due to conflict with Windows ODX in {{elastic-defend}}
+Applies to: 8.19.8, 8.19.9, 9.1.8, 9.1.9, 9.2.2, and 9.2.3
+
+**Impact**<br>
+An issue in {{elastic-defend}} on Windows can result in `KERNEL_AUTO_BOOST_LOCK_ACQUISITION_WITH_RAISED_IRQL` or `PAGE_FAULT_IN_NONPAGED_AREA` bug checks (blue screens) when [Offloaded Data Transfer (ODX)](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/offloaded-data-transfer) is used to copy files.
+
+**Workaround**<br>
+
+If you're unable to upgrade to a fixed version, you can disable the affected code by setting the `windows.advanced.kernel.filewrite` [advanced setting](/reference/security/defend-advanced-settings.md) to `false` in your {{elastic-defend}} integration policy.
+
+**Resolved**<br>
+
+Resolved in {{agent}} 8.19.10, 9.1.10 and 9.2.4
+
+:::{tip}
+As long as the major and minor versions match, you can run a newer patch version of {{agent}} than the {{stack}}. For example, you can use 9.1.10 {{agent}} with 9.1.8 {{stack}}.
+:::
+
+:::
+
 
 :::{dropdown} Deploying integrations using AWS CloudFormation doesn't work
 Applies to: 9.2.0 and 9.2.1
@@ -289,7 +477,7 @@ Resolved in {{elastic-defend}} 9.0.1
 :::
 
 
-:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernal driver causes slow down on Windows systems
+:::{dropdown} Unbounded kernel non-paged memory growth issue in Elastic Defend's kernel driver causes slow down on Windows systems
 
 Applies to: {{elastic-defend}} 9.0.0
 

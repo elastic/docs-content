@@ -63,7 +63,7 @@ To upgrade {{kib}}:
     3. Copy the files from the `data` directory from your old installation to your new installation.
 
     ::::{important}
-    If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
+    If you use {{monitor-features}}, you must reuse the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
     ::::
 
     4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).

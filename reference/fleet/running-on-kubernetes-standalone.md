@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,13 +16,13 @@ products:
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
 * {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it.
 
-  ::::{tab-set}
+  ::::{applies-switch}
 
-  :::{tab-item} {{ech}}
+  :::{applies-item} ess:
   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
   :::
 
-  :::{tab-item} Self-managed
+  :::{applies-item} self:
   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
   :::
 
@@ -89,21 +92,21 @@ The size and the number of nodes in a Kubernetes cluster can be large at times, 
 
 ### Step 2: Connect to the {{stack}} [_step_2_connect_to_the_stack]
 
-Set the {{es}} settings before deploying the manifest:
+Set the {{es}} connection settings in the manifest before deploying. The manifest uses `api_key` authentication by default. Create an API key with the required privileges described in [Create API keys for standalone agents](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent), then set these environment variables:
 
 ```yaml
-- name: ES_USERNAME
-  value: "elastic" <1>
-- name: ES_PASSWORD
-  value: "passpassMyStr0ngP@ss" <2>
+- name: API_KEY
+  value: "<your-api-key-id>:<your-api-key-secret>" <1>
 - name: ES_HOST
-  value: "https://somesuperhostiduuid.europe-west1.gcp.cloud.es.io:9243" <3>
+  value: "https://somesuperhostiduuid.europe-west1.gcp.cloud.es.io:9243" <2>
 ```
 
-1. The basic authentication username used to connect to {{es}}.
-2. The basic authentication password used to connect to {{kib}}.
-3. The {{es}} host to communicate with.
+1. Replace `<your-api-key-id>:<your-api-key-secret>` with the API key you created in {{kib}}. Use the {{beats}} format (`<id>:<key>`), not the Base64-encoded value shown by default when the key is created.
+2. The {{es}} host to communicate with.
 
+::::{note}
+To authenticate with a username and password instead, comment out the `api_key` setting in the manifest's `outputs` section, uncomment the `username` and `password` settings, and set the `ES_USERNAME` and `ES_PASSWORD` environment variables. For the required privileges, refer to [Create a standalone agent role](/reference/fleet/grant-access-to-elasticsearch.md#create-role-standalone-agent).
+::::
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 
@@ -158,15 +161,16 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
 
 1. Launch {{kib}}:
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} ess:
 
     1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
     2. Navigate to the {{kib}} endpoint in your deployment.
     :::
 
-    :::{tab-item} Self-managed
+    :::{applies-item} self:
+    
     Point your browser to [http://localhost:5601](http://localhost:5601), replacing `localhost` with the name of the {{kib}} host.
     :::
 

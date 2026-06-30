@@ -2,6 +2,8 @@
 navigation_title: Migrate {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-elastic-agent.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -51,7 +53,7 @@ You can create a new cluster based on the snapshot taken in the previous step, a
 
 ## Update settings in the target cluster [migrate-elastic-agent-target-settings]
 
-when the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
+When the target cluster is available you’ll need to adjust a few settings. Take some time to examine the {{fleet}} setup in the new cluster.
 
 1. Open the {{kib}} menu and select **Fleet**.
 2. On the **Agents** tab, your agents should visible, however they’ll appear as `Offline`. This is because these agents have not yet enrolled in the new, target cluster, and are still enrolled in the original, source cluster.
@@ -137,7 +139,7 @@ The easiest way to find the `deployment-id` is from the deployment URL:
 
 ### Reset the {{ecloud}} policy [migrate-elastic-agent-reset-policy]
 
-On your target cluster, certain settings from the original {{ecloud}} {{agent}} policiy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. When you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
+On your target cluster, certain settings from the original {{ecloud}} {{agent}} policy may still be retained, and need to be updated to reference the new cluster. For example, in the APM policy installed to the {{ecloud}} {{agent}} policy, the original and outdated APM URL is preserved. This can be fixed by running the `reset_preconfigured_agent_policies` API request. When you reset the policy, all APM Integration settings are reset, including the secret key or any tail-based sampling.
 
 To reset the {{ecloud}} {{agent}} policy:
 

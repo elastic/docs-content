@@ -149,7 +149,21 @@ cluster_*:logstash-*,-cluster_one:*
 
 Once you configure a {{data-source}} to use the {{ccs}} syntax, all searches and aggregations using that {{data-source}} in {{kib}} take advantage of {{ccs}}.
 
-For more information, refer to [Excluding clusters or indicies from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+For more information, refer to [Excluding clusters or indices from cross-cluster search](../../explore-analyze/cross-cluster-search.md#exclude-problematic-clusters).
+
+
+### Use {{data-sources}} with {{cps}} [management-cross-project-search]
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the {{data-source}} creation form previews matching indices from linked projects based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana). The {{data-source}} itself does not store the scope. When you query the {{data-source}}, results come from whichever linked projects the active {{cps}} scope includes at that time.
+
+To restrict a {{data-source}} to specific projects regardless of the active scope, you can:
+
+* **Use [qualified expressions](/explore-analyze/cross-project-search/cross-project-search-search.md#search-expressions)** in the index pattern to target specific projects, for example `project_alpha:logs-*,project_beta:logs-*`. To search only the origin project, use `_origin:logs-*`.
+* **Use [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md)** in your queries to narrow scope at query time.
 
 
 ## Delete a {{data-source}} [delete-data-view]
@@ -510,6 +524,18 @@ The resulting URL replaces `{{value}}` with the user ID from the field.
 The `{{value}}` template string URL-encodes the contents of the field. When a field encoded into a URL contains non-ASCII characters, the characters are replaced with a `%` character and the appropriate hexadecimal code. For example, field contents `users/admin` result in the URL template adding `users%2Fadmin`.
 
 When the formatter type is **Image**, the `{{value}}` template string specifies the name of an image at the specified URI.
+
+You can render base64 images from data within a document by using the following **URL template**:
+
+```text
+data:image/png;base64,{{value}}
+```
+
+For example:
+![Data view editing to load base64 encoded PNG data](/explore-analyze/images/kibana-data_view_format_url_image_base64.png "")
+
+This configuration renders a PNG file in Discover as follows:
+![Sample output of PNG loading in Discover](/explore-analyze/images/kibana-discover-render_base64_image.png "")
 
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
 

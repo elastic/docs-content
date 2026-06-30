@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/grant-access-to-elasticsearch.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -8,14 +11,16 @@ products:
 
 # Grant standalone Elastic Agents access to Elasticsearch [grant-access-to-elasticsearch]
 
-You can use either API keys or user credentials to grant standalone {{agent}}s access to {{es}} resources. The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
+You can use either API keys (recommended) or user credentials to grant standalone {{agents}} access to {{es}} resources.
+
+::::{important}
+API key authentication is required for {{serverless-full}}. API key authentication is recommended for {{stack}} deployments to avoid exposing usernames and passwords in configuration files.
+::::
+
+The following minimal permissions are required to send logs, metrics, traces, and synthetics to {{es}}:
 
 * `monitor` cluster privilege
 * `auto_configure` and `create_doc` index privileges on `logs-*-*`, `metrics-*-*`, `traces-*-*`, and `synthetics-*-*`.
-
-It’s recommended that you use API keys to avoid exposing usernames and passwords in configuration files.
-
-If you’re using {{fleet}}, refer to [{{fleet}} enrollment tokens](/reference/fleet/fleet-enrollment-tokens.md).
 
 
 ## Create API keys for standalone agents [create-api-key-standalone-agent]
@@ -67,16 +72,15 @@ To create an API key for {{agent}}:
 
     You’ll see a message indicating that the key was created, along with the encoded key. By default, the API key is Base64 encoded, but that won’t work for {{agent}}.
 
-
-1. Click the down arrow next to Base64 and select **Beats**.
+6. Click the down arrow next to Base64 and select **Beats**.
 
     :::{image} images/copy-api-key.png
     :alt: Message with field for copying API key
     :screenshot:
     :::
 
-2. Copy the API key. You will need this for the next step, and you will not be able to view it again.
-3. To use the API key, specify the `api_key` setting in the `elastic-agent.yml` file. For example:
+7. Copy the API key. You need this for the next step and won't be able to view it again.
+8. To use the API key, specify the `api_key` setting in the `elastic-agent.yml` file. For example:
 
     ```yaml
     [...]
@@ -91,13 +95,18 @@ To create an API key for {{agent}}:
 
     1. The format of this key is `<id>:<key>`. Base64 encoded API keys are not currently supported in this configuration.
 
+    On Kubernetes, set the `API_KEY` environment variable in the {{agent}} manifest instead of editing `elastic-agent.yml` directly. For an example, refer to [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md#_step_2_connect_to_the_stack).
 
 For more information about creating API keys in {{kib}}, see [API Keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 
 ## Create a standalone agent role [create-role-standalone-agent]
 
-Although it’s recommended that you use an API key instead of a username and password to access {{es}} (and an API key is required in a {{serverless-short}} environment), you can create a role with the required privileges, assign it to a user, and specify the user’s credentials in the `elastic-agent.yml` file.
+::::{note}
+Use [API keys](#create-api-key-standalone-agent) instead of username and password authentication whenever possible. API key authentication is required in a {{serverless-short}} environment.
+::::
+
+If you cannot use an API key, you can create a role with the required privileges, assign it to a user, and specify the user’s credentials in the `elastic-agent.yml` file.
 
 1. In {{kib}}, go to **{{stack-manage-app}} > Roles**.
 2. Click **Create role** and enter a name for the role.

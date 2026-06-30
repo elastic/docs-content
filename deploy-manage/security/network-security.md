@@ -5,11 +5,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-deployment-configuration.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-deployment-configuration.html
 applies_to:
-  deployment:
-    ess: ga
-    ece: ga
-    eck: ga
-    self: ga
+  stack: ga
   serverless: ga
 products:
   - id: cloud-enterprise
@@ -45,7 +41,7 @@ You can also allow traffic to or from a [remote cluster](/deploy-manage/remote-c
 | --- | --- | --- |
 | [IP filters](ip-filtering.md) | Filter traffic from the public internet by allowlisting specific IP addresses and Classless Inter-Domain Routing (CIDR) masks.<br><br>• [In {{serverless-short}} or ECH](/deploy-manage/security/ip-filtering-cloud.md)<br><br>• [In ECE](/deploy-manage/security/ip-filtering-ece.md)<br><br>• [In ECK or self-managed](/deploy-manage/security/ip-filtering-basic.md) | {{serverless-short}}, ECH, ECE, ECK, and self-managed clusters |
 | [Remote cluster filters](./remote-cluster-filtering.md) | Filter incoming remote cluster traffic by validating the client certificate against its `organization_id` and `cluster_id`.<br><br>Only applicable with the API key–based authentication model.<br><br>Not supported for ECE → ECH traffic. | ECH and ECE, limited to [these use cases](/deploy-manage/remote-clusters.md#use-cases-network-security) |
-| [Private connectivity and VPC filtering](/deploy-manage/security/private-connectivity.md) | Establish private connections between {{es}} and other resources hosted by the same cloud provider using private link services, and further secure these connections using VPC filtering. Choose the relevant option for your region:<br><br>• AWS regions: [AWS PrivateLink](/deploy-manage/security/private-connectivity-aws.md)<br><br>• Azure regions: [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md)<br><br>• GCP regions: [GCP Private Service Connect](/deploy-manage/security/private-connectivity-gcp.md) | {{ech}} only |
+| [Private connectivity and VPC filtering](/deploy-manage/security/private-connectivity.md) | Establish private connections between {{es}} and other resources hosted by the same cloud provider using private link services, and further secure these connections using VPC filtering. Choose the relevant option for your region:<br><br>• AWS regions: [AWS PrivateLink](/deploy-manage/security/private-connectivity-aws.md)<br><br>• Azure regions: [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md)<br><br>• GCP regions: [GCP Private Service Connect](/deploy-manage/security/private-connectivity-gcp.md) | • {{ech}}<br><br>• Serverless (AWS only) |
 | [Kubernetes network policies](/deploy-manage/security/k8s-network-policies.md) | Isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations. | {{eck}} only |
 
 :::{include} _snippets/eck-traffic-filtering.md
@@ -54,9 +50,9 @@ You can also allow traffic to or from a [remote cluster](/deploy-manage/remote-c
 ## How network security works
 ```{applies_to}
 deployment:
-  ece: all
-  ess: all
-serverless: all
+  ece: ga
+  ess: ga
+serverless: ga
 ```
 
 By default, in {{serverless-full}}, {{ech}}, and {{ece}}, all external traffic is allowed. After you apply a network security mechanism, such as an IP filtering rule in an {{ece}} deployment or a network security policy in an {{ecloud}} deployment or project, only traffic that matches the configured rules or policies is allowed; all other traffic is denied.

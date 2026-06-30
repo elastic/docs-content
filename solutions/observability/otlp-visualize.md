@@ -5,10 +5,10 @@ applies_to:
   serverless:
 ---
 
-# Visualize OTLP data
+# Visualize OpenTelemetry data
 
 :::{tip}
-Want to ingest OpenTelemetry data? See [](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
+To ingest OpenTelemetry data, refer to [](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 :::
 
 ## Get creative with Discover
@@ -24,7 +24,7 @@ You can correlate all signals with a single `resource.attributes.*`.
 :alt: resource attributes
 :::
 
-See [](/explore-analyze/discover.md) to learn more.
+Refer to [](/explore-analyze/discover.md) to learn more.
 
 ## Monitor application performance
 

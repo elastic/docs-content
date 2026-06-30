@@ -2,6 +2,9 @@
 navigation_title: add_kubernetes_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_kubernetes_metadata-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -166,6 +169,10 @@ This configuration disables the default indexers and matchers, and then enables 
 :   (Optional) Whether to replace dots (`.`) in labels with underscores (`_`). `annotations.dedot`
 
     **Default**: `true`
+
+::::{note}
+Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use [conditions-based autodiscover templates](/reference/fleet/conditions-based-autodiscover.md) instead.
+::::
 
 
 ## Indexers and matchers [kubernetes-indexers-and-matchers]

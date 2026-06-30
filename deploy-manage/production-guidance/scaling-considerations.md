@@ -6,6 +6,11 @@ applies_to:
     ess: all
     ece: all
     self: all
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # {{es}} scaling considerations

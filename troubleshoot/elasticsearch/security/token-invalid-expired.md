@@ -1,12 +1,9 @@
 ---
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 navigation_title: "Error: Token invalid or expired"
+products:
+  - id: elasticsearch
 ---
 
 # Fix errors: Invalid token or token expired in {{es}} [token-invalid-expired]

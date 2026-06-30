@@ -3,6 +3,16 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: observability
+  - id: apm
+  - id: edot-sdk
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Data stream routing [apm-open-telemetry-data-stream-routing]

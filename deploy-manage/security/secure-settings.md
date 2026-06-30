@@ -46,9 +46,9 @@ For information about the APM keystore, refer to [](/solutions/observability/apm
 
 The {{es}} keystore has some important characteristics and limitations to be aware of:
 
-* **Only specific settings are allowed**: The keystore accepts only settings marked as *secure* in the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Adding unsupported settings to the keystore causes the validation in the [`reload_secure_settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and can also prevent {{es}} from starting.
+* **Only specific settings are allowed**: The keystore accepts only settings marked as *secure* in the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Adding unsupported settings to the keystore causes the validation in the [`reload_secure_settings` API]({{es-apis}}operation/operation-nodes-reload-secure-settings) to fail and can also prevent {{es}} from starting.
 * **Mandatory for secure settings**: Settings marked as secure must be added to the keystore. They cannot be placed in `elasticsearch.yml` or set using environment variables. This differs from the {{kib}} keystore, which supports all settings.
-* **Changes require a restart**: Most secure settings take effect only after restarting the nodes. However, some are marked as *reloadable* and can be updated without a restart using the [`reload_secure_settings`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API. Refer to [Reloadable settings](#reloadable-secure-settings) for more information.
+* **Changes require a restart**: Most secure settings take effect only after restarting the nodes. However, some are marked as *reloadable* and can be updated without a restart using the [`reload_secure_settings`]({{es-apis}}operation/operation-nodes-reload-secure-settings) API. Refer to [Reloadable settings](#reloadable-secure-settings) for more information.
 * **Keystore is per-node**: Each node in the cluster has its own keystore file. Secure settings must be specified individually on every node and must have the same values across the cluster. Orchestrated deployments, such as ECH, ECE, and ECK, handle this automatically when configuring secure settings.
 
 ::::{tip}
@@ -59,18 +59,17 @@ For example, you can search for `secure_bind_password` in the [security settings
 
 The instructions below cover how to manage {{es}} keystore settings for each deployment type.
 
-:::::{tab-set}
-:group: deployment-type
+:::::{applies-switch}
 
-::::{tab-item} ECH and ECE
-:sync: cloud
+::::{applies-item} { ess:, ece: }
+
 % ### ECE and ECH
 You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
 
 If a feature requires both standard `elasticsearch.yml` settings and secure settings, configure the secure settings first. Updating standard settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
 
 :::{note}
-{{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
+{{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API]({{ece-apis}}). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
 :::
 
 There are three input formats you can use for secure setting values:
@@ -94,7 +93,7 @@ Add settings and secret values to the keystore.
 6. Configure the settings, then select **Save**.
 
     :::{important}
-    All modifications to the non-reloadable settings take effect only after restarting {{es}}. [Reloadable](#reloadable-secure-settings) keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request. Adding unsupported settings to the keystore will cause {{es}} to fail to start.
+    All modifications to the non-reloadable settings take effect only after restarting {{es}}. [Reloadable](#reloadable-secure-settings) keystore changes take effect after issuing a [reload_secure_settings]({{es-apis}}operation/operation-nodes-reload-secure-settings) API request. Adding unsupported settings to the keystore will cause {{es}} to fail to start.
     :::
 
 #### Remove secure settings
@@ -111,16 +110,16 @@ When your secure settings are no longer needed, delete them from the keystore.
 5. On the **Confirm to delete** window, select **Confirm**.
 ::::
 
-::::{tab-item} ECK
-:sync: eck
+::::{applies-item} eck:
+
 % ### ECK
 In ECK, the operator simplifies secure settings configuration by relying on Kubernetes secrets.
 
 Refer to [Configure secure settings on ECK](./k8s-secure-settings.md) for details and examples.
 ::::
 
-::::{tab-item} Self-managed
-:sync: self-managed
+::::{applies-item} self:
+
 % ### Self-managed
 In self-managed deployments, you're responsible for configuring and maintaining the {{es}} keystore on each node individually.
 
@@ -187,7 +186,7 @@ For a full command reference and additional examples, such as displaying stored 
 
 Just like the settings values in `elasticsearch.yml`, changes to the keystore contents are not automatically applied to the running {{es}} node. Re-reading settings requires a node restart.
 
-However, certain secure settings are marked as `Reloadable` in [{{es}} reference documentation](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Such settings can be re-read and applied on a running node by using the [reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings).
+However, certain secure settings are marked as `Reloadable` in [{{es}} reference documentation](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Such settings can be re-read and applied on a running node by using the [reload secure settings API]({{es-apis}}operation/operation-nodes-reload-secure-settings).
 
 The values of all secure settings, whether reloadable or not, must be identical across all nodes. After making the desired changes, call the following endpoint. If your keystore is password-protected, include the `secure_settings_password` parameter:
 
@@ -202,7 +201,7 @@ POST _nodes/reload_secure_settings
 This API decrypts, re-reads the entire keystore and validates all settings on every cluster node, but only the reloadable secure settings are applied. Changes to other settings do not go into effect until the next restart. Once the call returns, the reload has been completed, meaning that all internal data structures dependent on these settings have been changed. Everything should look as if the settings had the new value from the start.
 
 ::::{tip}
-When changing multiple reloadable secure settings, modify all of them on each cluster node, then issue a [`reload_secure_settings`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) call instead of reloading after each modification.
+When changing multiple reloadable secure settings, modify all of them on each cluster node, then issue a [`reload_secure_settings`]({{es-apis}}operation/operation-nodes-reload-secure-settings) call instead of reloading after each modification.
 ::::
 
 Reloadable secure settings are available for snapshot repository plugins, watcher, monitoring, and certain authentication realms. Refer to the relevant documentation for each feature to see if secure settings can be reloaded.

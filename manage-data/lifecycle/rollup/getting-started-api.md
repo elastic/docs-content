@@ -99,7 +99,7 @@ Instead, the {{rollup-features}} save the `count` and `sum` for the defined time
 ::::
 
 
-For more details about the job syntax, see [Create {{rollup-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job).
+For more details about the job syntax, see [Create {{rollup-jobs}}]({{es-apis}}operation/operation-rollup-put-job).
 
 After you execute the above command and create the job, you’ll receive the following response:
 
@@ -123,7 +123,7 @@ POST _rollup/job/sensor/_start
 
 ## Searching the rolled results [_searching_the_rolled_results]
 
-After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to… it just happens to run on the rolled up data instead.
+After the job has run and processed some data, we can use the [Rollup search]({{es-apis}}operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to… it just happens to run on the rolled up data instead.
 
 For example, take this query:
 
@@ -275,7 +275,7 @@ Which returns a corresponding response:
 
 In addition to being more complicated (date histogram and a terms aggregation, plus an additional average metric), you’ll notice the date_histogram uses a `7d` interval instead of `60m`.
 
-This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-jobs) for an overview of what is available.
+This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API]({{es-apis}}operation/operation-rollup-get-jobs) for an overview of what is available.
 
 ## Historical-only search example
 

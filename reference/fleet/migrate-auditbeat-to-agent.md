@@ -1,7 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-auditbeat-to-agent.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
+  - id: auditbeat
   - id: fleet
   - id: elastic-agent
 ---

@@ -34,7 +34,7 @@ To reset the password:
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
 :::
 
-3. Under the deployment's name in the navigation menu, select **Security**.
+3. From the navigation menu, select **Security**.
 4. Select **Reset password**.
 5. Copy down the auto-generated a password for the `elastic` user.
 

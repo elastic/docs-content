@@ -2,6 +2,10 @@
 navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
+applies_to:
+  deployment:
+    ece: ga
+    self: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -22,7 +26,6 @@ The {{artifact-registry}} must therefore be accessible from {{kib}} through an H
 See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md).
 
 ::::
-
 
 When upgrading all the components in an air-gapped environment, it is recommended that you upgrade in the following order:
 
@@ -96,14 +99,27 @@ xpack.fleet.registryProxyUrl: your-nat-gateway.corp.net
 For more information, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
 
+### Allow network access to the public {{package-registry}} [air-gapped-network-access-epr]
+
+If you need to configure firewall rules to allow network access to [epr.elastic.co](https://epr.elastic.co/), allowlist the domain rather than specific IP addresses whenever possible, as IP addresses might change without notice.
+
+If allowlisting the domain is not an option, these are the current IP addresses used for the {{package-registry}}:
+
+* **IPv4**: `34.120.127.130`
+* **IPv6**: `2600:1901:0:1d7::`
+
+You can verify the current IP addresses using DNS lookup tools like `nslookup` or `dig`.
+
+
 ## Host your own {{package-registry}} [air-gapped-diy-epr]
 
 ::::{note}
 The {{package-registry}} packages include signatures used in [package verification](/reference/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in [`kibana.yml`](/deploy-manage/stack-settings.md). For more information, refer to [{{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
-
 If routing traffic through a proxy server is not an option, you can host your own {{package-registry}}.
+
+If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 The {{package-registry}} can be deployed and hosted onsite using one of the available Docker images. These docker images include the {{package-registry}} and a selection of packages.
 
@@ -160,6 +176,8 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
         docker.elastic.co/package-registry/distribution:{{version.stack}}
     ```
 
+    You can use the `/health` or `/health?ready=true` API endpoints to check if EPR is ready to serve requests.
+    When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
@@ -285,7 +303,13 @@ To make binaries available in an air-gapped environment, you can host your own c
 2. Add the agent binary download location to {{fleet}} settings:
 
     1. Open **{{fleet}} → Settings**.
-    2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more detail about these settings, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agent}}s to download binaries from this location, set it as the default.
+    2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
+
+        :::{note}
+        :applies_to: stack: ga 9.4+
+
+        To authenticate requests to your artifact registry, expand the **Authentication** section, and provide either a username and password, or an API key. Optionally, you can also add custom HTTP headers. For more details, refer to [Configure authentication for binary downloads](/reference/fleet/fleet-settings.md#agent-binary-auth).
+        :::
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 

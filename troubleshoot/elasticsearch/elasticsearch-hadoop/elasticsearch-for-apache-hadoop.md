@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/hadoop/current/troubleshooting.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -20,7 +15,7 @@ Unfortunately, sometimes things do not go as expected and your elasticsearch-had
 
 ### `EsHadoopNoNodesLeftException` [_eshadoopnonodesleftexception]
 
-Test that {{es}} is reacheable from the Spark/Hadoop cluster where the job is running. Your machine might reach it but that is not where the actual code will be running. If ES is accessible, minimize the number of tasks and their bulk size; if {{es}} is overloaded, it will keep falling behind, GC will kick in and eventually its nodes will become unresponsive causing clients to think the machines have died. See the [*Performance considerations*](elasticsearch-hadoop://reference/performance-considerations.md) section for more details.
+Test that {{es}} is reachable from the Spark/Hadoop cluster where the job is running. Your machine might reach it but that is not where the actual code will be running. If ES is accessible, minimize the number of tasks and their bulk size; if {{es}} is overloaded, it will keep falling behind, GC will kick in and eventually its nodes will become unresponsive causing clients to think the machines have died. See the [*Performance considerations*](elasticsearch-hadoop://reference/performance-considerations.md) section for more details.
 
 
 ### Test your network [_test_your_network]

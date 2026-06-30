@@ -13,6 +13,7 @@ products:
 
 {{es}} requires very little configuration to get started, but there are a number of items which **must** be considered before using your cluster in production:
 
+* [Bootstrap checks](#bootstrap-checks)
 * [Path settings](#path-settings)
 * [Cluster name setting](#_cluster_name_setting)
 * [Node name setting](#node-name)
@@ -26,6 +27,18 @@ products:
 * [Cluster backups](#important-settings-backups)
 * [DNS cache settings](#networkaddress-cache-ttl)
 
+## Bootstrap checks [bootstrap-checks]
+
+When each node starts, {{es}} runs [bootstrap checks](/deploy-manage/deploy/self-managed/bootstrap-checks.md) against {{es}} settings, JVM configuration, and the host operating system to confirm they meet minimum safety requirements. If a check fails, you can resolve it by updating the cluster or JVM settings described on this page (for example networking or discovery settings), by adjusting the server as described in [Important system configuration](/deploy-manage/deploy/self-managed/important-system-configuration.md) (for example file descriptors or `vm.max_map_count`), or both.
+
+### Development mode vs. production mode
+
+When `network.host` or `transport.host` [network settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) are set to a localhost address, {{es}} considers the node to be in development mode. If a bootstrap check fails in development mode, {{es}} writes a warning to the log file, but the node still starts.
+
+When `network.host` or `transport.host` are configured to a non-loopback address, {{es}} considers the node to be in production mode, and failed bootstrap checks become startup exceptions and prevent the node from starting. This reduces the risk of data loss from a misconfigured cluster or host.
+
+For the precise definition of development vs. production mode, refer to [Development vs. production mode](/deploy-manage/deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode).
+
 ## Path settings [path-settings]
 
 {{es}} writes the data you index to indices and data streams to a `data` directory. {{es}} writes its own application logs, which contain information about cluster health and operations, to a `logs` directory.
@@ -33,6 +46,10 @@ products:
 For [macOS `.tar.gz`](install-elasticsearch-from-archive-on-linux-macos.md), [Linux `.tar.gz`](install-elasticsearch-from-archive-on-linux-macos.md), and [Windows `.zip`](install-elasticsearch-with-zip-on-windows.md) installations, `data` and `logs` are subdirectories of `$ES_HOME` by default. However, files in `$ES_HOME` risk deletion during an upgrade.
 
 In production, we strongly recommend you set the `path.data` and `path.logs` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) to locations outside of `$ES_HOME`. [Docker](install-elasticsearch-with-docker.md), [Debian](install-elasticsearch-with-debian-package.md), and [RPM](install-elasticsearch-with-rpm.md) installations write data and log to locations outside of `$ES_HOME` by default.
+
+::::{note}
+{{es}} also supports the `path.repo` setting, which is used to register shared filesystem locations for snapshot repositories. For more information, refer to [Shared filesystem repository](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md).
+::::
 
 Supported `path.data` and `path.logs` values vary by platform:
 
@@ -59,7 +76,7 @@ path:
 ::::::
 :::::::
 
-{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/index-settings/path.md#multiple-data-paths).
+{{es}} offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](elasticsearch://reference/elasticsearch/configuration-reference/path.md#multiple-data-paths).
 
 ::::{warning}
 * Don’t modify anything within the data directory or run processes that might interfere with its contents.
@@ -68,7 +85,6 @@ path:
 * Don’t attempt to take filesystem backups of the data directory; there is no supported way to restore such a backup. Instead, use [Snapshot and restore](../../tools/snapshot-and-restore.md) to take backups safely.
 * Don’t run virus scanners on the data directory. A virus scanner can prevent {{es}} from working correctly and may modify the contents of the data directory. The data directory contains no executables so a virus scan will only find false positives.
 ::::
-
 
 ## Cluster name setting [_cluster_name_setting]
 
@@ -107,7 +123,7 @@ network.host: 192.168.1.10
 ```
 
 ::::{important}
-When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades a number of system startup checks from warnings to exceptions. See the differences between [development and production modes](important-system-configuration.md#dev-vs-prod).
+When you provide a value for `network.host`, {{es}} assumes that you are moving from development mode to production mode, and upgrades a number of system startup checks from warnings to exceptions. Refer to [bootstrap checks](#bootstrap-checks) for more information.
 ::::
 
 
@@ -199,7 +215,7 @@ To see further options not contained in the original JEP, see [Enable Logging wi
 Change the default GC log output location to `/opt/my-app/gc.log` by creating `$ES_HOME/config/jvm.options.d/gc.options` with some sample options:
 
 ```sh
-# Turn off all previous logging configuratons
+# Turn off all previous logging configurations
 -Xlog:disable
 
 # Default settings from JEP 158, but with `utctime` instead of `uptime` to match the next line

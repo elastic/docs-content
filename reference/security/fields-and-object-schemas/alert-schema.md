@@ -80,8 +80,8 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.original_event.*` | Event information copied from the original source event.<br>Type: object |
 | `kibana.alert.original_time` | The value copied from the source event (`@timestamp`).<br>Type: date |
 | `kibana.alert.reason` | Type: keyword |
-| `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params).<br>Type: keyword |
-| `kibana.alert.building_block_type` | The value of `building_block_type` from the rule that generated this alert. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params).<br>Type: keyword |
+| `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).<br>Type: keyword |
+| `kibana.alert.building_block_type` | The value of `building_block_type` from the rule that generated this alert. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).<br>Type: keyword |
 | `kibana.alert.rule.created_at` | The value of `created.at` from the rule that generated this alert.<br>Type: date |
 | `kibana.alert.rule.created_by` | Type: keyword |
 | `kibana.alert.rule.description` | Type: keyword |
@@ -129,7 +129,9 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.rule.parameters.threat_mapping.*` | Controls which fields will be compared in the indicator and source documents.<br>Type: flattened |
 | `kibana.alert.rule.parameters.threat_query` | Type: flattened |
 | `kibana.alert.rule.parameters.threshold.*` | Type: flattened |
-| `kibana.space_ids` | Type: keyword |
+| `kibana.space_ids` | Space ID(s) of the {{kib}} space where the rule that created this alert runs.<br>Type: keyword |
+| `kibana.cps_scope.expression` {applies_to}`serverless: preview` {applies_to}`stack: unavailable` | The [{{cps}}](/explore-analyze/cross-project-search.md) scope that was in effect when the detection rule generated this alert. Present only when the rule ran with {{cps}} enabled.<br>Type: keyword |
+| `kibana.cps_scope.linked_projects` {applies_to}`serverless: preview` {applies_to}`stack: unavailable` | The linked projects that were in scope when this alert was generated. Each entry includes `id`, `alias`, `type`, and `organization`. Present only when the rule ran with {{cps}} enabled.<br>Type: flattened |
 | `kibana.alert.rule.consumer` | Type: keyword |
 | `kibana.alert.status` | Type: keyword |
 | `kibana.alert.rule.category` | Type: keyword |

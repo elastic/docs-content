@@ -6,6 +6,13 @@ applies_to:
     eck:
     self:
   serverless:
+products:
+  - id: elastic-stack
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-serverless
 ---
 
 # Licenses and subscriptions  

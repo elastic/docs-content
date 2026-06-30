@@ -1,6 +1,9 @@
 ---
 applies_to:
   stack: ga 9.0
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Upgrade Enterprise Search

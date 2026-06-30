@@ -2,6 +2,9 @@
 navigation_title: Scenario 2
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario2.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -72,7 +75,7 @@ To confirm that the index template is using the `logs@custom` component template
 2. Search for `system` and select the `logs-system.auth@custom` component template.
 3. The **Summary** shows the list of all data streams that use the component template, and the **Settings** view shows your newly configured ILM policy.
 
-New ILM policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover of the data stream using the {{es}} [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
+New ILM policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover of the data stream using the {{es}} [rollover API]({{es-apis}}operation/operation-indices-rollover):
 
 ```bash
 POST /logs-system.auth/_rollover/

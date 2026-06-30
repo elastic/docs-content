@@ -1,5 +1,9 @@
 ---
 navigation_title: Kibana API docs
+description: "Set up a local Kibana API docs workflow, from cloning the repo to linting and previewing merged OpenAPI documentation."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Contribute to Kibana API docs locally
@@ -26,7 +30,7 @@ Some teams, including Security and Observability, work with hand-edited YAML fil
 :::
 ::::
 
- For more details, see the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
+ For more details, refer to the {{kib}} [OAS docs README](https://github.com/elastic/kibana/tree/main/oas_docs#kibana-api-reference-documentation).
 
 ## Quickstart
 
@@ -34,7 +38,7 @@ Follow these steps to contribute to Kibana API docs locally:
 
 ::::::::{stepper}
 
-::::{step} Fork and clone the repository
+::::{step} Clone the repository
 
 1. [Fork the Kibana repository](https://github.com/elastic/kibana/fork) to your GitHub account.
 2. Clone your fork locally:
@@ -42,11 +46,6 @@ Follow these steps to contribute to Kibana API docs locally:
     ```bash
     git clone https://github.com/YOUR_USERNAME/kibana.git
     cd kibana
-    ```
-3. Add the upstream repository as a remote:
-
-    ```bash
-    git remote add upstream https://github.com/elastic/kibana.git
     ```
 ::::
 
@@ -81,6 +80,28 @@ If dependencies are broken or bootstrap fails, run `yarn kbn clean` first. For m
 :sync: code-generated
 Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, request/response schemas, and examples as needed, per the [checklist](checklist.md).
 
+**Always include version and lifecycle information** using the `availability` option in your route definitions. This powers the version badges and tech preview labels that help users understand when an API was introduced and its stability status.
+
+```typescript
+options: {
+  tags: ['example', 'oas-tag:Example APIs'],
+  availability: {
+    stability: 'experimental',
+    since: '9.2.0',
+  },
+},
+```
+
+The `availability` option includes two fields:
+
+- **`stability`**: Indicates the lifecycle state of the API
+  - `'experimental'` → Technical preview; can change or be removed in future versions
+  - `'stable'` (default) → Generally available (GA); stable for production use
+- **`since`**: The version when the API was first added (for example, `'9.2.0'`)
+
+The `availability` option is only available at the API (route) level. 
+For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
 :::
@@ -91,20 +112,32 @@ Edit the TypeScript route definitions in your plugin code. Add JSDoc comments, r
 :sync: manual
 Edit the YAML files in the appropriate plugin or package directory. Refer to the README alongside each file for specific guidance on adding summaries, descriptions, tags, metadata, links, and examples.
 
+**Always include version and lifecycle information** using the `x-state` field. This powers the version badges and tech preview labels in the API docs.
+
+```yaml
+x-state: Technical Preview; added in 9.2.0
+```
+
+For stable/GA APIs, you can omit the lifecycle status:
+
+```yaml
+x-state: added in 9.0.0
+```
+
 In these README files, you'll also find instructions for generating intermediate bundle files that capture your changes, and that are later used to generate the full API documentation.
 
 The YAML files with the content changes and the intermediate bundle files are the minimum set of files required for creating a pull request. Without the intermediate bundle files, the automation won't pick up the changes and won't generate the full API documentation.
 
-Review the the [checklist](checklist.md) for best practices.
+Review the [checklist](checklist.md) for best practices.
 
-Once you've made your changes, skip the next two steps and proceed to "Generate docs".
+Once you've made your changes, skip the next two steps and proceed to generate the documentation.
 ::::
 
 ::::::
 
 ::::::{step} Add examples to your routes
 
-Beyond schema definitions, providing concrete request and response examples significantly improves API documentation usability.
+Concrete request and response examples significantly improve API documentation usability.
 
 ::::{dropdown} Inline TypeScript examples
 
@@ -137,7 +170,7 @@ For code-generated APIs, you can add examples directly in your route definitions
 ::::
 ::::{dropdown} YAML examples
 
-**For code-generated APIs**, reference a YAML file in your route definition:
+For code-generated APIs, you can reference a YAML file in your route definition:
 
 ```typescript
 import path from 'node:path';
@@ -162,7 +195,7 @@ const oasOperationObject = () => path.join(__dirname, 'foo.examples.yaml');
 })
 ```
 
-**For manual YAML**, add examples directly in your YAML files in the appropriate plugin or package directory.
+For manually-maintained OpenAPI documents, add examples directly in your YAML files in the appropriate plugin or package directory.
 
 **Example YAML structure:**
 
@@ -188,12 +221,30 @@ responses:
               id: '12345'
               name: 'Cool foo!'
               enabled: true
+x-codeSamples: # Optionally add examples in multiple languages. At a minimum, add curl and Console.
+- lang: cURL
+  # label: A label which will be used as a title. Defaults to the lang value.
+  source: |
+    curl \
+     -X POST "https://${KIBANA_URL}/api/foo" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+     ...
+     }'
+- lang: Console
+  source: |
+    POST kbn:/api/agent_builder/tools
+    {
+     ...
+    }
 ```
 ::::
 
 ::::::
 
-::::::{step} (optional) Capture code-generated output
+::::::{step} Optional: Capture code-generated output
 
 :::::{tab-set}
 :group: kibana-workflow
@@ -211,8 +262,8 @@ This step captures the OpenAPI specification that {{kib}} generates at runtime f
 - `bundle.serverless.json`
 
 **Prerequisites:**
-- [Docker](https://docs.docker.com/get-docker/) must be running
-- If you're an Elastician, ensure you're logged into Docker with your Elastic account
+
+- [Docker](https://docs.docker.com/get-docker/) must be running.
 
 To capture all the documented API paths, copy the command from [`capture_oas_snapshot.sh`](https://github.com/elastic/kibana/blob/main/.buildkite/scripts/steps/checks/capture_oas_snapshot.sh). For example:
 
@@ -244,7 +295,7 @@ node scripts/capture_oas_snapshot --update --include-path /api/your/specific/pat
 ::::{tab-item} Manual YAML
 :sync: manual
 
-This step is not applicable for Manual YAML. Your YAML files are used directly. Skip to the next step.
+This step is not applicable for manually-maintained OpenAPI documents. Your YAML files are used directly. Skip to the next step.
 ::::
 
 :::::
@@ -286,16 +337,17 @@ When you open a pull request to submit API documentation changes, this linter ru
 
 ::::{step} Preview the API docs
 
-1. Ensure [`bump-cli`](https://www.npmjs.com/package/bump-cli) is installed and up to date:
+Install [`bump-cli`](https://www.npmjs.com/package/bump-cli):
 
-    ```bash
-    npm install -g bump-cli
-    ```
-2. Run this command to generate a short-lived URL preview hosted on Bump.sh:
+```bash
+npm install -g bump-cli
+```
 
-    ```bash
-    make api-docs-preview
-    ```
+Run this command to generate short-lived previews:
+
+```bash
+make api-docs-preview
+```
 
 ::::
 

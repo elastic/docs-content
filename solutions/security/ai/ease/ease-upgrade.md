@@ -3,6 +3,9 @@ navigation_title: Upgrade from EASE to Elastic Security
 applies_to:
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Upgrade from Elastic AI SOC Engine to {{elastic-sec}} to access additional features

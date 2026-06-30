@@ -17,6 +17,8 @@ Find solutions to common issues with EDOT SDKs for various programming languages
 
 * [Android SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md): Troubleshoot common problems affecting the {{product.edot-android}} SDK.
 
+* [Browser SDK](elastic-otel-rum-js://reference/edot-browser/troubleshooting.md): Troubleshoot common problems affecting the EDOT Browser SDK.
+
 * [.NET SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md): Troubleshoot common problems affecting the EDOT .NET SDK.
 
 * [iOS SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md): Troubleshoot common problems affecting the {{product.edot-ios}} agent.
@@ -40,6 +42,8 @@ These guides apply to all EDOT SDKs:
 * [Proxy settings for EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md): Configure proxy settings for EDOT SDKs when your application runs behind a proxy.
 
 * [Missing or incomplete traces due to SDK sampling](/troubleshoot/ingest/opentelemetry/edot-sdks/misconfigured-sampling-sdk.md): Troubleshoot missing or incomplete traces caused by SDK-level sampling configuration.
+
+* [Troubleshoot trace context header propagation](/troubleshoot/ingest/opentelemetry/edot-sdks/trace-context-propagation.md): Troubleshoot missing or broken distributed traces when combining OpenTelemetry instrumentation with Elastic {{product.apm}} agents.
 
 ## Supported architectures
 

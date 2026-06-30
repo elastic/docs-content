@@ -6,6 +6,11 @@ applies_to:
     ess: ga
     self: ga
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Remote clusters [remote-clusters]
@@ -23,11 +28,19 @@ Remote clusters are especially useful in two cases:
 :::{include} ./remote-clusters/_snippets/terminology.md
 :::
 
+::::{admonition} Alternatives for {{serverless-short}}
+Remote clusters are not available in {{serverless-full}}.
+
+* The equivalent of {{ccs}} in {{serverless-full}} is [{{cps}}](/deploy-manage/cross-project-search-config.md). {{cps-init}} does not require remote cluster configuration.
+* A feature equivalent to cross-cluster replication is anticipated in a future release.
+::::
+
 ## Security models and connection modes
 
 When configuring remote clusters, you can choose between two security models and two connection modes. Both security models are compatible with either connection mode.
 
-- [Security models](./remote-clusters/security-models.md): API key–based authentication (recommended) or TLS certificate–based authentication (deprecated).
+- [Security models](./remote-clusters/security-models.md): API key–based authentication (recommended) or TLS certificate–based authentication (deprecated). Starting with {{stack}} 9.3, API key-based authentication also supports strong identity verification for an additional layer of security.
+
 - [Connection modes](./remote-clusters/connection-modes.md): Sniff mode (direct connections to {{es}} nodes) or proxy mode (connections through a reverse proxy or load balancer endpoint).
 
 ::::{note}
@@ -40,7 +53,7 @@ Depending on the environment the local and remote clusters are deployed on and t
 
 1. **Configure trust between clusters.** In the settings of the local deployment or cluster, configure the trust security model that your remote connections will use to access the remote cluster. This step involves specifying API keys or certificates retrieved from the remote clusters.
 
-2. **Establish the connection.** In {{kib}} on the local cluster, finalize the connection by specifying each remote cluster's details.
+2. **Establish the connection.** In {{kib}} on the local cluster, or using the {{es}} API, finalize the connection by specifying each remote cluster's details.
 
 Find the instructions with details on the supported security models and available connection modes for your specific scenario:
 

@@ -2,6 +2,9 @@
 navigation_title: add_nomad_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_nomad_metadata-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

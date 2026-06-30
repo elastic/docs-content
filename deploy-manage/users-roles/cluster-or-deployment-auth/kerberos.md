@@ -121,9 +121,9 @@ The way that you provide Kerberos config files to {{es}} depends on your deploym
 
 For detailed information of available realm settings, see [Kerberos realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
-:::::{tab-set}
+:::::{applies-switch}
 
-::::{tab-item} Self-managed
+::::{applies-item} self:
 
 1. Configure the JVM to find the Kerberos configuration file.
 
@@ -164,7 +164,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 4. Restart {{es}}.
 ::::
 
-::::{tab-item} ECH and ECE
+::::{applies-item} { ess:, ece: }
 
 1. Create a [custom bundle](elasticsearch://reference/elasticsearch-plugins/plugin-management.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
 
@@ -186,7 +186,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
     ::::
 ::::
 
-::::{tab-item} ECK
+::::{applies-item} eck:
 
 1. Install your `krb5.conf` and `keytab` files as a [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). Mount them in a sub-directory of the main config directory, for example `/usr/share/elasticsearch/config/kerberos`, and use a `Secret` instead of a `ConfigMap` to store the information.
 
@@ -258,7 +258,7 @@ The `kerberos` realm enables you to map Kerberos users to roles.
 You can map these users to roles in multiple ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 
 You identify users by their `username` field.
 

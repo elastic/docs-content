@@ -2,6 +2,16 @@
 applies_to:
   serverless: preview
   stack: preview 9.2
+description: Route log data into child streams using manual field-based rules or AI-generated partition suggestions in Streams.
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Partition data into child streams [streams-partitioning]
@@ -9,12 +19,12 @@ applies_to:
 The **Partitioning** tab and the ability to route data into child streams is only available on [wired streams](../wired-streams.md).
 :::
 
-For [wired streams](../wired-streams.md), the `/logs` endpoint acts as the entry point for all your log data.
+For [wired streams](../wired-streams.md), the wired streams endpoints act as the entry point for all your log data.
 
-Once you've sent your data to the `/logs` endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
+Once you've sent your data to a wired streams endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
-- Route application logs to a `logs.myapp` child stream.
-- Route system logs to a `logs.system` child stream.
+- Route application logs to a `logs.otel.myapp` child stream.
+- Route system logs to a `logs.otel.system` child stream.
 
 For more on when to partition your data and how granular your partitioning should be, refer to [Partitioning recommendations](#streams-partitioning-recommendations).
 
@@ -41,8 +51,8 @@ For example, suppose you have a noisy firewall and a quiet custom application se
 
 ```bash
 logs
-- logs.firewall [7d]
-- logs.custom-app [30d]
+- logs.otel.firewall [7d]
+- logs.otel.custom-app [30d]
 ```
 
 ## Create partitions manually [streams-manual-partitioning]
@@ -50,9 +60,13 @@ logs
 To manually configure when to send data to child streams:
 
 1. Select **Create partition manually**.
-1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting the {icon}`plus_in_circle` icon. This creates a **Condition** for your stream.
+1. From the **Data preview**, filter data based on fields or attributes by hovering over the field and selecting:
+  - {icon}`plus_circle` to add routing conditions that equal the field.
+  - {icon}`minus_circle`to add routing conditions that do not equal the field.
 1. Under **Stream name**, give your stream a name based on the condition.
 1. Select **Save** to create the child stream.
+
+Under **Condition**, you can also set the field you want to use for the condition, the comparator, and the value of the field. Turning on the **Syntax editor** lets you manually enter the conditions in a YAML editor. For more on conditions, refer to [Streamlang conditions](./streamlang.md#streams-streamlang-conditions).
 
 ## Create partitions using AI suggestions [streams-AI-partitioning]
 
@@ -60,11 +74,25 @@ To manually configure when to send data to child streams:
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
+::::{applies-switch}
+:::{applies-item} { stack: preview 9.4+, serverless: preview }
 To use AI suggestions to send data to child streams:
 
 1. Select **Suggest partitions with AI**. Streams uses AI to look at your data and give you suggestions for grouping your data.
-1. Either **Accept** or **Reject** the AI suggestions. After selecting **Accept**, you'll see the suggested **Stream name** and **Condition**.
+1. Review the suggested partitions, then either **Accept** or **Reject**.
+1. To refine suggestions, select **Modify suggestions**, provide guidance (for example, Partition by service name and severity level), and submit. Streams applies your guidance to regenerate suggestions.
+1. Continue refining as needed, or select **Try again** to regenerate suggestions.
+1. After accepting suggestions, review the generated **Stream name** and **Condition** values.
 1. Select **Create stream**.
+:::
+:::{applies-item} stack: preview 9.2-9.3
+To use AI suggestions to send data to child streams:
+
+1. Select **Suggest partitions with AI**. Streams uses AI to look at your data and give you suggestions for grouping your data.
+1. Either **Accept** or **Reject** the AI suggestions. After selecting **Accept**, review the suggested **Stream name** and **Condition**.
+1. Select **Create stream**.
+:::
+::::
 
 ## Next steps
 

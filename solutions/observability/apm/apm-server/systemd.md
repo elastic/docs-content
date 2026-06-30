@@ -88,6 +88,21 @@ systemctl restart apm-server
 It is recommended that you use a configuration management tool to include drop-in unit files. If you need to add a drop-in manually, use `systemctl edit apm-server.service`.
 ::::
 
+#### Configuring the `nofile` limit [configuring-nofile-limit]
+
+::::{note}
+In most cases, you don’t need to manually configure the `nofile` limit when running APM Server.
+::::
+
+On systemd-based systems, the default `LimitNOFILE` is `1024` (soft) and `524288` (hard). Most Linux distributions do not override or significantly reduce these defaults.
+
+Starting with Go 1.19 ([golang/go#46279](https://github.com/golang/go/issues/46279)
+), the Go runtime automatically raises the soft limit to match the available hard limit. As a result, APM Server typically runs with the maximum allowed `nofile` limit provided by the operating system, which is often `524287` on modern systems.
+
+There is usually no need to manually change this limit, as back-pressure from too many open files happens through memory usage.
+
+For guidance on manually setting the `nofile` limit, refer to [Modify the `nofile` ulimit](/solutions/observability/apm/apm-server/binary.md#modify-nofile-ulimit).
+
 #### Configuration file ownership [apm-config-file-ownership]
 
 On systems with POSIX file permissions, the APM Server configuration file is subject to ownership and file permission checks. These checks prevent unauthorized users from providing or modifying configurations that are run by APM Server.

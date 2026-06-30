@@ -1,0 +1,125 @@
+---
+applies_to:
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
+description: Build automated workflows in Kibana to turn data insights into action.
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
+---
+
+# Workflows [workflows-overview]
+
+A workflow is a defined sequence of steps designed to achieve a specific outcome through automation. It's a reusable, versionable "recipe" that transforms inputs into actions.
+
+If you've been using the [Keep HQ workflow docs](https://docs.keephq.dev/workflows/overview), it's time to make the switch. Keep HQ's workflow docs are no longer maintained, and the Elastic workflow docs are now the source of truth for all up-to-date workflow documentation.
+
+## Why use workflows [workflows-why]
+
+Insight into your data isn't enough. The ultimate value lies in action and outcomes. Workflows complete the journey from data to insights to automated outcomes. Your critical operational data already lives in the Elastic cluster: security events, infrastructure metrics, application logs, and business context. Workflows let you automate end-to-end processes to achieve outcomes directly where that data lives, without needing external automation tools.
+
+Workflows address common operational challenges, such as:
+
+* **Alert fatigue**: Automate responses to reduce manual triage.
+* **Understaffing**: Enable teams to do more with fewer resources.
+* **Manual, repetitive work**: Automate routine tasks consistently.
+* **Tool fragmentation**: Eliminate the need to add on external automation tools.
+
+Workflows can handle a wide range of tasks, from simple, repeatable steps to complex processes. They're for you if you want to cut down on manual effort, speed up response times, and make sure recurring situations are handled consistently.
+
+## Key concepts [workflows-concepts]
+
+Some key concepts to understand while working with workflows: 
+
+* **Triggers**: The events or conditions that initiate a workflow. Refer to [](/explore-analyze/workflows/triggers.md) to learn more.
+* **Steps**: The individual units of logic or action that make up a workflow. Refer to [](/explore-analyze/workflows/steps.md) to learn more.
+* **Data**: How data flows through your workflow, including inputs, constants, context variables, step outputs, and Liquid templating for dynamic values. Refer to [](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md) to learn more.
+
+## Workflow structure [workflow-structure]
+
+Workflows are defined in YAML. In the YAML editor, describe _what_ the workflow should do, and the platform handles execution. For the full reference on every top-level field and the execution lifecycle, refer to [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
+```yaml
+# ═══════════════════════════════════════════════════════════════
+# METADATA - Identifies and describes the workflow
+# ═══════════════════════════════════════════════════════════════
+name: My Workflow                    # Required: Unique identifier 
+description: What this workflow does # Optional: Shown in UI
+enabled: true                        # Optional: Enable or disable execution
+tags: ["demo", "production"]         # Optional: For organizing workflows
+
+# ═══════════════════════════════════════════════════════════════
+# CONSTANTS - Reusable values defined once, used throughout
+# ═══════════════════════════════════════════════════════════════
+consts:
+  indexName: "my-index"
+  environment: "production"
+  alertThreshold: 100
+  endpoints:                          # Can be objects/arrays
+    api: "https://api.example.com"
+    backup: "https://backup.example.com"
+
+# ═══════════════════════════════════════════════════════════════
+# INPUTS - Parameters passed when the workflow is triggered
+# ═══════════════════════════════════════════════════════════════
+inputs:
+  - name: environment
+    type: string
+    required: true
+    default: "staging"
+    description: "Target environment"
+  - name: dryRun
+    type: boolean
+    default: true
+
+# ═══════════════════════════════════════════════════════════════
+# TRIGGERS - How/when the workflow starts
+# ═══════════════════════════════════════════════════════════════
+triggers:
+  - type: manual                      # User clicks Run button
+  # - type: scheduled                  # Runs on a schedule
+  #   with:
+        every: 1d
+  # - type: alert                     # Triggered by an alert
+
+# ═══════════════════════════════════════════════════════════════
+# STEPS - The actual workflow logic (executed in order)
+# ═══════════════════════════════════════════════════════════════
+steps:
+  - name: step_one
+    type: elasticsearch.search
+    with:
+      index: "{{consts.indexName}}"   # Reference constants
+      query:
+        match_all: {}
+
+  - name: step_two
+    type: console
+    with:
+      message: |
+        Environment: {{inputs.environment}}              # Reference inputs
+        Found: {{steps.step_one.output.hits.total.value}} # Reference step output
+
+```
+
+## Learn more
+
+Start here:
+
+- [Set up Workflows](/explore-analyze/workflows/get-started/setup.md): Turn on the feature and configure role-based access.
+- [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md): A hands-on tutorial using sample data.
+
+Explore what you can automate:
+
+- [Use cases](/explore-analyze/workflows/use-cases.md): Browse security, observability, and AI-augmented patterns you can build with workflows today.
+
+Concepts, reference, and authoring:
+
+- [Workflow concepts](/explore-analyze/workflows/concepts.md): Triggers, steps, templating, and quick-reference pages.
+- [Workflow authoring techniques](/explore-analyze/workflows/authoring-techniques.md): How to use the YAML editor, the anatomy of a workflow, workflow settings, choosing the right step, passing data between steps, handling errors, and more.
+- [Glossary](/explore-analyze/workflows/reference/glossary.md): Definitions for every term used across the Workflows documentation.
+- [Workflow templates](/explore-analyze/workflows/templates.md): Pre-built workflows you can adapt.

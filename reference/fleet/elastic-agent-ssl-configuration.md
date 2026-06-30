@@ -2,6 +2,9 @@
 navigation_title: SSL/TLS
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-ssl-configuration.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -50,7 +53,7 @@ $$$common-ssl-options$$$
     * ECDHE-RSA-AES-128-GCM-SHA256: TLS 1.2 only.
     * ECDHE-RSA-AES-256-CBC-SHA
     * ECDHE-RSA-AES-256-GCM-SHA384: TLS 1.2 only.
-    * ECDHE-RSA-CHACHA20-POLY1205: TLS 1.2 only.
+    * ECDHE-RSA-CHACHA20-POLY1305: TLS 1.2 only.
     * ECDHE-RSA-RC4-128-SHA: Disabled by default. RC4 not recommended.
     * RSA-3DES-CBC3-SHA
     * RSA-AES-128-CBC-SHA
@@ -138,6 +141,24 @@ $$$client-ssl-options$$$
         -----END CERTIFICATE-----
     ```
 
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-client-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
+
 `ssl.key` $$$ssl.key-client-setting$$$
 :   (string) The client certificate key used for client authentication. Only required if `client_authentication` is configured.
 
@@ -177,7 +198,7 @@ $$$client-ssl-options$$$
     **Default:** `full`
 
 `ssl.ca_trusted_fingerprint` $$$ssl.ca_trusted_fingerprint$$$
-:   (string) A HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally.
+:   (string) A HEX-encoded SHA-256 of a CA certificate that's present in the certificate chain the server sends during the TLS handshake. If this certificate is found in the chain, it'll be added to the `certificate_authorities` list and the handshake will continue normally.
 
     Example:
 
@@ -225,6 +246,24 @@ $$$server-ssl-options$$$
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
     ```
+
+`ssl.certificate_reload.enabled` $$$ssl.certificate_reload.enabled-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (boolean) When `true`, {{agent}} periodically re-reads the `ssl.certificate`, `ssl.key`, and `ssl.certificate_authorities` files from disk so that certificate rotations are picked up without a restart. The new certificate is used on the next TLS handshake within one `ssl.certificate_reload.reload_interval`.
+
+    **Default:** `true`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases, but defaults to `false` on those releases for backward compatibility. Set it to `true` to opt in.
+    ::::
+
+`ssl.certificate_reload.reload_interval` $$$ssl.certificate_reload.reload_interval-server-setting$$$
+:   {applies_to}`stack: ga 9.5+` (duration) How often {{agent}} checks for changes to the certificate, key, and CA files on disk. Only used when `ssl.certificate_reload.enabled` is `true`.
+
+    **Default:** `5s`
+
+    ::::{note}
+    This setting is also available on 8.19, 9.3, and 9.4 patch releases.
+    ::::
 
 `ssl.client_authentication` $$$ssl.client_authentication-server-setting$$$
 :   (string) Configures client authentication. The valid options are:

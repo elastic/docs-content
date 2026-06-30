@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html
 applies_to:
   stack:
-  serverless:
 products:
   - id: elasticsearch
 ---
@@ -13,10 +12,9 @@ products:
 ::::{note}
 Nodes and shards are what make {{es}} distributed and scalable. These concepts aren’t essential if you’re just getting started. How you [deploy {{es}}](../../get-started/deployment-options.md) in production determines what you need to know:
 
-* **Self-managed {{es}}**: You are responsible for setting up and managing nodes, clusters, shards, and replicas. This includes managing the underlying infrastructure, scaling, and ensuring high availability through failover and backup strategies.
-* **{{ecloud}}**: Elastic can autoscale resources in response to workload changes. Choose from different deployment types to apply sensible defaults for your use case. A basic understanding of nodes, shards, and replicas is still important.
+* **Self-managed {{es}}**: You are responsible for setting up and managing clusters, nodes, shards, and replicas. This includes managing the underlying infrastructure, scaling, and ensuring high availability through failover and backup strategies.
+* **Managed deployments**: This includes deployments on ECH, ECE, and ECK. Elastic can autoscale resources in response to workload changes. Choose from different deployment types to apply sensible defaults for your use case. A basic understanding of nodes, shards, and replicas is still important.
 * **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload.
-
 ::::
 
 You can add servers (*nodes*) to a cluster to increase capacity, and {{es}} automatically distributes your data and query load across all of the available nodes.

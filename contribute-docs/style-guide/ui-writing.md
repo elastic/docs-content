@@ -84,10 +84,8 @@ to set the window's viewport.
 - Set your zoom level to 100%.
 - If you have made any color adjustments, reset to the default on your monitor or
   select Generic RGB.
-- Avoid: drop shadows, jagged edges, and oversized images.
-- Include only the essential UI components. The main menu, 
-  breadcrumbs, header, toolbar, and search bar often change, so we generally
-  exclude them. 
+- Avoid adding drop shadows, jagged edges, or oversized images. Drop shadows that appear natively in the Kibana chrome (for example, on the application menu) are part of the product. Only avoid drop shadows that you add yourself.
+- Include only the parts of the UI that are essential to the task. Exclude the navigation menu, breadcrumbs, header, application menu, and global search field whenever you can. These elements change frequently as the Kibana chrome evolves, so capturing them in a screenshot creates ongoing maintenance work without helping the reader follow the steps.
 - Add a border around the screenshot to give it definition and ensure it's not "floating" against a white background. Refer to [Screenshots](https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/syntax/images#screenshots) for details about the `:screenshot:` attribute.
 - If you need to draw attention to a specific part of the screenshot, you can draw a border or use an annotation, such as an arrow. If you do, keep these in mind:
   - Use Elastic's [brand colors](https://eui.elastic.co/#/theming/colors/values) for the annotation. We recommend the pink accent color, hex `#F04E98`.   
@@ -108,11 +106,33 @@ In Kibana, there are multiple ways for users to navigate to apps and pages. Depe
 
 When referring to apps or pages in the docs, and especially in tasks and tutorials, it's important that you remain as close as possible to the user's truth. For that, use one of the following solution-agnostic patterns:
 
-- The app is directly available in the main menu: `Find <APP> in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
+- The app is directly available in the navigation menu: `Find <APP> in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
-- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
+- The app or page is accessible through only the global search field: `To open **APP or PAGE**, find **PARENT** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).`
 
-You can adapt these patterns and the link to the search bar documentation to match your context and scenario. 
+You can adapt these patterns and the link to the search bar documentation to match your context and scenario.
+
+## Naming Kibana UI elements
+
+The Kibana chrome, the persistent layout that wraps every app, evolves over time. Use these names consistently when you refer to its parts in documentation.
+
+:::{image} images/kibana-chrome-layout.svg
+:alt: Wireframe of the Kibana chrome showing the global header, navigation menu, secondary navigation, application menu, workspace, flyout, and sidebar regions.
+:::
+
+| Term | What it refers to |
+|---|---|
+| **Global header** | The top bar of the Kibana chrome that hosts global controls (for example, the global search field and the space switcher). |
+| **Navigation menu** | The primary navigation panel on the left side of Kibana. Its contents and structure depend on the **Solution view** setting. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**Solution view** | The per-space setting that controls the **navigation menu**. Possible values: Search, Observability, Security, or Classic. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**Classic view** | The non-solution option in the **Solution view** setting. Don't use "Classic" on its own, because it's ambiguous with Discover's Classic mode. |
+| **Secondary navigation** | The panel that opens to the right of the navigation menu when a top-level item expands into sub-items. |
+| **Application menu** | The bar above the workspace that hosts app-specific actions. |
+| **Workspace** | The main content area of the current app. |
+| **Flyout** | A panel that slides in from the right of the workspace to show contextual content. |
+| **Sidebar** | The global, resizable right-hand panel where plugins register apps (for example, the Agent Builder chat). |
+
+This table covers the main parts of the interface. Some elements have sub-parts (for example, child flyouts, sidebar panels) that vary by interaction. Use the table as your starting point, then introduce additional names only when a section requires it.
 
 
 ## Choosing the right word
@@ -129,7 +149,7 @@ Use the language in this table when writing about UI components.
 | **Buttons** <br> A button is a UI element that is interactive by definition: when users click it, it responds to it by performing an action. <br> Use "click" and refer to a button by its label.    | ✔️ Do: Click **New**. <br> ❌ Don't: Click the "New" button.  |
 | **Checkbox and radio button** <br> Checkbox is one word. <br> Use "select" and  "clear" over "check" and "uncheck". <br> Avoid naming the component unless it adds clarity (for example in a complex UI).  | ✔️ Do: Select all index checkboxes. <br> ✔️ Do: Select **Logs**. <br> ✔️ Do: Clear **Metrics**.  |
 | **Icon buttons** <br> Include the icon inline to reinforce what the user is interacting with. For the name, use the tooltip text. If the icon doesn't have a name, give it one and make it sentence case.  | ✔️ Do: Click **Apply changes**. <br> ❌ Don't: Click the icon. |
-| **Key** <br> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press Enter. <br> ✔️ Do: Press Command+Alt+L to expand and collapse the current scope.  |
+| **Key** <br> Use "press" followed by key name, or "the _Key_ key" if it adds clarity. For a key combination, use "Modifier+Key".  | ✔️ Do: In the query bar, enter your search criteria and press **Enter**. <br> ✔️ Do: Press **Command+Alt+L** to expand and collapse the current scope.  |
 | **Menus** <br> Use arrows (→) to tell the user where to find the command. <br> A menu always has action items.  | Select **Manage index → Add lifecycle policy**.  |
 | **Text field** <br> Use "enter" for the action and code font for user input.   | ✔️ Do: In the **Name** field, enter a unique identifier for this rollup job. <br> ✔️ Do: In **Index pattern**, enter shakes*.   |
 | **Toggle ([Switch in EUI](https://elastic.github.io/eui/#/forms/form-controls#switch))** <br> Refer to the UI element as a "toggle". <br> Name it only if it adds clarity for the reader. If the UI is clear enough, stay minimalist and focus on the action. <br> Use "toggle" as a noun rather than a verb. <br> Prefer using "turn on", "turn off" as a verb over "enable" or "disable".  | ✔️ Do: Turn on **Malware protection**. <br> ✔️ Do: Turn off the **Malware protection** toggle in the **Preferences** window. <br> ❌ Don't: Toggle **Malware protection** in the **Preferences** window.  |
@@ -139,7 +159,7 @@ Use the language in this table when writing about UI components.
 * Don't use the verbs _open_ and/or _close_ when a user interacts with a menu. Use _From the menu,..._ instead.
 * Refer to it as "menu." Don't call it a "dropdown menu" or "dropdown list."
 
-### Icon vs. button
+### Icon versus button
 
 * If there is no text next to an actionable, visual symbol, it's an icon.
 * If there is text next to an actionable visual symbol, it's a button.
@@ -147,10 +167,34 @@ Use the language in this table when writing about UI components.
   button.
 * In the docs, refer to an icon with its symbol. 
 :::{dropdown} Example
-    From the action menu (...), select _Delete job_.
+    From the action menu (...), select **Delete job**.
 :::
   In this example, the (...) represents the action menu icon.
 
+### Select versus click 
+
+To ensure clarity and precision when describing user interactions, choose the verb that matches the type of UI element and the intent of the action.
+
+**Use "select" for choices**
+
+Use "select" when a user is choosing an option, toggling a state, or picking an item from a set, such as a dropdown. This verb emphasizes the choice being made rather than the physical action. 
+
+:::{dropdown} Examples
+  ✔️ **Do**: Select the **Enforce HTTPS checkbox**.
+  ✔️ **Do**: Select the **Logs** tab to view system events.
+  ❌ **Don't**: Select the **Save** button to confirm your changes. 
+:::
+
+**Use "click" for actions** 
+
+Use "click" when a user is initiating a process, performing a command, following a link, or needs to physically click a button or icon. Do not use "click" if the user needs to make a choice from a selection.   
+
+:::{dropdown} Examples
+  ✔️ **Do**: Click **Save** to confirm your changes.
+  ✔️ **Do**: Click the **Help** icon for more information.
+  ❌ **Don't**: From the action menu (...), click the **Delete** button to delete the job. 
+:::
+  
 ### Prepositions
 
 #### At 

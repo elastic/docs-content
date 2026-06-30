@@ -23,7 +23,7 @@ To achieve these, data stream lifecycle supports:
 * Automatic [rollover](index-lifecycle-management/rollover.md), which chunks your incoming data in smaller pieces to facilitate better performance and backwards incompatible mapping changes.
 * Configurable retention, which allows you to configure the time period for which your data is guaranteed to be stored. {{es}} is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level. Read more about the different options in this [tutorial](data-stream/tutorial-data-stream-retention.md).
 
-Data stream lifecycle also supports downsampling the data stream backing indices. Refer to [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
+Data stream lifecycle also supports downsampling the data stream backing indices. Refer to [the downsampling example]({{es-apis}}operation/operation-indices-put-data-lifecycle) for more details.
 
 ## Data stream lifecycle availability
 
@@ -40,7 +40,7 @@ In intervals configured by [`data_streams.lifecycle.poll_interval`](elasticsearc
 1. Checks if the data stream has a data stream lifecycle configured, skipping any indices not part of a managed data stream.
 2. Rolls over the write index of the data stream, if it fulfills the conditions defined by [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover).
 3. After an index is not the write index anymore (that is, the data stream has been rolled over), automatically tail merges the index. Data stream lifecycle executes a merge operation that only targets the long tail of small segments instead of the whole shard. As the segments are organised into tiers of exponential sizes, merging the long tail of small segments is only a fraction of the cost of force merging to a single segment. The small segments would usually hold the most recent data so tail merging will focus the merging resources on the higher-value data that is most likely to keep being queried.
-4. If [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) is configured it will execute all the configured downsampling rounds.
+4. If [downsampling]({{es-apis}}operation/operation-indices-put-data-lifecycle) is configured it will execute all the configured downsampling rounds.
 5. Applies retention to the remaining backing indices. This means deleting the backing indices whose `generation_time` is longer than the effective retention period (read more about the [effective retention calculation](data-stream/tutorial-data-stream-retention.md#effective-retention-calculation)). The `generation_time` is only applicable to rolled over backing indices and it is either the time since the backing index got rolled over, or the time optionally configured in the [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) setting.
 
 ::::{important}
@@ -57,7 +57,7 @@ Since the lifecycle is configured on the data stream level, the process to confi
 Four tutorials are available to help you set up and manage data streams with data stream lifecycle:
 
 * To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. Refer to [](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream is created with the respective data stream lifecycle.
-* To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream). Refer to [](data-stream/tutorial-update-existing-data-stream.md) for details.
+* To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs]({{es-apis}}group/endpoint-data-stream). Refer to [](data-stream/tutorial-update-existing-data-stream.md) for details.
 * Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 * To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
 

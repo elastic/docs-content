@@ -3,6 +3,9 @@ navigation_title: Inventory
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/infrastructure-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-inventory-threshold-alert-rule.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -30,6 +33,17 @@ Additionally, each rule can be defined using multiple conditions that combine me
 When you select **Create inventory alert**, the parameters you configured on the **Infrastructure inventory** page will automatically populate the rule. You can use the Inventory first to view which nodes in your infrastructure you’d like to be notified about and then quickly create a rule in just a few clicks.
 
 ::::
+
+## Requirements
+
+To create inventory rules, you need the following:
+
+- {applies_to}`stack: ga` The permission for the [Infrastructure application](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#logs-metrics-prereqs).
+- {applies_to}`serverless: ga` The **Editor** role or higher for {{observability}} serverless projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+
+### Indices used by this rule
+
+This rule queries the index patterns defined by the `observability:logSources` setting in Kibana Advanced Settings, and the metrics indices from the Infrastructure / Metrics Explorer settings. The defaults are `metrics-*` and `metricbeat-*` for metrics; `logs-*-*` and `filebeat-*` for log rate. You cannot override these indices on a per-rule basis.
 
 ## Inventory conditions [inventory-conditions]
 
@@ -132,7 +146,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

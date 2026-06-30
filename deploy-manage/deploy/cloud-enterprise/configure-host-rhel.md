@@ -321,12 +321,27 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
+    # See https://www.elastic.co/docs/deploy-manage/deploy/self-managed/system-config-tcpretries
     net.ipv4.tcp_retries2=5
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     # Make sure the host doesn't swap too early
     vm.swappiness=1
     EOF
     ```
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
+
 
 27. Apply the new sysctl settings
 
@@ -335,7 +350,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo systemctl restart NetworkManager
     ```
 
-28. As a sudoers user, adjust the system limits. Add the following configuration values to the `/etc/security/limits.conf` file.
+28. As a sudoers user, adjust the system limits. Add the following configuration values to the `/etc/security/limits.conf` file. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ```text
     *                soft    nofile         1024000
@@ -353,14 +368,35 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     root             soft    memlock        unlimited
     ```
 
-29. Restart the podman service by running this command:
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Podman containers. To ensure the same limits are enforced inside containers, you must also configure the Podman default ulimits as described in the next step.
+    ::::
+
+
+29. Configure the default container ulimits. Open the `/etc/containers/containers.conf` file and add the following under the `[containers]` section. If the file does not exist, copy it from `/usr/share/containers/containers.conf` first. These settings ensure that all containers created by Podman inherit the correct resource limits.
+
+    ```text
+    [containers]
+    default_ulimits = [
+      "nofile=1024000:1024000",
+      "memlock=-1:-1",
+      "nproc=-1:-1",
+    ]
+    ```
+
+    ::::{note}
+    If the `[containers]` section already exists in the file, merge the `default_ulimits` setting into it rather than creating a duplicate section.
+    ::::
+
+
+30. Restart the podman service by running this command:
 
     ```sh
     sudo systemctl daemon-reload
     sudo systemctl restart podman
     ```
 
-30. Reboot the RHEL host.
+31. Reboot the RHEL host.
 
     ```sh
     sudo reboot

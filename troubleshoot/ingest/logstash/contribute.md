@@ -3,6 +3,8 @@ navigation_title: Contribute and discuss
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: logstash
 ---
 
 # Contribute to Logstash repositories and discuss issues [ts-other]

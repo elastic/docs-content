@@ -43,7 +43,7 @@ Afterwards, you can:
 
 **Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
 
-**Autoscaled:** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short time spike on the data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action on your end.
+**Autoscaled:** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short time spike on the data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action on your end. Some project-level limits apply to ensure performance and stability, including a [limit on the number of indices per project](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#index-and-resource-limits) that can be adjusted by request.
 
 **Optimized data storage:** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. The size of the cache layer and the volume of data it holds depend on [settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) that you can configure for each project.
 
@@ -89,8 +89,14 @@ A: Request for project backups or restores is currently unsupported, and we are 
 **Q: How can I create {{serverless-full}} service accounts?**  
 A: Create API keys for service accounts in your {{serverless-short}} projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
+**Q: Can I configure {{es}} authentication realms (for example, native realm) in {{serverless-short}} projects?**  
+A: No. {{serverless-short}} uses a different authentication model and does not support [{{es}} authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md). Project-level access is handled through [Serverless project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md), and user authentication is managed at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md) (including SAML SSO).
+
 **Q: What compliance and privacy standards does {{serverless-full}} adhere to?**  
 A: Alongside the entire Elastic platform, {{serverless-full}} is independently audited and certified to meet industry-leading compliance and privacy standards. Refer to the [Elastic Trust Center](https://www.elastic.co/trust) for more information. Further details about specific standards are available on our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
+
+**Q: What domains do I need to allow for browser access to {{kib}} in {{serverless-short}} projects?**  
+A: In addition to the standard {{ecloud}} endpoints, ensure users can access `kibana.estccdn.com`, which is required to load {{kib}}. If this domain is blocked, {{kib}} might appear as a blank page. Refer to [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access) for more information.
 
 ### Project lifecycle and support
 **Q: How does {{serverless-full}} ensure compatibility between software versions?**  
@@ -104,3 +110,8 @@ A: You are unable to convert projects into different project types, but you can 
 
 **Q: How do I raise a support case for {{serverless-full}}?**  
 A: Raise a case for your subscription as you do today. In the body of the case, mention you are working with a {{serverless-short}} project to ensure appropriate support.
+
+**Q: Why does the `GET /` root API return a version number that differs from the current Elasticsearch release?**
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::

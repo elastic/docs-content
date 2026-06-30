@@ -21,12 +21,6 @@ When subscribing to an annual prepaid subscription to {{ecloud}} on AWS Marketpl
 :alt: Subscribe to {{ecloud}} on AWS Marketplace
 :::
 
-No further steps required in AWS. Ignore the steps 1 to 3 that appear on the right side of the AWS page.
-
-:::{image} /deploy-manage/images/cloud-aws-mp-steps-to-skip.png
-:alt: AWS panel with steps to skip
-:::
-
 You should now see the monthly *Pay as you go* subscription for {{ecloud}} in your AWS **Manage subscriptions** page.
 
 From the top-right corner, you can check that the Account ID is the same account that has your {{ecloud}} annual subscription.

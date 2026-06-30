@@ -181,7 +181,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 4. Adjust the system limits.
 
-    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for ECE as well.
+    Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the {{ecloud}} hosted offering and should be used for ECE as well. These settings apply to host-level processes and interactive user sessions (for example, SSH).
 
     ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
@@ -203,6 +203,10 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     root             hard    nofile         1024000
     root             soft    memlock        unlimited
     ```
+
+    ::::{important}
+    The `/etc/security/limits.conf` settings are PAM-based and do not apply to processes running inside Docker containers. To ensure the same limits are enforced inside containers, you must also configure the Docker daemon default ulimits. Refer to [Configure the Docker daemon](#ece-configure-docker-daemon-sles12) for details.
+    ::::
 
 5. NOTE: This step is optional if the Docker registry doesn’t require authentication.
 
@@ -250,7 +254,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 ## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
-1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
+1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present. The `default-ulimits` section ensures that all containers created by the Docker daemon inherit the correct resource limits, which are not inherited from `/etc/security/limits.conf`.<br>
 
     ```json
     {
@@ -262,7 +266,24 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
         "max-size": "500m",
         "max-file": "10"
       },
-      "data-root": "/mnt/data/docker"
+      "data-root": "/mnt/data/docker",
+      "default-ulimits": {
+        "nofile": {
+          "Name": "nofile",
+          "Hard": 1024000,
+          "Soft": 1024000
+        },
+        "memlock": {
+          "Name": "memlock",
+          "Hard": -1,
+          "Soft": -1
+        },
+        "nproc": {
+          "Name": "nproc",
+          "Hard": -1,
+          "Soft": -1
+        }
+      }
     }
     ```
 
@@ -306,6 +327,18 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     net.netfilter.nf_conntrack_max=262140
     SETTINGS
     ```
+
+    :::{note}
+    According to [{{es}} networking settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md), {{es}} overrides TCP keepalive settings at the socket level for its own connections:
+    * If system-level values exceed 300 seconds, {{es}} automatically lowers them to 300 seconds.
+    * Values below 300 seconds are used as-is.
+    
+    For non-{{es}} connections such as the proxy layer, consider reducing the following TCP keepalive parameters to detect stale network sessions and prevent firewalls from dropping silent connections:
+    * `net.ipv4.tcp_keepalive_time`
+    * `net.ipv4.tcp_keepalive_intvl`
+    * `net.ipv4.tcp_keepalive_probes`
+    :::
+
 
     1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
 

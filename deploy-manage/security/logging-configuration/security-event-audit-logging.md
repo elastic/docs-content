@@ -6,6 +6,13 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Security event audit logging
 

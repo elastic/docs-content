@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes observability
-description: Detailed description of the Kubernetes setup for EDOT, including components and customization guidance.
+description: Kubernetes observability setup with EDOT, covering components, deployment, customization, and application instrumentation.
 applies_to:
   stack:
   serverless:

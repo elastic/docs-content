@@ -29,11 +29,15 @@ If you're not sure where to start, review the Collector's logs for error message
 
 * [Missing or incomplete traces due to Collector sampling](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-sampling-collector.md): Troubleshoot missing or incomplete traces caused by sampling configuration.
 
+* [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md): Resolve missing {{product.apm}} services and metrics caused by placing the `elasticapm` connector under `processors:` instead of `connectors:`.
+
 * [Collector doesn't propagate client metadata](/troubleshoot/ingest/opentelemetry/edot-collector/metadata.md): Learn why the Collector doesn't extract custom attributes and how to propagate such values using EDOT SDKs.
 
 ## Connectivity and export issues
 
 * [Export failures when sending telemetry data](/troubleshoot/ingest/opentelemetry/edot-collector/trace-export-errors.md): Resolve export failures caused by `sending_queue` overflow and {{es}} exporter timeouts.
+
+* [`ResourceExhausted` errors and decompression limits in Collector-to-Collector pipelines](/troubleshoot/ingest/opentelemetry/edot-collector/c2c-resourceexhausted.md): Troubleshoot `ResourceExhausted` errors caused by gRPC message size limits, decompression limits, memory pressure, or backpressure in Collector-to-Collector pipelines.
 
 ## Debugging
 

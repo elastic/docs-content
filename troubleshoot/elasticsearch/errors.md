@@ -1,5 +1,7 @@
 ---
 navigation_title: Error reference
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot common errors in {{es}} 

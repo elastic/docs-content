@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-enterprise
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Enterprise
 ---
 
@@ -45,7 +47,7 @@ If network security filters are applied to the remote cluster on ECE, the remote
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Configure the local deployment [ece_configure_the_local_deployment]
+### Configure the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -102,10 +104,13 @@ Note that the environment ID and cluster IDs must be entered fully and correctly
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships):
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
+Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API]({{ece-apis}}group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint]({{ece-apis}}group/endpoint-platformconfigurationtrustrelationships):
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
+curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
 ```
 
 For each remote ECE environment, it will return something like this:
@@ -167,7 +172,7 @@ This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remot
 :::
 
 ::::{note}
-If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
+If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
 ::::
 
 

@@ -12,9 +12,14 @@ on:
         default: false
         type: boolean
 
+permissions: {}
+
 jobs:
   update-kube-stack-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     
     steps:
     - name: Checkout repository
@@ -37,7 +42,7 @@ jobs:
       id: update-script
       run: |
         echo "Running version update script (kube-stack-version and helm-version)..."
-        python scripts/update_kube_stack_version.py
+        python .github/scripts/update_kube_stack_version.py
         echo "Script completed successfully"
 
     - name: Check for changes

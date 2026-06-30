@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-hosted
 sub:
+  local_type_generic: deployment
+  remote_type_generic: deployment
   remote_type: Elastic Cloud Hosted
 ---
 
@@ -34,6 +36,9 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-intro.md
 :::
 
+:::{note}
+To configure strong identity verification together with API key authentication for remote cluster connections, refer to [](./ec-remote-cluster-strong-identity.md). Follow the steps there in addition to the procedure described in this section.
+:::
 
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
@@ -46,7 +51,7 @@ If network security policies are applied to the remote cluster, the remote clust
 :::{include} _snippets/apikeys-create-key.md
 :::
 
-### Add the cross-cluster API key to the local deployment [ec_add_the_cross_cluster_api_key_to_the_local_deployment]
+### Add the cross-cluster API key to the local deployment [configure-local-cluster]
 
 :::{include} _snippets/apikeys-local-config-intro.md
 :::
@@ -59,7 +64,7 @@ If network security policies are applied to the remote cluster, the remote clust
 ::::::{tab-item} TLS certificate (deprecated)
 ### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
-To configure this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Trust management** from the lower navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
+To configure this behavior in [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Security** > **Trust management** from the navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
 
 * When **Trust all deployments** is switched on - All deployments trust all other deployments in the same organization, including new deployments when they are created. If you keep this setting switched on, you can jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * When **Trust all deployments** is switched off - New deployments won’t trust any other deployments. Instead, you can configure trust for each of them in their security settings, as described in the next section.
@@ -76,8 +81,11 @@ To configure this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?
 
 If your organization’s deployments already trust each other by default, you can skip this section. If that’s not the case, follow these steps to configure which specific deployments should be trusted.
 
-1. Go to the **Security** page of your deployment.
-2. From the list of existing trust configurations, edit the one labeled as your organization.
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. From the navigation menu, select **Access and Security** > **Security**.
+3. Under **Trusted environments**, edit the one labeled as your organization.
 3. Choose one of following options to configure the level of trust on each of your deployments:
 
     * **All deployments** - This deployment trusts all other deployments in this environment, including new deployments when they are created.
@@ -88,16 +96,19 @@ If your organization’s deployments already trust each other by default, you ca
     When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
     ::::
 
-
-1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
+4. Click **Update trust**.
+5. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
+::::{include} /deploy-manage/_snippets/curl-k-generic.md
+::::
+
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
+curl -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
 ```
 
 For example:
@@ -196,7 +207,7 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ```
 
 ::::{note}
-The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
+The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API]({{es-apis}}operation/operation-cluster-remote-info) directly.
 ::::
 
 ## Configure roles and users [ec_configure_roles_and_users]

@@ -1,5 +1,9 @@
 ---
 navigation_title: Quickstarts
+description: "Get started contributing to Elasticsearch and Kibana API documentation with step-by-step local development workflows."
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Write Elastic API docs locally: Quickstart guides

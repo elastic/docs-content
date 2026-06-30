@@ -49,7 +49,7 @@ deployment:
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](elasticsearch://reference/elasticsearch/index-settings/store.md#file-system)).
 
-Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing {{es}} [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
+Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing {{es}} [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update]({{es-apis}}group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.html) as a transient setting). We recommend a value of `128KiB` for readahead.
 
@@ -77,9 +77,9 @@ deployment:
   ece: all
 ```
 
-Directly-attached (local) storage generally performs better than remote storage because it is simpler to configure well and avoids communications overheads.
+{{es}} clusters using directly-attached (local) storage generally perform better than those using remote storage. Direct storage typically provides lower latency for I/O operations, which is more critical for most {{es}} workloads than the high throughput that remote storage can often achieve.
 
-Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine the effects of any tuning parameters. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify the problem.
+Some remote storage performs very poorly, especially under the kind of load that {{es}} imposes. However, on certain workloads and with careful tuning, it is sometimes possible to achieve acceptable performance using remote storage too. Before committing to a particular storage architecture, benchmark your system with a realistic workload to determine whether it will meet your performance goals. If you cannot achieve the performance you expect, work with the vendor of your storage system to identify suitable tuning parameter values.
 
 ::::{note}
 For {{eck}} deployments refer to the [ECK storage recommendations](/deploy-manage/deploy/cloud-on-k8s/storage-recommendations.md) for a complete overview of storage options in Kubernetes, along with their implications and best practices. In Kubernetes, remote storage solutions are commonly used and well-supported.
@@ -308,7 +308,7 @@ However such practice might make the query run slower in some cases since the ov
 
 ## Force-merge read-only indices [_force_merge_read_only_indices]
 
-Indices that are read-only may benefit from being [merged down to a single segment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge). This is typically the case with time-based indices: only the index for the current time frame is getting new documents while older indices are read-only. Shards that have been force-merged into a single segment can use simpler and more efficient data structures to perform searches.
+Indices that are read-only may benefit from being [merged down to a single segment]({{es-apis}}operation/operation-indices-forcemerge). This is typically the case with time-based indices: only the index for the current time frame is getting new documents while older indices are read-only. Shards that have been force-merged into a single segment can use simpler and more efficient data structures to perform searches.
 
 ::::{important}
 Do not force-merge indices to which you are still writing, or to which you will write again in the future. Instead, rely on the automatic background merge process to perform merges as needed to keep the index running smoothly. If you continue to write to a force-merged index then its performance may become much worse.
@@ -318,7 +318,7 @@ Do not force-merge indices to which you are still writing, or to which you will 
 
 ## Warm up global ordinals [_warm_up_global_ordinals]
 
-[Global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) mapping parameter:
+[Global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](elasticsearch://reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes]({{es-apis}}operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](elasticsearch://reference/elasticsearch/mapping-reference/eager-global-ordinals.md) mapping parameter:
 
 ```console
 PUT index
@@ -364,6 +364,10 @@ Now imagine that you have a 2-shards index and two nodes. In one case, the numbe
 
 So what is the right number of replicas? If you have a cluster that has `num_nodes` nodes, `num_primaries` primary shards *in total* and if you want to be able to cope with `max_failures` node failures at once at most, then the right number of replicas for you is `max(max_failures, ceil(num_nodes / num_primaries) - 1)`.
 
+
+## Optimize {{esql}} queries [_optimize_esql_queries]
+
+For {{esql}}-specific performance guidance, including common anti-patterns and techniques for reducing scan size, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
 
 ## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 
@@ -464,8 +468,18 @@ This is a powerful way of making queries cheaper by putting common values in a d
 
 The `constant_keyword` is not strictly required for this optimization: it is also possible to update the client-side logic in order to route queries to the relevant indices based on filters. However `constant_keyword` makes it transparently and allows to decouple search requests from the index topology in exchange of very little overhead.
 
-
 ## Default search timeout [_default_search_timeout]
 
-By default, search requests don’t time out. You can set a timeout using the [`search.default_search_timeout`](../../../solutions/search/the-search-api.md#search-timeout) setting.
+By default, search requests don’t time out. You can set a default timeout using the [`search.default_search_timeout`](/solutions/search/the-search-api.md#search-timeout) cluster setting.
 
+## Avoid high open search contexts [_open_search_contexts]
+
+When a [search executes](/deploy-manage/distributed-architecture/reading-and-writing-documents.md#_basic_read_model), it opens a search context on each shard, which acts as a form of read lock. This context exists for the duration of the search request, or for [scroll searches]({{es-apis}}operation/operation-scroll) for their designated timeout period. High scroll request search contexts can cause [high JVM memory pressure](/troubleshoot/elasticsearch/high-jvm-memory-pressure.md). 
+
+To check for `open_contexts`, poll the [node stats API]({{es-apis}}/operation/operation-nodes-stats):
+
+```console
+GET _nodes/stats/indices/search
+```
+
+This value can be elevated when the [task queue backlog](/troubleshoot/elasticsearch/task-queue-backlog.md) reports a high amount of pending searches. If this is not the case, then your [scroll search timeouts](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) might be configured high. You should [clear scrolls](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#clear-scroll) as soon as they're no longer needed to release the context retention.

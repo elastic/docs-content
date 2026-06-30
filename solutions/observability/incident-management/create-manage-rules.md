@@ -2,10 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts-rules.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-manage-rules.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: "observability"
+  - id: "serverless-observability"
 navigation_title: Create and manage rules
+description: Create and manage alerting rules for Elastic Observability applications and SLOs. Define rules that detect conditions across APM, logs, metrics, and infrastructure, and configure actions to trigger when conditions are met.
 ---
 
 # Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
@@ -18,6 +22,12 @@ navigation_title: Create and manage rules
 
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
+
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
 
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
@@ -93,7 +103,7 @@ When you snooze a rule, the rule checks continue to run on a schedule but the al
 
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
-To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+To temporarily suppress notifications for *all* rules, create a [maintenance window](/explore-analyze/alerting/alerts/maintenance-windows.md).
 
 
 ## Import and export rules [observability-create-manage-rules-import-and-export-rules]
@@ -103,13 +113,34 @@ To import and export rules, use [{{saved-objects-app}}](/explore-analyze/find-an
 Rules are disabled on export. You are prompted to re-enable the rule on successful import.
 
 ## Add resources for investigating alerts [observability-create-manage-rules-add-investigation-resources]
+```{applies_to}
+stack: ga 9.1+
+```
 
 When creating or editing a rule, add the following resources to help you get started with investigating alerts:
 
-* {applies_to}`stack: ga 9.1` **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page.
+* **Investigation guide**: Investigation guides can help you respond to alerts more efficiently and consistently. When creating them, you can include instructions for responding to alerts, links to external supporting materials, and more. When the rule generates an alert, the investigation guide can be accessed from the **Investigation guide** tab on the alert's details page.
 
     ::::{tip}
     Use Markdown to format and structure text in your investigation guide.
     ::::
 
-* {applies_to}`stack: ga 9.1` **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
+* **Related and suggested dashboards**: Link to dashboards that provide useful insights about your environment, active events, and any other information that might be relevant during your investigations. When the rule generates an alert, linked dashboards can be accessed from the **Related dashboards** tab on the alert's details page. From the tab, you can also review and add suggested dashboards (available for custom threshold rules only).
+
+## Configure alert flapping [observability-create-manage-rules-defining-flapping-details]
+
+You can modify the criteria for changing an alert's status to [flapping state](view-alerts.md#observability-view-alerts-understand-statuses) by configuring the **Alert flapping detection** settings, which are turned on by default. When configuring flapping settings, you must set a look back window and threshold for alert status changes. For example, you can specify that alerts with at least 6 status changes in the last 10 runs are `flapping`.   
+
+{applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
+
+{applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
+## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
+:::

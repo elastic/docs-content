@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -17,15 +17,17 @@ navigation_title: Configure advanced settings
 The advanced settings control the behavior of the {{security-app}}, such as:
 
 * Which indices {{elastic-sec}} uses to retrieve data
+* Which data stream namespaces detection rules search (when limited by namespace)
 * {{ml-cap}} anomaly score display threshold
 * The navigation menu style used throughout the {{security-app}}
 * Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
-* Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
+* Which IP reputation links appear on [IP detail](/solutions/security/advanced-entity-analytics/network-page.md) pages
 * Whether cross-cluster search (CCS) privilege warnings are displayed
-* Whether related integrations are displayed on the Rules page tables
+* Whether related integrations are displayed on the **{{siem-rules-ui}}** page tables
 * The options provided in the alert tag menu
+* The maximum number of cases the Cases connector can open each time a detection rule runs 
 
 ::::{admonition} Requirements
 Your role must have the appropriate privileges to change advanced settings:
@@ -93,7 +95,7 @@ The `securitySolution:defaultThreatIndex` advanced setting specifies threat inte
 You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti_*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
-Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
+Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) for more information.
 ::::
 
 
@@ -127,10 +129,18 @@ You can change these settings, which affect the news feed displayed on the {{ela
 
 ## Enable graph visualization
 ```{applies_to}
-stack: preview 9.1
-serverless: preview
+stack: removed 9.4, preview 9.1-9.3
+serverless: removed
 ```
 Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
+
+## Enable alerts and attacks alignment
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Turn on the **Enable alerts and attacks alignment** setting to access the [Attacks page](/solutions/security/ai/attacks-page.md), which provides a unified interface for triaging and managing attacks alongside their correlated alerts.
 
 ## Enable asset inventory
 ```{applies_to}
@@ -187,7 +197,7 @@ The `securitySolution:ipReputationLinks` field determines which IP reputation si
 
 **Example**
 
-Adds a link to https://www.dnschecker.org on **IP detail** pages:
+Adds a link to [dnschecker.org](https://www.dnschecker.org) on **IP detail** pages:
 
 ```json
 [
@@ -200,6 +210,11 @@ Adds a link to https://www.dnschecker.org on **IP detail** pages:
 
 ## Configure cross-cluster search privilege warnings [enable-ccs-warning]
 
+```yaml {applies_to}
+stack: ga 9.0-9.3, removed 9.4
+serverless: removed
+```
+
 Each time a detection rule runs using a remote cross-cluster search (CCS) index pattern, it will return a warning saying that the rule may not have the required `read` privileges to the remote index. Because privileges cannot be checked across remote indices, this warning displays even when the rule actually does have `read` privileges to the remote index.
 
 If you’ve ensured that your detection rules have the required privileges across your remote indices, you can use the `securitySolution:enableCcsWarning` setting to disable this warning and reduce noise.
@@ -210,11 +225,11 @@ If you’ve ensured that your detection rules have the required privileges acros
 stack: ga 9.2
 ```
 
-To control whether alert suppression continues after you close a supressed alert during an [active suppression window](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
+To control whether alert suppression continues after you close a suppressed alert during an [active suppression window](/solutions/security/detect-and-alert/alert-suppression.md#security-alert-suppression-impact-close-alerts), configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting. This setting lets you choose whether suppression continues or restarts when the next qualifying alert meets the suppression criteria. The default selection is **Restart suppression**.
 
-## Show/hide related integrations in Rules page tables [show-related-integrations]
+## Show/hide related integrations on the {{siem-rules-ui}} page [show-related-integrations]
 
-By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tables include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
+By default, Elastic prebuilt rules on the **Installed Rules** and **Rule Monitoring** tabs include a badge showing how many related integrations have been installed. Turn off `securitySolution:showRelatedIntegrations` to hide this in the rules tables (related integrations will still appear on rule details pages).
 
 
 ## Manage alert tag options [manage-alert-tags]
@@ -222,9 +237,31 @@ By default, Elastic prebuilt rules in the **Rules** and **Rule Monitoring** tabl
 The `securitySolution:alertTags` field determines which options display in the alert tag menu. The default alert tag options are `Duplicate`, `False Positive`, and `Further investigation required`. You can update the alert tag menu by editing these options or adding more. To learn more about using alert tags, refer to [Apply and filter alert tags](/solutions/security/detect-and-alert/manage-detection-alerts.md#apply-alert-tags).
 
 
+## Maximum cases created per rule run [max-cases-cases-connector]
+
+```yaml {applies_to}
+stack: ga 9.4
+```
+
+The `cases:maxOpenCasesPerRuleRun` advanced setting sets the upper limit for how many new cases the [Cases connector](/deploy-manage/manage-connectors.md) can open during a single detection rule run. It applies when you add a Cases action to the rule. The default value is 20. The minimum accepted value is 1, the maximum is 1000.
+
+For example, if one rule run creates many alerts and you want a case opened for each alert, you can increase the limit for the `cases:maxOpenCasesPerRuleRun` setting to avoid meeting the per-run limit. Pick a number that works for your team and cluster, but be aware that opening a large batch of cases in a single run might increase load on {{kib}} and {{es}}. 
+
+::::{note}
+The `cases:maxOpenCasesPerRuleRun` setting does not apply to [Attack Discovery](/solutions/security/ai/attack-discovery.md). Attack Discovery continues to use its own case-creation limit (20).
+::::
+
+## Add custom alert closing reasons [custom-alert-closing-reasons]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+The `securitySolution:alertCloseReasons` field determines which custom options appear in the closing reason menu when you close an alert. By default, no custom reasons are defined. You can add your own closing reasons to supplement the predefined options (`Duplicate`, `False positive`, `True positive`, `Benign positive`, and `Other`). Custom reasons must be unique and cannot duplicate the predefined options. To learn more about closing alerts, refer to [Change an alert's status](/solutions/security/detect-and-alert/manage-detection-alerts.md#detection-alert-status) and [Set alert closing reason when closing a case](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
+
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 ```yaml {applies_to}
-stack: removed 9.1
+stack: ga 9.0, removed 9.1
 serverless: removed
 ```
 
@@ -238,7 +275,7 @@ To ensure the rules in your {{kib}} space exclude query results from cold and fr
 This setting does not apply to {{ml}} rules because {{ml}} anomalies are not stored in cold or frozen data tiers.
 
 ::::{tip}
-To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/exclude-cold-frozen-data-from-individual-rules.md) to the rules you want affected.
+To only exclude cold and frozen data from specific rules, add a [Query DSL filter](/solutions/security/detect-and-alert/set-rule-data-sources.md) to the rules you want affected.
 
 ::::
 
@@ -248,13 +285,29 @@ Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, i
 ::::
 
 
-## Access privileged user monitoring
+## Limit detection rules to specific data stream namespaces [included-data-stream-namespaces-rule-execution]
+
 ```yaml {applies_to}
-stack: ga 9.1
+stack: ga 9.4
 serverless: ga
 ```
 
-The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
+When configured, the **Include data stream namespaces in rule execution** setting (`securitySolution:includedDataStreamNamespacesForRuleExecution`) restricts which documents detection rules search. Only events whose `data_stream.namespace` field matches one of the specified namespaces are queried. This applies to all detection rules in the {{kib}} space and acts like a global filter on `data_stream.namespace`.
+
+Specify an array of namespace strings (for example, `namespace1`, `namespace2`). You can configure up to 50 namespaces. Leave the setting empty to search all namespaces (default behavior).
+
+::::{tip}
+If rules are not creating expected alerts or are missing data, check that this advanced setting is not filtering out the namespaces where your data is stored. Refer to [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-namespace-filter) for more information.
+::::
+
+
+## Access privileged user monitoring
+```yaml {applies_to}
+stack: removed 9.3, ga 9.1
+serverless: removed
+```
+
+The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
 
 ## Turn off {{esql}}-based risk scoring
 ```yaml {applies_to}

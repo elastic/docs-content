@@ -6,7 +6,8 @@ features:
 
 exclude:
   - 'README.md'
-  - 'raw-migrated-files/**'
+  - 'changelog/**'
+  - 'releases/**'
 
 cross_links:
   - apm-agent-android
@@ -48,6 +49,7 @@ cross_links:
   - elastic-otel-node
   - elastic-otel-php
   - elastic-otel-python
+  - elastic-otel-rum-js
   - elasticsearch
   - elasticsearch-hadoop
   - elasticsearch-java
@@ -83,6 +85,7 @@ toc:
   - file: archive.md
   - file: versions.md
   - hidden: 404.md
+  - hidden: _search.md
 
 subs:
   subscriptions:   "https://www.elastic.co/subscriptions"
@@ -108,6 +111,7 @@ subs:
   stack-manage-app:   "Stack Management"
   stack-monitor-app:   "Stack Monitoring"
   rules-ui:   "Rules"
+  siem-rules-ui: "Detection rules (SIEM)"
   connectors-ui:   "Connectors"
   connectors-feature:   "Actions and Connectors"
   stack-rules-feature:   "Stack Rules"
@@ -119,6 +123,8 @@ subs:
   ls-pipelines-app:   "Logstash Pipelines"
   maint-windows-app:   "Maintenance Windows"
   maint-windows-cap:   "Maintenance windows"
+  alerting-v2:   "experimental alerting features"
+  alerting-v2-cap:   "Experimental alerting features"
   custom-roles-app:   "Custom Roles"
   data-source:   "data view"
   data-sources:   "data views"
@@ -140,6 +146,7 @@ subs:
   package-registry:   "Elastic Package Registry"
   artifact-registry:   "Elastic Artifact Registry"
   aws:   "AWS"
+  gcp:   "GCP"
   stack:   "Elastic Stack"
   es:   "Elasticsearch"
   kib:   "Kibana"
@@ -189,6 +196,9 @@ subs:
   ccs:   "cross-cluster search"
   ccs-cap:   "Cross-cluster search"
   ccs-init:   "CCS"
+  cps: "cross-project search"
+  cps-cap: "Cross-project search"
+  cps-init: "CPS"
   ilm:   "index lifecycle management"
   ilm-cap:   "Index lifecycle management"
   ilm-init:   "ILM"
@@ -264,7 +274,7 @@ subs:
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   eck_helm_minimum_version: 3.2.0
-  eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
+  eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, Logstash, AutoOps Agent Policy and Package Registry"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   heroku: "Elasticsearch Add-on for Heroku"
   obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
@@ -283,10 +293,11 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.10.5
-  helm-version: 3.19.3
-  ece-docker-images-8: 8.18.8
-  ece-docker-images-9: 9.0.8
+  kube-stack-version: 0.12.4
+  helm-version: 3.21.0
+  ece-docker-images-8: 8.19.16
+  ece-docker-images-9: 9.3.5
   search-platform: "Search AI Platform"
-
-
+  fedramp-mod: "FedRAMP Moderate"
+  fedramp-high: "FedRAMP High"
+  fedramp-il5: "FedRAMP IL5"

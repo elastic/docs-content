@@ -3,6 +3,12 @@ applies_to:
   deployment:
     self:
 navigation_title: Single-node cluster
+sub:
+  image: elasticsearch
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: elastic-stack
 ---
 
 # Start a single-node cluster in Docker [docker-cli-run-dev-mode]
@@ -196,7 +202,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     ::::
 
-3. Call the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to verify the node was added to the cluster.
+3. Call the [cat nodes API]({{es-apis}}operation/operation-cat-nodes) to verify the node was added to the cluster.
 
     ```sh
     curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200/_cat/nodes

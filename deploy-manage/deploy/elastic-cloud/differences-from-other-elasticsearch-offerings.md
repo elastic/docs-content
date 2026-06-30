@@ -32,7 +32,7 @@ The following information reflects our strategic goals, plans and objectives and
 | **Cloud providers** | AWS, Azure, GCP  | AWS, Azure, GCP |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
-| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
+| **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic.<br><br>In case of data loss or corruption, you can request an emergency restore by [contacting Support](/troubleshoot/index.md#contact-us). |
 | **Solutions** | Full {{stack}} per deployment | Single solution per project |
 | **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
@@ -52,24 +52,27 @@ $$$elasticsearch-differences-serverless-feature-planned$$$
 
 ### Core platform capabilities
 
-This table compares the core platform capabilities between {{ech}} deployments and Serverless projects:
+This table compares core identity, access, and platform capabilities between {{ech}} deployments and Serverless projects:
 
 | **Feature**  | {{ech}} | Serverless projects| Notes  |
 |----------|----------------------|--------------------|--------|
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
-| **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
+| **Authentication and SSO** | Deployment-level [authentication realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) and organization-level [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Organization-level [user management](/deploy-manage/users-roles/cloud-organization/manage-users.md) and [SAML SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) | Serverless does not provide deployment-level realm configuration. |
 | **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
-| **Custom roles** | ✅ | ✅ |  |
-| **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
+| $$$elasticsearch-differences-custom-plugins-and-bundles$$$ **Custom plugins and bundles** | ✅ | ✅ [Core analysis plugins](elasticsearch://reference/elasticsearch-plugins/analysis-plugins.md#_core_analysis_plugins) (bundled)<br><br>❌ Custom plugin/bundle uploads are not supported<br><br>❌ Custom dictionaries for [language analyzers](elasticsearch://reference/text-analysis/analysis-lang-analyzer.md) are not supported | Use the [synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) for [synonyms](/solutions/search/full-text/search-with-synonyms.md) in Serverless. |
+| **Custom roles** | ✅ | ✅ | Managed through [{{ecloud}} roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) and [{{serverless-short}} custom roles](/deploy-manage/users-roles/serverless-custom-roles.md). |
+| **Deployment health monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
-| **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
+| **Deployment monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic <br><br> [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) is also available | Elastic automatically monitors Serverless projects, but you can additionally use AutoOps to [monitor usage patterns and resource consumption](/deploy-manage/monitor/autoops/autoops-for-serverless.md#how-autoops-monitors-your-serverless-short-project).|
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
+| **Network security** | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>✅ [Published static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>❌ Published static IPs | Private connectivity for Serverless projects is currently supported in AWS regions only.<br><br>For Observability projects, requires [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md).<br><br>For Security projects, requires [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md).<br><br>{{serverless-short}} does not offer public static IP lists. Use private connectivity where supported. |
+| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | Available across {{ech}} and Serverless using deployment/project and cloud API key types. |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | {{serverless-short}} does not support {{es}} authentication realms. User authentication is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
+| **Role-based access control** | ✅ | ✅ | In Serverless, RBAC is managed at organization level with optional project custom roles. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -83,24 +86,24 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 
 | **Feature** | {{ech}} | Serverless Elasticsearch projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
-| [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Clone index API**]({{es-apis}}operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
 | [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The baseline write latency in {{serverless-short}} is 200ms [^1^](#footnote-1) |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
-| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
+| [**Cross-cluster search**](/explore-analyze/cross-cluster-search.md) | ✅ | **Tech preview** | As [cross-project search](/deploy-manage/cross-project-search-config.md) |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
 | **Elastic connectors (for search)** | ❌ (Managed connectors discontinued with Enterprise Search in 9.0) | Self-managed only | - Managed connectors not available <br>- Use [**self-managed connectors**](elasticsearch://reference/search-connectors/self-managed-connectors.md) |
 | [**Elasticsearch for Apache Hadoop**](https://www.elastic.co/elasticsearch/hadoop) | ✅ | ❌ | Not available in Serverless |
 | **Enterprise Search (App Search & Workplace Search)** | ❌ (discontinued in 9.0) | ❌ | Not available in Serverless |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Anticipated in a future release |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
 | [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
 | [**`join` fields**](elasticsearch://reference/elasticsearch/mapping-reference/parent-join.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is the ES\|QL [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/lookup-join.md) command |
-| [**Search applications**](/solutions/search/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
+| [**Search applications**](/solutions/elasticsearch-solution-project/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
-| [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
+| [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | [Synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) only (does not support index-time or file-based synonyms) | |
+| [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler) |
 
 ^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
@@ -111,7 +114,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
@@ -131,7 +134,7 @@ This table compares Observability capabilities between {{ech}} deployments and O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry:///reference/motlp.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
@@ -144,17 +147,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
-| **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
+| **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
-| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
-| **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 ## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
@@ -170,6 +170,16 @@ To ensure optimal performance in Serverless Elasticsearch projects, follow these
 If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
+
+### Index and resource limits [index-and-resource-limits]
+
+{{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
+
+| Limit | Value | Adjustable |
+| :--- | :--- | :--- |
+| Number of indices per project | 15,000 | Yes |
+
+The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
@@ -210,8 +220,13 @@ When attempting to use an unavailable API, you'll receive this error:
 ```
 
 ::::{tip}
-Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless) for a complete list of available APIs.
+Refer to the [{{es-serverless}} API reference]({{es-serverless-apis}}) for a complete list of available APIs.
 ::::
+
+### Version reporting in the root API [elasticsearch-differences-serverless-version-reporting]
+
+:::{include} /deploy-manage/deploy/_snippets/serverless-version-reporting.md
+:::
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
@@ -256,7 +271,7 @@ When attempting to use an unavailable index setting, you'll receive this error:
 ## Learn more
 
 - [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
-- [Elasticsearch Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless): Check out the complete list of available APIs in {{serverless-full}}
+- [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects

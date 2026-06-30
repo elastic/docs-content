@@ -2,6 +2,9 @@
 navigation_title: parse_aws_vpc_flow_log
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/processor-parse-aws-vpc-flow-log.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent

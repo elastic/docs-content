@@ -7,7 +7,7 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
-description: An introduction to vectors and knn search in Elasticsearch.
+description: Learn how to index pre-generated dense vector embeddings and search them with kNN queries in Elasticsearch.
 ---
 
 # Bring your own dense vectors to {{es}} [bring-your-own-vectors]
@@ -32,14 +32,13 @@ When you create vectors (or _vectorize_ your data), you convert complex content 
 In this guide, you’ll use documents that already include dense vector embeddings. To deploy a vector embedding model in {{es}} and generate vectors during ingest and search, refer to the links in [Learn more](#bring-your-own-vectors-learn-more).
 
 ::::{tip}
-This is an advanced use case that uses the `dense_vector` field type. Refer to [](/solutions/search/semantic-search.md) for an overview of your options for semantic search with {{es}}.
-To learn about the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
+This advanced use case uses the `dense_vector` field type for direct control over embeddings and indexing. For a managed workflow using the `semantic_text` field type, refer to [Semantic search](/solutions/search/semantic-search.md). To compare both approaches, refer to [Semantic search and vector search](/solutions/search/vector.md#semantic-search-vs-vector-search).
 ::::
 
 :::::{stepper}
 ::::{step} Create an index with dense vector field mappings
 
-Each document in our simple data set will have:
+Each document in our basic data set will have:
 
 * A review: stored in a `review_text` field
 * An embedding of that review: stored in a `review_vector` field, which is defined as a [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) data type.
@@ -78,8 +77,14 @@ Here we’re using an 8-dimensional embedding for readability. The vectors that 
 ::::
 ::::{step} Add documents with embeddings
 
-First, index a single document to understand the document structure:
+First, index a single document to understand the document structure.
 
+You can provide vectors in two different input formats: 
+
+- Array of floats: A JSON array of numeric values representing each vector dimension.
+- Base64-encoded string: A Base64-encoded binary representation of the vector. More compact than float arrays, reducing payload size and improving efficiency for large vectors and bulk indexing. You can use the [Python client dense vector packing](https://elasticsearch-py.readthedocs.io/en/stable/api_helpers.html#dense-vector-packing) utility to convert float arrays into Base64-encoded binary representation.
+::::{tab-set}
+:::{tab-item} Array of floats
 ```console
 PUT /amazon-reviews/_doc/1
 {
@@ -87,12 +92,25 @@ PUT /amazon-reviews/_doc/1
   "review_vector": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8] <1>
 }
 ```
+1. The `review_vector` value has 8 dimensions, matching the `dims` count specified in the mapping.
+:::
 
-1. The size of the `review_vector` array is 8, matching the `dims` count specified in the mapping.
+:::{tab-item} Base64
+```console
+PUT /amazon-reviews/_doc/1
+{
+  "review_text": "This product is lifechanging! I'm telling all my friends about it.",
+  "review_vector": "PczMzT5MzM0+mZmaPszMzT8AAAA/GZmaPzMzMz9MzM0=" 
+}
+```
+:::
+::::
 
 In a production scenario, you'll want to index many documents at once using the [`_bulk` endpoint]({{es-apis}}operation/operation-bulk).
 Here's an example of indexing multiple documents in a single `_bulk` request:
 
+::::{tab-set}
+:::{tab-item} Array of floats
 ```console
 POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "2" } }
@@ -104,6 +122,22 @@ POST /_bulk
 { "index": { "_index": "amazon-reviews", "_id": "5" } }
 { "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": [0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1] }
 ```
+:::
+
+:::{tab-item} Base64
+```console
+POST /_bulk
+{ "index": { "_index": "amazon-reviews", "_id": "2" } }
+{ "review_text": "This product is amazing! I love it.", "review_vector": "PczMzT5MzM0+mZmaPszMzT8AAAA/GZmaPzMzMz9MzM0=" }
+{ "index": { "_index": "amazon-reviews", "_id": "3" } }
+{ "review_text": "This product is terrible. I hate it.", "review_vector": "P0zMzT8zMzM/GZmaPwAAAD7MzM0+mZmaPkzMzT3MzM0=" }
+{ "index": { "_index": "amazon-reviews", "_id": "4" } }
+{ "review_text": "This product is great. I can do anything with it.", "review_vector": "PczMzT5MzM0+mZmaPszMzT8AAAA/GZmaPzMzMz9MzM0=" }
+{ "index": { "_index": "amazon-reviews", "_id": "5" } }
+{ "review_text": "This product has ruined my life and the lives of my family and friends.", "review_vector": "P0zMzT8zMzM/GZmaPwAAAD7MzM0+mZmaPkzMzT3MzM0=" }
+```
+:::
+::::
 
 ::::
 :::::
@@ -130,7 +164,7 @@ POST /amazon-reviews/_search
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
 
-## Next steps: implementing vector search
+## Next steps: Implementing vector search
 
 If you want to try a similar workflow from an {{es}} client, use the following guided index workflow in {{es}} Serverless, {{ech}}, or a self-managed cluster:
 
@@ -146,7 +180,7 @@ DELETE /amazon-reviews
 
 ## Learn more about vector search [bring-your-own-vectors-learn-more]
 
-In these simple examples, we send a raw vector for the query text. In a real-world scenario, you won’t know the query text ahead of time. You’ll generate query vectors on the fly using the same embedding model that produced the document vectors. For this, deploy a text embedding model in {{es}} and use the[`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
+In these basic examples, we send a raw vector for the query text. In a real-world scenario, you won't know the query text ahead of time. You'll generate query vectors on the fly using the same embedding model that produced the document vectors. For this, deploy a text embedding model in {{es}} and use the[`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
 For an example of using pipelines to generate text embeddings, check out [](/solutions/search/vector/dense-versus-sparse-ingest-pipelines.md).
 

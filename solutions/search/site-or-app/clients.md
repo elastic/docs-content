@@ -32,5 +32,5 @@ In addition to official clients, the Elastic community has contributed libraries
 - [Community-contributed clients](elasticsearch://reference/community-contributed/index.md)
 
 ::::{tip}
-Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).
+Learn how to [connect to your {{es}} endpoint](/solutions/elasticsearch-solution-project/search-connection-details.md).
 ::::

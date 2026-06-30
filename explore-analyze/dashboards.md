@@ -42,10 +42,11 @@ Once you understand the basics, explore these common tasks:
 
 **Manage and share**
 - [Manage dashboards](dashboards/managing.md): Browse, search, organize, and track usage of your dashboards.
-- [Share dashboards](dashboards/sharing.md): Share with your team using links, embeds, or file exports.
+- [Share and export dashboards](dashboards/sharing.md): Share with your team using links or embeds, and export as PDF, PNG, or CSV.
 - [Duplicate a dashboard](dashboards/duplicate-dashboards.md): Create customizable copies of existing dashboards.
 - [Import a dashboard](dashboards/import-dashboards.md): Bring dashboards from other environments.
 
 ## About managed dashboards [managed-dashboards]
 
 Some dashboards are created and managed by the system, and are identified as `managed` in your list of dashboards. This generally happens when you set up an integration to add data. You can't edit managed dashboards directly, but you can [duplicate](dashboards/duplicate-dashboards.md) them and edit the duplicates.
+

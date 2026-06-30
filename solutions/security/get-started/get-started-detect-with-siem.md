@@ -2,16 +2,20 @@
 navigation_title: Detect and respond to threats with SIEM
 description: An introduction to detecting threats with SIEM in {{elastic-sec}}.
 applies_to:
+  stack: ga
   serverless:
-    security: all
-  stack:
+    security: ga
 products:
   - id: security
 ---
 
-# Quickstart: Detect and respond to threats with SIEM
+# Get started with Elastic Security SIEM: Detect and respond to threats
 
 In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
+
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/security/generate-security-sample-data
+:::
 
 ## Prerequisites 
 
@@ -19,7 +23,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 * If you're using the recommended integration in this guide, {{elastic-defend}}, then: 
   * Ensure you have the minimum [system requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) to install {{elastic-defend}}. 
   * Ensure you grant the appropriate [{{elastic-defend}} sub-feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). At the least, you need `All` access for the **Endpoint List** and **Elastic Defend Policy Management** sub-features. 
-* We recommend `manage` and `write` access to manage rules and alerts. Refer to [Detection requirements](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for the required cluster, index, and space privileges. 
+* We recommend `manage` and `write` access to manage rules and alerts. Refer to [](/solutions/security/detect-and-alert/detections-privileges.md) for the required cluster, index, and space privileges. 
 
 ## Add data using {{elastic-defend}}
 
@@ -91,7 +95,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 
 :::{dropdown} Steps to install and turn on prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
-2. Click **Install Elastic rules**, then **Add Elastic rules**. The **Rules** page displays. 
+2. Click **Install Elastic rules**, then **Add Elastic rules**. The **{{siem-rules-ui}}** page displays. 
 3. At the top of the page, click **Add Elastic rules**. The badge next to it shows the number of prebuilt rules available for installation.  
 4. Use the search bar and **Tags** filter to find the rules you want to install. For example, to filter by operating system, search for the appropriate OS (such as `macOS`) from the **Tags** menu. 
 5. Once you've filtered the rules, confirm that the rules displayed are the ones you'd like to install. If you'd like to learn more about any rule before installing it, click on the rule name to expand the rule details flyout. Here's an example of one: 
@@ -110,7 +114,7 @@ Detection rules allow you to monitor your environment by searching for source ev
 :::
     
 ::::{tip}
-{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
+{{elastic-sec}} regularly updates prebuilt rules to ensure they detect the latest threats. However, you must manually update these rules to the latest version. To learn how to do this, refer to [Update prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).  To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
 ::::
 
 :::
@@ -179,7 +183,7 @@ Once you've had a chance to install detection rules and check out alerts, we rec
 
 * View and analyze data with out-of-the-box [dashboards](/solutions/security/dashboards.md). 
 * Learn how to reduce your mean time to respond with [Attack Discovery](/solutions/security/ai/attack-discovery.md), an AI threat hunting feature that leverages large language models (LLMs) to analyze alerts in your environment, identify threats, and show how they correspond to the MITRE ATT&CK matrix.
-* Learn how to use [Cases](/solutions/security/investigate/cases.md) to track investigation details.  
+* Learn how to use [Cases](/solutions/security/investigate/security-cases.md) to track investigation details.  
 * Download the "Guide to high-volume data sources for SIEM" [white paper](https://www.elastic.co/campaigns/guide-to-high-volume-data-sources-for-siem?elektra=organic&storm=CLP&rogue=siem-gic). 
 * Check out [Elastic Security Labs](https://www.elastic.co/security-labs) for the latest on threat research.  
 * Learn how to manage your [data lifecycle](/manage-data/lifecycle.md), including how long data is retained, and how to transition indices through data tiers according to your performance needs and retention policies.

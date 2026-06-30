@@ -71,11 +71,9 @@ Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Az
 
 ## Prerequisites [_prerequisites_5]
 
-:::::{tab-set}
-:group: stack-serverless
+:::::{applies-switch}
 
-::::{tab-item} Elastic Stack
-:sync: stack
+::::{applies-item} stack:
 
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 * A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
@@ -95,8 +93,7 @@ The default CloudFormation stack is created in the AWS region selected for the u
 
 ::::
 
-::::{tab-item} Serverless
-:sync: serverless
+::::{applies-item} serverless:
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
@@ -148,11 +145,9 @@ The following table shows the type of data ingested by the supported AWS service
 
 ## Collect your data [_collect_your_data_5]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
@@ -168,8 +163,7 @@ The following table shows the type of data ingested by the supported AWS service
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.

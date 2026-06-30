@@ -307,7 +307,7 @@ Without tags in place it would not be as clear where in the pipeline the indexin
 
 ## Alerting on failed ingestion [failure-store-examples-alerting]
 
-Since failure stores can be searched like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
+Since failure stores can be searched like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerting/alerts.md) in
 {{kib}}. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
 
 :::::{stepper}
@@ -382,7 +382,7 @@ We recommend a few best practices for remediating failure data.
 
 **Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and then discard any other information about the failure.
 
-**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is using the [pipeline simulate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) or the [simulate ingest API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest).
+**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is using the [pipeline simulate API]({{es-apis}}operation/operation-ingest-simulate) or the [simulate ingest API]({{es-apis}}operation/operation-simulate-ingest).
 
 ### Remediating ingest node failures [failure-store-examples-remediation-ingest]
 
@@ -571,7 +571,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 ::::
 
 ::::{step} Test your pipelines
-Before sending data off to be reindexed, be sure to test the pipelines in question with an example document to make sure they work. First, test to make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) for this.
+Before sending data off to be reindexed, be sure to test the pipelines in question with an example document to make sure they work. First, test to make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API]({{es-apis}}operation/operation-ingest-simulate) for this.
 
 ```console
 POST _ingest/pipeline/_simulate
@@ -662,7 +662,7 @@ POST _ingest/pipeline/_simulate
 2. The document ID has stayed the same.
 3. The source should cleanly match the contents of the original document.
 
-Now that the remediation pipeline has been tested, be sure to test the end-to-end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest) to test multiple pipeline executions.
+Now that the remediation pipeline has been tested, be sure to test the end-to-end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API]({{es-apis}}operation/operation-simulate-ingest) to test multiple pipeline executions.
 
 ```console
 POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
@@ -760,7 +760,7 @@ POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
 ::::
 
 ::::{step} Reindex the failure documents
-Combine the remediation pipeline with the failure store query together in a [reindex operation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to replay the failures.
+Combine the remediation pipeline with the failure store query together in a [reindex operation]({{es-apis}}operation/operation-reindex) to replay the failures.
 
 ```console
 POST _reindex
@@ -993,7 +993,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 ```
 1. Copy the original index name from the failure document over into the document's metadata. If you use custom document routing, copy that over too.
 2. Capture the source of the original document.
-3. Discard the `error` field since it wont be needed for the remediation.
+3. Discard the `error` field since it won't be needed for the remediation.
 4. Also discard the `document` field.
 5. We extract all the fields from the original document's source back to the root of the document. The `@timestamp` field is not overwritten and will be present in the final document.
 
@@ -1004,7 +1004,7 @@ Remember that a document that has failed during indexing has already been proces
 ::::
 
 ::::{step} Test your pipeline
-Before sending data off to be reindexed, be sure to test the remedial pipeline with an example document to make sure it works. Most importantly, make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) for this.
+Before sending data off to be reindexed, be sure to test the remedial pipeline with an example document to make sure it works. Most importantly, make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API]({{es-apis}}operation/operation-ingest-simulate) for this.
 
 ```console
 POST _ingest/pipeline/_simulate
@@ -1095,7 +1095,7 @@ Caused by: j.l.IllegalArgumentException: data stream timestamp field [@timestamp
 ::::
 
 ::::{step} Reindex the failure documents
-Combine the remediation pipeline with the failure store query together in a [reindex operation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to replay the failures.
+Combine the remediation pipeline with the failure store query together in a [reindex operation]({{es-apis}}operation/operation-reindex) to replay the failures.
 
 ```console
 POST _reindex

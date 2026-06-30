@@ -1,0 +1,3 @@
+[{{cps-cap}}](/deploy-manage/cross-project-search-config.md) is available on the {{offering}} Complete tier. During the technical preview for this feature, there are no separate {{cps}} charges.
+
+When {{cps-init}} becomes generally available, it will be priced on usage. In addition to a [charge for data moved between projects](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md#general-serverless-billing-cps) that applies to all project types, origin projects will incur an additional monthly charge for each GB of data retained in each project linked from the origin. Each retained GB in a linked project will be billed to the origin project on a monthly basis. Exact rates and billing mechanics will be provided closer to GA.

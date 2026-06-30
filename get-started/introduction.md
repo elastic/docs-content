@@ -1,13 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
-navigation_title: Solutions
+navigation_title: Solutions overview
+description: "Overview of Elastic's three search-powered solutions—Elasticsearch, Elastic Observability, and Elastic Security—with guidance on choosing the right one."
 products:
   - id: elasticsearch
 applies_to:
   stack:
   serverless:
-navigation_title: Solutions
 ---
 
 # Solutions overview [introduction]
@@ -17,12 +17,16 @@ Whether you're building a search experience, monitoring your infrastructure, or 
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/search.md)<br>• [Get started](/solutions/search/get-started.md)| Developers, architects, data engineers |
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights| [{{es}}](/solutions/elasticsearch-solution-project.md)<br>• [Get started](/solutions/elasticsearch-solution-project/get-started.md)| Developers, architects, data engineers |
 | Observe and monitor system health and performance, or send telemetry data | [Elastic {{observability}}](/solutions/observability.md)<br>• [Get started](/solutions/observability/get-started.md) | DevOps, SREs, IT operations |
 | Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md)<br>• [Get started](/solutions/security/get-started.md)| SOC teams, security analysts, IT security admins |
 
+:::{note}
+The core [{{es}} search capabilities](/solutions/search.md) are available across all deployment types, solutions, and project types. The [{{es}} solution](/solutions/elasticsearch-solution-project.md) adds UI tools on top of these capabilities to help you build search-powered applications faster.
+:::
+
 :::{tip}
-Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
+Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations use our products for their specific business needs.
 :::
 
 Each of our solutions is available as a fully managed {{serverless-short}} project, a managed service on {{ech}}, or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options.

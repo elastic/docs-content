@@ -63,7 +63,10 @@ $$$glossary-apm-server$$$ APM Server
 :   An open-source application that receives data from [APM agents](/reference/glossary/index.md#glossary-apm-agent) and sends it to {{es}}.
 
 $$$glossary-app$$$ app
-:   A top-level {{kib}} component that is accessed through the side navigation. Apps include core {{kib}} components such as Discover and Dashboard, solutions like {{observability}} and Security, and special-purpose tools like Maps and {{stack-manage-app}}.
+:   A top-level {{kib}} feature such as Agent Builder, Discover, Dashboards, Synthetics, Workflows, and many more.
+
+$$$glossary-application-menu$$$ application menu
+:   The bar above the [workspace](/reference/glossary/index.md#glossary-workspace) in {{kib}} that hosts actions specific to the active [app](/reference/glossary/index.md#glossary-app).
 
 $$$glossary-auto-follow-pattern$$$ auto-follow pattern
 :   [Index pattern](/reference/glossary/index.md#glossary-index-pattern) that automatically configures new [indices](/reference/glossary/index.md#glossary-index) as [follower indices](/reference/glossary/index.md#glossary-follower-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). See [Manage auto-follow patterns](/deploy-manage/tools/cross-cluster-replication/manage-auto-follow-patterns.md).
@@ -105,6 +108,9 @@ $$$glossary-certainty$$$ certainty
 
 $$$CA$$$CA
 :   Certificate authority. An entity that issues digital certificates to verify identities over a network.
+
+$$$glossary-classic-view$$$ classic view
+:   The non-solution option in the [solution view](/reference/glossary/index.md#glossary-solution-view) setting in {{kib}}. The classic view surfaces all solutions in a [space](/reference/glossary/index.md#glossary-space) through a multi-layered [navigation menu](/reference/glossary/index.md#glossary-navigation-menu), instead of a navigation dedicated to a single solution.
 
 $$$glossary-client-forwarder$$$ client forwarder
 :   Used for secure internal communications between various components of {{ece}} and ZooKeeper.
@@ -161,6 +167,9 @@ $$$glossary-ccr$$$ {{ccr}} (CCR)
 
 $$$glossary-ccs$$$ {{ccs}} (CCS)
 :   Searches [data streams](/reference/glossary/index.md#glossary-data-stream) and [indices](/reference/glossary/index.md#glossary-index) on [remote clusters](/reference/glossary/index.md#glossary-remote-cluster) from a [local cluster](/reference/glossary/index.md#glossary-local-cluster). See [Search across clusters](/explore-analyze/cross-cluster-search.md).
+
+$$$glossary-cps$$$ {{cps}} ({{cps-init}}) {applies_to}`serverless: preview`
+:   Searches across multiple {{serverless-full}} [linked projects](/reference/glossary/index.md#glossary-linked-project) from a single [origin project](/reference/glossary/index.md#glossary-origin-project). See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$CRD$$$CRD
 :   [Custom resource definition](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-CustomResourceDefinition). {{eck}} extends the Kubernetes API with CRDs to allow users to deploy and manage Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash resources just as they would do with built-in Kubernetes resources.
@@ -259,7 +268,7 @@ $$$glossary-epr$$$ Elastic Package Registry (EPR)
 :   A service hosted by Elastic that stores Elastic package definitions in a central location. See the [EPR GitHub repository](https://github.com/elastic/package-registry).
 
 $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
-:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/create-detection-rule.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
+:   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/using-the-rule-ui.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
 
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
@@ -269,7 +278,7 @@ $$$glossary-elasticsearch$$$ {{es}}
 
     The term "{{es}}" has several additional meanings depending on the context in which it is used:
   - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md) on {{serverless-full}}, tailored for general-purpose search use cases.
-  - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own navigation or **solution view**.
+  - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
   - The **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
 
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
@@ -335,6 +344,9 @@ $$$glossary-fleet$$$ Fleet
 $$$glossary-flush$$$ flush
 :   Writes data from the [transaction log](elasticsearch://reference/elasticsearch/index-settings/translog.md) to disk for permanent storage.
 
+$$$glossary-flyout$$$ flyout
+:   A panel that slides in from the right of the [workspace](/reference/glossary/index.md#glossary-workspace) in {{kib}} to show contextual content for the active [app](/reference/glossary/index.md#glossary-app).
+
 $$$glossary-follower-index$$$ follower index
 :   Target [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A follower index exists in a [local cluster](/reference/glossary/index.md#glossary-local-cluster) and replicates a [leader index](/reference/glossary/index.md#glossary-leader-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
@@ -367,6 +379,9 @@ $$$glossary-geo-shape$$$ geo-shape
 
 $$$glossary-geojson$$$ GeoJSON
 :   A format for representing geospatial data. GeoJSON is also a file-type, commonly used in the **Maps** application to upload a file of geospatial data. See [GeoJSON data](/explore-analyze/visualize/maps/indexing-geojson-data-tutorial.md).
+
+$$$glossary-global-header$$$ global header
+:   The top bar of {{kib}} that hosts global controls, such as the global search field and the [space](/reference/glossary/index.md#glossary-space) switcher.
 
 $$$glossary-graph$$$ graph
 :   A data structure and visualization that shows interconnections between a set of entities. Each entity is represented by a node. Connections between nodes are represented by [edges](/reference/glossary/index.md#glossary-edge). See [Graph](/explore-analyze/visualize/graph.md).
@@ -425,7 +440,7 @@ $$$glossary-indexer$$$ indexer
 :   A {{ls}} instance that is tasked with interfacing with an {{es}} cluster in order to index [event](/reference/glossary/index.md#glossary-event) data.
 
 $$$glossary-indicator-index$$$ indicator index
-:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
+:   Indices containing suspect field values in {{elastic-sec}}. [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) use these indices to compare their field values with source event values contained in [{{elastic-sec}} indices](/reference/glossary/index.md#glossary-elastic-security-indices).
 
 $$$glossary-inference-aggregation$$$ inference aggregation
 :   A pipeline aggregation that references a [trained model](/reference/glossary/index.md#glossary-trained-model) in an aggregation to infer on the results field of the parent bucket aggregation. It enables you to use supervised {{ml}} at search time.
@@ -488,13 +503,16 @@ $$$glossary-kibana$$$ {{kib}}
 ## L [l-glos]
 
 $$$glossary-labs$$$ labs
-:   An in-progress or experimental feature in **Canvas** or **Dashboard** that you can try out and provide feedback. When enabled, you'll see **Labs** in the toolbar.
+:   An in-progress or experimental feature in **Canvas** or **Dashboard** that you can try out and provide feedback on. When enabled, you'll see **Labs** in the [application menu](/reference/glossary/index.md#glossary-application-menu).
 
 $$$glossary-leader-index$$$ leader index
 :   Source [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A leader index exists on a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) and is replicated to [follower indices](/reference/glossary/index.md#glossary-follower-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
 $$$glossary-lens$$$ Lens
-:   Enables you to build visualizations by dragging and dropping data fields. Lens makes makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
+:   Enables you to build visualizations by dragging and dropping data fields. Lens makes smart visualization suggestions for your data, allowing you to switch between visualization types. See [Lens](/explore-analyze/dashboards.md).
+
+$$$glossary-linked-project$$$ linked project
+:   An {{serverless-full}} project that is linked to an [origin project](/reference/glossary/index.md#glossary-origin-project). Data in the linked project becomes searchable from the origin project. See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$glossary-local-cluster$$$ local cluster
 :   [Cluster](/reference/glossary/index.md#glossary-cluster) that pulls data from a [remote cluster](/reference/glossary/index.md#glossary-remote-cluster) in [{{ccs}}](/reference/glossary/index.md#glossary-ccs) or [{{ccr}}](/reference/glossary/index.md#glossary-ccr). See [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md).
@@ -544,6 +562,9 @@ $$$glossary-multifactor$$$ multifactor authentication (MFA)
 $$$glossary-namespace$$$ namespace
 :   A user-configurable arbitrary data grouping, such as an environment (`dev`, `prod`, or `qa`), a team, or a strategic business unit.
 
+$$$glossary-navigation-menu$$$ navigation menu
+:   The primary navigation of {{kib}}. Its contents and structure depend on the active [solution view](/reference/glossary/index.md#glossary-solution-view) in the current [space](/reference/glossary/index.md#glossary-space) or on the project type.
+
 $$$glossary-nlp$$$ natural language processing (NLP)
 :   A {{ml}} feature that enables you to perform operations such as language identification, named entity recognition (NER), text classification, or text embedding. See [NLP overview](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
@@ -567,6 +588,9 @@ $$$OpenShift$$$OpenShift
 
 $$$Operator$$$operator
 :   A design pattern in Kubernetes for [managing custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). {{eck}} implements the operator pattern to manage Elasticsearch, Kibana and APM Server resources on Kubernetes.
+
+$$$glossary-origin-project$$$ origin project
+:   In a {{cps}}, the base {{serverless-full}} project where you link projects and run searches. See [{{cps-cap}}](/explore-analyze/cross-project-search.md).
 
 $$$glossary-output-plugin$$$ output plugin
 :   A {{ls}} [plugin](/reference/glossary/index.md#glossary-plugin) that writes [event](/reference/glossary/index.md#glossary-event) data to a specific destination. Outputs are the final stage in the event [pipeline](/reference/glossary/index.md#glossary-pipeline). Popular output plugins include elasticsearch, file, graphite, and statsd.
@@ -597,6 +621,9 @@ $$$glossary-plugin$$$ plugin
 
 $$$glossary-primary-shard$$$ primary shard
 :   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
+
+$$$glossary-project-tag$$$ project tag
+:   A key-value pair that you use as metadata for an {{serverless-full}} project. You can use project tags to categorize and organize projects, and to filter lists of projects. If [{{cps}}](/reference/glossary/index.md#glossary-cps) is enabled, you can also use project tags to [route searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md). See [Project tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags). _For tags on {{kib}} saved objects, see [tag](/reference/glossary/index.md#glossary-tag)._
 
 $$$glossary-proxy$$$ proxy
 :   A highly available, TLS-enabled proxy layer that routes user requests, mapping cluster IDs that are passed in request URLs for the container to the cluster nodes handling the user requests.
@@ -658,7 +685,7 @@ $$$glossary-rule$$$ rule
 :   A set of [conditions](/reference/glossary/index.md#glossary-condition), schedules, and [actions](/reference/glossary/index.md#glossary-action) that enable notifications. See [{{rules-ui}}](/reference/glossary/index.md#glossary-rules).
 
 $$$glossary-rules$$$ Rules
-:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerts-cases.md).
+:   A comprehensive view of all your alerting rules. Enables you to access and manage rules for all {{kib}} apps from one place. See [{{rules-ui}}](/explore-analyze/alerting.md).
 
 $$$glossary-runner$$$ runner
 :   A local control agent that runs on all hosts, used to deploy local containers based on role definitions. Ensures that containers assigned to it exist and are able to run, and creates or recreates the containers if necessary.
@@ -690,6 +717,9 @@ $$$glossary-searchable-snapshot-index$$$ searchable snapshot index
 $$$glossary-searchable-snapshot$$$ searchable snapshot
 :   [Snapshot](/reference/glossary/index.md#glossary-snapshot) of an [index](/reference/glossary/index.md#glossary-index) mounted as a [searchable snapshot index](/reference/glossary/index.md#glossary-searchable-snapshot-index). You can search this index like a regular index. See [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
+$$$glossary-secondary-navigation$$$ secondary navigation
+:   The panel that opens to the right of the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) in {{kib}} when a top-level item expands into sub-items.
+
 $$$glossary-segment$$$ segment
 :   Data file in a [shard](/reference/glossary/index.md#glossary-shard)'s Lucene instance. {{es}} manages Lucene segments automatically.
 
@@ -708,6 +738,9 @@ $$$glossary-shipper$$$ shipper
 $$$glossary-shrink$$$ shrink
 :   Reduces the number of [primary shards](/reference/glossary/index.md#glossary-primary-shard) in an index.
 
+$$$glossary-sidebar$$$ sidebar
+:   A resizable panel on the right side of {{kib}} that hosts specific functionality, such as the {{agent-builder}} chat. Unlike a [flyout](/reference/glossary/index.md#glossary-flyout), which is contextual to the active app, the sidebar persists across apps when you navigate {{kib}}.
+
 $$$glossary-snapshot-lifecycle-policy$$$ snapshot lifecycle policy
 :   Specifies how frequently to perform automatic backups of a cluster and how long to retain the resulting [snapshots](/reference/glossary/index.md#glossary-snapshot). See [Automate snapshots with {{slm-init}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
 
@@ -719,6 +752,9 @@ $$$glossary-snapshot$$$ snapshot
 
 $$$glossary-solution$$$ solution
 :   In {{ecloud}}, deployments with specialized [templates](/reference/glossary/index.md#glossary-deployment-template) that are pre-configured with sensible defaults and settings for common use cases.
+
+$$$glossary-solution-view$$$ solution view
+:   The per-[space](/reference/glossary/index.md#glossary-space) setting that controls the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) in {{kib}}.
 
 $$$glossary-source_field$$$ source field
 :   Original JSON object provided during [indexing](/reference/glossary/index.md#glossary-index). See the [`_source` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md).
@@ -733,7 +769,7 @@ $$$glossary-split$$$ split
 :   Adds more [primary shards](/reference/glossary/index.md#glossary-primary-shard) to an [index](/reference/glossary/index.md#glossary-index).
 
 $$$glossary-stack-alert$$$ stack rule
-:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules).
+:   The general purpose rule types {{kib}} provides out of the box. Refer to [Stack rules](/explore-analyze/alerting/alerts/rule-types.md#stack-rules).
 
 $$$glossary-standalone$$$ standalone
 :   This mode allows manual configuration and management of {{agent}}s locally on the systems where they are installed. See [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
@@ -748,7 +784,7 @@ $$$glossary-system-index$$$ system index
 ## T [t-glos]
 
 $$$glossary-tag$$$ tag
-:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md).
+:   A keyword or label that you assign to {{kib}} saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. Tags makes it easier for you to manage your content. See [Tags](/explore-analyze/find-and-organize/tags.md). _For metadata on {{ecloud}} projects, see [project tag](/reference/glossary/index.md#glossary-project-tag)._
 
 $$$glossary-term-join$$$ term join
 :   A shared key that combines vector features with the results of an {{es}} terms aggregation. Term joins augment vector features with properties for data-driven styling and rich tooltip content in maps.
@@ -826,7 +862,7 @@ $$$glossary-warm-tier$$$ warm tier
 :   [Data tier](/reference/glossary/index.md#glossary-data-tier) that contains [nodes](/reference/glossary/index.md#glossary-node) that hold time series data that is accessed less frequently and rarely needs to be updated. See [Data tiers](/manage-data/lifecycle/data-tiers.md).
 
 $$$glossary-watcher$$$ Watcher
-:   The original suite of alerting features. See [Watcher](/explore-analyze/alerts-cases/watcher.md).
+:   The original suite of alerting features. See [Watcher](/explore-analyze/alerting/watcher.md).
 
 $$$glossary-wms$$$ Web Map Service (WMS)
 :   A layer type in the **Maps** application. Add a WMS source to provide authoritative geographic context to your map. See the [OpenGIS Web Map Service](https://www.ogc.org/standards/wms).
@@ -836,6 +872,9 @@ $$$glossary-worker$$$ worker
 
 $$$glossary-workpad$$$ workpad
 :   A workspace where you build presentations of your live data in [Canvas](/reference/glossary/index.md#glossary-canvas). See [Create a workpad](/explore-analyze/visualize/canvas.md).
+
+$$$glossary-workspace$$$ workspace
+:   The main area of the active [app](/reference/glossary/index.md#glossary-app) in {{kib}}.
 
 
 ## X [x-glos]

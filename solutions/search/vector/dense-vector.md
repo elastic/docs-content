@@ -1,8 +1,16 @@
 ---
 navigation_title: Dense vector
+description: Learn how dense vector search works in Elasticsearch, including how to generate embeddings and query them with kNN.
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 # Dense vector search in {{es}}
 
@@ -45,4 +53,10 @@ For more information about how the profile affects virtual compute unit (VCU) al
 
 Better Binary Quantization (BBQ) is an advanced vector quantization technique for `dense_vector` fields. It compresses embeddings into compact binary form, enabling faster similarity search and reducing memory usage. This improves both search relevance and cost efficiency, especially when used with HNSW (Hierarchical Navigable Small World).
 
+New indices with `float` or `bfloat16` vectors and 384 or more dimensions will default to BBQ HNSW automatically for optimal performance and memory efficiency. Other element types, such as `byte` and `bit`, default to plain `hnsw` with no quantization.
+
 Learn more about how BBQ works, supported algorithms, and configuration examples in the [Better Binary Quantization (BBQ) documentation](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq).
+
+::::{tip}
+When using the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md), you can configure BBQ and other quantization options through the `index_options` parameter. Refer to [Optimizing vector storage with `index_options`](vector-storage-for-semantic-search.md) for examples of using `bbq_hnsw`, `int8_hnsw`, and other quantization strategies with semantic text fields.
+::::

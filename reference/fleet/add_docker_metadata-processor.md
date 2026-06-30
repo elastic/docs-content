@@ -2,6 +2,9 @@
 navigation_title: add_docker_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_docker_metadata-processor.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -19,12 +22,31 @@ The `add_docker_metadata` processor annotates each event with relevant metadata 
 
 For events to be annotated with Docker metadata, the configuration must be valid, and the processor must be able to reach the Docker API.
 
-Each event is annotated with:
+Each event is annotated with the following fields:
 
-* Container ID
-* Name
-* Image
-* Labels
+| Field | Description |
+| --- | --- |
+| `container.id` | Container ID |
+| `container.name` | Container name |
+| `container.image.name` | Container image name |
+| `container.labels.<key>` | One field per Docker label. By default, dots (`.`) in label keys are replaced with underscores (`_`). Refer to the [working with labels](#labels-dedot-behavior) section for more information. |
+
+### Working with labels [labels-dedot-behavior]
+
+Docker label keys often contain dots, for example `com.docker.compose.service`. By default, the processor replaces dots with underscores when writing labels to the event:
+
+| Original Docker label | Field name in event |
+| --- | --- |
+| `com.docker.compose.service` | `container.labels.com_docker_compose_service` |
+| `com.docker.swarm.service.name` | `container.labels.com_docker_swarm_service_name` |
+
+To preserve the original key names with dots, set `labels.dedot` to `false`. In that case, the labels are stored as nested objects (for example, `container.labels.com.docker.compose.service`).
+
+::::{note}
+Creating a field with a name that is dynamically determined at runtime (for example, using the value of a label as a field name) is not supported by this processor or by `add_fields`. To react to label values, use [conditions in input configurations](/reference/fleet/dynamic-input-configuration.md#conditions) instead.
+::::
+
+The Docker provider exposes the same labels as variables for configuration templating (`${docker.container.labels.com.docker.compose.service}`). The provider always references keys in the dotted format. For more information, refer to [Docker provider](/reference/fleet/docker-provider.md).
 
 ::::{note}
 When running {{agent}} in a container, you need to provide access to Docker’s unix socket in order for the `add_docker_metadata` processor to work. You can do this by mounting the socket inside the container. For example:
@@ -79,5 +101,5 @@ If the Docker daemon is restarted, the mounted socket will become invalid, and m
 | `match_short_id` | No | `false` | Whether to match the container short ID from a log path present in the `log.file.path` field. This setting allows you to match directory names that have the first 12 characters of the container ID. For example, `/var/log/containers/b7e3460e2b21/*.log`. |
 | `match_source_index` | No | `4` | Index in the source path split by a forward slash (`/`) to find the container ID. For example, the default, `4`, matches the container ID in `/var/lib/docker/containers/<container_id>/*.log`. |
 | `cleanup_timeout` | No | `60s` | Time of inactivity before container metadata is cleaned up and forgotten. |
-| `labels.dedot` | No | `false` | Whether to replace dots (`.`) in labels with underscores (`_`). |
+| `labels.dedot` | No | `true` | Whether to replace dots (`.`) in labels with underscores (`_`). |
 

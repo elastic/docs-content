@@ -2,6 +2,9 @@
 navigation_title: Environment variables
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -13,9 +16,9 @@ products:
 Use environment variables to configure {{agent}} when running in a containerized environment. Variables on this page are grouped by action type:
 
 * [Common variables](#env-common-vars)
-* [Configure {{kib}}:](#env-prepare-kibana-for-fleet) prepare the {{fleet}} plugin in {{kib}}
-* [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
-* [Configure {{agent}} and {{fleet}}:](#env-enroll-agent) enroll an {{agent}}
+* [Configure {{kib}}](#env-prepare-kibana-for-fleet): prepare the {{fleet}} plugin in {{kib}}
+* {applies_to}`serverless: unavailable` [Configure {{fleet-server}}](#env-bootstrap-fleet-server): bootstrap {{fleet-server}} on an {{agent}}
+* [Configure {{agent}} and {{fleet}}](#env-enroll-agent): enroll an {{agent}}
 
 
 ## Common variables [env-common-vars]
@@ -35,7 +38,8 @@ These common variables are useful, for example, when using the same {{es}} and {
 | $$$env=common-kibana-username$$$<br>`KIBANA_USERNAME`<br> | (string) The basic authentication username used to connect to {{kib}} to retrieve a `service_token`.<br><br>**Default:** `elastic`<br> |
 | $$$env=common-kibana-password$$$<br>`KIBANA_PASSWORD`<br> | (string) The basic authentication password used to connect to {{kib}} to retrieve a `service_token`.<br><br>**Default:** `changeme`<br> |
 | $$$env-common-kibana-ca$$$<br>`KIBANA_CA`<br> | (string) The path to a certificate authority.<br><br>By default, {{agent}} uses the list of trusted certificate authorities (CA) from the operating system where it is running. If the certificate authority that signed your node certificates is not in the host system’s trusted certificate authorities list, use this config to add the path to the `.pem` file that contains your CA’s certificate.<br><br>**Default:** `""`<br> |
-| $$$env-common-elastic-netinfo$$$<br>`ELASTIC_NETINFO`<br> | (bool) When `false`, disables `netinfo.enabled` parameter of `add_host_metadata` processor. Setting this to `false` is recommended for large scale setups where the host.ip and host.mac fields index size increases.<br><br>By default, {{agent}} initializes the `add_host_metadata` processor. The `netinfo.enabled` parameter defines ingestion of IP addresses and MAC addresses as fields `host.ip` and `host.mac`. For more information see [add_host_metadata](/reference/fleet/add_host_metadata-processor.md)<br><br>**Default:** `"false"`<br> |
+| $$$env-common-elastic-netinfo$$$<br>`ELASTIC_NETINFO`<br> | (bool) When `false`, turns off the `netinfo.enabled` parameter of the `add_host_metadata` processor. Set this to `false` for large-scale setups where the `host.ip` and `host.mac` fields index size increases.<br><br>By default, {{agent}} initializes the `add_host_metadata` processor. The `netinfo.enabled` parameter defines ingestion of IP addresses and MAC addresses as fields `host.ip` and `host.mac`. For more information see [add_host_metadata](/reference/fleet/add_host_metadata-processor.md)<br><br>**Default:** `"false"`<br> |
+| $$$env-common-state-path$$$<br>`STATE_PATH`<br> | (string) The path to the directory where {{agent}} stores its application data, including enrollment state and log cursors. Set this to a mounted volume path to preserve agent state across container restarts. For more information, refer to [Persist agent state](/reference/fleet/elastic-agent-container.md#_persist_agent_state).<br><br>**Default:** `/usr/share/elastic-agent/state`<br> |
 
 
 ## Prepare {{kib}} for {{fleet}} [env-prepare-kibana-for-fleet]
@@ -52,18 +56,22 @@ Settings used to prepare the {{fleet}} plugin in {{kib}}.
 
 ## Bootstrap {{fleet-server}} [env-bootstrap-fleet-server]
 
+```{applies_to}
+serverless: unavailable
+```
+
 Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fleet-server}} is required in a deployment.
 
 | Settings | Description |
 | --- | --- |
 | $$$env-bootstrap-fleet-fleet-server-enable$$$<br>`FLEET_SERVER_ENABLE`<br> | (int) Set to `1` to bootstrap {{fleet-server}} on this {{agent}}. When set to `1`, this automatically forces {{fleet}} enrollment as well.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-elasticsearch-host$$$<br>`FLEET_SERVER_ELASTICSEARCH_HOST`<br> | (string) The {{es}} host for {{fleet-server}} to communicate with. Overrides `ELASTICSEARCH_HOST` when set.<br><br>**Default:** `http://elasticsearch:9200`<br> |
-| $$$env-bootstrap-fleet-fleet-server-elasticsearch-ca$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA`<br> | (string) The path to a certificate authority. Overrides `ELASTICSEARCH_CA` when set.<br><br>By default, {{agent}} uses the list of trusted certificate authorities (CA) from the operating system where it is running. If the certificate authority that signed your node certificates is not in the host system’s trusted certificate authorities list, use this config to add the path to the `.pem` file that contains your CA’s certificate.<br><br>**Default:** `""`<br> |
+| $$$env-bootstrap-fleet-fleet-server-elasticsearch-ca$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA`<br> | (string) The path to a certificate authority file used to communicate with {{es}}. Overrides `ELASTICSEARCH_CA` when set. This is an alternative to using `FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT`. <br><br>By default, {{agent}} uses the list of trusted certificate authorities (CA) from the operating system where it is running. If the certificate authority that signed your node certificates is not in the host system’s trusted certificate authorities list, use this config to add the path to the `.pem` file that contains your CA's certificate.<br><br>**Default:** `""`<br> |
 | $$$env-bootstrap-fleet-fleet-server-es-cert$$$<br>`FLEET_SERVER_ES_CERT`<br> | (string) The path to the mutual TLS client certificate that {{fleet-server}} will use to connect to {{es}}.<br><br>**Default:** `""`<br> |
 | $$$env-bootstrap-fleet-fleet-server-es-cert-key$$$<br>`FLEET_SERVER_ES_CERT_KEY`<br> | (string) The path to the mutual TLS private key that {{fleet-server}} will use to connect to {{es}}.<br><br>**Default:** `""`<br> |
-| $$$env-bootstrap-fleet-fleet-server-insecure-http$$$<br>`FLEET_SERVER_INSECURE_HTTP`<br> | (bool) When `true`, {{fleet-server}} is exposed over insecure or unverified HTTP. Setting this to `true` is not recommended.<br><br>**Default:** `false`<br> |
-| $$$env-bootstrap-fleet-fleet-server-service-token$$$<br>`FLEET_SERVER_SERVICE_TOKEN`<br> | (string) Service token to use for communication with {{es}} and {{kib}} if [`KIBANA_FLEET_SETUP`](#env-prepare-kibana-for-fleet) is enabled. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
-| $$$env-bootstrap-fleet-fleet-server-service-token-path$$$<br>`FLEET_SERVER_SERVICE_TOKEN_PATH`<br> | (string) The path to the service token file to use for communication with {{es}} and {{kib}} if [`KIBANA_FLEET_SETUP`](#env-prepare-kibana-for-fleet) is enabled. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
+| $$$env-bootstrap-fleet-fleet-server-insecure-http$$$<br>`FLEET_SERVER_INSECURE_HTTP`<br> | (bool) When `true`, {{fleet-server}} is exposed over insecure or unverified HTTP. Don't set this to `true` unless required.<br><br>**Default:** `false`<br> |
+| $$$env-bootstrap-fleet-fleet-server-service-token$$$<br>`FLEET_SERVER_SERVICE_TOKEN`<br> | (string) Service token to use for communication with {{es}} and {{kib}}. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
+| $$$env-bootstrap-fleet-fleet-server-service-token-path$$$<br>`FLEET_SERVER_SERVICE_TOKEN_PATH`<br> | (string) The path to the service token file to use for communication with {{es}} and {{kib}}. If the service token value and service token path are specified the value may be used for setup and the path is passed to the agent in the container.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-policy-name$$$<br>`FLEET_SERVER_POLICY_NAME`<br> | (string) The name of the policy for {{fleet-server}} to use on itself. Overrides `FLEET_TOKEN_POLICY_NAME` when set.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-policy-id$$$<br>`FLEET_SERVER_POLICY_ID`<br> | (string) The policy ID for {{fleet-server}} to use on itself.<br> |
 | $$$env-bootstrap-fleet-fleet-server-host$$$<br>`FLEET_SERVER_HOST`<br> | (string) The binding host for {{fleet-server}} HTTP. Overrides the host defined in the policy.<br><br>**Default:** none<br> |
@@ -72,7 +80,7 @@ Settings used to bootstrap {{fleet-server}} on this {{agent}}. At least one {{fl
 | $$$env-bootstrap-fleet-fleet-server-cert-key$$$<br>`FLEET_SERVER_CERT_KEY`<br> | (string) The path to the private key for the certificate used for HTTPS.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-cert-key-passphrase$$$<br>`FLEET_SERVER_CERT_KEY_PASSPHRASE`<br> | (string) The path to the private key passphrase for an encrypted private key file.<br><br>**Default:** none<br> |
 | $$$env-bootstrap-fleet-fleet-server-client-auth$$$<br>`FLEET_SERVER_CLIENT_AUTH`<br> | (string) One of `none`, `optional`, or `required`. {{fleet-server}}'s client authentication option for client mTLS connections. If `optional` or `required` is specified, client certificates are verified using CAs.<br><br>**Default:** `none`<br> |
-| $$$env-bootstrap-fleet-fleet-server-es-ca-trusted-fingerprint$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT`<br> | (string) The SHA-256 fingerprint (hash) of the certificate authority used to self-sign {{es}} certificates. This fingerprint is used to verify self-signed certificates presented by {{fleet-server}} and any inputs started by {{agent}} for communication. This flag is required when using self-signed certificates with {{es}}.<br><br>**Default:** `""`<br> |
+| $$$env-bootstrap-fleet-fleet-server-es-ca-trusted-fingerprint$$$<br>`FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT`<br> | (string) The SHA-256 fingerprint (hash) of a certificate authority that is present in the certificate chain sent by {{es}} during the TLS handshake. If this certificate is found in the chain, it will be added to the trusted CAs.<br><br>This is an alternative to using `FLEET_SERVER_ELASTICSEARCH_CA`. For more information, refer to [Using certificate fingerprints](/reference/fleet/certificate-fingerprints.md).<br><br>**Default:** `""`<br> |
 | $$$env-bootstrap-fleet-fleet-daemon-timeout$$$<br>`FLEET_DAEMON_TIMEOUT`<br> | (duration) Set to indicate how long {{fleet-server}} will wait during the bootstrap process for {{agent}}.<br> |
 | $$$env-bootstrap-fleet-fleet-server-timeout$$$<br>`FLEET_SERVER_TIMEOUT`<br> | (duration) Set to indicate how long {{agent}} will wait for {{fleet-server}} to check in as healthy.<br> |
 
@@ -96,7 +104,7 @@ Settings used to enroll an {{agent}} into a {{fleet-server}}.
 | $$$env-enroll-fleet-token-name$$$<br>`FLEET_TOKEN_NAME`<br> | (string) The token name to use to fetch the token from {{kib}}.<br><br>**Default:** `""`<br> |
 | $$$env-enroll-fleet-token-policy-name$$$<br>`FLEET_TOKEN_POLICY_NAME`<br> | (string) The token policy name to use to fetch the token from {{kib}}.<br><br>**Default:** `false`<br> |
 | $$$env-enroll-fleet-ca$$$<br>`FLEET_CA`<br> | (string) The path to a certificate authority. Overrides `ELASTICSEARCH_CA` when set.<br><br>By default, {{agent}} uses the list of trusted certificate authorities (CA) from the operating system where it is running. If the certificate authority that signed your node certificates is not in the host system’s trusted certificate authorities list, use this config to add the path to the `.pem` file that contains your CA’s certificate.<br><br>**Default:** `false`<br> |
-| $$$env-enroll-fleet-insecure$$$<br>`FLEET_INSECURE`<br> | (bool) When `true`, {{agent}} communicates with {{fleet-server}} over insecure or unverified HTTP. Setting this to `true` is not recommended.<br><br>**Default:** `false`<br> |
+| $$$env-enroll-fleet-insecure$$$<br>`FLEET_INSECURE`<br> | (bool) When `true`, {{agent}} communicates with {{fleet-server}} over insecure or unverified HTTP. Don't set this to `true` unless required.<br><br>**Default:** `false`<br> |
 | $$$env-enroll-kibana-fleet-host$$$<br>`KIBANA_FLEET_HOST`<br> | (string) The {{kib}} host to enable {{fleet}} on. Overrides `FLEET_HOST` when set.<br><br>**Default:** `http://kibana:5601`<br> |
 | $$$env-enroll-kibana-fleet-username$$$<br>`KIBANA_FLEET_USERNAME`<br> | (string) The basic authentication username used to connect to {{kib}} and retrieve a `service_token` to enable {{fleet}}. Overrides `ELASTICSEARCH_USERNAME` when set.<br><br>**Default:** `elastic`<br> |
 | $$$env-enroll-kibana-fleet-password$$$<br>`KIBANA_FLEET_PASSWORD`<br> | (string) The basic authentication password used to connect to {{kib}} and retrieve a `service_token` to enable {{fleet}}. Overrides `ELASTICSEARCH_PASSWORD` when set.<br><br>**Default:** `changeme`<br> |

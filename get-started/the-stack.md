@@ -10,9 +10,11 @@ products:
 applies_to:
   serverless:
   stack:
-description: The {{stack}} is a group of products that work together to securely store, search, analyze, and visualize your data.
+description: "The Elastic Stack is a group of open source products that work together to securely store, search, analyze, and visualize your data."
 ---
 # The {{stack}}
+
+The {{stack}} is a suite of open-source products, like {{es}}, {{kib}}, {{agent}}, {{ls}}, and more, that work together to ingest, store, search, and visualize data at scale. This page describes each component and explains how they fit together across Elastic deployments.
 
 All Elastic [deployments and projects](deployment-options.md) share the same open source foundation:
 
@@ -81,10 +83,10 @@ With {{kib}}, you can:
 - Build custom [visualizations](/explore-analyze/visualize.md) like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
 - Assemble your visualizations into interactive [dashboards](/explore-analyze/dashboards.md) to get a comprehensive overview of your information.
 - Perform [geospatial analysis](/explore-analyze/geospatial-analysis.md) and add maps to your dashboards.
-- Configure notifications for significant data events and track incidents with [alerts and cases](/explore-analyze/alerts-cases.md).
+- Configure notifications for significant data events and track incidents with [alerts and cases](/explore-analyze/alerting.md).
 - Manage resources such as processors, pipelines, data streams, trained models, and more.
 
-Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](/explore-analyze/ai-features/ai-assistant.md).
+Each solution or project type provides access to customized features in {{kib}} such as built-in dashboards and [AI assistants](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md).
 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
@@ -116,7 +118,7 @@ To monitor the state of all your {{agents}}, manage agent policies, and upgrade 
 
 {{product.apm}} is an application performance monitoring system.
 It allows you to monitor software services and applications in real-time by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more.
-This makes it easy to pinpoint and fix performance problems quickly.
+This makes it efficient to pinpoint and fix performance problems quickly.
 
 [Learn more about {{product.apm}}](/solutions/observability/apm/index.md).
 

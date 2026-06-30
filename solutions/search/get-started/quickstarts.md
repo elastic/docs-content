@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# {{es}} quickstarts
+# Quickstarts
 
 Quickstarts reduce your time-to-value by offering a fast path to learn about search strategies.
 Each quickstart provides:

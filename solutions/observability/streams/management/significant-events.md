@@ -1,7 +1,17 @@
 ---
 applies_to:
-  serverless: ga
-  stack: preview 9.1, ga 9.2
+  serverless: preview
+  stack: preview 9.1+
+description: Define periodic queries that surface important events from a stream using custom filters or AI-generated suggestions.
+products:
+  - id: observability
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Add significant events

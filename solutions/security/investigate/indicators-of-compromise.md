@@ -99,7 +99,7 @@ When you add an indicator to Timeline, a new Timeline opens with an auto-generat
 
 ### Example indicator Timeline investigation [example-indicator-timeline]
 
-The following image shows a file hash indictor being investigated in Timeline. The indicator field-value pair is:
+The following image shows a file hash indicator being investigated in Timeline. The indicator field-value pair is:
 
 `threat.indicator.file.hash.sha256 : 116dd9071887611c19c24aedde270285a4cf97157b846e6343407cf3bcec115a`
 
@@ -125,7 +125,7 @@ To add indicators to cases:
 2. Select one of the following:
 
     * **Add to existing case**: From the **Select case** dialog box, select the case to which you want to attach the indicator.
-    * **Add to new case**: Configure the case details. Refer to [Open a new case](/solutions/security/investigate/open-manage-cases.md#cases-ui-open) to learn more about opening a new case.
+    * **Add to new case**: Configure the case details. Refer to [Open a new case](/explore-analyze/cases/create-cases.md) to learn more about opening a new case.
 
     The indicator is added to the case as a new comment.
 
@@ -174,5 +174,9 @@ You can add indicator values to the blocklist from the Indicators table or the I
 ::::{note}
 Refer to [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for more information about blocklist entries.
 ::::
+
+## Automate threat-intel enrichment with workflows [indicators-automate-enrichment]
+
+Use [Elastic Workflows](/explore-analyze/workflows.md) to query external threat-intel providers on demand or in response to an alert, attach the result to the alert's case, and gate downstream actions on the reputation score. The [Enrich an alert with threat intelligence](/explore-analyze/workflows/use-cases/security/automate-security-operations/enrich-alert-with-threat-intel.md) workflow shows the pattern using a VirusTotal hash lookup.
 
 

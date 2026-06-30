@@ -11,13 +11,12 @@ products:
 
 # Run ECE diagnostics tool [ece-run-ece-diagnostics]
 
-ECE diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to Elastic support for troubleshooting and investigation purposes.
+{{ece}} diagnostics is a command line tool that you can run on hosts where the ECE instance is installed. It collects logs and metrics, and stores everything into an archive file that can be provided to [Elastic support](/troubleshoot/index.md#troubleshoot-work-with-support) for troubleshooting and investigation purposes.
 
-::::{note} 
-This archive file is privacy-redacted as much as possible, but may still contain host identifying metadata (such as IP/domain info). We therefore recommend against uploading this output to public forums. Any uploads to the [Elastic Support Portal](https://support.elastic.co) are treated according to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+::::{note}
+:::{include} /troubleshoot/_snippets/diagnostics-privacy.md
+:::
 ::::
-
-
 
 ## Prepare [ece_prepare] 
 
@@ -25,17 +24,25 @@ This archive file is privacy-redacted as much as possible, but may still contain
 Don’t use the diagnostics tool that comes bundled in ECE images. Always download the latest binary to avoid any known vulnerabilities in the diagnostics acquisition and shipping flow.
 ::::
 
+1. Download the bundled diagnostic binary.
 
-Download the bundled diagnostic binary.
+    * For x86_64 AMD CPU architectures: [https://download.elasticsearch.org/cloud/amd64/ece-diagnostics](https://download.elasticsearch.org/cloud/amd64/ece-diagnostics)
 
-* For x86_64 CPU architectures: [https://download.elasticsearch.org/cloud/amd64/ece-diagnostics](https://download.elasticsearch.org/cloud/amd64/ece-diagnostics)
-* For ARM CPU architectures: [https://download.elasticsearch.org/cloud/arm64/ece-diagnostics](https://download.elasticsearch.org/cloud/arm64/ece-diagnostics)
+        ```sh
+        curl --compressed --silent -o ./ece-diagnostics https://download.elasticsearch.org/cloud/amd64/ece-diagnostics
+        ```
 
-Make it executable.
+    * For ARM CPU architectures: [https://download.elasticsearch.org/cloud/arm64/ece-diagnostics](https://download.elasticsearch.org/cloud/arm64/ece-diagnostics)
 
-```sh
-chmod +x ./ece-diagnostics
-```
+        ```sh
+        curl --compressed --silent -o ./ece-diagnostics https://download.elasticsearch.org/cloud/arm64/ece-diagnostics
+        ```
+
+2. Make it executable.
+
+    ```sh
+    chmod +x ./ece-diagnostics
+    ```
 
 
 ## How to use [ece_how_to_use] 
@@ -59,10 +66,8 @@ For example, Elastic Support frequently requests pulling the ECE diagnostic alon
 ```
 
 ::::{note} 
-ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support may also request. You can get stack diagnostics from {{ece}} > Deployment > Operations > Prepare Bundle.
+ECE deployment diagnostics are not the same as [stack diagnostics](https://github.com/elastic/support-diagnostics#usage-examples), which Elastic support might also request. You can get the [{{es}} diagnostic](/troubleshoot/elasticsearch/diagnostic.md) and [{{kib}} diagnostic](/troubleshoot/kibana/capturing-diagnostics.md) from {{ece}} -> Deployment -> Operations -> Prepare Bundle.
 ::::
-
-
 
 ## Example output [ece_example_output] 
 
@@ -82,6 +87,3 @@ Finished creating file: /tmp/ecediag-192.168.44.10-20220506-084902.tar.gz (total
 ```
 
 At that point, you’re ready to upload the `.tar.gz` file to Elastic Support.
-
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
-:::

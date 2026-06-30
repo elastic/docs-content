@@ -92,7 +92,7 @@ spec:
 
 **Static read-only files**
 
-Some plugins require or allow access to small static read-only files. You can use these for a variety of reasons. Examples include adding custom `grok` patterns for [`logstash-filter-grok`](logstash-docs-md://lsr/plugins-filters-grok.md) to use for lookup, source code for [`logstash-filter-ruby`], a dictionary for [`logstash-filter-translate`](logstash-docs-md://lsr/plugins-filters-translate.md) or the location of a SQL statement for [`logstash-input-jdbc`](logstash-docs-md://lsr/plugins-inputs-jdbc.md). Make these files available to the {{ls}} resource in your manifest.
+Some plugins require or allow access to small static read-only files. You can use these for a variety of reasons. Examples include adding custom `grok` patterns for [`logstash-filter-grok`](logstash-docs-md://lsr/plugins-filters-grok.md) to use for lookup, source code for [`logstash-filter-ruby`](logstash-docs-md://lsr/plugins-filters-ruby.md), a dictionary for [`logstash-filter-translate`](logstash-docs-md://lsr/plugins-filters-translate.md) or the location of a SQL statement for [`logstash-input-jdbc`](logstash-docs-md://lsr/plugins-inputs-jdbc.md). Make these files available to the {{ls}} resource in your manifest.
 
 ::::{tip}
 In the plugin documentation, these plugin settings are typically identified by `path` or an `array` of `paths`.
@@ -190,7 +190,7 @@ spec:
           jdbc {
              jdbc_driver_library => "/usr/share/logstash/jars/postgresql.jar"
              jdbc_driver_class => "org.postgresql.Driver"
-             <2>
+             // <2>
           }
         }
 ```
@@ -216,18 +216,18 @@ RUN curl -o /usr/share/logstash/logstash-core/lib/jars/postgresql.jar -L https:/
 
 After you build and deploy the custom image, include it in the {{ls}} manifest. Check out [*Create custom images*](create-custom-images.md) for more details.
 
-```yaml
+```yaml subs=true
   count: 1
-  version: {version} <1>
+  version: {{version.stack}} <1>
   image: <CUSTOM_IMAGE>
   pipelines:
     - pipeline.id: main
       config.string: |
         input {
           jdbc {
-              <2>
+              // <2>
              jdbc_driver_class => "org.postgresql.Driver"
-              <3>
+              // <3>
           }
         }
 ```
@@ -267,7 +267,7 @@ spec:
           jdbc {
              jdbc_driver_library => "/usr/share/logstash/jars/postgresql.jar"
              jdbc_driver_class => "org.postgresql.Driver"
-             last_metadata_path => "/usr/share/logstash/data/main/logstash_jdbc_last_run <1>
+             last_metadata_path => "/usr/share/logstash/data/main/logstash_jdbc_last_run" <1>
           }
         }
 ```
@@ -294,7 +294,7 @@ spec:
         output {
           s3 {
              id => "main_s3_output"
-             temporary_directory => "/usr/share/logstash/data/main/main_s3_output<1>
+             temporary_directory => "/usr/share/logstash/data/main/main_s3_output" <1>
           }
         }
 ```
@@ -467,7 +467,7 @@ RUN bin/logstash-plugin install logstash-filter-tld
 
 Then after building and deploying the custom image (refer to [*Create custom images*](create-custom-images.md) for more details), include it in the {{ls}} manifest:
 
-```shell subs=true
+```yaml subs=true
 spec:
   count: 1
   version: {{version.stack}} <1>

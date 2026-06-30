@@ -37,10 +37,10 @@ Use the Data Quality dashboard to:
 ::::{admonition} Requirements
 To use the Data Quality dashboard, you need at least the following [privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for each index you want to check:
 
-* `monitor` or `manage` (required for the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats))
-* `view_index_metadata` or `manage_ilm` (required for the [Explain lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle))
-* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping))
-* `read` (required for the [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search))
+* `monitor` or `manage` (required for the [Index stats API]({{es-apis}}operation/operation-indices-stats))
+* `view_index_metadata` or `manage_ilm` (required for the [Explain lifecycle API]({{es-apis}}operation/operation-ilm-explain-lifecycle))
+* `view_index_metadata` or `manage` (required for the [Get mapping API]({{es-apis}}operation/operation-indices-get-mapping))
+* `read` (required for the [Search API]({{es-apis}}operation/operation-search))
 
 ::::
 
@@ -116,13 +116,13 @@ You can share data quality results to help track your team’s remediation effor
 * Export results for all indices in the current data view:
 
     1. At the top of the dashboard, under the **Check all** button, are two buttons that allow you to share results. Exported results include all the data which appears in the dashboard.
-    2. Click **Add to new case** to open a new [case](/solutions/security/investigate/cases.md).
+    2. Click **Add to new case** to open a new [case](/solutions/security/investigate/security-cases.md).
     3. Click **Copy to clipboard** to copy a Markdown report to your clipboard.
 
 * Export results for one index:
 
     1. View details for a checked index by clicking the **Check now** button under **Actions**.
-    2. From the **Incompatible fields** tab, select **Add to new case** to open a new [case](/solutions/security/investigate/cases.md).
+    2. From the **Incompatible fields** tab, select **Add to new case** to open a new [case](/solutions/security/investigate/security-cases.md).
 
 
 ::::{note}

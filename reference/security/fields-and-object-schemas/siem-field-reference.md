@@ -98,7 +98,7 @@ For detailed information about which ECS fields can appear in documents generate
 
 {{elastic-sec}} relies on these fields to analyze and display network data:
 
-* `destination.geo.location` (required for display of [map data](/solutions/security/explore/configure-network-map-data.md))
+* `destination.geo.location` (required for display of [map data](/solutions/security/advanced-entity-analytics/configure-network-map-data.md))
 * `destination.ip`
 * `source.geo.location` (required to display map data)
 * `source.ip`

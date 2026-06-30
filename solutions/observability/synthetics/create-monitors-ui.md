@@ -58,7 +58,10 @@ To use the UI to add a lightweight monitor:
     :::::
 
 5. Set the *Frequency*, and configure the monitor as needed.
-6. Click **Advanced options** to see more ways to configure your monitor.
+6. Click **Advanced options** for more configuration options.
+
+    {applies_to}`stack: ga 9.1+` In **Advanced options**, select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
+
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
 
@@ -66,6 +69,11 @@ To use the UI to add a lightweight monitor:
     :alt: Synthetics Create monitor UI
     :screenshot:
     :::
+
+    ::::{note}
+    :applies_to: stack: ga 9.4+
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
+    ::::
 
 ## Add a browser monitor [synthetics-get-started-ui-add-a-browser-monitor]
 
@@ -102,10 +110,17 @@ To use the UI to add a browser monitor:
 6. Click **Advanced options** to see more ways to configure your monitor.
 
     * Use **Data options** to add context to the data coming from your monitors.
+    * Use **Maintenance windows** to prevent alerts from being triggered during scheduled downtime.
     * Use the **Synthetics agent options** to provide fine-tuned configuration for the synthetics agent. Read more about available options in [Use the Synthetics CLI](/solutions/observability/synthetics/cli.md).
+    * {applies_to}`stack: ga 9.1+` Select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
+
+    ::::{note}
+    :applies_to: stack: ga 9.4+
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
+    ::::
 
 ## View in your Observability project [synthetics-get-started-ui-view-in-your-observability-project]
 

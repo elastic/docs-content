@@ -20,7 +20,6 @@ In order for Qualys VMDR data to appear in these workflows:
 - Ensure you have read privileges for the following index: `security_solution-*.vulnerability_latest`.
 - Follow the steps to [set up the Qualys VMDR integration](https://www.elastic.co/docs/reference/integrations/qualys_vmdr).
   - While configuring the integration, in the **Host detection data** section, under **Input parameters**, enter `host_metadata=all`. This enables the ingest of `cloud.*` fields.
-- ({{stack}} users) Ensure you're on at least v8.16.
 - Make sure the integration version is at least 6.0.0.
 
 :::{note}

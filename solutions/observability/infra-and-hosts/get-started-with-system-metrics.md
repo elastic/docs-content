@@ -20,11 +20,9 @@ To get started quickly without {{fleet}}, follow the steps described in the [qui
 
 ## Prerequisites [logs-metrics-prereqs]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
 
@@ -37,8 +35,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 The **Admin** role or higher is required to onboard system metrics data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -49,11 +46,9 @@ The **Admin** role or higher is required to onboard system metrics data. To lear
 
 ## Onboard system metrics data [add-system-integration]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. A single agent makes it easier and faster to deploy monitoring across your infrastructure. Each agent has a single policy you can update to add integrations for new data sources, security protections, and more.
 
@@ -85,8 +80,7 @@ In this step, add the System integration to monitor host logs and metrics.
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Project Settings** → **Integrations**.

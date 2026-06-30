@@ -44,7 +44,7 @@ To learn how to modify, create, or delete another {{data-source}} refer to [{{ki
 {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` You can also temporarily modify the active {{data-source}} from the **{{data-source-cap}}** menu by clicking **Advanced options**, then adding or removing index patterns. This only allows you to add index patterns that match indices that currently contain data (other index patterns are unavailable). Note that any changes you make are saved in the browser and won’t persist if you open a new tab.
 
 ::::{note}
-You cannot update the data view for the Alerts page. This includes referencing a cross-cluster search (CCS) data view or any other data view. The Alerts page always shows data from `.alerts-security.alerts-default`.
+You cannot update the data view for the Alerts page. This includes referencing a cross-cluster search (CCS) data view or any other data view. The Alerts page always shows data from `.alerts-security.alerts-<space-id>`.
 ::::
 
 

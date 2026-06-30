@@ -21,7 +21,16 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 ## Requirements
 
 - To use Elastic's AI-powered features, you need an appropriate subscription level or serverless feature tier. These vary by solution and feature. Refer to each feature's documentation to learn more.
-- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLM is available by default if your license supports it.
+- Most features require at least one working LLM connector. To learn about setting up large language model (LLM) connectors used by AI-powered features, refer to [](/explore-analyze/ai-features/llm-guides/llm-connectors.md). Elastic Managed LLMs are available by default if your license supports it.
+
+## Model selection and tested performance [model-selection-tested-performance]
+
+Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
+
+- [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md) summarize model performance for those solutions' AI-powered features.
+- [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
+
+Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
 
 ## AI-powered features on the Elastic platform
 
@@ -35,8 +44,8 @@ To learn more, refer to:
 
 - [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md):
 A managed service that runs {{infer}} without the need of deploying a model, or managing infrastructure and resources.
-- [Elastic Managed LLM connector](kibana://reference/connectors-kibana/elastic-managed-llm.md):
-This connector enables you to use built-in LLMs vetted for GenAI product features across the platform.
+- [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md):
+Built-in LLMs vetted for GenAI product features across the platform.
 - [The {{infer}} API](/explore-analyze/elastic-inference/inference-api.md):
 This general-purpose API enables you to perform {{infer}} operations using EIS, your own models, or third-party services.
 
@@ -44,18 +53,17 @@ This general-purpose API enables you to perform {{infer}} operations using EIS, 
 
 Natural Language Processing (NLP) enables you to analyze natural language data and make predictions.  Elastic offers a range of [built-in NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) such as the Elastic-trained [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) or [Jina models](/explore-analyze/machine-learning/nlp/ml-nlp-jina.md). You can also [deploy custom NLP models](/explore-analyze/machine-learning/nlp/ml-nlp-overview.md).
 
-### AI-powered search
+### Vector search
 
-[AI-powered search](/solutions/search/ai-search/ai-search.md) helps you find data based on intent and contextual meaning using vector search technology, which uses {{ml}} models to capture meaning in content.
+[Vector search](/solutions/search/vector.md) uses embeddings and similarity matching to find related data in {{es}}. {{ml-cap}} models convert text, images, and other content into vectors. Use cases include recommendations, duplicate detection, fraud and anomaly detection, image similarity, and semantic search.
+
+For direct control over embeddings, field types, and queries, implement dense or sparse vector search with [`dense_vector`](https://www.elastic.co/docs/solutions/search/vector/dense-vector) and [`sparse_vector`](https://www.elastic.co/docs/solutions/search/vector/sparse-vector) field types. Refer to [Vector search in {{es}}](/solutions/search/vector.md) for concepts, field types, and tutorials.
 
 #### Semantic and hybrid search
 
-Depending on your team's technical expertise and requirements, you can choose from two broad paths for implementing semantic search:
+When you want a managed workflow for text—embedding generation, field mapping, and similarity retrieval, use the [semantic search](/solutions/search/semantic-search.md) workflow. Start with the [`semantic_text`](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text) field type for the simplest setup.
 
-- For a minimal configuration, managed workflow use [semantic_text](https://www.elastic.co/docs/solutions/search/semantic-search/semantic-search-semantic-text).
-- For more control over the implementation details, implement dense or sparse [vector search](https://www.elastic.co/docs/solutions/search/vector) manually.
-
-[Hybrid search](/solutions/search/hybrid-search.md) combines traditional full-text search with AI-powered search for more powerful search experiences that serve a wider range of user needs.
+[Hybrid search](/solutions/search/hybrid-search.md) combines full-text search with vector search in one request so results can match both exact terms and meaning.
 
 ### Semantic re-ranking
 
@@ -65,59 +73,78 @@ Depending on your team's technical expertise and requirements, you can choose fr
 
 [Learning To Rank](/solutions/search/ranking/learning-to-rank-ltr.md) is an advanced feature that involves using trained ML models to build custom ranking functions for search. Best suited for use cases with substantial training data and requirements for highly customized relevance tuning.
 
+### Automatic Import [automatic-import-platform]
+
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) uses an LLM to help you build a custom Elastic integration from a data sample when no prebuilt integration exists for your source. It applies across solutions that use {{agent}} and integrations, including {{observability}} and {{elastic-sec}}.
+
 ## AI-powered features in the {{es}} solution/project type
 
 The [{{es}}](/solutions/search.md) solution view (or project type in {{serverless-short}}) includes certain AI-powered features beyond the core {{es}} capabilities available on the Elastic platform.
 
 ### Agent Builder
 
-[Agent Builder](/solutions/search/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
+[Agent Builder](/explore-analyze/ai-features/elastic-agent-builder.md) enables you to create AI agents that can interact with your {{es}} data, run queries, and provide intelligent responses. It provides a complete framework for building conversational AI experiences on top of your search infrastructure.
 
 ### AI assistant for {{es}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Playground
 
-[Playground](/solutions/search/rag/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
+[Playground](/solutions/elasticsearch-solution-project/playground.md) enables you to use large language models (LLMs) to understand, explore, and analyze your {{es}} data using retrieval augmented generation (RAG), via a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](/solutions/search/retrievers-overview.md) syntax with the `_search` endpoint.
 
-### Model context protocol
+### Model Context Protocol (MCP) servers
 
-The [Model Context Protocol (MCP)](/solutions/search/mcp.md) lets you connect AI agents and assistants to your {{es}} data to enable natural language interactions with your indices.
+Elastic offers two MCP server options for connecting agents to your {{es}} data. The Agent Builder MCP server is the recommended approach for {{es}} 9.2+ deployments and Serverless projects, offering full access to built-in and custom tools. For older {{es}} versions without Agent Builder, you can use the `mcp-elasticsearch` server which has a limited tool set.
+
+#### {{agent-builder}} MCP server
+```{applies_to}
+stack: preview 9.2
+elasticsearch: preview
+```
+Elastic 9.2+ deployments and Serverless projects provide an [Agent Builder MCP server endpoint](/explore-analyze/ai-features/agent-builder/mcp-server.md) that exposes all built-in and custom [tools](/explore-analyze/ai-features/agent-builder/tools.md) you can use to power agentic workflows.
+
+#### {{es}} MCP server
+```{applies_to}
+stack: deprecated 9.2
+serverless: deprecated
+```
+
+If you're running earlier versions of {{es}} without Agent Builder, you can use [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server). This MCP server enables connecting agents to your {{es}} data and allows you to interact with your {{es}} indices through natural language conversations, though with a more limited tool set compared to the Agent Builder MCP server.
 
 ## AI-powered features in {{observability}}
 
-{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+{{observability}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{observability}} use cases, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
 
 ### AI assistant for {{observability}}
 
-[](/solutions/observability/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
+[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Streams
 
 [Streams](/solutions/observability/streams/streams.md) is an AI-assisted centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data. Streams leverages AI in the following features:
 
-* [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
+% * [Significant Events](/solutions/observability/streams/management/significant-events.md): Use AI to suggest queries based on your data that find important events in your stream.
 * [Grok processing](/solutions/observability/streams/management/extract/grok.md#streams-grok-patterns): Use AI to generate grok patterns that extract meaningful fields from your data.
 * [Partitioning](/solutions/observability/streams/management/partitioning.md): Use AI to suggest logical groupings and child streams based on your data when using wired streams.
-* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features, like significant events, use when generating suggestions.
+* [Advanced settings](/solutions/observability/streams/management/advanced.md): Use AI to generate a [stream description](/solutions/observability/streams/management/advanced.md#streams-advanced-description) and a [feature identification](/solutions/observability/streams/management/advanced.md#streams-advanced-features) that other AI features use when generating suggestions.
 
-## AI-powered features in {{elastic-sec}}
+### Automatic Import [automatic-import-observability]
 
-{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation.
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) helps you ingest logs and events from sources that don’t have prebuilt Elastic integrations by generating a new integration from a sample of your data.
+
+## AI-powered features in {{elastic-sec}} [security-features]
+
+{{elastic-sec}}'s AI-powered features all require an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any LLM connector that's configured in your environment. The connector you select for one feature does not affect which connector any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
 ### AI Assistant for Security
 
 [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
-
 
 ### Attack Discovery
 
 [Attack Discovery](/solutions/security/ai/attack-discovery.md) uses AI to triage your alerts and identify potential threats. Each "discovery" represents a potential attack and describes relationships among alerts to identify related users and hosts, map alerts to the MITRE ATT&CK matrix, and help identify threat actors.
-
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
 
 ### Automatic Migration
@@ -127,14 +154,10 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * Splunk rules
 * Splunk dashboards
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 
+### Automatic Import [automatic-import-security]
 
-### Automatic Import
-
-[Automatic Import](/solutions/security/get-started/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
-
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+[Automatic Import](/explore-analyze/ai-features/automatic-import.md) helps you ingest data from sources that do not have prebuilt Elastic integrations. It uses AI to parse a sample of the data you want to ingest, and creates a new integration specifically for that type of data.
 
 
 ### Automatic Troubleshooting
@@ -144,4 +167,15 @@ This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides
 * **Policy responses**: Detect warnings or failures in {{elastic-defend}}’s integration policies.
 * **Third-party antivirus (AV) software**: Identify installed third-party antivirus (AV) products that might conflict with {{elastic-defend}}.
 
-This feature requires an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+
+### Entity summary
+```yaml {applies_to}
+stack: ga 9.3
+serverless: ga
+```
+
+[Entity summary](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-summary), available in the entity details flyout, uses AI to generate a summary of a user's or host's security context. It aggregates information such as risk scores, asset criticality, vulnerabilities, and {{ml}} anomalies to provide a consolidated view of the entity's security posture. The summary helps you prioritize investigations and identify recommended next steps.
+
+## AI agent skills
+
+[AI agent skills for Elastic](/explore-analyze/ai-features/agent-skills.md) provides official, open-source skill packages that help AI coding agents perform Elastic-specific tasks. Skills are built on the Agent Skills open standard, and include guidance for tasks like working with {{es}} APIs, {{kib}} workflows, and {{observability}} and {{elastic-sec}} use cases.

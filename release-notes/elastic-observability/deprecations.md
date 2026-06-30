@@ -1,9 +1,16 @@
 ---
 navigation_title: Deprecations
+products:
+  - id: observability
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: elastic-stack
 ---
 
 # Elastic {{observability}} deprecations [elastic-observability-deprecations]
-Over time, certain Elastic functionality becomes outdated and is replaced or removed. To help with the transition, Elastic deprecates functionality for a period before removal, giving you time to update your applications. 
+Over time, certain Elastic functionality becomes outdated and is replaced or removed. To help with the transition, Elastic deprecates functionality for a period before removal, giving you time to update your applications.
 
 Review the deprecated functionality for Elastic {{observability}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade. To learn how to upgrade, check out [](/deploy-manage/upgrade.md).
 
@@ -12,18 +19,30 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 % ::::{dropdown} Deprecation title
 % Description of the deprecation.
 % For more information, check [PR #](PR link).
-% **Impact**<br> Impact of deprecation. 
+% **Impact**<br> Impact of deprecation.
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.1 [elastic-observability-9.0.1-deprecations]
+## 9.4.0 [elastic-observability-9.4.0-deprecations]
 
-There are no deprecations in Elastic {{observability}} 9.0.1.
+::::{dropdown} Remove Observability Agent from Agent Builder
+The Observability agent has been removed from Agent Builder, replaced by skills in the Elastic AI agent.
+
+View [#262937]({{kib-pull}}262937).
+
+**Impact**<br> Conversations stored with the Observability agent will no longer appear in the conversation list and cannot be continued from the UI. No automatic migration is planned.
+::::
+
+::::{dropdown} Metrics Explorer is deprecated in favor of Discover
+Metrics Explorer has been deprecated in favor of an improve metrics experience in Discover.
+
+View [#261785]({{kib-pull}}261785).
+::::
 
 ## 9.0.0 [elastic-observability-9.0.0-deprecations]
 
 ::::{dropdown} Removed Logs Explorer
-Logs Explorer has been removed. 
+Logs Explorer has been removed.
 
 For more information, check [#203685]({{kib-pull}}203685).
 

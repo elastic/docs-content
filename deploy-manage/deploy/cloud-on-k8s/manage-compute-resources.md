@@ -19,7 +19,7 @@ The operator applies default requests and limits for memory and CPU. They may be
 
 Consider that Kubernetes throttles containers exceeding the CPU limit defined in the `limits` section. Do not set this value too low, or it would affect the performance of your workloads, even if you have enough resources available in the Kubernetes cluster.
 
-Also, to minimize disruption caused by Pod evictions due to resource contention, you can run Pods at the "Guaranteed" QoS level by setting both `requests` and `limits` to the same value.
+Also, to minimize disruption caused by Pod evictions due to resource contention, you can run Pods at the [Guaranteed QoS](https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#guaranteed) level by setting both `requests` and `limits` to the same value.
 
 
 ## Set compute resources [k8s-compute-resources]
@@ -280,19 +280,60 @@ spec:
 For the container name, use the name of the Beat in lower case. For example `filebeat`, `metricbeat`, or `heartbeat`. In case of Elastic Agent, use `agent`.
 
 
+### Set compute resources for Elastic AutoOps Agent [k8s-compute-resources-autoops-agent]
+
+```{applies_to}
+  eck: ga 3.3
+```
+
+For `AutoOpsAgentPolicy` resources (Elastic AutoOps Agent), the `podTemplate` can be configured as follows:
+
+```yaml subs=true
+apiVersion: autoops.k8s.elastic.co/v1alpha1
+kind: AutoOpsAgentPolicy
+metadata:
+  name: autoops-agent-policy
+spec:
+  version: {{version.stack}}
+  podTemplate:
+    spec:
+      containers:
+      - name: autoops-agent
+        resources:
+          requests:
+            cpu: 200m
+            memory: 600Mi
+          limits:
+            cpu: 200m
+            memory: 600Mi
+```
+
+For the container name, use `autoops-agent`.
+
+[Learn more about configuring AutoOps in {{eck}}](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md).
+
+
 ## Default behavior [k8s-default-behavior]
 
-If `resources` is not defined in the specification of an object, then the operator applies a default memory limit to ensure that Pods have enough resources to start correctly. This memory limit will also be applied to any user-defined init containers that do not have explict resource requirements set. As the operator cannot make assumptions about the available CPU resources in the cluster, no CPU limits will be set — resulting in the Pods having the "Burstable" QoS class. Check if this is acceptable for your use case and follow the instructions in [Set compute resources](#k8s-compute-resources) to configure appropriate limits.
+If `resources` is not defined in the specification of an object, then the operator applies a default memory limit to ensure that Pods have enough resources to start correctly. This memory limit will also be applied to any user-defined init containers that do not have explicit resource requirements set. As the operator cannot make assumptions about the available CPU resources in the cluster, no CPU limits will be set — resulting in the Pods having the "Burstable" QoS class. Check if this is acceptable for your use case and follow the instructions in [Set compute resources](#k8s-compute-resources) to configure appropriate limits.
 
 | Type | Requests | Limits |
 | --- | --- | --- |
 | APM Server | `512Mi` | `512Mi` |
 | {{es}} | `2Gi` | `2Gi` |
-| {{kib}} | `1Gi` | `1Gi` |
+| {{kib}} | {applies_to}`eck: ga 3.4` `2Gi`<br>{applies_to}`eck: ga 3.0-3.3` `1Gi` | {applies_to}`eck: ga 3.4` `2Gi`<br>{applies_to}`eck: ga 3.0-3.3` `1Gi` |
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
 | Logstash | `2Gi` | `2Gi` |
+| Elastic Package Registry | `1Gi` | `1Gi` |
+| AutoOps Agent | `400Mi` | `400Mi` |
+
+::::{note}
+:applies_to: eck: ga 3.0-3.3
+
+The default 1 Gi {{kib}} memory limit is sufficient for core functionality. However, Platinum and Enterprise features such as Security detection rules, reporting, workflows, and Agent Builder can require additional memory. For these use cases, we recommend increasing the memory limit to at least 2 Gi per {{kib}} instance to avoid service interruptions.
+::::
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.
 

@@ -83,7 +83,7 @@ Expand a section below for your endpoint security system:
 
     4. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/using-the-rule-ui.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
 
     This gives you visibility into CrowdStrike without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 ::::
@@ -97,11 +97,11 @@ Expand a section below for your endpoint security system:
         * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
         * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Read.All` and `Machine.Isolate`).
 
-    * {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` To run a script on a host:
+    * {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` To run a script on a host:
     
         * Microsoft Defender for Endpoint connector: Permission to  manage live response library files as well as run live response on a specific machine (`Windows Defender ATP: Library.Manage` and `Machine.LiveResponse`)
 
-    * {applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` To cancel an ongoing action on a host, you need the same permissions that are required for the action you're canceling.
+    * {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` To cancel an ongoing action on a host, you need the same permissions that are required for the action you're canceling.
 
     Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 
@@ -140,7 +140,7 @@ Expand a section below for your endpoint security system:
     4. (Optional) If necessary, adjust the default values populated for the other configuration parameters.
     5. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on Microsoft Defender for Endpoint events and data.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/using-the-rule-ui.md) to generate {{elastic-sec}} alerts based on Microsoft Defender for Endpoint events and data.
 
     This gives you visibility into Microsoft Defender hosts without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 
@@ -194,7 +194,7 @@ Expand a section below for your endpoint security system:
 
     4. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule) to generate {{elastic-sec}} alerts based on SentinelOne events and data.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** Create [detection rules](/solutions/security/detect-and-alert/custom-query.md) to generate {{elastic-sec}} alerts based on SentinelOne events and data.
 
     This gives you visibility into SentinelOne without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 

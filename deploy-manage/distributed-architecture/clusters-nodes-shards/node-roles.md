@@ -3,8 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
 applies_to:
   stack:
-  deployment:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -14,6 +12,17 @@ products:
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 
 Each node performs one or more roles. Roles control the behavior of the node in the cluster.
+
+:::{admonition} Managing node roles for your deployment type
+ECH, ECE, ECK, and self-managed clusters all use node roles. However, the way that you set or change them depends on your deployment type.
+
+* **Self-managed clusters**: Use the instructions on this page.
+* **ECK**: Following the instructions on this page, [add node role information to your spec](/deploy-manage/deploy/cloud-on-k8s/node-configuration.md) instead of `elasticsearch.yml`.
+* **ECH and ECE**: Add capacity to the matching instance type or tier in your deployment configuration:
+  * [ECE](/deploy-manage/deploy/cloud-enterprise/customize-deployment.md)
+  * [ECH](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md)
+:::
+
 
 ## Set node roles [set-node-roles]
 
@@ -158,7 +167,7 @@ Data nodes hold the shards that contain the documents you have indexed. Data nod
 
 The main benefit of having dedicated data nodes is the separation of the master and data roles.
 
-In a multi-tier deployment architecture, you use specialized data roles to assign data nodes to specific tiers: `data_content`,`data_hot`, `data_warm`, `data_cold`, or `data_frozen`. A node can belong to multiple tiers.
+In a multi-tier deployment architecture, you use specialized data roles to assign data nodes to specific [data tiers](/manage-data/lifecycle/data-tiers.md): `data_content`,`data_hot`, `data_warm`, `data_cold`, or `data_frozen`. A node can belong to multiple tiers.
 
 If you want to include a node in all tiers, or if your cluster does not use multiple tiers, then you can use the generic `data` role.
 
@@ -263,7 +272,7 @@ node.roles: [ ingest ]
 
 If you take away the ability to be able to handle master duties, to hold data, and pre-process documents, then you are left with a *coordinating* node that can only route requests, handle the search reduce phase, and distribute bulk indexing. Essentially, coordinating only nodes behave as smart load balancers.
 
-Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
+Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state]({{es-apis}}operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
 
 ::::{warning}
 Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.

@@ -3,6 +3,8 @@ navigation_title: ECE orchestrator
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # {{ece}} orchestrator users

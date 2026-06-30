@@ -130,7 +130,7 @@ node --import @elastic/opentelemetry-node your-app.js
 :::{tab-item} Windows
 
 ```powershell
-$env:OTEL_LOG_LEVEL="debug" 
+$env:OTEL_LOG_LEVEL="debug"
 node --import @elastic/opentelemetry-node your-app.js
 ```
 :::
@@ -141,8 +141,8 @@ This produces debug-level logs from the SDK itself.
 If you also want to inspect the actual telemetry your app is generating, configure exporters to log traces, metrics, or logs to the console. For example:
 
 ```sh
-export OTEL_TRACES_EXPORTER=otlp, console
-export OTEL_METRICS_EXPORTER=otlp, console
+export OTEL_TRACES_EXPORTER=otlp,console
+export OTEL_METRICS_EXPORTER=otlp,console
 node --import @elastic/opentelemetry-node your-app.js
 ```
 
@@ -159,7 +159,7 @@ Refer to [Logging configuration](elastic-otel-php://reference/edot-php/configura
 For deeper troubleshooting, you can also enable diagnostic data collection. For example:
 
 ```bash
-export ELASTIC_OTEL_DEBUG_DIAGNOSTIC_FILE=/tmp/php_diag_%p_%t.txt php test.php
+ELASTIC_OTEL_DEBUG_DIAGNOSTIC_FILE=/tmp/php_diag_%p_%t.txt php test.php
 ```
 
 Ensure the file path is writable by the PHP process. If multiple PHP processes are running, use directives in the diagnostic file name to generate unique files and prevent overwriting. You can use:

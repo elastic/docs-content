@@ -15,6 +15,10 @@ products:
 
 Selecting a non-mobile [**service**](/solutions/observability/apm/services.md) brings you to the **Service overview**. The **Service overview** contains a wide variety of charts and tables that provide high-level visibility into how a service is performing across your infrastructure:
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/service-health
+:::
+
 * Service details like service version, runtime version, framework, and APM agent name and version
 * Container and orchestration information
 * Cloud provider, machine type, service name, region, and availability zone

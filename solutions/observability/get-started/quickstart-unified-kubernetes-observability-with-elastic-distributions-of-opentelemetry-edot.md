@@ -26,11 +26,19 @@ For a more detailed description of the components and advanced configuration, re
 
 ## Prerequisites [_prerequisites_2]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} serverless:
+
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
+* A running {{k8s}} cluster (v1.23 or later).
+* [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
+* Helm version 3.9+ up to and including {{helm-version}}.
+* (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
+
+:::
+
+:::{applies-item} stack:
 
 * An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A running {{k8s}} cluster (v1.23 or later).
@@ -40,35 +48,24 @@ For a more detailed description of the components and advanced configuration, re
 
 :::
 
-:::{tab-item} {{serverless-short}}
-:sync: serverless
-
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
-* A running {{k8s}} cluster (v1.23 or later).
-* [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
-* Helm version 3.9+ up to and including {{helm-version}}.
-* (optional) [Cert-manager](https://cert-manager.io/docs/installation/), if you opt for automatic generation and renewal of TLS certificates.
-
-:::
 ::::
 
 ## Collect your data [_collect_your_data_2]
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} serverless:
 
-1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
-2. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
+2. In your {{obs-serverless}} project, go to **Add Data**.
+3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
-    :::{image} /solutions/images/observability-quickstart-k8s-otel-entry-point.png
+    :::{image} /solutions/images/serverless-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
     :screenshot:
     :::
 
-3. Follow the on-screen instructions to install all needed components.
+4. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
     The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
@@ -86,19 +83,17 @@ For a more detailed description of the components and advanced configuration, re
 
 :::
 
-:::{tab-item} {{serverless-short}}
-:sync: serverless
+:::{applies-item} stack:
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
-2. In your {{obs-serverless}} project, go to **Add Data**.
-3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
+1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
+2. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
-    :::{image} /solutions/images/serverless-quickstart-k8s-otel-entry-point.png
+    :::{image} /solutions/images/observability-quickstart-k8s-otel-entry-point.png
     :alt: Kubernetes-OTel entry point
     :screenshot:
     :::
 
-4. Follow the on-screen instructions to install all needed components.
+3. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
     The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).

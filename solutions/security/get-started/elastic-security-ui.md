@@ -92,7 +92,7 @@ Expand this section to access the following dashboards, which provide interactiv
 
 - Overview
 - Detection & Response
-- {applies_to}`serverless: unavailable` Kubernetes
+- {applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Kubernetes
 - Cloud Security Posture
 - Cloud Native Vulnerability Management
 - Entity Analytics
@@ -105,19 +105,48 @@ You can also create and view custom dashboards. Refer to [](/solutions/security/
 
 Expand this section to access the following pages:
 
-* [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
+* [{{siem-rules-ui}}](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
 * [Benchmarks](/solutions/security/cloud/benchmarks.md): View, set up, or configure cloud security benchmarks.
 
 * [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
+* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
+
+### Detections [_detections]
+
+```yaml {applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+Expand this section to access the following pages:
+
+* [Alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md): View and manage detection alerts to monitor activity within your network.
+* [Attacks](/solutions/security/ai/attacks-page.md): View and triage correlated attack chains alongside their associated alerts.
+
+Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
 ### Alerts [_alerts]
 
+```yaml {applies_to}
+stack: ga 9.0-9.3
+```
+
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
+### Workflows
+```yaml {applies_to}
+stack: preview 9.3+
+serverless: preview
+```
+
+:::{admonition} Requirements
+To access this section, turn on the Elastic Workflows (`workflows:ui:enabled`) [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
+:::
+
+Create and manage workflows that automate tasks such as incident response, case creation, and notification routing. Refer to [](/explore-analyze/workflows.md) for more information.
 
 ### Attack discovery
 
@@ -127,6 +156,8 @@ Use large language models (LLMs) to analyze alerts in your environment and ident
 ### Assets [security-ui-assets]
 
 The Assets section allows you to manage the following features:
+
+
 
 * [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md)
 * [Endpoint protection](/solutions/security/manage-elastic-defend.md)
@@ -139,12 +170,10 @@ The Assets section allows you to manage the following features:
     * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
     * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
 
-* [Cloud security](/solutions/security/cloud.md)
-
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/security-cases.md) to learn more.
 
 
 ### Entity analytics
@@ -154,24 +183,23 @@ serverless: ga
 ```
 
 :::{admonition} Requirements
+:applies_to: {stack: removed 9.3, serverless: removed}
 To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 :::
 
 Expand this section to access the following pages:
 
-- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
-- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+- [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md): Set up your privileged users and monitor their activities to identify suspicious behavior.
 
 
-### Explore [_explore]
+### Explore [_explore] 
 
-Expand this section to access the following pages:
+* [Hosts](/solutions/security/advanced-entity-analytics/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
 
-* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+* [Network](/solutions/security/advanced-entity-analytics/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
 
-* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
-
-* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
+* [Users](/solutions/security/advanced-entity-analytics/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
 
 
 ### Investigations [security-ui-investigations]
@@ -208,6 +236,16 @@ Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/mac
 
 Quickly add security integrations that can ingest data and monitor your hosts.
 
+### SIEM Readiness [security-ui-siem-readiness]
+
+```yaml {applies_to}
+stack: beta 9.4
+serverless:
+  security: beta
+```
+
+Assess your security data posture across four dimensions: coverage, quality, continuity, and retention. Take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
+
 ### Developer tools [security-ui-dev-tools]
 
 Use additional API and analysis tools to interact with your data.
@@ -217,7 +255,7 @@ Use additional API and analysis tools to interact with your data.
 Use the management or project settings pages to access and manage:
 
 - Additional security features
-- {applies_to}`stack: ga` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- {applies_to}`serverless: unavailable` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
 - [{{integrations}}](/reference/fleet/manage-integrations.md)
 - Indices, data streams, and rollups
 - {applies_to}`serverless: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
@@ -235,7 +273,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 * Press the `Tab` key to apply keyboard focus to an element within a table. Or, use your mouse to click on an element and apply keyboard focus to it.
 
   :::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus.gif
-  :alt: timeline accessiblity keyboard focus
+  :alt: timeline accessibility keyboard focus
   :width: 650px
   :screenshot:
   :::
@@ -243,7 +281,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 * Press `Enter` on an element with keyboard focus to display its menu and press `Tab` to apply focus sequentially to menu options. The `f`, `o`, `a`, `t`, `c` hotkeys are automatically enabled during this process and offer an alternative way to interact with menu options.
 
   :::{image} /solutions/images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
-  :alt: timeline accessiblity keyboard focus hotkeys
+  :alt: timeline accessibility keyboard focus hotkeys
   :width: 500px
   :screenshot:
   :::
@@ -251,14 +289,14 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 * Press the spacebar once to begin dragging an element to a different location and press it a second time to drop it. Use the directional arrows to move the element around the UI.
 
   :::{image} /solutions/images/security-timeline-ui-accessiblity-drag-n-drop.gif
-  :alt: timeline ui accessiblity drag n drop
+  :alt: timeline ui accessibility drag n drop
   :screenshot:
   :::
 
 * If an event has an event renderer, press the `Shift` key and the down directional arrow to apply keyboard focus to the event renderer and `Tab` or `Shift` + `Tab` to navigate between fields. To return to the cells in the current row, press the up directional arrow. To move to the next row, press the down directional arrow.
 
   :::{image} /solutions/images/security-timeline-accessiblity-event-renderers.gif
-  :alt: timeline accessiblity event renderers
+  :alt: timeline accessibility event renderers
   :screenshot:
   :::
 
@@ -270,7 +308,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 * Use the directional arrows to move keyboard focus right, left, up, and down in a table.
 
   :::{image} /solutions/images/security-timeline-accessiblity-directional-arrows.gif
-  :alt: timeline accessiblity directional arrows
+  :alt: timeline accessibility directional arrows
   :width: 500px
   :screenshot:
   :::
@@ -278,7 +316,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 * Press the `Tab` key to navigate through a table cell with multiple elements, such as buttons, field names, and menus. Pressing the `Tab` key will sequentially apply keyboard focus to each element in the table cell.
 
   :::{image} /solutions/images/security-timeline-accessiblity-tab-keys.gif
-  :alt: timeline accessiblity tab keys
+  :alt: timeline accessibility tab keys
   :width: 400px
   :screenshot:
   :::
@@ -286,13 +324,13 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 * Use `CTRL + Home` to shift keyboard focus to the first cell in a row. Likewise, use `CTRL + End` to move keyboard focus to the last cell in the row.
 
   :::{image} /solutions/images/security-timeline-accessiblity-shifting-keyboard-focus.gif
-  :alt: timeline accessiblity shifting keyboard focus
+  :alt: timeline accessibility shifting keyboard focus
   :screenshot:
   :::
 
 * Use the `Page Up` and `Page Down` keys to scroll through the page.
 
   :::{image} /solutions/images/security-timeline-accessiblity-page-up-n-down.gif
-  :alt: timeline accessiblity page up n down
+  :alt: timeline accessibility page up n down
   :screenshot:
   :::

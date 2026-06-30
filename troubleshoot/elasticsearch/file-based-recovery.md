@@ -19,7 +19,7 @@ The `file` realm is especially helpful for recovery scenarios where normal secur
 * Node services are running but cluster is unresponsive
 * {{stack}} {{security-features}} are unavailable to the current node
 * {{stack}} {{security-features}} are [lost and need to be restored](/troubleshoot/elasticsearch/red-yellow-cluster-status.md#fix-cluster-status-restore) 
-* Administrative users' passwords are lost and [need to be reset](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password)
+* Administrative users' passwords are lost and [need to be reset]({{es-apis}}operation/operation-security-change-password)
 
 The {{stack}} {{security-features}} only apply the `file` realm to the modified local node and do not apply changes across all nodes within the cluster. Administrators of self-managed deployments are responsible for ensuring one of the following:
 
@@ -55,7 +55,7 @@ Before granting a `file` realm user any roles, you need to ensure that those des
 
 {{es}} recommends following the industry's [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) when granting user permissions. {{es}} follows this guidance itself by [restricting system indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) by default, even from [`superuser` role](elasticsearch://reference/elasticsearch/roles.md) administrators including the [`elastic` built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). 
 
-The main {{stack}} {{security-features}} rely on the `security` [feature state](/deploy-manage/tools/snapshot-and-restore.md) which is mostly composed of the `.security*` [system indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices). When recovering {{stack}} {{security-features}}, you will likely need to temporarily define a custom role with the [`allow_restricted_indices` setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) enabled.
+The main {{stack}} {{security-features}} rely on the `security` [feature state](/deploy-manage/tools/snapshot-and-restore.md) which is mostly composed of the `.security*` [system indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices). When recovering {{stack}} {{security-features}}, you will likely need to temporarily define a custom role with the [`allow_restricted_indices` setting]({{es-apis}}operation/operation-security-put-role) enabled.
 
 For example, to grant the administrative privileges of `superuser` role alongside `allow_restricted_indices: true` you can create a new role called `superduperuser` with the following definition:
 
@@ -222,7 +222,7 @@ You can also add `file` realm users using [{{k8s}} basic authentication secrets]
 
 At this point, the local {{es}} node will accept [Elasticsearch API requests](https://www.elastic.co/docs/reference/elasticsearch/rest-apis) with the created `file` based username and password. 
 
-For example, if you created a user with the username `admin`, password `changeme`, and role `superduperuser`, then you can now send a cURL request to the [Get cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info) from the node's local shell:
+For example, if you created a user with the username `admin`, password `changeme`, and role `superduperuser`, then you can now send a cURL request to the [Get cluster info API]({{es-apis}}group/endpoint-info) from the node's local shell:
 ```bash
 curl -X GET -sk -u "admin:changeme" "https://localhost:9200/" 
 ```
@@ -231,7 +231,7 @@ curl -X GET -sk -u "admin:changeme" "https://localhost:9200/"
 The related API requests need to be directed to the local nodes where `file` has been configured, rather than to any cluster-level load balancer or proxy URL.
 :::
 
-You can confirm that the desired `superduperuser` role is applied to your `admin` username using the [Authenticate a user API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate):
+You can confirm that the desired `superduperuser` role is applied to your `admin` username using the [Authenticate a user API]({{es-apis}}operation/operation-security-authenticate):
 ```bash
 curl -X GET -sk -u "admin:changeme" "https://localhost:9200/_security/_authenticate?pretty=true" 
 ```

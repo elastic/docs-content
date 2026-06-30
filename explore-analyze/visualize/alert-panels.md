@@ -32,6 +32,7 @@ There are several actions you can take on alerts in the alerts panel. Under **Ac
 - **View alert details**: Open the alert details flyout.
 - (**Active** rules only) **Mark as untracked**: Change the alert's status from **Active** to **Untracked**.
 - (**Active** rules only) **Mute**: Mute alerts from the associated rule.
+- (**Active** rules only) **Mark as acknowledged**: Set the alert to [**acknowledged**](https://www.elastic.co/docs/explore-analyze/alerting/alerts/view-alerts#acknowledge-alerts) {applies_to}`stack: ga 9.4+`
 
 ## Edit an alerts panel
 

@@ -19,7 +19,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 ::::
 
 
-In {{eck}}, you can use {{stack}} configuration policies to configure {{es}} security realms for more than one cluster at once. The authentication will apply to all {{es}} clusters and {{kib}} instances managed by the {{stack}} configuration policy.
+In {{eck}}, you can use [{{stack}} configuration policies](/deploy-manage/deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) to configure {{es}} security realms for more than one cluster at once. The authentication will apply to all {{es}} clusters and {{kib}} instances managed by the {{stack}} configuration policy.
 
 Examples for configuring some of the authentication methods can be found below:
 

@@ -17,7 +17,7 @@ When you log in, {{kib}} creates a session that is used to authenticate subseque
 
 When your session expires, or you log out, {{kib}} will invalidate your cookie and remove session information from the index. {{kib}} also periodically invalidates and removes any expired sessions that weren’t explicitly invalidated.
 
-To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-user-session). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
+To manage user sessions programmatically, {{kib}} exposes [session management APIs]({{kib-apis}}group/endpoint-user-session). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
 
 ## Session idle timeout [session-idle-timeout]
 
@@ -35,6 +35,12 @@ You can use `xpack.security.session.lifespan` to configure the maximum session d
 ```yaml
 xpack.security.session.lifespan: "7d"
 ```
+
+::::{note}
+You can define session lifespan globally with `xpack.security.session.lifespan`, or per authentication provider with `xpack.security.authc.providers.<provider-type>.<provider-name>.session.lifespan`. For more details, refer to [Valid settings for all authentication providers](kibana://reference/configuration-reference/security-settings.md#authentication-provider-settings).
+
+For example, when using [{{ecloud}} SSO](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md), {{ecloud}} sets a default lifespan of `24h` for the Cloud SSO SAML provider.
+::::
 
 
 ## Session cleanup interval [session-cleanup-interval]

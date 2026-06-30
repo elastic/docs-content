@@ -6,6 +6,10 @@ applies_to:
 navigation_title: "Remote cluster filters"
 sub:
   policy-type: "Private connection"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Remote cluster filtering
@@ -23,11 +27,7 @@ Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.m
 
 ## How remote cluster filters work
 
-Remote cluster filters operate at the proxy level, allowing incoming connections based on the organization ID or {{es}} cluster ID of the local cluster that initiates the connection to the remote cluster service endpoint (default port `9443`).
-
-::::{note}
-In {{ece}}, the equivalent of the organization ID in {{ech}} is the **environment ID**, which serves the same purpose for remote cluster filtering.
-::::
+Remote cluster filters operate at the proxy level, allowing incoming connections based on the organization ID (ECH), environment ID (ECE), or {{es}} cluster ID of the local cluster that initiates the connection to the remote cluster service endpoint (default port `9443`).
 
 Because of [how network security works](/deploy-manage/security/network-security.md#how-network-security-works), these filters are only relevant when network security is enabled on the remote cluster.
 * If network security is disabled, all traffic is allowed by default and remote clusters work without any filtering policy.
@@ -45,30 +45,35 @@ This guide covers the following remote cluster filtering tasks:
 
 ## Create a remote cluster filter [create-remote-cluster-filter]
 
-:::::{tab-set}
-:group: deployment
-::::{tab-item} {{ech}}
-:sync: ech
+:::::{applies-switch}
+
+::::{applies-item} ess:
+
 Remote cluster filters are presented in {{ecloud}} as a type of Private Connection filter. To create a remote cluster filter:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Create** > **Private connection**.
-5. Select the cloud provider and region for the remote cluster filter. 
-   
+3. Select **Create** > **Private connection**.
+4. Select the cloud provider and region for the remote cluster filter. 
+    
     :::{note}
     Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 
-6. Under **Connectivity**, select **Remote cluster**.
-7. Add a meaningful name and description for the filter.
-8. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
+5. Under **Connectivity**, select **Remote cluster**.
+6. Add a meaningful name and description for the filter.
+7. In the **Organization ID** and **{{es}} ID** fields, specify the source of the allowed traffic:
+
+    * Use the **Organization ID** to allow traffic from all deployments in the specified organization.
+    * Use the **{{es}} cluster ID** to allow traffic only from specific deployments.
+
+    You can provide one or both values. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
     You can find the organization ID on the organization page in the top-right menu, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
     ::::
 
-9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments. After you associate the filter with a deployment, it will allow remote cluster traffic coming from the organization or {{es}} IDs defined in the rules.
+8.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments. After you associate the filter with a deployment, it will allow remote cluster traffic coming from the organization or {{es}} IDs defined in the rules.
 
     :::{note}
     You can apply multiple policies to a single deployment. For {{ech}} deployments, you can apply both IP filter policies and private connection policies. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -76,12 +81,11 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-8.  To automatically attach this filter to new deployments, select **Apply by default**.
-9.   Click **Create**.
+9.  To automatically attach this filter to new deployments, select **Apply by default**.
+10.   Click **Create**.
 ::::
 
-::::{tab-item} {{ece}}
-:sync: ece
+::::{applies-item} ece:
 
 To create a remote cluster filter:
 
@@ -90,14 +94,19 @@ To create a remote cluster filter:
 3. Select **Create filter**.
 4. Select **Remote cluster rule set** as the filter type.
 5. Add a meaningful name and description for the rule set.
-6. In the **Organization ID** and **{{es}} ID** fields, enter the ECE environment ID or cluster ID of the deployments from which you want to allow traffic.
-   * Use the **ECE environment ID** as the organization ID to allow traffic from all deployments in that environment.
-   * Use the **{{es}} cluster ID** to allow traffic only from specific deployments.
+6. In the **Environment ID** and **{{es}} ID** fields, specify the source of the allowed traffic:
 
-   Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
+    * Use the **ECE environment ID** to allow traffic from all deployments in the ECE platform.
+    * Use the **{{es}} cluster ID** to allow traffic only from specific deployments.
+
+    You can provide one or both values. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
     You can find the ECE environment ID under **Platform → Trust Management → Trust parameters**, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
+    ::::
+
+    ::::{note}
+    In {{ece}} versions earlier than 4.1, this field can appear as **Organization ID** in the UI. Use your ECE environment ID.
     ::::
 
 7. Select if this rule set should be automatically attached to new deployments.
@@ -111,11 +120,9 @@ To create a remote cluster filter:
 
 After you've created the network security policy or rule set, you'll need to associate it with your deployment. To do that:
 
-:::::::{tab-set}
-:group: deployment
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-:sync: ech
+::::::{applies-item} ess:
 
 #### From a deployment
 
@@ -126,13 +133,13 @@ After you've created the network security policy or rule set, you'll need to ass
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments.
-7. Click **Update** to save your changes.
+3. Find the policy you want to edit.
+4. Under **Apply to resources**, associate the policy with one or more deployments.
+5. Click **Update** to save your changes.
 ::::::
 
-::::::{tab-item} {{ece}}
-:sync: ece
+::::::{applies-item} ece:
+
 :::{include} _snippets/associate-filter-ece.md
 :::
 
@@ -144,11 +151,9 @@ After you've created the network security policy or rule set, you'll need to ass
 
 To remove a network security policy or rule set association from your deployment:
 
-:::::::{tab-set}
-:group: deployment
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-:sync: ech
+::::::{applies-item} ess:
 
 You can remove associations from your deployments directly from the policy settings or from the deployment security page.
 
@@ -162,15 +167,14 @@ You can remove associations from your deployments directly from the policy setti
 #### From the network security policy settings
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
-5. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
-6. Click **Update** to save your changes.
+3. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
+4. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+5. Click **Update** to save your changes.
 
 
 ::::::
 
-::::::{tab-item} {{ece}}
-:sync: ece
+::::::{applies-item} ece:
 
 :::{include} _snippets/detach-filter-ece.md
 :::
@@ -183,20 +187,17 @@ You can remove associations from your deployments directly from the policy setti
 
 You can edit a remote cluster filter policy name or change the list of allowed Organization IDs and {{es}} cluster IDs. To do that:
 
-:::::::{tab-set}
-:group: deployment
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-:sync: ech
+::::::{applies-item} ess:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
-5. Select **Update** to save your changes.
+3. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
+4. Select **Update** to save your changes.
 ::::::
 
-::::::{tab-item} {{ece}}
-:sync: ece
+::::::{applies-item} ece:
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Security**.
@@ -213,19 +214,17 @@ If you need to remove a remote cluster filter policy, you must first [remove any
 
 To delete a filter:
 
-:::::::{tab-set}
-:group: deployment
+:::::::{applies-switch}
 
-::::::{tab-item} {{ech}}
-:sync: ech
+::::::{applies-item} ess:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the rule set you want to edit, then select the **Delete** {icon}`trash` button. The icon is inactive if there are deployments associated with the filter.
+3. Find the rule set you want to edit, then select the **Delete** {icon}`trash` button. The icon is inactive if there are deployments associated with the filter.
 ::::::
 
-::::::{tab-item} {{ece}}
-:sync: ece
+::::::{applies-item} ece:
+
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Security**.

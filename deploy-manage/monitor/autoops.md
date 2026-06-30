@@ -3,15 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops.html
 applies_to:
   serverless:
-  deployment:
-    ess: all
-    self:
-    ece:
-    eck:
+  stack: ga
 products:
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: cloud-enterprise
+  - id: cloud-serverless
 ---
 
 # AutoOps [ec-autoops]
@@ -43,20 +40,22 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 ## Regions where AutoOps is available
 
-Depending on your deployment type, AutoOps has been rolled out across various [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). More regions and CSPs are coming soon.
+Depending on your deployment type, AutoOps has been rolled out across various [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). More regions are coming soon.
 
 ## Deployment types where AutoOps is available
 
 :::{include} /deploy-manage/monitor/_snippets/autoops-availability.md
 :::
 
-AutoOps is currently not available for air-gapped environments because it's a cloud service and you need an internet connection to send metrics to {{ecloud}}. However, we plan to offer a locally deployable version in the future.
+Currently, you can make [specific configuration choices](/deploy-manage/monitor/autoops/ec-autoops-faq.md#autoops-air-gapped) to securely use AutoOps in air-gapped environments, but a locally deployable version is planned for a future release.
 
 ## How AutoOps is licensed
 
-For {{ech}} deployments and {{serverless-short}} projects, AutoOps is available to {{ecloud}} customers at all subscription levels at no additional cost, and it does not consume ECU.
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-:::
+AutoOps is available for free across all subscription levels in {{ech}} deployments and {{serverless-short}} projects.
+
+New: AutoOps is now also available for free across all [self-managed license types](https://www.elastic.co/subscriptions) in ECE, ECK, and self-managed clusters. 
+
+Using AutoOps does not consume ECUs.
 
 ## How long AutoOps retains data [ec_autoops_retention_period]
 

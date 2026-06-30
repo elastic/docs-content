@@ -15,7 +15,7 @@ products:
 
 The response console allows you to perform response actions on an endpoint using a terminal-like interface. You can enter action commands and get near-instant feedback on them. Actions are also recorded in the endpoint’s [response actions history](/solutions/security/endpoint-response-actions.md#actions-log) for reference.
 
-Response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
+Unless otherwise specified, response actions are supported on all endpoint platforms (Linux, macOS, and Windows).
 
 ::::{admonition} Requirements
 * Response actions and the response console UI require the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
@@ -64,120 +64,25 @@ Once you submit a response action, you can’t cancel it, even if the action is 
 The following response action commands are available in the response console.
 
 
-### `isolate` [_isolate]
-
-[Isolate the host](/solutions/security/endpoint-response-actions/isolate-host.md), blocking communication with other hosts on the network.
-
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
-
-Example: `isolate --comment "Isolate host related to detection alerts"`
-
-
-### `release` [_release]
-
-Release an isolated host, allowing it to communicate with the network again.
-
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
-
-Example: `release --comment "Release host, everything looks OK"`
-
-
-### `status` [_status]
-
-Show information about the host’s status, including: {{agent}} status and version, the {{elastic-defend}} integration’s policy status, and when the host was last active.
-
-
-### `processes` [processes]
-
-Show a list of all processes running on the host. This action may take a minute or so to complete.
-
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
-
-::::{tip}
-Use this command to get current PID or entity ID values, which are required for other response actions such as `kill-process` and `suspend-process`.
-
-Entity IDs may be more reliable than PIDs, because entity IDs are unique values on the host, while PID values can be reused by the operating system.
-::::
-
+### `cancel` [cancel]
+```yaml {applies_to}
+stack: ga 9.2
+serverless: ga
+```
 
 ::::{note}
-Running this command on third-party-protected hosts might return the process list in a different format. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for more information.
+This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
 ::::
 
+Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
 
-### `kill-process` [kill-process]
+You must include the following parameter to identify the action to cancel:
 
-Terminate a process. You must include one of the following parameters to identify the process to terminate:
+* `--action`: The response action to cancel. Select from a list of pending actions.
 
-* `--pid` : A process ID (PID) representing the process to terminate.
-* `--entityId` : An entity ID representing the process to terminate.
+Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
-
-Example: `kill-process --pid 123 --comment "Terminate suspicious process"`
-
-::::{note}
-For SentinelOne-enrolled hosts, you must use the parameter `--processName` to identify the process to terminate. `--pid` and `--entityId` are not supported.
-
-Example: `kill-process --processName cat --comment "Terminate suspicious process"`
-::::
-
-
-### `suspend-process` [_suspend_process]
-
-Suspend a process. You must include one of the following parameters to identify the process to suspend:
-
-* `--pid` : A process ID (PID) representing the process to suspend.
-* `--entityId` : An entity ID representing the process to suspend.
-
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
-
-Example: `suspend-process --pid 123 --comment "Suspend suspicious process"`
-
-
-### `get-file` [get-file]
-
-Retrieve a file from a host. Files are downloaded in a password-protected `.zip` archive to prevent the file from running. Use password `elastic` to open the `.zip` in a safe environment.
-
-::::{note}
-Files retrieved from third-party-protected hosts require a different password. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for your system’s password.
-::::
-
-
-You must include the following parameter to specify the file’s location on the host:
-
-* `--path` : The file’s full path (including the file name).
-
-Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
-
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
-
-Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
-
-::::{note}
-:applies_to: {"stack": "removed 9.3", "serverless": "removed"}
-The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB.
-::::
-
-::::{tip}
-You can use the [Osquery manager integration](/solutions/security/investigate/osquery.md) to query a host’s operating system and gain insight into its files and directories, then use `get-file` to retrieve specific files.
-::::
-
-
-::::{note}
-When {{elastic-defend}} prevents file activity due to [malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), the file is quarantined on the host and a malware prevention alert is created. To retrieve this file with `get-file`, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter.
-::::
-
+Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
 
 ### `execute` [_execute]
 
@@ -203,49 +108,146 @@ This response action runs commands on the host using the same user account runni
 ::::
 
 
-### `upload` [_upload]
+### `get-file` [get-file]
 
-Upload a file to the host. The file is saved to the location on the host where {{elastic-endpoint}} is installed. After you run the command, the full path is returned in the console for reference. Use these parameters:
+Retrieve a file from a host. Files are downloaded in a password-protected `.zip` archive to prevent the file from running. Use password `elastic` to open the `.zip` in a safe environment.
 
-* `--file` : (Required) The file to send to the host. As soon as you type this parameter, a popup appears — select it to navigate to the file, or drag and drop the file onto the popup.
-* `--overwrite` : (Optional) Overwrite the file on the host if it already exists.
+::::{note}
+Files retrieved from third-party-protected hosts require a different password. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for your system’s password.
+::::
+
+
+You must include the following parameter to specify the file’s location on the host:
+
+* `--path` : The file’s full path (including the file name).
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
 
-Example: `upload --file --comment "Upload remediation script"`
+Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
+
+::::{note}
+:applies_to: stack: ga 9.0-9.2
+The maximum file size that `get-file` can retrieve is `104857600` bytes, or 100 MB. This limitation doesn't apply to {{serverless-short}} projects.
+::::
 
 ::::{tip}
-You can follow this with the `execute` response action to upload and run scripts for mitigation or other purposes.
+You can use the [Osquery manager integration](/solutions/security/investigate/osquery.md) to query a host’s operating system and gain insight into its files and directories, then use `get-file` to retrieve specific files.
 ::::
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. 
-
-({applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` the maximum value of `xpack.securitySolution.maxUploadResponseActionFileBytes` is `104857600` bytes, or 100 MB).
+When {{elastic-defend}} prevents file activity due to [malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), the file is quarantined on the host and a malware prevention alert is created. To retrieve this file with `get-file`, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter.
 ::::
 
 
-### `scan` [_scan]
+### `isolate` [_isolate]
 
-Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
+[Isolate the host](/solutions/security/endpoint-response-actions/isolate-host.md), blocking communication with other hosts on the network.
 
-* `--path` : (Required) The absolute path to a file or directory to be scanned.
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
-Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
 
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Scan Operations**
+Example: `isolate --comment "Isolate host related to detection alerts"`
 
-Example: `scan --path "/Users/username/Downloads" --comment "Scan Downloads folder for malware"`
+
+### `kill-process` [kill-process]
+
+Terminate a process. You must include one of the following parameters to identify the process to terminate:
+
+* `--pid` : A process ID (PID) representing the process to terminate.
+* `--entityId` : An entity ID representing the process to terminate.
+
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
+
+Example: `kill-process --pid 123 --comment "Terminate suspicious process"`
 
 ::::{note}
-Scanning can take longer for directories containing a lot of files.
+For SentinelOne-enrolled hosts, you must use the parameter `--processName` to identify the process to terminate. `--pid` and `--entityId` are not supported.
+
+Example: `kill-process --processName cat --comment "Terminate suspicious process"`
 ::::
+
+
+### `memory-dump` [memory-dump]
+```yaml {applies_to}
+stack: ga 9.3+
+serverless: ga
+```
+
+Trigger a virtual process or kernel system memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
+
+::::{note}
+This response action is supported for:
+  - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Windows and Linux endpoints
+  - {applies_to}`stack: ga =9.3` Windows endpoints only
+::::
+
+The memory dump is stored on the endpoint's local disk. After running `memory-dump`, you must use the [`get-file`](#get-file) response action to download the dump from the endpoint.
+
+Use one of the following parameters to specify the type of memory dump:
+
+* `--kernel`: Generate a kernel-level memory dump. No other arguments are required when using this parameter.
+  ::::{note}
+  Kernel memory dumps are only supported on Windows endpoints.
+  ::::
+
+* `--process`: Generate a process-level memory dump. When using this parameter, you must also include one of the following to identify the process:
+    * `--pid`: The process ID (PID) of the process to dump.
+    * `--entityId`: The entity ID of the process to dump.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Examples:
+
+`memory-dump --process --entityId="jshks0fhksh"`
+
+`memory-dump --kernel --comment "Dumping kernel memory for investigation"`
+
+
+### `processes` [processes]
+
+Show a list of all processes running on the host. This action might take a minute or so to complete.
+
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
+
+::::{tip}
+Use this command to get current PID or entity ID values, which are required for other response actions such as `kill-process` and `suspend-process`.
+
+Entity IDs might be more reliable than PIDs, because entity IDs are unique values on the host, while PID values can be reused by the operating system.
+::::
+
+
+::::{note}
+Running this command on third-party-protected hosts might return the process list in a different format. Refer to [](/solutions/security/endpoint-response-actions/third-party-response-actions.md) for more information.
+::::
+
+
+### `release` [_release]
+
+Release an isolated host, allowing it to communicate with the network again.
+
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Host Isolation**
+
+Example: `release --comment "Release host, everything looks OK"`
 
 
 ### `runscript` [runscript]
+
+::::{note}
+:applies_to: stack: ga 9.0-9.3
+This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
+::::
 
 Run a script on a host. 
 
@@ -277,6 +279,26 @@ Examples:
 
 `runscript --HostPath="C:\temp\LocalScript.ps1" --CommandLine="-Verbose true"`
 
+#### {{elastic-defend}} [runscript-defend]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
+
+* `--script`: The name of the script to run. Select from a list of scripts available for the host's OS type. You can manage these scripts in the [script library](/solutions/security/endpoint-response-actions/script-library.md).
+
+You can also use these optional parameters:
+
+* `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+* `--timeout`: The maximum duration that the host should wait for the script to complete. Use `h` for hours, `m` for minutes, or `s` for seconds (for example, `37m`). If no timeout is specified, it defaults to four hours.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
 
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
@@ -320,25 +342,67 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 
 Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
 
-### `cancel` [cancel]
-```yaml {applies_to}
-stack: ga 9.2
-serverless: ga
-```
+
+### `scan` [_scan]
+
+Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
+
+* `--path` : (Required) The absolute path to a file or directory to be recursively scanned.
+
+Predefined role (in {{serverless-short}}): **Tier 3 Analyst**, **SOC Manager**, or **Endpoint Operations Analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Scan Operations**
+
+Example: `scan --path "/Users/username/Downloads" --comment "Scan Downloads folder for malware"`
 
 ::::{note}
-This response action is supported only for [Microsoft Defender for Endpoint–enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions).
+Scanning can take longer for directories containing a lot of files.
 ::::
 
-Cancel an ongoing action on the host. This allows you to force-cancel actions that are stuck in a pending state, unblocking further use of the response console.
 
-You must include the following parameter to identify the action to cancel:
+### `status` [_status]
 
-* `--action`: The response action to cancel. Select from a list of pending actions.
+Show information about the host’s status, including: {{agent}} status and version, the {{elastic-defend}} integration’s policy status, and when the host was last active.
 
-Required role or privilege: `cancel` doesn't have its own required role or privilege. To use it, you must have the same role or privilege that's required for the action you're canceling. For example, canceling a `runscript` action requires the **Execute Operations** privilege.
 
-Example: `cancel --action="copy.sh" --comment="Canceled because it is stuck"`
+### `suspend-process` [_suspend_process]
+
+Suspend a process. You must include one of the following parameters to identify the process to suspend:
+
+* `--pid` : A process ID (PID) representing the process to suspend.
+* `--entityId` : An entity ID representing the process to suspend.
+
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
+
+Example: `suspend-process --pid 123 --comment "Suspend suspicious process"`
+
+
+### `upload` [_upload]
+
+Upload a file to the host. The file is saved to the location on the host where {{elastic-endpoint}} is installed. After you run the command, the full path is returned in the console for reference. Use these parameters:
+
+* `--file` : (Required) The file to send to the host. As soon as you type this parameter, a popup appears — select it to navigate to the file, or drag the file onto the popup.
+* `--overwrite` : (Optional) Overwrite the file on the host if it already exists.
+
+Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
+
+Example: `upload --file --comment "Upload remediation script"`
+
+::::{tip}
+You can follow this with the `execute` response action to upload and run scripts for mitigation or other purposes.
+::::
+
+
+::::{note}
+The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes. 
+
+({applies_to}`stack: removed 9.4+` the maximum value of `xpack.securitySolution.maxUploadResponseActionFileBytes` is `104857600` bytes, or 100 MB).
+::::
+
 
 ## Supporting commands and parameters [supporting-commands-parameters]
 
@@ -377,12 +441,6 @@ Click {icon}`question` **Help** in the upper-right to open the **Help** panel, w
 This panel displays only the response actions that you have the user role or privileges to perform.
 ::::
 
-
-:::{image} /solutions/images/security-response-console-help-panel.png
-:alt: Help panel
-:width: 65%
-:screenshot:
-:::
 
 You can use this panel to build commands with less typing. Click the add icon (![Add icon](/solutions/images/security-add-command-icon.png "title =20x20")) to add a command to the input area, enter any additional parameters or a comment, then press **Return** to run the command.
 

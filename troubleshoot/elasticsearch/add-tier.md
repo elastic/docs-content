@@ -4,11 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html
 applies_to:
   stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 products:
   - id: elasticsearch
 ---
@@ -19,79 +14,26 @@ products:
 
 # Add a preferred data tier to a deployment [add-tier]
 
-The allocation of indices in an {{es}} deployment can be allocated on [data tiers](../../manage-data/lifecycle/data-tiers.md).
+In an {{es}} deployment, an index and its shards can be allocated to [data tiers](../../manage-data/lifecycle/data-tiers.md) using routing and allocation settings. 
 
-In order to allow indices to be allocated, follow these steps to add the [data tier](../../manage-data/lifecycle/data-tiers.md) the indices expect to be allocated on to your deployment:
+Different data tiers are optimized for specific workloads. For example, the hot tier is optimized for frequent writes and queries, while the warm tier for less frequent access. Adding a preferred tier ensures that data is stored on nodes with the appropriate hardware and performance characteristics.
 
-:::::::{tab-set}
+When indices have specific tier preferences, shards may remain unallocated if there are no nodes available in the preferred tier. Adding a preferred data tier ensures that the shards can be allocated to the appropriate nodes.
 
-::::::{tab-item} {{ech}}
-In order to get the shards assigned we need enable a new tier in the deployment.
+To allow indices to be allocated, follow these steps:
 
-**Use {{kib}}**
+1. [Determine which tiers](#determine-target-tier) an index's shards can be allocated to.
+1. [Resize your deployment](#resize-your-deployment) to add resources to the required tier.
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
 
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
+## Determine the target tier [determine-target-tier]
 
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
+You can run the following step using either [API console](/explore-analyze/query-filter/tools/console.md) or direct [Elasticsearch API](elasticsearch://reference/elasticsearch/rest-apis/index.md) calls.
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
-    :alt: {{kib}} Console
-    :screenshot:
-    :::
+:::{include} /troubleshoot/elasticsearch/_snippets/determine-data-tier-that-needs-capacity.md
+:::
 
-4. Determine which tier an index expects for assignment. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) the configured value for the `index.routing.allocation.include._tier_preference` setting:
+## Resize your deployment [resize-your-deployment]
 
-    ```console
-    GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
-    ```
-
-    The response will look like this:
-
-    ```console-result
-    {
-      "my-index-000001": {
-        "settings": {
-          "index.routing.allocation.include._tier_preference": "data_warm,data_hot" <1>
-        }
-      }
-    }
-    ```
-
-    1. Represents a comma-separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
-
-5. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Manage this deployment**.
-6. From the right hand side, click to expand the **Manage** dropdown button and select **Edit deployment** from the list of options.
-7. On the **Edit** page, click on **+ Add Capacity** for the tier you identified you need to enable in your deployment. Choose the desired size and availability zones for the new tier.
-8. Navigate to the bottom of the page and click the **Save** button.
-::::::
-
-::::::{tab-item} Self-managed
-In order to get the shards assigned you can add more nodes to your {{es}} cluster and assign the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
-
-To determine which tier an index requires for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
-
-```console
-GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
-```
-
-The response will look like this:
-
-```console-result
-{
-  "my-index-000001": {
-    "settings": {
-      "index.routing.allocation.include._tier_preference": "data_warm,data_hot" <1>
-    }
-  }
-}
-```
-
-1. Represents a comma-separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
-::::::
-
-:::::::
+:::{include} /troubleshoot/elasticsearch/_snippets/resize-your-deployment.md
+:::

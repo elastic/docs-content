@@ -14,13 +14,13 @@ products:
 
 ## HTTP 400: Data decoding error / Data validation error [apm-bad-request]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{stack}}
+:::{applies-item} stack:
 The most likely cause for this error is using incompatible versions of {{apm-agent}} and APM Server. See the [agent/server compatibility matrix](/solutions/observability/apm/apm-agent-compatibility.md) to verify compatibility.
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](/solutions/observability/apm/apm-agents/index.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
 :::
 
@@ -29,13 +29,13 @@ The most likely cause for this error is using an incompatible version of an {{ap
 
 ## HTTP 400: Event too large [apm-event-too-large]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{stack}}
+:::{applies-item} stack:
 APM agents communicate with the APM server by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you should consider increasing the [Max event size](/solutions/observability/apm/apm-server/general-configuration-options.md#apm-max_event_size) setting in the APM integration, and adjusting relevant settings in the agent.
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](/solutions/observability/apm/spans.md) or [reducing collected stack trace information](/solutions/observability/apm/reduce-storage.md#observability-apm-reduce-stacktrace).
 :::
 
@@ -44,13 +44,13 @@ APM agents communicate with the Managed intake service by sending events in an H
 
 ## HTTP 401: Invalid token [apm-unauthorized]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{stack}}
+:::{applies-item} stack:
 Either the [Secret token](/solutions/observability/apm/secret-token.md) in the request header doesn’t match the secret token configured in the APM integration, or the [API keys](/solutions/observability/apm/api-keys.md) is invalid.
 :::
 
-:::{tab-item} {{serverless-short}}
+:::{applies-item} serverless:
 The API key is invalid.
 :::
 

@@ -62,7 +62,7 @@ You will not need to use most command line flags. However, there are some you ma
     Throttling can also be disabled in the configuration file using [`monitor.throttling`](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 ::::{note}
-Network throttling for browser based monitors is disabled. See this [documention](https://github.com/elastic/synthetics/blob/main/docs/throttling.md) for more details.
+Network throttling for browser based monitors is disabled. See this [documentation](https://github.com/elastic/synthetics/blob/main/docs/throttling.md) for more details.
 
 ::::
 
@@ -181,7 +181,7 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
     This can also be set in the configuration file using [the `monitor.fields` option](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
 `--maintenance-windows Array<string>`
-:   A list of maintenance window IDs used to associate every monitor with one or more [maintenance windows](/explore-analyze/alerts-cases/alerts/maintenance-windows.md). This argument accepts a variable number of values as shown in the example.
+:   A list of maintenance window IDs used to associate every monitor with one or more [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md). This argument accepts a variable number of values as shown in the example.
 
         Example: `--maintenance-windows "maintenance-window-ID-1" "maintenance-window-ID-2`
 
@@ -307,11 +307,9 @@ If an administrator has disabled Elastic managed locations for the role you are 
 
 Generate a Time-based One-Time Password (TOTP) for multifactor authentication (MFA) in Synthetics.
 
-::::{tab-set}
-:group: stack-serverless
+::::{applies-switch}
 
-:::{tab-item} Elastic Stack
-:sync: stack
+:::{applies-item} stack:
 
 ```sh
 npx @elastic/synthetics totp <secret>
@@ -320,8 +318,7 @@ npx @elastic/synthetics totp <secret> --issuer <string> --label <string>
 
 :::
 
-:::{tab-item} Serverless
-:sync: serverless
+:::{applies-item} serverless:
 
 ```sh
 npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
@@ -335,7 +332,7 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 :   The encoded secret key used to generate the TOTP.
 
 `--issuer <string>`
-:   Name of the provider or service that is assocaited with the account.
+:   Name of the provider or service that is associated with the account.
 
 `--label <string>`
 :   Identifier for the account. Defaults to `SyntheticsTOTP`

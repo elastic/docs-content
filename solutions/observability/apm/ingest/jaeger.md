@@ -43,9 +43,9 @@ There are [caveats](#apm-caveats-jaeger) to this integration.
 
 The APM integration serves Jaeger gRPC over the same host and port as the Elastic {{apm-agent}} protocol.
 
-:::::::{tab-set}
+:::::::{applies-switch}
 
-::::::{tab-item} {{ecloud}}
+::::::{applies-item} ess:
 1. Log into [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body) and select your deployment.
 2. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select **Elastic APM**. If the integration is already installed, under the polices tab, select **Actions** > **Edit integration**. If the integration has not been installed, select **Add Elastic APM**. Copy the URL. If you’re using Agent authorization, copy the Secret token as well.
@@ -64,7 +64,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 ::::
 ::::::
 
-::::::{tab-item} Self-managed
+::::::{applies-item} self:
 1. Configure the APM Integration as a collector for your Jaeger agents. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Elastic APM**. If the integration is already installed, under the polices tab, select **Actions** > **Edit integration**. If the integration has not been installed, select **Add Elastic APM**. Copy the Host. If you’re using Agent authorization, copy the Secret token as well.
 
     As of this writing, the Jaeger agent binary offers the `--reporter.grpc.host-port` CLI flag. Use this to define the host and port that the APM Integration is listening on:

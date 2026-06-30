@@ -1,8 +1,9 @@
 ---
+description: Requirements and known limitations for the privileged user monitoring feature in Elastic Security.
 applies_to:
-  stack: preview 9.1
+  stack: removed 9.4+, ga =9.3, preview 9.1-9.2
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -10,13 +11,18 @@ products:
 
 # Privileged user monitoring requirements
 
+::::{note}
+:applies_to: {stack: removed 9.4+, serverless: removed}
+Privileged user monitoring is removed. Use [Watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) instead.
+::::
+
 This page covers the requirements for using the privileged user monitoring feature, as well as its known limitations.
 
 The privileged user monitoring feature requires:
   * {applies_to}`stack: ` The appropriate [subscription](https://www.elastic.co/subscriptions)
   * {applies_to}`serverless: ` The appropriate [feature tier](https://www.elastic.co/pricing/serverless-security)
 
-To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+{applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To enable this feature, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
 
 To use this feature, you need:
   * {applies_to}`stack: ` A role with the appropriate [privileges](#privmon_privs)
@@ -24,20 +30,30 @@ To use this feature, you need:
 
 ## Privileges [privmon_privs]
 
+:::{table}
+:widths: 2-6-4
+
 | Action | Index Privileges | Kibana Privileges |
 | ------ | ---------------- | ----------------- |
-| Enable the privileged user monitoring feature | N/A | **All** for the **Security** feature |
-| View the Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - Security data view indices | **Read** for the **Security** feature |
+| Enable privileged user monitoring | N/A | **All** for the **Security** feature |
+| View Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - Security data view indices | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Read** for the **Security** feature and at least **Read** for the **Alerts** feature to view detection alert data on the dashboard. <br><br>{applies_to}`stack: ga =9.3` **Read** for the **Security** feature |
+
+:::
 
 ## Predefined roles [privmon_roles]
 ```yaml {applies_to}
 serverless: 
 ```
 
+:::{table}
+:widths: 4-8
+
 | Action | Predefined role |
 | --- | --- |
 | Enable privileged user monitoring | - Platform engineer<br>- Admin |
 | View the Privileged user monitoring dashboard | - Tier 1 analyst<br>- Tier 2 analyst<br>- Tier 3 analyst<br>- Rule author<br>- SOC manager<br>- Platform engineer<br>- Detections admin<br>- Admin |
+
+:::
 
 ## Known limitations
 

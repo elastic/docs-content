@@ -1,3 +1,7 @@
+---
+description: "Set up Elastic documentation repositories locally and learn how to build, preview, and submit documentation changes."
+---
+
 # Contribute locally
 
 This document describes the process to set up Elastic documentation repositories locally, enabling you to contribute effectively.
@@ -108,7 +112,7 @@ We write docs in Markdown. Refer to our [syntax quick reference](syntax-quick-re
 
 This documentation is **cumulative**. This means that a new set of docs is not published for every minor release. Instead, each page stays valid over time and incorporates version-specific changes directly within the content. [Learn how to write cumulative documentation](how-to/cumulative-docs/index.md).
 
-:::{include} _snippets-contribute/tagged-warning.md
+:::{include} _snippets/tagged-warning.md
 :::
 
 ## Build the docs

@@ -11,21 +11,28 @@ products:
 # Customize built-in {{ilm-init}} policies in {{es}}
 
 
-{{es}} includes several built-in {{ilm}} (ilm-init) policies to help manage your logs and metrics efficiently. This tutorial shows you how to safely duplicate and customize these policies to optimize [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) and other [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), control resource usage across hot and warm [data tiers](/manage-data/lifecycle/data-tiers.md), and enforce retention rules for your indices.
+{{es}} includes several built-in {{ilm}} ({{ilm-init}}) policies to help manage your logs and metrics efficiently. This tutorial shows you how to safely duplicate and customize these policies to optimize [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) and other [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), control resource usage across hot and warm [data tiers](/manage-data/lifecycle/data-tiers.md), and enforce retention rules for your indices.
 
 Follow these steps to create a customized copy of a built-in {{ilm-init}} policy. You should never edit managed policies directly, because updates to {{es}} or Elastic integrations might overwrite those changes. Instead, you can duplicate a built-in policy, modify the duplicate, and assign it to your index or component templates.
 
 While this tutorial uses [{{agent}}](/reference/fleet/index.md) and its built-in `logs@lifecycle` policy as an example, the same process can be applied to any built-in policies. Common examples include:
 
 * `logs@lifecycle`
-* `logs-otel@lifecycle`
 * `metrics@lifecycle`
-* `metrics-otel@lifecycle`
 * `synthetics@lifecycle`
 * `traces@lifecycle`
-* `traces-otel@lifecycle`
 
 Customizing an {{ilm-init}} policy is useful when you have specific data retention or rollover requirements. For example, large log or metrics data streams might need different retention periods than the built-in defaults.
+
+:::{important}
+:applies_to: stack: ga 9.3+
+
+In {{stack}} 9.3 and later, the deprecated `logs`, `metrics`, and `synthetics` {{ilm-init}} policies are replaced by functionally equivalent `{type}@lifecycle` policies to align with the naming conventions for other stack-managed assets.
+
+If both the deprecated {{ilm-init}} policy and its `{type}@lifecycle` replacement haven’t been modified, {{fleet}} automatically migrates component templates that still reference the deprecated {{ilm-init}} policy.
+
+If either managed {{ilm-init}} policy has been modified, you need to migrate the customizations manually. Follow this tutorial to create a self-managed {{ilm-init}} policy with your custom settings, and reference it from the relevant `{type}@custom` component template.
+:::
 
 This tutorial covers customizing the way ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. You can adapt the same steps for any policy that manages your data streams.
 
@@ -34,7 +41,7 @@ The process involves three main steps:
  2. [Modify the new policy to suit your requirements](#ilm-ex-modify-policy).
  3. [Apply the new policy to your log data using a `logs@custom` component template](#example-using-index-lifecycle-policy-apply-policy).
 
-Once applied, your customized policy will govern any new indices created after the change. Existing indices will continue to use their current lifecycle policy until they roll over. If you want the policy to take effect immediately, you can manually [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) the data stream.
+Once applied, your customized policy will govern any new indices created after the change. Existing indices will continue to use their current lifecycle policy until they roll over. If you want the policy to take effect immediately, you can manually [roll over]({{es-apis}}operation/operation-indices-rollover) the data stream.
 
 :::{tip}
 * If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
@@ -54,7 +61,7 @@ You want to send log files to an {{es}} cluster so you can visualize and analyze
 
     * Move indices to the warm data tier.
     * Set replica shards to 1.
-    * [Force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) multiple index segments to free up the space used by deleted documents.
+    * [Force merge]({{es-apis}}operation/operation-indices-forcemerge) multiple index segments to free up the space used by deleted documents.
 
 * Delete indices 90 days after rollover.
 
@@ -143,7 +150,7 @@ The default `logs@lifecycle` policy is designed to prevent the creation of many 
 3. Click **Save as new policy**.
 
 ::::{tip}
-Copies of managed {{ilm-init}} policies are also marked as **Managed**. You can use the [Create or update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) to update the `_meta.managed` parameter to `false`.
+Copies of managed {{ilm-init}} policies are also marked as **Managed**. You can use the [Create or update lifecycle policy API]({{es-apis}}operation/operation-ilm-put-lifecycle) to update the `_meta.managed` parameter to `false`.
 ::::
 
 
@@ -168,7 +175,7 @@ Go to **Index Management > Index Templates** and select any managed index to vie
 :::::
 
 :::{tip}
-If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to create a new template.
+If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template]({{es-apis}}operation/operation-indices-put-index-template) API to create a new template.
 :::
 
 1. Click on the **Component Template** tab and click **Create component template**.

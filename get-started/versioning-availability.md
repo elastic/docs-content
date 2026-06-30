@@ -7,7 +7,7 @@ applies_to:
   stack:
 products:
   - id: elastic-stack
-description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
+description: "Reference for how Elastic products are versioned, how feature availability badges work, and how to find documentation for your deployment type and version."
 ---
 
 # Versioning and availability
@@ -45,7 +45,7 @@ stack: ga 9.1
 This means the feature is:
 * Available on {{stack}}
 * Generally Available (GA)
-* Introduced in version 9.1.0
+* Introduced in version 9.1
 
 #### Serverless example
 
@@ -63,16 +63,20 @@ This means the feature is:
 
 ```{applies_to}
 deployment:
-  ece: deprecated 4.1.0
+  ece: deprecated 4.0+
 ```
 
 This means the feature is:
 * Available on {{ece}}
-* Deprecated starting in version 4.1.0
+* Deprecated starting in version 4.0
 
 :::{tip}
 Want to learn more about how we use availability badges? Check out the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
 :::
+
+### What about patch versions?
+
+Availability badges show version information down to the minor release level (for example, 9.1), not the patch level. The documentation corresponds to the latest patch available for each minor version. If you're not using the latest patch, check the [release notes](/release-notes/index.md) for changes.
 
 ### What if I'm using a version earlier than {{stack}} 9.0.0?
 
@@ -99,7 +103,7 @@ The components of the {{stack}} typically use semantic versioning in the `X.Y.Z`
 
 | Version | Description |
 | ----- | ----- |
-| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version may require changes to your existing setup and configurations. |
+| Major (X) | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version might require changes to your existing setup and configurations. |
 | Minor (Y) | Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup. |
 | Patch (Z) | Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup. |
 
@@ -121,8 +125,8 @@ Available features can differ based on deployment type, product lifecycle stage,
 
 | Lifecycle state | Description |
 | ----- | ----- |
-| Technical preview | Feature is in early development stage |
-| Beta | Feature is nearing general availability, but not yet production ready |
+| Experimental | Feature is in early development stage and might change or be removed at any time |
+| Technical preview | Feature is nearing general availability and ready for evaluation. Use with caution in production. |
 | Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
 | Deprecated | Feature is still usable, but is planned to be removed or replaced in a future update |
 | Removed | Feature can no longer be used |

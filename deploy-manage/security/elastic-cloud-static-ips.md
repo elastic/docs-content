@@ -14,6 +14,9 @@ products:
 
 Static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. Consider using [private connectivity](/deploy-manage/security/private-connectivity.md) for deployment endpoints on {{ech}}. However, in situations where using private connectivity services do not meet requirements (for example, secure traffic **from** {{ecloud}}), static IP ranges can be used.
 
+:::{admonition} Not available on Serverless
+Static IP addresses are not available for {{serverless-full}} projects.
+:::
 
 ## Ingress Static IPs: Traffic to {{ecloud}} [ec-ingress] 
 
@@ -23,7 +26,7 @@ Suitable usage of ingress static IPs to introduce network controls:
 
 Not suitable usage of ingress static IPs to introduce network controls:
 
-* Traffic over private cloud service provider connections (e.g. AWS Privatelink, GCP Private Service Connect, Azure Private Link)
+* Traffic over private cloud service provider connections (e.g. AWS PrivateLink, GCP Private Service Connect, Azure Private Link)
 * Traffic to the [Cloud Console](http://cloud.elastic.co)
 * Traffic to non {{ecloud}} websites and services hosted by Elastic (e.g. www.elastic.co)
 

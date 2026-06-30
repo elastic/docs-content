@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+applies_to:
+  stack: ga
+  serverless: unavailable
 products:
   - id: fleet
   - id: elastic-agent
@@ -14,10 +17,17 @@ This page summarizes the resource and {{fleet-server}} configuration requirement
 Refer to the [Scaling recommendations](#agent-policy-scaling-recommendations) section for specific recommendations about using {{fleet-server}} at scale.
 ::::
 
+## Scaling {{fleet-server}} on {{ech}}
+
+```{applies_to}
+deployment:
+  ess: ga
+```
+
 First modify your {{fleet}} deployment settings in {{ecloud}}:
 
 1. Log in to {{ecloud}} and find your deployment.
-2. Select **Manage**, then under the deployment's name in the navigation menu, click **Edit**.
+2. Select **Manage**, then in the navigation menu, click **Edit**.
 3. Under {{integrations-server}}:
 
     * Modify the compute resources available to the server to accommodate a higher scale of {{agent}}s
@@ -50,6 +60,10 @@ Next modify the {{fleet-server}} configuration by editing the agent policy:
 
 ## Advanced {{fleet-server}} options [fleet-server-configuration]
 
+```{applies_to}
+stack: ga
+```
+
 The following advanced settings are available to fine tune your {{fleet-server}} deployment.
 
 `cache`
@@ -61,10 +75,10 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 `server.timeouts`
 :   `checkin_timestamp`
-:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting may improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
+:   How often {{fleet-server}} updates the "last activity" field for each agent. Defaults to `30s`. In a large-scale deployment, increasing this setting might improve performance. If this setting is higher than `2m`, most agents will be shown as "offline" in the Fleet UI. For a typical setup, it’s recommended that you set this value to less than `2m`.
 
 `checkin_long_poll`
-:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting may improve performance.
+:   How long {{fleet-server}} allows a long poll request from an agent before timing out. Defaults to `5m`. In a large-scale deployment, increasing this setting might improve performance.
 
 `server.limits`
 :   `policy_throttle`
@@ -75,7 +89,7 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   How quickly {{fleet-server}} dispatches pending actions to the agents.
 
 `action_limit.burst`
-:   Burst of actions that may be dispatched before falling back to the rate limit defined by `interval`.
+:   Burst of actions that might be dispatched before falling back to the rate limit defined by `interval`.
 
 `checkin_limit.max`
 :   Maximum number of agents that can call the checkin API concurrently.
@@ -87,7 +101,15 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 :   Burst of check-ins allowed before falling back to the rate defined by `interval`.
 
 `checkin_limit.max_body_byte_size`
-:   Maximum size in bytes of the checkin API request body.
+:   Maximum size in bytes of the checkin API request body. Defaults to `1048576` bytes (1 MiB). Deployments running many Synthetics monitors might need to increase this value to avoid check-in failures that cause agents to appear offline or unhealthy in the Fleet UI despite monitors executing successfully. For example:
+
+    ```yaml
+    server:
+      limits:
+        max_body_byte_size: 104857600
+        checkin_limit:
+          max_body_byte_size: 104857600
+    ```
 
 `artifact_limit.max`
 :   Maximum number of agents that can call the artifact API concurrently. It allows the user to avoid overloading the {{fleet-server}} from artifact API calls.
@@ -176,6 +198,11 @@ The following advanced settings are available to fine tune your {{fleet-server}}
 
 ## Scaling recommendations ({{ecloud}}) [scaling-recommendations]
 
+```{applies_to}
+deployment:
+  ess: ga
+```
+
 The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example, a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
 
 
@@ -197,11 +224,14 @@ A series of scale performance tests are regularly executed in order to verify th
 
 ## Scaling recommendations [agent-policy-scaling-recommendations]
 
+```{applies_to}
+deployment:
+  self: ga
+```
+
 **{{agent}} policies**
 
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
-
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
 **{{agents}}**
 

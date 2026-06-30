@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Deployment
+# Deploy EDOT for Kubernetes observability [k8s-edot-deployment]
 
 You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment)
 

@@ -1,0 +1,170 @@
+---
+description: Learn about the differences between the AI Assistant and Agent Builder chat experiences and how to switch between the two.
+applies_to:
+  stack: ga 9.4+, preview 9.3
+  serverless: ga
+products:
+  - id: kibana
+  - id: observability
+  - id: security
+  - id: cloud-serverless
+---
+
+# Compare Agent Builder and AI Assistant
+
+::::{admonition} Requirements
+These features require the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
+[{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) is a powerful and flexible platform for building AI agents, tools, and workflows. Agent Builder comes with built-in agents and [tools](/explore-analyze/ai-features/agent-builder/tools.md) for common use cases, and lets you create custom agents and tools for your specific needs.
+
+Agent Builder powers the AI Agent chat experience.
+
+- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Agent Builder is the default chat experience for all solutions, replacing AI Assistant.
+- {applies_to}`stack: preview =9.2, ga =9.3` Agent Builder is the default for {{es}} solution users. {{product.observability}} and {{product.security}} solution users can [switch from AI Assistant to Agent Builder](#switch-between-chat-experiences) to opt in.
+
+You can switch between the two experiences at any time.
+
+While Agent Builder offers expanded functionality compared to AI Assistant, it does not yet support a number of AI Assistant features. If you rely on AI Assistant capabilities today, consider the differences between each experience before opting in.
+
+Use this page to learn about:
+
+- [How to switch between the AI Assistant and Agent Builder chat experiences](#switch-between-chat-experiences)
+- [Feature differences between AI Assistant and Agent Builder](#feature-differences-between-agent-builder-and-ai-assistant)
+
+## Switch between chat experiences
+
+:::{important}
+Agent Builder cannot access your chats, prompts, or knowledge base entries from AI Assistant. However, this data remains accessible if you switch back to the AI Assistant chat experience.
+:::
+
+{{kib}} will prompt you to switch to the Agent Builder chat experience if your deployment supports it and you have sufficient privileges. You can opt-in from this prompt immediately.
+
+You can also switch chat experiences at any time:
+
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find [**GenAI Settings**](/explore-analyze/ai-features/manage-access-to-ai-assistant.md). 
+2. Toggle between the two experiences under **Chat Experience**.
+3. Click the **Save changes** button.
+
+:::{tip}
+For connectors and tested models, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+:::
+
+To learn more about the chat UI modes, refer to [](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md)
+
+## Feature differences between Agent Builder and AI Assistant
+
+Agent Builder doesn't yet support all AI Assistant features. The specific differences vary by solution:
+
+::::::{applies-switch}
+
+:::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+::::{tab-set}
+:group: example-group
+
+:::{tab-item} {{elastic-sec}}
+:sync: tab1
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Time awareness** | ✅ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Citations** | Partial | ✅ |
+| **Audit logging** | Partial | ✅ |
+| **Quick prompts** | Partial | ✅ |
+| **In-chat previews of attached data** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific skills** | ✅ | ❌ |
+| **Modular skills** | ✅ | ❌ |
+| **Custom skill creation** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+| **Integration with Elastic workflows** | ✅ | ❌ |
+
+Agent Builder partially addresses AI Assistant's quick prompts through [skills](/explore-analyze/ai-features/agent-builder/skills.md) and slash commands that let you invoke a skill directly (for example, `/threat-hunting`).
+
+:::
+
+:::{tab-item} Elastic {{observability}} and Search
+:sync: tab2
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Chat duplication** | ❌ | ✅ |
+| **Chat archiving** | ❌ | ✅ |
+| **Alerting rule connector action** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific skills** | ✅ | ❌ |
+| **Modular skills** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+
+:::
+
+::::
+
+:::::
+
+:::::{applies-item} { stack: preview 9.3 }
+
+::::{tab-set}
+:group: example-group
+
+:::{tab-item} {{elastic-sec}}
+:sync: tab1
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Time awareness** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Citations** | ❌ | ✅ |
+| **Audit logging** | ❌ | ✅ |
+| **Quick prompts** | ❌ | ✅ |
+| **In-chat previews of attached data** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific agents** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+| **Integration with Elastic workflows** | ✅ | ❌ |
+
+:::
+
+:::{tab-item} Elastic {{observability}} and Search
+:sync: tab2
+
+| Feature | Agent Builder | AI Assistant |
+| :--- | :---: | :---: |
+| **Knowledge Base** | ❌ | ✅ |
+| **Data anonymization** | ❌ | ✅ |
+| **Chat sharing** | ❌ | ✅ |
+| **Chat duplication** | ❌ | ✅ |
+| **Chat archiving** | ❌ | ✅ |
+| **Alerting rule connector action** | ❌ | ✅ |
+| **AI insights** | ✅ | ✅ |
+| **Use-case specific agents** | ✅ | ❌ |
+| **Custom agent creation** | ✅ | ❌ |
+| **Custom tool selection** | ✅ | ❌ |
+
+:::
+
+::::
+
+:::::
+
+::::::
+
+## API differences between Agent Builder and AI Assistant
+
+Each AI chat experience has different APIs. To learn which actions each option supports, refer to:
+
+- [Agent Builder]({{kib-apis}}group/endpoint-agent-builder)
+- [AI Assistant for Security]({{kib-apis}}group/endpoint-security-ai-assistant-api)
+- [AI Assistant for Observability]({{kib-apis}}group/endpoint-observability_ai_assistant)

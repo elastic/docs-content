@@ -21,7 +21,7 @@ You can find [this example as a Jupyter notebook](https://github.com/elastic/ela
 
 To follow along the process on this page, you must have:
 
-* an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
+* a {{serverless-short}} project or an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
 
@@ -42,14 +42,14 @@ Install the model by running the `eland_import_model_hub` command in the Docker 
 ```shell
 docker run -it --rm docker.elastic.co/eland/eland \
     eland_import_hub_model \
-      --cloud-id $CLOUD_ID \
-      -u <username> -p <password> \
+      --url <url> \
+      --es-api-key <api-key> \
       --hub-model-id sentence-transformers/msmarco-MiniLM-L-12-v3 \
       --task-type text_embedding \
       --start
 ```
 
-You need to provide an administrator username and password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Hosted deployments** page on your Cloud website.
+You need to provide an API key for authentication, and replace `<url>` with your {{es}} cluster URL.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
@@ -65,7 +65,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 :::
 
 ::::{dropdown} Test the model by using the _infer API
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+You can also evaluate your models by using the [_infer API]({{es-apis}}operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST /_ml/trained_models/sentence-transformers__msmarco-minilm-l-12-v3/_infer
@@ -154,7 +154,7 @@ PUT _ingest/pipeline/text-embeddings
 
 The passages are in a field named `text`. The `field_map` maps the text to the field `text_field` that the model expects. The `on_failure` handler is set to index failures into a different index.
 
-Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
+Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API]({{es-apis}}operation/operation-ml-get-trained-models) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
 
 ```js
 PUT collection-with-embeddings

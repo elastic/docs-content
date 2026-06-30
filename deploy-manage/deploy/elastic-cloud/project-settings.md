@@ -14,7 +14,8 @@ Project settings are configurations that apply to your entire project, managed f
 
 - **[Search AI Lake settings](#elasticsearch-manage-project-search-ai-lake-settings)**: Configure search performance, cache behavior, and data retention.
 - **[Project features and add-ons](#project-features-add-ons)**: Select feature tiers and enable add-ons for your project type.
-- **[Project tags](#project-tags)**: Add custom metadata to categorize and organize your projects.
+- **[Project tags](#project-tags)**: Add custom tags to categorize and organize your projects alongside predefined tags.
+- **[Connection aliases](#elasticsearch-manage-project-connection-aliases)**: Use predictable, human-readable URLs for your projects that you can share easily.
 
 To manage these settings:
 
@@ -45,33 +46,35 @@ Time series data refers to any document in standard indices or data streams that
 
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
 
-The documentation in this section describes shared capabilities that are available in multiple solutions. These settings allow you to tune your project settings not all functionality as you would have with a self-managed deployment.
+The documentation in this section describes shared capabilities that are available in multiple solutions. These settings allow you to tune your project settings, but not all functionality as you would have with a self-managed deployment.
 
 $$$elasticsearch-manage-project-search-power-settings$$$
 
 | Setting | Description | Project Type |
 | :--- | :--- | :--- |
-| **Search Power** | Search Power controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs. Choose from three Search Power settings:<br><br>**On-demand:** Autoscales based on data and search load, with a lower minimum baseline for resource use. This flexibility results in more variable query latency and reduced maximum throughput.<br><br>**Performant:** Delivers consistently low latency and autoscales to accommodate moderately high query throughput.<br><br>**High-throughput:** Optimized for high-throughput scenarios, autoscaling to maintain query latency even at very high query volumes.<br> | {{es}} |
+| **Search Power** | Search Power controls the amount of baseline resources kept ready for your data and the maximum amount of resources the system can allocate to your project under high search load.<br><br>Increase **Search Power** to add resources for improved query throughput and performance as load increases. Decrease it to reduce the amount of provisioned resources, which lowers both active search costs and the reduced rate billed during idle periods, at the cost of more variable query latency. The On-demand setting provides the lowest baseline and idle cost.<br><br>Choose from three Search Power settings:<br><br>**On-demand:** Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.<br><br>**Performant:** Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.<br><br>**High availability:** Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.<br> | {{es}} |
 | **Search Boost Window** | Non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.<br><br>Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.<br> | {{es}} |
-| **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has to additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
+| **Data Retention** | Data retention policies determine how long your project data is retained.<br>In {{serverless-full}} data retention policies are configured through [data streams](../../../manage-data/lifecycle/data-stream.md) and you can [specify different retention periods](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle) for specific data streams in your project.<br><br> {{elastic-sec}} has two additional configuration settings that can be configured to manage your data retention.<br><br>**Maximum data retention period**<br><br>When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.<br><br>Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.<br><br> **Default data retention period**<br><br>When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.<br> |Elasticsearch<br>Observability<br>Security  |
 | **Project features** | Controls [feature tiers and add-on options](../../../deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons) for your {{elastic-sec}} project. | Security |
 
 ## Project features and add-ons [project-features-add-ons]
 
-```yaml {applies_to}
-serverless:
-  security:
-  observability:
-```
-### {{elastic-sec}} project features
+Project features and add-ons control which capabilities are available in your serverless project and how they are billed. What you can configure depends on your project type:
 
-For {{elastic-sec}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
+* [{{sec-serverless}} project features](#elastic-sec-project-features)
+* [{{obs-serverless}} project features](#obs-serverless-project-features) 
+
+There are no additional project features or add-ons for {{es-serverless}} projects.
+
+### {{sec-serverless}} project features [elastic-sec-project-features]
+
+For {{sec-serverless}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
 
 | Feature tier | Description and add-ons |
 | :--- | :--- |
 | **Elastic AI SOC Engine (EASE)** | A package of AI-powered tools meant to work with and enhance your existing SOC platforms: triage and correlate alerts from any platform using Attack Discovery, get realtime recommendations and assistance from AI Assistant, and share insights with your other tools.  |
-| **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br><br>* **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>* **Cloud Protection Essentials**: Cloud native security features.<br> |
-| **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>* **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>* **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br> |
+| **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.|
+| **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.|
 
 #### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
 
@@ -91,6 +94,7 @@ When you downgrade your Security project features selection from **Security Anal
 * Case connectors
 * Endpoint response actions history
 * Endpoint host isolation exceptions
+* Trusted devices
 * AI Assistant
 * Attack discovery
 
@@ -103,6 +107,10 @@ And, the following data may be permanently deleted:
 * Detection rule external connector settings
 * Detection rule response action settings
 
+:::{tip}
+For a full feature comparison, upgrading instructions, and more, refer to [{{product.serverless-security}} feature tiers](/solutions/security/security-serverless-feature-tiers.md).
+:::
+
 ### {{obs-serverless}} project features
 
 For {{obs-serverless}} projects, edit the **Project features** to select a feature tier.
@@ -110,43 +118,63 @@ For {{obs-serverless}} projects, edit the **Project features** to select a featu
 | Feature tier | Description|
 | :--- | :--- |
 | **Observability Logs Essentials** | Includes everything you need to store and analyze logs at scale.<br> |
-| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.<br> |
+| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.|
 
+:::{tip}
 For a full feature comparison, upgrading instructions, and more, refer to [{{obs-serverless}} feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
+:::
 
 ## Project tags
 
-Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects.
+Project tags are custom metadata key-value pairs that allow you to categorize and organize your projects. If you're using {{cps}} in {{serverless-full}}, tags also enable [routing searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md).
 
-While each project is automatically categorized by attributes such as its project type, cloud service provider, and region, you can add your own tags to further categorize your projects. 
+* **Predefined tags** are attributes that Elastic assigns automatically to each project, such as project type, cloud service provider, and region. 
+* **Custom tags** are key-value pairs that you define in the {{ecloud}} console or using the API to further categorize and organize your projects.
 
-For example, you might tag a project with the following types of metadata:
+### Predefined tags
 
-* The team or department that uses it: `dept:finance`, `dept:marketing`, `dept:engineering`
+Predefined tags are attributes that Elastic assigns automatically to each project. The following predefined tags are available:
+
+* `_alias`: the project alias
+* `_csp`: the cloud service provider
+* `_id`: the project identifier
+* `_organization`: the organization identifier
+* `_region`: the Cloud region where the project is located
+* `_type`: the project type (Observability, Search, or Security)
+
+Predefined tags always start with an underscore `_`.
+
+### Custom tags
+
+You can add custom tags for any piece of metadata that might help you to categorize and organize your projects. For example, you might add custom tags to add the following metadata:
+
+* The team or department that uses the project: `dept:finance`, `dept:marketing`, `dept:engineering`
 * The environment type: `env:dev`, `env:staging`, or `env:prod`
 
-### Create project tags
+Project tags must start with a letter, and can contain only lowercase letters, numbers, hyphens, and underscores.
+
+#### Create custom tags
 
 1. In {{ecloud}}, select your project from the **Serverless projects** panel and click **Manage**.
-2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_in_circle` Add tags**.
-3. Add a key and value for your tag, and then click **Add**.
+2. From the **Overview** page for your project, in the **Tags** section, click **{icon}`plus_circle` Add tags**.
+3. Add a key and value for your custom tag, and then click **Add**.
 4. When you're finished creating tags, click **Save**.
 
-To remove a tag from a project, reopen the tag management drawer by clicking **{icon}`plus_in_circle`  Add tags**.
+To remove a custom tag from a project, reopen the tag management drawer by clicking **{icon}`plus_circle`  Add tags**.
 
-### Project tags using the {{serverless-full}} API
+#### Custom tags using the {{serverless-full}} API
 
-You can also manage your project tags through the [{{serverless-full}} API]({{cloud-serverless-apis}}).
+You can also manage your custom tags through the [{{serverless-full}} API]({{cloud-serverless-apis}}).
 
-#### Add tags
+##### Add custom tags
 
-You can manage project tags using the `POST` or `PATCH` project endpoints for your project type:
+You can manage custom tags using the `POST` or `PATCH` project endpoints for your project type:
 
 * {{es}}: [POST]({{cloud-serverless-apis}}/operation/operation-createelasticsearchproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchelasticsearchproject)
 * Observability: [POST]({{cloud-serverless-apis}}/operation/operation-createobservabilityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchobservabilityproject)
 * Security: [POST]({{cloud-serverless-apis}}/operation/operation-createsecurityproject), [PATCH]({{cloud-serverless-apis}}/operation/operation-patchsecurityproject)
 
-Project tags are passed as key-value pairs in the `metadata.tags` property of the request body:
+Custom tags are passed as key-value pairs in the `metadata.tags` property of the request body:
 
 ```console
 PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
@@ -162,9 +190,9 @@ PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
 ```
 1. `/api/v1/serverless/projects/{project-type}/{project-id}`
 
-#### Remove tags
+##### Remove custom tags
 
-To remove a value for a tag, pass a `null` value for that tag:
+To remove a custom tag, pass a `null` value for that tag:
 
 ```console
 PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
@@ -180,9 +208,9 @@ PATCH /api/v1/serverless/projects/elasticsearch/1234 <1>
 ```
 1. `/api/v1/serverless/projects/{project-type}/{project-id}`
 
-#### Query by tag
+### Query by tag
 
-After you've added tags to your project, you can query your projects by their tags by adding the desired tags as query parameters:
+You can query your projects by their predefined or custom tags by adding the desired tags as query parameters:
 
 * [{{es}}]({{cloud-serverless-apis}}/operation/operation-listelasticsearchprojects)
 * [Observability]({{cloud-serverless-apis}}/operation/operation-listobservabilityprojects)
@@ -198,4 +226,32 @@ For example, to query for all {{es}} projects that are staging environments belo
 GET /api/v1/serverless/projects/elasticsearch?tag[env]=staging&tag[dept]=support_eng
 ```
 
+To query for all Observability projects that are hosted on GCP:
 
+```console
+GET /api/v1/serverless/projects/observability?tag[_csp]=gcp
+```
+
+## Connection aliases [elasticsearch-manage-project-connection-aliases]
+
+Connection aliases for your projects enable you to have predictable, human-readable URLs that can be shared easily.
+The connection alias must be unique for each region, across all accounts.
+New projects are assigned a default alias derived from the project name.
+
+### Update a connection alias for a project
+
+To modify the connection alias for a project:
+
+1. From the **Serverless projects** menu, select a project and click **Manage**.
+2. Locate **Connection alias**, click **Edit**.
+3. Define a new alias. Make sure you choose something meaningful to you.
+
+    ::::{tip}
+    Make the alias as unique as possible to avoid collisions. Aliases might have been already claimed by other users for projects in the region.
+    ::::
+
+4. Select **Update alias**.
+
+::::{important}
+Renaming connection aliases might cause disruptions to applications and services that rely on these endpoints. Ensure that you update any references to the old alias to prevent issues.
+::::

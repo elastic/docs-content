@@ -287,7 +287,7 @@ This script includes the following steps:
 1. **Set a standard value:** Changes empty phone numbers to “N/A”  
 2. **Record timestamps:** Captures when the update occurred
 
-For more details about the update by query API parameters and options, refer to the [Update by query API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query).
+For more details about the update by query API parameters and options, refer to the [Update by query API documentation]({{es-apis}}operation/operation-update-by-query).
 
 :::{dropdown} Response
 

@@ -39,11 +39,6 @@ Isolated hosts, however, can still send data to {{elastic-sec}}. You can also cr
 
 You can isolate a host from a detection alert’s details flyout, from the Endpoints page, or from the endpoint response console. Once a host is successfully isolated, an `Isolated` status displays next to the `Agent status` field, which you can view on the alert details flyout or Endpoints list table.
 
-::::{tip}
-If the request fails, verify that the {{agent}} and your endpoint are both online before trying again.
-::::
-
-
 All actions executed on a host are tracked in the host’s response actions history, which you can access from the Endpoints page. Refer to [](/solutions/security/endpoint-response-actions/isolate-host.md#view-host-isolation-details) for more information.
 
 
@@ -100,7 +95,7 @@ Be aware that automatic host isolation can result in unintended consequences, su
 
 1. Add an endpoint response action to a new or existing custom query rule. The endpoint response action will run whenever rule conditions are met:
 
-    * **New rule**: On the last step of [custom query rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule) creation, go to the **Response Actions** section and select **{{elastic-defend}}**.
+    * **New rule**: On the last step of [custom query rule](/solutions/security/detect-and-alert/custom-query.md) creation, go to the **Response Actions** section and select **{{elastic-defend}}**.
     * **Existing rule**: Edit the rule’s settings, then go to the **Actions** tab. In the tab, select **{{elastic-defend}}** under the **Response Actions** section.
 
 2. In the **Response action** field, select **Isolate**.

@@ -38,8 +38,13 @@ Data is routed to APM using the same hostname `<<apm-id>>.<<your-domain>>`, but 
 * `<<deployment-id>>.apm.<<your-domain>>` as an alternate endpoint for APM
 * `<<deployment-id>>.fleet.<<your-domain>>` is the *only* way of routing data to Fleet Server
 
+If you enable [Universal Profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) another two endpoints are introduced:
+
+* `<<deployment-id>>.profiling.<<your-domain>>`
+* `<<deployment-id>>.symbols.<<your-domain>>`
+
 ::::{note}
-New certificates must be generated for both these endpoints. Check [Enable custom endpoint aliases](../../../deploy-manage/deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) for more details.
+New certificates must be generated for these endpoints. Check [Enable custom endpoint aliases](../../../deploy-manage/deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) for more details.
 ::::
 
 ## Using the API to manage Integrations Server [ece_using_the_api_to_manage_integrations_server]

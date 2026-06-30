@@ -24,10 +24,13 @@ It’s possible to enable Integrations Server on an existing deployment with ver
 
 ## API request example [ece_api_request_example_2]
 
+::::{include} /deploy-manage/_snippets/curl-k-ece.md
+::::
+
 Run this example API request to create a deployment with Integrations Server:
 
 ```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
   "resources": {
     "elasticsearch": [

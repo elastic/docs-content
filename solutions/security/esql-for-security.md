@@ -21,5 +21,6 @@ Learn how to:
 
 - [Generate and understand {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md) using the AI Assistant
 - [Investigate events in Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline) using {{esql}}
-- [Create detection rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule) using {{esql}}
+- [Create detection rules](/solutions/security/detect-and-alert/esql.md) using {{esql}}
 - [Convert Splunk SPL rules to {{esql}}](/solutions/security/get-started/automatic-migration.md) with Automatic Migration
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md) to write faster queries for threat hunting and detection rules
