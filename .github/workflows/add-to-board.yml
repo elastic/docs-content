@@ -20,6 +20,11 @@ jobs:
         with:
           labels: ${{ github.event.label.name }}
 
+      - name: Remove needs-team label
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: needs-team
+
       # Use the PAT (not GITHUB_TOKEN) so the new label re-triggers the
       # `route` job below; labels added by GITHUB_TOKEN don't start a run.
       - name: Add the Team:SKI label
