@@ -46,7 +46,6 @@ processors: <2>
   memory_limiter:
     check_interval: 1s
     limit_mib: 2000
-  batch:
 
 exporters:
   debug:
@@ -62,20 +61,20 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [debug, otlp]
     metrics:
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [debug, otlp]
     logs: <8>
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [debug, otlp]
 ```
 
 1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by OpenTelemetry SDKs, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
-2. Use the [Batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md) and the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md). For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
+2. Use the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md) to prevent out-of-memory failures. For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
 3. The [debug exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter) is helpful for troubleshooting, and supports configurable verbosity levels: `basic` (default), `normal`, and `detailed`.
 4. Elastic endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://opentelemetry.io/docs/specs/otlp/#otlphttp). To learn more about these exporters, refer to the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter). When adding an endpoint to an existing configuration an optional name component can be added, like `otlp/elastic`, to distinguish endpoints as described in the [OpenTelemetry Collector Configuration Basics](https://opentelemetry.io/docs/collector/configuration/#basics).
 5. Hostname and port of the Elastic endpoint. For self-managed deployments, use the address of your [EDOT Collector in gateway mode](elastic-agent://reference/edot-collector/modes.md) (for example, `edot-collector:4317` for gRPC or `edot-collector:4318` for HTTP). For {{ech}}, use the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md).
@@ -97,7 +96,6 @@ processors:   <2>
   memory_limiter:
     check_interval: 1s
     limit_mib: 2000
-  batch:
 
 exporters:
   logging:
@@ -113,20 +111,20 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [logging, otlp/elastic]
     metrics:
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [logging, otlp/elastic]
     logs:   <8>
       receivers: [otlp]
-      processors: [..., memory_limiter, batch]
+      processors: [..., memory_limiter]
       exporters: [logging, otlp/elastic]
 ```
 
 1. The receivers, like the [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver), that forward data emitted by OpenTelemetry SDKs, or the [host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
-2. We recommend using the [Batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md) and the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md). For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
+2. Use the [memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md) to prevent out-of-memory failures. For more information, refer to [recommended processors](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md#recommended-processors).
 3. The [logging exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter) is helpful for troubleshooting and supports various logging levels, like `debug`, `info`, `warn`, and `error`.
 4. {{obs-serverless}} endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlphttp). To learn more about these exporters, refer to the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter).
 5. URL of the [Managed OTLP endpoint](opentelemetry://reference/motlp/index.md). Find your endpoint URL in the {{serverless-full}} project settings.
@@ -141,7 +139,7 @@ service:
 You’re now ready to export traces and metrics from your services and applications.
 
 ::::{important}
-When using the OpenTelemetry Collector, send data through the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter). Using other methods, like the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter), bypasses all the validation and data processing that Elastic performs. Also, your data will not be viewable in your {{observability}} project if you use the `elasticsearch` exporter.
+When using the OpenTelemetry Collector, send data through the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter). Using the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter) instead bypasses Elastic's data processing pipeline and is [not supported for use with {{product.observability}}](/solutions/observability/apm/opentelemetry/limitations.md).
 ::::
 
 ## Send data from a contrib OpenTelemetry SDK [apm-instrument-apps-otel]
