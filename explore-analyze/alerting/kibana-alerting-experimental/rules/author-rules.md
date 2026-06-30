@@ -1,5 +1,5 @@
 ---
-navigation_title: Rule authoring
+navigation_title: Rule authoring concepts
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -12,16 +12,19 @@ description: "Write ES|QL detection queries for rules in Kibana's experimental a
 
 Rules in the {{alerting-v2-system}} use {{esql}} queries to detect problems in your data. When you create a rule, you choose whether it should fire notifications or just record matches, define the detection logic, and optionally set severity levels.
 
-This page explains the concepts behind rule modes, detection logic, and severity. For other rule settings such as schedules, grouping, and lifecycle thresholds, refer to [Configure a rule](configure-a-rule.md). When you're ready to create a rule, use the [rule builder](create-rule-from-rule-builder.md), [YAML editor](create-rule-with-yaml.md), or [Discover](create-rule-from-discover.md).
+This page explains the concepts behind rule modes, detection logic, and severity. For other rule settings such as schedules, grouping, and lifecycle thresholds, refer to [Configure a rule](configure-a-rule.md). When you're ready to create a rule, refer to [Create a rule](create-a-rule.md).
 
 ## Rule modes
 
-Whether a rule fires notifications or just records matches is determined by its mode. Rules can run in Signal or Alert mode. The mode available to you depends on how the rule is created.
+A rule's mode is set by the creation method; some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options.
 
 | Mode | What it does |
 | --- | --- |
-| Signal | Records query matches as signals. No alert episodes, no notifications. Good for testing a query or building a data history without alerting anyone. |
-| Alert | Records matches and maintains alert episodes with lifecycle states. Alert episodes appear on the **Alerts** page and can be matched by action policies for notifications. |
+| Signal | Records each matching row as a signal document. No alert episodes, no notifications. Use this to test a query or build a data history without alerting anyone. |
+| Alert | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. |
+
+<!--[CONTENT NEEDED: How do users access signal records? Signal-mode matches are written to `.rule-events` with `type: signal` and are queryable in Discover, but there is no documented UI surface for browsing them directly. Confirm whether the product has a dedicated signals view, and if so, document it here and link from the Signal row in the table above. If Discover is the intended path, add a short note explaining how to query `.rule-events` filtered by `type: signal` and `rule.id`.]
+-->
 
 ## Define the detection logic [esql-query-structure]
 
@@ -54,7 +57,7 @@ Severity is used by action policy matchers for routing and triage. For details o
 
 ## Next steps
 
-Once you understand the query structure, explore [{{esql}} query patterns](esql-query-patterns.md) for advanced use cases including SLO burn rate queries, no-data detection, persistent breach detection, and unsupported operations.
+Once you understand the query structure, explore [{{esql}} query patterns](esql-query-patterns.md) for patterns ranging from your first rule query to SLO burn rates, silent source detection, and persistent breach checks.
 
 <!--
 ## Rule forms [rule-forms]

@@ -11,7 +11,7 @@ description: "YAML rule definitions in Kibana's experimental alerting system sup
 # YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
 
 
-YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create rules using the YAML editor](create-rule-with-yaml.md).
+YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create an ES|QL rule](create-esql-rule.md#yaml-editor).
 
 ## Base rule fields
 
@@ -63,7 +63,7 @@ These fields control how far back each evaluation looks and which timestamp fiel
 | `schedule.lookback` | duration | Any duration string | How far back in time the query searches on each run. For example: `5m`, `24h`. |
 | `time_field` | string | Any field name | The timestamp field used for the lookback window filter. Max 128 characters. Defaults to `@timestamp`. |
 
-## Recovery strategy
+## Recovery strategy [recovery-strategy]
 
 The `recovery_strategy` field is optional. When omitted, the rule emits no recovery events and active alert episodes don't close automatically.
 
@@ -90,7 +90,7 @@ Only valid when `kind: alert`. Controls how many consecutive detections are requ
 
 ## Grouping fields
 
-Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects — such as CPU usage per host — without creating a separate rule for each. Each series maintains its own alert episode lifecycle.
+Use grouping to split a rule's detections into independent series, one per unique combination of field values. This lets a single rule track multiple subjects without creating a separate rule for each, for example, tracking CPU usage per host. Each series maintains its own alert episode lifecycle.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
@@ -110,7 +110,7 @@ No-data detection is only supported with `query.format: standalone`. Setting `no
 
 ## Artifact fields
 
-Artifacts let you attach reference material — such as a runbook — directly to a rule. The content is stored with the rule and displayed in the rule detail view so responders have context when an alert fires. All artifact fields are optional.
+Artifacts let you attach reference material directly to a rule, such as a runbook. The content is stored with the rule and displayed in the rule detail view so responders have context when an alert fires. All artifact fields are optional.
 
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
@@ -118,7 +118,7 @@ Artifacts let you attach reference material — such as a runbook — directly t
 | `artifacts[].type` | string | Any string | The type of artifact being attached. For example: `runbook`. |
 | `artifacts[].value` | string | Any string | The content of the artifact. Accepts markdown. Runbooks are rendered as markdown in the rule detail view. |
 
-## Duration format
+## Duration format [duration-format]
 
 All duration fields accept the following units:
 

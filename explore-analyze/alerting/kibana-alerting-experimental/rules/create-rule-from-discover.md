@@ -1,51 +1,31 @@
 ---
-navigation_title: Using Discover
+navigation_title: Create from Discover
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
 products:
   - id: kibana
-description: "Turn an ES|QL query in Discover into a rule in the experimental alerting system with pre-filled evaluation and lookback."
+description: "Convert an ES|QL query from a Discover session into a rule in Kibana's experimental alerting system, with the query pre-filled and a preview panel for verifying grouping."
 ---
 
-# Create rules from Discover in the {{alerting-v2-system}} [create-rules-discover]
+# Create a rule from Discover in the {{alerting-v2-system}} [create-from-discover]
 
-
-Discover-based rule creation is part of the {{alerting-v2-system}} in {{kib}}. When you build an {{esql}} query that surfaces interesting patterns, you can convert it into a rule without rewriting the query. 
-
-This page covers the entry points for starting a rule from Discover, how the query pre-fills the rule form, and how to use the preview panel to verify grouping and output shape before saving. For the rule form, including schedule and lifecycle settings, refer to [Configure a rule](configure-a-rule.md).
+When you build an {{esql}} query in Discover that surfaces interesting patterns, you can convert it into a rule without rewriting the query. Starting from Discover means your query is already tested and returns the shape you expect before the rule is ever saved.
 
 ## Entry points [discover-rule-entry-points]
 
 Two paths lead to Discover-based rule creation:
 
 - **Discover Alerts menu**: When you're in Discover with an active {{esql}} query and the {{alerting-v2-system}} is enabled, the Alerts menu includes a **Create ES|QL rule** option. The rule creation flyout opens pre-populated with the current query. This path is only available in ES|QL mode.
-- **Rules list**: From the rules list, selecting the option to create a rule from Discover opens the Discover-based rule creation experience directly. The flyout embeds a live Discover session so you can compose and test the query before saving the rule. After saving, you return to the rules list.
+- **Rules list**: Selecting the option to create a rule from Discover opens a flyout that embeds a live Discover session so you can compose and test the query before saving the rule.
 
 ## How it works [discover-rule-flow]
 
-Starting a rule from Discover means your query is already tested and returns the shape you expect before the rule is ever saved. Instead of drafting a query in the rule builder and hoping it works, you iterate in Discover (where you can see real results immediately) and then create the rule when the query is ready.
+When you trigger rule creation from Discover, your {{esql}} query pre-fills the **Create ES|QL rule** form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run, letting you verify grouping logic against live data before committing to a schedule.
 
-When you trigger rule creation from Discover, your {{esql}} query pre-fills the **Create ES|QL rule** form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run. This lets you verify grouping logic against live data before committing to a schedule.
+The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point; edits in YAML mode are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
 
-## Form and YAML editing [discover-form-yaml]
+For descriptions of what each rule setting does, refer to [Configure a rule](configure-a-rule.md).
 
-The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point — edits in YAML mode are preserved when you return to the form view. To discard YAML edits and return to the prior form state, use the **Cancel YAML** option. The YAML editor includes {{esql}} autocomplete in the query field.
-
-Use YAML mode when you want to fine-tune the raw rule definition, copy a pattern from an existing rule, or work faster than filling in individual form fields allows.
-
-## Preview query results before creating the rule [preview-query-discover]
-
-
-The query preview in the rule creation flow runs your {{esql}} query against current data and displays the resulting rows. Use this to:
-
-- **Confirm grouping**: Check that your `BY` clause produces the series you intend — for example, one distinct series per host or per service, not a single undifferentiated result.
-- **Catch unexpected output**: Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
-- **Refine before committing**: Edit the query in the preview panel and re-run it without leaving the rule creation form. Once the preview looks correct, proceed to fill in the remaining settings.
-
-<!--[CONTENT NEEDED: UI. Add a step-by-step procedure once the Discover-to-rule workflow is confirmed in the shipped UI.
-
-Section heading: "Create a rule from Discover" (anchor: create-rule-discover-procedure-v2). The procedure should cover: (1) the exact entry point and menu item name for triggering rule creation from an ES|QL query in Discover; (2) what pre-fills in the rule form (query, lookback, schedule defaults); (3) how to use the query preview panel — running the preview, reading grouping output, and editing the query inline; (4) how to complete the remaining settings and save.
-
-Verify all button labels, panel names, and navigation paths against the shipped UI before publishing. Draft content is in source control for reference.]
+<!--[CONTENT NEEDED: Add a step-by-step procedure once the Discover-to-rule workflow is confirmed in the shipped UI. Cover: (1) the exact entry point and menu item name; (2) what pre-fills in the rule form (query, lookback, schedule defaults); (3) how to use the query preview panel; (4) how to complete the remaining settings and save. Verify all button labels and navigation paths against the shipped UI before publishing.]
 -->

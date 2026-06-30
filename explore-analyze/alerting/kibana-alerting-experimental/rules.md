@@ -25,7 +25,7 @@ When creating a rule, choose Signal mode to record and query results without ale
 
 ## What rules don't do 
 
-Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies — global objects, scoped to your space, that match alert episodes from any rule. A rule has no say in which policies pick it up.
+Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which policies pick it up.
 
 This separation means you can build and test a rule without anyone getting paged, update notification routing without touching the rule, and have multiple action policies respond to the same rule independently.
 
@@ -39,11 +39,11 @@ This separation means you can build and test a rule without anyone getting paged
 
 ## Create a rule [create-a-rule]
 
-Rules in the {{alerting-v2-system}} are created through a flyout that opens from the **Create rule** button in the rules list. Three options are available:
+Three creation options are available:
 
-- **Create ES|QL rule**: Write the detection query as {{esql}} directly, with a live preview of results and a YAML editor also available. Use this when you want full control over the query. See [Create rules](rules/create-rule-from-rule-builder.md).
-- **Create with AI Agent**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
-- **Start from a rule builder**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. The [Threshold Alert](rules/create-rule-from-rule-builder.md#threshold-alert) type is available. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
+- **[Create ES|QL rule](rules/create-esql-rule.md)**: Write the detection query as {{esql}} directly, with a live preview of results and a YAML editor also available. Use this when you want full control over the query.
+- **[Create with AI Agent](rules/create-rule-ai-agent.md)**: Describe what you want to detect in plain language. The AI agent generates a rule definition and walks you through reviewing and saving it. Use this when you know the problem but aren't sure how to write the {{esql}}.
+- **[Start from a rule builder](rules/use-rule-builder.md)**: Choose a structured rule type and fill in a guided form. The builder generates the {{esql}} query automatically. Use this when you want to create a standard metric-threshold rule without writing {{esql}} by hand.
 
 If you already have an {{esql}} query working in Discover, you can also [create a rule directly from there](rules/create-rule-from-discover.md) to skip re-entering the query.
 

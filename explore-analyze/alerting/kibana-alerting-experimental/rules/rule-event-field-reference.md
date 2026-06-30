@@ -77,7 +77,7 @@ Each time a rule evaluates, {{kib}} writes one document per matched series to `.
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
 
 :::{note}
-`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation — existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`.
+`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation; existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 Refer to [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover) for example queries.
 -->
@@ -99,8 +99,6 @@ These fields appear on all `.rule-events` documents, regardless of whether the r
 | `source` | keyword | Yes | Origin of this event. Product-specific identifier. |
 | `type` | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
 
-<!-- TODO: A `group_hash` → `series.key` / `series.tracked_by` replacement has been discussed for a future release but is not in the current codebase. Do not update this section until the change has shipped and is confirmed in the schema. -->
-
 :::{admonition} Fields not stored as a dedicated column
 There's no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged and restore full sentence:
@@ -108,7 +106,7 @@ For triage or reporting, derive duration from [Query alerts and signals in Disco
 -->
 :::
 
-### Episode fields
+### Episode fields [episode-fields]
 
 These fields only appear on documents with `type: alert`, written by rules running in Alert mode. They carry the lifecycle state for the episode associated with the matched series.
 
