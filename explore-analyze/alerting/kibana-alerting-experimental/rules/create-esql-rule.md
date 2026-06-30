@@ -8,14 +8,14 @@ products:
 description: "Write ES|QL detection queries for rules in Kibana's experimental alerting system using the rule form or YAML editor, with a live query sandbox for previewing results."
 ---
 
-# Create an ES|QL rule in the {{alerting-v2-system}} [create-esql-rule]
+# Create an {{esql}} rule in the {{alerting-v2-system}} [create-esql-rule]
 
-The ES|QL rule path lets you write the detection query directly. Two ways to define it are available:
+The {{esql}} rule path lets you write the detection query directly. There are two ways to define the rule: 
 
 - **Rule form** - Fill in the step-by-step form with a live preview of results.
 - **YAML mode** - Switch to YAML and edit the raw rule definition. You can switch between form and YAML at any point; edits are preserved.
 
-For descriptions of what each rule setting does, refer to [Configure a rule](configure-a-rule.md). For a full list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+For descriptions of each rule setting, refer to [Configure a rule](configure-a-rule.md). For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
 ## Preview query results in the sandbox [rule-builder-query-sandbox]
 
@@ -30,18 +30,3 @@ Use the sandbox to:
 ## Using the YAML editor [yaml-editor]
 
 Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. The YAML editor isn't available within the Threshold Alert builder.
-
-### YAML-only mode when editing rules [yaml-only-edit]
-
-When you reopen a rule for editing, the form/YAML toggle is disabled if the rule's YAML configuration contains settings the form cannot represent. The rule opens in YAML-only mode. This prevents the form from silently dropping fields it doesn't know how to display on save. The YAML editor remains fully functional, and all fields round-trip without loss.
-
-The following configurations force YAML-only mode when editing:
-
-| Configuration | Why the form can't represent it |
-| --- | --- |
-| `query.format: standalone` with `kind: alert` | The form is built around the composed query format (base query plus condition blocks). Standalone format rules cannot be loaded into the form editor. |
-| `recovery_strategy: no_breach` or `recovery_strategy: none` | The form only supports custom recovery queries. The no-breach and none strategies have no form equivalent. |
-| `no_data_strategy` (any active value) | The form has no controls for no-data handling. |
-| `query.no_data` block | The form has no UI for inline no-data query definitions. |
-
-If the toggle is disabled and you want to use the form, you must remove the non-representable configuration from the YAML before saving, then reopen the rule.

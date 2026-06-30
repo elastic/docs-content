@@ -10,7 +10,7 @@ description: "Configure the ES|QL query and query parameters for rules in Kibana
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
-Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. The rule executor also supports [dynamic values](#dynamic-query-values) that let you do more like filtering by the evaluation window or setting configurable values like thresholds through the rule form.
+Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
 
 ## Base query [query-base]
 
