@@ -251,6 +251,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue in {{elastic-defend}} that could cause the system to lock up for up to several minutes during {{elastic-defend}} uninstallation or upgrade.
 
 
+## 9.3.7 [elastic-security-9.3.7-release-notes]
+
+### Fixes [elastic-security-9.3.7-fixes]
+* Fixes an issue where the rule editing UI rejected valid semver range version constraints (such as `^8.2.0 || ^9.0.0`) on related integrations [#274133]({{kib-pull}}274133).
+* Fixes an issue in the AI Assistant where selecting all conversations and then saving an edit to a single conversation deleted all conversations instead of updating only the edited one [#274033]({{kib-pull}}274033).
+* Fixes `bulk_max_size` output setting validation in {{elastic-defend}}.
+
+## 9.3.6 [elastic-security-9.3.6-release-notes]
+
+### Fixes [elastic-security-9.3.6-fixes]
+
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Fixes alert action error toasts (assign, tag, open, close, acknowledge) so they show the full error message from {{es}} instead of a blank body [#269592]({{kib-pull}}269592).
+* Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+
 ## 9.3.5 [elastic-security-9.3.5-release-notes]
 
 ### Fixes [elastic-security-9.3.5-fixes]

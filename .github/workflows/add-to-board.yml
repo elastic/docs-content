@@ -12,27 +12,27 @@ jobs:
   route:
     runs-on: ubuntu-latest
     if: |
-      github.event.label.name == 'team:Ingest' ||
-      github.event.label.name == 'team:Experience' ||
-      github.event.label.name == 'team:Admin' ||
-      github.event.label.name == 'team:Developer' ||
-      github.event.label.name == 'team:DocsEng' ||
-      github.event.label.name == 'team:Platform' ||
-      github.event.label.name == 'team:Projects' ||
-      github.event.label.name == 'team:Search' ||
-      github.event.label.name == 'team:Security'
+      github.event.label.name == 'Team:Ingest' ||
+      github.event.label.name == 'Team:Experience' ||
+      github.event.label.name == 'Team:Admin' ||
+      github.event.label.name == 'Team:Developer' ||
+      github.event.label.name == 'Team:DocsEng' ||
+      github.event.label.name == 'Team:Platform' ||
+      github.event.label.name == 'Team:Projects' ||
+      github.event.label.name == 'Team:Search' ||
+      github.event.label.name == 'Team:Security'
     env:
       PROJECT_ID_MAP: |
         {
-          "team:Ingest":      "649",
-          "team:Experience":  "1034",
-          "team:Admin":       "1927",
-          "team:Developer":   "726",
-          "team:DocsEng":     "1625",
-          "team:Platform":    "1232",
-          "team:Projects":    "1415",
-          "team:Search":      "726",
-          "team:Security":    "1034"
+          "Team:Ingest":      "649",
+          "Team:Experience":  "1034",
+          "Team:Admin":       "1927",
+          "Team:Developer":   "726",
+          "Team:DocsEng":     "1625",
+          "Team:Platform":    "1232",
+          "Team:Projects":    "1415",
+          "Team:Search":      "726",
+          "Team:Security":    "1034"
         }
     steps:
       - name: Remove needs-team label
