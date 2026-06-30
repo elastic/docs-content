@@ -172,6 +172,11 @@ Any index you restore from a snapshot must also be compatible with the current c
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
+::::{note}
+:applies_to: stack: ga 9.2
+N-2 indices are restored as read-only. Snapshots taken during active indexing may fail to restore and could be missing recently indexed documents. If this happens, use a cluster running a version that fully supports the index, take a new snapshot there, and then restore that snapshot to the newer cluster.
+::::
+
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
 
 #### Restoring incompatible indices
