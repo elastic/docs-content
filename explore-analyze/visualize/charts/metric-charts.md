@@ -3,7 +3,7 @@ navigation_title: Metric charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building metric charts with Kibana Lens in Elastic.
+description: Create metric charts to highlight important KPIs with dynamic coloring and trend indicators on dashboards.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -35,9 +35,8 @@ To build a metric chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a metric chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization..
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Metric
@@ -77,8 +76,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
@@ -487,18 +486,24 @@ Customize your metric chart to display exactly the information you need, formatt
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. You can optionally specify the following options:
+:   Split your metric into multiple tiles based on a categorical field. Each unique value creates its own tile, allowing you to compare metrics across regions, products, time periods, or any other dimensions. It supports the following functions:
 
-    - **Number of values**: The number of tiles to show. The default number of values depends on your environment:
-      - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-      - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
-
-      If more values are available for the selected breakdown field, an additional tile named **Other** shows if the **Group remaining values as "Other"** advanced option is on.
-    :::{include} ../../_snippets/lens-rank-by-options.md
+    :::{include} ../../_snippets/lens-bucket-top-values.md
     :::
-    - **Collapse by**: Aggregate values of the various tiles into a single number. Possible aggregation options are `None` (default), `Sum`, `Average`, `Min`, and `Max`.
+      :::{include} ../../_snippets/lens-rank-by-options.md
+      :::
+      :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
+      :::{include} ../../_snippets/lens-histogram-settings.md
+      :::
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
-    :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
+    :::{include} ../../_snippets/lens-collapse-by.md
     :::
 
 **Appearance**

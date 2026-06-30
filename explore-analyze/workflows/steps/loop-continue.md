@@ -17,6 +17,9 @@ products:
 
 The `loop.continue` step skips the rest of the current iteration in the innermost enclosing [`foreach`](/explore-analyze/workflows/steps/foreach.md) or [`while`](/explore-analyze/workflows/steps/while.md) loop and moves on to the next iteration. Use it to skip items that don't meet a filter, without nesting the remaining logic inside an `if`.
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## Parameters
 
 `loop.continue` takes no parameters.
