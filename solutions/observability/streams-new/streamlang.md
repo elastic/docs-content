@@ -15,7 +15,7 @@ products:
 ---
 # Streamlang [streams-streamlang-overview]
 
-Streamlang is a YAML domain-specific language (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be converted to multiple execution targets, including {{es}} ingest pipelines and ES|QL. This allows processing to run at ingest time or query time without rewriting rules.
+Streamlang is a YAML domain-specific language (DSL) for defining stream processing and routing logic. Streamlang provides a consistent processing interface that can be converted to multiple execution targets, including {{es}} ingest pipelines and {{esql}}. This allows processing to run at ingest time or query time without rewriting rules.
 
 You can write Streamlang directly using the [YAML editing mode](./parse-and-process.md#streams-editing-yaml-mode) in the **Processing** tab or the [interactive mode](./parse-and-process.md#streams-editing-interactive-mode) which generates Streamlang behind the scenes.
 
@@ -77,6 +77,16 @@ The following table lists all available processors. Refer to the individual proc
 | [`set`](./processors/set.md) | Assigns a value to a field, creating the field if it doesn't exist. |
 | [`trim`](./processors/trim.md) | {applies_to}`stack: ga 9.4+` Removes leading and trailing whitespace from a string field. |
 | [`uppercase`](./processors/uppercase.md) | {applies_to}`stack: ga 9.4+` Converts a string field to uppercase. |
+
+### Processor limitations and inconsistencies [streams-processor-inconsistencies]
+
+Streams exposes a Streamlang configuration, but internally it relies on {{es}} ingest pipeline processors and {{esql}}. Streamlang doesn't always have 1:1 parity with the ingest processors because it needs to support options that work in both ingest pipelines and {{esql}}. In most cases, you won't need to worry about these details, but the underlying design decisions still affect the UI and available configuration options. The following are some limitations and inconsistencies when using Streamlang processors:
+
+- **Consistently typed fields**: {{esql}} requires one consistent type per column, so workflows that produce mixed types across documents won't transpile.
+- **Conversion of types**: {{esql}} and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
+- **Multi-value commands/functions**: Fields can contain one or multiple values. {{esql}} and ingest processors don't always handle these cases the same way. For example, grok in {{esql}} handles multiple values automatically, while the grok processor does not.
+- **Conditional execution**: {{esql}}'s enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
+- **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while {{esql}} flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
 ## Conditions [streams-streamlang-conditions]
 
