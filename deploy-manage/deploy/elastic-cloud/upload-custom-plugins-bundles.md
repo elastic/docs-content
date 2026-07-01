@@ -1,4 +1,5 @@
 ---
+navigation_title: Custom plugins and bundles
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
@@ -19,7 +20,7 @@ If you use {{serverless-short}} and need to manage synonyms, use the [synonyms A
 
 There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
 
-* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md).
+* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-ech.md).
 * Custom dictionaries, such as synonyms, stop words, compound words, and so on.
 * Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
@@ -29,7 +30,7 @@ Custom plugins and bundles are collectively referred to as extensions.
 
 ## Before you begin [ec_before_you_begin_7]
 
-The selected plugins/bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Updating Plugins and Bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-update-bundles-and-plugins).
+The selected plugins/bundles are downloaded and provided when a node starts. Changing a plugin does not change it for nodes already running it. Refer to [Replace an extension](#ec-update-bundles-and-plugins).
 
 With great power comes great responsibility: your plugins can extend your deployment with new functionality, but also break it. Be careful. We obviously cannot guarantee that your custom code works.
 
@@ -121,47 +122,27 @@ You must upload your files before you can apply them to your cluster configurati
     * Bundles should specify major or minor versions with wildcards, such as `7.*` or `*`. Wildcards are recommended to ensure the bundle is compatible across all versions of these releases.
 5. Click **Create extension**.
 
-After creating your extension, you can [enable them for existing {{es}} deployments](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-update-bundles) or enable them when creating new deployments.
+After creating your extension, you can [enable it on an existing {{es}} deployment](#ec-update-bundles) or enable it when creating new deployments.
 
 ::::{note}
-Creating extensions larger than 200MB should be done through the extensions API.
-
-Refer to [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md) for more details.
-
+Creating extensions larger than 200MB must be done through the API. Refer to [Upload an extension using the API](#ec-extension-api-usage-guide).
 ::::
 
 
 
-## Update your deployment configuration [ec-update-bundles]
+## Enable extensions on a deployment [ec-update-bundles]
 
-After uploading your files, you can select to enable them when creating a new {{es}} deployment. For existing deployments, you must update your deployment configuration to use the new files:
+After uploading your files, you can enable them when creating a new {{es}} deployment. For existing deployments, enable them from the deployment edit page:
 
-1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. From the **Actions** dropdown, select **Edit deployment**.
-4. Select **Manage user settings and extensions**.
-5. Select the **Extensions** tab.
-6. Select the custom extension.
-7. Select **Back**.
-8. Select **Save**. The {{es}} cluster is then updated with new nodes that have the plugin installed.
+:::{include} _snippets/enable-extensions-on-deployment.md
+:::
 
 
-## Update your extension [ec-update-bundles-and-plugins]
+## Replace an extension [ec-update-bundles-and-plugins]
 
 While you can update the ZIP file for any plugin or bundle, these are downloaded and made available only when a node is started.
 
-:::{important}
-Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
-:::
-
-:::{tip}
-If you need to update your extension, instead of updating an existing extension with a new file directly, we recommend that you create a new extension to test the behavior first, verify it's validity, and then reflect it to your deployment.
-:::
-
-If the extension is not in use by any deployments, then you are free to update the files or extension details as much as you like. However, if the extension is in use, and if you need to update it with a new file, it is recommended to [create a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin) rather than updating the existing one that is in use.
+If the extension is not in use by any deployments, you can update the files or extension details. However, if the extension is in use, and if you need to update it with a new file, it is recommended to [create a new extension](#ec-add-your-plugin) rather than updating the existing one that is in use.
 
 By following this method, only the one node would be down even if the extension file is faulty. This would ensure that HA clusters remain available.
 
@@ -169,37 +150,28 @@ This method also supports having a test/staging deployment to test out the exten
 
 You may delete the old extension after updating the deployment successfully.
 
-To update an extension with a new file version,
+To replace an extension with a new file version:
 
 1. Prepare a new plugin or bundle.
-2. On the **Extensions** page, [upload a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin).
-3. Make your new files available by uploading them.
-4. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+2. On the **Extensions** page, [upload a new extension](#ec-add-your-plugin).
+3. Follow the steps in [Enable extensions on a deployment](#ec-update-bundles). On the **Extensions** tab, select the new extension and deselect the old one before you save.
 
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+### Considerations for updating an in-use extension
 
-5. From the **Actions** dropdown, select **Edit deployment**.
-6. Select **Manage user settings and extensions**.
-7. Select the **Extensions** tab.
-8. Select the new extension and de-select the old one.
-9. Select **Back**.
-10. Select **Save**.
+* Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
+* If you need to update your extension, instead of updating an existing extension with a new file directly, create a new extension to test the behavior first, verify its validity, and then apply it to your deployment.
 
+## Upload an extension using the API [ec-extension-api-usage-guide]
 
-## How to use the extensions API [ec-extension-api-usage-guide]
+Use the extensions API to upload plugins and bundles programmatically. You must use the API for extensions larger than 200MB; the Cloud UI supports uploads up to that size. You must also use the API for automation or when your ZIP file is not reachable from a public URL in a single request.
 
-::::{note}
-For a full set of examples, check [Managing plugins and extensions through the API](../../../deploy-manage/deploy/elastic-cloud/manage-plugins-extensions-through-api.md).
-::::
+Before you start, create an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md). To manage extensions after upload, add them to a deployment, update metadata, or delete them. Refer to [Managing plugins and extensions through the API](manage-plugins-extensions-through-api.md). For the complete HTTP reference, see [Extensions API]({{cloud-apis}}group/endpoint-extensions).
 
+### Upload from a local file [ec_method_1_use_http_post_to_create_metadata_and_then_upload_the_file_using_http_put]
 
-If you don’t already have one, create an [API key](../../../deploy-manage/api-keys/elastic-cloud-api-keys.md)
+Create the extension metadata first, then upload the ZIP file in a second request.
 
-There are ways that you can use the extensions API to upload a file.
-
-### Method 1: Use HTTP `POST` to create metadata and then upload the file using HTTP `PUT` [ec_method_1_use_http_post_to_create_metadata_and_then_upload_the_file_using_http_put]
-
-Step 1: Create metadata
+1. Create metadata
 
 ```text
 curl -XPOST \
@@ -214,7 +186,7 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-Step 2: Upload the file
+2.  Upload the file
 
 ```text
 curl -XPUT \
@@ -242,7 +214,9 @@ r = requests.put('https://api.elastic-cloud.com/api/v1/deployments/extensions/{}
 ```
 
 
-### Method 2: Single step. Use a `download_url` so that the API server downloads the object at the specified URL [ec_method_2_single_step_use_a_download_url_so_that_the_api_server_downloads_the_object_at_the_specified_url]
+### Upload from a download URL [ec_method_2_single_step_use_a_download_url_so_that_the_api_server_downloads_the_object_at_the_specified_url]
+
+When your ZIP is hosted at a publicly accessible URL, create the extension in one request. {{ecloud}} downloads and validates the file from the URL you provide. This method is required for plugins larger than 200MB.
 
 ```text
 curl -XPOST \
@@ -257,5 +231,3 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
   "download_url": "https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.13.2.zip"
 }'
 ```
-
-Refer to [Extensions API reference]({{cloud-apis}}group/endpoint-extensions) for the complete set of HTTP methods and payloads.
