@@ -4,4 +4,4 @@
 
   As a workaround, you can [add an IP filter](/deploy-manage/security/ip-filtering-cloud.md) for the hosts that will use SSO through the {{ecloud}} console.
   
-  In {{ech}}, you can still SSO into private {{kib}} endpoints individually using the [SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack-level authentication using the {{es}} username and password also works with `{{kibana-id}}.vpce.{region}.aws.elastic-cloud.com` URLs.
+  In {{ech}}, you can still SSO into private {{kib}} endpoints individually using the [SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack-level authentication using the {{es}} username and password also works with the private hosted zone URL for your deployment, for example: my-deployment-d53192.kb.{{example-phz-dn}}.

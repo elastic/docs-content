@@ -23,7 +23,7 @@ Azure Private Link establishes a secure connection between two Azure VNets. The 
 
 Private Link is a connection between an Azure Private Endpoint and a Azure Private Link Service.
 
-Azure Private Link requires that you also filter traffic to your deployments by creating virtual private connection (VPC) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VPC specified in the policy, as well as any other filters defined in policies applied to the deployment.
+Azure Private Link requires that you also filter traffic to your deployments by creating a private connection policy in {{ecloud}}. This limits traffic to your deployment to the private endpoint specified in the policy, along with any other filters defined in policies applied to the deployment.
 
 To learn how private connection policies impact your deployment, refer to [](/deploy-manage/security/network-security-policies.md).
 
@@ -239,22 +239,31 @@ To test the connection:
 
     The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
-In the event that the Private Link connection is not approved by {{ecloud}}, you’ll get an error message like the following. Double check that the filter you’ve created in the previous step uses the right resource ID.
+
+### Troubleshoot connection failures
+
+If your test connection fails, the following are some common errors and what they can indicate.
+
+#### No route to host
+
+If the test connection fails with a `No route to host` error, the Private Link connection is not approved by {{ecloud}}. Double check that the filter you've created in the previous step uses the right resource ID.
 
 
-**Request**
 ```sh
-$ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243 -u {username}:{password}
-```
-
-**Response**
-```sh
-* Rebuilt URL to: https:/my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243/
-*   Trying 192.168.46.5...
 * connect to 192.168.46.5 port 9243 failed: No route to host
 * Failed to connect to my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com port 9243: No route to host
 * Closing connection 0
 curl: (7) Failed to connect to my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com port 9243: No route to host
+```
+
+#### 403 Forbidden
+
+If the TLS connection succeeds but the request returns a `403 Forbidden` response with `Forbidden due to traffic filtering`, the network path is valid but your private connection policy is missing or misconfigured. Verify that the resource name and resource ID in the policy exactly match the `name` and `properties.resourceGUID` values of the Azure private endpoint, and that the policy is associated with the target deployment.
+
+```sh
+HTTP/1.1 403 Forbidden
+...
+Forbidden due to traffic filtering
 ```
 
 ### Associate a private connection policy with a deployment [associate-private-connection-policy]
@@ -295,7 +304,7 @@ Associating the policy with your deployments allows you to do the following:
 For traffic to connect with the deployment over Azure Private Link, the client making the request needs to be located within the VNet where you’ve created the private endpoint. You can also setup network traffic to flow through the originating VNet from somewhere else, such as another VNet or a VPN from your corporate network. This assumes that the private endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
 ::::{important}
-Use the alias you’ve set up as CNAME A record to access your deployment.
+Use the alias you've set up as an A record to access your deployment.
 ::::
 
 :::{include} _snippets/private-url-struct.md
@@ -366,12 +375,12 @@ After you create your private connection policy, you can edit it, remove it from
 
 ### Edit a private connection policy [edit-private-connection-policy]
 
-You can edit a policy's name, description, VPC endpoint ID, and more.
+You can edit a policy's name, description, resource name, Private Endpoint filter, and more.
 
 :::{include} _snippets/network-security-page.md
 :::
-3. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
-4. Click **Update** to save your changes.
+1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+2. Click **Update** to save your changes.
 
 :::{tip}
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
