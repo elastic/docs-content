@@ -158,25 +158,11 @@ This table compares Security capabilities between {{ech}} deployments and Server
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 
-## Elasticsearch index sizing guidelines [elasticsearch-differences-serverless-index-size]
-To ensure optimal performance in Serverless Elasticsearch projects, follow these sizing recommendations.
-
-If you created your index after **June 1, 2026**, your index can grow upto 4.8TB without any performance impact.
-That limit can be raised further via overrides.
-
-If you created your index before **June 1, 2026**, follow these recommendations according to project type:
-
-| **Use case** | Maximum index size | Project configuration |
-| --- | --- | --- |
-| **Vector search** | 150GB | Vector optimized |
-| **General search (non data-stream)** | 300GB | General purpose |
-| **Other uses (non data-stream)** | 600GB | General purpose |
-
-If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
-
-These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
-
-### Index and resource limits [index-and-resource-limits]
+## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
+Elasticsearch uses sharding to distribute the data in your index across the cluster - this helps to support growing data volumes and load. In {{serverless-full}}, the sharding is fully managed for you. You don’t need to think about choosing the optimal shard count for an index because the sharding will automatically adjust to suit your needs. That said, there are still some guidelines to share: these are best practices that tend to give the best results over the long term. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
+ * Large numbers of very small (or empty) indices should be avoided whenever possible. Each index has a resource cost within your project and the service must scale your project capacity to accommodate. If you recognize this pattern in your design, consider options for organizing your data into fewer indices.
+ * At the other end of the spectrum, a design where each index can grow to many terabytes might also ultimately result in performance trade-offs - consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
+ * Use a data stream instead of a single index when appropriate, and take advantage of data stream lifecycle to manage data retention. Using date-based naming patterns with data streams is generally undesirable. It’s better to let the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) take care of aging out data that is no longer relevant.
 
 {{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
 
@@ -184,7 +170,7 @@ These recommendations do not apply to indices using better binary quantization (
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 
-The index limit is adjustable and can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+Adjustable limits can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
