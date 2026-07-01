@@ -96,13 +96,13 @@ serverless:
 
 **Enable:** `automatic_troubleshooting`
 
-Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) configuration issues: endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus. The agent queries endpoint data, inspects {{elastic-defend}} package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
+Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) configuration issues: endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus software. The agent queries endpoint data, inspects {{elastic-defend}} package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | Why isn't this endpoint showing up in the endpoint list? | Query agent and endpoint indices for enrollment and check-in evidence, then flag the root cause and remediation. |
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
-| Is there any incompatible antivirus on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
+| Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 
