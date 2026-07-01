@@ -17,7 +17,7 @@ description: Parse structured log messages into fields using delimiter-based pat
 
 The **Dissect** processor parses structured log messages and extracts fields from them. It uses a set of delimiters to split the log message into fields instead of predefined patterns to match the log messages.
 
-Dissect is much faster than Grok, and is recommend for log messages that follow a consistent, structured format.
+Dissect is much faster than Grok, and is recommended for log messages that follow a consistent, structured format.
 
 To parse a log message with a dissect processor:
 
@@ -47,7 +47,7 @@ The following example shows the dissect pattern for an unstructured log message.
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
-Instead of writing the dissect patterns by hand, you can select **Generate Patterns** to have AI generate them for you.
+Instead of writing the dissect patterns by hand, you can select **Generate patterns** to have AI generate them for you.
 
 Generated patterns work best on semi-structured data. For very custom logs with a lot of text, creating patterns manually generally creates more accurate results.
 

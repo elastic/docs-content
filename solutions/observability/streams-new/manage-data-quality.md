@@ -99,7 +99,7 @@ For more information on data quality, refer to the [data set quality](../data-se
 
 ### Enable the failure store [streams-data-quality-enable]
 
-When the failure store is off, the **Failed documents** component shows an **Enable failure store** link. Click the link and set a retention period for your failure store.
+When the failure store is off, the **Failed documents** component shows an **Enable failure store** link. Select the link and set a retention period for your failure store.
 
 ## Create a data quality alert [streams-data-quality-alert]
 

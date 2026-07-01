@@ -37,7 +37,7 @@ Before creating partitions, keep the following in mind:
 
 - **Partition by logical groupings**, not by high-cardinality fields. Group logs by team, technology type, or environment (for example, `web-servers`, `application`, `security`) rather than by individual service names or host identifiers, which can generate too many streams to manage effectively.
 - **Aim for tens of partitions, not hundreds.** Each partition creates a dedicated data stream in {{es}}. There is a cost to each one, so keep the number manageable.
-- **Partition only when logs form meaningfully distinct groups: by structure, behavior, or both** Each partition should map to a set of logs with a distinct schema (fields, formats, or log shapes that differ from other sources), different operational behavior (retention duration, access patterns, storage destination), or both. Firewall logs and application logs warrant a split because they look different and often need different retention. Logs from two web servers do not: same schema, same lifecycle, partitioning adds overhead without benefit. If your logs are structurally similar and need identical treatment, a single stream is simpler to operate.
+- **Partition only when logs form meaningfully distinct groups: by structure, behavior, or both.** Each partition should map to a set of logs with a distinct schema (fields, formats, or log shapes that differ from other sources), different operational behavior (retention duration, access patterns, storage destination), or both. Firewall logs and application logs warrant a split because they look different and often need different retention. Logs from two web servers do not: same schema, same lifecycle, partitioning adds overhead without benefit. If your logs are structurally similar and need identical treatment, a single stream is simpler to operate.
 
 ## Partition your data [organize-partitioning]
 
@@ -50,7 +50,7 @@ Before creating partitions, keep the following in mind:
 ::::::
 
 ::::::{step} Create a partition
-Choose how to define partitions: manually using field-based conditions, or by letting AI analyze your data and suggest groupings.
+Choose how to define partitions: manually, using field-based conditions, or automatically, by letting AI analyze your data and suggest groupings.
 
 :::::{dropdown} Create partitions manually
 1. Select **Create partition**.

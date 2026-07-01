@@ -62,7 +62,7 @@ The following table lists all available processors. Refer to the individual proc
 | [`convert`](./processors/convert.md) | {applies_to}`stack: ga 9.3+` Converts a field value to a different data type. |
 | [`date`](./processors/date.md) | Parses date strings into timestamps. |
 | [`dissect`](./processors/dissect.md) | Parses structured text using delimiter-based patterns. |
-| [`drop_document`](./processors/drop.md) | {applies_to}`stack: ga 9.3+` Prevents indexing of a document from based on a condition. |
+| [`drop_document`](./processors/drop.md) | {applies_to}`stack: ga 9.3+` Prevents indexing of a document based on a condition. |
 | [`enrich`](./processors/enrich.md) | {applies_to}`stack: ga 9.4+` Adds data from an enrich policy to incoming documents. |
 | [`grok`](./processors/grok.md) | Parses unstructured text using predefined or custom patterns. |
 | [`join`](./processors/join.md) | {applies_to}`stack: ga 9.4+` Concatenates the values of multiple fields with a delimiter. |

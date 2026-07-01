@@ -17,12 +17,12 @@ description: Parse unstructured log messages and extract fields using predefined
 
 The **Grok** processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The grok processor is powerful and can parse a wide variety of log formats.
 
-You can provide multiple patterns to the grok processor. The grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns won't be used.
+You can provide multiple patterns to the grok processor. The grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns are skipped.
 
-If a pattern doesn't match, the grok processor tries the next pattern. If no patterns match, the Grok processor will fail and you can troubleshoot the issue. Instead of writing grok patterns, you can have Streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
+If a pattern doesn't match, the grok processor tries the next pattern. If no patterns match, the Grok processor fails and you can troubleshoot the issue. Instead of writing grok patterns, you can have Streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
 
 :::{tip}
-To improve pipeline performance, start with the most common patterns first, then add more specific patterns. This reduces the number times the grok processor has to run.
+To improve pipeline performance, start with the most common patterns first, then add more specific patterns. This reduces the number of times the grok processor has to run.
 :::
 
 To parse a log message with a grok processor:

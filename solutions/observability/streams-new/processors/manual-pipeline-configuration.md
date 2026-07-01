@@ -19,7 +19,7 @@ description: Configure advanced ingest pipeline processors as a JSON-encoded arr
 The **manual pipeline configuration** processor is only available on [classic streams](../get-data-in.md#get-data-in-classic).
 :::
 
-The **Manual pipeline configuration** lets you create a JSON-encoded array of ingest pipeline processors.This is helpful if you want to add more advanced processing that isn't currently available as part of the UI-based processors.
+The **Manual pipeline configuration** lets you create a JSON-encoded array of ingest pipeline processors. This is helpful if you want to add more advanced processing that isn't currently available as part of the UI-based processors.
 
 Refer to the following documentation for more on manually configuring processors:
 

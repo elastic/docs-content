@@ -50,5 +50,5 @@ The **Schema** tab provides an overview of how fields are defined within your st
 To edit field mappings from the **Schema** tab:
 1. Open the **Field actions** menu by selecting the {icon}`boxes_vertical` icon.
 1. Select **Map field**.
-1. From the **Type** dropdown, select the desired field type.
+1. From the **Type** menu, select the field type.
 1. Select **Stage changes** to save your updates.

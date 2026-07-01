@@ -14,32 +14,32 @@ products:
   - id: elastic-stack
 ---
 
-# Streams-new
+# Streams
 
-Streams allows you to automatically parse, structure, and organize your log data so you can query it immediately, without writing Grok expressions or maintaining custom pipelines.
+Streams lets you parse, structure, and organize your log data so you can query it immediately, without writing Grok expressions or maintaining custom pipelines.
 
-When an incident hits, Streams gets you to answers faster. AI-powered detection continuously scans your logs for critical signals and surfaces what matters. Instead of manually scanning thousands of log lines, you get a prioritized list of what matters.
+When an incident occurs, Streams gets you to answers faster. AI-powered detection continuously scans your logs for critical signals and surfaces what matters. Instead of manually scanning thousands of log lines, you get a prioritized list of what matters.
 
-## Use Streams to...
+## What you can do with Streams
 
 **Organize logs automatically**
 :   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
 
 **Get meaning from logs**
-:   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single GROK expression.
+:   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single Grok expression.
 
 **Reduce time spent on managing pipelines**
 :   Streams uses AI to simplify parsing, enrichment, partitioning, and schema updates. You can start investigating issues within minutes, rather than spending weeks on pipeline setup and data engineering.
 
 **Control storage costs**
-:   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams allows you to retain high-value data without discarding important information, reducing overall storage costs.
+:   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams lets you retain high-value data without discarding important information, reducing overall storage costs.
 
 ## Before you get started
 
 To use Streams, you need the following prerequisites:
 
 - {{stack}} version 9.2+ or {{serverless-short}}
-- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md). to use AI features like pipeline suggestion, partition suggestions, and significant events.
+- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events.
 
 Users also need {{kib}} access with the following permissions:
 
@@ -71,7 +71,7 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ## Get started with Streams
 
-This is a quick overview of the main steps to get started with Streams in {{kib}}. You'll find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
+This is a quick overview of the main steps to get started with Streams in {{kib}}. You can find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
 
 This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ecloud}} or self-managed {{es}} environment.
 
@@ -116,12 +116,10 @@ Use the [**Retention** tab](./configure-retention.md) to control how long each s
 ::::
 
 ::::{step} Manage data quality
-The **Data quality** column shows on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality** tab](./manage-data-quality.md) to examine more closely and resolve issues.
+The **Data quality** column on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality** tab](./manage-data-quality.md) to examine more closely and resolve issues.
 
 When documents fail during ingestion, Streams preserves them in a [failure store](./manage-data-quality.md#streams-data-quality-failure) rather than dropping them, so you can inspect what went wrong and fix the processor using the actual failing documents.
 ::::
 
 :::::
-
-::::::
 
