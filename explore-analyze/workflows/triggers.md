@@ -105,7 +105,7 @@ Event-driven triggers run workflows when a platform event occurs:
 * **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
 * **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
 * **Alert episode lifecycle triggers** (experimental, 9.5+) fire when an alert episode changes state in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed.
-* **{{alerting-v2-system-cap}} rule lifecycle triggers** (experimental, 9.5+) fire when rules in the {{alerting-v2-system}} are created, updated, deleted, enabled, or disabled. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
+* **{{alerting-v2-system-cap}} rule lifecycle triggers** fire when rules in the {{alerting-v2-system}} are created, updated, deleted, or have their status changed. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`.
 
 Use event-driven triggers for:
 

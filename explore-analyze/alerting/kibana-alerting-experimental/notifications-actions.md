@@ -10,7 +10,7 @@ description: "How to set up notifications and actions for rules in the experimen
 
 # Notifications and actions for the {{alerting-v2-system}}
 
-Rules in the {{alerting-v2-system}} don't send notifications directly. Instead, they produce alert episodes, and you use workflows and action policies to decide what happens next.
+{{rules-ui}} in the {{alerting-v2-system}} don't send notifications directly. Instead, they produce alert episodes, and you use workflows and action policies to decide what happens next.
 
 - **Workflows** are the delivery layer. They define what happens when the system decides to act, such as sending a message, calling a webhook, or triggering an automation.
 - **Action policies** are the gating layer. They evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions, grouping, and frequency settings.

@@ -37,7 +37,7 @@ Optional string labels you assign to a policy to categorize it or filter it on t
 
 An optional [KQL](../../../query-filter/languages/kql.md) expression that filters which alert episodes this policy applies to. An empty match condition matches every alert episode covered by the policy's scope. For a global policy, that means all alert episodes in the space. For a per-rule policy, it means all alert episodes from the associated rule.
 
-The match condition is the sole mechanism for scoping a policy beyond its base type. There are no separate rule type or rule ID selector fields. All scoping is done through this expression. For a global policy that should target a specific rule, use `rule.id: "my-rule-id"` or `rule.tags: "my-tag"` in the match condition.
+The match condition is the sole mechanism for scoping a policy beyond its base type. There are no separate rule type or rule ID selector fields. All scoping is done through this expression. For a global policy targeting a specific rule, use `rule.id: "my-rule-id"` or `rule.tags: "my-tag"` in the match condition.
 
 Use match conditions to route different alert episodes to different policies, for example, one policy for `severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 

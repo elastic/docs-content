@@ -166,7 +166,7 @@ Cases triggers fire when cases change. Use them to react to case lifecycle event
 **Shared payload.** Every cases trigger event includes:
 
 - `event.caseId` — The case ID, the alphanumeric identifier that is unique to each case.
-- `event.owner` — The solution that owns the case. It can be `securitySolution` for {{elastic-sec}} cases, `observability` for Observability cases, or `cases` for Stack cases.
+- `event.owner` — The solution that owns the case. It can be `securitySolution` for {{elastic-sec}} cases, `observability` for {{observability}} cases, or `cases` for Stack cases.
 
 Use `event.owner` in `on.condition` to filter by solution. For example, a workflow that only fires for {{elastic-sec}} cases:
 

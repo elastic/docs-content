@@ -20,7 +20,7 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 |---|---|---|---|---|
 | `episode_id` | string | Unique identifier of the alert episode. | Any string | `episode_id: "ep-001"` |
 | `episode_status` | string | Current lifecycle status of the alert episode. | `inactive`, `pending`, `active`, `recovering` | `episode_status: "active"` |
-| `severity` | string | Current severity of the alert episode. Populated when the rule's ES\|QL query includes a `severity` column whose value matches a supported level (case-insensitive). Unrecognized values are silently ignored and the field is absent. Not set during recovery. Use to route high-severity episodes to dedicated workflows. | `info`, `low`, `medium`, `high`, `critical` | `severity: "critical" OR severity: "high"` |
+| `severity` | string | Current severity of the alert episode. Populated when the rule's {{esql}} query includes a `severity` column whose value matches a supported level (case-insensitive). Unrecognized values are silently ignored and the field is absent. Not set during recovery. Use to route high-severity episodes to dedicated workflows. | `info`, `low`, `medium`, `high`, `critical` | `severity: "critical" OR severity: "high"` |
 | `group_hash` | string | Stable hash identifying the alert series the alert episode belongs to. | Any string | `group_hash: "abc123"` |
 | `last_event_timestamp` | string | ISO 8601 timestamp of the most recent event recorded for the alert episode. | ISO 8601 timestamp | `last_event_timestamp > "2026-01-01"` |
 | `rule.id` | string | Unique identifier of the rule that generated the alert episode. | Any string | `rule.id: "rule-001"` |

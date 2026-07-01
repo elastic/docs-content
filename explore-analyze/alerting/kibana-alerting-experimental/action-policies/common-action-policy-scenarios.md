@@ -14,7 +14,7 @@ Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page cov
 
 ## Route alert episodes to different workflows by severity [routing-by-severity]
 
-When your rules produce alert episodes at different severity levels, you'll often want to route them to different workflows. For example, you might page an on-call team for critical episodes while sending lower-severity episodes to a Slack channel for async review.
+When your rules produce alert episodes at different severity levels, you often need to route them to different workflows. For example, you might page an on-call team for critical episodes while sending lower-severity episodes to a Slack channel for async review.
 
 To do this, create separate policies scoped to specific severity values using match conditions:
 
@@ -80,7 +80,7 @@ If an episode drops below a policy's severity threshold, the policy stops matchi
 
 ## Re-notify for persistently active episodes [controlling-re-notification]
 
-The `On status change` frequency option notifies once per status transition (for example, when an episode activates or resolves). This is efficient for reducing noise, but it means that a persistently active episode that only changes in severity won't re-trigger a notification.
+The `On status change` frequency option notifies once per status transition (for example, when an episode activates or resolves). This is efficient for reducing noise, but it means that a persistently active episode that only changes in severity does not re-trigger a notification.
 
 If you want re-notification for episodes that stay active without a status change, use a time-based throttle instead:
 

@@ -24,7 +24,7 @@ After each dispatcher run, {{kib}} records the outcome in the `.alert-actions` i
 |---|---|
 | `dispatched` | The dispatcher invoked a workflow for the alert episode. |
 | `throttled` | The alert episode matched a policy but was rate-limited by the frequency setting. No workflow ran. |
-| `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
+| `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or marked inactive, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
 
 The **Execution history** view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome.
@@ -36,12 +36,12 @@ To query raw dispatch records directly, open Discover and query the `.alert-acti
 You can disable a policy so it is not evaluated for new alert episodes. You can snooze a policy for a defined window so that it does not dispatch notifications during that period. Policies that are not enabled or are snoozed are skipped when the dispatcher evaluates policies.
 
 :::{note}
-Snoozing a policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze a policy, the dispatch mechanism is paused and every series the policy would process is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy would have handled it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same policy.
+Snoozing a policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze a policy, the dispatch mechanism is paused and every series the policy processes is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same policy.
 :::
 
-### Maintenance windows [maintenance-windows]
+### {{maint-windows-cap}} [maintenance-windows]
 
-During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. No policy configuration is required. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Maintenance windows are configured separately, not on the action policy.
+During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. No policy configuration is required. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. {{maint-windows-cap}} are configured separately, not on the action policy.
 
 ## Update API keys
 
@@ -51,7 +51,7 @@ You can rotate the API key used to run a policy's workflows without changing mat
 
 **Production considerations**
 
-When you update or delete an action policy, previous API keys used for execution are marked for invalidation and removed on a schedule managed by {{kib}}. Allow for a short delay before new keys are used for dispatch.
+When you update or delete an action policy, previous API keys used for execution are queued for removal on a schedule managed by {{kib}}. Allow for a short delay before new keys are used for dispatch.
 ::::
 
 ## Bulk actions
@@ -60,6 +60,6 @@ On the action policies list, select one or more policies to enable, disable, sno
 
 ## Related pages
 
-- [Reduce notification noise in {{alerting-v2-system}}](reduce-notification-noise.md) to silence individual alert episodes using acknowledge, snooze, or deactivate.
+- [Reduce notification noise in {{alerting-v2-system}}](reduce-notification-noise.md) to silence individual alert episodes by acknowledging, snoozing, or marking them inactive.
 - [Action policy reference in {{alerting-v2-system}}](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
 - [Create and configure an action policy](create-configure-action-policy.md) to set up or update the policies you manage here.
