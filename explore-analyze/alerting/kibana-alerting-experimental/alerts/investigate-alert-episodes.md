@@ -14,14 +14,14 @@ In the {{alerting-v2-system}}, the episode detail page shows the full context of
 
 ## Metric trend [metric-trend]
 
-For threshold-based rules, the episode detail page shows how the evaluated metric compared to the rule's threshold conditions over the episode's lifetime. Use it to understand how the condition developed: how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and how long it persisted.
+When the system can extract threshold conditions from a rule's {{esql}} query, the episode detail page shows how the evaluated metric compared to those conditions over the episode's lifetime. Use it to understand how the metric behaved relative to the threshold. For example, you can examine how far the metric exceeded the configured value, whether the metric was escalating or stabilizing, and how long the breach persisted.
 
 When a rule includes multiple threshold conditions:
 
 - Conditions that compare the **same metric** appear together, with each threshold represented separately.
 - Conditions that compare **different metrics** appear in separate views, one per metric.
 
-This section is only present for rules that use threshold comparisons. It doesn't appear for signal-mode rules or rules whose evaluation logic doesn't produce comparable metric output.
+This section is only present when the system can parse threshold conditions from the rule's query. It doesn't appear for signal-mode rules or rules whose query doesn't contain extractable threshold comparisons.
 
 ## Related episodes by series [related-episodes]
 
