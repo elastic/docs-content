@@ -29,7 +29,7 @@ With cumulative temporality, each data point represents the total count since th
 
 To determine the rate of change, {{es}} computes the difference between consecutive values. Between 10:01 and 10:02, the rate was 7 requests per interval.
 
-This is the default temporality for `counter` metrics in {{es}}.
+This is the default temporality for [`counter`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
 ### Delta temporality
 
@@ -43,12 +43,12 @@ With delta temporality, each data point represents the change since the previous
 
 To determine the rate of change, {{es}} uses the value directly. At 10:02, the rate was 7 requests per interval.
 
-This is the default temporality for `histogram` metrics in {{es}}.
+This is the default temporality for [`histogram`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
 ## Configure temporality [configure-temporality]
 
-If you use managed inputs (e.g. the OTLP intake or Prometheus remote write) you don't have to configure anything.
-The OTLP intake comes with a dimension called `temporality` preconfigured in the mappings and preserves the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
+If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md), [managed OTLP intake](opentelemetry://reference/motlp.md), or [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) you don't have to configure anything.
+Both OTLP intakes comes with a dimension called `temporality` preconfigured in the mappings and preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
 Prometheus remote write V1 only support counters and classic prometheus histograms (represented as counters) which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
 
 If you are manually ingesting metrics into custom indices (e.g. via _bulk), you have to explicitly configure temporality on your datastream.
@@ -72,7 +72,7 @@ This is automatically handled when the data is queried or downsampled.
 
 ## How temporality affects queries [temporality-and-queries]
 
-The temporality field is used automatically by PromQL and ES|QL time series queries. When you query a TSDS using the [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md), {{es}} reads each document's temporality value and adjusts the behavior of time series aggregation functions like `rate` and `increase` accordingly:
+The temporality field is used automatically by PromQL and ES|QL time series queries. When you query a TSDS using the [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md), {{es}} reads each document's temporality value and adjusts the behavior of [time series aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) like `rate` and `increase` accordingly:
 
 - **Cumulative metrics:** {{es}} computes the difference between consecutive values to determine the rate of change.
 - **Delta metrics:** {{es}} uses the values directly, since they already represent changes.
@@ -81,15 +81,22 @@ This means that the `rate` and `increase` functions produce correct results rega
 Note that in ES|QL you cannot use `rate` or `increase` on histograms: Instead, ES|QL will automatically use an inner, per-series aggregation which merges the histograms taking the temporality into account.
 This is equivalent to how `increase` works for native histograms in PromQL. For example, the following two queries are equivalent:
 
+**ES|QL:**
+```esql
+TS my-metrics
+| STATS PERCENTILE(request_duration, 80) BY endpoint, TBUCKET(1m)
+```
+
+Note that in ES|QL you must use the `TS` command. If you use `FROM`, the temporality will be ignored.
+
+**PromQL:**
+```promql
+histogram_quantile(0.8, sum by (endpoint) (increase(request_duration[1m])))
+```
+
+
 ## How temporality affects downsampling [temporality-and-downsampling]
 
 [Downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) also respects the temporality field. Because the temporality field is a dimension, cumulative and delta data points are always in separate time series and are downsampled independently.
 
-For `counter` metrics:
-
-- **Cumulative counters** are downsampled by storing representative data points from the bucket (the first value, plus up to two points if a counter reset is detected).
-- **Delta counters** are downsampled by summing the values in the bucket.
-
-## OTLP ingestion [temporality-and-otlp]
-
-When you ingest metrics through the [OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md), {{es}} automatically populates the temporality field based on the OpenTelemetry [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality). No additional configuration is needed for OTLP-ingested metrics.
+For details on how each metric type is downsampled, refer to [downsampling methods](/manage-data/data-store/data-streams/downsampling-concepts.md#downsampling-methods).
