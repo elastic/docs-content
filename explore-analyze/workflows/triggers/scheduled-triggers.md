@@ -16,7 +16,7 @@ products:
 
 Scheduled triggers run workflows automatically at specific times or intervals, without requiring manual intervention. Use scheduled triggers for recurring tasks like reports, data cleanup, or periodic health checks.
 
-Scheduled workflows run with the permissions of the user who last saved the workflow. Refer to [](/explore-analyze/workflows/execution-permissions.md) to learn how workflow execution permissions work.
+Scheduled workflows run with the permissions of the user who last saved the workflow. For details, refer to [Execution permissions](/explore-analyze/workflows/execution-permissions.md).
 
 You can configure scheduled triggers using:
 

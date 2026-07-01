@@ -3,7 +3,7 @@ navigation_title: Execution permissions
 applies_to:
   stack: preview 9.3, ga 9.4+
   serverless: ga
-description: Learn which user context workflow runs use.
+description: Learn which user context a workflow run uses.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -29,9 +29,9 @@ The user context depends on how the workflow is triggered:
 
 ## Stored credentials [workflows-stored-execution-credentials]
 
-For runs that happen later, such as scheduled workflows and workflows triggered by rules, {{kib}} stores execution credentials for the relevant user context. These credentials control access to {{kib}} and {{es}} resources during the workflow run.
+For runs that happen later, such as scheduled workflows and workflows triggered by rules, {{kib}} stores an API key for the relevant user context. This API key captures the user's {{kib}} and {{es}} privileges when it's created or refreshed.
 
-Stored credentials continue to work if the user who created them is later deactivated or their role changes. To update the stored credentials for future runs, save the workflow or rule again with the user context you want future runs to use.
+Deactivating the user or changing their role does not automatically update the stored API key. To refresh the stored credentials for future runs, save the workflow or rule again with the user context you want future runs to use.
 
 ## Execution metadata [workflows-execution-metadata]
 
