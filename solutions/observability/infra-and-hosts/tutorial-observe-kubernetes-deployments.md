@@ -77,7 +77,7 @@ Now that you have a basic understanding of the monitoring architecture, let’s 
 
 Before you can monitor Kubernetes, you need the following:
 
-* {{es}} for storing and searching your observability data and {{kib}} for visualizing and managing it.
+* {{es}} for storing and searching your observability data and {{kib}} for visualizing and managing it. If you don't already have an Elastic deployment, you can [start a free trial](https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes).
 * If you want to collect Kubernetes state metrics, you need to deploy `kube-state-metrics`. For deployment instructions, refer to the Kubernetes [docs](https://github.com/kubernetes/kube-state-metrics#kubernetes-deployment).
 
 
