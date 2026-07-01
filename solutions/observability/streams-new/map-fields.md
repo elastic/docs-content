@@ -17,15 +17,15 @@ products:
 
 # Map fields in Streams [streams-schema]
 
-After selecting a stream, map fields either after creating a processor on the **Processing** tab or from the **Schema** tab.
-
 Field mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query performance.
+
+You can map fields either after creating a processor on the [**Processing** tab](#streams-map-fields-processing) or from the [**Schema** tab](#streams-map-fields-processing).
 
 Unmapped fields can still be searched using [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs.
 
-After identifying which fields you query most often, you can map them to improve performance, at the cost of additional storage. For more background, refer to the [Mapping](../../../manage-data/data-store/mapping.md) overview.
+After identifying which fields you query most often, you can map them to improve performance, at the cost of additional storage. For more background, refer to the [mapping](../../../manage-data/data-store/mapping.md) overview.
 
-## Map fields from the Processing tab
+## Map fields from the Processing tab [streams-map-fields-processing]
 
 After you create a [processor](./parse-and-process.md), open the **Detected fields** tab to view any fields it extracted. Streams automatically attempts to map these fields so you can use them in queries.
 
@@ -35,7 +35,7 @@ From here, you can:
 - Change an incorrect field mapping to the correct type.
 - Remove the mapping from a field.
 
-## Map fields from the Schema tab
+## Map fields from the Schema tab [streams-map-fields-processing]
 
 The **Schema** tab provides an overview of how fields are defined within your stream.
 
