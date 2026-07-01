@@ -1,4 +1,5 @@
 ---
+description: Learn how Elastic Security calculates entity risk scores for hosts, users, and services from detection alerts, asset criticality, and watchlist membership.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/entity-risk-scoring.html
   - https://www.elastic.co/guide/en/serverless/current/security-entity-risk-scoring.html
@@ -39,7 +40,7 @@ Entity risk scores are determined by the following risk inputs:
 | --- | --- |
 | [Alerts](../detect-and-alert/manage-detection-alerts.md) | `.alerts-security.alerts-<space-id>` index alias |
 | [Asset criticality level](asset-criticality.md) | `.asset-criticality.asset-criticality-<space-id>` index alias |
-| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
+| [Privileged user status](privileged-user-monitoring.md) {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` | `.entity_analytics.monitoring.users-<space-id>` index alias |
 :::
 
 :::::

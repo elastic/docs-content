@@ -30,13 +30,30 @@ Use `while` for polling patterns: checking a status until it reaches `ready`, re
 | `type` | top level | string | Yes | Must be `while`. |
 | `condition` | top level | string | Yes | KQL expression evaluated each iteration. The loop continues while it is true. |
 | `steps` | top level | array | Yes | Loop body. |
+| `if` | top level | string | No | KQL expression that skips the entire loop when it evaluates to false. |
 | `max-iterations` | top level | number or object | No | Limit for number of iterations. Default is **2000**. Bare number is treated as `{ limit: N, on-limit: continue }`. Use the object form to opt into `on-limit: fail`. |
+| `timeout` | top level | duration | No | Timeout for the entire loop. |
+| `on-failure` | top level | object | No | Loop-level error-handling policy. Supports the same `continue`, `retry`, and `fallback` options as other steps. |
 | `iteration-timeout` | top level | duration | No | Per-iteration timeout. |
-| `iteration-on-failure` | top level | object | No | Per-iteration error-handling policy. Same shape as `on-failure`. |
+| `iteration-on-failure` | top level | object | No | Per-iteration error-handling policy. Supports `continue`, `retry`, and `fallback` without failing the whole loop. |
 
 :::{warning}
 `while` defaults to `max-iterations: 2000` with `on-limit: continue`, which means the step **succeeds quietly when the cap is reached**. If your loop needs to fail the workflow on hitting the cap, set `on-limit: fail` explicitly. Always think about the cap on loops that depend on external state to avoid runaway executions or silently truncated work.
 :::
+
+## Guardrails
+
+Use loop-level guardrails to control the `while` step as a whole:
+
+* `max-iterations` caps the number of iterations to prevent runaway loops.
+* `timeout` limits the total time spent in the loop, across all iterations.
+* `on-failure` defines loop-level failure handling with the same `continue`, `retry`, and `fallback` options used by other steps.
+* `if` skips the entire loop when the condition evaluates to false.
+
+Use iteration-level guardrails to control each pass through the loop:
+
+* `iteration-timeout` limits how long one iteration can run.
+* `iteration-on-failure` handles failures for one iteration with `continue`, `retry`, or `fallback` without failing the whole loop.
 
 ### `max-iterations` shape
 
@@ -63,10 +80,17 @@ Inside the `steps` block of a `while`, the following variables are available:
 ```yaml
 - name: poll_job
   type: while
+  if: "inputs.poll : true"
   condition: "steps.check.output.status : pending"
   max-iterations:
     limit: 60
     on-limit: fail
+  timeout: "10m"
+  iteration-timeout: "30s"
+  iteration-on-failure:
+    retry:
+      max-attempts: 2
+      delay: "1s"
   steps:
     - name: check
       type: elasticsearch.search

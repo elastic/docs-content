@@ -19,9 +19,13 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 - You must have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
-::::{tip}
-For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
-::::
+## Resources
+
+This tutorial covers the basics of querying data with {{esql}} in Discover. For more information, refer to:
+
+* [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators
+* [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md): Detailed overview of {{esql}} features in {{product.kibana}}
+* [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries
 
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]

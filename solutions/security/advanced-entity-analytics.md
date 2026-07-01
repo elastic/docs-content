@@ -23,15 +23,17 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 
 | Your goal | Start here |
 |-----------|------------|
-| Set up entity risk scoring for the first time | [](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md) → [](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) |
+| Check what you need before setting up | [](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md) |
+| Understand the foundation that powers entity analytics | [](/solutions/security/advanced-entity-analytics/entity-store.md) |
+| Set up entity risk scoring for the first time | [](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md) |
+| Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | Monitor risk scores for hosts, users, and services | [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) → [](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md) |
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
-| Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
-| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/overview.md) |
+| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) |
 | {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
-| {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
+| {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
 
@@ -82,7 +84,7 @@ Investigate entity connections and relationships directly from the entity detail
 
 ### Privileged user monitoring
 ```yaml {applies_to}
-stack: removed =9.4, ga =9.3, preview 9.1-9.2
+stack: removed 9.4+, ga =9.3, preview 9.1-9.2
 ```
 
 Track the activity of users with elevated permissions, such as system administrators or users with access to sensitive data. Identify suspicious activities like over-provisioning of rights or potential insider threats before they cause damage.
@@ -93,6 +95,6 @@ Track the activity of users with elevated permissions, such as system administra
 - [Enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md) for centralized entity management.
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.
-- Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md) to review risk scores, surface anomalies, and prioritize investigations.
+- Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) to review risk scores, surface anomalies, and prioritize investigations.
 - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
 - [Explore host, user, and network data](/solutions/security/advanced-entity-analytics/explore.md) across your environment.

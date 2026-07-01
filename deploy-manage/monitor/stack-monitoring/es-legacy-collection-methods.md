@@ -157,7 +157,3 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
 
-
-
-
-
