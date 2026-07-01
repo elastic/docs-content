@@ -24,7 +24,7 @@ Every rule evaluation writes a document to `.rule-events`. Fields use dot-notati
 | Field | Type | Description |
 |---|---|---|
 | `@timestamp` | date | When the evaluation ran. |
-| `scheduled_timestamp` | date | When the evaluation was scheduled to run. |
+| `scheduled_timestamp` | date | The scheduled time for this evaluation. |
 | `rule.id` | keyword | ID of the rule that produced this event. |
 | `rule.version` | long | Version of the rule at evaluation time. |
 | `group_hash` | keyword | Identifies the series this event belongs to. |
@@ -44,17 +44,17 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 
 | Field | Type | Description |
 |---|---|---|
-| `@timestamp` | date | When the action was recorded. |
+| `@timestamp` | date | When {{kib}} wrote this action document. |
 | `episode_id` | keyword | ID of the target alert episode. |
-| `episode_status` | keyword | Lifecycle state of the episode when the action was recorded. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
+| `episode_status` | keyword | Lifecycle state of the episode at the time of this action. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
 | `rule_id` | keyword | ID of the rule that owns the alert episode. |
 | `group_hash` | keyword | Identifies the series the episode belongs to. |
 | `action_type` | keyword | Identifies what happened and who initiated it. For more information, refer to [Action type values](#action-type-values). |
 | `actor` | keyword | User who performed the action. Null for system-written action types. |
 | `assignee_uid` | keyword | Target user for `assign` actions. |
-| `last_series_event_timestamp` | date | Timestamp of the last event in the series at the time the action was recorded. |
+| `last_series_event_timestamp` | date | Timestamp of the last event in the series at the time of this action. |
 | `expiry` | date | When the snooze expires. Only set for `snooze` actions. |
-| `action_group_id` | keyword | The action group the episode belonged to when the action was recorded. |
+| `action_group_id` | keyword | The action group the episode belonged to at the time of this action. |
 | `source` | keyword | Source that triggered the action. |
 | `tags` | keyword[] | Tag values written by `tag` actions. |
 | `reason` | text | Reason provided for `activate` or `deactivate` actions. |
@@ -62,7 +62,7 @@ When a user or the system records an action on an alert episode, {{kib}} writes 
 
 ### Action type values [action-type-values]
 
-Every `.alert-actions` document has an `action_type` that identifies what happened and who initiated it. User-triggered types are written when a user acts through the API or UI. System-written types are written by the dispatcher during rule evaluation.
+Every `.alert-actions` document has an `action_type` that identifies what happened and who initiated it. Users trigger user-triggered types through the API or UI. The dispatcher writes system-written types during rule evaluation.
 
 | Value | Written by | Meaning |
 |---|---|---|

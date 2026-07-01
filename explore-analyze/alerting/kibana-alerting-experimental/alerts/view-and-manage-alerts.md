@@ -14,14 +14,14 @@ When a rule in the {{alerting-v2-system}} detects a problem, the Alerts page giv
 
 ## Space scoping [episode-space-isolation]
 
-Alert episodes are scoped to the current {{kib}} space and are not visible in other spaces.
+Alert episodes belong to the current {{kib}} space and aren't visible in other spaces.
 
 ## Monitor alert health and trends [monitor-alert-trends]
 
-Two panels above the episodes table give you an at-a-glance summary of your alert environment:
+The Alerts page includes two summary panels:
 
 - **KPI panels** - Show aggregate episode counts for the current filter state and time range. Use them to understand the scale of a situation before reviewing individual episodes.
-- **Episode histogram** - Shows how episode counts have changed over the selected time range. Use it to identify when a wave of episodes began, whether the situation is improving, and whether a spike is isolated or part of a broader pattern. You can break down the chart by status, rule, or assignee.
+- **Episode histogram** - Shows how episode counts have changed over the selected time range. Use it to identify when a wave of episodes began, whether the situation is improving, and whether a spike stands alone or fits a broader pattern. You can break down the chart by status, rule, or assignee.
 
 :::{note}
 The episode histogram queries up to 10,000 alert episodes per time range. Narrow the time range or add filters if you exceed this limit.

@@ -14,21 +14,21 @@ In the {{alerting-v2-system}}, the episode detail page shows the full context of
 
 ## Related episodes by series [related-episodes]
 
-Related episodes are grouped into two subsections to help you distinguish between a condition recurring on one entity and a rule firing across many:
+The detail page groups related episodes into two subsections to help you distinguish between a condition recurring on one entity and a rule firing across many:
 
-- **Same alert series:** Episodes sharing the same `rule_id` and `group_hash`. These are recurrences of the same condition on the same series. A long list here suggests the underlying issue is not being fully resolved.
+- **Same alert series:** Episodes sharing the same `rule_id` and `group_hash`. These are recurrences of the same condition on the same series. A long list here suggests the underlying issue isn't being fully resolved.
 - **Other series for this rule:** Episodes from the same rule with a different `group_hash`. These show how broadly the rule is firing across other entities or conditions.
 
 ## Source event metadata [source-event-metadata]
 
-The metadata view surfaces field values from the source event that triggered the episode. Use it to inspect fields that are not shown in the main detail view, such as resource identifiers or version information.
+The metadata view surfaces field values from the source event that triggered the episode. Use it to inspect fields that aren't shown in the main detail view, such as resource identifiers or version information.
 
 ## Response history and actors [actors]
 
-Actors are the users who have taken actions on the episode and when each action was taken. Use this to track response history and coordinate across a shared queue.
+Actors are the users who acted on the episode and when each action happened. Use this to track response history and coordinate across a shared queue.
 
 ## Episode ownership and assignment [episode-assignment]
 
-An episode can be assigned to a user to indicate ownership. Only one user can be assigned at a time. Assigning replaces any existing assignee.
+You can assign an episode to a user to indicate ownership. Only one user can hold the assignment at a time. Assigning replaces any existing assignee.
 
 Use assignment to establish clear ownership during triage and prevent duplicate work when multiple people are reviewing the same queue.

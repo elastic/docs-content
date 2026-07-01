@@ -17,23 +17,23 @@ In the {{alerting-v2-system}}, you can take the following triage actions on aler
 - **Acknowledge / Unacknowledge:** Marks the episode as seen. Applies to the individual episode.
 - **Snooze / Unsnooze:** Suppresses notifications for the episode's series for a set duration. Applies to all episodes sharing the same `group_hash`.
 - **Resolve / Unresolve:** Closes the episode. Applies to the episode's series.
-- **Activate:** Manually moves the episode to `active` state without waiting for the activation threshold to be met.
+- **Activate:** Manually moves the episode to `active` state without waiting to meet the activation threshold.
 - **Edit tags:** Adds or removes tags on the episode.
 - **Assign:** Assigns the episode to a specific user. Available from the episode detail page.
 
 ## Bulk actions [bulk-actions]
 
-All available actions can be applied to multiple episodes at once. Scope rules still apply: acknowledge and activate apply per episode, while snooze and resolve apply per series. When snoozing episodes across different series, each series is snoozed independently.
+All available actions apply to multiple episodes at once. Scope rules still apply: acknowledge and activate apply per episode, while snooze and resolve apply per series. When snoozing episodes across different series, the system snoozes each series independently.
 
 ## Snooze [snooze-episode]
 
-Snoozing suppresses notifications for an alert series for a defined period. The rule continues to evaluate and the episode remains visible, but no notifications are sent until the snooze expires.
+Snoozing suppresses notifications for an alert series for a defined period. The rule continues to evaluate and the episode remains visible, but {{kib}} sends no notifications until the snooze expires.
 
-Use snooze when a known condition is expected to persist for a fixed time and you want to stop the noise without disabling the rule entirely, for example, during a scheduled maintenance window.
+Use snooze when you expect a known condition to persist for a fixed time and you want to stop the noise without disabling the rule entirely, for example, during a scheduled maintenance window.
 
 ## Unsnooze [unsnooze-episode]
 
-Ending a snooze clears it for all episodes sharing the same `group_hash`, not just the one you acted on. Notifications resume immediately for the entire series.
+Ending a snooze clears it for all episodes sharing the same `group_hash`, not the one you acted on. Notifications resume immediately for the entire series.
 
 ## Open in Discover [open-episode-in-discover]
 

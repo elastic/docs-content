@@ -19,13 +19,13 @@ For field definitions for both streams, refer to [Field reference](field-referen
 Before you can query alert history in Discover, add the alert data streams as data views. Repeat these steps for each stream.
 
 1. Open **Discover**, and then open the data view menu.
-2. Click **Create a data view**.
+2. Select **Create a data view**.
 3. Give your data view a name, for example `.rule-events` or `.alert-actions`.
 4. In the **Index pattern** field, enter the data stream name:
    - `.ds-.rule-events-*` for rule evaluation history.
    - `.ds-.alert-actions-*` for triage actions recorded on alert episodes.
 5. Open the **Timestamp field** dropdown and select `@timestamp`.
-6. Click **Save data view to Kibana**.
+6. Select **Save data view to Kibana**.
 
 For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
 
@@ -61,7 +61,7 @@ FROM .rule-events
 
 ### List all breaches for a specific rule [list-rule-breaches]
 
-Returns every evaluation row where the rule condition was met for a given rule. Use this to understand how often and how severely a rule fires across all its series.
+Returns every evaluation row where the rule met its condition for a given rule. Use this to understand how often and how severely a rule fires across all its series.
 
 ```esql
 FROM .rule-events
@@ -73,7 +73,7 @@ FROM .rule-events
 
 ### Identify evaluation gaps [identify-no-data]
 
-`no_data` rows are written when the rule found no matching data during an evaluation cycle. A cluster of these can indicate a data pipeline issue or a misconfigured rule.
+`no_data` rows appear when the rule finds no matching data during an evaluation cycle. A cluster of these can indicate a data pipeline issue or a misconfigured rule.
 
 ```esql
 FROM .rule-events
@@ -89,7 +89,7 @@ FROM .rule-events
 
 ### View the full triage history for an episode [full-triage-history]
 
-Returns all actions recorded for a single episode in chronological order. Use this to see the complete response sequence: who acknowledged it, whether it was snoozed, and how it was eventually resolved.
+Returns all actions recorded for a single episode in chronological order. Use this to see the complete response sequence: who acknowledged it, whether a user snoozed it, and how it was eventually resolved.
 
 ```esql
 FROM .alert-actions
@@ -114,7 +114,7 @@ FROM .alert-actions
 
 ### Check episode assignment state [check-assignments]
 
-Returns all assign actions, showing which episodes have been assigned and to whom. Use this to audit ownership or find unacknowledged handoffs.
+Returns all assign actions, showing which episodes carry an assignment and to whom. Use this to audit ownership or find unacknowledged handoffs.
 
 ```esql
 FROM .alert-actions
@@ -126,7 +126,7 @@ FROM .alert-actions
 
 ### Audit dispatcher outcomes for a rule [audit-dispatcher-outcomes]
 
-Returns all system-written actions for a rule, covering episodes that were opened, suppressed due to throttling, or left unmatched by any action policy.
+Returns all system-written actions for a rule, covering episodes the dispatcher opened, suppressed due to throttling, or didn't match to any action policy.
 
 ```esql
 FROM .alert-actions
@@ -137,7 +137,7 @@ FROM .alert-actions
 
 ### Find snoozed series [find-snoozed-series]
 
-Returns all snooze actions, including which series was snoozed, who snoozed it, and when the snooze expires. Use this to find active snoozes or audit snooze history.
+Returns all snooze actions, including which series a user snoozed, who snoozed it, and when the snooze expires. Use this to find active snoozes or audit snooze history.
 
 ```esql
 FROM .alert-actions
@@ -152,7 +152,7 @@ FROM .alert-actions
 To get the complete picture of an incident, filter both streams by the same identifier. Both streams share `group_hash` as a flat keyword, making it the most reliable join key. `episode.id` in `.rule-events` and `episode_id` in `.alert-actions` hold the same value but use different naming conventions: dot-notation in `.rule-events` and flat snake_case in `.alert-actions`.
 
 :::{note}
-`episode_id` is optional in `.alert-actions`. System-written action types (`fire`, `suppress`, `unmatched`, `notified`) are keyed to a `group_hash` rather than a specific episode and may not carry an `episode_id`. Filtering by `episode_id` returns user actions (`ack`, `assign`, `deactivate`, and similar) and notifications, but may omit dispatcher-level entries. Use `group_hash` if you need the complete dispatcher history.
+`episode_id` is optional in `.alert-actions`. System-written action types (`fire`, `suppress`, `unmatched`, `notified`) key to a `group_hash` rather than a specific episode and might not carry an `episode_id`. Filtering by `episode_id` returns user actions (`ack`, `assign`, `deactivate`, and similar) and notifications, but might omit dispatcher-level entries. Use `group_hash` if you need the complete dispatcher history.
 :::
 
 1. Run a `.rule-events` query to find the `episode.id` or `group_hash` you care about.
@@ -166,7 +166,7 @@ FROM .alert-actions
 | KEEP @timestamp, action_type, actor, episode_id, reason
 ```
 
-If you need to join both streams in a single query, use `LOOKUP JOIN`. This requires `.alert-actions` to be configured as a lookup index, which is an extra setup step beyond what is needed for standard Discover analysis:
+If you need to join both streams in a single query, use `LOOKUP JOIN`. This requires configuring `.alert-actions` as a lookup index, which is an extra setup step beyond standard Discover analysis:
 
 ```esql
 FROM .rule-events
@@ -180,4 +180,4 @@ FROM .rule-events
 | SORT @timestamp DESC
 ```
 
-For most ad-hoc analysis, running separate queries filtered by `group_hash` is simpler and avoids the `episode_id` optionality issue.
+For most exploratory analysis, running separate queries filtered by `group_hash` is simpler and avoids the `episode_id` optionality issue.
