@@ -427,7 +427,11 @@ The index `my-index` must exist in every project, otherwise [the search returns 
 
 ### Project routing examples
 
-In the following example, there is an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
+Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. Combine tags with the `AND` and `OR` operators, group terms with parentheses, and match part of a value with a prefix or suffix wildcard. In an expression, a colon (`:`) matches a tag to a value and is equivalent to `=`. The syntax is the same for the `_search` API and {{esql}}.
+
+The following examples use an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
+
+#### Route on a single tag
 
 The following request searches all indices on projects whose alias starts with "lin".
 
@@ -586,6 +590,65 @@ The request will return a response similar to this:
 
 ::::
 
+#### Combine tags with boolean logic and grouping
+
+Any predefined or custom tag works the same way. The following request routes to projects on Microsoft Azure:
+
+```console
+GET /*/_search
+{
+  "project_routing": "_csp:azure",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+Combine tags with `AND` and `OR`. The following request routes to projects on Amazon Web Services (AWS) in a US region:
+
+```console
+GET /*/_search
+{
+  "project_routing": "_csp:aws AND _region:us*",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+Group terms with parentheses to build more specific rules. The following requests route to AWS projects in a US region, or to any project on Google Cloud. The routing expression is the same for the `_search` API and {{esql}}:
+
+::::{tab-set}
+
+:::{tab-item} _search
+```console
+GET /*/_search
+{
+  "project_routing": "(_region:us-* AND _csp:aws) OR _csp:gcp",
+  "query": {
+    "match_all": {}
+  }
+}
+```
+:::
+
+:::{tab-item} ES|QL
+```esql
+SET project_routing="(_region:us-* AND _csp:aws) OR _csp:gcp";
+FROM logs
+| STATS COUNT(*)
+```
+:::
+
+::::
+
+:::{note}
+Every term in an expression needs a tag prefix, and every tag must be defined. These expressions fail:
+
+* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag prefix. Use `_csp:aws OR _csp:gcp` instead.
+* `_foo:bar` fails because `_foo` isn't a defined tag.
+:::
+
 #### Project routing with named project routing expressions
 
 First, create the named expression:
@@ -597,7 +660,16 @@ PUT /_project_routing/origin-only
 }
 ```
 
-Then, query it:
+Named expressions can hold the same boolean logic and groupings as direct expressions. The following request creates a named expression called `aws-us-only` that routes to AWS projects in a US region:
+
+```console
+PUT /_project_routing/aws-us-only
+{
+  "expression": "_csp:aws AND _region:us*"
+}
+```
+
+Then, query a named expression by referencing its name with an `@` prefix:
 
 ::::{tab-set}
 
@@ -625,6 +697,13 @@ GET /_query
 :::
 
 ::::
+
+:::{note}
+Reference a named expression on its own. You can't combine it with a direct expression or with another named expression. Both of these fail:
+
+* `@aws-us-only OR _csp:gcp` mixes a named expression with a direct expression.
+* `@aws-us-only OR @origin-only` combines two named expressions.
+:::
 
 #### Project routing and qualified expressions
 
