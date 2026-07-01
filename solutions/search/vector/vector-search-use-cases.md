@@ -1,5 +1,6 @@
 ---
 navigation_title: Use cases
+description: Explore vector search use cases in Elasticsearch, including RAG, recommendations, image search, and hybrid retrieval.
 applies_to:
   stack:
   serverless:
@@ -44,7 +45,7 @@ Read how retrieval, chunking, and orchestration fit together.
 
 :::::{step} Set up search for your documents
 
-Split long documents into smaller chunks so each search hit is a useful passage. Refer to [How to implement retrieval](#how-to-implement-retrieval) to choose your embedding approach, query interface, and search strategy.
+Split long documents into smaller chunks so each search result is a useful passage. Refer to [How to implement retrieval](#how-to-implement-retrieval) to choose your embedding approach, query interface, and search strategy.
 
 :::::
 
@@ -59,7 +60,7 @@ Send the top search hits and their text fields to your model or orchestration la
 
 ## Discovery and recommendations
 
-Find related products, articles, videos, or other items when keywords alone do not match well. Examples include "similar products," "you may also like," and matching users or players in an app.
+Find related products, articles, videos, or other items when keywords alone do not match well. Examples include "similar products," "you might also like," and matching users or players in an app.
 
 ::::::{stepper}
 :::::{step} Store embeddings for each item
@@ -99,7 +100,7 @@ The closest vectors are not always the best final ranking. You can boost by popu
 
 Search images, audio, video, or text when your content uses more than one type. For example, search with text to find images, or search with an image to find similar images.
 
-The steps below use the [Inference API](../semantic-search/semantic-search-inference.md) to embed multimodal content. Refer to [How to implement retrieval](#how-to-implement-retrieval) for other embedding approaches.
+The following steps use the [Inference API](../semantic-search/semantic-search-inference.md) to embed multimodal content. Refer to [How to implement retrieval](#how-to-implement-retrieval) for other embedding approaches.
 
 ::::::{stepper}
 :::::{step} Create an inference endpoint

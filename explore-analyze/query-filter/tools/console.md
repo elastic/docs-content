@@ -147,6 +147,20 @@ GET /locations/_search
 }
 ```
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can also embed `${variableName}` inside a longer string value in the request body. The token is substituted in place, so `"frozen_${indexName}"` becomes `"frozen_logs"` when `indexName` is set to `logs`. Variables with an empty string value are substituted as `""`.
+
+```console
+PUT _index_template/${indexName}-template
+{
+  "index_patterns": ["${indexName}-*"],
+  "template": {
+    "aliases": {
+      "frozen_${indexName}": {}
+    }
+  }
+}
+```
+
 
 ### Auto-formatting [auto-formatting]
 

@@ -60,7 +60,7 @@ There are some additional requirements for specific features:
 
 * [Turn on detections](/solutions/security/detect-and-alert/turn-on-detections.md)
 * [Control access to cases](/explore-analyze/cases/control-case-access.md)
-* [Entity risk scoring requirements](/solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md)
+* [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md)
 * [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md)
 * [{{elastic-defend}} requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md)
 * [Configure network map data](/solutions/security/advanced-entity-analytics/configure-network-map-data.md)

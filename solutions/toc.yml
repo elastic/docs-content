@@ -331,6 +331,7 @@ toc:
               - file: observability/synthetics/cli.md
               - file: observability/synthetics/configure-projects.md
               - file: observability/synthetics/mfa-for-browser-monitors.md
+              - file: observability/synthetics/kerberos-for-browser-monitors.md
               - file: observability/synthetics/configure-settings.md
               - file: observability/synthetics/grant-access-to-secured-resources.md
                 children:
@@ -589,6 +590,7 @@ toc:
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
           - file: security/ai/ease/ease-value-report.md
+      - file: security/mcp-app/elastic-security-mcp-app.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/before-you-begin.md
@@ -783,28 +785,34 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/overview.md
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
+          - file: security/advanced-entity-analytics/entity-store.md
+            children:
+              - file: security/advanced-entity-analytics/entity-relationships.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
-              - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
-              - file: security/advanced-entity-analytics/view-entity-details.md
               - file: security/advanced-entity-analytics/asset-criticality.md
-              - file: security/advanced-entity-analytics/entity-store.md
               - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
+          - file: security/advanced-entity-analytics/manage-entities.md
+            children:
+              - file: security/advanced-entity-analytics/watchlists.md
+              - file: security/advanced-entity-analytics/entity-resolution.md
+              - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+                children:
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
           - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
             children:
               - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - file: security/advanced-entity-analytics/watchlists.md
-          - file: security/advanced-entity-analytics/entity-resolution.md
-          - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+          - file: security/advanced-entity-analytics/investigate-entities.md
             children:
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-              - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+              - file: security/advanced-entity-analytics/monitor-entity-risk.md
+              - file: security/advanced-entity-analytics/view-entity-details.md
           - file: security/advanced-entity-analytics/explore.md
             children:
               - file: security/advanced-entity-analytics/hosts-page.md

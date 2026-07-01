@@ -116,7 +116,7 @@ Use bold text formatting to emphasize the names of UI elements so that users can
 | Columns | In the **Value** column, go to the value you want to edit and click **Edit**. |
 | Interactive UI functions | To use a dark color theme, click **Options** and select **Use dark theme**. |
 | Key combinations | Press **Alt+C**. |
-| Menu items | In Kibana, open the main menu, then click **Discover**. |
+| Menu items | In {{kib}}, open the navigation menu, then select **Discover**. |
 | Page names | The **Hosts** page provides a comprehensive overview of all hosts and host-related security events. |
 | Sections | The **Document Summary** section provides general alert details, including any available threat intelligence data. |
 | Tables | In the **Value lists** table, click the value list you want to edit. |
@@ -246,7 +246,7 @@ When security is enabled, you grant users access to reporting features with Kiba
 
 1. Enable application privileges in **Reporting**.
 1. Create the reporting role.
-    1. Open the main menu, then click **Stack Management**.
+    1. Open the navigation menu, then select **Stack Management**.
     1. Click **Roles → Create role**.
 1. Specify the role settings.
     1. Enter the **Role name**. For example, `custom_reporting_user`.

@@ -38,6 +38,13 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}`stack: ga 9.4+`
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration.
 
+$$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga`
+:   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
+
+    **Assigned tools:** `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
+
+    **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
+
 $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview`
 :   Creates, modifies, and validates [Elastic Workflows](/explore-analyze/workflows.md) YAML definitions from natural language user input. Covers step types, triggers, Liquid templating, connector integrations, and validation. Use this skill when a user wants to draft a new workflow from a description, edit an existing workflow, change a workflow's trigger, or update top-level properties such as name, description, or tags. The agent validates the generated or modified YAML before proposing the change so the user can accept or decline it.
 
