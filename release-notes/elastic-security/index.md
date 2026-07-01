@@ -27,6 +27,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.4.3 [elastic-security-9.4.3-release-notes]
+
+### Features and enhancements [elastic-security-9.4.3-features-enhancements]
+
+* Adds AI agent process attribution to {{elastic-defend}}, with process descendant enrichment.
+
+### Fixes [elastic-security-9.4.3-fixes]
+
+* Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
+* Fixes a scroll-position jump in the alert details flyout **Table** tab [#273521]({{kib-pull}}273521).
+* Fixes an issue where the {{agent-builder}} announcement modal could reappear during page navigation after being dismissed, particularly in high-latency or proxy environments [#272276]({{kib-pull}}272276).
+* Fixes the entities table on the **Entity Analytics** page to sort by risk score by default, showing the highest-risk entities first and placing entities without a risk score at the bottom [#272234]({{kib-pull}}272234).
+* Scopes watchlist index sync to the watchlist creator's credentials, requiring read access to the configured index. Watchlists created before this change show a **Sync paused** callout with a **Re-authorize** action [#270292]({{kib-pull}}270292).
+* Fixes an issue where the **Delete all** action for deprecated prebuilt rules failed when more than 100 deprecated rules existed [#271550]({{kib-pull}}271550).
+* Fixes an issue in {{elastic-defend}} on Linux where BPF DNS event sources could corrupt probe data.
+* Fixes an issue where {{elastic-defend}} on Linux did not correctly read TTY events on older kernels (4.18) with eBPF backports, such as on RHEL 8.
+* Improves {{elastic-defend}} event enrichment scalability on hosts with many long-lived processes by using a larger, self-pruning process cache.
+* Fixes a rare edge case where {{elastic-defend}} could lose Tamper Protection.
+* Fixes a rare process tracking issue in {{elastic-defend}} on macOS and Linux.
+* Fixes a race condition when assigning the username of mounted USB devices in {{elastic-defend}} on Windows.
+
 
 ## 9.4.2 [elastic-security-9.4.2-release-notes]
 
