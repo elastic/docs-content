@@ -14,9 +14,9 @@ Rule and action policy authoring in {{agent-builder}} is part of the {{alerting-
 
 Instead of filling out the rule form manually, you describe what you want to monitor and the agent uses its rule management skill and tools to resolve the data source and build a fully configured rule proposal for you.
 
-## How rule proposals work [ai-agent-rule-proposal]
+## Propose and save a rule [ai-agent-rule-proposal]
 
-The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of ES\|QL query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+To use this capability, open an agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of ES\|QL query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
 The proposal appears as an inline attachment in the conversation, summarizing the rule name, type, schedule, and tags. Opening the attachment shows the full configuration across three views:
 
@@ -42,7 +42,7 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 - Set up a rule that tracks error rate by service. Alert at medium severity when the rate exceeds 1%, and critical when it exceeds 5%.
 
 
-## How notification setup works [ai-agent-notification-setup]
+## Set up notifications [ai-agent-notification-setup]
 
 After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating two objects:
 
@@ -60,3 +60,10 @@ The three objects have a dependency chain that determines the order in which the
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
 This order is enforced in the UI. The action policy save control remains inactive until both dependencies are met.
+
+## Related pages
+
+- [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) - How the {{agent-builder}} platform works, including agents, skills, and tools.
+<!-- - [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes before invoking a workflow. -->
+<!-- - [Create an action policy](action-policies/create-configure-action-policy.md) - Configure a policy manually, with full control over type, match conditions, grouping, and destinations. -->
+<!-- - [Connect workflows to the {{alerting-v2-system}}](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime, and when to use each. -->

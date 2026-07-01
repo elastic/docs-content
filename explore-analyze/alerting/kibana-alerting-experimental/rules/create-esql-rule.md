@@ -15,7 +15,7 @@ The {{esql}} rule path lets you write the detection query directly. There are tw
 - **Rule form** - Fill in the step-by-step form with a live preview of results.
 - **YAML mode** - Switch to YAML and edit the raw rule definition. You can switch between form and YAML at any point; edits are preserved.
 
-For descriptions of each rule setting, refer to [Configure a rule](configure-a-rule.md). For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
+For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
 ## Preview query results in the sandbox [rule-builder-query-sandbox]
 

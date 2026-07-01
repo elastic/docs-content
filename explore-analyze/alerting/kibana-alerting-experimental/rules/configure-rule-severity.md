@@ -10,7 +10,11 @@ description: "Assign severity levels to alert episodes in Kibana's experimental 
 
 # Severity in the {{alerting-v2-system}} [rule-severity]
 
-Severity is an optional setting for rules in the {{alerting-v2-system}}. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels:
+Severity is an optional setting for rules in the {{alerting-v2-system}}. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
+
+:::{tip}
+Add severity to your rule when you need to route or filter alert episodes by urgency, for example, to send critical episodes to an on-call channel and low episodes to a review queue.
+:::
 
 | Value | Description | Urgency |
 | --- | --- | --- |
@@ -19,6 +23,19 @@ Severity is an optional setting for rules in the {{alerting-v2-system}}. To set 
 | `medium` | Notable condition that warrants investigation. | Investigate soon. |
 | `high` | Serious condition requiring prompt attention. | Address promptly. |
 | `critical` | Severe condition requiring immediate action. | Act immediately. |
+
+## When to configure severity [severity-when-to-use]
+
+Configure severity when:
+
+* You want to route different urgency levels to different notification channels, for example, send `critical` episodes to an on-call channel and `low` episodes to a review queue.
+* You want to filter the **Alerts** page by urgency to help triage during incidents.
+* The rule's detection logic can meaningfully distinguish between urgency levels through a computed metric, such as burn rate, error count, or latency percentile.
+
+Skip severity when:
+
+* All breaches from the rule are equally urgent. A fixed label in the rule's tags is simpler and doesn't require query changes.
+* The underlying data doesn't produce a reliable metric to grade urgency. Severity that's frequently wrong generates more noise than routing by severity resolves.
 
 ## How the {{alerting-v2-system}} maps severity values
 
@@ -57,7 +74,7 @@ Every breach from this rule produces a `critical` episode. Use this when the thr
 
 ### Dynamic severity based on burn rate
 
-Use `CASE` to map a computed metric to different severity levels. This query grades each service's error rate: services consuming error budget at 14.4× baseline or above are `critical`; those between 6× and 14.4× are `high`; and so on. Only services above 1× are returned, so below-threshold services don't generate alert rows.
+Use `CASE` to map a computed metric to different severity levels. This query grades each service's error rate. Services consuming error budget at 14.4× baseline or above are `critical`, those between 6× and 14.4× are `high`, and so on. Only services above 1× are returned, so below-threshold services don't generate alert rows.
 
 ```esql
 FROM metrics-*

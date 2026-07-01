@@ -10,18 +10,18 @@ description: "Configure rules in the experimental alerting system: mode, ES|QL q
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
 
-Rules in the {{alerting-v2-system}} have three required settings and several optional ones. The following table lists each setting, what it controls, and whether it is required to save a rule.
+Rules in the {{alerting-v2-system}} have three required settings and several optional ones. Start with the required settings in order: first, select the rule mode (which determines which optional settings are relevant), then define the {{esql}} query, then specify the rule execution schedule. Add optional settings once the detection logic is validated.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
 For notification routing, refer to [Notifications](../notifications.md).
 -->
 
 | Setting | Description | Required |
 | --- | --- | --- |
-| [Rule mode](configure-rule-mode.md) | Signal or Alert. Controls whether matching rows generate signal documents or tracked alert episodes. | Required |
-| [ES\|QL query](configure-rule-query.md) | The detection logic and the parameters available in query expressions. | Required |
+| [Rule mode](configure-rule-mode.md) | Can be Signal or Alert. Controls whether matching rows generate signal documents or tracked alert episodes. | Required |
+| [{{esql}} query](configure-rule-query.md) | The detection logic and the parameters available in query expressions. | Required |
 | [Schedule and lookback](configure-rule-schedule.md) | How often the rule evaluates and how far back the query looks. | Required |
 | [Severity](configure-rule-severity.md) | Assign severity levels to alert episodes using a `severity` column in query output. | Optional |
 | [Grouping](configure-rule-grouping.md) | Track multiple subjects (hosts, services, users) as independent alert series in one rule. | Optional |
-| [Activation and recovery thresholds](configure-rule-thresholds.md) | Reduce noise with delay modes for opening and closing alert episodes. (Alert mode only) | Optional |
+| [Activation and recovery thresholds](configure-rule-thresholds.md) | Reduce noise with delay modes for opening and closing alert episodes. Alert mode only. | Optional |
 | [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. | Optional |
-| [Tags and runbooks](configure-rule-tags.md) | Free-form labels and investigation guides attached to the rule. (Alert mode only) | Optional |
+| [Tags and runbooks](configure-rule-tags.md) | Free-form labels and investigation guides attached to the rule. Alert mode only. | Optional |

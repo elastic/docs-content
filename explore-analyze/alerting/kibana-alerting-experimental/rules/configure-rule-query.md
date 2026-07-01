@@ -10,13 +10,29 @@ description: "Configure the ES|QL query and query parameters for rules in Kibana
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
-Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query has two parts: a base query that shapes and filters the data, and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
+Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query consists of a base query that shapes and filters the data and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
+
+:::{tip}
+Use the query preview option to test your query against live data before saving the rule. This lets you verify the detection logic produces the results you expect without committing to a schedule or opening alert episodes.
+:::
+
+## When to add an alert condition [query-when-to-use]
+
+Add an alert condition when:
+
+* Your base query returns aggregate results (for example, counts or averages per group) and you only want to alert when a value crosses a specific threshold. Without an alert condition, every row returned by the base query is treated as a breach.
+* You want to keep filtering logic out of the base query and express the threshold separately for clarity.
+
+Skip the alert condition when:
+
+* Every row returned by the base query should be treated as a breach. This applies when the query filters directly for specific error events where any match warrants attention.
+* All filtering can be expressed cleanly in a single `WHERE` clause without a two-stage query.
 
 ## Base query [query-base]
 
 The base query is the main {{esql}} expression. Use `FROM` to point the rule at the indices or data streams to read. Shape results with `STATS`, `WHERE`, and `EVAL`, and control which fields are stored with `KEEP`. The base query runs on every evaluation, even when no match occurs, which is what enables no-data detection and recovery. The [{{esql}} reference](elasticsearch://reference/query-languages/esql.md) covers all available commands and processing functions.
 
-This query counts HTTP 5xx errors per service over the lookback window and stores only the fields needed for triage:
+This query counts HTTP 5xx errors per service over the lookback window and stores only the fields needed for triage.
 
 ```esql
 FROM logs-*
@@ -31,7 +47,7 @@ Without an alert condition, every row returned by this query is treated as a bre
 
 The alert condition is an optional `WHERE` clause appended after the base query. Only rows that pass the condition are treated as breaches. Use an alert condition when the base query returns aggregate results and you only want to alert when a value crosses a threshold.
 
-This example extends the base query above to only fire when a service exceeds 10 errors:
+This example extends the base query above to only fire when a service exceeds 10 errors.
 
 ```esql
 FROM logs-*
@@ -46,11 +62,11 @@ The `KEEP` command controls which fields appear on each stored alert event. Only
 
 ## Use dynamic values in your rule query [dynamic-query-values]
 
-{{esql}} rule queries support two kinds of parameters that make queries more dynamic: time bounds that the executor injects automatically, and form variables you define when creating a rule. You don't need either to write a working rule, but they're useful for scoping queries precisely to the evaluation window or making thresholds configurable without editing the query.
+{{esql}} rule queries support two kinds of parameters that make queries more dynamic. The executor injects time bounds automatically, and you define form variables when creating a rule. You don't need either to write a working rule, but they're useful for scoping queries precisely to the evaluation window or making thresholds configurable without editing the query.
 
 ### Filter your query to the evaluation window (`?_tstart` and `?_tend`) [time-bound-parameters]
 
-`?_tstart` and `?_tend` are reserved parameter names that the rule executor binds automatically on every evaluation. They hold the start and end timestamps of the lookback window, so you can scope a query to exactly the period the rule is evaluating:
+`?_tstart` and `?_tend` are reserved parameter names that the rule executor binds automatically on every evaluation. They hold the start and end timestamps of the lookback window, so you can scope a query to exactly the period the rule is evaluating.
 
 ```esql
 FROM logs-*

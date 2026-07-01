@@ -24,6 +24,35 @@ The lookback window (`schedule.lookback`) determines the time range that the {{e
 
 If the lookback is shorter than the execution interval, evaluations can miss data between runs. Use a lookback at least as long as the execution interval unless you have a deliberate reason not to.
 
+:::{tip}
+When setting up a new rule, start with a longer lookback to verify the query covers the data you expect, then tighten it once the rule is stable.
+:::
+
+## When to use a short or long interval and lookback [schedule-when-to-use]
+
+Use a short execution interval (seconds to a few minutes) when:
+
+* The condition being monitored can develop quickly and fast detection is critical. Examples include a burst of failed authentication attempts or a spike in HTTP error rate.
+* Notification latency matters and you need the rule to fire close to when the breach occurs.
+
+Use a longer execution interval (tens of minutes or more) when:
+
+* The condition develops slowly and near-real-time detection isn't required. Examples include disk utilization for capacity planning or a weekly job failure check.
+* You want to reduce evaluation cost. Longer intervals lower the frequency of query execution against your data.
+
+Use a short lookback window when:
+
+* Your data arrives reliably and with low latency, and you want to avoid re-scanning data that older evaluations already covered.
+* You are running high-frequency rules where a narrow window keeps each evaluation focused on recent data.
+
+Use a longer lookback window when:
+
+* The condition you're detecting can develop across multiple events spread over time, and a narrow window might miss the full picture.
+* You are setting up a new rule and want to verify the query covers the expected data before tightening the window.
+* Ingestion lag means events arrive later than their timestamps, and a wider window ensures late-arriving data is still evaluated.
+
+Avoid setting the lookback shorter than the execution interval. If the lookback doesn't cover the full gap between evaluations, events that arrive between runs can be missed.
+
 ## Examples
 
 ### High-frequency security rule

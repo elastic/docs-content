@@ -10,7 +10,7 @@ description: "Field reference for .rule-events documents in Kibana's experimenta
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
 
-This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For rule configuration settings, refer to [Configure a rule](configure-a-rule.md).
+This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
 <!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
 For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
 -->

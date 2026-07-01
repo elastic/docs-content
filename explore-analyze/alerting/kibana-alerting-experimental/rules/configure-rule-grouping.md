@@ -21,9 +21,24 @@ Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a s
 Rule grouping controls how alert series are created. Notification grouping (configured on an action policy) controls how those alert episodes are batched into messages. These are separate settings.
 :::
 
-## Aligning `BY` fields with your rule's query
+## When to configure grouping [grouping-when-to-use]
 
-The `BY` fields you specify for grouping must match the columns in the `BY` clause of your {{esql}} `STATS` command. If they don't match, the grouping configuration won't work as expected.
+Configure grouping when:
+
+* Your {{esql}} query uses a `BY` clause to aggregate across multiple subjects such as hosts, services, or users, and you want each subject to have an independent alert lifecycle.
+* You need to track that one host has recovered while another is still breaching, rather than treating all subjects as a single combined series.
+* You want action policy notifications to apply per subject rather than firing once for the entire rule.
+
+Skip grouping when:
+
+* Your query does not use a `BY` clause. Grouping requires `BY` columns in the query output to be meaningful.
+* You intentionally want a single alert series for the rule regardless of how many subjects match. An example is a rule that fires when any host in a cluster is down and the individual host identity doesn't matter for the notification.
+
+## Configure grouping fields [grouping-fields-config]
+
+The {{alerting-v2-system}} does not automatically infer grouping from your {{esql}} query. When your query uses `BY` to produce one row per group, the system still treats all rows as a single series unless you explicitly declare which fields define series identity in the grouping configuration. The fields you declare in `grouping.fields` are what the system uses to separate rows into independent alert series and track each one through its own lifecycle.
+
+The fields you declare in `grouping.fields` must match the column names produced by the `BY` clause in your {{esql}} `STATS` command. If they don't match, the system can't correlate query rows to alert series and the grouping configuration has no effect.
 
 :::{tip}
 Write the query first, then set the group fields. That way the `BY` columns are already defined and you can select them directly. If you later add or remove a `BY` field in the query, update the group fields to match.
@@ -36,7 +51,7 @@ Write the query first, then set the group fields. That way the `BY` columns are 
 
 ### Track error rates per service
 
-This rule counts HTTP errors per service and opens a separate alert series for each service that exceeds the threshold. Each service gets its own lifecycle: if the checkout service recovers but the payments service stays critical, those are tracked independently.
+This rule counts HTTP errors per service and opens a separate alert series for each service that exceeds the threshold. Each service gets its own lifecycle. If the checkout service recovers but the payments service stays critical, those are tracked independently.
 
 ```esql
 FROM logs-*

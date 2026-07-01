@@ -389,7 +389,7 @@ toc:
               - file: alerting/kibana-alerting-experimental/rules/create-esql-rule.md
                 children:
                   - file: alerting/kibana-alerting-experimental/rules/yaml-rule-schema-reference.md
-              - file: alerting/kibana-alerting-experimental/rules/create-rule-ai-agent.md
+              - file: alerting/kibana-alerting-experimental/rules/create-rules-action-policies-agent-builder.md
               - file: alerting/kibana-alerting-experimental/rules/use-rule-builder.md
               - file: alerting/kibana-alerting-experimental/rules/create-rule-from-discover.md
           - file: alerting/kibana-alerting-experimental/rules/configure-a-rule.md

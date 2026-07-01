@@ -12,18 +12,31 @@ description: "Configure no-data handling for rules in Kibana's experimental aler
 
 No-data handling is an optional setting for rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
 
-Set `no_data_strategy` to one of the following values:
+The `no_data_strategy` field accepts the following values.
 
 | Value | Description |
 | --- | --- |
 | `emit` | Record a no-data event. |
-| `last_known_status` | Hold the last known lifecycle state. An active breach stays active; a recovered episode stays recovered. |
+| `last_known_status` | Hold the last known lifecycle state. An active breach stays active and a recovered episode stays recovered. |
 | `recover` | Treat absence as recovery. |
 | `none` | Turn off no-data detection |
 
 :::{note}
 `no_data_strategy` does not detect when a specific host or data source stops reporting while others continue. Refer to [No-data detection](esql-no-data-detection.md) for an {{esql}} pattern that surfaces silent sources as alert rows.
 :::
+
+## When to configure no-data handling [no-data-when-to-use]
+
+Configure `no_data_strategy` when:
+
+* The data source your rule monitors can go silent. Examples include a metrics agent that stops reporting, a pipeline that breaks, or a service that stops generating events.
+* A false recovery caused by an empty query result would be more harmful than holding the current alert state.
+* Absence of data is itself a signal worth surfacing, such as missing heartbeat events from a critical service.
+
+Leave `no_data_strategy` unconfigured (or set to `none`) when:
+
+* Your data source reliably produces output on every evaluation and a gap in data would indicate a genuine recovery.
+* You are still tuning the rule and don't yet know how it behaves when data is absent. Set the strategy once the rule's normal behavior is understood.
 
 ## Examples
 
@@ -35,6 +48,6 @@ Use this when an empty query result most likely means a pipeline problem rather 
 
 ### Surface a broken data pipeline as an alert
 
-This rule monitors for login events from an identity provider. If no events appear in the lookback window, it's unusual enough to warrant attention: either the pipeline is broken or something has suppressed activity. Set `no_data_strategy` to `emit`. The absence is recorded as a `no_data` event in `.rule-events`, making it visible alongside other rule activity.
+This rule monitors for login events from an identity provider. If no events appear in the lookback window, it's unusual enough to warrant attention. Either the pipeline is broken or something has suppressed activity. Set `no_data_strategy` to `emit`. The absence is recorded as a `no_data` event in `.rule-events`, making it visible alongside other rule activity.
 
 Use this when receiving no data is itself a signal worth investigating.

@@ -5,12 +5,25 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure activation and recovery thresholds for Alert-mode rules in Kibana's experimental alerting system to reduce noise from spikes and flapping."
+description: "Configure activation and recovery thresholds for Alert-mode rules in Kibana's experimental alerting system to reduce noise from brief spikes and rapid state changes."
 ---
 
 # Activation and recovery thresholds in the {{alerting-v2-system}} (Alert mode only) [activation-recovery-thresholds]
 
-Activation and recovery thresholds are optional settings for Alert-mode rules in the {{alerting-v2-system}}. They control when alerts transition between lifecycle states, reducing noise from short spikes and rapid flapping between active and recovered.
+Activation and recovery thresholds are optional settings for Alert-mode rules in the {{alerting-v2-system}}. They control when alerts transition between lifecycle states, reducing noise from brief spikes and rules that alternate rapidly between breaching and recovering.
+
+## When to configure thresholds [thresholds-when-to-use]
+
+Configure activation and recovery thresholds when:
+
+* The metric being monitored fluctuates and a single breach or recovery doesn't reflect a real state change. Examples include CPU usage that briefly spikes during process startup or a connection pool that crosses the threshold on alternating evaluations.
+* You want to reduce notification noise from rules that alternate rapidly between breaching and recovering on consecutive evaluations.
+* The cost or urgency of a notification is high enough that you need confidence the condition is sustained before alerting on it.
+
+Skip activation and recovery thresholds when:
+
+* Any single breach warrants immediate attention and you cannot tolerate the added latency of waiting for consecutive evaluations. Leave the activation mode set to Immediate.
+* The rule is in Signal mode. Thresholds only apply to Alert-mode rules and have no effect on signal document output.
 
 ## Activation thresholds
 
@@ -36,7 +49,7 @@ You can combine Breaches and Duration. For example, require the threshold to be 
 
 ## Recovery thresholds
 
-Recovery thresholds control when an active alert episode transitions back to inactive. The same delay modes available for activation apply here: consecutive recoveries required, minimum recovery duration, or both.
+Recovery thresholds control when an active alert episode transitions back to inactive. The same delay modes available for activation apply. You can require a set number of consecutive recoveries, a minimum recovery duration, or both.
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -62,6 +75,6 @@ This rule monitors CPU usage and runs every minute. A single high reading is oft
 
 This rule monitors a payment error rate. Brief spikes happen during deployments and are expected. Set `pending_count` to `5`, `pending_timeframe` to `2m`, and `pending_operator` to `AND`. The rule only fires when the error rate has breached on 5 consecutive evaluations and has been continuously elevated for at least 2 minutes. Either condition alone isn't enough.
 
-### Prevent flapping on recovery
+### Require consecutive recoveries before closing an episode
 
 This rule monitors database connection pool saturation. After the condition clears, set `recovering_count` to `3` to require 3 consecutive non-breaching evaluations before closing the episode. Without this, a rule that alternates between breaching and recovering on consecutive evaluations generates a constant stream of open and closed notifications.
