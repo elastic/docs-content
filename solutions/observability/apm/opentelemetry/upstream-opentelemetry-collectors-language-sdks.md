@@ -24,6 +24,12 @@ To compare approaches and choose the best one for your use case, refer to [OpenT
 The {{product.edot-collector}} (EDOT Collector) includes additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md) for a comparison.
 ::::
 
+:::{note}
+{applies_to}`stack: ga 9.2+`
+
+The EDOT Collector runs embedded inside {{agent}}, sharing a single `elastic-agent.yml` configuration file. If you're running {{agent}} 9.2 or later, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) instead of installing a separate Collector binary.
+:::
+
 ## Send data from a contrib OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
 Connect your OpenTelemetry Collector instances to Elastic {{observability}} or {{obs-serverless}} using the OTLP exporter:

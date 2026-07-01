@@ -365,6 +365,10 @@ Now imagine that you have a 2-shards index and two nodes. In one case, the numbe
 So what is the right number of replicas? If you have a cluster that has `num_nodes` nodes, `num_primaries` primary shards *in total* and if you want to be able to cope with `max_failures` node failures at once at most, then the right number of replicas for you is `max(max_failures, ceil(num_nodes / num_primaries) - 1)`.
 
 
+## Optimize {{esql}} queries [_optimize_esql_queries]
+
+For {{esql}}-specific performance guidance, including common anti-patterns and techniques for reducing scan size, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+
 ## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 
 The [Profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
