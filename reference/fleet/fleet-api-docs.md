@@ -490,7 +490,7 @@ curl --request GET \
 ```
 
 ::::{tip}
-The accepted saved object type prefix can differ across deployments and endpoints. If a query returns a `KQLSyntaxError` stating that a key does not exist in a saved object index pattern, use the index pattern named in the error as your prefix. For example, if the error names `ingest-agent-policies`, query `ingest-agent-policies.name`.
+If a query returns a `400`, the field needs a saved object type prefix. When the error is a `KQLSyntaxError` about a missing key, it names the saved object index pattern to use as the prefix (for example `ingest-agent-policies.name`). When the error is `This type <x> is not allowed`, no pattern is named, so prefix the field with the endpoint's saved object type (for example `ingest-package-policies.package.name`).
 ::::
 
 For the full query syntax, including wildcards, ranges, and boolean operators, refer to [{{kib}} Query Language (KQL)](elasticsearch://reference/query-languages/kql.md).
