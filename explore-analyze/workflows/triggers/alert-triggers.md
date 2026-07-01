@@ -16,6 +16,8 @@ products:
 
 Alert triggers run workflows automatically when detection or alerting rules generate an alert. Use alert triggers for alert enrichment, automated incident response, case creation, or notification routing.
 
+Alert-triggered workflows run with the permissions of the user who last saved the rule. Refer to [](/explore-analyze/workflows/execution-permissions.md) to learn how workflow execution permissions work.
+
 When a rule generates an alert that triggers your workflow, the trigger provides rich context data to the workflow through the `event` field.
 
 :::{warning}
