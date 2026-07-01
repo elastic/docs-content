@@ -10,7 +10,7 @@ description: "Investigate alert episodes in Kibana's experimental alerting syste
 
 # Investigate alert episodes [investigate-alert-episodes]
 
-In the {{alerting-v2-system}}, the episode detail page shows the full context of an alert episode, including its metric trend, lifecycle history, related episodes, triage actions, assignee, actors, and source metadata.
+In the {{alerting-v2-system}}, the episode detail page shows the full context of an alert episode, including its metric trend, lifecycle history, related episodes, triage actions, assignee, actors, source metadata, and severity.
 
 ## Metric trend [metric-trend]
 
