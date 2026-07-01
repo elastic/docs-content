@@ -13,7 +13,7 @@ type: overview
 
 Treat dashboards as version-controlled artifacts that live in Git alongside the rest of your infrastructure code. The [Dashboards API](create-dashboards-programmatically.md) produces a clean, diffable JSON definition, so you can review dashboard changes in pull requests and promote them across environments through automated pipelines, the same way you manage data views, alerting rules, or any other resource.
 
-This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system.
+This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system. For a one-off move between spaces or deployments rather than a repeatable code workflow, refer to [Import a dashboard](import-dashboards.md) for the available options.
 
 ## Workflow [dashboards-as-code-workflow]
 
@@ -30,26 +30,33 @@ Once a dashboard is managed as code, treat Git as the single source of truth: ch
 
 For the request schema and authentication details, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards).
 
-## Design for portability across environments [dashboards-as-code-portability]
+## Keep references portable across environments [dashboards-as-code-portability]
 
-The same definition should deploy cleanly into every target environment. Keep these considerations in mind so a dashboard behaves the same wherever you apply it.
+The main challenge in moving a dashboard between spaces, clusters, or stages is that a dashboard and the objects it references, such as data views and library visualizations, are matched by ID. Because these IDs are auto-generated and differ across environments, a dashboard exported from one environment can point at objects that don't exist in another, and its panels show no data until the references resolve.
 
-### Use stable IDs [dashboards-as-code-ids]
+To keep a dashboard portable, choose one of the following approaches, listed from most to least automated.
 
-A dashboard's ID determines whether a deployment updates an existing dashboard or creates a new one. To promote the same dashboard repeatedly across environments, deploy it with a stable, chosen ID rather than letting the API generate one. When you create a dashboard with a fixed ID, later deployments with that ID update the existing dashboard in place instead of creating duplicates.
+### Manage dashboards with Terraform [dashboards-as-code-portability-terraform]
 
-To deploy a dashboard to a different space within the same cluster, include the destination space's ID in the request URL. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the destination space before sending it.
+If you already manage infrastructure as code, the Terraform provider handles ID consistency for you: it tracks each resource and maps IDs per environment, so references stay consistent as you promote a dashboard from development to production. Refer to [Automate with Terraform](#dashboards-as-code-terraform).
 
-### Handle references to data views and saved objects [dashboards-as-code-references]
+### Avoid references with inline {{esql}} panels [dashboards-as-code-portability-inline]
 
-Panels can reference other saved objects, such as data views or Discover sessions. A reference only resolves if the object it points to exists in the target environment with a matching ID. When you plan how to handle references, choose one of these approaches:
+The simplest way to sidestep the ID problem is to not create references at all:
 
-- **Provision the referenced objects first**, with stable IDs, in every environment. The dashboard then resolves its references consistently wherever you deploy it.
-- **Avoid external references** by backing panels with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) queries or ad-hoc index patterns defined directly in the panel. These definitions are self-contained and don't depend on a saved data view in the target environment.
+- **Query with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)**, which references indices by name rather than by data view ID. A panel backed by {{esql}} needs no saved data view. Where a panel still needs a data view, define an [ad-hoc one](../find-and-organize/data-views.md#_create_a_temporary_data_source) in the panel rather than referencing a saved data view.
+- **Define panels inline (by value)** so each visualization lives in the dashboard definition, rather than embedding a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api) (by reference) that must exist in the target environment with a matching ID.
 
-### Choose inline or library panels [dashboards-as-code-panels]
+Inline, {{esql}}-backed panels are the most portable option, because the dashboard carries no external references to resolve.
 
-How you define a visualization panel affects portability. **Inline panels** (by value) embed the visualization in the dashboard definition, so it's self-contained and the most portable across environments. **Library panels** (by reference) point to a standalone [saved visualization](create-dashboards-programmatically.md#lens-visualizations-api) that must already exist in the target environment, but let you reuse one chart across dashboards and update it in a single place. Prefer inline panels when portability matters most, and library panels when reuse matters most.
+### Assign matching IDs to referenced objects [dashboards-as-code-portability-ids]
+
+If you keep references to saved objects, give each object the same ID in every environment so the references always resolve:
+
+- **Dashboards and library visualizations**: create them with the [Dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) and [Visualizations API](https://elastic.github.io/dashboards-api-spec/visualizations#tag/Visualizations) using `PUT` (upsert) with a chosen ID (`PUT /api/dashboards/{id}` or `PUT /api/visualizations/{id}`), rather than `POST`, which generates a new ID each time. Because the exported definition already contains these IDs, re-importing it with `PUT` recreates the same objects, with the same IDs, in the target environment.
+- **Data views**: create them with a chosen ID, either through the [Data Views API]({{kib-apis}}operation/operation-createdataviewdefaultw) by passing an `id` in the request, or in the UI by setting a **Custom data view ID** under [advanced settings](../find-and-organize/data-views.md#settings-create-pattern). Use human-readable IDs, such as `logs-prod`, so they are easy to reuse and recognize.
+
+Regardless of the approach, to deploy a dashboard to a different space within the same cluster, include the destination space's ID in the request URL. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the destination space before sending it.
 
 ## Automate with Terraform [dashboards-as-code-terraform]
 
