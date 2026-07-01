@@ -15,18 +15,24 @@ Rules in the {{alerting-v2-system}} don't send notifications directly. Instead, 
 - **Workflows** are the delivery layer. They define what happens when the system decides to act, such as sending a message, calling a webhook, or triggering an automation.
 - **Action policies** are the gating layer. They evaluate active alert episodes on a continuous schedule and invoke workflows based on match conditions, grouping, and frequency settings.
 
-## Get started
 
-To send notifications or run actions from an alerting v2 rule:
+## Send notifications or trigger an action
 
-1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines the action to take.
-2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow.
+To send a notification or trigger an action from a rule in the {{alerting-v2-system}}:
 
-:::{tip}
-If you need an action to fire exactly once in response to a specific alert episode state change (such as opening a ticket when an episode is assigned) use an alert episode lifecycle trigger instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of both approaches.
-:::
+1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines what to do, for example, send a message, call a webhook, open a case, or run any other automation. 
 
-## In this section
+
+   :::{note}
+   :applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+   To use workflows, your role must have the appropriate privileges and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+   :::
+
+2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The policy controls which alert episodes qualify, how they batch, and how often the workflow is invoked.
+
+   For actions that should fire exactly once in response to a specific alert episode state change — such as opening a ticket when an episode is assigned — use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a side-by-side comparison of action policies and lifecycle triggers.
+
+## Related pages
 
 - [Connect workflows](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime.
 - [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes.

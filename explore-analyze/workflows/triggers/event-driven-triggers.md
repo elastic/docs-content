@@ -3,7 +3,7 @@ navigation_title: Event-driven triggers
 applies_to:
   stack: preview 9.4+
   serverless: preview
-description: Run a workflow in response to a platform event. Includes workflows.failed, the cases trigger family, and alert episode lifecycle triggers.
+description: Run a workflow in response to a platform event. Includes workflows.failed, the cases trigger family, alert episode lifecycle triggers, and {{alerting-v2-system}} rule lifecycle triggers.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -15,11 +15,12 @@ products:
 
 # Event-driven triggers [workflows-event-driven-triggers]
 
-Event-driven triggers let workflows react to events elsewhere in {{kib}}. Three trigger families are available:
+Event-driven triggers let workflows react to events elsewhere in {{kib}}. Four trigger families are available:
 
 - **`workflows.failed`** — Fires when another workflow's execution fails. {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
 - **Cases triggers** — Fire when cases change (created, updated, status changed, attachments added, comments added). {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
-- **Alert episode lifecycle triggers** — Fire when an alert episode changes state in the experimental {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+- **Alert episode lifecycle triggers** — Fire when an alert episode changes state in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+- **{{alerting-v2-system-cap}} rule lifecycle triggers** — Fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
 :::{warning}
 The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
@@ -386,6 +387,95 @@ Reference these fields with Liquid templating in workflow steps:
 ```
 
 Use these fields to write workflow conditions that scope the automation to specific rules or episodes. For example, use `event.ruleId: "my-rule-id"` to scope the workflow to alert episodes from a specific rule.
+
+## {{alerting-v2-system-cap}} rule lifecycle triggers [alerting-rule-lifecycle-triggers-event-driven]
+
+```{applies_to}
+stack: experimental 9.5+
+serverless: experimental
+```
+
+{{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions — for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+
+Rule lifecycle triggers are active by default and require no feature flag. They are part of the {{alerting-v2-system}} and fire independently of alert episodes.
+
+### Available triggers [alerting-rule-lifecycle-triggers-available]
+
+| Trigger ID | When it fires |
+|---|---|
+| `alerting.ruleCreated` | A rule is created. |
+| `alerting.ruleUpdated` | A rule's configuration is changed via a PATCH or PUT update. Enabling or disabling a rule through the dedicated enable/disable action does not emit this trigger — it emits `alerting.ruleEnabled` or `alerting.ruleDisabled` instead. |
+| `alerting.ruleDeleted` | A rule is deleted. |
+| `alerting.ruleEnabled` | A rule is enabled. |
+| `alerting.ruleDisabled` | A rule is disabled. |
+
+For bulk operations (bulk enable, bulk disable, bulk delete), one trigger event is emitted per affected rule. A PATCH update that makes no effective change emits nothing.
+
+### Schema [alerting-rule-lifecycle-triggers-schema]
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `type` | top level | string | Yes | One of: `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, `alerting.ruleDisabled`. |
+| `condition` | `on` | KQL string | No | Optional KQL predicate evaluated against the `event` payload. The trigger fires only when the condition matches. |
+
+```yaml
+triggers:
+  - type: alerting.ruleCreated
+  - type: alerting.ruleUpdated
+  - type: alerting.ruleDeleted
+  - type: alerting.ruleEnabled
+  - type: alerting.ruleDisabled
+```
+
+### Event payload [alerting-rule-lifecycle-triggers-event]
+
+All rule lifecycle triggers share the same minimal payload.
+
+| `event.*` field | Contains |
+|---|---|
+| `event.rule.ruleId` | Unique identifier of the rule that was created, updated, deleted, enabled, or disabled. |
+| `event.rule.spaceId` | ID of the {{kib}} space where the operation occurred. |
+
+Reference these fields with Liquid templating in workflow steps:
+
+```yaml
+- name: log_rule_event
+  type: console
+  with:
+    message: |
+      Rule {{ event.rule.ruleId }} changed in space {{ event.rule.spaceId }}.
+```
+
+Use `on.condition` to scope the trigger to a specific rule or space:
+
+```yaml
+triggers:
+  - type: alerting.ruleCreated
+    on:
+      condition: 'event.rule.spaceId: "production"'
+```
+
+### Example: Audit rule changes [alerting-rule-lifecycle-triggers-example]
+
+```yaml
+name: audit-rule-changes
+description: Log rule lifecycle events across all spaces.
+enabled: true
+
+triggers:
+  - type: alerting.ruleCreated
+  - type: alerting.ruleUpdated
+  - type: alerting.ruleDeleted
+  - type: alerting.ruleEnabled
+  - type: alerting.ruleDisabled
+
+steps:
+  - name: log_change
+    type: console
+    with:
+      message: |
+        Rule {{ event.rule.ruleId }} in space {{ event.rule.spaceId }} — trigger: {{ trigger.type }}
+```
 
 ## Prevent cascading handler loops
 

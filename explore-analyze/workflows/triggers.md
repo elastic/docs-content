@@ -104,12 +104,15 @@ Event-driven triggers run workflows when a platform event occurs:
 
 * **`workflows.failed`** fires when another workflow's execution fails {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`.
 * **Cases triggers** fire when cases change {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`. The family includes `cases.caseCreated`, `cases.caseUpdated`, `cases.caseStatusUpdated`, `cases.attachmentsAdded`, and `cases.commentsAdded`.
+* **Alert episode lifecycle triggers** (experimental, 9.5+) fire when an alert episode changes state in the {{alerting-v2-system}}, such as when it is activated, assigned, acknowledged, or snoozed.
+* **{{alerting-v2-system-cap}} rule lifecycle triggers** (experimental, 9.5+) fire when rules in the {{alerting-v2-system}} are created, updated, deleted, enabled, or disabled. The family includes `alerting.ruleCreated`, `alerting.ruleUpdated`, `alerting.ruleDeleted`, `alerting.ruleEnabled`, and `alerting.ruleDisabled`.
 
 Use event-driven triggers for:
 
 * Central error-handler workflows that react to failures across your automation
 * Reacting to case lifecycle changes (case opened, status changed, attachments or comments added)
 * Paging on-call, opening cases, or logging when a production workflow fails
+* Auditing rule management actions, syncing rule inventory with external systems, or notifying a channel when rules change in the {{alerting-v2-system}}
 
 Event-driven trigger example:
 
@@ -130,7 +133,9 @@ Each trigger type provides different data to the workflow context through the `e
 * **Event-driven**:
   * `workflows.failed` provides metadata about the failed workflow, its execution, and the step that failed.
   * Cases triggers provide `event.caseId`, `event.owner`, and event-specific fields (status changes carry `previousStatus` and `status`; attachment events carry IDs and type; comment events carry IDs).
-  
+  * Alert episode lifecycle triggers provide `event.episodeId`, `event.ruleId`, and `event.spaceId`.
+  * {{alerting-v2-system-cap}} rule lifecycle triggers provide `event.rule.ruleId` and `event.rule.spaceId`.
+
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
 Access trigger data in your workflow using template variables:
