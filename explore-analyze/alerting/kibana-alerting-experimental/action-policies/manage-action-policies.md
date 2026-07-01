@@ -29,6 +29,10 @@ After each dispatcher run, {{kib}} records the outcome in the `.alert-actions` i
 
 The **Execution history** view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome.
 
+:::{warning}
+The **Execution history** page paginates by log events, but each event renders one row per matched rule. A broad action policy with no rule or severity scoping can generate hundreds of rows from a single dispatcher run, pushing events from other policies off the first page. As a workaround, use match conditions to limit which rules a policy covers. This is currently a known limitation.
+:::
+
 To query raw dispatch records directly, open Discover and query the `.alert-actions` index. Filter by `action_type` to narrow by outcome, or by `policy_id` to filter by policy.
 
 ## Enable, disable, and snooze
