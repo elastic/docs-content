@@ -27,7 +27,7 @@ To enrich documents:
 1. Select an **Enrich policy** from the list of available policies.
 1. Set **Target field** to the field where the enriched data is stored.
 
-This functionality uses the {{es}} [Enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-enrich-yaml-reference]
 

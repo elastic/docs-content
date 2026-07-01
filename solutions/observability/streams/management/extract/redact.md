@@ -25,7 +25,7 @@ To redact sensitive information:
 1. Set the **Source Field** to the field containing text you want to redact.
 1. Set the **Patterns** to one or more grok patterns that match sensitive data (for example, IP addresses or email addresses).
 
-This functionality uses the {{es}} [Redact processor](elasticsearch://reference/enrich-processor/redact-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Redact processor](elasticsearch://reference/enrich-processor/redact-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-redact-yaml-reference]
 

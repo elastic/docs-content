@@ -24,7 +24,7 @@ To use a set processor:
 1. Set **Source Field** to the field you want to insert, upsert, or update.
 1. Set **Value** to the value you want the source field to be set to.
 
-This functionality uses the {{es}} [Set processor](elasticsearch://reference/enrich-processor/set-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../extract.md#streams-processor-inconsistencies).
+This functionality uses the {{es}} [Set processor](elasticsearch://reference/enrich-processor/set-processor.md) internally, but you configure it in Streamlang. Streamlang doesn't always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
 ## YAML reference [streams-set-yaml-reference]
 
