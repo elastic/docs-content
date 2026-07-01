@@ -90,7 +90,7 @@ TS my-metrics
 Note that in ES|QL you must use the `TS` command. If you use `FROM`, the temporality will be ignored.
 
 **PromQL:**
-```promql
+```
 histogram_quantile(0.8, sum by (endpoint) (increase(request_duration[1m])))
 ```
 
