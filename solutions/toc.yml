@@ -464,10 +464,9 @@ toc:
         - file: observability/streams-new/get-data-in.md
         - file: observability/streams-new/organize-your-data.md
         - file: observability/streams-new/parse-and-process.md
-        - file: observability/streams-new/map-fields.md
         - file: observability/streams-new/configure-retention.md
         - file: observability/streams-new/manage-data-quality.md
-        - file: observability/streams-new/use-cases.md
+        - file: observability/streams-new/map-fields.md
         - file: observability/streams-new/knowledge-indicators.md
         - file: observability/streams-new/wired-streams-field-naming.md
         - file: observability/streams-new/streamlang.md

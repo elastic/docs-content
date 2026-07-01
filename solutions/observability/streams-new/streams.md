@@ -34,13 +34,48 @@ When an incident hits, Streams gets you to answers faster. AI-powered detection 
 **Control storage costs**
 :   By surfacing the most critical logs and automatically structuring data for efficient storage, Streams allows you to retain high-value data without discarding important information, reducing overall storage costs.
 
+## Before you get started
+
+To use Streams, you need the following prerequisites:
+
+- {{stack}} version 9.2+ or {{serverless-short}}
+- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md). to use AI features like pipeline suggestion, partition suggestions, and significant events.
+
+Users also need {{kib}} access with the following permissions:
+
+::::{applies-switch}
+
+:::{applies-item} serverless:
+Streams requires these {{serverless-full}} roles:
+
+- Admin: Ability to manage all Streams
+- Editor/Viewer: Limited access, cannot perform all actions
+
+:::
+
+:::{applies-item} stack:
+To manage all streams, you need the following permissions:
+
+- **Cluster permissions**: `manage_index_templates`, `manage_ingest_pipelines`, `manage_pipeline`, `read_pipeline`
+- **Data stream level permissions**: `read`, `write`, `create`, `manage`, `monitor`, `manage_data_stream_lifecycle`, `read_failure_store`, `manage_failure_store`, `manage_ilm`.
+
+To view streams, you need the following permissions:
+- **Data stream level**: `read`, `view_index_metadata`, `monitor`
+
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+
+:::
+
+::::
+
 
 ## Get started with Streams
 
 This is a quick overview of the main steps to get started with Streams in {{kib}}. You'll find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
 
-This tour is an ideal way to familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ecloud}} or self-managed {{es}} environment.
+This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ecloud}} or self-managed {{es}} environment.
 
+Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::::{stepper}
 
@@ -53,7 +88,7 @@ Streams supports two ingestion paths:
 
 ::::{step} Organize your data
 
-Use [**partitioning**](./organize-your-data.md) to route subsets of your wired stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
+Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your wired stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
 
 Create partitions manually using field-based conditions, or let AI analyze your data and suggest groupings.
 
@@ -63,13 +98,13 @@ Partitioning is only available when sending data to the `logs.otel` or `logs.ecs
 ::::
 
 ::::{step} Parse and process
-Use the [**Processing** tab](./parse-and-process.md) to build a document processing pipeline that extracts structured fields from raw log messages:
+Use the [**Processing**](./parse-and-process.md) tab to build a document processing pipeline that extracts structured fields from raw log messages:
 
 - **Suggest a pipeline**: Let AI analyze sample documents and generate a complete processor pipeline.
 - **Manually add processors**: Select and configure individual processors when you know which transformations you need.
 - **Add conditions**: Attach Boolean expressions to run processors only when certain criteria are met.
 
-After adding processors, use the **Data preview** tab to simulate results and verify field extraction before saving.
+After adding processors, the **Data preview** simulates results, so you can verify field extraction before saving.
 ::::
 
 ::::{step} Configure retention
@@ -81,7 +116,7 @@ Use the [**Retention** tab](./configure-retention.md) to control how long each s
 ::::
 
 ::::{step} Manage data quality
-Use the [**Data quality** tab](./manage-data-quality.md) to monitor and resolve data quality issues. The **Data quality** column on the main Streams page shows each stream's health — **Good**, **Degraded**, or **Poor** — at a glance.
+The **Data quality** column shows on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality** tab](./manage-data-quality.md) to examine more closely and resolve issues.
 
 When documents fail during ingestion, Streams preserves them in a [failure store](./manage-data-quality.md#streams-data-quality-failure) rather than dropping them, so you can inspect what went wrong and fix the processor using the actual failing documents.
 ::::

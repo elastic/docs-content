@@ -17,9 +17,9 @@ products:
 
 # Configure data retention with Streams [streams-configure-retention]
 
-Managing data retention across multiple indexes typically requires configuring several different settings—{{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings—each in a different place. Streams replaces this with a single UI so you can efficiently control storage costs and meet regulatory or compliance requirements.
+Managing data retention across multiple indexes typically requires configuring {ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can efficiently control storage costs and meet regulatory or compliance requirements.
 
-The Streams **Retention** tab provides a single place to manage lifecycle policies for your streams:
+The **Retention** tab provides a single place to manage lifecycle policies for your streams:
 
 - **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
 - **Child streams can inherit retention from parent streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
@@ -40,9 +40,15 @@ Follow these steps to review your stream's storage footprint, choose a retention
 
 :::::::{stepper}
 
+::::::{step} Open the Retention tab
+1. Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select your stream from the list.
+1. Go to the **Retention** tab.
+::::::
+
 ::::::{step} Review storage and ingestion data
 
-Select a stream and open its **Data lifecycle** tab. Before setting a retention policy, review the following panels to understand your data's footprint:
+Before setting a retention policy, review the following panels to understand your data's footprint:
 
 - **Storage size**: Total data volume and document count for the stream.
 - **Ingestion averages**: Estimated ingestion per day and per month, based on total stream size divided by stream age.
@@ -58,7 +64,9 @@ For more information on data retention, refer to [Data stream lifecycle](../../.
 
 Select **Edit retention method** to open the configuration options, then choose one of the following methods:
 
-- **Inherit retention**: Use retention settings from the stream's index template (classic streams) or parent stream (wired streams). No custom period or policy needed. For classic streams, this is useful when onboarding existing data streams and preserving their lifecycle behavior while still benefiting from Streams' visibility and {{monitor-features}}. For wired streams, this allows child streams to automatically inherit lifecycle settings from their nearest ancestor, and cascade changes when the parent stream is updated.
+- **Inherit retention**: Use retention settings from the stream's index template (classic streams) or parent stream (wired streams).
+    - **Classic streams**: This preserves existing data streams' behavior while still benefiting from Streams other features.
+    - **Wired streams**: Child streams automatically inherit lifecycle settings and updates from its parent stream.
 - **Set a retention period**: Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance.
 - **Follow an {{ilm-init}} policy**: Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages.
 
@@ -68,8 +76,10 @@ Select **Edit retention method** to open the configuration options, then choose 
 
 To use the retention settings from the stream's index template (classic streams) or parent stream (wired streams) without setting a custom period or policy:
 
-1. Select Edit retention method.
+1. Select **Edit retention method**.
 1. Turn on **Inherit from index template** or **parent stream**.
+
+For wired streams, you can override retention for a specific child stream by opening that stream's **Retention** tab and configuring a different method. The child stream will then use its own policy instead of inheriting from the parent.
 ::::
 
 ::::{tab-item} Set a retention period
@@ -105,18 +115,6 @@ If the policy you need doesn't exist, refer to [Configure a lifecycle policy](..
 
 :::::
 
-::::::
-
-::::::{step} Apply retention to child streams
-
-```{applies_to}
-serverless: preview
-stack: preview 9.2+
-```
-
-For wired streams, retention policies cascade automatically from parent to child streams. When you update a parent stream's retention policy, Streams propagates the change to all child streams that inherit from it.
-
-To override retention for a specific child stream, open that stream's **Retention** tab and configure a different method. The child stream uses its own policy instead of inheriting from the parent.
 ::::::
 
 :::::::

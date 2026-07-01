@@ -17,13 +17,13 @@ products:
 
 # Get data into Streams
 
-Streams supports the following ways to ingest data depending on where your data is today:
+On this page you'll find the different ways you can send data to Streams. You can either:
 
 - **[Ingest new data](#get-data-in-wired)**: Use wired streams to send logs to a managed endpoint for new ingestion. Data lands in a managed hierarchy with inheritance, partitioning, and cascading configuration.
 Best for new deployments, custom logs, and mixed-format sources.
 - **[Work with existing data](#get-data-in-classic)**: Use classic streams to work with data already flowing into {{es}}. No migration or configuration changes required.
 
-## Prerequisites [get-data-in-prerequisites]
+## Before you get started [get-data-in-prerequisites]
 
 Streams requires the following permissions:
 
@@ -195,7 +195,9 @@ Open classic streams from the following places in {{kib}}:
 
 - Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md), and find the data stream in the Streams table.
 
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+- Open the data stream for a specific document from **Discover**.To do this, expand the details flyout for a document stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+    1. From the **Documents** table, select the {icon}`expand` icon for a document to expand the details flyout.
+    1. Under **Stream**, select the link to the stream (for example, `logs-generic.default`). The Streams UI opens filtered to the stream that contains the document.
 
 You can also access Streams features using the Streams API. {applies_to}`stack: preview 9.1+` {applies_to}`serverless: preview` Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 

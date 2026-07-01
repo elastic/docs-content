@@ -32,9 +32,15 @@ Use Streams to identify failing documents, trace the source of failure, and depl
 
 :::::::{stepper}
 
+::::::{step} Open the Data quality tab
+1. Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Select your stream from the list.
+1. Go to the **Data quality** tab.
+::::::
+
 ::::::{step} Check the quality score
 
-From the main **Streams** page, the **Data quality** column shows the health of each stream at a glance: **Good**, **Degraded**, or **Poor**. Filter by quality status to see streams that need attention, then click the quality score for a stream to open its **Data quality** tab.
+The **Data quality** column on the main **Streams** page shows the health of each stream at a glance: **Good**, **Degraded**, or **Poor**. Filter by quality status to see streams that need attention.
 
 :::{dropdown} How is the quality score calculated?
 
@@ -63,16 +69,10 @@ The **Data quality** tab shows a breakdown of what's wrong and when it started:
 - **Trends over time**: A time-series chart showing when the problem started and whether it's getting worse.
 
 Use the chart to understand the scope of the issue before drilling into individual documents.
+
+To get notified when degraded or failed document percentages exceed a threshold, [create a data quality alert](#streams-data-quality-alert).
 ::::::
 
-::::::{step} Enable the failure store
-
-To inspect failed documents, you need to turn on the failure store. If the failure store is off, the **Failed documents** component shows **Enable failure store**, select it and set a retention period.
-
-Once on, Streams captures all rejected documents in a `::failures` index. Each failed document includes the error message from the processor that caused the rejection, so you can trace the failure back to its source.
-
-Refer to [Failure store](#streams-data-quality-failure) for permission requirements and setup details.
-::::::
 
 ::::::{step} Fix and validate
 
@@ -91,9 +91,15 @@ A [failure store](../../../manage-data/data-store/data-streams/failure-store.md)
 
 For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
 
+For more information on data quality, refer to the [data set quality](../data-set-quality-monitoring.md) documentation.
+
 ### Required permissions
 :::{include} ../../_snippets/failure-store-permissions.md
 :::
+
+### Enable the failure store [streams-data-quality-enable]
+
+When the failure store is off, the **Failed documents** component shows an **Enable failure store** link. Click the link and set a retention period for your failure store.
 
 ## Create a data quality alert [streams-data-quality-alert]
 
