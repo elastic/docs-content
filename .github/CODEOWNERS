@@ -2,7 +2,7 @@
 *                                           @elastic/docs
 
 # Templates, workflows, and config
-/.github/                                   @elastic/doc-leads @elastic/docs-tech-leads
+/.github/                                   @elastic/doc-leads
 /.github/workflows/                         @elastic/docs-engineering
 /.github/scripts/                           @elastic/docs-engineering
 /acrolinx/                                  @elastic/doc-leads
@@ -11,71 +11,68 @@
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
 
-/explore-analyze/                           @elastic/experience-docs @elastic/developer-docs
+/explore-analyze/                           @elastic/ski-docs @elastic/developer-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
-/explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/experience-docs
-/explore-analyze/machine-learning/          @elastic/developer-docs @elastic/experience-docs
-/explore-analyze/query-filter/              @elastic/developer-docs @elastic/experience-docs
+/explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/ski-docs
+/explore-analyze/machine-learning/          @elastic/developer-docs @elastic/ski-docs
+/explore-analyze/query-filter/              @elastic/developer-docs @elastic/ski-docs
 /explore-analyze/scripting/                 @elastic/admin-docs
 /explore-analyze/cross-cluster-search/      @elastic/developer-docs
 /explore-analyze/cross-project-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
 
 /extend/                                    @elastic/core-docs
-/get-started/                               @elastic/core-docs @elastic/project-docs
+/get-started/                               @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
 /manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs
-/manage-data/ingest/                        @elastic/ingest-docs
+/manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
-/reference/apm-agents/                      @elastic/ingest-docs
+/reference/apm-agents/                      @elastic/ski-docs
 /reference/data-analysis/                   @elastic/docs
-/reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/            @elastic/experience-docs
+/reference/data-analysis/observability/     @elastic/ski-docs
+/reference/data-analysis/kibana/            @elastic/ski-docs
 /reference/data-analysis/machine-learning/  @elastic/developer-docs
-/reference/data-analysis/observability/     @elastic/experience-docs
+/reference/data-analysis/observability/     @elastic/ski-docs
 /reference/elasticsearch/clients/           @elastic/developer-docs
-/reference/fleet/                           @elastic/ingest-docs
+/reference/fleet/                           @elastic/ski-docs
 /reference/glossary/                        @elastic/docs
-/reference/ingestion-tools/                 @elastic/ingest-docs
-/reference/observability/                   @elastic/experience-docs
+/reference/ingestion-tools/                 @elastic/ski-docs
+/reference/observability/                   @elastic/ski-docs
 /reference/search/                          @elastic/developer-docs
-/reference/security/                        @elastic/experience-docs
+/reference/security/                        @elastic/ski-docs
 
 /release-notes/                             @elastic/docs
 
-/release-notes/apm-agents/                  @elastic/ingest-docs
+/release-notes/apm-agents/                  @elastic/ski-docs
 /release-notes/elastic-cloud-serverless/    @elastic/admin-docs @elastic/docs-serverless-release-team
 /release-notes/elastic-observability/       @elastic/ski-docs
 /release-notes/elastic-security/            @elastic/ski-docs
 /release-notes/elasticsearch-clients/       @elastic/developer-docs
-/release-notes/fleet-elastic-agent/         @elastic/ingest-docs
+/release-notes/fleet-elastic-agent/         @elastic/ski-docs
 /release-notes/intro/                       @elastic/docs
 
-/solutions/                                 @elastic/experience-docs @elastic/developer-docs
-/solutions/observability/                   @elastic/experience-docs
-/solutions/observability/apm/apm-agents/    @elastic/ingest-docs
-/solutions/observability/apm/apm-server/    @elastic/ingest-docs
-/solutions/observability/apm/ingest/        @elastic/ingest-docs
-/solutions/observability/apm/opentelemetry/ @elastic/ingest-docs
-/solutions/observability/get-started/       @elastic/ski-docs @elastic/project-docs
+/solutions/                                 @elastic/ski-docs @elastic/developer-docs
+/solutions/observability/                   @elastic/ski-docs
+/solutions/observability/apm/apm-agents/    @elastic/ski-docs
+/solutions/observability/apm/apm-server/    @elastic/ski-docs
+/solutions/observability/apm/ingest/        @elastic/ski-docs
+/solutions/observability/apm/opentelemetry/ @elastic/ski-docs
+/solutions/observability/get-started/       @elastic/ski-docs
 /solutions/search/                          @elastic/developer-docs
-/solutions/search/get-started/              @elastic/developer-docs @elastic/project-docs
-/solutions/security/                        @elastic/experience-docs
-/solutions/security/get-started             @elastic/experience-docs @elastic/project-docs
+/solutions/search/get-started/              @elastic/developer-docs
+/solutions/security/                        @elastic/ski-docs
+/solutions/security/get-started             @elastic/ski-docs
 
 /troubleshoot/                              @elastic/docs
 /troubleshoot/deployments/                  @elastic/admin-docs
 /troubleshoot/elasticsearch/                @elastic/admin-docs
-/troubleshoot/ingest/                       @elastic/ingest-docs
-/troubleshoot/kibana/                       @elastic/admin-docs @elastic/experience-docs
-/troubleshoot/monitoring/                   @elastic/admin-docs @elastic/experience-docs
+/troubleshoot/ingest/                       @elastic/ski-docs
+/troubleshoot/kibana/                       @elastic/admin-docs @elastic/ski-docs
+/troubleshoot/monitoring/                   @elastic/admin-docs @elastic/ski-docs
 /troubleshoot/observability/                @elastic/ski-docs
 /troubleshoot/security/                     @elastic/ski-docs
-
-# Raw migrated files
-/raw-migrated-files/                        @elastic/admin-docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/admin-docs
