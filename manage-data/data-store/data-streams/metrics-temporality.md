@@ -72,13 +72,13 @@ This is automatically handled when the data is queried or downsampled.
 
 ## How temporality affects queries [temporality-and-queries]
 
-The temporality field is used automatically by PromQL and ES|QL time series queries. When you query a TSDS using the [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md), {{es}} reads each document's temporality value and adjusts the behavior of [time series aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) like `rate` and `increase` accordingly:
+The temporality field is used automatically by PromQL and ES|QL time series queries. When you query a TSDS using the [`TS` command](elasticsearch://reference/query-languages/esql/commands/ts.md), {{es}} reads each document's temporality value and adjusts the behavior of supported [time series aggregation functions](elasticsearch://reference/query-languages/esql/functions-operators/time-series-aggregation-functions.md) accordingly:
 
 - **Cumulative metrics:** {{es}} computes the difference between consecutive values to determine the rate of change.
 - **Delta metrics:** {{es}} uses the values directly, since they already represent changes.
 
-This means that the `rate` and `increase` functions produce correct results regardless of whether the underlying data is cumulative or delta, as long as the temporality is set correctly.
-Note that in ES|QL you cannot use `rate` or `increase` on histograms: Instead, ES|QL will automatically use an inner, per-series aggregation which merges the histograms taking the temporality into account.
+The supported functions respecting the temporality are `rate`, `increase` and `irate`. So those functions produce the semantically expected results regardless of whether the underlying data is cumulative or delta, as long as the temporality is set correctly.
+Note that in ES|QL you cannot use any of those functions on histograms: Instead, ES|QL will automatically use an inner, per-series aggregation which merges the histograms taking the temporality into account.
 This is equivalent to how `increase` works for native histograms in PromQL. For example, the following two queries are equivalent:
 
 **ES|QL:**
@@ -93,7 +93,6 @@ Note that in ES|QL you must use the `TS` command. If you use `FROM`, the tempora
 ```promql
 histogram_quantile(0.8, sum by (endpoint) (increase(request_duration[1m])))
 ```
-
 
 ## How temporality affects downsampling [temporality-and-downsampling]
 
