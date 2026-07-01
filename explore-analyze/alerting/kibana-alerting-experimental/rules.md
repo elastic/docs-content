@@ -16,7 +16,7 @@ This page explains what rules do, what they don't control, and how to choose a c
 
 ## What rules do [detection-and-notification]
 
-On each run, a rule executes an {{esql}} query against your data. If the query finds a match and the rule is in Signal mode, it writes a _signal_, a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
+On each run, a rule executes an {{esql}} query against your data. If the query finds a match, it writes a rule event (`rule_event`), a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
 
 When creating a rule, choose Signal mode to record and query results without alerting anyone, or Alert mode when you want to track issues and route notifications.
 
