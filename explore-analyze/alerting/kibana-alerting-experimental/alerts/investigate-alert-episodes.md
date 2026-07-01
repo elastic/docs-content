@@ -5,12 +5,23 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Investigate alert episodes in Kibana's experimental alerting system. Explore lifecycle history, related episodes, metadata, actors, and assignment."
+description: "Investigate alert episodes in Kibana's experimental alerting system. Explore metric trends, lifecycle history, related episodes, metadata, actors, and assignment."
 ---
 
 # Investigate alert episodes [investigate-alert-episodes]
 
-In the {{alerting-v2-system}}, the episode detail page shows the full context of an alert episode, including its lifecycle history, related episodes, triage actions, assignee, actors, and source metadata.
+In the {{alerting-v2-system}}, the episode detail page shows the full context of an alert episode, including its metric trend, lifecycle history, related episodes, triage actions, assignee, actors, and source metadata.
+
+## Metric trend [metric-trend]
+
+For threshold-based rules, the episode detail page shows how the evaluated metric compared to the rule's threshold conditions over the episode's lifetime. Use it to understand how the condition developed: how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and how long it persisted.
+
+When a rule includes multiple threshold conditions:
+
+- Conditions that compare the **same metric** appear together, with each threshold represented separately.
+- Conditions that compare **different metrics** appear in separate views, one per metric.
+
+This section is only present for rules that use threshold comparisons. It doesn't appear for signal-mode rules or rules whose evaluation logic doesn't produce comparable metric output.
 
 ## Related episodes by series [related-episodes]
 
