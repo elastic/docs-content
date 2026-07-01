@@ -28,7 +28,7 @@ GET logs/_search
 }
 ```
 
-Project routing expressions use Lucene query syntax, so you're not limited to a single tag or an exact match. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. In an expression, the colon (`:`) matches a tag to a value and is equivalent to `=`.
+Project routing expressions use Lucene query syntax, so you're not limited to a single tag or an exact match. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. In an expression, the colon (`:`) separates a tag from its value.
 
 You can combine tags with the `AND` and `OR` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. The syntax is the same for the `_search` API and {{esql}}.
 
@@ -116,7 +116,7 @@ The following request creates a named expression called `origin-only` that match
 ```console
 PUT _project_routing/origin-only
 {
-  "expression": "_alias:origin"
+  "expression": "_alias:_origin"
 }
 ```
 
