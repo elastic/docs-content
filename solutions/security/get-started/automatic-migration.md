@@ -47,6 +47,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 :::
@@ -58,6 +59,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 :::
@@ -69,6 +71,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
 * {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
+* For rule migrations, [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) must be available. Automatic Migration uses ELSER to match translated rules to recommended integrations.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
 
