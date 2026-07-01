@@ -13,7 +13,7 @@ type: overview
 
 Treat dashboards as version-controlled artifacts that live in Git alongside the rest of your infrastructure code. The [Dashboards API](create-dashboards-programmatically.md) produces a clean, diffable JSON definition, so you can review dashboard changes in pull requests and promote them across environments through automated pipelines, the same way you manage data views, alerting rules, or any other resource.
 
-This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system. If you only need to move a dashboard between environments once, [exporting it as NDJSON](sharing.md#export-ndjson) and [importing it](import-dashboards.md) is simpler.
+This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system.
 
 ## Workflow [dashboards-as-code-workflow]
 
