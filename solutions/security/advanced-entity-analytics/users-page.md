@@ -1,4 +1,5 @@
 ---
+description: Investigate user authentication events, anomalies, and risk scores in Elastic Security to understand user behavior within your environment.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/users-page.html
   - https://www.elastic.co/guide/en/serverless/current/security-users-page.html

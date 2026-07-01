@@ -19,6 +19,12 @@ Both the management cluster (where you configure {{fleet}}) and the remote clust
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your management {{es}} cluster.
 
+:::{note}
+:applies_to: {serverless: preview, stack: preview 9.5+}
+
+The remote {{es}} output can also serve as the exporter target for [OpenTelemetry input packages](/reference/fleet/otel-integrations.md) managed by {{fleet}}.
+:::
+
 ## Limitations [remote-output-limitations]
 
 These limitations apply to remote {{es}} output:
