@@ -427,7 +427,7 @@ The index `my-index` must exist in every project, otherwise [the search returns 
 
 ### Project routing examples
 
-Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. Combine tags with the `AND`, `OR`, and `NOT` operators, group terms with parentheses, and match part of a value with a prefix or suffix wildcard. Tag matching is case-insensitive. In an expression, a colon (`:`) separates a tag from its value. The syntax is the same for the `_search` API and {{esql}}.
+Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. You can combine tags with the `AND`, `OR`, and `NOT` operators, group terms with parentheses, and use prefix or suffix wildcards to match part of a value. Tag matching is case-insensitive. In an expression, a colon (`:`) separates a tag from its value. The syntax is the same for the `_search` API and {{esql}}.
 
 The following examples use an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
 
