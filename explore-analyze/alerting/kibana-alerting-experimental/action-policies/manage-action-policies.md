@@ -18,22 +18,25 @@ From the **Action policies** list, you can open a policy to see its full configu
 
 ## Execution history
 
-After each dispatcher run, {{kib}} records the outcome in the `.alert-actions` index. These records let you audit whether workflows were invoked, skipped, or had no matching policy for each alert episode.
+The **Execution history** page shows records from the last 24 hours. Each row represents one rule processed by a policy in a single dispatcher cycle and shows the policy name, rule name, outcome, episode count, action group count, and the workflows invoked (for `dispatched` records).
+
+After each dispatcher run, {{kib}} writes one event log entry per policy that ran. The UI denormalizes each entry into one row per rule reference, so a single dispatcher cycle produces as many rows as there are rules the policy evaluated.
 
 | Outcome | What it means |
 |---|---|
 | `dispatched` | The dispatcher invoked a workflow for the alert episode. |
 | `throttled` | The alert episode matched a policy but was rate-limited by the frequency setting. No workflow ran. |
-| `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or marked inactive, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
-| `unmatched` | No action policy matched the alert episode. No workflow ran. |
+| `unmatched` | No action policy matched the alert episode. No workflow ran. This outcome is recorded in the event log but is not available as a filter in the **Execution history** UI. Use Discover to find `unmatched` records. |
 
-The **Execution history** view lets you search these records by policy name, rule name, or saved-object ID, and filter by outcome.
+Episodes that were acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are suppressed before the dispatcher runs and do not produce an execution history record.
+
+Search records by policy name, rule name, or saved-object ID. Filter by outcome using the `dispatched` and `throttled` options in the UI.
 
 :::{warning}
-The **Execution history** page paginates by log events, but each event renders one row per matched rule. A broad action policy with no rule or severity scoping can generate hundreds of rows from a single dispatcher run, pushing events from other policies off the first page. As a workaround, use match conditions to limit which rules a policy covers. This is currently a known limitation.
+The **Execution history** page paginates at 100 log events per page. Each log event covers one policy's full dispatcher cycle and is then expanded into one row per rule — a single event matching 50 rules fills one page slot but renders 50 rows. A broad policy with no rule or severity scoping can generate hundreds of rows from a single event, pushing records from other policies off the visible page. Use match conditions to scope a policy to specific rules or severity levels to reduce this.
 :::
 
-To query raw dispatch records directly, open Discover and query the `.alert-actions` index. Filter by `action_type` to narrow by outcome, or by `policy_id` to filter by policy.
+Execution history records are retained for 24 hours. For older records, open Discover and query the `.kibana-event-log-*` index. Add a filter for `event.provider: "alerting_v2"` and use `event.action` to narrow by outcome (`dispatched`, `throttled`, or `unmatched`).
 
 ## Enable, disable, and snooze
 

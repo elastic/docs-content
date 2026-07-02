@@ -71,7 +71,7 @@ For each enabled policy that is not snoozed, the dispatcher works through the fo
 Workflow invocations may not happen immediately after a rule evaluates.
 
 :::{tip}
-Severity changes can cause a policy to match an episode for the first time, which fires a notification even if the episode is not new. For example, if a policy is scoped to `severity: "critical"` and an episode escalates from `low` to `critical`, the policy fires because it has no prior notification record for that episode. However, a severity change alone does not re-trigger a policy that already matched the episode. Only a status change or the expiry of a time-based throttle can do that. For details and examples, refer to [Severity escalation and de-escalation](common-action-policy-scenarios.md#severity-escalation).
+Severity changes can cause a policy to match an episode for the first time, which fires a notification even if the episode is not new. For example, if a policy is scoped to `severity: "critical"` and an episode escalates from `low` to `critical`, the policy fires because it has no prior notification record for that episode. However, a severity change alone does not re-trigger a policy that already matched the episode. Only a status change or the expiry of a time-based throttle can do that. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Next steps

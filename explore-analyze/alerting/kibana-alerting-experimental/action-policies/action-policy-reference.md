@@ -81,16 +81,21 @@ Available frequency options when you set **Notify per** to **Digest**.
 | At most once every… (default) | Caps digest delivery to at most one bundled summary within the chosen interval, regardless of how often the rule runs. | A rule running every 5 minutes with a 1h digest interval sends one bundled summary per hour containing all matching alert episodes from that period. |
 | Every evaluation | Fires on every rule run, bundling all matching alert episodes into one message. Can be noisy on frequent rule schedules. | A rule running every 30 minutes with 20 matching alert episodes produces one summary every 30 minutes containing all 20. |
 
-## Dispatch outcomes
+## Dispatch outcomes [dispatch-outcomes]
 
-The dispatcher records each run with one of the following outcomes. To investigate delivery issues, open Discover, query the `.alert-actions` index, and filter by the `action_type` field.
+After each dispatcher run, {{kib}} writes one event log entry per policy to the `.kibana-event-log-*` index. Three outcomes are recorded:
 
 | Outcome | What happened |
 |---|---|
 | `dispatched` | The dispatcher invoked a workflow for the alert episode. |
 | `throttled` | The alert episode matched a policy but was rate-limited by the frequency setting. No workflow ran. This is expected behavior, not an error. |
-| `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
+
+Episodes that were acknowledged, snoozed, marked inactive, or covered by a maintenance window are suppressed before the dispatcher runs and produce no event log entry.
+
+`unmatched` is recorded in the event log but is not available as an outcome filter in the **Execution history** UI. To find `unmatched` records, open Discover, query `.kibana-event-log-*`, add a filter for `event.provider: "alerting_v2"`, and filter `event.action: "unmatched"`.
+
+For more information about the execution history UI, refer to [Manage action policies](manage-action-policies.md#execution-history).
 
 ## Related pages
 

@@ -387,6 +387,10 @@ toc:
           - file: alerting/kibana-alerting-experimental/workflows-alerting.md
           - file: alerting/kibana-alerting-experimental/action-policies/about-action-policies.md
           - file: alerting/kibana-alerting-experimental/action-policies/common-action-policy-scenarios.md
+            children:
+              - file: alerting/kibana-alerting-experimental/action-policies/route-by-severity.md
+              - file: alerting/kibana-alerting-experimental/action-policies/severity-escalation.md
+              - file: alerting/kibana-alerting-experimental/action-policies/re-notification.md
           - file: alerting/kibana-alerting-experimental/action-policies/create-configure-action-policy.md
           - file: alerting/kibana-alerting-experimental/action-policies/action-policy-reference.md
           - file: alerting/kibana-alerting-experimental/action-policies/manage-action-policies.md

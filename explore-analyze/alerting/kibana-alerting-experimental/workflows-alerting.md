@@ -23,18 +23,11 @@ The {{alerting-v2-system}} connects to workflows through two pathways.
 
 ### Action policies [action-policy-driven-workflows]
 
-Action policies evaluate alert episodes on a continuous schedule and invoke workflows when an episode meets the configured conditions. After a rule runs, the system routes alert episodes to workflows through the following steps.
+Action policies evaluate alert episodes on a continuous schedule and invoke workflows when an episode meets the configured conditions. After a rule runs, the system routes alert episodes to workflows through a suppression check, match conditions, grouping, and frequency gates. For the full step-by-step evaluation sequence, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
 ```
 Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notification
 ```
-
-1. A rule evaluates data on a schedule and writes a rule event.
-2. In Alert mode, the rule event opens or updates an alert episode.
-3. The dispatcher runs on a short interval, independently of the rule schedule, and picks up active alert episodes.
-4. For each active alert episode, the dispatcher evaluates all enabled action policies. Each policy runs the episode through suppression, match conditions, grouping, and frequency gates.
-5. For policies where the episode clears all gates, the dispatcher invokes the configured workflows.
-6. Workflows deliver the notification or run the automation.
 
 ### Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 

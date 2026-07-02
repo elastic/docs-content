@@ -397,7 +397,7 @@ serverless: experimental
 
 {{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions — for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
-Rule lifecycle triggers are active by default and require no feature flag. They are part of the {{alerting-v2-system}} and fire independently of alert episodes.
+Rule lifecycle triggers are part of the {{alerting-v2-system}} and fire independently of alert episodes.
 
 ### Available triggers [alerting-rule-lifecycle-triggers-available]
 

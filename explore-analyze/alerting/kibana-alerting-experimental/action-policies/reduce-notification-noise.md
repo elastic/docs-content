@@ -23,8 +23,7 @@ Three mechanisms let you silence notifications, each at a different scope:
 | Acknowledge | Per alert episode | You're actively investigating a breach and want to silence notifications for it without closing the alert episode. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
 | Deactivate | Per alert episode | You want to manually close an alert episode that hasn't recovered automatically. Deactivating marks the alert episode as inactive and stops notifications for it. Unlike acknowledge, this closes the alert episode rather than silencing it while leaving it active. |
-
-Each mechanism is stored as a separate document in `.alert-actions`, so the full gating history for an episode is queryable in Discover.
+| [Maintenance window](../../alerts/maintenance-windows.md) | All policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope
 

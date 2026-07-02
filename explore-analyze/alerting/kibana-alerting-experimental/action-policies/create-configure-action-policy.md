@@ -21,10 +21,7 @@ For match conditions fields, grouping modes, frequency options, and dispatch out
 
 Action policies only process alert episodes from rules running in Alert mode. Signals produced by rules running in Detect mode are not eligible for action policy evaluation.
 
-An action policy can be global or per-rule:
-
-- **Global** - Global policies apply to any alert episode in the space. Use a global policy when you want to route alert episodes from multiple rules. For example, a policy matching `rule.tags: "checkout"` applies to every rule with that tag.
-- **Per-rule** - Per-rule policies are scoped to a single rule. Use a per-rule policy when notification routing is specific to one rule and you don't want it to affect other rules in the space.
+An action policy can be **global** (applies to any alert episode in the space) or **per-rule** (scoped to a single rule). For a full explanation of how the two types differ and how they evaluate, refer to [About action policies](about-action-policies.md#policy-types).
 
 The policy type is set at creation and cannot be changed. If you need a different type, create a new policy.
 
@@ -41,8 +38,7 @@ The match condition is the sole mechanism for scoping a policy beyond its base t
 
 Use match conditions to route different alert episodes to different policies, for example, one policy for `severity: "critical"` alert episodes routed to PagerDuty and another for lower-severity episodes routed to Slack. You can also scope by rule, such as `rule.tags: "payment-service"`, to apply a policy only to alert episodes from a set of related rules. For available fields and examples, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
 
-## Grouping and frequency [reduce-noise-grouping]
-
+## Notify per and frequency [reduce-noise-grouping]
 
 **Notify per** controls how alert episodes batch into notifications. **Frequency** controls how often the policy can notify for each batch.
 
@@ -57,18 +53,15 @@ Use match conditions to route different alert episodes to different policies, fo
 
 :::
 
-For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#notification-grouping).
-
-## Frequency [throttle]
-
-
-**Frequency** limits how often the policy can fire for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`. For available options by **Notify per** mode, refer to [Frequency](action-policy-reference.md#throttle-strategies).
+**Frequency** limits how often the policy fires for a given notification group. The interval resets from the last time the policy fired, so successive notifications stay at least `interval` apart. Set a duration such as `1h` or `30m`.
 
 :::{note}
-`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If an episode escalates from `low` to `critical` but the policy already matched it and the status hasn't changed, the throttle blocks re-notification. 
+`On status change` only re-notifies when the alert episode's status changes, not when its severity changes. If an episode escalates from `low` to `critical` but the policy already matched it and the status hasn't changed, the throttle blocks re-notification.
 
-To receive escalation notifications, either create separate policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Controlling re-notification](common-action-policy-scenarios.md#controlling-re-notification).
+To receive escalation notifications, either create separate policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active episodes](re-notification.md).
 :::
+
+For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#notification-grouping).
 
 ## Destinations
 
