@@ -41,7 +41,7 @@ The **Rules** privilege controls who can create and manage rules.
 
 | Level | What you can do |
 |---|---|
-| **All** | Create, edit, delete, enable, and disable rules |
+| **All** | Create, edit, delete, enable, and turn off rules |
 | **Read** | View rules and their configuration |
 
 :::{note}
@@ -113,7 +113,7 @@ Each data source requires a separate `read` index privilege:
 
 | Data source | What it stores | Required privilege |
 |---|---|---|
-| `.rule-events` | A record for every rule evaluation; one document per result row, per run | `read` |
+| `.rule-events` | A record for every rule evaluation — one document per result row per run | `read` |
 | `.alert-actions` | Episode action records: acknowledge, snooze, resolve, assign, and other triage operations | `read` |
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | `read` |
 

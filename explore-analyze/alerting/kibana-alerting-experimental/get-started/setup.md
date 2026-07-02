@@ -11,11 +11,11 @@ description: "Enable and disable the experimental alerting system in Kibana: tur
 
 # Set up the {{alerting-v2-system}} [alerting-setup]
 
-This page explains how to enable the {{alerting-v2-system}} in your space, confirm it's accessible, and turn it off when needed. Enabling and disabling the system requires a {{kib}} administrator. Confirming accessibility can be done by any user with space access.
+This page explains how to enable the {{alerting-v2-system}} in your space, confirm it's accessible, and turn it off when needed. Enabling and turning off the system requires a {{kib}} administrator. Confirming accessibility can be done by any user with space access.
 
 ## Turn on the system [alerting-setup-turn-on]
 
-The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced setting in {{kib}}. This setting is off by default. Turn it on to make rules, action policies, and the alerting UI available in your space. The steps differ by deployment type.
+The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced setting in {{kib}}. This setting is off by default. Turn it on to make the UIs for {{alerting-v2-system}} features available in your space.
 
 ::::{tab-set}
 :::{tab-item} {{stack}}
@@ -48,7 +48,7 @@ POST kbn:/internal/kibana/global_settings
 ```
 
 :::{note}
-The `/internal/kibana/global_settings` endpoint is an internal API and may change without notice. There is currently no public equivalent.
+The `/internal/kibana/global_settings` endpoint is an internal API and might change without notice. There is currently no public equivalent.
 :::
 :::
 ::::
@@ -60,7 +60,7 @@ After turning on the setting, verify the {{alerting-v2-system}} is accessible in
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and enter `Alerting v2 preview`.
 2. Select the menu item from the results.
 
-If the menu item doesn't appear immediately, refresh the page and search again. It may take a moment for the UI to reflect the updated setting.
+If the menu item doesn't appear immediately, refresh the page and search again. It might take a moment for the UI to reflect the updated setting.
 
 ## Turn off the system [alerting-setup-turn-off]
 
@@ -75,7 +75,7 @@ When the setting is off:
 - The APIs and UI are hidden.
 - Existing rules and action policies are paused.
 
-Turning the setting back on resumes execution. Turning it off does not delete any data — your rules and action policies remain as {{kib}} saved objects, and existing documents in `.rule-events` and `.alert-actions` are preserved.
+Turning the setting back on resumes execution. Turning it off does not delete any data. Your rules and action policies remain as {{kib}} saved objects, and existing documents in `.rule-events` and `.alert-actions` are preserved.
 
 ## Next steps
 
