@@ -4,6 +4,16 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+cta:
+  azure-mp:
+    button:
+      label: Get started on MP
+      url: https://portal.azure.com/#create/elastic.ec-azure-pp?source=elastic-docs
+    benefits:
+      - "Simplified billing and MACC burndown"
+      - "Manage clusters from Azure Portal"
+      - "Built-in logs and metrics forwarding"
+
 exclude:
   - 'README.md'
   - 'changelog/**'
