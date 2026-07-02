@@ -13,7 +13,7 @@ products:
 
 # Tune approximate kNN search [tune-knn-search]
 
-{{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn.md#approximate-knn) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
+{{es}} supports [approximate k-nearest neighbor search](../../../solutions/search/vector/knn/approximate-knn.md) for efficiently finding the *k* nearest vectors to a query vector. Since approximate kNN search works differently from other queries, there are special considerations around its performance.
 
 Many of these recommendations help improve search speed. With approximate kNN, the indexing algorithm runs searches under the hood to create the vector index structures. So these same recommendations also help with indexing speed.
 

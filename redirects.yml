@@ -944,3 +944,23 @@ redirects:
     to: 'explore-analyze/cross-cluster-search.md'
     anchors:
       '': 'configure-privileges-for-ccs'
+
+  # kNN search page restructure: anchors moved to child pages
+  'solutions/search/vector/knn.md':
+    to: 'solutions/search/vector/knn.md'
+    many:
+      - to: 'solutions/search/vector/knn/approximate-knn.md'
+        anchors:
+          'approximate-knn': 'approximate-knn'
+      - to: 'solutions/search/vector/knn/exact-knn.md'
+        anchors:
+          'exact-knn': 'exact-knn'
+      - to: 'solutions/search/vector/knn/optimize-performance-accuracy.md'
+        anchors:
+          'dense-vector-knn-search-rescoring': 'dense-vector-knn-search-rescoring'
+          'the-rescore_vector-option': 'the-rescore_vector-option'
+      - to: 'solutions/search/vector/knn/build-search-queries.md'
+        anchors:
+          'knn-semantic-search': 'knn-semantic-search'
+          'knn-similarity-search': 'knn-similarity-search'
+          'nested-knn-search': 'nested-knn-search'
