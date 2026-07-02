@@ -10,13 +10,13 @@ description: "How to manage notifications when alert episode severity changes in
 
 # Manage severity escalation notifications for the {{alerting-v2-system}} [severity-escalation]
 
-Not every severity change fires a notification. The outcome depends on whether the action policy has already matched the episode and which frequency option is configured.
+Not every severity change fires a notification. The outcome depends on whether the action policy has already matched the episode and which frequency option you've selected.
 
 ## Notify when an episode escalates into a new severity threshold
 
-Scope a policy to the severity level you want to be notified about. When an episode escalates into that severity level for the first time, the policy fires because it has no prior notification record for the episode.
+Scope a policy to the severity level you want notifications for. When an episode escalates into that severity level for the first time, the policy fires because it has no prior notification record for the episode.
 
-The following example uses a policy scoped to `severity: "critical"`. An episode starts at `low` severity, so the policy does not match. When the episode escalates to `critical`, the policy now matches and fires regardless of the frequency setting, because it has never notified for this episode before.
+The following example uses a policy scoped to `severity: "critical"`. An episode starts at `low` severity, so the policy doesn't match. When the episode escalates to `critical`, the policy now matches and fires regardless of the frequency setting, because it has never notified for this episode before.
 
 | Field | Value |
 |---|---|
@@ -28,9 +28,9 @@ The following example uses a policy scoped to `severity: "critical"`. An episode
 
 ## Prevent duplicate notifications when severity changes within an existing match
 
-If a policy already matched an episode at a lower severity and the episode escalates, the policy does not automatically re-notify. With `On status change` frequency, a severity change alone does not count as a status change.
+If a policy already matched an episode at a lower severity and the episode escalates, the policy doesn't automatically re-notify. With `On status change` frequency, a severity change alone doesn't count as a status change.
 
-In this example, Policy A matches all episodes regardless of severity. It notified when the episode was `low`. The episode escalates to `critical`, but Policy A still matches and the status has not changed, only the severity has. The throttle blocks re-notification. To re-notify on escalation, use a time-based throttle or create separate policies per severity level as described in [Route alert episodes by severity](route-by-severity.md).
+In this example, Policy A matches all episodes regardless of severity. It notified when the episode was `low`. The episode escalates to `critical`, but Policy A still matches and the status hasn't changed, only the severity has. The throttle blocks re-notification. To re-notify on escalation, use a time-based throttle or create separate policies per severity level as described in [Route alert episodes by severity](route-by-severity.md).
 
 | Field | Value |
 |---|---|
@@ -44,7 +44,7 @@ In this example, Policy A matches all episodes regardless of severity. It notifi
 
 If an episode drops below a policy's severity threshold, the policy stops matching and sends no further notifications. If the episode later escalates back above the threshold, the policy fires again as if it were the first match.
 
-In this example, Policy B is scoped to `severity: "critical"`. An episode de-escalates from `critical` to `high`. Policy B no longer matches and stops sending notifications. If the episode later escalates back to `critical`, Policy B fires again.
+In this example, Policy B targets only `severity: "critical"` episodes. An episode de-escalates from `critical` to `high`. Policy B no longer matches and stops sending notifications. If the episode later escalates back to `critical`, Policy B fires again.
 
 | Field | Value |
 |---|---|

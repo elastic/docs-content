@@ -10,7 +10,7 @@ description: "How to configure action policies to re-notify when an alert episod
 
 # Re-notify for persistently active episodes in the {{alerting-v2-system}} [controlling-re-notification]
 
-The `On status change` frequency option notifies once per status transition, for example when an episode activates or resolves. This is efficient for reducing noise from rules in the {{alerting-v2-system}}, but a persistently active episode that only changes in severity does not re-trigger a notification.
+The `On status change` frequency option notifies once per status transition, for example when an episode activates or resolves. This is efficient for reducing noise from rules in the {{alerting-v2-system}}, but a persistently active episode that only changes in severity doesn't re-trigger a notification.
 
 To re-notify for episodes that stay active without a status change, use a time-based throttle.
 

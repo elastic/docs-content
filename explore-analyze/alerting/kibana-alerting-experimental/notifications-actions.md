@@ -23,9 +23,9 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
 1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines what to do, for example, send a message, call a webhook, open a case, or run any other automation.
 
-2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The policy controls which alert episodes qualify, how they batch, and how often the workflow is invoked.
+2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The policy controls which alert episodes qualify, how they batch, and how often it invokes the workflow.
 
-   For actions that should fire exactly once in response to a specific alert episode state change (such as opening a ticket when an episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
+   For actions that fire exactly once in response to a specific alert episode state change (such as opening a ticket when an episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
 
 ## Related pages
 
