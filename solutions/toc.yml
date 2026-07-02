@@ -459,6 +459,39 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
+      - file: observability/streams-new/streams.md
+        children:
+        - file: observability/streams-new/get-data-in.md
+        - file: observability/streams-new/organize-your-data.md
+        - file: observability/streams-new/parse-and-process.md
+        - file: observability/streams-new/configure-retention.md
+        - file: observability/streams-new/manage-data-quality.md
+        - file: observability/streams-new/map-fields.md
+        - file: observability/streams-new/knowledge-indicators.md
+        - file: observability/streams-new/wired-streams-field-naming.md
+        - file: observability/streams-new/streamlang.md
+          children:
+          - file: observability/streams-new/processors/append.md
+          - file: observability/streams-new/processors/concat.md
+          - file: observability/streams-new/processors/convert.md
+          - file: observability/streams-new/processors/date.md
+          - file: observability/streams-new/processors/dissect.md
+          - file: observability/streams-new/processors/drop.md
+          - file: observability/streams-new/processors/enrich.md
+          - file: observability/streams-new/processors/grok.md
+          - file: observability/streams-new/processors/join.md
+          - file: observability/streams-new/processors/lowercase.md
+          - file: observability/streams-new/processors/math.md
+          - file: observability/streams-new/processors/network-direction.md
+          - file: observability/streams-new/processors/redact.md
+          - file: observability/streams-new/processors/remove.md
+          - file: observability/streams-new/processors/rename.md
+          - file: observability/streams-new/processors/replace.md
+          - file: observability/streams-new/processors/set.md
+          - file: observability/streams-new/processors/trim.md
+          - file: observability/streams-new/processors/uppercase.md
+          - file: observability/streams-new/processors/manual-pipeline-configuration.md
+
       - file: observability/streams/streams.md
         children:
         - file: observability/streams/management/retention.md
@@ -487,7 +520,7 @@ toc:
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
-        - hidden: observability/streams/management/significant-events.md
+        - file: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/management/knowledge-indicators.md
         - file: observability/streams/wired-streams.md

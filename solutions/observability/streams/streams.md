@@ -14,7 +14,7 @@ products:
   - id: elastic-stack
 ---
 
-# Streams
+# Streams-old
 
 Streams provides a single, centralized UI within {{kib}} that streamlines common tasks like extracting fields, setting data retention, and routing data, so you don't need to use multiple applications or manually configure underlying {{es}} components.
 
