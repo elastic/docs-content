@@ -42,7 +42,7 @@ Refer to [Rules](kibana-alerting-experimental/rules.md) to learn more.
 
 ### Alert episodes
 
-In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive) giving you one lifecycle to triage rather than a separate item per rule check. You manage alert episodes on the **Alerts** page.
+In Alert mode, the rule opens one alert episode per problem and keeps it open until the condition clears. The alert episode moves through states (pending, active, recovering, inactive) giving you one lifecycle to triage rather than a separate item per rule check.
 
 <!-- TODO: When PR #6527 (alerts) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Alert episodes](kibana-alerting-experimental/alerts.md) to learn more.
