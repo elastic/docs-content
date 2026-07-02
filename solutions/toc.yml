@@ -553,6 +553,8 @@ toc:
             children:
               - file: security/get-started/enable-threat-intelligence-integrations.md
               - file: security/get-started/automatic-migration.md
+                children:
+                  - file: security/get-started/automatic-migration-troubleshooting.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/content-connectors.md
           - file: security/get-started/spaces-elastic-security.md
