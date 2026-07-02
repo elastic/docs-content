@@ -121,3 +121,8 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
 6. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md) on each node.
 7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
+## Next steps
+
+:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
+:::
+

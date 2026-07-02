@@ -114,22 +114,20 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate lines for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -155,22 +153,23 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate lines for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:
