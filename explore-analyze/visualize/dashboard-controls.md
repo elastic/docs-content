@@ -12,17 +12,15 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore. Controls apply filters to relevant panels so viewers can focus on specific data segments without writing filtering queries.
 
-Where you place a control determines how it behaves:
+A control can be placed in one of two ways:
 
-::::{applies-switch}
-:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-* **Pinned** to the dashboard header: the control stays visible above the dashboard and applies across it. A dashboard supports up to 100 pinned controls.
-* **Unpinned**: the control sits in the dashboard body like any other panel. You can move and resize it, and place it inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to that section.
+* **Pinned** to the dashboard header, where it stays visible and applies across the whole dashboard.
+* **Unpinned** and placed in the dashboard body like any other panel. You can move, resize, and arrange it, or place it inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to that section.
+
+:::{note}
+:applies_to: {"stack": "ga 9.0-9.3"}
+In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
 :::
-:::{applies-item} {"stack": "ga 9.0-9.3"}
-Controls are always pinned to the dashboard header and apply across the dashboard. Settings such as chaining and validation apply to all controls at once. Refer to [Dashboard control settings](dashboard-control-settings.md) to manage these shared settings.
-:::
-::::
 
 ## Requirements [dashboard-controls-requirements]
 

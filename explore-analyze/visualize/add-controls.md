@@ -48,7 +48,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.4"}
-A new control is pinned to the dashboard header by default, where it applies to all panels. To place the control in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
+A new control is pinned to the dashboard header by default, where it applies to all panels. To place the control in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**. A dashboard supports up to 100 pinned controls.
 :::
 
 When you add several controls, their selections affect each other by default. How they interact depends on your version:
