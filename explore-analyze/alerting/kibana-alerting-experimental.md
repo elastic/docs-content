@@ -33,8 +33,8 @@ The {{alerting-v2-system}} is built around four objects: rules, alert episodes, 
 
 A rule defines what to watch for in your data and how often to check. Every rule runs in one of two modes: alert or signal.
 
-- **Alert**: Opens an alert episode when the rule finds a match, keeps it open until the condition clears, and can notify your team or trigger automated actions when the state changes. Use this when you want the system to track an issue and tell someone about it.
-- **Signal**: Records each match as a data point with no ongoing tracking and no notifications. Use this when you want to capture activity for later querying and investigation.
+- **Alert** - Opens an alert episode when the rule finds a match, keeps it open until the condition clears, and can notify your team or trigger automated actions when the state changes. Use this when you want the system to track an issue and tell someone about it.
+- **Signal** - Records each match as a data point with no ongoing tracking and no notifications. Use this when you want to capture activity for later querying and investigation.
 
 <!-- TODO: When PR #6523 (rules) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Rules](kibana-alerting-experimental/rules.md) to learn more.
@@ -80,7 +80,7 @@ Rule runs → conditions met → writes rule event to .rule-events
       → [dispatcher] → action policy → workflow → notification
 ```
 
-The rule evaluates {{esql}} on a schedule and writes each result as a rule event to `.rule-events`. These events are grouped into an alert episode, and each new event can advance the episode's lifecycle state. When a match occurs, the episode becomes active and the dispatcher evaluates all enabled action policies against it, invoking any workflows that pass suppression, match conditions, and frequency gates. When the condition clears, a new rule event moves the episode to recovering and recovery notifications fire through the same pipeline.
+The rule evaluates {{esql}} on a schedule and writes each result as a rule event to `.rule-events`. These events are grouped into an alert episode, and each new event can advance the episode's lifecycle state. You configure action policies to specify exactly which episodes trigger workflows, how often, and whether matching episodes are dispatched as a group or as individual workflows. When the condition clears, a new rule event moves the episode to recovering and recovery notifications fire through the same pipeline.
 
 ::::{dropdown} Example: Rule runs in Alert mode
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates an Alert mode rule:
@@ -117,7 +117,7 @@ A security team wants to track calls to a rarely-used admin API endpoint, but in
 2. Each time the condition is met, the rule writes a signal to `.rule-events`.
 3. The signals accumulate silently and are immediately queryable in Discover.
 
-After running the Signal mode rule for a few weeks, the team has enough data to understand normal call patterns and identify what volume looks anomalous. With that baseline established, the team is ready to create an Alert mode rule that opens an alert episode and notifies the on-call team when the call rate crosses a meaningful threshold.
+After running the Signal mode rule for a few weeks, the team has two new capabilities. First, they can create an Alert mode rule that references the presence of admin API calls alongside other signals (such as a spike in error rates) to detect correlated activity that neither signal would surface alone. Second, when investigating an outage, the team can explore the accumulated signal data as evidence without reconstructing the original query or worrying about whether the source data was cleared by retention policies. The signals are already there, timestamped and queryable.
 
 <!-- TODO: Update diagram to reflect that signal mode writes rule events to .rule-events (not "signals") and that these events are immediately queryable in Discover, dashboards, and ES|QL.
 :::{image} ../images/rule-detect-mode-diagram.png
