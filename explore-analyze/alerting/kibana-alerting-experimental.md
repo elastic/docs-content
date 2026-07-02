@@ -78,7 +78,13 @@ Rule runs → the rule's conditions are met → writes a rule event
 The rule evaluates {{esql}} on a schedule and writes a rule event to `.rule-events`. When a match occurs, the dispatcher picks up the active alert episode, evaluates all enabled action policies against it, and invokes any workflows that pass suppression, match conditions, and frequency gates. When the condition clears, the episode recovers and recovery notifications fire through the same pipeline.
 
 ::::{dropdown} Example: Rule runs in Alert mode
-An SRE team creates a rule in Alert mode that checks checkout service latency every five minutes. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode. An action policy with a `rule.tags: "checkout"` matcher skips low-severity episodes and sends a Slack message through an on-call workflow. The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
+An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates an Alert mode rule:
+
+1. The rule runs an {{esql}} query every five minutes, checking p95 checkout service latency.
+2. When p95 exceeds 2 seconds for more than one consecutive check, the rule opens an alert episode.
+3. An action policy with a `rule.tags: "checkout"` matcher skips low-severity episodes and sends a Slack message through an on-call workflow.
+
+The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
 :::{image} ../images/rule-alert-mode-diagram.png
 :alt: Diagram of Alert mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a rule event tied to an ongoing alert episode. The alert episode moves through pending, active, recovering, and inactive states. An action policy matches eligible alert episodes and routes them to a workflow, which delivers a notification.
@@ -98,7 +104,13 @@ Rule runs → the rule's conditions are met → writes a signal
 The rule evaluates {{esql}} on a schedule and writes a rule event (signal) to `.rule-events`. The signal is immediately available for querying in Discover, dashboards, and {{esql}}.
 
 ::::{dropdown} Example: Rule runs in Signal mode
-A security team tracks when a rarely-used admin API endpoint is called. Individual calls aren't inherently suspicious, so they create a Signal mode rule that records each match without triggering notifications. When an on-call alert fires later for unusual privilege escalation, the team queries `.rule-events` in Discover and finds the admin endpoint was called three times in the hour before — context that would have been invisible without the signals already in the index.
+A security team wants to track calls to a rarely-used admin API endpoint, but individual calls aren't suspicious enough to page anyone. To start collecting data without generating noise, the team creates a Signal mode rule:
+
+1. The rule runs an {{esql}} query on a schedule, checking for calls to the admin API endpoint.
+2. Each time the condition is met, the rule writes a signal to `.rule-events`.
+3. The signals accumulate silently and are immediately queryable in Discover.
+
+After running the Signal mode rule for a few weeks, the team has enough data to understand normal call patterns and identify what volume looks anomalous. With that baseline established, the team is ready to create an Alert mode rule that opens an alert episode and notifies the on-call team when the call rate crosses a meaningful threshold.
 
 :::{image} ../images/rule-detect-mode-diagram.png
 :alt: Diagram of Signal mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
