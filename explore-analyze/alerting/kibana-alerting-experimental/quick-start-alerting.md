@@ -155,11 +155,11 @@ By completing this tutorial, you saw the core experimental alerting model in act
 ## Next steps
 
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-- **Add notifications:** Create a workflow and action policy to route alerts when an episode opens or recovers. Refer to [Notifications](notifications.md).
+- **Add notifications:** Create a workflow and action policy to route alerts when an episode opens or recovers. Refer to [Notifications and actions](notifications-actions.md).
 -->
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
-- **Use your own data:** Swap `logs-tutorial` for a real data source and update the breach condition to match your use case. Refer to [Author rules](rules/author-rules.md) to learn more.
+- **Use your own data:** Swap `logs-tutorial` for a real data source and update the breach condition to match your use case. Refer to [Create a rule](rules/create-a-rule.md) to learn more.
 -->
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-- **Explore rule history in Discover:** Query `.rule-events` to track trends, compare episode durations, and identify which services breach most frequently. Refer to [Query alerts and signals in Discover](alerts/query-alerts-and-signals-in-discover.md) to learn more.
+<!-- TODO: Uncomment when PR #6527 (alerts) is merged:
+- **Explore rule history in Discover:** Query `.rule-events` to track trends, compare episode durations, and identify which services breach most frequently. Refer to [Query alert history in Discover](alerts/query-alerts-and-signals-in-discover.md) to learn more.
 -->

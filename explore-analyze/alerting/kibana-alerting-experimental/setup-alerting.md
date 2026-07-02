@@ -12,17 +12,39 @@ description: "Get the {{alerting-v2}} running in your space: enable the UI, conf
 # Set up the {{alerting-v2}} [alerting-setup]
 
 
-Set up is part of the {{alerting-v2}} in Kibana. Before you can create your first rule, the {{alerting-v2}} need to be enabled in your space and a few background systems need to be in place. Rules rely on two data streams to store their output, API keys to run with the right privileges, and space scoping to keep objects organized. Getting these right upfront means your rules will run cleanly and their output will be queryable from the start.
+Before you can create your first rule, the {{alerting-v2}} in {{kib}} must be enabled in your space and a few background systems need to be in place. 
+
+Rules rely on two data streams to store their output, API keys to run with the right privileges, and space scoping to keep objects organized. Getting these right upfront means your rules will run cleanly and their output will be queryable from the start.
 
 If you want to jump straight to creating a rule, go to [Quick start](quick-start-alerting.md). For privilege requirements, refer to [{{alerting-v2-cap}} privileges](alerting-privileges.md).
 
 ## Enable the {{alerting-v2}} [alerting-set-up]
 
+To access the {{alerting-v2}}, a {{kib}} administrator must turn on the `alerting:v2:enabled` advanced setting. The steps differ by deployment type.
 
-The {{alerting-v2}} are available in technical preview in {{stack}} 9.5 and in {{serverless-short}}. 
+### Enable on {{stack}} [alerting-enable-stack]
 
-<!--[CONTENT NEEDED: UI. Enabling through Advanced Settings is a development-phase mechanism. Update this entire enablement section with the final path before publishing. The "V2 Alerting Preview" navigation label is also a development-phase name and will change.]
--->
+1. Go to **Stack Management → Advanced Settings**.
+2. Under **Global settings**, toggle on **alerting:v2:enabled**.
+
+### Enable on {{serverless-short}} [alerting-enable-serverless]
+
+{{serverless-short}} has no Global Advanced Settings UI. Use Dev Tools to call the global settings API:
+
+```json
+POST kbn:/internal/kibana/global_settings
+{
+  "changes": {
+    "alerting:v2:enabled": true
+  }
+}
+```
+
+:::{note}
+The `/internal/kibana/global_settings` endpoint is an internal API and may change without notice. There is currently no public equivalent.
+:::
+
+When the `alerting:v2:enabled` setting is turned off, rule and dispatcher execution stops, the APIs and UIs are hidden, and existing rules and action policies are paused. Turning it back on resumes execution. Disabling does not delete any data.
 
 ## Where rule events are stored
 
@@ -42,9 +64,6 @@ FROM $`.rule-events`
 | LIMIT 10
 ```
 
-<!--[CONTENT NEEDED: The direct index names `.rule-events` and `.alert-actions` may not be the intended query surface for end users. There is discussion about exposing this data through other methods instead. Confirm the intended access pattern before publishing this section and the [Query alerts in Discover](alerts/query-alerts-and-signals-in-discover.md) page, and update all examples that reference these index names directly.]
--->
-
 After your first rule runs, use the query above in Discover to confirm documents are appearing. If nothing appears after a few seconds, check that the rule is enabled and that your ES|QL query returns results when run independently.
 
 ## Spaces [spaces-for-alerting]
@@ -61,9 +80,9 @@ Saving a rule or action policy automatically creates an API key that is used to 
 When you're ready to go further, these can be done in any order:
 
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
-- **[Author rules](rules/author-rules.md):** Write the {{esql}} query that defines what to detect, choose Detect or Alert mode, and configure grouping and thresholds in [Configure a rule](rules/configure-a-rule.md).
+- **[Create a rule](rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds in [Configure a rule](rules/configure-a-rule.md).
 -->
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
 - **[Set up workflows](workflows-alerting.md):** Configure the automation objects that deliver messages — email, Slack, webhook, and so on. You need at least one workflow before action policies can send anything.
-- **[Create action policies](notifications/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions. Policies use KQL matchers to pick up the right episodes and route them to your workflows.
+- **[Create action policies](action-policies/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions. Policies use KQL matchers to pick up the right episodes and route them to your workflows.
 -->
