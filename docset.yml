@@ -4,6 +4,16 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+cta:
+  azure-mp:
+    button:
+      label: Get started on Azure
+      url: https://portal.azure.com?sourceCampaignName=elasticweb-docs&sourceCampaignId=elasticweb-docs#view/Azure_Marketplace_Elastic/CreateBlade/offerId/elastic.ec-azure-pp
+    benefits:
+      - "Simplified billing and MACC burndown"
+      - "Manage resources from the Azure portal"
+      - "Built-in logs and metrics forwarding"
+
 exclude:
   - 'README.md'
   - 'changelog/**'
