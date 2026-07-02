@@ -1,4 +1,5 @@
 ---
+navigation_title: Add variable controls
 type: how-to
 description: Create ES|QL-powered variable controls for Kibana dashboards to enable dynamic filtering, multi-value selections, and chained controls.
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Add variable controls with ES|QL [add-variable-control]
+# Add variable controls to dashboards [add-variable-control]
 
 Variable controls bind interactive controls to variables in your {{esql}} visualization queries. Unlike the standard [dashboard controls](dashboard-controls.md) that filter using data view fields, variable controls work directly with {{esql}} queries to enable dynamic filtering, grouping, and function selection.
 

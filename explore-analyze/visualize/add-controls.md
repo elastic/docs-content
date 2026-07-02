@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-controls.html
+navigation_title: Add controls
 type: how-to
 description: Add interactive filter controls to your Kibana dashboards to help users explore data with options lists, range sliders, and time sliders.
 applies_to:

@@ -1,4 +1,5 @@
 ---
+navigation_title: Control settings
 type: reference
 description: Reference for all available dashboard control settings in Kibana, including options list, range slider, and shared control settings.
 applies_to:
