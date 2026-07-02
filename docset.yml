@@ -8,7 +8,7 @@ cta:
   azure-mp:
     button:
       label: Get started on Azure
-      url: https://portal.azure.com/#create/elastic.ec-azure-pp?source=elastic-docs
+      url: https://portal.azure.com?sourceCampaignName=elasticweb-docs&sourceCampaignId=elasticweb-docs#view/Azure_Marketplace_Elastic/CreateBlade/offerId/elastic.ec-azure-pp
     benefits:
       - "Simplified billing and MACC burndown"
       - "Manage resources from the Azure portal"
