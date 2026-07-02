@@ -29,6 +29,8 @@ To add Options list, Range slider, and Time slider controls to a dashboard, you 
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
+{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` By default, a control is based on a data view field, as described in the following steps. You can also [populate its values with an {{esql}} query](#populate-control-values-with-esql) instead.
+
 1. Open or create a new dashboard.
 2. Add a control.
 
@@ -63,6 +65,22 @@ A selection in one control narrows the options available in all other controls o
 Controls are applied from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is enabled, the position of a control determines the options available in the next one.
 :::
 ::::
+
+### Populate control values with an {{esql}} query [populate-control-values-with-esql]
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+Instead of basing an Options list or Range slider control on a data view field, you can populate its values with an {{esql}} query. This helps with high-cardinality fields, where fetching every distinct value can slow the dashboard, and it lets you filter or otherwise shape the values the control offers. The query can also reference [variable controls](add-variable-controls.md) with the `?variable_name` syntax to chain filtering.
+
+1. In **Edit** mode, select **Add** > **Controls** > **Control**.
+2. On the **Create control** flyout, select **Write a query**.
+3. Write an {{esql}} query that returns a single column. The returned column determines the field the control is based on and the values it offers. Use a command such as `STATS BY` or `RENAME` to return a single column.
+4. Select **Run query** to preview the values under **Values preview**. If the query returns more than one column, select a column from the list or narrow the query. If it returns no values, edit the query and run it again.
+5. Under **Control type**, select **Options list** or **Range slider**. For a Range slider, the query results set the minimum and maximum values.
+6. Configure the remaining settings, then select **Save**.
+7. Save the dashboard.
 
 ## Add time slider controls [add-time-slider-controls]
 
