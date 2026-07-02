@@ -9,6 +9,7 @@ navigation_title: Azure Native Service
 products:
   - id: cloud-hosted
   - id: cloud-serverless
+cta: azure-mp
 ---
 
 # {{ecloud}} Azure Native Service [ec-azure-marketplace-native]
