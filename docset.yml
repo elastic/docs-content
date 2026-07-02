@@ -7,11 +7,11 @@ features:
 cta:
   azure-mp:
     button:
-      label: Get started on MP
+      label: Get started on Azure
       url: https://portal.azure.com/#create/elastic.ec-azure-pp?source=elastic-docs
     benefits:
       - "Simplified billing and MACC burndown"
-      - "Manage clusters from Azure Portal"
+      - "Manage resources from the Azure portal"
       - "Built-in logs and metrics forwarding"
 
 exclude:
