@@ -47,7 +47,7 @@ If you already manage infrastructure as code, the Terraform provider handles ID 
 
 ### Avoid references with inline {{esql}} panels [dashboards-as-code-portability-inline]
 
-The simplest way to sidestep the ID problem is to not create references at all:
+You can avoid the ID problem altogether by keeping everything the dashboard needs inside its own definition, rather than depending on objects defined elsewhere:
 
 - **Query with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md)**, which references indices by name rather than by data view ID. A panel backed by {{esql}} needs no saved data view. Where a panel still needs a data view, define an [ad-hoc one](../find-and-organize/data-views.md#_create_a_temporary_data_source) in the panel rather than referencing a saved data view.
 - **Define panels inline (by value)** so each visualization lives in the dashboard definition, rather than embedding a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api) (by reference) that must exist in the target environment with a matching ID.
