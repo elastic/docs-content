@@ -382,6 +382,8 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/choose-an-alerting-system.md
+      - file: alerting/kibana-alerting-experimental.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
