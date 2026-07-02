@@ -45,14 +45,14 @@ To keep a dashboard portable, choose one of the following approaches, listed fro
 
 If you already manage infrastructure as code, the Terraform provider handles ID consistency for you: it tracks each resource and maps IDs per environment, so references stay consistent as you promote a dashboard from development to production. Refer to [Automate with Terraform](#dashboards-as-code-terraform).
 
-### Define self-contained panels [dashboards-as-code-portability-inline]
+### Define panels with {{esql}} [dashboards-as-code-portability-inline]
 
-You can avoid the ID problem altogether by defining panels by value, so a panel keeps everything it needs inside the dashboard definition instead of pointing to saved objects that must already exist, with matching IDs, in the target environment. This removes the two references a panel can carry:
+The most portable way to build a panel is to define its visualization with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md) directly in the dashboard. This lets you:
 
-- **Visualization**: define the visualization inline in the dashboard, rather than pointing to a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api).
-- **Data source**: back the panel with [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md), which queries indices by name and needs no data view, or define an [ad-hoc data view](../find-and-organize/data-views.md#_create_a_temporary_data_source) in the panel, rather than pointing to a saved data view.
+- **Keep the visualization inline**, so its definition lives in the dashboard rather than pointing to a standalone [library visualization](create-dashboards-programmatically.md#lens-visualizations-api) that must already exist, with a matching ID, in the target environment.
+- **Skip the data view**, because {{esql}} queries indices by name rather than through a saved data view.
 
-A panel with both defined inline carries no external references, so the dashboard stays fully portable.
+The result carries no external references, so the dashboard stays fully portable. For a panel that can't use {{esql}}, define it by value and back it with an [ad-hoc data view](../find-and-organize/data-views.md#_create_a_temporary_data_source) to keep it just as self-contained.
 
 ### Assign matching IDs to referenced objects [dashboards-as-code-portability-ids]
 
