@@ -29,7 +29,7 @@ The {{agent-builder}} [MCP server](mcp-server.md) lets external MCP hosts connec
 
 External clients authenticate using either:
 
-- **OAuth 2.1** — for interactive, user-consented access. An MCP host such as Claude Desktop opens a browser for the user to authenticate, then acts with that user's permissions. See [OAuth clients](/deploy-manage/app-connections/oauth-clients.md).
+- **OAuth 2.1** — for interactive access where a user authorizes the connection in the browser. An MCP host such as Claude Desktop opens a browser for the user to authenticate, then acts with that user's permissions. See [OAuth clients](/deploy-manage/app-connections/oauth-clients.md).
 - **API keys** — for static, machine-to-machine access. See [{{agent-builder}} MCP server](mcp-server.md).
 
 ## Agent Builder as an MCP client

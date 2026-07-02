@@ -18,6 +18,9 @@ The [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mc
 
 OAuth suits interactive, agentic use cases: instead of configuring a static, long-lived API key, a user connects an MCP host such as Claude Desktop and consents in the browser. The MCP client then acts with that user's permissions, using short-lived tokens that the user, a project administrator, or an organization owner can revoke at any time.
 
+:::{include} /deploy-manage/_snippets/external-access-comparison-table-auth.md
+:::
+
 :::{note}
 During technical preview, OAuth for the MCP server is available on {{serverless-short}} projects only. <!-- TODO: confirm tool scope for tech preview — PRD said "read-only, ES|QL-based tools only", but QA testing (June 23 2026) shows 22 tools including write operations (delete_stream, create_partition, update_stream, cases, etc.). Remove or correct this sentence once confirmed with Jake Landis / Elena Shostak. --> To register a client, you provide a single {{serverless-short}} project, so each client is scoped to one project.
 :::
@@ -73,3 +76,4 @@ A connected client inherits the consenting user's permissions in the project. <!
 - [Revoke an MCP client or connection](revoke-oauth-client.md)
 - [Manage application connections](manage-application-connections.md) at the organization level
 - [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md)
+- [Elastic API keys](/deploy-manage/api-keys.md)

@@ -33,3 +33,21 @@ Depending on the APIs you want to use, the API keys to create are different, and
 | [](api-keys/serverless-project-api-keys.md) | {applies_to}`serverless: ga`| Use [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs. |
 | [](api-keys/elastic-cloud-api-keys.md) | {applies_to}`ess: ga` {applies_to}`serverless: ga` | • Manage your {{ecloud}} organization, {{ech}} deployments, and {{serverless-short}} projects using the [{{ecloud}}]({{cloud-apis}}) and [{{ecloud}} {{serverless-short}}]({{cloud-serverless-apis}}) APIs.<br><br>• {applies_to}`serverless: ga` Use [{{es}} {{serverless-short}}]({{es-serverless-apis}}) and [{{kib}} {{serverless-short}}]({{kib-serverless-apis}}) APIs. Using {{ecloud}} keys for project-level API access allows you to create keys that can interact with multiple projects, and manage API access centrally from the {{ecloud}} console. |
 |[](api-keys/elastic-cloud-enterprise-api-keys.md) | {applies_to}`ece: ga` | Manage your {{ece}} platform and deployments using the [{{ece}}]({{ece-apis}}) API. |
+
+## Alternative auth pathways [alternative-auth-pathways]
+```{applies_to}
+serverless: preview
+```
+
+On {{serverless-short}} projects, [application connections](/deploy-manage/app-connections.md) are an alternative when an external application acts on behalf of individual users.
+
+:::{include} /deploy-manage/_snippets/external-access-app-connections-api-key-scope.md
+:::
+
+:::{include} /deploy-manage/_snippets/external-access-comparison-table-auth.md
+:::
+
+:::{include} /deploy-manage/_snippets/external-access-auth-comparison-details.md
+:::
+
+For unattended MCP access to your project's data without per-user consent, continue using a [serverless project API key](/deploy-manage/api-keys/serverless-project-api-keys.md) with {{agent-builder}} application privileges. For other API key types, refer to the table earlier on this page.

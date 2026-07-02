@@ -19,6 +19,10 @@ products:
 
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
+:::{note}
+This page covers API key authentication for external clients connecting to the {{agent-builder}} MCP server. For OAuth and a broader comparison of authentication options, refer to [When to use application connections](/deploy-manage/app-connections.md#when-to-use-application-connections) and [OAuth clients](/deploy-manage/app-connections/oauth-clients.md).
+:::
+
 ## MCP server endpoint
 
 The MCP server is available at:

@@ -24,6 +24,7 @@ Preventing unauthorized access is only one element of a complete security strate
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
+* Manage [application connections](/deploy-manage/app-connections.md) for OAuth-based applications authorized to act on behalf of users.
 ::::
 
 ## Cloud organization level
