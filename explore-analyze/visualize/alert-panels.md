@@ -12,8 +12,13 @@ To view alerts in a dashboard, add **Alerts** panels that show selected alerts. 
 
 ## Create an alerts panel
 
-1. From your dashboard, select **Add panel**.
-2. In the **Add panel** flyout, select **Alerts**. The configuration flyout appears.
+1. Open the panel picker from your dashboard.
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar.
+    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`stack: ga 9.1` Click **Add panel** in the dashboard toolbar.
+
+2. Select **Alerts**. The configuration flyout appears.
 3. ({{stack}} deployments only) Under **Solution**, select either **Observability** or **Security** to specify the type of alerts you want to display. 
 4. Under **Filter by** select either **Rule tags** or **Rule types**. 
 5. (Optional) To use both types of filters, first define one filter, then use the boolean **+ OR** or **+ AND** options that appear to define the second filter.

@@ -31,14 +31,20 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 
 1. Add a new panel from your dashboard.
 
-    * {applies_to}`serverless:` {applies_to}`stack: ga 9.2+` Select **Add** > **New panel** in the toolbar.
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Add** in the toolbar to open the **Add to dashboard** flyout.
+    * {applies_to}`stack: ga 9.2-9.4` Select **Add** > **New panel** in the toolbar.
     * {applies_to}`stack: ga 9.0-9.1` Click **Add panel** in the dashboard toolbar.
 
    ::::{tip}
    If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
    ::::
 
-2. Choose **ES|QL** under **Visualizations**. An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
+2. Add an {{esql}} panel.
+
+    * {applies_to}`serverless:` {applies_to}`stack: ga 9.5` Select **Visualization (query)**.
+    * {applies_to}`stack: ga 9.0-9.4` Choose **ES|QL** under **Visualizations**.
+
+   An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 
    ::::{tip}
    Check the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) to get familiar with the syntax and [optimize your query](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
