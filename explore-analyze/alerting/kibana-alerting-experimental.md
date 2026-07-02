@@ -53,10 +53,10 @@ Refer to [Notifications and actions](kibana-alerting-experimental/notifications-
 
 ### Workflows
 
-A workflow is what actually sends the message or runs the automation, for example, posting to Slack or sending an email. Action policies hand off to workflows for delivery. Without a workflow attached, no notification is sent.
+A workflow is what actually sends the message or runs the automation, for example, posting to Slack, sending an email, calling a webhook. The {{alerting-v2-system}} invokes workflows either through action policies (on a schedule, with conditions) or in direct response to a state change on an alert episode.
 
 <!-- TODO: When PR #6525 (workflows/notifications) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
-Refer to [Workflows for the {{alerting-v2-system}}](kibana-alerting-experimental/workflows-alerting.md) to learn more.
+Refer to [Connect workflows](kibana-alerting-experimental/workflows-alerting.md) to learn more.
 -->
 
 ## How the pieces fit together [how-pieces-fit-together]
