@@ -12,15 +12,15 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect an MCP host to an MCP client [mcp-client-connect]
+# Connect an MCP host to an MCP client [connect-mcp-host]
 
-After [creating an MCP client](mcp-client-create.md), configure your MCP host with the client ID and MCP server URL, then complete the OAuth consent flow to establish the connection.
+After [creating an MCP client](create-oauth-client.md), configure your MCP host with the client ID and MCP server URL, then complete the OAuth consent flow to establish the connection.
 
 This page covers two common MCP hosts: the **Claude Code CLI** (which has native OAuth support) and **Claude Desktop** (which uses the `mcp-remote` adapter). Other hosts that support OAuth 2.1 with PKCE follow the same general pattern — consult your host's documentation for the specific configuration format.
 
-## Before you begin [mcp-client-connect-before-you-begin]
+## Before you begin [connect-mcp-host-before-you-begin]
 
-- You have a client ID and MCP server URL from [creating an MCP client](mcp-client-create.md).
+- You have a client ID and MCP server URL from [creating an MCP client](create-oauth-client.md).
 - You have access to the {{serverless-short}} project that the MCP client is scoped to.
 
 ## Step 1: Configure your MCP host
@@ -153,10 +153,10 @@ Consult your MCP host's documentation for how to clear cached OAuth credentials 
 
 ## Next steps
 
-- [Revoke an MCP client or connection](mcp-client-revoke.md) when access is no longer needed.
+- [Revoke an MCP client or connection](revoke-oauth-client.md) when access is no longer needed.
 
 ## Related pages
 
-- [Authenticate MCP clients with OAuth](mcp-client-oauth.md)
-- [Create an MCP client](mcp-client-create.md)
-- [Manage application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md)
+- [Authenticate MCP clients with OAuth](oauth-clients.md)
+- [Create an MCP client](create-oauth-client.md)
+- [Manage application connections](manage-application-connections.md)

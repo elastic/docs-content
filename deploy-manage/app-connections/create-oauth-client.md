@@ -12,16 +12,16 @@ products:
   - id: cloud-serverless
 ---
 
-# Create an MCP client in Agent Builder [mcp-client-create]
+# Create an MCP client in Agent Builder [create-oauth-client]
 
 Register a new MCP client in {{agent-builder}} to generate the credentials that an MCP host (such as **Claude Desktop**) needs to connect over OAuth 2.1.
 
 Each MCP client is scoped to a single {{serverless-short}} project. Creating a client gives you a client ID, the MCP server URL for that project, and — for confidential clients — a client secret that is shown only once.
 
-## Before you begin [mcp-client-create-before-you-begin]
+## Before you begin [create-oauth-client-before-you-begin]
 
 - You need access to a {{serverless-short}} project with {{agent-builder}} enabled.
-- [Understand OAuth for MCP clients](mcp-client-oauth.md) before choosing client type and redirect URIs.
+- [Understand OAuth for MCP clients](oauth-clients.md) before choosing client type and redirect URIs.
 
 ## Create the client
 
@@ -75,7 +75,7 @@ Copy the new Client ID and the Server URL into the application config file, and 
 :::::
 
 :::{note}
-MCP clients can also be created through the {{kib}} API, authenticated with an {{ecloud}} API key. ES API keys are not accepted and are rejected early with a 400 error. Clients created this way are not visible in the Agent Builder client list — they appear only in the organization-level [Application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md) view in the {{ecloud}} Console.
+MCP clients can also be created through the {{kib}} API, authenticated with an {{ecloud}} API key. ES API keys are not accepted and are rejected early with a 400 error. Clients created this way are not visible in the Agent Builder client list — they appear only in the organization-level [Application connections](manage-application-connections.md) view in the {{ecloud}} Console.
 :::
 
 <!-- review: Liam — confirm whether this note belongs in Before you begin vs. here. Source: Jake Landis / Dennis Tismenko thread, 2026-06-01. -->
@@ -84,10 +84,10 @@ MCP clients can also be created through the {{kib}} API, authenticated with an {
 
 Now that you have a client ID and MCP server URL, configure your MCP host to use them:
 
-- [Connect an MCP host to an MCP client](mcp-client-connect.md)
+- [Connect an MCP host to an MCP client](connect-mcp-host.md)
 
 ## Related pages
 
-- [Authenticate MCP clients with OAuth](mcp-client-oauth.md)
-- [Revoke an MCP client or connection](mcp-client-revoke.md)
-- [Manage application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md)
+- [Authenticate MCP clients with OAuth](oauth-clients.md)
+- [Revoke an MCP client or connection](revoke-oauth-client.md)
+- [Manage application connections](manage-application-connections.md)

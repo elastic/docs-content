@@ -559,7 +559,6 @@ toc:
             children:
               - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-okta.md
               - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-microsoft-entra-id.md
-          - file: users-roles/cloud-organization/manage-mcp-client-connections.md
       - file: users-roles/cloud-enterprise-orchestrator.md
         children:
           - file: users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md
@@ -649,6 +648,14 @@ toc:
       - file: api-keys/serverless-project-api-keys.md
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
+  - file: app-connections.md
+    children:
+      - file: app-connections/oauth-clients.md
+        children:
+          - file: app-connections/create-oauth-client.md
+          - file: app-connections/connect-mcp-host.md
+          - file: app-connections/revoke-oauth-client.md
+      - file: app-connections/manage-application-connections.md
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:

@@ -12,9 +12,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Authenticate MCP clients with OAuth [mcp-client-oauth]
+# Authenticate MCP clients with OAuth [oauth-clients]
 
-The [{{agent-builder}} MCP server](mcp-server.md) supports OAuth 2.1 as a way for MCP clients to authenticate on behalf of a user, alongside [API keys](mcp-server.md#api-key-application-privileges).
+The [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) supports OAuth 2.1 as a way for MCP clients to authenticate on behalf of a user, alongside [API keys](/explore-analyze/ai-features/agent-builder/mcp-server.md#api-key-application-privileges).
 
 OAuth suits interactive, agentic use cases: instead of configuring a static, long-lived API key, a user connects an MCP host such as Claude Desktop and consents in the browser. The MCP client then acts with that user's permissions, using short-lived tokens that the user, a project administrator, or an organization owner can revoke at any time.
 
@@ -34,7 +34,7 @@ Both methods let an MCP client reach the {{agent-builder}} MCP server. Choose ba
 | Credential lifetime | Short-lived tokens, refreshed automatically | Long-lived until it expires or is revoked |
 | Setup | Register an MCP client, then consent in the browser | Generate a key and add it to the client configuration |
 
-For API key configuration, refer to [](mcp-server.md). The rest of this page covers the OAuth path.
+For API key configuration, refer to [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md). The rest of this page covers the OAuth path.
 
 ## Key concepts
 
@@ -43,15 +43,15 @@ Understanding these terms makes the setup and management pages easier to follow.
 - **MCP host**: The application a user runs that contains MCP clients, such as Claude Desktop or Cursor. Users connect hosts; hosts use clients.
 <!-- TODO: confirm Cursor is supported in tech preview — cp-iam-team#2974 still open as of 2026-06-23. -->
 - **MCP client**: The registered application that holds the credentials (a client ID, and a client secret for confidential clients). You create one in {{kib}} before connecting a host.
-- **MCP server**: The interface that exposes {{agent-builder}} tools to MCP hosts. The MCP server is the only resource the OAuth tokens grant access to. This is separate from [MCP tools](tools/mcp-tools.md), which let your agents call external MCP servers — the reverse direction.
+- **MCP server**: The interface that exposes {{agent-builder}} tools to MCP hosts. The MCP server is the only resource the OAuth tokens grant access to. This is separate from [MCP tools](/explore-analyze/ai-features/agent-builder/tools/mcp-tools.md), which let your agents call external MCP servers — the reverse direction.
 - **App connection**: The record created when a user consents, linking that user, the MCP client, and the {{serverless-short}} project. A connection is the unit of access and revocation. If two people use the same client ID, each consent creates a separate connection.
 
 ## How it works
 
-1. A user [creates an MCP client](mcp-client-create.md) in {{kib}}, scoped to one {{serverless-short}} project, and copies the generated configuration into their MCP host.
+1. A user [creates an MCP client](create-oauth-client.md) in {{kib}}, scoped to one {{serverless-short}} project, and copies the generated configuration into their MCP host.
 2. The first time the host needs access, it opens a browser for the user to authenticate and consent. Authentication is always required for consent, even if the user already has an active {{ecloud}} session.
 3. On consent, an app connection is created and the client receives tokens. The MCP client presents these to the MCP server, which exchanges them internally to access {{es}} with the user's current permissions.
-4. The user, a project administrator, or an organization owner can [revoke](mcp-client-revoke.md) the connection or the whole client at any time.
+4. The user, a project administrator, or an organization owner can [revoke](revoke-oauth-client.md) the connection or the whole client at any time.
 
 OAuth tokens are accepted only by the {{agent-builder}} MCP server. They don't grant direct access to {{kib}} or {{es}} APIs.
 
@@ -65,11 +65,11 @@ A connected client inherits the consenting user's permissions in the project. <!
 
 ## Next steps
 
-- [Create an MCP client](mcp-client-create.md)
-- [Connect an MCP host to an MCP client](mcp-client-connect.md)
+- [Create an MCP client](create-oauth-client.md)
+- [Connect an MCP host to an MCP client](connect-mcp-host.md)
 
 ## Related pages
 
-- [Revoke an MCP client or connection](mcp-client-revoke.md)
-- [Manage application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md) at the organization level
-- [{{agent-builder}} MCP server](mcp-server.md)
+- [Revoke an MCP client or connection](revoke-oauth-client.md)
+- [Manage application connections](manage-application-connections.md) at the organization level
+- [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md)

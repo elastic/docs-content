@@ -12,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Revoke an MCP client or connection [mcp-client-revoke]
+# Revoke an MCP client or connection [revoke-oauth-client]
 
 Revoking OAuth access in {{agent-builder}} immediately cuts off an MCP host's ability to use the Agent Builder tools. You can revoke at two granularities: a single user's connection, or the entire MCP client and all its connections.
 
@@ -22,7 +22,7 @@ Revoking OAuth access in {{agent-builder}} immediately cuts off an MCP host's ab
 There is no OAuth `/revoke` endpoint. All revocation is through the {{kib}} and {{ecloud}} interfaces.
 
 :::{tip}
-Organization owners and project administrators can also revoke connections from the Cloud Console. See [Manage application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md).
+Organization owners and project administrators can also revoke connections from the Cloud Console. See [Manage application connections](manage-application-connections.md).
 :::
 
 ## Revoke a connection
@@ -60,11 +60,11 @@ Removing a user from your identity provider does **not** automatically revoke th
 
 ## Next steps
 
-- If you revoked a client and want to restore access, [create a new MCP client](mcp-client-create.md) and distribute the new credentials to users.
+- If you revoked a client and want to restore access, [create a new MCP client](create-oauth-client.md) and distribute the new credentials to users.
 
 ## Related pages
 
-- [Authenticate MCP clients with OAuth](mcp-client-oauth.md)
-- [Create an MCP client](mcp-client-create.md)
-- [Connect an MCP host to an MCP client](mcp-client-connect.md)
-- [Manage application connections](/deploy-manage/users-roles/cloud-organization/manage-mcp-client-connections.md) (org-level, Cloud Console)
+- [Authenticate MCP clients with OAuth](oauth-clients.md)
+- [Create an MCP client](create-oauth-client.md)
+- [Connect an MCP host to an MCP client](connect-mcp-host.md)
+- [Manage application connections](manage-application-connections.md) (org-level, Cloud Console)
