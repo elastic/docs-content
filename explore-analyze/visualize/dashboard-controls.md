@@ -12,7 +12,7 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore. Controls apply filters to relevant panels so viewers can focus on specific data segments without writing filtering queries.
 
-Controls can be **pinned** to the dashboard header, where they apply to all panels, or **unpinned** and placed anywhere in the dashboard body. When an unpinned control sits inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to the panels within that section.
+Controls can be **pinned** to the dashboard header, where they apply to all panels, or **unpinned** and placed anywhere in the dashboard body. When an unpinned control sits inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels within that section.
 
 {applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
 

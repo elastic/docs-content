@@ -6,7 +6,7 @@
 
     * The type of the control:
       * For controls with **Static values**, enter available values manually or select them from the dropdown list.
-      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options. Use this option to dynamically retrieve control values or to set up [chained controls](/explore-analyze/dashboards/add-variable-controls.md#chain-variable-controls).
+      * For controls with **Values from a query**, write an {{esql}} query to populate the list of options. Use this option to dynamically retrieve control values or to set up [chained controls](/explore-analyze/visualize/add-variable-controls.md#chain-variable-controls).
 
         :::{tip}
         To restrict the options to values that exist within the selected time range, add `WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart` to the control's query. If your indices don't have a `@timestamp` field, use [custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters) instead.

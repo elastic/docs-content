@@ -79,7 +79,7 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 **Chaining**
 
-Controls are always chained: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
+Controls are always chained: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
 
 **Per-control settings**
 

@@ -30,16 +30,8 @@ To add interactive Options list and Range slider controls, create the controls, 
 2. Add a control.
 
     ::::{applies-switch}
-    :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-    Choose where you want the control to live:
-
-    - **Pinned to the dashboard header**: In **Edit** mode, select **Add** > **Controls** > **Control**. The control applies to the whole dashboard.
-    - **As a free panel in the dashboard body**: Select **Add new panel** > **Controls**, then place the control on the dashboard. If you place it inside a [collapsible section](arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section.
-
-    To move a control between the header and the dashboard body later, open the control's panel menu and select **Pin to Dashboard** or **Unpin**.
-    :::
-    :::{applies-item} {"stack": "ga 9.2-9.3"}
-    In **Edit** mode, select **Add** > **Controls** > **Control** in the toolbar.
+    :::{applies-item} {"serverless": "ga", "stack": "ga 9.2"}
+    In **Edit** mode, select **Add** > **Controls** > **Control**.
     :::
     :::{applies-item} {"stack": "ga 9.0-9.1"}
     In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
@@ -53,11 +45,16 @@ To add interactive Options list and Range slider controls, create the controls, 
 7. Select **Save**. The control can now be used.
 8. Save the dashboard.
 
+:::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.4"}
+A new control is pinned to the dashboard header by default, where it applies to all panels. To place the control in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
+:::
+
 When you add several controls, their selections affect each other by default. How they interact depends on your version:
 
 ::::{applies-switch}
 :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-A selection in one control narrows the options available in all other controls on the dashboard, regardless of their position in the grid, including pinned controls. The exception is controls inside a [collapsible section](arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of this default chaining, turn off its **Use global filters** setting when you create or edit it.
+A selection in one control narrows the options available in all other controls on the dashboard, regardless of their position in the grid, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of this default chaining, turn off its **Use global filters** setting when you create or edit it.
 :::
 :::{applies-item} {"stack": "ga 9.0-9.3"}
 Controls are applied from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is enabled, the position of a control determines the options available in the next one.
@@ -77,8 +74,11 @@ The time slider must be pinned to the dashboard header. It is not available as a
 2. Add a time slider control.
 
     ::::{applies-switch}
-    :::{applies-item} {"serverless": "ga", "stack": "ga 9.2"}
-    In **Edit** mode, select **Add** > **Controls** > **Time slider control** in the application menu.
+    :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
+    In **Edit** mode, select **Add** > **Controls** > **Time slider**.
+    :::
+    :::{applies-item} {"stack": "ga 9.2-9.3"}
+    In **Edit** mode, select **Add** > **Controls** > **Time slider control**.
     :::
     :::{applies-item} {"stack": "ga 9.0-9.1"}
     In **Edit** mode, select **Controls** > **Add time slider control**.
