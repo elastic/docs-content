@@ -119,9 +119,11 @@ A security team wants to track calls to a rarely-used admin API endpoint, but in
 
 After running the Signal mode rule for a few weeks, the team has enough data to understand normal call patterns and identify what volume looks anomalous. With that baseline established, the team is ready to create an Alert mode rule that opens an alert episode and notifies the on-call team when the call rate crosses a meaningful threshold.
 
+<!-- TODO: Update diagram to reflect that signal mode writes rule events to .rule-events (not "signals") and that these events are immediately queryable in Discover, dashboards, and ES|QL.
 :::{image} ../images/rule-detect-mode-diagram.png
 :alt: Diagram of Signal mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a signal to .rule-events. The signal is available for querying in Discover, dashboards, and ES|QL.
 :::
+-->
 ::::
 
 ## Next steps
