@@ -36,3 +36,16 @@ Elastic has three alerting systems. You only need one. Pick the one that fits ho
 | **Noise reduction** | Snooze per rule, maintenance windows | Per-episode acknowledge or deactivate, per-series snooze, maintenance windows, match condition routing in action policies | Action conditions and throttling |
 | **Available on {{serverless-full}}** | Yes | Yes, {applies_to}`serverless: experimental` | No |
 | **Available on {{stack}}** | Yes | Yes, {applies_to}`stack: experimental 9.5+` | Yes |
+
+<!--
+TODO: Once PRs #6523, #6525, and #6527 are merged, add cross-links to the experimental system cells in the comparison table above. The cells currently describe the system but don't link anywhere. Suggested targets:
+
+| Row                        | Link target                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| Alert data (experimental)  | kibana-alerting-experimental/alerts/query-alerts-and-signals-in-discover.md (PR #6527) |
+| Notifications (experimental) | kibana-alerting-experimental/notifications-actions.md or action-policies/about-action-policies.md (PR #6525) |
+| Noise reduction (experimental) | kibana-alerting-experimental/action-policies/reduce-notification-noise.md (PR #6525) |
+| Rule definition (experimental) | kibana-alerting-experimental/rules/configure-rule-query.md (PR #6523) |
+
+Also add links to the experimental system rows in the "Select by use case" table once the relevant pages are available.
+-->
