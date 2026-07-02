@@ -13,7 +13,7 @@ products:
 
 # Large language model performance matrix for {{elastic-sec}} [llm-performance-matrix]
 
-This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. These ratings apply equally whether you're using [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md). To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
+This page summarizes internal test results comparing large language models (LLMs) across {{elastic-sec}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) and AI-powered feature use cases. The matrix tests each model across [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md), Attack Discovery, and Automatic Migration. To learn more about these use cases, refer to [AI-powered features](/explore-analyze/ai-features.md#security-features).
 
 ::::{important}
 Higher scores indicate better performance, on a scale of 1 to 10. A score of 10 on a capability means the model met or exceeded all task-specific benchmarks for that capability.
