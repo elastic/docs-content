@@ -67,7 +67,9 @@ Regardless of the approach, to deploy a dashboard to a different space within th
 
 If you already manage your infrastructure with Terraform, the [Elastic Stack Terraform provider](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_dashboard) includes an `elasticstack_kibana_dashboard` resource that manages dashboards through the Dashboards API. You define the dashboard in the provider's own configuration schema, then apply it like any other resource, so dashboard changes flow through `terraform plan` and `terraform apply` alongside the rest of your stack.
 
-Terraform is the IaC option that Elastic maintains and documents. Because `elasticstack_kibana_dashboard` is a standard Terraform provider resource, other IaC tools that support Terraform providers can manage it too, including from languages other than HCL.
+:::{tip}
+Because `elasticstack_kibana_dashboard` is a standard Terraform provider resource, other IaC tools that support Terraform providers can manage it too, including from languages other than HCL.
+:::
 
 The provider documentation includes step-by-step guides with complete, runnable examples:
 
