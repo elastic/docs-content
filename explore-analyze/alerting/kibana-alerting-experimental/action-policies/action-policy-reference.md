@@ -16,17 +16,17 @@ Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page is 
 
 Use these fields in the **Match conditions** expression to filter which alert episodes a policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
 
-| Field | Type | Description | Accepted values | Example |
-|---|---|---|---|---|
-| `episode_id` | string | Unique identifier of the alert episode. | Any string | `episode_id: "ep-001"` |
-| `episode_status` | string | Current lifecycle status of the alert episode. | `inactive`, `pending`, `active`, `recovering` | `episode_status: "active"` |
-| `severity` | string | Current severity of the alert episode. Populated when the rule's ES\|QL query includes a `severity` column whose value matches a supported level (case-insensitive). Unrecognized values are silently ignored and the field is absent. Not set during recovery. Use to route high-severity episodes to dedicated workflows. | `info`, `low`, `medium`, `high`, `critical` | `severity: "critical" OR severity: "high"` |
-| `group_hash` | string | Stable hash identifying the alert series the alert episode belongs to. | Any string | `group_hash: "abc123"` |
-| `last_event_timestamp` | string | ISO 8601 timestamp of the most recent event recorded for the alert episode. | ISO 8601 timestamp | `last_event_timestamp > "2026-01-01"` |
-| `rule.id` | string | Unique identifier of the rule that generated the alert episode. | Any string | `rule.id: "rule-001"` |
-| `rule.name` | string | Display name of the rule. | Any string | `rule.name: "High CPU"` |
-| `rule.tags` | string[] | Tags attached to the rule. Use to match alert episodes from rules with a specific tag. | Any string | `rule.tags: "payment-service"` |
-| `data.*` | object | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard episode fields above. | Depends on rule type | `data.host.name: "web-01"` |
+| Field | Description | Example |
+|---|---|---|
+| `episode_id` | Unique identifier of the alert episode. | `episode_id: "ep-001"` <br> Match a specific episode by ID. |
+| `episode_status` | Current lifecycle status of the alert episode. One of `inactive`, `pending`, `active`, or `recovering`. | `episode_status: "active"` <br> Match only active episodes. |
+| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a matching `severity` column (case-insensitive). Not set during recovery. Unrecognized values are ignored. | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
+| `group_hash` | Stable hash identifying the alert series the episode belongs to. | `group_hash: "abc123"` <br> Match all episodes in a specific alert series. |
+| `last_event_timestamp` | ISO 8601 timestamp of the most recent event recorded for the episode. | `last_event_timestamp > "2026-01-01"` <br> Match episodes with activity after a specific date. |
+| `rule.id` | Unique identifier of the rule that generated the episode. | `rule.id: "rule-001"` <br> Match episodes from one specific rule. |
+| `rule.name` | Display name of the rule. | `rule.name: "High CPU"` <br> Match episodes from rules with this display name. |
+| `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match episodes from all rules with this tag. |
+| `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match episodes from a specific host in a host-based rule. |
 
 <!--[CONTENT NEEDED: 
 When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
@@ -81,16 +81,21 @@ Available frequency options when you set **Notify per** to **Digest**.
 | At most once every… (default) | Caps digest delivery to at most one bundled summary within the chosen interval, regardless of how often the rule runs. | A rule running every 5 minutes with a 1h digest interval sends one bundled summary per hour containing all matching alert episodes from that period. |
 | Every evaluation | Fires on every rule run, bundling all matching alert episodes into one message. Can be noisy on frequent rule schedules. | A rule running every 30 minutes with 20 matching alert episodes produces one summary every 30 minutes containing all 20. |
 
-## Dispatch outcomes
+## Dispatch outcomes [dispatch-outcomes]
 
-The dispatcher records each run with one of the following outcomes. To investigate delivery issues, open Discover, query the `.alert-actions` index, and filter by the `action_type` field.
+After each dispatcher run, {{kib}} writes one event log entry per policy to the `.kibana-event-log-*` index. The dispatcher records three outcomes:
 
 | Outcome | What happened |
 |---|---|
 | `dispatched` | The dispatcher invoked a workflow for the alert episode. |
 | `throttled` | The alert episode matched a policy but was rate-limited by the frequency setting. No workflow ran. This is expected behavior, not an error. |
-| `suppressed` | Dispatch was blocked. The alert episode was acknowledged, snoozed, or deactivated, or the space is currently in a [maintenance window](../../alerts/maintenance-windows.md). |
 | `unmatched` | No action policy matched the alert episode. No workflow ran. |
+
+Episodes that were acknowledged, snoozed, marked inactive, or covered by a maintenance window are suppressed before the dispatcher runs and produce no event log entry.
+
+`unmatched` appears in the event log but isn't available as an outcome filter in the **Execution history** UI. To find `unmatched` records, open Discover, query `.kibana-event-log-*`, add a filter for `event.provider: "alerting_v2"`, and filter `event.action: "unmatched"`.
+
+For more information about the execution history UI, refer to [Manage action policies](manage-action-policies.md#execution-history).
 
 ## Related pages
 

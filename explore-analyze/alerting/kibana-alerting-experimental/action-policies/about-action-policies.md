@@ -22,7 +22,7 @@ When you do need routing that is specific to one rule, create a per-rule policy 
 
 The three gates are suppression, match conditions, and frequency:
 
-* **Suppression** - Suppression checks whether the alert episode should be silenced. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](reduce-notification-noise.md).
+* **Suppression** - Suppression determines whether to silence the alert episode. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](reduce-notification-noise.md).
 * **Match conditions** - Match conditions filter which alert episodes the policy applies to. You define them using [KQL](../../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes within the policy's scope.
 * **Frequency** - Frequency controls how often the policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
 
@@ -62,16 +62,16 @@ Per-rule policies are bound to a specific rule at creation. They apply only to a
 
 For each enabled policy that is not snoozed, the dispatcher works through the following steps:
 
-1. **Gating:** Is the alert episode acknowledged, snoozed, or deactivated? If so, skip. Refer to [Reduce notification noise](reduce-notification-noise.md) to learn more.
+1. **Gating:** Is the alert episode acknowledged, snoozed, or marked inactive? If so, skip. Refer to [Reduce notification noise](reduce-notification-noise.md) to learn more.
 2. **Matcher:** Does the alert episode match the policy's KQL? If not, skip this policy.
-3. **Grouping:** How should matching alert episodes batch into notification groups?
+3. **Grouping:** The dispatcher determines how matching alert episodes batch into notification groups.
 4. **Frequency:** Has a workflow already been invoked for this notification group recently? If so, wait.
 5. **Destinations:** Invoke the configured workflows.
 
 Workflow invocations may not happen immediately after a rule evaluates.
 
 :::{tip}
-Severity changes can cause a policy to match an episode for the first time, which fires a notification even if the episode is not new. For example, if a policy is scoped to `severity: "critical"` and an episode escalates from `low` to `critical`, the policy fires because it has no prior notification record for that episode. However, a severity change alone does not re-trigger a policy that already matched the episode. Only a status change or the expiry of a time-based throttle can do that. For details and examples, refer to [Severity escalation and de-escalation](common-action-policy-scenarios.md#severity-escalation).
+Severity changes can cause a policy to match an episode for the first time, which fires a notification even if the episode is not new. For example, if a policy is scoped to `severity: "critical"` and an episode escalates from `low` to `critical`, the policy fires because it has no prior notification record for that episode. However, a severity change alone does not re-trigger a policy that already matched the episode. Only a status change or the expiry of a time-based throttle can do that. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Next steps
