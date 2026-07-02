@@ -286,9 +286,10 @@ toc:
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
-      - file: dashboards/sharing.md
+        children:
+          - file: dashboards/sharing.md
+          - file: dashboards/import-dashboards.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
