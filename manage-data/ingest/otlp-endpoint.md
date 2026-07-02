@@ -225,6 +225,4 @@ Note that cumulative temporality for histograms is only supported if `xpack.otel
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
 * **Profiles:** Profiles are not supported.
   To ingest profiles, use a distribution of the OpenTelemetry Collector that includes the [{{es}} exporter](opentelemetry://reference/edot-collector/components/elasticsearchexporter.md), such as the [{{edot}} (EDOT) Collector](opentelemetry://reference/edot-collector/index.md).
-* **Histogram temporality:** Histograms are only supported in delta temporality.
-  Set the temporality preference to delta in your SDKs, or use the [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) so cumulative histograms aren't dropped.
-* **Exemplars:** Exemplars are not supported yet.
+  * **Exemplars:** Exemplars are not supported yet.
