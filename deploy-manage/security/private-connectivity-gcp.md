@@ -31,6 +31,10 @@ To learn how private connection policies impact your deployment, refer to [](/de
 {{ech}} also supports [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
 
+## Requirements
+
+To create, edit, or delete a private connection policy, you need specific organization-level roles. Refer to [Required permissions](/deploy-manage/security/private-connectivity.md#required-permissions) for details.
+
 ## Considerations
 
 * Private connectivity with Private Service Connect is supported only in Google Cloud regions.

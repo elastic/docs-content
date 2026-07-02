@@ -32,16 +32,13 @@ To learn how private connection policies impact your deployment or project, refe
 :::
 
 ## Requirements
-```{applies_to}
-serverless:
-```
 
-The following requirements apply to the project where you want to apply a private connection policy:
+To create, edit, or delete a private connection policy, you need specific organization-level roles. Refer to [Required permissions](/deploy-manage/security/private-connectivity.md#required-permissions) for details.
+
+The following requirements also apply to {{serverless-short}} Observability and Security projects where you want to apply a private connection policy:
 
 :::{include} _snippets/network-sec-tier-reqs.md
 :::
-
-There are no specific requirements for {{es-serverless}} projects or {{ech}} deployments.
 
 ## Considerations
 
