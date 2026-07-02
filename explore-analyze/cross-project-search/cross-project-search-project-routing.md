@@ -30,7 +30,7 @@ GET logs/_search
 
 Project routing expressions use Lucene query syntax, so you're not limited to a single tag or an exact match. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. In an expression, the colon (`:`) separates a tag from its value.
 
-You can combine tags with the `AND` and `OR` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. The syntax is the same for the `_search` API and {{esql}}.
+You can combine tags with the `AND`, `OR`, and `NOT` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. Tag matching is case-insensitive. The syntax is the same for the `_search` API and {{esql}}.
 
 For example, the following request routes the search to projects on Amazon Web Services (AWS) in a US region, or to any project on Google Cloud:
 
