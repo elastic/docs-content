@@ -15,6 +15,7 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
+                  - file: deploy/elastic-cloud/marketplace-trial-upgrade.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
@@ -799,7 +800,7 @@ toc:
   - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
-      - hidden: cloud-organization/manage-multiple-organizations.md
+      - file: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md
