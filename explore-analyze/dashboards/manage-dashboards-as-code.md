@@ -11,9 +11,14 @@ type: overview
 
 # Manage dashboards as code [manage-dashboards-as-code]
 
-Treat dashboards as version-controlled artifacts that live in Git alongside the rest of your infrastructure as code (IaC). Elastic offers a [Dashboards API](create-dashboards-programmatically.md) that produces a clean, diffable JSON definition you can create and apply from any tool or language. The [Elastic Stack Terraform provider](#dashboards-as-code-terraform) builds on that API with a dashboard resource, so you can also manage dashboards with Terraform alongside the rest of your stack. With either approach, you review dashboard changes in pull requests and promote them across environments through automated pipelines, the same way you manage data views, alerting rules, or any other resource.
+Store your dashboards as code, so you can review changes in pull requests, deploy them across spaces, clusters, and environments, and roll back by reverting a commit, instead of editing them by hand in each {{kib}} instance.
 
-This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system.
+Elastic gives you two ways to define a dashboard as code:
+
+- The [Dashboards API](create-dashboards-programmatically.md) produces a clean, diffable JSON definition that you can create and apply from any tool or language.
+- The [Elastic Stack Terraform provider](#dashboards-as-code-terraform) builds on that API with a dashboard resource, so you can manage dashboards with Terraform alongside the rest of your infrastructure as code (IaC).
+
+This workflow suits teams that want repeatable, auditable dashboard changes, and assumes you are comfortable with Git and your CI/CD system.
 
 ## Workflow [dashboards-as-code-workflow]
 
