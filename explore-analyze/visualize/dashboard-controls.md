@@ -12,16 +12,6 @@ products:
 
 **Controls** are interactive panels that you add to your dashboards to help viewers filter and display only the data they want to explore. Controls apply filters to relevant panels so viewers can focus on specific data segments without writing filtering queries.
 
-A control can be placed in one of two ways:
-
-* **Pinned** to the dashboard header, where it stays visible and applies across the whole dashboard.
-* **Unpinned** and placed in the dashboard body like any other panel. You can move, resize, and arrange it, or place it inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to that section.
-
-:::{note}
-:applies_to: {"stack": "ga 9.0-9.3"}
-In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
-:::
-
 ## Control types [control-types]
 
 You can add three kinds of controls:
@@ -44,6 +34,20 @@ You can add three kinds of controls:
 
   ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
+## Pinned and unpinned controls [pinned-unpinned-controls]
+
+Where you place a control determines how it behaves:
+
+* **Pinned** controls sit in the dashboard header, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
+* **Unpinned** controls sit in the dashboard body like any other panel. You can move, resize, and arrange them, and place one inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to just that section.
+
+You can pin or unpin a control at any time from its panel menu. For the steps, refer to [Add controls to dashboards](add-controls.md#remove-controls).
+
+:::{note}
+:applies_to: {"stack": "ga 9.0-9.3"}
+In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
+:::
+
 ## How controls apply to panels [controls-scope]
 
 A control doesn't necessarily affect every panel on the dashboard. What it affects depends on its type:
@@ -51,8 +55,6 @@ A control doesn't necessarily affect every panel on the dashboard. What it affec
 * **Options list** and **Range slider** controls filter the panels that use the control's [data view](../find-and-organize/data-views.md) field. Panels built on data that doesn't include that field aren't affected.
 * The **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
 * **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
-
-A control's placement further narrows its scope: a control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) applies only to the panels in that section, while a pinned or unpinned control outside any section applies across the dashboard.
 
 ## Next steps
 
