@@ -155,3 +155,8 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 9. [Start {{metricbeat}}](beats://reference/metricbeat/metricbeat-starting.md).
 10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 
+## Next steps
+
+:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
+:::
+

@@ -44,6 +44,11 @@ When you create a variable control from an {{esql}} panel, for example by select
 
 To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
 
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+In **Edit** mode, you can select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time, and you can select the label again to stop highlighting them. A variable control that no visualization uses displays a warning.
+:::
+
 :::{include} ../_snippets/variable-control-examples.md
 :::
 

@@ -43,7 +43,7 @@ Before creating a dashboard, ensure you have:
 
     Panels added from the library stay linked to it unless you explicitly unlink them. Edits you make are reflected on every dashboard that uses them. Panels created directly on the dashboard are local to it and are permanently lost if you remove them without saving to the library first.
 
-    {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can add up to 100 panels to a dashboard. Refer to [Panel limits](arrange-panels.md#dashboard-panel-limits) for the full breakdown.
+    {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` You can add up to 1,000 panels to a dashboard. Refer to [Panel limits](arrange-panels.md#dashboard-panel-limits) for the full breakdown.
 
 4. Organize your dashboard by [organizing the various panels](arrange-panels.md).
 5. Define the main settings of your dashboard from the **Settings** menu in the application menu.

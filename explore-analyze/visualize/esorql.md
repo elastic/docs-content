@@ -41,7 +41,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 2. Choose **ES|QL** under **Visualizations**. An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 
    ::::{tip}
-   Check the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) to get familiar with the syntax and optimize your query.
+   Check the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) to get familiar with the syntax and [optimize your query](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
    ::::
 
 3. When editing your query or its configuration, run the query to update the preview of the visualization.
@@ -129,6 +129,18 @@ serverless: ga
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
 Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+
+## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
+```{applies_to}
+stack: ga 9.5
+serverless: ga
+```
+
+By default, an {{esql}} visualization applies the filters and the KQL or Lucene query set at the dashboard level. To force a layer to run its query without these filters:
+1. Select the {icon}`gear` **Settings** icon on the layer header.
+2. Turn off **Use global filters**.
+
+This option covers the dashboard's filter pills and the query from the search bar. The dashboard time range is a separate control that always applies, whether or not the option is turned on.
 
 ## Create an alert from your {{esql}} visualization
 ```{applies_to}

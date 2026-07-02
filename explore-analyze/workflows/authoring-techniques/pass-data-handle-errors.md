@@ -17,6 +17,8 @@ products:
 
 A key feature of workflows is the ability to pass data between steps and handle failures gracefully. This page explains the mechanisms for controlling data flow and building resilient, fault-tolerant automations.
 
+For definitions of the terms used on this page, refer to the [Glossary](/explore-analyze/workflows/reference/glossary.md).
+
 ## Data flow [workflows-data-flow]
 
 Every step in a workflow produces an output. By default, this output is added to a global `steps` object in the workflow's context, making it available to all subsequent steps.
@@ -196,9 +198,10 @@ In the following example:
 
 ### Restrictions [workflows-on-failure-restrictions]
 
-- Flow-control steps (`if`, `foreach`) cannot have workflow-level `on-failure` configurations.
+- The `if` step cannot have an `on-failure` configuration. (`foreach` and `while` loops do support loop-level `on-failure`; see their step references.)
 - Fallback steps run only after all retries have been exhausted.
 - When combined, failure-handling options are processed in this order: retry → fallback → continue.
+- For `foreach` and `while` loops, use `iteration-on-failure` when you want to handle one failed iteration without failing the whole loop.
 
 ### Handle failures across workflows [workflows-cross-workflow-handler]
 
