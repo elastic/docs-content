@@ -70,7 +70,7 @@ What happens after a rule finds something depends entirely on the rule's mode.
 
 ### Alert mode
 
-Use Alert mode when you want to track issues and be notified. An alert episode groups the rule events produced by a rule and its lifecycle state evolves as new rule events are written: it opens when the first matching event arrives and advances through states until the condition clears.
+Use Alert mode when you want to track issues and be notified. An alert episode groups the rule events produced by a rule. Each episode has a lifecycle that starts with the first matching rule event and advances through states as new events are written.
 
 ```
 Rule runs → conditions met → writes rule event to .rule-events
