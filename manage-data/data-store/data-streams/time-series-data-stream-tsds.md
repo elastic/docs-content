@@ -72,7 +72,7 @@ Metrics are numeric measurements that change over time. Documents in a TSDS typi
 To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The valid values for `time_series_metric` are `counter`, `gauge` and `histogram`:
 
 `counter`
-:   A metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. By default, counters use cumulative [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but delta temporality is also supported. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
+:   A metric that tracks a value which accumulates over time. For example, a count of errors or completed tasks that resets when a serving process restarts. By default, counters use cumulative [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but delta temporality is also supported. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 
 `gauge`
 :   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).

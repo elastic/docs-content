@@ -23,11 +23,12 @@ With cumulative temporality, each data point represents the total count since th
 
 | Timestamp | Value | Meaning                         |
 |-----------|-------|---------------------------------|
-| 10:01     | 5     | 5 total requests since start    |
-| 10:02     | 12    | 12 total requests since start   |
-| 10:03     | 20    | 20 total requests since start   |
+| 10:01     | 27    | 27 total requests since start   |
+| 10:02     | 72    | 72 total requests since start   |
+| 10:03     | 113   | 113 total requests since start  |
 
-To determine the rate of change, {{es}} computes the difference between consecutive values. Between 10:01 and 10:02, the rate was 7 requests per interval.
+To determine the rate of change, {{es}} computes the difference between consecutive values. Between 10:01 and 10:02, the total number of requests increased by 45.
+Therefore, the `increase` function will yield 45 for this time interval. `rate` divides the total increase by the time interval in seconds, yielding 0.75 requests per second in this case as the time range between 10:01 and 10:02 is 60 seconds.
 
 This is the default temporality for [`counter`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
@@ -37,11 +38,12 @@ With delta temporality, each data point represents the change since the previous
 
 | Timestamp | Value | Meaning                          |
 |-----------|-------|----------------------------------|
-| 10:01     | 5     | 5 new requests in this interval  |
-| 10:02     | 7     | 7 new requests in this interval  |
-| 10:03     | 8     | 8 new requests in this interval  |
+| 10:01     | 27    | 27 new requests in this interval |
+| 10:02     | 45    | 45 new requests in this interval |
+| 10:03     | 41    | 41 new requests in this interval |
 
-To determine the rate of change, {{es}} uses the value directly. At 10:02, the rate was 7 requests per interval.
+To determine the rate of change, {{es}} uses the value directly.
+This means that for the time interval between 10:01 and 10:02, just like for cumulative temporality, `increase` will yield 45 and `rate` 0.75.
 
 This is the default temporality for [`histogram`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
