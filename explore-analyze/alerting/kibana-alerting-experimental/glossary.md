@@ -13,7 +13,7 @@ description: Definitions of key terms used throughout the experimental Kibana al
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 
 **Action policy**
-:   The gating layer between an alert episode and a workflow, configuring suppression, match conditions, and frequency to control which episodes trigger notifications and how often.
+:   A configuration that controls whether and how often an alert episode triggers a notification, including which alerts qualify and how to avoid sending too many notifications. A single action policy can apply to one rule, several rules, or all rules in the space.
 <!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
     To learn more, refer to [Notifications and actions](notifications-actions.md).
 -->
@@ -22,7 +22,7 @@ These terms appear throughout the {{alerting-v2-system}} docs. If a term is uncl
 :   The complete record of one problem tracked in Alert mode, from first detection to recovery, moving through states (pending, active, recovering, inactive).
 
 **Breach**
-:   A single moment when a rule's query finds a match; you can require several consecutive breaches before an alert episode opens.
+:   A single instance when a rule's query finds a match, which may or may not open an alert episode depending on how the rule is configured.
 
 **Dispatcher**
 :   The background process that evaluates action policies against active alert episodes on a short interval (around 5 seconds), independent of the rule schedule.

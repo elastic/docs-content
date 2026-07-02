@@ -18,7 +18,12 @@ In the generally available {{kib}} alerting system, the term *alert* refers to a
 
 ## The core idea [kibana-alerting-v2-overview]
 
-The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it. Rules focus purely on what to watch for in your data. Action policies handle who gets notified, when, and how, independently of any rule. You can build and test detection logic before wiring up any notifications, and update notification routing across all rules in one place without editing the rules themselves.
+The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it:
+
+- **Detecting** - Rules focus purely on what to watch for in your data and on collecting breach and recovery events.
+- **Acting** - Action policies handle who gets notified, when, and how, independently of any rule.
+
+You can build and test detection logic before wiring up any notifications, and update notification routing across all rules in one place without editing the rules themselves.
 
 ## The four building blocks
 
@@ -45,7 +50,7 @@ Refer to [Alert episodes](kibana-alerting-experimental/alerts.md) to learn more.
 
 ### Action policies
 
-An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating suppression, match conditions, and frequency. You can set conditions to filter which alert episodes it applies to, for example, only critical severity alert episodes from a specific service. Global action policies apply to alert episodes from any rule in the space. Per-rule action policies scope to a single rule for more targeted routing.
+An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating suppression, match conditions, and frequency. Policy configuration determines the scope. A policy can apply to alert episodes from a specific rule, multiple rules, or all rules in the space.
 
 <!-- TODO: When PR #6525 (workflows/notifications) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md) to learn more.
@@ -65,17 +70,17 @@ What happens after a rule finds something depends entirely on the rule's mode.
 
 ### Alert mode
 
-Use Alert mode when you want to track issues and be notified. The rule opens an alert episode when the condition is met and keeps it open until the condition clears.
+Use Alert mode when you want to track issues and be notified. An alert episode groups the rule events produced by a rule and its lifecycle state evolves as new rule events are written: it opens when the first matching event arrives and advances through states until the condition clears.
 
 ```
-Rule runs → the rule's conditions are met → writes a rule event
-  → alert episode (pending → active)
+Rule runs → conditions met → writes rule event to .rule-events
+  → alert episode groups rule events (pending → active)
       → [dispatcher] → action policy → workflow → notification
-  → condition clears (recovering → inactive)
+  → condition clears → new rule event written (recovering → inactive)
       → [dispatcher] → action policy → workflow → notification
 ```
 
-The rule evaluates {{esql}} on a schedule and writes a rule event to `.rule-events`. When a match occurs, the dispatcher picks up the active alert episode, evaluates all enabled action policies against it, and invokes any workflows that pass suppression, match conditions, and frequency gates. When the condition clears, the episode recovers and recovery notifications fire through the same pipeline.
+The rule evaluates {{esql}} on a schedule and writes each result as a rule event to `.rule-events`. These events are grouped into an alert episode, and each new event can advance the episode's lifecycle state. When a match occurs, the episode becomes active and the dispatcher evaluates all enabled action policies against it, invoking any workflows that pass suppression, match conditions, and frequency gates. When the condition clears, a new rule event moves the episode to recovering and recovery notifications fire through the same pipeline.
 
 ::::{dropdown} Example: Rule runs in Alert mode
 An SRE team wants to know when checkout service latency degrades, and notify the on-call team when it does. The team creates an Alert mode rule:
@@ -86,9 +91,11 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
+<!-- TODO: Update diagram to reflect that alert episodes group rule events and lifecycle state evolves as new rule events are written.
 :::{image} ../images/rule-alert-mode-diagram.png
-:alt: Diagram of Alert mode flow. A rule runs ES|QL on a schedule. When it finds a match, it writes a rule event tied to an ongoing alert episode. The alert episode moves through pending, active, recovering, and inactive states. An action policy matches eligible alert episodes and routes them to a workflow, which delivers a notification.
+:alt: Diagram of Alert mode flow. 
 :::
+-->
 ::::
 
 ### Signal mode
