@@ -18,7 +18,7 @@ This page summarizes internal test results comparing large language models (LLMs
 ::::{important}
 Higher scores indicate better performance, on a scale of 1 to 10. A score of 10 on a capability means the model met or exceeded all task-specific benchmarks for that capability.
 
-**Any model that scores 5 or below for a capability is not recommended for that task.** Rather than hide these results behind a "Not recommended" label, the matrix shows each model's real score so you can see exactly how far below the bar a model falls and make your own trade-off. A 4.9 and a 1.0 are very different signals.
+**Any model that scores 5 or below for a capability is not recommended for that task.**
 ::::
 
 
