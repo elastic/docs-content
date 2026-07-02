@@ -81,10 +81,6 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 Controls are always chained: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
 
-**Per-control settings**
-
-Per-control settings such as label, selections, search options, and additional settings are configured when you [create or edit a control](add-controls.md#create-and-add-options-list-and-range-slider-controls).
-
 **Pinned control display**
 
 For pinned controls, select the {icon}`gear` **Settings** icon on the control to customize its display:
@@ -98,24 +94,22 @@ By default, the dashboard updates as soon as a selection is made in a control. T
 :::
 :::{applies-item} {"stack": "ga 9.0-9.3"}
 
-1. Open the **Control settings** flyout:
+In versions earlier than 9.4, these settings apply to all controls on the dashboard at once. To open them, in **Edit** mode:
 
-   - {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Settings** in the application menu.
-   - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Settings**.
+- {applies_to}`stack: ga 9.2-9.3` Select **Add** > **Controls** > **Settings** in the application menu.
+- {applies_to}`stack: ga 9.0-9.1` Select **Controls** > **Settings**.
 
-2. Configure the following settings:
+Available settings:
 
-   - **Label position**: Set where the control label appears.
-   - **Filtering**:
-     - **Apply global filters to controls**: Define whether controls apply or ignore filters from the dashboard's main filter bar.
-     - **Apply global time range to controls**: Define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
-   - **Selections**:
-     - **Validate user selections**: When on, any selection that returns no data is ignored.
-     - **Chain controls**: When on, controls apply sequentially from left to right and line by line. A selection in one control narrows the options in the next.
-     - **Apply selections automatically**: When on, the dashboard updates as soon as a selection is made in a control. When off, users must select **Apply** to apply pending selections.
+- **Label position**: Set where the control label appears.
+- **Filtering**:
+  - **Apply global filters to controls**: Define whether controls apply or ignore filters from the dashboard's main filter bar.
+  - **Apply global time range to controls**: Define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
+- **Selections**:
+  - **Validate user selections**: When on, any selection that returns no data is ignored.
+  - **Chain controls**: When on, controls apply sequentially from left to right and line by line. A selection in one control narrows the options in the next.
+  - **Apply selections automatically**: When on, the dashboard updates as soon as a selection is made in a control. When off, users must select **Apply** to apply pending selections.
 
-   To remove all controls from the dashboard, select **Delete all**.
-
-3. Select **Save** to apply the changes.
+To remove all controls from the dashboard, select **Delete all**.
 :::
 ::::
