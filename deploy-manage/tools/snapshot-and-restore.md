@@ -158,15 +158,24 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt fails.
 
-| Index creation version                   | {{version.stack.base}}–{{version.stack}} | 8.3–8.19 | 8.0–8.2 | 7.2–7.17 | 7.0–7.1 | 6.8 | 
-|------------------------------------------| ----------------------------------------- |----------|---------|----------|---------|-----|
-| 5.0–5.6                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ❌       | ❌      | ✅  |         
-| 6.0–6.7                                  | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ✅      | ✅  | 
-| 6.8                                      | ✅ ^1^                                    | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |    
-| 7.0–7.1                                  | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ✅      | ❌  |       
-| 7.2–7.17                                 | ✅ ^1, 2^                                 | ✅       | ✅      | ✅       | ❌      | ❌  |      
-| 8.0–8.19                                 | ✅                                        | ✅       | ✅      | ❌       | ❌      | ❌  |
-| {{version.stack.base}}–{{version.stack}} | ✅                                        | ❌       | ❌      | ❌       | ❌      | ❌  | 
+The table below shows whether an index can be restored to a given cluster version. Find your index’s **creation version** in the left column and your **cluster version** across the top. For example, an index created in **6.8** can be restored to a **{{version.stack.base}}–{{version.stack}}** cluster (✅, with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md)) but not to a **7.0–7.1** cluster (❌).
+
+:::{table}
+:widths: 3-2-1-2-2-1-1
+
+|                       |     |        |       |          |         |     |
+|-----------------------|-----|--------|-------|----------|---------|-----|
+|                       | Cluster version (restore target) |       |       |          |         |     |
+| Index creation version | {{version.stack.base}}–{{version.stack}} | 8.3–8.19 | 8.0–8.2 | 7.2–7.17 | 7.0–7.1 | 6.8 |
+| 5.0–5.6               | ✅ ^1^                                   | ✅ ^1^   | ❌      | ❌       | ❌      | ✅  |
+| 6.0–6.7               | ✅ ^1^                                   | ✅ ^1^   | ❌      | ✅       | ✅      | ✅  |
+| 6.8                   | ✅ ^1^                                   | ✅ ^1^   | ❌      | ✅       | ❌      | ✅  |
+| 7.0–7.1               | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ✅      | ❌  |
+| 7.2–7.17              | ✅ ^1, 2^                                | ✅       | ✅      | ✅       | ❌      | ❌  |
+| 8.0–8.19              | ✅                                       | ✅       | ✅      | ❌       | ❌      | ❌  |
+| {{version.stack.base}}–{{version.stack}} | ✅                            | ❌       | ❌      | ❌       | ❌      | ❌  |
+:::
+
 
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
