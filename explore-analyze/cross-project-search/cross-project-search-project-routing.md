@@ -19,30 +19,48 @@ For an overview of {{cps}} concepts, refer to [{{cps-cap}}](/explore-analyze/cro
 
 The `project_routing` parameter is available on all {{cps-init}}-enabled endpoints. Refer to the [supported APIs](/explore-analyze/cross-project-search.md#cps-supported-apis) for a full list of endpoints.
 
-For example, the following API request searches the `logs` resource only on projects that have the `_alias:my_search_project` tag.
+For example, the following request searches the `logs` resource only on projects that have the `_alias:my_search_project` tag.
 
 ```console
-GET logs/_search 
+GET logs/_search
 {
   "project_routing": "_alias:my_search_project"
 }
 ```
 
-::::{important}
-Currently, project routing only supports using the `_alias` tag.
-::::
+Project routing expressions use Lucene query syntax, so you're not limited to a single tag or an exact match. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. In an expression, the colon (`:`) separates a tag from its value.
 
-<!--
-Project routing supports prefix and suffix wildcards, boolean logic and groupings of terms. The tag syntax matches the Lucene syntax notation, including in ES|QL.
-For example:
+You can combine tags with the `AND` and `OR` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. The syntax is the same for the `_search` API and {{esql}}.
 
+For example, the following request routes the search to projects on Amazon Web Services (AWS) in a US region, or to any project on Google Cloud:
+
+::::{tab-set}
+
+:::{tab-item} API request
 ```console
 GET logs/_search
 {
-  project_routing="(_region:us-* AND _csp:aws) OR _csp:gcp"
+  "project_routing": "(_region:us-* AND _csp:aws) OR _csp:gcp"
 }
 ```
--->
+:::
+
+:::{tab-item} ES|QL
+```esql
+SET project_routing="(_region:us-* AND _csp:aws) OR _csp:gcp";
+FROM logs
+| STATS COUNT(*)
+```
+:::
+
+::::
+
+::::{note}
+Every term in an expression needs a tag prefix, and every tag must be defined. These expressions fail:
+
+* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag prefix. Use `_csp:aws OR _csp:gcp` instead.
+* `_foo:bar` fails because `_foo` isn't a defined tag.
+::::
 
 Refer to [the examples section](/explore-analyze/cross-project-search.md#cps-examples) for more. You can also refer to [Query across Serverless projects with ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.
 
@@ -62,20 +80,27 @@ For example, the following [`_search` API]({{es-apis}}v9/operation/operation-sea
 ```console
 GET logs/_search
 {
-"project_routing": "@custom-expression",
-"query": { ... }
+  "project_routing": "@custom-expression",
+  "query": { ... }
 }
 ```
 :::
 
 :::{tab-item} ES|QL
-```console
+```esql
 SET project_routing="@custom-expression";
-FROM logs 
+FROM logs
 | STATS COUNT(*)
 ```
 :::
 
+::::
+
+::::{note}
+Reference a named expression on its own. You can't combine it with a direct expression or with another named expression. Both of these fail:
+
+* `@aws-us-only OR _csp:gcp` mixes a named expression with a direct expression.
+* `@aws-us-only OR @aws-eu-only` combines two named expressions.
 ::::
 
 ### Creating and managing named project routing expressions
@@ -86,45 +111,34 @@ You can use the `_project_routing` API to create and manage named project routin
 Named project routing expressions are project-specific. An expression can be used only in the project where it was created.
 ::::
 
-The following request creates a named expression called `origin-only`:
+The following request creates a named expression called `origin-only` that matches a single tag:
 
 ```console
 PUT _project_routing/origin-only
 {
-    "expression" : "_alias:origin"
+  "expression": "_alias:_origin"
 }
 ```
 
-<!--
-The following request creates a named expression called `aws-us-only`:
+Expressions can be more complex. The following request creates a named expression called `aws-us-only` that matches AWS projects in a US region:
 
 ```console
 PUT _project_routing/aws-us-only
 {
-    "expression" : "_csp:aws AND _region:us*"
+  "expression": "_csp:aws AND _region:us*"
 }
 ```
--->
 
 You can also create multiple named expressions in a single request:
 
 ```console
 PUT _project_routing
 {
-"origin-only": { "expression": "_alias:origin" },
-"linked-security": { "expression": "_alias:*sec*" }
+  "aws-us-only": { "expression": "_csp:aws AND _region:us*" },
+  "aws-eu-only": { "expression": "_csp:aws AND _region:eu*" },
+  "linked-security": { "expression": "_alias:*sec*" }
 }
 ```
-
-<!--
-```console
-PUT _project_routing
-{
-   "aws-us-only": { "expression": "_csp:aws AND _region:us*" },
-   "aws-eu-only": { "expression": "_csp:aws AND _region:eu*" }
-}
-```
--->
 
 The GET `_project_routing` endpoint retrieves information about named expressions.
 
