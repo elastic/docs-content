@@ -9,7 +9,7 @@ products:
 
 # Metric temporality [metric-temporality]
 
-When working with metrics in a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS), the _temporality_ of a metric determines how its values relate to one another over time. {{es}} supports two temporality models: **cumulative** and **delta**.
+When working with counters and histograms in a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS), the _temporality_ of a metric determines how its values relate to one another over time. {{es}} supports two temporality models: **cumulative** and **delta**.
 
 Understanding temporality is important because it affects how {{es}} interprets metric values during queries, aggregations, and [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
 
