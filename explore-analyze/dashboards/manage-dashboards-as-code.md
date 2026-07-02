@@ -11,9 +11,9 @@ type: overview
 
 # Manage dashboards as code [manage-dashboards-as-code]
 
-Treat dashboards as version-controlled artifacts that live in Git alongside the rest of your infrastructure code. The [Dashboards API](create-dashboards-programmatically.md) produces a clean, diffable JSON definition, so you can review dashboard changes in pull requests and promote them across environments through automated pipelines, the same way you manage data views, alerting rules, or any other resource.
+Treat dashboards as version-controlled artifacts that live in Git alongside the rest of your infrastructure as code (IaC). The [Dashboards API](create-dashboards-programmatically.md) produces a clean, diffable JSON definition, so you can review dashboard changes in pull requests and promote them across environments through automated pipelines, the same way you manage data views, alerting rules, or any other resource. The API is the foundation for this workflow, and any tool or language that can call it can drive the same process.
 
-This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system. For a one-off move between spaces or deployments rather than a repeatable code workflow, refer to [Import a dashboard](import-dashboards.md) for the available options.
+This workflow suits teams that want repeatable, auditable dashboard changes instead of manual edits in the UI, and assumes you are comfortable with Git and your CI/CD system.
 
 ## Workflow [dashboards-as-code-workflow]
 
@@ -61,6 +61,8 @@ Regardless of the approach, to deploy a dashboard to a different space within th
 ## Automate with Terraform [dashboards-as-code-terraform]
 
 If you already manage your infrastructure with Terraform, the [Elastic Stack Terraform provider](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_dashboard) includes an `elasticstack_kibana_dashboard` resource that manages dashboards through the Dashboards API. You define the dashboard in the provider's own configuration schema, then apply it like any other resource, so dashboard changes flow through `terraform plan` and `terraform apply` alongside the rest of your stack.
+
+Terraform is the IaC option that Elastic maintains and documents. Because `elasticstack_kibana_dashboard` is a standard Terraform provider resource, other IaC tools that support Terraform providers can manage it too, including from languages other than HCL.
 
 The provider documentation includes step-by-step guides with complete, runnable examples:
 
