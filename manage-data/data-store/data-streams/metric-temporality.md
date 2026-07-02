@@ -1,5 +1,5 @@
 ---
-navigation_title: "Metrics temporality"
+navigation_title: "Metric temporality"
 applies_to:
   stack: ga 9.5
   serverless: ga
@@ -7,13 +7,13 @@ products:
   - id: elasticsearch
 ---
 
-# Metrics temporality [metrics-temporality]
+# Metric temporality [metric-temporality]
 
 When working with metrics in a [time series data stream](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (TSDS), the _temporality_ of a metric determines how its values relate to one another over time. {{es}} supports two temporality models: **cumulative** and **delta**.
 
 Understanding temporality is important because it affects how {{es}} interprets metric values during queries, aggregations, and [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
 
-## Cumulative vs. delta temporality [cumulative-vs-delta]
+## Cumulative versus delta temporality [cumulative-vs-delta]
 
 The difference between cumulative and delta temporality is best explained with a counter metric that tracks the number of HTTP requests a server has handled.
 
@@ -51,7 +51,7 @@ If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-in
 Both OTLP intakes come with a dimension called `temporality` preconfigured in the mappings and preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
 Prometheus remote write V1 only supports counters and classic Prometheus histograms (represented as counters) which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
 
-If you are manually ingesting metrics into custom indices (e.g. via _bulk), you have to explicitly configure temporality on your data stream.
+If you are manually ingesting metrics into custom indices (for example via `_bulk`), you have to explicitly configure temporality on your data stream.
 To do so, use the [`index.time_series.temporality_field`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-temporality-field) index setting. This setting specifies the name of the field that stores the temporality for each document.
 
 The temporality field must:
@@ -65,7 +65,7 @@ Its value must be one of:
 - `cumulative` — metrics in the document use cumulative temporality
 
 If the field is absent or contains any other value, {{es}} uses the default temporality for each metric type: cumulative for counters and delta for histograms.
-You don't have to explicitly define the mapping for the field; it will be created automatically based on the index setting.
+You don't have to explicitly define the mapping for the field. It will be created automatically based on the index setting.
 
 Note that because `temporality` is a dimension, you can have mixed temporalities per metric: Some series can have `delta` temporality, while others are `cumulative`.
 This is automatically handled when the data is queried or downsampled.

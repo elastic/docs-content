@@ -72,14 +72,14 @@ Metrics are numeric measurements that change over time. Documents in a TSDS typi
 To mark a field as a metric, use the `time_series_metric` mapping parameter. This parameter ensures data is stored in an optimal way for time series analysis. The valid values for `time_series_metric` are `counter`, `gauge` and `histogram`:
 
 `counter`
-:   A metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. By default, counters use cumulative [temporality](/manage-data/data-store/data-streams/metrics-temporality.md), but delta temporality is also supported. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
+:   A metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks that resets when a serving process restarts. By default, counters use cumulative [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but delta temporality is also supported. A counter is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md)
 
 `gauge`
 :   A metric that represents a single numeric that can arbitrarily increase or decrease. For example, a temperature or available disk space. A gauge is supported by all [numeric field types](elasticsearch://reference/elasticsearch/mapping-reference/number.md) and [`aggregate_metric_double`](elasticsearch://reference/elasticsearch/mapping-reference/aggregate-metric-double.md) (for internal use during downsampling, rarely user-populated).
 
 `histogram` {applies_to}`stack: preview 9.3, ga 9.4`
 :   A metric that tracks the distribution of numerical values, like latency or size distributions. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md), [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) 
-and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). By default, histograms use delta [temporality](/manage-data/data-store/data-streams/metrics-temporality.md), but cumulative temporality is also supported for `exponential_histogram`.
+and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). By default, histograms use delta [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but cumulative temporality is also supported for `exponential_histogram`.
 
 #### `_tsid` metadata field [tsid]
 
@@ -117,5 +117,5 @@ You can use the {{esql}} [`TS` command](elasticsearch://reference/query-language
 * [Set up a time series data stream](/manage-data/data-store/data-streams/set-up-tsds.md)
 * [Ingest data using the OpenTelemetry Protocol (OTLP)](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 * [Ingest data using Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
-* Learn about [metrics temporality](/manage-data/data-store/data-streams/metrics-temporality.md) (delta vs. cumulative)
+* Learn about [metric temporality](/manage-data/data-store/data-streams/metric-temporality.md) (delta versus cumulative)
 * Learn about [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) to reduce storage footprint

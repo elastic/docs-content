@@ -12,7 +12,7 @@ products:
 This section contains information about advanced concepts and operations for [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md):
 
 - [](/manage-data/data-store/data-streams/time-bound-tsds.md)
-- [](/manage-data/data-store/data-streams/metrics-temporality.md)
+- [](/manage-data/data-store/data-streams/metric-temporality.md)
 - [](/manage-data/data-store/data-streams/reindex-tsds.md)
 - [](/manage-data/data-store/data-streams/tsds-ingest-otlp.md)
 - [](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md)
