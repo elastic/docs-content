@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "How {{agent-builder}} creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
+description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
 ---
 
 # Create rules and action policies with {{agent-builder}} [create-rules-action-policies-ai-agent]

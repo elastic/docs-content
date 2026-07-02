@@ -12,10 +12,6 @@ description: "Assign severity levels to alert episodes in Kibana's experimental 
 
 Severity is an optional setting for rules in the {{alerting-v2-system}}. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
 
-:::{tip}
-Add severity to your rule when you need to route or filter alert episodes by urgency, for example, to send critical episodes to an on-call channel and low episodes to a review queue.
-:::
-
 | Value | Description | Urgency |
 | --- | --- | --- |
 | `info` | Informational event worth recording. | No action required. |
@@ -29,7 +25,7 @@ Add severity to your rule when you need to route or filter alert episodes by urg
 Configure severity when:
 
 * You want to route different urgency levels to different notification channels, for example, send `critical` episodes to an on-call channel and `low` episodes to a review queue.
-* You want to filter the **Alerts** page by urgency to help triage during incidents.
+* You want to filter the Alerts UI by urgency to help triage during incidents.
 * The rule's detection logic can meaningfully distinguish between urgency levels through a computed metric, such as burn rate, error count, or latency percentile.
 
 Skip severity when:
@@ -37,23 +33,14 @@ Skip severity when:
 * All breaches from the rule are equally urgent. A fixed label in the rule's tags is simpler and doesn't require query changes.
 * The underlying data doesn't produce a reliable metric to grade urgency. Severity that's frequently wrong generates more noise than routing by severity resolves.
 
-## How the {{alerting-v2-system}} maps severity values
+## Severity behavior and usage [severity-behavior]
 
-The {{alerting-v2-system}} maps the `severity` column to an internal level after each evaluation using the following rules:
+Keep the following in mind when configuring severity.
 
-- Matching is case-insensitive.
-- Values that don't match one of the five levels are silently ignored. The alert episode is still created, but `severity` isn't set.
-- Severity is only set on `breached` events. `recovered` and `no_data` events don't carry a severity value.
-
-## Stored fields
-
-When severity is set, the {{alerting-v2-system}} stores the following field on the alert episode, available to action policy matchers:
-
-| Field | Description |
-| --- | --- |
-| `severity` | The severity value from the most recent breached event. |
-
-Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for more information about this field.
+- **Matching is case-insensitive** - `critical`, `Critical`, and `CRITICAL` are all treated the same. You can use any casing in your `EVAL` expression.
+- **Unrecognized values are silently ignored** - If the `severity` column contains a value that doesn't match one of the five levels, the alert episode is still created but `severity` is not set. If severity isn't appearing as expected, check the exact string your query is producing.
+- **Severity only applies to breached events** - `recovered` and `no_data` events don't carry a severity value. Action policy matchers that filter by severity only match open episodes.
+- **The `severity` field is available in action policy matchers** - Once set, the value is stored on the alert episode and can be used to route episodes by urgency — for example, sending `critical` episodes to an on-call channel while `low` episodes go to a review queue. Refer to [Rule event and field reference](rule-event-field-reference.md#episode-fields) for the full field reference.
 
 ## Examples
 

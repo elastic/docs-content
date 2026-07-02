@@ -5,28 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure the ES|QL query and query parameters for rules in Kibana's experimental alerting system."
+description: "How to structure the ES|QL detection query for a rule in the experimental alerting system. Covers the base query, the optional alert condition that gates which rows become breaches, and dynamic parameters for time bounds and configurable thresholds."
 ---
 
 # {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
 Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query consists of a base query that shapes and filters the data and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
-
-:::{tip}
-Use the query preview option to test your query against live data before saving the rule. This lets you verify the detection logic produces the results you expect without committing to a schedule or opening alert episodes.
-:::
-
-## When to add an alert condition [query-when-to-use]
-
-Add an alert condition when:
-
-* Your base query returns aggregate results (for example, counts or averages per group) and you only want to alert when a value crosses a specific threshold. Without an alert condition, every row returned by the base query is treated as a breach.
-* You want to keep filtering logic out of the base query and express the threshold separately for clarity.
-
-Skip the alert condition when:
-
-* Every row returned by the base query should be treated as a breach. This applies when the query filters directly for specific error events where any match warrants attention.
-* All filtering can be expressed cleanly in a single `WHERE` clause without a two-stage query.
 
 ## Base query [query-base]
 
@@ -59,6 +43,18 @@ FROM logs-*
 ```
 
 The `KEEP` command controls which fields appear on each stored alert event. Only the fields in `KEEP` are available for action policy matchers, grouping keys, and triage.
+
+## When to add an alert condition [query-when-to-use]
+
+Add an alert condition when:
+
+* Your base query returns aggregate results (for example, counts or averages per group) and you only want to alert when a value crosses a specific threshold. Without an alert condition, every row returned by the base query is treated as a breach.
+* You want to keep filtering logic out of the base query and express the threshold separately for clarity.
+
+Skip the alert condition when:
+
+* Every row returned by the base query should be treated as a breach. This applies when the query filters directly for specific error events where any match warrants attention.
+* All filtering can be expressed cleanly in a single `WHERE` clause without a two-stage query.
 
 ## Use dynamic values in your rule query [dynamic-query-values]
 

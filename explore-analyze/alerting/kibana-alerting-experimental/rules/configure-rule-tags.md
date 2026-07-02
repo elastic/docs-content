@@ -15,16 +15,12 @@ Tags and runbooks are optional artifacts for Alert-mode rules in the {{alerting-
 - **Tags**: Free-form labels for filtering and organization. Maximum 20 tags per rule. Each tag can be up to 128 characters.
 - **Runbooks**: An investigation guide stored with the rule so responders have context when alerts are generated.
 
-:::{tip}
-Tags are inherited by alert episodes, so they're available for filtering in the alerts view and as KQL matchers in action policies. Use them to organize rules by team, environment, or severity tier.
-:::
-
 ## When to configure tags and runbooks [tags-when-to-use]
 
 Configure tags when:
 
-* You want to filter the **Alerts** page by team, environment, or severity tier without writing ad hoc KQL queries each time.
-* You are using action policies and want to match episodes by ownership or category rather than by rule name.
+* You want to filter the Alerts UI by team, environment, or severity tier without writing ad hoc KQL queries each time.
+* You are using action policies and want to match episodes by ownership or category rather than by rule name. Tags are inherited by alert episodes, so any tag you add to a rule is available as a KQL matcher in action policies.
 * You manage many rules and need a consistent labeling scheme to track which team owns which alerts.
 
 Configure a runbook when:

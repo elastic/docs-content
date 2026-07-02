@@ -17,10 +17,6 @@ Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a s
 2. Does "lifecycle" mean the standard inactive → pending → active → recovering episode states? If so, rewrite as: "In Alert mode, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per episode, not across all groups combined."
 -->
 
-:::{note}
-Rule grouping controls how alert series are created. Notification grouping (configured on an action policy) controls how those alert episodes are batched into messages. These are separate settings.
-:::
-
 ## When to configure grouping [grouping-when-to-use]
 
 Configure grouping when:
@@ -33,6 +29,8 @@ Skip grouping when:
 
 * Your query does not use a `BY` clause. Grouping requires `BY` columns in the query output to be meaningful.
 * You intentionally want a single alert series for the rule regardless of how many subjects match. An example is a rule that fires when any host in a cluster is down and the individual host identity doesn't matter for the notification.
+
+Rule grouping controls how alert series are created. Notification grouping, configured on an action policy, controls how those alert episodes are batched into messages. These are separate settings.
 
 ## Configure grouping fields [grouping-fields-config]
 

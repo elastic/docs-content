@@ -5,29 +5,24 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Choose between Signal and Alert mode for rules in Kibana's experimental alerting system."
+description: "How rule mode determines whether detections produce signal documents or tracked alert episodes in the experimental alerting system, and when to use each."
 ---
 
 # Rule mode in the {{alerting-v2-system}} [rule-mode]
 
-Rule mode is a required setting for rules in the {{alerting-v2-system}}. Rule mode is set by the rule creation method and some creation paths only support one mode. Refer to [Create a rule](create-a-rule.md) for available options.
+Rule mode is a required setting for rules in the {{alerting-v2-system}}. It determines what the rule produces when the detection query finds a match. Rule mode is set by the rule creation method and some [creation paths](create-a-rule.md) only support one mode.
 
-:::{tip}
-Start with Signal mode to validate your detection logic without generating noise. Switch to Alert mode once the rule is tuned and you want to track episodes or route notifications.
-:::
+| Mode | Behavior |
+| --- | --- |
+| Signal | Records each matching row as a signal document. No alert episodes, no notifications. |
+| Alert | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the Alerts UI, and can be routed to notifications by action policies. |
 
-| Mode | Behavior | Best for |
-| --- | --- | --- |
-| Signal | Records each matching row as a signal document. No alert episodes, no notifications. | Testing a new query, building detection history, or observing matches without notifying anyone. |
-| Alert | Creates an alert episode for each matching row. Episodes are tracked through lifecycle states, appear on the **Alerts** page, and can be routed to notifications by action policies. | Production rules where breaches should be tracked, escalated, or routed to a notification channel. |
-
-## When to use each mode [rule-mode-when-to-use]
+## When to use each rule mode [rule-mode-when-to-use]
 
 Signal mode is the right fit when:
 
 * You are writing a new detection query and want to verify it produces the expected matches before notifying anyone.
 * You need to build detection history in `.rule-events` without generating alert noise or triggering notifications.
-* You want to observe matches in Discover without opening tracked episodes on the **Alerts** page.
 
 Signal mode is **not** the right fit when:
 
@@ -36,9 +31,9 @@ Signal mode is **not** the right fit when:
 
 Alert mode is the right fit when:
 
-* The rule is production-ready and breaches should open tracked episodes with lifecycle state.
-* You need the rule to appear on the **Alerts** page for triage, acknowledgment, or escalation.
-* You want to attach action policies to route notifications when episodes open, escalate, or recover.
+* The rule is production-ready and each breach should be tracked as a distinct alert episode that opens, can escalate, and closes when the condition clears.
+* Alert episodes from the rule should be available for be triage, acknowledgement, or escalatation.
+* You want to attach action policies to route notifications when alert episodes open, escalate, or recover.
 
 Alert mode is **not** the right fit when:
 
@@ -52,4 +47,4 @@ You're writing a new detection query and want to verify it produces the results 
 
 ### Route critical episodes to an on-call workflow
 
-You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the **Alerts** page and are visible to any action policy whose KQL matcher matches the episode fields.
+You have a checkout service error rate rule and want on-call engineers notified when it fires. Create the rule in Alert mode so each breach opens a tracked episode that action policies can route to a notification channel. The rule's episodes appear on the Alerts UI and are visible to any action policy whose KQL matcher matches the episode fields.

@@ -5,7 +5,7 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Rules in Kibana's experimental alerting system define what to detect using ES|QL. Evaluation runs on a schedule; alerts, action policies, and notifications flow from rule detections."
+description: "Rules in Kibana's experimental alerting system define what to detect using ES|QL. Evaluation runs on a schedule and alerts, action policies, and notifications flow from rule detections."
 ---
 
 # Rules in the {{alerting-v2-system}}
@@ -16,9 +16,9 @@ This page explains what rules do, what they don't control, and how to choose a c
 
 ## What rules do [detection-and-notification]
 
-On each run, a rule executes an {{esql}} query against your data. If the query finds a match, it writes a rule event (`rule_event`), a point-in-time record that the condition was met. In Alert mode, it also maintains an _alert episode_ for each matched series, tracking state from first breach through recovery.
+On each run, a rule executes an {{esql}} query against your data. Matches are recorded as rule events (`rule_event`), and handled according to the rule's mode, which can be Signal mode or Alert mode. 
 
-When creating a rule, choose Signal mode to record and query results without alerting anyone, or Alert mode when you want to track issues and route notifications.
+In Signal mode, each matching row is stored as a signal document with no alert lifecycle or notifications. In Alert mode, the rule creates and tracks an alert episode for each match. Episodes move through lifecycle states, appear on the Alerts UI, and can trigger notifications through action policies.
 
 ## What rules don't do 
 

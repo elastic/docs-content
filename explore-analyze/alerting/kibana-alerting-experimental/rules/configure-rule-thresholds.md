@@ -51,6 +51,8 @@ You can combine Breaches and Duration. For example, require the threshold to be 
 
 Recovery thresholds control when an active alert episode transitions back to inactive. The same delay modes available for activation apply. You can require a set number of consecutive recoveries, a minimum recovery duration, or both.
 
+### Recovery fields
+
 | Field | Type | Description |
 | --- | --- | --- |
 | `recovering_count` | Positive integer | Number of consecutive non-breaching evaluations required before the alert episode closes. |
@@ -60,9 +62,7 @@ Recovery thresholds control when an active alert episode transitions back to ina
 Time frame fields accept the same `5s` to `365d` bounds as activation time frames. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
 :::{note}
-The `recovery_strategy` field controls how recovery is detected, separately from how many recoveries are required. When creating a rule through the UI, `recovery_strategy` defaults to `no_breach`, which recovers the alert episode when its active group no longer appears in the breach batch.
-
-When creating a rule through Agent Builder, you can omit `recovery_strategy` entirely to suppress recovery events and keep alert episodes active until closed manually. For the full field reference, go to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-strategy).
+`recovery_strategy` is a separate field that controls how recovery is detected, independent of how many recoveries these thresholds require. Refer to [YAML rule schema reference](yaml-rule-schema-reference.md#recovery-strategy) for field details and default values.
 :::
 
 ## Examples

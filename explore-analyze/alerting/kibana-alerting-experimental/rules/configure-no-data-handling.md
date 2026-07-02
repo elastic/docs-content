@@ -5,12 +5,14 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Configure no-data handling for rules in Kibana's experimental alerting system to control what happens when a query returns no results."
+description: "How to configure the no-data strategy for rules in the experimental alerting system. Controls whether an empty query result emits a no-data event, holds the last known alert state, triggers recovery, or is ignored."
 ---
 
 # No-data handling in the {{alerting-v2-system}} [no-data-handling]
 
 No-data handling is an optional setting for rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
+
+## No-data strategy options [no-data-strategy-options]
 
 The `no_data_strategy` field accepts the following values.
 
@@ -22,7 +24,7 @@ The `no_data_strategy` field accepts the following values.
 | `none` | Turn off no-data detection |
 
 :::{note}
-`no_data_strategy` does not detect when a specific host or data source stops reporting while others continue. Refer to [No-data detection](esql-no-data-detection.md) for an {{esql}} pattern that surfaces silent sources as alert rows.
+`no_data_strategy` only applies when the base query returns **no rows at all**. If one host or data source goes silent while others continue reporting, the query still returns results for the active sources and `no_data_strategy` does not trigger. Refer to [No-data detection](esql-no-data-detection.md) for an {{esql}} pattern that surfaces individual silent sources as alert rows.
 :::
 
 ## When to configure no-data handling [no-data-when-to-use]
