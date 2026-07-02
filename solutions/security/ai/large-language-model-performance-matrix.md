@@ -44,7 +44,7 @@ The matrix uses three top-line capability scores — **Agent Builder**, **Attack
 
 Models from third-party LLM providers.
 
-| **Model** | **Agent Builder: Alert Analysis** | **Agent Builder: Entity Analytics** | **Agent Builder: Threat Hunting** | **Agent Builder: Detection Rules** | **Agent Builder: Workflow Authoring** | **Agent Builder: Triggering Workflows** | **Agent Builder: Multi-Step Executions** | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
+| **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Anthropic Claude Opus 4.7** | 9.00 | 8.00 | 8.00 | 8.00 | 9.00 | 8.00 | 8.00 | 8.29 | 9.70 | 9.70 | **9.23** |
 | **Anthropic Claude Sonnet 4.5** | 9.00 | 7.00 | 7.00 | 7.00 | 9.00 | 8.00 | 8.00 | 7.86 | 9.10 | 10.00 | **8.99** |
@@ -70,7 +70,7 @@ Models from third-party LLM providers.
 
 Models you can [deploy yourself](/explore-analyze/ai-features/llm-guides/local-llms-overview.md).
 
-| **Model** | **Agent Builder: Alert Analysis** | **Agent Builder: Entity Analytics** | **Agent Builder: Threat Hunting** | **Agent Builder: Detection Rules** | **Agent Builder: Workflow Authoring** | **Agent Builder: Triggering Workflows** | **Agent Builder: Multi-Step Executions** | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
+| **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **OpenAI GPT-OSS 120B** | 5.00 | 4.00 | 6.00 | 7.00 | 5.00 | 8.00 | 7.00 | 5.14 | 3.00 | 9.40 | **5.85** |
 | **Gemma 4 31B IT** | 6.00 | 6.00 | 7.00 | 6.00 | 8.00 | 8.00 | 7.00 | 7.00 | 2.80 | 7.50 | **5.77** |
