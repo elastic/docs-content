@@ -1250,6 +1250,17 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 By default, when you create these jobs in the {{security-app}}, the job wizard uses a {{data-source}} that applies to multiple indices. If you use {{ml-app}} instead, create a similar [{{data-source}}](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/manifest.json#L7) and select it in the job wizard so the results match.
 
+`dns_tunneling_ea` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
+
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+
+    **Supported OS:** Windows, Linux, macOS
+
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/dns_tunneling_ea.json)
+
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_dns_tunneling_ea.json)
+
 `high_count_by_destination_country`
 :   Looks for an unusually large spike in network activity to one destination country in the network logs. This could be due to unusually large amounts of reconnaissance or enumeration traffic. Data exfiltration activity may also produce such a surge in traffic to a destination country which does not normally appear in network traffic or business work-flows. Malware instances and persistence mechanisms may communicate with command-and-control (C2) infrastructure in their country of origin, which may be an unusual destination country for the source network.
 
@@ -1294,6 +1305,16 @@ By default, when you create these jobs in the {{security-app}}, the job wizard u
 
     **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_rare_destination_country.json)
 
+`rare_dns_question_ea` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Looks for unusual DNS activity that could indicate command-and-control activity.
+
+    **Supported integrations:** [{{elastic-defend}}](integration-docs://reference/endpoint/index.md), [Network Packet Capture](integration-docs://reference/network_traffic/index.md), [Packetbeat](beats://reference/packetbeat/index.md)
+
+    **Supported OS:** Windows, Linux, macOS
+
+    **Job (JSON):** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/rare_dns_question_ea.json)
+
+    **Datafeed:** [code](https://github.com/elastic/kibana/blob/main/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/security_network/ml/datafeed_rare_dns_question_ea.json)
 
 ## Security: {{packetbeat}} [security-packetbeat-jobs]
 
@@ -1303,7 +1324,15 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.4+, serverless: ga}
+:::{applies-item} { stack: removed 9.5+, serverless: removed }
+
+`packetbeat_dns_tunneling_ea`
+
+This job is replaced by `dns_tunneling_ea` in the [Network module](#security-network-jobs).
+
+:::
+
+:::{applies-item} stack: ga =9.4
 
 `packetbeat_dns_tunneling_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control or data exfiltration activity.
@@ -1337,7 +1366,15 @@ In the {{ml-app}} app, these configurations are available only when data exists 
 
 ::::{applies-switch}
 
-:::{applies-item} {stack: ga 9.4+, serverless: ga}
+:::{applies-item} { stack: removed 9.5+, serverless: removed }
+
+`packetbeat_rare_dns_question_ea`
+
+This job is replaced by `rare_dns_question_ea` in the [Network module](#security-network-jobs).
+
+:::
+
+:::{applies-item} stack: ga =9.4
 
 `packetbeat_rare_dns_question_ea`
 :   Looks for unusual DNS activity that could indicate command-and-control activity.
