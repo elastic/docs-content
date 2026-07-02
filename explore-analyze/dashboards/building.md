@@ -28,7 +28,7 @@ Once you have a dashboard, you can enhance it:
 * [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
 * [Arrange and resize panels](arrange-panels.md) to optimize its layout
 
-To [manage your dashboards](managing.md) over time, you can [duplicate](duplicate-dashboards.md) them as a starting point for new ones, [import](import-dashboards.md) them from another space, instance, or deployment, and [share or export](sharing.md) them. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.
+You can also maintain your dashboards after you create them: [organize your collection](managing.md) with search, tags, and favorites, [duplicate](duplicate-dashboards.md) a dashboard to reuse it as a starting point, [import](import-dashboards.md) one from another space, instance, or deployment, or [share or export](sharing.md) it. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.
 
 ## Requirements [dashboard-minimum-requirements]
 
