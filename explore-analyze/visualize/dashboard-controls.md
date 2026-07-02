@@ -22,14 +22,6 @@ A control can be placed in one of two ways:
 In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
 :::
 
-## Requirements [dashboard-controls-requirements]
-
-To add controls to a dashboard, you need:
-
-* **All** privilege for the **Dashboard** feature in {{product.kibana}}
-* An existing dashboard open in **Edit** mode
-* A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
-
 ## Control types [control-types]
 
 You can add three kinds of controls:

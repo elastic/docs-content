@@ -19,6 +19,8 @@ To add {{esql}}-powered variable controls instead, refer to [Add variable contro
 
 ## Before you begin [add-controls-requirements]
 
+To add Options list, Range slider, and Time slider controls to a dashboard, you need:
+
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) configured with fields available for filtering

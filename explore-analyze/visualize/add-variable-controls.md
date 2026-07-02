@@ -20,6 +20,8 @@ In versions 9.0 and 9.1, variable controls are called {{esql}} controls.
 
 ## Before you begin
 
+To add variable controls to a dashboard, you need:
+
 * **All** privilege for the **Dashboard** feature in {{product.kibana}}
 * An existing dashboard open in **Edit** mode
 * An {{esql}} visualization on your dashboard, or the intent to create one
