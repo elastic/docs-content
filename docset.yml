@@ -4,6 +4,24 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+cta:
+  monitor-kubernetes:
+    button:
+      label: Monitor Kubernetes free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  monitor-aws:
+    button:
+      label: Monitor AWS free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+
 exclude:
   - 'README.md'
   - 'changelog/**'
