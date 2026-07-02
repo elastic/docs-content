@@ -31,23 +31,25 @@ To add controls to a dashboard, you need:
 
 ## Control types [control-types]
 
-There are four types of controls:
+You can add three kinds of controls:
 
-* **Options list**: A dropdown that filters data by one or more selected values.
-  For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field to display only the logs generated from `osx` and `ios` operating systems.
+* **Control**: A filter based on a [data view](../find-and-organize/data-views.md) field. When you create it, you choose one of two types:
 
-  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
+  * **Options list**: A dropdown that filters data by one or more selected values.
+    For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field to display only the logs generated from `osx` and `ios` operating systems.
 
-* **Range slider**: A slider that filters data within a specified range of values. Only compatible with numeric fields.
-  For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field to display only the log data from 9:00 AM to 5:00 PM.
+    ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
 
-  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
+  * **Range slider**: A slider that filters data within a specified range of values. Only compatible with numeric fields.
+    For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field to display only the log data from 9:00 AM to 5:00 PM.
+
+    ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
+
+* **Variable control**: An {{esql}}-powered control that binds to variables in {{esql}} visualization queries, enabling dynamic filtering, grouping, and function selection.
 
 * **Time slider**: A time range slider that filters data within a specified time range. Advance the range backward and forward, or animate the data change across the range.
 
   ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
-
-* **Variable control**: An {{esql}}-powered control that binds to variables in {{esql}} visualization queries, enabling dynamic filtering, grouping, and function selection.
 
 ## Next steps
 
