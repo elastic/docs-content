@@ -195,6 +195,24 @@ The symlink must be created on all data and master eligible nodes and be readabl
 If the symlink exists, it will be used by default by all S3 repositories that don't have explicit `client` credentials.
 
 
+#### Using EKS Pod Identity for authentication [eks-pod-identity]
+
+If you want to use [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) for authentication, you need to make the injected token readable by the S3 repository. EKS injects a token file into the pod and sets the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to point at it, but that file lives outside the S3 repository config directory and a repository can't read any files outside its config directory. Add a symlink to the token inside the config directory, then point `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` (or the `aws.containerAuthorizationTokenFile` system property) at the symlink so the AWS SDK reads the token through it. For example:
+
+```bash
+mkdir -p "${ES_PATH_CONF}/repository-s3"
+ln -s $AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE "${ES_PATH_CONF}/repository-s3/eks-pod-identity-token"
+export AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE="${ES_PATH_CONF}/repository-s3/eks-pod-identity-token"
+```
+
+::::{important}
+The symlink must be created on all data and master eligible nodes and be readable by the `elasticsearch` user. By default, {{es}} runs as user `elasticsearch` using uid:gid `1000:0`.
+::::
+
+
+{{es}} does not override `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` or `aws.containerAuthorizationTokenFile` itself, so the symlink and the repointed value must be in place before the node starts. Once configured, the token is used by default by all S3 repositories that don't have explicit `client` credentials, and it is re-read automatically when EKS rotates it.
+
+
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
 
 AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC's NAT instance. If your VPC's NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance's networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC's NAT instance.
