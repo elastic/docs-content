@@ -57,7 +57,7 @@ From the results table, you can:
     ::::
 
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Add or remove tags to organize and label the queries for future use.
-* Click the **View Details** icon {icon}`expand` to examine the query ID and statement.
+* Click the **View Details** {icon}`expand` icon to examine the query ID and statement.
 * Click the **View in Discover** {icon}`product_discover` icon to explore the results in Discover.
 * Click the **View in Lens** {icon}`app_lens` icon to navigate to Lens, where you can use the drag-and-drop **Lens** editor to create visualizations.
 * Click the **Timeline** {icon}`timeline` icon to investigate a single query result in Timeline or **Add to timeline investigation** to investigate all results. This option is only available for single query results.
