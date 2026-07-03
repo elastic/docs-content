@@ -73,6 +73,7 @@ When a dashboard has more than one control, making a selection in one control al
 
 ## Next steps
 
-* [Add controls to dashboards](add-controls.md): Add options list, range slider, and time slider controls to your dashboards.
+* [Add controls to dashboards](add-controls.md): Add options list and range slider controls to your dashboards.
+* [Add a time slider control](add-time-slider-controls.md): Add a control that filters time-based data across an adjustable range.
 * [Add variable controls with ES|QL](add-variable-controls.md): Create {{esql}}-powered controls for dynamic filtering and chaining.
 * [Dashboard control settings](dashboard-control-settings.md): Reference for all available control settings per type and version.

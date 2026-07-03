@@ -855,6 +855,9 @@ redirects:
           'add-variable-control':
           'esql-multi-values-controls': 'esql-multi-values-controls'
           'chain-variable-controls': 'chain-variable-controls'
+      - to: 'explore-analyze/visualize/add-time-slider-controls.md'
+        anchors:
+          'add-time-slider-controls': 'add-time-slider-controls'
       - to: 'explore-analyze/visualize/dashboard-control-settings.md'
         anchors:
           'configure-controls-settings': 'configure-controls-settings'

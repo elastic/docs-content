@@ -91,7 +91,7 @@ Label position
 
 Filtering
 :   - **Apply global filters to controls**: define whether controls apply or ignore filters from the dashboard's main filter bar.
-    - **Apply global time range to controls**: define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
+    - **Apply global time range to controls**: define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-time-slider-controls.md) rely on the global time range and don't work properly when this option is off.
 
 Selections
 :   - **Validate user selections**: when on, any selection that returns no data is ignored.

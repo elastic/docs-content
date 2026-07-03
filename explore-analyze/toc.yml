@@ -320,6 +320,7 @@ toc:
       - file: visualize/dashboard-controls.md
         children:
           - file: visualize/add-controls.md
+          - file: visualize/add-time-slider-controls.md
           - file: visualize/add-variable-controls.md
           - file: visualize/dashboard-control-settings.md
       - file: visualize/canvas.md
