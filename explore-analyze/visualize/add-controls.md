@@ -31,45 +31,61 @@ To add Options list, Range slider, and Time slider controls to a dashboard, you 
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
-1. Open or create a new dashboard.
-2. Add a control:
+1. Open or create a dashboard.
+2. Open the **Create control** flyout:
 
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-3. Define the values available in the control:
+3. Choose how to populate the values available in the control:
+
+    - **Select a field**: base the control on a [data view](../find-and-organize/data-views.md) field. The control offers the values found in that field.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, or when you want to filter or otherwise shape the values the control offers.
+
+    Then select the matching option at the top of the flyout and configure it:
 
     ::::{tab-set}
-    :::{tab-item} Data view field
-    :sync: data-view
-    1. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the control.
+    :::{tab-item} Select a field
+    :sync: field
+    1. From the **Data view** dropdown, select the data view that contains the field you want to use.
     2. In the **Field** list, select the field you want to filter on.
     :::
 
-    :::{tab-item} ES|QL query
-    :sync: esql
-    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Populating values with a query helps with high-cardinality fields, where fetching every distinct value can slow the dashboard, and it lets you filter or shape the values the control offers. The query can also reference [variable controls](add-variable-controls.md) with the `?variable_name` syntax to chain filtering.
+    :::{tab-item} Write a query
+    :sync: query
+    ```{applies_to}
+    stack: ga 9.5
+    serverless: ga
+    ```
+    1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
+    2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
 
-    1. On the **Create control** flyout, select **Write a query**.
-    2. Write an {{esql}} query that returns a single column. The returned column determines the field the control is based on and the values it offers. Use a command such as `STATS BY` or `RENAME` to return a single column.
-    3. Select **Run query** to preview the values under **Values preview**. If the query returns more than one column, select a column from the list or narrow the query. If it returns no values, edit the query and run it again.
+    To chain filtering, reference a [variable control](add-variable-controls.md) in the query with the `?variable_name` syntax.
     :::
     ::::
 
-4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` For a query-based Range slider, the results set the slider's minimum and maximum values.
-5. Configure the control's label, selections, search, and additional settings. For the full list of available settings, refer to [Dashboard control settings](dashboard-control-settings.md).
-6. Select **Save**. The control can now be used.
-7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
-8. Save the dashboard.
+4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields.
 
-When you add several controls, their selections affect each other by default. How they interact depends on your version:
+    :::{tip}
+    :applies_to: {"serverless": "ga", "stack": "ga 9.5"}
+    When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
+    :::
+
+5. Configure how the control looks and behaves. You can give it a clearer label, allow single or multiple selections, adjust how its search matches values, and set whether it chains with other controls. The available settings depend on the control type; for the complete list, refer to [Dashboard control settings](dashboard-control-settings.md).
+6. Select **Save** to add the control to the dashboard. Viewers can now use it to filter the relevant panels.
+7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. An unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) filters only the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
+8. Save the dashboard to keep the control.
+
+### How selections affect other controls [controls-chaining]
+
+When a dashboard has more than one control, their selections interact.
 
 ::::{applies-switch}
 :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-A selection in one control narrows the options available in all other controls on the dashboard, regardless of their position in the grid, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of this default chaining, turn off its **Use global filters** setting when you create or edit it.
+A selection in one control narrows the options available in all other controls on the dashboard, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting.
 :::
 :::{applies-item} {"stack": "ga 9.0-9.3"}
-Controls are applied from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is enabled, the position of a control determines the options available in the next one.
+Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
 :::
 ::::
 
