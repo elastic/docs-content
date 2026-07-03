@@ -1,6 +1,10 @@
 1. While you edit your {{esql}} query, the autocomplete menu suggests adding a control when relevant or when you type `?` in the query. Select **Create control**.
 
-   ![{{esql}} query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png " =40%")
+   :::{image} /explore-analyze/images/esql-visualization-control-suggestion.png
+   :alt: ES|QL query prompting to add a control
+   :width: 40%
+   :screenshot:
+   :::
 
 2. A flyout opens to let you configure the control. Specify:
 

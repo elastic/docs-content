@@ -1,4 +1,5 @@
 ---
+navigation_title: Controls
 type: overview
 description: Learn about interactive filter controls for Kibana dashboards, including options lists, range sliders, time sliders, and ES|QL variable controls.
 applies_to:
@@ -21,18 +22,29 @@ You can add three kinds of controls:
   * **Options list**: A dropdown that filters data by one or more selected values.
     For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field to display only the logs generated from `osx` and `ios` operating systems.
 
-    ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](/explore-analyze/images/kibana-dashboard-controls-options-list.png "title =50%")
+    :::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
+    :alt: Options list control for the machine.os.keyword field with the osx and ios options selected
+    :width: 50%
+    :screenshot:
+    :::
 
   * **Range slider**: A slider that filters data within a specified range of values. Only compatible with numeric fields.
     For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field to display only the log data from 9:00 AM to 5:00 PM.
 
-    ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](/explore-analyze/images/kibana-dashboard-controls-range-slider.png "title =50%")
+    :::{image} /explore-analyze/images/kibana-dashboard-controls-range-slider.png
+    :alt: Range slider control for the hour_of_day field with a range of 9 to 17 selected
+    :width: 50%
+    :screenshot:
+    :::
 
 * **Variable control**: An {{esql}}-powered control that binds to variables in {{esql}} visualization queries, enabling dynamic filtering, grouping, and function selection.
 
 * **Time slider**: A time range slider that filters data within a specified time range. Advance the range backward and forward, or animate the data change across the range.
 
-  ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
+  :::{image} /explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif
+  :alt: Time slider control for the Last 7 days
+  :screenshot:
+  :::
 
 ## How controls apply to panels [controls-scope]
 

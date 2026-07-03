@@ -16,7 +16,11 @@ This method allows you to add the result table of your Discover {{esql}} query t
 
 A new panel appears on the dashboard with the results of the query along with any attached controls.
 
-![Importing Discover session with controls into a dashboard](/explore-analyze/images/import-discover-control-dashboard.png " =40%")
+:::{image} /explore-analyze/images/import-discover-control-dashboard.png
+:alt: Importing Discover session with controls into a dashboard
+:width: 40%
+:screenshot:
+:::
 
 **Method 2: Adding the Discover visualization** {applies_to}`{"stack": "ga 9.3", "serverless": "ga"}`
 
@@ -24,7 +28,11 @@ This method allows you to add the visualization of your Discover {{esql}} query 
 
 1. Next to the Discover visualization, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions).
 
-   ![Importing Discover visualization with controls into a dashboard](/explore-analyze/images/save-discover-viz-to-dashboard.png " =70%")
+   :::{image} /explore-analyze/images/save-discover-viz-to-dashboard.png
+   :alt: Importing Discover visualization with controls into a dashboard
+   :width: 70%
+   :screenshot:
+   :::
 
 1. Select the dashboard to add the visualization to. You can choose an existing dashboard or create one.
 
