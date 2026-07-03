@@ -327,3 +327,5 @@ subs:
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
   fedramp-il5: "FedRAMP IL5"
+release_notes:
+  - product: cloud-serverless
