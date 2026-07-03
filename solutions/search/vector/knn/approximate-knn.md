@@ -144,5 +144,5 @@ Approximate kNN always uses the [`dfs_query_then_fetch`]({{es-apis}}operation/op
 - [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
-- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

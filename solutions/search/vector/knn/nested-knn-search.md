@@ -665,6 +665,6 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 - [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
 - [Retrieval augmented generation (RAG)](../../rag.md): Learn how to retrieve relevant passages and combine them with generative AI models.
 - [Semantic search with `semantic_text`](../../semantic-search/semantic-search-semantic-text.md): Use managed semantic search when you do not need to store passage vectors in nested fields yourself.
-- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [Retrieve inner hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md): API reference for `inner_hits` options used to return matching nested passages.
 - [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

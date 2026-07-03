@@ -127,6 +127,8 @@ POST image-index/_search
 The filter is applied **during** approximate kNN search to ensure that `k` matching documents are returned. In contrast, post-filtering applies the filter **after** the approximate kNN step and can return fewer than `k` results, even when enough relevant documents exist.
 ::::
 
+### Filtering behavior and performance [filtering-behavior-and-performance]
+
 In approximate kNN search with an HNSW index, applying filters can decrease performance as the engine must explore more of the graph to gather enough candidates that satisfy the filter and reach `num_candidates`. This contrasts with conventional query filtering, where stricter filters often speed up queries.
 
 To avoid significant performance drawbacks, Lucene implements the following strategies per segment:
@@ -232,5 +234,5 @@ In this data set, the only document with `file-type = png` has the vector `[42, 
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
 - [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
 - [Hybrid search with `semantic_text`](../../hybrid-semantic-text.md): Follow a step-by-step tutorial for combining lexical and semantic search with reciprocal rank fusion.
-- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

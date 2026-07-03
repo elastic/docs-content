@@ -86,6 +86,6 @@ To run an exact kNN search, use a `script_score` query with a vector function.
 - [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
 - [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
 - [Bring your own dense vectors](../bring-own-vectors.md): Follow a hands-on tutorial for ingesting dense vector embeddings and searching them in {{es}}.
-- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [Vector search in {{es}}](../../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
 - [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md): API reference for exact kNN search, including supported vector functions and scoring options.
 - [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including the `index` option used in exact kNN search.
