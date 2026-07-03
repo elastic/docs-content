@@ -162,7 +162,7 @@ If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a 
 Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
 ::::
 
-### Swap sizing [#ece-alloc-swap-sizing]
+### Swap sizing [ece-alloc-swap-sizing]
 
 There is no fixed scalability recommendation for swap sizing, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE deployments. The minimum recommended swap space on ECE hosts is 512 MB.
 
