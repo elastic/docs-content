@@ -49,6 +49,8 @@ When you create a variable control from an {{esql}} panel, for example by select
 
 To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
 
+Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
+
 :::{tip}
 :applies_to: {"stack": "ga 9.5", "serverless": "ga"}
 In **Edit** mode, you can select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time, and you can select the label again to stop highlighting them. A variable control that no visualization uses displays a warning.
@@ -131,7 +133,7 @@ To chain variable controls, reference one control's variable in another control'
 When you select a value in a parent control, the child control's query reruns automatically. If the currently selected value in the child control is no longer available in the new result set, it is marked as invalid or incompatible.
 :::
 
-## Import a Discover query along with its controls [import-discover-query-controls]
+## Import a Discover query along with its controls into a dashboard [import-discover-query-controls]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
