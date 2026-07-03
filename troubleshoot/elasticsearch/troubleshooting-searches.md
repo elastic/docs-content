@@ -236,7 +236,7 @@ stack:
 
 [Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests.
 
-{applies_to}`stack: ga 9.5` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine query source. Query logging captures end-to-end request duration across all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration.
+{applies_to}`stack: preview 9.4` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine query source. Query logging captures end-to-end request duration across all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration.
 
 If you can't use query logging, you can enable [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) to help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
