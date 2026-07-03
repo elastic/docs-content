@@ -158,9 +158,9 @@ While Elasticsearch nodes generally run with [swap disabled](https://www.elastic
 
 If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
 
-:::{important}
+::::{important}
 Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
-:::
+::::
 
 ### Swap sizing [#ece-alloc-swap-sizing]
 
