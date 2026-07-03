@@ -47,7 +47,7 @@ From the results table, you can:
 
 
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Export results** to download the results in CSV, NDJSON, or JSON format. For query pack results, use a query row's actions menu to export that query's results.
-* Click **Add to Case** to add the query results to a new or existing case. If you ran a live query from an alert, the alert and query results are added to the case as comments.
+* Click **Add to Case** to add the query results to a new or existing case. If you run a live query from an alert, the alert and query results are added to the case as comments.
 
     ::::{note}
     If you add the results to a *new* case, you are prompted to specify the solution that you want the create the case within. Ensure you select the correct solution. From {{elastic-sec}}, you cannot access cases created in {{observability}} or Stack Management.
