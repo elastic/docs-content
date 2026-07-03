@@ -169,7 +169,7 @@ There is no fixed scalability recommendation for swap sizing, but 4 GB of swap p
 Set `vm.swappiness=1` so that swap is used only as a last resort.
 
 Furthermore, how you provision the swap space itself depends on your operating system and infrastructure provider —
-consult your OS or cloud provider's documentation for creating a swap file or partition.
+consult your OS or cloud provider's documentation for creating a swap file or partition. This is a topic out of Elastic support scope.
 
 ### Enabling swap [ece-alloc-enabling-swap]
 
