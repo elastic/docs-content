@@ -5,6 +5,22 @@ features:
   primary-nav: true
 
 cta:
+  monitor-kubernetes:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  monitor-aws:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
   azure-mp:
     button:
       label: Get started on Azure
