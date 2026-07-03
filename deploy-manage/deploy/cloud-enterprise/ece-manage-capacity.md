@@ -170,7 +170,7 @@ Set `vm.swappiness=1` so that swap is used only as a last resort.
 
 ### Enabling swap [ece-alloc-enabling-swap]
 
-Follow the host configuration steps for your OS below to enable swap.
+Follow the host configuration steps for your OS to enable swap:
 
 * [Ubuntu](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu)
 * [RHEL](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-rhel)
