@@ -42,8 +42,6 @@ The main way to create a variable control is while writing an {{esql}} query: th
 
 The variable is inserted into your query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
 
-Alternatively, create a variable control from the dashboard without starting from a query: select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
-
 Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 
 :::{tip}
