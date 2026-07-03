@@ -54,145 +54,143 @@ The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternativ
 
 ## Set up the EDOT gateway
 
-::::{stepper}
+:::::{stepper}
 
-:::{step} Create an {{es}} API key
+::::{step} Create an {{es}} API key
 
 The EDOT gateway authenticates to {{es}} using an API key.
 
 1. Find **API keys** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create API key**.
 3. Give the key a name (for example, `edot-gateway`) and assign it `auto_configure` and `create_doc` index privileges on the `logs-*.otel-*`, `metrics-*.otel-*`, and `traces-*.otel-*` indices.
-4. Copy the encoded key to use as the `ELASTIC_API_KEY` value in the gateway configuration.
+4. Copy the encoded key to use as the value of the `ELASTIC_API_KEY` environment variable in the gateway configuration.
 
-:::
+::::
 
-:::{step} Configure the EDOT gateway
+::::{step} Configure the EDOT gateway
 
-Set the following environment variables on the gateway host before starting the Collector:
+1. Set the following environment variables on the gateway host before starting the Collector:
 
-```bash
-export ELASTIC_ENDPOINT=https://your-elasticsearch:9200
-export ELASTIC_API_KEY=your-encoded-api-key
-```
+    ```bash
+    export ELASTIC_ENDPOINT=https://your-elasticsearch:9200
+    export ELASTIC_API_KEY=your-encoded-api-key
+    ```
 
-Create the following configuration file and save it as `gateway.yml` on the gateway host:
+2. Create the following configuration file and save it as `gateway.yml` on the gateway host:
 
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317
-      http:
-        endpoint: 0.0.0.0:4318
+    ```yaml
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
 
-connectors:
-  elasticapm: {}
+    connectors:
+      elasticapm: {}
 
-processors:
-  elasticapm: {}
+    processors:
+      elasticapm: {}
 
-exporters:
-  elasticsearch/otel:
-    endpoints:
-      - ${env:ELASTIC_ENDPOINT}
-    api_key: ${env:ELASTIC_API_KEY}
-    mapping:
-      mode: otel
+    exporters:
+      elasticsearch/otel:
+        endpoints:
+          - ${env:ELASTIC_ENDPOINT}
+        api_key: ${env:ELASTIC_API_KEY}
+        mapping:
+          mode: otel
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [elasticapm]
-      exporters: [elasticapm, elasticsearch/otel]
-    metrics:
-      receivers: [otlp]
-      processors: []
-      exporters: [elasticsearch/otel]
-    metrics/aggregated-otel-metrics:
-      receivers: [elasticapm]
-      processors: []
-      exporters: [elasticsearch/otel]
-    logs:
-      receivers: [otlp]
-      processors: []
-      exporters: [elasticsearch/otel]
-```
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [elasticapm]
+          exporters: [elasticapm, elasticsearch/otel]
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [elasticsearch/otel]
+        metrics/aggregated-otel-metrics:
+          receivers: [elasticapm]
+          processors: []
+          exporters: [elasticsearch/otel]
+        logs:
+          receivers: [otlp]
+          processors: []
+          exporters: [elasticsearch/otel]
+    ```
 
-Key components in this configuration:
+    Key components in this configuration:
 
-* **`elasticapm` processor** (under `processors`): Enriches spans with attributes required by the {{product.apm}} UI.
-* **`elasticapm` connector** (under `connectors`): Generates pre-aggregated {{product.apm}} metrics from trace data. It appears as an exporter in the `traces` pipeline and as a receiver in the `metrics/aggregated-otel-metrics` pipeline.
-* **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). The exporter handles batching automatically using `sending_queue`. Refer to [Performance and batching](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md#performance-and-batching) to customize throughput for your environment.
+    * **`elasticapm` processor** (under `processors`): Enriches spans with attributes required by the {{product.apm}} UI.
+    * **`elasticapm` connector** (under `connectors`): Generates pre-aggregated {{product.apm}} metrics from trace data. It appears as an exporter in the `traces` pipeline and as a receiver in the `metrics/aggregated-otel-metrics` pipeline.
+    * **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). The exporter handles batching automatically using `sending_queue`. Refer to [Performance and batching](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md#performance-and-batching) to customize throughput for your environment.
 
-:::{note}
-The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
+    :::{note}
+    The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send data to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
 
-Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
-:::
+    Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
+    :::
 
-Start the EDOT gateway. The EDOT Collector is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
+3. Start the EDOT gateway. The EDOT Collector is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
 
-```bash
-elastic-agent otel --config gateway.yml
-```
+    ```bash
+    elastic-agent otel --config gateway.yml
+    ```
 
-:::
+::::
 
-:::{step} Configure the contrib Collector
+::::{step} Configure the contrib Collector
 
-On each contrib Collector host, configure the OTLP exporter to point to the EDOT gateway. Add or update the `exporters` and `service` sections in your existing `config.yml`:
+1. Configure the OTLP exporter to point to the EDOT gateway. On each contrib Collector host, add or update the `exporters` and `service` sections in your existing `config.yml`:
 
-```yaml
-exporters:
-  otlp:
-    endpoint: "gateway-host:4317"
-    tls:
-      insecure: true  # Set to `false` and configure `ca_file` for production
+    ```yaml
+    exporters:
+      otlp:
+        endpoint: "gateway-host:4317"
+        tls:
+          insecure: true  # Set to `false` and configure `ca_file` for production
 
-service:
-  pipelines:
-    traces:
-      exporters: [otlp]
-    metrics:
-      exporters: [otlp]
-    logs:
-      exporters: [otlp]
-```
+    service:
+      pipelines:
+        traces:
+          exporters: [otlp]
+        metrics:
+          exporters: [otlp]
+        logs:
+          exporters: [otlp]
+    ```
 
-Replace `gateway-host` with the hostname or IP of your EDOT gateway host. In production, configure TLS to secure communication between the contrib Collector and the gateway.
+    Replace `gateway-host` with the hostname or IP of your EDOT gateway host. In production, set `insecure: false` and configure `ca_file` with the path to the CA certificate used to secure communication between the contrib Collector and the gateway. Refer to the [TLS configuration settings](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md) for the full list of options.
 
-:::{tip}
-Set the `deployment.environment` resource attribute in your contrib Collector so that services appear under the correct environment in the {{kib}} {{product.apm}} Service Map. Without it, all services show as "unset" in the environment selector.
+2. Set the `deployment.environment` resource attribute in your contrib Collector so that services appear under the correct environment in the {{kib}} {{product.apm}} Service Map. Without it, all services show as "unset" in the environment selector:
 
-```yaml
-processors:
-  resource:
-    attributes:
-      - key: deployment.environment
-        action: insert
-        value: production
-```
+    ```yaml
+    processors:
+      resource:
+        attributes:
+          - key: deployment.environment
+            action: insert
+            value: production
+    ```
 
-Refer to [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md) for more details.
-:::
+    Refer to [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md) for more details.
 
-Restart the contrib Collector to apply the changes.
+3. Restart the contrib Collector to apply the changes.
 
-:::
+::::
 
-:::{step} Verify data in {{kib}}
+::::{step} Verify data in {{kib}}
 
 After starting both Collectors, wait a few minutes for data to appear. Then verify in {{kib}}:
 
-* Navigate to **{{observability}}** → **{{product.apm}}** → **Services** to confirm your services appear.
-* Navigate to **{{observability}}** → **{{product.apm}}** → **Service Map** to confirm environment-based filtering works.
-* Navigate to **Discover** and check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams for incoming data.
+* Find **Applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Services** to confirm your services appear.
+* From **Applications**, go to **Service Map** to confirm environment-based filtering works.
+* Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams for incoming data.
 
 If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
 
-:::
-
 ::::
+
+:::::
