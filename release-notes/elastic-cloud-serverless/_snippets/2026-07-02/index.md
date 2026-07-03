@@ -2,7 +2,7 @@
 
 <!-- _Released: July 2, 2026_ -->
 ### Features and enhancements [elastic-2026-07-02-features-enhancements]
-* Add region policy management for inference preferences. [#274745](https://github.com/elastic/kibana/pull/274745)
+
 * Allow users to snooze and unsnooze individual alert instances. [#264090](https://github.com/elastic/kibana/pull/264090)
 * Add cases analytics data view for analyzing cases in Discover and Lens. [#269581](https://github.com/elastic/kibana/pull/269581)
 * Add workflow step to push cases to external connectors. [#267539](https://github.com/elastic/kibana/pull/267539)
