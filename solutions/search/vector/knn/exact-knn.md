@@ -4,12 +4,11 @@ description: Run exact brute-force k-nearest neighbor (kNN) vector search in Ela
 applies_to:
   stack:
   serverless:
-products:
-  - id: elasticsearch
-  - id: cloud-serverless
 ---
 
 # Exact kNN search [exact-knn]
+
+Exact kNN search computes similarity between the query vector and every matching document, so results are fully accurate but latency increases with corpus size. Use it for small datasets, pre-filtered subsets, or when you need precise scoring without approximate indexing. For most production workloads, prefer [Approximate kNN search](approximate-knn.md). 
 
 To run an exact kNN search, use a `script_score` query with a vector function.
 
@@ -49,7 +48,7 @@ To run an exact kNN search, use a `script_score` query with a vector function.
 3. Use the [search API]({{es-apis}}operation/operation-search) to run a `script_score` query containing a [vector function](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md#vector-functions).
 
     ::::{tip}
-    To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
+    Specify a filter query in the `script_score.query` parameter to limit the number of matched documents passed to the vector function. If needed, you can use a [`match_all` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
     ::::
 
     ```console
@@ -79,14 +78,14 @@ To run an exact kNN search, use a `script_score` query with a vector function.
     }
     ```
 
-A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vector, as measured by a similarity metric.
+## Resources
 
-Common use cases for kNN include:
-
-* Relevance ranking based on natural language processing (NLP) algorithms
-* Product recommendations and recommendation engines
-* Similarity search for images or videos
-
-::::{tip}
-Check out our [hands-on tutorial](../bring-own-vectors.md) to learn how to ingest dense vector embeddings into Elasticsearch.
-::::
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run fast, scalable approximate kNN search for most production workloads.
+- [Build search queries](build-search-queries.md): Learn how to construct approximate kNN queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+- [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
+- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
+- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
+- [Bring your own dense vectors](../bring-own-vectors.md): Follow a hands-on tutorial for ingesting dense vector embeddings and searching them in {{es}}.
+- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [`script_score` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md): API reference for exact kNN search, including supported vector functions and scoring options.
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector field mapping, including the `index` option used in exact kNN search.

@@ -42,8 +42,9 @@ toc:
                     children:
                       - file: search/vector/knn/approximate-knn.md
                         children:
-                          - file: search/vector/knn/optimize-performance-accuracy.md
                           - file: search/vector/knn/build-search-queries.md
+                          - file: search/vector/knn/nested-knn-search.md
+                          - file: search/vector/knn/optimize-performance-accuracy.md
                       - file: search/vector/knn/exact-knn.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md

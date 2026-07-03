@@ -8,6 +8,8 @@ applies_to:
 
 # Optimize performance and accuracy [optimize-knn-performance-accuracy]
 
+Approximate kNN search balances query speed, result quality, and resource use, and small configuration changes can have a large impact on latency, recall, and storage costs in production.
+
 This page covers trade-offs among search speed, recall, indexing cost, vector storage, quantization, and rescoring for approximate kNN search.
 
 ## Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
@@ -203,10 +205,10 @@ Due to the reduced precision of bfloat16, any vectors retrieved from the index m
 
 ## Oversampling and rescoring for quantized vectors [dense-vector-knn-search-rescoring]
 
-When using [quantized vectors](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for kNN search, can optionally rescore results to balance performance and accuracy, by doing:
+When using [quantized vectors](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for kNN search, you can optionally rescore results to balance performance and accuracy, by doing:
 
-* **Oversampling** — retrieving more candidates per shard.
-* **Rescoring** — recalculating scores on those oversampled candidates using the original (non-quantized) vectors.
+- **Oversampling**: retrieving more candidates per shard.
+- **Rescoring**: recalculating scores on those oversampled candidates using the original (non-quantized) vectors.
 
 Because final scores are computed with the original `float` vectors, rescoring combines:
 
@@ -352,3 +354,14 @@ POST /my-index/_search
 3. The number of candidates to use for the initial approximate `knn` search. This will search using the quantized vectors and return the top 20 candidates per shard to then be scored
 4. The script to score the results. Script score will interact directly with the originally provided float32 vector.
 
+## Resources
+
+- [Approximate kNN search](approximate-knn.md): Learn how to map, index, and run a basic approximate kNN search, including indexing considerations and limitations.
+- [Build search queries](build-search-queries.md): Learn how to construct approximate kNN queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+- [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
+- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
+- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
+- [Tune approximate kNN search](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md): Learn production sizing, memory, indexing, and cluster configuration for approximate kNN search.
+- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [`dense_vector` field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md): API reference for vector mapping options, including `index_options` and quantization settings.
+- [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.

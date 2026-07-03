@@ -8,16 +8,32 @@ applies_to:
 
 # Approximate kNN search
 
-Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where low latency matters more than perfect recall. For tuning trade-offs among speed, accuracy, storage, and quantization, refer to [Optimize performance and accuracy](optimize-performance-accuracy.md). For query patterns such as filtering, hybrid retrieval, and nested vectors, refer to [Build search queries](build-search-queries.md).
+Approximate kNN search uses graph-based or clustered index structures to find similar vectors quickly at scale. Use it for most production workloads where low latency matters more than perfect recall. This page covers approximate kNN search methods, running a basic approximate kNN search, indexing considerations, and limitations.
+
+::::{tip}
+If you use `semantic_text` fields, query them with a [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) for the simplest approach, or use the [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-with-semantic-text) when you need more control over the search.
+::::
 
 
 ::::{warning}
 Approximate kNN search has specific resource requirements. For instance, for HNSW, all vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
 
-To run an approximate kNN search:
+## Approximate kNN search methods [approximate-knn-methods]
 
-1. Map one or more `dense_vector` fields. Approximate kNN search requires the following mapping options:  
+{{es}} provides three ways to run approximate kNN search, with different field type support:
+
+| Method | Supported field types | Use case |
+|---|---|---|
+| [Top-level `knn` option](#approximate-knn-example) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Standalone kNN search or hybrid search with score fusion |
+| [`knn` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) | Composable with other queries in a `bool` clause. Required for `semantic_text` fields |
+| [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/knn-retriever.md) | [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) | Use within a retriever pipeline for ranking and result merging |
+
+## Run a basic approximate kNN search [approximate-knn-example]
+
+Follow these steps to map `dense_vector` fields, index embeddings, and run a basic approximate kNN query.
+
+1. Map one or more `dense_vector` fields. Approximate kNN search requires the following mapping options:
 
     * A `similarity` value. This value determines the similarity metric used to score documents based on similarity between the query and document vector. For a list of available metrics, see the [`similarity`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) parameter documentation. The `similarity` setting defaults to `cosine`.
 
@@ -121,3 +137,12 @@ PUT image-index
 Approximate kNN always uses the [`dfs_query_then_fetch`]({{es-apis}}operation/operation-search) search type to gather the global top `k` matches across shards. You can’t set `search_type` explicitly for kNN search.
 ::::
 
+## Resources
+
+- [kNN search on {{es}}](../knn.md): Explore common use cases, prerequisites for kNN search, and a comparison of approximate and exact kNN methods.
+- [Build search queries](build-search-queries.md): Learn how to construct approximate kNN queries for filtering, hybrid retrieval, semantic search, multiple vector fields, and similarity thresholds.
+- [Nested kNN search](nested-knn-search.md): Learn how to run approximate kNN search on nested vectors for passage retrieval, filtering, inner hits, and chunked content.
+- [Optimize performance and accuracy](optimize-performance-accuracy.md): Learn how to tune search speed, recall, vector storage, quantization, and rescoring for approximate kNN search.
+- [Exact kNN search](exact-knn.md): Learn how to run exact brute-force kNN search with `script_score` queries for small datasets or precise scoring.
+- [Vector search in {{es}}](../vector.md): Learn the core concepts and terminology for vector search in {{es}}, including embeddings, field types, and how vector retrieval fits with other search strategies.
+- [Knn query](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md): API reference for the `knn` query, including parameters, `query_vector_builder` options, and usage with `dense_vector` and `semantic_text` fields.
