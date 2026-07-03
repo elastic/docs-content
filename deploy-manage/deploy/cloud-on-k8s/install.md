@@ -52,8 +52,12 @@ To upgrade ECK, refer to [](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md).
 
 Elastic has partnered with [Chainguard](https://www.chainguard.dev/) to provide hardened container images based on [Wolfi](https://wolfi.dev), a minimal, security-focused Linux distribution designed for containerized environments. These images significantly reduce the CVE footprint of Elastic containers by including only the application and its necessary runtime dependencies. For background on this initiative, refer to the blog post [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
-Since ECK 2.15, the ECK operator image is built on Wolfi by default. No additional configuration is required — pulling the standard operator image from `docker.elastic.co` already provides a hardened, Wolfi-based container.
+ECK operator images are hardened in different ways depending on the variant:
+
+* The **standard** operator image has been hardened and built on Wolfi since ECK 2.15. No additional configuration is required — pulling the standard operator image from `docker.elastic.co` already provides a hardened, Wolfi-based container.
+* The **UBI** operator image is hardened following Red Hat's Universal Base Image (UBI) requirements.
+* The **FIPS** operator image is hardened following FIPS 140-2 requirements. Refer to [Deploy a FIPS-compatible version of ECK](./deploy-fips-compatible-version-of-eck.md) for details.
 
 ::::{note}
-Only images distributed through `docker.elastic.co` are officially supported by Elastic. Third-party hardened image sources, such as Docker Hardened Images (DHI) on Docker Hub, are not maintained by Elastic and fall outside the scope of Elastic support.
+Only operator images distributed through `docker.elastic.co`, as well as the official [Red Hat Certified Operator](https://catalog.redhat.com/software/operators/detail/5f32f067651c4c0bcecf1bfe) images published on `catalog.redhat.com`, are officially supported by Elastic. Third-party hardened image sources, such as Docker Hardened Images (DHI) on Docker Hub, are not maintained by Elastic and fall outside the scope of Elastic support.
 ::::
