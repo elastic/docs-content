@@ -30,19 +30,19 @@ To add variable controls to a dashboard, you need:
 
 ## Add variable controls [create-variable-control]
 
-Variable controls act as variables in your {{esql}} visualization queries. When you write an {{esql}} query, the autocomplete suggests inserting a control for field values, field names, function configuration, or function names.
-
-Only **Options lists** are supported for variable controls. Options can be:
+Variable controls act as variables in your {{esql}} visualization queries. Only **Options lists** are supported. A control's options can be:
 
 - Values or fields, either static or defined by a query.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1` Functions.
 
+The main way to create a variable control is while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
+
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
-When you create a control from a query, the variable is inserted into that query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
+The variable is inserted into your query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
 
-To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
+Alternatively, create a variable control from the dashboard without starting from a query: select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
 
 Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 
