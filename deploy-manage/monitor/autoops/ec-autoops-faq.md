@@ -48,6 +48,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
+* [Who has access to the data gathered from my cluster?](#data-privacy)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
 
 ## General AutoOps questions
@@ -180,6 +181,13 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
     :::
     ::::
+
+$$$data-privacy$$$**Who has access to the data gathered from my cluster?**
+:   You control access to your data by assigning [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_connected_cluster_access_roles). Users in your organization with the appropriate permissions can view cluster metrics, health events, and performance visualizations in AutoOps.
+
+    A limited number of Elastic employees have access to the {{ecloud}} production environment for maintenance on a need-to-know basis. If you request Elastic Support, you can optionally grant Support engineers read-only, temporary access to your data so they can troubleshoot using the same context you see.
+
+    For more information, refer to the [AutoOps in Cloud Connect privacy datasheet](https://www.elastic.co/pdf/elastic-privacy-datasheet-autoops-cloud-connect.pdf).
 
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
 :   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
