@@ -54,9 +54,9 @@ To add interactive Options list and Range slider controls, create the controls, 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
 
 5. Configure how the control looks and behaves. You can give it a clearer label, allow single or multiple selections, adjust how its search matches values, and set whether it chains with other controls. The available settings depend on the control type; for the complete list, refer to [Dashboard control settings](dashboard-control-settings.md).
-6. Select **Save** to add the control to the dashboard. Viewers can now use it to filter the relevant panels.
+6. Select **Save** to add the control to the dashboard. The control appears right away in **Edit** mode, where you can test it and adjust its settings before viewers see it.
 7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. An unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) filters only the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
-8. Save the dashboard to keep the control.
+8. Save the dashboard to keep the control. Viewers can now use it to filter the relevant panels.
 
 ## Edit controls [edit-controls]
 
