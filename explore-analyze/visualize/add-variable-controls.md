@@ -35,7 +35,7 @@ Variable controls act as variables in your {{esql}} visualization queries. Only 
 - Values or fields, either static or defined by a query.
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1` Functions.
 
-The main way to create a variable control is while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
+You create a variable control while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
