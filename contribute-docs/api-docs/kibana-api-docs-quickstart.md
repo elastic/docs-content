@@ -94,13 +94,36 @@ options: {
 
 The `availability` option includes two fields:
 
-- **`stability`**: Indicates the lifecycle state of the API
-  - `'experimental'` → Technical preview; can change or be removed in future versions
-  - `'stable'` (default) → Generally available (GA); stable for production use
-- **`since`**: The version when the API was first added (for example, `'9.2.0'`)
+- **`stability`**: Sets the lifecycle state. The value maps to the label shown in the API docs.
+  - `'experimental'` renders as **Experimental**. The API can change or be removed in future versions.
+  - `'tech_preview'` renders as **Technical Preview**.
+  - `'stable'` (default) renders as **Generally available**. The API is stable for production use.
+- **`since`**: The version when the API was first added, for example `'9.2.0'`. The version appears in the {{stack}} docs and is omitted from the serverless docs.
 
-The `availability` option is only available at the API (route) level. 
-For individual parameters, you must manually document version and lifecycle information in the parameter's description field.
+You can apply the `availability` option at two levels:
+
+- **Route level**: in the route's `options`, as shown above.
+- **Parameter or property level**: in a schema field's `meta`, using the same `stability` and `since` fields.
+
+To document a single parameter or property, add `availability` to its `meta`:
+
+```typescript
+access_control: schema.maybe(
+  schema.object(
+    {
+      // properties
+    },
+    {
+      meta: {
+        availability: { stability: 'tech_preview', since: '9.5.0' },
+        description: 'Optional conversation access control. Defaults to private.',
+      },
+    }
+  )
+),
+```
+
+The generator emits an `x-state` value on the property, so you don't need to write the version or lifecycle status into the description text.
 
 :::{note}
 **CI will automatically regenerate the OpenAPI files when you push your `.ts` changes.** The next two steps show how to capture the snapshot and add examples locally, which is useful for validating changes before pushing or debugging issues.
