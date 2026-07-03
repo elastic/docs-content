@@ -81,11 +81,7 @@ To chain variable controls, reference one control's variable in another control'
 
 **Example**: You create a dashboard that analyzes web traffic by region and IP address. Next, you want to see only the IP addresses that are active in a selected region, and then analyze traffic patterns for a specific IP, all without filtering the entire dashboard by region.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltf697c4ba34f1baf8/6967d6ca03b22700081fadb3/dashboard-chaining-variable-controls.gif
-:alt: Chaining controls filtering an ES|QL visualization in a dashboard
-:width: 75%
-:screenshot:
-:::
+![Chaining controls filtering an ES|QL visualization in a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltf697c4ba34f1baf8/6967d6ca03b22700081fadb3/dashboard-chaining-variable-controls.gif "=75%")
 
 1. Create the first control that will be referenced in other controls.
 
