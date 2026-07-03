@@ -34,9 +34,13 @@ You can add three kinds of controls:
 
   ![Time slider control for the Last 7 days](/explore-analyze/images/dashboard_timeslidercontrol_8.17.0.gif)
 
-## Pinned and unpinned controls [pinned-unpinned-controls]
+## How controls apply to panels [controls-scope]
 
-Where you place a control determines how it behaves:
+A control doesn't affect every panel on the dashboard. What it affects depends on where you place it and its type.
+
+### Pinned and unpinned controls [pinned-unpinned-controls]
+
+Where you place a control determines its reach:
 
 * **Pinned** controls sit in the dashboard header, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
 * **Unpinned** controls sit in the dashboard body like any other panel. You can move, resize, and arrange them, and place one inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to just that section.
@@ -48,9 +52,9 @@ You can pin or unpin a control at any time from its panel menu. For the steps, r
 In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
 :::
 
-## How controls apply to panels [controls-scope]
+### Scope by control type [controls-scope-by-type]
 
-A control doesn't necessarily affect every panel on the dashboard. What it affects depends on its type:
+Different control types target different panels:
 
 * **Options list** and **Range slider** controls filter the panels that use the control's [data view](../find-and-organize/data-views.md) field. Panels built on data that doesn't include that field aren't affected.
 * The **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
