@@ -69,10 +69,7 @@ Different control types target different panels:
 
 ### Chaining between controls [controls-chaining]
 
-When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior is called chaining.
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Controls chain automatically: a selection in one narrows the options in all the others, including pinned controls. Controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) chain only with other controls in the same section. To opt a control out, turn off its **Use global filters** setting when you [add or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
-* {applies_to}`stack: ga 9.0-9.3` Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
+When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior, called chaining, is on by default. You can change how controls chain in the [control settings](dashboard-control-settings.md#configure-controls-settings).
 
 ## Next steps
 

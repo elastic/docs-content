@@ -80,7 +80,7 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 **Chaining**
 
-Controls are always chained: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
+Controls are chained by default: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
 
 **Pinned control display**
 
@@ -108,7 +108,7 @@ Available settings:
   - **Apply global time range to controls**: Define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
 - **Selections**:
   - **Validate user selections**: When on, any selection that returns no data is ignored.
-  - **Chain controls**: When on, controls apply sequentially from left to right and line by line. A selection in one control narrows the options in the next.
+  - **Chain controls**: On by default. When on, controls apply sequentially from left to right and line by line, so a selection in one control narrows the options in the next.
   - **Apply selections automatically**: When on, the dashboard updates as soon as a selection is made in a control. When off, users must select **Apply** to apply pending selections.
 
 To remove all controls from the dashboard, select **Delete all**.
