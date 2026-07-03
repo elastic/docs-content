@@ -1,4 +1,5 @@
 ---
+description: Inspect an entity's risk summary, resolution group, insights, and connection graph from the entity details flyout in Elastic Security.
 applies_to:
   stack: all
   serverless:
@@ -17,7 +18,7 @@ products:
 You can learn more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
 
 * The Alerts table
-* The Entity Analytics overview
+* The **Entity analytics** page
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
@@ -32,7 +33,7 @@ The entity details flyout includes the following sections:
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed data](#observed-data), which displays entity details.
-* {applies_to}`stack: removed =9.4, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
+* {applies_to}`stack: removed 9.4+, ga 9.0-9.3` {applies_to}`serverless: removed` [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
 
 :::{image} /solutions/images/security-host-details-flyout.png
 :alt: Host details flyout
@@ -87,7 +88,7 @@ To expand the entity risk summary section, click **View risk contributions**. Th
 * Non-alert risk inputs and their contribution scores, including: 
   * Asset criticality level
   * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
-  * {applies_to}`stack: removed =9.4, ga =9.3, preview 9.1-9.2` Privileged user status
+  * {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
 
 * The top 10 alerts that contributed to the latest risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the risk scoring calculation, the remaining alerts' aggregate contribution score is displayed below the **Alerts** table.
 
@@ -133,7 +134,7 @@ This section displays details such as the entity ID, when the entity was first a
 
 ### Asset Criticality
 ```yaml {applies_to}
-stack: removed =9.4, ga 9.0-9.3
+stack: removed 9.4+, ga 9.0-9.3
 serverless: removed
 ```
 
