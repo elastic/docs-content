@@ -18,6 +18,7 @@ This section focuses on the allocator role, and explains how to plan its capacit
 * [CPU quotas](#ece-alloc-cpu)
 * [Processors setting](#ece-alloc-processors-setting)
 * [Storage](#ece-alloc-storage)
+* [Swap consideration](#ece-alloc-swap-consideration)
 
 ::::{important}
 ECE does not support hot-adding of resources to a running node.  When increasing CPU, memory, or disk allocated to an ECE node, a restart is needed to use the additional resources.
@@ -151,4 +152,27 @@ You can change the value of the disk multiplier at different levels:
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
 
+## Swap consideration [#ece-alloc-swap-consideration]
+
+While Elasticsearch nodes generally run with [swap disabled](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html), ECE hosts should have swap enabled for stability reasons.
+
+If an ECE host runs out of memory, the Linux OOM killer will terminate a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
+
+:::{important}
+Swap should be treated as an emergency safety net only — not as a way to overcommit memory or reduce host RAM. If a container runtime process (Docker or Podman) runs on swap, it can cause allocator failures due to API timeouts (visible as errors in `allocator.log`). Always ensure allocators are not over-allocated so the OS does not routinely rely on swap.
+:::
+
+### Swap sizing [#ece-alloc-swap-sizing]
+
+There is no fixed scalability recommendation for swap sizing, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE deployments. The minimum recommended swap space on ECE hosts is 512 MB.
+
+Set `vm.swappiness=1` so that swap is used only as a last resort.
+
+### Enabling swap [#ece-alloc-enabling-swap]
+
+Follow the host configuration steps for your OS below to enable and persist swap space.
+
+* [Ubuntu](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-ubuntu)
+* [RHEL](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-rhel)
+* [SUSE](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/configure-host-suse)
 
