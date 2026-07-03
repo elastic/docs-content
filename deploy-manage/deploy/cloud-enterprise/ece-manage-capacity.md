@@ -168,7 +168,7 @@ There is no fixed scalability recommendation for swap sizing, but 4 GB of swap p
 
 Set `vm.swappiness=1` so that swap is used only as a last resort.
 
-### Enabling swap [#ece-alloc-enabling-swap]
+### Enabling swap [ece-alloc-enabling-swap]
 
 Follow the host configuration steps for your OS below to enable swap.
 
