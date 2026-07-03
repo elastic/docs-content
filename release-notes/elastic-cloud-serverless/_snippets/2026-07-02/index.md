@@ -15,7 +15,7 @@
 
 ### Fixes [elastic-2026-07-02-fixes]
 * Fix incorrect handling of environment in service logs. [#275555](https://github.com/elastic/kibana/pull/275555) [#274661](https://github.com/elastic/kibana/issues/274661)
-* Fix Workflows while loops failing when referenced step output exceeds 10KB. [#275041](https://github.com/elastic/kibana/pull/275041)
+* Fix Workflows `while` loops failing when referenced step output exceeds 10KB. [#275041](https://github.com/elastic/kibana/pull/275041)
 * Fix Agent Builder not finding Google Drive files owned by a shared drive. [#274303](https://github.com/elastic/kibana/pull/274303)
 * Fix missing manual input dialog for workflow executions in Elastic Security. [#271586](https://github.com/elastic/kibana/pull/271586)
 * Fix shared API keys invalidated when one referencing task is removed. [#275157](https://github.com/elastic/kibana/pull/275157)
