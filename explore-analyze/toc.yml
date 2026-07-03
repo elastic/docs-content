@@ -288,6 +288,8 @@ toc:
           - file: dashboards/duplicate-dashboards.md
           - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
+        children:
+          - file: dashboards/manage-dashboards-as-code.md
       - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
         children:
