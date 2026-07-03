@@ -21,7 +21,7 @@ To add a time slider control to a dashboard, you need:
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) with a time field, so the dashboard has time-based data to filter
 
-A dashboard supports only one time slider control, and it can't be placed freely on the dashboard's grid: it always stays pinned to the dashboard header.
+A dashboard supports only one time slider control, and it can't be placed freely on the dashboard's grid: it always stays pinned to the top of the dashboard.
 
 ## Add a time slider control [add-time-slider-steps]
 

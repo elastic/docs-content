@@ -54,7 +54,7 @@ A control acts on the panels relevant to it, not the whole dashboard. And when a
 
 Where you place a control determines its reach:
 
-* **Pinned** controls are placed in the dashboard header, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
+* **Pinned** controls are placed at the top of the dashboard, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Unpinned** controls are placed in the dashboard body like any other panel, and you can move, resize, and arrange them. They apply to every panel on the dashboard they're relevant for, unless you place one inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), where its filters apply only to the relevant panels in that section.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` You can pin or unpin a control at any time from its panel menu. For the steps, refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
