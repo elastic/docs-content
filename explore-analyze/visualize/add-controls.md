@@ -58,9 +58,10 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 ## Manage Options list and Range slider controls [manage-controls]
 
-After a control is on your dashboard, you can change its settings, reset its selections, move it, or delete it.
+After a control is on your dashboard, you can change its settings, reset its selections, move it, or delete it. How you access these actions depends on your version:
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select an action:
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select an action.
+- {applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal its action icons.
 
 | Action | Description |
 | --- | --- |
@@ -68,5 +69,3 @@ After a control is on your dashboard, you can change its settings, reset its sel
 | **Clear control** | Reset the control's selections without changing its settings. |
 | **Unpin** or **Pin to Dashboard** {applies_to}`stack: ga 9.4` | Move the control between the dashboard body and header. |
 | **Remove** | Delete the control from the dashboard. |
-
-{applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal icons to edit, clear, or delete it.
