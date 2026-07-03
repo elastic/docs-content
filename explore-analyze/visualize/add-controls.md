@@ -32,16 +32,10 @@ To add interactive Options list and Range slider controls, create the controls, 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` By default, a control is based on a data view field, as described in the following steps. You can also [populate its values with an {{esql}} query](#populate-control-values-with-esql) instead.
 
 1. Open or create a new dashboard.
-2. Add a control.
+2. Add a control:
 
-    ::::{applies-switch}
-    :::{applies-item} {"serverless": "ga", "stack": "ga 9.2"}
-    In **Edit** mode, select **Add** > **Controls** > **Control**.
-    :::
-    :::{applies-item} {"stack": "ga 9.0-9.1"}
-    In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
-    :::
-    ::::
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control**.
+    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the control.
 4. In the **Field** list, select the field you want to filter on.
@@ -92,19 +86,11 @@ The time slider must be pinned to the dashboard header. It is not available as a
 :::
 
 1. Open or create a new dashboard.
-2. Add a time slider control.
+2. Add a time slider control:
 
-    ::::{applies-switch}
-    :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-    In **Edit** mode, select **Add** > **Controls** > **Time slider**.
-    :::
-    :::{applies-item} {"stack": "ga 9.2-9.3"}
-    In **Edit** mode, select **Add** > **Controls** > **Time slider control**.
-    :::
-    :::{applies-item} {"stack": "ga 9.0-9.1"}
-    In **Edit** mode, select **Controls** > **Add time slider control**.
-    :::
-    ::::
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
+    - {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Time slider control**.
+    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. Save the dashboard. The control can now be used. To change its range, [change the global time filter](../query-filter/filtering.md).
 
