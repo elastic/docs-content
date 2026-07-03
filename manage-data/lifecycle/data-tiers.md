@@ -43,7 +43,7 @@ The performance of an {{es}} node is often limited by the performance of the und
 {{es}} assumes nodes within a data tier share the same hardware profile (such as CPU, RAM, disk capacity). Data tiers with unequally resourced nodes have a higher risk of [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
 ::::
 
-The way data tiers are used often depends on the data's category:
+The way data tiers are used often depends on the data category:
 
 * Content data remains on the [content tier](/manage-data/lifecycle/data-tiers.md#content-tier) for its entire data lifecycle.
 * Time series data may progress through the descending temperature data tiers (hot, warm, cold, and frozen) according to your performance, resiliency, and data retention requirements.

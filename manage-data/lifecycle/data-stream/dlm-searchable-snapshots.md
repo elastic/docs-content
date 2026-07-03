@@ -50,7 +50,7 @@ When a backing index becomes eligible for frozen conversion, {{dlm-init}} perfor
 
 A background transition service on the master node scans for indices ready for conversion and runs conversions concurrently. You can tune poll intervals, thread pool size, and queue size using the [frozen tier transition settings](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#_frozen_tier_transition_settings) in `elasticsearch.yml`.
 
-If a conversion is interrupted, {{dlm-init}} might leave behind orphaned clone indices (`dlm-clone-*`) or snapshots. A separate cleanup service on the master node periodically removes these artifacts. The cleanup interval is controlled by the [`dlm.frozen_cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md) setting (default: `1d`, minimum: `1h`).
+If a conversion is interrupted, {{dlm-init}} might leave behind orphaned clone indices (`dlm-clone-*`) or snapshots. A separate cleanup service on the master node periodically removes these artifacts. The cleanup interval is controlled by the [`dlm.frozen.cleanup.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md) setting (default: `1d`, minimum: `1h`).
 
 ## Troubleshooting [dlm-frozen-transition-troubleshooting]
 

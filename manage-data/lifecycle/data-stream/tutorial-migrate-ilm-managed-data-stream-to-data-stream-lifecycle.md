@@ -313,7 +313,7 @@ GET _data_stream/dsl-data-stream
 4. The new write index is managed by `Data stream lifecycle`
 
 :::{note}
-:applies_to: {"stack": "ga 9.5", "serverless": "unavailable"}
+:applies_to: {"stack": "ga 9.5"}
 
 If your {{ilm-init}} policy used the frozen phase with the [searchable_snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action, you can configure a comparable archive path using `frozen_after` on your data stream lifecycle. Refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md) for prerequisites, API examples, and limitations.
 :::
