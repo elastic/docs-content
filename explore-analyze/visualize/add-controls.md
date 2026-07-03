@@ -76,19 +76,6 @@ To add interactive Options list and Range slider controls, create the controls, 
 7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. An unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) filters only the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
 8. Save the dashboard to keep the control.
 
-### How selections affect other controls [controls-chaining]
-
-When a dashboard has more than one control, their selections interact.
-
-::::{applies-switch}
-:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-A selection in one control narrows the options available in all other controls on the dashboard, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting.
-:::
-:::{applies-item} {"stack": "ga 9.0-9.3"}
-Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
-:::
-::::
-
 ## Add time slider controls [add-time-slider-controls]
 
 You can add one interactive time slider control per dashboard. The time slider uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.

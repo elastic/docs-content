@@ -48,7 +48,7 @@ You can add three kinds of controls:
 
 ## How controls apply to panels [controls-scope]
 
-A control doesn't affect every panel on the dashboard. What it affects depends on where you place it and its type.
+A control doesn't affect every panel on the dashboard. What it affects depends on where you place it, its type, and the other controls on the dashboard.
 
 ### Pinned and unpinned controls [pinned-unpinned-controls]
 
@@ -71,6 +71,19 @@ Different control types target different panels:
 * **Options list** and **Range slider** controls filter the panels that use the control's [data view](../find-and-organize/data-views.md) field. Panels built on data that doesn't include that field aren't affected.
 * The **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
 * **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
+
+### Chaining between controls [controls-chaining]
+
+When a dashboard has more than one control, their selections interact.
+
+::::{applies-switch}
+:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
+A selection in one control narrows the options available in all other controls on the dashboard, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [add or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
+:::
+:::{applies-item} {"stack": "ga 9.0-9.3"}
+Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
+:::
+::::
 
 ## Next steps
 
