@@ -234,15 +234,17 @@ For static settings, you need to create a new index with the correct settings. N
 stack:
 ```
 
-[Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+[Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests.
+
+{applies_to}`stack: ga 9.5` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine query source. Query logging captures end-to-end request duration across all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration.
+
+For earlier versions, you can enable [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) to help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true
 xpack.security.audit.logfile.events.include: _all
 xpack.security.audit.logfile.events.emit_request_body: true
 ```
-
-{applies_to}`stack: ga 9.5` For a more streamlined approach, use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) instead of audit logging. Query logging captures end-to-end request duration across all query types (Query DSL, {{esql}}, EQL, and SQL) with a single configuration.
 
 Refer to [Advanced tuning: finding and fixing slow Elasticsearch queries](https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries) for more information.
 
