@@ -18,7 +18,7 @@
 
     * The name of the control. You use this name to reference the control in {{esql}} queries.
       * Start the name with `?` for options that are static values.
-      * {applies_to}`stack: ga 9.1` Start the name with `??` for options that are fields or functions.
+      * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1` Start the name with `??` for options that are fields or functions.
     * The values users can select. You can add multiple values from suggested fields or type in custom values. If you selected **Values from a query**, write an {{esql}} query instead.
     * The label of the control. This is the label displayed in **Discover** or in the dashboard.
     * {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` Whether the control allows a single selection or multiple selections. Multiple selections require using the [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) functions in your query.

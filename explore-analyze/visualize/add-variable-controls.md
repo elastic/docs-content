@@ -35,17 +35,12 @@ Variable controls act as variables in your {{esql}} visualization queries. When 
 Only **Options lists** are supported for variable controls. Options can be:
 
 - Values or fields, either static or defined by a query.
-- {applies_to}`stack: ga 9.1` Functions.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1` Functions.
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
 When you create a control from a query, the variable is inserted into that query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
-
-:::{tip}
-:applies_to: {"serverless": "ga", "stack": "ga 9.4"}
-When you create a variable control from an {{esql}} panel, for example by selecting **Create control** from the autocomplete menu, you can place it **beside** the panel so the control appears directly next to the visualization that uses it. This makes the control apply only to that visualization and exposes visualization configuration such as date histogram interval controls to dashboard users.
-:::
 
 To create a variable control without starting from a query, select **Add** > **Controls** > **Variable control** in the application menu. You can then reference the control by name in any {{esql}} visualization query.
 
