@@ -655,7 +655,7 @@ toc:
           - file: app-connections/create-oauth-client.md
           - file: app-connections/connect-mcp-host.md
           - file: app-connections/revoke-oauth-client.md
-      - file: app-connections/manage-application-connections.md
+      - file: app-connections/manage-app-connections.md
   - file: manage-connectors.md
   - file: remote-clusters.md
     children:

@@ -234,22 +234,12 @@ toc:
                  children:
                    - file: ai-features/agent-builder/agent-builder-api-tutorial.md
                - file: ai-features/agent-builder/a2a-server.md
-               - file: ai-features/agent-builder/mcp-in-agent-builder.md
                - file: ai-features/agent-builder/mcp-server.md
                  children:
                    - file: ai-features/agent-builder/mcp-server-api-keys.md
                    # TODO: uncomment OAuth crosslinks once deploy-manage/app-connections pages are in the link index
                    # - title: "OAuth authentication"
                    #   crosslink: docs-content://deploy-manage/app-connections/oauth-clients.md
-                   #   children:
-                   #     - title: "Create an OAuth client"
-                   #       crosslink: docs-content://deploy-manage/app-connections/create-oauth-client.md
-                   #     - title: "Connect an MCP host"
-                   #       crosslink: docs-content://deploy-manage/app-connections/connect-mcp-host.md
-                   #     - title: "Revoke an OAuth client or connection"
-                   #       crosslink: docs-content://deploy-manage/app-connections/revoke-oauth-client.md
-                   #     - title: "Manage application connections"
-                   #       crosslink: docs-content://deploy-manage/app-connections/manage-application-connections.md
           - file: ai-features/agent-builder/monitor-usage.md
           - file: ai-features/agent-builder/permissions.md
           - file: ai-features/agent-builder/troubleshooting.md

@@ -1,6 +1,6 @@
 ---
 navigation_title: "API key authentication"
-description: "Configure external MCP hosts to connect to the Agent Builder MCP server using API keys on stack and Serverless deployments."
+description: "Configure external MCP hosts to connect to the Agent Builder MCP server using API keys."
 applies_to:
   stack: preview =9.2, ga 9.3+
   serverless:
@@ -15,56 +15,25 @@ products:
   - id: cloud-serverless
 ---
 
-# Authenticate to the MCP server with API keys [mcp-server-api-keys]
+# Authenticate MCP clients with API keys [mcp-server-api-keys]
 
-Use API keys to give external MCP hosts static credentials for the [](mcp-server.md). This path is available on stack deployments and {{serverless-short}} projects.
+The [{{agent-builder}} MCP server](mcp-server.md) supports API key authentication for MCP clients. For example, you can let a scheduled script or automated service query your data through {{agent-builder}} tools without a person signing in.
 
-On {{serverless-short}} projects during technical preview, the [](/deploy-manage/app-connections/oauth-clients.md) is an alternative when users authorize access in the browser. {applies_to}`serverless: preview`
-
-To compare the two MCP authentication paths, refer to [Authentication](mcp-server.md#mcp-server-authentication) on the MCP server page.
-
-## Configuring MCP clients
-
-Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar configuration patterns. To connect to your Elastic instance, you need to provide your {{kib}} URL and API key in the client's configuration file, typically in the following format:
-
-```json
-{
-  "mcpServers": {
-    "elastic-agent-builder": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "${KIBANA_URL}/api/agent_builder/mcp",
-        "--header",
-        "Authorization:${AUTH_HEADER}"
-      ],
-      "env": {
-        "KIBANA_URL": "${KIBANA_URL}",
-        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
-      }
-    }
-  }
-}
-```
-
-1. Refer to [](#api-key-application-privileges)
-
-:::{note}
-Set the following environment variables:
-
-```bash
-export KIBANA_URL="your-kibana-url"
-export API_KEY="your-api-key"
-```
-
-For information on generating API keys, refer to [](/deploy-manage/api-keys.md).
-
-Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](#api-key-application-privileges).
+:::{tip}
+:applies_to: serverless: preview
+In {{serverless-short}} projects, MCP clients can also authenticate using OAuth 2.1 through an [application connection](/deploy-manage/app-connections/oauth-clients.md). To compare authentication options, refer to [MCP server authentication](mcp-server.md#mcp-server-authentication).
 :::
 
-## API key application privileges [api-key-application-privileges]
+## Step 1: Create an API key [api-key-application-privileges]
 
-To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
+Before configuring your MCP client, create an API key with {{kib}} application privileges for {{agent-builder}}. You can use the following key types:
+
+* {{stack}}: [](/deploy-manage/api-keys/elasticsearch-api-keys.md)
+* {{serverless-short}}: [](/deploy-manage/api-keys/serverless-project-api-keys.md), or [](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with {{es}} and {{kib}} API access.
+
+Tools execute with the scope assigned to the API key. Restrict your key to only the indices and data you want to expose through the MCP server. Refer to [Best practices](#best-practices) for additional recommendations.
+
+The following example creates an {{es}} API key or {{serverless-short}} project API key with {{kib}} application privileges for {{agent-builder}}.
 
 ```json
 POST /_security/api_key
@@ -97,6 +66,41 @@ POST /_security/api_key
 
 :::{note}
 Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
+:::
+
+## Step 2: Configure your MCP client
+
+Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS Code by adding your {{kib}} URL and API key, typically in the following format:
+
+```json
+{
+  "mcpServers": {
+    "elastic-agent-builder": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "${KIBANA_URL}/api/agent_builder/mcp",
+        "--header",
+        "Authorization:${AUTH_HEADER}"
+      ],
+      "env": {
+        "KIBANA_URL": "${KIBANA_URL}",
+        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
+      }
+    }
+  }
+}
+```
+
+1. Refer to [](#api-key-application-privileges)
+
+:::{note}
+Set the following environment variables:
+
+```bash
+export KIBANA_URL="your-kibana-url"
+export API_KEY="your-api-key"
+```
 :::
 
 ## Best practices
@@ -139,9 +143,3 @@ POST /_security/api_key
 2. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
 3. Read-only privileges prevent the agent from modifying data.
 4. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.
-
-## Related pages
-
-- [](mcp-server.md)
-- [](/deploy-manage/app-connections/oauth-clients.md)
-- [](/deploy-manage/api-keys.md)

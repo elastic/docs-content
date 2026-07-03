@@ -44,6 +44,7 @@ Grants access to:
 - View tools
 - View skills {applies_to}`stack: ga 9.4+`
 - Access conversations
+- Manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md) {applies_to}`serverless: preview`
 
 Instead of `All`, you can pair `Read` with individual sub-features for more granular control over what users can manage:
 

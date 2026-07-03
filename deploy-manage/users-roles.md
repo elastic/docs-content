@@ -24,7 +24,7 @@ Preventing unauthorized access is only one element of a complete security strate
 * Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
-* Manage [application connections](/deploy-manage/app-connections.md) for OAuth-based applications authorized to act on behalf of users.
+* Manage [application connections](/deploy-manage/app-connections.md) for external access to {{serverless-short}} projects. During technical preview, only MCP clients for the {{agent-builder}} MCP server are supported. {applies_to}`serverless: preview`
 ::::
 
 ## Cloud organization level

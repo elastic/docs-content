@@ -17,7 +17,11 @@ products:
 
 # {{agent-builder}} MCP server
 
-The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external MCP hosts to access {{agent-builder}} tools.
+The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external MCP hosts to access {{agent-builder}} tools. For example, you can run an {{esql}} query against your data from Claude Desktop without opening {{kib}}.
+
+:::{note}
+On this page, {{agent-builder}} acts as the MCP server: external MCP hosts connect to it to use your {{agent-builder}} tools. To instead let your agents use tools hosted on an external MCP server, refer to [](tools/mcp-tools.md).
+:::
 
 ## MCP server endpoint [mcp-server-endpoint]
 
@@ -37,14 +41,14 @@ When using a custom {{kib}} Space, include the space name in the endpoint path:
 You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
 
-## Authentication [mcp-server-authentication]
+## Authentication and configuration [mcp-server-authentication]
 
-External MCP hosts need credentials to reach the MCP server endpoint. Choose API keys or OAuth based on your deployment type and use case.
+External MCP hosts need credentials to reach the MCP server endpoint. The way that you configure your MCP server depends on your authentication method. Choose API keys or OAuth 2.1 based on your deployment type and use case.
 
 Use one of the following authentication paths:
 
 - [API key authentication](mcp-server-api-keys.md)
-- [OAuth authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: preview`
+- [OAuth 2.1 authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: preview`
 
 The following table compares the two paths.
 
@@ -53,7 +57,8 @@ The following table compares the two paths.
 | Consideration | API key | OAuth |
 | --- | --- | --- |
 | Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only (technical preview) |
-| Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor) |
+| Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor), including teams that share one client |
+| Multi-user access | One shared key means one shared identity; all callers act with the same permissions | One client registration serves many users. Each person consents separately and gets their own connection, acting with their own permissions and revocable individually |
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
 | Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically |
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
@@ -63,6 +68,5 @@ The following table compares the two paths.
 
 See also:
 
-- [](mcp-in-agent-builder.md)
 - [](programmatic-access.md)
-- [](/deploy-manage/app-connections.md)
+- [](/deploy-manage/app-connections/oauth-clients.md)
