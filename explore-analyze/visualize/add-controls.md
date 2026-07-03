@@ -44,18 +44,16 @@ To add interactive Options list and Range slider controls, create the controls, 
         1. From the **Data view** dropdown, select the data view that contains the field you want to use.
         2. In the **Field** list, select the field you want to filter on.
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, or when you want to filter or otherwise shape the values the control offers.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, or when you want to filter or otherwise shape the values the control offers. Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
 
         1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
         2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
-
-        Because these values come from an {{esql}} query, you can chain this control to a [variable control](add-variable-controls.md): reference that control's variable in your query with the `?variable_name` syntax, so its selection narrows the values shown here.
 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with numeric fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
 
 5. Configure how the control looks and behaves. You can give it a clearer label, allow single or multiple selections, adjust how its search matches values, and set whether it chains with other controls. The available settings depend on the control type; for the complete list, refer to [Dashboard control settings](dashboard-control-settings.md).
 6. Select **Save** to add the control to the dashboard. The control appears right away in **Edit** mode, where you can test it and adjust its settings before viewers see it.
-7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. New controls are pinned to the dashboard header by default, where they apply to all panels. To move a control into the dashboard body, open its panel menu and select **Unpin**; select **Pin to Dashboard** to move it back. You can also place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope it to that section's panels. Placement changes which panels a control filters; for details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
+7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. New controls are pinned to the dashboard header by default, where they apply to all panels. To move a control into the dashboard body, open its panel menu and select **Unpin**; select **Pin to Dashboard** to move it back. Once unpinned, you can move, resize, and arrange the control on the dashboard like any other panel, including placing it inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope it to that section's panels. Placement changes which panels a control filters; for details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 8. Save the dashboard to keep the control. Viewers can now use it to filter the relevant panels.
 
 ## Edit controls [edit-controls]
