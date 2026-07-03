@@ -35,6 +35,6 @@ A dashboard supports only one time slider control, and it can't be placed freely
 
 ## Manage the time slider control [manage-time-slider-control]
 
-The time slider appears on your dashboard like other controls, so you edit and remove it the same way. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
+You edit and remove a time slider control the same way as any other control. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
 
 To change the time slider's range, [change the global time filter](../query-filter/filtering.md).
