@@ -54,36 +54,25 @@ A control acts on the panels relevant to it, not the whole dashboard. And when a
 
 Where you place a control determines its reach:
 
-* **Pinned** controls sit in the dashboard header, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
-* **Unpinned** controls sit in the dashboard body like any other panel. You can move, resize, and arrange them, and place one inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope its filters to just that section.
+* **Pinned** controls are placed in the dashboard header, stay visible as you scroll, and apply across the whole dashboard. New controls are pinned by default.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **Unpinned** controls are placed in the dashboard body like any other panel, and you can move, resize, and arrange them. They apply to every panel on the dashboard they're relevant for, unless you place one inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), where its filters apply only to the relevant panels in that section.
 
-You can pin or unpin a control at any time from its panel menu. For the steps, refer to [Add controls to dashboards](add-controls.md#remove-controls).
-
-:::{note}
-:applies_to: {"stack": "ga 9.0-9.3"}
-In versions earlier than 9.4, controls are always pinned to the dashboard header and can't be placed in the dashboard body.
-:::
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` You can pin or unpin a control at any time from its panel menu. For the steps, refer to [Add controls to dashboards](add-controls.md#remove-controls).
 
 ### Scope by control type [controls-scope-by-type]
 
 Different control types target different panels:
 
 * **Options list** and **Range slider** controls filter the panels that use the control's [data view](../find-and-organize/data-views.md) field. Panels built on data that doesn't include that field aren't affected.
-* The **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
+* A **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
 * **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
 
 ### Chaining between controls [controls-chaining]
 
-When a dashboard has more than one control, their selections interact.
+When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior is called chaining.
 
-::::{applies-switch}
-:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-A selection in one control narrows the options available in all other controls on the dashboard, including pinned controls. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [add or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
-:::
-:::{applies-item} {"stack": "ga 9.0-9.3"}
-Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
-:::
-::::
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Controls chain automatically: a selection in one narrows the options in all the others, including pinned controls. Controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) chain only with other controls in the same section. To opt a control out, turn off its **Use global filters** setting when you [add or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
+* {applies_to}`stack: ga 9.0-9.3` Controls apply from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is on, a selection in one control narrows the options in the next.
 
 ## Next steps
 
