@@ -15,7 +15,7 @@ This guide shows how to forward telemetry data from an existing (upstream) OpenT
 
 ## When to use this setup
 
-Use this pattern if you:
+Use this setup if you:
 
 * Already run an existing OpenTelemetry Collector and want to add Elastic as a backend without replacing your current setup
 * Need to send telemetry to multiple observability backends from a single Collector
@@ -36,7 +36,7 @@ flowchart LR
         C["elasticapm connector<br/>generates aggregated metrics"]
     end
 
-    G -->|"elasticsearch exporter<br/>mapping.mode: otel"| E[("ES")]
+    G -->|"elasticsearch exporter<br/>mapping.mode: otel"| E[("Elasticsearch")]
 ```
 
 The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments.
@@ -189,8 +189,16 @@ After starting both Collectors, wait a few minutes for data to appear. Then veri
 * From **Applications**, go to **Service Map** to confirm environment-based filtering works.
 * Find **Discover** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and check the `traces-generic.otel-default`, `logs-generic.otel-default`, and `metrics-generic.otel-default` data streams for incoming data.
 
-If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
+If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md) for troubleshooting tips.
 
 ::::
 
 :::::
+
+## Related pages
+
+* [No logs, metrics, or traces visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md)
+* [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md)
+* [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
+* [EDOT Collector](elastic-agent://reference/edot-collector/index.md)
+* [Managed OTLP endpoint](opentelemetry://reference/motlp.md)
