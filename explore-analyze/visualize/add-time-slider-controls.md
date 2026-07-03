@@ -35,6 +35,9 @@ A dashboard supports only one time slider control, and it can't be placed freely
 
 ## Manage the time slider control [manage-time-slider-control]
 
-You edit and remove a time slider control the same way as any other control. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
+To change the range the time slider covers, [change the dashboard's global time filter](../query-filter/filtering.md).
 
-To change the time slider's range, [change the global time filter](../query-filter/filtering.md).
+To remove the time slider control:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open its panel menu, then select **Remove**.
+- {applies_to}`stack: ga 9.0-9.3` Hover over the control, select the delete icon, then select **Delete** to confirm.
