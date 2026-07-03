@@ -154,7 +154,7 @@ The override only persists during the lifecycle of the instance container. If a 
 
 ## Swap consideration [ece-alloc-swap-consideration]
 
-While Elasticsearch nodes generally run with [swap disabled](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html), ECE hosts should have swap enabled for stability reasons.
+While {{es}} nodes generally run with [swap disabled](../self-managed/setup-configuration-memory.md), ECE hosts should have swap enabled for stability reasons.
 
 If an ECE host runs out of memory, the Linux out of memory (OOM) killer stops a random process on the runner. Having swap space available can prevent this from happening and protect the availability of ECE services.
 
