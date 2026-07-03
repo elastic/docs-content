@@ -17,143 +17,52 @@ products:
 
 # {{agent-builder}} MCP server
 
-The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
+The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external MCP hosts to access {{agent-builder}} tools.
 
-:::{note}
-This page covers API key authentication for external clients connecting to the {{agent-builder}} MCP server. For OAuth and a broader comparison of authentication options, refer to [When to use application connections](/deploy-manage/app-connections.md#when-to-use-application-connections) and [OAuth clients](/deploy-manage/app-connections/oauth-clients.md).
-:::
+## MCP server endpoint [mcp-server-endpoint]
 
-## MCP server endpoint
-
-The MCP server is available at:
+The MCP server is available at the following endpoint:
 
 ```
 {KIBANA_URL}/api/agent_builder/mcp
 ```
 
-When using a custom {{kib}} Space, include the space name in the URL:
+When using a custom {{kib}} Space, include the space name in the endpoint path:
 
 ```
 {KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp
 ```
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
 
-## Configuring MCP clients
+## Authentication [mcp-server-authentication]
 
-Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar configuration patterns. To connect to your Elastic instance, you need to provide your {{kib}} URL and API key in the client's configuration file, typically in the following format:
+External MCP hosts need credentials to reach the MCP server endpoint. Choose API keys or OAuth based on your deployment type and use case.
 
-```json
-{
-  "mcpServers": {
-    "elastic-agent-builder": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "${KIBANA_URL}/api/agent_builder/mcp",
-        "--header",
-        "Authorization:${AUTH_HEADER}"
-      ],
-      "env": {
-        "KIBANA_URL": "${KIBANA_URL}",
-        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
-      }
-    }
-  }
-}
-```
+Use one of the following authentication paths:
 
-1. Refer to [](#api-key-application-privileges)
+- [API key authentication](mcp-server-api-keys.md)
+- [OAuth authentication](/deploy-manage/app-connections/oauth-clients.md) using an [application connection](/deploy-manage/app-connections.md) {applies_to}`serverless: preview`
 
-:::{note}
-Set the following environment variables:
+The following table compares the two paths.
 
-```bash
-export KIBANA_URL="your-kibana-url"
-export API_KEY="your-api-key"
-```
+<!-- TODO: confirm tool scope for tech preview. PRD said "read-only, ES|QL-based tools only", but QA testing (June 23 2026) shows 22 tools including write operations (delete_stream, create_partition, update_stream, cases, etc.). Remove or correct this row once confirmed with Jake Landis / Elena Shostak. -->
 
-For information on generating API keys, refer to [](/deploy-manage/api-keys.md).
+| Consideration | API key | OAuth |
+| --- | --- | --- |
+| Supported platforms | {{stack}} deployments and {{serverless-short}} projects | {{serverless-short}} projects only (technical preview) |
+| Best for | Automation, unattended access, and shared machine-to-machine use | Interactive MCP hosts acting on behalf of a person (Claude Desktop, Cursor) |
+| Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
+| Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically |
+| Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
+| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Read-only, {{esql}}-based tools |
 
-Tools execute with the scope assigned to the API key. Make sure your API key has the appropriate permissions to only access the indices and data that you want to expose through the MCP server. To learn more, refer to [](#api-key-application-privileges).
-:::
+## Related pages
 
-## API key application privileges
+See also:
 
-To access the MCP server endpoint, your API key must include {{kib}} application privileges for {{agent-builder}}.
-
-```json
-POST /_security/api_key
-{
-  "name": "my-mcp-api-key",
-  "expiration": "30d",
-  "role_descriptors": {
-    "mcp-access": {
-      "cluster": ["monitor_inference"], <1>
-      "indices": [
-        {
-          "names": ["*"],
-          "privileges": ["read", "view_index_metadata"]
-        }
-      ],
-      "applications": [
-        {
-          "application": "kibana-.kibana", <2>
-          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
-          "resources": ["space:default"]
-        }
-      ]
-    }
-  }
-}
-```
-
-1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
-2. Must be exactly `kibana-.kibana`. This is how {{kib}} registers its application privileges with {{es}}. Without the `feature_agentBuilder.read` privilege, you'll receive a `403 Forbidden` error.
-
-:::{note}
-Without the `feature_agentBuilder.read` application privilege, you'll receive a `403 Forbidden` error when attempting to connect to the MCP endpoint.
-:::
-
-## Best practices
-
-### Set API key expiration dates
-
-Always set an expiration date on API keys for security. Use shorter durations (1-7 days) for development and longer durations (30-90 days) for production, rotating keys regularly.
-
-### Limit Agent Builder to specific indices
-
-For production environments, restrict API keys to only the indices your tools need to access. This follows the principle of least privilege and prevents agents from querying sensitive data.
-
-```json
-POST /_security/api_key
-{
-  "name": "my-mcp-api-key",
-  "expiration": "30d",
-  "role_descriptors": {
-    "mcp-access": {
-      "cluster": ["monitor_inference"], <1>
-      "indices": [
-        {
-          "names": ["logs-*", "metrics-*"], <2>
-          "privileges": ["read", "view_index_metadata"] <3>
-        }
-      ],
-      "applications": [
-        {
-          "application": "kibana-.kibana", <4>
-          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
-          "resources": ["space:default"]
-        }
-      ]
-    }
-  }
-}
-```
-
-1. Required to use {{es}} inference endpoints. You can also use `"cluster": ["all"]` for broader access during development.
-2. Restrict index access to only the indices your tools need to query. Adjust the index patterns based on your security requirements.
-3. Read-only privileges prevent the agent from modifying data.
-4. Must be exactly `kibana-.kibana` - this is how {{kib}} registers its application privileges with {{es}}.
+- [](mcp-in-agent-builder.md)
+- [](programmatic-access.md)
+- [](/deploy-manage/app-connections.md)

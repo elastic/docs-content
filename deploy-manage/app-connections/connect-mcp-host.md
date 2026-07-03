@@ -20,6 +20,8 @@ This page covers two common MCP hosts: the **Claude Code CLI** (which has native
 
 ## Before you begin [connect-mcp-host-before-you-begin]
 
+Confirm the following before you configure your MCP host:
+
 - You have a client ID and MCP server URL from [creating an MCP client](create-oauth-client.md).
 - You have access to the {{serverless-short}} project that the MCP client is scoped to.
 
@@ -76,6 +78,8 @@ The server is now configured. Start a Claude Code session — the OAuth consent 
 ### Claude Desktop
 
 Claude Desktop uses the [mcp-remote](https://www.npmjs.com/package/mcp-remote) adapter to handle OAuth connections. When you created the client, the redirect URI `http://localhost:3000/oauth/callback` should be in your client's redirect URI list.
+
+To configure Claude Desktop:
 
 1. In Claude Desktop, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
 2. Add your MCP client to the `mcpServers` object:
@@ -153,10 +157,14 @@ Consult your MCP host's documentation for how to clear cached OAuth credentials 
 
 ## Next steps
 
-- [Revoke an MCP client or connection](revoke-oauth-client.md) when access is no longer needed.
+When access is no longer needed, revoke the connection:
+
+- [](revoke-oauth-client.md)
 
 ## Related pages
 
-- [Authenticate MCP clients with OAuth](oauth-clients.md)
-- [Create an MCP client](create-oauth-client.md)
-- [Manage application connections](manage-application-connections.md)
+See also:
+
+- [](oauth-clients.md)
+- [](create-oauth-client.md)
+- [](manage-application-connections.md)

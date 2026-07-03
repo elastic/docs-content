@@ -14,15 +14,13 @@ products:
 
 {{connectors-ui}} integrate with services like generative AI model providers and trigger actions in third-party systems.
 
-:::{include} /deploy-manage/_snippets/external-access-comparison-table-full.md
-:::
-
-:::{include} /deploy-manage/_snippets/external-access-connector-clients-note.md
-:::
-
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{connectors-ui}}** provides a central location to view and manage all connectors in the current space. 
 
 You can find the **{{connectors-ui}}** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+:::{note}
+{{connectors-ui}} are not the same as the [application connections](/deploy-manage/app-connections.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Application connections manage OAuth grants when external applications act on a user's behalf. Search connectors sync data from third-party sources into {{es}}.
+:::
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/kibana/kibana-connectors

@@ -9,44 +9,34 @@ products:
   - id: kibana
 ---
 
+<!-- this url is referenced in the UI - do not move without a redirect -->
+
 # Application connections [app-connections]
 
-Application connections let users authorize OAuth-based applications to act on their behalf in {{serverless-short}} projects. During technical preview, only MCP clients are supported.
+Application connections let users authorize external applications to act on their behalf in {{serverless-short}} projects using OAuth. Each user grants their own connection, project administrators can revoke individual connections, and organization owners can audit connections across projects.
 
-Use these pages to register OAuth clients, connect an MCP host, revoke access, and manage connections at the project or organization level.
+During technical preview, the only supported application type is MCP clients connecting to the [](/explore-analyze/ai-features/agent-builder/mcp-server.md). For that use case, OAuth replaces static API keys when you need multi-user, delegated access. OAuth tokens are accepted only by the MCP server endpoint.
 
-## When to use application connections [when-to-use-application-connections]
+The sections below describe tasks for registering MCP clients, connecting hosts, revoking access, and managing connections at the project or organization level.
 
-Elastic offers several ways to authorize external access or connect Elastic to external systems. They differ by direction and purpose.
-
-:::{include} /deploy-manage/_snippets/external-access-comparison-table-full.md
+:::{note}
+Application connections are not the same as [Kibana connectors](/deploy-manage/manage-connectors.md) or [search connectors](elasticsearch://reference/search-connectors/index.md). Kibana connectors store credentials so {{kib}} can send actions to external systems. Search connectors sync data from third-party sources into {{es}}.
 :::
 
-### Application connections compared to API keys
+## Before you begin
 
-:::{include} /deploy-manage/_snippets/external-access-auth-comparison-details.md
-:::
+To choose between an application connection or API keys for the {{agent-builder}} MCP server, refer to [MCP server authentication](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-authentication).
 
-:::{include} /deploy-manage/_snippets/external-access-app-connections-api-key-scope.md
-:::
+## Manage application connections [application-connections-tasks]
 
-For unattended MCP access to your project's data without per-user consent, use a [serverless project API key](/deploy-manage/api-keys/serverless-project-api-keys.md) with [{{agent-builder}} application privileges](/explore-analyze/ai-features/agent-builder/mcp-server.md#api-key-application-privileges) instead. Refer to [Elastic API keys](/deploy-manage/api-keys.md) for other API key types.
+Use the following pages to learn how to create and manage application connections for MCP clients.
 
-:::{include} /deploy-manage/_snippets/external-access-connector-clients-note.md
-:::
+Tasks for all users with appropriate permissions:
 
-## OAuth clients
+- [](app-connections/oauth-clients.md): Learn how OAuth client registration, app connections, and tokens work.
+- [](app-connections/create-oauth-client.md): Register a client in {{agent-builder}} and get the credentials your MCP host needs.
+- [](app-connections/connect-mcp-host.md): Configure your MCP host and complete browser consent.
+- [](app-connections/revoke-oauth-client.md): Remove access for one user or an entire client at the project level.
 
-- [OAuth clients](app-connections/oauth-clients.md): overview of OAuth client registration, app connections, and tokens
-- [Create an OAuth client](app-connections/create-oauth-client.md)
-- [Connect an MCP host](app-connections/connect-mcp-host.md)
-- [Revoke an OAuth client or connection](app-connections/revoke-oauth-client.md)
-
-## Manage connections
-
-- [Manage application connections](app-connections/manage-application-connections.md): organization-level view in the {{ecloud}} Console
-
-## Related pages
-
-- [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): API key authentication path
-- [Elastic API keys](/deploy-manage/api-keys.md): programmatic access with static credentials
+Tasks for organization owners:
+- [](app-connections/manage-application-connections.md): Audit and revoke authorized connections across your organization's {{serverless-short}} projects in the {{ecloud}} Console.

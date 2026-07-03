@@ -16,7 +16,7 @@ The **Application connections** page in the Elastic Cloud Console gives organiza
 During technical preview, application connections cover **MCP clients only**, and connected applications get **read-only** access through Elasticsearch Query Language (ES|QL)-based tools. Support is limited to {{serverless-short}} projects.
 :::
 
-To create an OAuth client or connect an MCP host such as **Claude Desktop**, see [Connect an MCP host](connect-mcp-host.md). This page covers organization-level management only.
+To create an OAuth client or connect an MCP host such as **Claude Desktop**, see the [](connect-mcp-host.md). This page covers organization-level management only.
 
 ## Before you begin [manage-application-connections-before-you-begin]
 
@@ -106,15 +106,19 @@ You can revoke up to 100 connections at a time.
 Removing a user from your identity provider does **not** automatically revoke that user's connections. When a user leaves, revoke their connections here to cut off access.
 :::
 
-To revoke an entire MCP client and all its connections, the client's creator removes it from the project's Agent Builder client management in Kibana. See [Revoke an MCP client or connection](revoke-oauth-client.md).
+To revoke an entire MCP client and all its connections, the client's creator removes it from the project's Agent Builder client management in Kibana. See the [](revoke-oauth-client.md).
 
 ## Next steps
 
-- To restore access after revoking a client, [create a new MCP client](create-oauth-client.md) and distribute the credentials to users.
+To restore access after revoking a client:
+
+- [Create a new MCP client](create-oauth-client.md) and distribute the credentials to users.
 
 ## Related pages
 
-* [Create an OAuth client](create-oauth-client.md)
-* [Connect an MCP host](connect-mcp-host.md)
-* [Revoke an OAuth client or connection](revoke-oauth-client.md)
+See also:
+
+* [](create-oauth-client.md)
+* [](connect-mcp-host.md)
+* [](revoke-oauth-client.md)
 * [OAuth clients](oauth-clients.md)

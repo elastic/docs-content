@@ -153,7 +153,7 @@ When using the {{agent-builder}} APIs programmatically, authenticate with an API
 Unlike roles, which use UI-friendly feature privilege names like `feature_agentBuilder.all`, API keys use the underlying API privilege names (`read_onechat`, `manage_onechat`). This is because API keys interact directly with the {{kib}} API layer rather than through the UI.
 
 Refer to these pages for API key configuration examples:
-- [MCP server](mcp-server.md#api-key-application-privileges)
+- [MCP server](mcp-server-api-keys.md#api-key-application-privileges)
 - [{{kib}} API](kibana-api.md)
 
 Learn more about [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).

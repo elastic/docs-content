@@ -18,23 +18,25 @@ products:
 
 | | What it does | Who initiates | Where to configure |
 |---|---|---|---|
-| **{{agent-builder}} as an MCP server** | Exposes your agents and their tools to external MCP hosts (Claude Desktop, Cursor, Claude Code) | External host connects to Kibana | [{{agent-builder}} MCP server](mcp-server.md) |
-| **{{agent-builder}} as an MCP client** | Lets your agents call tools on external MCP servers | Kibana connects out to an external server | [MCP tools](tools/mcp-tools.md) |
+| **{{agent-builder}} as an MCP server** | Exposes your agents and their tools to external MCP hosts (Claude Desktop, Cursor, Claude Code) | External host connects to Kibana | [](mcp-server.md) |
+| **{{agent-builder}} as an MCP client** | Lets your agents call tools on external MCP servers | Kibana connects out to an external server | [](tools/mcp-tools.md) |
 
 These are independent features. You can use one, both, or neither.
 
 ## Agent Builder as an MCP server
 
-The {{agent-builder}} [MCP server](mcp-server.md) lets external MCP hosts connect to Kibana and invoke your agent's tools directly — for example, running an {{esql}} query from Claude Desktop without opening the Kibana UI.
+The {{agent-builder}} [](mcp-server.md) lets external MCP hosts connect to Kibana and invoke your agent's tools directly — for example, running an {{esql}} query from Claude Desktop without opening the Kibana UI.
 
-External clients authenticate using either:
+The MCP server supports the following authentication methods:
 
-- **OAuth 2.1** — for interactive access where a user authorizes the connection in the browser. An MCP host such as Claude Desktop opens a browser for the user to authenticate, then acts with that user's permissions. See [OAuth clients](/deploy-manage/app-connections/oauth-clients.md).
-- **API keys** — for static, machine-to-machine access. See [{{agent-builder}} MCP server](mcp-server.md).
+- **API keys**: Static credentials for stack deployments and {{serverless-short}} projects. See the [](mcp-server-api-keys.md).
+- **OAuth 2.1**: Browser consent for interactive MCP access on {{serverless-short}} projects. See the [](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: preview`
+
+To compare the two paths, refer to [Authentication](mcp-server.md#mcp-server-authentication) on the MCP server page.
 
 ## Agent Builder as an MCP client
 
-[MCP tools](tools/mcp-tools.md) let you extend your agents by pointing them at external MCP servers. You configure an MCP connector (the connection details for the remote server), then import individual tools from that server into your agent's tool catalog. The agent can then call those tools during a conversation.
+The [](tools/mcp-tools.md) let you extend your agents by pointing them at external MCP servers. You configure an MCP connector (the connection details for the remote server), then import individual tools from that server into your agent's tool catalog. The agent can then call those tools during a conversation.
 
 This direction is unrelated to authentication on the Kibana side — it's about what your agents can reach outward.
 
@@ -52,6 +54,8 @@ This direction is unrelated to authentication on the Kibana side — it's about 
 
 ## Related pages
 
-- [{{agent-builder}} MCP server](mcp-server.md)
-- [OAuth clients](/deploy-manage/app-connections/oauth-clients.md)
-- [MCP tools](tools/mcp-tools.md)
+See also:
+
+- [](mcp-server.md)
+- [](/deploy-manage/app-connections/oauth-clients.md)
+- [](tools/mcp-tools.md)
