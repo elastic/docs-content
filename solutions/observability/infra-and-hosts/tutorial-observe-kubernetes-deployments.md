@@ -5,6 +5,8 @@ applies_to:
   stack: ga
 products:
   - id: observability
+cta:
+  id: monitor-kubernetes
 ---
 
 # Tutorial: Observe your Kubernetes deployments [monitor-kubernetes]
