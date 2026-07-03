@@ -21,14 +21,9 @@ To add a time slider control to a dashboard, you need:
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) with a time field, so the dashboard has time-based data to filter
 
-A dashboard supports only one time slider control.
+A dashboard supports only one time slider control, and it can't be placed freely: it always stays pinned to the dashboard header.
 
 ## Add a time slider control [add-time-slider-steps]
-
-:::{warning}
-:applies_to: {"serverless": "ga", "stack": "ga 9.4"}
-The time slider must be pinned to the dashboard header. It is not available as a free panel.
-:::
 
 1. Open or create a dashboard.
 2. Add a time slider control:
