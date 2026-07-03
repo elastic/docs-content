@@ -20,8 +20,6 @@ Which settings are available, and where you set them, depends on the control typ
 
 ## Options list settings [options-list-settings]
 
-### Control-level settings [options-list-control-settings]
-
 Label
 :   Overwrite the default field name with a clearer label.
 
@@ -48,8 +46,6 @@ The general settings below also affect Options list controls.
 
 ## Range slider settings [range-slider-settings]
 
-### Control-level settings [range-slider-control-settings]
-
 Label
 :   Overwrite the default field name with a clearer label.
 
@@ -75,7 +71,7 @@ These settings apply to all controls on the dashboard at once. Where you find th
 
 ::::{applies-switch}
 :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-The only dashboard-wide control setting is auto apply. Filtering and value validation are now set on each control instead, in its [control-level settings](#options-list-control-settings).
+The only dashboard-wide control setting is auto apply. Filtering and value validation are now set on each control instead, in its [Options list](#options-list-settings) or [Range slider](#range-slider-settings) settings.
 
 Auto apply filters
 :   By default, the dashboard updates as soon as a selection is made in a control. To require an explicit apply step, open **Dashboard settings** and turn off **Auto apply filters**. Pending selections are then applied only when you select **Apply** in the search bar.
