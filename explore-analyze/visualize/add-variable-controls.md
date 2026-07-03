@@ -18,7 +18,7 @@ Variable controls bind interactive controls to variables in your {{esql}} visual
 In versions 9.0 and 9.1, variable controls are called {{esql}} controls.
 :::
 
-## Before you begin
+## Before you begin [add-variable-controls-requirements]
 
 To add variable controls to a dashboard, you need:
 
@@ -28,7 +28,7 @@ To add variable controls to a dashboard, you need:
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
 
-## Create a variable control [create-variable-control]
+## Add variable controls [create-variable-control]
 
 Variable controls act as variables in your {{esql}} visualization queries. When you write an {{esql}} query, the autocomplete suggests inserting a control for field values, field names, function configuration, or function names.
 
@@ -138,4 +138,12 @@ serverless: preview
 ```
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
+:::
+
+## Manage variable controls [manage-variable-controls]
+
+Variable controls appear on your dashboard like other controls, so you edit and remove them the same way. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
+
+:::{note}
+If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.
 :::

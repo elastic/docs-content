@@ -1,5 +1,5 @@
 ---
-navigation_title: Add a time slider control
+navigation_title: Add time slider controls
 type: how-to
 description: Add a time slider control to a Kibana dashboard to filter time-based data across a range that viewers can adjust and animate.
 applies_to:
@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# Add a time slider control to a dashboard [add-time-slider-controls]
+# Add a time slider control to dashboards [add-time-slider-controls]
 
-A time slider control filters a dashboard's time-based data to a range that viewers can adjust, and advance or animate backward and forward. Unlike [Options list and Range slider controls](add-controls.md), the time slider is a separate option in the control menu, and a dashboard supports only one. It uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.
+A time slider control filters a dashboard's time-based data to a range that viewers can adjust, and advance or animate backward and forward. Unlike [Options list and Range slider controls](add-controls.md), the time slider is a separate option in the control menu. It uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.
 
 ## Before you begin [add-time-slider-requirements]
 
@@ -21,7 +21,9 @@ To add a time slider control to a dashboard, you need:
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) with a time field, so the dashboard has time-based data to filter
 
-## Add the control [add-time-slider-steps]
+A dashboard supports only one time slider control.
+
+## Add a time slider control [add-time-slider-steps]
 
 :::{warning}
 :applies_to: {"serverless": "ga", "stack": "ga 9.4"}
@@ -34,6 +36,10 @@ The time slider must be pinned to the dashboard header. It is not available as a
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
-3. Save the dashboard. Viewers can now use the control. To change its range, [change the global time filter](../query-filter/filtering.md).
+3. Save the dashboard. Viewers can now use the control.
 
-To remove a time slider control, follow the steps to [manage controls](add-controls.md#manage-controls). The same panel menu and hover actions apply to all control types.
+## Manage the time slider control [manage-time-slider-control]
+
+The time slider appears on your dashboard like other controls, so you edit and remove it the same way. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
+
+To change the time slider's range, [change the global time filter](../query-filter/filtering.md).

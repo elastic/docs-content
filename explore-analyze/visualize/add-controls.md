@@ -11,11 +11,11 @@ products:
   - id: kibana
 ---
 
-# Add controls to dashboards [add-controls]
+# Add Options list and Range slider controls to dashboards [add-controls]
 
 Add interactive filter [controls](dashboard-controls.md) to your dashboards to help viewers explore data without writing queries. This page covers how to add, edit, and remove Options list and Range slider controls.
 
-To add other control types, refer to [Add a time slider control](add-time-slider-controls.md) or [Add variable controls with ES|QL](add-variable-controls.md).
+To add other control types, refer to [Add time slider controls](add-time-slider-controls.md) or [Add variable controls](add-variable-controls.md).
 
 ## Before you begin [add-controls-requirements]
 
@@ -70,7 +70,3 @@ After a control is on your dashboard, you can change its settings, reset its sel
 | **Remove** | Delete the control from the dashboard. |
 
 {applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal icons to edit, clear, or delete it.
-
-:::{note}
-If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.
-:::
