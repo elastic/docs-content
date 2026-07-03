@@ -382,9 +382,11 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/kibana-alerting-experimental/quick-start-alerting.md
-      - file: alerting/kibana-alerting-experimental/setup-alerting.md
-      - file: alerting/kibana-alerting-experimental/alerting-privileges.md
+      - file: alerting/kibana-alerting-experimental/get-started.md
+        children:
+          - file: alerting/kibana-alerting-experimental/get-started/setup.md
+          - file: alerting/kibana-alerting-experimental/get-started/configure-access.md
+          - file: alerting/kibana-alerting-experimental/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
