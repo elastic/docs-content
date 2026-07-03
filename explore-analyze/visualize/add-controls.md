@@ -88,8 +88,7 @@ The time slider must be pinned to the dashboard header. It is not available as a
 1. Open or create a new dashboard.
 2. Add a time slider control:
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
-    - {applies_to}`stack: ga 9.2-9.3` In **Edit** mode, select **Add** > **Controls** > **Time slider control**.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
 3. Save the dashboard. The control can now be used. To change its range, [change the global time filter](../query-filter/filtering.md).
