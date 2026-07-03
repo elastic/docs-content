@@ -29,25 +29,36 @@ To add Options list, Range slider, and Time slider controls to a dashboard, you 
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` By default, a control is based on a data view field, as described in the following steps. You can also [populate its values with an {{esql}} query](#populate-control-values-with-esql) instead.
-
 1. Open or create a new dashboard.
 2. Add a control:
 
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the control.
-4. In the **Field** list, select the field you want to filter on.
-5. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields.
-6. Configure the control's label, selections, search, and additional settings. For the full list of available settings, refer to [Dashboard control settings](dashboard-control-settings.md).
-7. Select **Save**. The control can now be used.
-8. Save the dashboard.
+3. Define the values available in the control:
 
-:::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.4"}
-A new control is pinned to the dashboard header by default, where it applies to all panels. To place the control in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**. A dashboard supports up to 100 pinned controls.
-:::
+    ::::{tab-set}
+    :::{tab-item} Data view field
+    :sync: data-view
+    1. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the control.
+    2. In the **Field** list, select the field you want to filter on.
+    :::
+
+    :::{tab-item} ES|QL query
+    :sync: esql
+    {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Populating values with a query helps with high-cardinality fields, where fetching every distinct value can slow the dashboard, and it lets you filter or shape the values the control offers. The query can also reference [variable controls](add-variable-controls.md) with the `?variable_name` syntax to chain filtering.
+
+    1. On the **Create control** flyout, select **Write a query**.
+    2. Write an {{esql}} query that returns a single column. The returned column determines the field the control is based on and the values it offers. Use a command such as `STATS BY` or `RENAME` to return a single column.
+    3. Select **Run query** to preview the values under **Values preview**. If the query returns more than one column, select a column from the list or narrow the query. If it returns no values, edit the query and run it again.
+    :::
+    ::::
+
+4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` For a query-based Range slider, the results set the slider's minimum and maximum values.
+5. Configure the control's label, selections, search, and additional settings. For the full list of available settings, refer to [Dashboard control settings](dashboard-control-settings.md).
+6. Select **Save**. The control can now be used.
+7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**. A dashboard supports up to 100 pinned controls.
+8. Save the dashboard.
 
 When you add several controls, their selections affect each other by default. How they interact depends on your version:
 
@@ -59,22 +70,6 @@ A selection in one control narrows the options available in all other controls o
 Controls are applied from left to right. When the [Chain controls](dashboard-control-settings.md#configure-controls-settings) setting is enabled, the position of a control determines the options available in the next one.
 :::
 ::::
-
-### Populate control values with an {{esql}} query [populate-control-values-with-esql]
-```{applies_to}
-stack: ga 9.5
-serverless: ga
-```
-
-Instead of basing an Options list or Range slider control on a data view field, you can populate its values with an {{esql}} query. This helps with high-cardinality fields, where fetching every distinct value can slow the dashboard, and it lets you filter or otherwise shape the values the control offers. The query can also reference [variable controls](add-variable-controls.md) with the `?variable_name` syntax to chain filtering.
-
-1. In **Edit** mode, select **Add** > **Controls** > **Control**.
-2. On the **Create control** flyout, select **Write a query**.
-3. Write an {{esql}} query that returns a single column. The returned column determines the field the control is based on and the values it offers. Use a command such as `STATS BY` or `RENAME` to return a single column.
-4. Select **Run query** to preview the values under **Values preview**. If the query returns more than one column, select a column from the list or narrow the query. If it returns no values, edit the query and run it again.
-5. Under **Control type**, select **Options list** or **Range slider**. For a Range slider, the query results set the minimum and maximum values.
-6. Configure the remaining settings, then select **Save**.
-7. Save the dashboard.
 
 ## Add time slider controls [add-time-slider-controls]
 
