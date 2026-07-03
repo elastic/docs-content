@@ -290,6 +290,7 @@ toc:
         children:
           - file: dashboards/sharing.md
           - file: dashboards/import-dashboards.md
+          - file: dashboards/manage-dashboards-as-code.md
       - file: dashboards/tutorials.md
         children:
           - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
