@@ -51,7 +51,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 
         Because these values come from an {{esql}} query, you can chain this control to a [variable control](add-variable-controls.md): reference that control's variable in your query with the `?variable_name` syntax, so its selection narrows the values shown here.
 
-4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
+4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with numeric fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
 
 5. Configure how the control looks and behaves. You can give it a clearer label, allow single or multiple selections, adjust how its search matches values, and set whether it chains with other controls. The available settings depend on the control type; for the complete list, refer to [Dashboard control settings](dashboard-control-settings.md).
 6. Select **Save** to add the control to the dashboard. The control appears right away in **Edit** mode, where you can test it and adjust its settings before viewers see it.
