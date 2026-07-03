@@ -15,61 +15,83 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 ## Options list settings [options-list-settings]
 
+You configure these settings in the control editor when you [add or edit](add-controls.md#create-and-add-options-list-and-range-slider-controls) an Options list control.
+
 ::::{applies-switch}
 :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-- **Label**: Overwrite the default field name with a clearer label.
-- **Selections**: Allow multiple selections, or restrict the control to a single selection.
-- **Searching** (for string and IP address fields): Choose how the control's embedded search matches values.
+Label
+:   Overwrite the default field name with a clearer label.
 
-  - **Prefix** (default for IP address fields): Match values that start with the entered text.
-  - **Contains** (default for string fields): Match values that contain the entered text. Only available for string fields. Results can take longer to populate.
-  - **Exact**: Match values that exactly equal the entered text.
+Selections
+:   Choose how many values a viewer can select at once:
+    - **Allow multiple selections** (default): filter on several values at the same time.
+    - **Only allow a single selection**: filter on one value at a time. A new selection replaces the previous one.
 
-  Searches are not case sensitive. For example, searching for `ios` still returns `iOS`.
+Searching
+:   For string and IP address fields, choose how the control's search matches values. Searches are not case sensitive; for example, `ios` matches `iOS`.
+    - **Prefix** (default for IP address fields): match values that start with the entered text.
+    - **Contains** (default for string fields): match values that contain the entered text. Available for string fields only, and results can take longer to populate.
+    - **Exact**: match values that exactly equal the entered text.
 
-- **Additional settings**:
-
-  - **Use global filters**: When enabled (default), the control responds to the dashboard's filter chain. Turn it off to opt the control out of chaining.
-  - **Validate user selections**: Highlight selections that return no data.
-  - **Ignore timeout for results**: Wait to display results until the list is complete.
-
+Additional settings
+:   - **Use global filters** (on by default): the control responds to the dashboard's filter chain. Turn it off to opt the control out of [chaining](dashboard-controls.md#controls-chaining).
+    - **Validate user selections** (on by default): highlight selections that return no data.
+    - **Ignore timeout for results**: wait to display results until the list is complete. Useful for large data sets, but results can take longer to populate.
 :::
 :::{applies-item} {"stack": "ga 9.0-9.3"}
-- **Label**: Overwrite the default field name with a clearer label.
-- **Minimum width**: Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
-- **Expand width to fit available space**: Expand the control's width to fill the remaining horizontal space on the dashboard.
-- **Selections**: Allow multiple selections, or restrict the control to a single selection.
-- **Additional settings**:
+Label
+:   Overwrite the default field name with a clearer label.
 
-  - **Ignore timeout for results**: Wait to display the list of values until it is fully loaded. Useful for large data sets, where some options might otherwise be missed if they take longer to appear.
+Minimum width
+:   Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
 
-  For Options list controls on string and IP address fields, choose how the control's embedded search matches values:
+Expand width to fit available space
+:   Expand the control's width to fill the remaining horizontal space on the dashboard.
 
-  - **Prefix**: Match values that start with the entered text.
-  - **Contains**: Match values that contain the entered text. Only available for string fields. Results can take longer to populate.
-  - **Exact**: Match values that exactly equal the entered text.
+Selections
+:   Choose how many values a viewer can select at once:
+    - **Allow multiple selections** (default): filter on several values at the same time.
+    - **Only allow a single selection**: filter on one value at a time. A new selection replaces the previous one.
 
-  Searches are not case sensitive. For example, searching for `ios` still returns `iOS`.
+Searching
+:   For string and IP address fields, choose how the control's search matches values. Searches are not case sensitive; for example, `ios` matches `iOS`.
+    - **Prefix**: match values that start with the entered text.
+    - **Contains**: match values that contain the entered text. Available for string fields only, and results can take longer to populate.
+    - **Exact**: match values that exactly equal the entered text.
+
+Additional settings
+:   - **Ignore timeout for results**: wait to display the list of values until it is fully loaded. Useful for large data sets, where some options might otherwise be missed if they take longer to appear.
 :::
 ::::
 
 ## Range slider settings [range-slider-settings]
 
+You configure these settings in the control editor when you [add or edit](add-controls.md#create-and-add-options-list-and-range-slider-controls) a Range slider control.
+
 ::::{applies-switch}
 :::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-- **Label**: Overwrite the default field name with a clearer label.
-- **Step size**: Set the slider's step granularity. The smaller the step size, the more steps the slider has.
-- **Additional settings**:
-  - **Use global filters**: When enabled (default), the control responds to the dashboard's filter chain. Turn it off to opt the control out of chaining.
-  - **Validate user selections**: Highlight selections that return no data.
+Label
+:   Overwrite the default field name with a clearer label.
 
+Step size
+:   Set the slider's step granularity. The smaller the step size, the more steps the slider has.
+
+Additional settings
+:   - **Use global filters** (on by default): the control responds to the dashboard's filter chain. Turn it off to opt the control out of [chaining](dashboard-controls.md#controls-chaining).
+    - **Validate user selections** (on by default): highlight selections that return no data.
 :::
 :::{applies-item} {"stack": "ga 9.0-9.3"}
-- **Label**: Overwrite the default field name with a clearer label.
-- **Minimum width**: Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
-- **Expand width to fit available space**: Expand the control's width to fill the remaining horizontal space on the dashboard.
-- **Step size**: Set the slider's step granularity. The smaller the step size, the more steps the slider has.
+Label
+:   Overwrite the default field name with a clearer label.
 
+Minimum width
+:   Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
+
+Expand width to fit available space
+:   Expand the control's width to fill the remaining horizontal space on the dashboard.
+
+Step size
+:   Set the slider's step granularity. The smaller the step size, the more steps the slider has.
 :::
 ::::
 
@@ -82,12 +104,15 @@ This page lists all available settings for [dashboard controls](dashboard-contro
 
 Controls are chained by default: a selection in one control narrows the options available in all other controls on the dashboard. The exception is controls inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), which only chain with other controls in the same section. To opt a control out of chaining, turn off its **Use global filters** setting when you [create or edit it](add-controls.md#create-and-add-options-list-and-range-slider-controls).
 
-**Pinned control display**
+**Display**
 
-For pinned controls, select the {icon}`gear` **Settings** icon on the control to customize its display:
+To customize a control's display, select the {icon}`gear` **Display settings** icon on the control:
 
-- **Minimum width**: Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
-- **Expand width to fit available space**: Expand the control's width to fill the remaining horizontal space on the dashboard.
+Minimum width
+:   Set how much horizontal space the control occupies. The final width can vary depending on the other controls and their width settings.
+
+Expand width to fit available space
+:   Expand the control's width to fill the remaining horizontal space on the dashboard.
 
 **Auto apply filters**
 
@@ -100,16 +125,17 @@ In versions earlier than 9.4, these settings apply to all controls on the dashbo
 - {applies_to}`stack: ga 9.2-9.3` Select **Add** > **Controls** > **Settings** in the application menu.
 - {applies_to}`stack: ga 9.0-9.1` Select **Controls** > **Settings**.
 
-Available settings:
+Label position
+:   Set where the control label appears, **Inline** or **Above**.
 
-- **Label position**: Set where the control label appears.
-- **Filtering**:
-  - **Apply global filters to controls**: Define whether controls apply or ignore filters from the dashboard's main filter bar.
-  - **Apply global time range to controls**: Define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
-- **Selections**:
-  - **Validate user selections**: When on, any selection that returns no data is ignored.
-  - **Chain controls**: On by default. When on, controls apply sequentially from left to right and line by line, so a selection in one control narrows the options in the next.
-  - **Apply selections automatically**: When on, the dashboard updates as soon as a selection is made in a control. When off, users must select **Apply** to apply pending selections.
+Filtering
+:   - **Apply global filters to controls**: define whether controls apply or ignore filters from the dashboard's main filter bar.
+    - **Apply global time range to controls**: define whether controls apply or ignore the dashboard's global time range. [Time slider controls](add-controls.md#add-time-slider-controls) rely on the global time range and don't work properly when this option is off.
+
+Selections
+:   - **Validate user selections**: when on, any selection that returns no data is ignored.
+    - **Chain controls** (on by default): controls apply sequentially from left to right and line by line, so a selection in one control narrows the options in the next.
+    - **Apply selections automatically**: the dashboard updates as soon as a selection is made in a control. When off, users must select **Apply** to apply pending selections.
 
 To remove all controls from the dashboard, select **Delete all**.
 :::
