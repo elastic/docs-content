@@ -69,7 +69,7 @@ Different control types target different panels:
 
 ### Chaining between controls [controls-chaining]
 
-When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior, called chaining, is on by default. You can change how controls chain in the [control settings](dashboard-control-settings.md#configure-controls-settings).
+When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior, called chaining, keeps each control's choices relevant to the current selections, so viewers can drill down without landing on combinations that return no data. Chaining is on by default. You can change how controls chain in the [control settings](dashboard-control-settings.md#configure-controls-settings).
 
 ## Next steps
 
