@@ -25,6 +25,8 @@ To add Options list, Range slider, and Time slider controls to a dashboard, you 
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
+
 ## Add Options list and Range slider controls [create-and-add-options-list-and-range-slider-controls]
 
 To add interactive Options list and Range slider controls, create the controls, then add them to your dashboard.
@@ -57,7 +59,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` For a query-based Range slider, the results set the slider's minimum and maximum values.
 5. Configure the control's label, selections, search, and additional settings. For the full list of available settings, refer to [Dashboard control settings](dashboard-control-settings.md).
 6. Select **Save**. The control can now be used.
-7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**. A dashboard supports up to 100 pinned controls.
+7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. A new control is pinned to the dashboard header by default, where it applies to all panels. To place it in the dashboard body instead, open its panel menu and select **Unpin**. When you place an unpinned control inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections), its filters apply only to the panels in that section. To move a control back to the header, select **Pin to Dashboard**.
 8. Save the dashboard.
 
 When you add several controls, their selections affect each other by default. How they interact depends on your version:
