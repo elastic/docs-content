@@ -56,39 +56,20 @@ To add interactive Options list and Range slider controls, create the controls, 
 7. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Choose where the control appears. New controls are pinned to the dashboard header by default, where they apply to all panels. To move a control into the dashboard body, open its panel menu and select **Unpin**; select **Pin to Dashboard** to move it back. Once unpinned, you can move, resize, and arrange the control on the dashboard like any other panel, including placing it inside a [collapsible section](../dashboards/arrange-panels.md#collapsible-sections) to scope it to that section's panels. Placement changes which panels a control filters; for details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 8. Save the dashboard. The control becomes a permanent part of it, and viewers can use it to filter the relevant panels.
 
-## Edit controls [edit-controls]
+## Manage Options list and Range slider controls [manage-controls]
 
-Change the settings of an Options list or Range slider control.
+After a control is on your dashboard, you can change its settings, reset its selections, move it, or delete it.
 
-::::{applies-switch}
-:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-1. Open the control's panel menu.
-2. Select **Edit**.
-3. In the **Edit control** flyout, change the options, then select **Save**.
-:::
-:::{applies-item} {"stack": "ga 9.0-9.3"}
-1. Hover over the control you want to edit, then select ![The Edit control icon that opens the Edit control flyout](/explore-analyze/images/kibana-dashboard_controlsEditControl_8.3.0.png "").
-2. In the **Edit control** flyout, change the options, then select **Save**.
-:::
-::::
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select an action:
 
-For the full list of available settings, refer to [Dashboard control settings](dashboard-control-settings.md).
+| Action | Description |
+| --- | --- |
+| **Edit** | Change the control's settings in the **Edit control** flyout. For the full list, refer to [Dashboard control settings](dashboard-control-settings.md). |
+| **Clear control** | Reset the control's selections without changing its settings. |
+| **Unpin** or **Pin to Dashboard** {applies_to}`stack: ga 9.4` | Move the control between the dashboard body and header. |
+| **Remove** | Delete the control from the dashboard. |
 
-## Clear, unpin, and delete controls [remove-controls]
-
-::::{applies-switch}
-:::{applies-item} {"serverless": "ga", "stack": "ga 9.4"}
-Open the control's panel menu, then select an action:
-
-- **Clear control** to reset the control's selections without changing its settings.
-- **Unpin** to move a pinned control into the dashboard body, or **Pin to Dashboard** to move a control from the body into the header.
-- **Remove** to delete the control from the dashboard.
-:::
-:::{applies-item} {"stack": "ga 9.0-9.3"}
-1. Hover over the control you want to delete, then select ![The Remove control icon that removes the control from the dashboard](/explore-analyze/images/kibana-dashboard_controlsRemoveControl_8.3.0.png "").
-2. In the **Delete control?** window, select **Delete**.
-:::
-::::
+{applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal icons to edit, clear, or delete it.
 
 :::{note}
 If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.

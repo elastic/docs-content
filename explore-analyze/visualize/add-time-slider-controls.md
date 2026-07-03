@@ -36,4 +36,4 @@ The time slider must be pinned to the dashboard header. It is not available as a
 
 3. Save the dashboard. Viewers can now use the control. To change its range, [change the global time filter](../query-filter/filtering.md).
 
-To remove a time slider control, refer to [Clear, unpin, and delete controls](add-controls.md#remove-controls).
+To remove a time slider control, follow the steps to [manage controls](add-controls.md#manage-controls). The same panel menu and hover actions apply to all control types.

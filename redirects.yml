@@ -850,6 +850,10 @@ redirects:
   'explore-analyze/dashboards/add-controls.md':
     to: 'explore-analyze/visualize/add-controls.md'
     many:
+      - to: 'explore-analyze/visualize/add-controls.md'
+        anchors:
+          'edit-controls': 'manage-controls'
+          'remove-controls': 'manage-controls'
       - to: 'explore-analyze/visualize/add-variable-controls.md'
         anchors:
           'add-variable-control':
