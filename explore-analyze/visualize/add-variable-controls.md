@@ -139,7 +139,12 @@ serverless: preview
 
 ## Manage variable controls [manage-variable-controls]
 
-Variable controls appear on your dashboard like other controls, so you edit and remove them the same way. Refer to [Manage Options list and Range slider controls](add-controls.md#manage-controls).
+You can edit or remove a variable control from the dashboard:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select **Edit** or **Remove**.
+- {applies_to}`stack: ga 9.0-9.3` Hover over the control, then select the edit or delete icon.
+
+Editing opens the control's flyout, where you can change settings such as its query, variable name, and label. You can also update a control by editing the {{esql}} query that references it.
 
 :::{note}
 If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.
