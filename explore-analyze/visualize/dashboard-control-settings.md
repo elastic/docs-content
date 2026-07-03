@@ -18,7 +18,11 @@ products:
 
 Which settings are available, and where you set them, depends on the control type and your version.
 
-## Options list settings [options-list-settings]
+## Control-level settings [control-level-settings]
+
+You set these on a single control, in the **Create control** flyout when you [add or edit](add-controls.md#create-and-add-options-list-and-range-slider-controls) it. The available settings depend on the control type.
+
+### Options list [options-list-settings]
 
 Label
 :   Overwrite the default field name with a clearer label.
@@ -42,9 +46,7 @@ You set the control's width in its {icon}`gear` **Display settings** ({applies_t
 :::{include} ../_snippets/control-display-settings.md
 :::
 
-The general settings below also affect Options list controls.
-
-## Range slider settings [range-slider-settings]
+### Range slider [range-slider-settings]
 
 Label
 :   Overwrite the default field name with a clearer label.
@@ -62,8 +64,6 @@ You set the control's width in its {icon}`gear` **Display settings** ({applies_t
 
 :::{include} ../_snippets/control-display-settings.md
 :::
-
-The general settings below also affect Range slider controls.
 
 ## General settings [configure-controls-settings]
 
