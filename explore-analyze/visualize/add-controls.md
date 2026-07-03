@@ -49,7 +49,7 @@ To add interactive Options list and Range slider controls, create the controls, 
         1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
         2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
 
-        To chain filtering, reference a [variable control](add-variable-controls.md) in the query with the `?variable_name` syntax.
+        Because these values come from an {{esql}} query, you can chain this control to a [variable control](add-variable-controls.md): reference that control's variable in your query with the `?variable_name` syntax, so its selection narrows the values shown here.
 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with number fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
 
