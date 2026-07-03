@@ -1,2 +1,0 @@
-- **Use global filters** (on by default): the control responds to the dashboard's filter chain. Turn it off to opt the control out of [chaining](../visualize/dashboard-controls.md#controls-chaining).
-- **Validate user selections** (on by default): highlight selections that return no data.

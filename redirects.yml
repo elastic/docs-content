@@ -864,7 +864,7 @@ redirects:
           'add-time-slider-controls': 'add-time-slider-controls'
       - to: 'explore-analyze/visualize/dashboard-control-settings.md'
         anchors:
-          'configure-controls-settings': 'configure-controls-settings'
+          'configure-controls-settings': 'dashboard-control-settings'
       - to: 'explore-analyze/visualize/dashboard-controls.md'
         anchors:
           'control-types': 'control-types'
