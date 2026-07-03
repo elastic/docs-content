@@ -16,7 +16,7 @@ jobs:
   run:
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      startsWith(github.event.comment.body, '/docs-triage')
+      startsWith(github.event.comment.body, '/triage')
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-triage.lock.yml@v1
     with:
       additional-instructions: |

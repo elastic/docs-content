@@ -30,6 +30,7 @@ By default, {{elastic-endpoint}} exceptions apply globally across all hosts runn
 
 {{elastic-endpoint}} exceptions are space-aware: when you create a per-policy exception, it is associated with the space you're working in. For more information on how spaces interact with endpoint artifacts, refer to [](/solutions/security/get-started/spaces-defend-faq.md).
 
+If you're upgrading from an earlier version, your existing {{elastic-endpoint}} exceptions are preserved and are managed from the **Artifacts** page. 
 
 ## Opt in to per-policy {{elastic-endpoint}} exceptions [endpoint-exceptions-opt-in]
 
