@@ -46,9 +46,9 @@ You can add three kinds of controls:
   :screenshot:
   :::
 
-## How controls apply to panels [controls-scope]
+## How controls affect the dashboard [controls-scope]
 
-A control doesn't affect every panel on the dashboard. What it affects depends on where you place it, its type, and the other controls on the dashboard.
+A control acts on the panels relevant to it, not the whole dashboard. And when a dashboard has several controls, their selections also narrow each other's options. What a given control affects depends on where you place it, its type, and the other controls on the dashboard.
 
 ### Pinned and unpinned controls [pinned-unpinned-controls]
 
