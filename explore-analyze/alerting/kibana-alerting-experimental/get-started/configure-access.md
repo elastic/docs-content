@@ -57,7 +57,7 @@ The **Execution history** privilege controls who can view rule execution history
 | **All** | View rule execution history |
 | **Read** | View rule execution history |
 
-## Triaging alerts [alerting-triage-privileges]
+## Triage alerts [alerting-triage-privileges]
 
 The **Alerts** privilege controls who can take triage actions on alert episodes.
 

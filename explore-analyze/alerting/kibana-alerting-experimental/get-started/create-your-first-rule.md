@@ -11,7 +11,7 @@ description: "Step-by-step tutorial for creating your first rule in Kibana's exp
 
 # Create your first rule [alerting-quick-start]
 
-In this tutorial, you'll create an index of synthetic latency data, build a rule that detects when P95 latency for a service exceeds 2 seconds, and watch the episode lifecycle — from breach detection through automatic recovery. Along the way, you'll learn how the {{alerting-v2-system}} tracks conditions over time.
+In this tutorial, you'll create an index of synthetic latency data, build a rule that detects when P95 latency for a service exceeds 2 seconds, and watch the episode lifecycle move from breach detection through automatic recovery. Along the way, you'll learn how the {{alerting-v2-system}} tracks conditions over time.
 
 ## Prerequisites [alerting-quick-start-prerequisites]
 
