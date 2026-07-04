@@ -37,7 +37,7 @@ You can add three kinds of controls:
     :screenshot:
     :::
 
-* **Variable control**: An {{esql}}-powered control that binds to variables in {{esql}} visualization queries, enabling dynamic filtering, grouping, and function selection.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.0` **Variable control**: An {{esql}}-powered control that binds to variables in {{esql}} visualization queries, enabling dynamic filtering, grouping, and function selection.
 
 * **Time slider**: A time range slider that filters data within a specified time range. Advance the range backward and forward, or animate the data change across the range.
 
