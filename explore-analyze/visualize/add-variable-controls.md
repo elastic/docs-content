@@ -33,7 +33,7 @@ To add variable controls to a dashboard, you need:
 Variable controls act as variables in your {{esql}} visualization queries. Only **Options lists** are supported. A control's options can be:
 
 - Values or fields, either static or defined by a query.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1` Functions.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` Functions.
 
 You create a variable control while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
 
@@ -45,7 +45,7 @@ The variable is inserted into your query directly, and you can keep editing the 
 Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 
 :::{tip}
-:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+:applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 In **Edit** mode, you can select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time, and you can select the label again to stop highlighting them. A variable control that no visualization uses displays a warning.
 :::
 
@@ -63,8 +63,8 @@ serverless: preview
 
 ## Chain variable controls [chain-variable-controls]
 ```{applies_to}
-stack: ga 9.3
-serverless: ga
+stack: preview 9.3
+serverless: preview
 ```
 
 Chain variable controls so that the selection in one control determines the options available in another. This is useful when you work with data from multiple indices or need hierarchical filtering, because it narrows control selections dynamically without filtering the entire dashboard.
