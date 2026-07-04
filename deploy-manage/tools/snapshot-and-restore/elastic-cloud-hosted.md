@@ -37,6 +37,7 @@ When working with snapshot repositories in {{ech}}, keep the following in mind:
 - Clusters should only register a particular snapshot repository bucket once. If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository. On other clusters, register the repository as read-only.
 - This prevents multiple clusters from writing to the repository at the same time and corrupting the repository’s contents. It also prevents {{es}} from caching the repository’s contents, which means that changes made by other clusters will become visible straight away.
 - When upgrading {{es}} to a newer version, you can continue to use the same repository you were using before the upgrade. If the repository is accessed by multiple clusters, they should all have the same version. Once a repository has been modified by a particular version of {{es}}, it may not work correctly when accessed by older versions. However, you will be able to recover from a failed upgrade by restoring a snapshot taken before the upgrade into a cluster running the pre-upgrade version, even if you have taken more snapshots during or after the upgrade.
+- Elastic does not enable cloud host level backups of the `found-snapshots` repositories. All changes made are permanent and cannot be reset to earlier time periods. You should enable a [custom repository](#ess-repo-types) for increased resiliency as needed.
 
 ## {{ech}} snapshot repository types [ess-repo-types]
 
