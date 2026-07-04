@@ -19,7 +19,7 @@ You can add three kinds of controls:
 
 * **Control**: A filter based on a [data view](../find-and-organize/data-views.md) field. When you create it, you choose one of two types:
 
-  * **Options list**: A dropdown that filters data by one or more selected values.
+  * **Options list**: A dropdown that filters data by one or more selected values. Use it for fields with a limited set of distinct values, such as categories, statuses, or hostnames.
     For example, in the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field to display only the logs generated from `osx` and `ios` operating systems.
 
     :::{image} /explore-analyze/images/kibana-dashboard-controls-options-list.png
