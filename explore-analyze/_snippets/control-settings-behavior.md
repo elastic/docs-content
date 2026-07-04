@@ -16,8 +16,13 @@ Auto apply selections
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Set **Auto apply filters** in **Dashboard settings**.
     - {applies_to}`stack: ga 9.0-9.3` Set **Apply selections automatically** in the dashboard-wide control settings.
 
-Other dashboard-wide settings {applies_to}`stack: ga 9.0-9.3`
-:   In these versions, the dashboard-wide control settings also include:
+Dashboard-wide control settings {applies_to}`stack: ga 9.0-9.3`
+:   In these versions, chaining, validation, and auto apply are configured together in a single dashboard-wide control settings dialog. To open it, in **Edit** mode:
+
+    - {applies_to}`stack: ga 9.2-9.3` Select **Add** > **Controls** > **Settings**.
+    - {applies_to}`stack: ga 9.0-9.1` Select **Controls** > **Settings**.
+
+    The dialog also includes:
 
     - **Label position**: show control labels **Inline** or **Above**.
     - **Apply global filters to controls**: whether controls obey the dashboard's main filter bar.
