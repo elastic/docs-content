@@ -6,13 +6,13 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Enable the experimental alerting system in Kibana, configure role access, and create your first rule."
+description: "Get started with the experimental alerting system in Kibana: review requirements, enable the system, configure role access, and follow a tutorial to create a rule and observe the alert lifecycle."
 ---
 
 # Get started with the {{alerting-v2-system}} [alerting-v2-get-started]
 
 Use these guides to get the {{alerting-v2-system}} running in your space, set up role access for your team, and create your first rule.
 
-- [Turn on the {{alerting-v2-system-cap}}](get-started/setup.md): Enable the `alerting:v2:enabled` advanced setting and confirm the system is accessible in your space.
-- [Configure access](get-started/configure-access.md): Set up a role with the {{kib}} feature privileges and {{es}} index privileges needed to create rules and query alert data.
-- [Create your first rule](get-started/create-your-first-rule.md): A hands-on tutorial that walks you through loading sample data, creating a rule, and watching the alert lifecycle play out from breach to recovery.
+- [Set up the {{alerting-v2-system-cap}}](get-started/setup.md): Review requirements, enable the `alerting:v2:enabled` advanced setting, and confirm the system is accessible in your space.
+- [Configure access](get-started/configure-access.md): Set up a role with the {{kib}} feature privileges needed to create rules, triage alerts, and query alert data.
+- [Create your first rule](get-started/create-your-first-rule.md): A hands-on tutorial that walks you through loading sample data, creating a rule, and observing the alert lifecycle from breach through automatic recovery.

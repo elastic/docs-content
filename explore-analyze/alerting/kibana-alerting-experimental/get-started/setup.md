@@ -6,12 +6,19 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-serverless
-description: "Enable and disable the experimental alerting system in Kibana: turn on the alerting:v2:enabled advanced setting, confirm the system is accessible, and understand what happens when the setting is turned off."
+description: "What you need before using the experimental alerting system in Kibana: license requirements, connectors, data, and space selection. Also covers how to turn the system on and off using the alerting:v2:enabled advanced setting."
 ---
 
 # Set up the {{alerting-v2-system}} [alerting-setup]
 
-This page explains how to enable the {{alerting-v2-system}} in your space, confirm it's accessible, and turn it off when needed. Enabling and turning off the system requires a {{kib}} administrator. Confirming accessibility can be done by any user with space access.
+This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off in your space.
+
+## Requirements [alerting-setup-requirements]
+
+- **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules.
+- **A space selected**: Rules, action policies, and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up.
+- **Connectors configured** (required for notifications): Action policies send notifications through workflows, which require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty.
+- **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Rules and alert episodes work on any tier. {{serverless-short}} has no license restriction.
 
 ## Turn on the system [alerting-setup-turn-on]
 
@@ -21,9 +28,7 @@ The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced s
 :::{tab-item} {{stack}}
 :sync: stack
 
-**Requirement:** Turning on this setting requires the `kibana_admin` role or equivalent {{stack-manage-app}} access.
-
-**Steps:**
+**Requirement:** `kibana_admin` role or equivalent {{stack-manage-app}} access.
 
 1. Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **Global settings**, toggle on **alerting:v2:enabled**.
@@ -32,9 +37,7 @@ The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced s
 :::{tab-item} {{serverless-short}}
 :sync: serverless
 
-**Requirement:** Turning on this setting requires the `admin` project role.
-
-**Steps:**
+**Requirement:** `admin` project role.
 
 {{serverless-short}} has no Global Advanced Settings UI. Use Dev Tools to call the global settings API:
 
@@ -81,12 +84,4 @@ Turning the setting back on resumes execution. Turning it off does not delete an
 
 After turning on the system, configure role access so your team can use it:
 
-- **[Configure access](configure-access.md):** Create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to. Users need at minimum **Rules: All** to create rules and `read` index access on `.rule-events` to query rule output in Discover.
-
-<!-- TODO: Uncomment when PR #6523 (rules) is merged:
-- **[Create a rule](../rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds in [Configure a rule](../rules/configure-a-rule.md).
--->
-<!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-- **[Set up workflows](../workflows-alerting.md):** Configure the automation objects that deliver messages — email, Slack, webhook, and so on. You need at least one workflow before action policies can send anything.
-- **[Create action policies](../action-policies/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions. Policies use KQL matchers to pick up the right episodes and route them to your workflows.
--->
+- **[Configure access](configure-access.md):** Create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to. Users need at minimum **Rules: All** to create rules. Granting **Alerts: Read** gives a role Kibana triage access and automatic Elasticsearch `read` access to `.rule-events` and `.alert-actions`, with no separate index privilege needed.
