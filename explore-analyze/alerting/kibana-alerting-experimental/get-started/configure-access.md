@@ -29,7 +29,8 @@ The following table shows the minimum privileges required for each activity. Hig
 | Monitor rule execution | **Execution history: Read** (under **Alerting**) |
 | Triage alert episodes | **Alerts: All** (under **Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Alerting**) + **Workflows: Read** (under **Analytics > Workflows**) |
-| Query rule and episode data in Discover | **Discover: Read** (under **Analytics > Discover**) + `read` index privilege on the relevant data stream |
+| Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics > Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
+| Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics > Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
 ## Author and monitor rules [alerting-authoring-monitoring-privileges]
 
@@ -65,6 +66,10 @@ The **Alerts** privilege controls who can take triage actions on alert episodes.
 |---|---|
 | **All** | Acknowledge, snooze, assign, tag, activate, and deactivate alert episodes |
 | **Read** | View alert episodes |
+
+:::{note}
+Granting **Alerts: All** or **Alerts: Read** also gives the role direct Elasticsearch `read` access to `.rule-events` and `.alert-actions`, scoped to that role's spaces. This is bundled into the privilege — no separate custom role or index privilege is needed to query these data streams in Discover.
+:::
 
 ## Configure notifications [alerting-notifications-privileges]
 
@@ -109,16 +114,25 @@ Both levels grant the same query access. There is no write surface for any of th
 
 ### {{es}} index access
 
-Each data source requires a separate `read` index privilege:
+For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled into the **Alerts** Kibana privilege — nothing extra to configure. For `.kibana-event-log-*`, a custom role is still required.
 
-| Data source | What it stores | Required privilege |
+| Data source | What it stores | How to grant access |
 |---|---|---|
-| `.rule-events` | A record for every rule evaluation — one document per result row per run | `read` |
-| `.alert-actions` | Episode action records: acknowledge, snooze, resolve, assign, and other triage operations | `read` |
-| `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | `read` |
+| `.rule-events` | A record for every rule evaluation; one document per result row per run | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.alert-actions` | Episode action records: acknowledge, snooze, resolve, assign, and other triage operations | Automatic with **Alerts: All** or **Alerts: Read**. If access is missing, grant `read` using a custom role as a fallback. |
+| `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege. Not covered by the automatic grant. |
 
-Because `.rule-events` and `.alert-actions` are hidden system data streams, request access through a custom role with the appropriate index privileges.
+## Next steps [alerting-access-next-steps]
 
-<!-- TODO: Uncomment when PR #6527 (alerts) is merged, and add as a link in the note under the Rules section:
-For step-by-step instructions, refer to [Create a rule from Discover](../alerts/query-alerts-and-signals-in-discover.md).
+With access configured, you're ready to start using the {{alerting-v2-system}}:
+
+- **[Create your first rule](create-your-first-rule.md):** Follow the tutorial to create an ES|QL rule, load sample data, and watch the alert episode lifecycle from breach through automatic recovery.
+
+<!-- TODO: Uncomment when PR #6523 (rules) is merged:
+- **[Create a rule](../rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds.
 -->
+<!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
+- **[Set up workflows](../workflows-alerting.md):** Configure the automation objects that deliver notifications — email, Slack, webhook, and so on.
+- **[Create action policies](../action-policies/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions.
+-->
+
