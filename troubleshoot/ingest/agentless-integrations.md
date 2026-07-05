@@ -1,5 +1,5 @@
 ---
-navigation_title: Agentless integrations
+navigation_title: Elastic Managed integrations
 applies_to:
   stack: preview
   serverless: preview
@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
   - id: observability
   - id: security
-description: Troubleshoot common issues with agentless integrations, including Offline and Unhealthy agents.
+description: Troubleshoot common issues with Elastic Managed integrations
 type: troubleshooting
 ---
 

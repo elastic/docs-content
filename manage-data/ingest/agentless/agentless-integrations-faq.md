@@ -9,11 +9,12 @@ products:
   - id: cloud-hosted
   - id: observability
   - id: security
-description: Frequently asked questions and troubleshooting steps for agentless integrations, including limits, supportability, and common setup issues.
+description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
 navigation_title: FAQ
 ---
 
-# {{managed-integrations-cap}} FAQ [agentless-integration-faq]
+# {{managed-integrations}} FAQ [agentless-integration-faq]
 
 :::{include} ../_snippets/agentless-integrations-faq.md
 :::
+

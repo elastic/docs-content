@@ -1,5 +1,5 @@
 ---
-navigation_title: Agentless integrations
+navigation_title: Elastic Managed integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/agentless-integration-troubleshooting.html
 applies_to:
@@ -12,7 +12,7 @@ products:
   - id: cloud-hosted
   - id: observability
   - id: security
-description: Troubleshoot common issues with agentless integrations, including Offline and Unhealthy agents.
+description: Troubleshoot common issues with Elastic Managed integrations
 type: troubleshooting
 ---
 

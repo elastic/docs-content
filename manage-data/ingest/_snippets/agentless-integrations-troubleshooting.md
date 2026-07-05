@@ -1,8 +1,8 @@
-Resolve common issues with {{managed-integrations}}. For more general questions, see the [{{managed-integrations-cap}} FAQ](/manage-data/ingest/agentless/agentless-integrations-faq.md).
+Resolve common issues with {{managed-integrations}}. For more general questions, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/agentless/agentless-integrations-faq.md).
 
 ## Get diagnostics and support [agentless-troubleshoot-support]
 
-{{managed-integrations-cap}} are a fully managed service, so you usually don't need to collect diagnostics yourself. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
+{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
 ## Troubleshoot an Offline agent [agentless-troubleshoot-offline]
 
@@ -53,5 +53,5 @@ If you want to collect a diagnostics bundle before contacting support:
 
 2. In **{{fleet}}**, select the unhealthy agent.
 3. From the actions menu {icon}`ellipsis`, select **Maintenance and diagnostics** → **Request diagnostics .zip**.
-4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, see [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
+4. Download and unzip the [diagnostics bundle](/troubleshoot/ingest/fleet/diagnostics.md). For more information, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md).
 :::

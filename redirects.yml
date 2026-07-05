@@ -927,7 +927,6 @@ redirects:
   'manage-data/ingest/agentless/agentless-integrations-faq.md':
     to: 'manage-data/ingest/agentless/agentless-integrations-faq.md'
     anchors:
-      'agentless-integration-troubleshooting': 'agentless-integration-faq'
       '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
       'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
       'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
@@ -937,6 +936,7 @@ redirects:
     many:
       - to: 'troubleshoot/ingest/agentless-integrations.md'
         anchors:
+          'agentless-integration-troubleshooting': null
           '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
           '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
 

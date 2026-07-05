@@ -1,5 +1,5 @@
 ---
-navigation_title: Cloud connector authentication for agentless
+navigation_title: Cloud connector authentication
 applies_to:
   stack: preview 9.2
   serverless:
@@ -13,9 +13,9 @@ products:
   - id: elastic-stack
 ---
 
-# Authenticate agentless integrations using cloud connectors
+# Authenticate {{managed-integrations}} using cloud connectors
 
-Cloud connector authentication for agentless integrations reduces the administrative burden of authentating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers. 
+Cloud connector authentication for {{managed-integrations}} reduces the administrative burden of authenticating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers. 
 
 ## Integrations that support cloud connector deployment
 
