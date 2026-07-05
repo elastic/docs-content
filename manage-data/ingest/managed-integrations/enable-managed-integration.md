@@ -15,7 +15,7 @@ type: how-to
 
 # Enable an {{managed-integration}} [enable-agentless-integration]
 
-Enable an {{managed-integration}} (previously known as an agentless integration) in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For background and architecture, refer to [{{managed-integrations}}](/manage-data/ingest/agentless/agentless-integrations.md).
+Enable an {{managed-integration}} (previously known as an agentless integration) in {{kib}} to start collecting data from a cloud source. Elastic provisions and operates the collector for you on Elastic-managed infrastructure, so there's nothing to install or maintain. For background and architecture, refer to [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md).
 
 ## Before you begin [enable-agentless-before-you-begin]
 
@@ -61,11 +61,11 @@ For a complete list of integrations that can run as {{managed-integrations}}, re
 Within a few minutes, data from the source appears in the integration's data streams in your cluster.
 
 :::{tip}
-For integrations that authenticate to a cloud provider, you can use [cloud connector authentication](/manage-data/ingest/agentless/cloud-connector-deployment.md) to avoid managing API keys directly.
+For integrations that authenticate to a cloud provider, you can use [cloud connector authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) to avoid managing API keys directly.
 :::
 
 ## Next steps [enable-agentless-next-steps]
 
-* Learn more about [how {{managed-integrations}} work](/manage-data/ingest/agentless/agentless-integrations.md#agentless-architecture).
-* Review common questions in the [{{managed-integrations}} FAQ](/manage-data/ingest/agentless/agentless-integrations-faq.md).
-* If you run into issues, check [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/agentless-integrations.md).
+* Learn more about [how {{managed-integrations}} work](/manage-data/ingest/managed-integrations/managed-integrations.md#agentless-architecture).
+* Review common questions in the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md).
+* If you run into issues, check [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md).

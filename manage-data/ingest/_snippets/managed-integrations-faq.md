@@ -1,4 +1,4 @@
-Frequently asked questions about {{managed-integrations}} (previously known as agentless integrations). For step-by-step help with specific issues, refer to [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/agentless-integrations.md).
+Frequently asked questions about {{managed-integrations}} (previously known as agentless integrations). For step-by-step help with specific issues, refer to [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md).
 
 ## About {{managed-integrations}} [agentless-faq-about]
 
@@ -102,7 +102,7 @@ Add the query parameter `?showAgentless=true` to the end of the **{{fleet}}** pa
 
 ### How do I troubleshoot an Offline or Unhealthy agent? [agentless-faq-troubleshoot]
 
-{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. For step-by-step guidance — including how to get support and (if needed) collect a diagnostics bundle — refer to [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/agentless-integrations.md).
+{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. For step-by-step guidance — including how to get support and (if needed) collect a diagnostics bundle — refer to [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md).
 
 ### Why can't I upgrade my {{managed-integration}} to a later version? [agentless-faq-upgrade]
 

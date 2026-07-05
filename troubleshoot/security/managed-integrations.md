@@ -1,5 +1,7 @@
 ---
 navigation_title: Elastic Managed integrations
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/agentless-integration-troubleshooting.html
 applies_to:
   stack: preview
   serverless: preview
@@ -16,5 +18,5 @@ type: troubleshooting
 
 # Troubleshoot {{managed-integrations}} [agentless-integration-troubleshoot]
 
-:::{include} /manage-data/ingest/_snippets/agentless-integrations-troubleshooting.md
+:::{include} /manage-data/ingest/_snippets/managed-integrations-troubleshooting.md
 :::

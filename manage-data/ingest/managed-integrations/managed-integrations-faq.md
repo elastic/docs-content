@@ -15,6 +15,6 @@ navigation_title: FAQ
 
 # {{managed-integrations}} FAQ [agentless-integration-faq]
 
-:::{include} ../_snippets/agentless-integrations-faq.md
+:::{include} ../_snippets/managed-integrations-faq.md
 :::
 

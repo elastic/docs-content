@@ -20,7 +20,7 @@ type: overview
 
 {{managed-integrations}} (previously known as agentless integrations) let you ingest data from cloud sources into Elastic without deploying or maintaining any collectors yourself. Elastic runs the collectors for you and writes the data directly to your cluster, so you can focus on the data rather than on the infrastructure that gathers it. {{managed-integrations}} are available on {{ech}} deployments and on {{obs-serverless}} and {{sec-serverless}} projects.
 
-To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/agentless/enable-agentless-integration.md).
+To enable an {{managed-integration}} in {{kib}}, refer to [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md).
 
 :::{important}
 {{managed-integrations}} are a technical preview feature. The design and code are less mature than GA features, and Elastic provides them as-is with no warranties. The support SLA for GA features doesn't apply. There are no additional costs for {{managed-integrations}} during technical preview.
@@ -40,7 +40,7 @@ Each {{managed-integration}} runs in its own collector, which keeps your data is
 
 Behind the scenes, a small set of shared, stateless control plane components orchestrate the lifecycle of these collectors: an **Agentless API** that receives provisioning requests, an **Agentless Controller** that creates and updates the collectors, and an **Agentless Cleaner** that removes them when an integration is deleted. None of these components store customer data.
 
-:::{image} /manage-data/images/agentless-architecture.png
+:::{image} /manage-data/images/managed-integrations-architecture.png
 :alt: Architecture diagram for {{managed-integrations}}, showing the Agentless API, Controller, and Cleaner orchestrating per-integration collectors on Elastic-managed infrastructure. The collectors pull data from cloud sources through a cloud proxy and write to {{es}} over the `_bulk` API, while {{fleet-server}} delivers their policies.
 :::
 
@@ -68,8 +68,8 @@ For service issues or to request diagnostics, contact [Elastic Support](https://
 
 ## Related [agentless-related]
 
-* [Enable an {{managed-integration}}](/manage-data/ingest/agentless/enable-agentless-integration.md)
-* [{{managed-integrations}} FAQ](/manage-data/ingest/agentless/agentless-integrations-faq.md)
-* [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/agentless-integrations.md)
-* [Cloud connector authentication for {{managed-integrations}}](/manage-data/ingest/agentless/cloud-connector-deployment.md)
+* [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md)
+* [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md)
+* [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md)
+* [Cloud connector authentication for {{managed-integrations}}](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md)
 * [{{managed-integrations}} quick reference](integration-docs://reference/agentless_integrations.md)

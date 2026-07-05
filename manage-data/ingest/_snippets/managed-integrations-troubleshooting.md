@@ -1,4 +1,4 @@
-Resolve common issues with {{managed-integrations}}. For more general questions, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/agentless/agentless-integrations-faq.md).
+Resolve common issues with {{managed-integrations}}. For more general questions, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md).
 
 ## Get diagnostics and support [agentless-troubleshoot-support]
 

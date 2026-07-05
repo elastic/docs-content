@@ -21,7 +21,7 @@ Their information can be used to troubleshoot problems with your setup. You can 
 
 ## Which information do I need? [agent-diagnostic-type]
 
-For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md) and [agentless integrations](/manage-data/ingest/agentless/agentless-integrations.md), the related settings and states can be surfaced by:
+For [{{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md) and [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md), the related settings and states can be surfaced by:
 
 * {{kib}} from the [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-api-docs.md)
 * {{agent}} and {{fleet}} from their [command reference](/reference/fleet/agent-command-reference.md)
@@ -42,7 +42,7 @@ To pull data from the respective applicable locations, refer to:
 
     :::{note}
     :applies_to: { serverless: ga, ess: ga }
-    To pull [agentless integration](/manage-data/ingest/agentless/agentless-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display agentless resources in {{fleet}}, refer to [Show agentless resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
+    To pull [{{managed-integration}}](/manage-data/ingest/managed-integrations/managed-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display agentless resources in {{fleet}}, refer to [Show agentless resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:
