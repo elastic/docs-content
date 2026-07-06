@@ -1,11 +1,9 @@
 ---
 navigation_title: Cloud connector authentication
 applies_to:
-  stack: preview 9.2
-  serverless:
-    security: preview
+  stack: preview 9.2+
+  serverless: preview
 products:
-  - id: security
   - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -15,7 +13,7 @@ products:
 
 # Authenticate {{managed-integrations}} using cloud connectors
 
-Cloud connector authentication for {{managed-integrations}} reduces the administrative burden of authenticating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers. 
+Cloud connector authentication for {{managed-integrations}} reduces the administrative burden of authenticating to third-party cloud service providers by eliminating the need to keep track of credentials such as API keys or passwords. Cloud connectors provide a reusable, secure-by-default means of authentication, helping you to manage deployments with many integrations collecting data from multiple cloud security providers.
 
 ## Integrations that support cloud connector deployment
 
@@ -25,14 +23,16 @@ Cloud connector authentication currently supports deployments of Elastic's Cloud
 - CSPM: [CSPM on Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md); [CSPM on AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md)
 
 ::::{important}
-{applies_to}`stack: removed 9.3`{applies_to}`serverless: removed` To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+:applies_to: stack: preview =9.2
+To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
 ::::
 
 ## Cloud connector names
+
 ```{applies_to}
-stack: preview 9.3
-serverless: preview
+stack: preview 9.3+
 ```
+
 Cloud connector names help you keep track of each connector's purpose and reuse it appropriately. For example, you could name two AWS connectors `aws-prod` and `aws-testing`. 
 
 When you create a new cloud connector you must name it. When you're deploying an integration with a cloud connector, if you select **Existing connection** a dropdown menu with the names of existing cloud connectors appears. 
