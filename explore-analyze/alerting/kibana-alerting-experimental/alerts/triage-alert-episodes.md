@@ -27,7 +27,7 @@ All available actions apply to multiple episodes at once. Scope rules still appl
 
 ## Snooze [snooze-episode]
 
-Snoozing suppresses notifications for an alert series for a defined period. The rule continues to evaluate and the episode remains visible, but {{kib}} sends no notifications until the snooze expires.
+Snoozing suppresses actions from being triggered for an alert series for a defined period. The rule continues to evaluate and the episode remains visible, but actions aren't executed until the snooze expires.
 
 Use snooze when you expect a known condition to persist for a fixed time and you want to stop the noise without disabling the rule entirely, for example, during a scheduled maintenance window.
 
