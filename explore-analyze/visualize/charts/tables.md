@@ -162,33 +162,23 @@ Customize your table to display exactly the information you need, formatted the 
 :   Define which fields create the rows of your table. Drag a field to the **Rows** dimension, and {{kib}} suggests an appropriate function based on the field type. 
 
     - **Functions**:
-      - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each row represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-        :::{dropdown} How does interval granularity work?
-        Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
-        
-        The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the “nice” interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
-        
-        Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
-        :::
-      - **Filters**: Define custom KQL filters to create specific row groups. Each filter creates one row in the table.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
 
-    - **Collapse by**: Aggregate rows that share the same value for this field into a single row, combining their metrics (for example, sum or average for each group). This is useful when you want to display a consolidated result for grouped values instead of individual rows.
-
-    
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   - **Name**: Customize the column header label for the row dimension.
@@ -202,29 +192,20 @@ Customize your table to display exactly the information you need, formatted the 
 :   Optionally split your metrics into separate columns based on a categorical field. This creates a pivot table view where each unique value of the split field becomes its own column. This is useful for comparing the same metric across different categories side by side.
 
     - **Functions**:
-      - **Top values**: Show the most common values of a categorical field. Configure the number of values to display, ranking criteria, and sort direction.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each column group represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display. The default number of values depends on your environment:
-          - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-          - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data by time intervals. Configure the time interval and how to handle date formatting.
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. Useful for grouping numeric fields into buckets. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-        :::{dropdown} How does interval granularity work?
-        Interval granularity divides the field into evenly spaced intervals based on the minimum and maximum values for the field.
-        
-        The size of the interval is a "nice" value. When the granularity of the slider changes, the interval stays the same when the “nice” interval is the same. The minimum granularity is 1, and the maximum value is histogram:maxBars. To change the maximum granularity, go to Advanced settings.
-        
-        Intervals are incremented by 10, 5 or 2. For example, an interval can be `100` or `0.2`.
-        :::
-      - **Filters**: Define custom KQL filters to create specific column groups. Each filter creates one column in the table. 
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
 
 **Appearance**
 :   - **Name**: Customize the split dimension. This name is not used on the table.

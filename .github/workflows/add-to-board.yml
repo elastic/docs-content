@@ -14,6 +14,7 @@ jobs:
     if: |
       github.event.label.name == 'Team:Ingest' ||
       github.event.label.name == 'Team:Experience' ||
+      github.event.label.name == 'Team:SKI' ||
       github.event.label.name == 'Team:Admin' ||
       github.event.label.name == 'Team:Developer' ||
       github.event.label.name == 'Team:DocsEng' ||
@@ -22,10 +23,12 @@ jobs:
       github.event.label.name == 'Team:Search' ||
       github.event.label.name == 'Team:Security'
     env:
+      # Retired Team:Ingest / Team:Experience map to the SKI board (1034).
       PROJECT_ID_MAP: |
         {
-          "Team:Ingest":      "649",
+          "Team:Ingest":      "1034",
           "Team:Experience":  "1034",
+          "Team:SKI":         "1034",
           "Team:Admin":       "1927",
           "Team:Developer":   "726",
           "Team:DocsEng":     "1625",
@@ -35,7 +38,21 @@ jobs:
           "Team:Security":    "1034"
         }
     steps:
+      - name: Add the Team:SKI label
+        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: Team:SKI
+
+      - name: Remove the retired team label
+        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: ${{ github.event.label.name }}
+
+      # Tolerate issues that don't carry needs-team (already triaged, etc.).
       - name: Remove needs-team label
+        continue-on-error: true
         uses: actions-ecosystem/action-remove-labels@v1
         with:
           labels: needs-team
@@ -45,5 +62,3 @@ jobs:
         with:
           project-url: https://github.com/orgs/elastic/projects/${{ fromJson(env.PROJECT_ID_MAP)[github.event.label.name] }}
           github-token: ${{ secrets.ADD_TO_BOARD_TOKEN }}
-          labeled: ${{ github.event.label.name }}
-          label-operator: OR
