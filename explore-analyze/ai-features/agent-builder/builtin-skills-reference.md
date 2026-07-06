@@ -118,10 +118,10 @@ $$$agent-builder-detection-rule-edit-skill$$$ `detection-rule-edit` {applies_to}
     **How to activate:** This skill is attachment-driven and activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" in chat — the skill creates the attachment and renders an **Apply to creation** or **Update rule** button so you can save the change to the rule form.
 
 $$$agent-builder-automatic-troubleshooting-skill$$$ `automatic_troubleshooting` {applies_to}`stack: ga 9.5+, preview =9.4` {applies_to}`serverless: ga`
-:   Diagnoses [Elastic Defend](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
+:   Diagnoses [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) endpoint configuration issues such as endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus software. Queries endpoint data, inspects package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
     **Assigned tools:** `platform.core.search`, `platform.core.get_document_by_id`, `platform.core.integration_knowledge`
 
-    **Prerequisites:** [Elastic Defend](/solutions/security/configure-elastic-defend.md) deployed and reporting.
+    **Prerequisites:** [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed and reporting.
 
     {applies_to}`stack: preview =9.4` In this version, the `automaticTroubleshootingSkill` [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled for the skill to appear.
 
