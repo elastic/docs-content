@@ -25,7 +25,7 @@ FROM metrics-*
 | KEEP host.name, last_seen                       // Each returned row is a silent host
 ```
 
-Every row returned is a host that has gone silent. The query result itself drives the alert; no separate alert condition is needed.
+Every row returned is a host that has gone silent. The query result itself drives the alert. A separate alert condition isn't needed.
 
 :::{note}
 This pattern detects specific silent sources. For controlling what the rule records when the entire base query returns zero rows, for example when an index is completely empty, refer to [No-data handling](configure-no-data-handling.md).

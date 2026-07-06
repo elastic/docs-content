@@ -23,7 +23,7 @@ Two paths lead to Discover-based rule creation:
 
 When you trigger rule creation from Discover, your {{esql}} query pre-fills the **Create ES|QL rule** form. The rule creation form also shows a preview panel that reflects how your query partitions results into alert series. If your query uses a `BY` clause, the preview shows the series that would be evaluated on each run, letting you verify grouping logic against live data before committing to a schedule.
 
-The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point; edits in YAML mode are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
+The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
 
 For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
 

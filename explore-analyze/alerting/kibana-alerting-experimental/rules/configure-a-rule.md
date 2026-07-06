@@ -10,7 +10,7 @@ description: "Overview of all configurable rule settings in the experimental ale
 
 # Configure a rule in the {{alerting-v2-system}} [rule-settings]
 
-Rules in the {{alerting-v2-system}} have three required settings and several optional ones. Start with the required settings in order. Only add optional settings once the detection logic is validated. The table below links to a dedicated page for each setting with field descriptions, accepted values, and guidance on when to configure it.
+Rules in the {{alerting-v2-system}} have three required settings and several optional ones. Start with the required settings in order. Only add optional settings once the detection logic is validated. The following table links to a dedicated page for each setting with field descriptions, accepted values, and guidance on when to configure it.
 
 | Setting | Description | Required |
 | --- | --- | --- |

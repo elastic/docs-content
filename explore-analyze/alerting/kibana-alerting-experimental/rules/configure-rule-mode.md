@@ -32,7 +32,7 @@ Signal mode is **not** the right fit when:
 Alert mode is the right fit when:
 
 * The rule is production-ready and each breach should be tracked as a distinct alert episode that opens, can escalate, and closes when the condition clears.
-* Alert episodes from the rule should be available for be triage, acknowledgement, or escalatation.
+* Alert episodes from the rule should be available for be triage, acknowledgment, or escalation.
 * You want to attach action policies to route notifications when alert episodes open, escalate, or recover.
 
 Alert mode is **not** the right fit when:

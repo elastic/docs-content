@@ -45,7 +45,7 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 | `pending_timeframe` | Duration string | How long the condition must remain breached before the alert episode opens. |
 | `pending_operator` | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
-You can combine Breaches and Duration. For example, require the threshold to be breached five times in a row _and_ persist for at least two minutes before an alert episode opens. Set `pending_operator` to `AND` to require both, or `OR` if either is enough.
+You can combine Breaches and Duration. For example, require the threshold to be breached five times in a row _and_ persist for at least two minutes before an alert episode opens. To require both, set `pending_operator` to `AND` or `OR` if either is enough.
 
 ## Recovery thresholds
 

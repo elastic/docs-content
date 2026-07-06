@@ -25,7 +25,7 @@ Configure tags when:
 
 Configure a runbook when:
 
-* Responders who aren't familiar with the service may need to triage the alert. A runbook surfaces triage steps directly alongside the alert without requiring a separate search.
+* Responders who aren't familiar with the service might need to triage the alert. A runbook surfaces triage steps directly alongside the alert without requiring a separate search.
 * The alert requires a consistent response process that you want encoded and version-controlled alongside the rule.
 
 Skip tags and runbooks when:

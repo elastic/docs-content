@@ -14,7 +14,7 @@ If you're new to {{esql}} or to writing rules, this page shows the simplest quer
 
 ## The simplest rule query
 
-This query returns one row for every log entry at `ERROR` level in the lookback window. No aggregation happens; each matching event becomes its own alert event. Use this pattern when any single occurrence of a condition is worth alerting on: any critical error log, any failed authentication attempt, any payment rejection.
+This query returns one row for every log entry at `ERROR` level in the lookback window. No aggregation happens. Each matching event becomes its own alert event. Use this pattern when any single occurrence of a condition is worth alerting on: any critical error log, any failed authentication attempt, any payment rejection.
 
 ```esql
 FROM logs-*
