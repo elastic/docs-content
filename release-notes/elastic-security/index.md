@@ -29,10 +29,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.4.3 [elastic-security-9.4.3-release-notes]
 
-### Features and enhancements [elastic-security-9.4.3-features-enhancements]
-
-* Adds AI agent process attribution to {{elastic-defend}}, with process descendant enrichment.
-
 ### Fixes [elastic-security-9.4.3-fixes]
 
 * Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
