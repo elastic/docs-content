@@ -23,7 +23,7 @@ Here's what you'll do:
 
 ## Requirements [alerting-quick-start-requirements]
 
-Before you start, make sure you have the following.
+Before you start, make sure you have the following:
 
 - **A serverless project**: This tutorial uses an {{serverless-full}} project. [Create a serverless project](/deploy-manage/deploy/elastic-cloud/serverless.md) if you don't have one.
 
