@@ -306,31 +306,37 @@ Go to **Alerting V2 Preview** using the [global search field](/explore-analyze/f
 
 ::::{step} Configure the alert condition
 
-The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields, then select **Next**:
+The query you applied from the sandbox auto-fills **Mode**, **Time field**, and **Group fields**. Set the remaining fields:
 
 - Set **Alert delay** to **Breaches: 2**. The breach must persist across 2 consecutive evaluations before the episode moves to `active`.
 - Set **Schedule** to every `5` minutes.
 - Set **Lookback Window** to the last `2` hours. This ensures the rule can reach the pre-loaded sample data regardless of when you complete the tutorial.
 
+Select **Next**.
+
 ::::
 
 ::::{step} Configure the recovery condition
 
-Confirm the defaults, then select **Next**:
+Confirm the default settings:
 
 - **Recovery**: `Default recovery`
 - **Recovery delay**: `Immediate` (no delay, recovers on first non-breach)
 
-These defaults produce the automatic recovery behavior this tutorial demonstrates: the episode closes as soon as a scheduled run returns no breaching rows.
+These default settings will produce the automatic recovery behavior this tutorial demonstrates. As soon as a scheduled run returns no breaching rows, the episode will close.
+
+Select **Next**.
 
 ::::
 
 ::::{step} Name and save the rule
 
-1. On the **Details & Artifacts** step, enter the following, then select **Next**:
+1. On the **Details & Artifacts** step, enter the following:
 
    - **Name**: Checkout Service Latency
    - **Description**: `Detects when P95 latency for the checkout service exceeds 2 seconds. Groups by service name and assigns severity: critical at 4 seconds, high at 2 seconds.`
+
+   Select **Next**.
 
 2. On the **Actions** step, do not create an action policy (rules can run without notifications or actions setup). Select **Create rule** to create and enable the rule.
 

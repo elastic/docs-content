@@ -107,6 +107,4 @@ Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does n
 
 ## Next steps
 
-After turning on the system, configure role access so your team can use it:
-
-- **[Configure access](configure-access.md):** Create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to. Users need at minimum **Rules: All** to create rules. Granting **Alerts: Read** gives a role Kibana triage access and automatic Elasticsearch `read` access to `.rule-events` and `.alert-actions`, with no separate index privilege needed.
+After turning on the system, [configure access](configure-access.md) to create or update a role with access to the {{alerting-v2-system}} features and the data streams they write to.
