@@ -427,7 +427,11 @@ The index `my-index` must exist in every project, otherwise [the search returns 
 
 ### Project routing examples
 
-Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. You can combine tags with the `AND`, `OR`, and `NOT` operators, group terms with parentheses, and use prefix or suffix wildcards to match part of a value. Tag matching is case-insensitive. In an expression, a colon (`:`) separates a tag from its value. The syntax is the same for the `_search` API and {{esql}}.
+Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. Combine tags with the `AND`, `OR`, and `NOT` operators, group terms with parentheses, and match part of a value with a prefix or suffix wildcard. Tag value matching is case-insensitive, so `_csp:AWS` matches the value `aws`. Tag names are case-sensitive, so use `_csp`, not `_CSP`. In an expression, a colon (`:`) separates a tag from its value. The syntax is the same for the `_search` API and {{esql}}.
+
+:::{note}
+You can optionally add the `_project.` prefix to a tag name, for example `_project._csp:aws`. This is the same prefix used to reference tags in queries. In project routing the prefix is optional, so `_csp:aws` and `_project._csp:aws` are equivalent.
+:::
 
 The following examples use an origin project and a linked project. The origin project contains one index, `my-index`. The linked project contains two indices: `my-index` and `logs`.
 
@@ -643,11 +647,14 @@ GET /_query
 
 ::::
 
-:::{note}
-Every term in an expression needs a tag prefix, and every tag must be defined. These expressions fail:
+Value matching is case-insensitive. For example, `_csp:GCP` matches the same projects as `_csp:gcp`.
 
-* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag prefix. Use `_csp:aws OR _csp:gcp` instead.
+:::{note}
+Every term in an expression needs a tag name, and every tag must be defined. These expressions fail:
+
+* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag name. Use `_csp:aws OR _csp:gcp` instead.
 * `_foo:bar` fails because `_foo` isn't a defined tag.
+* `NOT _csp:azure` fails because an expression can't be only a negation. To match every project except Azure, include first and then exclude: `_csp:* AND NOT _csp:azure`.
 :::
 
 #### Project routing with named project routing expressions

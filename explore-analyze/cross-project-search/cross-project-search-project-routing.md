@@ -30,7 +30,11 @@ GET logs/_search
 
 Project routing expressions use Lucene query syntax, so you're not limited to a single tag or an exact match. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. In an expression, the colon (`:`) separates a tag from its value.
 
-You can combine tags with the `AND`, `OR`, and `NOT` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. Tag matching is case-insensitive. The syntax is the same for the `_search` API and {{esql}}.
+You can combine tags with the `AND`, `OR`, and `NOT` operators and group terms with parentheses. You can also use prefix or suffix wildcards to match part of a tag value. Tag value matching is case-insensitive, so `_csp:AWS` matches the value `aws`. Tag names are case-sensitive, so use `_csp`, not `_CSP`. The syntax is the same for the `_search` API and {{esql}}.
+
+:::{note}
+You can optionally add the `_project.` prefix to a tag name, for example `_project._csp:aws`. This is the same prefix used to reference tags in queries. In project routing the prefix is optional, so `_csp:aws` and `_project._csp:aws` are equivalent.
+:::
 
 For example, the following request routes the search to projects on Amazon Web Services (AWS) in a US region, or to any project on Google Cloud:
 
@@ -55,11 +59,14 @@ FROM logs
 
 ::::
 
-::::{note}
-Every term in an expression needs a tag prefix, and every tag must be defined. These expressions fail:
+Value matching is case-insensitive. For example, `_csp:GCP` matches the same projects as `_csp:gcp`.
 
-* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag prefix. Use `_csp:aws OR _csp:gcp` instead.
+::::{note}
+Every term in an expression needs a tag name, and every tag must be defined. These expressions fail:
+
+* `_csp:aws OR gcp` fails because the bare term `gcp` has no tag name. Use `_csp:aws OR _csp:gcp` instead.
 * `_foo:bar` fails because `_foo` isn't a defined tag.
+* `NOT _csp:azure` fails because an expression can't be only a negation. To match every project except Azure, include first and then exclude: `_csp:* AND NOT _csp:azure`.
 ::::
 
 Refer to [the examples section](/explore-analyze/cross-project-search.md#cps-examples) for more. You can also refer to [Query across Serverless projects with ES|QL](elasticsearch://reference/query-languages/esql/esql-cross-serverless-projects.md) for more ES|QL examples.
