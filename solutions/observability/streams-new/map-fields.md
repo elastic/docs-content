@@ -17,13 +17,23 @@ products:
 
 # Map fields in Streams [streams-schema]
 
-Field mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query performance.
+Field mappings define how {{es}} stores and indexes your data, balancing storage efficiency against query performance. You can map fields from the [**Processing** tab](#streams-map-fields-processing) or the [**Schema** tab](#streams-map-fields-processing).
 
-You can map fields either after creating a processor on the [**Processing** tab](#streams-map-fields-processing) or from the [**Schema** tab](#streams-map-fields-processing).
+## Mapped versus runtime fields [streams-mapped-vs-runtime]
 
-Unmapped fields can still be searched using [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), but these incur higher query costs.
+Unmapped fields can still be searched using [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md), but at a higher query cost. Use this table to decide which approach fits your use case:
 
-After identifying which fields you query most often, you can map them to improve performance, at the cost of additional storage. For more background, refer to the [mapping](../../../manage-data/data-store/mapping.md) overview.
+| | Mapped fields | Runtime fields |
+|---|---|---|
+| **Storage** | Higher — field is indexed at ingest | None — calculated at query time |
+| **Query performance** | Fast | Slower |
+| **Aggregations and sorting** | Fully supported | Supported, but slower |
+| **Schema changes** | Require re-indexing | No re-indexing needed |
+| **Best for** | Fields you query, filter, or aggregate regularly | Exploratory queries, infrequent lookups, or schema still in flux |
+
+For most fields, use mapped fields. The performance benefit outweighs the extra storage for any field you use regularly — especially fields used in dashboards, filters, and aggregations. Use runtime fields when you're still exploring your data structure or for fields you rarely query.
+
+For more background on field types and mapping, refer to the [mapping](../../../manage-data/data-store/mapping.md) overview.
 
 ## Map fields from the Processing tab [streams-map-fields-processing]
 

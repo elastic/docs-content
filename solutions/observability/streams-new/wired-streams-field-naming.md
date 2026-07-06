@@ -39,7 +39,7 @@ When data is ingested into a wired stream, it's automatically translated into th
 - Standard ECS documents are converted to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
 - Custom fields are stored under `attributes.*`.
 
-To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
+To preserve backward-compatible querying, Streams creates ECS field name aliases on the ingested data, so queries using ECS field names continue to work even though the data is stored in OTel format.
 
 Refer to the [field naming table](#streams-field-naming-table) for ECS fields and corresponding OTel fields.
 
@@ -54,7 +54,7 @@ Data ingested into a wired stream is automatically translated into this normaliz
 - Streams converts standard ECS documents to OTel fields (`message → body.text`, `log.level → severity_text`, `host.name → resource.attributes.host.name`, and so on).
 - Streams stores custom fields under `attributes.*`.
 
-To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
+To preserve backward-compatible querying, Streams creates ECS field name aliases on the ingested data, so queries using ECS field names continue to work even though the data is stored in OTel format.
 
 Refer to the [field naming table](#streams-field-naming-table) for ECS fields and corresponding OTel fields.
 

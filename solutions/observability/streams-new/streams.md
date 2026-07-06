@@ -38,8 +38,12 @@ When an incident occurs, Streams gets you to answers faster. AI-powered detectio
 
 To use Streams, you need the following prerequisites:
 
-- {{stack}} version 9.2+ or {{serverless-short}}
-- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events.
+- {{ech}} ({{stack}} 9.2+) or {{serverless-short}}
+- A [generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) to use AI features like pipeline suggestion, partition suggestions, and significant events. Any generative AI connector works, including [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), which requires no external account or API key.
+
+    :::{note}
+    A {{ml}} node is not required. Streams' AI features use the generative AI connector and do not depend on {{ml}} infrastructure.
+    :::
 
 Users also need {{kib}} access with the following permissions:
 
@@ -71,9 +75,9 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ## Get started with Streams
 
-This is a quick overview of the main steps to get started with Streams in {{kib}}. You can find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
+Follow these main steps to get started with Streams in {{kib}}. You can find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
 
-This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ecloud}} or self-managed {{es}} environment.
+This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ech}} or {{serverless-short}} environment.
 
 Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -82,19 +86,20 @@ Open **Streams** from the navigation menu or use the [global search field](../..
 ::::{step} Get data in
 Streams supports two ingestion paths:
 
-- **[Ingest new data](./get-data-in.md#get-data-in-wired)**: Use wired streams to send logs to a managed endpoint for new ingestion. Data lands in a managed hierarchy with inheritance, partitioning, and cascading configuration. Best for new deployments, custom logs, and mixed-format sources.
-- **[Work with existing data](./get-data-in.md#get-data-in-classic)**: Use classic streams to work with data already flowing into {{es}}. No migration or configuration changes required.
+- **[Ingest new data](./get-data-in.md#get-data-in-wired)**: Send logs to a managed endpoint for new ingestion. Data lands in a managed hierarchy with inheritance, partitioning, and cascading configuration. Best for new deployments, custom logs, and mixed-format sources.
+- **[Work with existing data](./get-data-in.md#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
 ::::
 
-::::{step} Organize your data
+::::{step} Organize your data (Only available when sending data to managed en)
 
-Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your wired stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
+:::{note}
+Organizing your data using partitions is only available when sending data to the `logs.otel` or `logs.ecs` endpoints. If you're using data that is already flowing to {{es}}, skip this step.
+:::
+
+Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
 
 Create partitions manually using field-based conditions, or let AI analyze your data and suggest groupings.
 
-:::{note}
-Partitioning is only available when sending data to the `logs.otel` or `logs.ecs` endpoints (wired streams). If you're using classic streams, skip this step.
-:::
 ::::
 
 ::::{step} Parse and process
