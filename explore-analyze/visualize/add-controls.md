@@ -44,10 +44,14 @@ To add interactive Options list and Range slider controls, create the controls, 
         1. From the **Data view** dropdown, select the data view that contains the field you want to use.
         2. In the **Field** list, select the field you want to filter on.
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, or when you want to filter or otherwise shape the values the control offers. Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` **Write a query**: populate the control with the results of an {{esql}} query. Use this for high-cardinality fields, or when you want to filter or otherwise shape the values the control offers.
 
         1. Write an {{esql}} query that returns a single column. The column determines the field the control filters on and the values it offers. Use a command such as `STATS BY` to return a single column.
         2. Run the query to preview the values it returns under **Values preview**. If the query returns more than one column, select a column or narrow the query. If it returns no values, edit the query and run it again.
+
+        :::{tip}
+        Because the values come from a query, you can also chain the control to a [variable control](add-variable-controls.md) by referencing its variable with the `?variable_name` syntax.
+        :::
 
 4. Under **Control type**, select **Options list** or **Range slider**. Range sliders are only compatible with numeric fields. When you populate a Range slider with a query, the query results set the slider's minimum and maximum values.
 
