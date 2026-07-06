@@ -68,4 +68,3 @@ For integrations that authenticate to a cloud provider, you can use [cloud conne
 
 * Learn more about [how {{managed-integrations}} work](/manage-data/ingest/managed-integrations/managed-integrations.md#agentless-architecture).
 * Review common questions in the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md).
-* If you run into issues, check [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md).

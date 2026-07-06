@@ -1,7 +1,6 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/agentless-integrations.html
-  - https://www.elastic.co/guide/en/serverless/current/security-agentless-integrations.html
 applies_to:
   stack: preview
   serverless: preview
@@ -70,6 +69,5 @@ For service issues or to request diagnostics, contact [Elastic Support](https://
 
 * [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md)
 * [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md)
-* [Troubleshoot {{managed-integrations}}](/troubleshoot/ingest/managed-integrations.md)
 * [Cloud connector authentication for {{managed-integrations}}](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md)
 * [{{managed-integrations}} quick reference](integration-docs://reference/agentless_integrations.md)

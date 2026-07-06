@@ -913,8 +913,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/issues/6986
 # Agentless integrations docs restructure and rename for GA:
-#   - Overview page split into an overview + a how-to guide.
-#   - FAQ rewritten; troubleshooting split into its own page.
+#   - Overview page split into an overview + a how-to guide; FAQ rewritten.
 #   - Files and folder renamed from `agentless` -> `managed-integrations`
 #     to match the new product name (Elastic Managed integrations).
   'manage-data/ingest/agentless/agentless-integrations.md':
@@ -927,41 +926,36 @@ redirects:
           'generally-available-ga-agentless-integrations': 'enable-agentless-find'
           'beta-agentless-integrations': 'enable-agentless-find'
 
-  'manage-data/ingest/agentless/enable-agentless-integration.md': 'manage-data/ingest/managed-integrations/enable-managed-integration.md'
   'manage-data/ingest/agentless/cloud-connector-deployment.md': 'manage-data/ingest/managed-integrations/cloud-connector-deployment.md'
 
   'manage-data/ingest/agentless/agentless-integrations-faq.md':
     to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
+      'agentless-integration-troubleshooting': null
       '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
       'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
+      '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
       'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
+      '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
       '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
       'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
       'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
-    many:
-      - to: 'troubleshoot/ingest/managed-integrations.md'
-        anchors:
-          'agentless-integration-troubleshooting': null
-          '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
-          '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
 
-  'troubleshoot/ingest/agentless-integrations.md': 'troubleshoot/ingest/managed-integrations.md'
-
+  # troubleshoot/security/agentless-integrations.md existed on main and
+  # included the FAQ snippet, so its H1 anchor plus the FAQ section
+  # anchors all resolve to the new FAQ page.
   'troubleshoot/security/agentless-integrations.md':
-    to: 'troubleshoot/security/managed-integrations.md'
+    to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
     anchors:
+      'agentless-integration-troubleshoot': null
+      '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
+      'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
       '_how_do_i_troubleshoot_an_offline_agent': 'agentless-troubleshoot-offline'
+      'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
       '_how_do_i_troubleshoot_an_unhealthy_agent': 'agentless-troubleshoot-unhealthy'
-    many:
-      - to: 'manage-data/ingest/managed-integrations/managed-integrations-faq.md'
-        anchors:
-          '_when_i_make_a_new_integration_when_will_i_see_the_agent_appear_on_the_integration_policies_page': 'agentless-faq-add-agent-button'
-          'why-isnt-my-agentless-agent-appearing-in-fleet': 'agentless-faq-fleet-visibility'
-          'why-cant-i-upgrade-my-agentless-integration-to-a-newer-version': 'agentless-faq-upgrade'
-          '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
-          'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
-          'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
+      '_how_do_i_delete_an_agentless_integration': 'agentless-faq-delete'
+      'can-agentless-integrations-use-a-specific-range-of-static-ip-addresses-for-configuring-allow-and-deny-rules-for-traffic': 'agentless-faq-static-ip'
+      'do-agentless-integrations-work-if-im-using-traffic-filtering': 'agentless-faq-traffic-filtering'
   # Rehome CCS and CCR privileges from remote-clusters-cert.md
   'deploy-manage/remote-clusters/remote-clusters-cert.md':
     to: 'deploy-manage/remote-clusters/remote-clusters-cert.md'

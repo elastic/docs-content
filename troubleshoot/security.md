@@ -19,4 +19,3 @@ This section covers common {{elastic-sec}} related issues and how to resolve the
 * [Troubleshoot detection rules](security/detection-rules.md)
 * [Troubleshoot {{elastic-defend}}](security/elastic-defend.md)
 * [Troubleshoot indicators of compromise](security/indicators-of-compromise.md)
-* [Troubleshoot {{managed-integrations}}](security/managed-integrations.md)

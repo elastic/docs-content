@@ -143,7 +143,6 @@ toc:
       - file: security/detection-rules.md
       - file: security/elastic-defend.md
       - file: security/indicators-of-compromise.md
-      - file: security/managed-integrations.md
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
@@ -196,7 +195,6 @@ toc:
           - file: ingest/fleet/frequently-asked-questions.md
       - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
       - file: ingest/elastic-serverless-forwarder.md
-      - file: ingest/managed-integrations.md
   - file: deployments/elastic-cloud.md
     children:
       - file: deployments/serverless.md
