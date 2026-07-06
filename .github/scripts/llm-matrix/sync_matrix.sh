@@ -16,7 +16,7 @@ set -euo pipefail
 BUCKET_NAME="${MATRIX_GCS_BUCKET:?MATRIX_GCS_BUCKET is required}"
 MATRIX_DOMAIN="${MATRIX_DOMAIN:-security}"
 MATRIX_PREFIX="${MATRIX_PREFIX:-latest}"
-DEST_DIR="${DEST_DIR:-solutions/security/ai/llm-performance-matrix}"
+DEST_DIR="${DEST_DIR:-solutions/security/ai/agent-builder-llm-performance-matrix}"
 
 SRC="gs://${BUCKET_NAME}/${MATRIX_DOMAIN}/${MATRIX_PREFIX}"
 

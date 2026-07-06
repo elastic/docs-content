@@ -1,6 +1,0 @@
-Model,Alert Triage,Detection Engineering,Investigation,KB Retrieval,Workflow Execution,Overall
-Claude Sonnet 4.6,10,4.88,6.44,6.26,10,7.52
-Claude Opus 4.6,10,4.31,6.58,6.41,9.71,7.4
-Gemini 3.1 Pro,10,4.69,6.21,6.02,9.62,7.31
-GPT-5.4,10,4.41,6.83,6.67,8.6,7.3
-Gemini 3.0 Flash,8.43,4.09,5.71,5.49,9.14,6.57
