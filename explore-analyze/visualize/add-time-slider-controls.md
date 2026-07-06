@@ -11,7 +11,7 @@ products:
 
 # Add a time slider control to dashboards [add-time-slider-controls]
 
-A time slider control filters a dashboard's time-based data to a range that viewers can adjust, and advance or animate backward and forward. Unlike [Options list and Range slider controls](add-controls.md), the time slider is a separate option in the control menu. It uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.
+A time slider control filters a dashboard's time-based data to a range that viewers can adjust, and advance or animate backward and forward. It uses the dashboard's [global time filter](../query-filter/filtering.md) as its initial range.
 
 ## Before you begin [add-time-slider-requirements]
 
@@ -31,13 +31,16 @@ A dashboard supports only one time slider control, and it can't be placed freely
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
 
-3. Save the dashboard. Viewers can now use the control.
+3. Optional: Choose how the range moves as viewers advance or animate it. By default, the time slider covers a fixed-width range that slides along the timeline. To anchor the start instead, open the time slider and select {icon}`pin` **Pin start**, so the start stays fixed while the end extends. Select **Unpin start** to return to a sliding range. Viewers can also change this while using the control.
+4. Save the dashboard. Viewers can now use the control.
 
 ## Manage the time slider control [manage-time-slider-control]
 
 To change the range the time slider covers, [change the dashboard's global time filter](../query-filter/filtering.md).
 
-To remove the time slider control:
+To clear the current selection or remove the control, hover over the control to reveal its action icons, then select an action:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open its panel menu, then select **Remove**.
-- {applies_to}`stack: ga 9.0-9.3` Hover over the control, select the delete icon, then select **Delete** to confirm.
+| Action | Description |
+| --- | --- |
+| **Clear** | Reset the time slider's selected range. Available only when a range is selected. |
+| **Remove** or **Delete** | Delete the time slider control from the dashboard. |

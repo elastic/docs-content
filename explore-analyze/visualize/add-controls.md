@@ -62,17 +62,15 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 ## Manage Options list and Range slider controls [manage-controls]
 
-After a control is on your dashboard, you can change its settings, reset its selections, move it, adjust its width, or delete it. How you access these actions depends on your version:
+After a control is on your dashboard, you can change its settings, reset its selections, move it, adjust its width, or delete it. How you access these actions depends on whether the control is pinned:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select an action.
-- {applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal its action icons.
+- **When pinned**, hover over the control to reveal its action icons.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **When unpinned**, hover over the control to reveal its action icons, or open its panel menu, which adds standard panel actions such as **Duplicate** and **Copy to dashboard**.
 
 | Action | Description |
 | --- | --- |
 | **Clear** | Reset the control's selections without changing its settings. Available only when the control has a selection. |
 | **Unpin** or **Pin to Dashboard** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
 | **Edit** | Change the control's settings in the **Edit control** flyout. For the full list, refer to [Dashboard control settings](dashboard-control-settings.md). |
-| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. |
+| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. In earlier versions, set these directly in the control's settings when you add or edit it. |
 | **Remove** or **Delete** | Delete the control from the dashboard. |
-
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` When a control is unpinned, it behaves like a regular dashboard panel, so its panel menu also includes standard panel actions such as **Duplicate** and **Copy to dashboard**.
