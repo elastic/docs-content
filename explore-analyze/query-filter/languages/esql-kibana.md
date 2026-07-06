@@ -447,19 +447,6 @@ On large datasets, you can trade exact results for speed by enabling [approximat
 
 However you enable it, approximation isn't forced: {{es}} runs your query exactly when approximation wouldn't make it faster, such as when a selective filter has already narrowed the matching data. Approximate results are estimates, so they can vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
 
-### Interpret approximate results [esql-kibana-approximation-columns]
-```{applies_to}
-stack: preview 9.4
-serverless: preview
-```
-
-An approximate query returns your usual `STATS` columns, plus two extra columns for each approximated value, where `<column>` is the name of the approximated column (for example, `_approximation_confidence_interval(count)`):
-
-- `_approximation_confidence_interval(<column>)`: The range that the exact value is very likely to fall within (with a 90% confidence level). For example, an estimated count of `769` shown with `[759, 779]` means the exact count is very likely between 759 and 779. A narrower range means a more precise estimate. It's empty when no range can be computed, and zero-width (such as `[769, 769]`) when the result is actually exact.
-- `_approximation_certified(<column>)`: Whether the estimate passed the statistical checks behind the confidence interval. `true` means the interval is reliable. `false` means the estimate might still be accurate, but the interval couldn't be fully validated.
-
-In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
-
 ### Use Fast mode [esql-kibana-fast-mode-toggle]
 ```{applies_to}
 stack: preview 9.5
@@ -504,6 +491,15 @@ To tune the sample size or disable confidence intervals, pass a map. For example
 The editor autocompletes these map parameters as you type.
 
 For supported aggregation functions, output columns, tuning options, and limitations, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+
+### Interpret approximate results [esql-kibana-approximation-columns]
+
+An approximate query returns your usual `STATS` columns, plus two extra columns for each approximated value, where `<column>` is the name of the approximated column (for example, `_approximation_confidence_interval(count)`):
+
+- `_approximation_confidence_interval(<column>)`: The range that the exact value is very likely to fall within (with a 90% confidence level). For example, an estimated count of `769` shown with `[759, 779]` means the exact count is very likely between 759 and 779. A narrower range means a more precise estimate. It's empty when no range can be computed, and zero-width (such as `[769, 769]`) when the result is actually exact.
+- `_approximation_certified(<column>)`: Whether the estimate passed the statistical checks behind the confidence interval. `true` means the interval is reliable. `false` means the estimate might still be accurate, but the interval couldn't be fully validated.
+
+{applies_to}`{stack: "preview 9.5", serverless: "preview"}` In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
 ## Related pages
