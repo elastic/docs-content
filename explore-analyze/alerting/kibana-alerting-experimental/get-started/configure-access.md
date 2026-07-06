@@ -114,7 +114,7 @@ Both levels grant the same query access. There is no write surface for any of th
 
 ### {{es}} index access
 
-For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled into the **Alerts** Kibana privilege — nothing extra to configure. For `.kibana-event-log-*`, a custom role is still required.
+For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled into the **Alerts** Kibana privilege. For `.kibana-event-log-*`, a custom role is still required.
 
 | Data source | What it stores | How to grant access |
 |---|---|---|
