@@ -3,7 +3,7 @@ navigation_title: Bar charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building bar charts with Kibana Lens in Elastic.
+description: Create bar charts to compare values across categories, display distributions, and show rankings side by side.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -33,9 +33,8 @@ To build a bar chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a bar chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Bar
@@ -82,8 +81,8 @@ For panel sizing and layout guidance, refer to [Organize dashboard panels](../..
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
@@ -359,23 +358,22 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Horizontal axis settings [horizontal-axis-options]
 
 **Data**
-:   The dimension that creates your individual bars. Common functions include:
-    - **Top values**: Create bars for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term bars. When multiple fields are selected, each bar represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 5.
+:   The dimension that creates your individual bars. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
 **Appearance**
 :   Define the formatting of the horizontal axis, including:
@@ -400,23 +398,25 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
-    - **Top values**: Create bar segments for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each segment represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display. The default number of values depends on your environment:
-        - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Defaults to 9.
-        - {applies_to}`stack: ga 9.0-9.3` Defaults to 3.
+:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Define the formatting of the breakdown, including:
