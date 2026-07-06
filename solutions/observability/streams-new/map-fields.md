@@ -45,7 +45,7 @@ From here, you can:
 - Change an incorrect field mapping to the correct type.
 - Remove the mapping from a field.
 
-## Map fields from the Schema tab [streams-map-fields-processing]
+## Map fields from the Schema tab [streams-map-fields-schema]
 
 The **Schema** tab provides an overview of how fields are defined within your stream.
 

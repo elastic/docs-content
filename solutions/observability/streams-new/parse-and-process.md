@@ -225,7 +225,7 @@ Streams identifies the appropriate `@custom` pipeline (for example, `logs-myinte
 
 In this default pipeline, Streams locates the last processor that calls a pipeline ending in `@custom`.
 - For integrations, this would result in a pipeline name like `logs-myintegration@custom`.
-- Without an integration, the only `@custom` pipeline available may be `logs@custom`.
+- Without an integration, the only `@custom` pipeline available might be `logs@custom`.
 
 If no default pipeline is detected, Streams adds a default pipeline to the data stream by updating the index templates.
 

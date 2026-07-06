@@ -45,7 +45,7 @@ To use Streams, you need the following prerequisites:
     A {{ml}} node is not required. Streams' AI features use the generative AI connector and do not depend on {{ml}} infrastructure.
     :::
 
-Users also need {{kib}} access with the following permissions:
+You also need {{kib}} access with the following permissions:
 
 ::::{applies-switch}
 
