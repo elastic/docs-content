@@ -34,6 +34,34 @@ Risk scoring is moving from name-based to ID-based scoring tied to the entity st
 For more information, check [#258197]({{kib-pull}}258197).
 ::::
 
+::::{dropdown} Entity Analytics requires additional index privileges for custom roles
+**Details**<br> Starting in 9.4.0, the entity store reads entity data from a new set of indices. Roles that grant access to the Entity Analytics features must now include `read` on the following index patterns:
+
+- `.entities.v2.latest.security_*`
+- `.entities.v2.updates.security_*`
+- `entities-latest-*`
+- `risk-score.risk-score-*`
+- `.entity_analytics.*`
+
+The built-in Security roles have been updated to grant these privileges. Custom roles created against the `v1` index patterns (`.entities.v1.latest.security_*`) are not updated automatically.
+
+**Impact**<br> Users assigned a custom role that does not include the index patterns above will see the **Entity Analytics** page load in a degraded state — without entity data and without the standard "insufficient privileges" message. Users assigned built-in Security roles are not affected.
+
+**Action**<br> If you use custom roles to control access to Entity Analytics, add `read` on the following entity store and risk score index patterns to each affected role:
+
+```yaml
+- names:
+    - ".entities.v2.latest.security_*"
+    - "entities-latest-*"
+    - "risk-score.risk-score-*"
+    - ".entity_analytics.*"
+  privileges:
+    - read
+```
+
+For more information, check [#255800]({{kib-pull}}255800).
+::::
+
 ::::{dropdown} Entity Analytics: Risk engine management APIs removed
 The standalone risk engine is replaced by an entity maintainer integrated into the entity store. The following risk engine management API endpoint is removed:
 

@@ -180,3 +180,4 @@ To continue investigating an attack with an [AI agent](/explore-analyze/ai-featu
 - [Learn about Attack Discovery](/solutions/security/ai/attack-discovery.md)
 - [Investigate threats with Timeline](/solutions/security/investigate/timeline.md)
 - [Manage security cases](/solutions/security/investigate/security-cases.md)
+- [Automate attack triage with Elastic Workflows](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md)

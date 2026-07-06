@@ -29,7 +29,7 @@ Cluster upgrades can be performed as:
 
 * _(Recommended)_ **A rolling restart**
 
-    This option allows you to upgrade your cluster one node at a time without interrupting service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the old-version. Running more than two versions of {{es}} in the same cluster is not supported.
+    This option allows you to upgrade your cluster one node at a time without interrupting service. Running multiple versions of {{es}} in the same cluster beyond the duration of an upgrade is not supported, as shards cannot be replicated from upgraded nodes to nodes running the earlier version. Running more than two versions of {{es}} in the same cluster is not supported.
 
 * **A full restart**
 
@@ -246,20 +246,12 @@ If you plan to upgrade nodes in quick succession, you might choose to leave inde
 To monitor which nodes have been upgraded, use the [CAT nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) API:
 
 ```console
-GET _cat/nodes?v=true&h=name,ip,version,uptime
+GET _cat/nodes?v=true&h=name,ip,role,master,version,uptime&s=uptime
 ```
 
-## Rolling upgrades considerations [upgrade-issues]
-
-During a rolling upgrade, the cluster continues to operate normally. New functionality is either inactive or operates in a backward-compatible mode until the last old-version node leaves the cluster. New functionality becomes operational when all nodes in the cluster are running the new version.
-
-Usually, the old-version nodes only leave the cluster when you shut them down to upgrade them. In this case, the last old-version node leaves the cluster when there are no more nodes to upgrade. However, it is possible that an old-version node might temporarily or permanently (until intervened) leave the cluster before you purposely shut it down due to [cluster fault detection](/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md).
-
-If all the remaining old-version nodes unexpectedly leave the cluster during an upgrade, the cluster will consider itself to be fully-upgraded, automatically activate new functionality, and leave its backward-compatible mode. Once that has happened, there is no way to return the cluster to a state that is compatible with the old-version nodes. Nodes running the earlier version will not be able to join this fully-upgraded cluster. To bring these nodes back into the cluster, upgrade them. {{es}} maintains the data in the data paths of the older nodes and will recover the cluster to health using this data after the nodes are fully upgraded.
-
-If you stop half or more of the master-eligible nodes all at once during the upgrade, the cluster will become unavailable due to insufficient [voting configurations](/deploy-manage/distributed-architecture/discovery-cluster-formation/modules-discovery-voting.md). You must restart all the stopped master-eligible nodes to allow the cluster to re-form. If the re-formed cluster comprises only upgraded nodes, then the cluster will consider itself to be fully-upgraded, automatically activate new functionality, and leave its backward-compatible mode. In this case, upgrade all other nodes running the old version to enable them to join the re-formed cluster. Upgrade the master-eligible nodes last to make it less likely that this occurs.
-
-In a testing or development environment with only one or two master-eligible nodes, you cannot avoid stopping half or more of the master-eligible nodes, so the cluster will always become unavailable at some point during the upgrade. When you restart the master-eligible nodes after this unavailability, the cluster will re-form with a single upgraded node, which is therefore fully-upgraded and will reject older nodes' attempts to re-join the cluster. Upgrade the master-eligible nodes last to avoid these rejections.
+:::{tip}
+If you encounter issues during a rolling upgrade, refer to [](/troubleshoot/elasticsearch/troubleshooting-upgrades.md).
+:::
 
 ## Archived settings [archived-settings]
 

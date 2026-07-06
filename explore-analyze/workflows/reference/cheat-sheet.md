@@ -34,6 +34,8 @@ settings: { ... }        # optional
 steps: [ ... ]           # required
 ```
 
+Full reference: [Anatomy of a workflow](/explore-analyze/workflows/authoring-techniques/anatomy.md).
+
 ## Triggers [workflows-cheat-triggers]
 
 ```yaml
@@ -166,20 +168,152 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
 ## Top gotchas [workflows-cheat-gotchas]
 
 1. **Alert trigger needs rule Action attachment.** `type: alert` alone isn't enough. [Attach the workflow](/explore-analyze/workflows/triggers/alert-triggers.md) to the rule's Actions.
+
 2. **`while` defaults to `max-iterations: 2000` with `on-limit: continue`.** When the loop hits the cap, the step succeeds quietly. Set `on-limit: fail` if you want the workflow to fail at the cap.
+
+   ```yaml
+   - name: poll_status
+     type: while
+     condition: "steps.check.output.status != 'ready'"
+     max-iterations:
+       limit: 100
+       on-limit: fail        # Fail the workflow at the cap; default is continue
+     steps:
+       - name: check
+         type: http
+         with:
+           url: "https://api.example.com/jobs/{{ inputs.job_id }}"
+   ```
+
 3. **`switch.cases` is an array**, not a map. Each case is a `{ case: <value>, steps: [...] }` object. Refer to [`switch`](/explore-analyze/workflows/steps/switch.md).
+
+   ```yaml
+   - name: route
+     type: switch
+     expression: "{{ steps.classify.output.severity }}"
+     cases:
+       - case: critical
+         steps:
+           - name: page_oncall
+             type: pagerduty.triggerIncident
+             with: { ... }
+       - case: high
+         steps:
+           - name: notify_team
+             type: slack.postMessage
+             with: { ... }
+     default:
+       - name: log_only
+         type: console
+         with:
+           message: "low severity"
+   ```
+
 4. **`cases.*` parameters use `snake_case`:** `case_id`, not `caseId`.
+
+   ```yaml
+   # Wrong
+   - type: cases.addComment
+     with:
+       caseId: "{{ steps.create.output.case.id }}"
+
+   # Right
+   - type: cases.addComment
+     with:
+       case_id: "{{ steps.create.output.case.id }}"
+       comment: "Investigation started."
+   ```
+
 5. **`kibana.SetAlertsStatus` / `kibana.SetAlertTags` are PascalCase.** Not `kibana.set_alerts_status`.
-6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`.
+
+   ```yaml
+   - name: close_false_positive
+     type: kibana.SetAlertsStatus        # PascalCase step type
+     with:
+       signal_ids: ["{{ event.alerts[0]._id }}"]
+       status: closed
+       reason: "Verified non-malicious."
+   ```
+
+6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. Liquid expressions in these top-level fields aren't evaluated; use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
+
+   ```yaml
+   # Wrong — fields nested under with, and templated agent-id is not substituted
+   - type: ai.agent
+     with:
+       agentId: "{{ consts.agent_id }}"
+       message: "..."
+
+   # Right — top-level kebab-case with literal values
+   - type: ai.agent
+     agent-id: elastic-ai-agent
+     with:
+       message: "..."
+   ```
+
 7. **Composition's `workflow-id` is kebab-case but lives *inside* `with`.** It's the one exception to the top-level-kebab-case pattern.
+
+   ```yaml
+   - name: enrich
+     type: workflow.execute
+     with:
+       workflow-id: "shared--enrich-alerts"       # kebab-case, inside with
+       inputs:
+         alerts: "${{ event.alerts }}"
+   ```
+
 8. **`data.*` steps (except `data.set`) put source data at the top level:** `items:`, `arrays:`, or `source:`. The transformation configuration goes in `with`.
+
+   ```yaml
+   - name: keep_critical
+     type: data.filter
+     items: "${{ steps.search.output.hits.hits }}"   # top-level source
+     with:
+       condition: "item._source.severity : 'critical'"
+   ```
+
 9. **Use `${{ ... }}` for arrays and objects**, `{{ ... }}` for strings.
+
+   ```yaml
+   # Wrong — array is stringified
+   - type: foreach
+     foreach: "{{ event.alerts }}"
+
+   # Right — raw-value form preserves the array
+   - type: foreach
+     foreach: "${{ event.alerts }}"
+   ```
+
 10. **`to_json` doesn't exist.** Use `json` to serialize or `json_parse` to parse.
-11. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item.severity : 'critical'`, not `item.severity == 'critical'`.
+
+    ```yaml
+    # Serialize an object to a JSON string
+    payload: "{{ event.alerts[0] | json }}"
+
+    # Parse a JSON string into an object
+    parsed: "{{ steps.http.output.body | json_parse }}"
+    ```
+
+11. **`data.filter` and `if` conditions are KQL, not Liquid.** Use `item._source.severity : 'critical'`, not `item._source.severity == 'critical'`.
+
+    ```yaml
+    # Wrong — Liquid comparison
+    - type: data.filter
+      items: "${{ steps.search.output.hits.hits }}"
+      with:
+        condition: "item._source.severity == 'critical'"
+
+    # Right — KQL equality
+    - type: data.filter
+      items: "${{ steps.search.output.hits.hits }}"
+      with:
+        condition: "item._source.severity : 'critical'"
+    ```
 
 ## Related [workflows-cheat-related]
 
 - [Build your first workflow](/explore-analyze/workflows/get-started/build-your-first-workflow.md): Hands-on tutorial if you're new.
+- [Glossary](/explore-analyze/workflows/reference/glossary.md): Definitions for every term used in this docset.
 - [Step type index](/explore-analyze/workflows/reference/step-types.md): The A-Z lookup.
 - [Troubleshooting](/explore-analyze/workflows/authoring-techniques/troubleshooting.md): When something isn't working.
 - [`elastic/workflows` library](https://github.com/elastic/workflows): 57 example workflows you can adapt.
