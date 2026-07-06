@@ -71,7 +71,7 @@ In {{esql}} mode, **Discover** displays three summary charts above the results:
 
 ### Trace document overview [trace-document-overview]
 
-Click {icon}`expand` in any row to open the document detail panel. The **Overview** tab shows the key attributes of the selected trace document:
+Select {icon}`expand` in any row to open the document detail panel. The **Overview** tab shows the key attributes of the selected trace document:
 
 - **Span ID** and **Span name**: Identifies the specific operation
 - **Trace ID**: Links all documents that belong to the same trace
@@ -94,7 +94,7 @@ The **Similar spans** section shows a latency chart for spans with the same type
 :screenshot:
 :::
 
-Click **Open in Discover** to open a filtered view of all similar spans.
+Select **Open in Discover** to open a filtered view of all similar spans.
 
 ### Trace summary [trace-waterfall]
 
@@ -118,7 +118,7 @@ The **Trace summary** section shows a condensed waterfall of the trace the selec
 
 :::::
 
-Click **Expand trace timeline** to open the expanded waterfall view.
+Select **Expand trace timeline** to open the expanded waterfall view.
 
 #### Expanded trace timeline [expanded-trace-timeline]
 
@@ -152,4 +152,4 @@ Turn on **Show critical path** to highlight the sequence of spans that determine
 
 ### Logs [traces-logs]
 
-The **Logs** section shows log entries correlated with the selected trace. Click **Open in Discover** to explore those logs in context.
+The **Logs** section shows log entries correlated with the selected trace. Select **Open in Discover** to explore those logs in context.
