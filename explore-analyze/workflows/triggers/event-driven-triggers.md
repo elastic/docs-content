@@ -343,14 +343,14 @@ triggers:
       condition: 'event.owner: "securitySolution"'
 ```
 
-## Alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
+## {{alerting-v2-system-cap}} alert episode lifecycle triggers [alert-episode-lifecycle-triggers-event-driven]
 
 ```{applies_to}
 stack: experimental 9.5+
 serverless: experimental
 ```
 
-Alert episode lifecycle triggers fire when an alert episode changes state in the experimental {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per state change. There is no polling interval or frequency gate.
+Alert episode lifecycle triggers fire when an alert episode changes state in the {{alerting-v2-system}}. Unlike `workflows.failed` and cases triggers, they are not configured through a `triggers` block in your workflow YAML. They are emitted by the alerting system and automatically invoke any workflow attached to the matching trigger type. Each trigger fires exactly once per state change. There is no polling interval or frequency gate.
 
 ### Available triggers [alert-episode-lifecycle-triggers-available]
 
@@ -395,7 +395,7 @@ stack: experimental 9.5+
 serverless: experimental
 ```
 
-{{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions — for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
+{{alerting-v2-system-cap}} rule lifecycle triggers fire when rules are created, updated, deleted, enabled, or disabled in the {{alerting-v2-system}}. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
 
 Rule lifecycle triggers are part of the {{alerting-v2-system}} and fire independently of alert episodes.
 
@@ -404,12 +404,12 @@ Rule lifecycle triggers are part of the {{alerting-v2-system}} and fire independ
 | Trigger ID | When it fires |
 |---|---|
 | `alerting.ruleCreated` | A rule is created. |
-| `alerting.ruleUpdated` | A rule's configuration is changed via a PATCH or PUT update. Enabling or disabling a rule through the dedicated enable/disable action does not emit this trigger — it emits `alerting.ruleEnabled` or `alerting.ruleDisabled` instead. |
+| `alerting.ruleUpdated` | A rule's configuration is changed using a `PATCH` or `PUT` update. Enabling or disabling a rule through the dedicated enable or disable action does not emit this trigger. It emits `alerting.ruleEnabled` or `alerting.ruleDisabled` instead. |
 | `alerting.ruleDeleted` | A rule is deleted. |
 | `alerting.ruleEnabled` | A rule is enabled. |
 | `alerting.ruleDisabled` | A rule is disabled. |
 
-For bulk operations (bulk enable, bulk disable, bulk delete), one trigger event is emitted per affected rule. A PATCH update that makes no effective change emits nothing.
+For bulk operations (bulk enable, bulk disable, bulk delete), one trigger event is emitted per affected rule. A `PATCH` update that makes no effective change emits nothing.
 
 ### Schema [alerting-rule-lifecycle-triggers-schema]
 

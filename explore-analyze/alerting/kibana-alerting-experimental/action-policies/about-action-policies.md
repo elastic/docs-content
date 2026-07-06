@@ -18,17 +18,17 @@ Action policies are independent of rules. A single action policy can cover alert
 
 When you need routing specific to one rule, scope an action policy to that rule using a matcher expression such as `rule.id: "my-rule-id"`.
 
-## How alert episodes are gated [action-policy-gates]
+## How action policies gate alert episodes [action-policy-gates]
 
 The three gates are suppression, match conditions, and frequency:
 
-* **Suppression** - Suppression determines whether to silence the alert episode. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](reduce-notification-noise.md).
-* **Match conditions** - Match conditions filter which alert episodes the action policy applies to. You define them using [KQL](../../../query-filter/languages/kql.md). An empty match condition applies to all alert episodes in the space.
-* **Frequency** - Frequency controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
+* **Suppression** - Determines whether to silence the alert episode. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](reduce-notification-noise.md).
+* **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all active, unsuppressed episodes in the space.
+* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
 
 If any gate stops the episode, the workflow is not invoked for that action policy. Because each action policy evaluates alert episodes independently, an episode blocked by one action policy can still trigger a workflow through a second action policy with different conditions.
 
-## How action policies scope to alert episodes [policy-types]
+### Scoping with the KQL matcher [policy-types]
 
 Every action policy you create has the potential to match alert episodes from any rule in the space. Which episodes actually get matched is expressed entirely through the KQL matcher. Leave the matcher empty to match all episodes in your space.
 
@@ -53,16 +53,16 @@ Multiple action policies can match the same alert episode, and each runs indepen
 
 For each enabled action policy that is not snoozed, the dispatcher works through the following steps:
 
-1. **Gating:** Is the alert episode acknowledged, snoozed, or marked inactive? If so, skip.
-2. **Matcher:** Does the alert episode match the action policy's KQL? If not, skip this action policy.
-3. **Grouping:** The dispatcher determines how matching alert episodes batch into notification groups.
-4. **Frequency:** Has a workflow already been invoked for this notification group recently? If so, wait.
-5. **Destinations:** Invoke the configured workflows.
-
-Workflow invocations may not happen immediately after a rule evaluates.
+| Step | Action |
+|------|--------|
+| 1 | Check whether the alert episode is acknowledged, snoozed, or marked inactive. If so, stop processing it. |
+| 2 | Check whether the alert episode matches the action policy's KQL. If not, stop evaluating this action policy and move to the next one. The episode continues to be evaluated by other enabled action policies. |
+| 3 | Determine how matching alert episodes batch into notification groups. |
+| 4 | Check whether a workflow has already been invoked for this notification group recently. If so, wait. |
+| 5 | Invoke the configured workflows. Workflow invocations happen after the dispatcher's next polling cycle, which runs roughly every 5 seconds after a rule evaluates. |
 
 :::{tip}
-Severity changes can cause an action policy to match an episode for the first time, which fires a notification even if the episode is not new. For example, if an action policy is scoped to `severity: "critical"` and an episode escalates from `low` to `critical`, the action policy fires because it has no prior notification record for that episode. However, a severity change alone does not re-trigger an action policy that already matched the episode. Only a status change or the expiry of a time-based throttle can do that. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
+A severity change can cause an action policy to match an episode for the first time and fire a notification, but it does not re-trigger an action policy that already matched the episode. For details and examples, refer to [Manage severity escalation notifications](severity-escalation.md).
 :::
 
 ## Next steps
