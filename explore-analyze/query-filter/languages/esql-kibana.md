@@ -499,7 +499,9 @@ An approximate query returns your usual `STATS` columns, plus two extra columns 
 - `_approximation_confidence_interval(<column>)`: The range that the exact value is very likely to fall within (with a 90% confidence level). For example, an estimated count of `769` shown with `[759, 779]` means the exact count is very likely between 759 and 779. A narrower range means a more precise estimate. It's empty when no range can be computed, and zero-width (such as `[769, 769]`) when the result is actually exact.
 - `_approximation_certified(<column>)`: Whether the estimate passed the statistical checks behind the confidence interval. `true` means the interval is reliable. `false` means the estimate might still be accurate, but the interval couldn't be fully validated.
 
-{applies_to}`{stack: "preview 9.5", serverless: "preview"}` In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
+{applies_to}`{stack: "preview 9.5", serverless: "preview"}` In [**Discover**](/explore-analyze/discover/try-esql.md), these appear as additional columns in the results table. 
+
+For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
 ## Related pages
