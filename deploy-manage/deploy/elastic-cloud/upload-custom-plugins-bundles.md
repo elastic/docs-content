@@ -186,7 +186,7 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-2.  Upload the file
+2.  Upload the file:
 
 ```text
 curl -XPUT \
