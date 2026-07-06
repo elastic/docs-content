@@ -106,7 +106,7 @@ Follow these steps to configure the user account according to the [Users and per
 ::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
 ::::
 
-1. Remove Docker and any previously installed Podman packages.
+1. Remove Docker and any previously installed Podman packages:
 
     ```sh
     sudo zypper remove -y docker docker-ce podman podman-remote
@@ -208,14 +208,14 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 
 ## Configure system settings [ece-update-config-sles]
 
-1. Stop the `nscd` service and prevent it from starting automatically (it can interfere with Elastic services):
+1. Stop the `nscd` service and prevent it from starting automatically. This service can interfere with Elastic services.
 
     ```sh
     sudo systemctl stop nscd
     sudo systemctl disable nscd
     ```
 
-1. Enable cgroup accounting for memory and swap space.
+1. Enable cgroup accounting for memory and swap space:
 
     1. In the `/etc/default/grub` file, ensure the `GRUB_CMDLINE_LINUX=` variable includes these values:
 
@@ -273,7 +273,7 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
     root             soft    memlock        unlimited
     ```
 
-1. (Optional) Tune additional network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
+1. Optional: Tune additional network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
 
     ```sh
     cat << SETTINGS | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
@@ -305,7 +305,7 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 
 ## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
-1. Edit `/etc/docker/daemon.json`, and make sure the following configuration values are present:
+1. Edit `/etc/docker/daemon.json` to make sure the following configuration values are present:
 
     ```json
     {
