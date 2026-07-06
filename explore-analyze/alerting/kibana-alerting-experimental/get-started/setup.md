@@ -37,7 +37,7 @@ You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access 
 2. Under **Global settings**, toggle on **alerting:v2:enabled**.
 :::
 
-:::{applies-item} serverless: experimental
+:::{applies-item} serverless:
 
 **Role requirements**
 
@@ -81,7 +81,7 @@ To turn off the {{alerting-v2-system}}, set `alerting:v2:enabled` to `false`.
 Go to the **Advanced Settings** page and toggle off **alerting:v2:enabled**.
 :::
 
-:::{applies-item} serverless: experimental
+:::{applies-item} serverless:
 
 Use Dev Tools to call the global settings API:
 
@@ -99,7 +99,10 @@ POST kbn:/internal/kibana/global_settings
 Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
 :::{important}
-Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does not stop rules and action policies from running. On Stack deployments, to stop execution entirely, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md).
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does not stop rules and action policies from running. To stop both entirely:
+
+- **{{stack}}**: Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md)
+- **{{serverless-short}}**: On {{serverless-short}}, the {{alerting-v2-system}} is managed by Elastic. [Contact Elastic support](https://www.elastic.co/docs/troubleshoot) to turn it off.
 :::
 
 ## Next steps
