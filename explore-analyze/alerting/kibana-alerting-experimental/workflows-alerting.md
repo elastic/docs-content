@@ -25,10 +25,6 @@ The {{alerting-v2-system}} connects to workflows through two pathways.
 
 Action policies evaluate alert episodes on a continuous schedule and invoke workflows when an episode meets the configured conditions. After a rule runs, the system routes alert episodes to workflows through a suppression check, match conditions, grouping, and frequency gates. For the full step-by-step evaluation sequence, refer to [How action policies are evaluated](action-policies/about-action-policies.md#how-action-policies-evaluated).
 
-```
-Rule → Alert episode → [Dispatcher] → Action policy → Workflow → Notification
-```
-
 ### Alert episode lifecycle triggers [alert-episode-lifecycle-triggers]
 
 Lifecycle triggers start a workflow immediately in response to a specific state change on an alert episode, without any scheduling or gating. Alert episode lifecycle triggers are a type of [event-driven trigger](../../workflows/triggers/event-driven-triggers.md) that start a workflow automatically when a specific event occurs. 

@@ -17,11 +17,10 @@ To re-notify for episodes that stay active without a status change, use a time-b
 - **`At most once every…`** Re-notifies after the configured interval regardless of whether severity or status changed. Setting this to `1h` sends a follow-up notification every hour while the episode remains active and matched.
 - **`On status change + repeat at interval`** Notifies on status change and then repeats at the configured interval while the episode stays in the same status.
 
-In this example, you want to be re-paged if a critical episode stays open for more than an hour. Set the policy frequency to `At most once every 1h`. The policy fires when the episode first matches and then again each hour until the episode resolves or no longer matches.
+In this example, you want to be re-paged if a critical episode stays open for more than an hour. Set the action policy frequency to `At most once every 1h`. The action policy fires when the episode first matches and then again each hour until the episode resolves or no longer matches.
 
 | Field | Value |
 |---|---|
-| **Policy type** | Global |
 | **Match conditions** | `severity: "critical"` |
 | **Notify per** | Episode |
 | **Frequency** | At most once every 1 hour |

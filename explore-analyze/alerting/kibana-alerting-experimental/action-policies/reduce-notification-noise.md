@@ -12,7 +12,7 @@ description: "How to reduce notification noise in the experimental alerting syst
 
 Several mechanisms within the {{alerting-v2-system}} can silence notifications for an alert episode. When an alert episode is silenced, the dispatcher stops processing it before any action policy matching, grouping, or frequency evaluation runs.
 
-This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of a policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
+This page covers when to use each silencing mechanism and how the scope of an alert episode snooze differs from the scope of an action policy snooze. For an overview of where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
 
 ## Silencing mechanisms [silencing-mechanisms]
 
@@ -23,7 +23,7 @@ Three mechanisms let you silence notifications, each at a different scope:
 | Acknowledge | Per alert episode | You're actively investigating a breach and want to silence notifications for it without closing the alert episode. Clear the acknowledgment when you're done to restore notifications. |
 | Snooze | Per series (group) | You want to quiet an entire alert series for a defined period, for example, during a known noisy window for a specific host. Snooze expires automatically at the end of the duration. |
 | Deactivate | Per alert episode | You want to manually close an alert episode that hasn't recovered automatically. Deactivating marks the alert episode as inactive and stops notifications for it. Unlike acknowledge, this closes the alert episode rather than silencing it while leaving it active. |
-| [Maintenance window](../../alerts/maintenance-windows.md) | All policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
+| [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
 
 ### Snooze scope
 
@@ -34,7 +34,7 @@ For instructions on snoozing and unsnoozing single or multiple episodes, refer t
 -->
 
 :::{note}
-Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-disable-and-snooze-a-policy). When you snooze a policy, the dispatch mechanism is paused and every series the policy processes is silenced. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy handles it. Use policy snooze when you want to pause all notifications from a given policy, for example, during planned maintenance on a destination system.
+Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-disable-and-snooze-a-policy). When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all notifications from a given action policy, for example, during planned maintenance on a destination system.
 :::
 
 ## Related pages
@@ -44,5 +44,5 @@ Snoozing an alert episode differs from [snoozing an action policy](manage-action
 - [{{alerting-v2-system}} alerts](../alerts.md) to understand alert episode lifecycle, series, and where alert data is stored.
 -->
 - [About action policies](about-action-policies.md) to learn how action policies route and throttle alert episodes after silencing.
-- [Create and configure an action policy](create-configure-action-policy.md) to set up the policies that run after gating checks pass.
+- [Create and configure an action policy](create-configure-action-policy.md) to set up the action policies that run after gating checks pass.
 - [Action policy reference](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
