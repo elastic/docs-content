@@ -20,17 +20,6 @@ Elastic alerting helps you watch your data and respond when something needs atte
 
 Elastic offers three alerting systems. For most new projects and projects on the most recent {{kib}} versions, the {{alerting-v2-system}} is the recommended system. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
-## {{kib}} alerting
-
-```{applies_to}
-stack: ga
-serverless: ga
-```
-
-{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, security, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
-
-[Get started with {{kib}} alerting →](alerting/alerts.md)
-
 ## {{alerting-v2-system-cap}}
 
 ```{applies_to}
@@ -45,6 +34,17 @@ The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} 
 :::
 
 [Get started with the {{alerting-v2-system}} →](alerting/kibana-alerting-experimental.md)
+
+## {{kib}} alerting
+
+```{applies_to}
+stack: ga
+serverless: ga
+```
+
+{{kib}} alerting gives you ready-made rule types that work with applications such as APM, metrics, security, and uptime monitoring. You set conditions on a schedule you choose and send notifications through common channels (email, chat apps, webhooks, on-call tools, and more). Setup uses forms and clear steps, so you do not need to learn a query language first. It is a strong fit when you want broad coverage out of the box.
+
+[Get started with {{kib}} alerting →](alerting/alerts.md)
 
 ## Watcher
 
