@@ -29,10 +29,10 @@ The episode histogram queries up to 10,000 alert episodes per time range. Narrow
 
 ## Filter and search [filter-and-search]
 
-- **Rule:** Limit to one or more rules.
-- **Status:** Limit by lifecycle state (active, recovered, pending, inactive).
-- **Tags:** Limit to episodes matching any selected tag. Tag choices come from tag actions in the selected time range.
-- **Search:** Text search over alert event document fields.
+- **Rule** - Limit to one or more rules.
+- **Status** - Limit by lifecycle state (active, recovered, pending, inactive).
+- **Tags** - Limit to episodes matching any selected tag. Tag choices come from tag actions in the selected time range.
+- **Search** - Text search over alert event document fields.
 
 :::{tip}
 Narrow the time range when filters return too many results or tag options need refreshing.

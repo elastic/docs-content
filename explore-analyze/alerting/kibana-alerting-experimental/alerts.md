@@ -60,7 +60,7 @@ Snooze operates at the series level, not the alert episode level. If you snooze 
 
 ## Related pages
 
-- **[Alert data model](alerts/alert-data-model.md):** Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
-- **[View and manage alerts](alerts/view-and-manage-alerts.md):** Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
-- **[Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md):** Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
-- **[Field reference](alerts/field-reference.md):** Look up field names, types, and accepted values for the `.rule-events` and `.alert-actions` data streams.
+- [Alert data model](alerts/alert-data-model.md): Understand how the system stores alert data, including the signal versus alert distinction and the two underlying data streams.
+- [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alert episodes table, triage active episodes, and acknowledge, snooze, or resolve them.
+- [Query {{alerting-v2-system}} alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
+- [Field reference](alerts/field-reference.md): Look up field names, types, and accepted values for the `.rule-events` and `.alert-actions` data streams.
