@@ -21,4 +21,4 @@ Concept and reference material for the components that make up a workflow defini
 - [Steps](/explore-analyze/workflows/steps.md): Action, flow control, AI, data, and composition steps.
 - [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax and custom filters.
 - [Reference](/explore-analyze/workflows/reference.md): Quick-reference pages for the workflow YAML surface. Cheat sheet, A-Z step type index, context variables, and the Liquid filter catalog.
-- [Execution permissions](/explore-analyze/workflows/execution-permissions.md): Which user context a workflow run uses.
+- [Authorization](/explore-analyze/workflows/authorization.md): Whose privileges authorize a workflow run and what the run's API key can access.

@@ -353,6 +353,6 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 ## Related
 
 - [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
-- [Execution permissions](/explore-analyze/workflows/execution-permissions.md): Which user context event-driven workflows run with.
+- [Workflow authorization](/explore-analyze/workflows/authorization.md): Whose privileges event-driven workflows run with.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.

@@ -130,7 +130,7 @@ Metadata about the current workflow execution.
 | `execution.compositionDepth` | 0 for a top-level invocation. Increments by 1 for each [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) level. |
 | `execution.parentWorkflowId` | ID of the parent workflow, if this is a composed child execution. |
 
-For how `execution.executedBy` is determined for each trigger type, refer to [Execution permissions](/explore-analyze/workflows/execution-permissions.md).
+For how each trigger type determines `execution.executedBy`, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
 ```yaml
 - name: link
