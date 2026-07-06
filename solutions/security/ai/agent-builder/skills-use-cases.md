@@ -86,23 +86,23 @@ Use this skill to create or edit detection rules. The skill supports **{{esql}} 
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.
 :::
 
-## Elastic Defend troubleshooting
+## {{elastic-defend}} troubleshooting
 
 ```{applies_to}
-stack: preview 9.4
+stack: ga 9.5+, preview =9.4
 serverless:
-  security: preview
+  security: ga
 ```
 
 **Enable:** `automatic_troubleshooting`
 
-Use this skill to diagnose [Elastic Defend](/solutions/security/configure-elastic-defend.md) configuration issues: endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus. The agent queries endpoint data, inspects Elastic Defend package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
+Use this skill to diagnose [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) configuration issues: endpoints not reporting, policy response failures, agent enrollment problems, or incompatible antivirus software. The agent queries endpoint data, inspects {{elastic-defend}} package configuration, and produces structured findings with specific endpoint IDs and remediation steps.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | Why isn't this endpoint showing up in the endpoint list? | Query agent and endpoint indices for enrollment and check-in evidence, then flag the root cause and remediation. |
 | Which endpoints are reporting policy response failures? | Search for policy response errors or warnings across endpoints and summarize affected endpoint IDs. |
-| Is there any incompatible antivirus on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
+| Is there any incompatible antivirus software on the managed hosts? | Inspect endpoint data for known antivirus conflicts and recommend resolution steps. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 
