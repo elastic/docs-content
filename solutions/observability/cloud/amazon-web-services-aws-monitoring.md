@@ -7,6 +7,8 @@ applies_to:
   serverless: ga
 products:
   - id: observability
+cta:
+  id: monitor-aws
 ---
 
 
