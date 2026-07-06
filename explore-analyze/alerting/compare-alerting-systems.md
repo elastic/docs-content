@@ -1,4 +1,5 @@
 ---
+navigation_title: Compare alerting systems
 applies_to:
   stack: ga
   serverless: ga
@@ -10,16 +11,16 @@ products:
 description: Compare Kibana alerting, the experimental ES|QL-based alerting system, and Watcher by use case and deployment type to select the right tool for your monitoring needs.
 ---
 
-# Choose an alerting system [choose-an-alerting-system]
+# Compare alerting systems [compare-alerting-systems]
 
-Elastic offers multiple alerting systems. For most new projects, the {{alerting-v2-system}} is the recommended starting point. Pick the system that fits how you want to define rules and route notifications.
+Elastic offers three alerting systems, each suited to different use cases and workflows. For most new projects and projects on the most recent {{kib}} versions, the {{alerting-v2-system}} is the recommended system. Use this page to compare them by goal, feature, and availability.
 
 ## Select by use case
 
 | Goal | Suggested system | Availability |
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Use rules built for Security, Observability, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
+| Use rules built for {{elastic-sec}}, {{observability}}, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
 | Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |

@@ -79,10 +79,10 @@ For a more detailed explanation of each stage, refer to [How the {{alerting-v2-s
 
 ## Next steps
 
-<!-- TODO: When PRs #6523, #6525, and #6527 merge, replace the paragraph below with these three forward-facing tracks and remove the choose-an-alerting-system link (it points here, not forward):
+<!-- TODO: When PRs #6523, #6525, and #6527 merge, replace the paragraph below with these three forward-facing tracks and remove the compare-alerting-systems link (it points here, not forward):
 - **Rules**: Refer to [Rules](kibana-alerting-experimental/rules.md) to learn how to create and configure detection rules.
 - **Alerts**: Refer to [Alerts](kibana-alerting-experimental/alerts.md) to learn how alert episodes work and how to triage them.
 - **Notifications**: Refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md) to learn how action policies and workflows route notifications.
 -->
 
-To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Choose an alerting system](choose-an-alerting-system.md).
+To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Compare alerting systems](compare-alerting-systems.md).

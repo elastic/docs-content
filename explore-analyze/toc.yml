@@ -382,7 +382,7 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/choose-an-alerting-system.md
+      - file: alerting/compare-alerting-systems.md
       - file: alerting/kibana-alerting-experimental.md
         children:
           - file: alerting/kibana-alerting-experimental/how-it-works.md
