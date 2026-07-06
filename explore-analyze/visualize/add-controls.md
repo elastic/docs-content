@@ -71,5 +71,5 @@ After a control is on your dashboard, you can change its settings, reset its sel
 | --- | --- |
 | **Edit** | Change the control's settings in the **Edit control** flyout. For the full list, refer to [Dashboard control settings](dashboard-control-settings.md). |
 | **Clear control** | Reset the control's selections without changing its settings. |
-| **Unpin** or **Pin to Dashboard** {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. |
+| **Unpin** or **Pin to Dashboard** {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
 | **Remove** | Delete the control from the dashboard. |
