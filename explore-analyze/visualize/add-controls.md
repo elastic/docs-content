@@ -37,7 +37,7 @@ To add interactive Options list and Range slider controls, create the controls, 
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control**.
     - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-3. Choose how to populate the values available in the control, using the toggle at the top of the flyout:
+3. Choose how to populate the values available in the control:
 
     - **Select a field**: base the control on a [data view](../find-and-organize/data-views.md) field. The control offers the values found in that field.
 
@@ -62,14 +62,17 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 ## Manage Options list and Range slider controls [manage-controls]
 
-After a control is on your dashboard, you can change its settings, reset its selections, move it, or delete it. How you access these actions depends on your version:
+After a control is on your dashboard, you can change its settings, reset its selections, move it, adjust its width, or delete it. How you access these actions depends on your version:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select an action.
 - {applies_to}`stack: ga 9.0-9.3` Controls don't have a panel menu. Hover over a control to reveal its action icons.
 
 | Action | Description |
 | --- | --- |
+| **Clear** | Reset the control's selections without changing its settings. Available only when the control has a selection. |
+| **Unpin** or **Pin to Dashboard** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
 | **Edit** | Change the control's settings in the **Edit control** flyout. For the full list, refer to [Dashboard control settings](dashboard-control-settings.md). |
-| **Clear control** | Reset the control's selections without changing its settings. |
-| **Unpin** or **Pin to Dashboard** {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
-| **Remove** | Delete the control from the dashboard. |
+| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. |
+| **Remove** or **Delete** | Delete the control from the dashboard. |
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` When a control is unpinned, it behaves like a regular dashboard panel, so its panel menu also includes standard panel actions such as **Duplicate** and **Copy to dashboard**.
