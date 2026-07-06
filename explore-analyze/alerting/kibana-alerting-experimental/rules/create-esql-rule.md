@@ -13,13 +13,17 @@ description: "Write ES|QL detection queries for rules in Kibana's experimental a
 The {{esql}} rule path lets you write the detection query directly. There are two ways to define the rule: 
 
 - **Rule form** - Fill in the step-by-step form with a live preview of results.
-- **YAML mode** - Switch to YAML and edit the raw rule definition. You can switch between form and YAML at any point; edits are preserved.
+- **YAML mode** - Edit the raw rule definition. You can switch between form and YAML at any time, unless the YAML can't be translated to a valid form state, in which case you must stay in YAML.
 
 For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). For a list of supported YAML fields, refer to [YAML rule schema reference](yaml-rule-schema-reference.md).
 
 ## Preview query results in the sandbox [rule-builder-query-sandbox]
 
 The query sandbox lets you run your {{esql}} query against current data and preview the results before applying them to the rule form. Use the time field selector and date picker to control the time range, then select **Search** (or press ⌘↵) to execute. When the results look correct, select **Apply changes** to populate the form.
+
+:::{note}
+In the query sandbox, the time field selector and date picker control the query results only. They do not set the rule's schedule or lookback period.
+:::
 
 Use the sandbox to:
 
