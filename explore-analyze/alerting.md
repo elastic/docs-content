@@ -56,7 +56,7 @@ serverless: unavailable
 Watcher is for unusual or highly tailored setups where you need scripts, chained steps, or close control over {{es}} APIs. It does not use the main {{kib}} rules UI used by {{kib}} alerting. It is available on the {{stack}} only, not in {{serverless-full}}.
 
 :::{tip}
-For most teams, {{kib}} alerting or the {{alerting-v2-system}} is easier to adopt than Watcher: both work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
+For most teams, {{kib}} alerting or the {{alerting-v2-system}} is easier to adopt than Watcher. Both work within {{kib}}'s rules UI and don't require writing {{es}} watch definitions.
 :::
 
 [Get started with Watcher →](alerting/watcher.md)
