@@ -15,10 +15,10 @@ This page covers what you need before using the {{alerting-v2-system}}, and how 
 
 ## Requirements [alerting-setup-requirements]
 
-- **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules.
-- **A space selected**: Rules, action policies, and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up.
+- **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules. Refer to [Ingest your data](/manage-data/ingest.md) for options.
+- **A space selected**: Rules, action policies, and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
 - **Connectors configured** (required for notifications): Action policies send notifications through workflows, which require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty.
-- **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Rules and alert episodes work on any tier.{applies_to}`stack: ga 9.5+`
+- **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Rules and alert episodes work on any tier. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers. {applies_to}`stack: ga 9.5+`
 
 ## Turn on the system [alerting-setup-turn-on]
 
@@ -96,9 +96,11 @@ POST kbn:/internal/kibana/global_settings
 :::
 ::::
 
-When the setting is off, rule and action policy execution stops, the APIs and UI are hidden, and existing rules and action policies are paused.
+Turning off the setting does not delete any data. {{kib}} retains your rules and action policies as saved objects, and keeps existing documents in `.rule-events` and `.alert-actions`. Turning the setting back on restores the {{alerting-v2-system}} UI.
 
-Turning the setting back on resumes execution. Turning it off does not delete any data. Your rules and action policies remain as {{kib}} saved objects, and existing documents in `.rule-events` and `.alert-actions` are preserved.
+:::{important}
+Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does not stop rules and action policies from running. On Stack deployments, to stop execution entirely, set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md).
+:::
 
 ## Next steps
 
