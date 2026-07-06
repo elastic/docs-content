@@ -15,10 +15,10 @@ In the {{alerting-v2-system}}, you can take the following triage actions on aler
 ## Available actions [row-level-actions]
 
 - **Acknowledge / Unacknowledge:** Marks the episode as seen. Applies to the individual episode.
-- **Snooze / Unsnooze:** Suppresses notifications for the episode's series for a set duration. Applies to all episodes sharing the same `group_hash`.
+- **Snooze / Unsnooze:** Suppresses notifications for the episode's series for a set duration. Applies to all episodes sharing the same `group_hash` value.
 - **Resolve / Unresolve:** Closes the episode. Applies to the episode's series.
 - **Activate:** Manually moves the episode to `active` state without waiting to meet the activation threshold.
-- **Edit tags:** Adds or removes tags on the episode.
+- **Edit tags:** Adds or removes tags on the episode. Applies to all episodes sharing the same `group_hash` value.
 - **Assign:** Assigns the episode to a specific user. Available from the episode detail page.
 
 ## Bulk actions [bulk-actions]
@@ -47,7 +47,7 @@ Some actions apply to the individual episode; others apply to every episode in t
 |---|---|
 | Acknowledge / Unacknowledge | Episode |
 | Activate | Episode |
-| Edit tags | Episode |
+| Edit tags | Series |
 | Assign | Episode |
 | Snooze / Unsnooze | Series |
 | Resolve / Unresolve | Series |
