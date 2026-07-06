@@ -171,7 +171,7 @@ Before you start, create an [{{ecloud}} API key](/deploy-manage/api-keys/elastic
 
 Create the extension metadata first, then upload the ZIP file in a second request.
 
-1. Create metadata
+1. Create metadata:
 
 ```text
 curl -XPOST \
