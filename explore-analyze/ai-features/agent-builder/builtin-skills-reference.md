@@ -62,14 +62,14 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
     **How to activate:** Activates from the [standard activation methods](skills.md#how-skills-are-invoked) when the conversation is started from a Discover session tab that is in {{esql}} mode and has loaded results. The current query, columns, sample rows, and time range are automatically attached to the conversation, so the agent has the context it needs to run the analysis. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai) for the full workflow.
 
 $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
-:   Answers questions about {{agent-builder}} OpenTelemetry (OTel) traces and activity, including token usage, model and provider breakdowns, conversation and agent latency, tool-call volume, and error rates. The skill queries the {{agent-builder}} OTel traces with {{esql}}.
+:   Answers questions about {{agent-builder}} OpenTelemetry (OTel) traces and activity, including token usage, model and provider breakdowns, conversation and agent latency, tool-call volume, and error rates, and can help build dashboards from that trace data. The skill queries the {{agent-builder}} OTel traces with {{esql}} and is part of the default Elastic AI Agent.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_esql`, plus an internal {{esql}} generation tool scoped to trace data.
 
     :::
 
-    **Prerequisites:** The {{agent-builder}} tracing [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings) must be turned on for the skill to appear.
+    **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
 ### Cases and alerting
 
