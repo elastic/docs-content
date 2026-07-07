@@ -1,4 +1,5 @@
 ---
+description: Analyze network activity in Elastic Security using an interactive map and event tables for flows, DNS, HTTP, and TLS, with Timeline integration.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/network-page-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-network-page-overview.html
