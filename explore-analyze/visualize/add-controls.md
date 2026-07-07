@@ -25,7 +25,8 @@ To add Options list and Range slider controls to a dashboard, you need:
 * An existing dashboard open in **Edit** mode
 * A [data view](../find-and-organize/data-views.md) configured with fields available for filtering
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
+:::{include} ../_snippets/control-limits.md
+:::
 
 ## Add Options list and Range slider controls [create-and-add-options-list-and-range-slider-controls]
 

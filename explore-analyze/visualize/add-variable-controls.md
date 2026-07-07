@@ -26,21 +26,24 @@ To add variable controls to a dashboard, you need:
 * An existing dashboard open in **Edit** mode
 * An {{esql}} visualization on your dashboard, or the intent to create one
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` A dashboard supports up to 100 pinned controls.
+:::{include} ../_snippets/control-limits.md
+:::
 
 ## Add variable controls [create-variable-control]
 
-Variable controls act as variables in your {{esql}} visualization queries. Only **Options lists** are supported. A control's options can be:
+Variable controls act as variables in your {{esql}} visualization queries. On the dashboard, they appear as options lists. A control's options can be:
 
 - Values or fields, either static or defined by a query.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` Functions.
 
 You create a variable control while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
 
+On a dashboard, you can also add a variable control directly by selecting **Add** > **Controls** > **Variable control**.
+
 :::{include} ../_snippets/variable-control-procedure.md
 :::
 
-The variable is inserted into your query directly, and you can keep editing the query. To reuse the control in another {{esql}} visualization, type the control's name in its query.
+You can reference the control in your {{esql}} visualization queries by typing its name.
 
 Where you place a variable control affects which panels it filters. For details, refer to [How controls affect the dashboard](dashboard-controls.md#controls-scope).
 
@@ -137,12 +140,12 @@ serverless: preview
 
 ## Manage variable controls [manage-variable-controls]
 
-You can edit or remove a variable control from the dashboard:
+After a variable control is on your dashboard, you can edit or remove it. How you access these actions depends on whether the control is pinned:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Open the control's panel menu, then select **Edit** or **Remove**.
-- {applies_to}`stack: ga 9.0-9.3` Hover over the control, then select the edit or delete icon.
+- **When pinned**, hover over the control to reveal its action icons.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **When unpinned**, hover over the control to reveal its action icons, or open its panel menu.
 
-Editing opens the control's flyout, where you can change settings such as its query, variable name, and label. You can also update a control by editing the {{esql}} query that references it.
+Select **Edit** to open the control's flyout, where you can change settings such as its query, variable name, and label. You can also update a control by editing the {{esql}} query that references it. Select **Remove** or **Delete** to remove the control from the dashboard.
 
 :::{note}
 If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.

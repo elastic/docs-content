@@ -24,7 +24,7 @@ Label
 :::{include} ../_snippets/control-settings-searching.md
 :::
 
-Ignore timeout for results {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4`
+Ignore timeout for results
 :   Wait to display results until the list is complete. Set it in the **Additional settings** of the control's flyout. Useful for large data sets, but results can take longer to populate.
 
 :::{include} ../_snippets/control-display-settings.md

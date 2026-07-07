@@ -21,8 +21,8 @@
       * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` Start the name with `??` for options that are fields or functions.
     * The values users can select. You can add multiple values from suggested fields or type in custom values. If you selected **Values from a query**, write an {{esql}} query instead.
     * The label of the control. This is the label displayed in **Discover** or in the dashboard.
-    * {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` Whether the control allows a single selection or multiple selections. Multiple selections require using the [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) functions in your query.
+    * {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview` Whether the control allows a single selection or multiple selections. Multiple selections require using the [`MV_CONTAINS` or `MV_INTERSECTS`](#esql-multi-values-controls) functions in your query.
 
 3. Save the control.
 
-The variable is inserted into your query, and the control appears.
+The control is created. If you created it while editing a query, its variable is inserted into that query, which you can keep editing.
