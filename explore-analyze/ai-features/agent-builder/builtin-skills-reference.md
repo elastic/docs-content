@@ -262,7 +262,7 @@ $$$agent-builder-entity-analytics-leads-skill$$$ `entity-analytics-leads` {appli
 
     :::
 
-    **Prerequisites:** The lead generation experimental feature must be enabled.
+    **Prerequisites:** The `leadGenerationEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running. For read-only questions about which watchlists exist, the [`entity-analytics`](#agent-builder-entity-analytics-skill) skill also applies.
@@ -272,7 +272,7 @@ $$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`sta
 
     :::
 
-    **Prerequisites:** The entity analytics watchlist experimental feature must be enabled.
+    **Prerequisites:** The `entityAnalyticsWatchlistEnabled` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-find-security-ml-jobs-skill$$$ `find-security-ml-jobs` {applies_to}`stack: ga 9.4+`
 :   Investigates atypical behavior detected by {{ml-app}} jobs, including unusual or first-time access patterns, access outside working hours, privileged accounts with unusual command patterns, logins from unexpected geographic locations, lateral movement, and large or unusual data transfers.
@@ -312,7 +312,7 @@ $$$agent-builder-recommend-prebuilt-rules-skill$$$ `recommend-prebuilt-rules` {a
 
     :::
 
-    **Prerequisites:** The prebuilt rule recommendation experimental feature must be enabled.
+    **Prerequisites:** The `dexAiSkillRecommendPrebuiltRules` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-find-security-rules-skill$$$ `find-security-rules` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Discovers, lists, ranks, and counts {{elastic-sec}} detection rules. Filters by tag, MITRE technique, severity, rule type, name, or enabled state. This is a read-only skill.
@@ -322,7 +322,7 @@ $$$agent-builder-find-security-rules-skill$$$ `find-security-rules` {applies_to}
 
     :::
 
-    **Prerequisites:** The find rules experimental feature must be enabled.
+    **Prerequisites:** The `dexAiSkillFindRules` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Runs PCI DSS v4.0.1 compliance assessments with violation detection, confidence scoring, data quality preflight checks, and visual audit reporting. Use when a user asks about PCI compliance, PCI DSS requirements, compliance audits, or cardholder data security.
@@ -332,7 +332,7 @@ $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: pr
 
     :::
 
-    **Prerequisites:** The PCI compliance experimental feature must be enabled.
+    **Prerequisites:** The `pciComplianceAgentBuilder` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
 $$$agent-builder-siem-readiness-skill$$$ `siem-readiness` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
 :   Assesses SIEM readiness across four dimensions: coverage (data ingested per category), quality (ECS field compatibility), continuity (ingest pipeline health), and retention (data retention compliance). Use when a user asks about SIEM health, readiness, data coverage, pipeline failures, ECS quality, or retention compliance.
