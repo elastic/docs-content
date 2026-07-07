@@ -144,7 +144,7 @@ After a variable control is on your dashboard, you can edit it, adjust its displ
 | --- | --- |
 | **Unpin** or **Pin to Dashboard** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
 | **Edit** | Change the control's query, variable name, label, and other settings in the control's flyout. You can also update a control by editing the {{esql}} query that references it. |
-| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. In earlier versions, set these directly in the control's settings when you add or edit it. |
+| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | For pinned controls, set the minimum width and whether the control expands to fill the available space. Resize an unpinned control by dragging it, like any other panel. In earlier versions, set the width directly in the control's settings when you add or edit it. |
 | **Remove** or **Delete** | Delete the control from the dashboard. |
 
 :::{note}
