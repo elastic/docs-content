@@ -5,12 +5,12 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "Search, filter, sort, and bulk-manage rules from the rules list in Kibana's experimental alerting system. Inline editing and a summary flyout let you update settings without a full page reload."
+description: "Search, filter, and bulk-manage rules in Kibana's experimental alerting system. Use inline editing, the rule summary flyout, and the Execution History page to manage rules and monitor rule health."
 ---
 
 # View and manage rules in the {{alerting-v2-system}} [manage-rules]
 
-Rule management is part of the {{alerting-v2-system}} in {{kib}}. This page covers how to find and filter rules in the rules list, quick-edit settings without leaving the list, use the rule summary flyout, and navigate the rule details page including the alert activity timeline.
+Rule management is part of the {{alerting-v2-system}} in {{kib}}. This page covers how to find and filter rules in the rules list, quick-edit settings without leaving the list, use the rule summary flyout, navigate the rule details page including the alert activity timeline, and monitor rule health at scale from the Execution History page.
 
 ## Find and filter rules [find-filter-rules]
 
@@ -39,6 +39,24 @@ The rule details page is organized into tabs that let you review a rule's config
 - **Runbook**: If the rule has an investigation guide, it appears here.
 
 Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
+
+## Monitor rule execution health [execution-history]
+
+The Execution History page shows a cross-rule view of rule execution history, giving you a paginated, filterable log of every rule run across all rules in the space. Use this page to spot patterns that aren't visible when looking at individual rules, for example, a cluster of failures at the same timestamp pointing to a shared dependency issue.
+
+The page has two tabs: **Rules** (default), which shows per-rule execution records, and **Policies**, which shows action policy dispatch records and outcomes.
+
+The **Rules** tab displays a table of rule execution records with the following columns:
+
+| Column | Description |
+|---|---|
+| **Timestamp** | When the rule execution ran. |
+| **Rule** | The rule that ran. Selecting the rule name opens the rule summary flyout so you can inspect the rule without leaving the page. |
+| **Duration** | How long the execution took. |
+| **Response** | The outcome of the run: `success` or `failure`. |
+| **Message** | An optional message included with the execution result, typically an error description for failed runs. |
+
+Use the **Outcome** filter to narrow results by execution outcome: **All**, **Success**, or **Failure**. Filtering is applied server-side. Results are capped at 10,000 records.
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
