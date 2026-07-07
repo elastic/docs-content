@@ -23,14 +23,11 @@ For security reasons, we recommend using a unique API key per APM Server instanc
 To create an API key:
 
 1. Open the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create API key**.
-
-    :::{image} /solutions/images/observability-server-api-key-create.png
-    :alt: API key creation
-    :screenshot:
-    :::
-
-3. Enter a name for your API key and enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
+2. Select **Create API key**.
+3. Enter a name for your API key.
+4. Make sure **User API key** is selected.
+5. To set an expiration date for the API key, enable **Apply expiration data** and specify how many days it should remain valid.
+6. Enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
 
     ```json
     {
@@ -75,9 +72,8 @@ To create an API key:
     This example only provides privileges for **writing data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
     ::::
 
-4. To set an expiration date for the API key, select **Expire after time** and input the lifetime of the API key in days.
-5. Click **Create API key**.
-6. You *must* set the API key to be configured to {{beats}}. Immediately after the API key is generated and while it is still being displayed, click the **Encoded** button next to the API key and select **Beats** from the list in the tooltip. Base64 encoded API keys are not currently supported in this configuration.
+7. Select **Create API key**.
+8. You *must* set the API key to be configured to {{beats}}. Immediately after the API key is generated and while it is still being displayed, click **Encoded** next to the API key and select **Beats** from the list. Base64 encoded API keys are not currently supported in this configuration.
 
     :::{image} /solutions/images/observability-apm-api-key-beats.png
     :alt: API key dropdown highlighting the Beats option
