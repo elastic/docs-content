@@ -28,8 +28,8 @@ A dashboard supports only one time slider control, and it can't be placed freely
 1. Open or create a dashboard.
 2. Add a time slider control:
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Time slider**.
-    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add time slider control**.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** → **Controls** → **Time slider**.
+    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** → **Add time slider control**.
 
 3. Optional: Choose how the range moves as viewers advance or animate it. By default, the time slider covers a fixed-width range that slides along the timeline. To anchor the start instead, open the time slider and select {icon}`pin` **Pin start**, so the start stays fixed while the end extends. Select **Unpin start** to return to a sliding range. Viewers can also change this while using the control.
 4. Save the dashboard. Viewers can now use the control.

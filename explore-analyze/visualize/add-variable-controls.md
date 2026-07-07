@@ -38,7 +38,7 @@ Variable controls act as variables in your {{esql}} visualization queries. On th
 
 You create a variable control while writing an {{esql}} query: the autocomplete suggests adding a control for field values, field names, function configuration, or function names.
 
-On a dashboard, you can also add a variable control directly by selecting **Add** > **Controls** > **Variable control**.
+On a dashboard, you can also add a variable control directly by selecting **Add** → **Controls** → **Variable control**.
 
 :::{include} ../_snippets/variable-control-procedure.md
 :::
@@ -84,7 +84,7 @@ To chain variable controls, reference one control's variable in another control'
    Create the controls that will be referenced in other controls first. This allows the {{esql}} editor to provide proper autocomplete suggestions.
    :::
    
-   In **Edit** mode, select **Add** > **Controls** > **Variable control** in the application menu, then define the control:
+   In **Edit** mode, select **Add** → **Controls** → **Variable control** in the application menu, then define the control:
    
    * **Type**: Values from a query
    * **Query**: 

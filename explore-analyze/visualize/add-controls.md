@@ -35,8 +35,8 @@ To add interactive Options list and Range slider controls, create the controls, 
 1. Open or create a dashboard.
 2. Open the **Create control** flyout:
 
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** > **Controls** > **Control**.
-    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2` In **Edit** mode, select **Add** → **Controls** → **Control**.
+    - {applies_to}`stack: ga 9.0-9.1` In **Edit** mode, select **Controls** → **Add control** in the dashboard toolbar.
 
 3. Choose how to populate the values available in the control:
 

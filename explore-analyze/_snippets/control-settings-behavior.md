@@ -19,8 +19,8 @@ Auto apply selections
 Dashboard-wide control settings {applies_to}`stack: ga 9.0-9.3`
 :   In these versions, chaining, validation, and auto apply are configured together in a single dashboard-wide control settings dialog. To open it, in **Edit** mode:
 
-    - {applies_to}`stack: ga 9.2-9.3` Select **Add** > **Controls** > **Settings**.
-    - {applies_to}`stack: ga 9.0-9.1` Select **Controls** > **Settings**.
+    - {applies_to}`stack: ga 9.2-9.3` Select **Add** → **Controls** → **Settings**.
+    - {applies_to}`stack: ga 9.0-9.1` Select **Controls** → **Settings**.
 
     The dialog also includes:
 
