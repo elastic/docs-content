@@ -135,12 +135,17 @@ serverless: preview
 
 ## Manage variable controls [manage-variable-controls]
 
-After a variable control is on your dashboard, you can edit, remove, or inspect it. How you access these actions depends on whether the control is pinned:
+After a variable control is on your dashboard, you can edit it, adjust its display, move it, or delete it. How you access these actions depends on whether the control is pinned:
 
 - **When pinned**, hover over the control to reveal its action icons.
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **When unpinned**, hover over the control to reveal its action icons, or open its panel menu.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` **When unpinned**, hover over the control to reveal its action icons, or open its panel menu, which adds standard panel actions such as **Duplicate** and **Copy to dashboard**.
 
-Select **Edit** to open the control's flyout, where you can change settings such as its query, variable name, and label. You can also update a control by editing the {{esql}} query that references it. Select **Remove** or **Delete** to remove the control from the dashboard.
+| Action | Description |
+| --- | --- |
+| **Unpin** or **Pin to Dashboard** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Move the control between the top of the dashboard and the dashboard body. For details, refer to [Pinned and unpinned controls](dashboard-controls.md#pinned-unpinned-controls). |
+| **Edit** | Change the control's query, variable name, label, and other settings in the control's flyout. You can also update a control by editing the {{esql}} query that references it. |
+| **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. In earlier versions, set these directly in the control's settings when you add or edit it. |
+| **Remove** or **Delete** | Delete the control from the dashboard. |
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` In **Edit** mode, select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time; select the label again to stop. A variable control that no visualization uses displays a warning.
 
