@@ -67,6 +67,11 @@ Different control types target different panels:
 * A **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
 * **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
 
+  :::{tip}
+  :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+  To see which panels a variable control affects, select its label while editing the dashboard. Its related panels are highlighted, and a variable control that no visualization uses shows a warning.
+  :::
+
 ### Chaining between controls [controls-chaining]
 
 When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior, called chaining, keeps each control's choices relevant to the current selections, so viewers can drill down without landing on combinations that return no data. Chaining is on by default. You can change how controls chain in the [control settings](dashboard-control-settings.md).

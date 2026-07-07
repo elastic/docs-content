@@ -147,8 +147,6 @@ After a variable control is on your dashboard, you can edit it, adjust its displ
 | **Display settings** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` | Set the control's minimum width and whether it expands to fill the available space. In earlier versions, set these directly in the control's settings when you add or edit it. |
 | **Remove** or **Delete** | Delete the control from the dashboard. |
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.5` In **Edit** mode, select a variable control's label to highlight the panels related to it: the panels within the control's scope whose {{esql}} query uses the control's variable. Only one control's related panels are highlighted at a time; select the label again to stop. A variable control that no visualization uses displays a warning.
-
 :::{note}
 If you delete a variable control that's used in an {{esql}} visualization, the visualization breaks. Edit the visualization query and remove or update the control reference.
 :::
