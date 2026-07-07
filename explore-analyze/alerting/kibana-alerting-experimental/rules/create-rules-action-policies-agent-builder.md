@@ -14,6 +14,25 @@ Rule and action policy authoring in {{agent-builder}} is part of the {{alerting-
 
 Instead of filling out the rule form manually, you describe what you want to monitor and the agent uses its rule management skill and tools to resolve the data source and build a fully configured rule proposal for you.
 
+## Requirements [create-ai-agent-requirements]
+
+Before you start, make sure you have the following:
+
+- **The required subscription**: {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons). Without it, the "Create with AI Agent" option is hidden in the {{alerting-v2-system}} UI.
+- **The `agentBuilder:experimentalFeatures` advanced setting turned on**: Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
+- **The required privileges**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
+
+  | To... | Required privilege |
+  |---|---|
+  | Access and use {{agent-builder}} | **Agent Builder: Read** (under **Analytics**) |
+  | Save the rule | **Rules: All** (under **Alerting**) |
+  | Save the action policy | **Action Policies: All** (under **Alerting**) |
+  | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
+
+<!-- TODO: Uncomment when PR #6522 (get-started/configure-access) is merged:
+  For the full privilege reference, refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/kibana-alerting-experimental/get-started/configure-access.md).
+-->
+
 ## Propose and save a rule [ai-agent-rule-proposal]
 
 To use this capability, open an agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of ES\|QL query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
