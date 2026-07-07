@@ -22,13 +22,13 @@ Use the following table to find the right approach for building your dashboards,
 | [Create dashboards programmatically](create-dashboards-programmatically.md) | Automating deployments, managing dashboards and visualizations as code, CI/CD pipelines | Saved dashboard or visualization |
 | [Create dashboards using AI](create-dashboards-using-ai.md) | Generating dashboards from natural language, or building AI tools that create dashboards | Dashboard through chat that you save when ready, or saved dashboard using the API |
 
-Once you have a dashboard, you can also:
+Once you have a dashboard, you can enhance it:
 
 * [Add filter controls](../visualize/add-controls.md) to let viewers explore the data interactively
 * [Add drilldowns](drilldowns.md) to navigate between dashboards or to external URLs
-* [Arrange and resize panels](arrange-panels.md) to get the layout you want
-* [Duplicate a dashboard](duplicate-dashboards.md) as a starting point for a new one
-* [Import a dashboard](import-dashboards.md) exported from another {{product.kibana}} instance
+* [Arrange and resize panels](arrange-panels.md) to optimize its layout
+
+You can also maintain your dashboards after you create them: [organize your collection](managing.md) with search, tags, and favorites, [duplicate](duplicate-dashboards.md) a dashboard to reuse it as a starting point, [import](import-dashboards.md) one from another space, instance, or deployment, or [share or export](sharing.md) it. For repeatable, auditable changes, [manage your dashboards as code](manage-dashboards-as-code.md) to version-control their definitions and deploy them across environments.
 
 ## Requirements [dashboard-minimum-requirements]
 
