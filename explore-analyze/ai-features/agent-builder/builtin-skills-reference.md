@@ -47,7 +47,7 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
 
     :::{dropdown} Assigned tools
-    `platform.dashboard.generate_dashboard`
+    A skill-scoped inline tool for generating and updating dashboards.
 
     :::
 
@@ -77,7 +77,7 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
 
     :::{dropdown} Assigned tools
-    `platform.core.cases`, `platform.cases.manage`, `platform.cases.attachments`, `platform.cases.observables`
+    `platform.core.cases`, `platform.core.cases.manage`, `platform.core.cases.attachments`, `platform.core.cases.observables`
 
     :::
 
@@ -85,7 +85,7 @@ $$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: 
 :   Composes, discovers, and modifies alerting rules and action policies (notification policies) from within a conversation.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`, `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`, plus a skill-scoped inline tool for composing and modifying action policies (notification policies).
 
     :::
 
