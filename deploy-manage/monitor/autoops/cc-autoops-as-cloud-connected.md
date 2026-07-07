@@ -34,7 +34,7 @@ For instructions on how to get started, refer to [](/deploy-manage/monitor/autoo
 
 After this setup is complete, you can start using AutoOps to monitor your cluster. Learn more about what you can do with AutoOps in [views](/deploy-manage/monitor/autoops/views.md) and [events](/deploy-manage/monitor/autoops/ec-autoops-events.md). 
 
-## Data privacy in cloud connected AutoOps
+## Data privacy in Cloud Connected AutoOps
 
 You control access to the metrics data being sent to AutoOps. During setup, you assign [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_connected_cluster_access_roles) so only users in your organization with the appropriate permissions can view cluster metrics, health events, and performance visualizations in AutoOps.
 
