@@ -47,6 +47,8 @@ The [Managed OTLP endpoint](opentelemetry://reference/motlp.md) is an alternativ
 
 ## Before you begin
 
+You’ll need:
+
 * A running [self-managed](/deploy-manage/deploy/self-managed.md) {{es}} cluster
 * The EDOT Collector installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
 * An existing OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
