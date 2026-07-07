@@ -31,6 +31,8 @@ Use the sandbox to:
 - **Catch unexpected output** - Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
 - **Refine before committing** - Edit the query and re-run it as many times as needed without leaving the rule creation form.
 
+While the sandbox is open, switching between rule form and YAML or between rule modes (Alert and Signal) is not available. Close the sandbox first if you need to change authoring mode.
+
 ### Control how your query splits [sandbox-split-editor]
 
 By default, applying changes automatically splits your query into a [base query and alert condition](configure-rule-query.md). If you want full manual control over the split, use the toggle in the sandbox to switch to separate Base and Alert editors. If auto-split fails, a callout on the alert condition step lets you open the sandbox directly in manual split mode.
