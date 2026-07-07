@@ -409,7 +409,7 @@ Rule lifecycle triggers are part of the {{alerting-v2-system}} and fire independ
 | `alerting.ruleEnabled` | A rule is enabled. |
 | `alerting.ruleDisabled` | A rule is disabled. |
 
-For bulk operations (bulk enable, bulk disable, bulk delete), one trigger event is emitted per affected rule. A `PATCH` update that makes no effective change emits nothing.
+For bulk operations (bulk enable, bulk disable, bulk delete), one trigger event is emitted for each affected rule.
 
 ### Schema [alerting-rule-lifecycle-triggers-schema]
 

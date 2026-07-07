@@ -5,36 +5,16 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "View policy details, enable, disable, snooze, monitor dispatch activity on the Execution History Policies tab, and rotate API keys for action policies in the experimental alerting system."
+description: "View policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
 ---
 
 # Manage action policies for the {{alerting-v2-system}}
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view policy details, enable and disable policies, snooze them during planned outages, rotate their API keys, and monitor dispatch activity on the Execution History **Policies** tab.
+Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view policy details, enable and disable policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review policy execution history](review-execution-history.md).
 
 ## View and edit a policy
 
 From the **Action policies** list, you can open a policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. The list also shows the display name of the user who created the policy and the user who last updated it. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
-
-## Review dispatch records and outcomes [execution-history]
-
-The **Execution History** page provides a paginated, filterable log of dispatcher activity across all action policies in the space. Select the **Policies** tab to see dispatch records for the last 24 hours. Each row covers one (policy, rule) pair per dispatcher run:
-
-| Column | Description |
-|---|---|
-| **Timestamp** | When the dispatcher ran. |
-| **Policy** | The action policy that was evaluated. |
-| **Rule** | The rule whose alert episodes the policy processed. |
-| **Outcome** | Whether the dispatcher acted: `dispatched` means a workflow was invoked; `throttled` means the episode matched a policy but was rate-limited and no workflow ran. |
-| **Episodes** | The number of alert episodes processed in this run. |
-| **Action groups** | The number of action groups involved. |
-| **Workflows** | The workflows invoked, if any. |
-
-Use the search bar to find records by policy name, rule name, or saved-object ID. Use the **Outcome** filter to narrow results to **Dispatched** or **Throttled**. 
-
-The `unmatched` outcome (which is when no policy matched the episode) is written to the event log but isn't available as a filter. To find those records, open Discover and query `.kibana-event-log-*` with `event.provider: "alerting_v2"` and `event.action: "unmatched"`.
-
-Episodes that are acknowledged, snoozed, marked inactive, or covered by a [maintenance window](../../alerts/maintenance-windows.md) are dropped before the dispatcher runs and produce no record.
 
 ## Enable, disable, and snooze a policy
 
@@ -67,6 +47,7 @@ On the action policies list, select one or more policies to enable, disable, sno
 
 ## Related pages
 
+- [Review policy execution history](review-execution-history.md) to monitor dispatch activity and understand execution outcomes.
 - [Reduce notification noise in {{alerting-v2-system}}](reduce-notification-noise.md) to silence individual alert episodes by acknowledging, snoozing, or marking them inactive.
 - [Action policy reference in {{alerting-v2-system}}](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
 - [Create and configure an action policy](create-configure-action-policy.md) to set up or update the policies you manage here.

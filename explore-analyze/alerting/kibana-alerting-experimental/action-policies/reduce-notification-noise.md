@@ -27,7 +27,7 @@ Three mechanisms let you silence notifications, each at a different scope:
 
 ### Snooze scope
 
-Snooze applies at the group level (by `group_hash`), not per individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
+Snooze applies at the group level (by `group_hash`), not for each individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
 
 <!-- TODO: Uncomment when PR #6524 (alerts) is merged:
 For instructions on snoozing and unsnoozing single or multiple episodes, refer to [View and manage alerts](../alerts/view-and-manage-alerts.md#snooze-episode).

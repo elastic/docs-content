@@ -24,7 +24,7 @@ The three gates are suppression, match conditions, and frequency:
 
 * **Suppression** - Determines whether to silence the alert episode. Episodes that are acknowledged, snoozed, or inside a maintenance window are stopped here and no workflow is invoked. For details on each mechanism and its scope, refer to [Reduce notification noise](reduce-notification-noise.md).
 * **Match conditions** - Filters which alert episodes the action policy applies to. You define them using a [KQL](../../../query-filter/languages/kql.md) expression. An empty match condition applies to all active, unsuppressed episodes in the space.
-* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification per alert episode, one per notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
+* **Frequency** - Controls how often the action policy can invoke its workflows for the same group of episodes, and how episodes batch before a workflow is invoked. Options are one notification for each alert episode, one for each notification group, or one digest for all matching episodes. If a workflow was already invoked within the cooldown period, the episode waits.
 
 If any gate stops the episode, the workflow is not invoked for that action policy. Because each action policy evaluates alert episodes independently, an episode blocked by one action policy can still trigger a workflow through a second action policy with different conditions.
 

@@ -17,7 +17,7 @@ Because action policies are separate from rules, you can update notification beh
 
 ## Alert mode requirement [policy-alert-mode]
 
-Action policies only process alert episodes from rules running in Alert mode. Signals produced by rules running in Detect mode aren't eligible for action policy evaluation.
+Action policies only apply to alert episodes from rules running in Alert mode. Rules running in Signal mode produce signals rather than alert episodes, so they aren't evaluated by action policies.
 
 ## Add tags to categorize the action policy [policy-tags]
 
@@ -38,7 +38,7 @@ For all available fields, refer to [Match conditions fields](action-policy-refer
 
 | Notify per | What it does | Available Frequency options |
 |---|---|---|
-| Episode | One notification per alert episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
+| Episode | One notification for each alert episode. | - On status change <br> - On status change + repeat at interval <br> - Every evaluation |
 | Group | Bundle alert episodes that share a field value. Specify a **Group by** field such as `data.service.name` or `data.host.name`. | - At most once every… <br> - Every evaluation |
 | Digest | One notification for all matching alert episodes combined. | - At most once every… (default) <br> - Every evaluation |
 
