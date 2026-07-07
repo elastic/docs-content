@@ -17,7 +17,7 @@ A *DST calendar* is a specialized [calendar](/explore-analyze/machine-learning/a
 
 To make sure {{anomaly-jobs}} adjust correctly for DST, create a DST calendar for your time zone and associate it with your jobs or job groups.
 
-1. In {{kib}}, go to **Machine Learning > Anomaly Detection > Settings**. Alongside the regular **Calendars** panel, a **DST Calendars** panel lets you create and manage DST calendars separately.
+1. In {{kib}}, go to **Machine Learning → Anomaly Detection → Settings**. Alongside the regular **Calendars** panel, a **DST Calendars** panel lets you create and manage DST calendars separately.
 
     :::{image} /explore-analyze/images/machine-learning-ml-dst-calendar-settings.png
     :alt: The Anomaly Detection Settings page with separate Calendars and DST Calendars panels
