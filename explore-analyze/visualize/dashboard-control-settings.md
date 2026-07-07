@@ -57,7 +57,7 @@ Display settings apply to pinned controls: hover over the control and select {ic
 
 ### Dashboard settings [data-dashboard-settings]
 
-In **Edit** mode, select **Settings** in the dashboard toolbar, then find the **Control panels** section.
+In **Edit** mode, select **Settings** in the application menu, then find the **Control panels** section.
 
 **Auto apply filters** or **Apply selections automatically**
 :   Choose whether the dashboard updates as soon as a selection is made, or only when you select **Apply**. Applies to all controls. Updates automatically by default.
