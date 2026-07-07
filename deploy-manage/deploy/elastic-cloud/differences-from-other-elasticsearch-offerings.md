@@ -159,10 +159,12 @@ This table compares Security capabilities between {{ech}} deployments and Server
 
 
 ## Serverless index sizing and resource limits [elasticsearch-differences-serverless-index-size]
-Elasticsearch uses sharding to distribute the data in your index across the cluster - this helps to support growing data volumes and load. In {{serverless-full}}, the sharding is fully managed for you. You don’t need to think about choosing the optimal shard count for an index because the sharding will automatically adjust to suit your needs. That said, there are still some guidelines to share: these are best practices that tend to give the best results over the long term. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
+Elasticsearch uses sharding to distribute the data in your index across the cluster - this helps support growing data volumes and load. In {{serverless-full}}, the sharding is fully managed for you and will automatically adjust to suit your needs. 
+
+The following best practices will help you build an indexing and data lifecycle strategy that scales with your data over time:
  * Large numbers of very small (or empty) indices should be avoided whenever possible. Each index has a resource cost within your project and the service must scale your project capacity to accommodate. If you recognize this pattern in your design, consider options for organizing your data into fewer indices.
  * At the other end of the spectrum, a design where each index can grow to many terabytes might also ultimately result in performance trade-offs - consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
- * Use a data stream instead of a single index when appropriate, and take advantage of data stream lifecycle to manage data retention. Using date-based naming patterns with data streams is generally undesirable. It’s better to let the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) take care of aging out data that is no longer relevant.
+ * Use a data stream instead of a single index when [appropriate](/manage-data/data-store/data-streams.md#should-you-use-a-data-stream-should-you-use-a-data-stream), and take advantage of the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage data retention. Avoid using date-based naming patterns with data streams and let the lifecycle age out data automatically.
 
 {{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
 
@@ -170,7 +172,7 @@ Elasticsearch uses sharding to distribute the data in your index across the clus
 | :--- | :--- | :--- |
 | Number of indices per project | 15,000 | Yes |
 
-Adjustable limits can be increased by request, while others are fixed. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
+The index limit is adjustable and can be increased by request. To request a limit increase, open a support case, and include your preferred new value and a brief description of your use case. Providing meaningful details around your use case and desired outcome ensures that Elastic can make recommendations that best suit your workload.
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
