@@ -443,12 +443,12 @@ stack: preview 9.4
 serverless: preview
 ```
 
-On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. You can enable approximation in two ways:
+On large datasets, you can trade exact results for speed by enabling [approximate results](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) queries. Approximation runs your `STATS` aggregations on a sample of the data and extrapolates to estimate results for the full dataset, so the numbers come out close to the exact ones. You can enable approximation in two ways:
 
 - {applies_to}`{stack: "preview 9.5", serverless: "preview"}` From the {{kib}} UI, with [Fast mode](#esql-kibana-fast-mode-toggle).
 - From within a query, with the [`SET approximation`](#esql-kibana-approximation) directive.
 
-However you enable it, approximation isn't forced: {{es}} runs your query exactly when approximation wouldn't make it faster, such as when a selective filter has already narrowed the matching data. Approximate results are estimates, so they can vary between runs and might drop low-frequency groups. Refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md) for details.
+However you enable it, {{es}} applies approximation only when it speeds up the query. When your data is smaller than the sample size (by default around 1 million rows for `STATS ... BY` queries and 100,000 rows for other `STATS` queries), or a filter has already narrowed the results, {{es}} returns exact results instead. Approximation also covers only certain aggregations, so functions such as `COUNT_DISTINCT`, `MIN`, `MAX`, and `LAST` always run exactly. Because approximate results are estimates, they can vary between runs and might drop low-frequency groups. For the full conditions and supported functions, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 ### Use Fast mode [esql-kibana-fast-mode-toggle]
 ```{applies_to}
@@ -459,7 +459,7 @@ serverless: preview
 Fast mode is the {{kib}} UI control for {{esql}} approximation. Look for the {icon}`bolt` **Fast mode** option to turn it on. Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
-- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is available when the dashboard has at least one {{esql}} visualization.
+- In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is disabled when the dashboard has no {{esql}} visualizations.
 
 **Fast mode** is preserved when you save or share a dashboard.
 
