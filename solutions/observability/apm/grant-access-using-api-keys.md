@@ -90,35 +90,34 @@ output.elasticsearch:
 
 ## Create an API key for monitoring [apm-beats-api-key-monitor]
 
-To open the **API keys** management page, find it in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
+To create an API key:
 
-:::{image} /solutions/images/observability-server-api-key-create.png
-:alt: API key creation
-:screenshot:
-:::
+1. Open the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Create API key**.
+3. Enter a name for your API key.
+4. Make sure **User API key** is selected.
+5. To set an expiration date for the API key, enable **Apply expiration data** and specify how many days it should remain valid.
+6. Enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
 
-Enter a name for your API key and enable **Control security privileges**. In the role descriptors box, assign the appropriate privileges to the new API key. For example:
-
-```json
-{
-    "apm_monitoring": {
-        "index": [
-            {
-                "names": [".monitoring-beats-*"],
-                "privileges": ["create_index", "create_doc"]
-            }
-      ]
+    ```json
+    {
+        "apm_monitoring": {
+            "index": [
+                {
+                    "names": [".monitoring-beats-*"],
+                    "privileges": ["create_index", "create_doc"]
+                }
+          ]
+        }
     }
-}
-```
+    ```
 
-::::{note}
-This example only provides privileges for **publishing monitoring data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
-::::
+    ::::{note}
+    This example only provides privileges for **publishing monitoring data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
+    ::::
 
-To set an expiration date for the API key, select **Expire after time** and input the lifetime of the API key in days.
-
-Click **Create API key**. In the dropdown, switch to **{{beats}}** and copy the API key.
+7. Select **Create API key**.
+8. In the dropdown, switch to **{{beats}}** and copy the API key.
 
 You can now use this API key in your `apm-server.yml` configuration file like this:
 
