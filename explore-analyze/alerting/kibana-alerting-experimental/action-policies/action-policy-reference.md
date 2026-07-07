@@ -95,7 +95,7 @@ Episodes that were acknowledged, snoozed, marked inactive, or covered by a maint
 
 `unmatched` appears in the event log but isn't available as an outcome filter in the **Execution history** UI. To find `unmatched` records, open Discover, query `.kibana-event-log-*`, add a filter for `event.provider: "alerting_v2"`, and filter `event.action: "unmatched"`.
 
-For more information about the execution history UI, refer to [Manage action policies](manage-action-policies.md#review-dispatch-records-and-outcomes).
+For more information about the execution history UI, refer to [Manage action policies](manage-action-policies.md#execution-history).
 
 ## Related pages
 
