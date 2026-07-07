@@ -30,10 +30,10 @@ Streams requires the following permissions:
 ::::{applies-switch}
 
 :::{applies-item} serverless:
-Streams requires these {{serverless-full}} roles:
+Streams requires one of the following {{serverless-full}} roles:
 
-- Admin: Ability to manage all Streams
-- Editor/Viewer: Limited access, cannot perform all actions
+- Admin: Able to manage all Streams
+- Editor/Viewer: Has limited access to Streams, cannot perform all actions
 
 :::
 

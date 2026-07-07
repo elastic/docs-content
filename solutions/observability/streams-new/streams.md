@@ -50,10 +50,10 @@ You also need {{kib}} access with the following permissions:
 ::::{applies-switch}
 
 :::{applies-item} serverless:
-Streams requires these {{serverless-full}} roles:
+Streams requires one of the following {{serverless-full}} roles:
 
-- Admin: Ability to manage all Streams
-- Editor/Viewer: Limited access, cannot perform all actions
+- Admin: Able to manage all Streams
+- Editor/Viewer: Has limited access to Streams, cannot perform all actions
 
 :::
 
@@ -66,7 +66,7 @@ To manage all streams, you need the following permissions:
 To view streams, you need the following permissions:
 - **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
 :::
 
@@ -90,10 +90,10 @@ Streams supports two ingestion paths:
 - **[Work with existing data](./get-data-in.md#get-data-in-classic)**: Work with data already flowing into {{es}}. No migration or configuration changes required.
 ::::
 
-::::{step} Organize your data (Only available when sending data to managed en)
+::::{step} Organize your data
 
 :::{note}
-Organizing your data using partitions is only available when sending data to the `logs.otel` or `logs.ecs` endpoints. If you're using data that is already flowing to {{es}}, skip this step.
+Organizing your data using partitions is only available when sending data to the `logs.otel` or `logs.ecs` managed endpoints. If you're using data that is already flowing to {{es}}, skip this step.
 :::
 
 Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
@@ -113,15 +113,15 @@ After adding processors, the **Data preview** simulates results, so you can veri
 ::::
 
 ::::{step} Configure retention
-Use the [**Retention** tab](./configure-retention.md) to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
+Use the [**Retention**](./configure-retention.md) tab to control how long each stream stores data and manage storage costs. Review storage size, ingestion averages, and tier distribution before choosing a retention method:
 
 - **[Inherit retention](./configure-retention.md#streams-configure-retention-steps)**: Use settings from the stream's index template or parent stream.
 - **[Set a retention period](./configure-retention.md#streams-configure-retention-steps)**: Define a minimum number of days before data is deleted.
-- **[Follow an {{ilm-init}} policy](./configure-retention.md#streams-configure-retention-steps)**: Apply an existing {{ilm-init}} policy to automate data movement through lifecycle phases.
+- **[Follow an {{ilm}} ({{ilm-init}}) policy](./configure-retention.md#streams-configure-retention-steps)**: Apply an existing {{ilm-init}} policy to automate data movement through lifecycle phases.
 ::::
 
 ::::{step} Manage data quality
-The **Data quality** column on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality** tab](./manage-data-quality.md) to examine more closely and resolve issues.
+The **Data quality** column on the **Streams** main page shows each stream's health (**Good**, **Degraded**, or **Poor**) at a glance, and lets you filter by health status. Select a stream or open the [**Data quality**](./manage-data-quality.md) tab to examine more closely and resolve issues.
 
 When documents fail during ingestion, Streams preserves them in a [failure store](./manage-data-quality.md#streams-data-quality-failure) rather than dropping them, so you can inspect what went wrong and fix the processor using the actual failing documents.
 ::::
