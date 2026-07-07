@@ -26,7 +26,7 @@ Higher scores indicate better performance, on a scale of 1 to 10. A score of 10 
 
 The matrix uses three top-line capability scores — **Agent Builder**, **Attack Discovery**, and **Automatic Migration** — that roll up into a single **Overall Score**. You can read the table top-down, from "how does this model perform across our AI features?" to "how good is it at the specific job I care about?"
 
-* **Overall Agent Builder Score** is the average of the seven Agent Builder sub-capabilities (Alert Analysis, Entity Analytics, Threat Hunting, Detection Rules, Workflow Authoring, Triggering Workflows, and Multi-Step Executions). It summarizes how well a model handles agentic Security work end to end.
+* **Overall Agent Builder Score** is the average of the seven Agent Builder [sub-capabilities](#_agent_builder_sub_capabilities). It summarizes how well a model handles agentic Security work end to end.
 * **Overall Score** is the average of the Agent Builder, Attack Discovery, and Automatic Migration scores. It reflects how a model performs across the breadth of our AI features rather than any single workflow, and is the default sort for the tables below.
 
 ### What each Agent Builder sub-capability measures [_agent_builder_sub_capabilities]
