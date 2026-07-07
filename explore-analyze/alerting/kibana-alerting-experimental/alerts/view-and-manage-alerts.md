@@ -21,10 +21,10 @@ Alert episodes belong to the current {{kib}} space and aren't visible in other s
 The Alerts page includes two summary panels:
 
 - **KPI panels** - Show aggregate episode counts for the current filter state and time range. Use them to understand the scale of a situation before reviewing individual episodes.
-- **Episode histogram** - Shows how episode counts have changed over the selected time range. Use it to identify when a wave of episodes began, whether the situation is improving, and whether a spike stands alone or fits a broader pattern. You can break down the chart by status, rule, or assignee.
+- **Episode histogram** - Shows the total number of episodes that existed within each time interval. A long-lived episode counts in every interval it was open, not only the one it started in. Brush the chart to update the time filter. You can break down the chart by status, rule, or assignee.
 
 :::{note}
-The episode histogram queries up to 10,000 alert episodes per time range. Narrow the time range or add filters if you exceed this limit.
+The episode histogram queries up to 10,000 alert episodes for each time range. Narrow the time range or add filters if you exceed this limit.
 :::
 
 ## Filter and search [filter-and-search]

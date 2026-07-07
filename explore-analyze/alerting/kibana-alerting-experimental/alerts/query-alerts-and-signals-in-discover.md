@@ -49,7 +49,7 @@ FROM .rule-events
 
 ### Find all currently active episodes [find-active-episodes]
 
-Returns one row per episode currently in `active` state, along with the timestamp of its most recent evaluation.
+Returns one row for each episode currently in `active` state, along with the timestamp of its most recent evaluation.
 
 ```esql
 FROM .rule-events

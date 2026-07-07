@@ -29,5 +29,5 @@ A rule in Detect mode only writes signals. It never opens alert episodes, so act
 
 Rule output is written to the following append-only data streams, both managed by {{kib}} through ILM and queryable with {{esql}} in Discover:
 
-- **`.rule-events`** - {{kib}} writes one document per rule evaluation and never overwrites them.
+- **`.rule-events`** - {{kib}} writes one document for each rule evaluation and never overwrites them.
 - **`.alert-actions`** - Records every triage action taken on an episode (for example, acknowledge, snooze, and resolve).
