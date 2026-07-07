@@ -81,3 +81,34 @@ To access the additional features available in a higher feature tier:
 1. Next to **Project features**, select **Edit**.
 1. Select your desired feature tier.
 1. Select **Save** to complete the upgrade.
+
+## Downgrade the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
+
+:::{note}
+You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
+:::
+
+When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
+
+* All Entity Analytics features
+* The ability to use certain entity analytics-related integration packages, such as:
+  * Data Exfiltration detection
+  * Lateral Movement detection
+  * Living off the Land Attack detection
+* Intelligence Indicators page
+* External rule action connectors
+* Case connectors
+* Endpoint response actions history
+* Endpoint host isolation exceptions
+* Trusted devices
+* AI Assistant
+* Attack discovery
+
+And, the following data may be permanently deleted:
+
+* AI Assistant conversation history
+* AI Assistant settings
+* Entity Analytics user and host risk scores
+* Entity Analytics asset criticality information
+* Detection rule external connector settings
+* Detection rule response action settings
