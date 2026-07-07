@@ -164,7 +164,7 @@ Elasticsearch uses sharding to distribute the data in your index across the clus
 
 The following best practices will help you build an indexing and data lifecycle strategy that scales with your data over time:
  * Large numbers of very small (or empty) indices should be avoided whenever possible. Each index has a resource cost within your project and the service must scale your project capacity to accommodate. If you recognize this pattern in your design, consider options for organizing your data into fewer indices.
- * At the other end of the spectrum, a design where each index can grow to many terabytes might also ultimately result in performance trade-offs - consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
+ * At the other end of the spectrum, a design where each index can grow to many terabytes might also ultimately result in performance trade-offs. Consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md) or naming pattern.
  * Use a data stream instead of a single index when [appropriate](/manage-data/data-store/data-streams.md#should-you-use-a-data-stream), and take advantage of the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to manage data retention. Avoid using date-based naming patterns with data streams and let the lifecycle age out data automatically.
 
 {{serverless-full}} applies the following project-level limit to ensure reliable performance and stability.
