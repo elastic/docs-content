@@ -25,7 +25,7 @@ A snapshot taken using the default `found-snapshots` repository can only be rest
 From within {{ech}}, you can restore a snapshot from a different deployment in the same region.
 
 ::::{important}
-The underlying `found-snapshots` repository managed by {{ech}} has no backup. Elastic does not enable soft deletion at the cloud provider storage level. Any snapshot deletions — including [searchable snapshots](./searchable-snapshots.md) — are permanent and cannot be recovered by Elastic.
+The underlying `found-snapshots` repository managed by {{ech}} has no backup. Elastic does not enable soft deletion at the cloud provider storage level. Any snapshot deletions — including [searchable snapshots](./searchable-snapshots.md#back-up-and-restore-search-snaps-back-up-restore-searchable-snapshots) — are permanent and cannot be recovered by Elastic.
 
 If you require additional redundancy, follow the guidance in this page to configure your own snapshot repository and take backups.
 ::::
