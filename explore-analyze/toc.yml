@@ -405,6 +405,7 @@ toc:
               - file: alerting/kibana-alerting-experimental/rules/configure-no-data-handling.md
               - file: alerting/kibana-alerting-experimental/rules/configure-rule-tags.md
           - file: alerting/kibana-alerting-experimental/rules/view-manage-rules.md
+          - file: alerting/kibana-alerting-experimental/rules/review-execution-history.md
           - file: alerting/kibana-alerting-experimental/rules/esql-query-patterns.md
             children:
               - file: alerting/kibana-alerting-experimental/rules/esql-first-rule-query.md
