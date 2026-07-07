@@ -456,7 +456,7 @@ stack: preview 9.5
 serverless: preview
 ```
 
-Fast mode is the {{kib}} UI control for {{esql}} approximation. Look for the {icon}`bolt` **Fast mode** option to turn it on. Where it applies depends on the context:
+Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon}`bolt` **Fast mode** option to turn it on. Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/try-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
 - In [**Dashboards**](/explore-analyze/visualize/esorql.md), **Fast mode** applies to the dashboard's {{esql}} visualizations that use one `STATS` command. The option is disabled when the dashboard has no {{esql}} visualizations.
