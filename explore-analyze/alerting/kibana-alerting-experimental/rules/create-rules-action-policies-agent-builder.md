@@ -1,5 +1,5 @@
 ---
-navigation_title: Create rules and action policies with Agent Builder
+navigation_title: Create rules using Agent Builder
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -47,6 +47,8 @@ The agent can also search for and attach an existing rule to the conversation us
 
 The agent does not persist the rule automatically. Saving is an explicit action that signals the configuration is ready. Until the rule is saved, the proposal exists only in the conversation and is not evaluated against data.
 
+When Agent Builder saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
+
 :::{note} 
 Signal rules do not support notifications. Alert episodes, and therefore action policies, only apply to rules running in Alert mode. If you ask the agent to set up notifications for a signal rule, the rule management skill explains the limitation and offers to either convert the rule to Alert mode or create a separate alert rule.
 :::
@@ -79,6 +81,8 @@ The three objects have a dependency chain that determines the order in which the
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
 This order is enforced in the UI. The action policy save control remains inactive until both dependencies are met.
+
+Action policies saved or edited through Agent Builder also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
 
 ## Related pages
 

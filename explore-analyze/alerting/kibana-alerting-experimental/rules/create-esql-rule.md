@@ -31,6 +31,10 @@ Use the sandbox to:
 - **Catch unexpected output** - Verify that the query returns data in the right shape for the alert condition you plan to set. A query that returns zero rows or an unexpected field name won't behave as expected once the rule runs on a schedule.
 - **Refine before committing** - Edit the query and re-run it as many times as needed without leaving the rule creation form.
 
+### Control how your query splits [sandbox-split-editor]
+
+By default, applying changes automatically splits your query into a [base query and alert condition](configure-rule-query.md). If you want full manual control over the split, use the toggle in the sandbox to switch to separate Base and Alert editors. If auto-split fails, a callout on the alert condition step lets you open the sandbox directly in manual split mode.
+
 ## Using the YAML editor [yaml-editor]
 
 Use the YAML editor when you want to copy or adapt a rule quickly without re-entering settings by hand, or provision many rules at once. The YAML editor isn't available within the Threshold Alert builder.

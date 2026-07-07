@@ -16,4 +16,4 @@ For details on configurable rule settings and guidance on how to configure them,
 
 ## Threshold Alert [use-threshold-alert-builder]
 
-Threshold Alert is the only rule type available in the rule builder. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
+Threshold Alert is the rule type currently available in the rule builder. Use it to monitor one or more metrics and alert when they cross a threshold, with multi-condition support and custom aggregations.
