@@ -47,7 +47,7 @@ In Microsoft Entra ID, create a new Entra ID Enterprise application.
 
     1. **Identity Provider Entity ID**: Enter the **Microsoft Entra Identifier** that you collected in the previous step.
     2. **Identity Provider SSO URL**: Enter the **Login URL** that you collected in the previous step. Users will be redirected to this URL when they attempt to log in.
-    3. **Public x509 certificate**: Paste the contents of the downloaded signing certificate.
+    3. **Public x509 certificate**: Paste the contents of the downloaded the Base64 signing certificate.
     4. **Login identifier prefix**: A customizable piece of the {{ecloud}} SSO URL that your organization members can use to authenticate. This could be the name of your business. You can use lowercase alphanumeric characters and hyphens in this value, and you can change it later.
 
 4. Click **Update configuration**.
