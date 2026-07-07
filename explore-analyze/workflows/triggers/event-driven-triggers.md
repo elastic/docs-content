@@ -491,6 +491,7 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 ## Related
 
 - [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
+- [Workflow authorization](/explore-analyze/workflows/authorization.md): Whose privileges event-driven workflows run with.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.
 - [Connect workflows to the {{alerting-v2-system}}](../../alerting/kibana-alerting-experimental/workflows-alerting.md): Full reference for alert episode lifecycle triggers, including available trigger IDs, event payload fields, and when to use lifecycle triggers versus action policies.
