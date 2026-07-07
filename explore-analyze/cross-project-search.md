@@ -427,7 +427,18 @@ The index `my-index` must exist in every project, otherwise [the search returns 
 
 ### Project routing examples
 
-Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on any predefined tag, such as `_alias`, `_csp`, or `_region`, or on any custom tag you define in the {{ecloud}} UI. Combine tags with the `AND`, `OR`, and `NOT` operators, group terms with parentheses, and match part of a value with a prefix or suffix wildcard. Tag value matching is case-insensitive, so `_csp:AWS` matches the value `aws`. Tag names are case-sensitive, so use `_csp`, not `_CSP`. In an expression, a colon (`:`) separates a tag from its value. The syntax is the same for the `_search` API and {{esql}}.
+Project routing limits a search to a subset of projects based on their tags, before the search runs. You can route on:
+
+- Predefined tags, such as `_alias`, `_csp`, and `_region`. For the full list, refer to [Tags in {{cps-init}}](/explore-analyze/cross-project-search/cross-project-search-tags.md).
+- Custom tags that you define in the {{ecloud}} UI.
+
+In an expression, you can:
+
+- Combine tags with the `AND`, `OR`, and `NOT` operators.
+- Group terms with parentheses.
+- Match part of a tag value with a prefix or suffix wildcard (`*`).
+
+A colon (`:`) separates a tag from its value. Tag value matching is case-insensitive, so `_csp:AWS` matches the value `aws`. Tag names are case-sensitive, so use `_csp`, not `_CSP`. The syntax is the same for the `_search` API and {{esql}}.
 
 :::{note}
 You can optionally add the `_project.` prefix to a tag name, for example `_project._csp:aws`. This is the same prefix used to reference tags in queries. In project routing the prefix is optional, so `_csp:aws` and `_project._csp:aws` are equivalent.
@@ -608,7 +619,7 @@ GET /*/_search
 }
 ```
 
-Combine tags with `AND` and `OR`. The following request routes to projects on Amazon Web Services (AWS) in a US region:
+You can combine tags with `AND` and `OR`. The following request routes to projects on Amazon Web Services (AWS) in a US region:
 
 ```console
 GET /*/_search
@@ -620,7 +631,7 @@ GET /*/_search
 }
 ```
 
-Group terms with parentheses to build more specific rules. The following requests route to AWS projects in a US region, or to any project on Google Cloud. The routing expression is the same for the `_search` API and {{esql}}:
+You can group terms with parentheses to build more specific rules. The following requests route to AWS projects in a US region, or to any project on Google Cloud. The routing expression is the same for the `_search` API and {{esql}}:
 
 ::::{tab-set}
 
