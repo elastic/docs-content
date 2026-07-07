@@ -12,23 +12,14 @@ products:
 
 # Configure a SUSE host [ece-configure-hosts-sles12]
 
-This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings.
+This guide explains how to prepare a SUSE Linux Enterprise Server (SLES) host for an {{ece}} (ECE) installation. It covers the operating system configuration required before you install ECE, including Docker installation, XFS quota configuration, and other host-specific settings. The steps on this page target SLES 15 SP4.
 
-SLES hosts use `zypper` to install Docker and require manual XFS quota setup because XFS is not the default filesystem on SLES. The steps on this page target SLES 15 SP4.
+::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
+::::
 
 ::::{warning}
 SLES 12 SP5 reached general support end of life on **October 31, 2024**. Use SLES 15 or later for new {{ece}} installations, and migrate existing SLES 12 SP5 hosts.
 ::::
-
-* [Prerequisites](#ece-configure-host-suse-prerequisites)
-* [Prepare the user account for ECE](#ece-prepare-user-sles)
-* [Install Docker](#ece-install-docker-sles12)
-* [Set up XFS quotas](#ece-xfs-setup-sles12)
-* [Prepare the data directories](#ece-prepare-data-directories-sles)
-* [Update the system configuration](#ece-update-config-sles)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
-* [Verify the host configuration](#ece-verify-host-config-sles)
-* [Next steps](#ece-configure-host-suse-next-steps)
 
 ## Prerequisites [ece-configure-host-suse-prerequisites]
 
@@ -44,7 +35,7 @@ Before you begin:
 
 ## Prepare the user account for ECE [ece-prepare-user-sles]
 
-Follow these steps to configure the user account according to the [Users and permissions prerequisites](ece-users-permissions.md) for a SLES host.
+Follow these steps to configure the user account according to the [Users and permissions prerequisites](ece-users-permissions.md) for ECE hosts.
 
 1. Set up the OS groups and add your user.
 
@@ -55,7 +46,7 @@ Follow these steps to configure the user account according to the [Users and per
         sudo groupadd docker
         ```
 
-    1. (Optional) Create a dedicated user for ECE:
+    1. (Optional) Create a dedicated user for ECE.
 
         If the user you are currently logged in as is not the user that will install and run ECE, create a dedicated user. The following example creates the recommended `elastic` user:
 
@@ -103,8 +94,7 @@ Follow these steps to configure the user account according to the [Users and per
 
 ## Install Docker on SLES [ece-install-docker-sles12]
 
-::::{include} /deploy-manage/deploy/_snippets/ece-supported-combinations.md
-::::
+ECE runs its services in containers, following a [service-oriented architecture](ece-architecture.md). These steps install Docker on SLES using `zypper` and leave the service stopped so it can be configured later.
 
 1. Remove Docker and any previously installed Podman packages:
 
@@ -112,7 +102,7 @@ Follow these steps to configure the user account according to the [Users and per
     sudo zypper remove -y docker docker-ce podman podman-remote
     ```
 
-1. Update packages to the latest available versions.
+1. Update packages to the latest available versions:
 
     ```sh
     sudo zypper refresh
@@ -147,7 +137,7 @@ Follow these steps to configure the user account according to the [Users and per
 
 ## Set up XFS quotas [ece-xfs-setup-sles12]
 
-{{ece}} relies on XFS project quotas to manage disk space for {{es}} data directories. These quotas limit the amount of disk space available to each {{es}} cluster node based on the RAM-to-disk ratio defined by its [instance configuration](deployment-templates.md#ece-getting-started-instance-configurations). For example, the default `data.default` instance configuration uses a 1:32 ratio, allowing 32 GB of disk space for every 1 GB of RAM assigned to a cluster node.
+ECE relies on XFS project quotas to manage disk space for {{es}} data directories. These quotas limit the amount of disk space available to each {{es}} cluster node based on the RAM-to-disk ratio defined by its [instance configuration](deployment-templates.md#ece-getting-started-instance-configurations). For example, the default `data.default` instance configuration uses a 1:32 ratio, allowing 32 GB of disk space for every 1 GB of RAM assigned to a cluster node.
 
 To use disk quotas, the file system mounted at `/mnt/data` must be an XFS file system with project quotas enabled. This guide creates a dedicated XFS file system for `/mnt/data`, which is the recommended configuration. If `/mnt/data` already resides on an XFS file system with project quotas enabled, you can skip the file system creation steps.
 
@@ -159,7 +149,7 @@ You can use LVM, `mdadm`, or a combination of the two for block device managemen
 You must use XFS and have quotas enabled on all allocators. Otherwise, disk usage won't display correctly.
 ::::
 
-**Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` in the following example with the corresponding device on your host.
+In the following example, XFS is set up on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` with the corresponding device on your host.
 
 1. Format the partition:
 
@@ -167,7 +157,7 @@ You must use XFS and have quotas enabled on all allocators. Otherwise, disk usag
     sudo mkfs.xfs /dev/xvdg1
     ```
 
-1. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by ECE is `/mnt/data`.
+1. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by ECE is `/mnt/data`:
 
     ```sh
     /dev/xvdg1	/mnt/data	xfs	defaults,pquota,prjquota,x-systemd.automount  0 0
@@ -208,7 +198,9 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 
 ## Configure system settings [ece-update-config-sles]
 
-1. Stop the `nscd` service and prevent it from starting automatically. This service can interfere with Elastic services.
+Adjust the host settings required by ECE, including cgroup accounting, kernel parameters, and system limits.
+
+1. Stop the `nscd` service and prevent it from starting automatically. This service can interfere with Elastic services:
 
     ```sh
     sudo systemctl stop nscd
@@ -233,17 +225,16 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 
     ```sh
     cat <<EOF | sudo tee -a /etc/sysctl.conf
-    # Required by Elasticsearch
-    vm.max_map_count=1048576
-    # enable forwarding so the Docker networking works as expected
-    net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
-    net.ipv4.tcp_retries2=5
-    # Make sure the host doesn't swap too early
-    vm.swappiness=1
+    vm.max_map_count=1048576 <1>
+    net.ipv4.ip_forward=1 <2>
+    net.ipv4.tcp_retries2=5 <3>
+    vm.swappiness=1 <4>
     EOF
     ```
+    1. Required by {{es}}
+    2. Enable IP forwarding so the Docker networking works as expected
+    3. Decrease the maximum number of TCP retransmissions to 5 as recommended for [{{es}} TCP retransmission timeout](/deploy-manage/deploy/self-managed/system-config-tcpretries.md)
+    4. Make sure the host doesn't swap too early
 
     ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and also affects the reliability of communication with systems other than {{es}} clusters. If your clusters communicate with external systems over a low quality network, you might need to select a higher value for `net.ipv4.tcp_retries2`.
@@ -255,7 +246,7 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
         sudo sysctl -p
         ```
 
-1. Adjust the system limits by adding the following configuration values to the `/etc/security/limits.conf` file. These values are based on the {{ecloud}} hosted offering and should be used for ECE as well. If needed, make sure to replace `elastic` with your user name.
+1. Adjust the system limits by adding the following configuration values to the `/etc/security/limits.conf` file. If needed, make sure to replace `elastic` with your user name:
 
     ```sh
     *                soft    nofile         1024000
@@ -276,14 +267,14 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 1. Optional: Tune additional network kernel parameters for production workloads. Create a `70-cloudenterprise.conf` file in `/etc/sysctl.d/` and include these settings:
 
     ```sh
-    cat << SETTINGS | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
+    cat <<EOF | sudo tee /etc/sysctl.d/70-cloudenterprise.conf
     net.ipv4.tcp_max_syn_backlog=65536
     net.core.somaxconn=32768
     net.core.netdev_max_backlog=32768
     net.ipv4.tcp_keepalive_time=1800
     net.netfilter.nf_conntrack_tcp_timeout_established=7200
     net.netfilter.nf_conntrack_max=262140
-    SETTINGS
+    EOF
     ```
 
     Apply the settings:
@@ -304,6 +295,8 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
     :::
 
 ## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
+
+After you [install Docker](#ece-install-docker-sles12) and [prepare the data directories](#ece-prepare-data-directories-sles), set the Docker daemon options required by ECE, then enable and restart the service to apply them. This configuration points Docker storage to the `/mnt/data/docker` directory created earlier.
 
 1. Edit `/etc/docker/daemon.json` to make sure the following configuration values are present:
 
@@ -340,11 +333,9 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
     1. The `max-size` and `max-file` options configure rotation for the `json-file` logs created by each container. Adjust these values to match your logging requirements.
     2. The `default-ulimits` setting increases the maximum number of open file descriptors available to Docker containers.
 
-1. _If the Docker registry doesn't require authentication, skip this step._
+1. Optional: If the Docker registry requires authentication, authenticate the `elastic` user to pull images from it by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
 
-    Authenticate the `elastic` user to pull images from the Docker registry you use, by creating the file `/home/elastic/.docker/config.json`. This file needs to be owned by the `elastic` user. If you are using a user name other than `elastic`, adjust the path accordingly.
-
-    **Example**: If you use `docker.elastic.co`, the file content looks like this:
+    For example, if you use `docker.elastic.co`, the file content looks like this:
 
     ```text
     {
@@ -378,15 +369,13 @@ Prepare the data directories used by {{ece}} and Docker. These steps create the 
 
 ## Verify the host configuration [ece-verify-host-config-sles]
 
-Reboot the host and verify that the required system, storage, and Docker configuration has been applied successfully.
+After completing the configuration steps in the previous sections, reboot the host and verify that the required system, storage, and Docker configuration has been applied successfully.
 
-1. Reboot your system to ensure that all configuration changes take effect:
+1. Reboot your system to ensure that all configuration changes take effect, then log back in as your ECE user:
 
     ```sh
     sudo reboot
     ```
-
-    Then log in again as your ECE user.
 
 1. Verify that the Docker daemon started automatically:
 
@@ -470,15 +459,26 @@ Reboot the host and verify that the required system, storage, and Docker configu
     findmnt -no TARGET,FSTYPE,OPTIONS /mnt/data
     ```
 
-    The output should show `/mnt/data` as an `xfs` file system with project quotas enabled.
+    The output should show `/mnt/data` as an `xfs` file system with project quotas enabled. For example:
+
+    ```text
+    /mnt/data xfs    rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,prjquota
+    ```
 
 1. Verify the ownership and permissions of the data directory:
 
     ```sh
     stat -c "%U:%G %a %n" /mnt/data
     ```
+    The output should show that the directory is owned by the ECE user and the `elastic` group, and use `700` permissions:
 
-    The output should show that the directory is by the ECE user and the `elastic` group, and use `700` permissions.
+    ```text
+    elastic:elastic 700 /mnt/data
+    ```
+
+    ::::{note}
+    The `/mnt/data/docker` subdirectory is owned by `root` rather than by the ECE user, because it is managed by the Docker daemon. This is normal and does not indicate a misconfiguration.
+    ::::
 
 ## Next steps [ece-configure-host-suse-next-steps]
 
