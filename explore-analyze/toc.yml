@@ -69,6 +69,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md
               - file: machine-learning/anomaly-detection/anomaly-detection-scale.md
               - file: machine-learning/anomaly-detection/ml-delayed-data-detection.md
+              - file: machine-learning/anomaly-detection/ml-ad-dst-calendars.md
           - file: machine-learning/anomaly-detection/ml-api-quickref.md
           - file: machine-learning/anomaly-detection/anomaly-how-tos.md
             children:
