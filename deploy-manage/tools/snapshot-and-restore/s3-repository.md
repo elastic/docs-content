@@ -196,12 +196,15 @@ If the symlink exists, it will be used by default by all S3 repositories that do
 
 
 #### Using EKS Pod Identity for authentication [eks-pod-identity]
+```{applies_to}
+stack: ga 9.6
+```
 
-If you want to use [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) for authentication, you need to make the injected token readable by the S3 repository. EKS injects a token file into the pod and sets the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to point at it, but that file lives outside the S3 repository config directory and a repository can't read any files outside its config directory. Add a symlink to the token inside the config directory, then point `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` (or the `aws.containerAuthorizationTokenFile` system property) at the symlink so the AWS SDK reads the token through it. For example:
+If you want to use [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) for authentication, EKS injects a token file into the pod and sets the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to point at it. However, {{es}} is forbidden from reading files at this location for security reasons. To use EKS Pod Identity, add a symlink at `${ES_PATH_CONF}/repository-s3/eks-pod-identity-token` which links to the token file, then set the `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` environment variable to the location of this symlink. For example:
 
 ```bash
 mkdir -p "${ES_PATH_CONF}/repository-s3"
-ln -s $AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE "${ES_PATH_CONF}/repository-s3/eks-pod-identity-token"
+ln -s "${AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE}" "${ES_PATH_CONF}/repository-s3/eks-pod-identity-token"
 export AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE="${ES_PATH_CONF}/repository-s3/eks-pod-identity-token"
 ```
 
@@ -210,7 +213,7 @@ The symlink must be created on all data and master eligible nodes and be readabl
 ::::
 
 
-{{es}} does not override `AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE` or `aws.containerAuthorizationTokenFile` itself, so the symlink and the repointed value must be in place before the node starts. Once configured, the token is used by default by all S3 repositories that don't have explicit `client` credentials, and it is re-read automatically when EKS rotates it.
+The symlink and the repointed value must be in place before the node starts. Once configured, the token file is used by default by all S3 repositories that don't have explicit `client` credentials, and it is re-read automatically when EKS rotates it.
 
 
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
