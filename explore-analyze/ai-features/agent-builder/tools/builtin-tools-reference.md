@@ -199,8 +199,8 @@ In 9.5, the individual stream read tools were consolidated into `inspect_streams
 `platform.streams.update_stream` {applies_to}`stack: ga 9.5+`
 :   Updates a stream's configuration, including its processing pipeline, description, retention lifecycle, field mappings, and failure store. Requires user confirmation before applying changes.
 
-`platform.streams.create_partition` {applies_to}`stack: ga 9.5+`
-:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. Requires user confirmation.
+`platform.streams.create_partition` {applies_to}`stack: preview 9.5`
+:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/management/partitioning.md) and [wired streams](/solutions/observability/streams/streams.md) are in technical preview. Requires user confirmation.
 
 `platform.streams.delete_stream` {applies_to}`stack: ga 9.5+`
 :   Permanently deletes a stream and all of its child streams. This action cannot be undone and requires user confirmation.
@@ -227,29 +227,29 @@ The following streams tools were available in 9.4 and were removed in 9.5:
 
 ### Significant events tools
 ```{applies_to}
-stack: ga 9.5+
+stack: preview 9.5
 ```
 
 Significant events tools search, create, and manage [significant events](/solutions/observability/streams/management/significant-events.md) and Knowledge Indicators for [Streams](/solutions/observability/streams/streams.md).
 
 **Prerequisites:** Significant events require an [Enterprise license](https://www.elastic.co/subscriptions) and must be enabled for the deployment through the `observability:streamsEnableSignificantEvents` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings).
 
-`platform.sig_events.ki_search` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.ki_search` {applies_to}`stack: preview 9.5`
 :   Searches Knowledge Indicators (both feature-based and query-based) derived from streams data to enrich context for a target stream, service, or group of streams.
 
-`platform.sig_events.ki_feature_create` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.ki_feature_create` {applies_to}`stack: preview 9.5`
 :   Creates a feature Knowledge Indicator that captures a newly discovered stream behavior pattern. Requires user confirmation.
 
-`platform.sig_events.ki_query_create` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.ki_query_create` {applies_to}`stack: preview 9.5`
 :   Creates a query Knowledge Indicator that saves a newly discovered detection query. Requires user confirmation.
 
-`platform.sig_events.event_search` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.event_search` {applies_to}`stack: preview 9.5`
 :   Searches significant events across all streams or a specific stream, so the agent can check current event state before creating or updating events.
 
-`platform.sig_events.event_create` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.event_create` {applies_to}`stack: preview 9.5`
 :   Creates a significant event for one or more streams. Requires user confirmation.
 
-`platform.sig_events.event_status_update` {applies_to}`stack: ga 9.5+`
+`platform.sig_events.event_status_update` {applies_to}`stack: preview 9.5`
 :   Updates the status of an existing significant event.
 
 `platform.streams.sig_events.event_investigation_attach` {applies_to}`stack: preview 9.5`
@@ -363,18 +363,18 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 
 ### SIEM readiness tools
 
-SIEM readiness tools assess SIEM readiness across four dimensions: coverage, quality, continuity, and retention.
+SIEM readiness tools assess [SIEM readiness](/solutions/security/get-started/siem-readiness.md) across four dimensions: coverage, quality, continuity, and retention.
 
-`security.siem_readiness.get_coverage` {applies_to}`stack: ga 9.5+`
+`security.siem_readiness.get_coverage` {applies_to}`stack: preview 9.5`
 :   Retrieves SIEM data coverage health across the SIEM data categories (endpoint, identity, network, cloud, and application/SaaS), including document counts, detection-rule presence, health status, and findings.
 
-`security.siem_readiness.get_quality` {applies_to}`stack: ga 9.5+`
+`security.siem_readiness.get_quality` {applies_to}`stack: preview 9.5`
 :   Retrieves SIEM data quality health based on ECS compatibility check results, including incompatible field mappings, health status, and findings. Requires a prior Data Quality dashboard run.
 
-`security.siem_readiness.get_continuity` {applies_to}`stack: ga 9.5+`
+`security.siem_readiness.get_continuity` {applies_to}`stack: preview 9.5`
 :   Retrieves SIEM ingest pipeline continuity health, including active pipelines, failure rates, silent data streams, and volume drops.
 
-`security.siem_readiness.get_retention` {applies_to}`stack: ga 9.5+`
+`security.siem_readiness.get_retention` {applies_to}`stack: preview 9.5`
 :   Retrieves SIEM data retention health, including data streams and indices with retention configuration, retention days, and compliance status.
 
 ### Watchlist tools
