@@ -120,7 +120,7 @@ $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
 * {{agent}} is running and shipping metrics to {{ecloud}}.
 
-$$$#access-autoops$$$**Who has access to AutoOps in my cluster?**
+$$$access-autoops$$$**Who has access to AutoOps in my cluster?**
 :   :::{include} ../_snippets/access-cloud-connect-autoops.md
     :::
 
