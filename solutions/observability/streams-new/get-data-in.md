@@ -71,7 +71,7 @@ To send data to a wired stream, configure your shipper to point to the appropria
 :::{note}
 Set the index based on your {{stack}} version:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on the endpoint you want to use.
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 :::
 
@@ -81,7 +81,7 @@ processors:
     log_statements:
       - context: resource
         statements:
-          - set(attributes["elasticsearch.index"], "logs.otel") # Set to `logs.otel` or `logs.ecs` (serverless and stack 9.4+), or `logs` (stack 9.2–9.3)
+          - set(attributes["elasticsearch.index"], "logs.otel") # Set to `logs.otel` or `logs.ecs` (Serverless and Stack 9.4+), or `logs` (Stack 9.2–9.3)
 service:
   pipelines:
     logs:
@@ -103,7 +103,7 @@ Set the index based on your {{stack}} version:
 filebeat.inputs:
   - type: filestream
     id: my-filestream-id
-    index: logs.otel # Set to `logs.otel` or `logs.ecs` ({{serverless-short}} and Stack 9.4+), or logs (Stack 9.2–9.3)
+    index: logs.otel # Set to `logs.otel` or `logs.ecs` (Serverless and Stack 9.4+), or logs (Stack 9.2–9.3)
     enabled: true
     paths:
       - /var/log/*.log
@@ -123,8 +123,8 @@ output.elasticsearch:
 :::{note}
 Set the index based on your {{stack}} version:
 
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on the endpoint you want to use.
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 ```json
@@ -132,7 +132,7 @@ output {
   elasticsearch {
     hosts => ["<elasticsearch-host>"]
     api_key => "<your-api-key>"
-    index => "logs.otel" # Set to `logs.otel` or `logs.ecs` (serverless and stack 9.4+), or `logs` (stack 9.2–9.3)
+    index => "logs.otel" # Set to `logs.otel` or `logs.ecs` (Serverless and Stack 9.4+), or `logs` (Stack 9.2–9.3)
     action => "create"
   }
 }
@@ -162,7 +162,7 @@ Set the endpoint based on your {{stack}} version:
 Send data to the endpoint using the [Bulk API]({{es-apis}}operation/operation-bulk):
 
 ```json
-POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` ({{serverless-short}} or Stack 9.4+), or `logs` (Stack 9.2–9.3)
+POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (Serverless or Stack 9.4+), or `logs` (Stack 9.2–9.3)
 { "create": {} }
 { "@timestamp": "2025-05-05T12:12:12", "body": { "text": "Hello world!" }, "resource": { "attributes": { "host.name": "my-host-name" } } }
 { "create": {} }
