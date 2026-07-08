@@ -34,29 +34,12 @@ Use the flyout when you want to confirm a rule is healthy or take a quick action
 
 The rule details page is organized into tabs that let you review a rule's configuration and activity history.
 
-- **Overview** (Alert mode only): Shows an alert activity timeline for each series the rule tracks. The timeline displays a color-coded history of alert episode state transitions per series, along with summary statistics: alert episodes started, recovered, still open, and median duration. A link to view all matching alert episodes is available, filtered to the current rule and time range. Lane labels appear only for grouped rules. The overview tab is not shown for Signal-mode rules, which don't open alert episodes.
-- **Conditions**: The full {{esql}} base query, alert condition, schedule, lookback, grouping, and recovery settings.
-- **Runbook**: If the rule has an investigation guide, it appears here.
+- **Overview** (Alert mode only): Shows a color-coded alert activity timeline per series, with summary statistics (episodes started, recovered, still open, and median duration) and a link to view matching episodes.
+- **Conditions**: The rule's base query, alert condition, schedule, lookback, grouping, and recovery settings.
+- **Runbook**: The rule's investigation guide, if one has been added. Use it to document steps for diagnosing or responding to alerts produced by this rule.
 
 Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, or delete it.
-
-## Review execution history [rule-execution-history]
-
-<!-- TODO: Execution history fragmentation. review-execution-history.md says records are "limited to 10,000"; this page describes two tabs (Rules, Policies) without mentioning that limit; PR #6525's policy page says history covers "last 24 hours". Reconcile into one consistent description of the scope, limit, and tab structure and update all three pages to match. -->
-The **Execution history** page logs each rule run and each action policy dispatch across the space. It is organized into two tabs:
-
-- **Rules** — One row per rule evaluation. Shows the timestamp, rule name, run duration, response status (success or failure), and a message. Use the **Response** filter to narrow results to successful or failed runs. Select a rule name to open its details page.
-- **Policies** — One row per action policy dispatch event. Use this tab to audit whether policies are dispatching as expected.
-
-Both tabs support pagination and a configurable rows-per-page setting.
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
 Use **Disable** when you want the rule to stop running entirely until you re-enable it. This is different from snoozing, which suppresses notifications or quiets a series or policy without stopping rule evaluation.
-
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-- To snooze alert episodes or series, refer to [View, manage, and reference alerts](../alerts/view-and-manage-alerts.md#alert-actions).
--->
-<!-- TODO: Uncomment when PR #6525 (workflows/notifications) is merged:
-- To snooze or stop an action policy, refer to [Manage action policies](../notifications/manage-action-policies.md).
--->

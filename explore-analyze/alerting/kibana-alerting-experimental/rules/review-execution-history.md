@@ -10,17 +10,11 @@ description: "Use the Execution History page in Kibana's experimental alerting s
 
 # Review execution history in the {{alerting-v2-system}} [review-execution-history]
 
-Execution history gives you a cross-rule, filterable log of every rule run across all rules in the space. Use it to spot patterns that aren't visible when looking at individual rules, for example, a cluster of failures at the same timestamp that points to a shared dependency issue.
+Execution history gives you a cross-rule, filterable log of every rule run and action policy dispatch across the space. Rule executions and policy dispatcher decisions are shown separately, with different scopes.
 
-<!--
-TODO: When PR #6525 (execution history page) is merged:
-- Add a cross-reference here to the "Review execution history" page added in that PR.
-- Add a link on that page pointing back to this page.
--->
+## Rule executions [rule-execution-records]
 
-## Rule execution records [rule-execution-records]
-
-Rule execution records are displayed in a table with the following columns:
+Rule execution history shows one row per rule evaluation across all rules in the space. Use it to spot patterns that aren't visible when looking at individual rules, for example, a cluster of failures at the same timestamp that points to a shared dependency issue.
 
 | Column | Description |
 |---|---|
@@ -30,6 +24,8 @@ Rule execution records are displayed in a table with the following columns:
 | **Response** | The outcome of the run: `success` or `failure`. |
 | **Message** | An optional message included with the execution result, typically an error description for failed runs. |
 
-Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are limited to 10,000 records.
+Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are paginated up to 100 per page. You can page through up to 10,000 records — this is a pagination ceiling, not a retention limit. Deeper history exists in the event log but is not reachable by paging further.
 
-<!-- TODO: Execution history fragmentation. This page says records are "limited to 10,000"; view-manage-rules.md describes the execution history page as having two tabs (Rules, Policies); PR #6525's policy page says history covers "last 24 hours". Reconcile into one consistent description of the scope, limit, and tab structure and update all three pages to match. -->
+## Policy dispatcher decisions [policy-execution-records]
+
+Policy execution history shows one row per action policy dispatcher decision and covers the **last 24 hours** only. Use it to audit whether policies are dispatching as expected. Results are paginated up to 100 per page.

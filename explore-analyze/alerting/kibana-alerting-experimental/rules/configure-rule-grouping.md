@@ -12,10 +12,7 @@ description: "Configure rule grouping in Kibana's experimental alerting system t
 
 Rule grouping is an optional setting in the {{alerting-v2-system}} that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
-<!-- TODO: Confirm with engineering before adding a sentence here:
-1. Is snooze state per series or per rule? If rule-level only, do not include it.
-2. Does "lifecycle" mean the standard inactive → pending → active → recovering episode states? If so, rewrite as: "In Alert mode, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per episode, not across all groups combined."
--->
+In Alert mode, each group becomes its own alert episode with an independent lifecycle. One group can be active while another has recovered, and notifications apply per episode, not across all groups combined. Snooze state is also per series. Snoozing one group does not affect other groups tracked by the same rule.
 
 ## When to configure grouping [grouping-when-to-use]
 

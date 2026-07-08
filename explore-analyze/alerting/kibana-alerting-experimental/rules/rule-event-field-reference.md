@@ -9,15 +9,10 @@ description: "Field reference for .rule-events documents in Kibana's experimenta
 ---
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
-
-<!-- TODO: Duplicate field reference with PR #6527. This page and 6527's alerts/field-reference.md both document .rule-events and disagree: space_id is missing here; severity is classified as an alert-only episode field here but as a base field there. Decide which page owns the .rule-events schema and remove or redirect the other, or align both pages so field classification and coverage are consistent. -->
 This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
-<!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
-For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
--->
 
 :::{important}
-The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through ILM. Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
+The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [Index Lifecycle Management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
 :::
 
 ## Rule event documents
@@ -27,45 +22,18 @@ Each time a rule evaluates, {{kib}} writes one document per matched series to `.
 - **`signal`** - A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
 - **`alert`** - A lifecycle-tracked episode visible in the alert inbox, episode details, and triage views. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
 
-Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
+Both kinds share base fields. Only `alert` documents add episode fields that carry the lifecycle state for the matched series.
 
 :::{note}
-`.rule-events` is a data stream, so it is append-only. A new document is written on every rule evaluation. Existing documents are never updated. Each document is a snapshot of that moment: the `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query all documents that share the same `episode.id`.
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-Refer to [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover) for example queries.
+The `.rule-events` data stream is append-only. A new document is written on every rule evaluation. Existing documents are never updated. Each document is a snapshot of that moment. The `episode.status` field records the lifecycle stage the episode was in at that evaluation. To view the full history of an episode, query `.rule-events` filtered by `episode.id`, for example:
+
+```esql
+FROM .rule-events
+| WHERE episode.id == "<episode-id>"
+| SORT @timestamp ASC
+```
+
+<!-- TODO: When PR #6527 merges, add after the code block:
+"For more query examples including lifecycle replay and incident tracing, refer to [Query alert history in Discover](../alerts/query-alerts-and-signals-in-discover.md)."
 -->
 :::
-
-### Signal and alert fields
-
-These fields appear on all `.rule-events` documents, regardless of whether the rule is in Signal or Alert mode.
-
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `@timestamp` | date | Yes | When this document was written to `.rule-events`. |
-| `scheduled_timestamp` | date | No | Scheduled execution time for this rule run. |
-| `rule.id` | keyword | Yes | Rule identifier. |
-| `rule.version` | long | Yes | Rule version at the time this event was emitted. |
-| `group_hash` | keyword | Yes | Series identity key for grouped evaluations. |
-| `data` | flattened | Yes | Payload from the {{esql}} query output. Shape depends on your rule. |
-| `status` | keyword | Yes | One of: `breached`, `recovered`, `no_data`. |
-| `source` | keyword | Yes | Origin of this event. Product-specific identifier. |
-| `type` | keyword | Yes | `signal` or `alert`. Application field on each rule event document written by {{kib}}. |
-
-:::{admonition} Fields not stored as a dedicated column
-There's no top-level or nested `duration` field on `.rule-events` documents. For triage or reporting, derive duration from the alert UI or your own queries over timestamps and episode identifiers.
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged and restore full sentence:
-For triage or reporting, derive duration from [Query alerts and signals in Discover](../alerts/query-alerts-and-signals-in-discover.md#explore-alerts-discover), the alert UI, or your own queries over timestamps and episode identifiers.
--->
-:::
-
-### Episode fields [episode-fields]
-
-These fields are stored in `.rule-events`, on the same document as the base fields, when the rule runs in Alert mode. They only appear on documents with `type: alert` and carry the lifecycle state for the episode associated with the matched series.
-
-| Field | Type | Description |
-|---|---|---|
-| `episode.id` | keyword | Episode identifier for this series. |
-| `episode.status` | keyword | One of: `inactive`, `pending`, `active`, `recovering`. |
-| `episode.status_count` | long | Count of consecutive evaluations in the current `episode.status`. Only set when `episode.status` is `pending` or `recovering`. |
-| `severity` | keyword | Severity level from the most recent breached event. One of: `info`, `low`, `medium`, `high`, `critical`. Not set when the query output does not include a `severity` column, or when the value does not match a recognized level. Never set on `recovered` or `no_data` events. |

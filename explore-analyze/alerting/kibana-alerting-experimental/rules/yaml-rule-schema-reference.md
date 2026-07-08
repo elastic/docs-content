@@ -79,14 +79,13 @@ Signal-mode rules (`kind: signal`) must omit `recovery_strategy` or set it to `n
 
 Only valid when `kind: alert`. Controls how many consecutive detections are required before an episode becomes active or recovers.
 
-<!-- TODO: Reconcile type label for `pending_count` and `recovering_count` with configure-rule-thresholds.md. This page uses "Integer ≥ 0"; that page uses "Positive integer" (implying ≥ 1). Confirm with engineering whether 0 is valid (e.g. disables the threshold) or invalid input, then align both files. -->
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |
-| `state_transition.pending_count` | integer | Integer ≥ 0 | Number of consecutive breaches required before the episode becomes active. |
+| `state_transition.pending_count` | integer | Integer, 0–1000 | Number of consecutive breaches required before the episode becomes active. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
 | `state_transition.pending_timeframe` | duration | Any duration string | Time window within which the breach count must be met. For example: `5m`. |
 | `state_transition.recovering_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before recovering. |
-| `state_transition.recovering_count` | integer | Integer ≥ 0 | Number of consecutive clear evaluations required before the episode recovers. |
+| `state_transition.recovering_count` | integer | Integer, 0–1000 | Number of consecutive clear evaluations required before the episode recovers. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
 | `state_transition.recovering_timeframe` | duration | Any duration string | Time window within which the recovery count must be met. For example: `5m`. |
 
 ## Grouping fields

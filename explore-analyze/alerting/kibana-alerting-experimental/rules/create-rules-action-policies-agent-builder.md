@@ -29,10 +29,6 @@ Before you start, make sure you have the following:
   | Save the action policy | **Action Policies: All** (under **Alerting**) |
   | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
 
-<!-- TODO: Uncomment when PR #6522 (get-started/configure-access) is merged:
-  For the full privilege reference, refer to [Configure access to the {{alerting-v2-system}}](/explore-analyze/alerting/kibana-alerting-experimental/get-started/configure-access.md).
--->
-
 ## Propose and save a rule [ai-agent-rule-proposal]
 
 You can start from the rule management page by selecting the option to create a rule with an agent, or open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.

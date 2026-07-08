@@ -43,10 +43,9 @@ Use the following fields to configure the Breaches and Duration modes. Timeframe
 In the YAML rule schema, these fields are prefixed with `state_transition.` — for example, `pending_count` here is `state_transition.pending_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
 :::
 
-<!-- TODO: Reconcile type label for `pending_count` and `recovering_count` with yaml-rule-schema-reference.md. This page uses "Positive integer" (implying ≥ 1); the schema reference uses "Integer ≥ 0". Confirm with engineering whether 0 is valid (e.g. disables the threshold) or invalid input, then align both files. -->
 | Field | Type | Description |
 | --- | --- | --- |
-| `pending_count` | Positive integer | Number of consecutive breach evaluations required before the alert episode opens. |
+| `pending_count` | Integer, 0–1000 | Number of consecutive breach evaluations required before the alert episode opens. Set to `0` to skip the pending phase and transition directly to active on the first breach. |
 | `pending_timeframe` | Duration string | How long the condition must remain breached before the alert episode opens. |
 | `pending_operator` | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
@@ -60,7 +59,7 @@ Recovery thresholds control when an active alert episode transitions back to ina
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `recovering_count` | Positive integer | Number of consecutive non-breaching evaluations required before the alert episode closes. |
+| `recovering_count` | Integer, 0–1000 | Number of consecutive non-breaching evaluations required before the alert episode closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
 | `recovering_timeframe` | Duration string | How long the condition must remain non-breaching before the alert episode closes. |
 | `recovering_operator` | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
