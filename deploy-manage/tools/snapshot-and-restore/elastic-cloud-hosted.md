@@ -29,7 +29,7 @@ From within {{ech}}, you can restore a snapshot from a different deployment in t
 
 When you delete a snapshot from `found-snapshots`, that data is removed from the repository and cannot be recovered. This also applies to [searchable snapshots](searchable-snapshots.md#back-up-restore-searchable-snapshots) stored in `found-snapshots`.
 
-If you require additional redundancy, follow the guidance on this page to configure your own snapshot repository and take backups.
+If you need additional redundancy beyond the default repository, [configure a custom snapshot repository](#ess-repo-types) and take additional snapshots to storage you control.
 ::::
 
 ## Prerequisites for {{ech}}
