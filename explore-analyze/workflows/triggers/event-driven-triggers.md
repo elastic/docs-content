@@ -24,6 +24,9 @@ Event-driven triggers let workflows react to events elsewhere in {{kib}}. Two tr
 The event-driven trigger system is in technical preview, including the triggers documented on this page. The schema and semantics can change in future releases.
 :::
 
+:::{include} ../_snippets/schema-location-legend.md
+:::
+
 ## `workflows.failed`
 
 Fires when any workflow execution reaches the `failed` terminal state. Use this trigger to build handler workflows that react to failures in your production workflows, for example by paging on-call, opening a case, or logging to a dedicated index for observability.
@@ -162,8 +165,6 @@ Cases triggers fire when cases change. Use them to react to case lifecycle event
 
 - `event.caseId` — The case ID, the alphanumeric identifier that is unique to each case.
 - `event.owner` — The solution that owns the case. It can be `securitySolution` for {{elastic-sec}} cases, `observability` for Observability cases, or `cases` for Stack cases.
-
-**Schema convention.** In each trigger's schema table below, the `Location` column indicates where each parameter sits in the trigger YAML. `top level` means the parameter sits alongside `type`; `` `on` `` means it sits inside the `on:` block, parallel to how `workflows.failed` uses `on:` for its condition.
 
 Use `event.owner` in `on.condition` to filter by solution. For example, a workflow that only fires for {{elastic-sec}} cases:
 
@@ -352,5 +353,6 @@ In practice, keep handler workflows simpler than the workflows they monitor. A h
 ## Related
 
 - [Triggers overview](/explore-analyze/workflows/triggers.md): All trigger types.
+- [Workflow authorization](/explore-analyze/workflows/authorization.md): Whose privileges event-driven workflows run with.
 - [Pass data and handle errors](/explore-analyze/workflows/authoring-techniques/pass-data-handle-errors.md): Per-step `on-failure` strategies complement event-driven handlers.
 - [Cases steps](/explore-analyze/workflows/steps/cases.md): Open cases from your handler.

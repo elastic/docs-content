@@ -40,7 +40,7 @@ AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing r
 
 ## Regions where AutoOps is available
 
-Depending on your deployment type, AutoOps has been rolled out across various [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). More regions and CSPs are coming soon.
+Depending on your deployment type, AutoOps has been rolled out across various [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). More regions are coming soon.
 
 ## Deployment types where AutoOps is available
 

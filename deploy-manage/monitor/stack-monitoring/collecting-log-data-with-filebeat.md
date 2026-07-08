@@ -125,3 +125,8 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 10. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
+## Next steps
+
+:::{include} /deploy-manage/monitor/stack-monitoring/_snippets/consumption-next-steps.md
+:::
+
