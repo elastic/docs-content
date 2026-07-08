@@ -101,8 +101,8 @@ Turning off the setting does not delete any data. {{kib}} retains your rules and
 :::{important}
 Turning off `alerting:v2:enabled` hides the {{alerting-v2-system}} UI but does not stop rules and action policies from running. To stop both entirely:
 
-- **{{stack}}**: Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md)
-- **{{serverless-short}}**: On {{serverless-short}}, the {{alerting-v2-system}} is managed by Elastic. [Contact Elastic support](https://www.elastic.co/docs/troubleshoot) to turn it off.
+- **{{stack}}** - Set `xpack.alerting_v2.enabled: false` in [`kibana.yml`](/deploy-manage/deploy/self-managed/configure-kibana.md)
+- **{{serverless-short}}** - On {{serverless-short}}, the {{alerting-v2-system}} is managed by Elastic. [Contact Elastic support](https://www.elastic.co/docs/troubleshoot) to turn it off.
 :::
 
 ## Next steps
