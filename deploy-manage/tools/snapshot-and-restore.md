@@ -158,6 +158,12 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt fails.
 
+Index compatibility in the context of the snapshot and restore process, indicates that {{es}} can restore the index and its data from the snapshot as a regular index or in a read-only form through [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). It does not mean that every application reading that data will treat it as valid on the target cluster version.
+
+For indices you own and control, a compatible restore usually means the data remains usable. For {{stack}} feature data, including {{kib}} saved objects and data that other features write to their own indices, {{es}} compatibility does not guarantee validity. Those applications can expect different data formats across {{stack}} versions, so a restore that {{es}} accepts can still fail or leave data in an unusable state.
+
+Use snapshot restore to recover or move data you own. Do not use it as a substitute for upgrading {{stack}} features. Follow the normal upgrade path for {{kib}} and other feature states.
+
 The following table shows whether an index can be restored to a given cluster version. Find your index’s creation version in the left column and your cluster version (which is the restore target version) across the top. For example, an index created in 6.8 can be restored to a {{version.stack.base}}–{{version.stack}} cluster (✅) but not to a 7.0–7.1 cluster (❌).
 
 :::{table}
