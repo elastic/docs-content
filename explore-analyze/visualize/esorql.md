@@ -114,7 +114,7 @@ stack: unavailable
 
 When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), your {{esql}} visualization queries data based on the current [{{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana).
 
-To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
+To target specific projects from within the query, add [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md) at the beginning of your {{esql}} query. When you do this, the visualization panel displays a **Custom CPS scope** badge on the dashboard, indicating that it uses a different scope than the {{cps-init}} scope selector. Refer to [View data from multiple projects](/explore-analyze/dashboards/using.md#dashboard-cps-scope) for details.
 
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
