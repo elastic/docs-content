@@ -22,6 +22,13 @@ Information about your current {{ecloud}} subscription usage is available direct
 
 You can check the detailed usage for a selected time range grouped either by product or by resource, such as an {{ech}} deployment or a {{serverless-full}} project.
 
+What you can see on the **Usage** page depends on your {{ecloud}} roles:
+
+* **Organization owners** and **Billing admins** can view usage and costs for the entire organization.
+* Members with a cloud resource access role, such as **Admin**, **Editor**, or **Viewer**, can view usage and costs for the {{ech}} deployments, {{serverless-short}} projects, and connected clusters they have access to.
+
+For any resource you have access to, you can view its full available cost history, including costs from before you were granted access.
+
 To access your account usage:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -30,3 +37,7 @@ To access your account usage:
 ::::{important}
 The usage breakdown information visible on the **Usage** page is an estimate, and does not include prepaid credits, free allowances or any discounts. To get the exact amount you owe for a given month, check your invoices in the [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md).
 ::::
+
+:::{note}
+Organization-wide financial details — such as your credit balance, [billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md), and invoices — remain available only to organization owners and billing admins.
+:::

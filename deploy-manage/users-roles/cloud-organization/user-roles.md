@@ -69,6 +69,8 @@ You can set cloud resource access roles at two levels:
 
 If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` cloud resource access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges. To assign a custom role to users, go to **Cloud resource access** and select it from the list under the specific project it was created in.
 
+Members with a cloud resource access role can also view usage and costs, and view or manage budgets, for the {{ecloud}} resources in their scope, without needing an organization-level billing role. The exact billing actions available depend on their level of access to each resource. For details, refer to [Monitor and analyze usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [Manage budgets and notifications](/deploy-manage/cloud-organization/billing/manage-billing-notifications.md).
+
 ### Connected cluster access roles [ec_connected_cluster_access_roles]
 
 These roles apply when your organization uses [Cloud Connect](/deploy-manage/cloud-connect.md) to link self-managed, {{ece}}, or {{eck}} clusters to {{ecloud}} services. Role assignments can be scoped to all connected clusters in the organization or to specific clusters.

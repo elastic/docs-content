@@ -13,6 +13,11 @@ products:
 
 To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
+Who can create, view, and manage a budget depends on its scope:
+
+* **Organization** budgets, which track your entire {{ecloud}} organization, can be created, viewed, and managed only by **Organization owners** and **Billing admins**.
+* **Cloud resource** budgets can be managed by members with access to the resources in the budget's scope. To view a cloud-resource budget, you need view access to every resource in its scope. To create, edit, or delete one, you need a role that can manage every resource in its scope, such as **Admin** or **Editor**. Members with only **Viewer** access can view these budgets but can't change them.
+
 You can associate each budget with specific [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) in your organization. Users with those roles receive email notifications when budget alerts are triggered. You select the roles as part of the budget creation workflow described in the following section.
 
 ::::{note}
