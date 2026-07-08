@@ -161,9 +161,9 @@ The chat history panel shows the status of each conversation at a glance, so you
 | Icon | Status | Meaning |
 |------|--------|---------|
 | Loading spinner | **In progress** | The agent is generating a response. |
-| ![Awaiting your input icon](images/agent-builder-status-awaiting.png "=24x24") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
-| ![Unread icon](images/agent-builder-status-unread.png "=24x24") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
-| ![Error icon](images/agent-builder-status-error.png "=24x24") | **Error** | The agent stopped because of an error. |
+| ![Awaiting your input icon](images/agent-builder-status-awaiting.svg "=24x24") | **Awaiting your input** | The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts). |
+| ![Unread icon](images/agent-builder-status-unread.svg "=24x24") | **Unread** | The agent finished responding in a conversation you weren't viewing. |
+| ![Error icon](images/agent-builder-status-error.svg "=24x24") | **Error** | The agent stopped because of an error. |
 
 For example, the following chat history panel shows one conversation in progress and another with unread activity:
 
