@@ -97,6 +97,7 @@ Use the following parameters in the `with` block to configure the step:
 | `message` | string | Yes | The natural language prompt to send to the agent. Can include template variables to reference data from previous steps. |
 | `schema` | object | No | A JSON Schema object that defines the structure of the expected response. When provided, the agent returns structured data matching the schema instead of free-text. |
 
+To route the step to a specific model, set `connector-id` or `inference-id` at the top level of the step. These parameters are mutually exclusive. For the complete list of step parameters, refer to [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). {applies_to}`stack: ga 9.4+`
 
 ## Use `kibana.request` step [use-kibana-request-workflow-step]
 
