@@ -15,9 +15,10 @@ Kibana can display its interface in a light or dark color mode. From the applica
 If you're using {{ecloud}}, this setting only applies to the Kibana UI of your serverless projects and hosted deployments. If you'd like to change the {{ecloud}} Console color theme too, you must do so separately from its respective interface.
 :::
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Until you save a color mode preference, Kibana follows your operating system's color scheme, and **System** is pre-selected when you change your color mode. A new user doesn't automatically use the color mode configured for their space. To apply it, select **Space default**.
+If you haven't saved a color mode preference, Kibana applies a default color mode:
 
-{applies_to}`stack: ga 9.0-9.4` In earlier versions, Kibana uses the light color mode until you save a color mode preference.
+- {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Kibana follows your operating system's color scheme, and **System** is pre-selected when you change your color mode.
+- {applies_to}`stack: ga 9.0-9.4` Kibana uses the light color mode.
 
 ## Change your color mode preferences
 
