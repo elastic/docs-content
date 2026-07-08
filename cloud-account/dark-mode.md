@@ -34,7 +34,7 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
     - **Light**: The light color mode of Kibana
     - **Dark**: The dark color mode of Kibana
     - **System**: Synchronizes Kibana's color mode with your system settings
-    - **Space default**: Sets the color mode to the value defined in the [Space settings](kibana://reference/advanced-settings.md#kibana-general-settings)
+    - {applies_to}`serverless: unavailable` **Space default**: Sets the color mode to the value of the [`theme:darkMode`](kibana://reference/advanced-settings.md#theme-darkmode) advanced setting for the space.
 
       :::{admonition} Deprecated
       The **Space default** option will be removed in a future version and automatically replaced with the System color mode.
