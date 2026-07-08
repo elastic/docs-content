@@ -397,7 +397,7 @@ toc:
           - file: alerting/kibana-alerting-experimental/action-policies/create-configure-action-policy.md
           - file: alerting/kibana-alerting-experimental/action-policies/action-policy-reference.md
           - file: alerting/kibana-alerting-experimental/action-policies/manage-action-policies.md
-          - file: alerting/kibana-alerting-experimental/action-policies/review-execution-history.md
+          - file: alerting/kibana-alerting-experimental/action-policies/review-action-policy-execution-history.md
           - file: alerting/kibana-alerting-experimental/action-policies/reduce-notification-noise.md
       - file: alerting/alerts.md
         children:

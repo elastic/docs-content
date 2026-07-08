@@ -28,6 +28,6 @@ In this example, you want to be re-paged if a critical episode stays open for mo
 
 ## Related pages
 
-- [Manage severity escalation notifications](severity-escalation.md) for scenarios where a severity change determines whether a notification fires.
-- [Action policy reference](action-policy-reference.md) for descriptions of all frequency options.
-- [Create and configure an action policy](create-configure-action-policy.md) to set up the frequency settings described on this page.
+- [Manage severity escalation notifications](severity-escalation.md): Understand how severity changes interact with action policy matching.
+- [Action policy reference](action-policy-reference.md): Look up all frequency options.
+- [Create and configure an action policy](create-configure-action-policy.md): Apply the frequency settings described on this page.

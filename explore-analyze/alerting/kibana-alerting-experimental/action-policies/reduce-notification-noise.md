@@ -29,20 +29,12 @@ Three mechanisms let you silence notifications, each at a different scope:
 
 Snooze applies at the group level (by `group_hash`), not for each individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
 
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-For instructions on snoozing and unsnoozing single or multiple episodes, refer to [View and manage alerts](../alerts/view-and-manage-alerts.md#snooze-episode).
--->
-
 :::{note}
 Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-disable-and-snooze-a-policy). When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all notifications from a given action policy, for example, during planned maintenance on a destination system.
 :::
 
 ## Related pages
 
-<!-- TODO: Uncomment when PR #6524 (alerts) is merged:
-- [View and manage alerts](../alerts/view-and-manage-alerts.md) to apply gating actions from the alerts table or episode detail page.
-- [{{alerting-v2-system}} alerts](../alerts.md) to understand alert episode lifecycle, series, and where alert data is stored.
--->
-- [About action policies](about-action-policies.md) to learn how action policies route and throttle alert episodes after silencing.
-- [Create and configure an action policy](create-configure-action-policy.md) to set up the action policies that run after gating checks pass.
-- [Action policy reference](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
+- [About action policies](about-action-policies.md): Understand how eligibility checks, match conditions, and frequency gates work after silencing.
+- [Create and configure an action policy](create-configure-action-policy.md): Set up the action policies that run after episode silencing checks pass.
+- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.

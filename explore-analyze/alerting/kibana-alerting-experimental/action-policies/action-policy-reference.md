@@ -12,9 +12,9 @@ description: "Grouping modes, frequency options, dispatch outcomes, and match co
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page is a reference for match conditions fields, grouping modes, frequency options, and dispatch outcomes. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 
-## Match conditions fields [matcher-fields]
+## Match conditions fields [action-policy-matcher-fields]
 
-Use these fields in the **Match conditions** expression to filter which alert episodes a policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
+Use these fields in the **Match conditions** expression to filter which alert episodes an action policy applies to. Combine them with standard [KQL](../../../query-filter/languages/kql.md) operators, for example `severity: "critical" AND episode_status: "active"`.
 
 | Field | Description | Example |
 |---|---|---|
@@ -28,23 +28,25 @@ Use these fields in the **Match conditions** expression to filter which alert ep
 | `rule.tags` | Tags attached to the rule. | `rule.tags: "payment-service"` <br> Match episodes from all rules with this tag. |
 | `data.*` | Dynamic payload fields sent by the rule. Available fields depend on the rule type and configuration. Use for rule-specific fields not covered by the standard fields in this table. | `data.host.name: "web-01"` <br> Match episodes from a specific host in a host-based rule. |
 
-<!--[CONTENT NEEDED: 
-When rule authoring docs are created (issue #6689), link from this table row to the rule authoring page that explains how to include a `severity` column in the ES|QL query. The full severity contract (column name, case-insensitivity, silent-ignore behavior) belongs in the rule authoring reference, not here.]
+<!--[TODO after PR #6523 merges]: Replace the `severity` row above with this line:
+
+| `severity` | Current severity level. One of `info`, `low`, `medium`, `high`, or `critical`. Populated when the rule's {{esql}} query includes a `severity` column. Not set during recovery; severity-scoped matchers only match open episodes. Severity can change mid-episode without reopening it — action policy matching picks up the new value on the next dispatcher cycle. For how to configure severity in a rule, refer to [Severity](../rules/configure-rule-severity.md). | `severity: "critical" OR severity: "high"` <br> Route high-priority episodes to a dedicated workflow. |
+
 -->
 
-## Notify per options [notification-grouping]
+## Notify per options [action-policy-notification-grouping]
 
-Controls how the policy batches matching episodes before sending a notification.
+Controls how the action policy batches matching episodes before sending a notification.
 
 | Option | Description | When to use |
 |---|---|---|
-| Episode | The policy sends one notification for each alert episode, independently of other episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
-| Group | The policy bundles alert episodes that share the same value for a specified `data.*` field into one notification for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
-| Digest | The policy combines all matching alert episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
+| Episode | The action policy sends one notification for each alert episode, independently of other episodes. Default selection. | You need issue-level visibility and want to handle each problem separately. |
+| Group | The action policy bundles alert episodes that share the same value for a specified `data.*` field into one notification for each unique value. Each unique value forms a **notification group**. | A rule produces many related alert episodes, such as one for each service or host, and you want to reduce noise by batching them into shared notifications. |
+| Digest | The action policy combines all matching alert episodes into a single notification, regardless of what they have in common. | You want a single periodic summary of everything that matched, rather than individual alert episodes. |
 
-## Frequency [throttle-strategies]
+## Frequency [action-policy-throttle-strategies]
 
-Frequency controls how often the policy fires for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
+Frequency controls how often the action policy fires for a given alert episode or notification group. The available options depend on the **Notify per** setting. Not all options are valid for all modes.
 
 | Option | Description | When to use |
 |---|---|---|
@@ -53,7 +55,7 @@ Frequency controls how often the policy fires for a given alert episode or notif
 | At most once every… | Caps notifications at one for each alert episode or notification group within the chosen interval, regardless of rule frequency. | You want to limit notification volume for noisy rules without missing new or ongoing issues. |
 | Every evaluation | Notifies on every rule evaluation. Can be noisy. Use sparingly and only with infrequent rule schedules. | You need a full audit trail of every evaluation, or the rule runs infrequently enough that noise isn't a concern. |
 
-### Frequency options for Episode [frequency-when-episode-per_episode]
+### Frequency options for Episode [action-policy-frequency-episode]
 
 Available frequency options when you set **Notify per** to **Episode**.
 
@@ -63,7 +65,7 @@ Available frequency options when you set **Notify per** to **Episode**.
 | On status change + repeat at interval | Same as On status change, but also sends a reminder at a set interval while the alert episode is still active. | A host goes down at 9:00am → notification. With a 1h repeat: reminder at 10:00am, 11:00am. Recovers at 11:30am → notification. |
 | Every evaluation | Fires on every rule evaluation, regardless of status. Can be noisy on frequent rule schedules. Avoid in production. | A rule running every 5 minutes with one active alert episode produces up to 288 notifications a day. |
 
-### Frequency options for Group
+### Frequency options for Group [action-policy-frequency-group]
 
 Available frequency options when you set **Notify per** to **Group**.
 
@@ -72,7 +74,7 @@ Available frequency options when you set **Notify per** to **Group**.
 | At most once every… | Limits how often each notification group can notify, regardless of how many alert episodes match or how often the rule runs. | 10 alert episodes share `data.host.name: "web-01"`. With a 1h limit, you get at most one notification an hour for that notification group. |
 | Every evaluation | Fires on every rule evaluation for each unique value in the group-by field. Still noisy on frequent rule schedules. | A rule running every 10 minutes with 5 unique host values produces up to 6 notifications an hour for each host. |
 
-### Frequency options for Digest
+### Frequency options for Digest [action-policy-frequency-digest]
 
 Available frequency options when you set **Notify per** to **Digest**.
 
@@ -83,7 +85,7 @@ Available frequency options when you set **Notify per** to **Digest**.
 
 ## Related pages
 
-- [Create and configure an action policy](create-configure-action-policy.md) to apply these fields and options when setting up a policy.
-- [Manage action policies in {{alerting-v2-system}}](manage-action-policies.md) to enable, disable, snooze, or audit your policies.
-- [Review policy execution history](review-execution-history.md) to monitor dispatch outcomes on the Execution History Policies tab.
-- [About action policies](about-action-policies.md) to understand how action policies evaluate and gate alert episodes.
+- [Create and configure an action policy](create-configure-action-policy.md): Apply these settings when configuring match conditions, grouping, and frequency.
+- [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys for your action policies.
+- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
+- [About action policies](about-action-policies.md): Understand the eligibility, match, and frequency gates that run before dispatch.

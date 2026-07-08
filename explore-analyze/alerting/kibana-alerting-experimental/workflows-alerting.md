@@ -43,8 +43,8 @@ If you're unsure whether to use lifecycle triggers or action policies, the follo
 | **Frequency control** | Apply suppression, grouping, and frequency gates | Fire exactly once per state change, no gates to configure |
 | **Best for** | Recurring notifications and escalation logic that runs as long as a problem persists | One-shot automations, such as opening a ticket when an episode is assigned or posting a message when it resolves |
 
-## Next steps
+## Related pages
 
-- [Create and configure an action policy](action-policies/create-configure-action-policy.md) to start routing alert episodes to workflows.
-- [About action policies](action-policies/about-action-policies.md) to learn how action policies evaluate and gate alert episodes before invoking a workflow.
+- [Create and configure an action policy](action-policies/create-configure-action-policy.md): Start routing alert episodes to workflows.
+- [About action policies](action-policies/about-action-policies.md): Understand how action policies gate alert episodes before invoking a workflow.
 

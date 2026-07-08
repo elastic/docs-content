@@ -29,6 +29,6 @@ Each action policy evaluates alert episodes independently.
 
 ## Related pages
 
-- [Manage severity escalation notifications](severity-escalation.md) explains what happens when an episode that has already matched an action policy changes severity.
-- [Action policy reference](action-policy-reference.md) for match condition fields, grouping modes, and frequency options.
-- [Create and configure an action policy](create-configure-action-policy.md) to set up an action policy with match conditions.
+- [Manage severity escalation notifications](severity-escalation.md): Understand what happens when an episode that has already matched an action policy changes severity.
+- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [Create and configure an action policy](create-configure-action-policy.md): Set up an action policy with match conditions.

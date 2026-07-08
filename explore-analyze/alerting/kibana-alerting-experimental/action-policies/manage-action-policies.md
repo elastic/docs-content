@@ -5,34 +5,34 @@ applies_to:
   serverless: experimental
 products:
   - id: kibana
-description: "View policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
+description: "View action policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
 ---
 
 # Manage action policies for the {{alerting-v2-system}}
 
-Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view policy details, enable and disable policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review policy execution history](review-execution-history.md).
+Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view action policy details, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 
-## View and edit a policy
+## View and edit an action policy
 
-From the **Action policies** list, you can open a policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. The list also shows the display name of the user who created the policy and the user who last updated it. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
+From the **Action policies** list, you can open an action policy to see its full configuration, including match conditions, grouping mode, frequency, and destinations. The list also shows the display name of the user who created the action policy and the user who last updated it. You can also edit, clone, delete, enable, disable, snooze, or update its API key without leaving the list page.
 
-## Enable, disable, and snooze a policy
+## Enable, disable, and snooze an action policy
 
-You can disable a policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze a policy for a defined window so it doesn't dispatch notifications during that period. The dispatcher skips policies that aren't enabled or are snoozed.
+You can disable an action policy so the dispatcher doesn't evaluate it for new alert episodes. You can snooze an action policy for a defined window so it doesn't dispatch notifications during that period. The dispatcher skips action policies that aren't enabled or are snoozed.
 
 :::{note}
-Snoozing a policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze a policy, the dispatcher pauses and silences every alert series the policy processes. When you snooze an alert episode, you target one specific series before policy matching runs, silencing it regardless of which policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same policy.
+Snoozing an action policy differs from [snoozing an alert episode](reduce-notification-noise.md#snooze-scope). When you snooze an action policy, the dispatcher pauses and silences every alert series the action policy processes. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use alert snooze when you want to quiet a specific recurring alert without affecting other series handled by the same action policy.
 :::
 
 ### Pause dispatch during a maintenance window [maintenance-windows]
 
-During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. You don't need to configure the policy. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Configure {{maint-windows-cap}} separately, not on the action policy.
+During a [maintenance window](../../alerts/maintenance-windows.md), action policies stop dispatching notifications automatically. You don't need to configure the action policy. Rule evaluation continues and alert episodes are still recorded in `.rule-events`. Configure {{maint-windows-cap}} separately, not on the action policy.
 
-## Rotate a policy's API key
+## Rotate an action policy's API key
 
-You can rotate the API key used to run a policy's workflows without changing matchers or destinations. Use the **Update API key** action on one policy or for multiple selected policies.
+You can rotate the API key used to run an action policy's workflows without changing matchers or destinations. Use the **Update API key** action on one action policy or for multiple selected action policies.
 
-<!-- TODO: Verify accuracy before publishing — is the API key rotation behavior still accurate?
+<!-- TODO: Verify accuracy before publishing — is the API key rotation behavior described below still accurate?
 ::::{important} 
 
 **Production considerations**
@@ -41,13 +41,13 @@ When you update or delete an action policy, previous API keys used for execution
 ::::
 -->
 
-## Manage multiple policies at once
+## Manage multiple action policies at once
 
-On the action policies list, select one or more policies to enable, disable, snooze, and do more in bulk. **Select all** selects every policy on the current page of results. Clear the selection before changing filters if you need a different set.
+On the action policies list, select one or more action policies to enable, disable, snooze, and do more in bulk. **Select all** selects every action policy on the current page of results. Clear the selection before changing filters if you need a different set.
 
 ## Related pages
 
-- [Review policy execution history](review-execution-history.md) to monitor dispatch activity and understand execution outcomes.
-- [Reduce notification noise in {{alerting-v2-system}}](reduce-notification-noise.md) to silence individual alert episodes by acknowledging, snoozing, or marking them inactive.
-- [Action policy reference in {{alerting-v2-system}}](action-policy-reference.md) to look up match condition fields, grouping modes, and frequency options.
-- [Create and configure an action policy](create-configure-action-policy.md) to set up or update the policies you manage here.
+- [Review action policy execution history](review-action-policy-execution-history.md): Check dispatcher outcomes and investigate unexpected notification behavior.
+- [Reduce notification noise](reduce-notification-noise.md): Silence individual alert episodes with acknowledgment, snooze, or deactivation.
+- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [Create and configure an action policy](create-configure-action-policy.md): Set up or update the action policies you manage here.

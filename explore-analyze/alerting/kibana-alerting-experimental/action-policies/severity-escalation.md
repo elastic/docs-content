@@ -53,6 +53,6 @@ In this example, Action Policy B targets only `severity: "critical"` episodes. A
 
 ## Related pages
 
-- [Route alert episodes by severity](route-by-severity.md) for configuration examples that use severity-scoped action policies to separate routing destinations.
-- [Re-notify for persistently active episodes](re-notification.md) for time-based throttle options that re-notify when an episode stays active.
-- [Action policy reference](action-policy-reference.md) for match condition fields and frequency options.
+- [Route alert episodes by severity](route-by-severity.md): Configure severity-scoped action policies to route episodes to separate workflows.
+- [Re-notify for persistently active episodes](re-notification.md): Set up time-based frequency options to re-notify when an episode stays active.
+- [Action policy reference](action-policy-reference.md): Look up match condition fields and frequency options.

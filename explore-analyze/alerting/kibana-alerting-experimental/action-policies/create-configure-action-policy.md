@@ -56,10 +56,10 @@ For detailed descriptions, frequency options, and examples for each mode, refer 
 
 ## Select workflows to invoke [policy-destinations]
 
-Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy matches. If you don't have a workflow ready, you can set up a simple email or Slack notification while creating a rule instead. The system creates and links the workflow for you when you save. You can add or remove these notifications later by editing the policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
+Attach one or more [workflows](../../../workflows.md) to define what happens when the action policy matches. If you don't have a workflow ready, you can set up a simple email or Slack notification while creating a rule instead. The system creates and links the workflow for you when you save. You can add or remove these notifications later by editing the action policy. For more complex routing or multi-step automations, build a dedicated workflow first and then attach it.
 
 ## Related pages
 
-- [Manage action policies in {{alerting-v2-system}}](manage-action-policies.md) - View, enable, disable, or snooze the action policies you create.
-- [Action policy reference in {{alerting-v2-system}}](action-policy-reference.md) - Look up match condition fields, grouping modes, and frequency options.
-- [About action policies](about-action-policies.md) - Understand how action policies evaluate and gate alert episodes.
+- [Manage action policies](manage-action-policies.md): Enable, disable, snooze, and rotate API keys after setup.
+- [Action policy reference](action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [About action policies](about-action-policies.md): Understand the eligibility, match, and frequency gates that determine when workflows are invoked.

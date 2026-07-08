@@ -23,15 +23,15 @@ To send a notification or trigger an action from a rule in the {{alerting-v2-sys
 
 1. [Build a workflow](../../workflows/get-started/build-your-first-workflow.md) that defines what to do, for example, send a message, call a webhook, open a case, or run any other automation.
 
-2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The policy controls which alert episodes qualify, how they batch, and how often it invokes the workflow.
+2. [Create an action policy](action-policies/create-configure-action-policy.md) that routes alert episodes to that workflow. The action policy controls which alert episodes qualify, how they batch, and how often it invokes the workflow.
 
    For actions that fire exactly once in response to a specific alert episode state change (such as opening a ticket when an episode is assigned) use an [alert episode lifecycle trigger](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-event-driven) instead of an action policy. Refer to [Connect workflows](workflows-alerting.md) for a comparison of action policies and lifecycle triggers.
 
 ## Related pages
 
-- [Connect workflows](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime.
-- [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes.
-- [Create an action policy](action-policies/create-configure-action-policy.md) - Configure policy type, match conditions, grouping, frequency, and destinations.
-- [Action policy reference](action-policies/action-policy-reference.md) - Available match condition fields, grouping modes, and frequency options.
-- [Manage action policies](action-policies/manage-action-policies.md) - Enable, disable, snooze, edit, or delete policies.
-- [Reduce notification noise](action-policies/reduce-notification-noise.md) - Suppress alerts using acknowledgment, snooze, and maintenance windows.
+- [Connect workflows](workflows-alerting.md): Understand how action policies and lifecycle triggers invoke workflows at runtime.
+- [About action policies](action-policies/about-action-policies.md): Understand how action policies evaluate and gate alert episodes.
+- [Create an action policy](action-policies/create-configure-action-policy.md): Configure match conditions, grouping, frequency, and destinations.
+- [Action policy reference](action-policies/action-policy-reference.md): Look up match condition fields, grouping modes, and frequency options.
+- [Manage action policies](action-policies/manage-action-policies.md): Enable, disable, snooze, edit, or delete action policies.
+- [Reduce notification noise](action-policies/reduce-notification-noise.md): Silence alert episodes using acknowledgment, snooze, and maintenance windows.
