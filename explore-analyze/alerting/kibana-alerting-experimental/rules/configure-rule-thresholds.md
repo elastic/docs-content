@@ -39,13 +39,18 @@ Activation thresholds control when a breached rule transitions from pending to a
 
 Use the following fields to configure the Breaches and Duration modes. Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
 
+:::{note}
+In the YAML rule schema, these fields are prefixed with `state_transition.` — for example, `pending_count` here is `state_transition.pending_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
+:::
+
+<!-- TODO: Reconcile type label for `pending_count` and `recovering_count` with yaml-rule-schema-reference.md. This page uses "Positive integer" (implying ≥ 1); the schema reference uses "Integer ≥ 0". Confirm with engineering whether 0 is valid (e.g. disables the threshold) or invalid input, then align both files. -->
 | Field | Type | Description |
 | --- | --- | --- |
 | `pending_count` | Positive integer | Number of consecutive breach evaluations required before the alert episode opens. |
 | `pending_timeframe` | Duration string | How long the condition must remain breached before the alert episode opens. |
 | `pending_operator` | `AND` or `OR` | When both `pending_count` and `pending_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
 
-You can combine Breaches and Duration. For example, require the threshold to be breached five times in a row _and_ persist for at least two minutes before an alert episode opens. To require both, set `pending_operator` to `AND` or `OR` if either is enough.
+You can combine Breaches and Duration by setting both `pending_count` and `pending_timeframe`. Use `pending_operator: AND` to require both conditions before the episode opens, or `pending_operator: OR` if either condition alone is enough.
 
 ## Recovery thresholds
 

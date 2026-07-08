@@ -42,6 +42,7 @@ Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, 
 
 ## Review execution history [rule-execution-history]
 
+<!-- TODO: Execution history fragmentation. review-execution-history.md says records are "limited to 10,000"; this page describes two tabs (Rules, Policies) without mentioning that limit; PR #6525's policy page says history covers "last 24 hours". Reconcile into one consistent description of the scope, limit, and tab structure and update all three pages to match. -->
 The **Execution history** page logs each rule run and each action policy dispatch across the space. It is organized into two tabs:
 
 - **Rules** — One row per rule evaluation. Shows the timestamp, rule name, run duration, response status (success or failure), and a message. Use the **Response** filter to narrow results to successful or failed runs. Select a rule name to open its details page.

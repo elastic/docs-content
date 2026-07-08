@@ -25,7 +25,4 @@ When you trigger rule creation from Discover, your {{esql}} query pre-fills the 
 
 The rule creation flyout supports both a step-by-step form and a YAML editing mode. You can switch between them at any point. Edits in YAML mode are preserved when you return to the form view. The YAML editor includes {{esql}} autocomplete in the query field.
 
-For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
-
-<!--[CONTENT NEEDED: Add a step-by-step procedure once the Discover-to-rule workflow is confirmed in the shipped UI. Cover: (1) the exact entry point and menu item name; (2) what pre-fills in the rule form (query, lookback, schedule defaults); (3) how to use the query preview panel; (4) how to complete the remaining settings and save. Verify all button labels and navigation paths against the shipped UI before publishing.]
--->
+For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).

@@ -79,6 +79,7 @@ Signal-mode rules (`kind: signal`) must omit `recovery_strategy` or set it to `n
 
 Only valid when `kind: alert`. Controls how many consecutive detections are required before an episode becomes active or recovers.
 
+<!-- TODO: Reconcile type label for `pending_count` and `recovering_count` with configure-rule-thresholds.md. This page uses "Integer ≥ 0"; that page uses "Positive integer" (implying ≥ 1). Confirm with engineering whether 0 is valid (e.g. disables the threshold) or invalid input, then align both files. -->
 | Field | Type | Accepted values | Description |
 |---|---|---|---|
 | `state_transition.pending_operator` | string | `AND` or `OR` | Whether both the count and timeframe must be met (`AND`) or either one (`OR`) before becoming active. |

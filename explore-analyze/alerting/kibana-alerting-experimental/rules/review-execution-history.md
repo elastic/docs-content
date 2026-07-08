@@ -31,3 +31,5 @@ Rule execution records are displayed in a table with the following columns:
 | **Message** | An optional message included with the execution result, typically an error description for failed runs. |
 
 Use the outcome filter to view only successful or failed executions. Filtering is applied server-side. Results are limited to 10,000 records.
+
+<!-- TODO: Execution history fragmentation. This page says records are "limited to 10,000"; view-manage-rules.md describes the execution history page as having two tabs (Rules, Policies); PR #6525's policy page says history covers "last 24 hours". Reconcile into one consistent description of the scope, limit, and tab structure and update all three pages to match. -->

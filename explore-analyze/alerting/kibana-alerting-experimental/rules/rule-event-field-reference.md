@@ -1,5 +1,5 @@
 ---
-navigation_title: Rule and event fields
+navigation_title: Rule event and field reference
 applies_to:
   stack: experimental 9.5+
   serverless: experimental
@@ -10,6 +10,7 @@ description: "Field reference for .rule-events documents in Kibana's experimenta
 
 # Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
 
+<!-- TODO: Duplicate field reference with PR #6527. This page and 6527's alerts/field-reference.md both document .rule-events and disagree: space_id is missing here; severity is classified as an alert-only episode field here but as a base field there. Decide which page owns the .rule-events schema and remove or redirect the other, or align both pages so field classification and coverage are consistent. -->
 This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
 <!-- TODO: Uncomment when PRs #6524 (alerts) and #6525 (workflows/notifications) are merged:
 For alert actions in `.alert-actions`, refer to [Alert states and fields reference](../alerts/alert-states-and-fields-reference.md#alert-states-reference). For action policy dispatch outcomes, refer to [Action policy reference](../notifications/action-policy-reference.md#action-policy-reference).
@@ -23,8 +24,8 @@ The `.rule-events` and `.alert-actions` data streams are [system indices](/refer
 
 Each time a rule evaluates, {{kib}} writes one document per matched series to `.rule-events`. The `type` field determines the document kind:
 
-- **signal:** A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
-- **alert:** A lifecycle-tracked episode visible in the alert inbox, episode details, and triage views. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
+- **`signal`** - A point-in-time record that the query matched. Useful for querying history or chaining into follow-on rules. Signal documents don't include `episode.*` fields.
+- **`alert`** - A lifecycle-tracked episode visible in the alert inbox, episode details, and triage views. Alert documents include `episode.*` fields and represent a breach that stays open until the condition clears.
 
 Both kinds share the base fields below. Only `alert` documents add the [Episode fields](#episode-fields) listed further down.
 
