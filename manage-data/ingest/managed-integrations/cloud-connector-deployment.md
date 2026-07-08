@@ -2,8 +2,10 @@
 navigation_title: Cloud connector authentication
 applies_to:
   stack: preview 9.2+
-  serverless: preview
+  serverless:
+    security: preview
 products:
+  - id: security
   - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -24,7 +26,7 @@ Cloud connector authentication currently supports deployments of Elastic's Cloud
 
 ::::{important}
 :applies_to: stack: preview =9.2
-To use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup.
+In this version, to use cloud connector authentication for an AWS integration, your {{kib}} instance must be hosted on AWS. In other words, you must have chosen AWS hosting during {{kib}} setup. This is no longer required in later versions.
 ::::
 
 ## Cloud connector names
