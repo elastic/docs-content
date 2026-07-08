@@ -96,7 +96,7 @@ The `availability` option includes two fields:
 
 - **`stability`**: Sets the lifecycle state. The value maps to the label shown in the API docs.
   - `'experimental'` renders as **Experimental**. The API can change or be removed in future versions.
-  - `'tech_preview'` renders as **Technical Preview**.
+  - `'tech_preview'` renders as **Technical preview**.
   - `'stable'` (default) renders as **Generally available**. The API is stable for production use.
 - **`since`**: The version when the API was first added, for example `'9.2.0'`. The version appears in the {{stack}} docs and is omitted from the serverless docs.
 
