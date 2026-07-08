@@ -8,7 +8,7 @@ navigation_title: Manage projects with API
 
 # Manage serverless projects using the API [serverless-api]
 
-On this page, you can find examples of how to create and manage serverless projects using the [Elastic Cloud Serverless API]({{cloud-serverless-apis}}), covering common operations such as:
+On this page, you can find examples of how to create and manage serverless projects using the [{{serverless-full}} API]({{cloud-serverless-apis}}), covering common operations such as:
 
 - [Creating a project](#general-manage-project-with-api-create-a-serverless-elasticsearch-project)
 - [Retrieving project details](#general-manage-project-with-api-get-project)
@@ -26,7 +26,7 @@ To try the examples in this section, start by [setting up an API key](#general-m
 
 ## API resources
 
-To learn about API principles, authentication, and how to use the OpenAPI specification, refer to the [Elastic Cloud Serverless API]({{cloud-serverless-apis}}) documentation.
+To learn about API principles, authentication, and how to use the OpenAPI specification, refer to the [{{serverless-full}} API]({{cloud-serverless-apis}}) documentation.
 
 The available APIs are grouped by project type:
 
@@ -36,12 +36,20 @@ The available APIs are grouped by project type:
 
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
 
-1. [Create an API key](https://www.elastic.co/docs/deploy-manage/api-keys/elastic-cloud-api-keys).
+To use the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
+
+1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles, so that it can manage projects:
+
+   - **Organization owner**: can create and manage projects without restriction.
+   - **Cloud resource access** with the **Admin** role assigned to **all projects** of the relevant type ({{es}}, {{observability}}, or Security). Scoping the role to all projects is required to be able to create new projects.
+
+   Select the key's **API access** level based on what you need it to do: **Cloud API** access is enough to manage projects, while **Cloud, {{es}}, and {{kib}} API** access also grants access to the project's {{es}} and {{kib}} endpoints. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
 2. Store the generated API key as an environment variable so that you don’t need to specify it again for each request:
 
-```console
-export API_KEY="YOUR_GENERATED_API_KEY"
-```
+   ```console
+   export API_KEY="YOUR_GENERATED_API_KEY"
+   ```
 
 ## Create an {{serverless-full}} project [general-manage-project-with-api-create-a-serverless-elasticsearch-project]
 
