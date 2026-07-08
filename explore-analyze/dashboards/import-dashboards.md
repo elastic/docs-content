@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
-description: Move a Kibana dashboard into another space or deployment by copying it, recreating it with the Dashboards API, or importing it from an NDJSON file.
+description: Import a Kibana dashboard into another space, instance, or deployment with the Dashboards API, or from an NDJSON file on earlier versions.
 applies_to:
   stack: ga
   serverless: ga
@@ -11,19 +11,24 @@ products:
 
 # Import a dashboard [_import_dashboards]
 
-Bring a dashboard from another {{product.kibana}} space, instance, or deployment into your own.
+Import a dashboard to recreate one that was built elsewhere in your own {{product.kibana}} space, instance, or deployment. You might import a dashboard to:
+
+- Promote it across environments, such as from development to staging to production.
+- Share it with another team or {{kib}} instance.
+- Recreate it from a version-controlled or backed-up definition.
 
 :::::{applies-switch}
 
 ::::{applies-item} {stack: preview 9.4, serverless: preview}
 
-Choose the approach that matches where the dashboard is coming from:
+The [Dashboards API](create-dashboards-programmatically.md) is the main way to import a dashboard. You recreate a dashboard from its JSON definition: take the dashboard's [API-compatible JSON](sharing.md#export-dashboard-json), exported from the source dashboard or stored in version control, and send it to the Dashboards API in the target space, instance, or deployment. The API creates the dashboard, or updates it in place when you deploy it with the same ID.
 
-- **From another space in the same deployment**: [copy the dashboard to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page. The copy includes the dashboard's related objects, such as data views.
-- **From another deployment, or as part of a code-based workflow**: recreate the dashboard from its JSON definition with the [Dashboards API](create-dashboards-programmatically.md). [Export the source dashboard as API-compatible JSON](sharing.md#export-dashboard-json), then send it to the API in the target deployment. To version-control dashboards and keep their references portable across environments, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
+For an imported dashboard to work, the objects it references, such as data views and library visualizations, must also exist in the target environment. To version-control dashboards and keep their references portable across environments, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
+
+To move a dashboard to another space within the same deployment, you don't need to export and import it. Instead, [copy it to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page, together with its related objects.
 
 :::{note}
-You can still [import dashboards from NDJSON files](../find-and-organize/saved-objects.md#saved-objects-import) on the **Saved Objects** page. The approaches above are the recommended way to move dashboards across spaces and deployments.
+You can still [import dashboards from NDJSON files](../find-and-organize/saved-objects.md#saved-objects-import) on the **Saved Objects** page, but the Dashboards API is the recommended way to import a dashboard.
 :::
 
 ::::
