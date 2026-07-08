@@ -69,7 +69,7 @@ To create an API key:
     ```
 
     ::::{note}
-    This example only provides privileges for **writing data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
+    This example only provides privileges for **writing data**. Refer to [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
     ::::
 
 7. Select **Create API key**.
@@ -113,7 +113,7 @@ To create an API key:
     ```
 
     ::::{note}
-    This example only provides privileges for **publishing monitoring data**. See [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
+    This example only provides privileges for **publishing monitoring data**. Refer to [Use feature roles](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md) for additional privileges and information.
     ::::
 
 7. Select **Create API key**.
