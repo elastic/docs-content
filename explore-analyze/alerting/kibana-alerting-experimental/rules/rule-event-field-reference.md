@@ -8,11 +8,12 @@ products:
 description: "Field reference for .rule-events documents in Kibana's experimental alerting system. Covers signal and alert base fields, episode fields, and the append-only data stream behavior."
 ---
 
-# Rule event and field reference in the {{alerting-v2-system}} [rule-reference]
-This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md). 
+# Rule event and field reference in the {{alerting-v2-system}} [experimental-alerting-system-rule-reference]
+
+This page is a field reference for `.rule-events` documents written by the {{alerting-v2-system}}. Use it when writing {{esql}} queries against `.rule-events`, for example, to replay an episode's history, investigate a signal, or build dashboards from rule output.
 
 :::{important}
-The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [Index Lifecycle Management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
+The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.
 :::
 
 ## Rule event documents

@@ -8,7 +8,7 @@ products:
 description: "YAML rule definitions in Kibana's experimental alerting system support fields for detection mode, schedule, query, grouping, and recovery. Reference tables list all valid field values."
 ---
 
-# YAML rule schema reference for the {{alerting-v2-system}} [yaml-rule-schema-reference]
+# YAML rule schema reference for the {{alerting-v2-system}} [experimental-alerting-system-yaml-rule-schema-reference]
 
 
 YAML rule schema is part of the {{alerting-v2-system}} in {{kib}}. This page lists valid fields for YAML rule definitions. For examples and authoring guidance, refer to [Create an ES|QL rule](create-esql-rule.md#yaml-editor).
@@ -75,7 +75,7 @@ The `recovery_strategy` field is optional. When omitted, the rule emits no recov
 Signal-mode rules (`kind: signal`) must omit `recovery_strategy` or set it to `none`. Any other value fails validation.
 :::
 
-## State transition fields
+## State transition fields [state-transition-fields]
 
 Only valid when `kind: alert`. Controls how many consecutive detections are required before an episode becomes active or recovers.
 

@@ -8,7 +8,7 @@ products:
 description: "Rules in Kibana's experimental alerting system define what to detect using ES|QL. Evaluation runs on a schedule and alerts, action policies, and notifications flow from rule detections."
 ---
 
-# Rules in the {{alerting-v2-system}}
+# Rules in the {{alerting-v2-system}} [experimental-alerting-system-rules]
 
 A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects. 
 
@@ -22,14 +22,14 @@ In Signal mode, each matching row is stored as a signal document with no alert l
 
 ## What rules don't do 
 
-Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which policies pick it up.
+Rules only define *what* to detect. They don't control notifications, who gets notified, or when. That's the job of action policies, which are global objects scoped to your space that match alert episodes from any rule. A rule has no say in which action policies pick it up.
 
 This separation means you can build and test a rule without anyone getting paged, update notification routing without touching the rule, and have multiple action policies respond to the same rule independently.
 
 ## Next steps
 
-- **[Create a rule](rules/create-a-rule.md):** Compare creation paths and choose the one that fits your workflow.
-- **[Configure a rule](rules/configure-a-rule.md):** Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
-- **[View and manage rules](rules/view-manage-rules.md):** Enable, disable, clone, delete, and bulk-manage rules from the rules list.
-- **[Review execution history](rules/review-execution-history.md):** Monitor rule and action policy execution outcomes across all rules in a space.
-- **[ES|QL query patterns](rules/esql-query-patterns.md):** Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.
+- [Create a rule](rules/create-a-rule.md): Compare creation paths and choose the one that fits your workflow.
+- [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, activation thresholds, recovery conditions, and no-data behavior.
+- [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the rules list.
+- [Review execution history](rules/review-rule-execution-history.md): Monitor rule and action policy execution outcomes across all rules in a space.
+- [{{esql}} query patterns](rules/esql-query-patterns.md): Browse query patterns ordered by complexity, from a basic event filter to SLO burn rate and persistent breach detection.

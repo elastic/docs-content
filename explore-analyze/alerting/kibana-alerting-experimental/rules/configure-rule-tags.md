@@ -8,7 +8,7 @@ products:
 description: "Add tags and runbooks to Alert-mode rules in Kibana's experimental alerting system for filtering and investigation context."
 ---
 
-# Tags and runbooks in the {{alerting-v2-system}} (Alert mode only) [tags-investigation]
+# Tags and runbooks in the {{alerting-v2-system}} (Alert mode only) [experimental-alerting-system-tags-investigation]
 
 Tags and runbooks are optional artifacts for Alert-mode rules in the {{alerting-v2-system}}.
 

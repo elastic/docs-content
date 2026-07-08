@@ -8,7 +8,7 @@ products:
 description: "Create rules in Kibana's experimental alerting system using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
 ---
 
-# Create a rule in the {{alerting-v2-system}} [create-a-rule]
+# Create a rule in the {{alerting-v2-system}} [experimental-alerting-system-create-a-rule]
 
 The {{alerting-v2-system}} in {{kib}} provides several ways to create rules. For details on configurable rule settings and guidance on how to configure them, refer to [Configure a rule](configure-a-rule.md).
 

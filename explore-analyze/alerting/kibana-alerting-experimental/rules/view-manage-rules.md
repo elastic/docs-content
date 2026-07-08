@@ -8,7 +8,7 @@ products:
 description: "Search, filter, and bulk-manage rules in Kibana's experimental alerting system. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
 ---
 
-# View and manage rules in the {{alerting-v2-system}} [manage-rules]
+# View and manage rules in the {{alerting-v2-system}} [experimental-alerting-system-manage-rules]
 
 Rule management is part of the {{alerting-v2-system}} in {{kib}}. This page covers how to find and filter rules in the rules list, quick-edit settings without leaving the list, use the rule summary flyout, and navigate the rule details page including the alert activity timeline.
 
@@ -42,4 +42,4 @@ Use **Edit** to modify the rule, or the actions menu to enable, disable, clone, 
 
 ## Disable or snooze a rule [disable-snooze-rule]
 
-Use **Disable** when you want the rule to stop running entirely until you re-enable it. This is different from snoozing, which suppresses notifications or quiets a series or policy without stopping rule evaluation.
+Use **Disable** when you want the rule to stop running entirely until you re-enable it. This is different from snoozing, which suppresses notifications or quiets a series or action policy without stopping rule evaluation.

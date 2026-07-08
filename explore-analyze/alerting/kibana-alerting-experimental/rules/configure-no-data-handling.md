@@ -8,7 +8,7 @@ products:
 description: "How to configure the no-data strategy for rules in the experimental alerting system. Controls whether an empty query result emits a no-data event, holds the last known alert state, triggers recovery, or is ignored."
 ---
 
-# No-data handling in the {{alerting-v2-system}} [no-data-handling]
+# No-data handling in the {{alerting-v2-system}} [experimental-alerting-system-no-data-handling]
 
 No-data handling is an optional setting for rules in the {{alerting-v2-system}}. Use `no_data_strategy` to control what the rule records when the base query returns no results. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting.
 

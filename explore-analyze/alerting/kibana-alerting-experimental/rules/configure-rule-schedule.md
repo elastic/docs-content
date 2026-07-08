@@ -8,7 +8,7 @@ products:
 description: "How the execution interval and lookback window control when a rule evaluates and how much data it covers each time in the experimental alerting system."
 ---
 
-# Schedule and lookback in the {{alerting-v2-system}} [schedule-lookback]
+# Schedule and lookback in the {{alerting-v2-system}} [experimental-alerting-system-schedule-lookback]
 
 Schedule and lookback are required settings for rules in the {{alerting-v2-system}}. They control how often a rule runs and how far back it looks when evaluating data. This page describes both fields, lists the accepted values and bounds, and includes guidance on choosing appropriate values for different monitoring scenarios.
 

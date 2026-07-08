@@ -8,7 +8,7 @@ products:
 description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
 ---
 
-# Create rules and action policies with {{agent-builder}} [create-rules-action-policies-ai-agent]
+# Create rules and action policies with {{agent-builder}} [experimental-alerting-system-create-rules-agent-builder]
 
 Rule and action policy authoring in {{agent-builder}} is part of the {{alerting-v2-system}} in {{kib}}. The {{alerting-v2-system}} registers rules and action policies as attachment types in {{agent-builder}}, so an agent equipped with the rule management skill can propose, create, and configure them through natural language conversation.
 
@@ -24,7 +24,7 @@ Before you start, make sure you have the following:
 
   | To... | Required privilege |
   |---|---|
-  | Access and use {{agent-builder}} | **Agent Builder: Read** (under **Analytics**) |
+  | Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
   | Save the rule | **Rules: All** (under **Alerting**) |
   | Save the action policy | **Action Policies: All** (under **Alerting**) |
   | Select or create the workflow destination | **Workflows: Read** to select an existing workflow; **Workflows: All** to create one (under **Analytics > Workflows**) |
@@ -43,7 +43,7 @@ The agent can also search for and attach an existing rule to the conversation us
 
 The agent does not persist the rule automatically. Saving is an explicit action that signals the configuration is ready. Until the rule is saved, the proposal exists only in the conversation and is not evaluated against data.
 
-When Agent Builder saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
+When {{agent-builder}} saves or edits a rule, {{kib}} automatically adds an `agent-builder-assisted` tag to it. The tag appears in the rules list and works as a normal filter tag. You can remove it or edit it manually. If the agent edits the same rule later, the tag is re-applied automatically.
 
 :::{note} 
 Signal rules do not support notifications. Alert episodes, and therefore action policies, only apply to rules running in Alert mode. If you ask the agent to set up notifications for a signal rule, the rule management skill explains the limitation and offers to either convert the rule to Alert mode or create a separate alert rule.
@@ -58,13 +58,12 @@ Use these prompts as a starting point, then adjust them to your data and thresho
 - Alert when log volume from the payments service drops below 100 events in a 5-minute window. This likely means data has stopped flowing.
 - Set up a rule that tracks error rate by service. Alert at medium severity when the rate exceeds 1%, and critical when it exceeds 5%.
 
-
 ## Set up notifications [ai-agent-notification-setup]
 
-After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating two objects:
+After a rule is saved, you can ask the agent to configure notifications. The rule management skill handles this by creating workflows and action policies.
 
-- A **workflow** - The delivery mechanism. It defines what happens when the {{alerting-v2-system}} determines that a notification should be sent: posting to Slack, emailing a team, triggering PagerDuty, and so on.
-- An **action policy** - The gating mechanism. It evaluates alert episodes from the rule on a continuous schedule and invokes the workflow when the episode clears the policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the policy is automatically scoped to that rule as a per-rule policy.
+- **Workflows** - Workflows are the delivery mechanism. They define what happens when the {{alerting-v2-system}} determines that a notification should be sent, such as posting to Slack, emailing a team, triggering PagerDuty, and so on.
+- **Action policies** - Action policies are the gating mechanism. They evaluates alert episodes from the rule on a continuous schedule and invokes the workflow when the episode clears the action policy's match conditions and frequency settings. When the agent creates an action policy alongside a specific rule, the action policy is automatically scoped to that rule.
 
 Both objects are proposed as inline attachments and must be explicitly saved before they take effect.
 
@@ -76,13 +75,11 @@ The three objects have a dependency chain that determines the order in which the
 2. **Workflow** - The action policy references the workflow as a destination. The reference must resolve to a persisted workflow.
 3. **Action policy** - Can only be saved after both its rule and workflow dependencies exist.
 
-This order is enforced in the UI. The action policy save control remains inactive until both dependencies are met.
-
-Action policies saved or edited through Agent Builder also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
+Action policies saved or edited through {{agent-builder}} also receive the `agent-builder-assisted` tag automatically, with the same behavior: user-editable and re-applied on subsequent agent edits.
 
 ## Related pages
 
 - [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) - How the {{agent-builder}} platform works, including agents, skills, and tools.
 <!-- - [About action policies](action-policies/about-action-policies.md) - How action policies evaluate and gate alert episodes before invoking a workflow. -->
-<!-- - [Create an action policy](action-policies/create-configure-action-policy.md) - Configure a policy manually, with full control over type, match conditions, grouping, and destinations. -->
+<!-- - [Create an action policy](action-policies/create-configure-action-policy.md) - Configure an action policy manually, with full control over match conditions, grouping, and destinations. -->
 <!-- - [Connect workflows to the {{alerting-v2-system}}](workflows-alerting.md) - How action policies and lifecycle triggers invoke workflows at runtime, and when to use each. -->

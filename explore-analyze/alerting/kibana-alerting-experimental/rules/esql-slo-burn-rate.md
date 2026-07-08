@@ -8,7 +8,7 @@ products:
 description: "Detect SLO error budget burn across multiple time windows in Kibana's experimental alerting system using ES|QL conditional aggregation."
 ---
 
-# SLO burn rate detection in the {{alerting-v2-system}} [slo-burn-rate-query]
+# SLO burn rate detection in the {{alerting-v2-system}} [experimental-alerting-system-slo-burn-rate-query]
 
 An SLO burn rate query asks a different question than a basic threshold: are you consuming your error budget faster than you can afford to? Rather than checking a single metric at a fixed limit, it calculates error rates across multiple time windows simultaneously and assigns a severity level based on how fast the budget is being consumed.
 

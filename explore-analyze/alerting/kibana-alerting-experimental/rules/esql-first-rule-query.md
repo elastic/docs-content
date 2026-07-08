@@ -8,7 +8,7 @@ products:
 description: "Write your first ES|QL rule query in Kibana's experimental alerting system. Covers the minimum query structure and how to adapt it to your data."
 ---
 
-# Your first rule query in the {{alerting-v2-system}} [esql-first-rule-query]
+# Your first rule query in the {{alerting-v2-system}} [experimental-alerting-system-first-rule-query]
 
 If you're new to {{esql}} or to writing rules, this page shows the simplest query structure that a rule needs. It requires only a basic familiarity with your data.
 

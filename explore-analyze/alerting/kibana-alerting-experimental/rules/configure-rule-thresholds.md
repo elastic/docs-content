@@ -8,7 +8,7 @@ products:
 description: "Configure activation and recovery thresholds for Alert-mode rules in Kibana's experimental alerting system to reduce noise from brief spikes and rapid state changes."
 ---
 
-# Activation and recovery thresholds in the {{alerting-v2-system}} (Alert mode only) [activation-recovery-thresholds]
+# Activation and recovery thresholds in the {{alerting-v2-system}} (Alert mode only) [experimental-alerting-system-activation-recovery-thresholds]
 
 Activation and recovery thresholds are optional settings for Alert-mode rules in the {{alerting-v2-system}}. They control when alerts transition between lifecycle states, reducing noise from brief spikes and rules that alternate rapidly between breaching and recovering.
 
