@@ -1,7 +1,7 @@
 ---
 navigation_title: Controls
 type: overview
-description: Learn about interactive filter controls for Kibana dashboards, including options lists, range sliders, time sliders, and ES|QL variable controls.
+description: Interactive filter controls for Kibana dashboards, including options lists, range sliders, time sliders, and ES|QL variable controls.
 applies_to:
   stack: ga
   serverless: ga
@@ -74,7 +74,10 @@ Different control types target different panels:
 
 ### Chaining between controls [controls-chaining]
 
-When a dashboard has more than one control, making a selection in one control also narrows the options available in the others. This behavior, called chaining, keeps each control's choices relevant to the current selections, so viewers can drill down without landing on combinations that return no data. Chaining is on by default. You can change how controls chain in the [control settings](dashboard-control-settings.md).
+Chaining links controls so that a selection in one narrows the options available in another. This keeps each control's choices relevant to the current selections, so viewers can drill down without landing on combinations that return no data. Options lists and range sliders chain with each other, and variable controls chain with each other, but the two groups stay independent: a selection in an options list or range slider doesn't change a variable control's options, and a variable control's selection doesn't change theirs.
+
+* **Options list** and **Range slider** controls chain automatically: when a dashboard has more than one, each control's options reflect the selections in the others. This is on by default. To turn it off for a control, use the [**Use global filters** setting](dashboard-control-settings.md).
+* **Variable controls** chain when one control's {{esql}} query references another variable control's variable. For the steps, refer to [Chain variable controls](add-variable-controls.md#chain-variable-controls).
 
 ## Next steps
 

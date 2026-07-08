@@ -11,7 +11,7 @@ products:
 
 # Dashboard control settings [dashboard-control-settings]
 
-The settings available depend on the control type.
+The settings available depend on the [control type](dashboard-controls.md#control-types).
 
 ## Options list and range slider settings [options-list-range-slider-settings]
 
@@ -34,9 +34,9 @@ Set these in the control's editor: when you add the control, or later by hoverin
 :   Range slider only. Set the slider's step granularity. The smaller the step size, the more steps the slider has.
 
 **Use global filters**
-:   Whether the control's available options honor the dashboard's global filters, query, and time range, including the selections in other controls (chaining). Turn it off to always offer all values, independent of the rest of the dashboard. On by default.
+:   Whether the control's available options honor the dashboard's global filters, query, and time range, including the selections in other controls ([chaining](dashboard-controls.md#controls-chaining)). Turn it off to always offer all values, independent of the rest of the dashboard. On by default.
 
-    {applies_to}`stack: ga 9.0-9.3` In these versions, this behavior is set once for the whole dashboard, not per control, as three separate toggles: **Chain controls**, **Apply global filters to controls**, and **Apply global time range to controls**. Open the control settings dialog with **Add** → **Controls** → **Settings**; in 9.0 and 9.1, select **Controls** → **Settings** instead.
+    {applies_to}`stack: ga 9.0-9.3` In these versions, this behavior is set once for the whole dashboard, not per control, as three separate toggles: **Chain controls**, **Apply global filters to controls**, and **Apply global time range to controls**. Open the control settings dialog with **Add** → **Controls** → **Settings**. In 9.0 and 9.1, select **Controls** → **Settings** instead.
 
 **Validate user selections**
 :   Flag a selected value that returns no data once the dashboard's other filters and control selections are applied, so viewers can tell the selection is empty. On by default.
@@ -62,7 +62,7 @@ In **Edit** mode, select **Settings** in the application menu, then find the **C
 **Auto apply filters** or **Apply selections automatically**
 :   Choose whether the dashboard updates as soon as a selection is made, or only when you select **Apply**. Applies to all controls. Updates automatically by default.
 
-    {applies_to}`stack: ga 9.0-9.3` In these versions, this is set in the control settings dialog, opened with **Add** → **Controls** → **Settings**; in 9.0 and 9.1, select **Controls** → **Settings** instead.
+    {applies_to}`stack: ga 9.0-9.3` In these versions, this is set in the control settings dialog, opened with **Add** → **Controls** → **Settings**. In 9.0 and 9.1, select **Controls** → **Settings** instead.
 
 ## Variable control settings [variable-control-settings]
 ```{applies_to}
