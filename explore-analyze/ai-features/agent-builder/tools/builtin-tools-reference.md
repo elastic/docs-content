@@ -81,13 +81,13 @@ These platform core tools let agents run and track [Elastic Workflows](/explore-
 `platform.core.resume_workflow_execution` {applies_to}`stack: ga 9.4+`
 :   Resumes an [Elastic Workflows](/explore-analyze/workflows.md) execution that is paused at a [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step, providing the reviewer's input to the workflow so it can continue.
 
-`platform.core.generate_workflow` {applies_to}`stack: ga 9.5+`
+`platform.core.generate_workflow` {applies_to}`stack: preview 9.5`
 :   Generates or updates an [Elastic Workflows](/explore-analyze/workflows.md) definition from a natural language description, delegating to a specialized workflow-authoring agent that knows workflow syntax, step types, and available connectors.
 
-`platform.core.execute_workflow` {applies_to}`stack: ga 9.5+`
+`platform.core.execute_workflow` {applies_to}`stack: preview 9.5`
 :   Executes an [Elastic Workflows](/explore-analyze/workflows.md) definition, given a saved workflow ID, inline YAML for an ephemeral run, or a workflow YAML attachment.
 
-`platform.core.list_workflow_executions` {applies_to}`stack: ga 9.5+`
+`platform.core.list_workflow_executions` {applies_to}`stack: preview 9.5`
 :   Lists recent [Elastic Workflows](/explore-analyze/workflows.md) executions in the current space, most recent first, so you can find an execution ID to pass to `get_workflow_execution_status`.
 
 <!--
@@ -136,38 +136,38 @@ Cases tools search and manage [cases](/explore-analyze/cases.md) for tracking an
 `platform.core.cases` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves [cases](/explore-analyze/cases.md).
 
-`platform.core.cases.manage` {applies_to}`stack: ga 9.5+`
+`platform.core.cases.manage` {applies_to}`stack: preview 9.5`
 :   Creates, updates, deletes, and assigns cases, and manages their tags and custom fields. Supports creating from a template and bulk updates.
 
-`platform.core.cases.attachments` {applies_to}`stack: ga 9.5+`
+`platform.core.cases.attachments` {applies_to}`stack: preview 9.5`
 :   Manages case attachments, including adding comments, linking alerts, linking events, and listing existing attachments.
 
-`platform.core.cases.observables` {applies_to}`stack: ga 9.5+`
+`platform.core.cases.observables` {applies_to}`stack: preview 9.5`
 :   Manages case observables such as IP addresses, domains, file hashes, URLs, emails, and registry keys.
 
 ### Workflows tools
 ```{applies_to}
-stack: ga 9.5+
+stack: preview 9.5
 ```
 
 Workflows tools help agents author and inspect [Elastic Workflows](/explore-analyze/workflows.md) by exposing step, trigger, connector, and example libraries, and by validating and previewing workflow definitions. To run or track a workflow, use the [workflow execution tools](#workflow-execution-tools) in the platform core namespace.
 
-`platform.workflows.validate_workflow` {applies_to}`stack: ga 9.5+`
+`platform.workflows.validate_workflow` {applies_to}`stack: preview 9.5`
 :   Validates a workflow YAML definition against all validation rules, including YAML syntax, schema conformance, step-name uniqueness, and Liquid template syntax.
 
-`platform.workflows.get_step_definitions` {applies_to}`stack: ga 9.5+`
+`platform.workflows.get_step_definitions` {applies_to}`stack: preview 9.5`
 :   Returns the available workflow step types with their input and configuration parameters and usage examples. Supports filtering by step type, keyword, or category.
 
-`platform.workflows.get_trigger_definitions` {applies_to}`stack: ga 9.5+`
+`platform.workflows.get_trigger_definitions` {applies_to}`stack: preview 9.5`
 :   Returns the available workflow trigger types with their schemas and YAML examples, including manual, scheduled, alert, and event-driven triggers.
 
-`platform.workflows.get_connectors` {applies_to}`stack: ga 9.5+`
+`platform.workflows.get_connectors` {applies_to}`stack: preview 9.5`
 :   Returns the connector instances configured in the deployment, including their action type and supported step types, so a workflow step can reference the correct connector.
 
-`platform.workflows.get_examples` {applies_to}`stack: ga 9.5+`
+`platform.workflows.get_examples` {applies_to}`stack: preview 9.5`
 :   Searches and retrieves example workflow YAML files from a bundled library to illustrate correct syntax patterns.
 
-`platform.workflows.workflow_execute_step` {applies_to}`stack: ga 9.5+`
+`platform.workflows.workflow_execute_step` {applies_to}`stack: preview 9.5`
 :   Executes a single workflow step against the live environment for testing and field discovery. Steps that write data or call external systems require explicit user confirmation before running.
 
 ### Streams tools
@@ -181,28 +181,28 @@ Streams tools provide capabilities for exploring and managing [Streams](/solutio
 In 9.5, the individual stream read tools were consolidated into `inspect_streams` and `diagnose_stream`, and the individual stream write tools were consolidated into `update_stream`, `create_partition`, and `delete_stream`. The tools removed in 9.5 are listed at the end of this section.
 :::
 
-`platform.streams.inspect_streams` {applies_to}`stack: ga 9.5+`
+`platform.streams.inspect_streams` {applies_to}`stack: preview 9.5`
 :   Inspects one or more streams in a single call, returning only the requested aspects: overview, schema, quality, lifecycle, processing, or routing. Supports inspecting all streams at once.
 
-`platform.streams.diagnose_stream` {applies_to}`stack: ga 9.5+`
+`platform.streams.diagnose_stream` {applies_to}`stack: preview 9.5`
 :   Gathers time-windowed health metrics, failure store error samples, and a per-field degraded-field breakdown for a single stream. Use this tool for root cause analysis when data quality issues are detected.
 
 `platform.streams.query_documents` {applies_to}`stack: ga 9.4+`
 :   Queries or aggregates data from a stream using a natural language description. The tool translates the description into an {{es}} query internally. Returns documents in flat dot-notation format or aggregation results, and can query either the primary data store or the failure store.
 
-`platform.streams.design_pipeline` {applies_to}`stack: ga 9.5+`
+`platform.streams.design_pipeline` {applies_to}`stack: preview 9.5`
 :   Designs changes to a stream's processing pipeline from a natural language instruction, simulates them against sample documents, and returns the proposed pipeline for review. The change is applied only when committed with `update_stream`.
 
-`platform.streams.list_ilm_policies` {applies_to}`stack: ga 9.5+`
+`platform.streams.list_ilm_policies` {applies_to}`stack: preview 9.5`
 :   Lists the {{ilm}} ({{ilm-init}}) policies available on the cluster, including phase definitions and which streams and indices use them. On serverless, {{ilm-init}} is not available.
 
-`platform.streams.update_stream` {applies_to}`stack: ga 9.5+`
+`platform.streams.update_stream` {applies_to}`stack: preview 9.5`
 :   Updates a stream's configuration, including its processing pipeline, description, retention lifecycle, field mappings, and failure store. Requires user confirmation before applying changes.
 
 `platform.streams.create_partition` {applies_to}`stack: preview 9.5`
 :   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/management/partitioning.md) and [wired streams](/solutions/observability/streams/streams.md) are in technical preview. Requires user confirmation.
 
-`platform.streams.delete_stream` {applies_to}`stack: ga 9.5+`
+`platform.streams.delete_stream` {applies_to}`stack: preview 9.5`
 :   Permanently deletes a stream and all of its child streams. This action cannot be undone and requires user confirmation.
 
 The following streams tools were available in 9.4 and were removed in 9.5:
@@ -353,7 +353,7 @@ $$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
 `security.search_entities` {applies_to}`stack: ga 9.4+`
 :   Searches the Entity store for security entities (host, user, service, or generic), with filtering by risk score, asset criticality, entity attributes, and lifecycle timestamps. Use when the entity ID (EUID) is not known, use `security.get_entity` when it is.
 
-`security.set_asset_criticality` {applies_to}`stack: ga 9.5+`
+`security.set_asset_criticality` {applies_to}`stack: preview 9.5`
 :   Sets or removes the [asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) level for a security entity, which influences its risk scoring.
 
 `security.run_rule_preview` {applies_to}`stack: preview 9.5`
