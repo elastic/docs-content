@@ -72,8 +72,8 @@ At the simplest level:
 1. A rule checks your data on a schedule.
 2. The rule's query returns results when data matching its conditions is found.
 3. The rule's mode determines what happens next:
-   - **Alert mode** - The rule opens an alert episode to track the problem. An action policy can route it to a workflow to perform an action or send a notification.
-   - **Signal mode** - Each result is recorded for querying later. Nothing else happens.
+   - **Alert** - The rule opens an alert episode to track the problem. An action policy can route it to a workflow to perform an action or send a notification.
+   - **Signal** - Each result is recorded for querying later. Nothing else happens.
 
 For a more detailed explanation of each stage, refer to [How the {{alerting-v2-system}} works](kibana-alerting-experimental/how-it-works.md).
 
