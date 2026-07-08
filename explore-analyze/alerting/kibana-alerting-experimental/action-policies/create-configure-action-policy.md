@@ -27,7 +27,7 @@ Tags are optional labels you assign to an action policy to categorize it or filt
 
 Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which alert episodes this action policy applies to. Leaving it empty matches every alert episode in the space. The matcher is the only scoping mechanism, there are no separate rule type or rule ID selector fields. Common patterns include scoping to a severity level (`severity: "critical"`), to a specific rule (`rule.id: "my-rule-id"`), or to rules with a shared tag (`rule.tags: "payment-service"`).
 
-For all available fields, refer to [Match conditions fields](action-policy-reference.md#matcher-fields).
+<!-- For available fields, refer to [Match conditions fields](action-policy-reference.md#matcher-fields). -->
 
 ## Control how episodes batch and how often the action policy notifies [reduce-noise-grouping]
 

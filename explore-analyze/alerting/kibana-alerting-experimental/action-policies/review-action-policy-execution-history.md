@@ -16,7 +16,7 @@ The execution history for action policies shows dispatcher decisions from the la
 |---|---|
 | **Timestamp** | When the dispatcher ran. |
 | **Policy** | The action policy that was evaluated. |
-| **Rule** | The rule whose alert episodes the action policy processed. |
+| **Rules** | The rule whose alert episodes the action policy processed. |
 | **Outcome** | Whether the dispatcher acted on the episode: `dispatched`, `throttled`, or `unmatched`. Definitions are in [Dispatch outcomes](#dispatch-outcomes). |
 | **Episodes** | The number of alert episodes processed in this run. |
 | **Action groups** | The number of action groups involved. |
