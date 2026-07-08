@@ -18,9 +18,9 @@ Instead of filling out the rule form manually, you describe what you want to mon
 
 Before you start, make sure you have the following:
 
-- **The required subscription**: {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons). Without it, the "Create with AI Agent" option is hidden in the {{alerting-v2-system}} UI.
-- **The `agentBuilder:experimentalFeatures` advanced setting turned on**: Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
-- **The required privileges**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
+- **The required subscription** - {{agent-builder}} requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons). Without it, the "Create with AI Agent" option is disabled in the {{alerting-v2-system}} UI.
+- **The `agentBuilder:experimentalFeatures` advanced setting turned on** - Go to the **Advanced Settings** menu using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and turn on `agentBuilder:experimentalFeatures`.
+- **The required privileges** - Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must include the following:
 
   | To... | Required privilege |
   |---|---|
@@ -35,12 +35,12 @@ Before you start, make sure you have the following:
 
 ## Propose and save a rule [ai-agent-rule-proposal]
 
-To use this capability, open an agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of ES\|QL query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
+You can start from the rule management page by selecting the option to create a rule with an agent, or open any agent in [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) that has the rule management skill configured. The rule management skill gives the agent domain expertise in {{alerting-v2-system}} rule authoring, including knowledge of {{esql}} query patterns, threshold configuration, grouping, and the alerting v2 data model. When you describe a monitoring requirement, the agent uses its tools to resolve the relevant data source and builds a rule proposal.
 
 The proposal appears as an inline attachment in the conversation, summarizing the rule name, type, schedule, and tags. Opening the attachment shows the full configuration across three views:
 
-- **Conditions** - The ES\|QL query, thresholds, grouping criteria, and schedule the agent constructed.
-- **Query preview** - The results of running the proposed ES\|QL query against live data, so you can evaluate whether the rule would produce meaningful signal before committing to it.
+- **Conditions** - The {{esql}} query, thresholds, grouping criteria, and schedule the agent constructed.
+- **Query preview** - The results of running the proposed {{esql}} query against live data, so you can evaluate whether the rule would produce meaningful signal before committing to it.
 - **Runbook** - A free-text runbook field associated with the rule, which the agent can populate from context in the conversation.
 
 The agent can also search for and attach an existing rule to the conversation using the same inline attachment, opening the same view for inspection or revision.
