@@ -51,7 +51,7 @@ $$$agent-builder-dashboard-management-skill$$$ `dashboard-management` {applies_t
 
     :::
 
-$$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Analyzes {{esql}} query results in {{kib}} **Discover**, identifying patterns, trends, and anomalies by running aggregation queries against the full dataset. The skill receives the current query, columns, sample rows, and time range as an attachment, then runs 2 to 3 focused aggregation queries, renders an inline visualization for the main finding, and proposes drill-down queries. When the active [context-aware profile](/explore-analyze/discover/discover-get-started.md#context-aware-discover) is logs, metrics, or traces, the skill receives shape-specific guidance. For example, it uses the {{esql}} `TS` source command for time series metrics.
 
     :::{dropdown} Assigned tools
@@ -73,7 +73,7 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
 
 ### Cases and alerting
 
-$$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
 
     :::{dropdown} Assigned tools
@@ -81,7 +81,7 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
-$$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-rule-management-skill$$$ `rule-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Composes, discovers, and modifies alerting rules and action policies (notification policies) from within a conversation.
 
     :::{dropdown} Assigned tools
@@ -102,7 +102,7 @@ $$$agent-builder-streams-management-skill$$$ `streams-management` {applies_to}`s
 $$$agent-builder-streams-exploration-skill$$$ `streams-exploration` {applies_to}`stack: ga 9.4, removed 9.5`
 :   Discovers, inspects, and queries {{es}} streams. Use when a user wants to list available streams, understand a stream's schema, check data quality or retention, or sample documents from a stream. This is a read-only skill: it cannot create, update, or delete streams or modify stream configuration. In 9.5, this skill is replaced by [`streams-management`](#agent-builder-streams-management-skill), which adds stream modification capabilities.
 
-$$$agent-builder-significant-events-management-skill$$$ `significant-events-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-significant-events-management-skill$$$ `significant-events-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Searches, creates, and updates significant events for Streams, with guidance to avoid duplicates and keep event lifecycle state accurate.
 
     :::{dropdown} Assigned tools
@@ -110,7 +110,7 @@ $$$agent-builder-significant-events-management-skill$$$ `significant-events-mana
 
     :::
 
-$$$agent-builder-significant-events-onboarding-skill$$$ `significant-events-onboarding` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-significant-events-onboarding-skill$$$ `significant-events-onboarding` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Interviews the user to build a mental model of their system for significant events analysis. Use when a user wants to describe their architecture, deployment infrastructure, observability setup, or other operational context that should be remembered for root cause analysis and remediation.
 
     :::{dropdown} Assigned tools
@@ -120,7 +120,7 @@ $$$agent-builder-significant-events-onboarding-skill$$$ `significant-events-onbo
 
     **Prerequisites:** Significant events memory must be enabled in the deployment.
 
-$$$agent-builder-knowledge-indicators-management-skill$$$ `knowledge-indicators-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-knowledge-indicators-management-skill$$$ `knowledge-indicators-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Discovers and manages Streams Knowledge Indicators (KIs). Searches existing indicators to avoid duplicates and creates feature or query KIs with built-in confirmation.
 
     :::{dropdown} Assigned tools
@@ -128,7 +128,7 @@ $$$agent-builder-knowledge-indicators-management-skill$$$ `knowledge-indicators-
 
     :::
 
-$$$agent-builder-ki-identification-management-skill$$$ `ki-identification-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-ki-identification-management-skill$$$ `ki-identification-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Starts, monitors, and cancels stream KI identification background tasks. Triggers KI identification, surfaces a tracking link to the **Significant Events** page, checks task status and results, and cancels in-progress runs.
 
     :::{dropdown} Assigned tools
@@ -144,7 +144,7 @@ $$$agent-builder-streams-investigation-management-skill$$$ `streams-investigatio
 
     :::
 
-$$$agent-builder-streams-gap-detection-skill$$$ `streams-gap-detection` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-streams-gap-detection-skill$$$ `streams-gap-detection` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Audits the significant events memory knowledge base against a set of required knowledge dimensions and writes a structured gaps page that lists everything that is unknown, ambiguous, or missing.
 
     :::{dropdown} Assigned tools
@@ -176,7 +176,7 @@ $$$agent-builder-workflow-authoring-skill$$$ `workflow-authoring` {applies_to}`s
 
 ### Agent and skill authoring
 
-$$$agent-builder-skill-authoring-skill$$$ `skill-authoring` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-skill-authoring-skill$$$ `skill-authoring` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Authors a new {{agent-builder}} skill from a chat description. Use when a user asks to create, build, generate, or design a skill, capability, or expertise area for an agent.
 
     :::{dropdown} Assigned tools
@@ -214,7 +214,7 @@ $$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`sta
 
     :::
 
-$$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Shows a service map when a user asks to see or visualize a service map, service topology, or service dependencies in an APM or observability context. Use for questions about how services connect or their upstream and downstream dependencies.
 
     :::{dropdown} Assigned tools
@@ -334,7 +334,7 @@ $$$agent-builder-pci-compliance-skill$$$ `pci-compliance` {applies_to}`stack: pr
 
     **Prerequisites:** The `pciComplianceAgentBuilder` {{elastic-sec}} [experimental feature flag](kibana://reference/configuration-reference/security-solution-settings.md#experimental-features) must be enabled.
 
-$$$agent-builder-siem-readiness-skill$$$ `siem-readiness` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+$$$agent-builder-siem-readiness-skill$$$ `siem-readiness` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Assesses SIEM readiness across four dimensions: coverage (data ingested per category), quality (ECS field compatibility), continuity (ingest pipeline health), and retention (data retention compliance). Use when a user asks about SIEM health, readiness, data coverage, pipeline failures, ECS quality, or retention compliance.
 
     :::{dropdown} Assigned tools
@@ -363,7 +363,7 @@ serverless:
 $$$agent-builder-search-elasticsearch-onboarding-skill$$$ `search.elasticsearch-onboarding` {applies_to}`stack: ga 9.4+`
 :   Guides developers through building a complete search experience on {{es}}, from understanding requirements and designing an index mapping to generating and testing API snippets in Dev Tools. Use for end-to-end onboarding rather than a single narrow API answer.
 
-$$$agent-builder-search-elasticsearch-tutorial-skill$$$ `search.elasticsearch-tutorial` {applies_to}`stack: ga 9.5+`
+$$$agent-builder-search-elasticsearch-tutorial-skill$$$ `search.elasticsearch-tutorial` {applies_to}`stack: preview 9.5`
 :   Runs a topic-driven, hands-on {{es}} tutorial in the {{kib}} Dev Console. Use when a user asks you to walk them through, teach, or give a tutorial on an {{es}} or {{kib}} search concept such as mappings, analyzers, bool queries, `semantic_text`, kNN, reciprocal rank fusion (RRF), aggregations, ingest pipelines, or {{esql}}. Tutorials use sample data on isolated resources, present each step as a snippet to run in Dev Tools, and end with cleanup and pointers to documentation.
 
 $$$agent-builder-search-keyword-search-skill$$$ `search.keyword-search` {applies_to}`stack: ga 9.4+`
