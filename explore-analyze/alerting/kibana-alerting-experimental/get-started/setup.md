@@ -18,11 +18,11 @@ This page covers what you need before using the {{alerting-v2-system}}, and how 
 - **Data in Elasticsearch**: Rules can only detect conditions in data that already exists. Make sure the indices or data streams your rules will query are populated before creating rules. Refer to [Ingest your data](/manage-data/ingest.md) for options.
 - **A space selected**: Rules, action policies, and the privileges that control them are all space-scoped. Decide which space you'll work in before setting things up. Refer to [Manage spaces](/deploy-manage/manage-spaces.md) to create or switch spaces.
 - **Connectors configured** (required for notifications): Action policies send notifications through workflows, which require at least one [connector](/deploy-manage/manage-connectors.md), for example, Slack, email, or PagerDuty.
-- **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Rules and alert episodes work on any tier. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers. {applies_to}`stack: ga 9.5+`
+- **Enterprise license** (Stack deployments only, required for notifications): Workflows-based notifications require an Enterprise license. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers. {applies_to}`stack: ga 9.5+`
 
 ## Turn on the system [alerting-setup-turn-on]
 
-The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced setting in {{kib}}. This setting is off by default. Turn it on to make the UIs for {{alerting-v2-system}} features available in your space.
+The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced setting in {{kib}}, which is turned off by default. Turn it on to make the {{alerting-v2-system}} available in your space.
 
 ::::{applies-switch}
 :::{applies-item} stack: experimental 9.5+

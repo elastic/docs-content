@@ -114,7 +114,7 @@ Both levels grant the same query access. There is no write surface for any of th
 
 ### {{es}} index access
 
-For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled into the **Alerts** Kibana privilege. For `.kibana-event-log-*`, a custom role is still required.
+For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled into the **Alerts** {{kib}} privilege. For `.kibana-event-log-*`, a custom role is still required.
 
 | Data source | What it stores | How to grant access |
 |---|---|---|
@@ -124,9 +124,9 @@ For `.rule-events` and `.alert-actions`, Elasticsearch `read` access is bundled 
 
 ## Next steps [alerting-access-next-steps]
 
-With access configured, you're ready to start using the {{alerting-v2-system}}:
+With access configured, you're ready to [create your first rule](create-your-first-rule.md).
 
-- **[Create your first rule](create-your-first-rule.md):** Follow the tutorial to create an ES|QL rule, load sample data, and watch the alert episode lifecycle from breach through automatic recovery.
+<!-- TODO: When PRs #6523 (rules) and #6525 (workflows/notifications) are merged, convert this section into a bulleted list and uncomment the items below. -->
 
 <!-- TODO: Uncomment when PR #6523 (rules) is merged:
 - **[Create a rule](../rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds.

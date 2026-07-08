@@ -25,12 +25,12 @@ Here's what you'll do:
 
 Before you start, make sure you have the following:
 
-- **One of the following deployment types:**
-  - **A {{serverless-short}} project**: This tutorial uses an {{serverless-full}} project. [Create a serverless project](/deploy-manage/deploy/elastic-cloud/serverless.md) if you don't have one.
-  - **{{ech}}**: An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one. {applies_to}`stack: experimental 9.5`
-  - **Self-managed**: An {{stack}} deployment running version 9.5 or later. Refer to the [quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one. {applies_to}`stack: experimental 9.5`
+- **One of the following deployment types**:
+  - **{{serverless-short}}** - A {{serverless-full}} project. [Create a serverless project](/deploy-manage/deploy/elastic-cloud/serverless.md) if you don't have one.
+  - **{{ech}}** - An {{ech}} deployment running version 9.5 or later. Refer to [Create an Elastic Cloud hosted deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) if you don't have one. {applies_to}`stack: experimental 9.5`
+  - **Self-managed** - An {{stack}} deployment running version 9.5 or later. Refer to the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) if you don't have one. {applies_to}`stack: experimental 9.5`
 
-- **The {{alerting-v2-system}} enabled**: The feature must be turned on in your space before you can create rules or view the UI. Refer to [Set up the {{alerting-v2-system}}](setup.md) for instructions.
+- **The {{alerting-v2-system}} enabled**: The {{alerting-v2-system}} must be turned on in your space before you can use any of its features. Refer to [Set up the {{alerting-v2-system}}](setup.md) for instructions.
 
 - **The required access**: Your [role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) must give you access to:
 
@@ -265,7 +265,7 @@ You'll build a rule that detects when P95 latency for a service exceeds 2 second
 
 ::::{step} Open the rule editor
 
-Go to **Alerting V2 Preview** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the rules list, select the option to create a new rule. When the rule creation panel opens, select **Create ES|QL rule** to open the rule authoring flyout.
+Go to **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the rules list, select the option to create a new rule. When the rule creation panel opens, select **Create ES|QL rule** to open the rule authoring flyout.
 
 ::::
 
@@ -346,7 +346,7 @@ Select **Next**.
 
 The sandbox showed that your query *can* find a breach. This step confirms the rule is actually running on schedule. The **Execution history** page gives you a real-time log of every rule run and its outcome.
 
-1. Open **Execution history** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open **Execution history** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 2. Select the **Rules** tab and use the **Rule** filter to select **Checkout Service Latency**.
 
@@ -362,7 +362,7 @@ With the rule running, you can watch the full alert lifecycle play out on the Al
 Because you set **Alert delay** to 2 consecutive breaches, the episode starts as `pending` and only moves to `active` once the breach persists across a second evaluation. This prevents transient spikes from opening an episode right away.
 :::
 
-1. Open **Alerting V2 Preview** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and go to the **Alerts** page.
+1. Open **Alerting V2 Preview** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Alerts** page.
 
 2. Filter by **Rule** to show only episodes for **Checkout Service Latency**. After the first two evaluations (about 10 minutes), you'll see an episode appear and move from `pending` to `active`.
 
