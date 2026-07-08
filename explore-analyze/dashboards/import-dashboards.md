@@ -17,7 +17,7 @@ Import a dashboard that was exported from another {{product.kibana}} space, inst
 - **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
 
 :::{note}
-To move a dashboard to another space within the same deployment, you don't need to export and import it. Instead, [copy it to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page, together with its related objects.
+To move a dashboard to another space within the same deployment, you don't need to export and import it. Instead, [copy it to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page, together with its related objects. To automate this, use the [copy saved objects to space API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects).
 :::
 
 ::::::{tab-set}
@@ -54,6 +54,8 @@ Import the dashboard from the [Saved Objects](../find-and-organize/saved-objects
 - **Create new objects with random IDs**: All related objects are imported and are assigned a new ID to avoid conflicts.
 
 ![Import panel](/explore-analyze/images/kibana-dashboard-import-saved-object.png "")
+
+To automate the import, use the [import saved objects API]({{kib-apis}}operation/operation-post-saved-objects-import) instead.
 
 :::::
 
