@@ -18,11 +18,11 @@ Every time a rule finds a match, it writes a document to `.rule-events`. Whether
 
 | Type | What it is | When it's created |
 | --- | --- | --- |
-| Signal | A point-in-time record that the query matched (`type: signal`). | Rules in Detect mode |
+| Signal | A point-in-time record that the query matched (`type: signal`). | Rules in Signal mode |
 | Alert | A lifecycle-tracked episode with `type: alert` and `episode.*` fields. | Rules in Alert mode |
 
 :::{note}
-A rule in Detect mode only writes signals. It never opens alert episodes, so action policies have nothing to match against.
+A rule in Signal mode only writes signals. It never opens alert episodes, so action policies have nothing to match against.
 :::
 
 ## How {{kib}} records evaluation and triage data [where-alert-data-is-stored]
