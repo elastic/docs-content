@@ -107,7 +107,7 @@ To configure Claude Desktop:
 
 3. Save the file and restart Claude Desktop to load the new configuration.
 
-### Other MCP hosts**
+### Other MCP hosts
 
 Most hosts that support OAuth 2.1 accept a similar configuration. Provide the `{MCP_SERVER_URL}` and `{CLIENT_ID}` in the format your host requires.
 
