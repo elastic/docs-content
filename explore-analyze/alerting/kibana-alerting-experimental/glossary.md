@@ -9,7 +9,7 @@ products:
 description: Definitions of key terms used throughout the experimental Kibana alerting system documentation.
 ---
 
-# {{alerting-v2-system-cap}} glossary [alerting-v2-glossary]
+# {{alerting-v2-system-cap}} glossary [experimental-alerting-system-glossary]
 
 These terms appear throughout the {{alerting-v2-system}} docs. If a term is unclear while reading, check its definition here before going further.
 

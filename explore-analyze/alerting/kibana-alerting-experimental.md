@@ -9,7 +9,7 @@ products:
 description: The experimental Kibana alerting system uses ES|QL rules to detect conditions, track problems as alert episodes, and route notifications through reusable action policies.
 ---
 
-# {{alerting-v2-system-cap}} overview [alerting-overview]
+# {{alerting-v2-system-cap}} overview [experimental-alerting-system-overview]
 
 The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so your team doesn't have to. You define the conditions that matter, such as when to open an issue, who should know, and how often to notify them. The system handles the rest.
 
@@ -17,7 +17,7 @@ The {{alerting-v2-system}} in {{kib}} watches your {{es}} data continuously, so 
 In the generally available {{kib}} alerting system, the term *alert* refers to a tracked occurrence of a rule condition. In the {{alerting-v2-system}}, the equivalent concept is called an *alert episode*. The two terms describe similar ideas in different systems and are not interchangeable.
 ::::
 
-## The core idea [kibana-alerting-v2-overview]
+## The core idea [experimental-alerting-system-core-idea]
 
 The {{alerting-v2-system}} separates *detecting* a problem from *acting* on it:
 
@@ -65,7 +65,7 @@ A workflow is what actually sends the message or runs the automation, for exampl
 Refer to [Connect workflows](kibana-alerting-experimental/workflows-alerting.md) to learn more.
 -->
 
-## How the pieces fit together [how-pieces-fit-together]
+## How the pieces fit together [experimental-alerting-system-how-pieces-fit-together]
 
 At the simplest level:
 

@@ -9,11 +9,11 @@ products:
 description: A detailed walkthrough of how Alert mode and Signal mode rules process data, produce rule events, and drive alert episodes, action policies, and notifications in the experimental alerting system.
 ---
 
-# How the {{alerting-v2-system}} works [how-it-works]
+# How the {{alerting-v2-system}} works [experimental-alerting-system-how-it-works]
 
 This page walks through what happens at each step after a rule runs, and broken down by mode. Use it to understand how the different components of the {{alerting-v2-system}} interact.
 
-## Rule runs in Alert mode [how-it-works-alert-mode]
+## Rule runs in Alert mode [experimental-alerting-system-how-alert-mode-works]
 
 In Alert mode, the rule doesn't just record that a condition was found. It opens an alert episode that persists and tracks the problem until the condition clears. Each time the rule runs, it writes a rule event that can advance the episode's lifecycle state. An action policy sits between the episode and your team, deciding whether and when to trigger a workflow.
 
@@ -43,7 +43,7 @@ An SRE team wants to know when checkout service latency degrades, and notify the
 
 The engineer investigates, fixes a slow query, and the alert episode recovers automatically.
 
-## Rule runs in Signal mode [how-it-works-signal-mode]
+## Rule runs in Signal mode [experimental-alerting-system-how-signal-mode-works]
 
 In Signal mode, the rule acts purely as a data producer. Each time the rule runs and its query returns results, it writes a rule event to `.rule-events` and stops. Signals accumulate over time and are immediately queryable in Discover for incident investigation, or as inputs to Alert mode rules that detect correlated activity across multiple signals.
 
