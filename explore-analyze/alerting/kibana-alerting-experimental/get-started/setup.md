@@ -66,7 +66,7 @@ The `/internal/kibana/global_settings` endpoint is an internal API and might cha
 
 After turning on the setting, verify the {{alerting-v2-system}} is accessible in your space:
 
-1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and enter `Alerting v2 preview`.
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and enter `Alerting V2 Preview`.
 2. Select the menu item from the results.
 
 If the menu item doesn't appear immediately, refresh the page and search again. It might take a moment for the UI to reflect the updated setting.
