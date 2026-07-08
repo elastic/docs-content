@@ -159,15 +159,15 @@ stack: ga 9.5+
 The chat history panel shows the status of each conversation at a glance, so you can keep track of what your agents are doing across conversations:
 
 **In progress**
-:   The agent is generating a response.
+:   The agent is generating a response, shown by a loading spinner.
 
-**Awaiting your input**
+![Awaiting your input icon](images/agent-builder-status-awaiting.png "=16x16") **Awaiting your input**
 :   The agent paused and needs you to respond before it can continue, for example to answer a [human-in-the-loop prompt](#human-in-the-loop-prompts).
 
-**Unread**
+![Unread icon](images/agent-builder-status-unread.png "=16x16") **Unread**
 :   The agent finished responding in a conversation you weren't viewing.
 
-**Error**
+![Error icon](images/agent-builder-status-error.png "=16x16") **Error**
 :   The agent stopped because of an error.
 
 For example, the following chat history panel shows one conversation in progress and another with unread activity:
