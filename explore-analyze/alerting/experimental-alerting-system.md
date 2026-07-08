@@ -72,17 +72,17 @@ At the simplest level:
 1. A rule checks your data on a schedule.
 2. The rule's query returns results when data matching its conditions is found.
 3. The rule's mode determines what happens next:
-   - **Alert** - The rule opens an alert episode to track the problem. An action policy can route it to a workflow to perform an action or send a notification.
-   - **Signal** - Each result is recorded for querying later. Nothing else happens.
+   - Alert - The rule opens an alert episode to track the problem. An action policy can route it to a workflow to perform an action or send a notification.
+   - Signal - Each result is recorded for querying later. Nothing else happens.
 
 For a more detailed explanation of each stage, refer to [How the {{alerting-v2-system}} works](kibana-alerting-experimental/how-it-works.md).
 
 ## Next steps
 
-<!-- TODO: When PRs #6523, #6525, and #6527 merge, replace the paragraph below with these three forward-facing tracks and remove the compare-alerting-systems link (it points here, not forward):
+To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Compare alerting systems](compare-alerting-systems.md).
+
+<!-- TODO: When PRs #6523, #6525, and #6527 merge, replace the paragraph above with these three forward-facing tracks and remove the compare-alerting-systems link (it points here, not forward):
 - **Rules**: Refer to [Rules](kibana-alerting-experimental/rules.md) to learn how to create and configure detection rules.
 - **Alerts**: Refer to [Alerts](kibana-alerting-experimental/alerts.md) to learn how alert episodes work and how to triage them.
 - **Notifications**: Refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md) to learn how action policies and workflows route notifications.
 -->
-
-To understand how the {{alerting-v2-system}} fits into {{kib}}'s alerting options, refer to [Alerting](../alerting.md) or [Compare alerting systems](compare-alerting-systems.md).

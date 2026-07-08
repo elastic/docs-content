@@ -21,10 +21,10 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
 | Use rules built for {{elastic-sec}}, {{observability}}, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](kibana-alerting-experimental.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance
@@ -44,10 +44,10 @@ TODO: Once PRs #6523, #6525, and #6527 are merged, add cross-links to the experi
 
 | Row                        | Link target                                                                 |
 |----------------------------|-----------------------------------------------------------------------------|
-| Alert data (experimental)  | kibana-alerting-experimental/alerts/query-alerts-and-signals-in-discover.md (PR #6527) |
-| Notifications (experimental) | kibana-alerting-experimental/notifications-actions.md or action-policies/about-action-policies.md (PR #6525) |
-| Noise reduction (experimental) | kibana-alerting-experimental/action-policies/reduce-notification-noise.md (PR #6525) |
-| Rule definition (experimental) | kibana-alerting-experimental/rules/configure-rule-query.md (PR #6523) |
+| Alert data (experimental)  | experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md (PR #6527) |
+| Notifications (experimental) | experimental-alerting-system/notifications-actions.md or action-policies/about-action-policies.md (PR #6525) |
+| Noise reduction (experimental) | experimental-alerting-system/action-policies/reduce-notification-noise.md (PR #6525) |
+| Rule definition (experimental) | experimental-alerting-system/rules/configure-rule-query.md (PR #6523) |
 
 Also add links to the experimental system rows in the "Select by use case" table once the relevant pages are available.
 -->

@@ -386,7 +386,7 @@ toc:
   - file: alerting.md
     children:
       - file: alerting/compare-alerting-systems.md
-      - file: alerting/kibana-alerting-experimental.md
+      - file: alerting/experimental-alerting-system.md
         children:
           - file: alerting/kibana-alerting-experimental/how-it-works.md
           - file: alerting/kibana-alerting-experimental/glossary.md
