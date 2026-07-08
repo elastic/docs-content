@@ -29,7 +29,7 @@ The {{alerting-v2-system}} is controlled by the `alerting:v2:enabled` advanced s
 
 **Role requirements**
 
-You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access to turn on this setting.
+You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access to turn on the `alerting:v2:enabled` advanced setting.
 
 **Steps**
 
@@ -41,7 +41,7 @@ You must have the `kibana_admin` role or equivalent {{stack-manage-app}} access 
 
 **Role requirements**
 
-You must have the `admin` project role to turn on this setting. 
+You must have the `admin` project role to turn on the `alerting:v2:enabled` advanced setting. 
 
 **Step**
 
