@@ -206,21 +206,22 @@ FATAL  Error: Kibana 8.1.0 deployment detected. Please upgrade to Kibana 8.18.0 
 
 Restoring an old snapshot directly to a 9.x cluster is not a shortcut around the normal [upgrade paths](/deploy-manage/upgrade.md#upgrade-paths). It is recommended you upgrade to the latest compatible minor release before a major upgrade, even when you use snapshots to move data between clusters.
 
-#### Move {{kib}} configuration and saved objects across major versions
+#### Move {{kib}} configuration and saved objects across major versions [move-kibana-config-saved-objects]
 
-To make {{kib}} state from an older 8.x snapshot compatible with a 9.x cluster, restore and migrate to an intermediate 8.x cluster first, then snapshot and restore again on the target version:
+To make the {{kib}} state from an older 8.x snapshot compatible with a 9.x cluster, restore and migrate to an intermediate 8.19.x cluster first, then create a snapshot on the intermediate cluster, and then restore again on the target version:
 
-1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to a cluster running {{kib}} 8.18.0 or later. If your target is 9.1.0 or later, use the latest 8.19.x patch release, as described in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md).
-2. Start {{kib}} on the intermediate cluster and wait for startup to complete. {{kib}} runs saved object migrations at startup, rewriting the `.kibana` system indices from their restored version (for example, 8.1.0) to a format that 9.x can read. {{es}} does not run these migrations during a snapshot restore.
-3. [Take a new snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the migrated cluster, then restore that snapshot to your 9.x cluster. {{kib}} should start cleanly on the target version.
+1. [Restore the snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to a cluster running {{kib}} 8.19.x, or, if your target is 9.0.x, to a cluster running 8.18.x, as described in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md).
+2. Start {{kib}} on the intermediate cluster and wait for startup to complete. During the startup, {{kib}} detects data from a previous compatible version and runs saved object migrations, similar to what would happen during a {{kib}} upgrade. This process rewrites the `.kibana` system indices from their restored version (for example, 8.1.0) to the 8.19.x format, which is fully compatible with 9.x. {{es}} does not run these migrations during a snapshot restore.
+3. [Take a new snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the migrated cluster, then restore that snapshot to your 9.x cluster. Start {{kib}} and wait for the startup to complete. During startup, {{kib}} runs saved object migrations, as it would when upgrading from 8.19.x to 9.x.
 
-For example, to move state from an 8.1.0 snapshot to 9.2.4, restore the 8.1.0 snapshot to an 8.19.x cluster, let {{kib}} complete its startup migrations, snapshot the 8.19.x cluster, and restore that snapshot to 9.2.4.
+For example, to restore the {{kib}} state from an 8.1.0 snapshot to a 9.2.4 cluster, restore the 8.1.0 snapshot to an 8.19.x cluster, let {{kib}} complete its startup migrations, snapshot the 8.19.x cluster, restore that snapshot to 9.2.4, and let {{kib}} perform the latest data migrations.
 
 Alternatively, if you only need to recover data and can accept a fresh {{kib}} setup, restore the snapshot without the `kibana` feature state.
 
 :::{admonition} Roll back after a failed upgrade
+The steps described in [moving the {{kib}} configuration and saved objects across major versions](#move-kibana-config-saved-objects) move {{kib}} state forward to a newer major version. Don't use these steps to roll back after a failed upgrade.
 
-Restoring a snapshot from an earlier version to run a previous {{stack}} version is a different use case. That flow applies when you need to [roll back {{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana-roll-back.md) after a failed upgrade, not when you are moving forward to a newer major version. In a rollback, you restore the `kibana` feature state from a snapshot taken before the failed upgrade and start {{kib}} on the earlier version you are rolling back to.
+To roll back {{kib}}, restore the `kibana` feature state from a snapshot taken immediately before the failed upgrade, then start {{kib}} on the version that was running before that upgrade attempt. For more information, refer to [Roll back {{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana-roll-back.md).
 :::
 
 ## Warnings
