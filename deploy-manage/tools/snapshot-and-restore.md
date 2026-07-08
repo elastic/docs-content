@@ -160,7 +160,7 @@ Any index you restore from a snapshot must also be compatible with the current c
 
 Index compatibility in the context of the snapshot and restore process, indicates that {{es}} can restore the index and its data from the snapshot as a regular index or in a read-only form through [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). It does not mean that every application reading that data will treat it as valid on the target cluster version.
 
-For indices you own and control, a compatible restore usually means the data remains usable. For {{stack}} feature data, including {{kib}} saved objects and data that other features write to their own indices, {{es}} compatibility does not guarantee validity. Those applications can expect different data formats across {{stack}} versions, so a restore that {{es}} accepts can still fail or leave data in an unusable state.
+For indices and data streams you own and control, a compatible restore usually means the data remains usable. For {{stack}} feature data, including {{kib}} saved objects and data that other features write to their own indices, {{es}} compatibility does not guarantee validity across versions. Those applications can expect different data formats across {{stack}} versions, so a restore that {{es}} accepts can still fail or leave data in an unusable state.
 
 Use snapshot restore to recover or move data you own. Do not use it as a substitute for upgrading {{stack}} features. Follow the normal upgrade path for {{kib}} and other feature states.
 
