@@ -30,17 +30,12 @@ To connect your ECE, ECK, or self-managed cluster to AutoOps, you have to use yo
 :alt: Diagram depicting how AutoOps for ECE, ECK, and self-managed clusters works
 :::
 
-For instructions on how to get started, refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
+:::{include} ../_snippets/access-cloud-connect-autoops.md
+:::
+
+For instructions on how to get started with AutoOps for your cluster, refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
 
 After this setup is complete, you can start using AutoOps to monitor your cluster. Learn more about what you can do with AutoOps in [views](/deploy-manage/monitor/autoops/views.md) and [events](/deploy-manage/monitor/autoops/ec-autoops-events.md). 
-
-## Data privacy in Cloud Connected AutoOps
-
-You control access to the metrics data being sent to AutoOps. During setup, you assign [user roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_connected_cluster_access_roles) so only users in your organization with the appropriate permissions can view cluster metrics, health events, and performance visualizations in AutoOps.
-
-If you request Elastic Support, you can optionally grant support engineers read-only, temporary access to your data so they can troubleshoot using the same context you see.
-
-For more information on how your data is protected, refer to the [AutoOps in Cloud Connect privacy datasheet](https://www.elastic.co/pdf/elastic-privacy-datasheet-autoops-cloud-connect.pdf).
 
 ## Section overview
 

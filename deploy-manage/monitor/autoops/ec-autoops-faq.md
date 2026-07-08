@@ -36,6 +36,7 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Can I use AutoOps if my environment is air-gapped?](#autoops-air-gapped)
 * [Do I have to do any maintenance when using AutoOps for ECE, ECK, or self-managed clusters?](#maintenance)
 * [I connected my ECE, ECK, or self-managed cluster to AutoOps during a free trial of {{ecloud}}. What happens after my trial ends?](#trial-ending)
+* [Who has access to AutoOps in my cluster?](#access-autoops)
 * [What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?](#support)
 
 **Setting up AutoOps for ECE, ECK, or self-managed clusters**
@@ -119,6 +120,10 @@ $$$trial-ending$$$ **I connected my ECE, ECK, or self-managed cluster to AutoOps
 * You have an [active {{ecloud}} account](../../cloud-organization/billing/add-billing-details.md).
 * {{agent}} is running and shipping metrics to {{ecloud}}.
 
+$$$#access-autoops$$$**Who has access to AutoOps in my cluster?**
+:   :::{include} ../_snippets/access-cloud-connect-autoops.md
+    :::
+
 $$$support$$$ **What kind of support is available to me when using AutoOps for ECE, ECK, or self-managed clusters?**
 :   Support eligibility is determined by the license of your connected cluster:
 * Platinum and Enterprise licenses: Eligible for [Elastic support](https://support.elastic.co/).
@@ -181,11 +186,6 @@ $$$data-gathering$$$ **How does AutoOps gather data from my cluster and ensure i
     :::{include} ../_snippets/autoops-allowlist-port-and-urls.md
     :::
     ::::
-
-$$$data-privacy$$$**Who has access to the data gathered from my cluster?**
-:   You control access to your data. Within your organization, you assign user roles to manage access, and on Elastic's side, you can optionally grant access to support engineers for troubleshooting. 
-
-    For more information, refer to [Data privacy](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md#data-privacy-in-cloud-connected-autoops) and the [AutoOps in Cloud Connect privacy datasheet](https://www.elastic.co/pdf/elastic-privacy-datasheet-autoops-cloud-connect.pdf).
 
 $$$data-viewing-config$$$**Can I view the data gathered by {{agent}}?**
 :   Yes. AutoOps {{agent}} comes bundled with the `autoops_es_debug.yml` configuration file, which you can use to view a sample of the data gathered from your cluster that would be sent to Elastic Cloud.
