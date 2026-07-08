@@ -49,7 +49,6 @@ Whether you are using AutoOps in your [{{ech}} deployment](/deploy-manage/monito
 * [Where are metrics stored in AutoOps for ECE, ECK, or self-managed clusters?](#sm-autoops-metrics-storage)
 * [What information does {{agent}} gather from my cluster?](#extracted-info)
 * [How does AutoOps gather data from my cluster and ensure its security?](#data-gathering)
-* [Who has access to the data gathered from my cluster?](#data-privacy)
 * [Can I view the data gathered by {{agent}}?](#data-viewing-config)
 
 ## General AutoOps questions
