@@ -15,7 +15,7 @@ products:
 
 # Step type index [workflows-step-types]
 
-Every step type available for Elastic Workflows, ordered alphabetically. Use this lookup when you know the step ID and want the reference fast.
+Every step type available for Elastic Workflows, ordered alphabetically. Use this lookup when you know the step ID and want the reference fast. If you know what you want to *do* but not which step to use, refer to [Choose the right step](/explore-analyze/workflows/authoring-techniques/choose-the-right-step.md).
 
 | Step type | Category | What it does |
 |---|---|---|

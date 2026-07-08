@@ -26,6 +26,10 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     If you’re using Docker Desktop, Docker Compose is installed automatically. Make sure to allocate at least 4GB of memory to Docker Desktop. You can adjust memory usage in Docker Desktop by going to **Settings > Resources**.
 
+    :::{note}
+    This guide uses the legacy `docker-compose` command. If Docker Compose is installed as a Docker CLI plugin, replace `docker-compose` with `docker compose`.
+    :::
+
 2. Create or navigate to an empty directory for the project.
 3. Download and save the following files in the project directory:
 

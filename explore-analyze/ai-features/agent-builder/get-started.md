@@ -18,8 +18,8 @@ To start using {{agent-builder}} you need to deploy {{es}} and {{kib}}.
 
 If you don't already have an Elastic deployment, you can start a [free trial](https://cloud.elastic.co/registration) or refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type). 
 
-::::{admonition}
-This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::{important}
+This feature requires the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons).
 ::::
 
 :::::::{stepper}

@@ -1,4 +1,5 @@
 ---
+description: Link entity records that represent the same real-world identity into a resolution group and consolidate their risk scores into a single view in Elastic Security.
 applies_to:
   stack: ga 9.4+
   serverless:
@@ -26,7 +27,7 @@ Entity resolution can happen automatically or manually. Automated resolution mat
 A resolution group consists of:
 
 * **Primary entity**: The authoritative representation of the real-world identity. It receives aggregated risk scores that combine the risk from all linked records in the group. When an entity from an identity provider (Okta, Active Directory, or Entra ID) is linked with a local entity, the IDP entity is preferred as the primary entity.
-* **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
+* **Alias entities**: Records that point to the primary entity via a `resolved_to` field. In the **Entities** section of the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), alias entities appear nested under their primary entity when the table is grouped by **Resolution** (the default view).
 
 Resolution group relationships are also visible as **Resolved to** connections in the entity details flyout's [Graph View](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) tab.
 
@@ -71,7 +72,9 @@ user,,bob.smith,user:bob@acme.com@active_directory
 
 #### Import a CSV file [entity-resolution-csv-import]
 
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Entity Resolution** tab.
 3. Select or drag and drop your CSV file.
 4. Review the file validation results and fix any errors if needed.

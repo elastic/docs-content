@@ -4,9 +4,34 @@ max_toc_depth: 2
 features:
   primary-nav: true
 
+cta:
+  monitor-kubernetes:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-kubernetes
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  monitor-aws:
+    button:
+      label: Get started free
+      url: https://cloud.elastic.co/serverless-registration?onboarding_token=monitor-aws
+    benefits:
+      - "14-day free trial"
+      - "All features included"
+      - "No setup required"
+  azure-mp:
+    button:
+      label: Get started on Azure
+      url: https://portal.azure.com?sourceCampaignName=elasticweb-docs&sourceCampaignId=elasticweb-docs#view/Azure_Marketplace_Elastic/CreateBlade/offerId/elastic.ec-azure-pp
+    benefits:
+      - "Simplified billing and MACC burndown"
+      - "Manage resources from the Azure portal"
+      - "Built-in logs and metrics forwarding"
+
 exclude:
   - 'README.md'
-  - 'raw-migrated-files/**'
   - 'changelog/**'
   - 'releases/**'
 
@@ -295,9 +320,9 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   kube-stack-version: 0.12.4
-  helm-version: 3.20.2
-  ece-docker-images-8: 8.19.11
-  ece-docker-images-9: 9.3.0
+  helm-version: 3.21.0
+  ece-docker-images-8: 8.19.16
+  ece-docker-images-9: 9.3.5
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"

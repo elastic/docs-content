@@ -80,9 +80,11 @@ For a complete list of all S3 repository settings, refer to [S3 repository setti
 
 Amazon S3 supports a variety of  *storage classes*, each of which offers different operational characteristics. For instance, some classes cost less per byte stored per month, but cost more per request, and other classes may vary in terms of their availability guarantees.
 
-You may specify the storage class that {{es}} uses to store data objects with the `storage_class` repository setting.
+You can specify the storage class that {{es}} uses to store data objects with the `storage_class` repository setting. 
 
-Changing the `storage_class` setting on an existing repository only affects the storage class for newly created objects, resulting in a mixed usage of storage classes.
+{applies_to}`stack: ga 9.5` You can also specify the storage class for objects with the `data_storage_class` and `metadata_storage_class` settings. For {{es}} versions 9.5 and later, we recommended you specify the `data_storage_class` and `metadata_storage_class` settings instead of the `storage_class` setting. To learn about the differences between these settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/s3-repository-settings.md#repository-s3-repository-settings).
+
+Changing the `storage_class`, `data_storage_class`, or `metadata_storage_class` setting on an existing repository only affects the storage class for newly created objects, resulting in a mixed usage of storage classes.
 
 You may use an S3 Lifecycle Policy to adjust the storage class of existing objects in your repository, but you must not transition objects to an unsupported class such as the Glacier classes, and you must not expire objects. If you use a Glacier storage class, or another unsupported storage class, or object expiry, then you may permanently lose access to your repository contents.
 
@@ -172,6 +174,9 @@ You may further restrict the permissions by specifying a prefix within the bucke
 
 The bucket needs to exist to register a repository for snapshots. If you did not create the bucket then the repository registration will fail.
 
+You can also impose similar restrictions using a [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html).
+
+Do not impose any additional restrictions on access to your bucket, for instance by using stricter `Condition` clauses than the ones documented above. Overly-restrictive access policies can prevent {{es}} snapshots from working correctly.
 
 #### Using IAM roles for Kubernetes service accounts for authentication [iam-kubernetes-service-accounts]
 
@@ -210,7 +215,9 @@ Some storage systems offer an S3-compatible API, and the `s3` repository type al
 
 By default {{es}} communicates with your storage system using HTTPS, and validates the repository's certificate chain using the JVM-wide truststore. Ensure that the JVM-wide truststore includes an entry for your repository. If you wish to use unsecured HTTP communication instead of HTTPS, set `s3.client.CLIENT_NAME.endpoint` to a URL which starts with `http://`.
 
-The `s3` repository type requires your storage API to be _fully_ compatible with AWS S3. This means it must support all the same API endpoints, with all the same parameters, return the same errors in case of failures, and offer consistency, performance, and reliability at least as good as S3 even when accessed concurrently by multiple nodes. Some storage products, including some from very well-known storage vendors, claim to offer a S3-compatible API but actually only support a subset of its features. Others offer an API which matches that of AWS S3 but with different behavior, especially when accessed concurrently. Such storage products are demonstrably _not_ fully S3-compatible, despite claims from their vendors. Using a storage product which is not fully S3-compatible puts your snapshot data at risk. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. Ensure that your storage supplier offers a full compatibility guarantee. Work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
+The `s3` repository type requires your storage API to be _fully_ compatible with AWS S3. This means it must exactly conform to every aspect of the documented behavior of AWS S3: it must support all the same API endpoints, with all the same parameters, return the same errors in case of failures, and offer consistency, performance, and reliability at least as good as AWS S3 even when accessed concurrently by multiple {{es}} nodes. Some storage products, including some from very well-known storage vendors, claim to offer a S3-compatible API but in fact only support a subset of the features of AWS S3. Others offer an API which matches that of AWS S3 but with different behavior, especially when accessed concurrently. Such storage products are not fully S3-compatible. Using a storage product which is not fully S3-compatible puts your snapshot data at risk. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead.
+
+Ensure that your storage supplier offers a full compatibility guarantee, and work with them to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility. When upgrading, always verify that your storage passes repository analysis in the upgraded version before upgrading any production clusters.
 
@@ -283,7 +290,7 @@ stack: ga 9.3
 
 From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
-If your storage does not support conditional writes then it is not fully S3-compatible. However, if this is its only deviation in behavior from AWS S3 then it will work correctly with {{es}} as long as its multipart upload APIs have strongly consistent semantics, as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+If your storage does not support conditional writes then it is not fully S3-compatible. In this case {{es}} can fall back to using the multipart upload APIs for its linearizable registers, as long as these APIs have strongly consistent semantics as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
 
 ### Multipart uploads
 

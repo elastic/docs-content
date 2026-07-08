@@ -1,4 +1,5 @@
 ---
+description: Define groups of important entities, such as executives or critical hosts, and factor watchlist membership into entity risk scoring in Elastic Security.
 applies_to:
   stack: ga 9.4+
   serverless:
@@ -24,7 +25,7 @@ A **Privileged Users** watchlist is available by default. It automatically pulls
 
 ## Risk weighting [watchlists-risk-weighting]
 
-Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk scoring engine applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
+Each watchlist has a configurable risk weighting that influences the risk scores of its members. When an entity belongs to a watchlist, the risk score maintainer applies the watchlist's risk weighting using a Bayesian update — either increasing or decreasing the alert-based risk score depending on the configured weight.
 
 For example, assigning a higher risk weighting to a watchlist of executives means that suspicious activity involving those users scores higher and surfaces sooner during investigations.
 
@@ -34,13 +35,15 @@ To learn how watchlist weighting fits into the overall risk score calculation, r
 
 To create a watchlist:
 
-1. Find the **Entity Analytics** management page in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
+    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
 2. Go to the **Watchlists** tab.
 3. Click **Create watchlist**.
 4. Enter a name and, optionally, a description.
 5. Set a **Risk Score Weighting** using the slider.
 6. Under **Rule Based Data Sources**, define which entities belong to this watchlist:
-   * **Entity Store**: Filter existing entities in the entity store using KQL syntax.
+   * **Entity Store**: Filter existing entities in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) using KQL syntax.
    * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities.
 7. Click **Save**.
 
@@ -57,7 +60,7 @@ The **Watchlists** tab displays all watchlists in the current {{kib}} space. You
 
 ## Filter entities by watchlist [watchlists-filter]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/overview.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
 
 ## Known limitations [watchlists-limitations]
 

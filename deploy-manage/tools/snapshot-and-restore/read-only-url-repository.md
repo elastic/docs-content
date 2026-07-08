@@ -2,20 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-read-only-repository.html
 applies_to:
-  deployment:
-    self:
+  stack: ga
 products:
   - id: elasticsearch
 ---
 
 # Read-only URL repository [snapshots-read-only-repository]
 
-::::{note}
-This repository type is only available if you run {{es}} on your own hardware. If you use {{ech}}, see [{{ech}} repository types](self-managed.md).
-::::
-
-
-You can use a URL repository to give a cluster read-only access to a shared file system. Since URL repositories are always read-only, they’re a safer and more convenient alternative to registering a read-only shared filesystem repository.
+You can use a URL repository to give a cluster read-only access to snapshot data exposed through a URL, including `file`, `http`, `https`, and `ftp` locations. Because URL repositories are always read-only, they're a safer and more convenient alternative to registering a read-only shared filesystem repository.
 
 Use {{kib}} or the [create snapshot repository API]({{es-apis}}operation/operation-snapshot-create-repository) to register a URL repository.
 

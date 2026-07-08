@@ -11,6 +11,11 @@ products:
 
 # AI onboarding in {{es}} projects
 
+:::{agent-skill}
+:url: https://github.com/elastic/agent-skills@elasticsearch-onboarding
+This skill guides users through search concepts and helps create a working search use case.
+:::
+
 **AI onboarding** is a skill you can invoke in your IDE, CLI, or directly within your Elastic deployment using [](/explore-analyze/ai-features/elastic-agent-builder.md). This skill enables an AI agent to guide you from an initial idea for your use case to a working search experience, using natural language.
 
 The agent asks what you’re building, understands your data, recommends the right approach, and generates a working implementation. This helps you get started immediately without reading documentation or creating templates.
