@@ -30,7 +30,7 @@ Three mechanisms let you silence notifications, each at a different scope:
 Snooze applies at the group level (by `group_hash`), not for each individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
 
 :::{note}
-Snoozing an alert episode differs from [snoozing an action policy](manage-action-policies.md#enable-disable-and-snooze-a-policy). When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all notifications from a given action policy, for example, during planned maintenance on a destination system.
+Snoozing an alert episode differs from snoozing an action policy. When you snooze an action policy, the dispatch mechanism is paused and every series the action policy processes is silenced. When you snooze an alert episode, you target one specific series before action policy matching runs, silencing it regardless of which action policy handles it. Use action policy snooze when you want to pause all notifications from a given action policy, for example, during planned maintenance on a destination system.
 :::
 
 ## Related pages

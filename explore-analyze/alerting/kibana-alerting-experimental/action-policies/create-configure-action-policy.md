@@ -52,7 +52,7 @@ Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which a
 To receive escalation notifications, either create separate action policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the action policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active episodes](re-notification.md).
 :::
 
-For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#notification-grouping).
+<!-- For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#notification-grouping). -->
 
 ## Select workflows to invoke [policy-destinations]
 
