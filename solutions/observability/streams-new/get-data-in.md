@@ -46,7 +46,7 @@ To manage all streams, you need the following permissions:
 To view streams, you need the following permissions:
 - **Data stream level**: `read`, `view_index_metadata`, `monitor`
 
-For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)
+For more information, refer to [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) and [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
 :::
 
@@ -61,7 +61,7 @@ serverless: preview
 
 Wired streams send your documents to a managed endpoint, from which you can route data into child streams based on [partitioning](./organize-your-data.md) rules. Child streams automatically inherit mappings, lifecycle settings, and processors from the parent, and configuration changes propagate through the hierarchy.
 
-{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Two endpoints are available. Use **`logs.otel`** (recommended) when sending OTel-native data or when you want a consistent, normalized format — Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
+{applies_to}`{serverless: preview, stack: preview 9.4+}` Two endpoints are available. Use **`logs.otel`** (recommended) when sending OTel-native data or when you want a consistent, normalized format — Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
 
 To send data to a wired stream, configure your shipper to point to the appropriate endpoint:
 
@@ -85,9 +85,9 @@ processors:
 service:
   pipelines:
     logs:
-      receivers: [myreceiver] # works with any logs receiver
+      receivers: [myreceiver] # Works with any logs receiver
       processors: [transform/logs-streams]
-      exporters: [elasticsearch, otlp] # works with either
+      exporters: [elasticsearch, otlp] # Works with either
 ```
 ::::
 
@@ -95,15 +95,15 @@ service:
 :::{note}
 Set the index based on your {{stack}} version:
 
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on the endpoint you want to use.
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 ```yaml
 filebeat.inputs:
   - type: filestream
     id: my-filestream-id
-    index: logs.otel # Set to `logs.otel` or `logs.ecs` (serverless and stack 9.4+), or logs (stack 9.2–9.3)
+    index: logs.otel # Set to `logs.otel` or `logs.ecs` ({{serverless-short}} and Stack 9.4+), or logs (Stack 9.2–9.3)
     enabled: true
     paths:
       - /var/log/*.log
@@ -155,14 +155,14 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 :::{note}
 Set the endpoint based on your {{stack}} version:
 
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on the endpoint you want to use.
 - {applies_to}`stack: preview 9.2-9.3` Set the endpoint to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 Send data to the endpoint using the [Bulk API]({{es-apis}}operation/operation-bulk):
 
 ```json
-POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.4+), or `logs` (stack 9.2–9.3)
+POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` ({{serverless-short}} or Stack 9.4+), or `logs` (Stack 9.2–9.3)
 { "create": {} }
 { "@timestamp": "2025-05-05T12:12:12", "body": { "text": "Hello world!" }, "resource": { "attributes": { "host.name": "my-host-name" } } }
 { "create": {} }
@@ -201,11 +201,11 @@ Open classic streams from the following places in {{kib}}:
 
 - Select **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md), and find the data stream in the Streams table.
 
-- Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
+- Open the data stream for a specific document from **Discover**. To do this:
     1. From the **Documents** table, select the {icon}`expand` icon for a document to expand the details flyout.
     1. Under **Stream**, select the link to the stream (for example, `logs-generic.default`). The Streams UI opens filtered to the stream that contains the document.
 
-You can also access Streams features using the Streams API. {applies_to}`stack: preview 9.1+` {applies_to}`serverless: preview` Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Next steps [get-data-in-next-steps]
 
