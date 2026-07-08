@@ -16,10 +16,6 @@ Import a dashboard that was exported from another {{product.kibana}} space, inst
 - {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **JSON**: import it with the [Dashboards API](create-dashboards-programmatically.md). This is the recommended method.
 - **NDJSON**: import it with the [Saved Objects API]({{kib-apis}}group/endpoint-saved-objects), or from the **Saved Objects** page.
 
-:::{note}
-To move a dashboard to another space within the same deployment, you don't need to export and import it. Instead, [copy it to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page, together with its related objects. To automate this, use the [copy saved objects to space API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects).
-:::
-
 ::::::{tab-set}
 
 :::::{tab-item} JSON (Dashboards API)
@@ -60,3 +56,7 @@ To automate the import, use the [import saved objects API]({{kib-apis}}operation
 :::::
 
 ::::::
+
+:::{note}
+To move a dashboard to another space within the same deployment, you don't need to export and import it. Instead, [copy it to the target space](../find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces) from the **Saved Objects** page, together with its related objects. To automate this, use the [copy saved objects to space API]({{kib-apis}}operation/operation-post-spaces-copy-saved-objects).
+:::
