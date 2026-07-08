@@ -37,13 +37,11 @@ The collector pulls data from the source API and writes documents to your {{es}}
 
 Each {{managed-integration}} runs in its own collector, which keeps your data isolated from other tenants while it's being ingested.
 
-Behind the scenes, a small set of shared, stateless control plane components orchestrate the lifecycle of these collectors: an **Agentless API** that receives provisioning requests, an **Agentless Controller** that creates and updates the collectors, and an **Agentless Cleaner** that removes them when an integration is deleted. None of these components store customer data.
+Behind the scenes, a shared, stateless **Controller** orchestrates the lifecycle of these collectors. When you enable an integration in {{kib}}, the Controller creates and updates the collector, and it removes the collector when you delete the integration. The Controller doesn't store customer data.
 
 :::{image} /manage-data/images/managed-integrations-architecture.png
-:alt: Architecture diagram for {{managed-integrations}}, showing the Agentless API, Controller, and Cleaner orchestrating per-integration collectors on Elastic-managed infrastructure. The collectors pull data from cloud sources through a cloud proxy and write to {{es}} over the `_bulk` API, while {{fleet-server}} delivers their policies.
+:alt: Architecture diagram for {{managed-integrations}}. A request in {{kib}} triggers the Controller to create per-integration collectors on Elastic-managed infrastructure. Each collector pulls data from a cloud source (such as Okta or Snyk) through a cloud proxy, writes documents to {{es}} over the `_bulk` API, and receives its configuration from {{es}}.
 :::
-
-The dashed boundary labeled **MKI** (Managed Kibana Infrastructure) in the diagram represents the Elastic-managed infrastructure that hosts these control plane components and the per-integration collectors.
 
 ## Limits and scaling [agentless-limits]
 
