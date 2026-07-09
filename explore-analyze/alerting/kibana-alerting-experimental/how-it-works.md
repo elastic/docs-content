@@ -22,7 +22,7 @@ In Alert mode, the rule doesn't just record that a condition was found. It opens
 | 1 | Rule | Runs on schedule and evaluates {{esql}} against your data |
 | 2 | Rule | Query returns results → A rule event is written to `.rule-events` |
 | 3 | System | Creates an alert episode and sets its initial state to `pending`; episode advances to `active` once the activation threshold is met |
-| 4 | Action policy | Evaluates the episode against its conditions (checks for suppression, match conditions, and frequency) |
+| 4 | Action policy | Evaluates the episode against its conditions (checks for episode eligibility, match conditions, and frequency) |
 | 5 | Action policy | If conditions are met, triggers a workflow |
 | 6 | Workflow | Sends notification or runs automation |
 | 7 | Rule | Condition clears → New rule event written → Episode moves to `recovering` → `inactive` |

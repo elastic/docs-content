@@ -51,7 +51,7 @@ Refer to [Alert episodes](kibana-alerting-experimental/alerts.md) to learn more.
 
 ### Action policies
 
-An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating suppression, match conditions, and frequency. Policy configuration determines the scope. A policy can apply to alert episodes from a specific rule, multiple rules, or all rules in the space.
+An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by evaluating episode eligibility, match conditions, and frequency. Policy configuration determines the scope. A policy can apply to alert episodes from a specific rule, multiple rules, or all rules in the space.
 
 <!-- TODO: When PR #6525 (workflows/notifications) merges, uncomment the link below and trim this sub-section to 1–2 anchor sentences + the link.
 Refer to [Notifications and actions](kibana-alerting-experimental/notifications-actions.md) to learn more.
