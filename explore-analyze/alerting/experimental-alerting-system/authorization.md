@@ -13,7 +13,7 @@ tags:
   - kibana
 ---
 
-# Authorization in {{alerting-v2-system}} [experimental-alerting-authorization]
+# Authorization in the {{alerting-v2-system}} [experimental-alerting-authorization]
 
 Authorization in the {{alerting-v2-system}} determines which user's privileges a rule uses when it runs and how those credentials stay current as your team changes. Use this page to understand how the API key model works, keep credentials current, and resolve authorization errors.
 
