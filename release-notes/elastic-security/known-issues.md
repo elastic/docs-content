@@ -306,7 +306,7 @@ When the **Data View Management** feature is turned off for a {{kib}} space, use
 Write role required to generate data: Users with write permission need to access the Elastic Security App to initialize the app source data
 ```
 
-The error originates in the Sourcerer component. It typically appears once per session until {{kib}} is fully reloaded.
+The error typically appears once per session until {{kib}} is fully reloaded.
 
 For more information, check [#4493](https://github.com/elastic/security-docs/issues/4493).
 
@@ -321,7 +321,7 @@ Turn on the **Data View Management** feature for the affected space:
 
 **Resolved**<br>
 
-Resolved in {{stack}} 9.1.0, which replaces the Sourcerer component with a new data view picker.
+Resolved in {{stack}} 9.1.0.
 
 :::
 
