@@ -152,7 +152,7 @@ You can change the value of the disk multiplier at different levels:
 The override only persists during the lifecycle of the instance container. If a new container is created, for example during a `grow_and_shrink` plan or a vacate operation, the quota is reset to its default. To increase the storage ratio in a persistent way, [edit the instance configurations](ece-configuring-ece-instance-configurations-edit.md).
 ::::
 
-## Swap consideration [ece-alloc-swap-consideration]
+## Swap memory considerations [ece-alloc-swap-consideration]
 
 While {{es}} nodes generally run with [swap disabled](../self-managed/setup-configuration-memory.md), ECE hosts should have swap enabled for stability reasons.
 
