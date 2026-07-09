@@ -28,8 +28,6 @@ An organization is the umbrella for a group of {{ecloud}} resources, users, and 
 
 When you create an organization, you start with a free 14-day trial. During this trial, you have access to the following:
 
-% do we want to tell them that they have unlimited trials by creating multiple organizations?
-
 **One hosted deployment**
 
 A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the {{stack}}. They include two 4 GB RAM instances, one per availability zone, and storage capacity based on the selected hardware profile. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, {{ml}}, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
