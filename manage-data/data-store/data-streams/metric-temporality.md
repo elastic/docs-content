@@ -3,6 +3,7 @@ navigation_title: "Metric temporality"
 applies_to:
   stack: ga 9.5
   serverless: ga
+description: Learn how cumulative and delta metric temporality work in Elasticsearch time series data streams, and how to configure it for queries and downsampling.
 products:
   - id: elasticsearch
 ---
@@ -28,7 +29,7 @@ With cumulative temporality, each data point represents the total count since th
 | 10:03     | 113   | 113 total requests since start  |
 
 To determine the rate of change, {{es}} computes the difference between consecutive values. Between 10:01 and 10:02, the total number of requests increased by 45.
-Therefore, the `increase` function will yield 45 for this time interval. `rate` divides the total increase by the time interval in seconds, yielding 0.75 requests per second in this case as the time range between 10:01 and 10:02 is 60 seconds.
+Therefore, the `increase` function yields 45 for this time interval. `rate` divides the total increase by the time interval in seconds. This yields 0.75 requests per second in this case, because the time range between 10:01 and 10:02 is 60 seconds.
 
 This is the default temporality for [`counter`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
@@ -43,7 +44,7 @@ With delta temporality, each data point represents the change since the previous
 | 10:03     | 41    | 41 new requests in this interval |
 
 To determine the rate of change, {{es}} uses the value directly.
-This means that for the time interval between 10:01 and 10:02, just like for cumulative temporality, `increase` will yield 45 and `rate` 0.75.
+This means that for the time interval between 10:01 and 10:02, as with cumulative temporality, `increase` yields 45 and `rate` 0.75.
 
 This is the default temporality for [`histogram`](time-series-data-stream-tsds.md#time-series-metric) metrics in {{es}}.
 
@@ -51,7 +52,7 @@ This is the default temporality for [`histogram`](time-series-data-stream-tsds.m
 
 If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md), [managed OTLP intake](opentelemetry://reference/motlp.md), or [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), you don't have to configure anything.
 Both OTLP intakes come with a dimension called `temporality` preconfigured in the mappings and preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
-Prometheus remote write V1 only supports counters and classic Prometheus histograms (represented as counters) which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
+Prometheus remote write V1 only supports counters and classic Prometheus histograms (represented as counters), which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
 
 If you are manually ingesting metrics into custom indices (for example via `_bulk`), you have to explicitly configure temporality on your data stream.
 To do so, use the [`index.time_series.temporality_field`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-temporality-field) index setting. This setting specifies the name of the field that stores the temporality for each document.
@@ -63,14 +64,16 @@ The temporality field must:
 
 Its value must be one of:
 
-- `delta` — metrics in the document use delta temporality
-- `cumulative` — metrics in the document use cumulative temporality
+- `delta`: metrics in the document use delta temporality
+- `cumulative`: metrics in the document use cumulative temporality
 
 If the field is absent or contains any other value, {{es}} uses the default temporality for each metric type: cumulative for counters and delta for histograms.
-You don't have to explicitly define the mapping for the field. It will be created automatically based on the index setting.
+You don't need to explicitly define the mapping for the field. It's created automatically based on the index setting.
 
-Note that because `temporality` is a dimension, you can have mixed temporalities per metric: Some series can have `delta` temporality, while others are `cumulative`.
+:::{note} 
+Because `temporality` is a dimension, you can have mixed temporalities per metric: Some series can have `delta` temporality, while others are `cumulative`.
 This is automatically handled when the data is queried or downsampled.
+:::
 
 ## How temporality affects queries [temporality-and-queries]
 
@@ -80,7 +83,7 @@ The temporality field is used automatically by PromQL and ES|QL time series quer
 - **Delta metrics:** {{es}} uses the values directly, since they already represent changes.
 
 The supported functions respecting the temporality are `rate`, `increase` and `irate`. So those functions produce the semantically expected results regardless of whether the underlying data is cumulative or delta, as long as the temporality is set correctly.
-Note that in ES|QL you cannot use any of those functions on histograms: Instead, ES|QL will automatically use an inner, per-series aggregation which merges the histograms taking the temporality into account.
+In ES|QL you cannot use any of those functions on histograms. Instead, ES|QL will automatically use an inner, per-series aggregation which merges the histograms taking the temporality into account.
 This is equivalent to how `increase` works for native histograms in PromQL. For example, the following two queries are equivalent:
 
 **ES|QL:**

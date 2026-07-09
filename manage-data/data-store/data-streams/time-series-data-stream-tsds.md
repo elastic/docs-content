@@ -79,7 +79,7 @@ To mark a field as a metric, use the `time_series_metric` mapping parameter. Thi
 
 `histogram` {applies_to}`stack: preview 9.3, ga 9.4`
 :   A metric that tracks the distribution of numerical values, like latency or size distributions. A histogram is supported by [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md), [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) 
-and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). By default, histograms use delta [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but cumulative temporality is also supported for `exponential_histogram`.
+and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). By default, histograms use delta [temporality](/manage-data/data-store/data-streams/metric-temporality.md), but cumulative temporality is also supported for `exponential_histogram`. {applies_to}`stack: ga 9.5`
 
 #### `_tsid` metadata field [tsid]
 
