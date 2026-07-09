@@ -52,7 +52,7 @@ POST /books/_bulk?refresh=wait_for
 {"title":"Advanced Text Processing","synopsis":"Deep dive into text analysis and search pipelines. Full coverage of custom analyzers and token filters."}
 ```
 
-The [`standard` analyzer](elasticsearch://reference/text-analysis/analyzer-reference/standard-analyzer.md) is used by default for `text` fields.
+The [`standard` analyzer](elasticsearch://reference/text-analysis/analysis-standard-analyzer.md) is used by default for `text` fields.
 It lowercases and tokenizes the text, so each word becomes a searchable term at a specific position.
 
 To learn more, refer to [Text analysis](../../../manage-data/data-store/text-analysis.md).
@@ -258,7 +258,7 @@ GET /books/_search
 
 ::::{warning}
 The `prefix` rule can expand to match many terms depending on your data.
-To avoid errors from exceeding the `indices.query.bool.max_clause_count` [search setting](/reference/elasticsearch/configuration-reference/search-settings.md), use the [`index-prefixes`](/reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefix patterns specific enough to limit expansion.
+To avoid errors from exceeding the `indices.query.bool.max_clause_count` [search setting](elasticsearch://reference/elasticsearch/configuration-reference/search-settings.md), use the [`index_prefixes`](elasticsearch://reference/elasticsearch/mapping-reference/index-prefixes.md) mapping option or keep prefix patterns specific enough to limit expansion.
 ::::
 
 ::::{dropdown} Example response
