@@ -168,8 +168,7 @@ There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB 
 
 Set the `vm.swappiness` kernel setting to `1`, as described in the [Configure your OS](/deploy-manage/deploy/cloud-enterprise/configure-operating-system.md) preparation guides, so that swap is used only as a last resort.
 
-Furthermore, how you provision the swap space itself depends on your operating system and infrastructure provider —
-consult your OS or cloud provider's documentation for creating a swap file or partition. This is a topic out of Elastic support scope.
+The method for provisioning swap space depends on your operating system and infrastructure provider. Consult your OS or cloud provider's documentation for instructions on creating a swap file or partition.
 
 ### Enabling swap [ece-alloc-enabling-swap]
 
