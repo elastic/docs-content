@@ -73,7 +73,9 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 | `snooze` | user | Snooze until `expiry` |
 | `unsnooze` | user | Remove snooze |
 | `activate` | user | Manual activation |
-| `deactivate` | user | Manual deactivation ("Resolve" in UI) |
+| `deactivate` | user | Manual deactivation; returns a manually activated episode to normal recovery behavior without closing it |
+| `resolve` | user | Closes the episode |
+| `unresolve` | user | Reopens a resolved episode |
 | `fire` | system | Dispatcher: episode opened or continued |
 | `suppress` | system | Dispatcher: throttled, no notification sent |
 | `unmatched` | system | Dispatcher: no action policy matched |

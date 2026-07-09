@@ -101,13 +101,13 @@ FROM .alert-actions
 | KEEP @timestamp, action_type, actor, episode_status, reason
 ```
 
-### Find all acknowledgment in a time window [find-acknowledgment]
+### Find all acknowledgments in a time window [find-acknowledgments]
 
 Returns every acknowledgment action across all episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
 
 ```esql
 FROM .alert-actions
-// Filter to acknowledgement actions only
+// Filter to acknowledgment actions only
 | WHERE action_type == "ack"
 | SORT @timestamp DESC
 ```
