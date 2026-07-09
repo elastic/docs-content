@@ -164,7 +164,7 @@ Swap should be treated as an emergency safety net only — not as a way to overc
 
 ### Swap sizing [ece-alloc-swap-sizing]
 
-There is no fixed scalability recommendation for swap sizing, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE deployments. The minimum recommended swap space on ECE hosts is 512 MB.
+There is no specific recommendation for sizing swap, but 4 GB of swap per 32 GB of RAM has proven to be a reasonable safeguard for most ECE installations. As a baseline, ECE hosts should have at least 512 MB of swap space.
 
 Set `vm.swappiness=1` so that swap is used only as a last resort.
 
