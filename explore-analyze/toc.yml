@@ -385,15 +385,15 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/kibana-alerting-experimental/alerts.md
+      - file: alerting/experimental-alerting-system/alerts.md
         children:
-          - file: alerting/kibana-alerting-experimental/alerts/alert-data-model.md
-          - file: alerting/kibana-alerting-experimental/alerts/view-and-manage-alerts.md
+          - file: alerting/experimental-alerting-system/alerts/alert-data-model.md
+          - file: alerting/experimental-alerting-system/alerts/view-and-manage-alerts.md
             children:
-              - file: alerting/kibana-alerting-experimental/alerts/triage-alert-episodes.md
-              - file: alerting/kibana-alerting-experimental/alerts/investigate-alert-episodes.md
-          - file: alerting/kibana-alerting-experimental/alerts/query-alerts-and-signals-in-discover.md
-          - file: alerting/kibana-alerting-experimental/alerts/field-reference.md
+              - file: alerting/experimental-alerting-system/alerts/triage-alert-episodes.md
+              - file: alerting/experimental-alerting-system/alerts/investigate-alert-episodes.md
+          - file: alerting/experimental-alerting-system/alerts/query-alerts-and-signals-in-discover.md
+          - file: alerting/experimental-alerting-system/alerts/field-reference.md
       - hidden: alerting/compare-alerting-systems.md
       - hidden: alerting/system-overview.md
       - hidden: alerting/experimental-alerting-system/how-it-works.md

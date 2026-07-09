@@ -8,7 +8,7 @@ products:
 description: "Investigate alert episodes in Kibana's experimental alerting system. Understand what triggered an episode, assess metric behavior, find related episodes, review responders, and inspect underlying data."
 ---
 
-# Investigate alert episodes in the {{alerting-v2-system}} [experimental-alerting-system-investigate-alert-episodes]
+# Investigate alert episodes in the {{alerting-v2-system}} [investigate-alert-episodes]
 
 This page explains what information is available on the episode detail page in the {{alerting-v2-system}} and how to use it to understand what triggered an episode, assess its severity, identify recurring patterns, and coordinate a response. 
 

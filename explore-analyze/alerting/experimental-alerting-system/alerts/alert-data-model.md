@@ -8,7 +8,7 @@ products:
 description: "Alert history in Kibana's experimental alerting system lives in two append-only streams, .rule-events for evaluations and .alert-actions for triage. Signals and alerts differ by rule mode."
 ---
 
-# Alert data model in the {{alerting-v2-system}} [experimental-alerting-system-alert-data-model]
+# Alert data model in the {{alerting-v2-system}} [alert-data-model]
 
 This page explains the foundational data model of the {{alerting-v2-system}}. It explains what the system writes, where it writes it, and why those choices affect what you can do with the data.
 

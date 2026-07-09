@@ -8,7 +8,7 @@ products:
 description: "Alert episodes in Kibana's experimental alerting system track a problem from first detection through recovery. Episodes belong to a series that groups recurrences of the same condition."
 ---
 
-# Alerts in the {{alerting-v2-system-cap}} [experimental-alerting-system-alerts]
+# Alerts in the {{alerting-v2-system-cap}} [alerts]
 
 In the {{alerting-v2-system}}, the system tracks alerts as **alert episodes**, which represent the full lifecycle of a problem (from first detection through recovery) rather than a single point-in-time event. 
 
