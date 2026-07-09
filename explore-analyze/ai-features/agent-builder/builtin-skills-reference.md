@@ -248,7 +248,7 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 
     :::
 
-    {applies_to}`stack: ga 9.5+` From 9.5, the skill can also list watchlists to discover watchlist names and members, using the `security.list_watchlists` tool.
+    {applies_to}`stack: ga 9.5+` From 9.5, the skill can also list watchlists to discover watchlist names and members (`security.list_watchlists`) and set entity asset criticality (`security.set_asset_criticality`).
 
     **Prerequisites:** [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) enabled and the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) populated.
 
