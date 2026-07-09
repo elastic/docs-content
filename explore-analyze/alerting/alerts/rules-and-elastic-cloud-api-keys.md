@@ -35,14 +35,13 @@ Use the following checklists to confirm your rules are running correctly after t
 :::{dropdown} Right after migration
 - **Check rule execution status**: Go to **{{stack-manage-app}} > {{rules-ui}}** or your app's rules page and review the last run status for all rules. Investigate any rules showing a failed or warning status before moving on. If you use Elastic Security detection rules, also check for gaps caused by the migration. Refer to [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) for instructions.
 
-- **Resolve migration errors promptly**: If the UI shows API key errors for a rule, open the rule and save it with a valid user following the in-product prompts. Rules with missing owners or invalid role assignments won't run until resolved.
+- **Resolve migration errors promptly**: If the UI shows an indicator that an {{ecloud}} API key isn't available for a rule, the rule continues to run using an {{es}} API key as a fallback. To create a new {{ecloud}} API key for the rule, open the rule's action menu in the UI and select **Update API key**.
 
 - **Verify index access**: Confirm that migrated rules can still reach the indices they query. A warning status with an index-not-found message means the new key might have narrower access than the previous one. Review and update role assignments if needed.
 :::
 
 :::{dropdown} Within 90 days
-<!-- SME REVIEW: "Review API key expiration" is not in the source of truth. Verify the 90-day default expiry, that expired keys stop rules, and that Elastic sends expiration warning emails to the key creator and operational contacts. -->
-- **Review API key expiration**: {{ecloud}} API keys expire after 90 days by default. When a key expires, dependent rules stop running. Check the expiration date for keys created during migration and extend or adjust them if 90 days is too short for your use case. Elastic sends an expiration warning email to the key creator and operational contacts as the date approaches.
+- **Review API key expiration**: If a rule was created or updated through the Kibana API using an {{ecloud}} API key with a defined expiration, the rule is bound to that specific key and its expiration date. When the key expires, the rule stops running. To generate a new key for the rule, select **Update API key** from the rule's action menu.
 
 - **Check rule tags**: On the **{{stack-manage-app}} > {{rules-ui}}** page, review rule tags. Any rule tagged **Missing Elastic Cloud Api Key** is still running on an {{es}} API key. This typically happens when rules were created or updated through the public APIs using a personal {{es}} API key rather than through the UI. Edit the rule in the UI or update its API key to migrate it to an {{ecloud}} API key.
 
