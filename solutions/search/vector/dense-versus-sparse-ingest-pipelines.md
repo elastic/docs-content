@@ -232,7 +232,7 @@ GET my-index/_search
 ::::::
 
 ::::::{tab-item} Dense vector models
-Text embeddings produced by dense vector models can be queried using a [kNN search](knn.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
+Text embeddings produced by dense vector models can be queried using a [kNN search](knn/build-search-queries.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
 
 ```console
 GET my-index/_search
