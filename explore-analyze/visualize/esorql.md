@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# ES|QL visualizations [esql-visualizations]
+# Lens visualizations using ES|QL queries [esql-visualizations]
 
 Creating visualizations using an {{esql}} query is particularly useful when you need to:
 
