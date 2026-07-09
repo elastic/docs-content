@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Lens [lens]
+# Lens visualizations [lens]
 
 **Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 
