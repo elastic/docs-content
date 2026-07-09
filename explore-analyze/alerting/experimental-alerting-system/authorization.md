@@ -30,6 +30,16 @@ A rule runs using an API key that was captured the last time the rule was saved.
 
 When an action policy matches an alert episode and invokes a workflow, the workflow runs under its own stored API key, which belongs to the user who last saved the workflow. Action policy evaluation runs in a background dispatcher process and does not use a user's stored credentials.
 
+<!-- TODO: Follow up with engineering to clarify dispatcher authorization:
+
+Questions to clarify:
+- What credentials does the dispatcher use when evaluating action policies? Does it need read access to alert episodes, and if so, how is that granted?
+- If the dispatcher runs purely as a system process with no user-scoped credentials, can we state that explicitly?
+
+Thing to do once clarified:
+- If the dispatcher is a system process with no user-scoped credentials, add a sentence here to state this explicitly.
+-->
+
 ## How {{kib}} records execution identity [record-execution-identity]
 
 When a rule runs, {{kib}} records the identity of the user whose API key authorized the execution. This identity appears in rule execution history, so you can audit which credentials each run used.
@@ -38,11 +48,7 @@ Workflows that are invoked by action policies record execution identity the same
 
 ## How the API key works [how-api-key-works]
 
-When you save a rule, {{kib}} creates an API key that captures a snapshot of your privileges at that moment. The key authorizes the {{esql}} query the rule runs against your data and any writes the system makes to `.rule-events`.
-
-The key does not authorize workflow invocations. When an action policy triggers a workflow, that workflow runs under its own API key, not the rule's.
-
-A rule retains its API key when you disable it. If the key is missing when you re-enable the rule, {{kib}} generates a new one using your current privileges.
+When you save a rule, {{kib}} creates an API key that captures your privileges and authorizes the rule's {{esql}} query and writes to `.rule-events`. Workflow invocations use the workflow's own key, not the rule's.
 
 ::::{important}
 If a user with fewer privileges saves the rule, the rule runs with those reduced privileges. If a user with greater privileges saves the rule, the rule runs with those elevated privileges. The API key always reflects the privileges of the user who most recently saved the rule.
@@ -50,25 +56,24 @@ If a user with fewer privileges saves the rule, the rule runs with those reduced
 
 ## How to keep a rule's privileges current [keep-rules-privileges-current]
 
-The following actions refresh the stored API key for future runs:
-
-- Saving the rule again with the desired user.
-- Toggling the rule off, then back on.
+To refresh the stored API key for future runs, save the rule again with the desired user, or toggle the rule off and back on. A rule retains its key when disabled. If the key is missing when you re-enable it, {{kib}} generates a new one using your current privileges.
 
 ::::{important}
-Deactivating a user or changing their role doesn't automatically update the stored key. The key remains active and continues to run with the privileges it captured. To remove an outgoing user's access from future runs, save the rule again with a different user, or toggle it off and back on.
+Deactivating a user or changing their role doesn't automatically update the stored key. To remove an outgoing user's access from future runs, save the rule again with a different user, or toggle it off and back on.
 ::::
 
 <!-- TODO: Follow up with engineering to clarify action policy authorization:
-- What credentials does the dispatcher use when evaluating action policies? Does it need read access to alert episodes, and if so, how is that granted?
+
+Questions to clarify:
 - Can action policy evaluation produce its own authorization errors (separate from rule execution errors)? If yes, where do they surface (execution history? dispatcher logs?) and how should users fix them?
-- If the dispatcher runs purely as a system process with no user-scoped credentials, state that explicitly so readers aren't left wondering.
-- Add a row to the error table below if dispatcher/action policy evaluation can fail for authorization reasons.
+
+Thing to do once clarified:
+- If the dispatcher can fail for authorization reasons, add a row to the table below and document where the error surfaces and how to fix it.
 -->
 
-## Check and fix errors [check-and-fix-errors]
+## Check and fix authorization errors [check-and-fix-errors]
 
-Two types of authorization errors can cause a rule to fail:
+The following table covers authorization errors that can cause a rule to fail. If an action policy or workflow produces authorization errors, refer to [Workflow authorization](../../workflows/authorization.md#workflows-authorization-troubleshoot).
 
 | Error type | Cause | Where it appears | How to resolve it |
 |---|---|---|---|
