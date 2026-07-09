@@ -10,7 +10,6 @@ products:
 # Get started with semantic search
 
 If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text` (vector embeddings are generated and compared automatically using [vector search](../vector.md) under the hood). Then you run a hybrid query that combines keyword search with semantic search on those embeddings and merges the results.
-
 :::{note}
 This quickstart demonstrates [semantic search](../semantic-search.md) with the `semantic_text` field type and [hybrid search](../hybrid-search.md): it combines keyword-based full-text search with semantic search so you can match both exact terms and meaning. Semantic search relies on [vector search](../vector.md): text is converted to embeddings and matched by similarity in vector space.
 
@@ -151,7 +150,7 @@ Run a hybrid search using the [Search API]({{es-apis}}operation/operation-search
 The JSON body is a hybrid query: a [reciprocal rank fusion (RRF) retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) runs two [match queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), one on `content` for keyword matching and one on `semantic_text` for semantic search, which uses [vector search](../vector.md) under the hood, and merges the results.
 
 ::::{note}
-An [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) returns top documents based on the RRF formula. This enables hybrid search by combining results from keyword-based full-text queries and semantic search (via [vector search](../vector.md)) into a single ranked list.
+An [RRF retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rrf-retriever.md) returns top documents based on the RRF formula. This enables hybrid search by combining results from keyword-based full-text queries and semantic search (through [vector search](../vector.md)) into a single ranked list.
 ::::
 
 ```console
@@ -195,7 +194,7 @@ In the example response below, the two hits show why combining keyword search an
 
 The top document contains the phrase _muscle soreness_ and _running_, so it fits both keyword search and ranks highly in semantic and vector search. The second document does not use those words at all; it talks about marathon training and recovery between sessions. A keyword-only search on `content` would likely miss or rank that document much lower, because the query terms are not in the text.
 
-Semantic search still matches it because marathon training and recovery relate to the same idea as soreness after a run — vector similarity captures the connection even without shared keywords. Hybrid search keeps the document that matches the words and also brings in documents that vector search surfaces by topic, even without the same vocabulary.
+Semantic search still matches it because marathon training and recovery relate to the same idea as soreness after a run - vector similarity captures the connection even without shared keywords. Hybrid search keeps the document that matches the words and also brings in documents that vector search surfaces by topic, even without the same vocabulary.
 
 Each `_score` is a relevance score for this search only. A higher score means that document ranked higher than the ones below it in the same response.
 
