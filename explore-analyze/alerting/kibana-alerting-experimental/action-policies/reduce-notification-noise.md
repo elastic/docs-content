@@ -25,7 +25,7 @@ Three mechanisms let you silence notifications, each at a different scope:
 | Deactivate | Per alert episode | You want to manually close an alert episode that hasn't recovered automatically. Deactivating marks the alert episode as inactive and stops notifications for it. Unlike acknowledge, this closes the alert episode rather than silencing it while leaving it active. |
 | [Maintenance window](../../alerts/maintenance-windows.md) | All action policies in a space | You want to pause all action policy dispatching in a space for a planned maintenance period. All active action policies stop dispatching; rule evaluation and episode recording continue. Maintenance windows are configured separately from action policies. |
 
-### Snooze scope
+### Snooze scope [snooze-scope]
 
 Snooze applies at the group level (by `group_hash`), not for each individual alert episode. When you snooze one alert episode, every alert episode sharing the same group (all rows with the same `rule_id` and `group_hash`) is silenced for the duration. Snoozing one row in the alerts table silences the entire series for that rule.
 

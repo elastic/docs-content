@@ -26,7 +26,7 @@ Tags are optional labels you assign to an action policy to categorize it or filt
 
 Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which alert episodes this action policy applies to. Leaving it empty matches every alert episode in the space. The matcher is the only scoping mechanism, there are no separate rule type or rule ID selector fields. Common patterns include scoping to a severity level (`severity: "critical"`), to a specific rule (`rule.id: "my-rule-id"`), or to rules with a shared tag (`rule.tags: "payment-service"`).
 
-<!-- For available fields, refer to [Match conditions fields](action-policy-reference.md#matcher-fields). -->
+<!-- For available fields, refer to [Match conditions fields](action-policy-reference.md#action-policy-matcher-fields). -->
 
 ## Control how episodes batch and how often the action policy notifies [reduce-noise-grouping]
 
@@ -51,7 +51,7 @@ Use a [KQL](../../../query-filter/languages/kql.md) expression to filter which a
 To receive escalation notifications, either create separate action policies scoped to specific severity levels, or use a time-based throttle such as `At most once every 1h` so the action policy re-notifies after the interval regardless of severity or status changes. For examples, refer to [Re-notify for persistently active episodes](re-notification.md).
 :::
 
-<!-- For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#notification-grouping). -->
+<!-- For detailed descriptions, frequency options, and examples for each mode, refer to [Notify per options](action-policy-reference.md#action-policy-notification-grouping). -->
 
 ## Select workflows to invoke [policy-destinations]
 
