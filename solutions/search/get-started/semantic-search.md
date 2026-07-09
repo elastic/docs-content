@@ -9,7 +9,7 @@ products:
 ---
 # Get started with semantic search
 
-If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text` (vector embeddings are generated and compared automatically using [vector search](../vector.md) under the hood). Then you run a hybrid query that combines keyword search with semantic vector search and merges the results.
+If you want to get a sense of how semantic search works in {{es}}, this quickstart is for you. You use the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) workflow, the simplest managed path for semantic search. First, you create an index and store your data in two forms: plain text for keyword matching and semantic representations in `semantic_text`. Vector embeddings are generated and compared automatically using [vector search](../vector.md) under the hood. Then you run a hybrid query that combines keyword search with semantic vector search and merges the results.
 
 :::{note}
 This quickstart demonstrates [semantic search](../semantic-search.md) with the `semantic_text` field type and [hybrid search](../hybrid-search.md): it combines keyword-based full-text search with semantic search so you can match both exact terms and meaning. Semantic search relies on [vector search](../vector.md): text is converted to embeddings and matched by similarity in vector space.
