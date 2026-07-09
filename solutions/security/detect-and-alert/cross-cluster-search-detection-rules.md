@@ -56,8 +56,6 @@ This section explains the general process for setting up cross-cluster search in
     ::::{tab-item} TLS certificate authentication
     {applies_to}`stack: deprecated 9.0`
 
-    Certificate-based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead.
-
     With TLS certificate authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the *same names* defined locally. Create a role with *identical* names on both the local and remote clusters, and assign each the following privileges:
 
     * **Local cluster role**: Assign the `read` privilege to the indices you want to search, using *both* the local and remote index patterns for each index. To specify a remote index, use the pattern `<remote_cluster_name>:<index_name>`.
