@@ -2,6 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
 description: Import a Kibana dashboard exported from another space, instance, deployment, or project, using the Dashboards API or the Saved Objects API.
+type: how-to
 applies_to:
   stack: ga
   serverless: ga
