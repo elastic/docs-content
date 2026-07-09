@@ -385,11 +385,10 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/experimental-alerting-system/get-started.md
-        children:
-          - file: alerting/experimental-alerting-system/get-started/setup.md
-          - file: alerting/experimental-alerting-system/get-started/configure-access.md
-          - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
+      - hidden: alerting/experimental-alerting-system/get-started.md
+      - hidden: alerting/experimental-alerting-system/get-started/setup.md
+      - hidden: alerting/experimental-alerting-system/get-started/configure-access.md
+      - hidden: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
