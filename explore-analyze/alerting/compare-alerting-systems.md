@@ -21,10 +21,10 @@ Elastic offers three alerting systems, each suited to different use cases and wo
 |---|---|---|
 | Monitor metrics, logs, or uptime with ready-made rules and no query language | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
 | Use rules built for {{elastic-sec}}, {{observability}}, APM, or Maps | [{{kib}} alerting](alerts.md) | {applies_to}`stack: ga` {applies_to}`serverless: ga` |
-| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
-| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](experimental-alerting-system.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Write {{esql}} to define exactly what to detect and what data each alert episode carries | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Query alert history in Discover or build dashboards from alert data | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Manage notification routing, grouping, and throttling in one place, reusable across rules | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
+| Build highly custom notification logic with reusable, configurable workflows | [{{alerting-v2-system-cap}}](system-overview.md) | {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.5+` |
 | Build highly custom logic with scripting and chained inputs | [Watcher](watcher.md) | {applies_to}`stack: ga` {applies_to}`serverless: unavailable` |
 
 ## Compare at a glance

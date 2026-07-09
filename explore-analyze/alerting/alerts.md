@@ -19,7 +19,7 @@ description: "Overview of Kibana alerting: rules, alerts, actions, connectors, a
 
 :::{note}
 :applies_to: {"stack": "experimental 9.5+", "serverless": "experimental"}
-For the {{alerting-v2-system}} built on {{esql}}, refer to [{{alerting-v2-system-cap}}](experimental-alerting-system.md).
+For the {{alerting-v2-system}} built on {{esql}}, refer to [{{alerting-v2-system-cap}}](system-overview.md).
 :::
 
 ::::{note}

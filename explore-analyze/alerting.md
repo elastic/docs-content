@@ -33,7 +33,7 @@ The {{alerting-v2-system}} is built on {{esql}}. You write the query that define
 The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} and {{stack}} 9.5 and later. You don't have to move everything at once. You can copy or rebuild rules when you're ready, and your existing {{kib}} alerting rules won't be affected.
 :::
 
-[Get started with the {{alerting-v2-system}} →](alerting/experimental-alerting-system.md)
+[Get started with the {{alerting-v2-system}} →](alerting/system-overview.md)
 
 ## {{kib}} alerting
 
