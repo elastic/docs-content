@@ -1,5 +1,5 @@
 ---
-navigation_title: Lens
+navigation_title: Visualization
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
 applies_to:
