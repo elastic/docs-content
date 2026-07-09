@@ -9,7 +9,7 @@ products:
 description: "Tutorial for creating an ES|QL rule in Kibana's experimental alerting system. Covers how alert delay controls when an episode opens, how .rule-events records each evaluation, and how default recovery closes an episode automatically when no breach is detected."
 ---
 
-# Create a rule and observe the alert lifecycle [experimental-alerting-system-create-first-rule]
+# Create a rule and observe the alert lifecycle [create-first-rule]
 
 In this tutorial, you'll use the {{alerting-v2-system}} to detect a real-world performance problem and watch what happens next. You'll see how the system decides when a condition is serious enough to open an alert, how it tracks that alert over time, and how it closes automatically when things return to normal, without any manual intervention.
 

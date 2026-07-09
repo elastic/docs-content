@@ -9,7 +9,7 @@ products:
 description: "Get started with the experimental alerting system in Kibana: review requirements, enable the system, configure role access, and follow a tutorial to create a rule and observe the alert lifecycle."
 ---
 
-# Get started with the {{alerting-v2-system}} [experimental-alerting-system-get-started]
+# Get started with the {{alerting-v2-system}} [get-started]
 
 Use these guides to get the {{alerting-v2-system}} running in your space, set up role access for your team, and create your first rule.
 

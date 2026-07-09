@@ -9,7 +9,7 @@ products:
 description: "Privilege requirements for Kibana experimental alerting features: which Kibana feature privileges and Elasticsearch index privileges each role needs to manage rules, action policies, alerts, and query rule events and alert actions."
 ---
 
-# Configure access to the {{alerting-v2-system}} [experimental-alerting-system-access]
+# Configure access to the {{alerting-v2-system}} [access]
 
 To use the {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 

@@ -385,11 +385,11 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/kibana-alerting-experimental/get-started.md
+      - file: alerting/experimental-alerting-system/get-started.md
         children:
-          - file: alerting/kibana-alerting-experimental/get-started/setup.md
-          - file: alerting/kibana-alerting-experimental/get-started/configure-access.md
-          - file: alerting/kibana-alerting-experimental/get-started/create-your-first-rule.md
+          - file: alerting/experimental-alerting-system/get-started/setup.md
+          - file: alerting/experimental-alerting-system/get-started/configure-access.md
+          - file: alerting/experimental-alerting-system/get-started/create-your-first-rule.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
