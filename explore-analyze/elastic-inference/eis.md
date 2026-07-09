@@ -216,7 +216,7 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 ## Pricing [pricing]
 
-All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://www.elastic.co/pricing/serverless-search).
+All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
 This pricing model differs from the existing [Machine Learning Nodes](https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models), which is billed through VCUs consumed.
 
@@ -237,3 +237,18 @@ To track your token consumption:
 
 1. Navigate to [**Billing > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
+
+## Service status [eis-service-status]
+
+Elastic {{infer-cap}} Service (EIS) is a global service on {{ecloud}}. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic posts updates on the [Cloud Status](https://status.elastic.co/) page.
+
+EIS incidents and maintenance affect features that rely on EIS, such as semantic search, embeddings, reranking, and AI-powered assistants.
+
+To check current and past EIS availability, go to the [Cloud Status](https://status.elastic.co/) page. EIS is listed under **Global services** as **Elastic {{infer-cap}} Service**.
+
+:::{image} /explore-analyze/images/eis-status.png
+:alt: Elastic Inference Service status on the Cloud Status page
+:screenshot:
+:::
+
+Learn how to [subscribe to updates](/deploy-manage/cloud-organization/service-status.md#ec_subscribe_to_updates) on the Service status page.

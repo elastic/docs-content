@@ -298,8 +298,6 @@ toc:
           - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
   - file: visualize.md
     children:
-      - file: visualize/visualize-library.md
-      - file: visualize/manage-panels.md
       - file: visualize/lens.md
         children:
           - file: visualize/charts/area-charts.md
@@ -368,6 +366,8 @@ toc:
           - file: visualize/legacy-editors/aggregation-based.md
           - file: visualize/legacy-editors/tsvb.md
           - file: visualize/legacy-editors/timelion.md
+      - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
