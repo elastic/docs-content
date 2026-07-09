@@ -8,7 +8,7 @@ products:
 description: "How action policies gate alert episodes through eligibility checks, match conditions, and frequency before invoking workflows in the experimental alerting system."
 ---
 
-# About action policies [experimental-alerting-system-about-action-policies]
+# About action policies [about-action-policies]
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. An action policy is the gating layer between an alert episode and a workflow. It decides whether and when to invoke a workflow by running the alert episode through a sequence of gates. A workflow runs only if the alert episode clears each gate in sequence.
 

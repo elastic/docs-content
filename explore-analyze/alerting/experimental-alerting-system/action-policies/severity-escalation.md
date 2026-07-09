@@ -8,7 +8,7 @@ products:
 description: "How to manage notifications when alert episode severity changes in the experimental alerting system, including escalation, de-escalation, and duplicate notification prevention."
 ---
 
-# Manage severity escalation notifications for the {{alerting-v2-system}} [experimental-alerting-system-severity-escalation]
+# Manage severity escalation notifications for the {{alerting-v2-system}} [severity-escalation]
 
 Not every severity change fires a notification. The outcome depends on whether the action policy has already matched the episode and which frequency option you've selected.
 

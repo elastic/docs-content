@@ -8,7 +8,7 @@ products:
 description: "Grouping modes, frequency options, dispatch outcomes, and match conditions field reference for action policies in the experimental alerting system."
 ---
 
-# Action policy reference for the {{alerting-v2-system}} [experimental-alerting-system-action-policy-reference]
+# Action policy reference for the {{alerting-v2-system}} [action-policy-reference]
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page is a reference for match conditions fields, grouping modes, frequency options, and dispatch outcomes. For step-by-step guidance, refer to [Create and configure an action policy](create-configure-action-policy.md).
 

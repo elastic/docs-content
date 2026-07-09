@@ -8,7 +8,7 @@ products:
 description: "Common action policy scenarios for the experimental alerting system, including routing by severity, managing severity escalation, and controlling re-notification."
 ---
 
-# Examples and common scenarios for action policies in the {{alerting-v2-system}} [experimental-alerting-system-common-action-policy-scenarios]
+# Examples and common scenarios for action policies in the {{alerting-v2-system}} [common-action-policy-scenarios]
 
 This section covers common situations you encounter when setting up action policies in the {{alerting-v2-system}} and explains how to configure them to get the behavior you expect.
 

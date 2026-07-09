@@ -112,7 +112,7 @@ Use event-driven triggers for:
 * Central error-handler workflows that react to failures across your automation
 * Reacting to case lifecycle changes (case opened, status changed, attachments or comments added)
 * Paging on-call, opening cases, or logging when a production workflow fails
-* Auditing rule management actions, syncing rule inventory with external systems, or notifying a channel when rules change in the {{alerting-v2-system}}
+* Auditing rule management actions, syncing rule inventory with external systems, or notifying a channel when rules change in the {{alerting-v2-system}} {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
 Event-driven trigger example:
 
@@ -133,8 +133,8 @@ Each trigger type provides different data to the workflow context through the `e
 * **Event-driven**:
   * `workflows.failed` provides metadata about the failed workflow, its execution, and the step that failed.
   * Cases triggers provide `event.caseId`, `event.owner`, and event-specific fields (status changes carry `previousStatus` and `status`; attachment events carry IDs and type; comment events carry IDs).
-  * Alert episode lifecycle triggers provide `event.episodeId`, `event.ruleId`, and `event.spaceId`.
-  * {{alerting-v2-system-cap}} rule lifecycle triggers provide `event.rule.ruleId` and `event.rule.spaceId`.
+  * Alert episode lifecycle triggers provide `event.episodeId`, `event.ruleId`, and `event.spaceId`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
+  * {{alerting-v2-system-cap}} rule lifecycle triggers provide `event.rule.ruleId` and `event.rule.spaceId`. {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
 
   Refer to [Event-driven triggers](/explore-analyze/workflows/triggers/event-driven-triggers.md) for the full payload shapes.
 
