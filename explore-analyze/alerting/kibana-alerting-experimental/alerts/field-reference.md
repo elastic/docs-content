@@ -8,7 +8,7 @@ products:
 description: "Find field schemas for the .rule-events and .alert-actions data streams in Kibana's experimental alerting system. Covers evaluation event fields, triage action fields, and all action_type values."
 ---
 
-# Alert data stream field reference [alerting-v2-field-reference]
+# Alert data stream field reference [experimental-alerting-system-field-reference]
 
 This page is a field reference for the {{alerting-v2-system}}. It documents the fields written to the two data streams that back alert history and triage data in this system:
 
@@ -67,7 +67,7 @@ Every `.alert-actions` document has an `action_type` that identifies what happen
 | Value | Written by | Meaning |
 |---|---|---|
 | `ack` | user | Acknowledge episode |
-| `unack` | user | Remove acknowledgement |
+| `unack` | user | Remove acknowledgment |
 | `assign` | user | Assign to user (`assignee_uid`) |
 | `tag` | user | Add tags |
 | `snooze` | user | Snooze until `expiry` |

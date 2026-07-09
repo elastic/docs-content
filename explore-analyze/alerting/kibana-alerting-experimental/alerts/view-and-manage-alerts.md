@@ -8,7 +8,7 @@ products:
 description: "Monitor alert episodes in Kibana's experimental alerting system using KPI panels, an episode histogram, and filter controls. Triage and investigate episodes from the same interface."
 ---
 
-# View and manage alerts [manage-alerts]
+# View and manage alerts [experimental-alerting-system-view-manage-alerts]
 
 When a rule in the {{alerting-v2-system}} detects a problem, the Alerts page gives you health summaries and filtering tools to understand what's happening. For triage actions (acknowledge, snooze, resolve, activate, and tag), refer to [Triage alert episodes](triage-alert-episodes.md). For episode lifecycle history, related episodes, and assignment, refer to [Investigate alert episodes](investigate-alert-episodes.md).
 

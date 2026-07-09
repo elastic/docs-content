@@ -8,11 +8,11 @@ products:
 description: "Alert history in Kibana's experimental alerting system lives in two append-only streams, .rule-events for evaluations and .alert-actions for triage. Signals and alerts differ by rule mode."
 ---
 
-# Alert data model in the {{alerting-v2-system}} [alert-data-model]
+# Alert data model in the {{alerting-v2-system}} [experimental-alerting-system-alert-data-model]
 
 This page explains the foundational data model of the {{alerting-v2-system}}. It explains what the system writes, where it writes it, and why those choices affect what you can do with the data.
 
-## How rule mode determines what gets written [signals-vs-alerts]
+## How rule mode determines what gets written [how-rule-mode-determines-output]
 
 Every time a rule finds a match, it writes a document to `.rule-events`. Whether that document is a signal or an alert depends on the rule's mode.
 
@@ -25,7 +25,7 @@ Every time a rule finds a match, it writes a document to `.rule-events`. Whether
 A rule in Signal mode only writes signals. It never opens alert episodes, so action policies have nothing to match against.
 :::
 
-## How {{kib}} records evaluation and triage data [where-alert-data-is-stored]
+## How {{kib}} records evaluation and triage data [how-kib-records-evaluation-triage-data]
 
 Rule output is written to the following append-only data streams, both managed by {{kib}} through ILM and queryable with {{esql}} in Discover:
 

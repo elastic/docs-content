@@ -8,7 +8,7 @@ products:
 description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alert episodes in Kibana's experimental alerting system."
 ---
 
-# Query {{alerting-v2-system}} alert history in Discover [explore-alerts-discover]
+# Query {{alerting-v2-system}} alert history in Discover [experimental-alerting-system-query-alert-history-discover]
 
 The Alerts UI within the {{alerting-v2-system}} shows current episode state. Discover lets you go further and replay how an incident unfolded, view who acknowledged or snoozed it, measure time-to-acknowledge trends, or correlate alert history with other data in your environment.
 
@@ -85,7 +85,7 @@ FROM .rule-events
 
 ## Query triage and action history [query-triage-action-history]
 
-{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an episode. Use it to audit who did what, measure acknowledgement response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
+{{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an episode. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
 
 ### View the full triage history for an episode [full-triage-history]
 
@@ -101,9 +101,9 @@ FROM .alert-actions
 | KEEP @timestamp, action_type, actor, episode_status, reason
 ```
 
-### Find all acknowledgements in a time window [find-acknowledgements]
+### Find all acknowledgment in a time window [find-acknowledgment]
 
-Returns every acknowledgement action across all episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
+Returns every acknowledgment action across all episodes. Useful for tracking team response activity or measuring time-to-acknowledge trends.
 
 ```esql
 FROM .alert-actions

@@ -8,7 +8,7 @@ products:
 description: "Investigate alert episodes in Kibana's experimental alerting system. Understand what triggered an episode, assess metric behavior, find related episodes, review responders, and inspect underlying data."
 ---
 
-# Investigate alert episodes in the {{alerting-v2-system}} [investigate-alert-episodes]
+# Investigate alert episodes in the {{alerting-v2-system}} [experimental-alerting-system-investigate-alert-episodes]
 
 This page explains what information is available on the episode detail page in the {{alerting-v2-system}} and how to use it to understand what triggered an episode, assess its severity, identify recurring patterns, and coordinate a response. 
 
@@ -23,7 +23,7 @@ Each episode includes key context to answer the first questions in any investiga
 
 The **Rule overview** section shows the rule name, type, and status alongside a snippet of its {{esql}} query. Select **View rule details** to open the full rule configuration and confirm exactly what condition the rule evaluates.
 
-## Assess the metric behavior [assess-metric]
+## Assess the metric behavior [assess-metric-behavior]
 
 Each episode shows a trend chart comparing the evaluated metric against the rule's threshold conditions over the episode's lifetime. Use it to understand how far the metric exceeded the threshold, whether the breach was escalating or stabilizing, and when it peaked.
 
@@ -59,10 +59,10 @@ Each episode includes a metadata view that surfaces the field values computed or
 
 <!-- TODO: Confirm how users access the full source document from here — is it via Open in Discover, direct query of the source index, or is there no direct path? Add guidance once confirmed. -->
 
-## Access the response runbook [runbook]
+## Access the response runbook [access-runbook]
 
 If the rule has a runbook URL configured, you can access it directly from the episode to follow documented response procedures.
 
-## Assign the episode [episode-assignment]
+## Assign the episode [assign-episode]
 
-Assign an episode to a user to establish ownership and prevent duplicate work when multiple people are reviewing the same queue. Only one user can hold the assignment at a time; assigning replaces any existing assignee.
+Assign an episode to a user to establish ownership and prevent duplicate work when multiple people are reviewing the same queue. Only one user can hold the assignment at a time. Assigning replaces any existing assignee.
