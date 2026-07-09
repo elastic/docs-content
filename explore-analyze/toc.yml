@@ -385,11 +385,10 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
-      - file: alerting/compare-alerting-systems.md
-      - file: alerting/system-overview.md
-        children:
-          - file: alerting/experimental-alerting-system/how-it-works.md
-          - file: alerting/experimental-alerting-system/glossary.md
+      - hidden: alerting/compare-alerting-systems.md
+      - hidden: alerting/system-overview.md
+      - hidden: alerting/experimental-alerting-system/how-it-works.md
+      - hidden: alerting/experimental-alerting-system/glossary.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md

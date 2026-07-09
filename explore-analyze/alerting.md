@@ -18,6 +18,7 @@ description: Watch your data and respond to conditions automatically with Elasti
 
 Elastic alerting helps you watch your data and respond when something needs attention, whether that is a metric crossing a limit, an asset leaving an area on a map, or an unusual pattern in your time series. You set the conditions and how people should be notified. Elastic runs the checks for you.
 
+<!-- TODO: Uncomment when system-overview.md and compare-alerting-systems.md are published:
 Elastic offers three alerting systems. For most new projects and projects on the most recent {{kib}} versions, the {{alerting-v2-system}} is the recommended system. If you're not sure which fits your situation, refer to [Compare alerting systems](alerting/compare-alerting-systems.md).
 
 ## {{alerting-v2-system-cap}}
@@ -34,6 +35,7 @@ The {{alerting-v2-system}} runs next to {{kib}} alerting on {{serverless-full}} 
 :::
 
 [Get started with the {{alerting-v2-system}} →](alerting/system-overview.md)
+-->
 
 ## {{kib}} alerting
 
