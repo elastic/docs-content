@@ -54,9 +54,9 @@ This section explains the general process for setting up cross-cluster search in
     ::::
 
     ::::{tab-item} TLS certificate authentication
-    :::{note}
-    Certificate-based authentication is [deprecated](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs-cert) in {{stack}} 9.0. Use API key authentication instead.
-    :::
+    {applies_to}`stack: deprecated 9.0`
+
+    Certificate-based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead.
 
     With TLS certificate authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the *same names* defined locally. Create a role with *identical* names on both the local and remote clusters, and assign each the following privileges:
 
