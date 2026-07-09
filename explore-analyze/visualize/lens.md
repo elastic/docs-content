@@ -1,5 +1,5 @@
 ---
-navigation_title: Lens
+navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Lens [lens]
+# Lens visualizations [lens]
 
 **Lens** is {{kib}}'s visualization editor for building charts, tables, maps, and metrics. It supports two modes for creating visualizations:
 

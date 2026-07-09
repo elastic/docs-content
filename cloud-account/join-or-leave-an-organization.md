@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-invite-users.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
-  serverless: all
+  serverless: ga
   deployment:
-    ess: all
+    ess: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -13,34 +13,46 @@ products:
 
 # Join or leave an organization
 
-Organizations in {{ecloud}} group user accounts, projects and deployments under a common billing and access structure. If you have been invited to an organization, you can accept the invitation and become a member. You can also leave an organization at any time, as long as you don’t have active projects or deployments associated with your account.
+Organizations in {{ecloud}} group user accounts, projects, and deployments under a common billing and access structure. If you have been invited to an organization, you can accept the invitation and become a member. You can join multiple organizations, or [create a new organization](/deploy-manage/cloud-organization/manage-multiple-organizations.md#create-a-new-organization).
 
-This guide explains how to join or leave an organization, including steps for handling projects and deployments when switching organizations.
+You can also leave an organization, with some restrictions. Refer to [Leave an organization](#ec-leave-organization) for details.
+
+This guide explains how to join or leave an organization. To learn how to view organizations you have access to and switch between them, refer to [](switch-organizations.md).
+
+:::{tip}
+If you're an organization owner or admin, refer to [](/deploy-manage/cloud-organization/manage-multiple-organizations.md) to learn how to manage multiple organizations.
+:::
 
 ## Accept an invitation [ec-accept-invitation]
 
-Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation. If they do not join within that period, an administrator of the organization will have to send a new invitation. Refer to [manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md) for more information.
+When you're invited to join an organization, you receive an email with a link to accept the invitation. Invitations expire after 72 hours. If you don't accept within that period, an administrator of the organization needs to send a new invitation. Refer to [manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md) for more information.
+
+To accept an invitation:
+
+1. Open the invitation email and click **Accept invitation**.
+2. Log in if prompted. If you already have an active session in your browser, you don't need to log in again.
+3. After accepting, you're switched to the new organization automatically. The new organization also appears in your [list of organizations](/cloud-account/switch-organizations.md).
+
+:::{note}
+If the organization enforces a specific login method, such as SAML SSO, you're redirected to that login flow when accepting the invitation.
+:::
+
+To decline an invitation, you can ignore the email. The invitation expires automatically after 72 hours.
 
 ## Leave an organization [ec-leave-organization]
 
-On the **Members** tab of the **Organization** page, click the three dots corresponding to your email address and select **Leave organization**.
+You can leave an organization at any time. If you are the only owner of an organization, you must transfer ownership before leaving.
 
-If you’re the only user in the organization, you can only leave if you deleted all your deployments and projects, and you don’t have pending bills.
+You can leave only the organization you're currently signed in to. To leave a different organization, [switch to it](/cloud-account/switch-organizations.md#switch-to-a-different-organization) first.
 
-## Join an organization from an existing {{ecloud}} account [ec-join-invitation]
+:::{warning}
+Leaving an organization revokes your access to all of its resources, including deployments, projects, and settings. This action cannot be undone. To rejoin the organization, ask an organization owner to invite you again.
+:::
 
-If you already belong to an organization, and you want to join a new one you will need to leave your existing organization and follow this steps:
+To leave your current organization:
 
-1. Make sure you do not have active projects or deployments before you leave your current organization.
-2. Delete your projects or deployments and clear any bills.
-3. Leave your current organization.
-4. Ask the administrator to invite you to the organization you want to join.
-5. Accept the invitation that you will get by email.
-
-Alternatively, for Elastic Cloud Hosted deployments, there's a possibility to migrate your deployments to the new organization through back up and restore operations. In such case:
-
-1. [Back up your deployments to any private repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md) so that you can restore them to your new organization.
-2. Leave your current organization.
-3. Ask the administrator to invite you to the organization you want to join.
-4. Accept the invitation that you will get by email.
-5. Configure the private repository in your new organization and restore the backup you took in step 1.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From the top navigation menu, click on the user menu and select **Profile**.
+3. Click the **My organizations** tab.
+4. Click **Leave current organization**.
+5. In the confirmation dialog, click **Leave current organization** to confirm.
