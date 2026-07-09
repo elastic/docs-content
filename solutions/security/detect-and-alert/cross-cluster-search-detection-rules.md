@@ -27,23 +27,46 @@ This section explains the general process for setting up cross-cluster search in
     * [Add remote clusters using API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md)
     * [Add remote clusters using TLS certificate authentication](../../../deploy-manage/remote-clusters/remote-clusters-cert.md)
 
-2. On both the local and remote clusters, [create a role for {{ccs}} privileges](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs-cert), and make sure the two roles have *identical* names. Assign each role the following privileges:
+2. Configure the privileges that allow searching the remote indices. The required setup depends on the authentication method you used to connect the clusters. For full details, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
 
-    1. **Local cluster role**: Assign the `read` privilege to the indices you want to search, using *both* the local and remote index patterns for each index. To specify a remote index, use the pattern `<remote_cluster_name>:<index_name>`.
+    :::::{tab-set}
+    ::::{tab-item} API key authentication
+    With API key authentication (recommended), the remote cluster's access is governed by the cross-cluster API key, so you only need to create a role on the **local** cluster. You don't need to create a role on the remote cluster.
 
-        For example, if the remote cluster’s name is `remote-security-data` and you want to query the `logs-*` indices, include both the `logs-*` and `remote-security-data:logs-*` index patterns and assign them the `read` privilege.
+    Create a role on the local cluster with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) for the remote cluster alias and the indices you want to search. Assign the `read`, `read_cross_cluster`, and `view_index_metadata` privileges.
 
-        :::{image} /solutions/images/security-ccs-local-role.png
-        :alt: Local cluster role configuration
-        :screenshot:
-        :::
+    For example, if the remote cluster is connected as `remote-security-data` and you want to query the `logs-*` indices:
 
-    2. **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don’t need to include the remote cluster’s name here.
+    ```console
+    POST /_security/role/remote-search
+    {
+      "remote_indices": [
+        {
+          "clusters": [ "remote-security-data" ],
+          "names": [ "logs-*" ],
+          "privileges": [ "read", "read_cross_cluster", "view_index_metadata" ]
+        }
+      ]
+    }
+    ```
 
-        :::{image} /solutions/images/security-ccs-remote-role.png
-        :alt: Remote cluster role configuration
-        :screenshot:
-        :::
+    If the user also needs to query local indices or use {{kib}}, add the required local privileges to the same role or assign the user additional roles.
+    ::::
+
+    ::::{tab-item} TLS certificate authentication
+    :::{note}
+    Certificate-based authentication is [deprecated](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs-cert) in {{stack}} 9.0. Use API key authentication instead.
+    :::
+
+    With TLS certificate authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the *same names* defined locally. Create a role with *identical* names on both the local and remote clusters, and assign each the following privileges:
+
+    * **Local cluster role**: Assign the `read` privilege to the indices you want to search, using *both* the local and remote index patterns for each index. To specify a remote index, use the pattern `<remote_cluster_name>:<index_name>`.
+
+        For example, if the remote cluster's name is `remote-security-data` and you want to query the `logs-*` indices, include both the `logs-*` and `remote-security-data:logs-*` index patterns and assign them the `read` privilege.
+
+    * **Remote cluster role**: Assign the `read` and `read_cross_cluster` privileges to the indices you want to search. You don't need to include the remote cluster's name here.
+    ::::
+    :::::
 
 3. On the local cluster:
 
