@@ -15,9 +15,9 @@ Manage your collection of dashboards in {{product.kibana}} using search, filteri
 
 On this page, find and organize your dashboards:
 
-- [Browse dashboards](#find-dashboards): Search, filter, and sort your dashboard list.
-- [Browse saved visualizations and annotation groups](#find-visualizations-annotation-groups): Open the Visualize Library.
-- [Keep track of your favorite dashboards](#_keep_track_of_your_favorite_dashboards): Star dashboards to find them quickly.
+- [Browse dashboards](#find-dashboards): Search, filter, and sort to quickly find the dashboards you need in a large collection.
+- [Browse saved visualizations and annotation groups](#find-visualizations-annotation-groups): Manage the visualizations saved in the library that you can reuse across multiple dashboards.
+- [Keep track of your favorite dashboards](#_keep_track_of_your_favorite_dashboards): Flag the dashboards you use often so you can access them faster.
 - [View dashboard usage](#_view_dashboard_usage): Check how much a dashboard is viewed.
 
 To move dashboards between environments or manage them as code, refer to:
