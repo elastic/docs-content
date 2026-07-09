@@ -8,7 +8,7 @@ products:
 description: "Rules in Kibana's experimental alerting system define what to detect using ES|QL. Evaluation runs on a schedule and alerts, action policies, and notifications flow from rule detections."
 ---
 
-# Rules in the {{alerting-v2-system}} [experimental-alerting-system-rules]
+# Rules in the {{alerting-v2-system}} [rules]
 
 A rule is where the {{alerting-v2-system}} starts. It points {{kib}} at the data you care about, describes what counts as a problem in {{esql}}, and says how often to check. Alerts, action policies, and notifications all flow from what a rule detects. 
 

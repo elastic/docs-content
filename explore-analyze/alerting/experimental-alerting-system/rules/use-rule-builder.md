@@ -8,7 +8,7 @@ products:
 description: "Create Threshold Alert rules in Kibana's experimental alerting system using a guided form that generates ES|QL automatically."
 ---
 
-# Create a rule using the rule builder in the {{alerting-v2-system}} [experimental-alerting-system-use-rule-builder]
+# Create a rule using the rule builder in the {{alerting-v2-system}} [use-rule-builder]
 
 The rule builder provides a guided form for creating rules without writing {{esql}} by hand. The builder generates the {{esql}} query automatically from structured inputs for the data source, aggregation, filters, and alert conditions.
 

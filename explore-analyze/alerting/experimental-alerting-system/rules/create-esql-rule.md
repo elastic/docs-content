@@ -8,7 +8,7 @@ products:
 description: "Write ES|QL detection queries for rules in Kibana's experimental alerting system using the rule form or YAML editor, with a live query sandbox for previewing results."
 ---
 
-# Create an {{esql}} rule in the {{alerting-v2-system}} [experimental-alerting-system-create-esql-rule]
+# Create an {{esql}} rule in the {{alerting-v2-system}} [create-esql-rule]
 
 The {{esql}} rule path lets you write the detection query directly. There are two ways to define the rule: 
 

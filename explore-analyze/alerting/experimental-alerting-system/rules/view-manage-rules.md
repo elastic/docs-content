@@ -8,7 +8,7 @@ products:
 description: "Search, filter, and bulk-manage rules in Kibana's experimental alerting system. Use inline editing, the rule summary flyout, and the rule details page to manage rules."
 ---
 
-# View and manage rules in the {{alerting-v2-system}} [experimental-alerting-system-manage-rules]
+# View and manage rules in the {{alerting-v2-system}} [manage-rules]
 
 Rule management is part of the {{alerting-v2-system}} in {{kib}}. This page covers how to find and filter rules in the rules list, quick-edit settings without leaving the list, use the rule summary flyout, and navigate the rule details page including the alert activity timeline.
 

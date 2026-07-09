@@ -8,7 +8,7 @@ products:
 description: "How Agent Builder creates rules and action policies in the experimental alerting system using the rule management skill, what the agent produces, and the save-order dependency."
 ---
 
-# Create rules and action policies with {{agent-builder}} [experimental-alerting-system-create-rules-agent-builder]
+# Create rules and action policies with {{agent-builder}} [create-rules-agent-builder]
 
 Rule and action policy authoring in {{agent-builder}} is part of the {{alerting-v2-system}} in {{kib}}. The {{alerting-v2-system}} registers rules and action policies as attachment types in {{agent-builder}}, so an agent equipped with the rule management skill can propose, create, and configure them through natural language conversation.
 

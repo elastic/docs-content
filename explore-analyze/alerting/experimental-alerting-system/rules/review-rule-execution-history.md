@@ -8,7 +8,7 @@ products:
 description: "Use the Execution History page in Kibana's experimental alerting system to monitor rule and action policy execution outcomes across all rules in a space."
 ---
 
-# Review execution history in the {{alerting-v2-system}} [experimental-alerting-system-review-rule-execution-history]
+# Review execution history in the {{alerting-v2-system}} [review-rule-execution-history]
 
 Execution history gives you a cross-rule, filterable log of every rule run and action policy dispatch across the space. Rule executions and action policy dispatcher decisions are shown separately, with different scopes.
 

@@ -8,7 +8,7 @@ products:
 description: "How to structure the ES|QL detection query for a rule in the experimental alerting system. Covers the base query, the optional alert condition that gates which rows become breaches, and dynamic parameters for time bounds and configurable thresholds."
 ---
 
-# {{esql}} query in the {{alerting-v2-system}} [experimental-alerting-system-esql-query-rule]
+# {{esql}} query in the {{alerting-v2-system}} [esql-query-rule]
 
 Every rule in the {{alerting-v2-system}} uses an {{esql}} query to define what to evaluate. The query consists of a base query that shapes and filters the data and an optional alert condition that determines which rows become alert events. For more advanced use cases, the query also supports [dynamic values](#dynamic-query-values) for filtering by the evaluation window or setting configurable thresholds through the rule form.
 
