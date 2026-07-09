@@ -100,7 +100,7 @@ serverless: unavailable
 stack: preview =9.1, ga 9.2+
 ```
 
-Select an existing {{ilm-init}} policy to automate how data moves through phases (hot, warm, cold) as it ages. {{ilm-init}} policies let you standardize data retention across Streams and other data streams.
+Select an existing {{ilm-init}} policy to automate how data moves through phases (Hot, Warm, Cold) as it ages. {{ilm-init}} policies let you standardize data retention across Streams and other data streams.
 
 To follow an existing policy:
 
@@ -127,27 +127,27 @@ stack: ga 9.4+
 
 When a stream follows an {{ilm-init}} policy, the **Data lifecycle** panel shows the phases defined in that policy as a visual bar. You can edit existing phases or add new ones directly from the **Retention** tab:
 
-- To edit an existing phase, select the phase in the **Data lifecycle** panel and select the edit ({icon}`pencil`) icon.
+- To edit an existing phase, select the phase in the **Data lifecycle** panel and select the edit icon ({icon}`pencil`).
 - To add a phase, select **Add data phase**, then choose a phase.
 
 This opens the **Edit data phases** window where you can configure or update your phases. The following phases are available:
 
 **Hot**
-: The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
+:   The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
 
 **Warm**
-: The index is updated infrequently but still queried. Set the minimum age for data to move into this phase. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
+:   The index is updated infrequently but still queried. Set the minimum age for data to move into this phase. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
 
 **Cold**
-: The index is rarely updated or queried, and slower query performance is acceptable. Set the minimum age for data to move into this phase. Options include enabling read-only access, [downsampling](#streams-configure-retention-downsampling), and [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
+:   The index is rarely updated or queried, and slower query performance is acceptable. Set the minimum age for data to move into this phase. Options include enabling read-only access, [downsampling](#streams-configure-retention-downsampling), and [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
 
 **Frozen**
-: The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository. The frozen phase requires a snapshot repository.
+:   The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository. The frozen phase requires a snapshot repository.
 
 **Delete**
-: Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
+:   Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
 
-For more information on {{ilm-init}} phases and available actions, refer to [Index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
+For more information, refer to [{{ilm}} phases and actions](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 ### Downsampling [streams-configure-retention-downsampling]
 

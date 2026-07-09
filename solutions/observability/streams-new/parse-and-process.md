@@ -19,17 +19,17 @@ products:
 
 Most log data arrives as unstructured text. To filter, search, and analyze it effectively, you need to extract fields from that raw content. For example, extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue.
 
-Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
+The Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
 
-- **[Add processors and conditions](#streams-add-processors)**: Use the Streams UI without needing to manually configure pipeline JSON or Grok syntax.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**: Let Streams analyze sample documents and suggests pipeline patterns, so you're refining instead of writing from scratch.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Add processors and conditions with pipeline suggestions](#streams-add-processors)**: Add processors and conditions in Streams without configuring pipeline JSON or Grok syntax, or let Streams analyze sample documents and suggest a pipeline for you to refine.
+- **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**:
 - **[Preview changes](#streams-preview-changes)**: Use the data preview to view which fields your pattern extracts per document, so you can verify field extraction before saving.
 - **[Detect and resolve processing issues](#streams-detect-failures)**: Identify which processor or condition is causing documents to fail during processing.
 - **[Catch mapping conflicts](#streams-detect-failures)**: Identify potential mapping conflicts before they cause cluster-wide failures. Streams simulates the indexing process end-to-end before deploying.
 
 ## Add and configure processors [streams-add-processors]
 
-Streams uses [{{es}} ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors and conditions to transform your data, without requiring you to switch interfaces and manually update pipelines.
+Streams uses [{{es}} ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) underneath made up of processors and conditions to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
 :::::::{stepper}
 ::::::{step} Open the Processing tab
@@ -58,7 +58,7 @@ serverless: preview
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
-Setting up processors is generally a multi-step process. For example, you might need a grok processor to extract fields, a date processor to convert timestamps, and a remove processor to remove temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
+Setting up processors is generally a multi-step process. For example, you might need a Grok processor to extract fields, a date processor to convert timestamps, and a remove processor to remove temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
 
 1. From the **Processing** tab, select **Suggest a pipeline**.
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
@@ -81,7 +81,7 @@ If you know which processors you want to use, you can add them manually from the
    Let Streams suggest patterns for [Grok](./processors/grok.md#streams-grok-patterns) and [dissect](./processors/dissect.md#streams-dissect-patterns) processors by selecting **Generate pattern**. This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
    :::
 
-1. Configure the processor and select **Create** to save the processor.
+1. Configure the processor, then select **Create** to save it.
 1. Optional: Turn on **Ignore failures** if you want document processing to continue even when this processor fails.
 1. Optional: For dissect, Grok, and rename processors, turn on **Ignore missing fields** if you want processing to continue when a source field is missing.
 ::::
@@ -95,7 +95,7 @@ To add a condition:
 1. Select **Create** → **Create condition**.
 1. Provide a **Field**, a **Value**, and a comparator.
 1. Select **Create condition**.
-1. After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+1. After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle` icon.
 
 Refer to [Conditions](./streamlang.md#streams-streamlang-conditions) in the Streamlang reference for supported operators and examples.
 ::::
@@ -104,14 +104,11 @@ Refer to [Conditions](./streamlang.md#streams-streamlang-conditions) in the Stre
 ::::::{step} Preview changes
 :anchor: streams-preview-changes
 
-After adding processors and conditions, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
+The **Data preview** table loads 100 documents from your existing data and updates automatically when you add or edit processors or conditions. To fetch new samples and rerun the simulation, select the refresh icon {icon}`refresh`.
 
-When you add or edit processors, the **Data preview** tab updates automatically.
+For any newly created processors and conditions, the preview results are reliable, and you can freely create and reorder processors and conditions during the preview.
 
-The **Data preview** tab loads 100 documents from your existing data and runs your changes against them.
-For any newly created processors and conditions, the preview results are reliable, and you can freely create and reorder during the preview.
-
-If you edit the stream after previewing your changes, keep the following in mind:
+If you edit the stream after saving your changes, keep the following in mind:
 
 - Adding processors to the end of the list works as expected.
 - Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
@@ -129,7 +126,7 @@ Streams helps you catch issues before you apply your processors:
 
 Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
 
-In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided grok pattern:
+In the following screenshot, the **Failed** percentage indicates that some messages didn't match the provided Grok pattern:
 
 :::{image} ../../images/logs-streams-parsed.png
 :alt: Data preview tab showing the percentage of parsed and failed documents
@@ -209,7 +206,7 @@ Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, co
 
 ## Known limitations [streams-known-limitations]
 
-- Streams does not support all processors. Refer to the [Streamlang reference](./streamlang.md) for supported processors.
+- Streams does not support all ingest processors. Refer to the [Streamlang reference](./streamlang.md) for supported processors.
 - The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
 - Streams can't properly handle arrays. Although it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./processors/manual-pipeline-configuration.md) that supports {{product.painless}} scripting and all ingest processors.
 
@@ -217,7 +214,7 @@ Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, co
 
 When you save processors in the Streams UI, Streams automatically manages the underlying ingest pipeline configuration. You don't need to edit pipeline JSON directly. Streams identifies the best-matching pipeline for your data stream, appends your processing logic to it, and maintains a dedicated managed pipeline to keep your changes isolated and reproducible. Expand the following section for more detail on how Streams applies processing changes.
 
-::::{dropdown} Automatic pipeline management
+::::{dropdown} Implementation details: automatic pipeline management
 
 When you save processors, Streams appends processing to the best-matching ingest pipeline for the data stream. It either chooses the best-matching pipeline ending in `@custom` in your data stream, or it adds one for you.
 
@@ -237,7 +234,7 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
 // Example processor added to the relevant @custom pipeline
 {
   "pipeline": {
-    "name": "<data_stream_name>@stream.processing", // for example, logs-my-app-default@stream.processing
+    "name": "<data_stream_name>@stream.processing", // For example, `logs-my-app-default@stream.processing`
     "if": "ctx._index == '<data_stream_name>'",
     "ignore_missing_pipeline": true,
     "description": "Call the stream's managed pipeline - do not change this manually but instead use the Streams UI or API"

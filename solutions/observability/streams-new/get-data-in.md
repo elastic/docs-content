@@ -61,7 +61,7 @@ serverless: preview
 
 Wired streams send your documents to a managed endpoint, from which you can route data into child streams based on [partitioning](./organize-your-data.md) rules. Child streams automatically inherit mappings, lifecycle settings, and processors from the parent, and configuration changes propagate through the hierarchy.
 
-{applies_to}`{serverless: preview, stack: preview 9.4+}` Two endpoints are available. Use **`logs.otel`** (recommended) when sending OTel-native data or when you want a consistent, normalized format — Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
+{applies_to}`{serverless: preview, stack: preview 9.4+}` Two endpoints are available. Use **`logs.otel`** (recommended) when sending OTel-native data or when you want a consistent, normalized format. Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
 
 To send data to a wired stream, configure your shipper to point to the appropriate endpoint:
 
@@ -188,7 +188,7 @@ Once data appears in Discover, you're ready to start organizing, parsing, and co
 Classic streams let you use the Streams UI to extract fields and configure data retention for data that's already being ingested into {{es}} without additional configuration.
 
 :::{warning}
-Do not reroute or migrate existing data streams to the `logs`, `logs.otel`, or `logs.ecs` endpoints. Classic streams work with your existing data streams in place — no migration is required or recommended.
+Do not reroute or migrate existing data streams to the `logs`, `logs.otel`, or `logs.ecs` endpoints. Classic streams work with your existing data streams in place. No migration is required.
 :::
 
 Classic streams:

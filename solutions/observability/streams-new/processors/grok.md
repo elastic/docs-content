@@ -11,28 +11,28 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
-description: Parse unstructured log messages and extract fields using predefined or custom grok patterns with the Streams grok processor in Streamlang.
+description: Parse unstructured log messages and extract fields using predefined or custom Grok patterns with the Streams Grok processor in Streamlang.
 ---
 # Grok processor [streams-grok-processor]
 
-The **Grok** processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The grok processor is powerful and can parse a wide variety of log formats.
+The **Grok** processor parses unstructured log messages using a set of predefined patterns to match the log messages and extract the fields. The Grok processor is powerful and can parse a wide variety of log formats.
 
-You can provide multiple patterns to the grok processor. The grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns are skipped.
+You can provide multiple patterns to the Grok processor. The Grok processor tries to match the log message against each pattern in the order they are provided. If a pattern matches, it extracts the fields and the remaining patterns are skipped.
 
-If a pattern doesn't match, the grok processor tries the next pattern. If no patterns match, the Grok processor fails and you can troubleshoot the issue. Instead of writing grok patterns, you can have Streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
+If a pattern doesn't match, the Grok processor tries the next pattern. If no patterns match, the Grok processor fails and you can troubleshoot the issue. Instead of writing Grok patterns, you can have Streams generate patterns for you. Refer to [generate patterns](#streams-grok-patterns) for more information.
 
 :::{tip}
-To improve pipeline performance, start with the most common patterns first, then add more specific patterns. This reduces the number of times the grok processor has to run.
+To improve pipeline performance, start with the most common patterns first, then add more specific patterns. This reduces the number of times the Grok processor has to run.
 :::
 
-To parse a log message with a grok processor:
+To parse a log message with a Grok processor:
 
-1. Set the **Source Field** to the field you want to search for grok matches.
+1. Set the **Source Field** to the field you want to search for Grok matches.
 1. Set the patterns you want to use in the **Grok patterns** field. Refer to the [example pattern](#streams-grok-example) for more information on patterns.
 
 This functionality uses the {{es}} [Grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) internally, but you configure it in Streamlang. Streamlang doesn’t always have 1:1 parity with the ingest processor options and behavior. Refer to [Processor limitations and inconsistencies](../streamlang.md#streams-processor-inconsistencies).
 
-## Example grok pattern [streams-grok-example]
+## Example Grok pattern [streams-grok-example]
 
 Grok patterns are defined in the following format:
 
@@ -60,12 +60,12 @@ Generated patterns work best on semi-structured data. For very custom logs with 
 :screenshot:
 :::
 
-To add a generated grok pattern:
+To add a generated Grok pattern:
 
 1. Select **Create** → **Create processor**.
 1. Select **Grok** from the **Processor** menu.
 1. Select **Generate pattern**.
-1. Select **Accept** to add a generated pattern to the list of patterns used by the grok processor.
+1. Select **Accept** to add a generated pattern to the list of patterns used by the Grok processor.
 
 ### How does **Generate patterns** work? [streams-grok-pattern-generation]
 
@@ -74,12 +74,12 @@ To add a generated grok pattern:
 
 ## YAML reference [streams-grok-yaml-reference]
 
-In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the grok processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
+In [YAML mode](../parse-and-process.md#streams-editing-yaml-mode), configure the Grok processor using the following parameters. For the complete Streamlang syntax, refer to the [Streamlang reference](../streamlang.md).
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
 | `from` | string | Yes | Source field to parse. |
-| `patterns` | string[] | Yes | One or more grok patterns, tried in order. |
+| `patterns` | string[] | Yes | One or more Grok patterns, tried in order. |
 | `pattern_definitions` | object | No | Custom pattern definitions as key-value pairs. |
 | `ignore_missing` | boolean | No | When `true`, skip this processor if the source field is missing. |
 

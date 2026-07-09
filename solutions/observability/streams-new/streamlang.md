@@ -84,7 +84,7 @@ Streams exposes a Streamlang configuration, but internally it relies on {{es}} i
 
 - **Consistently typed fields**: {{esql}} requires one consistent type per column, so workflows that produce mixed types across documents won't transpile.
 - **Conversion of types**: {{esql}} and ingest pipelines accept different conversion combinations and strictness (especially for strings), so `convert` can behave differently across targets.
-- **Multi-value commands/functions**: Fields can contain one or multiple values. {{esql}} and ingest processors don't always handle these cases the same way. For example, grok in {{esql}} handles multiple values automatically, while the grok processor does not.
+- **Multi-value commands/functions**: Fields can contain one or multiple values. {{esql}} and ingest processors don't always handle these cases the same way. For example, Grok in {{esql}} handles multiple values automatically, while the Grok processor does not.
 - **Conditional execution**: {{esql}}'s enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
 - **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while {{esql}} flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 

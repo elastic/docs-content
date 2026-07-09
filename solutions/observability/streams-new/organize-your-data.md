@@ -15,11 +15,11 @@ products:
   - id: elastic-stack
 ---
 
-# Organize your data with Streams
+# Organize your data with wired streams
 
 When logs from multiple sources flow into a single wired stream, partitioning lets you route subsets of that data into dedicated child streams. Each child stream can then be managed independently, with its own retention policy, processing rules, and field mappings.
 
-For example, you can route firewall logs to a `logs.otel.firewall` child stream with a 7-day retention, and application logs to a `logs.otel.application` child stream with a 30-day retention, without duplicating any shared configuration.
+For example, from the `logs.otel` root wired stream, you can route firewall logs to a `logs.otel.firewall` child stream with a 7-day retention and application logs to a `logs.otel.application` child stream with a 30-day retention without duplicating any shared configuration.
 
 Streams also gives you the following functionality:
 

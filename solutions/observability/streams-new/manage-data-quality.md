@@ -53,8 +53,8 @@ Streams uses the following {{esql}} queries to calculate the quality score for a
 Streams calculates data quality as follows:
 
 - **Good:** Both the **Degraded documents** percentage and the **Failed documents** percentage are 0.
-- **Degraded:** Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 0 and less than or equal to 3.
-- **Poor:** Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 3.
+- **Degraded:** Either the **Degraded documents** percentage or the **Failed documents** percentage is greater than 0 and less than or equal to 3.
+- **Poor:** Either the **Degraded documents** percentage or the **Failed documents** percentage is greater than 3.
 :::
 
 ::::::
@@ -106,5 +106,5 @@ When the failure store is off, the **Failed documents** component shows an **Ena
 To get notified when the percentage of degraded documents in a stream exceeds a threshold, create an alert rule from the **Data quality** tab.
 
 1. Open the **Data quality** tab for the stream you want to monitor.
-2. Select **Create rule** ({icon}`bell`).
+2. Select **Create rule** {icon}`bell`.
 3. [Define the conditions](../incident-management/create-a-degraded-docs-rule.md#degraded-docs-rule-conditions) for your rule.
