@@ -60,7 +60,7 @@ This can happen when your role's index privileges are defined as a single, comma
 
 To fix this, itemize the index privileges so each pattern is its own entry:
 
-1. Go to **Stack Management** → **Roles** and edit the affected role.
+1. Go to the **Custom Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then edit the affected role.
 2. Split any combined, comma-separated index patterns into separate entries, then save the role.
 3. Edit and save the affected rule so it picks up the updated privileges. Turning a rule off and on does not refresh its privileges.
 ::::
