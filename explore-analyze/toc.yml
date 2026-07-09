@@ -385,6 +385,7 @@ toc:
           - file: report-and-share/reporting-troubleshooting-pdf.md
   - file: alerting.md
     children:
+      - file: alerting/experimental-alerting-system/authorization.md
       - file: alerting/alerts.md
         children:
           - file: alerting/alerts/alerting-getting-started.md
