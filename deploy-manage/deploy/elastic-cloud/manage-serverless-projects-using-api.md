@@ -13,7 +13,6 @@ On this page, you can find examples of how to create and manage serverless proje
 - [Creating a project](#general-manage-project-with-api-create-a-serverless-elasticsearch-project)
 - [Retrieving project details](#general-manage-project-with-api-get-project)
 - [Retrieving the project's status](#general-manage-project-with-api-get-project-status)
-- [Resetting credentials](#general-manage-project-with-api-reset-credentials)
 - [Deleting a project](#general-manage-project-with-api-delete-project)
 - [Updating a project](#general-manage-project-with-api-update-project)
 - [Listing regions where projects can be created](#general-manage-project-with-api-list-available-regions)
@@ -38,10 +37,10 @@ The available APIs are grouped by project type:
 
 To use the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
 
-1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles, so that it can manage projects:
+1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles, so that it can create and manage projects:
 
-   - **Organization owner** to create and manage projects without restriction.
-   - **Cloud resource access** with the **Admin** role assigned to **all projects** of the relevant type ({{es}}, {{observability}}, or Security). Scoping the role to all projects is required to be able to create new projects.
+   - **Organization owner**
+   - **Cloud resource access** with the **Admin** role assigned to **all projects** of the relevant type ({{es}}, {{observability}}, or Security)
 
    Select the key's **API access** level based on what you need it to do: **Cloud API** access is enough to manage projects, while **Cloud, {{es}}, and {{kib}} API** access also grants access to the project's {{es}} and {{kib}} endpoints. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
@@ -69,7 +68,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 1. Replace `My project` with a more descriptive name in this call.
 2. You can obtain a [list of available regions](#general-manage-project-with-api-list-available-regions). 
 
-The response from the create project request will include the created project details, including the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and the credentials of a built-in `admin` user.
+The response from the create project request will include the created project details, including the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and a set of built-in `admin` credentials.
 
 Example of `Create project` response:
 
@@ -89,9 +88,9 @@ Example of `Create project` response:
 ```
 
 :::{note}
-The `credentials` field contains a built-in `admin` user. This user exists so that API-first workflows can obtain an initial way to authenticate to the project's {{es}} and {{kib}} APIs without any UI interaction, such as logging in to {{kib}} through SSO.
+For programmatic access to the project's {{es}} and {{kib}} APIs, we recommend creating an [{{ecloud}} API key with access to the {{es}} and {{kib}} APIs](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access) rather than using the built-in `admin` credentials.
 
-For ongoing programmatic access, we recommend creating an [{{ecloud}} API key with project access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access) instead of relying on the `admin` user. {{ecloud}} API keys can be created entirely through the API, can grant access to the {{es}} and {{kib}} APIs of one or more projects, and let you manage access centrally, which makes them the preferred authentication method for automated, API-only flows.
+The `admin` credentials returned in the `credentials` field serve as a fallback mechanism to access the project when no API key is available. Store them in a secure location, and use the [reset credentials API]({{cloud-serverless-apis}}operation/operation-resetelasticsearchprojectcredentials) if you need to recover or rotate them.
 :::
 
 You can store the project ID as an environment variable for the next requests:
@@ -125,20 +124,6 @@ Example response:
     "phase":"initializing"
 }
 ```
-
-## Reset credentials [general-manage-project-with-api-reset-credentials]
-
-This endpoint resets the password of the built-in `admin` user that is returned when the project is created. Use it when you need to recover or rotate those credentials, for example if you didn't store the password returned at project creation, or if you want to rotate it as part of your security practices.
-
-```bash
-curl -H "Authorization: ApiKey $API_KEY" \
-    -XPOST \
-    "https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/${PROJECT_ID}/_reset-credentials"
-```
-
-:::{tip}
-For most use cases, we recommend authenticating to the {{es}} and {{kib}} APIs with an [{{ecloud}} API key with project access](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access) rather than relying on the built-in `admin` user.
-:::
 
 ## Delete a project [general-manage-project-with-api-delete-project]
 
