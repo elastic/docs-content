@@ -58,10 +58,7 @@ A rule might warn that it may not have the required read privileges for index pa
 
 This can happen when your role's index privileges are defined as a single, comma-separated pattern. When you enter multiple index patterns as one combined entry (for example, `auditbeat-*,filebeat-*`), the privileges aren't granted to each pattern individually, so the rule's privilege check fails.
 
-To fix this, itemize the index privileges by adding each pattern as its own entry:
-
-* Incorrect: `auditbeat-*,filebeat-*` (combined into one entry)
-* Correct: `auditbeat-*` and `filebeat-*` (each pattern as a separate entry)
+To fix this, itemize the index privileges so each pattern is its own entry:
 
 1. Go to **Stack Management** → **Roles** and edit the affected role.
 2. Split any combined, comma-separated index patterns into separate entries, then save the role.
