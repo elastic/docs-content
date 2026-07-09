@@ -9,7 +9,7 @@ products:
 description: "Privilege requirements for Kibana experimental alerting features: which Kibana feature privileges and Elasticsearch index privileges each role needs to manage rules, action policies, alerts, and query rule events and alert actions."
 ---
 
-# Configure access to the {{alerting-v2-system}} [alerting-privileges]
+# Configure access to the {{alerting-v2-system}} [experimental-alerting-system-access]
 
 To use the {{alerting-v2-system}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
@@ -77,7 +77,7 @@ These privileges control who can set up the action policies and workflows that r
 
 ### Action policies [action-policy-management]
 
-The **Action Policies** privilege controls who can manage the policies that route alert episode notifications.
+The **Action Policies** privilege controls who can manage the action policies that route alert episode notifications.
 
 | Level | What you can do |
 |---|---|
@@ -123,7 +123,7 @@ For `.rule-events` and `.alert-actions`, {{es}} `read` access is bundled into th
 | `.kibana-event-log-*` | Action policy dispatch outcomes written by the dispatcher: `dispatched`, `throttled`, and `unmatched` | Custom role with `read` index privilege. Not covered by the automatic grant. |
 
 <!-- TODO: When PR #6527 merges, update the `.alert-actions` row above ("What it stores" column) to add a link to the field reference. Full updated cell:
-"User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [alert data stream field reference](../alerts/field-reference.md#action-type-values)." -->
+"User-triggered triage records (acknowledge, snooze, resolve, assign) and system-written dispatcher records. For all `action_type` values, refer to the [alert data stream field reference](../alerts/field-reference.md)." -->
 
 ## Next steps [alerting-access-next-steps]
 
@@ -133,6 +133,6 @@ With access configured, you're ready to [create your first rule](create-your-fir
 above with the bulleted list below (delete the prose line, uncomment the list).
 
 - **[Create a rule](../rules/create-a-rule.md):** Write the {{esql}} query that defines what to detect, choose Signal or Alert mode, and configure grouping and thresholds. ← PR #6523
-- **[Set up workflows](../workflows-alerting.md):** Configure the automation objects that deliver notifications — email, Slack, webhook, and so on. ← PR #6525
+- **[Set up workflows](../notifications-actions.md):** Configure the automation objects that deliver notifications — email, Slack, webhook, and so on. ← PR #6525
 - **[Create action policies](../action-policies/create-configure-action-policy.md):** Define who gets notified, how often, and under what conditions. ← PR #6525
 -->

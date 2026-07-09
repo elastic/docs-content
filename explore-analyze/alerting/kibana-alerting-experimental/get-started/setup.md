@@ -9,7 +9,7 @@ products:
 description: "What you need before using the experimental alerting system in Kibana: license requirements, connectors, data, and space selection. Also covers how to turn the system on and off using the alerting:v2:enabled advanced setting."
 ---
 
-# Set up the {{alerting-v2-system}} [alerting-setup]
+# Set up the {{alerting-v2-system}} [experimental-alerting-system-setup]
 
 This page covers what you need before using the {{alerting-v2-system}}, and how to turn it on and off in your space.
 
