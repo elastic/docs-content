@@ -194,7 +194,7 @@ Select **View JSON** to view the full raw response data. For more information, r
 stack: ga 9.4+
 ```
 
-You control every write operation an agent performs. Whenever an agent proposes to create, update, or delete a resource, the agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
+At certain points an agent pauses and hands control back to you before it continues. This pattern is known as human-in-the-loop (HITL). While a conversation is paused this way, it shows an **Awaiting your input** status in the [chat history panel](#track-conversation-status).
 
 #### Confirm a change
 
