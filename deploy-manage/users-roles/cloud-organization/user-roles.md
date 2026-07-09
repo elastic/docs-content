@@ -83,6 +83,8 @@ The predefined roles for connected clusters are:
 
 The exact permissions granted by **Admin** and **Viewer** depend on the {{ecloud}} service used with Cloud Connect. For [AutoOps](/deploy-manage/monitor/autoops.md), refer to [{{ecloud}} roles for AutoOps](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles).
 
+Members with a connected cluster access role can also view usage and costs, and view or manage budgets, for the connected clusters in their scope, without needing an organization-level billing role. The exact billing actions available depend on their level of access to each cluster. For details, refer to [Monitor and analyze usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) and [Manage budgets and notifications](/deploy-manage/cloud-organization/billing/manage-billing-notifications.md).
+
 :::{note}
 As more services become available for use with [Cloud Connect](/deploy-manage/cloud-connect.md), refer to each service’s documentation for role-specific permissions. The role names in {{ecloud}} remain consistent.
 :::
