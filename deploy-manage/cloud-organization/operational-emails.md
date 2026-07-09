@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-operational-emails.html
 applies_to:
   deployment:
-    ess: all
+    ess: ga
 products:
   - id: cloud-hosted
 ---

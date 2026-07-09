@@ -1,5 +1,5 @@
 ---
-navigation_title: ES|QL
+navigation_title: Visualizations (ES|QL query)
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# ES|QL visualizations [esql-visualizations]
+# Lens visualizations using ES|QL queries [esql-visualizations]
 
 Creating visualizations using an {{esql}} query is particularly useful when you need to:
 
