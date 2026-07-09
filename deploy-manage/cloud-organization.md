@@ -21,7 +21,7 @@ You can perform the following tasks to manage your Cloud organization:
   * [Assign roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md)
   * [Create custom roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md) ({{serverless-short}} only)
   * [Configure SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to your organization
-* [Manage API keys](/deploy-manage/api-keys.md) to use with the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud), [{{ecloud}} Billing](https://www.elastic.co/docs/api/doc/cloud-billing/), and [{{serverless-full}}](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless) APIs. For {{serverless-full}} projects, you can also create {{ecloud}} API keys that grant access to project-level {{es}} and {{kib}} APIs.
+* [Manage API keys](/deploy-manage/api-keys.md) to use with the [{{ecloud}}]({{cloud-apis}}), [{{ecloud}} Billing]({{cloud-billing-apis}}), and [{{serverless-full}}]({{cloud-serverless-apis}}) APIs. For {{serverless-full}} projects, you can also create {{ecloud}} API keys that grant access to project-level {{es}} and {{kib}} APIs.
 * Configure who receives [operational emails](/deploy-manage/cloud-organization/operational-emails.md) related to your organization
 * Track the [status of {{ecloud}} services](/deploy-manage/cloud-organization/service-status.md).
 

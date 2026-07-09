@@ -3,7 +3,7 @@ navigation_title: Line charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building line charts with Kibana Lens in Elastic.
+description: Create line charts to visualize how metrics evolve over time, spot seasonal patterns, and detect spikes or regressions.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -31,15 +31,14 @@ To build a line chart:
 ::::::{stepper}
 
 :::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a line chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 :::::
 
 :::::{step} Set the visualization to Line
-New visualizations default to **Bar**.
+Make sure that the visualization type is set to **Line**.
 
-Using the visualization type dropdown, select **Line**.
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` When you drag a date or time field (such as `@timestamp`) onto an empty workspace, **Line** is automatically selected.
 :::::
 
 :::::{step} Define the data to show
@@ -48,7 +47,7 @@ Using the visualization type dropdown, select **Line**.
 
 Optionally:
    - Add more numeric fields to create additional series, or drag a categorical field to **Break down by** to split the series.
-   - You can click the **Add layer** icon {icon}`plus_in_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
+   - You can click the **Add layer** icon {icon}`plus_square` to integrate additional visualizations, [annotations](../lens.md#add-annotations), or a [reference line](../lens.md#add-reference-lines).
 
 The chart preview updates to show one or more lines plotted over time. Each line represents a series, and data points are connected to show trends.
 :::::
@@ -57,18 +56,21 @@ The chart preview updates to show one or more lines plotted over time. Each line
 You can tweak the appearance of your chart by adjusting axes, legends, and series styles from the chart settings. Consider the following best practices:
 
 **Use color wisely**
-:   Assign colors that match your users' expectations and consider your specific context.
+:   Assign colors that match your users' expectations and consider your specific context. 
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4` Lens automatically applies the **Elastic (line optimized)** palette to line charts, which reorders colors for better contrast between adjacent series. You can override this by manually selecting a different palette.
 
 **Provide context**
 :   Add a legend and descriptive axis titles, or remove them for obvious axes.
 
-For layout, hierarchy, and color guidance on dashboards, check EUI’s [Dashboard good practices](https://eui.elastic.co/docs/dataviz/dashboard-good-practices/). 
 For more chart configuration options, go to the [Line chart settings](#settings) section.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 :::::
 
 :::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library.
-- If you accessed Lens from the Visualize library, select **Save**. The Save menu also lets you add the visualization to a dashboard and the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 :::::
 
 ::::::
@@ -90,9 +92,9 @@ In line charts, you can enable time shift to compare the current value with a pr
 4. Optionally, customize the appearance of the layer to adjust how it looks on the chart. When you duplicate a layer, {{kib}} automatically assigns a different **Series color** to the new layer. You can for example change this color, or adjust the layer's name and axis position. This name is used for the chart's legend.
 
 ::::{tip}
-You can also compute the relative change by defining the axis data with a [formula](/explore-analyze/visualize/lens.md#lens-formulas), for example:  
+You can also compute the relative change by defining the axis data with a [formula](/explore-analyze/visualize/lens.md#lens-formulas), for example:
 `(average(bytes) - average(bytes, shift='1w')) / average(bytes, shift='1w')`
-:::: 
+::::
 
 ### Highlight thresholds with reference lines [line-reference-lines]
 
@@ -112,20 +114,20 @@ Customize your line chart to display exactly the information you need, formatted
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate lines for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
 
 **Appearance**
 :   **Name**: By default, the chart uses the function or formula as title. It's a best practice to customize this with a meaningful title.
@@ -151,20 +153,23 @@ Breakdown functions segment your data into multiple lines on the same chart, wit
 **Data**
 :   
     - **Functions**:
-      - **Top values**: Create separate lines for the most common values in a field.
-        - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each line represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-        - **Number of values**: How many top values to display.
+      :::{include} ../../_snippets/lens-bucket-top-values.md
+      :::
         :::{include} ../../_snippets/lens-rank-by-options.md
         :::
         :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
         :::
-      - **Date histogram**: Group data points into time-based buckets (for example, hourly, daily, weekly). 
-        - **Field**: Select the date field to use for the time-based grouping.
+      :::{include} ../../_snippets/lens-bucket-date-histogram.md
+      :::
         :::{include} ../../_snippets/lens-histogram-settings.md
         :::
-      - **Intervals**: Create numeric ranges for continuous data. You can define the interval granularity or specify custom ranges.
-        - **Field**: Select the numeric field to create intervals from.
-      - **Filters**: Allow you to segment your data based on specific conditions, creating separate lines for each filter.
+      :::{include} ../../_snippets/lens-bucket-intervals.md
+      :::
+      :::{include} ../../_snippets/lens-bucket-filters.md
+      :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Allow you to customize how your breakdown data is displayed in line charts, including:
@@ -185,6 +190,11 @@ When creating or editing a visualization, you can adjust the following settings.
 
 ## Line chart examples
 
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file line-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 **Average RAM per host**
 :   Monitoring the average of RAM over time for the first four hosts:
 
@@ -200,21 +210,280 @@ When creating or editing a visualization, you can adjust the following settings.
    * **Number of values**: `4`
 4. Save your chart.
 
-   ![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
+![Average RAM per host](../../images/kibana-lens-average-ram-host.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a line chart that plots the moving average of RAM, broken down by the top 4 hosts.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Average RAM per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "bottom" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h"
+      },
+      "y": [
+        {
+          "operation": "moving_average", <1>
+          "of": {
+            "operation": "average",
+            "field": "machine.ram",
+            "format": { "type": "bytes", "decimals": 0 },
+            "filter": { "expression": "" }
+          },
+          "label": "Moving average of RAM",
+          "format": { "type": "bytes", "decimals": 0 },
+          "filter": { "expression": "" },
+          "color": {
+            "type": "static",
+            "color": "#6092c0"
+          }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <3>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "linear" }
+  }
+}
+```
+
+1. `moving_average` over the `average` of `machine.ram` smooths out spikes and produces a trend line. `decimals: 0` keeps the byte labels clean.
+2. `breakdown_by` splits the chart into one line per host, limited to the top 4 values of `host.keyword`.
+3. `rank_by: "alphabetical"` is required here because `moving_average` is a pipeline aggregation and cannot be used to sort breakdown buckets.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Average RAM per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "bottom" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h"
+      },
+      "y": [
+        {
+          "operation": "moving_average", <1>
+          "of": {
+            "operation": "average",
+            "field": "machine.ram",
+            "format": { "type": "bytes", "decimals": 0 },
+            "filter": { "expression": "" }
+          },
+          "label": "Moving average of RAM",
+          "format": { "type": "bytes", "decimals": 0 },
+          "filter": { "expression": "" },
+          "color": {
+            "type": "static",
+            "color": "#6092c0"
+          }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <3>
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "linear" }
+  }
+}'
+```
+
+1. `moving_average` over the `average` of `machine.ram` smooths out spikes and produces a trend line. `decimals: 0` keeps the byte labels clean.
+2. `breakdown_by` splits the chart into one line per host, limited to the top 4 values of `host.keyword`.
+3. `rank_by: "alphabetical"` is required here because `moving_average` is a pipeline aggregation and cannot be used to sort breakdown buckets.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 **Unique IPs over time**
-:   Visualizing unique IP sessions throughout the day:
+:   Visualize the number of unique client IPs throughout the day to identify traffic patterns and peak usage periods:
 
-1. Drag `@timestamp` to the **Horizontal axis** and set the following settings: 
-   * **Functions**: `Date histogram`
-   * **Minimum interval**: `Hour`
-2. Drag `host.keyword` to the **Vertical axis** and set the following settings:
-   * **Functions**: : `Unique count`
-   * **Value format**: `Bytes (1024)`
+1. Drag `timestamp` to the **Horizontal axis** and set **Functions** to `Date histogram` with **Minimum interval** set to `Hour`.
+2. Drag `clientip` to the **Vertical axis** and set the following settings:
+   * **Functions**: `Unique count`
+   * **Value format**: `Number`
    * **Decimals**: `0`
+3. In the **Visual options**, set **Missing values** to `Linear` to connect gaps in the line.
 4. Save your chart.
 
-   ![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
+![Unique IPs throughout the day](../../images/kibana-lens-unique-ip-throughout-day.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+Send the following request to create a line chart that plots the unique count of client IPs over time, with linear interpolation for missing values.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Unique IPs over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h" <1>
+      },
+      "y": [
+        {
+          "operation": "unique_count", <2>
+          "field": "clientip",
+          "label": "Unique IPs",
+          "format": {
+            "type": "number",
+            "decimals": 0
+          },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": {
+      "type": "linear" <3>
+    }
+  }
+}
+```
+
+1. `suggested_interval: "1h"` sets the date histogram to bucket by hour.
+2. `unique_count` on `clientip` counts distinct IP addresses per time bucket, tracking unique visitors rather than total requests.
+3. `fitting.type: "linear"` connects data points across empty buckets with a straight line instead of leaving gaps.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Unique IPs over time",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "line",
+      "x": {
+        "operation": "date_histogram",
+        "field": "timestamp",
+        "suggested_interval": "1h" <1>
+      },
+      "y": [
+        {
+          "operation": "unique_count", <2>
+          "field": "clientip",
+          "label": "Unique IPs",
+          "format": {
+            "type": "number",
+            "decimals": 0
+          },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": {
+      "type": "linear" <3>
+    }
+  }
+}'
+```
+
+1. `suggested_interval: "1h"` sets the date histogram to bucket by hour.
+2. `unique_count` on `clientip` counts distinct IP addresses per time bucket, tracking unique visitors rather than total requests.
+3. `fitting.type: "linear"` connects data points across empty buckets with a straight line instead of leaving gaps.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
 
 ---
 

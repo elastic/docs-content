@@ -16,16 +16,40 @@ products:
 
 Automatic Migration helps you quickly migrate Splunk and QRadar assets to {{elastic-sec}}. The following asset types are supported:
 
-* {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Splunk Classic dashboards (v1.1)
-* {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Splunk Dashboard Studio dashboards 
+* {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` Splunk Classic dashboards (v1.1)
+* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Splunk Dashboard Studio dashboards
 * {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
-* {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` QRadar rules
+* {applies_to}`stack: ga 9.4+, preview 9.3` {applies_to}`serverless: ga` QRadar rules
+
+The following table summarizes which assets Automatic Migration can and cannot translate:
+
+| Source platform | Asset type | Supported |
+| --- | --- | --- |
+| Splunk | Rules (saved searches) | Yes |
+| Splunk | Classic dashboards (v1.1) | Yes |
+| Splunk | Dashboard Studio dashboards | Yes |
+| QRadar | Rules | Yes |
+| QRadar | Dashboards | No |
 
 For rule migrations, if comparable Elastic-authored rules exist, Automatic Migration simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules and dashboards on the fly so you can verify and edit them instead of writing them from scratch.
 
 You can ingest your data before migrating your assets, or migrate your assets first in which case the tool recommends which data sources you need to power your migrated rules.
 
 ::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
+**Requirements**
+
+* Minimum [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for these **Security** features:
+
+  - `All` for **SIEM migrations**
+  - At least `Read` for **Rules**
+* A working [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
+* {{Stack}} users: {{ml}} must be enabled.
+* {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
+* {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
+:::
 
 :::{applies-item} { "stack": "ga 9.3", "serverless": "ga" }
 **Requirements**
@@ -53,7 +77,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 ::::
 
 ::::{admonition} Splunk dashboard migration limitations
-* Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
+Only supports `visualization`, `chart`, `table`, and `single value (Metric)` Splunk dashboard panels, not `map`, `event`, or `html` panels. You can still migrate a dashboard that contains unsupported panels, but those panels appear as `Unsupported` in migrated dashboards.
 ::::
 
 ## Get started with Automatic Migration
@@ -75,9 +99,9 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 
    ```
    | rest /servicesNS/-/-/saved/searches
-   | search is_scheduled=1 AND eai:acl.app=splunksysmonsecurity
+   | search action.correlationsearch.enabled = "1" OR (eai:acl.app = "Splunk_Security_Essentials" AND is_scheduled=1)
    | where disabled=0
-   | table id, title, search, description, action.escu.eli5,
+   | table id, title, search, description, action.escu.eli5, action.correlationsearch.annotations, alert.severity
    ```
 
    For rule migration, we recommend against downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) because much of the data would be irrelevant to asset migration.
@@ -102,7 +126,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
    You don't need to stay on this page. A notification appears when the migration is complete.
 
 
-10. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+10. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rules migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom integrations you made using [automatic import](/explore-analyze/ai-features/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
    :alt: The add integrations panel.
@@ -167,7 +191,7 @@ The table's fields are as follows:
 To install any rules that were partially translated or not translated, you must first edit them. Optionally, you can also edit rules that were successfully translated to finetune them.
 
 :::{note}
-You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
+You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **{{siem-rules-ui}}** page.
 :::
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
@@ -199,7 +223,7 @@ This section describes the **Translated dashboards** page's interface and the da
 - {applies_to}`stack: preview =9.3`
 QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
 
-- {applies_to}`serverless: preview`{applies_to}`stack: preview 9.4+`
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`
 Building block rule logic is included automatically in translated rules. No action is required.
 
 :::::

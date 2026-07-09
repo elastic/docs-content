@@ -8,7 +8,7 @@ products:
 
 # Troubleshoot broken repositories [add-repository]
 
-There are several situations where the [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) might report an issue regarding the integrity of snapshot repositories in the cluster. The following pages explain the recommended actions for diagnosing corrupted, unknown, and invalid repositories:
+There are several situations where the [Health API]({{es-apis}}operation/operation-health-report) might report an issue regarding the integrity of snapshot repositories in the cluster. The following pages explain the recommended actions for diagnosing corrupted, unknown, and invalid repositories:
 
 * [](diagnosing-corrupted-repositories.md)
 * [](diagnosing-unknown-repositories.md)

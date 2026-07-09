@@ -17,6 +17,8 @@ Find solutions to common issues with EDOT SDKs for various programming languages
 
 * [Android SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md): Troubleshoot common problems affecting the {{product.edot-android}} SDK.
 
+* [Browser SDK](elastic-otel-rum-js://reference/edot-browser/troubleshooting.md): Troubleshoot common problems affecting the EDOT Browser SDK.
+
 * [.NET SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md): Troubleshoot common problems affecting the EDOT .NET SDK.
 
 * [iOS SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md): Troubleshoot common problems affecting the {{product.edot-ios}} agent.

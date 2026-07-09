@@ -23,7 +23,7 @@ For a more in-depth description of how resilience is handled in {{ech}} and {{ec
 
 If your cluster consists of one node, that single node must do everything. To accommodate this, {{es}} assigns nodes every role by default.
 
-A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `0` on every index.
+A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status]({{es-apis}}operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md) to `0` on every index.
 
 If the node fails, you may need to restore an older copy of any lost indices from a [snapshot](../../tools/snapshot-and-restore.md).
 
@@ -78,7 +78,7 @@ You may configure one of your master-eligible nodes to be a [voting-only node](.
 
 The cluster will be resilient to the loss of any node as long as:
 
-* The [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is `green`.
+* The [cluster health status]({{es-apis}}operation/operation-cluster-health) is `green`.
 * There are at least two data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * The cluster has at least three master-eligible nodes, as long as at least two of these nodes are not voting-only master-eligible nodes.

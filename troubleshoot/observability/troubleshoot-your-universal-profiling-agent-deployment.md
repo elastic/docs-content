@@ -104,7 +104,7 @@ If running this command outputs error-level logs, the following are possible cau
 
     Follow the Universal Profiling Agent deployment instructions shown in Kibana which will always be correct for the {{stack}} version that you are using.
 
-* You are using a Universal Profling Agent from a newer {{stack}} version, configured to connect to an older {{stack}} version cluster. In this case, the following message is logged:
+* You are using a Universal Profiling Agent from a newer {{stack}} version, configured to connect to an older {{stack}} version cluster. In this case, the following message is logged:
 
     ```txt
     rpc error: code = FailedPrecondition desc= Backend is incompatible with HostAgent, please check your configuration

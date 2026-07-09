@@ -20,19 +20,19 @@ When you query your data, {{es}} might return an error, no search results, or re
 
 {{es}} returns an `index_not_found_exception` when the data stream, index or alias you try to query does not exist. This can happen when you misspell the name or when the data has been indexed to a different data stream or index.
 
-Use the [exists API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-exists) to check whether a data stream, index, or alias exists:
+Use the [exists API]({{es-apis}}operation/operation-indices-exists) to check whether a data stream, index, or alias exists:
 
 ```console
 HEAD my-data-stream
 ```
 
-Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to list all data streams:
+Use the [data stream stats API]({{es-apis}}operation/operation-indices-data-streams-stats-1) to list all data streams:
 
 ```console
 GET /_data_stream/_stats?human=true
 ```
 
-Use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to list all indices and their aliases:
+Use the [get index API]({{es-apis}}operation/operation-indices-get) to list all indices and their aliases:
 
 ```console
 GET _all?filter_path=*.aliases
@@ -49,7 +49,7 @@ GET /my-alias/_search?ignore_unavailable=true
 
 When a search request returns no hits, the data stream or index may contain no data. This can happen when there is a data ingestion issue. For example, the data may have been indexed to a data stream or index with another name.
 
-Use the [count API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count) to retrieve the number of documents in a data stream or index. Check that `count` in the response is not 0.
+Use the [count API]({{es-apis}}operation/operation-count) to retrieve the number of documents in a data stream or index. Check that `count` in the response is not 0.
 
 ```console
 GET /my-index-000001/_count
@@ -63,7 +63,7 @@ When getting no search results in {{kib}}, check that you have selected the corr
 
 ## Check that the field exists and its capabilities [troubleshooting-searches-field-exists-caps]
 
-Querying a field that does not exist will not return any results. Use the [field capabilities API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps) to check whether a field exists:
+Querying a field that does not exist will not return any results. Use the [field capabilities API]({{es-apis}}operation/operation-field-caps) to check whether a field exists:
 
 ```console
 GET /my-index-000001/_field_caps?fields=my-field
@@ -105,7 +105,7 @@ A field’s capabilities are determined by its [mapping](../../manage-data/data-
 GET /my-index-000001/_mappings
 ```
 
-If you query a `text` field, pay attention to the analyzer that may have been configured. You can use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to check how a field’s analyzer processes values and query terms:
+If you query a `text` field, pay attention to the analyzer that may have been configured. You can use the [analyze API]({{es-apis}}operation/operation-indices-analyze) to check how a field’s analyzer processes values and query terms:
 
 ```console
 GET /my-index-000001/_analyze
@@ -181,7 +181,7 @@ GET my-index-000001/_search?sort=@timestamp:desc&size=1
 
 When a query returns unexpected results, {{es}} offers several tools to investigate why.
 
-The [validate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an {{es}} query is rewritten into:
+The [validate API]({{es-apis}}operation/operation-indices-validate-query) enables you to validate a query. Use the `rewrite` parameter to return the Lucene query an {{es}} query is rewritten into:
 
 ```console
 GET /my-index-000001/_validate/query?rewrite=true
@@ -197,7 +197,7 @@ GET /my-index-000001/_validate/query?rewrite=true
 }
 ```
 
-Use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-explain) to find out why a specific document matches or doesn’t match a query:
+Use the [explain API]({{es-apis}}operation/operation-explain) to find out why a specific document matches or doesn’t match a query:
 
 ```console
 GET /my-index-000001/_explain/0
@@ -218,13 +218,13 @@ To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, sel
 
 ## Check index settings [troubleshooting-searches-settings]
 
-[Index settings](elasticsearch://reference/elasticsearch/index-settings/index.md) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) to retrieve the settings for an index:
+[Index settings](elasticsearch://reference/elasticsearch/index-settings/index.md) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API]({{es-apis}}operation/operation-indices-get-settings) to retrieve the settings for an index:
 
 ```console
 GET /my-index-000001/_settings
 ```
 
-You can update dynamic index settings with the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). [Changing dynamic index settings for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream) requires changing the index template used by the data stream.
+You can update dynamic index settings with the [update index settings API]({{es-apis}}operation/operation-indices-put-settings). [Changing dynamic index settings for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream) requires changing the index template used by the data stream.
 
 For static settings, you need to create a new index with the correct settings. Next, you can reindex the data into that index. For data streams, refer to [Change a static index setting for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream).
 
@@ -234,7 +234,11 @@ For static settings, you need to create a new index with the correct settings. N
 stack:
 ```
 
-[Slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+Start with [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md), which pinpoint the search requests that take too long to run. Once you've identified a slow request, determine where it comes from. How you do this depends on your version.
+
+{applies_to}`stack: preview 9.4` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine the query source. A single configuration captures end-to-end request duration across all query types, including Query DSL, {{esql}}, EQL, and SQL.
+
+If you can't use query logging, enable [audit logging](/deploy-manage/security/logging-configuration/enabling-audit-logs.md) instead to determine the query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true
@@ -243,3 +247,5 @@ xpack.security.audit.logfile.events.emit_request_body: true
 ```
 
 Refer to [Advanced tuning: finding and fixing slow Elasticsearch queries](https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries) for more information.
+
+For {{esql}}-specific slow query diagnosis and prevention, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).

@@ -132,7 +132,7 @@ stringData:
 
 Similar to {{es}} secure settings, you can use Kubernetes secrets to manage keystore settings for {{kib}}.
 
-For example, you can define a custom encryption key for {{kib}} as follows:
+For example, you can provide your own encryption key for {{kib}} as follows:
 
 1. Create a secret containing the desired setting:
 
@@ -140,6 +140,10 @@ For example, you can define a custom encryption key for {{kib}} as follows:
     kubectl create secret generic kibana-secret-settings \
      --from-literal=xpack.security.encryptionKey=94d2263b1ead716ae228277049f19975aff864fb4fcfe419c95123c1e90938cd
     ```
+
+    :::{warning}
+    Always ensure the setting is listed in the [{{kib}} configuration reference](kibana://reference/configuration-reference.md) and that the value you provide matches the expected format before adding it to the keystore. Specifying invalid, unsupported, or incorrect settings will prevent {{kib}} from starting successfully.
+    :::
 
 2. Add a reference to the secret in the `secureSettings` section:
 
@@ -156,6 +160,18 @@ For example, you can define a custom encryption key for {{kib}} as follows:
       secureSettings:
       - secretName: kibana-secret-settings
     ```
+
+:::{admonition} {{kib}} encryption settings
+ECK automatically generates values for the following settings:
+
+* [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey)
+* [`xpack.reporting.encryptionKey`](kibana://reference/configuration-reference/reporting-settings.md#encryption-keys)
+* [`xpack.encryptedSavedObjects.encryptionKey`](/deploy-manage/security/secure-saved-objects.md)
+
+You can override these generated values by providing your own encryption keys through secure settings.
+
+For more details about multi-instance requirements, retrieving generated keys, and key rotation, refer to [{{kib}} encryption keys on ECK](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-encryption-keys).
+:::
 
 ## More examples [k8s_more_examples]
 

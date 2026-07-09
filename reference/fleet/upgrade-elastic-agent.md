@@ -26,11 +26,6 @@ This approach simplifies the process of keeping your agents up to date. It also 
 
 By default, {{agent}}s require internet access to perform binary upgrades from {{fleet}}. However, you can host your own artifacts repository and configure {{agent}}s to download binaries from it. For more information, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
-::::{note}
-The upgrade feature is not supported for upgrading DEB/RPM packages or Docker images. Refer to [Upgrade RPM and DEB system packages](#upgrade-system-packages) to upgrade a DEB or RPM package manually.
-::::
-
-
 For a detailed view of the {{agent}} upgrade process and the interactions between {{fleet}}, {{agent}}, and {{es}}, refer to the [Communications amongst components](https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md) diagram in the `elastic-agent` GitHub repository.
 
 
@@ -39,8 +34,19 @@ For a detailed view of the {{agent}} upgrade process and the interactions betwee
 Note the following restrictions with upgrading an {{agent}}:
 
 * {{agent}} cannot be upgraded to a minor version higher than the currently installed minor version of {{fleet-server}}. For example, you can enroll 9.1.5 {{agents}} with a 9.1.0 {{fleet-server}}, but not 9.2.0 {{agents}}. So while you can install newer maintenance releases, you cannot install newer minor versions. Before you upgrade {{agents}} to a newer minor version, you should first upgrade any agents that are acting as a [{{fleet-server}}](/reference/fleet/fleet-server.md) (any agents associated with a {{fleet-server}} policy).
-* To be upgradeable, {{agent}} must not be running inside a container.
-* To be upgradeable in a Linux environment, {{agent}} must be running as a service. The Linux Tar install instructions for {{agent}} provided in {{fleet}} include the commands to run it as a service. {{agent}} RPM and DEB system packages cannot be upgraded through {{fleet}}.
+
+Whether {{agent}} can be upgraded through {{fleet}} also depends on the installation method:
+
+| Installation method | {{fleet}}-managed upgrade supported? | How to upgrade |
+| --- | --- | --- |
+| Linux `.tar.gz` (running as a service) | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Linux `.deb` (DEB) | No | [Upgrade DEB packages manually](/reference/fleet/upgrade-elastic-agent.md#upgrade-system-packages) |
+| Linux `.rpm` (RPM) | No | [Upgrade RPM packages manually](/reference/fleet/upgrade-elastic-agent.md#upgrade-system-packages) |
+| Windows `.msi` (MSI) | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Windows `.zip` | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| macOS `.tar.gz` | Yes | [Upgrade through {{fleet}}](/reference/fleet/upgrade-elastic-agent.md#upgrade-an-agent) |
+| Docker container | No | [Upgrade the container image](/reference/fleet/elastic-agent-container.md) |
+| Kubernetes (Helm chart or manifests) | No | [Upgrade the container image](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) |
 
 These restrictions apply whether you are upgrading {{agents}} individually or in bulk. In the event that an upgrade isn’t eligible, {{fleet}} generates a warning message when you attempt the upgrade.
 
@@ -288,6 +294,14 @@ You can view the status of the automatic upgrade in the following ways:
 
 - On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
 
+## Automatic reassignment to version-specific policies after an upgrade [upgrade-version-specific-policy-assignment]
+
+```{applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+When you upgrade an {{agent}} that is enrolled in a policy containing an integration with a minimum agent version requirement, {{fleet}} reassigns the agent to the matching [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md). This usually completes within a minute after the upgraded agent checks in with {{fleet}}.
 
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
 
@@ -310,7 +324,7 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 
 ### Upgrade an RPM {{agent}} installation: [_upgrade_an_rpm_agent_installation]
@@ -327,10 +341,11 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
     sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
-3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
+3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent is unavailable because {{fleet}}-managed upgrades are not supported for this package type.
 
 ## Roll back an Elastic Agent upgrade for Fleet-managed agents [rollback-upgrade-fleet-managed]
-```yaml {applies_to}
+
+```{applies_to}
 stack: ga 9.3.0+
 serverless: ga
 ```
@@ -343,7 +358,7 @@ The manual rollback feature for {{agent}} gives you the ability to roll back to 
 
 To roll back one or more {{agent}} upgrades:
 1. Go to the **Actions** menu.
-2. Choose **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
+2. Select **Upgrade management**, and then select **Roll back** for a single agent, or **Roll back upgrade for N agents** for multiple agents.
 
 For a single agent, the roll back menu item appears only if a valid, non-expired rollback is available.
 For multiple agents, the roll back menu item is always enabled, and reports errors for agents that did not have a valid rollback available. 

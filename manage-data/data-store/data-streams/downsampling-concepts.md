@@ -65,19 +65,24 @@ You can downsample a downsampled index. The subsequent downsampling interval mus
 
 ### Downsampling methods [downsampling-methods]
 
-The downsampling method is the technique used to reduce multiple values within the same bucket into a single representative value. Two distinct methods exist:
+Downsampling supports two methods for reducing multiple values in the same bucket to a single representative result:
 
 * `last_value`: {applies_to}`stack: preview 9.3` {applies_to}`serverless: ga`
-  This method increases the sampling interval by storing only the most recent value for each metric in the same bucket. While this reduces data accuracy, it offers the benefit of conserving storage space. It applies to all metric types.
-  
-* `aggregate`: 
-  This method preserves data accuracy by computing and storing statistical aggregations for all documents within the bucket, though it requires more storage space. It applies to each metric type in the following way:
-    * `gauge` field type:
-        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`.
-    * `counter` field type:
-        * the last value is stored and the type is preserved.
-    * `histogram` field type: {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
-        * individual histograms are merged into a single histogram that is stored, preserving the type. The `histogram` field type uses the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm.
+  Stores only the most recent value for each metric in the bucket. This method reduces the storage footprint the most, but it also reduces data accuracy. It applies to all metric types.
+
+* `aggregate`
+  Stores statistical summaries for the values in each bucket. This method preserves more information than `last_value`, but it requires more storage. It applies to each metric type as follows:
+  * `gauge` fields:
+    * Stores `min`, `max`, `sum`, and `value_count` as `aggregate_metric_double`.
+  * `counter` fields:
+    * Stores the first value, and stores up to two data points if a counter reset is detected {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`. The field type is preserved.
+    * In previous versions, only the last value is stored.
+  * `histogram` fields {applies_to}`stack: preview 9.3` {applies_to}`serverless: preview`
+    * Merges individual histograms into a single histogram, preserving the field type. 
+    
+      All three histogram field types are supported: [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md), [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md), and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md). 
+      
+      The `histogram` and the `tdigest` field type use the [T-Digest](elasticsearch://reference/aggregations/search-aggregations-metrics-percentile-aggregation.md) algorithm for merging.
 
 :::{tip}
 When downsampling a downsampled index, use the same downsampling method as the source index.
@@ -85,8 +90,11 @@ When downsampling a downsampled index, use the same downsampling method as the s
 
 ### Source and target index field mappings [downsample-api-mappings]
 
-Fields in the target downsampled index are created with the same mapping as in the source index, with one exception: `time_series_metric: gauge` fields are changed to `aggregate_metric_double`.
+The target downsampled index uses the same field mappings as the source index, with one exception: `time_series_metric: gauge` fields are mapped to `aggregate_metric_double`.
 
+An `aggregate_metric_double` can be used in `max`, `min`, `sum`, `value_count`, and `avg` aggregations without losing accuracy.
+
+{applies_to}`stack: ga 9.4` {applies_to}`serverless: ga` In ES|QL, a downsampled gauge stored as `aggregate_metric_double` can still be used as a `double` in other operations, but with reduced accuracy. In this case, the average value for each downsample interval is used as the single representative value.
 
 
 

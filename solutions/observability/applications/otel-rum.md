@@ -19,6 +19,10 @@ Using OpenTelemetry for Real User Monitoring (RUM) with {{product.observability}
 
 You can instrument your web application with OpenTelemetry browser instrumentation for use with {{product.observability}}. The following sections detail the required components and their proper configuration to acquire traces, logs, and metrics from the application to visualize them within {{kib}}.
 
+:::{note}
+Elastic also provides the [{{edot}} Browser](elastic-otel-rum-js://reference/edot-browser/index.md) (EDOT Browser), a managed distribution of the OpenTelemetry Browser SDK with Elastic-specific enhancements.
+:::
+
 ## Before you begin [before-you-begin]
 
 You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure an [EDOT Collector in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
@@ -702,7 +706,7 @@ You can explore OpenTelemetry RUM data in these {{kib}} experiences:
   RUM events and metrics are indexed in {{es}}. In **Discover** you can inspect raw events, run exploratory queries, apply filters, and verify ingestion.
 
 :::{note}
-The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. Curated RUM dashboards for OpenTelemetry are not available yet.
+The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data, not OpenTelemetry RUM. For browser performance dashboards compatible with OpenTelemetry RUM data, install the [OTel RUM Dashboards](https://github.com/elastic/integrations/tree/main/packages/otel_rum_dashboards) integration from the {{kib}} Integrations catalog.
 :::
 
 ### Confirm that ingestion is working

@@ -82,7 +82,7 @@ The privileges included in this role are **required** for all users when [centra
 $$$apm-privileges-agent-central-config-server$$$
 APM Server acts as a proxy between your APM agents and the Applications UI. The Applications UI communicates any changed settings to APM Server so that your agents only need to poll the Server to determine which central configuration settings have changed.
 
-To create a role with the required privileges for managing central configuration in {{es}} without {{kib}}, you must use the [Roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) (the required privileges can’t be assigned to a role in Kibana):
+To create a role with the required privileges for managing central configuration in {{es}} without {{kib}}, you must use the [Roles API]({{es-apis}}operation/operation-security-put-role) (the required privileges can’t be assigned to a role in Kibana):
 
 ```console
 POST /_security/role/apm_agentcfg
@@ -227,7 +227,7 @@ To grant an APM Server user with the required privileges for reading RUM source 
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 ::::
 
-The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.
+The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}]({{kib-apis}}group/endpoint-apm-sourcemaps) API documentation.
 
 ## Create a *tail-based sampling* role [apm-privileges-tail-based-sampling]
 

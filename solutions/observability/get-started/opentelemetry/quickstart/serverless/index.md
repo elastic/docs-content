@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Serverless
-description: Quickstart guide for setting up EDOT on Elastic Cloud Serverless.
+description: Quickstart setup guides for the Elastic Distribution of OpenTelemetry (EDOT) on Elastic Cloud Serverless.
 applies_to:
   stack:
   serverless:

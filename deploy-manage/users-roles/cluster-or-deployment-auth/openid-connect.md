@@ -334,12 +334,12 @@ xpack.security.authc.realms.oidc.oidc1:
 
 When a user authenticates using OpenID Connect, they are identified to the {{stack}}, but this does not automatically grant them access to perform any actions or access any data.
 
-Your OpenID Connect users can't do anything until they are assigned roles. You can map roles This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
+Your OpenID Connect users can't do anything until they are assigned roles. You can map roles This can be done through either the [add role mapping API]({{es-apis}}operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
 
 You can map LDAP groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
-* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
+* Using the [role mapping API]({{es-apis}}operation/operation-security-put-role-mapping).
 * By delegating authorization to another realm.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
@@ -514,7 +514,7 @@ POST /_security/user/facilitator
 
 On a high level, the custom web application would need to perform the following steps in order to authenticate a user with OpenID Connect:
 
-1. Make an HTTP POST request to `_security/oidc/prepare`, authenticating as the `facilitator` user, using the name of the OpenID Connect realm in the {{es}} configuration in the request body. For more details, see [OpenID Connect prepare authentication](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-prepare-authentication).
+1. Make an HTTP POST request to `_security/oidc/prepare`, authenticating as the `facilitator` user, using the name of the OpenID Connect realm in the {{es}} configuration in the request body. For more details, see [OpenID Connect prepare authentication]({{es-apis}}operation/operation-security-oidc-prepare-authentication).
 
     ```console
     POST /_security/oidc/prepare
@@ -524,7 +524,7 @@ On a high level, the custom web application would need to perform the following 
     ```
 
 2. Handle the response to `/_security/oidc/prepare`. The response from {{es}} will contain 3 parameters: `redirect`, `state`, `nonce`. The custom web application would need to store the values for `state` and `nonce` in the user’s session (client side in a cookie or server side if session information is persisted this way) and redirect the user’s browser to the URL that will be contained in the `redirect` value.
-3. Handle a subsequent response from the OP. After the user is successfully authenticated with the OpenID Connect Provider, they will be redirected back to the callback/redirect URI. Upon receiving this HTTP GET request, the custom web app will need to make an HTTP POST request to `_security/oidc/authenticate`, again - authenticating as the `facilitator` user - passing the URL where the user’s browser was redirected to, as a parameter, along with the values for `nonce` and `state` it had saved in the user’s session previously. If more than one OpenID Connect realms are configured, the custom web app can specify the name of the realm to be used for handling this, but this parameter is optional. For more details, see [OpenID Connect authenticate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-authenticate).
+3. Handle a subsequent response from the OP. After the user is successfully authenticated with the OpenID Connect Provider, they will be redirected back to the callback/redirect URI. Upon receiving this HTTP GET request, the custom web app will need to make an HTTP POST request to `_security/oidc/authenticate`, again - authenticating as the `facilitator` user - passing the URL where the user’s browser was redirected to, as a parameter, along with the values for `nonce` and `state` it had saved in the user’s session previously. If more than one OpenID Connect realms are configured, the custom web app can specify the name of the realm to be used for handling this, but this parameter is optional. For more details, see [OpenID Connect authenticate]({{es-apis}}operation/operation-security-oidc-authenticate).
 
     ```console
     POST /_security/oidc/authenticate
@@ -536,9 +536,9 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
+    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token]({{es-apis}}operation/operation-security-get-token).
 
-4. At some point, if necessary, the custom web application can log the user out by using the [OIDC logout API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-logout) passing the access token and refresh token as parameters. For example:
+4. At some point, if necessary, the custom web application can log the user out by using the [OIDC logout API]({{es-apis}}operation/operation-security-oidc-logout) passing the access token and refresh token as parameters. For example:
 
     ```console
     POST /_security/oidc/logout

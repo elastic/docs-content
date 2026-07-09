@@ -25,14 +25,29 @@ This page explains how to trigger a workflow in an agent conversation. If you wa
 Before you begin:
 
 * Familiarize yourself with the core concepts of [Elastic Workflows](/explore-analyze/workflows.md).
-* [Set up workflows](/explore-analyze/workflows/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
+* [Set up workflows](/explore-analyze/workflows/get-started/setup.md): Enable the Workflows feature and ensure you have the correct privileges to create and run workflows.
 * Create at least one workflow.
 
 ## Add a Workflow tool
 
 Follow these steps to configure a workflow tool:
 
-1. Navigate to **Agents > More > View all tools > New tool**.
+1. Navigate to the Tools page and create a new tool:
+
+   :::::{applies-switch}
+
+   ::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+    Click **Manage components** at the bottom of the left sidebar, select **Tools**, then click **+ New tool**.
+   ::::
+
+   ::::{applies-item} { stack: ga =9.3 }
+
+    Go to **Agents > More > View all tools > New tool**.
+
+   ::::
+   
+   :::::
 
   :::{image} ../images/create-new-tool-workflows.png
   :screenshot:
@@ -72,11 +87,28 @@ Once you've created a workflow tool, you must assign it to an agent to make it a
 ### Assign tool to agent
 
 To assign a tool to an agent:
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
+
+1. Select the agent from the agent selector in the left sidebar.
+2. Expand the **Customize** accordion and select **Tools**.
+3. Click **Add tool** and select the workflow tool to assign.
+
+::::
+
+::::{applies-item} { stack: ga =9.3 }
+
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**
+3. Select **More > Edit Agent > Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
+
+::::
+
+:::::
 
 ### Trigger a workflow
 

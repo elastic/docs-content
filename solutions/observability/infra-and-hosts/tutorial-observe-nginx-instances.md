@@ -53,7 +53,7 @@ Before you can monitor nginx, you need the following:
 
 * {{es}} for storing and searching your observability data
 * {{kib}} for visualizing and managing it.
-* If you want to collect metrics, make sure your nginx instance is [configured for metric collection](https://docs.nginx.com/nginx-amplify/nginx-amplify-agent/configuring-metric-collection/).
+* If you want to collect metrics, make sure your nginx instance is [configured for metric collection](https://docs.nginx.com/nginx-one-console/nginx-configs/metrics/enable-metrics#enable-nginx-open-source-metrics).
 
 
 ## Step 1: Add the nginx integration [monitor-nginx-add-integration]
@@ -89,7 +89,7 @@ Configure the following for both access logs and error logs:
 
 ### Collect metrics [monitor-nginx-collect-metrics]
 
-The nginx integration collects `stub_status` metrics from your instances. Make sure your nginx instance is [configured for metric collection](https://docs.nginx.com/nginx-amplify/nginx-amplify-agent/configuring-metric-collection/). Configure the following to collect metrics:
+The nginx integration collects `stub_status` metrics from your instances. Make sure your nginx instance is [configured for metric collection](https://docs.nginx.com/nginx-one-console/nginx-configs/metrics/enable-metrics#enable-nginx-open-source-metrics). Configure the following to collect metrics:
 
 **Hosts**
 :   The address of the server that Elastic will connect to for collecting metrics.

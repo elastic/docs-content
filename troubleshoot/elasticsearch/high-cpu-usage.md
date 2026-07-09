@@ -12,7 +12,7 @@ products:
 
 {{es}} uses [thread pools](elasticsearch://reference/elasticsearch/configuration-reference/thread-pool-settings.md) to manage node CPU and JVM resources for concurrent operations. The thread pools are portioned different numbers of threads, frequently based off of the total processors allocated to the node. This helps the node remain responsive while processing either [expensive tasks or a task queue backlog](task-queue-backlog.md). {{es}} [rejects requests](rejected-requests.md) related to a thread pool while its queue is saturated.
 
-An individual task can spawn work on multiple node threads, frequently within these designated thread pools. It is normal for an [individual thread](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to saturate its CPU usage. A thread reporting CPU saturation could reflect either the thread spending its time processing an ask from an individual expensive task or the thread staying busy due to processing asks from multiple tasks. The hot threads report shows a snapshot of Java threads across a time interval. Therefore, the hot threads cannot be directly mapped to any given [node task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
+An individual task can spawn work on multiple node threads, frequently within these designated thread pools. It is normal for an [individual thread]({{es-apis}}operation/operation-nodes-hot-threads) to saturate its CPU usage. A thread reporting CPU saturation could reflect either the thread spending its time processing an ask from an individual expensive task or the thread staying busy due to processing asks from multiple tasks. The hot threads report shows a snapshot of Java threads across a time interval. Therefore, the hot threads cannot be directly mapped to any given [node task]({{es-apis}}group/endpoint-tasks).
 
 A node can temporarily saturate all of the CPU threads allocated to it. It's unusual for this state to be ongoing for an extended period. It might suggest that the node is:
 
@@ -28,7 +28,7 @@ Refer to the sections below to troubleshoot degraded CPU performance.
 
 ### Check CPU usage [check-cpu-usage]
 
-To check the CPU usage per node, use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
+To check the CPU usage per node, use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes):
 
 ```console
 GET _cat/nodes?v=true&s=cpu:desc&h=name,role,master,cpu,load*,allocated_processors
@@ -40,7 +40,7 @@ The reported metrics are:
 * `load_1m`, `load_5m`, and `load_15m`: the average amount of processes waiting for the designated time interval
 * `allocated_processors`: number of processors allocated to the node {applies_to}`stack: ga 9.3`
 
-For more detail, refer to the [node statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API documentation.
+For more detail, refer to the [node statistics]({{es-apis}}operation/operation-nodes-stats) API documentation.
 
 These alerting thresholds for these metrics depend on your team's workload-vs-duration needs. However, as a general start point baseline, you might consider investigating if:
 
@@ -52,7 +52,7 @@ If CPU usage is deemed concerning, we recommend checking this output for traffic
 
 ### Check hot threads [check-hot-threads]
 
-High CPU usage frequently correlates to [a long-running task or a backlog of tasks](task-queue-backlog.md). When a node is reporting elevated CPU usage, to correlate the thread to a task use the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to check for resource-intensive threads running on it.
+High CPU usage frequently correlates to [a long-running task or a backlog of tasks](task-queue-backlog.md). When a node is reporting elevated CPU usage, to correlate the thread to a task use the [nodes hot threads API]({{es-apis}}operation/operation-nodes-hot-threads) to check for resource-intensive threads running on it.
 
 ```console
 GET _nodes/hot_threads

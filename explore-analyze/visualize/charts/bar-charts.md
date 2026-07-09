@@ -3,7 +3,7 @@ navigation_title: Bar charts
 applies_to:
   stack: ga
   serverless: ga
-description: Instructions and best practices for building bar charts with Kibana Lens in Elastic.
+description: Create bar charts to compare values across categories, display distributions, and show rankings side by side.
 products:
   - id: kibana
   - id: cloud-serverless
@@ -33,13 +33,13 @@ To build a bar chart:
 :::::{stepper}
 
 ::::{step} Access Lens
-**Lens** is {{kib}}'s main visualization editor. You can access it:
-- From a dashboard: On the **Dashboards** page, open or create the dashboard where you want to add a bar chart, then add a new visualization.
-- From the **Visualize library** page by creating a new visualization.
+:::{include} ../../_snippets/access-lens.md
+:::
 ::::
 
 ::::{step} Set the visualization to Bar
-New visualizations default to creating **Bar** charts, so you don't need to change the chart type selection.
+Make sure that the visualization type is set to **Bar**.
+
 ::::
 
 ::::{step} Define the data to show
@@ -76,11 +76,13 @@ Tweak the appearance of the chart to your needs. Consider the following best pra
 :   Sort bars by value (ascending or descending) to make comparisons easier, or keep them in alphabetical/chronological order when the sequence matters.
 
 Refer to [](#settings) for a complete list of options.
+
+For panel sizing and layout guidance, refer to [Organize dashboard panels](../../dashboards/arrange-panels.md#dashboard-grid-layout).
 ::::
 
 ::::{step} Save the chart
-- If you accessed Lens from a dashboard, select **Save and return** to save the visualization and add it to that dashboard, or select **Save to library** to add the visualization to the Visualize library and be able to add it to other dashboards later.
-- If you accessed Lens from the Visualize library, select **Save**. A menu opens and lets you add the visualization to a dashboard and to the Visualize library.
+:::{include} ../../_snippets/save-visualization.md
+:::
 ::::
 
 :::::
@@ -109,6 +111,118 @@ To create a stacked bar chart:
 
 ![Bar chart with stacking](../../images/stacked-bar-chart.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a stacked bar chart that counts log entries over time and breaks them down by HTTP response code.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Stacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false }, <3>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}
+```
+
+1. `bar_stacked` renders bars with colored segments stacked on top of each other, showing both the total and the contribution of each category.
+2. `breakdown_by` splits each bar into segments by the top 3 HTTP response codes, ranked by document count.
+3. `other_bucket` groups any remaining response codes beyond the top 3 into an **Other** segment.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Stacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false }, <3>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}'
+```
+
+1. `bar_stacked` renders bars with colored segments stacked on top of each other, showing both the total and the contribution of each category.
+2. `breakdown_by` splits each bar into segments by the top 3 HTTP response codes, ranked by document count.
+3. `other_bucket` groups any remaining response codes beyond the top 3 into an **Other** segment.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 ### Create unstacked (side-by-side) bar charts [grouped-bars]
 
 Unstacked bar charts display multiple bars side by side for each category, allowing you to compare different metrics or time periods.
@@ -127,6 +241,116 @@ To create an unstacked bar chart:
 
 ![Bar chart without stacking showing breakdown](../../images/unstacked-bar-chart.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates an unstacked bar chart where each breakdown category renders as a separate bar placed side by side, making individual values straightforward to compare.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Unstacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false },
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}
+```
+
+1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
+2. `breakdown_by` creates a separate bar for each of the top 3 HTTP response codes within every time bucket.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Unstacked bar chart",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "visible", "placement": "outside", "position": "right" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar", <1>
+      "x": { "operation": "date_histogram", "field": "timestamp" },
+      "y": [
+        {
+          "operation": "count",
+          "empty_as_null": true,
+          "format": { "type": "number" }
+        }
+      ],
+      "breakdown_by": { <2>
+        "operation": "terms",
+        "fields": ["response.keyword"],
+        "limit": 3,
+        "other_bucket": { "include_documents_without_field": false },
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": {
+    "fitting": { "type": "none" }
+  }
+}'
+```
+
+1. `bar` (instead of `bar_stacked`) places each category's bar side by side for direct comparison.
+2. `breakdown_by` creates a separate bar for each of the top 3 HTTP response codes within every time bucket.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 ## Bar chart settings [settings]
 
 Customize your bar chart to display exactly the information you need, formatted the way you want.
@@ -134,21 +358,22 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Horizontal axis settings [horizontal-axis-options]
 
 **Data**
-:   The dimension that creates your individual bars. Common functions include:
-    - **Top values**: Create bars for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields to create multi-term bars. When multiple fields are selected, each bar represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+:   The dimension that creates your individual bars. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
 
 **Appearance**
 :   Define the formatting of the horizontal axis, including:
@@ -173,21 +398,25 @@ Customize your bar chart to display exactly the information you need, formatted 
 ### Breakdown settings [breakdown-options]
 
 **Data**
-:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. Common functions include:
-    - **Top values**: Create bar segments for the most common values in a field.
-      - **Field**: Select the field to group by. You can add up to 4 fields. When multiple fields are selected, each segment represents a unique combination of values across those fields. You can reorder the fields by dragging them to change their priority.
-      - **Number of values**: How many top values to display.
+:   Split your bars into segments or groups based on another dimension. Each unique value creates its own segment or bar, allowing you to show composition or compare metrics across multiple dimensions. It supports the following functions:
+
+    :::{include} ../../_snippets/lens-bucket-top-values.md
+    :::
       :::{include} ../../_snippets/lens-rank-by-options.md
       :::
       :::{include} ../../_snippets/lens-breakdown-advanced-settings.md
       :::
-    - **Date histogram**: Create time-based bars with configurable intervals.
-      - **Field**: Select the date field to use for the time-based grouping.
+    :::{include} ../../_snippets/lens-bucket-date-histogram.md
+    :::
       :::{include} ../../_snippets/lens-histogram-settings.md
       :::
-    - **Intervals**: Group data into numerical ranges.
-      - **Field**: Select the numeric field to create intervals from.
-    - **Filters**: Define custom categories using KQL queries.
+    :::{include} ../../_snippets/lens-bucket-intervals.md
+    :::
+    :::{include} ../../_snippets/lens-bucket-filters.md
+    :::
+
+    :::{include} ../../_snippets/lens-collapse-by.md
+    :::
 
 **Appearance**
 :   Define the formatting of the breakdown, including:
@@ -245,13 +474,25 @@ Configure elements of your bar chart's legend. Configurable options include:
 **Width**
 :   Set the width of the legend.
 
+**Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
+:   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:
+    - **List**: A compact layout that flows series labels to fit the available space. List is the default for new charts when the legend is at the top or bottom.
+    - **Grid**: A table-style layout that aligns series labels and statistics into rows and columns.
+
+    Visualizations created before this setting was introduced keep their previous layout until you change it.
+
 **Statistics**
-:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.  
+:   Choose one or more statistics to show (for example, average, min, max, last value). Lens appends those numbers to every series label so you don't have to hover over the chart to see headline figures.
 
 **Label truncation**
-:   Choose whether to truncate long series labels, and set a limit for how many lines render when it's inside the chart.
+:   For legends positioned inside the chart, outside on the side, or outside at the top or bottom with the **Grid** layout, choose whether to truncate long series labels and set the maximum number of lines for each label.
 
 ## Bar chart examples
+
+<!-- MAINTENANCE: the API payload examples in this section were verified
+against the Visualizations API spec. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file bar-charts.md
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
 
 The following examples show various configuration options that you can use for building impactful bar charts.
 
@@ -272,12 +513,124 @@ The following examples show various configuration options that you can use for b
 
 ![Stacked bar chart showing traffic per week broken down per region](/explore-analyze/images/weekly-website-traffic-per-region.png "=70%")
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a stacked bar chart that tracks page views over time with a custom metric label and breaks them down by the top 9 destination regions.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Weekly website traffic per region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "x": { "operation": "date_histogram", "field": "timestamp", "suggested_interval": "1w" }, <1>
+      "y": [
+        {
+          "operation": "count",
+          "label": "Page Views", <2>
+          "format": { "type": "number" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 9, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}
+```
+
+1. `suggested_interval: "1w"` sets each bar to represent one week of data.
+2. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count."
+3. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+4. `other_bucket` groups remaining regions into an **Other** segment so the total is always accounted for.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Weekly website traffic per region",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_stacked",
+      "x": { "operation": "date_histogram", "field": "timestamp", "suggested_interval": "1w" }, <1>
+      "y": [
+        {
+          "operation": "count",
+          "label": "Page Views", <2>
+          "format": { "type": "number" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "breakdown_by": {
+        "operation": "terms",
+        "fields": ["geo.dest"],
+        "limit": 9, <3>
+        "other_bucket": { "include_documents_without_field": false }, <4>
+        "rank_by": { "type": "metric", "metric_index": 0, "direction": "desc" }
+      },
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}'
+```
+
+1. `suggested_interval: "1w"` sets each bar to represent one week of data.
+2. `label` overrides the default axis label so the vertical axis reads "Page Views" instead of "Count."
+3. `limit: 9` shows the top 9 regions, giving a broader geographic breakdown than the default 5.
+4. `other_bucket` groups remaining regions into an **Other** segment so the total is always accounted for.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::
+
 **Request error rate per host (with threshold)**
 :   Monitor error rates across hosts with a target threshold line:
 
     * **Title**: "Request error rate per host"
-    * **Vertical axis**: `count(kql='response > "300"') / count()`
-      * **Name**: "Error Rate %"
+    * **Vertical axis**: `count(kql='response.keyword > "300"') / count()`
+      * **Name**: "Error rate"
       * **Value format**: `Percent`
     * **Horizontal axis**: `terms(service.name)`
       * **Name**: "Hosts"
@@ -289,3 +642,153 @@ The following examples show various configuration options that you can use for b
     * **Layout**: Horizontal orientation (for better service name readability)
 
 ![Bar chart with reference line showing traffic per week broken down per region](/explore-analyze/images/request-error-rate-per-host.png "=70%")
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { stack: preview 9.4, serverless: preview }
+
+This example creates a horizontal bar chart with a formula-based metric and a reference line layer that marks the acceptable error threshold.
+
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/visualizations
+{
+  "type": "xy",
+  "title": "Request error rate per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_horizontal", <1>
+      "x": {
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "label": "Hosts",
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <2>
+      },
+      "y": [
+        {
+          "operation": "formula", <3>
+          "formula": "count(kql='response.keyword > \"300\"') / count()",
+          "label": "Error rate",
+          "format": { "type": "percent" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "reference_lines", <4>
+      "thresholds": [
+        {
+          "operation": "static_value",
+          "value": 0.1,
+          "format": { "type": "percent" },
+          "label": "Maximum acceptable error rate",
+          "color": { "type": "static", "color": "#BD271E" },
+          "stroke_dash": "dashed",
+          "text": { "visible": true }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}
+```
+
+1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
+2. `rank_by: "alphabetical"` sorts the hosts alphabetically so the order is consistent regardless of error rate.
+3. `formula` computes the error rate as the ratio of responses above 300 to total requests. `response.keyword` is stored as a string in the sample data.
+4. A `reference_lines` layer draws a threshold at 10% so hosts exceeding it are immediately visible. `stroke_dash: "dashed"` and `color` mark it red and dashed. `text.visible: true` displays the label on the line.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/visualizations" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "type": "xy",
+  "title": "Request error rate per host",
+  "filters": [],
+  "query": { "expression": "" },
+  "legend": { "visibility": "auto" },
+  "axis": {},
+  "layers": [
+    {
+      "type": "bar_horizontal", <1>
+      "x": {
+        "operation": "terms",
+        "fields": ["host.keyword"],
+        "limit": 4,
+        "label": "Hosts",
+        "rank_by": { "type": "alphabetical", "direction": "asc" } <2>
+      },
+      "y": [
+        {
+          "operation": "formula", <3>
+          "formula": "count(kql='response.keyword > \"300\"') / count()",
+          "label": "Error rate",
+          "format": { "type": "percent" },
+          "filter": { "expression": "" }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    },
+    {
+      "type": "reference_lines", <4>
+      "thresholds": [
+        {
+          "operation": "static_value",
+          "value": 0.1,
+          "format": { "type": "percent" },
+          "label": "Maximum acceptable error rate",
+          "color": { "type": "static", "color": "#BD271E" },
+          "stroke_dash": "dashed",
+          "text": { "visible": true }
+        }
+      ],
+      "data_source": {
+        "type": "data_view_spec",
+        "index_pattern": "kibana_sample_data_logs",
+        "time_field": "timestamp"
+      }
+    }
+  ],
+  "styling": { "fitting": { "type": "none" } }
+}'
+```
+
+1. `bar_horizontal` renders bars horizontally, giving more room for long host names.
+2. `rank_by: "alphabetical"` sorts the hosts alphabetically so the order is consistent regardless of error rate.
+3. `formula` computes the error rate as the ratio of responses above 300 to total requests. `response.keyword` is stored as a string in the sample data.
+4. A `reference_lines` layer draws a threshold at 10% so hosts exceeding it are immediately visible. `stroke_dash: "dashed"` and `color` mark it red and dashed. `text.visible: true` displays the label on the line.
+
+::::
+
+:::::
+
+For more information, refer to the [Visualizations API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-visualizations).
+:::::::

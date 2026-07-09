@@ -57,25 +57,14 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
+Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [Share and export dashboards](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **CSV Reports** — Generate CSV reports of saved Discover sessions. [Certain limitations apply](/explore-analyze/report-and-share.md#csv-limitations).
 * **CSV Download** — Generate and download CSV files of **Lens** visualizations.
 * **Download as JSON** — Generate and download JSON files of **Canvas** workpads.
-
-$$$reporting-layout-sizing$$$
-The layout and size of the report depends on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
-
-To change the output size, change the size of the browser, which resizes the shareable container before the report generates. It might take some trial and error before you’re satisfied.
-
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
+* {applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` **Export JSON**: export the JSON source of a dashboard in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
 
 1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
@@ -110,20 +99,36 @@ Go to the **Reporting** page to access all of your reports. To find the page, na
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 ::::
 
+### Resize PDF and PNG reports [reporting-layout-sizing]
+```{applies_to}
+serverless: unavailable
+```
+
+The layout and size of PDF and PNG reports depend on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
+
+To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
+
+In the following dashboard, the shareable container is highlighted:
+
+:::{image} /explore-analyze/images/kibana-shareable-container.png
+:alt: Shareable Container
+:screenshot:
+:::
+
 ### CSV report limitations [csv-limitations]
 
-We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Report timeout and incomplete data issues are likely if you are exporting data where:
+We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
 
 * More than 250 MB of data is being exported
 * Data is stored on slow storage tiers
 * Any shard needed for the search is unavailable
 * Network latency between nodes is high
-* Cross-cluster search is used
+* Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
+For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
-For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
+For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
 [Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
@@ -153,13 +158,12 @@ serverless: unavailable
 ```
 
 * {applies_to}`stack: beta` **Share on a website** — Download and securely share **Canvas** workpads on any website.
-* **Embed code** — Embed fully interactive dashboards as an iframe on web pages.
+* **Embed code** — Embed fully interactive dashboards as an iframe on web pages. Refer to [Embed in a webpage](/explore-analyze/dashboards/sharing.md#embed-dashboard) for detailed instructions.
 
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
-::::
+For {{ech}} deployments, {{kib}} instances require a minimum of 2 GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 
 

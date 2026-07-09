@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
-    ess: all
-  serverless: all
+    ech: ga
+  serverless: ga
 products:
   - id: cloud-hosted
 ---
@@ -16,7 +16,7 @@ You can centrally control access to your {{ecloud}} organization by setting up S
 
 When users log in to {{ecloud}} for the first time using SSO, they’re automatically added to your organization and their accounts are automatically provisioned.
 
-You can also enhance security by enforcing SSO authentication for members of your organization, and centrally manage role assignments by mapping IdP groups to {{ecloud}} roles.
+You can also enhance security by enforcing SSO authentication for members of your organization, and centrally manage role assignments by mapping IdP groups or user emails to {{ecloud}} roles.
 
 On this page, you'll learn the following:
 
@@ -25,7 +25,7 @@ On this page, you'll learn the following:
 * The [risks and considerations for using SAML SSO](#ec_risks_and_considerations)
 * How to [implement and test SAML SSO](#set-up-sso)
 * How to [enforce SAML SSO](#enforce-sso) for your organization
-* How to [map groups returned by your IdP to {{ecloud}} roles](#role-mappings)
+* How to [map IdP groups and user emails to {{ecloud}} roles](#role-mappings)
 * How to [disable SAML SSO](#ec_disable_sso)
 
 For detailed examples of implementing SAML SSO using common identity providers, refer to the following topics:
@@ -41,14 +41,21 @@ For detailed examples of implementing SAML SSO using common identity providers, 
 
 ## Prerequisites [ec_prerequisites_4]
 
-* This functionality requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
 * You must have a SAML 2.0 compatible identity provider.
+* Eligibility for organization-level SAML SSO varies by resource type, rather than being a single, organization-wide entitlement:
+
+    * **{{ech}}**: Requires an [Enterprise subscription](https://www.elastic.co/subscriptions/cloud).
+    * **{{serverless-full}}**: Included at no additional cost, on any tier across all project types.
+    * **ECK, ECE, and self-managed clusters connected through [Cloud Connect](/deploy-manage/cloud-connect.md)**: Each connected cluster qualifies individually based on its license. A cluster with a Platinum or Enterprise license is eligible, with no paid {{ecloud}} subscription required. Clusters on lower tiers, such as Basic, are not eligible, even if other eligible clusters are connected to the same organization.
+
+    Eligibility is assessed independently for each resource type, so meeting the requirement for one does not grant entitlement to another. For example, an organization with both a {{serverless-full}} project and an {{ech}} deployment on a Standard subscription can use organization-level SAML SSO with the Serverless project, where it is included, but the {{ech}} deployment remains ineligible until the organization upgrades to an Enterprise subscription.
 
 
 ## Risks and considerations [ec_risks_and_considerations]
 
 Before you configure SAML SSO, familiarize yourself with the following risks and considerations:
 
+* You can claim up to 10 domains. Claiming a domain also enables SSO for all of its subdomains.
 * Actions taken on the IdP are not automatically reflected in {{ecloud}}. For example, if you remove a user from your IdP, they are not removed from the {{ecloud}} organization and their active sessions are not invalidated.
 
     To immediately revoke a user’s active sessions, an [Organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
@@ -72,7 +79,9 @@ Follow this procedure to set up SAML SSO with your IdP.
 
 Before you can register and use your IdP with {{ecloud}}, you must claim one or more domains. Only users that have email addresses that match claimed domains can authenticate with your IdP.
 
-If the members of your {{ecloud}} organization have email addresses from multiple domains, you can claim multiple domains.
+You can claim up to 10 domains. Claiming a domain also enables SSO for all of its subdomains.
+
+For example, if you claim `example.com`, users with email addresses like `user@team.example.com` or `user@dev.team.example.com` can authenticate through your IdP. You don't need to claim subdomains separately, and they don't count toward the 10-domain limit.
 
 You must have authority to modify your domain’s DNS records and be a member of the **Organization owner** role in {{ecloud}} to complete this step.
 
@@ -112,7 +121,7 @@ Create a new SAML 2 application in your IdP.
 1. Use placeholder values for the assertion consumer service (ACS) and SP entity ID/audience. Those values will be provided by {{ecloud}} in a later step.
 2. Configure your application to send an `email` attribute statement with the email address of your organization members. The email should match the domain that you claimed.
 3. Optionally configure the application to send `firstName` and `lastName` attribute statements, which will be used to set the respective fields of the user’s {{ecloud}} account.
-4. If you’re planning to use role mappings, configure the application to send a `groups` attribute statement with the groups that you want to map to roles in {{ecloud}}.
+4. If you’re planning to use group-based role mappings, configure the application to send a `groups` attribute statement with the groups that you want to map to roles in {{ecloud}}.
 5. Note the SAML issuer and the SSO URL, which is the URL of the IdP where users will be redirected at login.
 6. Download the public certificate of the SAML 2 application.
 
@@ -136,7 +145,7 @@ Add the information that you collected to {{ecloud}}.
 The **Enforce SAML SSO** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
 ::::
 
-
+$$$sp-details$$$
 If your configuration is valid, the following details of the service provider (SP) will be displayed:
 
 * **SSO Login URL**: The URL that your organization members can use to log in to your organization using your IdP.
@@ -146,21 +155,27 @@ If your configuration is valid, the following details of the service provider (S
 * **Service provider Entity ID**: The unique identifier that allows your IDP to recognize and validate requests from {{ecloud}}.
 * **Service provider ACS URL**: The {{ecloud}} URL that receives SAML assertions from your IdP.
 * **Metadata URL**: The link to an XML metadata file that contains the Elastic service provider metadata. If your IdP accepts metadata files, then you can use this file to configure your IdP.
+* **Request signing certificate**: The certificate that can be used to verify the signature of SAML requests from {{ecloud}} to your IdP.
+* **Encryption certificate**: The certificate that can be used by your IdP to encrypt SAML assertions in the SAML response sent to {{ecloud}}.
 
 
 #### Update the SAML 2 application in your IdP [ec_update_the_saml_2_application_in_your_idp]
 
 Using the details returned in the previous step, update the assertion consumer service (ACS), SP entity ID/audience, and SSO login URL values in your SAML 2 application.
 
-::::{tip}
-Additional details that you might want to use in your IdP configuration, such as the request signing certificate, are available in the downloadable metadata file.
-::::
 
+#### (Optional) Set up SAML request signature verification or SAML assertion encryption
+
+{{ecloud}} signs its SAML requests to your IdP. It also supports encrypted SAML assertions in the SAML response sent by your IdP.
+
+Some IdPs support SAML request signature verification to ensure only trusted parties are able to initiate SSO with the IdP. To enable verification, [download the **Request signing certificate**](#sp-details) from {{ecloud}} and upload the certificate to the associated section of your IdP configuration.
+
+Some IdPs support encrypting SAML assertions in the SAML response they send to the service provider. This can ensure that intermediate parties are unable to read the contents of the assertion during transit. {{ecloud}} supports encrypted SAML assertions but doesn't require it. To enable encrypted SAML assertions, [download the **Encryption certificate** from {{ecloud}}](#sp-details) and upload the certificate to the associated section of your IdP configuration.
 
 
 ### Step 3: Test SSO [ec_test_sso]
 
-After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the identity provider SSO URL in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
+After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the [SSO Login URL provided by {{ecloud}}](#sp-details) in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
 
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
@@ -210,15 +225,15 @@ curl -XPUT \
 
 ## Role mappings [role-mappings]
 
-To automate [role](user-roles.md) assignments to your {{ecloud}} organization’s members, you can use role mappings. Role mappings map groups returned by your IdP in the `groups` SAML attribute to one or more {{ecloud}} roles. The mapping will be evaluated and the applicable roles will be assigned each time your organization’s members log into {{ecloud}} using SSO.
+To automate [role](user-roles.md) assignments to your {{ecloud}} organization’s members, you can use role mappings. Role mappings evaluate rules based on IdP groups or user email addresses and assign one or more {{ecloud}} roles when the rules match. Mappings are evaluated and roles are assigned each time your organization’s members log in to {{ecloud}} using SSO.
 
 To ensure continuous access and control over your organization settings, the first role mapping of your SAML SSO configuration must include the **Organization owner** role.
 
 To allow for role mapping verification, SSO must be configured and enabled for you to create role mappings.
 
 ::::{note}
-* If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
-* If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
+* If [SSO enforcement](#enforce-sso) is not enabled, organization member roles might not be consistent with your role mapping and additional manual role assignment might be needed.
+* Roles manually assigned to a member using the {{ecloud}} Console are overwritten by the role mapping every time the member logs in using SSO.
 ::::
 
 ### Create a role mapping
@@ -229,10 +244,13 @@ To allow for role mapping verification, SSO must be configured and enabled for y
 4. Click to configure the roles that you want to assign to users who meet the mapping rules, click **Add roles** and then select the roles. For more information, refer to [*User roles and privileges*](user-roles.md).
 5. In the **Mapping rules** section, add rules for the role mapping:
 
-    1. Select **All are true** or **Any are true** to define how the rules are evaluated.
-    2. Add group name or names that the member must have in their SAML assertion to be assigned the role.
+    1. Select **All are true** or **Any are true** to define how multiple rules are evaluated. **All are true** requires every rule to match; **Any are true** requires at least one rule to match.
+    2. Add one or more rules. Two rule types are available:
 
-        Use the wildcard character `*` to specify group name patterns. Wildcards will match 0 or more characters.
+        * **Group**: Matches against groups returned in the `groups` SAML attribute from your IdP.
+        * **Email**: Matches against the user's email address from the `email` SAML attribute.
+
+        Use the wildcard character `*` to specify patterns. Wildcards match 0 or more characters.
 6. If your role mapping contains the Organization owner role, then click **Run test** to run role mapping verification.
 7. Click **Save** to save the role mapping.
 

@@ -45,7 +45,7 @@ inputs:
     # Each input must have a unique ID.
     id: unique-system-metrics-input
     # Namespace name must conform to the naming conventions for Elasticsearch indices, cannot contain dashes (-), and cannot exceed 100 bytes
-    # For index naming restrictions, see https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create#indices-create-api-path-params
+    # For index naming restrictions, see {{es-apis}}operation/operation-indices-create#indices-create-api-path-params
     data_stream.namespace: default
     use_output: default
     streams:

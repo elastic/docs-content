@@ -11,7 +11,7 @@ products:
 # Full-text search [full-text-search]
 
 ::::{tip}
-Would you prefer to start with a hands-on example? Refer to our [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).
+If you'd prefer to start with a hands-on example, refer to our [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).
 ::::
 
 Full-text search, also known as lexical search, is a technique for fast, efficient searching through text fields in documents. Documents and search queries are transformed to enable returning [relevant](https://www.elastic.co/what-is/search-relevance) results instead of simply exact term matches. Fields of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type) are analyzed and indexed for full-text search.

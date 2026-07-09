@@ -45,4 +45,4 @@ Refer to the [Automate rollover tutorial](../../../manage-data/lifecycle/index-l
 
 ### Update data stream retention using the data stream lifecycles APIs
 
-You can get information about a data stream lifecycle and modify it using the {{kib}} **Index Management** tools or the {{es}} [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle). Refer to [Update the lifecycle of a data stream](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md) for more information.
+You can get information about a data stream lifecycle and modify it using the {{kib}} **Index Management** tools or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle). Refer to [Update the lifecycle of a data stream](../../../manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md) for more information.

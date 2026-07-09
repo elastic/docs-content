@@ -64,7 +64,7 @@ To enable shard allocation awareness:
     1. Specify multiple attributes as a comma-separated list.
 
 
-    You can also use the [cluster-update-settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API to set or update a cluster’s awareness attributes:
+    You can also use the [cluster-update-settings]({{es-apis}}operation/operation-cluster-put-settings) API to set or update a cluster’s awareness attributes:
 
     ```console
     PUT /_cluster/settings

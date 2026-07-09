@@ -97,7 +97,7 @@ Based on the {{user-experience}} data from your instrumented applications, you c
 
 |     |     |
 | --- | --- |
-| **KPI over time** | The KPI over time histogram represents the performance indicators based onthe metric you select.<br>By default, the `Page views` metric is selected. |
+| **KPI over time** | The KPI over time histogram represents the performance indicators based on the metric you select.<br>By default, the `Page views` metric is selected. |
 | **Performance distribution** | The Performance distribution time-series chart enables you to examine the perceivedperformance of your web applications based on the metric you select.<br>By default, the `Page load time` metric is selected. |
 | **Core web vitals** | The Core web vitals chart is a graphical representation of key metrics, such asload performance, load responsiveness, and visual stability, for each of your web applications.<br>By default, the `Largest contentful paint` metric is selected. Hover over the chart to display crosshairswith performance indicators for each web application: `poor`, `average`, and `good`. |
 

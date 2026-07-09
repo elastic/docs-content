@@ -101,7 +101,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
     ```
 
 7. Start the node where you updated the keystore.
-8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+8. $$$verify-keystore$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
@@ -202,19 +202,19 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 9. Start the node where you updated the keystore.
 
-    Use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to confirm that the node joined the cluster:
+    Use the [cat nodes API]({{es-apis}}operation/operation-cat-nodes) to confirm that the node joined the cluster:
 
     ```console
     GET _cat/nodes
     ```
 
-10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
+10. $$$verify-keystore-http$$$(Optional) Use the [SSL certificate API]({{es-apis}}operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
     ```
 
 11. One node at a time, complete [step 5](#start-rolling-restart-http) through [step 10](#verify-keystore-http) until you’ve updated all keystores in your cluster.
-12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.
+12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Re-enable shard allocation**.
 
 

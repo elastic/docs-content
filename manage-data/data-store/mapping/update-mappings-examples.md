@@ -10,7 +10,7 @@ products:
 
 # Update mapping API examples
 
-This page provides examples of how to use the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) to modify index mappings after creation. 
+This page provides examples of how to use the [update mapping API]({{es-apis}}operation/operation-indices-put-mapping) to modify index mappings after creation.
 
 You can learn how to:
 
@@ -120,7 +120,7 @@ If an index (or data stream) contains documents when you add a multi-field, thos
 
 To see how this works, try the following example.
 
-Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create an index with the `city` [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field:
+Use the [create index API]({{es-apis}}operation/operation-indices-create) to create an index with the `city` [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field:
 
 ```console
 PUT /my-index-000001

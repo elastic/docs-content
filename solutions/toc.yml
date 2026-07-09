@@ -28,22 +28,22 @@ toc:
               - file: search/full-text/search-with-synonyms.md
                 children:
                   - file: search/full-text/create-update-synonyms-api-example.md
-          - file: search/ai-search/ai-search.md
+          - file: search/vector.md
             children:
-              - file: search/vector.md
-                children:
-                  - file: search/vector/dense-vector.md
-                    children:
-                      - file: search/vector/knn.md
-                      - file: search/vector/bring-own-vectors.md
-                  - file: search/vector/sparse-vector.md
-                  - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+              - file: search/vector/vector-search-use-cases.md
               - file: search/semantic-search.md
                 children:
                   - file: search/semantic-search/semantic-search-semantic-text.md
                   - file: search/semantic-search/semantic-search-inference.md
                   - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
                   - file: search/semantic-search/cohere-es.md
+              - file: search/vector/dense-vector.md
+                children:
+                  - file: search/vector/knn.md
+                  - file: search/vector/bring-own-vectors.md
+                  - file: search/vector/vector-storage-for-semantic-search.md
+              - file: search/vector/sparse-vector.md
+              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
               - file: search/using-openai-compatible-models.md
           - file: search/hybrid-search.md
             children:
@@ -72,6 +72,7 @@ toc:
     children:
       - file: elasticsearch-solution-project/get-started.md
         children:
+          - file: elasticsearch-solution-project/ai-onboarding.md
           - file: elasticsearch-solution-project/search-connection-details.md
       - file: elasticsearch-solution-project/playground.md
         children:
@@ -85,7 +86,6 @@ toc:
           - file: elasticsearch-solution-project/search-applications/search-application-api.md
           - file: elasticsearch-solution-project/search-applications/search-application-security.md
           - file: elasticsearch-solution-project/search-applications/search-application-client.md
-      - file: elasticsearch-solution-project/es-serverless-add-ons.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -129,6 +129,7 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
+              - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
@@ -187,6 +188,7 @@ toc:
                       - file: observability/apm/metrics-ui.md
                       - file: observability/apm/infrastructure.md
                       - file: observability/apm/logs.md
+                  - file: observability/apm/discover-traces.md
                   - file: observability/apm/filter-search-data.md
                     children:
                       - file: observability/apm/filter-data.md
@@ -331,6 +333,7 @@ toc:
               - file: observability/synthetics/cli.md
               - file: observability/synthetics/configure-projects.md
               - file: observability/synthetics/mfa-for-browser-monitors.md
+              - file: observability/synthetics/kerberos-for-browser-monitors.md
               - file: observability/synthetics/configure-settings.md
               - file: observability/synthetics/grant-access-to-secured-resources.md
                 children:
@@ -424,6 +427,10 @@ toc:
                   - file: observability/infra-and-hosts/step-4-run-backend-applications.md
                   - file: observability/infra-and-hosts/step-5-next-steps.md
               - file: observability/infra-and-hosts/operate-universal-profiling-backend.md
+          - file: observability/infra-and-hosts/network-topology.md
+            children:
+              - file: observability/infra-and-hosts/network-topology/monitor-network-devices.md
+              - file: observability/infra-and-hosts/network-topology/field-reference.md
           - file: observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:
@@ -459,24 +466,34 @@ toc:
         - file: observability/streams/management/retention.md
         - file: observability/streams/management/extract.md
           children:
-            - file: observability/streams/management/extract/drop.md
-            - file: observability/streams/management/extract/remove.md
-            - file: observability/streams/management/extract/date.md
-            - file: observability/streams/management/extract/convert.md
-            - file: observability/streams/management/extract/replace.md
-            - file: observability/streams/management/extract/dissect.md
-            - file: observability/streams/management/extract/grok.md
-            - file: observability/streams/management/extract/set.md
-            - file: observability/streams/management/extract/math.md
-            - file: observability/streams/management/extract/rename.md
             - file: observability/streams/management/extract/append.md
+            - file: observability/streams/management/extract/concat.md
+            - file: observability/streams/management/extract/convert.md
+            - file: observability/streams/management/extract/date.md
+            - file: observability/streams/management/extract/dissect.md
+            - file: observability/streams/management/extract/drop.md
+            - file: observability/streams/management/extract/enrich.md
+            - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/extract/join.md
+            - file: observability/streams/management/extract/lowercase.md
+            - file: observability/streams/management/extract/math.md
+            - file: observability/streams/management/extract/network-direction.md
+            - file: observability/streams/management/extract/redact.md
+            - file: observability/streams/management/extract/remove.md
+            - file: observability/streams/management/extract/rename.md
+            - file: observability/streams/management/extract/replace.md
+            - file: observability/streams/management/extract/set.md
+            - file: observability/streams/management/extract/trim.md
+            - file: observability/streams/management/extract/uppercase.md
             - file: observability/streams/management/extract/manual-pipeline-configuration.md
         - file: observability/streams/management/partitioning.md
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
         - hidden: observability/streams/management/significant-events.md
         - file: observability/streams/management/advanced.md
+        - file: observability/streams/management/knowledge-indicators.md
         - file: observability/streams/wired-streams.md
+        - file: observability/streams/management/streamlang.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -516,9 +533,11 @@ toc:
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
-          - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/observability-ai-assistant.md
+          - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
+      - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
   - file: security.md
@@ -544,6 +563,7 @@ toc:
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
           - file: security/get-started/configure-advanced-settings.md
+          - file: security/get-started/siem-readiness.md
       - file: security/esql-for-security.md
         children:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
@@ -553,12 +573,18 @@ toc:
             children:
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-upgrade.md
+          - file: security/ai/agent-builder/agent-builder.md
+            children:
+              - file: security/ai/agent-builder/skills-model.md
+              - file: security/ai/agent-builder/skills-use-cases.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
-          - file: security/ai/agent-builder/agent-builder.md
           - file: security/ai/attack-discovery.md
+            children:
+              - file: security/ai/attacks-page.md
+              - file: security/ai/triage-attack-discovery-findings.md
           - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/use-cases.md
             children:
@@ -566,6 +592,7 @@ toc:
               - file: security/ai/identify-investigate-document-threats.md
               - file: security/ai/generate-customize-learn-about-esorql-queries.md
           - file: security/ai/ease/ease-value-report.md
+      - file: security/mcp-app/elastic-security-mcp-app.md
       - file: security/detect-and-alert.md
         children:
           - file: security/detect-and-alert/before-you-begin.md
@@ -576,6 +603,7 @@ toc:
               - file: security/detect-and-alert/advanced-data-source-configuration.md
                 children:
                   - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
+                  - file: security/detect-and-alert/cross-project-search-detection-rules.md
                   - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/mitre-attack-coverage.md
           - file: security/detect-and-alert/prebuilt-rules.md
@@ -648,11 +676,13 @@ toc:
         children:
           - file: security/manage-elastic-defend/endpoints.md
           - file: security/manage-elastic-defend/policies.md
+          - file: security/manage-elastic-defend/elastic-endpoint-exceptions.md
           - file: security/manage-elastic-defend/trusted-applications.md
           - file: security/manage-elastic-defend/trusted-devices.md
           - file: security/manage-elastic-defend/event-filters.md
           - file: security/manage-elastic-defend/host-isolation-exceptions.md
           - file: security/manage-elastic-defend/blocklist.md
+          - file: security/manage-elastic-defend/exception-types-and-syntax.md
           - file: security/manage-elastic-defend/optimize-elastic-defend.md
           - file: security/manage-elastic-defend/event-capture-elastic-defend.md
           - file: security/manage-elastic-defend/endpoint-protection-rules.md
@@ -664,6 +694,7 @@ toc:
           - file: security/endpoint-response-actions/automated-response-actions.md
           - file: security/endpoint-response-actions/isolate-host.md
           - file: security/endpoint-response-actions/response-actions-history.md
+          - file: security/endpoint-response-actions/script-library.md
           - file: security/endpoint-response-actions/third-party-response-actions.md
           - file: security/endpoint-response-actions/configure-third-party-response-actions.md
       - file: security/cloud.md
@@ -725,6 +756,7 @@ toc:
           - file: security/integrations/wiz.md
       - file: security/investigate.md
         children:
+          - file: security/investigate/discover-security.md
           - file: security/investigate/timeline.md
             children:
               - file: security/investigate/timeline-templates.md
@@ -755,26 +787,34 @@ toc:
           - file: security/dashboards/endpoint-detection-response-dashboard.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/overview.md
+          - file: security/advanced-entity-analytics/entity-analytics-requirements.md
+          - file: security/advanced-entity-analytics/entity-store.md
+            children:
+              - file: security/advanced-entity-analytics/entity-relationships.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
-              - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
               - file: security/advanced-entity-analytics/turn-on-risk-scoring-engine.md
-              - file: security/advanced-entity-analytics/view-entity-details.md
               - file: security/advanced-entity-analytics/asset-criticality.md
-              - file: security/advanced-entity-analytics/entity-store.md
               - file: security/advanced-entity-analytics/view-analyze-risk-score-data.md
+          - file: security/advanced-entity-analytics/manage-entities.md
+            children:
+              - file: security/advanced-entity-analytics/watchlists.md
+              - file: security/advanced-entity-analytics/entity-resolution.md
+              - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+                children:
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+                  - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+                  - file: security/advanced-entity-analytics/monitor-privileged-user-activities.md
           - file: security/advanced-entity-analytics/advanced-behavioral-detections.md
             children:
               - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+          - file: security/advanced-entity-analytics/investigate-entities.md
             children:
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
-              - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
-              - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
+              - file: security/advanced-entity-analytics/monitor-entity-risk.md
+              - file: security/advanced-entity-analytics/view-entity-details.md
           - file: security/advanced-entity-analytics/explore.md
             children:
               - file: security/advanced-entity-analytics/hosts-page.md

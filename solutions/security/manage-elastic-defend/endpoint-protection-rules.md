@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-protection-rules.html
   - https://www.elastic.co/guide/en/serverless/current/endpoint-protection-rules.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -54,9 +54,18 @@ If you choose to use the feature-specific protection rules, we recommend that yo
 ::::
 
 
-To use these rules, you need to manually enable them from the **Rules** page in the {{security-app}}. Follow the instructions for [installing and enabling Elastic prebuilt rules](../detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules).
+To use these rules, you need to manually enable them from the **{{siem-rules-ui}}** page in the {{security-app}}. Follow the instructions for [installing and enabling Elastic prebuilt rules](../detect-and-alert/install-prebuilt-rules.md#load-prebuilt-rules).
 
 
 ## Endpoint security exception handling [_endpoint_security_exception_handling]
 
+::::{applies-switch}
+:::{applies-item} { stack: ga 9.4+, serverless: ga }
+Starting in {{stack}} 9.4, [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) are managed from the **Artifacts** page, and they're no longer shared through the Endpoint Security Exception List.
+
+If you [opt in to per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in), you can assign exceptions to specific {{elastic-defend}} integration policies, and they're no longer evaluated by detection rules.
+:::
+:::{applies-item} stack: ga 9.0-9.3
 All endpoint protection rules share a common exception list called the Endpoint Security Exception List. This ensures that if you switch between using the Endpoint Security ({{elastic-defend}}) rule and the feature-specific protection rules, your existing [{{elastic-endpoint}} exceptions](../detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) continue to apply.
+:::
+::::

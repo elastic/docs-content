@@ -4,8 +4,6 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
-        children:
-          - file: data-store/perform-index-operations.md
       - file: data-store/near-real-time-search.md
       - file: data-store/data-streams.md
         children:
@@ -27,6 +25,7 @@ toc:
                 - file: data-store/data-streams/time-bound-tsds.md
                 - file: data-store/data-streams/reindex-tsds.md
                 - file: data-store/data-streams/tsds-ingest-otlp.md
+                - file: data-store/data-streams/tsds-ingest-prometheus-remote-write.md
           - file: data-store/data-streams/logs-data-stream.md
             children:
               - file: data-store/data-streams/logs-data-stream-configure.md
@@ -71,6 +70,9 @@ toc:
           - file: data-store/templates/ignore-missing-component-templates.md
           - hidden: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
+      - file: data-store/perform-index-operations.md
+        children:
+          - file: data-store/index-operations-reference.md
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
     children:
@@ -110,6 +112,7 @@ toc:
         children:
           - file: ingest/agentless/cloud-connector-deployment.md
           - file: ingest/agentless/agentless-integrations-faq.md
+      - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
@@ -132,6 +135,9 @@ toc:
   - file: lifecycle.md
     children:
       - file: lifecycle/data-tiers.md
+        children:
+          - file: lifecycle/data-tiers/manage-data-tiers-ech-ece.md
+          - file: lifecycle/data-tiers/manage-data-tiers-self-managed-eck.md
       - file: lifecycle/index-lifecycle-management.md
         children:
           - file: lifecycle/index-lifecycle-management/index-lifecycle.md
@@ -174,8 +180,10 @@ toc:
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
   - file: migrate.md
     children:
-      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
-      - file: migrate/migrate-internal-indices.md
       - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
+      - file: migrate/migrate-data-using-reindex-api.md
+        children:
+          - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-with-logstash.md  
+      - file: migrate/migrate-internal-indices.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

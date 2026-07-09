@@ -32,7 +32,7 @@ Access to connectors is granted based on your privileges to alerting-enabled fea
 stack:
 ```
 
-If you're using {{stack}}, use the [action configuration settings](kibana://reference/configuration-reference/alerting-settings.md#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
+If you're using {{stack}}, use the [action configuration settings](kibana://reference/configuration-reference/alerting-settings.md) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
 
 ## Connector list [connectors-list]
 

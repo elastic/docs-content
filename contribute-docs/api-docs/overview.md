@@ -34,10 +34,15 @@ This evolution seeks to elevate documentation to being a top-level citizen in th
 
 All Elastic API docs follow this general pattern:
 
-:::{image} images/api-docs-general-pipeline.png
-:alt: High-level API docs workflow pipeline diagram, showing the flow from source files to OpenAPI documents and published documentation.
-:width: 490px
-:::
+```mermaid 
+flowchart TD
+    A[Source files] --> B[OpenAPI documents]
+    B --> C[Published documentation]
+    
+    style A fill:#fff2cc
+    style B fill:#e1d5e7
+    style C fill:#dae8fc
+```
 
 1. **Source files** can be:
     - TypeScript definitions with JSDoc comments (Elasticsearch)
@@ -53,13 +58,30 @@ The Elasticsearch API specification workflow is particularly complex because it 
 
 When adding a new API, Elasticsearch engineers first create a basic spec in the [elasticsearch repo](https://github.com/elastic/elasticsearch/tree/main/rest-api-spec). Those specs are mirrored, and made more robust and detailed in [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification/tree/main/docs).
 
-The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference](https://www.elastic.co/docs/api/doc/elasticsearch/) (including the [Serverless API reference](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/)). Here's how the pipeline works:
+The generated Schema JSON and OpenAPI documents feed into client libraries (and their docs), the Dev Tools Console, and the [Elasticsearch API reference]({{es-apis}}) (including the [Serverless API reference]({{es-serverless-apis}})). Here's how the pipeline works:
 
-:::{image} images/es-api-docs-pipeline.png
-:alt: API docs generation pipeline diagram, showing the flow from TypeScript specifications to JSON schema, OpenAPI transformation, and HTML publishing.
-:width: 750px
-:align: center
-:::
+```mermaid
+flowchart TD
+    A[TypeScript API definitions] -->|compiled| B[Schema JSON]
+    G[YAML example files] --> B
+    G -->|auto-translated| P[Programming language examples] --> B
+    B -->|converted| C1[OpenAPI for docs]
+    B -->|converted| C2[OpenAPI for Dev Tools Console]
+    H[Overlays] -->|applied| C1
+    C1 -->|published| E["HTML published by Bump.sh"]
+    B -->|generated| D[Client libraries]
+    B -->|generated| F[REST API spec]
+    
+    style A fill:#fff2cc
+    style F fill:#fff2cc
+    style G fill:#fff2cc
+    style B fill:#d5e8d4
+    style C1 fill:#e1d5e7
+    style C2 fill:#e1d5e7
+    style H fill:#fff2cc
+    style D fill:#dae8fc
+    style E fill:#dae8fc
+```
 
 ### Input sources
 

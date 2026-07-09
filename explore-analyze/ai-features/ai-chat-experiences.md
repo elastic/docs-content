@@ -18,4 +18,8 @@ There are two AI chat experiences which you can choose from:
 - {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview` **AI Agent**: Powered by [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), this chat experience lets you create custom agents for specific tasks, with specialized tools, and provides a unified chat experience across all of {{kib}}.
 - [AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-assistant.md): Elastic's original AI chat, AI Assistant offers features like chat sharing, data anonymization, and knowledge base that are not yet present in Agent Builder. The AI Assistant for {{observability}} and {{es}} operates independently from the AI Assistant for Security.
 
-To compare them and learn how to switch between them, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). 
+If {{kib}} cannot use Elastic's public knowledge base artifact host—for example in air-gapped or restricted networks—refer to [Host a knowledge base artifact repo for AI Assistant](ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
+
+Refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) for connectors and tested models. For {{agent-builder}}, refer to [Recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models).
+
+To compare them and learn how to switch between them, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).

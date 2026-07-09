@@ -23,6 +23,53 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+::::{dropdown} Upgrading to 9.3.x fails when a rule action contains oversized content
+
+Applies to: {{stack}} 9.3.0, 9.3.1, 9.3.2, 9.3.3, 9.3.4
+
+**Details**
+
+Upgrading from 9.2.x to 9.3.x can fail if a rule (including Observability alerting rules) has a connector action whose parameter values are larger than 32,766 bytes. Common examples include email message bodies or HTML templates, large webhook payloads, or Slack messages built from verbose templates.
+
+During the upgrade, {{kib}} migrates rule saved objects to a new internal mapping. Any oversized action parameter value causes the migration to abort with an error similar to:
+
+```
+Flattened field [alert.actions.params] contains one immense field whose keyed encoding is longer than the allowed max length of 32766 bytes
+```
+
+**Workaround**
+
+Upgrade to 9.3.5 or 9.4.2.
+
+If the upgrade has failed with this error, identify rules that use connectors with large content (particularly email, webhook, and Slack connectors) and shorten the action parameter values, such as message bodies or HTML templates. Then retry the upgrade.
+
+
+For more information, refer to [#268982](https://github.com/elastic/kibana/issues/268982).
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.5 and 9.4.2.
+
+::::
+
+::::{dropdown} Observability alerts remain active instead of transitioning to recovered
+
+Applies to: {{stack}} 9.2.7, 9.2.8, 9.3.2, 9.3.3
+
+**Details**
+
+Some Observability alerts send recovery notifications (for example, Slack, email, or webhook) but remain `active` in {{kib}} instead of transitioning to `recovered`.
+
+**Action**
+
+Manually untrack stale alerts or upgrade to {{stack}} 9.3.4 or 9.4.0.
+
+**Resolved**
+
+This issue is resolved in {{stack}} 9.3.4 and 9.4.0.
+
+::::
+
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 
@@ -386,5 +433,21 @@ To work around this issue, manually update the configuration of the generated `o
 batch:
   flush_timeout: 1s
 ```
+
+::::
+
+::::{dropdown} Profiling Symbolizer unable to store symbols for private executables
+
+Applies to: {{stack}} 9.1, 9.2, 9.3
+
+**Details**
+
+Due to a bug in how Elasticsearch processes empty `keyword` fields encoded with SMILE, Symbolizer fails to store symbols for private executables.
+Elasticsearch versions affected: 9.1.4+
+Fixed in the following Elasticsearch releases:
+
+* 9.1.11
+* 9.2.8
+* 9.3.3
 
 ::::

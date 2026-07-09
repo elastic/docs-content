@@ -6,9 +6,10 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - id: observability
-  - id: cloud-serverless
+  - id: "observability"
+  - id: "serverless-observability"
 navigation_title: Create and manage rules
+description: Create and manage alerting rules for Elastic Observability applications and SLOs. Define rules that detect conditions across APM, logs, metrics, and infrastructure, and configure actions to trigger when conditions are met.
 ---
 
 # Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
@@ -21,6 +22,12 @@ navigation_title: Create and manage rules
 
 
 Alerting enables you to define *rules*, which detect complex conditions within different apps and trigger actions when those conditions are met. Alerting provides a set of built-in connectors and rules for you to use.
+
+::::{note}
+:applies_to: {"stack": "ga 9.4+", "serverless": "ga"}
+
+All of your alerting rules appear in one list on the **Rules** page. Open the page from **{{stack-manage-app}}** > **Alerts and insights** > **{{rules-ui}}**, or from **Manage rules** (or the equivalent link) in {{observability}}, Discover, or Stack Monitoring. Each of these opens the same **Rules** page, where you can view and manage rules.
+::::
 
 
 ## Observability rules [observability-create-manage-rules-observability-rules]
@@ -127,3 +134,13 @@ You can modify the criteria for changing an alert's status to [flapping state](v
 {applies_to}`stack: ga 9.3+` You can modify the flapping settings for a specific rule while creating or editing it. You can also modify the flapping settings for all rules in your {{kib}} space or {{serverless-short}} project. To do this, go to the **Rules** page (find the **Rules** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)), click **Settings**, then go to the **Alert flapping detection** settings.
 
 {applies_to}`stack: ga 9.0-9.2` You can only modify global flapping settings for your entire {{kib}} space or {{serverless-short}} project.
+
+## {{cps-cap}} scope for rules [observability-cps-scope-for-rules]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+:::{include} /solutions/_snippets/cps-sec-obs-rules.md
+:::

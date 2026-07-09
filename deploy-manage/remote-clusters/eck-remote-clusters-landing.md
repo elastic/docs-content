@@ -25,7 +25,7 @@ When using remote cluster connections with ECK, the setup process varies dependi
 To use CCS or CCR, your {{es}} clusters must meet the following criteria:
 
 * The local and remote clusters must run on compatible versions of {{es}}. Review the version compatibility table.
-  
+
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
 

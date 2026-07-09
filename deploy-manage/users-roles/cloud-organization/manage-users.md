@@ -32,20 +32,32 @@ Users can only belong to one organization at a time. If a user that you want to 
 If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 :::
 
+## Required permissions
+
+* Only **Organization owners** can invite new users to the organization.
+
+* To assign or modify roles for existing members, your permissions must cover the resources affected by the role assignment:
+  - **Organization owners** can manage role assignments for all members in the organization.
+  - Members with the **Admin** role can view and manage role assignments only for deployments or projects within their scope:
+    - Admins scoped to all deployments and projects can manage assignments across all resources.
+    - Admins scoped to specific deployments or projects can manage assignments only for those resources.
+
+For more information about role scopes and permissions, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+
 ## Invite your team [ec-invite-users]
 
 To invite users to your organization:
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the navigation menu, select **Organization** > **Members**.
-4. On the **Members** page, click **Invite members**.
-5. Enter the email addresses of the users you want to invite in the textbox.
+3. On the **Members** page, click **Invite members**.
+4. Enter the email addresses of the users you want to invite in the email field.
 
     To add multiple members, enter the member email addresses, separated by a space.
 
 5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
 
-   If you're assigning roles for {{serverless-full}} projects, then you can grant access to all projects of the same type with a unique role, or select individual roles for specific projects. For more details about roles, refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+    You can grant access to {{ech}} deployments, {{serverless-full}} projects, or connected clusters, either to all resources or scoped to specific ones. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 6. Click **Send invites**.
 

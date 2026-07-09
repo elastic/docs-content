@@ -24,14 +24,20 @@ This document provides a general overview of the retriever abstraction. For a fu
 
 Retrievers come in various types, each tailored for different search operations. The following retrievers are currently available:
 
-* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#search-api-knn), in the context of a retriever framework.
-* [**Linear retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores.
-* [**Pinned retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever). Always places specified documents at the top of the results, with the remaining hits provided by a secondary retriever.
-* [**Rescorer retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever). Re-scores the results produced by its child retriever.
-* [**RRF retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever). Compound retriever which combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. 
-* [**Rule retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rule-retriever). Applies [query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rules) to the query before returning results.
+**First-stage retrievers** return an initial set of candidate documents:
+
 * [**Standard retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#standard-retriever). Returns top documents from a traditional [query](/explore-analyze/query-filter/languages/querydsl.md).
-* [**Text Similarity Re-ranker retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever). Used for semantic reranking.
+* [**kNN retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search]({{es-apis}}operation/operation-search#search-api-knn).
+
+**Compound retrievers** combine or reorder results from child retrievers:
+
+* [**RRF retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever). Combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. Supports a [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format) for simple hybrid search.
+* [**Linear retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted, normalized sum of their scores. Also supports the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format) for automatic hybrid search across lexical and semantic fields.
+* [**Pinned retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#pinned-retriever). Always places specified documents at the top of the results, with the remaining hits provided by a secondary retriever.
+* [**Rule retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rule-retriever). Applies [query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rules) to the query before returning results.
+* [**Rescorer retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever). Re-scores the results produced by its child retriever.
+* [**Text Similarity Re-ranker retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever). Re-ranks results using a cross-encoder model for [semantic reranking](ranking/semantic-reranking.md).
+* [**Diversify retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#diversify-retriever) _(preview)_. Reduces redundancy in results by applying Maximum Marginal Relevance (MMR) diversification to the top-N results from a child retriever.
 
 ## What makes retrievers useful? [retrievers-overview-why-are-they-useful]
 

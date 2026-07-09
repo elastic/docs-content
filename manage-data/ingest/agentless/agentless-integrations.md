@@ -16,7 +16,7 @@ products:
 Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it. For setup guides and to learn more about Elastic's integrations, refer to [Elastic integrations](integration-docs://reference/index.md).
 
 ::::{important}
-During technical preview, there are no additional costs associated with deploying agentless integrations. There is a limit of 5 agentless integrations per project. 
+During technical preview, there are no additional costs associated with deploying agentless integrations. There is a limit of 50 agentless integrations per project. 
 ::::
 
 ## Requirements
@@ -24,7 +24,6 @@ During technical preview, there are no additional costs associated with deployin
 * Agentless integrations are supported only on {{ech}}, {{sec-serverless}}, and {{obs-serverless}} deployments. 
 * On {{ech}}, agentless integrations require a working [{{fleet-server}}](/reference/fleet/fleet-server.md).
 * To set up a new agentless integration, you need the `Actions and connectors: all` [{{kib}} privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-* For {{serverless-short}} deployments, traffic filtering must be turned off.
 
 ## Generally available (GA) agentless integrations
 

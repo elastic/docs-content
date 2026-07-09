@@ -64,7 +64,7 @@ The entire process is designed to be failsafe.  Containers get upgraded sequenti
 Before starting the upgrade process, check which of the following recommendations may apply for your setup:
 
 
-* We strongly recommend that you routinely update your ECE installation to the most current version so that any bugs and security issues are fixed promptly. If you need to upgrade but are currently experiencing any issues with your platform, note that as long as ZooKeeper is running and healthy you should be able to upgrade (you can use the [get runners API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) to easily verify the health of the runners on the [ECE allocators](../../../deploy-manage/deploy/cloud-enterprise/ece-architecture.md#ece-architecture-allocators)). That is, healthy system deployments are not required in order to perform an upgrade successfully.
+* We strongly recommend that you routinely update your ECE installation to the most current version so that any bugs and security issues are fixed promptly. If you need to upgrade but are currently experiencing any issues with your platform, note that as long as ZooKeeper is running and healthy you should be able to upgrade (you can use the [get runners API]({{ece-apis}}operation/operation-get-runners) to easily verify the health of the runners on the [ECE allocators](../../../deploy-manage/deploy/cloud-enterprise/ece-architecture.md#ece-architecture-allocators)). That is, healthy system deployments are not required in order to perform an upgrade successfully.
 * Review the [known issues](cloud://release-notes/cloud-enterprise/known-issues.md) to find out about limitations and known problems, to ensure a smoother upgrade experience.
 * Review the [lists of removals](cloud://release-notes/cloud-enterprise/breaking-changes.md) to find out about features and API endpoints that are no longer supported.
 * We strongly recommend that you do not attempt to perform certain actions during the upgrade process, such as:
@@ -104,10 +104,13 @@ If your ECE installation is still using the default, auto-generated certificates
 
 - Recommended: [Add your organization’s own certificate](../../../deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to {{ece}}. The upgrade process ensures that the certificates you add do not change, which avoids the trust errors.
 - Add the default CA certificate to the trust store of your system or of your browser. Only the server certificate changes during upgrade, but the CA certificate remains the same. Adding the CA certificate to your trust store alone is sufficient to avoid the trust errors.
-- Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field:
+- Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field.
+
+    ::::{include} /deploy-manage/_snippets/curl-k-ece.md
+    ::::
 
     ```sh
-    curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/license
+    curl -X GET -u admin:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/license
     {
       "license": {
         "version": 4,

@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/editing-user-settings.html
 applies_to:
   deployment:
-    ece: all
+    ece: ga all
 products:
   - id: cloud-enterprise
 ---
@@ -27,3 +27,9 @@ The following sections provide extra details and examples for different componen
 * [](./edit-stack-settings-kibana.md)
 * [](./edit-stack-settings-apm.md)
 * [](./edit-stack-settings-enterprise.md)
+
+## Manage settings with the {{ece}} API
+
+If you manage deployments programmatically in {{ece}}, you can update user settings through the generic [Update Deployment API]({{ece-apis}}operation/operation-update-deployment) by submitting an updated deployment payload.
+
+Refer to [{{ece}} tools and APIs](tools-apis.md) for authentication and API usage guidance.

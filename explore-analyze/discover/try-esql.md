@@ -19,19 +19,28 @@ Elasticsearch Query Language ({{esql}}) helps you explore and analyze your {{pro
 - You must have data in {{product.elasticsearch}}.
   The examples on this page use the {{product.kibana}} sample web logs to explore data and create visualizations. You can install sample data by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
-::::{tip}
-For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{product.kibana}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
-::::
+## Resources
+
+This tutorial covers the basics of querying data with {{esql}} in Discover. For more information, refer to:
+
+* [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators
+* [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md): Detailed overview of {{esql}} features in {{product.kibana}}
+* [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries
 
 
 ## Get started with {{esql}} in Discover [tutorial-try-esql]
 
 1. Go to **Discover**.
-2. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from the application menu.
+2. Switch to {{esql}} mode. You can do this from:
 
-   :::{tip}
-   If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-   :::
+   - {icon}`code` **Query in ES|QL** (**ES|QL** or **Try ES|QL** in earlier versions) in the application menu.
+   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` **Switch to ES|QL** in the contextual menu ({icon}`boxes_vertical`) of the active Discover tab. This affects only that tab.
+
+   Things to know:
+
+   - If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to {{esql}}.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Active filters from the filter bar are also converted to {{esql}} `WHERE` clauses where possible. Filters that can't be converted, such as scripted filters, are dropped.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Discover remembers your last used query mode. The next time you open a new Discover session, it opens in the mode you last used.
 
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
@@ -50,8 +59,7 @@ For the complete {{esql}} documentation, including all supported commands, funct
    {{esql}} keywords are not case sensitive.
    ::::
 
-5. Click **▶Run**.
-   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
+5. Select **Search** (or **▶Run** in earlier versions).
 
 Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
@@ -63,11 +71,10 @@ Let’s add `geo.dest` to our query to find out the geographical destination of 
     | LIMIT 10
     ```
 
-2. Click **▶Run** again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
+2. Select **Search** (or **▶Run** in earlier versions) again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
    ::::{note}
    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
    ::::
-   ![An image of the extended query result](/explore-analyze/images/kibana-esql-limit.png "")
 
 
 We will now take it a step further to sort the data by machine RAM and filter out the `GB` destination.
@@ -82,11 +89,33 @@ We will now take it a step further to sort the data by machine RAM and filter ou
     | LIMIT 10
     ```
 
-2. Click **▶Run** again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
-
-    ![An image of the full query result](/explore-analyze/images/kibana-esql-full-query.png "")
+2. Select **Search** (or **▶Run** in earlier versions) again. The table and visualization no longer show results for which the `geo.dest` field value is "GB", and the results are now sorted in descending order in the table based on the `machine.ram` field.
 
 3. Click **Save** to save the query and visualization to a dashboard.
+
+
+## Browse indices and fields from the editor [discover-esql-resource-browsers]
+```{applies_to}
+stack: ga 9.4
+serverless: ga
+```
+
+When you write a query, the {{esql}} editor includes two interactive browsers that help you find available data sources and field names:
+
+- **Data source browser**: lists the data sources of the following types that you can query: **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**. The browser supports multi-select: you can add or remove several sources in one session, and sources already present in your query appear preselected. Selections are inserted into the `FROM` or `TS` command and existing sources stay preserved. When the query starts with `TS`, only time series data sources are listed.
+- **Fields browser**: lists fields for the data sources currently in your query and lets you insert one field at a time at the cursor position.
+
+:::{note}
+:applies_to: {stack: preview 9.4.0, serverless: unavailable}
+[{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md) aren't shown in the data source browser but they're visible through the autocomplete menu suggestions.
+:::
+
+You can open either browser from:
+
+- **The autocomplete menu**: select **Browse indices** when editing a `FROM` or `TS` command, or **Browse fields** when editing a position that accepts a field name (for example, after `KEEP`, `WHERE`, or `SORT`).
+- **The data source badge**: the first `FROM` or `TS` keyword in the query is rendered as a clickable badge. Select it to open the data source browser.
+
+Both browsers operate on the main query only and don't apply to subqueries.
 
 
 ## Edit the ES|QL visualization [_edit_the_esql_visualization]
@@ -98,7 +127,7 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 ## Organize the query results [esql-kibana-results-table]
 
-By default, the results table shows a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
+By default, the results table shows the `@timestamp` field and a **Summary** column that lists each result's key-value pairs. To display specific fields from the documents, use the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -112,6 +141,11 @@ FROM kibana_sample_data_logs
 | KEEP *
 ```
 
+:::{note}
+:applies_to: { stack: ga 9.4, serverless: ga }
+When a query without transformational commands (such as `KEEP` or `STATS`) returns 5 or fewer columns, **Discover** shows each column individually instead of the **Summary** column.
+:::
+
 Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
 ### Limitations [esql-kibana-results-table-limitations]
@@ -120,6 +154,8 @@ Omitting the `LIMIT` command, the results table defaults to up to 1,000 rows. Us
 - **Column limit:** Discover displays up to 50 columns. If a query returns more than 50 columns, only the first 50 are shown.
 - **CSV export:** CSV exports from Discover are also limited to 10,000 rows. Queries and aggregations still run on the full data set.
 - **No data filtering UI:** The data filtering UI is not available when Discover is in {{esql}} mode. Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command instead.
+
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` When you switch from classic mode to {{esql}} mode, active filters from the filter bar are converted to `WHERE` clauses where possible, so they aren't lost. Filters that can't be converted are dropped.
 
 
 ## Sort query results [_sorting]
@@ -148,10 +184,6 @@ FROM kibana_sample_data_ecommerce
 | KEEP customer_first_name, email, products._id.keyword
 ```
 
-:::{image} /explore-analyze/images/kibana-esql-no-time-series.png
-:alt: ESQL query without time series capabilities enabled
-:::
-
 While still querying the same data set, by adding the `?_tstart` and `?_tend` parameters based on the `order_date` field, **Discover** enables times series capabilities.
 
 ```esql
@@ -159,20 +191,16 @@ FROM kibana_sample_data_ecommerce
 | WHERE order_date >= ?_tstart and order_date <= ?_tend
 ```
 
-:::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
-:alt: ESQL query with a custom time field enabled
-:::
-
 ## Create and edit lookup indices from queries [discover-esql-lookup-join]
 ```{applies_to}
 stack: preview 9.2
 serverless: preview
 ```
 
-In **Discover**, LOOKUP JOIN commands include interactive options that let you create or edit lookup indices directly from the editor.
+In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor.
 
 :::{note}
-This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) and [Serverless](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-create).
+This section describes how to use the {{kib}} UI to create and edit lookup indices. You can also create and manage indices using the {{es}} APIs for [version 9]({{es-apis}}operation/operation-indices-create) and [Serverless]({{es-serverless-apis}}operation/operation-indices-create).
 :::
 
 ### Create a lookup index from the editor [create-lookup-esql]
@@ -203,6 +231,11 @@ To create lookup indices, you need the [`create_index`](elasticsearch://referenc
    - **Using a combination of both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
 5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you choose to open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
+
+   :::{tip}
+   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
+   The search field supports free text and [KQL](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the filter doesn't match unsaved values.
+   :::
 
 6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
 
@@ -294,6 +327,15 @@ In this version, you cannot fully reset the index configuration. For example, yo
 
 :::::
 
+### Limitations [discover-esql-lookup-editor-limitations]
+
+The following limitations apply to the lookup index editor in {{kib}}. For general limitations of the `LOOKUP JOIN` command, refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md#limitations).
+
+Row display limit
+:   The lookup index editor displays up to 1,000 rows. To find a specific row when the index contains more than 1,000 entries, use the search field: it searches the full index. The `LIMIT` command in your {{esql}} query has no effect on the data shown here.
+
+    {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` The search field accepts KQL syntax for precise filtering. Unsaved rows and values aren't matched until you save the index.
+
 ## Add variable controls to your Discover queries [add-variable-control]
 ```{applies_to}
 stack: preview 9.2
@@ -329,18 +371,90 @@ You can edit all of the options described in [](#add-variable-control).
 
 When you save your edits, the control is updated for your query.
 
-### Import a Discover query along with its controls into a dashboard
+### Import a Discover query along with its controls into a dashboard [import-discover-query-with-controls]
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
 
 
+## View grouped results from a STATS query [esql-cascade-layout]
+```{applies_to}
+stack: preview 9.4
+serverless: preview
+```
+
+When your {{esql}} query uses a [`STATS BY`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) clause with a single grouping field, **Discover** displays the results as expandable groups instead of a flat table. Each row represents one unique value of the grouping field, and you can expand it to inspect the underlying documents without leaving the query. The results count above the table reports the number of groups instead of the number of documents.
+
+:::{image} /explore-analyze/images/discover-esql-cascade-overview.png
+:alt: Grouped results layout in Discover, with one row expanded to show underlying documents
+:screenshot:
+:::
+
+The grouped layout activates when the `BY` clause contains a single field reference or a single [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md) call. Other grouping functions like `BUCKET` or `TBUCKET`, and queries that group by more than one field (for example, `BY clientip, extension`), keep the standard flat results table.
+
+### Pattern rendering
+
+When the grouping field uses [`CATEGORIZE`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions/categorize.md), each row title shows the detected pattern with token highlighting, so you can scan repeated message structures at a glance. For example:
+
+```esql
+FROM kibana_sample_data_logs
+| STATS Count = COUNT(*) BY Pattern = CATEGORIZE(message)
+| SORT Count DESC
+```
+
+% RESTORE FOR 9.5 - start
+% The block below documents the inline SPARKLINE rendering. SPARKLINE has been
+% deferred from 9.4 to 9.5. When SPARKLINE ships in a release build, restore
+% this block, rename the subsection back to "Pattern and sparkline rendering",
+% uncomment the screenshot directive, and update the screenshot if needed.
+% Tracked in: https://github.com/elastic/docs-content/issues/6215
+%
+% When the query also computes a [`SPARKLINE`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/sparkline.md) over time, the resulting array is rendered as an inline sparkline next to the row aggregates. For example, the following query categorizes log messages and renders a per-pattern sparkline:
+%
+% ```esql
+% FROM kibana_sample_data_logs
+% | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart
+% | STATS Count = COUNT(*),
+%         Sparkline = SPARKLINE(COUNT(*), @timestamp, 40, ?_tstart, ?_tend)
+%     BY Pattern = CATEGORIZE(message)
+% | SORT Count DESC
+% ```
+%
+% On larger data sets, add a [`SAMPLE`](elasticsearch://reference/query-languages/esql/commands/sample.md) command before `STATS` to keep the categorization fast, and divide `COUNT(*)` by the same sample fraction to keep the counts representative. For example, `SAMPLE 0.001` followed by `Count = COUNT(*) / 0.001`.
+%
+% :::{image} /explore-analyze/images/discover-esql-cascade-pattern-sparkline.png
+% :alt: A grouped row showing a CATEGORIZE pattern with token highlighting and an inline sparkline
+% :screenshot:
+% :::
+% RESTORE FOR 9.5 - end
+
+::::{tip}
+Pattern detection on text fields is also available outside {{esql}} from the **Patterns** tab in Discover's classic mode. Refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
+::::
+
+### Grouped row actions
+
+Select the {icon}`boxes_vertical` actions button on any group row to:
+
+- **Copy to clipboard**: copy the group's value.
+- **Filter in**: append a `WHERE` clause to your query that keeps only documents matching this group.
+- **Filter out**: append a `WHERE` clause that excludes documents matching this group.
+- **Open in new tab**: open the documents in this group in a new Discover tab, with a query scoped to that group.
+
+**Filter in** and **Filter out** are disabled when the grouping field is not filterable.
+
+### Opt out of the grouped layout
+
+When the grouped layout activates, the regular results table toolbar is replaced with a {icon}`flask` **Group by** button. The button shows the number of active groupings as a badge.
+
+The grouping field is preselected from your `STATS BY` clause. Open the **Group by** menu and select **none** to fall back to the standard flat results table and bring back the regular toolbar.
+
 ## Refine an {{esql}} query by interacting with the results table
 
 Certain interactions with the results table of your {{esql}} query in Discover apply additional filters to your query. When hovering over a value cell, contextual options appear: 
 
-- Selecting {icon}`plus_in_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
-- Selecting {icon}`minus_in_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
+- Selecting {icon}`plus_circle` **Filter for this...** adds or completes the `WHERE` command of the query to specifically look for the selected value. For example, `WHERE host.keyword == "www.elastic.co"`.
+- Selecting {icon}`minus_circle` **Filter out this...** adds or completes the `WHERE` command of the query to specifically exclude the selected value. For example, `WHERE host.keyword != "www.elastic.co"`.
 
 :::{note}
 :applies_to: { serverless:, stack: ga 9.3+ }
@@ -348,6 +462,11 @@ Up to and including version 9.2, filtering for multi-value fields isn't supporte
 :::
 
 Other interactions with the results table do not update the query, such as dragging fields onto the table or sorting the table in a specific order.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.5", "serverless": "ga"}
+You can also have an AI agent analyze your {{esql}} results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+:::
 
 ## Revert to Discover's classic mode [revert-to-classic-mode]
 
@@ -358,12 +477,15 @@ You can go back to the classic data view and KQL mode in Discover at any time. W
 ::::{applies-item} {serverless:, stack: ga 9.4+ }
 1. Open the Discover tab that you want to switch to classic mode.
 
-2. From your tab's contextual menu, select **Switch to classic**. This affects only the selected Discover tab.
+2. Switch the active tab from either location:
 
-![Tab contextual menu with an option to switch from {{esql}} to classic mode](/explore-analyze/images/discover-switch-to-classic.png "=30%")
+   - From the tab's contextual menu ({icon}`boxes_vertical`), select **Switch to classic**.
+   - From the application menu, select **Switch to Classic**.
+
+   This affects only the active Discover tab.
 
 :::{tip}
-The **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
+The contextual menu **Switch to classic** option only appears for the currently active tab. To see it for another tab, you must load that tab first.
 :::
 ::::
 

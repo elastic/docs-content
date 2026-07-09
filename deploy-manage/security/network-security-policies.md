@@ -45,8 +45,8 @@ To automatically apply a network security policy to new resources by default new
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select **Create** to create a new policy, or select **Edit** {icon}`pencil` to open an existing policy.
-5. Under **Apply to future resources by default**, select **Include by default**.
+3. Select **Create** to create a new policy, or select **Edit** {icon}`pencil` to open an existing policy.
+4. Under **Apply to future resources by default**, select **Include by default**.
 
 ### Identify default policies
 
@@ -54,7 +54,7 @@ To identify which network security policies are automatically applied to new dep
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select each of the policies. **Include by default** is checked when a policy is automatically applied to all new deployments or projects in its region.
+3. Select each of the policies. **Include by default** is checked when a policy is automatically applied to all new deployments or projects in its region.
   
 ## Review the policies associated with a resource
 
@@ -84,7 +84,7 @@ You can review the resources that are currently protected by an IP filter or pri
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Review the usage summary cards at the top of the page.
+3. Review the usage summary cards at the top of the page.
 
 These cards include the following information: 
 

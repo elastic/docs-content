@@ -1,4 +1,5 @@
 ---
+navigation_title: "Tutorials"
 description: "Guidelines for writing effective tutorials in the Elastic documentation."
 ---
 
@@ -31,7 +32,7 @@ Tutorials include three essential components:
 
 ## Structure of a tutorial
 
-To help users successfully complete tutorials, all Elastic Docs tutorials follow a consistent structure. A predictable format sets expectations by clearly stating what users will learn, what's required, and what they'll achieve.
+To help users complete tutorials, all Elastic Docs tutorials follow a consistent structure. A predictable format sets expectations by clearly stating what users will learn, what's required, and what they'll achieve.
 
 ### Required elements
 
@@ -96,7 +97,7 @@ When you create tutorials, follow these best practices:
 - **Include checkpoints:** Add verification steps throughout so users can confirm they're on the right track before continuing.
 - **Test your tutorial:** Authors and reviewers should complete the entire tutorial from scratch to identify gaps, errors, or unclear instructions.
   :::{tip}
-  Have someone unfamiliar with the feature try your tutorial. They'll find every gap and unclear step!
+  Have someone unfamiliar with the feature try your tutorial. They'll find every gap and unclear step.
   :::
 
 ## Template

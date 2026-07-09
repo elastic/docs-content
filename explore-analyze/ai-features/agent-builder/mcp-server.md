@@ -34,7 +34,7 @@ When using a custom {{kib}} Space, include the space name in the URL:
 ```
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#copy-your-mcp-server-url).
+You can copy your MCP server URL directly in the Tools GUI. Refer to [](tools.md#mcp-server-access).
 :::
 
 ## Configuring MCP clients
@@ -97,7 +97,7 @@ POST /_security/api_key
       "applications": [
         {
           "application": "kibana-.kibana", <2>
-          "privileges": ["feature_agentBuilder.read"],
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]
@@ -140,7 +140,7 @@ POST /_security/api_key
       "applications": [
         {
           "application": "kibana-.kibana", <4>
-          "privileges": ["feature_agentBuilder.read"],
+          "privileges": ["feature_agentBuilder.read", "feature_actions.read"],
           "resources": ["space:default"]
         }
       ]

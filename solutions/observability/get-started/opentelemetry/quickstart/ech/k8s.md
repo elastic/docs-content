@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{ech}} to collect host metrics, logs and application traces.
+description: Step-by-step guide for setting up the EDOT Collector and SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect metrics, logs, and traces.
 applies_to:
   stack:
   serverless:

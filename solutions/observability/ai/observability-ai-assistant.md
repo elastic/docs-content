@@ -3,13 +3,19 @@ navigation_title: AI Assistant
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: ga 9.0-9.3, deprecated 9.4
+  serverless:
+    observability: deprecated
 products:
   - id: observability
 ---
 
 # {{obs-ai-assistant}} [obs-ai-assistant]
+
+:::{warning}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. To switch back to the AI Assistant, go to **GenAI settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for more information.
+:::
 
 The AI Assistant is an integration with a large language model (LLM) that helps you understand, analyze, and interact with your Elastic data.
 
@@ -18,7 +24,7 @@ You can [interact with the AI Assistant](#obs-ai-interact) in two ways:
 * **Contextual insights**: Embedded assistance throughout Elastic UIs that explains errors and messages with suggested remediation steps.
 * **Chat interface**: A conversational experience where you can ask questions and receive answers about your data. The assistant uses function calling to request, analyze, and visualize information based on your needs.
 
-The AI Assistant integrates with your large language model (LLM) provider through our [supported {{stack}} connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [{{obs-ai-assistant}} LLM performance matrix](./llm-performance-matrix.md) for supported third-party LLM providers and their performance ratings.
+The AI Assistant integrates with large language model (LLM) providers using [connectors](kibana://reference/connectors-kibana/gen-ai-connectors.md). Refer to the [LLM performance matrix for {{observability}}](./llm-performance-matrix.md) to find performance information for various models and use cases.
 
 ## Use cases
 
@@ -159,7 +165,7 @@ To add external data to the knowledge base in {{kib}}:
 #### Requirements and limitations
 
 - For {{stack}} 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md).
-- Manage connectors through the Search Solution in {{kib}} (pre-9.0.0) or with the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector).
+- Manage connectors through the Search Solution in {{kib}} (pre-9.0.0) or with the [Connector APIs]({{es-apis}}group/endpoint-connector).
 
 #### Knowledge base data sources
 By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
@@ -185,7 +191,7 @@ Field names in custom indices have no specific requirements. Any `semantic_text`
    - If your Space lacks the Search solution, either create the connector from a different space or change your space **Solution view** to `Classic`
 
    **Use the API**:
-    - Create a connector using the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
+    - Create a connector using the [Connector APIs]({{es-apis}}group/endpoint-connector)
 
 2. **Create embeddings** (choose one method):
    - [`semantic_text` field](#obs-ai-search-connectors-semantic-text): Recommended workflow which handles model setup automatically. Allows the use of any available ML model (Elser, e5, or custom models).
@@ -392,6 +398,36 @@ To duplicate a conversation:
 
 The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Once archived, a conversation can't be continued or edited unless it is unarchived. Unarchive a conversation by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
+#### Export conversations for support cases [obs-ai-export-conversations]
+
+When you open a support case or report an issue, include conversation data from {{obs-ai-assistant}} so Elastic can review the full context.
+
+To export conversation data:
+
+1. Open an AI Assistant chat.
+2. Open the **Conversation actions** ({icon}`boxes_vertical`) menu. Conversation actions become available only after the first successful interaction with the AI Assistant.
+3. If **Export as JSON** is available, select it and save the downloaded file.
+4. If **Export as JSON** is not available, use your browser's developer tools:
+   1. Open the **Network** tab.
+   2. Refresh the chat or navigate to the conversation.
+   3. Find the request to the Observability AI Assistant conversations API (for example, a request path that includes `api/observability_ai_assistant/conversations/`).
+   4. Copy the JSON response body and save it as a `.json` file.
+
+:::{note}
+If something fails or the expected API call is missing, record the full HAR file by following the steps in [Generating a browser HAR file for Kibana troubleshooting](https://www.elastic.co/blog/generating-browser-har-file-kibana-troubleshooting).
+:::
+
+The exported JSON file can include:
+
+* Conversation messages
+* Timestamps and user metadata
+* Function calls and function responses
+* Conversation-level metadata
+
+::::{tip}
+Include the exported JSON file when you open support cases or report issues to help the support team understand what happened in your conversation.
+::::
+
 ### Use contextual prompts [obs-ai-prompts]
 
 AI Assistant contextual prompts throughout {{observability}} provide the following information:
@@ -484,7 +520,7 @@ You can make the official Elastic documentation available to the AI Assistant, w
 Enable this feature from the **Settings** tab in AI Assistant Settings by using the "Install Elastic Documentation" action.
 
 ::::{important}
-For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
+For air-gapped environments or environments where outbound traffic must go through an HTTP proxy, installing product documentation requires special configuration. Refer to the [Knowledge base artifact settings for AI Assistants](kibana://reference/configuration-reference/ai-assistant-settings.md) for `kibana.yml` settings and proxy options. To mirror the artifact repository to your own infrastructure (S3-compatible bucket, CDN, or local path), refer to [Host a knowledge base artifact repo for AI Assistant](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
 ::::
 
 ## Anonymization [obs-ai-anonymization]
@@ -569,13 +605,15 @@ Results for other languages or models may vary.
 Anonymization has the following limitations:
 
 * **Non-string fields**:  {applies_to}`stack: ga 9.1.3` Anonymization only applies to string values. Booleans, numbers, image types, and other non-string values are ignored.
-* **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
+* **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API]({{es-apis}}operation/operation-ml-start-trained-model-deployment).
 * **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
 * **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.
 * **JSON malformation risk** {applies_to}`{stack: "removed 9.1.3", serverless: "removed"}`: Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to adjust your regex pattern or disable the NER rule.
 
 
 ## Known issues [obs-ai-known-issues]
+
+For troubleshooting steps to capture AI Assistant conversation data for support, refer to [Export conversations for support cases](#obs-ai-export-conversations).
 
 ### Token limits [obs-ai-token-limits]
 

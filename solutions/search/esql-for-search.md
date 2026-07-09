@@ -47,6 +47,8 @@ Features are usually available on {{serverless-full}} before stack-versioned dep
 | [DECAY function](#decay-function) | Calculate a relevance score that decays based on the distance of a field value from a target origin | 9.3 |
 | [SCORE function](#score-function) | Score an expression using full-text functions; returns scores for all resulting documents | 9.3 |
 | [TOP_SNIPPETS function](#top_snippets-function) | Extract the best snippets for a given query string from a text field | 9.3 |
+| [MMR command](#result-diversification-with-mmr) | Reduce redundancy in results using Maximum Marginal Relevance diversification | 9.4 (preview) |
+| [EMBEDDING function](#embedding-function) | Generate dense vector embeddings from multimodal input using inference endpoints | 9.5 (preview) |
 
 ## How search works in {{esql}}
 
@@ -123,6 +125,24 @@ The [`TEXT_EMBEDDING` function](elasticsearch://reference/query-languages/esql/f
 
 Use `TEXT_EMBEDDING` to generate query vectors for KNN searches against your vectorized data or for other dense vector based operations.
 
+### `EMBEDDING` function
+
+The [`EMBEDDING` function](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates dense vector embeddings from multimodal input (text, images) using a specified inference endpoint with the `embedding` task type.
+
+Use `EMBEDDING` when you need to generate query vectors from non-text inputs, such as base64-encoded images, for multimodal search use cases.
+
+### Vector similarity functions
+
+{{esql}} provides functions for computing similarity and distance between dense vectors:
+
+- [`V_COSINE`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_cosine.md): cosine similarity
+- [`V_DOT_PRODUCT`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_dot_product.md): dot product
+- [`V_L1_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l1_norm.md): Manhattan distance
+- [`V_L2_NORM`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_l2_norm.md): Euclidean distance
+- [`V_HAMMING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/v_hamming.md): Hamming distance
+
+These functions are useful for custom scoring logic, comparing query vectors against stored embeddings, or building custom reranking pipelines using `EVAL`.
+
 ### `DECAY` function
 
 The [`DECAY` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/decay.md) calculates a relevance score that decays based on the distance of a numeric, spatial, or date field value from a target origin, using configurable decay functions.
@@ -153,7 +173,7 @@ Refer to [semantic search with semantic_text](/solutions/search/semantic-search/
 
 The [`FORK`](elasticsearch://reference/query-languages/esql/commands/fork.md) and [`FUSE`](elasticsearch://reference/query-languages/esql/commands/fuse.md) commands work together to enable hybrid search in {{esql}}.
 
-`FORK` creates multiple execution branches that operate on the same input data. `FUSE` then combines and scores the results from these branches. Together, these commands allow you to execute different search strategies (such as lexical and semantic searches) in parallel and merge their results with proper relevance scoring.
+`FORK` creates multiple execution branches that operate on the same input data. `FUSE` then combines and scores the results from these branches using either RRF (reciprocal rank fusion) or LINEAR (weighted score combination) methods. Together, these commands allow you to execute different search strategies (such as lexical and semantic searches) in parallel and merge their results with proper relevance scoring.
 
 Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 
@@ -166,17 +186,23 @@ Use `COMPLETION` for question answering, summarization, translation, or other AI
 
 ### Semantic reranking with `RERANK`
 
-Use the [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to re-score search results using inference models for improved relevance.
+Use the [`RERANK` command](elasticsearch://reference/query-languages/esql/commands/rerank.md) to re-score search results using inference models for improved relevance. Refer to [semantic reranking](/solutions/search/ranking/semantic-reranking.md) for a comparison of the ES|QL and retriever approaches.
+
+### Result diversification with `MMR`
+
+The [`MMR` command](elasticsearch://reference/query-languages/esql/commands/mmr.md) uses Maximum Marginal Relevance to reduce redundancy in search results by removing documents that are too similar to each other. This is useful for ensuring variety in top results, particularly in RAG workflows where diverse context improves LLM output quality.
 
 ## Next steps [esql-for-search-next-steps]
 
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
 - [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}, with concrete examples of the functionalities described in this page
+- [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md): Techniques for writing fast queries, including using full-text search functions instead of `LIKE` or `RLIKE`
 
 ### Technical reference [esql-for-search-reference]
 
 - [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Complete reference for all search functions
+- [Dense vector functions](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions.md): Complete reference for vector embedding and similarity functions
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search functions in {{esql}}
 
 ### Related blog posts [esql-for-search-blogs]

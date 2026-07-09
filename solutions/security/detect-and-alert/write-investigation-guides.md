@@ -102,7 +102,7 @@ Click a query button to load the query in Timeline automatically.
     :screenshot:
     :::
 
-2. Place the cursor where you want the button to appear, then select the investigate icon {icon}`timelineWithArrow` in the toolbar. The **Add investigation query** builder form appears.
+2. Place the cursor where you want the button to appear, then select the investigate icon {icon}`timeline_with_arrow` in the toolbar. The **Add investigation query** builder form appears.
 
     :::{image} /solutions/images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
@@ -145,7 +145,7 @@ The following syntax defines a query button in an investigation guide.
 | `relativeFrom`, `relativeTo` | (Optional) The start and end of a relative time range for the query. Times are relative to the alert's creation time, represented as `now` in [date math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) format. For example, `"relativeFrom": "now-15m", "relativeTo": "now"`. |
 
 ::::{note}
-Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon {icon}`errorFilled` displays below the Markdown editor if there are any syntax errors.
+Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon {icon}`error_fill` displays below the Markdown editor if there are any syntax errors.
 ::::
 
 ### Example [ig-timeline-example]
@@ -217,7 +217,7 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
     3. Expand the **Advanced** section to set a timeout period for the query and view or set [mapped ECS fields](/solutions/security/investigate/osquery.md#osquery-map-fields) included in the results (optional).
 
         ::::{note}
-        Overwriting the query's default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
+        Overwriting the query's default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
         ::::
 
         :::{image} /solutions/images/security-setup-osquery-investigation-guide.png

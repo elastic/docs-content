@@ -40,7 +40,7 @@ To secure {{report-features}}, you must grant users access to reporting function
 :applies_to: {stack: ga 9.1, serverless: unavailable}
 Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookie are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
 
-If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure roles and users for remote clusters](../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-cert).
+If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
 :::
 
 Configuring reporting in your environment involves two main areas:
@@ -137,10 +137,10 @@ To view reports, go to the **Reporting** management page in the navigation menu 
 
 ::::{tab-item} Using role API
 
-With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
+With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs]({{kib-apis}}group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 :::{note}
-This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/docs/api/doc/kibana/).
+This API request needs to be run against the [{{kib}} API endpoint]({{kib-apis}}).
 :::
 
 ```console
@@ -198,7 +198,7 @@ Example using {{kib}} UI:
 :screenshot:
 :::
 
-Example using [role API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to CSV {{report-features}}:
+Example using [role API]({{kib-apis}}group/endpoint-roles) to grant access to CSV {{report-features}}:
 
 ```console
 PUT localhost:5601/api/security/role/custom_reporting_user

@@ -78,7 +78,7 @@ For more details about Painless scripting in the ingest context, refer to [Inges
 
 ### Test the pipeline
 
-To confirm the pipeline works correctly, [simulate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) it with `kibana_sample_data_ecommerce` sample documents:
+To confirm the pipeline works correctly, [simulate]({{es-apis}}operation/operation-ingest-simulate) it with `kibana_sample_data_ecommerce` sample documents:
 
 ```json
 POST     _ingest/pipeline/kibana_sample_data_ecommerce-add_reporting_fields/_simulate
@@ -382,7 +382,7 @@ This script includes the following steps:
 * **Add metadata**: Adds event analysis fields for business intelligence
 
 
-For more details about Painless scripting in the reindex context, refer to the [Reindex context documentation](elasticsearch://reference/scripting-languages/painless/painless-reindex-context.md) or [Reindex API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+For more details about Painless scripting in the reindex context, refer to the [Reindex context documentation](elasticsearch://reference/scripting-languages/painless/painless-reindex-context.md) or [Reindex API documentation]({{es-apis}}operation/operation-reindex).
 
 With the following request, we can see the final result in the `flash_sale_event_analysis` index:
 

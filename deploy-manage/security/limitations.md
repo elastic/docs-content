@@ -55,7 +55,7 @@ The [LDAP Realm](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md) 
 
 ## Resource sharing check for users and API keys [can-access-resources-check]
 
-The result of [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) and [scroll](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll) requests can be retrieved later by the same user or API key that submitted the initial request. The verification process involves comparing the username, authentication realm type, and (for realms other than file or native) realm name. If you used an API key to submit the request, only that key can retrieve the results. This logic also has a few limitations:
+The result of [async search]({{es-apis}}operation/operation-async-search-submit) and [scroll]({{es-apis}}operation/operation-scroll) requests can be retrieved later by the same user or API key that submitted the initial request. The verification process involves comparing the username, authentication realm type, and (for realms other than file or native) realm name. If you used an API key to submit the request, only that key can retrieve the results. This logic also has a few limitations:
 
 * Two different realms can have the same name on different nodes. This is not a recommended way to configure realms, therefore the resource sharing check does not attempt to detect this inconsistency.
 * Realms can be renamed. This can cause inconsistency for the resource sharing check when you submit an async search or scroll then rename the realm and try to retrieve the results. Hence, changing realm names should be handled with care since it can cause complications for more than just the resource sharing check.

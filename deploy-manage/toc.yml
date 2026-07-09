@@ -1,4 +1,8 @@
 project: 'Deploy and manage'
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: deploy.md
@@ -17,6 +21,9 @@ toc:
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
                   - file: deploy/elastic-cloud/azure-native-isv-service.md
+                    children:
+                      - file: deploy/elastic-cloud/azure-native-isv-service-logs-metrics.md
+                      - file: deploy/elastic-cloud/azure-native-isv-service-troubleshooting.md
                   - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
                   - file: deploy/elastic-cloud/heroku.md
                     children:
@@ -52,6 +59,7 @@ toc:
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
                         children:
+                          - file: deploy/elastic-cloud/add-plugins-provided-with-ech.md
                           - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
                           - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md
@@ -63,6 +71,7 @@ toc:
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
               - file: deploy/elastic-cloud/restrictions-known-problems.md
+          - file: deploy/elastic-cloud/fedramp.md
           - file: deploy/elastic-cloud/tools-apis.md
       - file: deploy/cloud-enterprise.md
         children:
@@ -370,6 +379,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+      - file: reference-architectures/genai-search-high-availability.md
   - file: stack-settings.md
   - file: tools.md
     children:
@@ -494,6 +504,7 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
+                  - file: security/k8s-es-client-certificate-auth.md
               - file: security/external-ca-transport.md
           - file: security/network-security.md
             children:
@@ -673,6 +684,10 @@ toc:
           - file: remote-clusters/eck-remote-clusters.md
           - file: remote-clusters/eck-remote-clusters-to-other-eck.md
           - file: remote-clusters/eck-remote-clusters-to-external.md
+  - file: cross-project-search-config.md
+    children:
+      - file: cross-project-search-config/cps-config-link-and-manage.md
+      - file: cross-project-search-config/cps-config-access-and-scope.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
@@ -685,8 +700,9 @@ toc:
               - file: monitor/autoops/indexing-tier-view-autoops-serverless.md
               - file: monitor/autoops/search-ai-lake-view-autoops-serverless.md
           - file: monitor/autoops/cc-autoops-as-cloud-connected.md
-            children: 
+            children:
               - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
+              - file: monitor/autoops/cc-autoops-metrics-storage-locations.md
               - file: monitor/autoops/cc-connect-local-dev-to-autoops.md
               - file: monitor/autoops/autoops-sm-custom-certification.md
               - file: monitor/autoops/autoops-disable-metrics-collection.md
@@ -753,6 +769,7 @@ toc:
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md
           - file: monitor/ec-memory-pressure.md
+      - file: monitor/query-activity.md
       - file: monitor/kibana-task-manager-health-monitoring.md
       - file: monitor/orchestrators.md
         children:
@@ -770,6 +787,7 @@ toc:
         children:
           - file: monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md
           - file: monitor/logging-configuration/update-elasticsearch-logging-levels.md
+          - file: monitor/logging-configuration/query-logs.md
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/slow-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
@@ -779,8 +797,10 @@ toc:
                 children:
                   - file: monitor/logging-configuration/kibana-log-settings-examples.md
   - file: kibana-reporting-configuration.md
+  - file: kibana-custom-branding.md
   - file: cloud-organization.md
     children:
+      - hidden: cloud-organization/manage-multiple-organizations.md
       - file: cloud-organization/billing.md
         children:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md

@@ -8,20 +8,27 @@ products:
   - id: observability
 ---
 
-# Large language model performance matrix
+# Large language model performance matrix for {{observability}} [llm-performance-matrix]
 
-This page summarizes internal test results comparing large language models (LLMs) across {{obs-ai-assistant}} use cases. To learn more about these use cases, refer to [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md).
+This page summarizes internal test results comparing large language models (LLMs) across {{observability}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) use cases. These ratings only apply if you're using [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md). For Agent Builder, refer to [recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models).
 
-::::{important}
-Rating legend:
+:::{warning}
+:applies_to: {"stack": "ga 9.4", "serverless": "ga"}
+The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience in {{observability}}. To switch back to the AI Assistant, go to **GenAI settings**.
+:::
 
-**Excellent:** Highly accurate and reliable for the use case.<br>
-**Great:** Strong performance with minor limitations.<br>
-**Good:** Possibly adequate for many use cases but with noticeable tradeoffs.<br>
-**Poor:** Significant issues; not recommended for production for the use case.
+**Rating legend**
+
+For each category, the evaluation framework produces a score between 0–100 based on the criteria defined. This score is then converted to a rating using the following legend:
+
+| Score | Rating |
+| --- | --- |
+| 84%–100% | **Excellent**: Highly accurate and reliable for the use case. |
+| 75%–83% | **Great**: Strong performance with minor limitations. |
+| 45%–74% | **Good**: Possibly adequate for many use cases but with noticeable tradeoffs. |
+| 0%–44% | **Poor**: Significant issues; not recommended for production for the use case. |
 
 Recommended models are those rated **Excellent** or **Great** for the particular use case.
-::::
 
 ## Proprietary models [_proprietary_models]
 
@@ -68,6 +75,6 @@ Models you can [deploy and manage yourself](/explore-analyze/ai-features/llm-gui
 
 ## Evaluate your own model
 
-You can run the {{obs-ai-assistant}} evaluation framework against any model, and use it to benchmark a custom or self-hosted model against the use cases in the matrix. Refer to the [evaluation framework README](https://github.com/elastic/kibana/blob/main/x-pack/solutions/observability/plugins/observability_ai_assistant_app/scripts/evaluation/README.md) for setup and usage details.
+You can run the {{observability}} AI evaluation framework against any model, and use it to benchmark a custom or self-hosted model against the use cases in the matrix. Refer to the [evaluation framework README](https://github.com/elastic/kibana/blob/main/x-pack/solutions/observability/plugins/observability_ai_assistant_app/scripts/evaluation/README.md) for setup and usage details.
 
 For consistency, all ratings in this matrix were generated using `Gemini 2.5 Pro` as the judge model (specified through the `--evaluateWith` flag). Use the same judge when evaluating your own model to ensure comparable results.

@@ -94,7 +94,7 @@ You can configure only one Basic provider per {{kib}} instance.
 
 Token authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in using the same {{kib}} provided login form as basic authentication, and is based on the [Native](native.md) or [LDAP](ldap.md) security realm that is provided by {{es}}. The token authentication provider is built on {{es}} token APIs.
 
-Prior to configuring {{kib}}, ensure that token support is enabled in {{es}}. See the [{{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token) documentation for more information.
+Prior to configuring {{kib}}, ensure that token support is enabled in {{es}}. See the [{{es}} token API]({{es-apis}}operation/operation-security-get-token) documentation for more information.
 
 ::::{note}
 You can configure only one token provider per {{kib}} instance.
@@ -108,7 +108,7 @@ xpack.security.authc.providers:
     order: 0
 ```
 
-Switching to the token authentication provider from the basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications, you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token), or add the `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
+Switching to the token authentication provider from the basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications, you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API]({{es-apis}}operation/operation-security-get-token), or add the `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ## Public key infrastructure (PKI) authentication [pki-authentication]
@@ -126,7 +126,7 @@ If you need to use PKI authentication with the Login Selector, consider configur
 ::::
 
 
-PKI authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log into {{kib}} using X.509 client certificates that must be presented while connecting to {{kib}}. The certificates must first be accepted for authentication on the {{kib}} TLS layer, and then they are further validated by an {{es}} PKI realm. The PKI authentication provider relies on the {{es}} [Delegate PKI authentication API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delegate-pki) to exchange X.509 client certificates to access tokens. All subsequent requests to {{es}} APIs on behalf of users will be authenticated using these access tokens.
+PKI authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log into {{kib}} using X.509 client certificates that must be presented while connecting to {{kib}}. The certificates must first be accepted for authentication on the {{kib}} TLS layer, and then they are further validated by an {{es}} PKI realm. The PKI authentication provider relies on the {{es}} [Delegate PKI authentication API]({{es-apis}}operation/operation-security-delegate-pki) to exchange X.509 client certificates to access tokens. All subsequent requests to {{es}} APIs on behalf of users will be authenticated using these access tokens.
 
 Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) for more information.
 

@@ -78,3 +78,15 @@ For some semantic conventions, like HTTP, there is a migration path, but the con
 ## Access or modification of application code
 
 EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.
+
+## Issues with binary packages on the Kubernetes Operator
+
+Some EDOT Python dependencies include binary components that depend on both the C library and the Python version used to build them. These dependencies must be compatible with the Docker image used by the instrumented application.
+
+EDOT Python provides a Docker image that includes auto-instrumentation code for both:
+
+- glibc-based distributions (for example, Ubuntu)
+- musl-based distributions (for example, Alpine)
+
+If the provided Docker images don't work in your environment and you encounter errors when loading modules, build a custom Docker image instead.
+You can base your custom Dockerfile on the one used to build the official Docker images available in the [operator directory](https://github.com/elastic/elastic-otel-python/tree/main/operator]) of the EDOT Python repository.
