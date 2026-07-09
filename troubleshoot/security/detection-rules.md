@@ -52,7 +52,7 @@ For **self-managed** {{stack}} deployments only, this message might display when
 ::::{dropdown} Warning about required read privileges for indices you can access
 :name: rule-privileges-combined-patterns-ts
 
-A rule might warn that it may not have the required read privileges for index patterns that your role clearly includes, such as:
+You might receive the following warning for a rule even when your role clearly includes privileges for the index patterns:
 
 `This rule may not have the required read privileges to the following index patterns: [...]`
 
