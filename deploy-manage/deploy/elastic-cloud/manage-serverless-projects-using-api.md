@@ -40,7 +40,7 @@ To use the {{serverless-full}} API, you must authenticate your requests with an 
 
 1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles, so that it can manage projects:
 
-   - **Organization owner**: can create and manage projects without restriction.
+   - **Organization owner** to create and manage projects without restriction.
    - **Cloud resource access** with the **Admin** role assigned to **all projects** of the relevant type ({{es}}, {{observability}}, or Security). Scoping the role to all projects is required to be able to create new projects.
 
    Select the key's **API access** level based on what you need it to do: **Cloud API** access is enough to manage projects, while **Cloud, {{es}}, and {{kib}} API** access also grants access to the project's {{es}} and {{kib}} endpoints. For more details, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
@@ -69,7 +69,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 1. Replace `My project` with a more descriptive name in this call.
 2. You can obtain a [list of available regions](#general-manage-project-with-api-list-available-regions). 
 
-The response from the create project request will include the created project details, such as the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and the credentials of a built-in `admin` user.
+The response from the create project request will include the created project details, including the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and the credentials of a built-in `admin` user.
 
 Example of `Create project` response:
 
