@@ -1,5 +1,5 @@
 ---
-navigation_title: Visualization (query)
+navigation_title: Visualizations (ES|QL query)
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
