@@ -35,9 +35,9 @@ The available APIs are grouped by project type:
 
 ## Set up an API key [general-manage-project-with-api-set-up-api-key]
 
-To use the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
+To create and manage projects with the {{serverless-full}} API, you must authenticate your requests with an {{ecloud}} API key.
 
-1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles, so that it can create and manage projects:
+1. As an **Organization owner**, [create an {{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with one of the following roles:
 
    - **Organization owner**
    - **Cloud resource access** with the **Admin** role assigned to **all projects** of the relevant type ({{es}}, {{observability}}, or Security)
