@@ -58,6 +58,8 @@ ECK operator images are hardened in different ways depending on the variant:
 * The **UBI** operator image is hardened following Red Hat's Universal Base Image (UBI) requirements.
 * The **FIPS** operator image is hardened following Federal Information Processing Standard (FIPS) Publication 140-2 requirements. Refer to [Deploy a FIPS-compatible version of ECK](./deploy-fips-compatible-version-of-eck.md) for details.
 
+If you want to configure Wolfi images for the {{stack}} components rather than the ECK operator itself, refer to the Knowledge Base article [Use Wolfi images with ECK](https://ela.st/use-wolfi-images-on-eck).
+
 ::::{note}
 Only operator images distributed through `docker.elastic.co`, as well as the official [Red Hat Certified Operator](https://catalog.redhat.com/software/operators/detail/5f32f067651c4c0bcecf1bfe) images published on `catalog.redhat.com`, are officially supported by Elastic. Third-party hardened image sources, such as Docker Hardened Images (DHI) on Docker Hub, are not maintained by Elastic and fall outside the scope of Elastic support.
 ::::
