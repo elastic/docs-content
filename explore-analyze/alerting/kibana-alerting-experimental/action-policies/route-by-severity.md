@@ -8,7 +8,7 @@ products:
 description: "How to route alert episodes to different workflows based on severity level in the experimental alerting system."
 ---
 
-# Route alert episodes by severity in the {{alerting-v2-system}} [routing-by-severity]
+# Route alert episodes by severity in the {{alerting-v2-system}} [experimental-alerting-system-route-by-severity]
 
 When your rules in the {{alerting-v2-system}} produce alert episodes at different severity levels, you can route them to different workflows by creating separate action policies that are scoped to specific severity values using match conditions.
 

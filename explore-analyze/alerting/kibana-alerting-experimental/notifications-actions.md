@@ -8,7 +8,7 @@ products:
 description: "How to set up notifications and actions for rules in the experimental alerting system using workflows and action policies."
 ---
 
-# Notifications and actions for the {{alerting-v2-system}}
+# Notifications and actions for the {{alerting-v2-system}} [experimental-alerting-system-notifications-actions]
 
 {{rules-ui}} in the {{alerting-v2-system}} don't send notifications directly. Instead, they produce alert episodes, and you use workflows and action policies to decide what happens next. For an explanation of how these two connect at runtime, refer to [Connect workflows](workflows-alerting.md).
 

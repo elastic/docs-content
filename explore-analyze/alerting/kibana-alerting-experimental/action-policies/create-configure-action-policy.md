@@ -8,8 +8,7 @@ products:
 description: "Create action policies in the experimental alerting system, configure match conditions, Notify per, Frequency, and workflow destinations."
 ---
 
-# Create an action policy for the {{alerting-v2-system}} [create-manage-action-policies]
-
+# Create an action policy for the {{alerting-v2-system}} [experimental-alerting-system-create-action-policy]
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to configure match conditions, grouping, frequency, and workflow destinations. Where rules define what counts as a problem, action policies define what happens when one is detected: which alert episodes generate notifications, how they batch for dispatch, and where they're routed.
 

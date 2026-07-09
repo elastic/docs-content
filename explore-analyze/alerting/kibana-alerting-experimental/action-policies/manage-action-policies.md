@@ -8,7 +8,7 @@ products:
 description: "View action policy details, enable, disable, snooze, and rotate API keys for action policies in the experimental alerting system."
 ---
 
-# Manage action policies for the {{alerting-v2-system}}
+# Manage action policies for the {{alerting-v2-system}} [experimental-alerting-system-manage-action-policies]
 
 Action policies are part of the {{alerting-v2-system}} in {{kib}}. This page covers how to view action policy details, enable and disable action policies, snooze them during planned outages, and rotate their API keys. To monitor dispatcher activity and review execution outcomes, refer to [Review action policy execution history](review-action-policy-execution-history.md).
 

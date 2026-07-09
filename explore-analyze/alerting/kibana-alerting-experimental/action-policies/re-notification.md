@@ -8,7 +8,7 @@ products:
 description: "How to configure action policies to re-notify when an alert episode stays active without a status change in the experimental alerting system."
 ---
 
-# Re-notify for persistently active episodes in the {{alerting-v2-system}} [controlling-re-notification]
+# Re-notify for persistently active episodes in the {{alerting-v2-system}} [experimental-alerting-system-re-notification]
 
 The `On status change` frequency option notifies once for each status transition, for example when an episode activates or resolves. This is efficient for reducing noise from rules in the {{alerting-v2-system}}, but a persistently active episode that only changes in severity doesn't re-trigger a notification.
 
