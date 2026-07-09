@@ -68,7 +68,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 1. Replace `My project` with a more descriptive name in this call.
 2. You can obtain a [list of available regions](#general-manage-project-with-api-list-available-regions). 
 
-The response from the create project request will include the created project details, including the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and a set of built-in `admin` credentials.
+The response from the create project request will include the created project details, including the project ID, the endpoints to access different apps such as {{es}} and {{kib}}, and a set of default credentials.
 
 Example of `Create project` response:
 
@@ -88,9 +88,9 @@ Example of `Create project` response:
 ```
 
 :::{note}
-For programmatic access to the project's {{es}} and {{kib}} APIs, we recommend creating an [{{ecloud}} API key with access to the {{es}} and {{kib}} APIs](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access) rather than using the built-in `admin` credentials.
+For programmatic access to the project's {{es}} and {{kib}} APIs, we recommend creating an [{{ecloud}} API key with access to the {{es}} and {{kib}} APIs](/deploy-manage/api-keys/elastic-cloud-api-keys.md#project-access) rather than using the default credentials.
 
-The `admin` credentials returned in the `credentials` field serve as a fallback mechanism to access the project when no API key is available. Store them in a secure location, and use the [reset credentials API]({{cloud-serverless-apis}}operation/operation-resetelasticsearchprojectcredentials) if you need to recover or rotate them.
+The default credentials returned in the `credentials` field serve as a fallback mechanism to access the project when no API key is available. Store them in a secure location, and use the [reset credentials API]({{cloud-serverless-apis}}operation/operation-resetelasticsearchprojectcredentials) if you need to recover or rotate them.
 :::
 
 You can store the project ID as an environment variable for the next requests:
