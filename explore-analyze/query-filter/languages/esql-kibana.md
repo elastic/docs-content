@@ -302,7 +302,7 @@ serverless: ga
 3. Set it to **Browser** to use your browser's timezone, or choose a specific timezone such as **UTC** or **America/New_York**.
 
 :::{warning}
-Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/commands/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
+Avoid using the {{esql}} [`SET time_zone`](elasticsearch://reference/query-languages/esql/directives/set.md) directive in {{kib}} apps. `SET time_zone` changes how dates are computed by {{es}}, but {{kib}} still displays timestamps following the timezone defined in its `dateFormat:tz` advanced setting, which can produce confusing results.
 :::
 
 
@@ -369,7 +369,7 @@ stack: ga 9.4
 serverless: ga
 ```
 
-The [`SET`](elasticsearch://reference/query-languages/esql/commands/set.md) directive lets you configure how {{es}} runs your {{esql}} query. Place one or more `SET` statements at the start of your query, separated by semicolons:
+The [`SET`](elasticsearch://reference/query-languages/esql/directives/set.md) directive lets you configure how {{es}} runs your {{esql}} query. Place one or more `SET` statements at the start of your query, separated by semicolons:
 
 ```esql
 SET setting_name = setting_value[, ..., settingN = valueN];
@@ -384,7 +384,7 @@ The {{esql}} editor autocompletes supported settings and validates their values.
 
 The `SET` directive also supports a `time_zone` setting. However, to change the timezone used by your {{esql}} queries in {{kib}}, update the `dateFormat:tz` advanced setting rather than using `SET time_zone`. Refer to [Timezone handling](#esql-kibana-timezone) for more information.
 
-For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/commands/set.md).
+For the full list of supported settings and their parameters, refer to the [`SET` directive reference](elasticsearch://reference/query-languages/esql/directives/set.md).
 
 
 ### Approximate `STATS` results with `SET approximation` [esql-kibana-approximation]
@@ -424,7 +424,7 @@ serverless: preview
 stack: unavailable
 ```
 
-When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/commands/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
+When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can add [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md) at the beginning of your {{esql}} query to [override the {{cps}} scope](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) and target specific projects:
 
 ```esql
 SET project_routing = "_alias:my_other_project";
@@ -447,7 +447,7 @@ stack: preview 9.4
 serverless: preview
 ```
 
-By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/commands/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
+By default, an {{esql}} query fails if it references a field that is not present in the mapping of any searched index. Use [`SET unmapped_fields`](elasticsearch://reference/query-languages/esql/directives/set.md#esql-unmapped_fields) at the start of your query to instead treat unmapped fields as `null` (`NULLIFY`) or load them from `_source` as `keyword` (`LOAD`). For example:
 
 ```esql
 SET unmapped_fields="NULLIFY";
@@ -466,6 +466,8 @@ The first time a query references an unmapped field, the editor shows a warning 
 :::
 
 {applies_to}`stack: preview 9.5` When querying a [wired stream](/solutions/observability/streams/wired-streams.md) and the editor detects an unknown column error, a **Load unmapped fields** quick fix is available. Select it to apply `SET unmapped_fields = "LOAD";` automatically. Refer to [Query unmapped fields](/solutions/observability/streams/wired-streams.md#streams-wired-streams-discover-unmapped) for wired stream–specific details.
+
+For a conceptual overview and use cases, refer to [Unmapped fields](elasticsearch://reference/query-languages/esql/esql-unmapped-fields.md).
 
 
 ## Related pages
