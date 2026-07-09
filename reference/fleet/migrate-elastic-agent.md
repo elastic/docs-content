@@ -153,7 +153,7 @@ To reset the {{ecloud}} {{agent}} policy:
         -u username:password \
         --header 'Content-Type: application/json' \
         --header 'kbn-xsrf: as' \
-        --header 'elastic-api-version: 1'
+        --header 'elastic-api-version: 2023-10-31'
         ```
 
     * If you’re using a {{kib}} version below 8.11, run:

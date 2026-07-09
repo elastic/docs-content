@@ -29,10 +29,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.4.3 [elastic-security-9.4.3-release-notes]
 
-### Features and enhancements [elastic-security-9.4.3-features-enhancements]
-
-* Adds AI agent process attribution to {{elastic-defend}}, with process descendant enrichment.
-
 ### Fixes [elastic-security-9.4.3-fixes]
 
 * Fixes an issue where only the first assignee was displayed in the alert details flyout instead of all assigned users [#273801]({{kib-pull}}273801).
@@ -438,7 +434,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds DNS events for {{elastic-defend}} on Linux (only supported by eBPF-based event collection).
 * Removes the 100 MB file size limit for the {{elastic-defend}} `get-file` response action.
 * Adds `entropy` and `header_bytes` fields to Linux file events in {{elastic-defend}}.
-* Adds a trusted ancestor feature to {{elastic-defend}}. When enabled, allows a trusted process to also be marked as a trusted ancestor, so all child processes are automatically trusted and skipped by other endpoint subsystems. Configure using the `advanced.trusted_ancestors` policy setting.
 * Adds the `size` field to {{elastic-defend}} file events on Linux.
 * Optimizes the {{elastic-defend}} kernel driver to collect file and registry access events more efficiently, improving overall system responsiveness and reducing CPU usage.
 * Adds script content collection to {{elastic-defend}} on macOS. Use the `advanced.events.script_capture` setting to enable this feature and `advanced.events.script_max_size` to control the maximum size of collected content.
