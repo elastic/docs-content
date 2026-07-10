@@ -42,7 +42,7 @@ Yes. Data ingested through {{managed-integrations}} lands in your cluster like a
 
 On {{serverless-short}} projects, you can deploy {{managed-integrations}} at no additional cost.
 
-On {{ech}}, {{managed-integrations}} are free during technical preview. When they reach general availability (GA), each deployed {{managed-integration}} is charged per hour. On the Elastic price list, the unit appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
+On {{ech}}, each deployed {{managed-integration}} is charged per hour. On the Elastic price list, the unit appears as `[csp].managed-integration`, where `[csp]` is `aws`, `azure`, or `gcp`.
 
 Most {{managed-integrations}} are metered at one unit per integration, per hour. The following integrations are exceptions:
 
@@ -56,9 +56,19 @@ Most {{managed-integrations}} are metered at one unit per integration, per hour.
 
 For current pricing details, refer to the [Elastic pricing page](https://www.elastic.co/pricing).
 
+:::{note}
+:applies_to: stack: preview 9.0-9.4
+In these versions, {{managed-integrations}} are in technical preview and are free on {{ech}}. The per-hour charge takes effect when they reach general availability (GA).
+:::
+
 ### What SLAs apply to {{managed-integrations}}? [managed-integrations-faq-slas]
 
-On {{serverless-full}}, {{managed-integrations}} follow the [{{serverless-full}} SLA](https://www.elastic.co/agreements/sla-elastic-cloud-serverless). On {{ech}}, {{managed-integrations}} are in technical preview and aren't covered by the {{ech}} SLA.
+{{managed-integrations}} run on Elastic-managed infrastructure that Elastic operates as part of {{serverless-full}}. As a result, the service follows the [{{serverless-full}} SLA](https://www.elastic.co/agreements/sla-elastic-cloud-serverless), whether the data it collects lands in an {{serverless-full}} project or an {{ech}} deployment.
+
+:::{note}
+:applies_to: stack: preview 9.0-9.4
+In these versions, {{managed-integrations}} are in technical preview and are provided as-is, so no SLA applies. The {{serverless-full}} SLA takes effect when they reach general availability (GA).
+:::
 
 ## Data and security [managed-integrations-faq-data-security]
 
