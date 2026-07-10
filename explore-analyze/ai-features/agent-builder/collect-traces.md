@@ -22,9 +22,11 @@ products:
 
 When an agent runs, {{agent-builder}} records the run as OpenTelemetry (OTel) traces. Each trace covers one conversation round. A trace is made up of spans that map to the work the agent did, such as model calls, tool calls, and any workflows it triggered.
 
-{{agent-builder}} ingests these traces into a managed data stream in your own {{es}}, named `traces-agent_builder.otel-*`. The data stream is OTel-compatible and uses the standard OTel index template, so it inherits the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
+{{agent-builder}} ingests this data into managed data streams in your own {{es}}. It uses two OpenTelemetry data streams, `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*`. They are OTel-compatible and use the standard OTel index templates, so they inherit the mappings, settings, and data lifecycle that {{es}} maintains for OTel data.
 
-The trace data stream is a regular data stream, not a system or hidden index. You can explore and analyze traces with the same tools you use for any other data in {{es}}, including Discover, Dashboards, Lens, and ES|QL.
+These are regular data streams, not system or hidden indices. You can explore and analyze the data with the same tools you use for any other data in {{es}}, including Discover, Dashboards, Lens, and ES|QL.
+
+<!-- Both `traces-agent_builder.otel-*` and `logs-agent_builder.otel-*` are named in the Kibana Gen AI Settings source. Confirm what each stream carries (spans vs. log records) before publishing. -->
 
 <!-- TODO (step 9, cross-links): link Discover, Dashboards, Lens, and ES|QL. -->
 
@@ -48,15 +50,34 @@ By default, traces record structural metadata only. Conversation content such as
 
 ## Enable and configure trace collection
 
-Trace collection is on by default. You manage it in **Management > Gen AI Settings**.
+Trace collection is on by default. To manage it, go to **Management > Gen AI Settings** and open the **Agent Builder Traces** section.
 
-<!-- TODO: confirm the settings section and toggle labels (open question 1). The sole control is `agentBuilder:tracing:enabled`, which defaults to `true`; the experimental features flag no longer gates tracing (kibana#276174). -->
+The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
+
+:::{note}
+Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management > Roles**. For details, see [Grant access to trace data](#grant-access-to-trace-data).
+:::
 
 ### Trace privacy settings
 
-By default, traces contain only structural metadata. Conversation content is excluded until you opt in.
+By default, traces record structural metadata only, such as token counts, latency, and model names. Conversation content is not captured unless an administrator opts in.
 
-<!-- TODO: reproduce the settings table from search-team#14672 with defaults (all content options OFF by default): include user prompts, include LLM responses, include system prompt, include real tool and agent names, include real conversation IDs. -->
+To change what is captured, expand **Advanced privacy settings** in the **Agent Builder Traces** section. Each option is off by default.
+
+| Setting | Effect when enabled |
+|---|---|
+| **Include user prompts in traces** | Captures user messages. |
+| **Include system prompt in traces** | Captures agent instructions. |
+| **Include LLM responses in traces** | Captures agent responses. |
+| **Include tool call details in traces** | Captures tool call arguments and results. |
+| **Include real tool and agent names in traces** | Records real tool and agent names instead of anonymized values. |
+| **Include real conversation and workflow IDs in traces** | Records real conversation and workflow IDs instead of anonymized values. |
+
+:::{note}
+Built-in tools and agents always appear under their real names. When a value is anonymized, {{agent-builder}} uses a stable identifier, so you can still group and correlate traces without exposing names or IDs.
+:::
+
+<!-- Labels, defaults, and the access note are from Kibana source (ui_settings.ts and agent_builder_tracing_section.tsx, main, 2026-07-10). Real screenshots still needed for the settings section. -->
 
 ## Grant access to trace data
 
