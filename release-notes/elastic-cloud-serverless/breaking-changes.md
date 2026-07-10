@@ -54,9 +54,13 @@ For more information, view [#255800]({{kib-pull}}255800).
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
 Osquery scheduled-pack result documents correlate using stable UUIDs (`pack_id` and `schedule_id`) instead of the name-derived `action_id`. `action_id` is no longer populated for scheduled results; it remains populated for live queries. This applies when using the Osquery Manager integration v1.23.0 or later.
 
-**Impact**<br> Any dashboard, saved search, detection rule, or ingest pipeline that groups or filters scheduled Osquery results by `action_id` returns no data — including the default dashboards bundled with the Osquery Manager integration. Live query results are unaffected. No data is lost: the underlying result data remains fully queryable through the new fields.
+**Impact:**
 
-**Action**<br> Update any custom (user-authored) dashboards, saved searches, detection rules, and ingest pipelines that reference `action_id` for scheduled results to use `schedule_id` or `pack_id` instead. 
+Any dashboard, saved search, detection rule, or ingest pipeline that groups or filters scheduled Osquery results by `action_id` returns no data — including the default dashboards bundled with the Osquery Manager integration. Live query results are unaffected. No data is lost: the underlying result data remains fully queryable through the new fields.
+
+**Action:**
+
+Update any custom (user-authored) dashboards, saved searches, detection rules, and ingest pipelines that reference `action_id` for scheduled results to use `schedule_id` or `pack_id` instead. 
 
 For more information, check [#271572]({{kib-pull}}271572).
 ::::
