@@ -1,6 +1,8 @@
 ---
+navigation_title: FAQ
+description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
 applies_to:
-  stack: preview
+  stack: ga 9.5+, preview 9.0-9.4
   serverless: preview
 products:
   - id: elastic-agent
@@ -9,8 +11,6 @@ products:
   - id: cloud-hosted
   - id: observability
   - id: security
-description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
-navigation_title: FAQ
 ---
 
 # {{managed-integrations}} FAQ [agentless-integration-faq]

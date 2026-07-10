@@ -1,6 +1,5 @@
 ---
 description: Enable an Elastic Managed integration in Kibana to ingest data from a cloud source. Elastic provisions and manages the collector for you.
-type: how-to
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
   serverless: preview
@@ -11,6 +10,7 @@ products:
   - id: cloud-hosted
   - id: observability
   - id: security
+type: how-to
 ---
 
 # Enable an {{managed-integration}} [enable-agentless-integration]
