@@ -944,3 +944,11 @@ redirects:
     to: 'explore-analyze/cross-cluster-search.md'
     anchors:
       '': 'configure-privileges-for-ccs'
+
+  # Related to https://github.com/elastic/docs-content/pull/7151
+  'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md':
+    to: 'deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md'
+    anchors:
+      'index-and-resource-limits': 'elasticsearch-differences-serverless-index-size'
+      'elasticsearch-differences-custom-plugins-and-bundles': 'elasticsearch-differences-custom-plugins-and-bundles'
+      'elasticsearch-differences-serverless-settings-availability': 'elasticsearch-differences-serverless-settings-availability'
