@@ -16,8 +16,6 @@ products:
 :::{include} _snippets/2026-06-16/breaking-changes.md
 :::
 
-
-
 ## May 28, 2026 [elastic-cloud-serverless-05282026-breaking]
 
 ::::{dropdown} Entity Analytics requires additional index privileges for custom roles

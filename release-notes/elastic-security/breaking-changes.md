@@ -24,7 +24,6 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
-
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
 Starting in 9.4, Osquery scheduled-pack result documents correlate using stable UUIDs (`pack_id` and `schedule_id`) instead of the name-derived `action_id`. `action_id` is no longer populated for scheduled results; it remains populated for live queries. This applies when using the Osquery Manager integration v1.23.0 or later.
 
