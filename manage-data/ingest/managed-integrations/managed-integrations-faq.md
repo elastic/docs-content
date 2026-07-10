@@ -121,6 +121,37 @@ After you create a new {{managed-integration}}, the integration policy might sho
 
 {{managed-integrations}} are a fully managed service, so the underlying collectors aren't shown in {{fleet}} — Elastic operates the infrastructure on your behalf. You can still view each integration's status in the **{{integrations}}** app and observe the ingested data itself in your cluster.
 
+### How do I view my {{managed-integrations}}? [managed-integrations-faq-view]
+
+Manage and monitor {{managed-integrations}} from the **{{integrations}}** app:
+
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Do one of the following:
+   - Open the **Installed integrations** tab and select **View policies** for the integration you want.
+   - Open the integration's page and go to its **Integration policies** tab.
+
+Each integration policy shows the integration's status, so you can check its health and take action — such as updating credentials — without using {{fleet}}.
+
+### What should I do if an {{managed-integration}} is unhealthy? [managed-integrations-faq-health]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: preview
+```
+
+{{managed-integrations}} are a managed service, so you monitor them at the integration level rather than by inspecting the underlying collector. Each integration's status appears on its **Integration policies** tab in the **{{integrations}}** app. Hover over the status to see more detail about why an integration is unhealthy.
+
+If an {{managed-integration}} is unhealthy:
+
+1. **Check your credentials and configuration.** Most issues are caused by expired or invalid credentials, or by missing permissions at the source. Edit the integration to update its credentials or configuration.
+2. **Contact [Elastic Support](https://support.elastic.co)** if the problem persists. You don't need to inspect or debug the collector yourself — Elastic operates it for you, monitors the service, and can collect diagnostics on your behalf.
+
+A healthy status means the integration is connected and ready, but it doesn't necessarily mean data is currently flowing. If an integration is healthy but you don't see data, confirm that the source has data available and check the integration's throughput. If data still doesn't appear, contact [Elastic Support](https://support.elastic.co).
+
+### How do I get support and collect diagnostics? [managed-integrations-faq-support]
+
+{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
+
 ### How do I make the underlying collectors visible in {{fleet}}? [managed-integrations-faq-fleet-show]
 
 ```{applies_to}
@@ -132,10 +163,6 @@ On {{stack}} 9.1 through 9.4, you can override the default and expose the underl
 
 :::::{include} /manage-data/ingest/managed-integrations/_snippets/show-agentless-resources.md
 :::::
-
-### How do I get support and collect diagnostics? [managed-integrations-faq-support]
-
-{{managed-integrations}} are a fully managed service, so you usually don't need to collect diagnostics yourself. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
 ### How do I troubleshoot an Offline agent? [managed-integrations-troubleshoot-offline]
 
