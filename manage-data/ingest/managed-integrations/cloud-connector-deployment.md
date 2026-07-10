@@ -1,5 +1,6 @@
 ---
 navigation_title: Cloud connector authentication
+description: Use cloud connector authentication with Elastic Managed integrations to avoid managing API keys directly for AWS and Azure integrations.
 applies_to:
   stack: preview 9.2+
   serverless:
