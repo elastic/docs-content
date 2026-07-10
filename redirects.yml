@@ -957,4 +957,4 @@ redirects:
   'reference/fleet/managed-integrations-content.md':
     to: 'reference/fleet/managed-content.md'
     anchors:
-      'managed-integrations-content': 'managed-content'
+      'managed-integrations-content':
